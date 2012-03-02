@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
-import java.text.MessageFormat;
-import java.util.regex.Pattern;
-
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.VerboseCharmTypeStringBuilder;
@@ -15,6 +12,8 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
+import static java.text.MessageFormat.format;
+
 public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
 
   private static final String HtmlLineBreak = "<br>"; //$NON-NLS-1$
@@ -23,7 +22,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   private final ICharmTypeStringBuilder typeStringBuilder;
   private final ISpecialCharmStringBuilder specialCharmStringBuilder;
   private final IResources resources;
-  
+
   private final int MAX_DESCRIPTION_LENGTH = 80;
 
   public CharmInfoStringBuilder(IResources resources) {
@@ -34,6 +33,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     specialCharmStringBuilder = new SpecialCharmStringBuilder(resources);
   }
 
+  @Override
   public final String getInfoString(ICharm charm, ISpecialCharm specialDetails) {
     Ensure.ensureNotNull("Charm must not be null.", charm); //$NON-NLS-1$
     StringBuilder builder = new StringBuilder();
@@ -57,14 +57,12 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     }
     builder.append(createKeywordLine(charm));
     builder.append(createPrerequisiteLines(charm.getPrerequisites()));
-    builder.append(createPrerequisiteLines(new IGenericTrait[] { charm.getEssence() }));
-    
-    if (specialDetails != null)
-    	builder.append(specialCharmStringBuilder.createDetailsString(charm, specialDetails));
-    
-    if (getDescriptionString(charm) != null)
-    	builder.append(createDescriptionLine(charm));
-    
+    builder.append(createPrerequisiteLines(new IGenericTrait[]{charm.getEssence()}));
+
+    if (specialDetails != null) builder.append(specialCharmStringBuilder.createDetailsString(charm, specialDetails));
+
+    if (getDescriptionString(charm) != null) builder.append(createDescriptionLine(charm));
+
     builder.append(resources.getString("CharmTreeView.ToolTip.Source")); //$NON-NLS-1$
     builder.append(IMagicStringBuilderConstants.ColonSpace);
     builder.append(sourceStringBuilder.createSourceString(charm));
@@ -83,7 +81,8 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
       }
     }
     if (builder.length() > 0) {
-      builder.insert(0, resources.getString("CharmTreeView.ToolTip.Keywords") + IMagicStringBuilderConstants.ColonSpace); //$NON-NLS-1$
+      builder.insert(0, resources.getString(
+              "CharmTreeView.ToolTip.Keywords") + IMagicStringBuilderConstants.ColonSpace); //$NON-NLS-1$
       builder.append(HtmlLineBreak);
     }
     return builder;
@@ -91,7 +90,8 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
 
   private String createMartialArtsLevelLine(ICharm charm) {
     MartialArtsLevel level = MartialArtsUtilities.getLevel(charm);
-    String levelString = resources.getString("CharmTreeView.ToolTip.MartialArtsLevel") + IMagicStringBuilderConstants.ColonSpace; //$NON-NLS-1$
+    String levelString = resources.getString(
+            "CharmTreeView.ToolTip.MartialArtsLevel") + IMagicStringBuilderConstants.ColonSpace; //$NON-NLS-1$
     levelString = levelString.concat(resources.getString(level.getId()));
     levelString = levelString.concat(HtmlLineBreak);
     return levelString;
@@ -110,33 +110,31 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     }
     return prerequisiteLines;
   }
-  
-  private String getDescriptionString(ICharm charm)
-  {
-	  String id = charm.getId();
-	  String genericId = id.substring(0, id.lastIndexOf('.'));
-	  
-	  String description = null;
-	  if (resources.supportsKey(genericId + ".Description")) //$NON-NLS-1$
-		  description = resources.getString(genericId + ".Description"); //$NON-NLS-1$
-	  if (resources.supportsKey(id + ".Description")) //$NON-NLS-1$
-		  description = resources.getString(id + ".Description"); //$NON-NLS-1$
-	  
-	  if (description != null)
-		  description = MessageFormat.format(description,
-				  new Object[] { resources.getString(charm.getPrimaryTraitType().getId()) });
-	  
-	  return description;
-  }
-  
-  private String createDescriptionLine(ICharm charm)
-  {
-	  String description = resources.getString("CharmTreeView.ToolTip.Description"); //$NON-NLS-1$
-	  description += IMagicStringBuilderConstants.ColonSpace;
-	  description += getDescriptionString(charm); //$NON-NLS-1$
 
-	  description = AnathemaStringUtilities.createFixedWidthParagraph(description, HtmlLineBreak, MAX_DESCRIPTION_LENGTH);
-	  
-	  return description;
+  private String getDescriptionString(ICharm charm) {
+    String id = charm.getId();
+    String genericId = id.substring(0, id.lastIndexOf('.'));
+    String description = getDescriptionPattern(id, genericId);
+    if (description != null)
+      description = format(description, resources.getString(charm.getPrimaryTraitType().getId()));
+    return description;
+  }
+
+  private String getDescriptionPattern(String id, String genericId) {
+    if (resources.supportsKey(genericId + ".Description")) //$NON-NLS-1$
+      return resources.getString(genericId + ".Description"); //$NON-NLS-1$
+    if (resources.supportsKey(id + ".Description")) //$NON-NLS-1$
+      return resources.getString(id + ".Description"); //$NON-NLS-1$
+    return null;
+  }
+
+  private String createDescriptionLine(ICharm charm) {
+    String description = resources.getString("CharmTreeView.ToolTip.Description"); //$NON-NLS-1$
+    description += IMagicStringBuilderConstants.ColonSpace;
+    description += getDescriptionString(charm); //$NON-NLS-1$
+
+    description = AnathemaStringUtilities.createFixedWidthParagraph(description, HtmlLineBreak, MAX_DESCRIPTION_LENGTH);
+
+    return description;
   }
 }

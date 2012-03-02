@@ -16,6 +16,7 @@ public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> 
     this.resources = resources;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IMagicStats stats) {
     if (stats == null) {
       table.addCell(createTextCell(font, null));
@@ -29,10 +30,12 @@ public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> 
     }
   }
 
+  @Override
   public Float[] getColumnWeights() {
     return new Float[]{7f};
   }
 
+  @Override
   public String getTitle() {
     return resources.getString("Sheet.Magic.Details"); //$NON-NLS-1$
   }
