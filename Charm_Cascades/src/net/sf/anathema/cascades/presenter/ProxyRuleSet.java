@@ -39,4 +39,19 @@ public class ProxyRuleSet implements IExaltedRuleSet {
   public IExaltedRuleSet getDelegate() {
     return delegate;
   }
+  
+  public boolean equals(Object obj)
+  {
+	  if (obj instanceof IExaltedRuleSet && hasDelegate())
+		  return delegate.equals(obj);
+	  return false;
+  }
+  
+  @Override
+  public int hashCode()
+  {
+	  if (hasDelegate())
+		  return delegate.hashCode();
+	  return super.hashCode();
+  }
 }
