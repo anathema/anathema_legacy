@@ -49,6 +49,7 @@ public class AboutDialogPage extends AbstractDialogPage {
     addCredit(panel, "Help.AboutDialog.Translation.Spanish", "Ricardo Rodriguez"); //$NON-NLS-1$//$NON-NLS-2$
     addCredit(panel, "Help.AboutDialog.Translation.Italian", "Giovanni D'Addabbo & Team ITA"); //$NON-NLS-1$//$NON-NLS-2$
     addCredit(panel, "Help.AboutDialog.CharmTreeVisualization", "Daniel Hohenberger"); //$NON-NLS-1$//$NON-NLS-2$
+    addCredit(panel, "Help.AboutDialog.CharmDescriptions", "Official Exalted Wiki"); //$NON-NLS-1$//$NON-NLS-2$
     addCredit(panel, "Help.AboutDialog.CharacterSheet", "voidstate"); //$NON-NLS-1$//$NON-NLS-2$
     addCredit(panel, "Help.AboutDialog.NameTokenDatabase", "voidstate"); //$NON-NLS-1$//$NON-NLS-2$
     return panel;
