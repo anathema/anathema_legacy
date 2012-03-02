@@ -1,6 +1,8 @@
 package net.sf.anathema.character.db;
 
 import net.sf.anathema.character.db.aspect.DBAspect;
+import net.sf.anathema.character.db.magic.SpecialtyFocus;
+import net.sf.anathema.character.db.magic.SurgingMastery;
 import net.sf.anathema.character.db.magic.TerrestrialReinforcement;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
@@ -83,7 +85,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
             .register(DB, new IMagicStats[]{new FirstExcellency(DB, ExaltedSourceBook.DragonBlooded2nd, "1 m per 2 dice"), //$NON-NLS-1$
                     new SecondExcellency(DB, ExaltedSourceBook.DragonBlooded2nd), new ThirdExcellency(DB, "3 m",
                     ExaltedSourceBook.DragonBlooded2nd), //$NON-NLS-1$
-                    new TerrestrialReinforcement()});
+                    new TerrestrialReinforcement(),
+                    new SpecialtyFocus(),
+                    new SurgingMastery()});
     characterGenerics.getAdditionalTemplateParserRegistry().register(DbVirtueFlawTemplate.TEMPLATE_ID, new DbVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(DB, new CasteCollection(DBAspect.values()));
   }
