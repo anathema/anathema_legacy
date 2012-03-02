@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.Ma
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -24,7 +23,7 @@ public abstract class AbstractGenericCharm implements IMagicStats {
   @Override
   public String[] getDetailStrings(IResources resources) {
     String description = resources.getString(getId() + ".Description");
-    String cleanedDescription = format(description, resources.getString(getTraitType().getId()));
+    String cleanedDescription = format(description, resources.getString(getCharacterType().getFavoringTraitType().getId()));
     return new String[]{cleanedDescription}; //$NON-NLS-1$
   }
 
@@ -48,11 +47,6 @@ public abstract class AbstractGenericCharm implements IMagicStats {
   protected abstract boolean isComboOk();
 
   protected abstract ICharacterType getCharacterType();
-  
-  public FavoringTraitType getTraitType()
-  {
-	  return getCharacterType().getFavoringTraitType();
-  }
 
   @Override
   public int compareTo(IMagicStats stats) {
