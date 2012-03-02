@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder.type;
 
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicStringBuilderConstants;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicTooltipStringBuilder;
 import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.lib.resources.IResources;
@@ -17,7 +17,7 @@ public class ShortCharmTypeStringBuilder extends AbstractCharmTypeStringBuilder 
       final boolean defaultSpeed,
       final boolean longAction) {
     StringBuilder builder = new StringBuilder();
-    builder.append(IMagicStringBuilderConstants.CommaSpace);
+    builder.append(IMagicTooltipStringBuilder.CommaSpace);
     final int defenseModifier = model.getDefenseModifier();
     if (defenseModifier == 0) {
       builder.append("-"); //$NON-NLS-1$
@@ -31,7 +31,7 @@ public class ShortCharmTypeStringBuilder extends AbstractCharmTypeStringBuilder 
     StringBuilder builder = new StringBuilder();
     builder.append(model.getSpeed());
     if (model.getTurnType() == TurnType.LongTick) {
-      builder.append(IMagicStringBuilderConstants.Space);
+      builder.append(IMagicTooltipStringBuilder.Space);
       builder.append(getResources().getString("CharmTreeView.ToolTip.Type.LongTick.Short")); //$NON-NLS-1$
     }
     return builder;

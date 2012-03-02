@@ -1,142 +1,40 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
-import java.text.MessageFormat;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.VerboseCharmTypeStringBuilder;
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
-
-  private static final String HtmlLineBreak = "<br>"; //$NON-NLS-1$
-  private final IMagicInfoStringBuilder costStringBuilder;
-  private final IMagicSourceStringBuilder<ICharm> sourceStringBuilder;
-  private final ICharmTypeStringBuilder typeStringBuilder;
-  private final ISpecialCharmStringBuilder specialCharmStringBuilder;
-  private final IResources resources;
-  
-  private final int MAX_DESCRIPTION_LENGTH = 80;
+public class CharmInfoStringBuilder implements ICharmInfoStringBuilder
+{
+  private final List<IMagicTooltipStringBuilder> builders = new ArrayList<IMagicTooltipStringBuilder>();
 
   public CharmInfoStringBuilder(IResources resources) {
-    this.resources = resources;
-    costStringBuilder = new ScreenDisplayInfoStringBuilder(resources);
-    sourceStringBuilder = new MagicSourceStringBuilder<ICharm>(resources);
-    typeStringBuilder = new VerboseCharmTypeStringBuilder(resources);
-    specialCharmStringBuilder = new SpecialCharmStringBuilder(resources);
+    builders.add(new MagicNameStringBuilder(resources));
+    builders.add(new ScreenDisplayInfoStringBuilder(resources));
+    builders.add(new CharmDurationStringBuilder(resources));
+    builders.add(new VerboseCharmTypeStringBuilder(resources));
+    builders.add(new MartialArtsCharmStringBuilder(resources));
+    builders.add(new CharmKeywordsStringBuilder(resources));
+    builders.add(new CharmPrerequisitesStringBuilder(resources));
+    builders.add(new SpecialCharmStringBuilder(resources));
+    builders.add(new MagicDescriptionStringBuilder(resources));
+    builders.add(new MagicSourceStringBuilder<ICharm>(resources));
   }
 
   public final String getInfoString(ICharm charm, ISpecialCharm specialDetails) {
     Ensure.ensureNotNull("Charm must not be null.", charm); //$NON-NLS-1$
     StringBuilder builder = new StringBuilder();
-    builder.append("<html><body><b>"); //$NON-NLS-1$
-    builder.append(resources.getString(charm.getId()));
-    builder.append("</b><br>"); //$NON-NLS-1$
-    builder.append(resources.getString("CharmTreeView.ToolTip.Cost")); //$NON-NLS-1$
-    builder.append(IMagicStringBuilderConstants.ColonSpace);
-    builder.append(costStringBuilder.createCostString(charm));
-    builder.append(HtmlLineBreak);
-    builder.append(resources.getString("CharmTreeView.ToolTip.Duration")); //$NON-NLS-1$
-    builder.append(IMagicStringBuilderConstants.ColonSpace);
-    builder.append(charm.getDuration().getText(resources));
-    builder.append(HtmlLineBreak);
-    builder.append(resources.getString("CharmTreeView.ToolTip.Type")); //$NON-NLS-1$
-    builder.append(IMagicStringBuilderConstants.ColonSpace);
-    builder.append(typeStringBuilder.createTypeString(charm.getCharmTypeModel()));
-    builder.append(HtmlLineBreak);
-    if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
-      builder.append(createMartialArtsLevelLine(charm));
-    }
-    builder.append(createKeywordLine(charm));
-    builder.append(createPrerequisiteLines(charm.getPrerequisites()));
-    builder.append(createPrerequisiteLines(new IGenericTrait[] { charm.getEssence() }));
-    
-    if (specialDetails != null)
-    	builder.append(specialCharmStringBuilder.createDetailsString(charm, specialDetails));
-    
-    if (getDescriptionString(charm) != null)
-    	builder.append(createDescriptionLine(charm));
-    
-    builder.append(resources.getString("CharmTreeView.ToolTip.Source")); //$NON-NLS-1$
-    builder.append(IMagicStringBuilderConstants.ColonSpace);
-    builder.append(sourceStringBuilder.createSourceString(charm));
+    builder.append("<html><body>"); //$NON-NLS-1$
+    for (IMagicTooltipStringBuilder lineBuilder : builders)
+    	lineBuilder.buildStringForMagic(builder, charm, specialDetails);
     builder.append("</body></html>"); //$NON-NLS-1$
     return builder.toString();
   }
 
-  private StringBuilder createKeywordLine(ICharm charm) {
-    StringBuilder builder = new StringBuilder();
-    for (ICharmAttribute attribute : charm.getAttributes()) {
-      if (attribute.isVisualized()) {
-        if (builder.length() != 0) {
-          builder.append(IMagicStringBuilderConstants.CommaSpace);
-        }
-        builder.append(resources.getString("Keyword." + attribute.getId())); //$NON-NLS-1$
-      }
-    }
-    if (builder.length() > 0) {
-      builder.insert(0, resources.getString("CharmTreeView.ToolTip.Keywords") + IMagicStringBuilderConstants.ColonSpace); //$NON-NLS-1$
-      builder.append(HtmlLineBreak);
-    }
-    return builder;
-  }
-
-  private String createMartialArtsLevelLine(ICharm charm) {
-    MartialArtsLevel level = MartialArtsUtilities.getLevel(charm);
-    String levelString = resources.getString("CharmTreeView.ToolTip.MartialArtsLevel") + IMagicStringBuilderConstants.ColonSpace; //$NON-NLS-1$
-    levelString = levelString.concat(resources.getString(level.getId()));
-    levelString = levelString.concat(HtmlLineBreak);
-    return levelString;
-  }
-
-  private String createPrerequisiteLines(IGenericTrait[] prerequisites) {
-    String prerequisiteLines = ""; //$NON-NLS-1$
-    for (IGenericTrait prerequisite : prerequisites) {
-      if (prerequisite.getCurrentValue() == 0) continue;
-      prerequisiteLines = prerequisiteLines.concat(resources.getString("CharmTreeView.ToolTip.Minimum")); //$NON-NLS-1$
-      prerequisiteLines = prerequisiteLines.concat(IMagicStringBuilderConstants.Space);
-      prerequisiteLines = prerequisiteLines.concat(resources.getString(prerequisite.getType().getId()));
-      prerequisiteLines = prerequisiteLines.concat(IMagicStringBuilderConstants.ColonSpace);
-      prerequisiteLines = prerequisiteLines.concat(String.valueOf(prerequisite.getCurrentValue()));
-      prerequisiteLines = prerequisiteLines.concat(HtmlLineBreak);
-    }
-    return prerequisiteLines;
-  }
-  
-  private String getDescriptionString(ICharm charm)
-  {
-	  String id = charm.getId();
-	  String genericId = id.substring(0, id.lastIndexOf('.'));
-	  
-	  String description = null;
-	  if (resources.supportsKey(genericId + ".Description")) //$NON-NLS-1$
-		  description = resources.getString(genericId + ".Description"); //$NON-NLS-1$
-	  if (resources.supportsKey(id + ".Description")) //$NON-NLS-1$
-		  description = resources.getString(id + ".Description"); //$NON-NLS-1$
-	  
-	  if (description != null)
-		  description = MessageFormat.format(description,
-				  new Object[] { resources.getString(charm.getPrimaryTraitType().getId()) });
-	  
-	  return description;
-  }
-  
-  private String createDescriptionLine(ICharm charm)
-  {
-	  String description = resources.getString("CharmTreeView.ToolTip.Description"); //$NON-NLS-1$
-	  description += IMagicStringBuilderConstants.ColonSpace;
-	  description += getDescriptionString(charm); //$NON-NLS-1$
-
-	  description = AnathemaStringUtilities.createFixedWidthParagraph(description, HtmlLineBreak, MAX_DESCRIPTION_LENGTH);
-	  
-	  return description;
-  }
 }

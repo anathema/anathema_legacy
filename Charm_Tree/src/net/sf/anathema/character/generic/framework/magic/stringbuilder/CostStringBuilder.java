@@ -18,9 +18,9 @@ public class CostStringBuilder extends AbstractCostStringBuilder<ICost> {
   protected String getQualifiedValueString(ICost cost) {
     int intValue = Integer.parseInt(cost.getCost());
     return intValue
-        + IMagicStringBuilderConstants.Space
+        + IMagicTooltipStringBuilder.Space
         + (cost.isPermanent()
-            ? getResources().getString("Magic.Cost.Permanent") + IMagicStringBuilderConstants.Space : AnathemaStringUtilities.EMPTY_STRING) //$NON-NLS-1$
+            ? getResources().getString("Magic.Cost.Permanent") + IMagicTooltipStringBuilder.Space : AnathemaStringUtilities.EMPTY_STRING) //$NON-NLS-1$
         + getResources().getString(intValue == 1 ? getSingularKey() : getPluralKey());
   }
 }

@@ -33,7 +33,7 @@ public abstract class AbstractCostStringBuilder<T extends ICost> implements ICos
       }
     }
     if (!StringUtilities.isNullOrEmpty(text)) {
-      costString = costString.concat(IMagicStringBuilderConstants.Space + text);
+      costString = costString.concat(IMagicTooltipStringBuilder.Space + text);
     }
     return costString;
   }

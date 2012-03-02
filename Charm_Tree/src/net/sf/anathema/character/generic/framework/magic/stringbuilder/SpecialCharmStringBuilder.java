@@ -7,10 +7,11 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLea
 import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SpecialCharmStringBuilder implements ISpecialCharmStringBuilder
+public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder
 {
 	private static final String HtmlLineBreak = "<br>"; //$NON-NLS-1$
 	private IResources resources;
@@ -19,71 +20,76 @@ public class SpecialCharmStringBuilder implements ISpecialCharmStringBuilder
 	{
 		this.resources = resources;
 	}
-
+	
 	@Override
-	public String createDetailsString(ICharm charm, ISpecialCharm details)
+	public void buildStringForMagic(StringBuilder builder, IMagic magic,
+			Object specialDetails)
 	{
-	    StringBuilder results = new StringBuilder(128);
-		  if (details instanceof AbstractMultiLearnableCharm)
-		  {
-		    results.append(resources.getString("CharmTreeView.ToolTip.Repurchases"));
-		    results.append(IMagicStringBuilderConstants.ColonSpace);
-			  if (details instanceof StaticMultiLearnableCharm)
-			  {
-				  StaticMultiLearnableCharm special = (StaticMultiLearnableCharm) details;
-				  results.append(resources.getString("CharmTreeView.ToolTip.Repurchases.Static" + special.getAbsoluteLearnLimit()));
-			  }
-			  if (details instanceof TraitDependentMultiLearnableCharm)
-			  {
-				  TraitDependentMultiLearnableCharm special = (TraitDependentMultiLearnableCharm) details;
-				  results.append("(");
-				  results.append(resources.getString(special.getTraitType().getId()));
-				  if (special.getModifier() != 0) {
-				    results.append(special.getModifier());
-				  }
-				  results.append(")");
-				  results.append(IMagicStringBuilderConstants.Space);
-				  results.append(resources.getString("CharmTreeView.ToolTip.Repurchases.Times"));
-			  }
-			  if (details instanceof EssenceFixedMultiLearnableCharm)
-				  return "";
-			  if (details instanceof TieredMultiLearnableCharm)
-			  {
-				  TieredMultiLearnableCharm special = (TieredMultiLearnableCharm) details;
-				  CharmTier[] tiers = special.getTiers();
-				  CharmTier first = tiers[0], second = tiers[1], last = tiers[tiers.length - 1];
-				  for (CharmTier tier : tiers)
+		if (magic instanceof ICharm && specialDetails instanceof ISpecialCharm)
+		{
+			ICharm charm = (ICharm)magic;
+			ISpecialCharm details = (ISpecialCharm) specialDetails;
+			
+			if (details instanceof AbstractMultiLearnableCharm)
+			{
+			    builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases"));
+			    builder.append(IMagicTooltipStringBuilder.ColonSpace);
+				  if (details instanceof StaticMultiLearnableCharm)
 				  {
-					  if (tier == first)
-						  continue;
-					  if (tier == last && tier != second)
-					  {
-					    results.append(resources.getString("CharmTreeView.ToolTip.Repurchases.And"));
-					    results.append(IMagicStringBuilderConstants.Space);
+					  StaticMultiLearnableCharm special = (StaticMultiLearnableCharm) details;
+					  builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases.Static" + special.getAbsoluteLearnLimit()));
+				  }
+				  if (details instanceof TraitDependentMultiLearnableCharm)
+				  {
+					  TraitDependentMultiLearnableCharm special = (TraitDependentMultiLearnableCharm) details;
+					  builder.append("(");
+					  builder.append(resources.getString(special.getTraitType().getId()));
+					  if (special.getModifier() != 0) {
+						  builder.append(special.getModifier());
 					  }
-					  if (tier == second || tiers.length <= 3) {
-					    results.append(resources.getString("Essence"));
-					    results.append(IMagicStringBuilderConstants.Space);
-					  }
-					  results.append(tier.getEssence());
-					  
-					  if (tier.getTrait() > 0)
+					  builder.append(")");
+					  builder.append(IMagicTooltipStringBuilder.Space);
+					  builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases.Times"));
+				  }
+				  if (details instanceof EssenceFixedMultiLearnableCharm)
+					  return;
+				  if (details instanceof TieredMultiLearnableCharm)
+				  {
+					  TieredMultiLearnableCharm special = (TieredMultiLearnableCharm) details;
+					  CharmTier[] tiers = special.getTiers();
+					  CharmTier first = tiers[0], second = tiers[1], last = tiers[tiers.length - 1];
+					  for (CharmTier tier : tiers)
 					  {
-					    results.append("/");
-						  if (tier == second) {
-						    results.append(resources.getString(charm.getPrimaryTraitType().getId()));
-						    results.append(IMagicStringBuilderConstants.Space);
+						  if (tier == first)
+							  continue;
+						  if (tier == last && tier != second)
+						  {
+							builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases.And"));
+							builder.append(IMagicTooltipStringBuilder.Space);
 						  }
-						  results.append(tier.getTrait());
-					  }
-					  if (tier != last) {
-					    results.append(IMagicStringBuilderConstants.CommaSpace);
+						  if (tier == second || tiers.length <= 3) {
+							builder.append(resources.getString("Essence"));
+							builder.append(IMagicTooltipStringBuilder.Space);
+						  }
+						  builder.append(tier.getEssence());
+						  
+						  if (tier.getTrait() > 0)
+						  {
+							builder.append("/");
+							if (tier == second) {
+								builder.append(resources.getString(charm.getPrimaryTraitType().getId()));
+								builder.append(IMagicTooltipStringBuilder.Space);
+							}
+							builder.append(tier.getTrait());
+						  }
+						  if (tier != last) {
+							builder.append(IMagicTooltipStringBuilder.CommaSpace);
+						  }
 					  }
 				  }
+				  builder.append(HtmlLineBreak);
 			  }
-			  results.append(HtmlLineBreak);
-		  }
-		  return results.toString();
+		}
+		
 	}
-
 }

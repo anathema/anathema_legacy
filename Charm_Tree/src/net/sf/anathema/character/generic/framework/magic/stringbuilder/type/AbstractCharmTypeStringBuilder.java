@@ -3,7 +3,9 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder.type;
 import java.text.MessageFormat;
 
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmTypeStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicStringBuilderConstants;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicTooltipStringBuilder;
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
@@ -12,7 +14,7 @@ import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeStringBuilder {
+public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeStringBuilder, IMagicTooltipStringBuilder {
 
   private final boolean displayDefaultValues;
   private final IResources resources;
@@ -20,6 +22,17 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
   public AbstractCharmTypeStringBuilder(IResources resources, boolean displayDefaultValues) {
     this.resources = resources;
     this.displayDefaultValues = displayDefaultValues;
+  }
+  
+  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details)
+  {
+	  if (magic instanceof ICharm)
+	  {
+		  builder.append(resources.getString("CharmTreeView.ToolTip.Type")); //$NON-NLS-1$
+		  builder.append(ColonSpace);
+		  builder.append(createTypeString(((ICharm)magic).getCharmTypeModel()));
+		  builder.append(HtmlLineBreak);
+	  }
   }
 
   protected abstract StringBuilder buildDefenseString(
@@ -29,7 +42,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
 
   private StringBuilder buildReflexiveModelString(IReflexiveSpecialsModel model) {
     StringBuilder builder = new StringBuilder();
-    builder.append(IMagicStringBuilderConstants.Space);
+    builder.append(IMagicTooltipStringBuilder.Space);
     builder.append("("); //$NON-NLS-1$    
     MessageFormat formatter = new MessageFormat(""); //$NON-NLS-1$
     Object[] objects;
@@ -64,7 +77,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
     if (defaultSpeed && defaultDefense && defaultTurnType) {
       return builder;
     }
-    builder.append(IMagicStringBuilderConstants.Space);
+    builder.append(IMagicTooltipStringBuilder.Space);
     builder.append("("); //$NON-NLS-1$
     final boolean dramaticAction = model.getTurnType() == TurnType.DramaticAction;
     boolean longTick = model.getTurnType() == TurnType.LongTick;

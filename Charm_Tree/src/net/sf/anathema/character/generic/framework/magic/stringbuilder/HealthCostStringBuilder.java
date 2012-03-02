@@ -17,9 +17,9 @@ public class HealthCostStringBuilder extends AbstractCostStringBuilder<IHealthCo
   protected String getQualifiedValueString(IHealthCost cost) {
     int intValue = Integer.parseInt(cost.getCost());
     return intValue
-        + IMagicStringBuilderConstants.Space
+        + IMagicTooltipStringBuilder.Space
         + getResources().getString(cost.getType().getId())
-        + IMagicStringBuilderConstants.Space
+        + IMagicTooltipStringBuilder.Space
         + getResources().getString(intValue == 1 ? getSingularKey() : getPluralKey());
   }
 }
