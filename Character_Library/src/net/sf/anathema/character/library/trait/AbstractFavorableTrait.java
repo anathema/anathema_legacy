@@ -37,9 +37,17 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
     return getTraitRules().getAbsoluteMaximumValue();
   }
 
+  public final boolean isLowerable() {
+    return getTraitRules().isLowerable();
+  }
+
   @Override
   public int hashCode() {
     return getType().getId().hashCode();
+  }
+
+  public int getAbsoluteMinValue() {
+    return getTraitRules().getAbsoluteMinimumValue();
   }
 
   public final int getZeroCalculationValue() {
