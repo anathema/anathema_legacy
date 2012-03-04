@@ -45,7 +45,6 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   private static final String DUMMYGROUP = "DummyGroup"; //$NON-NLS-1$
   private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(
       new ExaltTraitTemplateFactory());
-  private IExperiencePointCosts experienceCosts;
   private ITemplateType type = new TemplateType(CharacterType.MORTAL);
 
   @Override
@@ -79,7 +78,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   @Override
   public IExperiencePointCosts getExperienceCost() {
-    return experienceCosts;
+    return null;
   }
 
   @Override
@@ -149,10 +148,6 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     return new NullEssenceTemplate();
   }
 
-  public ICasteType[] getAllCasteTypes() {
-    return new ICasteType[0];
-  }
-
   @Override
   public ICasteCollection getCasteCollection() {
     return new CasteCollection(new ICasteType[0]);
@@ -196,10 +191,6 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return new IAdditionalTemplate[0];
-  }
-
-  public void setExperienceCosts(IExperiencePointCosts experienceCosts) {
-    this.experienceCosts = experienceCosts;
   }
 
   @Override
