@@ -17,7 +17,6 @@ import javax.swing.Action;
 import javax.swing.KeyStroke;
 import java.awt.Component;
 import java.awt.Desktop;
-import java.awt.Event;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -102,6 +101,7 @@ public class AnathemaQuickPrintAction extends SmartAction {
       final File selectedFile = getPrintFile(item);
       new ProgressMonitorDialog(parentComponent, resources.getString("Anathema.Reporting.Print.Progress.Title")).run( //$NON-NLS-1$
               new INonInterruptableRunnableWithProgress() {
+                @Override
                 public void run(IProgressMonitor monitor) throws InvocationTargetException {
                   try {
                     performPrint(monitor, item, selectedReport, selectedFile);

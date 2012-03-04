@@ -1,15 +1,12 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons;
 
-import java.awt.Color;
-
+import com.google.common.base.Joiner;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-
-import com.google.common.base.Joiner;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipmentStatsGroup;
@@ -27,24 +24,29 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
     this.title = resources.getString("Sheet.Equipment.Header.Tags"); //$NON-NLS-1$ ;
   }
 
+  @Override
   public int getColumnCount() {
     return 1;
   }
 
+  @Override
   public String getTitle() {
     return title;
   }
 
+  @Override
   public Float[] getColumnWeights() {
     return new Float[]{new Float(1.7)};
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IWeaponStats weapon) {
     if (weapon == null) {
       table.addCell(createEmptyNameCell(font));
     } else {
       IIdentificate[] tags = weapon.getTags();
       String[] values = ArrayUtilities.transform(tags, String.class, new ITransformer<IIdentificate, String>() {
+        @Override
         public String transform(IIdentificate input) {
           return resources.getString("Weapons.Tags." + input.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
         }

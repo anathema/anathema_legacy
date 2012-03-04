@@ -14,7 +14,6 @@ import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.module.DefaultObjectSelectionProperties;
 import net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
-import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
@@ -95,6 +94,7 @@ public class AnathemaPrintAction extends SmartAction {
     try {
       new ProgressMonitorDialog(parentComponent, resources.getString("Anathema.Reporting.Print.Progress.Title")).run( //$NON-NLS-1$
               new INonInterruptableRunnableWithProgress() {
+                @Override
                 public void run(IProgressMonitor monitor) throws InvocationTargetException {
                   try {
                     performPrint(monitor, item, selectedReport, selectedFile);

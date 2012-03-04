@@ -1,6 +1,5 @@
 package net.sf.anathema.character.ghost.reporting.content;
 
-import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
 import net.sf.anathema.character.ghost.fetters.model.Fetter;

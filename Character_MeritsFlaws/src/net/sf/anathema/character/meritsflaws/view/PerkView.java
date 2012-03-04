@@ -1,19 +1,5 @@
 package net.sf.anathema.character.meritsflaws.view;
 
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.Action;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
@@ -34,6 +20,19 @@ import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListV
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.IIdentificate;
 
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class PerkView implements IPerkView, IView {
 
   private JPanel content;
@@ -48,13 +47,14 @@ public class PerkView implements IPerkView, IView {
   private final ActionAddableListView<IQualitySelection<IPerk>> selectedPerksView;
   private final IMeritsFlawsViewProperties properties;
 
-  @SuppressWarnings({ "unchecked", "rawtypes" })
+  @SuppressWarnings("unchecked")
   public PerkView(IMeritsFlawsViewProperties properties) {
     this.properties = properties;
     perkList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     this.selectedPerksView = new SingleSelectionActionAddableListView(null, IQualitySelection.class);
   }
 
+  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = createContent();
@@ -118,6 +118,7 @@ public class PerkView implements IPerkView, IView {
       @Override
       protected void execute(Component parentComponent) {
         control.forAllDo(new IClosure<IPerkListener>() {
+          @Override
           public void execute(IPerkListener input) {
             IQualitySelection<IPerk>[] object = selectedPerksView.getSelectedItems();
             if (object != null) {
@@ -135,8 +136,10 @@ public class PerkView implements IPerkView, IView {
 
   private void initListening() {
     perkList.addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         control.forAllDo(new IClosure<IPerkListener>() {
+          @Override
           public void execute(IPerkListener input) {
             input.perkSelected(perkList.getSelectedValue());
           }
@@ -145,8 +148,10 @@ public class PerkView implements IPerkView, IView {
     });
 
     IObjectValueChangedListener<IIdentificate> filterListener = new IObjectValueChangedListener<IIdentificate>() {
+      @Override
       public void valueChanged(final IIdentificate newValue) {
         control.forAllDo(new IClosure<IPerkListener>() {
+          @Override
           public void execute(IPerkListener input) {
             input.filterChanged(typeFilterView.getSelectedObject(), categoryFilterView.getComboBox().getSelectedItem());
           }
@@ -157,8 +162,10 @@ public class PerkView implements IPerkView, IView {
     categoryFilterView.addObjectSelectionChangedListener(filterListener);
 
     addButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         control.forAllDo(new IClosure<IPerkListener>() {
+          @Override
           public void execute(IPerkListener input) {
             input.perkAdded(perkList.getSelectedValue(), detailsView);
           }
@@ -167,8 +174,10 @@ public class PerkView implements IPerkView, IView {
     });
 
     selectedPerksView.addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         control.forAllDo(new IClosure<IPerkListener>() {
+          @Override
           public void execute(IPerkListener input) {
             IQualitySelection<IPerk>[] selectedItems = selectedPerksView.getSelectedItems();
             if (selectedItems.length > 0) {
@@ -183,18 +192,22 @@ public class PerkView implements IPerkView, IView {
     });
   }
 
+  @Override
   public void setAvailablePerks(IPerk[] perks) {
     perkList.setObjects(perks);
   }
 
+  @Override
   public void addPerkListener(IPerkListener listener) {
     control.addListener(listener);
   }
 
+  @Override
   public void setSelectedPerks(IQualitySelection<IPerk>[] selectedPerks) {
     selectedPerksView.setObjects(selectedPerks);
   }
 
+  @Override
   public void setPerkDetails(IPerkDetailsView view) {
     this.detailsView = view;
     detailsPanel.removeAll();
@@ -206,14 +219,17 @@ public class PerkView implements IPerkView, IView {
     detailsPanel.repaint();
   }
 
+  @Override
   public void setAddEnabled(boolean enabled) {
     addButton.setEnabled(enabled);
   }
 
+  @Override
   public void setRemoveEnabled(boolean enabled) {
     removeAction.setEnabled(enabled);
   }
 
+  @Override
   public void setAvailableListSelection(IPerk perk) {
     perkList.setSelectedValue(perk, true);
   }

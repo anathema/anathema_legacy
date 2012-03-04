@@ -1,11 +1,5 @@
 package net.sf.anathema.character.impl.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.Icon;
-import javax.swing.JComponent;
-
 import net.sf.anathema.character.impl.view.concept.CharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.OverviewView;
@@ -24,6 +18,11 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.view.util.MultiTabContentView;
 import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.lib.gui.IDisposable;
+
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterView extends AbstractItemView implements ICharacterView {
 
@@ -47,48 +46,58 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
     this.intValueDisplayFactoryWithoutMarker = factoryWithoutMarker;
   }
 
+  @Override
   public IOverviewView addCreationOverviewView() {
     OverviewView newView = new OverviewView();
     this.creationOverviewView = newView;
     return newView;
   }
 
+  @Override
   public void addDisposable(IDisposable disposable) {
     disposables.add(disposable);
   }
 
+  @Override
   public IOverviewView addExperienceOverviewView() {
     OverviewView newView = new OverviewView();
     this.experienceOverviewView = newView;
     return newView;
   }
 
+  @Override
   public IMultiContentView addMultiContentView(String header) {
     IMultiContentView multiTabView = new MultiTabContentView(TabDirection.Up);
     contentView.addView(multiTabView, new ContentProperties(header));
     return multiTabView;
   }
 
+  @Override
   public IAdvantageViewFactory createAdvantageViewFactory() {
     return new AdvantageViewFactory(intValueDisplayFactory);
   }
 
+  @Override
   public ICharacterDescriptionView createCharacterDescriptionView() {
     return new CharacterDescriptionView();
   }
 
+  @Override
   public ICharacterConceptAndRulesViewFactory createConceptViewFactory() {
     return new CharacterConceptAndRulesViewFactory();
   }
 
+  @Override
   public IExperienceConfigurationView createExperienceConfigurationView() {
     return new ExperienceConfigurationView();
   }
 
+  @Override
   public IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory() {
     return new GroupedFavorableTraitViewFactory(intValueDisplayFactory, intValueDisplayFactoryWithoutMarker);
   }
 
+  @Override
   public IMagicViewFactory createMagicViewFactory() {
     return new MagicViewFactory();
   }
@@ -100,16 +109,13 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
     }
   }
 
+  @Override
   public final JComponent getComponent() {
     if (content == null) {
       contentView.setAdditionalComponent(getTabAreaComponent());
       content = contentView.getComponent();
     }
     return content;
-  }
-
-  public IIntValueDisplayFactory getIntValueDisplayFactory() {
-    return intValueDisplayFactory;
   }
 
   private JComponent getTabAreaComponent() {
@@ -119,6 +125,7 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
     return overviewView.getComponent();
   }
 
+  @Override
   public void toogleOverviewView(boolean experienced) {
     this.overviewView = experienced ? experienceOverviewView : creationOverviewView;
     contentView.setAdditionalComponent(getTabAreaComponent());

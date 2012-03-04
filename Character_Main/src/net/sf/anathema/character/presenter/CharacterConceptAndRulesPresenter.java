@@ -1,9 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import java.awt.Component;
-
-import javax.swing.AbstractButton;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.ui.IObjectUi;
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
@@ -42,6 +38,9 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
+import javax.swing.AbstractButton;
+import java.awt.Component;
+
 public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
   private final ICharacterConceptAndRulesView view;
@@ -57,14 +56,17 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     this.resources = resources;
   }
 
+  @Override
   public void initPresentation() {
     initRulesPresentation();
     final boolean casteRow = initCastePresentation();
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      @Override
       public void accept(INature nature) {
         initNaturePresentation(nature);
       }
 
+      @Override
       public void accept(IMotivation motivation) {
         initMotivationPresentation(motivation, casteRow);
       }
@@ -73,6 +75,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     initGui();
   }
 
+  @Override
   public IViewContent getTabContent() {
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
     return new SimpleViewContent(new ContentProperties(conceptHeader), view);
@@ -87,6 +90,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     
 	  view.addSpinner(resources.getString("Label.Age"), ageSpinner);
     ageSpinner.addChangeListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         age.setValue(newValue);
       }
@@ -139,6 +143,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     view.addAction(endEditAction, row);
     view.addAction(endEditXPAction, row);
     motivation.addEditingListener(new IEditMotivationListener() {
+      @Override
       public void editBegun() {
         textView.setEnabled(true);
         textView.setText(motivation.getEditableDescription().getText());
@@ -147,6 +152,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
         endEditXPAction.setEnabled(true);
       }
 
+      @Override
       public void editEnded() {
         textView.setEnabled(false);
         textView.setText(motivation.getDescription().getText());
@@ -184,10 +190,12 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
   private void initGui() {
     view.initGui(new ICharacterConceptAndRulesViewProperties() {
+      @Override
       public String getConceptTitle() {
         return resources.getString("CardView.CharacterConcept.Concept"); //$NON-NLS-1$
       }
 
+      @Override
       public String getRulesTitle() {
         return resources.getString("CardView.CharacterConcept.Rules");} //$NON-NLS-1$
     });
@@ -211,11 +219,13 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     natureView.setSelectedObject(natureType.getType());
     final IWillpowerConditionView willpowerConditionLabel = view.addWillpowerConditionView(resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
     natureView.addObjectSelectionChangedListener(new IObjectValueChangedListener<INatureType>() {
+      @Override
       public void valueChanged(INatureType newValue) {
         natureType.setType(newValue);
       }
     });
     natureType.addChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateNature(natureView, willpowerConditionLabel, natureType.getType());
       }
@@ -272,11 +282,13 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
     casteView.setSelectedObject(caste.getType());
     casteView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ICasteType>() {
+      @Override
       public void valueChanged(ICasteType newValue) {
         caste.setType(newValue);
       }
     });
     caste.addChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         casteView.setSelectedObject(caste.getType());
       }
