@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model.creation.bonus;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -42,6 +39,9 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
 import net.sf.anathema.character.presenter.overview.IOverviewModel;
 import net.sf.anathema.character.presenter.overview.ISpendingModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BonusPointManagement implements IBonusPointManagement {
 
@@ -116,6 +116,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.essence = TraitCollectionUtilities.getEssence(traitConfiguration);
   }
 
+  @Override
   public void recalculate() {
     bonusAdditionalPools.reset();
     backgroundCalculator.calculateBonusPoints();
@@ -174,18 +175,22 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new VirtueBonusModel(virtueCalculator, creationPoints);
   }
 
+  @Override
   public ISpendingModel getBackgroundModel() {
     return new BackgroundBonusModel(backgroundCalculator, creationPoints);
   }
 
+  @Override
   public ISpendingModel getDefaultAbilityModel() {
     return new DefaultAbilityBonusModel(abilityCalculator, creationPoints, statistics);
   }
 
+  @Override
   public ISpendingModel getFavoredAbilityModel() {
     return new FavoredAbilityBonusModel(abilityCalculator, creationPoints);
   }
 
+  @Override
   public ISpendingModel getFavoredAbilityPickModel() {
     return new FavoredAbilityPickModel(abilityCalculator, creationPoints);
   }
@@ -194,6 +199,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new SpecialtyBonusModel(abilityCalculator, creationPoints);
   }
 
+  @Override
   public ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
     return new AttributeBonusModel(attributeCalculator, priority, creationPoints, statistics);
   }
@@ -213,6 +219,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 	return new FavoredAttributePickModel(attributeCalculator, creationPoints);
   }
 
+  @Override
   public ISpendingModel getFavoredCharmModel() {
     return new FavoredCharmModel(magicCalculator, creationPoints);
   }
@@ -224,44 +231,54 @@ public class BonusPointManagement implements IBonusPointManagement {
 			  magicCalculator, creationPoints);
   }
 
+  @Override
   public IAdditionalSpendingModel getDefaultCharmModel() {
     IAdditionalRules additionalRules = statistics.getCharacterTemplate().getAdditionalRules();
     return new DefaultCharmModel(magicCalculator, magicAdditionalPools, creationPoints, additionalRules);
   }
 
+  @Override
   public IAdditionalSpendingModel getTotalModel() {
     return new AbstractAdditionalSpendingModel("Bonus", "Total") { //$NON-NLS-1$ //$NON-NLS-2$
+      @Override
       public int getAdditionalRestrictedAlotment() {
         return getAdditionalBonusPointAmount();
       }
 
+      @Override
       public int getAdditionalValue() {
         return getAdditionalBonusPointSpent();
       }
 
+      @Override
       public int getSpentBonusPoints() {
         return 0;
       }
 
+      @Override
       public Integer getValue() {
         return getStandardBonusPointsSpent();
       }
 
+      @Override
       public int getAlotment() {
         return creationPoints.getBonusPointCount() + bonusPointCalculator.getAdditionalGeneralBonusPoints();
       }
 
+      @Override
       public boolean isExtensionRequired() {
         IAdditionalRules additionalRules = statistics.getCharacterTemplate().getAdditionalRules();
         return additionalRules != null && additionalRules.getAdditionalBonusPointPools().length > 0;
       }
 
+      @Override
       public int getRequiredSize() {
         return 5;
       }
     };
   }
 
+  @Override
   public IOverviewModel[] getAllModels() {
     List<IOverviewModel> models = new ArrayList<IOverviewModel>();
     

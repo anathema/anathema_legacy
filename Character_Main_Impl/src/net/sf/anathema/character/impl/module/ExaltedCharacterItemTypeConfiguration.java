@@ -1,7 +1,5 @@
 package net.sf.anathema.character.impl.module;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
@@ -36,6 +34,8 @@ import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.Icon;
+
 @ItemTypeConfiguration
 public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter"; //$NON-NLS-1$
@@ -53,6 +53,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
   @Override
   protected IItemViewFactory createItemViewFactory(final IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
+      @Override
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         ICharacter character = (ICharacter) item.getItemData();

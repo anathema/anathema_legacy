@@ -1,9 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -35,6 +31,10 @@ import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class CharacterPresenter implements IPresenter {
 
@@ -179,6 +179,7 @@ public class CharacterPresenter implements IPresenter {
     setOverviewView(getStatistics().isExperienced());
   }
 
+  @Override
   public void initPresentation() {
     initCharacterDescriptionPresentation();
     initStatisticsPresentation();

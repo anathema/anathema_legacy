@@ -1,10 +1,5 @@
 package net.sf.anathema.character.presenter.overview;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -21,6 +16,11 @@ import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CreationOverviewPresenter implements IPresenter {
 
@@ -50,6 +50,7 @@ public class CreationOverviewPresenter implements IPresenter {
     this.view = overviewView;
   }
 
+  @Override
   public void initPresentation() {
     this.management.recalculate();
     IOverviewModel[] allModels = management.getAllModels();
@@ -57,10 +58,12 @@ public class CreationOverviewPresenter implements IPresenter {
     initCategories(allModels);
     for (final IOverviewModel model : allModels) {
       model.accept(new IOverviewModelVisitor() {
+        @Override
         public void visitStringValueModel(IValueModel<String> visitedModel) {
           // TODO : Implement
         }
 
+        @Override
         public void visitIntegerValueModel(IValueModel<Integer> visitedModel) {
           IValueView<Integer> valueView = categoriesById.get(visitedModel.getCategoryId()).addIntegerValueView(
               getLabelString(visitedModel),
@@ -68,6 +71,7 @@ public class CreationOverviewPresenter implements IPresenter {
           presenters.add(new ValueSubPresenter(visitedModel, valueView));
         }
 
+        @Override
         public void visitAlotmentModel(ISpendingModel visitedModel) {
           ILabelledAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId()).addAlotmentView(
               getLabelString(visitedModel),
@@ -75,6 +79,7 @@ public class CreationOverviewPresenter implements IPresenter {
           presenters.add(new AlotmentSubPresenter(visitedModel, valueView));
         }
 
+        @Override
         public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel) {
           if (visitedModel.isExtensionRequired()) {
             IAdditionalAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId())
@@ -123,18 +128,22 @@ public class CreationOverviewPresenter implements IPresenter {
       IValueView<String> casteView = category.addStringValueView(getString(template.getPresentationProperties()
           .getCasteLabelResource()));
       IValueModel<String> casteModel = new IValueModel<String>() {
+        @Override
         public String getValue() {
           return getCasteValueResourceKey();
         }
 
+        @Override
         public String getId() {
           return getString(template.getPresentationProperties().getCasteLabelResource());
         }
 
+        @Override
         public void accept(IOverviewModelVisitor visitor) {
           visitor.visitStringValueModel(this);
         }
 
+        @Override
         public String getCategoryId() {
           return "Concept"; //$NON-NLS-1$
         }
@@ -143,28 +152,34 @@ public class CreationOverviewPresenter implements IPresenter {
     }
     final String[] resourcekey = new String[1];
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      @Override
       public void accept(INature nature) {
         resourcekey[0] = "Overview.Creation.Concept.Nature.Label"; //$NON-NLS-1$
       }
 
+      @Override
       public void accept(IMotivation motivation) {
         resourcekey[0] = "Overview.Creation.Concept.Motivation.Label"; //$NON-NLS-1$
       }
     });
     IValueView<String> willpowerView = category.addStringValueView(getString(resourcekey[0]));
     IValueModel<String> willpowerModel = new IValueModel<String>() {
+      @Override
       public String getValue() {
         return getWillpowerRegainingConceptValue();
       }
 
+      @Override
       public String getId() {
         return resourcekey[0];
       }
 
+      @Override
       public void accept(IOverviewModelVisitor visitor) {
         visitor.visitStringValueModel(this);
       }
 
+      @Override
       public String getCategoryId() {
         return "Concept"; //$NON-NLS-1$
       }
@@ -175,6 +190,7 @@ public class CreationOverviewPresenter implements IPresenter {
   private String getWillpowerRegainingConceptValue() {
     final String[] value = new String[1];
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      @Override
       public void accept(INature nature) {
         INatureType natureType = nature.getDescription().getType();
         if (natureType != null) {
@@ -182,6 +198,7 @@ public class CreationOverviewPresenter implements IPresenter {
         }
       }
 
+      @Override
       public void accept(IMotivation motivation) {
         if (!motivation.getDescription().isEmpty()) {
           value[0] = "Overview.Creation.Concept.Motivation.Selected"; //$NON-NLS-1$
