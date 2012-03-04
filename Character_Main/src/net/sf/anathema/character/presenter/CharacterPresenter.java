@@ -13,15 +13,12 @@ import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresenter;
 import net.sf.anathema.character.presenter.charm.IContentPresenter;
 import net.sf.anathema.character.presenter.charm.MagicPresenter;
-import net.sf.anathema.character.presenter.overview.CreationOverviewPresenter;
-import net.sf.anathema.character.presenter.overview.ExperiencedOverviewPresenter;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
-import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
@@ -45,13 +42,9 @@ public class CharacterPresenter implements IPresenter {
   private final IBonusPointManagement bonusPointManagement;
   private final IExperiencePointManagement experiencePointManagement;
 
-  public CharacterPresenter(
-      ICharacter character,
-      ICharacterView view,
-      IResources resources,
-      ICharacterGenerics generics,
-      IBonusPointManagement bonusPointManagement,
-      IExperiencePointManagement experiencePointManagement) {
+  public CharacterPresenter(ICharacter character, ICharacterView view, IResources resources,
+                            ICharacterGenerics generics, IBonusPointManagement bonusPointManagement,
+                            IExperiencePointManagement experiencePointManagement) {
     this.character = character;
     this.characterView = view;
     this.resources = resources;
@@ -106,10 +99,8 @@ public class CharacterPresenter implements IPresenter {
   private void initExperiencePointPresentation(boolean experienced) {
     if (experienced) {
       IExperienceConfigurationView experienceView = characterView.createExperienceConfigurationView();
-      IContentPresenter presenter = new ExperienceConfigurationPresenter(
-          resources,
-          getStatistics().getExperiencePoints(),
-          experienceView);
+      IContentPresenter presenter = new ExperienceConfigurationPresenter(resources,
+              getStatistics().getExperiencePoints(), experienceView);
       String title = getString("CardView.ExperienceConfiguration.Title");//$NON-NLS-1$
       initMultiTabViewPresentation(title, presenter, AdditionalModelType.Experience);
     }
@@ -121,11 +112,8 @@ public class CharacterPresenter implements IPresenter {
       return;
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$
-    MagicPresenter presenter = new MagicPresenter(
-        getStatistics(),
-        characterView.createMagicViewFactory(),
-        resources,
-        generics.getTemplateRegistry());
+    MagicPresenter presenter = new MagicPresenter(getStatistics(), characterView.createMagicViewFactory(), resources,
+            generics.getTemplateRegistry());
     presenter.initPresentation();
     IViewContent content = presenter.getTabContent();
     IDisposable disposable = content.getDisposable();
@@ -135,18 +123,14 @@ public class CharacterPresenter implements IPresenter {
     initMultiTabViewPresentation(magicViewHeader, AdditionalModelType.Magic, content);
   }
 
-  private void initMultiTabViewPresentation(
-      String viewTitle,
-      IContentPresenter presenter,
-      AdditionalModelType additionalModelType) {
+  private void initMultiTabViewPresentation(String viewTitle, IContentPresenter presenter,
+                                            AdditionalModelType additionalModelType) {
     presenter.initPresentation();
     initMultiTabViewPresentation(viewTitle, additionalModelType, presenter.getTabContent());
   }
 
-  private void initMultiTabViewPresentation(
-      String viewTitle,
-      AdditionalModelType additionalsType,
-      IViewContent... coreViews) {
+  private void initMultiTabViewPresentation(String viewTitle, AdditionalModelType additionalsType,
+                                            IViewContent... coreViews) {
     List<IViewContent> contents = new ArrayList<IViewContent>();
     Collections.addAll(contents, coreViews);
     IRegistry<String, IAdditionalViewFactory> factoryRegistry = generics.getAdditionalViewFactoryRegistry();
@@ -157,9 +141,8 @@ public class CharacterPresenter implements IPresenter {
         continue;
       }
       String tabName = getString("AdditionalTemplateView.TabName." + model.getTemplateId()); //$NON-NLS-1$
-      IView additionalView = viewFactory.createView(model, resources, getStatistics().getCharacterTemplate()
-          .getTemplateType()
-          .getCharacterType());
+      IView additionalView = viewFactory.createView(model, resources,
+              getStatistics().getCharacterTemplate().getTemplateType().getCharacterType());
       contents.add(new SimpleViewContent(new ContentProperties(tabName), additionalView));
     }
     if (contents.size() == 0) {
@@ -169,14 +152,6 @@ public class CharacterPresenter implements IPresenter {
     for (IViewContent content : contents) {
       content.addTo(multiTabView);
     }
-  }
-
-  private void initOverviewPresentation() {
-    IOverviewView creationPointView = characterView.addCreationOverviewView();
-    new CreationOverviewPresenter(resources, getStatistics(), creationPointView, bonusPointManagement).initPresentation();
-    IOverviewView experiencePointView = characterView.addExperienceOverviewView();
-    new ExperiencedOverviewPresenter(resources, getStatistics(), experiencePointView, experiencePointManagement).initPresentation();
-    setOverviewView(getStatistics().isExperienced());
   }
 
   @Override
@@ -195,20 +170,16 @@ public class CharacterPresenter implements IPresenter {
     initAdvantagePresentation();
     initMagicPresentation();
     initMultiTabViewPresentation(getString("CardView.MiscellaneousConfiguration.Title"), //$NON-NLS-1$
-        AdditionalModelType.Miscellaneous);
-    initOverviewPresentation();
+            AdditionalModelType.Miscellaneous);
+    OverviewPresenter overviewPresenter = new OverviewPresenter(resources, getStatistics(), characterView, bonusPointManagement, experiencePointManagement);
+    overviewPresenter.initPresentation();
     initExperiencePointPresentation(getStatistics().isExperienced());
     getStatistics().getCharacterContext().getCharacterListening().addChangeListener(
-        new DedicatedCharacterChangeAdapter() {
-          @Override
-          public void experiencedChanged(boolean experienced) {
-            initExperiencePointPresentation(experienced);
-            setOverviewView(experienced);
-          }
-        });
-  }
-
-  private void setOverviewView(boolean experienced) {
-    characterView.toogleOverviewView(experienced);
+            new DedicatedCharacterChangeAdapter() {
+              @Override
+              public void experiencedChanged(boolean experienced) {
+                initExperiencePointPresentation(experienced);
+              }
+            });
   }
 }
