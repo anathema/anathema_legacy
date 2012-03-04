@@ -7,7 +7,7 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
-			Release 3.1.0 "Whatshername"
+			Release 3.1.0 "Thorns"
 ===------------------------------------------------------------------------------===
 
 We reworked much of the tech behind the scenes.
