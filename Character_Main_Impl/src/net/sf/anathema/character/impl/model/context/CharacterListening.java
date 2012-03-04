@@ -13,6 +13,7 @@ public class CharacterListening implements ICharacterListening {
   private final GenericControl<ICharacterChangeListener> changeControl = new GenericControl<ICharacterChangeListener>();
   private final CharacterListenerMapping listenerMapping = new CharacterListenerMapping(changeControl);
 
+  @Override
   public void addChangeListener(ICharacterChangeListener changeListener) {
     changeControl.addListener(changeListener);
   }
@@ -27,6 +28,7 @@ public class CharacterListening implements ICharacterListening {
 
   public void fireCharacterChanged() {
     changeControl.forAllDo(new IClosure<ICharacterChangeListener>() {
+      @Override
       public void execute(ICharacterChangeListener listener) {
         listener.characterChanged();
       }
@@ -35,6 +37,7 @@ public class CharacterListening implements ICharacterListening {
 
   public void fireCasteChanged() {
     changeControl.forAllDo(new IClosure<ICharacterChangeListener>() {
+      @Override
       public void execute(ICharacterChangeListener listener) {
         listener.casteChanged();
       }
@@ -43,6 +46,7 @@ public class CharacterListening implements ICharacterListening {
 
   public void fireExperiencedChanged(final boolean isExperienced) {
     changeControl.forAllDo(new IClosure<ICharacterChangeListener>() {
+      @Override
       public void execute(ICharacterChangeListener listener) {
         listener.experiencedChanged(isExperienced);
       }

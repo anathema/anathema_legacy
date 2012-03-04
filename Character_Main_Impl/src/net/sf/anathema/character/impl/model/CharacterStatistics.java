@@ -55,21 +55,25 @@ public class CharacterStatistics implements ICharacterStatistics {
   private final IExaltedRuleSet rules;
   private boolean experienced = false;
   private final IObjectValueChangedListener<String> motivationChangeListener = new IObjectValueChangedListener<String>() {
+    @Override
     public void valueChanged(String newValue) {
       context.getCharacterListening().fireCharacterChanged();
     }
   };
   private final IChangeListener natureChangeListener = new IChangeListener() {
+    @Override
     public void changeOccurred() {
       context.getCharacterListening().fireCharacterChanged();
     }
   };
   private final IChangeListener casteChangeListener = new IChangeListener() {
+    @Override
     public void changeOccurred() {
       context.getCharacterListening().fireCasteChanged();
     }
   };
   private final IChangeListener ageChangeListener = new IChangeListener() {
+    @Override
     public void changeOccurred() {
       context.getCharacterListening().fireCharacterChanged();
     }
@@ -99,12 +103,14 @@ public class CharacterStatistics implements ICharacterStatistics {
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
     this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template, rules.getEdition());
     this.spells.addChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
     initExperienceListening();
     extendedConfiguration.addAdditionalModelChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         context.getCharacterListening().fireCharacterChanged();
       }
@@ -141,10 +147,12 @@ public class CharacterStatistics implements ICharacterStatistics {
   private CharacterConcept initConcept() {
     final IWillpowerRegainingConcept[] willpowerConcept = new IWillpowerRegainingConcept[1];
     rules.getEdition().accept(new IEditionVisitor() {
+      @Override
       public void visitFirstEdition(IExaltedEdition visitedEdition) {
         willpowerConcept[0] = new Nature();
       }
 
+      @Override
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
         willpowerConcept[0] = new Motivation(experiencePoints);
       }
@@ -153,10 +161,12 @@ public class CharacterStatistics implements ICharacterStatistics {
     characterConcept.getCaste().addChangeListener(casteChangeListener);
     characterConcept.getAge().addChangeListener(ageChangeListener);
     characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      @Override
       public void accept(INature nature) {
         nature.getDescription().addChangeListener(natureChangeListener);
       }
 
+      @Override
       public void accept(IMotivation motivation) {
         motivation.getDescription().addTextChangedListener(motivationChangeListener);
       }
@@ -168,34 +178,42 @@ public class CharacterStatistics implements ICharacterStatistics {
     charmConfiguration.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
   }
 
+  @Override
   public ICharacterConcept getCharacterConcept() {
     return concept;
   }
 
+  @Override
   public IEssencePoolConfiguration getEssencePool() {
     return essencePool;
   }
 
+  @Override
   public ICharmConfiguration getCharms() {
     return charms;
   }
 
+  @Override
   public IHealthConfiguration getHealth() {
     return health;
   }
 
+  @Override
   public IComboConfiguration getCombos() {
     return combos;
   }
 
+  @Override
   public ISpellConfiguration getSpells() {
     return spells;
   }
 
+  @Override
   public boolean isExperienced() {
     return experienced;
   }
 
+  @Override
   public void setExperienced(boolean experienced) {
     Ensure.ensureFalse("Can't convert already experienced character.", this.experienced); //$NON-NLS-1$
     this.experienced = experienced;
@@ -203,26 +221,32 @@ public class CharacterStatistics implements ICharacterStatistics {
     context.getCharacterListening().fireExperiencedChanged(experienced);
   }
 
+  @Override
   public IExperiencePointConfiguration getExperiencePoints() {
     return experiencePoints;
   }
 
+  @Override
   public ICharacterTemplate getCharacterTemplate() {
     return characterTemplate;
   }
 
+  @Override
   public IExaltedRuleSet getRules() {
     return rules;
   }
 
+  @Override
   public ExtendedConfiguration getExtendedConfiguration() {
     return extendedConfiguration;
   }
 
+  @Override
   public ICoreTraitConfiguration getTraitConfiguration() {
     return traitConfiguration;
   }
 
+  @Override
   public ICharacterModelContext getCharacterContext() {
     return context;
   }

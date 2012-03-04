@@ -48,38 +48,47 @@ public class CharacterGenerics implements ICharacterGenerics {
     this.dataFileProvider = dataFileProvider;
   }
 
+  @Override
   public IIdentificateRegistry<IBackgroundTemplate> getBackgroundRegistry() {
     return backgroundRegistry;
   }
 
+  @Override
   public ITemplateRegistry getTemplateRegistry() {
     return templateRegistry;
   }
 
+  @Override
   public IRegistry<String, IAdditionalModelFactory> getAdditionalModelFactoryRegistry() {
     return additionalModelRegistry;
   }
 
+  @Override
   public IRegistry<String, IAdditionalViewFactory> getAdditionalViewFactoryRegistry() {
     return additionalViewRegistry;
   }
 
+  @Override
   public IRegistry<String, IAdditionalPersisterFactory> getAdditonalPersisterFactoryRegistry() {
     return additionalPersisterRegistry;
   }
 
+  @Override
   public IIdentificateRegistry<IGlobalAdditionalTemplate> getGlobalAdditionalTemplateRegistry() {
     return additionalTemplateRegistry;
   }
 
+  @Override
   public ICharacterTemplateRegistryCollection getCharacterTemplateRegistries() {
     return templateRegistries;
   }
 
+  @Override
   public IRegistry<ICharacterType, ICasteCollection> getCasteCollectionRegistry() {
     return casteCollectionRegistry;
   }
 
+  @Override
   public IRegistry<String, IAdditionalTemplateParser> getAdditionalTemplateParserRegistry() {
     return additionalTemplateParserRegistry;
   }
@@ -94,14 +103,17 @@ public class CharacterGenerics implements ICharacterGenerics {
     return instantiater;
   }
 
+  @Override
   public ICharmProvider getCharmProvider() {
     return charmProvider;
   }
 
+  @Override
   public CharacterModuleObjectMap getModuleObjectMap() {
     return moduleObjectMap;
   }
 
+  @Override
   public IDataFileProvider getDataFileProvider() {
     return dataFileProvider;
   }

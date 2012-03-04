@@ -164,13 +164,13 @@ public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
     initMagicPresentation();
     initMultiTabViewPresentation(getString("CardView.MiscellaneousConfiguration.Title"), //$NON-NLS-1$
             AdditionalModelType.Miscellaneous);
-    if (!isDefaultSpirit()) {
+    if (!isNpc()) {
       overviewPresenter.initPresentation();
       experiencePointPresenter.initPresentation();
     }
   }
 
-  private boolean isDefaultSpirit() {
+  private boolean isNpc() {
     ITemplateType templateType = getStatistics().getCharacterTemplate().getTemplateType();
     return templateType.getCharacterType() == SPIRIT && templateType.getSubType() == DEFAULT_SUB_TYPE;
   }
