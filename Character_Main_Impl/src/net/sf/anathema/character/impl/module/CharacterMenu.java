@@ -1,11 +1,5 @@
 package net.sf.anathema.character.impl.module;
 
-import java.awt.Component;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-
-import javax.swing.KeyStroke;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -18,9 +12,15 @@ import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.initialization.Menu;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.KeyStroke;
+import java.awt.Component;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+
 @Menu
 public class CharacterMenu implements IAnathemaMenu {
 
+  @Override
   public void add(IResources resources, final IAnathemaModel model, IMenuBar menubar) {
     IMenu menu = menubar.addMenu(resources.getString("CharacterMenu.Title")); //$NON-NLS-1$
     menu.setMnemonic('C');
