@@ -37,8 +37,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyCharacterTemplate implements ICharacterTemplate {
 
@@ -48,10 +48,12 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   private IExperiencePointCosts experienceCosts;
   private ITemplateType type = new TemplateType(CharacterType.MORTAL);
 
+  @Override
   public IBonusPointCosts getBonusPointCosts() {
     throw new NotYetImplementedException();
   }
 
+  @Override
   public IGroupedTraitType[] getAbilityGroups() {
     AbilityType[] all = AbilityType.getAbilityTypes(ExaltedRuleSet.PowerCombat.getEdition());
     IGroupedTraitType[] abilityTypes = new GroupedTraitType[all.length];
@@ -66,6 +68,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     return null;
   }
 
+  @Override
   public ITemplateType getTemplateType() {
     return type;
   }
@@ -74,58 +77,72 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     this.type = type;
   }
 
+  @Override
   public IExperiencePointCosts getExperienceCost() {
     return experienceCosts;
   }
 
+  @Override
   public IPresentationProperties getPresentationProperties() {
     throw new NotYetImplementedException();
   }
 
+  @Override
   public IAdditionalRules getAdditionalRules() {
     return new DummyAdditionalRules();
   }
 
+  @Override
   public ICreationPoints getCreationPoints() {
     return new ICreationPoints() {
 
+      @Override
       public int getBackgroundPointCount() {
         throw new NotYetImplementedException();
       }
 
+      @Override
       public int getBonusPointCount() {
         throw new NotYetImplementedException();
       }
 
+      @Override
       public int getVirtueCreationPoints() {
         throw new NotYetImplementedException();
       }
       
+      @Override
       public int getSpecialtyCreationPoints() {
         throw new NotYetImplementedException();
       }
 
+      @Override
       public IAbilityCreationPoints getAbilityCreationPoints() {
         throw new NotYetImplementedException();
       }
 
+      @Override
       public IAttributeCreationPoints getAttributeCreationPoints() {
         throw new NotYetImplementedException();
       }
 
+      @Override
       public int getFavoredCreationCharmCount() {
         throw new NotYetImplementedException();
       }
 
+      @Override
       public int getDefaultCreationCharmCount() {
         throw new NotYetImplementedException();
       }
       
+      @Override
       public int getUniqueRequiredCreationCharmCount()
       {
     	throw new NotYetImplementedException();
       }
       
+      @Override
       public void informTraits(Object traits)
       {
     	throw new NotYetImplementedException();
@@ -133,6 +150,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     };
   }
 
+  @Override
   public IEssenceTemplate getEssenceTemplate() {
     return new NullEssenceTemplate();
   }
@@ -141,38 +159,47 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     return new ICasteType[0];
   }
 
+  @Override
   public ICasteCollection getCasteCollection() {
     return new CasteCollection(new ICasteType[0]);
   }
 
+  @Override
   public IMagicTemplate getMagicTemplate() {
     return new IMagicTemplate() {
+      @Override
       public boolean canBuyFromFreePicks(IMagic magic) {
         return true;
       }
 
+      @Override
       public ISpellMagicTemplate getSpellMagic() {
         throw new NotYetImplementedException();
       }
 
+      @Override
       public ICharmTemplate getCharmTemplate() {
         return new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), new NullCharmSet());
       }
 
+      @Override
       public FavoringTraitType getFavoringTraitType() {
         return FavoringTraitType.AbilityType;
       }
     };
   }
 
+  @Override
   public ITraitTemplateCollection getTraitTemplateCollection() {
     return traitTemplateCollection;
   }
 
+  @Override
   public ITraitType[] getToughnessControllingTraitTypes() {
     return new ITraitType[] { AbilityType.Endurance };
   }
 
+  @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return new IAdditionalTemplate[0];
   }
@@ -181,10 +208,12 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     this.experienceCosts = experienceCosts;
   }
 
+  @Override
   public IExaltedEdition getEdition() {
     return ExaltedEdition.FirstEdition;
   }
 
+  @Override
   public IGroupedTraitType[] getAttributeGroups() {
     return new IGroupedTraitType[] {
         new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(), null),
@@ -198,11 +227,13 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
         new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), null), };
   }
   
+  @Override
   public boolean isLegacy()
   {
 	  return false;
   }
   
+  @Override
   public String[] getBaseHealthProviders()
   {
 	  return new String[0];

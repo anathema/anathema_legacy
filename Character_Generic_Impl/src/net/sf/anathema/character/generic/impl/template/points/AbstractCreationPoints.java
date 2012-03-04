@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 
 public abstract class AbstractCreationPoints implements ICreationPoints {
 
+  @Override
   public final int getVirtueCreationPoints() {
     return 5;
   }

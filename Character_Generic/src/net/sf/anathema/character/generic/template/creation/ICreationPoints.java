@@ -5,23 +5,23 @@ import net.sf.anathema.character.generic.template.points.IAttributeCreationPoint
 
 public interface ICreationPoints {
 
-  public int getBackgroundPointCount();
+  int getBackgroundPointCount();
 
-  public int getBonusPointCount();
+  int getBonusPointCount();
 
-  public int getVirtueCreationPoints();
+  int getVirtueCreationPoints();
   
-  public int getSpecialtyCreationPoints();
+  int getSpecialtyCreationPoints();
 
-  public IAbilityCreationPoints getAbilityCreationPoints();
+  IAbilityCreationPoints getAbilityCreationPoints();
 
-  public IAttributeCreationPoints getAttributeCreationPoints();
+  IAttributeCreationPoints getAttributeCreationPoints();
 
-  public int getFavoredCreationCharmCount();
+  int getFavoredCreationCharmCount();
 
-  public int getDefaultCreationCharmCount();
+  int getDefaultCreationCharmCount();
   
-  public int getUniqueRequiredCreationCharmCount();
+  int getUniqueRequiredCreationCharmCount();
   
-  public void informTraits(Object traits);
+  void informTraits(Object traits);
 }

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.framework.xml.creation;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
+import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.points.IAbilityCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
@@ -20,39 +20,48 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   private int virtueCreationPoints = 0;
   private int specialityCreationPoints = 0;
 
+  @Override
   public IAbilityCreationPoints getAbilityCreationPoints() {
     return abilityCreationPoints;
   }
 
+  @Override
   public IAttributeCreationPoints getAttributeCreationPoints() {
     return attributeCreationPoints;
   }
 
+  @Override
   public int getBackgroundPointCount() {
     return backgroundPointCount;
   }
 
+  @Override
   public int getBonusPointCount() {
     return bonusPointCount;
   }
 
+  @Override
   public int getDefaultCreationCharmCount() {
     return defaultCreationCharmCount;
   }
 
+  @Override
   public int getFavoredCreationCharmCount() {
     return favoredCreationCharmCount;
   }
   
+  @Override
   public int getUniqueRequiredCreationCharmCount()
   {
 	  return uniqueCreationCharmCount;
   }
 
+  @Override
   public int getVirtueCreationPoints() {
     return virtueCreationPoints;
   }
 
+  @Override
   public int getSpecialtyCreationPoints() {
 	    return specialityCreationPoints;
 	  }
@@ -111,6 +120,7 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
     return clone;
   }
   
+  @Override
   public void informTraits(Object traits)
   {
 	  //do nothing

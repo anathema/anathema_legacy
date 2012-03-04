@@ -8,39 +8,48 @@ import net.sf.anathema.character.generic.template.points.IAttributeCreationPoint
 
 public class RenegadeAbyssalCreationPoints extends AbstractCreationPoints {
 
+  @Override
   public int getBackgroundPointCount() {
     return 5;
   }
 
+  @Override
   public final IAttributeCreationPoints getAttributeCreationPoints() {
     return new AttributeCreationPoints(8, 6, 4);
   }
 
+  @Override
   public final int getBonusPointCount() {
     return 15;
   }
   
+  @Override
   public int getSpecialtyCreationPoints() {
     return 0;
   }
 
+  @Override
   public final IAbilityCreationPoints getAbilityCreationPoints() {
     return new AbilityCreationPoints(5, 10, 15);
   }
 
+  @Override
   public final int getDefaultCreationCharmCount() {
     return 5;
   }
 
+  @Override
   public final int getFavoredCreationCharmCount() {
     return 5;
   }
   
+  @Override
   public int getUniqueRequiredCreationCharmCount()
   {
 	return 0;
   }
   
+  @Override
   public void informTraits(Object traits)
   {
 	  //do nothing
