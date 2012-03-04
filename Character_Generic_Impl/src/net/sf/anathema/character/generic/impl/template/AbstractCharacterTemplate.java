@@ -25,54 +25,62 @@ public abstract class AbstractCharacterTemplate implements ICharacterTemplate {
     this.additionalRules = new NullAdditionalRules();
   }
 
+  @Override
   public IAdditionalRules getAdditionalRules() {
     return additionalRules;
   }
 
+  @Override
   public final ICasteCollection getCasteCollection() {
     return new CasteCollection(getAllCasteTypes());
   }
 
   protected abstract ICasteType[] getAllCasteTypes();
 
+  @Override
   public ITraitType[] getToughnessControllingTraitTypes() {
-    return new ITraitType[] { AbilityType.Endurance };
+    return new ITraitType[]{AbilityType.Endurance};
   }
 
+  @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return new IAdditionalTemplate[0];
   }
 
+  @Override
   public IExaltedEdition getEdition() {
     return ExaltedEdition.FirstEdition;
   }
 
+  @Override
   public IGroupedTraitType[] getAttributeGroups() {
-    return new IGroupedTraitType[] {
-        new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(), null),
-        new GroupedTraitType(AttributeType.Dexterity, AttributeGroupType.Physical.getId(), null),
-        new GroupedTraitType(AttributeType.Stamina, AttributeGroupType.Physical.getId(), null),
-        new GroupedTraitType(AttributeType.Charisma, AttributeGroupType.Social.getId(), null),
-        new GroupedTraitType(AttributeType.Manipulation, AttributeGroupType.Social.getId(), null),
-        new GroupedTraitType(AttributeType.Appearance, AttributeGroupType.Social.getId(), null),
-        new GroupedTraitType(AttributeType.Perception, AttributeGroupType.Mental.getId(), null),
-        new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(), null),
-        new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), null), };
+    return new IGroupedTraitType[]{new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(),
+            null), new GroupedTraitType(AttributeType.Dexterity, AttributeGroupType.Physical.getId(),
+            null), new GroupedTraitType(AttributeType.Stamina, AttributeGroupType.Physical.getId(),
+            null), new GroupedTraitType(AttributeType.Charisma, AttributeGroupType.Social.getId(),
+            null), new GroupedTraitType(AttributeType.Manipulation, AttributeGroupType.Social.getId(),
+            null), new GroupedTraitType(AttributeType.Appearance, AttributeGroupType.Social.getId(),
+            null), new GroupedTraitType(AttributeType.Perception, AttributeGroupType.Mental.getId(),
+            null), new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(),
+            null), new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), null),};
   }
-  
+
   @Override
   public IGroupedTraitType[] getYoziGroups() {
-	  return new IGroupedTraitType[] {
-		        new GroupedTraitType(YoziType.Malfeas, YoziType.Malfeas.getId(), null),
-		        new GroupedTraitType(YoziType.Cecelyne, YoziType.Cecelyne.getId(), null),
-		        new GroupedTraitType(YoziType.SheWhoLivesInHerName, YoziType.SheWhoLivesInHerName.getId(), null),
-		        new GroupedTraitType(YoziType.Adorjan, YoziType.Adorjan.getId(), null),
-		        new GroupedTraitType(YoziType.EbonDragon, YoziType.EbonDragon.getId(), null),
-		        new GroupedTraitType(YoziType.Kimbery, YoziType.Kimbery.getId(), null) };
+    return new IGroupedTraitType[]{new GroupedTraitType(YoziType.Malfeas, YoziType.Malfeas.getId(),
+            null), new GroupedTraitType(YoziType.Cecelyne, YoziType.Cecelyne.getId(), null), new GroupedTraitType(
+            YoziType.SheWhoLivesInHerName, YoziType.SheWhoLivesInHerName.getId(), null), new GroupedTraitType(
+            YoziType.Adorjan, YoziType.Adorjan.getId(), null), new GroupedTraitType(YoziType.EbonDragon,
+            YoziType.EbonDragon.getId(), null), new GroupedTraitType(YoziType.Kimbery, YoziType.Kimbery.getId(), null)};
   }
-  
-  public boolean isLegacy()
-  {
-	  return false;
+
+  @Override
+  public boolean isLegacy() {
+    return false;
+  }
+
+  @Override
+  public boolean isNpcOnly() {
+    return false;
   }
 }

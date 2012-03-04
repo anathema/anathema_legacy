@@ -45,11 +45,8 @@ public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
 
   public DefaultSiderealTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules) {
     this.additionalRules = additionalRules;
-    ICharmTemplate charmTemplate = new CharmTemplate(
-        MartialArtsLevel.Sidereal,
-        charmProvider,
-        CharacterType.SIDEREAL,
-        ExaltedEdition.FirstEdition);
+    ICharmTemplate charmTemplate = new CharmTemplate(MartialArtsLevel.Sidereal, charmProvider, CharacterType.SIDEREAL,
+            ExaltedEdition.FirstEdition);
     this.magicTemplate = new DefaultMagicTemplate(charmTemplate, createSpellMagicTemplate());
     this.presentationProperties = new SiderealPresentationProperties();
   }
@@ -59,39 +56,43 @@ public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
     return additionalRules;
   }
 
+  @Override
   public IGroupedTraitType[] getAbilityGroups() {
-    return new IGroupedTraitType[] {
-        new GroupedTraitType(AbilityType.Endurance, SiderealCaste.Journeys.getId(), SiderealCaste.Journeys.getId()),
-        new GroupedTraitType(AbilityType.Ride, SiderealCaste.Journeys.getId(), SiderealCaste.Journeys.getId()),
-        new GroupedTraitType(AbilityType.Sail, SiderealCaste.Journeys.getId(), SiderealCaste.Journeys.getId()),
-        new GroupedTraitType(AbilityType.Survival, SiderealCaste.Journeys.getId(), SiderealCaste.Journeys.getId()),
-        new GroupedTraitType(AbilityType.Thrown, SiderealCaste.Journeys.getId(), SiderealCaste.Journeys.getId()),
-        new GroupedTraitType(AbilityType.Craft, SiderealCaste.Serenity.getId(), SiderealCaste.Serenity.getId()),
-        new GroupedTraitType(AbilityType.Dodge, SiderealCaste.Serenity.getId(), SiderealCaste.Serenity.getId()),
-        new GroupedTraitType(AbilityType.Linguistics, SiderealCaste.Serenity.getId(), SiderealCaste.Serenity.getId()),
-        new GroupedTraitType(AbilityType.Performance, SiderealCaste.Serenity.getId(), SiderealCaste.Serenity.getId()),
-        new GroupedTraitType(AbilityType.Socialize, SiderealCaste.Serenity.getId(), SiderealCaste.Serenity.getId()),
-        new GroupedTraitType(AbilityType.Archery, SiderealCaste.Battles.getId(), SiderealCaste.Battles.getId()),
-        new GroupedTraitType(AbilityType.Brawl, SiderealCaste.Battles.getId(), SiderealCaste.Battles.getId()),
-        new GroupedTraitType(AbilityType.Melee, SiderealCaste.Battles.getId(), SiderealCaste.Battles.getId()),
-        new GroupedTraitType(AbilityType.Presence, SiderealCaste.Battles.getId(), SiderealCaste.Battles.getId()),
-        new GroupedTraitType(AbilityType.Resistance, SiderealCaste.Battles.getId(), SiderealCaste.Battles.getId()),
-        new GroupedTraitType(AbilityType.Investigation, SiderealCaste.Secrets.getId(), SiderealCaste.Secrets.getId()),
-        new GroupedTraitType(AbilityType.Larceny, SiderealCaste.Secrets.getId(), SiderealCaste.Secrets.getId()),
-        new GroupedTraitType(AbilityType.Lore, SiderealCaste.Secrets.getId(), SiderealCaste.Secrets.getId()),
-        new GroupedTraitType(AbilityType.Occult, SiderealCaste.Secrets.getId(), SiderealCaste.Secrets.getId()),
-        new GroupedTraitType(AbilityType.Stealth, SiderealCaste.Secrets.getId(), SiderealCaste.Secrets.getId()),
-        new GroupedTraitType(AbilityType.Athletics, SiderealCaste.Endings.getId(), SiderealCaste.Endings.getId()),
-        new GroupedTraitType(AbilityType.Awareness, SiderealCaste.Endings.getId(), SiderealCaste.Endings.getId()),
-        new GroupedTraitType(AbilityType.Bureaucracy, SiderealCaste.Endings.getId(), SiderealCaste.Endings.getId()),
-        new GroupedTraitType(AbilityType.MartialArts, SiderealCaste.Endings.getId(), SiderealCaste.Endings.getId()),
-        new GroupedTraitType(AbilityType.Medicine, SiderealCaste.Endings.getId(), SiderealCaste.Endings.getId()) };
+    return new IGroupedTraitType[]{new GroupedTraitType(AbilityType.Endurance, SiderealCaste.Journeys.getId(),
+            SiderealCaste.Journeys.getId()), new GroupedTraitType(AbilityType.Ride, SiderealCaste.Journeys.getId(),
+            SiderealCaste.Journeys.getId()), new GroupedTraitType(AbilityType.Sail, SiderealCaste.Journeys.getId(),
+            SiderealCaste.Journeys.getId()), new GroupedTraitType(AbilityType.Survival, SiderealCaste.Journeys.getId(),
+            SiderealCaste.Journeys.getId()), new GroupedTraitType(AbilityType.Thrown, SiderealCaste.Journeys.getId(),
+            SiderealCaste.Journeys.getId()), new GroupedTraitType(AbilityType.Craft, SiderealCaste.Serenity.getId(),
+            SiderealCaste.Serenity.getId()), new GroupedTraitType(AbilityType.Dodge, SiderealCaste.Serenity.getId(),
+            SiderealCaste.Serenity.getId()), new GroupedTraitType(AbilityType.Linguistics,
+            SiderealCaste.Serenity.getId(), SiderealCaste.Serenity.getId()), new GroupedTraitType(
+            AbilityType.Performance, SiderealCaste.Serenity.getId(),
+            SiderealCaste.Serenity.getId()), new GroupedTraitType(AbilityType.Socialize, SiderealCaste.Serenity.getId(),
+            SiderealCaste.Serenity.getId()), new GroupedTraitType(AbilityType.Archery, SiderealCaste.Battles.getId(),
+            SiderealCaste.Battles.getId()), new GroupedTraitType(AbilityType.Brawl, SiderealCaste.Battles.getId(),
+            SiderealCaste.Battles.getId()), new GroupedTraitType(AbilityType.Melee, SiderealCaste.Battles.getId(),
+            SiderealCaste.Battles.getId()), new GroupedTraitType(AbilityType.Presence, SiderealCaste.Battles.getId(),
+            SiderealCaste.Battles.getId()), new GroupedTraitType(AbilityType.Resistance, SiderealCaste.Battles.getId(),
+            SiderealCaste.Battles.getId()), new GroupedTraitType(AbilityType.Investigation,
+            SiderealCaste.Secrets.getId(), SiderealCaste.Secrets.getId()), new GroupedTraitType(AbilityType.Larceny,
+            SiderealCaste.Secrets.getId(), SiderealCaste.Secrets.getId()), new GroupedTraitType(AbilityType.Lore,
+            SiderealCaste.Secrets.getId(), SiderealCaste.Secrets.getId()), new GroupedTraitType(AbilityType.Occult,
+            SiderealCaste.Secrets.getId(), SiderealCaste.Secrets.getId()), new GroupedTraitType(AbilityType.Stealth,
+            SiderealCaste.Secrets.getId(), SiderealCaste.Secrets.getId()), new GroupedTraitType(AbilityType.Athletics,
+            SiderealCaste.Endings.getId(), SiderealCaste.Endings.getId()), new GroupedTraitType(AbilityType.Awareness,
+            SiderealCaste.Endings.getId(), SiderealCaste.Endings.getId()), new GroupedTraitType(AbilityType.Bureaucracy,
+            SiderealCaste.Endings.getId(), SiderealCaste.Endings.getId()), new GroupedTraitType(AbilityType.MartialArts,
+            SiderealCaste.Endings.getId(), SiderealCaste.Endings.getId()), new GroupedTraitType(AbilityType.Medicine,
+            SiderealCaste.Endings.getId(), SiderealCaste.Endings.getId())};
   }
 
+  @Override
   public IPresentationProperties getPresentationProperties() {
     return presentationProperties;
   }
 
+  @Override
   public ITemplateType getTemplateType() {
     return TEMPLATE_TYPE;
   }
@@ -101,46 +102,50 @@ public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
     return SiderealCaste.values();
   }
 
+  @Override
   public IBonusPointCosts getBonusPointCosts() {
     return bonusPointCosts;
   }
 
+  @Override
   public ICreationPoints getCreationPoints() {
     return creationPoints;
   }
 
+  @Override
   public IEssenceTemplate getEssenceTemplate() {
     return new SiderealEssenceTemplate();
   }
 
+  @Override
   public IExperiencePointCosts getExperienceCost() {
     return experienceCosts;
   }
 
   private ISpellMagicTemplate createSpellMagicTemplate() {
-    CircleType[] necromancyCircles = new CircleType[] { CircleType.Shadowlands };
-    CircleType[] sorceryCircles = new CircleType[] { CircleType.Terrestrial, CircleType.Celestial };
+    CircleType[] necromancyCircles = new CircleType[]{CircleType.Shadowlands};
+    CircleType[] sorceryCircles = new CircleType[]{CircleType.Terrestrial, CircleType.Celestial};
     return new SpellMagicTemplate(sorceryCircles, necromancyCircles, this);
   }
 
+  @Override
   public ITraitTemplateCollection getTraitTemplateCollection() {
     return new TraitTemplateCollection(new SiderealTraitTemplateCollection());
   }
 
   @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
-    return new IAdditionalTemplate[] { new SiderealCollegeTemplate(
-        creationPoints.getCollegeCreationPoints(),
-        bonusPointCosts,
-        experienceCosts) };
+    return new IAdditionalTemplate[]{new SiderealCollegeTemplate(creationPoints.getCollegeCreationPoints(),
+            bonusPointCosts, experienceCosts)};
   }
 
+  @Override
   public IMagicTemplate getMagicTemplate() {
     return magicTemplate;
   }
-  
-  public String[] getBaseHealthProviders()
-  {
-	  return new String[0];
+
+  @Override
+  public String[] getBaseHealthProviders() {
+    return new String[0];
   }
 }

@@ -54,12 +54,18 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private IExaltedEdition edition;
   private boolean isLegacy;
+  private boolean npcOnly;
+
+  @Override
+  public boolean isNpcOnly() {
+    return npcOnly;
+  }
 
   @Override
   public IGroupedTraitType[] getAbilityGroups() {
     return abilityGroups;
   }
-  
+
   @Override
   public IGroupedTraitType[] getYoziGroups() {
     return yoziGroups;
@@ -118,11 +124,10 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   public ITraitType[] getToughnessControllingTraitTypes() {
     return healthTemplate.getToughnessControllingTraits();
   }
-  
+
   @Override
-  public String[] getBaseHealthProviders()
-  {
-	return healthTemplate.getBaseHealthProviders();
+  public String[] getBaseHealthProviders() {
+    return healthTemplate.getBaseHealthProviders();
   }
 
   @Override
@@ -134,24 +139,22 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   public IMagicTemplate getMagicTemplate() {
     return magicTemplate;
   }
-  
+
   @Override
-  public boolean isLegacy()
-  {
-	  return isLegacy;
+  public boolean isLegacy() {
+    return isLegacy;
   }
-  
-  public void setLegacy(boolean legacy)
-  {
-	  isLegacy = legacy;
+
+  public void setLegacy(boolean legacy) {
+    isLegacy = legacy;
   }
 
   public void setAbilityGroups(IGroupedTraitType[] abilityGroups) {
     this.abilityGroups = abilityGroups;
   }
-  
+
   public void setYoziGroups(IGroupedTraitType[] yoziGroups) {
-	this.yoziGroups = yoziGroups;
+    this.yoziGroups = yoziGroups;
   }
 
   public void setEssenceTemplate(GenericEssenceTemplate essenceTemplate) {
@@ -198,7 +201,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   public GenericCharacterTemplate clone() {
     GenericCharacterTemplate clone;
     try {
-      clone = (GenericCharacterTemplate)super.clone();
+      clone = (GenericCharacterTemplate) super.clone();
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
@@ -250,5 +253,9 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
 
   public void setEdition(IExaltedEdition edition) {
     this.edition = edition;
+  }
+
+  public void setNpcOnly() {
+    this.npcOnly = true;
   }
 }

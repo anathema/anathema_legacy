@@ -44,7 +44,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   private static final String DUMMYGROUP = "DummyGroup"; //$NON-NLS-1$
   private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(
-      new ExaltTraitTemplateFactory());
+          new ExaltTraitTemplateFactory());
   private ITemplateType type = new TemplateType(CharacterType.MORTAL);
 
   @Override
@@ -61,7 +61,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     }
     return abilityTypes;
   }
-  
+
   @Override
   public IGroupedTraitType[] getYoziGroups() {
     return null;
@@ -109,7 +109,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
       public int getVirtueCreationPoints() {
         throw new NotYetImplementedException();
       }
-      
+
       @Override
       public int getSpecialtyCreationPoints() {
         throw new NotYetImplementedException();
@@ -134,11 +134,10 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
       public int getDefaultCreationCharmCount() {
         throw new NotYetImplementedException();
       }
-      
+
       @Override
-      public int getUniqueRequiredCreationCharmCount()
-      {
-    	throw new NotYetImplementedException();
+      public int getUniqueRequiredCreationCharmCount() {
+        throw new NotYetImplementedException();
       }
     };
   }
@@ -185,7 +184,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   @Override
   public ITraitType[] getToughnessControllingTraitTypes() {
-    return new ITraitType[] { AbilityType.Endurance };
+    return new ITraitType[]{AbilityType.Endurance};
   }
 
   @Override
@@ -200,27 +199,29 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   @Override
   public IGroupedTraitType[] getAttributeGroups() {
-    return new IGroupedTraitType[] {
-        new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(), null),
-        new GroupedTraitType(AttributeType.Dexterity, AttributeGroupType.Physical.getId(), null),
-        new GroupedTraitType(AttributeType.Stamina, AttributeGroupType.Physical.getId(), null),
-        new GroupedTraitType(AttributeType.Charisma, AttributeGroupType.Social.getId(), null),
-        new GroupedTraitType(AttributeType.Manipulation, AttributeGroupType.Social.getId(), null),
-        new GroupedTraitType(AttributeType.Appearance, AttributeGroupType.Social.getId(), null),
-        new GroupedTraitType(AttributeType.Perception, AttributeGroupType.Mental.getId(), null),
-        new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(), null),
-        new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), null), };
+    return new IGroupedTraitType[]{new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(),
+            null), new GroupedTraitType(AttributeType.Dexterity, AttributeGroupType.Physical.getId(),
+            null), new GroupedTraitType(AttributeType.Stamina, AttributeGroupType.Physical.getId(),
+            null), new GroupedTraitType(AttributeType.Charisma, AttributeGroupType.Social.getId(),
+            null), new GroupedTraitType(AttributeType.Manipulation, AttributeGroupType.Social.getId(),
+            null), new GroupedTraitType(AttributeType.Appearance, AttributeGroupType.Social.getId(),
+            null), new GroupedTraitType(AttributeType.Perception, AttributeGroupType.Mental.getId(),
+            null), new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(),
+            null), new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), null),};
   }
-  
+
   @Override
-  public boolean isLegacy()
-  {
-	  return false;
+  public boolean isLegacy() {
+    return false;
   }
-  
+
   @Override
-  public String[] getBaseHealthProviders()
-  {
-	  return new String[0];
+  public String[] getBaseHealthProviders() {
+    return new String[0];
+  }
+
+  @Override
+  public boolean isNpcOnly() {
+    return false;
   }
 }

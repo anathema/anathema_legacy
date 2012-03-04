@@ -66,6 +66,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_ADDITIONAL_RULES = "additionalRules"; //$NON-NLS-1$
   private static final String TAG_EDITION = "edition"; //$NON-NLS-1$
   private static final String ATTRIB_EDITION = "edition"; //$NON-NLS-1$
+  private static final String TAG_NPC_ONLY = "npcOnly";
 
   private final ICharacterTemplateRegistryCollection registryCollection;
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry;
@@ -239,6 +240,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (generalElement == null) {
       return;
     }
+    setNpcOnly(generalElement, characterTemplate);
     setEdition(generalElement, characterTemplate);
     setAbilityGroups(generalElement, characterTemplate);
     setAttributeGroups(generalElement, characterTemplate);
@@ -250,6 +252,14 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     setAdditionalRules(generalElement, characterTemplate);
     setToughnessControllingTrait(generalElement, characterTemplate);
     setYoziGroups(generalElement, characterTemplate);
+  }
+
+  private void setNpcOnly(Element generalElement, GenericCharacterTemplate characterTemplate) {
+    Element element = generalElement.element(TAG_NPC_ONLY);
+    if (element == null) {
+      return;
+    }
+    characterTemplate.setNpcOnly();
   }
 
   private void setEdition(Element generalElement, GenericCharacterTemplate characterTemplate) {

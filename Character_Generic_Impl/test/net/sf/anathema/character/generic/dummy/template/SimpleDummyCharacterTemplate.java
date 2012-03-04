@@ -40,10 +40,17 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
     this.edition = edition;
   }
 
+  @Override
+  public boolean isNpcOnly() {
+    return false;
+  }
+
+  @Override
   public IGroupedTraitType[] getAbilityGroups() {
     return new IGroupedTraitType[0];
   }
 
+  @Override
   public IGroupedTraitType[] getAttributeGroups() {
     return new IGroupedTraitType[0];
   }
@@ -53,34 +60,42 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
     return new IGroupedTraitType[0];
   }
 
+  @Override
   public IAdditionalRules getAdditionalRules() {
     return new NullAdditionalRules();
   }
 
+  @Override
   public IBonusPointCosts getBonusPointCosts() {
     return null;
   }
 
+  @Override
   public ICasteCollection getCasteCollection() {
     return null;
   }
 
+  @Override
   public ICreationPoints getCreationPoints() {
     return new TestCreationPoints();
   }
 
+  @Override
   public IEssenceTemplate getEssenceTemplate() {
     return new NullEssenceTemplate();
   }
 
+  @Override
   public IExperiencePointCosts getExperienceCost() {
     return null;
   }
 
+  @Override
   public IPresentationProperties getPresentationProperties() {
     return null;
   }
 
+  @Override
   public ITemplateType getTemplateType() {
     if (subtype == null) {
       return new TemplateType(type);
@@ -88,33 +103,40 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
     return new TemplateType(type, new Identificate(subtype));
   }
 
+  @Override
   public ITraitTemplateCollection getTraitTemplateCollection() {
     ITraitTemplateCollection collection = mock(ITraitTemplateCollection.class);
     when(collection.getTraitTemplate(isA(ITraitType.class))).thenReturn(createStaticLimitedTemplate(0, 5));
     return collection;
   }
 
+  @Override
   public ITraitType[] getToughnessControllingTraitTypes() {
     return new ITraitType[0];
   }
 
+  @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return new IAdditionalTemplate[0];
   }
 
+  @Override
   public IMagicTemplate getMagicTemplate() {
     ICharmTemplate charmTemplate = new DummyCharmTemplate();
     return new CustomizableMagicTemplate(null, charmTemplate, null);
   }
 
+  @Override
   public IExaltedEdition getEdition() {
     return edition;
   }
 
+  @Override
   public boolean isLegacy() {
     return false;
   }
 
+  @Override
   public String[] getBaseHealthProviders() {
     return new String[0];
   }

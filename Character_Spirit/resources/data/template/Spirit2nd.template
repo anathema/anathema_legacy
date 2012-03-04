@@ -1,5 +1,6 @@
 <exaltedCharacterTemplate characterType="Spirit" subtemplate="default">
   <general>
+    <npcOnly/>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>

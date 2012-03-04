@@ -13,31 +13,33 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface ICharacterTemplate extends ICharacterExternalsTemplate {
 
-  public IGroupedTraitType[] getAbilityGroups();
+  IGroupedTraitType[] getAbilityGroups();
 
-  public IGroupedTraitType[] getAttributeGroups();
+  IGroupedTraitType[] getAttributeGroups();
   
-  public IGroupedTraitType[] getYoziGroups();
+  IGroupedTraitType[] getYoziGroups();
 
-  public IAdditionalRules getAdditionalRules();
+  IAdditionalRules getAdditionalRules();
 
-  public IBonusPointCosts getBonusPointCosts();
+  IBonusPointCosts getBonusPointCosts();
 
-  public ICasteCollection getCasteCollection();
+  ICasteCollection getCasteCollection();
 
-  public ICreationPoints getCreationPoints();
+  ICreationPoints getCreationPoints();
 
-  public IEssenceTemplate getEssenceTemplate();
+  IEssenceTemplate getEssenceTemplate();
 
-  public IExperiencePointCosts getExperienceCost();
+  IExperiencePointCosts getExperienceCost();
 
-  public ITraitTemplateCollection getTraitTemplateCollection();
+  ITraitTemplateCollection getTraitTemplateCollection();
 
-  public ITraitType[] getToughnessControllingTraitTypes();
+  ITraitType[] getToughnessControllingTraitTypes();
   
-  public String[] getBaseHealthProviders();
+  String[] getBaseHealthProviders();
 
-  public IAdditionalTemplate[] getAdditionalTemplates();
+  IAdditionalTemplate[] getAdditionalTemplates();
 
-  public IMagicTemplate getMagicTemplate();
+  IMagicTemplate getMagicTemplate();
+
+  boolean isNpcOnly();
 }
