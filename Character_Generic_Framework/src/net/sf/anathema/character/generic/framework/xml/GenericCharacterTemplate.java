@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
@@ -34,6 +31,9 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<GenericCharacterTemplate> {
 
   private IAdditionalRules additionalRules = new GenericAdditionalRules();
@@ -55,6 +55,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private IExaltedEdition edition;
   private boolean isLegacy;
 
+  @Override
   public IGroupedTraitType[] getAbilityGroups() {
     return abilityGroups;
   }
@@ -64,14 +65,17 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
     return yoziGroups;
   }
 
+  @Override
   public IAdditionalRules getAdditionalRules() {
     return additionalRules;
   }
 
+  @Override
   public IBonusPointCosts getBonusPointCosts() {
     return bonusPointCosts;
   }
 
+  @Override
   public ICasteCollection getCasteCollection() {
     return casteCollection;
   }
@@ -80,43 +84,53 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
     this.casteCollection = casteCollection;
   }
 
+  @Override
   public ICreationPoints getCreationPoints() {
     return creationPoints;
   }
 
+  @Override
   public IEssenceTemplate getEssenceTemplate() {
     return essenceTemplate;
   }
 
+  @Override
   public IExperiencePointCosts getExperienceCost() {
     return experienceCosts;
   }
 
+  @Override
   public IPresentationProperties getPresentationProperties() {
     return presentationTemplate;
   }
 
+  @Override
   public ITemplateType getTemplateType() {
     return templateType;
   }
 
+  @Override
   public ITraitTemplateCollection getTraitTemplateCollection() {
     return traitTemplateCollection;
   }
 
+  @Override
   public ITraitType[] getToughnessControllingTraitTypes() {
     return healthTemplate.getToughnessControllingTraits();
   }
   
+  @Override
   public String[] getBaseHealthProviders()
   {
 	return healthTemplate.getBaseHealthProviders();
   }
 
+  @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return additionalTemplates.toArray(new IAdditionalTemplate[additionalTemplates.size()]);
   }
 
+  @Override
   public IMagicTemplate getMagicTemplate() {
     return magicTemplate;
   }
@@ -156,6 +170,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
     this.experienceCosts = experienceCosts;
   }
 
+  @Override
   public IExaltedEdition getEdition() {
     return edition;
   }
@@ -191,7 +206,6 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
     clone.casteCollection = new CasteCollection(new ICasteType[0]);
     clone.additionalTemplates = new ArrayList<IAdditionalTemplate>();
     clone.healthTemplate = new GenericHealthTemplate();
-
     if (bonusPointCosts != null) {
       clone.bonusPointCosts = bonusPointCosts.clone();
     }
@@ -213,6 +227,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
     return clone;
   }
 
+  @Override
   public IGroupedTraitType[] getAttributeGroups() {
     return attributeGroups;
   }

@@ -52,10 +52,4 @@ public class SiderealCreationPoints extends AbstractCreationPoints {
   public IFavorableTraitCreationPoints getCollegeCreationPoints() {
     return new AbilityCreationPoints(0, 4, 3);
   }
-  
-  @Override
-  public void informTraits(Object traits)
-  {
-	  //do nothing
-  }
 }

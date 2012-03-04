@@ -115,14 +115,8 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   @Override
   public GenericCreationPoints clone() {
     GenericCreationPoints clone = super.clone();
-    clone.attributeCreationPoints = clone.attributeCreationPoints.clone();
-    clone.abilityCreationPoints = clone.abilityCreationPoints.clone();
+    clone.attributeCreationPoints = attributeCreationPoints.clone();
+    clone.abilityCreationPoints = abilityCreationPoints.clone();
     return clone;
-  }
-  
-  @Override
-  public void informTraits(Object traits)
-  {
-	  //do nothing
   }
 }

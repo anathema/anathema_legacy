@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.ICharacterTemplateRegistryCollection;
@@ -42,8 +39,10 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCharacterTemplate> {
 
@@ -110,6 +109,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     setExperiencePoints(characterTemplate, creationElement);
   }
 
+  @Override
   public GenericCharacterTemplate parseTemplate(Element element) throws PersistenceException {
     GenericCharacterTemplate characterTemplate = new GenericCharacterTemplate();
     updateTemplateType(element, characterTemplate);

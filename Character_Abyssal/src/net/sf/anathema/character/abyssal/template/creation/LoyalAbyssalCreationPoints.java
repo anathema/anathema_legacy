@@ -48,10 +48,4 @@ public class LoyalAbyssalCreationPoints extends AbstractCreationPoints {
   {
 	return 0;
   }
-  
-  @Override
-  public void informTraits(Object traits)
-  {
-	  //do nothing
-  }
 }

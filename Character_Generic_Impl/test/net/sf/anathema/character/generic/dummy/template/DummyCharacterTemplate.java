@@ -141,12 +141,6 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
       {
     	throw new NotYetImplementedException();
       }
-      
-      @Override
-      public void informTraits(Object traits)
-      {
-    	throw new NotYetImplementedException();
-      }
     };
   }
 

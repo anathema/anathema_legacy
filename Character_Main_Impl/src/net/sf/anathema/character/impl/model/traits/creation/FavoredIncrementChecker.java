@@ -1,14 +1,14 @@
 package net.sf.anathema.character.impl.model.traits.creation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FavoredIncrementChecker implements IIncrementChecker {
 
@@ -66,6 +66,7 @@ public class FavoredIncrementChecker implements IIncrementChecker {
     this.traitConfiguration = traitConfiguration;
   }
 
+  @Override
   public boolean isValidIncrement(int increment) {
     int count = 0;
     for (IFavorableTrait trait : getAllTraits()) {

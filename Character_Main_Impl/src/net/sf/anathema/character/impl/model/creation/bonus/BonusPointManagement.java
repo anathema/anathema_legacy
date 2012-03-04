@@ -69,48 +69,28 @@ public class BonusPointManagement implements IBonusPointManagement {
     for (IAdditionalModel model : statistics.getExtendedConfiguration().getAdditionalModels()) {
       bonusPointCalculator.addAdditionalBonusPointCalculator(model.getBonusPointCalculator());
     }
-    bonusAdditionalPools = new AdditionalBonusPointPoolManagement(
-        statistics.getTraitConfiguration(),
-        statistics.getCharacterTemplate().getAdditionalRules().getAdditionalBonusPointPools());
-    
-    creationPoints.informTraits(statistics);
-    
+    bonusAdditionalPools = new AdditionalBonusPointPoolManagement(statistics.getTraitConfiguration(),
+            statistics.getCharacterTemplate().getAdditionalRules().getAdditionalBonusPointPools());
     this.cost = statistics.getCharacterTemplate().getBonusPointCosts();
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(statistics);
     ICoreTraitConfiguration traitConfiguration = statistics.getTraitConfiguration();
-    this.abilityCalculator = new AbilityCostCalculator(
-        traitConfiguration,
-        creationPoints.getAbilityCreationPoints(),
-        creationPoints.getSpecialtyCreationPoints(),
-        cost,
-        bonusAdditionalPools);
-    this.attributeCalculator = new AttributeCostCalculator(
-        traitConfiguration,
-        creationPoints.getAttributeCreationPoints(),
-        cost,
-        bonusAdditionalPools);
-    this.backgroundCalculator = new BackgroundBonusPointCostCalculator(
-        bonusAdditionalPools,
-        traitConfiguration.getBackgrounds(),
-        cost,
-        creationPoints.getBackgroundPointCount(),
-        characterTemplate.getAdditionalRules());
+    this.abilityCalculator = new AbilityCostCalculator(traitConfiguration, creationPoints.getAbilityCreationPoints(),
+            creationPoints.getSpecialtyCreationPoints(), cost, bonusAdditionalPools);
+    this.attributeCalculator = new AttributeCostCalculator(traitConfiguration,
+            creationPoints.getAttributeCreationPoints(), cost, bonusAdditionalPools);
+    this.backgroundCalculator = new BackgroundBonusPointCostCalculator(bonusAdditionalPools,
+            traitConfiguration.getBackgrounds(), cost, creationPoints.getBackgroundPointCount(),
+            characterTemplate.getAdditionalRules());
     IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(traitConfiguration);
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
-    magicAdditionalPools = new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules()
-        .getAdditionalMagicLearnPools(), characterAbstraction);
-    this.magicCalculator = new MagicCostCalculator(
-        characterTemplate.getMagicTemplate(),
-        statistics.getCharms(),
-        statistics.getSpells(),
-        creationPoints.getFavoredCreationCharmCount(),
-        creationPoints.getDefaultCreationCharmCount(),
-        cost,
-        bonusAdditionalPools,
-        magicAdditionalPools,
-        statistics.getCharacterContext().getBasicCharacterContext(),
-        statistics.getCharacterContext().getTraitCollection());
+    magicAdditionalPools = new AdditionalMagicLearnPointManagement(
+            characterTemplate.getAdditionalRules().getAdditionalMagicLearnPools(), characterAbstraction);
+    this.magicCalculator = new MagicCostCalculator(characterTemplate.getMagicTemplate(), statistics.getCharms(),
+            statistics.getSpells(), creationPoints.getFavoredCreationCharmCount(),
+            creationPoints.getDefaultCreationCharmCount(), cost, bonusAdditionalPools, magicAdditionalPools,
+            statistics.getCharacterContext().getBasicCharacterContext(),
+            statistics.getCharacterContext().getTraitCollection());
     this.combos = statistics.getCombos();
     this.willpower = TraitCollectionUtilities.getWillpower(traitConfiguration);
     this.essence = TraitCollectionUtilities.getEssence(traitConfiguration);
@@ -159,16 +139,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private int getTotalBonusPointsSpent() {
-    return attributeCalculator.getBonusPoints()
-        + getDefaultAbilityModel().getSpentBonusPoints()
-        + abilityCalculator.getSpecialtyBonusPointCosts()
-        + getDefaultCharmModel().getSpentBonusPoints()
-        + comboBonusPoints
-        + getBackgroundModel().getSpentBonusPoints()
-        + getVirtueModel().getSpentBonusPoints()
-        + willpowerBonusPoints
-        + essenceBonusPoints
-        + bonusPointCalculator.getAdditionalModelModel().getValue();
+    return attributeCalculator.getBonusPoints() + getDefaultAbilityModel().getSpentBonusPoints() + abilityCalculator.getSpecialtyBonusPointCosts() + getDefaultCharmModel().getSpentBonusPoints() + comboBonusPoints + getBackgroundModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() + willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getAdditionalModelModel().getValue();
   }
 
   private ISpendingModel getVirtueModel() {
@@ -182,7 +153,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   @Override
   public ISpendingModel getDefaultAbilityModel() {
-    return new DefaultAbilityBonusModel(abilityCalculator, creationPoints, statistics);
+    return new DefaultAbilityBonusModel(abilityCalculator, creationPoints);
   }
 
   @Override
@@ -201,34 +172,29 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   @Override
   public ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
-    return new AttributeBonusModel(attributeCalculator, priority, creationPoints, statistics);
-  }
-  
-  public ISpendingModel getFavoredAttributeDotModel()
-  {
-	  return new FavoredAttributeDotBonusModel(attributeCalculator, creationPoints);
-  }
-  
-  public ISpendingModel getGenericAttributeDotModel(boolean isExtraDots)
-  {
-	  return new GenericAttributeDotBonusModel(attributeCalculator, creationPoints, isExtraDots);
+    return new AttributeBonusModel(attributeCalculator, priority, creationPoints);
   }
 
-  public ISpendingModel getFavoredAttributePickModel()
-  {
-	return new FavoredAttributePickModel(attributeCalculator, creationPoints);
+  public ISpendingModel getFavoredAttributeDotModel() {
+    return new FavoredAttributeDotBonusModel(attributeCalculator, creationPoints);
+  }
+
+  public ISpendingModel getGenericAttributeDotModel(boolean isExtraDots) {
+    return new GenericAttributeDotBonusModel(attributeCalculator, creationPoints, isExtraDots);
+  }
+
+  public ISpendingModel getFavoredAttributePickModel() {
+    return new FavoredAttributePickModel(attributeCalculator, creationPoints);
   }
 
   @Override
   public ISpendingModel getFavoredCharmModel() {
     return new FavoredCharmModel(magicCalculator, creationPoints);
   }
-  
-  public ISpendingModel getSpecialCharmModel()
-  {
-	  return new UniqueRequiredCharmTypeModel(statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().
-			  getUniqueRequiredCharmType(),
-			  magicCalculator, creationPoints);
+
+  public ISpendingModel getSpecialCharmModel() {
+    return new UniqueRequiredCharmTypeModel(statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().
+            getUniqueRequiredCharmType(), magicCalculator, creationPoints);
   }
 
   @Override
@@ -281,25 +247,21 @@ public class BonusPointManagement implements IBonusPointManagement {
   @Override
   public IOverviewModel[] getAllModels() {
     List<IOverviewModel> models = new ArrayList<IOverviewModel>();
-    
-    boolean showingAttributeGroups = false;    
-    if (getAttributeModel(AttributeGroupPriority.Primary).getAlotment() > 0)
-    {
-	    models.add(getAttributeModel(AttributeGroupPriority.Primary));
-	    models.add(getAttributeModel(AttributeGroupPriority.Secondary));
-	    models.add(getAttributeModel(AttributeGroupPriority.Tertiary));
-	    showingAttributeGroups = true;
+
+    boolean showingAttributeGroups = false;
+    if (getAttributeModel(AttributeGroupPriority.Primary).getAlotment() > 0) {
+      models.add(getAttributeModel(AttributeGroupPriority.Primary));
+      models.add(getAttributeModel(AttributeGroupPriority.Secondary));
+      models.add(getAttributeModel(AttributeGroupPriority.Tertiary));
+      showingAttributeGroups = true;
     }
-    
-    if (getFavoredAttributePickModel().getAlotment() > 0)
-    	models.add(getFavoredAttributePickModel());
-    if (getFavoredAttributeDotModel().getAlotment() > 0)
-    	models.add(getFavoredAttributeDotModel());
+
+    if (getFavoredAttributePickModel().getAlotment() > 0) models.add(getFavoredAttributePickModel());
+    if (getFavoredAttributeDotModel().getAlotment() > 0) models.add(getFavoredAttributeDotModel());
     if (getGenericAttributeDotModel(showingAttributeGroups).getAlotment() > 0)
-    	models.add(getGenericAttributeDotModel(showingAttributeGroups));
+      models.add(getGenericAttributeDotModel(showingAttributeGroups));
     models.add(getFavoredAbilityPickModel());
-    if (getFavoredAbilityModel().getAlotment() > 0)
-    	models.add(getFavoredAbilityModel());
+    if (getFavoredAbilityModel().getAlotment() > 0) models.add(getFavoredAbilityModel());
     models.add(getDefaultAbilityModel());
     if (getSpecialtiesModel().getAlotment() > 0) {
       models.add(getSpecialtiesModel());
@@ -313,14 +275,14 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private void addCharmModels(List<IOverviewModel> models) {
-    if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms(statistics.getRules())) {
+    if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms(
+            statistics.getRules())) {
       return;
     }
     if (getFavoredCharmModel().getAlotment() > 0) {
       models.add(getFavoredCharmModel());
     }
-    if (getSpecialCharmModel().getAlotment() > 0)
-    	models.add(getSpecialCharmModel());
+    if (getSpecialCharmModel().getAlotment() > 0) models.add(getSpecialCharmModel());
     models.add(getDefaultCharmModel());
   }
 }

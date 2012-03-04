@@ -22,14 +22,7 @@
   </general>
   <creation>
     <bonusPointCosts uses="template/SpiritBonusPointCost2nd.template" />
-    <creationPoints uses="net.sf.anathema.character.spirit.template.SpiritCreationPoints">
-      <attributeDots uses="net.sf.anathema.character.spirit.template.SpiritAttributeCreationPoints" />
-      <abilityDots uses="net.sf.anathema.character.spirit.template.SpiritAbilityCreationPoints"/>
-      <backgroundDots count="7" />
-      <virtueDots count="5" />
-      <bonusPoints count="15" />
-      <charmPicks favored="0" general="0" />
-    </creationPoints>
+    <creationPoints uses="net.sf.anathema.character.spirit.template.SpiritCreationPoints"/>
   </creation>
   <experience>
     <experiencePointCost uses="template/SpiritExperienceCost2nd.template" />

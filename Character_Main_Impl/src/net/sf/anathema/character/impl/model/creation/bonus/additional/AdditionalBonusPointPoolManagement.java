@@ -1,9 +1,5 @@
 package net.sf.anathema.character.impl.model.creation.bonus.additional;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPool;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -11,6 +7,10 @@ import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPointManagment {
 
@@ -37,6 +37,7 @@ public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPoint
     }
   }
 
+  @Override
   public void spendOn(IGenericTrait trait, int bonusCost) {
     if (bonusCost == 0) {
       return;
@@ -47,6 +48,7 @@ public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPoint
     }
   }
 
+  @Override
   public void spendOn(IMagic magic, int bonusCost) {
     if (bonusCost == 0) {
       return;
@@ -65,6 +67,7 @@ public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPoint
     return pointsSpent;
   }
 
+  @Override
   public void spendOn(IGenericSpecialty[] specialties, IAbilityPointCosts costs) {
     List<IGenericSpecialty> allSpecialties = new ArrayList<IGenericSpecialty>(Arrays.asList(specialties));
     for (AdditionalBonusPointPoolCalculator calculator : additionalPoolCalculators) {

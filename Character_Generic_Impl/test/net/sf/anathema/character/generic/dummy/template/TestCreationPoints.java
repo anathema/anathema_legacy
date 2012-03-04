@@ -47,11 +47,4 @@ public class TestCreationPoints extends AbstractCreationPoints {
   public int getUniqueRequiredCreationCharmCount() {
 	    return 0;
   }
-  
-  @Override
-  public void informTraits(Object traits)
-  {
-	  //do nothing
-  }
-  
 }

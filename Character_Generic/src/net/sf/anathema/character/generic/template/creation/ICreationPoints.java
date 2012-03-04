@@ -10,7 +10,7 @@ public interface ICreationPoints {
   int getBonusPointCount();
 
   int getVirtueCreationPoints();
-  
+
   int getSpecialtyCreationPoints();
 
   IAbilityCreationPoints getAbilityCreationPoints();
@@ -20,8 +20,6 @@ public interface ICreationPoints {
   int getFavoredCreationCharmCount();
 
   int getDefaultCreationCharmCount();
-  
+
   int getUniqueRequiredCreationCharmCount();
-  
-  void informTraits(Object traits);
 }
