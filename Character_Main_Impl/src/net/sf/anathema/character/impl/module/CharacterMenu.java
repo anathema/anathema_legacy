@@ -24,33 +24,38 @@ public class CharacterMenu implements IAnathemaMenu {
   public void add(IResources resources, final IAnathemaModel model, IMenuBar menubar) {
     IMenu menu = menubar.addMenu(resources.getString("CharacterMenu.Title")); //$NON-NLS-1$
     menu.setMnemonic('C');
-    menu.addMenuItem(new SmartAction(resources.getString("CharacterMenu.ToExperienced.Title")) { //$NON-NLS-1$
-      private static final long serialVersionUID = -6647982875967092052L;
+    menu.addMenuItem(new MakeCharacterExperienced(resources, model));
+  }
 
-      {
-        setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_MASK));
-        new AbstractSelectedItemEnabler(model.getItemManagement(), this) {
-          @Override
-          protected boolean isEnabled(IItem selectedItem) {
-            if (selectedItem == null) {
-              return false;
-            }
-            IItemData itemData = selectedItem.getItemData();
-            if (!(itemData instanceof ICharacter)) {
-              return false;
-            }
-            ICharacter character = (ICharacter) itemData;
-            return character.hasStatistics() && !character.getStatistics().isExperienced();
+  private static class MakeCharacterExperienced extends SmartAction {
+    private static final long serialVersionUID = -6647982875967092052L;
+    private final IAnathemaModel model;
+
+    public MakeCharacterExperienced(IResources resources, IAnathemaModel model) {
+      super(resources.getString("CharacterMenu.ToExperienced.Title"));
+      this.model = model;
+      setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_MASK));
+      new AbstractSelectedItemEnabler(model.getItemManagement(), this) {
+        @Override
+        protected boolean isEnabled(IItem selectedItem) {
+          if (selectedItem == null) {
+            return false;
           }
-        };
-      }
+          IItemData itemData = selectedItem.getItemData();
+          if (!(itemData instanceof ICharacter)) {
+            return false;
+          }
+          ICharacter character = (ICharacter) itemData;
+          return character.hasStatistics() && !character.getStatistics().isExperienced();
+        }
+      };
+    }
 
-      @Override
-      protected void execute(Component parentComponent) {
-        ICharacter character = (ICharacter) model.getItemManagement().getSelectedItem().getItemData();
-        character.getStatistics().setExperienced(true);
-        setEnabled(false);
-      }
-    });
+    @Override
+    protected void execute(Component parentComponent) {
+      ICharacter character = (ICharacter) model.getItemManagement().getSelectedItem().getItemData();
+      character.getStatistics().setExperienced(true);
+      setEnabled(false);
+    }
   }
 }
