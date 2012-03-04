@@ -11,7 +11,7 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- Bugfixes --
-* Spirits pay for Essence dots at character creation
+* Spirits are no longer avaible as NPCs only. They no longer track BP/XP.
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.0 "Thorns"
