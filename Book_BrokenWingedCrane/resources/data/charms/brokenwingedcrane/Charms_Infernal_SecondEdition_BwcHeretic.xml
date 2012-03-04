@@ -122,7 +122,7 @@
      </charm>
      <charm id="Infernal.SwallowingtheScorpion" exalt="Infernal" group="Heretic">
           <prerequisite>               
-               <essence value="4" />
+               <essence value="6" />
                <selectiveCharmGroup threshold="2">
 					<charmReference id="Infernal.AllThingsBetray" />
                		<charmReference id="Infernal.CrackedCellCircumvention" />

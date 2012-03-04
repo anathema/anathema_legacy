@@ -40,6 +40,7 @@ If you use the .zip distribution, please delete your "plugins" and "lib" folders
 * [2E] Fixed prerequisites of (DB/Bureaucracy) "Benevolent Master's Blessing"
 * [2E] (Martial Arts/Throne Shadow Style) Extensions are available to Sidereals alone
 * [2E] (Martial Arts/Sapphire Veil of Passion Style) Fixed typo in "Eternal Infatuation Dance"
+* [2E] (Infernal/Heretic) "Swallowing the Scorpion" requires Essence 6
 
 
 ===------------------------------------------------------------------------------===
