@@ -1,12 +1,11 @@
 package net.sf.anathema.framework.view.util;
 
-import java.awt.BorderLayout;
+import net.sf.anathema.framework.presenter.view.IMultiContentView;
+import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-
-import net.sf.anathema.framework.presenter.view.IMultiContentView;
-import net.sf.anathema.lib.gui.IView;
+import java.awt.BorderLayout;
 
 public class MultiTabContentView implements IMultiContentView {
 
@@ -21,6 +20,7 @@ public class MultiTabContentView implements IMultiContentView {
     this.tabbedView = new TabbedView(direction);
   }
 
+  @Override
   public final JComponent getComponent() {
     if (content == null) {
       content = new JPanel(new BorderLayout());
@@ -29,13 +29,15 @@ public class MultiTabContentView implements IMultiContentView {
     return content;
   }
 
+  @Override
   public void addView(IView view, ContentProperties tabProperties) {
     tabbedView.addView(view, tabProperties);
     tabbedView.getComponent().revalidate();
   }
 
+  @Override
   public void setAdditionalComponent(JComponent component) {
-    tabbedView.setTabAreaComponents(new JComponent[] { component });
+    tabbedView.setTabAreaComponents(component);
     tabbedView.getComponent().revalidate();
   }
 }

@@ -21,6 +21,7 @@ import net.sf.anathema.lib.gui.IDisposable;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,11 +37,8 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
 
   private JComponent content;
 
-  public CharacterView(
-      IIntValueDisplayFactory factory,
-      String name,
-      Icon icon,
-      IIntValueDisplayFactory factoryWithoutMarker) {
+  public CharacterView(IIntValueDisplayFactory factory, String name, Icon icon,
+                       IIntValueDisplayFactory factoryWithoutMarker) {
     super(name, icon);
     this.intValueDisplayFactory = factory;
     this.intValueDisplayFactoryWithoutMarker = factoryWithoutMarker;
@@ -120,7 +118,7 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
 
   private JComponent getTabAreaComponent() {
     if (overviewView == null) {
-      return null;
+      return new JLabel();
     }
     return overviewView.getComponent();
   }

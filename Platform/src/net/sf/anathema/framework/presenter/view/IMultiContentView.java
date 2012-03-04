@@ -1,13 +1,13 @@
 package net.sf.anathema.framework.presenter.view;
 
-import javax.swing.JComponent;
-
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IView;
 
+import javax.swing.JComponent;
+
 public interface IMultiContentView extends IView {
 
-  public void addView(IView view, ContentProperties tabProperties);
+  void addView(IView view, ContentProperties tabProperties);
 
-  public void setAdditionalComponent(JComponent components);
+  void setAdditionalComponent(JComponent components);
 }

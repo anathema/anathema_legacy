@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -29,6 +30,9 @@ import net.sf.anathema.lib.resources.IResources;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static net.sf.anathema.character.generic.template.TemplateType.DEFAULT_SUB_TYPE;
+import static net.sf.anathema.character.generic.type.CharacterType.SPIRIT;
 
 public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
 
@@ -160,7 +164,14 @@ public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
     initMagicPresentation();
     initMultiTabViewPresentation(getString("CardView.MiscellaneousConfiguration.Title"), //$NON-NLS-1$
             AdditionalModelType.Miscellaneous);
-    overviewPresenter.initPresentation();
-    experiencePointPresenter.initPresentation();
+    if (!isDefaultSpirit()) {
+      overviewPresenter.initPresentation();
+      experiencePointPresenter.initPresentation();
+    }
+  }
+
+  private boolean isDefaultSpirit() {
+    ITemplateType templateType = getStatistics().getCharacterTemplate().getTemplateType();
+    return templateType.getCharacterType() == SPIRIT && templateType.getSubType() == DEFAULT_SUB_TYPE;
   }
 }
