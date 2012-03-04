@@ -21,7 +21,6 @@ import net.sf.anathema.lib.gui.IDisposable;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,22 +109,23 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
   @Override
   public final JComponent getComponent() {
     if (content == null) {
-      contentView.setAdditionalComponent(getTabAreaComponent());
+      showOverviewInTabArea();
       content = contentView.getComponent();
     }
     return content;
   }
 
-  private JComponent getTabAreaComponent() {
-    if (overviewView == null) {
-      return new JLabel();
-    }
-    return overviewView.getComponent();
-  }
-
   @Override
   public void toogleOverviewView(boolean experienced) {
     this.overviewView = experienced ? experienceOverviewView : creationOverviewView;
-    contentView.setAdditionalComponent(getTabAreaComponent());
+    showOverviewInTabArea();
+  }
+
+  private void showOverviewInTabArea() {
+    if (overviewView == null) {
+      return;
+    }
+    JComponent component = overviewView.getComponent();
+    contentView.setAdditionalComponent(component);
   }
 }
