@@ -21,10 +21,10 @@
     </healthTemplate>
   </general>
   <creation>
-    <bonusPointCosts uses="template/SpiritBonusPointCost2nd.template" />
-    <creationPoints uses="net.sf.anathema.character.spirit.template.SpiritCreationPoints"/>
+    <bonusPointCosts/>
+    <creationPoints/>
   </creation>
   <experience>
-    <experiencePointCost uses="template/SpiritExperienceCost2nd.template" />
+    <experiencePointCost/>
   </experience>
 </exaltedCharacterTemplate>
