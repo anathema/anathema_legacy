@@ -37,11 +37,11 @@ If you use the .zip distribution, please delete your "plugins" and "lib" folders
 * Solars don't pay extra for "Mentor" background any longer, might fix a number of background cost issues.
 * No more ugly error when trying to add an unnamed background.
 * Tooltips for Martial Arts in the Charm Cascades are shown once more
+* Less flickery stuff when learning/forgetting a Charm
 * [2E] Added (Infernal/SWLIHN) "Force-Suppression Barrier"
 * [2E] Added (Infernal/Martial Arts) "Roots of the Brass Lotus". No special rules though.
 * [2E] Favored "High level" MA charms now cost 12 XP, as they should
 * [2E] Lunar pay XP by the book.
-* [2E] Less flickery stuff when learning/forgetting a Charm
 * [2E] (Lunar Knack) "Changing Plumage Mastery" is now printed with its fellow knacks
 * [2E] Fixed name of (Ghost) "Essence Lasso Form"
 * [2E] Fixed prerequisites of (DB/Bureaucracy) "Benevolent Master's Blessing"
