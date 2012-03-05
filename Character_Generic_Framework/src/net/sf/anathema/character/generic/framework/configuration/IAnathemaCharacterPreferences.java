@@ -11,4 +11,6 @@ public interface IAnathemaCharacterPreferences {
   public boolean printZeroCrafts();
   
   public boolean printZeroIntimacies();
+  
+  public boolean printAllGenerics();
 }

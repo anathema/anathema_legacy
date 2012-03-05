@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.magic.*;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
@@ -40,7 +41,8 @@ public class MagicEncoder implements ContentEncoder {
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
     if (includeCharms) {
       for (IMagicStats stats : character.getGenericCharmStats()) {
-        printStats.add(stats);
+    	if (GenericCharmUtilities.shouldShowCharm(stats, character))
+        	printStats.add(stats);
       }
     }
 

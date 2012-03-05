@@ -7,12 +7,10 @@ import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmContent;
+import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
@@ -21,7 +19,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,14 +40,14 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
   }
 
   public boolean hasContent(ReportContent content) {
-    return createContent(content).hasContent();
+    return createContent(content).hasContent() && GenericCharmUtilities.hasDisplayedGenericCharms(content);
   }
 
   @Override
   protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
     IGenericCharacter character = content.getCharacter();
     PdfContentByte directContent = graphics.getDirectContent();
-    List<ITraitType> traits = getTraits(character);
+    List<ITraitType> traits = GenericCharmUtilities.getGenericCharmTraits(character);
     Font font = graphics.createTableFont();
     PdfTemplate learnedTemplate = createCharmDotTemplate(directContent, BaseColor.BLACK);
     PdfTemplate notLearnedTemplate = createCharmDotTemplate(directContent, BaseColor.WHITE);
@@ -61,6 +58,8 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
       table.addCell(createHeaderCell(graphics, directContent, trait));
     }
     for (IMagicStats stats : character.getGenericCharmStats()) {
+      if (!GenericCharmUtilities.shouldShowCharm(stats, character, traits))
+      	continue;
       Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
       String genericId = stats.getName().getId();
@@ -69,29 +68,6 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
       }
     }
     return table;
-  }
-
-  private List<ITraitType> getTraits(IGenericCharacter character) {
-    FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
-    List<ITraitType> traits = new ArrayList<ITraitType>();
-    IIdentifiedTraitTypeGroup[] list = null;
-    if (type == FavoringTraitType.AbilityType) {
-      list = character.getAbilityTypeGroups();
-    }
-    if (type == FavoringTraitType.AttributeType) {
-      list = character.getAttributeTypeGroups();
-    }
-    if (type == FavoringTraitType.YoziType) {
-      list = character.getYoziTypeGroups();
-    }
-
-    for (ITraitTypeGroup group : list) {
-      for (ITraitType trait : group.getAllGroupTypes()) {
-        traits.add(trait);
-      }
-    }
-
-    return traits;
   }
 
   private PdfTemplate createCharmDotTemplate(PdfContentByte directContent, BaseColor color) {
