@@ -115,6 +115,9 @@ public class CharacterStatistics implements ICharacterStatistics {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
+    if (characterTemplate.isNpcOnly()){
+      setExperienced(true);
+    }
   }
 
   private IGenericTrait[] getTraitArray(ITraitType[] types) {
@@ -215,7 +218,9 @@ public class CharacterStatistics implements ICharacterStatistics {
 
   @Override
   public void setExperienced(boolean experienced) {
-    Ensure.ensureFalse("Can't convert already experienced character.", this.experienced); //$NON-NLS-1$
+    if (this.experienced){
+      return;
+    }
     this.experienced = experienced;
     context.setExperienced(experienced);
     context.getCharacterListening().fireExperiencedChanged(experienced);
