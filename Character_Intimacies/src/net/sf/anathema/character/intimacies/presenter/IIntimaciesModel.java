@@ -6,11 +6,13 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IIntimaciesModel extends IStringEntryTraitModel<IIntimacy> {
 
-  public int getFreeIntimacies();
+  int getFreeIntimacies();
 
-  public int getCompletionValue();
+  int getCompletionValue();
 
-  public int getIntimaciesLimit();
+  int getIntimaciesLimit();
 
-  public void addModelChangeListener(IChangeListener listener);
+  void addModelChangeListener(IChangeListener listener);
+
+  boolean isCharacterExperienced();
 }

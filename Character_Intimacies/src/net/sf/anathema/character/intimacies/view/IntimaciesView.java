@@ -1,9 +1,5 @@
 package net.sf.anathema.character.intimacies.view;
 
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
@@ -24,6 +20,10 @@ import net.sf.anathema.character.library.trait.view.RearToggleButtonTraitViewWra
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.lib.gui.IView;
 
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+
 public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView< ? >>> implements
     IIntimaciesView,
     IView {
@@ -40,6 +40,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     this.properties = properties;
   }
 
+  @Override
   public JComponent getComponent() {
     GridDialogLayoutData data = GridDialogLayoutDataFactory.createTopData();
     data.setHorizontalAlignment(GridAlignment.FILL);
@@ -49,10 +50,12 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     return content;
   }
 
+  @Override
   public IStringSelectionView addSelectionView(String labelText, Icon addIcon) {
     return new StringSelectionView(mainPanel, labelText, addIcon);
   }
 
+  @Override
   public IRemovableTraitView<IToggleButtonTraitView< ? >> addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
     SimpleTraitView view = new SimpleTraitView(factory, string, 0, 5);
     RearToggleButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearToggleButtonTraitViewWrapper<SimpleTraitView>(
@@ -66,10 +69,12 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     return twoButtonView;
   }
 
+  @Override
   public IOverviewCategory createOverview(String borderLabel) {
     return new OverviewCategory(overviewPanel, borderLabel, false);
   }
 
+  @Override
   public void setOverview(IOverviewCategory overviewView) {
     overviewPanel.removeAll();
     overviewPanel.add(overviewView.getComponent());

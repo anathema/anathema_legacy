@@ -43,6 +43,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     context.getCharacterListening().addChangeListener(maximumListener);
   }
 
+  @Override
   public int getFreeIntimacies() {
     if (context.getAdditionalRules().isRevisedIntimacies()) {
       return getCompassionValue() + context.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
@@ -56,6 +57,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     return context.getTraitCollection().getTrait(VirtueType.Compassion).getCurrentValue();
   }
 
+  @Override
   public void setCurrentName(String name) {
     this.name = name;
     fireEntryChanged();
@@ -66,6 +68,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     Intimacy intimacy = new Intimacy(name, getIntialValue(), getConviction(), context.getTraitContext());
     intimacy.setComplete(!context.getBasicCharacterContext().isExperienced());
     intimacy.addChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         changeControl.fireChangedEvent();        
       }      
@@ -77,6 +80,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     changeControl.fireChangedEvent();
   }
 
+  @Override
   public int getCompletionValue() {
     return 5;
   }
@@ -85,6 +89,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     return context.getTraitCollection().getTrait(VirtueType.Conviction);
   }
 
+  @Override
   public int getIntimaciesLimit() {
     return getCompassionValue() + context.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
   }
@@ -101,11 +106,18 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     return getEntries().size() < getIntimaciesLimit() && !StringUtilities.isNullOrEmpty(name);
   }
 
+  @Override
   public void addModelChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
 
+  @Override
   public void addCharacterChangeListener(ICharacterChangeListener listener) {
     context.getCharacterListening().addChangeListener(listener);
+  }
+
+  @Override
+  public boolean isCharacterExperienced() {
+    return context.getBasicCharacterContext().isExperienced();
   }
 }

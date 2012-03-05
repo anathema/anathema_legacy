@@ -1,8 +1,5 @@
 package net.sf.anathema.character.intimacies.presenter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
@@ -25,6 +22,9 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IIntimacy> implements IPresenter {
 
   private final IIntimaciesView view;
@@ -44,6 +44,7 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
     this.resources = resources;
   }
 
+  @Override
   public void initPresentation() {
     String labelText = resources.getString("Intimacies.SelectionLabel"); //$NON-NLS-1$
     BasicUi basicUi = new BasicUi(resources);
@@ -69,19 +70,23 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
     final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
         resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$
     model.addModelChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
       }
     });
     model.addModelChangeListener(new IRemovableEntryListener<IIntimacy>() {
+      @Override
       public void entryAdded(IIntimacy entry) {
         recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
       }
 
+      @Override
       public void entryAllowed(boolean complete) {
         // Nothing to do
       }
 
+      @Override
       public void entryRemoved(IIntimacy entry) {
         recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
       }
@@ -89,16 +94,21 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
     model.addCharacterChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
-        if (experienced) {
-          view.setOverview(experienceOverview);
-        }
-        else {
-          view.setOverview(creationOverview);
-        }
+        setOverview(experienced, experienceOverview, creationOverview);
       }
     });
-    view.setOverview(creationOverview);
+    setOverview(model.isCharacterExperienced(), experienceOverview, creationOverview);
     recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
+  }
+
+  private void setOverview(boolean experienced, IOverviewCategory experienceOverview,
+                           IOverviewCategory creationOverview) {
+    if (experienced) {
+      view.setOverview(experienceOverview);
+    }
+    else {
+      view.setOverview(creationOverview);
+    }
   }
 
   private void recalculateOverview(
@@ -142,16 +152,19 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
     intimacyView.setValue(intimacy.getTrait().getCurrentValue());
     new TraitPresenter(intimacy.getTrait(), intimacyView).initPresentation();
     intimacyView.addButtonListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         model.removeEntry(intimacy);
       }
     });
     intimacyView.getInnerView().addButtonSelectedListener(new IBooleanValueChangedListener() {
+      @Override
       public void valueChanged(boolean newValue) {
         intimacy.setComplete(newValue);
       }
     });
     intimacy.addCompletionListener(new IBooleanValueChangedListener() {
+      @Override
       public void valueChanged(boolean newValue) {
         intimacyView.getInnerView().setButtonState(newValue, true);
       }
