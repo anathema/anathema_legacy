@@ -13,6 +13,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class MutationsViewFactory implements IAdditionalViewFactory {
 
+  @Override
   public IView createView(final IAdditionalModel model, final IResources resources, ICharacterType type) {
     IMutationsViewProperties properties = new IMutationsViewProperties() {
       @Override
@@ -22,8 +23,9 @@ public class MutationsViewFactory implements IAdditionalViewFactory {
     };
 
     IMutationsView view = new MutationsView(properties);
-    new MutationsPresenter(view, ((MutationsAdditionalModel) model).getModel(), resources).initPresentation();
-
+    MutationsPresenter presenter = new MutationsPresenter(view, ((MutationsAdditionalModel) model).getModel(),
+            resources);
+    presenter.initPresentation();
     return view;
   }
 }

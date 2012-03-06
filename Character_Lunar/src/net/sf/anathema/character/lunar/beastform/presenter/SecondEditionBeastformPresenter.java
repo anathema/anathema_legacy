@@ -20,11 +20,8 @@ public class SecondEditionBeastformPresenter implements IPresenter {
   private final IMutationsModel mutationModel;
   private final IMutationsView mutationView;
 
-  public SecondEditionBeastformPresenter(IResources resources,
-		  IBeastformView view,
-		  IBeastformModel model,
-		  IMutationsModel mutationModel,
-		  IMutationsView mutationView) {
+  public SecondEditionBeastformPresenter(IResources resources, IBeastformView view, IBeastformModel model,
+                                         IMutationsModel mutationModel, IMutationsView mutationView) {
     this.resources = resources;
     this.view = view;
     this.model = model;
@@ -32,49 +29,41 @@ public class SecondEditionBeastformPresenter implements IPresenter {
     this.mutationView = mutationView;
   }
 
+  @Override
   public void initPresentation() {
     initAttributePresentation();
     initGiftPresentation();
     initSpiritFormPresentation();
   }
-  
-  private void initSpiritFormPresentation()
-  {
-	  ((SecondEditionBeastformView)view).setSpiritListener(new IObjectValueChangedListener<String>()
-	  {
 
-		@Override
-		public void valueChanged(String newValue)
-		{
-			((SecondEditionBeastformModel)model).setSpiritForm(newValue);
-		}
-	  });
+  private void initSpiritFormPresentation() {
+    ((SecondEditionBeastformView) view).setSpiritListener(new IObjectValueChangedListener<String>() {
+      @Override
+      public void valueChanged(String newValue) {
+        ((SecondEditionBeastformModel) model).setSpiritForm(newValue);
+      }
+    });
   }
 
-  private void initGiftPresentation()
-  {
-	  MutationsPresenter presenter = new MutationsPresenter(mutationView, mutationModel, resources);
-	  presenter.initPresentation();
-	  view.addMutationsView(presenter.getView());
+  private void initGiftPresentation() {
+    MutationsPresenter presenter = new BeastformPresenter(mutationView, mutationModel, resources);
+    presenter.initPresentation();
+    view.addMutationsView(presenter.getView());
   }
 
   private void initAttributePresentation() {
     for (IBeastformAttribute attribute : model.getAttributes()) {
       IDefaultTrait trait = attribute.getTrait();
-      IIntValueView traitView = view.addAttributeValueView(
-          resources.getString(trait.getType().getId()),
-          trait.getCurrentValue(),
-          trait.getMaximalValue());
+      IIntValueView traitView = view.addAttributeValueView(resources.getString(trait.getType().getId()),
+              trait.getCurrentValue(), trait.getMaximalValue());
       new TraitPresenter(trait, traitView).initPresentation();
     }
-    for (IBeastformAttribute attribute : ((SecondEditionBeastformModel)model).getSpiritAttributes()) {
-        IDefaultTrait trait = attribute.getTrait();
-        IIntValueView traitView = ((SecondEditionBeastformView)view).addSpiritAttributeValueView(
-                resources.getString(trait.getType().getId()),
-                trait.getCurrentValue(),
-                trait.getMaximalValue());
-        new TraitPresenter(trait, traitView).initPresentation();
-        
-      }
+    for (IBeastformAttribute attribute : ((SecondEditionBeastformModel) model).getSpiritAttributes()) {
+      IDefaultTrait trait = attribute.getTrait();
+      IIntValueView traitView = ((SecondEditionBeastformView) view).addSpiritAttributeValueView(
+              resources.getString(trait.getType().getId()), trait.getCurrentValue(), trait.getMaximalValue());
+      new TraitPresenter(trait, traitView).initPresentation();
+
+    }
   }
 }

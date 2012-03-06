@@ -1,8 +1,8 @@
 package net.sf.anathema.character.mutations.model;
 
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.library.quality.model.AbstractQualityModel;
-import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
@@ -12,7 +12,7 @@ public abstract class AbstractMutationsModel extends AbstractQualityModel<IMutat
   protected IMutation[] allMutations;
   private final ChangeControl overviewControl = new ChangeControl();
 
-  public AbstractMutationsModel(final ICharacterModelContext context) {
+  public AbstractMutationsModel(ICharacterModelContext context) {
     super(context);
   }
 
@@ -25,6 +25,7 @@ public abstract class AbstractMutationsModel extends AbstractQualityModel<IMutat
     return super.isSelectable(quality) && prerequisitesFulfilled;
   }
 
+  @Override
   public IMutation[] getAvailableQualities() {
     ArrayList<IMutation> availableMutations = new ArrayList<IMutation>();
     for (IMutation Mutation : allMutations) {
@@ -36,10 +37,7 @@ public abstract class AbstractMutationsModel extends AbstractQualityModel<IMutat
     return availableMutations.toArray(new IMutation[availableMutations.size()]);
   }
 
-  public boolean isCreationLearnedSelectionInExperiencedCharacter(IQualitySelection<IMutation> selection) {
-    return selection.isCreationActive() && getContext().getBasicCharacterContext().isExperienced();
-  }
-
+  @Override
   public IMutation getMutationById(String MutationId) {
     for (IMutation Mutation : allMutations) {
       if (Mutation.getId().equals(MutationId)) {
@@ -47,10 +45,16 @@ public abstract class AbstractMutationsModel extends AbstractQualityModel<IMutat
       }
     }
     throw new IllegalArgumentException("No Mutation found for id \"" //$NON-NLS-1$
-                                       + MutationId + "\"."); //$NON-NLS-1$
+            + MutationId + "\"."); //$NON-NLS-1$
   }
 
+  @Override
   public void addOverviewChangedListener(IChangeListener listener) {
     overviewControl.addChangeListener(listener);
+  }
+
+  @Override
+  public void addCharacterChangeListener(ICharacterChangeListener listener) {
+    getContext().getCharacterListening().addChangeListener(listener);
   }
 }

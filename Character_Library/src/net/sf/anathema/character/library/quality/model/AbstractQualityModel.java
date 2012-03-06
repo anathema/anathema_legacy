@@ -1,14 +1,14 @@
 package net.sf.anathema.character.library.quality.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractQualityModel<Q extends IQuality> implements IQualityModel<Q> {
 
@@ -21,14 +21,17 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
     this.context = context;
   }
 
+  @Override
   public void setCurrentQuality(Q quality) {
     this.currentQuality = quality;
   }
 
+  @Override
   public Q getCurrentQuality() {
     return currentQuality;
   }
 
+  @Override
   public boolean isSelectable(Q quality) {
     return !isSelected(quality);
   }
@@ -42,12 +45,14 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
     return false;
   }
 
+  @Override
   public boolean isActive(IQualitySelection<Q> selection) {
     boolean experienceActiveWhileExperienced = isCharacterExperienced() && selection.isExperienceActive();
     boolean creationActiveDuringCreation = !isCharacterExperienced() && selection.isCreationActive();
     return creationActiveDuringCreation || experienceActiveWhileExperienced;
   }
 
+  @Override
   public final boolean isCharacterExperienced() {
     return context.getBasicCharacterContext().isExperienced();
   }
@@ -60,10 +65,12 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
     control.fireChangedEvent();
   }
 
+  @Override
   public final void addModelChangeListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
 
+  @Override
   public void removeQualitySelection(IQualitySelection<Q> selection) {
     for (IQualitySelection<Q> existingSelection : getSelectedQualities()) {
       if (existingSelection.equals(selection)) {
@@ -89,6 +96,7 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
     selectedQualities.remove(existingSelection);
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public IQualitySelection<Q>[] getSelectedQualities() {
     List<IQualitySelection<Q>> activeSelectedQualities = new ArrayList<IQualitySelection<Q>>();
@@ -98,6 +106,7 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
     return activeSelectedQualities.toArray(new IQualitySelection[activeSelectedQualities.size()]);
   }
 
+  @Override
   public void addQualitySelection(IQualitySelection<Q> selection) {
     if (!selection.isCreationActive() && !selection.isExperienceActive()) {
       return;

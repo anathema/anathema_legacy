@@ -6,7 +6,7 @@ import net.sf.anathema.character.library.selection.IRemovableStringEntriesView;
 
 public interface IIntimaciesView extends IRemovableStringEntriesView<IToggleButtonTraitView< ? >> {
 
-  public IOverviewCategory createOverview(String borderLabel);
+  IOverviewCategory createOverview(String borderLabel);
 
-  public void setOverview(IOverviewCategory overviewView);
+  void setOverview(IOverviewCategory overviewView);
 }

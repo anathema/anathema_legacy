@@ -31,11 +31,13 @@ public class MutationsModel extends AbstractMutationsModel {
     return super.isSelectable(quality) && prerequisitesFulfilled;
   }
 
+  @Override
   public void designOverview(IOverviewCategory overview, IResources resources) {
     bonusPointSpentView = overview.addIntegerValueView(resources.getString("Mutations.Overview.BonusSpent"), 2);
     bonusPointGainedView = overview.addIntegerValueView(resources.getString("Mutations.Overview.BonusGained"), 2);
   }
 
+  @Override
   public void updateOverview() {
     calculator.recalculate();
     bonusPointSpentView.setValue(calculator.getBonusPointCost());
