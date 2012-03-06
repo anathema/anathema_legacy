@@ -1,12 +1,5 @@
 package net.sf.anathema.charmentry.model.data;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
@@ -26,6 +19,13 @@ import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class ConfigurableCharmData implements IConfigurableCharmData {
 
@@ -67,7 +67,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 	this.generic = generic;
   }
   
-  public boolean isGeneric()
+  public boolean isInstanceOfGenericCharm()
   {
 	return generic;
   }

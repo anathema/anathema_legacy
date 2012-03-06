@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.magic;
 
-import java.util.List;
-import java.util.Set;
-
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
@@ -13,6 +10,9 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+
+import java.util.List;
+import java.util.Set;
 
 public interface ICharmData extends IMagicData {
   public static final IIdentificate FORM_ATTRIBUTE = new Identificate("Form"); //$NON-NLS-1$
@@ -47,5 +47,5 @@ public interface ICharmData extends IMagicData {
 
   public ICharmTypeModel getCharmTypeModel();
   
-  public boolean isGeneric();
+  public boolean isInstanceOfGenericCharm();
 }

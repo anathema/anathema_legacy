@@ -1,8 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
@@ -15,6 +12,9 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.GenericCharmStats;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenericCharmUtilities
 {
@@ -51,11 +51,10 @@ public class GenericCharmUtilities
 	{
 		List<IMagicStats> genericCharmStats = new ArrayList<IMagicStats>();
 		ICharm[] charms = CharmCache.getInstance().getCharms(
-				character.getTemplate().getTemplateType().getCharacterType(),
-				character.getRules());
+                character.getTemplate().getTemplateType().getCharacterType(), character.getRules());
 		for (ICharm charm : charms)
 		{
-			if (charm.isGeneric())
+			if (charm.isInstanceOfGenericCharm())
 			{
 				IMagicStats stats = new GenericCharmStats(charm, character);
 				if (!genericCharmStats.contains(stats))

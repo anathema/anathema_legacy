@@ -1,12 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -35,11 +28,18 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Charm extends Identificate implements ICharm {
 
@@ -103,7 +103,7 @@ public class Charm extends Identificate implements ICharm {
   public Charm(ICharmData charmData) {
     super(charmData.getId());
     this.characterType = charmData.getCharacterType();
-    this.isGeneric = charmData.isGeneric();
+    this.isGeneric = charmData.isInstanceOfGenericCharm();
     this.group = charmData.getGroupId();
     this.temporaryCost = charmData.getTemporaryCost();
     this.comboRules = new ComboRestrictions();
@@ -155,7 +155,7 @@ public class Charm extends Identificate implements ICharm {
     return group;
   }
   
-  public boolean isGeneric() {
+  public boolean isInstanceOfGenericCharm() {
 	return isGeneric;
   }
 
@@ -415,7 +415,7 @@ public class Charm extends Identificate implements ICharm {
         getCharacterType(),
         getId(),
         getGroupId(),
-        isGeneric(),
+        isInstanceOfGenericCharm(),
         this.prerequisisteList,
         getTemporaryCost(),
         getComboRules(),
