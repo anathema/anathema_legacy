@@ -15,6 +15,7 @@ http://anathema.sf.net
 
 -- Bugfixes --
 * Spirits are available as NPCs only. They no longer track BP/XP.
+* Compass: East and Compass: West are shown correctly on the screen.
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.0 "Thorns"
