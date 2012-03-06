@@ -96,6 +96,10 @@ public class DummyCharm extends Identificate implements ICharm {
   public void setCharacterType(ICharacterType type) {
     characterType = type;
   }
+  
+  public boolean isGeneric() {
+	return false;
+  }
 
   public List<String> getParentSubeffects() {
     return new ArrayList<String>();

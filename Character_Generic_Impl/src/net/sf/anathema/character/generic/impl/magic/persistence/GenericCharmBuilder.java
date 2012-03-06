@@ -35,4 +35,10 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, 
     comboBuilder.setType(type);
     charmPrerequisiteBuilder.setType(type);
   }
+  
+  @Override
+  protected boolean isBuildingGenericCharms()
+  {
+	  return true;
+  }
 }

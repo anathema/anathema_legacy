@@ -98,6 +98,7 @@ public class CharmBuilder implements ICharmBuilder {
           characterType,
           id,
           group,
+          isBuildingGenericCharms(),
           prerequisiteList,
           temporaryCost,
           comboRules,
@@ -166,5 +167,10 @@ public class CharmBuilder implements ICharmBuilder {
       String casteId = favoredElement.attributeValue(ICharmXMLConstants.TAG_CASTE);
       charm.addFavoredCasteId(casteId);
     }
+  }
+  
+  protected boolean isBuildingGenericCharms()
+  {
+	  return false;
   }
 }

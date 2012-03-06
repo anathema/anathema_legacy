@@ -52,6 +52,10 @@ public class DummyCharmData implements ICharmData {
   public String getGroupId() {
     return null;
   }
+  
+  public boolean isGeneric() {
+	return false;
+  }
 
   public IComboRestrictions getComboRules() {
     return null;

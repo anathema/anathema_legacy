@@ -46,5 +46,6 @@ public interface ICharmData extends IMagicData {
   public List<String> getParentSubeffects();
 
   public ICharmTypeModel getCharmTypeModel();
-
+  
+  public boolean isGeneric();
 }

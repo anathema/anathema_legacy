@@ -31,6 +31,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   private ICharacterType characterType;
   private String id;
+  private boolean generic;
   private IDuration duration;
   private IGenericTrait essence = new ValuedTraitType(OtherTraitType.Essence, 1);
   private Map<ITraitType, IGenericTrait> prerequisitesByType = new LinkedHashMap<ITraitType, IGenericTrait>();
@@ -60,6 +61,15 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   public String getId() {
     return id;
+  }
+  
+  public void setGeneric(boolean generic) {
+	this.generic = generic;
+  }
+  
+  public boolean isGeneric()
+  {
+	return generic;
   }
 
   public IExaltedSourceBook getSource() {

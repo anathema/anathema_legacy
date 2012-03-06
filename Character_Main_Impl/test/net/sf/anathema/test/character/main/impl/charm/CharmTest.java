@@ -32,7 +32,7 @@ public class CharmTest {
     try {
       new Charm(CharacterType.SOLAR, "ATTRIBUTES", //$NON-NLS-1$
         "Group", //$NON-NLS-1$
-        prerequisiteList, new CostList(null, null, null, null), new ComboRestrictions(), SimpleDuration.getDuration("Duration"), //$NON-NLS-1$
+        false, prerequisiteList, new CostList(null, null, null, null), new ComboRestrictions(), SimpleDuration.getDuration("Duration"), //$NON-NLS-1$
         model, null);
       fail();
     } catch (ContractFailedException e) {

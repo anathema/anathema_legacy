@@ -49,6 +49,7 @@ public class Charm extends Identificate implements ICharm {
   private final IComboRestrictions comboRules;
   private final IDuration duration;
   private final String group;
+  private final boolean isGeneric;
 
   private final IExaltedSourceBook[] sources;
   private final ICostList temporaryCost;
@@ -68,6 +69,7 @@ public class Charm extends Identificate implements ICharm {
       ICharacterType characterType,
       String id,
       String group,
+      boolean isGeneric,
       CharmPrerequisiteList prerequisiteList,
       ICostList temporaryCost,
       IComboRestrictions comboRules,
@@ -86,6 +88,7 @@ public class Charm extends Identificate implements ICharm {
     Ensure.ensureNotNull("Argument must not be null.", sources); //$NON-NLS-1$
     this.characterType = characterType;
     this.group = group;
+    this.isGeneric = isGeneric;
     this.prerequisisteList = prerequisiteList;
     this.temporaryCost = temporaryCost;
     this.comboRules = comboRules;
@@ -100,6 +103,7 @@ public class Charm extends Identificate implements ICharm {
   public Charm(ICharmData charmData) {
     super(charmData.getId());
     this.characterType = charmData.getCharacterType();
+    this.isGeneric = charmData.isGeneric();
     this.group = charmData.getGroupId();
     this.temporaryCost = charmData.getTemporaryCost();
     this.comboRules = new ComboRestrictions();
@@ -149,6 +153,10 @@ public class Charm extends Identificate implements ICharm {
 
   public String getGroupId() {
     return group;
+  }
+  
+  public boolean isGeneric() {
+	return isGeneric;
   }
 
   public IComboRestrictions getComboRules() {
@@ -407,6 +415,7 @@ public class Charm extends Identificate implements ICharm {
         getCharacterType(),
         getId(),
         getGroupId(),
+        isGeneric(),
         this.prerequisisteList,
         getTemporaryCost(),
         getComboRules(),
