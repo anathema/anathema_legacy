@@ -1,5 +1,6 @@
 package net.sf.anathema.character.mutations.presenter;
 
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.library.quality.model.QualitySelection;
@@ -30,18 +31,25 @@ public class MutationsPresenter implements IPresenter {
     return view;
   }
 
+  protected IMutationsModel getModel() {
+    return model;
+  }
+
+  @Override
   public void initPresentation() {
     final IMagicLearnView mutationView = view.addMutationsView(new MutationViewLearnProperties(resources, model));
 
     model.designOverview(view.createOverview(resources.getString("Mutations.Overview")), resources);
 
     mutationView.addMagicViewListener(new IMagicViewListener() {
+      @Override
       @SuppressWarnings("unchecked")
       public void magicRemoved(Object[] removedMagic) {
         model.removeQualitySelection((IQualitySelection<IMutation>) removedMagic[0]);
         updateOverview();
       }
 
+      @Override
       public void magicAdded(Object[] addedMagic) {
         IMutation mutation = (IMutation) addedMagic[0];
         IQualitySelection<IMutation> selection = new QualitySelection<IMutation>(mutation, mutation.getCost(), !model.isCharacterExperienced());
@@ -50,11 +58,13 @@ public class MutationsPresenter implements IPresenter {
       }
     });
     model.addModelChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateMutationsViews(mutationView);
       }
     });
     model.addOverviewChangedListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateMutationsViews(mutationView);
         updateOverview();
@@ -62,19 +72,32 @@ public class MutationsPresenter implements IPresenter {
     });
     updateMutationsViews(mutationView);
     updateOverview();
+    model.addCharacterChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        updateOverview();
+      }
+    });
   }
 
   public void updateOverview() {
     model.updateOverview();
+    hideOverviewForExperiencedCharacter();
   }
 
-  private void updateMutationsViews(final IMagicLearnView giftView) {
+  private void hideOverviewForExperiencedCharacter() {
+    if (model.isCharacterExperienced()){
+      view.hideOverview();
+    }
+  }
+
+  private void updateMutationsViews( IMagicLearnView giftView) {
     setAvailableMutations(model, giftView);
     IQualitySelection<IMutation>[] selectedMutations = model.getSelectedQualities();
     giftView.setLearnedMagic(selectedMutations);
   }
 
-  private void setAvailableMutations(final IQualityModel<IMutation> giftModel, final IMagicLearnView giftView) {
+  private void setAvailableMutations( IQualityModel<IMutation> giftModel, IMagicLearnView giftView) {
     IMutation[] availablePerks = giftModel.getAvailableQualities();
     IMutation[] sortedPerks = new IMutation[availablePerks.length];
     I18nedIdentificateSorter<IMutation> sorter = createSorter();
@@ -85,7 +108,7 @@ public class MutationsPresenter implements IPresenter {
   private I18nedIdentificateSorter<IMutation> createSorter() {
     return new I18nedIdentificateSorter<IMutation>() {
       @Override
-      protected String getString(final IResources sorterResources, IMutation mutation) {
+      protected String getString(IResources sorterResources, IMutation mutation) {
         String typeString = sorterResources.getString("Mutations.Type." + mutation.getType().getId());
         String mutationString = sorterResources.getString("Mutations.Mutation." //$NON-NLS-1$
                                                           + mutation.getId());

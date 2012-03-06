@@ -6,11 +6,11 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public interface IOverviewCategory extends IView {
 
-  public ILabelledAlotmentView addAlotmentView(String labelText, int maxValueLength);
+  ILabelledAlotmentView addAlotmentView(String labelText, int maxValueLength);
 
-  public IValueView<Integer> addIntegerValueView(String labelText, int maxValueLength);
+  IValueView<Integer> addIntegerValueView(String labelText, int maxValueLength);
 
-  public IValueView<String> addStringValueView(String labelText);
+  IValueView<String> addStringValueView(String labelText);
 
-  public IAdditionalAlotmentView addAdditionalAlotmentView(String labelText, int maxValueLength);
+  IAdditionalAlotmentView addAdditionalAlotmentView(String labelText, int maxValueLength);
 }

@@ -112,9 +112,9 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
   }
 
   private void recalculateOverview(
-      final ILabelledAlotmentView freeIntimaciesView,
-      final ILabelledAlotmentView totalIntimaciesView,
-      final IValueView<Integer> bonusPointsView,
+      ILabelledAlotmentView freeIntimaciesView,
+      ILabelledAlotmentView totalIntimaciesView,
+      IValueView<Integer> bonusPointsView,
       ILabelledAlotmentView experienceMaximumView) {
     adjustBonusPointsOverview(freeIntimaciesView, model.getEntries().size(), model.getFreeIntimacies());
     adjustTotalOverview(totalIntimaciesView, model.getEntries().size(), model.getIntimaciesLimit());
