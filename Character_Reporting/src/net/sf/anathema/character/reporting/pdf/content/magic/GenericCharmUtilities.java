@@ -3,8 +3,6 @@ package net.sf.anathema.character.reporting.pdf.content.magic;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
@@ -29,17 +27,10 @@ public class GenericCharmUtilities
 	{
 		if (AnathemaCharacterPreferences.getDefaultPreferences().printAllGenerics())
 			return true;
-		List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
 		    
-		for (final ITraitType trait : traits)
+		for (IMagic magic : character.getAllLearnedMagic())
 		{
-			final String charmId = stats.getName().getId() + "." + trait.getId();
-			boolean isLearned = CollectionUtilities.getFirst(allLearnedMagic, new IPredicate<IMagic>() {
-			    public boolean evaluate(IMagic value) {
-			      return charmId.equals(value.getId());
-			    }
-			  }) != null;
-			if (isLearned)
+			if (magic.getId().startsWith(stats.getName().getId()))
 				return true;
 		}
 		return false;
