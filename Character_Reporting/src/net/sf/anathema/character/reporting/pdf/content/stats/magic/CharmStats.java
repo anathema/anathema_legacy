@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -41,25 +40,5 @@ public class CharmStats extends AbstractCharmStats {
       nameString.append("x)"); //$NON-NLS-1$
     }
     return nameString.toString();
-  }
-
-  public int compareTo(IMagicStats stats) {
-    if (stats instanceof GenericCharmStats) {
-      return 1;
-    }
-    else if (stats instanceof AbstractCharmStats) {
-      /*
-      AbstractCharmStats charm = (AbstractCharmStats)stats;
-      int r = getMagic().getGroupId().compareTo(charm.getMagic().getGroupId());
-      if (r == 0) {
-        r = this.getName().getId().compareTo(charm.getName().getId());
-      }
-      return r;
-      */
-      return 0;
-    }
-    else {
-      return -1;
-    }
   }
 }

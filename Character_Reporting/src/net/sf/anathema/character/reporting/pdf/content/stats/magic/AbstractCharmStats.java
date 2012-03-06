@@ -63,14 +63,6 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
       return 1;
     }
     else if (stats instanceof AbstractCharmStats) {
-      /*
-      AbstractCharmStats charm = (AbstractCharmStats)stats;
-      int r = getMagic().getGroupId().compareTo(charm.getMagic().getGroupId());
-      if (r == 0) {
-        r = this.getName().getId().compareTo(charm.getName().getId());
-      }
-      return r;
-      */
       return 0;
     }
     else {
