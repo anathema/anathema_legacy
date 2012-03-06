@@ -7,11 +7,14 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
-			Release 3.5.0 "Thorns"
+			Release 3.5.0 "XXX"
 ===------------------------------------------------------------------------------===
 
+-- Features --
+* New Preference: Print only those generics the Character knows about.
+
 -- Bugfixes --
-* Spirits are no longer avaible as NPCs only. They no longer track BP/XP.
+* Spirits are available as NPCs only. They no longer track BP/XP.
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.0 "Thorns"
