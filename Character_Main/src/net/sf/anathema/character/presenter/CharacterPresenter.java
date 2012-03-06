@@ -7,8 +7,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.model.advance.IExperiencePointManagement;
-import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.charm.IContentPresenter;
 import net.sf.anathema.character.presenter.charm.MagicPresenter;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
@@ -36,19 +34,15 @@ public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
   private final ICharacterView characterView;
   private final ICharacterGenerics generics;
   private final IResources resources;
-  private final OverviewPresenter overviewPresenter;
-  private final ExperiencePointPresenter experiencePointPresenter;
+  private final PointPresentationStrategy pointPresentation;
 
   public CharacterPresenter(ICharacter character, ICharacterView view, IResources resources,
-                            ICharacterGenerics generics, IBonusPointManagement bonusPoints,
-                            IExperiencePointManagement experiencePoints) {
+                            ICharacterGenerics generics, PointPresentationStrategy pointPresentation) {
     this.character = character;
     this.characterView = view;
     this.resources = resources;
     this.generics = generics;
-    ICharacterStatistics statistics = character.getStatistics();
-    this.overviewPresenter = new OverviewPresenter(resources, statistics, view, bonusPoints, experiencePoints);
-    this.experiencePointPresenter = new ExperiencePointPresenter(resources, statistics, view, this);
+    this.pointPresentation = pointPresentation;
   }
 
   private ICharacterStatistics getStatistics() {
@@ -160,13 +154,6 @@ public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
     initMagicPresentation();
     initMultiTabViewPresentation(getString("CardView.MiscellaneousConfiguration.Title"), //$NON-NLS-1$
             AdditionalModelType.Miscellaneous);
-    if (!isNpc()) {
-      overviewPresenter.initPresentation();
-      experiencePointPresenter.initPresentation();
-    }
-  }
-
-  private boolean isNpc() {
-    return getStatistics().getCharacterTemplate().isNpcOnly();
+    pointPresentation.initPresentation(this);
   }
 }

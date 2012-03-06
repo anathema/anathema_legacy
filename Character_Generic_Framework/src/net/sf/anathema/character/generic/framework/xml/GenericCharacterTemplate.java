@@ -40,9 +40,9 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private ITemplateType templateType;
   private ITraitTemplateCollection traitTemplateCollection;
   private GenericMagicTemplate magicTemplate;
-  private GenericExperiencePointCosts experienceCosts;
-  private GenericBonusPointCosts bonusPointCosts;
-  private GenericCreationPoints creationPoints;
+  private GenericExperiencePointCosts experienceCosts = new GenericExperiencePointCosts();
+  private GenericBonusPointCosts bonusPointCosts = new GenericBonusPointCosts();
+  private GenericCreationPoints creationPoints = new GenericCreationPoints();
   private GenericEssenceTemplate essenceTemplate;
   private IGroupedTraitType[] abilityGroups;
   private IGroupedTraitType[] attributeGroups;

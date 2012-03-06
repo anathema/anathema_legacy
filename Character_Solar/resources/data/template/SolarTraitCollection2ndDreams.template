@@ -104,7 +104,7 @@
 			<minimum value="1"/>
 		</specialTrait>
 		<specialTrait id="Manse" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
-			<limitation type="Static" value="5"/>
+			<limitation type="Static" value="6"/>
 			<minimum value="1"/>
 		</specialTrait>
 		
@@ -129,10 +129,6 @@
 			<minimum value="0"/>
 		</specialTrait>
 		<specialTrait id="Familiar" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
-			<limitation type="Static" value="6"/>
-			<minimum value="0"/>
-		</specialTrait>
-		<specialTrait id="Manse" startValue="0" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
 			<limitation type="Static" value="6"/>
 			<minimum value="0"/>
 		</specialTrait>

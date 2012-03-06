@@ -1,7 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.creation;
 
-import java.util.Map;
-
 import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.impl.template.points.ThresholdRatingCosts;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -15,6 +13,8 @@ import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
+
+import java.util.Map;
 
 public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBonusPointCosts> implements
     IBonusPointCosts {
@@ -40,6 +40,7 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   private Map<String, Integer> generalKeywordCosts;
   private Map<String, Integer> favoredKeywordCosts;
 
+  @Override
   public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer)
   {
 	  boolean favored = analyzer.isMagicFavored(charm);
@@ -52,6 +53,7 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
 	   return getCharmCosts(favored, analyzer.getMartialArtsLevel(charm));
   }
 
+  @Override
   public int getAttributeCosts(IFavorableGenericTrait trait) {
     ICurrentRatingCosts attributeCosts = getAttributeCosts(trait.isCasteOrFavored());
     return attributeCosts.getRatingCosts(trait.getCurrentValue());
@@ -68,22 +70,27 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
     return new FixedValueRatingCosts(generalCost);
   }
 
+  @Override
   public ICurrentRatingCosts getVirtueCosts() {
     return new FixedValueRatingCosts(virtueCost);
   }
 
+  @Override
   public int getMaximumFreeVirtueRank() {
     return maximumFreeVirtueRank;
   }
 
+  @Override
   public int getMaximumFreeAbilityRank() {
     return maximumFreeAbilityRank;
   }
 
+  @Override
   public int getWillpowerCosts() {
     return willpowerCost;
   }
 
+  @Override
   public int getSpellCosts(ICostAnalyzer costMapping) {
     boolean isSorceryFavored = costMapping.isOccultFavored();
     return getCharmCosts(isSorceryFavored, null);
@@ -97,17 +104,21 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
     return favored ? favoredCharmCost : generalCharmCost;
   }
 
+  @Override
   public int getEssenceCost() {
     return essenceCost;
   }
 
+  @Override
   public int getMagicCosts(IMagic magic, final ICostAnalyzer analyzer) {
     final int[] cost = new int[1];
     magic.accept(new IMagicVisitor() {
+      @Override
       public void visitCharm(ICharm charm) {
         cost[0] = getCharmCosts(charm, analyzer);
       }
 
+      @Override
       public void visitSpell(ISpell spell) {
         cost[0] = getSpellCosts(analyzer);
       }
@@ -115,18 +126,22 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
     return cost[0];
   }
 
+  @Override
   public ICurrentRatingCosts getAbilityCosts(boolean favored) {
     return getFavorableFixedRatingCost(favored, favoredAbilityCost, generalAbilityCost);
   }
 
+  @Override
   public int getDefaultSpecialtyDotsPerPoint() {
     return generalSpecialtyDotsPerBonusPoint;
   }
 
+  @Override
   public int getFavoredSpecialtyDotsPerPoint() {
     return favoredSpecialtyDotsPerBonusPoint;
   }
 
+  @Override
   public ICurrentRatingCosts getBackgroundBonusPointCost() {
     return new ThresholdRatingCosts(lowBackgroundCost, highBackgroundCost);
   }
@@ -159,17 +174,6 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
 
   public void setEssenceCosts(int essenceCost) {
     this.essenceCost = essenceCost;
-  }
-  
-  public void setCharmCost(
-	      int generalCharmCost,
-	      int favoredCharmCost,
-	      int generalHighLevelMartialArtsCost,
-	      int favoredHighLevelMartialArtsCost)
-  {
-	  setCharmCosts(generalCharmCost, favoredCharmCost,
-			  generalHighLevelMartialArtsCost, favoredHighLevelMartialArtsCost,
-			  null, null);
   }
 
   public void setCharmCosts(

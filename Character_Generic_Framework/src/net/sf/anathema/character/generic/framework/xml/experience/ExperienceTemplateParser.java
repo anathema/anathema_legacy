@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.experience;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
@@ -11,8 +8,10 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericExperiencePointCosts> {
 
@@ -55,6 +54,7 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     return new GenericExperiencePointCosts();
   }
 
+  @Override
   public GenericExperiencePointCosts parseTemplate(Element element) throws PersistenceException {
     GenericExperiencePointCosts costs = getBasicTemplate(element);
     costs.setStandardMartialArtsLevel(standardLevel);
