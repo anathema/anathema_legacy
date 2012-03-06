@@ -57,7 +57,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
     for (ITraitType trait : traits) {
       table.addCell(createHeaderCell(graphics, directContent, trait));
     }
-    for (IMagicStats stats : character.getGenericCharmStats()) {
+    for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
       if (!GenericCharmUtilities.shouldShowCharm(stats, character, traits))
       	continue;
       Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);

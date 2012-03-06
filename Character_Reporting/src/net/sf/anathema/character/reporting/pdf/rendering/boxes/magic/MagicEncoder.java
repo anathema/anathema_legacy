@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.magic.*;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
@@ -40,7 +39,7 @@ public class MagicEncoder implements ContentEncoder {
   private static List<IMagicStats> collectPrintMagic(final IGenericCharacter character, final boolean includeSpells, final boolean includeCharms) {
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
     if (includeCharms) {
-      for (IMagicStats stats : character.getGenericCharmStats()) {
+      for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
     	if (GenericCharmUtilities.shouldShowCharm(stats, character))
         	printStats.add(stats);
       }
@@ -52,7 +51,7 @@ public class MagicEncoder implements ContentEncoder {
         if (!includeCharms) {
           return;
         }
-        if (CharmUtilities.isGenericCharmFor(charm, character)) {
+        if (GenericCharmUtilities.isGenericCharmFor(charm, character)) {
           return;
         }
         if (charm.hasAttribute(KNACK)) {

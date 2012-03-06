@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
-import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
@@ -60,7 +59,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
   }
 
   public int compareTo(IMagicStats stats) {
-    if (stats instanceof AbstractGenericCharm) {
+    if (stats instanceof GenericCharmStats) {
       return 1;
     }
     else if (stats instanceof AbstractCharmStats) {

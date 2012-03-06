@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -48,7 +49,7 @@ public class AttributesEncoder implements ContentEncoder {
     List<IMagicStats> excellencies = new ArrayList<IMagicStats>();
     FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
     if (type == FavoringTraitType.AttributeType) {
-      for (IMagicStats stats : character.getGenericCharmStats()) {
+      for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
         String genericId = stats.getName().getId();
         if (genericId.endsWith("Excellency")) {
           excellencies.add(stats);

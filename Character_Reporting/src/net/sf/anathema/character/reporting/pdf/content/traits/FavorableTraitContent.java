@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -37,7 +38,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
   public IMagicStats[] getExcellencies() {
     List<IMagicStats> excellencies = new ArrayList<IMagicStats>();
     if (shouldShowExcellencies()) {
-      for (IMagicStats stats : character.getGenericCharmStats()) {
+      for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
         String genericId = stats.getName().getId();
         if (genericId.endsWith("Excellency")) {
           excellencies.add(stats);

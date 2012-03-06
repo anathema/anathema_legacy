@@ -7,6 +7,8 @@ import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
@@ -14,15 +16,16 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.stats.magic.GenericCharmStats;
 
 public class GenericCharmUtilities
 {
-	public static boolean shouldShowCharm(final IMagicStats stats, IGenericCharacter character)
+	public static boolean shouldShowCharm(IMagicStats stats, IGenericCharacter character)
 	{
 		return shouldShowCharm(stats, character, getGenericCharmTraits(character));
 	}
 	
-	public static boolean shouldShowCharm(final IMagicStats stats, IGenericCharacter character, List<ITraitType> traits)
+	public static boolean shouldShowCharm(IMagicStats stats, IGenericCharacter character, List<ITraitType> traits)
 	{
 		if (AnathemaCharacterPreferences.getDefaultPreferences().printAllGenerics())
 			return true;
@@ -41,13 +44,42 @@ public class GenericCharmUtilities
 		}
 		return false;
 	}
+	
+	public static boolean isGenericCharmFor(ICharm charm, IGenericCharacter character) {
+	    IMagicStats[] genericCharmStats = getGenericCharmStats(character);
+	    String charmId = charm.getId();
+	    for (IMagicStats stat : genericCharmStats) {
+	      if (charmId.startsWith(stat.getName().getId())) {
+	        return true;
+	      }
+	    }
+	    return false;
+	  }
+	  
+	public static IMagicStats[] getGenericCharmStats(IGenericCharacter character)
+	{
+		List<IMagicStats> genericCharmStats = new ArrayList<IMagicStats>();
+		ICharm[] charms = CharmCache.getInstance().getCharms(
+				character.getTemplate().getTemplateType().getCharacterType(),
+				character.getRules());
+		for (ICharm charm : charms)
+		{
+			if (charm.isGeneric())
+			{
+				IMagicStats stats = new GenericCharmStats(charm, character);
+				if (!genericCharmStats.contains(stats))
+					genericCharmStats.add(stats);
+			}
+		}
+		return genericCharmStats.toArray(new IMagicStats[0]);
+	}
 	  
 	public static int getDisplayedGenericCharmCount(IGenericCharacter character)
 	{
 		List<ITraitType> traits = getGenericCharmTraits(character);
 		int count = 0;
 		
-		for (IMagicStats stats : character.getGenericCharmStats())
+		for (IMagicStats stats : getGenericCharmStats(character))
 			if (shouldShowCharm(stats, character, traits))
 				count++;
 		return count;

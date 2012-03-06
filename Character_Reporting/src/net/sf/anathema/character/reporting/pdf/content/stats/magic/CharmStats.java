@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.framework.magic.AbstractGenericCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.lib.resources.IResources;
@@ -12,7 +11,7 @@ import java.util.List;
 
 public class CharmStats extends AbstractCharmStats {
 
-  private final IGenericCharacter character;
+  protected final IGenericCharacter character;
 
   public CharmStats(ICharm charm, IGenericCharacter character) {
     super(charm);
@@ -45,7 +44,7 @@ public class CharmStats extends AbstractCharmStats {
   }
 
   public int compareTo(IMagicStats stats) {
-    if (stats instanceof AbstractGenericCharm) {
+    if (stats instanceof GenericCharmStats) {
       return 1;
     }
     else if (stats instanceof AbstractCharmStats) {

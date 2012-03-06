@@ -5,6 +5,7 @@ import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.BackgroundsEncoder;
@@ -100,8 +101,9 @@ public class ExtendedMagic1stEditionPageEncoder extends AbstractPdfPageEncoder {
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    if (content.getCharacter().getGenericCharmStats().length > 0) {
-      float height = 55 + content.getCharacter().getGenericCharmStats().length * 11;
+	IMagicStats[] generics = GenericCharmUtilities.getGenericCharmStats(content.getCharacter());
+    if (generics.length > 0) {
+      float height = 55 + generics.length * 11;
       return encodeFixedBox(graphics, content, new GenericCharmEncoder(getResources()), 1, 3, distanceFromTop, height);
     } else {
       return 0;
