@@ -20,6 +20,8 @@ import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.concept.NatureProvider;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.CharacterPresenter;
+import net.sf.anathema.character.presenter.PlayerCharacterPointPresentation;
+import net.sf.anathema.character.presenter.PointPresentationStrategy;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
@@ -41,7 +43,8 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter"; //$NON-NLS-1$
 
   public ExaltedCharacterItemTypeConfiguration() throws AnathemaException {
-    super(new ItemType(CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/"))); //$NON-NLS-1$ //$NON-NLS-2$
+    super(new ItemType(CHARACTER_ITEM_TYPE_ID,
+            new RepositoryConfiguration(".ecg", "ExaltedCharacter/"))); //$NON-NLS-1$ //$NON-NLS-2$
     NatureProvider.getInstance().init();
   }
 
@@ -62,54 +65,55 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         if (statistics == null) {
           Icon icon = characterUI.getCharacterDescriptionTabIcon();
           ICharacterView characterView = new CharacterView(null, printName, icon, null);
-          new CharacterPresenter(character, characterView, resources, getGenerics(anathemaModel), null, null).initPresentation();
+          new CharacterPresenter(character, characterView, resources, getGenerics(anathemaModel),
+                  new NpcPointPresentation()).initPresentation();
           return characterView;
         }
-        ICharacterType characterType = character.getStatistics()
-            .getCharacterTemplate()
-            .getTemplateType()
-            .getCharacterType();
+        ICharacterType characterType = character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType();
         IIntValueDisplayFactory intValueDisplayFactory = new MarkerIntValueDisplayFactory(resources, characterType);
-        IIntValueDisplayFactory markerLessIntValueDisplayFactory = new MarkerLessIntValueDisplayFactory(
-            resources,
-            characterType);
+        IIntValueDisplayFactory markerLessIntValueDisplayFactory = new MarkerLessIntValueDisplayFactory(resources,
+                characterType);
         final Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
-        ICharacterView characterView = new CharacterView(
-            intValueDisplayFactory,
-            printName,
-            typeIcon,
-            markerLessIntValueDisplayFactory);
+        ICharacterView characterView = new CharacterView(intValueDisplayFactory, printName, typeIcon,
+                markerLessIntValueDisplayFactory);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(character.getStatistics());
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character.getStatistics());
-        new CharacterPresenter(
-            character,
-            characterView,
-            resources,
-            getGenerics(anathemaModel),
-            bonusPointManagement,
-            experiencePointManagement).initPresentation();
+        PointPresentationStrategy pointPresentation = choosePointPresentation(statistics, characterView,
+                bonusPointManagement, experiencePointManagement, resources);
+        new CharacterPresenter(character, characterView, resources, getGenerics(anathemaModel),
+                pointPresentation).initPresentation();
         return characterView;
       }
     };
   }
 
+  private PointPresentationStrategy choosePointPresentation(ICharacterStatistics statistics,
+                                                            ICharacterView characterView,
+                                                            IBonusPointManagement bonusPointManagement,
+                                                            IExperiencePointManagement experiencePointManagement,
+                                                            IResources resources) {
+    if (statistics.getCharacterTemplate().isNpcOnly()) {
+      return new NpcPointPresentation();
+    }
+    return new PlayerCharacterPointPresentation(resources, statistics, characterView, bonusPointManagement,
+            experiencePointManagement);
+  }
+
   private ICharacterGenerics getGenerics(IAnathemaModel model) {
-    ICharacterGenericsExtension genericsExtension = (ICharacterGenericsExtension) model.getExtensionPointRegistry()
-        .get(ICharacterGenericsExtension.ID);
+    ICharacterGenericsExtension genericsExtension = (ICharacterGenericsExtension) model.getExtensionPointRegistry().get(
+            ICharacterGenericsExtension.ID);
     return genericsExtension.getCharacterGenerics();
   }
 
   @Override
-  protected IItemTypeViewProperties createItemTypeCreationProperties(IAnathemaModel anathemaModel, IResources resources) {
+  protected IItemTypeViewProperties createItemTypeCreationProperties(IAnathemaModel anathemaModel,
+                                                                     IResources resources) {
     IExaltedRuleSet preferredRuleset = AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset();
     ICharacterGenerics generics = getGenerics(anathemaModel);
-    CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(
-        generics,
-        preferredRuleset,
-        resources);
-    CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(
-        generics.getCasteCollectionRegistry(),
-        anathemaModel.getRepository().getRepositoryFileResolver());
+    CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, preferredRuleset,
+            resources);
+    CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(generics.getCasteCollectionRegistry(),
+            anathemaModel.getRepository().getRepositoryFileResolver());
     return new CharacterViewProperties(getItemType(), resources, factory, scanner);
   }
 }
