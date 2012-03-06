@@ -27,10 +27,12 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
     return TraitRatingCostCalculator.getTraitRatingCosts(trait, ratingCosts);
   }
 
+  @Override
   public int getAbilityCosts(ITrait ability, final boolean favored) {
     final int[] abilityCosts = new int[1];
     ability.accept(new ITraitVisitor() {
 
+      @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         int sumCost = 0;
         for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
@@ -39,6 +41,7 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
         abilityCosts[0] = sumCost;
       }
 
+      @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         abilityCosts[0] = getTraitRatingCosts(visitedTrait, costs.getAbilityCosts(favored));
       }
@@ -47,34 +50,42 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
     return abilityCosts[0];
   }
 
+  @Override
   public int getAttributeCosts(ITrait attribute, final boolean favored) {
     return getTraitRatingCosts((IDefaultTrait)attribute, costs.getAttributeCosts(favored));
   }
 
+  @Override
   public int getEssenceCosts(IBasicTrait essence) {
     return getTraitRatingCosts(essence, costs.getEssenceCosts());
   }
 
+  @Override
   public int getVirtueCosts(IBasicTrait virtue) {
     return getTraitRatingCosts(virtue, costs.getVirtueCosts());
   }
 
+  @Override
   public int getWillpowerCosts(IBasicTrait willpower) {
     return getTraitRatingCosts(willpower, costs.getWillpowerCosts());
   }
 
+  @Override
   public int getComboCosts(ICharm[] charms) {
     return costs.getComboCosts(charms);
   }
 
+  @Override
   public double getSpecialtyCosts(boolean favored) {
     return costs.getSpecialtyCosts(favored);
   }
 
+  @Override
   public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     return costs.getSpellCosts(spell, basicCharacter, traitCollection); 
   }
 
+  @Override
   public int getCharmCosts(
       ICharm charm,
       IBasicCharacterData basicCharacter,

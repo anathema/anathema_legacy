@@ -21,11 +21,4 @@
       <toughnessControllingTrait type="Essence"/>
     </healthTemplate>
   </general>
-  <creation>
-    <bonusPointCosts/>
-    <creationPoints/>
-  </creation>
-  <experience>
-    <experiencePointCost/>
-  </experience>
 </exaltedCharacterTemplate>
