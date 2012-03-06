@@ -4,9 +4,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
@@ -60,13 +58,6 @@ public class ExaltedCharacter implements ICharacter {
     statistics.getCharacterContext()
         .getCharacterListening()
         .addChangeListener(management.getStatisticsChangeListener());
-    if (rules.getEdition() == ExaltedEdition.SecondEdition) {
-      IMagicStats[] magicStats = generics.getGenericCharmStatsRegistry().get(
-          template.getTemplateType().getCharacterType());
-      if (magicStats != null) {
-        statistics.setGenericCharmStats(magicStats);
-      }
-    }
     return statistics;
   }
 

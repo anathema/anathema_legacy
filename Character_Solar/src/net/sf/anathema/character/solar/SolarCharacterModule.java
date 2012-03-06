@@ -5,22 +5,12 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
-import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
-import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
-import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.solar.caste.SolarCaste;
-import net.sf.anathema.character.solar.generic.DivineTranscendenceOf;
-import net.sf.anathema.character.solar.generic.EssenceFlow;
-import net.sf.anathema.character.solar.generic.InfiniteMastery;
-import net.sf.anathema.character.solar.generic.SupremePerfectionOf;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
@@ -60,14 +50,6 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    FirstExcellency firstExcellency = new FirstExcellency(SOLAR, ExaltedSourceBook.SecondEdition, "1 m per die");
-    SecondExcellency secondExcellency = new SecondExcellency(SOLAR, ExaltedSourceBook.SecondEdition);
-    ThirdExcellency thirdExcellency = new ThirdExcellency(SOLAR, "4 m", ExaltedSourceBook.SecondEdition);
-    IRegistry<ICharacterType, IMagicStats[]> genericRegistery = characterGenerics.getGenericCharmStatsRegistry();
-    genericRegistery.register(SOLAR,
-            new IMagicStats[]{firstExcellency, secondExcellency, thirdExcellency, new InfiniteMastery(), new EssenceFlow(),
-                    new DivineTranscendenceOf(), new SupremePerfectionOf()});
-
     characterGenerics.getAdditionalTemplateParserRegistry().register(SolarVirtueFlawTemplate.ID, new SolarVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(SOLAR, new CasteCollection(SolarCaste.values()));
   }

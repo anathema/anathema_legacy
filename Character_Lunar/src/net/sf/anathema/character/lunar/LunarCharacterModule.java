@@ -6,9 +6,6 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
-import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
-import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
-import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
@@ -16,8 +13,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificBackgro
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificCharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -26,9 +21,6 @@ import net.sf.anathema.character.lunar.beastform.BeastformPersisterFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.BeastformViewFactory;
 import net.sf.anathema.character.lunar.caste.LunarCaste;
-import net.sf.anathema.character.lunar.generic.FlawlessFocus;
-import net.sf.anathema.character.lunar.generic.ImpossibleImprovement;
-import net.sf.anathema.character.lunar.generic.InstinctiveUnity;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodFactory;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodPersisterFactory;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
@@ -98,10 +90,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());
     templateMap.put(revisedDreamsType, LunarCaste.getDreamsValues());
     characterGenerics.getCasteCollectionRegistry().register(LUNAR, new CasteCollection(LunarCaste.values(), editionMap, templateMap));
-    characterGenerics.getGenericCharmStatsRegistry()
-            .register(LUNAR, new IMagicStats[]{new FirstExcellency(LUNAR, ExaltedSourceBook.Lunars2nd, "1 m per die"), //$NON-NLS-1$
-                    new SecondExcellency(LUNAR, ExaltedSourceBook.Lunars2nd), new ThirdExcellency(LUNAR, "4 m", ExaltedSourceBook.Lunars2nd), //$NON-NLS-1$
-                    new InstinctiveUnity(), new FlawlessFocus(), new ImpossibleImprovement()});
   }
 
   @Override

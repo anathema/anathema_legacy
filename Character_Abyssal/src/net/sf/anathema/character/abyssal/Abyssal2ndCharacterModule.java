@@ -1,11 +1,6 @@
 package net.sf.anathema.character.abyssal;
 
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
-import net.sf.anathema.character.abyssal.generic.ApocalypticEvolution;
-import net.sf.anathema.character.abyssal.generic.EssenceFlow;
-import net.sf.anathema.character.abyssal.generic.InfiniteMastery;
-import net.sf.anathema.character.abyssal.generic.RaveningMouth;
-import net.sf.anathema.character.abyssal.generic.SupremePerfection;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceModelFactory;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceParser;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonancePersisterFactory;
@@ -16,18 +11,12 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
-import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
-import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
-import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identificate;
@@ -58,11 +47,6 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    IRegistry<ICharacterType, IMagicStats[]> genericCharmRegistry = characterGenerics.getGenericCharmStatsRegistry();
-    genericCharmRegistry.register(ABYSSAL, new IMagicStats[]{new FirstExcellency(ABYSSAL, ExaltedSourceBook.SecondEdition, "1 m per die"),
-            //$NON-NLS-1$
-            new SecondExcellency(ABYSSAL, ExaltedSourceBook.SecondEdition), new ThirdExcellency(ABYSSAL, "4 m", ExaltedSourceBook.SecondEdition), new InfiniteMastery(), new RaveningMouth(), new EssenceFlow(), new ApocalypticEvolution(), new SupremePerfection()});
-
     characterGenerics.getAdditionalTemplateParserRegistry().register(AbyssalResonanceTemplate.ID, new AbyssalResonanceParser());
 
     characterGenerics.getCasteCollectionRegistry().register(ABYSSAL, new CasteCollection(AbyssalCaste.values()));

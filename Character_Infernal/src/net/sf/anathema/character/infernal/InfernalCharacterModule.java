@@ -5,19 +5,11 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
-import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
-import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.infernal.caste.InfernalCaste;
-import net.sf.anathema.character.infernal.generic.EffortlessYoziDominance;
-import net.sf.anathema.character.infernal.generic.SoSpeaksYozi;
-import net.sf.anathema.character.infernal.generic.YoziInevitabilityTechnique;
-import net.sf.anathema.character.infernal.generic.YoziMythosExultant;
 import net.sf.anathema.character.infernal.patron.InfernalPatronModelFactory;
 import net.sf.anathema.character.infernal.patron.InfernalPatronParser;
 import net.sf.anathema.character.infernal.patron.InfernalPatronTemplate;
@@ -47,11 +39,6 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter
     characterGenerics.getCasteCollectionRegistry().register(INFERNAL, new CasteCollection(InfernalCaste.values()));
     characterGenerics.getAdditionalTemplateParserRegistry().register(InfernalPatronTemplate.ID, new InfernalPatronParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(InfernalUrgeTemplate.ID, new InfernalUrgeParser());
-    characterGenerics.getGenericCharmStatsRegistry()
-            .register(INFERNAL, new IMagicStats[]{new FirstExcellency(INFERNAL, ExaltedSourceBook.Infernals, "1 m per die"), //$NON-NLS-1$
-                    new SecondExcellency(INFERNAL,
-                            ExaltedSourceBook.Infernals), new YoziMythosExultant(), new YoziInevitabilityTechnique(), new EffortlessYoziDominance(),
-                    new SoSpeaksYozi()});
   }
 
   @Override

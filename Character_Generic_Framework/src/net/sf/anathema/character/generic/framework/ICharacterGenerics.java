@@ -43,7 +43,5 @@ public interface ICharacterGenerics {
 
   IDataFileProvider getDataFileProvider();
 
-  IRegistry<ICharacterType, IMagicStats[]> getGenericCharmStatsRegistry();
-
   Instantiater getInstantiater();
 }

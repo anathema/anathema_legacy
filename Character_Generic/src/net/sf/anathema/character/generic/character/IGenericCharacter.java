@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
@@ -81,6 +80,4 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   public boolean isMultipleEffectCharm(ICharm magic);
 
   public boolean isSubeffectCharm(ICharm magic);
-
-  public IMagicStats[] getGenericCharmStats();
 }

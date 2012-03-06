@@ -35,7 +35,6 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final ICharacterTemplateRegistryCollection templateRegistries = new CharacterTemplateRegistryCollection();
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry = new Registry<ICharacterType, ICasteCollection>();
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<String, IAdditionalTemplateParser>();
-  private final IRegistry<ICharacterType, IMagicStats[]> genericCharmRegistry = new Registry<ICharacterType, IMagicStats[]>();
   private final ICharmProvider charmProvider = new CharmProvider();
   private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
   private final IDataFileProvider dataFileProvider;
@@ -91,11 +90,6 @@ public class CharacterGenerics implements ICharacterGenerics {
   @Override
   public IRegistry<String, IAdditionalTemplateParser> getAdditionalTemplateParserRegistry() {
     return additionalTemplateParserRegistry;
-  }
-
-  @Override
-  public IRegistry<ICharacterType, IMagicStats[]> getGenericCharmStatsRegistry() {
-    return genericCharmRegistry;
   }
 
   @Override

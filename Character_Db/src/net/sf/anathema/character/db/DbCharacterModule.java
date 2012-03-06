@@ -1,9 +1,6 @@
 package net.sf.anathema.character.db;
 
 import net.sf.anathema.character.db.aspect.DBAspect;
-import net.sf.anathema.character.db.magic.SpecialtyFocus;
-import net.sf.anathema.character.db.magic.SurgingMastery;
-import net.sf.anathema.character.db.magic.TerrestrialReinforcement;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
@@ -13,17 +10,12 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
-import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
-import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
-import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
@@ -81,13 +73,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    characterGenerics.getGenericCharmStatsRegistry()
-            .register(DB, new IMagicStats[]{new FirstExcellency(DB, ExaltedSourceBook.DragonBlooded2nd, "1 m per 2 dice"), //$NON-NLS-1$
-                    new SecondExcellency(DB, ExaltedSourceBook.DragonBlooded2nd), new ThirdExcellency(DB, "3 m",
-                    ExaltedSourceBook.DragonBlooded2nd), //$NON-NLS-1$
-                    new TerrestrialReinforcement(),
-                    new SpecialtyFocus(),
-                    new SurgingMastery()});
     characterGenerics.getAdditionalTemplateParserRegistry().register(DbVirtueFlawTemplate.TEMPLATE_ID, new DbVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(DB, new CasteCollection(DBAspect.values()));
   }

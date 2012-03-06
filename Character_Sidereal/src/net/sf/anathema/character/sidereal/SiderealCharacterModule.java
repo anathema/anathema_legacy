@@ -5,9 +5,6 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
-import net.sf.anathema.character.generic.framework.magic.FirstExcellency;
-import net.sf.anathema.character.generic.framework.magic.SecondExcellency;
-import net.sf.anathema.character.generic.framework.magic.ThirdExcellency;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
@@ -17,8 +14,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackground
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
@@ -34,8 +29,6 @@ import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateParser;
 import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFatePersisterFactory;
 import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateTemplate;
 import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateViewFactory;
-import net.sf.anathema.character.sidereal.generic.EssenceAuspicious;
-import net.sf.anathema.character.sidereal.generic.PropitiousAlignment;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxModelFactory;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxParser;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxPersisterFactory;
@@ -80,11 +73,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealCollegeTemplate.ID, new SiderealCollegeParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealFlawedFateTemplate.ID, new SiderealFlawedFateParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealParadoxTemplate.ID, new SiderealParadoxParser());
-    characterGenerics.getGenericCharmStatsRegistry()
-            .register(SIDEREAL, new IMagicStats[]{new FirstExcellency(SIDEREAL, ExaltedSourceBook.Sidereals2nd, "1 m per die"), //$NON-NLS-1$
-                    new SecondExcellency(SIDEREAL, ExaltedSourceBook.Sidereals2nd), new ThirdExcellency(SIDEREAL, "3 m",
-                    ExaltedSourceBook.Sidereals2nd), //$NON-NLS-1$
-                    new EssenceAuspicious(), new PropitiousAlignment()});
   }
 
   @Override
