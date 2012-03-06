@@ -14,8 +14,9 @@ http://anathema.sf.net
 * New Preference: Print only those generics the Character knows about.
 
 -- Bugfixes --
-* Spirits are available as NPCs only. They no longer track BP/XP.
-* Compass: East and Compass: West are shown correctly on the screen.
+* [2E] Spirits are available as NPCs only. They no longer track BP/XP.
+* [2E] Compass: East and Compass: West are shown correctly on the screen.
+* [2E] First Age Solars now start out with a level 1 Manse, as is their due.
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.0 "Thorns"
