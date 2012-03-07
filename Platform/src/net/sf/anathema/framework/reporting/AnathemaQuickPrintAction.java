@@ -114,16 +114,19 @@ public class AnathemaQuickPrintAction extends SmartAction {
               });
       Desktop.getDesktop().open(selectedFile);
     } catch (InvocationTargetException e) {
-      String errorMessage;
-      if (e.getTargetException() instanceof FileNotFoundException) {
-        errorMessage = resources.getString("Anathema.Reporting.Message.PrintError.FileOpen"); //$NON-NLS-1$
-      } else {
-        errorMessage = resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
-      }
+      String errorMessage = getErrorMessage(e);
       MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e.getCause()));
     } catch (Exception e) {
       String errorMessage = resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e.getCause()));
+      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e));
+    }
+  }
+
+  private String getErrorMessage(InvocationTargetException e) {
+    if (e.getCause() instanceof FileNotFoundException) {
+      return resources.getString("Anathema.Reporting.Message.PrintError.FileOpen"); //$NON-NLS-1$
+    } else {
+      return resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
     }
   }
 
