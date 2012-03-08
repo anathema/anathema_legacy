@@ -1,0 +1,42 @@
+<exaltedCharacterTemplate characterType="Solar" subtemplate="DreamsRevisedEstablished">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="template/SolarAbilityGroup2nd.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="DefaultEssence.template" />
+    <traitCollection uses="template/SolarTraitCollection2ndDreamsEstablished.template"/>
+    <magicTemplate uses="template/SolarMagic2nd.template"/>
+    <presentation uses="template/SolarPresentation2nd.template"/>
+    <additionalRules uses="template/SolarAdditionalRules2nd.template">
+     <forbiddenBackgrounds>
+     <backgroundReference id="Contacts"/>
+     <backgroundReference id="Followers"/>
+     <backgroundReference id="Influence"/>
+     <backgroundReference id="Resources"/>
+     </forbiddenBackgrounds>
+     <revisedIntimacies value="true" />
+     <willpowerVirtueBased value="false" />
+    </additionalRules>
+    <additionalTemplates>
+      <template id="SolarVirtueFlaw" />
+    </additionalTemplates>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template" />
+    <creationPoints>
+      <attributeDots primary="9" secondary="7" tertiary="6" />
+      <abilityDots general="30" favored="15" favoredPicks="5" />
+      <backgroundDots count="30" />
+      <virtueDots count="5" />
+      <specialtyDots count="3" />
+      <bonusPoints count="35" />
+      <charmPicks favored="12" general="23" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/SolarExperienceCost2nd.template" />
+  </experience>
+</exaltedCharacterTemplate>
