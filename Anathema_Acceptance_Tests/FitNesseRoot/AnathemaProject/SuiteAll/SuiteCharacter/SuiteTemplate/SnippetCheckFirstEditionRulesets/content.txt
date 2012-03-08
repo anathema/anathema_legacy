@@ -1,3 +1,0 @@
-!|Check Edition|
-|getEdition?|
-|FirstEdition|

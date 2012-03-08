@@ -1,3 +1,0 @@
-Default Solars have initially value 1 in all attributes.
-
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCheckDefaultAttributes

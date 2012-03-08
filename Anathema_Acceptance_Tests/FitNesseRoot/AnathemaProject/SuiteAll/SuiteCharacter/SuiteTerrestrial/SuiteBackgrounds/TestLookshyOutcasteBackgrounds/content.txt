@@ -1,2 +1,0 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateLookshyOutcaste
-!include SnippetCheckLookshyBackgrounds

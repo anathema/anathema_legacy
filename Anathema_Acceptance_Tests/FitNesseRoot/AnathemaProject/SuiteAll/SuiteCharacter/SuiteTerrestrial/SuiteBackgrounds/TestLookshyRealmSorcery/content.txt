@@ -1,3 +1,0 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateLookshyRealmDb
-
-!include SnippetCheckLookshySorcery

@@ -1,3 +1,0 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateRealmPirateDb
-
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SuiteBackgrounds.SnippetRealmOutcasteBackgrounds

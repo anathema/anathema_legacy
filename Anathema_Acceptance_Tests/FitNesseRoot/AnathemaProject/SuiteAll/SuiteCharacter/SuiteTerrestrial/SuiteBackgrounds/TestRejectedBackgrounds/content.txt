@@ -1,2 +1,0 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateDefaultTerrestrial
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCheckRejectedBackgrounds

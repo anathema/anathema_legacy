@@ -1,4 +1,0 @@
-!3 Celestial Circle and Shadowlands Circle
-!|Check Magic Template|
-|getMaximumSorceryCircle?|getMaximumNecromancyCircle?|
-|Celestial|Shadowlands|

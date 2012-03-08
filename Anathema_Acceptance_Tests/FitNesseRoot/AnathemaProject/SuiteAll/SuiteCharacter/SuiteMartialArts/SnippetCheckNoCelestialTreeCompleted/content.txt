@@ -1,3 +1,0 @@
-!|Magic Overview|
-|isCelestialMartialArtsTreeCompleted?|
-|false|

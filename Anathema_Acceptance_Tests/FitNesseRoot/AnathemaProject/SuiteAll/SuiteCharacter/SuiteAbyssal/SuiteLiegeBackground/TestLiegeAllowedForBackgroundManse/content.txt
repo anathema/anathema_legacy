@@ -1,9 +1,0 @@
-!include SnippetSetLiegeToThree
-
-!3 Manse To Value 4
-
-!|Set Background|
-|trait type|value|
-|Manse|4|
-
-!include SnippetCheckTwoLiegePointsSpent

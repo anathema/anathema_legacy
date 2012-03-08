@@ -1,3 +1,0 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateLowerClassOutcaste
-
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SuiteBackgrounds.SnippetRealmOutcasteBackgrounds

@@ -1,1 +1,0 @@
-Set 'Journey' when Sail is 3 -> Ride bleibt 0.

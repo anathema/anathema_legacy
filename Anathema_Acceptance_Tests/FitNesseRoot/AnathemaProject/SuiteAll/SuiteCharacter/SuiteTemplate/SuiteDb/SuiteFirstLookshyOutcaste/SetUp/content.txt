@@ -1,5 +1,0 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SetUp
-
-!|Set Template|
-|characterType|subtemplate|edition|
-|Dragon-Blooded|LookshyOutcasteSubtype|FirstEdition|

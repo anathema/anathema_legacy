@@ -1,5 +1,0 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateLowerClassOutcaste
-
-Outcaste Terrestrials purchase Breeding at double cost.
-
-!include SnippetCheckOutcasteBreeding

@@ -1,3 +1,0 @@
-!|Set Template|
-|characterType|subtemplate|edition|
-|Solar|blank|FirstEdition|

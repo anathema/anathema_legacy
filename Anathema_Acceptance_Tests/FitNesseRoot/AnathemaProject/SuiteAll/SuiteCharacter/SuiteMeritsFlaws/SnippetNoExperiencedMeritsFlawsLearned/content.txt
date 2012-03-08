@@ -1,3 +1,0 @@
-!|Check Merits Flaws|
-|meritsFlawsSelected?|getExperiencePointsSpent?|getExperiencePointsGained?|
-|0|0|0|

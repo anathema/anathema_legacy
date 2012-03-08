@@ -1,3 +1,0 @@
-!|Check Bonus Points|
-|Additional Spent?|Regular Spent?|
-|0|7|

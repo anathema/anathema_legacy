@@ -1,3 +1,0 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SetUp
-
-!include SnippetSetMortalTemplate

@@ -1,3 +1,0 @@
-!|Check Magic Template|
-|getFavoringTraitType?|
-|AttributeType|

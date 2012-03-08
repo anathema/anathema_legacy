@@ -1,4 +1,0 @@
-!|Check Additional Templates|
-|id|isTemplateRegistered?|
-|SolarVirtueFlaw|true|
-|Intimacies|true|

@@ -1,3 +1,0 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
-
-This test checks the calculation of experience point values for backgrounds.
