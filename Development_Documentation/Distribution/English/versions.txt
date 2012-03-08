@@ -4,7 +4,7 @@ Anathema Version History
                    Sean Mattox, Dennis Fotheringham, and Erin Martell.
 Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 
-http://anathema.sf.net
+http://anathema.github.com
 
 ===------------------------------------------------------------------------------===
 			Release 3.2.5 "XXX"
@@ -17,7 +17,7 @@ You've been around since First Edition Lunars back in 2006, my friend. Rest in p
 -- Features --
 * New Preference: Print only those generics the Character knows about.
 * [2E] [Shadow493] Added Established Solars from DotFA.
-* [2E] [Scathach] Added Charm Descriptions for Lunars. Texts taken from the official Wiki.
+* [2E] [Scathach] Added Charm descriptions for Lunars. Texts taken from the official Wiki.
 
 -- Bugfixes --
 * Bonus points view for Mutations no longer appears for experienced characters.
