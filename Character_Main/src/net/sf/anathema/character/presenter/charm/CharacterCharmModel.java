@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -20,6 +21,12 @@ public class CharacterCharmModel {
   public boolean isAllowedAlienCharms() {
     ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
     return charmTemplate.isAllowedAlienCharms(getCaste().getType());
+  }
+  
+  public IUniqueCharmType getUniqueCharmType()
+  {
+	  ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
+	  return charmTemplate.getUniqueCharmType();
   }
 
   public void addCasteChangeListener(IChangeListener listener) {

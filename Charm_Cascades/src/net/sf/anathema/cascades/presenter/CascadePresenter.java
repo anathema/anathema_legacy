@@ -7,8 +7,10 @@ import net.sf.anathema.character.generic.framework.configuration.AnathemaCharact
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
@@ -16,6 +18,8 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
@@ -57,6 +61,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   protected ICharmGroup[] getCharmGroups() {
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     initCharacterTypeCharms(allCharmGroups);
+    initUniqueTypeCharms(allCharmGroups);
     initMartialArtsCharms(allCharmGroups);
     return allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]);
   }
@@ -81,6 +86,32 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
       }
     }
   }
+  
+  private void initUniqueTypeCharms(List<ICharmGroup> allCharmGroups) {
+	    for (ICharacterType type : CharacterType.values()) {
+	      for (IExaltedEdition edition : ExaltedEdition.values()) {
+	        ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type, edition);
+	        if (defaultTemplate == null) {
+	          continue;
+	        }
+	        ICharmTemplate charmTemplate = defaultTemplate.getMagicTemplate().getCharmTemplate(); 
+	        if (charmTemplate.canLearnCharms(edition.getDefaultRuleset())) {
+	          for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
+	        		IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
+		        	if (uniqueType == null)
+		        		continue;
+	        		ICharm[] charms = CharmCache.getInstance().getCharms(uniqueType.getId(), ruleSet);
+		            CharmTree charmTree = new CharmTree(charms);
+		            ICharmGroup[] groups = charmTree.getAllCharmGroups();
+		            if (groups.length != 0) {
+		              getCharmTreeMap(ruleSet).put(uniqueType.getId(), charmTree);
+		              allCharmGroups.addAll(Arrays.asList(groups));
+		            }
+	          }
+	        }
+	      }
+	    }
+	  }
 
   private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups) {
     for (IExaltedEdition edition : ExaltedEdition.values()) {

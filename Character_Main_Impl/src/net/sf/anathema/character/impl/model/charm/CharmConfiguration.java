@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -28,6 +29,7 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
+import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -60,8 +62,8 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   private final ISpecialCharmManager manager;
   private final MartialArtsCharmTree martialArtsCharmTree;
-  private final Map<ICharacterType, ICharmTree> alienTreesByType = new HashMap<ICharacterType, ICharmTree>();
-  private final Map<ICharacterType, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new DefaultValueHashMap<ICharacterType, ILearningCharmGroup[]>(
+  private final Map<IIdentificate, ICharmTree> alienTreesByType = new HashMap<IIdentificate, ICharmTree>();
+  private final Map<IIdentificate, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new DefaultValueHashMap<IIdentificate, ILearningCharmGroup[]>(
           new ILearningCharmGroup[0]);
   private final Map<ICharacterType, ICharmTemplate> templatesByType = new HashMap<ICharacterType, ICharmTemplate>();
   private final ICharacterType[] types;
@@ -92,6 +94,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     initCharacterType(nativeCharmTemplate, rules, getNativeCharacterType());
     allCharacterTypes.add(getNativeCharacterType());
     initAlienTypes(registry, rules, allCharacterTypes);
+    initUniqueTypes(nativeCharmTemplate, rules);
     initSpecialCharmConfigurations();
     types = allCharacterTypes.toArray(new ICharacterType[allCharacterTypes.size()]);
     addCharmFilters(context);
@@ -272,10 +275,18 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (charm != null) {
       return charm;
     }
+    IUniqueCharmType uniqueType = templatesByType.get(getNativeCharacterType()).getUniqueCharmType();
+    if (uniqueType != null)
+    {
+	    charm = getCharmTree(uniqueType.getId()).getCharmById(charmId);
+	    if (charm != null) {
+	     return charm;
+	    }
+    }
     throw new IllegalArgumentException("No charm found for id \"" + charmId + "\""); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  private ICharmIdMap getCharmTree(ICharacterType type) {
+  private ICharmIdMap getCharmTree(IIdentificate type) {
     return alienTreesByType.get(type);
   }
 
@@ -332,6 +343,17 @@ public class CharmConfiguration implements ICharmConfiguration {
     ILearningCharmGroup[] groups = createGroups(charmTree.getAllCharmGroups());
     nonMartialArtsGroupsByType.put(type, groups);
     templatesByType.put(type, charmTemplate);
+  }
+  
+  private void initUniqueTypes(ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
+    IUniqueCharmType type = charmTemplate.getUniqueCharmType();
+    if (type != null)
+    {
+	    CharmTree charmTree = new CharmTree(CharmCache.getInstance().getCharms(type.getId(), rules));
+		ILearningCharmGroup[] groups = createGroups(charmTree.getAllCharmGroups());
+		nonMartialArtsGroupsByType.put(type.getId(), groups);
+		alienTreesByType.put(type.getId(), charmTree);
+    }
   }
 
   private ICharmTemplate getCharmTemplate(ITemplateRegistry registry, ICharacterType type) {
@@ -569,6 +591,9 @@ public class CharmConfiguration implements ICharmConfiguration {
     List<ILearningCharmGroup> candidateGroups = new ArrayList<ILearningCharmGroup>();
     Collections.addAll(candidateGroups, getCharmGroups(characterType));
     Collections.addAll(candidateGroups, getMartialArtsGroups());
+    IUniqueCharmType uniqueType = templatesByType.get(characterType).getUniqueCharmType();
+    if (uniqueType != null)
+    	Collections.addAll(candidateGroups, getCharmGroups(uniqueType.getId()));
     for (ILearningCharmGroup group : candidateGroups) {
       if (group.getId().equals(groupId)) {
         return group;

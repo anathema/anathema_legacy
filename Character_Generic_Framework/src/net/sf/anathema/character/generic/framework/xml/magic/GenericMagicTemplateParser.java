@@ -6,7 +6,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.generic.impl.magic.UniqueRequiredCharmType;
+import net.sf.anathema.character.generic.impl.magic.UniqueCharmType;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
@@ -21,7 +21,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueRequiredCharmType;
+import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -34,7 +34,8 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String TAG_FREE_PICKS_PREDICATE = "freePicksPredicate"; //$NON-NLS-1$
   private static final String ATTRIB_CAN_FAVOR = "canCountAsFavored"; //$NON-NLS-1$
   private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
-  private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
+  private static final String ATTRIB_LABEL = "label"; //$NON-NLS-1$
+  private static final String ATTRIB_KEYWORD = "keyword"; //$NON-NLS-1$
   private static final String TAG_CHARM_TEMPLATE = "charmTemplate"; //$NON-NLS-1$
   private static final String ATTRIB_MARTIAL_ARTS_LEVEL = "level"; //$NON-NLS-1$
   private static final String ATTRIB_HIGH_LEVEL_MARTIAL_ARTS = "highLevel"; //$NON-NLS-1$
@@ -149,20 +150,20 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     else {
       charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType), hostTemplate.getEdition());
     }
-    IUniqueRequiredCharmType specialCharms = null;
+    IUniqueCharmType uniqueCharms = null;
     for (Object node : charmTemplateElement.elements(TAG_UNIQUE_CHARM_TYPE))
     {
     	Element specialNode = (Element) node;
-    	String specialName = ElementUtilities.getRequiredAttrib(specialNode,
-    			ATTRIB_NAME);
     	String specialType = ElementUtilities.getRequiredAttrib(specialNode,
     			ATTRIB_TYPE);
+    	String specialLabel = specialNode.attributeValue(ATTRIB_LABEL);
+    	String specialKeyword = specialNode.attributeValue(ATTRIB_KEYWORD);
     	boolean canFavor = ElementUtilities.getBooleanAttribute(specialNode,
     			ATTRIB_CAN_FAVOR, true);
-    	specialCharms = new UniqueRequiredCharmType(specialName, specialType, canFavor);
+    	uniqueCharms = new UniqueCharmType(specialType, specialLabel, specialKeyword, canFavor);
     }
     CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement),
-    		charmSet, specialCharms);
+    		charmSet, uniqueCharms);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);
     basicTemplate.setCharmTemplate(charmTemplate);
   }

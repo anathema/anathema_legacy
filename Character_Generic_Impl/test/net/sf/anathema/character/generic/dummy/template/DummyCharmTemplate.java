@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
-import net.sf.anathema.character.generic.template.magic.IUniqueRequiredCharmType;
+import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 
 public class DummyCharmTemplate implements ICharmTemplate {
 
@@ -33,8 +33,8 @@ public class DummyCharmTemplate implements ICharmTemplate {
     return false;
   }
 
-	@Override
-	public IUniqueRequiredCharmType getUniqueRequiredCharmType() {
-		return null;
-	}
+  @Override
+  public IUniqueCharmType getUniqueCharmType() {
+	  return null;
+  }
 }

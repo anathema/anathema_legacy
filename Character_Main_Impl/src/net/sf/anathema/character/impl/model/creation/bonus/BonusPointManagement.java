@@ -5,6 +5,8 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
+import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.advance.models.AbstractAdditionalSpendingModel;
@@ -192,9 +194,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new FavoredCharmModel(magicCalculator, creationPoints);
   }
 
-  public ISpendingModel getSpecialCharmModel() {
-    return new UniqueRequiredCharmTypeModel(statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().
-            getUniqueRequiredCharmType(), magicCalculator, creationPoints);
+  public ISpendingModel getSpecialCharmModel(IUniqueCharmType type) {
+    return new UniqueRequiredCharmTypeModel(type, magicCalculator, creationPoints);
   }
 
   @Override
@@ -282,7 +283,13 @@ public class BonusPointManagement implements IBonusPointManagement {
     if (getFavoredCharmModel().getAlotment() > 0) {
       models.add(getFavoredCharmModel());
     }
-    if (getSpecialCharmModel().getAlotment() > 0) models.add(getSpecialCharmModel());
+    
+    ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate(); 
+    if (getSpecialCharmModel(charmTemplate.getUniqueCharmType()).getAlotment() > 0)
+    {
+    	models.add(getSpecialCharmModel(charmTemplate.getUniqueCharmType()));
+    }
+    
     models.add(getDefaultCharmModel());
   }
 }

@@ -16,7 +16,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueRequiredCharmType;
+import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearnPointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
@@ -40,7 +40,7 @@ public class MagicCostCalculator {
   protected int bonusPointsSpentForSpells;
   private final IAdditionalMagicLearnPointManagement magicPools;
   private final IMagicTemplate magicTemplate;
-  private final IUniqueRequiredCharmType uniqueType; 
+  private final IUniqueCharmType uniqueType; 
 
   public MagicCostCalculator(
       IMagicTemplate magicTemplate,
@@ -62,7 +62,7 @@ public class MagicCostCalculator {
     this.bonusPools = bonusPools;
     this.magicPools = magicPools;
     this.analyzer = new CostAnalyzer(basicCharacter, traitCollection);
-    this.uniqueType = magicTemplate.getCharmTemplate().getUniqueRequiredCharmType();
+    this.uniqueType = magicTemplate.getCharmTemplate().getUniqueCharmType();
   }
 
   public void calculateMagicCosts() {
@@ -227,7 +227,7 @@ public class MagicCostCalculator {
 		  return true;
 	  if (magic instanceof ICharm)
 		  for (ICharmAttribute attribute : ((ICharm)magic).getAttributes())
-			  if (attribute.getId().equals(uniqueType.getType()))
+			  if (attribute.getId().equals(uniqueType.getId()))
 				  return false;
 	  return true;
   }
@@ -240,14 +240,14 @@ public class MagicCostCalculator {
     return generalPicksSpent;
   }
   
-  public int getUniqueRequiredCharmTypePicksSpent()
+  public int getUniqueRequiredCharmTypePicksSpent(IUniqueCharmType uniqueType)
   {
 	  if (uniqueType == null)
 		  return 0;
 	  int specialCharms = 0;
 	  for (ICharm charm : charms.getLearnedCharms(false))
 		  for (ICharmAttribute attribute : charm.getAttributes())
-			  if (attribute.getId().equals(uniqueType.getType()))
+			  if (attribute.getId().equals(uniqueType.getKeyword()))
 				  specialCharms++;
 	  return specialCharms;
   }
