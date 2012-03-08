@@ -40,6 +40,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Counterattack" visualize="true" />
+		<charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.ChainedThunderStrike" exalt="Solar" group="SolarHeroStyle">
@@ -58,6 +59,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Counterattack" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.StunningDeathblowEvasion" exalt="Solar" group="SolarHeroStyle">
@@ -75,6 +77,7 @@
 		</charmtype>
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.TitanStraighteningMethod" exalt="Solar" group="SolarHeroStyle">
@@ -91,6 +94,7 @@
 		<charmtype type="Supplemental" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.TeahouseShatteringSymphony" exalt="Solar" group="SolarHeroStyle">
@@ -107,6 +111,7 @@
 		<charmtype type="ExtraAction" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.ShadowFootTrap" exalt="Solar" group="SolarHeroStyle">
@@ -125,7 +130,8 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="MartialArcheryMeleeThrown" visualize="true" />
-		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.DomeShatteringSmite" exalt="Solar" group="SolarHeroStyle">
@@ -138,6 +144,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.LightningStrikesTwice" exalt="Solar" group="SolarHeroStyle">
@@ -155,6 +162,7 @@
 		<charmAttribute attribute="MartialArcheryMeleeThrown" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+        <charmAttribute attribute="Exclusive"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
@@ -171,6 +179,7 @@
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.FlickerFadeRecursion" exalt="Solar" group="SolarHeroStyle">
@@ -187,6 +196,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+        <charmAttribute attribute="Exclusive"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
@@ -204,6 +214,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Stackable" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.HewerSharpenedFist" exalt="Solar" group="SolarHeroStyle">
@@ -221,7 +232,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="MartialReadyArcheryMeleeThrown" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Abyssal Mirror - Agony's Crucible Strike -->
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.BloodiedKingRebuke" exalt="Solar" group="SolarHeroStyle">
@@ -238,6 +249,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="MartialReadyArcheryMeleeThrown" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Ragged Shade's Revenge -->
 		<source source="InkMonkeys" />
@@ -255,6 +267,7 @@
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="NotAlienLearnable" />
 		<charmAttribute attribute="Overdrive" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.OneWithTheWave" exalt="Solar" group="SolarHeroStyle">
@@ -273,6 +286,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Counterattack" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.DauntingTheFalseSavior" exalt="Solar" group="SolarHeroStyle">
@@ -288,6 +302,7 @@
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.SunSuffusingSlag" exalt="Solar" group="SolarHeroStyle">
@@ -309,6 +324,7 @@
 		<charmAttribute attribute="MartialArcheryMeleeThrown" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Stackable" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.WorldRupturingBlow" exalt="Solar" group="SolarHeroStyle">
@@ -324,6 +340,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.BreakThroughTheWorld" exalt="Solar" group="SolarHeroStyle">
@@ -343,8 +360,9 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" /> 
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/> 
+		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.CancelTheApocalypse" exalt="Solar" group="SolarHeroStyle">
@@ -360,6 +378,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.CastDownStarsCondemnation" exalt="Solar" group="SolarHeroStyle">
@@ -375,6 +394,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.SkyBreakerThrow" exalt="Solar" group="SolarHeroStyle">
@@ -395,6 +415,7 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" /> 
 		<charmAttribute attribute="Counterattack" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.StanceBreakerInstinct" exalt="Solar" group="SolarHeroStyle">
@@ -409,6 +430,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.HellraisersInstinct" exalt="Solar" group="SolarHeroStyle">
@@ -424,8 +446,9 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.SecondImpactFlourish" exalt="Solar" group="SolarHeroStyle">
@@ -440,6 +463,7 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.StormBurstExplosion" exalt="Solar" group="SolarHeroStyle">
@@ -458,7 +482,8 @@
 		<charmAttribute attribute="MartialReadyArcheryMeleeThrown" visualize="true"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>    
+		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 

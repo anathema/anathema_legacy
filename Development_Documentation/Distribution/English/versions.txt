@@ -13,6 +13,7 @@ http://anathema.sf.net
 -- Features --
 * New Preference: Print only those generics the Character knows about.
 * [2E] [Shadow493] Added Established Solars from DotFA.
+* [2E] [Scathach] Added Charm Descriptions for Lunars.
 
 -- Bugfixes --
 * Bonus points view for Mutations no longer appears for experienced characters.
@@ -21,6 +22,7 @@ http://anathema.sf.net
 * [2E] Compass: East and Compass: West are shown correctly on the screen.
 * [2E] First Age Solars now start out with a level 1 Manse, as is their due.
 * [2E] Sidereal Excellencies name Essence as their limit.
+* [2E] Solar Hero extensions available only to Solars (and Moonshadows)
 
 
 ===------------------------------------------------------------------------------===

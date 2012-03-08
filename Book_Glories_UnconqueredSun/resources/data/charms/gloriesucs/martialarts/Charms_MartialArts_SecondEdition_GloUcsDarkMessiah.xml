@@ -34,9 +34,7 @@
                <willpower cost="1" />
           </cost>
           <duration duration="Instant" />
-          <charmtype type="Reflexive">
-          	<special primaryStep="9" />
-          </charmtype>
+          <charmtype type="Supplemental"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
@@ -54,9 +52,7 @@
                <willpower cost="1" />
           </cost>
           <duration duration="Instant" />
-          <charmtype type="Reflexive">
-          	<special primaryStep="9" />
-          </charmtype>
+          <charmtype type="Supplemental"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />

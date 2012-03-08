@@ -59,7 +59,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="MartialReadyArcheryMeleeThrown" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Solar Mirror - Hewer-Sharpened Fist -->
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.RaggedShadesRevenge" exalt="Abyssal" group="DarkMessiahStyle">
@@ -77,6 +77,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="MartialReadyArcheryMeleeThrown" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<!-- NOTE:  Solar Mirror - Bloodied King Rebuke -->
 		<source source="InkMonkeys" />
 	</charm>

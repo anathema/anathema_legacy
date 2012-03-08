@@ -37,10 +37,9 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Abyssal Mirror - Iron Maiden's Embrace -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Exclusive"/>
           <source source="GloriesUCS" />
      </charm>
      <charm id="Solar.ArmorShatteringStrike5" exalt="Solar" group="SolarHeroStyle">
@@ -56,9 +55,9 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-			<!-- NOTE:  Abyssal Mirror - Iron Maiden's Embrace -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
+          <charmAttribute attribute="Exclusive"/>
           <source source="GloriesUCS" />
      </charm>
      <charm id="Solar.IronTalonTechnique6" exalt="Solar" group="SolarHeroStyle">
@@ -72,13 +71,12 @@
                <willpower cost="1" />
           </cost>
           <duration duration="Instant" />
-          <charmtype type="Reflexive">
-          	<special primaryStep="9" />
-          </charmtype>
+          <charmtype type="Supplemental"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Exclusive"/>
           <source source="GloriesUCS" />
      </charm>
      <charm id="Solar.IronTalonTechnique9" exalt="Solar" group="SolarHeroStyle">
@@ -92,13 +90,12 @@
                <willpower cost="1" />
           </cost>
           <duration duration="Instant" />
-          <charmtype type="Reflexive">
-          	<special primaryStep="9" />
-          </charmtype>
+          <charmtype type="Supplemental"/>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Exclusive"/>
           <source source="GloriesUCS" />
      </charm>
 </charmlist>

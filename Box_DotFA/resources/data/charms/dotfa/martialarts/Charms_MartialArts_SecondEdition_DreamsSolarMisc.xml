@@ -35,7 +35,6 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Exclusive" />
 		<charmAttribute attribute="Mirror" visualize="true" />
-		<!-- NOTE:  Abyssal Mirror - Agony of the Black Messiah -->
 		<charmAttribute attribute="Stackable" visualize="true" />
 		<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
