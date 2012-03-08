@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
@@ -20,6 +17,9 @@ import net.sf.anathema.character.model.charm.learn.IComboLearnStrategy;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.IChangeListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ComboConfiguration implements IComboConfiguration {
 
@@ -48,10 +48,12 @@ public class ComboConfiguration implements IComboConfiguration {
     });
     final IComboArbitrator[] editionRules = new IComboArbitrator[1];
     edition.accept(new IEditionVisitor() {
+      @Override
       public void visitFirstEdition(IExaltedEdition visitedEdition) {
         editionRules[0] = new FirstEditionComboArbitrator();
       }
 
+      @Override
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
         editionRules[0] = new SecondEditionComboArbitrator();
       }
@@ -61,6 +63,7 @@ public class ComboConfiguration implements IComboConfiguration {
     		editCombo, this);
   }
 
+  @Override
   public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
     rules.setCrossPrerequisiteTypeComboAllowed(allowed);
   }
@@ -84,6 +87,7 @@ public class ComboConfiguration implements IComboConfiguration {
     }
   }
 
+  @Override
   public void addCharmToCombo(ICharm charm, boolean experienced) {
     if (rules.canBeAddedToCombo(getEditCombo(), charm)) {
       getEditCombo().addCharm(charm, experienced);
@@ -92,23 +96,28 @@ public class ComboConfiguration implements IComboConfiguration {
     }
   }
 
+  @Override
   public void addComboModelListener(IChangeListener listener) {
     editCombo.addComboModelListener(listener);
   }
 
+  @Override
   public void removeCharmsFromCombo(ICharm[] charms) {
     editCombo.removeCharms(charms);
   }
 
+  @Override
   public void finalizeComboUpgrade(String xpMessage) {
     experienceSupport.commitChanges(xpMessage);
     finalizeCombo();
   }
 
+  @Override
   public void finalizeCombo() {
     learnStrategy.finalizeCombo(this);
   }
 
+  @Override
   public void finalizeCombo(boolean experienced) {
     ICombo combo = editCombo.clone();
     if (combo.getId() == null) {
@@ -128,6 +137,7 @@ public class ComboConfiguration implements IComboConfiguration {
     editCombo.clear();
   }
 
+  @Override
   public ICombo getEditCombo() {
     return editCombo;
   }
@@ -141,12 +151,14 @@ public class ComboConfiguration implements IComboConfiguration {
     return null;
   }
 
+  @Override
   public void addComboConfigurationListener(IComboConfigurationListener listener) {
     control.addListener(listener);
   }
 
   private void fireComboAdded(final ICombo combo) {
     control.forAllDo(new IClosure<IComboConfigurationListener>() {
+      @Override
       public void execute(IComboConfigurationListener input) {
         input.comboAdded(combo);
       }
@@ -155,6 +167,7 @@ public class ComboConfiguration implements IComboConfiguration {
 
   private void fireComboDeleted(final ICombo combo) {
     control.forAllDo(new IClosure<IComboConfigurationListener>() {
+      @Override
       public void execute(IComboConfigurationListener input) {
         input.comboDeleted(combo);
       }
@@ -163,6 +176,7 @@ public class ComboConfiguration implements IComboConfiguration {
 
   private void fireComboChanged(final ICombo combo) {
     control.forAllDo(new IClosure<IComboConfigurationListener>() {
+      @Override
       public void execute(IComboConfigurationListener input) {
         input.comboChanged(combo);
       }
@@ -171,6 +185,7 @@ public class ComboConfiguration implements IComboConfiguration {
 
   private void fireBeginEditEvent(final ICombo combo) {
     control.forAllDo(new IClosure<IComboConfigurationListener>() {
+      @Override
       public void execute(IComboConfigurationListener input) {
         input.editBegun(combo);
       }
@@ -179,28 +194,34 @@ public class ComboConfiguration implements IComboConfiguration {
 
   private void fireEndEditEvent() {
     control.forAllDo(new IClosure<IComboConfigurationListener>() {
+      @Override
       public void execute(IComboConfigurationListener input) {
         input.editEnded();
       }
     });
   }
 
+  @Override
   public ICombo[] getCurrentCombos() {
     return learnStrategy.getCurrentCombos(this);
   }
 
+  @Override
   public ICombo[] getCreationCombos() {
     return creationComboList.toArray(new ICombo[creationComboList.size()]);
   }
 
+  @Override
   public ICombo[] getExperienceLearnedCombos() {
     return experiencedComboList.toArray(new ICombo[experiencedComboList.size()]);
   }
 
+  @Override
   public boolean isComboLegal(ICharm charm) {
     return rules.canBeAddedToCombo(getEditCombo(), charm);
   }
 
+  @Override
   public void deleteCombo(ICombo combo) {
     experiencedComboList.remove(combo);
     creationComboList.remove(combo);
@@ -210,12 +231,14 @@ public class ComboConfiguration implements IComboConfiguration {
     }
   }
 
+  @Override
   public void clearCombo() {
     editCombo.clear();
     experienceSupport.abortChange();
     fireEndEditEvent();
   }
 
+  @Override
   public void beginComboEdit(ICombo combo) {
     experienceSupport.startChanging(combo);
     editCombo.clear();
@@ -223,6 +246,7 @@ public class ComboConfiguration implements IComboConfiguration {
     fireBeginEditEvent(combo);
   }
 
+  @Override
   public boolean isLearnedOnCreation(ICombo combo) {
     return creationComboList.contains(combo);
   }

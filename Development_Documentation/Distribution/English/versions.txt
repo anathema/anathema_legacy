@@ -15,6 +15,7 @@ http://anathema.sf.net
 
 -- Bugfixes --
 * Bonus points view for Mutations no longer appears for experienced characters.
+* Combos are editable once more.
 * [2E] Spirits are available as NPCs only. They no longer track BP/XP.
 * [2E] Compass: East and Compass: West are shown correctly on the screen.
 * [2E] First Age Solars now start out with a level 1 Manse, as is their due.

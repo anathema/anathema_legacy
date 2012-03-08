@@ -16,10 +16,12 @@ public class ProxyComboLearnStrategy implements IComboLearnStrategy {
     this.strategy = strategy;
   }
 
+  @Override
   public ICombo[] getCurrentCombos(IComboConfiguration configuration) {
     return strategy.getCurrentCombos(configuration);
   }
 
+  @Override
   public void finalizeCombo(IComboConfiguration configuration) {
     strategy.finalizeCombo(configuration);
   }

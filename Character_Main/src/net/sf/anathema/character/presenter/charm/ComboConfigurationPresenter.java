@@ -1,13 +1,5 @@
 package net.sf.anathema.character.presenter.charm;
 
-import java.awt.Component;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import net.disy.commons.core.util.StringUtilities;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -34,6 +26,14 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 public class ComboConfigurationPresenter implements IContentPresenter {
 
   private final ICharmConfiguration charmConfiguration;
@@ -51,6 +51,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
     this.view = factory.createCharmComboView();
   }
 
+  @Override
   public void initPresentation() {
     view.initGui(new ComboViewProperties(resources, comboConfiguration));
     initCharmLearnListening(view);
@@ -79,6 +80,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
     updateComboButtons();
   }
 
+  @Override
   public IViewContent getTabContent() {
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title"); //$NON-NLS-1$
     return new SimpleViewContent(new ContentProperties(header), view);
@@ -93,24 +95,29 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   private void initComboConfigurationListening(final IComboConfigurationView comboView) {
     comboConfiguration.addComboConfigurationListener(new IComboConfigurationListener() {
+      @Override
       public void comboAdded(ICombo combo) {
         addComboToView(comboView, combo);
       }
 
+      @Override
       public void comboChanged(ICombo combo) {
         viewsByCombo.get(combo).updateCombo(createComboNameString(combo), convertToHtml(combo));
       }
 
+      @Override
       public void comboDeleted(ICombo combo) {
         view.deleteView(viewsByCombo.get(combo));
       }
 
+      @Override
       public void editBegun(ICombo combo) {
         setViewsToNotEditing();
         setViewToEditing(combo);
         comboView.setEditState(true);
       }
 
+      @Override
       public void editEnded() {
         setViewsToNotEditing();
         comboView.setEditState(false);
@@ -205,6 +212,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   private void initComboModelListening(final IComboConfigurationView comboView) {
     comboConfiguration.addComboModelListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateCharmListsInView(comboView);
       }
@@ -213,28 +221,33 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   private void initViewListening(final IComboConfigurationView comboView) {
     comboView.addComboViewListener(new IComboViewListener() {
+      @Override
       public void charmAdded(Object addedCharm) {
         comboConfiguration.addCharmToCombo((ICharm) addedCharm, statistics.isExperienced());
       }
 
+      @Override
       public void charmRemoved(Object[] removedCharms) {
         List<ICharm> removedCharmList = new ArrayList<ICharm>();
         for (Object charmObject : removedCharms) {
           removedCharmList.add((ICharm) charmObject);
         }
-        comboConfiguration.removeCharmsFromCombo(removedCharmList.toArray(new ICharm[0]));
+        comboConfiguration.removeCharmsFromCombo(removedCharmList.toArray(new ICharm[removedCharmList.size()]));
       }
 
+      @Override
       public void comboFinalized() {
         comboConfiguration.finalizeCombo();
       }
       
+      @Override
       public void comboFinalizedXP() {
     	  String comboName = comboConfiguration.getEditCombo().getName().getText();
     	  comboName = comboName == null ? resources.getString("CardView.CharmConfiguration.ComboCreation.Combo") : "\"" + comboName + "\"";
           comboConfiguration.finalizeComboUpgrade(comboName);
         }
 
+      @Override
       public void comboCleared() {
         comboConfiguration.clearCombo();
       }

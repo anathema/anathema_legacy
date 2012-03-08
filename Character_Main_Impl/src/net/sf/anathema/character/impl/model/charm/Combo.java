@@ -1,9 +1,5 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -13,6 +9,10 @@ import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Combo implements ICombo {
   
@@ -27,24 +27,28 @@ public class Combo implements ICombo {
   private volatile ITextualDescription description = new SimpleTextualDescription();
   private Integer id = null;
 
+  @Override
   public ICharm[] getCharms()
   {
 	  ArrayList<ICharm> charms = new ArrayList<ICharm>();
 	  charms.addAll(creationCharmList);
 	  charms.addAll(experiencedCharmList);
-      return charms.toArray(new ICharm[0]);
+      return charms.toArray(new ICharm[charms.size()]);
   }
   
+  @Override
   public ICharm[] getCreationCharms()
   {
-	  return creationCharmList.toArray(new ICharm[0]);
+	  return creationCharmList.toArray(new ICharm[creationCharmList.size()]);
   }
   
+  @Override
   public ICharm[] getExperiencedCharms()
   {
-	  return experiencedCharmList.toArray(new ICharm[0]);
+	  return experiencedCharmList.toArray(new ICharm[experiencedCharmList.size()]);
   }
 
+  @Override
   public void addCharm(ICharm charm, boolean experienced)
   {
 	List<ICharm> targetList = experienced ? experiencedCharmList : creationCharmList;
@@ -58,6 +62,7 @@ public class Combo implements ICombo {
     fireComboChanged();
   }
 
+  @Override
   public void addComboModelListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
@@ -66,6 +71,7 @@ public class Combo implements ICombo {
     control.fireChangedEvent();
   }
 
+  @Override
   public void removeCharms(ICharm[] charms) {
     List<ICharm> removal = Arrays.asList(charms);
     creationCharmList.removeAll(removal);
@@ -92,11 +98,11 @@ public class Combo implements ICombo {
     clone.experiencedCharmList = new ArrayList<ICharm>(experiencedCharmList.size());
     clone.name = new SimpleTextualDescription();
     clone.description = new SimpleTextualDescription();
-    
     copyCombo(this, clone);
     return clone;
   }
 
+  @Override
   public void getValuesFrom(ICombo combo) {
     this.clear();
     copyCombo(combo, this);
@@ -116,33 +122,38 @@ public class Combo implements ICombo {
     destination.description.setText(source.getDescription().getText());
   }
 
+  @Override
   public void clear() {
     id = null;
     name.setText(""); //$NON-NLS-1$
     description.setText(""); //$NON-NLS-1$
-    removeCharms(creationCharmList.toArray(new ICharm[0]));
-    removeCharms(experiencedCharmList.toArray(new ICharm[0]));
+    removeCharms(creationCharmList.toArray(new ICharm[creationCharmList.size()]));
+    removeCharms(experiencedCharmList.toArray(new ICharm[experiencedCharmList.size()]));
   }
 
+  @Override
   public ITextualDescription getName() {
     return name;
   }
 
+  @Override
   public ITextualDescription getDescription() {
     return description;
   }
 
+  @Override
   public boolean contains(ICharm charm) {
     return creationCharmList.contains(charm) ||
     	   experiencedCharmList.contains(charm);
   }
 
+  @Override
   public Integer getId() {
     return id;
   }
 
+  @Override
   public void setId(Integer id) {
-    Ensure.ensureNull("Id already set.", this.id); //$NON-NLS-1$
     Ensure.ensureNotNull("Id must not be null.", id); //$NON-NLS-1$
     this.id = id;
   }

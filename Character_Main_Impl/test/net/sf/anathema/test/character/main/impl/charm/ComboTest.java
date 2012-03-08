@@ -13,7 +13,10 @@ import net.sf.anathema.character.impl.model.charm.combo.FirstEditionComboArbitra
 import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 public class ComboTest {
 
@@ -237,5 +240,11 @@ public class ComboTest {
     comboRestrictions.addRestrictedCharmType(CharmType.ExtraAction);
     addCharm(createCharm(comboRestrictions));
     assertFalse(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(CharmType.ExtraAction)));
+  }
+
+  @Test
+  public void canCloneCombos() throws Exception {
+    combo.setId(1);
+    combo.clone();
   }
 }
