@@ -2,7 +2,7 @@
 	<freePicksPredicate defaultResponse="true"/>
 	<favoringTraitType type="AttributeType"/>
 	<charmTemplate charmType="Lunar">
-	    <hasUniqueCharmType name="Lunar.Knacks" type="Knack" canCountAsFavored="false"/>
+	    <hasUniqueCharmType type="Knacks" label="Lunar.Knacks" keyword="Knack" canCountAsFavored="false"/>
 		<martialArts level="Terrestrial" highLevel="true" /> 
 	</charmTemplate>
 	<spellTemplate maximumSorceryCircle="Celestial" maximumNecromancyCircle="Shadowlands"/>

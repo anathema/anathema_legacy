@@ -33,7 +33,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>
@@ -47,7 +47,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>
@@ -61,7 +61,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>
@@ -75,7 +75,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>
@@ -88,7 +88,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>
@@ -101,7 +101,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>
@@ -114,7 +114,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>
@@ -130,7 +130,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>
@@ -142,7 +142,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>
@@ -154,7 +154,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>
@@ -167,7 +167,7 @@
 		<cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-        <charmAttribute attribute="Native" visualize="false"/>
+		<charmAttribute attribute="NotAlienLernable" />
         <charmAttribute attribute="Knack"/>
 		<source source="GloriesLuna" />
 	</charm>

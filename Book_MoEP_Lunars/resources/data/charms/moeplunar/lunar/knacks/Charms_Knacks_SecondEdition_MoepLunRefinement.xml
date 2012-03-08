@@ -32,7 +32,7 @@
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLernable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
 			<source source="ScrollErrata" />
@@ -46,7 +46,7 @@
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLernable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
@@ -58,7 +58,7 @@
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLernable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
@@ -70,7 +70,7 @@
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLernable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
@@ -82,7 +82,7 @@
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLernable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
@@ -94,7 +94,7 @@
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLernable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>

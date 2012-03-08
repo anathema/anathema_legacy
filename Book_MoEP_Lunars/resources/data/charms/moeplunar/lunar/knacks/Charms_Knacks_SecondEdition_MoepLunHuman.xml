@@ -4,7 +4,7 @@
 "../../../charms.dtd">
 <!--
 
-    supernatural.xml - XML charm data for Anathema Plug-ins.
+    human.xml - XML charm data for Anathema Plug-ins.
     Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -23,67 +23,82 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Supernatural Knacks -->
-     <charm id="Lunar.GreenSunChild" exalt="Lunar" group="Supernatural">
+     <!-- Human Knacks -->
+     <charm id="Lunar.PreysSkinDisguise" exalt="Lunar" group="Human">
           <prerequisite>
-               <trait id="Intelligence" value="4" />
-               <essence value="4" />
+               <trait id="Appearance" value="3" />
+               <essence value="2" />
           </prerequisite>
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
-          <charmAttribute attribute="Knack"/>
-          <source source="Lunars2nd" />
-			<source source="ScrollErrata" />
-     </charm>
-     <charm id="Lunar.HeartTheftOfTheBehemoth" exalt="Lunar" group="Supernatural">
-          <prerequisite>
-               <trait id="Stamina" value="5" />
-               <essence value="5" />
-               <charmReference id="Lunar.GreenSunChild" />
-          </prerequisite>
-          <cost />
-          <duration duration="Instant"/>
-          <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLearnable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.HeartTheftOfTheBehemoth2" exalt="Lunar" group="Supernatural">
-          <prerequisite>
-               <trait id="Stamina" value="7" />
-               <essence value="7" />
-               <charmReference id="Lunar.HeartTheftOfTheBehemoth" />
-          </prerequisite>
-          <cost />
-          <duration duration="Instant"/>
-          <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
-          <charmAttribute attribute="Knack"/>
-          <source source="Lunars2nd" />
-     </charm>
-     <charm id="Lunar.HearthAndFlameShell" exalt="Lunar" group="Supernatural">
-          <prerequisite>
-               <trait id="Stamina" value="4" />
-               <essence value="4" />
-          </prerequisite>
-          <cost />
-          <duration duration="Instant"/>
-          <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
-          <charmAttribute attribute="Knack"/>
-          <source source="Lunars2nd" />
-     </charm>
-     <charm id="Lunar.LunasHiddenFace" exalt="Lunar" group="Supernatural">
+     <charm id="Lunar.HoningTheStolenForm" exalt="Lunar" group="Human">
           <prerequisite>
                <trait id="Perception" value="4" />
                <essence value="3" />
+               <charmReference id="Lunar.PreysSkinDisguise" />
           </prerequisite>
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.IntimateTrainingRecollection" exalt="Lunar" group="Human">
+          <prerequisite>
+               <trait id="Intelligence" value="3" />
+               <essence value="3" />
+               <charmReference id="Lunar.PreysSkinDisguise" />
+          </prerequisite>
+          <cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+          <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.FlickeringStarInfusion" exalt="Lunar" group="Human">
+          <prerequisite>
+               <trait id="Manipulation" value="4" />
+               <essence value="4" />
+               <charmReference id="Lunar.HoningTheStolenForm" />
+               <charmReference id="Lunar.IntimateTrainingRecollection" />
+          </prerequisite>
+          <cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+          <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.LunarBloodShapingTechnique" exalt="Lunar" group="Human">
+          <prerequisite>
+               <trait id="Charisma" value="4" />
+               <essence value="3" />
+               <charmReference id="Lunar.PreysSkinDisguise" />
+          </prerequisite>
+          <cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+          <charmAttribute attribute="NotAlienLearnable" />
+          <charmAttribute attribute="Knack"/>
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.InsidiousLunarTransformation" exalt="Lunar" group="Human">
+          <prerequisite>
+               <trait id="Charisma" value="5" />
+               <essence value="5" />
+               <charmReference id="Lunar.LunarBloodShapingTechnique" />
+          </prerequisite>
+          <cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+          <charmAttribute attribute="NotAlienLearnable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>

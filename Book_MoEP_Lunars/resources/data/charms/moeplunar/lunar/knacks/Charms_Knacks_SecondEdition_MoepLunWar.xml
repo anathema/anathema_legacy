@@ -4,7 +4,7 @@
 "../../../charms.dtd">
 <!--
 
-    speed.xml - XML charm data for Anathema Plug-ins.
+    war.xml - XML charm data for Anathema Plug-ins.
     Copyright (C) 2008  Paul R. Adams (pauladams@hotmail.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -23,42 +23,55 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Speed Knacks -->
-     <charm id="Lunar.QuicksilverSecondFace" exalt="Lunar" group="Speed">
+     <!-- War Knacks -->
+     <charm id="Lunar.DeadlyBeastmanTransformation" exalt="Lunar" group="WarKnacks">
           <prerequisite>
-               <trait id="Dexterity" value="4" />
+               <trait id="Stamina" value="3" />
                <essence value="2" />
           </prerequisite>
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLearnable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.LightningChangeStyle" exalt="Lunar" group="Speed">
+     <charm id="Lunar.PerfectedHybridInteraction" exalt="Lunar" group="WarKnacks">
           <prerequisite>
-               <trait id="Dexterity" value="5" />
-               <essence value="3" />
-               <charmReference id="Lunar.QuicksilverSecondFace" />
+               <trait id="Wits" value="3" />
+               <essence value="2" />
+               <charmReference id="Lunar.DeadlyBeastmanTransformation" />
           </prerequisite>
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLernable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
-     <charm id="Lunar.ConstantQuicksilverRearrangement" exalt="Lunar" group="Speed">
+     <charm id="Lunar.TerrifyingBeastmanAlteration" exalt="Lunar" group="WarKnacks">
           <prerequisite>
-               <trait id="Wits" value="5" />
+               <trait id="Stamina" value="4" />
+               <essence value="4" />
+               <charmReference id="Lunar.DeadlyBeastmanTransformation" />
+          </prerequisite>
+          <cost />
+          <duration duration="Instant"/>
+          <charmtype type="Reflexive"/>
+          <charmAttribute attribute="NotAlienLernable" />
+          <charmAttribute attribute="Knack"/>
+          <source source="Lunars2nd" />
+     </charm>
+     <charm id="Lunar.DevastatingOgreEnhancement" exalt="Lunar" group="WarKnacks">
+          <prerequisite>
+               <trait id="Strength" value="4" />
                <essence value="5" />
-               <charmReference id="Lunar.LightningChangeStyle" />
+               <charmReference id="Lunar.DeadlyBeastmanTransformation" />
           </prerequisite>
           <cost />
           <duration duration="Instant"/>
           <charmtype type="Reflexive"/>
-          <charmAttribute attribute="Native" visualize="false"/>
+          <charmAttribute attribute="NotAlienLernable" />
           <charmAttribute attribute="Knack"/>
           <source source="Lunars2nd" />
      </charm>
