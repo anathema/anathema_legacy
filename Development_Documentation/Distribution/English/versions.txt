@@ -10,6 +10,10 @@ http://anathema.sf.net
 			Release 3.2.5 "XXX"
 ===------------------------------------------------------------------------------===
 
+We retired our proprietary keyword "NotAlienLearnable" in favor of Exalted's own "Native".
+If you have added Charms to Anathema, you need to change them accordingly.
+You've been around since First Edition Lunars back in 2006, my friend. Rest in peace.
+
 -- Features --
 * New Preference: Print only those generics the Character knows about.
 * [2E] [Shadow493] Added Established Solars from DotFA.

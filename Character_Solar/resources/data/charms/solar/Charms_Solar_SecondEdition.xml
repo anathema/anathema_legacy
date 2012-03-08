@@ -1430,7 +1430,6 @@
 		<charmAttribute attribute="Native" visualize="true"/>
 		<charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
 		<charmAttribute attribute="Overdrive" visualize="true"/>
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.Willpower-EnhancingSpirit" exalt="Solar" group="Resistance">

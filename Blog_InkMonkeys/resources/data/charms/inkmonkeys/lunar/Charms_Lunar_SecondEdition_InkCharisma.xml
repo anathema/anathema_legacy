@@ -70,7 +70,6 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<!-- NOTE:  "Mirror" - Lunar/Stamina & Lunar/Charisma -->
 		<repurchases limitingTrait="Essence"/>
 		<source source="InkMonkeys" />
@@ -87,7 +86,6 @@
 		<duration duration="Indefinite" />
 		<charmtype type="Simple" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<charmAttribute attribute="Touch" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>

@@ -91,7 +91,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.ImpatientSlaughterSpeed" exalt="Solar" group="InfernalMonsterStyle">
@@ -340,7 +339,6 @@
 		<charmAttribute attribute="FormEnhancing" visualize="true" />
 		<charmAttribute attribute="Monstrous" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<!-- TODO:  Solar Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>
@@ -355,7 +353,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<!-- TODO:  Lunar Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>
@@ -371,7 +368,6 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Fate" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<charmAttribute attribute="Shaping" visualize="true" />
 		<!-- TODO:  Sidereal Akuma Only! -->
 		<source source="InkMonkeys" />
@@ -387,7 +383,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<!-- TODO:  Terrestrial Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>

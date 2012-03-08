@@ -43,7 +43,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <charmAttribute attribute="NotAlienLearnable"/>
+    <charmAttribute attribute="Native" visualize="false"/>
     <source source="Lunars1st" page="124"/>
   </charm>
   <charm id="Lunar.DeadlyBeastmanTransformation" exalt="Lunar" group="Shapechanging">
@@ -59,7 +59,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <charmAttribute attribute="NotAlienLearnable"/>
+    <charmAttribute attribute="Native" visualize="false"/>
     <source source="Lunars1st" page="124"/>
     <repurchases limitingTrait="Essence"/>
     <ruleset name="PowerCombat">
@@ -108,7 +108,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <charmAttribute attribute="NotAlienLearnable"/>
+    <charmAttribute attribute="Native" visualize="false"/>
     <source source="Lunars1st" page="125"/>
   </charm>
   <charm id="Lunar.HumbleMouseShape" exalt="Lunar" group="Shapechanging">
@@ -122,7 +122,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <charmAttribute attribute="NotAlienLearnable"/>
+    <charmAttribute attribute="Native" visualize="false"/>
     <source source="Lunars1st" page="128"/>
   </charm>
   <charm id="Lunar.ShapingIdealForm" exalt="Lunar" group="Shapechanging">
@@ -171,7 +171,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <charmAttribute attribute="NotAlienLearnable"/>
+    <charmAttribute attribute="Native" visualize="false"/>
     <source source="Lunars1st" page="129"/>
   </charm>
   <charm id="Lunar.LunarBloodReshapingTechnique" exalt="Lunar" group="Shapechanging">

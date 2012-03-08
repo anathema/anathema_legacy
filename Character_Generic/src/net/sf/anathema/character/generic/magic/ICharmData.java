@@ -20,7 +20,7 @@ public interface ICharmData extends IMagicData {
   public static final IIdentificate ALLOWS_CELESTIAL_ATTRIBUTE = new Identificate("AllowsCelestial"); //$NON-NLS-1$
   public static final IIdentificate UNRESTRICTED_ATTRIBUTE = new Identificate("Unrestricted"); //$NON-NLS-1$
   public static final IIdentificate NO_STYLE_ATTRIBUTE = new Identificate("NoStyle"); //$NON-NLS-1$
-  public static final IIdentificate NOT_ALIEN_LEARNABLE = new Identificate("NotAlienLearnable"); //$NON-NLS-1$
+  public static final IIdentificate NATIVE = new Identificate("Native"); //$NON-NLS-1$
   public static final String FAVORED_CASTE_PREFIX = "FavoredCaste."; //$NON-NLS-1$
 
   public ICharacterType getCharacterType();

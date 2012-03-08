@@ -13,7 +13,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <charmAttribute attribute="NotAlienLearnable"/>
+    <charmAttribute attribute="Native" visualize="false"/>
     <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Lunar.ClawsOfTheSilverMoon" exalt="Lunar" group="UnarmedCombat">

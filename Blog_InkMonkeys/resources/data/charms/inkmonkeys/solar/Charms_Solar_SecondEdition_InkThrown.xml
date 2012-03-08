@@ -89,7 +89,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="MartialReadyMartialArtsArcheryMelee" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.SteelFangRebuke" exalt="Solar" group="Thrown">

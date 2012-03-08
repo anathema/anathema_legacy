@@ -47,7 +47,6 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Ash Child's Requiem -->
 		<charmAttribute attribute="Native" visualize="true" />
-        <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.SupremeMartialInstinct" exalt="Solar" group="War">
@@ -64,7 +63,6 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Manifold Murder Arts -->
 		<charmAttribute attribute="Native" visualize="true" />
-        <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.CertainVictoryFormulation" exalt="Solar" group="War">
@@ -80,7 +78,6 @@
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-        <charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<charmAttribute attribute="Overdrive" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
@@ -138,7 +135,6 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Essence Engorgement Technique -->
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<repurchases limitingTrait="Essence"/>
 		<source source="InkMonkeys" />
 	</charm>

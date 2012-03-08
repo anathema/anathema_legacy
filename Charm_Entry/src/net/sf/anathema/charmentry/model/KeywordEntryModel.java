@@ -67,7 +67,7 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
         ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE,
         ICharmData.FORM_ATTRIBUTE,
         ICharmData.NO_STYLE_ATTRIBUTE,
-        ICharmData.NOT_ALIEN_LEARNABLE,
+        ICharmData.NATIVE,
         ICharmData.UNRESTRICTED_ATTRIBUTE,
         IExtendedCharmData.COMBO_BASIC_ATTRIBUTE,
         IExtendedCharmData.COMBO_OK_ATTRIBUTE,

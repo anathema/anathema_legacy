@@ -48,7 +48,6 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<charmAttribute attribute="Mount(Mundane)" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<repurchases trait="Ride">
 			<repurchase essence="3" trait="3"/>
 			<repurchase essence="4" trait="3"/>

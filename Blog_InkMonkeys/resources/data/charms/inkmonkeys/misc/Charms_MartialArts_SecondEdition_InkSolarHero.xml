@@ -161,7 +161,6 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="MartialArcheryMeleeThrown" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
         <charmAttribute attribute="Exclusive"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
@@ -177,7 +176,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
         <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
@@ -195,7 +193,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
         <charmAttribute attribute="Exclusive"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
@@ -265,7 +262,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<charmAttribute attribute="Overdrive" visualize="true" />
         <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
@@ -360,7 +356,6 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" /> 
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
         <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
@@ -446,7 +441,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
         <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
@@ -482,7 +476,6 @@
 		<charmAttribute attribute="MartialReadyArcheryMeleeThrown" visualize="true"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="false"/>
         <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>

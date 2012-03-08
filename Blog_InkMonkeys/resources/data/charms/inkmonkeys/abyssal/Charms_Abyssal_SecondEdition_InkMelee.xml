@@ -94,7 +94,6 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Perfected Battle Array -->
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.DeathWellRemembered" exalt="Abyssal" group="Melee">
@@ -111,7 +110,6 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Perfect Blade Aegis -->
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.CoiledShadowAttitude" exalt="Abyssal" group="Melee">
@@ -129,7 +127,6 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Blade Lair Discipline -->
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.EntropicBladeNature" exalt="Abyssal" group="Melee">
@@ -145,7 +142,6 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Inexorable Swordsman Spirit -->
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Abyssal.AllBladesCryForBlood" exalt="Abyssal" group="Melee">
@@ -224,7 +220,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="MartialMartialArts" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>

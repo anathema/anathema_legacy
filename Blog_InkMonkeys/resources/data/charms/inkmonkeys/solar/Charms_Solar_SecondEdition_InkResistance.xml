@@ -47,7 +47,6 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />    
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.SurgingEssenceReactor" exalt="Solar" group="Resistance">
@@ -60,7 +59,6 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />    
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.SoulFireResurgence" exalt="Solar" group="Resistance">
@@ -75,7 +73,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />    
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Solar.RedDawnAscending" exalt="Solar" group="Resistance">
@@ -89,7 +86,6 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotAlienLearnable" />    
 		<charmAttribute attribute="Overdrive" visualize="true" />
 		<source source="InkMonkeys" />
 	</charm>

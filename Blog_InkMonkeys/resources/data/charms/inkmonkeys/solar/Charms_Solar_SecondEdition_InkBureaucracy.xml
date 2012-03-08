@@ -35,7 +35,6 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Essence Engorgement Technique -->
 		<charmAttribute attribute="Native" visualize="true" />
-		<charmAttribute attribute="NotALienLearnable" />
 		<repurchases limitingTrait="Essence"/>
 		<source source="InkMonkeys" />
 	</charm>
