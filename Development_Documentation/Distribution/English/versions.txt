@@ -12,7 +12,7 @@ http://anathema.sf.net
 
 -- Features --
 * New Preference: Print only those generics the Character knows about.
-* [2E] Added Established Solars from DotFA.
+* [2E] [Shadow493] Added Established Solars from DotFA.
 
 -- Bugfixes --
 * Bonus points view for Mutations no longer appears for experienced characters.
