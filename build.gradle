@@ -60,7 +60,7 @@ subprojects {
 
     task testJar(type: Jar, dependsOn: testClasses) {
         baseName = "test-${project.archivesBaseName}"
-        from sourceSets.test.classes
+        from sourceSets.test.output
     }
 }
 
