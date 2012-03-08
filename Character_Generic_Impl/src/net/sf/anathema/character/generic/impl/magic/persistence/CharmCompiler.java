@@ -1,7 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +21,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identificate;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -35,23 +34,19 @@ public class CharmCompiler {
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
   private final CharmRenameBuilder renameBuilder = new CharmRenameBuilder();
-  private final IIdentificateRegistry<ICharacterType> registry;
+  private final IIdentificateRegistry<IIdentificate> registry;
   private final SAXReader reader;
 
   public CharmCompiler() {
-    this.registry = new IdentificateRegistry<ICharacterType>();
-    registry.add(CharacterType.values()); 
+    this.registry = new IdentificateRegistry<IIdentificate>();
+    registry.add(CharacterType.values());
     this.reader = new SAXReader();
   }
 
   public void registerCharmFile(String typeString, String ruleString, URL resource) throws CharmException {
-    IIdentificate type;
-    if (typeString.equals(MARTIAL_ARTS.getId())) {
-      type = MARTIAL_ARTS;
-    }
-    else {
-      type = registry.getById(typeString);
-    }
+    IIdentificate type = new Identificate(typeString);
+    if (!registry.idRegistered(typeString))
+    	registry.add(type);
     ExaltedRuleSet ruleSet = ExaltedRuleSet.valueOf(ruleString);
     List<Document> list = charmFileTable.get(type, ruleSet);
     if (list == null) {
@@ -72,17 +67,13 @@ public class CharmCompiler {
       if (basicRules != null) {
         CharmCache.getInstance().cloneCharms(basicRules, rules);
       }
-      for (ICharacterType type : registry.getAll()) {
+      for (IIdentificate type : registry.getAll()) {
         buildStandardCharms(type, rules);
         buildGenericCharms(type, rules);
         buildCharmAlternatives(type, rules);
         buildCharmMerges(type, rules);
         buildCharmRenames(type, rules);
       }
-      buildStandardCharms(MARTIAL_ARTS, rules);
-      buildCharmAlternatives(MARTIAL_ARTS, rules);
-      buildCharmMerges(MARTIAL_ARTS, rules);
-      buildCharmRenames(MARTIAL_ARTS, rules);
     }
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
       extractParents(CharmCache.getInstance().getCharms(rules));
@@ -93,10 +84,19 @@ public class CharmCompiler {
     return buildCharms(type, rules, setBuilder);
   }
 
-  private List<ICharm> buildGenericCharms(ICharacterType type, ExaltedRuleSet rules) throws PersistenceException {
-    ITraitType[] primaryTypes = type.getFavoringTraitType().getTraitTypes(rules.getEdition());
-    genericBuilder.setTypes(primaryTypes);
-    return buildCharms(type, rules, genericBuilder);
+  private List<ICharm> buildGenericCharms(IIdentificate type, ExaltedRuleSet rules) throws PersistenceException {
+	try
+	{
+		ICharacterType characterType = CharacterType.getById(type.getId());
+	    ITraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypes(rules.getEdition());
+	    genericBuilder.setTypes(primaryTypes);
+	    return buildCharms(type, rules, genericBuilder);
+	}
+	catch (IllegalArgumentException exception)
+	{
+		// Not a character type; no generic charms
+		return null;
+	}
   }
 
   private void buildCharmAlternatives(IIdentificate type, ExaltedRuleSet rules) {
@@ -126,8 +126,12 @@ public class CharmCompiler {
   private List<ICharm> buildCharms(IIdentificate type, IExaltedRuleSet rules, ICharmSetBuilder builder)
       throws PersistenceException {
     List<ICharm> allCharms = new ArrayList<ICharm>();
-    if (charmFileTable.contains(type, rules)) {
-      List<Document> documents = charmFileTable.get(type, rules);
+    //CharacterType enum IIdentificate equals method does not
+    //work properly against purely text IIdentificates, even
+    //with matching ids; creating a new one for comparison.
+    IIdentificate fixedType = new Identificate(type.getId());
+    if (charmFileTable.contains(fixedType, rules)) {
+      List<Document> documents = charmFileTable.get(fixedType, rules);
       for (Document charmDocument : documents) {
         ICharm[] builtCharms = buildRulesetCharms(type, rules, charmDocument, builder);
         Collections.addAll(allCharms, builtCharms);

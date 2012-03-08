@@ -27,12 +27,6 @@ public class CharmCache implements ICharmCache {
     for (IExaltedRuleSet ruleset : ExaltedRuleSet.values()) {
       charmSetsByRuleSet.put(ruleset, new MultiEntryMap<IIdentificate, ICharm>());
       renameData.put(ruleset, new HashMap<String, String>());
-      
-      Map<IIdentificate, List<ISpecialCharm>> list = new HashMap<IIdentificate, List<ISpecialCharm>>();
-      specialCharms.put(ruleset, list);
-      for (CharacterType type : CharacterType.values())
-    	  list.put(type, new ArrayList<ISpecialCharm>());  
-      list.put(new Identificate("MartialArts"), new ArrayList<ISpecialCharm>());
     }
   }
 
@@ -83,8 +77,25 @@ public class CharmCache implements ICharmCache {
     return allCharms;
   }
   
+  private List<ISpecialCharm> getSpecialCharmList(IExaltedRuleSet ruleset, IIdentificate type)
+  {
+	  Map<IIdentificate, List<ISpecialCharm>> map = specialCharms.get(ruleset);
+	  if (map == null)
+	  {
+		  map = new HashMap<IIdentificate, List<ISpecialCharm>>();
+		  specialCharms.put(ruleset, map);
+	  }
+	  List<ISpecialCharm> list = map.get(type);
+	  if (list == null)
+	  {
+		  list = new ArrayList<ISpecialCharm>();
+		  map.put(type, list);
+	  }
+	  return list;
+  }
+  
   public ISpecialCharm[] getSpecialCharmData(IIdentificate type, IExaltedRuleSet ruleset) {
-	    List<ISpecialCharm> charmList = specialCharms.get(ruleset).get(type);
+	    List<ISpecialCharm> charmList = getSpecialCharmList(ruleset, type);
 	    return charmList.toArray(new ISpecialCharm[charmList.size()]);
 	  }
   
@@ -92,8 +103,7 @@ public class CharmCache implements ICharmCache {
   {
 	  if (data == null)
 		  return;
-	  Map<IIdentificate, List<ISpecialCharm>> rulesetMap = specialCharms.get(ruleSet);
-	  List<ISpecialCharm> list = rulesetMap.get(type);
+	  List<ISpecialCharm> list = getSpecialCharmList(ruleSet, type);
 	  list.addAll(data);
   }
   
