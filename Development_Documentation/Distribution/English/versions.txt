@@ -18,6 +18,7 @@ You've been around since First Edition Lunars back in 2006, my friend. Rest in p
 * New Preference: Print only those generics the Character knows about.
 * [2E] [Shadow493] Added Established Solars from DotFA.
 * [2E] [Scathach] Added Charm descriptions for Lunars. Texts taken from the official Wiki.
+* [2E] Lunar Knacks now form a separate category
 
 -- Bugfixes --
 * Bonus points view for Mutations no longer appears for experienced characters.
