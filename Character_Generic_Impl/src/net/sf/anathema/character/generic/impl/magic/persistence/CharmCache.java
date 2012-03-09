@@ -1,20 +1,18 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.lib.util.Identificate;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class CharmCache implements ICharmCache {
 
@@ -34,6 +32,7 @@ public class CharmCache implements ICharmCache {
     return instance;
   }
 
+  @Override
   public ICharm[] getCharms(IIdentificate type, IExaltedRuleSet ruleset) {
     List<ICharm> charmList = charmSetsByRuleSet.get(ruleset).get(type);
     return charmList.toArray(new ICharm[charmList.size()]);
@@ -94,6 +93,7 @@ public class CharmCache implements ICharmCache {
 	  return list;
   }
   
+  @Override
   public ISpecialCharm[] getSpecialCharmData(IIdentificate type, IExaltedRuleSet ruleset) {
 	    List<ISpecialCharm> charmList = getSpecialCharmList(ruleset, type);
 	    return charmList.toArray(new ISpecialCharm[charmList.size()]);
@@ -114,6 +114,7 @@ public class CharmCache implements ICharmCache {
 	  rulesetMap.putAll(mappings);
   }
   
+  @Override
   public String getCharmRename(IExaltedRuleSet rules, String name)
   {
 	  String newName = name;

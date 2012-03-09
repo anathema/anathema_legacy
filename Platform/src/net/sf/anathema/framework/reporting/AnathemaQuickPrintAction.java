@@ -1,14 +1,8 @@
 package net.sf.anathema.framework.reporting;
 
-import net.disy.commons.core.io.IOUtilities;
-import net.disy.commons.core.message.Message;
-import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
+import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
@@ -20,34 +14,12 @@ import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-public class AnathemaQuickPrintAction extends SmartAction {
+import static javax.swing.KeyStroke.getKeyStroke;
 
-  private static final long serialVersionUID = 6219757317594446843L;
-  private static final String PDF_EXTENSION = ".pdf"; //$NON-NLS-1$
-
-  private class PrintEnabledListener extends ItemManagementModelAdapter {
-
-    private final Action action;
-
-    public PrintEnabledListener(Action action) {
-      this.action = action;
-    }
-
-    @Override
-    public void itemSelected(IItem item) {
-      Report defaultReport = getDefaultReport(item);
-      boolean quickPrintPossible = defaultReport != null;
-      action.setEnabled(quickPrintPossible);
-    }
-  }
-
-  private final IAnathemaModel anathemaModel;
-  private final IResources resources;
+public class AnathemaQuickPrintAction extends AbstractPrintAction {
 
   public static Action createToolAction(IAnathemaModel model, IResources resources) {
     SmartAction action = new AnathemaQuickPrintAction(model, resources);
@@ -58,27 +30,23 @@ public class AnathemaQuickPrintAction extends SmartAction {
 
   public static Action createMenuAction(IAnathemaModel model, IResources resources) {
     SmartAction action = new AnathemaQuickPrintAction(model, resources);
-    action.setName(resources.getString("Anathema.Reporting.Menu.QuickPrint.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
+    action.setName(
+            resources.getString("Anathema.Reporting.Menu.QuickPrint.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
     return action;
   }
 
-  private AnathemaQuickPrintAction(final IAnathemaModel anathemaModel, IResources resources) {
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-    this.anathemaModel = anathemaModel;
-    this.resources = resources;
-    PrintEnabledListener listener = new PrintEnabledListener(this);
-    this.anathemaModel.getItemManagement().addListener(listener);
-    listener.itemSelected(anathemaModel.getItemManagement().getSelectedItem());
+  private AnathemaQuickPrintAction(IAnathemaModel anathemaModel, IResources resources) {
+    super(anathemaModel, resources);
   }
 
-  private Report getDefaultReport(IItem item) {
-    String reportName = resources.getString("CharacterModule.Reporting.Sheet.Name");
-    for (Report report : anathemaModel.getReportRegistry().getReports(item)) {
-      if (reportName.equals(report.toString())) {
-        return report;
-      }
-    }
-    return null;
+  @Override
+  protected KeyStroke createKeyStroke() {
+    return getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask());
+  }
+
+  @Override
+  protected IItemManagementModelListener createEnablingListener() {
+    return new QuickPrintEnabledListener(this, new DefaultReportFinder(anathemaModel, resources));
   }
 
   private File getPrintFile(IItem item) throws IOException {
@@ -89,57 +57,22 @@ public class AnathemaQuickPrintAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    final IItem item = anathemaModel.getItemManagement().getSelectedItem();
+    IItem item = anathemaModel.getItemManagement().getSelectedItem();
     if (item == null) {
       return;
     }
-    final Report selectedReport = getDefaultReport(item);
+    Report selectedReport = new DefaultReportFinder(anathemaModel, resources).getDefaultReport(item);
     if (selectedReport == null) {
       return;
     }
     try {
-      final File selectedFile = getPrintFile(item);
-      new ProgressMonitorDialog(parentComponent, resources.getString("Anathema.Reporting.Print.Progress.Title")).run( //$NON-NLS-1$
-              new INonInterruptableRunnableWithProgress() {
-                @Override
-                public void run(IProgressMonitor monitor) throws InvocationTargetException {
-                  try {
-                    performPrint(monitor, item, selectedReport, selectedFile);
-                  } catch (ReportException e) {
-                    throw new InvocationTargetException(e);
-                  } catch (IOException e) {
-                    throw new InvocationTargetException(e);
-                  }
-                }
-              });
+      File selectedFile = getPrintFile(item);
+      printWithProgress(parentComponent, item, selectedReport, selectedFile);
       Desktop.getDesktop().open(selectedFile);
     } catch (InvocationTargetException e) {
-      String errorMessage = getErrorMessage(e);
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e.getCause()));
+      handleInvocationTargetException(parentComponent, e);
     } catch (Exception e) {
-      String errorMessage = resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e));
-    }
-  }
-
-  private String getErrorMessage(InvocationTargetException e) {
-    if (e.getCause() instanceof FileNotFoundException) {
-      return resources.getString("Anathema.Reporting.Message.PrintError.FileOpen"); //$NON-NLS-1$
-    } else {
-      return resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
-    }
-  }
-
-  private void performPrint(IProgressMonitor monitor, IItem item, Report selectedReport, File selectedFile)
-          throws IOException,
-          ReportException {
-    monitor.beginTask(resources.getString("Anathema.Reporting.Print.Progress.Task"), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
-    FileOutputStream stream = null;
-    try {
-      stream = new FileOutputStream(selectedFile);
-      selectedReport.print(item, stream);
-    } finally {
-      IOUtilities.close(stream);
+      handleGeneralException(parentComponent, e);
     }
   }
 }
