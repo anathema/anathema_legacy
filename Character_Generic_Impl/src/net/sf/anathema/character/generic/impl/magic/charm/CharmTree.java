@@ -1,5 +1,12 @@
 package net.sf.anathema.character.generic.impl.magic.charm;
 
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.generic.magic.charms.ICharmTree;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -7,13 +14,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.ICharmTree;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 
 public class CharmTree implements ICharmTree {
 
@@ -31,15 +31,17 @@ public class CharmTree implements ICharmTree {
     }
   }
 
+  @Override
   public ICharm getCharmById(String charmID) {
     return charmById.get(charmID);
   }
 
+  @Override
   public ICharm[] getAllCharms() {
     return allCharms;
   }
 
-  private final void addCharmGroupsFor(Collection<String> groupIds, List<ICharmGroup> charmGroups, ICharm[] charms) {
+  private void addCharmGroupsFor(Collection<String> groupIds, List<ICharmGroup> charmGroups, ICharm[] charms) {
     for (ICharm charm : charms) {
       String groupId = charm.getGroupId();
       if (!groupIds.contains(groupId) && isLearnable(charm)) {
@@ -54,6 +56,7 @@ public class CharmTree implements ICharmTree {
     }
   }
 
+  @Override
   public final ICharmGroup[] getAllCharmGroups() {
     Set<String> charmGroupSet = new HashSet<String>();
     List<ICharmGroup> charmGroups = new ArrayList<ICharmGroup>();
@@ -61,6 +64,7 @@ public class CharmTree implements ICharmTree {
     return charmGroups.toArray(new ICharmGroup[charmGroups.size()]);
   }
 
+  @Override
   public final List<ICharm> getAllCharmsForGroup(String id) {
     List<ICharm> groupCharms = new ArrayList<ICharm>();
     for (ICharm charm : getAllCharms()) {
@@ -71,6 +75,7 @@ public class CharmTree implements ICharmTree {
     return groupCharms;
   }
 
+  @Override
   public boolean isLearnable(ICharm charm) {
     return true;
   }

@@ -41,27 +41,28 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
 
   public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory) {
     super(resources);
-    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, generics, charmMapsByRules, selectedRuleSet);
+    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, generics,
+            charmMapsByRules, selectedRuleSet);
     ICascadeView view = factory.createCascadeView(viewProperties);
     this.templateRegistry = generics.getTemplateRegistry();
     for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
       charmMapsByRules.put(ruleSet, new CharmTreeIdentificateMap());
     }
     selectedRuleSet.setDelegate(AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset());
-    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, filterSet,
-                                                                                            new CharmDisplayPropertiesMap(templateRegistry),selectedRuleSet.getEdition());
+    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties,
+            filterSet, new CharmDisplayPropertiesMap(templateRegistry), selectedRuleSet.getEdition());
     setCharmTypes(new CascadeCharmTypes(generics.getTemplateRegistry(), selectedRuleSet));
     setChangeListener(selectionListener);
     setView(view);
     setCharmDye(new CascadeCharmDye(view, selectionListener));
-    setRulesPresenter(new CascadeRulesPresenter(getResources(), view, selectedRuleSet, selectionListener, charmMapsByRules));
+    setRulesPresenter(
+            new CascadeRulesPresenter(getResources(), view, selectedRuleSet, selectionListener, charmMapsByRules));
   }
 
   @Override
   protected ICharmGroup[] getCharmGroups() {
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     initCharacterTypeCharms(allCharmGroups);
-    initUniqueTypeCharms(allCharmGroups);
     initMartialArtsCharms(allCharmGroups);
     return allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]);
   }
@@ -73,45 +74,51 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
         if (defaultTemplate == null) {
           continue;
         }
-        if (defaultTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms(edition.getDefaultRuleset())) {
+        ICharmTemplate charmTemplate = defaultTemplate.getMagicTemplate().getCharmTemplate();
+        if (charmTemplate.canLearnCharms(edition.getDefaultRuleset())) {
           for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
-            CharmTree charmTree = new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate(), ruleSet);
-            ICharmGroup[] groups = charmTree.getAllCharmGroups();
-            if (groups.length != 0) {
-              getCharmTreeMap(ruleSet).put(type, charmTree);
-              allCharmGroups.addAll(Arrays.asList(groups));
-            }
+            registerTypeCharms(allCharmGroups, type, defaultTemplate, ruleSet);
+            registerUniqueCharms(allCharmGroups, charmTemplate, ruleSet);
           }
         }
       }
     }
   }
-  
-  private void initUniqueTypeCharms(List<ICharmGroup> allCharmGroups) {
-	    for (ICharacterType type : CharacterType.values()) {
-	      for (IExaltedEdition edition : ExaltedEdition.values()) {
-	        ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type, edition);
-	        if (defaultTemplate == null) {
-	          continue;
-	        }
-	        ICharmTemplate charmTemplate = defaultTemplate.getMagicTemplate().getCharmTemplate(); 
-	        if (charmTemplate.canLearnCharms(edition.getDefaultRuleset())) {
-	          for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
-	        		IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
-		        	if (uniqueType == null)
-		        		continue;
-	        		ICharm[] charms = CharmCache.getInstance().getCharms(uniqueType.getId(), ruleSet);
-		            CharmTree charmTree = new CharmTree(charms);
-		            ICharmGroup[] groups = charmTree.getAllCharmGroups();
-		            if (groups.length != 0) {
-		              getCharmTreeMap(ruleSet).put(uniqueType.getId(), charmTree);
-		              allCharmGroups.addAll(Arrays.asList(groups));
-		            }
-	          }
-	        }
-	      }
-	    }
-	  }
+
+  private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate,
+                                    IExaltedRuleSet ruleSet) {
+    IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
+    if (uniqueType == null) {
+      return;
+    }
+    ICharmTree uniqueTree = getUniqueCharmTree(ruleSet, uniqueType);
+    registerGroups(allCharmGroups, ruleSet, uniqueType.getId(), uniqueTree);
+  }
+
+  private void registerTypeCharms(List<ICharmGroup> allCharmGroups, ICharacterType type,
+                                  ICharacterTemplate defaultTemplate, IExaltedRuleSet ruleSet) {
+    ICharmTree typeTree = getTypeCharmTree(defaultTemplate, ruleSet);
+    registerGroups(allCharmGroups, ruleSet, type, typeTree);
+  }
+
+  private ICharmTree getTypeCharmTree(ICharacterTemplate defaultTemplate, IExaltedRuleSet ruleSet) {
+    return new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate(), ruleSet);
+  }
+
+  private ICharmTree getUniqueCharmTree(IExaltedRuleSet ruleSet, IUniqueCharmType uniqueType) {
+    IIdentificate typeId = uniqueType.getId();
+    ICharm[] charms = CharmCache.getInstance().getCharms(typeId, ruleSet);
+    return new CharmTree(charms);
+  }
+
+  private void registerGroups(List<ICharmGroup> allCharmGroups, IExaltedRuleSet ruleSet, IIdentificate typeId,
+                              ICharmTree charmTree) {
+    ICharmGroup[] groups = charmTree.getAllCharmGroups();
+    if (groups.length != 0) {
+      getCharmTreeMap(ruleSet).put(typeId, charmTree);
+      allCharmGroups.addAll(Arrays.asList(groups));
+    }
+  }
 
   private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups) {
     for (IExaltedEdition edition : ExaltedEdition.values()) {
@@ -138,4 +145,6 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     CharmTreeIdentificateMap charmTreeMap = getCharmTreeMap(selectedRuleSet.getDelegate());
     return charmTreeMap.get(type);
   }
+
+
 }
