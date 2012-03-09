@@ -21,7 +21,6 @@ import org.dom4j.io.SAXReader;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,8 +76,8 @@ public class CharmCompiler {
     }
   }
 
-  private List<ICharm> buildStandardCharms(IIdentificate type, ExaltedRuleSet rules) throws PersistenceException {
-    return buildCharms(type, rules, setBuilder);
+  private void buildStandardCharms(IIdentificate type, ExaltedRuleSet rules) throws PersistenceException {
+    buildCharms(type, rules, setBuilder);
   }
 
   private void buildGenericCharms(IIdentificate type, ExaltedRuleSet rules) throws PersistenceException {
@@ -116,9 +115,8 @@ public class CharmCompiler {
     }
   }
 
-  private List<ICharm> buildCharms(IIdentificate type, IExaltedRuleSet rules,
+  private void buildCharms(IIdentificate type, IExaltedRuleSet rules,
                                    ICharmSetBuilder builder) throws PersistenceException {
-    List<ICharm> allCharms = new ArrayList<ICharm>();
     //CharacterType enum IIdentificate equals method does not
     //work properly against purely text IIdentificates, even
     //with matching ids; creating a new one for comparison.
@@ -127,14 +125,12 @@ public class CharmCompiler {
     if (hasEntryForTypeUnderRules) {
       List<Document> documents = charmFileTable.get(fixedType, rules);
       for (Document charmDocument : documents) {
-        ICharm[] builtCharms = buildRulesetCharms(type, rules, charmDocument, builder);
-        Collections.addAll(allCharms, builtCharms);
+        buildRulesetCharms(type, rules, charmDocument, builder);
       }
     }
-    return allCharms;
   }
 
-  private ICharm[] buildRulesetCharms(final IIdentificate type, IExaltedRuleSet rules, Document charmDocument,
+  private void buildRulesetCharms(final IIdentificate type, IExaltedRuleSet rules, Document charmDocument,
                                       ICharmSetBuilder builder) throws PersistenceException {
     CharmCache cache = CharmCache.getInstance();
     List<ISpecialCharm> specialCharms = new ArrayList<ISpecialCharm>();
@@ -143,7 +139,6 @@ public class CharmCompiler {
       cache.addCharm(type, rules, charm);
     }
     cache.addSpecialCharmData(rules, type, specialCharms);
-    return charmArray;
   }
 
   private void extractParents(Iterable<ICharm> charms) {

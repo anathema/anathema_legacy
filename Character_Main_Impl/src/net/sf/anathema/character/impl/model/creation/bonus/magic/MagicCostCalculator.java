@@ -210,13 +210,10 @@ public class MagicCostCalculator {
 
   private boolean checkUniqueAsFavored(IMagic magic) {
     ICharmTemplate charmTemplate = magicTemplate.getCharmTemplate();
-    if (!charmTemplate.hasUniqueCharms()){
+    if (!charmTemplate.hasUniqueCharms()) {
       return true;
     }
     IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
-    if (uniqueType.canCountAsFavored()) {
-      return true;
-    }
     if (magic instanceof ICharm) {
       for (ICharmAttribute attribute : ((ICharm) magic).getAttributes()) {
         if (attribute.getId().equals(uniqueType.getId())) {
@@ -236,11 +233,17 @@ public class MagicCostCalculator {
   }
 
   public int getUniqueRequiredCharmTypePicksSpent(IUniqueCharmType uniqueType) {
-    if (uniqueType == null) return 0;
+    if (uniqueType == null) {
+      return 0;
+    }
     int specialCharms = 0;
-    for (ICharm charm : charms.getLearnedCharms(false))
-      for (ICharmAttribute attribute : charm.getAttributes())
-        if (attribute.getId().equals(uniqueType.getKeyword())) specialCharms++;
+    for (ICharm charm : charms.getLearnedCharms(false)) {
+      for (ICharmAttribute attribute : charm.getAttributes()) {
+        if (uniqueType.keywordMatches(attribute.getId())) {
+          specialCharms++;
+        }
+      }
+    }
     return specialCharms;
   }
 

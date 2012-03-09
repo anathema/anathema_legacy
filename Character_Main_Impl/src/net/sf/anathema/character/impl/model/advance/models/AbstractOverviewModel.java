@@ -12,6 +12,7 @@ public abstract class AbstractOverviewModel extends Identificate implements IOve
     this.categoryId = categoryId;
   }
 
+  @Override
   public String getCategoryId() {
     return categoryId;
   }

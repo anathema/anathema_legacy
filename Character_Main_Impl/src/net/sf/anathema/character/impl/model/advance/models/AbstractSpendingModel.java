@@ -9,6 +9,7 @@ public abstract class AbstractSpendingModel extends AbstractOverviewModel implem
     super(categoryId, id);
   }
 
+  @Override
   public void accept(IOverviewModelVisitor visitor) {
     visitor.visitAlotmentModel(this);
   }

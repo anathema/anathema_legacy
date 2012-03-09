@@ -10,7 +10,7 @@ public class CharmTemplateTest {
 
   @Test
   public void hasUniqueCharmsIfTypeIsSet() throws Exception {
-    CharmTemplate template = new CharmTemplate(null, null, new UniqueCharmType("x", "y", "z", false));
+    CharmTemplate template = new CharmTemplate(null, null, new UniqueCharmType("x", "y", "z"));
     assertThat(template.hasUniqueCharms(), is(true));
   }
 
