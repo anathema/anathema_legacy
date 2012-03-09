@@ -10,6 +10,6 @@ public class SourceWriter {
 
   public void write(ICharmData charm, Element charmElement) {
     Element sourceElement = charmElement.addElement(TAG_SOURCE);
-    sourceElement.addAttribute(ATTRIB_SOURCE, charm.getSource().getId());
+    sourceElement.addAttribute(ATTRIB_SOURCE, charm.getPrimarySource().getId());
   }
 }

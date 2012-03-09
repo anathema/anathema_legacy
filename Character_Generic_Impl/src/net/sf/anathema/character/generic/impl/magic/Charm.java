@@ -108,7 +108,7 @@ public class Charm extends Identificate implements ICharm {
     this.temporaryCost = charmData.getTemporaryCost();
     this.comboRules = new ComboRestrictions();
     this.duration = charmData.getDuration();
-    this.sources = new IExaltedSourceBook[] { charmData.getSource() };
+    this.sources = charmData.getSources();
     this.prerequisisteList = new CharmPrerequisiteList(
         charmData.getPrerequisites(),
         charmData.getEssence(),
@@ -143,7 +143,11 @@ public class Charm extends Identificate implements ICharm {
     return prerequisisteList.getPrerequisites();
   }
 
-  public IExaltedSourceBook getSource() {
+  public IExaltedSourceBook[] getSources() {
+    return sources.length > 0 ? sources : null;
+  }
+  
+  public IExaltedSourceBook getPrimarySource() {
     return sources.length > 0 ? sources[0] : null;
   }
 

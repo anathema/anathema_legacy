@@ -45,8 +45,12 @@ public class DummySpell implements ISpell {
     throw new NotYetImplementedException();
   }
 
-  public IExaltedSourceBook getSource() {
+  public IExaltedSourceBook[] getSources() {
     throw new NotYetImplementedException();
+  }
+  
+  public IExaltedSourceBook getPrimarySource() {
+	throw new NotYetImplementedException();
   }
 
   public IExaltedSourceBook getSource(IExaltedEdition edition) {

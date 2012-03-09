@@ -30,9 +30,9 @@ public class KnackStats implements IKnackStats
 
 	@Override
 	public String getSourceString(IResources resources) {
-		return resources.getString("ExaltedSourceBook." + charm.getSource() + ".Short") +
+		return resources.getString("ExaltedSourceBook." + charm.getPrimarySource() + ".Short") +
 			" p" +
-			resources.getString(charm.getSource().getId() + "." + charm.getId() + ".Page");
+			resources.getString(charm.getPrimarySource().getId() + "." + charm.getId() + ".Page");
 	}
 
 	@Override

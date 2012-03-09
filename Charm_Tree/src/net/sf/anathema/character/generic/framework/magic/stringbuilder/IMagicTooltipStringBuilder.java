@@ -9,5 +9,7 @@ public interface IMagicTooltipStringBuilder
 	public static final String Space = " "; //$NON-NLS-1$
 	public static final String ColonSpace = ": "; //$NON-NLS-1$
 	
+	public static final int DEFAULT_TOOLTIP_WIDTH = 80;
+	
 	public void buildStringForMagic(StringBuilder builder, IMagic magic, Object specialDetails); 
 }

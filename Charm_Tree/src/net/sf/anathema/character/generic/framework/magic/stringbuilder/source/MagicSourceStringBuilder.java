@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSou
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicTooltipStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
+import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceStringBuilder<T>, IMagicTooltipStringBuilder {
@@ -22,23 +23,32 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
   @Override
   public void buildStringForMagic(StringBuilder builder, IMagic magic,
   		Object specialDetails) {
-	  builder.append(resources.getString("CharmTreeView.ToolTip.Source")); //$NON-NLS-1$
-	  builder.append(ColonSpace);
-	  builder.append(createSourceString((T) magic));
+	  String descriptionString = resources.getString("CharmTreeView.ToolTip.Source"); //$NON-NLS-1$
+	  descriptionString += ColonSpace;
+	  descriptionString += createSourceString((T) magic);
+	  descriptionString = AnathemaStringUtilities.createFixedWidthParagraph(descriptionString,
+			  HtmlLineBreak, DEFAULT_TOOLTIP_WIDTH);
+	  builder.append(descriptionString);
   }
 
   public String createSourceString(T t) {
-    final IExaltedSourceBook source = getSource(t);
-    StringBuilder builder = new StringBuilder();
-    builder.append(resources.getString(createSourceBookKey(source)));
-    String pageKey = createPageKey(t.getId(), source);
-    if (resources.supportsKey(pageKey)) {
-      builder.append(IMagicTooltipStringBuilder.CommaSpace);
-      builder.append(resources.getString("CharmTreeView.ToolTip.Page")); //$NON-NLS-1$
-      builder.append(IMagicTooltipStringBuilder.Space);
-      builder.append(resources.getString(pageKey));
+    IExaltedSourceBook[] sources = getSources(t);
+    String[] sourceStrings = new String[sources.length];
+    for (int i = 0; i != sources.length; i++)
+    {
+	    StringBuilder builder = new StringBuilder();
+	    builder.append(resources.getString(createSourceBookKey(sources[i])));
+	    String pageKey = createPageKey(t.getId(), sources[i]);
+	    if (resources.supportsKey(pageKey)) {
+	      builder.append(IMagicTooltipStringBuilder.CommaSpace);
+	      builder.append(resources.getString("CharmTreeView.ToolTip.Page")); //$NON-NLS-1$
+	      builder.append(IMagicTooltipStringBuilder.Space);
+	      builder.append(resources.getString(pageKey));
+	    }
+	    sourceStrings[i] = builder.toString();
     }
-    return builder.toString();
+    String andString = resources.getString("CharmTreeView.ToolTip.SourceAnd");
+    return AnathemaStringUtilities.joinStringsWithDelimiter(sourceStrings, ", " + andString + " ");
   }
 
   private String createSourceBookKey(final IExaltedSourceBook source) {
@@ -50,13 +60,17 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
   }
 
   public String createShortSourceString(T t) {
-    final IExaltedSourceBook source = getSource(t);
+    final IExaltedSourceBook source = t.getPrimarySource();
     String id = t.getId();
     return createShortSourceString(source, id);
   }
 
+  protected IExaltedSourceBook[] getSources(T t) {
+    return t.getSources();
+  }
+  
   protected IExaltedSourceBook getSource(T t) {
-    return t.getSource();
+	return t.getPrimarySource();
   }
 
   public String createShortSourceString(IExaltedSourceBook source, String magicId) {

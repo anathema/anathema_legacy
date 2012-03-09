@@ -38,8 +38,12 @@ public class Spell extends Identificate implements ISpell {
     return circleType;
   }
 
-  public IExaltedSourceBook getSource() {
-    return source.getPrimarySource();
+  public IExaltedSourceBook[] getSources() {
+    return new IExaltedSourceBook[] { source.getPrimarySource() };
+  }
+  
+  public IExaltedSourceBook getPrimarySource() {
+	return source.getPrimarySource();
   }
 
   public IExaltedSourceBook getSource(IExaltedEdition edition) {

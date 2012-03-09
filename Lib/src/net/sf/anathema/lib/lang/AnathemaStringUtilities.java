@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import net.disy.commons.core.util.StringUtilities;
+
+import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 
 public class AnathemaStringUtilities {
@@ -100,7 +103,21 @@ public class AnathemaStringUtilities {
 	  
 	  return textString;
   }
+  
+  public static String joinStringsWithDelimiter(String[] stringsToJoin, String delimiter)
+  {
+	  return joinStringsWithDelimiter(stringsToJoin, delimiter, "-");
+  }
 
+  public static String joinStringsWithDelimiter(String[] stringsToJoin, String delimiter, String nullString)
+  {
+	  String finalText = Joiner.on(delimiter).join(stringsToJoin);
+      if (StringUtilities.isNullOrEmpty(finalText)) {
+        finalText = nullString;
+      }
+      return finalText;
+  }
+  
   public static char lastCharacter(String string) {
     return string.charAt(string.length() - 1);
   }

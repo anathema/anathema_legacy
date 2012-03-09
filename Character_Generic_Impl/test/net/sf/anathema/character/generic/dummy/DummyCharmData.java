@@ -73,8 +73,12 @@ public class DummyCharmData implements ICharmData {
     return parents;
   }
 
-  public IExaltedSourceBook getSource() {
+  public IExaltedSourceBook[] getSources() {
     return null;
+  }
+  
+  public IExaltedSourceBook getPrimarySource() {
+	return null;
   }
 
   public ICostList getTemporaryCost() {

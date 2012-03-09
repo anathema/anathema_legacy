@@ -207,8 +207,12 @@ public class DummyCharm extends Identificate implements ICharm {
     this.groupId = expectedGroup;
   }
 
-  public IExaltedSourceBook getSource() {
-    return source;
+  public IExaltedSourceBook[] getSources() {
+    return new IExaltedSourceBook[] { source };
+  }
+  
+  public IExaltedSourceBook getPrimarySource() {
+	return source;
   }
 
   public void setCharmType(CharmType type) {

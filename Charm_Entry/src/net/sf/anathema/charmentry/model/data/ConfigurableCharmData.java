@@ -72,8 +72,12 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 	return generic;
   }
 
-  public IExaltedSourceBook getSource() {
-    return source;
+  public IExaltedSourceBook[] getSources() {
+    return new IExaltedSourceBook[] { source };
+  }
+  
+  public IExaltedSourceBook getPrimarySource() {
+	return source;
   }
 
   public void setSource(IExaltedSourceBook source) {
