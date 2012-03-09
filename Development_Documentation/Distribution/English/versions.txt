@@ -16,8 +16,10 @@ You've been around since First Edition Lunars back in 2006, my friend. Rest in p
 
 -- Features --
 * New Preference: Print only those generics the Character knows about.
+* Charm tooltips show all sources.
 * [2E] [Shadow493] Added Established Solars from DotFA.
 * [2E] [Scathach] Added Charm descriptions for Lunars. Texts taken from the official Wiki.
+* [2E] [Jesse Belanger] Added Charm descriptions from Glories of the Most High. Texts taken from the official Wiki.
 * [2E] Lunar Knacks now form a separate category
 
 -- Bugfixes --
@@ -28,6 +30,7 @@ You've been around since First Edition Lunars back in 2006, my friend. Rest in p
 * [2E] First Age Solars now start out with a level 1 Manse, as is their due.
 * [2E] Sidereal Excellencies name Essence as their limit.
 * [2E] Solar Hero extensions available only to Solars (and Moonshadows)
+* [2E] (Lunar/Beastmen) "Tiger and Seahorse Dynasty" now carries its proper name
 
 
 ===------------------------------------------------------------------------------===
