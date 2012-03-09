@@ -1,9 +1,5 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.Toolkit;
-
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
@@ -11,6 +7,10 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.Toolkit;
 
 public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewProperties {
 
@@ -67,6 +67,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     return zoomCursor;
   }
 
+  @Override
   public final String getNodeName(final String nodeId) {
     if (resources.supportsKey(nodeId)) {
       return resources.getString(nodeId);
@@ -84,10 +85,12 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     return resources.getString(nodeId);
   }
 
+  @Override
   public final boolean isRequirementNode(final String nodeId) {
     return nodeId.startsWith(REQUIREMENT);
   }
 
+  @Override
   public final boolean isRootNode(final String charmId) {
     if (isRequirementNode(charmId)) {
       return false;
@@ -106,6 +109,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   
   protected abstract ISpecialCharm getSpecialCharm(String id);
 
+  @Override
   public final String getToolTip(final String charmId) {
     if (isRequirementNode(charmId)) {
       return null;
@@ -115,6 +119,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     return tooltipTextProvider.getInfoString(charm, specialCharm);
   }
 
+  @Override
   public Cursor getControlCursor() {
     return pointCursor;
   }

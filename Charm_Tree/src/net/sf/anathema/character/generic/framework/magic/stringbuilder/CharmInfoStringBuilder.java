@@ -1,14 +1,14 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.VerboseCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharmInfoStringBuilder implements ICharmInfoStringBuilder
 {
@@ -27,12 +27,14 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder
     builders.add(new MagicSourceStringBuilder<ICharm>(resources));
   }
 
+  @Override
   public final String getInfoString(ICharm charm, ISpecialCharm specialDetails) {
     Ensure.ensureNotNull("Charm must not be null.", charm); //$NON-NLS-1$
     StringBuilder builder = new StringBuilder();
     builder.append("<html><body>"); //$NON-NLS-1$
-    for (IMagicTooltipStringBuilder lineBuilder : builders)
+    for (IMagicTooltipStringBuilder lineBuilder : builders) {
     	lineBuilder.buildStringForMagic(builder, charm, specialDetails);
+    }
     builder.append("</body></html>"); //$NON-NLS-1$
     return builder.toString();
   }

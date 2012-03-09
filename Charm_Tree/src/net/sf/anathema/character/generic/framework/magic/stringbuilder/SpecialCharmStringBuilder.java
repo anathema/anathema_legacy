@@ -90,6 +90,5 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder
 				  builder.append(HtmlLineBreak);
 			  }
 		}
-		
 	}
 }

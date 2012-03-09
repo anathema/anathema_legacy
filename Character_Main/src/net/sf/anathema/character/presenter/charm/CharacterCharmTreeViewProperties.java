@@ -1,15 +1,16 @@
 package net.sf.anathema.character.presenter.charm;
 
-import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.Toolkit;
-
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmTreeViewProperties;
+import net.sf.anathema.charmtree.presenter.view.NullSpecialCharm;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.Cursor;
+import java.awt.Point;
+import java.awt.Toolkit;
 
 public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewProperties {
 
@@ -20,12 +21,12 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
   public CharacterCharmTreeViewProperties(IResources resources, ICharmConfiguration configuration) {
     super(resources);
     this.configuration = configuration;
-    addCursor = Toolkit.getDefaultToolkit()
-        .createCustomCursor(
-            resources.getImage(this.getClass(), "CursorHandPlus.png"), new Point(5, 0), resources.getString("CharmTreeView.GUI.AddCursor")); //$NON-NLS-1$ //$NON-NLS-2$
-    removeCursor = Toolkit.getDefaultToolkit()
-        .createCustomCursor(
-            resources.getImage(this.getClass(), "CursorHandMinus.png"), new Point(5, 0), resources.getString("CharmTreeView.GUI.RemoveCursor")); //$NON-NLS-1$ //$NON-NLS-2$
+    addCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+            resources.getImage(this.getClass(), "CursorHandPlus.png"), new Point(5, 0),
+            resources.getString("CharmTreeView.GUI.AddCursor")); //$NON-NLS-1$ //$NON-NLS-2$
+    removeCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+            resources.getImage(this.getClass(), "CursorHandMinus.png"), new Point(5, 0),
+            resources.getString("CharmTreeView.GUI.RemoveCursor")); //$NON-NLS-1$ //$NON-NLS-2$
 
   }
 
@@ -36,14 +37,15 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
     }
     return configuration.getCharmById(id);
   }
-  
+
   @Override
-  protected ISpecialCharm getSpecialCharm(String charmId)
-  {
-	  for (ISpecialCharm special : configuration.getSpecialCharms())
-		  if (special.getCharmId().equals(charmId))
-			  return special;
-	  return null;
+  protected ISpecialCharm getSpecialCharm(String charmId) {
+    for (ISpecialCharm special : configuration.getSpecialCharms()) {
+      if (special.getCharmId().equals(charmId)) {
+        return special;
+      }
+    }
+    return new NullSpecialCharm();
   }
 
   @Override
@@ -68,8 +70,7 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
   }
 
   private boolean isNodeDeselectable(String charmId) {
-    return !StringUtilities.isNullOrEmpty(charmId)
-        && !isRequirementNode(charmId)
-        && configuration.isUnlearnable(charmId);
+    return !StringUtilities.isNullOrEmpty(charmId) && !isRequirementNode(charmId) && configuration.isUnlearnable(
+            charmId);
   }
 }
