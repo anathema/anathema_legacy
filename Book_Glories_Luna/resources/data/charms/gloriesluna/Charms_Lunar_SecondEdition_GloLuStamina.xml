@@ -60,7 +60,7 @@
           <charmtype type="Permanent" />
           <source source="GloriesLuna" />
      </charm>
-	 <charm id="Lunar.TigerAndSeahorseDestiny" exalt="Lunar" group="Beastmen">
+	 <charm id="Lunar.TigerAndSeahorseDynasty" exalt="Lunar" group="Beastmen">
           <prerequisite>
                <trait id="Stamina" value="4" />
                <essence value="2" />
