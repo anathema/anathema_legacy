@@ -17,4 +17,6 @@ public interface ICharmTemplate {
   boolean isAllowedAlienCharms(ICasteType caste);
 
   IMartialArtsRules getMartialArtsRules();
+
+  boolean hasUniqueCharms();
 }

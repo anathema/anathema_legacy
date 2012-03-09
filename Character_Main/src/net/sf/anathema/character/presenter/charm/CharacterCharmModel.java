@@ -22,11 +22,10 @@ public class CharacterCharmModel {
     ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
     return charmTemplate.isAllowedAlienCharms(getCaste().getType());
   }
-  
-  public IUniqueCharmType getUniqueCharmType()
-  {
-	  ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
-	  return charmTemplate.getUniqueCharmType();
+
+  public IUniqueCharmType getUniqueCharmType() {
+    ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
+    return charmTemplate.getUniqueCharmType();
   }
 
   public void addCasteChangeListener(IChangeListener listener) {
@@ -56,5 +55,10 @@ public class CharacterCharmModel {
     ICharmConfiguration charms = getCharmConfiguration();
     ICharm charm = charms.getCharmById(charmId);
     return charms.getGroup(charm);
+  }
+
+  public boolean hasUniqueCharmType() {
+    ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
+    return charmTemplate.hasUniqueCharms();
   }
 }

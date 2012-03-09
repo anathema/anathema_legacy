@@ -283,13 +283,12 @@ public class BonusPointManagement implements IBonusPointManagement {
     if (getFavoredCharmModel().getAlotment() > 0) {
       models.add(getFavoredCharmModel());
     }
-    
-    ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate(); 
-    if (getSpecialCharmModel(charmTemplate.getUniqueCharmType()).getAlotment() > 0)
-    {
-    	models.add(getSpecialCharmModel(charmTemplate.getUniqueCharmType()));
+    ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
+    if (charmTemplate.hasUniqueCharms()) {
+      if (getSpecialCharmModel(charmTemplate.getUniqueCharmType()).getAlotment() > 0) {
+        models.add(getSpecialCharmModel(charmTemplate.getUniqueCharmType()));
+      }
     }
-    
     models.add(getDefaultCharmModel());
   }
 }

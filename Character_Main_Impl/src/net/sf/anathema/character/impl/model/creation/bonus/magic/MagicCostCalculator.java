@@ -1,11 +1,5 @@
 package net.sf.anathema.character.impl.model.creation.bonus.magic;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -15,6 +9,7 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
@@ -24,6 +19,12 @@ import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IUpgradableCharmConfiguration;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class MagicCostCalculator {
 
@@ -40,19 +41,11 @@ public class MagicCostCalculator {
   protected int bonusPointsSpentForSpells;
   private final IAdditionalMagicLearnPointManagement magicPools;
   private final IMagicTemplate magicTemplate;
-  private final IUniqueCharmType uniqueType; 
 
-  public MagicCostCalculator(
-      IMagicTemplate magicTemplate,
-      ICharmConfiguration charms,
-      ISpellConfiguration spells,
-      int favoredCreationCharmCount,
-      int defaultCreationCharmCount,
-      IBonusPointCosts costs,
-      IAdditionalBonusPointManagment bonusPools,
-      IAdditionalMagicLearnPointManagement magicPools,
-      IBasicCharacterData basicCharacter,
-      IGenericTraitCollection traitCollection) {
+  public MagicCostCalculator(IMagicTemplate magicTemplate, ICharmConfiguration charms, ISpellConfiguration spells,
+                             int favoredCreationCharmCount, int defaultCreationCharmCount, IBonusPointCosts costs,
+                             IAdditionalBonusPointManagment bonusPools, IAdditionalMagicLearnPointManagement magicPools,
+                             IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     this.magicTemplate = magicTemplate;
     this.charms = charms;
     this.spells = spells;
@@ -62,7 +55,6 @@ public class MagicCostCalculator {
     this.bonusPools = bonusPools;
     this.magicPools = magicPools;
     this.analyzer = new CostAnalyzer(basicCharacter, traitCollection);
-    this.uniqueType = magicTemplate.getCharmTemplate().getUniqueCharmType();
   }
 
   public void calculateMagicCosts() {
@@ -76,8 +68,7 @@ public class MagicCostCalculator {
       weights[index] = costs.getMagicCosts(magicToHandle.get(index), analyzer);
     }
     List<IMagic> sortedMagicList = new WeightedMagicSorter().sortDescending(
-        magicToHandle.toArray(new IMagic[magicToHandle.size()]),
-        weights);
+            magicToHandle.toArray(new IMagic[magicToHandle.size()]), weights);
     Set<IMagic> handledMagic = new HashSet<IMagic>();
     for (IMagic magic : sortedMagicList) {
       handleMagic(magic, handledMagic);
@@ -87,23 +78,25 @@ public class MagicCostCalculator {
   private class CountVisitor implements IMagicVisitor {
     int learnCount;
     Set<IMagic> handledMagic;
-    
+
     public CountVisitor(Set<IMagic> handledMagic) {
       this.learnCount = 0;
       this.handledMagic = handledMagic;
     }
-    
+
     public void visitCharm(ICharm charm) {
       learnCount = determineLearnCount(charm, handledMagic);
     }
+
     public void visitSpell(ISpell spell) {
       learnCount = 1;
     }
-    
+
     public int getLearnCount() {
       return learnCount;
     }
   }
+
   private void handleMagic(IMagic magic, Set<IMagic> handledMagic) {
     final int bonusPointFactor = costs.getMagicCosts(magic, analyzer);
     CountVisitor visitor = new CountVisitor(handledMagic);
@@ -112,13 +105,12 @@ public class MagicCostCalculator {
     for (int timesHandled = 0; timesHandled < visitor.getLearnCount(); timesHandled++) {
       if (favored) {
         handleFavoredMagic(bonusPointFactor, magic);
-      }
-      else {
+      } else {
         handleGeneralMagic(bonusPointFactor, magic);
       }
     }
     handleSubeffectCharm(magic);
-    
+
     handledMagic.add(magic);
   }
 
@@ -127,9 +119,8 @@ public class MagicCostCalculator {
       return;
     }
     ISpecialCharmConfiguration specialCharmConfiguration = charms.getSpecialCharmConfiguration((ICharm) magic);
-    if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration)
-    {
-    	bonusPointsSpentForCharms += ((IUpgradableCharmConfiguration)specialCharmConfiguration).getUpgradeBPCost();
+    if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration) {
+      bonusPointsSpentForCharms += ((IUpgradableCharmConfiguration) specialCharmConfiguration).getUpgradeBPCost();
     }
     if (!(specialCharmConfiguration instanceof ISubeffectCharmConfiguration)) {
       return;
@@ -173,17 +164,15 @@ public class MagicCostCalculator {
     }
     return learnCount;
   }
-  
-  private boolean isSpecialCharm(ICharm charm)
-  {
-	  return charms.getSpecialCharmConfiguration(charm) != null;
+
+  private boolean isSpecialCharm(ICharm charm) {
+    return charms.getSpecialCharmConfiguration(charm) != null;
   }
 
   private int handleSpecialCharm(ICharm charm) {
     ISpecialCharmConfiguration specialCharmConfiguration = charms.getSpecialCharmConfiguration(charm);
     if (specialCharmConfiguration != null) {
-    	if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration)
-    		return 1;
+      if (specialCharmConfiguration instanceof IUpgradableCharmConfiguration) return 1;
       return specialCharmConfiguration.getCreationLearnCount();
     }
     return 1;
@@ -191,10 +180,9 @@ public class MagicCostCalculator {
 
   private void handleFavoredMagic(int bonusPointFactor, IMagic magic) {
     if (canBuyFromFreePicks(magic) && favoredPicksSpent < favoredCreationCharmCount &&
-    	checkUniqueAsFavored(magic)) {
+            checkUniqueAsFavored(magic)) {
       favoredPicksSpent++;
-    }
-    else {
+    } else {
       handleGeneralMagic(bonusPointFactor, magic);
     }
   }
@@ -206,8 +194,7 @@ public class MagicCostCalculator {
   private void handleGeneralMagic(final int bonusPointFactor, IMagic magic) {
     if (canBuyFromFreePicks(magic) && generalPicksSpent < defaultCreationCharmCount) {
       generalPicksSpent++;
-    }
-    else {
+    } else {
       bonusPools.spendOn(magic, bonusPointFactor);
       magic.accept(new IMagicVisitor() {
         public void visitCharm(ICharm charm) {
@@ -220,16 +207,24 @@ public class MagicCostCalculator {
       });
     }
   }
-  
-  private boolean checkUniqueAsFavored(IMagic magic)
-  {
-	  if (uniqueType == null || uniqueType.canCountAsFavored())
-		  return true;
-	  if (magic instanceof ICharm)
-		  for (ICharmAttribute attribute : ((ICharm)magic).getAttributes())
-			  if (attribute.getId().equals(uniqueType.getId()))
-				  return false;
-	  return true;
+
+  private boolean checkUniqueAsFavored(IMagic magic) {
+    ICharmTemplate charmTemplate = magicTemplate.getCharmTemplate();
+    if (!charmTemplate.hasUniqueCharms()){
+      return true;
+    }
+    IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
+    if (uniqueType.canCountAsFavored()) {
+      return true;
+    }
+    if (magic instanceof ICharm) {
+      for (ICharmAttribute attribute : ((ICharm) magic).getAttributes()) {
+        if (attribute.getId().equals(uniqueType.getId())) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   public int getFavoredCharmPicksSpent() {
@@ -239,17 +234,14 @@ public class MagicCostCalculator {
   public int getGeneralCharmPicksSpent() {
     return generalPicksSpent;
   }
-  
-  public int getUniqueRequiredCharmTypePicksSpent(IUniqueCharmType uniqueType)
-  {
-	  if (uniqueType == null)
-		  return 0;
-	  int specialCharms = 0;
-	  for (ICharm charm : charms.getLearnedCharms(false))
-		  for (ICharmAttribute attribute : charm.getAttributes())
-			  if (attribute.getId().equals(uniqueType.getKeyword()))
-				  specialCharms++;
-	  return specialCharms;
+
+  public int getUniqueRequiredCharmTypePicksSpent(IUniqueCharmType uniqueType) {
+    if (uniqueType == null) return 0;
+    int specialCharms = 0;
+    for (ICharm charm : charms.getLearnedCharms(false))
+      for (ICharmAttribute attribute : charm.getAttributes())
+        if (attribute.getId().equals(uniqueType.getKeyword())) specialCharms++;
+    return specialCharms;
   }
 
   public int getBonusPointsSpentForCharms() {

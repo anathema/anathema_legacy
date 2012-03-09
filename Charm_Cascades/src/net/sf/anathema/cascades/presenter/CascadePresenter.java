@@ -87,10 +87,10 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
 
   private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate,
                                     IExaltedRuleSet ruleSet) {
-    IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
-    if (uniqueType == null) {
+    if (!charmTemplate.hasUniqueCharms()) {
       return;
     }
+    IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
     ICharmTree uniqueTree = getUniqueCharmTree(ruleSet, uniqueType);
     registerGroups(allCharmGroups, ruleSet, uniqueType.getId(), uniqueTree);
   }

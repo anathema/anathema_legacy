@@ -29,6 +29,11 @@ public class DummyCharmTemplate implements ICharmTemplate {
     return defaultMartialArtsRules;
   }
 
+  @Override
+  public boolean hasUniqueCharms() {
+    return false;
+  }
+
   public boolean isAllowedAlienCharms(ICasteType caste) {
     return false;
   }
