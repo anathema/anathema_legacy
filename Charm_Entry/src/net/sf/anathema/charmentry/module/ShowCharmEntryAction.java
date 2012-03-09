@@ -69,7 +69,7 @@ public class ShowCharmEntryAction extends SmartAction {
       charmEntryPropertiesPersister.writeCharmPageProperty(
           coreData.getCharacterType(),
           coreData.getId(),
-          coreData.getSource(),
+          coreData.getPrimarySource(),
           entryData.getPage());
       charmEntryPropertiesPersister.writeDurationProperty(resources, coreData.getDuration());
     }

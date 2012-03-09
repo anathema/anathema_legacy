@@ -94,11 +94,11 @@ public class SourceBookCharmFilter implements ICharmFilter {
       for (ICharm learnedCharm : characterSet.getLearnedCharms(true))
         if (learnedCharm == charm)
           return true;
-    IExaltedEdition edition = charm.getSource().getEdition();
+    IExaltedEdition edition = charm.getPrimarySource().getEdition();
     List<IExaltedSourceBook> excludedSourceList = excludedMaterial.get(edition);
     if (excludedSourceList == null)
       excludedSourceList = prepareEdition(edition);
-    return !excludedSourceList.contains(charm.getSource());
+    return !excludedSourceList.contains(charm.getPrimarySource());
   }
 
   @Override

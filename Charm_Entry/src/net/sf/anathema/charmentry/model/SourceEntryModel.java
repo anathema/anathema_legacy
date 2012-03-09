@@ -16,7 +16,7 @@ public class SourceEntryModel implements ISourceEntryModel {
   }
 
   public boolean enablePageSelection() {
-    return !StringUtilities.isNullOrTrimmedEmpty(charmData.getSource().getId());
+    return !StringUtilities.isNullOrTrimmedEmpty(charmData.getPrimarySource().getId());
   }
 
   public void setSourceBook(IExaltedSourceBook sourceBook) {
