@@ -1,7 +1,6 @@
 package net.sf.anathema.character.presenter.charm;
 
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
@@ -11,7 +10,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JPanel;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +33,8 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
 
   private void prepareEdition(IExaltedEdition edition) {
     ArrayList<IExaltedSourceBook> materialList = new ArrayList<IExaltedSourceBook>();
-    IExaltedSourceBook[] bookSet = ExaltedSourceBook.getSourcesForEdition(edition);
-    Collections.addAll(materialList, bookSet);
+    List<IExaltedSourceBook> bookSet = new SourceBookCollection().getSourcesForEdition(edition);
+    materialList.addAll(bookSet);
     allMaterial.put(edition, materialList);
     ArrayList<IExaltedSourceBook> materialExcluded = new ArrayList<IExaltedSourceBook>();
     excludedMaterial.put(edition, materialExcluded);

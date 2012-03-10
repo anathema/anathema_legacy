@@ -3,9 +3,6 @@ package net.sf.anathema.character.generic.impl.rules;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public enum ExaltedSourceBook implements IExaltedSourceBook {
  FirstEdition(ExaltedEdition.FirstEdition), Bo3C(ExaltedEdition.FirstEdition), SavantSorcerer(ExaltedEdition.FirstEdition), 
  BoneEbony(ExaltedEdition.FirstEdition), Abyssals1st(ExaltedEdition.FirstEdition), DragonBlooded1st(ExaltedEdition.FirstEdition),
@@ -43,15 +40,5 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
   @Override
   public IExaltedEdition getEdition() {
     return edition;
-  }
-
-  public static IExaltedSourceBook[] getSourcesForEdition(IExaltedEdition requestedEdition) {
-    List<ExaltedSourceBook> books = new ArrayList<ExaltedSourceBook>();
-    for (ExaltedSourceBook book : values()) {
-      if (book.getEdition() == requestedEdition) {
-        books.add(book);
-      }
-    }
-    return books.toArray(new IExaltedSourceBook[books.size()]);
   }
 }
