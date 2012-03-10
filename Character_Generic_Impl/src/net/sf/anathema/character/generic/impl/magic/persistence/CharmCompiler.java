@@ -123,13 +123,9 @@ public class CharmCompiler {
 
   private void buildCharms(IIdentificate type, IExaltedRuleSet rules,
                            ICharmSetBuilder builder) throws PersistenceException {
-    //CharacterType enum IIdentificate equals method does not
-    //work properly against purely text IIdentificates, even
-    //with matching ids; creating a new one for comparison.
-    IIdentificate fixedType = new Identificate(type.getId());
-    boolean hasEntryForTypeUnderRules = charmFileTable.contains(fixedType, rules);
+    boolean hasEntryForTypeUnderRules = charmFileTable.contains(type, rules);
     if (hasEntryForTypeUnderRules) {
-      List<Document> documents = charmFileTable.get(fixedType, rules);
+      List<Document> documents = charmFileTable.get(type, rules);
       for (Document charmDocument : documents) {
         buildRulesetCharms(type, rules, charmDocument, builder);
       }
