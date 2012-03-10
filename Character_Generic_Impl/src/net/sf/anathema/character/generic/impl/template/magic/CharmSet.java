@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
@@ -11,6 +8,9 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CharmSet implements ICharmSet {
 
@@ -45,10 +45,12 @@ public class CharmSet implements ICharmSet {
     this.martialArtsCharmMap = martialArtsCharmMap;
   }
 
+  @Override
   public ICharm[] getCharms(IExaltedRuleSet set) {
     return charmMap.get(set);
   }
 
+  @Override
   public ICharm[] getMartialArtsCharms(IExaltedRuleSet set) {
     return martialArtsCharmMap.get(set);
   }

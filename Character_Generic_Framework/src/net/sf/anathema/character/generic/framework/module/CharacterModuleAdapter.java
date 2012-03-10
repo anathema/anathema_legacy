@@ -13,22 +13,27 @@ import net.sf.anathema.lib.resources.IResources;
 
 public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> implements ICharacterModule<M> {
 
+  @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException {
     // Nothing to do
   }
 
+  @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     // Nothing to do
   }
 
+  @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     // Nothing to do
   }
 
+  @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     // Nothing to do
   }
 
+  @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     // Nothing to do
   }

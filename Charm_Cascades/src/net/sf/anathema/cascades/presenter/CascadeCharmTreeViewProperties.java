@@ -2,7 +2,7 @@ package net.sf.anathema.cascades.presenter;
 
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -21,16 +21,18 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   private IIdentificate type;
   private final ProxyRuleSet rules;
+  private final ICharmCache cache;
   private final ICharacterGenerics generics;
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules;
 
   public CascadeCharmTreeViewProperties(IResources resources, ICharacterGenerics generics,
                                         Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules,
-                                        ProxyRuleSet selectedRuleSet) {
+                                        ProxyRuleSet selectedRuleSet, ICharmCache cache) {
     super(resources);
     this.charmMapsByRules = charmMapsByRules;
     this.generics = generics;
     this.rules = selectedRuleSet;
+    this.cache = cache;
   }
 
   @Override
@@ -55,7 +57,7 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
   private ICharm searchCharm(final String charmId) {
     String[] idParts = charmId.split("\\."); //$NON-NLS-1$
     ICharacterType characterTypeId = CharacterType.getById(idParts[0]);
-    ICharm[] charms = CharmCache.getInstance().getCharms(characterTypeId, rules);
+    ICharm[] charms = cache.getCharms(characterTypeId, rules);
     return ArrayUtilities.find(new Predicate<ICharm>() {
       @Override
       public boolean apply(ICharm candidate) {

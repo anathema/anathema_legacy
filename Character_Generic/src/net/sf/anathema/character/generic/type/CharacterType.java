@@ -100,6 +100,7 @@ public enum CharacterType implements ICharacterType {
     this.id = id;
   }
 
+  @Override
   public abstract void accept(ICharacterTypeVisitor visitor);
 
   public static ICharacterType getById(String id) {
@@ -128,6 +129,7 @@ public enum CharacterType implements ICharacterType {
     return types.toArray(new ICharacterType[types.size()]);
   }
 
+  @Override
   public String getId() {
     return id;
   }
@@ -137,6 +139,7 @@ public enum CharacterType implements ICharacterType {
     return getId();
   }
 
+  @Override
   public boolean isExaltType() {
     return containsValue(getAllExaltTypes(), this);
   }
@@ -152,6 +155,7 @@ public enum CharacterType implements ICharacterType {
     return list;
   }
 
+  @Override
   public boolean isEssenceUser() {
     return Iterables.contains(getAllEssenceUsers(), this);
   }

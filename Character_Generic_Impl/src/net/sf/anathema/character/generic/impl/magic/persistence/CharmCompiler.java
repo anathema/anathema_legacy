@@ -39,7 +39,9 @@ public class CharmCompiler {
   public CharmCompiler(CharmCache charmCache) {
     this.charmCache = charmCache;
     this.registry = new IdentificateRegistry<IIdentificate>();
-    registry.add(CharacterType.values());
+    for (CharacterType characterType : CharacterType.values()) {
+      registry.add(new Identificate(characterType.getId()));
+    }
     this.reader = new SAXReader();
   }
 

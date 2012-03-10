@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -38,11 +39,12 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   private ProxyRuleSet selectedRuleSet = new ProxyRuleSet();
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules = new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
   private ITemplateRegistry templateRegistry;
+  private final ICharmCache cache = CharmCache.getInstance();
 
   public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory) {
     super(resources);
     CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, generics,
-            charmMapsByRules, selectedRuleSet);
+            charmMapsByRules, selectedRuleSet, cache);
     ICascadeView view = factory.createCascadeView(viewProperties);
     this.templateRegistry = generics.getTemplateRegistry();
     for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
@@ -107,7 +109,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
 
   private ICharmTree getUniqueCharmTree(IExaltedRuleSet ruleSet, IUniqueCharmType uniqueType) {
     IIdentificate typeId = uniqueType.getId();
-    ICharm[] charms = CharmCache.getInstance().getCharms(typeId, ruleSet);
+    ICharm[] charms = cache.getCharms(typeId, ruleSet);
     return new CharmTree(charms);
   }
 

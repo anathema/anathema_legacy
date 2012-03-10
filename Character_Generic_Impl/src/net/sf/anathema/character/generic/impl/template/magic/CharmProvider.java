@@ -46,9 +46,13 @@ public class CharmProvider implements ICharmProvider {
 
   @Override
   public ISpecialCharm[] getSpecialCharms(ICharacterType characterType, IExaltedEdition edition) {
-    if (!dataCharmsPrepared.get(edition, characterType)) prepareDataCharms(characterType, edition);
+    if (!dataCharmsPrepared.get(edition, characterType)) {
+      prepareDataCharms(characterType, edition);
+    }
     ISpecialCharm[] specialCharms = charmsByTypeByRuleSet.get(edition, characterType);
-    if (specialCharms == null) specialCharms = new ISpecialCharm[0];
+    if (specialCharms == null) {
+      specialCharms = new ISpecialCharm[0];
+    }
     return specialCharms;
   }
 
@@ -71,7 +75,8 @@ public class CharmProvider implements ICharmProvider {
 
   @Override
   public ISpecialCharm[] getSpecialMartialArtsCharms(IExaltedEdition edition) {
-    return martialArtsSpecialCharms.get(edition).toArray(new ISpecialCharm[0]);
+    List<ISpecialCharm> specialCharms = martialArtsSpecialCharms.get(edition);
+    return specialCharms.toArray(new ISpecialCharm[specialCharms.size()]);
   }
 
   @Override

@@ -1,7 +1,17 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfTemplate;
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -39,6 +49,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
     return content.createSubContent(GenericCharmContent.class);
   }
 
+  @Override
   public boolean hasContent(ReportContent content) {
     return createContent(content).hasContent() && GenericCharmUtilities.hasDisplayedGenericCharms(content);
   }
@@ -58,7 +69,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
       table.addCell(createHeaderCell(graphics, directContent, trait));
     }
     for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
-      if (!GenericCharmUtilities.shouldShowCharm(stats, character, traits))
+      if (!GenericCharmUtilities.shouldShowCharm(stats, character))
       	continue;
       Phrase charmPhrase = new Phrase(stats.getNameString(resources), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
@@ -87,6 +98,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
     final String charmId = genericId + "." + type.getId(); //$NON-NLS-1$
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
     boolean isLearned = CollectionUtilities.getFirst(allLearnedMagic, new IPredicate<IMagic>() {
+      @Override
       public boolean evaluate(IMagic value) {
         return charmId.equals(value.getId());
       }
