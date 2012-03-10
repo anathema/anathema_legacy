@@ -33,20 +33,13 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
     }
   }
 
-  private List<IExaltedSourceBook> prepareEdition(IExaltedEdition edition) {
+  private void prepareEdition(IExaltedEdition edition) {
     ArrayList<IExaltedSourceBook> materialList = new ArrayList<IExaltedSourceBook>();
     IExaltedSourceBook[] bookSet = ExaltedSourceBook.getSourcesForEdition(edition);
     Collections.addAll(materialList, bookSet);
     allMaterial.put(edition, materialList);
     ArrayList<IExaltedSourceBook> materialExcluded = new ArrayList<IExaltedSourceBook>();
     excludedMaterial.put(edition, materialExcluded);
-    return excludedMaterial.get(edition);
-  }
-
-  private ArrayList<IExaltedSourceBook> getApprovedList(IExaltedEdition edition) {
-    ArrayList<IExaltedSourceBook> approvedMaterial = new ArrayList<IExaltedSourceBook>(allMaterial.get(edition));
-    approvedMaterial.removeAll(excludedMaterial.get(edition));
-    return approvedMaterial;
   }
 
   @Override
@@ -57,20 +50,29 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
     if (mustBeShownDueToCircumstance(charm)) {
       return true;
     }
-    IExaltedEdition edition = charm.getPrimarySource().getEdition();
-    List<IExaltedSourceBook> excludedSourceList = excludedMaterial.get(edition);
-    return !excludedSourceList.contains(charm.getPrimarySource());
+    return !isExcluded(charm.getPrimarySource());
+  }
+
+  private boolean isExcluded(IExaltedSourceBook primarySource) {
+    List<IExaltedSourceBook> excludedSourceList = getExcludedMaterialFor(getEdition());
+    return excludedSourceList.contains(primarySource);
   }
 
   protected abstract boolean mustBeShownDueToCircumstance(ICharm charm);
 
   @Override
   public JPanel getFilterPreferencePanel(IResources resources) {
-    workingExcludedMaterial = new ArrayList<IExaltedSourceBook>(excludedMaterial.get(getEdition()));
+    workingExcludedMaterial = new ArrayList<IExaltedSourceBook>(getExcludedMaterialFor(getEdition()));
     workingIncludePrereqs[0] = includePrereqs;
     SourceBookCharmFilterPage page = new SourceBookCharmFilterPage(resources, getApprovedList(getEdition()),
             workingExcludedMaterial, workingIncludePrereqs);
     return page.getContent();
+  }
+
+  private List<IExaltedSourceBook> getApprovedList(IExaltedEdition edition) {
+    List<IExaltedSourceBook> approvedMaterial = new ArrayList<IExaltedSourceBook>(allMaterial.get(edition));
+    approvedMaterial.removeAll(getExcludedMaterialFor(edition));
+    return approvedMaterial;
   }
 
   @Override
@@ -92,5 +94,9 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
 
   protected IExaltedEdition getEdition() {
     return edition;
+  }
+
+  private List<IExaltedSourceBook> getExcludedMaterialFor(IExaltedEdition edition) {
+    return excludedMaterial.get(edition);
   }
 }
