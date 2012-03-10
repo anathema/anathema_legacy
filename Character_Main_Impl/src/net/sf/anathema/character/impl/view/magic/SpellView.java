@@ -1,20 +1,5 @@
 package net.sf.anathema.character.impl.view.magic;
 
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Comparator;
-
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionListener;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
@@ -29,6 +14,20 @@ import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledStringValueView;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
+import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionListener;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Comparator;
 
 public class SpellView implements ISpellView {
 
@@ -50,16 +49,19 @@ public class SpellView implements ISpellView {
     };
   }
 
+  @Override
   public JComponent getComponent() {
     return content;
   }
 
+  @Override
   public IValueView<String> addDetailValueView(String label) {
     LabelledStringValueView view = new LabelledStringValueView(label, new GridDialogLayoutData());
     view.addToStandardPanel(detailPanel);
     return view;
   }
 
+  @Override
   public JLabel addDetailTitleView() {
     JLabel label = new JLabel();
     label.setFont(label.getFont().deriveFont(Font.BOLD));
@@ -67,6 +69,7 @@ public class SpellView implements ISpellView {
     return label;
   }
 
+  @Override
   public void initGui(IIdentificate[] circles) {
     JComponent selectionPanel = createSelectionPanel(circles);
     IGridDialogLayoutData data = GridDialogLayoutData.FILL_BOTH;
@@ -92,6 +95,7 @@ public class SpellView implements ISpellView {
     box.setRenderer(renderer);
     panel.add(box, GridDialogLayoutData.FILL_HORIZONTAL);
     box.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         circleControl.fireValueChangedEvent((CircleType) box.getSelectedItem());
       }
@@ -99,46 +103,57 @@ public class SpellView implements ISpellView {
     return panel;
   }
 
+  @Override
   public void addMagicViewListener(IMagicViewListener listener) {
     magicLearnView.addMagicViewListener(listener);
   }
 
+  @Override
   public void addOptionListListener(ListSelectionListener listener) {
     magicLearnView.addOptionListListener(listener);
   }
 
+  @Override
   public void addSelectionListListener(ListSelectionListener listener) {
     magicLearnView.addSelectionListListener(listener);
   }
 
+  @Override
   public void addCircleSelectionListener(IObjectValueChangedListener<CircleType> listener) {
     circleControl.addObjectValueChangeListener(listener);
   }
 
+  @Override
   public void setLearnedMagic(Object[] spells) {
     magicLearnView.setLearnedMagic(spells);
   }
 
+  @Override
   public void setMagicOptions(Object[] spells) {
     magicLearnView.setMagicOptions(spells);
   }
 
+  @Override
   public void addLearnedMagic(Object[] magics) {
     magicLearnView.addLearnedMagic(magics);
   }
 
+  @Override
   public void addMagicOptions(IIdentificate[] magics, Comparator<IIdentificate> comparator) {
     magicLearnView.addMagicOptions(magics, comparator);
   }
 
+  @Override
   public void removeLearnedMagic(Object[] magics) {
     magicLearnView.removeLearnedMagic(magics);
   }
 
+  @Override
   public void removeMagicOptions(Object[] magics) {
     magicLearnView.removeMagicOptions(magics);
   }
 
+  @Override
   public void clearSelection() {
     magicLearnView.clearSelection();
   }

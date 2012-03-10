@@ -7,5 +7,5 @@ public interface ISourceList {
 
   IExaltedSourceBook getPrimarySource();
 
-  IExaltedSourceBook getSource(IExaltedEdition edition);
+  boolean hasSource(IExaltedEdition edition);
 }

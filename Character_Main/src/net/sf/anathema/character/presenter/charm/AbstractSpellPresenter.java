@@ -1,21 +1,11 @@
 package net.sf.anathema.character.presenter.charm;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ScreenDisplayInfoStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.SpellSourceStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
@@ -35,6 +25,15 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public abstract class AbstractSpellPresenter implements IContentPresenter {
 
   private final ISpellConfiguration spellConfiguration;
@@ -52,18 +51,20 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
     this.properties = new SpellViewProperties(resources, statistics);
     this.resources = resources;
     this.creator = new ScreenDisplayInfoStringBuilder(resources);
-    this.sourceStringBuilder = new SpellSourceStringBuilder(resources, statistics.getRules().getEdition());
+    this.sourceStringBuilder = new MagicSourceStringBuilder<ISpell>(resources);
     this.spellConfiguration = statistics.getSpells();
     this.characterTemplate = statistics.getCharacterTemplate();
     this.view = factory.createSpellView(properties);
     circle = getCircles()[0];
   }
 
+  @Override
   public void initPresentation() {
     IIdentificate[] allowedCircles = getCircles();
     initDetailsView();
     view.initGui(allowedCircles);
     view.addMagicViewListener(new IMagicViewListener() {
+      @Override
       public void magicRemoved(Object[] removedSpells) {
         List<ISpell> spellList = new ArrayList<ISpell>();
         for (Object spellObject : removedSpells) {
@@ -72,6 +73,7 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
         spellConfiguration.removeSpells(spellList.toArray(new ISpell[spellList.size()]));
       }
 
+      @Override
       public void magicAdded(Object[] addedSpells) {
         List<ISpell> spellList = new ArrayList<ISpell>();
         for (Object spellObject : addedSpells) {
@@ -83,16 +85,19 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
       }
     });
     view.addCircleSelectionListener(new IObjectValueChangedListener<CircleType>() {
+      @Override
       public void valueChanged(CircleType circleType) {
         circle = circleType;
         view.setMagicOptions(getSpellsToShow());
       }
     });
     spellConfiguration.addMagicLearnListener(new IMagicLearnListener<ISpell>() {
+      @Override
       public void magicForgotten(ISpell[] magic) {
         forgetSpellListsInView(view, magic);
       }
 
+      @Override
       public void magicLearned(ISpell[] magic) {
         learnSpellListsInView(view, magic);
       }
@@ -106,6 +111,7 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
     });
   }
 
+  @Override
   public IViewContent getTabContent() {
     String header = resources.getString(getTabTitleResourceKey());
     return new SimpleViewContent(new ContentProperties(header), view);
@@ -119,6 +125,7 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
     final IValueView<String> targetView = view.addDetailValueView(properties.getTargetString() + ":"); //$NON-NLS-1$
     final IValueView<String> sourceView = view.addDetailValueView(properties.getSourceString() + ":"); //$NON-NLS-1$
     final ListSelectionListener detailListener = new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         final ISpell spell = (ISpell) ((JList) e.getSource()).getSelectedValue();
         if (spell == null) {

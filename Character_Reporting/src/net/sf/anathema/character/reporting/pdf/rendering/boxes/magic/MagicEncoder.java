@@ -2,7 +2,11 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.magic.*;
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicStats;
+import net.sf.anathema.character.generic.magic.IMagicVisitor;
+import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
@@ -71,7 +75,7 @@ public class MagicEncoder implements ContentEncoder {
       @Override
       public void visitSpell(ISpell spell) {
         if (includeSpells) {
-          printStats.add(new SpellStats(spell, character.getRules().getEdition()));
+          printStats.add(new SpellStats(spell));
         }
       }
     };

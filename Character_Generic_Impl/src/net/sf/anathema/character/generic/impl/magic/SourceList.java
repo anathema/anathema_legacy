@@ -18,12 +18,9 @@ public class SourceList implements ISourceList {
   }
 
   @Override
-  public IExaltedSourceBook getSource(IExaltedEdition edition) {
-    final IExaltedSourceBook magicSource = sourcesByEdition.get(edition);
-    if (magicSource == null) {
-      return primarySource;
-    }
-    return magicSource;
+  public boolean hasSource(IExaltedEdition edition) {
+    IExaltedSourceBook magicSource = sourcesByEdition.get(edition);
+    return magicSource != null;
   }
 
   public void addSource(IExaltedSourceBook source) {

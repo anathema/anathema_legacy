@@ -6,9 +6,9 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IMagicData extends IIdentificate {
 
-  public IExaltedSourceBook[] getSources();
+  IExaltedSourceBook[] getSources();
   
-  public IExaltedSourceBook getPrimarySource();
+  IExaltedSourceBook getPrimarySource();
 
-  public ICostList getTemporaryCost();
+  ICostList getTemporaryCost();
 }

@@ -29,18 +29,14 @@ public class SpellConfiguration implements ISpellConfiguration {
   private final ChangeControl changeControl = new ChangeControl();
   private final GenericControl<IMagicLearnListener<ISpell>> magicLearnControl = new GenericControl<IMagicLearnListener<ISpell>>();
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<CircleType, List<ISpell>>();
-  private final List<ISpell> spellsOtherEdition = new ArrayList<ISpell>();
   private final ICharmConfiguration charms;
   private final ISpellLearnStrategy strategy;
   private final ICharacterTemplate characterTemplate;
   private final IExaltedEdition edition;
-  private final ISpellMapper spellMapper = new SpellMapper();
+  private final ISpellMapper spellMapper;
 
-  public SpellConfiguration(
-      ICharmConfiguration charms,
-      ISpellLearnStrategy strategy,
-      ICharacterTemplate template,
-      IExaltedEdition edition) throws SpellException {
+  public SpellConfiguration(ICharmConfiguration charms, ISpellLearnStrategy strategy, ICharacterTemplate template,
+                            IExaltedEdition edition) throws SpellException {
     this.charms = charms;
     this.strategy = strategy;
     this.characterTemplate = template;
@@ -48,18 +44,10 @@ public class SpellConfiguration implements ISpellConfiguration {
     for (CircleType type : CircleType.values()) {
       spellsByCircle.put(type, new ArrayList<ISpell>());
     }
-    for (ISpell spell : new SpellBuilder().getSpells()) {
-      if (isEdition(spell)) {
-        spellsByCircle.get(spell.getCircleType()).add(spell);
-      }
-      else {
-        spellsOtherEdition.add(spell);
-      }
+    for (ISpell spell : new SpellBuilder(edition).getSpells()) {
+      spellsByCircle.get(spell.getCircleType()).add(spell);
     }
-  }
-
-  private boolean isEdition(ISpell spell) {
-    return spell.getSource(edition).getEdition() == edition;
+    spellMapper = new SpellMapper();
   }
 
   @Override
@@ -72,8 +60,7 @@ public class SpellConfiguration implements ISpellConfiguration {
     for (ISpell spell : removedSpells) {
       if (experienced) {
         experiencedLearnedList.remove(spell);
-      }
-      else {
+      } else {
         creationLearnedList.remove(spell);
       }
     }
@@ -91,12 +78,10 @@ public class SpellConfiguration implements ISpellConfiguration {
       if (isSpellAllowed(spell, experienced)) {
         if (experienced) {
           experiencedLearnedList.add(spell);
-        }
-        else {
+        } else {
           creationLearnedList.add(spell);
         }
-      }
-      else {
+      } else {
         throw new IllegalArgumentException("Cannot learn Spell: " + spell); //$NON-NLS-1$
       }
     }
@@ -187,8 +172,6 @@ public class SpellConfiguration implements ISpellConfiguration {
     for (List<ISpell> circleSpells : spellsByCircle.values()) {
       allSpells.addAll(circleSpells);
     }
-    // Handle any 1e-only spells learned (before spell list filtering) by 2e characters
-    allSpells.addAll(spellsOtherEdition);
     return allSpells;
   }
 
