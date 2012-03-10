@@ -5,11 +5,9 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.filters.SourceBookCharmFilterPage;
 import net.sf.anathema.lib.resources.IResources;
-import org.dom4j.Element;
 
 import javax.swing.JPanel;
 import java.util.ArrayList;
@@ -18,30 +16,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SourceBookCharmFilter implements ICharmFilter {
-
-  private static final String TAG_FILTERNAME = "SourceFilter";
-  private static final String TAG_SOURCEBOOK = "SourceBook";
-  private static final String ATTRIB_NAME = "name";
-  private static final String ATTRIB_EDITION = "edition";
-  private static final String ATTRIB_SHOWPREREQ = "showprereqs";
+public abstract class SourceBookCharmFilter implements ICharmFilter {
 
   private final Map<IExaltedEdition, ArrayList<IExaltedSourceBook>> allMaterial = new HashMap<IExaltedEdition, ArrayList<IExaltedSourceBook>>();
-  private final Map<IExaltedEdition, ArrayList<IExaltedSourceBook>> excludedMaterial = new HashMap<IExaltedEdition, ArrayList<IExaltedSourceBook>>();
+  protected final Map<IExaltedEdition, ArrayList<IExaltedSourceBook>> excludedMaterial = new HashMap<IExaltedEdition, ArrayList<IExaltedSourceBook>>();
   private IExaltedEdition edition;
-  private ICharmConfiguration characterSet;
-  private boolean includePrereqs = true;
+  protected boolean includePrereqs = true;
 
   private ArrayList<IExaltedSourceBook> workingExcludedMaterial;
   private boolean[] workingIncludePrereqs = new boolean[1];
 
   public SourceBookCharmFilter(IExaltedEdition edition) {
-    this(edition, null);
-  }
-
-  public SourceBookCharmFilter(IExaltedEdition edition, ICharmConfiguration characterSet) {
     this.edition = edition;
-    this.characterSet = characterSet;
     for (ExaltedEdition thisEdition : ExaltedEdition.values()) {
       prepareEdition(thisEdition);
     }
@@ -65,13 +51,18 @@ public class SourceBookCharmFilter implements ICharmFilter {
 
   @Override
   public boolean acceptsCharm(ICharm charm, boolean isAncestor) {
-    if (isAncestor && includePrereqs) return true;
-    if (characterSet != null) for (ICharm learnedCharm : characterSet.getLearnedCharms(true))
-      if (learnedCharm == charm) return true;
+    if (isAncestor && includePrereqs) {
+      return true;
+    }
+    if (mustBeShownDueToCircumstance(charm)) {
+      return true;
+    }
     IExaltedEdition edition = charm.getPrimarySource().getEdition();
     List<IExaltedSourceBook> excludedSourceList = excludedMaterial.get(edition);
     return !excludedSourceList.contains(charm.getPrimarySource());
   }
+
+  protected abstract boolean mustBeShownDueToCircumstance(ICharm charm);
 
   @Override
   public JPanel getFilterPreferencePanel(IResources resources) {
@@ -97,42 +88,6 @@ public class SourceBookCharmFilter implements ICharmFilter {
   @Override
   public void reset() {
     workingExcludedMaterial = null;
-  }
-
-  @Override
-  public void save(Element parent) {
-    Element sourceBookFilter = parent.addElement(TAG_FILTERNAME);
-    for (IExaltedEdition edition : ExaltedEdition.values()) {
-      List<IExaltedSourceBook> list = excludedMaterial.get(edition);
-      if (list != null) for (IExaltedSourceBook book : list) {
-        Element bookElement = sourceBookFilter.addElement(TAG_SOURCEBOOK);
-        bookElement.addAttribute(ATTRIB_NAME, book.getId());
-        bookElement.addAttribute(ATTRIB_EDITION, edition.getId());
-      }
-    }
-    sourceBookFilter.addAttribute(ATTRIB_SHOWPREREQ, includePrereqs ? "true" : "false");
-  }
-
-  @Override
-  public boolean load(Element node) {
-    if (node.getName().equals(TAG_FILTERNAME)) {
-      for (Object bookNode : node.elements()) {
-        try {
-          Element sourceBook = (Element) bookNode;
-          String editionString = sourceBook.attributeValue(ATTRIB_EDITION);
-          String idString = sourceBook.attributeValue(ATTRIB_NAME);
-          IExaltedEdition edition = ExaltedEdition.valueOf(editionString);
-          IExaltedSourceBook book = ExaltedSourceBook.valueOf(idString);
-          excludedMaterial.get(edition).add(book);
-        } catch (Exception e) {
-          excludedMaterial.get(getEdition()).clear();
-          return false;
-        }
-      }
-      includePrereqs = node.attributeValue(ATTRIB_SHOWPREREQ).equals("true");
-      return true;
-    }
-    return false;
   }
 
   protected IExaltedEdition getEdition() {

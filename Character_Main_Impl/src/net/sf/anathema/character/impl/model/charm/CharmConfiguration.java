@@ -42,9 +42,9 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
+import net.sf.anathema.character.presenter.charm.CharacterSourceBookFilter;
 import net.sf.anathema.character.presenter.charm.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.charm.ObtainableCharmFilter;
-import net.sf.anathema.character.presenter.charm.SourceBookCharmFilter;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.lib.collection.DefaultValueHashMap;
 import net.sf.anathema.lib.control.change.ChangeControl;
@@ -103,7 +103,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   private void addCharmFilters(ICharacterModelContext context) {
     filterSet.add(new ObtainableCharmFilter(this));
-    filterSet.add(new SourceBookCharmFilter(context.getBasicCharacterContext().getRuleSet().getEdition(), this));
+    filterSet.add(new CharacterSourceBookFilter(context.getBasicCharacterContext().getRuleSet().getEdition(), this));
     filterSet.add(new EssenceLevelCharmFilter());
   }
 
