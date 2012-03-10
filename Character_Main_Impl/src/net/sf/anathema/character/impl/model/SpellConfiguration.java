@@ -34,7 +34,7 @@ public class SpellConfiguration implements ISpellConfiguration {
   private final ISpellLearnStrategy strategy;
   private final ICharacterTemplate characterTemplate;
   private final IExaltedEdition edition;
-  private final ISpellMapper spellMapper;
+  private final ISpellMapper spellMapper = new SpellMapper();
 
   public SpellConfiguration(
       ICharmConfiguration charms,
@@ -48,7 +48,7 @@ public class SpellConfiguration implements ISpellConfiguration {
     for (CircleType type : CircleType.values()) {
       spellsByCircle.put(type, new ArrayList<ISpell>());
     }
-    for (ISpell spell : SpellBuilder.getInstance().getSpells()) {
+    for (ISpell spell : new SpellBuilder().getSpells()) {
       if (isEdition(spell)) {
         spellsByCircle.get(spell.getCircleType()).add(spell);
       }
@@ -56,7 +56,6 @@ public class SpellConfiguration implements ISpellConfiguration {
         spellsOtherEdition.add(spell);
       }
     }
-    spellMapper = new SpellMapper();
   }
 
   private boolean isEdition(ISpell spell) {
