@@ -97,4 +97,7 @@
           <charmtype type="Permanent" />
           <source source="GloriesLuna" />
      </charm>
+     <renames>
+        <rename from="Lunar.TigerAndSeahorseDestiny" to="Lunar.TigerAndSeahorseDynasty"/>
+     </renames>
 </charmlist>
