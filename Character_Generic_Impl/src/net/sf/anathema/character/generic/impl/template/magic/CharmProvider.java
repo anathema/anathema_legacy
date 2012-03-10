@@ -23,11 +23,13 @@ public class CharmProvider implements ICharmProvider {
   private final Table<IExaltedEdition, ICharacterType, ISpecialCharm[]> charmsByTypeByRuleSet = new Table<IExaltedEdition, ICharacterType, ISpecialCharm[]>();
   private final Table<IExaltedEdition, ICharacterType, Boolean> dataCharmsPrepared = new Table<IExaltedEdition, ICharacterType, Boolean>();
   private final MultiEntryMap<IExaltedEdition, ISpecialCharm> martialArtsSpecialCharms = new MultiEntryMap<IExaltedEdition, ISpecialCharm>();
+  private final CharmCache cache;
 
-  public CharmProvider() {
+  public CharmProvider(CharmCache cache) {
     for (IExaltedEdition edition : ExaltedEdition.values())
       for (ICharacterType type : CharacterType.values())
         dataCharmsPrepared.add(edition, type, false);
+    this.cache = cache;
   }
 
   @Override
@@ -86,7 +88,7 @@ public class CharmProvider implements ICharmProvider {
 
   @Override
   public String getCharmRename(IExaltedRuleSet rules, String name) {
-    return CharmCache.getInstance().getCharmRename(rules, name);
+    return cache.getCharmRename(rules, name);
   }
 
   private void prepareDataCharms(ICharacterType type, IExaltedEdition edition) {
@@ -95,7 +97,7 @@ public class CharmProvider implements ICharmProvider {
     if (base != null) {
       addAll(specialCharms, base);
     }
-    addAll(specialCharms, CharmCache.getInstance().getSpecialCharmData(type, edition.getDefaultRuleset()));
+    addAll(specialCharms, cache.getSpecialCharmData(type, edition.getDefaultRuleset()));
     ISpecialCharm[] charmArray = new ISpecialCharm[specialCharms.size()];
     specialCharms.toArray(charmArray);
     dataCharmsPrepared.add(edition, type, true);

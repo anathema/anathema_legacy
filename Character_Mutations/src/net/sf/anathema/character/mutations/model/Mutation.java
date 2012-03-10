@@ -50,18 +50,22 @@ public class Mutation extends Quality implements IMutation {
     return 0;
   }
 
+  @Override
   public IExaltedSourceBook getSource() {
     return source;
   }
 
+  @Override
   public Integer getPage() {
     return page;
   }
 
+  @Override
   public void accept(IMutationVisitor visitor) {
     // Nothing to do
   }
 
+  @Override
   public int getCost() {
     return cost;
   }

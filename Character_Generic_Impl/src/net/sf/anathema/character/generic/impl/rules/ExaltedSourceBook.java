@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.impl.rules;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public enum ExaltedSourceBook implements IExaltedSourceBook {
  FirstEdition(ExaltedEdition.FirstEdition), Bo3C(ExaltedEdition.FirstEdition), SavantSorcerer(ExaltedEdition.FirstEdition), 
@@ -35,10 +35,12 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
     this.edition = edition;
   }
 
+  @Override
   public String getId() {
     return name();
   }
 
+  @Override
   public IExaltedEdition getEdition() {
     return edition;
   }

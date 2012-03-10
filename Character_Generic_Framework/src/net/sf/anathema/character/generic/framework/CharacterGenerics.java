@@ -10,10 +10,10 @@ import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistr
 import net.sf.anathema.character.generic.framework.module.object.CharacterModuleObjectMap;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.CharacterTemplateRegistryCollection;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
 import net.sf.anathema.character.generic.impl.template.magic.CharmProvider;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -35,7 +35,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final ICharacterTemplateRegistryCollection templateRegistries = new CharacterTemplateRegistryCollection();
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry = new Registry<ICharacterType, ICasteCollection>();
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<String, IAdditionalTemplateParser>();
-  private final ICharmProvider charmProvider = new CharmProvider();
+  private final ICharmProvider charmProvider = new CharmProvider(CharmCache.getInstance());
   private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
   private final IDataFileProvider dataFileProvider;
   private final Instantiater instantiater;

@@ -9,10 +9,15 @@ import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.*;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.*;
+import java.awt.Component;
 
 public class MutationViewLearnProperties extends AbstractMagicLearnProperties implements IMutationLearnViewProperties {
 
@@ -23,14 +28,17 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
     this.model = model;
   }
 
+  @Override
   public String getAddButtonToolTip() {
     return getResources().getString("Mutations.Tooltips.AddTooltip"); //$NON-NLS-1$
   }
 
+  @Override
   public String getRemoveButtonToolTip() {
     return getResources().getString("Mutations.Tooltips.RemoveTooltip"); //$NON-NLS-1$
   }
 
+  @Override
   public ListCellRenderer getAvailableMagicRenderer() {
     return new LegalityCheckListCellRenderer(getResources()) {
       private static final long serialVersionUID = 1L;
@@ -56,7 +64,7 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
 
   private String getToolTipText(Object obj) {
     IMutation mutation = (IMutation) obj;
-    final IExaltedSourceBook source = mutation.getSource();
+    IExaltedSourceBook source = mutation.getSource();
 
     if (source != null) {
       StringBuilder builder = new StringBuilder();
@@ -96,10 +104,12 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
     };
   }
 
+  @Override
   public boolean isMagicSelectionAvailable(Object selectedValue) {
     return model.isSelectable((IMutation) selectedValue);
   }
 
+  @Override
   public int getAvailableListSelectionMode() {
     return ListSelectionModel.SINGLE_SELECTION;
   }
@@ -111,8 +121,10 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
     return (showType ? "(" + typeString + ") " : "") + mutationString;
   }
 
+  @Override
   public ListSelectionListener getRemoveButtonEnabledListener(final JButton button, final JList list) {
     return new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
         button.setEnabled(enabled);

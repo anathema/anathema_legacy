@@ -16,6 +16,7 @@ public class CharacterGenericsExtension implements ICharacterGenericsExtension, 
 
   private ICharacterGenerics characterGenerics;
 
+  @Override
   public void initialize(IResources resources, IDataFileProvider dataFileProvider, Instantiater instantiater) throws InitializationException {
     CharacterModuleContainer container = new CharacterModuleContainerInitializer(instantiater).initContainer(
         resources,
@@ -23,6 +24,7 @@ public class CharacterGenericsExtension implements ICharacterGenericsExtension, 
     this.characterGenerics = container.getCharacterGenerics();
   }
 
+  @Override
   public ICharacterGenerics getCharacterGenerics() {
     return characterGenerics;
   }

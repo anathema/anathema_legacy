@@ -1,10 +1,5 @@
 package net.sf.anathema.character.impl.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.magic.persistence.SpellBuilder;
 import net.sf.anathema.character.generic.magic.ISpell;
@@ -21,6 +16,11 @@ import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SpellConfiguration implements ISpellConfiguration {
 
@@ -63,10 +63,12 @@ public class SpellConfiguration implements ISpellConfiguration {
     return spell.getSource(edition).getEdition() == edition;
   }
 
+  @Override
   public void removeSpells(ISpell[] removedSpells) {
     strategy.removeSpells(this, removedSpells);
   }
 
+  @Override
   public void removeSpells(ISpell[] removedSpells, boolean experienced) {
     for (ISpell spell : removedSpells) {
       if (experienced) {
@@ -79,10 +81,12 @@ public class SpellConfiguration implements ISpellConfiguration {
     fireSpellsForgottenEvent(removedSpells);
   }
 
+  @Override
   public void addSpells(ISpell[] addedSpells) {
     strategy.addSpells(this, addedSpells);
   }
 
+  @Override
   public void addSpells(ISpell[] addedSpells, boolean experienced) {
     for (ISpell spell : addedSpells) {
       if (isSpellAllowed(spell, experienced)) {
@@ -102,6 +106,7 @@ public class SpellConfiguration implements ISpellConfiguration {
 
   private void fireSpellsAddedEvent(final ISpell[] addedSpells) {
     magicLearnControl.forAllDo(new IClosure<IMagicLearnListener<ISpell>>() {
+      @Override
       public void execute(IMagicLearnListener<ISpell> input) {
         input.magicLearned(addedSpells);
       }
@@ -111,6 +116,7 @@ public class SpellConfiguration implements ISpellConfiguration {
 
   private void fireSpellsForgottenEvent(final ISpell[] removedSpells) {
     magicLearnControl.forAllDo(new IClosure<IMagicLearnListener<ISpell>>() {
+      @Override
       public void execute(IMagicLearnListener<ISpell> input) {
         input.magicForgotten(removedSpells);
       }
@@ -118,10 +124,12 @@ public class SpellConfiguration implements ISpellConfiguration {
     changeControl.fireChangedEvent();
   }
 
+  @Override
   public boolean isSpellAllowed(ISpell spell) {
     return strategy.isSpellAllowed(this, spell);
   }
 
+  @Override
   public boolean isSpellAllowed(ISpell spell, final boolean experienced) {
     if (creationLearnedList.contains(spell) || (experienced && experiencedLearnedList.contains(spell))) {
       return false;
@@ -130,10 +138,12 @@ public class SpellConfiguration implements ISpellConfiguration {
     return template.canLearnSpell(spell, charms.getLearnedCharms(true));
   }
 
+  @Override
   public ISpell[] getLearnedSpells() {
     return strategy.getLearnedSpells(this);
   }
 
+  @Override
   public ISpell[] getLearnedSpells(boolean experienced) {
     List<ISpell> list = new ArrayList<ISpell>();
     list.addAll(creationLearnedList);
@@ -143,14 +153,17 @@ public class SpellConfiguration implements ISpellConfiguration {
     return list.toArray(new ISpell[list.size()]);
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
 
+  @Override
   public void addMagicLearnListener(IMagicLearnListener<ISpell> listener) {
     magicLearnControl.addListener(listener);
   }
 
+  @Override
   public ISpell[] getSpellsByCircle(CircleType circle) {
     List<ISpell> spells = spellsByCircle.get(circle);
     if (spells != null) {
@@ -159,6 +172,7 @@ public class SpellConfiguration implements ISpellConfiguration {
     return new ISpell[0];
   }
 
+  @Override
   public ISpell getSpellById(String id) {
     String correctedId = spellMapper.getId(id, edition);
     for (ISpell spell : getAllSpells()) {
@@ -179,14 +193,17 @@ public class SpellConfiguration implements ISpellConfiguration {
     return allSpells;
   }
 
+  @Override
   public boolean isLearnedOnCreation(ISpell spell) {
     return creationLearnedList.contains(spell);
   }
 
+  @Override
   public boolean isLearnedOnCreationOrExperience(ISpell spell) {
     return experiencedLearnedList.contains(spell) || isLearnedOnCreation(spell);
   }
 
+  @Override
   public boolean isLearned(ISpell spell) {
     return strategy.isLearned(this, spell);
   }

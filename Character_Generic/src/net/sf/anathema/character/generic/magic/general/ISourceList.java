@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 
 public interface ISourceList {
 
-  public IExaltedSourceBook getPrimarySource();
+  IExaltedSourceBook getPrimarySource();
 
-  public IExaltedSourceBook getSource(IExaltedEdition edition);
+  IExaltedSourceBook getSource(IExaltedEdition edition);
 }

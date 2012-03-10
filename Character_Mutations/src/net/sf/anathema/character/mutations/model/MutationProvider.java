@@ -1,18 +1,19 @@
 package net.sf.anathema.character.mutations.model;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.SecondEdition;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.Infernals;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.Lunars2nd;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassWyld;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassWest;
+import static com.google.common.collect.Lists.newArrayList;
 import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassEast;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassWest;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassWyld;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.Infernals;
 import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.LandsOfCreation;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.Lunars2nd;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.SecondEdition;
 import static net.sf.anathema.character.mutations.model.MutationType.Abomination;
 import static net.sf.anathema.character.mutations.model.MutationType.Affliction;
 import static net.sf.anathema.character.mutations.model.MutationType.Blight;
@@ -24,23 +25,25 @@ import static net.sf.anathema.character.mutations.model.MutationType.Pox;
 public class MutationProvider {
 
   public static IMutation[] getMutations(IExaltedEdition edition, IMutationRules rules) {
-    List<IMutation> mutations = null;
-    List<IMutation> toRemove = new ArrayList<IMutation>();
-    if (edition == ExaltedEdition.FirstEdition) {
-      mutations = getFirstEditionMutations();
-    }
-    if (edition == ExaltedEdition.SecondEdition) {
-      mutations = getSecondEditionMutations();
-    }
+    final List<IMutation> mutations = newArrayList();
+    edition.accept(new IEditionVisitor() {
+      @Override
+      public void visitFirstEdition(IExaltedEdition visitedEdition) {
+        //nothing to do;
+      }
 
+      @Override
+      public void visitSecondEdition(IExaltedEdition visitedEdition) {
+        mutations.addAll(getSecondEditionMutations());
+      }
+    });
+    List<IMutation> toRemove = new ArrayList<IMutation>();
     for (IMutation mutation : mutations) {
       if (!rules.acceptMutation(mutation)) {
         toRemove.add(mutation);
       }
     }
-
     mutations.removeAll(toRemove);
-
     return mutations.toArray(new IMutation[mutations.size()]);
   }
 
@@ -99,21 +102,21 @@ public class MutationProvider {
   }
 
   private static void addAbominations(Mutations mutations) {
-	  mutations.add("AwakenedEssence", Abomination, Infernals, 64);
-	  mutations.add("DragonsBreath", Abomination, CompassWyld, 148);
-	  mutations.add("FishBody", Abomination, CompassWest, 152);
-	  mutations.add("FogCarrier", Abomination, CompassWest, 152);
-	  mutations.add("Gargantuan", Abomination, LandsOfCreation, 131);
-	  mutations.add("Hive", Abomination, SecondEdition, 290);
-	  mutations.add("ImmortalFlesh", Abomination, LandsOfCreation, 131);
-	  mutations.add("ExtraArmLegHead", Abomination, SecondEdition, 290);
-	  mutations.add("OrdinationOfLies", Abomination, Infernals, 64);
-	  mutations.add("OrdinationOfPain", Abomination, Infernals, 64);
-	  mutations.add("SerpentsBody", Abomination, Lunars2nd, 209);
-	  mutations.add("SpiderLegs", Abomination, Lunars2nd, 209);
-	  mutations.add("StoneBody", Abomination, CompassWyld, 148);
-	  mutations.add("TerrifyingMane", Abomination, Lunars2nd, 209);
-	  mutations.add("Wings", Abomination, SecondEdition, 290);
+    mutations.add("AwakenedEssence", Abomination, Infernals, 64);
+    mutations.add("DragonsBreath", Abomination, CompassWyld, 148);
+    mutations.add("FishBody", Abomination, CompassWest, 152);
+    mutations.add("FogCarrier", Abomination, CompassWest, 152);
+    mutations.add("Gargantuan", Abomination, LandsOfCreation, 131);
+    mutations.add("Hive", Abomination, SecondEdition, 290);
+    mutations.add("ImmortalFlesh", Abomination, LandsOfCreation, 131);
+    mutations.add("ExtraArmLegHead", Abomination, SecondEdition, 290);
+    mutations.add("OrdinationOfLies", Abomination, Infernals, 64);
+    mutations.add("OrdinationOfPain", Abomination, Infernals, 64);
+    mutations.add("SerpentsBody", Abomination, Lunars2nd, 209);
+    mutations.add("SpiderLegs", Abomination, Lunars2nd, 209);
+    mutations.add("StoneBody", Abomination, CompassWyld, 148);
+    mutations.add("TerrifyingMane", Abomination, Lunars2nd, 209);
+    mutations.add("Wings", Abomination, SecondEdition, 290);
   }
 
   private static void addBlights(Mutations mutations) {
@@ -189,10 +192,4 @@ public class MutationProvider {
     mutations.add("ThirdEye", Pox, Lunars2nd, 207);
     mutations.add("WolfsPace", Pox, Lunars2nd, 207);
   }
-
-  private static List<IMutation> getFirstEditionMutations() {
-    return null;
-  }
 }
-
-

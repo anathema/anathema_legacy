@@ -22,22 +22,27 @@ public class MutationsAdditionalModel implements IAdditionalModel {
     return model;
   }
 
+  @Override
   public String getTemplateId() {
     return additionalTemplate.getId();
   }
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Advantages;
   }
 
+  @Override
   public IAdditionalModelBonusPointCalculator getBonusPointCalculator() {
     return new MutationsBonusPointCalculator(model);
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     model.addModelChangeListener(listener);
   }
 
+  @Override
   public IAdditionalModelExperienceCalculator getExperienceCalculator() {
     return new NullAdditionalModelExperienceCalculator();
   }
