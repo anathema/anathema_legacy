@@ -42,10 +42,12 @@ public class CharmCache implements ICharmCache {
     MultiEntryMap<IIdentificate, ICharm> ruleMap = charmSetsByRuleSet.get(rules);
     ruleMap.replace(type, charm, charm);
   }
+
   public void addCharm(ICharmEntryData charmData) {
     ICharm charm = new Charm(charmData.getCoreData());
     addCharm(charm.getCharacterType(), charmData.getEdition().getDefaultRuleset(), charm);
   }
+
   public boolean isEmpty() {
     for (Entry<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>> entry : charmSetsByRuleSet.entrySet()) {
       if (!entry.getValue().keySet().isEmpty()) {
@@ -75,56 +77,46 @@ public class CharmCache implements ICharmCache {
     }
     return allCharms;
   }
-  
-  private List<ISpecialCharm> getSpecialCharmList(IExaltedRuleSet ruleset, IIdentificate type)
-  {
-	  Map<IIdentificate, List<ISpecialCharm>> map = specialCharms.get(ruleset);
-	  if (map == null)
-	  {
-		  map = new HashMap<IIdentificate, List<ISpecialCharm>>();
-		  specialCharms.put(ruleset, map);
-	  }
-	  List<ISpecialCharm> list = map.get(type);
-	  if (list == null)
-	  {
-		  list = new ArrayList<ISpecialCharm>();
-		  map.put(type, list);
-	  }
-	  return list;
+
+  private List<ISpecialCharm> getSpecialCharmList(IExaltedRuleSet ruleset, IIdentificate type) {
+    Map<IIdentificate, List<ISpecialCharm>> map = specialCharms.get(ruleset);
+    if (map == null) {
+      map = new HashMap<IIdentificate, List<ISpecialCharm>>();
+      specialCharms.put(ruleset, map);
+    }
+    List<ISpecialCharm> list = map.get(type);
+    if (list == null) {
+      list = new ArrayList<ISpecialCharm>();
+      map.put(type, list);
+    }
+    return list;
   }
-  
+
   @Override
   public ISpecialCharm[] getSpecialCharmData(IIdentificate type, IExaltedRuleSet ruleset) {
-	    List<ISpecialCharm> charmList = getSpecialCharmList(ruleset, type);
-	    return charmList.toArray(new ISpecialCharm[charmList.size()]);
-	  }
-  
-  public void addSpecialCharmData(IExaltedRuleSet ruleSet, IIdentificate type, List<ISpecialCharm> data)
-  {
-	  if (data == null)
-		  return;
-	  List<ISpecialCharm> list = getSpecialCharmList(ruleSet, type);
-	  list.addAll(data);
+    List<ISpecialCharm> charmList = getSpecialCharmList(ruleset, type);
+    return charmList.toArray(new ISpecialCharm[charmList.size()]);
   }
-  
-  public void addCharmRenames(IExaltedRuleSet ruleSet, Map<String, String> mappings)
-  {
-	  if (mappings == null) return;
-	  Map<String, String> rulesetMap = renameData.get(ruleSet);
-	  rulesetMap.putAll(mappings);
+
+  public void addSpecialCharmData(IExaltedRuleSet ruleSet, IIdentificate type, List<ISpecialCharm> data) {
+    if (data == null) return;
+    List<ISpecialCharm> list = getSpecialCharmList(ruleSet, type);
+    list.addAll(data);
   }
-  
+
+  public void addCharmRenames(IExaltedRuleSet ruleSet, Map<String, String> mappings) {
+    if (mappings == null) return;
+    Map<String, String> rulesetMap = renameData.get(ruleSet);
+    rulesetMap.putAll(mappings);
+  }
+
   @Override
-  public String getCharmRename(IExaltedRuleSet rules, String name)
-  {
-	  String newName = name;
-	  do
-	  {
-		  name = newName;
-		  newName = renameData.get(rules).get(name);
-	  }
-	  while (newName != null);
-	  return name;
-	  
+  public String getCharmRename(IExaltedRuleSet rules, String name) {
+    String newName = name;
+    do {
+      name = newName;
+      newName = renameData.get(rules).get(name);
+    } while (newName != null);
+    return name;
   }
 }

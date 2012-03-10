@@ -9,20 +9,19 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 
 public interface ICharmProvider {
 	
-  public ISpecialCharm[] getSpecialMartialArtsCharms(IExaltedEdition edition);
+  ISpecialCharm[] getSpecialMartialArtsCharms(IExaltedEdition edition);
 
-  public ISpecialCharm[] getSpecialCharms(ICharacterType characterType, IExaltedEdition edition);
+  ISpecialCharm[] getSpecialCharms(ICharacterType characterType, IExaltedEdition edition);
 
-  public ISpecialCharm[] getSpecialCharms(
+  ISpecialCharm[] getSpecialCharms(
       IExaltedEdition edition,
       ICharmLearnableArbitrator arbitrator,
       ICharmIdMap map,
       ICharacterType preferredCharacterType);
 
-  public void addMartialArtsSpecialCharm(IExaltedEdition edition, ISpecialCharm charm);
+  void addMartialArtsSpecialCharm(IExaltedEdition edition, ISpecialCharm charm);
 
-  public void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm... charms);
+  void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm... charms);
   
-  public String getCharmRename(IExaltedRuleSet rules, String name); 
-
+  String getCharmRename(IExaltedRuleSet rules, String name);
 }

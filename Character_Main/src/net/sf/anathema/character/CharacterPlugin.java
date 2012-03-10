@@ -1,19 +1,19 @@
 package net.sf.anathema.character;
 
-import static java.text.MessageFormat.format;
+import net.sf.anathema.ProxySplashscreen;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
+import net.sf.anathema.initialization.Plugin;
+import net.sf.anathema.initialization.Startable;
+import net.sf.anathema.initialization.reflections.AnathemaReflections;
+import net.sf.anathema.lib.logging.Logger;
 
 import java.net.URL;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.sf.anathema.ProxySplashscreen;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
-
-import net.sf.anathema.initialization.Plugin;
-import net.sf.anathema.initialization.Startable;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
-import net.sf.anathema.lib.logging.Logger;
+import static java.text.MessageFormat.format;
 
 @Plugin
 public class CharacterPlugin implements Startable {
@@ -28,7 +28,7 @@ public class CharacterPlugin implements Startable {
   @Override
   public void doStart(AnathemaReflections reflections) throws Exception {
     ProxySplashscreen.getInstance().displayStatusMessage("Compiling Charm Sets...");
-    CharmCompiler charmCompiler = new CharmCompiler();
+    CharmCompiler charmCompiler = new CharmCompiler(CharmCache.getInstance());
     getCharmFilesFromReflection(reflections, charmCompiler);
     charmCompiler.buildCharms();
   }
