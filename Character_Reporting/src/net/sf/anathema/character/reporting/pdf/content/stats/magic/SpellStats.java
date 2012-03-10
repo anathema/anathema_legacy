@@ -4,35 +4,35 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.SpellSourceStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SpellStats extends AbstractMagicStats<ISpell> {
 
-  private final IExaltedEdition edition;
-
-  public SpellStats(ISpell spell, IExaltedEdition edition) {
+  public SpellStats(ISpell spell) {
     super(spell);
-    this.edition = edition;
   }
 
+  @Override
   public String getGroupName(final IResources resources) {
     return resources.getString("Sheet.Magic.Group.Sorcery"); //$NON-NLS-1$
   }
 
+  @Override
   public String getType(final IResources resources) {
     return resources.getString(getMagic().getCircleType().getId());
   }
 
+  @Override
   public String getDurationString(final IResources resources) {
     return "-"; //$NON-NLS-1$
   }
 
+  @Override
   public String getSourceString(IResources resources) {
-    final IMagicSourceStringBuilder<ISpell> stringBuilder = new SpellSourceStringBuilder(resources, edition);
+    IMagicSourceStringBuilder<ISpell> stringBuilder = new MagicSourceStringBuilder<ISpell>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
 
@@ -44,20 +44,24 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
     return new String[0];
   }
   
+  @Override
   public String[] getDetailStrings(final IResources resources) {
 	return ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>()
 	{
-	  public String transform(String input)
+	  @Override
+      public String transform(String input)
 	  {
 	    return resources.getString(input);
 	  }
 	});
   }
 
+  @Override
   public String getNameString(IResources resources) {
     return resources.getString(getMagic().getId());
   }
 
+  @Override
   public int compareTo(IMagicStats stats) {
     if (stats.getClass() != getClass()) {
       throw new ClassCastException("Uncomparable elements.");
@@ -76,7 +80,6 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
     if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
-
     return compareTo((SpellStats)obj) == 0;
   }
 

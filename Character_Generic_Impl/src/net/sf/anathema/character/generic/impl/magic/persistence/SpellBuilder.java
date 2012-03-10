@@ -1,10 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.sf.anathema.character.generic.impl.magic.SourceList;
 import net.sf.anathema.character.generic.impl.magic.Spell;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
@@ -15,19 +10,25 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.ISourceList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class SpellBuilder {
   private ISpell[] spells;
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final static SpellBuilder instance = new SpellBuilder();
+  private IExaltedEdition edition;
 
   private SpellBuilder() {
     // Nothing to do
@@ -37,7 +38,8 @@ public class SpellBuilder {
     return instance;
   }
 
-  public ISpell[] getSpells() throws SpellException {
+  public ISpell[] getSpells(IExaltedEdition edition) throws SpellException {
+    this.edition = edition;
     if (spells != null) {
       return spells;
     }
@@ -47,11 +49,9 @@ public class SpellBuilder {
       spellList.addAll(Arrays.asList(readSpells(getNecromancyPath())));
       spells = spellList.toArray(new ISpell[spellList.size()]);
       return spells;
-    }
-    catch (DocumentException e) {
+    } catch (DocumentException e) {
       throw new SpellException(e);
-    }
-    catch (PersistenceException e) {
+    } catch (PersistenceException e) {
       throw new SpellException(e);
     }
   }
@@ -65,7 +65,7 @@ public class SpellBuilder {
   }
 
   private ISpell[] readSpells(String path) throws DocumentException, PersistenceException {
-    final URL spellURL = SpellBuilder.class.getClassLoader().getResource(path);
+    URL spellURL = SpellBuilder.class.getClassLoader().getResource(path);
     Document spellDocument;
     spellDocument = new SAXReader().read(spellURL);
     return buildSpells(spellDocument);
@@ -76,29 +76,34 @@ public class SpellBuilder {
     List<ISpell> spellList = new ArrayList<ISpell>();
     for (Object spellObject : spellListElement.elements("spell")) { //$NON-NLS-1$
       Element spellElement = (Element) spellObject;
-      spellList.add(buildSpell(spellElement));
+      buildSpell(spellElement, spellList);
     }
-    return spellList.toArray(new ISpell[0]);
+    return spellList.toArray(new ISpell[spellList.size()]);
   }
 
-  private ISpell buildSpell(Element spellElement) throws PersistenceException {
+  private void buildSpell(Element spellElement, List<ISpell> spellList) throws PersistenceException {
     String id = spellElement.attributeValue("id"); //$NON-NLS-1$
     String circleId = spellElement.attributeValue("circle"); //$NON-NLS-1$
     ICostList temporaryCost = costListBuilder.buildCostList(spellElement.element("cost")); //$NON-NLS-1$
-    final Element targetElement = spellElement.element("target"); //$NON-NLS-1$
+    Element targetElement = spellElement.element("target"); //$NON-NLS-1$
     String target = null;
     if (targetElement != null) {
       target = targetElement.attributeValue("target"); //$NON-NLS-1$
     }
-    final ISourceList sourceList = buildSource(spellElement);
-    return new Spell(id, CircleType.valueOf(circleId), temporaryCost, sourceList, target);
+    ISourceList sourceList = buildSource(spellElement);
+    if (!sourceList.hasSource(edition)) {
+      return;
+    }
+    spellList.add(new Spell(id, CircleType.valueOf(circleId), temporaryCost, sourceList, target));
   }
 
   private ISourceList buildSource(Element spellElement) {
-    final IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(spellElement);
-    final SourceList sourceList = new SourceList();
+    IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(spellElement);
+    SourceList sourceList = new SourceList();
     for (IExaltedSourceBook source : sources) {
-      sourceList.addSource(source);
+      if (source.getEdition() == edition) {
+        sourceList.addSource(source);
+      }
     }
     return sourceList;
   }

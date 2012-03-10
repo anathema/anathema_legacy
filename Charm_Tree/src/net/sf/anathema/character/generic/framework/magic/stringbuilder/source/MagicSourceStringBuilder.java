@@ -31,6 +31,7 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
 	  builder.append(descriptionString);
   }
 
+  @Override
   public String createSourceString(T t) {
     IExaltedSourceBook[] sources = getSources(t);
     String[] sourceStrings = new String[sources.length];
@@ -59,6 +60,7 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
     return source.getId() + "." + id + ".Page"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
+  @Override
   public String createShortSourceString(T t) {
     final IExaltedSourceBook source = t.getPrimarySource();
     String id = t.getId();
@@ -69,10 +71,6 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
     return t.getSources();
   }
   
-  protected IExaltedSourceBook getSource(T t) {
-	return t.getPrimarySource();
-  }
-
   public String createShortSourceString(IExaltedSourceBook source, String magicId) {
     StringBuilder builder = new StringBuilder();
     builder.append(resources.getString(createSourceBookKey(source) + ".Short")); //$NON-NLS-1$
