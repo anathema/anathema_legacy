@@ -122,7 +122,7 @@ public class CharmCompiler {
   }
 
   private void buildCharms(IIdentificate type, IExaltedRuleSet rules,
-                                   ICharmSetBuilder builder) throws PersistenceException {
+                           ICharmSetBuilder builder) throws PersistenceException {
     //CharacterType enum IIdentificate equals method does not
     //work properly against purely text IIdentificates, even
     //with matching ids; creating a new one for comparison.
@@ -136,8 +136,8 @@ public class CharmCompiler {
     }
   }
 
-  private void buildRulesetCharms(final IIdentificate type, IExaltedRuleSet rules, Document charmDocument,
-                                      ICharmSetBuilder builder) throws PersistenceException {
+  private void buildRulesetCharms(IIdentificate type, IExaltedRuleSet rules, Document charmDocument,
+                                  ICharmSetBuilder builder) throws PersistenceException {
     List<ISpecialCharm> specialCharms = new ArrayList<ISpecialCharm>();
     ICharm[] charmArray = builder.buildCharms(charmDocument, specialCharms);
     for (ICharm charm : charmArray) {

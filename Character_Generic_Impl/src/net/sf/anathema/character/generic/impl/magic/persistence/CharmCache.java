@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identificate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +26,7 @@ public class CharmCache implements ICharmCache {
     for (IExaltedRuleSet ruleset : ExaltedRuleSet.values()) {
       charmSetsByRuleSet.put(ruleset, new MultiEntryMap<IIdentificate, ICharm>());
       renameData.put(ruleset, new HashMap<String, String>());
+      specialCharms.put(ruleset, new HashMap<IIdentificate, List<ISpecialCharm>>());
     }
   }
 
@@ -34,11 +36,13 @@ public class CharmCache implements ICharmCache {
 
   @Override
   public ICharm[] getCharms(IIdentificate type, IExaltedRuleSet ruleset) {
+    type = new Identificate(type.getId());
     List<ICharm> charmList = charmSetsByRuleSet.get(ruleset).get(type);
     return charmList.toArray(new ICharm[charmList.size()]);
   }
 
   public void addCharm(IIdentificate type, IExaltedRuleSet rules, ICharm charm) {
+    type = new Identificate(type.getId());
     MultiEntryMap<IIdentificate, ICharm> ruleMap = charmSetsByRuleSet.get(rules);
     ruleMap.replace(type, charm, charm);
   }
@@ -80,10 +84,7 @@ public class CharmCache implements ICharmCache {
 
   private List<ISpecialCharm> getSpecialCharmList(IExaltedRuleSet ruleset, IIdentificate type) {
     Map<IIdentificate, List<ISpecialCharm>> map = specialCharms.get(ruleset);
-    if (map == null) {
-      map = new HashMap<IIdentificate, List<ISpecialCharm>>();
-      specialCharms.put(ruleset, map);
-    }
+    type = new Identificate(type.getId());
     List<ISpecialCharm> list = map.get(type);
     if (list == null) {
       list = new ArrayList<ISpecialCharm>();
@@ -99,7 +100,9 @@ public class CharmCache implements ICharmCache {
   }
 
   public void addSpecialCharmData(IExaltedRuleSet ruleSet, IIdentificate type, List<ISpecialCharm> data) {
-    if (data == null) return;
+    if (data == null) {
+      return;
+    }
     List<ISpecialCharm> list = getSpecialCharmList(ruleSet, type);
     list.addAll(data);
   }
@@ -111,12 +114,12 @@ public class CharmCache implements ICharmCache {
   }
 
   @Override
-  public String getCharmRename(IExaltedRuleSet rules, String name) {
-    String newName = name;
+  public String getCharmRename(IExaltedRuleSet rules, String id) {
+    String newId = id;
     do {
-      name = newName;
-      newName = renameData.get(rules).get(name);
-    } while (newName != null);
-    return name;
+      id = newId;
+      newId = renameData.get(rules).get(id);
+    } while (newId != null);
+    return id;
   }
 }
