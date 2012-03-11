@@ -98,10 +98,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     initUniqueTypes(nativeCharmTemplate, rules);
     initSpecialCharmConfigurations();
     types = allCharacterTypes.toArray(new ICharacterType[allCharacterTypes.size()]);
-    addCharmFilters(context);
-  }
-
-  private void addCharmFilters(ICharacterModelContext context) {
     filterSet.add(new ObtainableCharmFilter(this));
     filterSet.add(new CharacterSourceBookFilter(context.getBasicCharacterContext().getRuleSet().getEdition(), this));
     filterSet.add(new EssenceLevelCharmFilter());

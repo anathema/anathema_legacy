@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter.charm;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
@@ -26,19 +25,18 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
 
   public SourceBookCharmFilter(IExaltedEdition edition) {
     this.edition = edition;
-    for (ExaltedEdition thisEdition : ExaltedEdition.values()) {
-      prepareEdition(thisEdition);
-    }
   }
 
-  private void prepareEdition(IExaltedEdition edition) {
+  protected void prepareEdition(IExaltedEdition edition) {
     ArrayList<IExaltedSourceBook> materialList = new ArrayList<IExaltedSourceBook>();
-    List<IExaltedSourceBook> bookSet = new SourceBookCollection().getSourcesForEdition(edition);
+    List<IExaltedSourceBook> bookSet = getBooks(edition);
     materialList.addAll(bookSet);
     allMaterial.put(edition, materialList);
     ArrayList<IExaltedSourceBook> materialExcluded = new ArrayList<IExaltedSourceBook>();
     excludedMaterial.put(edition, materialExcluded);
   }
+
+  protected abstract List<IExaltedSourceBook> getBooks(IExaltedEdition edition);
 
   @Override
   public boolean acceptsCharm(ICharm charm, boolean isAncestor) {

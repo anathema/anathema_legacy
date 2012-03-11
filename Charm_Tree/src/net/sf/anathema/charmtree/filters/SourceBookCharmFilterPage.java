@@ -18,6 +18,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -128,10 +129,11 @@ public class SourceBookCharmFilterPage implements ICharmFilterPage {
     for (IExaltedSourceBook book : bookList) {
       String name = resources.getString("ExaltedSourceBook." + book.toString());
       bookNames.add(name);
-
-      if (namesToBooksMap.get(name) == null) namesToBooksMap.put(name, book);
-
+      if (namesToBooksMap.get(name) == null) {
+        namesToBooksMap.put(name, book);
+      }
     }
+    Collections.sort(bookNames);
     return bookNames.toArray();
   }
 

@@ -1,9 +1,13 @@
 package net.sf.anathema.character.presenter.charm;
 
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import org.dom4j.Element;
+
+import java.util.List;
 
 public class CascadeSourceBookFilter extends SourceBookCharmFilter {
   private IExaltedRuleSet ruleSet;
@@ -11,6 +15,9 @@ public class CascadeSourceBookFilter extends SourceBookCharmFilter {
   public CascadeSourceBookFilter(IExaltedRuleSet ruleSet) {
     super(ruleSet.getEdition());
     this.ruleSet = ruleSet;
+    for (ExaltedEdition thisEdition : ExaltedEdition.values()) {
+      prepareEdition(thisEdition);
+    }
   }
 
   @Override
@@ -21,6 +28,11 @@ public class CascadeSourceBookFilter extends SourceBookCharmFilter {
   @Override
   protected boolean mustBeShownDueToCircumstance(ICharm charm) {
     return false;
+  }
+
+  @Override
+  protected List<IExaltedSourceBook> getBooks(IExaltedEdition edition) {
+    return new SourceBookCollection().getSourcesForEdition(edition);
   }
 
   @Override
