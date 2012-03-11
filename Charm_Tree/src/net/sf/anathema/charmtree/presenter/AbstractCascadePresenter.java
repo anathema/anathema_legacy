@@ -34,6 +34,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   private ICascadeSelectionView view;
   private CharmDye dye;
   private CharmTypes charmTypes;
+  private CharmGroupCollection charmGroups;
   private SpecialCharmViewPresenter specialCharmPresenter = new NullSpecialCharmPresenter();
   private AlienCharmPresenter alienPresenter = new NullAlienCharmPresenter();
   private CharmInteractionPresenter interactionPresenter = new NullInteractionPresenter();
@@ -100,7 +101,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   protected void createCharmGroupSelector() {
-    ICharmGroup[] allGroups = getCharmGroups();
+    ICharmGroup[] allGroups = charmGroups.getCharmGroups();
     IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", getResources()); //$NON-NLS-1$
     Dimension preferredSize = GuiUtilities.calculateComboBoxSize(allGroups, renderer);
     view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), renderer, changeListener, preferredSize);
@@ -191,7 +192,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     this.charmTypes = types;
   }
 
-
   private void handleTypeSelectionChange(IIdentificate cascadeType) {
     if (cascadeType == null) {
       view.fillCharmGroupBox(new IIdentificate[0]);
@@ -210,8 +210,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   protected abstract GroupCharmTree getCharmTree(IIdentificate type);
 
-  protected abstract ICharmGroup[] getCharmGroups();
-
   private void initFilters() {
     CharmFilterContainer charms = getFilterContainer();
     List<ICharmFilter> charmFilters = charms.getCharmFilters();
@@ -227,5 +225,9 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   protected void setInteractionPresenter(CharmInteractionPresenter presenter) {
     this.interactionPresenter = presenter;
+  }
+
+  public void setCharmGroups(CharmGroupCollection charmGroups) {
+    this.charmGroups = charmGroups;
   }
 }

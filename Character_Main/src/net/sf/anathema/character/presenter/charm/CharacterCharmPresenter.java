@@ -1,7 +1,6 @@
 package net.sf.anathema.character.presenter.charm;
 
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
@@ -37,11 +36,7 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     setCharmDye(dye);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
     setInteractionPresenter(new LearnInteractionPresenter(model, view, charmGroupChangeListener, viewProperties, dye));
-  }
-
-  @Override
-  protected ICharmGroup[] getCharmGroups() {
-    return model.getCharmConfiguration().getAllGroups();
+    setCharmGroups(new CharacterGroupCollection(model));
   }
 
   @Override
