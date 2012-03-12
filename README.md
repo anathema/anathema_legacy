@@ -21,6 +21,8 @@ Launch ``net.sf.anathema.AnathemaBootLoader``.
 2. Run ``gradlew eclipseClasspath`` or ``gradlew ideaModule`` respectively.
 
 ### Adding a new module ###
+> IntelliJ IDEA users best run this outside of the IDE, else it might not pick up all changes.
+
 1. Run ``gradlew createModule -PmoduleName=MODULENAME``
 2. In ``settings.gradle``, add your module name.
 4. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` or ``gradlew idea``.
