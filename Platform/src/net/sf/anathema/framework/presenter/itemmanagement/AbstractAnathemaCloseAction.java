@@ -11,7 +11,7 @@ import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.message.MessageUserDialogConfiguration;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfiguration;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.SelectedItemActionEnabler;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.dialog.YesNoDialogButtonConfiguration;
@@ -20,16 +20,16 @@ import net.sf.anathema.lib.resources.IResources;
 public abstract class AbstractAnathemaCloseAction extends SmartAction {
 
   private static final long serialVersionUID = 231060390775642729L;
-  private final IItemMangementModel management;
+  private final IItemManagementModel management;
   private final IResources resources;
 
-  public AbstractAnathemaCloseAction(IItemMangementModel management, IResources resources) {
+  public AbstractAnathemaCloseAction(IItemManagementModel management, IResources resources) {
     this.management = management;
     this.resources = resources;
     management.addListener(new SelectedItemActionEnabler(this, management.getSelectedItem()));
   }
 
-  protected final IItemMangementModel getManagement() {
+  protected final IItemManagementModel getManagement() {
     return management;
   }
 

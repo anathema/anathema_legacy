@@ -4,7 +4,9 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IItemType extends IIdentificate {
 
-  public IRepositoryConfiguration getRepositoryConfiguration();
+  IRepositoryConfiguration getRepositoryConfiguration();
 
-  public boolean supportsRepository();
+  boolean supportsRepository();
+
+  boolean isIntegrated();
 }

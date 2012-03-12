@@ -6,7 +6,7 @@ import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.messaging.IAnathemaMessageContainer;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
@@ -26,7 +26,7 @@ public interface IAnathemaModel {
 
   public IRegistry<IItemType, IItemViewFactory> getViewFactoryRegistry();
 
-  public IItemMangementModel getItemManagement();
+  public IItemManagementModel getItemManagement();
 
   public IAnathemaMessaging getMessaging();
 

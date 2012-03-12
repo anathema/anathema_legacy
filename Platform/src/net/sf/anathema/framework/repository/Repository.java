@@ -8,7 +8,7 @@ import net.disy.commons.core.io.FileUtilities;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.action.IFileProvider;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
@@ -30,7 +30,7 @@ public class Repository implements IRepository {
   private final RepositoryFileResolver resolver;
   private final ChangeControl control = new ChangeControl();
 
-  public Repository(File repositoryFolder, IItemMangementModel itemManagement) {
+  public Repository(File repositoryFolder, IItemManagementModel itemManagement) {
     Ensure.ensureArgumentTrue("Repositoryfolder must exist.", repositoryFolder.exists()); //$NON-NLS-1$
     this.resolver = new RepositoryFileResolver(repositoryFolder);
     this.defaultDataFolder = resolver.getExistingDataFolder("data"); //$NON-NLS-1$

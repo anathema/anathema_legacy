@@ -46,7 +46,7 @@ public abstract class AbstractItemAction extends SmartAction {
   protected static IItemType[] collectItemTypes(IAnathemaModel model) {
     List<IItemType> types = new ArrayList<IItemType>();
     for (IItemType type : model.getItemTypeRegistry().getAllItemTypes()) {
-      if (type.supportsRepository()) {
+      if (type.isIntegrated()) {
         types.add(type);
       }
     }
