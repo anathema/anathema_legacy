@@ -79,7 +79,7 @@ public class SpellBuilder {
       target = targetElement.attributeValue("target"); //$NON-NLS-1$
     }
     ISourceList sourceList = buildSource(spellElement);
-    if (!sourceList.isEmpty()) {
+    if (sourceList.isEmpty()) {
       return;
     }
     spellList.add(new Spell(id, CircleType.valueOf(circleId), temporaryCost, sourceList, target));
