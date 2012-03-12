@@ -73,7 +73,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
 
     if (characterType.isExaltType()) {
       float fourthRowY = thirdRowY - lineHeight;
-      String animaContent = null;
+      String animaContent = reportContent.getDescription().getAnima();
       graphics.drawLabelledContent(getLabel("Anima"), animaContent, new Position(firstColumnX, fourthRowY), bounds.width); //$NON-NLS-1$
     }
   }

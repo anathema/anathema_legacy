@@ -83,7 +83,8 @@ public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
 
   private void initCharacterDescriptionPresentation() {
     ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
-    IContentPresenter presenter = new CharacterDescriptionPresenter(resources, character.getDescription(), view);
+    IContentPresenter presenter = new CharacterDescriptionPresenter(resources, character.getDescription(), view,
+    		getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
     String title = getString("CardView.CharacterDescription.Title"); //$NON-NLS-1$
     initMultiTabViewPresentation(title, presenter, AdditionalModelType.Description);
   }

@@ -12,6 +12,7 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_PLAYER;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SEX;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SKIN;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_ANIMA;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.framework.persistence.TextPersister;
 
@@ -40,6 +41,7 @@ public class CharacterDescriptionPersister {
     textPersister.restoreTextualDescription(descriptionElement, TAG_HAIR, description.getHair());
     textPersister.restoreTextualDescription(descriptionElement, TAG_SEX, description.getSex());
     textPersister.restoreTextualDescription(descriptionElement, TAG_SKIN, description.getSkin());
+    textPersister.restoreTextualDescription(descriptionElement, TAG_ANIMA, description.getAnima());
   }
 
   public void save(Element parent, ICharacterDescription description) {
@@ -59,5 +61,6 @@ public class CharacterDescriptionPersister {
     textPersister.saveTextualDescription(descriptionElement, TAG_HAIR, description.getHair());
     textPersister.saveTextualDescription(descriptionElement, TAG_SEX, description.getSex());
     textPersister.saveTextualDescription(descriptionElement, TAG_SKIN, description.getSkin());
+    textPersister.saveTextualDescription(descriptionElement, TAG_ANIMA, description.getAnima());
   }
 }

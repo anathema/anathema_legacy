@@ -42,6 +42,10 @@ public class GenericDescription implements IGenericDescription {
   public String getSkin() {
     return description.getSkin().getText();
   }
+  
+  public String getAnima() {
+	return description.getAnima().getText();
+  }
 
   public String getPlayer() {
     return description.getPlayer().getText();
