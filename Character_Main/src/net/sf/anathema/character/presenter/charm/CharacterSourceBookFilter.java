@@ -1,23 +1,16 @@
 package net.sf.anathema.character.presenter.charm;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 import org.dom4j.Element;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
-import static com.google.common.collect.Lists.newArrayList;
-import static java.util.Collections.addAll;
 
 public class CharacterSourceBookFilter extends SourceBookCharmFilter {
 
@@ -43,12 +36,6 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
       }
     }
     return false;
-  }
-
-  @Override
-  protected List<IExaltedSourceBook> getBooks(IExaltedEdition edition) {
-    List<ICharm> allCharms = getAllCharmsAvailable();
-    return getSourceBooksFromCharms(allCharms);
   }
 
   @Override
@@ -87,28 +74,8 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
     return false;
   }
 
-  private List<IExaltedSourceBook> getSourceBooksFromCharms(List<ICharm> allCharms) {
-    List<IExaltedSourceBook> allBooks = Lists.transform(allCharms, new Function<ICharm, IExaltedSourceBook>() {
-      @Override
-      public IExaltedSourceBook apply(ICharm input) {
-        return input.getPrimarySource();
-      }
-    });
-    return reduceToUniqueBooks(allBooks);
-  }
-
-  private List<ICharm> getAllCharmsAvailable() {
-    List<ILearningCharmGroup> allGroups = newArrayList(characterSet.getAllGroups());
-    List<ICharm> allCharms = newArrayList();
-    for (ILearningCharmGroup group : allGroups) {
-      addAll(allCharms, group.getAllCharms());
-    }
-    return allCharms;
-  }
-
-  private List<IExaltedSourceBook> reduceToUniqueBooks(List<IExaltedSourceBook> allBooks) {
-    Set<IExaltedSourceBook> uniqueBooks = new ListOrderedSet<IExaltedSourceBook>();
-    uniqueBooks.addAll(allBooks);
-    return new ArrayList<IExaltedSourceBook>(uniqueBooks);
+  @Override
+  protected List<ICharmGroup> getAllCharmGroups(IExaltedEdition edition) {
+    return Lists.<ICharmGroup>newArrayList(characterSet.getAllGroups());
   }
 }

@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class CascadeGroupCollection implements CharmGroupCollection {
+public class CascadeGroupCollection implements CharmGroupCollection, EditionCharmGroups {
   private ITemplateRegistry templateRegistry;
   private ICharmCache cache;
   private Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules;
@@ -42,6 +42,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
     return getCharmGroupsFor(ExaltedEdition.values());
   }
 
+  @Override
   public ICharmGroup[] getCharmGroups(IExaltedEdition edition) {
     return getCharmGroupsFor(edition);
   }

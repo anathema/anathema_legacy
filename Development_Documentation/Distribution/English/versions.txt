@@ -19,11 +19,14 @@ From this version onward, 2E Character's with Spells exclusive to 1E won't load.
 -- Features --
 * New Preference: Print only those generics the Character knows about.
 * Charm tooltips show all sources.
+* Added entry for Anima description
 * The sourcebook filter orders books alphabetically.
-* [2E] [Shadow493] Added Established Solars from DotFA.
-* [2E] [Scathach] Added Charm descriptions for Lunars. Texts taken from the official Wiki.
-* [2E] [Jesse Belanger] Added Charm descriptions from Glories of the Most High. Texts taken from the official Wiki.
 * [2E] Lunar Knacks now form a separate category
+* [2E] [Shadow493] Added Established Solars from DotFA.
+* [2E] Added Charm descriptions. Texts taken from the official Wiki:
+       [Scathach] Lunars
+       [Jesse Belanger] Glories of the Most High, Dreams of the First Age
+
 
 -- Bugfixes --
 * Bonus points view for Mutations no longer appears for experienced characters.

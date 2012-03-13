@@ -34,7 +34,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   private ICascadeSelectionView view;
   private CharmDye dye;
   private CharmTypes charmTypes;
-  private CharmGroupCollection charmGroups;
+  protected CharmGroupCollection charmGroups;
   private SpecialCharmViewPresenter specialCharmPresenter = new NullSpecialCharmPresenter();
   private AlienCharmPresenter alienPresenter = new NullAlienCharmPresenter();
   private CharmInteractionPresenter interactionPresenter = new NullInteractionPresenter();

@@ -13,14 +13,16 @@ import java.util.List;
 public class CascadeFilterContainer implements CharmFilterContainer {
 
   private IExaltedRuleSet ruleSet;
+  private EditionCharmGroups charmGroups;
 
-  public CascadeFilterContainer(IExaltedRuleSet ruleSet) {
+  public CascadeFilterContainer(IExaltedRuleSet ruleSet, EditionCharmGroups charmGroups) {
     this.ruleSet = ruleSet;
+    this.charmGroups = charmGroups;
   }
 
   @Override
   public List<ICharmFilter> getCharmFilters() {
-    SourceBookCharmFilter sourceFilter = new CascadeSourceBookFilter(ruleSet);
+    SourceBookCharmFilter sourceFilter = new CascadeSourceBookFilter(ruleSet,charmGroups);
     EssenceLevelCharmFilter essenceLevelFilter = new EssenceLevelCharmFilter();
     return Lists.newArrayList(sourceFilter, essenceLevelFilter);
   }
