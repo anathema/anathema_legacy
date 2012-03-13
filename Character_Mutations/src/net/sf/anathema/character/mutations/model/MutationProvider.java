@@ -1,19 +1,14 @@
 package net.sf.anathema.character.mutations.model;
 
+import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassEast;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassWest;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.CompassWyld;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.Infernals;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.LandsOfCreation;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.Lunars2nd;
-import static net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook.SecondEdition;
 import static net.sf.anathema.character.mutations.model.MutationType.Abomination;
 import static net.sf.anathema.character.mutations.model.MutationType.Affliction;
 import static net.sf.anathema.character.mutations.model.MutationType.Blight;
@@ -23,6 +18,14 @@ import static net.sf.anathema.character.mutations.model.MutationType.Deformity;
 import static net.sf.anathema.character.mutations.model.MutationType.Pox;
 
 public class MutationProvider {
+
+  public static final IExaltedSourceBook Infernals = ExaltedSourceBook.Infernals;
+  public static final IExaltedSourceBook CompassEast = ExaltedSourceBook.CompassEast;
+  public static final IExaltedSourceBook CompassWest = ExaltedSourceBook.CompassWest;
+  public static final IExaltedSourceBook CompassWyld = ExaltedSourceBook.CompassWyld;
+  public static final IExaltedSourceBook LandsOfCreation = ExaltedSourceBook.LandsOfCreation;
+  public static final IExaltedSourceBook Lunars2nd = ExaltedSourceBook.Lunars2nd;
+  public static final IExaltedSourceBook SecondEdition = ExaltedSourceBook.SecondEdition;
 
   public static IMutation[] getMutations(IExaltedEdition edition, IMutationRules rules) {
     final List<IMutation> mutations = newArrayList();

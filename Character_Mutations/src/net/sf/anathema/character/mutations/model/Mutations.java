@@ -1,6 +1,6 @@
 package net.sf.anathema.character.mutations.model;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class Mutations {
     mutations.add(new Mutation(id, type));
   }
 
-  public void add(String id, MutationType type, ExaltedSourceBook book, int page) {
+  public void add(String id, MutationType type, IExaltedSourceBook book, int page) {
     mutations.add(new Mutation(id, type, book, page));
   }
 
