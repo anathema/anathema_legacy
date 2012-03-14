@@ -9,15 +9,25 @@ import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
+import net.sf.anathema.framework.view.CollapsibleView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.text.MessageFormat;
+
+import static java.text.MessageFormat.format;
 
 public class CharacterCharmPresenter extends AbstractCascadePresenter implements IContentPresenter {
 
   private final ICharmView view;
   private final CharacterCharmModel model;
+  private final CollapsibleView collapsibleView = new CollapsibleView();
 
   public CharacterCharmPresenter(IResources resources, IMagicViewFactory factory, CharacterCharmModel charmModel,
                                  ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
@@ -36,7 +46,29 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
     setCharmDye(dye);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
     setInteractionPresenter(new LearnInteractionPresenter(model, view, charmGroupChangeListener, viewProperties, dye));
+    initCharmEditPresentation();
+    }
+
+  private void initCharmEditPresentation() {
+    final JLabel editor = new JLabel("Editor");
     setCharmGroups(new CharacterGroupCollection(model));
+    view.addCharmInteractionListener(new CharmInteractionListener() {
+     @Override
+     public void nodeSelected(String nodeId) {
+       // nothing to do
+     }
+
+     @Override
+     public void nodeEdited(String nodeId) {
+       collapsibleView.setCollapsibleTitle(format("Edit description for ''{0}''", nodeId));
+       editor.setText(nodeId);
+       collapsibleView.expandCollapsible();
+     }
+   });
+    collapsibleView.setMainContent(view.getComponent());
+    JPanel editorPanel = new JPanel(new BorderLayout());
+    editorPanel.add(editor, BorderLayout.CENTER);
+    collapsibleView.setCollapsibleContainer(editorPanel);
   }
 
   @Override
@@ -52,6 +84,6 @@ public class CharacterCharmPresenter extends AbstractCascadePresenter implements
   @Override
   public IViewContent getTabContent() {
     String header = getResources().getString("CardView.CharmConfiguration.CharmSelection.Title"); //$NON-NLS-1$
-    return new SimpleViewContent(new ContentProperties(header), view);
+    return new SimpleViewContent(new ContentProperties(header), collapsibleView);
   }
 }
