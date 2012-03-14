@@ -16,7 +16,7 @@
      		<backgroundReference id="Henchmen" />
      	</forbiddenBackgrounds>
     	<additionalPools>
-    		<multilearnablePool>
+    		<multilearnablePool modifiesBase="true">
     			<backgroundReference id="Breeding"/>    			
     			<personalPool multiplier="1"/>
     			<peripheralPool>

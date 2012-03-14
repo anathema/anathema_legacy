@@ -77,7 +77,8 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   public int getExtendedPersonalPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      additionalPool += pool.getAdditionalPersonalPool(traitCollection,
+      if (!pool.modifiesBasePool())
+    	  additionalPool += pool.getAdditionalPersonalPool(traitCollection,
                                                        magicCollection);
     }
     return getStandardPersonalPool() + additionalPool;
@@ -85,6 +86,11 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
 
   public int getStandardPersonalPool() {
     int personal = getUnmodifiedPersonalPool();
+    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
+        if (pool.modifiesBasePool())
+      	  personal += pool.getAdditionalPersonalPool(traitCollection,
+                                                         magicCollection);
+      }
     return personal
            - Math.max(0, getAttunementExpenditures()
                          - getUnmodifiedPeripheralPool());
@@ -107,7 +113,8 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   public int getExtendedPeripheralPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      additionalPool += pool.getAdditionalPeripheralPool(traitCollection,
+    	if (!pool.modifiesBasePool())
+    		additionalPool += pool.getAdditionalPeripheralPool(traitCollection,
                                                          magicCollection);
     }
     return getStandardPeripheralPool() + additionalPool;
@@ -115,6 +122,11 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
 
   public int getStandardPeripheralPool() {
     int peripheral = getUnmodifiedPeripheralPool();
+    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
+    	if (pool.modifiesBasePool())
+    		peripheral += pool.getAdditionalPeripheralPool(traitCollection,
+                                                         magicCollection);
+    }
     return Math.max(0, peripheral - getAttunementExpenditures());
   }
 

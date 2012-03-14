@@ -13,18 +13,21 @@ public class BackgroundPool implements IAdditionalEssencePool {
   private final AdditionalEssencePool personalPool;
   private final AdditionalEssencePool peripheralPool;
   private final ComplexAdditionalEssencePool[] complexPools;
+  private final boolean modifiesBase;
 
   public BackgroundPool(
       IBackgroundTemplate template,
       AdditionalEssencePool personalPool,
       AdditionalEssencePool peripheralPool,
-      ComplexAdditionalEssencePool[] complexPools) {
+      ComplexAdditionalEssencePool[] complexPools,
+      boolean modifiesBase) {
     this.template = template;
     this.personalPool = personalPool;
     this.peripheralPool = peripheralPool;
     this.complexPools = complexPools;
+    this.modifiesBase = modifiesBase;
   }
-
+  
   public int getAdditionalPeripheralPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
     return peripheralPool.getPool(getCurrentValue(traitCollection));
   }
@@ -50,5 +53,10 @@ public class BackgroundPool implements IAdditionalEssencePool {
       return 0;
     }
     return background.getCurrentValue();
+  }
+  
+  public boolean modifiesBasePool()
+  {
+	  return modifiesBase;
   }
 }

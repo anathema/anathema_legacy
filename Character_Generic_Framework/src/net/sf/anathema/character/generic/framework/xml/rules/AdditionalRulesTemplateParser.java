@@ -50,6 +50,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String ATTRIB_MULTIPLIER = "multiplier"; //$NON-NLS-1$
   private static final String TAG_BACKGROUND_REFERENCE = "backgroundReference"; //$NON-NLS-1$
   private static final String TAG_FORBIDDEN_BACKGROUNDS = "forbiddenBackgrounds"; //$NON-NLS-1$
+  private static final String ATTRIB_MODIFIES_BASE = "modifiesBase"; //$NON-NLS-1$
   private static final String TAG_FIXED_VALUE = "fixedValue"; //$NON-NLS-1$
   private static final String ATTRIB_VALUE = "value"; //$NON-NLS-1$
   private static final String ATTRIB_FORMULA = "formula"; //$NON-NLS-1$
@@ -219,7 +220,8 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
         pools.add(new MultiLearnableCharmPool((IMultiLearnableCharm) charm, personalPool, peripheralPool, complexPools));
       }
       else if (multiPool.element(TAG_BACKGROUND_REFERENCE) != null) {
-        pools.add(new BackgroundPool(getBackgroundTemplate(multiPool), personalPool, peripheralPool, complexPools));
+    	boolean modifiesBase = ElementUtilities.getBooleanAttribute(multiPool, ATTRIB_MODIFIES_BASE, false);
+        pools.add(new BackgroundPool(getBackgroundTemplate(multiPool), personalPool, peripheralPool, complexPools, modifiesBase));
       }
       else {
         throw new ContractFailedException("Either CharmReference or BackgroundReference required."); //$NON-NLS-1$

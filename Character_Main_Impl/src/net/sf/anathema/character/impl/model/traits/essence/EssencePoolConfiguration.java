@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.model.traits.essence;
 
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
@@ -35,7 +36,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 
   public String getPersonalPool() {
     Ensure.ensureTrue("No Essence User", isEssenceUser()); //$NON-NLS-1$
-    if (additionalRules.getAdditionalEssencePools().length == 0) {
+    if (!hasAdditionalPools()) {
       return String.valueOf(poolStrategy.getStandardPersonalPool());
     }
     return poolStrategy.getStandardPersonalPool() + " (" + poolStrategy.getExtendedPersonalPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
@@ -47,7 +48,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 
   public String getPeripheralPool() {
     Ensure.ensureTrue("No Peripheral Pool", hasPeripheralPool()); //$NON-NLS-1$
-    if (additionalRules.getAdditionalEssencePools().length == 0) {
+    if (!hasAdditionalPools()) {
       return String.valueOf(poolStrategy.getStandardPeripheralPool());
     }
     return poolStrategy.getStandardPeripheralPool() + " (" + poolStrategy.getExtendedPeripheralPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
@@ -72,6 +73,14 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
   
   public int getAttunedPoolValue() {
     return poolStrategy.getAttunementExpenditures();
+  }
+  
+  private boolean hasAdditionalPools()
+  {
+	  for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools())
+		  if (!pool.modifiesBasePool())
+			  return true;
+	  return false;
   }
 
   public boolean isEssenceUser() {
