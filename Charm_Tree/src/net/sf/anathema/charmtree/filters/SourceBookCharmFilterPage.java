@@ -127,7 +127,7 @@ public class SourceBookCharmFilterPage implements ICharmFilterPage {
   private Object[] convertBooksToNames(List<IExaltedSourceBook> bookList) {
     List<String> bookNames = new ArrayList<String>();
     for (IExaltedSourceBook book : bookList) {
-      String name = resources.getString("ExaltedSourceBook." + book.toString());
+      String name = resources.getString("ExaltedSourceBook." + book.getId());
       bookNames.add(name);
       if (namesToBooksMap.get(name) == null) {
         namesToBooksMap.put(name, book);

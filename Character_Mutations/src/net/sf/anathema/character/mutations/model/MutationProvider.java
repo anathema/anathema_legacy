@@ -1,6 +1,6 @@
 package net.sf.anathema.character.mutations.model;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
+import net.sf.anathema.character.generic.impl.rules.SourceBook;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
@@ -19,13 +19,13 @@ import static net.sf.anathema.character.mutations.model.MutationType.Pox;
 
 public class MutationProvider {
 
-  public static final IExaltedSourceBook Infernals = ExaltedSourceBook.Infernals;
-  public static final IExaltedSourceBook CompassEast = ExaltedSourceBook.CompassEast;
-  public static final IExaltedSourceBook CompassWest = ExaltedSourceBook.CompassWest;
-  public static final IExaltedSourceBook CompassWyld = ExaltedSourceBook.CompassWyld;
-  public static final IExaltedSourceBook LandsOfCreation = ExaltedSourceBook.LandsOfCreation;
-  public static final IExaltedSourceBook Lunars2nd = ExaltedSourceBook.Lunars2nd;
-  public static final IExaltedSourceBook SecondEdition = ExaltedSourceBook.SecondEdition;
+  public static final IExaltedSourceBook Infernals = new SourceBook("Infernals");
+  public static final IExaltedSourceBook CompassEast = new SourceBook("CompassEast");
+  public static final IExaltedSourceBook CompassWest = new SourceBook("CompassWest");
+  public static final IExaltedSourceBook CompassWyld = new SourceBook("CompassWyld");
+  public static final IExaltedSourceBook LandsOfCreation = new SourceBook("LandsOfCreation");
+  public static final IExaltedSourceBook Lunars2nd = new SourceBook("Lunars2nd");
+  public static final IExaltedSourceBook SecondEdition = new SourceBook("SecondEdition");
 
   public static IMutation[] getMutations(IExaltedEdition edition, IMutationRules rules) {
     final List<IMutation> mutations = newArrayList();

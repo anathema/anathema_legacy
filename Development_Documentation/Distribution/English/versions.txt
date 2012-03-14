@@ -18,9 +18,10 @@ From this version onward, 2E Character's with Spells exclusive to 1E won't load.
 
 -- Features --
 * New Preference: Print only those generics the Character knows about.
-* Charm tooltips show all sources.
 * Added entry for Anima description
+* Charm tooltips show all sources.
 * The sourcebook filter orders books alphabetically.
+* Charms and Spells can freely define sourcebooks. They are no longer limited to the names we provide.
 * [2E] Lunar Knacks now form a separate category
 * [2E] [Shadow493] Added Established Solars from DotFA.
 * [2E] Added Charm descriptions. Texts taken from the official Wiki:
