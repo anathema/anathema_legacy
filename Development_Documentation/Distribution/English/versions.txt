@@ -37,7 +37,7 @@ From this version onward, 2E Character's with Spells exclusive to 1E won't load.
 * [2E] Sidereal Excellencies name Essence as their limit.
 * [2E] Solar Hero extensions available only to Solars (and Moonshadows)
 * [2E] (Lunar/Beastmen) "Tiger and Seahorse Dynasty" now carries its proper name
-
+* [2E] (Infernal/SWLiHN) "Heuristic Logos Shintai" is learnable
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.0 "Thorns"
