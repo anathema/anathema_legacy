@@ -82,6 +82,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
                 bonusPointManagement, experiencePointManagement, resources);
         new CharacterPresenter(character, characterView, resources, getGenerics(anathemaModel),
                 pointPresentation).initPresentation();
+        character.setClean();
         return characterView;
       }
     };
