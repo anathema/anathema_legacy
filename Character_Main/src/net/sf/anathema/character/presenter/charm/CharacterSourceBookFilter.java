@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter.charm;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
+import net.sf.anathema.character.generic.impl.rules.SourceBook;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
@@ -61,7 +61,7 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
           String editionString = sourceBook.attributeValue(ATTRIB_EDITION);
           String idString = sourceBook.attributeValue(ATTRIB_NAME);
           IExaltedEdition edition = ExaltedEdition.valueOf(editionString);
-          IExaltedSourceBook book = ExaltedSourceBook.valueOf(idString);
+          IExaltedSourceBook book = new SourceBook(idString);
           excludedMaterial.get(edition).add(book);
         } catch (Exception e) {
           excludedMaterial.get(getEdition()).clear();
