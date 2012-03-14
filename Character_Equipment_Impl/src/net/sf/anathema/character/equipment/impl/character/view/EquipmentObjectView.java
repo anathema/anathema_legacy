@@ -1,24 +1,22 @@
 package net.sf.anathema.character.equipment.impl.character.view;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.Action;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-
 import net.disy.commons.core.model.BooleanModel;
 import net.disy.commons.swing.action.ActionWidgetFactory;
 import net.disy.commons.swing.action.SmartToggleAction;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupView;
 import net.sf.anathema.lib.gui.GuiUtilities;
+import org.jdesktop.swingx.JXTaskPane;
 
-import com.l2fprod.common.swing.JTaskPaneGroup;
+import javax.swing.Action;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroupView {
 
-  private final JTaskPaneGroup taskGroup = new JTaskPaneGroup();
+  private final JXTaskPane taskGroup = new JXTaskPane();
   private final JLabel descriptionLabel = new JLabel();
   private final Map<BooleanModel, JCheckBox> boxes = new HashMap<BooleanModel, JCheckBox>();
 
@@ -53,7 +51,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
 	  boxes.get(model).setEnabled(enabled);
   }
 
-  public JTaskPaneGroup getTaskGroup() {
+  public JXTaskPane getTaskGroup() {
     return taskGroup;
   }
 

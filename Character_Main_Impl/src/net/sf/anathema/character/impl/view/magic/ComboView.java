@@ -1,18 +1,16 @@
 package net.sf.anathema.character.impl.view.magic;
 
-import java.awt.Component;
+import net.sf.anathema.character.view.magic.IComboView;
+import net.sf.anathema.lib.gui.GuiUtilities;
+import org.jdesktop.swingx.JXTaskPane;
 
 import javax.swing.Action;
 import javax.swing.JLabel;
-
-import net.sf.anathema.character.view.magic.IComboView;
-import net.sf.anathema.lib.gui.GuiUtilities;
-
-import com.l2fprod.common.swing.JTaskPaneGroup;
+import java.awt.Component;
 
 public class ComboView implements IComboView {
 
-  private final JTaskPaneGroup taskPaneGroup = new JTaskPaneGroup();
+  private final JXTaskPane taskPaneGroup = new JXTaskPane();
   private JLabel label;
   private final Action deleteAction;
   private final Action editAction;
@@ -23,7 +21,7 @@ public class ComboView implements IComboView {
     this.editAction = editAction;
   }
 
-  public JTaskPaneGroup getTaskGroup() {
+  public JXTaskPane getTaskGroup() {
     return taskPaneGroup;
   }
 
