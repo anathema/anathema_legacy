@@ -1,6 +1,11 @@
 package net.sf.anathema.character.equipment.impl.character.model.print;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
@@ -11,10 +16,20 @@ public class ArmourStatsDecorationFactory implements IEquipmentStatsDecorationFa
 
   private String createItemName(IEquipmentItem item, IEquipmentStats stats) {
     String itemName = item.getTemplateId();
-    if (item.getStats().length > 1) {
+    if (getListedStats(item) > 1) {
       itemName += " - " + stats.getName(); //$NON-NLS-1$
     }
     return itemName;
+  }
+  
+  private int getListedStats(IEquipmentItem item) {
+	  int listedStats = 0;
+	  for (IEquipmentStats stats : item.getStats()) {
+		  if (stats instanceof IArtifactStats)
+	    	  continue;
+	      listedStats++;
+	  }
+	  return listedStats;
   }
 
   public IArmourStats createRenamedPrintDecoration(final IEquipmentItem item, final IArmourStats stats) {
