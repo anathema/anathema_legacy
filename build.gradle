@@ -122,16 +122,6 @@ task buildZip(type: Zip) {
     from("Development_Documentation/Distribution/English") {
         include '*.txt'
     }
-    into('doc/spanish') {
-        from("Development_Documentation/Distribution/Spanish") {
-            include '*.txt'
-        }
-    }
-    into('doc/italian') {
-        from("Development_Documentation/Distribution/Italian") {
-            include '*.txt'
-        }
-    }
 }
 
 [buildZip, buildWindowsInstaller].each {
