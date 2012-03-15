@@ -16,6 +16,10 @@ You've been around since First Edition Lunars back in 2006, my friend. Rest in p
 
 From this version onward, 2E Character's with Spells exclusive to 1E won't load.
 
+Starting from this version, we will begin phasing out support for First Edition and Power Combat
+and "classic" 2E to focus on Exalted 2.5.
+There may be some additional releases for those rulesets, but some time soon, Anathema won't support them.
+
 -- Features --
 * New Preference: Print only those generics the Character knows about.
 * Added entry for Anima description
