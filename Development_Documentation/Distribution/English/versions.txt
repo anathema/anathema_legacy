@@ -25,7 +25,7 @@ From this version onward, 2E Character's with Spells exclusive to 1E won't load.
 * Dragon-Blooded breeding motes are calculated into the base pool
 * Items with only one printed stat don't have that stat's name printed
 * [2E] Lunar Knacks now form a separate category
-* [2E] [Shadow493] Added Established Solars from DotFA.
+* [2E] [Shadow493] Added missing Solar templates from DotFA.
 * [2E] Added Charm descriptions. Texts taken from the official Wiki:
        [Scathach] Lunars
        [Jesse Belanger] Glories of the Most High, Dreams of the First Age
