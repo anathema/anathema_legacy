@@ -14,12 +14,14 @@ import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.KeyStroke;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
+import static java.awt.Desktop.isDesktopSupported;
 import static net.disy.commons.core.progress.IProgressMonitor.UNKNOWN;
 
 public abstract class AbstractPrintAction extends SmartAction {
@@ -94,5 +96,15 @@ public abstract class AbstractPrintAction extends SmartAction {
   protected void handleInvocationTargetException(Component parentComponent, InvocationTargetException e) {
     String errorMessage = getErrorMessage(e);
     MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e.getCause()));
+  }
+
+  protected void openFile(File selectedFile) throws IOException {
+    if (isAutoOpenSupported()) {
+      Desktop.getDesktop().open(selectedFile);
+    }
+  }
+
+  public static boolean isAutoOpenSupported() {
+    return isDesktopSupported();
   }
 }

@@ -17,6 +17,7 @@ import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.presenter.menu.MenuExtensionPoint;
+import net.sf.anathema.framework.reporting.AbstractPrintAction;
 import net.sf.anathema.framework.reporting.AnathemaPrintAction;
 import net.sf.anathema.framework.reporting.AnathemaQuickPrintAction;
 import net.sf.anathema.framework.repository.tree.RepositoryViewAction;
@@ -33,6 +34,7 @@ import java.awt.event.KeyEvent;
 @Menu
 public class AnathemaCoreMenu implements IAnathemaMenu {
 
+  @Override
   public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
     IMenu mainMenu = menubar.getMainMenu();
     mainMenu.addMenuItem(AnathemaNewAction.createMenuAction(model, resources));
@@ -45,7 +47,9 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     mainMenu.addMenuItem(createExportImportAction(resources, model));
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaPrintAction.createMenuAction(model, resources));
-    mainMenu.addMenuItem(AnathemaQuickPrintAction.createMenuAction(model, resources));
+    if (AbstractPrintAction.isAutoOpenSupported()) {
+      mainMenu.addMenuItem(AnathemaQuickPrintAction.createMenuAction(model, resources));
+    }
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaExitAction.createMenuAction(resources));
     IMenu helpMenu = menubar.getHelpMenu();
@@ -57,9 +61,10 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
   private static Action createExportImportAction(IResources resources, IAnathemaModel model) {
     Action action = RepositoryViewAction.createMenuAction(resources, model);
     if (action instanceof SmartAction) {
-      SmartAction smartAction = (SmartAction)action;
+      SmartAction smartAction = (SmartAction) action;
       smartAction.setName(resources.getString("AnathemaCore.Tools.ExportImport.Name"));
-      smartAction.setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_E, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+      smartAction.setAcceleratorKey(
+              KeyStroke.getKeyStroke(KeyEvent.VK_E, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     }
     return action;
   }
@@ -74,15 +79,16 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
 
   private void createMenuFromExtensionPoint(IAnathemaModel anathemaModel, IMenu menu) {
     IRegistry<String, IAnathemaExtension> extensionPointRegistry = anathemaModel.getExtensionPointRegistry();
-    MenuExtensionPoint newExtensionPoint = (MenuExtensionPoint) extensionPointRegistry.get(IMenuExtensionPoint.EXTRA_MENU_EXTENSION_POINT_ID);
+    MenuExtensionPoint newExtensionPoint = (MenuExtensionPoint) extensionPointRegistry.get(
+            IMenuExtensionPoint.EXTRA_MENU_EXTENSION_POINT_ID);
     for (IMenuItem item : newExtensionPoint.getMenuItems()) {
       item.addToMenu(menu);
     }
   }
 
   private IPreferencesElement[] createSystemPreferences(IAnathemaModel anathemaModel) {
-    PreferencesElementsExtensionPoint preferencesPoint = (PreferencesElementsExtensionPoint) anathemaModel.getExtensionPointRegistry()
-        .get(PreferencesElementsExtensionPoint.ID);
+    PreferencesElementsExtensionPoint preferencesPoint = (PreferencesElementsExtensionPoint) anathemaModel.getExtensionPointRegistry().get(
+            PreferencesElementsExtensionPoint.ID);
     return preferencesPoint.getAllPreferencesElements();
   }
 }

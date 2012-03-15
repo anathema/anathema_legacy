@@ -6,8 +6,8 @@ import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.ObjectSelectionDialogPage;
 import net.sf.anathema.framework.module.DefaultObjectSelectionProperties;
-import net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
+import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
@@ -17,7 +17,6 @@ import javax.swing.Action;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import java.awt.Component;
-import java.awt.Desktop;
 import java.awt.Event;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -25,6 +24,7 @@ import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 
 import static javax.swing.KeyStroke.getKeyStroke;
+import static net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement.openDocumentAfterPrint;
 
 public class AnathemaPrintAction extends AbstractPrintAction {
 
@@ -35,7 +35,14 @@ public class AnathemaPrintAction extends AbstractPrintAction {
     return action;
   }
 
-  private AnathemaPrintAction(final IAnathemaModel anathemaModel, IResources resources) {
+  public static Action createToolAction(IAnathemaModel model, IResources resources) {
+    SmartAction action = new AnathemaPrintAction(model, resources);
+    action.setToolTipText(resources.getString("Anathema.Reporting.Menu.PrintItem.Name")); //$NON-NLS-1$
+    action.setIcon(new PlatformUI(resources).getPDFTaskBarIcon());
+    return action;
+  }
+
+  private AnathemaPrintAction(IAnathemaModel anathemaModel, IResources resources) {
     super(anathemaModel, resources);
   }
 
@@ -69,8 +76,8 @@ public class AnathemaPrintAction extends AbstractPrintAction {
     }
     try {
       printWithProgress(parentComponent, item, selectedReport, selectedFile);
-      if (OpenPdfPreferencesElement.openDocumentAfterPrint()) {
-        Desktop.getDesktop().open(selectedFile);
+      if (openDocumentAfterPrint()) {
+        openFile(selectedFile);
       }
     } catch (InvocationTargetException e) {
       handleInvocationTargetException(parentComponent, e);

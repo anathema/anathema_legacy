@@ -19,6 +19,7 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
   private boolean dirty = false;
   private JCheckBox checkBox;
 
+  @Override
   public void addComponent(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
@@ -26,12 +27,14 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
   private IDialogComponent getComponent(IResources resources) {
     final JComponent component = createCheckBox(resources);
     return new IDialogComponent() {
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(component, GridDialogLayoutDataFactory.createHorizontalSpanData(
             2,
             GridDialogLayoutData.FILL_HORIZONTAL));
       }
 
+      @Override
       public int getColumnCount() {
         return 1;
       }
@@ -47,6 +50,7 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
   private JComponent createCheckBox(IResources resources) {
     checkBox = new JCheckBox(resources.getString(getLabelKey()), getBooleanParameter());
     checkBox.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (checkBox.isSelected() != getBooleanParameter()) {
           setValue(checkBox.isSelected());
@@ -57,14 +61,17 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
     return checkBox;
   }
   
+  @Override
   public boolean isValid() {
     return true;
   }
 
+  @Override
   public boolean isDirty() {
     return dirty;
   }
 
+  @Override
   public void reset() {
     resetValue();
     checkBox.setSelected(getBooleanParameter());

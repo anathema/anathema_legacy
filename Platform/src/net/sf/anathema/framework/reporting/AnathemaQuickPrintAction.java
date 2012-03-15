@@ -10,7 +10,6 @@ import net.sf.anathema.lib.resources.IResources;
 import javax.swing.Action;
 import javax.swing.KeyStroke;
 import java.awt.Component;
-import java.awt.Desktop;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -68,7 +67,7 @@ public class AnathemaQuickPrintAction extends AbstractPrintAction {
     try {
       File selectedFile = getPrintFile(item);
       printWithProgress(parentComponent, item, selectedReport, selectedFile);
-      Desktop.getDesktop().open(selectedFile);
+      openFile(selectedFile);
     } catch (InvocationTargetException e) {
       handleInvocationTargetException(parentComponent, e);
     } catch (Exception e) {
