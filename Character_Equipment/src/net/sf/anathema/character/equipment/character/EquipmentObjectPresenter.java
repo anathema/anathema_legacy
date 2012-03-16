@@ -137,10 +137,6 @@ public class EquipmentObjectPresenter implements IPresenter {
 		        		dataProvider.enableStatOption(model, baseStat, specialtyOption);
 		        	else
 		        		dataProvider.disableStatOption(model, baseStat, specialtyOption);
-		        	for (IEquipmentStats stats : otherStatFlags.keySet())
-				    {
-				        view.updateStatText(otherStatFlags.get(stats), createEquipmentDescription(model, stats));
-				    }
 		        }
 		      });
 		  }
