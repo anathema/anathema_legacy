@@ -5,6 +5,8 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.presenter.charm.detail.CharmDescriptionEditPresenter;
+import net.sf.anathema.character.presenter.charm.tree.CharacterCharmTreePresenter;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
@@ -21,10 +23,10 @@ public class MagicPresenter implements IContentPresenter {
   private final List<IContentPresenter> subPresenters = new ArrayList<IContentPresenter>();
 
   public MagicPresenter(
-      ICharacterStatistics statistics,
-      IMagicViewFactory factory,
-      IResources resources,
-      ITemplateRegistry templateRegistry) {
+          ICharacterStatistics statistics,
+          IMagicViewFactory factory,
+          IResources resources,
+          ITemplateRegistry templateRegistry) {
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
     if (charmTemplate.canLearnCharms(statistics.getRules())) {
@@ -43,8 +45,11 @@ public class MagicPresenter implements IContentPresenter {
   private CharacterCharmPresenter createCharmPresenter(ICharacterStatistics statistics, IMagicViewFactory factory, IResources resources, ITemplateRegistry templateRegistry) {
     CharacterCharmModel model = new CharacterCharmModel(statistics);
     ITreePresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties().getCharmPresentationProperties();
-    return new CharacterCharmPresenter(resources, factory, model, presentationProperties,
-            new CharmDisplayPropertiesMap(templateRegistry));
+    CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);
+    CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, factory, model, presentationProperties,
+            propertiesMap);
+    CharmDescriptionEditPresenter detailPresenter = new CharmDescriptionEditPresenter();
+    return new CharacterCharmPresenter(resources, detailPresenter, treePresenter);
   }
 
   @Override

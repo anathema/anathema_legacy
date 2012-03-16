@@ -4,5 +4,5 @@ public interface CharmInteractionListener {
 
   void nodeSelected(String nodeId);
 
-  void nodeEdited(String nodeId);
+  void nodeDetailsDemanded(String nodeId);
 }

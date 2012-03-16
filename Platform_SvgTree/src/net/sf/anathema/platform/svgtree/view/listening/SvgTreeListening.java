@@ -169,7 +169,7 @@ public SvgTreeListening(
   private void fireNodeEditedEvent(final String nodeId) {
     control.forAllDo(new IClosure<CharmInteractionListener>() {
       public void execute(CharmInteractionListener input) {
-        input.nodeEdited(nodeId);
+        input.nodeDetailsDemanded(nodeId);
       }
     });
    }

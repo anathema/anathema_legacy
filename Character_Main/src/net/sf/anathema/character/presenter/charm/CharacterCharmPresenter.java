@@ -1,89 +1,63 @@
 package net.sf.anathema.character.presenter.charm;
 
-import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
-import net.sf.anathema.character.view.magic.IMagicViewFactory;
-import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
-import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
-import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.charmtree.presenter.view.ICharmView;
+import net.sf.anathema.character.presenter.charm.detail.CharmDescriptionEditPresenter;
+import net.sf.anathema.character.presenter.charm.detail.DetailModel;
+import net.sf.anathema.character.presenter.charm.tree.CharacterCharmTreePresenter;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.CollapsibleView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.text.MessageFormat;
+public class CharacterCharmPresenter implements IContentPresenter {
 
-import static java.text.MessageFormat.format;
-
-public class CharacterCharmPresenter extends AbstractCascadePresenter implements IContentPresenter {
-
-  private final ICharmView view;
-  private final CharacterCharmModel model;
-  private final CollapsibleView collapsibleView = new CollapsibleView();
-
-  public CharacterCharmPresenter(IResources resources, IMagicViewFactory factory, CharacterCharmModel charmModel,
-                                 ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
-    super(resources);
-    this.model = charmModel;
-    ICharmTreeViewProperties viewProperties = new CharacterCharmTreeViewProperties(resources, model.getCharmConfiguration());
-    this.view = factory.createCharmSelectionView(viewProperties);
-    CharacterCharmGroupChangeListener charmGroupChangeListener = new CharacterCharmGroupChangeListener(model.getCharmConfiguration(), filterSet,
-                                                                                                       model.getEdition(), view.getCharmTreeRenderer(),
-                                                                                                       displayPropertiesMap);
-    CharacterCharmDye dye = new CharacterCharmDye(model, charmGroupChangeListener, presentationProperties.getColor(), view);
-    setCharmTypes(new CharacterCharmTypes(charmModel));
-    setChangeListener(charmGroupChangeListener);
-    setView(view);
-    setSpecialPresenter(new CharacterSpecialCharmPresenter(view, resources, charmGroupChangeListener, charmModel, presentationProperties));
-    setCharmDye(dye);
-    setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
-    setInteractionPresenter(new LearnInteractionPresenter(model, view, charmGroupChangeListener, viewProperties, dye));
-    initCharmEditPresentation();
+  private class OpenCharmDetailListener implements CharmInteractionListener {
+    @Override
+    public void nodeSelected(String nodeId) {
+      // nothing to do
     }
 
-  private void initCharmEditPresentation() {
-    final JLabel editor = new JLabel("Editor");
-    setCharmGroups(new CharacterGroupCollection(model));
-    view.addCharmInteractionListener(new CharmInteractionListener() {
-     @Override
-     public void nodeSelected(String nodeId) {
-       // nothing to do
-     }
-
-     @Override
-     public void nodeEdited(String nodeId) {
-       collapsibleView.setCollapsibleTitle(format("Edit description for ''{0}''", nodeId));
-       editor.setText(nodeId);
-       collapsibleView.expandCollapsible();
-     }
-   });
-    collapsibleView.setMainContent(view.getComponent());
-    JPanel editorPanel = new JPanel(new BorderLayout());
-    editorPanel.add(editor, BorderLayout.CENTER);
-    collapsibleView.setCollapsibleContainer(editorPanel);
+    @Override
+    public void nodeDetailsDemanded(String nodeId) {
+      DetailModel<String> model = detailPresenter.getModel();
+      if (!model.isActive()) {
+        return;
+      }
+      model.setDetailFor(nodeId);
+      collapsibleView.setCollapsibleTitle(detailPresenter.getDetailTitle());
+      collapsibleView.expandCollapsible();
+    }
   }
 
-  @Override
-  protected CharmFilterContainer getFilterContainer() {
-    return model.getCharmConfiguration();
-  }
+  private IResources resources;
+  private CharacterCharmTreePresenter treePresenter;
+  private CharmDescriptionEditPresenter detailPresenter;
+  private final CollapsibleView collapsibleView = new CollapsibleView();
 
-  @Override
-  protected GroupCharmTree getCharmTree(IIdentificate cascadeType) {
-    return new CharacterGroupCharmTree(model, cascadeType);
+  public CharacterCharmPresenter(IResources resources, CharmDescriptionEditPresenter detailPresenter,
+                                 CharacterCharmTreePresenter treePresenter) {
+    this.detailPresenter = detailPresenter;
+    this.resources = resources;
+    this.treePresenter = treePresenter;
   }
 
   @Override
   public IViewContent getTabContent() {
-    String header = getResources().getString("CardView.CharmConfiguration.CharmSelection.Title"); //$NON-NLS-1$
+    String header = resources.getString("CardView.CharmConfiguration.CharmSelection.Title"); //$NON-NLS-1$
     return new SimpleViewContent(new ContentProperties(header), collapsibleView);
+  }
+
+  @Override
+  public void initPresentation() {
+    treePresenter.initPresentation();
+    detailPresenter.initPresentation();
+    initDetailPresentation();
+  }
+
+  private void initDetailPresentation() {
+    treePresenter.getView().addCharmInteractionListener(new OpenCharmDetailListener());
+    collapsibleView.setMainContent(treePresenter.getView().getComponent());
+    collapsibleView.setCollapsibleContainer(detailPresenter.getView().getComponent());
   }
 }

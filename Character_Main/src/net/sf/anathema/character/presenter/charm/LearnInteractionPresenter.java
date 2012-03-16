@@ -42,7 +42,7 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
       }
 
       @Override
-      public void nodeEdited(String nodeId) {
+      public void nodeDetailsDemanded(String nodeId) {
         // nothing to do
       }
     });
