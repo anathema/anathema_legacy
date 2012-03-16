@@ -42,4 +42,9 @@ public class LearnableCharmPool implements IAdditionalEssencePool {
     }
     return poolValues;
   }
+
+	@Override
+	public boolean modifiesBasePool() {
+		return false;
+	}
 }

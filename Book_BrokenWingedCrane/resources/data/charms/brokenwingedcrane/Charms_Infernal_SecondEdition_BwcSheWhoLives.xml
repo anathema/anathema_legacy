@@ -214,9 +214,12 @@
                <charmReference id="Infernal.Counter-ConceptualInterposition"/>	 
                <charmReference id="Infernal.Principle-InvokingOnslaught"/>	 	 
                <charmReference id="Infernal.AscendantObjectivityStance"/> 	 
-               <charmReference id="Infernal.Will-CrushingForce"/>			 
-               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Repurchase5"/>			 
-               		   			   
+               <charmReference id="Infernal.Will-CrushingForce"/>
+               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Crippling"/>
+               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Sickness"/>
+               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Poison"/>
+               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Bashing"/>
+               <charmReference id="Infernal.WholenessRightlyAssumed.Subeffects.Lethal"/>
           </prerequisite>
            <cost >
                <essence cost="15" />
@@ -224,7 +227,7 @@
 		   </cost>
           <duration duration="Indefinite" />
           <charmtype type="Simple" />
-          <charmAttribute attribute="blasphemy" visualize="true" />
+          <charmAttribute attribute="Blasphemy" visualize="true" />
           <charmAttribute attribute="Form-type" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />

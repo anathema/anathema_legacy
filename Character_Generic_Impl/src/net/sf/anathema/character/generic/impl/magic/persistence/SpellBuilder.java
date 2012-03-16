@@ -5,13 +5,13 @@ import net.sf.anathema.character.generic.impl.magic.Spell;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBookWithEdition;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpellSourceBuilder;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.ISourceList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -24,7 +24,7 @@ import java.util.List;
 
 public class SpellBuilder {
   private final ICostListBuilder costListBuilder = new CostListBuilder();
-  private final SourceBuilder sourceBuilder = new SourceBuilder();
+  private final SpellSourceBuilder sourceBuilder = new SpellSourceBuilder();
   private IExaltedEdition edition;
 
   public SpellBuilder(IExaltedEdition edition) {
@@ -86,11 +86,11 @@ public class SpellBuilder {
   }
 
   private ISourceList buildSource(Element spellElement) {
-    IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(spellElement);
+    SourceBookWithEdition[] sources = sourceBuilder.buildSourceList(spellElement);
     SourceList sourceList = new SourceList();
-    for (IExaltedSourceBook source : sources) {
-      if (source.getEdition() == edition) {
-        sourceList.addSource(source);
+    for (SourceBookWithEdition source : sources) {
+      if (source.edition == edition) {
+        sourceList.addSource(source.source);
       }
     }
     return sourceList;

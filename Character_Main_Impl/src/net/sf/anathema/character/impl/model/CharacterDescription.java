@@ -19,6 +19,7 @@ public class CharacterDescription implements ICharacterDescription {
   private final ITextualDescription hair = new SimpleTextualDescription();
   private final ITextualDescription sex = new SimpleTextualDescription();
   private final ITextualDescription skin = new SimpleTextualDescription();
+  private final ITextualDescription anima = new SimpleTextualDescription();
 
   public ITextualDescription getName() {
     return nameDescription;
@@ -55,6 +56,10 @@ public class CharacterDescription implements ICharacterDescription {
   public ITextualDescription getSkin() {
     return skin;
   }
+  
+  public ITextualDescription getAnima() {
+	return anima;
+  }
 
   public ITextualDescription getNotes() {
     return notes;
@@ -70,6 +75,7 @@ public class CharacterDescription implements ICharacterDescription {
         hair,
         sex,
         skin,
+        anima,
         notes,
         player,
         concept };

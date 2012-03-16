@@ -1,10 +1,14 @@
 package net.sf.anathema.character.presenter.charm;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.filters.SourceBookCharmFilterPage;
+import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JPanel;
@@ -12,6 +16,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static java.util.Collections.addAll;
 
 public abstract class SourceBookCharmFilter implements ICharmFilter {
 
@@ -36,7 +44,10 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
     excludedMaterial.put(edition, materialExcluded);
   }
 
-  protected abstract List<IExaltedSourceBook> getBooks(IExaltedEdition edition);
+  private List<IExaltedSourceBook> getBooks(IExaltedEdition edition) {
+    List<ICharm> allCharms = getAllCharmsAvailable(edition);
+    return getSourceBooksFromCharms(allCharms);
+  }
 
   @Override
   public boolean acceptsCharm(ICharm charm, boolean isAncestor) {
@@ -95,4 +106,31 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
   private List<IExaltedSourceBook> getExcludedMaterialFor(IExaltedEdition edition) {
     return excludedMaterial.get(edition);
   }
+
+  private List<IExaltedSourceBook> getSourceBooksFromCharms(List<ICharm> allCharms) {
+    List<IExaltedSourceBook> allBooks = Lists.transform(allCharms, new Function<ICharm, IExaltedSourceBook>() {
+      @Override
+      public IExaltedSourceBook apply(ICharm input) {
+        return input.getPrimarySource();
+      }
+    });
+    return reduceToUniqueBooks(allBooks);
+  }
+
+  private List<ICharm> getAllCharmsAvailable(IExaltedEdition edition) {
+    List<ICharmGroup> allGroups = getAllCharmGroups(edition);
+    List<ICharm> allCharms = newArrayList();
+    for (ICharmGroup group : allGroups) {
+      addAll(allCharms, group.getAllCharms());
+    }
+    return allCharms;
+  }
+
+  private List<IExaltedSourceBook> reduceToUniqueBooks(List<IExaltedSourceBook> allBooks) {
+    Set<IExaltedSourceBook> uniqueBooks = new ListOrderedSet<IExaltedSourceBook>();
+    uniqueBooks.addAll(allBooks);
+    return new ArrayList<IExaltedSourceBook>(uniqueBooks);
+  }
+
+  protected abstract List<ICharmGroup> getAllCharmGroups(IExaltedEdition edition);
 }

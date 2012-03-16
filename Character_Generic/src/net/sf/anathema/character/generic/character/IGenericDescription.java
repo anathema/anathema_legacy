@@ -17,6 +17,8 @@ public interface IGenericDescription {
   public String getSex();
 
   public String getSkin();
+  
+  public String getAnima();
 
   public String getPlayer();
 

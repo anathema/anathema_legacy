@@ -20,6 +20,8 @@ public interface ICharacterDescription {
   public ITextualDescription getSex();
 
   public ITextualDescription getSkin();
+  
+  public ITextualDescription getAnima();
 
   public ITextualDescription getNotes();
 

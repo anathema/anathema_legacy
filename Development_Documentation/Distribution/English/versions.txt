@@ -7,7 +7,7 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.github.com
 
 ===------------------------------------------------------------------------------===
-			Release 3.2.5 "XXX"
+			Release 3.1.1
 ===------------------------------------------------------------------------------===
 
 We retired our proprietary keyword "NotAlienLearnable" in favor of Exalted's own "Native".
@@ -16,25 +16,36 @@ You've been around since First Edition Lunars back in 2006, my friend. Rest in p
 
 From this version onward, 2E Character's with Spells exclusive to 1E won't load.
 
+Starting from this version, we will begin phasing out support for First Edition and Power Combat
+and "classic" 2E to focus on Exalted 2.5.
+There may be some additional releases for those rulesets, but some time soon, Anathema won't support them.
+
 -- Features --
 * New Preference: Print only those generics the Character knows about.
+* Added entry for Anima description
 * Charm tooltips show all sources.
 * The sourcebook filter orders books alphabetically.
-* [2E] [Shadow493] Added Established Solars from DotFA.
-* [2E] [Scathach] Added Charm descriptions for Lunars. Texts taken from the official Wiki.
-* [2E] [Jesse Belanger] Added Charm descriptions from Glories of the Most High. Texts taken from the official Wiki.
+* Charms and Spells can freely define sourcebooks. They are no longer limited to the names we provide.
+* Dragon-Blooded breeding motes are calculated into the base pool
+* Items with only one printed stat don't have that stat's name printed
 * [2E] Lunar Knacks now form a separate category
+* [2E] [Shadow493] Added missing Solar templates from DotFA.
+* [2E] Added Charm descriptions. Texts taken from the official Wiki:
+       [Scathach] Lunars
+       [Jesse Belanger] Glories of the Most High, Dreams of the First Age
 
 -- Bugfixes --
 * Bonus points view for Mutations no longer appears for experienced characters.
 * Combos are editable once more.
+* Anathema detects if it can not open a PDF automatically
+* Characters aren't marked "dirty" directly after loading
 * [2E] Spirits are available as NPCs only. They no longer track BP/XP.
 * [2E] Compass: East and Compass: West are shown correctly on the screen.
 * [2E] First Age Solars now start out with a level 1 Manse, as is their due.
 * [2E] Sidereal Excellencies name Essence as their limit.
 * [2E] Solar Hero extensions available only to Solars (and Moonshadows)
 * [2E] (Lunar/Beastmen) "Tiger and Seahorse Dynasty" now carries its proper name
-
+* [2E] (Infernal/SWLiHN) "Heuristic Logos Shintai" is learnable
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.0 "Thorns"

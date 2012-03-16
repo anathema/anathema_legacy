@@ -88,8 +88,6 @@ Section -Anathema SEC0000
     File ..\..\..\Anathema\build\libs\Anathema.jar
     File ..\..\..\build\launcher\anathema.exe
     File /r ..\..\..\Development_Documentation\Distribution\English\*
-    SetOutPath $INSTDIR\docs
-    File /r ..\..\..\Development_Documentation\Distribution\*
     WriteRegStr HKLM "${REGKEY}\Components" Anathema 1
 SectionEnd
 

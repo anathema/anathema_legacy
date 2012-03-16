@@ -47,7 +47,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
 
   @Override
   protected CascadeFilterContainer getFilterContainer() {
-    return new CascadeFilterContainer(selectedRuleSet);
+    return new CascadeFilterContainer(selectedRuleSet, (CascadeGroupCollection) charmGroups);
   }
 
   private CharmTreeIdentificateMap getCharmTreeMap(IExaltedRuleSet ruleSet) {

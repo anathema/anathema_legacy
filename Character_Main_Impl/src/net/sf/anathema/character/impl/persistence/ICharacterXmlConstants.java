@@ -42,6 +42,7 @@ public interface ICharacterXmlConstants {
   public static final String TAG_RULESET = "RuleSet"; //$NON-NLS-1$
   public static final String TAG_SEX = "Sex"; //$NON-NLS-1$
   public static final String TAG_SKIN = "Skin"; //$NON-NLS-1$
+  public static final String TAG_ANIMA = "Anima"; //$NON-NLS-1$
   public static final String TAG_SPECIAL = "Special"; //$NON-NLS-1$
   public static final String TAG_SPECIALTY = "Specialty"; //$NON-NLS-1$
   public static final String TAG_SPELL = "Spell"; //$NON-NLS-1$

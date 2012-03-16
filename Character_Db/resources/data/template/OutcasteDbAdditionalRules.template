@@ -5,7 +5,7 @@
    		<backgroundReference id="Influence" />
    	</forbiddenBackgrounds>
    	<additionalPools>
-   		<multilearnablePool>
+   		<multilearnablePool modifiesBase="true">
    			<backgroundReference id="Breeding"/>    			
    			<personalPool multiplier="1"/>
    			<peripheralPool>

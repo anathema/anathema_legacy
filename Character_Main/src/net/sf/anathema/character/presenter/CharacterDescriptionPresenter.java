@@ -19,15 +19,18 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
 
   private final ICharacterDescription description;
   private final ICharacterDescriptionView descriptionView;
+  private final boolean hasAnima;
   private final IResources resources;
 
   public CharacterDescriptionPresenter(
       IResources resources,
       ICharacterDescription description,
-      ICharacterDescriptionView descriptionView) {
+      ICharacterDescriptionView descriptionView,
+      boolean hasAnima) {
     this.resources = resources;
     this.description = description;
     this.descriptionView = descriptionView;
+    this.hasAnima = hasAnima;
   }
 
   public void initPresentation() {
@@ -54,6 +57,12 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
                        description.getEyes()
                        },
                    presentation);
+    if (hasAnima)
+    {
+    	addBlankLine();
+        addBlankLine();
+        initAreaView("CharacterDescription.Label.Anima", 1, description.getAnima(), presentation); //$NON-NLS-1$	
+    }
     addBlankLine();
     addBlankLine();
     initAreaView("CharacterDescription.Label.Notes", 5, description.getNotes(), presentation); //$NON-NLS-1$
