@@ -14,7 +14,6 @@ import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 public class FangTemplate implements IEquipmentTemplate {
 
   private static final SecondEditionFangStats SECOND_EDITION_FANG_STATS = new SecondEditionFangStats();
-  private static final CoreRulesFangStats CORE_RULES_FANG_STATS = new CoreRulesFangStats();
   private static final String FANG = "Abyssal.Fangs"; //$NON-NLS-1$
 
   @Override
@@ -41,10 +40,6 @@ public class FangTemplate implements IEquipmentTemplate {
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
     final IEquipmentStats[] stats = new IEquipmentStats[1];
     ruleSet.accept(new IRuleSetVisitor() {
-      @Override
-      public void visitCoreRules(IExaltedRuleSet set) {
-        stats[0] = CORE_RULES_FANG_STATS;
-      }
 
       @Override
       public void visitSecondEdition(IExaltedRuleSet set) {

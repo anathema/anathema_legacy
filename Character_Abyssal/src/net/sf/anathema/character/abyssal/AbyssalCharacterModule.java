@@ -14,9 +14,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackground
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.traits.LowerableState;
@@ -26,7 +23,6 @@ import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
 @CharacterModule
 public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
-  private static final String ESSENCE_ENGORGEMENT_TECHNIQUE = "Abyssal.EssenceEngorgementTechnique";
   public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_LIEGE = "Liege"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_NECROMANCY = "Necromancy"; //$NON-NLS-1$
@@ -45,24 +41,12 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     ICharmCache charmProvider = CharmCache.getInstance();
     ITemplateRegistry templateRegistry = characterGenerics.getTemplateRegistry();
-    initTemplate(templateRegistry, new LoyalAbyssalTemplate(charmProvider, additionalLoyalAbyssalRules), charmProvider, additionalLoyalAbyssalRules);
-    initTemplate(templateRegistry, new RenegadeAbyssalTemplate(charmProvider, additionalRenegadeAbyssalRules), charmProvider,
-            additionalRenegadeAbyssalRules);
+    initTemplate(templateRegistry, new LoyalAbyssalTemplate(charmProvider, additionalLoyalAbyssalRules));
+    initTemplate(templateRegistry, new RenegadeAbyssalTemplate(charmProvider, additionalRenegadeAbyssalRules));
   }
 
-  private void initTemplate(ITemplateRegistry templateRegistry, ICharacterTemplate template, ICharmCache charmProvider,
-                            AdditionalAbyssalRules additionalRules) {
+  private void initTemplate(ITemplateRegistry templateRegistry, ICharacterTemplate template) {
     templateRegistry.register(template);
-    additionalRules.addEssenceEngorgementTechniqueRules(getEngorgement(charmProvider));
-  }
-
-  private IMultiLearnableCharm getEngorgement(ICharmCache cache) {
-    for (ISpecialCharm charm : cache.getSpecialCharmData(ABYSSAL, ExaltedRuleSet.CoreRules)) {
-      if (charm.getCharmId().equals(ESSENCE_ENGORGEMENT_TECHNIQUE)) {
-        return (IMultiLearnableCharm) charm;
-      }
-    }
-    return null;
   }
 
   @Override

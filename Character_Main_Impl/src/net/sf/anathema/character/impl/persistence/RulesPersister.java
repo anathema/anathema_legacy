@@ -21,7 +21,7 @@ public class RulesPersister {
   public IExaltedRuleSet load(Element parent) throws PersistenceException {
     Element rulesElement = parent.element(TAG_RULES);
     if (rulesElement == null) {
-      return ExaltedRuleSet.CoreRules;
+      throw new RuntimeException("Cannot load character from first edition.");
     }
     Element ruleSetElement = rulesElement.element(TAG_RULESET);
     String ruleSetId = ElementUtilities.getRequiredAttrib(ruleSetElement, ATTRIB_NAME);

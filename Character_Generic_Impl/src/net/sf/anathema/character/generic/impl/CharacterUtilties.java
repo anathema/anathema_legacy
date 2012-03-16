@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -114,11 +113,10 @@ public class CharacterUtilties {
 
   public static int getUntrainedActionModifier(IGenericCharacter character, ITraitType traitType) {
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    boolean isExaltPunished = character.getRules() == ExaltedRuleSet.CoreRules;
     if (character.getTraitCollection().getTrait(traitType).getCurrentValue() > 0) {
       return 0;
     }
-    if (isExaltPunished || !characterType.isExaltType()) {
+    if (!characterType.isExaltType()) {
       return 2;
     }
     return 0;

@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.impl.additional;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
@@ -13,12 +10,14 @@ import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DefaultAdditionalRules implements IAdditionalRules {
 
   private final String[] rejectedBackgrounds;
   private final List<IAdditionalBonusPointPool> additonalBonusPointPools = new ArrayList<IAdditionalBonusPointPool>();
   private final List<IAdditionalMagicLearnPool> additonalMagicLearnPools = new ArrayList<IAdditionalMagicLearnPool>();
-  private final List<IAdditionalEssencePool> additonalEssencePools = new ArrayList<IAdditionalEssencePool>();
   private final IAdditionalTraitRules traitRules;
 
   public DefaultAdditionalRules(String... rejectedBackgroundIds) {
@@ -30,20 +29,29 @@ public class DefaultAdditionalRules implements IAdditionalRules {
     this.traitRules = traitRules;
   }
 
+  @Override
   public final IAdditionalBonusPointPool[] getAdditionalBonusPointPools() {
     return additonalBonusPointPools.toArray(new IAdditionalBonusPointPool[additonalBonusPointPools.size()]);
   }
 
+  @Override
   public final boolean isRejected(IBackgroundTemplate backgroundTemplate) {
     return ArrayUtilities.containsValue(rejectedBackgrounds, backgroundTemplate.getId());
   }
   
+  @Override
   public boolean isRevisedIntimacies() {
     return false;
   }
 
+  @Override
   public IAdditionalMagicLearnPool[] getAdditionalMagicLearnPools() {
     return additonalMagicLearnPools.toArray(new IAdditionalMagicLearnPool[additonalMagicLearnPools.size()]);
+  }
+
+  @Override
+  public IAdditionalEssencePool[] getAdditionalEssencePools() {
+    return new IAdditionalEssencePool[0];
   }
 
   protected final void addMagicLearnPool(IAdditionalMagicLearnPool magicLearnPool) {
@@ -54,22 +62,17 @@ public class DefaultAdditionalRules implements IAdditionalRules {
     additonalBonusPointPools.add(bonusPointPool);
   }
 
-  protected final void addEssencePool(IAdditionalEssencePool essencePool) {
-    additonalEssencePools.add(essencePool);
-  }
-
-  public IAdditionalEssencePool[] getAdditionalEssencePools() {
-    return additonalEssencePools.toArray(new IAdditionalEssencePool[additonalEssencePools.size()]);
-  }
-
+  @Override
   public ITraitCostModifier getCostModifier(ITraitType type) {
     return new DefaultTraitCostModifier();
   }
 
+  @Override
   public String[] getCompulsiveCharmIDs() {
     return new String[0];
   }
 
+  @Override
   public IAdditionalTraitRules getAdditionalTraitRules() {
     return traitRules;
   }

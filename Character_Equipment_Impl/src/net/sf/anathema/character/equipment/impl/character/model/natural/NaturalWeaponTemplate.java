@@ -21,11 +21,6 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
     final IEquipmentStats[][] stats = new IEquipmentStats[1][];
     ruleSet.accept(new IRuleSetVisitor() {
       @Override
-      public void visitCoreRules(IExaltedRuleSet set) {
-        stats[0] = INaturalWeaponConstants.CORE_RULES;
-      }
-
-      @Override
       public void visitSecondEdition(IExaltedRuleSet set) {
         stats[0] = INaturalWeaponConstants.SECOND_EDITION;
       }

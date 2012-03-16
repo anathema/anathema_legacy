@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.impl.character.model.stats.modificat
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class RateModification implements IStatsModification {
@@ -17,11 +16,12 @@ public class RateModification implements IStatsModification {
     this.ruleSet = ruleSet;
   }
 
+  @Override
   public int getModifiedValue(int input, WeaponStatsType type) {
     if (material == MagicalMaterial.Jade && type.isRanged() && ruleSet.getEdition() == ExaltedEdition.FirstEdition) {
       return input + 1;
     }
-    if (baseMaterial.isOrichalcumBased() && type == WeaponStatsType.Melee && ruleSet != ExaltedRuleSet.CoreRules) {
+    if (baseMaterial.isOrichalcumBased() && type == WeaponStatsType.Melee) {
       return input + 1;
     }
     return input;

@@ -35,18 +35,13 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   public EquipmentStatisticsCreationModel(String[] existingNames, IExaltedRuleSet ruleset) {
     this.existingNames = existingNames;
-    this.closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel(ruleset), ruleset);
+    this.closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel(ruleset));
     this.rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(createOffensiveSpeedModel(ruleset));
   }
 
   private IIntValueModel createOffensiveSpeedModel(IExaltedRuleSet ruleset) {
     final IIntValueModel[] speedModel = new IIntValueModel[1];
     ruleset.accept(new IRuleSetVisitor() {
-      @Override
-      public void visitCoreRules(IExaltedRuleSet set) {
-        speedModel[0] = new RangedIntValueModel(new Range(Integer.MIN_VALUE, Integer.MAX_VALUE), 1);
-      }
-
       @Override
       public void visitSecondEdition(IExaltedRuleSet set) {
         speedModel[0] = new RangedIntValueModel(new Range(1, Integer.MAX_VALUE), 1);

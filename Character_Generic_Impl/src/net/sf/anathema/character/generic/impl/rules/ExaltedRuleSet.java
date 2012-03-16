@@ -7,12 +7,6 @@ import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public enum ExaltedRuleSet implements IExaltedRuleSet {
 
-  CoreRules(ExaltedEdition.FirstEdition) {
-    @Override
-    public void accept(IRuleSetVisitor visitor) {
-      visitor.visitCoreRules(this);
-    }
-  },
   SecondEdition(ExaltedEdition.SecondEdition) {
     @Override
     public void accept(IRuleSetVisitor visitor) {
@@ -41,7 +35,7 @@ public enum ExaltedRuleSet implements IExaltedRuleSet {
     edition.accept(new IEditionVisitor() {
       @Override
       public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        rules[0] = new IExaltedRuleSet[] { CoreRules};
+        rules[0] = new IExaltedRuleSet[0];
       }
 
       @Override

@@ -35,27 +35,33 @@ public abstract class AbstractBonusPointTestCase {
         templateCollection,
         new NullAdditionalRules(),
         new IBasicCharacterData() {
+          @Override
           public DummyCasteType getCasteType() {
             return new DummyCasteType();
           }
 
+          @Override
           public ICharacterType getCharacterType() {
             return getTemplateType().getCharacterType();
           }
 
+          @Override
           public boolean isExperienced() {
             return false;
           }
 
+          @Override
           public IExaltedRuleSet getRuleSet() {
-            return ExaltedRuleSet.CoreRules;
+            return ExaltedRuleSet.SecondEdition;
           }
 
+          @Override
           public ITemplateType getTemplateType() {
             return new TemplateType(CharacterType.SOLAR);
           }
         },
         new ICharacterListening() {
+          @Override
           public void addChangeListener(ICharacterChangeListener changeListener) {
             // Nothing to do
           }

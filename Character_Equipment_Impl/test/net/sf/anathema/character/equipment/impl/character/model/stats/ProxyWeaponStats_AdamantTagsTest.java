@@ -39,14 +39,6 @@ public class ProxyWeaponStats_AdamantTagsTest {
   }
 
   @Test
-  public void doesNotAddPiercingToFirstEditionItems() throws Exception {
-    setRulesToFirstEdition();
-    setOriginalTags();
-    List<IIdentificate> tags = getModifiedTags(Adamant);
-    assertThat(tags.size(), is(0));
-  }
-
-  @Test
   public void addsSpecialPiercingTagIfItIsAlreadyPiercing() throws Exception {
     setOriginalTags(Piercing);
     List<IIdentificate> tags = getModifiedTags(Adamant);
@@ -60,9 +52,5 @@ public class ProxyWeaponStats_AdamantTagsTest {
 
   private void setOriginalTags(IIdentificate... tags) {
     when(original.getTags()).thenReturn(tags);
-  }
-
-  private void setRulesToFirstEdition() {
-    rules = ExaltedRuleSet.CoreRules;
   }
 }
