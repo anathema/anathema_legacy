@@ -3,23 +3,19 @@ package net.sf.anathema.character.equipment.impl.character.model;
 import com.db4o.query.Predicate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.EquipmentCharacterDataProvider;
-import net.sf.anathema.character.equipment.character.EquipmentSpecialtyOption;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
 
@@ -27,11 +23,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
-import static net.sf.anathema.character.generic.type.CharacterType.INFERNAL;
 
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel 
 	implements IEquipmentCharacterOptionProvider {
@@ -42,6 +33,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> options =
 		    new Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>>();
   private final IEquipmentCharacterDataProvider provider;
+  private final ICharacterListening changeListener;
 
   public EquipmentAdditionalModel(
 		  ICharacterType characterType,
@@ -55,6 +47,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
     this.defaultMaterial = evaluateDefaultMaterial();
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     this.provider = new EquipmentCharacterDataProvider(context, this);
+    this.changeListener = context.getCharacterListening();
     for (IEquipmentTemplate template : naturalWeapons) {
       if (template == null) {
         continue;
@@ -166,5 +159,10 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
 			IEquipmentStats stats) {
 		if (item == null || stats == null) return new IEquipmentStatsOption[0];
 		return getOptionsList(item, stats).toArray(new IEquipmentStatsOption[0]);
+  }
+
+  @Override
+  public void addCharacterChangedListener(ICharacterChangeListener listener) {
+	changeListener.addChangeListener(listener);
   }
 }

@@ -10,6 +10,8 @@ import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -32,11 +34,37 @@ public class EquipmentAdditionalPresenter implements IPresenter {
 
   public EquipmentAdditionalPresenter(
     IResources resources,
-    IEquipmentAdditionalModel model,
+    final IEquipmentAdditionalModel model,
     IEquipmentAdditionalView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
+    
+    model.addCharacterChangedListener(new ICharacterChangeListener()
+    {
+		@Override
+		public void characterChanged() {
+			for (IEquipmentItem item : model.getNaturalWeapons()) {
+			      initEquipmentObjectPresentation(item);
+			    }
+			for (IEquipmentItem item : model.getEquipmentItems()) {
+			      initEquipmentObjectPresentation(item);
+			    }
+		}
+
+		@Override
+		public void traitChanged(ITraitType type) {
+		}
+
+		@Override
+		public void experiencedChanged(boolean experienced) {
+		}
+
+		@Override
+		public void casteChanged() {
+		}
+    	
+    });
   }
 
   public void initPresentation() {
@@ -131,7 +159,8 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   }
 
   private void initEquipmentObjectPresentation(final IEquipmentItem selectedObject) {
-    IEquipmentObjectView objectView = view.addEquipmentObjectView();
+    IEquipmentObjectView objectView = viewsByItem.get(selectedObject);
+    objectView = objectView == null ? view.addEquipmentObjectView() : objectView;
     IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
     Icon removeIcon = new BasicUi(resources).getRemoveIcon();
     viewsByItem.put(selectedObject, objectView);

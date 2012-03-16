@@ -66,6 +66,8 @@ public class EquipmentObjectPresenter implements IPresenter {
   
   public void prepareContents()
   {
+	  view.clearContents();
+	  
 	  boolean isRequireAttuneArtifact = false;
 	  for (final IEquipmentStats equipment : model.getStats()) {
 	    if (equipment instanceof IArtifactStats)
