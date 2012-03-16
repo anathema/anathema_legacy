@@ -3,6 +3,8 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.character.IEquipmentItemOptionProvider;
+import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.AccuracyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DamageModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DefenseModification;
@@ -26,11 +28,14 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   private final IWeaponStats delegate;
   private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;
+  private final IEquipmentItemOptionProvider optionProvider;
 
-  public ProxyWeaponStats(IWeaponStats stats, MagicalMaterial material, IExaltedRuleSet ruleSet) {
+  public ProxyWeaponStats(IWeaponStats stats, MagicalMaterial material,
+		  IExaltedRuleSet ruleSet, IEquipmentItemOptionProvider optionProvider) {
     this.delegate = stats;
     this.material = material;
     this.ruleSet = ruleSet;
+    this.optionProvider = optionProvider;
   }
 
   public IWeaponStats getUnderlying() {
@@ -53,7 +58,10 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   public int getAccuracy() {
-    return getModifiedValue(new AccuracyModification(material, ruleSet), delegate.getAccuracy());
+	int accuracy = getModifiedValue(new AccuracyModification(material, ruleSet), delegate.getAccuracy()); 
+	for (IEquipmentStatsOption option : optionProvider.getEnabledStatOptions())
+		accuracy += option.getAccuracyModifier();
+    return accuracy;
   }
 
   private Integer getModifiedValue(IStatsModification modification, Integer unmodifiedValue) {
@@ -94,7 +102,10 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   public Integer getDefence() {
-    return getModifiedValue(new DefenseModification(material, ruleSet), delegate.getDefence());
+	Integer defense = getModifiedValue(new DefenseModification(material, ruleSet), delegate.getDefence()); 
+	for (IEquipmentStatsOption option : optionProvider.getEnabledStatOptions())
+		defense += option.getDefenseModifier();
+    return defense;
   }
 
   public Integer getRange() {

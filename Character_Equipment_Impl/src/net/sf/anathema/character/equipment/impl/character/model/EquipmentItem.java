@@ -10,7 +10,10 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.IEquipmentItemOptionProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArmourStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArtifactStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyShieldStats;
@@ -37,14 +40,17 @@ public class EquipmentItem implements IEquipmentItem {
   private final IEquipmentTemplate template;
   private final IExaltedRuleSet ruleSet;
   private final MagicalMaterial material;
+  private final IEquipmentCharacterDataProvider dataProvider;
 
-  public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet, MagicalMaterial material) {
+  public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet, MagicalMaterial material,
+		  IEquipmentCharacterDataProvider dataProvider) {
     if (template.getComposition() == MaterialComposition.Variable && material == null) {
       throw new MissingMaterialException("Variable material items must be created with material."); //$NON-NLS-1$
     }
     this.template = template;
     this.ruleSet = ruleSet;
     this.material = material != null ? material : template.getMaterial();
+    this.dataProvider = dataProvider;
     Collections.addAll(printedStats, template.getStats(ruleSet));
   }
 
@@ -58,12 +64,19 @@ public class EquipmentItem implements IEquipmentItem {
       return views;
     }
     return ArrayUtilities.transform(views, IEquipmentStats.class, new ITransformer<IEquipmentStats, IEquipmentStats>() {
-      public IEquipmentStats transform(IEquipmentStats input) {
+      public IEquipmentStats transform(final IEquipmentStats input) {
         if (input instanceof IArmourStats) {
           return new ProxyArmourStats((IArmourStats) input, material, ruleSet);
         }
         if (input instanceof IWeaponStats) {
-          return new ProxyWeaponStats((IWeaponStats) input, material, ruleSet);
+          IEquipmentItemOptionProvider provider = dataProvider == null ? null :
+        	  new IEquipmentItemOptionProvider() {
+				@Override
+				public IEquipmentStatsOption[] getEnabledStatOptions() {
+					return dataProvider.getEnabledStatOptions(EquipmentItem.this, input);
+				}
+          	};
+          return new ProxyWeaponStats((IWeaponStats) input, material, ruleSet, provider);
         }
         if (input instanceof IArtifactStats)
           return new ProxyArtifactStats((IArtifactStats) input, material, ruleSet);
@@ -153,6 +166,15 @@ public class EquipmentItem implements IEquipmentItem {
         return;
       }
     }
+  }
+  
+  public IEquipmentStats getStat(String statId) {
+	for (IEquipmentStats view : getViews()) {
+	    if (view.getId().equals(statId)) {
+	        return view;
+	    }
+	}
+	return null;
   }
 
   public void addChangeListener(IChangeListener listener) {

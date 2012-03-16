@@ -12,6 +12,8 @@ public interface IEquipmentObjectView {
   
   public BooleanModel addStats(String description);
   
+  public BooleanModel addOptionFlag(BooleanModel base, String description);
+  
   public void updateStatText(BooleanModel model, String newText);
   
   public void setEnabled(BooleanModel model, boolean enabled);

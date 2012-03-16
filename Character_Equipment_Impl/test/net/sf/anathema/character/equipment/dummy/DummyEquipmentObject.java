@@ -79,4 +79,8 @@ public class DummyEquipmentObject extends AbstractStats implements IEquipmentIte
 	public String getId() {
 		return null;
 	}
+	
+	public IEquipmentStats getStat(String name) {
+		return null;
+	}
 }

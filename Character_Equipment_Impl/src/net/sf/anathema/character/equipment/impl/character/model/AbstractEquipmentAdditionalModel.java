@@ -26,12 +26,12 @@ import net.sf.anathema.lib.control.collection.ICollectionListener;
 public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements
     IEquipmentAdditionalModel {
 
+  protected final ChangeControl modelChangeControl = new ChangeControl();
   private final GenericControl<ICollectionListener<IEquipmentItem>> equipmentItemControl = new GenericControl<ICollectionListener<IEquipmentItem>>();
-  private final ChangeControl modelChangeControl = new ChangeControl();
   private final List<IEquipmentItem> equipmentItems = new ArrayList<IEquipmentItem>();
   private final IExaltedRuleSet ruleSet;
   private final IEquipmentPrintModel printModel;
-  private final IChangeListener itemChangePropagator = new IChangeListener() {
+  protected final IChangeListener itemChangePropagator = new IChangeListener() {
     public void changeOccurred() {
       modelChangeControl.fireChangedEvent();
     }
@@ -69,9 +69,9 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   protected abstract IEquipmentItem getSpecialManagedItem(String templateId);
 
   protected abstract IEquipmentTemplate loadEquipmentTemplate(String templateId);
-
+  
   private IEquipmentItem addEquipmentObjectFor(final IEquipmentTemplate template, final MagicalMaterial material) {
-    final IEquipmentItem item = new EquipmentItem(template, ruleSet, material);
+    final IEquipmentItem item = new EquipmentItem(template, ruleSet, material, getCharacterDataProvider());
     equipmentItems.add(item);
     return initItem(item);
   }
@@ -82,7 +82,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
         input.itemAdded(item);
       }
     });
-    modelChangeControl.fireChangedEvent();
+   	modelChangeControl.fireChangedEvent();
     item.addChangeListener(itemChangePropagator);
     return item;
   }
@@ -95,7 +95,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
       }
     });
     item.removeChangeListener(itemChangePropagator);
-    modelChangeControl.fireChangedEvent();
+   	modelChangeControl.fireChangedEvent();
   }
 
   public void refreshItems() {

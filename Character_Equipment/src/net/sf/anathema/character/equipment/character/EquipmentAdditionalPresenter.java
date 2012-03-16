@@ -135,7 +135,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
     Icon removeIcon = new BasicUi(resources).getRemoveIcon();
     viewsByItem.put(selectedObject, objectView);
-    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, resources, model.getAttuneTypes(selectedObject)).initPresentation();
+    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(), resources).initPresentation();
     if (model.canBeRemoved(selectedObject)) {
       objectView.addAction(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
         removeIcon) {

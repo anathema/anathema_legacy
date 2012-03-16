@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.view;
 import junit.framework.TestCase;
 import net.disy.commons.core.model.BooleanModel;
 import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
@@ -34,7 +35,7 @@ public class EquipmentItemPresenterTest extends TestCase {
   }
 
   private void initPresentation(IEquipmentItem model, IEquipmentObjectView view) {
-    new EquipmentObjectPresenter(model, view, equipmentStringBuilder, new AnathemaResources(), null).initPresentation();
+    new EquipmentObjectPresenter(model, view, equipmentStringBuilder, null, new AnathemaResources()).initPresentation();
   }
 
   public void testEquipmentWithoutStats() throws Exception {
