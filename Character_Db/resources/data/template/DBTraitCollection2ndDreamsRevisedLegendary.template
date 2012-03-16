@@ -1,0 +1,13 @@
+<traitTemplates uses="template/DreamsDbTraitCollection2nd.template">
+  <backgrounds>
+<specialTrait id="Breeding" startValue="0" lowerableState="Immutable" zeroLevel="0" isRequiredFavored="false">
+<limitation type="Static" value="6"/>
+<minimum value="0"/>
+</specialTrait>
+  </backgrounds>
+  <essence startValue="5" lowerableState="Default">
+<limitation type="Static" value="7"/>
+<minimum value="5"/>
+  </essence>
+
+</traitTemplates>
