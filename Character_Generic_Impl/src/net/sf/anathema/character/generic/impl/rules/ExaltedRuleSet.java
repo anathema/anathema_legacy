@@ -3,16 +3,10 @@ package net.sf.anathema.character.generic.impl.rules;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public enum ExaltedRuleSet implements IExaltedRuleSet {
 
-  SecondEdition(ExaltedEdition.SecondEdition) {
-    @Override
-    public void accept(IRuleSetVisitor visitor) {
-      visitor.visitSecondEdition(this);
-    }
-  };
+  SecondEdition(ExaltedEdition.SecondEdition);
 
   private final IExaltedEdition edition;
 

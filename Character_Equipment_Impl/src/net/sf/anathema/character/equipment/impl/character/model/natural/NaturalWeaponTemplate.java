@@ -5,7 +5,6 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
@@ -18,14 +17,7 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
   @Override
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
-    final IEquipmentStats[][] stats = new IEquipmentStats[1][];
-    ruleSet.accept(new IRuleSetVisitor() {
-      @Override
-      public void visitSecondEdition(IExaltedRuleSet set) {
-        stats[0] = INaturalWeaponConstants.SECOND_EDITION;
-      }
-    });
-    return stats[0];
+    return INaturalWeaponConstants.SECOND_EDITION;
   }
 
   @Override

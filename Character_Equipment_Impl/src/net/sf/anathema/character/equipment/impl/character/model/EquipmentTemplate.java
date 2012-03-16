@@ -38,10 +38,12 @@ public class EquipmentTemplate implements IEquipmentTemplate {
     this.statsByRuleSet = collectionFactory.createHashMap();
   }
 
+  @Override
   public String getDescription() {
     return description;
   }
 
+  @Override
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
     List<IEquipmentStats> relevantStats = statsByRuleSet.get(ruleSet.getId());
     if (relevantStats == null) {
@@ -59,10 +61,12 @@ public class EquipmentTemplate implements IEquipmentTemplate {
     statList.add(stats);
   }
 
+  @Override
   public String getName() {
     return name;
   }
 
+  @Override
   public MagicalMaterial getMaterial() {
     if (material == null) {
       return null;
@@ -70,6 +74,7 @@ public class EquipmentTemplate implements IEquipmentTemplate {
     return MagicalMaterial.valueOf(material);
   }
 
+  @Override
   public MaterialComposition getComposition() {
     return MaterialComposition.valueOf(composition);
   }

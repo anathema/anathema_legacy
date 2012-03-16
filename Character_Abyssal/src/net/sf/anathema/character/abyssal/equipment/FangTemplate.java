@@ -6,7 +6,6 @@ import net.sf.anathema.character.equipment.impl.character.model.RegisteredNatura
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
@@ -38,14 +37,6 @@ public class FangTemplate implements IEquipmentTemplate {
 
   @Override
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
-    final IEquipmentStats[] stats = new IEquipmentStats[1];
-    ruleSet.accept(new IRuleSetVisitor() {
-
-      @Override
-      public void visitSecondEdition(IExaltedRuleSet set) {
-        stats[0] = SECOND_EDITION_FANG_STATS;
-      }
-    });
-    return stats;
+    return new IEquipmentStats[]{SECOND_EDITION_FANG_STATS};
   }
 }

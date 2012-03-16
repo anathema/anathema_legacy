@@ -5,7 +5,6 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public class TerribleBeastClawsTemplate implements IEquipmentTemplate {
 
@@ -23,14 +22,7 @@ public class TerribleBeastClawsTemplate implements IEquipmentTemplate {
 
   @Override
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
-    final IEquipmentStats[] stats = new IEquipmentStats[2];
-    ruleSet.accept(new IRuleSetVisitor() {
-      @Override
-      public void visitSecondEdition(IExaltedRuleSet set) {
-        throw new UnsupportedOperationException("Second Edition Lunars not yet supported"); //$NON-NLS-1$
-      }
-    });
-    return stats;
+    throw new UnsupportedOperationException("Second Edition Lunars not yet supported"); //$NON-NLS-1$
   }
 
   @Override

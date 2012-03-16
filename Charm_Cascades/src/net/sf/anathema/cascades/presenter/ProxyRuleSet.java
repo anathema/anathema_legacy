@@ -2,7 +2,6 @@ package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public class ProxyRuleSet implements IExaltedRuleSet {
 
@@ -10,11 +9,6 @@ public class ProxyRuleSet implements IExaltedRuleSet {
 
   public void setDelegate(IExaltedRuleSet delegate) {
     this.delegate = delegate;
-  }
-
-  @Override
-  public void accept(IRuleSetVisitor visitor) {
-    delegate.accept(visitor);
   }
 
   @Override
@@ -34,19 +28,17 @@ public class ProxyRuleSet implements IExaltedRuleSet {
   public IExaltedRuleSet getDelegate() {
     return delegate;
   }
-  
-  public boolean equals(Object obj)
-  {
-	  if (obj instanceof IExaltedRuleSet && hasDelegate())
-		  return delegate.equals(obj);
-	  return false;
+
+  public boolean equals(Object obj) {
+    if (obj instanceof IExaltedRuleSet && hasDelegate()) {
+      return delegate.equals(obj);
+    }
+    return false;
   }
-  
+
   @Override
-  public int hashCode()
-  {
-	  if (hasDelegate())
-		  return delegate.hashCode();
-	  return super.hashCode();
+  public int hashCode() {
+    if (hasDelegate()) return delegate.hashCode();
+    return super.hashCode();
   }
 }

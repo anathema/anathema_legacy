@@ -55,16 +55,18 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     this.collectionFactory = collectionFactory;
   }
 
+  @Override
   public IEquipmentStats createNewStats(
       Component parentComponent,
       IResources resources,
       IEquipmentTemplateEditModel editModel,
       String[] definedNames,
       IExaltedRuleSet ruleset) {
-    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames, ruleset);
+    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     return runDialog(parentComponent, resources, editModel, model);
   }
 
+  @Override
   public IEquipmentStats editStats(
       Component parentComponent,
       IResources resources,
@@ -72,7 +74,7 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       String[] definedNames,
       IEquipmentStats stats,
       IExaltedRuleSet ruleset) {
-    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames, ruleset);
+    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     createModel(model, stats);
     return runDialog(parentComponent, resources, editModel, model);
   }

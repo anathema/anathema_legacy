@@ -11,8 +11,6 @@ import net.sf.anathema.character.equipment.creation.model.stats.IShieldStatistic
 import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.data.Range;
@@ -33,21 +31,14 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   private EquipmentStatisticsType statisticsType;
   private final String[] existingNames;
 
-  public EquipmentStatisticsCreationModel(String[] existingNames, IExaltedRuleSet ruleset) {
+  public EquipmentStatisticsCreationModel(String[] existingNames) {
     this.existingNames = existingNames;
-    this.closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel(ruleset));
-    this.rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(createOffensiveSpeedModel(ruleset));
+    this.closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel());
+    this.rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(createOffensiveSpeedModel());
   }
 
-  private IIntValueModel createOffensiveSpeedModel(IExaltedRuleSet ruleset) {
-    final IIntValueModel[] speedModel = new IIntValueModel[1];
-    ruleset.accept(new IRuleSetVisitor() {
-      @Override
-      public void visitSecondEdition(IExaltedRuleSet set) {
-        speedModel[0] = new RangedIntValueModel(new Range(1, Integer.MAX_VALUE), 1);
-      }
-    });
-    return speedModel[0];
+  private IIntValueModel createOffensiveSpeedModel() {
+    return new RangedIntValueModel(new Range(1, Integer.MAX_VALUE), 1);
   }
 
   @Override
