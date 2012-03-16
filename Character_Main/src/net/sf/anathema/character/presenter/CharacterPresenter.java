@@ -96,7 +96,7 @@ public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$
     MagicPresenter presenter = new MagicPresenter(getStatistics(), characterView.createMagicViewFactory(), resources,
-            generics.getTemplateRegistry());
+            generics.getTemplateRegistry(), generics);
     presenter.initPresentation();
     IViewContent content = presenter.getTabContent();
     IDisposable disposable = content.getDisposable();

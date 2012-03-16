@@ -21,7 +21,7 @@ public class CharacterCharmPresenter implements IContentPresenter {
     @Override
     public void nodeDetailsDemanded(String nodeId) {
       CharmDetailModel model = detailPresenter.getModel();
-      if (!model.isActive()) {
+      if (!model.isActive(nodeId)) {
         return;
       }
       model.setDetailFor(nodeId);

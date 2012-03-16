@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.charm.detail;
+package net.sf.anathema.charm.description.view;
 
 import net.sf.anathema.lib.gui.IView;
 

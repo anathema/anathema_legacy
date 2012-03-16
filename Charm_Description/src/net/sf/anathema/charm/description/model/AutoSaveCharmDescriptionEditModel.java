@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.charm.detail;
+package net.sf.anathema.charm.description.model;
 
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.lib.control.change.ChangeControl;

@@ -1,32 +1,45 @@
 package net.sf.anathema.character.presenter.charm;
 
+import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.presenter.charm.detail.CharmDescriptionEditPresenter;
+import net.sf.anathema.character.presenter.charm.detail.CharmDetailPresenter;
+import net.sf.anathema.character.presenter.charm.detail.CharmDetailPresenterFactory;
+import net.sf.anathema.character.presenter.charm.detail.NullCharmDetailPresenter;
+import net.sf.anathema.character.presenter.charm.detail.RegisteredCharmDetailPresenterFactory;
 import net.sf.anathema.character.presenter.charm.tree.CharacterCharmTreePresenter;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
+import net.sf.anathema.initialization.InitializationException;
+import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.gui.IDisposable;
+import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MagicPresenter implements IContentPresenter {
 
+  private final Logger logger = Logger.getLogger(MagicPresenter.class);
   private final List<IContentPresenter> subPresenters = new ArrayList<IContentPresenter>();
+  private ICharacterGenerics generics;
 
   public MagicPresenter(
           ICharacterStatistics statistics,
           IMagicViewFactory factory,
           IResources resources,
-          ITemplateRegistry templateRegistry) {
+          ITemplateRegistry templateRegistry,
+          ICharacterGenerics generics) {
+    this.generics = generics;
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
     if (charmTemplate.canLearnCharms(statistics.getRules())) {
@@ -48,8 +61,21 @@ public class MagicPresenter implements IContentPresenter {
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);
     CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, factory, model, presentationProperties,
             propertiesMap);
-    CharmDescriptionEditPresenter detailPresenter = new CharmDescriptionEditPresenter();
+    CharmDetailPresenter detailPresenter = createCharmDetailPresenter();
     return new CharacterCharmPresenter(resources, detailPresenter, treePresenter);
+  }
+
+  private CharmDetailPresenter createCharmDetailPresenter() {
+    try {
+      Instantiater instantiater = generics.getInstantiater();
+      Collection<CharmDetailPresenterFactory> factories = instantiater.instantiateAll(RegisteredCharmDetailPresenterFactory.class);
+      for(CharmDetailPresenterFactory factory : factories) {
+        return factory.create(generics);
+      }
+    } catch (InitializationException e) {
+      logger.error("Error initializing charm details.", e);
+    }
+    return new NullCharmDetailPresenter();
   }
 
   @Override

@@ -1,4 +1,6 @@
-package net.sf.anathema.character.presenter.charm.detail;
+package net.sf.anathema.charm.description.model;
+
+import net.sf.anathema.character.presenter.charm.detail.CharmDetailModel;
 
 public class CharmDescriptionEditDetailModel implements CharmDetailModel {
 
@@ -9,7 +11,7 @@ public class CharmDescriptionEditDetailModel implements CharmDetailModel {
   }
 
   @Override
-  public boolean isActive() {
+  public boolean isActive(String charmId) {
     return editModel.isActive();
   }
 

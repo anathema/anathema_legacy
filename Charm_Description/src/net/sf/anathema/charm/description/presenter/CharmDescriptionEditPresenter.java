@@ -1,5 +1,11 @@
-package net.sf.anathema.character.presenter.charm.detail;
+package net.sf.anathema.charm.description.presenter;
 
+import net.sf.anathema.character.presenter.charm.detail.CharmDetailModel;
+import net.sf.anathema.character.presenter.charm.detail.CharmDetailPresenter;
+import net.sf.anathema.charm.description.model.AutoSaveCharmDescriptionEditModel;
+import net.sf.anathema.charm.description.model.CharmDescriptionEditDetailModel;
+import net.sf.anathema.charm.description.model.CharmDescriptionEditModel;
+import net.sf.anathema.charm.description.view.CharmDescriptionEditView;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.IView;
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.charm.detail;
+package net.sf.anathema.charm.description.model;
 
 import net.sf.anathema.lib.control.change.IChangeListener;
 
