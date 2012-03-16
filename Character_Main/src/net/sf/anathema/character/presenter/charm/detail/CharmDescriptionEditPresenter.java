@@ -1,12 +1,11 @@
 package net.sf.anathema.character.presenter.charm.detail;
 
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.IView;
 
 import static java.text.MessageFormat.format;
 
-public class CharmDescriptionEditPresenter implements IPresenter {
+public class CharmDescriptionEditPresenter implements CharmDetailPresenter {
 
   private final CharmDescriptionEditView view = new CharmDescriptionEditView();
   private CharmDescriptionEditModel model = new AutoSaveCharmDescriptionEditModel();
@@ -22,14 +21,17 @@ public class CharmDescriptionEditPresenter implements IPresenter {
     });
   }
 
+  @Override
   public IView getView() {
     return view;
   }
 
-  public DetailModel<String> getModel() {
-    return new CharmDetailModel(model);
+  @Override
+  public CharmDetailModel getModel() {
+    return new CharmDescriptionEditDetailModel(model);
   }
 
+  @Override
   public String getDetailTitle() {
     return format("Edit detail for ''{0}''", model.getEditId());
   }

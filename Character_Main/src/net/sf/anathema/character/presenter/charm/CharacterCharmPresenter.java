@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.charm;
 
-import net.sf.anathema.character.presenter.charm.detail.CharmDescriptionEditPresenter;
-import net.sf.anathema.character.presenter.charm.detail.DetailModel;
+import net.sf.anathema.character.presenter.charm.detail.CharmDetailModel;
+import net.sf.anathema.character.presenter.charm.detail.CharmDetailPresenter;
 import net.sf.anathema.character.presenter.charm.tree.CharacterCharmTreePresenter;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
@@ -20,7 +20,7 @@ public class CharacterCharmPresenter implements IContentPresenter {
 
     @Override
     public void nodeDetailsDemanded(String nodeId) {
-      DetailModel<String> model = detailPresenter.getModel();
+      CharmDetailModel model = detailPresenter.getModel();
       if (!model.isActive()) {
         return;
       }
@@ -32,10 +32,10 @@ public class CharacterCharmPresenter implements IContentPresenter {
 
   private IResources resources;
   private CharacterCharmTreePresenter treePresenter;
-  private CharmDescriptionEditPresenter detailPresenter;
+  private CharmDetailPresenter detailPresenter;
   private final CollapsibleView collapsibleView = new CollapsibleView();
 
-  public CharacterCharmPresenter(IResources resources, CharmDescriptionEditPresenter detailPresenter,
+  public CharacterCharmPresenter(IResources resources, CharmDetailPresenter detailPresenter,
                                  CharacterCharmTreePresenter treePresenter) {
     this.detailPresenter = detailPresenter;
     this.resources = resources;
