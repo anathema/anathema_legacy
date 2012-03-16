@@ -65,10 +65,6 @@ public class CharmCompiler {
 
   public void buildCharms() throws PersistenceException {
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
-      IExaltedRuleSet basicRules = rules.getBasicRuleset();
-      if (basicRules != null) {
-        charmCache.cloneCharms(basicRules, rules);
-      }
       for (IIdentificate type : registry.getAll()) {
         buildStandardCharms(type, rules);
         buildGenericCharms(type, rules);

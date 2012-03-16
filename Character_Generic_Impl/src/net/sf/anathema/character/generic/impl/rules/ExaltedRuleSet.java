@@ -12,21 +12,11 @@ public enum ExaltedRuleSet implements IExaltedRuleSet {
     public void accept(IRuleSetVisitor visitor) {
       visitor.visitCoreRules(this);
     }
-
-    @Override
-    public IExaltedRuleSet getBasicRuleset() {
-      return null;
-    }
   },
   SecondEdition(ExaltedEdition.SecondEdition) {
     @Override
     public void accept(IRuleSetVisitor visitor) {
       visitor.visitSecondEdition(this);
-    }
-
-    @Override
-    public IExaltedRuleSet getBasicRuleset() {
-      return null;
     }
   };
 

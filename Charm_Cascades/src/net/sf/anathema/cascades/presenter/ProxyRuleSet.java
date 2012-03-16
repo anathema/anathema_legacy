@@ -23,11 +23,6 @@ public class ProxyRuleSet implements IExaltedRuleSet {
   }
 
   @Override
-  public IExaltedRuleSet getBasicRuleset() {
-    return delegate.getBasicRuleset();
-  }
-
-  @Override
   public String getId() {
     return delegate.getId();
   }

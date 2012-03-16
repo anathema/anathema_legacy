@@ -7,6 +7,4 @@ public interface IExaltedRuleSet extends ITypedDescriptionType {
   void accept(IRuleSetVisitor visitor);
 
   IExaltedEdition getEdition();
-
-  IExaltedRuleSet getBasicRuleset();
 }
