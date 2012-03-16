@@ -54,7 +54,7 @@ public class ProxyWeaponStats_AdamantTagsTest {
   }
 
   private List<IIdentificate> getModifiedTags(MagicalMaterial material) {
-    ProxyWeaponStats stats = new ProxyWeaponStats(original, material, rules, null);
+    ProxyWeaponStats stats = new ProxyWeaponStats(original, material, rules);
     return Arrays.asList(stats.getTags());
   }
 

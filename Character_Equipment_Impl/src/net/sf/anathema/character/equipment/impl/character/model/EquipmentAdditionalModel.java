@@ -52,8 +52,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
       if (template == null) {
         continue;
       }
-      final IEquipmentItem item = new EquipmentItem(template, ruleSet,
-    		  null, getCharacterDataProvider());
+      final IEquipmentItem item = new EquipmentItem(template, ruleSet, null);
       naturalWeaponItems.add(initItem(item));
     }
   }
@@ -159,6 +158,21 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
 			IEquipmentStats stats) {
 		if (item == null || stats == null) return new IEquipmentStatsOption[0];
 		return getOptionsList(item, stats).toArray(new IEquipmentStatsOption[0]);
+  }
+  
+  @Override
+  public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentStats stats) {
+		if (stats == null) return new IEquipmentStatsOption[0];
+		
+		List<IEquipmentItem> itemList = new ArrayList<IEquipmentItem>();
+		itemList.addAll(naturalWeaponItems);
+		for (IEquipmentItem item : getEquipmentItems())
+			itemList.add(item);
+		for (IEquipmentItem item : itemList)
+			for (IEquipmentStats stat : item.getStats())
+				if (stats.equals(stat))
+					return getEnabledStatOptions(item, stat);			
+		return new IEquipmentStatsOption[0];
   }
 
   @Override

@@ -12,4 +12,6 @@ public interface IEquipmentCharacterOptionProvider {
 	public boolean isStatOptionEnabled(IEquipmentItem item, IEquipmentStats stats, IEquipmentStatsOption option);
 	
 	public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentItem item, IEquipmentStats stats);
+	
+	public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentStats stats);
 }

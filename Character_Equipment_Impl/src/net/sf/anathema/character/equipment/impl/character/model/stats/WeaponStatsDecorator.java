@@ -83,6 +83,9 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
 
   @Override
   public boolean equals(Object obj) {
+	if (obj instanceof IWeaponStats && !(obj instanceof WeaponStatsDecorator)) {
+		return obj.equals(stats);
+	}
     if (!(obj instanceof WeaponStatsDecorator)) {
       return false;
     }

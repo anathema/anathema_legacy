@@ -87,4 +87,9 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
     }
     return new ArtifactAttuneType[]{Unattuned, FullyAttuned};
   }
+
+	@Override
+	public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentStats stats) {
+		return optionProvider.getEnabledStatOptions(stats);
+	}
 }

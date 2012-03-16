@@ -3,8 +3,6 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.character.IEquipmentItemOptionProvider;
-import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.AccuracyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DamageModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DefenseModification;
@@ -28,14 +26,12 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   private final IWeaponStats delegate;
   private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;
-  private final IEquipmentItemOptionProvider optionProvider;
 
   public ProxyWeaponStats(IWeaponStats stats, MagicalMaterial material,
-		  IExaltedRuleSet ruleSet, IEquipmentItemOptionProvider optionProvider) {
+		  IExaltedRuleSet ruleSet) {
     this.delegate = stats;
     this.material = material;
     this.ruleSet = ruleSet;
-    this.optionProvider = optionProvider;
   }
 
   public IWeaponStats getUnderlying() {
@@ -44,6 +40,9 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public boolean equals(Object obj) {
+	if (obj instanceof IWeaponStats && !(obj instanceof WeaponStatsDecorator)) {
+	  return obj.equals(delegate);
+	}
     if (!(obj instanceof ProxyWeaponStats)) {
       return false;
     }
@@ -58,10 +57,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   public int getAccuracy() {
-	int accuracy = getModifiedValue(new AccuracyModification(material, ruleSet), delegate.getAccuracy()); 
-	for (IEquipmentStatsOption option : optionProvider.getEnabledStatOptions())
-		accuracy += option.getAccuracyModifier();
-    return accuracy;
+    return getModifiedValue(new AccuracyModification(material, ruleSet), delegate.getAccuracy());
   }
 
   private Integer getModifiedValue(IStatsModification modification, Integer unmodifiedValue) {
@@ -102,10 +98,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   public Integer getDefence() {
-	Integer defense = getModifiedValue(new DefenseModification(material, ruleSet), delegate.getDefence()); 
-	for (IEquipmentStatsOption option : optionProvider.getEnabledStatOptions())
-		defense += option.getDefenseModifier();
-    return defense;
+    return getModifiedValue(new DefenseModification(material, ruleSet), delegate.getDefence());
   }
 
   public Integer getRange() {

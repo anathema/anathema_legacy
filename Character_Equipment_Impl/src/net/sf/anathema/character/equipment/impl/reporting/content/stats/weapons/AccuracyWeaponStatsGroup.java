@@ -2,6 +2,9 @@ package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons
 
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
+
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
@@ -12,12 +15,15 @@ import net.sf.anathema.lib.resources.IResources;
 public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
   private final IGenericTraitCollection collection;
+  private final IEquipmentCharacterDataProvider provider;
   private final IEquipmentModifiers equipment;
 
-  public AccuracyWeaponStatsGroup(IResources resources, IGenericTraitCollection collection, IEquipmentModifiers equipment) {
+  public AccuracyWeaponStatsGroup(IResources resources, IGenericTraitCollection collection,
+		  IEquipmentCharacterDataProvider provider, IEquipmentModifiers equipment) {
     super(resources, "Accuracy"); //$NON-NLS-1$
     this.collection = collection;
     this.equipment = equipment;
+    this.provider = provider;
   }
 
   public int getColumnCount() {
@@ -35,10 +41,18 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
       table.addCell(createFinalValueCell(font, calculateFinalValue));
     }
   }
+  
+  private int getOptionModifiers(IWeaponStats stats) {
+	  if (provider == null) return 0;
+	  int mod = 0;
+	  for (IEquipmentStatsOption option : provider.getEnabledStatOptions(stats))
+		  mod += option.getAccuracyModifier();
+	  return mod;
+  }
 
   protected int getFinalValue(IWeaponStats weapon, int weaponValue, IEquipmentModifiers equipment) {
     return calculateFinalValue(
-            weaponValue,
+            weaponValue + getOptionModifiers(weapon),
             collection.getTrait(AttributeType.Dexterity),
             collection.getTrait(weapon.getTraitType()));
   }
