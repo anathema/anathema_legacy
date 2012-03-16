@@ -38,7 +38,7 @@ public class FirstEditionDBTCombatEncoder implements ContentEncoder {
     int initiative = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Dexterity, AttributeType.Wits);
     int dodgePool = CharacterUtilties.getDodgePool(reportContent.getCharacter());
     int knockdownThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
-    int knockdownPool = CharacterUtilties.getKnockdownPool(reportContent.getCharacter(), traitCollection, null);
+    int knockdownPool = CharacterUtilties.getKnockdownPool(reportContent.getCharacter(), traitCollection);
     int stunningThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina);
     int stunningPool = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
     int stunningDuration = Math.max(0, 6 - stunningThreshold);

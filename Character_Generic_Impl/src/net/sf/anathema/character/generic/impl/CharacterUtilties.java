@@ -31,19 +31,18 @@ public class CharacterUtilties {
     return Math.max(baseValue, 1);
   }
 
-  public static int getKnockdownThreshold(IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
+  public static int getKnockdownThreshold(IGenericTraitCollection traitCollection) {
     int baseValue = getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
-    //equipment
     return Math.max(baseValue, 0);
 
   }
 
-  public static int getKnockdownPool(IGenericCharacter character, IEquipmentModifiers equipment) {
-    return getKnockdownPool(character, character.getTraitCollection(), equipment);
+  public static int getKnockdownPool(IGenericCharacter character) {
+    return getKnockdownPool(character, character.getTraitCollection());
   }
 
-  public static int getKnockdownPool(IGenericCharacter character, IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
-    int pool = 0;
+  public static int getKnockdownPool(IGenericCharacter character, IGenericTraitCollection traitCollection) {
+    int pool;
     if (character.getRules().getEdition() == ExaltedEdition.FirstEdition) {
       pool = getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
     }
@@ -52,19 +51,16 @@ public class CharacterUtilties {
       int ability = getMaxValue(traitCollection, AbilityType.Athletics, AbilityType.Resistance);
       pool = attribute + ability;
     }
-    //equipment
     return Math.max(pool, 0);
   }
 
-  public static int getStunningThreshold(IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
+  public static int getStunningThreshold(IGenericTraitCollection traitCollection) {
     int baseValue = getTotalValue(traitCollection, AttributeType.Stamina);
-    //equipment
     return Math.max(baseValue, 0);
   }
 
-  public static int getStunningPool(IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
+  public static int getStunningPool(IGenericTraitCollection traitCollection) {
     int baseValue = getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
-    //equipment
     return Math.max(baseValue, 0);
   }
 
@@ -104,7 +100,7 @@ public class CharacterUtilties {
   }
 
   public static int getDodgeDv(ICharacterType characterType, IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
-    int dv = 0;
+    int dv;
     int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
     if (essenceValue > 1) {
       dv = getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge, OtherTraitType.Essence);
@@ -132,13 +128,6 @@ public class CharacterUtilties {
     IGenericTraitCollection traitCollection = character.getTraitCollection();
     int dodgeValue = traitCollection.getTrait(AbilityType.Dodge).getCurrentValue();
     int value = traitCollection.getTrait(AttributeType.Dexterity).getCurrentValue() + dodgeValue;
-    value = Math.max(0, value - getUntrainedActionModifier(character, AbilityType.Dodge));
-    if (character.getRules() == ExaltedRuleSet.PowerCombat) {
-      int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
-      if (essenceValue > 1) {
-        value += essenceValue;
-      }
-    }
-    return value;
+    return Math.max(0, value - getUntrainedActionModifier(character, AbilityType.Dodge));
   }
 }

@@ -54,7 +54,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   @Override
   public IGroupedTraitType[] getAbilityGroups() {
-    AbilityType[] all = AbilityType.getAbilityTypes(ExaltedRuleSet.PowerCombat.getEdition());
+    AbilityType[] all = AbilityType.getAbilityTypes(ExaltedRuleSet.SecondEdition.getEdition());
     IGroupedTraitType[] abilityTypes = new GroupedTraitType[all.length];
     for (int index = 0; index < all.length; index++) {
       abilityTypes[index] = new GroupedTraitType(all[index], DUMMYGROUP, null);

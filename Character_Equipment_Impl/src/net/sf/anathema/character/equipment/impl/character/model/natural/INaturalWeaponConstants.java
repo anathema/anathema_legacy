@@ -13,9 +13,8 @@ public interface INaturalWeaponConstants {
       new net.sf.anathema.character.equipment.impl.character.model.natural.corerules.Clinch(),
       new Hold() };
 
-  public static final IEquipmentStats[] POWER_COMBAT = new IEquipmentStats[] {
-      new net.sf.anathema.character.equipment.impl.character.model.natural.powercombat.Punch(),
-      new net.sf.anathema.character.equipment.impl.character.model.natural.powercombat.Kick(),
-      new net.sf.anathema.character.equipment.impl.character.model.natural.powercombat.Clinch() };
-  public static final IEquipmentStats[] SECOND_EDITION = new IEquipmentStats[] { new Punch(), new Kick(), new Clinch() };
+  public static final IEquipmentStats[] SECOND_EDITION = new IEquipmentStats[] {
+          new Punch(),
+          new Kick(),
+          new Clinch() };
 }

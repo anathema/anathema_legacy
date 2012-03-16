@@ -63,6 +63,6 @@ public class ProxyWeaponStats_AdamantTagsTest {
   }
 
   private void setRulesToFirstEdition() {
-    rules = ExaltedRuleSet.PowerCombat;
+    rules = ExaltedRuleSet.CoreRules;
   }
 }
