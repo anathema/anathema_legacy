@@ -1,23 +1,5 @@
 package net.sf.anathema.character.impl.view.magic;
 
-import java.awt.Component;
-import java.awt.Dimension;
-
-import javax.swing.Action;
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ListModel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
@@ -37,8 +19,23 @@ import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
+import org.jdesktop.swingx.JXTaskPaneContainer;
 
-import com.l2fprod.common.swing.JTaskPane;
+import javax.swing.Action;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListModel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.Component;
 
 public class ComboConfigurationView implements IComboConfigurationView {
 
@@ -54,14 +51,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
   private int learnedListModelSize;
   private boolean isNameEntered;
   private boolean isDescriptionEntered;
-  private final JTaskPane comboPane = new JTaskPane() {
-    private static final long serialVersionUID = 289110425410988048L;
-
-    @Override
-    public Dimension getPreferredScrollableViewportSize() {
-      return new Dimension(0, 0);
-    }
-  };
+  private final JXTaskPaneContainer comboPane = new JXTaskPaneContainer();
   private JScrollPane comboScrollPane;
   private IComboViewProperties properties;
 

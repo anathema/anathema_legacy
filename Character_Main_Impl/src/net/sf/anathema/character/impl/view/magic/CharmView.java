@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCha
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
-import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGCategorizedSpecialNodeView;
@@ -33,7 +33,7 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
   }
 
   @Override
-  public void addCharmSelectionListener(INodeSelectionListener listener) {
+  public void addCharmInteractionListener(CharmInteractionListener listener) {
     getCharmTreeView().addNodeSelectionListener(listener);
   }
 

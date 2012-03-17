@@ -12,7 +12,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
@@ -47,7 +47,7 @@ public final class ItemTypeLoadAction extends AbstractItemAction {
 
   private ItemTypeLoadAction(IAnathemaModel anathemaModel, IItemType itemType, IResources resources) {
     super(anathemaModel, resources);
-    IItemMangementModel itemManagementModel = anathemaModel.getItemManagement();
+    IItemManagementModel itemManagementModel = anathemaModel.getItemManagement();
     this.itemCreationOperator = new ItemCreationOperator(
         new LoadItemCreator(anathemaModel),
         resources,

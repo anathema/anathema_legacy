@@ -27,7 +27,7 @@ public class LookAndFeelInitializer {
   }
 
   private void makeCombosLookBetterOnAnyLookAndFeel() {
-    System.getProperties().put("swing.addon", "com.l2fprod.common.swing.plaf.aqua.AquaLookAndFeelAddons"); //$NON-NLS-1$//$NON-NLS-2$
+    System.getProperties().put("swing.addon", "org.jdesktop.swingx.plaf.macosx.MacOSXLookAndFeelAddons"); //$NON-NLS-1$//$NON-NLS-2$
   }
 
   private String getLookAndFeelToUse() {

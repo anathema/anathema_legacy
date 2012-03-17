@@ -10,7 +10,7 @@ import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -21,9 +21,9 @@ public class ItemCreationOperator implements IItemOperator {
 
   private final IItemCreator creator;
   private final IResources resources;
-  private final IItemMangementModel model;
+  private final IItemManagementModel model;
 
-  public ItemCreationOperator(IItemCreator creator, IResources resources, IItemMangementModel model) {
+  public ItemCreationOperator(IItemCreator creator, IResources resources, IItemManagementModel model) {
     this.creator = creator;
     this.resources = resources;
     this.model = model;

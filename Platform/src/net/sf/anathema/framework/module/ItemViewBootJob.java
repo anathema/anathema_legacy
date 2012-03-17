@@ -2,7 +2,7 @@ package net.sf.anathema.framework.module;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.model.ItemManagmentModelListener;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IModelViewMapping;
 import net.sf.anathema.framework.presenter.ModelViewMapping;
 import net.sf.anathema.framework.presenter.itemmanagement.ItemViewSelectionListener;
@@ -16,7 +16,7 @@ public class ItemViewBootJob implements IAnathemaBootJob {
 
   public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
     IModelViewMapping mapping = new ModelViewMapping();
-    IItemMangementModel itemManagement = model.getItemManagement();
+    IItemManagementModel itemManagement = model.getItemManagement();
     itemManagement.addListener(new ItemManagmentModelListener(
         model.getViewFactoryRegistry(),
         view,

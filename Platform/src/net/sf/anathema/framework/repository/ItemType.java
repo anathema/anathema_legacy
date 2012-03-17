@@ -7,11 +7,17 @@ import net.sf.anathema.lib.util.IIdentificate;
 public class ItemType implements IItemType, IIdentificate {
 
   private final String id;
-  private IRepositoryConfiguration repositoryConfiguration;
+  private final IRepositoryConfiguration repositoryConfiguration;
+  private final boolean integrated;
 
   public ItemType(String id, IRepositoryConfiguration configuration) {
+    this(id, configuration, configuration != null);
+  }
+
+  public ItemType(String id, IRepositoryConfiguration configuration, boolean integrated) {
     this.id = id;
     this.repositoryConfiguration = configuration;
+    this.integrated = integrated;
   }
 
   @Override
@@ -24,8 +30,14 @@ public class ItemType implements IItemType, IIdentificate {
     return id;
   }
 
+
   public boolean supportsRepository() {
     return repositoryConfiguration != null;
+  }
+
+  @Override
+  public boolean isIntegrated() {
+    return integrated;
   }
 
   public IRepositoryConfiguration getRepositoryConfiguration() {

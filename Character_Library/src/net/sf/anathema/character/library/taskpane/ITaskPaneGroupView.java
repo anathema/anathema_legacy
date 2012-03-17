@@ -1,8 +1,8 @@
 package net.sf.anathema.character.library.taskpane;
 
-import com.l2fprod.common.swing.JTaskPaneGroup;
+import org.jdesktop.swingx.JXTaskPane;
 
 public interface ITaskPaneGroupView {
 
-  public JTaskPaneGroup getTaskGroup();
+  public JXTaskPane getTaskGroup();
 }

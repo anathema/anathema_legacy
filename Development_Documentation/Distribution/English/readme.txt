@@ -36,14 +36,11 @@ featuring character and campaign management, media library, script notes and mor
 Enjoy.
 
 ===------------------------------------------------------------------------------===
-		III - Download & Installation
+		II - Download & Installation
 ===------------------------------------------------------------------------------===
 
-Anathema is available free at http://sourceforge.net/projects/anathema
-
+Anathema is available free at http://anathema.github.com
 Though the .zip-download covers all, we recommend using the OS-specific downloads, if available.
-
-Guides covering installation and general use are available from the project page.
 
 ===------------------------------------------------------------------------------===
 		III - Launching
@@ -51,9 +48,7 @@ Guides covering installation and general use are available from the project page
 
 Run the program by typing "java -jar anathema.jar".
 Windows users will want to use the executable provided, same goes for Linux and the 
-shell script. Automatic desktop integration on Mac OS X is handled by the .dmg
-download; if no .dmg is available, Mac users should take the application out of the
-Mac .zip file and drag it to the Applications folder.
+shell script.
 
 Linux users should make sure that either r/w-rights are granted on the Anathema directory or
 that a proper directory is specified at startup, using the '-Drepository' parameter, e.g.
@@ -61,10 +56,8 @@ that a proper directory is specified at startup, using the '-Drepository' parame
 to store files in the folder AnathemaRepository on drive C.
 The shell script takes care of this.
 
-Anathema needs at least Java Runtime Environment (JRE) 5.0 to run.
-For the Windows executable, you will need JRE 6.0.
-To determine your version please type "java -version". 
-You can always get the most up to date version at "http//java.sun.com".
+Anathema needs at least Java Runtime Environment (JRE) 6 to run.
+To determine your version please type "java -version".
 
 ===------------------------------------------------------------------------------===
 		IV - Features
@@ -73,8 +66,7 @@ You can always get the most up to date version at "http//java.sun.com".
 + Generate and maintain all 5 core exalt types (1E)
 + Generate and maintain Solar, Lunar, Sidereal, Dragon-Blooded, Infernal, and Abyssal
   exalt types (2E)
-+ Generate character descriptions (currently disabled)
-+ Print character sheets and descriptions to PDF
++ Print character sheets to PDF
 + Organize your series' plot
 + Manage a music database for your series
 + View many an Exalt's Charm data
@@ -82,67 +74,36 @@ You can always get the most up to date version at "http//java.sun.com".
 See versions.txt for a version history.
 
 ===------------------------------------------------------------------------------===
-		V - Customization
+		V - Notes
 ===------------------------------------------------------------------------------===
 
-To configure Anathema, visit the "Preferences" dialog available in the "Extras" menu.
-All settings need for Anathema to be restarted to take effect.
-
-The full extent of these options is described in the Anathema installation guide
-available on the project page.
-
-===------------------------------------------------------------------------------===
-		VI - Bugs
-===------------------------------------------------------------------------------===
-
-Despite our efforts to the contrary, it's most probable that Anathema isn't entirely 
-free of bugs. If you should encounter any problems, please report it via the Sourceforge 
-project page, using the "Bugs" tracker. 
-Thanks for helping us improve!
-
-Known Issues:
----------------------
--Outcaste DB with the Breeding Background pay more than they should if Breeding is not
-the first item on the list. 
-
--The "Merits and Flaws" tab changes size when items are selected.
-
--A problem has been reported with saving equipment to the database,
-but it appears to be quite elusive. Please contact us should you encounter this bug.
-
--"Start Maximized" doesn't work on some Linux systems.
-
-Note: the Dreams of the First Age Solar templates give 2 more bonus dots than the the rules
+The Dreams of the First Age Solar templates give 2 more bonus dots than the the rules
 do, to allow the player to place the free manse and free cult dots that they automatically get.
 Also, the Solar types that get 1 or 2 dots of an Ability of their choice from a selection of
 options, those dots will be the first dots chosen from that range and are not deletable, so
 choose carefully. These templates need some revising as well, but are a start.
 
-See versions.txt for a history of bugs fixed.
-
 ===------------------------------------------------------------------------------===
-		VII - Contact
+		VI - Contact
 ===------------------------------------------------------------------------------===
 
 Anathema was created  by Sandra Sieroux and Urs Reupke, with further development
-(starting with version 1.4.1) by Scott Olson, Eric Astor, Rob Rutherford, Paul Adams,
-Sean Mattox, Douglas Fotheringham, and others. Contact us at
+by Scott Olson, Eric Astor, Rob Rutherford, Paul Adams, Sean Mattox, Douglas Fotheringham,
+and others.
+
+Contact us at
 anathema-developers@lists.sourceforge.net with questions, comments or suggestions.
 
-For bug reports you should use the SourceForge.net Tracking System at
-http://sourceforge.net/projects/anathema
-
-Visit the Anathema website at http://anathema.sf.net
+For bug reports, please use our tracking system at
+http://github.com/anathema/anathema/issues
 
 ===------------------------------------------------------------------------------===
 		VIII - Contribute
 ===------------------------------------------------------------------------------===
 
-Anathema is open source, and thus, you have free access
-to the source code. If you think something is at odds, or have
-a great idea for a new feature or another improvement, fork the repo
-https://github.com/anathema/anathema
-and send us a pull request.
+Anathema is open source, and thus, you have free access to the source code.
+If you think something is at odds, or have a great idea for a new feature or another improvement,
+fork the repo from https://github.com/anathema/anathema and send us a pull request.
 
 ===------------------------------------------------------------------------------===
 		IX - Thanks

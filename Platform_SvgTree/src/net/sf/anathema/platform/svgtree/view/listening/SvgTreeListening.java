@@ -8,7 +8,7 @@ import java.util.List;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
@@ -26,7 +26,7 @@ public class SvgTreeListening {
   private final ISvgTreeViewProperties properties;
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator boundsCalculator;
-  private final GenericControl<INodeSelectionListener> control = new GenericControl<INodeSelectionListener>();
+  private final GenericControl<CharmInteractionListener> control = new GenericControl<CharmInteractionListener>();
   private final LeftClickPanInteractor leftClickPanner;
   private String selectionId;
 
@@ -48,6 +48,21 @@ public class SvgTreeListening {
       }
     }
   };
+  
+  private final EventListener nodeEditedListener = new EventListener() {
+    @Override
+    public void handleEvent(Event event) {
+      MouseEvent mouseEvent = (MouseEvent) event;
+      if (!mouseEvent.getCtrlKey()) {
+        return;
+      }
+      String nodeId = ((SVGGElement) event.getCurrentTarget()).getId();
+      boolean primaryButton = mouseEvent.getButton() == 0;
+      if (primaryButton && (selectionId == null || selectionId.equals(nodeId))) {
+        fireNodeEditedEvent(nodeId);
+      }
+    }
+  };
 
   private final EventListener cursorTooltipInitListener = new EventListener() {
     public void handleEvent(Event event) {
@@ -64,6 +79,9 @@ public class SvgTreeListening {
   private final EventListener selectionInvokingListener = new EventListener() {
     public void handleEvent(Event event) {
       MouseEvent mouseEvent = (MouseEvent) event;
+      if (mouseEvent.getCtrlKey()) {
+        return;
+      }
       String nodeId = ((SVGGElement) event.getCurrentTarget()).getId();
       boolean primaryButton = mouseEvent.getButton() == 0;
       if (primaryButton && (selectionId == null || selectionId.equals(nodeId))) {
@@ -119,7 +137,7 @@ public SvgTreeListening(
     canvas.setCursorInternal(properties.getDefaultCursor());
   }
 
-  public void addNodeSelectionListener(final INodeSelectionListener listener) {
+  public void addNodeSelectionListener(final CharmInteractionListener listener) {
     control.addListener(listener);
   }
 
@@ -130,6 +148,7 @@ public SvgTreeListening(
     document.getRootElement().removeEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, cursorListener, false);
     for (SVGGElement groupElement : canvas.getNodeElements()) {
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
+      groupElement.removeEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, nodeEditedListener, false);
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEOVER_EVENT_TYPE, cursorTooltipInitListener, false);
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
@@ -140,13 +159,21 @@ public SvgTreeListening(
   }
 
   private void fireNodeSelectionEvent(final String nodeId) {
-    control.forAllDo(new IClosure<INodeSelectionListener>() {
-      public void execute(final INodeSelectionListener input) {
+    control.forAllDo(new IClosure<CharmInteractionListener>() {
+      public void execute(CharmInteractionListener input) {
         input.nodeSelected(nodeId);
       }
     });
   }
-
+ 
+  private void fireNodeEditedEvent(final String nodeId) {
+    control.forAllDo(new IClosure<CharmInteractionListener>() {
+      public void execute(CharmInteractionListener input) {
+        input.nodeDetailsDemanded(nodeId);
+      }
+    });
+   }
+ 
   public void initDocumentListening(final SVGDocument document) {
     if (document == null) {
       return;
@@ -154,10 +181,11 @@ public SvgTreeListening(
     document.getRootElement().addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, cursorListener, false);
     for (SVGGElement groupElement : canvas.getNodeElements()) {
       groupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, selectionInvokingListener, false);
+      groupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, nodeEditedListener, false);
       groupElement.addEventListener(SVGConstants.SVG_MOUSEOVER_EVENT_TYPE, cursorTooltipInitListener, false);
       groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
-    for (final SVGGElement groupElement : canvas.getControlElements()) {
+    for (SVGGElement groupElement : canvas.getControlElements()) {
       groupElement.addEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, controlListener, false);
       groupElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
