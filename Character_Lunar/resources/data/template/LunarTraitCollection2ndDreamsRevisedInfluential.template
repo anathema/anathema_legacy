@@ -1,0 +1,7 @@
+<traitTemplates uses="template/LunarTraitCollection2ndDreams.template">
+  <essence startValue="6" lowerableState="Default">
+<limitation type="Static" value="10"/>
+<minimum value="6"/>
+  </essence>
+  
+</traitTemplates>
