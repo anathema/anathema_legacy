@@ -69,16 +69,22 @@ public class EquipmentObjectPresenter implements IPresenter {
 	  view.clearContents();
 	  
 	  boolean isRequireAttuneArtifact = false;
+	  boolean isAttuned = false;
 	  for (final IEquipmentStats equipment : model.getStats()) {
 	    if (equipment instanceof IArtifactStats)
 	  	  isRequireAttuneArtifact = isRequireAttuneArtifact || ((IArtifactStats)equipment).requireAttunementToUse();
 	    if (!viewFilter(equipment))
 	  		  continue;
 	    final BooleanModel booleanModel = view.addStats(createEquipmentDescription(model, equipment));
-	    if (equipment instanceof IArtifactStats)
-	  	  attuneStatFlags.put(equipment, booleanModel);
-	    else
+	    if (equipment instanceof IArtifactStats) {
+	    	attuneStatFlags.put(equipment, booleanModel);
+	    	if (model.isPrintEnabled(equipment)) {
+	    		isAttuned = true;
+	    	}
+	    }
+	    else {
 	  	  otherStatFlags.put(equipment, booleanModel);
+	    }
 	    booleanModel.setValue(true);
 	    booleanModel.addChangeListener(new IChangeListener() {
 	      public void stateChanged() {
@@ -91,18 +97,6 @@ public class EquipmentObjectPresenter implements IPresenter {
 		      		  if (equipment != stats)
 		      			  attuneStatFlags.get(stats).setValue(false);
 		        }
-		        boolean otherEnableState = !((IArtifactStats)equipment).requireAttunementToUse();
-		        for (IEquipmentStats attuneStats : attuneStatFlags.keySet())
-		      	  if (model.isPrintEnabled(attuneStats) && isFullAttunement((IArtifactStats)attuneStats))
-		     		  otherEnableState = true;
-		        for (IEquipmentStats stats : otherStatFlags.keySet())
-		        {
-		              BooleanModel bool = otherStatFlags.get(stats);
-		        	  if (!otherEnableState)
-		        		  bool.setValue(false);
-		        	  view.setEnabled(bool, otherEnableState);
-			          view.updateStatText(bool, createEquipmentDescription(model, stats));
-			    }
 	        }
 	      }
 	    });
@@ -110,10 +104,10 @@ public class EquipmentObjectPresenter implements IPresenter {
 	      
 	    addOptionalModels(booleanModel, equipment);
 	  }
-	  if (isRequireAttuneArtifact && attuneStatFlags.isEmpty())
+	  if (isRequireAttuneArtifact && !isAttuned)
 	   	for (BooleanModel bool : otherStatFlags.values()) {
 	    	view.setEnabled(bool, false);
-	    		bool.setValue(false);
+	    	bool.setValue(false);
 	    }
   }
   
@@ -141,20 +135,6 @@ public class EquipmentObjectPresenter implements IPresenter {
 		      });
 		  }
 	  }
-  }
-  
-  private boolean isFullAttunement(IArtifactStats stats)
-  {
-	  /*switch (stats.getAttuneType())
-	  {
-	  case FullyAttuned:
-	  case UnharmoniouslyAttuned:
-		  return true;
-	  default:
-		  return false;
-		
-	  }*/
-	  return true; //revisit this later perhaps
   }
   
   private boolean viewFilter(IEquipmentStats equipment)
