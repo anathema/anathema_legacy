@@ -1,28 +1,18 @@
 package net.sf.anathema.character.library.taskpane;
 
-import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
+import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.lib.gui.GuiUtilities;
+import org.jdesktop.swingx.JXTaskPaneContainer;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
-
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.lib.gui.GuiUtilities;
-
-import com.l2fprod.common.swing.JTaskPane;
+import java.util.ArrayList;
+import java.util.List;
 
 //TODO: Cannot implement IView, because the interface resides in Lib_GUI. Move?
 public class TaskPaneView<V extends ITaskPaneGroupView> {
 
-  private final JTaskPane taskPane = new JTaskPane() {
-    private static final long serialVersionUID = 7874326448380052763L;
-
-    @Override
-    public Dimension getPreferredScrollableViewportSize() {
-      return new Dimension(0, 0);
-    }
-  };
+  private final JXTaskPaneContainer taskPane = new JXTaskPaneContainer();
   private final JScrollPane taskScrollPane = new JScrollPane(taskPane);
   private final List<V> taskViews = new ArrayList<V>();
   private final ITaskPaneGroupViewFactory<V> viewFactory;

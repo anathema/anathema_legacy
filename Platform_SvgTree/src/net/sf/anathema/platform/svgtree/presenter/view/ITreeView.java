@@ -6,7 +6,7 @@ import net.sf.anathema.lib.gui.IView;
 import java.awt.Color;
 
 public interface ITreeView extends IView, IDisposable {
-    void addNodeSelectionListener(INodeSelectionListener listener);
+    void addNodeSelectionListener(CharmInteractionListener listener);
 
     void setNodeBackgroundColor(String nodeId, Color color);
 

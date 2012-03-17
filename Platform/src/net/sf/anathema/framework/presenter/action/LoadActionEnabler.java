@@ -3,7 +3,7 @@ package net.sf.anathema.framework.presenter.action;
 import javax.swing.Action;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepository;
@@ -14,9 +14,9 @@ public class LoadActionEnabler {
   private final Action action;
   private final IRepository repository;
   private final IItemType[] types;
-  private final IItemMangementModel model;
+  private final IItemManagementModel model;
 
-  public LoadActionEnabler(IRepository repository, IItemMangementModel model, Action action, IItemType... types) {
+  public LoadActionEnabler(IRepository repository, IItemManagementModel model, Action action, IItemType... types) {
     this.repository = repository;
     this.model = model;
     this.action = action;

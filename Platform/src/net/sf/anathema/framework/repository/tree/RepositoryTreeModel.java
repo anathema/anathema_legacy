@@ -9,7 +9,7 @@ import java.util.List;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.action.ConfigurableFileProvider;
 import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
 import net.sf.anathema.framework.repository.IRepository;
@@ -26,33 +26,33 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class RepositoryTreeModel implements IRepositoryTreeModel {
 
-  private final IItemType[] repositoryItemTypes;
+  private final IItemType[] integratedItemTypes;
   private final GenericControl<IRepositoryTreeModelListener> control = new GenericControl<IRepositoryTreeModelListener>();
   private final ChangeControl changeControl = new ChangeControl();
-  private final IItemMangementModel itemMangementModel;
+  private final IItemManagementModel itemManagementModel;
   private final IRepository repository;
   private final IItemTypeRegistry itemTypes;
   private Object[] currentlySelectedUserObjects;
 
-  public RepositoryTreeModel(IRepository repository, IItemMangementModel itemMangementModel, IItemTypeRegistry itemTypes) {
+  public RepositoryTreeModel(IRepository repository, IItemManagementModel itemManagementModel, IItemTypeRegistry itemTypes) {
     this.repository = repository;
-    this.itemMangementModel = itemMangementModel;
+    this.itemManagementModel = itemManagementModel;
     this.itemTypes = itemTypes;
-    this.repositoryItemTypes = createPersistableItemTypes();
+    this.integratedItemTypes = createIntegratedItemTypes();
   }
 
-  private ItemType[] createPersistableItemTypes() {
-    List<IItemType> persistableItemTypes = new ArrayList<IItemType>();
+  private ItemType[] createIntegratedItemTypes() {
+    List<IItemType> integratedItemTypes = new ArrayList<IItemType>();
     for (IItemType itemType : itemTypes.getAllItemTypes()) {
-      if (itemType.supportsRepository()) {
-        persistableItemTypes.add(itemType);
+      if (itemType.isIntegrated()) {
+        integratedItemTypes.add(itemType);
       }
     }
-    return persistableItemTypes.toArray(new ItemType[persistableItemTypes.size()]);
+    return integratedItemTypes.toArray(new ItemType[integratedItemTypes.size()]);
   }
 
   public IItemType[] getAllItemTypes() {
-    return repositoryItemTypes;
+    return integratedItemTypes;
   }
 
   public PrintNameFile[] getPrintNameFiles(IItemType itemType) {
@@ -72,7 +72,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
         return false;
       }
       PrintNameFile file = (PrintNameFile) object;
-      boolean open = itemMangementModel.isOpen(file.getRepositoryId(), file.getItemType());
+      boolean open = itemManagementModel.isOpen(file.getRepositoryId(), file.getItemType());
       if (open) {
         return false;
       }

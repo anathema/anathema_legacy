@@ -4,7 +4,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
@@ -142,7 +142,7 @@ public class SvgTreeView implements ISvgTreeView {
     document.getDocumentElement().insertBefore(rectangle, document.getElementById(VALUE_CASCADE_ID));
   }
 
-  public void addNodeSelectionListener(final INodeSelectionListener listener) {
+  public void addNodeSelectionListener(final CharmInteractionListener listener) {
     listening.addNodeSelectionListener(listener);
   }
 

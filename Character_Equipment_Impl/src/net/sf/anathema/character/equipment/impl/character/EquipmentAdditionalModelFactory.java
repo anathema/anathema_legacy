@@ -33,6 +33,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
         naturalArmour,
         equipmentTemplateProvider,
         ruleSet,
+        context,
         new NaturalWeaponTemplate(),
         template.getNaturalWeaponTemplate(characterType));
   }

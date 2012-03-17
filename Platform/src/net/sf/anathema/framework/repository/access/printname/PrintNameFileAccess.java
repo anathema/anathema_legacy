@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -30,9 +30,9 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   private static final Pattern PRINT_NAME_PATTERN = Pattern.compile(PRINT_NAME_ATTR + "=\"(.*?)\""); //$NON-NLS-1$
   private static final Pattern ID_PATTERN = Pattern.compile(ID_ATTR + "=\"(.*?)\""); //$NON-NLS-1$
   private final IRepositoryFileResolver resolver;
-  private final IItemMangementModel itemManagement;
+  private final IItemManagementModel itemManagement;
 
-  public PrintNameFileAccess(IRepositoryFileResolver resolver, IItemMangementModel itemManagement) {
+  public PrintNameFileAccess(IRepositoryFileResolver resolver, IItemManagementModel itemManagement) {
     this.resolver = resolver;
     this.itemManagement = itemManagement;
   }

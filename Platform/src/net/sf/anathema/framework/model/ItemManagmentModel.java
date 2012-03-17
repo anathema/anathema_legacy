@@ -3,7 +3,7 @@ package net.sf.anathema.framework.model;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -12,7 +12,7 @@ import net.sf.anathema.lib.exception.AnathemaException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemManagmentModel implements IItemMangementModel {
+public class ItemManagmentModel implements IItemManagementModel {
 
   private final GenericControl<IItemManagementModelListener> listeners = new GenericControl<IItemManagementModelListener>();
   private final List<IItem> allItems = new ArrayList<IItem>();

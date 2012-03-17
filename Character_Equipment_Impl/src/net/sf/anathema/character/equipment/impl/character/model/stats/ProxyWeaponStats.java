@@ -27,7 +27,8 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;
 
-  public ProxyWeaponStats(IWeaponStats stats, MagicalMaterial material, IExaltedRuleSet ruleSet) {
+  public ProxyWeaponStats(IWeaponStats stats, MagicalMaterial material,
+		  IExaltedRuleSet ruleSet) {
     this.delegate = stats;
     this.material = material;
     this.ruleSet = ruleSet;
@@ -39,6 +40,9 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public boolean equals(Object obj) {
+	if (obj instanceof IWeaponStats && !(obj instanceof WeaponStatsDecorator)) {
+	  return obj.equals(delegate);
+	}
     if (!(obj instanceof ProxyWeaponStats)) {
       return false;
     }
