@@ -20,9 +20,7 @@ public class CascadeSourceBookFilter extends SourceBookCharmFilter {
     super(ruleSet.getEdition());
     this.ruleSet = ruleSet;
     this.charmGroups = charmGroups;
-    for (ExaltedEdition thisEdition : ExaltedEdition.values()) {
-      prepareEdition(thisEdition);
-    }
+    prepareEdition(ExaltedEdition.SecondEdition);
   }
 
 

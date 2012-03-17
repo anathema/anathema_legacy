@@ -39,7 +39,7 @@ public class CascadeGroupCollection implements CharmGroupCollection, EditionChar
 
   @Override
   public ICharmGroup[] getCharmGroups() {
-    return getCharmGroupsFor(ExaltedEdition.values());
+    return getCharmGroups(ExaltedEdition.SecondEdition);
   }
 
   @Override
