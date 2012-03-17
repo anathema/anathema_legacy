@@ -16,8 +16,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
+import net.sf.anathema.lib.lang.ArrayUtilities;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -30,7 +33,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
   private final ICharacterType characterType;
   private final MagicalMaterial defaultMaterial;
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<IEquipmentItem>();
-  private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> options =
+  private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable =
 		    new Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>>();
   private final IEquipmentCharacterDataProvider provider;
   private final ICharacterListening changeListener;
@@ -55,6 +58,46 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
       final IEquipmentItem item = new EquipmentItem(template, ruleSet, null);
       naturalWeaponItems.add(initItem(item));
     }
+    
+    context.getCharacterListening().addChangeListener(new ICharacterChangeListener() {
+
+		@Override
+		public void characterChanged() {
+			// removing specialty notes if the underlying specialty is removed
+			// need a more direct way to do this
+			for (IEquipmentItem item : getEquipmentItems())
+				for (IEquipmentStats stats : item.getStats()) {
+					List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
+					
+					if (list != null) {
+						List<IEquipmentStatsOption> optionsList = new ArrayList<IEquipmentStatsOption>();
+						optionsList.addAll(list);
+						for (IEquipmentStatsOption option : optionsList) {
+							try {
+								ArrayUtilities.indexOf(provider.getSpecialties(AbilityType.valueOf(option.getType())), option.getUnderlyingTrait());
+							}
+							catch (IllegalArgumentException e) {
+								//no longer has the specialty
+								disableStatOption(item, stats, option);
+							}
+						}
+					}
+				}
+		}
+
+		@Override
+		public void traitChanged(ITraitType type) {
+		}
+
+		@Override
+		public void experiencedChanged(boolean experienced) {
+		}
+
+		@Override
+		public void casteChanged() {
+		}
+    	
+    });
   }
   
   public IEquipmentCharacterDataProvider getCharacterDataProvider() {
@@ -121,11 +164,11 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
 	
   private List<IEquipmentStatsOption> getOptionsList(IEquipmentItem item, IEquipmentStats stats)
   {
-		List<IEquipmentStatsOption> list = options.get(item, stats);
+		List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
 		if (list == null)
 		{
 			list = new ArrayList<IEquipmentStatsOption>();
-			options.add(item, stats, list);
+			optionsTable.add(item, stats, list);
 		}
 		return list;
   }

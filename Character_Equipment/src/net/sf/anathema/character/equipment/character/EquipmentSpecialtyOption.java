@@ -33,6 +33,10 @@ public class EquipmentSpecialtyOption implements IEquipmentStatsOption {
 		return specialty.getCurrentValue();
 	}
 	
+	public INamedGenericTrait getUnderlyingTrait() {
+		return specialty;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof EquipmentSpecialtyOption)
