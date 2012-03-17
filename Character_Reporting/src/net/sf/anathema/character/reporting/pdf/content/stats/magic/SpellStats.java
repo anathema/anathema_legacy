@@ -64,7 +64,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   @Override
   public int compareTo(IMagicStats stats) {
     if (stats.getClass() != getClass()) {
-      throw new ClassCastException("Uncomparable elements.");
+      throw new ClassCastException("Uncomparable elements:" + stats.getClass());
     }
 
     SpellStats spell = (SpellStats) stats;
