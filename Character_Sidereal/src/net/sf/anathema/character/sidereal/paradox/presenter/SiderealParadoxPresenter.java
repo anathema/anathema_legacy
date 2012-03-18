@@ -10,9 +10,8 @@ public class SiderealParadoxPresenter extends VirtueFlawPresenter {
   public SiderealParadoxPresenter(IResources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
     super(resources, virtueFlawView, model);
   }
-  
+
   @Override
-  protected void initBasicPresentation()
-  {
+  protected void initBasicPresentation() {
   }
 }

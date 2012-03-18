@@ -8,13 +8,16 @@ import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 
 public class RoninMartialArtsRules implements IMartialArtsRules {
 
+  @Override
   public void setHighLevelAtCreation(boolean highLevelAtCreation) {
   }
 
+  @Override
   public MartialArtsLevel getStandardLevel() {
     return MartialArtsLevel.Sidereal;
   }
 
+  @Override
   public boolean isCharmAllowed(
       ICharm martialArtsCharm,
       IGenericCharmConfiguration charmConfiguration,

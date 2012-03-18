@@ -23,6 +23,7 @@ public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEdition
     super(resources);
   }
 
+  @Override
   public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
     return new FlawedFateEncoder(getResources());
   }

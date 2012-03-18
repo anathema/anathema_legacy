@@ -7,11 +7,11 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredReportContent(produces = SiderealCollegeContent.class)
-public class SiderealCollageContentFactory implements ReportContentFactory<SiderealCollegeContent> {
+public class SiderealCollegeContentFactory implements ReportContentFactory<SiderealCollegeContent> {
 
   private IResources resources;
 
-  public SiderealCollageContentFactory(IResources resources) {
+  public SiderealCollegeContentFactory(IResources resources) {
     this.resources = resources;
   }
 
