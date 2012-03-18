@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 
-public class ArmourStats extends AbstractStats implements IArmourStats {
+public class ArmourStats extends AbstractCombatStats implements IArmourStats {
 
   private final Map<String, Integer> hardnessByHealthType;
   private final Map<String, Integer> soakByHealthType;

@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -22,7 +23,7 @@ import net.sf.anathema.character.mutations.model.types.SoakProvidingMutation;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class BeastformNaturalSoak extends AbstractStats implements IArmourStats {
+public class BeastformNaturalSoak extends AbstractCombatStats implements IArmourStats {
   private final IQualityModel<?> model;
   private final IGenericTraitCollection collection;
 

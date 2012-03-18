@@ -66,4 +66,9 @@ public class ArtifactStatsDecorator extends AbstractStats implements IArtifactSt
   public String getId() {
     return getName().getId() + "." + type.name(); //$NON-NLS-1$
   }
+
+  @Override
+  public boolean representsItemForUseInCombat() {
+    return stats.representsItemForUseInCombat();
+  }
 }

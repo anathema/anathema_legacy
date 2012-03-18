@@ -147,4 +147,9 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   public Object[] getApplicableMaterials() {
     return delegate.getApplicableMaterials();
   }
+
+  @Override
+  public boolean representsItemForUseInCombat() {
+    return delegate.representsItemForUseInCombat();
+  }
 }

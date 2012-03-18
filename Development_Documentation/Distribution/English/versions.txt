@@ -10,8 +10,16 @@ http://anathema.github.com
 			Release 3.1.2
 ===------------------------------------------------------------------------------===
 
+If you saved your Lunar from v3.1.0 or before with v3.1.1, your knacks are gone.
+To recover them, there's nothing you can do but re-enter your character or directly
+edit the character save file.
+
+-- Features --
+* Weapon stats can factor in appropriate specialties
+
 -- Bugfixes --
 * Knacks are saved once again (Thanks, Kiren!)
+* Characters with Sorcery print even when Anathema runs on Java 7
 * "Bio-Luminescence" mutation shows up correctly
 * "Flat damage" tag is printed correctly
 * Knacks' sources are printed correctly

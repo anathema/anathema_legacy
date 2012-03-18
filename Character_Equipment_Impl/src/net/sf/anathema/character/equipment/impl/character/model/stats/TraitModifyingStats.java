@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 
-public class TraitModifyingStats extends AbstractStats implements ITraitModifyingStats
+public class TraitModifyingStats extends AbstractNonCombatStats implements ITraitModifyingStats
 {
 	Integer DDVMod;
 	Integer PDVMod;

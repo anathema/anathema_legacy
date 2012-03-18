@@ -54,7 +54,12 @@ public class ProxyTraitModifyingStats extends AbstractStats implements ITraitMod
 		  return delegate.getApplicableMaterials();
 	  }
 
-	@Override
+  @Override
+  public boolean representsItemForUseInCombat() {
+    return delegate.representsItemForUseInCombat();
+  }
+
+  @Override
 	public Integer getDDVMod() {
 		return delegate.getDDVMod();
 	}

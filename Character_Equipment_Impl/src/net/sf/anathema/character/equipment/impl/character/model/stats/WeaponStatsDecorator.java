@@ -102,4 +102,9 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
   public String getId() {
     return name.getId() + "." + ability.getId(); //$NON-NLS-1$
   }
+
+  @Override
+  public boolean representsItemForUseInCombat() {
+    return stats.representsItemForUseInCombat();
+  }
 }

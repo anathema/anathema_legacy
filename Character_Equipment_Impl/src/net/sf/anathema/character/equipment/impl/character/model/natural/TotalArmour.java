@@ -3,13 +3,14 @@ package net.sf.anathema.character.equipment.impl.character.model.natural;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class TotalArmour extends AbstractStats implements IArmourStats {
+public class TotalArmour extends AbstractCombatStats implements IArmourStats {
 
   private int fatigue;
   private int mobilityPenalty;

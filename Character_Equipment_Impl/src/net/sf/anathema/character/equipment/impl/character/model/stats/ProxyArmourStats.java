@@ -66,9 +66,8 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
       return false;
     }
     ProxyArmourStats other = (ProxyArmourStats) obj;
-    return ObjectUtilities.equals(delegate, other.delegate)
-            && ObjectUtilities.equals(material, other.material)
-            && ObjectUtilities.equals(ruleSet, other.ruleSet);
+    return ObjectUtilities.equals(delegate, other.delegate) && ObjectUtilities.equals(material,
+            other.material) && ObjectUtilities.equals(ruleSet, other.ruleSet);
   }
 
   @Override
@@ -84,5 +83,10 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
   @Override
   public Object[] getApplicableMaterials() {
     return delegate.getApplicableMaterials();
+  }
+
+  @Override
+  public boolean representsItemForUseInCombat() {
+    return delegate.representsItemForUseInCombat();
   }
 }

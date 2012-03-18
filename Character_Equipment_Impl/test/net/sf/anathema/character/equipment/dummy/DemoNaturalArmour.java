@@ -1,12 +1,13 @@
 package net.sf.anathema.character.equipment.dummy;
 
+import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class DemoNaturalArmour extends AbstractStats implements IArmourStats {
+public class DemoNaturalArmour extends AbstractCombatStats implements IArmourStats {
 
   private final int bashingSoak;
   private final int lethalSoak;

@@ -79,4 +79,9 @@ public class ProxyArtifactStats extends AbstractStats implements IArtifactStats,
 	  {
 		  return delegate.getApplicableMaterials();
 	  }
+
+  @Override
+  public boolean representsItemForUseInCombat() {
+    return delegate.representsItemForUseInCombat();
+  }
 }
