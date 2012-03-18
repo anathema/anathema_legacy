@@ -37,36 +37,33 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
     final IMagicSourceStringBuilder<ICharm> stringBuilder = new MagicSourceStringBuilder<ICharm>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
-  
-  protected String[] getDetailKeys()
-  {
-	  final List<String> details = new ArrayList<String>();
-	  for (ICharmAttribute attribute : getMagic().getAttributes()) {
-	    final String attributeId = attribute.getId();
-	    if (attribute.isVisualized()) {
-	      details.add("Keyword." + attributeId); //$NON-NLS-1$
-	    }
-	  }
-	  return details.toArray(new String[details.size()]);
+
+  protected String[] getDetailKeys() {
+    final List<String> details = new ArrayList<String>();
+    for (ICharmAttribute attribute : getMagic().getAttributes()) {
+      final String attributeId = attribute.getId();
+      if (attribute.isVisualized()) {
+        details.add("Keyword." + attributeId); //$NON-NLS-1$
+      }
+    }
+    return details.toArray(new String[details.size()]);
   }
 
   public String[] getDetailStrings(final IResources resources) {
     return ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
-        public String transform(String input) {
-          return resources.getString(input);
-        }
-      });
+      public String transform(String input) {
+        return resources.getString(input);
+      }
+    });
   }
 
   @Override
   public int compareTo(IMagicStats stats) {
     if (stats instanceof GenericCharmStats) {
       return 1;
-    }
-    else if (stats instanceof AbstractCharmStats) {
+    } else if (stats instanceof AbstractCharmStats) {
       return 0;
-    }
-    else {
+    } else {
       return -1;
     }
   }

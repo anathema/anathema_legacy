@@ -29,11 +29,11 @@ public class MagicDescriptionStringBuilder implements IMagicTooltipStringBuilder
     String[] paragraphs = charmDescription.getParagraphs();
     for (String paragraph : paragraphs) {
       builder.append(HtmlLineBreak);
+      String displayParagraph = isFirst ? getDescriptionHead() + paragraph : paragraph;
       if (isFirst) {
-        builder.append(getDescriptionHead());
         isFirst = false;
       }
-      String shortedParagraph = createFixedWidthParagraph(paragraph, HtmlLineBreak, MAX_DESCRIPTION_LENGTH);
+      String shortedParagraph = createFixedWidthParagraph(displayParagraph, HtmlLineBreak, MAX_DESCRIPTION_LENGTH);
       builder.append(shortedParagraph);
     }
   }
