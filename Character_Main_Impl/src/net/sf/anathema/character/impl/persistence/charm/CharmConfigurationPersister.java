@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.LimitedTrait;
@@ -38,62 +39,37 @@ public class CharmConfigurationPersister {
 
   public void save(Element parent, ICharacterStatistics statistics) {
     ICharacterTemplate template = statistics.getCharacterTemplate();
-    if (!template.getMagicTemplate().getCharmTemplate().canLearnCharms(statistics.getRules())) {
+    ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
+    if (!charmTemplate.canLearnCharms(statistics.getRules())) {
       return;
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);
     ICharmConfiguration charmConfiguration = statistics.getCharms();
-    ISpecialCharmPersister specialPersister = createSpecialCharmPersister(charmConfiguration);
-    for (IIdentificate type : charmConfiguration.getCharacterTypes(true)) {
-      saveCharms(specialPersister, charmConfiguration, type, charmsElement);
-    }
-    saveCharms(specialPersister, charmConfiguration, MartialArtsUtilities.MARTIAL_ARTS, charmsElement);
+    saveCharms(charmsElement, charmTemplate, charmConfiguration);
     saveCombos(charmsElement, statistics.getCombos());
     saveFilters(charmsElement, charmConfiguration.getCharmFilters());
   }
 
+  private ICharmConfiguration saveCharms(Element charmsElement, ICharmTemplate charmTemplate, ICharmConfiguration charmConfiguration) {
+    CharmSaver saver = new CharmSaver(charmConfiguration);
+    for (IIdentificate type : charmConfiguration.getCharacterTypes(true)) {
+      saver.saveCharms(type, charmsElement);
+    }
+    if (charmTemplate.hasUniqueCharms()) {
+      saver.saveCharms(charmTemplate.getUniqueCharmType().getId(), charmsElement);
+    }
+    saver.saveCharms(MartialArtsUtilities.MARTIAL_ARTS, charmsElement);
+    return charmConfiguration;
+  }
+
   private void saveFilters(Element charmsElement, List<ICharmFilter> charmFilters) {
     Element filtersElement = charmsElement.addElement(TAG_CHARMFILTERS);
-
     for (ICharmFilter filter : charmFilters)
       filter.save(filtersElement);
   }
 
   private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration charmConfiguration) {
     return new SpecialCharmPersister(charmConfiguration.getSpecialCharms(), charmConfiguration.getCharmIdMap());
-  }
-
-  private void saveCharms(ISpecialCharmPersister specialPersister, ICharmConfiguration charmConfiguration, IIdentificate type, Element charmsElement) {
-    for (ILearningCharmGroup group : charmConfiguration.getCharmGroups(type)) {
-      if (group.hasLearnedCharms()) {
-        saveCharmGroup(charmsElement, group, specialPersister, charmConfiguration);
-      }
-    }
-  }
-
-  private void saveCharmGroup(Element charmsElement, ILearningCharmGroup group, ISpecialCharmPersister specialPersister,
-                              ICharmConfiguration charmConfiguration) {
-    Element groupElement = charmsElement.addElement(TAG_CHARMGROUP);
-    groupElement.addAttribute(ATTRIB_NAME, group.getId());
-    groupElement.addAttribute(ATTRIB_TYPE, group.getCharacterType().getId());
-    for (ICharm charm : group.getCreationLearnedCharms()) {
-      saveCharm(charmConfiguration, specialPersister, groupElement, charm, false);
-    }
-    for (ICharm charm : group.getExperienceLearnedCharms()) {
-      saveCharm(charmConfiguration, specialPersister, groupElement, charm, true);
-    }
-  }
-
-  private void saveCharm(ICharmConfiguration charmConfiguration, ISpecialCharmPersister specialPersister, Element groupElement, ICharm charm,
-                         boolean experienceLearned) {
-    Element charmElement = groupElement.addElement(TAG_CHARM);
-    charmElement.addAttribute(ATTRIB_NAME, charm.getId());
-    charmElement.addAttribute(ATTRIB_EXPERIENCE_LEARNED, String.valueOf(experienceLearned));
-    ISpecialCharmConfiguration specialCharmConfiguration = charmConfiguration.getSpecialCharmConfiguration(charm);
-    if (specialCharmConfiguration != null) {
-      Element specialElement = charmElement.addElement(TAG_SPECIAL);
-      specialPersister.saveConfiguration(specialElement, specialCharmConfiguration);
-    }
   }
 
   private void saveCombos(Element parent, IComboConfiguration comboConfiguration) {
