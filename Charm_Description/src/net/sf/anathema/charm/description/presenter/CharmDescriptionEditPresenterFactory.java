@@ -7,7 +7,7 @@ import net.sf.anathema.character.presenter.charm.detail.RegisteredCharmDetailPre
 import net.sf.anathema.charm.description.model.AutoSaveCharmDescriptionEditModel;
 import net.sf.anathema.charm.description.model.CharmDescriptionEditModel;
 import net.sf.anathema.charm.description.persistence.CharmDescriptionDataBase;
-import net.sf.anathema.charm.description.persistence.InMemoryCharmDescriptionDataBase2;
+import net.sf.anathema.charm.description.persistence.InMemoryCharmDescriptionDataBase;
 import net.sf.anathema.charm.description.view.CharmDescriptionEditView;
 
 @RegisteredCharmDetailPresenterFactory
@@ -16,7 +16,7 @@ public class CharmDescriptionEditPresenterFactory implements CharmDetailPresente
   @Override
   public CharmDetailPresenter create(ICharacterGenerics generics) {
     final CharmDescriptionEditView view = new CharmDescriptionEditView();
-    CharmDescriptionDataBase dataBase = new InMemoryCharmDescriptionDataBase2();// new MongoCharmDescriptionDataBase();
+    CharmDescriptionDataBase dataBase = new InMemoryCharmDescriptionDataBase();// new MongoCharmDescriptionDataBase();
     final CharmDescriptionEditModel model = new AutoSaveCharmDescriptionEditModel(dataBase);
     return new CharmDescriptionEditPresenter(view, model);
   }
