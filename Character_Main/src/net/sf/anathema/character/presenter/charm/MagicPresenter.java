@@ -15,7 +15,6 @@ import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
-import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.logging.Logger;
@@ -71,7 +70,7 @@ public class MagicPresenter implements IContentPresenter {
       for(CharmDetailPresenterFactory factory : factories) {
         return factory.create(generics);
       }
-    } catch (InitializationException e) {
+    } catch (Throwable e) {
       logger.error("Error initializing charm details.", e);
     }
     return new NullCharmDetailPresenter();
