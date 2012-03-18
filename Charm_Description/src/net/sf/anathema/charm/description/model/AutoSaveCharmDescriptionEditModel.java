@@ -1,14 +1,20 @@
 package net.sf.anathema.charm.description.model;
 
 import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.charm.description.persistence.CharmDescriptionDataBase;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class AutoSaveCharmDescriptionEditModel implements CharmDescriptionEditModel {
 
   private final ChangeControl changeControl = new ChangeControl();
-  private String editId;
+  private final CharmDescriptionDataBase dataBase;
+  private String editId = "";
   private String currentDescription;
+
+  public AutoSaveCharmDescriptionEditModel(CharmDescriptionDataBase dataBase) {
+    this.dataBase = dataBase;
+  }
 
   @Override
   public boolean isActive() {
@@ -18,7 +24,7 @@ public class AutoSaveCharmDescriptionEditModel implements CharmDescriptionEditMo
   @Override
   public void setEditId(String charmId) {
     this.editId = charmId;
-    updateCurrentDescription("Description for " + charmId);
+    setCurrentDescriptionInternal(dataBase.loadDescription(charmId));
   }
 
   @Override
@@ -32,6 +38,14 @@ public class AutoSaveCharmDescriptionEditModel implements CharmDescriptionEditMo
 
   @Override
   public void updateCurrentDescription(String newDescription) {
+    if (ObjectUtilities.equals(currentDescription, newDescription)) {
+      return;
+    }
+    dataBase.saveDescription(editId, newDescription);
+    setCurrentDescriptionInternal(newDescription);
+  }
+
+  private void setCurrentDescriptionInternal(String newDescription) {
     if (ObjectUtilities.equals(currentDescription, newDescription)) {
       return;
     }
