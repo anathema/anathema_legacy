@@ -6,7 +6,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 
 public interface IRepositoryWriteAccess {
 
-  public OutputStream createMainOutputStream() throws RepositoryException;
+  OutputStream createMainOutputStream() throws RepositoryException;
 
-  public OutputStream createSubOutputStream(String streamID) throws RepositoryException;
+  OutputStream createSubOutputStream(String streamID) throws RepositoryException;
 }

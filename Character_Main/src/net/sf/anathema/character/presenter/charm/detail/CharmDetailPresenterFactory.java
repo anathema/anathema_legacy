@@ -1,8 +1,8 @@
 package net.sf.anathema.character.presenter.charm.detail;
 
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.framework.IAnathemaModel;
 
 public interface CharmDetailPresenterFactory {
 
-  CharmDetailPresenter create(ICharacterGenerics generics);
+  CharmDetailPresenter create(IAnathemaModel anathemaModel);
 }

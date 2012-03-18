@@ -19,7 +19,7 @@ import net.sf.anathema.lib.resources.IResources;
 public final class CharmDescriptionItemTypeConfiguration extends AbstractItemTypeConfiguration {
 
   public static final String CHARM_DESCRIPTION_ITEM_TYPE_ID = "CharmDescription"; //$NON-NLS-1$
-  private static final RepositoryConfiguration REPOSITORY_CONFIGURATION = new RepositoryConfiguration(".dsc", "CharmDescription/", "all");
+  private static final RepositoryConfiguration REPOSITORY_CONFIGURATION = new RepositoryConfiguration(".cdsc", "CharmDescription/");
 
   public CharmDescriptionItemTypeConfiguration() {
     super(new ItemType(CHARM_DESCRIPTION_ITEM_TYPE_ID, REPOSITORY_CONFIGURATION, false));

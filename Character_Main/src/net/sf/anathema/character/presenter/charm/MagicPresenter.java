@@ -1,5 +1,6 @@
 package net.sf.anathema.character.presenter.charm;
 
+import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -13,6 +14,7 @@ import net.sf.anathema.character.presenter.charm.detail.RegisteredCharmDetailPre
 import net.sf.anathema.character.presenter.charm.tree.CharacterCharmTreePresenter;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
+import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.initialization.Instantiater;
@@ -29,15 +31,15 @@ public class MagicPresenter implements IContentPresenter {
 
   private final Logger logger = Logger.getLogger(MagicPresenter.class);
   private final List<IContentPresenter> subPresenters = new ArrayList<IContentPresenter>();
-  private ICharacterGenerics generics;
+  private IAnathemaModel anathemaModel;
 
   public MagicPresenter(
           ICharacterStatistics statistics,
           IMagicViewFactory factory,
           IResources resources,
-          ITemplateRegistry templateRegistry,
-          ICharacterGenerics generics) {
-    this.generics = generics;
+          IAnathemaModel anathemaModel) {
+    ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(anathemaModel).getTemplateRegistry();
+    this.anathemaModel = anathemaModel;
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
     if (charmTemplate.canLearnCharms(statistics.getRules())) {
@@ -65,10 +67,10 @@ public class MagicPresenter implements IContentPresenter {
 
   private CharmDetailPresenter createCharmDetailPresenter() {
     try {
-      Instantiater instantiater = generics.getInstantiater();
+      Instantiater instantiater = CharacterGenericsExtractor.getGenerics(anathemaModel).getInstantiater();
       Collection<CharmDetailPresenterFactory> factories = instantiater.instantiateAll(RegisteredCharmDetailPresenterFactory.class);
-      for(CharmDetailPresenterFactory factory : factories) {
-        return factory.create(generics);
+      for (CharmDetailPresenterFactory factory : factories) {
+        return factory.create(anathemaModel);
       }
     } catch (Throwable e) {
       logger.error("Error initializing charm details.", e);

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.module;
 
+import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -50,7 +50,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
 
   @Override
   protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
-    return new ExaltedCharacterPersister(getItemType(), getGenerics(model), model.getMessaging());
+    return new ExaltedCharacterPersister(getItemType(), CharacterGenericsExtractor.getGenerics(model), model.getMessaging());
   }
 
   @Override
@@ -65,8 +65,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         if (statistics == null) {
           Icon icon = characterUI.getCharacterDescriptionTabIcon();
           ICharacterView characterView = new CharacterView(null, printName, icon, null);
-          new CharacterPresenter(character, characterView, resources, getGenerics(anathemaModel),
-                  new NpcPointPresentation()).initPresentation();
+          new CharacterPresenter(character, characterView, resources, anathemaModel, new NpcPointPresentation()).initPresentation();
           return characterView;
         }
         ICharacterType characterType = character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType();
@@ -80,8 +79,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character.getStatistics());
         PointPresentationStrategy pointPresentation = choosePointPresentation(statistics, characterView,
                 bonusPointManagement, experiencePointManagement, resources);
-        new CharacterPresenter(character, characterView, resources, getGenerics(anathemaModel),
-                pointPresentation).initPresentation();
+        new CharacterPresenter(character, characterView, resources, anathemaModel, pointPresentation).initPresentation();
         character.setClean();
         return characterView;
       }
@@ -100,17 +98,11 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
             experiencePointManagement);
   }
 
-  private ICharacterGenerics getGenerics(IAnathemaModel model) {
-    ICharacterGenericsExtension genericsExtension = (ICharacterGenericsExtension) model.getExtensionPointRegistry().get(
-            ICharacterGenericsExtension.ID);
-    return genericsExtension.getCharacterGenerics();
-  }
-
   @Override
   protected IItemTypeViewProperties createItemTypeCreationProperties(IAnathemaModel anathemaModel,
                                                                      IResources resources) {
     IExaltedRuleSet preferredRuleset = AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset();
-    ICharacterGenerics generics = getGenerics(anathemaModel);
+    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(anathemaModel);
     CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, preferredRuleset,
             resources);
     CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(generics.getCasteCollectionRegistry(),

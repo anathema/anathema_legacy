@@ -2,7 +2,6 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacter;
@@ -14,6 +13,7 @@ import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
+import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
@@ -28,20 +28,22 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static net.sf.anathema.character.generic.framework.CharacterGenericsExtractor.getGenerics;
+
 public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
 
   private final ICharacter character;
   private final ICharacterView characterView;
-  private final ICharacterGenerics generics;
+  private final IAnathemaModel anathemaModel;
   private final IResources resources;
   private final PointPresentationStrategy pointPresentation;
 
   public CharacterPresenter(ICharacter character, ICharacterView view, IResources resources,
-                            ICharacterGenerics generics, PointPresentationStrategy pointPresentation) {
+                            IAnathemaModel anathemaModel, PointPresentationStrategy pointPresentation) {
     this.character = character;
     this.characterView = view;
     this.resources = resources;
-    this.generics = generics;
+    this.anathemaModel = anathemaModel;
     this.pointPresentation = pointPresentation;
   }
 
@@ -62,7 +64,7 @@ public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
 
   private void initAdvantagePresentation() {
     IAdvantageViewFactory viewFactory = characterView.createAdvantageViewFactory();
-    IContentPresenter presenter = new BasicAdvantagePresenter(resources, getStatistics(), viewFactory, generics);
+    IContentPresenter presenter = new BasicAdvantagePresenter(resources, getStatistics(), viewFactory, getGenerics(anathemaModel));
     String title = getString("CardView.Advantages.Title"); //$NON-NLS-1$
     initMultiTabViewPresentation(title, presenter, AdditionalModelType.Advantages);
   }
@@ -84,7 +86,7 @@ public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
   private void initCharacterDescriptionPresentation() {
     ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
     IContentPresenter presenter = new CharacterDescriptionPresenter(resources, character.getDescription(), view,
-    		getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
+            getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
     String title = getString("CardView.CharacterDescription.Title"); //$NON-NLS-1$
     initMultiTabViewPresentation(title, presenter, AdditionalModelType.Description);
   }
@@ -96,7 +98,7 @@ public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$
     MagicPresenter presenter = new MagicPresenter(getStatistics(), characterView.createMagicViewFactory(), resources,
-            generics.getTemplateRegistry(), generics);
+            anathemaModel);
     presenter.initPresentation();
     IViewContent content = presenter.getTabContent();
     IDisposable disposable = content.getDisposable();
@@ -117,7 +119,7 @@ public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
                                             IViewContent... coreViews) {
     List<IViewContent> contents = new ArrayList<IViewContent>();
     Collections.addAll(contents, coreViews);
-    IRegistry<String, IAdditionalViewFactory> factoryRegistry = generics.getAdditionalViewFactoryRegistry();
+    IRegistry<String, IAdditionalViewFactory> factoryRegistry = getGenerics(anathemaModel).getAdditionalViewFactoryRegistry();
     IAdditionalModel[] additionals = getStatistics().getExtendedConfiguration().getAdditionalModels(additionalsType);
     for (IAdditionalModel model : additionals) {
       IAdditionalViewFactory viewFactory = factoryRegistry.get(model.getTemplateId());
