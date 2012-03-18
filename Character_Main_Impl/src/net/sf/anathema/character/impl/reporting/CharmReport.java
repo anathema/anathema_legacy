@@ -21,6 +21,8 @@ import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
+import static java.text.MessageFormat.format;
+
 public class CharmReport extends AbstractPdfReport {
 
   private final IResources resources;
@@ -35,7 +37,7 @@ public class CharmReport extends AbstractPdfReport {
 
   @Override
   public String toString() {
-    return resources.getString("CharacterModule.Reporting.Charms.Name"); //$NON-NLS-1$
+    return resources.getString("CharmsReport.Name"); //$NON-NLS-1$
   }
 
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
@@ -50,7 +52,7 @@ public class CharmReport extends AbstractPdfReport {
     }
   }
 
-  private void printCharms(MultiColumnText columnText, ICharacter character) throws DocumentException {
+  public void printCharms(MultiColumnText columnText, ICharacter character) throws DocumentException {
     String currentGroup = "";
     boolean isFirst = true;
     for (ICharm charm : getCurrentCharms(character)) {
@@ -74,11 +76,13 @@ public class CharmReport extends AbstractPdfReport {
 
   private void addCharmData(CharmStats charmStats, MultiColumnText columnText) throws DocumentException {
     PdfPTable table = partFactory.createDataTable();
-    table.addCell(partFactory.createDataCell("Costs: ", charmStats.getCostString(resources)));
-    table.addCell(partFactory.createDataCell("Type: ", charmStats.getType(resources)));
+    table.addCell(partFactory.createDataCell(resources.getString("CharmReport.Costs.Label") + ": ", charmStats.getCostString(
+            resources)));
+    table.addCell(partFactory.createDataCell(resources.getString("CharmReport.Type.Label") + ": ", charmStats.getType(
+            resources)));
     String details = Joiner.on(',').join(charmStats.getDetailStrings(resources));
-    table.addCell(partFactory.createDoubleDataCell("Keywords: ", details));
-    table.addCell(partFactory.createDoubleDataCell("Duration: ", charmStats.getDurationString(resources)));
+    table.addCell(partFactory.createDoubleDataCell(resources.getString("CharmReport.Keywords.Label") + ": ", details));
+    table.addCell(partFactory.createDoubleDataCell(resources.getString("CharmReport.Duration.Label") + ": ", charmStats.getDurationString(resources)));
     columnText.addElement(table);
   }
 
@@ -86,8 +90,8 @@ public class CharmReport extends AbstractPdfReport {
           throws DocumentException {
     CharmDescription charmDescription = getCharmDescription(charm);
     if (charmDescription.isEmpty()) {
-      String text = "See: " + charmStats.getSourceString(resources);
-      columnText.addElement(partFactory.createDescriptionParagraph(text));
+      String sourceReference = resources.getString("CharmReport.See.Source", charmStats.getSourceString(resources));
+      columnText.addElement(partFactory.createDescriptionParagraph(sourceReference));
     }
     for (String paragraph : charmDescription.getParagraphs()) {
       columnText.addElement(partFactory.createDescriptionParagraph(paragraph));
