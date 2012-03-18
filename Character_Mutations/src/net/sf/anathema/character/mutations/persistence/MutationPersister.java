@@ -39,6 +39,7 @@ public class MutationPersister extends AbstractQualityPersister<IMutation> {
     String giftId = element.attributeValue(ATTRIB_ID);
     //backward compatability
     giftId = giftId.replace("DeadlyBeastmanTransformation.Gift", "Mutations.Mutation");
+    giftId = giftId.replace("BioLuimsnescene", "BioLuminescence");
     IMutationsModel mutationModel = (IMutationsModel) model;
     final int value = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
     final boolean creationActive = ElementUtilities.getBooleanAttribute(element, ATTRIB_CREATION_ACTIVE, true);

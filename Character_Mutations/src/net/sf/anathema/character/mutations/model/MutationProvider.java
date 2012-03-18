@@ -167,7 +167,7 @@ public class MutationProvider {
   }
 
   private static void addPoxes(Mutations mutations) {
-    mutations.add("BioLuimsnescene", Pox, CompassWest, 152);
+    mutations.add("BioLuminescence", Pox, CompassWest, 152);
     mutations.add("BlurredFate", Pox, Infernals, 63);
     mutations.add("Brachiation", Pox, CompassEast, 149);
     mutations.add("ChangingColoration", Pox, CompassWest, 152);

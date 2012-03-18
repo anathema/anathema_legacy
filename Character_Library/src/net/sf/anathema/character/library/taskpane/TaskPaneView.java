@@ -1,14 +1,11 @@
 package net.sf.anathema.character.library.taskpane;
 
-import com.l2fprod.common.swing.JTaskPane;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.gui.GuiUtilities;
-import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 

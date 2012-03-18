@@ -2,41 +2,55 @@ package net.sf.anathema.character.equipment.impl.character.model;
 
 import com.db4o.query.Predicate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.character.EquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.lib.collection.Table;
+import net.sf.anathema.lib.lang.ArrayUtilities;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
-import static net.sf.anathema.character.generic.type.CharacterType.INFERNAL;
-
-public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
+public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel 
+	implements IEquipmentCharacterOptionProvider {
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
   private final ICharacterType characterType;
   private final MagicalMaterial defaultMaterial;
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<IEquipmentItem>();
+  private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable =
+		    new Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>>();
+  private final IEquipmentCharacterDataProvider provider;
+  private final ICharacterListening changeListener;
 
   public EquipmentAdditionalModel(
-          ICharacterType characterType,
+		  ICharacterType characterType,
           IArmourStats naturalArmour,
           IEquipmentTemplateProvider equipmentTemplateProvider,
           IExaltedRuleSet ruleSet,
+          ICharacterModelContext context,
           IEquipmentTemplate... naturalWeapons) {
-    super(ruleSet, naturalArmour);
+	super(ruleSet, naturalArmour);
     this.characterType = characterType;
     this.defaultMaterial = evaluateDefaultMaterial();
     this.equipmentTemplateProvider = equipmentTemplateProvider;
+    this.provider = new EquipmentCharacterDataProvider(context, this);
+    this.changeListener = context.getCharacterListening();
     for (IEquipmentTemplate template : naturalWeapons) {
       if (template == null) {
         continue;
@@ -44,6 +58,50 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
       final IEquipmentItem item = new EquipmentItem(template, ruleSet, null);
       naturalWeaponItems.add(initItem(item));
     }
+    
+    context.getCharacterListening().addChangeListener(new ICharacterChangeListener() {
+
+		@Override
+		public void characterChanged() {
+			// removing specialty notes if the underlying specialty is removed
+			// need a more direct way to do this
+			for (IEquipmentItem item : getEquipmentItems())
+				for (IEquipmentStats stats : item.getStats()) {
+					List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
+					
+					if (list != null) {
+						List<IEquipmentStatsOption> optionsList = new ArrayList<IEquipmentStatsOption>();
+						optionsList.addAll(list);
+						for (IEquipmentStatsOption option : optionsList) {
+							try {
+								ArrayUtilities.indexOf(provider.getSpecialties(AbilityType.valueOf(option.getType())), option.getUnderlyingTrait());
+							}
+							catch (IllegalArgumentException e) {
+								//no longer has the specialty
+								disableStatOption(item, stats, option);
+							}
+						}
+					}
+				}
+		}
+
+		@Override
+		public void traitChanged(ITraitType type) {
+		}
+
+		@Override
+		public void experiencedChanged(boolean experienced) {
+		}
+
+		@Override
+		public void casteChanged() {
+		}
+    	
+    });
+  }
+  
+  public IEquipmentCharacterDataProvider getCharacterDataProvider() {
+	  return provider;
   }
 
   private MagicalMaterial evaluateDefaultMaterial() {
@@ -103,28 +161,65 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   public MagicalMaterial getDefaultMaterial() {
     return defaultMaterial;
   }
-
-  public ArtifactAttuneType[] getAttuneTypes(IEquipmentItem item) {
-    MagicalMaterial material = item.getMaterial();
-    switch (item.getMaterialComposition()) {
-      default:
-      case None:
-        return null;
-      case Fixed:
-      case Variable:
-        return MagicalMaterial.getAttunementTypes(characterType, material);
-      case Compound:
-        return new ArtifactAttuneType[]
-                {Unattuned, ArtifactAttuneType.FullyAttuned};
-      case MalfeanMaterials:
-        return createMalfeanMaterialsAttunementOptions();
-    }
+	
+  private List<IEquipmentStatsOption> getOptionsList(IEquipmentItem item, IEquipmentStats stats)
+  {
+		List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
+		if (list == null)
+		{
+			list = new ArrayList<IEquipmentStatsOption>();
+			optionsTable.add(item, stats, list);
+		}
+		return list;
   }
 
-  private ArtifactAttuneType[] createMalfeanMaterialsAttunementOptions() {
-    if (characterType != INFERNAL) {
-      return new ArtifactAttuneType[]{Unattuned, UnharmoniouslyAttuned};
-    }
-    return new ArtifactAttuneType[]{Unattuned, FullyAttuned};
+  @Override
+  public void enableStatOption(IEquipmentItem item, IEquipmentStats stats,
+			IEquipmentStatsOption option) {
+		if (item == null || stats == null) return;
+		getOptionsList(item, stats).add(option);
+		modelChangeControl.fireChangedEvent();
+  }
+
+  @Override
+  public void disableStatOption(IEquipmentItem item, IEquipmentStats stats,
+			IEquipmentStatsOption option) {
+		if (item == null || stats == null) return;
+		getOptionsList(item, stats).remove(option);
+		modelChangeControl.fireChangedEvent();
+  }
+
+  @Override
+  public boolean isStatOptionEnabled(IEquipmentItem item,
+			IEquipmentStats stats, IEquipmentStatsOption option) {
+		if (item == null || stats == null) return false;
+		return getOptionsList(item, stats).contains(option);
+  }
+
+  @Override
+  public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentItem item,
+			IEquipmentStats stats) {
+		if (item == null || stats == null) return new IEquipmentStatsOption[0];
+		return getOptionsList(item, stats).toArray(new IEquipmentStatsOption[0]);
+  }
+  
+  @Override
+  public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentStats stats) {
+		if (stats == null) return new IEquipmentStatsOption[0];
+		
+		List<IEquipmentItem> itemList = new ArrayList<IEquipmentItem>();
+		itemList.addAll(naturalWeaponItems);
+		for (IEquipmentItem item : getEquipmentItems())
+			itemList.add(item);
+		for (IEquipmentItem item : itemList)
+			for (IEquipmentStats stat : item.getStats())
+				if (stats.equals(stat))
+					return getEnabledStatOptions(item, stat);			
+		return new IEquipmentStatsOption[0];
+  }
+
+  @Override
+  public void addCharacterChangedListener(ICharacterChangeListener listener) {
+	changeListener.addChangeListener(listener);
   }
 }

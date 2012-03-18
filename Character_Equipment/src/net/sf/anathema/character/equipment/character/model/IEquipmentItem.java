@@ -13,6 +13,8 @@ public interface IEquipmentItem {
   public String getDescription();
 
   public IEquipmentStats[] getStats();
+  
+  public IEquipmentStats getStat(String name);
 
   public void setPrintEnabled(IEquipmentStats equipment, boolean enabled);
 

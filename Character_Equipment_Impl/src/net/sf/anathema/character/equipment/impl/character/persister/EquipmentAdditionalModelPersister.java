@@ -3,8 +3,10 @@ package net.sf.anathema.character.equipment.impl.character.persister;
 import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.impl.character.model.MissingMaterialException;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
@@ -21,6 +23,9 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
   private static final String TAG_ITEM = "item"; //$NON-NLS-1$
   private static final String TAG_TEMPLATE_ID = "templateId"; //$NON-NLS-1$
   private static final String TAG_PRINT_STATS = "printedStats"; //$NON-NLS-1$
+  private static final String TAG_SPECIALTY_OPTION = "specialty"; //$NON-NLS-1$
+  private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
+  private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
   private static final String TAG_MATERIAL = "material"; //$NON-NLS-1$
   private IAnathemaMessaging messageIndicator;
 
@@ -29,11 +34,12 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
   }
 
   public void save(Element parent, IAdditionalModel model) {
-    saveItems(parent, ((IEquipmentAdditionalModel) model).getNaturalWeapons());
-    saveItems(parent, ((IEquipmentAdditionalModel) model).getEquipmentItems());
+	IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) model;
+    saveItems(parent, equipmentModel.getNaturalWeapons(), equipmentModel.getCharacterDataProvider());
+    saveItems(parent, equipmentModel.getEquipmentItems(), equipmentModel.getCharacterDataProvider());
   }
 
-  private void saveItems(Element parent, IEquipmentItem[] equipmentItems) {
+  private void saveItems(Element parent, IEquipmentItem[] equipmentItems, IEquipmentCharacterDataProvider provider) {
     for (IEquipmentItem item : equipmentItems) {
       Element itemElement = parent.addElement(TAG_ITEM);
       itemElement.addElement(TAG_TEMPLATE_ID).addCDATA(item.getTemplateId());
@@ -42,7 +48,13 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
       }
       for (IEquipmentStats stats : item.getStats()) {
         if (item.isPrintEnabled(stats)) {
-          itemElement.addElement(TAG_PRINT_STATS).addCDATA(stats.getId());
+          Element statsElement = itemElement.addElement(TAG_PRINT_STATS); 
+          statsElement.addCDATA(stats.getId());
+          for (IEquipmentStatsOption option : provider.getEnabledStatOptions(item, item.getStat(stats.getId()))) {
+        	  Element optionElement = statsElement.addElement(TAG_SPECIALTY_OPTION); 
+        	  optionElement.addAttribute(ATTRIB_NAME, option.getName());
+        	  optionElement.addAttribute(ATTRIB_TYPE, option.getType());
+          }
         }
       }
     }
@@ -75,8 +87,17 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
       }
       item.setUnprinted();
       for (Element statsElement : ElementUtilities.elements(itemElement, TAG_PRINT_STATS)) {
-        String printedStatId = statsElement.getText();
+        String printedStatId = statsElement.getText().trim();
         item.setPrinted(printedStatId);
+        
+        IEquipmentCharacterDataProvider provider = equipmentModel.getCharacterDataProvider();
+        IEquipmentStats stats = item.getStat(printedStatId);
+        for (Element optionsElement : ElementUtilities.elements(statsElement, TAG_SPECIALTY_OPTION)) {
+        	IEquipmentStatsOption option = provider.getCharacterSpecialtyOption(
+        			optionsElement.attributeValue(ATTRIB_NAME),
+        			optionsElement.attributeValue(ATTRIB_TYPE));
+        	provider.enableStatOption(item, stats, option);
+        }
       }
     }
   }

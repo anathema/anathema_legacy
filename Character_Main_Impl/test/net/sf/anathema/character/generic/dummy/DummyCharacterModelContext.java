@@ -11,6 +11,8 @@ import net.sf.anathema.character.generic.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.*;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
+import net.sf.anathema.character.generic.traits.INamedGenericTrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
@@ -53,6 +55,10 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
 
   public IAdditionalRules getAdditionalRules() {
     return getCharacter().getTemplate().getAdditionalRules();
+  }
+  
+  public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
+	return getCharacter().getSpecialties(traitType);
   }
 
   public ICharmContext getCharmContext() {

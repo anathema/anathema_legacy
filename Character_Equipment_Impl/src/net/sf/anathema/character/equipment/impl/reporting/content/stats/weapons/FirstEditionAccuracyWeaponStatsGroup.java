@@ -16,7 +16,7 @@ public class FirstEditionAccuracyWeaponStatsGroup extends AccuracyWeaponStatsGro
 		  IGenericTraitCollection traitCollection,
 		  IEquipmentModifiers equipment)
   {
-    super(resources, traitCollection, equipment);
+    super(resources, traitCollection, null, equipment);
     this.character = character;
   }
 

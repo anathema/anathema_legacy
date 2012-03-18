@@ -58,7 +58,7 @@ public class EquipmentItem implements IEquipmentItem {
       return views;
     }
     return ArrayUtilities.transform(views, IEquipmentStats.class, new ITransformer<IEquipmentStats, IEquipmentStats>() {
-      public IEquipmentStats transform(IEquipmentStats input) {
+      public IEquipmentStats transform(final IEquipmentStats input) {
         if (input instanceof IArmourStats) {
           return new ProxyArmourStats((IArmourStats) input, material, ruleSet);
         }
@@ -153,6 +153,15 @@ public class EquipmentItem implements IEquipmentItem {
         return;
       }
     }
+  }
+  
+  public IEquipmentStats getStat(String statId) {
+	for (IEquipmentStats view : getViews()) {
+	    if (view.getId().equals(statId)) {
+	        return view;
+	    }
+	}
+	return null;
   }
 
   public void addChangeListener(IChangeListener listener) {
