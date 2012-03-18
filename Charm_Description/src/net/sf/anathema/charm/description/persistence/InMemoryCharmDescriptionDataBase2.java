@@ -3,7 +3,7 @@ package net.sf.anathema.charm.description.persistence;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InMemoryCharmDescriptionDataBase implements CharmDescriptionDataBase {
+public class InMemoryCharmDescriptionDataBase2 implements CharmDescriptionDataBase {
 
   private Map<String, String> descriptionById = new HashMap<String, String>();
 
