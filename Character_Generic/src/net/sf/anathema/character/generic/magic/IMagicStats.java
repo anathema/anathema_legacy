@@ -21,7 +21,4 @@ public interface IMagicStats extends IStats, Comparable<IMagicStats> {
   String[] getDetailStrings(IResources resources);
 
   String getNameString(IResources resources);
-
-  @Override
-  int compareTo(IMagicStats o);
 }

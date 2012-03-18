@@ -58,6 +58,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
       });
   }
 
+  @Override
   public int compareTo(IMagicStats stats) {
     if (stats instanceof GenericCharmStats) {
       return 1;
