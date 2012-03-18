@@ -12,6 +12,7 @@ http://anathema.github.com
 
 -- Bugfixes --
 * Knacks are saved once again (Thanks, Kiren!)
+* Characters with Sorcery print even when Anathema runs on Java 7
 * "Bio-Luminescence" mutation shows up correctly
 * "Flat damage" tag is printed correctly
 * Knacks' sources are printed correctly

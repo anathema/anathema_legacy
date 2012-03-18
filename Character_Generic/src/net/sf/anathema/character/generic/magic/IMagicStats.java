@@ -6,19 +6,22 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IMagicStats extends IStats, Comparable<IMagicStats> {
 
-  public IIdentificate getName();
+  IIdentificate getName();
 
-  public String getCostString(IResources resources);
+  String getCostString(IResources resources);
 
-  public String getGroupName(IResources resources);
+  String getGroupName(IResources resources);
 
-  public String getType(IResources resources);
+  String getType(IResources resources);
 
-  public String getDurationString(IResources resources);
+  String getDurationString(IResources resources);
 
-  public String getSourceString(IResources resources);
+  String getSourceString(IResources resources);
 
-  public String[] getDetailStrings(IResources resources);
+  String[] getDetailStrings(IResources resources);
 
-  public String getNameString(IResources resources);
+  String getNameString(IResources resources);
+
+  @Override
+  int compareTo(IMagicStats o);
 }

@@ -43,17 +43,15 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
     }
     return new String[0];
   }
-  
+
   @Override
   public String[] getDetailStrings(final IResources resources) {
-	return ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>()
-	{
-	  @Override
-      public String transform(String input)
-	  {
-	    return resources.getString(input);
-	  }
-	});
+    return ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
+      @Override
+      public String transform(String input) {
+        return resources.getString(input);
+      }
+    });
   }
 
   @Override
@@ -63,10 +61,9 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   @Override
   public int compareTo(IMagicStats stats) {
-    if (stats.getClass() != getClass()) {
-      throw new ClassCastException("Uncomparable elements:" + stats.getClass());
+    if (stats instanceof AbstractCharmStats) {
+      return 1;
     }
-
     SpellStats spell = (SpellStats) stats;
     int r = getMagic().getCircleType().compareTo(spell.getMagic().getCircleType());
     if (r == 0) {
@@ -80,7 +77,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
     if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
-    return compareTo((SpellStats)obj) == 0;
+    return compareTo((SpellStats) obj) == 0;
   }
 
   @Override
