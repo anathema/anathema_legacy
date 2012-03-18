@@ -7,6 +7,16 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.github.com
 
 ===------------------------------------------------------------------------------===
+			Release 3.1.2
+===------------------------------------------------------------------------------===
+
+-- Bugfixes --
+* Knacks are saved once again (Thanks, Kiren!)
+* "Bio-Luminescence" mutation shows up correctly
+* "Flat damage" tag is printed correctly
+* Knacks' sources are printed correctly
+
+===------------------------------------------------------------------------------===
 			Release 3.1.1
 ===------------------------------------------------------------------------------===
 
