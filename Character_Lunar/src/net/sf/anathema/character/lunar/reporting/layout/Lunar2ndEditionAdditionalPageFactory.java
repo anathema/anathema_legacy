@@ -19,6 +19,6 @@ public class Lunar2ndEditionAdditionalPageFactory implements PageFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isSecondEdition() && content.isOfType(CharacterType.LUNAR);
+    return content.isOfType(CharacterType.LUNAR);
   }
 }

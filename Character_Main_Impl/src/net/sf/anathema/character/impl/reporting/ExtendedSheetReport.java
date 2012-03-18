@@ -7,22 +7,18 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericDescription;
-import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.Extended1stEditionFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.Extended2ndEditionFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagic1stEditionPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
@@ -31,6 +27,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
+import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
@@ -47,7 +44,8 @@ public class ExtendedSheetReport extends AbstractPdfReport {
   private final ICharacterGenerics characterGenerics;
   private final PageSizePreference pageSizePreference;
 
-  public ExtendedSheetReport(IResources resources, ICharacterGenerics characterGenerics, PageSizePreference pageSizePreference) {
+  public ExtendedSheetReport(IResources resources, ICharacterGenerics characterGenerics,
+                             PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.characterGenerics = characterGenerics;
     this.pageSizePreference = pageSizePreference;
@@ -71,24 +69,13 @@ public class ExtendedSheetReport extends AbstractPdfReport {
       IExtendedPartEncoder partEncoder = getPartEncoder(stattedCharacter);
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
-      IExaltedEdition edition = character.getRules().getEdition();
 
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
-      if (edition == ExaltedEdition.FirstEdition) {
-        encoderList
-                .add(new Extended1stEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
-      }
-      if (edition == ExaltedEdition.SecondEdition) {
-        encoderList.add(new Extended2ndEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
-        encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
-      }
+      encoderList.add(
+              new Extended2ndEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
+      encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(getEncoderRegistry(), configuration));
-      if (edition == ExaltedEdition.SecondEdition) {
         encoderList.add(new ExtendedMagicPageEncoder(partEncoder, resources, configuration));
-      } else if (partEncoder.hasMagicPage()) {
-        encoderList.add(
-                new ExtendedMagic1stEditionPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration, edition != ExaltedEdition.FirstEdition));
-      }
       boolean firstPagePrinted = false;
       for (PageEncoder encoder : encoderList) {
         if (firstPagePrinted) {

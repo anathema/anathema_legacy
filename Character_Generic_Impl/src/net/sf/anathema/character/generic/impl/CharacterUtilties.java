@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.impl;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -13,7 +12,8 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 public class CharacterUtilties {
 
   public static int getDodgeMdv(IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
-    int baseValue = getRoundDownDv(traitCollection, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence);
+    int baseValue = getRoundDownDv(traitCollection, OtherTraitType.Willpower, AbilityType.Integrity,
+            OtherTraitType.Essence);
     baseValue += equipment.getMDDVMod();
     return Math.max(baseValue, 0);
   }
@@ -37,19 +37,13 @@ public class CharacterUtilties {
   }
 
   public static int getKnockdownPool(IGenericCharacter character) {
-    return getKnockdownPool(character, character.getTraitCollection());
+    return getKnockdownPool(character.getTraitCollection());
   }
 
-  public static int getKnockdownPool(IGenericCharacter character, IGenericTraitCollection traitCollection) {
-    int pool;
-    if (character.getRules().getEdition() == ExaltedEdition.FirstEdition) {
-      pool = getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
-    }
-    else {
-      int attribute = getMaxValue(traitCollection, AttributeType.Dexterity, AttributeType.Stamina);
-      int ability = getMaxValue(traitCollection, AbilityType.Athletics, AbilityType.Resistance);
-      pool = attribute + ability;
-    }
+  public static int getKnockdownPool(IGenericTraitCollection traitCollection) {
+    int attribute = getMaxValue(traitCollection, AttributeType.Dexterity, AttributeType.Stamina);
+    int ability = getMaxValue(traitCollection, AbilityType.Athletics, AbilityType.Resistance);
+    int pool = attribute + ability;
     return Math.max(pool, 0);
   }
 
@@ -64,7 +58,8 @@ public class CharacterUtilties {
   }
 
   private static int getMaxValue(IGenericTraitCollection traitCollection, ITraitType second, ITraitType first) {
-    return Math.max(traitCollection.getTrait(first).getCurrentValue(), traitCollection.getTrait(second).getCurrentValue());
+    return Math.max(traitCollection.getTrait(first).getCurrentValue(),
+            traitCollection.getTrait(second).getCurrentValue());
   }
 
   private static int getRoundDownDv(IGenericTraitCollection traitCollection, ITraitType... types) {
@@ -98,13 +93,13 @@ public class CharacterUtilties {
     return sum;
   }
 
-  public static int getDodgeDv(ICharacterType characterType, IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
+  public static int getDodgeDv(ICharacterType characterType, IGenericTraitCollection traitCollection,
+                               IEquipmentModifiers equipment) {
     int dv;
     int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
     if (essenceValue > 1) {
       dv = getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge, OtherTraitType.Essence);
-    }
-    else {
+    } else {
       dv = getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge);
     }
     dv += equipment.getDDVMod() + equipment.getMobilityPenalty();
@@ -120,12 +115,5 @@ public class CharacterUtilties {
       return 2;
     }
     return 0;
-  }
-
-  public static int getDodgePool(IGenericCharacter character) {
-    IGenericTraitCollection traitCollection = character.getTraitCollection();
-    int dodgeValue = traitCollection.getTrait(AbilityType.Dodge).getCurrentValue();
-    int value = traitCollection.getTrait(AttributeType.Dexterity).getCurrentValue() + dodgeValue;
-    return Math.max(0, value - getUntrainedActionModifier(character, AbilityType.Dodge));
   }
 }

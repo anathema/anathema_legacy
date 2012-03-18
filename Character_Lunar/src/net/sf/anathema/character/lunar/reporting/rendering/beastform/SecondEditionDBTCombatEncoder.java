@@ -36,7 +36,7 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
     int joinBattle = CharacterUtilties.getJoinBattle(traitCollection, equipment);
     int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, equipment);
     int knockdownThreshold = CharacterUtilties.getKnockdownThreshold(traitCollection);
-    int knockdownPool = CharacterUtilties.getKnockdownPool(reportContent.getCharacter(), traitCollection);
+    int knockdownPool = CharacterUtilties.getKnockdownPool(traitCollection);
     int stunningThreshold = CharacterUtilties.getStunningThreshold(traitCollection);
     int stunningPool = CharacterUtilties.getStunningPool(traitCollection);
 

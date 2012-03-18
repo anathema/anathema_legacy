@@ -38,7 +38,7 @@ public class PresentationPropertiesParserTest extends TestCase {
     parentTemplate.setTemplateType(new TemplateType(CharacterType.SOLAR));
     presentationProperties.setParentTemplate(parentTemplate);
     assertEquals(
-        "SolarButtonLifeFirstEdition16.png", presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), ExaltedEdition.FirstEdition.getId())); //$NON-NLS-1$
+        "SolarButtonLifeSecondEdition16.png", presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), ExaltedEdition.SecondEdition.getId())); //$NON-NLS-1$
   }
 
   public void testParseXmlWithoutCharmPresentationProperties() throws Exception {

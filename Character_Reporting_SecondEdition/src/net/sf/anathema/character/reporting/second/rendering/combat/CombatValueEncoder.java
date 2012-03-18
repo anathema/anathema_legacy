@@ -10,6 +10,7 @@ import net.sf.anathema.character.reporting.second.content.combat.CombatStatsCont
 
 public class CombatValueEncoder implements IContentEncoder {
 
+  @Override
   public float encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     CombatStatsContent content = createContent(reportContent);
     Position upperLeft = new Position(bounds.x, bounds.getMaxY());

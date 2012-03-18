@@ -194,7 +194,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   @Override
   public IExaltedEdition getEdition() {
-    return ExaltedEdition.FirstEdition;
+    return ExaltedEdition.SecondEdition;
   }
 
   @Override

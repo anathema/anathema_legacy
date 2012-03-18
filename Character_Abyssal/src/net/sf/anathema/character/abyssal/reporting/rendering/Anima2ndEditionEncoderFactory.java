@@ -19,6 +19,6 @@ public class Anima2ndEditionEncoderFactory extends AbstractAnimaEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isSecondEdition() && content.isOfType(CharacterType.ABYSSAL);
+    return content.isOfType(CharacterType.ABYSSAL);
   }
 }

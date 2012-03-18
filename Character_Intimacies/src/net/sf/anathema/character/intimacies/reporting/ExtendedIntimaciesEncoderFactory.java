@@ -21,6 +21,6 @@ public class ExtendedIntimaciesEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isSecondEdition();
+    return true;
   }
 }

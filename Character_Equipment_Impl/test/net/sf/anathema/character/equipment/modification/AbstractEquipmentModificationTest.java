@@ -49,7 +49,7 @@ public abstract class AbstractEquipmentModificationTest {
   }
 
   protected final void assertRateModification(int expected, int original, WeaponStatsType type) {
-    RateModification modification = new RateModification(getMagicMaterial(), getRuleSet());
+    RateModification modification = new RateModification(getMagicMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original, type));
   }
 
@@ -68,14 +68,6 @@ public abstract class AbstractEquipmentModificationTest {
 
   protected final void assertLethalSoakUnmodified() {
     assertSoakModification(1, 1, HealthType.Lethal);
-  }
-
-  protected final void assertBashingSoakUnmodified() {
-    assertSoakModification(1, 1, HealthType.Bashing);
-  }
-
-  protected final void assertAggravatedSoakUnmodified() {
-    assertSoakModification(1, 1, HealthType.Aggravated);
   }
 
   protected final void assertHardnessModification(int expected, int original) {
