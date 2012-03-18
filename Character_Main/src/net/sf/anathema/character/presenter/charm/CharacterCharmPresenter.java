@@ -30,9 +30,9 @@ public class CharacterCharmPresenter implements IContentPresenter {
     }
   }
 
-  private IResources resources;
-  private CharacterCharmTreePresenter treePresenter;
-  private CharmDetailPresenter detailPresenter;
+  private final IResources resources;
+  private final CharacterCharmTreePresenter treePresenter;
+  private final CharmDetailPresenter detailPresenter;
   private final CollapsibleView collapsibleView = new CollapsibleView();
 
   public CharacterCharmPresenter(IResources resources, CharmDetailPresenter detailPresenter,
