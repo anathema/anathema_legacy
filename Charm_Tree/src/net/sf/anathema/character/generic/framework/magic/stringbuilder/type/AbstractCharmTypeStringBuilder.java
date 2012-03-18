@@ -1,7 +1,5 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder.type;
 
-import java.text.MessageFormat;
-
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmTypeStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicTooltipStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -14,6 +12,8 @@ import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.lib.resources.IResources;
 
+import java.text.MessageFormat;
+
 public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeStringBuilder, IMagicTooltipStringBuilder {
 
   private final boolean displayDefaultValues;
@@ -23,22 +23,18 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
     this.resources = resources;
     this.displayDefaultValues = displayDefaultValues;
   }
-  
-  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details)
-  {
-	  if (magic instanceof ICharm)
-	  {
-		  builder.append(resources.getString("CharmTreeView.ToolTip.Type")); //$NON-NLS-1$
-		  builder.append(ColonSpace);
-		  builder.append(createTypeString(((ICharm)magic).getCharmTypeModel()));
-		  builder.append(HtmlLineBreak);
-	  }
+
+  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
+    if (magic instanceof ICharm) {
+      builder.append(resources.getString("CharmTreeView.ToolTip.Type")); //$NON-NLS-1$
+      builder.append(ColonSpace);
+      builder.append(createTypeString(((ICharm) magic).getCharmTypeModel()));
+      builder.append(HtmlLineBreak);
+    }
   }
 
-  protected abstract StringBuilder buildDefenseString(
-      ISimpleSpecialsModel model,
-      boolean defaultSpeed,
-      boolean longAction);
+  protected abstract StringBuilder buildDefenseString(ISimpleSpecialsModel model, boolean defaultSpeed,
+          boolean longAction);
 
   private StringBuilder buildReflexiveModelString(IReflexiveSpecialsModel model) {
     StringBuilder builder = new StringBuilder();
@@ -49,19 +45,16 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
     if (model.getSecondaryStep() == null) {
       formatter.applyPattern(getResources().getString(getReflexiveSingleStepPattern()));
       if (model.getPrimaryStep() == null) {
-        objects = new Object[] { -1 };
+        objects = new Object[]{-1};
+      } else {
+        objects = new Object[]{model.getPrimaryStep()};
       }
-      else {
-        objects = new Object[] { model.getPrimaryStep() };
-      }
-    }
-    else {
+    } else {
       formatter.applyPattern(getResources().getString(getReflexiveDualStepPattern()));
       if (model.getPrimaryStep() == null) {
-        objects = new Object[] { -1, model.getSecondaryStep() };
-      }
-      else {
-        objects = new Object[] { model.getPrimaryStep(), model.getSecondaryStep() };
+        objects = new Object[]{-1, model.getSecondaryStep()};
+      } else {
+        objects = new Object[]{model.getPrimaryStep(), model.getSecondaryStep()};
       }
     }
     builder.append(formatter.format(objects));
@@ -83,14 +76,13 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
     boolean longTick = model.getTurnType() == TurnType.LongTick;
     if (dramaticAction) {
       builder.append(getResources().getString(getDramaticActionKey()));
-    }
-    else {
+    } else {
       if (!defaultSpeed || longTick || displayDefaultValues) {
         builder.append(buildSpeedString(model));
       }
     }
     if (!defaultDefense || displayDefaultValues) {
-      builder.append(buildDefenseString(model, defaultSpeed, dramaticAction||longTick));
+      builder.append(buildDefenseString(model, defaultSpeed, dramaticAction || longTick));
     }
     builder.append(")"); //$NON-NLS-1$
     return builder;

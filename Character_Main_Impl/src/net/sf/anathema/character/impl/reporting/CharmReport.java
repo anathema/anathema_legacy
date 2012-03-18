@@ -6,6 +6,9 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.ScreenDisplayInfoStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.VerboseCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -20,8 +23,6 @@ import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
-
-import static java.text.MessageFormat.format;
 
 public class CharmReport extends AbstractPdfReport {
 
@@ -64,8 +65,8 @@ public class CharmReport extends AbstractPdfReport {
         isFirst = false;
       }
       addCharmName(charm, columnText);
-      addCharmData(charmStats, columnText);
-      addCharmDescription(charmStats, charm, columnText);
+      addCharmData(charmStats, charm, columnText);
+      addCharmDescription(charm, columnText);
     }
   }
 
@@ -74,23 +75,44 @@ public class CharmReport extends AbstractPdfReport {
     columnText.addElement(partFactory.createCharmTitle(charmName));
   }
 
-  private void addCharmData(CharmStats charmStats, MultiColumnText columnText) throws DocumentException {
+  private void addCharmData(CharmStats charmStats, ICharm charm, MultiColumnText columnText) throws DocumentException {
     PdfPTable table = partFactory.createDataTable();
-    table.addCell(partFactory.createDataCell(resources.getString("CharmReport.Costs.Label") + ": ", charmStats.getCostString(
-            resources)));
-    table.addCell(partFactory.createDataCell(resources.getString("CharmReport.Type.Label") + ": ", charmStats.getType(
-            resources)));
-    String details = Joiner.on(',').join(charmStats.getDetailStrings(resources));
-    table.addCell(partFactory.createDoubleDataCell(resources.getString("CharmReport.Keywords.Label") + ": ", details));
-    table.addCell(partFactory.createDoubleDataCell(resources.getString("CharmReport.Duration.Label") + ": ", charmStats.getDurationString(resources)));
+    addCostsCell(charm, table);
+    addTypeCell(charm, table);
+    addKeywordsRow(charmStats, table);
+    addDurationRow(charmStats, table);
     columnText.addElement(table);
   }
 
-  private void addCharmDescription(CharmStats charmStats, ICharm charm, MultiColumnText columnText)
-          throws DocumentException {
+  private void addCostsCell(ICharm charm, PdfPTable table) {
+    String costsLabel = resources.getString("CharmReport.Costs.Label") + ": ";
+    String costsValue = new ScreenDisplayInfoStringBuilder(resources).createCostString(charm);
+    table.addCell(partFactory.createDataCell(costsLabel, costsValue));
+  }
+
+  private void addTypeCell(ICharm charm, PdfPTable table) {
+    String typeLabel = resources.getString("CharmReport.Type.Label") + ": ";
+    String typeValue = new VerboseCharmTypeStringBuilder(resources).createTypeString(charm.getCharmTypeModel());
+    table.addCell(partFactory.createDataCell(typeLabel, typeValue));
+  }
+
+  private void addKeywordsRow(CharmStats charmStats, PdfPTable table) {
+    String keywords = Joiner.on(',').join(charmStats.getDetailStrings(resources));
+    String keywordsLabel = resources.getString("CharmReport.Keywords.Label") + ": ";
+    table.addCell(partFactory.createDoubleDataCell(keywordsLabel, keywords));
+  }
+
+  private void addDurationRow(CharmStats charmStats, PdfPTable table) {
+    String durationLabel = resources.getString("CharmReport.Duration.Label") + ": ";
+    String durationString = charmStats.getDurationString(resources);
+    table.addCell(partFactory.createDoubleDataCell(durationLabel, durationString));
+  }
+
+  private void addCharmDescription(ICharm charm, MultiColumnText columnText) throws DocumentException {
     CharmDescription charmDescription = getCharmDescription(charm);
     if (charmDescription.isEmpty()) {
-      String sourceReference = resources.getString("CharmReport.See.Source", charmStats.getSourceString(resources));
+      String sourceString = new MagicSourceStringBuilder<ICharm>(resources).createSourceString(charm);
+      String sourceReference = resources.getString("CharmReport.See.Source", sourceString);
       columnText.addElement(partFactory.createDescriptionParagraph(sourceReference));
     }
     for (String paragraph : charmDescription.getParagraphs()) {
