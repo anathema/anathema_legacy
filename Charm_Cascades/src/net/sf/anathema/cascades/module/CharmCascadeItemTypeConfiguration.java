@@ -1,10 +1,11 @@
 package net.sf.anathema.cascades.module;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.cascades.presenter.CascadePresenter;
+import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
+import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
+import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -17,6 +18,8 @@ import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 @ItemTypeConfiguration
 public final class CharmCascadeItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
@@ -34,17 +37,20 @@ public final class CharmCascadeItemTypeConfiguration extends AbstractNonPersista
         String printName = item.getDisplayName();
         Icon icon = new CascadesUI(resources).getCascadesTabIcon();
         CharmCascadeModuleView view = new CharmCascadeModuleView(printName, icon);
-        ICharacterGenericsExtension extension = (ICharacterGenericsExtension) anathemaModel.getExtensionPointRegistry()
-            .get(ICharacterGenericsExtension.ID);
-        ICharacterGenerics characterGenerics = extension.getCharacterGenerics();
-        new CascadePresenter(resources, characterGenerics, view).initPresentation();
+        ICharacterGenerics characterGenerics = CharacterGenericsExtractor.getGenerics(anathemaModel);
+        CharmDescriptionProvider charmDescriptionProvider = getCharmDescriptionProvider();
+        new CascadePresenter(resources, characterGenerics, view, charmDescriptionProvider).initPresentation();
         return view;
+      }
+
+      private CharmDescriptionProvider getCharmDescriptionProvider() {
+        return CharmDescriptionProviderExtractor.CreateFor(anathemaModel, resources);
       }
     };
   }
 
   @Override
   protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
-    return new IMenuItem[] { new ActionMenuItem(ShowCascadesAction.createMenuAction(resources, anathemaModel)) };
+    return new IMenuItem[]{new ActionMenuItem(ShowCascadesAction.createMenuAction(resources, anathemaModel))};
   }
 }

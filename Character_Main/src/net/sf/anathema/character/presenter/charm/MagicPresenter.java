@@ -2,11 +2,15 @@ package net.sf.anathema.character.presenter.charm;
 
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
+import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.presenter.charm.combo.ComboConfigurationModel;
+import net.sf.anathema.character.presenter.charm.combo.ComboConfigurationPresenter;
 import net.sf.anathema.character.presenter.charm.detail.CharmDetailPresenter;
 import net.sf.anathema.character.presenter.charm.detail.CharmDetailPresenterFactory;
 import net.sf.anathema.character.presenter.charm.detail.NullCharmDetailPresenter;
@@ -32,19 +36,19 @@ public class MagicPresenter implements IContentPresenter {
   private final Logger logger = Logger.getLogger(MagicPresenter.class);
   private final List<IContentPresenter> subPresenters = new ArrayList<IContentPresenter>();
   private IAnathemaModel anathemaModel;
+  private IResources resources;
 
-  public MagicPresenter(
-          ICharacterStatistics statistics,
-          IMagicViewFactory factory,
-          IResources resources,
+
+  public MagicPresenter(ICharacterStatistics statistics, IMagicViewFactory factory, IResources resources,
           IAnathemaModel anathemaModel) {
+    this.resources = resources;
     ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(anathemaModel).getTemplateRegistry();
     this.anathemaModel = anathemaModel;
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
     if (charmTemplate.canLearnCharms(statistics.getRules())) {
       subPresenters.add(createCharmPresenter(statistics, factory, resources, templateRegistry));
-      subPresenters.add(new ComboConfigurationPresenter(resources, statistics, factory));
+      subPresenters.add(new ComboConfigurationPresenter(resources, createComboModel(statistics), factory));
     }
     ISpellMagicTemplate spellMagic = statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic();
     if (spellMagic.canLearnSorcery()) {
@@ -55,20 +59,31 @@ public class MagicPresenter implements IContentPresenter {
     }
   }
 
-  private CharacterCharmPresenter createCharmPresenter(ICharacterStatistics statistics, IMagicViewFactory factory, IResources resources, ITemplateRegistry templateRegistry) {
-    CharacterCharmModel model = new CharacterCharmModel(statistics);
-    ITreePresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties().getCharmPresentationProperties();
+  private ComboConfigurationModel createComboModel(ICharacterStatistics statistics) {
+    return new ComboConfigurationModel(statistics, getCharmDescriptionProvider());
+  }
+
+  private CharmDescriptionProvider getCharmDescriptionProvider() {
+    return CharmDescriptionProviderExtractor.CreateFor(anathemaModel, resources);
+  }
+
+  private CharacterCharmPresenter createCharmPresenter(ICharacterStatistics statistics, IMagicViewFactory factory,
+          IResources resources, ITemplateRegistry templateRegistry) {
+    CharacterCharmModel model = new CharacterCharmModel(statistics, getCharmDescriptionProvider());
+    ITreePresentationProperties presentationProperties =
+            statistics.getCharacterTemplate().getPresentationProperties().getCharmPresentationProperties();
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);
-    CharacterCharmTreePresenter treePresenter = new CharacterCharmTreePresenter(resources, factory, model, presentationProperties,
-            propertiesMap);
+    CharacterCharmTreePresenter treePresenter =
+            new CharacterCharmTreePresenter(resources, factory, model, presentationProperties, propertiesMap);
     CharmDetailPresenter detailPresenter = createCharmDetailPresenter();
     return new CharacterCharmPresenter(resources, detailPresenter, treePresenter);
   }
 
   private CharmDetailPresenter createCharmDetailPresenter() {
     try {
-      Instantiater instantiater = CharacterGenericsExtractor.getGenerics(anathemaModel).getInstantiater();
-      Collection<CharmDetailPresenterFactory> factories = instantiater.instantiateAll(RegisteredCharmDetailPresenterFactory.class);
+      Instantiater instantiater = getGenerics().getInstantiater();
+      Collection<CharmDetailPresenterFactory> factories =
+              instantiater.instantiateAll(RegisteredCharmDetailPresenterFactory.class);
       for (CharmDetailPresenterFactory factory : factories) {
         return factory.create(anathemaModel);
       }
@@ -76,6 +91,10 @@ public class MagicPresenter implements IContentPresenter {
       logger.error("Error initializing charm details.", e);
     }
     return new NullCharmDetailPresenter();
+  }
+
+  private ICharacterGenerics getGenerics() {
+    return CharacterGenericsExtractor.getGenerics(anathemaModel);
   }
 
   @Override

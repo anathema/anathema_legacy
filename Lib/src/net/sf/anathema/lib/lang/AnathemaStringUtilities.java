@@ -1,15 +1,14 @@
 package net.sf.anathema.lib.lang;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
+import net.disy.commons.core.util.StringUtilities;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
-
-import net.disy.commons.core.util.StringUtilities;
-
-import com.google.common.base.Joiner;
-import com.google.common.base.Strings;
 
 public class AnathemaStringUtilities {
 
@@ -64,8 +63,7 @@ public class AnathemaStringUtilities {
       }
       if (breakList.size() > currentBreakPoint) {
         lineBreaks[searchedBreakPoint] = breakList.get(currentBreakPoint);
-      }
-      else {
+      } else {
         lineBreaks[searchedBreakPoint] = 0;
       }
       currentBreakPoint++;
@@ -73,51 +71,45 @@ public class AnathemaStringUtilities {
     Arrays.sort(lineBreaks);
     return lineBreaks;
   }
-  
-  public static String createFixedWidthParagraph(String textString, String breakPoint, int maxLength)
-  {
-	//Linebreak the description at regular intervals;
-	//seems like there should be an existing way to do this,
-	//but I could not find anything.
-	List<String> lines = new ArrayList<String>();
-	while (textString.length() > 0)
-	{
-		  int lineLength = 0;
-		  if (textString.length() < maxLength)
-			  lineLength = textString.length();
-		  else
-		  {
-			  String[] words = textString.split(" ");
-			  for (int i = 0; i != words.length; i++)
-				  if (lineLength + words[i].length() + 1 > maxLength)
-					  break;
-				  else
-					  lineLength += words[i].length() + 1;  
-		  }
-		  lines.add(textString.substring(0, lineLength));
-		  textString = textString.substring(lineLength);		  
-	  }
-	  //assemble the lines with linebreak delimiters
-	  for (String line : lines)
-		  textString += line.trim() + breakPoint;
-	  
-	  return textString;
-  }
-  
-  public static String joinStringsWithDelimiter(String[] stringsToJoin, String delimiter)
-  {
-	  return joinStringsWithDelimiter(stringsToJoin, delimiter, "-");
+
+  public static String createFixedWidthParagraph(String textString, String breakPoint, int maxLength) {
+    //Linebreak the description at regular intervals;
+    //seems like there should be an existing way to do this,
+    //but I could not find anything.
+    List<String> lines = new ArrayList<String>();
+    while (textString.length() > 0) {
+      int lineLength = 0;
+      if (textString.length() < maxLength) {
+        lineLength = textString.length();
+      } else {
+        String[] words = textString.split(" ");
+        for (int i = 0; i != words.length; i++) {
+          if (lineLength + words[i].length() + 1 > maxLength) {
+            break;
+          } else {
+            lineLength += words[i].length() + 1;
+          }
+        }
+      }
+      lines.add(textString.substring(0, lineLength));
+      textString = textString.substring(lineLength);
+    }
+    //assemble the lines with linebreak delimiters
+    return Joiner.on(breakPoint).join(lines);
   }
 
-  public static String joinStringsWithDelimiter(String[] stringsToJoin, String delimiter, String nullString)
-  {
-	  String finalText = Joiner.on(delimiter).join(stringsToJoin);
-      if (StringUtilities.isNullOrEmpty(finalText)) {
-        finalText = nullString;
-      }
-      return finalText;
+  public static String joinStringsWithDelimiter(String[] stringsToJoin, String delimiter) {
+    return joinStringsWithDelimiter(stringsToJoin, delimiter, "-");
   }
-  
+
+  public static String joinStringsWithDelimiter(String[] stringsToJoin, String delimiter, String nullString) {
+    String finalText = Joiner.on(delimiter).join(stringsToJoin);
+    if (StringUtilities.isNullOrEmpty(finalText)) {
+      finalText = nullString;
+    }
+    return finalText;
+  }
+
   public static char lastCharacter(String string) {
     return string.charAt(string.length() - 1);
   }

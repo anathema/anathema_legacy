@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
+import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
@@ -21,21 +22,25 @@ import java.util.Map;
 public class CascadePresenter extends AbstractCascadePresenter implements ICascadePresenter {
 
   private ProxyRuleSet selectedRuleSet = new ProxyRuleSet();
-  private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules = new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
+  private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules =
+          new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
 
-  public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory) {
+  public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory,
+          CharmDescriptionProvider charmDescriptionProvider) {
     super(resources);
     ICharmCache cache = CharmCache.getInstance();
-    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources, generics,
-            charmMapsByRules, selectedRuleSet, cache);
+    CascadeCharmTreeViewProperties viewProperties =
+            new CascadeCharmTreeViewProperties(resources, charmDescriptionProvider, generics, charmMapsByRules,
+                    selectedRuleSet, cache);
     ICascadeView view = factory.createCascadeView(viewProperties);
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
     for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
       charmMapsByRules.put(ruleSet, new CharmTreeIdentificateMap());
     }
     selectedRuleSet.setDelegate(AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset());
-    CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties,
-            filterSet, new CharmDisplayPropertiesMap(templateRegistry), selectedRuleSet.getEdition());
+    CascadeCharmGroupChangeListener selectionListener =
+            new CascadeCharmGroupChangeListener(view, viewProperties, filterSet,
+                    new CharmDisplayPropertiesMap(templateRegistry), selectedRuleSet.getEdition());
     setCharmTypes(new CascadeCharmTypes(generics.getTemplateRegistry(), selectedRuleSet));
     setChangeListener(selectionListener);
     setView(view);

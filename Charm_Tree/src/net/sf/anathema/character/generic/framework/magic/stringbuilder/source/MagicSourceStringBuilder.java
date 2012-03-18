@@ -7,7 +7,8 @@ import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceStringBuilder<T>, IMagicTooltipStringBuilder {
+public class MagicSourceStringBuilder<T extends IMagic>
+        implements IMagicSourceStringBuilder<T>, IMagicTooltipStringBuilder {
 
   private final IResources resources;
 
@@ -18,35 +19,34 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
   protected IResources getResources() {
     return resources;
   }
-  
+
   @SuppressWarnings("unchecked")
   @Override
-  public void buildStringForMagic(StringBuilder builder, IMagic magic,
-  		Object specialDetails) {
-	  String descriptionString = resources.getString("CharmTreeView.ToolTip.Source"); //$NON-NLS-1$
-	  descriptionString += ColonSpace;
-	  descriptionString += createSourceString((T) magic);
-	  descriptionString = AnathemaStringUtilities.createFixedWidthParagraph(descriptionString,
-			  HtmlLineBreak, DEFAULT_TOOLTIP_WIDTH);
-	  builder.append(descriptionString);
+  public void buildStringForMagic(StringBuilder builder, IMagic magic, Object specialDetails) {
+    String descriptionString = resources.getString("CharmTreeView.ToolTip.Source"); //$NON-NLS-1$
+    descriptionString += ColonSpace;
+    descriptionString += createSourceString((T) magic);
+    descriptionString =
+            AnathemaStringUtilities.createFixedWidthParagraph(descriptionString, HtmlLineBreak, DEFAULT_TOOLTIP_WIDTH);
+    builder.append(descriptionString);
+    builder.append(HtmlLineBreak);
   }
 
   @Override
   public String createSourceString(T t) {
     IExaltedSourceBook[] sources = getSources(t);
     String[] sourceStrings = new String[sources.length];
-    for (int i = 0; i != sources.length; i++)
-    {
-	    StringBuilder builder = new StringBuilder();
-	    builder.append(resources.getString(createSourceBookKey(sources[i])));
-	    String pageKey = createPageKey(t.getId(), sources[i]);
-	    if (resources.supportsKey(pageKey)) {
-	      builder.append(IMagicTooltipStringBuilder.CommaSpace);
-	      builder.append(resources.getString("CharmTreeView.ToolTip.Page")); //$NON-NLS-1$
-	      builder.append(IMagicTooltipStringBuilder.Space);
-	      builder.append(resources.getString(pageKey));
-	    }
-	    sourceStrings[i] = builder.toString();
+    for (int i = 0; i != sources.length; i++) {
+      StringBuilder builder = new StringBuilder();
+      builder.append(resources.getString(createSourceBookKey(sources[i])));
+      String pageKey = createPageKey(t.getId(), sources[i]);
+      if (resources.supportsKey(pageKey)) {
+        builder.append(IMagicTooltipStringBuilder.CommaSpace);
+        builder.append(resources.getString("CharmTreeView.ToolTip.Page")); //$NON-NLS-1$
+        builder.append(IMagicTooltipStringBuilder.Space);
+        builder.append(resources.getString(pageKey));
+      }
+      sourceStrings[i] = builder.toString();
     }
     String andString = resources.getString("CharmTreeView.ToolTip.SourceAnd");
     return AnathemaStringUtilities.joinStringsWithDelimiter(sourceStrings, ", " + andString + " ");
@@ -70,7 +70,7 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
   protected IExaltedSourceBook[] getSources(T t) {
     return t.getSources();
   }
-  
+
   public String createShortSourceString(IExaltedSourceBook source, String magicId) {
     StringBuilder builder = new StringBuilder();
     builder.append(resources.getString(createSourceBookKey(source) + ".Short")); //$NON-NLS-1$

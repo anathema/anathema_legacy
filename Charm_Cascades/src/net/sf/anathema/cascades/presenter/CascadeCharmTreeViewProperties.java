@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -25,10 +26,10 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
   private final ICharacterGenerics generics;
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules;
 
-  public CascadeCharmTreeViewProperties(IResources resources, ICharacterGenerics generics,
-                                        Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules,
-                                        ProxyRuleSet selectedRuleSet, ICharmCache cache) {
-    super(resources);
+  public CascadeCharmTreeViewProperties(IResources resources, CharmDescriptionProvider charmDescriptionProvider,
+          ICharacterGenerics generics, Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules,
+          ProxyRuleSet selectedRuleSet, ICharmCache cache) {
+    super(resources, charmDescriptionProvider);
     this.charmMapsByRules = charmMapsByRules;
     this.generics = generics;
     this.rules = selectedRuleSet;

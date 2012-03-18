@@ -3,6 +3,7 @@ package net.sf.anathema.character.presenter.charm;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.NullSpecialCharm;
@@ -18,8 +19,8 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
   private final Cursor removeCursor;
   private final ICharmConfiguration configuration;
 
-  public CharacterCharmTreeViewProperties(IResources resources, ICharmConfiguration configuration) {
-    super(resources);
+  public CharacterCharmTreeViewProperties(IResources resources, ICharmConfiguration configuration, CharmDescriptionProvider charmDescriptionProvider) {
+    super(resources, charmDescriptionProvider);
     this.configuration = configuration;
     addCursor = Toolkit.getDefaultToolkit().createCustomCursor(
             resources.getImage(this.getClass(), "CursorHandPlus.png"), new Point(5, 0),

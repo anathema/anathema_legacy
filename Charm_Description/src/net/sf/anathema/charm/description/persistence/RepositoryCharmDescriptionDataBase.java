@@ -1,7 +1,9 @@
 package net.sf.anathema.charm.description.persistence;
 
 import com.google.gson.Gson;
+import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
@@ -13,7 +15,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import static net.sf.anathema.charm.description.module.CharmDescriptionItemTypeConfiguration.CHARM_DESCRIPTION_ITEM_TYPE_ID;
+
 public class RepositoryCharmDescriptionDataBase implements CharmDescriptionDataBase {
+
+  public static RepositoryCharmDescriptionDataBase CreateFrom(IAnathemaModel anathemaModel) {
+    IRepository repository = anathemaModel.getRepository();
+    IItemType itemType = getItemType(anathemaModel);
+    return new RepositoryCharmDescriptionDataBase(repository, itemType);
+  }
+
+  private static IItemType getItemType(IAnathemaModel anathemaModel) {
+    IItemTypeRegistry registry = anathemaModel.getItemTypeRegistry();
+    return registry.getById(CHARM_DESCRIPTION_ITEM_TYPE_ID);
+  }
 
   private IRepository repository;
   private IItemType itemType;
