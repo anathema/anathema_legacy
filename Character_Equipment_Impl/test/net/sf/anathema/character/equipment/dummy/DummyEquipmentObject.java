@@ -83,4 +83,9 @@ public class DummyEquipmentObject extends AbstractStats implements IEquipmentIte
 	public IEquipmentStats getStat(String name) {
 		return null;
 	}
+
+  @Override
+  public boolean representsItemForUseInCombat() {
+    return false;
+  }
 }

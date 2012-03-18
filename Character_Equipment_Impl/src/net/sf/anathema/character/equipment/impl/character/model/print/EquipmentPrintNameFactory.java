@@ -6,8 +6,6 @@ import java.util.Collections;
 import java.util.HashSet;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.generic.equipment.IArtifactStats;
-import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
@@ -43,15 +41,11 @@ public class EquipmentPrintNameFactory {
 
   private Collection<IIdentificate> getStatNames(IEquipmentItem item, Collection<IIdentificate> names) {
     for (IEquipmentStats stats : item.getStats()) {
-      if (!representsItemForUseInCombat(stats)) {
+      if (!stats.representsItemForUseInCombat()) {
         continue;
       }
       names.add(stats.getName());
     }
     return names;
-  }
-
-  private boolean representsItemForUseInCombat(IEquipmentStats stats) {
-    return !(stats instanceof IArtifactStats || stats instanceof ITraitModifyingStats);
   }
 }

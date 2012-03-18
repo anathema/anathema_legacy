@@ -17,15 +17,14 @@ public class ArmourStatsDecorationFactory implements IEquipmentStatsDecorationFa
     }
     return itemName;
   }
-  
+
   private int getListedStats(IEquipmentItem item) {
-	  int listedStats = 0;
-	  for (IEquipmentStats stats : item.getStats()) {
-		  if (stats instanceof IArtifactStats)
-	    	  continue;
-	      listedStats++;
-	  }
-	  return listedStats;
+    int listedStats = 0;
+    for (IEquipmentStats stats : item.getStats()) {
+      if (stats instanceof IArtifactStats) continue;
+      listedStats++;
+    }
+    return listedStats;
   }
 
   public IArmourStats createRenamedPrintDecoration(final IEquipmentItem item, final IArmourStats stats) {
@@ -56,26 +55,28 @@ public class ArmourStatsDecorationFactory implements IEquipmentStatsDecorationFa
         return getName().getId();
       }
 
-		@Override
-		public void setUseAttunementModifiers(boolean value) {
-			stats.setUseAttunementModifiers(value);
-		}
-		
-		@Override
-		public boolean useAttunementModifiers()
-		{
-			return stats.useAttunementModifiers();
-		}
-		
-		public Object[] getApplicableMaterials()
-		{
-			return stats.getApplicableMaterials();
-		}
-		
-		public void setApplicableMaterials(Object[] materials)
-		{
-			stats.setApplicableMaterials(materials);
-		}
+      @Override
+      public void setUseAttunementModifiers(boolean value) {
+        stats.setUseAttunementModifiers(value);
+      }
+
+      @Override
+      public boolean useAttunementModifiers() {
+        return stats.useAttunementModifiers();
+      }
+
+      public Object[] getApplicableMaterials() {
+        return stats.getApplicableMaterials();
+      }
+
+      public void setApplicableMaterials(Object[] materials) {
+        stats.setApplicableMaterials(materials);
+      }
+
+      @Override
+      public boolean representsItemForUseInCombat() {
+        return stats.representsItemForUseInCombat();
+      }
     };
   }
 }

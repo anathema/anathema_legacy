@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 
-public class ShieldStats extends AbstractStats implements IShieldStats {
+public class ShieldStats extends AbstractCombatStats implements IShieldStats {
 
   private int rangedCombatDv;
   private int closeCombatDv;

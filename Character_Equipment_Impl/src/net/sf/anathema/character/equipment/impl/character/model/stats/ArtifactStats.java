@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
-public class ArtifactStats extends AbstractStats implements IArtifactStats {
+public class ArtifactStats extends AbstractNonCombatStats implements IArtifactStats {
   int attuneCost;
   boolean allowForeignAttunement;
   boolean requireAttunement;
@@ -57,5 +57,4 @@ public class ArtifactStats extends AbstractStats implements IArtifactStats {
   public String getId() {
     return getName().getId();
   }
-
 }

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.natural;
 
+import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -11,7 +12,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class NaturalSoak extends AbstractStats implements IArmourStats {
+public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
 
   private final IGenericTrait stamina;
   private final ICharacterType characterType;

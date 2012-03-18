@@ -65,6 +65,11 @@ public class ShieldStatsDecorationFactory implements IEquipmentStatsDecorationFa
 	{
 		stats.setApplicableMaterials(materials);
 	}
+
+      @Override
+      public boolean representsItemForUseInCombat() {
+        return stats.representsItemForUseInCombat();
+      }
     };
   }
 

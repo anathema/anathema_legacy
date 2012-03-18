@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public abstract class AbstractWeaponStats extends AbstractStats implements IWeaponStats {
+public abstract class AbstractWeaponStats extends AbstractCombatStats implements IWeaponStats {
 
   private int accuracy;
   private int damage;

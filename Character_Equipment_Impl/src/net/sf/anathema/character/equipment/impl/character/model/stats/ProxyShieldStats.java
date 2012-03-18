@@ -69,4 +69,9 @@ public class ProxyShieldStats extends AbstractStats implements IShieldStats, IPr
   {
 	  return delegate.getApplicableMaterials();
   }
+
+  @Override
+  public boolean representsItemForUseInCombat() {
+    return delegate.representsItemForUseInCombat();
+  }
 }
