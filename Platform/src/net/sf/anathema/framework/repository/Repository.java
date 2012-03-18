@@ -149,6 +149,26 @@ public class Repository implements IRepository {
         repositoryConfiguration.getFileExtension());
   }
 
+  @Override
+  public IRepositoryReadAccess openReadAccess(IItemType type, String id) {
+    if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
+      return new SingleFileReadAccess(getRepositoryFileResolver().getMainFile(type, id));
+    }
+    IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
+    return new MultiFileReadAccess(
+        getRepositoryFileResolver().getItemTypeFolder(type),
+        repositoryConfiguration.getMainFileName(),
+        repositoryConfiguration.getFileExtension());
+  }
+
+  @Override
+  public boolean knowsItem(IItemType type, String id) {
+    if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
+      return getRepositoryFileResolver().getMainFile(type, id).exists();
+    }
+    return getRepositoryFileResolver().getItemTypeFolder(type).exists();
+   }
+
   public boolean containsClosed(IItemType... types) {
     boolean hasClosed = false;
     for (IItemType type : types) {

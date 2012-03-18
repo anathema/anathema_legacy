@@ -11,25 +11,29 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IRepository extends IDataFileProvider {
 
-  public IRepositoryWriteAccess createWriteAccess(IItem item) throws RepositoryException;
+  IRepositoryWriteAccess createWriteAccess(IItem item) throws RepositoryException;
 
-  public IRepositoryWriteAccess createWriteAccess(IItemType type, String id) throws RepositoryException;
+  IRepositoryWriteAccess createWriteAccess(IItemType type, String id) throws RepositoryException;
 
-  public IRepositoryReadAccess openReadAccess(IItemType type, IFileProvider provider);
+  IRepositoryReadAccess openReadAccess(IItemType type, IFileProvider provider);
+  
+  IRepositoryReadAccess openReadAccess(IItemType type, String id);
 
-  public IPrintNameFileAccess getPrintNameFileAccess();
+  boolean knowsItem(IItemType type, String id);
 
-  public String getRepositoryPath();
+  IPrintNameFileAccess getPrintNameFileAccess();
 
-  public boolean containsClosed(IItemType... type);
+  String getRepositoryPath();
 
-  public void deleteAssociatedItem(PrintNameFile userObject) throws RepositoryException;
+  boolean containsClosed(IItemType... type);
 
-  public String createUniqueRepositoryId(IBasicRepositoryIdData repositoryLocation);
+  void deleteAssociatedItem(PrintNameFile userObject) throws RepositoryException;
 
-  public IRepositoryFileResolver getRepositoryFileResolver();
+  String createUniqueRepositoryId(IBasicRepositoryIdData repositoryLocation);
 
-  public void addRefreshListener(IChangeListener listener);
+  IRepositoryFileResolver getRepositoryFileResolver();
 
-  public void refresh();
+  void addRefreshListener(IChangeListener listener);
+
+  void refresh();
 }
