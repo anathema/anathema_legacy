@@ -20,6 +20,10 @@ public class CoreRulesBeastClawsClaws extends AbstractLunarGiftWeapon {
   public int getSpeed() {
     return 3;
   }
+  
+  public int getMinimumDamage() {
+	return 1;
+  }
 
   public IIdentificate getName() {
     return new Identificate("DeadlyBeastmanTransformation.Weapon.Claws"); //$NON-NLS-1$

@@ -17,6 +17,10 @@ public class Punch extends AbstractNaturalWeaponStats {
   public int getDamage() {
     return 0;
   }
+  
+  public int getMinimumDamage() {
+	return 1;
+  }
 
   public Integer getDefence() {
     return 2;

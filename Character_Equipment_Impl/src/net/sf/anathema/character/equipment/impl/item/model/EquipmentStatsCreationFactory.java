@@ -188,7 +188,8 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       offensiveModel.getRateModel().setValue(weaponStats.getRate());
     }
     offensiveModel.getSpeedModel().setValue(weaponStats.getSpeed());
-    offensiveModel.getWeaponDamageModel().setValue(weaponStats.getDamage());
+    offensiveModel.getWeaponDamageModel().getDamageModel().setValue(weaponStats.getDamage());
+    offensiveModel.getWeaponDamageModel().getMinDamageModel().setValue(weaponStats.getMinimumDamage());
     offensiveModel.getWeaponDamageModel().setHealthType(weaponStats.getDamageType());
   }
 
@@ -275,7 +276,8 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       IWeaponTagsModel tagsModel) {
     setName(stats, model);
     stats.setAccuracy(model.getAccuracyModel().getValue());
-    stats.setDamage(model.getWeaponDamageModel().getValue());
+    stats.setDamage(model.getWeaponDamageModel().getDamageModel().getValue());
+    stats.setMinimumDamage(model.getWeaponDamageModel().getMinDamageModel().getValue());
     stats.setDamageType(model.getWeaponDamageModel().getHealthType());
     stats.setRate(model.supportsRate() ? model.getRateModel().getValue() : null);
     stats.setSpeed(model.getSpeedModel().getValue());

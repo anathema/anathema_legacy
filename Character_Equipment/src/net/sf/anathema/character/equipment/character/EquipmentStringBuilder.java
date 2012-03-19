@@ -36,6 +36,8 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     } else {
       stringBuilder.append(getStatsString("Damage", weapon.getDamage(), weapon.getDamageTraitType() != null)); //$NON-NLS-1$
       stringBuilder.append(resources.getString("HealthType." + weapon.getDamageType().getId() + ".Short")); //$NON-NLS-1$ //$NON-NLS-2$
+      if (weapon.getMinimumDamage() > 1)
+    	  stringBuilder.append("/" + weapon.getMinimumDamage());
     }
     stringBuilder.append(getStatsString("Defence", weapon.getDefence(), true)); //$NON-NLS-1$
     stringBuilder.append(getStatsString("Range", weapon.getRange(), false)); //$NON-NLS-1$

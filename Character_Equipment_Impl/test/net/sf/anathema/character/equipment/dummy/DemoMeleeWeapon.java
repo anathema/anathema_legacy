@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.dummy;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
@@ -16,6 +15,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
 
   private final int accuracy;
   private final int damage;
+  private final int minimumDamage;
   private final HealthType healthType;
   private final Integer defense;
   private final int rate;
@@ -28,6 +28,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
         2,
         -5,
         3,
+        1,
         HealthType.Aggravated,
         -1,
         6,
@@ -40,6 +41,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
       int speed,
       int accuracy,
       int damage,
+      int minimumDamage,
       HealthType healthType,
       int defense,
       int rate,
@@ -47,6 +49,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
     this.name = name;
     this.accuracy = accuracy;
     this.damage = damage;
+    this.minimumDamage = minimumDamage;
     this.healthType = healthType;
     this.defense = defense;
     this.rate = rate;
@@ -64,6 +67,10 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
 
   public HealthType getDamageType() {
     return healthType;
+  }
+  
+  public int getMinimumDamage() {
+	return minimumDamage;
   }
 
   public Integer getDefence() {

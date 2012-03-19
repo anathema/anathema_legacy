@@ -1,7 +1,6 @@
 package net.sf.anathema.character.abyssal.equipment;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
@@ -20,6 +19,10 @@ public class SecondEditionFangStats extends AbstractCombatStats implements IWeap
 
   public int getDamage() {
     return 0;
+  }
+  
+  public int getMinimumDamage() {
+	return 1;
   }
 
   public ITraitType getDamageTraitType() {

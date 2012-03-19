@@ -32,6 +32,10 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
   public int getDamage() {
     return stats.getDamage();
   }
+  
+  public int getMinimumDamage() {
+	return stats.getMinimumDamage();
+  }
 
   public ITraitType getDamageTraitType() {
     return stats.getDamageTraitType();

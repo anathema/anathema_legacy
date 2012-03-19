@@ -24,6 +24,7 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
   private int speed;
   private boolean inflictsNoDamage;
   private final List<Object> tags; // Stores String or WeaponTag
+  private int minimumDamage;
 
   public AbstractWeaponStats(ICollectionFactory collectionFactory) {
     this.tags = collectionFactory.createList();
@@ -41,6 +42,7 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
     setRate(stats.getRate());
     setSpeed(stats.getSpeed());
     setInflictsNoDamage(stats.inflictsNoDamage());
+    setMinimumDamage(stats.getMinimumDamage());
     for (IIdentificate tag : stats.getTags()) {
       addTag(tag);
     }
@@ -52,6 +54,14 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
 
   public int getDamage() {
     return damage;
+  }
+  
+  public int getMinimumDamage() {
+	// for backwards compatability; weapons created before
+	// this property was implemented will have a value of 0
+	if (minimumDamage == 0 && !inflictsNoDamage)
+		return 1;
+	return minimumDamage;
   }
 
   public ITraitType getDamageTraitType() {
@@ -113,6 +123,10 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
 
   public void setDamage(int damage) {
     this.damage = damage;
+  }
+  
+  public void setMinimumDamage(int damage) {
+	this.minimumDamage = damage;
   }
 
   public void setDamageType(HealthType damageType) {

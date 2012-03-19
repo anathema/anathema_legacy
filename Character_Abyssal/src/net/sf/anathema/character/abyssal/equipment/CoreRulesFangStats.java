@@ -1,7 +1,6 @@
 package net.sf.anathema.character.abyssal.equipment;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
@@ -31,6 +30,10 @@ public class CoreRulesFangStats extends AbstractCombatStats implements IWeaponSt
 
   public Integer getDefence() {
     return -2;
+  }
+  
+  public int getMinimumDamage() {
+	return 1;
   }
 
   public Integer getRange() {

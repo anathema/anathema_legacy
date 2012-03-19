@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.dummy;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
@@ -15,6 +14,7 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
   private final int speed;
   private final int accuracy;
   private final int damage;
+  private final int minimumDamage;
   private final HealthType damageType;
   private final int range;
   private final IIdentificate name;
@@ -22,7 +22,7 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
   private final boolean isNoDamage;
 
   public DemoRangeWeapon() {
-    this(new Identificate("Range"), 0, 12, 15, HealthType.Bashing, 200, 3, true); //$NON-NLS-1$
+    this(new Identificate("Range"), 0, 12, 15, 1, HealthType.Bashing, 200, 3, true); //$NON-NLS-1$
   }
 
   public DemoRangeWeapon(
@@ -30,6 +30,7 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
       int speed,
       int accuracy,
       int damage,
+      int minimumDamage,
       HealthType damageType,
       int range,
       int rate,
@@ -38,11 +39,11 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
     this.speed = speed;
     this.accuracy = accuracy;
     this.damage = damage;
+    this.minimumDamage = minimumDamage;
     this.damageType = damageType;
     this.range = range;
     this.rate = rate;
     this.isNoDamage = isNoDamage;
-
   }
 
   public int getAccuracy() {
@@ -51,6 +52,10 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
 
   public int getDamage() {
     return damage;
+  }
+  
+  public int getMinimumDamage() {
+	return minimumDamage;
   }
 
   public HealthType getDamageType() {

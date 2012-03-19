@@ -25,10 +25,10 @@ public class WeaponDamagePresenter implements Presenter {
   }
 
   public void initPresentation() {
-    view.setLabelText(properties.getDamageLabel());
-    IntegerSpinner integerSpinner = view.getIntegerSpinner();
-    new IntValuePresentation().initView(integerSpinner, model);
-    integerSpinner.setMinimum(0);
+    view.setDamageLabelText(properties.getDamageLabel());
+    IntegerSpinner damageSpinner = view.getDamageIntegerSpinner();
+    new IntValuePresentation().initView(damageSpinner, model.getDamageModel());
+    damageSpinner.setMinimum(0);
     view.setObjects(HealthType.values());
     model.addHealthTypeChangeListener(new IChangeListener() {
       public void changeOccurred() {
@@ -42,6 +42,10 @@ public class WeaponDamagePresenter implements Presenter {
     });
     view.setHealthTypeRenderer(new ObjectUiListCellRenderer(properties.getHealthTypeUi()));
     updateHealthTypeInView();
+    view.setMinDamageLabelText(properties.getMinDamageLabel());
+    IntegerSpinner minDamageSpinner = view.getMinDamageIntegerSpinner();
+    new IntValuePresentation().initView(minDamageSpinner, model.getMinDamageModel());
+    minDamageSpinner.setMinimum(0);
   }
 
   private void updateHealthTypeInView() {

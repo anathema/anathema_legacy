@@ -23,6 +23,8 @@ public interface IWeaponStats extends IEquipmentStats {
   public Integer getRange();
 
   public Integer getRate();
+  
+  public int getMinimumDamage();
 
   public ITraitType getDamageTraitType();
 

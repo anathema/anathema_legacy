@@ -88,6 +88,10 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   public int getDamage() {
     return getModifiedValue(new DamageModification(material, ruleSet), delegate.getDamage());
   }
+  
+  public int getMinimumDamage() {
+	return delegate.getMinimumDamage();
+  }
 
   public ITraitType getDamageTraitType() {
     return delegate.getDamageTraitType();

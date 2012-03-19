@@ -16,16 +16,20 @@ import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 
 public class WeaponDamageView implements IWeaponDamageView {
 
-  private final JLabel label = new JLabel();
-  private final IntegerSpinner valueSpinner = new IntegerSpinner(0);
+  private final JLabel damageLabel = new JLabel();
+  private final JLabel minDamageLabel = new JLabel();
+  private final IntegerSpinner damageValueSpinner = new IntegerSpinner(0);
+  private final IntegerSpinner minDamageValueSpinner = new IntegerSpinner(0);
   private final IChangeableJComboBox<HealthType> typeBox = new ChangeableJComboBox<HealthType>(new HealthType[0], false);
 
   public void fillInto(JPanel panel, int columnCount) {
-    panel.add(label);
-    panel.add(valueSpinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(damageLabel);
+    panel.add(damageValueSpinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(typeBox.getComponent(), GridDialogLayoutDataFactory.createHorizontalSpanData(
         columnCount - 2,
         GridDialogLayoutData.FILL_HORIZONTAL));
+    panel.add(minDamageLabel);
+    panel.add(minDamageValueSpinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
   }
 
   public void setEnabled(boolean enabled) {
@@ -36,16 +40,24 @@ public class WeaponDamageView implements IWeaponDamageView {
     return 3;
   }
 
-  public IntegerSpinner getIntegerSpinner() {
-    return valueSpinner;
+  public IntegerSpinner getDamageIntegerSpinner() {
+    return damageValueSpinner;
+  }
+  
+  public IntegerSpinner getMinDamageIntegerSpinner() {
+	return minDamageValueSpinner;
   }
 
   public void setHealthTypeRenderer(ListCellRenderer renderer) {
     typeBox.setRenderer(renderer);
   }
 
-  public void setLabelText(String labelText) {
-    this.label.setText(labelText);
+  public void setDamageLabelText(String labelText) {
+    this.damageLabel.setText(labelText);
+  }
+  
+  public void setMinDamageLabelText(String labelText) {
+	this.minDamageLabel.setText(labelText);
   }
 
   public void addObjectSelectionChangedListener(IObjectValueChangedListener<HealthType> listener) {

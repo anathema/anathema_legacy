@@ -11,6 +11,10 @@ public class WeaponDamageProperties extends AbstractProperties {
     super(resources);
     this.resources = resources;
   }
+  
+  public String getMinDamageLabel() {
+	return getLabelString("Equipment.Stats.Long.MinDamage"); //$NON-NLS-1$
+  }
 
   public String getDamageLabel() {
     return getLabelString("Equipment.Stats.Long.Damage"); //$NON-NLS-1$

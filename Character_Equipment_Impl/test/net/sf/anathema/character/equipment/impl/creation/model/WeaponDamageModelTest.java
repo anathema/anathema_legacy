@@ -19,7 +19,7 @@ public class WeaponDamageModelTest extends TestCase {
   }
 
   public void testCreation() throws Exception {
-    assertEquals(0, damageModel.getValue());
+    assertEquals(0, damageModel.getDamageModel().getValue());
     assertEquals(HealthType.Lethal, damageModel.getHealthType());
   }
 
@@ -32,8 +32,8 @@ public class WeaponDamageModelTest extends TestCase {
 
   public void testEventOnIntValueChange() throws Exception {
     IIntValueChangedListener changeListener = mock(IIntValueChangedListener.class);
-    damageModel.addIntValueChangeListener(changeListener);
-    damageModel.setValue(2);
+    damageModel.getDamageModel().addIntValueChangeListener(changeListener);
+    damageModel.getDamageModel().setValue(2);
     verify(changeListener).valueChanged(2);
   }
 }

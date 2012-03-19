@@ -16,6 +16,10 @@ public class Kick extends AbstractNaturalWeaponStats {
   public int getDamage() {
     return 2;
   }
+  
+  public int getMinimumDamage() {
+	return 1;
+  }
 
   public Integer getDefence() {
     return -1;

@@ -53,7 +53,7 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
       } else {
         table.addCell(createEquipmentValueCell(font, null));
       }
-      table.addCell(createFinalValueCell(font, finalValue));
+      table.addCell(createFinalValueCell(font, finalValue + (weapon.getMinimumDamage() > 1 ? "/" + weapon.getMinimumDamage() : "")));
       table.addCell(createFinalValueCell(font, getDamageTypeLabel(weapon.getDamageType()), Element.ALIGN_CENTER));
     }
   }

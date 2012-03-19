@@ -24,6 +24,10 @@ public class Clinch extends AbstractNaturalWeaponStats {
   public int getSpeed() {
     return 0;
   }
+  
+  public int getMinimumDamage() {
+	return 1;
+  }
 
   public IIdentificate[] getTags() {
     return new IIdentificate[0];

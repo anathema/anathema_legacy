@@ -60,7 +60,7 @@ public class EquipmentItemPresenterTest extends TestCase {
     BooleanModel isPrintSelectedModel = new BooleanModel();
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel); //$NON-NLS-1$
     DummyEquipmentObject model = new DummyEquipmentObject("Title", null); //$NON-NLS-1$
-    model.addEquipment(new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, HealthType.Lethal, -1, 2)); //$NON-NLS-1$
+    model.addEquipment(new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 2)); //$NON-NLS-1$
     initPresentation(model, view);
   }
 
@@ -70,7 +70,7 @@ public class EquipmentItemPresenterTest extends TestCase {
     BooleanModel isPrintSelectedModel = new BooleanModel();
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel); //$NON-NLS-1$
     DummyEquipmentObject model = new DummyEquipmentObject("Title", null); //$NON-NLS-1$
-    model.addEquipment(new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, HealthType.Lethal, -1, 2)); //$NON-NLS-1$
+    model.addEquipment(new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 2)); //$NON-NLS-1$
     initPresentation(model, view);
     assertFalse(isPrintSelectedModel.getValue());
   }

@@ -10,8 +10,11 @@ public class CoreRulesTalonsBite extends AbstractLunarGiftWeapon {
   }
 
   public int getDamage() {
-    // TODO Auto-generated method stub
     return 8;
+  }
+  
+  public int getMinimumDamage() {
+	return 1;
   }
 
   public Integer getDefence() {

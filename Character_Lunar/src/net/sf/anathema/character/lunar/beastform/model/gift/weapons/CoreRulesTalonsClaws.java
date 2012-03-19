@@ -12,6 +12,10 @@ public class CoreRulesTalonsClaws extends AbstractLunarGiftWeapon {
   public int getDamage() {
     return 5;
   }
+  
+  public int getMinimumDamage() {
+	return 1;
+  }
 
   public Integer getDefence() {
     return 4;

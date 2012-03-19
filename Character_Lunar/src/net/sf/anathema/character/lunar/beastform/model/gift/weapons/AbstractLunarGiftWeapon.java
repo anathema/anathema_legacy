@@ -15,6 +15,10 @@ public abstract class AbstractLunarGiftWeapon extends AbstractCombatStats implem
   public ITraitType getDamageTraitType() {
     return AttributeType.Strength;
   }
+  
+  public int getMinimumDamage() {
+	return 1;
+  }
 
   public HealthType getDamageType() {
     return HealthType.Lethal;

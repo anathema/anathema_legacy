@@ -9,9 +9,13 @@ import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 
 public interface IWeaponDamageView extends IDialogComponent, IObjectSelectionView<HealthType> {
 
-  public IntegerSpinner getIntegerSpinner();
+  public IntegerSpinner getDamageIntegerSpinner();
+  
+  public IntegerSpinner getMinDamageIntegerSpinner();
 
   public void setHealthTypeRenderer(ListCellRenderer renderer);
 
-  public void setLabelText(String label);
+  public void setDamageLabelText(String label);
+  
+  public void setMinDamageLabelText(String label);
 }

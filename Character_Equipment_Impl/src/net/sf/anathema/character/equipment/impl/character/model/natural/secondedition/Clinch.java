@@ -21,6 +21,10 @@ public class Clinch extends AbstractNaturalWeaponStats {
   public Integer getDefence() {
     return 0;
   }
+  
+  public int getMinimumDamage() {
+	return 1;
+  }
 
   @Override
   public Integer getRate() {

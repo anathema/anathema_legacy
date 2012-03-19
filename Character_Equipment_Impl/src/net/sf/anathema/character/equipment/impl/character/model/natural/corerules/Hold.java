@@ -15,6 +15,10 @@ public class Hold extends AbstractNaturalWeaponStats {
   public int getDamage() {
     return 0;
   }
+  
+  public int getMinimumDamage() {
+	return 0;
+  }
 
   public Integer getDefence() {
     return null;

@@ -5,15 +5,27 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.data.Range;
+import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
 
-public class WeaponDamageModel extends RangedIntValueModel implements IWeaponDamageModel {
+public class WeaponDamageModel implements IWeaponDamageModel {
 
   private final ChangeControl changeControl = new ChangeControl();
+  private final IIntValueModel damageModel;
+  private final IIntValueModel minDamageModel;
   private HealthType healthType = HealthType.Lethal;
 
   public WeaponDamageModel() {
-    super(new Range(0, Integer.MAX_VALUE), 0);
+	damageModel = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 0);
+	minDamageModel = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 1);
+  }
+  
+  public IIntValueModel getDamageModel() {
+	return damageModel;
+  }
+  
+  public IIntValueModel getMinDamageModel() {
+	return minDamageModel;
   }
 
   public HealthType getHealthType() {

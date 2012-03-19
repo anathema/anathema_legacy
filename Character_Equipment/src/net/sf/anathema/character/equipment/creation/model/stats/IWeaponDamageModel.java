@@ -4,8 +4,12 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
-public interface IWeaponDamageModel extends IIntValueModel {
+public interface IWeaponDamageModel {
 
+  public IIntValueModel getDamageModel();
+  
+  public IIntValueModel getMinDamageModel();
+	
   public HealthType getHealthType();
 
   public void addHealthTypeChangeListener(IChangeListener listener);
