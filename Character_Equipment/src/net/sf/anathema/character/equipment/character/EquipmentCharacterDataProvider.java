@@ -99,4 +99,9 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
 			ISpecialtyListChangeListener listener) {
 		context.getSpecialtyContext().addSpecialtyListChangeListener(listener);
 	}
+
+	@Override
+	public boolean transferOptions(IEquipmentItem fromItem, IEquipmentItem toItem) {
+		return optionProvider.transferOptions(fromItem, toItem);
+	}
 }

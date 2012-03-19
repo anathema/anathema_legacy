@@ -198,4 +198,19 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
 					return getEnabledStatOptions(item, stat);			
 		return new IEquipmentStatsOption[0];
   }
+
+  @Override
+  public boolean transferOptions(IEquipmentItem fromItem, IEquipmentItem toItem) {
+	  boolean transferred = false;
+	  for (IEquipmentStats fromStats : fromItem.getStats()) {
+		  List<IEquipmentStatsOption> optionList = optionsTable.get(fromItem, fromStats);
+		  optionsTable.add(fromItem, fromStats, null);
+		  IEquipmentStats toStats = toItem.getStat(fromStats.getId());
+		  if (toStats != null && optionList != null) {
+			  optionsTable.add(toItem, toStats, optionList);
+			  transferred = true;
+		  }
+	  } 
+	  return transferred;
+  }
 }
