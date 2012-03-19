@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.presenter.magic.detail.MagicDetailModel;
-import net.sf.anathema.character.presenter.magic.detail.CharmDetailPresenter;
+import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenter;
 import net.sf.anathema.character.presenter.magic.tree.CharacterCharmTreePresenter;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
@@ -32,10 +32,10 @@ public class CharacterCharmPresenter implements IContentPresenter {
 
   private final IResources resources;
   private final CharacterCharmTreePresenter treePresenter;
-  private final CharmDetailPresenter detailPresenter;
+  private final MagicDetailPresenter detailPresenter;
   private final CollapsibleView collapsibleView = new CollapsibleView();
 
-  public CharacterCharmPresenter(IResources resources, CharmDetailPresenter detailPresenter,
+  public CharacterCharmPresenter(IResources resources, MagicDetailPresenter detailPresenter,
                                  CharacterCharmTreePresenter treePresenter) {
     this.detailPresenter = detailPresenter;
     this.resources = resources;

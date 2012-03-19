@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.magic;
+package net.sf.anathema.character.presenter.magic.spells;
 
 import javax.swing.JButton;
 import javax.swing.JList;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.view.magic;
 
-import net.sf.anathema.character.presenter.magic.SpellViewProperties;
+import net.sf.anathema.character.presenter.magic.spells.SpellViewProperties;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;

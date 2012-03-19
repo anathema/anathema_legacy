@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter.magic.detail;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.resources.IResources;
 
-public interface CharmDetailPresenterFactory {
+public interface MagicDetailPresenterFactory {
 
-  CharmDetailPresenter create(IAnathemaModel anathemaModel, IResources resources);
+  MagicDetailPresenter create(IAnathemaModel anathemaModel, IResources resources);
 }

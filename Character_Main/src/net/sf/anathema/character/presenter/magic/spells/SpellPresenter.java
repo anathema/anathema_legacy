@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.magic;
+package net.sf.anathema.character.presenter.magic.spells;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
@@ -15,12 +15,11 @@ import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
-import net.sf.anathema.framework.presenter.view.IViewContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewContent;
-import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -34,9 +33,22 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class AbstractSpellPresenter implements IContentPresenter {
+public class SpellPresenter implements IPresenter {
+
+  public static SpellPresenter ForSorcery(ICharacterStatistics statistics, IResources resources,
+          IMagicViewFactory factory) {
+    SpellModel spellModel = new SorceryModel(statistics);
+    return new SpellPresenter(spellModel, statistics, resources, factory);
+  }
+
+  public static SpellPresenter ForNecromancy(ICharacterStatistics statistics, IResources resources,
+          IMagicViewFactory factory) {
+    SpellModel spellModel = new NecromancyModel(statistics);
+    return new SpellPresenter(spellModel, statistics, resources, factory);
+  }
 
   private final ISpellConfiguration spellConfiguration;
+  private SpellModel spellModel;
   private final ICharacterStatistics statistics;
   private final MagicInfoStringBuilder creator;
   private final ICharacterTemplate characterTemplate;
@@ -46,7 +58,9 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
   private final SpellViewProperties properties;
   private final ISpellView view;
 
-  public AbstractSpellPresenter(ICharacterStatistics statistics, IResources resources, IMagicViewFactory factory) {
+  public SpellPresenter(SpellModel spellModel, ICharacterStatistics statistics, IResources resources,
+          IMagicViewFactory factory) {
+    this.spellModel = spellModel;
     this.statistics = statistics;
     this.properties = new SpellViewProperties(resources, statistics);
     this.resources = resources;
@@ -55,12 +69,12 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
     this.spellConfiguration = statistics.getSpells();
     this.characterTemplate = statistics.getCharacterTemplate();
     this.view = factory.createSpellView(properties);
-    circle = getCircles()[0];
+    circle = spellModel.getCircles()[0];
   }
 
   @Override
   public void initPresentation() {
-    IIdentificate[] allowedCircles = getCircles();
+    IIdentificate[] allowedCircles = spellModel.getCircles();
     initDetailsView();
     view.initGui(allowedCircles);
     view.addMagicViewListener(new IMagicViewListener() {
@@ -111,12 +125,6 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
     });
   }
 
-  @Override
-  public IViewContent getTabContent() {
-    String header = resources.getString(getTabTitleResourceKey());
-    return new SimpleViewContent(new ContentProperties(header), view);
-  }
-
   private void initDetailsView() {
     final JLabel titleView = view.addDetailTitleView();
     titleView.setText(" "); //$NON-NLS-1$
@@ -136,8 +144,7 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
         costView.setValue(creator.createCostString(spell));
         if (spell.getTarget() == null) {
           targetView.setValue(properties.getUndefinedString());
-        }
-        else {
+        } else {
           targetView.setValue(resources.getString("Spells.Target." + spell.getTarget())); //$NON-NLS-1$
         }
         sourceView.setValue(sourceStringBuilder.createSourceString(spell));
@@ -146,10 +153,6 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
     view.addOptionListListener(detailListener);
     view.addSelectionListListener(detailListener);
   }
-
-  protected abstract CircleType[] getCircles();
-
-  protected abstract String getTabTitleResourceKey();
 
   private void initSpellListsInView(final ISpellView spellView) {
     spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()));
@@ -184,24 +187,22 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
     showSpells.removeAll(Arrays.asList(spellConfiguration.getLearnedSpells()));
     int count = showSpells.size();
     ISpell[] sortedSpells = new ISpell[count];
-    sortedSpells = new I18nedIdentificateSorter<ISpell>().sortAscending(
-        showSpells.toArray(new ISpell[count]),
-        sortedSpells,
-        resources);
+    sortedSpells = new I18nedIdentificateSorter<ISpell>()
+            .sortAscending(showSpells.toArray(new ISpell[count]), sortedSpells, resources);
     return sortedSpells;
   }
 
   private ISpell[] getCircleFilteredSpellList(ISpell[] spells) {
     List<ISpell> spellList = new ArrayList<ISpell>();
     for (ISpell spell : spells) {
-      if (ArrayUtilities.containsValue(getCircles(), spell.getCircleType())) {
+      if (ArrayUtilities.containsValue(spellModel.getCircles(), spell.getCircleType())) {
         spellList.add(spell);
       }
     }
     return spellList.toArray(new ISpell[spellList.size()]);
   }
 
-  protected ICharacterTemplate getCharacterTemplate() {
-    return characterTemplate;
+  public IView getView() {
+    return view;
   }
 }

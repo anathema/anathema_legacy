@@ -1,7 +1,7 @@
 package net.sf.anathema.magic.description.presenter;
 
 import net.sf.anathema.character.presenter.magic.detail.MagicDetailModel;
-import net.sf.anathema.character.presenter.magic.detail.CharmDetailPresenter;
+import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditDetailModel;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditModel;
@@ -10,7 +10,7 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IView;
 
-public class MagicDescriptionEditPresenter implements CharmDetailPresenter {
+public class MagicDescriptionEditPresenter implements MagicDetailPresenter {
 
   private final MagicDescriptionEditView view;
   private final MagicDescriptionEditModel model;

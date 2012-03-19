@@ -5,11 +5,11 @@ import net.sf.anathema.lib.gui.IView;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
-public class NullCharmDetailPresenter implements CharmDetailPresenter {
+public class NullMagicDetailPresenter implements MagicDetailPresenter {
 
   @Override
   public MagicDetailModel getModel() {
-    return new NullCharmDetailModel();
+    return new NullMagicDetailModel();
   }
 
   @Override
