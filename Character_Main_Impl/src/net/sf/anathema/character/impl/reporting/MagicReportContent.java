@@ -2,9 +2,9 @@ package net.sf.anathema.character.impl.reporting;
 
 import net.sf.anathema.character.model.ICharacter;
 
-public class CharmReportContent {
+public class MagicReportContent {
 
-  public CharmReportContent(ICharacter character) {
+  public MagicReportContent(ICharacter character) {
 
   }
 }
