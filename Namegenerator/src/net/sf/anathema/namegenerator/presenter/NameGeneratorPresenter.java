@@ -7,13 +7,13 @@ import javax.swing.JComponent;
 import com.google.common.base.Joiner;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
 
-public class NameGeneratorPresenter implements IPresenter {
+public class NameGeneratorPresenter implements Presenter {
 
   private final INameGeneratorView view;
   private final INameGeneratorModel model;

@@ -13,11 +13,11 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.TreeUtilities;
 
-public class RepositoryTreePresenter implements IPresenter {
+public class RepositoryTreePresenter implements Presenter {
 
   private final DefaultMutableTreeNode root;
   private final DefaultTreeModel treeModel;

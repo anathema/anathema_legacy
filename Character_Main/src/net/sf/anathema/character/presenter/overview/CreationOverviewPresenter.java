@@ -12,7 +12,7 @@ import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.IOverviewView;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -22,7 +22,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CreationOverviewPresenter implements IPresenter {
+public class CreationOverviewPresenter implements Presenter {
 
   private final IResources resources;
   private final IOverviewView view;

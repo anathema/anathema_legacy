@@ -17,7 +17,7 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -25,7 +25,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IIntimacy> implements IPresenter {
+public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IIntimacy> implements Presenter {
 
   private final IIntimaciesView view;
   private final IResources resources;

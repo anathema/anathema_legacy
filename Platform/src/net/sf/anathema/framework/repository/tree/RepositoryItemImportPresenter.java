@@ -15,12 +15,12 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
-public class RepositoryItemImportPresenter implements IPresenter {
+public class RepositoryItemImportPresenter implements Presenter {
 
   private final IResources resources;
   private final IRepositoryTreeModel model;

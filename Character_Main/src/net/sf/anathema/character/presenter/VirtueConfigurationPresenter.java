@@ -6,10 +6,10 @@ import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class VirtueConfigurationPresenter implements IPresenter {
+public class VirtueConfigurationPresenter implements Presenter {
 
   private final ITrait[] virtues;
   private final IBasicAdvantageView view;

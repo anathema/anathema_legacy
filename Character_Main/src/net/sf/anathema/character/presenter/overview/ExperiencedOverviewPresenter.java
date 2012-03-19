@@ -11,12 +11,12 @@ import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class ExperiencedOverviewPresenter implements IPresenter {
+public class ExperiencedOverviewPresenter implements Presenter {
 
   private final IExperiencePointManagement management;
   private final IOverviewView view;

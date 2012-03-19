@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpecialNodeView;
 
-public class MultipleEffectCharmPresenter implements IPresenter {
+public class MultipleEffectCharmPresenter implements Presenter {
 
   private final IResources resources;
   private final SVGToggleButtonSpecialNodeView view;

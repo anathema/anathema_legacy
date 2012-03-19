@@ -8,11 +8,11 @@ import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.itemdata.view.IBasicItemView;
 import net.sf.anathema.framework.styledtext.presentation.StyledTextManager;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-public class NotePresenter implements IPresenter {
+public class NotePresenter implements Presenter {
 
   private final IBasicItemView view;
   private final IResources resources;

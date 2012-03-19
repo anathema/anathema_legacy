@@ -24,10 +24,10 @@ import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SpecialtiesConfigurationPresenter implements IPresenter {
+public class SpecialtiesConfigurationPresenter implements Presenter {
 
   private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<ISubTrait, ISpecialtyView>();
   private final TraitInternationalizer i18ner;

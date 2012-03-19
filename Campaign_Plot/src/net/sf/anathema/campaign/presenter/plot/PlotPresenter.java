@@ -24,11 +24,11 @@ import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.IStyledTextManager;
 import net.sf.anathema.framework.styledtext.presentation.StyledTextManager;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public class PlotPresenter implements IPresenter {
+public class PlotPresenter implements Presenter {
 
   private ITextView itemNameView;
   private IStyledTextManager itemSummaryViewManager;

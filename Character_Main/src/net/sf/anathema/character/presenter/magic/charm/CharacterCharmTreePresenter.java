@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.magic.tree;
+package net.sf.anathema.character.presenter.magic.charm;
 
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.presenter.magic.CharacterAlienCharmPresenter;
@@ -11,18 +11,19 @@ import net.sf.anathema.character.presenter.magic.CharacterGroupCharmTree;
 import net.sf.anathema.character.presenter.magic.CharacterGroupCollection;
 import net.sf.anathema.character.presenter.magic.CharacterSpecialCharmPresenter;
 import net.sf.anathema.character.presenter.magic.LearnInteractionPresenter;
+import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPresenter;
+import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
-import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
-public class CharacterCharmTreePresenter extends AbstractCascadePresenter implements IPresenter {
+public class CharacterCharmTreePresenter extends AbstractCascadePresenter implements DetailDemandingMagicPresenter {
 
   private final ICharmView view;
   private final CharacterCharmModel model;
@@ -59,5 +60,10 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
   @Override
   protected GroupCharmTree getCharmTree(IIdentificate cascadeType) {
     return new CharacterGroupCharmTree(model, cascadeType);
+  }
+
+  @Override
+  public void addShowDetailListener(ShowMagicDetailListener listener) {
+    view.addCharmInteractionListener(new ShowDetailInteractionListener(listener));
   }
 }

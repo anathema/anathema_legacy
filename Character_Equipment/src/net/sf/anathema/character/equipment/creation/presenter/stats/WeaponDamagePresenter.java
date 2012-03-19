@@ -7,12 +7,12 @@ import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 
-public class WeaponDamagePresenter implements IPresenter {
+public class WeaponDamagePresenter implements Presenter {
 
   private final IWeaponDamageModel model;
   private final IWeaponDamageView view;

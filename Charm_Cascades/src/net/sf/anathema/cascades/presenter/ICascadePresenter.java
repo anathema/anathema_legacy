@@ -1,7 +1,7 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 
-public interface ICascadePresenter extends IPresenter {
+public interface ICascadePresenter extends Presenter {
 //nothing to do
 }

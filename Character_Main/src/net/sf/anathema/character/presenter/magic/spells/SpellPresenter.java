@@ -9,16 +9,16 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.Ma
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
+import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPresenter;
+import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -33,7 +33,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class SpellPresenter implements IPresenter {
+public class SpellPresenter implements DetailDemandingMagicPresenter {
 
   public static SpellPresenter ForSorcery(ICharacterStatistics statistics, IResources resources,
           IMagicViewFactory factory) {
@@ -51,7 +51,6 @@ public class SpellPresenter implements IPresenter {
   private SpellModel spellModel;
   private final ICharacterStatistics statistics;
   private final MagicInfoStringBuilder creator;
-  private final ICharacterTemplate characterTemplate;
   private final IResources resources;
   private CircleType circle;
   private final IMagicSourceStringBuilder<ISpell> sourceStringBuilder;
@@ -67,7 +66,6 @@ public class SpellPresenter implements IPresenter {
     this.creator = new ScreenDisplayInfoStringBuilder(resources);
     this.sourceStringBuilder = new MagicSourceStringBuilder<ISpell>(resources);
     this.spellConfiguration = statistics.getSpells();
-    this.characterTemplate = statistics.getCharacterTemplate();
     this.view = factory.createSpellView(properties);
     circle = spellModel.getCircles()[0];
   }
@@ -202,7 +200,13 @@ public class SpellPresenter implements IPresenter {
     return spellList.toArray(new ISpell[spellList.size()]);
   }
 
+  @Override
   public IView getView() {
     return view;
+  }
+
+  @Override
+  public void addShowDetailListener(ShowMagicDetailListener listener) {
+    //To change body of implemented methods use File | Settings | File Templates.
   }
 }

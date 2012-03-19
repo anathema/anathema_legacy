@@ -18,11 +18,11 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
-public class FirstEditionBeastformPresenter implements IPresenter {
+public class FirstEditionBeastformPresenter implements Presenter {
 
   private final IResources resources;
   private final IBeastformView view;

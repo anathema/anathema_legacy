@@ -15,10 +15,10 @@ import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class EquipmentObjectPresenter implements IPresenter {
+public class EquipmentObjectPresenter implements Presenter {
 
   public static final String EQUIPMENT_NAME_PREFIX = "Equipment.Name."; //$NON-NLS-1$
   private static final String DESCRIPTION_PREFIX = "Equipment.Description."; //$NON-NLS-1$

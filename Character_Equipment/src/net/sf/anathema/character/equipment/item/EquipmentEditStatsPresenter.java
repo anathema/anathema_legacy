@@ -14,12 +14,12 @@ import net.sf.anathema.character.generic.framework.configuration.AnathemaCharact
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 
-public class EquipmentEditStatsPresenter implements IPresenter {
+public class EquipmentEditStatsPresenter implements Presenter {
 
   private final class RuleSetSelectionListener implements IObjectValueChangedListener<IExaltedRuleSet> {
 

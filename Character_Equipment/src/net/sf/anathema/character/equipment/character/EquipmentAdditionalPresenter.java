@@ -15,7 +15,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EquipmentAdditionalPresenter implements IPresenter {
+public class EquipmentAdditionalPresenter implements Presenter {
 
   private final IResources resources;
   private final IEquipmentAdditionalModel model;

@@ -12,10 +12,10 @@ import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.character.mutations.view.MutationViewLearnProperties;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MutationsPresenter implements IPresenter {
+public class MutationsPresenter implements Presenter {
 
   private final IMutationsView view;
   private final IMutationsModel model;

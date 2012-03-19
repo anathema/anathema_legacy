@@ -14,11 +14,11 @@ import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
 public class BasicAdvantagePresenter implements IContentPresenter {
-  private final List<IPresenter> subPresenters = new ArrayList<IPresenter>();
+  private final List<Presenter> subPresenters = new ArrayList<Presenter>();
   private final IBasicAdvantageView view;
   private final IResources resources;
 
@@ -49,7 +49,7 @@ public class BasicAdvantagePresenter implements IContentPresenter {
   }
 
   public void initPresentation() {
-    for (IPresenter presenter : subPresenters) {
+    for (Presenter presenter : subPresenters) {
       presenter.initPresentation();
     }
     view.initGui(new IAdvantageViewProperties() {

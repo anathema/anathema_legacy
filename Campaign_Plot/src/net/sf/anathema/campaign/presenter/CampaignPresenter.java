@@ -3,10 +3,10 @@ package net.sf.anathema.campaign.presenter;
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.presenter.plot.PlotPresenter;
 import net.sf.anathema.campaign.presenter.view.ISeriesView;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CampaignPresenter implements IPresenter {
+public class CampaignPresenter implements Presenter {
 
   private final ISeriesView campaignView;
   private final ISeries campaign;

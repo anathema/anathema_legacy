@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.presenter;
 
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 
-public interface AlienCharmPresenter extends IPresenter {
+public interface AlienCharmPresenter extends Presenter {
   //nothing to do
 }

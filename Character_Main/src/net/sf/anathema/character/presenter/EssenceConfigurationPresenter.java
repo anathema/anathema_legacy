@@ -9,12 +9,12 @@ import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.NullValueView;
 
-public class EssenceConfigurationPresenter implements IPresenter {
+public class EssenceConfigurationPresenter implements Presenter {
 
   private final IBasicAdvantageView view;
   private final IEssencePoolConfiguration essence;

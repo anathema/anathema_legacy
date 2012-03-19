@@ -7,13 +7,13 @@ import net.sf.anathema.character.lunar.renown.view.RenownView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class RenownPresenter implements IPresenter {
+public class RenownPresenter implements Presenter {
 
   private final IResources resources;
   private final RenownView view;

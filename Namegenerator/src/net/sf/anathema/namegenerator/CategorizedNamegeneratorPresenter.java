@@ -8,13 +8,13 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.namegenerator.domain.category.AggregatedTokenCategory;
 import net.sf.anathema.namegenerator.domain.category.ICategorizedTokenConfiguration;
 import net.sf.anathema.namegenerator.domain.category.TokenCategory;
 import net.sf.anathema.namegenerator.view.category.ICategorizedNameGeneratorView;
 
-public class CategorizedNamegeneratorPresenter implements IPresenter {
+public class CategorizedNamegeneratorPresenter implements Presenter {
 
   private final ICategorizedNameGeneratorView view;
   private final ICategorizedTokenConfiguration tokenRegistry;
