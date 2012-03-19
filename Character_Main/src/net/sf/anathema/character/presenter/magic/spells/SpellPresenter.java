@@ -206,7 +206,18 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
   }
 
   @Override
-  public void addShowDetailListener(ShowMagicDetailListener listener) {
-    //To change body of implemented methods use File | Settings | File Templates.
+  public void addShowDetailListener(final ShowMagicDetailListener listener) {
+    ListSelectionListener editListener = new ListSelectionListener() {
+      @Override
+      public void valueChanged(ListSelectionEvent e) {
+        final ISpell spell = (ISpell) ((JList) e.getSource()).getSelectedValue();
+        if (spell == null) {
+          return;
+        }
+        listener.showDetail(spell.getId());
+      }
+    };
+    view.addOptionListListener(editListener);
+    view.addSelectionListListener(editListener);
   }
 }
