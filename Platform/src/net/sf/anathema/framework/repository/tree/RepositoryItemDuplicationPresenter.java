@@ -15,11 +15,11 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
-public class RepositoryItemDuplicationPresenter implements IPresenter {
+public class RepositoryItemDuplicationPresenter implements Presenter {
 
   private final IResources resources;
   private final RepositoryTreeModel model;

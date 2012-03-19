@@ -13,10 +13,10 @@ import net.sf.anathema.campaign.music.presenter.util.MusicCategorizationPresente
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MusicSearchPresenter implements IPresenter {
+public class MusicSearchPresenter implements Presenter {
 
   private final ILibraryControlView controlView;
   private final IResources resources;

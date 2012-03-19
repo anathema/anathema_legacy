@@ -11,14 +11,14 @@ import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-public class EquipmentDatabasePresenter implements IPresenter {
+public class EquipmentDatabasePresenter implements Presenter {
 
   private static final int COLUMN_COUNT = 45;
   private final IResources resources;

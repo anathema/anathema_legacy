@@ -16,12 +16,12 @@ import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeModelBonusPointCalculator;
 import net.sf.anathema.character.sidereal.presentation.SiderealCasteUI;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class SiderealCollegePresenter implements IPresenter {
+public class SiderealCollegePresenter implements Presenter {
 
   private final IResources resources;
   private final ISiderealCollegeView view;

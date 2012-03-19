@@ -15,10 +15,10 @@ import net.sf.anathema.character.meritsflaws.view.MultiValuePerkDetailsView;
 import net.sf.anathema.character.meritsflaws.view.NullPerkDetailsView;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MeritsFlawsPresenter implements IPresenter {
+public class MeritsFlawsPresenter implements Presenter {
 
   private final IMeritsFlawsTabView view;
   private final IMeritsFlawsModel model;

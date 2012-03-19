@@ -8,10 +8,10 @@ import net.sf.anathema.character.presenter.overview.CreationOverviewPresenter;
 import net.sf.anathema.character.presenter.overview.ExperiencedOverviewPresenter;
 import net.sf.anathema.character.view.OverviewContainer;
 import net.sf.anathema.character.view.overview.IOverviewView;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class OverviewPresenter implements IPresenter {
+public class OverviewPresenter implements Presenter {
 
   private IResources resources;
   private ICharacterStatistics statistics;

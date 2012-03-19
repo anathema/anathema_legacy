@@ -3,9 +3,8 @@ package net.sf.anathema.cascades.module;
 import net.sf.anathema.cascades.presenter.CascadePresenter;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
 import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
-import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -38,12 +37,12 @@ public final class CharmCascadeItemTypeConfiguration extends AbstractNonPersista
         Icon icon = new CascadesUI(resources).getCascadesTabIcon();
         CharmCascadeModuleView view = new CharmCascadeModuleView(printName, icon);
         ICharacterGenerics characterGenerics = CharacterGenericsExtractor.getGenerics(anathemaModel);
-        CharmDescriptionProvider charmDescriptionProvider = getCharmDescriptionProvider();
-        new CascadePresenter(resources, characterGenerics, view, charmDescriptionProvider).initPresentation();
+        MagicDescriptionProvider magicDescriptionProvider = getCharmDescriptionProvider();
+        new CascadePresenter(resources, characterGenerics, view, magicDescriptionProvider).initPresentation();
         return view;
       }
 
-      private CharmDescriptionProvider getCharmDescriptionProvider() {
+      private MagicDescriptionProvider getCharmDescriptionProvider() {
         return CharmDescriptionProviderExtractor.CreateFor(anathemaModel, resources);
       }
     };

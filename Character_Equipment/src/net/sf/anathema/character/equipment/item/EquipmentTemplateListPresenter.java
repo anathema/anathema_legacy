@@ -7,11 +7,11 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditMode
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 
-public class EquipmentTemplateListPresenter implements IPresenter {
+public class EquipmentTemplateListPresenter implements Presenter {
 
   private final class EquipmentTemplateLoadListener implements IObjectValueChangedListener<String> {
     public void valueChanged(String newValue) {

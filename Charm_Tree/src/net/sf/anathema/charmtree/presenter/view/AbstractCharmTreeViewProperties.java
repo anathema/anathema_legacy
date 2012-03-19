@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfo
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -24,9 +24,9 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   private final Cursor zoomCursor;
   private final Cursor pointCursor;
 
-  public AbstractCharmTreeViewProperties(IResources resources, CharmDescriptionProvider charmDescriptionProvider) {
+  public AbstractCharmTreeViewProperties(IResources resources, MagicDescriptionProvider magicDescriptionProvider) {
     this.resources = resources;
-    this.tooltipTextProvider = new CharmInfoStringBuilder(resources, charmDescriptionProvider);
+    this.tooltipTextProvider = new CharmInfoStringBuilder(resources, magicDescriptionProvider);
     this.openHandCursor = Toolkit.getDefaultToolkit().createCustomCursor(
         resources.getImage(this.getClass(), "CursorHandOpen.png"), //$NON-NLS-1$
         new Point(5, 0),

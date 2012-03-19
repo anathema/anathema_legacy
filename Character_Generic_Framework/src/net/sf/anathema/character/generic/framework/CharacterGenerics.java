@@ -14,11 +14,6 @@ import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
 import net.sf.anathema.character.generic.impl.template.magic.CharmProvider;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
-import net.sf.anathema.character.generic.magic.description.AggregatedCharmDescription;
-import net.sf.anathema.character.generic.magic.description.AggregatedCharmDescriptionProvider;
-import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
-import net.sf.anathema.character.generic.magic.description.CharmDescriptionProviderFactory;
-import net.sf.anathema.character.generic.magic.description.RegisteredCharmDescriptionProviderFactory;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -28,9 +23,6 @@ import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.registry.Registry;
-import net.sf.anathema.lib.resources.IResources;
-
-import java.util.Collection;
 
 public class CharacterGenerics implements ICharacterGenerics {
 

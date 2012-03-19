@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
-import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
@@ -26,11 +26,11 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
           new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
 
   public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory,
-          CharmDescriptionProvider charmDescriptionProvider) {
+          MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     ICharmCache cache = CharmCache.getInstance();
     CascadeCharmTreeViewProperties viewProperties =
-            new CascadeCharmTreeViewProperties(resources, charmDescriptionProvider, generics, charmMapsByRules,
+            new CascadeCharmTreeViewProperties(resources, magicDescriptionProvider, generics, charmMapsByRules,
                     selectedRuleSet, cache);
     ICascadeView view = factory.createCascadeView(viewProperties);
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();

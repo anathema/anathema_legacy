@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
-import net.sf.anathema.character.presenter.charm.IContentPresenter;
+import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.framework.presenter.view.IViewContent;

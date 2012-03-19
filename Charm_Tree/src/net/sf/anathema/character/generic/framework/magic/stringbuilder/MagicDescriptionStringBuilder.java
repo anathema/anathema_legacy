@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.description.CharmDescription;
-import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
+import net.sf.anathema.character.generic.magic.description.MagicDescription;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 import static java.text.MessageFormat.format;
@@ -10,18 +10,18 @@ import static net.sf.anathema.lib.lang.AnathemaStringUtilities.createFixedWidthP
 
 public class MagicDescriptionStringBuilder implements IMagicTooltipStringBuilder {
   private final IResources resources;
-  private CharmDescriptionProvider charmDescriptionProvider;
+  private MagicDescriptionProvider magicDescriptionProvider;
 
   private final int MAX_DESCRIPTION_LENGTH = 80;
 
-  public MagicDescriptionStringBuilder(IResources resources, CharmDescriptionProvider charmDescriptionProvider) {
+  public MagicDescriptionStringBuilder(IResources resources, MagicDescriptionProvider magicDescriptionProvider) {
     this.resources = resources;
-    this.charmDescriptionProvider = charmDescriptionProvider;
+    this.magicDescriptionProvider = magicDescriptionProvider;
   }
 
   @Override
   public void buildStringForMagic(StringBuilder builder, IMagic magic, Object specialDetails) {
-    CharmDescription charmDescription = charmDescriptionProvider.getCharmDescription(magic);
+    MagicDescription charmDescription = magicDescriptionProvider.getCharmDescription(magic);
     if (charmDescription.isEmpty()) {
       return;
     }

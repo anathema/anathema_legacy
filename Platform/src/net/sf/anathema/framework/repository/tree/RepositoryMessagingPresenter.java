@@ -3,9 +3,9 @@ package net.sf.anathema.framework.repository.tree;
 import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 
-public class RepositoryMessagingPresenter implements IPresenter {
+public class RepositoryMessagingPresenter implements Presenter {
 
   private final RepositoryTreeModel repositoryTreeModel;
   private final IAnathemaMessaging messaging;

@@ -7,9 +7,9 @@ import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 
-public class TraitPresenter implements IPresenter {
+public class TraitPresenter implements Presenter {
 
   private final ITrait trait;
   private final IIntValueView view;

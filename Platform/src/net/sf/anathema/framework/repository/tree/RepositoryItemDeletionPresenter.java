@@ -8,12 +8,12 @@ import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.dialog.ConfigurableVetor;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
-public class RepositoryItemDeletionPresenter implements IPresenter {
+public class RepositoryItemDeletionPresenter implements Presenter {
 
   private final IResources resources;
   private final IRepositoryTreeModel repositoryModel;

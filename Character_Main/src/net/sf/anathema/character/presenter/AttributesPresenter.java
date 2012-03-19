@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.presenter.charm.IContentPresenter;
+import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.framework.presenter.view.IViewContent;

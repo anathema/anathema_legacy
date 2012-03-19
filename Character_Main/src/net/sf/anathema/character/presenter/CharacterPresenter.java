@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.presenter.charm.IContentPresenter;
-import net.sf.anathema.character.presenter.charm.MagicPresenter;
+import net.sf.anathema.character.presenter.magic.IContentPresenter;
+import net.sf.anathema.character.presenter.magic.MagicPresenter;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
@@ -19,7 +19,7 @@ import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IDisposable;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -30,7 +30,7 @@ import java.util.List;
 
 import static net.sf.anathema.character.generic.framework.CharacterGenericsExtractor.getGenerics;
 
-public class CharacterPresenter implements IPresenter, MultiTabViewPresenter {
+public class CharacterPresenter implements Presenter, MultiTabViewPresenter {
 
   private final ICharacter character;
   private final ICharacterView characterView;

@@ -4,10 +4,10 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class WillpowerConfigurationPresenter implements IPresenter {
+public class WillpowerConfigurationPresenter implements Presenter {
 
   private final ITrait willpower;
   private final IBasicAdvantageView view;

@@ -10,25 +10,25 @@ import java.util.List;
 
 import static com.google.common.collect.Lists.transform;
 
-public class AggregatedCharmDescriptionProvider implements CharmDescriptionProvider {
+public class AggregatedCharmDescriptionProvider implements MagicDescriptionProvider {
 
-  private final List<CharmDescriptionProvider> providerList = new ArrayList<CharmDescriptionProvider>();
+  private final List<MagicDescriptionProvider> providerList = new ArrayList<MagicDescriptionProvider>();
 
   public AggregatedCharmDescriptionProvider(IResources resources) {
-    providerList.add(new ShortCharmDescriptionProvider(resources));
+    providerList.add(new ShortMagicDescriptionProvider(resources));
   }
 
-  public void addProvider(CharmDescriptionProvider provider) {
+  public void addProvider(MagicDescriptionProvider provider) {
     providerList.add(0, provider);
   }
 
   @Override
-  public CharmDescription getCharmDescription(IMagic magic) {
-    List<CharmDescription> descriptions = transform(providerList, new ToDescription(magic));
-    return new AggregatedCharmDescription(descriptions);
+  public MagicDescription getCharmDescription(IMagic magic) {
+    List<MagicDescription> descriptions = transform(providerList, new ToDescription(magic));
+    return new AggregatedMagicDescription(descriptions);
   }
 
-  private static class ToDescription implements Function<CharmDescriptionProvider, CharmDescription> {
+  private static class ToDescription implements Function<MagicDescriptionProvider, MagicDescription> {
     private final IMagic magic;
 
     public ToDescription(IMagic magic) {
@@ -36,7 +36,7 @@ public class AggregatedCharmDescriptionProvider implements CharmDescriptionProvi
     }
 
     @Override
-    public CharmDescription apply(@Nullable CharmDescriptionProvider input) {
+    public MagicDescription apply(@Nullable MagicDescriptionProvider input) {
       return input.getCharmDescription(magic);
     }
   }

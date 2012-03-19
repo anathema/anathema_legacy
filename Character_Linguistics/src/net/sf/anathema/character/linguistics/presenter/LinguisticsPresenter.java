@@ -20,13 +20,13 @@ import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelection
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class LinguisticsPresenter implements IPresenter {
+public class LinguisticsPresenter implements Presenter {
 
   private final ILinguisticsModel model;
   private final ILinguisticsView view;

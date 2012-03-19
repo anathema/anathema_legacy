@@ -5,10 +5,10 @@ import net.sf.anathema.campaign.music.presenter.IMusicEvent;
 import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.workflow.container.SelectionContainerPresenter;
 
-public class MusicCategorizationPresenter implements IPresenter {
+public class MusicCategorizationPresenter implements Presenter {
 
   private final IMusicCategorizationModel model;
   private final IMusicCategorizationView view;

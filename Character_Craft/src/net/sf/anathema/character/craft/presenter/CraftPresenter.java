@@ -12,10 +12,10 @@ import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait> implements IPresenter {
+public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait> implements Presenter {
 
   private final ICraftModel model;
   private final IRemovableStringEntriesView<SimpleTraitView> view;
