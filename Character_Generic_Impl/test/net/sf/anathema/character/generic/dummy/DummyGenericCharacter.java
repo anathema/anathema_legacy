@@ -21,6 +21,7 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
+import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
@@ -271,6 +272,13 @@ public class DummyGenericCharacter implements IGenericCharacter {
 
 	@Override
 	public void setLearnCount(String charmName, int newValue) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addSpecialtyListChangeListener(
+			ISpecialtyListChangeListener listener) {
 		// TODO Auto-generated method stub
 		
 	}

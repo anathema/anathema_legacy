@@ -14,4 +14,7 @@ public interface IEquipmentCharacterOptionProvider {
 	public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentItem item, IEquipmentStats stats);
 	
 	public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentStats stats);
+	
+	// returns true if options have been transferred
+	public boolean transferOptions(IEquipmentItem fromItem, IEquipmentItem toItem);
 }

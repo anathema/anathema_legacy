@@ -11,12 +11,10 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
@@ -36,7 +34,6 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable =
 		    new Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>>();
   private final IEquipmentCharacterDataProvider provider;
-  private final ICharacterListening changeListener;
 
   public EquipmentAdditionalModel(
 		  ICharacterType characterType,
@@ -50,7 +47,6 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
     this.defaultMaterial = evaluateDefaultMaterial();
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     this.provider = new EquipmentCharacterDataProvider(context, this);
-    this.changeListener = context.getCharacterListening();
     for (IEquipmentTemplate template : naturalWeapons) {
       if (template == null) {
         continue;
@@ -59,45 +55,30 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
       naturalWeaponItems.add(initItem(item));
     }
     
-    context.getCharacterListening().addChangeListener(new ICharacterChangeListener() {
-
-		@Override
-		public void characterChanged() {
-			// removing specialty notes if the underlying specialty is removed
-			// need a more direct way to do this
-			for (IEquipmentItem item : getEquipmentItems())
-				for (IEquipmentStats stats : item.getStats()) {
-					List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
-					
-					if (list != null) {
-						List<IEquipmentStatsOption> optionsList = new ArrayList<IEquipmentStatsOption>();
-						optionsList.addAll(list);
-						for (IEquipmentStatsOption option : optionsList) {
-							try {
-								ArrayUtilities.indexOf(provider.getSpecialties(AbilityType.valueOf(option.getType())), option.getUnderlyingTrait());
-							}
-							catch (IllegalArgumentException e) {
-								//no longer has the specialty
-								disableStatOption(item, stats, option);
+    context.getSpecialtyContext().addSpecialtyListChangeListener(
+    		new ISpecialtyListChangeListener() {
+				@Override
+				public void specialtyListChanged() {
+					for (IEquipmentItem item : getEquipmentItems())
+						for (IEquipmentStats stats : item.getStats()) {
+							List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
+							
+							if (list != null) {
+								List<IEquipmentStatsOption> optionsList = new ArrayList<IEquipmentStatsOption>();
+								optionsList.addAll(list);
+								for (IEquipmentStatsOption option : optionsList) {
+									try {
+										ArrayUtilities.indexOf(provider.getSpecialties(AbilityType.valueOf(option.getType())), option.getUnderlyingTrait());
+									}
+									catch (IllegalArgumentException e) {
+										//no longer has the specialty
+										disableStatOption(item, stats, option);
+									}
+								}
 							}
 						}
-					}
 				}
-		}
-
-		@Override
-		public void traitChanged(ITraitType type) {
-		}
-
-		@Override
-		public void experiencedChanged(boolean experienced) {
-		}
-
-		@Override
-		public void casteChanged() {
-		}
-    	
-    });
+    		});
   }
   
   public IEquipmentCharacterDataProvider getCharacterDataProvider() {
@@ -219,7 +200,17 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
   }
 
   @Override
-  public void addCharacterChangedListener(ICharacterChangeListener listener) {
-	changeListener.addChangeListener(listener);
+  public boolean transferOptions(IEquipmentItem fromItem, IEquipmentItem toItem) {
+	  boolean transferred = false;
+	  for (IEquipmentStats fromStats : fromItem.getStats()) {
+		  List<IEquipmentStatsOption> optionList = optionsTable.get(fromItem, fromStats);
+		  optionsTable.add(fromItem, fromStats, null);
+		  IEquipmentStats toStats = toItem.getStat(fromStats.getId());
+		  if (toStats != null && optionList != null) {
+			  optionsTable.add(toItem, toStats, optionList);
+			  transferred = true;
+		  }
+	  } 
+	  return transferred;
   }
 }

@@ -49,6 +49,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
     boxes.put(isSelectedModel, box);
     
     GridDialogLayout layout = new GridDialogLayout(1, false);
+    layout.setVerticalSpacing(0);
     JPanel panel = new JPanel(layout);
     
     panel.add(box);

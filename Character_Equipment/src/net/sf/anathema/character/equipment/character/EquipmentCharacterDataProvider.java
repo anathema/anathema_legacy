@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
+import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 
@@ -27,14 +28,14 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
 	
 	public INamedGenericTrait[] getSpecialties(ITraitType trait)
 	{
-		return context.getSpecialties(trait);
+		return context.getSpecialtyContext().getSpecialties(trait);
 	}
 
 	@Override
 	public IEquipmentStatsOption getCharacterSpecialtyOption(String name,
 			String type) {
 		ITraitType trait = AbilityType.valueOf(type);
-		for (INamedGenericTrait specialty : context.getSpecialties(trait))
+		for (INamedGenericTrait specialty : context.getSpecialtyContext().getSpecialties(trait))
 			if (specialty.getName().equals(name))
 				return new EquipmentSpecialtyOption(specialty, trait);
 		return null;
@@ -91,5 +92,16 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
 	@Override
 	public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentStats stats) {
 		return optionProvider.getEnabledStatOptions(stats);
+	}
+
+	@Override
+	public void addCharacterSpecialtyListChangeListener(
+			ISpecialtyListChangeListener listener) {
+		context.getSpecialtyContext().addSpecialtyListChangeListener(listener);
+	}
+
+	@Override
+	public boolean transferOptions(IEquipmentItem fromItem, IEquipmentItem toItem) {
+		return optionProvider.transferOptions(fromItem, toItem);
 	}
 }

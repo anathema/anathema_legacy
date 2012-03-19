@@ -10,11 +10,13 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
+import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationComboLearnStrategy;
@@ -31,7 +33,8 @@ import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrateg
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.character.model.charm.learn.IComboLearnStrategy;
 
-public class CharacterModelContext implements ICharacterModelContext, ICharmContext, ITraitContext {
+public class CharacterModelContext implements ICharacterModelContext, ICharmContext, ITraitContext,
+	IGenericSpecialtyContext {
 
   private final ProxyTraitValueStrategy traitValueStrategy = new ProxyTraitValueStrategy(
       new CreationTraitValueStrategy());
@@ -53,10 +56,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
 
   public IAdditionalModel getAdditionalModel(String id) {
     return character.getAdditionalModel(id);
-  }
-  
-  public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
-	return character.getSpecialties(traitType);
   }
 
   public ITraitValueStrategy getTraitValueStrategy() {
@@ -135,4 +134,19 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   public boolean isFullyLoaded() { return isFullyLoaded; }
   
   public void setFullyLoaded(boolean loaded) { isFullyLoaded = loaded; }
+
+  @Override
+  public IGenericSpecialtyContext getSpecialtyContext() {
+	return this;
+  }
+  
+  public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
+		return character.getSpecialties(traitType);
+	  }
+
+  @Override
+  public void addSpecialtyListChangeListener(
+  		ISpecialtyListChangeListener listener) {
+	  character.addSpecialtyListChangeListener(listener);	
+  }
 }

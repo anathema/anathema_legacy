@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
@@ -101,16 +102,21 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   public void refreshItems() {
     for (IEquipmentItem item : new ArrayList<IEquipmentItem>(equipmentItems)) {
       if (canBeRemoved(item)) {
-        refreshItem(item);
+        IEquipmentItem refreshedItem = refreshItem(item);
+        IEquipmentCharacterDataProvider provider = getCharacterDataProvider();
+        if (provider != null) {
+        	if (provider.transferOptions(item, refreshedItem))
+        		initItem(refreshedItem);
+        }
       }
     }
   }
 
-  private void refreshItem(final IEquipmentItem item) {
+  private IEquipmentItem refreshItem(final IEquipmentItem item) {
     String templateId = item.getTemplateId();
     MagicalMaterial material = item.getMaterial();
     removeItem(item);
-    addEquipmentObjectFor(templateId, material);
+    return addEquipmentObjectFor(templateId, material);
   }
 
   public final void addEquipmentObjectListener(final ICollectionListener<IEquipmentItem> listener) {

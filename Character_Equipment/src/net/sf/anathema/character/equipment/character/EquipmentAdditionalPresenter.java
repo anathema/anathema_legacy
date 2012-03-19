@@ -10,8 +10,7 @@ import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -40,31 +39,18 @@ public class EquipmentAdditionalPresenter implements Presenter {
     this.model = model;
     this.view = view;
     
-    model.addCharacterChangedListener(new ICharacterChangeListener()
-    {
-		@Override
-		public void characterChanged() {
-			for (IEquipmentItem item : model.getNaturalWeapons()) {
-			      initEquipmentObjectPresentation(item);
-			    }
-			for (IEquipmentItem item : model.getEquipmentItems()) {
-			      initEquipmentObjectPresentation(item);
-			    }
-		}
-
-		@Override
-		public void traitChanged(ITraitType type) {
-		}
-
-		@Override
-		public void experiencedChanged(boolean experienced) {
-		}
-
-		@Override
-		public void casteChanged() {
-		}
-    	
-    });
+    model.getCharacterDataProvider().addCharacterSpecialtyListChangeListener(
+    		new ISpecialtyListChangeListener() {
+				@Override
+				public void specialtyListChanged() {
+					for (IEquipmentItem item : model.getNaturalWeapons()) {
+					      initEquipmentObjectPresentation(item);
+					    }
+					for (IEquipmentItem item : model.getEquipmentItems()) {
+					      initEquipmentObjectPresentation(item);
+					    }
+				}
+    		});
   }
 
   public void initPresentation() {

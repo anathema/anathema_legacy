@@ -171,4 +171,8 @@ public class EquipmentItem implements IEquipmentItem {
   public void removeChangeListener(IChangeListener listener) {
     changeControl.removeChangeListener(listener);
   }
+  
+  public String toString() {
+	return template.getName() + (material != null ? " (" + material.toString() + ")" : "");
+  }
 }
