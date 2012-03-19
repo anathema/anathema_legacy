@@ -101,4 +101,9 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public IGenericSpecialtyContext getSpecialtyContext() {
+		return null;
+	}
 }

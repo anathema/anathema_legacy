@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -22,11 +23,14 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
+import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
+import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
@@ -302,5 +306,27 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public ICharm[] getLearnedCharms() {
     return statistics.getCharms().getLearnedCharms(statistics.isExperienced());
+  }
+
+  @Override
+  public void addSpecialtyListChangeListener(final ISpecialtyListChangeListener listener) {
+	ISpecialtiesConfiguration config = statistics.getTraitConfiguration().getSpecialtyConfiguration();
+	for (ITraitReference trait : config.getAllTraits())
+		config.getSpecialtiesContainer(trait).addSubTraitListener(new ISubTraitListener() {
+			@Override
+			public void subTraitValueChanged() {
+			}
+
+			@Override
+			public void subTraitAdded(ISubTrait subTrait) {
+				listener.specialtyListChanged();
+			}
+
+			@Override
+			public void subTraitRemoved(ISubTrait subTrait) {
+				listener.specialtyListChanged();
+			}
+			
+		});
   }
 }

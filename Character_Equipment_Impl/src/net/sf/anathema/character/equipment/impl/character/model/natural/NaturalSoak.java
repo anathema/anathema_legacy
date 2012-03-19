@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.natural;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.health.HealthType;

@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
+import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.lib.util.IdentifiedInteger;
@@ -80,4 +81,7 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   public boolean isMultipleEffectCharm(ICharm magic);
 
   public boolean isSubeffectCharm(ICharm magic);
+
+  public void addSpecialtyListChangeListener(
+		ISpecialtyListChangeListener listener);
 }
