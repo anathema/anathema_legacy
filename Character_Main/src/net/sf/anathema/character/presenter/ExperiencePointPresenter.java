@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresenter;
-import net.sf.anathema.character.presenter.charm.IContentPresenter;
+import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.lib.resources.IResources;

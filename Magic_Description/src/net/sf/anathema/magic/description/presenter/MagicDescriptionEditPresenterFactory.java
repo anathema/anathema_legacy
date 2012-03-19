@@ -1,8 +1,8 @@
 package net.sf.anathema.magic.description.presenter;
 
-import net.sf.anathema.character.presenter.charm.detail.CharmDetailPresenter;
-import net.sf.anathema.character.presenter.charm.detail.CharmDetailPresenterFactory;
-import net.sf.anathema.character.presenter.charm.detail.RegisteredCharmDetailPresenterFactory;
+import net.sf.anathema.character.presenter.magic.detail.CharmDetailPresenter;
+import net.sf.anathema.character.presenter.magic.detail.CharmDetailPresenterFactory;
+import net.sf.anathema.character.presenter.magic.detail.RegisteredCharmDetailPresenterFactory;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.magic.description.model.AutoSaveMagicDescriptionEditModel;

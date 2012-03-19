@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.presenter.charm.IContentPresenter;
-import net.sf.anathema.character.presenter.charm.MagicPresenter;
+import net.sf.anathema.character.presenter.magic.IContentPresenter;
+import net.sf.anathema.character.presenter.magic.MagicPresenter;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;

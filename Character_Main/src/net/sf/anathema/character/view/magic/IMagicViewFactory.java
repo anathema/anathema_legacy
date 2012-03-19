@@ -1,6 +1,6 @@
 package net.sf.anathema.character.view.magic;
 
-import net.sf.anathema.character.presenter.charm.SpellViewProperties;
+import net.sf.anathema.character.presenter.magic.SpellViewProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 

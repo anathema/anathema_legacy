@@ -7,7 +7,7 @@ import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.presenter.charm.SpellViewProperties;
+import net.sf.anathema.character.presenter.magic.SpellViewProperties;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
