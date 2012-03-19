@@ -18,7 +18,14 @@
     	<willpowerVirtueBased value="false" />
     </additionalRules>
     <additionalTemplates>
+    	<template id="SiderealColleges" general="0" favored="0">
+    		<bonusGeneral value="2"/>
+    		<bonusFavored value="1"/>
+    		<experienceBase value="5"/>
+    		<experienceMultiple value="3"/>
+    	</template>
     	<template id="Sidereal.FlawedFate.Template"/>
+    	<template id="Sidereal.Paradox.Template"/>
     </additionalTemplates>
     <healthTemplate>
       <toughnessControllingTrait type="Resistance"/>

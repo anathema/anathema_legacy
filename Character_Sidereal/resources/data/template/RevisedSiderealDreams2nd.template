@@ -19,8 +19,8 @@
     </additionalRules>
     <additionalTemplates>
     	<template id="SiderealColleges" general="3" favored="4">
-    		<bonusGeneral value="8"/>
-    		<bonusFavored value="6"/>
+    		<bonusGeneral value="2"/>
+    		<bonusFavored value="1"/>
     		<experienceBase value="5"/>
     		<experienceMultiple value="3"/>
     	</template>
