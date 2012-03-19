@@ -2,6 +2,7 @@ package net.sf.anathema.magic.description.presenter;
 
 import net.sf.anathema.character.presenter.charm.detail.MagicDetailModel;
 import net.sf.anathema.character.presenter.charm.detail.CharmDetailPresenter;
+import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditDetailModel;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditModel;
 import net.sf.anathema.magic.description.view.MagicDescriptionEditView;
@@ -15,10 +16,12 @@ public class MagicDescriptionEditPresenter implements CharmDetailPresenter {
 
   private final MagicDescriptionEditView view;
   private final MagicDescriptionEditModel model;
+  private IResources resources;
 
-  public MagicDescriptionEditPresenter(MagicDescriptionEditView view, MagicDescriptionEditModel model) {
+  public MagicDescriptionEditPresenter(MagicDescriptionEditView view, MagicDescriptionEditModel model, IResources resources) {
     this.view = view;
     this.model = model;
+    this.resources = resources;
   }
 
 
@@ -51,6 +54,7 @@ public class MagicDescriptionEditPresenter implements CharmDetailPresenter {
 
   @Override
   public String getDetailTitle() {
-    return format("Edit detail for ''{0}''", model.getEditId());
+    String magicName = resources.getString(model.getEditId());
+    return resources.getString("MagicDescription.EditTitle", magicName);
   }
 }

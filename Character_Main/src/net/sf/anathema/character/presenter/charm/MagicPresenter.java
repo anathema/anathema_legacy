@@ -85,7 +85,7 @@ public class MagicPresenter implements IContentPresenter {
       Collection<CharmDetailPresenterFactory> factories =
               instantiater.instantiateAll(RegisteredCharmDetailPresenterFactory.class);
       for (CharmDetailPresenterFactory factory : factories) {
-        return factory.create(anathemaModel);
+        return factory.create(anathemaModel, resources);
       }
     } catch (Throwable e) {
       logger.error("Error initializing charm details.", e);
