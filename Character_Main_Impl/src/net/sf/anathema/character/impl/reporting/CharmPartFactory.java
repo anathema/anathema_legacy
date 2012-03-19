@@ -16,7 +16,9 @@ public final class CharmPartFactory {
 
   private static final int STANDARD_FONT_SIZE = 10;
   private static final int TITLE_FONT_SIZE = 14;
-  private static final int GROUP_FONT_SIZE = 16;
+  private static final int GROUP_FONT_SIZE = 18;
+  public static final int DESCRIPTION_FIRST_LINE_INDENT = 15;
+  public static final int TITLE_LEADING = 25;
   private final PdfReportUtils utils;
 
   public CharmPartFactory(PdfReportUtils utils) {
@@ -31,20 +33,20 @@ public final class CharmPartFactory {
 
   public Paragraph createGroupTitle(String groupTitle) {
     Chunk title = new Chunk(groupTitle, utils.createDefaultFont(GROUP_FONT_SIZE, BOLD));
-    Paragraph paragraph = new Paragraph(40, title);
+    Paragraph paragraph = new Paragraph(TITLE_LEADING, title);
     paragraph.setAlignment(Element.ALIGN_CENTER);
     return paragraph;
   }
 
   public Paragraph createCharmTitle(String charmName) {
     Chunk title = new Chunk(charmName, utils.createDefaultFont(TITLE_FONT_SIZE, BOLD));
-    return new Paragraph(25, title);
+    return new Paragraph(TITLE_LEADING, title);
   }
 
   public Paragraph createDescriptionParagraph(String text) {
     Chunk chunk = new Chunk(text, utils.createDefaultFont(STANDARD_FONT_SIZE, NORMAL));
     Paragraph paragraph = new Paragraph(chunk);
-    paragraph.setFirstLineIndent(15);
+    paragraph.setFirstLineIndent(DESCRIPTION_FIRST_LINE_INDENT);
     paragraph.setAlignment(Element.ALIGN_JUSTIFIED);
     return paragraph;
   }

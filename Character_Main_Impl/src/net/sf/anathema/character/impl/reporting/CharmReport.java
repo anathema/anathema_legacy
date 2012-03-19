@@ -58,7 +58,7 @@ public class CharmReport extends AbstractPdfReport {
     boolean isFirst = true;
     for (ICharm charm : getCurrentCharms(character)) {
       CharmStats charmStats = createCharmStats(character, charm);
-      if (!currentGroup.equals(charm.getGroupId())) {
+      if (!currentGroup.equals(charmStats.getGroupName(resources))) {
         currentGroup = charmStats.getGroupName(resources);
         columnText.addElement(
                 isFirst ? partFactory.createFirstGroupTitle(currentGroup) : partFactory.createGroupTitle(currentGroup));
@@ -97,7 +97,7 @@ public class CharmReport extends AbstractPdfReport {
   }
 
   private void addKeywordsRow(CharmStats charmStats, PdfPTable table) {
-    String keywords = Joiner.on(',').join(charmStats.getDetailStrings(resources));
+    String keywords = Joiner.on(", ").join(charmStats.getDetailStrings(resources));
     String keywordsLabel = resources.getString("CharmReport.Keywords.Label") + ": ";
     table.addCell(partFactory.createDoubleDataCell(keywordsLabel, keywords));
   }
