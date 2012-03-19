@@ -7,6 +7,15 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.github.com
 
 ===------------------------------------------------------------------------------===
+			Release 3.x.x
+===------------------------------------------------------------------------------===
+
+-- Features --
+* You can now enter your own Charm descriptions. To do, CTRL-click your Charm and type away.
+* New report (via "File Menu => Save as PDF"): Charm Overview. It prints your Charm data with text, just as the books do.
+
+
+===------------------------------------------------------------------------------===
 			Release 3.1.2
 ===------------------------------------------------------------------------------===
 
