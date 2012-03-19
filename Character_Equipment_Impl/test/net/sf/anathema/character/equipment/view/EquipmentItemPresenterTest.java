@@ -11,10 +11,15 @@ import net.sf.anathema.character.equipment.dummy.DemoMeleeWeapon;
 import net.sf.anathema.character.equipment.dummy.DummyEquipmentObject;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.generic.traits.INamedGenericTrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.lib.util.Identificate;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class EquipmentItemPresenterTest extends TestCase {
 
@@ -35,7 +40,9 @@ public class EquipmentItemPresenterTest extends TestCase {
   }
 
   private void initPresentation(IEquipmentItem model, IEquipmentObjectView view) {
-    new EquipmentObjectPresenter(model, view, equipmentStringBuilder, null, new AnathemaResources()).initPresentation();
+    IEquipmentCharacterDataProvider dataProvider = mock(IEquipmentCharacterDataProvider.class);
+    when(dataProvider.getSpecialties(isA(ITraitType.class))).thenReturn(new INamedGenericTrait[0]);
+    new EquipmentObjectPresenter(model, view, equipmentStringBuilder, dataProvider, new AnathemaResources()).initPresentation();
   }
 
   public void testEquipmentWithoutStats() throws Exception {
