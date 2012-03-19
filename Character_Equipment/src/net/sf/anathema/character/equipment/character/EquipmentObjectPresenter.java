@@ -97,6 +97,18 @@ public class EquipmentObjectPresenter implements Presenter {
 		      		  if (equipment != stats)
 		      			  attuneStatFlags.get(stats).setValue(false);
 		        }
+		        boolean otherEnableState = !((IArtifactStats)equipment).requireAttunementToUse();
+		        for (IEquipmentStats attuneStats : attuneStatFlags.keySet())
+		      	  if (model.isPrintEnabled(attuneStats))
+		     		  otherEnableState = true;
+		        for (IEquipmentStats stats : otherStatFlags.keySet())
+		        {
+		              BooleanModel bool = otherStatFlags.get(stats);
+		        	  if (!otherEnableState)
+		        		  bool.setValue(false);
+		        	  view.setEnabled(bool, otherEnableState);
+			          view.updateStatText(bool, createEquipmentDescription(model, stats));
+			    }
 	        }
 	      }
 	    });
