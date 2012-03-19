@@ -12,7 +12,7 @@ import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import static com.itextpdf.text.Font.BOLD;
 import static com.itextpdf.text.Font.NORMAL;
 
-public final class CharmPartFactory {
+public final class MagicPartFactory {
 
   private static final int STANDARD_FONT_SIZE = 10;
   private static final int TITLE_FONT_SIZE = 14;
@@ -21,7 +21,7 @@ public final class CharmPartFactory {
   public static final int TITLE_LEADING = 25;
   private final PdfReportUtils utils;
 
-  public CharmPartFactory(PdfReportUtils utils) {
+  public MagicPartFactory(PdfReportUtils utils) {
     this.utils = utils;
   }
 
@@ -59,12 +59,17 @@ public final class CharmPartFactory {
   }
 
   public PdfPCell createDataCell(String title, String value) {
-    Phrase phrase = new Phrase();
-    phrase.add(new Chunk(title, utils.createDefaultFont(STANDARD_FONT_SIZE, BOLD)));
-    phrase.add(new Chunk(value, utils.createDefaultFont(STANDARD_FONT_SIZE, NORMAL)));
+    Phrase phrase = createDataPhrase(title, value);
     PdfPCell cell = new PdfPCell(phrase);
     cell.setBorder(Rectangle.NO_BORDER);
     return cell;
+  }
+
+  public Phrase createDataPhrase(String title, String value) {
+    Phrase phrase = new Phrase();
+    phrase.add(new Chunk(title, utils.createDefaultFont(STANDARD_FONT_SIZE, BOLD)));
+    phrase.add(new Chunk(value, utils.createDefaultFont(STANDARD_FONT_SIZE, NORMAL)));
+    return phrase;
   }
 
   public PdfPCell createDoubleDataCell(String title, String value) {
