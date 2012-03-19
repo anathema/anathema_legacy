@@ -52,7 +52,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   @Override
   public void initPresentation() {
-    view.initGui(new ComboViewProperties(resources, comboConfiguration, comboModel.getCharmDescriptionProvider()));
+    view.initGui(new ComboViewProperties(resources, comboConfiguration, comboModel.getMagicDescriptionProvider()));
     initCharmLearnListening(view);
     ITextView nameView = view.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel")); //$NON-NLS-1$);
     ICombo editCombo = comboConfiguration.getEditCombo();

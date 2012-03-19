@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter.charm.combo;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
@@ -11,11 +11,11 @@ import net.sf.anathema.character.model.charm.IComboConfiguration;
 public class ComboConfigurationModel {
 
   private final ICharacterStatistics statistics;
-  private final CharmDescriptionProvider charmDescriptionProvider;
+  private final MagicDescriptionProvider magicDescriptionProvider;
 
-  public ComboConfigurationModel(ICharacterStatistics statistics, CharmDescriptionProvider charmDescriptionProvider) {
+  public ComboConfigurationModel(ICharacterStatistics statistics, MagicDescriptionProvider magicDescriptionProvider) {
     this.statistics = statistics;
-    this.charmDescriptionProvider = charmDescriptionProvider;
+    this.magicDescriptionProvider = magicDescriptionProvider;
   }
 
   public boolean isAlienCharmsAllowed() {
@@ -31,8 +31,8 @@ public class ComboConfigurationModel {
     return statistics.getCombos();
   }
 
-  public CharmDescriptionProvider getCharmDescriptionProvider() {
-    return charmDescriptionProvider;
+  public MagicDescriptionProvider getMagicDescriptionProvider() {
+    return magicDescriptionProvider;
   }
 
   public void addCharacterChangeListener(ICharacterChangeListener listener) {

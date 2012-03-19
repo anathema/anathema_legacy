@@ -5,7 +5,7 @@ import net.sf.anathema.lib.gui.IView;
 
 public interface CharmDetailPresenter extends IPresenter {
 
-  CharmDetailModel getModel();
+  MagicDetailModel getModel();
 
   String getDetailTitle();
 

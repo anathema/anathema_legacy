@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.Verb
 import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.description.CharmDescription;
+import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.model.ICharacter;
@@ -109,7 +109,7 @@ public class CharmReport extends AbstractPdfReport {
   }
 
   private void addCharmDescription(ICharm charm, MultiColumnText columnText) throws DocumentException {
-    CharmDescription charmDescription = getCharmDescription(charm);
+    MagicDescription charmDescription = getCharmDescription(charm);
     if (charmDescription.isEmpty()) {
       String sourceString = new MagicSourceStringBuilder<ICharm>(resources).createSourceString(charm);
       String sourceReference = resources.getString("CharmReport.See.Source", sourceString);
@@ -128,7 +128,7 @@ public class CharmReport extends AbstractPdfReport {
     return new GenericCharacter(character.getStatistics(), new ExperiencePointManagement(character.getStatistics()));
   }
 
-  private CharmDescription getCharmDescription(IMagic magic) {
+  private MagicDescription getCharmDescription(IMagic magic) {
     return CharmDescriptionProviderExtractor.CreateFor(model, resources).getCharmDescription(magic);
   }
 

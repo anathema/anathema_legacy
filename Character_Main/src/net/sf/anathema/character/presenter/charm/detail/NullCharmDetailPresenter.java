@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 public class NullCharmDetailPresenter implements CharmDetailPresenter {
 
   @Override
-  public CharmDetailModel getModel() {
+  public MagicDetailModel getModel() {
     return new NullCharmDetailModel();
   }
 

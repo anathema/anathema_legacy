@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInf
 import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
@@ -24,9 +24,9 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   private final IComboConfiguration comboConfiguration;
   private final ICharmInfoStringBuilder charmInfoStringProvider;
 
-  ComboViewProperties(IResources resources, IComboConfiguration comboConfiguration, CharmDescriptionProvider charmDescriptionProvider) {
+  ComboViewProperties(IResources resources, IComboConfiguration comboConfiguration, MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
-    this.charmInfoStringProvider = new CharmInfoStringBuilder(getResources(), charmDescriptionProvider);
+    this.charmInfoStringProvider = new CharmInfoStringBuilder(getResources(), magicDescriptionProvider);
     this.comboConfiguration = comboConfiguration;
   }
   

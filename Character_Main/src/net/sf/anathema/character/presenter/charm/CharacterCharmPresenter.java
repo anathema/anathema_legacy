@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter.charm;
 
-import net.sf.anathema.character.presenter.charm.detail.CharmDetailModel;
+import net.sf.anathema.character.presenter.charm.detail.MagicDetailModel;
 import net.sf.anathema.character.presenter.charm.detail.CharmDetailPresenter;
 import net.sf.anathema.character.presenter.charm.tree.CharacterCharmTreePresenter;
 import net.sf.anathema.framework.presenter.view.IViewContent;
@@ -20,7 +20,7 @@ public class CharacterCharmPresenter implements IContentPresenter {
 
     @Override
     public void nodeDetailsDemanded(String nodeId) {
-      CharmDetailModel model = detailPresenter.getModel();
+      MagicDetailModel model = detailPresenter.getModel();
       if (!model.isActive(nodeId)) {
         return;
       }

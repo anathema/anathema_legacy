@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter.charm;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
-import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -63,7 +63,7 @@ public class MagicPresenter implements IContentPresenter {
     return new ComboConfigurationModel(statistics, getCharmDescriptionProvider());
   }
 
-  private CharmDescriptionProvider getCharmDescriptionProvider() {
+  private MagicDescriptionProvider getCharmDescriptionProvider() {
     return CharmDescriptionProviderExtractor.CreateFor(anathemaModel, resources);
   }
 

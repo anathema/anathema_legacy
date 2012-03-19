@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter.charm;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.description.CharmDescriptionProvider;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
@@ -14,11 +14,11 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class CharacterCharmModel {
   private ICharacterStatistics statistics;
-  private CharmDescriptionProvider charmDescriptionProvider;
+  private MagicDescriptionProvider magicDescriptionProvider;
 
-  public CharacterCharmModel(ICharacterStatistics statistics, CharmDescriptionProvider charmDescriptionProvider) {
+  public CharacterCharmModel(ICharacterStatistics statistics, MagicDescriptionProvider magicDescriptionProvider) {
     this.statistics = statistics;
-    this.charmDescriptionProvider = charmDescriptionProvider;
+    this.magicDescriptionProvider = magicDescriptionProvider;
   }
 
   public boolean isAllowedAlienCharms() {
@@ -65,7 +65,7 @@ public class CharacterCharmModel {
     return charmTemplate.hasUniqueCharms();
   }
 
-  public CharmDescriptionProvider getCharmDescriptionProvider() {
-    return charmDescriptionProvider;
+  public MagicDescriptionProvider getMagicDescriptionProvider() {
+    return magicDescriptionProvider;
   }
 }

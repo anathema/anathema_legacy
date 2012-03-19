@@ -31,7 +31,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
                                      ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
-    ICharmTreeViewProperties viewProperties = new CharacterCharmTreeViewProperties(resources, model.getCharmConfiguration(), model.getCharmDescriptionProvider());
+    ICharmTreeViewProperties viewProperties = new CharacterCharmTreeViewProperties(resources, model.getCharmConfiguration(), model.getMagicDescriptionProvider());
     this.view = factory.createCharmSelectionView(viewProperties);
     CharacterCharmGroupChangeListener charmGroupChangeListener = new CharacterCharmGroupChangeListener(model.getCharmConfiguration(), filterSet,
             model.getEdition(), view.getCharmTreeRenderer(),
