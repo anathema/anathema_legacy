@@ -50,6 +50,8 @@ public class ArtifactStatsDecorator extends AbstractStats implements IArtifactSt
 
   @Override
   public boolean equals(Object obj) {
+	if (obj instanceof ArtifactStats)
+		return stats.equals(obj);
     if (!(obj instanceof ArtifactStatsDecorator)) {
       return false;
     }
