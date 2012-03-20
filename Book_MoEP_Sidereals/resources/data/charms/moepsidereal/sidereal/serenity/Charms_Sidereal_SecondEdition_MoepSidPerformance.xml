@@ -28,20 +28,13 @@
           <prerequisite>
                <trait id="Performance" value="2" />
                <essence value="1" />
-               <charmAttributeRequirement attribute="ExcellencyPerformance" count="1" />
-               <!-- The following doesn't work, need to see if it can be enabled. -->
-               <!--selectiveCharmGroup threshold="1">
-                  <charmAttributeRequirement attribute="ExcellencyBureaucracy" count="1" />
-                                        <charmAttributeRequirement attribute="ExcellencyPresence" count="1" />
-                                        <charmAttributeRequirement attribute="ExcellencySocialize" count="1" />
-                                </selectiveCharmGroup-->
           </prerequisite>
-          <cost>
-               <essence cost="2" />
-          </cost>
-          <duration duration="Instant" />
+          <cost/>
+          <duration duration="Permanent" />
           <charmtype type="Permanent" />
+          <charmAttribute attribute="Virtue-Compassion" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.FaultlessCeremony" exalt="Sidereal" group="Performance">
           <prerequisite>
@@ -51,10 +44,11 @@
           <cost>
                <essence cost="1" />
           </cost>
-          <duration amount="1" unit="week" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.PerfectionInLife" exalt="Sidereal" group="Performance">
           <prerequisite>
@@ -64,12 +58,12 @@
           <cost>
                <essence cost="5" />
           </cost>
-          <duration amount="1" unit="scene" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
-          <charmAttribute attribute="Fate" visualize="true" />
+          <duration duration="Instant" />
+          <charmtype type="Supplemental" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Virtue-Compassion" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.DefenseOfShiningJoy" exalt="Sidereal" group="Performance">
           <prerequisite>
@@ -86,6 +80,7 @@
                <special speed="5" defense="-1" />
           </charmtype>
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.SongOfSpiritPersuasion" exalt="Sidereal" group="Performance">
           <prerequisite>
@@ -98,10 +93,14 @@
                <willpower cost="1" />
           </cost>
           <duration duration="Instant" />
-          <charmtype type="Simple" />
+          <charmtype type="Simple">
+         	 <special speed="4" turntype="LongTick" defense="-1" />
+          </charmtype>
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Servitude" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.IceAndFireBinding" exalt="Sidereal" group="Performance">
           <prerequisite>
@@ -121,6 +120,7 @@
           <charmAttribute attribute="Mandate" visualize="true" />
           <charmAttribute attribute="Servitude" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.HarmonicCompletion" exalt="Sidereal" group="Performance">
           <prerequisite>
@@ -136,8 +136,10 @@
           </cost>
           <duration amount="5" unit="day" />
           <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Emotion" visualize="true" />
           <charmAttribute attribute="PrayerStrip" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>
