@@ -84,6 +84,10 @@
           <charmtype type="Reflexive">
                <special primaryStep="2" />
           </charmtype>
+          <repurchases trait="Presence">
+			<repurchase essence="3" trait="4"/>
+			<repurchase essence="3" trait="5"/>
+		  </repurchases>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
           <source source="Sidereals2nd" />

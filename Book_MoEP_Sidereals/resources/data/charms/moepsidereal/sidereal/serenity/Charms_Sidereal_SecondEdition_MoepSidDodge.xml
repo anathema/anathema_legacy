@@ -36,6 +36,10 @@
           <charmtype type="Reflexive">
                <special primaryStep="2" />
           </charmtype>
+          <repurchases trait="Dodge">
+			<repurchase essence="2" trait="2"/>
+			<repurchase essence="3" trait="4"/>
+		</repurchases>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Sidereals2nd" />
           <source source="ScrollErrata" />
@@ -87,6 +91,10 @@
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Reflexive" />
+          <repurchases trait="Dodge">
+			<repurchase essence="2" trait="3"/>
+			<repurchase essence="2" trait="4"/>
+		  </repurchases>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Virtue-Compassion" visualize="true" />
           <source source="Sidereals2nd" />

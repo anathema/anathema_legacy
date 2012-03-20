@@ -57,6 +57,11 @@
           <charmAttribute attribute="Maiden" visualize="true" />
           <charmAttribute attribute="Servitude" visualize="true" />
           <charmAttribute attribute="Virtue-Temperance" visualize="true" />
+          <repurchases trait="Bureaucracy">
+			<repurchase essence="3" trait="4"/>
+			<repurchase essence="4" trait="5"/>
+			<repurchase essence="6" trait="6"/>
+		  </repurchases>
           <source source="Sidereals2nd" />
           <source source="ScrollErrata" />
      </charm>

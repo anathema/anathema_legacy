@@ -53,6 +53,10 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Virtue-Valor" visualize="true" />
+          <repurchases trait="Survival">
+            <repurchase essence="2" trait="2"/>
+			<repurchase essence="3" trait="3"/>
+		</repurchases>
           <source source="Sidereals2nd" />
           <source source="ScrollErrata" />
      </charm>
