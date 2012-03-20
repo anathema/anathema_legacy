@@ -46,9 +46,10 @@
           <cost>
                <essence cost="5" />
           </cost>
-          <duration amount="1" unit="scene" />
+          <duration duration="Until the Exalt disembarks" />
           <charmtype type="Simple" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.SaltIntoAshSleight" exalt="Sidereal" group="Sail">
           <prerequisite>
@@ -60,9 +61,12 @@
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Compulsion" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.WallsOfSaltAndAsh" exalt="Sidereal" group="Sail">
           <prerequisite>
@@ -70,15 +74,15 @@
                <essence value="3" />
                <charmReference id="Sidereal.SaltIntoAshSleight" />
           </prerequisite>
-          <!-- Coding:  Can buy additional alternative versions for 1bp or 2xp.  (Ala, 
-                 Solar: Essence Arrow.)  Versions:  Gods and Elementals, Fairfold and the Wyld,
-                 Dead and forces of the Underworld, OR Demons and forces of Malfeas. -->
           <cost>
                <essence cost="5" />
                <willpower cost="1" />
           </cost>
           <duration amount="1" unit="day" />
-          <charmtype type="Simple" />
+          <charmtype type="Simple">
+          	<special turntype="DramaticAction" />
+          </charmtype>
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Compulsion" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <subeffects bpCost="1">
@@ -88,6 +92,7 @@
 			<subeffect name="Demons"/>
 		  </subeffects>
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.MirrorShatteringMethod" exalt="Sidereal" group="Sail">
           <prerequisite>
@@ -102,13 +107,14 @@
           </cost>
           <duration amount="5" unit="day" />
           <charmtype type="Simple" />
-          <charmAttribute attribute="Fate" visualize="true" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <subeffects bpCost="1">
 			<subeffect name="YuShan"/>
 			<subeffect name="Underworld"/>
 			<subeffect name="Malfeas"/>
 		  </subeffects>
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.FiveOrdealsOdyssey" exalt="Sidereal" group="Sail">
           <prerequisite>
@@ -123,7 +129,7 @@
                <willpower cost="1" />
                <health cost="1" type="Lethal" />
           </cost>
-          <duration amount="1" unit="scene" />
+          <duration duration="Instant" />
           <charmtype type="Simple">
                <special speed="6" defense="-2" />
           </charmtype>
@@ -131,5 +137,6 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="PrayerStrip" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>
