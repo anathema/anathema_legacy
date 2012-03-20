@@ -36,6 +36,7 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.AnyDirectionArrow" exalt="Sidereal" group="Archery">
           <prerequisite>
@@ -58,15 +59,14 @@
                <charmReference id="Sidereal.AnyDirectionArrow" />
           </prerequisite>
           <cost>
-               <essence cost="3" text="per extra arrow" />
+               <essence cost="2" />
           </cost>
           <duration duration="Instant" />
-          <charmtype type="Simple">
-               <special speed="5" defense="-2" />
-          </charmtype>
+          <charmtype type="Supplemental"/>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.OpportuneShot" exalt="Sidereal" group="Archery">
           <prerequisite>
@@ -106,9 +106,6 @@
                <charmReference id="Sidereal.FiveSeasonsResponse" />
                <charmReference id="Sidereal.GeneralizedAmmunitionTechnique" />
           </prerequisite>
-          <!-- Coding:  Can buy additional alternative versions for - 1 for 1xp OR 2 for 1bp
-                Versions:  Boulder, Fire, Glass, Grain, Health, Love, Precipitation, AND any additional
-                ones that the Storyteller can come up with. -->
           <cost>
                <essence cost="10" />
                <willpower cost="1" />
@@ -134,5 +131,6 @@
 			<subeffect name="Custom3"/>
 		  </subeffects>
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>
