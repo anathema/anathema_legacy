@@ -133,7 +133,6 @@
           <charmtype type="Simple">
                <special speed="6" defense="-2" />
           </charmtype>
-          <charmAttribute attribute="Fate" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="PrayerStrip" visualize="true" />
           <source source="Sidereals2nd" />

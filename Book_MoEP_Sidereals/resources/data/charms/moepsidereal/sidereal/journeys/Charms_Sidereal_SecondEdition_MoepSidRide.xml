@@ -98,7 +98,6 @@
                <special speed="6" defense="-2" />
           </charmtype>
           <charmAttribute attribute="Compulsion" visualize="true" />
-          <charmAttribute attribute="Fate" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Servitude" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />

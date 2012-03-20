@@ -124,7 +124,6 @@
           </cost>
           <duration amount="5" unit="day" />
           <charmtype type="Simple" />
-          <charmAttribute attribute="Fate" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="PrayerStrip" visualize="true" />
           <charmAttribute attribute="Virtue-Valor" visualize="true" />
