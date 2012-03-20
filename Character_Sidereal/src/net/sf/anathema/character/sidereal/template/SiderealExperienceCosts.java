@@ -23,7 +23,7 @@ public class SiderealExperienceCosts extends DefaultExperienceCosts implements I
     return favored ? 10 : 12;
   }
 
-  public ICurrentRatingCosts getCollegeExperienceCost() {
+  public ICurrentRatingCosts getCollegeExperienceCost(boolean favored) {
     return new MultiplyRatingCosts(3, 5);
   }
 }

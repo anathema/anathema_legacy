@@ -19,8 +19,10 @@
     	<template id="SiderealColleges" general="3" favored="4">
     		<bonusGeneral value="8"/>
     		<bonusFavored value="6"/>
-    		<experienceBase value="5"/>
-    		<experienceMultiple value="3"/>
+    		<experienceNewFavored value="5"/>
+    		<experienceNewGeneral value="5"/>
+    		<experienceAdvanceFavored value="3"/>
+    		<experienceAdvanceGeneral value="3"/>
     	</template>
     	<template id="Sidereal.FlawedFate.Template"/>
     	<template id="Sidereal.Paradox.Template"/>

@@ -129,7 +129,7 @@ public class CharmConfigurationPersister {
       group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), isExperienceLearned(charmElement), false);
       Element specialElement = charmElement.element(TAG_SPECIAL);
       ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
-      if (specialElement != null) {
+      if (specialElement != null && specialConfiguration != null) {
         specialPersister.loadConfiguration(specialElement, specialConfiguration);
       } else if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
 
