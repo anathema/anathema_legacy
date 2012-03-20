@@ -46,7 +46,7 @@
           <cost>
                <essence cost="5" />
           </cost>
-          <duration duration="Until the Exalt disembarks" />
+          <duration event="ExaltDisembarks" />
           <charmtype type="Simple" />
           <source source="Sidereals2nd" />
           <source source="ScrollErrata" />

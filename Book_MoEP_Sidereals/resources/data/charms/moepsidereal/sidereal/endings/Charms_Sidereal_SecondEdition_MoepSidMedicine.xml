@@ -68,7 +68,7 @@
                <essence cost="5" />
                <willpower cost="1" />
           </cost>
-          <duration event="InstantOrIndefinite" />
+          <duration duration="Varies" />
           <charmtype type="Simple"/>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />

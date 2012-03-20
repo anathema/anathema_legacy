@@ -47,7 +47,7 @@
           <cost>
                <essence cost="5" />
           </cost>
-          <duration duration="Up to one story" />
+          <duration amount="1" unit="story" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />

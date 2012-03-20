@@ -114,7 +114,7 @@
                <essence cost="8" />
                <willpower cost="1" />
           </cost>
-          <duration duration="Until Calibration" />
+          <duration event="Calibration" />
           <charmtype type="Simple">
           	<special turntype="DramaticAction" />
           </charmtype>
@@ -173,7 +173,7 @@
                <willpower cost="1" />
                <health cost="1" type="Lethal" />
           </cost>
-          <duration duration="Until the chosen Spirit is summoned" />
+          <duration event="SpiritSummoned" />
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
