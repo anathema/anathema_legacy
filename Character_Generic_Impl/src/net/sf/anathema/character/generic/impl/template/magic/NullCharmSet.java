@@ -8,6 +8,10 @@ public class NullCharmSet implements ICharmSet {
   public ICharm[] getCharms(IExaltedRuleSet set) {
     return new ICharm[0];
   }
+  
+  public ICharm[] getUniqueCharms(IExaltedRuleSet set) {
+	return new ICharm[0];
+  }
 
   public ICharm[] getMartialArtsCharms(IExaltedRuleSet set) {
     return new ICharm[0];

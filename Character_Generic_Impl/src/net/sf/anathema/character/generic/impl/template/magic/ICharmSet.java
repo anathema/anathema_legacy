@@ -6,6 +6,8 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 public interface ICharmSet {
 
   public ICharm[] getCharms(IExaltedRuleSet set);
+  
+  public ICharm[] getUniqueCharms(IExaltedRuleSet set);
 
   public ICharm[] getMartialArtsCharms(IExaltedRuleSet set);
 }

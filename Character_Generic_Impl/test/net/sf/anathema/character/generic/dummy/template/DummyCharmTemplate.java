@@ -14,6 +14,10 @@ public class DummyCharmTemplate implements ICharmTemplate {
   public ICharm[] getCharms(IExaltedRuleSet rules) {
     return new ICharm[0];
   }
+  
+  public ICharm[] getUniqueCharms(IExaltedRuleSet rules) {
+	return new ICharm[0];
+  }
 
   public ICharm[] getMartialArtsCharms(IExaltedRuleSet rules) {
     return new ICharm[0];

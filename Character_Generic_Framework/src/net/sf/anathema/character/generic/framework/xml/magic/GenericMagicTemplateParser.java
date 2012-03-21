@@ -140,12 +140,6 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     }
     String charmType = ElementUtilities.getRequiredAttrib(charmTemplateElement, ATTRIB_CHARM_TYPE);
     ICharmSet charmSet;
-    if (charmType.equals(VALUE_NONE)) {
-      charmSet = new NullCharmSet();
-    } else {
-      charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType),
-              hostTemplate.getEdition());
-    }
     IUniqueCharmType uniqueCharms = null;
     for (Object node : charmTemplateElement.elements(TAG_UNIQUE_CHARM_TYPE)) {
       Element specialNode = (Element) node;
@@ -154,6 +148,12 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       String specialKeyword = specialNode.attributeValue(ATTRIB_KEYWORD);
       uniqueCharms = new UniqueCharmType(specialType, specialLabel, specialKeyword);
     }
+    if (charmType.equals(VALUE_NONE)) {
+        charmSet = new NullCharmSet();
+      } else {
+        charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType), uniqueCharms,
+                hostTemplate.getEdition());
+      }
     CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet,
             uniqueCharms);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);

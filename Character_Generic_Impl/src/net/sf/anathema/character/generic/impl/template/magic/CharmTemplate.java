@@ -24,7 +24,7 @@ public class CharmTemplate implements ICharmTemplate {
   public CharmTemplate(MartialArtsLevel martialArtsLevel, ICharmCache charmProvider, ICharacterType characterType,
                        IExaltedEdition edition) {
     this(new DefaultMartialArtsRules(martialArtsLevel),
-            CharmSet.createRegularCharmSet(charmProvider, characterType, edition));
+            CharmSet.createRegularCharmSet(charmProvider, characterType, null, edition));
   }
 
   public CharmTemplate(IMartialArtsRules rules, ICharmSet charmSet) {
@@ -40,6 +40,11 @@ public class CharmTemplate implements ICharmTemplate {
   @Override
   public final ICharm[] getCharms(IExaltedRuleSet rules) {
     return charmSet.getCharms(rules);
+  }
+  
+  @Override
+  public final ICharm[] getUniqueCharms(IExaltedRuleSet rules) {
+	return charmSet.getUniqueCharms(rules);
   }
 
   @Override

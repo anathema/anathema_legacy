@@ -31,7 +31,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     setChangeListener(selectionListener);
     setView(view);
     setCharmDye(new CascadeCharmDye(view, selectionListener));
-    setCharmGroups(new CascadeGroupCollection(templateRegistry, cache, treeIdentificateMap));
+    setCharmGroups(new CascadeGroupCollection(templateRegistry, treeIdentificateMap));
   }
 
   @Override

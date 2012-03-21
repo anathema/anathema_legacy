@@ -3,10 +3,8 @@ package net.sf.anathema.cascades.presenter;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
-import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
@@ -26,13 +24,10 @@ import java.util.List;
 
 public class CascadeGroupCollection implements CharmGroupCollection, EditionCharmGroups {
   private ITemplateRegistry templateRegistry;
-  private ICharmCache cache;
   private CharmTreeIdentificateMap treeIdentificateMap;
 
-  public CascadeGroupCollection(ITemplateRegistry templateRegistry, ICharmCache cache,
-                                CharmTreeIdentificateMap treeIdentificateMap) {
+  public CascadeGroupCollection(ITemplateRegistry templateRegistry, CharmTreeIdentificateMap treeIdentificateMap) {
     this.templateRegistry = templateRegistry;
-    this.cache = cache;
     this.treeIdentificateMap = treeIdentificateMap;
   }
 
@@ -63,7 +58,7 @@ public class CascadeGroupCollection implements CharmGroupCollection, EditionChar
       if (charmTemplate.canLearnCharms(edition.getDefaultRuleset())) {
         for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
           registerTypeCharms(allCharmGroups, type, template, ruleSet);
-          registerUniqueCharms(allCharmGroups, charmTemplate);
+          registerUniqueCharms(allCharmGroups, charmTemplate, ruleSet);
         }
       }
     }
@@ -78,12 +73,12 @@ public class CascadeGroupCollection implements CharmGroupCollection, EditionChar
     }
   }
 
-  private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate) {
+  private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
     if (!charmTemplate.hasUniqueCharms()) {
       return;
     }
     IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
-    ICharmTree uniqueTree = getUniqueCharmTree(uniqueType);
+    ICharmTree uniqueTree = new CharmTree(charmTemplate.getUniqueCharms(rules));
     registerGroups(allCharmGroups, uniqueType.getId(), uniqueTree);
   }
 
@@ -95,12 +90,6 @@ public class CascadeGroupCollection implements CharmGroupCollection, EditionChar
 
   private ICharmTree getTypeCharmTree(ICharacterTemplate defaultTemplate, IExaltedRuleSet ruleSet) {
     return new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate(), ruleSet);
-  }
-
-  private ICharmTree getUniqueCharmTree(IUniqueCharmType uniqueType) {
-    IIdentificate typeId = uniqueType.getId();
-    ICharm[] charms = cache.getCharms(typeId);
-    return new CharmTree(charms);
   }
 
   private void registerGroups(List<ICharmGroup> allCharmGroups, IIdentificate typeId, ICharmTree charmTree) {

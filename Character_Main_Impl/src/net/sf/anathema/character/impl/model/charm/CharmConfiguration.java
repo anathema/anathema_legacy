@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -95,7 +94,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     initCharacterType(nativeCharmTemplate, rules, getNativeCharacterType());
     allCharacterTypes.add(getNativeCharacterType());
     initAlienTypes(registry, rules, allCharacterTypes);
-    initUniqueTypes(nativeCharmTemplate);
+    initUniqueTypes(nativeCharmTemplate, rules);
     initSpecialCharmConfigurations();
     types = allCharacterTypes.toArray(new ICharacterType[allCharacterTypes.size()]);
     filterSet.add(new ObtainableCharmFilter(this));
@@ -346,12 +345,12 @@ public class CharmConfiguration implements ICharmConfiguration {
     templatesByType.put(type, charmTemplate);
   }
 
-  private void initUniqueTypes(ICharmTemplate charmTemplate) {
+  private void initUniqueTypes(ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
     if (!charmTemplate.hasUniqueCharms()) {
       return;
     }
     IUniqueCharmType type = charmTemplate.getUniqueCharmType();
-    CharmTree charmTree = new CharmTree(CharmCache.getInstance().getCharms(type.getId()));
+    CharmTree charmTree = new CharmTree(charmTemplate.getUniqueCharms(rules));
     ILearningCharmGroup[] groups = createGroups(charmTree.getAllCharmGroups());
     nonMartialArtsGroupsByType.put(type.getId(), groups);
     alienTreesByType.put(type.getId(), charmTree);
