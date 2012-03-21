@@ -10,10 +10,17 @@ http://anathema.github.com
 			Release 3.x.x
 ===------------------------------------------------------------------------------===
 
--- Features --
-* You can now enter your own Charm descriptions. To do, CTRL-click your Charm and type away.
-* New report (via "File Menu => Save as PDF"): Charm Overview. It prints your Charm data with text, just as the books do.
+-- Changes for Exalted 2.5 --
+* Updated Sidereal XP Cost
 
+-- Features --
+* You can now enter your own descriptions for Charms and Spells. To do, CTRL-click your Charm and type away.
+* New report (via "File Menu => Save as PDF"): Charm Overview. It prints your Charm data with text, just as the books do.
+* Equipment now keeps track of minimum damage
+
+-- Bugfixes --
+* Characters remember which weapons were attuned when saving
+* (Infernal/SWLIHN) "Precision Thought-Force Exercise" and "Orbital Impact Storm" attributed to Ink Monkeys
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.2

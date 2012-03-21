@@ -97,7 +97,7 @@
           	<repurchase essence="2"/>
           	<repurchase essence="3"/>
           </repurchases>
-          <source source="Infernals" />
+          <source source="InkMonkeys" />
      </charm>
 	 <charm id="Infernal.PrecisionThought-ForceExercise" exalt="Infernal" group="MindHand">  
           <prerequisite>
@@ -110,7 +110,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" /> 
           <charmAttribute attribute="Obvious" visualize="true" />
-          <source source="Infernals" />
+          <source source="InkMonkeys" />
      </charm>
 	 <charm id="Infernal.Force-DrainingExigence" exalt="Infernal" group="MindHand">  
           <prerequisite>
@@ -123,6 +123,6 @@
           <charmtype type="Permanent" /> 
           <charmAttribute attribute="Native" visualize="true" />
           <charmAttribute attribute="Overdrive" visualize="true" />
-          <source source="Infernals" />
+          <source source="InkMonkeys" />
      </charm>
 </charmlist>
