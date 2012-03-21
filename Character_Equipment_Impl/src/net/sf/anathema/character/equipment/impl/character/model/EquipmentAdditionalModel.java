@@ -201,6 +201,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
 
   @Override
   public boolean transferOptions(IEquipmentItem fromItem, IEquipmentItem toItem) {
+	  if (fromItem == null || toItem == null)
+		  return false;
+	  
 	  boolean transferred = false;
 	  for (IEquipmentStats fromStats : fromItem.getStats()) {
 		  List<IEquipmentStatsOption> optionList = optionsTable.get(fromItem, fromStats);
