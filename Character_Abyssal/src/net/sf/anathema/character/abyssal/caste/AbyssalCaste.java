@@ -6,6 +6,7 @@ public enum AbyssalCaste implements ICasteType {
 
   Dusk, Midnight, Daybreak, Day, Moonshadow;
 
+  @Override
   public String getId() {
     return name();
   }

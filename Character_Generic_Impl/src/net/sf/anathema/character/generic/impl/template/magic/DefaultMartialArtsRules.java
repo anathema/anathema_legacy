@@ -15,10 +15,12 @@ public class DefaultMartialArtsRules implements IMartialArtsRules {
     this.level = level;
   }
 
+  @Override
   public void setHighLevelAtCreation(boolean highLevelAtCreation) {
     this.highLevelAtCreation = highLevelAtCreation;
   }
 
+  @Override
   public boolean isCharmAllowed(
       ICharm martialArtsCharm,
       IGenericCharmConfiguration charmConfiguration,
@@ -33,6 +35,7 @@ public class DefaultMartialArtsRules implements IMartialArtsRules {
     return false;
   }
 
+  @Override
   public MartialArtsLevel getStandardLevel() {
     return level;
   }

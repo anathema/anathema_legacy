@@ -6,6 +6,7 @@ public class AbyssalResonanceTemplate implements IAdditionalTemplate {
 
   public static final String ID = "AbyssalResonance"; //$NON-NLS-1$
 
+  @Override
   public String getId() {
     return ID;
   }

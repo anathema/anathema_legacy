@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 
 public class AbyssalResonanceModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new AbyssalResonanceModel(context, additionalTemplate);
   }

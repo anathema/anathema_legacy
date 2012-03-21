@@ -16,15 +16,13 @@ public class SpeedModification implements IStatsModification {
     this.ruleSet = ruleSet;
   }
 
+  @Override
   public int getModifiedValue(int input, WeaponStatsType type) {
     if (baseMaterial.isJadeBased() && ruleSet == ExaltedRuleSet.SecondEdition) {
       return Math.max(1, input - 1);
     }
     if (material == MagicalMaterial.Jade && type == WeaponStatsType.Melee) {
       return input + 3;
-    }
-    if (material == MagicalMaterial.Orichalcum && ruleSet == ExaltedRuleSet.CoreRules && !type.isRanged()) {
-      return input + 1;
     }
     return input;
   }

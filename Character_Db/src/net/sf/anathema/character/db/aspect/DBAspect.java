@@ -6,6 +6,7 @@ public enum DBAspect implements ICasteType {
 
   Air, Earth, Fire, Water, Wood;
 
+  @Override
   public String getId() {
     return name();
   }

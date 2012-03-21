@@ -13,6 +13,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AbyssalResonanceViewFactory implements IAdditionalViewFactory {
 
+  @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     IVirtueFlawView virtueFlawView = new VirtueFlawView(new MarkerIntValueDisplayFactory(resources, type));
     new AbyssalResonancePresenter(resources, virtueFlawView, (IVirtueFlawModel) model).initPresentation();

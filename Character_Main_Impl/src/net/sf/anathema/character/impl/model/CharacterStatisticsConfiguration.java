@@ -4,10 +4,12 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 
+import static net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet.SecondEdition;
+
 public class CharacterStatisticsConfiguration implements IAnathemaWizardModelTemplate {
 
   private ICharacterTemplate template;
-  private IExaltedRuleSet ruleSet;
+  private IExaltedRuleSet ruleSet = SecondEdition;
 
   public ICharacterTemplate getTemplate() {
     return template;
@@ -19,9 +21,5 @@ public class CharacterStatisticsConfiguration implements IAnathemaWizardModelTem
 
   public void setTemplate(ICharacterTemplate template) {
     this.template = template;
-  }
-
-  public void setRuleSet(IExaltedRuleSet ruleSet) {
-    this.ruleSet = ruleSet;
   }
 }

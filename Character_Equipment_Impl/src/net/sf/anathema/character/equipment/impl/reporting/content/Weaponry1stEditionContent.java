@@ -3,13 +3,11 @@ package net.sf.anathema.character.equipment.impl.reporting.content;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AbstractDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AbstractSpeedWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AccuracyWeaponStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.CoreRulesRateWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.FirstEditionAccuracyWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.FirstEditionDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.FirstEditionSpeedWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RateWeaponStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Weaponry1stEditionContent extends AbstractWeaponryContent {
@@ -40,9 +38,6 @@ public class Weaponry1stEditionContent extends AbstractWeaponryContent {
 
   @Override
   protected RateWeaponStatsGroup createRateGroup() {
-    if (getCharacter().getRules() == ExaltedRuleSet.CoreRules) {
-      return new CoreRulesRateWeaponStatsGroup(getResources(), getEquipmentModifiers());
-    }
     return new RateWeaponStatsGroup(getResources(), getEquipmentModifiers());
   }
 }

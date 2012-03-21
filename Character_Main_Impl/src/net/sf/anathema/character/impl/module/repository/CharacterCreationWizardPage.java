@@ -1,23 +1,20 @@
 package net.sf.anathema.character.impl.module.repository;
 
-import java.awt.Component;
-
-import javax.swing.JToggleButton;
-
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.module.IToggleButtonPanel;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.JToggleButton;
+import java.awt.Component;
 
 public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
 
@@ -60,6 +57,7 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
     }
     final IListObjectSelectionView<ITemplateTypeAggregation> list = view.addObjectSelectionList();
     list.addObjectSelectionChangedListener(new IObjectValueChangedListener<ITemplateTypeAggregation>() {
+      @Override
       public void valueChanged(ITemplateTypeAggregation newValue) {
         if (newValue == null) {
           return;
@@ -68,17 +66,8 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
       }
     });
     list.setCellRenderer(properties.getTemplateRenderer());
-    ObjectSelectionView<IExaltedRuleSet> rulesView = view.addRulesetSelectionView(
-        properties.getRulesetLabel(),
-        properties.getRulesetRenderer(),
-        model.getAvailableRulesets());
-    rulesView.setSelectedObject(model.getSelectedRuleset());
-    rulesView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
-      public void valueChanged(IExaltedRuleSet newValue) {
-        model.setSelectedRuleset(newValue);
-      }
-    });
     model.addListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         refreshList(list);
       }
@@ -91,14 +80,17 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
     list.setSelectedObject(model.getSelectedTemplate());
   }
 
+  @Override
   public boolean canFinish() {
     return model.isSelectionComplete();
   }
 
+  @Override
   public String getDescription() {
     return properties.getDescription();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     if (!model.isCharacterTypeSelected()) {
       return properties.getSelectCharacterTypeMessage();
@@ -109,6 +101,7 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
     return properties.getConfirmMessage();
   }
 
+  @Override
   public IPageContent getPageContent() {
     return view;
   }

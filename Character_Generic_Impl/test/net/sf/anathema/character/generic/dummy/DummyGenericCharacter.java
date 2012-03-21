@@ -7,9 +7,8 @@ import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -42,70 +41,85 @@ public class DummyGenericCharacter implements IGenericCharacter {
     this.template = template;
   }
 
+  @Override
   public IGenericTraitCollection getTraitCollection() {
     return new IGenericTraitCollection() {
 
+      @Override
       public IGenericTrait getTrait(ITraitType type) {
         return traitsByType.get(type);
       }
 
+      @Override
       public IGenericTrait[] getTraits(ITraitType[] traitTypes) {
         throw new NotYetImplementedException();
       }
 
+      @Override
       public boolean isFavoredOrCasteTrait(ITraitType type) {
         return getFavorableTrait(type).isCasteOrFavored();
       }
 
+      @Override
       public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
         return (IFavorableGenericTrait) getTrait(type);
       }
     };
   }
-  
-  public int getEssenceCap(boolean modified)
-  {
-	  return 7;
+
+  @Override
+  public int getEssenceCap(boolean modified) {
+    return 7;
   }
 
   public void addTrait(IGenericTrait trait) {
     traitsByType.put(trait.getType(), trait);
   }
 
+  @Override
   public int getLearnCount(IMultiLearnableCharm charm) {
     return 0;
   }
 
+  @Override
   public boolean isLearned(IMagic magic) {
     return false;
   }
 
+  @Override
   public boolean isAlienCharm(ICharm charm) {
     return false;
   }
 
+  @Override
   public ICharacterTemplate getTemplate() {
     return template;
   }
 
+  @Override
   public INamedGenericTrait[] getSpecialties(ITraitType type) {
     return new INamedGenericTrait[0];
   }
 
+  @Override
   public INamedGenericTrait[] getSubTraits(ITraitType traitType) {
     return new INamedGenericTrait[0];
   }
 
+  @Override
   public ICasteType getCasteType() {
     return null;
   }
 
+  @Override
   public ICharacterPoints getCharacterPoints() {
     return new ICharacterPoints() {
+      @Override
       public int getExperiencePointsTotal() {
         return 0;
       }
 
+      @Override
       public int getExperiencePointsSpent() {
         return 0;
       }
@@ -113,7 +127,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   public IExaltedRuleSet getRules() {
-    return net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet.CoreRules;
+    return ExaltedRuleSet.SecondEdition;
   }
 
   public int getHealthLevelTypeCount(HealthLevelType type) {
@@ -220,14 +234,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
 	    return new IIdentifiedTraitTypeGroup[0];
 	  }
-
-  public IArmourStats[] getPrintArmours() {
-    return new IArmourStats[0];
-  }
-
-  public IWeaponStats[] getPrintWeapons() {
-    return new IWeaponStats[0];
-  }
 
   public int getSpentExperiencePoints() {
     return 0;

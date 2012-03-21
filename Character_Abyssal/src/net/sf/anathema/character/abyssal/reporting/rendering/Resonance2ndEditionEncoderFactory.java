@@ -22,6 +22,6 @@ public class Resonance2ndEditionEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isOfType(CharacterType.ABYSSAL) && content.isSecondEdition();
+    return content.isOfType(CharacterType.ABYSSAL);
   }
 }

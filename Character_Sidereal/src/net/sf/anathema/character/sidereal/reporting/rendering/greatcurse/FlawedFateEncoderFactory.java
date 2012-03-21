@@ -22,6 +22,6 @@ public class FlawedFateEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isSecondEdition() && content.isOfType(CharacterType.SIDEREAL);
+    return content.isOfType(CharacterType.SIDEREAL);
   }
 }

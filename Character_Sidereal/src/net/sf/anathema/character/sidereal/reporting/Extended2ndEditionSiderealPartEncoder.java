@@ -13,16 +13,17 @@ import net.sf.anathema.character.sidereal.reporting.rendering.anima.AnimaEncoder
 import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.FlawedFateEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.SIDEREAL;
 
-@RegisteredPartEncoder(characterType = SIDEREAL, edition = FirstEdition)
+@RegisteredPartEncoder(characterType = SIDEREAL, edition = SecondEdition)
 public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   public Extended2ndEditionSiderealPartEncoder(IResources resources) {
     super(resources);
   }
 
+  @Override
   public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
     return new FlawedFateEncoder(getResources());
   }

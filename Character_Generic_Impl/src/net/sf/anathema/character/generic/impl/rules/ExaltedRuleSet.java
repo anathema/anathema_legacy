@@ -3,37 +3,10 @@ package net.sf.anathema.character.generic.impl.rules;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public enum ExaltedRuleSet implements IExaltedRuleSet {
 
-  CoreRules(ExaltedEdition.FirstEdition) {
-    public void accept(IRuleSetVisitor visitor) {
-      visitor.visitCoreRules(this);
-    }
-
-    public IExaltedRuleSet getBasicRuleset() {
-      return null;
-    }
-  },
-  PowerCombat(ExaltedEdition.FirstEdition) {
-    public void accept(IRuleSetVisitor visitor) {
-      visitor.visitPowerCombat(this);
-    }
-
-    public IExaltedRuleSet getBasicRuleset() {
-      return CoreRules;
-    }
-  },
-  SecondEdition(ExaltedEdition.SecondEdition) {
-    public void accept(IRuleSetVisitor visitor) {
-      visitor.visitSecondEdition(this);
-    }
-
-    public IExaltedRuleSet getBasicRuleset() {
-      return null;
-    }
-  };
+  SecondEdition(ExaltedEdition.SecondEdition);
 
   private final IExaltedEdition edition;
 
@@ -41,10 +14,12 @@ public enum ExaltedRuleSet implements IExaltedRuleSet {
     this.edition = edition;
   }
 
+  @Override
   public IExaltedEdition getEdition() {
     return edition;
   }
 
+  @Override
   public String getId() {
     return name();
   }
@@ -52,10 +27,12 @@ public enum ExaltedRuleSet implements IExaltedRuleSet {
   public static IExaltedRuleSet[] getRuleSetsByEdition(IExaltedEdition edition) {
     final IExaltedRuleSet[][] rules = new IExaltedRuleSet[1][];
     edition.accept(new IEditionVisitor() {
+      @Override
       public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        rules[0] = new IExaltedRuleSet[] { CoreRules, PowerCombat };
+        rules[0] = new IExaltedRuleSet[0];
       }
 
+      @Override
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
         rules[0] = new IExaltedRuleSet[] { SecondEdition };
       }

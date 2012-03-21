@@ -85,13 +85,6 @@ public enum CharacterType implements ICharacterType {
     public void accept(ICharacterTypeVisitor visitor) {
       visitor.visitMortal(this);
     }
-  },
-  DRAGON_KING("DragonKing") { //$NON-NLS-1$
-
-    @Override
-    public void accept(ICharacterTypeVisitor visitor) {
-      visitor.visitDragonKing(this);
-    }
   };
 
   private final String id;
@@ -116,7 +109,6 @@ public enum CharacterType implements ICharacterType {
     List<ICharacterType> types = new ArrayList<ICharacterType>();
     Collections.addAll(types, values());
     types.remove(MORTAL);
-    types.remove(DRAGON_KING);
     types.remove(GHOST);
     types.remove(SPIRIT);
     return types.toArray(new ICharacterType[types.size()]);
@@ -150,7 +142,7 @@ public enum CharacterType implements ICharacterType {
   }
 
   public static Iterable<ICharacterType> getAllEssenceUsers() {
-    List<ICharacterType> list = Lists.<ICharacterType>newArrayList(SPIRIT, GHOST, DRAGON_KING);
+    List<ICharacterType> list = Lists.<ICharacterType>newArrayList(SPIRIT, GHOST);
     Collections.addAll(list, getAllExaltTypes());
     return list;
   }

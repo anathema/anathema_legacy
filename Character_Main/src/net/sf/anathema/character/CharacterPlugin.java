@@ -51,6 +51,6 @@ public class CharacterPlugin implements Startable {
     if (resource == null) {
       throw new Exception(format("No resource found at {0} for {1}, {2}.", pathString, typeString, ruleString));
     }
-    charmCompiler.registerCharmFile(typeString, ruleString, resource);
+    charmCompiler.registerCharmFile(typeString, resource);
   }
 }

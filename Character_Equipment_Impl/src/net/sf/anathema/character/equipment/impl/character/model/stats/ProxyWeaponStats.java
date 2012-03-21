@@ -34,6 +34,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
     this.ruleSet = ruleSet;
   }
 
+  @Override
   public IWeaponStats getUnderlying() {
     return this.delegate;
   }
@@ -56,6 +57,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
     return delegate.hashCode();
   }
 
+  @Override
   public int getAccuracy() {
     return getModifiedValue(new AccuracyModification(material, ruleSet), delegate.getAccuracy());
   }
@@ -85,6 +87,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
     return WeaponStatsType.Melee;
   }
 
+  @Override
   public int getDamage() {
     return getModifiedValue(new DamageModification(material, ruleSet), delegate.getDamage());
   }
@@ -93,14 +96,17 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 	return delegate.getMinimumDamage();
   }
 
+  @Override
   public ITraitType getDamageTraitType() {
     return delegate.getDamageTraitType();
   }
 
+  @Override
   public HealthType getDamageType() {
     return delegate.getDamageType();
   }
 
+  @Override
   public Integer getDefence() {
     return getModifiedValue(new DefenseModification(material, ruleSet), delegate.getDefence());
   }
@@ -109,34 +115,42 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 	return delegate.getMobilityPenalty();
   }
 
+  @Override
   public Integer getRange() {
     return getModifiedValue(new RangeModification(material, ruleSet), delegate.getRange());
   }
 
+  @Override
   public Integer getRate() {
-    return getModifiedValue(new RateModification(material, ruleSet), delegate.getRate());
+    return getModifiedValue(new RateModification(material), delegate.getRate());
   }
 
+  @Override
   public int getSpeed() {
     return getModifiedValue(new SpeedModification(material, ruleSet), delegate.getSpeed());
   }
 
+  @Override
   public IIdentificate[] getTags() {
     return new TagsModification(material, ruleSet).getModifiedValue(delegate.getTags());
   }
 
+  @Override
   public ITraitType getTraitType() {
     return delegate.getTraitType();
   }
 
+  @Override
   public boolean inflictsNoDamage() {
     return delegate.inflictsNoDamage();
   }
 
+  @Override
   public IIdentificate getName() {
     return delegate.getName();
   }
 
+  @Override
   public boolean isRangedCombat() {
     return delegate.isRangedCombat();
   }

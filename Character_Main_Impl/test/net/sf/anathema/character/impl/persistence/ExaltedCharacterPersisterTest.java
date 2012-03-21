@@ -3,7 +3,6 @@ package net.sf.anathema.character.impl.persistence;
 import net.sf.anathema.character.generic.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.generic.framework.CharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
@@ -36,7 +35,6 @@ public class ExaltedCharacterPersisterTest {
   public void createCharacterConfiguration() {
     template = new SimpleDummyCharacterTemplate(DB, null, SecondEdition);
     configuration = new CharacterStatisticsConfiguration();
-    configuration.setRuleSet(ExaltedRuleSet.SecondEdition);
     configuration.setTemplate(template);
   }
 

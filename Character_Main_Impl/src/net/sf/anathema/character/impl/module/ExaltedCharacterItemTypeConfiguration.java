@@ -1,10 +1,9 @@
 package net.sf.anathema.character.impl.module;
 
+import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
@@ -29,11 +28,13 @@ import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
@@ -50,7 +51,8 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
 
   @Override
   protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
-    return new ExaltedCharacterPersister(getItemType(), CharacterGenericsExtractor.getGenerics(model), model.getMessaging());
+    return new ExaltedCharacterPersister(getItemType(), CharacterGenericsExtractor.getGenerics(model),
+            model.getMessaging());
   }
 
   @Override
@@ -65,7 +67,8 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         if (statistics == null) {
           Icon icon = characterUI.getCharacterDescriptionTabIcon();
           ICharacterView characterView = new CharacterView(null, printName, icon, null);
-          new CharacterPresenter(character, characterView, resources, anathemaModel, new NpcPointPresentation()).initPresentation();
+          new CharacterPresenter(character, characterView, resources, anathemaModel,
+                  new NpcPointPresentation()).initPresentation();
           return characterView;
         }
         ICharacterType characterType = character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType();
@@ -79,7 +82,8 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character.getStatistics());
         PointPresentationStrategy pointPresentation = choosePointPresentation(statistics, characterView,
                 bonusPointManagement, experiencePointManagement, resources);
-        new CharacterPresenter(character, characterView, resources, anathemaModel, pointPresentation).initPresentation();
+        new CharacterPresenter(character, characterView, resources, anathemaModel,
+                pointPresentation).initPresentation();
         character.setClean();
         return characterView;
       }
@@ -101,12 +105,11 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
   @Override
   protected IItemTypeViewProperties createItemTypeCreationProperties(IAnathemaModel anathemaModel,
                                                                      IResources resources) {
-    IExaltedRuleSet preferredRuleset = AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset();
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(anathemaModel);
-    CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, preferredRuleset,
-            resources);
-    CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(generics.getCasteCollectionRegistry(),
-            anathemaModel.getRepository().getRepositoryFileResolver());
+    CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, resources);
+    IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();
+    IRepositoryFileResolver fileResolver = anathemaModel.getRepository().getRepositoryFileResolver();
+    CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(casteCollectionIRegistry, fileResolver);
     return new CharacterViewProperties(getItemType(), resources, factory, scanner);
   }
 }

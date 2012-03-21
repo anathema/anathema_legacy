@@ -13,7 +13,7 @@ public enum ExaltedEdition implements IExaltedEdition {
 
     @Override
     public IExaltedRuleSet getDefaultRuleset() {
-      return ExaltedRuleSet.CoreRules;
+      return null;
     }
   },
   SecondEdition {

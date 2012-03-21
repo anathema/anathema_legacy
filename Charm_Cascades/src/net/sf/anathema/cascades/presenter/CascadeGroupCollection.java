@@ -39,7 +39,7 @@ public class CascadeGroupCollection implements CharmGroupCollection, EditionChar
 
   @Override
   public ICharmGroup[] getCharmGroups() {
-    return getCharmGroupsFor(ExaltedEdition.values());
+    return getCharmGroups(ExaltedEdition.SecondEdition);
   }
 
   @Override
@@ -47,39 +47,35 @@ public class CascadeGroupCollection implements CharmGroupCollection, EditionChar
     return getCharmGroupsFor(edition);
   }
 
-  private ICharmGroup[] getCharmGroupsFor(IExaltedEdition... editions) {
+  private ICharmGroup[] getCharmGroupsFor(IExaltedEdition edition) {
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
-    initCharacterTypeCharms(allCharmGroups, editions);
-    initMartialArtsCharms(allCharmGroups, editions);
+    initCharacterTypeCharms(allCharmGroups, edition);
+    initMartialArtsCharms(allCharmGroups, edition);
     return allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]);
   }
 
-  private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups, IExaltedEdition[] editions) {
+  private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups, IExaltedEdition edition) {
     for (ICharacterType type : CharacterType.values()) {
-      for (IExaltedEdition edition : editions) {
-        ICharacterTemplate template = templateRegistry.getDefaultTemplate(type, edition);
-        if (template == null) {
-          continue;
-        }
-        ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
-        if (charmTemplate.canLearnCharms(edition.getDefaultRuleset())) {
-          for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
-            registerTypeCharms(allCharmGroups, type, template, ruleSet);
-            registerUniqueCharms(allCharmGroups, charmTemplate, ruleSet);
-          }
+      ICharacterTemplate template = templateRegistry.getDefaultTemplate(type, edition);
+      if (template == null) {
+        continue;
+      }
+      ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
+      if (charmTemplate.canLearnCharms(edition.getDefaultRuleset())) {
+        for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
+          registerTypeCharms(allCharmGroups, type, template, ruleSet);
+          registerUniqueCharms(allCharmGroups, charmTemplate, ruleSet);
         }
       }
     }
   }
 
-  private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups, IExaltedEdition[] editions) {
-    for (IExaltedEdition edition : editions) {
-      ICharacterTemplate template = templateRegistry.getDefaultTemplate(CharacterType.SIDEREAL, edition);
-      for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
-        ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate(), ruleSet);
-        getCharmTreeMap(ruleSet).put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
-        allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
-      }
+  private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups, IExaltedEdition edition) {
+    ICharacterTemplate template = templateRegistry.getDefaultTemplate(CharacterType.SIDEREAL, edition);
+    for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
+      ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate(), ruleSet);
+      getCharmTreeMap(ruleSet).put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
+      allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
     }
   }
 

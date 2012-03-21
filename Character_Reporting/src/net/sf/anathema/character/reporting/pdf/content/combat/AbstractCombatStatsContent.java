@@ -18,19 +18,19 @@ public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
   }
 
   public int getKnockdownPool() {
-    return CharacterUtilties.getKnockdownPool(getCharacter(), getEquipment());
+    return CharacterUtilties.getKnockdownPool(getCharacter());
   }
 
   public int getStunningThreshold() {
-    return CharacterUtilties.getStunningThreshold(getTraitCollection(), getEquipment());
+    return CharacterUtilties.getStunningThreshold(getTraitCollection());
   }
 
   public int getKnockdownThreshold() {
-    return CharacterUtilties.getKnockdownThreshold(getTraitCollection(), getEquipment());
+    return CharacterUtilties.getKnockdownThreshold(getTraitCollection());
   }
 
   public int getStunningPool() {
-    return CharacterUtilties.getStunningPool(getTraitCollection(), getEquipment());
+    return CharacterUtilties.getStunningPool(getTraitCollection());
   }
 
   public String getKnockdownLabel() {

@@ -2,10 +2,8 @@ package net.sf.anathema.character.generic.framework.module;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.unsupported.UnsupportedDragonKingTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EssenceUserBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
@@ -31,10 +29,5 @@ public class BasicExaltCharacterModule extends NullObjectCharacterModuleAdapter 
     registry.add(new SimpleBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_INFLUENCE));
     registry.add(new SimpleBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_MENTOR));
     registry.add(new SimpleBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_RESOURCES));
-  }
-
-  @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    characterGenerics.getTemplateRegistry().register(new UnsupportedDragonKingTemplate(CharmCache.getInstance()));
   }
 }
