@@ -95,7 +95,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     initCharacterType(nativeCharmTemplate, rules, getNativeCharacterType());
     allCharacterTypes.add(getNativeCharacterType());
     initAlienTypes(registry, rules, allCharacterTypes);
-    initUniqueTypes(nativeCharmTemplate, rules);
+    initUniqueTypes(nativeCharmTemplate);
     initSpecialCharmConfigurations();
     types = allCharacterTypes.toArray(new ICharacterType[allCharacterTypes.size()]);
     filterSet.add(new ObtainableCharmFilter(this));
@@ -346,12 +346,12 @@ public class CharmConfiguration implements ICharmConfiguration {
     templatesByType.put(type, charmTemplate);
   }
 
-  private void initUniqueTypes(ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
+  private void initUniqueTypes(ICharmTemplate charmTemplate) {
     if (!charmTemplate.hasUniqueCharms()) {
       return;
     }
     IUniqueCharmType type = charmTemplate.getUniqueCharmType();
-    CharmTree charmTree = new CharmTree(CharmCache.getInstance().getCharms(type.getId(), rules));
+    CharmTree charmTree = new CharmTree(CharmCache.getInstance().getCharms(type.getId()));
     ILearningCharmGroup[] groups = createGroups(charmTree.getAllCharmGroups());
     nonMartialArtsGroupsByType.put(type.getId(), groups);
     alienTreesByType.put(type.getId(), charmTree);

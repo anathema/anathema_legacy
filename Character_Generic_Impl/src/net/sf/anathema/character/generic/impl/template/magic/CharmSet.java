@@ -35,7 +35,7 @@ public class CharmSet implements ICharmSet {
       IExaltedEdition edition) {
     Map<IExaltedRuleSet, ICharm[]> charmMap = new HashMap<IExaltedRuleSet, ICharm[]>();
     for (IExaltedRuleSet set : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
-      charmMap.put(set, charmProvider.getCharms(characterType, set));
+      charmMap.put(set, charmProvider.getCharms(characterType));
     }
     return charmMap;
   }

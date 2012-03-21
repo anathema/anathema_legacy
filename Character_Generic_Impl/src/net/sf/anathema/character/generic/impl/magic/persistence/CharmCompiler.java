@@ -73,9 +73,7 @@ public class CharmCompiler {
         buildCharmRenames(type, rules);
       }
     }
-    for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
-      extractParents(charmCache.getCharms(rules));
-    }
+    extractParents(charmCache.getCharms());
   }
 
   private void buildStandardCharms(IIdentificate type, ExaltedRuleSet rules) throws PersistenceException {
@@ -96,7 +94,7 @@ public class CharmCompiler {
   private void buildCharmAlternatives(IIdentificate type, ExaltedRuleSet rules) {
     if (charmFileTable.contains(type, rules)) {
       for (Document charmDocument : charmFileTable.get(type, rules)) {
-        alternativeBuilder.buildAlternatives(charmDocument, charmCache.getCharms(type, rules));
+        alternativeBuilder.buildAlternatives(charmDocument, charmCache.getCharms(type));
       }
     }
   }
@@ -104,7 +102,7 @@ public class CharmCompiler {
   private void buildCharmMerges(IIdentificate type, ExaltedRuleSet rules) {
     if (charmFileTable.contains(type, rules)) {
       for (Document charmDocument : charmFileTable.get(type, rules)) {
-        mergedBuilder.buildMerges(charmDocument, charmCache.getCharms(type, rules));
+        mergedBuilder.buildMerges(charmDocument, charmCache.getCharms(type));
       }
     }
   }
@@ -112,7 +110,7 @@ public class CharmCompiler {
   private void buildCharmRenames(IIdentificate type, ExaltedRuleSet rules) {
     if (charmFileTable.contains(type, rules)) {
       for (Document charmDocument : charmFileTable.get(type, rules)) {
-        charmCache.addCharmRenames(rules, renameBuilder.buildRenames(charmDocument));
+        charmCache.addCharmRenames(renameBuilder.buildRenames(charmDocument));
       }
     }
   }
@@ -123,19 +121,19 @@ public class CharmCompiler {
     if (hasEntryForTypeUnderRules) {
       List<Document> documents = charmFileTable.get(type, rules);
       for (Document charmDocument : documents) {
-        buildRulesetCharms(type, rules, charmDocument, builder);
+        buildRulesetCharms(type, charmDocument, builder);
       }
     }
   }
 
-  private void buildRulesetCharms(IIdentificate type, IExaltedRuleSet rules, Document charmDocument,
+  private void buildRulesetCharms(IIdentificate type, Document charmDocument,
                                   ICharmSetBuilder builder) throws PersistenceException {
     List<ISpecialCharm> specialCharms = new ArrayList<ISpecialCharm>();
     ICharm[] charmArray = builder.buildCharms(charmDocument, specialCharms);
     for (ICharm charm : charmArray) {
-      charmCache.addCharm(type, rules, charm);
+      charmCache.addCharm(type, charm);
     }
-    charmCache.addSpecialCharmData(rules, type, specialCharms);
+    charmCache.addSpecialCharmData(type, specialCharms);
   }
 
   private void extractParents(Iterable<ICharm> charms) {

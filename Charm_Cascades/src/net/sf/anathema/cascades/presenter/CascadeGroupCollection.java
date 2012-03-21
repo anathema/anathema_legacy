@@ -63,7 +63,7 @@ public class CascadeGroupCollection implements CharmGroupCollection, EditionChar
       if (charmTemplate.canLearnCharms(edition.getDefaultRuleset())) {
         for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
           registerTypeCharms(allCharmGroups, type, template, ruleSet);
-          registerUniqueCharms(allCharmGroups, charmTemplate, ruleSet);
+          registerUniqueCharms(allCharmGroups, charmTemplate);
         }
       }
     }
@@ -78,13 +78,12 @@ public class CascadeGroupCollection implements CharmGroupCollection, EditionChar
     }
   }
 
-  private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate,
-                                    IExaltedRuleSet ruleSet) {
+  private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate) {
     if (!charmTemplate.hasUniqueCharms()) {
       return;
     }
     IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
-    ICharmTree uniqueTree = getUniqueCharmTree(ruleSet, uniqueType);
+    ICharmTree uniqueTree = getUniqueCharmTree(uniqueType);
     registerGroups(allCharmGroups, uniqueType.getId(), uniqueTree);
   }
 
@@ -98,9 +97,9 @@ public class CascadeGroupCollection implements CharmGroupCollection, EditionChar
     return new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate(), ruleSet);
   }
 
-  private ICharmTree getUniqueCharmTree(IExaltedRuleSet ruleSet, IUniqueCharmType uniqueType) {
+  private ICharmTree getUniqueCharmTree(IUniqueCharmType uniqueType) {
     IIdentificate typeId = uniqueType.getId();
-    ICharm[] charms = cache.getCharms(typeId, ruleSet);
+    ICharm[] charms = cache.getCharms(typeId);
     return new CharmTree(charms);
   }
 

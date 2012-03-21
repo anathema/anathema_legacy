@@ -42,8 +42,7 @@ public class GenericCharmUtilities {
 
   public static IMagicStats[] getGenericCharmStats(IGenericCharacter character) {
     List<IMagicStats> genericCharmStats = new ArrayList<IMagicStats>();
-    ICharm[] charms = CharmCache.getInstance().getCharms(character.getTemplate().getTemplateType().getCharacterType(),
-            character.getRules());
+    ICharm[] charms = CharmCache.getInstance().getCharms(character.getTemplate().getTemplateType().getCharacterType());
     for (ICharm charm : charms) {
       if (charm.isInstanceOfGenericCharm()) {
         IMagicStats stats = new GenericCharmStats(charm, character);
@@ -80,7 +79,6 @@ public class GenericCharmUtilities {
     if (type == FavoringTraitType.YoziType) {
       list = character.getYoziTypeGroups();
     }
-
     for (ITraitTypeGroup group : list) {
       Collections.addAll(traits, group.getAllGroupTypes());
     }

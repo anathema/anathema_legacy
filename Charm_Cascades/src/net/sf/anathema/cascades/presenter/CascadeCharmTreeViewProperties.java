@@ -4,7 +4,6 @@ import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
@@ -56,7 +55,7 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
   private ICharm searchCharm(final String charmId) {
     String[] idParts = charmId.split("\\."); //$NON-NLS-1$
     ICharacterType characterTypeId = CharacterType.getById(idParts[0]);
-    ICharm[] charms = cache.getCharms(characterTypeId, ExaltedRuleSet.SecondEdition);
+    ICharm[] charms = cache.getCharms(characterTypeId);
     return ArrayUtilities.find(new Predicate<ICharm>() {
       @Override
       public boolean apply(ICharm candidate) {
