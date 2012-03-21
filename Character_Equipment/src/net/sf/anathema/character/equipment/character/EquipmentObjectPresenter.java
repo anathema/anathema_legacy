@@ -85,7 +85,6 @@ public class EquipmentObjectPresenter implements Presenter {
 	    else {
 	  	  otherStatFlags.put(equipment, booleanModel);
 	    }
-	    booleanModel.setValue(true);
 	    booleanModel.addChangeListener(new IChangeListener() {
 	      public void stateChanged() {
 	        model.setPrintEnabled(equipment, booleanModel.getValue());

@@ -50,13 +50,15 @@ public class ArtifactStatsDecorator extends AbstractStats implements IArtifactSt
 
   @Override
   public boolean equals(Object obj) {
-	if (obj instanceof ArtifactStats)
-		return stats.equals(obj);
     if (!(obj instanceof ArtifactStatsDecorator)) {
       return false;
     }
     ArtifactStatsDecorator view = (ArtifactStatsDecorator) obj;
     return view.stats.equals(stats) && view.type == type;
+  }
+  
+  public String toString() {
+	  return stats.toString() + "[" + type + "]";
   }
 
   @Override

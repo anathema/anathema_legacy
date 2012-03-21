@@ -57,4 +57,8 @@ public class ArtifactStats extends AbstractNonCombatStats implements IArtifactSt
   public String getId() {
     return getName().getId();
   }
+  
+  public String toString() {
+	return getId() + "[" + attuneCost + "m]";
+  }
 }

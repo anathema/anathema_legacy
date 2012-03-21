@@ -51,7 +51,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
       if (template == null) {
         continue;
       }
-      final IEquipmentItem item = new EquipmentItem(template, ruleSet, null);
+      final IEquipmentItem item = new EquipmentItem(template, ruleSet, null, getCharacterDataProvider());
       naturalWeaponItems.add(initItem(item));
     }
     

@@ -10,6 +10,7 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArmourStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArtifactStats;
@@ -38,7 +39,8 @@ public class EquipmentItem implements IEquipmentItem {
   private final IExaltedRuleSet ruleSet;
   private final MagicalMaterial material;
 
-  public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet, MagicalMaterial material) {
+  public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet, MagicalMaterial material,
+		  IEquipmentCharacterDataProvider provider) {
     if (template.getComposition() == MaterialComposition.Variable && material == null) {
       throw new MissingMaterialException("Variable material items must be created with material."); //$NON-NLS-1$
     }
@@ -46,6 +48,30 @@ public class EquipmentItem implements IEquipmentItem {
     this.ruleSet = ruleSet;
     this.material = material != null ? material : template.getMaterial();
     Collections.addAll(printedStats, template.getStats(ruleSet));
+    initPrintStats(provider);
+  }
+  
+  private void initPrintStats(IEquipmentCharacterDataProvider provider) {
+	  IArtifactStats bestAttune = null;
+	  for (IEquipmentStats stat : getViews()) {
+		  if (stat instanceof IArtifactStats) {
+			  if (hasAttunementType((IArtifactStats) stat, provider.getAttuneTypes(this)) &&
+				  (bestAttune == null ||
+				  ((IArtifactStats)stat).getAttuneType().compareTo(bestAttune.getAttuneType()) > 0))
+				  bestAttune = (IArtifactStats) stat;
+			  continue;
+		  }
+		  printedStats.add(stat);
+	  }
+	  if (bestAttune != null)
+		  printedStats.add(bestAttune);
+  }
+  
+  private boolean hasAttunementType(IArtifactStats stats, ArtifactAttuneType[] types) {
+	  for (ArtifactAttuneType type : types)
+		  if (type.equals(stats.getAttuneType()))
+			  return true;
+	  return false;
   }
 
   public String getDescription() {

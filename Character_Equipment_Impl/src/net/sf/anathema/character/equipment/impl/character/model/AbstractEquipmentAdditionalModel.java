@@ -72,7 +72,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   protected abstract IEquipmentTemplate loadEquipmentTemplate(String templateId);
 
   private IEquipmentItem addEquipmentObjectFor(final IEquipmentTemplate template, final MagicalMaterial material) {
-    final IEquipmentItem item = new EquipmentItem(template, ruleSet, material);
+    final IEquipmentItem item = new EquipmentItem(template, ruleSet, material, getCharacterDataProvider());
     equipmentItems.add(item);
     return initItem(item);
   }
