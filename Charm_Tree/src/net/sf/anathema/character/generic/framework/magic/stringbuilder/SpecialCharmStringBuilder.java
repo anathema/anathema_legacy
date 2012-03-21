@@ -61,7 +61,7 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
 
       if (tier.getTrait() > 0) {
         builder.append("/");
-        if (tier == second) {
+        if (tier == second || tiers.length <= 3) {
           builder.append(resources.getString(charm.getPrimaryTraitType().getId()));
           builder.append(IMagicTooltipStringBuilder.Space);
         }

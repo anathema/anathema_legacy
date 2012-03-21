@@ -28,10 +28,10 @@ public class CharmKeywordsStringBuilder implements IMagicTooltipStringBuilder
 			        }
 			        listBuilder.append(resources.getString("Keyword." + attribute.getId())); //$NON-NLS-1$
 			      }
-			    }
-			    if (builder.length() > 0) {
-			    	listBuilder.insert(0, resources.getString("CharmTreeView.ToolTip.Keywords") + ColonSpace); //$NON-NLS-1$
-			    	listBuilder.append(HtmlLineBreak);
+			}
+			if (listBuilder.length() > 0) {
+			   	listBuilder.insert(0, resources.getString("CharmTreeView.ToolTip.Keywords") + ColonSpace); //$NON-NLS-1$
+			   	listBuilder.append(HtmlLineBreak);
 			}
 			builder.append(listBuilder);
 		}

@@ -1,0 +1,14 @@
+<experiencePointCost uses="experience/DefaultExperienceCost.template">
+  <advantages>
+    <essence>
+      <currentRating multiplier="9" />
+    </essence>
+  </advantages>
+  <magic>
+    <charms favored="9" general="11">
+    	<keywordCharms keyword="Terrestrial" favored="8" general="10"/>
+    	<keywordCharms keyword="Celestial" favored="8" general="10"/>
+    	<highLevelMartialArts favored="10" general="12"/>
+    </charms>
+  </magic>
+</experiencePointCost>

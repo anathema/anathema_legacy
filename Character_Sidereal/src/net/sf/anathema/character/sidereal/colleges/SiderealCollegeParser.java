@@ -22,8 +22,10 @@ public class SiderealCollegeParser implements IAdditionalTemplateParser
 	private static final String ATTRIB_VALUE = "value";
 	private static final String TAG_BONUS_GENERAL = "bonusGeneral";
 	private static final String TAG_BONUS_FAVORED = "bonusFavored";
-	private static final String TAG_XP_BASE = "experienceBase";
-	private static final String TAG_XP_MULTIPLE = "experienceMultiple";
+	private static final String TAG_XP_NEW_FAVORED = "experienceNewFavored";
+	private static final String TAG_XP_NEW_GENERAL = "experienceNewGeneral";
+	private static final String TAG_XP_ADVANCE_FAVORED = "experienceAdvanceFavored";
+	private static final String TAG_XP_ADVANCE_GENERAL = "experienceAdvanceGeneral";
 
 	@Override
 	public IAdditionalTemplate parse(Element element)
@@ -39,16 +41,20 @@ public class SiderealCollegeParser implements IAdditionalTemplateParser
 
 			Element bonusGeneralElement = ElementUtilities.getRequiredElement(element, TAG_BONUS_GENERAL);
 			Element bonusFavoredElement = ElementUtilities.getRequiredElement(element, TAG_BONUS_FAVORED);
-			Element xpBaseElement = ElementUtilities.getRequiredElement(element, TAG_XP_BASE);
-			Element xpMultipleElement = ElementUtilities.getRequiredElement(element, TAG_XP_MULTIPLE);
+			Element xpNewFavoredElement = ElementUtilities.getRequiredElement(element, TAG_XP_NEW_FAVORED);
+			Element xpNewGeneralElement = ElementUtilities.getRequiredElement(element, TAG_XP_NEW_GENERAL);
+			Element xpAdvanceFavoredElement = ElementUtilities.getRequiredElement(element, TAG_XP_ADVANCE_FAVORED);
+			Element xpAdvanceGeneralElement = ElementUtilities.getRequiredElement(element, TAG_XP_ADVANCE_GENERAL);
 
 			bonusCosts = new CollegeBonusPointCost(
 					ElementUtilities.getRequiredIntAttrib(bonusFavoredElement, ATTRIB_VALUE),
 					ElementUtilities.getRequiredIntAttrib(bonusGeneralElement, ATTRIB_VALUE));
 
 			experienceCosts = new CollegeExperienceCost(
-					ElementUtilities.getRequiredIntAttrib(xpBaseElement, ATTRIB_VALUE),
-					ElementUtilities.getRequiredIntAttrib(xpMultipleElement, ATTRIB_VALUE));
+					ElementUtilities.getRequiredIntAttrib(xpNewFavoredElement, ATTRIB_VALUE),
+					ElementUtilities.getRequiredIntAttrib(xpNewGeneralElement, ATTRIB_VALUE),
+					ElementUtilities.getRequiredIntAttrib(xpAdvanceFavoredElement, ATTRIB_VALUE),
+					ElementUtilities.getRequiredIntAttrib(xpAdvanceGeneralElement, ATTRIB_VALUE));
 		}
 		catch (PersistenceException e)
 		{
@@ -77,17 +83,25 @@ public class SiderealCollegeParser implements IAdditionalTemplateParser
 
 	private static class CollegeExperienceCost extends DefaultExperienceCosts implements ICollegeExperienceCosts
 	{
-		final int baseCost, multiple;
+		final int newFavoredCost;
+		final int newGeneralCost;
+		final int advanceFavoredCost;
+		final int advanceGeneralCost;
 
-		public CollegeExperienceCost(int baseCost, int multiple)
+		public CollegeExperienceCost(int newFavored, int newGeneral,
+				int advanceFavored, int advanceGeneral)
 		{
-			this.baseCost = baseCost;
-			this.multiple = multiple;
+			this.newFavoredCost = newFavored;
+			this.newGeneralCost = newGeneral;
+			this.advanceFavoredCost = advanceFavored;
+			this.advanceGeneralCost = advanceGeneral;
 		}
 
 		@Override
-		public ICurrentRatingCosts getCollegeExperienceCost() {
-			return new MultiplyRatingCosts(multiple, baseCost);
+		public ICurrentRatingCosts getCollegeExperienceCost(boolean favored) {
+	
+			return favored ? new MultiplyRatingCosts(advanceFavoredCost, newFavoredCost) :
+				new MultiplyRatingCosts(advanceGeneralCost, newGeneralCost);
 		}
 	}
 

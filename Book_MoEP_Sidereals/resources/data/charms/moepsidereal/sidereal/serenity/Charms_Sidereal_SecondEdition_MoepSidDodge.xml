@@ -36,8 +36,13 @@
           <charmtype type="Reflexive">
                <special primaryStep="2" />
           </charmtype>
+          <repurchases trait="Dodge">
+			<repurchase essence="2" trait="2"/>
+			<repurchase essence="3" trait="4"/>
+		</repurchases>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.DuckFate" exalt="Sidereal" group="Dodge">
           <prerequisite>
@@ -54,6 +59,7 @@
           </charmtype>
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.AvoidanceKata" exalt="Sidereal" group="Dodge">
           <prerequisite>
@@ -65,23 +71,34 @@
                <essence cost="2" />
           </cost>
           <duration duration="Instant" />
-          <charmtype type="Reflexive" />
+          <charmtype type="Reflexive">
+               <special primaryStep="2" />
+          </charmtype>
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Illusion" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.TroubleReductionStrategy" exalt="Sidereal" group="Dodge">
           <prerequisite>
-               <trait id="Dodge" value="4" />
+               <trait id="Dodge" value="3" />
                <essence value="2" />
-               <charmReference id="Sidereal.DuckFate" />
+               <charmReference id="Sidereal.Absence" />
           </prerequisite>
           <cost>
-               <essence cost="5" />
+               <essence cost="1" />
           </cost>
           <duration amount="1" unit="scene" />
-          <charmtype type="Simple" />
+          <charmtype type="Reflexive" />
+          <repurchases trait="Dodge">
+			<repurchase essence="2" trait="3"/>
+			<repurchase essence="2" trait="4"/>
+		  </repurchases>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Virtue-Compassion" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.NeighborhoodRelocationScheme" exalt="Sidereal" group="Dodge">
           <prerequisite>
@@ -93,15 +110,18 @@
           <cost>
                <essence cost="15" />
                <willpower cost="1" />
-               <health cost="2" type="Bashing" text="+2 bhl per hour" />
+               <health cost="1" type="Bashing" text=" per hour"/>
           </cost>
           <duration duration="Indefinite" />
           <charmtype type="Simple">
                <special speed="6" defense="-2" />
           </charmtype>
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Illusion" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="PrayerStrip" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>

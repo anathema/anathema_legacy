@@ -35,6 +35,10 @@ public class CharmConfigurationPersister {
   private final TextPersister textPersister = new TextPersister();
   private final TraitPersister traitPersister = new TraitPersister();
   private static final String TAG_LEARN_COUNT = "LearnCount";
+  private static final String ATTRIB_CREATION_LEARNED = "creationlearned";
+  private static final String ATTRIB_ID = "id";
+  private static final String TAG_SUBEFFECTS = "Subeffects";
+  private static final String TAG_SUBEFFECT = "Subeffect";
   private ITraitContext context;
 
   public void save(Element parent, ICharacterStatistics statistics) {
@@ -125,7 +129,7 @@ public class CharmConfigurationPersister {
       group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), isExperienceLearned(charmElement), false);
       Element specialElement = charmElement.element(TAG_SPECIAL);
       ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
-      if (specialElement != null) {
+      if (specialElement != null && specialConfiguration != null) {
         specialPersister.loadConfiguration(specialElement, specialConfiguration);
       } else if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
 
@@ -141,11 +145,20 @@ public class CharmConfigurationPersister {
         baseCharmName.append(components[i]);
         baseCharmName.append(i == components.length - 3 ? "" : ".");
       }
-      int count = Integer.parseInt(components[components.length - 1].replace("Repurchase", ""));
-      Element newElement = element.addElement(TAG_SPECIAL);
-      DefaultTrait trait = new LimitedTrait(new TraitType(TAG_LEARN_COUNT), SimpleTraitTemplate.createEssenceLimitedTemplate(0, count, LowerableState.Default),
-                                            null, context);
-      traitPersister.saveTrait(newElement, TAG_LEARN_COUNT, trait);
+      if (components[components.length - 1].startsWith("Repurchase")) {
+    	  int count = Integer.parseInt(components[components.length - 1].replace("Repurchase", ""));
+          Element newElement = element.addElement(TAG_SPECIAL);
+          DefaultTrait trait = new LimitedTrait(new TraitType(TAG_LEARN_COUNT), SimpleTraitTemplate.createEssenceLimitedTemplate(0, count, LowerableState.Default),
+                                                null, context);
+          traitPersister.saveTrait(newElement, TAG_LEARN_COUNT, trait);  
+      }
+      if (components[components.length - 2].startsWith("Subeffect")) {
+    	  Element newElement = element.addElement(TAG_SPECIAL).addElement(TAG_SUBEFFECTS).addElement(TAG_SUBEFFECT);
+    	  boolean creationLearned = !ElementUtilities.getBooleanAttribute(element, ATTRIB_EXPERIENCE_LEARNED, true);
+    	  newElement.addAttribute(ATTRIB_ID, components[components.length - 1]);
+    	  newElement.addAttribute(ATTRIB_CREATION_LEARNED, "" + creationLearned);
+    	  newElement.addAttribute(ATTRIB_EXPERIENCE_LEARNED, "" + true);
+      }
     } else {
       baseCharmName.append(name);
     }

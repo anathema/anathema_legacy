@@ -30,14 +30,17 @@
                <essence value="2" />
           </prerequisite>
           <cost>
-               <essence cost="2" />
-               <willpower cost="1" />
-               <health cost="1" type="Lethal" />
+               <essence cost="3" />
           </cost>
-          <duration duration="Instant" />
-          <charmtype type="Simple" />
+          <duration amount="1" unit="scene"/>
+          <charmtype type="Simple">
+          	<special speed="3" defense="-1" />
+          </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
+          <charmAttribute attribute="Virtue-Valor" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.SmoothTransition" exalt="Sidereal" group="Medicine">
           <prerequisite>
@@ -46,34 +49,33 @@
                <charmReference id="Sidereal.PeacableConclusion" />
           </prerequisite>
           <cost>
-               <essence cost="2" />
+               <essence cost="3" />
           </cost>
           <duration duration="Instant" />
-          <charmtype type="Simple">
-               <special speed="4" defense="-1" />
-          </charmtype>
-          <charmAttribute attribute="Touch" visualize="true" />
+          <charmtype type="Supplemental"/>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Virtue-Valor" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.InvocationOfTheStormFollowingSilence" exalt="Sidereal" group="Medicine">
           <prerequisite>
-               <trait id="Medicine" value="3" />
-               <essence value="4" />
+               <trait id="Medicine" value="4" />
+               <essence value="3" />
                <charmReference id="Sidereal.SmoothTransition" />
-               <charmAttributeRequirement attribute="ExcellencyMedicine" count="1" />
           </prerequisite>
           <cost>
                <essence cost="5" />
                <willpower cost="1" />
           </cost>
-          <duration duration="Instant" />
-          <charmtype type="Simple">
-               <special speed="4" defense="-1" />
-          </charmtype>
+          <duration duration="Varies" />
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Virtue-Valor" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.TerminateIllness" exalt="Sidereal" group="Medicine">
           <prerequisite>
@@ -81,7 +83,7 @@
                <essence value="2" />
           </prerequisite>
           <cost>
-               <essence cost="10" />
+               <essence cost="5" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Simple" />
@@ -89,6 +91,7 @@
           <charmAttribute attribute="Touch" visualize="true" />
           <charmAttribute attribute="Virtue-Conviction" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.DeferredWounds" exalt="Sidereal" group="Medicine">
           <prerequisite>
@@ -97,26 +100,21 @@
                <charmReference id="Sidereal.TerminateIllness" />
           </prerequisite>
           <cost>
-               <essence cost="5" />
-               <willpower cost="1" />
+               <essence cost="0" text="Special"/>
           </cost>
-          <duration amount="WitsMedicine" unit="hour" />
-          <!-- Coding: This probably doesn't need to be coded with Java...
-                 When possible, I will have to "jar" this file and see if a simple "property"
-                 file will be sufficient. -->
+          <duration duration="Indefinite" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Fate" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.EarthAndSkyBargin" exalt="Sidereal" group="Medicine">
           <prerequisite>
                <trait id="Medicine" value="4" />
                <essence value="4" />
                <charmReference id="Sidereal.DeferredWounds" />
-               <charmReference id="Sidereal.SmoothTransition" />
+               <charmReference id="Sidereal.InvocationOfTheStormFollowingSilence" />
           </prerequisite>
           <cost>
                <essence cost="10" />
@@ -128,5 +126,6 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="PrayerStrip" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>

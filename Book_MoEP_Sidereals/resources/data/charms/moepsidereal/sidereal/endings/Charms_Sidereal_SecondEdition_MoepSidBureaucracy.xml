@@ -36,9 +36,9 @@
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Compulsion" visualize="true" />
-          <charmAttribute attribute="Fate" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.TerminalSanction" exalt="Sidereal" group="Bureaucracy">
           <prerequisite>
@@ -53,10 +53,17 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <charmAttribute attribute="Compulsion" visualize="true" />
           <charmAttribute attribute="Maiden" visualize="true" />
           <charmAttribute attribute="Servitude" visualize="true" />
           <charmAttribute attribute="Virtue-Temperance" visualize="true" />
+          <repurchases trait="Bureaucracy">
+			<repurchase essence="3" trait="4"/>
+			<repurchase essence="4" trait="5"/>
+			<repurchase essence="6" trait="6"/>
+		  </repurchases>
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.UnderlingInvisibilityPractice" exalt="Sidereal" group="Bureaucracy">
           <prerequisite>
@@ -68,8 +75,10 @@
           </cost>
           <duration duration="Indefinite" />
           <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Illusion" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.ParalyzedMandarinInfliction" exalt="Sidereal" group="Bureaucracy">
           <prerequisite>
@@ -80,11 +89,12 @@
           <cost>
                <essence cost="5" />
           </cost>
-          <duration duration="Indefinite" />
+          <duration amount="1" unit="story" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Compulsion" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.EndDebate" exalt="Sidereal" group="Bureaucracy">
           <prerequisite>
@@ -100,10 +110,12 @@
           </cost>
           <duration duration="Instant" />
           <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Compulsion" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="PrayerStrip" visualize="true" />
+          <charmAttribute attribute="Virtue-Temperance" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>

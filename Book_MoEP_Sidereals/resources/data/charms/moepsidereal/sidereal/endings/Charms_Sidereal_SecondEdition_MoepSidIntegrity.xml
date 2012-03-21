@@ -80,17 +80,17 @@
           <cost>
                <essence cost="2" text="+2 per point of MDV" />
           </cost>
-          <duration amount="1" unit="day" />
-          <charmtype type="Simple">
-               <special speed="6" turntype="DramaticAction" defense="-1" />
-          </charmtype>
+          <duration amount="1" unit="scene" />
+          <charmtype type="Simple"/>
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Social" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.UnwaveringWellBeingMeditation" exalt="Sidereal" group="Integrity">
           <prerequisite>
                <trait id="Integrity" value="3" />
-               <essence value="3" />
+               <essence value="2" />
                <charmReference id="Sidereal.PreservationOfResolve" />
           </prerequisite>
           <cost>
@@ -101,25 +101,25 @@
                <special primaryStep="2" />
           </charmtype>
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Illusion" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
+          <repurchases trait="Integrity">
+			<repurchase essence="2" trait="3"/>
+			<repurchase essence="4" trait="4"/>
+		  </repurchases>
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.CreationPreservingWill" exalt="Sidereal" group="Integrity">
           <prerequisite>
                <trait id="Integrity" value="4" />
                <essence value="3" />
                <charmReference id="Sidereal.UnwaveringWellBeingMeditation" />
-               <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1" />
           </prerequisite>
-          <cost>
-               <essence cost="10" />
-               <willpower cost="1" />
-          </cost>
-          <duration duration="Indefinite" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
+          <cost/>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.UnhearingDedication" exalt="Sidereal" group="Integrity">
           <prerequisite>
@@ -144,13 +144,15 @@
           <charmtype type="Reflexive">
                <special primaryStep="2" />
           </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.OneDirectionInvocation" exalt="Sidereal" group="Integrity">
           <prerequisite>
                <trait id="Integrity" value="5" />
                <essence value="4" />
-               <selectiveCharmGroup threshold="1">
+			   <selectiveCharmGroup threshold="1">
 					<charmReference id="Sidereal.CompassionateEssenceReplenishment" />
 					<charmReference id="Sidereal.SternEssenceReplenishment" />
 					<charmReference id="Sidereal.HeroicEssenceReplenishment" />
@@ -161,14 +163,17 @@
           </prerequisite>
           <!-- Coding:  Code for prerequisite charm?  re:  (Virtue) Essence Replenishment (see above). -->
           <cost>
-               <essence cost="16" />
+               <essence cost="1" />
                <willpower cost="1" />
-               <health cost="1" type="Lethal" />
+               <health cost="1" type="Bashing" />
           </cost>
           <duration duration="Indefinite" />
           <charmtype type="Simple" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="PrayerStrip" visualize="true" />
+          <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Sidereals2nd" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>
