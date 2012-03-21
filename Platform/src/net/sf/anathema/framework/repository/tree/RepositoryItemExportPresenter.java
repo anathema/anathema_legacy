@@ -2,16 +2,13 @@ package net.sf.anathema.framework.repository.tree;
 
 import java.awt.Component;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.presenter.resources.FileUi;
-import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -24,8 +21,8 @@ public class RepositoryItemExportPresenter implements IPresenter {
   private final IResources resources;
   private final IRepositoryTreeModel model;
   private final RepositoryTreeView view;
-  private final RepositoryZipPathCreator creator;
   private final AmountMessaging messaging;
+  private final FileExporter fileExporter;
 
   public RepositoryItemExportPresenter(
       IResources resources,
@@ -36,7 +33,7 @@ public class RepositoryItemExportPresenter implements IPresenter {
     this.model = repositoryTreeModel;
     this.view = treeView;
     this.messaging = fileCountMessaging;
-    this.creator = new RepositoryZipPathCreator(model.getRepositoryPath());
+    fileExporter = new FileExporter(new RepositoryZipPathCreator(model.getRepositoryPath()), model, resources);
   }
 
   public void initPresentation() {
@@ -51,19 +48,7 @@ public class RepositoryItemExportPresenter implements IPresenter {
           if (saveFile == null) {
             return;
           }
-          ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(saveFile));
-          zipOutputStream.setComment(resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$
-          PrintNameFile[] printNameFiles = model.getPrintNameFilesInSelection();
-          for (PrintNameFile printNameFile : printNameFiles) {
-            IRepositoryFileAccess access = model.getFileAccess(printNameFile);
-            for (File file : access.getFiles()) {
-              ZipEntry entry = createZipEntry(file, printNameFile);
-              zipOutputStream.putNextEntry(entry);
-              StreamUtilities.writeInputStreamToOutputStream(access.openInputStream(file), zipOutputStream);
-              zipOutputStream.closeEntry();
-            }
-          }
-          zipOutputStream.close();
+          PrintNameFile[] printNameFiles = fileExporter.exportToZip(saveFile);
           messaging.addMessage("AnathemaCore.Tools.RepositoryView.ExportDoneMessage", printNameFiles.length); //$NON-NLS-1$
         }
         catch (IOException e) {
@@ -83,11 +68,5 @@ public class RepositoryItemExportPresenter implements IPresenter {
       }
     });
     action.setEnabled(false);
-  }
-
-  private ZipEntry createZipEntry(File file, PrintNameFile printNameFile) {
-    ZipEntry entry = new ZipEntry(creator.createZipPath(file));
-    entry.setComment(resources.getString("Anathema.Version.Numeric") + "#" + printNameFile.getItemType() + "#" + printNameFile.getRepositoryId()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    return entry;
   }
 }

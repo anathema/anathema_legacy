@@ -7,7 +7,7 @@ import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public interface IRepositoryTreeModel {
+public interface IRepositoryTreeModel extends ExportModel {
   public IItemType[] getAllItemTypes();
 
   public IItemType getItemTypeForId(String id);
@@ -24,13 +24,9 @@ public interface IRepositoryTreeModel {
 
   public void setSelectedObject(Object[] object);
 
-  public PrintNameFile[] getPrintNameFilesInSelection();
-
   public void addTreeSelectionChangeListener(IChangeListener changeListener);
 
   public String createUniqueId(IItemType type, String id);
-
-  public IRepositoryFileAccess getFileAccess(PrintNameFile printNameFile);
 
   public IRepositoryWriteAccess getWriteAccess(IItemType type, String id) throws RepositoryException;
 

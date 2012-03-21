@@ -14,21 +14,21 @@ import net.sf.anathema.lib.registry.IRegistry;
 
 public interface IAnathemaModel {
 
-  public IRepository getRepository();
+  IRepository getRepository();
 
-  public IReportRegistry getReportRegistry();
+  IReportRegistry getReportRegistry();
 
-  public IItemTypeRegistry getItemTypeRegistry();
+  IItemTypeRegistry getItemTypeRegistry();
 
-  public IRegistry<String, IAnathemaExtension> getExtensionPointRegistry();
+  IRegistry<String, IAnathemaExtension> getExtensionPointRegistry();
 
-  public IRegistry<IItemType, IRepositoryItemPersister> getPersisterRegistry();
+  IRegistry<IItemType, IRepositoryItemPersister> getPersisterRegistry();
 
-  public IRegistry<IItemType, IItemViewFactory> getViewFactoryRegistry();
+  IRegistry<IItemType, IItemViewFactory> getViewFactoryRegistry();
 
-  public IItemMangementModel getItemManagement();
+  IItemMangementModel getItemManagement();
 
-  public IAnathemaMessaging getMessaging();
+  IAnathemaMessaging getMessaging();
 
-  public IAnathemaMessageContainer getMessageContainer();
+  IAnathemaMessageContainer getMessageContainer();
 }
