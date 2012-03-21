@@ -1,9 +1,9 @@
 package net.sf.anathema.charmtree.presenter.view;
 
 import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.graph.nodes.IRegularNode;
@@ -18,18 +18,16 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   private final ICharmGroupArbitrator arbitrator;
   private final CharmTreeRenderer charmTreeRenderer;
   private final CharmFilterSet charmFilterSet;
-  private IExaltedEdition edition;
   private ICharmGroup currentGroup;
   private IIdentificate currentType;
   private final CharmDisplayPropertiesMap displayPropertiesMap;
 
   public AbstractCharmGroupChangeListener(ICharmGroupArbitrator arbitrator, CharmFilterSet charmFilterSet,
-                                          IExaltedEdition edition, CharmTreeRenderer treeRenderer,
+                                          CharmTreeRenderer treeRenderer,
                                           CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
     this.charmTreeRenderer = treeRenderer;
     this.arbitrator = arbitrator;
     this.charmFilterSet = charmFilterSet;
-    this.edition = edition;
     this.displayPropertiesMap = charmDisplayPropertiesMap;
   }
 
@@ -55,15 +53,11 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   protected boolean filterAncestors(ICharm charm) {
     for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
-      if (!charmFilterSet.filterCharm(prerequisite, true) || !filterAncestors(prerequisite))   {
+      if (!charmFilterSet.filterCharm(prerequisite, true) || !filterAncestors(prerequisite)) {
         return false;
       }
     }
     return true;
-  }
-
-  public void setEdition(IExaltedEdition edition) {
-    this.edition = edition;
   }
 
   private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type) {
@@ -87,7 +81,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   }
 
   protected ITreePresentationProperties getDisplayProperties(ICharacterType characterType) {
-    return displayPropertiesMap.getDisplayProperties(characterType, edition);
+    return displayPropertiesMap.getDisplayProperties(characterType, ExaltedEdition.SecondEdition);
   }
 
   @Override

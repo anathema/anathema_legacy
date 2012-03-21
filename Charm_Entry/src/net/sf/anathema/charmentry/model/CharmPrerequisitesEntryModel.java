@@ -1,12 +1,8 @@
 package net.sf.anathema.charmentry.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.disy.commons.core.util.SimpleBlock;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmPrerequisitesEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;
@@ -14,6 +10,9 @@ import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryModel {
 
@@ -26,6 +25,7 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
       IConfigurableCharmData charmData) {
     this.charmData = charmData;
     final CheckInputListener changeListener = new CheckInputListener(new SimpleBlock() {
+      @Override
       public void execute() {
         control.fireChangedEvent();
       }
@@ -34,18 +34,19 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
     prerequisiteModel.addModelListener(changeListener);
   }
 
+  @Override
   public void addModelListener(IChangeListener inputListener) {
     control.addChangeListener(inputListener);
   }
 
+  @Override
   public ICharm[] getAvailableCharms() throws PersistenceException {
     if (charmData.getCharacterType() == null
         || charmData.getEdition() == null
         || charmData.getPrimaryTraitType() == null) {
       return new ICharm[0];
     }
-    IExaltedRuleSet set = charmData.getEdition().getDefaultRuleset();
-    ICharm[] charms = CharmCache.getInstance().getCharms(charmData.getCharacterType(), set);
+    ICharm[] charms = CharmCache.getInstance().getCharms(charmData.getCharacterType());
     List<ICharm> filterList = new ArrayList<ICharm>();
     for (ICharm charm : charms) {
       if (charm.getPrimaryTraitType() == charmData.getPrimaryTraitType()) {
@@ -55,10 +56,12 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
     return filterList.toArray(new ICharm[filterList.size()]);
   }
 
+  @Override
   public void setPrerequisiteCharms(ICharm[] charms) {
     charmData.setParentCharms(charms);
   }
 
+  @Override
   public void setRequiresExcellency(boolean required) {
     charmData.setExcellencyRequired(required);
   }

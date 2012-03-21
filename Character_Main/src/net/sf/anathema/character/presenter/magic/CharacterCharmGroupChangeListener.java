@@ -14,7 +14,7 @@ public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeL
   public CharacterCharmGroupChangeListener(ICharmGroupArbitrator arbitrator, CharmFilterSet charmFilterSet,
                                            IExaltedEdition edition, CharmTreeRenderer treeRenderer,
                                            CharmDisplayPropertiesMap displayPropertiesMap) {
-    super(arbitrator, charmFilterSet, edition, treeRenderer, displayPropertiesMap);
+    super(arbitrator, charmFilterSet, treeRenderer, displayPropertiesMap);
   }
 
   @Override

@@ -1,15 +1,13 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.collection.Table;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
@@ -26,23 +24,21 @@ import java.util.List;
 import java.util.Map;
 
 public class CharmCompiler {
-  private final Table<IIdentificate, IExaltedRuleSet, List<Document>> charmFileTable = new Table<IIdentificate, IExaltedRuleSet, List<Document>>();
+  private final Map<IIdentificate, List<Document>> charmFileTable = new HashMap<IIdentificate, List<Document>>();
   private final CharmSetBuilder setBuilder = new CharmSetBuilder();
   private final GenericCharmSetBuilder genericBuilder = new GenericCharmSetBuilder();
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
   private final CharmRenameBuilder renameBuilder = new CharmRenameBuilder();
-  private final IIdentificateRegistry<IIdentificate> registry;
-  private final SAXReader reader;
-  private CharmCache charmCache;
+  private final IIdentificateRegistry<IIdentificate> registry = new IdentificateRegistry<IIdentificate>();
+  private final SAXReader reader = new SAXReader();
+  private final CharmCache charmCache;
 
   public CharmCompiler(CharmCache charmCache) {
     this.charmCache = charmCache;
-    this.registry = new IdentificateRegistry<IIdentificate>();
     for (CharacterType characterType : CharacterType.values()) {
       registry.add(new Identificate(characterType.getId()));
     }
-    this.reader = new SAXReader();
   }
 
   public void registerCharmFile(String typeString, URL resource) throws CharmException {
@@ -50,11 +46,10 @@ public class CharmCompiler {
     if (!registry.idRegistered(typeString)) {
       registry.add(type);
     }
-    ExaltedRuleSet ruleSet = ExaltedRuleSet.SecondEdition;
-    List<Document> list = charmFileTable.get(type, ruleSet);
+    List<Document> list = charmFileTable.get(type);
     if (list == null) {
       list = new ArrayList<Document>();
-      charmFileTable.add(type, ruleSet, list);
+      charmFileTable.put(type, list);
     }
     try {
       list.add(reader.read(resource));
@@ -64,78 +59,72 @@ public class CharmCompiler {
   }
 
   public void buildCharms() throws PersistenceException {
-    for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
-      for (IIdentificate type : registry.getAll()) {
-        buildStandardCharms(type, rules);
-        buildGenericCharms(type, rules);
-        buildCharmAlternatives(type, rules);
-        buildCharmMerges(type, rules);
-        buildCharmRenames(type, rules);
-      }
+    for (IIdentificate type : registry.getAll()) {
+      buildStandardCharms(type);
+      buildGenericCharms(type);
+      buildCharmAlternatives(type);
+      buildCharmMerges(type);
+      buildCharmRenames(type);
     }
-    for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
-      extractParents(charmCache.getCharms(rules));
-    }
+    extractParents(charmCache.getCharms());
   }
 
-  private void buildStandardCharms(IIdentificate type, ExaltedRuleSet rules) throws PersistenceException {
-    buildCharms(type, rules, setBuilder);
+  private void buildStandardCharms(IIdentificate type) throws PersistenceException {
+    buildCharms(type, setBuilder);
   }
 
-  private void buildGenericCharms(IIdentificate type, ExaltedRuleSet rules) throws PersistenceException {
+  private void buildGenericCharms(IIdentificate type) throws PersistenceException {
     try {
       ICharacterType characterType = CharacterType.getById(type.getId());
-      ITraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypes(rules.getEdition());
+      ITraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypes(ExaltedEdition.SecondEdition);
       genericBuilder.setTypes(primaryTypes);
-      buildCharms(type, rules, genericBuilder);
+      buildCharms(type, genericBuilder);
     } catch (IllegalArgumentException exception) {
       // Not a character type; no generic charms
     }
   }
 
-  private void buildCharmAlternatives(IIdentificate type, ExaltedRuleSet rules) {
-    if (charmFileTable.contains(type, rules)) {
-      for (Document charmDocument : charmFileTable.get(type, rules)) {
-        alternativeBuilder.buildAlternatives(charmDocument, charmCache.getCharms(type, rules));
+  private void buildCharmAlternatives(IIdentificate type) {
+    if (charmFileTable.containsKey(type)) {
+      for (Document charmDocument : charmFileTable.get(type)) {
+        alternativeBuilder.buildAlternatives(charmDocument, charmCache.getCharms(type));
       }
     }
   }
 
-  private void buildCharmMerges(IIdentificate type, ExaltedRuleSet rules) {
-    if (charmFileTable.contains(type, rules)) {
-      for (Document charmDocument : charmFileTable.get(type, rules)) {
-        mergedBuilder.buildMerges(charmDocument, charmCache.getCharms(type, rules));
+  private void buildCharmMerges(IIdentificate type) {
+    if (charmFileTable.containsKey(type)) {
+      for (Document charmDocument : charmFileTable.get(type)) {
+        mergedBuilder.buildMerges(charmDocument, charmCache.getCharms(type));
       }
     }
   }
 
-  private void buildCharmRenames(IIdentificate type, ExaltedRuleSet rules) {
-    if (charmFileTable.contains(type, rules)) {
-      for (Document charmDocument : charmFileTable.get(type, rules)) {
-        charmCache.addCharmRenames(rules, renameBuilder.buildRenames(charmDocument));
+  private void buildCharmRenames(IIdentificate type) {
+    if (charmFileTable.containsKey(type)) {
+      for (Document charmDocument : charmFileTable.get(type)) {
+        charmCache.addCharmRenames(renameBuilder.buildRenames(charmDocument));
       }
     }
   }
 
-  private void buildCharms(IIdentificate type, IExaltedRuleSet rules,
-                           ICharmSetBuilder builder) throws PersistenceException {
-    boolean hasEntryForTypeUnderRules = charmFileTable.contains(type, rules);
-    if (hasEntryForTypeUnderRules) {
-      List<Document> documents = charmFileTable.get(type, rules);
+  private void buildCharms(IIdentificate type, ICharmSetBuilder builder) throws PersistenceException {
+    if (charmFileTable.containsKey(type)) {
+      List<Document> documents = charmFileTable.get(type);
       for (Document charmDocument : documents) {
-        buildRulesetCharms(type, rules, charmDocument, builder);
+        buildTypeCharms(type, charmDocument, builder);
       }
     }
   }
 
-  private void buildRulesetCharms(IIdentificate type, IExaltedRuleSet rules, Document charmDocument,
-                                  ICharmSetBuilder builder) throws PersistenceException {
+  private void buildTypeCharms(IIdentificate type, Document charmDocument,
+                               ICharmSetBuilder builder) throws PersistenceException {
     List<ISpecialCharm> specialCharms = new ArrayList<ISpecialCharm>();
     ICharm[] charmArray = builder.buildCharms(charmDocument, specialCharms);
     for (ICharm charm : charmArray) {
-      charmCache.addCharm(type, rules, charm);
+      charmCache.addCharm(type, charm);
     }
-    charmCache.addSpecialCharmData(rules, type, specialCharms);
+    charmCache.addSpecialCharmData(type, specialCharms);
   }
 
   private void extractParents(Iterable<ICharm> charms) {

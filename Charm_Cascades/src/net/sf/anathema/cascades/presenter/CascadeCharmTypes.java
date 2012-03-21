@@ -1,7 +1,8 @@
 package net.sf.anathema.cascades.presenter;
 
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -17,23 +18,20 @@ import java.util.Set;
 
 public class CascadeCharmTypes extends AbstractCharmTypes {
   private ITemplateRegistry templateRegistry;
-  private IExaltedRuleSet ruleSet;
 
-  public CascadeCharmTypes(ITemplateRegistry templateRegistry, IExaltedRuleSet selectedRuleSet) {
+  public CascadeCharmTypes(ITemplateRegistry templateRegistry) {
     this.templateRegistry = templateRegistry;
-    this.ruleSet = selectedRuleSet;
   }
 
   @Override
   protected List<IIdentificate> getCurrentCharacterTypes() {
     Set<IIdentificate> set = new ListOrderedSet<IIdentificate>();
     for (ICharacterType type : CharacterType.values()) {
-      IExaltedEdition edition = ruleSet.getEdition();
-      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type, edition);
+      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type, ExaltedEdition.SecondEdition);
       if (defaultTemplate == null) {
         continue;
       }
-      if (defaultTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms(edition.getDefaultRuleset())) {
+      if (defaultTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms(ExaltedRuleSet.SecondEdition)) {
         set.add(type);
       }
     }
@@ -44,8 +42,7 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
   protected List<IIdentificate> getAdditionalCharmTypes() {
     Set<IIdentificate> set = new ListOrderedSet<IIdentificate>();
     for (ICharacterType type : CharacterType.values()) {
-      IExaltedEdition edition = ruleSet.getEdition();
-      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type, edition);
+      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type, ExaltedEdition.SecondEdition);
       if (defaultTemplate == null) {
         continue;
       }

@@ -88,7 +88,7 @@ public class CharmProvider implements ICharmProvider {
 
   @Override
   public String getCharmRename(IExaltedRuleSet rules, String name) {
-    return cache.getCharmRename(rules, name);
+    return cache.getCharmRename(name);
   }
 
   private void prepareDataCharms(ICharacterType type, IExaltedEdition edition) {
@@ -97,7 +97,7 @@ public class CharmProvider implements ICharmProvider {
     if (base != null) {
       addAll(specialCharms, base);
     }
-    addAll(specialCharms, cache.getSpecialCharmData(type, edition.getDefaultRuleset()));
+    addAll(specialCharms, cache.getSpecialCharmData(type));
     ISpecialCharm[] charmArray = new ISpecialCharm[specialCharms.size()];
     specialCharms.toArray(charmArray);
     dataCharmsPrepared.add(edition, type, true);
