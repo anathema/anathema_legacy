@@ -5,10 +5,7 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
@@ -51,10 +48,7 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
   
   private boolean isInArsenalOrPanopoly(IEquipmentItem item) {
 	  for (IEquipmentStats stats : item.getStats()) {
-		  if ((stats instanceof IWeaponStats ||
-			   stats instanceof IArmourStats ||
-			   stats instanceof IShieldStats) &&
-			   item.isPrintEnabled(stats))
+		  if (stats.representsItemForUseInCombat() && item.isPrintEnabled(stats))
 			  return true;
 	  }
 	  return false;
