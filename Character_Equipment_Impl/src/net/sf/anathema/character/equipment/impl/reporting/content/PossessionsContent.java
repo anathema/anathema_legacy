@@ -1,9 +1,14 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
@@ -31,13 +36,28 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
     IEquipmentItem[] equipmentItems = getEquipmentItems();
     for (int index = 0; index < equipmentItems.length; index++) {
       IEquipmentItem item = equipmentItems[index];
-      if (item.getStats().length > 0) {
+      if (isInArsenalOrPanopoly(item)) {
         continue;
       }
       String possession = item.getTemplateId();
+      if (item.getMaterialComposition() == MaterialComposition.Fixed ||
+    	  item.getMaterialComposition() == MaterialComposition.Variable) {
+    	  possession += " (" + item.getMaterial().getId() + ")";
+      }
       printPossessions.add(possession);
     }
     return printPossessions;
+  }
+  
+  private boolean isInArsenalOrPanopoly(IEquipmentItem item) {
+	  for (IEquipmentStats stats : item.getStats()) {
+		  if ((stats instanceof IWeaponStats ||
+			   stats instanceof IArmourStats ||
+			   stats instanceof IShieldStats) &&
+			   item.isPrintEnabled(stats))
+			  return true;
+	  }
+	  return false;
   }
 
   private IEquipmentItem[] getEquipmentItems() {
