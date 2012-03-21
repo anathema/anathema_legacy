@@ -65,6 +65,10 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
   public Integer getDefence() {
     return null;
   }
+  
+  public int getMobilityPenalty() {
+	return 0;
+  }
 
   public Integer getRange() {
     return range;

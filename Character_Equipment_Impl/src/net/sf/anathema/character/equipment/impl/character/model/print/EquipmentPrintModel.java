@@ -81,12 +81,15 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
     return printedClass.isInstance(stats) && item.isPrintEnabled(stats);
   }
 
-  public final IArmourStats getTotalPrintArmour(int lineCount) {
+  public final IArmourStats getTotalPrintArmour(IResources resources, int lineCount) {
     TotalArmour armour = new TotalArmour();
     IArmourStats[] printArmours = getPrintArmours();
     for (int index = 0; index < Math.min(lineCount, printArmours.length); index++) {
       armour.addArmour(printArmours[index]);
     }
+    IWeaponStats[] printWeapons = getPrintWeapons(resources);
+    for (IWeaponStats stats : printWeapons)
+    	armour.modifyMobilityPenalty(stats.getMobilityPenalty());
     return armour;
   }
 }

@@ -8,7 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 public interface IEquipmentPrintModel {
   public IArmourStats[] getPrintArmours();
 
-  public IArmourStats getTotalPrintArmour(int lineCount);
+  public IArmourStats getTotalPrintArmour(IResources resources, int lineCount);
 
   public IWeaponStats[] getPrintWeapons(IResources resources);
 

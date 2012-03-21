@@ -22,6 +22,10 @@ public abstract class AbstractNaturalWeaponStats extends AbstractCombatStats imp
   public final boolean isRangedCombat() {
     return false;
   }
+  
+  public int getMobilityPenalty() {
+	return 0;
+  }
 
   @Override
   public IEquipmentStats[] getViews() {

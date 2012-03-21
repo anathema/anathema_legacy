@@ -1,7 +1,6 @@
 package net.sf.anathema.character.lunar.beastform.model.gift.weapons;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
@@ -22,6 +21,10 @@ public abstract class AbstractLunarGiftWeapon extends AbstractCombatStats implem
 
   public HealthType getDamageType() {
     return HealthType.Lethal;
+  }
+  
+  public int getMobilityPenalty() {
+	return 0;
   }
 
   public Integer getRange() {

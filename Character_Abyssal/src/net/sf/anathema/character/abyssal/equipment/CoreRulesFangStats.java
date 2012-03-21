@@ -19,6 +19,10 @@ public class CoreRulesFangStats extends AbstractCombatStats implements IWeaponSt
   public int getDamage() {
     return 0;
   }
+  
+  public int getMobilityPenalty() {
+	return 0;
+  }
 
   public ITraitType getDamageTraitType() {
     return AttributeType.Strength;

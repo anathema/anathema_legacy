@@ -64,6 +64,10 @@ public class TotalArmour extends AbstractCombatStats implements IArmourStats {
           armour.getHardness(healthType)));
     }
   }
+  
+  public void modifyMobilityPenalty(int amount) {
+	  mobilityPenalty += amount;
+  }
 
   private int getIncrementedValue(int value, Integer increment) {
     return increment == null ? value : value + increment;

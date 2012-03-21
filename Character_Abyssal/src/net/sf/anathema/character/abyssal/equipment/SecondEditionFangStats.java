@@ -24,6 +24,10 @@ public class SecondEditionFangStats extends AbstractCombatStats implements IWeap
   public int getMinimumDamage() {
 	return 1;
   }
+  
+  public int getMobilityPenalty() {
+	return 0;
+  }
 
   public ITraitType getDamageTraitType() {
     return AttributeType.Strength;

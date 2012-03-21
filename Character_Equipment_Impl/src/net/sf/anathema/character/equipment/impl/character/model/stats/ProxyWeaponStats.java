@@ -104,6 +104,10 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   public Integer getDefence() {
     return getModifiedValue(new DefenseModification(material, ruleSet), delegate.getDefence());
   }
+  
+  public int getMobilityPenalty() {
+	return delegate.getMobilityPenalty();
+  }
 
   public Integer getRange() {
     return getModifiedValue(new RangeModification(material, ruleSet), delegate.getRange());

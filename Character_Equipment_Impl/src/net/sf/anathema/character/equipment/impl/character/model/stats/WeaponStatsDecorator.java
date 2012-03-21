@@ -48,6 +48,10 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
   public Integer getDefence() {
     return stats.getDefence();
   }
+  
+  public int getMobilityPenalty() {
+	return stats.getMobilityPenalty();
+  }
 
   public Integer getRange() {
     return stats.getRange();

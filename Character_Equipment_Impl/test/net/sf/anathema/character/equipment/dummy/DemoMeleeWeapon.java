@@ -20,6 +20,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
   private final Integer defense;
   private final int rate;
   private final int speed;
+  private final int mobility;
   private final WeaponTag[] tags;
   private IIdentificate name;
 
@@ -31,6 +32,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
         1,
         HealthType.Aggravated,
         -1,
+        0,
         6,
         WeaponTag.ClinchEnhancer,
         WeaponTag.Piercing);
@@ -44,6 +46,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
       int minimumDamage,
       HealthType healthType,
       int defense,
+      int mobility,
       int rate,
       WeaponTag... tags) {
     this.name = name;
@@ -52,6 +55,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
     this.minimumDamage = minimumDamage;
     this.healthType = healthType;
     this.defense = defense;
+    this.mobility = mobility;
     this.rate = rate;
     this.speed = speed;
     this.tags = tags;
@@ -75,6 +79,10 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
 
   public Integer getDefence() {
     return defense;
+  }
+  
+  public int getMobilityPenalty() {
+	return mobility;
   }
 
   public Integer getRange() {

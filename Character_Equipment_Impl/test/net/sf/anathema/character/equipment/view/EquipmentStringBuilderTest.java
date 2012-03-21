@@ -38,7 +38,7 @@ public class EquipmentStringBuilderTest {
 
   @Test
   public void testMeleeWeapon() {
-    DemoMeleeWeapon weapon = new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 2); //$NON-NLS-1$
+    DemoMeleeWeapon weapon = new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2); //$NON-NLS-1$
     assertEquals(
       "Sword (Melee): Speed:5 Acc:+2 Dam:+7L Def:-1 Rate:2", equipmentStringBuilder.createString(null, weapon)); //$NON-NLS-1$
   }

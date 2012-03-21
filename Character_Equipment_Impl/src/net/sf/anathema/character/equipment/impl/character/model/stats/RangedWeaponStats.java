@@ -26,6 +26,10 @@ public class RangedWeaponStats extends AbstractWeaponStats {
     return hasTag(WeaponTag.FlameType) ||
     	hasTag(WeaponTag.FlatDamage) ? null : super.getDamageTraitType();
   }
+  
+  public int getMobilityPenalty() {
+	return 0;
+  }
 
   @Override
   public IEquipmentStats[] getViews() {
