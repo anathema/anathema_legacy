@@ -24,7 +24,12 @@ public class AccuracyModification implements IStatsModification {
       }
     }
     if (material.isOrichalcumBased()) {
-      return input + 1;
+      if (!isSecondEdition || type.isRanged()) {
+    	return input + 1;
+      }
+      else {
+    	return input + 2;
+      }
     }
     if (material.isMoonsilverBased()) {
       if (type.isRanged()) {
