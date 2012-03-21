@@ -17,6 +17,7 @@ public enum MagicalMaterial implements IIdentificate {
   Orichalcum, Jade, Moonsilver, Starmetal, Soulsteel, Adamant,
   VitriolOrichalcum, VitriolJade, VitriolMoonsilver, VitriolStarmetal, VitriolSoulsteel, VitriolAdamant;
 
+  @Override
   public String getId() {
     return name();
   }
@@ -34,11 +35,6 @@ public enum MagicalMaterial implements IIdentificate {
       @Override
       public void visitDB(ICharacterType visitedType) {
         types[0] = getSingleMaterialAttunement(type, material);
-      }
-
-      @Override
-      public void visitDragonKing(ICharacterType type) {
-        types[0] = null;
       }
 
       @Override
@@ -109,42 +105,47 @@ public enum MagicalMaterial implements IIdentificate {
 
     characterType.accept(new ICharacterTypeVisitor() {
 
+      @Override
       public void visitSolar(ICharacterType visitedType) {
         material[0] = Orichalcum;
       }
 
+      @Override
       public void visitSidereal(ICharacterType visitedType) {
         material[0] = Starmetal;
       }
 
+      @Override
       public void visitMortal(ICharacterType visitedType) {
         // nothing to do
       }
 
+      @Override
       public void visitSpirit(ICharacterType visitedType) {
         // nothing to do
       }
 
+      @Override
       public void visitGhost(ICharacterType visitedType) {
         // nothing to do
       }
 
+      @Override
       public void visitLunar(ICharacterType type) {
         material[0] = Moonsilver;
       }
 
-      public void visitDragonKing(ICharacterType type) {
-        material[0] = Orichalcum;
-      }
-
+      @Override
       public void visitDB(ICharacterType visitedType) {
         material[0] = Jade;
       }
 
+      @Override
       public void visitInfernal(ICharacterType visitedType) {
         material[0] = VitriolOrichalcum;
       }
 
+      @Override
       public void visitAbyssal(ICharacterType visitedType) {
         material[0] = Soulsteel;
       }

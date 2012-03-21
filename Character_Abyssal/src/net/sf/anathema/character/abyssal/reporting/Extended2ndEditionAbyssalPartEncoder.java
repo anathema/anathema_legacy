@@ -20,6 +20,7 @@ public class Extended2ndEditionAbyssalPartEncoder extends AbstractSecondEditionE
     super(resources);
   }
 
+  @Override
   public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
     return new Resonance2ndEditionEncoder();
   }

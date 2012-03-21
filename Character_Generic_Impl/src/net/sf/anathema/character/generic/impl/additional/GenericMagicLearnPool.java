@@ -32,6 +32,7 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
     this.defaultResponse = defaultResponse;
   }
 
+  @Override
   public int getAdditionalMagicCount(IGenericTraitCollection traitCollection) {
     int value = getBackgroundValue(traitCollection);
     return value + pointModification.getAdditionalPoints(value);
@@ -45,9 +46,11 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
     return background.getCurrentValue();
   }
 
+  @Override
   public boolean isAllowedFor(final IGenericTraitCollection traitCollection, IMagic magic) {
     final boolean[] isAllowed = new boolean[1];
     magic.accept(new IMagicVisitor() {
+      @Override
       public void visitSpell(ISpell spell) {
         CircleType type = spell.getCircleType();
         if (isSpellCircleGreaterThanMaximumCircle(type)
@@ -63,6 +66,7 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
         }
       }
 
+      @Override
       public void visitCharm(ICharm charm) {
         isAllowed[0] = false;
       }

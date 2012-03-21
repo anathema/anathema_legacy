@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
@@ -11,14 +10,6 @@ public class BasicContent implements SubContent {
 
   public BasicContent(IGenericCharacter character) {
     this.character = character;
-  }
-
-  public boolean isFirstEdition() {
-    return character.getTemplate().getEdition() == ExaltedEdition.FirstEdition;
-  }
-
-  public boolean isSecondEdition() {
-    return character.getTemplate().getEdition() == ExaltedEdition.SecondEdition;
   }
 
   public boolean isEssenceUser() {

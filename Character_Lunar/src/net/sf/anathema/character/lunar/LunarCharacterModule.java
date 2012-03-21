@@ -122,7 +122,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/Lunar.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/Lunar2ndCasteless.template");
     registerParsedTemplate(characterGenerics, "template/Lunar2ndSilverPact.template");
     registerParsedTemplate(characterGenerics, "template/Lunar2ndDreams.template");

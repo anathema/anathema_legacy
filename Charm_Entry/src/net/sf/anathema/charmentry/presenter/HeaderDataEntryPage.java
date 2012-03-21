@@ -45,19 +45,13 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
         new SecondEditionCharmTypeEntryPage(resources, model, viewFactory),
         inputListener,
         new ICondition() {
+          @Override
           public boolean isFulfilled() {
             return isCharacterTypeSelected()
                 && isNameDefined()
                 && getPageModel().getEdition() == ExaltedEdition.SecondEdition;
           }
         });
-    addFollowupPage(new CharmTypeEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
-      public boolean isFulfilled() {
-        return isCharacterTypeSelected()
-            && isNameDefined()
-            && getPageModel().getEdition() == ExaltedEdition.FirstEdition;
-      }
-    });
   }
 
   @Override
@@ -78,6 +72,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
   private void initNameView() {
     ITextView nameView = view.addLineTextRow(properties.getCharmNameLabel());
     nameView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         getPageModel().getName().setText(newValue);
       }
@@ -91,6 +86,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
         renderer,
         getPageModel().getEditions());
     editionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedEdition>() {
+      @Override
       public void valueChanged(IExaltedEdition newValue) {
         getPageModel().setExaltedEdition(newValue);
       }
@@ -103,6 +99,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
         renderer,
         getPageModel().getCharacterTypes());
     typeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ICharacterType>() {
+      @Override
       public void valueChanged(ICharacterType newValue) {
         getPageModel().setCharacterType(newValue);
       }
@@ -117,30 +114,36 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
         sourceModel.getLegalSources(),
         new IdentificateSelectCellRenderer("ExaltedSourceBook.", resources));//$NON-NLS-1$
     sourceView.addSourceChangeListener(new IObjectValueChangedListener<IExaltedSourceBook>() {
+      @Override
       public void valueChanged(IExaltedSourceBook newValue) {
         sourceModel.setSourceBook(newValue);
       }
     });
     sourceView.addPageChangeListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         sourceModel.setSourcePage(newValue);
       }
     });
     getPageModel().addChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         sourceView.setObjects(sourceModel.getLegalSources());
       }
     });
   }
 
+  @Override
   public boolean canFinish() {
     return false;
   }
 
+  @Override
   public String getDescription() {
     return properties.getHeaderDataTitle();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     if (!isNameDefined()) {
       return properties.getUndefinedNameMessage();
@@ -166,6 +169,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     return !getPageModel().getName().isEmpty();
   }
 
+  @Override
   public IPageContent getPageContent() {
     return view;
   }

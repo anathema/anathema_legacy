@@ -61,16 +61,6 @@ public class CharmCache implements ICharmCache {
     return true;
   }
 
-  public void cloneCharms(IExaltedRuleSet sourceRules, ExaltedRuleSet targetRules) {
-    MultiEntryMap<IIdentificate, ICharm> sourceMap = charmSetsByRuleSet.get(sourceRules);
-    MultiEntryMap<IIdentificate, ICharm> targetMap = charmSetsByRuleSet.get(targetRules);
-    for (IIdentificate type : sourceMap.keySet()) {
-      for (ICharm charm : sourceMap.get(type)) {
-        targetMap.add(type, ((Charm) charm).cloneUnconnected());
-      }
-    }
-  }
-
   public Iterable<ICharm> getCharms(IExaltedRuleSet rules) {
     MultiEntryMap<IIdentificate, ICharm> ruleMap = charmSetsByRuleSet.get(rules);
     List<ICharm> allCharms = new ArrayList<ICharm>();

@@ -8,6 +8,7 @@ public abstract class AbstractSecondEditionExaltPdfPartEncoder extends AbstractS
     super(resources);
   }
 
+  @Override
   public boolean hasMagicPage() {
     return true;
   }

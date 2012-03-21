@@ -22,38 +22,33 @@ public class TemplateRegistryTest {
 
   @Test
   public void testRegisterAndRetrieveTemplate() throws Exception {
-    SimpleDummyCharacterTemplate template = new SimpleDummyCharacterTemplate(
-      CharacterType.MORTAL,
-      null,
-      ExaltedEdition.FirstEdition);
+    SimpleDummyCharacterTemplate template = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, null,
+            ExaltedEdition.SecondEdition);
     registry.register(template);
-    assertEquals(template, registry.getTemplate(new TemplateType(CharacterType.MORTAL), ExaltedEdition.FirstEdition));
+    assertEquals(template, registry.getTemplate(new TemplateType(CharacterType.MORTAL), ExaltedEdition.SecondEdition));
   }
 
   @Test
   public void testRegisterAndRetrieveDefaultTemplate() throws Exception {
-    SimpleDummyCharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(
-      CharacterType.MORTAL,
-      null,
-      ExaltedEdition.FirstEdition);
-    SimpleDummyCharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, "Second", //$NON-NLS-1$
-      ExaltedEdition.FirstEdition);
+    SimpleDummyCharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, null,
+            ExaltedEdition.SecondEdition);
+    SimpleDummyCharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, "Second",
+            //$NON-NLS-1$
+            ExaltedEdition.SecondEdition);
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
-    assertEquals(defaultTemplate, registry.getDefaultTemplate(CharacterType.MORTAL, ExaltedEdition.FirstEdition));
-    assertNotSame(otherTemplate, registry.getDefaultTemplate(CharacterType.MORTAL, ExaltedEdition.FirstEdition));
+    assertEquals(defaultTemplate, registry.getDefaultTemplate(CharacterType.MORTAL, ExaltedEdition.SecondEdition));
+    assertNotSame(otherTemplate, registry.getDefaultTemplate(CharacterType.MORTAL, ExaltedEdition.SecondEdition));
   }
 
   @Test
   public void testRegisterAndRetrieveAllSupportedTemplates() throws Exception {
-    ICharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(
-      CharacterType.MORTAL,
-      null,
-      ExaltedEdition.FirstEdition);
+    ICharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, null,
+            ExaltedEdition.SecondEdition);
     ICharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, "Second", //$NON-NLS-1$
-      ExaltedEdition.FirstEdition);
+            ExaltedEdition.SecondEdition);
     ICharacterTemplate unsupportedTemplate = new DummyUnsupportedTemplate(CharacterType.MORTAL, "Third", //$NON-NLS-1$
-      ExaltedEdition.FirstEdition);
+            ExaltedEdition.SecondEdition);
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
     registry.register(unsupportedTemplate);
@@ -61,25 +56,5 @@ public class TemplateRegistryTest {
     assertTrue(ArrayUtilities.containsValue(allSupportedTemplates, defaultTemplate));
     assertTrue(ArrayUtilities.containsValue(allSupportedTemplates, otherTemplate));
     assertFalse(ArrayUtilities.containsValue(allSupportedTemplates, unsupportedTemplate));
-  }
-
-  @Test
-  public void testRegisterAndRetrieveByRuleset() throws Exception {
-    SimpleDummyCharacterTemplate firstTemplate = new SimpleDummyCharacterTemplate(
-      CharacterType.MORTAL,
-      null,
-      ExaltedEdition.FirstEdition);
-    SimpleDummyCharacterTemplate secondTemplate = new SimpleDummyCharacterTemplate(
-      CharacterType.MORTAL,
-      null,
-      ExaltedEdition.SecondEdition);
-    registry.register(firstTemplate);
-    registry.register(secondTemplate);
-    assertEquals(firstTemplate, registry.getTemplate(
-      new TemplateType(CharacterType.MORTAL),
-      ExaltedEdition.FirstEdition));
-    assertEquals(secondTemplate, registry.getTemplate(
-      new TemplateType(CharacterType.MORTAL),
-      ExaltedEdition.SecondEdition));
   }
 }

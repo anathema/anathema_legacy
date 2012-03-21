@@ -29,14 +29,18 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
   @SuppressWarnings("unused")
   private static final TemplateType abyssalTemplateType = new TemplateType(ABYSSAL);
 
-  private static final TemplateType loyalAbyssalTemplateType = new TemplateType(ABYSSAL, new Identificate("default")); //$NON-NLS-1$
-  private static final TemplateType revisedLoyalAbyssalTemplateType = new TemplateType(ABYSSAL, new Identificate("RevisedLoyalAbyssal"));
+  private static final TemplateType loyalAbyssalTemplateType = new TemplateType(ABYSSAL,
+          new Identificate("default")); //$NON-NLS-1$
+  private static final TemplateType revisedLoyalAbyssalTemplateType = new TemplateType(ABYSSAL,
+          new Identificate("RevisedLoyalAbyssal"));
   //$NON-NLS-1$
 
   @SuppressWarnings("unused")
-  private static final TemplateType renegadeAbyssalTemplateType = new TemplateType(ABYSSAL, new Identificate("RenegadeAbyssal")); //$NON-NLS-1$
+  private static final TemplateType renegadeAbyssalTemplateType = new TemplateType(ABYSSAL,
+          new Identificate("RenegadeAbyssal")); //$NON-NLS-1$
   @SuppressWarnings("unused")
-  private static final TemplateType revisedRenegadeAbyssalTemplateType = new TemplateType(ABYSSAL, new Identificate("RevisedRenegadeAbyssal"));
+  private static final TemplateType revisedRenegadeAbyssalTemplateType = new TemplateType(ABYSSAL,
+          new Identificate("RevisedRenegadeAbyssal"));
   //$NON-NLS-1$
 
   public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
@@ -47,7 +51,8 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    characterGenerics.getAdditionalTemplateParserRegistry().register(AbyssalResonanceTemplate.ID, new AbyssalResonanceParser());
+    characterGenerics.getAdditionalTemplateParserRegistry().register(AbyssalResonanceTemplate.ID,
+            new AbyssalResonanceParser());
 
     characterGenerics.getCasteCollectionRegistry().register(ABYSSAL, new CasteCollection(AbyssalCaste.values()));
   }
@@ -55,10 +60,12 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     registerParsedTemplate(characterGenerics, "template/LoyalAbyssal2nd.template", "moep_Abyssals_"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/LoyalAbyssal2ndRevised.template", "moep_Abyssals_"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/LoyalAbyssal2ndRevised.template",
+            "moep_Abyssals_"); //$NON-NLS-1$
 
     registerParsedTemplate(characterGenerics, "template/RenegadeAbyssal2nd.template", "moep_Abyssals_"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/RenegadeAbyssal2ndRevised.template", "moep_Abyssals_"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/RenegadeAbyssal2ndRevised.template",
+            "moep_Abyssals_"); //$NON-NLS-1$
   }
 
   @Override

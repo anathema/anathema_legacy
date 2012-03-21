@@ -7,13 +7,13 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public interface IEquipmentTemplate {
 
-  public String getName();
+  String getName();
 
-  public String getDescription();
+  String getDescription();
 
-  public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet);
+  IEquipmentStats[] getStats(IExaltedRuleSet ruleSet);
 
-  public MaterialComposition getComposition();
+  MaterialComposition getComposition();
 
-  public MagicalMaterial getMaterial();
+  MagicalMaterial getMaterial();
 }

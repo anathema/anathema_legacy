@@ -21,6 +21,6 @@ public class Sidereal2ndEditionDetailsPageFactory implements PageFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isSecondEdition() && content.isOfType(CharacterType.SIDEREAL);
+    return content.isOfType(CharacterType.SIDEREAL);
   }
 }

@@ -35,10 +35,10 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
 
     int joinBattle = CharacterUtilties.getJoinBattle(traitCollection, equipment);
     int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, equipment);
-    int knockdownThreshold = CharacterUtilties.getKnockdownThreshold(traitCollection, equipment);
-    int knockdownPool = CharacterUtilties.getKnockdownPool(reportContent.getCharacter(), traitCollection, equipment);
-    int stunningThreshold = CharacterUtilties.getStunningThreshold(traitCollection, equipment);
-    int stunningPool = CharacterUtilties.getStunningPool(traitCollection, equipment);
+    int knockdownThreshold = CharacterUtilties.getKnockdownThreshold(traitCollection);
+    int knockdownPool = CharacterUtilties.getKnockdownPool(traitCollection);
+    int stunningThreshold = CharacterUtilties.getStunningThreshold(traitCollection);
+    int stunningPool = CharacterUtilties.getStunningPool(traitCollection);
 
     String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
     String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$

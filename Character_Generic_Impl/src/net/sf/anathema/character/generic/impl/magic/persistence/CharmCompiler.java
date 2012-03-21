@@ -45,12 +45,12 @@ public class CharmCompiler {
     this.reader = new SAXReader();
   }
 
-  public void registerCharmFile(String typeString, String ruleString, URL resource) throws CharmException {
+  public void registerCharmFile(String typeString, URL resource) throws CharmException {
     IIdentificate type = new Identificate(typeString);
     if (!registry.idRegistered(typeString)) {
       registry.add(type);
     }
-    ExaltedRuleSet ruleSet = ExaltedRuleSet.valueOf(ruleString);
+    ExaltedRuleSet ruleSet = ExaltedRuleSet.SecondEdition;
     List<Document> list = charmFileTable.get(type, ruleSet);
     if (list == null) {
       list = new ArrayList<Document>();
@@ -65,10 +65,6 @@ public class CharmCompiler {
 
   public void buildCharms() throws PersistenceException {
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
-      IExaltedRuleSet basicRules = rules.getBasicRuleset();
-      if (basicRules != null) {
-        charmCache.cloneCharms(basicRules, rules);
-      }
       for (IIdentificate type : registry.getAll()) {
         buildStandardCharms(type, rules);
         buildGenericCharms(type, rules);

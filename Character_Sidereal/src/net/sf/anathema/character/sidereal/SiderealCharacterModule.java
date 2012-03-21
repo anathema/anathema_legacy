@@ -8,16 +8,13 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
-import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificCharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.sidereal.additionalrules.AdditionalSiderealRules;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeModelFactory;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeParser;
@@ -34,7 +31,6 @@ import net.sf.anathema.character.sidereal.paradox.SiderealParadoxParser;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxPersisterFactory;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxViewFactory;
-import net.sf.anathema.character.sidereal.template.DefaultSiderealTemplate;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identificate;
@@ -46,8 +42,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_ACQUAINTANCES = "Acquaintances"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_CONNECTIONS = "Connections"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_CELESTIAL_MANSE = "CelestialManse"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_FAVOR = "Favor"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_HEAVENLY_FAVOR = "HeavenlyFavor"; //$NON-NLS-1$  
   public static final String BACKGROUND_ID_SALARY = "Salary"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SAVANT = "Savant"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SIFU = "Sifu"; //$NON-NLS-1$
@@ -77,8 +71,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    CharmCache charmProvider = CharmCache.getInstance();
-    characterGenerics.getTemplateRegistry().register(new DefaultSiderealTemplate(charmProvider, new AdditionalSiderealRules()));
     registerParsedTemplate(characterGenerics, "template/Sidereal2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/SiderealDreams2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/Ronin2nd.template"); //$NON-NLS-1$
@@ -90,12 +82,10 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    ITemplateType[] defaultTemplateType = new ITemplateType[]{DefaultSiderealTemplate.TEMPLATE_TYPE, revisedType};
+    ITemplateType[] defaultTemplateType = new ITemplateType[]{revisedType};
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_ACQUAINTANCES, SIDEREAL));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, SIDEREAL));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CELESTIAL_MANSE, defaultTemplateType));
-    backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_FAVOR, SIDEREAL, ExaltedEdition.FirstEdition));
-    backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_HEAVENLY_FAVOR, SIDEREAL, ExaltedEdition.FirstEdition));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SALARY, SIDEREAL));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, defaultTemplateType, LowerableState.Default));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, defaultTemplateType));

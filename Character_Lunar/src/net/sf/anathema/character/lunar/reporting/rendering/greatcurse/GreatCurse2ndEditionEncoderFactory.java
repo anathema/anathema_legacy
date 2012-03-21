@@ -22,6 +22,6 @@ public class GreatCurse2ndEditionEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isSecondEdition() && content.isOfType(CharacterType.LUNAR);
+    return content.isOfType(CharacterType.LUNAR);
   }
 }

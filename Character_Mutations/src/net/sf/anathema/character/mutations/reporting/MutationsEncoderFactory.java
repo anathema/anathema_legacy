@@ -25,6 +25,6 @@ public class MutationsEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isSecondEdition();
+    return true;
   }
 }

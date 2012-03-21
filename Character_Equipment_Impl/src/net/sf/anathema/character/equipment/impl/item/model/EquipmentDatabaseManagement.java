@@ -19,18 +19,22 @@ public class EquipmentDatabaseManagement implements IEquipmentDatabaseManagement
     this.statsFactory = new EquipmentStatsCreationFactory(database.getCollectionFactory());
   }
 
+  @Override
   public IEquipmentTemplateEditModel getTemplateEditModel() {
     return templateEditModel;
   }
 
+  @Override
   public IEquipmentDatabase getDatabase() {
     return database;
   }
 
+  @Override
   public IExaltedRuleSet[] getSupportedExaltedRuleSets() {
     return ExaltedRuleSet.values();
   }
 
+  @Override
   public IEquipmentStatsCreationFactory getStatsCreationFactory() {
     return statsFactory;
   }

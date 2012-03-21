@@ -14,6 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class EquipmentTemplateListPresenter implements Presenter {
 
   private final class EquipmentTemplateLoadListener implements IObjectValueChangedListener<String> {
+    @Override
     public void valueChanged(String newValue) {
       if (newValue == null) {
         return;
@@ -36,15 +37,18 @@ public class EquipmentTemplateListPresenter implements Presenter {
     this.view = view;
   }
 
+  @Override
   public void initPresentation() {
     view.setTemplateListHeader(resources.getString("Equipment.Creation.AvailableTemplates")); //$NON-NLS-1$
     model.getDatabase().addAvailableTemplateChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateAvailableTemplates();
       }
     });
     updateAvailableTemplates();
     view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(resources, new ICondition() {
+      @Override
       public boolean isFulfilled() {
         final IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
         return editModel.isDirty();

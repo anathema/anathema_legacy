@@ -33,12 +33,11 @@ public class MagicTemplateParserTest {
     + "<martialArts level=\"Mortal\"/></charmTemplate>" //$NON-NLS-1$
     + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>" //$NON-NLS-1$
     + "</magicTemplate>"; //$NON-NLS-1$
-  private DummyXmlTemplateRegistry<GenericMagicTemplate> templateRegistry;
   private GenericMagicTemplateParser parser;
 
   @Before
   public void setUp() throws Exception {
-    templateRegistry = new DummyXmlTemplateRegistry<GenericMagicTemplate>();
+    DummyXmlTemplateRegistry<GenericMagicTemplate> templateRegistry = new DummyXmlTemplateRegistry<GenericMagicTemplate>();
     parser = new GenericMagicTemplateParser(templateRegistry, null);
   }
 
@@ -96,7 +95,7 @@ public class MagicTemplateParserTest {
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     ICharmTemplate charmTemplate = template.getCharmTemplate();
     assertEquals(MartialArtsLevel.Mortal, charmTemplate.getMartialArtsRules().getStandardLevel());
-    assertFalse(charmTemplate.canLearnCharms(ExaltedRuleSet.CoreRules));
+    assertFalse(charmTemplate.canLearnCharms(ExaltedRuleSet.SecondEdition));
   }
 
   @Test

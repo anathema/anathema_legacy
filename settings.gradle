@@ -13,9 +13,9 @@ include('Anathema', 'Thirdparty',
 
         'Character_Generic', 'Character_Generic_Impl', 'Character_Generic_Framework',
         'Character_Library', 'Character_Main', 'Character_Main_Impl',
-        'Character_Reporting', 'Character_Reporting_FirstEdition', 'Character_Reporting_SecondEdition',
+        'Character_Reporting', 'Character_Reporting_SecondEdition',
 
-        'Character_Equipment', 'Character_Equipment_Impl', 'Character_MeritsFlaws', 'Character_MartialArts', 'Character_Mutations',
+        'Character_Equipment', 'Character_Equipment_Impl', 'Character_MartialArts', 'Character_Mutations',
         'Character_Craft', 'Character_Intimacies', 'Character_Linguistics',
 
         'Character_Solar', 'Character_Mortal', 'Character_Spirit', 'Character_Sidereal', 'Character_Db', 'Character_Ghost',

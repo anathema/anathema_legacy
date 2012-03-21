@@ -22,7 +22,6 @@ public class GreatCurse2ndEditionEncoderFactoryTest {
   @Test
   public void activatesForSecondEditionCharacters() throws Exception {
     BasicContent content = mock(BasicContent.class);
-    when(content.isSecondEdition()).thenReturn(true);
     when(content.isOfType(DB)).thenReturn(true);
     boolean supports = factory.supports(content);
     assertThat(supports, is(true));
