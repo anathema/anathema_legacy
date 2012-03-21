@@ -11,8 +11,12 @@ import org.junit.Test;
 public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentModificationTest {
 
   @Test
-  public void addsOneToAccuracy() throws Exception {
-    assertAccuracyModification(2, 1, WeaponStatsType.Melee);
+  public void addsTwoToMeleeAccuracy() throws Exception {
+	assertAccuracyModification(3, 1, WeaponStatsType.Melee);
+  }
+  
+  @Test
+  public void addsOneToRangedAccuracy() throws Exception {
     assertAccuracyModification(2, 1, WeaponStatsType.Bow);
     assertAccuracyModification(2, 1, WeaponStatsType.Thrown);
     assertAccuracyModification(2, 1, WeaponStatsType.Thrown_BowBonuses);
