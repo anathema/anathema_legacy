@@ -2,9 +2,7 @@ package net.sf.anathema.character.generic.impl.template.magic;
 
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -12,6 +10,8 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet.SecondEdition;
 
 public class CharmSet implements ICharmSet {
 
@@ -39,14 +39,10 @@ public class CharmSet implements ICharmSet {
     return new CharmSet(charmMap, uniqueCharmMap, martialArtsCharmMap);
   }
 
-  private static Map<IExaltedRuleSet, ICharm[]> createCharmTreeMap(
-      ICharmCache charmProvider,
-      IIdentificate characterType,
-      IExaltedEdition edition) {
+  private static Map<IExaltedRuleSet, ICharm[]> createCharmTreeMap(ICharmCache charmProvider,
+                                                                   IIdentificate characterType) {
     Map<IExaltedRuleSet, ICharm[]> charmMap = new HashMap<IExaltedRuleSet, ICharm[]>();
-    for (IExaltedRuleSet set : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
-      charmMap.put(set, charmProvider.getCharms(characterType));
-    }
+    charmMap.put(SecondEdition, charmProvider.getCharms(characterType));
     return charmMap;
   }
 

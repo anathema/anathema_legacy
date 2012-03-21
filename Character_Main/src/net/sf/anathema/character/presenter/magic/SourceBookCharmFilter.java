@@ -37,15 +37,15 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
 
   protected void prepareEdition(IExaltedEdition edition) {
     ArrayList<IExaltedSourceBook> materialList = new ArrayList<IExaltedSourceBook>();
-    List<IExaltedSourceBook> bookSet = getBooks(edition);
+    List<IExaltedSourceBook> bookSet = getBooks();
     materialList.addAll(bookSet);
     allMaterial.put(edition, materialList);
     ArrayList<IExaltedSourceBook> materialExcluded = new ArrayList<IExaltedSourceBook>();
     excludedMaterial.put(edition, materialExcluded);
   }
 
-  private List<IExaltedSourceBook> getBooks(IExaltedEdition edition) {
-    List<ICharm> allCharms = getAllCharmsAvailable(edition);
+  private List<IExaltedSourceBook> getBooks() {
+    List<ICharm> allCharms = getAllCharmsAvailable();
     return getSourceBooksFromCharms(allCharms);
   }
 
@@ -117,8 +117,8 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
     return reduceToUniqueBooks(allBooks);
   }
 
-  private List<ICharm> getAllCharmsAvailable(IExaltedEdition edition) {
-    List<ICharmGroup> allGroups = getAllCharmGroups(edition);
+  private List<ICharm> getAllCharmsAvailable() {
+    List<ICharmGroup> allGroups = getAllCharmGroups();
     List<ICharm> allCharms = newArrayList();
     for (ICharmGroup group : allGroups) {
       addAll(allCharms, group.getAllCharms());
@@ -132,5 +132,5 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
     return new ArrayList<IExaltedSourceBook>(uniqueBooks);
   }
 
-  protected abstract List<ICharmGroup> getAllCharmGroups(IExaltedEdition edition);
+  protected abstract List<ICharmGroup> getAllCharmGroups();
 }

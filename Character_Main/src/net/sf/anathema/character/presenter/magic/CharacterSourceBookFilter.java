@@ -75,7 +75,7 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
   }
 
   @Override
-  protected List<ICharmGroup> getAllCharmGroups(IExaltedEdition edition) {
+  protected List<ICharmGroup> getAllCharmGroups() {
     return Lists.<ICharmGroup>newArrayList(characterSet.getAllGroups());
   }
 }

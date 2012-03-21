@@ -2,7 +2,6 @@ package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
