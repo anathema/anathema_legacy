@@ -1,11 +1,6 @@
 package net.sf.anathema.character.impl.module.repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -15,6 +10,9 @@ import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
@@ -26,15 +24,11 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   private final ICharacterGenerics generics;
   private final ICharacterType[] types;
 
-  public CharacterItemCreationModel(
-      ICharacterGenerics generics,
-      IExaltedRuleSet preferredRuleset,
-      CharacterStatisticsConfiguration configuration) {
+  public CharacterItemCreationModel(ICharacterGenerics generics, CharacterStatisticsConfiguration configuration) {
     this.generics = generics;
     this.configuration = configuration;
-    setSelectedRuleset(preferredRuleset);
-    aggregateTemplates();
     this.types = collectCharacterTypes(generics.getTemplateRegistry());
+    aggregateTemplates();
     setCharacterType(CharacterType.SOLAR);
   }
 
@@ -45,7 +39,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
         availableTypes.add(type);
       }
     }
-    return availableTypes.toArray(new CharacterType[availableTypes.size()]);
+    return availableTypes.toArray(new ICharacterType[availableTypes.size()]);
   }
 
   private void aggregateTemplates() {
@@ -59,18 +53,22 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     }
   }
 
+  @Override
   public boolean isSelectionComplete() {
     return configuration.getTemplate() != null && configuration.getRuleSet() != null;
   }
 
+  @Override
   public boolean isCharacterTypeSelected() {
     return selectedType != null;
   }
 
+  @Override
   public ICharacterType[] getAvailableCharacterTypes() {
     return types;
   }
 
+  @Override
   public void setCharacterType(ICharacterType type) {
     if (selectedType == type) {
       return;
@@ -83,11 +81,9 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   private void setTemplateToDefault() {
     if (getAvailableTemplates().length == 0) {
       setSelectedTemplate(null);
-    }
-    else {
-      ICharacterTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(
-          selectedType,
-          configuration.getRuleSet().getEdition());
+    } else {
+      ICharacterTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(selectedType,
+              configuration.getRuleSet().getEdition());
       for (ITemplateTypeAggregation aggregation : aggregationsByType.get(selectedType)) {
         if (aggregation.contains(defaultTemplate)) {
           setSelectedTemplate(aggregation);
@@ -98,6 +94,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     }
   }
 
+  @Override
   public ITemplateTypeAggregation[] getAvailableTemplates() {
     List<ITemplateTypeAggregation> list = aggregationsByType.get(selectedType);
     List<ITemplateTypeAggregation> copyList = new ArrayList<ITemplateTypeAggregation>(list);
@@ -109,6 +106,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     return copyList.toArray(new ITemplateTypeAggregation[copyList.size()]);
   }
 
+  @Override
   public void setSelectedTemplate(ITemplateTypeAggregation newValue) {
     if (selectedTemplate == newValue) {
       return;
@@ -116,45 +114,23 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     this.selectedTemplate = newValue;
     if (selectedTemplate == null) {
       configuration.setTemplate(null);
-    }
-    else {
+    } else {
       setEditionDependentTemplate();
     }
     control.fireChangedEvent();
   }
 
   private void setEditionDependentTemplate() {
-    configuration.setTemplate(generics.getTemplateRegistry().getTemplate(
-        selectedTemplate.getTemplateType(),
-        configuration.getRuleSet().getEdition()));
+    configuration.setTemplate(generics.getTemplateRegistry().getTemplate(selectedTemplate.getTemplateType(),
+            configuration.getRuleSet().getEdition()));
   }
 
+  @Override
   public ITemplateTypeAggregation getSelectedTemplate() {
     return selectedTemplate;
   }
 
-  public IExaltedRuleSet[] getAvailableRulesets() {
-    return ExaltedRuleSet.values();
-  }
-
-  public IExaltedRuleSet getSelectedRuleset() {
-    return this.configuration.getRuleSet();
-  }
-
-  public void setSelectedRuleset(IExaltedRuleSet newValue) {
-    if (configuration.getRuleSet() == newValue) {
-      return;
-    }
-    configuration.setRuleSet(newValue);
-    if (selectedTemplate != null && selectedTemplate.supportsEdition(newValue.getEdition())) {
-      setEditionDependentTemplate();
-    }
-    else {
-      setTemplateToDefault();
-    }
-    control.fireChangedEvent();
-  }
-
+  @Override
   public void addListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }

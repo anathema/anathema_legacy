@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.module.repository;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
@@ -12,14 +11,9 @@ public class CharacterCreationWizardPageFactory implements IWizardFactory {
 
   private final IResources resources;
   private final ICharacterGenerics generics;
-  private final IExaltedRuleSet preferredRuleset;
 
-  public CharacterCreationWizardPageFactory(
-      ICharacterGenerics generics,
-      IExaltedRuleSet preferredRuleset,
-      IResources resources) {
+  public CharacterCreationWizardPageFactory(ICharacterGenerics generics, IResources resources) {
     this.generics = generics;
-    this.preferredRuleset = preferredRuleset;
     this.resources = resources;
   }
 
@@ -29,7 +23,6 @@ public class CharacterCreationWizardPageFactory implements IWizardFactory {
     }
     CharacterItemCreationModel model = new CharacterItemCreationModel(
         generics,
-        preferredRuleset,
         (CharacterStatisticsConfiguration) template);
     CharacterItemCreationView view = new CharacterItemCreationView();
     return new CharacterCreationWizardPage(model, view, resources);

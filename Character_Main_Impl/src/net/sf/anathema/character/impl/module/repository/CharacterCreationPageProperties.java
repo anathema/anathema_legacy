@@ -1,20 +1,18 @@
 package net.sf.anathema.character.impl.module.repository;
 
-import java.awt.Component;
-
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.Icon;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
-import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.Icon;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import java.awt.Component;
 
 public class CharacterCreationPageProperties {
 
@@ -50,14 +48,6 @@ public class CharacterCreationPageProperties {
 
   public Icon getTypeIcon(ICharacterType type) {
     return iconProvider.getSmallTypeIcon(type);
-  }
-
-  public String getRulesetLabel() {
-    return resources.getString("CharacterDialog.Ruleset.Select.Label"); //$NON-NLS-1$
-  }
-
-  public ListCellRenderer getRulesetRenderer() {
-    return new IdentificateSelectCellRenderer("Ruleset.", resources); //$NON-NLS-1$
   }
 
   public ListCellRenderer getTemplateRenderer() {

@@ -6,8 +6,6 @@ import java.util.List;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
-import net.sf.anathema.framework.presenter.action.ConfigurableFileProvider;
 import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.ItemType;
