@@ -17,14 +17,15 @@ public class CharmCascadeModuleView extends AbstractItemView implements ICascade
     super(printName, icon);
   }
 
+  @Override
   public CascadeView createCascadeView(ISvgTreeViewProperties properties) {
     CascadeView view = new CascadeView(properties);
     panel.add(view.getComponent(), GridDialogLayoutData.FILL_BOTH);
     return view;
   }
 
+  @Override
   public JComponent getComponent() {
     return panel;
-
   }
 }

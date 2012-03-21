@@ -1,7 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmGroupChangeListener;
@@ -19,8 +18,9 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
 
   public CascadeCharmGroupChangeListener(ICascadeView cascadeView, CascadeCharmTreeViewProperties viewProperties,
                                          CharmFilterSet charmFilterSet,
-                                         CharmDisplayPropertiesMap charmDisplayPropertiesMap, IExaltedEdition edition) {
-    super(new FriendlyCharmGroupArbitrator(), charmFilterSet, edition, cascadeView.getCharmTreeRenderer(), charmDisplayPropertiesMap);
+                                         CharmDisplayPropertiesMap charmDisplayPropertiesMap) {
+    super(new FriendlyCharmGroupArbitrator(), charmFilterSet, cascadeView.getCharmTreeRenderer(),
+            charmDisplayPropertiesMap);
     this.cascadeView = cascadeView;
     this.viewProperties = viewProperties;
   }

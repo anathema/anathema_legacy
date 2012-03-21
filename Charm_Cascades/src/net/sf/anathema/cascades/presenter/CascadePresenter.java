@@ -15,44 +15,34 @@ import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CascadePresenter extends AbstractCascadePresenter implements ICascadePresenter {
 
-  private final IExaltedRuleSet selectedRuleSet = ExaltedRuleSet.SecondEdition;
-  private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules = new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
+  private final CharmTreeIdentificateMap treeIdentificateMap = new CharmTreeIdentificateMap();
 
   public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory,
                           MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     ICharmCache cache = CharmCache.getInstance();
     CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources,
-            magicDescriptionProvider, generics, charmMapsByRules, selectedRuleSet, cache);
+            magicDescriptionProvider, generics, cache, treeIdentificateMap);
     ICascadeView view = factory.createCascadeView(viewProperties);
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
-    charmMapsByRules.put(selectedRuleSet, new CharmTreeIdentificateMap());
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties,
-            filterSet, new CharmDisplayPropertiesMap(templateRegistry), selectedRuleSet.getEdition());
-    setCharmTypes(new CascadeCharmTypes(generics.getTemplateRegistry(), selectedRuleSet));
+            filterSet, new CharmDisplayPropertiesMap(templateRegistry));
+    setCharmTypes(new CascadeCharmTypes(generics.getTemplateRegistry()));
     setChangeListener(selectionListener);
     setView(view);
     setCharmDye(new CascadeCharmDye(view, selectionListener));
-    setCharmGroups(new CascadeGroupCollection(templateRegistry, cache, charmMapsByRules));
+    setCharmGroups(new CascadeGroupCollection(templateRegistry, cache, treeIdentificateMap));
   }
 
   @Override
   protected CascadeFilterContainer getFilterContainer() {
-    return new CascadeFilterContainer(selectedRuleSet, (CascadeGroupCollection) charmGroups);
+    return new CascadeFilterContainer((CascadeGroupCollection) charmGroups);
   }
 
   @Override
   protected GroupCharmTree getCharmTree(IIdentificate type) {
-    CharmTreeIdentificateMap charmTreeMap = getCharmTreeMap(selectedRuleSet);
-    return charmTreeMap.get(type);
-  }
-
-  private CharmTreeIdentificateMap getCharmTreeMap(IExaltedRuleSet ruleSet) {
-    return charmMapsByRules.get(ruleSet);
+    return treeIdentificateMap.get(type);
   }
 }
