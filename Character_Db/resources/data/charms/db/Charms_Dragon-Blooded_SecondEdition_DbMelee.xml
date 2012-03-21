@@ -15,6 +15,7 @@
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.BlindingSparkDistraction" exalt="Dragon-Blooded" group="Melee">
@@ -37,6 +38,7 @@
  <charmAttribute attribute="Counterattack" visualize="true"/>
  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Ghost-FireBlade" exalt="Dragon-Blooded" group="Melee">
@@ -57,6 +59,7 @@
  <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.RefiningInnerBlade" exalt="Dragon-Blooded" group="Melee">
@@ -78,6 +81,7 @@
  <charmAttribute attribute="Holy" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.PortentousCometDeflectingMethod" exalt="Dragon-Blooded" group="Melee">
@@ -88,7 +92,7 @@
  </prerequisite>
  <cost>
   
-   <essence cost="3"/>
+   <essence cost="8"/>
    <willpower cost="1"/>
   
  </cost>
@@ -100,6 +104,7 @@
  <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.ThreshingFloorTechnique" exalt="Dragon-Blooded" group="Melee">
@@ -117,6 +122,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.RingingAnvilOnslaught" exalt="Dragon-Blooded" group="Melee">
@@ -135,6 +141,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 </charmlist>

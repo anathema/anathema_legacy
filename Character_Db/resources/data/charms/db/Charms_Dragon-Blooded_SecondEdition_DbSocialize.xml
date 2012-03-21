@@ -16,6 +16,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Emotion" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.JadeDefense" exalt="Dragon-Blooded" group="Socialize">
@@ -33,6 +34,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.WaryYellowDogAttitude" exalt="Dragon-Blooded" group="Socialize">
@@ -71,8 +73,8 @@
  <charmAttribute attribute="Illusion" visualize="true"/>
  <charmAttribute attribute="Compulsion" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
- <charmAttribute attribute="Mandate" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Warm-FacedSeductionStyle" exalt="Dragon-Blooded" group="Socialize">
@@ -92,6 +94,7 @@
  <charmAttribute attribute="Emotion" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Friend-to-All-NationsAttitude" exalt="Dragon-Blooded" group="Socialize">
@@ -132,5 +135,6 @@
  <charmAttribute attribute="Illusion" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 </charmlist>

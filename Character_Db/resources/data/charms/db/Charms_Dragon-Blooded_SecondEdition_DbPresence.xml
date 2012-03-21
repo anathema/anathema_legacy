@@ -20,6 +20,7 @@
  <charmAttribute attribute="Emotion" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/> 
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.UnbearableTauntTechnique" exalt="Dragon-Blooded" group="Presence">
@@ -44,6 +45,7 @@
  <charmAttribute attribute="War" visualize="true"/> 
  <charmAttribute attribute="Emotion" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 
@@ -65,6 +67,7 @@
  <charmAttribute attribute="War" visualize="true"/>
  <charmAttribute attribute="Compulsion" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.AuraInvulnerability" exalt="Dragon-Blooded" group="Presence">
@@ -84,6 +87,7 @@
  <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="War" visualize="true"/>
    <source source="DragonBlooded2nd"/>
+   <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.TerrifyingElementDragonRoar" exalt="Dragon-Blooded" group="Presence">
@@ -104,6 +108,7 @@
  <charmAttribute attribute="Obvious" visualize="true"/>
  <elemental/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.WarlordsConvocation" exalt="Dragon-Blooded" group="Presence">
@@ -128,6 +133,7 @@
  <charmAttribute attribute="Servitude" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.AuspiciousFirstMeetingAttitude" exalt="Dragon-Blooded" group="Presence">
@@ -146,6 +152,7 @@
  <charmAttribute attribute="Emotion" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.PassionTransmutingNuance" exalt="Dragon-Blooded" group="Presence">
@@ -166,6 +173,7 @@
  <charmAttribute attribute="Emotion" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 </charmlist>
