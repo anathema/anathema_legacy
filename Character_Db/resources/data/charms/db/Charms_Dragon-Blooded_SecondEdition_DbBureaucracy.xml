@@ -19,6 +19,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Dragon-Blooded.ConfluenceSavantThought" exalt="Dragon-Blooded" group="Bureaucracy">
@@ -35,6 +36,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Mandate" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
 
   <charm id="Dragon-Blooded.Geese-Flying-SouthAdministration" exalt="Dragon-Blooded" group="Bureaucracy">
@@ -56,8 +58,8 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <charmAttribute attribute="Mandate" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Dragon-Blooded.BestowSaffronMantle" exalt="Dragon-Blooded" group="Bureaucracy">
@@ -79,6 +81,7 @@
     <charmAttribute attribute="Servitude" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Dragon-Blooded.ThrashingCarpSerenade" exalt="Dragon-Blooded" group="Bureaucracy">
@@ -96,6 +99,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
 
   <charm id="Dragon-Blooded.TestingWaters" exalt="Dragon-Blooded" group="Bureaucracy">
@@ -113,6 +117,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
 
   <charm id="Dragon-Blooded.FindingWater'sDepths" exalt="Dragon-Blooded" group="Bureaucracy">
@@ -131,6 +136,7 @@
     <charmAttribute attribute="Dynasty" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Dragon-Blooded.ThoughtfulGiftTechnique" exalt="Dragon-Blooded" group="Bureaucracy">
@@ -151,6 +157,7 @@
     <charmAttribute attribute="Dynasty" visualize="true"/>
     <charmAttribute attribute="Servitude" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
 
   <charm id="Dragon-Blooded.DistractionBabblingBrook" exalt="Dragon-Blooded" group="Bureaucracy">
@@ -169,8 +176,8 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Illusion" visualize="true"/>
-    <charmAttribute attribute="Mandate" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Dragon-Blooded.DrowningNegotiationStyle" exalt="Dragon-Blooded" group="Bureaucracy">
@@ -188,7 +195,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Mandate" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
 </charmlist>

@@ -12,6 +12,7 @@
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.FalsehoodUnearthingAttitude" exalt="Dragon-Blooded" group="Investigation">
@@ -45,6 +46,7 @@
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.BloodhoundsNoseTechnique" exalt="Dragon-Blooded" group="Investigation">
@@ -64,6 +66,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.ClearWaterPrana" exalt="Dragon-Blooded" group="Investigation">
@@ -98,6 +101,7 @@
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.HomewardTrailDiscoveryMethod" exalt="Dragon-Blooded" group="Investigation">
@@ -115,5 +119,6 @@
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 </charmlist>

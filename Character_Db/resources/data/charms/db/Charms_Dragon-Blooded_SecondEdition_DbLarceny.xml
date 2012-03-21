@@ -13,6 +13,7 @@
  <charmtype type="Reflexive"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.TracklessWalkStyle" exalt="Dragon-Blooded" group="Larceny">
@@ -30,6 +31,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.EarsSnowyOwl" exalt="Dragon-Blooded" group="Larceny">
@@ -47,6 +49,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.NakedThiefStyle" exalt="Dragon-Blooded" group="Larceny">
@@ -65,6 +68,7 @@
  <charmtype type="Reflexive"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.WindowInDoorTechnique" exalt="Dragon-Blooded" group="Larceny">
@@ -82,6 +86,7 @@
  <duration amount="3" unit="tick"/>
  <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Imposter'sVoiceTechnique" exalt="Dragon-Blooded" group="Larceny">
@@ -99,6 +104,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="War" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.PreciseInkTechnique" exalt="Dragon-Blooded" group="Larceny">
@@ -115,6 +121,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.WatersHonestyMethod" exalt="Dragon-Blooded" group="Larceny">
@@ -132,6 +139,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.PerfectGamblingPrana" exalt="Dragon-Blooded" group="Larceny">
@@ -149,6 +157,7 @@
  <charmtype type="Reflexive"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.FloodVictoryPrana" exalt="Dragon-Blooded" group="Larceny">
@@ -166,5 +175,6 @@
  <duration amount="1" unit="Game"/>
  <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 </charmlist>

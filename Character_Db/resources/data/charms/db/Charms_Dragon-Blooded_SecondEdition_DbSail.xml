@@ -12,6 +12,7 @@
  <duration duration="Instant"/>
  <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.SevenSeasWindLuringChanty" exalt="Dragon-Blooded" group="Sail">
@@ -28,6 +29,7 @@
  <duration amount="1" unit="hour"/>
  <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.StormOutrunningTechnique" exalt="Dragon-Blooded" group="Sail">
@@ -44,6 +46,7 @@
  <duration amount="1" unit="scene"/>
  <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.FinePassageNegotiatingStyle" exalt="Dragon-Blooded" group="Sail">
@@ -61,6 +64,7 @@
  <charmtype type="Reflexive"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.SturdyBulkheadConcentration" exalt="Dragon-Blooded" group="Sail">
@@ -78,11 +82,12 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.DeckStridingTechnique" exalt="Dragon-Blooded" group="Sail">
  <prerequisite>
-  <trait id="Sail" value="3"/> <!-- is text=" (or 5)" legal, or what should I do??? -->
+  <trait id="Sail" value="3"/>
   <essence value="2"/>
  </prerequisite>
  <cost>
@@ -97,5 +102,6 @@
  <charmAttribute attribute="Obvious" visualize="true"/>
  <charmAttribute attribute="Touch" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 </charmlist>
