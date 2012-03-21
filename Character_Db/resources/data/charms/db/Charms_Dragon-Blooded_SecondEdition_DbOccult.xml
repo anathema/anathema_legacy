@@ -60,6 +60,7 @@
 	<special speed="5" urntype="LongTick" defense="-0" />
   </charmtype>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Spirit-GroundingShout" exalt="Dragon-Blooded" group="Occult">
@@ -78,6 +79,7 @@
   <charmAttribute attribute="Combo-OK" visualize="true"/>
   <charmAttribute attribute="Shaping" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Spirit-ChainingStrike" exalt="Dragon-Blooded" group="Occult">
@@ -98,6 +100,7 @@
   <charmAttribute attribute="Crippling" visualize="true"/>
   <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Spirit-ShreddingAttack" exalt="Dragon-Blooded" group="Occult">
@@ -116,6 +119,7 @@
   <charmAttribute attribute="Combo-OK" visualize="true"/>
   <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.FivefoldResonanceSense" exalt="Dragon-Blooded" group="Occult">
@@ -131,6 +135,7 @@
   <duration amount="1" unit="scene"/>  
   <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.SeeingMakersHand" exalt="Dragon-Blooded" group="Occult">
@@ -147,6 +152,7 @@
   <duration duration="Instant"/>  
   <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
  <alternatives>
     <alternative>

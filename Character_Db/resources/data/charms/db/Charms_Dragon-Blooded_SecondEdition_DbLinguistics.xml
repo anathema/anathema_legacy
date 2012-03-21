@@ -16,6 +16,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Dragon-Blooded.CipherMissive" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -32,6 +33,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
     <charm id="Dragon-Blooded.CraftIcon" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -48,6 +50,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
     <charm id="Dragon-Blooded.ThousandTonguesMeditation" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -65,6 +68,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
     <charm id="Dragon-Blooded.PoisonedTongueTechnique" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -84,6 +88,7 @@
     <charmAttribute attribute="Social" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
    <charm id="Dragon-Blooded.VoiceMastery" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -101,6 +106,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
    <charm id="Dragon-Blooded.Wind-CarriedWordsTechnique" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -115,7 +121,9 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Dragon-Blooded.VoicesWind" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -151,6 +159,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
    <charm id="Dragon-Blooded.WithOneMind" exalt="Dragon-Blooded" group="Linguistics">
@@ -171,5 +180,6 @@
     <charmAttribute attribute="Dynasty" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
 </charmlist>

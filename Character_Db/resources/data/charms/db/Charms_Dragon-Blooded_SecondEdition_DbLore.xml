@@ -13,6 +13,7 @@
  <duration amount="1" unit="day"/>
  <charmtype type="Simple"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.EternalMindMeditation" exalt="Dragon-Blooded" group="Lore">
@@ -31,6 +32,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.ElementalEmpowermentMeditation" exalt="Dragon-Blooded" group="Lore">
@@ -39,15 +41,13 @@
   <essence value="3"/>
   <charmReference id="Dragon-Blooded.ElementalConcentrationTrance"/>
  </prerequisite>
- <cost>
-  
-   <willpower cost="1" text="or more"/>
-  
- </cost>
- <duration duration="Instant"/>
- <charmtype type="Simple"/>
+ <cost/>
+ <duration duration="Permanent"/>
+ <charmtype type="Permanent"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
+ <charmAttribute attribute="Native" visualize="true"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.ElementalSuccorMethod" exalt="Dragon-Blooded" group="Lore">
@@ -91,6 +91,7 @@
  <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.ElementalBurstTechnique" exalt="Dragon-Blooded" group="Lore">
@@ -111,5 +112,6 @@
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 </charmlist>

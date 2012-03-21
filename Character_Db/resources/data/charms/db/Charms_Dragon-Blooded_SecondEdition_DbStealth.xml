@@ -14,6 +14,7 @@
      <charmAttribute attribute="Combo-OK" visualize="true"/>
      <charmAttribute attribute="Leader5" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
    <charm id="Dragon-Blooded.SoundlessActionPrana" exalt="Dragon-Blooded" group="Stealth">
@@ -31,6 +32,7 @@
     <charmtype type="Simple"/>
      <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Dragon-Blooded.ZoneSilenceStance" exalt="Dragon-Blooded" group="Stealth">
@@ -49,6 +51,7 @@
     <charmtype type="Simple"/>
      <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Dragon-Blooded.DistractingBreezeMeditation" exalt="Dragon-Blooded" group="Stealth">
@@ -66,6 +69,7 @@
      <charmAttribute attribute="Combo-OK" visualize="true"/>
      <charmAttribute attribute="Leader4" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
    
@@ -85,6 +89,7 @@
      <charmAttribute attribute="Combo-Basic" visualize="true"/>
      <charmAttribute attribute="Leader4" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Dragon-Blooded.Wind-WalkingTechnique" exalt="Dragon-Blooded" group="Stealth">
@@ -102,6 +107,7 @@
     <charmtype type="Simple"/>
      <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
 
     <charm id="Dragon-Blooded.DragonShroudTechnique" exalt="Dragon-Blooded" group="Stealth">
