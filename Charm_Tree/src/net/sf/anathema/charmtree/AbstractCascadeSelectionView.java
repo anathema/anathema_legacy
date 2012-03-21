@@ -74,6 +74,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     groupComboBox.setRenderer(renderer);
     groupComboBox.setPreferredSize(preferredSize);
     groupComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
+      @Override
       public void valueChanged(IIdentificate newValue) {
         selectionListener.valueChanged(groupComboBox.getSelectedObject(), typeComboBox.getSelectedObject());
       }

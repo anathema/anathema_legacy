@@ -38,7 +38,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   private SpecialCharmViewPresenter specialCharmPresenter = new NullSpecialCharmPresenter();
   private AlienCharmPresenter alienPresenter = new NullAlienCharmPresenter();
   private CharmInteractionPresenter interactionPresenter = new NullInteractionPresenter();
-  private CharmRulesPresenter rulesPresenter = new NullRulesPresenter();
 
   public AbstractCascadePresenter(IResources resources) {
     this.resources = resources;
@@ -54,7 +53,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     initFilters();
     alienPresenter.initPresentation();
     interactionPresenter.initPresentation();
-    rulesPresenter.initPresentation();
     view.initGui();
   }
 
@@ -182,10 +180,6 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
 
   protected void setCharmDye(CharmDye dye) {
     this.dye = dye;
-  }
-
-  protected void setRulesPresenter(CharmRulesPresenter rulesPresenter) {
-    this.rulesPresenter = rulesPresenter;
   }
 
   protected void setCharmTypes(CharmTypes types) {

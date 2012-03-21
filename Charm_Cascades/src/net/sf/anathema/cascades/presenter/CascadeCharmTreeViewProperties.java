@@ -21,24 +21,24 @@ import java.util.Map;
 public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewProperties {
 
   private IIdentificate type;
-  private final ProxyRuleSet rules;
+  private final IExaltedRuleSet rules;
   private final ICharmCache cache;
   private final ICharacterGenerics generics;
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules;
 
   public CascadeCharmTreeViewProperties(IResources resources, MagicDescriptionProvider magicDescriptionProvider,
           ICharacterGenerics generics, Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules,
-          ProxyRuleSet selectedRuleSet, ICharmCache cache) {
+          IExaltedRuleSet selectedRuleSet, ICharmCache cache) {
     super(resources, magicDescriptionProvider);
     this.charmMapsByRules = charmMapsByRules;
     this.generics = generics;
-    this.rules = selectedRuleSet;
     this.cache = cache;
+    this.rules = selectedRuleSet;
   }
 
   @Override
   protected ICharm getCharmById(String id) {
-    ICharm charm = charmMapsByRules.get(rules.getDelegate()).get(type).getCharmById(id);
+    ICharm charm = charmMapsByRules.get(rules).get(type).getCharmById(id);
     if (charm == null) {
       charm = searchCharm(id);
     }
