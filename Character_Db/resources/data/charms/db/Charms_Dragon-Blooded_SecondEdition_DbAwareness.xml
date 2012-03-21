@@ -15,6 +15,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Leader" visualize="true"/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.FeelingDragon'sBones" exalt="Dragon-Blooded" group="Awareness">
@@ -51,7 +52,9 @@
  </charmtype>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Crippling" visualize="true"/>
+ <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Sense-RidingTechnique" exalt="Dragon-Blooded" group="Awareness">
@@ -70,6 +73,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Shaping" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Sense-DestroyingMethod" exalt="Dragon-Blooded" group="Awareness">
@@ -89,6 +93,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Crippling" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.EssenceDisruptionAttack" exalt="Dragon-Blooded" group="Awareness">
@@ -107,6 +112,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Shaping" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 </charmlist>

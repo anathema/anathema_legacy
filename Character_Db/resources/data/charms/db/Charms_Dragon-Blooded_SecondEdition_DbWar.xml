@@ -18,6 +18,7 @@
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="War" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.TirelessFootfallsCadence" exalt="Dragon-Blooded" group="War">
@@ -36,6 +37,7 @@
   <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Cooperative" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Armor-HardeningConcentration" exalt="Dragon-Blooded" group="War">
@@ -53,6 +55,7 @@
  <charmtype type="Simple"/>
   <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Phantom-WarriorHorde" exalt="Dragon-Blooded" group="War">
@@ -76,6 +79,7 @@
   <charmAttribute attribute="Obvious" visualize="true"/>
   <charmAttribute attribute="War" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.BlazingCourageousSwordsmenInspiration" exalt="Dragon-Blooded" group="War">
@@ -93,6 +97,7 @@
  <charmtype type="Simple"/>
   <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.RampartsObedientEarth" exalt="Dragon-Blooded" group="War">
@@ -113,6 +118,7 @@
   <charmAttribute attribute="Shaping" visualize="true"/>
   <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Dragon-SearedBattlefield" exalt="Dragon-Blooded" group="War">
@@ -134,6 +140,7 @@
   <charmAttribute attribute="Obvious" visualize="true"/>
   <charmAttribute attribute="War" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.DragonVortexAttack5" exalt="Dragon-Blooded" group="War">
@@ -155,6 +162,7 @@
   <charmAttribute attribute="Obvious" visualize="true"/>
   <charmAttribute attribute="War" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.DragonVortexAttack6" exalt="Dragon-Blooded" group="War">
@@ -177,5 +185,6 @@
   <charmAttribute attribute="Obvious" visualize="true"/>
   <charmAttribute attribute="War" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 </charmlist>
