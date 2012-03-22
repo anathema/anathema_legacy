@@ -29,7 +29,6 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
     ToggleButtonPanel panel = new ToggleButtonPanel();
     GridDialogLayoutData data = GridDialogLayoutDataFactory.createFillNoGrab();
     data.setGrabExcessVerticalSpace(true);
-    data.setVerticalSpan(2);
     JComponent content = panel.getComponent();
     component.add(content, data);
     return panel;
