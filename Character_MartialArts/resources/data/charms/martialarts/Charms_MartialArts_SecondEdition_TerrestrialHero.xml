@@ -155,6 +155,7 @@
     <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>    
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Terrestrial.BecomeHammer" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
     <prerequisite>
@@ -177,6 +178,7 @@
     <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>    
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>  
   <charm id="Terrestrial.Dragon-ClawElementalStrike" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
     <prerequisite>
@@ -198,6 +200,7 @@
     <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>    
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Terrestrial.DisarmingStrikePrana" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
     <prerequisite>
@@ -219,6 +222,7 @@
     <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>    
     <source source="ScrollMonk"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Terrestrial.BondsUnbreakableIceTechnique" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
     <prerequisite>

@@ -104,6 +104,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Dragon-Blooded.Tiger-and-BearUnity" exalt="Dragon-Blooded" group="TerrestrialInitiation">
@@ -127,5 +128,6 @@
     <charmAttribute attribute="NoStyle"/>
     <charmAttribute attribute="Celestial"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
 </charmlist>

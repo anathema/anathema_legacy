@@ -15,6 +15,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Terrestrial.Five-DragonForceBlow" exalt="Dragon-Blooded" group="Five-DragonStyle">
@@ -34,6 +35,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Terrestrial.Five-DragonFortitude" exalt="Dragon-Blooded" group="Five-DragonStyle">
@@ -54,6 +56,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
   <charm id="Terrestrial.Five-DragonBlockingTechnique" exalt="Dragon-Blooded" group="Five-DragonStyle">
@@ -76,6 +79,7 @@
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
 
   <charm id="Terrestrial.Five-DragonForm" exalt="Dragon-Blooded" group="Five-DragonStyle">
@@ -98,6 +102,7 @@
     <charmAttribute attribute="Form" visualize="true"/>
     <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
 
   <charm id="Terrestrial.Five-DragonFist" exalt="Dragon-Blooded" group="Five-DragonStyle">
@@ -140,6 +145,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Leader" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   
    <charm id="Terrestrial.Five-DragonWrath" exalt="Dragon-Blooded" group="Five-DragonStyle">

@@ -27,6 +27,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Celestial.FlameFlickerStance" exalt="Dragon-Blooded" group="FireDragonStyle">
     <prerequisite>
@@ -44,8 +45,8 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Leader" visualize="true"/>
-    <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Celestial.SearingFistAttack" exalt="Dragon-Blooded" group="FireDragonStyle">
     <prerequisite>
@@ -63,6 +64,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Celestial.PerfectBlazingBlow" exalt="Dragon-Blooded" group="FireDragonStyle">
     <prerequisite>
@@ -79,6 +81,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Celestial.FireDragonForm" exalt="Dragon-Blooded" group="FireDragonStyle">
     <prerequisite>
@@ -99,6 +102,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Celestial.FieryHandAttack" exalt="Dragon-Blooded" group="FireDragonStyle">
     <prerequisite>
@@ -116,6 +120,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Celestial.BreathOfTheFireDragon" exalt="Dragon-Blooded" group="FireDragonStyle">
     <prerequisite>
@@ -133,6 +138,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmAttribute attribute="Leader" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Celestial.EssenceIgnitingNerveStrike" exalt="Dragon-Blooded" group="FireDragonStyle">
     <prerequisite>
@@ -153,6 +159,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     <charmAttribute attribute="Shaping" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
     <source source="DragonBlooded2nd"/>
+    <source source="ScrollErrata"/>
   </charm>
   <charm id="Celestial.OverwhelmingFireMajestyStance" exalt="Dragon-Blooded" group="FireDragonStyle">
   	<prerequisite>
@@ -171,6 +178,7 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     	<charmAttribute attribute="Leader" visualize="true"/>
   	<charmAttribute attribute="Obvious" visualize="true"/>
   	<source source="DragonBlooded2nd"/>
+  	<source source="ScrollErrata"/>
   </charm>
   <charm id="Celestial.SmolderingWoundAttack" exalt="Dragon-Blooded" group="FireDragonStyle">
   	<prerequisite>
@@ -205,5 +213,6 @@ or send a letter to Creative Commons, 543 Howard Street, 5th Floor, San Francisc
     	<charmAttribute attribute="Leader" visualize="true"/>
   	<charmAttribute attribute="Obvious" visualize="true"/>
   	<source source="DragonBlooded2nd"/>
+  	<source source="ScrollErrata"/>
   </charm>
 </charmlist>
