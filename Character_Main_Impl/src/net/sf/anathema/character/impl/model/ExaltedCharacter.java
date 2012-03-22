@@ -4,6 +4,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -28,21 +29,24 @@ public class ExaltedCharacter implements ICharacter {
     description.addOverallChangeListener(management.getDescriptionChangeListener());
   }
 
+  @Override
   public ICharacterStatistics getStatistics() {
     return statistics;
   }
 
+  @Override
   public ICharacterDescription getDescription() {
     return description;
   }
 
-  public ICharacterStatistics createCharacterStatistics(
-      ICharacterTemplate template,
-      ICharacterGenerics generics,
-      IExaltedRuleSet rules) throws SpellException {
+  @Override
+  public ICharacterStatistics createCharacterStatistics(ICharacterTemplate template,
+                                                        ICharacterGenerics generics) throws SpellException {
+    IExaltedRuleSet rules = ExaltedRuleSet.SecondEdition;
     Ensure.ensureNull("Character Statistics can only be created once per character.", statistics); //$NON-NLS-1$
     if (template instanceof IUnsupportedTemplate) {
-      throw new IllegalArgumentException("The template " + template + " is not yet supported."); //$NON-NLS-1$//$NON-NLS-2$
+      throw new IllegalArgumentException(
+              "The template " + template + " is not yet supported."); //$NON-NLS-1$//$NON-NLS-2$
     }
     Ensure.ensureArgumentNotNull("Template must not be null.", template); //$NON-NLS-1$
     Ensure.ensureArgumentNotNull("Generics must not be null.", generics); //$NON-NLS-1$
@@ -50,14 +54,13 @@ public class ExaltedCharacter implements ICharacter {
     this.statistics = new CharacterStatistics(template, generics, rules);
     for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
       if (globalTemplate.supportsEdition(rules.getEdition())) {
-        addAdditionalModels(generics, new IAdditionalTemplate[] { globalTemplate });
+        addAdditionalModels(generics, globalTemplate);
       }
     }
     addAdditionalModels(generics, template.getAdditionalTemplates());
     addCompulsiveCharms(template);
-    statistics.getCharacterContext()
-        .getCharacterListening()
-        .addChangeListener(management.getStatisticsChangeListener());
+    statistics.getCharacterContext().getCharacterListening().addChangeListener(
+            management.getStatisticsChangeListener());
     return statistics;
   }
 
@@ -78,26 +81,32 @@ public class ExaltedCharacter implements ICharacter {
     }
   }
 
+  @Override
   public boolean hasStatistics() {
     return statistics != null;
   }
 
+  @Override
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     description.getName().addTextChangedListener(adjuster);
   }
 
+  @Override
   public void addDirtyListener(IChangeListener changeListener) {
     management.addDirtyListener(changeListener);
   }
 
+  @Override
   public boolean isDirty() {
     return management.isDirty();
   }
 
+  @Override
   public void removeDirtyListener(IChangeListener changeListener) {
     management.removeDirtyListener(changeListener);
   }
 
+  @Override
   public void setClean() {
     management.setClean();
   }

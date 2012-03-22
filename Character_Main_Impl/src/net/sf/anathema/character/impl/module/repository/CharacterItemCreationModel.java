@@ -55,7 +55,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   @Override
   public boolean isSelectionComplete() {
-    return configuration.getTemplate() != null && configuration.getRuleSet() != null;
+    return configuration.getTemplate() != null;
   }
 
   @Override
@@ -83,7 +83,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
       setSelectedTemplate(null);
     } else {
       ICharacterTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(selectedType,
-              configuration.getRuleSet().getEdition());
+              configuration.getEdition());
       for (ITemplateTypeAggregation aggregation : aggregationsByType.get(selectedType)) {
         if (aggregation.contains(defaultTemplate)) {
           setSelectedTemplate(aggregation);
@@ -99,7 +99,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     List<ITemplateTypeAggregation> list = aggregationsByType.get(selectedType);
     List<ITemplateTypeAggregation> copyList = new ArrayList<ITemplateTypeAggregation>(list);
     for (ITemplateTypeAggregation aggregation : list) {
-      if (!aggregation.supportsEdition(configuration.getRuleSet().getEdition())) {
+      if (!aggregation.supportsEdition(configuration.getEdition())) {
         copyList.remove(aggregation);
       }
     }
@@ -121,8 +121,8 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   }
 
   private void setEditionDependentTemplate() {
-    configuration.setTemplate(generics.getTemplateRegistry().getTemplate(selectedTemplate.getTemplateType(),
-            configuration.getRuleSet().getEdition()));
+    configuration.setTemplate(
+            generics.getTemplateRegistry().getTemplate(selectedTemplate.getTemplateType(), configuration.getEdition()));
   }
 
   @Override

@@ -42,7 +42,8 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
 
   @Override
   public void save(OutputStream stream, IItem item) throws IOException {
-    messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, item.getDisplayName()); //$NON-NLS-1$
+    messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION,
+            item.getDisplayName()); //$NON-NLS-1$
     Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
     repositoryItemPerister.save(rootElement, item);
     save(rootElement, (ICharacter) item.getItemData());
@@ -68,6 +69,7 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
     return item;
   }
 
+  @Override
   public IItem createNew(IAnathemaWizardModelTemplate template) throws PersistenceException {
     if (!(template instanceof CharacterStatisticsConfiguration)) {
       throw new IllegalArgumentException("Bad template type for character creation."); //$NON-NLS-1$
@@ -75,11 +77,10 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
     CharacterStatisticsConfiguration configuration = (CharacterStatisticsConfiguration) template;
     ExaltedCharacter character = new ExaltedCharacter();
     try {
-      character.createCharacterStatistics(configuration.getTemplate(), generics, configuration.getRuleSet());
+      character.createCharacterStatistics(configuration.getTemplate(), generics);
       markCharacterReadyForWork(character);
       return new AnathemaDataItem(characterType, character);
-    }
-    catch (SpellException e) {
+    } catch (SpellException e) {
       throw new PersistenceException("A problem occured while creating a new character", e); //$NON-NLS-1$
     }
   }
