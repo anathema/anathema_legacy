@@ -126,131 +126,163 @@ public class DummyGenericCharacter implements IGenericCharacter {
     };
   }
 
+  @Override
   public IExaltedRuleSet getRules() {
     return ExaltedRuleSet.SecondEdition;
   }
 
+  @Override
   public int getHealthLevelTypeCount(HealthLevelType type) {
     return 0;
   }
 
+  @Override
   public String getPeripheralPool() {
     return null;
   }
 
+  @Override
   public int getPeripheralPoolValue() {
     return 0;
   }
 
+  @Override
   public String getPersonalPool() {
     return null;
   }
 
+  @Override
   public int getPersonalPoolValue() {
     return 0;
   }
   
+  @Override
   public int getOverdrivePoolValue() {
     return 0;
   }
 
+  @Override
   public IdentifiedInteger[] getComplexPools() {
     return new IdentifiedInteger[0];
   }
   
+  @Override
   public int getAttunedPoolValue() {
     return 0;
   }
 
+  @Override
   public IGenericTrait[] getBackgrounds() {
     return new IGenericTrait[0];
   }
 
+  @Override
   public IAdditionalModel getAdditionalModel(String templateId) {
     return null;
   }
 
+  @Override
   public IConcept getConcept() {
     return new IConcept() {
       
+      @Override
       public int getAge() {
         return 0;
       }
 
+      @Override
       public String getWillpowerRegainingConceptName() {
         return null;
       }
 
+      @Override
       public ICasteType getCasteType() {
         return ICasteType.NULL_CASTE_TYPE;
       }
 
+      @Override
       public String getWillpowerRegainingComment(IResources resources) {
         return null;
       }
     };
   }
 
+  @Override
   public List<IMagic> getAllLearnedMagic() {
     return new ArrayList<IMagic>();
   }
 
+  @Override
   public int getLearnCount(ICharm charm) {
     return 0;
   }
 
+  @Override
   public IGenericCombo[] getCombos() {
     return new IGenericCombo[0];
   }
 
+  @Override
   public boolean isExperienced() {
     return false;
   }
 
+  @Override
   public String[] getUncompletedCelestialMartialArtsGroups() {
     return new String[0];
   }
 
+  @Override
   public int getPainTolerance() {
     return 0;
   }
 
+  @Override
   public ITraitLimitation getEssenceLimitation() {
     return new StaticTraitLimitation(7);
   }
   
+  @Override
   public int getAge() {
     return 0;
   }
 
+  @Override
   public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
     // Nothing to do
   }
 
+  @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return new IIdentifiedTraitTypeGroup[0];
   }
   
+  @Override
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
 	    return new IIdentifiedTraitTypeGroup[0];
 	  }
 
+  @Override
   public int getSpentExperiencePoints() {
     return 0;
   }
 
+  @Override
   public int getTotalExperiencePoints() {
     return 0;
   }
 
+  @Override
   public String[] getLearnedEffects(ICharm charm) {
     return new String[0];
   }
 
+  @Override
   public boolean isMultipleEffectCharm(ICharm magic) {
     return false;
   }
 
+  @Override
   public boolean isSubeffectCharm(ICharm magic) {
     return false;
   }
@@ -260,6 +292,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
     return new ICharm[0];
   }
   
+  @Override
   public IIdentifiedTraitTypeGroup[] getYoziTypeGroups()
   {
 	  return null;

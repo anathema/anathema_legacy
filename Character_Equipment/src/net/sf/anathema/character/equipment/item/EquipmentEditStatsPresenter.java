@@ -1,16 +1,10 @@
 package net.sf.anathema.character.equipment.item;
 
-import java.awt.Component;
-
-import javax.swing.JComponent;
-import javax.swing.JList;
-
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -18,6 +12,10 @@ import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.JComponent;
+import javax.swing.JList;
+import java.awt.Component;
 
 public class EquipmentEditStatsPresenter implements Presenter {
 
@@ -29,6 +27,7 @@ public class EquipmentEditStatsPresenter implements Presenter {
       this.statsListView = statsListView;
     }
 
+    @Override
     public void valueChanged(IExaltedRuleSet newValue) {
       updateStatListContent(newValue, statsListView);
     }
@@ -47,6 +46,7 @@ public class EquipmentEditStatsPresenter implements Presenter {
     this.view = view;
   }
 
+  @Override
   public void initPresentation() {
     final EquipmentStringBuilder equipmentStringBuilder = new EquipmentStringBuilder(resources);
     ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi(resources)) {
@@ -73,6 +73,7 @@ public class EquipmentEditStatsPresenter implements Presenter {
     view.setStatsListHeader(resources.getString("Equipment.Creation.Stats")); //$NON-NLS-1$
     final IObjectSelectionView<IExaltedRuleSet> ruleSetView = initRuleSetPresentation(statsListView);
     model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateStatListContent(ruleSetView.getSelectedObject(), statsListView);
       }
@@ -103,7 +104,6 @@ public class EquipmentEditStatsPresenter implements Presenter {
     final IObjectSelectionView<IExaltedRuleSet> ruleSetView = view.initRuleSetSelectionView(
         resources.getString("Equipment.Creation.Ruleset") + ":", ruleSetRenderer); //$NON-NLS-1$ //$NON-NLS-2$
     ruleSetView.setObjects(model.getSupportedExaltedRuleSets());
-    ruleSetView.setSelectedObject(AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset());
     ruleSetView.addObjectSelectionChangedListener(new RuleSetSelectionListener(statsListView));
     return ruleSetView;
   }

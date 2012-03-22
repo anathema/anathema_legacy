@@ -8,6 +8,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -54,7 +55,7 @@ public class CharacterStatisticPersister {
   public void save(Element parent, ICharacterStatistics statistics) {
     Ensure.ensureNotNull("Statistics must not be null", statistics); //$NON-NLS-1$
     Element statisticsElement = parent.addElement(TAG_STATISTICS);
-    rulesPersister.save(statisticsElement, statistics.getRules());
+    rulesPersister.save(statisticsElement);
     statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(statistics.isExperienced()));
     ICharacterTemplate template = statistics.getCharacterTemplate();
     Element characterTypeElement = statisticsElement.addElement(TAG_CHARACTER_TYPE);
@@ -81,7 +82,7 @@ public class CharacterStatisticPersister {
       }
       ITemplateType templateType = loadTemplateType(statisticsElement);
       boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
-      IExaltedRuleSet rules = rulesPersister.load(statisticsElement);
+      IExaltedRuleSet rules = ExaltedRuleSet.SecondEdition;
       ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType, rules.getEdition());
       ICharacterStatistics statistics = character.createCharacterStatistics(template, generics, rules);
       ICasteCollection casteCollection = template.getCasteCollection();
