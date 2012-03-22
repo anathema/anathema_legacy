@@ -1,9 +1,5 @@
 package net.sf.anathema.character.impl.model.traits;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -35,6 +31,10 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.util.IIdentificate;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
 
@@ -83,7 +83,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     }
     addAbilities(template);
     this.backgrounds = new BackgroundConfiguration(
-        new BackgroundArbitrator(template, modelContext.getBasicCharacterContext().getRuleSet().getEdition()),
+        new BackgroundArbitrator(template, modelContext.getBasicCharacterContext().getEdition()),
         template.getTraitTemplateCollection(),
         modelContext.getTraitContext(),
         backgroundRegistry);
@@ -98,7 +98,8 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     
     getTrait(OtherTraitType.Essence).addCurrentValueListener(new IIntValueChangedListener()
     {
-		public void valueChanged(int newValue)
+		@Override
+        public void valueChanged(int newValue)
 		{
 			for (ITrait trait : getAllTraits())
 				if (trait instanceof IDefaultTrait)
@@ -141,22 +142,27 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     throw new UnsupportedOperationException("Unsupported trait type " + traitType); //$NON-NLS-1$
   }
 
+  @Override
   public IBackgroundConfiguration getBackgrounds() {
     return backgrounds;
   }
 
+  @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return abilityTraitGroups;
   }
 
+  @Override
   public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
     return attributeTraitGroups;
   }
   
+  @Override
   public final IIdentifiedCasteTraitTypeGroup[] getYoziTypeGroups() {
 	return yoziTraitGroups;
   }
 
+  @Override
   public IIdentificate getAbilityGroupId(AbilityType abilityType) {
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
       if (group.contains(abilityType)) {
@@ -166,6 +172,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     throw new IllegalStateException("Ability type in no group: " + abilityType); //$NON-NLS-1$
   }
 
+  @Override
   public IFavorableTrait[] getAllAbilities() {
     List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
@@ -174,6 +181,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     return getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
   }
 
+  @Override
   public ISpecialtiesConfiguration getSpecialtyConfiguration() {
     return specialtyConfiguration;
   }

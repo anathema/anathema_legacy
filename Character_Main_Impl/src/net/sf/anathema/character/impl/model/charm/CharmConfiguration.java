@@ -96,14 +96,14 @@ public class CharmConfiguration implements ICharmConfiguration {
     initSpecialCharmConfigurations();
     types = allCharacterTypes.toArray(new ICharacterType[allCharacterTypes.size()]);
     filterSet.add(new ObtainableCharmFilter(this));
-    filterSet.add(new CharacterSourceBookFilter(context.getBasicCharacterContext().getRuleSet().getEdition(), this));
+    filterSet.add(new CharacterSourceBookFilter(context.getBasicCharacterContext().getEdition(), this));
     filterSet.add(new EssenceLevelCharmFilter());
   }
 
   private ICharmTemplate getNativeCharmTemplate(ITemplateRegistry registry) {
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     ITemplateType templateType = basicCharacterContext.getTemplateType();
-    IExaltedEdition edition = basicCharacterContext.getRuleSet().getEdition();
+    IExaltedEdition edition = basicCharacterContext.getEdition();
     ICharacterTemplate template = registry.getTemplate(templateType, edition);
     IMagicTemplate magicTemplate = template.getMagicTemplate();
     return magicTemplate.getCharmTemplate();
@@ -120,13 +120,13 @@ public class CharmConfiguration implements ICharmConfiguration {
   public ICharmIdMap getCharmIdMap() {
     List<ICharmIdMap> trees = new ArrayList<ICharmIdMap>(alienTreesByType.values());
     trees.add(martialArtsCharmTree);
-    ICharmTree[] treeArray = trees.toArray(new ICharmTree[trees.size()]);
+    ICharmIdMap[] treeArray = trees.toArray(new ICharmIdMap[trees.size()]);
     return new GroupedCharmIdMap(treeArray);
   }
 
   @Override
   public ISpecialCharm[] getSpecialCharms() {
-    return provider.getSpecialCharms(context.getBasicCharacterContext().getRuleSet().getEdition(),
+    return provider.getSpecialCharms(context.getBasicCharacterContext().getEdition(),
             new MartialArtsLearnableArbitrator(martialArtsCharmTree), getCharmIdMap(), getNativeCharacterType());
   }
 
@@ -221,7 +221,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
       group.addCharmLearnListener(mergedListener);
     }
-    return newGroups.toArray(new LearningCharmGroup[newGroups.size()]);
+    return newGroups.toArray(new ILearningCharmGroup[newGroups.size()]);
   }
 
   private String getSubeffectParent(String subeffect) {
@@ -356,7 +356,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   private ICharmTemplate getCharmTemplate(ITemplateRegistry registry, ICharacterType type) {
     ICharacterTemplate defaultTemplate = registry.getDefaultTemplate(type,
-            context.getBasicCharacterContext().getRuleSet().getEdition());
+            context.getBasicCharacterContext().getEdition());
     if (defaultTemplate == null || defaultTemplate instanceof IUnsupportedTemplate) {
       return null;
     }

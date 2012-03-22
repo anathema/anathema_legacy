@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -30,45 +31,47 @@ public abstract class AbstractBonusPointTestCase {
     DummyTraitContext traitContext = new DummyTraitContext(coreTraits);
     DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, templateCollection, additionalRules);
     coreTraits.addTestTrait(traitFactory.createTrait(OtherTraitType.Essence));
-    FavorableTraitFactory favorableTraitFactory = new FavorableTraitFactory(
-        traitContext,
-        templateCollection,
-        new NullAdditionalRules(),
-        new IBasicCharacterData() {
-          @Override
-          public DummyCasteType getCasteType() {
-            return new DummyCasteType();
-          }
+    FavorableTraitFactory favorableTraitFactory = new FavorableTraitFactory(traitContext, templateCollection,
+            new NullAdditionalRules(), new IBasicCharacterData() {
+      @Override
+      public DummyCasteType getCasteType() {
+        return new DummyCasteType();
+      }
 
-          @Override
-          public ICharacterType getCharacterType() {
-            return getTemplateType().getCharacterType();
-          }
+      @Override
+      public ICharacterType getCharacterType() {
+        return getTemplateType().getCharacterType();
+      }
 
-          @Override
-          public boolean isExperienced() {
-            return false;
-          }
+      @Override
+      public boolean isExperienced() {
+        return false;
+      }
 
-          @Override
-          public IExaltedRuleSet getRuleSet() {
-            return ExaltedRuleSet.SecondEdition;
-          }
+      @Override
+      public IExaltedRuleSet getRuleSet() {
+        return ExaltedRuleSet.SecondEdition;
+      }
 
-          @Override
-          public ITemplateType getTemplateType() {
-            return new TemplateType(CharacterType.SOLAR);
-          }
-        },
-        new ICharacterListening() {
-          @Override
-          public void addChangeListener(ICharacterChangeListener changeListener) {
-            // Nothing to do
-          }
-        });
+      @Override
+      public IExaltedEdition getEdition() {
+        return getRuleSet().getEdition();
+      }
+
+      @Override
+      public ITemplateType getTemplateType() {
+        return new TemplateType(CharacterType.SOLAR);
+      }
+    }, new ICharacterListening() {
+      @Override
+      public void addChangeListener(ICharacterChangeListener changeListener) {
+        // Nothing to do
+      }
+    }
+    );
     IIncrementChecker friendlyIncrementChecker = new FriendlyIncrementChecker();
     for (AbilityType traitType : AbilityType.values()) {
-      DummyCasteType[] casteType = { new DummyCasteType() };
+      DummyCasteType[] casteType = {new DummyCasteType()};
       coreTraits.addTestTrait(favorableTraitFactory.createTrait(traitType, casteType, friendlyIncrementChecker));
       coreTraits.addAbilityTypeToGroup(traitType, casteType[0].getId());
     }

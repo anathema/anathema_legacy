@@ -44,11 +44,12 @@ public class BeastformAttribute implements IBeastformAttribute {
       final int pointCost,
       final IBeastformGroupCost cost) {
 	this.context = context;
-	this.edition = context.getBasicCharacterContext().getRuleSet().getEdition();
+	this.edition = context.getBasicCharacterContext().getEdition();
 	ITraitContext traitContext = context.getTraitContext();
     ITraitTemplate template = SimpleTraitTemplate.createStaticLimitedTemplate(0, calculateMaxValue(pointCost));
     TraitRules traitRules = new TraitRules(baseTrait.getType(), template, traitContext.getLimitationContext());
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
+      @Override
       public boolean isValidNewValue(int value) {
     	  if (BeastformAttribute.this.edition == ExaltedEdition.FirstEdition)
     		  return value >= baseTrait.getCurrentValue()
@@ -59,6 +60,7 @@ public class BeastformAttribute implements IBeastformAttribute {
     };
     this.beastmanTrait = new DefaultTrait(traitRules, traitContext, incrementChecker);
     beastmanTrait.addCurrentValueListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         additionalValue = newValue - baseTrait.getCurrentValue();
       }
@@ -75,18 +77,22 @@ public class BeastformAttribute implements IBeastformAttribute {
 		return false;
   }
 
+  @Override
   public int getPointCost() {
     return pointCost;
   }
 
+  @Override
   public IDefaultTrait getTrait() {
     return beastmanTrait;
   }
 
+  @Override
   public int getAdditionalDots() {
     return additionalValue;
   }
 
+  @Override
   public void recalculate() {
     beastmanTrait.setCurrentValue(baseTrait.getCurrentValue() +
     		(edition == ExaltedEdition.SecondEdition ? (hasDOE() ? 2 : 1) : additionalValue));

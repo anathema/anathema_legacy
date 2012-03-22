@@ -47,10 +47,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   private final ICharacterStatistics statistics;
   private final IResources resources;
 
-  public CharacterConceptAndRulesPresenter(
-      ICharacterStatistics statistics,
-      ICharacterConceptAndRulesViewFactory viewFactory,
-      IResources resources) {
+  public CharacterConceptAndRulesPresenter(ICharacterStatistics statistics,
+                                           ICharacterConceptAndRulesViewFactory viewFactory, IResources resources) {
     this.statistics = statistics;
     this.view = viewFactory.createCharacterConceptView();
     this.resources = resources;
@@ -80,15 +78,15 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
     return new SimpleViewContent(new ContentProperties(conceptHeader), view);
   }
-  
+
   private void initAgePresentation() {
     final IIntegerDescription age = statistics.getCharacterConcept().getAge();
-    
+
     IntegerSpinner ageSpinner = new IntegerSpinner(age.getValue());
     ageSpinner.setPreferredWidth(48);
     ageSpinner.setStepSize(5);
-    
-	  view.addSpinner(resources.getString("Label.Age"), ageSpinner);
+
+    view.addSpinner(resources.getString("Label.Age"), ageSpinner);
     ageSpinner.addChangeListener(new IIntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
@@ -98,9 +96,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {
-    final ITextView textView = initTextualDescriptionPresentation(
-        motivation.getEditableDescription(),
-        "Label.Motivation"); //$NON-NLS-1$    
+    final ITextView textView = initTextualDescriptionPresentation(motivation.getEditableDescription(),
+            "Label.Motivation"); //$NON-NLS-1$
     final SmartAction beginEditAction = new SmartAction(new BasicUi(resources).getEditIcon()) {
       private static final long serialVersionUID = -1054675766697466937L;
 
@@ -119,7 +116,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
         motivation.cancelEdit();
       }
     };
-    cancelEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.CancelEdit.Tooltip")); //$NON-NLS-1$
+    cancelEditAction.setToolTipText(
+            resources.getString("CharacterConcept.Motivation.CancelEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
       private static final long serialVersionUID = 1191861661014239378L;
 
@@ -197,7 +195,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
       @Override
       public String getRulesTitle() {
-        return resources.getString("CardView.CharacterConcept.Rules");} //$NON-NLS-1$
+        return resources.getString("CardView.CharacterConcept.Rules");
+      } //$NON-NLS-1$
     });
   }
 
@@ -211,13 +210,13 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
       }
     }.sortAscending(unsortedNatures, natures, resources);
     final IObjectSelectionView<INatureType> natureView = view.addObjectSelectionView(
-        resources.getString("Label.Nature"), //$NON-NLS-1$
-        natures,
-        new IdentificateSelectCellRenderer("Nature.", ".Name", resources),//$NON-NLS-1$ //$NON-NLS-2$
-        false);
+            resources.getString("Label.Nature"), //$NON-NLS-1$
+            natures, new IdentificateSelectCellRenderer("Nature.", ".Name", resources),//$NON-NLS-1$ //$NON-NLS-2$
+            false);
     final ITypedDescription<INatureType> natureType = nature.getDescription();
     natureView.setSelectedObject(natureType.getType());
-    final IWillpowerConditionView willpowerConditionLabel = view.addWillpowerConditionView(resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
+    final IWillpowerConditionView willpowerConditionLabel = view.addWillpowerConditionView(
+            resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
     natureView.addObjectSelectionChangedListener(new IObjectValueChangedListener<INatureType>() {
       @Override
       public void valueChanged(INatureType newValue) {
@@ -243,16 +242,14 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   private void initRulesPresentation() {
-    view.addRulesLabel(resources.getString(
-        "Rules.CharacterType.Message", resources.getString(statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
-    view.addRulesLabel(resources.getString(
-        "Rules.Ruleset.Message", resources.getString("Ruleset." + statistics.getRules().getId()))); //$NON-NLS-1$//$NON-NLS-2$
+    view.addRulesLabel(resources.getString("Rules.CharacterType.Message", resources.getString(
+            statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
+    view.addRulesLabel(resources.getString("Rules.Ruleset.Message",
+            resources.getString("Ruleset." + statistics.getRules().getId()))); //$NON-NLS-1$//$NON-NLS-2$
   }
 
-  private void updateNature(
-      final IObjectSelectionView<INatureType> natureView,
-      final IWillpowerConditionView willpowerConditionLabel,
-      INatureType natureType) {
+  private void updateNature(final IObjectSelectionView<INatureType> natureView,
+                            final IWillpowerConditionView willpowerConditionLabel, INatureType natureType) {
     natureView.setSelectedObject(natureType);
     if (natureType == null) {
       willpowerConditionLabel.setText(null);
@@ -267,18 +264,18 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
   private boolean initCastePresentation() {
     final ICharacterTemplate template = statistics.getCharacterTemplate();
-    IExaltedEdition edition = statistics.getCharacterContext().getBasicCharacterContext().getRuleSet().getEdition();
-    if (template.getCasteCollection().getAllCasteTypes(edition, statistics.getCharacterTemplate().getTemplateType()).length <= 0) {
+    IExaltedEdition edition = statistics.getCharacterContext().getBasicCharacterContext().getEdition();
+    if (template.getCasteCollection().getAllCasteTypes(edition,
+            statistics.getCharacterTemplate().getTemplateType()).length <= 0) {
       return false;
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
-    IObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties(), template.getEdition());
-    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(edition, statistics.getCharacterTemplate().getTemplateType());
+    IObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties(),
+            template.getEdition());
+    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(edition,
+            statistics.getCharacterTemplate().getTemplateType());
     final IObjectSelectionView<ICasteType> casteView = view.addObjectSelectionView(
-        resources.getString(casteLabelResourceKey),
-        allCasteTypes,
-        new ObjectUiListCellRenderer(casteUi),
-        false);
+            resources.getString(casteLabelResourceKey), allCasteTypes, new ObjectUiListCellRenderer(casteUi), false);
     final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
     casteView.setSelectedObject(caste.getType());
     casteView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ICasteType>() {

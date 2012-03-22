@@ -21,6 +21,7 @@ import net.sf.anathema.lib.collection.Table;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -81,6 +82,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
     		});
   }
   
+  @Override
   public IEquipmentCharacterDataProvider getCharacterDataProvider() {
 	  return provider;
   }
@@ -93,14 +95,17 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
     return defaultMaterial;
   }
 
+  @Override
   public IEquipmentItem[] getNaturalWeapons() {
     return naturalWeaponItems.toArray(new IEquipmentItem[naturalWeaponItems.size()]);
   }
 
+  @Override
   public boolean canBeRemoved(IEquipmentItem item) {
     return !naturalWeaponItems.contains(item);
   }
 
+  @Override
   public String[] getAvailableTemplateIds() {
     final Set<String> idSet = new HashSet<String>();
     equipmentTemplateProvider.queryContainer(new Predicate<IEquipmentTemplate>() {
@@ -139,6 +144,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
     return null;
   }
 
+  @Override
   public MagicalMaterial getDefaultMaterial() {
     return defaultMaterial;
   }
@@ -181,7 +187,8 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
   public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentItem item,
 			IEquipmentStats stats) {
 		if (item == null || stats == null) return new IEquipmentStatsOption[0];
-		return getOptionsList(item, stats).toArray(new IEquipmentStatsOption[0]);
+    List<IEquipmentStatsOption> options = getOptionsList(item, stats);
+    return options.toArray(new IEquipmentStatsOption[options.size()]);
   }
   
   @Override
@@ -190,8 +197,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
 		
 		List<IEquipmentItem> itemList = new ArrayList<IEquipmentItem>();
 		itemList.addAll(naturalWeaponItems);
-		for (IEquipmentItem item : getEquipmentItems())
-			itemList.add(item);
+        Collections.addAll(itemList, getEquipmentItems());
 		for (IEquipmentItem item : itemList)
 			for (IEquipmentStats stat : item.getStats())
 				if (stats.equals(stat))

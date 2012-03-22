@@ -34,7 +34,8 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
 
   public LinguisticsModel(final ICharacterModelContext context) {
     this.context = context;
-    context.getBasicCharacterContext().getRuleSet().getEdition().accept(new IEditionVisitor() {
+    context.getBasicCharacterContext().getEdition().accept(new IEditionVisitor() {
+      @Override
       public void visitFirstEdition(IExaltedEdition visitedEdition) {
         ConfigurableCharacterChangeListener listener = new ConfigurableCharacterChangeListener() {
           @Override
@@ -47,6 +48,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
         updateBarbarianLanguageAllowance();
       }
 
+      @Override
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
         barbarianLanguagesPerPoint = 4;
       }
@@ -74,6 +76,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
     pointControl.fireChangedEvent();
   }
 
+  @Override
   public IIdentificate[] getPredefinedLanguages() {
     return languages;
   }
@@ -91,10 +94,12 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
     return selection != null && !getEntries().contains(selection);
   }
 
+  @Override
   public boolean isPredefinedLanguage(Object object) {
     return ArrayUtilities.containsValue(languages, object);
   }
 
+  @Override
   public void selectBarbarianLanguage(String customName) {
     if (StringUtilities.isNullOrTrimmedEmpty(customName)) {
       this.selection = null;
@@ -103,6 +108,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
     selectLanguage(new Identificate(customName));
   }
 
+  @Override
   public void selectLanguage(final IIdentificate language) {
     Ensure.ensureNotNull(language);
     IIdentificate foundLanguage = Iterables.find(getEntries(), new Predicate<IIdentificate>() {
@@ -118,18 +124,22 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
     fireEntryChanged();
   }
 
+  @Override
   public IIdentificate getPredefinedLanguageById(final String id) {
     return Iterables.find(Arrays.asList(languages), new Predicate<IIdentificate>(){
+      @Override
       public boolean apply(IIdentificate definedLanuage) {
         return Objects.equal(id, definedLanuage.getId());
       }
     },null);
   }
 
+  @Override
   public void addCharacterChangedListener(IChangeListener listener) {
     pointControl.addChangeListener(listener);
   }
 
+  @Override
   public int getBarbarianLanguageCount() {
     int count = 0;
     for (IIdentificate language : getEntries()) {
@@ -140,17 +150,20 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
     return count;
   }
 
+  @Override
   public int getLanguagePointsAllowed() {
 	updateLanguagePointAllowance();
     return languagePointsAllowed;
   }
 
+  @Override
   public int getLanguagePointsSpent() {
     int spent = getPredefinedLanguageCount();
     spent += Math.ceil((double) getBarbarianLanguageCount() / barbarianLanguagesPerPoint);
     return spent;
   }
 
+  @Override
   public int getPredefinedLanguageCount() {
     int count = 0;
     for (IIdentificate language : getEntries()) {

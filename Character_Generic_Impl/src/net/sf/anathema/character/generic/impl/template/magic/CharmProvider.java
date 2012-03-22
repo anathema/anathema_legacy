@@ -71,11 +71,6 @@ public class CharmProvider implements ICharmProvider {
   }
 
   @Override
-  public void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm... charms) {
-    charmsByTypeByRuleSet.add(edition, type, charms);
-  }
-
-  @Override
   public ISpecialCharm[] getSpecialMartialArtsCharms(IExaltedEdition edition) {
     List<ISpecialCharm> specialCharms = martialArtsSpecialCharms.get(edition);
     return specialCharms.toArray(new ISpecialCharm[specialCharms.size()]);

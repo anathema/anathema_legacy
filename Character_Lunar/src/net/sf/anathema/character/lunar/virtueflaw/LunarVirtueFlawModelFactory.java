@@ -10,10 +10,10 @@ import net.sf.anathema.character.lunar.virtueflaw.model.LunarVirtueFlawModel;
 
 public class LunarVirtueFlawModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
-	  if (context.getBasicCharacterContext().getRuleSet().getEdition() == ExaltedEdition.SecondEdition)
-		  return new LunarVirtueFlawModel(context, additionalTemplate);
-	  else
-		  return new HighestTraitVirtueFlawModel(context, additionalTemplate);
+    if (context.getBasicCharacterContext().getEdition() == ExaltedEdition.SecondEdition)
+      return new LunarVirtueFlawModel(context, additionalTemplate);
+    else return new HighestTraitVirtueFlawModel(context, additionalTemplate);
   }
 }

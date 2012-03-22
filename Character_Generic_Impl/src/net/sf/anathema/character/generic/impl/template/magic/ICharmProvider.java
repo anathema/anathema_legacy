@@ -21,7 +21,5 @@ public interface ICharmProvider {
 
   void addMartialArtsSpecialCharm(IExaltedEdition edition, ISpecialCharm charm);
 
-  void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm... charms);
-  
   String getCharmRename(IExaltedRuleSet rules, String name);
 }

@@ -64,11 +64,13 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
     IValueChangeChecker valueChecker = createValueIncrementChecker(traitType);
     if (traitType == AbilityType.Craft) {
       final String[][] crafts = new String[1][];
-      basicCharacterData.getRuleSet().getEdition().accept(new IEditionVisitor() {
+      basicCharacterData.getEdition().accept(new IEditionVisitor() {
+        @Override
         public void visitFirstEdition(IExaltedEdition visitedEdition) {
           crafts[0] = new String[] { "Generic" };//$NON-NLS-1$
         }
 
+        @Override
         public void visitSecondEdition(IExaltedEdition visitedEdition) {
           crafts[0] = new String[] { "Air", "Earth", "Fire", "Water", "Wood" };//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$          
         }

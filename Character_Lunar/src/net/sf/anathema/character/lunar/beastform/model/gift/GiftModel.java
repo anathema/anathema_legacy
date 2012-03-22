@@ -20,15 +20,15 @@ public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel
 
   public GiftModel(final ICharacterModelContext context, IBeastformModel model) {
     super(context);
-    this.allGifts = GiftProvider.getAllGifts(context.getBasicCharacterContext().getRuleSet().getEdition());
+    this.allGifts = GiftProvider.getAllGifts(context.getBasicCharacterContext().getEdition());
     model.addCharmLearnCountChangedListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
-    	  if (context.getBasicCharacterContext().getRuleSet().getEdition() == ExaltedEdition.FirstEdition)
-    		  GiftModel.this.picks = newValue == 0 ? 0 : 2 + newValue - 1;
-    	  else
-    		  GiftModel.this.picks = newValue == 0 ? 0 : 4 + context.getTraitCollection().
-    				  getTrait(OtherTraitType.Essence).getCurrentValue();
-          overviewControl.fireChangedEvent();
+        if (context.getBasicCharacterContext().getEdition() == ExaltedEdition.FirstEdition)
+          GiftModel.this.picks = newValue == 0 ? 0 : 2 + newValue - 1;
+        else GiftModel.this.picks = newValue == 0 ? 0 : 4 + context.getTraitCollection().
+                getTrait(OtherTraitType.Essence).getCurrentValue();
+        overviewControl.fireChangedEvent();
       }
     });
   }
@@ -44,15 +44,15 @@ public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel
     boolean prerequisitesFulfilled = quality.prerequisitesFulfilled(getSelectedQualities());
     return super.isSelectable(quality) && prerequisitesFulfilled;
   }
-  
-  private int getGroupCost(IQualitySelection<IGift>[] selection)
-  {
-	  int total = 0;
-	  for (IQualitySelection<IGift> item : selection)
-		  total += item.getPointValue();
-	  return total;
+
+  private int getGroupCost(IQualitySelection<IGift>[] selection) {
+    int total = 0;
+    for (IQualitySelection<IGift> item : selection)
+      total += item.getPointValue();
+    return total;
   }
 
+  @Override
   public IGift[] getAvailableQualities() {
     ArrayList<IGift> availableGifts = new ArrayList<IGift>();
     for (IGift gift : allGifts) {
@@ -63,20 +63,23 @@ public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel
     }
     return availableGifts.toArray(new IGift[availableGifts.size()]);
   }
-  
-  public int getSpentPicks()
-  {
-	  return getGroupCost(getSelectedQualities());
+
+  @Override
+  public int getSpentPicks() {
+    return getGroupCost(getSelectedQualities());
   }
 
+  @Override
   public int getAllowedPicks() {
     return picks;
   }
 
+  @Override
   public boolean isCreationLearnedSelectionInExperiencedCharacter(IQualitySelection<IGift> selection) {
     return selection.isCreationActive() && getContext().getBasicCharacterContext().isExperienced();
   }
 
+  @Override
   public IGift getGiftById(String giftId) {
     for (IGift gift : allGifts) {
       if (gift.getId().equals(giftId)) {
@@ -84,10 +87,10 @@ public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel
       }
     }
     throw new IllegalArgumentException("No gift found for id \"" //$NON-NLS-1$
-        + giftId
-        + "\"."); //$NON-NLS-1$
+            + giftId + "\"."); //$NON-NLS-1$
   }
-  
+
+  @Override
   public void addOverviewChangedListener(IChangeListener listener) {
     overviewControl.addChangeListener(listener);
   }

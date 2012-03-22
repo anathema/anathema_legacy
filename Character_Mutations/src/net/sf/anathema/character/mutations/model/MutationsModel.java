@@ -13,7 +13,7 @@ public class MutationsModel extends AbstractMutationsModel {
 
   public MutationsModel(final ICharacterModelContext context) {
     super(context);
-    this.allMutations = MutationProvider.getMutations(context.getBasicCharacterContext().getRuleSet().getEdition(), new IMutationRules() {
+    this.allMutations = MutationProvider.getMutations(context.getBasicCharacterContext().getEdition(), new IMutationRules() {
       @Override
       public boolean acceptMutation(IMutation mutation) {
         return true;

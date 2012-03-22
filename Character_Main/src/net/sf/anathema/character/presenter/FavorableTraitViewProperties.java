@@ -27,8 +27,9 @@ public class FavorableTraitViewProperties implements IIconToggleButtonProperties
     this.resources = resources;
   }
 
+  @Override
   public Icon createStandardIcon() {
-    CasteUI casteUI = new CasteUI(resources, context.getRuleSet().getEdition(), properties);
+    CasteUI casteUI = new CasteUI(resources, context.getEdition(), properties);
     if (context.isExperienced() && !ability.getFavorization().isCasteOrFavored()) {
       return casteUI.getEmptyIcon();
     }
@@ -38,10 +39,12 @@ public class FavorableTraitViewProperties implements IIconToggleButtonProperties
     return new CharacterUI(resources).getMediumBallResource(context.getCharacterType());
   }
 
+  @Override
   public Icon createUnselectedIcon() {
     return null;
   }
 
+  @Override
   public String getToolTipText() {
     return null;
   }

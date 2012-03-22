@@ -10,11 +10,11 @@ import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformMod
 
 public class BeastformModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
-	  if (context.getBasicCharacterContext().getRuleSet().getEdition() == ExaltedEdition.FirstEdition)
-	  	return new FirstEditionBeastformModel(context);
-	  else
-		return new SecondEditionBeastformModel(context);
-	  		
+    if (context.getBasicCharacterContext().getEdition() == ExaltedEdition.FirstEdition)
+      return new FirstEditionBeastformModel(context);
+    else return new SecondEditionBeastformModel(context);
+
   }
 }
