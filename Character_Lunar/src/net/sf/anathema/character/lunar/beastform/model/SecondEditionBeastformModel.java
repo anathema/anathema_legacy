@@ -1,8 +1,5 @@
 package net.sf.anathema.character.lunar.beastform.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
@@ -16,7 +13,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
-import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
 import net.sf.anathema.character.lunar.beastform.model.gift.SecondEditionMutationModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
@@ -26,8 +22,10 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter implements IBeastformModel {
-  private final static String DEADLY_BEASTMAN_TRANSFORMATION = "Lunar.DeadlyBeastmanTransformation";
   private final ICharacterModelContext context;
   private final IntValueControl charmLearnControl = new IntValueControl();
   private final IBeastformGroupCost cost;
@@ -45,10 +43,13 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     this.spiritCollection = new BeastformTraitCollection();
     this.cost = new BeastformGroupCost(beastCollection, this);
     createAttributes();
-    this.allTraitsCollection = new BeastformGenericTraitCollection(context.getTraitCollection(), beastCollection, mutationModel);
-    
-    IEquipmentAdditionalModel equipment = (IEquipmentAdditionalModel) context.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
-    this.equipmentModel = new EquipmentPrintModel(equipment, new BeastformNaturalSoak(allTraitsCollection, mutationModel));
+    this.allTraitsCollection = new BeastformGenericTraitCollection(context.getTraitCollection(), beastCollection,
+            mutationModel);
+
+    IEquipmentAdditionalModel equipment = (IEquipmentAdditionalModel) context.getAdditionalModel(
+            IEquipmentAdditionalModelTemplate.ID);
+    this.equipmentModel = new EquipmentPrintModel(equipment,
+            new BeastformNaturalSoak(allTraitsCollection, mutationModel));
     context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void characterChanged() {
@@ -57,47 +58,31 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     });
     update();
   }
-  
+
+  @Override
   public IEquipmentPrintModel getEquipmentModel() {
     return equipmentModel;
   }
 
   private void createAttributes() {
     List<IBeastformAttribute> attributes = new ArrayList<IBeastformAttribute>();
-    attributes.add(new BeastformAttribute(
-    	context,
-        context.getTraitCollection().getTrait(AttributeType.Strength),
-        1,
-        cost));
-    attributes.add(new BeastformAttribute(
-    	context,
-        context.getTraitCollection().getTrait(AttributeType.Dexterity),
-        2,
-        cost));
-    attributes.add(new BeastformAttribute(
-    	context,
-        context.getTraitCollection().getTrait(AttributeType.Stamina),
-        1,
-        cost));
+    attributes.add(
+            new BeastformAttribute(context, context.getTraitCollection().getTrait(AttributeType.Strength), 1, cost));
+    attributes.add(
+            new BeastformAttribute(context, context.getTraitCollection().getTrait(AttributeType.Dexterity), 2, cost));
+    attributes.add(
+            new BeastformAttribute(context, context.getTraitCollection().getTrait(AttributeType.Stamina), 1, cost));
     for (IBeastformAttribute attribute : attributes) {
-    	beastCollection.addBeastFormAttribute(attribute);
+      beastCollection.addBeastFormAttribute(attribute);
     }
-    
+
     attributes.clear();
-    attributes.add(new SpiritFormAttribute(
-        context.getTraitCollection().getTrait(AttributeType.Strength),
-        context));
-    attributes.add(new SpiritFormAttribute(
-        context.getTraitCollection().getTrait(AttributeType.Dexterity),
-        context));
-    attributes.add(new SpiritFormAttribute(
-        context.getTraitCollection().getTrait(AttributeType.Stamina),
-        context));
-    attributes.add(new SpiritFormAttribute(
-        context.getTraitCollection().getTrait(AttributeType.Appearance),
-        context));
+    attributes.add(new SpiritFormAttribute(context.getTraitCollection().getTrait(AttributeType.Strength), context));
+    attributes.add(new SpiritFormAttribute(context.getTraitCollection().getTrait(AttributeType.Dexterity), context));
+    attributes.add(new SpiritFormAttribute(context.getTraitCollection().getTrait(AttributeType.Stamina), context));
+    attributes.add(new SpiritFormAttribute(context.getTraitCollection().getTrait(AttributeType.Appearance), context));
     for (IBeastformAttribute attribute : attributes) {
-    	spiritCollection.addBeastFormAttribute(attribute);
+      spiritCollection.addBeastFormAttribute(attribute);
     }
   }
 
@@ -107,10 +92,11 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
       attribute.recalculate();
     }
     for (IBeastformAttribute attribute : getSpiritAttributes()) {
-        attribute.recalculate();
-      }
+      attribute.recalculate();
+    }
   }
 
+  @Override
   public IBeastformAttribute[] getAttributes() {
     List<IBeastformAttribute> traits = new ArrayList<IBeastformAttribute>();
     for (AttributeType type : AttributeType.getAllFor(AttributeGroupType.Physical)) {
@@ -118,83 +104,75 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     }
     return traits.toArray(new IBeastformAttribute[traits.size()]);
   }
-  
-  public String getSpiritForm()
-  {
-	  return spiritForm;
+
+  public String getSpiritForm() {
+    return spiritForm;
   }
-  
-  public void setSpiritForm(String newName)
-  {
-	  spiritForm = newName;
+
+  public void setSpiritForm(String newName) {
+    spiritForm = newName;
   }
-  
+
   public IBeastformAttribute[] getSpiritAttributes() {
-	    List<IBeastformAttribute> traits = new ArrayList<IBeastformAttribute>();
-	    for (AttributeType type : AttributeType.getAllFor(AttributeGroupType.Physical)) {
-	      traits.add(spiritCollection.getDeadlyBeastmanAttribute(type));
-	    }
-	    traits.add(spiritCollection.getDeadlyBeastmanAttribute(AttributeType.Appearance));
-	    return traits.toArray(new IBeastformAttribute[traits.size()]);
-	  }
-
-  public void setCharmLearnCount(int newValue) {
-    context.getMagicCollection().setLearnCount(DEADLY_BEASTMAN_TRANSFORMATION, newValue);
+    List<IBeastformAttribute> traits = new ArrayList<IBeastformAttribute>();
+    for (AttributeType type : AttributeType.getAllFor(AttributeGroupType.Physical)) {
+      traits.add(spiritCollection.getDeadlyBeastmanAttribute(type));
+    }
+    traits.add(spiritCollection.getDeadlyBeastmanAttribute(AttributeType.Appearance));
+    return traits.toArray(new IBeastformAttribute[traits.size()]);
   }
-
+  @Override
   public int getCharmValue() {
-	  for (ICharm charm : context.getCharmContext().getCharmConfiguration().getLearnedCharms())
-		  if (charm.getId().equals("Lunar.DeadlyBeastmanTransformation"))
-			  return 1;
-	  return 0;
+    for (ICharm charm : context.getCharmContext().getCharmConfiguration().getLearnedCharms())
+      if (charm.getId().equals("Lunar.DeadlyBeastmanTransformation")) return 1;
+    return 0;
   }
 
+  @Override
   public void addCharmLearnCountChangedListener(IIntValueChangedListener listener) {
     charmLearnControl.addIntValueChangeListener(listener);
   }
 
+  @Override
   public String getTemplateId() {
     return BeastformTemplate.TEMPLATE_ID;
   }
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Magic;
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     mutationModel.addModelChangeListener(listener);
     for (IBeastformAttribute trait : getAttributes()) {
       trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
     }
     for (IBeastformAttribute trait : getSpiritAttributes()) {
-        trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
-      }
+      trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
+    }
   }
 
-  public IGiftModel getGiftModel() {
-    return null;
-  }
-  
+  @Override
   public IMutationsModel getMutationModel() {
-	    return mutationModel;
-	  }
-
-  public IBeastformGroupCost getAttributeCostModel() {
-    return cost;
+    return mutationModel;
   }
 
+  @Override
   public IBeastformAttribute getAttributeByType(AttributeType type) {
     return beastCollection.getDeadlyBeastmanAttribute(type);
   }
-  
+
   public IBeastformAttribute getSpiritAttributeByType(AttributeType type) {
-	    return spiritCollection.getDeadlyBeastmanAttribute(type);
-	  }
+    return spiritCollection.getDeadlyBeastmanAttribute(type);
+  }
 
   public IGenericTraitCollection getSpiritTraitCollection() {
-	    return spiritCollection;
-	  }
-  
+    return spiritCollection;
+  }
+
+  @Override
   public IGenericTraitCollection getBeastTraitCollection() {
     return allTraitsCollection;
   }

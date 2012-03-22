@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
-import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificCharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
@@ -40,7 +39,6 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.FirstEdition;
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.LUNAR;
 
@@ -48,7 +46,6 @@ import static net.sf.anathema.character.generic.type.CharacterType.LUNAR;
 public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_HEARTS_BLOOD_HUMAN = "HeartsBloodHuman"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_RENOWN = "Renown"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_REPUTATION = "Reputation"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SOLAR_BOND = "SolarBond"; //$NON-NLS-1$
@@ -82,7 +79,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(LunarVirtueFlawTemplate.TEMPLATE_ID, new LunarVirtueFlawParser());
 
     Map<IExaltedEdition, ICasteType[]> editionMap = new HashMap<IExaltedEdition, ICasteType[]>();
-    editionMap.put(FirstEdition, LunarCaste.getModernValues());
     editionMap.put(SecondEdition, LunarCaste.values());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
     templateMap.put(castelessType, new ICasteType[]{});
@@ -96,8 +92,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD, LUNAR));
-    backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD_HUMAN, LUNAR, FirstEdition));
-    backgroundRegistry.add(new EditionSpecificBackgroundTemplate(BACKGROUND_ID_RENOWN, FirstEdition));
 
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SOLAR_BOND, LUNAR));
     backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, LUNAR, SecondEdition));

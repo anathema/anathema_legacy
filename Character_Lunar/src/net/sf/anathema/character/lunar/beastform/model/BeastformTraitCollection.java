@@ -1,13 +1,11 @@
 package net.sf.anathema.character.lunar.beastform.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
-import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class BeastformTraitCollection extends AbstractTraitCollection implements IBeastformTraitCollection {
 
@@ -18,12 +16,8 @@ public class BeastformTraitCollection extends AbstractTraitCollection implements
     attributesByType.put(attribute.getTrait().getType(), attribute);
   }
 
+  @Override
   public IBeastformAttribute getDeadlyBeastmanAttribute(ITraitType traitType) {
     return attributesByType.get(traitType);
-  }
-
-  public <T extends IBeastformAttribute & IDefaultTrait> int getTraitPointCost(T trait) {
-    Ensure.ensureArgumentTrue("Trait not in collection.", contains(trait.getType())); //$NON-NLS-1$
-    return trait.getPointCost();
   }
 }

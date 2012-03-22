@@ -4,30 +4,22 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.lunar.beastform.model.IBeastformGroupCost;
-import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
 import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public interface IBeastformModel extends IAdditionalModel {
 
-  public int getCharmValue();
+  int getCharmValue();
 
-  public void setCharmLearnCount(int newValue);
+  void addCharmLearnCountChangedListener(IIntValueChangedListener listener);
 
-  public void addCharmLearnCountChangedListener(IIntValueChangedListener listener);
+  IBeastformAttribute[] getAttributes();
 
-  public IBeastformAttribute[] getAttributes();
+  IMutationsModel getMutationModel();
 
-  public IGiftModel getGiftModel();
-  
-  public IMutationsModel getMutationModel();
+  IEquipmentPrintModel getEquipmentModel();
 
-  public IEquipmentPrintModel getEquipmentModel();
+  IBeastformAttribute getAttributeByType(AttributeType type);
 
-  public IBeastformGroupCost getAttributeCostModel();
-  
-  public IBeastformAttribute getAttributeByType(AttributeType type);
-  
-  public IGenericTraitCollection getBeastTraitCollection();
+  IGenericTraitCollection getBeastTraitCollection();
 }

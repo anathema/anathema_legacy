@@ -8,8 +8,6 @@ public interface IBeastformViewProperties
   
   public String getDBTBoxString();
 	
-  public String getCharmString();
-
   public String getAttributesString();
 
   public String getGiftsString();

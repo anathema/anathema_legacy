@@ -26,6 +26,7 @@ public class SpiritFormAttribute implements IBeastformAttribute
     ITraitTemplate template = SimpleTraitTemplate.createStaticLimitedTemplate(1, 12);
     TraitRules traitRules = new TraitRules(baseTrait.getType(), template, context.getLimitationContext());
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
+      @Override
       public boolean isValidNewValue(int value) {
     	  return value != spiritTrait.getCurrentValue() &&
     	  	!charContext.getBasicCharacterContext().isExperienced();
@@ -33,24 +34,29 @@ public class SpiritFormAttribute implements IBeastformAttribute
     };
     spiritTrait = new DefaultTrait(traitRules, context, incrementChecker);
     spiritTrait.addCurrentValueListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         SpiritFormAttribute.this.newValue = newValue;
       }
     });
   }
 
+  @Override
   public int getPointCost() {
     return 0;
   }
 
+  @Override
   public IDefaultTrait getTrait() {
     return spiritTrait;
   }
 
+  @Override
   public int getAdditionalDots() {
     return 0;
   }
 
+  @Override
   public void recalculate() {
     spiritTrait.setCurrentValue(newValue);
   }
