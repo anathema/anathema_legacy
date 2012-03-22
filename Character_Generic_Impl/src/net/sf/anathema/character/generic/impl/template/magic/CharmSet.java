@@ -1,63 +1,48 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.IIdentificate;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet.SecondEdition;
+import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
 
 public class CharmSet implements ICharmSet {
 
-  private final Map<IExaltedRuleSet, ICharm[]> charmMap;
-  private final Map<IExaltedRuleSet, ICharm[]> uniqueCharmMap;
-  private final Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap;
+  private final ICharm[] charms;
+  private final ICharm[] uniqueCharms;
+  private final ICharm[] martialArtsCharms;
 
   public static ICharmSet createRegularCharmSet(ICharmCache charmProvider, ICharacterType characterType,
                                                 IUniqueCharmType uniqueType) {
-    Map<IExaltedRuleSet, ICharm[]> charmMap = createCharmTreeMap(charmProvider, characterType);
-    Map<IExaltedRuleSet, ICharm[]> uniqueCharmMap = null;
-    Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap = createCharmTreeMap(charmProvider,
-            MartialArtsUtilities.MARTIAL_ARTS);
+    ICharm[] charms = charmProvider.getCharms(characterType);
+    ICharm[] uniqueCharms = new ICharm[0];
+    ICharm[] martialArtsCharms = charmProvider.getCharms(MARTIAL_ARTS);
     if (uniqueType != null) {
-      uniqueCharmMap = createCharmTreeMap(charmProvider, uniqueType.getId());
+      uniqueCharms = charmProvider.getCharms(uniqueType.getId());
     }
-    return new CharmSet(charmMap, uniqueCharmMap, martialArtsCharmMap);
+    return new CharmSet(charms, uniqueCharms, martialArtsCharms);
   }
 
-  private static Map<IExaltedRuleSet, ICharm[]> createCharmTreeMap(ICharmCache charmProvider,
-                                                                   IIdentificate characterType) {
-    Map<IExaltedRuleSet, ICharm[]> charmMap = new HashMap<IExaltedRuleSet, ICharm[]>();
-    charmMap.put(SecondEdition, charmProvider.getCharms(characterType));
-    return charmMap;
-  }
-
-  private CharmSet(Map<IExaltedRuleSet, ICharm[]> charmMap, Map<IExaltedRuleSet, ICharm[]> uniqueCharmMap,
-                   Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap) {
-    this.charmMap = charmMap;
-    this.uniqueCharmMap = uniqueCharmMap;
-    this.martialArtsCharmMap = martialArtsCharmMap;
+  private CharmSet(ICharm[] charms, ICharm[] uniqueCharms, ICharm[] martialArtsCharms) {
+    this.charms = charms;
+    this.uniqueCharms = uniqueCharms;
+    this.martialArtsCharms = martialArtsCharms;
   }
 
   @Override
-  public ICharm[] getCharms(IExaltedRuleSet set) {
-    return charmMap.get(set);
+  public ICharm[] getCharms() {
+    return charms;
   }
 
   @Override
-  public ICharm[] getUniqueCharms(IExaltedRuleSet set) {
-    return uniqueCharmMap.get(set);
+  public ICharm[] getUniqueCharms() {
+    return uniqueCharms;
   }
 
   @Override
-  public ICharm[] getMartialArtsCharms(IExaltedRuleSet set) {
-    return martialArtsCharmMap.get(set);
+  public ICharm[] getMartialArtsCharms() {
+    return martialArtsCharms;
   }
 }

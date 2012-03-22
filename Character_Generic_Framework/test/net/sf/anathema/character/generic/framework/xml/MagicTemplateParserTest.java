@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.dummy.magic.DummyMartialArtsRules;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplateParser;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
@@ -95,7 +94,7 @@ public class MagicTemplateParserTest {
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     ICharmTemplate charmTemplate = template.getCharmTemplate();
     assertEquals(MartialArtsLevel.Mortal, charmTemplate.getMartialArtsRules().getStandardLevel());
-    assertFalse(charmTemplate.canLearnCharms(ExaltedRuleSet.SecondEdition));
+    assertFalse(charmTemplate.canLearnCharms());
   }
 
   @Test

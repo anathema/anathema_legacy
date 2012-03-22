@@ -44,7 +44,7 @@ public class CharmConfigurationPersister {
   public void save(Element parent, ICharacterStatistics statistics) {
     ICharacterTemplate template = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
-    if (!charmTemplate.canLearnCharms(statistics.getRules())) {
+    if (!charmTemplate.canLearnCharms()) {
       return;
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);

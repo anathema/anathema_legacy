@@ -33,6 +33,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     super(partEncoder, resources, configuration);
   }
 
+  @Override
   public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
     float distanceFromTop = 0;
     IGenericCharacter character = content.getCharacter();
@@ -74,7 +75,7 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
     // Charm pages (if necessary)
     ICharmTemplate charmTemplate = character.getTemplate().getMagicTemplate().getCharmTemplate();
-    if (charmTemplate.canLearnCharms(character.getRules())) {
+    if (charmTemplate.canLearnCharms()) {
       if (restartPage) {
         document.newPage();
         distanceFromTop = 0;

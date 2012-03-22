@@ -1,19 +1,22 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.template.magic.ICharmSet;
 
 public class NullCharmSet implements ICharmSet {
 
-  public ICharm[] getCharms(IExaltedRuleSet set) {
+  @Override
+  public ICharm[] getCharms() {
     return new ICharm[0];
   }
   
-  public ICharm[] getUniqueCharms(IExaltedRuleSet set) {
+  @Override
+  public ICharm[] getUniqueCharms() {
 	return new ICharm[0];
   }
 
-  public ICharm[] getMartialArtsCharms(IExaltedRuleSet set) {
+  @Override
+  public ICharm[] getMartialArtsCharms() {
     return new ICharm[0];
   }
 }

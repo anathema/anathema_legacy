@@ -93,7 +93,7 @@ public class CharacterPresenter implements Presenter, MultiTabViewPresenter {
 
   private void initMagicPresentation() {
     ICharacterTemplate characterTemplate = getStatistics().getCharacterTemplate();
-    if (!characterTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms(getStatistics().getRules())) {
+    if (!characterTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms()) {
       return;
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$

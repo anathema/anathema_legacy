@@ -48,7 +48,7 @@ public class MagicPresenter implements IContentPresenter {
     this.anathemaModel = anathemaModel;
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
-    if (charmTemplate.canLearnCharms(statistics.getRules())) {
+    if (charmTemplate.canLearnCharms()) {
       subPresenters.add(createCharmPresenter(statistics, factory, resources, templateRegistry));
       subPresenters.add(new ComboConfigurationPresenter(resources, createComboModel(statistics), factory));
     }

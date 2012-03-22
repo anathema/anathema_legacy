@@ -4,11 +4,9 @@ import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -46,40 +44,33 @@ public class CascadeGroupCollection implements CharmGroupCollection {
         continue;
       }
       ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
-      if (charmTemplate.canLearnCharms(ExaltedRuleSet.SecondEdition)) {
-        IExaltedRuleSet ruleSet = ExaltedRuleSet.SecondEdition;
-        registerTypeCharms(allCharmGroups, type, template, ruleSet);
-        registerUniqueCharms(allCharmGroups, charmTemplate, ruleSet);
+      if (charmTemplate.canLearnCharms()) {
+        registerTypeCharms(allCharmGroups, type, template);
+        registerUniqueCharms(allCharmGroups, charmTemplate);
       }
     }
   }
 
   private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups, IExaltedEdition edition) {
     ICharacterTemplate template = templateRegistry.getDefaultTemplate(CharacterType.SIDEREAL, edition);
-    ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate(),
-            ExaltedRuleSet.SecondEdition);
+    ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate());
     treeIdentificateMap.put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
     allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
   }
 
-  private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate,
-                                    IExaltedRuleSet rules) {
+  private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate) {
     if (!charmTemplate.hasUniqueCharms()) {
       return;
     }
     IUniqueCharmType uniqueType = charmTemplate.getUniqueCharmType();
-    ICharmTree uniqueTree = new CharmTree(charmTemplate.getUniqueCharms(rules));
+    ICharmTree uniqueTree = new CharmTree(charmTemplate.getUniqueCharms());
     registerGroups(allCharmGroups, uniqueType.getId(), uniqueTree);
   }
 
   private void registerTypeCharms(List<ICharmGroup> allCharmGroups, ICharacterType type,
-                                  ICharacterTemplate defaultTemplate, IExaltedRuleSet ruleSet) {
-    ICharmTree typeTree = getTypeCharmTree(defaultTemplate, ruleSet);
+                                  ICharacterTemplate defaultTemplate) {
+    ICharmTree typeTree = new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate());
     registerGroups(allCharmGroups, type, typeTree);
-  }
-
-  private ICharmTree getTypeCharmTree(ICharacterTemplate defaultTemplate, IExaltedRuleSet ruleSet) {
-    return new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate(), ruleSet);
   }
 
   private void registerGroups(List<ICharmGroup> allCharmGroups, IIdentificate typeId, ICharmTree charmTree) {

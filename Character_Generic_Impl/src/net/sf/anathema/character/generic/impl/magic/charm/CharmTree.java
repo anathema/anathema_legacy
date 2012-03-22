@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 
 import java.util.ArrayList;
@@ -20,8 +19,8 @@ public class CharmTree implements ICharmTree {
   private final Map<String, ICharm> charmById = new HashMap<String, ICharm>();
   private ICharm[] allCharms;
 
-  public CharmTree(ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
-    this(charmTemplate.getCharms(rules));
+  public CharmTree(ICharmTemplate charmTemplate) {
+    this(charmTemplate.getCharms());
   }
 
   public CharmTree(ICharm[] charms) {

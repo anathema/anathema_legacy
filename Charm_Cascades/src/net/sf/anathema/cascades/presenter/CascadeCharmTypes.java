@@ -1,7 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -30,7 +29,7 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
       if (defaultTemplate == null) {
         continue;
       }
-      if (defaultTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms(ExaltedRuleSet.SecondEdition)) {
+      if (defaultTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms()) {
         set.add(type);
       }
     }

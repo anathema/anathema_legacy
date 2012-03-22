@@ -21,7 +21,6 @@ import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModif
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -85,16 +84,15 @@ public class CharmConfiguration implements ICharmConfiguration {
     this.manager = new SpecialCharmManager(this, health, context);
     this.context = context;
     this.provider = provider;
-    IExaltedRuleSet rules = context.getBasicCharacterContext().getRuleSet();
     List<ICharacterType> allCharacterTypes = new ArrayList<ICharacterType>();
     ICharmTemplate nativeCharmTemplate = getNativeCharmTemplate(registry);
     this.arbitrator = new LearningCharmGroupArbitrator(nativeCharmTemplate, context);
-    this.martialArtsCharmTree = new MartialArtsCharmTree(nativeCharmTemplate, rules);
+    this.martialArtsCharmTree = new MartialArtsCharmTree(nativeCharmTemplate);
     this.martialArtsGroups = createGroups(martialArtsCharmTree.getAllCharmGroups());
-    initCharacterType(nativeCharmTemplate, rules, getNativeCharacterType());
+    initCharacterType(nativeCharmTemplate, getNativeCharacterType());
     allCharacterTypes.add(getNativeCharacterType());
-    initAlienTypes(registry, rules, allCharacterTypes);
-    initUniqueTypes(nativeCharmTemplate, rules);
+    initAlienTypes(registry, allCharacterTypes);
+    initUniqueTypes(nativeCharmTemplate);
     initSpecialCharmConfigurations();
     types = allCharacterTypes.toArray(new ICharacterType[allCharacterTypes.size()]);
     filterSet.add(new ObtainableCharmFilter(this));
@@ -337,20 +335,20 @@ public class CharmConfiguration implements ICharmConfiguration {
     return manager.getSpecialCharmConfiguration(charm);
   }
 
-  private void initCharacterType(ICharmTemplate charmTemplate, IExaltedRuleSet rules, ICharacterType type) {
-    CharmTree charmTree = new CharmTree(charmTemplate, rules);
+  private void initCharacterType(ICharmTemplate charmTemplate, ICharacterType type) {
+    CharmTree charmTree = new CharmTree(charmTemplate);
     alienTreesByType.put(type, charmTree);
     ILearningCharmGroup[] groups = createGroups(charmTree.getAllCharmGroups());
     nonMartialArtsGroupsByType.put(type, groups);
     templatesByType.put(type, charmTemplate);
   }
 
-  private void initUniqueTypes(ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
+  private void initUniqueTypes(ICharmTemplate charmTemplate) {
     if (!charmTemplate.hasUniqueCharms()) {
       return;
     }
     IUniqueCharmType type = charmTemplate.getUniqueCharmType();
-    CharmTree charmTree = new CharmTree(charmTemplate.getUniqueCharms(rules));
+    CharmTree charmTree = new CharmTree(charmTemplate.getUniqueCharms());
     ILearningCharmGroup[] groups = createGroups(charmTree.getAllCharmGroups());
     nonMartialArtsGroupsByType.put(type.getId(), groups);
     alienTreesByType.put(type.getId(), charmTree);
@@ -365,14 +363,14 @@ public class CharmConfiguration implements ICharmConfiguration {
     return defaultTemplate.getMagicTemplate().getCharmTemplate();
   }
 
-  private void initAlienTypes(ITemplateRegistry registry, IExaltedRuleSet rules, List<ICharacterType> characterTypes) {
+  private void initAlienTypes(ITemplateRegistry registry, List<ICharacterType> characterTypes) {
     for (ICharacterType type : CharacterType.values()) {
       if (characterTypes.contains(type)) {
         continue;
       }
       ICharmTemplate charmTemplate = getCharmTemplate(registry, type);
-      if (charmTemplate != null && charmTemplate.canLearnCharms(rules)) {
-        initCharacterType(charmTemplate, rules, type);
+      if (charmTemplate != null && charmTemplate.canLearnCharms()) {
+        initCharacterType(charmTemplate, type);
         characterTypes.add(type);
       }
     }
