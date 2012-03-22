@@ -7,11 +7,18 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.github.com
 
 ===------------------------------------------------------------------------------===
-			Release 3.x.x
+			Release 3.2.5
 ===------------------------------------------------------------------------------===
 
 -- Changes for Exalted 2.5 --
 * Updated Sidereal XP Cost
+* Errata'd Orichalcum
+* Changed Dragon-Blooded Charms
+* Added "Shield#" & "Thrust" Tags
+
+Anathema no longer supports First Edition or "classic" Second Edition.
+It will create a backup ZIP of your repository on first launch and then delete all 1E Characters.
+"Classic" 2E characters will be updated to the new rules.
 
 -- Features --
 * You can now enter your own descriptions for Charms and Spells. To do, CTRL-click your Charm and type away.
