@@ -10,7 +10,7 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.ItemAttunementEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArmourStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArtifactStats;
@@ -40,7 +40,7 @@ public class EquipmentItem implements IEquipmentItem {
   private final MagicalMaterial material;
 
   public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet, MagicalMaterial material,
-		  IEquipmentCharacterDataProvider provider) {
+		  ItemAttunementEvaluator provider) {
     if (template.getComposition() == MaterialComposition.Variable && material == null) {
       throw new MissingMaterialException("Variable material items must be created with material."); //$NON-NLS-1$
     }
@@ -51,7 +51,7 @@ public class EquipmentItem implements IEquipmentItem {
     initPrintStats(provider);
   }
   
-  private void initPrintStats(IEquipmentCharacterDataProvider provider) {
+  private void initPrintStats(ItemAttunementEvaluator provider) {
 	  IArtifactStats bestAttune = null;
 	  for (IEquipmentStats stat : getViews()) {
 		  if (stat instanceof IArtifactStats) {
@@ -74,16 +74,19 @@ public class EquipmentItem implements IEquipmentItem {
 	  return false;
   }
 
+  @Override
   public String getDescription() {
     return template.getDescription();
   }
 
+  @Override
   public IEquipmentStats[] getStats() {
     IEquipmentStats[] views = getViews();
     if (template.getComposition() != MaterialComposition.Variable) {
       return views;
     }
     return ArrayUtilities.transform(views, IEquipmentStats.class, new ITransformer<IEquipmentStats, IEquipmentStats>() {
+      @Override
       public IEquipmentStats transform(final IEquipmentStats input) {
         if (input instanceof IArmourStats) {
           return new ProxyArmourStats((IArmourStats) input, material, ruleSet);
@@ -91,10 +94,9 @@ public class EquipmentItem implements IEquipmentItem {
         if (input instanceof IWeaponStats) {
           return new ProxyWeaponStats((IWeaponStats) input, material, ruleSet);
         }
-        if (input instanceof IArtifactStats)
-          return new ProxyArtifactStats((IArtifactStats) input, material, ruleSet);
+        if (input instanceof IArtifactStats) return new ProxyArtifactStats((IArtifactStats) input, material, ruleSet);
         if (input instanceof ITraitModifyingStats)
-          return new ProxyTraitModifyingStats((ITraitModifyingStats)input, material, ruleSet);
+          return new ProxyTraitModifyingStats((ITraitModifyingStats) input, material, ruleSet);
         return new ProxyShieldStats((IShieldStats) input, material, ruleSet);
       }
     });
@@ -119,14 +121,17 @@ public class EquipmentItem implements IEquipmentItem {
     return views.toArray(new IEquipmentStats[views.size()]);
   }
 
+  @Override
   public String getTemplateId() {
     return template.getName();
   }
 
+  @Override
   public MagicalMaterial getMaterial() {
     return material;
   }
 
+  @Override
   public MaterialComposition getMaterialComposition() {
     return template.getComposition();
   }
@@ -140,6 +145,7 @@ public class EquipmentItem implements IEquipmentItem {
   	return ArtifactAttuneType.Unattuned;
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public boolean isPrintEnabled(IEquipmentStats stats) {
     if (stats instanceof IProxy<?>) {
@@ -149,6 +155,7 @@ public class EquipmentItem implements IEquipmentItem {
     return printedStats.contains(stats);
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public void setPrintEnabled(IEquipmentStats stats, boolean enabled) {
     if (stats instanceof IProxy<?>) {
@@ -167,11 +174,13 @@ public class EquipmentItem implements IEquipmentItem {
     changeControl.fireChangedEvent();
   }
 
+  @Override
   public void setUnprinted() {
     printedStats.clear();
     changeControl.fireChangedEvent();
   }
 
+  @Override
   public void setPrinted(String printedStatId) {
     for (IEquipmentStats view : getViews()) {
       if (view.getId().equals(printedStatId)) {
@@ -181,6 +190,7 @@ public class EquipmentItem implements IEquipmentItem {
     }
   }
   
+  @Override
   public IEquipmentStats getStat(String statId) {
 	for (IEquipmentStats view : getViews()) {
 	    if (view.getId().equals(statId)) {
@@ -190,10 +200,12 @@ public class EquipmentItem implements IEquipmentItem {
 	return null;
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
 
+  @Override
   public void removeChangeListener(IChangeListener listener) {
     changeControl.removeChangeListener(listener);
   }
