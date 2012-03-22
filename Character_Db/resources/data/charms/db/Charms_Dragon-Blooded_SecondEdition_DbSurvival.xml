@@ -14,6 +14,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.TrailConcealingMeasurement" exalt="Dragon-Blooded" group="Survival">
@@ -30,6 +31,7 @@
  <duration amount="1" unit="day"/>
  <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.RationEnhancingMethod" exalt="Dragon-Blooded" group="Survival">
@@ -43,10 +45,11 @@
    <essence cost="1"/>
   
  </cost>
- <duration amount="1" unit="hour" /> <!-- Added to CharmDuration -->
+ <duration amount="1" unit="hour" />
  <charmtype type="Supplemental" />
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.HostileEnvironmentPreparationMethod" exalt="Dragon-Blooded" group="Survival">
@@ -63,6 +66,7 @@
  <duration amount="1" unit="day"/>
  <charmtype type="Simple"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.TirelessCaravanPrana" exalt="Dragon-Blooded" group="Survival">
@@ -102,6 +106,7 @@
  <charmAttribute attribute="Shaping" visualize="true"/>
  <elemental/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.ExtensionElementDragon'sBlessing" exalt="Dragon-Blooded" group="Survival">
@@ -120,6 +125,7 @@
  <charmAttribute attribute="Elemental" visualize="true"/>
  <elemental/>
  <source source="DragonBlooded2nd"/>
+ <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.Nature'sHealingBounty" exalt="Dragon-Blooded" group="Survival">
@@ -134,5 +140,6 @@
  <charmtype type="Permanent"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 </charmlist>

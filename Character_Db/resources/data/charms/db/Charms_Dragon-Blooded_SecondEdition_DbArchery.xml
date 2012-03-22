@@ -16,6 +16,7 @@
  <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.SwallowsDefendNest" exalt="Dragon-Blooded" group="Archery">
@@ -34,6 +35,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Leader5" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.DragonflyFindsMate" exalt="Dragon-Blooded" group="Archery">
@@ -54,6 +56,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.SevenYearSwarmVolley" exalt="Dragon-Blooded" group="Archery">
@@ -73,6 +76,7 @@
  <charmAttribute attribute="Combo-Basic" visualize="true"/>
  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.SparrowDivesAtHawk" exalt="Dragon-Blooded" group="Archery">
@@ -93,6 +97,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Counterattack" visualize="true"/> <!-- Is this legal??? -->
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.HarvestHunter" exalt="Dragon-Blooded" group="Archery">
@@ -110,6 +115,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.UnobstructedHunter'sAim" exalt="Dragon-Blooded" group="Archery">
@@ -131,6 +137,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Leader4" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.LifeSwellingSapStrike" exalt="Dragon-Blooded" group="Archery">
@@ -150,6 +157,7 @@
  <charmAttribute attribute="Holy" visualize="true"/>
  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 <charm id="Dragon-Blooded.RavenousThornTechnique" exalt="Dragon-Blooded" group="Archery">
  <prerequisite>
@@ -167,5 +175,6 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 </charmlist>

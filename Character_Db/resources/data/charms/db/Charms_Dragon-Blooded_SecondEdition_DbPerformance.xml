@@ -14,6 +14,7 @@
  <charmtype type="Reflexive"/>
  <charmAttribute attribute="Combo-OK" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.DanceFlashingSwords" exalt="Dragon-Blooded" group="Performance">
@@ -34,6 +35,7 @@
  <charmAttribute attribute="Illusion" visualize="true"/>
  <charmAttribute attribute="Leader5" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.BlossomHidesThorns" exalt="Dragon-Blooded" group="Performance">
@@ -54,6 +56,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Illusion" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.NewVoiceTechnique" exalt="Dragon-Blooded" group="Performance">
@@ -91,6 +94,7 @@
  <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Stackable" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.SoulStirringPerformanceMethod" exalt="Dragon-Blooded" group="Performance">
@@ -112,6 +116,7 @@
  <charmAttribute attribute="Emotion" visualize="true"/>
  <charmAttribute attribute="Social" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.ProtectivePerformance" exalt="Dragon-Blooded" group="Performance">
@@ -131,6 +136,7 @@
  <charmAttribute attribute="Compulsion" visualize="true"/>
  <charmAttribute attribute="Leader" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.InvisibleStreetPerformerTechnique" exalt="Dragon-Blooded" group="Performance">
@@ -148,6 +154,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Illusion" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.TirelessStringPluckingMeditation" exalt="Dragon-Blooded" group="Performance">
@@ -165,6 +172,7 @@
  <charmtype type="Simple"/>
  <charmAttribute attribute="Combo-Basic" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.VibratingStringsDefense" exalt="Dragon-Blooded" group="Performance">
@@ -186,13 +194,13 @@
  <charmAttribute attribute="Leader" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 
 <charm id="Dragon-Blooded.ThreeStringSwordPrana" exalt="Dragon-Blooded" group="Performance">
  <prerequisite>
-  <trait id="Performance" value="5"/>
-  <essence value="3"/>
-  <charmReference id="Dragon-Blooded.VibratingStringsDefense"/>
+  <trait id="Performance" value="2"/>
+  <essence value="2"/>
  </prerequisite>
  <cost>
   
@@ -205,5 +213,6 @@
  <charmAttribute attribute="Cooperative" visualize="true"/>
  <charmAttribute attribute="Obvious" visualize="true"/>
   <source source="DragonBlooded2nd"/>
+  <source source="ScrollErrata"/>
 </charm>
 </charmlist>
