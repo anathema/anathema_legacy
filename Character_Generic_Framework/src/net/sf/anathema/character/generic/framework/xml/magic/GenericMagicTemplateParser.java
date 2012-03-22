@@ -151,8 +151,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     if (charmType.equals(VALUE_NONE)) {
         charmSet = new NullCharmSet();
       } else {
-        charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType), uniqueCharms,
-                hostTemplate.getEdition());
+        charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType), uniqueCharms);
       }
     CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet,
             uniqueCharms);

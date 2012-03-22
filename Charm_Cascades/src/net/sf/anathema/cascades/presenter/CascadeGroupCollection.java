@@ -48,9 +48,8 @@ public class CascadeGroupCollection implements CharmGroupCollection {
       ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
       if (charmTemplate.canLearnCharms(ExaltedRuleSet.SecondEdition)) {
         IExaltedRuleSet ruleSet = ExaltedRuleSet.SecondEdition;
-          registerTypeCharms(allCharmGroups, type, template, ruleSet);
-          registerUniqueCharms(allCharmGroups, charmTemplate);
-        
+        registerTypeCharms(allCharmGroups, type, template, ruleSet);
+        registerUniqueCharms(allCharmGroups, charmTemplate, ruleSet);
       }
     }
   }
@@ -63,7 +62,8 @@ public class CascadeGroupCollection implements CharmGroupCollection {
     allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
   }
 
-  private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
+  private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate,
+                                    IExaltedRuleSet rules) {
     if (!charmTemplate.hasUniqueCharms()) {
       return;
     }
