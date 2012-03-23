@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
-import static java.text.MessageFormat.format;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
@@ -21,10 +20,8 @@ public class GenericCharmStats extends CharmStats {
 
   @Override
   public String[] getDetailStrings(IResources resources) {
-	  String description = resources.getString(getName() + ".Description");
-	  String cleanedDescription = format(description, resources.getString(
-			  character.getTemplate().getTemplateType().getCharacterType().getFavoringTraitType().getId()));
-	  return new String[]{cleanedDescription}; //$NON-NLS-1$
+	  String description = resources.getString(getName() + ".Description.Short");
+	  return new String[]{description}; //$NON-NLS-1$
   }
   
   @Override

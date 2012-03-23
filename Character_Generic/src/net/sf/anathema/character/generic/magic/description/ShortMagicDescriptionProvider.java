@@ -33,8 +33,8 @@ public class ShortMagicDescriptionProvider implements MagicDescriptionProvider {
         String genericId = id.substring(0, id.lastIndexOf('.'));
 
         String description = null;
-        if (resources.supportsKey(genericId + ".Description")) //$NON-NLS-1$
-          description = resources.getString(genericId + ".Description"); //$NON-NLS-1$
+        if (resources.supportsKey(genericId + ".Description.Long")) //$NON-NLS-1$
+          description = resources.getString(genericId + ".Description.Long"); //$NON-NLS-1$
         if (resources.supportsKey(id + ".Description")) //$NON-NLS-1$
           description = resources.getString(id + ".Description"); //$NON-NLS-1$
 
