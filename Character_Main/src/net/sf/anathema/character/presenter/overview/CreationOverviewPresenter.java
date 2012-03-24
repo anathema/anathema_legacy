@@ -7,8 +7,6 @@ import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.concept.IMotivation;
-import net.sf.anathema.character.model.concept.INature;
-import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.IOverviewView;
@@ -153,11 +151,6 @@ public class CreationOverviewPresenter implements Presenter {
     final String[] resourcekey = new String[1];
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
       @Override
-      public void accept(INature nature) {
-        resourcekey[0] = "Overview.Creation.Concept.Nature.Label"; //$NON-NLS-1$
-      }
-
-      @Override
       public void accept(IMotivation motivation) {
         resourcekey[0] = "Overview.Creation.Concept.Motivation.Label"; //$NON-NLS-1$
       }
@@ -190,14 +183,6 @@ public class CreationOverviewPresenter implements Presenter {
   private String getWillpowerRegainingConceptValue() {
     final String[] value = new String[1];
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
-      @Override
-      public void accept(INature nature) {
-        INatureType natureType = nature.getDescription().getType();
-        if (natureType != null) {
-          value[0] = "Nature." + natureType.getId() + ".Name"; //$NON-NLS-1$//$NON-NLS-2$
-        }
-      }
-
       @Override
       public void accept(IMotivation motivation) {
         if (!motivation.getDescription().isEmpty()) {

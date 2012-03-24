@@ -8,11 +8,9 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 
 public class RulesPersister {
 
-  public static final String SECOND_EDITION = "SecondEdition";
-
   public void save(Element parent) {
     Element rulesElement = parent.addElement(TAG_RULES);
     Element ruleSetElement = rulesElement.addElement(TAG_RULESET);
-    ruleSetElement.addAttribute(ATTRIB_NAME, SECOND_EDITION);
+    ruleSetElement.addAttribute(ATTRIB_NAME, new SecondEditionRules().getId());
   }
 }

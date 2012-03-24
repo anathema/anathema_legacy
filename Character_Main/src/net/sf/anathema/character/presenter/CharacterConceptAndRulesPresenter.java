@@ -13,21 +13,15 @@ import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
-import net.sf.anathema.character.model.concept.INature;
-import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
-import net.sf.anathema.character.model.concept.NatureProvider;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
-import net.sf.anathema.character.view.concept.IWillpowerConditionView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
-import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -59,10 +53,6 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     initRulesPresentation();
     final boolean casteRow = initCastePresentation();
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
-      @Override
-      public void accept(INature nature) {
-        initNaturePresentation(nature);
-      }
 
       @Override
       public void accept(IMotivation motivation) {
@@ -200,66 +190,11 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     });
   }
 
-  private void initNaturePresentation(INature nature) {
-    INatureType[] unsortedNatures = NatureProvider.getInstance().getNatures();
-    INatureType[] natures = new INatureType[unsortedNatures.length];
-    new I18nedIdentificateSorter<INatureType>() {
-      @Override
-      protected String getString(final IResources sorterResources, INatureType type) {
-        return sorterResources.getString("Nature." + type.getId() + ".Name"); //$NON-NLS-1$ //$NON-NLS-2$
-      }
-    }.sortAscending(unsortedNatures, natures, resources);
-    final IObjectSelectionView<INatureType> natureView = view.addObjectSelectionView(
-            resources.getString("Label.Nature"), //$NON-NLS-1$
-            natures, new IdentificateSelectCellRenderer("Nature.", ".Name", resources),//$NON-NLS-1$ //$NON-NLS-2$
-            false);
-    final ITypedDescription<INatureType> natureType = nature.getDescription();
-    natureView.setSelectedObject(natureType.getType());
-    final IWillpowerConditionView willpowerConditionLabel = view.addWillpowerConditionView(
-            resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
-    natureView.addObjectSelectionChangedListener(new IObjectValueChangedListener<INatureType>() {
-      @Override
-      public void valueChanged(INatureType newValue) {
-        natureType.setType(newValue);
-      }
-    });
-    natureType.addChangeListener(new IChangeListener() {
-      @Override
-      public void changeOccurred() {
-        updateNature(natureView, willpowerConditionLabel, natureType.getType());
-      }
-    });
-    updateNature(natureView, willpowerConditionLabel, natureType.getType());
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
-      @Override
-      public void experiencedChanged(boolean experienced) {
-        natureView.setEnabled(!experienced);
-        willpowerConditionLabel.setEnabled(!experienced);
-      }
-    });
-    natureView.setEnabled(!statistics.isExperienced());
-    willpowerConditionLabel.setEnabled(!statistics.isExperienced());
-  }
-
   private void initRulesPresentation() {
-    view.addRulesLabel(resources.getString("Rules.CharacterType.Message", resources.getString(
-            statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
+    view.addRulesLabel(resources.getString("Rules.CharacterType.Message",
+            resources.getString(statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
     view.addRulesLabel(resources.getString("Rules.Ruleset.Message",
             resources.getString("Ruleset." + statistics.getRules().getId()))); //$NON-NLS-1$//$NON-NLS-2$
-  }
-
-  private void updateNature(final IObjectSelectionView<INatureType> natureView,
-                            final IWillpowerConditionView willpowerConditionLabel, INatureType natureType) {
-    natureView.setSelectedObject(natureType);
-    if (natureType == null) {
-      willpowerConditionLabel.setText(null);
-      return;
-    }
-    String willpowerCondition = resources.getString("Nature." + natureType + ".Text"); //$NON-NLS-1$ //$NON-NLS-2$
-    if (willpowerCondition == null) {
-      willpowerCondition = resources.getString("CharacterConcept.WillpowerCondition.NotSpecified"); //$NON-NLS-1$
-    }
-    willpowerConditionLabel.setText(willpowerCondition);
   }
 
   private boolean initCastePresentation() {

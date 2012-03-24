@@ -16,7 +16,6 @@ import net.sf.anathema.character.library.intvalue.MarkerLessIntValueDisplayFacto
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
-import net.sf.anathema.character.model.concept.NatureProvider;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.CharacterPresenter;
 import net.sf.anathema.character.presenter.PlayerCharacterPointPresentation;
@@ -44,9 +43,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter"; //$NON-NLS-1$
 
   public ExaltedCharacterItemTypeConfiguration() throws AnathemaException {
-    super(new ItemType(CHARACTER_ITEM_TYPE_ID,
-            new RepositoryConfiguration(".ecg", "ExaltedCharacter/"))); //$NON-NLS-1$ //$NON-NLS-2$
-    NatureProvider.getInstance().init();
+    super(new ItemType(CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/"))); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @Override

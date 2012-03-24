@@ -4,8 +4,6 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
-import net.sf.anathema.character.generic.rules.IEditionVisitor;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -16,7 +14,6 @@ import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.concept.CharacterConcept;
 import net.sf.anathema.character.impl.model.concept.Motivation;
-import net.sf.anathema.character.impl.model.concept.Nature;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
@@ -31,7 +28,6 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.model.concept.IMotivation;
-import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConcept;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
@@ -56,12 +52,6 @@ public class CharacterStatistics implements ICharacterStatistics {
   private final IObjectValueChangedListener<String> motivationChangeListener = new IObjectValueChangedListener<String>() {
     @Override
     public void valueChanged(String newValue) {
-      context.getCharacterListening().fireCharacterChanged();
-    }
-  };
-  private final IChangeListener natureChangeListener = new IChangeListener() {
-    @Override
-    public void changeOccurred() {
       context.getCharacterListening().fireCharacterChanged();
     }
   };
@@ -146,27 +136,11 @@ public class CharacterStatistics implements ICharacterStatistics {
   }
 
   private CharacterConcept initConcept() {
-    final IWillpowerRegainingConcept[] willpowerConcept = new IWillpowerRegainingConcept[1];
-    rules.getEdition().accept(new IEditionVisitor() {
-      @Override
-      public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        willpowerConcept[0] = new Nature();
-      }
-
-      @Override
-      public void visitSecondEdition(IExaltedEdition visitedEdition) {
-        willpowerConcept[0] = new Motivation(experiencePoints);
-      }
-    });
-    CharacterConcept characterConcept = new CharacterConcept(willpowerConcept[0]);
+    IWillpowerRegainingConcept willpowerConcept = new Motivation(experiencePoints);
+    CharacterConcept characterConcept = new CharacterConcept(willpowerConcept);
     characterConcept.getCaste().addChangeListener(casteChangeListener);
     characterConcept.getAge().addChangeListener(ageChangeListener);
     characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
-      @Override
-      public void accept(INature nature) {
-        nature.getDescription().addChangeListener(natureChangeListener);
-      }
-
       @Override
       public void accept(IMotivation motivation) {
         motivation.getDescription().addTextChangedListener(motivationChangeListener);

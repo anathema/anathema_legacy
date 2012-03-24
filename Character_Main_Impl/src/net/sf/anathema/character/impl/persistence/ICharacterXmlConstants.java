@@ -33,7 +33,6 @@ public interface ICharacterXmlConstants {
   public static final String TAG_HAIR = "Hair"; //$NON-NLS-1$
   public static final String TAG_MOTIVATION = "Motivation"; //$NON-NLS-1$
   public static final String TAG_NAME = "Name"; //$NON-NLS-1$
-  public static final String TAG_NATURE = "Nature"; //$NON-NLS-1$
   public static final String TAG_NOTES = "Notes"; //$NON-NLS-1$
   public static final String TAG_PERIPHRASE = "Periphrase"; //$NON-NLS-1$
   public static final String TAG_PHYSICAL_DESCRIPTION = "PhysicalDescription"; //$NON-NLS-1$

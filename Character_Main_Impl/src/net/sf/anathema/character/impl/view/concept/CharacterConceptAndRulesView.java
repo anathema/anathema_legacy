@@ -1,23 +1,11 @@
 package net.sf.anathema.character.impl.view.concept;
 
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.AbstractButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
-import javax.swing.border.TitledBorder;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
-import net.sf.anathema.character.view.concept.IWillpowerConditionView;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
@@ -25,6 +13,16 @@ import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
+
+import javax.swing.AbstractButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
+import javax.swing.border.TitledBorder;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterConceptAndRulesView extends
     AbstractInitializableContentView<ICharacterConceptAndRulesViewProperties> implements ICharacterConceptAndRulesView {
@@ -42,6 +40,7 @@ public class CharacterConceptAndRulesView extends
     panel.add(rulesPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
   }
 
+  @Override
   public <V> IObjectSelectionView<V> addObjectSelectionView(
       String labelText,
       V[] objects,
@@ -55,6 +54,7 @@ public class CharacterConceptAndRulesView extends
     return selectionView;
   }
 
+  @Override
   public ITextView addLabelTextView(String labelText) {
     LineTextView lineTextView = new LineTextView(45);
     lineTextView.getTextComponent().setDisabledTextColor(Color.DARK_GRAY);
@@ -65,6 +65,7 @@ public class CharacterConceptAndRulesView extends
     return labelView;
   }
   
+  @Override
   public void addSpinner(String labelText, IntegerSpinner spinner) {
 	  JLabel label = new JLabel(labelText);
 	  conceptPanel.add(label);
@@ -77,17 +78,12 @@ public class CharacterConceptAndRulesView extends
     conceptPanel.add(buttonPanel);
   }
 
+  @Override
   public void addRulesLabel(final String labelText) {
     rulesPanel.add(new JLabel(labelText));
   }
 
-  public IWillpowerConditionView addWillpowerConditionView(final String headerLabelText) {
-    WillpowerConditionView view = new WillpowerConditionView(headerLabelText);
-    view.addToStandardPanel(conceptPanel);
-    addButtonPanel();
-    return view;
-  }
-
+  @Override
   public AbstractButton addAction(SmartAction action, int row) {
     AbstractButton button = ToolBarUtilities.createToolBarButton(action);
     buttonPanels.get(row).add(button);

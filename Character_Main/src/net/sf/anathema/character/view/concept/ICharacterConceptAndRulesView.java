@@ -12,19 +12,17 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 public interface ICharacterConceptAndRulesView extends
     IInitializableContentView<ICharacterConceptAndRulesViewProperties> {
 
-  public <V> IObjectSelectionView<V> addObjectSelectionView(
+  <V> IObjectSelectionView<V> addObjectSelectionView(
       String labelText,
       V[] objects,
       ListCellRenderer renderer,
       boolean editable);
 
-  public ITextView addLabelTextView(String labelText);
+  ITextView addLabelTextView(String labelText);
   
-  public void addSpinner(String labelText, IntegerSpinner spinner);
+  void addSpinner(String labelText, IntegerSpinner spinner);
 
-  public IWillpowerConditionView addWillpowerConditionView(String headerLabelText);
+  void addRulesLabel(String labelText);
 
-  public void addRulesLabel(String labelText);
-
-  public AbstractButton addAction(SmartAction action, int row);
+  AbstractButton addAction(SmartAction action, int row);
 }
