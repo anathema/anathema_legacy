@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
@@ -35,7 +36,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel i
 
   public EquipmentAdditionalModel(ICharacterType characterType, IArmourStats naturalArmour,
                                   IEquipmentTemplateProvider equipmentTemplateProvider, IExaltedRuleSet ruleSet,
-                                  ICharacterModelContext context, IEquipmentCharacterDataProvider dataProvider,
+                                  ICharacterModelContext context, final IEquipmentCharacterDataProvider dataProvider,
                                   IEquipmentTemplate... naturalWeapons) {
     super(ruleSet, naturalArmour);
     this.characterType = characterType;
@@ -57,21 +58,27 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel i
         for (IEquipmentItem item : getEquipmentItems())
           for (IEquipmentStats stats : item.getStats()) {
             List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
-
-            if (list != null) {
-              List<IEquipmentStatsOption> optionsList = new ArrayList<IEquipmentStatsOption>();
-              optionsList.addAll(list);
-              for (IEquipmentStatsOption option : optionsList) {
-                try {
-                  ArrayUtilities.indexOf(EquipmentAdditionalModel.this.dataProvider.getSpecialties(
-                          AbilityType.valueOf(option.getType())), option.getUnderlyingTrait());
-                } catch (IllegalArgumentException e) {
-                  //no longer has the specialty
-                  disableStatOption(item, stats, option);
-                }
+            if (list == null) {
+              return;
+            }
+            List<IEquipmentStatsOption> optionsList = new ArrayList<IEquipmentStatsOption>(list);
+            for (IEquipmentStatsOption option : optionsList) {
+              if (!characterStillHasCorrespondingSpecialty(option)) {
+                disableStatOption(item, stats, option);
               }
             }
           }
+      }
+
+      private boolean characterStillHasCorrespondingSpecialty(IEquipmentStatsOption option) {
+        try {
+          AbilityType trait = AbilityType.valueOf(option.getType());
+          INamedGenericTrait[] specialties = dataProvider.getSpecialties(trait);
+          ArrayUtilities.indexOf(specialties, option.getUnderlyingTrait());
+          return true;
+        } catch (IllegalArgumentException e) {
+          return false;
+        }
       }
     });
   }
