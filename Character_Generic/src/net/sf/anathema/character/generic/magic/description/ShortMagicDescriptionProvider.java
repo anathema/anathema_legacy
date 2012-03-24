@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.magic.description;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.lib.resources.IResources;
+import org.apache.commons.lang3.StringUtils;
 
 import java.text.MessageFormat;
 
@@ -25,26 +26,29 @@ public class ShortMagicDescriptionProvider implements MagicDescriptionProvider {
       @Override
       public String[] getParagraphs() {
         String descriptionString = getDescriptionString(magic);
-        return descriptionString == null ? new String[0] : new String[]{descriptionString};
+        return StringUtils.isEmpty(descriptionString) ? new String[0] : new String[]{descriptionString};
       }
 
       private String getDescriptionString(IMagic magic) {
         String id = magic.getId();
         String genericId = id.substring(0, id.lastIndexOf('.'));
-
-        String description = null;
-        if (resources.supportsKey(genericId + ".Description.Long")) //$NON-NLS-1$
-          description = resources.getString(genericId + ".Description.Long"); //$NON-NLS-1$
-        if (resources.supportsKey(id + ".Description")) //$NON-NLS-1$
-          description = resources.getString(id + ".Description"); //$NON-NLS-1$
-
-        if (description != null && magic instanceof ICharm)
-          description = MessageFormat.format(description,
-                  new Object[]{resources.getString(((ICharm) magic).getPrimaryTraitType().getId())});
-
+        String description = getDescriptionPattern(id, genericId);
+        if (magic instanceof ICharm) {
+          String traitId = ((ICharm) magic).getPrimaryTraitType().getId();
+          description = MessageFormat.format(description, resources.getString(traitId));
+        }
         return description;
+      }
+
+      private String getDescriptionPattern(String id, String genericId) {
+        if (resources.supportsKey(id + ".Description")) { //$NON-NLS-1$
+          return resources.getString(id + ".Description"); //$NON-NLS-1$
+        }
+        if (resources.supportsKey(genericId + ".Description.Long")) {//$NON-NLS-1$
+          return resources.getString(genericId + ".Description.Long"); //$NON-NLS-1$
+        }
+        return "";
       }
     };
   }
-
 }
