@@ -20,8 +20,6 @@ public interface IPointCostCalculator {
 
   public int getWillpowerCosts(IBasicTrait willpower);
 
-  public int getComboCosts(ICharm[] charms);
-
   public double getSpecialtyCosts(boolean favored);
 
   public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection);

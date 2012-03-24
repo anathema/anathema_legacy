@@ -34,8 +34,6 @@ import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.model.charm.ICombo;
-import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
@@ -56,13 +54,11 @@ public class BonusPointManagement implements IBonusPointManagement {
   private final MagicCostCalculator magicCalculator;
   private final IDefaultTrait willpower;
   private final IBonusPointCosts cost;
-  private final IComboConfiguration combos;
   private final IDefaultTrait essence;
   private final ICreationPoints creationPoints;
   private final ICharacterStatistics statistics;
   private int essenceBonusPoints;
   private int willpowerBonusPoints;
-  private int comboBonusPoints;
   private final BonusPointCalculator bonusPointCalculator = new BonusPointCalculator();
 
   public BonusPointManagement(ICharacterStatistics statistics) {
@@ -93,7 +89,6 @@ public class BonusPointManagement implements IBonusPointManagement {
             creationPoints.getDefaultCreationCharmCount(), cost, bonusAdditionalPools, magicAdditionalPools,
             statistics.getCharacterContext().getBasicCharacterContext(),
             statistics.getCharacterContext().getTraitCollection());
-    this.combos = statistics.getCombos();
     this.willpower = TraitCollectionUtilities.getWillpower(traitConfiguration);
     this.essence = TraitCollectionUtilities.getEssence(traitConfiguration);
   }
@@ -106,7 +101,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     attributeCalculator.calculateAttributeCosts();
     virtueCalculator.calculateVirtuePoints();
     magicCalculator.calculateMagicCosts();
-    comboBonusPoints = calculateComboPoints();
     willpowerBonusPoints = calculateWillpowerPoints();
     essenceBonusPoints = calculateEssencePoints();
     bonusPointCalculator.recalculate();
@@ -118,14 +112,6 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   private int calculateWillpowerPoints() {
     return (willpower.getCreationValue() - willpower.getMinimalValue()) * cost.getWillpowerCosts();
-  }
-
-  private int calculateComboPoints() {
-    int bonusPoints = 0;
-    for (ICombo combo : combos.getCreationCombos()) {
-      bonusPoints += combo.getCharms().length;
-    }
-    return bonusPoints;
   }
 
   private int getAdditionalBonusPointSpent() {
@@ -141,7 +127,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private int getTotalBonusPointsSpent() {
-    return attributeCalculator.getBonusPoints() + getDefaultAbilityModel().getSpentBonusPoints() + abilityCalculator.getSpecialtyBonusPointCosts() + getDefaultCharmModel().getSpentBonusPoints() + comboBonusPoints + getBackgroundModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() + willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getAdditionalModelModel().getValue();
+    return attributeCalculator.getBonusPoints() + getDefaultAbilityModel().getSpentBonusPoints() + abilityCalculator.getSpecialtyBonusPointCosts() + getDefaultCharmModel().getSpentBonusPoints() + getBackgroundModel().getSpentBonusPoints() + getVirtueModel().getSpentBonusPoints() + willpowerBonusPoints + essenceBonusPoints + bonusPointCalculator.getAdditionalModelModel().getValue();
   }
 
   private ISpendingModel getVirtueModel() {

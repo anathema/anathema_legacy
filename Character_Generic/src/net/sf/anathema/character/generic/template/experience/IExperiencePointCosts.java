@@ -13,8 +13,6 @@ public interface IExperiencePointCosts {
 
   public int getCharmCosts(ICharm charm, ICostAnalyzer costMapping);
 
-  public int getComboCosts(ICharm[] comboCharms);
-
   public ICurrentRatingCosts getEssenceCosts();
 
   public int getSpecialtyCosts(boolean favored);

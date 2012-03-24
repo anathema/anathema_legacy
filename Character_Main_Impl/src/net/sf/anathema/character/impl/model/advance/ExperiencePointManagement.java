@@ -6,7 +6,6 @@ import net.sf.anathema.character.impl.model.advance.models.AbilityExperienceMode
 import net.sf.anathema.character.impl.model.advance.models.AttributeExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.BackgroundExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.CharmExperienceModel;
-import net.sf.anathema.character.impl.model.advance.models.ComboExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.EssenceExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.MiscellaneousExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.SpecialtyExperienceModel;
@@ -36,6 +35,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return new AbilityExperienceModel(traitConfiguration, calculator, statistics);
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public IValueModel<Integer>[] getAllModels() {
     return new IValueModel[] {
@@ -43,7 +43,6 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
         getAbilityModel(),
         getSpecialtyModel(),
         getCharmModel(),
-        getComboModel(),
         getSpellModel(),
         getVirtueModel(),
         getWillpowerModel(),
@@ -64,14 +63,11 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return new CharmExperienceModel(traitConfiguration, calculator, statistics, basicCharacter);
   }
 
-  private IValueModel<Integer> getComboModel() {
-    return new ComboExperienceModel(statistics, calculator);
-  }
-
   private IValueModel<Integer> getEssenceModel() {
     return new EssenceExperienceModel(traitConfiguration, calculator);
   }
 
+  @Override
   public int getMiscGain() {
     int total = 0;
     for (IAdditionalModel model : statistics.getExtendedConfiguration().getAdditionalModels()) {
@@ -92,13 +88,13 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return new SpellExperienceModel(statistics, calculator, basicCharacter, traitConfiguration);
   }
 
+  @Override
   public int getTotalCosts() {
     int experienceCosts = 0;
     experienceCosts += getAbilityModel().getValue();
     experienceCosts += getAttributeModel().getValue();
     experienceCosts += getBackgroundModel().getValue();
     experienceCosts += getCharmModel().getValue();
-    experienceCosts += getComboModel().getValue();
     experienceCosts += getEssenceModel().getValue();
     experienceCosts += getSpecialtyModel().getValue();
     experienceCosts += getSpellModel().getValue();
@@ -124,8 +120,6 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
         + getAttributeModel().getValue()
         + "\nCharms: " //$NON-NLS-1$
         + getCharmModel().getValue()
-        + "\nCombo:" //$NON-NLS-1$
-        + getComboModel().getValue()
         + "\nEssence: " //$NON-NLS-1$
         + getEssenceModel().getValue()
         + "\nSpecialties: " //$NON-NLS-1$
