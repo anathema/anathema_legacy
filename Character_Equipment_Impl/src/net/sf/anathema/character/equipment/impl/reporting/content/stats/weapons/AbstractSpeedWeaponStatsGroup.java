@@ -16,10 +16,12 @@ public abstract class AbstractSpeedWeaponStatsGroup extends AbstractValueEquipme
     this.equipment = equipment;
   }
 
+  @Override
   public int getColumnCount() {
     return 1;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IWeaponStats weapon) {
     if (weapon == null) {
       table.addCell(createFinalValueCell(font));

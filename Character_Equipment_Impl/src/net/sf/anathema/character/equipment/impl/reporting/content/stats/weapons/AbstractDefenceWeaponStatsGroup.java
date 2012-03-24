@@ -15,13 +15,6 @@ public abstract class AbstractDefenceWeaponStatsGroup extends AbstractValueEquip
   private final IGenericTraitCollection traitCollection;
   private final IEquipmentModifiers equipment;
 
-  public AbstractDefenceWeaponStatsGroup(IResources resources, IGenericCharacter character, IEquipmentModifiers equipment) {
-    super(resources, "Defence"); //$NON-NLS-1$
-    this.character = character;
-    this.traitCollection = null;
-    this.equipment = equipment;
-  }
-
   public AbstractDefenceWeaponStatsGroup(IResources resources,
                                          IGenericCharacter character,
                                          IGenericTraitCollection traitCollection,
@@ -32,10 +25,12 @@ public abstract class AbstractDefenceWeaponStatsGroup extends AbstractValueEquip
     this.equipment = equipment;
   }
 
+  @Override
   public int getColumnCount() {
     return 2;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IWeaponStats weapon) {
     if (weapon == null) {
       table.addCell(createEmptyValueCell(font));
