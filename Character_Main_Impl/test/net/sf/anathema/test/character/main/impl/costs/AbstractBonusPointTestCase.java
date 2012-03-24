@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
@@ -55,7 +56,7 @@ public abstract class AbstractBonusPointTestCase {
 
       @Override
       public IExaltedEdition getEdition() {
-        return getRuleSet().getEdition();
+        return ExaltedEdition.SecondEdition;
       }
 
       @Override

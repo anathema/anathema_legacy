@@ -28,6 +28,7 @@ public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealt
     return new GenericHealthTemplate();
   }
 
+  @Override
   public GenericHealthTemplate parseTemplate(Element element) throws PersistenceException {
     GenericHealthTemplate basicTemplate = getBasicTemplate(element);
     setToughnessControllingTrait(element, basicTemplate);

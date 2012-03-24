@@ -13,11 +13,11 @@ public class GenericIdStringBuilderTest {
   @Test
   public void testGenerateHeaderString() throws Exception {
     GenericIdStringBuilder builder = new GenericIdStringBuilder();
-    builder.setType(AbilityType.Brawl);
+    builder.setType(AbilityType.MartialArts);
     String xml = "<charm id=\"test\"/>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     String id = builder.build(rootElement);
-    assertEquals("test.Brawl", id); //$NON-NLS-1$
+    assertEquals("test.MartialArts", id); //$NON-NLS-1$
   }
 
   @Test(expected = IllegalStateException.class)

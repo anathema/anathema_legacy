@@ -88,10 +88,6 @@ public class DummyUnsupportedTemplate implements IUnsupportedTemplate, ICharacte
     throw new NotYetImplementedException();
   }
 
-  public ISpellMagicTemplate getSpellMagic() {
-    throw new NotYetImplementedException();
-  }
-
   @Override
   public IEssenceTemplate getEssenceTemplate() {
     throw new NotYetImplementedException();
@@ -134,7 +130,7 @@ public class DummyUnsupportedTemplate implements IUnsupportedTemplate, ICharacte
 
   @Override
   public ITraitType[] getToughnessControllingTraitTypes() {
-    return new ITraitType[]{AbilityType.Endurance};
+    return new ITraitType[]{AbilityType.Resistance};
   }
 
   @Override

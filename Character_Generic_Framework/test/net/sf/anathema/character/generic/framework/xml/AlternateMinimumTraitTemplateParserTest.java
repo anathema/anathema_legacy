@@ -15,7 +15,7 @@ public class AlternateMinimumTraitTemplateParserTest extends TestCase {
         + "               <limitation type=\"Essence\"/>" //$NON-NLS-1$
         + "               <minimum value=\"0\"/>" //$NON-NLS-1$
         + "           </trait>" //$NON-NLS-1$
-        + "           <trait id=\"Brawl\" startValue=\"1\" lowerableState=\"Default\" zeroLevel=\"0\">" //$NON-NLS-1$
+        + "           <trait id=\"MartialArts\" startValue=\"1\" lowerableState=\"Default\" zeroLevel=\"0\">" //$NON-NLS-1$
         + "               <limitation type=\"Essence\"/>" //$NON-NLS-1$
         + "               <minimum value=\"0\"/>" //$NON-NLS-1$
         + "           </trait>" //$NON-NLS-1$
@@ -26,7 +26,7 @@ public class AlternateMinimumTraitTemplateParserTest extends TestCase {
         .getRootElement());
     assertEquals(2, templates.length);
     assertEquals(AbilityType.Archery, templates[0].getTraitType());
-    assertEquals(AbilityType.Brawl, templates[1].getTraitType());
+    assertEquals(AbilityType.MartialArts, templates[1].getTraitType());
     assertEquals(1, templates[1].getStartValue());
   }
 }

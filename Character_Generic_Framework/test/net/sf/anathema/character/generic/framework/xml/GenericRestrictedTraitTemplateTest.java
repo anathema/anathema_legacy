@@ -12,17 +12,17 @@ public class GenericRestrictedTraitTemplateTest extends TestCase {
 
   public void testMinimumValueIsLowWhenAlternativeFulfillsRequirement() throws Exception {
     AlternateMinimumRestriction restriction = new AlternateMinimumRestriction(1, 1);
-    restriction.addTraitType(AbilityType.Endurance);
+    restriction.addTraitType(AbilityType.Resistance);
     restriction.addTraitType(AbilityType.Sail);
     DummyLimitationContext context = new DummyLimitationContext();
-    context.addTrait(new DummyFavorableGenericTrait(AbilityType.Endurance, 3));
+    context.addTrait(new DummyFavorableGenericTrait(AbilityType.Resistance, 3));
     context.addTrait(new DummyFavorableGenericTrait(AbilityType.Sail, 3));
     GenericTraitTemplate delegateTemplate = new GenericTraitTemplate();
     delegateTemplate.setMinimumValue(0);
     GenericRestrictedTraitTemplate template = new GenericRestrictedTraitTemplate(
         delegateTemplate,
         restriction,
-        AbilityType.Endurance);
+        AbilityType.Resistance);
     assertEquals(0, template.getMinimumValue(context));
   }
 }

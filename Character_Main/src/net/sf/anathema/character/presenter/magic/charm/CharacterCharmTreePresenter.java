@@ -35,7 +35,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
     ICharmTreeViewProperties viewProperties = new CharacterCharmTreeViewProperties(resources, model.getCharmConfiguration(), model.getMagicDescriptionProvider());
     this.view = factory.createCharmSelectionView(viewProperties);
     CharacterCharmGroupChangeListener charmGroupChangeListener = new CharacterCharmGroupChangeListener(model.getCharmConfiguration(), filterSet,
-            model.getEdition(), view.getCharmTreeRenderer(),
+            view.getCharmTreeRenderer(),
             displayPropertiesMap);
     CharacterCharmDye dye = new CharacterCharmDye(model, charmGroupChangeListener, presentationProperties.getColor(), view);
     setCharmTypes(new CharacterCharmTypes(charmModel));
@@ -48,6 +48,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
     setCharmGroups(new CharacterGroupCollection(model));
   }
 
+  @Override
   public ICharmView getView() {
     return view;
   }

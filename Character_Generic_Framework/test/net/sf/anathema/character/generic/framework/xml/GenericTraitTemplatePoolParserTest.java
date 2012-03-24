@@ -72,14 +72,14 @@ public class GenericTraitTemplatePoolParserTest extends TestCase {
         + "               <limitation type=\"Essence\"/>" //$NON-NLS-1$
         + "               <minimum value=\"0\"/>" //$NON-NLS-1$
         + "           </trait>" //$NON-NLS-1$
-        + "           <trait id=\"Brawl\" startValue=\"1\" lowerableState=\"Default\" zeroLevel=\"0\">" //$NON-NLS-1$
+        + "           <trait id=\"MartialArts\" startValue=\"1\" lowerableState=\"Default\" zeroLevel=\"0\">" //$NON-NLS-1$
         + "               <limitation type=\"Essence\"/>" //$NON-NLS-1$
         + "               <minimum value=\"0\"/>" //$NON-NLS-1$
         + "           </trait>" //$NON-NLS-1$
         + "       </alternateMinimumTraits>" //$NON-NLS-1$
         + "   </root>"; //$NON-NLS-1$
     GenericTraitTemplatePool pool = abilityParser.parseTemplate(DocumentUtilities.read(xml).getRootElement());
-    ITraitTemplate brawlTemplate = pool.getTemplate(AbilityType.Brawl);
+    ITraitTemplate brawlTemplate = pool.getTemplate(AbilityType.MartialArts);
     assertEquals(1, brawlTemplate.getStartValue());
   }
 }

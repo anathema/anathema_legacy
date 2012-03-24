@@ -53,7 +53,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   @Override
   public IGroupedTraitType[] getAbilityGroups() {
-    AbilityType[] all = AbilityType.getAbilityTypes(ExaltedEdition.SecondEdition);
+    AbilityType[] all = AbilityType.values();
     IGroupedTraitType[] abilityTypes = new GroupedTraitType[all.length];
     for (int index = 0; index < all.length; index++) {
       abilityTypes[index] = new GroupedTraitType(all[index], DUMMYGROUP, null);
@@ -183,7 +183,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   @Override
   public ITraitType[] getToughnessControllingTraitTypes() {
-    return new ITraitType[]{AbilityType.Endurance};
+    return new ITraitType[]{AbilityType.Resistance};
   }
 
   @Override

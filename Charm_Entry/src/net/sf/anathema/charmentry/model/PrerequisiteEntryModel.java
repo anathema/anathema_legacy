@@ -24,16 +24,19 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
   public PrerequisiteEntryModel(IHeaderDataModel headerModel, IConfigurableCharmData charmData) {
     this.charmData = charmData;
     headerModel.addModelListener(new CheckInputListener(new SimpleBlock() {
+      @Override
       public void execute() {
         control.fireChangedEvent();
       }
     }));
   }
 
+  @Override
   public void addModelListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
 
+  @Override
   public void setEssenceMinimum(int minimum) {
     if (charmData.getEssence().getCurrentValue() == minimum) {
       return;
@@ -42,10 +45,12 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
     control.fireChangedEvent();
   }
 
+  @Override
   public int getEssenceMinimum() {
     return charmData.getEssence().getCurrentValue();
   }
 
+  @Override
   public ITraitType[] getPrimaryPrerequisiteTypes() {
     if (charmData.getEdition() == null) {
       return new ITraitType[0];
@@ -53,13 +58,15 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
     if (charmData.getCharacterType() == CharacterType.LUNAR) {
       return AttributeType.values();
     }
-    return AbilityType.getAbilityTypes(charmData.getEdition());
+    return AbilityType.values();
   }
 
+  @Override
   public IGenericTrait getPrimaryPrerequisite() {
     return charmData.getPrimaryPrerequisite();
   }
 
+  @Override
   public void setPrimaryPrerequisite(ITraitType type, int value) {
     if (type == null) {
       return;
@@ -74,10 +81,12 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
     control.fireChangedEvent();
   }
 
+  @Override
   public boolean isPermanentCharm() {
     return charmData.getCharmTypeModel().getCharmType() == CharmType.Permanent;
   }
 
+  @Override
   public IExaltedEdition getEdition() {
     return charmData.getEdition();
   }

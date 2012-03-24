@@ -3,7 +3,6 @@ package net.sf.anathema.character.presenter.magic;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -34,10 +33,6 @@ public class CharacterCharmModel {
   public void addCasteChangeListener(IChangeListener listener) {
     ITypedDescription<ICasteType> caste = getCaste();
     caste.addChangeListener(listener);
-  }
-
-  public IExaltedEdition getEdition() {
-    return statistics.getRules().getEdition();
   }
 
   public ICharmConfiguration getCharmConfiguration() {

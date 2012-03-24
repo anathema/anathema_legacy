@@ -19,8 +19,8 @@ public class CharmAttributeBuilderTest {
     String xml = "<charm><genericCharmAttribute attribute=\"test\"/></charm>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     ICharmAttribute[] attribute = new CharmAttributeBuilder().buildCharmAttributes(rootElement, new ValuedTraitType(
-        AbilityType.Brawl,
+        AbilityType.MartialArts,
         3));
-    assertTrue(ArrayUtilities.containsValue(attribute, new CharmAttribute("testBrawl", false))); //$NON-NLS-1$
+    assertTrue(ArrayUtilities.containsValue(attribute, new CharmAttribute("testMartialArts", false))); //$NON-NLS-1$
   }
 }

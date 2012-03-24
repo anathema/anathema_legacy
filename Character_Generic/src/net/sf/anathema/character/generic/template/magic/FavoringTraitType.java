@@ -17,7 +17,7 @@ public enum FavoringTraitType implements IIdentificate {
 
     @Override
     public AbilityType[] getTraitTypes(IExaltedEdition edition) {
-      return net.sf.anathema.character.generic.traits.types.AbilityType.getAbilityTypes(edition);
+      return net.sf.anathema.character.generic.traits.types.AbilityType.values();
     }
   },
   AttributeType() {
@@ -54,6 +54,7 @@ public enum FavoringTraitType implements IIdentificate {
 	    }
 	  };
 
+  @Override
   public String getId() {
     return name();
   }

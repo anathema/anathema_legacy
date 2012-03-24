@@ -1,7 +1,5 @@
 package net.sf.anathema.character.generic.traits.types;
 
-import net.sf.anathema.character.generic.rules.IEditionVisitor;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
 public enum AbilityType implements ITraitType {
@@ -9,12 +7,6 @@ public enum AbilityType implements ITraitType {
     @Override
     public void accept(IAbilityTypeVisitor visitor) {
       visitor.visitArchery();
-    }
-  },
-  Brawl {
-    @Override
-    public void accept(IAbilityTypeVisitor visitor) {
-      visitor.visitBrawl();
     }
   },
   MartialArts {
@@ -39,12 +31,6 @@ public enum AbilityType implements ITraitType {
     @Override
     public void accept(IAbilityTypeVisitor visitor) {
       visitor.visitWar();
-    }
-  },
-  Endurance {
-    @Override
-    public void accept(IAbilityTypeVisitor visitor) {
-      visitor.visitEndurance();
     }
   },
   Integrity {
@@ -178,55 +164,5 @@ public enum AbilityType implements ITraitType {
     return name();
   }
 
-  @Override
-  public String toString() {
-    return getId();
-  }
-
   public abstract void accept(IAbilityTypeVisitor visitor);
-
-  public static AbilityType[] getSecondEditionAbilities() {
-    return new AbilityType[] {
-        Archery,
-        MartialArts,
-        Melee,
-        Thrown,
-        War,
-        Integrity,
-        Performance,
-        Presence,
-        Resistance,
-        Survival,
-        Craft,
-        Investigation,
-        Lore,
-        Medicine,
-        Occult,
-        Athletics,
-        Awareness,
-        Dodge,
-        Larceny,
-        Stealth,
-        Bureaucracy,
-        Linguistics,
-        Ride,
-        Sail,
-        Socialize };
-  }
-
-  public static AbilityType[] getAbilityTypes(IExaltedEdition edition) {
-    final AbilityType[][] types = new AbilityType[1][];
-    edition.accept(new IEditionVisitor() {
-      @Override
-      public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        types[0] = new AbilityType[0];
-      }
-
-      @Override
-      public void visitSecondEdition(IExaltedEdition visitedEdition) {
-        types[0] = getSecondEditionAbilities();
-      }
-    });
-    return types[0];
-  }
 }

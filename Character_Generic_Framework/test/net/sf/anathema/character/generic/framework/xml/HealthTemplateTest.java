@@ -7,6 +7,6 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 public class HealthTemplateTest extends TestCase {
 
   public void testDefaultToughnessTrait() throws Exception {
-    assertEquals(AbilityType.Endurance, new GenericHealthTemplate().getToughnessControllingTraits()[0]);
+    assertEquals(AbilityType.Resistance, new GenericHealthTemplate().getToughnessControllingTraits()[0]);
   }  
 }

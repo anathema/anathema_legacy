@@ -46,7 +46,7 @@ public class OxBodyTechniqueConfigurationTest {
     ITraitTemplate enduranceTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
     ITraitContext traitContext = modelContext.getTraitContext();
     FavorableTraitRules enduranceRules = new FavorableTraitRules(
-            AbilityType.Endurance,
+            AbilityType.Resistance,
             enduranceTemplate,
             traitContext.getLimitationContext());
     endurance = new DefaultTrait(
@@ -108,7 +108,7 @@ public class OxBodyTechniqueConfigurationTest {
 
   private OxBodyTechniqueCharm createObtCharm() {
     return new OxBodyTechniqueCharm(
-            "Abyssal.Ox-BodyTechnique", AbilityType.Endurance, new LinkedHashMap<String, HealthLevelType[]>() { //$NON-NLS-1$
+            "Abyssal.Ox-BodyTechnique", AbilityType.Resistance, new LinkedHashMap<String, HealthLevelType[]>() { //$NON-NLS-1$
       {
         this.put("OxBody0", new HealthLevelType[]{HealthLevelType.ZERO}); //$NON-NLS-1$
         this.put("OxBody1", new HealthLevelType[]{HealthLevelType.ONE}); //$NON-NLS-1$
