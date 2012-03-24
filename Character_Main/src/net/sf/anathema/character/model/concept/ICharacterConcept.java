@@ -6,9 +6,9 @@ import net.sf.anathema.character.model.ITypedDescription;
 
 public interface ICharacterConcept {
 
-  public IWillpowerRegainingConcept getWillpowerRegainingConcept();
+  IMotivation getWillpowerRegainingConcept();
 
-  public ITypedDescription<ICasteType> getCaste();
+  ITypedDescription<ICasteType> getCaste();
   
-  public IIntegerDescription getAge();
+  IIntegerDescription getAge();
 }

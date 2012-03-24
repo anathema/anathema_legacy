@@ -4,7 +4,6 @@ import net.sf.anathema.character.impl.model.ProxyTextualDescription;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
-import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -22,37 +21,40 @@ public class Motivation implements IMotivation {
     this.editableDescription = new ProxyTextualDescription(persistenceDescription, new SimpleTextualDescription());
   }
 
+  @Override
   public ITextualDescription getDescription() {
     return persistenceDescription;
   }
 
+  @Override
   public ITextualDescription getEditableDescription() {
     return editableDescription;
   }
 
-  public void accept(IWillpowerRegainingConceptVisitor visitor) {
-    visitor.accept(this);
-  }
-
+  @Override
   public void beginEdit() {
     switchDescription(1);
     control.forAllDo(new IClosure<IEditMotivationListener>() {
+      @Override
       public void execute(IEditMotivationListener input) {
         input.editBegun();
       }
     });
   }
 
+  @Override
   public void cancelEdit() {
     editableDescription.setCurrentDescription(0);
     fireEditEnded();
   }
 
+  @Override
   public void endEditXPSpending(String xpMessage) {
     experiencePoints.addEntry(xpMessage, -2);
     endEdit();
   }
 
+  @Override
   public void endEdit() {
     switchDescription(0);
     fireEditEnded();
@@ -66,12 +68,14 @@ public class Motivation implements IMotivation {
 
   private void fireEditEnded() {
     control.forAllDo(new IClosure<IEditMotivationListener>() {
+      @Override
       public void execute(IEditMotivationListener input) {
         input.editEnded();
       }
     });
   }
 
+  @Override
   public void addEditingListener(IEditMotivationListener listener) {
     control.addListener(listener);
   }

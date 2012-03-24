@@ -2,7 +2,7 @@ package net.sf.anathema.character.model.concept;
 
 public interface IEditMotivationListener {
 
-  public void editBegun();
+  void editBegun();
 
-  public void editEnded();
+  void editEnded();
 }

@@ -6,8 +6,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.model.concept.IMotivation;
-import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.lib.gui.Presenter;
@@ -30,11 +28,8 @@ public class CreationOverviewPresenter implements Presenter {
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
   private final Map<String, IOverviewCategory> categoriesById = new LinkedHashMap<String, IOverviewCategory>();
 
-  public CreationOverviewPresenter(
-      IResources resources,
-      ICharacterStatistics statistics,
-      IOverviewView overviewView,
-      IBonusPointManagement management) {
+  public CreationOverviewPresenter(IResources resources, ICharacterStatistics statistics, IOverviewView overviewView,
+                                   IBonusPointManagement management) {
     this.management = management;
     this.resources = resources;
     this.statistics = statistics;
@@ -64,27 +59,25 @@ public class CreationOverviewPresenter implements Presenter {
         @Override
         public void visitIntegerValueModel(IValueModel<Integer> visitedModel) {
           IValueView<Integer> valueView = categoriesById.get(visitedModel.getCategoryId()).addIntegerValueView(
-              getLabelString(visitedModel),
-              2);
+                  getLabelString(visitedModel), 2);
           presenters.add(new ValueSubPresenter(visitedModel, valueView));
         }
 
         @Override
         public void visitAlotmentModel(ISpendingModel visitedModel) {
           ILabelledAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId()).addAlotmentView(
-              getLabelString(visitedModel),
-              2);
+                  getLabelString(visitedModel), 2);
           presenters.add(new AlotmentSubPresenter(visitedModel, valueView));
         }
 
         @Override
         public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel) {
           if (visitedModel.isExtensionRequired()) {
-            IAdditionalAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId())
-                .addAdditionalAlotmentView(getLabelString(visitedModel), visitedModel.getRequiredSize());
+            IAdditionalAlotmentView valueView = categoriesById.get(
+                    visitedModel.getCategoryId()).addAdditionalAlotmentView(getLabelString(visitedModel),
+                    visitedModel.getRequiredSize());
             presenters.add(new AdditionalAlotmentSubPresenter(visitedModel, valueView));
-          }
-          else {
+          } else {
             visitAlotmentModel(visitedModel);
           }
         }
@@ -112,7 +105,8 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private String getLabelString(IOverviewModel visitedModel) {
-    return getString("Overview.Creation." + visitedModel.getCategoryId() + "." + visitedModel.getId()); //$NON-NLS-1$ //$NON-NLS-2$
+    return getString(
+            "Overview.Creation." + visitedModel.getCategoryId() + "." + visitedModel.getId()); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private String getString(String string) {
@@ -120,11 +114,11 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private void initConcept() {
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Creation.Category.Concept")); //$NON-NLS-1$
-    if (template.getCasteCollection().getAllCasteTypes(template.getEdition(),
-    		template.getTemplateType()).length > 0) {
-      IValueView<String> casteView = category.addStringValueView(getString(template.getPresentationProperties()
-          .getCasteLabelResource()));
+    IOverviewCategory category = view.addOverviewCategory(
+            getString("Overview.Creation.Category.Concept")); //$NON-NLS-1$
+    if (template.getCasteCollection().getAllCasteTypes(template.getEdition(), template.getTemplateType()).length > 0) {
+      IValueView<String> casteView = category.addStringValueView(
+              getString(template.getPresentationProperties().getCasteLabelResource()));
       IValueModel<String> casteModel = new IValueModel<String>() {
         @Override
         public String getValue() {
@@ -148,14 +142,8 @@ public class CreationOverviewPresenter implements Presenter {
       };
       presenters.add(new StringSubPresenter(casteModel, casteView, resources));
     }
-    final String[] resourcekey = new String[1];
-    statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
-      @Override
-      public void accept(IMotivation motivation) {
-        resourcekey[0] = "Overview.Creation.Concept.Motivation.Label"; //$NON-NLS-1$
-      }
-    });
-    IValueView<String> willpowerView = category.addStringValueView(getString(resourcekey[0]));
+    final String resourcekey = "Overview.Creation.Concept.Motivation.Label";
+    IValueView<String> willpowerView = category.addStringValueView(getString(resourcekey));
     IValueModel<String> willpowerModel = new IValueModel<String>() {
       @Override
       public String getValue() {
@@ -164,7 +152,7 @@ public class CreationOverviewPresenter implements Presenter {
 
       @Override
       public String getId() {
-        return resourcekey[0];
+        return resourcekey;
       }
 
       @Override
@@ -181,22 +169,16 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private String getWillpowerRegainingConceptValue() {
-    final String[] value = new String[1];
-    statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
-      @Override
-      public void accept(IMotivation motivation) {
-        if (!motivation.getDescription().isEmpty()) {
-          value[0] = "Overview.Creation.Concept.Motivation.Selected"; //$NON-NLS-1$
-        }
-      }
-    });
-    return value[0];
+    if (statistics.getCharacterConcept().getWillpowerRegainingConcept().getDescription().isEmpty()) {
+      return "";
+    }
+    return "Overview.Creation.Concept.Motivation.Selected"; //$NON-NLS-1$
   }
 
   private String getCasteValueResourceKey() {
     ICasteType casteType = statistics.getCharacterConcept().getCaste().getType();
     if (casteType.equals(ICasteType.NULL_CASTE_TYPE)) {
-      return null;
+      return "";
     }
     return "Caste." + casteType.getId(); //$NON-NLS-1$
   }

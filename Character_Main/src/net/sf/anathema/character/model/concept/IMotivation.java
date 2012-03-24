@@ -2,20 +2,19 @@ package net.sf.anathema.character.model.concept;
 
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
-public interface IMotivation extends IWillpowerRegainingConcept {
+public interface IMotivation {
 
-  public ITextualDescription getDescription();
+  ITextualDescription getDescription();
 
-  public void beginEdit();
+  void beginEdit();
 
-  public void cancelEdit();
+  void cancelEdit();
 
-  public void endEditXPSpending(String xpMessage);
+  void endEditXPSpending(String xpMessage);
 
-  public void endEdit();
+  void endEdit();
 
-  public void addEditingListener(IEditMotivationListener listener);
+  void addEditingListener(IEditMotivationListener listener);
 
-  public ITextualDescription getEditableDescription();
-
+  ITextualDescription getEditableDescription();
 }

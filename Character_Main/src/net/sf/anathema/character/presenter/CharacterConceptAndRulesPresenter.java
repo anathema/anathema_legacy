@@ -13,7 +13,6 @@ import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
-import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
@@ -52,13 +51,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   public void initPresentation() {
     initRulesPresentation();
     final boolean casteRow = initCastePresentation();
-    statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
-
-      @Override
-      public void accept(IMotivation motivation) {
-        initMotivationPresentation(motivation, casteRow);
-      }
-    });
+    IMotivation motivation = statistics.getCharacterConcept().getWillpowerRegainingConcept();
+    initMotivationPresentation(motivation, casteRow);
     initAgePresentation();
     initGui();
   }
@@ -191,8 +185,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   private void initRulesPresentation() {
-    view.addRulesLabel(resources.getString("Rules.CharacterType.Message",
-            resources.getString(statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
+    view.addRulesLabel(resources.getString("Rules.CharacterType.Message", resources.getString(
+            statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
     view.addRulesLabel(resources.getString("Rules.Ruleset.Message",
             resources.getString("Ruleset." + statistics.getRules().getId()))); //$NON-NLS-1$//$NON-NLS-2$
   }

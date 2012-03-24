@@ -28,8 +28,6 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.model.concept.IMotivation;
-import net.sf.anathema.character.model.concept.IWillpowerRegainingConcept;
-import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
@@ -136,16 +134,11 @@ public class CharacterStatistics implements ICharacterStatistics {
   }
 
   private CharacterConcept initConcept() {
-    IWillpowerRegainingConcept willpowerConcept = new Motivation(experiencePoints);
+    IMotivation willpowerConcept = new Motivation(experiencePoints);
     CharacterConcept characterConcept = new CharacterConcept(willpowerConcept);
     characterConcept.getCaste().addChangeListener(casteChangeListener);
     characterConcept.getAge().addChangeListener(ageChangeListener);
-    characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
-      @Override
-      public void accept(IMotivation motivation) {
-        motivation.getDescription().addTextChangedListener(motivationChangeListener);
-      }
-    });
+    willpowerConcept.getDescription().addTextChangedListener(motivationChangeListener);
     return characterConcept;
   }
 
