@@ -24,12 +24,7 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
   private final ObjectContainer container;
 
   public Db4OEquipmentDatabase(File databaseFile) {
-    this(EquipmentDatabaseConnectionManager.createConnection(databaseFile));
-  }
-
-  /** Required for DB conversion from 1.0 */
-  public Db4OEquipmentDatabase(ObjectContainer container) {
-    this.container = container;
+    this.container = EquipmentDatabaseConnectionManager.createConnection(databaseFile);
     this.collectionFactory = new Db4OCollectionFactory(container);
   }
 
