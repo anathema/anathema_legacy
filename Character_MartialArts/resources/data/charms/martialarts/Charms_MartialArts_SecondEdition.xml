@@ -236,6 +236,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Enhanced" visualize="true"/>
     <source source="SecondEdition" page="242"/>
+    <source source="ScrollErrata" />
   </charm>
   <charm id="Solar.SolarHeroForm" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -254,10 +255,12 @@
     	<special speed="6" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Enhanced" visualize="true"/>
     <charmAttribute attribute="Form" visualize="true"/>
     <source source="SecondEdition" page="242"/>
+    <source source="ScrollErrata" />
   </charm>
   <charm id="Solar.HeavenThunderHammer" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -276,6 +279,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Enhanced" visualize="true"/>
     <source source="SecondEdition" page="242"/>
+    <source source="ScrollErrata" />
   </charm>
   <charm id="Solar.CrashingWaveThrow" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -293,7 +297,9 @@
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Enhanced" visualize="true"/>
+    <charmAttribute attribute="Mirror" visualize="true"/>
     <source source="SecondEdition" page="243"/>
+    <source source="ScrollErrata" />
   </charm>
   <charm id="Solar.Ox-StunningBlow" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -315,6 +321,7 @@
     <charmAttribute attribute="Crippling" visualize="true"/>
     <charmAttribute attribute="Enhanced" visualize="true"/>
     <source source="SecondEdition" page="243"/>
+    <source source="ScrollErrata" />
   </charm>
   <charm id="Solar.HammeronIronTechnique" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -334,6 +341,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Enhanced" visualize="true"/>
     <source source="SecondEdition" page="243"/>
+    <source source="ScrollErrata" />
   </charm>
   <charm id="Solar.ShockwaveTechnique" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -357,6 +365,7 @@
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Enhanced" visualize="true"/>
     <source source="SecondEdition" page="244"/>
+    <source source="ScrollErrata" />
   </charm>
   
   <!-- SecondEdition Solar Specials -->
@@ -387,10 +396,7 @@
       <charmReference id="Solar.SolarHeroForm"/>
     </prerequisite>
     <cost>
-      
         <essence cost="4" />
-        <willpower cost="1" />
-      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
@@ -400,6 +406,7 @@
     <charmAttribute attribute="Crippling" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="190"/>
+	<source source="ScrollErrata" />
   </charm>
 
 </charmlist>

@@ -1,4 +1,4 @@
-<essence isEssenceUser="false">
+<essence isEssenceUser="true">
   <personalPool>
     <essencePart multiplier="10" />
   </personalPool>
