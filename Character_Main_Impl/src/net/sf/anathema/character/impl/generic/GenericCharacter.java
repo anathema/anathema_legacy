@@ -23,7 +23,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -41,6 +40,7 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.ArrayList;
@@ -71,10 +71,10 @@ public class GenericCharacter implements IGenericCharacter {
   public int getLearnCount(String charmName) {
     ICharmConfiguration charms = statistics.getCharms();
     try {
-      IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charmName);
+      IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(
+              charmName);
       return configuration.getCurrentLearnCount();
-    }
-    catch (IllegalArgumentException e) {
+    } catch (IllegalArgumentException e) {
       return 0;
     }
   }
@@ -87,7 +87,8 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public void setLearnCount(String charmName, int newValue) {
     ICharmConfiguration charms = statistics.getCharms();
-    IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(charmName);
+    IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) charms.getSpecialCharmConfiguration(
+            charmName);
     configuration.setCurrentLearnCount(newValue);
   }
 
@@ -168,8 +169,7 @@ public class GenericCharacter implements IGenericCharacter {
   public String getPeripheralPool() {
     try {
       return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPeripheralPool() : null;
-    }
-    catch (ContractFailedException e) {
+    } catch (ContractFailedException e) {
       return null;
     }
   }
@@ -181,10 +181,9 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public String getPersonalPool() {
-  try {
+    try {
       return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPersonalPool() : null;
-    }
-    catch (ContractFailedException e) {
+    } catch (ContractFailedException e) {
       return null;
     }
   }
@@ -203,8 +202,7 @@ public class GenericCharacter implements IGenericCharacter {
   public IdentifiedInteger[] getComplexPools() {
     if (getTemplate().getEssenceTemplate().isEssenceUser()) {
       return statistics.getEssencePool().getComplexPools();
-    }
-    else {
+    } else {
       return new IdentifiedInteger[0];
     }
   }
@@ -354,24 +352,23 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public void addSpecialtyListChangeListener(final ISpecialtyListChangeListener listener) {
-	ISpecialtiesConfiguration config = statistics.getTraitConfiguration().getSpecialtyConfiguration();
-	for (ITraitReference trait : config.getAllTraits())
-		config.getSpecialtiesContainer(trait).addSubTraitListener(new ISubTraitListener() {
-			@Override
-			public void subTraitValueChanged() {
-			}
+  public void addSpecialtyListChangeListener(final IChangeListener listener) {
+    ISpecialtiesConfiguration config = statistics.getTraitConfiguration().getSpecialtyConfiguration();
+    for (ITraitReference trait : config.getAllTraits())
+      config.getSpecialtiesContainer(trait).addSubTraitListener(new ISubTraitListener() {
+        @Override
+        public void subTraitValueChanged() {
+        }
 
-			@Override
-			public void subTraitAdded(ISubTrait subTrait) {
-				listener.specialtyListChanged();
-			}
+        @Override
+        public void subTraitAdded(ISubTrait subTrait) {
+          listener.changeOccurred();
+        }
 
-			@Override
-			public void subTraitRemoved(ISubTrait subTrait) {
-				listener.specialtyListChanged();
-			}
-			
-		});
+        @Override
+        public void subTraitRemoved(ISubTrait subTrait) {
+          listener.changeOccurred();
+        }
+      });
   }
 }

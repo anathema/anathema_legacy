@@ -20,9 +20,9 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IdentifiedInteger;
@@ -155,7 +155,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public int getPersonalPoolValue() {
     return 0;
   }
-  
+
   @Override
   public int getOverdrivePoolValue() {
     return 0;
@@ -165,7 +165,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public IdentifiedInteger[] getComplexPools() {
     return new IdentifiedInteger[0];
   }
-  
+
   @Override
   public int getAttunedPoolValue() {
     return 0;
@@ -184,7 +184,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   @Override
   public IConcept getConcept() {
     return new IConcept() {
-      
+
       @Override
       public int getAge() {
         return 0;
@@ -241,7 +241,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public ITraitLimitation getEssenceLimitation() {
     return new StaticTraitLimitation(7);
   }
-  
+
   @Override
   public int getAge() {
     return 0;
@@ -256,11 +256,11 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return new IIdentifiedTraitTypeGroup[0];
   }
-  
+
   @Override
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
-	    return new IIdentifiedTraitTypeGroup[0];
-	  }
+    return new IIdentifiedTraitTypeGroup[0];
+  }
 
   @Override
   public int getSpentExperiencePoints() {
@@ -291,34 +291,31 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public ICharm[] getLearnedCharms() {
     return new ICharm[0];
   }
-  
+
   @Override
-  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups()
-  {
-	  return null;
+  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups() {
+    return null;
   }
 
-	@Override
-	public int getLearnCount(String charmName) {
-		return 0;
-	}
+  @Override
+  public int getLearnCount(String charmName) {
+    return 0;
+  }
 
-	@Override
-	public IEquipmentModifiers getEquipmentModifiers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+  @Override
+  public IEquipmentModifiers getEquipmentModifiers() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 
-	@Override
-	public void setLearnCount(String charmName, int newValue) {
-		// TODO Auto-generated method stub
-		
-	}
+  @Override
+  public void setLearnCount(String charmName, int newValue) {
+    // TODO Auto-generated method stub
 
-	@Override
-	public void addSpecialtyListChangeListener(
-			ISpecialtyListChangeListener listener) {
-		// TODO Auto-generated method stub
-		
-	}
+  }
+
+  @Override
+  public void addSpecialtyListChangeListener(IChangeListener listener) {
+    // TODO Auto-generated method stub
+  }
 }

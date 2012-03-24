@@ -6,9 +6,9 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
@@ -61,7 +61,7 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
   }
 
   @Override
-  public void addCharacterSpecialtyListChangeListener(ISpecialtyListChangeListener listener) {
+  public void addCharacterSpecialtyListChangeListener(IChangeListener listener) {
     context.getSpecialtyContext().addSpecialtyListChangeListener(listener);
   }
 }

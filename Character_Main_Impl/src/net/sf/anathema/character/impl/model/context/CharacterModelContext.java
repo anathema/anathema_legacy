@@ -16,7 +16,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationComboLearnStrategy;
@@ -32,18 +31,18 @@ import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueS
 import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.character.model.charm.learn.IComboLearnStrategy;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class CharacterModelContext implements ICharacterModelContext, ICharmContext, ITraitContext,
-	IGenericSpecialtyContext {
+public class CharacterModelContext implements ICharacterModelContext, ICharmContext, ITraitContext, IGenericSpecialtyContext {
 
   private final ProxyTraitValueStrategy traitValueStrategy = new ProxyTraitValueStrategy(
-      new CreationTraitValueStrategy());
+          new CreationTraitValueStrategy());
   private final ProxyComboLearnStrategy comboLearnStrategy = new ProxyComboLearnStrategy(
-      new CreationComboLearnStrategy());
+          new CreationComboLearnStrategy());
   private final ProxySpellLearnStrategy spellLearnStrategy = new ProxySpellLearnStrategy(
-      new CreationSpellLearnStrategy());
+          new CreationSpellLearnStrategy());
   private final ProxyCharmLearnStrategy charmLearnStrategy = new ProxyCharmLearnStrategy(
-      new CreationCharmLearnStrategy());
+          new CreationCharmLearnStrategy());
   private final CharacterListening characterListening = new CharacterListening();
   private final IGenericCharacter character;
   private final IBasicCharacterData characterData;
@@ -54,10 +53,12 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
     this.characterData = new BasicCharacterContext(character);
   }
 
+  @Override
   public IAdditionalModel getAdditionalModel(String id) {
     return character.getAdditionalModel(id);
   }
 
+  @Override
   public ITraitValueStrategy getTraitValueStrategy() {
     return traitValueStrategy;
   }
@@ -76,8 +77,7 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
       comboLearnStrategy.setStrategy(new ExperiencedComboLearnStrategy());
       spellLearnStrategy.setStrategy(new ExperiencedSpellLearnStrategy());
       charmLearnStrategy.setStrategy(new ExperiencedCharmLearnStrategy());
-    }
-    else {
+    } else {
       traitValueStrategy.setStrategy(new CreationTraitValueStrategy());
       comboLearnStrategy.setStrategy(new CreationComboLearnStrategy());
       spellLearnStrategy.setStrategy(new CreationSpellLearnStrategy());
@@ -85,68 +85,83 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
     }
   }
 
+  @Override
   public ICharmLearnStrategy getCharmLearnStrategy() {
     return charmLearnStrategy;
   }
 
+  @Override
   public ILimitationContext getLimitationContext() {
     return character;
   }
 
+  @Override
   public IAdditionalRules getAdditionalRules() {
     return character.getTemplate().getAdditionalRules();
   }
 
+  @Override
   public IGenericTraitCollection getTraitCollection() {
     return character.getTraitCollection();
   }
 
+  @Override
   public IMagicCollection getMagicCollection() {
     return character;
   }
 
+  @Override
   public ITraitContext getTraitContext() {
     return this;
   }
 
+  @Override
   public ICharmContext getCharmContext() {
     return this;
   }
 
+  @Override
   public CharacterListening getCharacterListening() {
     return characterListening;
   }
 
+  @Override
   public IBasicCharacterData getBasicCharacterContext() {
     return characterData;
   }
-  
-  public IPresentationProperties getPresentationProperties()
-  {
-	  return character.getTemplate().getPresentationProperties();
+
+  @Override
+  public IPresentationProperties getPresentationProperties() {
+    return character.getTemplate().getPresentationProperties();
   }
 
   @Override
   public IGenericCharmConfiguration getCharmConfiguration() {
     return character;
   }
-  
-  public boolean isFullyLoaded() { return isFullyLoaded; }
-  
-  public void setFullyLoaded(boolean loaded) { isFullyLoaded = loaded; }
+
+  @Override
+  public boolean isFullyLoaded() {
+    return isFullyLoaded;
+  }
+
+  @Override
+  public void setFullyLoaded(boolean loaded) {
+    isFullyLoaded = loaded;
+  }
 
   @Override
   public IGenericSpecialtyContext getSpecialtyContext() {
-	return this;
+    return this;
   }
-  
-  public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
-		return character.getSpecialties(traitType);
-	  }
 
   @Override
-  public void addSpecialtyListChangeListener(
-  		ISpecialtyListChangeListener listener) {
-	  character.addSpecialtyListChangeListener(listener);	
+  public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
+    return character.getSpecialties(traitType);
+  }
+
+  @Override
+  public void addSpecialtyListChangeListener(IChangeListener listener) {
+    character.addSpecialtyListChangeListener(listener);
   }
 }
