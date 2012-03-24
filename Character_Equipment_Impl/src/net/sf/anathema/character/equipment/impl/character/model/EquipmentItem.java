@@ -40,7 +40,7 @@ public class EquipmentItem implements IEquipmentItem {
   private final MagicalMaterial material;
 
   public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet, MagicalMaterial material,
-		  ItemAttunementEvaluator provider) {
+                       ItemAttunementEvaluator provider) {
     if (template.getComposition() == MaterialComposition.Variable && material == null) {
       throw new MissingMaterialException("Variable material items must be created with material."); //$NON-NLS-1$
     }
@@ -50,28 +50,25 @@ public class EquipmentItem implements IEquipmentItem {
     Collections.addAll(printedStats, template.getStats(ruleSet));
     initPrintStats(provider);
   }
-  
+
   private void initPrintStats(ItemAttunementEvaluator provider) {
-	  IArtifactStats bestAttune = null;
-	  for (IEquipmentStats stat : getViews()) {
-		  if (stat instanceof IArtifactStats) {
-			  if (hasAttunementType((IArtifactStats) stat, provider.getAttuneTypes(this)) &&
-				  (bestAttune == null ||
-				  ((IArtifactStats)stat).getAttuneType().compareTo(bestAttune.getAttuneType()) > 0))
-				  bestAttune = (IArtifactStats) stat;
-			  continue;
-		  }
-		  printedStats.add(stat);
-	  }
-	  if (bestAttune != null)
-		  printedStats.add(bestAttune);
+    IArtifactStats bestAttune = null;
+    for (IEquipmentStats stat : getViews()) {
+      if (stat instanceof IArtifactStats) {
+        if (hasAttunementType((IArtifactStats) stat, provider.getAttuneTypes(
+                this)) && (bestAttune == null || ((IArtifactStats) stat).getAttuneType().compareTo(
+                bestAttune.getAttuneType()) > 0)) bestAttune = (IArtifactStats) stat;
+        continue;
+      }
+      printedStats.add(stat);
+    }
+    if (bestAttune != null) printedStats.add(bestAttune);
   }
-  
+
   private boolean hasAttunementType(IArtifactStats stats, ArtifactAttuneType[] types) {
-	  for (ArtifactAttuneType type : types)
-		  if (type.equals(stats.getAttuneType()))
-			  return true;
-	  return false;
+    for (ArtifactAttuneType type : types)
+      if (type.equals(stats.getAttuneType())) return true;
+    return false;
   }
 
   @Override
@@ -89,15 +86,18 @@ public class EquipmentItem implements IEquipmentItem {
       @Override
       public IEquipmentStats transform(final IEquipmentStats input) {
         if (input instanceof IArmourStats) {
-          return new ProxyArmourStats((IArmourStats) input, material, ruleSet);
+          return new ProxyArmourStats((IArmourStats) input, material);
         }
         if (input instanceof IWeaponStats) {
-          return new ProxyWeaponStats((IWeaponStats) input, material, ruleSet);
+          return new ProxyWeaponStats((IWeaponStats) input, material);
         }
-        if (input instanceof IArtifactStats) return new ProxyArtifactStats((IArtifactStats) input, material, ruleSet);
-        if (input instanceof ITraitModifyingStats)
-          return new ProxyTraitModifyingStats((ITraitModifyingStats) input, material, ruleSet);
-        return new ProxyShieldStats((IShieldStats) input, material, ruleSet);
+        if (input instanceof IArtifactStats) {
+          return new ProxyArtifactStats((IArtifactStats) input, material);
+        }
+        if (input instanceof ITraitModifyingStats) {
+          return new ProxyTraitModifyingStats((ITraitModifyingStats) input, material);
+        }
+        return new ProxyShieldStats((IShieldStats) input, material);
       }
     });
   }
@@ -111,9 +111,7 @@ public class EquipmentItem implements IEquipmentItem {
     for (IEquipmentStats stats : statsArray) {
       if (stats instanceof IWeaponStats) {
         Collections.addAll(views, ((IWeaponStats) stats).getViews());
-      }
-      else if (stats instanceof IArtifactStats)
-    	Collections.addAll(views, ((IArtifactStats)stats).getViews());
+      } else if (stats instanceof IArtifactStats) Collections.addAll(views, ((IArtifactStats) stats).getViews());
       else {
         views.add(stats);
       }
@@ -135,14 +133,12 @@ public class EquipmentItem implements IEquipmentItem {
   public MaterialComposition getMaterialComposition() {
     return template.getComposition();
   }
-  
+
   @Override
   public ArtifactAttuneType getAttunementState() {
-  	for (IEquipmentStats stats : getStats())
-  		if (stats instanceof IArtifactStats)
-  			if (isPrintEnabled(stats))
-  				return ((IArtifactStats)stats).getAttuneType();
-  	return ArtifactAttuneType.Unattuned;
+    for (IEquipmentStats stats : getStats())
+      if (stats instanceof IArtifactStats) if (isPrintEnabled(stats)) return ((IArtifactStats) stats).getAttuneType();
+    return ArtifactAttuneType.Unattuned;
   }
 
   @Override
@@ -161,14 +157,13 @@ public class EquipmentItem implements IEquipmentItem {
     if (stats instanceof IProxy<?>) {
       stats = ((IProxy<? extends IEquipmentStats>) stats).getUnderlying();
     }
-    
+
     if (isPrintEnabled(stats) == enabled) {
       return;
     }
     if (enabled) {
       printedStats.add(stats);
-    }
-    else {
+    } else {
       printedStats.remove(stats);
     }
     changeControl.fireChangedEvent();
@@ -189,15 +184,15 @@ public class EquipmentItem implements IEquipmentItem {
       }
     }
   }
-  
+
   @Override
   public IEquipmentStats getStat(String statId) {
-	for (IEquipmentStats view : getViews()) {
-	    if (view.getId().equals(statId)) {
-	        return view;
-	    }
-	}
-	return null;
+    for (IEquipmentStats view : getViews()) {
+      if (view.getId().equals(statId)) {
+        return view;
+      }
+    }
+    return null;
   }
 
   @Override
@@ -209,8 +204,8 @@ public class EquipmentItem implements IEquipmentItem {
   public void removeChangeListener(IChangeListener listener) {
     changeControl.removeChangeListener(listener);
   }
-  
+
   public String toString() {
-	return template.getName() + (material != null ? " (" + material.toString() + ")" : "");
+    return template.getName() + (material != null ? " (" + material.toString() + ")" : "");
   }
 }

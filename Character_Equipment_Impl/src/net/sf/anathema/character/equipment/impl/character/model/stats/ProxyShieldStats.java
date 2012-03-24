@@ -3,7 +3,6 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -11,26 +10,28 @@ public class ProxyShieldStats extends AbstractStats implements IShieldStats, IPr
 
   private final IShieldStats delegate;
   private final MagicalMaterial material;
-  private final IExaltedRuleSet ruleSet;
 
-  public ProxyShieldStats(IShieldStats stats, MagicalMaterial material, IExaltedRuleSet ruleSet) {
+  public ProxyShieldStats(IShieldStats stats, MagicalMaterial material) {
     this.delegate = stats;
     this.material = material;
-    this.ruleSet = ruleSet;
   }
   
+  @Override
   public IShieldStats getUnderlying() {
     return this.delegate;
   }
 
+  @Override
   public Integer getFatigue() {
     return delegate.getFatigue();
   }
 
+  @Override
   public Integer getMobilityPenalty() {
     return delegate.getMobilityPenalty();
   }
 
+  @Override
   public IIdentificate getName() {
     return delegate.getName();
   }
@@ -42,8 +43,7 @@ public class ProxyShieldStats extends AbstractStats implements IShieldStats, IPr
     }
     ProxyShieldStats other = (ProxyShieldStats) obj;
     return ObjectUtilities.equals(delegate, other.delegate)
-        && ObjectUtilities.equals(material, other.material)
-        && ObjectUtilities.equals(ruleSet, other.ruleSet);
+        && ObjectUtilities.equals(material, other.material);
   }
 
   @Override
@@ -51,10 +51,12 @@ public class ProxyShieldStats extends AbstractStats implements IShieldStats, IPr
     return delegate.hashCode();
   }
 
+  @Override
   public int getCloseCombatBonus() {
     return delegate.getCloseCombatBonus();
   }
 
+  @Override
   public int getRangedCombatBonus() {
     return delegate.getRangedCombatBonus();
   }

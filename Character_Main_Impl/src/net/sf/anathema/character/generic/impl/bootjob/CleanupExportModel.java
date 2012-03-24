@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.bootjob;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;

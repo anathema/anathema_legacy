@@ -1,25 +1,22 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class RangeModification implements IStatsModification {
 
-  private final IExaltedRuleSet ruleSet;
   private BaseMaterial material;
 
-  public RangeModification(MagicalMaterial material, IExaltedRuleSet ruleSet) {
+  public RangeModification(MagicalMaterial material) {
     this.material = new BaseMaterial(material);
-    this.ruleSet = ruleSet;
   }
 
+  @Override
   public int getModifiedValue(int input, WeaponStatsType type) {
     int modificationFactor = getModificationFactor();
     if (type == WeaponStatsType.Bow || type == WeaponStatsType.Thrown_BowBonuses) {
       return input + 50 * modificationFactor;
     }
-    if (type == WeaponStatsType.Thrown && ruleSet == ExaltedRuleSet.SecondEdition) {
+    if (type == WeaponStatsType.Thrown) {
       return input + 10 * modificationFactor;
     }
     return input;
