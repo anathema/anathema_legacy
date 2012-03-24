@@ -124,6 +124,7 @@
     <charmAttribute attribute="FavoredCaste.Dawn" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition"/>
+    <source source="ScrollErrata" />
   </charm>
   
   <charm id="Solar.Spirit-RepellingDiagram" exalt="Solar" group="Occult">
