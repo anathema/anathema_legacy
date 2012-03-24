@@ -187,8 +187,6 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   private void initRulesPresentation() {
     view.addRulesLabel(resources.getString("Rules.CharacterType.Message", resources.getString(
             statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
-    view.addRulesLabel(resources.getString("Rules.Ruleset.Message",
-            resources.getString("Ruleset." + statistics.getRules().getId()))); //$NON-NLS-1$//$NON-NLS-2$
   }
 
   private boolean initCastePresentation() {

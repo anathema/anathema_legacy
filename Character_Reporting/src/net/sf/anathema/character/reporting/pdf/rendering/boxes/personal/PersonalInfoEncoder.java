@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.personal;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -30,11 +29,10 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     int lines = getNumberOfLines(characterType);
 
     float lineHeight = (bounds.height - TEXT_PADDING) / lines;
-    float entryWidth = (bounds.width - 2 * TEXT_PADDING) / 3;
+    float entryWidth = (bounds.width - TEXT_PADDING) / 2;
     float shortEntryWidth = (bounds.width - 4 * TEXT_PADDING) / 5;
     float firstColumnX = bounds.x;
     float secondColumnX = firstColumnX + entryWidth + TEXT_PADDING;
-    float thirdColumnX = secondColumnX + entryWidth + TEXT_PADDING;
 
     float firstRowY = (int) (bounds.getMaxY() - lineHeight);
     String conceptContent = reportContent.getDescription().getConceptText();
@@ -46,9 +44,6 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     } else {
       graphics.drawLabelledContent(conceptLabel, conceptContent, new Position(firstColumnX, firstRowY), 2 * entryWidth + TEXT_PADDING);
     }
-    IExaltedRuleSet rules = reportContent.getCharacter().getRules();
-    String rulesContent = rules == null ? null : resources.getString("Ruleset." + rules.getId()); //$NON-NLS-1$
-    graphics.drawLabelledContent(getLabel("Rules"), rulesContent, new Position(thirdColumnX, firstRowY), entryWidth); //$NON-NLS-1$
 
     float secondRowY = firstRowY - lineHeight;
     String motivationContent = reportContent.getCharacter().getConcept().getWillpowerRegainingComment(resources);
