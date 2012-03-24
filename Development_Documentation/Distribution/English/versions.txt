@@ -28,6 +28,7 @@ It will create a backup ZIP of your repository on first launch and then delete a
 -- Bugfixes --
 * Characters remember which weapons were attuned when saving
 * (Infernal/SWLIHN) "Precision Thought-Force Exercise" and "Orbital Impact Storm" attributed to Ink Monkeys
+* Duplication of Series possible on Windows systems
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.2
