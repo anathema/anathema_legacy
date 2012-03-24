@@ -5,83 +5,79 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class ProxyArtifactStats extends AbstractStats implements IArtifactStats, IProxy<IArtifactStats> 
-{
-	  private final IArtifactStats delegate;
-	  private final MagicalMaterial material;
-	  private final IExaltedRuleSet ruleSet;
+public class ProxyArtifactStats extends AbstractStats implements IArtifactStats, IProxy<IArtifactStats> {
+  private final IArtifactStats delegate;
+  private final MagicalMaterial material;
 
-	  public ProxyArtifactStats(IArtifactStats stats, MagicalMaterial material, IExaltedRuleSet ruleSet) {
-	    this.delegate = stats;
-	    this.material = material;
-	    this.ruleSet = ruleSet;
-	  }
-	  
-	  public IArtifactStats getUnderlying() {
-	    return this.delegate;
-	  }
+  public ProxyArtifactStats(IArtifactStats stats, MagicalMaterial material) {
+    this.delegate = stats;
+    this.material = material;
+  }
 
-	  public Integer getAttuneCost() {
-	    return delegate.getAttuneCost();
-	  }
-	  
-	  public IIdentificate getName() {
-		    return delegate.getName();
-		  }
-	  
-		public ArtifactAttuneType getAttuneType()
-		{
-			return delegate.getAttuneType();
-		}
-		
-	  public boolean allowForeignAttunement()
-	  {
-		  return delegate.allowForeignAttunement();
-	  }
-	  
-	  public boolean requireAttunementToUse()
-	  {
-		  return delegate.requireAttunementToUse();
-	  }
+  @Override
+  public IArtifactStats getUnderlying() {
+    return this.delegate;
+  }
 
-	  @Override
-	  public boolean equals(Object obj) {
-	    if (obj == null || obj.getClass() != getClass()) {
-	      return false;
-	    }
-	    ProxyArtifactStats other = (ProxyArtifactStats) obj;
-	    return ObjectUtilities.equals(delegate, other.delegate)
-	        && ObjectUtilities.equals(material, other.material)
-	        && ObjectUtilities.equals(ruleSet, other.ruleSet);
-	  }
+  @Override
+  public Integer getAttuneCost() {
+    return delegate.getAttuneCost();
+  }
 
-	  @Override
-	  public int hashCode() {
-	    return ObjectUtilities.getHashCode(delegate, material, ruleSet);
-	  }
-	  
-	  @Override
-	  public IEquipmentStats[] getViews() {
-	    return new IEquipmentStats[] { this };
-	  }
+  @Override
+  public IIdentificate getName() {
+    return delegate.getName();
+  }
 
-	  @Override
-	  public String getId() {
-	    return delegate.getId();
-	  }
-	  
-	  @Override
-	  public Object[] getApplicableMaterials()
-	  {
-		  return delegate.getApplicableMaterials();
-	  }
-	  
+  @Override
+  public ArtifactAttuneType getAttuneType() {
+    return delegate.getAttuneType();
+  }
+
+  @Override
+  public boolean allowForeignAttunement() {
+    return delegate.allowForeignAttunement();
+  }
+
+  @Override
+  public boolean requireAttunementToUse() {
+    return delegate.requireAttunementToUse();
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null || obj.getClass() != getClass()) {
+      return false;
+    }
+    ProxyArtifactStats other = (ProxyArtifactStats) obj;
+    return ObjectUtilities.equals(delegate, other.delegate) && ObjectUtilities.equals(material, other.material);
+  }
+
+  @Override
+  public int hashCode() {
+    return ObjectUtilities.getHashCode(delegate, material);
+  }
+
+  @Override
+  public IEquipmentStats[] getViews() {
+    return new IEquipmentStats[]{this};
+  }
+
+  @Override
+  public String getId() {
+    return delegate.getId();
+  }
+
+  @Override
+  public Object[] getApplicableMaterials() {
+    return delegate.getApplicableMaterials();
+  }
+
   public String toString() {
-	  return delegate.toString();
+    return delegate.toString();
   }
 
   @Override

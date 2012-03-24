@@ -5,9 +5,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
@@ -43,7 +41,6 @@ public class ExaltedCharacter implements ICharacter {
   @Override
   public ICharacterStatistics createCharacterStatistics(ICharacterTemplate template,
                                                         ICharacterGenerics generics) throws SpellException {
-    IExaltedRuleSet rules = ExaltedRuleSet.SecondEdition;
     Ensure.ensureNull("Character Statistics can only be created once per character.", statistics); //$NON-NLS-1$
     if (template instanceof IUnsupportedTemplate) {
       throw new IllegalArgumentException(
@@ -51,8 +48,7 @@ public class ExaltedCharacter implements ICharacter {
     }
     Ensure.ensureArgumentNotNull("Template must not be null.", template); //$NON-NLS-1$
     Ensure.ensureArgumentNotNull("Generics must not be null.", generics); //$NON-NLS-1$
-    Ensure.ensureArgumentNotNull("RuleSet must not be null.", rules); //$NON-NLS-1$
-    this.statistics = new CharacterStatistics(template, generics, rules);
+    this.statistics = new CharacterStatistics(template, generics);
     for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
       if (globalTemplate.supportsEdition(ExaltedEdition.SecondEdition)) {
         addAdditionalModels(generics, globalTemplate);

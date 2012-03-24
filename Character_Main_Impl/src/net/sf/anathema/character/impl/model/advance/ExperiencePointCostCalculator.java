@@ -71,11 +71,6 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
   }
 
   @Override
-  public int getComboCosts(ICharm[] charms) {
-    return costs.getComboCosts(charms);
-  }
-
-  @Override
   public double getSpecialtyCosts(boolean favored) {
     return costs.getSpecialtyCosts(favored);
   }

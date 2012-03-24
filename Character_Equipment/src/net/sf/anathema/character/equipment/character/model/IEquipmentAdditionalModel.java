@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.character.model;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 
 public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentItemCollection {
@@ -20,4 +21,6 @@ public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentI
   public IEquipmentCharacterDataProvider getCharacterDataProvider();
 
   public void refreshItems();
+
+  IEquipmentCharacterOptionProvider getCharacterOptionProvider();
 }

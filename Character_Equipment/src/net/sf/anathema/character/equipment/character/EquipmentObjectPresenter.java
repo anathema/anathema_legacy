@@ -27,22 +27,22 @@ public class EquipmentObjectPresenter implements Presenter {
   private final IEquipmentItem model;
   private final IEquipmentObjectView view;
   private final IEquipmentStringBuilder stringBuilder;
+  private IEquipmentCharacterOptionProvider characterOptionProvider;
   private final IResources resources;
   private final IEquipmentCharacterDataProvider dataProvider;
   
-  public EquipmentObjectPresenter(
-      IEquipmentItem model,
-      IEquipmentObjectView view,
-      IEquipmentStringBuilder stringBuilder,
-      IEquipmentCharacterDataProvider dataProvider,
-      IResources resources) {
+  public EquipmentObjectPresenter(IEquipmentItem model, IEquipmentObjectView view, IEquipmentStringBuilder stringBuilder,
+                                  IEquipmentCharacterDataProvider dataProvider,
+                                  IEquipmentCharacterOptionProvider characterOptionProvider, IResources resources) {
     this.model = model;
     this.view = view;
     this.stringBuilder = stringBuilder;
+    this.characterOptionProvider = characterOptionProvider;
     this.resources = resources;
     this.dataProvider = dataProvider;
   }
 
+  @Override
   public void initPresentation() {
     String itemTitle = model.getTemplateId();
     if (resources.supportsKey(EQUIPMENT_NAME_PREFIX + itemTitle)) {
@@ -86,7 +86,8 @@ public class EquipmentObjectPresenter implements Presenter {
 	  	  otherStatFlags.put(equipment, booleanModel);
 	    }
 	    booleanModel.addChangeListener(new IChangeListener() {
-	      public void stateChanged() {
+	      @Override
+          public void stateChanged() {
 	        model.setPrintEnabled(equipment, booleanModel.getValue());
 	        if (equipment instanceof IArtifactStats)
 	        {
@@ -134,14 +135,15 @@ public class EquipmentObjectPresenter implements Presenter {
 			  final BooleanModel booleanModel = view.addOptionFlag(baseModel, label);
 			  final IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty, weaponStats.getTraitType());
 			  final IEquipmentStats baseStat = model.getStat(stats.getId());
-			  booleanModel.setValue(dataProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
+			  booleanModel.setValue(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
 		      booleanModel.addChangeListener(new IChangeListener() {
-		        public void stateChanged()
+		        @Override
+                public void stateChanged()
 		        {
 		        	if (booleanModel.getValue())
-		        		dataProvider.enableStatOption(model, baseStat, specialtyOption);
+                      characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);
 		        	else
-		        		dataProvider.disableStatOption(model, baseStat, specialtyOption);
+                      characterOptionProvider.disableStatOption(model, baseStat, specialtyOption);
 		        }
 		      });
 		  }

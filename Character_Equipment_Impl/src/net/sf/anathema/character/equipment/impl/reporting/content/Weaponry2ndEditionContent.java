@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AbstractDefenceWeaponStatsGroup;
@@ -14,11 +15,14 @@ import net.sf.anathema.lib.resources.IResources;
 public class Weaponry2ndEditionContent extends AbstractWeaponryContent {
 
   private final IEquipmentCharacterDataProvider provider;
-	
+  private final IEquipmentCharacterOptionProvider optionProvider;
+
   public Weaponry2ndEditionContent(IResources resources, IGenericCharacter character) {
     super(resources, character);
-    provider = ((IEquipmentAdditionalModel)character.getAdditionalModel(EquipmentAdditionalModelTemplate.ID))
-    		.getCharacterDataProvider();
+    IEquipmentAdditionalModel additionalModel = (IEquipmentAdditionalModel) character.getAdditionalModel(
+            EquipmentAdditionalModelTemplate.ID);
+    provider = additionalModel.getCharacterDataProvider();
+    optionProvider = additionalModel.getCharacterOptionProvider();
   }
 
   @Override
@@ -33,12 +37,13 @@ public class Weaponry2ndEditionContent extends AbstractWeaponryContent {
 
   @Override
   protected AbstractDefenceWeaponStatsGroup createDefenceGroup() {
-    return new SecondEditionDefenceWeaponStatsGroup(getResources(), getCharacter(), getTraitCollection(), provider, getEquipmentModifiers());
+    return new SecondEditionDefenceWeaponStatsGroup(getResources(), getCharacter(), getTraitCollection(), provider,optionProvider,
+            getEquipmentModifiers());
   }
 
   @Override
   protected AccuracyWeaponStatsGroup createAccuracyGroup() {
-    return new AccuracyWeaponStatsGroup(getResources(), getTraitCollection(), provider, getEquipmentModifiers());
+    return new AccuracyWeaponStatsGroup(getResources(), getTraitCollection(), provider, optionProvider);
   }
 
   @Override

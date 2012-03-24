@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons;
 
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -12,14 +13,14 @@ import net.sf.anathema.lib.resources.IResources;
 public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponStatsGroup {
 	
   private final IEquipmentCharacterDataProvider provider;
+  private IEquipmentCharacterOptionProvider optionProvider;
 
-  public SecondEditionDefenceWeaponStatsGroup(IResources resources,
-		  IGenericCharacter character,
-		  IGenericTraitCollection traitCollection,
-		  IEquipmentCharacterDataProvider provider,
-		  IEquipmentModifiers equipment) {
+  public SecondEditionDefenceWeaponStatsGroup(IResources resources, IGenericCharacter character, IGenericTraitCollection traitCollection,
+                                              IEquipmentCharacterDataProvider provider,
+                                              IEquipmentCharacterOptionProvider optionProvider, IEquipmentModifiers equipment) {
     super(resources, character, traitCollection, equipment);
     this.provider = provider;
+    this.optionProvider = optionProvider;
   }
 
   @Override
@@ -42,7 +43,7 @@ public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponS
   private int getOptionModifiers(IWeaponStats stats) {
 	  if (provider == null) return 0;
 	  int mod = 0;
-	  for (IEquipmentStatsOption option : provider.getEnabledStatOptions(stats))
+	  for (IEquipmentStatsOption option : optionProvider.getEnabledStatOptions(stats))
 		  mod += option.getDefenseModifier();
 	  return mod;
   }

@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.framework.xml.experience;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.impl.template.experience.ComboCostCalculator;
 import net.sf.anathema.character.generic.impl.template.points.FixedValueRatingCosts;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
@@ -44,11 +43,6 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   @Override
   public ICurrentRatingCosts getAttributeCosts(boolean favored) {
     return favored ? favoredAttributeCost : generalAttributeCost;
-  }
-
-  @Override
-  public int getComboCosts(ICharm[] comboCharms) {
-    return new ComboCostCalculator().getComboCosts(comboCharms);
   }
 
   @Override

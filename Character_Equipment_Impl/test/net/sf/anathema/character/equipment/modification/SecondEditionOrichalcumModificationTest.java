@@ -3,18 +3,15 @@ package net.sf.anathema.character.equipment.modification;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-
 import org.junit.Test;
 
 public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentModificationTest {
 
   @Test
   public void addsTwoToMeleeAccuracy() throws Exception {
-	assertAccuracyModification(3, 1, WeaponStatsType.Melee);
+    assertAccuracyModification(3, 1, WeaponStatsType.Melee);
   }
-  
+
   @Test
   public void addsOneToRangedAccuracy() throws Exception {
     assertAccuracyModification(2, 1, WeaponStatsType.Bow);
@@ -79,11 +76,6 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
   @Test
   public void fatigueUnmodified() {
     assertFatigueUnmodified();
-  }
-
-  @Override
-  protected IExaltedRuleSet getRuleSet() {
-    return ExaltedRuleSet.SecondEdition;
   }
 
   @Override

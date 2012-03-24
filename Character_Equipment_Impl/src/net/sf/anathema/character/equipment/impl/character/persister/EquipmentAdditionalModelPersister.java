@@ -4,6 +4,7 @@ import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
@@ -33,13 +34,14 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
     this.messageIndicator = messageIndicator;
   }
 
+  @Override
   public void save(Element parent, IAdditionalModel model) {
-	IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) model;
-    saveItems(parent, equipmentModel.getNaturalWeapons(), equipmentModel.getCharacterDataProvider());
-    saveItems(parent, equipmentModel.getEquipmentItems(), equipmentModel.getCharacterDataProvider());
+    IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) model;
+    saveItems(parent, equipmentModel.getNaturalWeapons(), equipmentModel.getCharacterOptionProvider());
+    saveItems(parent, equipmentModel.getEquipmentItems(), equipmentModel.getCharacterOptionProvider());
   }
 
-  private void saveItems(Element parent, IEquipmentItem[] equipmentItems, IEquipmentCharacterDataProvider provider) {
+  private void saveItems(Element parent, IEquipmentItem[] equipmentItems, IEquipmentCharacterOptionProvider provider) {
     for (IEquipmentItem item : equipmentItems) {
       Element itemElement = parent.addElement(TAG_ITEM);
       itemElement.addElement(TAG_TEMPLATE_ID).addCDATA(item.getTemplateId());
@@ -48,18 +50,19 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
       }
       for (IEquipmentStats stats : item.getStats()) {
         if (item.isPrintEnabled(stats)) {
-          Element statsElement = itemElement.addElement(TAG_PRINT_STATS); 
+          Element statsElement = itemElement.addElement(TAG_PRINT_STATS);
           statsElement.addCDATA(stats.getId());
           for (IEquipmentStatsOption option : provider.getEnabledStatOptions(item, item.getStat(stats.getId()))) {
-        	  Element optionElement = statsElement.addElement(TAG_SPECIALTY_OPTION); 
-        	  optionElement.addAttribute(ATTRIB_NAME, option.getName());
-        	  optionElement.addAttribute(ATTRIB_TYPE, option.getType());
+            Element optionElement = statsElement.addElement(TAG_SPECIALTY_OPTION);
+            optionElement.addAttribute(ATTRIB_NAME, option.getName());
+            optionElement.addAttribute(ATTRIB_TYPE, option.getType());
           }
         }
       }
     }
   }
 
+  @Override
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
     IEquipmentAdditionalModel equipmentModel = (EquipmentAdditionalModel) model;
     for (Element itemElement : ElementUtilities.elements(parent, TAG_ITEM)) {
@@ -72,31 +75,27 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
       IEquipmentItem item;
       try {
         item = equipmentModel.addEquipmentObjectFor(templateId, magicalMaterial);
-      }
-      catch (MissingMaterialException e) {
+      } catch (MissingMaterialException e) {
         messageIndicator.addMessage("EquipmentPersistence.NoMaterialFound", //$NON-NLS-1$
-            MessageType.WARNING,
-            templateId);
+                MessageType.WARNING, templateId);
         continue;
       }
       if (item == null) {
         messageIndicator.addMessage("EquipmentPersistence.NoTemplateFound", //$NON-NLS-1$
-            MessageType.WARNING,
-            new Object[] { templateId });
+                MessageType.WARNING, templateId);
         continue;
       }
       item.setUnprinted();
       for (Element statsElement : ElementUtilities.elements(itemElement, TAG_PRINT_STATS)) {
         String printedStatId = statsElement.getText().trim();
         item.setPrinted(printedStatId);
-        
+
         IEquipmentCharacterDataProvider provider = equipmentModel.getCharacterDataProvider();
         IEquipmentStats stats = item.getStat(printedStatId);
         for (Element optionsElement : ElementUtilities.elements(statsElement, TAG_SPECIALTY_OPTION)) {
-        	IEquipmentStatsOption option = provider.getCharacterSpecialtyOption(
-        			optionsElement.attributeValue(ATTRIB_NAME),
-        			optionsElement.attributeValue(ATTRIB_TYPE));
-        	provider.enableStatOption(item, stats, option);
+          IEquipmentStatsOption option = provider.getCharacterSpecialtyOption(
+                  optionsElement.attributeValue(ATTRIB_NAME), optionsElement.attributeValue(ATTRIB_TYPE));
+          equipmentModel.getCharacterOptionProvider().enableStatOption(item, stats, option);
         }
       }
     }

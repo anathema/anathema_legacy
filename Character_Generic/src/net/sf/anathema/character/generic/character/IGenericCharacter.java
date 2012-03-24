@@ -13,9 +13,9 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public interface IGenericCharacter extends ILimitationContext, IMagicCollection, IGenericCharmConfiguration {
@@ -30,28 +30,26 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
 
   public INamedGenericTrait[] getSubTraits(ITraitType traitType);
 
-  public ICharacterPoints getCharacterPoints();
-
   public IExaltedRuleSet getRules();
 
   public int getHealthLevelTypeCount(HealthLevelType type);
 
   public String getPeripheralPool();
-  
+
   public int getPeripheralPoolValue();
 
   public String getPersonalPool();
-  
+
   public int getPersonalPoolValue();
-  
+
   public int getOverdrivePoolValue();
-  
+
   public IdentifiedInteger[] getComplexPools();
-  
+
   public int getAttunedPoolValue();
 
   public IAdditionalModel getAdditionalModel(String templateId);
-  
+
   public IEquipmentModifiers getEquipmentModifiers();
 
   public IConcept getConcept();
@@ -67,9 +65,9 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   public int getPainTolerance();
 
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
-  
+
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
-  
+
   public IIdentifiedTraitTypeGroup[] getYoziTypeGroups();
 
   public int getTotalExperiencePoints();
@@ -82,6 +80,5 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
 
   public boolean isSubeffectCharm(ICharm magic);
 
-  public void addSpecialtyListChangeListener(
-		ISpecialtyListChangeListener listener);
+  public void addSpecialtyListChangeListener(IChangeListener listener);
 }

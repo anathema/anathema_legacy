@@ -13,32 +13,31 @@ import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 
 public interface ICharacterStatistics {
 
-  public ICoreTraitConfiguration getTraitConfiguration();
+  ICoreTraitConfiguration getTraitConfiguration();
 
-  public ICharacterConcept getCharacterConcept();
+  ICharacterConcept getCharacterConcept();
 
-  public ICharacterTemplate getCharacterTemplate();
+  ICharacterTemplate getCharacterTemplate();
 
-  public IEssencePoolConfiguration getEssencePool();
+  IEssencePoolConfiguration getEssencePool();
 
-  public IExperiencePointConfiguration getExperiencePoints();
+  IExperiencePointConfiguration getExperiencePoints();
 
-  public IExtendedConfiguration getExtendedConfiguration();
+  IExtendedConfiguration getExtendedConfiguration();
 
-  public IHealthConfiguration getHealth();
+  IHealthConfiguration getHealth();
 
-  public IExaltedRuleSet getRules();
+  IExaltedRuleSet getRules();
 
-  public boolean isExperienced();
+  boolean isExperienced();
 
-  public void setExperienced(boolean experienced);
+  void setExperienced(boolean experienced);
 
-  // todo vom (24.12.2005) (sieroux): IMagicConfiguration herausziehen 
-  public ICharmConfiguration getCharms();
+  ICharmConfiguration getCharms();
 
-  public IComboConfiguration getCombos();
+  IComboConfiguration getCombos();
 
-  public ISpellConfiguration getSpells();
+  ISpellConfiguration getSpells();
 
-  public ICharacterModelContext getCharacterContext();
+  ICharacterModelContext getCharacterContext();
 }

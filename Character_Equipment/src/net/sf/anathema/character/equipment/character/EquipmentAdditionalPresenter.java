@@ -10,8 +10,8 @@ import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
-import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -31,28 +31,26 @@ public class EquipmentAdditionalPresenter implements Presenter {
   private final IEquipmentAdditionalView view;
   private final Map<IEquipmentItem, IEquipmentObjectView> viewsByItem = new HashMap<IEquipmentItem, IEquipmentObjectView>();
 
-  public EquipmentAdditionalPresenter(
-    IResources resources,
-    final IEquipmentAdditionalModel model,
-    IEquipmentAdditionalView view) {
+  public EquipmentAdditionalPresenter(IResources resources, final IEquipmentAdditionalModel model,
+                                      IEquipmentAdditionalView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
-    
-    model.getCharacterDataProvider().addCharacterSpecialtyListChangeListener(
-    		new ISpecialtyListChangeListener() {
-				@Override
-				public void specialtyListChanged() {
-					for (IEquipmentItem item : model.getNaturalWeapons()) {
-					      initEquipmentObjectPresentation(item);
-					    }
-					for (IEquipmentItem item : model.getEquipmentItems()) {
-					      initEquipmentObjectPresentation(item);
-					    }
-				}
-    		});
+
+    model.getCharacterDataProvider().addCharacterSpecialtyListChangeListener(new IChangeListener() {
+      @Override
+      public void changeOccurred() {
+        for (IEquipmentItem item : model.getNaturalWeapons()) {
+          initEquipmentObjectPresentation(item);
+        }
+        for (IEquipmentItem item : model.getEquipmentItems()) {
+          initEquipmentObjectPresentation(item);
+        }
+      }
+    });
   }
 
+  @Override
   public void initPresentation() {
     for (IEquipmentItem item : model.getNaturalWeapons()) {
       initEquipmentObjectPresentation(item);
@@ -62,10 +60,12 @@ public class EquipmentAdditionalPresenter implements Presenter {
     }
     final IListObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
     model.addEquipmentObjectListener(new ICollectionListener<IEquipmentItem>() {
+      @Override
       public void itemAdded(IEquipmentItem item) {
         initEquipmentObjectPresentation(item);
       }
 
+      @Override
       public void itemRemoved(IEquipmentItem item) {
         removeItemView(item);
       }
@@ -77,10 +77,10 @@ public class EquipmentAdditionalPresenter implements Presenter {
     view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList, magicMaterialView));
     view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
     equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String templateId) {
-        MaterialComposition composition = templateId == null
-          ? MaterialComposition.None
-          : model.getMaterialComposition(templateId);
+        MaterialComposition composition = templateId == null ? MaterialComposition.None : model.getMaterialComposition(
+                templateId);
         MagicalMaterial magicMaterial = null;
         if (composition == MaterialComposition.Variable) {
           magicMaterial = model.getDefaultMaterial();
@@ -108,7 +108,8 @@ public class EquipmentAdditionalPresenter implements Presenter {
         model.refreshItems();
       }
     };
-    refreshAction.setToolTipText(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip")); //$NON-NLS-1$
+    refreshAction.setToolTipText(
+            resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip")); //$NON-NLS-1$
     return refreshAction;
   }
 
@@ -118,9 +119,8 @@ public class EquipmentAdditionalPresenter implements Presenter {
     equipmentTemplatePickList.setObjects(templates);
   }
 
-  private SmartAction createTemplateAddAction(
-    final IListObjectSelectionView<String> equipmentTemplatePickList,
-    final IMagicalMaterialView materialView) {
+  private SmartAction createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList,
+                                              final IMagicalMaterialView materialView) {
     final SmartAction addAction = new SmartAction(new BasicUi(resources).getRightArrowIcon()) {
       private static final long serialVersionUID = 1L;
 
@@ -131,6 +131,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     };
     addAction.setToolTipText(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip")); //$NON-NLS-1$
     equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         addAction.setEnabled(equipmentTemplatePickList.isObjectSelected());
       }
@@ -150,17 +151,19 @@ public class EquipmentAdditionalPresenter implements Presenter {
     IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
     Icon removeIcon = new BasicUi(resources).getRemoveIcon();
     viewsByItem.put(selectedObject, objectView);
-    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(), resources).initPresentation();
+    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(),
+            model.getCharacterOptionProvider(), resources).initPresentation();
     if (model.canBeRemoved(selectedObject)) {
-      objectView.addAction(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
-        removeIcon) {
-        private static final long serialVersionUID = 1L;
+      objectView.addAction(
+              new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
+                      removeIcon) {
+                private static final long serialVersionUID = 1L;
 
-        @Override
-        protected void execute(Component parentComponent) {
-          model.removeItem(selectedObject);
-        }
-      });
+                @Override
+                protected void execute(Component parentComponent) {
+                  model.removeItem(selectedObject);
+                }
+              });
     }
     view.revalidateEquipmentViews();
   }

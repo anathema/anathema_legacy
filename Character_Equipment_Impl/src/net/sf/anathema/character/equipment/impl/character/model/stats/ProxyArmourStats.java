@@ -9,7 +9,6 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SoakModification;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -17,26 +16,27 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
 
   private final IArmourStats delegate;
   private final MagicalMaterial material;
-  private final IExaltedRuleSet ruleSet;
 
-  public ProxyArmourStats(IArmourStats stats, MagicalMaterial material, IExaltedRuleSet ruleSet) {
+  public ProxyArmourStats(IArmourStats stats, MagicalMaterial material) {
     this.delegate = stats;
     this.material = material;
-    this.ruleSet = ruleSet;
   }
 
+  @Override
   public IArmourStats getUnderlying() {
     return this.delegate;
   }
 
+  @Override
   public Integer getFatigue() {
     Integer fatigue = delegate.getFatigue();
     return getModifiedValue(new FatigueModification(material), fatigue);
   }
 
+  @Override
   public Integer getHardness(HealthType type) {
     Integer hardness = delegate.getHardness(type);
-    return getModifiedValue(new HardnessModification(material, ruleSet), hardness);
+    return getModifiedValue(new HardnessModification(material), hardness);
   }
 
   private Integer getModifiedValue(IArmourStatsModification modification, Integer original) {
@@ -46,16 +46,19 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
     return !useAttunementModifiers() ? original : modification.getModifiedValue(original);
   }
 
+  @Override
   public Integer getMobilityPenalty() {
     Integer mobilityPenalty = delegate.getMobilityPenalty();
-    return getModifiedValue(new MobilityPenaltyModification(material, ruleSet), mobilityPenalty);
+    return getModifiedValue(new MobilityPenaltyModification(material), mobilityPenalty);
   }
 
+  @Override
   public Integer getSoak(HealthType type) {
     Integer soak = delegate.getSoak(type);
-    return getModifiedValue(new SoakModification(material, ruleSet, type), soak);
+    return getModifiedValue(new SoakModification(material, type), soak);
   }
 
+  @Override
   public IIdentificate getName() {
     return delegate.getName();
   }
@@ -66,8 +69,7 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
       return false;
     }
     ProxyArmourStats other = (ProxyArmourStats) obj;
-    return ObjectUtilities.equals(delegate, other.delegate) && ObjectUtilities.equals(material,
-            other.material) && ObjectUtilities.equals(ruleSet, other.ruleSet);
+    return ObjectUtilities.equals(delegate, other.delegate) && ObjectUtilities.equals(material, other.material);
   }
 
   @Override

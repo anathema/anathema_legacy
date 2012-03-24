@@ -16,7 +16,6 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -25,13 +24,10 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   private final IWeaponStats delegate;
   private final MagicalMaterial material;
-  private final IExaltedRuleSet ruleSet;
 
-  public ProxyWeaponStats(IWeaponStats stats, MagicalMaterial material,
-		  IExaltedRuleSet ruleSet) {
+  public ProxyWeaponStats(IWeaponStats stats, MagicalMaterial material) {
     this.delegate = stats;
     this.material = material;
-    this.ruleSet = ruleSet;
   }
 
   @Override
@@ -41,15 +37,14 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public boolean equals(Object obj) {
-	if (obj instanceof IWeaponStats && !(obj instanceof WeaponStatsDecorator)) {
-	  return obj.equals(delegate);
-	}
+    if (obj instanceof IWeaponStats && !(obj instanceof WeaponStatsDecorator)) {
+      return obj.equals(delegate);
+    }
     if (!(obj instanceof ProxyWeaponStats)) {
       return false;
     }
     ProxyWeaponStats other = (ProxyWeaponStats) obj;
-    return ObjectUtilities.equals(delegate, other.delegate) && ObjectUtilities.equals(material, other.material) &&
-      ObjectUtilities.equals(ruleSet, other.ruleSet);
+    return ObjectUtilities.equals(delegate, other.delegate) && ObjectUtilities.equals(material, other.material);
   }
 
   @Override
@@ -66,7 +61,8 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
     if (unmodifiedValue == null) {
       return null;
     }
-    return !useAttunementModifiers() ? unmodifiedValue : modification.getModifiedValue(unmodifiedValue, getWeaponStatsType());
+    return !useAttunementModifiers() ? unmodifiedValue : modification.getModifiedValue(unmodifiedValue,
+            getWeaponStatsType());
   }
 
   private WeaponStatsType getWeaponStatsType() {
@@ -79,8 +75,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
     if (ArrayUtilities.containsValue(getTags(), WeaponTag.Thrown)) {
       if (ArrayUtilities.containsValue(getTags(), WeaponTag.BowBonuses)) {
         return WeaponStatsType.Thrown_BowBonuses;
-      }
-      else {
+      } else {
         return WeaponStatsType.Thrown;
       }
     }
@@ -89,12 +84,12 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public int getDamage() {
-    return getModifiedValue(new DamageModification(material, ruleSet), delegate.getDamage());
+    return getModifiedValue(new DamageModification(material), delegate.getDamage());
   }
-  
+
   @Override
   public int getMinimumDamage() {
-	return delegate.getMinimumDamage();
+    return delegate.getMinimumDamage();
   }
 
   @Override
@@ -111,15 +106,15 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   public Integer getDefence() {
     return getModifiedValue(new DefenseModification(material), delegate.getDefence());
   }
-  
+
   @Override
   public int getMobilityPenalty() {
-	return delegate.getMobilityPenalty();
+    return delegate.getMobilityPenalty();
   }
 
   @Override
   public Integer getRange() {
-    return getModifiedValue(new RangeModification(material, ruleSet), delegate.getRange());
+    return getModifiedValue(new RangeModification(material), delegate.getRange());
   }
 
   @Override
@@ -129,12 +124,12 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public int getSpeed() {
-    return getModifiedValue(new SpeedModification(material, ruleSet), delegate.getSpeed());
+    return getModifiedValue(new SpeedModification(material), delegate.getSpeed());
   }
 
   @Override
   public IIdentificate[] getTags() {
-    return new TagsModification(material, ruleSet).getModifiedValue(delegate.getTags());
+    return new TagsModification(material).getModifiedValue(delegate.getTags());
   }
 
   @Override
@@ -159,7 +154,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public IEquipmentStats[] getViews() {
-    return new IEquipmentStats[] { this };
+    return new IEquipmentStats[]{this};
   }
 
   @Override

@@ -15,7 +15,6 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
-import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
@@ -45,6 +44,7 @@ public class MagicReport extends AbstractPdfReport {
     return resources.getString("MagicReport.Name"); //$NON-NLS-1$
   }
 
+  @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
@@ -159,7 +159,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private GenericCharacter createGenericCharacter(ICharacter character) {
-    return new GenericCharacter(character.getStatistics(), new ExperiencePointManagement(character.getStatistics()));
+    return new GenericCharacter(character.getStatistics());
   }
 
   private MagicDescription getCharmDescription(IMagic magic) {

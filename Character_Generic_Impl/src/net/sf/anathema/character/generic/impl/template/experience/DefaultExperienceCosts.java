@@ -44,11 +44,6 @@ public class DefaultExperienceCosts implements IExperiencePointCosts {
   }
 
   @Override
-  public int getComboCosts(ICharm[] comboCharms) {
-    return new ComboCostCalculator().getComboCosts(comboCharms);
-  }
-  
-  @Override
   public int getBackgroundCost() {
     return 3;
   }

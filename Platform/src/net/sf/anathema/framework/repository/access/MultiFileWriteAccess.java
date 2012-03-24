@@ -19,6 +19,7 @@ public class MultiFileWriteAccess implements IRepositoryWriteAccess {
     this.extension = extension;
   }
 
+  @Override
   public OutputStream createMainOutputStream() throws RepositoryException {
     try {
       return new FileOutputStream(new File(itemFolder, mainFileName + extension));
@@ -28,6 +29,7 @@ public class MultiFileWriteAccess implements IRepositoryWriteAccess {
     }
   }
 
+  @Override
   public OutputStream createSubOutputStream(String streamID) throws RepositoryException {
     try {
       return new FileOutputStream(new File(itemFolder, streamID + extension));

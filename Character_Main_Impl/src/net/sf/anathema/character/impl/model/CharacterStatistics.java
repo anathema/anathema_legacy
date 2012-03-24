@@ -4,6 +4,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -36,7 +37,7 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class CharacterStatistics implements ICharacterStatistics {
 
-  private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this, null));
+  private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this));
   private final ICharacterTemplate characterTemplate;
   private final ICharacterConcept concept;
   private final IEssencePoolConfiguration essencePool;
@@ -45,7 +46,6 @@ public class CharacterStatistics implements ICharacterStatistics {
   private final ISpellConfiguration spells;
   private final IHealthConfiguration health;
   private final IExperiencePointConfiguration experiencePoints = new ExperiencePointConfiguration();
-  private final IExaltedRuleSet rules;
   private boolean experienced = false;
   private final IObjectValueChangedListener<String> motivationChangeListener = new IObjectValueChangedListener<String>() {
     @Override
@@ -68,12 +68,10 @@ public class CharacterStatistics implements ICharacterStatistics {
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final ICoreTraitConfiguration traitConfiguration;
 
-  public CharacterStatistics(final ICharacterTemplate template, ICharacterGenerics generics, IExaltedRuleSet rules)
+  public CharacterStatistics(final ICharacterTemplate template, ICharacterGenerics generics)
           throws SpellException {
     Ensure.ensureArgumentNotNull(template);
     Ensure.ensureArgumentNotNull(generics);
-    Ensure.ensureArgumentNotNull(rules);
-    this.rules = rules;
     this.characterTemplate = template;
     this.concept = initConcept();
     this.traitConfiguration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry());
@@ -203,7 +201,7 @@ public class CharacterStatistics implements ICharacterStatistics {
 
   @Override
   public IExaltedRuleSet getRules() {
-    return rules;
+    return ExaltedRuleSet.SecondEdition;
   }
 
   @Override

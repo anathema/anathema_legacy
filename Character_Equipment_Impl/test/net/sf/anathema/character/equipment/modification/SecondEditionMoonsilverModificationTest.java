@@ -2,9 +2,6 @@ package net.sf.anathema.character.equipment.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-
 import org.junit.Test;
 
 public class SecondEditionMoonsilverModificationTest extends AbstractEquipmentModificationTest {
@@ -68,11 +65,6 @@ public class SecondEditionMoonsilverModificationTest extends AbstractEquipmentMo
     assertRangeModification(21, 1, WeaponStatsType.Thrown);
     assertRangeModification(101, 1, WeaponStatsType.Thrown_BowBonuses);
     assertRangeModification(1, 1, WeaponStatsType.Flame);
-  }
-
-  @Override
-  protected IExaltedRuleSet getRuleSet() {
-    return ExaltedRuleSet.SecondEdition;
   }
 
   @Override

@@ -2,9 +2,6 @@ package net.sf.anathema.character.equipment.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-
 import org.junit.Test;
 
 public class SecondEditionStarmetalModificationTest extends AbstractEquipmentModificationTest {
@@ -69,11 +66,6 @@ public class SecondEditionStarmetalModificationTest extends AbstractEquipmentMod
   @Test
   public void fatigueUnmodified() {
     assertFatigueUnmodified();
-  }
-
-  @Override
-  protected IExaltedRuleSet getRuleSet() {
-    return ExaltedRuleSet.SecondEdition;
   }
 
   @Override

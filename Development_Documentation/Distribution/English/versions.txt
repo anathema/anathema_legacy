@@ -15,10 +15,13 @@ http://anathema.github.com
 * Errata'd Orichalcum
 * Changed Dragon-Blooded Charms
 * Added "Shield#" & "Thrust" Tags
+* Combos no longer cost XP or BP
 
 Anathema no longer supports First Edition or "classic" Second Edition.
 It will create a backup ZIP of your repository on first launch and then delete all 1E Characters.
 "Classic" 2E characters will be updated to the new rules.
+If your Character spent XP to change a Combo and you tracked the expenditure in the XP table, please remove the
+entry manually to reflect the new rules.
 
 -- Features --
 * You can now enter your own descriptions for Charms and Spells. To do, CTRL-click your Charm and type away.
@@ -28,6 +31,7 @@ It will create a backup ZIP of your repository on first launch and then delete a
 -- Bugfixes --
 * Characters remember which weapons were attuned when saving
 * (Infernal/SWLIHN) "Precision Thought-Force Exercise" and "Orbital Impact Storm" attributed to Ink Monkeys
+* Duplication of Series possible on Windows systems
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.2

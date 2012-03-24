@@ -6,6 +6,7 @@ import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import org.apache.commons.io.IOUtils;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -43,7 +44,7 @@ public class RepositoryImportHandler {
   }
 
   private void writeSubFile(InputStream inputStream, String entryName) throws RepositoryException, IOException {
-    String unextendedFileName = entryName.substring(entryName.lastIndexOf("/") + 1,
+    String unextendedFileName = entryName.substring(entryName.lastIndexOf(File.separator) + 1,
             entryName.lastIndexOf(".")); //$NON-NLS-1$ //$NON-NLS-2$
     OutputStream outputStream = access.createSubOutputStream(unextendedFileName);
     importStreamToRepository(inputStream, outputStream);
