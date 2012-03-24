@@ -103,7 +103,9 @@ public class EquipmentEditStatsPresenter implements Presenter {
     ObjectUiListCellRenderer ruleSetRenderer = new ObjectUiListCellRenderer(new ExaltedRuleSetUi(resources));
     final IObjectSelectionView<IExaltedRuleSet> ruleSetView = view.initRuleSetSelectionView(
         resources.getString("Equipment.Creation.Ruleset") + ":", ruleSetRenderer); //$NON-NLS-1$ //$NON-NLS-2$
-    ruleSetView.setObjects(model.getSupportedExaltedRuleSets());
+    IExaltedRuleSet[] ruleSets = model.getSupportedExaltedRuleSets();
+    ruleSetView.setObjects(ruleSets);
+    ruleSetView.setSelectedObject(ruleSets[0]);
     ruleSetView.addObjectSelectionChangedListener(new RuleSetSelectionListener(statsListView));
     return ruleSetView;
   }
