@@ -732,7 +732,7 @@
 			<charmReference id="Solar.ReturningWeaponConcentration"/>
 		</prerequisite>
 		<cost>
-			<essence cost=""text="(1m)/>
+			<essence cost="" text="(1m)"/>
 		</cost>
 		<duration duration="Instant"/>
 		<charmtype type="Permanent"/>
@@ -1431,7 +1431,7 @@
 			<charmReference id="Solar.DurabilityOakMeditation"/>
 		</prerequisite>
 		<cost>
-			<essence cost="" text]"(+4m)"/>
+			<essence cost="" text="(+4m)"/>
 			<willpower cost="1"/>
 		</cost>
 		<duration duration="Permanent"/>
