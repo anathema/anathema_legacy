@@ -7,10 +7,15 @@ import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.lib.resources.IResources;
 
+import java.io.File;
+
 @BootJob
-public class FirstEditionCleanup implements IAnathemaBootJob {
+public class RepositoryCleanup implements IAnathemaBootJob {
   @Override
   public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
+    if (!new File(model.getRepository().getRepositoryPath()).exists()){
+      return;
+    }
     ProxySplashscreen.getInstance().displayStatusMessage(
             resources.getString("Character.Bootjob.1ECleanup.Splashmessage")); //$NON-NLS-1$
     new RepositoryBackup().backupRepository(resources, model);
