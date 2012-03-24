@@ -1,17 +1,12 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
-import net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal.WeaponryContentClassFinder;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
 public class WeaponryContent extends AbstractSubBoxContent {
 
-  private IGenericCharacter character;
-
-  public WeaponryContent(IResources resources, IGenericCharacter character) {
+  public WeaponryContent(IResources resources) {
     super(resources);
-    this.character = character;
   }
 
   @Override
@@ -20,8 +15,6 @@ public class WeaponryContent extends AbstractSubBoxContent {
   }
 
   public Class<? extends AbstractWeaponryContent> getTableContentClass() {
-    WeaponryContentClassFinder contentClassFinder = new WeaponryContentClassFinder();
-    character.getRules().getEdition().accept(contentClassFinder);
-    return contentClassFinder.contentClass;
+    return Weaponry2ndEditionContent.class;
   }
 }

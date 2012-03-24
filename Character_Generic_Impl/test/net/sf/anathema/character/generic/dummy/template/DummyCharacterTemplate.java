@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
@@ -54,7 +53,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   @Override
   public IGroupedTraitType[] getAbilityGroups() {
-    AbilityType[] all = AbilityType.getAbilityTypes(ExaltedRuleSet.SecondEdition.getEdition());
+    AbilityType[] all = AbilityType.getAbilityTypes(ExaltedEdition.SecondEdition);
     IGroupedTraitType[] abilityTypes = new GroupedTraitType[all.length];
     for (int index = 0; index < all.length; index++) {
       abilityTypes[index] = new GroupedTraitType(all[index], DUMMYGROUP, null);

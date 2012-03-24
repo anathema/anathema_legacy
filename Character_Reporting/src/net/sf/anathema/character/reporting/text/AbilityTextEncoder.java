@@ -14,7 +14,7 @@ public class AbilityTextEncoder extends AbstractTraitTextEncoder {
 
   @Override
   protected ITraitType[] getTypes(IGenericCharacter genericCharacter) {
-    return AbilityType.getAbilityTypes(genericCharacter.getRules().getEdition());
+    return AbilityType.getSecondEditionAbilities();
   }
 
   @Override

@@ -168,10 +168,12 @@ public enum AbilityType implements ITraitType {
     }
   };
 
+  @Override
   public void accept(ITraitTypeVisitor visitor) {
     visitor.visitAbility(this);
   }
 
+  @Override
   public String getId() {
     return name();
   }
@@ -183,36 +185,7 @@ public enum AbilityType implements ITraitType {
 
   public abstract void accept(IAbilityTypeVisitor visitor);
 
-  private static AbilityType[] getFirstEditionAbilities() {
-    return new AbilityType[] {
-        Archery,
-        Brawl,
-        MartialArts,
-        Melee,
-        Thrown,
-        Endurance,
-        Performance,
-        Presence,
-        Resistance,
-        Survival,
-        Craft,
-        Investigation,
-        Lore,
-        Medicine,
-        Occult,
-        Athletics,
-        Awareness,
-        Dodge,
-        Larceny,
-        Stealth,
-        Bureaucracy,
-        Linguistics,
-        Ride,
-        Sail,
-        Socialize };
-  }
-
-  private static AbilityType[] getSecondEditionAbilities() {
+  public static AbilityType[] getSecondEditionAbilities() {
     return new AbilityType[] {
         Archery,
         MartialArts,
@@ -244,10 +217,12 @@ public enum AbilityType implements ITraitType {
   public static AbilityType[] getAbilityTypes(IExaltedEdition edition) {
     final AbilityType[][] types = new AbilityType[1][];
     edition.accept(new IEditionVisitor() {
+      @Override
       public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        types[0] = getFirstEditionAbilities();
+        types[0] = new AbilityType[0];
       }
 
+      @Override
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
         types[0] = getSecondEditionAbilities();
       }

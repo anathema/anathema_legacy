@@ -24,7 +24,7 @@ public abstract class AbstractEquipmentModificationTest {
   protected abstract IExaltedRuleSet getRuleSet();
 
   protected final void assertAccuracyModification(int expected, int original, WeaponStatsType type) {
-    AccuracyModification modification = new AccuracyModification(getMagicMaterial(), getRuleSet());
+    AccuracyModification modification = new AccuracyModification(getMagicMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original, type));
   }
 
@@ -34,7 +34,7 @@ public abstract class AbstractEquipmentModificationTest {
   }
 
   protected final void assertDefenseModification(int expected, int original, WeaponStatsType type) {
-    DefenseModification modification = new DefenseModification(getMagicMaterial(), getRuleSet());
+    DefenseModification modification = new DefenseModification(getMagicMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original, type));
   }
 

@@ -17,6 +17,6 @@ public class WeaponryContentFactory implements ReportContentFactory<WeaponryCont
 
   @Override
   public WeaponryContent create(IGenericCharacter character, IGenericDescription description) {
-    return new WeaponryContent(resources, character);
+    return new WeaponryContent(resources);
   }
 }

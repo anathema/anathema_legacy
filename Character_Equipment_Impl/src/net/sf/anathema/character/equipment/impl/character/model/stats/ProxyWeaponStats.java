@@ -59,7 +59,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public int getAccuracy() {
-    return getModifiedValue(new AccuracyModification(material, ruleSet), delegate.getAccuracy());
+    return getModifiedValue(new AccuracyModification(material), delegate.getAccuracy());
   }
 
   private Integer getModifiedValue(IStatsModification modification, Integer unmodifiedValue) {
@@ -92,6 +92,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
     return getModifiedValue(new DamageModification(material, ruleSet), delegate.getDamage());
   }
   
+  @Override
   public int getMinimumDamage() {
 	return delegate.getMinimumDamage();
   }
@@ -108,9 +109,10 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public Integer getDefence() {
-    return getModifiedValue(new DefenseModification(material, ruleSet), delegate.getDefence());
+    return getModifiedValue(new DefenseModification(material), delegate.getDefence());
   }
   
+  @Override
   public int getMobilityPenalty() {
 	return delegate.getMobilityPenalty();
   }

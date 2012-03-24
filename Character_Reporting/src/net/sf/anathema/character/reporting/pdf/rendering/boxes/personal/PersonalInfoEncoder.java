@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.personal;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportContent;
@@ -24,6 +23,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
     this.resources = resources;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
     ICharacterType characterType = reportContent.getCharacter().getTemplate().getTemplateType().getCharacterType();
 
@@ -52,7 +52,7 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
 
     float secondRowY = firstRowY - lineHeight;
     String motivationContent = reportContent.getCharacter().getConcept().getWillpowerRegainingComment(resources);
-    String motivationLabel = reportContent.getCharacter().getRules().getEdition() == ExaltedEdition.SecondEdition ? getLabel("Motivation") : getLabel("Nature");
+    String motivationLabel = getLabel("Motivation");
     graphics.drawLabelledContent(motivationLabel, motivationContent, new Position(firstColumnX, secondRowY), bounds.width);
 
     float thirdRowY = secondRowY - lineHeight;
