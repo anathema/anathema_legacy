@@ -14,6 +14,7 @@ public abstract class ComboArbitrator implements IComboArbitrator {
   private final IComboRules supplementalCharmRules = new SupplementalCharmComboRules();
   private final IComboRules reflexiveCharmRules = new ReflexiveCharmComboRules();
 
+  @Override
   public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
     simpleCharmRules.setCrossPrerequisiteTypeComboAllowed(allowed);
     extraActionCharmRules.setCrossPrerequisiteTypeComboAllowed(allowed);
@@ -28,6 +29,7 @@ public abstract class ComboArbitrator implements IComboArbitrator {
 
   protected abstract boolean isCharmLegalByRules(ICharm charm);
 
+  @Override
   public boolean canBeAddedToCombo(ICombo combo, ICharm charm) {
     boolean legal = isCharmComboLegal(charm);
     for (ICharm comboCharm : combo.getCharms()) {
@@ -36,6 +38,7 @@ public abstract class ComboArbitrator implements IComboArbitrator {
     return legal;
   }
 
+  @Override
   public boolean isComboLegal(final ICharm charm1, final ICharm charm2) {
     if (charm1 == charm2) {
       return false;
@@ -57,26 +60,32 @@ public abstract class ComboArbitrator implements IComboArbitrator {
   private boolean handleComboRules(final ICharm charm1, final ICharm charm2) {
     final boolean[] legal = new boolean[1];
     charm1.getCharmTypeModel().getCharmType().accept(new ICharmTypeVisitor() {
+      @Override
       public void visitSimple(CharmType visitedType) {
         legal[0] = simpleCharmRules.isComboLegal(charm1, charm2);
       }
 
+      @Override
       public void visitExtraAction(CharmType visitedType) {
         legal[0] = extraActionCharmRules.isComboLegal(charm1, charm2);
       }
 
+      @Override
       public void visitReflexive(CharmType visitedType) {
         legal[0] = reflexiveCharmRules.isComboLegal(charm1, charm2);
       }
 
+      @Override
       public void visitSupplemental(CharmType visitedType) {
         legal[0] = supplementalCharmRules.isComboLegal(charm1, charm2);
       }
 
+      @Override
       public void visitPermanent(CharmType visitedType) {
         legal[0] = false;
       }
 
+      @Override
       public void visitSpecial(CharmType visitedType) {
         legal[0] = false;
       }

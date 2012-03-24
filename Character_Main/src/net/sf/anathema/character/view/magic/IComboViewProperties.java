@@ -9,11 +9,7 @@ public interface IComboViewProperties extends IMagicLearnProperties {
 
   Icon getFinalizeButtonIcon();
 
-  Icon getFinalizeXPButtonIcon();
-
   String getFinalizeButtonToolTip();
-
-  String getFinalizeXPButtonToolTip();
 
   String getAvailableComboCharmsLabel();
 
@@ -30,8 +26,4 @@ public interface IComboViewProperties extends IMagicLearnProperties {
   String getCancelButtonEditToolTip();
   
   boolean isRemoveButtonEnabled(ICharm charm);
-
-  boolean canFinalize();
-  
-  boolean canFinalizeWithXP();
 }

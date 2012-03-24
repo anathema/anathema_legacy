@@ -66,17 +66,11 @@ public class ComboConfigurationPresenter implements IContentPresenter {
     initComboConfigurationListening(view);
     comboModel.addCharacterChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
-      public void experiencedChanged(boolean experienced) {
-        updateComboButtons();
-      }
-
-      @Override
       public void casteChanged() {
         enableCrossPrerequisiteTypeCombos();
       }
     });
     enableCrossPrerequisiteTypeCombos();
-    updateComboButtons();
   }
 
   @Override
@@ -238,13 +232,6 @@ public class ComboConfigurationPresenter implements IContentPresenter {
       }
 
       @Override
-      public void comboFinalizedXP() {
-        String comboName = comboConfiguration.getEditCombo().getName().getText();
-        comboName = comboName == null ? resources.getString("CardView.CharmConfiguration.ComboCreation.Combo") : "\"" + comboName + "\"";
-        comboConfiguration.finalizeComboUpgrade(comboName);
-      }
-
-      @Override
       public void comboCleared() {
         comboConfiguration.clearCombo();
       }
@@ -265,14 +252,6 @@ public class ComboConfigurationPresenter implements IContentPresenter {
       IComboView comboView = viewsByCombo.get(currentCombo);
       comboView.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel")); //$NON-NLS-1$
       comboView.updateCombo(createComboNameString(currentCombo), convertToHtml(currentCombo));
-    }
-  }
-
-  private void updateComboButtons() {
-    for (ICombo combo : comboConfiguration.getCurrentCombos()) {
-      IComboView comboView = viewsByCombo.get(combo);
-      boolean disabled = comboConfiguration.isLearnedOnCreation(combo) && comboModel.isExperienced();
-      comboView.setEditButtonsVisible(!disabled);
     }
   }
 }

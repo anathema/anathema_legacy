@@ -13,6 +13,7 @@ http://anathema.github.com
 -- Changes for Exalted 2.5 --
 * Updated Sidereal XP Cost
 * Errata'd Orichalcum
+* Changed Solar Charms
 * Changed Dragon-Blooded Charms
 * Added "Shield#" & "Thrust" Tags
 * Combos no longer cost XP or BP

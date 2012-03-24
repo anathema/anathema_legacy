@@ -68,24 +68,24 @@ public class CharacterStatistics implements ICharacterStatistics {
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final ICoreTraitConfiguration traitConfiguration;
 
-  public CharacterStatistics(final ICharacterTemplate template, ICharacterGenerics generics)
-          throws SpellException {
+  public CharacterStatistics(final ICharacterTemplate template, ICharacterGenerics generics) throws SpellException {
     Ensure.ensureArgumentNotNull(template);
     Ensure.ensureArgumentNotNull(generics);
     this.characterTemplate = template;
     this.concept = initConcept();
     this.traitConfiguration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry());
     new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
-    this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration, template.getBaseHealthProviders());
+    this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()),
+            traitConfiguration, template.getBaseHealthProviders());
     this.charms = new CharmConfiguration(health, context, generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
-    this.essencePool = new EssencePoolConfiguration(template.getEssenceTemplate(),
-            template.getAdditionalRules(),
+    this.essencePool = new EssencePoolConfiguration(template.getEssenceTemplate(), template.getAdditionalRules(),
             context);
     charms.initListening();
-    this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy(), context.getBasicCharacterContext().getEdition(), experiencePoints, this);
+    this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy());
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
-    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template, context.getBasicCharacterContext().getEdition());
+    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template,
+            context.getBasicCharacterContext().getEdition());
     this.spells.addChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
@@ -99,7 +99,7 @@ public class CharacterStatistics implements ICharacterStatistics {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
-    if (characterTemplate.isNpcOnly()){
+    if (characterTemplate.isNpcOnly()) {
       setExperienced(true);
     }
   }
@@ -181,7 +181,7 @@ public class CharacterStatistics implements ICharacterStatistics {
 
   @Override
   public void setExperienced(boolean experienced) {
-    if (this.experienced){
+    if (this.experienced) {
       return;
     }
     this.experienced = experienced;

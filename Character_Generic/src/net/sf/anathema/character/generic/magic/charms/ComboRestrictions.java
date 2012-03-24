@@ -20,10 +20,10 @@ public class ComboRestrictions implements IComboRestrictions {
   public ComboRestrictions() {
     this(false, null);
   }
-  
+
   public ComboRestrictions(boolean allAbilities, Boolean combosAllowed) {
-	    this(allAbilities, "", combosAllowed);
-	  }
+    this(allAbilities, "", combosAllowed);
+  }
 
   public ComboRestrictions(boolean allAbilities, String selectAbilities, Boolean combosAllowed) {
     this.allAbilities = allAbilities;
@@ -43,26 +43,29 @@ public class ComboRestrictions implements IComboRestrictions {
     restrictedTraitTypes.add(traitType);
   }
 
+  @Override
   public boolean combosAllAbilities() {
     return allAbilities;
   }
-  
-  public boolean combosSelectAbility(AbilityType type)
-  {
-	  for (String ability : selectAbilities)
-		  if (type.getId().equals(ability))
-			  return true;
-	  return false;
+
+  @Override
+  public boolean combosSelectAbility(AbilityType type) {
+    for (String ability : selectAbilities)
+      if (type.getId().equals(ability)) return true;
+    return false;
   }
 
+  @Override
   public ITraitType[] getRestrictedTraitTypes() {
     return restrictedTraitTypes.toArray(new ITraitType[restrictedTraitTypes.size()]);
   }
 
+  @Override
   public boolean isComboAllowed(boolean isAllowedByDefault) {
     return combosAllowed == null ? isAllowedByDefault : combosAllowed;
   }
 
+  @Override
   public boolean isRestrictedCharm(ICharm charm) {
     if (restrictedCharmTypes.contains(charm.getCharmTypeModel().getCharmType())) {
       return true;

@@ -3,7 +3,7 @@ package net.sf.anathema.character.model.charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public interface IComboConfiguration extends ComboLearnTime, ComboEditingRules {
+public interface IComboConfiguration extends ComboLearnTime {
 
   void addCharmToCombo(ICharm charm, boolean experienced);
 
@@ -12,8 +12,6 @@ public interface IComboConfiguration extends ComboLearnTime, ComboEditingRules {
   void removeCharmsFromCombo(ICharm[] charms);
 
   void finalizeCombo();
-  
-  void finalizeComboUpgrade(String xpMessage);
 
   ICombo getEditCombo();
 
@@ -27,7 +25,9 @@ public interface IComboConfiguration extends ComboLearnTime, ComboEditingRules {
 
   void clearCombo();
 
+  @Override
   public boolean isLearnedOnCreation(ICombo combo);
+
   void beginComboEdit(ICombo combo);
 
   ICombo[] getCreationCombos();
@@ -36,8 +36,5 @@ public interface IComboConfiguration extends ComboLearnTime, ComboEditingRules {
 
   void finalizeCombo(boolean experienced);
 
-  public boolean isAllowedToRemove(ICharm charm);
-  
-  public boolean canFinalizeWithXP();
   void setCrossPrerequisiteTypeComboAllowed(boolean allowed);
 }

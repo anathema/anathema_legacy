@@ -47,7 +47,6 @@ public class ComboConfigurationView implements IComboConfigurationView {
   private final JPanel namePanel = new JPanel(new GridDialogLayout(1, false));
   private JButton clearButton;
   private JButton finalizeButton;
-  private JButton finalizeXPButton;
   private int learnedListModelSize;
   private boolean isNameEntered;
   private boolean isDescriptionEntered;
@@ -55,48 +54,46 @@ public class ComboConfigurationView implements IComboConfigurationView {
   private JScrollPane comboScrollPane;
   private IComboViewProperties properties;
 
+  @Override
   public void initGui(final IComboViewProperties viewProperties) {
-	this.properties = viewProperties;
+    this.properties = viewProperties;
     magicLearnView = new MagicLearnView() {
-        @Override
-        protected ListSelectionListener createLearnedListListener(final JButton button, final JList list) {
-          return new ListSelectionListener() {
-              public void valueChanged(ListSelectionEvent e) {
-                  button.setEnabled(!list.isSelectionEmpty() && viewProperties.isRemoveButtonEnabled((ICharm) list.getSelectedValue()));
-                }
-              };
-        }
-      };
+      @Override
+      protected ListSelectionListener createLearnedListListener(final JButton button, final JList list) {
+        return new ListSelectionListener() {
+          @Override
+          public void valueChanged(ListSelectionEvent e) {
+            button.setEnabled(
+                    !list.isSelectionEmpty() && viewProperties.isRemoveButtonEnabled((ICharm) list.getSelectedValue()));
+          }
+        };
+      }
+    };
     magicLearnView.init(viewProperties);
     finalizeButton = createFinalizeComboButton(viewProperties.getFinalizeButtonIcon());
     finalizeButton.setToolTipText(viewProperties.getFinalizeButtonToolTip());
-    finalizeXPButton = createFinalizeXPComboButton(viewProperties.getFinalizeXPButtonIcon());
-    finalizeXPButton.setToolTipText(viewProperties.getFinalizeXPButtonToolTip());
     clearButton = createClearButton(viewProperties.getClearButtonIcon());
     clearButton.setToolTipText(viewProperties.getClearButtonToolTip());
     final ListModel learnedListModel = magicLearnView.getLearnedListModel();
     learnedListModel.addListDataListener(new ListDataListener() {
+      @Override
       public void intervalAdded(ListDataEvent e) {
-        learnedListModelSize = learnedListModel.getSize();
-        finalizeButton.setEnabled(learnedListModelSize > 1 &&
-        		viewProperties.canFinalize());
-        finalizeXPButton.setEnabled(viewProperties.canFinalizeWithXP());
-        clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
+        updateClearAndFinalize();
       }
 
+      @Override
       public void intervalRemoved(ListDataEvent e) {
-        learnedListModelSize = learnedListModel.getSize();
-        finalizeButton.setEnabled(learnedListModelSize > 1 &&
-        		viewProperties.canFinalize());
-        finalizeXPButton.setEnabled(viewProperties.canFinalizeWithXP());
-        clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
+        updateClearAndFinalize();
       }
 
+      @Override
       public void contentsChanged(ListDataEvent e) {
+        updateClearAndFinalize();
+      }
+
+      private void updateClearAndFinalize() {
         learnedListModelSize = learnedListModel.getSize();
-        finalizeButton.setEnabled(learnedListModelSize > 1 &&
-        		viewProperties.canFinalize());
-        finalizeXPButton.setEnabled(viewProperties.canFinalizeWithXP());
+        finalizeButton.setEnabled(learnedListModelSize > 1);
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
       }
     });
@@ -114,9 +111,8 @@ public class ComboConfigurationView implements IComboConfigurationView {
     magicLearnView.addTo(viewPort);
     comboPane.setBackground(viewPort.getBackground());
     comboScrollPane = new JScrollPane(comboPane);
-    viewPort.add(comboScrollPane, GridDialogLayoutDataFactory.createHorizontalSpanData(
-        5,
-        GridDialogLayoutData.FILL_BOTH));
+    viewPort.add(comboScrollPane,
+            GridDialogLayoutDataFactory.createHorizontalSpanData(5, GridDialogLayoutData.FILL_BOTH));
     content = new JScrollPane(viewPort);
   }
 
@@ -135,6 +131,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
   private void fireComboCleared() {
     comboViewListeners.forAllDo(new IClosure<IComboViewListener>() {
+      @Override
       public void execute(IComboViewListener input) {
         input.comboCleared();
       }
@@ -143,55 +140,44 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
   private JButton createFinalizeComboButton(Icon icon) {
     Action smartAction = new SmartAction(icon) {
-      private static final long serialVersionUID = -3829623791941578824L;
 
       @Override
       protected void execute(Component parentComponent) {
-        fireComboFinalized(false);
+        fireComboFinalized();
       }
     };
     smartAction.setEnabled(false);
     return magicLearnView.addAdditionalAction(smartAction);
   }
-  
-  private JButton createFinalizeXPComboButton(Icon icon) {
-	    Action smartAction = new SmartAction(icon) {
-	      private static final long serialVersionUID = -3829623791941578824L;
 
-	      @Override
-	      protected void execute(Component parentComponent) {
-	        fireComboFinalized(true);
-	      }
-	    };
-	    smartAction.setEnabled(false);
-	    return magicLearnView.addAdditionalAction(smartAction);
-	  }
-
-  private void fireComboFinalized(final boolean XP) {
+  private void fireComboFinalized() {
     comboViewListeners.forAllDo(new IClosure<IComboViewListener>() {
+      @Override
       public void execute(IComboViewListener input) {
-    	  if (XP)
-    		  input.comboFinalizedXP();
-    	  else
-    		  input.comboFinalized();
+        input.comboFinalized();
       }
     });
   }
 
+  @Override
   public void setAllCharms(Object[] charms) {
     magicLearnView.setMagicOptions(charms);
   }
 
+  @Override
   public JComponent getComponent() {
     return content;
   }
 
+  @Override
   public void addComboViewListener(final IComboViewListener listener) {
     magicLearnView.addMagicViewListener(new IMagicViewListener() {
+      @Override
       public void magicRemoved(Object[] removedMagic) {
         listener.charmRemoved(removedMagic);
       }
 
+      @Override
       public void magicAdded(Object[] addedMagic) {
         Ensure.ensureTrue("Only one charm may be added.", addedMagic.length == 1); //$NON-NLS-1$
         listener.charmAdded(addedMagic[0]);
@@ -200,21 +186,25 @@ public class ComboConfigurationView implements IComboConfigurationView {
     comboViewListeners.addListener(listener);
   }
 
+  @Override
   public void setComboCharms(Object[] charms) {
     magicLearnView.setLearnedMagic(charms);
   }
 
+  @Override
   public ITextView addComboNameView(String viewTitle) {
     ITextView textView = new LineTextView(TEXT_COLUMNS);
     textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
-        isNameEntered = isDescriptionEntered = newValue != null && !newValue.equals(""); //$NON-NLS-1$
+        isNameEntered = newValue != null && !newValue.equals(""); //$NON-NLS-1$
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
       }
     });
     return addTextView(viewTitle, textView);
   }
 
+  @Override
   public IComboView addComboView(String name, String description, Action deleteAction, Action editAction) {
     ComboView comboView = new ComboView(deleteAction, editAction);
     comboView.initGui(name, description);
@@ -234,9 +224,11 @@ public class ComboConfigurationView implements IComboConfigurationView {
     return textView;
   }
 
+  @Override
   public ITextView addComboDescriptionView(String viewTitle) {
     ITextView textView = new AreaTextView(5, TEXT_COLUMNS);
     textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         isDescriptionEntered = newValue != null && !newValue.equals(""); //$NON-NLS-1$
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
@@ -245,17 +237,18 @@ public class ComboConfigurationView implements IComboConfigurationView {
     return addTextView(viewTitle, textView);
   }
 
+  @Override
   public void deleteView(IComboView view) {
     ComboView comboView = (ComboView) view;
     comboPane.remove(comboView.getTaskGroup());
     revalidateView();
   }
 
+  @Override
   public void setEditState(boolean editing) {
     clearButton.setIcon(editing ? properties.getCancelEditButtonIcon() : properties.getClearButtonIcon());
     clearButton.setToolTipText(editing ? properties.getCancelButtonEditToolTip() : properties.getClearButtonToolTip());
-    finalizeButton.setToolTipText(editing
-        ? properties.getFinalizeButtonEditToolTip()
-        : properties.getFinalizeButtonToolTip());
+    finalizeButton.setToolTipText(
+            editing ? properties.getFinalizeButtonEditToolTip() : properties.getFinalizeButtonToolTip());
   }
 }

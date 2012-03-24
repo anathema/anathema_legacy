@@ -112,7 +112,6 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     };
     endEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.EndEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
-      private static final long serialVersionUID = -6180499686275027958L;
 
       @Override
       protected void execute(Component parentComponent) {
