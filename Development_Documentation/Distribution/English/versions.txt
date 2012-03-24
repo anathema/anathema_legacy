@@ -24,9 +24,10 @@ If your Character spent XP to change a Combo and you tracked the expenditure in 
 entry manually to reflect the new rules.
 
 -- Features --
-* You can now enter your own descriptions for Charms and Spells. To do, CTRL-click your Charm and type away.
+* You can enter your own descriptions for Charms and Spells. To do, CTRL-click your Charm and type away.
 * New report (via "File Menu => Save as PDF"): Charm Overview. It prints your Charm data with text, just as the books do.
-* Equipment now keeps track of minimum damage
+* Equipment keeps track of minimum damage
+* [Jesse Belanger] Added Charm descriptions for the 2E Core Book. Texts taken from the official Wiki.
 
 -- Bugfixes --
 * Characters remember which weapons were attuned when saving
