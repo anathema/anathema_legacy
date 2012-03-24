@@ -112,21 +112,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public ICharacterPoints getCharacterPoints() {
-    return new ICharacterPoints() {
-      @Override
-      public int getExperiencePointsTotal() {
-        return 0;
-      }
-
-      @Override
-      public int getExperiencePointsSpent() {
-        return 0;
-      }
-    };
-  }
-
-  @Override
   public IExaltedRuleSet getRules() {
     return ExaltedRuleSet.SecondEdition;
   }

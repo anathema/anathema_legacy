@@ -37,7 +37,7 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class CharacterStatistics implements ICharacterStatistics {
 
-  private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this, null));
+  private final CharacterModelContext context = new CharacterModelContext(new GenericCharacter(this));
   private final ICharacterTemplate characterTemplate;
   private final ICharacterConcept concept;
   private final IEssencePoolConfiguration essencePool;

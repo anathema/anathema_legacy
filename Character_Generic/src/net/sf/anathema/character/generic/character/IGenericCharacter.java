@@ -30,8 +30,6 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
 
   public INamedGenericTrait[] getSubTraits(ITraitType traitType);
 
-  public ICharacterPoints getCharacterPoints();
-
   public IExaltedRuleSet getRules();
 
   public int getHealthLevelTypeCount(HealthLevelType type);

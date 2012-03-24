@@ -3,7 +3,6 @@ package net.sf.anathema.character.impl.generic;
 import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -34,7 +33,6 @@ import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
@@ -50,11 +48,9 @@ import java.util.List;
 public class GenericCharacter implements IGenericCharacter {
 
   private final ICharacterStatistics statistics;
-  private final CharacterPoints characterPoints;
 
-  public GenericCharacter(ICharacterStatistics statistics, IExperiencePointManagement experiencePointManagement) {
+  public GenericCharacter(ICharacterStatistics statistics) {
     this.statistics = statistics;
-    this.characterPoints = new CharacterPoints(statistics, experiencePointManagement);
   }
 
   @Override
@@ -148,11 +144,6 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public ICasteType getCasteType() {
     return statistics.getCharacterConcept().getCaste().getType();
-  }
-
-  @Override
-  public ICharacterPoints getCharacterPoints() {
-    return characterPoints;
   }
 
   @Override
