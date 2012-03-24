@@ -16,6 +16,9 @@ public class RepositoryBackup {
       IRepository repository = model.getRepository();
       IItemType[] itemTypes = model.getItemTypeRegistry().getAllItemTypes();
       CleanupExportModel exportModel = new CleanupExportModel(itemTypes, repository);
+      if (exportModel.getPrintNameFilesInSelection().length == 0) {
+        return;
+      }
       RepositoryZipPathCreator creator = new RepositoryZipPathCreator(repository.getRepositoryPath());
       String version = resources.getString("Anathema.Version.Numeric");
       File saveFile = new File(repository.getRepositoryPath(), "BackupForFirstLaunchOf" + version + ".zip");

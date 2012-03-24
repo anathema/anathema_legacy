@@ -1,13 +1,5 @@
 package net.sf.anathema.framework.repository.tree;
 
-import java.awt.Component;
-import java.io.File;
-import java.io.IOException;
-import java.util.Enumeration;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipException;
-import java.util.zip.ZipFile;
-
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
@@ -19,6 +11,15 @@ import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.Component;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Enumeration;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
 
 public class RepositoryItemImportPresenter implements Presenter {
 
@@ -40,6 +41,7 @@ public class RepositoryItemImportPresenter implements Presenter {
     this.creator = new RepositoryZipPathCreator(model.getRepositoryPath());
   }
 
+  @Override
   public void initPresentation() {
     final SmartAction action = new SmartAction(
         resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"), new FileUi(resources).getImportFileIcon()) { //$NON-NLS-1$
@@ -65,7 +67,9 @@ public class RepositoryItemImportPresenter implements Presenter {
             String mainFilePath = creator.createZipPath(model.getMainFilePath(type, id));
             RepositoryImportHandler handler = new RepositoryImportHandler(model, type, id);
             for (ZipEntry entry : entriesByItem.get(comment)) {
-              handler.importStream(mainFilePath, importZipFile.getInputStream(entry), entry.getName());
+              InputStream inputStream = importZipFile.getInputStream(entry);
+              handler.importStream(mainFilePath, inputStream, entry.getName());
+              inputStream.close();
             }
             model.refreshItem(type, handler.getNewId());
           }
