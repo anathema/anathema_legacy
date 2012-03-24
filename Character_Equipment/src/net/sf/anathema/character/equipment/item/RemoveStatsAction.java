@@ -1,42 +1,30 @@
 package net.sf.anathema.character.equipment.item;
 
-import java.awt.Component;
-
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.Component;
 
 public class RemoveStatsAction extends SmartAction {
 
-  private static final long serialVersionUID = -3656719983328697948L;
-  private final IObjectSelectionView<IExaltedRuleSet> ruleSetView;
   private final IEquipmentTemplateEditModel editModel;
+  private final IExaltedRuleSet ruleset;
   private final IActionAddableListView<IEquipmentStats> statsListView;
 
-  public RemoveStatsAction(
-      IResources resources,
-      IEquipmentTemplateEditModel editModel,
-      IObjectSelectionView<IExaltedRuleSet> ruleSetView,
-      final IActionAddableListView<IEquipmentStats> statsListView) {
+  public RemoveStatsAction(IResources resources, IEquipmentTemplateEditModel editModel, IExaltedRuleSet ruleset, final IActionAddableListView<IEquipmentStats> statsListView) {
     super(new BasicUi(resources).getRemoveIcon());
     this.editModel = editModel;
-    this.ruleSetView = ruleSetView;
+    this.ruleset = ruleset;
     this.statsListView = statsListView;
-    ruleSetView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
-      public void valueChanged(IExaltedRuleSet newValue) {
-        updateEnabled();
-      }
-    });
     statsListView.addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         updateEnabled();
       }
@@ -46,12 +34,12 @@ public class RemoveStatsAction extends SmartAction {
   }
 
   private void updateEnabled() {
-    setEnabled(statsListView.getSelectedItems().length > 0 && ruleSetView.getSelectedObject() != null);
+    setEnabled(statsListView.getSelectedItems().length > 0);
   }
 
   @Override
   protected void execute(Component parentComponent) {
     IEquipmentStats[] equipmentStats = statsListView.getSelectedItems();
-    editModel.removeStatistics(ruleSetView.getSelectedObject(), equipmentStats);
+    editModel.removeStatistics(ruleset, equipmentStats);
   }
 }

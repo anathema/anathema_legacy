@@ -7,10 +7,8 @@ import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JComponent;
@@ -19,28 +17,12 @@ import java.awt.Component;
 
 public class EquipmentEditStatsPresenter implements Presenter {
 
-  private final class RuleSetSelectionListener implements IObjectValueChangedListener<IExaltedRuleSet> {
-
-    private final IActionAddableListView<IEquipmentStats> statsListView;
-
-    public RuleSetSelectionListener(IActionAddableListView<IEquipmentStats> statsListView) {
-      this.statsListView = statsListView;
-    }
-
-    @Override
-    public void valueChanged(IExaltedRuleSet newValue) {
-      updateStatListContent(newValue, statsListView);
-    }
-  }
-
   private final IResources resources;
   private final IEquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
 
-  public EquipmentEditStatsPresenter(
-      IResources resources,
-      IEquipmentDatabaseManagement model,
-      IEquipmentDatabaseView view) {
+  public EquipmentEditStatsPresenter(IResources resources, IEquipmentDatabaseManagement model,
+                                     IEquipmentDatabaseView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
@@ -50,67 +32,38 @@ public class EquipmentEditStatsPresenter implements Presenter {
   public void initPresentation() {
     final EquipmentStringBuilder equipmentStringBuilder = new EquipmentStringBuilder(resources);
     ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi(resources)) {
-		private static final long serialVersionUID = 1L;
+      private static final long serialVersionUID = 1L;
 
-	@Override
-      public Component getListCellRendererComponent(
-          JList list,
-          Object value,
-          int index,
-          boolean isSelected,
-          boolean cellHasFocus) {
-        JComponent component = (JComponent) super.getListCellRendererComponent(
-            list,
-            value,
-            index,
-            isSelected,
-            cellHasFocus);
+      @Override
+      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+                                                    boolean cellHasFocus) {
+        JComponent component = (JComponent) super.getListCellRendererComponent(list, value, index, isSelected,
+                cellHasFocus);
         component.setToolTipText(equipmentStringBuilder.createString(null, (IEquipmentStats) value));
         return component;
       }
     };
     final IActionAddableListView<IEquipmentStats> statsListView = view.initStatsListView(statsRenderer);
     view.setStatsListHeader(resources.getString("Equipment.Creation.Stats")); //$NON-NLS-1$
-    final IObjectSelectionView<IExaltedRuleSet> ruleSetView = initRuleSetPresentation(statsListView);
     model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
-        updateStatListContent(ruleSetView.getSelectedObject(), statsListView);
+        updateStatListContent(statsListView);
       }
     });
-    initButtons(statsListView, ruleSetView);
+    initButtons(statsListView);
   }
 
-  private void initButtons(
-      IActionAddableListView<IEquipmentStats> statsListView,
-      IObjectSelectionView<IExaltedRuleSet> ruleSetView) {
-    statsListView.addAction(new AddNewStatsAction(
-        resources,
-        model.getTemplateEditModel(),
-        ruleSetView,
-        model.getStatsCreationFactory()));
-    statsListView.addAction(new RemoveStatsAction(resources, model.getTemplateEditModel(), ruleSetView, statsListView));
-    statsListView.addAction(new EditStatsAction(
-        resources,
-        model.getTemplateEditModel(),
-        ruleSetView,
-        statsListView,
-        model.getStatsCreationFactory()));
+  private void initButtons(IActionAddableListView<IEquipmentStats> statsListView) {
+    IExaltedRuleSet ruleset = model.getSupportedExaltedRuleSets()[0];
+    statsListView.addAction(
+            new AddNewStatsAction(resources, model.getTemplateEditModel(), ruleset, model.getStatsCreationFactory()));
+    statsListView.addAction(new RemoveStatsAction(resources, model.getTemplateEditModel(), ruleset, statsListView));
+    statsListView.addAction(new EditStatsAction(resources, model.getTemplateEditModel(), ruleset, statsListView,
+            model.getStatsCreationFactory()));
   }
 
-  private IObjectSelectionView<IExaltedRuleSet> initRuleSetPresentation(
-      IActionAddableListView<IEquipmentStats> statsListView) {
-    ObjectUiListCellRenderer ruleSetRenderer = new ObjectUiListCellRenderer(new ExaltedRuleSetUi(resources));
-    final IObjectSelectionView<IExaltedRuleSet> ruleSetView = view.initRuleSetSelectionView(
-        resources.getString("Equipment.Creation.Ruleset") + ":", ruleSetRenderer); //$NON-NLS-1$ //$NON-NLS-2$
-    IExaltedRuleSet[] ruleSets = model.getSupportedExaltedRuleSets();
-    ruleSetView.setObjects(ruleSets);
-    ruleSetView.setSelectedObject(ruleSets[0]);
-    ruleSetView.addObjectSelectionChangedListener(new RuleSetSelectionListener(statsListView));
-    return ruleSetView;
-  }
-
-  private void updateStatListContent(IExaltedRuleSet newValue, IActionAddableListView<IEquipmentStats> statsListView) {
-    statsListView.setObjects(model.getTemplateEditModel().getStats(newValue));
+  private void updateStatListContent(IActionAddableListView<IEquipmentStats> statsListView) {
+    statsListView.setObjects(model.getTemplateEditModel().getStats(model.getSupportedExaltedRuleSets()[0]));
   }
 }
