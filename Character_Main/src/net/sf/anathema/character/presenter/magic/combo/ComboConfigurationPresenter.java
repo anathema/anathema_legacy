@@ -115,7 +115,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
       }
 
     });
-    for (ICombo combo : comboConfiguration.getCurrentCombos()) {
+    for (ICombo combo : comboConfiguration.getAllCombos()) {
       addComboToView(comboView, combo);
     }
   }

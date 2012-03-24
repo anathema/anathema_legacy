@@ -8,7 +8,6 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
-import net.sf.anathema.character.model.charm.learn.IComboLearnStrategy;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -18,17 +17,13 @@ import java.util.List;
 
 public class ComboConfiguration implements IComboConfiguration {
 
-  private final List<ICombo> creationComboList = new ArrayList<ICombo>();
-  private final List<ICombo> experiencedComboList = new ArrayList<ICombo>();
+  private final List<ICombo> comboList = new ArrayList<ICombo>();
   private final IComboArbitrator rules;
   private final ICombo editCombo = new Combo();
   private final GenericControl<IComboConfigurationListener> control = new GenericControl<IComboConfigurationListener>();
   private final ComboIdProvider idProvider = new ComboIdProvider();
-  private final IComboLearnStrategy learnStrategy;
 
-
-  public ComboConfiguration(ICharmConfiguration charmConfiguration, IComboLearnStrategy learnStrategy) {
-    this.learnStrategy = learnStrategy;
+  public ComboConfiguration(ICharmConfiguration charmConfiguration) {
     charmConfiguration.addCharmLearnListener(new CharmLearnAdapter() {
       @Override
       public void charmForgotten(ICharm charm) {
@@ -45,7 +40,7 @@ public class ComboConfiguration implements IComboConfiguration {
 
   private void checkCombos(ICharm charm) {
     List<ICombo> deletionList = new ArrayList<ICombo>();
-    for (ICombo combo : creationComboList) {
+    for (ICombo combo : comboList) {
       if (combo.contains(charm)) {
         combo.removeCharms(new ICharm[]{charm});
         if (combo.getCharms().length < 2) {
@@ -84,19 +79,10 @@ public class ComboConfiguration implements IComboConfiguration {
 
   @Override
   public void finalizeCombo() {
-    learnStrategy.finalizeCombo(this);
-  }
-
-  @Override
-  public void finalizeCombo(boolean experienced) {
     ICombo combo = editCombo.clone();
     if (combo.getId() == null) {
       combo.setId(idProvider.createId());
-      if (experienced) {
-        experiencedComboList.add(combo);
-      } else {
-        creationComboList.add(combo);
-      }
+      comboList.add(combo);
       fireComboAdded(combo);
     } else {
       ICombo editedCombo = getComboById(combo.getId());
@@ -113,7 +99,7 @@ public class ComboConfiguration implements IComboConfiguration {
   }
 
   private ICombo getComboById(int id) {
-    for (ICombo combo : getCurrentCombos()) {
+    for (ICombo combo : getAllCombos()) {
       if (combo.getId() == id) {
         return combo;
       }
@@ -172,18 +158,8 @@ public class ComboConfiguration implements IComboConfiguration {
   }
 
   @Override
-  public ICombo[] getCurrentCombos() {
-    return learnStrategy.getCurrentCombos(this);
-  }
-
-  @Override
-  public ICombo[] getCreationCombos() {
-    return creationComboList.toArray(new ICombo[creationComboList.size()]);
-  }
-
-  @Override
-  public ICombo[] getExperienceLearnedCombos() {
-    return experiencedComboList.toArray(new ICombo[experiencedComboList.size()]);
+  public ICombo[] getAllCombos() {
+    return comboList.toArray(new ICombo[comboList.size()]);
   }
 
   @Override
@@ -193,8 +169,7 @@ public class ComboConfiguration implements IComboConfiguration {
 
   @Override
   public void deleteCombo(ICombo combo) {
-    experiencedComboList.remove(combo);
-    creationComboList.remove(combo);
+    comboList.remove(combo);
     fireComboDeleted(combo);
     if (combo.getId().equals(editCombo.getId())) {
       clearCombo();
@@ -212,10 +187,5 @@ public class ComboConfiguration implements IComboConfiguration {
     editCombo.clear();
     editCombo.getValuesFrom(combo);
     fireBeginEditEvent(combo);
-  }
-
-  @Override
-  public boolean isLearnedOnCreation(ICombo combo) {
-    return creationComboList.contains(combo);
   }
 }

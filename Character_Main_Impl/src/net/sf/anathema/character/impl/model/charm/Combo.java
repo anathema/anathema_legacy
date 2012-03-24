@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Combo implements ICombo {
-  
+
   // Final fields were turned to volatile to allow clone to be implemented
 
   private volatile ChangeControl control = new ChangeControl();
@@ -28,30 +28,26 @@ public class Combo implements ICombo {
   private Integer id = null;
 
   @Override
-  public ICharm[] getCharms()
-  {
-	  ArrayList<ICharm> charms = new ArrayList<ICharm>();
-	  charms.addAll(creationCharmList);
-	  charms.addAll(experiencedCharmList);
-      return charms.toArray(new ICharm[charms.size()]);
-  }
-  
-  @Override
-  public ICharm[] getCreationCharms()
-  {
-	  return creationCharmList.toArray(new ICharm[creationCharmList.size()]);
-  }
-  
-  @Override
-  public ICharm[] getExperiencedCharms()
-  {
-	  return experiencedCharmList.toArray(new ICharm[experiencedCharmList.size()]);
+  public ICharm[] getCharms() {
+    ArrayList<ICharm> charms = new ArrayList<ICharm>();
+    charms.addAll(creationCharmList);
+    charms.addAll(experiencedCharmList);
+    return charms.toArray(new ICharm[charms.size()]);
   }
 
   @Override
-  public void addCharm(ICharm charm, boolean experienced)
-  {
-	List<ICharm> targetList = experienced ? experiencedCharmList : creationCharmList;
+  public ICharm[] getCreationCharms() {
+    return creationCharmList.toArray(new ICharm[creationCharmList.size()]);
+  }
+
+  @Override
+  public ICharm[] getExperiencedCharms() {
+    return experiencedCharmList.toArray(new ICharm[experiencedCharmList.size()]);
+  }
+
+  @Override
+  public void addCharm(ICharm charm, boolean experienced) {
+    List<ICharm> targetList = experienced ? experiencedCharmList : creationCharmList;
     targetList.add(charm);
     if (charm.getCharmTypeModel().getCharmType() == CharmType.Simple) {
       simpleCharm = charm;
@@ -89,7 +85,7 @@ public class Combo implements ICombo {
   public Combo clone() {
     Combo clone;
     try {
-      clone = (Combo)super.clone();
+      clone = (Combo) super.clone();
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
@@ -113,8 +109,8 @@ public class Combo implements ICombo {
       destination.addCharm(charm, false);
     }
     for (ICharm charm : source.getExperiencedCharms()) {
-        destination.addCharm(charm, true);
-      }
+      destination.addCharm(charm, true);
+    }
     if (source.getId() != null) {
       destination.setId(source.getId());
     }
@@ -143,8 +139,7 @@ public class Combo implements ICombo {
 
   @Override
   public boolean contains(ICharm charm) {
-    return creationCharmList.contains(charm) ||
-    	   experiencedCharmList.contains(charm);
+    return creationCharmList.contains(charm) || experiencedCharmList.contains(charm);
   }
 
   @Override

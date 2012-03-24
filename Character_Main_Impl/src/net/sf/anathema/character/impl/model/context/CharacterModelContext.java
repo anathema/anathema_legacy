@@ -18,27 +18,21 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
-import net.sf.anathema.character.impl.model.context.magic.CreationComboLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationSpellLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.ExperiencedCharmLearnStrategy;
-import net.sf.anathema.character.impl.model.context.magic.ExperiencedComboLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.ExperiencedSpellLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.ProxyCharmLearnStrategy;
-import net.sf.anathema.character.impl.model.context.magic.ProxyComboLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.ProxySpellLearnStrategy;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
-import net.sf.anathema.character.model.charm.learn.IComboLearnStrategy;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class CharacterModelContext implements ICharacterModelContext, ICharmContext, ITraitContext, IGenericSpecialtyContext {
 
   private final ProxyTraitValueStrategy traitValueStrategy = new ProxyTraitValueStrategy(
           new CreationTraitValueStrategy());
-  private final ProxyComboLearnStrategy comboLearnStrategy = new ProxyComboLearnStrategy(
-          new CreationComboLearnStrategy());
   private final ProxySpellLearnStrategy spellLearnStrategy = new ProxySpellLearnStrategy(
           new CreationSpellLearnStrategy());
   private final ProxyCharmLearnStrategy charmLearnStrategy = new ProxyCharmLearnStrategy(
@@ -62,11 +56,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   public ITraitValueStrategy getTraitValueStrategy() {
     return traitValueStrategy;
   }
-
-  public IComboLearnStrategy getComboLearnStrategy() {
-    return comboLearnStrategy;
-  }
-
   public ISpellLearnStrategy getSpellLearnStrategy() {
     return spellLearnStrategy;
   }
@@ -74,12 +63,10 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   public void setExperienced(boolean experienced) {
     if (experienced) {
       traitValueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
-      comboLearnStrategy.setStrategy(new ExperiencedComboLearnStrategy());
       spellLearnStrategy.setStrategy(new ExperiencedSpellLearnStrategy());
       charmLearnStrategy.setStrategy(new ExperiencedCharmLearnStrategy());
     } else {
       traitValueStrategy.setStrategy(new CreationTraitValueStrategy());
-      comboLearnStrategy.setStrategy(new CreationComboLearnStrategy());
       spellLearnStrategy.setStrategy(new CreationSpellLearnStrategy());
       charmLearnStrategy.setStrategy(new CreationCharmLearnStrategy());
     }

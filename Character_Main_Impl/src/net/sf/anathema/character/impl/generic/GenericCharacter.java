@@ -247,7 +247,7 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public IGenericCombo[] getCombos() {
     List<IGenericCombo> genericCombos = new ArrayList<IGenericCombo>();
-    for (ICombo combo : statistics.getCombos().getCurrentCombos()) {
+    for (ICombo combo : statistics.getCombos().getAllCombos()) {
       genericCombos.add(new GenericCombo(combo));
     }
     return genericCombos.toArray(new IGenericCombo[genericCombos.size()]);

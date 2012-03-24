@@ -82,7 +82,7 @@ public class CharacterStatistics implements ICharacterStatistics {
     this.essencePool = new EssencePoolConfiguration(template.getEssenceTemplate(), template.getAdditionalRules(),
             context);
     charms.initListening();
-    this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy());
+    this.combos = new ComboConfiguration(charms);
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
     this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template,
             context.getBasicCharacterContext().getEdition());

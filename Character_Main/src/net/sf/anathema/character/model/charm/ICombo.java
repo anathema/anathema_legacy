@@ -6,31 +6,31 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface ICombo extends Cloneable {
 
-  public void addComboModelListener(IChangeListener listener);
+  void addComboModelListener(IChangeListener listener);
 
-  public void removeCharms(ICharm[] charm);
+  void removeCharms(ICharm[] charm);
 
-  public ICombo clone();
+  ICombo clone();
 
-  public void clear();
+  void clear();
 
-  public ITextualDescription getName();
+  ITextualDescription getName();
 
-  public ITextualDescription getDescription();
+  ITextualDescription getDescription();
 
-  public ICharm[] getCharms();
-  
-  public ICharm[] getCreationCharms();
-  
-  public ICharm[] getExperiencedCharms();
+  ICharm[] getCharms();
 
-  public boolean contains(ICharm charm);
+  ICharm[] getCreationCharms();
 
-  public Integer getId();
+  ICharm[] getExperiencedCharms();
 
-  public void setId(Integer id);
+  boolean contains(ICharm charm);
 
-  public void getValuesFrom(ICombo combo);
+  Integer getId();
 
-  public void addCharm(ICharm charm, boolean experienced);
+  void setId(Integer id);
+
+  void getValuesFrom(ICombo combo);
+
+  void addCharm(ICharm charm, boolean experienced);
 }

@@ -16,7 +16,7 @@ http://anathema.github.com
 * Changed Solar Charms
 * Changed Dragon-Blooded Charms
 * Added "Shield#" & "Thrust" Tags
-* Combos no longer cost XP or BP
+* Combos no longer cost XP or BP and drop some editing restrictions
 
 Anathema no longer supports First Edition or "classic" Second Edition.
 It will create a backup ZIP of your repository on first launch and then delete all 1E Characters.
