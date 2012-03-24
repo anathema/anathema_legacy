@@ -27,12 +27,16 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     ObjectContainer container = EquipmentDatabaseConnectionManager.createConnection(databaseFile);
     Version dbVersion = DatabaseUtils.getDatabaseVersion(container);
     Version anathemaVersion = new Version(resources);
+    Version updatedVersion = updateDbVersion(dbVersion, anathemaVersion);
+    finish(container, updatedVersion);
+  }
+
+  private Version updateDbVersion(Version dbVersion, Version anathemaVersion) {
     if (dbVersion != null) {
       dbVersion.updateTo(anathemaVersion);
-      finish(container, dbVersion);
-      return;
+      return dbVersion;
     }
-    finish(container, anathemaVersion);
+    return anathemaVersion;
   }
 
   private void finish(ObjectContainer container, Version version) {
