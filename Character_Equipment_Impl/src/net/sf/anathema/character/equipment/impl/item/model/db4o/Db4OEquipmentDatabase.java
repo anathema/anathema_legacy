@@ -30,13 +30,13 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
   /** Required for DB conversion from 1.0 */
   public Db4OEquipmentDatabase(ObjectContainer container) {
     this.container = container;
-    collectionFactory = new Db4OCollectionFactory(container);
+    this.collectionFactory = new Db4OCollectionFactory(container);
   }
 
+  @Override
   public String[] getAllAvailableTemplateIds() {
     final Set<String> idSet = new HashSet<String>();
     queryContainer(new Predicate<IEquipmentTemplate>() {
-      private static final long serialVersionUID = -2285120493783241116L;
 
       @Override
       public boolean match(IEquipmentTemplate candidate) {
@@ -47,13 +47,14 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
     return idSet.toArray(new String[idSet.size()]);
   }
 
+  @Override
   public void queryContainer(Predicate<IEquipmentTemplate> predicate) {
     container.query(predicate);
   }
 
+  @Override
   public IEquipmentTemplate loadTemplate(final String templateId) {
     ObjectSet<IEquipmentTemplate> results = container.query(new Predicate<IEquipmentTemplate>() {
-      private static final long serialVersionUID = -642301155178585166L;
 
       @Override
       public boolean match(IEquipmentTemplate candidate) {
@@ -66,20 +67,24 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
     return results.next();
   }
 
+  @Override
   public ICollectionFactory getCollectionFactory() {
     return collectionFactory;
   }
 
+  @Override
   public void saveTemplate(IEquipmentTemplate template) {
     container.set(template);
     container.commit();
     availableTemplatesChangeControl.fireChangedEvent();
   }
 
+  @Override
   public void addAvailableTemplateChangeListener(IChangeListener listener) {
     availableTemplatesChangeControl.addChangeListener(listener);
   }
 
+  @Override
   public void deleteTemplate(String editTemplateId) {
     delete(editTemplateId);
     availableTemplatesChangeControl.fireChangedEvent();
@@ -91,6 +96,7 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
     container.commit();
   }
 
+  @Override
   public void updateTemplate(String editTemplateId, IEquipmentTemplate saveTemplate) {
     delete(editTemplateId);
     saveTemplate(saveTemplate);
