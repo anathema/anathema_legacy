@@ -1,12 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
-import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
@@ -24,8 +20,10 @@ import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
 
-public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements
-    IEquipmentAdditionalModel {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements IEquipmentAdditionalModel {
 
   protected final ChangeControl modelChangeControl = new ChangeControl();
   private final GenericControl<ICollectionListener<IEquipmentItem>> equipmentItemControl = new GenericControl<ICollectionListener<IEquipmentItem>>();
@@ -33,6 +31,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   private final IExaltedRuleSet ruleSet;
   private final IEquipmentPrintModel printModel;
   protected final IChangeListener itemChangePropagator = new IChangeListener() {
+    @Override
     public void changeOccurred() {
       modelChangeControl.fireChangedEvent();
     }
@@ -43,22 +42,27 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
   }
 
+  @Override
   public IEquipmentPrintModel getPrintModel() {
     return printModel;
   }
 
+  @Override
   public final AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Miscellaneous;
   }
 
+  @Override
   public final String getTemplateId() {
     return IEquipmentAdditionalModelTemplate.ID;
   }
 
+  @Override
   public final IEquipmentItem[] getEquipmentItems() {
     return equipmentItems.toArray(new IEquipmentItem[equipmentItems.size()]);
   }
 
+  @Override
   public IEquipmentItem addEquipmentObjectFor(final String templateId, final MagicalMaterial material) {
     final IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     if (template == null) {
@@ -79,34 +83,36 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
 
   protected final IEquipmentItem initItem(final IEquipmentItem item) {
     equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
+      @Override
       public void execute(final ICollectionListener<IEquipmentItem> input) {
         input.itemAdded(item);
       }
     });
-   	modelChangeControl.fireChangedEvent();
+    modelChangeControl.fireChangedEvent();
     item.addChangeListener(itemChangePropagator);
     return item;
   }
 
+  @Override
   public void removeItem(final IEquipmentItem item) {
     equipmentItems.remove(item);
     equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
+      @Override
       public void execute(final ICollectionListener<IEquipmentItem> input) {
         input.itemRemoved(item);
       }
     });
     item.removeChangeListener(itemChangePropagator);
-   	modelChangeControl.fireChangedEvent();
+    modelChangeControl.fireChangedEvent();
   }
 
+  @Override
   public void refreshItems() {
     for (IEquipmentItem item : new ArrayList<IEquipmentItem>(equipmentItems)) {
       if (canBeRemoved(item)) {
         IEquipmentItem refreshedItem = refreshItem(item);
-        IEquipmentCharacterDataProvider provider = getCharacterDataProvider();
-        if (provider != null) {
-        	if (provider.transferOptions(item, refreshedItem))
-        		initItem(refreshedItem);
+        if (getCharacterOptionProvider().transferOptions(item, refreshedItem)) {
+          initItem(refreshedItem);
         }
       }
     }
@@ -119,6 +125,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     return addEquipmentObjectFor(templateId, material);
   }
 
+  @Override
   public final void addEquipmentObjectListener(final ICollectionListener<IEquipmentItem> listener) {
     equipmentItemControl.addListener(listener);
   }
@@ -127,28 +134,30 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     return ruleSet;
   }
 
+  @Override
   public MaterialComposition getMaterialComposition(final String templateId) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     return template.getComposition();
   }
 
+  @Override
   public MagicalMaterial getMagicalMaterial(final String templateId) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     return template.getMaterial();
   }
-  
-  public int getTotalAttunementCost()
-  {
-	  int total = 0;
-	  for (IEquipmentItem item : equipmentItems)
-	  {
-		  for (IEquipmentStats stats : item.getStats())
-			  if (stats instanceof IArtifactStats && item.getAttunementState() == ((IArtifactStats)stats).getAttuneType())
-				  total += ((IArtifactStats)stats).getAttuneCost();
-	  }
-	  return total;
+
+  @Override
+  public int getTotalAttunementCost() {
+    int total = 0;
+    for (IEquipmentItem item : equipmentItems) {
+      for (IEquipmentStats stats : item.getStats())
+        if (stats instanceof IArtifactStats && item.getAttunementState() == ((IArtifactStats) stats).getAttuneType())
+          total += ((IArtifactStats) stats).getAttuneCost();
+    }
+    return total;
   }
 
+  @Override
   public void addChangeListener(final IChangeListener listener) {
     modelChangeControl.addChangeListener(listener);
   }

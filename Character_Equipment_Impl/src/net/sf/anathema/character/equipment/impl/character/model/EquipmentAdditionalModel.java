@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.impl.character.model;
 
 import com.db4o.query.Predicate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.character.EquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
@@ -34,20 +33,16 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<IEquipmentItem>();
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable =
 		    new Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>>();
-  private final IEquipmentCharacterDataProvider provider;
+  private final IEquipmentCharacterDataProvider dataProvider;
 
-  public EquipmentAdditionalModel(
-		  ICharacterType characterType,
-          IArmourStats naturalArmour,
-          IEquipmentTemplateProvider equipmentTemplateProvider,
-          IExaltedRuleSet ruleSet,
-          ICharacterModelContext context,
-          IEquipmentTemplate... naturalWeapons) {
+  public EquipmentAdditionalModel(ICharacterType characterType, IArmourStats naturalArmour, IEquipmentTemplateProvider equipmentTemplateProvider,
+                                  IExaltedRuleSet ruleSet, ICharacterModelContext context,
+                                  IEquipmentCharacterDataProvider dataProvider, IEquipmentTemplate... naturalWeapons) {
 	super(ruleSet, naturalArmour);
     this.characterType = characterType;
     this.defaultMaterial = evaluateDefaultMaterial();
     this.equipmentTemplateProvider = equipmentTemplateProvider;
-    this.provider = new EquipmentCharacterDataProvider(context, this);
+    this.dataProvider = dataProvider;
     for (IEquipmentTemplate template : naturalWeapons) {
       if (template == null) {
         continue;
@@ -69,7 +64,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
 								optionsList.addAll(list);
 								for (IEquipmentStatsOption option : optionsList) {
 									try {
-										ArrayUtilities.indexOf(provider.getSpecialties(AbilityType.valueOf(option.getType())), option.getUnderlyingTrait());
+										ArrayUtilities.indexOf(
+                                                EquipmentAdditionalModel.this.dataProvider.getSpecialties(
+                                                        AbilityType.valueOf(option.getType())), option.getUnderlyingTrait());
 									}
 									catch (IllegalArgumentException e) {
 										//no longer has the specialty
@@ -84,7 +81,12 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
   
   @Override
   public IEquipmentCharacterDataProvider getCharacterDataProvider() {
-	  return provider;
+	  return dataProvider;
+  }
+
+  @Override
+  public IEquipmentCharacterOptionProvider getCharacterOptionProvider() {
+    return this;
   }
 
   private MagicalMaterial evaluateDefaultMaterial() {
@@ -207,9 +209,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel
 
   @Override
   public boolean transferOptions(IEquipmentItem fromItem, IEquipmentItem toItem) {
-	  if (fromItem == null || toItem == null)
-		  return false;
-	  
+	  if (fromItem == null || toItem == null) {
+        return false;
+      }
 	  boolean transferred = false;
 	  for (IEquipmentStats fromStats : fromItem.getStats()) {
 		  List<IEquipmentStatsOption> optionList = optionsTable.get(fromItem, fromStats);

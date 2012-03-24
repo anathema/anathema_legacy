@@ -5,11 +5,11 @@ import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ISpecialtyListChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
-public interface IEquipmentCharacterDataProvider extends IEquipmentCharacterOptionProvider, ItemAttunementEvaluator {
+public interface IEquipmentCharacterDataProvider extends ItemAttunementEvaluator {
 
-  public IEquipmentStatsOption getCharacterSpecialtyOption(String name, String type);
-	
-	public INamedGenericTrait[] getSpecialties(ITraitType trait);
-	
-	public void addCharacterSpecialtyListChangeListener(ISpecialtyListChangeListener listener);
+  IEquipmentStatsOption getCharacterSpecialtyOption(String name, String type);
+
+  INamedGenericTrait[] getSpecialties(ITraitType trait);
+
+  void addCharacterSpecialtyListChangeListener(ISpecialtyListChangeListener listener);
 }

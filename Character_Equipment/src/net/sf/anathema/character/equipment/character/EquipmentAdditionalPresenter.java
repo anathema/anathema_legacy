@@ -53,6 +53,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     		});
   }
 
+  @Override
   public void initPresentation() {
     for (IEquipmentItem item : model.getNaturalWeapons()) {
       initEquipmentObjectPresentation(item);
@@ -62,10 +63,12 @@ public class EquipmentAdditionalPresenter implements Presenter {
     }
     final IListObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
     model.addEquipmentObjectListener(new ICollectionListener<IEquipmentItem>() {
+      @Override
       public void itemAdded(IEquipmentItem item) {
         initEquipmentObjectPresentation(item);
       }
 
+      @Override
       public void itemRemoved(IEquipmentItem item) {
         removeItemView(item);
       }
@@ -77,6 +80,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList, magicMaterialView));
     view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
     equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String templateId) {
         MaterialComposition composition = templateId == null
           ? MaterialComposition.None
@@ -131,6 +135,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     };
     addAction.setToolTipText(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip")); //$NON-NLS-1$
     equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         addAction.setEnabled(equipmentTemplatePickList.isObjectSelected());
       }
@@ -150,7 +155,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
     Icon removeIcon = new BasicUi(resources).getRemoveIcon();
     viewsByItem.put(selectedObject, objectView);
-    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(), resources).initPresentation();
+    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(), model.getCharacterOptionProvider(), resources).initPresentation();
     if (model.canBeRemoved(selectedObject)) {
       objectView.addAction(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
         removeIcon) {
