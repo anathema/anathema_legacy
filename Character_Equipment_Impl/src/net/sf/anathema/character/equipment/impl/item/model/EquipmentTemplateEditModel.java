@@ -39,10 +39,12 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     this.database = database;
   }
 
+  @Override
   public IItemDescription getDescription() {
     return description;
   }
 
+  @Override
   public void setEditTemplate(String templateId) {
     Ensure.ensureArgumentNotNull(templateId);
     this.editTemplateId = templateId;
@@ -58,6 +60,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     fireStatsChangedEvent();
   }
 
+  @Override
   public String getEditTemplateId() {
     return editTemplateId;
   }
@@ -66,6 +69,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     statsChangeControl.fireChangedEvent();
   }
 
+  @Override
   public void setNewTemplate() {
     editTemplateId = null;
     editedTemplate = null;
@@ -76,6 +80,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     fireStatsChangedEvent();
   }
 
+  @Override
   public boolean isDirty() {
     List<IEquipmentStats> currentStats = getAllCurrentStats();
     List<IEquipmentStats> previousStats = getAllPreviousStats();
@@ -109,11 +114,13 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     return allStats;
   }
 
+  @Override
   public void addStatistics(IExaltedRuleSet ruleSet, IEquipmentStats stats) {
     statsByRuleSet.add(ruleSet, stats);
     fireStatsChangedEvent();
   }
 
+  @Override
   public void removeStatistics(IExaltedRuleSet ruleSet, IEquipmentStats... stats) {
     for (IEquipmentStats stat : stats) {
       statsByRuleSet.removeValue(ruleSet, stat);
@@ -121,15 +128,18 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     fireStatsChangedEvent();
   }
 
+  @Override
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
     List<IEquipmentStats> allStats = statsByRuleSet.get(ruleSet);
     return allStats.toArray(new IEquipmentStats[allStats.size()]);
   }
 
+  @Override
   public void addStatsChangeListener(IChangeListener changeListener) {
     statsChangeControl.addChangeListener(changeListener);
   }
 
+  @Override
   public IEquipmentTemplate createTemplate() {
     String name = getDescription().getName().getText();
     String descriptionText = getDescription().getContent().getText();
@@ -147,18 +157,22 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     return template;
   }
 
+  @Override
   public void addMagicalMaterialChangeListener(IChangeListener listener) {
     magicalMaterialControl.addChangeListener(listener);
   }
 
+  @Override
   public void addCompositionChangeListener(IChangeListener listener) {
     compositionControl.addChangeListener(listener);
   }
 
+  @Override
   public MagicalMaterial getMagicalMaterial() {
     return material;
   }
 
+  @Override
   public void setMagicalMaterial(MagicalMaterial material) {
     if (material == this.material) {
       return;
@@ -170,6 +184,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     magicalMaterialControl.fireChangedEvent();
   }
 
+  @Override
   public void setMaterialComposition(MaterialComposition composition) {
     if (composition == this.composition) {
       return;
@@ -184,10 +199,12 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     compositionControl.fireChangedEvent();
   }
 
+  @Override
   public MaterialComposition getMaterialComposition() {
     return composition;
   }
 
+  @Override
   public void replaceStatistics(IExaltedRuleSet ruleset, IEquipmentStats oldStats, IEquipmentStats newStats) {
     statsByRuleSet.replace(ruleset, oldStats, newStats);
     fireStatsChangedEvent();

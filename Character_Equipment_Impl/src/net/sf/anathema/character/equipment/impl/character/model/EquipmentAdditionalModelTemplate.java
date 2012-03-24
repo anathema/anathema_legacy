@@ -24,10 +24,12 @@ public class EquipmentAdditionalModelTemplate extends Identificate implements
     this.instantiater = instantiater;
   }
 
+  @Override
   public boolean supportsEdition(IExaltedEdition edition) {
     return true;
   }
 
+  @Override
   public IEquipmentTemplate getNaturalWeaponTemplate(ICharacterType characterType) {
     Collection<IEquipmentTemplate> templates = gatherTemplates();
     for (IEquipmentTemplate template : templates) {

@@ -13,7 +13,6 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.resources.IResources;
 
 public final class AddNewStatsAction extends SmartAction {
-  private static final long serialVersionUID = 1L;
   private IExaltedRuleSet ruleset;
   private final IEquipmentStatsCreationFactory statsFactory;
   private final IResources resources;
@@ -36,7 +35,7 @@ public final class AddNewStatsAction extends SmartAction {
       definedNames.add(stats.getName().getId());
     }
     String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
-    IEquipmentStats equipmentStats = statsFactory.createNewStats(parentComponent, resources, editModel, nameArray, ruleset);
+    IEquipmentStats equipmentStats = statsFactory.createNewStats(parentComponent, resources, editModel, nameArray);
     if (equipmentStats == null) {
       return;
     }

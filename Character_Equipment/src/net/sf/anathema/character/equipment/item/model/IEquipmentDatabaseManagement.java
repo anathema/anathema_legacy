@@ -4,11 +4,11 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public interface IEquipmentDatabaseManagement {
 
-  public IEquipmentTemplateEditModel getTemplateEditModel();
+  IEquipmentTemplateEditModel getTemplateEditModel();
 
-  public IEquipmentDatabase getDatabase();
+  IEquipmentDatabase getDatabase();
 
-  public IExaltedRuleSet[] getSupportedExaltedRuleSets();
+  IExaltedRuleSet[] getSupportedExaltedRuleSets();
 
-  public IEquipmentStatsCreationFactory getStatsCreationFactory();
+  IEquipmentStatsCreationFactory getStatsCreationFactory();
 }

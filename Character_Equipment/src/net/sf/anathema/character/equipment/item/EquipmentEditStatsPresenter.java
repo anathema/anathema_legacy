@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.item;
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
+import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -32,7 +33,6 @@ public class EquipmentEditStatsPresenter implements Presenter {
   public void initPresentation() {
     final EquipmentStringBuilder equipmentStringBuilder = new EquipmentStringBuilder(resources);
     ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi(resources)) {
-      private static final long serialVersionUID = 1L;
 
       @Override
       public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
@@ -55,15 +55,19 @@ public class EquipmentEditStatsPresenter implements Presenter {
   }
 
   private void initButtons(IActionAddableListView<IEquipmentStats> statsListView) {
-    IExaltedRuleSet ruleset = model.getSupportedExaltedRuleSets()[0];
+    IExaltedRuleSet ruleset = getRuleSet();
+    IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
+    statsListView.addAction(new AddNewStatsAction(resources, editModel, ruleset, model.getStatsCreationFactory()));
+    statsListView.addAction(new RemoveStatsAction(resources, editModel, ruleset, statsListView));
     statsListView.addAction(
-            new AddNewStatsAction(resources, model.getTemplateEditModel(), ruleset, model.getStatsCreationFactory()));
-    statsListView.addAction(new RemoveStatsAction(resources, model.getTemplateEditModel(), ruleset, statsListView));
-    statsListView.addAction(new EditStatsAction(resources, model.getTemplateEditModel(), ruleset, statsListView,
-            model.getStatsCreationFactory()));
+            new EditStatsAction(resources, editModel, ruleset, statsListView, model.getStatsCreationFactory()));
   }
 
   private void updateStatListContent(IActionAddableListView<IEquipmentStats> statsListView) {
-    statsListView.setObjects(model.getTemplateEditModel().getStats(model.getSupportedExaltedRuleSets()[0]));
+    statsListView.setObjects(model.getTemplateEditModel().getStats(getRuleSet()));
+  }
+
+  private IExaltedRuleSet getRuleSet() {
+    return model.getSupportedExaltedRuleSets()[0];
   }
 }
