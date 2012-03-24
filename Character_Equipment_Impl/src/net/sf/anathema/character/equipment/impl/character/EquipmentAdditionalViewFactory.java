@@ -11,6 +11,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentAdditionalViewFactory implements IAdditionalViewFactory {
 
+  @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) model;
     EquipmentAdditionalView view = new EquipmentAdditionalView();
