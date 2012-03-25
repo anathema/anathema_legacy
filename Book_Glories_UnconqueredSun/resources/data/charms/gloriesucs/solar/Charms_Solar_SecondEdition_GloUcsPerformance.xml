@@ -37,7 +37,9 @@
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Compulsion" visualize="true" />
+          <charmAttribute attribute="Mirror" visualize="true" />
           <source source="GloriesUCS" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.HorizonToHorizonPerformanceMethod6" exalt="Solar" group="Performance">
           <prerequisite>

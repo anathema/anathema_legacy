@@ -51,7 +51,7 @@
 	</charm>
 	<charm id="Solar.SurgingEssenceReactor" exalt="Solar" group="Resistance">
 		<prerequisite>
-			<trait id="Resistance" value="5" />
+			<trait id="Resistance" value="4" />
 			<essence value="4" />
 			<charmReference id="Solar.Essence-GatheringTemper" />
 		</prerequisite>
@@ -60,6 +60,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<source source="InkMonkeys" />
+		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.SoulFireResurgence" exalt="Solar" group="Resistance">
 		<prerequisite>
