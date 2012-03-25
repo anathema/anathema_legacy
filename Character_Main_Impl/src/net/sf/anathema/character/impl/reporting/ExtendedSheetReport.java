@@ -15,10 +15,10 @@ import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
-import net.sf.anathema.character.reporting.pdf.layout.extended.Extended2ndEditionFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
@@ -45,7 +45,7 @@ public class ExtendedSheetReport extends AbstractPdfReport {
   private final PageSizePreference pageSizePreference;
 
   public ExtendedSheetReport(IResources resources, ICharacterGenerics characterGenerics,
-                             PageSizePreference pageSizePreference) {
+          PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.characterGenerics = characterGenerics;
     this.pageSizePreference = pageSizePreference;
@@ -60,10 +60,10 @@ public class ExtendedSheetReport extends AbstractPdfReport {
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
-    document.setPageSize(pageSize.getRectangle());
+    document.setPageSize(pageSize.getPortraitRectangle());
     document.open();
     PdfContentByte directContent = writer.getDirectContent();
-    PageConfiguration configuration = PageConfiguration.create(pageSize.getRectangle());
+    PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
     try {
       IExtendedPartEncoder partEncoder = getPartEncoder(stattedCharacter);
@@ -71,11 +71,10 @@ public class ExtendedSheetReport extends AbstractPdfReport {
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
 
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
-      encoderList.add(
-              new Extended2ndEditionFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
+      encoderList.add(new ExtendedFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
       encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(getEncoderRegistry(), configuration));
-        encoderList.add(new ExtendedMagicPageEncoder(partEncoder, resources, configuration));
+      //encoderList.add(new ExtendedMagicPageEncoder(partEncoder, resources, configuration));
       boolean firstPagePrinted = false;
       for (PageEncoder encoder : encoderList) {
         if (firstPagePrinted) {

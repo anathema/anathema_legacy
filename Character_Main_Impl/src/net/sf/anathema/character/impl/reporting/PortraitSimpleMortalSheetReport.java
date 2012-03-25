@@ -8,32 +8,33 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.impl.generic.GenericDescription;
-import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.simple.MortalPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
+import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SimpleMortalSheetReport extends AbstractPdfReport {
+public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
 
   private final IResources resources;
   private final ICharacterGenerics characterGenerics;
   private final PageSizePreference pageSizePreference;
 
-  public SimpleMortalSheetReport(IResources resources, ICharacterGenerics characterGenerics, PageSizePreference pageSizePreference) {
+  public PortraitSimpleMortalSheetReport(IResources resources, ICharacterGenerics characterGenerics,
+          PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.characterGenerics = characterGenerics;
     this.pageSizePreference = pageSizePreference;
@@ -48,10 +49,10 @@ public class SimpleMortalSheetReport extends AbstractPdfReport {
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
-    document.setPageSize(pageSize.getRectangle());
+    document.setPageSize(pageSize.getPortraitRectangle());
     document.open();
     PdfContentByte directContent = writer.getDirectContent();
-    PageConfiguration configuration = PageConfiguration.create(pageSize.getRectangle());
+    PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     try {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());

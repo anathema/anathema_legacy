@@ -30,10 +30,6 @@ public class ExtendedMagicEncoder implements ContentEncoder {
     return collectPrintMagic(session.getCharacter(), false, true);
   }
 
-  public static List<IMagicStats> collectPrintMagic(ReportSession session) {
-    return collectPrintMagic(session.getCharacter(), true, true);
-  }
-
   public static List<IMagicStats> collectPrintSpells(ReportSession session) {
     return collectPrintMagic(session.getCharacter(), true, false);
   }

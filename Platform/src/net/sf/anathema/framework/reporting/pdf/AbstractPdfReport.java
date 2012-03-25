@@ -9,7 +9,7 @@ import java.io.OutputStream;
 public abstract class AbstractPdfReport implements Report, PdfReport {
 
   @Override
-  public void print(IItem item, OutputStream stream) throws ReportException {
+  public final void print(IItem item, OutputStream stream) throws ReportException {
     PdfReportPrinter printer = new PdfReportPrinter();
     printer.printReport(item, this, stream);
   }
