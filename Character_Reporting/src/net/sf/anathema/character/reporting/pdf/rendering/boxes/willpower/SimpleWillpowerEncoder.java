@@ -17,7 +17,7 @@ public class SimpleWillpowerEncoder extends AbstractBoxContentEncoder<WillpowerC
   }
 
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
-    PdfTraitEncoder traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
+    PdfTraitEncoder traitEncoder = PdfTraitEncoder.createLargeTraitEncoder();
     WillpowerContent content = createContent(reportSession);
     float padding = PADDING / 2f;
     float width = bounds.width - 2 * padding;

@@ -12,9 +12,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static com.itextpdf.text.pdf.PdfContentByte.ALIGN_RIGHT;
 
-public class SimpleEssenceBoxContentEncoder extends AbstractBoxContentEncoder<SimpleEssenceContent> {
+public class SimpleEssenceEncoder extends AbstractBoxContentEncoder<SimpleEssenceContent> {
 
-  public SimpleEssenceBoxContentEncoder() {
+  public SimpleEssenceEncoder() {
     super(SimpleEssenceContent.class);
   }
 

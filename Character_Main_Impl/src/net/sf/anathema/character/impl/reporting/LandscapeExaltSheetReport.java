@@ -15,6 +15,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.landscape.FirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.landscape.SecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
@@ -48,7 +49,8 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
     ICharacter character = (ICharacter) item.getItemData();
-    document.setPageSize(new RectangleReadOnly(842, 595));
+    document.setPageSize(new RectangleReadOnly(pageSize.getPortraitRectangle().getHeight(),
+            pageSize.getPortraitRectangle().getWidth()));
     document.open();
     PdfContentByte directContent = writer.getDirectContent();
     PageConfiguration configuration = PageConfiguration.ForLandscape(pageSize);
@@ -57,6 +59,7 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
       IGenericDescription description = new GenericDescription(character.getDescription());
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       encoderList.add(new FirstPageEncoder(getEncoderRegistry(), resources, configuration));
+      encoderList.add(new SecondPageEncoder(getEncoderRegistry(), resources, configuration));
       ReportSession session = new ReportSession(getContentRegistry(), genericCharacter, description);
       boolean isFirstPrinted = false;
       for (PageEncoder encoder : encoderList) {

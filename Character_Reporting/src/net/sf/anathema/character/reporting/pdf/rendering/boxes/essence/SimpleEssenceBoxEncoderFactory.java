@@ -16,7 +16,7 @@ public class SimpleEssenceBoxEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new SimpleEssenceBoxContentEncoder();
+    return new SimpleEssenceEncoder();
   }
 
   @Override

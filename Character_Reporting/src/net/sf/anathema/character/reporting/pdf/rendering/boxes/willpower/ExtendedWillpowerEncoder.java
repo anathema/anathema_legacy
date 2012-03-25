@@ -22,7 +22,7 @@ public class ExtendedWillpowerEncoder extends AbstractBoxContentEncoder<Willpowe
 
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     float lineHeight = 1.1f * IVoidStateFormatConstants.COMMENT_FONT_SIZE;
-    PdfTraitEncoder traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
+    PdfTraitEncoder traitEncoder = PdfTraitEncoder.createLargeTraitEncoder();
     WillpowerContent content = createContent(reportSession);
     float padding = IVoidStateFormatConstants.PADDING / 2f;
     float width = bounds.width - 2f * padding;
