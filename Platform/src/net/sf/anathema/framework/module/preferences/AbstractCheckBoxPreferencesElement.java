@@ -30,7 +30,7 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
       @Override
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(component, GridDialogLayoutDataFactory.createHorizontalSpanData(
-            2,
+            1,
             GridDialogLayoutData.FILL_HORIZONTAL));
       }
 
