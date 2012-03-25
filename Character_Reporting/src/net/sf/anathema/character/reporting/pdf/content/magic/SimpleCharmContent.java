@@ -79,7 +79,7 @@ public class SimpleCharmContent extends AbstractSubBoxContent {
             new MagicDetailsStatsGroup(resources), new MagicSourceStatsGroup(resources)};
   }
 
-  public boolean hasCharmsToPrint() {
+  public boolean hasUnprintedCharms() {
     return !session.getPrintMagic().isEmpty();
   }
 

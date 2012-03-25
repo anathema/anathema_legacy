@@ -65,7 +65,7 @@ public class SecondPageEncoder extends AbstractPageEncoder {
 
   private void encodeAdditionalMagicPages(Document document, SheetGraphics graphics, ReportSession session) {
     SimpleCharmContent charmContent = session.createContent(SimpleCharmContent.class);
-    while (charmContent.hasCharmsToPrint()) {
+    while (charmContent.hasUnprintedCharms()) {
       document.newPage();
       SheetPage page = createPage(graphics, session);
       page.place(CHARMS_AND_SORCERY).atStartOf(createBody()).fillToBottomOfPage().spanningThreeColumns().now();
