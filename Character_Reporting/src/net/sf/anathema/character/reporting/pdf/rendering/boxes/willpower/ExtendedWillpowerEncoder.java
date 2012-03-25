@@ -9,12 +9,12 @@ import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerConten
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 
-public class ExtendedWillpowerEncoder extends AbstractBoxContentEncoder<WillpowerContent> {
+public class ExtendedWillpowerEncoder extends AbstractContentEncoder<WillpowerContent> {
 
   public ExtendedWillpowerEncoder() {
     super(WillpowerContent.class);

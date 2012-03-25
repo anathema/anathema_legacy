@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
@@ -162,7 +162,7 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
                                float distanceFromTop) throws DocumentException {
     float height = COLLEGE_HEIGHT;
     Bounds boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 1, PageConfiguration.Offset(0));
-    ContentEncoder encoder = new FavorableTraitBoxContentEncoder(SiderealCollegeContent.class);
+    ContentEncoder encoder = new FavorableTraitContentEncoder(SiderealCollegeContent.class);
     boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
   }

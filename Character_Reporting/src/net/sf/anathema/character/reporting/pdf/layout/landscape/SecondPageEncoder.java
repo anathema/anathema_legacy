@@ -19,6 +19,7 @@ import net.sf.anathema.lib.resources.IResources;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.CHARMS_AND_SORCERY;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.COMBAT;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ESSENCE_EXTENDED;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.GENERIC_CHARMS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.HEALTH_AND_MOVEMENT;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.PANOPLY;
@@ -51,6 +52,7 @@ public class SecondPageEncoder implements PageEncoder {
     LayoutField health = page.place(HEALTH_AND_MOVEMENT).below(combat).withHeight(HEALTH_HEIGHT).andColumnSpan(2).now();
     LayoutField panoply = page.place(PANOPLY).below(health).withHeight(ARMOUR_HEIGHT).andColumnSpan(2).now();
     LayoutField arsenal = page.place(ARSENAL).below(panoply).withHeight(120).andColumnSpan(2).now();
+    LayoutField essence = page.place(ESSENCE_EXTENDED).below(arsenal).fillToBottomOfPage().andColumnSpan(2).now();
     encodeAdditionalMagicPages(document, graphics, session);
   }
 

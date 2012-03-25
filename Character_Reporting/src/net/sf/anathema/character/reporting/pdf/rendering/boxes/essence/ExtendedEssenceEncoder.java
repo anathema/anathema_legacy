@@ -4,15 +4,15 @@ import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.essence.ExtendedEssenceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class ExtendedEssenceBoxContentEncoder extends AbstractBoxContentEncoder<ExtendedEssenceContent> implements IVariableContentEncoder {
+public class ExtendedEssenceEncoder extends AbstractContentEncoder<ExtendedEssenceContent> implements IVariableContentEncoder {
 
   private ExtendedEssenceTableEncoder poolTable = new ExtendedEssenceTableEncoder();
 
-  public ExtendedEssenceBoxContentEncoder() {
+  public ExtendedEssenceEncoder() {
     super(ExtendedEssenceContent.class);
   }
 

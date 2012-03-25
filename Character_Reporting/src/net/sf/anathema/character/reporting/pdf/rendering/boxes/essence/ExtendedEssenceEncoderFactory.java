@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.pdf.rendering.boxes.experience;
+package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
@@ -8,19 +8,19 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredEncoderFactory
-public class ExperienceBoxEncoderFactory extends AbstractEncoderFactory {
+public class ExtendedEssenceEncoderFactory extends AbstractEncoderFactory {
 
-  public ExperienceBoxEncoderFactory() {
-    super(EncoderIds.EXPERIENCE);
+  public ExtendedEssenceEncoderFactory() {
+    super(EncoderIds.ESSENCE_EXTENDED);
   }
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new ExperienceContentEncoder();
+    return new ExtendedEssenceEncoder();
   }
 
   @Override
   public boolean supports(BasicContent content) {
-    return true;
+    return content.isEssenceUser();
   }
 }

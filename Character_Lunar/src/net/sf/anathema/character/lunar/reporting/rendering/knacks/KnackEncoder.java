@@ -4,10 +4,10 @@ import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class KnackEncoder extends AbstractBoxContentEncoder<KnackContent> {
+public class KnackEncoder extends AbstractContentEncoder<KnackContent> {
 
   public KnackEncoder() {
     super(KnackContent.class);

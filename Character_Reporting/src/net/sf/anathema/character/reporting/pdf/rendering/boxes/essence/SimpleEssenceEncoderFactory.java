@@ -8,9 +8,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredEncoderFactory
-public class SimpleEssenceBoxEncoderFactory extends AbstractEncoderFactory {
+public class SimpleEssenceEncoderFactory extends AbstractEncoderFactory {
 
-  public SimpleEssenceBoxEncoderFactory() {
+  public SimpleEssenceEncoderFactory() {
     super(EncoderIds.ESSENCE_SIMPLE);
   }
 

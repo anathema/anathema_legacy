@@ -12,7 +12,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class AbilitiesTwoColumnEncoder extends FavorableTraitBoxContentEncoder<AbilitiesContent> {
+public class AbilitiesTwoColumnEncoder extends FavorableTraitContentEncoder<AbilitiesContent> {
 
   private IResources resources;
 
