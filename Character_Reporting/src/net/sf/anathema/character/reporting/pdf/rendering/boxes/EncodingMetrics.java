@@ -1,26 +1,26 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes;
 
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TextMetrics;
 
 public class EncodingMetrics {
 
-  public static final EncodingMetrics From(SheetGraphics graphics, ReportContent content) {
-    return new EncodingMetrics(content, graphics);
+  public static final EncodingMetrics From(SheetGraphics graphics, ReportSession session) {
+    return new EncodingMetrics(session, graphics);
   }
 
-  private final ReportContent content;
+  private final ReportSession session;
   private SheetGraphics graphics;
 
-  public EncodingMetrics(ReportContent content, SheetGraphics graphics) {
-    this.content = content;
+  public EncodingMetrics(ReportSession session, SheetGraphics graphics) {
+    this.session = session;
     this.graphics = graphics;
   }
 
-  public ReportContent getContent() {
-    return content;
+  public ReportSession getSession() {
+    return session;
   }
 
   public TextMetrics getTextMetrics() {

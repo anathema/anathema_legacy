@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PerformanceSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PresenceSocialAttack;
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.social.DeceptionStatsGroup;
 import net.sf.anathema.character.reporting.pdf.content.stats.social.HonestyStatsGroup;
@@ -25,19 +25,19 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IStatsGroup<ISocialCombatStats>[] createStatsGroups(ReportContent content) {
+  protected IStatsGroup<ISocialCombatStats>[] createStatsGroups(ReportSession session) {
     return new IStatsGroup[] { new SocialCombatNameStatsGroup(resources), new SocialSpeedStatsGroup(resources), new HonestyStatsGroup(
       resources), new DeceptionStatsGroup(resources), new SocialRateStatsGroup(resources) };
   }
 
   @Override
-  protected int getLineCount(ReportContent content) {
+  protected int getLineCount(ReportSession session) {
     return 3;
   }
 
   @Override
-  protected ISocialCombatStats[] getPrintStats(ReportContent content) {
-    IGenericTraitCollection traitCollection = content.getCharacter().getTraitCollection();
+  protected ISocialCombatStats[] getPrintStats(ReportSession session) {
+    IGenericTraitCollection traitCollection = session.getCharacter().getTraitCollection();
     return new ISocialCombatStats[] { new PresenceSocialAttack(traitCollection), new PerformanceSocialAttack(
       traitCollection), new InvestigationSocialAttack(traitCollection) };
   }

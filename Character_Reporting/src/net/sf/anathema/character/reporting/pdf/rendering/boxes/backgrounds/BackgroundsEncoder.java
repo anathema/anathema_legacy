@@ -4,7 +4,7 @@ import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundInfo;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -27,10 +27,10 @@ public class BackgroundsEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     float yPosition = bounds.getMaxY() - LINE_HEIGHT;
     boolean printZeroBackgrounds = AnathemaCharacterPreferences.getDefaultPreferences().printZeroBackgrounds();
-    for (IGenericTrait background : reportContent.getCharacter().getBackgrounds()) {
+    for (IGenericTrait background : reportSession.getCharacter().getBackgrounds()) {
       if (yPosition < bounds.getMinY()) {
         return;
       }
@@ -61,12 +61,12 @@ public class BackgroundsEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Backgrounds");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

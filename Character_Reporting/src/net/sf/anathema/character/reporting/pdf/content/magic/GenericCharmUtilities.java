@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.GenericCharmStats;
 
 import java.util.ArrayList;
@@ -62,8 +62,8 @@ public class GenericCharmUtilities {
     return count;
   }
 
-  public static boolean hasDisplayedGenericCharms(ReportContent content) {
-    return getDisplayedGenericCharmCount(content.getCharacter()) > 0;
+  public static boolean hasDisplayedGenericCharms(ReportSession session) {
+    return getDisplayedGenericCharmCount(session.getCharacter()) > 0;
   }
 
   public static List<ITraitType> getGenericCharmTraits(IGenericCharacter character) {

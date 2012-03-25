@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;
@@ -26,16 +26,16 @@ public class ExtendedMagicEncoder implements ContentEncoder {
   static IIdentificate KNACK = new Identificate("Knack");
   private IResources resources;
 
-  public static List<IMagicStats> collectPrintCharms(ReportContent content) {
-    return collectPrintMagic(content.getCharacter(), false, true);
+  public static List<IMagicStats> collectPrintCharms(ReportSession session) {
+    return collectPrintMagic(session.getCharacter(), false, true);
   }
 
-  public static List<IMagicStats> collectPrintMagic(ReportContent content) {
-    return collectPrintMagic(content.getCharacter(), true, true);
+  public static List<IMagicStats> collectPrintMagic(ReportSession session) {
+    return collectPrintMagic(session.getCharacter(), true, true);
   }
 
-  public static List<IMagicStats> collectPrintSpells(ReportContent content) {
-    return collectPrintMagic(content.getCharacter(), true, false);
+  public static List<IMagicStats> collectPrintSpells(ReportSession session) {
+    return collectPrintMagic(session.getCharacter(), true, false);
   }
 
   private static List<IMagicStats> collectPrintMagic(final IGenericCharacter character, final boolean includeSpells,
@@ -95,24 +95,24 @@ public class ExtendedMagicEncoder implements ContentEncoder {
   public ExtendedMagicEncoder(IResources resources, List<IMagicStats> printMagic, boolean sectionHeaderLines,
           String headerKey) {
     this.resources = resources;
-    this.tableEncoder = new MagicTableEncoder(resources, printMagic, sectionHeaderLines);
+    this.tableEncoder = new MagicTableEncoder(resources, sectionHeaderLines);
     this.headerKey = headerKey;
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     float top = bounds.getMinY();
     Bounds remainingBounds = new Bounds(bounds.getMinX(), top, bounds.getWidth(), bounds.getMaxY() - top);
-    tableEncoder.encodeTable(graphics, reportContent, remainingBounds);
+    tableEncoder.encodeTable(graphics, reportSession, remainingBounds);
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header." + headerKey);
   }
 }

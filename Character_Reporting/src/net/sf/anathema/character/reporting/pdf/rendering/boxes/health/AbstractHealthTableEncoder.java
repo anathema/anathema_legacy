@@ -8,7 +8,7 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
@@ -16,7 +16,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractHealthTableEncoder implements ITableEncoder<ReportContent> {
+public abstract class AbstractHealthTableEncoder implements ITableEncoder<ReportSession> {
   private static final int HEALTH_COLUMN_COUNT = 15;
   private static float PADDING = 0.3f;
   private static final Float[] HEALTH_LEVEL_COLUMNS = new Float[]{0.7f, 0.6f, PADDING};
@@ -26,8 +26,8 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
     this.resources = resources;
   }
 
-  public final float encodeTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    PdfPTable table = createTable(graphics, content);
+  public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
+    PdfPTable table = createTable(graphics, session);
     table.setWidthPercentage(100);
     graphics.createSimpleColumn(bounds).withElement(table).encode();
     return table.getTotalHeight();
@@ -44,7 +44,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
     return 1;
   }
 
-  private PdfPTable createTable(SheetGraphics graphics, ReportContent content) throws DocumentException {
+  private PdfPTable createTable(SheetGraphics graphics, ReportSession session) throws DocumentException {
     try {
       PdfContentByte directContent = graphics.getDirectContent();
       Image activeTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, BaseColor.BLACK));
@@ -53,7 +53,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
       PdfPTable table = new PdfPTable(columnWidth);
       addHeaders(graphics, table);
       for (HealthLevelType type : HealthLevelType.values()) {
-        addHealthTypeRows(graphics, table, content.getCharacter(), activeTemplate, passiveTemplate, type);
+        addHealthTypeRows(graphics, table, session.getCharacter(), activeTemplate, passiveTemplate, type);
       }
       return table;
     } catch (BadElementException e) {
@@ -182,7 +182,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
     return graphics.createTableFont();
   }
 
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

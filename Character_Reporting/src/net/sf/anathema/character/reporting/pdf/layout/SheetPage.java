@@ -21,7 +21,7 @@ public class SheetPage {
       if (field.isInvisible())  {
         return field;
       }
-      return encoderList.encodeBox(graphics, metrics.getContent(), field, encoderIds);
+      return encoderList.encodeBox(graphics, metrics.getSession(), field, encoderIds);
     }
 
     @Override

@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.AbstractNamedTraitEncoder;
@@ -25,8 +25,8 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
     this.specialtyCount = specialtyCount;
   }
 
-  public float encode(SheetGraphics graphics, ReportContent content, Position position, float width, float height) {
-    IGenericCharacter character = content.getCharacter();
+  public float encode(SheetGraphics graphics, ReportSession session, Position position, float width, float height) {
+    IGenericCharacter character = session.getCharacter();
     String title = getResources().getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {

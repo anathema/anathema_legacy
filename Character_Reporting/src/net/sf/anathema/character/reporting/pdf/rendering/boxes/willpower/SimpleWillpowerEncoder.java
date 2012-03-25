@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower;
 
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -16,9 +16,9 @@ public class SimpleWillpowerEncoder extends AbstractBoxContentEncoder<WillpowerC
     super(WillpowerContent.class);
   }
 
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
     PdfTraitEncoder traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
-    WillpowerContent content = createContent(reportContent);
+    WillpowerContent content = createContent(reportSession);
     float padding = PADDING / 2f;
     float width = bounds.width - 2 * padding;
     float leftX = bounds.x + padding;

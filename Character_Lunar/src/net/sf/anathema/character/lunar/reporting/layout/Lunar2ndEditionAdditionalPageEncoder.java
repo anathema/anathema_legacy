@@ -15,7 +15,7 @@ import net.sf.anathema.character.lunar.reporting.rendering.beastform.SecondEditi
 import net.sf.anathema.character.lunar.reporting.rendering.health.SecondEditionLunarHealthAndMovementEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.heartsblood.SecondEditionLunarHeartsBloodEncoder;
 import net.sf.anathema.character.lunar.reporting.rendering.knacks.KnackEncoder;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -45,28 +45,28 @@ public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
     this.boxEncoder = new PdfBoxEncoder();
   }
 
-  public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
+  public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
     int firstSet = 0, secondSet = 0;
-    boolean DBT = hasDBT(content.getCharacter());
-    firstSet += encodeSpiritForms(graphics, content, firstSet, DBT);
+    boolean DBT = hasDBT(session.getCharacter());
+    firstSet += encodeSpiritForms(graphics, session, firstSet, DBT);
     if (DBT) {
       firstSet += PADDING;
       secondSet = firstSet;
-      firstSet += encodeArsenal(graphics, content, firstSet) + PADDING;
-      firstSet += encodePanoply(graphics, content, firstSet, 80) + PADDING;
-      firstSet += encodeMovementAndHealth(graphics, content, firstSet, 99);
+      firstSet += encodeArsenal(graphics, session, firstSet) + PADDING;
+      firstSet += encodePanoply(graphics, session, firstSet, 80) + PADDING;
+      firstSet += encodeMovementAndHealth(graphics, session, firstSet, 99);
 
-      secondSet += encodeCombatStats(graphics, content, secondSet) + PADDING;
-      encodePowers(graphics, content, secondSet, firstSet - secondSet, false);
+      secondSet += encodeCombatStats(graphics, session, secondSet) + PADDING;
+      encodePowers(graphics, session, secondSet, firstSet - secondSet, false);
     } else {
-      encodePowers(graphics, content, secondSet, firstSet, true);
+      encodePowers(graphics, session, secondSet, firstSet, true);
     }
 
     firstSet += PADDING;
 
     int remaining = (int) (pageConfiguration.getContentHeight() - firstSet);
-    encodeKnacks(graphics, content, firstSet, remaining);
-    encodeAnimalForms(graphics, content, firstSet, remaining);
+    encodeKnacks(graphics, session, firstSet, remaining);
+    encodeAnimalForms(graphics, session, firstSet, remaining);
   }
 
   private boolean hasDBT(IGenericCharacter character) {
@@ -78,67 +78,67 @@ public class Lunar2ndEditionAdditionalPageEncoder implements PageEncoder {
     return false;
   }
 
-  private int encodeSpiritForms(SheetGraphics graphics, ReportContent content, int distanceFromTop, boolean DBT) throws DocumentException {
+  private int encodeSpiritForms(SheetGraphics graphics, ReportSession session, int distanceFromTop, boolean DBT) throws DocumentException {
     int attributeHeight = 80;
     Bounds spiritBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
     Bounds beastBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, attributeHeight, 2);
     SecondEditionLunarSpiritFormEncoder spiritEncoder = new SecondEditionLunarSpiritFormEncoder(resources);
     SecondEditionLunarDBTFormEncoder beastEncoder = new SecondEditionLunarDBTFormEncoder(resources);
-    boxEncoder.encodeBox(content, graphics, spiritEncoder, spiritBounds);
+    boxEncoder.encodeBox(session, graphics, spiritEncoder, spiritBounds);
     if (DBT) {
-      boxEncoder.encodeBox(content, graphics, beastEncoder, beastBounds);
+      boxEncoder.encodeBox(session, graphics, beastEncoder, beastBounds);
     }
     return attributeHeight;
   }
 
-  private float encodeArsenal(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
-    EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
+  private float encodeArsenal(SheetGraphics graphics, ReportSession session, float distanceFromTop) throws DocumentException {
+    EncodingMetrics metrics = EncodingMetrics.From(graphics, session);
     float contentWidth = BoxBoundsFactory.getContentWidth(pageConfiguration, 2);
     float height = encoderRegistry.getPreferredHeight(metrics, contentWidth, ARSENAL_LUNAR);
-    ContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, content, ARSENAL_LUNAR);
+    ContentEncoder weaponryEncoder = encoderRegistry.createEncoder(resources, session, ARSENAL_LUNAR);
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
-    boxEncoder.encodeBox(content, graphics, weaponryEncoder, bounds);
+    boxEncoder.encodeBox(session, graphics, weaponryEncoder, bounds);
     return height;
   }
 
-  private float encodePanoply(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodePanoply(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
     ITableEncoder armourTableEncoder = new ArmourTableEncoder(LunarArmourContent.class);
     ContentEncoder contentEncoder = new ArmourEncoder(resources, armourTableEncoder);
-    boxEncoder.encodeBox(content, graphics, contentEncoder, bounds);
+    boxEncoder.encodeBox(session, graphics, contentEncoder, bounds);
     return height;
   }
 
-  private float encodeMovementAndHealth(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private float encodeMovementAndHealth(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 2);
     ContentEncoder encoder = new SecondEditionLunarHealthAndMovementEncoder(resources);
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
+    boxEncoder.encodeBox(session, graphics, encoder, bounds);
     return height;
   }
 
-  private float encodeCombatStats(SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
+  private float encodeCombatStats(SheetGraphics graphics, ReportSession session, float distanceFromTop) throws DocumentException {
     int height = 64;
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     SecondEditionDBTCombatEncoder encoder = new SecondEditionDBTCombatEncoder(resources);
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
+    boxEncoder.encodeBox(session, graphics, encoder, bounds);
     return height;
   }
 
-  private void encodePowers(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height, boolean isHorizontal) throws DocumentException {
+  private void encodePowers(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height, boolean isHorizontal) throws DocumentException {
     Bounds bounds = isHorizontal ? pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2) : pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     SecondEditionPowersEncoder encoder = new SecondEditionPowersEncoder(resources, isHorizontal);
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
+    boxEncoder.encodeBox(session, graphics, encoder, bounds);
   }
 
-  private void encodeKnacks(SheetGraphics graphics, ReportContent content, float distanceFromTop, int height) throws DocumentException {
+  private void encodeKnacks(SheetGraphics graphics, ReportSession session, float distanceFromTop, int height) throws DocumentException {
     Bounds bounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, height, 1);
     ContentEncoder encoder = new KnackEncoder();
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
+    boxEncoder.encodeBox(session, graphics, encoder, bounds);
   }
 
-  private void encodeAnimalForms(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height) throws DocumentException {
+  private void encodeAnimalForms(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     ContentEncoder encoder = new SecondEditionLunarHeartsBloodEncoder(resources);
-    boxEncoder.encodeBox(content, graphics, encoder, bounds);
+    boxEncoder.encodeBox(session, graphics, encoder, bounds);
   }
 }

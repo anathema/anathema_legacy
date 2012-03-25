@@ -5,7 +5,7 @@ import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -52,34 +52,34 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   }
 
   @Override
-  public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
-    if (isRonin(content.getCharacter())) {
+  public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
+    if (isRonin(session.getCharacter())) {
       return;
     }
     float distanceFromTop = 0;
-    float collegeHeight = encodeColleges(graphics, content, distanceFromTop);
-    encodeAstrology(graphics, content, distanceFromTop);
+    float collegeHeight = encodeColleges(graphics, session, distanceFromTop);
+    encodeAstrology(graphics, session, distanceFromTop);
     distanceFromTop += collegeHeight + PADDING;
 
-    if (!isFirstAge(content.getCharacter())) {
-      encodeArcaneFate(graphics, content, distanceFromTop);
+    if (!isFirstAge(session.getCharacter())) {
+      encodeArcaneFate(graphics, session, distanceFromTop);
     }
-    encodeConnections(graphics, content, distanceFromTop);
-    distanceFromTop += encodeParadoxHelp(graphics, content, distanceFromTop);
+    encodeConnections(graphics, session, distanceFromTop);
+    distanceFromTop += encodeParadoxHelp(graphics, session, distanceFromTop);
     distanceFromTop += PADDING;
 
     float centerDistance = distanceFromTop;
-    encodeResplendentDestiny(graphics, getLeftDestinyBounds(distanceFromTop), content);
-    distanceFromTop += encodeResplendentDestiny(graphics, getRightDestinyBounds(distanceFromTop), content);
+    encodeResplendentDestiny(graphics, getLeftDestinyBounds(distanceFromTop), session);
+    distanceFromTop += encodeResplendentDestiny(graphics, getRightDestinyBounds(distanceFromTop), session);
     distanceFromTop += PADDING;
 
-    centerDistance += encodeParadox(graphics, content, centerDistance);
+    centerDistance += encodeParadox(graphics, session, centerDistance);
     centerDistance += PADDING;
-    encodeAcquaintances(graphics, content, centerDistance, DESTINY_HEIGHT - PARADOX_HEIGHT - PADDING);
+    encodeAcquaintances(graphics, session, centerDistance, DESTINY_HEIGHT - PARADOX_HEIGHT - PADDING);
 
-    encodeResplendentDestiny(graphics, getLeftDestinyBounds(distanceFromTop), content);
-    encodeResplendentDestiny(graphics, getCenterDestinyBounds(distanceFromTop), content);
-    encodeResplendentDestiny(graphics, getRightDestinyBounds(distanceFromTop), content);
+    encodeResplendentDestiny(graphics, getLeftDestinyBounds(distanceFromTop), session);
+    encodeResplendentDestiny(graphics, getCenterDestinyBounds(distanceFromTop), session);
+    encodeResplendentDestiny(graphics, getRightDestinyBounds(distanceFromTop), session);
   }
 
   private boolean isRonin(IGenericCharacter character) {
@@ -94,49 +94,49 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
             revisedDreamsType.getSubType().getId());
   }
 
-  private void encodeConnections(SheetGraphics graphics, ReportContent content,
+  private void encodeConnections(SheetGraphics graphics, ReportSession session,
                                  float distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds;
-    if (isFirstAge(content.getCharacter())) {
+    if (isFirstAge(session.getCharacter())) {
       boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 2);
     } else {
       boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     }
     ContentEncoder encoder = new HorizontalLineBoxContentEncoder(4, resources, "Sidereal.Connections"); //$NON-NLS-1$
-    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
+    boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
   }
 
-  private float encodeAcquaintances(SheetGraphics graphics, ReportContent content, float distanceFromTop,
+  private float encodeAcquaintances(SheetGraphics graphics, ReportSession session, float distanceFromTop,
                                     float height) throws DocumentException {
     Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     ContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, resources, "Sidereal.Acquaintances"); //$NON-NLS-1$
-    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
+    boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
   }
 
-  private float encodeParadox(SheetGraphics graphics, ReportContent content,
+  private float encodeParadox(SheetGraphics graphics, ReportSession session,
                               float distanceFromTop) throws DocumentException {
     float height = PARADOX_HEIGHT;
     Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
     ContentEncoder encoder = new ParadoxEncoder(resources);
-    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
+    boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
   }
 
-  private float encodeAstrology(SheetGraphics graphics, ReportContent content,
+  private float encodeAstrology(SheetGraphics graphics, ReportSession session,
                                 float distanceFromTop) throws DocumentException {
     float height = COLLEGE_HEIGHT;
     Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 2);
     ContentEncoder encoder = new SecondEditionAstrologyInfoEncoder(resources);
-    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
+    boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
   }
 
   private float encodeResplendentDestiny(SheetGraphics graphics, Bounds boxBounds,
-                                         ReportContent content) throws DocumentException {
+                                         ReportSession session) throws DocumentException {
     ContentEncoder encoder = new ResplendentDestinyEncoder(fontSize, resources);
-    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
+    boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return boxBounds.height;
   }
 
@@ -152,30 +152,30 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
     return configuration.getFirstColumnRectangle(distanceFromTop, DESTINY_HEIGHT, 1);
   }
 
-  private float encodeParadoxHelp(SheetGraphics graphics, ReportContent content,
+  private float encodeParadoxHelp(SheetGraphics graphics, ReportSession session,
                                   float distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
     ContentEncoder encoder = new ParadoxInfoEncoder(fontSize, resources);
-    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
+    boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
   }
 
-  private float encodeArcaneFate(SheetGraphics graphics, ReportContent content,
+  private float encodeArcaneFate(SheetGraphics graphics, ReportSession session,
                                  float distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
     ContentEncoder encoder = new ArcaneFateInfoEncoder(fontSize, resources);
-    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
+    boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
   }
 
-  private float encodeColleges(SheetGraphics graphics, ReportContent content,
+  private float encodeColleges(SheetGraphics graphics, ReportSession session,
                                float distanceFromTop) throws DocumentException {
     float height = COLLEGE_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
     ContentEncoder encoder = new FavorableTraitBoxContentEncoder(SiderealCollegeContent.class);
-    boxEncoder.encodeBox(content, graphics, encoder, boxBounds);
+    boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
   }
 }

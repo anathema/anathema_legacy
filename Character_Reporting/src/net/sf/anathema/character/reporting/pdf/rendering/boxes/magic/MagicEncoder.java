@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -17,8 +17,8 @@ import java.util.List;
 
 public class MagicEncoder implements ContentEncoder {
 
-  public static List<IMagicStats> collectPrintMagic(ReportContent content) {
-    IGenericCharacter character = content.getCharacter();
+  public static List<IMagicStats> collectPrintMagic(ReportSession session) {
+    IGenericCharacter character = session.getCharacter();
     List<IMagicStats> printStats = new ArrayList<IMagicStats>();
     addGenericCharmsForPrint(character, printStats);
     addConcreteLearnedMagicForPrint(character, printStats);
@@ -43,25 +43,25 @@ public class MagicEncoder implements ContentEncoder {
   private final MagicTableEncoder tableEncoder;
   private final IResources resources;
 
-  public MagicEncoder(IResources resources, List<IMagicStats> printMagic) {
+  public MagicEncoder(IResources resources) {
     this.resources = resources;
-    this.tableEncoder = new MagicTableEncoder(resources, printMagic, false);
+    this.tableEncoder = new MagicTableEncoder(resources, false);
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     float top = bounds.getMinY();
     Bounds remainingBounds = new Bounds(bounds.getMinX(), top, bounds.getWidth(), bounds.getMaxY() - top);
-    tableEncoder.encodeTable(graphics, reportContent, remainingBounds);
+    tableEncoder.encodeTable(graphics, reportSession, remainingBounds);
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Charms");
   }
 }

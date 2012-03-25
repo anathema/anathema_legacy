@@ -4,7 +4,7 @@ import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.combat.AbstractCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -15,20 +15,20 @@ import net.sf.anathema.character.reporting.second.content.combat.CombatStatsCont
 public class CombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
 
   @Override
-  protected void addFirstCell(SheetGraphics graphics, ReportContent reportContent, PdfPTable table) {
-    CombatStatsContent content = reportContent.createSubContent(CombatStatsContent.class);
+  protected void addFirstCell(SheetGraphics graphics, ReportSession reportSession, PdfPTable table) {
+    CombatStatsContent content = reportSession.createContent(CombatStatsContent.class);
     table.addCell(new TableCell(createCombatAttackList(graphics, content), Rectangle.BOX));
   }
 
   @Override
-  protected void addSecondCell(SheetGraphics graphics, ReportContent reportContent, PdfPTable table) {
-    CombatStatsContent content = reportContent.createSubContent(CombatStatsContent.class);
+  protected void addSecondCell(SheetGraphics graphics, ReportSession reportSession, PdfPTable table) {
+    CombatStatsContent content = reportSession.createContent(CombatStatsContent.class);
     addAsCell(graphics, table, content.getKnockdownAndStunningTexts());
   }
 
   @Override
-  protected void addThirdCell(SheetGraphics graphics, ReportContent reportContent, PdfPTable table) {
-    CombatStatsContent content = reportContent.createSubContent(CombatStatsContent.class);
+  protected void addThirdCell(SheetGraphics graphics, ReportSession reportSession, PdfPTable table) {
+    CombatStatsContent content = reportSession.createContent(CombatStatsContent.class);
     table.addCell(createCommonActionsTable(graphics, content));
   }
 

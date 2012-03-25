@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
@@ -23,15 +23,15 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
     String joinLabel = resources.getString("Sheet.Combat.JoinBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
     String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
-    IBeastformModel additionalModel = (IBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
+    IBeastformModel additionalModel = (IBeastformModel) reportSession.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
-    ICharacterType characterType = reportContent.getCharacter().getTemplate().getTemplateType().getCharacterType();
-    IEquipmentModifiers equipment = reportContent.getCharacter().getEquipmentModifiers();
+    ICharacterType characterType = reportSession.getCharacter().getTemplate().getTemplateType().getCharacterType();
+    IEquipmentModifiers equipment = reportSession.getCharacter().getEquipmentModifiers();
 
     int joinBattle = CharacterUtilties.getJoinBattle(traitCollection, equipment);
     int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, equipment);
@@ -57,12 +57,12 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Lunar.WarForm.CombatValues");
   }
 }

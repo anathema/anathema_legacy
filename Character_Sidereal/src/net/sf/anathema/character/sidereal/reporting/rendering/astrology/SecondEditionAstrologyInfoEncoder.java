@@ -1,7 +1,7 @@
 package net.sf.anathema.character.sidereal.reporting.rendering.astrology;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -19,7 +19,7 @@ public class SecondEditionAstrologyInfoEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent report, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession report, Bounds bounds) throws DocumentException {
     int height = (int) SPACING;
     height += (int) new SecondEditionAstrologyTableEncoder(resources).encodeTable(graphics, report, getBounds(bounds, 0, height)) + SPACING + 1;
     height += (int) new DestinyTypeTableEncoder(resources).encodeTable(graphics, report, getBounds(bounds, 0, height)) + SPACING + 2;
@@ -40,12 +40,12 @@ public class SecondEditionAstrologyInfoEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Sidereal.Astrology");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

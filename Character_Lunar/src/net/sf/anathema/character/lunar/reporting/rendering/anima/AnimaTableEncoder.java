@@ -4,7 +4,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.ColumnDescriptor;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
@@ -24,8 +24,8 @@ public class AnimaTableEncoder extends net.sf.anathema.character.reporting.pdf.r
   }
 
   @Override
-  protected void addAnimaRow(SheetGraphics graphics, PdfPTable table, int level, ReportContent content, String descriptionPrefix) {
-    table.addCell(createRangeCell(graphics, level, content.getCharacter()));
+  protected void addAnimaRow(SheetGraphics graphics, PdfPTable table, int level, ReportSession session, String descriptionPrefix) {
+    table.addCell(createRangeCell(graphics, level, session.getCharacter()));
     table.addCell(createDescriptionCell(graphics, level, descriptionPrefix));
     table.addCell(createFormCell(graphics, level));
     table.addCell(createStealthCell(graphics, level));

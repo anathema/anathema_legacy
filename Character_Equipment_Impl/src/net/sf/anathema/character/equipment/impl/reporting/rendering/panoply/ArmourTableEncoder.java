@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.impl.reporting.content.ArmourContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.armour.IArmourStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.rendering.EquipmentTableEncoder;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -17,9 +17,9 @@ public class ArmourTableEncoder extends EquipmentTableEncoder<IArmourStats, Armo
   }
 
   @Override
-  protected PdfPTable createTable(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
-    PdfPTable armourTable = super.createTable(graphics, reportContent, bounds);
-    ArmourContent content = createContent(reportContent);
+  protected PdfPTable createTable(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
+    PdfPTable armourTable = super.createTable(graphics, reportSession, bounds);
+    ArmourContent content = createContent(reportSession);
     IArmourStats totalArmour = content.getTotalArmour();
     IStatsGroup<IArmourStats>[] groups = content.createStatsGroups();
     for (int index = 0; index < groups.length; index++) {

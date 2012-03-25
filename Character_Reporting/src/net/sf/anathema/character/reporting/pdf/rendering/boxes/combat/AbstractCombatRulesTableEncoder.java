@@ -6,7 +6,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.general.QualifiedText;
 import net.sf.anathema.character.reporting.pdf.content.general.TextType;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -14,25 +14,25 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 
-public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncoder<ReportContent> {
+public abstract class AbstractCombatRulesTableEncoder extends AbstractTableEncoder<ReportSession> {
 
   @Override
-  protected final PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) {
+  protected final PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) {
     float cellPadding = 0.05f;
     PdfPTable table = new PdfPTable(new float[]{1f, cellPadding, 1.1f, cellPadding, 1f});
-    addFirstCell(graphics, content, table);
+    addFirstCell(graphics, session, table);
     table.addCell(createSpaceCell(graphics));
-    addSecondCell(graphics, content, table);
+    addSecondCell(graphics, session, table);
     table.addCell(createSpaceCell(graphics));
-    addThirdCell(graphics, content, table);
+    addThirdCell(graphics, session, table);
     return table;
   }
 
-  protected abstract void addFirstCell(SheetGraphics graphics, ReportContent reportContent, PdfPTable table);
+  protected abstract void addFirstCell(SheetGraphics graphics, ReportSession reportSession, PdfPTable table);
 
-  protected abstract void addSecondCell(SheetGraphics graphics, ReportContent reportContent, PdfPTable table);
+  protected abstract void addSecondCell(SheetGraphics graphics, ReportSession reportSession, PdfPTable table);
 
-  protected abstract void addThirdCell(SheetGraphics graphics, ReportContent reportContent, PdfPTable table);
+  protected abstract void addThirdCell(SheetGraphics graphics, ReportSession reportSession, PdfPTable table);
 
   private PdfPCell createSpaceCell(SheetGraphics graphics) {
     return new TableCell(new Phrase(" ", graphics.createTextFont()), Rectangle.NO_BORDER); //$NON-NLS-1$

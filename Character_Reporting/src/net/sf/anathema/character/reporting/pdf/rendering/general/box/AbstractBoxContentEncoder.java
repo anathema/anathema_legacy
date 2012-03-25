@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
 
 public abstract class AbstractBoxContentEncoder<C extends SubBoxContent> implements ContentEncoder {
@@ -12,16 +12,16 @@ public abstract class AbstractBoxContentEncoder<C extends SubBoxContent> impleme
   }
 
   @Override
-  public final boolean hasContent(ReportContent content) {
-    return createContent(content).hasContent();
+  public final boolean hasContent(ReportSession session) {
+    return createContent(session).hasContent();
   }
 
   @Override
-  public String getHeader(ReportContent content) {
-    return createContent(content).getHeader();
+  public String getHeader(ReportSession session) {
+    return createContent(session).getHeader();
   }
 
-  protected final C createContent(ReportContent content) {
-    return content.createSubContent(contentClass);
+  protected final C createContent(ReportSession session) {
+    return session.createContent(contentClass);
   }
 }

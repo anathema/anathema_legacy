@@ -2,7 +2,7 @@ package net.sf.anathema.character.intimacies.reporting;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.intimacies.reporting.content.ExtendedIntimaciesContent;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -21,8 +21,8 @@ public class ExtendedIntimaciesEncoder extends AbstractBoxContentEncoder<Extende
     super(ExtendedIntimaciesContent.class);
   }
 
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    ExtendedIntimaciesContent content = createContent(reportContent);
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    ExtendedIntimaciesContent content = createContent(reportSession);
     float yPosition = bounds.getMaxY() - LINE_HEIGHT;
     for (NamedValue printIntimacy : content.getPrintIntimacies()) {
       if (yPosition < bounds.getMinY()) {

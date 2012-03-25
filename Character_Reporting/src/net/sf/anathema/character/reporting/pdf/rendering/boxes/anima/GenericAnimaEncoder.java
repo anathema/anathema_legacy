@@ -6,7 +6,7 @@ import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineEncoder;
@@ -32,13 +32,13 @@ public class GenericAnimaEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     float powerHeight = bounds.getHeight() - AnimaTableEncoder.TABLE_HEIGHT - IVoidStateFormatConstants.TEXT_PADDING / 2f;
     Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getMaxY() - powerHeight, bounds.getWidth(), powerHeight);
-    encodeAnimaPowers(graphics, reportContent.getCharacter(), animaPowerBounds);
+    encodeAnimaPowers(graphics, reportSession.getCharacter(), animaPowerBounds);
 
     Bounds animaTableBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), AnimaTableEncoder.TABLE_HEIGHT);
-    tableEncoder.encodeTable(graphics, reportContent, animaTableBounds);
+    tableEncoder.encodeTable(graphics, reportSession, animaTableBounds);
   }
 
   private void encodeAnimaPowers(SheetGraphics graphics, IGenericCharacter character, Bounds bounds) throws DocumentException {
@@ -61,12 +61,12 @@ public class GenericAnimaEncoder implements ContentEncoder {
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Anima");
   }
 }

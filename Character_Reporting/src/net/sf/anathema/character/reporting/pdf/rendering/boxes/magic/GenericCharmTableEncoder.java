@@ -18,7 +18,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
@@ -32,7 +32,7 @@ import net.sf.anathema.lib.resources.IResources;
 import java.util.Arrays;
 import java.util.List;
 
-public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent> {
+public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession> {
 
   private final IResources resources;
 
@@ -40,23 +40,23 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportContent
     this.resources = resources;
   }
 
-  public float getRequestedHeight(SheetGraphics graphics, float width, ReportContent reportContent) {
-    EncodingMetrics metrics = EncodingMetrics.From(graphics, reportContent);
+  public float getRequestedHeight(SheetGraphics graphics, float width, ReportSession reportSession) {
+    EncodingMetrics metrics = EncodingMetrics.From(graphics, reportSession);
     return new PreferredGenericCharmHeight().getValue(metrics, width);
   }
 
-  private GenericCharmContent createContent(ReportContent content) {
-    return content.createSubContent(GenericCharmContent.class);
+  private GenericCharmContent createContent(ReportSession session) {
+    return session.createContent(GenericCharmContent.class);
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
-    return createContent(content).hasContent() && GenericCharmUtilities.hasDisplayedGenericCharms(content);
+  public boolean hasContent(ReportSession session) {
+    return createContent(session).hasContent() && GenericCharmUtilities.hasDisplayedGenericCharms(session);
   }
 
   @Override
-  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    IGenericCharacter character = content.getCharacter();
+  protected PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
+    IGenericCharacter character = session.getCharacter();
     PdfContentByte directContent = graphics.getDirectContent();
     List<ITraitType> traits = GenericCharmUtilities.getGenericCharmTraits(character);
     Font font = graphics.createTableFont();

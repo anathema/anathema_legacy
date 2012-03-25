@@ -6,7 +6,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTransformer;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -34,8 +34,8 @@ public class ExtendedComboEncoder {
     this.boxEncoder = new PdfBoxEncoder();
   }
 
-  public float encodeCombos(SheetGraphics graphics, ReportContent content, Bounds maxBounds) throws DocumentException {
-    List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(content.getCharacter().getCombos()));
+  public float encodeCombos(SheetGraphics graphics, ReportSession session, Bounds maxBounds) throws DocumentException {
+    List<IGenericCombo> combos = new ArrayList<IGenericCombo>(Arrays.asList(session.getCharacter().getCombos()));
     return encodeCombos(graphics, combos, maxBounds, false);
   }
 

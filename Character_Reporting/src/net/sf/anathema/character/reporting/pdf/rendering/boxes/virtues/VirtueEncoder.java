@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.content.virtues.VirtueContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -18,8 +18,8 @@ public class VirtueEncoder extends AbstractBoxContentEncoder<VirtueContent> {
     super(VirtueContent.class);
   }
 
-  public void encode(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    VirtueContent virtueContent = createContent(content);
+  public void encode(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
+    VirtueContent virtueContent = createContent(session);
     encodeVirtues(graphics, bounds, virtueContent);
   }
 

@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -29,8 +29,8 @@ public class PdfInitiationEncoder implements IVariableContentEncoder {
   }
 
   @Override
-  public float getRequestedHeight(SheetGraphics graphics, ReportContent content, float width) {
-    IGenericCharacter character = content.getCharacter();
+  public float getRequestedHeight(SheetGraphics graphics, ReportSession session, float width) {
+    IGenericCharacter character = session.getCharacter();
     ISpellMagicTemplate spellMagicTemplate = character.getTemplate().getMagicTemplate().getSpellMagic();
     ICharm[] knownCharms = character.getLearnedCharms();
 
@@ -48,9 +48,9 @@ public class PdfInitiationEncoder implements IVariableContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    ISpellMagicTemplate spellMagicTemplate = reportContent.getCharacter().getTemplate().getMagicTemplate().getSpellMagic();
-    ICharm[] knownCharms = reportContent.getCharacter().getLearnedCharms();
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    ISpellMagicTemplate spellMagicTemplate = reportSession.getCharacter().getTemplate().getMagicTemplate().getSpellMagic();
+    ICharm[] knownCharms = reportSession.getCharacter().getLearnedCharms();
 
     Phrase phrase = new Phrase();
     for (CircleType circle : CircleType.values()) {
@@ -76,12 +76,12 @@ public class PdfInitiationEncoder implements IVariableContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Initiations");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     // TODO: Implement!
     return true;
   }

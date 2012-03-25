@@ -3,7 +3,7 @@ package net.sf.anathema.character.sidereal.reporting.rendering;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -25,14 +25,14 @@ public class StandingEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     int yPosition = (int) (bounds.getMaxY() - lineHeight);
     graphics.drawLabelledContent(getLabel("Label.Allegiance"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    int salary = getBackground(reportContent.getCharacter(), SiderealCharacterModule.BACKGROUND_ID_SALARY);
+    int salary = getBackground(reportSession.getCharacter(), SiderealCharacterModule.BACKGROUND_ID_SALARY);
     yPosition -= smallTraitEncoder.encodeWithText(graphics, resources.getString("Sheet.Sidereal.Standing.Salary"), //$NON-NLS-1$
             new Position(bounds.x, yPosition), bounds.width, salary, 5);
-    int manse = getBackground(reportContent.getCharacter(), SiderealCharacterModule.BACKGROUND_ID_CELESTIAL_MANSE);
+    int manse = getBackground(reportSession.getCharacter(), SiderealCharacterModule.BACKGROUND_ID_CELESTIAL_MANSE);
     smallTraitEncoder.encodeWithText(graphics, resources.getString("Sheet.Sidereal.Standing.Manse"), new Position( //$NON-NLS-1$
             bounds.x, yPosition), bounds.width, manse, 5);
   }
@@ -48,7 +48,7 @@ public class StandingEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Sidereal.Standing");
   }
 
@@ -57,7 +57,7 @@ public class StandingEncoder implements ContentEncoder {
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

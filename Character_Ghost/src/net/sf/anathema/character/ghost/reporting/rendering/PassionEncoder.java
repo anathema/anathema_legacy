@@ -2,7 +2,7 @@ package net.sf.anathema.character.ghost.reporting.rendering;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.ghost.reporting.content.GhostPassionContent;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.general.NamedValue;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -18,8 +18,8 @@ public class PassionEncoder extends AbstractBoxContentEncoder<GhostPassionConten
     super(GhostPassionContent.class);
   }
 
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    GhostPassionContent content = createContent(reportContent);
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    GhostPassionContent content = createContent(reportSession);
     float groupSpacing = traitEncoder.getTraitHeight() / 2;
     float x = bounds.x;
     float y = bounds.getMaxY() - 2 * groupSpacing;

@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfTemplate;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -21,10 +21,10 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f), bounds.height);
     ITableEncoder tableEncoder = createTableEncoder();
-    tableEncoder.encodeTable(graphics, reportContent, tableBounds);
+    tableEncoder.encodeTable(graphics, reportSession, tableBounds);
     float textX = tableBounds.getMaxX() + IVoidStateFormatConstants.TEXT_PADDING;
     Bounds textBounds = new Bounds(textX, bounds.y, bounds.x + bounds.width - textX, bounds.height - 2);
     encodeText(graphics, textBounds);
@@ -105,12 +105,12 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.MovementHealth");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

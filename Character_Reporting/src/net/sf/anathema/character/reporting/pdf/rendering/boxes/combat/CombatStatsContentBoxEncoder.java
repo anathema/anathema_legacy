@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.combat;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IContentEncoder;
@@ -24,23 +24,23 @@ public class CombatStatsContentBoxEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    float height = combatValueEncoder.encode(graphics, reportContent, bounds);
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    float height = combatValueEncoder.encode(graphics, reportSession, bounds);
     Bounds ruleBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - height - PADDING);
-    encodeRules(graphics, reportContent, ruleBounds);
+    encodeRules(graphics, reportSession, ruleBounds);
   }
 
-  private void encodeRules(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    combatRulesEncoder.encodeTable(graphics, content, bounds);
+  private void encodeRules(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
+    combatRulesEncoder.encodeTable(graphics, session, bounds);
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Combat");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

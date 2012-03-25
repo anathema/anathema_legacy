@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.pages;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
@@ -22,13 +22,13 @@ public class PageRegistry {
   }
 
   public PageEncoder[] createEncoders(PageConfiguration configuration, EncoderRegistry encoderRegistry, IResources resources,
-                                      ReportContent content) {
-    return findFactory(content).create(encoderRegistry, resources, configuration);
+                                      ReportSession session) {
+    return findFactory(session).create(encoderRegistry, resources, configuration);
   }
 
-  private PageFactory findFactory(ReportContent content) {
+  private PageFactory findFactory(ReportSession session) {
     for (PageFactory factory : createPageFactories()) {
-      BasicContent basicContent = createBasicContent(content);
+      BasicContent basicContent = createBasicContent(session);
       if (factory.supports(basicContent)) {
         return factory;
       }
@@ -45,7 +45,7 @@ public class PageRegistry {
     }
   }
 
-  private BasicContent createBasicContent(ReportContent content) {
-    return content.createSubContent(BasicContent.class);
+  private BasicContent createBasicContent(ReportSession session) {
+    return session.createContent(BasicContent.class);
   }
 }

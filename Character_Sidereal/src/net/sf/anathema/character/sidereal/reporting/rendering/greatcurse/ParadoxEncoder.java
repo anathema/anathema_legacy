@@ -5,7 +5,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -27,8 +27,8 @@ public class ParadoxEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) reportSession.getCharacter().getAdditionalModel(
             SiderealParadoxTemplate.ID)).getVirtueFlaw();
     Bounds textBounds = new VirtueFlawBoxEncoder().encode(graphics, bounds,
             virtueFlaw.getLimitTrait().getCurrentValue());
@@ -46,12 +46,12 @@ public class ParadoxEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.GreatCurse.Sidereal");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

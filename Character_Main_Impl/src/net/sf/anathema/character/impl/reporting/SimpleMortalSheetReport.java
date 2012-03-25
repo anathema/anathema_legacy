@@ -8,12 +8,12 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.impl.generic.GenericDescription;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.simple.MortalPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
@@ -57,8 +57,8 @@ public class SimpleMortalSheetReport extends AbstractPdfReport {
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       PageEncoder encoder = new MortalPageEncoder(getEncoderRegistry(), resources, configuration);
       SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
-      ReportContent content = new ReportContent(getContentRegistry(), character, description);
-      encoder.encode(document, graphics, content);
+      ReportSession session = new ReportSession(getContentRegistry(), character, description);
+      encoder.encode(document, graphics, session);
     } catch (Exception e) {
       throw new ReportException(e);
     }

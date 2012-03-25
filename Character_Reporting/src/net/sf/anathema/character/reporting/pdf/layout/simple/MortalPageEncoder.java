@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Body;
 import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
@@ -38,8 +38,8 @@ public class MortalPageEncoder implements PageEncoder {
   }
 
   @Override
-  public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
-    SheetPage page = createPage(graphics, content);
+  public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
+    SheetPage page = createPage(graphics, session);
     Body body = createBody();
     LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).spanningTwoColumns().now();
     LayoutField experience = page.place(EXPERIENCE).rightOf(personalInfo).withSameHeight().now();
@@ -62,8 +62,8 @@ public class MortalPageEncoder implements PageEncoder {
     return new Body(configuration, FIXED_CONTENT_HEIGHT);
   }
 
-  private SheetPage createPage(SheetGraphics graphics, ReportContent content) {
-    EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
+  private SheetPage createPage(SheetGraphics graphics, ReportSession session) {
+    EncodingMetrics metrics = EncodingMetrics.From(graphics, session);
     RegisteredEncoderList registeredEncoderList = new RegisteredEncoderList(resources, encoders);
     return new SheetPage(registeredEncoderList, metrics, graphics);
   }

@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -19,14 +19,14 @@ public class Extended2ndEditionMovementEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Movement");
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     ITableEncoder tableEncoder = createTableEncoder();
-    tableEncoder.encodeTable(graphics, reportContent, bounds);
+    tableEncoder.encodeTable(graphics, reportSession, bounds);
   }
 
   protected final IResources getResources() {
@@ -42,7 +42,7 @@ public class Extended2ndEditionMovementEncoder implements ContentEncoder {
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

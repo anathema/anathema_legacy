@@ -4,7 +4,7 @@ import com.itextpdf.text.Anchor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -31,7 +31,7 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
     this.boxEncoder = new PdfBoxEncoder();
   }
 
-  public abstract void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException;
+  public abstract void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException;
 
   protected void encodeCopyright(SheetGraphics graphics) throws DocumentException {
     float lineHeight = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 2f;
@@ -113,28 +113,28 @@ public abstract class AbstractPdfPageEncoder implements PageEncoder {
     return 0;
   }
 
-  protected float encodeFixedBox(SheetGraphics graphics, ReportContent content, ContentEncoder encoder, int column, int span, float distanceFromTop, float height) throws DocumentException {
-    getBoxEncoder().encodeBox(content, graphics, encoder, calculateBounds(column, span, distanceFromTop, height));
+  protected float encodeFixedBox(SheetGraphics graphics, ReportSession session, ContentEncoder encoder, int column, int span, float distanceFromTop, float height) throws DocumentException {
+    getBoxEncoder().encodeBox(session, graphics, encoder, calculateBounds(column, span, distanceFromTop, height));
     return height;
   }
 
-  protected float encodeFixedBoxBottom(SheetGraphics graphics, ReportContent content, ContentEncoder encoder, int column, int span, float bottom, float height) throws DocumentException {
-    getBoxEncoder().encodeBox(content, graphics, encoder, calculateBounds(column, span, bottom - height, height));
+  protected float encodeFixedBoxBottom(SheetGraphics graphics, ReportSession session, ContentEncoder encoder, int column, int span, float bottom, float height) throws DocumentException {
+    getBoxEncoder().encodeBox(session, graphics, encoder, calculateBounds(column, span, bottom - height, height));
     return height;
   }
 
-  protected float encodeVariableBox(SheetGraphics graphics, ReportContent content, IVariableContentEncoder encoder, int column, int span, float distanceFromTop, float maxHeight) throws DocumentException {
-    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(graphics, encoder, content, getWidth(column, span)));
-    return encodeFixedBox(graphics, content, encoder, column, span, distanceFromTop, height);
+  protected float encodeVariableBox(SheetGraphics graphics, ReportSession session, IVariableContentEncoder encoder, int column, int span, float distanceFromTop, float maxHeight) throws DocumentException {
+    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(graphics, encoder, session, getWidth(column, span)));
+    return encodeFixedBox(graphics, session, encoder, column, span, distanceFromTop, height);
   }
 
-  protected float encodeVariableBoxBottom(SheetGraphics graphics, ReportContent content, IVariableContentEncoder encoder, int column, int span, float bottom, float maxHeight) throws DocumentException {
-    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(graphics, encoder, content, getWidth(column, span)));
-    return encodeFixedBoxBottom(graphics, content, encoder, column, span, bottom, height);
+  protected float encodeVariableBoxBottom(SheetGraphics graphics, ReportSession session, IVariableContentEncoder encoder, int column, int span, float bottom, float maxHeight) throws DocumentException {
+    float height = Math.min(maxHeight, boxEncoder.getRequestedHeight(graphics, encoder, session, getWidth(column, span)));
+    return encodeFixedBoxBottom(graphics, session, encoder, column, span, bottom, height);
   }
 
-  protected float encodeNotes(SheetGraphics graphics, ReportContent content, String title, int column, int span, float distanceFromTop, float height, int textColumns) throws DocumentException {
+  protected float encodeNotes(SheetGraphics graphics, ReportSession session, String title, int column, int span, float distanceFromTop, float height, int textColumns) throws DocumentException {
     ContentEncoder encoder = new HorizontalLineBoxContentEncoder(textColumns, resources, title);
-    return encodeFixedBox(graphics, content, encoder, column, span, distanceFromTop, height);
+    return encodeFixedBox(graphics, session, encoder, column, span, distanceFromTop, height);
   }
 }

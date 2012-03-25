@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.lunar.reporting.rendering.GiftEncoder;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -33,14 +33,14 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
 
-    IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
-    IBeastformModel additionalModel = (IBeastformModel) reportContent.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
+    IGroupedTraitType[] attributeGroups = reportSession.getCharacter().getTemplate().getAttributeGroups();
+    IBeastformModel additionalModel = (IBeastformModel) reportSession.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
     encodeAttributes(graphics, bounds, attributeGroups, traitCollection);
     encodeNotes(graphics, bounds);
-    encodeMutations(graphics, bounds, reportContent);
+    encodeMutations(graphics, bounds, reportSession);
   }
 
   private void encodeNotes(SheetGraphics graphics, Bounds bounds) {
@@ -62,13 +62,13 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
     graphics.createSimpleColumn(newBounds).withLeading(LINE_HEIGHT).andTextPart(new Phrase(text, font)).encode();
   }
 
-  private void encodeMutations(SheetGraphics graphics, Bounds bounds, ReportContent content) {
+  private void encodeMutations(SheetGraphics graphics, Bounds bounds, ReportSession session) {
     int horizontalSpacing = 15;
     int verticalSpacing = 5;
     Bounds newBounds = new Bounds(bounds.x + bounds.getWidth() * 1 / 2 + horizontalSpacing, bounds.y + verticalSpacing, bounds.getWidth() * 1 / 2 - horizontalSpacing, bounds.height - 2 * verticalSpacing);
     ContentEncoder encoder = new GiftEncoder();
     try {
-      new PdfBoxEncoder().encodeBox(content, graphics, encoder, newBounds);
+      new PdfBoxEncoder().encodeBox(session, graphics, encoder, newBounds);
     } catch (DocumentException e) {
       e.printStackTrace();
     }
@@ -93,12 +93,12 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Lunar.WarForm");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

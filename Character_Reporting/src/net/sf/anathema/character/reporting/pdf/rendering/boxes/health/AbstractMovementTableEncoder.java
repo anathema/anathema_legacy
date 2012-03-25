@@ -6,7 +6,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
@@ -18,7 +18,7 @@ import static com.itextpdf.text.Element.*;
 import static com.itextpdf.text.Rectangle.BOX;
 import static com.itextpdf.text.Rectangle.NO_BORDER;
 
-public abstract class AbstractMovementTableEncoder implements ITableEncoder<ReportContent> {
+public abstract class AbstractMovementTableEncoder implements ITableEncoder<ReportSession> {
   protected static float PADDING = 0.3f;
 
   private final IResources resources;
@@ -29,8 +29,8 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
 
   protected abstract Float[] getMovementColumns();
 
-  public final float encodeTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
-    PdfPTable table = createTable(graphics, content);
+  public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
+    PdfPTable table = createTable(graphics, session);
     table.setWidthPercentage(100);
     graphics.createSimpleColumn(bounds).withElement(table).encode();
     return table.getTotalHeight();
@@ -40,12 +40,12 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
     return character.getTraitCollection();
   }
 
-  protected final PdfPTable createTable(SheetGraphics graphics, ReportContent content) {
+  protected final PdfPTable createTable(SheetGraphics graphics, ReportSession session) {
     float[] columnWidth = createColumnWidth();
     PdfPTable table = new PdfPTable(columnWidth);
     addMovementHeader(graphics, table);
     for (HealthLevelType type : HealthLevelType.values()) {
-      addHealthTypeRows(graphics, table, content.getCharacter(), type);
+      addHealthTypeRows(graphics, table, session.getCharacter(), type);
     }
     return table;
   }
@@ -146,7 +146,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
     return resources;
   }
 
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

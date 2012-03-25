@@ -3,7 +3,7 @@ package net.sf.anathema.character.sidereal.reporting.rendering;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.CellPadding;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
@@ -12,7 +12,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableList;
 import net.sf.anathema.lib.resources.IResources;
 
-public class ScopeTableEncoder extends AbstractTableEncoder<ReportContent> {
+public class ScopeTableEncoder extends AbstractTableEncoder<ReportSession> {
 
   private final IResources resources;
 
@@ -21,7 +21,7 @@ public class ScopeTableEncoder extends AbstractTableEncoder<ReportContent> {
   }
 
   @Override
-  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
+  protected PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     Font font = graphics.createTableFont();
     Font commentFont = graphics.createCommentFont();
     Font boldCommentFont = graphics.createCommentFont();

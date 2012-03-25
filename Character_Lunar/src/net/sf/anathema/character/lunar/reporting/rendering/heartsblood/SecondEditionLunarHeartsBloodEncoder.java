@@ -6,7 +6,7 @@ import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
 import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.*;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -19,7 +19,7 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEncoder<IHeartsBloodStats, ReportContent> implements ContentEncoder {
+public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEncoder<IHeartsBloodStats, ReportSession> implements ContentEncoder {
 
   private final IResources resources;
 
@@ -28,12 +28,12 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    encodeTable(graphics, reportContent, bounds);
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    encodeTable(graphics, reportSession, bounds);
   }
 
-  protected IHeartsBloodStats[] getPrintStats(ReportContent content) {
-    IHeartsBloodModel model = (IHeartsBloodModel) content.getCharacter().getAdditionalModel(HeartsBloodTemplate.TEMPLATE_ID);
+  protected IHeartsBloodStats[] getPrintStats(ReportSession session) {
+    IHeartsBloodModel model = (IHeartsBloodModel) session.getCharacter().getAdditionalModel(HeartsBloodTemplate.TEMPLATE_ID);
     List<IHeartsBloodStats> stats = new ArrayList<IHeartsBloodStats>();
     for (final IAnimalForm form : model.getEntries()) {
       stats.add(new IHeartsBloodStats() {
@@ -68,15 +68,15 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IStatsGroup<IHeartsBloodStats>[] createStatsGroups(ReportContent content) {
+  protected IStatsGroup<IHeartsBloodStats>[] createStatsGroups(ReportSession session) {
     return new IStatsGroup[]{new HeartsBloodNameStatsGroup(resources), new HeartsBloodStrengthStatsGroup(resources), new HeartsBloodDexterityStatsGroup(resources), new HeartsBloodStaminaStatsGroup(resources), new HeartsBloodAppearanceStatsGroup(resources), new HeartsBloodNotesStatsGroup(resources)};
   }
 
   @Override
-  protected void encodeContent(SheetGraphics graphics, PdfPTable table, ReportContent content, Bounds bounds) {
+  protected void encodeContent(SheetGraphics graphics, PdfPTable table, ReportSession session, Bounds bounds) {
     float heightLimit = bounds.height - 3;
-    IHeartsBloodStats[] statSet = getPrintStats(content);
-    IStatsGroup<IHeartsBloodStats>[] statGroups = createStatsGroups(content);
+    IHeartsBloodStats[] statSet = getPrintStats(session);
+    IStatsGroup<IHeartsBloodStats>[] statGroups = createStatsGroups(session);
 
     //boolean encodeLine = true;
     for (IHeartsBloodStats stats : statSet) {
@@ -91,12 +91,12 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Lunar.HeartsBlood");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

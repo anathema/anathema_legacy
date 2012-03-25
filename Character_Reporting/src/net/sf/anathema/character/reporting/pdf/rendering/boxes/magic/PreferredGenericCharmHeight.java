@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.PreferredHeight;
@@ -12,7 +12,7 @@ public class PreferredGenericCharmHeight implements PreferredHeight {
 
   @Override
   public float getValue(EncodingMetrics metrics, float width) {
-    GenericCharmContent content = createContent(metrics.getContent());
+    GenericCharmContent content = createContent(metrics.getSession());
     if (!content.hasContent()) {
       return 0;
     }
@@ -20,7 +20,7 @@ public class PreferredGenericCharmHeight implements PreferredHeight {
   }
 
   private float getPreferredContentHeight(EncodingMetrics metrics) {
-    GenericCharmContent content = createContent(metrics.getContent());
+    GenericCharmContent content = createContent(metrics.getSession());
     float traitHeight = 0;
     for (String traitLabel : content.getTraitLabels()) {
       float height = metrics.getTextMetrics().getTableTextWidth(traitLabel) + PADDING;
@@ -31,7 +31,7 @@ public class PreferredGenericCharmHeight implements PreferredHeight {
     return traitHeight + content.getGenericCharmCount() * IVoidStateFormatConstants.LINE_HEIGHT;
   }
 
-  private GenericCharmContent createContent(ReportContent content) {
-    return content.createSubContent(GenericCharmContent.class);
+  private GenericCharmContent createContent(ReportSession session) {
+    return session.createContent(GenericCharmContent.class);
   }
 }

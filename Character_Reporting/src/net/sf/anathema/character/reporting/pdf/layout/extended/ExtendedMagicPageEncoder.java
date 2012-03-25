@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.initiation.PdfInitiationEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ExtendedComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ExtendedMagicEncoder;
@@ -34,12 +34,12 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
   }
 
   @Override
-  public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
+  public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
     float distanceFromTop = 0;
-    IGenericCharacter character = content.getCharacter();
+    IGenericCharacter character = session.getCharacter();
     // Essence & Willpower
-    float essenceHeight = encodeEssence(graphics, content, distanceFromTop, getContentHeight() - distanceFromTop);
-    float willpowerHeight = encodeWillpower(graphics, content, distanceFromTop, 96.625f);
+    float essenceHeight = encodeEssence(graphics, session, distanceFromTop, getContentHeight() - distanceFromTop);
+    float willpowerHeight = encodeWillpower(graphics, session, distanceFromTop, 96.625f);
     distanceFromTop += calculateBoxIncrement(Math.max(essenceHeight, willpowerHeight));
 
     boolean restartPage = false;
@@ -49,19 +49,19 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     boolean needsMagic = spellTemplate.knowsSorcery(character.getLearnedCharms());
      if (needsMagic) {
       // Right-hand side: Magic
-      encodeMagic(graphics, content, distanceFromTop, getContentHeight() - distanceFromTop);
+      encodeMagic(graphics, session, distanceFromTop, getContentHeight() - distanceFromTop);
 
       // Left-hand side: Magic Sidebars (e.g. Thaumaturgical Degrees), Initiations, Notes
-      float sidebarHeight = encodeSidebars(graphics, content, distanceFromTop, getContentHeight() - distanceFromTop);
+      float sidebarHeight = encodeSidebars(graphics, session, distanceFromTop, getContentHeight() - distanceFromTop);
       if (sidebarHeight != 0) {
         distanceFromTop += calculateBoxIncrement(sidebarHeight);
       }
       float initiationHeight =
-              encodeInitiations(graphics, content, distanceFromTop, getContentHeight() - distanceFromTop);
+              encodeInitiations(graphics, session, distanceFromTop, getContentHeight() - distanceFromTop);
       if (initiationHeight != 0) {
         distanceFromTop += calculateBoxIncrement(initiationHeight);
       }
-      encodeNotes(graphics, content, "EnlightenmentNotes", 1, 1, distanceFromTop, getContentHeight() - distanceFromTop,
+      encodeNotes(graphics, session, "EnlightenmentNotes", 1, 1, distanceFromTop, getContentHeight() - distanceFromTop,
               1);
 
       restartPage = true;
@@ -78,17 +78,17 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
       // Combos, Anima, & Generic Charms
       float animaHeight = 0;
-      if (hasAnima(content)) {
-        animaHeight = encodeAnima(graphics, content, distanceFromTop, 128f);
+      if (hasAnima(session)) {
+        animaHeight = encodeAnima(graphics, session, distanceFromTop, 128f);
       }
-      float comboHeight = encodeCombos(graphics, character, distanceFromTop, animaHeight, hasAnima(content));
+      float comboHeight = encodeCombos(graphics, character, distanceFromTop, animaHeight, hasAnima(session));
       if (comboHeight > 0) {
         distanceFromTop += comboHeight + IVoidStateFormatConstants.PADDING;
       }
 
       if (character.getTemplate().getEdition() == ExaltedEdition.SecondEdition) {
         float genericCharmsHeight =
-                encodeGenericCharms(graphics, content, distanceFromTop, getContentHeight() - distanceFromTop);
+                encodeGenericCharms(graphics, session, distanceFromTop, getContentHeight() - distanceFromTop);
         if (genericCharmsHeight != 0) {
           distanceFromTop += genericCharmsHeight + IVoidStateFormatConstants.PADDING;
         }
@@ -96,26 +96,26 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
 
       // Charms, with overflow pages
       float remainingHeight = getPageConfiguration().getContentHeight() - distanceFromTop;
-      List<IMagicStats> printCharms = ExtendedMagicEncoder.collectPrintCharms(content);
-      encodeCharms(graphics, content, printCharms, distanceFromTop, remainingHeight);
+      List<IMagicStats> printCharms = ExtendedMagicEncoder.collectPrintCharms(session);
+      encodeCharms(graphics, session, printCharms, distanceFromTop, remainingHeight);
       while (!printCharms.isEmpty()) {
         encodeCopyright(graphics);
         document.newPage();
-        encodeCharms(graphics, content, printCharms, 0, getPageConfiguration().getContentHeight());
+        encodeCharms(graphics, session, printCharms, 0, getPageConfiguration().getContentHeight());
       }
       encodeCopyright(graphics);
     }
   }
 
-  private float encodeEssence(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height)
+  private float encodeEssence(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height)
           throws DocumentException {
-    return encodeVariableBox(graphics, content, (IVariableContentEncoder) getPartEncoder().getEssenceEncoder(), 1, 2,
+    return encodeVariableBox(graphics, session, (IVariableContentEncoder) getPartEncoder().getEssenceEncoder(), 1, 2,
             distanceFromTop, height);
   }
 
-  private float encodeWillpower(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height)
+  private float encodeWillpower(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height)
           throws DocumentException {
-    return encodeFixedBox(graphics, content, new ExtendedWillpowerEncoder(), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, session, new ExtendedWillpowerEncoder(), 3, 1, distanceFromTop, height);
   }
 
   private float encodeCombos(SheetGraphics graphics, IGenericCharacter character, float distanceFromTop,
@@ -143,33 +143,33 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     }
   }
 
-  private float encodeAnima(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height)
+  private float encodeAnima(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height)
           throws DocumentException {
-    return encodeFixedBox(graphics, content, getPartEncoder().getAnimaEncoder(content), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, session, getPartEncoder().getAnimaEncoder(session), 3, 1, distanceFromTop, height);
   }
 
-  private float encodeGenericCharms(SheetGraphics graphics, ReportContent content, float distanceFromTop,
+  private float encodeGenericCharms(SheetGraphics graphics, ReportSession session, float distanceFromTop,
           float maxHeight) throws DocumentException {
     IVariableContentEncoder encoder = new GenericCharmEncoder(getResources());
-    if (encoder.hasContent(content)) {
-      return encodeVariableBox(graphics, content, encoder, 1, 3, distanceFromTop, maxHeight);
+    if (encoder.hasContent(session)) {
+      return encodeVariableBox(graphics, session, encoder, 1, 3, distanceFromTop, maxHeight);
     } else {
       return 0f;
     }
   }
 
-  private float encodeMagic(SheetGraphics graphics, ReportContent content, float distanceFromTop, float height)
+  private float encodeMagic(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height)
           throws DocumentException {
-    return encodeFixedBox(graphics, content,
-            new ExtendedMagicEncoder(getResources(), ExtendedMagicEncoder.collectPrintSpells(content),true, "Magic"),
+    return encodeFixedBox(graphics, session,
+            new ExtendedMagicEncoder(getResources(), ExtendedMagicEncoder.collectPrintSpells(session),true, "Magic"),
             2, 2, distanceFromTop, height);
   }
 
-  private float encodeSidebars(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight)
+  private float encodeSidebars(SheetGraphics graphics, ReportSession session, float distanceFromTop, float maxHeight)
           throws DocumentException {
     float height = 0;
     for (IVariableContentEncoder sidebar : getAdditionalMagicSidebarEncoders()) {
-      float sidebarHeight = encodeVariableBox(graphics, content, sidebar, 1, 1, distanceFromTop, maxHeight - height);
+      float sidebarHeight = encodeVariableBox(graphics, session, sidebar, 1, 1, distanceFromTop, maxHeight - height);
       if (sidebarHeight != 0) {
         height += calculateBoxIncrement(sidebarHeight);
         distanceFromTop += calculateBoxIncrement(sidebarHeight);
@@ -188,19 +188,19 @@ public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
     return Collections.emptyList();
   }
 
-  private float encodeInitiations(SheetGraphics graphics, ReportContent content, float distanceFromTop, float maxHeight)
+  private float encodeInitiations(SheetGraphics graphics, ReportSession session, float distanceFromTop, float maxHeight)
           throws DocumentException {
-    return encodeVariableBox(graphics, content, new PdfInitiationEncoder(getResources(), graphics), 1, 1,
+    return encodeVariableBox(graphics, session, new PdfInitiationEncoder(getResources(), graphics), 1, 1,
             distanceFromTop, maxHeight);
   }
 
-  private float encodeCharms(SheetGraphics graphics, ReportContent content, List<IMagicStats> printCharms,
+  private float encodeCharms(SheetGraphics graphics, ReportSession session, List<IMagicStats> printCharms,
           float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, content, new ExtendedMagicEncoder(getResources(), printCharms), 1, 3, distanceFromTop,
+    return encodeFixedBox(graphics, session, new ExtendedMagicEncoder(getResources(), printCharms), 1, 3, distanceFromTop,
             height);
   }
 
-  private boolean hasAnima(ReportContent content) {
-    return getPartEncoder().getAnimaEncoder(content) != null;
+  private boolean hasAnima(ReportSession session) {
+    return getPartEncoder().getAnimaEncoder(session) != null;
   }
 }

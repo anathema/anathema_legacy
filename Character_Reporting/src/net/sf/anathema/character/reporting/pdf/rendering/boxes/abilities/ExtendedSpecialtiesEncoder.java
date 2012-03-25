@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.abilities;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IValuedTraitReference;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -25,11 +25,11 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
-    for (IIdentifiedTraitTypeGroup group : reportContent.getCharacter().getAbilityTypeGroups()) {
+    for (IIdentifiedTraitTypeGroup group : reportSession.getCharacter().getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {
-        Collections.addAll(references, getTraitReferences(reportContent.getCharacter().getSpecialties(traitType), traitType));
+        Collections.addAll(references, getTraitReferences(reportSession.getCharacter().getSpecialties(traitType), traitType));
       }
     }
     IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);
@@ -50,12 +50,12 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return getResources().getString("Sheet.Header.Specialties");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

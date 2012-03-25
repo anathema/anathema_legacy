@@ -1,6 +1,6 @@
 package net.sf.anathema.character.spirit.reporting;
 
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.RegisteredPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
@@ -19,12 +19,12 @@ public class Extended2ndEditionSpiritPartEncoder extends AbstractSecondEditionEx
   }
 
   // TODO: This should be properly edited out, not just nulled out.
-  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
+  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportSession session) {
     return new NullBoxContentEncoder();
   }
 
   @Override
-  public ContentEncoder getAnimaEncoder(ReportContent reportContent) {
+  public ContentEncoder getAnimaEncoder(ReportSession reportSession) {
     return null;
   }
 }

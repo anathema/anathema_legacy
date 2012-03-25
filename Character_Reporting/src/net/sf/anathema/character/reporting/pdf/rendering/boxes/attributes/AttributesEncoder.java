@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -38,11 +38,11 @@ public class AttributesEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    IGroupedTraitType[] attributeGroups = reportContent.getCharacter().getTemplate().getAttributeGroups();
-    IGenericTraitCollection traitCollection = reportContent.getCharacter().getTraitCollection();
-    IMagicStats[] excellencies = getExcellencies(reportContent.getCharacter());
-    encodeAttributes(graphics, reportContent.getCharacter(), bounds, attributeGroups, traitCollection, excellencies);
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    IGroupedTraitType[] attributeGroups = reportSession.getCharacter().getTemplate().getAttributeGroups();
+    IGenericTraitCollection traitCollection = reportSession.getCharacter().getTraitCollection();
+    IMagicStats[] excellencies = getExcellencies(reportSession.getCharacter());
+    encodeAttributes(graphics, reportSession.getCharacter(), bounds, attributeGroups, traitCollection, excellencies);
   }
 
   protected IMagicStats[] getExcellencies(IGenericCharacter character) {
@@ -109,12 +109,12 @@ public class AttributesEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Attributes");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

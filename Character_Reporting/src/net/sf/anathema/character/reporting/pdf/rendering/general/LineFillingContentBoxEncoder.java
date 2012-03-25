@@ -5,7 +5,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
@@ -21,9 +21,9 @@ public class LineFillingContentBoxEncoder<C extends ListSubBoxContent> extends A
     super(contentClass);
   }
 
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     Phrase phrase = new Phrase();
-    addToPhrase(createContent(reportContent), createDefaultFont(graphics), phrase);
+    addToPhrase(createContent(reportSession), createDefaultFont(graphics), phrase);
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 2);
     float yPosition = graphics.createSimpleColumn(textBounds).withLeading(REDUCED_LINE_HEIGHT).andTextPart(phrase).encode().getYLine();
     yPosition -= REDUCED_LINE_HEIGHT;

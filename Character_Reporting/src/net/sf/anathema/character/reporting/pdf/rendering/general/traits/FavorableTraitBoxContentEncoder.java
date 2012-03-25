@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.traits.FavorableTraitContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -34,8 +34,8 @@ public class FavorableTraitBoxContentEncoder<C extends FavorableTraitContent> ex
     return traitEncoder;
   }
 
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    FavorableTraitContent content = createContent(reportContent);
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    FavorableTraitContent content = createContent(reportSession);
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());
     float width = bounds.width;
     float bottom = bounds.getMinY() + IVoidStateFormatConstants.TEXT_PADDING;
@@ -50,7 +50,7 @@ public class FavorableTraitBoxContentEncoder<C extends FavorableTraitContent> ex
     float height = yPosition - bottom;
     for (INamedTraitEncoder encoder : namedTraitEncoders) {
       yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
-      yPosition -= encoder.encode(graphics, reportContent, new Position(position.x, yPosition), width, height);
+      yPosition -= encoder.encode(graphics, reportSession, new Position(position.x, yPosition), width, height);
       height -= IVoidStateFormatConstants.LINE_HEIGHT;
     }
   }

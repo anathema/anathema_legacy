@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.second.rendering.combat;
 
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
@@ -11,8 +11,8 @@ import net.sf.anathema.character.reporting.second.content.combat.CombatStatsCont
 public class CombatValueEncoder implements IContentEncoder {
 
   @Override
-  public float encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
-    CombatStatsContent content = createContent(reportContent);
+  public float encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
+    CombatStatsContent content = createContent(reportSession);
     Position upperLeft = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(4, upperLeft, bounds.width, 3);
     encoder.addLabelledValue(graphics, 0, content.getJoinLabel(), content.getJoinBattle());
@@ -24,7 +24,7 @@ public class CombatValueEncoder implements IContentEncoder {
     return encoder.getHeight();
   }
 
-  private CombatStatsContent createContent(ReportContent content) {
-    return content.createSubContent(CombatStatsContent.class);
+  private CombatStatsContent createContent(ReportSession session) {
+    return session.createContent(CombatStatsContent.class);
   }
 }

@@ -2,7 +2,7 @@ package net.sf.anathema.character.sidereal.reporting.rendering.astrology;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.CellPadding;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
@@ -11,7 +11,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableList;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SecondEditionAstrologyTableEncoder extends AbstractTableEncoder<ReportContent> {
+public class SecondEditionAstrologyTableEncoder extends AbstractTableEncoder<ReportSession> {
 
   private final IResources resources;
 
@@ -20,7 +20,7 @@ public class SecondEditionAstrologyTableEncoder extends AbstractTableEncoder<Rep
   }
 
   @Override
-  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) throws DocumentException {
+  protected PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     Font commentFont = graphics.createCommentFont();
     Font font = graphics.createTableFont();
     TableList list = new TableList(commentFont, new CellPadding(2, 0, 1, 1));

@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.combo.ComboContent;
 import net.sf.anathema.character.reporting.pdf.content.combo.DisplayCombo;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -24,19 +24,19 @@ public class ComboEncoder extends AbstractBoxContentEncoder<ComboContent> {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    encodeCombos(graphics, reportContent, bounds);
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    encodeCombos(graphics, reportSession, bounds);
   }
 
-  public String getHeader(ReportContent reportContent) {
-    return createContent(reportContent).getHeader();
+  public String getHeader(ReportSession reportSession) {
+    return createContent(reportSession).getHeader();
   }
 
-  public float encodeCombos(SheetGraphics graphics, ReportContent reportContent, Bounds maxContentBounds) throws DocumentException {
-    if (!hasContent(reportContent)) {
+  public float encodeCombos(SheetGraphics graphics, ReportSession reportSession, Bounds maxContentBounds) throws DocumentException {
+    if (!hasContent(reportSession)) {
       return 0;
     }
-    ComboContent content = createContent(reportContent);
+    ComboContent content = createContent(reportSession);
     SimpleColumn column = graphics.createSimpleColumn(maxContentBounds).withLeading(LINE_HEIGHT).get();
     addCombos(graphics, column, content);
     return (maxContentBounds.height - column.getYLine()) + PADDING;

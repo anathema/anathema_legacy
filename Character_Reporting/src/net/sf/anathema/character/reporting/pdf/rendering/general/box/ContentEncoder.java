@@ -1,15 +1,15 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.box;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public interface ContentEncoder {
 
-  void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException;
+  void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException;
 
-  boolean hasContent(ReportContent content);
+  boolean hasContent(ReportSession session);
 
-  String getHeader(ReportContent content);
+  String getHeader(ReportSession session);
 }

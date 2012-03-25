@@ -2,7 +2,7 @@ package net.sf.anathema.character.lunar.reporting.rendering.knacks;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -14,8 +14,8 @@ public class KnackEncoder extends AbstractBoxContentEncoder<KnackContent> {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    KnackContent knackContent = createContent(reportContent);
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    KnackContent knackContent = createContent(reportSession);
     KnackTableEncoder encoder = new KnackTableEncoder();
     encoder.encodeTable(graphics, knackContent, bounds);
   }

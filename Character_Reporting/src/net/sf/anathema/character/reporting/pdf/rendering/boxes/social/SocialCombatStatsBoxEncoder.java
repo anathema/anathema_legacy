@@ -8,7 +8,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
@@ -29,15 +29,15 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    IEquipmentModifiers equipment = reportContent.getCharacter().getEquipmentModifiers();
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    IEquipmentModifiers equipment = reportSession.getCharacter().getEquipmentModifiers();
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height);
-    float valueHeight = encodeValues(graphics, valueBounds, reportContent.getCharacter().getTraitCollection(), equipment);
+    float valueHeight = encodeValues(graphics, valueBounds, reportSession.getCharacter().getTraitCollection(), equipment);
     Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
 
     ITableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources);
-    float attackHeight = tableEncoder.encodeTable(graphics, reportContent, attackTableBounds);
+    float attackHeight = tableEncoder.encodeTable(graphics, reportSession, attackTableBounds);
     Bounds actionBounds = new Bounds(bounds.x, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
     encodeActionTable(graphics, actionBounds);
     final float center = bounds.x + valueWidth / 2f;
@@ -137,12 +137,12 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.SocialCombat");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

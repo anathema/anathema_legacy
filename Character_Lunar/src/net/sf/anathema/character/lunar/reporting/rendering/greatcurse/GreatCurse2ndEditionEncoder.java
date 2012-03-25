@@ -9,7 +9,7 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.model.ILunarVirtueFlaw;
 import net.sf.anathema.character.lunar.virtueflaw.presenter.ILunarVirtueFlawModel;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtueflaw.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -30,16 +30,16 @@ public class GreatCurse2ndEditionEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.GreatCurse.Lunar");
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     Font nameFont = createNameFont(graphics.getBaseFont());
     Font font = createFont(graphics.getBaseFont());
     float leading = REDUCED_LINE_HEIGHT;
-    ILunarVirtueFlaw virtueFlaw = ((ILunarVirtueFlawModel) reportContent.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
+    ILunarVirtueFlaw virtueFlaw = ((ILunarVirtueFlawModel) reportSession.getCharacter().getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     Bounds textBounds = traitEncoder.encode(graphics, bounds, virtueFlaw.getLimitTrait().getCurrentValue());
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
@@ -91,7 +91,7 @@ public class GreatCurse2ndEditionEncoder implements ContentEncoder {
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

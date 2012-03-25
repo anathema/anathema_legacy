@@ -4,7 +4,7 @@ import net.sf.anathema.character.lunar.reporting.layout.Lunar2ndEditionAdditiona
 import net.sf.anathema.character.lunar.reporting.rendering.anima.AnimaEncoderFactory;
 import net.sf.anathema.character.lunar.reporting.rendering.greatcurse.GreatCurse2ndEditionEncoder;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.RegisteredPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
@@ -23,13 +23,13 @@ public class Extended2ndEditionLunarPartEncoder extends AbstractSecondEditionExa
     super(resources);
   }
 
-  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportContent content) {
+  public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportSession session) {
     return new GreatCurse2ndEditionEncoder(getResources());
   }
 
   @Override
-  public ContentEncoder getAnimaEncoder(ReportContent reportContent) {
-    BasicContent content = reportContent.createSubContent(BasicContent.class);
+  public ContentEncoder getAnimaEncoder(ReportSession reportSession) {
+    BasicContent content = reportSession.createContent(BasicContent.class);
     return new AnimaEncoderFactory().create(getResources(), content);
   }
 

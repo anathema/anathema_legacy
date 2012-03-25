@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -34,8 +34,8 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) {
-    tellMDV = hasTBA(reportContent.getCharacter()) ? 8 : 12;
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
+    tellMDV = hasTBA(reportSession.getCharacter()) ? 8 : 12;
 
     int offsetX = 0, offsetY = isHorizontal ? 0 : 5;
     font = graphics.createTableFont();
@@ -48,7 +48,7 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
 
     try {
       offsetY += writePowerNotes(graphics, "Shapeshifting", bounds, offsetX, offsetY);
-      if (!reportContent.getCharacter().getTemplate().getTemplateType().equals(castelessType)) {
+      if (!reportSession.getCharacter().getTemplate().getTemplateType().equals(castelessType)) {
         offsetY += writePowerNotes(graphics, "Tattoos", bounds, offsetX, offsetY);
       }
 
@@ -94,12 +94,12 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Lunar.Powers");
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

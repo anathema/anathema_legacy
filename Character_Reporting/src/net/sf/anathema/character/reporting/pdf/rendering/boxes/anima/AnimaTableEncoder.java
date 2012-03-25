@@ -8,14 +8,14 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.*;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
-public class AnimaTableEncoder extends AbstractTableEncoder<ReportContent> {
+public class AnimaTableEncoder extends AbstractTableEncoder<ReportSession> {
 
   public final static float TABLE_HEIGHT = 58f;
 
@@ -43,23 +43,23 @@ public class AnimaTableEncoder extends AbstractTableEncoder<ReportContent> {
   }
 
   @Override
-  protected PdfPTable createTable(SheetGraphics graphics, ReportContent content, Bounds bounds) {
+  protected PdfPTable createTable(SheetGraphics graphics, ReportSession session, Bounds bounds) {
     ColumnDescriptor[] columns = getColumns();
     PdfPTable table = new PdfPTable(getColumnWidths(columns));
     table.setWidthPercentage(100);
     for (ColumnDescriptor column : columns) {
       table.addCell(createHeaderCell(graphics, getString(column.getHeaderKey())));
     }
-    ICharacterType type = content.getCharacter().getTemplate().getTemplateType().getCharacterType();
+    ICharacterType type = session.getCharacter().getTemplate().getTemplateType().getCharacterType();
     String descriptionPrefix = "Sheet.AnimaTable.Description." + type; //$NON-NLS-1$
     for (int index = 0; index < 5; index++) {
-      addAnimaRow(graphics, table, index, content, descriptionPrefix);
+      addAnimaRow(graphics, table, index, session, descriptionPrefix);
     }
     return table;
   }
 
-  protected void addAnimaRow(SheetGraphics graphics, PdfPTable table, int level, ReportContent content, String descriptionPrefix) {
-    table.addCell(createRangeCell(graphics, level, content.getCharacter()));
+  protected void addAnimaRow(SheetGraphics graphics, PdfPTable table, int level, ReportSession session, String descriptionPrefix) {
+    table.addCell(createRangeCell(graphics, level, session.getCharacter()));
     table.addCell(createDescriptionCell(graphics, level, descriptionPrefix));
     table.addCell(createStealthCell(graphics, level));
   }

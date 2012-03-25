@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.AbstractPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.Body;
 import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
@@ -19,6 +19,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
+import java.util.Collections;
 import java.util.List;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.BACKGROUNDS;
@@ -50,15 +51,15 @@ public class SecondPageEncoder extends AbstractPageEncoder {
     return new Body(configuration);
   }
 
-  private SheetPage createPage(SheetGraphics graphics, ReportContent content) {
-    EncodingMetrics metrics = EncodingMetrics.From(graphics, content);
+  private SheetPage createPage(SheetGraphics graphics, ReportSession session) {
+    EncodingMetrics metrics = EncodingMetrics.From(graphics, session);
     RegisteredEncoderList registeredEncoderList = new RegisteredEncoderList(resources, encoders);
     return new SheetPage(registeredEncoderList, metrics, graphics);
   }
 
   @Override
-  public void encode(Document document, SheetGraphics graphics, ReportContent content) throws DocumentException {
-    SheetPage page = createPage(graphics, content);
+  public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
+    SheetPage page = createPage(graphics, session);
     Body body = createBody();
     LayoutField backgrounds = page.place(BACKGROUNDS).atStartOf(body).withHeight(BACKGROUND_HEIGHT).now();
     LayoutField possessions = page.place(POSSESSIONS).rightOf(backgrounds).withSameHeight().now();
@@ -67,23 +68,25 @@ public class SecondPageEncoder extends AbstractPageEncoder {
     LayoutField combos = page.place(COMBOS).below(backgrounds).withPreferredHeight().spanningThreeColumns().now();
     LayoutField genericCharms = page.place(GENERIC_CHARMS).below(combos).withPreferredHeight().spanningThreeColumns().now();
     float distanceFromTop = genericCharms.getBottomFromTop() + PADDING;
-    encodeCharms(document, graphics, content, distanceFromTop);
+    encodeCharms(document, graphics, session, distanceFromTop);
   }
 
-  private void encodeCharms(Document document, SheetGraphics graphics, ReportContent content, float distanceFromTop) throws DocumentException {
+  private void encodeCharms(Document document, SheetGraphics graphics, ReportSession session, float distanceFromTop) throws DocumentException {
     float remainingHeight = configuration.getContentHeight() - distanceFromTop;
-    List<IMagicStats> printMagic = MagicEncoder.collectPrintMagic(content);
-    encodeCharms(graphics, printMagic, distanceFromTop, remainingHeight);
-    while (!printMagic.isEmpty()) {
+    List<IMagicStats> printMagic = MagicEncoder.collectPrintMagic(session);
+    Collections.sort(printMagic);
+    session.addPrintMagic(printMagic);
+    encodeCharms(graphics, session, distanceFromTop, remainingHeight);
+    while (!session.getPrintMagic().isEmpty()) {
       document.newPage();
-      encodeCharms(graphics, printMagic, 0, configuration.getContentHeight());
+      encodeCharms(graphics, session, 0, configuration.getContentHeight());
     }
   }
 
-  private float encodeCharms(SheetGraphics graphics, List<IMagicStats> printMagic, float distanceFromTop, float height) throws DocumentException {
+  private float encodeCharms(SheetGraphics graphics, ReportSession reportSession, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    ContentEncoder encoder = new MagicEncoder(resources, printMagic);
-    boxEncoder.encodeBox(null, graphics, encoder, bounds);
+    ContentEncoder encoder = new MagicEncoder(resources);
+    boxEncoder.encodeBox(reportSession, graphics, encoder, bounds);
     return height;
   }
 }

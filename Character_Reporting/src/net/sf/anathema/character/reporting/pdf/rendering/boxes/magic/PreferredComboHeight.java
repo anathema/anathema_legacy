@@ -14,7 +14,7 @@ public class PreferredComboHeight implements PreferredHeight {
     ComboEncoder encoder = new ComboEncoder();
     Bounds maxContentBounds = metrics.createSimulateBounds(width);
     try {
-      return encoder.encodeCombos(graphics, metrics.getContent(), maxContentBounds);
+      return encoder.encodeCombos(graphics, metrics.getSession(), maxContentBounds);
     } catch (DocumentException e) {
       return 30;
     }

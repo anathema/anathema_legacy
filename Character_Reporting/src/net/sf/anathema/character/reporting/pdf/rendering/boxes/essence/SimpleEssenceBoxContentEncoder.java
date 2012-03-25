@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfContentByte;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -19,8 +19,8 @@ public class SimpleEssenceBoxContentEncoder extends AbstractBoxContentEncoder<Si
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
-    SimpleEssenceContent content = createContent(reportContent);
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    SimpleEssenceContent content = createContent(reportSession);
     SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(graphics.getTextMetrics(), bounds, content.getNumberOfPoolLines());
     encodeEssenceTrait(graphics, content, layout);
     encodePersonalPool(graphics, content, layout);

@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -28,22 +28,22 @@ public class DotBoxContentEncoder implements ContentEncoder {
   }
 
   @Override
-  public String getHeader(ReportContent content) {
+  public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header." + traitHeaderKey);
   }
 
   @Override
-  public void encode(SheetGraphics graphics, ReportContent reportContent, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     float width = bounds.width - IVoidStateFormatConstants.PADDING;
     float leftX = bounds.x + IVoidStateFormatConstants.PADDING / 2f;
-    int value = reportContent.getCharacter().getTraitCollection().getTrait(trait).getCurrentValue();
+    int value = reportSession.getCharacter().getTraitCollection().getTrait(trait).getCurrentValue();
     float entryHeight = Math.max(bounds.height - IVoidStateFormatConstants.PADDING / 2f, traitEncoder.getTraitHeight());
     float yPosition = bounds.getMaxY() - entryHeight;
     traitEncoder.encodeDotsCenteredAndUngrouped(graphics, new Position(leftX, yPosition), width, value, traitMax);
   }
 
   @Override
-  public boolean hasContent(ReportContent content) {
+  public boolean hasContent(ReportSession session) {
     return true;
   }
 }

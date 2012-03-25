@@ -15,7 +15,7 @@ import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.pdf.content.ReportContent;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.Extended2ndEditionFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
@@ -83,8 +83,8 @@ public class ExtendedSheetReport extends AbstractPdfReport {
         } else {
           firstPagePrinted = true;
         }
-        ReportContent content = new ReportContent(getContentRegistry(), character, description);
-        encoder.encode(document, graphics, content);
+        ReportSession session = new ReportSession(getContentRegistry(), character, description);
+        encoder.encode(document, graphics, session);
       }
     } catch (Exception e) {
       throw new ReportException(e);
