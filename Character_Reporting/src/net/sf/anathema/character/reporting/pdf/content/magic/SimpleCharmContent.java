@@ -80,7 +80,7 @@ public class SimpleCharmContent extends AbstractSubBoxContent {
   }
 
   public boolean hasCharmsToPrint() {
-    return session.getPrintMagic().isEmpty();
+    return !session.getPrintMagic().isEmpty();
   }
 
   public String getGroupName(IMagicStats stats) {
