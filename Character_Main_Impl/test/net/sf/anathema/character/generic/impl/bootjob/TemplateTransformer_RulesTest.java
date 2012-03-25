@@ -25,7 +25,7 @@ public class TemplateTransformer_RulesTest {
             {"Dragon-Blooded", "LookshyRevisedSubtype", "LookshySubtype"},
             {"Dragon-Blooded", "LookshyOutcasteRevisedSubtype", "LookshyOutcasteSubtype"},
             {"Dragon-Blooded", "LookshyRealmRevisedSubtype", "LookshyRealmSubtype"},
-            {"Dragon-Blooded", "ThresholdRealmRevisedSubtype", "ThresholdRealmSubtype"},
+            {"Dragon-Blooded", "ThresholdOutcasteRevisedSubtype", "ThresholdOutcasteSubtype"},
             {"Infernal", "RevisedInfernal", "TemplateType.Default"},
             {"Lunar", "CastelessRevised", "Casteless"},
             {"Lunar", "DreamsRevised", "Dreams"},
