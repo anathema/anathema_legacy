@@ -31,15 +31,15 @@ public class SimpleCharmContent extends AbstractSubBoxContent {
     this.character = character;
     this.session = session;
     this.resources = resources;
-    if (!session.knowsPrintMagic()) {
+    if (!session.knowsMnemonic(CharmsAndSorceryMnemonic.class)) {
       List<IMagicStats> printMagic = collectPrintMagic();
       Collections.sort(printMagic);
-      session.addPrintMagic(printMagic);
+      session.storeMnemonic(new CharmsAndSorceryMnemonic(printMagic));
     }
   }
 
   public List<IMagicStats> getPrintMagic() {
-    return session.getPrintMagic();
+    return getMnemonic().getRemainingPrintMagic();
   }
 
   @Override
@@ -69,8 +69,12 @@ public class SimpleCharmContent extends AbstractSubBoxContent {
     }
   }
 
+  private CharmsAndSorceryMnemonic getMnemonic() {
+    return session.retrieveMnemonic(CharmsAndSorceryMnemonic.class);
+  }
+
   public void markAsPrinted(IMagicStats stats) {
-    session.removePrintMagic(stats);
+   getMnemonic().removePrintMagic(stats);
   }
 
   public IStatsGroup<IMagicStats>[] createStatsGroups() {
@@ -80,10 +84,11 @@ public class SimpleCharmContent extends AbstractSubBoxContent {
   }
 
   public boolean hasUnprintedCharms() {
-    return !session.getPrintMagic().isEmpty();
+    return !getPrintMagic().isEmpty();
   }
 
   public String getGroupName(IMagicStats stats) {
     return  stats.getGroupName(resources);
   }
 }
+

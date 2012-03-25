@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ public class ReportSession {
   private final IGenericCharacter character;
   private final IGenericDescription description;
   private final ReportContentRegistry registry;
-  private List<IMagicStats> printMagic;
+  private final List<Object> mnemonics = new ArrayList<Object>();
 
   public ReportSession(ReportContentRegistry registry, IGenericCharacter character, IGenericDescription description) {
     this.registry = registry;
@@ -28,20 +27,21 @@ public class ReportSession {
     return description;
   }
 
-  public boolean knowsPrintMagic() {
-    return printMagic != null;
+  public void storeMnemonic(Object mnemonic) {
+    mnemonics.add(mnemonic);
   }
-
-  public void addPrintMagic(List<IMagicStats> printMagic) {
-    this.printMagic = printMagic;
+  
+  public <T> T retrieveMnemonic(Class<T> mnemonicClass) {
+    for (Object mnemonic : mnemonics) {
+      if (mnemonic.getClass() == mnemonicClass) {
+        return (T) mnemonic;
+      }
+    }
+    return null;
   }
-
-  public void removePrintMagic(IMagicStats printMagic) {
-    this.printMagic.remove(printMagic);
-  }
-
-  public List<IMagicStats> getPrintMagic() {
-    return new ArrayList<IMagicStats>(printMagic);
+  
+  public <T> boolean knowsMnemonic(Class<T> mnemonicClass) {
+    return retrieveMnemonic(mnemonicClass) != null;
   }
 
   public <C extends SubContent> C createContent(Class<C> contentClass) {
