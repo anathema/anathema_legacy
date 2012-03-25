@@ -72,8 +72,10 @@ public class LayoutField {
     return body.contentHeight - getFromTopBelow();
   }
 
-  public float getHeightToBottomFrom(LayoutField parent) {
-    return parent.height - height - PADDING;
+  public float getHeightToBottomFrom(LayoutField alignTo) {
+    float bottomLine = alignTo.getBottomFromTop();
+    float topLine = getBottomFromTop() + PADDING;
+    return bottomLine - topLine;
   }
 
   public int getColumnIndexBelow() {
@@ -95,5 +97,9 @@ public class LayoutField {
 
   public boolean isInvisible() {
     return height == 0;
+  }
+
+  public float getRemainingColumnHeight(float fromTop) {
+    return body.contentHeight - fromTop;
   }
 }

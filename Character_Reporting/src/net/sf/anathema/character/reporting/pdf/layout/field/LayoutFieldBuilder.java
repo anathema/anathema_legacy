@@ -61,12 +61,13 @@ public class LayoutFieldBuilder implements Height, Placement, ColumnSpan {
 
   @Override
   public ColumnSpan fillToBottomOfPage() {
-    return withHeight(alignField.getRemainingColumnHeight());
+    return withHeight(alignField.getRemainingColumnHeight(fromTop));
   }
 
   @Override
   public ColumnSpan alignBottomTo(LayoutField field) {
-    return withHeight(alignField.getHeightToBottomFrom(field));
+    float bottomLine = field.getBottomFromTop();
+    return withHeight(bottomLine - fromTop);
   }
 
   @Override
