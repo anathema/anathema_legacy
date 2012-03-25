@@ -12,7 +12,7 @@ public class ReportSession {
   private final IGenericCharacter character;
   private final IGenericDescription description;
   private final ReportContentRegistry registry;
-  private final List<IMagicStats> printMagic = new ArrayList<IMagicStats>();
+  private List<IMagicStats> printMagic;
 
   public ReportSession(ReportContentRegistry registry, IGenericCharacter character, IGenericDescription description) {
     this.registry = registry;
@@ -28,20 +28,24 @@ public class ReportSession {
     return description;
   }
 
+  public boolean knowsPrintMagic() {
+    return printMagic != null;
+  }
+
   public void addPrintMagic(List<IMagicStats> printMagic) {
-    this.printMagic.addAll(printMagic);
+    this.printMagic = printMagic;
   }
 
   public void removePrintMagic(IMagicStats printMagic) {
     this.printMagic.remove(printMagic);
   }
-  
+
   public List<IMagicStats> getPrintMagic() {
     return new ArrayList<IMagicStats>(printMagic);
   }
 
   public <C extends SubContent> C createContent(Class<C> contentClass) {
     ReportContentFactory<C> factory = registry.getFactory(contentClass);
-    return factory.create(character, description);
+    return factory.create(this, character, description);
   }
 }

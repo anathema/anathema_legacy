@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting.content;
+package net.sf.anathema.character.reporting.pdf.content.magic;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -7,18 +7,18 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.lib.resources.IResources;
 
-@RegisteredReportContent(produces = Weaponry2ndEditionContent.class)
-public class Weaponry2ndEditionContentFactory implements ReportContentFactory<Weaponry2ndEditionContent> {
+@RegisteredReportContent(produces = SimpleCharmContent.class)
+public class SimpleCharmContentFactory implements ReportContentFactory<SimpleCharmContent> {
 
   private IResources resources;
 
-  public Weaponry2ndEditionContentFactory(IResources resources){
-    this.resources = resources;
-  }
+  public SimpleCharmContentFactory(IResources resources) {
+      this.resources = resources;
+    }
 
   @Override
-  public Weaponry2ndEditionContent create(ReportSession session, IGenericCharacter character,
+  public SimpleCharmContent create(ReportSession session, IGenericCharacter character,
           IGenericDescription description) {
-    return new Weaponry2ndEditionContent(resources, character);
+    return new SimpleCharmContent(character, session, resources);
   }
 }

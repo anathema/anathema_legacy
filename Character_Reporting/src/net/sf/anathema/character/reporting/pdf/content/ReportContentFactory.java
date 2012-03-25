@@ -5,5 +5,5 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 
 public interface ReportContentFactory<C extends SubContent> {
 
-  C create(IGenericCharacter character, IGenericDescription description);
+  C create(ReportSession session, IGenericCharacter character, IGenericDescription description);
 }

@@ -95,7 +95,7 @@ public class ExtendedMagicEncoder implements ContentEncoder {
   public ExtendedMagicEncoder(IResources resources, List<IMagicStats> printMagic, boolean sectionHeaderLines,
           String headerKey) {
     this.resources = resources;
-    this.tableEncoder = new MagicTableEncoder(resources, sectionHeaderLines);
+    this.tableEncoder = new MagicTableEncoder(sectionHeaderLines);
     this.headerKey = headerKey;
   }
 

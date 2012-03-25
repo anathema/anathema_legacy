@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredReportContent(produces = KnackContent.class)
@@ -16,7 +17,7 @@ public class KnackContentFactory implements ReportContentFactory<KnackContent> {
   }
 
   @Override
-  public KnackContent create(IGenericCharacter character, IGenericDescription description) {
+  public KnackContent create(ReportSession session, IGenericCharacter character, IGenericDescription description) {
     return new KnackContent(resources, character);
   }
 }

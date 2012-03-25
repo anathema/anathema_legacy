@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredReportContent(produces = GenericCharmContent.class)
@@ -16,7 +17,7 @@ public class GenericCharmContentFactory implements ReportContentFactory<GenericC
   }
 
   @Override
-  public GenericCharmContent create(IGenericCharacter character, IGenericDescription description) {
+  public GenericCharmContent create(ReportSession session, IGenericCharacter character, IGenericDescription description) {
     return new GenericCharmContent(resources, character);
   }
 }

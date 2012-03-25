@@ -20,6 +20,7 @@ public interface EncoderIds {
   String HEALTH_AND_MOVEMENT = "HealthAndMovement";
   String MERITS_AND_FLAWS = "MeritsAndFlaws";
   String MUTATIONS = "Mutations";
+  String CHARMS_AND_SORCERY = "CharmsAndSorcery";
   String NOTES = "Notes";
   String PANOPLY = "Panoply";
   String PERSONAL_INFO = "PersonalInfo";

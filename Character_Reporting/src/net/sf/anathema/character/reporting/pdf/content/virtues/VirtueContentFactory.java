@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredReportContent(produces = VirtueContent.class)
@@ -16,7 +17,7 @@ public class VirtueContentFactory implements ReportContentFactory<VirtueContent>
   }
 
   @Override
-  public VirtueContent create(IGenericCharacter character, IGenericDescription description) {
+  public VirtueContent create(ReportSession session, IGenericCharacter character, IGenericDescription description) {
     return new VirtueContent(resources, character);
   }
 }

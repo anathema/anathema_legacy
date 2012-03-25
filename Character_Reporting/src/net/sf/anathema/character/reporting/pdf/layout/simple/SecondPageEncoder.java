@@ -2,16 +2,17 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.character.reporting.pdf.content.magic.SimpleCharmContent;
 import net.sf.anathema.character.reporting.pdf.layout.AbstractPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.Body;
 import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
+import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.MagicEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.SimpleMagicEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
@@ -19,16 +20,12 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.util.Collections;
-import java.util.List;
-
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.BACKGROUNDS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.COMBOS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.EXPERIENCE;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.GENERIC_CHARMS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.LANGUAGES;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.POSSESSIONS;
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 public class SecondPageEncoder extends AbstractPageEncoder {
 
@@ -67,17 +64,9 @@ public class SecondPageEncoder extends AbstractPageEncoder {
     page.place(EXPERIENCE).below(languages).alignBottomTo(backgrounds).now();
     LayoutField combos = page.place(COMBOS).below(backgrounds).withPreferredHeight().spanningThreeColumns().now();
     LayoutField genericCharms = page.place(GENERIC_CHARMS).below(combos).withPreferredHeight().spanningThreeColumns().now();
-    float distanceFromTop = genericCharms.getBottomFromTop() + PADDING;
-    encodeCharms(document, graphics, session, distanceFromTop);
-  }
-
-  private void encodeCharms(Document document, SheetGraphics graphics, ReportSession session, float distanceFromTop) throws DocumentException {
-    float remainingHeight = configuration.getContentHeight() - distanceFromTop;
-    List<IMagicStats> printMagic = MagicEncoder.collectPrintMagic(session);
-    Collections.sort(printMagic);
-    session.addPrintMagic(printMagic);
-    encodeCharms(graphics, session, distanceFromTop, remainingHeight);
-    while (!session.getPrintMagic().isEmpty()) {
+    page.place(EncoderIds.CHARMS_AND_SORCERY).below(genericCharms).fillToBottomOfPage().spanningThreeColumns().now();
+    SimpleCharmContent charmContent = session.createContent(SimpleCharmContent.class);
+    while (!charmContent.hasCharmsToPrint()) {
       document.newPage();
       encodeCharms(graphics, session, 0, configuration.getContentHeight());
     }
@@ -85,7 +74,7 @@ public class SecondPageEncoder extends AbstractPageEncoder {
 
   private float encodeCharms(SheetGraphics graphics, ReportSession reportSession, float distanceFromTop, float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    ContentEncoder encoder = new MagicEncoder(resources);
+    ContentEncoder encoder = new SimpleMagicEncoder();
     boxEncoder.encodeBox(reportSession, graphics, encoder, bounds);
     return height;
   }

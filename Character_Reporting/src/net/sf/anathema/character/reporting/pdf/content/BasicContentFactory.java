@@ -13,7 +13,7 @@ public class BasicContentFactory implements ReportContentFactory<BasicContent> {
   }
 
   @Override
-  public BasicContent create(IGenericCharacter character, IGenericDescription description) {
+  public BasicContent create(ReportSession session, IGenericCharacter character, IGenericDescription description) {
     return new BasicContent(character);
   }
 }
