@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.module.repository;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -21,8 +22,6 @@ public class TemplateTypeAggregator {
     ICharacterExternalsTemplate[] templates = characterTemplateRegistry.getAllSupportedTemplates(type);
     Map<ITemplateType, TemplateTypeAggregation> aggregations = new LinkedHashMap<ITemplateType, TemplateTypeAggregation>();
     for (ICharacterExternalsTemplate template : templates) {
-      if (template.isLegacy())
-    	  continue;
       TemplateTypeAggregation aggregation = aggregations.get(template.getTemplateType());
       if (aggregation == null) {
         aggregation = new TemplateTypeAggregation(template.getTemplateType(), template.getPresentationProperties());
@@ -31,6 +30,7 @@ public class TemplateTypeAggregator {
       aggregation.addSupportedEdition(template.getEdition());
 
     }
-    return aggregations.values().toArray(new ITemplateTypeAggregation[0]);
+    Collection<TemplateTypeAggregation> values = aggregations.values();
+    return values.toArray(new ITemplateTypeAggregation[values.size()]);
   }
 }

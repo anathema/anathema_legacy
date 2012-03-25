@@ -11,7 +11,15 @@ import java.io.File;
 import java.io.IOException;
 
 public class RepositoryBackup {
-  public void backupRepository(IResources resources, IAnathemaModel model) {
+  private IResources resources;
+  private IAnathemaModel model;
+
+  public RepositoryBackup(IResources resources, IAnathemaModel model) {
+    this.resources = resources;
+    this.model = model;
+  }
+
+  public void backupRepository() {
     try {
       IRepository repository = model.getRepository();
       IItemType[] itemTypes = model.getItemTypeRegistry().getAllItemTypes();
@@ -20,16 +28,22 @@ public class RepositoryBackup {
         return;
       }
       RepositoryZipPathCreator creator = new RepositoryZipPathCreator(repository.getRepositoryPath());
-      String version = resources.getString("Anathema.Version.Numeric");
-      File saveFile = new File(repository.getRepositoryPath(), "BackupForFirstLaunchOf" + version + ".zip");
-      if (saveFile.exists()) {
-        return;
-      }
+      File saveFile = getSaveFile();
       new FileExporter(creator, exportModel, resources).exportToZip(saveFile);
     } catch (IOException e) {
       throw new RuntimeException(
               "Could not back up repository before launch. Please create a copy and delete all 1E characters manually.",
               e);
     }
+  }
+
+  public boolean isAlreadyBackedUp() {
+    return getSaveFile().exists();
+  }
+
+  private File getSaveFile() {
+    IRepository repository = model.getRepository();
+    String version = resources.getString("Anathema.Version.Numeric");
+    return new File(repository.getRepositoryPath(), "BackupForFirstLaunchOf" + version + ".zip");
   }
 }

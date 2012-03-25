@@ -210,11 +210,6 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public boolean isLegacy() {
-    return false;
-  }
-
-  @Override
   public String[] getBaseHealthProviders() {
     return new String[0];
   }

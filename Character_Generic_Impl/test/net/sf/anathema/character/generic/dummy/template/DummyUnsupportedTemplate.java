@@ -22,7 +22,6 @@ import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
-import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -110,12 +109,6 @@ public class DummyUnsupportedTemplate implements IUnsupportedTemplate, ICharacte
 
   public ICasteType[] getAllCasteTypes() {
     return new ICasteType[0];
-  }
-
-  @Override
-  public boolean isLegacy()
-  {
-	  return false;
   }
 
   @Override

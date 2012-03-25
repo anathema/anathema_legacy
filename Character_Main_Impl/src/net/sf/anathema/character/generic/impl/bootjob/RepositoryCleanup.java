@@ -13,13 +13,21 @@ import java.io.File;
 public class RepositoryCleanup implements IAnathemaBootJob {
   @Override
   public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    if (!new File(model.getRepository().getRepositoryPath()).exists()) {
+    if (!repositoryAlreadyExists(model)) {
+      return;
+    }
+    RepositoryBackup repositoryBackup = new RepositoryBackup(resources, model);
+    if (repositoryBackup.isAlreadyBackedUp()) {
       return;
     }
     ProxySplashscreen.getInstance().displayStatusMessage(
             resources.getString("Character.Bootjob.Cleanup.Splashmessage")); //$NON-NLS-1$
-    new RepositoryBackup().backupRepository(resources, model);
+    repositoryBackup.backupRepository();
     new FirstEditionDeleter(model).actOnAllCharacters();
     new CharacterTransformer(model, new TemplateTransformer()).actOnAllCharacters();
+  }
+
+  private boolean repositoryAlreadyExists(IAnathemaModel model) {
+    return new File(model.getRepository().getRepositoryPath()).exists();
   }
 }

@@ -5,11 +5,9 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 
 public interface ICharacterExternalsTemplate {
 
-  public ITemplateType getTemplateType();
+  ITemplateType getTemplateType();
 
-  public IExaltedEdition getEdition();
+  IExaltedEdition getEdition();
 
-  public IPresentationProperties getPresentationProperties();
-  
-  public boolean isLegacy();
+  IPresentationProperties getPresentationProperties();
 }
