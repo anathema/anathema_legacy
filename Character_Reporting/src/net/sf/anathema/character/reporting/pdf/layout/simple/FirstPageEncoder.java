@@ -55,11 +55,11 @@ public class FirstPageEncoder implements PageEncoder {
     LayoutField panoply = page.place(PANOPLY).below(arsenal).withHeight(ARMOUR_HEIGHT).andColumnSpan(2).now();
     LayoutField health = page.place(HEALTH_AND_MOVEMENT).below(panoply).withHeight(HEALTH_HEIGHT).andColumnSpan(2).now();
     page.place(COMBAT).below(health).fillToBottomOfPage().andColumnSpan(2).now();
-    new CopyrightEncoder(configuration, FIXED_CONTENT_HEIGHT).encodeCopyright(graphics);
+    new CopyrightEncoder(configuration, FIRST_PAGE_CONTENT_HEIGHT).encodeCopyright(graphics);
   }
 
   private Body createBody() {
-    return new Body(configuration, FIXED_CONTENT_HEIGHT);
+    return new Body(configuration, FIRST_PAGE_CONTENT_HEIGHT);
   }
 
   private SheetPage createPage(SheetGraphics graphics, ReportSession session) {
