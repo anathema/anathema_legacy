@@ -19,7 +19,7 @@ public class TemplateTransformer implements ITransformer<String, String> {
     put("LookshyRevisedSubtype", "LookshySubtype");
     put("LookshyOutcasteRevisedSubtype", "LookshyOutcasteSubtype");
     put("LookshyRealmRevisedSubtype", "LookshyRealmSubtype");
-    put("ThresholdRealmRevisedSubtype", "ThresholdRealmSubtype");
+    put("ThresholdOutcasteRevisedSubtype", "ThresholdOutcasteSubtype");
     put("RevisedInfernal", TemplateType.DEFAULT_SUB_TYPE.getId());
     put("CastelessRevised", "Casteless");
     put("DreamsRevised", "Dreams");

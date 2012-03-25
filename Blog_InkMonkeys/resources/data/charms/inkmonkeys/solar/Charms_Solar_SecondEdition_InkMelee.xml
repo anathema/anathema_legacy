@@ -86,28 +86,34 @@
 	</charm>
 	<charm id="Solar.SunSwordConcentration" exalt="Solar" group="Melee">
 		<prerequisite>
-			<trait id="Melee" value="4" />
-			<essence value="3" />
-			<charmReference id="Solar.GloriousSolarSaber" />
+			<trait id="Melee" value="3" />
+			<essence value="2" />
+			<charmReference id="Solar.HungryTigerTechnique" />
 		</prerequisite>
-		<cost />
-		<duration duration="Permanent" />
-		<charmtype type="Permanent" />
+		<cost >
+			<essence cost="1" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Supplemental" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - All Blades Cry for Blood -->
 		<source source="InkMonkeys" />
+		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.MoltenSunBlade" exalt="Solar" group="Melee">
 		<prerequisite>
-			<trait id="Melee" value="4" />
+			<trait id="Melee" value="5" />
 			<essence value="3" />
-			<charmReference id="Solar.GloriousSolarSaber" />
-			<charmReference id="Solar.HungryTigerTechnique" />
-		</prerequisite>
-		<cost />
-		<duration duration="Permanent" />
+			<charmReference id="Solar.SunSwordConcentration" />
+		</prerequisite>		<cost >
+			<essence cost="" text="(+3m)"/>
+		</cost>
+		<duration duration="Instant" />
 		<charmtype type="Permanent" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+		<charmAttribute attribute="Stackable" visualize="true" />
 		<source source="InkMonkeys" />
+		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.BlindImpulseStrike" exalt="Solar" group="Melee">
 		<prerequisite>
@@ -177,43 +183,6 @@
 		</charmtype>
 		<charmAttribute attribute="Combo-Basic" visualize="true" />
 		<charmAttribute attribute="Crippling" visualize="true" />
-		<charmAttribute attribute="Holy" visualize="true"/>
-		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="InkMonkeys" />
-	</charm>
-	<charm id="Solar.CoronaOfRadiance5" exalt="Solar" group="Melee">
-		<prerequisite>
-			<trait id="Melee" value="5" />
-			<essence value="5" />
-			<charmReference id="Solar.EdgeOfMorningSunlight" />
-			<charmReference id="Solar.BlazingSolarBolt" />
-		</prerequisite>
-		<cost>
-			<essence cost="-" text="(5m, 1wp)" />
-		</cost>
-		<duration duration="Permanent" />
-		<!-- NOTE:  Charm text specifies "Permanent(Reflexive[Step 1])" -->
-		<charmtype type="Reflexive">
-			<special primaryStep="1" />
-		</charmtype>
-		<charmAttribute attribute="Holy" visualize="true"/>
-		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="InkMonkeys" />
-	</charm>
-	<charm id="Solar.CoronaOfRadiance7" exalt="Solar" group="Melee">
-		<prerequisite>
-			<trait id="Melee" value="5" />
-			<essence value="7" />
-			<charmReference id="Solar.CoronaOfRadiance5" />
-		</prerequisite>
-		<cost>
-			<essence cost="-" text="(7m, 1wp)" />
-		</cost>
-		<duration duration="Permanent" />
-		<!-- NOTE:  Charm text specifies "Permanent(Reflexive[Step 1])" -->
-		<charmtype type="Reflexive">
-			<special primaryStep="1" />
-		</charmtype>
 		<charmAttribute attribute="Holy" visualize="true"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
@@ -288,7 +257,7 @@
 			<charmReference id="Solar.FinalSunsetStance" />
 		</prerequisite>
 		<cost>
-			<essence cost="1" text="per defense" />
+			<essence cost="1" text=" (+2m)" />
 		</cost>
 		<duration duration="Instant" />
 		<charmtype type="Reflexive">
@@ -297,6 +266,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="MartialReadyMartialArts" visualize="true"/>
 		<source source="InkMonkeys" />
+		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.ArrowPennantAegis" exalt="Solar" group="Melee">
 		<prerequisite>

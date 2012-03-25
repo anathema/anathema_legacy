@@ -44,7 +44,6 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     registerParsedTemplate(characterGenerics, "template/Infernal2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/RevisedInfernal2nd.template"); //$NON-NLS-1$
   }
 
   @Override

@@ -1,39 +1,42 @@
 <exaltedCharacterTemplate characterType="Lunar" subtemplate="Casteless">
   <general>
     <edition edition="SecondEdition"/>
-    <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />
+    <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template"/>
     <attributeGroups uses="template/LunarAttributeGroup.template"/>
-    <essence uses="template/LunarEssence.template" />
+    <essence uses="template/LunarEssence.template"/>
     <traitCollection uses="template/LunarTraitCollection2ndCasteless.template"/>
     <magicTemplate uses="template/LunarMagic2nd.template"/>
     <presentation uses="template/LunarPresentation2nd.template"/>
     <additionalRules uses="template/LunarAdditionalRules2nd.template">
-     	<forbiddenBackgrounds>
-     		<backgroundReference id="Reputation" />
-     		<backgroundReference id="TattooArtifact" />
-     	</forbiddenBackgrounds>
+      <forbiddenBackgrounds>
+        <backgroundReference id="Reputation"/>
+        <backgroundReference id="TattooArtifact"/>
+      </forbiddenBackgrounds>
+      <revisedIntimacies value="true"/>
+      <willpowerVirtueBased value="false"/>
     </additionalRules>
     <additionalTemplates>
-      <template id="Lunar.DeadlyBeastmanTransformation.Template" />
-      <template id="Lunar.HeartsBlood.Template" />
-      <template id="Lunar.VirtueFlaw.Template" />
+      <template id="Lunar.DeadlyBeastmanTransformation.Template"/>
+      <template id="Lunar.HeartsBlood.Template"/>
+      <template id="Lunar.VirtueFlaw.Template"/>
     </additionalTemplates>
     <healthTemplate>
       <toughnessControllingTrait type="Stamina"/>
     </healthTemplate>
   </general>
   <creation>
-    <bonusPointCosts uses="template/LunarBonusPointCost2nd.template" />
+    <bonusPointCosts uses="template/LunarBonusPointCost2ndRevised.template"/>
     <creationPoints>
       <attributeDots primary="8" secondary="6" tertiary="4" favoredPicks="2"/>
-      <abilityDots general="25" favored="0" favoredPicks="2" />
-      <backgroundDots count="7" />
-      <virtueDots count="5" />
-      <bonusPoints count="15" />
+      <abilityDots general="25" favored="0" favoredPicks="2"/>
+      <backgroundDots count="7"/>
+      <virtueDots count="5"/>
+      <bonusPoints count="18"/>
+      <specialtyDots count="4"/>
       <charmPicks favored="4" general="4" unique="1"/>
     </creationPoints>
   </creation>
   <experience>
-    <experiencePointCost uses="template/LunarExperienceCost2nd.template" />
+    <experiencePointCost uses="template/LunarExperienceCost2nd.template"/>
   </experience>
 </exaltedCharacterTemplate>

@@ -46,11 +46,12 @@
                <charmReference id="Solar.UnbreakableWarrior'sMastery" />
           </prerequisite>
           <cost>
-               <essence cost="-" text="(+2m)"/>
+               <essence cost="-" text="(+2m, 1wp)"/>
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Mirror" visualize="true" />
           <source source="GloriesUCS" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>

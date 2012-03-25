@@ -54,11 +54,9 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final IBackgroundTemplate RENOWN_BACKGROUND_TYPE = new CharacterTypeBackgroundTemplate(BACKGROUND_ID_RENOWN, LUNAR);
 
   private static final TemplateType castelessType = new TemplateType(LUNAR, new Identificate("Casteless")); //$NON-NLS-1$
-  private static final TemplateType revisedCastelessType = new TemplateType(LUNAR, new Identificate("CastelessRevised")); //$NON-NLS-1$
   private static final TemplateType dreamsType = new TemplateType(LUNAR, new Identificate("Dreams")); //$NON-NLS-1$
-  private static final TemplateType revisedDreamsType = new TemplateType(LUNAR, new Identificate("DreamsRevised")); //$NON-NLS-1$
 
-  private static final TemplateType[] dreams = {dreamsType, revisedDreamsType};
+  private static final TemplateType[] dreams = {dreamsType};
 
   public static final String BACKGROUND_ID_ARSENAL = "LunarDreamsArsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_COMMAND = "LunarDreamsCommand"; //$NON-NLS-1$
@@ -82,9 +80,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     editionMap.put(SecondEdition, LunarCaste.values());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
     templateMap.put(castelessType, new ICasteType[]{});
-    templateMap.put(revisedCastelessType, new ICasteType[]{});
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());
-    templateMap.put(revisedDreamsType, LunarCaste.getDreamsValues());
     characterGenerics.getCasteCollectionRegistry().register(LUNAR, new CasteCollection(LunarCaste.values(), editionMap, templateMap));
   }
 
@@ -96,10 +92,10 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SOLAR_BOND, LUNAR));
     backgroundRegistry.add(new EditionSpecificCharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, LUNAR, SecondEdition));
     backgroundRegistry.add(
-            new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, new ITemplateType[]{castelessType, revisedCastelessType},
+            new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, new ITemplateType[]{castelessType},
                     SecondEdition));
     backgroundRegistry.add(
-            new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, new ITemplateType[]{castelessType, revisedCastelessType},
+            new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, new ITemplateType[]{castelessType},
                     SecondEdition));
 
     backgroundRegistry.add(new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, dreams, SecondEdition));
@@ -119,10 +115,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "template/Lunar2ndCasteless.template");
     registerParsedTemplate(characterGenerics, "template/Lunar2ndSilverPact.template");
     registerParsedTemplate(characterGenerics, "template/Lunar2ndDreams.template");
-
-    registerParsedTemplate(characterGenerics, "template/Lunar2ndCastelessRevised.template");
-    registerParsedTemplate(characterGenerics, "template/Lunar2ndSilverPactRevised.template");
-    registerParsedTemplate(characterGenerics, "template/Lunar2ndDreamsRevised.template");
   }
 
   @Override

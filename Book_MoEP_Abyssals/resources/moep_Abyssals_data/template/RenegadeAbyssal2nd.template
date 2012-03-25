@@ -7,7 +7,10 @@
     <traitCollection uses="template/AbyssalTraitCollection2nd.template" prefix="moep_Abyssals_"/>
     <magicTemplate uses="template/AbyssalMagic2nd.template" prefix="moep_Abyssals_" />
     <presentation uses="template/AbyssalPresentation2nd.template" prefix="moep_Abyssals_" />
-    <additionalRules uses="template/AbyssalAdditionalRules2nd.template" prefix="moep_Abyssals_"/>
+    <additionalRules uses="template/AbyssalAdditionalRules2nd.template" prefix="moep_Abyssals_">
+      <revisedIntimacies value="true" />
+      <willpowerVirtueBased value="false" />
+    </additionalRules>
     <additionalTemplates>
       <template id="AbyssalResonance" />
     </additionalTemplates>
@@ -16,14 +19,15 @@
     </healthTemplate>
   </general>
   <creation>
-    <bonusPointCosts uses="DefaultBonusPointCost2nd.template" />
+    <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template" />
     <creationPoints>
       <attributeDots primary="8" secondary="6" tertiary="4" />
       <abilityDots general="18" favored="10" favoredPicks="5" />
       <backgroundDots count="7" />
       <virtueDots count="5" />
-      <bonusPoints count="15" />
-      <charmPicks favored="5" general="5" />
+      <specialtyDots count="4" />
+      <bonusPoints count="18" />
+      <charmPicks favored="0" general="10" />
     </creationPoints>
   </creation>
   <experience>

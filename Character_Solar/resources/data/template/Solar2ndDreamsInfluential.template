@@ -1,4 +1,4 @@
-<exaltedCharacterTemplate characterType="Solar" subtemplate="DreamsRevisedInfluential">
+<exaltedCharacterTemplate characterType="Solar" subtemplate="DreamsInfluential">
   <general>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="template/SolarAbilityGroup2nd.template" />
