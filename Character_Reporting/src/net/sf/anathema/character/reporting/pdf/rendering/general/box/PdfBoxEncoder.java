@@ -27,12 +27,8 @@ public class PdfBoxEncoder {
   }
 
   public void encodeBox(ReportContent content, SheetGraphics graphics, ContentEncoder encoder, Bounds bounds) throws DocumentException {
-    encodeBox(graphics, encoder, boundsEncoder, content, bounds);
-  }
-
-  public void encodeBox(SheetGraphics graphics, ContentEncoder encoder, BoundsEncoder boxEncoder, ReportContent content, Bounds bounds) throws DocumentException {
     String header = encoder.getHeader(content);
-    Bounds contentBounds = encodeBox(graphics, bounds, header, boxEncoder);
+    Bounds contentBounds = encodeBox(graphics, bounds, header, boundsEncoder);
     encoder.encode(graphics, content, contentBounds);
   }
 }
