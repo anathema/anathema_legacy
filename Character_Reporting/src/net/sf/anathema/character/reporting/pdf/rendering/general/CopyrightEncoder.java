@@ -25,17 +25,20 @@ public class CopyrightEncoder {
   public void encodeCopyright(SheetGraphics graphics) throws DocumentException {
     Font copyrightFont = graphics.createCommentFont();
     float copyrightHeight = pageConfiguration.getPageHeight() - pageConfiguration.getContentHeight();
-    Bounds firstColumnBounds = pageConfiguration.getFirstColumnRectangle(contentHeight, copyrightHeight, 1);
+    Bounds firstColumnBounds = pageConfiguration
+            .getColumnRectangle((float) contentHeight, copyrightHeight, 1, PageConfiguration.Offset(0));
     Anchor voidStatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont); //$NON-NLS-1$
     voidStatePhrase.setReference("http://www.voidstate.com"); //$NON-NLS-1$
     graphics.createSimpleColumn(firstColumnBounds).withLeading((float) FONT_SIZE).andTextPart(voidStatePhrase).encode();
     Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92007-2012\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
     anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
-    Bounds anathemaBounds = pageConfiguration.getSecondColumnRectangle(contentHeight, copyrightHeight, 1);
+    Bounds anathemaBounds = pageConfiguration
+            .getColumnRectangle((float) contentHeight, copyrightHeight, 1, PageConfiguration.Offset(1));
     graphics.createSimpleColumn(anathemaBounds).withLeading(FONT_SIZE).andAlignment(Center).andTextPart(anathemaPhrase).encode();
     Anchor whiteWolfPhrase = new Anchor("Exalted \u00A92007 by White Wolf, Inc.\nhttp://www.white-wolf.com", copyrightFont); //$NON-NLS-1$
     whiteWolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
-    Bounds whiteWolfBounds = pageConfiguration.getThirdColumnRectangle(contentHeight, copyrightHeight);
+    Bounds whiteWolfBounds = pageConfiguration
+            .getColumnRectangle((float) contentHeight, copyrightHeight, 1, PageConfiguration.Offset(2));
     graphics.createSimpleColumn(whiteWolfBounds).withLeading(FONT_SIZE).andAlignment(Right).andTextPart(whiteWolfPhrase).encode();
   }
 }

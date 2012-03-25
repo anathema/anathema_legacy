@@ -12,7 +12,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
 
-public class ExtendedSecondPageEncoder extends AbstractPdfPageEncoder {
+public class ExtendedSecondPageEncoder extends AbstractExtendedPdfPageEncoder {
 
   private EncoderRegistry encoderRegistry;
 

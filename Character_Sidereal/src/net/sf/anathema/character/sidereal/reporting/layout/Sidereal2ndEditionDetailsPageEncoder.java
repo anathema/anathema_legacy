@@ -99,9 +99,9 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
     float height = DESTINY_HEIGHT;
     Bounds boxBounds;
     if (isFirstAge(session.getCharacter())) {
-      boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 2);
+      boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 2, PageConfiguration.Offset(0));
     } else {
-      boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
+      boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 1, PageConfiguration.Offset(1));
     }
     ContentEncoder encoder = new HorizontalLineBoxContentEncoder(4, resources, "Sidereal.Connections"); //$NON-NLS-1$
     boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
@@ -109,7 +109,7 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
 
   private float encodeAcquaintances(SheetGraphics graphics, ReportSession session, float distanceFromTop,
                                     float height) throws DocumentException {
-    Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    Bounds boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 1, PageConfiguration.Offset(1));
     ContentEncoder encoder = new HorizontalLineBoxContentEncoder(1, resources, "Sidereal.Acquaintances"); //$NON-NLS-1$
     boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
@@ -118,7 +118,7 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   private float encodeParadox(SheetGraphics graphics, ReportSession session,
                               float distanceFromTop) throws DocumentException {
     float height = PARADOX_HEIGHT;
-    Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    Bounds boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 1, PageConfiguration.Offset(1));
     ContentEncoder encoder = new ParadoxEncoder(resources);
     boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
@@ -127,7 +127,7 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   private float encodeAstrology(SheetGraphics graphics, ReportSession session,
                                 float distanceFromTop) throws DocumentException {
     float height = COLLEGE_HEIGHT;
-    Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 2);
+    Bounds boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 2, PageConfiguration.Offset(1));
     ContentEncoder encoder = new SecondEditionAstrologyInfoEncoder(resources);
     boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
@@ -141,21 +141,21 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   }
 
   private Bounds getRightDestinyBounds(float distanceFromTop) {
-    return configuration.getThirdColumnRectangle(distanceFromTop, DESTINY_HEIGHT);
+    return configuration.getColumnRectangle(distanceFromTop, DESTINY_HEIGHT, 1, PageConfiguration.Offset(2));
   }
 
   private Bounds getCenterDestinyBounds(float distanceFromTop) {
-    return configuration.getSecondColumnRectangle(distanceFromTop, DESTINY_HEIGHT, 1);
+    return configuration.getColumnRectangle(distanceFromTop, DESTINY_HEIGHT, 1, PageConfiguration.Offset(1));
   }
 
   private Bounds getLeftDestinyBounds(float distanceFromTop) {
-    return configuration.getFirstColumnRectangle(distanceFromTop, DESTINY_HEIGHT, 1);
+    return configuration.getColumnRectangle(distanceFromTop, DESTINY_HEIGHT, 1, PageConfiguration.Offset(0));
   }
 
   private float encodeParadoxHelp(SheetGraphics graphics, ReportSession session,
                                   float distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
-    Bounds boxBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
+    Bounds boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 1, PageConfiguration.Offset(2));
     ContentEncoder encoder = new ParadoxInfoEncoder(fontSize, resources);
     boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
@@ -164,7 +164,7 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   private float encodeArcaneFate(SheetGraphics graphics, ReportSession session,
                                  float distanceFromTop) throws DocumentException {
     float height = DESTINY_HEIGHT;
-    Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
+    Bounds boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 1, PageConfiguration.Offset(0));
     ContentEncoder encoder = new ArcaneFateInfoEncoder(fontSize, resources);
     boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;
@@ -173,7 +173,7 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   private float encodeColleges(SheetGraphics graphics, ReportSession session,
                                float distanceFromTop) throws DocumentException {
     float height = COLLEGE_HEIGHT;
-    Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
+    Bounds boxBounds = configuration.getColumnRectangle(distanceFromTop, height, 1, PageConfiguration.Offset(0));
     ContentEncoder encoder = new FavorableTraitBoxContentEncoder(SiderealCollegeContent.class);
     boxEncoder.encodeBox(session, graphics, encoder, boxBounds);
     return height;

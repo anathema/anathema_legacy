@@ -41,7 +41,7 @@ public class FirstPageEncoder implements PageEncoder {
   public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
     SheetPage page = createPage(graphics, session);
     Body body = createBody();
-    LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).spanningTwoColumns().now();
+    LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).andColumnSpan(2).now();
     LayoutField essence = page.place(ESSENCE_SIMPLE).rightOf(personalInfo).withSameHeight().now();
     LayoutField attributes = page.place(ATTRIBUTES).below(personalInfo).withHeight(ATTRIBUTE_HEIGHT).now();
     page.place(ABILITIES_WITH_CRAFTS_AND_SPECIALTIES).below(attributes).fillToBottomOfPage().now();
@@ -51,10 +51,10 @@ public class FirstPageEncoder implements PageEncoder {
     LayoutField greatCurse = page.place(GREAT_CURSE).below(virtues).alignBottomTo(anima).now();
     LayoutField willpower = page.place(WILLPOWER_SIMPLE).below(greatCurse).withHeight(WILLPOWER_HEIGHT).now();
     LayoutField intimacies = page.place(INTIMACIES_SIMPLE, NOTES).below(willpower).alignBottomTo(social).now();
-    LayoutField arsenal = page.place(ARSENAL).below(intimacies).withPreferredHeight().spanningTwoColumns().now();
-    LayoutField panoply = page.place(PANOPLY).below(arsenal).withHeight(ARMOUR_HEIGHT).spanningTwoColumns().now();
-    LayoutField health = page.place(HEALTH_AND_MOVEMENT).below(panoply).withHeight(HEALTH_HEIGHT).spanningTwoColumns().now();
-    page.place(COMBAT).below(health).fillToBottomOfPage().spanningTwoColumns().now();
+    LayoutField arsenal = page.place(ARSENAL).below(intimacies).withPreferredHeight().andColumnSpan(2).now();
+    LayoutField panoply = page.place(PANOPLY).below(arsenal).withHeight(ARMOUR_HEIGHT).andColumnSpan(2).now();
+    LayoutField health = page.place(HEALTH_AND_MOVEMENT).below(panoply).withHeight(HEALTH_HEIGHT).andColumnSpan(2).now();
+    page.place(COMBAT).below(health).fillToBottomOfPage().andColumnSpan(2).now();
     new CopyrightEncoder(configuration, FIXED_CONTENT_HEIGHT).encodeCopyright(graphics);
   }
 

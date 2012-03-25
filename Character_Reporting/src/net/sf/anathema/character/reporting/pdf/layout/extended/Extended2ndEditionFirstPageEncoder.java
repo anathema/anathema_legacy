@@ -20,7 +20,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatCo
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
-public class Extended2ndEditionFirstPageEncoder extends AbstractPdfPageEncoder {
+public class Extended2ndEditionFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
   private EncoderRegistry encoderRegistry;
 
   public Extended2ndEditionFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration pageConfiguration) {

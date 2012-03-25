@@ -56,10 +56,9 @@ public class SecondPageEncoder extends AbstractPageEncoder {
     LayoutField possessions = page.place(POSSESSIONS).rightOf(backgrounds).withSameHeight().now();
     LayoutField languages = page.place(LANGUAGES).rightOf(possessions).withHeight(LANGUAGE_HEIGHT).now();
     page.place(EXPERIENCE).below(languages).alignBottomTo(backgrounds).now();
-    LayoutField combos = page.place(COMBOS).below(backgrounds).withPreferredHeight().spanningThreeColumns().now();
-    LayoutField genericCharms =
-            page.place(GENERIC_CHARMS).below(combos).withPreferredHeight().spanningThreeColumns().now();
-    page.place(CHARMS_AND_SORCERY).below(genericCharms).fillToBottomOfPage().spanningThreeColumns().now();
+    LayoutField combos = page.place(COMBOS).below(backgrounds).withPreferredHeight().andColumnSpan(3).now();
+    LayoutField genericCharms = page.place(GENERIC_CHARMS).below(combos).withPreferredHeight().andColumnSpan(3).now();
+    page.place(CHARMS_AND_SORCERY).below(genericCharms).fillToBottomOfPage().andColumnSpan(3).now();
     encodeAdditionalMagicPages(document, graphics, session);
   }
 
@@ -68,7 +67,7 @@ public class SecondPageEncoder extends AbstractPageEncoder {
     while (charmContent.hasUnprintedCharms()) {
       document.newPage();
       SheetPage page = createPage(graphics, session);
-      page.place(CHARMS_AND_SORCERY).atStartOf(createBody()).fillToBottomOfPage().spanningThreeColumns().now();
+      page.place(CHARMS_AND_SORCERY).atStartOf(createBody()).fillToBottomOfPage().andColumnSpan(3).now();
     }
   }
 }

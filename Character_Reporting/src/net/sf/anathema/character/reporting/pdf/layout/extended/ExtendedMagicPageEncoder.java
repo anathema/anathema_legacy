@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class ExtendedMagicPageEncoder extends AbstractPdfPageEncoder {
+public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
 
   public ExtendedMagicPageEncoder(IExtendedPartEncoder partEncoder, IResources resources,
           PageConfiguration configuration) {
