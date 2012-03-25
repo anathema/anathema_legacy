@@ -46,12 +46,11 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_SAVANT = "Savant"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SIFU = "Sifu"; //$NON-NLS-1$
 
-  private static final TemplateType revisedType = new TemplateType(SIDEREAL, new Identificate("Revised")); //$NON-NLS-1$
+  private static final TemplateType defaultTemplateType = new TemplateType(SIDEREAL); //$NON-NLS-1$
+  public static final TemplateType roninType = new TemplateType(SIDEREAL, new Identificate("Ronin")); //$NON-NLS-1$
+  public static final TemplateType dreamsType = new TemplateType(SIDEREAL, new Identificate("Dreams")); //$NON-NLS-1$
 
-  private static final TemplateType dreamsType = new TemplateType(SIDEREAL, new Identificate("Dreams")); //$NON-NLS-1$
-  private static final TemplateType revisedDreamsType = new TemplateType(SIDEREAL, new Identificate("RevisedDreams")); //$NON-NLS-1$
-
-  private static final TemplateType[] dreams = {dreamsType, revisedDreamsType};
+  private static final TemplateType[] dreams = {dreamsType};
 
   public static final String BACKGROUND_ID_ARSENAL = "SiderealDreamsArsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_COMMAND = "SiderealDreamsCommand"; //$NON-NLS-1$
@@ -74,15 +73,12 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "template/Sidereal2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/SiderealDreams2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/Ronin2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/RevisedSidereal2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/RevisedSiderealDreams2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/RevisedRonin2nd.template"); //$NON-NLS-1$
   }
 
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    ITemplateType[] defaultTemplateType = new ITemplateType[]{revisedType};
+    ITemplateType[] defaultTemplateType = new ITemplateType[]{SiderealCharacterModule.defaultTemplateType};
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_ACQUAINTANCES, SIDEREAL));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, SIDEREAL));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CELESTIAL_MANSE, defaultTemplateType));

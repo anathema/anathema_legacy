@@ -3,8 +3,6 @@ package net.sf.anathema.character.sidereal.reporting.layout;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
@@ -21,9 +19,10 @@ import net.sf.anathema.character.sidereal.reporting.rendering.astrology.SecondEd
 import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.ParadoxEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.resplendentdestiny.ResplendentDestinyEncoder;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
+import static net.sf.anathema.character.sidereal.SiderealCharacterModule.dreamsType;
+import static net.sf.anathema.character.sidereal.SiderealCharacterModule.roninType;
 
 public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
 
@@ -34,15 +33,6 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   private final PdfBoxEncoder boxEncoder;
   private final PageConfiguration configuration;
   private final int fontSize;
-
-  private static final TemplateType roninType = new TemplateType(CharacterType.SIDEREAL,
-          new Identificate("Ronin")); //$NON-NLS-1$
-  private static final TemplateType revisedRoninType = new TemplateType(CharacterType.SIDEREAL,
-          new Identificate("RevisedRonin")); //$NON-NLS-1$
-  private static final TemplateType dreamsType = new TemplateType(CharacterType.SIDEREAL,
-          new Identificate("Dreams")); //$NON-NLS-1$
-  private static final TemplateType revisedDreamsType = new TemplateType(CharacterType.SIDEREAL,
-          new Identificate("RevisedDreams")); //$NON-NLS-1$
 
   public Sidereal2ndEditionDetailsPageEncoder(IResources resources, int fontSize, PageConfiguration configuration) {
     this.resources = resources;
@@ -84,14 +74,12 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
 
   private boolean isRonin(IGenericCharacter character) {
     return character.getTemplate().getTemplateType().getSubType().getId().equals(
-            roninType.getSubType().getId()) || character.getTemplate().getTemplateType().getSubType().getId().equals(
-            revisedRoninType.getSubType().getId());
+            roninType.getSubType().getId());
   }
 
   private boolean isFirstAge(IGenericCharacter character) {
     return character.getTemplate().getTemplateType().getSubType().getId().equals(
-            dreamsType.getSubType().getId()) || character.getTemplate().getTemplateType().getSubType().getId().equals(
-            revisedDreamsType.getSubType().getId());
+            dreamsType.getSubType().getId());
   }
 
   private void encodeConnections(SheetGraphics graphics, ReportSession session,

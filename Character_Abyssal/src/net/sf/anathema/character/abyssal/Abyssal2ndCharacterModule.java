@@ -31,17 +31,11 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
 
   private static final TemplateType loyalAbyssalTemplateType = new TemplateType(ABYSSAL,
           new Identificate("default")); //$NON-NLS-1$
-  private static final TemplateType revisedLoyalAbyssalTemplateType = new TemplateType(ABYSSAL,
-          new Identificate("RevisedLoyalAbyssal"));
-  //$NON-NLS-1$
 
   @SuppressWarnings("unused")
   private static final TemplateType renegadeAbyssalTemplateType = new TemplateType(ABYSSAL,
           new Identificate("RenegadeAbyssal")); //$NON-NLS-1$
   @SuppressWarnings("unused")
-  private static final TemplateType revisedRenegadeAbyssalTemplateType = new TemplateType(ABYSSAL,
-          new Identificate("RevisedRenegadeAbyssal"));
-  //$NON-NLS-1$
 
   public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_LIEGE = "Liege"; //$NON-NLS-1$
@@ -60,12 +54,7 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     registerParsedTemplate(characterGenerics, "template/LoyalAbyssal2nd.template", "moep_Abyssals_"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/LoyalAbyssal2ndRevised.template",
-            "moep_Abyssals_"); //$NON-NLS-1$
-
     registerParsedTemplate(characterGenerics, "template/RenegadeAbyssal2nd.template", "moep_Abyssals_"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/RenegadeAbyssal2ndRevised.template",
-            "moep_Abyssals_"); //$NON-NLS-1$
   }
 
   @Override
@@ -74,7 +63,6 @@ public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter 
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_ABYSSAL_COMMAND, ABYSSAL));
 
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_LIEGE, loyalAbyssalTemplateType));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_LIEGE, revisedLoyalAbyssalTemplateType));
 
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SPIES, ABYSSAL));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_UNDERWORLD_MANSE, ABYSSAL));

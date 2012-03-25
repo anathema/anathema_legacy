@@ -20,6 +20,6 @@ public class RepositoryCleanup implements IAnathemaBootJob {
             resources.getString("Character.Bootjob.Cleanup.Splashmessage")); //$NON-NLS-1$
     new RepositoryBackup().backupRepository(resources, model);
     new FirstEditionDeleter(model).actOnAllCharacters();
-    //new CharacterTransformer(model, new TemplateTransformer()).actOnAllCharacters();
+    new CharacterTransformer(model, new TemplateTransformer()).actOnAllCharacters();
   }
 }

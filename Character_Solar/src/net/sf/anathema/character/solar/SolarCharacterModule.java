@@ -27,17 +27,12 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @SuppressWarnings("unused")
   private static final TemplateType solarTemplateType = new TemplateType(SOLAR);
-
-  @SuppressWarnings("unused")
-  private static final TemplateType solarRevisedTemplateType = new TemplateType(SOLAR, new Identificate("RevisedSolarSubtype")); //$NON-NLS-1$
-
   private static final TemplateType dreamsSolarTemplateType = new TemplateType(SOLAR, new Identificate("Dreams")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarRevisedTemplateType = new TemplateType(SOLAR, new Identificate("DreamsRevised")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarRevisedEstablished = new TemplateType(SOLAR, new Identificate("DreamsRevisedEstablished")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarRevisedInfluential = new TemplateType(SOLAR, new Identificate("DreamsRevisedInfluential")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarRevisedLegendary = new TemplateType(SOLAR, new Identificate("DreamsRevisedLegendary")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarEstablished = new TemplateType(SOLAR, new Identificate("DreamsEstablished")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarInfluential = new TemplateType(SOLAR, new Identificate("DreamsInfluential")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarLegendary = new TemplateType(SOLAR, new Identificate("DreamsLegendary")); //$NON-NLS-1$
 
-  private static final TemplateType[] dreams = {dreamsSolarTemplateType, dreamsSolarRevisedTemplateType, dreamsSolarRevisedEstablished, dreamsSolarRevisedInfluential, dreamsSolarRevisedLegendary};
+  private static final TemplateType[] dreams = {dreamsSolarTemplateType, dreamsSolarEstablished, dreamsSolarInfluential, dreamsSolarLegendary};
 
   public static final String BACKGROUND_ID_ARSENAL = "SolarDreamsArsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_COMMAND = "SolarDreamsCommand"; //$NON-NLS-1$
@@ -59,23 +54,11 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/legacy/DreamsDawnSolar2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/legacy/DreamsZenithSolar2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/legacy/DreamsTwilightSolar2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/legacy/DreamsNightSolar2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/legacy/DreamsEclipseSolar2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/legacy/DreamsDawnSolar2ndRevised.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/legacy/DreamsZenithSolar2ndRevised.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/legacy/DreamsTwilightSolar2ndRevised.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/legacy/DreamsNightSolar2ndRevised.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/legacy/DreamsEclipseSolar2ndRevised.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/Solar2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/Solar2ndRevised.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/Solar2ndDreams.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsRevised.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsRevisedEstablished.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsRevisedInfluential.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsRevisedLegendary.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsEstablished.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsInfluential.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsLegendary.template"); //$NON-NLS-1$
   }
 
   @Override
