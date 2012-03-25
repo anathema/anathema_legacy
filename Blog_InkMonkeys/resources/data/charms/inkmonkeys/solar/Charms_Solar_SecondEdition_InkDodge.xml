@@ -47,7 +47,6 @@
 		<charmtype type="Reflexive" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
-		<source source="InkMonkeys" />
 		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.NightsAvengerLunge" exalt="Solar" group="Dodge">

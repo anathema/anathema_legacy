@@ -45,7 +45,6 @@
           <prerequisite>
                <trait value="5" />
                <essence value="5" />
-               <genericCharmReference id="Solar.EssenceFlow"/>
           </prerequisite>
           <cost />
           <duration duration="Permanent" />
