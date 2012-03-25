@@ -59,7 +59,7 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
       IGenericDescription description = new GenericDescription(character.getDescription());
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       encoderList.add(new FirstPageEncoder(getEncoderRegistry(), resources, configuration));
-      encoderList.add(new SecondPageEncoder(getEncoderRegistry(), resources, configuration));
+      encoderList.add(new SecondPageEncoder(pageSize, getEncoderRegistry(), resources, configuration));
       ReportSession session = new ReportSession(getContentRegistry(), genericCharacter, description);
       boolean isFirstPrinted = false;
       for (PageEncoder encoder : encoderList) {
