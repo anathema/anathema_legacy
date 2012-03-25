@@ -5,14 +5,14 @@ import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.experience.ExperienceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
 
-public class ExperienceBoxContentEncoder extends AbstractBoxContentEncoder<ExperienceContent> {
+public class ExperienceContentEncoder extends AbstractContentEncoder<ExperienceContent> {
 
-  public ExperienceBoxContentEncoder() {
+  public ExperienceContentEncoder() {
     super(ExperienceContent.class);
   }
 

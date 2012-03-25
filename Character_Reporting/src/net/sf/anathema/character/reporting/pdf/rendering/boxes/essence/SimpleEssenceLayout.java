@@ -7,13 +7,13 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.TextMetrics;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
 
-public class SimpleEssenceBoxLayout {
+public class SimpleEssenceLayout {
 
   private TextMetrics textMetrics;
   private Bounds bounds;
   private int numberOfLines;
 
-  public SimpleEssenceBoxLayout(TextMetrics textMetrics, Bounds bounds, int numberOfLines) {
+  public SimpleEssenceLayout(TextMetrics textMetrics, Bounds bounds, int numberOfLines) {
     this.textMetrics = textMetrics;
     this.bounds = bounds;
     this.numberOfLines = numberOfLines;

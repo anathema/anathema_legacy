@@ -14,7 +14,7 @@ public class VirtueFlawBoxEncoder {
   }
 
   public float encodeHeight(SheetGraphics graphics, Bounds bounds, int currentLimit) {
-    PdfTraitEncoder traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
+    PdfTraitEncoder traitEncoder = PdfTraitEncoder.createLargeTraitEncoder();
     float traitBaseLine = bounds.getMaxY() - traitEncoder.getTraitHeight();
     float padding = PADDING / 2.0f;
     Position traitPosition = new Position(bounds.x + padding, traitBaseLine);

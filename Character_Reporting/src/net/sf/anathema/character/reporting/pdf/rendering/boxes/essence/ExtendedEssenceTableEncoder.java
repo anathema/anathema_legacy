@@ -28,7 +28,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
   protected static float PADDING = 1f;
   protected static float DOTS_WIDTH = 130f;
 
-  private final PdfTraitEncoder traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
+  private final PdfTraitEncoder traitEncoder = PdfTraitEncoder.createLargeTraitEncoder();
 
   private static final int HEADER_BORDER = Rectangle.NO_BORDER;
   private static final int INTERNAL_BORDER = Rectangle.BOX;

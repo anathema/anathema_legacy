@@ -6,28 +6,29 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.essence.SimpleEssenceContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static com.itextpdf.text.pdf.PdfContentByte.ALIGN_RIGHT;
 
-public class SimpleEssenceBoxContentEncoder extends AbstractBoxContentEncoder<SimpleEssenceContent> {
+public class SimpleEssenceEncoder extends AbstractContentEncoder<SimpleEssenceContent> {
 
-  public SimpleEssenceBoxContentEncoder() {
+  public SimpleEssenceEncoder() {
     super(SimpleEssenceContent.class);
   }
 
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     SimpleEssenceContent content = createContent(reportSession);
-    SimpleEssenceBoxLayout layout = new SimpleEssenceBoxLayout(graphics.getTextMetrics(), bounds, content.getNumberOfPoolLines());
+    SimpleEssenceLayout
+            layout = new SimpleEssenceLayout(graphics.getTextMetrics(), bounds, content.getNumberOfPoolLines());
     encodeEssenceTrait(graphics, content, layout);
     encodePersonalPool(graphics, content, layout);
     encodePeripheralPool(graphics, content, layout);
   }
 
-  private void encodeEssenceTrait(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceBoxLayout layout) {
+  private void encodeEssenceTrait(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceLayout layout) {
     Position essencePosition = layout.getEssencePosition();
     int essenceValue = content.getEssenceValue();
     int essenceMax = content.getEssenceMax();
@@ -35,7 +36,7 @@ public class SimpleEssenceBoxContentEncoder extends AbstractBoxContentEncoder<Si
     largeTraitEncoder.encodeDotsCenteredAndUngrouped(graphics, essencePosition, layout.geWidth(), essenceValue, essenceMax);
   }
 
-  private void encodePersonalPool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceBoxLayout layout) {
+  private void encodePersonalPool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceLayout layout) {
     if (content.hasPersonalPool()) {
       Position personalPosition = layout.getFirstPoolPosition();
       String personalLabel = content.getPersonalPoolLabel();
@@ -43,7 +44,7 @@ public class SimpleEssenceBoxContentEncoder extends AbstractBoxContentEncoder<Si
     }
   }
 
-  private void encodePeripheralPool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceBoxLayout layout) {
+  private void encodePeripheralPool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceLayout layout) {
     if (content.hasPeripheralPool()) {
       Position peripheralPosition = content.getNumberOfPoolLines() == 1 ? layout.getFirstPoolPosition() : layout.getSecondPoolPosition();
       String peripheralLabel = content.getPeripheralPoolLabel();
@@ -51,7 +52,7 @@ public class SimpleEssenceBoxContentEncoder extends AbstractBoxContentEncoder<Si
     }
   }
 
-  private void encodePool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceBoxLayout layout, String label, String poolValue, Position poolPosition) {
+  private void encodePool(SheetGraphics graphics, SimpleEssenceContent content, SimpleEssenceLayout layout, String label, String poolValue, Position poolPosition) {
     graphics.drawText(label, poolPosition, PdfContentByte.ALIGN_LEFT);
     graphics.drawText(content.getAvailableText(), layout.getAvailablePositionRightAligned(poolPosition), ALIGN_RIGHT);
     Position availableLineStart = layout.getAvailableLineStart(poolPosition, content.getAvailableText());

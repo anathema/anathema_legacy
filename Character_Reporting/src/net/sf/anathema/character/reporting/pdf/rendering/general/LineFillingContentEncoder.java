@@ -8,16 +8,16 @@ import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import java.util.Iterator;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
-public class LineFillingContentBoxEncoder<C extends ListSubBoxContent> extends AbstractBoxContentEncoder<C> {
+public class LineFillingContentEncoder<C extends ListSubBoxContent> extends AbstractContentEncoder<C> {
 
-  protected LineFillingContentBoxEncoder(Class<C> contentClass) {
+  protected LineFillingContentEncoder(Class<C> contentClass) {
     super(contentClass);
   }
 
