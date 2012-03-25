@@ -12,35 +12,22 @@ import java.util.List;
 
 import static net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration.CHARACTER_ITEM_TYPE_ID;
 
-public class FirstEditionDeleter {
+public class FirstEditionDeleter extends CharacterChanger {
 
-  public void deleteAllFirstEditionCharacters(IAnathemaModel model) {
-    List<File> characters = getCharacter(model);
-    for (File character : characters) {
-      if (isSecondEditionCharacter(character)) {
-        continue;
-      }
-      character.delete();
-    }
+  public FirstEditionDeleter(IAnathemaModel model) {
+    super(model);
   }
 
+  @Override
+  protected void actWithCharacter(File character) {
+    if (isSecondEditionCharacter(character)) {
+      return;
+    }
+    character.delete();
+  }
 
   private boolean isSecondEditionCharacter(File file) {
-    try {
-      String xmlString = FileUtils.readFileToString(file);
-      return xmlString.contains("<RuleSet name=\"SecondEdition\"/>");
-    } catch (IOException e) {
-      throw new RuntimeException(
-              "Could not clean up repository before launch. Please delete all 1E characters manually.", e);
-    }
-  }
-
-  private List<File> getCharacter(IAnathemaModel model) {
-    IItemType character = model.getItemTypeRegistry().getById(CHARACTER_ITEM_TYPE_ID);
-    File itemTypeFolder = model.getRepository().getRepositoryFileResolver().getItemTypeFolder(character);
-    if (!itemTypeFolder.exists()){
-      return Collections.emptyList();
-    }
-    return Lists.newArrayList(itemTypeFolder.listFiles());
+    String xmlString = getCharacterAsString(file);
+    return xmlString.contains("<RuleSet name=\"SecondEdition\"/>");
   }
 }
