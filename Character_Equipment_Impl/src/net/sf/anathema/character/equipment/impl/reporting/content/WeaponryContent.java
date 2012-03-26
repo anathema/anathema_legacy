@@ -13,8 +13,4 @@ public class WeaponryContent extends AbstractSubBoxContent {
   public String getHeaderKey() {
     return "Weapons"; //$NON-NLS-1$
   }
-
-  public Class<? extends AbstractWeaponryContent> getTableContentClass() {
-    return Weaponry2ndEditionContent.class;
-  }
 }

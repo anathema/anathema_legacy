@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal;
 
 import com.itextpdf.text.DocumentException;
+import net.sf.anathema.character.equipment.impl.reporting.content.Weaponry2ndEditionContent;
 import net.sf.anathema.character.equipment.impl.reporting.content.WeaponryContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -9,27 +10,19 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public class WeaponryEncoder extends AbstractContentEncoder<WeaponryContent> {
 
-  private final WeaponryTableEncoder customEncoder;
+  private final WeaponryTableEncoder tableEncoder;
 
   public WeaponryEncoder() {
-    this(null);
+    this(new WeaponryTableEncoder(Weaponry2ndEditionContent.class));
   }
 
-  public WeaponryEncoder(WeaponryTableEncoder customEncoder) {
+  public WeaponryEncoder(WeaponryTableEncoder tableEncoder) {
     super(WeaponryContent.class);
-    this.customEncoder = customEncoder;
+    this.tableEncoder = tableEncoder;
   }
 
-  public void encode(SheetGraphics graphics, final ReportSession session, Bounds bounds) throws DocumentException {
-    WeaponryTableEncoder tableEncoder = createTableEncoder(session);
+  @Override
+  public void encode(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     tableEncoder.encodeTable(graphics, session, bounds);
-  }
-
-  private WeaponryTableEncoder createTableEncoder(ReportSession reportSession) {
-    if (customEncoder != null) {
-      return customEncoder;
-    }
-    WeaponryContent content = createContent(reportSession);
-    return new WeaponryTableEncoder(content.getTableContentClass());
   }
 }
