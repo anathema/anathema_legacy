@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.ExtendedEssenceBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.essence.ExtendedEssenceEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionHealthEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.Extended2ndEditionMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
@@ -31,7 +31,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
 
   @Override
   public ContentEncoder getEssenceEncoder() {
-    return new ExtendedEssenceBoxContentEncoder();
+    return new ExtendedEssenceEncoder();
   }
 
   @Override

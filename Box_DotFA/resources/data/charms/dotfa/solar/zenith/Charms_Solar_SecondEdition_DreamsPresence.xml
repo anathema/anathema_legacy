@@ -85,7 +85,7 @@
 		<prerequisite>
 			<trait id="Presence" value="5" />
 			<essence value="4" />
-			<charmReference id="Solar.Husband-SeducingDemonDance" />
+			<charmReference id="Solar.HypnoticTongueTechnique" />
 		</prerequisite>
 		<cost>
 			<essence cost="10" />

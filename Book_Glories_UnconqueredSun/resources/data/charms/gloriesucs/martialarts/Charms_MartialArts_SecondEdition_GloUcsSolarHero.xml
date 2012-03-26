@@ -31,7 +31,7 @@
                <charmReference id="Solar.SolarHeroForm" />
           </prerequisite>
           <cost>
-               <essence cost="4" />
+               <essence cost="4" text="(optional +1m if a hit)" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
@@ -41,6 +41,7 @@
           <charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Exclusive"/>
           <source source="GloriesUCS" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.ArmorShatteringStrike5" exalt="Solar" group="SolarHeroStyle">
           <prerequisite>

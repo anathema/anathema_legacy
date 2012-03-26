@@ -4,10 +4,10 @@ import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.equipment.impl.reporting.content.WeaponryContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class WeaponryEncoder extends AbstractBoxContentEncoder<WeaponryContent> {
+public class WeaponryEncoder extends AbstractContentEncoder<WeaponryContent> {
 
   private final WeaponryTableEncoder customEncoder;
 

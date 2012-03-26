@@ -36,6 +36,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <source source="GloriesUCS" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.ShiningRazorWind" exalt="Solar" group="Melee">
           <prerequisite>
@@ -106,21 +107,23 @@
      </charm>
      <charm id="Solar.ImmortalBladeTriumphant" exalt="Solar" group="Melee">
           <prerequisite>
-               <trait id="Melee" value="7" />
-               <essence value="7" />
-               <charmReference id="Solar.HeavenlyGuardianDefense" />
+               <trait id="Melee" value="5" />
+               <essence value="5" />
+               <charmReference id="Solar.CallBlade" />
+               <charmReference id="Solar.FireandStonesStrike" />
+               <charmReference id="Solar.ProtectionCelestialBliss" />
           </prerequisite>
           <cost>
                <essence cost="15m" />
                <willpower cost="1" />
           </cost>
           <duration amount="1" unit="scene" />
-          <charmtype type="Simple">
-              <special speed="7" turntype="Tick" defense="-4"/>
-          </charmtype>
+          <charmtype type="Simple"/>
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="GloriesUCS" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Solar.DualSlayingPosture" exalt="Solar" group="Melee">
           <prerequisite>

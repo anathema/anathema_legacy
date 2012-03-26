@@ -4,20 +4,20 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.willpower.WillpowerContent;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
-import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractBoxContentEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
-public class SimpleWillpowerEncoder extends AbstractBoxContentEncoder<WillpowerContent> {
+public class SimpleWillpowerEncoder extends AbstractContentEncoder<WillpowerContent> {
 
   public SimpleWillpowerEncoder() {
     super(WillpowerContent.class);
   }
 
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
-    PdfTraitEncoder traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
+    PdfTraitEncoder traitEncoder = PdfTraitEncoder.createLargeTraitEncoder();
     WillpowerContent content = createContent(reportSession);
     float padding = PADDING / 2f;
     float width = bounds.width - 2 * padding;

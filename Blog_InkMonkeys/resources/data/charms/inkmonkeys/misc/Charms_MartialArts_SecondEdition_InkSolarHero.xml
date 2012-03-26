@@ -69,7 +69,7 @@
 			<charmReference id="Solar.DragonCoilTechnique" />
 		</prerequisite>
 		<cost>
-			<essence cost="5" />
+			<essence cost="9" />
 		</cost>
 		<duration amount="1" unit="action" />
 		<charmtype type="Reflexive">
@@ -79,6 +79,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
         <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
+		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.TitanStraighteningMethod" exalt="Solar" group="SolarHeroStyle">
 		<prerequisite>
@@ -96,6 +97,7 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
         <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
+		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.TeahouseShatteringSymphony" exalt="Solar" group="SolarHeroStyle">
 		<prerequisite>
@@ -154,7 +156,7 @@
 			<charmReference id="Solar.DomeShatteringSmite" />
 		</prerequisite>
 		<cost>
-			<essence cost="-" text="(2m, 1wp)" />
+			<essence cost="-" text="(6m, 1wp)" />
 		</cost>
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
@@ -164,6 +166,7 @@
         <charmAttribute attribute="Exclusive"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="InkMonkeys" />
+		<source source="ScrollErrata" />
 	</charm>
 	<charm id="Solar.SplitTheChase" exalt="Solar" group="SolarHeroStyle">
 		<prerequisite>
@@ -468,7 +471,7 @@
 			<charmReference id="Solar.PoundingHammerDevastationTechnique" />
 		</prerequisite>
 		<cost>
-			<essence cost="-" text="(6m, 1wp)"/>
+			<essence cost="-" text="(10m, 1wp)"/>
 		</cost>
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
@@ -478,6 +481,7 @@
 		<charmAttribute attribute="Native" visualize="true" />
         <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
+		<source source="ScrollErrata" />
 	</charm>
 
 

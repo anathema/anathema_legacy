@@ -23,7 +23,7 @@ public class DotBoxContentEncoder implements ContentEncoder {
     this.traitMax = traitMax;
     this.trait = trait;
     this.resources = resources;
-    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder();
+    this.traitEncoder = PdfTraitEncoder.createLargeTraitEncoder();
     this.traitHeaderKey = traitHeaderKey;
   }
 

@@ -87,5 +87,6 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <source source="GloriesUCS" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>

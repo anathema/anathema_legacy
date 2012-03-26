@@ -4,6 +4,7 @@ package net.sf.anathema.character.reporting.pdf.rendering;
 public interface EncoderIds {
 
   String ABILITIES_WITH_CRAFTS_AND_SPECIALTIES = "AbilitiesWithCraftsAndSpecialties";
+  String ABILITIES_WITH_SPECIALS_TWO_COLUMN = "AbilitiesWithSpecialtiesTwoColumn";
   String ANIMA = "Anima";
   String ARSENAL = "Arsenal";
   String ATTRIBUTES = "Attributes";
@@ -11,6 +12,7 @@ public interface EncoderIds {
   String COMBAT = "Combat";
   String COMBOS = "Combos";
   String ESSENCE_SIMPLE = "EssenceSimple";
+  String ESSENCE_EXTENDED = "EssenceExtended";
   String EXPERIENCE = "Experience";
   String GENERIC_CHARMS = "GenericCharms";
   String GREAT_CURSE = "GreatCurse";

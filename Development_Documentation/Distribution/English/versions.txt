@@ -15,6 +15,7 @@ http://anathema.github.com
 * Errata'd Orichalcum
 * Changed Solar Charms
 * Changed Dragon-Blooded Charms
+* Changed Sidereal Charms
 * Added "Shield#" & "Thrust" Tags
 * Combos no longer cost XP or BP and drop some editing restrictions
 

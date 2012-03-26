@@ -13,12 +13,11 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatCo
 public class PdfTraitEncoder {
 
   public static final int LARGE_DOT_SIZE = 10;
-
   public static final int SMALL_DOT_SPACING = 2;
   public static final int DOT_PADDING = 2;
 
-  public static PdfTraitEncoder createMediumTraitEncoder() {
-    return createTraitEncoder(8);
+  public static PdfTraitEncoder createLargeTraitEncoder() {
+    return createTraitEncoder(LARGE_DOT_SIZE);
   }
 
   public static PdfTraitEncoder createSmallTraitEncoder() {
