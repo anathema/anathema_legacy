@@ -17,6 +17,8 @@ http://anathema.github.com
 * Changed Dragon-Blooded Charms
 * Changed Sidereal Charms
 * Added "Shield#" & "Thrust" Tags
+* Soak from multiple worn armor no longer stacks, only the highest applies.
+* Equipment that modifies various pools no longer stacks, only the highest applies.
 * Combos no longer cost XP or BP and drop some editing restrictions
 
 Anathema no longer supports First Edition or "classic" Second Edition.
