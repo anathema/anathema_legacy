@@ -1,8 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.page;
 
-import net.disy.commons.core.text.font.FontStyle;
-import net.sf.anathema.framework.styledtext.presentation.TextFormat;
-
 public interface IVoidStateFormatConstants {
 
   int HEADER_FONT_SIZE = 9;
@@ -18,10 +15,6 @@ public interface IVoidStateFormatConstants {
   float PADDING = 10f;
   float SMALL_SYMBOL_HEIGHT = FONT_SIZE;
   float TEXT_PADDING = LINE_HEIGHT / 2f;
-  float TITLE_HEIGHT = 14f;
-  float HEALTH_RECT_SIZE = 7f;
-  TextFormat DEFAULT_TEXT_FORMAT = new TextFormat(FontStyle.PLAIN, false, FONT_SIZE);
-  float WEAPON_HEIGHT_FIRST_EDITION = 129;
-  float WEAPON_HEIGHT_SECOND_EDITION = 102;
+  float WEAPON_HEIGHT_SECOND_EDITION = 114;
   float TYPE_LONG_FORM_CUTOFF = 20;
 }

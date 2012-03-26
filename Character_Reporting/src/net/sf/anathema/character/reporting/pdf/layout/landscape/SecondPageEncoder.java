@@ -27,7 +27,7 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.PANOP
 public class SecondPageEncoder implements PageEncoder {
 
   private static final int COMBAT_HEIGHT = 125;
-  private static final int ARMOUR_HEIGHT = 80;
+  private static final int ARMOUR_HEIGHT = 68;
   private static final int HEALTH_HEIGHT = 110;
   private PageSize pageSize;
   private EncoderRegistry encoders;
@@ -51,7 +51,7 @@ public class SecondPageEncoder implements PageEncoder {
     LayoutField combat = page.place(COMBAT).rightOf(genericCharms).withHeight(COMBAT_HEIGHT).andColumnSpan(2).now();
     LayoutField health = page.place(HEALTH_AND_MOVEMENT).below(combat).withHeight(HEALTH_HEIGHT).andColumnSpan(2).now();
     LayoutField panoply = page.place(PANOPLY).below(health).withHeight(ARMOUR_HEIGHT).andColumnSpan(2).now();
-    LayoutField arsenal = page.place(ARSENAL).below(panoply).withHeight(120).andColumnSpan(2).now();
+    LayoutField arsenal = page.place(ARSENAL).below(panoply).withHeight(132).andColumnSpan(2).now();
     LayoutField essence = page.place(ESSENCE_EXTENDED).below(arsenal).fillToBottomOfPage().andColumnSpan(2).now();
     encodeAdditionalMagicPages(document, graphics, session);
   }

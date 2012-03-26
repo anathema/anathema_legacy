@@ -25,7 +25,7 @@ public class FirstPageEncoder implements PageEncoder {
   private static final int VIRTUE_HEIGHT = 72;
   private static final int SOCIAL_COMBAT_HEIGHT = 115;
   private static final int WILLPOWER_HEIGHT = 43;
-  private static final int ARMOUR_HEIGHT = 80;
+  private static final int ARMOUR_HEIGHT = 68;
   private static final int HEALTH_HEIGHT = 99;
   private EncoderRegistry encoders;
   private IResources resources;
