@@ -46,6 +46,11 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   }
 
   @Override
+  public String toString() {
+    return resources.getString("CharacterModule.Reporting.LandscapeSheet.Name");
+  }
+
+  @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
     ICharacter character = (ICharacter) item.getItemData();

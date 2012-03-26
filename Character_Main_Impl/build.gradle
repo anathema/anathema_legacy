@@ -11,6 +11,11 @@ dependencies {
 }
 
 sourceSets {
+  main {
+    resources {
+      srcDir 'resources'
+    }
+  }
   test {
     java {
       srcDir 'test'
