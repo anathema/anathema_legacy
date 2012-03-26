@@ -41,121 +41,121 @@ public class EquipmentModifiers implements IEquipmentModifiers
 	
 	@Override
 	public int getDDVMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getDDVMod();
-		return total;
+			highest = stat.getDDVMod() > highest ? stat.getDDVMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getJoinBattleMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getJoinBattleMod();
-		return total;
+			highest = stat.getJoinBattleMod() > highest ? stat.getJoinBattleMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getJoinDebateMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getJoinDebateMod();
-		return total;
+			highest = stat.getJoinDebateMod() > highest ? stat.getJoinDebateMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getJoinWarMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getJoinWarMod();
-		return total;
+			highest = stat.getJoinWarMod() > highest ? stat.getJoinWarMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getMDDVMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getMDDVMod();
-		return total;
+			highest = stat.getMDDVMod() > highest ? stat.getMDDVMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getMPDVMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getMPDVMod();
-		return total;
+			highest = stat.getMPDVMod() > highest ? stat.getMPDVMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getMeleeAccuracyMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getMeleeAccuracyMod();
-		return total;
+			highest = stat.getMeleeAccuracyMod() > highest ? stat.getMeleeAccuracyMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getMeleeDamageMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getMeleeDamageMod();
-		return total;
+			highest = stat.getMeleeDamageMod() > highest ? stat.getMeleeDamageMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getMeleeRateMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getMeleeRateMod();
-		return total;
+			highest = stat.getMeleeRateMod() > highest ? stat.getMeleeRateMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getMeleeSpeedMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getMeleeSpeedMod();
-		return total;
+			highest = stat.getMeleeSpeedMod() < highest ? stat.getMeleeSpeedMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getPDVMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getPDVMod();
-		return total;
+			highest = stat.getPDVMod() > highest ? stat.getPDVMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getRangedAccuracyMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getRangedAccuracyMod();
-		return total;
+			highest = stat.getRangedAccuracyMod() > highest ? stat.getRangedAccuracyMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getRangedDamageMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getRangedDamageMod();
-		return total;
+			highest = stat.getRangedDamageMod() > highest ? stat.getRangedDamageMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getRangedRateMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getRangedRateMod();
-		return total;
+			highest = stat.getRangedRateMod() > highest ? stat.getRangedRateMod() : highest;
+		return highest;
 	}
 
 	@Override
 	public int getRangedSpeedMod() {
-		int total = 0;
+		int highest = 0;
 		for (ITraitModifyingStats stat : stats)
-			total += stat.getMeleeSpeedMod();
-		return total;
+			highest = stat.getRangedSpeedMod() < highest ? stat.getRangedSpeedMod() : highest;
+		return highest;
 	}
 }
