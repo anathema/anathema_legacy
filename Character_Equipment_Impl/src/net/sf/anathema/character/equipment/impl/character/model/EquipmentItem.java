@@ -1,11 +1,5 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.MagicalMaterial;
@@ -13,23 +7,24 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.ItemAttunementEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArmourStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArtifactStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyShieldStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyTraitModifyingStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyWeaponStats;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
-import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class EquipmentItem implements IEquipmentItem {
 
@@ -91,13 +86,7 @@ public class EquipmentItem implements IEquipmentItem {
         if (input instanceof IWeaponStats) {
           return new ProxyWeaponStats((IWeaponStats) input, material);
         }
-        if (input instanceof IArtifactStats) {
-          return new ProxyArtifactStats((IArtifactStats) input, material);
-        }
-        if (input instanceof ITraitModifyingStats) {
-          return new ProxyTraitModifyingStats((ITraitModifyingStats) input, material);
-        }
-        return new ProxyShieldStats((IShieldStats) input, material);
+        return input;
       }
     });
   }

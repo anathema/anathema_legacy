@@ -87,7 +87,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     return item;
   }
 
-  protected final void initItem(final IEquipmentItem item) {
+  private void initItem(final IEquipmentItem item) {
     equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
       @Override
       public void execute(ICollectionListener<IEquipmentItem> input) {
