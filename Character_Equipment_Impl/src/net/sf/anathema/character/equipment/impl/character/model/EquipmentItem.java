@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -28,6 +27,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static net.disy.commons.core.util.ArrayUtilities.transform;
+import static net.sf.anathema.character.equipment.MaterialComposition.Variable;
+
 public class EquipmentItem implements IEquipmentItem {
 
   private final Set<IEquipmentStats> printedStats = new HashSet<IEquipmentStats>();
@@ -36,7 +38,7 @@ public class EquipmentItem implements IEquipmentItem {
   private final MagicalMaterial material;
 
   public EquipmentItem(IEquipmentTemplate template, MagicalMaterial material, ItemAttunementEvaluator provider) {
-    if (template.getComposition() == MaterialComposition.Variable && material == null) {
+    if (template.getComposition() == Variable && material == null) {
       throw new MissingMaterialException("Variable material items must be created with material."); //$NON-NLS-1$
     }
     this.template = template;
@@ -60,8 +62,11 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   private boolean hasAttunementType(IArtifactStats stats, ArtifactAttuneType[] types) {
-    for (ArtifactAttuneType type : types)
-      if (type.equals(stats.getAttuneType())) return true;
+    for (ArtifactAttuneType type : types) {
+      if (type.equals(stats.getAttuneType())) {
+        return true;
+      }
+    }
     return false;
   }
 
@@ -72,28 +77,7 @@ public class EquipmentItem implements IEquipmentItem {
 
   @Override
   public IEquipmentStats[] getStats() {
-    return ArrayUtilities.transform(getViews(), IEquipmentStats.class,
-            new ITransformer<IEquipmentStats, IEquipmentStats>() {
-              @Override
-              public IEquipmentStats transform(IEquipmentStats input) {
-                BaseMaterial baseMaterial = createBaseMaterial();
-                if (input instanceof IArmourStats) {
-                  return new ProxyArmourStats((IArmourStats) input, baseMaterial);
-                }
-                if (input instanceof IWeaponStats) {
-                  return new ProxyWeaponStats((IWeaponStats) input, baseMaterial);
-                }
-                return input;
-              }
-
-              private BaseMaterial createBaseMaterial() {
-                if (MaterialComposition.Variable == template.getComposition()) {
-                  return new ReactiveBaseMaterial(material);
-                } else {
-                  return new InertBaseMaterial();
-                }
-              }
-            });
+    return transform(getViews(), IEquipmentStats.class, new MaterialWrapper());
   }
 
   private IEquipmentStats[] getViews() {
@@ -198,5 +182,32 @@ public class EquipmentItem implements IEquipmentItem {
 
   public String toString() {
     return template.getName() + (material != null ? " (" + material.toString() + ")" : "");
+  }
+
+  private class MaterialWrapper implements ITransformer<IEquipmentStats, IEquipmentStats> {
+
+    @Override
+    public IEquipmentStats transform(IEquipmentStats stats) {
+      BaseMaterial baseMaterial = createBaseMaterial();
+      return createStatsForMaterial(stats, baseMaterial);
+    }
+
+    private IEquipmentStats createStatsForMaterial(IEquipmentStats stats, BaseMaterial baseMaterial) {
+      if (stats instanceof IArmourStats) {
+        return new ProxyArmourStats((IArmourStats) stats, baseMaterial);
+      }
+      if (stats instanceof IWeaponStats) {
+        return new ProxyWeaponStats((IWeaponStats) stats, baseMaterial);
+      }
+      return stats;
+    }
+
+    private BaseMaterial createBaseMaterial() {
+      if (Variable == template.getComposition()) {
+        return new ReactiveBaseMaterial(material);
+      } else {
+        return new InertBaseMaterial();
+      }
+    }
   }
 }

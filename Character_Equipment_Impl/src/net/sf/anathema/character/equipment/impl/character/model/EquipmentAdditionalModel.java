@@ -1,13 +1,21 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
 import com.db4o.query.Predicate;
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
+import net.sf.anathema.character.equipment.impl.character.model.print.EquipmentPrintModel;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
+import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -15,7 +23,11 @@ import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
+import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.collection.ICollectionListener;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
 import java.util.ArrayList;
@@ -24,19 +36,29 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel implements IEquipmentCharacterOptionProvider {
+public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements IEquipmentCharacterOptionProvider, IEquipmentAdditionalModel {
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
   private final ICharacterType characterType;
   private final MagicalMaterial defaultMaterial;
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<IEquipmentItem>();
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = new Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>>();
   private final IEquipmentCharacterDataProvider dataProvider;
+  private final ChangeControl modelChangeControl = new ChangeControl();
+  private final GenericControl<ICollectionListener<IEquipmentItem>> equipmentItemControl = new GenericControl<ICollectionListener<IEquipmentItem>>();
+  private final List<IEquipmentItem> equipmentItems = new ArrayList<IEquipmentItem>();
+  private final IEquipmentPrintModel printModel;
+  private final IChangeListener itemChangePropagator = new IChangeListener() {
+    @Override
+    public void changeOccurred() {
+      modelChangeControl.fireChangedEvent();
+    }
+  };
 
   public EquipmentAdditionalModel(ICharacterType characterType, IArmourStats naturalArmour,
                                   IEquipmentTemplateProvider equipmentTemplateProvider, ICharacterModelContext context,
                                   final IEquipmentCharacterDataProvider dataProvider,
                                   IEquipmentTemplate... naturalWeapons) {
-    super(naturalArmour);
+    this.printModel = new EquipmentPrintModel(this, naturalArmour);
     this.characterType = characterType;
     this.defaultMaterial = evaluateDefaultMaterial();
     this.equipmentTemplateProvider = equipmentTemplateProvider;
@@ -48,37 +70,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel i
       IEquipmentItem item = createItem(template, null);
       naturalWeaponItems.add(item);
     }
-
-    context.getSpecialtyContext().addSpecialtyListChangeListener(new IChangeListener() {
-
-      @Override
-      public void changeOccurred() {
-        for (IEquipmentItem item : getEquipmentItems())
-          for (IEquipmentStats stats : item.getStats()) {
-            List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
-            if (list == null) {
-              return;
-            }
-            List<IEquipmentStatsOption> optionsList = new ArrayList<IEquipmentStatsOption>(list);
-            for (IEquipmentStatsOption option : optionsList) {
-              if (!characterStillHasCorrespondingSpecialty(option)) {
-                disableStatOption(item, stats, option);
-              }
-            }
-          }
-      }
-
-      private boolean characterStillHasCorrespondingSpecialty(IEquipmentStatsOption option) {
-        try {
-          AbilityType trait = AbilityType.valueOf(option.getType());
-          INamedGenericTrait[] specialties = dataProvider.getSpecialties(trait);
-          ArrayUtilities.indexOf(specialties, option.getUnderlyingTrait());
-          return true;
-        } catch (IllegalArgumentException e) {
-          return false;
-        }
-      }
-    });
+    context.getSpecialtyContext().addSpecialtyListChangeListener(new SpecialtyPrintRemover(dataProvider));
   }
 
   @Override
@@ -123,13 +115,11 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel i
     return idSet.toArray(new String[idSet.size()]);
   }
 
-  @Override
-  protected IEquipmentTemplate loadEquipmentTemplate(String templateId) {
+  private IEquipmentTemplate loadEquipmentTemplate(String templateId) {
     return equipmentTemplateProvider.loadTemplate(templateId);
   }
 
-  @Override
-  protected IEquipmentItem getSpecialManagedItem(String templateId) {
+  private IEquipmentItem getSpecialManagedItem(String templateId) {
     for (IEquipmentItem item : naturalWeaponItems) {
       if (templateId.equals(item.getTemplateId())) {
         return item;
@@ -210,5 +200,158 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel i
       }
     }
     return transferred;
+  }
+
+  @Override
+  public IEquipmentPrintModel getPrintModel() {
+    return printModel;
+  }
+
+  @Override
+  public AdditionalModelType getAdditionalModelType() {
+    return AdditionalModelType.Miscellaneous;
+  }
+
+  @Override
+  public String getTemplateId() {
+    return IEquipmentAdditionalModelTemplate.ID;
+  }
+
+  @Override
+  public IEquipmentItem[] getEquipmentItems() {
+    return equipmentItems.toArray(new IEquipmentItem[equipmentItems.size()]);
+  }
+
+  @Override
+  public IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material) {
+    IEquipmentTemplate template = loadEquipmentTemplate(templateId);
+    if (template == null) {
+      return getSpecialManagedItem(templateId);
+    }
+    return addEquipmentObjectFor(template, material);
+  }
+
+  private IEquipmentItem addEquipmentObjectFor(IEquipmentTemplate template, MagicalMaterial material) {
+    IEquipmentItem item = createItem(template, material);
+    equipmentItems.add(item);
+    return item;
+  }
+
+  private IEquipmentItem createItem(IEquipmentTemplate template, MagicalMaterial material) {
+    EquipmentItem item = new EquipmentItem(template, material, getCharacterDataProvider());
+    initItem(item);
+    return item;
+  }
+
+  private void initItem(final IEquipmentItem item) {
+    equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
+      @Override
+      public void execute(ICollectionListener<IEquipmentItem> input) {
+        input.itemAdded(item);
+      }
+    });
+    modelChangeControl.fireChangedEvent();
+    item.addChangeListener(itemChangePropagator);
+  }
+
+  @Override
+  public void removeItem(final IEquipmentItem item) {
+    equipmentItems.remove(item);
+    equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
+      @Override
+      public void execute(final ICollectionListener<IEquipmentItem> input) {
+        input.itemRemoved(item);
+      }
+    });
+    item.removeChangeListener(itemChangePropagator);
+    modelChangeControl.fireChangedEvent();
+  }
+
+  @Override
+  public void refreshItems() {
+    for (IEquipmentItem item : new ArrayList<IEquipmentItem>(equipmentItems)) {
+      if (canBeRemoved(item)) {
+        IEquipmentItem refreshedItem = refreshItem(item);
+        if (getCharacterOptionProvider().transferOptions(item, refreshedItem)) {
+          initItem(refreshedItem);
+        }
+      }
+    }
+  }
+
+  private IEquipmentItem refreshItem(final IEquipmentItem item) {
+    String templateId = item.getTemplateId();
+    MagicalMaterial material = item.getMaterial();
+    removeItem(item);
+    return addEquipmentObjectFor(templateId, material);
+  }
+
+  @Override
+  public void addEquipmentObjectListener(final ICollectionListener<IEquipmentItem> listener) {
+    equipmentItemControl.addListener(listener);
+  }
+
+  @Override
+  public MaterialComposition getMaterialComposition(final String templateId) {
+    IEquipmentTemplate template = loadEquipmentTemplate(templateId);
+    return template.getComposition();
+  }
+
+  @Override
+  public MagicalMaterial getMagicalMaterial(final String templateId) {
+    IEquipmentTemplate template = loadEquipmentTemplate(templateId);
+    return template.getMaterial();
+  }
+
+  @Override
+  public int getTotalAttunementCost() {
+    int total = 0;
+    for (IEquipmentItem item : equipmentItems) {
+      for (IEquipmentStats stats : item.getStats())
+        if (stats instanceof IArtifactStats && item.getAttunementState() == ((IArtifactStats) stats).getAttuneType())
+          total += ((IArtifactStats) stats).getAttuneCost();
+    }
+    return total;
+  }
+
+  @Override
+  public void addChangeListener(final IChangeListener listener) {
+    modelChangeControl.addChangeListener(listener);
+  }
+
+  private class SpecialtyPrintRemover implements IChangeListener {
+    private final IEquipmentCharacterDataProvider dataProvider;
+
+    public SpecialtyPrintRemover(IEquipmentCharacterDataProvider dataProvider) {
+      this.dataProvider = dataProvider;
+    }
+
+    @Override
+    public void changeOccurred() {
+      for (IEquipmentItem item : getEquipmentItems())
+        for (IEquipmentStats stats : item.getStats()) {
+          List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
+          if (list == null) {
+            return;
+          }
+          List<IEquipmentStatsOption> optionsList = new ArrayList<IEquipmentStatsOption>(list);
+          for (IEquipmentStatsOption option : optionsList) {
+            if (!characterStillHasCorrespondingSpecialty(option)) {
+              disableStatOption(item, stats, option);
+            }
+          }
+        }
+    }
+
+    private boolean characterStillHasCorrespondingSpecialty(IEquipmentStatsOption option) {
+      try {
+        AbilityType trait = AbilityType.valueOf(option.getType());
+        INamedGenericTrait[] specialties = dataProvider.getSpecialties(trait);
+        ArrayUtilities.indexOf(specialties, option.getUnderlyingTrait());
+        return true;
+      } catch (IllegalArgumentException e) {
+        return false;
+      }
+    }
   }
 }
