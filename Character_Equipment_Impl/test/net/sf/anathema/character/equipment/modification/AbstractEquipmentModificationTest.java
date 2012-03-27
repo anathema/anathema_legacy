@@ -2,11 +2,11 @@ package net.sf.anathema.character.equipment.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.AccuracyModification;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DamageModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DefenseModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.FatigueModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.HardnessModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.MobilityPenaltyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RangeModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RateModification;
@@ -133,7 +133,7 @@ public abstract class AbstractEquipmentModificationTest {
     assertDefenseModification(1, 1, WeaponStatsType.Flame);
   }
 
-  private BaseMaterial getBaseMaterial() {
-    return new BaseMaterial(getMagicMaterial());
+  private ReactiveBaseMaterial getBaseMaterial() {
+    return new ReactiveBaseMaterial(getMagicMaterial());
   }
 }

@@ -9,6 +9,8 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArmourStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.InertBaseMaterial;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
@@ -74,20 +76,25 @@ public class EquipmentItem implements IEquipmentItem {
 
   @Override
   public IEquipmentStats[] getStats() {
-    IEquipmentStats[] views = getViews();
-    if (template.getComposition() != MaterialComposition.Variable) {
-      return views;
-    }
-    return ArrayUtilities.transform(views, IEquipmentStats.class, new ITransformer<IEquipmentStats, IEquipmentStats>() {
+    return ArrayUtilities.transform(getViews(), IEquipmentStats.class, new ITransformer<IEquipmentStats, IEquipmentStats>() {
       @Override
-      public IEquipmentStats transform(final IEquipmentStats input) {
+      public IEquipmentStats transform(IEquipmentStats input) {
+        BaseMaterial baseMaterial = createBaseMaterial();
         if (input instanceof IArmourStats) {
-          return new ProxyArmourStats((IArmourStats) input, new BaseMaterial(material));
+          return new ProxyArmourStats((IArmourStats) input, baseMaterial);
         }
         if (input instanceof IWeaponStats) {
-          return new ProxyWeaponStats((IWeaponStats) input, new BaseMaterial(material));
+          return new ProxyWeaponStats((IWeaponStats) input, baseMaterial);
         }
         return input;
+      }
+
+      private BaseMaterial createBaseMaterial() {
+        if (MaterialComposition.Variable == template.getComposition()) {
+          return new ReactiveBaseMaterial(material);
+        } else {
+          return new InertBaseMaterial();
+        }
       }
     });
   }

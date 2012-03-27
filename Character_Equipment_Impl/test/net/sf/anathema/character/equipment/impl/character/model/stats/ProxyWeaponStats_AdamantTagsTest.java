@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -44,7 +44,7 @@ public class ProxyWeaponStats_AdamantTagsTest {
   }
 
   private List<IIdentificate> getModifiedTags(MagicalMaterial material) {
-    ProxyWeaponStats stats = new ProxyWeaponStats(original, new BaseMaterial(material));
+    ProxyWeaponStats stats = new ProxyWeaponStats(original, new ReactiveBaseMaterial(material));
     return Arrays.asList(stats.getTags());
   }
 

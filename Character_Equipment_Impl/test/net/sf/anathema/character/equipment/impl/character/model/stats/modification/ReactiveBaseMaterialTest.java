@@ -6,14 +6,14 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class BaseMaterialTest {
+public class ReactiveBaseMaterialTest {
   @Test
   public void equalsOtherBasedOnMaterial() throws Exception {
-    assertThat(new BaseMaterial(MagicalMaterial.Jade).equals(new BaseMaterial(MagicalMaterial.Jade)), is(true));
+    assertThat(new ReactiveBaseMaterial(MagicalMaterial.Jade).equals(new ReactiveBaseMaterial(MagicalMaterial.Jade)), is(true));
   }
 
   @Test
   public void doesNotEqualOnSameBasis() throws Exception {
-    assertThat(new BaseMaterial(MagicalMaterial.Jade).equals(new BaseMaterial(MagicalMaterial.VitriolJade)), is(false));
+    assertThat(new ReactiveBaseMaterial(MagicalMaterial.Jade).equals(new ReactiveBaseMaterial(MagicalMaterial.VitriolJade)), is(false));
   }
 }
