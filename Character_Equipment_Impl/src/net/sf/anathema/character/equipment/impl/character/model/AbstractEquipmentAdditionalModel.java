@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.ChangeControl;
@@ -28,7 +27,6 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   protected final ChangeControl modelChangeControl = new ChangeControl();
   private final GenericControl<ICollectionListener<IEquipmentItem>> equipmentItemControl = new GenericControl<ICollectionListener<IEquipmentItem>>();
   private final List<IEquipmentItem> equipmentItems = new ArrayList<IEquipmentItem>();
-  private final IExaltedRuleSet ruleSet;
   private final IEquipmentPrintModel printModel;
   protected final IChangeListener itemChangePropagator = new IChangeListener() {
     @Override
@@ -37,8 +35,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     }
   };
 
-  public AbstractEquipmentAdditionalModel(final IExaltedRuleSet ruleSet, final IArmourStats naturalArmour) {
-    this.ruleSet = ruleSet;
+  public AbstractEquipmentAdditionalModel(IArmourStats naturalArmour) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
   }
 
@@ -82,7 +79,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   }
 
   protected IEquipmentItem createItem(IEquipmentTemplate template, MagicalMaterial material) {
-    EquipmentItem item = new EquipmentItem(template, ruleSet, material, getCharacterDataProvider());
+    EquipmentItem item = new EquipmentItem(template, material, getCharacterDataProvider());
     initItem(item);
     return item;
   }
@@ -133,10 +130,6 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   @Override
   public final void addEquipmentObjectListener(final ICollectionListener<IEquipmentItem> listener) {
     equipmentItemControl.addListener(listener);
-  }
-
-  protected final IExaltedRuleSet getRuleSet() {
-    return ruleSet;
   }
 
   @Override

@@ -11,8 +11,6 @@ import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -35,10 +33,10 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel i
   private final IEquipmentCharacterDataProvider dataProvider;
 
   public EquipmentAdditionalModel(ICharacterType characterType, IArmourStats naturalArmour,
-                                  IEquipmentTemplateProvider equipmentTemplateProvider, IExaltedRuleSet ruleSet,
-                                  ICharacterModelContext context, final IEquipmentCharacterDataProvider dataProvider,
+                                  IEquipmentTemplateProvider equipmentTemplateProvider, ICharacterModelContext context,
+                                  final IEquipmentCharacterDataProvider dataProvider,
                                   IEquipmentTemplate... naturalWeapons) {
-    super(ruleSet, naturalArmour);
+    super(naturalArmour);
     this.characterType = characterType;
     this.defaultMaterial = evaluateDefaultMaterial();
     this.equipmentTemplateProvider = equipmentTemplateProvider;
@@ -115,20 +113,10 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel i
   public String[] getAvailableTemplateIds() {
     final Set<String> idSet = new HashSet<String>();
     equipmentTemplateProvider.queryContainer(new Predicate<IEquipmentTemplate>() {
-      private static final long serialVersionUID = 1L;
 
       @Override
       public boolean match(IEquipmentTemplate candidate) {
-        if (candidate.getStats(getRuleSet()).length > 0) {
-          idSet.add(candidate.getName());
-        } else {
-          for (IExaltedRuleSet rules : ExaltedRuleSet.values()) {
-            if (candidate.getStats(rules).length > 0) {
-              return false;
-            }
-          }
-          idSet.add(candidate.getName());
-        }
+        idSet.add(candidate.getName());
         return false;
       }
     });

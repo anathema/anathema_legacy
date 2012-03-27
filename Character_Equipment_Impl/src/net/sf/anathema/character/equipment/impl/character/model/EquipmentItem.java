@@ -18,7 +18,6 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -34,18 +33,15 @@ public class EquipmentItem implements IEquipmentItem {
   private final Set<IEquipmentStats> printedStats = new HashSet<IEquipmentStats>();
   private final ChangeControl changeControl = new ChangeControl();
   private final IEquipmentTemplate template;
-  private final IExaltedRuleSet ruleSet;
   private final MagicalMaterial material;
 
-  public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet, MagicalMaterial material,
-                       ItemAttunementEvaluator provider) {
+  public EquipmentItem(IEquipmentTemplate template, MagicalMaterial material, ItemAttunementEvaluator provider) {
     if (template.getComposition() == MaterialComposition.Variable && material == null) {
       throw new MissingMaterialException("Variable material items must be created with material."); //$NON-NLS-1$
     }
     this.template = template;
-    this.ruleSet = ruleSet;
     this.material = material != null ? material : template.getMaterial();
-    Collections.addAll(printedStats, template.getStats(ruleSet));
+    Collections.addAll(printedStats, template.getStats(ExaltedRuleSet.SecondEdition));
     initPrintStats(provider);
   }
 
@@ -76,34 +72,32 @@ public class EquipmentItem implements IEquipmentItem {
 
   @Override
   public IEquipmentStats[] getStats() {
-    return ArrayUtilities.transform(getViews(), IEquipmentStats.class, new ITransformer<IEquipmentStats, IEquipmentStats>() {
-      @Override
-      public IEquipmentStats transform(IEquipmentStats input) {
-        BaseMaterial baseMaterial = createBaseMaterial();
-        if (input instanceof IArmourStats) {
-          return new ProxyArmourStats((IArmourStats) input, baseMaterial);
-        }
-        if (input instanceof IWeaponStats) {
-          return new ProxyWeaponStats((IWeaponStats) input, baseMaterial);
-        }
-        return input;
-      }
+    return ArrayUtilities.transform(getViews(), IEquipmentStats.class,
+            new ITransformer<IEquipmentStats, IEquipmentStats>() {
+              @Override
+              public IEquipmentStats transform(IEquipmentStats input) {
+                BaseMaterial baseMaterial = createBaseMaterial();
+                if (input instanceof IArmourStats) {
+                  return new ProxyArmourStats((IArmourStats) input, baseMaterial);
+                }
+                if (input instanceof IWeaponStats) {
+                  return new ProxyWeaponStats((IWeaponStats) input, baseMaterial);
+                }
+                return input;
+              }
 
-      private BaseMaterial createBaseMaterial() {
-        if (MaterialComposition.Variable == template.getComposition()) {
-          return new ReactiveBaseMaterial(material);
-        } else {
-          return new InertBaseMaterial();
-        }
-      }
-    });
+              private BaseMaterial createBaseMaterial() {
+                if (MaterialComposition.Variable == template.getComposition()) {
+                  return new ReactiveBaseMaterial(material);
+                } else {
+                  return new InertBaseMaterial();
+                }
+              }
+            });
   }
 
   private IEquipmentStats[] getViews() {
-    IEquipmentStats[] statsArray = template.getStats(ruleSet);
-    if (ExaltedRuleSet.SecondEdition != ruleSet) {
-      return statsArray;
-    }
+    IEquipmentStats[] statsArray = template.getStats(ExaltedRuleSet.SecondEdition);
     List<IEquipmentStats> views = new ArrayList<IEquipmentStats>();
     for (IEquipmentStats stats : statsArray) {
       if (stats instanceof IWeaponStats) {
