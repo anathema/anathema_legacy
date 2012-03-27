@@ -8,6 +8,7 @@ import net.sf.anathema.character.equipment.character.ItemAttunementEvaluator;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArmourStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyWeaponStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
@@ -81,10 +82,10 @@ public class EquipmentItem implements IEquipmentItem {
       @Override
       public IEquipmentStats transform(final IEquipmentStats input) {
         if (input instanceof IArmourStats) {
-          return new ProxyArmourStats((IArmourStats) input, material);
+          return new ProxyArmourStats((IArmourStats) input, new BaseMaterial(material));
         }
         if (input instanceof IWeaponStats) {
-          return new ProxyWeaponStats((IWeaponStats) input, material);
+          return new ProxyWeaponStats((IWeaponStats) input, new BaseMaterial(material));
         }
         return input;
       }

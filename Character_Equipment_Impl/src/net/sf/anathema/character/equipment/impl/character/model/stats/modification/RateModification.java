@@ -1,13 +1,11 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
-
 public class RateModification implements IStatsModification {
 
   private BaseMaterial baseMaterial;
 
-  public RateModification(MagicalMaterial material) {
-    this.baseMaterial = new BaseMaterial(material);
+  public RateModification(BaseMaterial material) {
+    this.baseMaterial = material;
   }
 
   @Override
