@@ -47,8 +47,8 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel i
       if (template == null) {
         continue;
       }
-      final IEquipmentItem item = new EquipmentItem(template, ruleSet, null, getCharacterDataProvider());
-      naturalWeaponItems.add(initItem(item));
+      IEquipmentItem item = createItem(template, null);
+      naturalWeaponItems.add(item);
     }
 
     context.getSpecialtyContext().addSpecialtyListChangeListener(new IChangeListener() {
@@ -180,7 +180,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel i
 
   @Override
   public boolean isStatOptionEnabled(IEquipmentItem item, IEquipmentStats stats, IEquipmentStatsOption option) {
-    if (item == null || stats == null) return false;
+    if (item == null || stats == null) {
+      return false;
+    }
     return getOptionsList(item, stats).contains(option);
   }
 

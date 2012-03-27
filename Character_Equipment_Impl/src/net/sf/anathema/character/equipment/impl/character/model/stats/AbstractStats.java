@@ -10,36 +10,34 @@ public abstract class AbstractStats implements IEquipmentStats {
   private boolean useAttunementModifiers = true;
   private MagicalMaterial[] materials = null;
 
+  @Override
   public IIdentificate getName() {
     return name;
   }
 
   public final void setName(IIdentificate name) {
-	if (name == null)
-		name = null;
+    if (name == null) name = null;
     this.name = name;
   }
-  
-  public boolean useAttunementModifiers()
-  {
-	  return useAttunementModifiers;
+
+  @Override
+  public boolean useAttunementModifiers() {
+    return useAttunementModifiers;
   }
-  
-  public void setUseAttunementModifiers(boolean value)
-  {
-	  useAttunementModifiers = value;
+
+  @Override
+  public void setUseAttunementModifiers(boolean value) {
+    useAttunementModifiers = value;
   }
-  
-  public Object[] getApplicableMaterials()
-  {
-	  if (materials != null &&
-		  materials.length == MagicalMaterial.values().length)
-		  return null;
-	  return materials;
+
+  @Override
+  public Object[] getApplicableMaterials() {
+    if (materials != null && materials.length == MagicalMaterial.values().length) return null;
+    return materials;
   }
-  
-  public void setApplicableMaterials(Object[] materials)
-  {
-	  this.materials = (MagicalMaterial[]) materials;
+
+  @Override
+  public void setApplicableMaterials(Object[] materials) {
+    this.materials = (MagicalMaterial[]) materials;
   }
 }

@@ -76,21 +76,26 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   protected abstract IEquipmentTemplate loadEquipmentTemplate(String templateId);
 
   private IEquipmentItem addEquipmentObjectFor(final IEquipmentTemplate template, final MagicalMaterial material) {
-    final IEquipmentItem item = new EquipmentItem(template, ruleSet, material, getCharacterDataProvider());
+    IEquipmentItem item = createItem(template, material);
     equipmentItems.add(item);
-    return initItem(item);
+    return item;
   }
 
-  protected final IEquipmentItem initItem(final IEquipmentItem item) {
+  protected IEquipmentItem createItem(IEquipmentTemplate template, MagicalMaterial material) {
+    EquipmentItem item = new EquipmentItem(template, ruleSet, material, getCharacterDataProvider());
+    initItem(item);
+    return item;
+  }
+
+  protected final void initItem(final IEquipmentItem item) {
     equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
       @Override
-      public void execute(final ICollectionListener<IEquipmentItem> input) {
+      public void execute(ICollectionListener<IEquipmentItem> input) {
         input.itemAdded(item);
       }
     });
     modelChangeControl.fireChangedEvent();
     item.addChangeListener(itemChangePropagator);
-    return item;
   }
 
   @Override
