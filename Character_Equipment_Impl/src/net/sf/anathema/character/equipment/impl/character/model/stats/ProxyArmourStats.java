@@ -39,13 +39,6 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
     return getModifiedValue(new HardnessModification(material), hardness);
   }
 
-  private Integer getModifiedValue(IArmourStatsModification modification, Integer original) {
-    if (original == null) {
-      return null;
-    }
-    return !useAttunementModifiers() ? original : modification.getModifiedValue(original);
-  }
-
   @Override
   public Integer getMobilityPenalty() {
     Integer mobilityPenalty = delegate.getMobilityPenalty();
@@ -90,5 +83,12 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
   @Override
   public boolean representsItemForUseInCombat() {
     return delegate.representsItemForUseInCombat();
+  }
+
+  private Integer getModifiedValue(IArmourStatsModification modification, Integer original) {
+    if (original == null) {
+      return null;
+    }
+    return !useAttunementModifiers() ? original : modification.getModifiedValue(original);
   }
 }

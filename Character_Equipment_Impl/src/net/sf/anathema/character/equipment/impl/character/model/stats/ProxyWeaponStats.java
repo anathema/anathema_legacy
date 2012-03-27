@@ -57,14 +57,6 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
     return getModifiedValue(new AccuracyModification(material), delegate.getAccuracy());
   }
 
-  private Integer getModifiedValue(IStatsModification modification, Integer unmodifiedValue) {
-    if (unmodifiedValue == null) {
-      return null;
-    }
-    return !useAttunementModifiers() ? unmodifiedValue : modification.getModifiedValue(unmodifiedValue,
-            getWeaponStatsType());
-  }
-
   private WeaponStatsType getWeaponStatsType() {
     if (ArrayUtilities.containsValue(getTags(), WeaponTag.BowType)) {
       return WeaponStatsType.Bow;
@@ -170,5 +162,13 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   @Override
   public boolean representsItemForUseInCombat() {
     return delegate.representsItemForUseInCombat();
+  }
+
+  private Integer getModifiedValue(IStatsModification modification, Integer unmodifiedValue) {
+    if (unmodifiedValue == null) {
+      return null;
+    }
+    return !useAttunementModifiers() ? unmodifiedValue : modification.getModifiedValue(unmodifiedValue,
+            getWeaponStatsType());
   }
 }

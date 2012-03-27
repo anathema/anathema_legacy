@@ -13,14 +13,7 @@ public class AccuracyModification implements IStatsModification {
     if (material.isSoulsteelBased()) {
       return input + 2;
     }
-    if (material.isOrichalcumBased()) {
-      if (type.isRanged()) {
-        return input + 1;
-      } else {
-        return input + 2;
-      }
-    }
-    if (material.isMoonsilverBased()) {
+    if (material.isOrichalcumBased() || material.isMoonsilverBased()) {
       if (type.isRanged()) {
         return input + 1;
       } else {

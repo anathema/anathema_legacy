@@ -45,7 +45,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   private final IEquipmentCharacterDataProvider dataProvider;
   private final ChangeControl modelChangeControl = new ChangeControl();
   private final GenericControl<ICollectionListener<IEquipmentItem>> equipmentItemControl = new GenericControl<ICollectionListener<IEquipmentItem>>();
-  private final List<IEquipmentItem> equipmentItems = new ArrayList<IEquipmentItem>();
+  private final EquipmentCollection equipmentItems = new EquipmentCollection();
   private final IEquipmentPrintModel printModel;
   private final IChangeListener itemChangePropagator = new IChangeListener() {
     @Override
@@ -173,14 +173,19 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
   @Override
   public IEquipmentStatsOption[] getEnabledStatOptions(IEquipmentStats stats) {
-    if (stats == null) return new IEquipmentStatsOption[0];
-
+    if (stats == null) {
+      return new IEquipmentStatsOption[0];
+    }
     List<IEquipmentItem> itemList = new ArrayList<IEquipmentItem>();
     itemList.addAll(naturalWeaponItems);
     Collections.addAll(itemList, getEquipmentItems());
-    for (IEquipmentItem item : itemList)
-      for (IEquipmentStats stat : item.getStats())
-        if (stats.equals(stat)) return getEnabledStatOptions(item, stat);
+    for (IEquipmentItem item : itemList) {
+      for (IEquipmentStats stat : item.getStats()) {
+        if (stats.equals(stat)) {
+          return getEnabledStatOptions(item, stat);
+        }
+      }
+    }
     return new IEquipmentStatsOption[0];
   }
 
@@ -219,7 +224,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
   @Override
   public IEquipmentItem[] getEquipmentItems() {
-    return equipmentItems.toArray(new IEquipmentItem[equipmentItems.size()]);
+    return equipmentItems.asArray();
   }
 
   @Override
@@ -269,7 +274,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
   @Override
   public void refreshItems() {
-    for (IEquipmentItem item : new ArrayList<IEquipmentItem>(equipmentItems)) {
+    for (IEquipmentItem item : equipmentItems) {
       if (canBeRemoved(item)) {
         IEquipmentItem refreshedItem = refreshItem(item);
         if (getCharacterOptionProvider().transferOptions(item, refreshedItem)) {
