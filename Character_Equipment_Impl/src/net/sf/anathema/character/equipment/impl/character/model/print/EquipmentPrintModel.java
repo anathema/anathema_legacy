@@ -1,17 +1,16 @@
 package net.sf.anathema.character.equipment.impl.character.model.print;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
-import net.sf.anathema.character.equipment.impl.character.model.natural.TotalArmour;
+import net.sf.anathema.character.equipment.impl.character.model.natural.EffectiveArmour;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EquipmentPrintModel implements IEquipmentPrintModel {
 
@@ -23,6 +22,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
     this.naturalArmour = naturalArmour;
   }
 
+  @Override
   public IArmourStats[] getPrintArmours() {
     List<IArmourStats> printStats = getNaturalArmourList();
     printStats.addAll(getPrintEquipmentList(IArmourStats.class, new ArmourStatsDecorationFactory()));
@@ -35,6 +35,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
     return printStats;
   }
 
+  @Override
   public IWeaponStats[] getPrintWeapons(IResources resources) {
     List<IWeaponStats> printStats = getNaturalWeaponList();
     printStats.addAll(getPrintEquipmentList(IWeaponStats.class, new WeaponStatsDecorationFactory(resources)));
@@ -47,11 +48,6 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
       printStats.addAll(getPrintedStats(item, IWeaponStats.class));
     }
     return printStats;
-  }
-
-  public IShieldStats[] getPrintShield() {
-    List<IShieldStats> printStats = getPrintEquipmentList(IShieldStats.class, new ShieldStatsDecorationFactory());
-    return printStats.toArray(new IShieldStats[printStats.size()]);
   }
 
   private <K extends IEquipmentStats> List<K> getPrintEquipmentList(
@@ -81,8 +77,9 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
     return printedClass.isInstance(stats) && item.isPrintEnabled(stats);
   }
 
-  public final IArmourStats getTotalPrintArmour(IResources resources, int lineCount) {
-    TotalArmour armour = new TotalArmour();
+  @Override
+  public final IArmourStats getEffectivePrintArmour(IResources resources, int lineCount) {
+    EffectiveArmour armour = new EffectiveArmour();
     IArmourStats[] printArmours = getPrintArmours();
     for (int index = 0; index < Math.min(lineCount, printArmours.length); index++) {
       armour.addArmour(printArmours[index]);
