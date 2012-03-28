@@ -13,7 +13,7 @@ public class TotalArmour extends AbstractCombatStats implements IArmourStats {
 
   private int fatigue;
   private int mobilityPenalty;
-  private final Map<HealthType, Integer> soakByHealthType = new HashMap<HealthType, Integer>() {
+  private final Map<HealthType, Integer> naturalSoakByHealthType = new HashMap<HealthType, Integer>() {
 	private static final long serialVersionUID = 1L;
 
 	{
@@ -21,6 +21,15 @@ public class TotalArmour extends AbstractCombatStats implements IArmourStats {
         put(healthType, 0);
       }
     }
+  };
+  private final Map<HealthType, Integer> equipmentSoakByHealthType = new HashMap<HealthType, Integer>() {
+	private static final long serialVersionUID = 1L;
+
+	{
+	  for (HealthType healthType : HealthType.values()) {
+	    put(healthType, 0);
+	  }
+	}
   };
   private final Map<HealthType, Integer> hardnessByHealthType = new HashMap<HealthType, Integer>() {
 	private static final long serialVersionUID = 1L;
@@ -45,7 +54,7 @@ public class TotalArmour extends AbstractCombatStats implements IArmourStats {
   }
 
   public Integer getSoak(HealthType type) {
-    return soakByHealthType.get(type);
+    return naturalSoakByHealthType.get(type) + equipmentSoakByHealthType.get(type);
   }
 
   public IIdentificate getName() {
@@ -53,24 +62,44 @@ public class TotalArmour extends AbstractCombatStats implements IArmourStats {
   }
 
   public void addArmour(IArmourStats armour) {
-    fatigue = getIncrementedValue(fatigue, armour.getFatigue());
-    mobilityPenalty = getIncrementedValue(mobilityPenalty, armour.getMobilityPenalty());
-    for (HealthType healthType : HealthType.values()) {
-      soakByHealthType.put(
-          healthType,
-          getIncrementedValue(soakByHealthType.get(healthType), armour.getSoak(healthType)));
-      hardnessByHealthType.put(healthType, getIncrementedValue(
-          hardnessByHealthType.get(healthType),
-          armour.getHardness(healthType)));
-    }
+	if (armour instanceof NaturalSoak)
+		handleNaturalArmour(armour);
+	else
+		handleEquipmentArmour(armour);
   }
   
-  public void modifyMobilityPenalty(int amount) {
-	  mobilityPenalty += amount;
+  private void handleNaturalArmour(IArmourStats armour) {
+	  for (HealthType healthType : HealthType.values()) {
+	      naturalSoakByHealthType.put(healthType,
+	          getIncrementValue(naturalSoakByHealthType.get(healthType), armour.getSoak(healthType)));
+	  }
+  }
+  
+  private void handleEquipmentArmour(IArmourStats armour) {
+	  fatigue = getHighestValue(fatigue, armour.getFatigue());
+	  modifyMobilityPenalty(armour.getMobilityPenalty());
+	  for (HealthType healthType : HealthType.values()) {
+	      equipmentSoakByHealthType.put(
+	          healthType,
+	          getHighestValue(equipmentSoakByHealthType.get(healthType), armour.getSoak(healthType)));
+	      hardnessByHealthType.put(healthType, getHighestValue(
+	          hardnessByHealthType.get(healthType),
+	          armour.getHardness(healthType)));
+	    }
+  }
+  
+  public void modifyMobilityPenalty(Integer amount) {
+	  if (amount != null)
+		  mobilityPenalty += amount;
+  }
+  
+  private int getIncrementValue(int value, Integer increment) {
+ 	return increment == null ? value : value + increment;
   }
 
-  private int getIncrementedValue(int value, Integer increment) {
-    return increment == null ? value : value + increment;
+  private int getHighestValue(int currentValue, Integer newValue) {
+	if (newValue == null) return currentValue;
+    return newValue > currentValue ? newValue : currentValue;
   }
 
   @Override
