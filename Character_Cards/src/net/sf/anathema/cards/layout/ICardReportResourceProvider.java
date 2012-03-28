@@ -15,6 +15,8 @@ public interface ICardReportResourceProvider {
 	
 	Image getCardStatBlockImage();
 	
+	Image getCardIconShadowImage();
+	
 	Image getCardIconBlockImage();
 	
 	Image getCardBodyBlockImage();

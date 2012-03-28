@@ -20,6 +20,7 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	private static final float STAT_BLOCK_Y_OFFSET = -86;
 	private static final float BODY_BLOCK_X_OFFSET = 32;
 	private static final float BODY_BLOCK_Y_OFFSET = -246;
+	private static final float ICON_SHADOW_Y_OFFSET = -70;
 	private static final float ICONS_Y_OFFSET = -80;
 	private static final float FIRST_ICON_X_OFFSET = 596;
 	private static final float SECOND_ICON_X_OFFSET = 465;
@@ -80,7 +81,11 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 				provider.getCardIconBlockImage());
 		
 		if (twoIcons) {
-			// left icon
+			// left icon, first place the shadow
+			drawImage(directContent,
+					cardUpperleftX + getSecondIconXOffset(),
+					cardUpperleftY + getIconShadowYOffset(),
+					provider.getCardIconShadowImage());
 			drawImage(directContent,
 					cardUpperleftX + getSecondIconXOffset(),
 					cardUpperleftY + getIconYOffset(),
@@ -200,6 +205,10 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	
 	private float getBodyTextYSpan() {
 		return BODY_TEXT_Y_SPAN * scale;
+	}
+	
+	private float getIconShadowYOffset() {
+		return ICON_SHADOW_Y_OFFSET * scale;
 	}
 	
 	private float getFirstIconXOffset() {

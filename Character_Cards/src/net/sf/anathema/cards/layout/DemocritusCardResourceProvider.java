@@ -25,6 +25,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	private final String cardStatBlock = "card_stats.png";
 	private final String cardBodyBlock = "card_body.png";
 	private final String cardIconBlock = "card_icon.png";
+	private final String cardIconShadow = "card_icon_shadow.png";
 	
 	private final int MAGIC_TITLE_FONT_SIZE = 8;
 	private final int MAGIC_NORMAL_FONT_SIZE = 8;
@@ -64,6 +65,10 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	
 	public Image getCardIconBlockImage() {
 		return resources.getImage(this.getClass(), basePath + cardIconBlock);
+	}
+	
+	public Image getCardIconShadowImage() {
+		return resources.getImage(this.getClass(), basePath + cardIconShadow);
 	}
 	
 	public Image getCharacterIcon(ICharacterType type) {
