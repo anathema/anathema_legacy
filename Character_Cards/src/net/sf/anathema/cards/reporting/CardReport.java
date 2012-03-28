@@ -52,7 +52,7 @@ public class CardReport extends AbstractPdfReport {
 	private static final int TEXT_MARGIN = (int)(40 * SCALE);
 	
 	private static final int TITLE_TEXT_Y_OFFSET = (int)(-30 * SCALE);
-	private static final int STATS_TEXT_Y_OFFSET = (int)(-95 * SCALE);
+	private static final int STATS_TEXT_Y_OFFSET = (int)(-98 * SCALE);
 	private static final int KEYWORD_TEXT_Y_OFFSET = (int)(-205 * SCALE);
 	private static final int BODY_TEXT_Y_OFFSET = (int)(-260 * SCALE);
 	private static final int BODY_TEXT_Y_SPAN = (int)(710 * SCALE);
