@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.Identificate;
 
 public class CharmCard extends AbstractMagicCard {
 	private ICharm charm;
@@ -40,7 +41,7 @@ public class CharmCard extends AbstractMagicCard {
 
 	@Override
 	public Image getSecondaryIcon() {
-		if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
+		if (MartialArtsUtilities.isMartialArtsCharm(charm) && !charm.hasAttribute(new Identificate("ExcellencyMartialArts"))) {
 			return getResourceProvider().getMartialArtLevelIcon(MartialArtsUtilities.getLevel(charm));
 		} else {
 			return getResourceProvider().getCharacterIcon(charm.getCharacterType());
