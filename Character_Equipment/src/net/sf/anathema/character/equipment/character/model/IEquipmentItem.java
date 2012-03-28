@@ -8,29 +8,29 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IEquipmentItem {
 
-  public String getTemplateId();
+  String getTemplateId();
 
-  public String getDescription();
+  String getDescription();
 
-  public IEquipmentStats[] getStats();
+  IEquipmentStats[] getStats();
   
-  public IEquipmentStats getStat(String name);
+  IEquipmentStats getStat(String name);
 
-  public void setPrintEnabled(IEquipmentStats equipment, boolean enabled);
+  void setPrintEnabled(IEquipmentStats equipment, boolean enabled);
 
-  public boolean isPrintEnabled(IEquipmentStats stats);
+  boolean isPrintEnabled(IEquipmentStats stats);
 
-  public void setUnprinted();
+  void setUnprinted();
 
-  public void setPrinted(String printedStatId);
+  void setPrinted(String printedStatId);
 
-  public MagicalMaterial getMaterial();
+  MagicalMaterial getMaterial();
 
-  public MaterialComposition getMaterialComposition();
+  MaterialComposition getMaterialComposition();
   
-  public ArtifactAttuneType getAttunementState();
+  ArtifactAttuneType getAttunementState();
 
-  public void addChangeListener(IChangeListener listener);
+  void addChangeListener(IChangeListener listener);
 
-  public void removeChangeListener(IChangeListener listener);
+  void removeChangeListener(IChangeListener listener);
 }

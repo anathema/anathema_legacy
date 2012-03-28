@@ -1,38 +1,15 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
+public interface BaseMaterial {
+  boolean isOrichalcumBased();
 
-import static net.sf.anathema.character.equipment.MagicalMaterial.*;
+  boolean isJadeBased();
 
-public class BaseMaterial {
+  boolean isMoonsilverBased();
 
-  private MagicalMaterial material;
+  boolean isStarmetalBased();
 
-  public BaseMaterial(MagicalMaterial material) {
-    this.material = material;
-  }
+  boolean isSoulsteelBased();
 
-  public boolean isOrichalcumBased() {
-    return material == Orichalcum || material == VitriolOrichalcum;
-  }
-
-  public boolean isJadeBased() {
-    return material == Jade || material == VitriolJade;
-  }
-
-  public boolean isMoonsilverBased() {
-    return material == Moonsilver || material == VitriolMoonsilver;
-  }
-
-  public boolean isStarmetalBased() {
-    return material == Starmetal || material == VitriolStarmetal;
-  }
-
-  public boolean isSoulsteelBased() {
-    return material == Soulsteel || material == VitriolSoulsteel;
-  }
-
-  public boolean isAdamantBased() {
-    return material == Adamant || material == VitriolAdamant;
-  }
+  boolean isAdamantBased();
 }

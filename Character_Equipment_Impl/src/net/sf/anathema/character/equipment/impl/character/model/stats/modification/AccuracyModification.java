@@ -1,13 +1,11 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
-
 public class AccuracyModification implements IStatsModification {
 
   private BaseMaterial material;
 
-  public AccuracyModification(MagicalMaterial material) {
-    this.material = new BaseMaterial(material);
+  public AccuracyModification(BaseMaterial material) {
+    this.material = material;
   }
 
   @Override
@@ -15,14 +13,7 @@ public class AccuracyModification implements IStatsModification {
     if (material.isSoulsteelBased()) {
       return input + 2;
     }
-    if (material.isOrichalcumBased()) {
-      if (type.isRanged()) {
-        return input + 1;
-      } else {
-        return input + 2;
-      }
-    }
-    if (material.isMoonsilverBased()) {
+    if (material.isOrichalcumBased() || material.isMoonsilverBased()) {
       if (type.isRanged()) {
         return input + 1;
       } else {

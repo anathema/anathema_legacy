@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.disy.commons.core.util.ObjectUtilities;
-import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.FatigueModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.HardnessModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.IArmourStatsModification;
@@ -15,9 +15,9 @@ import net.sf.anathema.lib.util.IIdentificate;
 public class ProxyArmourStats extends AbstractStats implements IArmourStats, IProxy<IArmourStats> {
 
   private final IArmourStats delegate;
-  private final MagicalMaterial material;
+  private final BaseMaterial material;
 
-  public ProxyArmourStats(IArmourStats stats, MagicalMaterial material) {
+  public ProxyArmourStats(IArmourStats stats, BaseMaterial material) {
     this.delegate = stats;
     this.material = material;
   }
@@ -37,13 +37,6 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
   public Integer getHardness(HealthType type) {
     Integer hardness = delegate.getHardness(type);
     return getModifiedValue(new HardnessModification(material), hardness);
-  }
-
-  private Integer getModifiedValue(IArmourStatsModification modification, Integer original) {
-    if (original == null) {
-      return null;
-    }
-    return !useAttunementModifiers() ? original : modification.getModifiedValue(original);
   }
 
   @Override
@@ -90,5 +83,12 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
   @Override
   public boolean representsItemForUseInCombat() {
     return delegate.representsItemForUseInCombat();
+  }
+
+  private Integer getModifiedValue(IArmourStatsModification modification, Integer original) {
+    if (original == null) {
+      return null;
+    }
+    return !useAttunementModifiers() ? original : modification.getModifiedValue(original);
   }
 }

@@ -6,6 +6,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DefenseModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.FatigueModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.HardnessModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.MobilityPenaltyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RangeModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RateModification;
@@ -20,32 +21,32 @@ public abstract class AbstractEquipmentModificationTest {
   protected abstract MagicalMaterial getMagicMaterial();
 
   protected final void assertAccuracyModification(int expected, int original, WeaponStatsType type) {
-    AccuracyModification modification = new AccuracyModification(getMagicMaterial());
+    AccuracyModification modification = new AccuracyModification(getBaseMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original, type));
   }
 
   protected final void assertRangeModification(int expected, int original, WeaponStatsType type) {
-    RangeModification modification = new RangeModification(getMagicMaterial());
+    RangeModification modification = new RangeModification(getBaseMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original, type));
   }
 
   protected final void assertDefenseModification(int expected, int original, WeaponStatsType type) {
-    DefenseModification modification = new DefenseModification(getMagicMaterial());
+    DefenseModification modification = new DefenseModification(getBaseMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original, type));
   }
 
   protected final void assertSpeedModification(int expected, int original, WeaponStatsType type) {
-    SpeedModification modification = new SpeedModification(getMagicMaterial());
+    SpeedModification modification = new SpeedModification(getBaseMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original, type));
   }
 
   protected final void assertDamageModification(int expected, int original, WeaponStatsType type) {
-    DamageModification modification = new DamageModification(getMagicMaterial());
+    DamageModification modification = new DamageModification(getBaseMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original, type));
   }
 
   protected final void assertRateModification(int expected, int original, WeaponStatsType type) {
-    RateModification modification = new RateModification(getMagicMaterial());
+    RateModification modification = new RateModification(getBaseMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original, type));
   }
 
@@ -58,7 +59,7 @@ public abstract class AbstractEquipmentModificationTest {
   }
 
   protected final void assertSoakModification(int expected, int original, HealthType type) {
-    SoakModification modification = new SoakModification(getMagicMaterial(), type);
+    SoakModification modification = new SoakModification(getBaseMaterial(), type);
     Assert.assertEquals(expected, modification.getModifiedValue(original));
   }
 
@@ -67,7 +68,7 @@ public abstract class AbstractEquipmentModificationTest {
   }
 
   protected final void assertHardnessModification(int expected, int original) {
-    HardnessModification modification = new HardnessModification(getMagicMaterial());
+    HardnessModification modification = new HardnessModification(getBaseMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original));
   }
 
@@ -84,12 +85,12 @@ public abstract class AbstractEquipmentModificationTest {
   }
 
   protected final void assertFatigueModification(int expected, int original) {
-    FatigueModification modification = new FatigueModification(getMagicMaterial());
+    FatigueModification modification = new FatigueModification(getBaseMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original));
   }
 
   protected final void assertMobilityPenaltyModification(int expected, int original) {
-    MobilityPenaltyModification modification = new MobilityPenaltyModification(getMagicMaterial());
+    MobilityPenaltyModification modification = new MobilityPenaltyModification(getBaseMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original));
   }
 
@@ -130,5 +131,9 @@ public abstract class AbstractEquipmentModificationTest {
     assertDefenseModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
     assertDefenseModification(1, 1, WeaponStatsType.Melee);
     assertDefenseModification(1, 1, WeaponStatsType.Flame);
+  }
+
+  private ReactiveBaseMaterial getBaseMaterial() {
+    return new ReactiveBaseMaterial(getMagicMaterial());
   }
 }

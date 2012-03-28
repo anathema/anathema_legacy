@@ -1,14 +1,18 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
+import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+
+import java.util.List;
 
 public class ArtifactStats extends AbstractNonCombatStats implements IArtifactStats {
   int attuneCost;
   boolean allowForeignAttunement;
   boolean requireAttunement;
 
+  @Override
   public Integer getAttuneCost() {
     return attuneCost;
   }
@@ -17,14 +21,17 @@ public class ArtifactStats extends AbstractNonCombatStats implements IArtifactSt
     attuneCost = cost;
   }
 
+  @Override
   public ArtifactAttuneType getAttuneType() {
     return ArtifactAttuneType.FullyAttuned;
   }
 
+  @Override
   public boolean allowForeignAttunement() {
     return allowForeignAttunement;
   }
 
+  @Override
   public boolean requireAttunementToUse() {
     return requireAttunement;
   }
@@ -39,26 +46,28 @@ public class ArtifactStats extends AbstractNonCombatStats implements IArtifactSt
 
   @Override
   public IEquipmentStats[] getViews() {
-    IEquipmentStats[] views;
+    List<IEquipmentStats> views = Lists.newArrayList();
     if (allowForeignAttunement()) {
-      views = new IEquipmentStats[4];
-      views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.PartiallyAttuned, requireAttunement);
-      views[1] = new ArtifactStatsDecorator(this, ArtifactAttuneType.ExpensivePartiallyAttuned, requireAttunement);
-      views[2] = new ArtifactStatsDecorator(this, ArtifactAttuneType.FullyAttuned, requireAttunement);
-      views[3] = new ArtifactStatsDecorator(this, ArtifactAttuneType.UnharmoniouslyAttuned, requireAttunement);
+      views.add(createAttunement(ArtifactAttuneType.PartiallyAttuned));
+      views.add(createAttunement(ArtifactAttuneType.ExpensivePartiallyAttuned));
+      views.add(createAttunement(ArtifactAttuneType.FullyAttuned));
+      views.add(createAttunement(ArtifactAttuneType.UnharmoniouslyAttuned));
     } else {
-      views = new IEquipmentStats[1];
-      views[0] = new ArtifactStatsDecorator(this, ArtifactAttuneType.FullyAttuned, requireAttunement);
+      views.add(createAttunement(ArtifactAttuneType.FullyAttuned));
     }
-    return views;
+    return views.toArray(new IEquipmentStats[views.size()]);
+  }
+
+  private ArtifactStatsDecorator createAttunement(ArtifactAttuneType artifactAttuneType) {
+    return new ArtifactStatsDecorator(this, artifactAttuneType, requireAttunement);
   }
 
   @Override
   public String getId() {
     return getName().getId();
   }
-  
+
   public String toString() {
-	return getId() + "[" + attuneCost + "m]";
+    return getId() + "[" + attuneCost + "m]";
   }
 }

@@ -2,11 +2,11 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ObjectUtilities;
-import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.AccuracyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DamageModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DefenseModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.IStatsModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RangeModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RateModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SpeedModification;
@@ -23,9 +23,9 @@ import net.sf.anathema.lib.util.IIdentificate;
 public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IProxy<IWeaponStats> {
 
   private final IWeaponStats delegate;
-  private final MagicalMaterial material;
+  private final BaseMaterial material;
 
-  public ProxyWeaponStats(IWeaponStats stats, MagicalMaterial material) {
+  public ProxyWeaponStats(IWeaponStats stats, BaseMaterial material) {
     this.delegate = stats;
     this.material = material;
   }
@@ -55,14 +55,6 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   @Override
   public int getAccuracy() {
     return getModifiedValue(new AccuracyModification(material), delegate.getAccuracy());
-  }
-
-  private Integer getModifiedValue(IStatsModification modification, Integer unmodifiedValue) {
-    if (unmodifiedValue == null) {
-      return null;
-    }
-    return !useAttunementModifiers() ? unmodifiedValue : modification.getModifiedValue(unmodifiedValue,
-            getWeaponStatsType());
   }
 
   private WeaponStatsType getWeaponStatsType() {
@@ -170,5 +162,13 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   @Override
   public boolean representsItemForUseInCombat() {
     return delegate.representsItemForUseInCombat();
+  }
+
+  private Integer getModifiedValue(IStatsModification modification, Integer unmodifiedValue) {
+    if (unmodifiedValue == null) {
+      return null;
+    }
+    return !useAttunementModifiers() ? unmodifiedValue : modification.getModifiedValue(unmodifiedValue,
+            getWeaponStatsType());
   }
 }
