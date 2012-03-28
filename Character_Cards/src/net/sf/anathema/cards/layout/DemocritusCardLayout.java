@@ -2,6 +2,9 @@ package net.sf.anathema.cards.layout;
 
 import java.awt.Image;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.sf.anathema.cards.types.ICard;
 import net.sf.anathema.lib.resources.IResources;
@@ -33,6 +36,7 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	private static final float BODY_TEXT_Y_SPAN = 710;
 	private static final float SOURCE_TEXT_Y_OFFSET = -1000;
 	
+	Map<Image, com.itextpdf.text.Image> imageMap = new HashMap<Image, com.itextpdf.text.Image>();
 	private final ICardReportResourceProvider provider;
 	private final float scale;
 	
@@ -155,8 +159,13 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	
 	private void drawImage(PdfContentByte directContent, float x, float y, Image image) {
 		try {
-			com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(image, null ,false);
-			pdfImage.scalePercent(scale * 100);
+			com.itextpdf.text.Image pdfImage;
+			pdfImage = imageMap.get(image);
+			if (pdfImage == null) {
+				pdfImage = com.itextpdf.text.Image.getInstance(image, null ,false);
+				pdfImage.scalePercent(scale * 100);
+				imageMap.put(image, pdfImage);
+			}
 			drawImage(directContent, x, y, pdfImage);
 		} catch (BadElementException e) {
 			e.printStackTrace();

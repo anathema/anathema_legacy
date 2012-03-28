@@ -1,6 +1,8 @@
 package net.sf.anathema.cards.layout;
 
 import java.awt.Image;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Font;
@@ -27,6 +29,8 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	private final String cardIconBlock = "card_icon.png";
 	private final String cardIconShadow = "card_icon_shadow.png";
 	
+	private final Map<String, Image> imageMap = new HashMap<String, Image>(); 
+	
 	private final int MAGIC_TITLE_FONT_SIZE = 8;
 	private final int MAGIC_NORMAL_FONT_SIZE = 8;
 	private final int MAGIC_SMALL_FONT_SIZE = 6;
@@ -52,64 +56,53 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	}
 	
 	public Image getCardBaseImage() {
-		return resources.getImage(this.getClass(), basePath + cardBackground);
+		return getImage(basePath + cardBackground);
 	}
 	
 	public Image getCardStatBlockImage() {
-		return resources.getImage(this.getClass(), basePath + cardStatBlock);
+		return getImage(basePath + cardStatBlock);
 	}
 	
 	public Image getCardBodyBlockImage() {
-		return resources.getImage(this.getClass(), basePath + cardBodyBlock);
+		return getImage(basePath + cardBodyBlock);
 	}
 	
 	public Image getCardIconBlockImage() {
-		return resources.getImage(this.getClass(), basePath + cardIconBlock);
+		return getImage(basePath + cardIconBlock);
 	}
 	
 	public Image getCardIconShadowImage() {
-		return resources.getImage(this.getClass(), basePath + cardIconShadow);
+		return getImage(basePath + cardIconShadow);
 	}
 	
 	public Image getCharacterIcon(ICharacterType type) {
-		try {
-			return resources.getImage(this.getClass(), characterPath + type.getId() + ".png");
-		}
-		catch (ImageLoadingException exception) {
-			return null;
-		}
+		return getImage(characterPath + type.getId() + ".png");
 	}
 	
 	public Image getTraitIcon(ITraitType trait) {
-		try {
-			return resources.getImage(this.getClass(), traitPath + trait.getId() + ".png");
-		}
-		catch (ImageLoadingException exception) {
-			return null;
-		}
+		return getImage(traitPath + trait.getId() + ".png");
 	}
 	
 	public Image getSpellIcon(CircleType circle) {
-		try {
-			return resources.getImage(this.getClass(), spellPath + circle.getId() + ".png");
-		}
-		catch (ImageLoadingException exception) {
-			return null;
-		}
+		return getImage(spellPath + circle.getId() + ".png");
 	}
 	
 	public Image getMartialArtLevelIcon(MartialArtsLevel level) {
-		try {
-			return resources.getImage(this.getClass(), martialArtLevelPath + level.getId() + ".png");
-		}
-		catch (ImageLoadingException exception) {
-			return null;
-		}
+		return getImage(martialArtLevelPath + level.getId() + ".png");
 	}
 	
 	public Image getMartialArtIcon(String groupId) {
+		return getImage(martialArtPath + groupId + ".png");
+	}
+	
+	private Image getImage(String filePath) {
 		try {
-			return resources.getImage(this.getClass(), martialArtPath + groupId + ".png");
+			Image image = imageMap.get(filePath); 
+			if (image == null) {
+				image = resources.getImage(this.getClass(), filePath);
+				imageMap.put(filePath, image);
+			}
+			return image;
 		}
 		catch (ImageLoadingException exception) {
 			return null;
