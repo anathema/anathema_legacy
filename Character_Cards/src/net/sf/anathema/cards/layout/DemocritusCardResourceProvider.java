@@ -6,6 +6,7 @@ import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Font;
 
 import net.disy.commons.swing.image.ImageLoadingException;
+import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -18,6 +19,8 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	private final String characterPath = "character/";
 	private final String traitPath = "traits/";
 	private final String spellPath = "spell/";
+	private final String martialArtPath = "martial_art/";
+	private final String martialArtLevelPath = "martial_art_level/";
 	private final String cardBackground = "card_base.png";
 	private final String cardStatBlock = "card_stats.png";
 	private final String cardBodyBlock = "card_body.png";
@@ -84,6 +87,24 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	public Image getSpellIcon(CircleType circle) {
 		try {
 			return resources.getImage(this.getClass(), spellPath + circle.getId() + ".png");
+		}
+		catch (ImageLoadingException exception) {
+			return null;
+		}
+	}
+	
+	public Image getMartialArtLevelIcon(MartialArtsLevel level) {
+		try {
+			return resources.getImage(this.getClass(), martialArtLevelPath + level.getId() + ".png");
+		}
+		catch (ImageLoadingException exception) {
+			return null;
+		}
+	}
+	
+	public Image getMartialArtIcon(String groupId) {
+		try {
+			return resources.getImage(this.getClass(), martialArtPath + groupId + ".png");
 		}
 		catch (ImageLoadingException exception) {
 			return null;
