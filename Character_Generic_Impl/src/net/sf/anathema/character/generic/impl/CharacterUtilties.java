@@ -105,15 +105,4 @@ public class CharacterUtilties {
     dv += equipment.getDDVMod() + equipment.getMobilityPenalty();
     return Math.max(dv, 0);
   }
-
-  public static int getUntrainedActionModifier(IGenericCharacter character, ITraitType traitType) {
-    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    if (character.getTraitCollection().getTrait(traitType).getCurrentValue() > 0) {
-      return 0;
-    }
-    if (!characterType.isExaltType()) {
-      return 2;
-    }
-    return 0;
-  }
 }

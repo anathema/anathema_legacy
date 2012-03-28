@@ -38,6 +38,7 @@ entry manually to reflect the new rules.
 * (Infernal/SWLIHN) "Precision Thought-Force Exercise" and "Orbital Impact Storm" attributed to Ink Monkeys
 * Duplication of Series possible on Windows systems
 * Anathema respects Accuracy modifiers from equipment
+* Anathema respects MPDV modifiers from equipment
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.2
