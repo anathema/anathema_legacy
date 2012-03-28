@@ -97,7 +97,7 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	}
 	
 	private void drawIcons(PdfContentByte directContent, float cardUpperleftX, float cardUpperleftY,
-			Image iconLeft, Image iconRight) {
+			Image iconRight, Image iconLeft) {
 		
 		if (iconRight != null) {
 			drawImage(directContent,

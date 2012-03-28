@@ -14,7 +14,10 @@ import net.sf.anathema.lib.resources.IResources;
 public class DemocritusCardResourceProvider implements ICardReportResourceProvider {
 	private IResources resources;
 	
-	private final String graphicsPath = "";
+	private final String basePath = "democritus_base/";
+	private final String characterPath = "character/";
+	private final String traitPath = "traits/";
+	private final String spellPath = "spell/";
 	private final String cardBackground = "card_base.png";
 	private final String cardStatBlock = "card_stats.png";
 	private final String cardBodyBlock = "card_body.png";
@@ -26,7 +29,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	private final int MAGIC_TINY_FONT_SIZE = 4;
 	
 	private final Font TITLE_FONT =
-			new Font(Font.FontFamily.HELVETICA, MAGIC_TITLE_FONT_SIZE, Font.BOLD, BaseColor.BLACK);
+			new Font(Font.FontFamily.TIMES_ROMAN, MAGIC_TITLE_FONT_SIZE, Font.BOLD, BaseColor.BLACK);
 	private final Font BOLD_FONT =
 			new Font(Font.FontFamily.HELVETICA, MAGIC_NORMAL_FONT_SIZE, Font.BOLD, BaseColor.BLACK);
 	private final Font NORMAL_FONT =
@@ -45,24 +48,24 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	}
 	
 	public Image getCardBaseImage() {
-		return resources.getImage(this.getClass(), graphicsPath + cardBackground);
+		return resources.getImage(this.getClass(), basePath + cardBackground);
 	}
 	
 	public Image getCardStatBlockImage() {
-		return resources.getImage(this.getClass(), graphicsPath + cardStatBlock);
+		return resources.getImage(this.getClass(), basePath + cardStatBlock);
 	}
 	
 	public Image getCardBodyBlockImage() {
-		return resources.getImage(this.getClass(), graphicsPath + cardBodyBlock);
+		return resources.getImage(this.getClass(), basePath + cardBodyBlock);
 	}
 	
 	public Image getCardIconBlockImage() {
-		return resources.getImage(this.getClass(), graphicsPath + cardIconBlock);
+		return resources.getImage(this.getClass(), basePath + cardIconBlock);
 	}
 	
 	public Image getCharacterIcon(ICharacterType type) {
 		try {
-			return resources.getImage(this.getClass(), graphicsPath + "character_" + type.getId() + ".png");
+			return resources.getImage(this.getClass(), characterPath + type.getId() + ".png");
 		}
 		catch (ImageLoadingException exception) {
 			return null;
@@ -71,7 +74,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	
 	public Image getTraitIcon(ITraitType trait) {
 		try {
-			return resources.getImage(this.getClass(), graphicsPath + "trait_" + trait.getId() + ".png");
+			return resources.getImage(this.getClass(), traitPath + trait.getId() + ".png");
 		}
 		catch (ImageLoadingException exception) {
 			return null;
@@ -80,7 +83,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	
 	public Image getSpellIcon(CircleType circle) {
 		try {
-			return resources.getImage(this.getClass(), graphicsPath + "spells_" + circle.getId() + ".png");
+			return resources.getImage(this.getClass(), spellPath + circle.getId() + ".png");
 		}
 		catch (ImageLoadingException exception) {
 			return null;
