@@ -7,7 +7,7 @@ import java.util.List;
 import com.google.common.base.Joiner;
 import com.itextpdf.text.Phrase;
 
-import net.sf.anathema.cards.reporting.ICardReportProperties;
+import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
@@ -18,20 +18,20 @@ public class SpellCard extends AbstractMagicCard {
 	private SpellStats stats;
 	
 	public SpellCard(ISpell spell, SpellStats stats, MagicDescription description,
-			ICardReportProperties properties, IResources resources) {
+			ICardReportResourceProvider properties, IResources resources) {
 		super(spell, description, properties, resources);
 		this.spell = spell;
 		this.stats = stats;
 	}
 
 	@Override
-	public Image getLeftIcon() {
-		return null;
+	public Image getPrimaryIcon() {
+		return getResourceProvider().getSpellIcon(spell.getCircleType());
 	}
 
 	@Override
-	public Image getRightIcon() {
-		return getProperties().getSpellIcon(spell.getCircleType());
+	public Image getSecondaryIcon() {
+		return null;
 	}
 
 	@Override
@@ -41,8 +41,8 @@ public class SpellCard extends AbstractMagicCard {
 		return new Phrase[] {
 				getCostPhrase(false),
 				new Phrase("\n"),
-				new Phrase(targetLabel, getProperties().getBoldFont()),
-				new Phrase(target, getProperties().getNormalFont()) };
+				new Phrase(targetLabel, getResourceProvider().getBoldFont()),
+				new Phrase(target, getResourceProvider().getNormalFont()) };
 	}
 	
 	@Override

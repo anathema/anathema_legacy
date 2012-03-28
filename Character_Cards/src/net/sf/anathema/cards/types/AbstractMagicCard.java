@@ -2,7 +2,7 @@ package net.sf.anathema.cards.types;
 
 import java.util.List;
 
-import net.sf.anathema.cards.reporting.ICardReportProperties;
+import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ScreenDisplayInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.Cost;
@@ -19,13 +19,13 @@ public abstract class AbstractMagicCard implements ICard {
 	private IMagic magic;
 	private IResources resources;
 	private MagicDescription description;
-	private ICardReportProperties properties;
+	private ICardReportResourceProvider resourceProvider;
 	
 	public AbstractMagicCard(IMagic magic, MagicDescription description,
-			ICardReportProperties properties, IResources resources) {
+			ICardReportResourceProvider resourceProvider, IResources resources) {
 		this.magic = magic;
 		this.resources = resources;
-		this.properties = properties;
+		this.resourceProvider = resourceProvider;
 		this.description = description;
 	}
 	
@@ -33,8 +33,8 @@ public abstract class AbstractMagicCard implements ICard {
 		return resources;
 	}
 	
-	protected ICardReportProperties getProperties() {
-		return properties;
+	protected ICardReportResourceProvider getResourceProvider() {
+		return resourceProvider;
 	}
 	
 	@Override
@@ -52,7 +52,7 @@ public abstract class AbstractMagicCard implements ICard {
 	
 	protected Phrase getCostPhrase(boolean semicolon) {
 		String cost = new ScreenDisplayInfoStringBuilder(resources).createCostString(magic);
-		return new Phrase(cost + (semicolon ? ": " : ""), properties.getBoldFont());
+		return new Phrase(cost + (semicolon ? ": " : ""), resourceProvider.getBoldFont());
 	}
 	
 	protected boolean hasDescription() {
@@ -61,7 +61,7 @@ public abstract class AbstractMagicCard implements ICard {
 	
 	protected void addDescriptionPhrases(List<Phrase> phrases) {
 		for (String string : description.getParagraphs()) {
-	    	phrases.add(new Paragraph(string, properties.getNormalFont()));
+	    	phrases.add(new Paragraph(string, resourceProvider.getNormalFont()));
 	    }
 	}
 	

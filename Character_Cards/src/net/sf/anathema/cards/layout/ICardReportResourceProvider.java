@@ -1,4 +1,4 @@
-package net.sf.anathema.cards.reporting;
+package net.sf.anathema.cards.layout;
 
 import java.awt.Image;
 
@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
-public interface ICardReportProperties {
+public interface ICardReportResourceProvider {
 	
 	Image getCardBaseImage();
 	

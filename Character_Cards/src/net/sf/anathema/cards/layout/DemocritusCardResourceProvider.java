@@ -1,4 +1,4 @@
-package net.sf.anathema.cards.reporting;
+package net.sf.anathema.cards.layout;
 
 import java.awt.Image;
 
@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CardReportProperties implements ICardReportProperties {
+public class DemocritusCardResourceProvider implements ICardReportResourceProvider {
 	private IResources resources;
 	
 	private final String graphicsPath = "";
@@ -36,7 +36,7 @@ public class CardReportProperties implements ICardReportProperties {
 	private final Font SOURCE_FONT =
 			new Font(Font.FontFamily.HELVETICA, MAGIC_TINY_FONT_SIZE, Font.ITALIC, BaseColor.BLACK);
 	
-	public CardReportProperties(IResources resources) {
+	public DemocritusCardResourceProvider(IResources resources) {
 		this.resources = resources;
 	}
 	

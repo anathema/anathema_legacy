@@ -7,9 +7,9 @@ import com.itextpdf.text.Phrase;
 public interface ICard {
 	String getTitle();
 	
-	Image getLeftIcon();
+	Image getPrimaryIcon();
 	
-	Image getRightIcon();
+	Image getSecondaryIcon();
 	
 	Phrase[] getStats();
 	

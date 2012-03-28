@@ -7,7 +7,7 @@ import java.util.List;
 import com.google.common.base.Joiner;
 import com.itextpdf.text.Phrase;
 
-import net.sf.anathema.cards.reporting.ICardReportProperties;
+import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.VerboseCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
@@ -19,20 +19,20 @@ public class CharmCard extends AbstractMagicCard {
 	private CharmStats stats;
 	
 	public CharmCard(ICharm charm, CharmStats stats, MagicDescription description,
-			ICardReportProperties properties, IResources resources) {
-		super(charm, description, properties, resources);
+			ICardReportResourceProvider fontProvider, IResources resources) {
+		super(charm, description, fontProvider, resources);
 		this.charm = charm;
 		this.stats = stats;
 	}
 	
 	@Override
-	public Image getLeftIcon() {
-		return getProperties().getCharacterIcon(charm.getCharacterType());
+	public Image getPrimaryIcon() {
+		return getResourceProvider().getTraitIcon(charm.getPrimaryTraitType());
 	}
 
 	@Override
-	public Image getRightIcon() {
-		return getProperties().getTraitIcon(charm.getPrimaryTraitType());
+	public Image getSecondaryIcon() {
+		return getResourceProvider().getCharacterIcon(charm.getCharacterType());
 	}
 	
 	@Override
@@ -58,12 +58,12 @@ public class CharmCard extends AbstractMagicCard {
 	
 	private Phrase getCharmType(ICharm charm) {
 		String type = new VerboseCharmTypeStringBuilder(getResources()).createTypeString(charm.getCharmTypeModel());
-		return new Phrase(8, type, getProperties().getBoldFont());
+		return new Phrase(8, type, getResourceProvider().getBoldFont());
 	}
 	
 	private Phrase getCharmDuration(ICharm charm) {
 		String duration = charm.getDuration().getText(getResources());
-		return new Phrase(duration, getProperties().getNormalFont());
+		return new Phrase(duration, getResourceProvider().getNormalFont());
 	}
 
 	@Override
