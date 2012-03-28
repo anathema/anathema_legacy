@@ -40,7 +40,7 @@ public class CardReport extends AbstractPdfReport {
 			throws ReportException {
 		try {
 			PdfContentByte directContent = writer.getDirectContent();
-			document.setMargins(20, 20, 10, 10);
+			//document.setMargins(20, 20, 10, 10);
 
 			// For now, only one style of report, that includes
 			// all spells and charms
@@ -50,15 +50,19 @@ public class CardReport extends AbstractPdfReport {
 						layout.getResourceProvider()));
 			}
 
-			int numCols = (int)((document.right() - document.left()) / layout.getCardWidth());
-			int numRows = (int)((document.top() - document.bottom()) / layout.getCardHeight());
+			float documentWidth = document.right() - document.left();
+			float documentHeight = document.top() - document.bottom();
+			int numCols = (int)(documentWidth / layout.getCardWidth());
+			int numRows = (int)(documentHeight / layout.getCardHeight());
+			float horizontalGutter = (documentWidth - numCols * layout.getCardWidth()) / (numCols - 1);
+			float verticalGutter = (documentHeight - numRows * layout.getCardHeight()) / (numRows - 1);
 			int maxPosition = numRows * numCols - 1;
 			int position = 0;
 			float upperleftX;
 			float upperleftY;
 			for (ICard card : cards) {
-				upperleftX = document.left() + layout.getCardWidth() * (position / numCols);
-				upperleftY = document.top() - layout.getCardHeight() * (position % numCols);
+				upperleftX = document.left() + (layout.getCardWidth() + horizontalGutter) * (position / numCols);
+				upperleftY = document.top() - (layout.getCardHeight() + verticalGutter) * (position % numCols);
 				
 				layout.generateCard(card, directContent, upperleftX, upperleftY);
 				
