@@ -17,15 +17,18 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
 
   private final IGenericTraitCollection collection;
   private final IEquipmentCharacterDataProvider provider;
+  private IEquipmentModifiers equipmentModifiers;
   private IEquipmentCharacterOptionProvider optionProvider;
 
   public AccuracyWeaponStatsGroup(IResources resources, IGenericTraitCollection collection,
                                   IEquipmentCharacterDataProvider provider,
-                                  IEquipmentCharacterOptionProvider optionProvider) {
+                                  IEquipmentCharacterOptionProvider optionProvider,
+                                  IEquipmentModifiers equipmentModifiers) {
     super(resources, "Accuracy"); //$NON-NLS-1$
     this.collection = collection;
     this.optionProvider = optionProvider;
     this.provider = provider;
+    this.equipmentModifiers = equipmentModifiers;
   }
 
   @Override
@@ -45,22 +48,29 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
       table.addCell(createFinalValueCell(font, calculateFinalValue));
     }
   }
-  
+
   private int getOptionModifiers(IWeaponStats stats) {
-	  if (provider == null) {
-        return 0;
-      }
-	  int mod = 0;
-	  for (IEquipmentStatsOption option : optionProvider.getEnabledStatOptions(stats)){
-		  mod += option.getAccuracyModifier();
-      }
-	  return mod;
+    if (provider == null) {
+      return 0;
+    }
+    int mod = 0;
+    for (IEquipmentStatsOption option : optionProvider.getEnabledStatOptions(stats)) {
+      mod += option.getAccuracyModifier();
+    }
+    return mod;
   }
 
   protected int getFinalValue(IWeaponStats weapon, int weaponValue) {
-    return calculateFinalValue(
-            weaponValue + getOptionModifiers(weapon),
-            collection.getTrait(AttributeType.Dexterity),
-            collection.getTrait(weapon.getTraitType()));
+    int equipmentModifier = getModifiersFromOtherEquipment(weapon);
+    return calculateFinalValue(weaponValue + getOptionModifiers(weapon) + equipmentModifier,
+            collection.getTrait(AttributeType.Dexterity), collection.getTrait(weapon.getTraitType()));
+  }
+
+  private int getModifiersFromOtherEquipment(IWeaponStats weapon) {
+    if (weapon.isRangedCombat()) {
+      return equipmentModifiers.getRangedAccuracyMod();
+    } else {
+      return equipmentModifiers.getMeleeAccuracyMod();
+    }
   }
 }

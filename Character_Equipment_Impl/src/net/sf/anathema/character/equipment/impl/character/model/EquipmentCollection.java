@@ -10,7 +10,7 @@ public class EquipmentCollection implements Iterable<IEquipmentItem> {
   private final List<IEquipmentItem> equipmentItems = new ArrayList<IEquipmentItem>();
 
   public IEquipmentItem[] asArray() {
-    return new IEquipmentItem[equipmentItems.size()];
+    return equipmentItems.toArray(new IEquipmentItem[equipmentItems.size()]);
   }
 
   public void add(IEquipmentItem item) {

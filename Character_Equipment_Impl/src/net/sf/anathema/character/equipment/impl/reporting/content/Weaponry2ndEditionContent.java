@@ -43,7 +43,7 @@ public class Weaponry2ndEditionContent extends AbstractWeaponryContent {
 
   @Override
   protected AccuracyWeaponStatsGroup createAccuracyGroup() {
-    return new AccuracyWeaponStatsGroup(getResources(), getTraitCollection(), provider, optionProvider);
+    return new AccuracyWeaponStatsGroup(getResources(), getTraitCollection(), provider, optionProvider,getEquipmentModifiers());
   }
 
   @Override

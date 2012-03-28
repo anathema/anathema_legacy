@@ -1,6 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.social;
 
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PerformanceSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PresenceSocialAttack;
@@ -26,8 +28,9 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   @SuppressWarnings("unchecked")
   @Override
   protected IStatsGroup<ISocialCombatStats>[] createStatsGroups(ReportSession session) {
-    return new IStatsGroup[] { new SocialCombatNameStatsGroup(resources), new SocialSpeedStatsGroup(resources), new HonestyStatsGroup(
-      resources), new DeceptionStatsGroup(resources), new SocialRateStatsGroup(resources) };
+    return new IStatsGroup[]{new SocialCombatNameStatsGroup(resources), new SocialSpeedStatsGroup(
+            resources), new HonestyStatsGroup(resources), new DeceptionStatsGroup(resources), new SocialRateStatsGroup(
+            resources)};
   }
 
   @Override
@@ -37,8 +40,10 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
 
   @Override
   protected ISocialCombatStats[] getPrintStats(ReportSession session) {
-    IGenericTraitCollection traitCollection = session.getCharacter().getTraitCollection();
-    return new ISocialCombatStats[] { new PresenceSocialAttack(traitCollection), new PerformanceSocialAttack(
-      traitCollection), new InvestigationSocialAttack(traitCollection) };
+    IGenericCharacter character = session.getCharacter();
+    IGenericTraitCollection traitCollection = character.getTraitCollection();
+    IEquipmentModifiers equipmentModifiers = character.getEquipmentModifiers();
+    return new ISocialCombatStats[]{new PresenceSocialAttack(traitCollection, equipmentModifiers), new PerformanceSocialAttack(
+            traitCollection, equipmentModifiers), new InvestigationSocialAttack(traitCollection, equipmentModifiers)};
   }
 }
