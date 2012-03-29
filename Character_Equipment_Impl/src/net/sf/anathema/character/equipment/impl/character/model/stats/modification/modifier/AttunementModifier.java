@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.character.model.stats;
+package net.sf.anathema.character.equipment.impl.character.model.stats.modification.modifier;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.StatModifier;
 

@@ -19,6 +19,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialRangeModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialRateModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialSpeedModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.modifier.AttunementModifier;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
