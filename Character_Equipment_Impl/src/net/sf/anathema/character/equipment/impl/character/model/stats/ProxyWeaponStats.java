@@ -2,10 +2,11 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.AccuracyModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DamageModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DefenseModification;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RangeModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RateModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SpeedModification;
@@ -13,6 +14,11 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.StatsModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.TagsModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment.EquipmentAccuracyModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment.EquipmentDamageModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment.EquipmentDefenceModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment.EquipmentRateModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment.EquipmentSpeedModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialAccuracyModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialDamageModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialDefenceModifier;
@@ -20,6 +26,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialRateModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialSpeedModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.modifier.AttunementModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.modifier.BestModifier;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
@@ -32,10 +39,12 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   private final IWeaponStats delegate;
   private final BaseMaterial material;
+  private final ModifierFactory modifiers;
 
-  public ProxyWeaponStats(IWeaponStats stats, BaseMaterial material) {
+  public ProxyWeaponStats(IWeaponStats stats, BaseMaterial material, ModifierFactory modifiers) {
     this.delegate = stats;
     this.material = material;
+    this.modifiers = modifiers;
   }
 
   @Override
@@ -63,7 +72,10 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   @Override
   public int getAccuracy() {
     int accuracy = delegate.getAccuracy();
-    StatModifier modifier = createAttunementModifier(new MaterialAccuracyModifier(material, getWeaponStatsType()));
+    WeaponStatsType type = getWeaponStatsType();
+    StatModifier material = createAttunementModifier(new MaterialAccuracyModifier(this.material, type));
+    StatModifier equipment = new EquipmentAccuracyModifier(modifiers.createModifiers(), type);
+    StatModifier modifier = new BestModifier(material, equipment);
     return getModifiedValue(new AccuracyModification(modifier), accuracy);
   }
 
@@ -87,7 +99,9 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   @Override
   public int getDamage() {
     int damage = delegate.getDamage();
-    StatModifier modifier = createAttunementModifier(new MaterialDamageModifier(material, getWeaponStatsType()));
+    StatModifier material = createAttunementModifier(new MaterialDamageModifier(this.material, getWeaponStatsType()));
+    StatModifier equipment = new EquipmentDamageModifier(modifiers.createModifiers(), getWeaponStatsType());
+    StatModifier modifier = new BestModifier(material, equipment);
     return getModifiedValue(new DamageModification(modifier), damage);
   }
 
@@ -110,7 +124,9 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   @Override
   public Integer getDefence() {
     Integer defence = delegate.getDefence();
-    StatModifier modifier = createAttunementModifier(new MaterialDefenceModifier(material));
+    StatModifier material = createAttunementModifier(new MaterialDefenceModifier(this.material));
+    StatModifier equipment = new EquipmentDefenceModifier(modifiers.createModifiers());
+    StatModifier modifier = new BestModifier(material, equipment);
     return getModifiedValue(new DefenseModification(modifier), defence);
   }
 
@@ -129,14 +145,19 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   @Override
   public Integer getRate() {
     Integer rate = delegate.getRate();
-    StatModifier modifier = createAttunementModifier(new MaterialRateModifier(material, getWeaponStatsType()));
+    WeaponStatsType type = getWeaponStatsType();
+    StatModifier material = createAttunementModifier(new MaterialRateModifier(this.material, type));
+    StatModifier equipment = new EquipmentRateModifier(modifiers.createModifiers(), type);
+    StatModifier modifier = new BestModifier(material, equipment);
     return getModifiedValue(new RateModification(modifier), rate);
   }
 
   @Override
   public int getSpeed() {
     int speed = delegate.getSpeed();
-    StatModifier modifier = createAttunementModifier(new MaterialSpeedModifier(material));
+    StatModifier material = createAttunementModifier(new MaterialSpeedModifier(this.material));
+    StatModifier equipment = new EquipmentSpeedModifier(modifiers.createModifiers(), getWeaponStatsType());
+    StatModifier modifier = new BestModifier(material, equipment);
     return getModifiedValue(new SpeedModification(modifier), speed);
   }
 

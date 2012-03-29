@@ -5,17 +5,17 @@ import net.sf.anathema.lib.control.collection.ICollectionListener;
 
 public interface IEquipmentItemCollection {
 
-  public IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material);
+  IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material);
 
-  public void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener);
+  void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener);
 
-  public boolean canBeRemoved(IEquipmentItem item);
+  boolean canBeRemoved(IEquipmentItem item);
 
-  public String[] getAvailableTemplateIds();
+  String[] getAvailableTemplateIds();
 
-  public IEquipmentItem[] getEquipmentItems();
+  IEquipmentItem[] getEquipmentItems();
 
-  public void removeItem(IEquipmentItem item);
+  void removeItem(IEquipmentItem item);
 
-  public IEquipmentItem[] getNaturalWeapons();
+  IEquipmentItem[] getNaturalWeapons();
 }

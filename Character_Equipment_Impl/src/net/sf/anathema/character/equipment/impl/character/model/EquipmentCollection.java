@@ -1,12 +1,14 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
+import net.sf.anathema.character.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.EquipmentModifiers;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class EquipmentCollection implements Iterable<IEquipmentItem> {
+public class EquipmentCollection implements Iterable<IEquipmentItem>, ModifierFactory {
   private final List<IEquipmentItem> equipmentItems = new ArrayList<IEquipmentItem>();
 
   public IEquipmentItem[] asArray() {
@@ -24,5 +26,10 @@ public class EquipmentCollection implements Iterable<IEquipmentItem> {
   @Override
   public Iterator<IEquipmentItem> iterator() {
     return new ArrayList<IEquipmentItem>(equipmentItems).iterator();
+  }
+
+  @Override
+  public IEquipmentModifiers createModifiers() {
+    return new EquipmentModifiers(equipmentItems);
   }
 }
