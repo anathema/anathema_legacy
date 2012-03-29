@@ -11,7 +11,7 @@ public class RateModification implements IStatsModification {
   @Override
   public int getModifiedValue(int input, WeaponStatsType type) {
     if (baseMaterial.isOrichalcumBased() && type == WeaponStatsType.Melee) {
-      return input + 1;
+      return Math.min(5, input + 1);
     }
     return input;
   }

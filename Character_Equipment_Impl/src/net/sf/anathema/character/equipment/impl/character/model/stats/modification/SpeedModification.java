@@ -11,7 +11,7 @@ public class SpeedModification implements IStatsModification {
   @Override
   public int getModifiedValue(int input, WeaponStatsType type) {
     if (baseMaterial.isJadeBased()) {
-      return Math.max(1, input - 1);
+      return Math.max(3, input - 1);
     }
     return input;
   }

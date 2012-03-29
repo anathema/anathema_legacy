@@ -35,6 +35,11 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
   }
 
   @Test
+  public void rateCannotRisePast5() throws Exception {
+    assertRateModification(5, 5, WeaponStatsType.Melee);
+  }
+
+  @Test
   public void speedUnmodified() {
     assertSpeedUnmodified();
   }
