@@ -12,9 +12,9 @@ public class EquipmentDefenceModifierTest {
   IEquipmentModifiers modifiers = mock(IEquipmentModifiers.class);
 
   @Test
-  public void returnsParryDefenceModifier() throws Exception {
+  public void addsParryDefenceModifierTwiceBecauseOfLaterDivisionByTwo() throws Exception {
     when(modifiers.getPDVMod()).thenReturn(5);
     EquipmentDefenceModifier modifier = new EquipmentDefenceModifier(modifiers);
-    assertThat(modifier.calculate(), is(5));
+    assertThat(modifier.calculate(), is(10));
   }
 }

@@ -13,6 +13,6 @@ public class EquipmentDefenceModifier implements StatModifier {
 
   @Override
   public int calculate() {
-    return modifiers.getPDVMod();
+    return modifiers.getPDVMod() * 2;
   }
 }
