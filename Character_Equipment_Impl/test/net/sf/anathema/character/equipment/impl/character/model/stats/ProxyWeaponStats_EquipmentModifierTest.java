@@ -33,7 +33,7 @@ public class ProxyWeaponStats_EquipmentModifierTest {
 
   @Test
   public void respectsSpeedFromEquipment() throws Exception {
-    when(modifiers.getMeleeSpeedMod()).thenReturn(2);
+    when(modifiers.getMeleeSpeedMod()).thenReturn(-2);
     int speed = stats.getSpeed();
     assertThat(speed, is(3));
   }
