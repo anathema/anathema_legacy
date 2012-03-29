@@ -2,5 +2,5 @@ package net.sf.anathema.character.equipment.impl.character.model.stats.modificat
 
 public interface StatModifier {
 
-  int getModifier();
+  int calculate();
 }

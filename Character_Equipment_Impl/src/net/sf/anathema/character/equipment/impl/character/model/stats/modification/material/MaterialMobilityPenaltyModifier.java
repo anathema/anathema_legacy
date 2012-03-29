@@ -14,7 +14,7 @@ public class MaterialMobilityPenaltyModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     if (magicMaterial.isMoonsilverBased()) {
       return original;
     }

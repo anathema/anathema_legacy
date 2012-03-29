@@ -14,7 +14,7 @@ public class MaterialSoakModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     if (material.isOrichalcumBased() || material.isSoulsteelBased()) {
       return 2;
     }

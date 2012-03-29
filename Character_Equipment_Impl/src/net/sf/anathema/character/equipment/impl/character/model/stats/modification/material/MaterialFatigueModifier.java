@@ -13,7 +13,7 @@ public class MaterialFatigueModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     if (magicMaterial.isJadeBased()) {
       return original;
     }

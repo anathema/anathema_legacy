@@ -10,7 +10,7 @@ public class MobilityPenaltyModification implements StatsModification {
 
   @Override
   public int getModifiedValue(int original) {
-    int bonus = modifier.getModifier();
+    int bonus = modifier.calculate();
     return Math.max(0, original - bonus);
   }
 }

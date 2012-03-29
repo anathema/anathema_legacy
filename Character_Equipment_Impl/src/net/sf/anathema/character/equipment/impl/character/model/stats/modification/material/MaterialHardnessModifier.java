@@ -11,7 +11,7 @@ public class MaterialHardnessModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     if ((material.isOrichalcumBased() || material.isSoulsteelBased() || material.isStarmetalBased())) {
       return 1;
     }

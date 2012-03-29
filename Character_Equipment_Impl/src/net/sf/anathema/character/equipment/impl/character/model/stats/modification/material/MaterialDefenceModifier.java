@@ -11,7 +11,7 @@ public class MaterialDefenceModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     if (material.isOrichalcumBased()) {
       return 1;
     }

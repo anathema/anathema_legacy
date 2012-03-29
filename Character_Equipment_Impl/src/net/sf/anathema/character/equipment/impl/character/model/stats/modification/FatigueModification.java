@@ -10,7 +10,7 @@ public class FatigueModification implements StatsModification {
 
   @Override
   public int getModifiedValue(int original) {
-    int bonus = modifier.getModifier();
+    int bonus = modifier.calculate();
     return original - bonus;
   }
 }

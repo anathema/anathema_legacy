@@ -14,7 +14,7 @@ public class MaterialDamageModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     if (material.isStarmetalBased()) {
       if (type == WeaponStatsType.Melee) {
         return 3;

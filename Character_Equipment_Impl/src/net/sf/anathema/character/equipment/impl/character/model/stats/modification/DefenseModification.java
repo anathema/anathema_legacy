@@ -10,7 +10,7 @@ public class DefenseModification implements StatsModification {
 
   @Override
   public int getModifiedValue(int input) {
-    int bonus = modifier.getModifier();
+    int bonus = modifier.calculate();
     return input + bonus;
   }
 }

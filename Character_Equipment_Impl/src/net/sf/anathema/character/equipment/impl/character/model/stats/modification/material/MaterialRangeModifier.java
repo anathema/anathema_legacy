@@ -14,7 +14,7 @@ public class MaterialRangeModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     int modificationFactor = getModificationFactor();
     if (type == WeaponStatsType.Bow || type == WeaponStatsType.Thrown_BowBonuses) {
       return 50 * modificationFactor;

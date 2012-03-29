@@ -10,7 +10,7 @@ public class RateModification implements StatsModification {
 
   @Override
   public int getModifiedValue(int input) {
-    int bonus = modifier.getModifier();
+    int bonus = modifier.calculate();
     return Math.min(5, input + bonus);
   }
 }

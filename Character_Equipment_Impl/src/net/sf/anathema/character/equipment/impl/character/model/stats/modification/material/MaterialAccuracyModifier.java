@@ -14,7 +14,7 @@ public class MaterialAccuracyModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     if (material.isSoulsteelBased()) {
       return 2;
     }

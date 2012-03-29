@@ -12,10 +12,10 @@ public class AttunementModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     if (!attuned) {
       return 0;
     }
-    return modifier.getModifier();
+    return modifier.calculate();
   }
 }

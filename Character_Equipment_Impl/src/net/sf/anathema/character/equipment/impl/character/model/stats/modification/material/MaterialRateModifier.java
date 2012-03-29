@@ -14,7 +14,7 @@ public class MaterialRateModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     if (baseMaterial.isOrichalcumBased() && type == WeaponStatsType.Melee) {
       return 1;
     } else {

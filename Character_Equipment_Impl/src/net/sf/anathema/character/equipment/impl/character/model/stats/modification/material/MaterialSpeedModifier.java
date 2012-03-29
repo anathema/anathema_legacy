@@ -11,7 +11,7 @@ public class MaterialSpeedModifier implements StatModifier {
   }
 
   @Override
-  public int getModifier() {
+  public int calculate() {
     if (baseMaterial.isJadeBased()) {
       return 1;
     } else {
