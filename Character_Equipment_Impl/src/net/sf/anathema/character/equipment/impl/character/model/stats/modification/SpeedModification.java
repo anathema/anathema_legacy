@@ -10,7 +10,7 @@ public class SpeedModification implements StatsModification {
 
   @Override
   public int getModifiedValue(int input) {
-    int bonus = modifier.calculate();
-    return Math.max(3, input - bonus);
+    int modifier = this.modifier.calculate();
+    return Math.max(3, input + modifier);
   }
 }
