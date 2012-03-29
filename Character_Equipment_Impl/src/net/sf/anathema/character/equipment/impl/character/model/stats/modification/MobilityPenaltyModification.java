@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-public class MobilityPenaltyModification implements IArmourStatsModification {
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialMobilityPenaltyModifier;
+
+public class MobilityPenaltyModification implements ArmourStatsModification {
 
   private final BaseMaterial magicMaterial;
 
@@ -10,12 +12,7 @@ public class MobilityPenaltyModification implements IArmourStatsModification {
 
   @Override
   public int getModifiedValue(int original) {
-    if (magicMaterial.isMoonsilverBased()) {
-      return 0;
-    }
-    if (magicMaterial.isAdamantBased()) {
-      return original - 1;
-    }
-    return original;
+    int bonus = new MaterialMobilityPenaltyModifier(magicMaterial, original).getModifier();
+    return Math.max(0, original - bonus);
   }
 }

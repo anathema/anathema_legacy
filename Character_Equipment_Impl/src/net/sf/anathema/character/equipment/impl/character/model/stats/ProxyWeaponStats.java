@@ -5,11 +5,11 @@ import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.AccuracyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DamageModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DefenseModification;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.IStatsModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RangeModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RateModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SpeedModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.StatsModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.TagsModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
@@ -164,7 +164,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
     return delegate.representsItemForUseInCombat();
   }
 
-  private Integer getModifiedValue(IStatsModification modification, Integer unmodifiedValue) {
+  private Integer getModifiedValue(StatsModification modification, Integer unmodifiedValue) {
     if (unmodifiedValue == null) {
       return null;
     }

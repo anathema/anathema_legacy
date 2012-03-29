@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-public class DefenseModification implements IStatsModification {
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialDefenceModifier;
+
+public class DefenseModification implements StatsModification {
 
   private BaseMaterial material;
 
@@ -10,12 +12,7 @@ public class DefenseModification implements IStatsModification {
 
   @Override
   public int getModifiedValue(int input, WeaponStatsType type) {
-    if (material.isOrichalcumBased()) {
-      return input + 1;
-    }
-    if (material.isMoonsilverBased()) {
-      return input + 2;
-    }
-    return input;
+    int bonus = new MaterialDefenceModifier(material).getModifier();
+    return input + bonus;
   }
 }

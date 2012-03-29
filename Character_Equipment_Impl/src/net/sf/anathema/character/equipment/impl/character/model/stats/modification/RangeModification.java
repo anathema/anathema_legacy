@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-public class RangeModification implements IStatsModification {
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialRangeModifier;
+
+public class RangeModification implements StatsModification {
 
   private BaseMaterial material;
 
@@ -10,23 +12,7 @@ public class RangeModification implements IStatsModification {
 
   @Override
   public int getModifiedValue(int input, WeaponStatsType type) {
-    int modificationFactor = getModificationFactor();
-    if (type == WeaponStatsType.Bow || type == WeaponStatsType.Thrown_BowBonuses) {
-      return input + 50 * modificationFactor;
-    }
-    if (type == WeaponStatsType.Thrown) {
-      return input + 10 * modificationFactor;
-    }
-    return input;
-  }
-
-  private int getModificationFactor() {
-    if (material.isMoonsilverBased()) {
-      return 2;
-    }
-    if (material.isJadeBased() || material.isOrichalcumBased()) {
-      return 1;
-    }
-    return 0;
+    int bonus = new MaterialRangeModifier(material, type).getModifier();
+    return input + bonus;
   }
 }

@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-public class SpeedModification implements IStatsModification {
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialSpeedModifier;
+
+public class SpeedModification implements StatsModification {
 
   private BaseMaterial baseMaterial;
 
@@ -10,9 +12,7 @@ public class SpeedModification implements IStatsModification {
 
   @Override
   public int getModifiedValue(int input, WeaponStatsType type) {
-    if (baseMaterial.isJadeBased()) {
-      return Math.max(3, input - 1);
-    }
-    return input;
+    int bonus = new MaterialSpeedModifier(baseMaterial).getModifier();
+    return Math.max(3, input - bonus);
   }
 }

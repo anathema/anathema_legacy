@@ -51,11 +51,11 @@ public abstract class AbstractEquipmentModificationTest {
   }
 
   protected final void assertSpeedUnmodified() {
-    assertSpeedModification(1, 1, WeaponStatsType.Bow);
-    assertSpeedModification(1, 1, WeaponStatsType.Thrown);
-    assertSpeedModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
-    assertSpeedModification(1, 1, WeaponStatsType.Melee);
-    assertSpeedModification(1, 1, WeaponStatsType.Flame);
+    assertSpeedModification(5, 5, WeaponStatsType.Bow);
+    assertSpeedModification(5, 5, WeaponStatsType.Thrown);
+    assertSpeedModification(5, 5, WeaponStatsType.Thrown_BowBonuses);
+    assertSpeedModification(5, 5, WeaponStatsType.Melee);
+    assertSpeedModification(5, 5, WeaponStatsType.Flame);
   }
 
   protected final void assertSoakModification(int expected, int original, HealthType type) {

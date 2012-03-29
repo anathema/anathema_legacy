@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ArmourStatsModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.FatigueModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.HardnessModification;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.IArmourStatsModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.MobilityPenaltyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SoakModification;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -85,7 +85,7 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
     return delegate.representsItemForUseInCombat();
   }
 
-  private Integer getModifiedValue(IArmourStatsModification modification, Integer original) {
+  private Integer getModifiedValue(ArmourStatsModification modification, Integer original) {
     if (original == null) {
       return null;
     }

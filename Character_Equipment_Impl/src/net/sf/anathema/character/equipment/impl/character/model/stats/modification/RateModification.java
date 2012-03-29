@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-public class RateModification implements IStatsModification {
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialRateModifier;
+
+public class RateModification implements StatsModification {
 
   private BaseMaterial baseMaterial;
 
@@ -10,9 +12,7 @@ public class RateModification implements IStatsModification {
 
   @Override
   public int getModifiedValue(int input, WeaponStatsType type) {
-    if (baseMaterial.isOrichalcumBased() && type == WeaponStatsType.Melee) {
-      return Math.min(5, input + 1);
-    }
-    return input;
+    int bonus = new MaterialRateModifier(baseMaterial, type).getModifier();
+    return Math.min(5, input + bonus);
   }
 }
