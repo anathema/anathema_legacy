@@ -22,7 +22,7 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
 
   @Test
   public void addsOneToDefense() throws Exception {
-    assertDefenseModification(2, 1, WeaponStatsType.Melee);
+    assertDefenseModification(2, 1);
   }
 
   @Test

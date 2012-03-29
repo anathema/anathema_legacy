@@ -27,16 +27,16 @@ public class SecondEditionJadeModificationTest extends AbstractEquipmentModifica
 
   @Test
   public void speedReducedBy1() {
-    assertSpeedModification(3, 4, WeaponStatsType.Bow);
-    assertSpeedModification(3, 4, WeaponStatsType.Thrown);
-    assertSpeedModification(3, 4, WeaponStatsType.Thrown_BowBonuses);
-    assertSpeedModification(3, 4, WeaponStatsType.Melee);
-    assertSpeedModification(3, 4, WeaponStatsType.Flame);
+    assertSpeedModification(3, 4);
+    assertSpeedModification(3, 4);
+    assertSpeedModification(3, 4);
+    assertSpeedModification(3, 4);
+    assertSpeedModification(3, 4);
   }
 
   @Test
   public void speedReductionLimitedTo3() {
-    assertSpeedModification(3, 3, WeaponStatsType.Bow);
+    assertSpeedModification(3, 3);
   }
 
   @Test

@@ -9,9 +9,16 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RangeModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RateModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SpeedModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.StatModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.StatsModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.TagsModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialAccuracyModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialDamageModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialDefenceModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialRangeModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialRateModifier;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialSpeedModifier;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
@@ -54,7 +61,9 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public int getAccuracy() {
-    return getModifiedValue(new AccuracyModification(material), delegate.getAccuracy());
+    int accuracy = delegate.getAccuracy();
+    StatModifier modifier = createAttunementModifier(new MaterialAccuracyModifier(material, getWeaponStatsType()));
+    return getModifiedValue(new AccuracyModification(modifier), accuracy);
   }
 
   private WeaponStatsType getWeaponStatsType() {
@@ -76,8 +85,11 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public int getDamage() {
-    return getModifiedValue(new DamageModification(material), delegate.getDamage());
+    int damage = delegate.getDamage();
+    StatModifier modifier = createAttunementModifier(new MaterialDamageModifier(material, getWeaponStatsType()));
+    return getModifiedValue(new DamageModification(modifier), damage);
   }
+
 
   @Override
   public int getMinimumDamage() {
@@ -96,7 +108,9 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public Integer getDefence() {
-    return getModifiedValue(new DefenseModification(material), delegate.getDefence());
+    Integer defence = delegate.getDefence();
+    StatModifier modifier = createAttunementModifier(new MaterialDefenceModifier(material));
+    return getModifiedValue(new DefenseModification(modifier), defence);
   }
 
   @Override
@@ -106,22 +120,32 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public Integer getRange() {
-    return getModifiedValue(new RangeModification(material), delegate.getRange());
+    Integer range = delegate.getRange();
+    StatModifier modifier = createAttunementModifier(new MaterialRangeModifier(material, getWeaponStatsType()));
+    return getModifiedValue(new RangeModification(modifier), range);
   }
 
   @Override
   public Integer getRate() {
-    return getModifiedValue(new RateModification(material), delegate.getRate());
+    Integer rate = delegate.getRate();
+    StatModifier modifier = createAttunementModifier(new MaterialRateModifier(material, getWeaponStatsType()));
+    return getModifiedValue(new RateModification(modifier), rate);
   }
 
   @Override
   public int getSpeed() {
-    return getModifiedValue(new SpeedModification(material), delegate.getSpeed());
+    int speed = delegate.getSpeed();
+    StatModifier modifier = createAttunementModifier(new MaterialSpeedModifier(material));
+    return getModifiedValue(new SpeedModification(modifier), speed);
   }
 
   @Override
   public IIdentificate[] getTags() {
     return new TagsModification(material).getModifiedValue(delegate.getTags());
+  }
+
+  private AttunementModifier createAttunementModifier(StatModifier modifier) {
+    return new AttunementModifier(modifier, useAttunementModifiers());
   }
 
   @Override
@@ -168,7 +192,6 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
     if (unmodifiedValue == null) {
       return null;
     }
-    return !useAttunementModifiers() ? unmodifiedValue : modification.getModifiedValue(unmodifiedValue,
-            getWeaponStatsType());
+    return modification.getModifiedValue(unmodifiedValue);
   }
 }

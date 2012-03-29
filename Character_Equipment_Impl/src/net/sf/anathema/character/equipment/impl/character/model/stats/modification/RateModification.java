@@ -1,18 +1,16 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialRateModifier;
-
 public class RateModification implements StatsModification {
 
-  private BaseMaterial baseMaterial;
+  private final StatModifier modifier;
 
-  public RateModification(BaseMaterial material) {
-    this.baseMaterial = material;
+  public RateModification(StatModifier modifier) {
+    this.modifier = modifier;
   }
 
   @Override
-  public int getModifiedValue(int input, WeaponStatsType type) {
-    int bonus = new MaterialRateModifier(baseMaterial, type).getModifier();
+  public int getModifiedValue(int input) {
+    int bonus = modifier.getModifier();
     return Math.min(5, input + bonus);
   }
 }

@@ -1,18 +1,16 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialMobilityPenaltyModifier;
+public class MobilityPenaltyModification implements StatsModification {
 
-public class MobilityPenaltyModification implements ArmourStatsModification {
+  private final StatModifier modifier;
 
-  private final BaseMaterial magicMaterial;
-
-  public MobilityPenaltyModification(BaseMaterial magicMaterial) {
-    this.magicMaterial = magicMaterial;
+  public MobilityPenaltyModification(StatModifier modifier) {
+    this.modifier = modifier;
   }
 
   @Override
   public int getModifiedValue(int original) {
-    int bonus = new MaterialMobilityPenaltyModifier(magicMaterial, original).getModifier();
+    int bonus = modifier.getModifier();
     return Math.max(0, original - bonus);
   }
 }

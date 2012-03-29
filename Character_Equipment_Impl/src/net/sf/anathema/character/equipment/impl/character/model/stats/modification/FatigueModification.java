@@ -1,18 +1,16 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialFatigueModifier;
+public class FatigueModification implements StatsModification {
 
-public class FatigueModification implements ArmourStatsModification {
+  private final StatModifier modifier;
 
-  private final BaseMaterial magicMaterial;
-
-  public FatigueModification(BaseMaterial magicMaterial) {
-    this.magicMaterial = magicMaterial;
+  public FatigueModification(StatModifier modifier) {
+    this.modifier = modifier;
   }
 
   @Override
   public int getModifiedValue(int original) {
-    int bonus = new MaterialFatigueModifier(magicMaterial, original).getModifier();
+    int bonus = modifier.getModifier();
     return original - bonus;
   }
 }

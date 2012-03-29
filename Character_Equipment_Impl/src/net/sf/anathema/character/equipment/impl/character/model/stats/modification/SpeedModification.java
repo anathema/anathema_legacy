@@ -1,18 +1,16 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialSpeedModifier;
-
 public class SpeedModification implements StatsModification {
 
-  private BaseMaterial baseMaterial;
+  private final StatModifier modifier;
 
-  public SpeedModification(BaseMaterial material) {
-    this.baseMaterial = material;
+  public SpeedModification(StatModifier modifier) {
+    this.modifier = modifier;
   }
 
   @Override
-  public int getModifiedValue(int input, WeaponStatsType type) {
-    int bonus = new MaterialSpeedModifier(baseMaterial).getModifier();
+  public int getModifiedValue(int input) {
+    int bonus = modifier.getModifier();
     return Math.max(3, input - bonus);
   }
 }
