@@ -74,14 +74,7 @@ public class ProxyWeaponStats_EquipmentModifierTest {
   }
 
   @Test
-  public void respectsPDVFromEquipmentDoubledForLaterDivision() throws Exception {
-    when(modifiers.getPDVMod()).thenReturn(2);
-    int defence = stats.getDefence();
-    assertThat(defence, is(4));
-  }
-
-  @Test
-  public void usesBestDefenceFromEquipmentAndMaterial() throws Exception {
+  public void usesDefenceFromMaterial() throws Exception {
     when(material.isMoonsilverBased()).thenReturn(true);
     int defence = stats.getDefence();
     assertThat(defence, is(2));

@@ -14,14 +14,16 @@ public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponS
 
   private final IEquipmentCharacterDataProvider provider;
   private IEquipmentCharacterOptionProvider optionProvider;
+  private final IEquipmentModifiers modifiers;
 
   public SecondEditionDefenceWeaponStatsGroup(IResources resources, IGenericCharacter character,
                                               IGenericTraitCollection traitCollection,
                                               IEquipmentCharacterDataProvider provider,
-                                              IEquipmentCharacterOptionProvider optionProvider) {
+                                              IEquipmentCharacterOptionProvider optionProvider, IEquipmentModifiers modifiers) {
     super(resources, character, traitCollection);
     this.provider = provider;
     this.optionProvider = optionProvider;
+    this.modifiers = modifiers;
   }
 
   @Override
@@ -35,7 +37,7 @@ public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponS
     } else {
       finalValue = Math.ceil(finalValue / 2);
     }
-    return (int) finalValue;
+    return (int) finalValue + modifiers.getPDVMod();
   }
 
   private int getOptionModifiers(IWeaponStats stats) {

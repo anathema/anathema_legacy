@@ -20,7 +20,7 @@ public class EquipmentCollectionTest {
     IEquipmentItem item = createItemWithStats(traitModifyingStats);
     collection.add(item);
     IEquipmentModifiers modifiers = collection.createModifiers();
-    assertThat(modifiers.getPDVMod(), is(5));
+    assertThat(modifiers.getMeleeAccuracyMod(), is(5));
   }
 
   private IEquipmentItem createItemWithStats(TraitModifyingStats traitModifyingStats) {
@@ -32,7 +32,7 @@ public class EquipmentCollectionTest {
 
   private TraitModifyingStats createStats() {
     TraitModifyingStats traitModifyingStats = new TraitModifyingStats();
-    traitModifyingStats.setPDVMod(5);
+    traitModifyingStats.setMeleeAccuracyMod(5);
     return traitModifyingStats;
   }
 }

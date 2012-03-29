@@ -55,14 +55,6 @@ public class EquipmentModifiers implements IEquipmentModifiers {
   }
 
   @Override
-  public int getPDVMod() {
-    int highest = 0;
-    for (ITraitModifyingStats stat : stats)
-      highest = stat.getPDVMod() > highest ? stat.getPDVMod() : highest;
-    return highest;
-  }
-
-  @Override
   public int getRangedAccuracyMod() {
     int highest = 0;
     for (ITraitModifyingStats stat : stats)

@@ -16,7 +16,6 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment.EquipmentAccuracyModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment.EquipmentDamageModifier;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment.EquipmentDefenceModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment.EquipmentRateModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment.EquipmentSpeedModifier;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.material.MaterialAccuracyModifier;
@@ -125,9 +124,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   public Integer getDefence() {
     Integer defence = delegate.getDefence();
     StatModifier material = createAttunementModifier(new MaterialDefenceModifier(this.material));
-    StatModifier equipment = new EquipmentDefenceModifier(modifiers.createModifiers());
-    StatModifier modifier = new BestModifier(material, equipment);
-    return getModifiedValue(new DefenseModification(modifier), defence);
+    return getModifiedValue(new DefenseModification(material), defence);
   }
 
   @Override

@@ -94,4 +94,12 @@ public class EquipmentModifiers implements IEquipmentModifiers {
       highest = stat.getMPDVMod() > highest ? stat.getMPDVMod() : highest;
     return highest;
   }
+
+  @Override
+  public int getPDVMod() {
+    int highest = 0;
+    for (ITraitModifyingStats stat : stats)
+      highest = stat.getPDVMod() > highest ? stat.getPDVMod() : highest;
+    return highest;
+  }
 }

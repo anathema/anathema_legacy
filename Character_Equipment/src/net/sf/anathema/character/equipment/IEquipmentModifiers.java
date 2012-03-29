@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment;
 
 public interface IEquipmentModifiers {
-  int getPDVMod();
 
   int getMeleeSpeedMod();
 

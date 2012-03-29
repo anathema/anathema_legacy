@@ -37,7 +37,8 @@ public class Weaponry2ndEditionContent extends AbstractWeaponryContent {
 
   @Override
   protected AbstractDefenceWeaponStatsGroup createDefenceGroup() {
-    return new SecondEditionDefenceWeaponStatsGroup(getResources(), getCharacter(), getTraitCollection(), provider,optionProvider);
+    return new SecondEditionDefenceWeaponStatsGroup(getResources(), getCharacter(), getTraitCollection(), provider,
+            optionProvider, getEquipmentModifiers());
   }
 
   @Override
