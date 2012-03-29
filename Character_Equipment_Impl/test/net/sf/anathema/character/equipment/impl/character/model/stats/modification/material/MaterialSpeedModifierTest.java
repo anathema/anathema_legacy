@@ -16,7 +16,7 @@ public class MaterialSpeedModifierTest {
     BaseMaterial baseMaterial = mock(BaseMaterial.class);
     when(baseMaterial.isJadeBased()).thenReturn(true);
     int calculate = new MaterialSpeedModifier(baseMaterial).calculate();
-    assertThat(calculate, is(-1));
+    assertThat(calculate, is(1));
   }
 
   @Test

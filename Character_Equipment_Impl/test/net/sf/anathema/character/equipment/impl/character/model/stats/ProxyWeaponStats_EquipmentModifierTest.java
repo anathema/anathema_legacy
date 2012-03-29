@@ -74,10 +74,10 @@ public class ProxyWeaponStats_EquipmentModifierTest {
   }
 
   @Test
-  public void respectsDefenceFromEquipment() throws Exception {
+  public void respectsPDVFromEquipmentDoubledForLaterDivision() throws Exception {
     when(modifiers.getPDVMod()).thenReturn(2);
     int defence = stats.getDefence();
-    assertThat(defence, is(2));
+    assertThat(defence, is(4));
   }
 
   @Test

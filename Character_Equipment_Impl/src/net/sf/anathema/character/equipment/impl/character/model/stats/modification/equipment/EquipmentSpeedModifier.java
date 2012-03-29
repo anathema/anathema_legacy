@@ -15,9 +15,12 @@ public class EquipmentSpeedModifier implements StatModifier {
 
   @Override
   public int calculate() {
+    int modifier;
     if (type.isRanged()) {
-      return modifiers.getRangedSpeedMod();
+      modifier = modifiers.getRangedSpeedMod();
+    } else {
+      modifier = modifiers.getMeleeSpeedMod();
     }
-    return modifiers.getMeleeSpeedMod();
+    return -modifier;
   }
 }

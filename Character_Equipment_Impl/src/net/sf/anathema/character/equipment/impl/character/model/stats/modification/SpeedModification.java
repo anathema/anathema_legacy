@@ -11,6 +11,6 @@ public class SpeedModification implements StatsModification {
   @Override
   public int getModifiedValue(int input) {
     int modifier = this.modifier.calculate();
-    return Math.max(3, input + modifier);
+    return Math.max(3, input - modifier);
   }
 }

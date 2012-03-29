@@ -13,16 +13,16 @@ public class EquipmentSpeedModifierTest {
   IEquipmentModifiers modifiers = mock(IEquipmentModifiers.class);
 
   @Test
-  public void returnsSpeedModifierForMelee() throws Exception {
+  public void returnsSpeedModifierForMeleeInvertedForCalculation() throws Exception {
     when(modifiers.getMeleeSpeedMod()).thenReturn(5);
     EquipmentSpeedModifier modifier = new EquipmentSpeedModifier(modifiers, WeaponStatsType.Melee);
-    assertThat(modifier.calculate(), is(5));
+    assertThat(modifier.calculate(), is(-5));
   }
 
   @Test
-  public void returnsSpeedModifierForRanged() throws Exception {
+  public void returnsSpeedModifierForRangedInvertedForCalculation() throws Exception {
     when(modifiers.getRangedSpeedMod()).thenReturn(4);
     EquipmentSpeedModifier modifier = new EquipmentSpeedModifier(modifiers, WeaponStatsType.Bow);
-    assertThat(modifier.calculate(), is(4));
+    assertThat(modifier.calculate(), is(-4));
   }
 }
