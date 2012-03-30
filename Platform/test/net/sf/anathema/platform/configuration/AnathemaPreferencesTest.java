@@ -29,7 +29,7 @@ public class AnathemaPreferencesTest {
 
   @Test
   public void testCustomizedRepository() throws Exception {
-    preferences.put("Repository", "C:/exalted/ist/toll/"); //$NON-NLS-1$//$NON-NLS-2$
+    preferences.put("RepositoryForAnathema4orHigher", "C:/exalted/ist/toll/"); //$NON-NLS-1$//$NON-NLS-2$
     Assert.assertEquals("C:/exalted/ist/toll/", anathemaPreferences.getRepositoryLocationPreference(null)); //$NON-NLS-1$
   }
 
