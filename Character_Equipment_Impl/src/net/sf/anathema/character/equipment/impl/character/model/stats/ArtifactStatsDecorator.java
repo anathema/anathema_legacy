@@ -16,6 +16,7 @@ public class ArtifactStatsDecorator extends AbstractStats implements IArtifactSt
     setName(stats.getName());
   }
 
+  @Override
   public Integer getAttuneCost() {
     switch (type) {
       default:
@@ -32,18 +33,22 @@ public class ArtifactStatsDecorator extends AbstractStats implements IArtifactSt
     }
   }
 
+  @Override
   public ArtifactAttuneType getAttuneType() {
     return type;
   }
 
+  @Override
   public boolean allowForeignAttunement() {
     return true;
   }
 
+  @Override
   public boolean requireAttunementToUse() {
     return requireAttune;
   }
 
+  @Override
   public IEquipmentStats[] getViews() {
     return new IEquipmentStats[]{this};
   }

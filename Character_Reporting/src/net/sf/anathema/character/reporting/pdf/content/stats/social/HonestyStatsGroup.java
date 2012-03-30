@@ -11,6 +11,7 @@ public class HonestyStatsGroup extends AbstractSocialCombatsValueStatsGroup {
     super(resources, "Honesty"); //$NON-NLS-1$
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, ISocialCombatStats stats) {
     if (stats == null) {
       table.addCell(createFinalValueCell(font));
@@ -21,6 +22,7 @@ public class HonestyStatsGroup extends AbstractSocialCombatsValueStatsGroup {
     }
   }
 
+  @Override
   public int getColumnCount() {
     return 2;
   }

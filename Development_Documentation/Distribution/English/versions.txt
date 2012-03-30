@@ -20,6 +20,8 @@ http://anathema.github.com
 * Soak from multiple worn armor no longer stacks, only the highest applies.
 * Equipment that modifies various pools no longer stacks, only the highest applies.
 * Combos no longer cost XP or BP and drop some editing restrictions
+* Weapon Speed cannot fall below 3
+* Weapon Rate cannot rise over 5
 
 Anathema no longer supports First Edition or "classic" Second Edition.
 At first launch, it will create a backup ZIP of your repository, delete all 1E Characters and convert 2E characters to
@@ -37,6 +39,7 @@ entry manually to reflect the new rules.
 * Characters remember which weapons were attuned when saving
 * (Infernal/SWLIHN) "Precision Thought-Force Exercise" and "Orbital Impact Storm" attributed to Ink Monkeys
 * Duplication of Series possible on Windows systems
+* Anathema respects Accuracy and MPDV modifiers from equipment
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.2

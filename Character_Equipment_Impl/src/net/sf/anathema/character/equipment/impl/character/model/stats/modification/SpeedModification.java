@@ -1,25 +1,16 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
+public class SpeedModification implements StatsModification {
 
-public class SpeedModification implements IStatsModification {
+  private final StatModifier modifier;
 
-  private final MagicalMaterial material;
-  private BaseMaterial baseMaterial;
-
-  public SpeedModification(MagicalMaterial material) {
-    this.material = material;
-    this.baseMaterial = new BaseMaterial(material);
+  public SpeedModification(StatModifier modifier) {
+    this.modifier = modifier;
   }
 
   @Override
-  public int getModifiedValue(int input, WeaponStatsType type) {
-    if (baseMaterial.isJadeBased()) {
-      return Math.max(1, input - 1);
-    }
-    if (material == MagicalMaterial.Jade && type == WeaponStatsType.Melee) {
-      return input + 3;
-    }
-    return input;
+  public int getModifiedValue(int input) {
+    int modifier = this.modifier.calculate();
+    return Math.max(3, input - modifier);
   }
 }

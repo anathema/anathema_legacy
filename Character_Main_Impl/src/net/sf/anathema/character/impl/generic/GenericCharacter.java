@@ -215,7 +215,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IEquipmentModifiers getEquipmentModifiers() {
-    return new EquipmentModifiers(statistics);
+    return EquipmentModifiers.extractFromStatistics(statistics);
   }
 
   @Override

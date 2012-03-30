@@ -36,6 +36,6 @@ public class ArmourContent extends AbstractEquipmentContent<IArmourStats> {
 
   public IArmourStats getTotalArmour() {
     int lineCount = getLineCount();
-    return getEquipmentModel().getTotalPrintArmour(getResources(), lineCount);
+    return getEquipmentModel().getEffectivePrintArmour(getResources(), lineCount);
   }
 }

@@ -1,30 +1,17 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
+public class DamageModification implements StatsModification {
 
-public class DamageModification implements IStatsModification {
+  private final StatModifier modifier;
 
-  private BaseMaterial material;
-
-  public DamageModification(MagicalMaterial material) {
-    this.material = new BaseMaterial(material);
+  public DamageModification(StatModifier modifier) {
+    this.modifier = modifier;
   }
 
   @Override
-  public int getModifiedValue(int input, WeaponStatsType type) {
-    if (material.isStarmetalBased()) {
-      if (type == WeaponStatsType.Melee) {
-        return input + 3;
-      } else {
-        return input + 2;
-      }
-    }
-    if (material.isJadeBased() && type == WeaponStatsType.Melee) {
-      return input + 1;
-    }
-    if (material.isOrichalcumBased() && type.isRanged()) {
-      return input + 1;
-    }
-    return input;
+  public int getModifiedValue(int input) {
+    int bonus = modifier.calculate();
+    return input + bonus;
   }
+
 }

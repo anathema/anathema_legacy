@@ -37,8 +37,8 @@ public class Weaponry2ndEditionContent extends AbstractWeaponryContent {
 
   @Override
   protected AbstractDefenceWeaponStatsGroup createDefenceGroup() {
-    return new SecondEditionDefenceWeaponStatsGroup(getResources(), getCharacter(), getTraitCollection(), provider,optionProvider,
-            getEquipmentModifiers());
+    return new SecondEditionDefenceWeaponStatsGroup(getResources(), getCharacter(), getTraitCollection(), provider,
+            optionProvider, getEquipmentModifiers());
   }
 
   @Override
@@ -48,6 +48,6 @@ public class Weaponry2ndEditionContent extends AbstractWeaponryContent {
 
   @Override
   protected RateWeaponStatsGroup createRateGroup() {
-    return new RateWeaponStatsGroup(getResources(), getEquipmentModifiers());
+    return new RateWeaponStatsGroup(getResources());
   }
 }

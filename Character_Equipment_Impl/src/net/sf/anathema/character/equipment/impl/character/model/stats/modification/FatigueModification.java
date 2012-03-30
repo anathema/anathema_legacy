@@ -1,19 +1,16 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
+public class FatigueModification implements StatsModification {
 
-public class FatigueModification implements IArmourStatsModification {
+  private final StatModifier modifier;
 
-  private final BaseMaterial magicMaterial;
-
-  public FatigueModification(MagicalMaterial magicMaterial) {
-    this.magicMaterial = new BaseMaterial(magicMaterial);
+  public FatigueModification(StatModifier modifier) {
+    this.modifier = modifier;
   }
 
+  @Override
   public int getModifiedValue(int original) {
-    if (magicMaterial.isJadeBased()) {
-      return 0;
-    }
-    return original;
+    int bonus = modifier.calculate();
+    return original - bonus;
   }
 }

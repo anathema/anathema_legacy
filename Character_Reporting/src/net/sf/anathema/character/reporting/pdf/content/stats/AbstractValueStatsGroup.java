@@ -26,10 +26,12 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
     return resources;
   }
 
+  @Override
   public Float[] getColumnWeights() {
     return TableEncodingUtilities.createStandardColumnWeights(getColumnCount());
   }
 
+  @Override
   public final String getTitle() {
     return title;
   }
@@ -61,7 +63,7 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
     return createContentCellTable(BaseColor.GRAY, text, font, 0.5f, value != null);
   }
 
-  private final String getStatsValueString(Integer value) {
+  private String getStatsValueString(Integer value) {
     if (value == null) {
       return " "; //$NON-NLS-1$
     }
@@ -83,11 +85,11 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
     return "+"; //$NON-NLS-1$
   }
 
-  private final PdfPCell createContentCellTable(BaseColor borderColor, String text, Font font, float borderWidth, boolean enabled) {
+  private PdfPCell createContentCellTable(BaseColor borderColor, String text, Font font, float borderWidth, boolean enabled) {
     return TableEncodingUtilities.createContentCellTable(borderColor, text, font, borderWidth, Rectangle.BOX, Element.ALIGN_RIGHT, enabled);
   }
 
-  private final PdfPCell createContentCellTable(BaseColor borderColor, String text, Font font, float borderWidth, int alignment, boolean enabled) {
+  private PdfPCell createContentCellTable(BaseColor borderColor, String text, Font font, float borderWidth, int alignment, boolean enabled) {
     return TableEncodingUtilities.createContentCellTable(borderColor, text, font, borderWidth, Rectangle.BOX, alignment, enabled);
   }
 

@@ -1,20 +1,16 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
+public class HardnessModification implements StatsModification {
 
-public class HardnessModification implements IArmourStatsModification {
+  private final StatModifier modifier;
 
-  private BaseMaterial material;
-
-  public HardnessModification(MagicalMaterial magicMaterial) {
-    this.material = new BaseMaterial(magicMaterial);
+  public HardnessModification(StatModifier modifier) {
+    this.modifier = modifier;
   }
 
   @Override
   public int getModifiedValue(int original) {
-    if ((material.isOrichalcumBased() || material.isSoulsteelBased() || material.isStarmetalBased())) {
-      return original + 1;
-    }
-    return original;
+    int bonus = modifier.calculate();
+    return original + bonus;
   }
 }

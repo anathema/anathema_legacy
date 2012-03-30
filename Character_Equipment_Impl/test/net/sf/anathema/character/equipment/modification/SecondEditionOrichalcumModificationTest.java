@@ -22,7 +22,7 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
 
   @Test
   public void addsOneToDefense() throws Exception {
-    assertDefenseModification(2, 1, WeaponStatsType.Melee);
+    assertDefenseModification(2, 1);
   }
 
   @Test
@@ -32,6 +32,11 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
     assertRateModification(1, 1, WeaponStatsType.Thrown);
     assertRateModification(1, 1, WeaponStatsType.Thrown_BowBonuses);
     assertRateModification(1, 1, WeaponStatsType.Flame);
+  }
+
+  @Test
+  public void rateCannotRisePast5() throws Exception {
+    assertRateModification(5, 5, WeaponStatsType.Melee);
   }
 
   @Test

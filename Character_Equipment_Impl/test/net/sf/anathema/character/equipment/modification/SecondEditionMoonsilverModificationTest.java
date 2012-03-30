@@ -21,7 +21,7 @@ public class SecondEditionMoonsilverModificationTest extends AbstractEquipmentMo
 
   @Test
   public void defenseIncreasedForMeleeBy2() throws Exception {
-    assertDefenseModification(3, 1, WeaponStatsType.Melee);
+    assertDefenseModification(3, 1);
   }
 
   @Test

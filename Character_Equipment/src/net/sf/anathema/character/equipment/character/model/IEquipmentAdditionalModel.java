@@ -8,19 +8,19 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 
 public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentItemCollection {
 
-  public MagicalMaterial getDefaultMaterial();
+  MagicalMaterial getDefaultMaterial();
   
-  public MaterialComposition getMaterialComposition(String templateId);
+  MaterialComposition getMaterialComposition(String templateId);
 
-  public MagicalMaterial getMagicalMaterial(String templateId);
+  MagicalMaterial getMagicalMaterial(String templateId);
   
-  public int getTotalAttunementCost();
+  int getTotalAttunementCost();
 
-  public IEquipmentPrintModel getPrintModel();
+  IEquipmentPrintModel getPrintModel();
   
-  public IEquipmentCharacterDataProvider getCharacterDataProvider();
+  IEquipmentCharacterDataProvider getCharacterDataProvider();
 
-  public void refreshItems();
+  void refreshItems();
 
   IEquipmentCharacterOptionProvider getCharacterOptionProvider();
 }

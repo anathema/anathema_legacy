@@ -1,37 +1,16 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.MagicalMaterial;
+public class AccuracyModification implements StatsModification {
 
-public class AccuracyModification implements IStatsModification {
+  private final StatModifier modifier;
 
-  private BaseMaterial material;
-
-  public AccuracyModification(MagicalMaterial material) {
-    this.material = new BaseMaterial(material);
+  public AccuracyModification(StatModifier modifier) {
+    this.modifier = modifier;
   }
 
   @Override
-  public int getModifiedValue(int input, WeaponStatsType type) {
-    if (material.isSoulsteelBased()) {
-      return input + 2;
-    }
-    if (material.isOrichalcumBased()) {
-      if (type.isRanged()) {
-        return input + 1;
-      } else {
-        return input + 2;
-      }
-    }
-    if (material.isMoonsilverBased()) {
-      if (type.isRanged()) {
-        return input + 1;
-      } else {
-        return input + 2;
-      }
-    }
-    if (material.isStarmetalBased()) {
-      return input + 1;
-    }
-    return input;
+  public int getModifiedValue(int input) {
+    int bonus = modifier.calculate();
+    return input + bonus;
   }
 }
