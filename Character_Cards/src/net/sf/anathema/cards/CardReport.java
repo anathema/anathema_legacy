@@ -10,6 +10,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
+import net.sf.anathema.cards.data.providers.LegendCardDataProvider;
 import net.sf.anathema.cards.layout.ICardLayout;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.ICharacter;
@@ -23,15 +24,22 @@ public class CardReport extends AbstractPdfReport {
 	private IResources resources;
 	private ICardLayout layout;
 	private ICardDataProvider[] cardDataProviders;
+	private boolean hasLegend = false;
 	
 	public CardReport(IResources resources, ICardLayout layout, ICardDataProvider... cardProviders) {
 		this.resources = resources;
 		this.cardDataProviders = cardProviders;
 		this.layout = layout;
+		for (ICardDataProvider provider : cardProviders) {
+			hasLegend = hasLegend || (provider instanceof LegendCardDataProvider);
+		}
 	}
 	
 	@Override
 	public String toString() {
+	  if (hasLegend) {
+		  return resources.getString("CardsReport.CharmsSpells.Name.Legend"); //$NON-NLS-1$  
+	  }
 	  return resources.getString("CardsReport.CharmsSpells.Name"); //$NON-NLS-1$
 	}
 	
@@ -40,7 +48,11 @@ public class CardReport extends AbstractPdfReport {
 			throws ReportException {
 		try {
 			PdfContentByte directContent = writer.getDirectContent();
-			//document.setMargins(20, 20, 10, 10);
+			document.setMargins(
+					20,
+					20,
+					document.topMargin(),
+					document.bottomMargin());
 
 			// For now, only one style of report, that includes
 			// all spells and charms

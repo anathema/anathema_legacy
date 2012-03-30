@@ -1,15 +1,11 @@
 package net.sf.anathema.cards.layout;
 
-import java.awt.Image;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.cards.ICard;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
@@ -35,7 +31,6 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	private static final float BODY_TEXT_Y_SPAN = 710;
 	private static final float SOURCE_TEXT_Y_OFFSET = -1000;
 	
-	Map<Image, com.itextpdf.text.Image> imageMap = new HashMap<Image, com.itextpdf.text.Image>();
 	private final ICardReportResourceProvider provider;
 	private final float scale;
 	
@@ -63,32 +58,32 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 
 	private void drawBaseCard(ICard card) {
 		//base
-		drawImage(card.getPdfContent(), card.getX(), card.getY(),
+		drawScaledImage(card.getPdfContent(), card.getX(), card.getY(),
 				provider.getCardBaseImage());
 		//stat block
-		drawImage(card.getPdfContent(),
+		drawScaledImage(card.getPdfContent(),
 				card.getX() + scale(STAT_BLOCK_X_OFFSET),
 				card.getY() + scale(STAT_BLOCK_Y_OFFSET),
 				provider.getCardStatBlockImage());
 		//body block
-		drawImage(card.getPdfContent(),
+		drawScaledImage(card.getPdfContent(),
 				card.getX() + scale(BODY_BLOCK_X_OFFSET),
 				card.getY() + scale(BODY_BLOCK_Y_OFFSET),
 				provider.getCardBodyBlockImage());
 		
 		// right icon
-		drawImage(card.getPdfContent(),
+		drawScaledImage(card.getPdfContent(),
 				card.getX() + scale(FIRST_ICON_X_OFFSET),
 				card.getY() + scale(ICONS_Y_OFFSET),
 				provider.getCardIconBlockImage());
 		
 		if (card.getData().getSecondaryIcon() != null) {
 			// left icon, first place the shadow
-			drawImage(card.getPdfContent(),
+			drawScaledImage(card.getPdfContent(),
 					card.getX() + scale(SECOND_ICON_X_OFFSET),
 					card.getY() + scale(ICON_SHADOW_Y_OFFSET),
 					provider.getCardIconShadowImage());
-			drawImage(card.getPdfContent(),
+			drawScaledImage(card.getPdfContent(),
 					card.getX() + scale(SECOND_ICON_X_OFFSET),
 					card.getY() + scale(ICONS_Y_OFFSET),
 					provider.getCardIconBlockImage());
@@ -106,13 +101,13 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	private void drawIcons(ICard card) {
 		
 		if (card.getData().getPrimaryIcon() != null) {
-			drawImage(card.getPdfContent(),
+			drawScaledImage(card.getPdfContent(),
 					card.getX() + scale(FIRST_ICON_X_OFFSET),
 					card.getY() + scale(ICONS_Y_OFFSET),
 					card.getData().getPrimaryIcon());
 		}
 		if (card.getData().getSecondaryIcon() != null) {
-			drawImage(card.getPdfContent(),
+			drawScaledImage(card.getPdfContent(),
 					card.getX() + scale(SECOND_ICON_X_OFFSET),
 					card.getY() + scale(ICONS_Y_OFFSET),
 					card.getData().getSecondaryIcon());
@@ -136,14 +131,15 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	}
 	
 	private void writeBody(ICard card) throws DocumentException {
-		if (card.getData().getBody().length == 0) return;
+		Element[] body = card.getData().getBody((int) scale(BODY_TEXT_Y_SPAN));
+		if (body.length == 0) return;
 		
 		Rectangle rect = new Rectangle(card.getX() + scale(TEXT_MARGIN), // bottom left X
 			 	   card.getY() + scale(BODY_TEXT_Y_OFFSET) - scale(BODY_TEXT_Y_SPAN), // bottom left Y 
 			 	   card.getX() + getCardWidth() - 2 * scale(TEXT_MARGIN), // top right X
 			 	   card.getY() + scale(BODY_TEXT_Y_OFFSET)); // top right Y
 		
-	    writeText(card.getPdfContent(), rect, card.getData().getBody());
+	    writeText(card.getPdfContent(), rect, body);
 	}
 	
 	private void writeSource(ICard card) throws DocumentException {
@@ -154,21 +150,13 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	    writeText(card.getPdfContent(), rect, new Phrase(card.getData().getSource(), provider.getSourceFont()));
 	}
 	
-	private void drawImage(PdfContentByte directContent, float x, float y, Image image) {
-		try {
-			com.itextpdf.text.Image pdfImage;
-			pdfImage = imageMap.get(image);
-			if (pdfImage == null) {
-				pdfImage = com.itextpdf.text.Image.getInstance(image, null ,false);
-				pdfImage.scalePercent(scale * 100);
-				imageMap.put(image, pdfImage);
-			}
-			drawImage(directContent, x, y, pdfImage);
-		} catch (BadElementException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	protected void adjustContentImage(Image image) {
+		image.scalePercent(scale * 100);
+	}
+	
+	private void drawScaledImage(PdfContentByte directContent, float x, float y, Image image) {
+		adjustContentImage(image);
+		drawImage(directContent, x, y, image);
 	}
 	
 	@Override

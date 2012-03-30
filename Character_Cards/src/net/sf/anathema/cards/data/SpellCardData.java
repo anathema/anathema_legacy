@@ -1,10 +1,9 @@
 package net.sf.anathema.cards.data;
 
-import java.awt.Image;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.common.base.Joiner;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
@@ -46,12 +45,12 @@ public class SpellCardData extends AbstractMagicCardData {
 	}
 	
 	@Override
-	public Phrase[] getBody() {
-		List<Phrase> phrases = new ArrayList<Phrase>();
+	public Element[] getBody(int getHeight) {
+		Paragraph paragraph = new Paragraph();
 	    if (hasDescription()) {
-	    	addDescriptionPhrases(phrases);
+	    	addDescriptionPhrases(paragraph);
 	    }
-	    return phrases.toArray(new Phrase[0]);
+	    return new Element[] { paragraph };
 	}
 
 	@Override

@@ -13,9 +13,9 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CharmCardProvider extends AbstractMagicCardProvider {
+public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
 
-	public CharmCardProvider(IAnathemaModel model, IResources resources) {
+	public CharmCardDataProvider(IAnathemaModel model, IResources resources) {
 		super(model, resources);
 	}
 	

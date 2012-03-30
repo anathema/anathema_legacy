@@ -1,8 +1,7 @@
 package net.sf.anathema.cards.layout;
 
-import java.awt.Image;
-
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;

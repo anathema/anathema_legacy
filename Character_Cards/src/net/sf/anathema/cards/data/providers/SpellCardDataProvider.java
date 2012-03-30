@@ -12,9 +12,9 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SpellCardProvider extends AbstractMagicCardProvider {
+public class SpellCardDataProvider extends AbstractMagicCardDataProvider {
 
-	public SpellCardProvider(IAnathemaModel model, IResources resources) {
+	public SpellCardDataProvider(IAnathemaModel model, IResources resources) {
 		super(model, resources);
 	}
 

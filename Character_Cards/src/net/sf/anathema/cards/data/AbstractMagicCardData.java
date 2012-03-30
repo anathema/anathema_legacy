@@ -1,7 +1,5 @@
 package net.sf.anathema.cards.data;
 
-import java.util.List;
-
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ScreenDisplayInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
@@ -59,7 +57,7 @@ public abstract class AbstractMagicCardData implements ICardData {
 		return !description.isEmpty();
 	}
 	
-	protected void addDescriptionPhrases(List<Phrase> phrases) {
+	protected void addDescriptionPhrases(Paragraph phrases) {
 		for (String string : description.getParagraphs()) {
 	    	phrases.add(new Paragraph(string, resourceProvider.getNormalFont()));
 	    }

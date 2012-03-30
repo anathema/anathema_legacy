@@ -1,11 +1,11 @@
 package net.sf.anathema.cards.data;
 
-import java.awt.Image;
-import java.util.ArrayList;
-import java.util.List;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 
 import com.google.common.base.Joiner;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
@@ -58,15 +58,15 @@ public class CharmCardData extends AbstractMagicCardData {
 	}
 	
 	@Override
-	public Phrase[] getBody() {
-		List<Phrase> phrases = new ArrayList<Phrase>();
+	public Element[] getBody(int contentHeight) {
+		Paragraph phrases = new Paragraph();
 		if (hasCost(charm)) {
 			phrases.add(getCostPhrase(hasDescription()));
 		}
 	    if (hasDescription()) {
 	    	addDescriptionPhrases(phrases);
 	    }
-	    return phrases.toArray(new Phrase[0]);
+	    return new Element[] { phrases };
 	}
 	
 	private Phrase getCharmType(ICharm charm) {

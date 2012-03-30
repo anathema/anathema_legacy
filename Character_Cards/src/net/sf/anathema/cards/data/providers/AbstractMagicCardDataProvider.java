@@ -6,12 +6,12 @@ import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractMagicCardProvider implements ICardDataProvider {
+public abstract class AbstractMagicCardDataProvider implements ICardDataProvider {
 	
 	private final IAnathemaModel model;
 	private final IResources resources;
 	
-	protected AbstractMagicCardProvider(IAnathemaModel model, IResources resources) {
+	protected AbstractMagicCardDataProvider(IAnathemaModel model, IResources resources) {
 		this.model = model;
 		this.resources = resources;
 	}

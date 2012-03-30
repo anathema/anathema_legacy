@@ -1,11 +1,13 @@
 package net.sf.anathema.cards.layout;
 
-import java.awt.Image;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 
 import net.disy.commons.swing.image.ImageLoadingException;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
@@ -99,12 +101,17 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 		try {
 			Image image = imageMap.get(filePath); 
 			if (image == null) {
-				image = resources.getImage(this.getClass(), filePath);
+				java.awt.Image javaImage = resources.getImage(this.getClass(), filePath); 
+				image = Image.getInstance(javaImage, null);
 				imageMap.put(filePath, image);
 			}
 			return image;
 		}
 		catch (ImageLoadingException exception) {
+			return null;
+		} catch (BadElementException e) {
+			return null;
+		} catch (IOException e) {
 			return null;
 		}
 	}

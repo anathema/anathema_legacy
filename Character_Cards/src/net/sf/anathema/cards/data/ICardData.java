@@ -1,7 +1,7 @@
 package net.sf.anathema.cards.data;
 
-import java.awt.Image;
-
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Phrase;
 
 public interface ICardData {
@@ -15,7 +15,7 @@ public interface ICardData {
 	
 	String getKeywords();
 	
-	Phrase[] getBody();
+	Element[] getBody(int contentHeight);
 	
 	String getSource();	
 }
