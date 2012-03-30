@@ -59,8 +59,8 @@ public class CardReport extends AbstractPdfReport {
 			int maxPosition = numRows * numCols - 1;
 			int position = 0;
 			for (ICardData cardData : cardDataSet) {
-				float upperleftX = document.left() + (layout.getCardWidth() + horizontalGutter) * (position / numCols);
-				float upperleftY = document.top() - (layout.getCardHeight() + verticalGutter) * (position % numCols);
+				float upperleftX = document.left() + (layout.getCardWidth() + horizontalGutter) * (position % numCols);
+				float upperleftY = document.top() - (layout.getCardHeight() + verticalGutter) * (position / numCols);
 				
 				Card card = new Card(directContent, upperleftX, upperleftY, cardData);
 				layout.drawCard(card);
