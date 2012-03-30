@@ -5,7 +5,6 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -14,12 +13,10 @@ import net.sf.anathema.lib.resources.IResources;
 public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
   private final IGenericTraitCollection collection;
-  private final IEquipmentModifiers equipment;
 
-  public DamageWeaponStatsGroup(IResources resources, IGenericTraitCollection collection, IEquipmentModifiers equipment) {
+  public DamageWeaponStatsGroup(IResources resources, IGenericTraitCollection collection) {
     super(resources, "Damage"); //$NON-NLS-1$
     this.collection = collection;
-    this.equipment = equipment;
   }
 
   @Override
@@ -29,10 +26,12 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
     return columnWidth;
   }
 
+  @Override
   public int getColumnCount() {
     return 3;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IWeaponStats weapon) {
     if (weapon == null) {
       table.addCell(createEmptyValueCell(font));
@@ -47,13 +46,13 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
       int finalValue = weaponValue;
       ITraitType damageTraitType = weapon.getDamageTraitType();
       if (damageTraitType != null) {
-        finalValue = calculateFinalValue(weaponValue, collection.getTrait(damageTraitType)) +
-                (weapon.isRangedCombat() ? equipment.getRangedDamageMod() : equipment.getMeleeDamageMod());
+        finalValue = calculateFinalValue(weaponValue, collection.getTrait(damageTraitType));
         table.addCell(createEquipmentValueCell(font, weaponValue));
       } else {
         table.addCell(createEquipmentValueCell(font, null));
       }
-      table.addCell(createFinalValueCell(font, finalValue + (weapon.getMinimumDamage() > 1 ? "/" + weapon.getMinimumDamage() : "")));
+      table.addCell(createFinalValueCell(font,
+              finalValue + (weapon.getMinimumDamage() > 1 ? "/" + weapon.getMinimumDamage() : "")));
       table.addCell(createFinalValueCell(font, getDamageTypeLabel(weapon.getDamageType()), Element.ALIGN_CENTER));
     }
   }

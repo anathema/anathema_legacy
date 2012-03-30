@@ -36,8 +36,11 @@ public class EquipmentItem implements IEquipmentItem {
   private final ChangeControl changeControl = new ChangeControl();
   private final IEquipmentTemplate template;
   private final MagicalMaterial material;
+  private final ModifierFactory modifiers;
 
-  public EquipmentItem(IEquipmentTemplate template, MagicalMaterial material, ItemAttunementEvaluator provider) {
+  public EquipmentItem(IEquipmentTemplate template, MagicalMaterial material, ItemAttunementEvaluator provider,
+                       ModifierFactory modifiers) {
+    this.modifiers = modifiers;
     if (template.getComposition() == Variable && material == null) {
       throw new MissingMaterialException("Variable material items must be created with material."); //$NON-NLS-1$
     }
@@ -197,7 +200,7 @@ public class EquipmentItem implements IEquipmentItem {
         return new ProxyArmourStats((IArmourStats) stats, baseMaterial);
       }
       if (stats instanceof IWeaponStats) {
-        return new ProxyWeaponStats((IWeaponStats) stats, baseMaterial);
+        return new ProxyWeaponStats((IWeaponStats) stats, baseMaterial, modifiers);
       }
       return stats;
     }

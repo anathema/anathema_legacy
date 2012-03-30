@@ -36,7 +36,7 @@ public abstract class AbstractWeaponryContent extends AbstractEquipmentContent<I
   }
 
   private DamageWeaponStatsGroup createDamageGroup() {
-    return new DamageWeaponStatsGroup(getResources(), getTraitCollection(), getEquipmentModifiers());
+    return new DamageWeaponStatsGroup(getResources(), getTraitCollection());
   }
 
   private RangeWeaponStatsGroup createRangeWeaponGroup() {

@@ -243,7 +243,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   private IEquipmentItem createItem(IEquipmentTemplate template, MagicalMaterial material) {
-    EquipmentItem item = new EquipmentItem(template, material, getCharacterDataProvider());
+    EquipmentItem item = new EquipmentItem(template, material, getCharacterDataProvider(), equipmentItems);
     initItem(item);
     return item;
   }

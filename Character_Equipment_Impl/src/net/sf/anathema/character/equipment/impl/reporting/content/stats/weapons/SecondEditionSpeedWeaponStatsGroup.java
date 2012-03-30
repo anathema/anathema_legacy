@@ -12,7 +12,6 @@ public class SecondEditionSpeedWeaponStatsGroup extends AbstractSpeedWeaponStats
 
   @Override
   protected int getSpeedValue(IWeaponStats weapon, IEquipmentModifiers equipment) {
-    return Math.max(3, weapon.getSpeed() +
-    	(weapon.isRangedCombat() ? equipment.getRangedSpeedMod() : equipment.getMeleeSpeedMod()));
+    return weapon.getSpeed();
   }
 }
