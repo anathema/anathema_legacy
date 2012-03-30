@@ -67,39 +67,39 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 				provider.getCardBaseImage());
 		//stat block
 		drawImage(card.getPdfContent(),
-				card.getX() + getStatBlockXOffset(),
-				card.getY() + getStatBlockYOffset(),
+				card.getX() + scale(STAT_BLOCK_X_OFFSET),
+				card.getY() + scale(STAT_BLOCK_Y_OFFSET),
 				provider.getCardStatBlockImage());
 		//body block
 		drawImage(card.getPdfContent(),
-				card.getX() + getBodyBlockXOffset(),
-				card.getY() + getBodyBlockYOffset(),
+				card.getX() + scale(BODY_BLOCK_X_OFFSET),
+				card.getY() + scale(BODY_BLOCK_Y_OFFSET),
 				provider.getCardBodyBlockImage());
 		
 		// right icon
 		drawImage(card.getPdfContent(),
-				card.getX() + getFirstIconXOffset(),
-				card.getY() + getIconYOffset(),
+				card.getX() + scale(FIRST_ICON_X_OFFSET),
+				card.getY() + scale(ICONS_Y_OFFSET),
 				provider.getCardIconBlockImage());
 		
 		if (card.getData().getSecondaryIcon() != null) {
 			// left icon, first place the shadow
 			drawImage(card.getPdfContent(),
-					card.getX() + getSecondIconXOffset(),
-					card.getY() + getIconShadowYOffset(),
+					card.getX() + scale(SECOND_ICON_X_OFFSET),
+					card.getY() + scale(ICON_SHADOW_Y_OFFSET),
 					provider.getCardIconShadowImage());
 			drawImage(card.getPdfContent(),
-					card.getX() + getSecondIconXOffset(),
-					card.getY() + getIconYOffset(),
+					card.getX() + scale(SECOND_ICON_X_OFFSET),
+					card.getY() + scale(ICONS_Y_OFFSET),
 					provider.getCardIconBlockImage());
 		}
 	}
 	
 	private void writeTitle(ICard card) throws DocumentException {
-		Rectangle rect = new Rectangle(card.getX() + getTextMargin(), // bottom left X
-								 	   card.getY() + getTitleTextYOffset() - provider.getTitleFont().getSize(), // bottom left Y 
-								 	   card.getX() + getCardWidth() - getTextMargin(), // top right X
-								 	   card.getY() + getTitleTextYOffset()); // top right Y
+		Rectangle rect = new Rectangle(card.getX() + scale(TEXT_MARGIN), // bottom left X
+								 	   card.getY() + scale(TITLE_TEXT_Y_OFFSET) - provider.getTitleFont().getSize(), // bottom left Y 
+								 	   card.getX() + getCardWidth() - scale(TEXT_MARGIN), // top right X
+								 	   card.getY() + scale(TITLE_TEXT_Y_OFFSET)); // top right Y
 		writeText(card.getPdfContent(), rect, new Phrase(card.getData().getTitle(), provider.getTitleFont()));
 	}
 	
@@ -107,50 +107,50 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 		
 		if (card.getData().getPrimaryIcon() != null) {
 			drawImage(card.getPdfContent(),
-					card.getX() + getFirstIconXOffset(),
-					card.getY() + getIconYOffset(),
+					card.getX() + scale(FIRST_ICON_X_OFFSET),
+					card.getY() + scale(ICONS_Y_OFFSET),
 					card.getData().getPrimaryIcon());
 		}
 		if (card.getData().getSecondaryIcon() != null) {
 			drawImage(card.getPdfContent(),
-					card.getX() + getSecondIconXOffset(),
-					card.getY() + getIconYOffset(),
+					card.getX() + scale(SECOND_ICON_X_OFFSET),
+					card.getY() + scale(ICONS_Y_OFFSET),
 					card.getData().getSecondaryIcon());
 		}
 	}
 	
 	private void writeStats(ICard card) throws DocumentException {
-		Rectangle rect = new Rectangle(card.getX() + getTextMargin(), // bottom left X
-			 	   card.getY() + getStatsTextYOffset() - 2 * provider.getBoldFont().getSize(), // bottom left Y 
-			 	   card.getX() + getCardWidth() - 2 * getTextMargin(), // top right X
-			 	   card.getY() + getStatsTextYOffset()); // top right Y
+		Rectangle rect = new Rectangle(card.getX() + scale(TEXT_MARGIN), // bottom left X
+			 	   card.getY() + scale(STATS_TEXT_Y_OFFSET) - 2 * provider.getBoldFont().getSize(), // bottom left Y 
+			 	   card.getX() + getCardWidth() - 2 * scale(TEXT_MARGIN), // top right X
+			 	   card.getY() + scale(STATS_TEXT_Y_OFFSET)); // top right Y
 		writeText(card.getPdfContent(), rect, card.getData().getStats());
 	}
 	
 	private void writeKeywords(ICard card) throws DocumentException {
-		Rectangle rect = new Rectangle(card.getX() + getTextMargin(), // bottom left X
-			 	   card.getY() + getKeywordYOffset() - 2 * provider.getKeywordFont().getSize(), // bottom left Y 
-			 	   card.getX() + getCardWidth() - getTextMargin(), // top right X
-			 	   card.getY() + getKeywordYOffset()); // top right Y
+		Rectangle rect = new Rectangle(card.getX() + scale(TEXT_MARGIN), // bottom left X
+			 	   card.getY() + scale(KEYWORD_TEXT_Y_OFFSET) - 2 * provider.getKeywordFont().getSize(), // bottom left Y 
+			 	   card.getX() + getCardWidth() - scale(TEXT_MARGIN), // top right X
+			 	   card.getY() + scale(KEYWORD_TEXT_Y_OFFSET)); // top right Y
 		writeText(card.getPdfContent(), rect, new Phrase(card.getData().getKeywords(), provider.getKeywordFont()));
 	}
 	
 	private void writeBody(ICard card) throws DocumentException {
 		if (card.getData().getBody().length == 0) return;
 		
-		Rectangle rect = new Rectangle(card.getX() + getTextMargin(), // bottom left X
-			 	   card.getY() + getBodyTextYOffset() - getBodyTextYSpan(), // bottom left Y 
-			 	   card.getX() + getCardWidth() - 2 * getTextMargin(), // top right X
-			 	   card.getY() + getBodyTextYOffset()); // top right Y
+		Rectangle rect = new Rectangle(card.getX() + scale(TEXT_MARGIN), // bottom left X
+			 	   card.getY() + scale(BODY_TEXT_Y_OFFSET) - scale(BODY_TEXT_Y_SPAN), // bottom left Y 
+			 	   card.getX() + getCardWidth() - 2 * scale(TEXT_MARGIN), // top right X
+			 	   card.getY() + scale(BODY_TEXT_Y_OFFSET)); // top right Y
 		
 	    writeText(card.getPdfContent(), rect, card.getData().getBody());
 	}
 	
 	private void writeSource(ICard card) throws DocumentException {
-		Rectangle rect = new Rectangle(card.getX() + getTextMargin(), // bottom left X
-			 	   card.getY() + getSourceTextYOffset() - provider.getSourceFont().getSize(), // bottom left Y 
-			 	   card.getX() + getCardWidth() - 2 * getTextMargin(), // top right X
-			 	   card.getY() + getSourceTextYOffset()); // top right Y
+		Rectangle rect = new Rectangle(card.getX() + scale(TEXT_MARGIN), // bottom left X
+			 	   card.getY() + scale(SOURCE_TEXT_Y_OFFSET) - provider.getSourceFont().getSize(), // bottom left Y 
+			 	   card.getX() + getCardWidth() - 2 * scale(TEXT_MARGIN), // top right X
+			 	   card.getY() + scale(SOURCE_TEXT_Y_OFFSET)); // top right Y
 	    writeText(card.getPdfContent(), rect, new Phrase(card.getData().getSource(), provider.getSourceFont()));
 	}
 	
@@ -173,71 +173,15 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	
 	@Override
 	public int getCardWidth() {
-		return (int) (CARD_WIDTH * scale);
+		return (int) (scale(CARD_WIDTH));
 	}
 
 	@Override
 	public int getCardHeight() {
-		return (int) (CARD_HEIGHT * scale);
+		return (int) (scale(CARD_HEIGHT));
 	}
 	
-	private float getTitleTextYOffset() {
-		return TITLE_TEXT_Y_OFFSET * scale;
-	}
-	
-	private float getStatBlockXOffset() {
-		return STAT_BLOCK_X_OFFSET * scale;
-	}
-	
-	private float getStatBlockYOffset() {
-		return STAT_BLOCK_Y_OFFSET * scale;
-	}
-	
-	private float getStatsTextYOffset() {
-		return STATS_TEXT_Y_OFFSET * scale;
-	}
-	
-	private float getBodyBlockXOffset() {
-		return BODY_BLOCK_X_OFFSET * scale;
-	}
-	
-	private float getBodyBlockYOffset() {
-		return BODY_BLOCK_Y_OFFSET * scale;
-	}
-	
-	private float getBodyTextYOffset() {
-		return BODY_TEXT_Y_OFFSET * scale;
-	}
-	
-	private float getBodyTextYSpan() {
-		return BODY_TEXT_Y_SPAN * scale;
-	}
-	
-	private float getIconShadowYOffset() {
-		return ICON_SHADOW_Y_OFFSET * scale;
-	}
-	
-	private float getFirstIconXOffset() {
-		return FIRST_ICON_X_OFFSET * scale;
-	}
-	
-	private float getSecondIconXOffset() {
-		return SECOND_ICON_X_OFFSET * scale;
-	}
-	
-	private float getIconYOffset() {
-		return ICONS_Y_OFFSET * scale;
-	}
-	
-	private float getKeywordYOffset() {
-		return KEYWORD_TEXT_Y_OFFSET * scale;
-	}
-	
-	private float getSourceTextYOffset() {
-		return SOURCE_TEXT_Y_OFFSET * scale;
-	}
-	
-	private float getTextMargin() {
-		return TEXT_MARGIN * scale;
+	private float scale(float value) {
+		return scale * value;
 	}
 }
