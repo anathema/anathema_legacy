@@ -1,4 +1,4 @@
-package net.sf.anathema.cards.types;
+package net.sf.anathema.cards.data;
 
 import java.awt.Image;
 import java.util.ArrayList;
@@ -17,11 +17,11 @@ import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
-public class CharmCard extends AbstractMagicCard {
+public class CharmCardData extends AbstractMagicCardData {
 	private ICharm charm;
 	private CharmStats stats;
 	
-	public CharmCard(ICharm charm, CharmStats stats, MagicDescription description,
+	public CharmCardData(ICharm charm, CharmStats stats, MagicDescription description,
 			ICardReportResourceProvider fontProvider, IResources resources) {
 		super(charm, description, fontProvider, resources);
 		this.charm = charm;

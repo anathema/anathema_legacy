@@ -1,12 +1,11 @@
 package net.sf.anathema.cards.layout;
 
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfContentByte;
 
-import net.sf.anathema.cards.types.ICard;
+import net.sf.anathema.cards.ICard;
 
 public interface ICardLayout {
-	void generateCard(ICard card, PdfContentByte directContent, float x, float y) throws DocumentException;
+	void drawCard(ICard card) throws DocumentException;
 	
 	ICardReportResourceProvider getResourceProvider();
 	

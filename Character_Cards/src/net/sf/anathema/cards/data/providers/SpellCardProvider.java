@@ -1,11 +1,11 @@
-package net.sf.anathema.cards.providers;
+package net.sf.anathema.cards.data.providers;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.cards.data.ICardData;
+import net.sf.anathema.cards.data.SpellCardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.cards.types.ICard;
-import net.sf.anathema.cards.types.SpellCard;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
@@ -19,14 +19,14 @@ public class SpellCardProvider extends AbstractMagicCardProvider {
 	}
 
 	@Override
-	public ICard[] getCards(ICharacter character, ICardReportResourceProvider fontProvider) {
-		List<ICard> cards = new ArrayList<ICard>();
+	public ICardData[] getCards(ICharacter character, ICardReportResourceProvider fontProvider) {
+		List<ICardData> cards = new ArrayList<ICardData>();
 		for (ISpell spell : getCurrentSpells(character)) {
-			cards.add(new SpellCard(spell, createSpellStats(spell),
+			cards.add(new SpellCardData(spell, createSpellStats(spell),
 					getMagicDescription(spell),
 					fontProvider, getResources()));
 		}
-		return cards.toArray(new ICard[0]);
+		return cards.toArray(new ICardData[0]);
 	}
 	
 	private ISpell[] getCurrentSpells(ICharacter character) {

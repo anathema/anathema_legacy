@@ -1,10 +1,10 @@
-package net.sf.anathema.cards.types;
+package net.sf.anathema.cards.data;
 
 import java.awt.Image;
 
 import com.itextpdf.text.Phrase;
 
-public interface ICard {
+public interface ICardData {
 	String getTitle();
 	
 	Image getPrimaryIcon();

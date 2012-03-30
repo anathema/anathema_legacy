@@ -1,11 +1,11 @@
-package net.sf.anathema.cards.providers;
+package net.sf.anathema.cards.data.providers;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.cards.data.CharmCardData;
+import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-import net.sf.anathema.cards.types.CharmCard;
-import net.sf.anathema.cards.types.ICard;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.model.ICharacter;
@@ -20,14 +20,14 @@ public class CharmCardProvider extends AbstractMagicCardProvider {
 	}
 	
 	@Override
-	public ICard[] getCards(ICharacter character, ICardReportResourceProvider fontProvider) {
-		List<ICard> cards = new ArrayList<ICard>();
+	public ICardData[] getCards(ICharacter character, ICardReportResourceProvider fontProvider) {
+		List<ICardData> cards = new ArrayList<ICardData>();
 		for (ICharm charm : getCurrentCharms(character)) {
-			cards.add(new CharmCard(charm, createCharmStats(character, charm),
+			cards.add(new CharmCardData(charm, createCharmStats(character, charm),
 					getMagicDescription(charm),
 					fontProvider, getResources()));
 		}
-		return cards.toArray(new ICard[0]);
+		return cards.toArray(new ICardData[0]);
 	}
 	
 	private ICharm[] getCurrentCharms(ICharacter character) {

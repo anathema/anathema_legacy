@@ -8,9 +8,9 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import net.sf.anathema.cards.data.ICardData;
+import net.sf.anathema.cards.data.providers.ICardDataProvider;
 import net.sf.anathema.cards.layout.ICardLayout;
-import net.sf.anathema.cards.providers.ICardProvider;
-import net.sf.anathema.cards.types.ICard;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -22,11 +22,11 @@ public class CardReport extends AbstractPdfReport {
 
 	private IResources resources;
 	private ICardLayout layout;
-	private ICardProvider[] cardProviders;
+	private ICardDataProvider[] cardDataProviders;
 	
-	public CardReport(IResources resources, ICardLayout layout, ICardProvider... cardProviders) {
+	public CardReport(IResources resources, ICardLayout layout, ICardDataProvider... cardProviders) {
 		this.resources = resources;
-		this.cardProviders = cardProviders;
+		this.cardDataProviders = cardProviders;
 		this.layout = layout;
 	}
 	
@@ -44,9 +44,9 @@ public class CardReport extends AbstractPdfReport {
 
 			// For now, only one style of report, that includes
 			// all spells and charms
-			List<ICard> cards = new ArrayList<ICard>();
-			for (ICardProvider provider : cardProviders) {
-				Collections.addAll(cards, provider.getCards((ICharacter) item.getItemData(),
+			List<ICardData> cardDataSet = new ArrayList<ICardData>();
+			for (ICardDataProvider provider : cardDataProviders) {
+				Collections.addAll(cardDataSet, provider.getCards((ICharacter) item.getItemData(),
 						layout.getResourceProvider()));
 			}
 
@@ -58,13 +58,12 @@ public class CardReport extends AbstractPdfReport {
 			float verticalGutter = (documentHeight - numRows * layout.getCardHeight()) / (numRows - 1);
 			int maxPosition = numRows * numCols - 1;
 			int position = 0;
-			float upperleftX;
-			float upperleftY;
-			for (ICard card : cards) {
-				upperleftX = document.left() + (layout.getCardWidth() + horizontalGutter) * (position / numCols);
-				upperleftY = document.top() - (layout.getCardHeight() + verticalGutter) * (position % numCols);
+			for (ICardData cardData : cardDataSet) {
+				float upperleftX = document.left() + (layout.getCardWidth() + horizontalGutter) * (position / numCols);
+				float upperleftY = document.top() - (layout.getCardHeight() + verticalGutter) * (position % numCols);
 				
-				layout.generateCard(card, directContent, upperleftX, upperleftY);
+				Card card = new Card(directContent, upperleftX, upperleftY, cardData);
+				layout.drawCard(card);
 				
 				if (position == maxPosition) {
 					position = 0;

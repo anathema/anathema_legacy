@@ -2,11 +2,10 @@ package net.sf.anathema.cards.layout;
 
 import java.awt.Image;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sf.anathema.cards.types.ICard;
+import net.sf.anathema.cards.ICard;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.itextpdf.text.BadElementException;
@@ -46,17 +45,15 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	}
 
 	@Override
-	public void generateCard(ICard card, PdfContentByte directContent, float upperleftX,
-			float upperleftY) throws DocumentException {
-		drawBaseCard(directContent, upperleftX, upperleftY, card.getSecondaryIcon() != null);
+	public void drawCard(ICard card) throws DocumentException {
+		drawBaseCard(card);
 		
-		writeTitle(directContent, upperleftX, upperleftY, card.getTitle());
-		writeStats(directContent, upperleftX, upperleftY, card.getStats());
-		drawIcons(directContent, upperleftX, upperleftY,
-				card.getPrimaryIcon(), card.getSecondaryIcon());
-		writeKeywords(directContent, upperleftX, upperleftY, card.getKeywords());
-		writeBody(directContent, upperleftX, upperleftY, card.getBody());
-		writeSource(directContent, upperleftX, upperleftY, card.getSource());
+		writeTitle(card);
+		writeStats(card);
+		drawIcons(card);
+		writeKeywords(card);
+		writeBody(card);
+		writeSource(card);
 	}
 	
 	@Override
@@ -64,97 +61,97 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 		return provider;
 	}
 
-	private void drawBaseCard(PdfContentByte directContent, float cardUpperleftX, float cardUpperleftY, boolean twoIcons) {
+	private void drawBaseCard(ICard card) {
 		//base
-		drawImage(directContent, cardUpperleftX, cardUpperleftY, provider.getCardBaseImage());
+		drawImage(card.getPdfContent(), card.getX(), card.getY(),
+				provider.getCardBaseImage());
 		//stat block
-		drawImage(directContent,
-				cardUpperleftX + getStatBlockXOffset(),
-				cardUpperleftY + getStatBlockYOffset(),
+		drawImage(card.getPdfContent(),
+				card.getX() + getStatBlockXOffset(),
+				card.getY() + getStatBlockYOffset(),
 				provider.getCardStatBlockImage());
 		//body block
-		drawImage(directContent,
-				cardUpperleftX + getBodyBlockXOffset(),
-				cardUpperleftY + getBodyBlockYOffset(),
+		drawImage(card.getPdfContent(),
+				card.getX() + getBodyBlockXOffset(),
+				card.getY() + getBodyBlockYOffset(),
 				provider.getCardBodyBlockImage());
 		
 		// right icon
-		drawImage(directContent,
-				cardUpperleftX + getFirstIconXOffset(),
-				cardUpperleftY + getIconYOffset(),
+		drawImage(card.getPdfContent(),
+				card.getX() + getFirstIconXOffset(),
+				card.getY() + getIconYOffset(),
 				provider.getCardIconBlockImage());
 		
-		if (twoIcons) {
+		if (card.getData().getSecondaryIcon() != null) {
 			// left icon, first place the shadow
-			drawImage(directContent,
-					cardUpperleftX + getSecondIconXOffset(),
-					cardUpperleftY + getIconShadowYOffset(),
+			drawImage(card.getPdfContent(),
+					card.getX() + getSecondIconXOffset(),
+					card.getY() + getIconShadowYOffset(),
 					provider.getCardIconShadowImage());
-			drawImage(directContent,
-					cardUpperleftX + getSecondIconXOffset(),
-					cardUpperleftY + getIconYOffset(),
+			drawImage(card.getPdfContent(),
+					card.getX() + getSecondIconXOffset(),
+					card.getY() + getIconYOffset(),
 					provider.getCardIconBlockImage());
 		}
 	}
 	
-	private void writeTitle(PdfContentByte directContent, float cardUpperleftX, float cardUpperleftY, String title) throws DocumentException {
-		Rectangle rect = new Rectangle(cardUpperleftX + getTextMargin(), // bottom left X
-								 	   cardUpperleftY + getTitleTextYOffset() - provider.getTitleFont().getSize(), // bottom left Y 
-								 	   cardUpperleftX + getCardWidth() - getTextMargin(), // top right X
-								 	   cardUpperleftY + getTitleTextYOffset()); // top right Y
-		writeText(directContent, rect, new Phrase(title, provider.getTitleFont()));
+	private void writeTitle(ICard card) throws DocumentException {
+		Rectangle rect = new Rectangle(card.getX() + getTextMargin(), // bottom left X
+								 	   card.getY() + getTitleTextYOffset() - provider.getTitleFont().getSize(), // bottom left Y 
+								 	   card.getX() + getCardWidth() - getTextMargin(), // top right X
+								 	   card.getY() + getTitleTextYOffset()); // top right Y
+		writeText(card.getPdfContent(), rect, new Phrase(card.getData().getTitle(), provider.getTitleFont()));
 	}
 	
-	private void drawIcons(PdfContentByte directContent, float cardUpperleftX, float cardUpperleftY,
-			Image iconRight, Image iconLeft) {
+	private void drawIcons(ICard card) {
 		
-		if (iconRight != null) {
-			drawImage(directContent,
-					cardUpperleftX + getFirstIconXOffset(),
-					cardUpperleftY + getIconYOffset(),
-					iconRight);
+		if (card.getData().getPrimaryIcon() != null) {
+			drawImage(card.getPdfContent(),
+					card.getX() + getFirstIconXOffset(),
+					card.getY() + getIconYOffset(),
+					card.getData().getPrimaryIcon());
 		}
-		if (iconLeft != null) {
-			drawImage(directContent,
-					cardUpperleftX + getSecondIconXOffset(),
-					cardUpperleftY + getIconYOffset(),
-					iconLeft);
+		if (card.getData().getSecondaryIcon() != null) {
+			drawImage(card.getPdfContent(),
+					card.getX() + getSecondIconXOffset(),
+					card.getY() + getIconYOffset(),
+					card.getData().getSecondaryIcon());
 		}
 	}
 	
-	private void writeStats(PdfContentByte directContent, float cardUpperleftX, float cardUpperleftY, Phrase... statPhrases) throws DocumentException {
-		Rectangle rect = new Rectangle(cardUpperleftX + getTextMargin(), // bottom left X
-			 	   cardUpperleftY + getStatsTextYOffset() - 2 * provider.getBoldFont().getSize(), // bottom left Y 
-			 	   cardUpperleftX + getCardWidth() - 2 * getTextMargin(), // top right X
-			 	   cardUpperleftY + getStatsTextYOffset()); // top right Y
-		writeText(directContent, rect, statPhrases);
+	private void writeStats(ICard card) throws DocumentException {
+		Rectangle rect = new Rectangle(card.getX() + getTextMargin(), // bottom left X
+			 	   card.getY() + getStatsTextYOffset() - 2 * provider.getBoldFont().getSize(), // bottom left Y 
+			 	   card.getX() + getCardWidth() - 2 * getTextMargin(), // top right X
+			 	   card.getY() + getStatsTextYOffset()); // top right Y
+		writeText(card.getPdfContent(), rect, card.getData().getStats());
 	}
 	
-	private void writeKeywords(PdfContentByte directContent, float cardUpperleftX, float cardUpperleftY, String keywords) throws DocumentException {
-		Rectangle rect = new Rectangle(cardUpperleftX + getTextMargin(), // bottom left X
-			 	   cardUpperleftY + getKeywordYOffset() - 2 * provider.getKeywordFont().getSize(), // bottom left Y 
-			 	   cardUpperleftX + getCardWidth() - getTextMargin(), // top right X
-			 	   cardUpperleftY + getKeywordYOffset()); // top right Y
-		writeText(directContent, rect, new Phrase(keywords, provider.getKeywordFont()));
+	private void writeKeywords(ICard card) throws DocumentException {
+		Rectangle rect = new Rectangle(card.getX() + getTextMargin(), // bottom left X
+			 	   card.getY() + getKeywordYOffset() - 2 * provider.getKeywordFont().getSize(), // bottom left Y 
+			 	   card.getX() + getCardWidth() - getTextMargin(), // top right X
+			 	   card.getY() + getKeywordYOffset()); // top right Y
+		writeText(card.getPdfContent(), rect, new Phrase(card.getData().getKeywords(), provider.getKeywordFont()));
 	}
 	
-	private void writeBody(PdfContentByte directContent, float cardUpperleftX, float cardUpperleftY, Phrase[] bodyPhrases) throws DocumentException {
-		if (bodyPhrases.length == 0) return;
+	private void writeBody(ICard card) throws DocumentException {
+		if (card.getData().getBody().length == 0) return;
 		
-		Rectangle rect = new Rectangle(cardUpperleftX + getTextMargin(), // bottom left X
-			 	   cardUpperleftY + getBodyTextYOffset() - getBodyTextYSpan(), // bottom left Y 
-			 	   cardUpperleftX + getCardWidth() - 2 * getTextMargin(), // top right X
-			 	   cardUpperleftY + getBodyTextYOffset()); // top right Y
+		Rectangle rect = new Rectangle(card.getX() + getTextMargin(), // bottom left X
+			 	   card.getY() + getBodyTextYOffset() - getBodyTextYSpan(), // bottom left Y 
+			 	   card.getX() + getCardWidth() - 2 * getTextMargin(), // top right X
+			 	   card.getY() + getBodyTextYOffset()); // top right Y
 		
-	    writeText(directContent, rect, bodyPhrases);
+	    writeText(card.getPdfContent(), rect, card.getData().getBody());
 	}
 	
-	private void writeSource(PdfContentByte directContent, float cardUpperleftX, float cardUpperleftY, String source) throws DocumentException {
-		Rectangle rect = new Rectangle(cardUpperleftX + getTextMargin(), // bottom left X
-			 	   cardUpperleftY + getSourceTextYOffset() - provider.getSourceFont().getSize(), // bottom left Y 
-			 	   cardUpperleftX + getCardWidth() - 2 * getTextMargin(), // top right X
-			 	   cardUpperleftY + getSourceTextYOffset()); // top right Y
-	    writeText(directContent, rect, new Phrase(source, provider.getSourceFont()));
+	private void writeSource(ICard card) throws DocumentException {
+		Rectangle rect = new Rectangle(card.getX() + getTextMargin(), // bottom left X
+			 	   card.getY() + getSourceTextYOffset() - provider.getSourceFont().getSize(), // bottom left Y 
+			 	   card.getX() + getCardWidth() - 2 * getTextMargin(), // top right X
+			 	   card.getY() + getSourceTextYOffset()); // top right Y
+	    writeText(card.getPdfContent(), rect, new Phrase(card.getData().getSource(), provider.getSourceFont()));
 	}
 	
 	private void drawImage(PdfContentByte directContent, float x, float y, Image image) {

@@ -1,4 +1,4 @@
-package net.sf.anathema.cards.types;
+package net.sf.anathema.cards.data;
 
 import java.awt.Image;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SpellCard extends AbstractMagicCard {
+public class SpellCardData extends AbstractMagicCardData {
 	private ISpell spell;
 	private SpellStats stats;
 	
-	public SpellCard(ISpell spell, SpellStats stats, MagicDescription description,
+	public SpellCardData(ISpell spell, SpellStats stats, MagicDescription description,
 			ICardReportResourceProvider properties, IResources resources) {
 		super(spell, description, properties, resources);
 		this.spell = spell;

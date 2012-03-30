@@ -1,4 +1,4 @@
-package net.sf.anathema.cards.providers;
+package net.sf.anathema.cards.data.providers;
 
 import net.sf.anathema.character.generic.framework.magic.view.CharmDescriptionProviderExtractor;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractMagicCardProvider implements ICardProvider {
+public abstract class AbstractMagicCardProvider implements ICardDataProvider {
 	
 	private final IAnathemaModel model;
 	private final IResources resources;

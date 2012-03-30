@@ -1,4 +1,4 @@
-package net.sf.anathema.cards.types;
+package net.sf.anathema.cards.data;
 
 import java.util.List;
 
@@ -14,14 +14,14 @@ import net.sf.anathema.lib.resources.IResources;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 
-public abstract class AbstractMagicCard implements ICard {
+public abstract class AbstractMagicCardData implements ICardData {
 
 	private IMagic magic;
 	private IResources resources;
 	private MagicDescription description;
 	private ICardReportResourceProvider resourceProvider;
 	
-	public AbstractMagicCard(IMagic magic, MagicDescription description,
+	public AbstractMagicCardData(IMagic magic, MagicDescription description,
 			ICardReportResourceProvider resourceProvider, IResources resources) {
 		this.magic = magic;
 		this.resources = resources;
