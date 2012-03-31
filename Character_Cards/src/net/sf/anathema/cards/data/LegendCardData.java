@@ -4,6 +4,7 @@ import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -39,8 +40,8 @@ public class LegendCardData implements ICardData {
 	}
 
 	@Override
-	public Phrase[] getStats() {
-		return new Phrase[0];
+	public Paragraph getStats() {
+		return null;
 	}
 
 	@Override

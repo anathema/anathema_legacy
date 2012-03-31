@@ -14,13 +14,13 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class SpellCardData extends AbstractMagicCardData {
 	private ISpell spell;
-	private SpellStats stats;
+	private SpellStats spellStats;
 	
 	public SpellCardData(ISpell spell, SpellStats stats, MagicDescription description,
 			ICardReportResourceProvider properties, IResources resources) {
 		super(spell, description, properties, resources);
 		this.spell = spell;
-		this.stats = stats;
+		this.spellStats = stats;
 	}
 
 	@Override
@@ -34,14 +34,14 @@ public class SpellCardData extends AbstractMagicCardData {
 	}
 
 	@Override
-	public Phrase[] getStats() {
-		String target = Joiner.on(", ").join(stats.getDetailStrings(getResources()));
-		String targetLabel = getResources().getString("MagicReport.Target.Label") + ": ";
-		return new Phrase[] {
-				getCostPhrase(false),
-				new Phrase("\n"),
-				new Phrase(targetLabel, getResourceProvider().getBoldFont()),
-				new Phrase(target, getResourceProvider().getNormalFont()) };
+	public Paragraph getStats() {
+		Paragraph stats = new Paragraph();
+		stats.add(getCostPhrase(false));
+		stats.add(new Phrase("\n" + getResources().getString("MagicReport.Target.Label") + ": ",
+				getResourceProvider().getBoldFont()));
+		stats.add(new Phrase(Joiner.on(", ").join(spellStats.getDetailStrings(getResources())),
+				getResourceProvider().getNormalFont()));
+		return stats;
 	}
 	
 	@Override

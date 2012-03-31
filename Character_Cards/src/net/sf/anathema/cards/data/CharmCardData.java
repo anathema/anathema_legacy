@@ -49,12 +49,12 @@ public class CharmCardData extends AbstractMagicCardData {
 	}
 	
 	@Override
-	public Phrase[] getStats() {
-		return new Phrase[] {
-				getCharmType(charm),
-				new Phrase("\n"),
-				getCharmDuration(charm)
-		};
+	public Paragraph getStats() {
+		Paragraph stats = new Paragraph();
+		stats.add(getCharmType(charm));
+		stats.add("\n");
+		stats.add(getCharmDuration(charm));
+		return stats;
 	}
 	
 	@Override
