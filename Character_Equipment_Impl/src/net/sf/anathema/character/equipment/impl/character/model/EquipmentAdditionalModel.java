@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import com.db4o.query.Predicate;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -32,9 +31,7 @@ import net.sf.anathema.lib.lang.ArrayUtilities;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements IEquipmentCharacterOptionProvider, IEquipmentAdditionalModel {
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
@@ -103,16 +100,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
   @Override
   public String[] getAvailableTemplateIds() {
-    final Set<String> idSet = new HashSet<String>();
-    equipmentTemplateProvider.queryContainer(new Predicate<IEquipmentTemplate>() {
-
-      @Override
-      public boolean match(IEquipmentTemplate candidate) {
-        idSet.add(candidate.getName());
-        return false;
-      }
-    });
-    return idSet.toArray(new String[idSet.size()]);
+    return equipmentTemplateProvider.getAllAvailableTemplateIds();
   }
 
   private IEquipmentTemplate loadEquipmentTemplate(String templateId) {

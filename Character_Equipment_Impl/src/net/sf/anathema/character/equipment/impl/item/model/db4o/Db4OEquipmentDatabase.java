@@ -42,8 +42,7 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
     return idSet.toArray(new String[idSet.size()]);
   }
 
-  @Override
-  public void queryContainer(Predicate<IEquipmentTemplate> predicate) {
+  private void queryContainer(Predicate<IEquipmentTemplate> predicate) {
     container.query(predicate);
   }
 

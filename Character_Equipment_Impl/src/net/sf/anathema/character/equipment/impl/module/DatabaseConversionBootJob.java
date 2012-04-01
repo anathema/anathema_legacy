@@ -1,8 +1,14 @@
 package net.sf.anathema.character.equipment.impl.module;
 
 import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import com.db4o.query.Query;
 import net.sf.anathema.ProxySplashscreen;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.EquipmentDatabaseConnectionManager;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.view.IAnathemaView;
@@ -28,7 +34,41 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     Version dbVersion = DatabaseUtils.getDatabaseVersion(container);
     Version anathemaVersion = new Version(resources);
     Version updatedVersion = updateDbVersion(dbVersion, anathemaVersion);
+    deleteFirstEditionAndShields(container);
     finish(container, updatedVersion);
+  }
+
+  private void deleteFirstEditionAndShields(ObjectContainer container) {
+    Query query = container.query();
+    query.constrain(EquipmentTemplate.class);
+    ObjectSet set = query.execute();
+    for (Object object : set) {
+      EquipmentTemplate template = (EquipmentTemplate) object;
+      if (!template.hasStats()) {
+        continue;
+      }
+      deleteFirstEditionStats(template);
+      deleteShieldStats(template);
+      if (template.hasStats()) {
+        container.set(template);
+      } else {
+        container.delete(template);
+      }
+    }
+  }
+
+  private void deleteShieldStats(EquipmentTemplate template) {
+    IEquipmentStats[] stats = template.getStats(ExaltedRuleSet.SecondEdition);
+    for (IEquipmentStats stat : stats) {
+      if (stat instanceof IShieldStats) {
+        template.removeStats(ExaltedRuleSet.SecondEdition, stat);
+      }
+    }
+  }
+
+  private void deleteFirstEditionStats(EquipmentTemplate template) {
+    template.removeStats("CoreRules");
+    template.removeStats("PowerCombat");
   }
 
   private Version updateDbVersion(Version dbVersion, Version anathemaVersion) {
