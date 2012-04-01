@@ -1,7 +1,5 @@
 package net.sf.anathema.character.equipment.impl.item.model;
 
-import java.awt.Component;
-
 import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.sf.anathema.character.equipment.MagicalMaterial;
@@ -12,7 +10,6 @@ import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatis
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IShieldStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
@@ -24,7 +21,6 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStat
 import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.ShieldStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.character.equipment.impl.creation.EquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
@@ -37,7 +33,6 @@ import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
@@ -45,6 +40,8 @@ import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+
+import java.awt.Component;
 
 public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFactory {
 
@@ -116,15 +113,6 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       armourModel.getAggravatedSoakModel().setValue(armourStats.getSoak(HealthType.Aggravated));
       armourModel.getFatigueModel().setValue(armourStats.getFatigue());
       armourModel.getMobilityPenaltyModel().setValue(armourStats.getMobilityPenalty());
-    } else if (stats instanceof IShieldStats) {
-      IShieldStats shieldStats = (IShieldStats) stats;
-      model.setEquipmentType(EquipmentStatisticsType.Shield);
-      IShieldStatisticsModel shieldModel = model.getShieldStatisticsModel();
-      shieldModel.getName().setText(shieldStats.getName().getId());
-      shieldModel.getCloseCombatDvBonusModel().setValue(shieldStats.getCloseCombatBonus());
-      shieldModel.getFatigueModel().setValue(shieldStats.getFatigue());
-      shieldModel.getMobilityPenaltyModel().setValue(shieldStats.getMobilityPenalty());
-      shieldModel.getRangedCombatDvBonusModel().setValue(shieldStats.getRangedCombatBonus());
     } else if (stats instanceof IArtifactStats) {
       IArtifactStats artifactStats = (IArtifactStats) stats;
       model.setEquipmentType(EquipmentStatisticsType.Artifact);
@@ -190,16 +178,6 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
           armourStats.setHardness(healthType, armourModel.getHardnessModel(healthType).getValue());
         }
         return armourStats;
-      case Shield:
-        ShieldStats shieldStats = new ShieldStats();
-        applyCommon(shieldStats, model);
-        IShieldStatisticsModel shieldModel = model.getShieldStatisticsModel();
-        setName(shieldStats, shieldModel);
-        shieldStats.setCloseCombatDv(shieldModel.getCloseCombatDvBonusModel().getValue());
-        shieldStats.setRangedCombatDv(shieldModel.getRangedCombatDvBonusModel().getValue());
-        shieldStats.setFatigue(shieldModel.getFatigueModel().getValue());
-        shieldStats.setMobilityPenalty(shieldModel.getMobilityPenaltyModel().getValue());
-        return shieldStats;
       case CloseCombat:
         AbstractWeaponStats closeCombatStats = new MeleeWeaponStats(collectionFactory);
         applyCommon(closeCombatStats, model);

@@ -50,6 +50,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     	MagicalMaterial.values().length;*/
   }
 
+  @Override
   public boolean canFinish() {
     return false;
   }
@@ -76,10 +77,6 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
         new ArmourStatisticsPresenterPage(resources, model, viewFactory),
         inputListener);
     addPage(
-        EquipmentStatisticsType.Shield,
-        new ShieldStatisticsPresenterPage(resources, model, viewFactory),
-        inputListener);
-    addPage(
     	EquipmentStatisticsType.Artifact,
     	new ArtifactStatisticsPresenterPage(resources, model, viewFactory),
     	inputListener);
@@ -104,7 +101,6 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     addStatisticsTypeRow("", EquipmentStatisticsType.RangedCombat); //$NON-NLS-1$
     view.addHorizontalLine();
     addStatisticsTypeRow(properties.getDefensiveLabel(), EquipmentStatisticsType.Armor);
-    addStatisticsTypeRow("", EquipmentStatisticsType.Shield); //$NON-NLS-1$
     view.addHorizontalLine();
     addStatisticsTypeRow(properties.getOtherLabel(), EquipmentStatisticsType.TraitModifying);
     addStatisticsTypeRow("", EquipmentStatisticsType.Artifact);
@@ -127,6 +123,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
   private void addPage(final EquipmentStatisticsType type, IAnathemaWizardPage page, CheckInputListener inputListener) {
     pagesByType.put(type, page);
     addFollowupPage(page, inputListener, new ICondition() {
+      @Override
       public boolean isFulfilled() {
         /*   return !materialSpecific && model.isEquipmentTypeSelected(type);
    }
@@ -162,14 +159,17 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     view.addStatisticsRow(label, action, typeLabel, model.getEquipmentType() == type);
   }
 
+  @Override
   public IPageContent getPageContent() {
     return view;
   }
 
+  @Override
   public IBasicMessage getMessage() {
     return defaultMessage;
   }
 
+  @Override
   public String getDescription() {
     return properties.getTypeChoiceTitle();
   }
