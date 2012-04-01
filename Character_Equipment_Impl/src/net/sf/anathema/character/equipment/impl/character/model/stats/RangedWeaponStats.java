@@ -12,10 +12,6 @@ public class RangedWeaponStats extends AbstractWeaponStats {
     super(collectionFactory);
   }
 
-  public RangedWeaponStats(ICollectionFactory collectionFactory, RangedWeaponStats stats) {
-    super(collectionFactory, stats);
-  }
-
   @Override
   public AbilityType getTraitType() {
     return hasTag(WeaponTag.Thrown) ? AbilityType.Thrown : AbilityType.Archery;
@@ -27,6 +23,7 @@ public class RangedWeaponStats extends AbstractWeaponStats {
     	hasTag(WeaponTag.FlatDamage) ? null : super.getDamageTraitType();
   }
   
+  @Override
   public int getMobilityPenalty() {
 	return 0;
   }
