@@ -25,6 +25,7 @@ public class MaximizePreferencesElement extends AbstractCheckBoxPreferencesEleme
     return "AnathemaCore.Tools.Preferences.Maximize"; //$NON-NLS-1$
   }
 
+  @Override
   public void savePreferences() {
     SYSTEM_PREFERENCES.putBoolean(MAXIMIZE_PREFERENCE, maximize);
   }
@@ -34,6 +35,7 @@ public class MaximizePreferencesElement extends AbstractCheckBoxPreferencesEleme
     maximize = SYSTEM_PREFERENCES.getBoolean(MAXIMIZE_PREFERENCE, false);
   }
 
+  @Override
   public IIdentificate getCategory() {
     return SYSTEM_CATEGORY;
   }
