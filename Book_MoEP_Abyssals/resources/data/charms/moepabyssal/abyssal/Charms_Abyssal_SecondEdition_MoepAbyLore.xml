@@ -107,6 +107,7 @@
           <duration duration="Instant" />
           <charmtype type="Simple" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.VirtueDevouringHunger" exalt="Abyssal" group="Lore">
           <prerequisite>
@@ -151,7 +152,7 @@
           <charmAttribute attribute="Native" visualize="true" />
           <repurchases limitingTrait="Essence"/>
           <source source="Abyssals2nd" />
-          <source source="InkMonkeys" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.NightmareCarvingMurmur" exalt="Abyssal" group="Lore">
           <prerequisite>

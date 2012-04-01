@@ -87,8 +87,7 @@
                <charmReference id="Abyssal.FiveKnifeFist" />
           </prerequisite>
           <cost>
-               <essence cost="8" />
-               <willpower cost="1" text="(12xp)" />
+               <essence cost="" text="(+5m, 1wp)"/>
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
@@ -99,5 +98,6 @@
         <charmAttribute attribute="Stackable" visualize="true" />
         <charmAttribute attribute="Taint" visualize="true" />
         <source source="Abyssals2nd" />
+        <source source="ScrollErrata" />
      </charm>
 </charmlist>

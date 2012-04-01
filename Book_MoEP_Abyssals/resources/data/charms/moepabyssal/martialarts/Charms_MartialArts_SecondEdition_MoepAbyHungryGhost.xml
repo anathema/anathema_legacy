@@ -69,6 +69,7 @@
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Celestial.ShroudedClawAttack" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
@@ -102,9 +103,11 @@
                <special speed="5" defense="-1" />
           </charmtype>
           <charmAttribute attribute="Celestial" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
           <charmAttribute attribute="Form" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Celestial.PowerReapingPrana" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
@@ -113,7 +116,7 @@
                <charmReference id="Celestial.HungryGhostForm" />
           </prerequisite>
           <cost>
-               <essence cost="1" />
+               <essence cost="4" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive">
@@ -121,8 +124,8 @@
           </charmtype>
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
-          <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Celestial.CharmSmotheringTechnique" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>
@@ -165,7 +168,7 @@
                <charmReference id="Celestial.UnnaturalShamblingDeftness" />
           </prerequisite>
           <cost>
-               <essence cost="4" text="or 6m" />
+               <essence cost="8" text="or 10m" />
           </cost>
           <duration amount="1" unit="action" />
           <charmtype type="Reflexive">
@@ -175,8 +178,8 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Illusion" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Celestial.ConsumingEntropyStrike" exalt="Abyssal" group="HungryGhostStyle">
           <prerequisite>

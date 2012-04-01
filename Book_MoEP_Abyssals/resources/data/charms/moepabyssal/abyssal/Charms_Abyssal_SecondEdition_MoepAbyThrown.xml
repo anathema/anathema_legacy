@@ -155,7 +155,7 @@
                <charmReference id="Abyssal.HungryMissileTechnique" />
           </prerequisite>
           <cost>
-               <essence cost="4" />
+               <essence cost="8" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive">
@@ -166,6 +166,7 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Deft Hands Deflection -->
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.CryptBoltAttack" exalt="Abyssal" group="Thrown">
           <prerequisite>
@@ -185,6 +186,7 @@
           <!-- NOTE:  Solar Mirror - Spirit Weapons -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.EyesLikeDaggersGlance" exalt="Abyssal" group="Thrown">
           <prerequisite>
@@ -193,14 +195,16 @@
                <essence value="3" />
                <charmReference id="Abyssal.CryptBoltAttack" />
           </prerequisite>
-          <cost />
+          <cost >
+               <essence cost="" text="(+1wp)" />
+          </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <charmAttribute attribute="Avatar1" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Fiery Solar Chakram -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.RadiantHolocaustFlare" exalt="Abyssal" group="Thrown">
           <prerequisite>
