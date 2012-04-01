@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.item;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.swing.ui.IObjectUi;
-import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
@@ -17,33 +16,15 @@ import javax.swing.Icon;
 public final class EquipmentStatsUi implements IObjectUi<Object> {
 
   private final EquipmentUI equipmentUI;
-  private final IResources resources;
 
   public EquipmentStatsUi(IResources resources) {
-    equipmentUI = new EquipmentUI(resources);
-    this.resources = resources;
+    this.equipmentUI = new EquipmentUI(resources);
   }
 
   @Override
   public String getLabel(Object value) {
 	IEquipmentStats stats = (IEquipmentStats)value;
-	String name = stats.getName().getId();
-	StringBuilder materialString = new StringBuilder();
-	Object[] materialSet = stats.getApplicableMaterials();
-	if (materialSet != null)
-	{
-	  materialString.append(" (");
-		Object finalObj = materialSet[materialSet.length - 1];
-		for (Object matObj : materialSet)
-		{
-			String m = resources.getString("MagicMaterial." + 
-					((MagicalMaterial)matObj).name());
-			materialString.append(m);
-			materialString.append(matObj != finalObj ? ", " : "");
-		}
-		materialString.append(")");
-	}
-    return name + materialString.toString();
+    return stats.getName().getId();
   }
 
   @Override

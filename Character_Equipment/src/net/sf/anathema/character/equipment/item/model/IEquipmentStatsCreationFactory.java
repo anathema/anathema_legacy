@@ -7,9 +7,7 @@ import java.awt.Component;
 
 public interface IEquipmentStatsCreationFactory {
 
-  IEquipmentStats createNewStats(Component parentComponent, IResources resources, IEquipmentTemplateEditModel editModel,
-                                 String[] definedNames);
+  IEquipmentStats createNewStats(Component parentComponent, IResources resources, String[] definedNames);
 
-  IEquipmentStats editStats(Component parentComponent, IResources resources, IEquipmentTemplateEditModel editModel,
-                            String[] nameArray, IEquipmentStats selectedStats);
+  IEquipmentStats editStats(Component parentComponent, IResources resources, String[] nameArray, IEquipmentStats selectedStats);
 }

@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.impl.item.model;
 
 import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
-import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.ICloseCombatStatsticsModel;
@@ -28,7 +27,6 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
-import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -52,26 +50,23 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   }
 
   @Override
-  public IEquipmentStats createNewStats(Component parentComponent, IResources resources,
-                                        IEquipmentTemplateEditModel editModel, String[] definedNames) {
+  public IEquipmentStats createNewStats(Component parentComponent, IResources resources, String[] definedNames) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
-    return runDialog(parentComponent, resources, editModel, model);
+    return runDialog(parentComponent, resources, model);
   }
 
   @Override
-  public IEquipmentStats editStats(Component parentComponent, IResources resources,
-                                   IEquipmentTemplateEditModel editModel, String[] definedNames,
+  public IEquipmentStats editStats(Component parentComponent, IResources resources, String[] definedNames,
                                    IEquipmentStats stats) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     createModel(model, stats);
-    return runDialog(parentComponent, resources, editModel, model);
+    return runDialog(parentComponent, resources, model);
   }
 
   private IEquipmentStats runDialog(Component parentComponent, IResources resources,
-                                    IEquipmentTemplateEditModel editModel, IEquipmentStatisticsCreationModel model) {
+                                    IEquipmentStatisticsCreationModel model) {
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
-    EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, editModel,
-            viewFactory);
+    EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory);
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
     IDialogResult result = dialog.show();
     if (result.isCanceled()) {
@@ -81,14 +76,6 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   }
 
   private void createModel(IEquipmentStatisticsCreationModel model, IEquipmentStats stats) {
-    if (stats.getApplicableMaterials() == null) for (MagicalMaterial material : MagicalMaterial.values())
-      model.getApplicableMaterialsModel().getSelectedModel(material).setValue(true);
-    else {
-      for (MagicalMaterial material : MagicalMaterial.values())
-        model.getApplicableMaterialsModel().getSelectedModel(material).setValue(false);
-      for (Object matObj : stats.getApplicableMaterials())
-        model.getApplicableMaterialsModel().getSelectedModel((MagicalMaterial) matObj).setValue(true);
-    }
     if (stats instanceof IWeaponStats) {
       IWeaponStats weaponStats = (IWeaponStats) stats;
       fillWeaponTagsModel(model.getWeaponTagsModel(), weaponStats);
@@ -168,7 +155,6 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     switch (model.getEquipmentType()) {
       case Armor:
         ArmourStats armourStats = new ArmourStats(collectionFactory);
-        applyCommon(armourStats, model);
         IArmourStatisticsModel armourModel = model.getArmourStatisticsModel();
         setName(armourStats, armourModel);
         armourStats.setFatigue(armourModel.getFatigueModel().getValue());
@@ -180,21 +166,18 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
         return armourStats;
       case CloseCombat:
         AbstractWeaponStats closeCombatStats = new MeleeWeaponStats(collectionFactory);
-        applyCommon(closeCombatStats, model);
         ICloseCombatStatsticsModel closeCombatModel = model.getCloseCombatStatsticsModel();
         setBasicWeaponStats(closeCombatStats, closeCombatModel, model.getWeaponTagsModel());
         closeCombatStats.setDefence(closeCombatModel.getDefenseModel().getValue());
         return closeCombatStats;
       case RangedCombat:
         AbstractWeaponStats rangedCombatStats = new RangedWeaponStats(collectionFactory);
-        applyCommon(rangedCombatStats, model);
         IRangedCombatStatisticsModel rangedCombatModel = model.getRangedWeaponStatisticsModel();
         setBasicWeaponStats(rangedCombatStats, rangedCombatModel, model.getWeaponTagsModel());
         rangedCombatStats.setRange(rangedCombatModel.getRangeModel().getValue());
         return rangedCombatStats;
       case Artifact:
         ArtifactStats artifactStats = new ArtifactStats();
-        applyCommon(artifactStats, model);
         IArtifactStatisticsModel artifactModel = model.getArtifactStatisticsModel();
         setName(artifactStats, artifactModel);
         artifactStats.setAttuneCost(artifactModel.getAttuneCostModel().getValue());
@@ -203,7 +186,6 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
         return artifactStats;
       case TraitModifying:
         TraitModifyingStats modifierStats = new TraitModifyingStats();
-        applyCommon(modifierStats, model);
         ITraitModifyingStatisticsModel modifierModel = model.getTraitModifyingStatisticsModel();
         setName(modifierStats, modifierModel);
         modifierStats.setDDVMod(modifierModel.getDDVModel().getValue());
@@ -224,10 +206,6 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
         return modifierStats;
     }
     return null;
-  }
-
-  private void applyCommon(IEquipmentStats stats, IEquipmentStatisticsCreationModel model) {
-    stats.setApplicableMaterials(model.getApplicableMaterialsModel().getValidMaterials());
   }
 
   private void setBasicWeaponStats(AbstractWeaponStats stats, IOffensiveStatisticsModel model,

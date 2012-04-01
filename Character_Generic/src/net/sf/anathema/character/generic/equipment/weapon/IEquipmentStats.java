@@ -8,9 +8,5 @@ public interface IEquipmentStats extends IStats, IIdentificate {
 
   public void setUseAttunementModifiers(boolean value);
 
-  public Object[] getApplicableMaterials();
-
-  public void setApplicableMaterials(Object[] materials);
-
   boolean representsItemForUseInCombat();
 }
