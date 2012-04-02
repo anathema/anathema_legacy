@@ -89,6 +89,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.LightningStrokeAttackDex" exalt="Lunar" group="SpeedAndExtraAction">
           <prerequisite>
