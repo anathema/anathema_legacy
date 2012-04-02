@@ -8,15 +8,11 @@ public interface IAbilityTypeVisitor {
 
   public void visitAwareness();
 
-  public void visitBrawl();
-
   public void visitBureaucracy();
 
   public void visitCraft();
 
   public void visitDodge();
-
-  public void visitEndurance();
 
   public void visitIntegrity();
 

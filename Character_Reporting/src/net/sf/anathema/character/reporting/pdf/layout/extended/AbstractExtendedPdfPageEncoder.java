@@ -34,6 +34,7 @@ public abstract class AbstractExtendedPdfPageEncoder implements PageEncoder {
     this.boxEncoder = new PdfBoxEncoder();
   }
 
+  @Override
   public abstract void encode(Document document, SheetGraphics graphics, ReportSession session)
           throws DocumentException;
 
