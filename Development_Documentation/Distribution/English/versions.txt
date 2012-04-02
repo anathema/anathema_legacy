@@ -13,7 +13,7 @@ http://anathema.github.com
 -- Changes for Exalted 2.5 --
 * Updated Sidereal XP Cost
 * Errata'd Orichalcum
-* Changed Charms for Solar, Dragon-Blooded, Sidereal and Abyssal Exalted
+* Revised Charms for Solar, Dragon-Blooded, Sidereal, Abyssal and Infernal Exalted
 * Added "Shield#" & "Thrust" Tags
 * It is no longer possible to create shields stats.
 * Soak from multiple worn armor no longer stacks, only the highest applies.

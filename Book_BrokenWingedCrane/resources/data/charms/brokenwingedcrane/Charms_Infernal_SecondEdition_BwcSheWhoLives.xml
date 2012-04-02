@@ -232,5 +232,6 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="BrokenWingedCrane" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>

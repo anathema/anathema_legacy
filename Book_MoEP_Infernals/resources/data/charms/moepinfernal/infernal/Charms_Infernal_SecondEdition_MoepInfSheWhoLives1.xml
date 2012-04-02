@@ -51,6 +51,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <repurchases limit="3"/>
           <source source="Infernals" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Infernal.CounterpointInquisitionDefence" exalt="Infernal" group="FactualDetermination">          
           <prerequisite>
@@ -128,7 +129,7 @@
                <charmReference id="Infernal.FactualDeterminationAnalysis"/>
           </prerequisite>
            <cost> 
-               <essence cost="5" />      
+               <essence cost="8" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive" />
@@ -137,6 +138,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Infernals" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Infernal.Ego-InfusedPatternPrimacy" exalt="Infernal" group="Ego">         
           <prerequisite>

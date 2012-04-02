@@ -104,6 +104,7 @@
           	<repurchase essence="3"/>
           </repurchases>
           <source source="BrokenWingedCrane" />
+          <source source="ScrollErrata" />
      </charm>
 	 <charm id="Infernal.TidalRenewalDiscipline" exalt="Infernal" group="Mother">	 
           <prerequisite>
@@ -238,9 +239,10 @@
           </cost>
           <duration duration="Instant"/>
           <charmtype type="Reflexive" />			  
-               <special primaryStep="1" secondaryStep="2" />	  
+          <special primaryStep="1" secondaryStep="2" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="BrokenWingedCrane" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Infernal.RetributiveTsunamiForce" exalt="Infernal" group="Intolerable">
           <prerequisite>
@@ -268,9 +270,10 @@
           </cost>
           <duration duration="Instant"/>
           <charmtype type="Reflexive" />			  
-               <special primaryStep="2" secondaryStep="7" />	  
+          <special primaryStep="7" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="BrokenWingedCrane" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Infernal.All-DevouringDepthsShintai" exalt="Infernal" group="Mother">
           <prerequisite>
@@ -290,5 +293,6 @@
           <charmAttribute attribute="Form-type" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="BrokenWingedCrane" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>
