@@ -39,8 +39,8 @@
                <essence value="2" />
                <charmReference id="Infernal.MotherSeaMastery"/>
           </prerequisite>
-          <cost> 
-               <essence cost="2" />    
+          <cost>
+               <essence cost="2" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive" />
@@ -67,7 +67,7 @@
           <repurchases limit="2"/>
           <source source="BrokenWingedCrane" />
      </charm>
-	 <charm id="Infernal.GreatMothersTears" exalt="Infernal" group="Mother">	 
+	 <charm id="Infernal.GreatMothersTears" exalt="Infernal" group="Mother">
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="3" />
@@ -90,9 +90,9 @@
                <essence value="2" />
                <charmReference id="Infernal.SpitefulSeaTincture"/>
           </prerequisite>
-          <cost> 
-               <essence cost="10" />    
-               <willpower cost="1" />    
+          <cost>
+               <essence cost="10" />
+               <willpower cost="1" />
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
@@ -106,7 +106,7 @@
           <source source="BrokenWingedCrane" />
           <source source="ScrollErrata" />
      </charm>
-	 <charm id="Infernal.TidalRenewalDiscipline" exalt="Infernal" group="Mother">	 
+	 <charm id="Infernal.TidalRenewalDiscipline" exalt="Infernal" group="Mother">
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="2" />
@@ -123,11 +123,11 @@
                <essence value="3" />
                <charmReference id="Infernal.TidalRenewalDiscipline"/>
           </prerequisite>
-          <cost> 
-               <essence cost="5" text="or 3wp" />     
+          <cost>
+               <essence cost="5" text="or 3wp" />
           </cost>
           <duration duration="Instant" />
-          <charmtype type="Reflexive" />		  
+          <charmtype type="Reflexive" />
                <special primaryStep="2" secondaryStep="10" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Desecration" visualize="true" />
@@ -139,12 +139,12 @@
                <essence value="2" />
                <charmReference id="Infernal.TidalRenewalDiscipline"/>
           </prerequisite>
-          <cost> 
-               <essence cost="20"/>     
+          <cost>
+               <essence cost="20"/>
           </cost>
           <duration amount="1" unit="month"/>
-          <charmtype type="Simple" />	
-		  <special speed="5"  defense="-4"/>	  
+          <charmtype type="Simple" />
+		  <special speed="5"  defense="-4"/>
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Servitude" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
@@ -163,11 +163,11 @@
                <essence value="2" />
                <charmReference id="Infernal.MotherSeaMastery"/>
           </prerequisite>
-          <cost> 
-               <essence cost="1"/>     
+          <cost>
+               <essence cost="1"/>
           </cost>
           <duration duration="Indefinite"/>
-          <charmtype type="Reflexive" />		  
+          <charmtype type="Reflexive" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
           <repurchases>
@@ -182,12 +182,12 @@
                <essence value="2" />
                <charmReference id="Infernal.MotherSeaMastery"/>
           </prerequisite>
-          <cost> 
-               <essence cost="8"/>     
-               <willpower cost="1"/>     
+          <cost>
+               <essence cost="8"/>
+               <willpower cost="1"/>
           </cost>
           <duration amount="1" unit="day"/>
-          <charmtype type="Simple" />		  
+          <charmtype type="Simple" />
           <charmAttribute attribute="Sea" visualize="true" />
           <charmAttribute attribute="Touch" visualize="true" />
           <repurchases>
@@ -196,14 +196,14 @@
           </repurchases>
           <source source="BrokenWingedCrane" />
      </charm>
-     <charm id="Infernal.IntolerableBurningTruths" exalt="Infernal" group="Intolerable">		 
+     <charm id="Infernal.IntolerableBurningTruths" exalt="Infernal" group="Intolerable">
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="1" />
           </prerequisite>
           <cost/>
           <duration duration="Permanent" />
-          <charmtype type="Permanent" />	  
+          <charmtype type="Permanent" />
           <charmAttribute attribute="Compulsion" visualize="true" />
           <charmAttribute attribute="Stackable" visualize="true" />
           <multiEffects>
@@ -215,7 +215,7 @@
 		</multiEffects>
           <source source="BrokenWingedCrane" />
      </charm>
-	 <charm id="Infernal.RisingTideAscension" exalt="Infernal" group="Intolerable">	 
+	 <charm id="Infernal.RisingTideAscension" exalt="Infernal" group="Intolerable">
           <prerequisite>
                <trait id="Kimbery" value="0" />
                <essence value="3" />
@@ -234,11 +234,11 @@
                <essence value="2" />
                <charmReference id="Infernal.IntolerableBurningTruths" />
           </prerequisite>
-          <cost> 
-               <essence cost="1" text="or 3m"/>   
+          <cost>
+               <essence cost="1" text="or 3m"/>
           </cost>
           <duration duration="Instant"/>
-          <charmtype type="Reflexive" />			  
+          <charmtype type="Reflexive" />
           <special primaryStep="1" secondaryStep="2" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="BrokenWingedCrane" />
@@ -250,9 +250,9 @@
                <essence value="2" />
                <charmReference id="Infernal.IntolerableBurningTruths" />
           </prerequisite>
-          <cost> 
-               <essence cost="4"/>   
-               <willpower cost="1"/>   
+          <cost>
+               <essence cost="4"/>
+               <willpower cost="1"/>
           </cost>
           <duration duration="Instant"/>
           <charmtype type="ExtraAction" />
@@ -265,15 +265,47 @@
                <essence value="2" />
                <charmReference id="Infernal.IntolerableBurningTruths" />
           </prerequisite>
-          <cost> 
-               <essence cost="3" />   
+          <cost>
+               <essence cost="3" />
           </cost>
           <duration duration="Instant"/>
-          <charmtype type="Reflexive" />			  
+          <charmtype type="Reflexive" />
           <special primaryStep="7" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="BrokenWingedCrane" />
           <source source="ScrollErrata" />
+     </charm>
+     <charm id="Infernal.BitterHeartUnfeeling" exalt="Infernal" group="Intolerable">
+       <prerequisite>
+         <trait id="Kimbery" value="0" />
+         <essence value="2" />
+         <charmReference id="Infernal.BitterHeartUnbleeding" />
+       </prerequisite>
+       <cost>
+         <essence cost="3" />
+       </cost>
+       <duration duration="Instant"/>
+       <charmtype type="Reflexive" />
+       <special primaryStep="2" />
+       <charmAttribute attribute="Combo-OK" visualize="true" />
+       <charmAttribute attribute="Social" visualize="true" />
+       <source source="ScrollErrata" />
+     </charm>
+     <charm id="Infernal.BitternessBeyondWords" exalt="Infernal" group="Intolerable">
+       <prerequisite>
+         <trait id="Kimbery" value="0" />
+         <essence value="2" />
+         <charmReference id="Infernal.BitterHeartUnbleeding" />
+       </prerequisite>
+       <cost>
+         <essence cost="8" />
+       </cost>
+       <duration duration="Instant"/>
+       <charmtype type="Reflexive" />
+       <special primaryStep="2" />
+       <charmAttribute attribute="Combo-OK" visualize="true" />
+       <charmAttribute attribute="Obvious" visualize="true" />
+       <source source="ScrollErrata" />
      </charm>
      <charm id="Infernal.All-DevouringDepthsShintai" exalt="Infernal" group="Mother">
           <prerequisite>
@@ -284,9 +316,9 @@
                <charmReference id="Infernal.SeaDissolvesHerself"/>
                <charmReference id="Infernal.AllThingsBetray"/>
           </prerequisite>
-          <cost> 
-               <essence cost="10"/>   
-               <willpower cost="1"/>   
+          <cost>
+               <essence cost="10"/>
+               <willpower cost="1"/>
           </cost>
           <duration amount="1" unit="scene"/>
           <charmtype type="Simple" />

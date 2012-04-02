@@ -40,6 +40,7 @@ entry manually to reflect the new rules.
 * New preference: Enable beta content.
        Stuff that doesn't seem to break but isn't done yet will hide here. Please give feedback!
 * New beta content: An early draft of an extended character sheet.
+* Added new (Infernal/Kimbery) Charms from the Scroll of Errata.
 
 -- Bugfixes --
 * Characters remember which weapons were attuned when saving
