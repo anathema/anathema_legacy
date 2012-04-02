@@ -10,6 +10,7 @@ public class CustomizedBackgroundTemplate extends AbstractBackgroundTemplate {
     super(name);
   }
 
+  @Override
   public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
     return true;
   }

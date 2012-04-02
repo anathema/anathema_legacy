@@ -10,6 +10,7 @@ public abstract class AbstractBackgroundTemplate extends Identificate implements
     super(id);
   }
 
+  @Override
   public final void accept(ITraitTypeVisitor visitor) {
     visitor.visitBackground(this);
   }

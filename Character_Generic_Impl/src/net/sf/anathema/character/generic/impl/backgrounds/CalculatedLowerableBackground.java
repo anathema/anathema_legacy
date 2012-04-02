@@ -8,6 +8,7 @@ public abstract class CalculatedLowerableBackground extends AbstractBackgroundTe
     super(id);
   }
 
+  @Override
   public final LowerableState getExperiencedState() {
     return LowerableState.LowerableRegain;
   }

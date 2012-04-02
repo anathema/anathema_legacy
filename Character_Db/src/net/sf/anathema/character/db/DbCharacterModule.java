@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
-import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificTemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -25,7 +24,6 @@ import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identificate;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.DB;
 
 @CharacterModule
@@ -91,11 +89,11 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     addLookshyBackgrounds(backgroundRegistry);
 
     backgroundRegistry.add(
-            new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_PANOPLY, dreams, SecondEdition));
+            new TemplateTypeBackgroundTemplate(BACKGROUND_ID_PANOPLY, dreams));
     backgroundRegistry.add(
-            new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, dreams, SecondEdition));
+            new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, dreams));
     backgroundRegistry.add(
-            new EditionSpecificTemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, dreams, SecondEdition));
+            new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, dreams));
   }
 
   private void addLookshyBackgrounds(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {

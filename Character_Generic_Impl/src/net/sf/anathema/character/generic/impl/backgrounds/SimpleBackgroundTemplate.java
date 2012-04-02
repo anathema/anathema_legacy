@@ -9,6 +9,7 @@ public final class SimpleBackgroundTemplate extends CalculatedLowerableBackgroun
     super(id);
   }
 
+  @Override
   public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
     return true;
   }

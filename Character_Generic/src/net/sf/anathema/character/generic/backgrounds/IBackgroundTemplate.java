@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface IBackgroundTemplate extends ITraitType {
 
-  public LowerableState getExperiencedState();
+  LowerableState getExperiencedState();
 
-  public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition);
+  boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition);
 }

@@ -29,10 +29,12 @@ public class CharacterTypeBackgroundTemplate extends AbstractBackgroundTemplate 
     types.addAll(template.types);
   }
 
+  @Override
   public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
     return types.contains(templateType.getCharacterType());
   }
 
+  @Override
   public LowerableState getExperiencedState() {
     return state;
   }

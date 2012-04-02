@@ -10,12 +10,12 @@ public class BackgroundArbitrator implements IBackgroundArbitrator {
 
   private ITemplateType templateType;
   private IAdditionalRules additionalRules;
-  private IExaltedEdition edition;
+  private final IExaltedEdition edition;
 
   public BackgroundArbitrator(ICharacterTemplate template, IExaltedEdition edition) {
+    this.edition = edition;
     this.templateType = template.getTemplateType();
     this.additionalRules = template.getAdditionalRules();
-    this.edition = edition;
   }
 
   @Override

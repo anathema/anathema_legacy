@@ -29,10 +29,12 @@ public class TemplateTypeBackgroundTemplate extends AbstractBackgroundTemplate {
     types.addAll(template.types);
   }
 
+  @Override
   public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
     return this.types.contains(templateType);
   }
 
+  @Override
   public LowerableState getExperiencedState() {
     return experiencedState;
   }
