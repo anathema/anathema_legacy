@@ -20,7 +20,6 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -102,8 +101,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private ICharmTemplate getNativeCharmTemplate(ITemplateRegistry registry) {
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     ITemplateType templateType = basicCharacterContext.getTemplateType();
-    IExaltedEdition edition = basicCharacterContext.getEdition();
-    ICharacterTemplate template = registry.getTemplate(templateType, edition);
+    ICharacterTemplate template = registry.getTemplate(templateType);
     IMagicTemplate magicTemplate = template.getMagicTemplate();
     return magicTemplate.getCharmTemplate();
   }
@@ -354,8 +352,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private ICharmTemplate getCharmTemplate(ITemplateRegistry registry, ICharacterType type) {
-    ICharacterTemplate defaultTemplate = registry.getDefaultTemplate(type,
-            context.getBasicCharacterContext().getEdition());
+    ICharacterTemplate defaultTemplate = registry.getDefaultTemplate(type);
     if (defaultTemplate == null) {
       return null;
     }

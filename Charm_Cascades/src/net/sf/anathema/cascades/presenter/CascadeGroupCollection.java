@@ -3,10 +3,8 @@ package net.sf.anathema.cascades.presenter;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -32,14 +30,14 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   @Override
   public ICharmGroup[] getCharmGroups() {
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
-    initCharacterTypeCharms(allCharmGroups, ExaltedEdition.SecondEdition);
-    initMartialArtsCharms(allCharmGroups, ExaltedEdition.SecondEdition);
+    initCharacterTypeCharms(allCharmGroups);
+    initMartialArtsCharms(allCharmGroups);
     return allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]);
   }
 
-  private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups, IExaltedEdition edition) {
+  private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups) {
     for (ICharacterType type : CharacterType.values()) {
-      ICharacterTemplate template = templateRegistry.getDefaultTemplate(type, edition);
+      ICharacterTemplate template = templateRegistry.getDefaultTemplate(type);
       if (template == null) {
         continue;
       }
@@ -51,8 +49,8 @@ public class CascadeGroupCollection implements CharmGroupCollection {
     }
   }
 
-  private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups, IExaltedEdition edition) {
-    ICharacterTemplate template = templateRegistry.getDefaultTemplate(CharacterType.SIDEREAL, edition);
+  private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups) {
+    ICharacterTemplate template = templateRegistry.getDefaultTemplate(CharacterType.SIDEREAL);
     ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate());
     treeIdentificateMap.put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
     allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));

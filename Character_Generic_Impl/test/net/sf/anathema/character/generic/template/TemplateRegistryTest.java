@@ -26,7 +26,7 @@ public class TemplateRegistryTest {
     SimpleDummyCharacterTemplate template = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, null,
             ExaltedEdition.SecondEdition);
     registry.register(template);
-    assertEquals(template, registry.getTemplate(new TemplateType(CharacterType.MORTAL), ExaltedEdition.SecondEdition));
+    assertEquals(template, registry.getTemplate(new TemplateType(CharacterType.MORTAL)));
   }
 
   @Test
@@ -38,8 +38,8 @@ public class TemplateRegistryTest {
             ExaltedEdition.SecondEdition);
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
-    assertEquals(defaultTemplate, registry.getDefaultTemplate(CharacterType.MORTAL, ExaltedEdition.SecondEdition));
-    assertNotSame(otherTemplate, registry.getDefaultTemplate(CharacterType.MORTAL, ExaltedEdition.SecondEdition));
+    assertEquals(defaultTemplate, registry.getDefaultTemplate(CharacterType.MORTAL));
+    assertNotSame(otherTemplate, registry.getDefaultTemplate(CharacterType.MORTAL));
   }
 
   @Test

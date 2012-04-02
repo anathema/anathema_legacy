@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.template;
 
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
 public interface ITemplateRegistry {
@@ -9,9 +8,9 @@ public interface ITemplateRegistry {
 
   void register(ICharacterTemplate template);
 
-  ICharacterTemplate getDefaultTemplate(ICharacterType type, IExaltedEdition edition);
+  ICharacterTemplate getDefaultTemplate(ICharacterType type);
 
-  ICharacterTemplate getTemplate(ITemplateType type, IExaltedEdition edition);
+  ICharacterTemplate getTemplate(ITemplateType type);
 
   ICharacterTemplate getTemplate(ICharacterExternalsTemplate template);
 }

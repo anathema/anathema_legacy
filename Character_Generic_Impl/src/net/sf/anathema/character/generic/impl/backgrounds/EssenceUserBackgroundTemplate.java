@@ -15,6 +15,6 @@ public class EssenceUserBackgroundTemplate extends CalculatedLowerableBackground
 
   @Override
   public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
-    return templateRegistry.getTemplate(templateType, edition).getEssenceTemplate().isEssenceUser();
+    return templateRegistry.getTemplate(templateType).getEssenceTemplate().isEssenceUser();
   }
 }

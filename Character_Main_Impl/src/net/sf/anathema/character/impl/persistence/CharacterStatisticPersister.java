@@ -4,7 +4,6 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -82,7 +81,7 @@ public class CharacterStatisticPersister {
       }
       ITemplateType templateType = loadTemplateType(statisticsElement);
       boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
-      ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType, ExaltedEdition.SecondEdition);
+      ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
       ICharacterStatistics statistics = character.createCharacterStatistics(template, generics);
       ICasteCollection casteCollection = template.getCasteCollection();
       characterConceptPersister.load(

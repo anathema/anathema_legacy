@@ -1,7 +1,6 @@
 package net.sf.anathema.charmtree.presenter.view;
 
 import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -81,7 +80,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   }
 
   protected ITreePresentationProperties getDisplayProperties(ICharacterType characterType) {
-    return displayPropertiesMap.getDisplayProperties(characterType, ExaltedEdition.SecondEdition);
+    return displayPropertiesMap.getDisplayProperties(characterType);
   }
 
   @Override

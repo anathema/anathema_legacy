@@ -82,8 +82,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     if (getAvailableTemplates().length == 0) {
       setSelectedTemplate(null);
     } else {
-      ICharacterTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(selectedType,
-              configuration.getEdition());
+      ICharacterTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(selectedType);
       for (ITemplateTypeAggregation aggregation : aggregationsByType.get(selectedType)) {
         if (aggregation.contains(defaultTemplate)) {
           setSelectedTemplate(aggregation);
@@ -122,7 +121,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private void setEditionDependentTemplate() {
     configuration.setTemplate(
-            generics.getTemplateRegistry().getTemplate(selectedTemplate.getTemplateType(), configuration.getEdition()));
+            generics.getTemplateRegistry().getTemplate(selectedTemplate.getTemplateType()));
   }
 
   @Override

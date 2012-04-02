@@ -1,6 +1,5 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -25,7 +24,7 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
   protected List<IIdentificate> getCurrentCharacterTypes() {
     Set<IIdentificate> set = new ListOrderedSet<IIdentificate>();
     for (ICharacterType type : CharacterType.values()) {
-      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type, ExaltedEdition.SecondEdition);
+      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
         continue;
       }
@@ -40,7 +39,7 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
   protected List<IIdentificate> getAdditionalCharmTypes() {
     Set<IIdentificate> set = new ListOrderedSet<IIdentificate>();
     for (ICharacterType type : CharacterType.values()) {
-      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type, ExaltedEdition.SecondEdition);
+      ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
         continue;
       }
