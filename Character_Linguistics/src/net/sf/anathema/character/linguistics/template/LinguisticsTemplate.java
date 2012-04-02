@@ -7,10 +7,12 @@ public class LinguisticsTemplate implements IGlobalAdditionalTemplate {
 
   public static final String ID = "Linguistics"; //$NON-NLS-1$
 
+  @Override
   public boolean supportsEdition(IExaltedEdition edition) {
     return true;
   }
 
+  @Override
   public String getId() {
     return ID;
   }

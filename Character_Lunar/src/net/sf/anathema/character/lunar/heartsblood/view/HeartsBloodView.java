@@ -16,6 +16,7 @@ public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryV
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
   private final JPanel selectionPanel = new JPanel(new GridDialogLayout(2, false));
 
+  @Override
   public JComponent getComponent() {
     content.add(selectionPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
     return content;
@@ -39,6 +40,7 @@ public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryV
     return view;
   }
 
+  @Override
   public IRemovableEntryView addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
     RemovableStringView view = new RemovableStringView(removeIcon, string);
     view.addContent(selectionPanel);

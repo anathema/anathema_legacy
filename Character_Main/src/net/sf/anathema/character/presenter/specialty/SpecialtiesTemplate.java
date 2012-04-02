@@ -12,6 +12,7 @@ public class SpecialtiesTemplate extends Identificate implements IGlobalAddition
     super(ID);
   }
 
+  @Override
   public boolean supportsEdition(IExaltedEdition edition) {
     return true;
   }

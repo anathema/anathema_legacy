@@ -12,6 +12,7 @@ public class CraftTemplate extends Identificate implements IGlobalAdditionalTemp
     super(ID);
   }
 
+  @Override
   public boolean supportsEdition(IExaltedEdition edition) {
     return true;
   }
