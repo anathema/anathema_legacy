@@ -24,10 +24,11 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	private static final float SECOND_ICON_X_OFFSET = 465;
 	
 	private static final float TEXT_MARGIN = 40;
-	private static final float TITLE_TEXT_Y_OFFSET = -30;
+	private static final float TEXT_TITLE_MARGIN = 30;
+	private static final float TITLE_TEXT_Y_OFFSET = -22;
 	private static final float STATS_TEXT_Y_OFFSET = -98;
 	private static final float KEYWORD_TEXT_Y_OFFSET = -205;
-	private static final float BODY_TEXT_Y_OFFSET = -260;
+	private static final float BODY_TEXT_Y_OFFSET = -254;
 	private static final float BODY_TEXT_Y_SPAN = 710;
 	private static final float SOURCE_TEXT_Y_OFFSET = -1000;
 	
@@ -91,9 +92,9 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	}
 	
 	private void writeTitle(ICard card) throws DocumentException {
-		Rectangle rect = new Rectangle(card.getX() + scale(TEXT_MARGIN), // bottom left X
+		Rectangle rect = new Rectangle(card.getX() + scale(TEXT_TITLE_MARGIN), // bottom left X
 								 	   card.getY() + scale(TITLE_TEXT_Y_OFFSET) - provider.getTitleFont().getSize(), // bottom left Y 
-								 	   card.getX() + getCardWidth() - scale(TEXT_MARGIN), // top right X
+								 	   card.getX() + getCardWidth() - scale(TEXT_TITLE_MARGIN), // top right X
 								 	   card.getY() + scale(TITLE_TEXT_Y_OFFSET)); // top right Y
 		writeText(card.getPdfContent(), rect, new Phrase(card.getData().getTitle(), provider.getTitleFont()));
 	}
