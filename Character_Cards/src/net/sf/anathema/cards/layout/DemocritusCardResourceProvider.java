@@ -30,6 +30,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	private final String cardBodyBlock = "card_body.png";
 	private final String cardIconBlock = "card_icon.png";
 	private final String cardIconShadow = "card_icon_shadow.png";
+	private final String nullIcon = "nullIcon.png";
 	
 	private final Map<String, Image> imageMap = new HashMap<String, Image>(); 
 	
@@ -97,6 +98,10 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 		return getImage(martialArtPath + groupId + ".png");
 	}
 	
+	public Image getNullIcon() {
+		return getImage(nullIcon);
+	}
+	
 	private Image getImage(String filePath) {
 		try {
 			Image image = imageMap.get(filePath); 
@@ -108,7 +113,11 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 			return image;
 		}
 		catch (ImageLoadingException exception) {
-			return null;
+			if (filePath != nullIcon) {
+				return getNullIcon();
+			} else {
+				return null;	
+			}
 		} catch (BadElementException e) {
 			return null;
 		} catch (IOException e) {

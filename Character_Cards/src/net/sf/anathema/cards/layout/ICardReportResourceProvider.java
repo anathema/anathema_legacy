@@ -30,6 +30,8 @@ public interface ICardReportResourceProvider {
 	
 	Image getMartialArtLevelIcon(MartialArtsLevel level);
 	
+	Image getNullIcon();
+	
 	Font getTitleFont();
 	
 	Font getBoldFont();

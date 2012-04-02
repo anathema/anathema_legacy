@@ -68,7 +68,9 @@ public class LegendCardDataProvider implements ICardDataProvider {
 			List<LegendEntry> cardEntries = new ArrayList<LegendEntry>();
 			for (int i = 0; i != LegendCardData.ICONS_PER_CARD &&
 					!entries.isEmpty(); i++) {
-				cardEntries.add(entries.get(0));
+				if (entries.get(0).getIcon() != resourceProvider.getNullIcon()) {
+					cardEntries.add(entries.get(0));
+				}
 				entries.remove(0);
 			}
 			
