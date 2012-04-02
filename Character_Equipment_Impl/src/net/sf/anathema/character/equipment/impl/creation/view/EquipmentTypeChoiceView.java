@@ -29,6 +29,7 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
   private final JPanel extra = new JPanel(new GridDialogLayout(1, false));
   private JComponent focusComponent;
 
+  @Override
   public JComponent getContent()
   {
 	JPanel panel = new JPanel(new GridDialogLayout(1, false));
@@ -38,12 +39,14 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
 	return panel;
   }
 
+  @Override
   public void addStatisticsRow(String categoryLabel, Action action, String typeLabel, boolean isSelected) {
     content.add(new JLabel(categoryLabel));
     content.add(createToggleButton(action, isSelected));
     content.add(new JLabel(typeLabel));
   }
   
+  @Override
   public void addCheckBox(String label, ItemListener listener, boolean isSelected)
   {
 	  JCheckBox box = new JCheckBox(label);
@@ -52,10 +55,12 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
 	  extra.add(box);
   }
 
+  @Override
   public void addHorizontalLine() {
     content.add(new HorizontalLine(), OVERALL_HORIZONTAL_FILL);
   }
 
+  @Override
   public void requestFocus() {
     focusComponent.requestFocus();
   }
@@ -71,6 +76,7 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
     return toggleButton;
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }

@@ -1,14 +1,14 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import java.util.List;
-import java.util.Map;
-
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+
+import java.util.List;
+import java.util.Map;
 
 public class EquipmentTemplate implements IEquipmentTemplate {
 
@@ -77,5 +77,21 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   @Override
   public MaterialComposition getComposition() {
     return MaterialComposition.valueOf(composition);
+  }
+
+  public boolean hasStats() {
+    boolean hasStats = false;
+    for (String key : statsByRuleSet.keySet()) {
+      hasStats = !statsByRuleSet.get(key).isEmpty();
+    }
+    return hasStats;
+  }
+
+  public void removeStats(String ruleset) {
+    statsByRuleSet.remove(ruleset);
+  }
+
+  public void removeStats(IExaltedRuleSet ruleSet, IEquipmentStats stat) {
+    statsByRuleSet.get(ruleSet.getId()).remove(stat);
   }
 }

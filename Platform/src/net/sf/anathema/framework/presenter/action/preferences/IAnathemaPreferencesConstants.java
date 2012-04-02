@@ -14,6 +14,7 @@ public interface IAnathemaPreferencesConstants {
   public final String OPEN_PDF_PREFERENCE = "OpenPdf"; //$NON-NLS-1$
   public final String PAGE_FORMAT_PREFERENCE = "PageFormat"; //$NON-NLS-1$
   public final String REPOSITORY_PREFERENCE = "RepositoryForAnathema4orHigher"; //$NON-NLS-1$
+  public final String ENABLE_BETA_CONTENT = "EnableBetaContent"; //$NON-NLS-1$
   public final String TOOL_TIP_TIME_PREFERENCE = "ToolTipTime"; //$NON-NLS-1$
   public final String USER_LOOK_AND_FEEL_CLASSNAME = "UserLookAndFeel"; //$NON-NLS-1$
 }

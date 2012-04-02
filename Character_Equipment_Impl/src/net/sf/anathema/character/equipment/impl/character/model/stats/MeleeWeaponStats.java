@@ -11,10 +11,6 @@ public class MeleeWeaponStats extends AbstractWeaponStats {
     super(collectionFactory);
   }
 
-  public MeleeWeaponStats(ICollectionFactory collectionFactory, MeleeWeaponStats stats) {
-    super(collectionFactory, stats);
-  }
-
   @Override
   public AbilityType getTraitType() {
     return isMartialArtsOnlyWeapon() ? AbilityType.MartialArts : AbilityType.Melee;
@@ -24,6 +20,7 @@ public class MeleeWeaponStats extends AbstractWeaponStats {
     return hasTag(WeaponTag.Natural) || hasTag(WeaponTag.ClinchEnhancer);
   }
   
+  @Override
   public int getMobilityPenalty() {
 	  if (hasTag(WeaponTag.Shield1)) return -1;
 	  if (hasTag(WeaponTag.Shield2)) return -2;
