@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
@@ -19,11 +18,11 @@ public class ExtendedEncodingRegistry {
     this.instantiater = instantiater;
   }
 
-  public IExtendedPartEncoder getPartEncoder(ICharacterType type, IExaltedEdition edition) {
+  public IExtendedPartEncoder getPartEncoder(ICharacterType type) {
     Collection<IExtendedPartEncoder> encoders = createEncoders();
     for (IExtendedPartEncoder encoder : encoders) {
       RegisteredPartEncoder annotation = encoder.getClass().getAnnotation(RegisteredPartEncoder.class);
-      if (annotation.characterType() == type && annotation.edition() == edition) {
+      if (annotation.characterType() == type) {
         return encoder;
       }
     }

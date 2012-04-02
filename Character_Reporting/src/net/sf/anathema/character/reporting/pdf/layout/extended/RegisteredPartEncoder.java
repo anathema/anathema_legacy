@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 import java.lang.annotation.ElementType;
@@ -13,6 +12,4 @@ import java.lang.annotation.Target;
 public @interface RegisteredPartEncoder {
 
   CharacterType characterType();
-
-  ExaltedEdition edition();
 }

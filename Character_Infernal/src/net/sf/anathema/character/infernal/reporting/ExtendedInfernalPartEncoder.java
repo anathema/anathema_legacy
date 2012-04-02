@@ -12,10 +12,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.INFERNAL;
 
-@RegisteredPartEncoder(characterType = INFERNAL, edition = SecondEdition)
+@RegisteredPartEncoder(characterType = INFERNAL)
 public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   public ExtendedInfernalPartEncoder(IResources resources) {

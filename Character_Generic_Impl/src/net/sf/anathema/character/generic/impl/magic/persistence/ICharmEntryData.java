@@ -5,11 +5,9 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 
 public interface ICharmEntryData {
 
-  public IExaltedEdition getEdition();
+  ICharmData getCoreData();
 
-  public ICharmData getCoreData();
+  String getName();
 
-  public String getName();
-
-  public int getPage();
+  int getPage();
 }

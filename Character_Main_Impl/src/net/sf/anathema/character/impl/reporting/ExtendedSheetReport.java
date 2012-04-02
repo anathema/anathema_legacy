@@ -93,8 +93,7 @@ public class ExtendedSheetReport extends AbstractPdfReport {
     ExtendedEncodingRegistry encodingRegistry = getEncodingRegistry();
     ICharacterTemplate characterTemplate = character.getStatistics().getCharacterTemplate();
     ICharacterType characterType = characterTemplate.getTemplateType().getCharacterType();
-    IExaltedEdition edition = characterTemplate.getEdition();
-    return encodingRegistry.getPartEncoder(characterType, edition);
+    return encodingRegistry.getPartEncoder(characterType);
   }
 
   private ExtendedEncodingRegistry getEncodingRegistry() {

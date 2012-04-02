@@ -13,16 +13,16 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.LUNAR;
 
-@RegisteredPartEncoder(characterType = LUNAR, edition = SecondEdition)
+@RegisteredPartEncoder(characterType = LUNAR)
 public class Extended2ndEditionLunarPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   public Extended2ndEditionLunarPartEncoder(IResources resources) {
     super(resources);
   }
 
+  @Override
   public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportSession session) {
     return new GreatCurse2ndEditionEncoder(getResources());
   }

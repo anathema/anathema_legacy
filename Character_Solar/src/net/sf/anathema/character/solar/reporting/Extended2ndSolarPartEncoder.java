@@ -10,10 +10,9 @@ import net.sf.anathema.character.solar.reporting.rendering.AnimaEncoderFactory;
 import net.sf.anathema.character.solar.reporting.rendering.VirtueFlawEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.SOLAR;
 
-@RegisteredPartEncoder(characterType = SOLAR, edition = SecondEdition)
+@RegisteredPartEncoder(characterType = SOLAR)
 public class Extended2ndSolarPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   public Extended2ndSolarPartEncoder(IResources resources) {

@@ -13,10 +13,9 @@ import net.sf.anathema.character.sidereal.reporting.rendering.anima.AnimaEncoder
 import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.FlawedFateEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.SIDEREAL;
 
-@RegisteredPartEncoder(characterType = SIDEREAL, edition = SecondEdition)
+@RegisteredPartEncoder(characterType = SIDEREAL)
 public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   public Extended2ndEditionSiderealPartEncoder(IResources resources) {

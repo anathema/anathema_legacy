@@ -8,7 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.MORTAL;
 
-@RegisteredPartEncoder(characterType = MORTAL, edition = SecondEdition)
+@RegisteredPartEncoder(characterType = MORTAL)
 public class Extended2ndEditionMortalPartEncoder extends AbstractSecondEditionPartEncoder {
 
   public Extended2ndEditionMortalPartEncoder(IResources resources) {

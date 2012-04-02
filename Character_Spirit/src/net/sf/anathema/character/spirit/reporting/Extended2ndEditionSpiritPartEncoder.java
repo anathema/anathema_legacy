@@ -8,10 +8,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.NullBoxContentE
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.SPIRIT;
 
-@RegisteredPartEncoder(characterType = SPIRIT, edition = SecondEdition)
+@RegisteredPartEncoder(characterType = SPIRIT)
 public class Extended2ndEditionSpiritPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   public Extended2ndEditionSpiritPartEncoder(IResources resources) {
@@ -19,6 +18,7 @@ public class Extended2ndEditionSpiritPartEncoder extends AbstractSecondEditionEx
   }
 
   // TODO: This should be properly edited out, not just nulled out.
+  @Override
   public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportSession session) {
     return new NullBoxContentEncoder();
   }

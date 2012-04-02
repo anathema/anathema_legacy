@@ -9,10 +9,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.GHOST;
 
-@RegisteredPartEncoder(characterType = GHOST, edition = SecondEdition)
+@RegisteredPartEncoder(characterType = GHOST)
 public class ExtendedGhostPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
 
   public ExtendedGhostPartEncoder(IResources resources) {
