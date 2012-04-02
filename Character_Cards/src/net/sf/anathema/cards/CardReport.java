@@ -32,7 +32,7 @@ public class CardReport extends AbstractPdfReport {
 	
 	@Override
 	public String toString() {
-	  return resources.getString("CardsReport.CharmsSpells.Name"); //$NON-NLS-1$
+	  return resources.getString("CardsReport.Name"); //$NON-NLS-1$
 	}
 	
 	@Override
@@ -60,7 +60,7 @@ public class CardReport extends AbstractPdfReport {
 			int numRows = (int)(documentHeight / layout.getCardHeight());
 			float horizontalGutter = (documentWidth - numCols * layout.getCardWidth()) / (numCols - 1);
 			float verticalGutter = (documentHeight - numRows * layout.getCardHeight()) / (numRows - 1);
-			int maxPosition = numRows * numCols - 1;
+			int maxPosition = numRows * numCols;
 			int position = 0;
 			for (ICardData cardData : cardDataSet) {
 				if (position == maxPosition ||

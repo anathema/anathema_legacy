@@ -1,6 +1,7 @@
 package net.sf.anathema.cards;
 
 import net.sf.anathema.cards.data.providers.CharmCardDataProvider;
+import net.sf.anathema.cards.data.providers.EquipmentCardDataProvider;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
 import net.sf.anathema.cards.data.providers.LegendCardDataProvider;
 import net.sf.anathema.cards.data.providers.SpellCardDataProvider;
@@ -20,8 +21,9 @@ public class CardReportFactory implements IReportFactory {
 		    ICardDataProvider charmCards = new CharmCardDataProvider(model, resources);
 		    ICardDataProvider spellCards = new SpellCardDataProvider(model, resources);
 		    ICardDataProvider legendCards = new LegendCardDataProvider(resources);
+		    ICardDataProvider equipmentCards = new EquipmentCardDataProvider(resources);
 		    ICardLayout layout = new DemocritusCardLayout(resources, .23f);
 		    return new Report[]{
-		    		new CardReport(resources, layout, charmCards, spellCards, legendCards)};
+		    		new CardReport(resources, layout, charmCards, spellCards, equipmentCards, legendCards)};
 		  }
 }
