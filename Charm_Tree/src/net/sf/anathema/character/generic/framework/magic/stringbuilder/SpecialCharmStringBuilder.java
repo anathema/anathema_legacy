@@ -24,23 +24,25 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
     if (magic instanceof ICharm && specialDetails instanceof ISpecialCharm) {
       ICharm charm = (ICharm) magic;
       ISpecialCharm details = (ISpecialCharm) specialDetails;
+      StringBuilder specialCharmBuilder = new StringBuilder();
       if (details instanceof AbstractMultiLearnableCharm) {
-        builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases"));
-        builder.append(IMagicTooltipStringBuilder.ColonSpace);
+    	specialCharmBuilder.append(resources.getString("CharmTreeView.ToolTip.Repurchases"));
+    	specialCharmBuilder.append(IMagicTooltipStringBuilder.ColonSpace);
         if (details instanceof StaticMultiLearnableCharm) {
-          printStaticLimit(builder, (StaticMultiLearnableCharm) details);
-        }
-        if (details instanceof TraitDependentMultiLearnableCharm) {
-          printTraitLimit(builder, (TraitDependentMultiLearnableCharm) details);
+          printStaticLimit(specialCharmBuilder, (StaticMultiLearnableCharm) details);
         }
         if (details instanceof EssenceFixedMultiLearnableCharm) {
           return;
         }
-        if (details instanceof TieredMultiLearnableCharm) {
-          printTieredLimit(builder, charm, (TieredMultiLearnableCharm) details);
+        if (details instanceof TraitDependentMultiLearnableCharm) {
+          printTraitLimit(specialCharmBuilder, (TraitDependentMultiLearnableCharm) details);
         }
-        builder.append(HtmlLineBreak);
+        if (details instanceof TieredMultiLearnableCharm) {
+          printTieredLimit(specialCharmBuilder, charm, (TieredMultiLearnableCharm) details);
+        }
+        specialCharmBuilder.append(HtmlLineBreak);
       }
+      builder.append(specialCharmBuilder);
     }
   }
 
