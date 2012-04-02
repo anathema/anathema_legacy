@@ -17,5 +17,7 @@ public interface ICardData {
 	
 	Element[] getBody(int contentHeight);
 	
-	String getSource();	
+	String getSource();
+	
+	boolean wantsNewPage();
 }

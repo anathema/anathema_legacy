@@ -22,7 +22,6 @@ public class CardReportFactory implements IReportFactory {
 		    ICardDataProvider legendCards = new LegendCardDataProvider(resources);
 		    ICardLayout layout = new DemocritusCardLayout(resources, .23f);
 		    return new Report[]{
-		    		new CardReport(resources, layout, charmCards, spellCards),
 		    		new CardReport(resources, layout, charmCards, spellCards, legendCards)};
 		  }
 }

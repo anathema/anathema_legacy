@@ -69,4 +69,8 @@ public abstract class AbstractMagicCardData implements ICardData {
 			   magic.getTemporaryCost().getHealthCost() != HealthCost.NULL_HEALTH_COST ||
 			   magic.getTemporaryCost().getXPCost() != Cost.NULL_COST;
 	}
+	
+	public boolean wantsNewPage() {
+		return false;
+	}
 }

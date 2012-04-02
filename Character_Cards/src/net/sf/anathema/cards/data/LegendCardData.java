@@ -16,12 +16,14 @@ public class LegendCardData implements ICardData {
 	private final String title;
 	private final LegendEntry[] entries;
 	private final ICardReportResourceProvider provider;
+	private final boolean newPage;
 	
 	public LegendCardData(ICardReportResourceProvider provider,
-			String title, LegendEntry[] entries) {
+			String title, LegendEntry[] entries, boolean newPage) {
 		this.title = title;
 		this.entries = entries;
 		this.provider = provider;
+		this.newPage = newPage;
 	}
 	
 	@Override
@@ -71,6 +73,10 @@ public class LegendCardData implements ICardData {
 	@Override
 	public String getSource() {
 		return null;
+	}
+	
+	public boolean wantsNewPage() {
+		return newPage;
 	}
 
 }

@@ -10,7 +10,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
-import net.sf.anathema.cards.data.providers.LegendCardDataProvider;
 import net.sf.anathema.cards.layout.ICardLayout;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.ICharacter;
@@ -24,22 +23,15 @@ public class CardReport extends AbstractPdfReport {
 	private IResources resources;
 	private ICardLayout layout;
 	private ICardDataProvider[] cardDataProviders;
-	private boolean hasLegend = false;
 	
 	public CardReport(IResources resources, ICardLayout layout, ICardDataProvider... cardProviders) {
 		this.resources = resources;
 		this.cardDataProviders = cardProviders;
 		this.layout = layout;
-		for (ICardDataProvider provider : cardProviders) {
-			hasLegend = hasLegend || (provider instanceof LegendCardDataProvider);
-		}
 	}
 	
 	@Override
 	public String toString() {
-	  if (hasLegend) {
-		  return resources.getString("CardsReport.CharmsSpells.Name.Legend"); //$NON-NLS-1$  
-	  }
 	  return resources.getString("CardsReport.CharmsSpells.Name"); //$NON-NLS-1$
 	}
 	
@@ -71,19 +63,19 @@ public class CardReport extends AbstractPdfReport {
 			int maxPosition = numRows * numCols - 1;
 			int position = 0;
 			for (ICardData cardData : cardDataSet) {
+				if (position == maxPosition ||
+					(cardData.wantsNewPage() && position > 0)) {
+					position = 0;
+					document.newPage();
+				}
+				
 				float upperleftX = document.left() + (layout.getCardWidth() + horizontalGutter) * (position % numCols);
 				float upperleftY = document.top() - (layout.getCardHeight() + verticalGutter) * (position / numCols);
 				
 				Card card = new Card(directContent, upperleftX, upperleftY, cardData);
 				layout.drawCard(card);
 				
-				if (position == maxPosition) {
-					position = 0;
-					document.newPage();
-				}
-				else {
-					position++;
-				}
+				position++;
 			}
 		}
 		catch (Exception e) {

@@ -62,6 +62,8 @@ public class LegendCardDataProvider implements ICardDataProvider {
 		
 		String legend = resources.getString("CardsReport.Legend");
 		
+		boolean newPage = true;
+		
 		while (!entries.isEmpty()) {
 			List<LegendEntry> cardEntries = new ArrayList<LegendEntry>();
 			for (int i = 0; i != LegendCardData.ICONS_PER_CARD &&
@@ -78,7 +80,8 @@ public class LegendCardDataProvider implements ICardDataProvider {
 			
 			if (cardEntries.size() > 0)
 				cards.add(new LegendCardData(resourceProvider, legend,
-						cardEntries.toArray(new LegendEntry[0])));
+						cardEntries.toArray(new LegendEntry[0]), newPage));
+			newPage = false;
 		}
 		
 		return cards.toArray(new ICardData[0]);
