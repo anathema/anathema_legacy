@@ -1,7 +1,6 @@
 package net.sf.anathema.character.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -26,8 +25,6 @@ public interface ICharacterStatistics {
   IExtendedConfiguration getExtendedConfiguration();
 
   IHealthConfiguration getHealth();
-
-  IExaltedRuleSet getRules();
 
   boolean isExperienced();
 

@@ -48,6 +48,7 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Native" visualize="true" />
           <source source="BrokenWingedCrane" />
+          <source source="ScrollErrata" />
      </charm> 	 
 	 <charm id="Infernal.CrimsonWindRibbons" exalt="Infernal" group="Wind">
           <prerequisite>

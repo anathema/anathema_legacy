@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.dummy;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 
@@ -28,13 +27,8 @@ public class DummyBasicCharacterData implements IBasicCharacterData {
   }
 
   @Override
-  public IExaltedRuleSet getRuleSet() {
-    return null;
-  }
-
-  @Override
   public IExaltedEdition getEdition() {
-    return getRuleSet().getEdition();
+    return null;
   }
 
   public void setCasteType(ICasteType casteType) {

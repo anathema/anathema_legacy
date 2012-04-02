@@ -4,8 +4,6 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class EquipmentDatabaseManagement implements IEquipmentDatabaseManagement {
 
@@ -27,11 +25,6 @@ public class EquipmentDatabaseManagement implements IEquipmentDatabaseManagement
   @Override
   public IEquipmentDatabase getDatabase() {
     return database;
-  }
-
-  @Override
-  public IExaltedRuleSet[] getSupportedExaltedRuleSets() {
-    return ExaltedRuleSet.values();
   }
 
   @Override

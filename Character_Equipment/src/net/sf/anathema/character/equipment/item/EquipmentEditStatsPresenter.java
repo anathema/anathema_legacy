@@ -6,7 +6,6 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManageme
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
@@ -55,19 +54,13 @@ public class EquipmentEditStatsPresenter implements Presenter {
   }
 
   private void initButtons(IActionAddableListView<IEquipmentStats> statsListView) {
-    IExaltedRuleSet ruleset = getRuleSet();
     IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
-    statsListView.addAction(new AddNewStatsAction(resources, editModel, ruleset, model.getStatsCreationFactory()));
-    statsListView.addAction(new RemoveStatsAction(resources, editModel, ruleset, statsListView));
-    statsListView.addAction(
-            new EditStatsAction(resources, editModel, ruleset, statsListView, model.getStatsCreationFactory()));
+    statsListView.addAction(new AddNewStatsAction(resources, editModel, model.getStatsCreationFactory()));
+    statsListView.addAction(new RemoveStatsAction(resources, editModel, statsListView));
+    statsListView.addAction(new EditStatsAction(resources, editModel, statsListView, model.getStatsCreationFactory()));
   }
 
   private void updateStatListContent(IActionAddableListView<IEquipmentStats> statsListView) {
-    statsListView.setObjects(model.getTemplateEditModel().getStats(getRuleSet()));
-  }
-
-  private IExaltedRuleSet getRuleSet() {
-    return model.getSupportedExaltedRuleSets()[0];
+    statsListView.setObjects(model.getTemplateEditModel().getStats());
   }
 }

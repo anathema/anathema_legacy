@@ -144,23 +144,23 @@
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Infernals" />
+          <source source="ScrollErrata" />
     </charm>
     <charm id="Celestial.ScreamingMeatShield" exalt="Solar" group="InfernalMonsterStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="5" />
                <charmReference id="Celestial.WorldBreakerGrip" />
-
           </prerequisite>
           <cost>
-               <essence cost="5" />
-               <willpower cost="1" />
+               <essence cost="9" />
           </cost>
               <duration duration="Instant"/>
           <charmtype type="Reflexive" />
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Infernals" />
+          <source source="ScrollErrata" />
     </charm>
     <charm id="Celestial.OneHandFury" exalt="Solar" group="InfernalMonsterStyle">
           <prerequisite>
@@ -178,5 +178,6 @@
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Infernals" />
+          <source source="ScrollErrata" />
     </charm>
 </charmlist>

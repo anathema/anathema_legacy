@@ -41,11 +41,6 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
 
   @Override
   public int getMinimumDamage() {
-    // for backwards compatability; weapons created before
-    // this property was implemented will have a value of 0
-    if (minimumDamage == 0 && !inflictsNoDamage) {
-      return 1;
-    }
     return minimumDamage;
   }
 

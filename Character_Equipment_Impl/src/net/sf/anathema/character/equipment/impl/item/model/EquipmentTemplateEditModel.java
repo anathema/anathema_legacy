@@ -1,9 +1,5 @@
 package net.sf.anathema.character.equipment.impl.item.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.MagicalMaterial;
@@ -13,21 +9,23 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
-import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Collections.addAll;
 
 public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
   private final IItemDescription description = new ItemDescription();
   private final IEquipmentDatabase database;
   private IEquipmentTemplate editedTemplate;
-  private final MultiEntryMap<IExaltedRuleSet, IEquipmentStats> statsByRuleSet = new MultiEntryMap<IExaltedRuleSet, IEquipmentStats>();
+  private final List<IEquipmentStats> statses = new ArrayList<IEquipmentStats>();
   private final ChangeControl statsChangeControl = new ChangeControl();
   private final ChangeControl magicalMaterialControl = new ChangeControl();
   private final ChangeControl compositionControl = new ChangeControl();
@@ -53,10 +51,8 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     getDescription().getContent().setText(editedTemplate.getDescription());
     setMaterialComposition(editedTemplate.getComposition());
     setMagicalMaterial(editedTemplate.getMaterial());
-    statsByRuleSet.clear();
-    for (ExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
-      statsByRuleSet.add(ruleSet, editedTemplate.getStats(ruleSet));
-    }
+    statses.clear();
+    addAll(statses, editedTemplate.getStats());
     fireStatsChangedEvent();
   }
 
@@ -76,7 +72,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     getDescription().getName().setText(null);
     getDescription().getContent().setText(new ITextPart[0]);
     setMaterialComposition(MaterialComposition.None);
-    statsByRuleSet.clear();
+    statses.clear();
     fireStatsChangedEvent();
   }
 
@@ -90,48 +86,42 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     if (editedTemplate == null) {
       return !getDescription().getName().isEmpty() || !getDescription().getContent().isEmpty();
     }
-    return !ObjectUtilities.equals(editedTemplate.getName(), getDescription().getName().getText())
-        || !ObjectUtilities.equals(editedTemplate.getDescription(), getDescription().getContent().getText())
-        || !(editedTemplate.getComposition() == getMaterialComposition())
-        || !(editedTemplate.getMaterial() == getMagicalMaterial());
+    return !ObjectUtilities.equals(editedTemplate.getName(),
+            getDescription().getName().getText()) || !ObjectUtilities.equals(editedTemplate.getDescription(),
+            getDescription().getContent().getText()) || !(editedTemplate.getComposition() == getMaterialComposition()) || !(editedTemplate.getMaterial() == getMagicalMaterial());
   }
 
   private List<IEquipmentStats> getAllPreviousStats() {
     List<IEquipmentStats> allStats = new ArrayList<IEquipmentStats>();
     if (editedTemplate != null) {
-      for (ExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
-        allStats.addAll(Arrays.asList(editedTemplate.getStats(ruleSet)));
-      }
+      addAll(allStats, editedTemplate.getStats());
     }
     return allStats;
   }
 
   private List<IEquipmentStats> getAllCurrentStats() {
     List<IEquipmentStats> allStats = new ArrayList<IEquipmentStats>();
-    for (IExaltedRuleSet ruleSet : statsByRuleSet.keySet()) {
-      allStats.addAll(statsByRuleSet.get(ruleSet));
-    }
+    allStats.addAll(statses);
     return allStats;
   }
 
   @Override
-  public void addStatistics(IExaltedRuleSet ruleSet, IEquipmentStats stats) {
-    statsByRuleSet.add(ruleSet, stats);
+  public void addStatistics(IEquipmentStats stats) {
+    statses.add(stats);
     fireStatsChangedEvent();
   }
 
   @Override
-  public void removeStatistics(IExaltedRuleSet ruleSet, IEquipmentStats... stats) {
+  public void removeStatistics(IEquipmentStats... stats) {
     for (IEquipmentStats stat : stats) {
-      statsByRuleSet.removeValue(ruleSet, stat);
+      statses.remove(stat);
     }
     fireStatsChangedEvent();
   }
 
   @Override
-  public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
-    List<IEquipmentStats> allStats = statsByRuleSet.get(ruleSet);
-    return allStats.toArray(new IEquipmentStats[allStats.size()]);
+  public IEquipmentStats[] getStats() {
+    return statses.toArray(new IEquipmentStats[statses.size()]);
   }
 
   @Override
@@ -143,16 +133,10 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   public IEquipmentTemplate createTemplate() {
     String name = getDescription().getName().getText();
     String descriptionText = getDescription().getContent().getText();
-    EquipmentTemplate template = new EquipmentTemplate(
-        name,
-        descriptionText,
-        composition,
-        material,
-        database.getCollectionFactory());
-    for (IExaltedRuleSet ruleSet : statsByRuleSet.keySet()) {
-      for (IEquipmentStats stats : statsByRuleSet.get(ruleSet)) {
-        template.addStats(ruleSet, stats);
-      }
+    EquipmentTemplate template = new EquipmentTemplate(name, descriptionText, composition, material,
+            database.getCollectionFactory());
+    for (IEquipmentStats stats : statses) {
+      template.addStats(stats);
     }
     return template;
   }
@@ -192,8 +176,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     this.composition = composition;
     if (composition.requiresMaterial()) {
       setMagicalMaterial(MagicalMaterial.Orichalcum);
-    }
-    else {
+    } else {
       setMagicalMaterial(null);
     }
     compositionControl.fireChangedEvent();
@@ -205,8 +188,10 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
 
   @Override
-  public void replaceStatistics(IExaltedRuleSet ruleset, IEquipmentStats oldStats, IEquipmentStats newStats) {
-    statsByRuleSet.replace(ruleset, oldStats, newStats);
+  public void replaceStatistics(IEquipmentStats oldStats, IEquipmentStats newStats) {
+    int oldIndex = statses.indexOf(oldStats);
+    statses.remove(oldStats);
+    statses.add(oldIndex, oldStats);
     fireStatsChangedEvent();
   }
 }

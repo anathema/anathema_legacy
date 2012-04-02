@@ -4,7 +4,6 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
@@ -16,7 +15,7 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
   }
 
   @Override
-  public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
+  public IEquipmentStats[] getStats() {
     return INaturalWeaponConstants.SECOND_EDITION;
   }
 

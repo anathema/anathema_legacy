@@ -4,8 +4,6 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -197,11 +195,6 @@ public class CharacterStatistics implements ICharacterStatistics {
   @Override
   public ICharacterTemplate getCharacterTemplate() {
     return characterTemplate;
-  }
-
-  @Override
-  public IExaltedRuleSet getRules() {
-    return ExaltedRuleSet.SecondEdition;
   }
 
   @Override

@@ -5,7 +5,6 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.impl.character.model.RegisteredNaturalWeapon;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
@@ -36,7 +35,7 @@ public class FangTemplate implements IEquipmentTemplate {
   }
 
   @Override
-  public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
+  public IEquipmentStats[] getStats() {
     return new IEquipmentStats[]{SECOND_EDITION_FANG_STATS};
   }
 }

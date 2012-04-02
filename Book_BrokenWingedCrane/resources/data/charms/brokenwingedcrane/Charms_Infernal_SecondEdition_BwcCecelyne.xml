@@ -39,6 +39,7 @@
           	<repurchase essence="9"/>
           </repurchases>
           <source source="BrokenWingedCrane" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Infernal.InarguableWord" exalt="Infernal" group="DemonicPrimacy">
           <prerequisite>

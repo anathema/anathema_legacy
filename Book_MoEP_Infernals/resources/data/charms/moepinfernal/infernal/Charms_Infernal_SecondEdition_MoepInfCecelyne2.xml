@@ -102,7 +102,7 @@
                <charmReference id="Infernal.TranscendentDesertCreature"/>
           </prerequisite>
            <cost> 
-               <essence cost="3" />   
+               <essence cost="8" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive" />
@@ -110,6 +110,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Infernals" />
+          <source source="ScrollErrata" />
      </charm>     
      <charm id="Infernal.Soul-SieveTransmutation" exalt="Infernal" group="TranscendentDesert">          
           <prerequisite>
@@ -118,12 +119,13 @@
                <charmReference id="Infernal.SandThroughFingersDefense"/>
           </prerequisite>
            <cost> 
-               <essence cost="-" text="(5m, 1 wp)" />   
+               <essence cost="-" text="(10m, 1 wp)" />
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Infernals" />
+          <source source="ScrollErrata" />
      </charm>      
      <charm id="Infernal.Soul-SandDevilShintai" exalt="Infernal" group="TranscendentDesert">          
           <prerequisite>
@@ -178,13 +180,13 @@
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
 		  <special speed="4"  defense="0"/>
-		  <special primaryStep="2" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Messianic1" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <charmAttribute attribute="Sorcerous" visualize="true" />
           <source source="Infernals" />
+          <source source="ScrollErrata" />
      </charm>           
      <charm id="Infernal.Dune-BurstOnslaught" exalt="Infernal" group="TranscendentDesert">          
           <prerequisite>
