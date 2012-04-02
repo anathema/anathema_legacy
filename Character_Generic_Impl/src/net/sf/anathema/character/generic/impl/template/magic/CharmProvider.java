@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
@@ -82,7 +81,7 @@ public class CharmProvider implements ICharmProvider {
   }
 
   @Override
-  public String getCharmRename(IExaltedRuleSet rules, String name) {
+  public String getCharmRename(String name) {
     return cache.getCharmRename(name);
   }
 

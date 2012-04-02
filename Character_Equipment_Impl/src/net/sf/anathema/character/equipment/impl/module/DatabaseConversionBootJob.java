@@ -9,7 +9,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWe
 import net.sf.anathema.character.equipment.impl.item.model.db4o.EquipmentDatabaseConnectionManager;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.impl.persistence.SecondEditionRules;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.view.IAnathemaView;
@@ -60,7 +60,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
   }
 
   private void addMinimumDamage(EquipmentTemplate template, ObjectContainer container) {
-    IEquipmentStats[] stats = template.getStats(ExaltedRuleSet.SecondEdition);
+    IEquipmentStats[] stats = template.getStats();
     for (IEquipmentStats stat : stats) {
       if (stat instanceof AbstractWeaponStats) {
         AbstractWeaponStats weapon = (AbstractWeaponStats) stat;
@@ -73,10 +73,10 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
   }
 
   private void deleteShieldStats(EquipmentTemplate template) {
-    IEquipmentStats[] stats = template.getStats(ExaltedRuleSet.SecondEdition);
+    IEquipmentStats[] stats = template.getStats();
     for (IEquipmentStats stat : stats) {
       if (stat instanceof IShieldStats) {
-        template.removeStats(ExaltedRuleSet.SecondEdition, stat);
+        template.removeStats(new SecondEditionRules().getId(), stat);
       }
     }
   }
