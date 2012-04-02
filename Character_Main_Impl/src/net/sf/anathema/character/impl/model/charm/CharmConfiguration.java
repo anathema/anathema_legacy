@@ -258,7 +258,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public String getCharmTrueName(String charmId) {
-    return provider.getCharmRename(context.getBasicCharacterContext().getRuleSet(), charmId);
+    return provider.getCharmRename(charmId);
   }
 
   @Override

@@ -12,18 +12,22 @@ import net.sf.anathema.character.equipment.impl.creation.view.WeaponTagsView;
 
 public class EquipmentStatisticsCreationViewFactory implements IEquipmentStatisticsCreationViewFactory {
 
+  @Override
   public IEquipmentTypeChoiceView createTypeChoiceView() {
     return new EquipmentTypeChoiceView();
   }
 
+  @Override
   public IWeaponStatisticsView createEquipmentStatisticsView() {
     return new WeaponStatisticsView();
   }
 
+  @Override
   public IWeaponDamageView createWeaponDamageView() {
     return new WeaponDamageView();
   }
 
+  @Override
   public IWeaponTagsView createWeaponTagsView() {
     return new WeaponTagsView();
   }

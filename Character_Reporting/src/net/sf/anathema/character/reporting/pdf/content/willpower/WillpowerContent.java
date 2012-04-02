@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.willpower;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
@@ -27,7 +28,7 @@ public class WillpowerContent extends AbstractSubBoxContent {
   }
 
   public IExaltedEdition getEdition() {
-    return character.getRules().getEdition();
+    return ExaltedEdition.SecondEdition;
   }
 
   public String getWillpowerSpendingNote() {

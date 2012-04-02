@@ -7,7 +7,6 @@ import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatist
 import net.sf.anathema.character.equipment.creation.model.stats.ICloseCombatStatsticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.stats.IShieldStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
@@ -21,7 +20,6 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   private final ICloseCombatStatsticsModel closeCombatStatisticsModel;
   private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel;
-  private final IShieldStatisticsModel shieldStatisticsModel = new ShieldStatisticsModel();
   private final IArmourStatisticsModel armourStatisticsModel = new ArmourStatsticsModel();
   private final IArtifactStatisticsModel artifactStatisticsModel = new ArtifactStatisticsModel();
   private final ITraitModifyingStatisticsModel traitModifyingStatisticsModel = new TraitModifyingStatisticsModel();
@@ -79,11 +77,6 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   @Override
   public IRangedCombatStatisticsModel getRangedWeaponStatisticsModel() {
     return rangedWeaponStatisticsModel;
-  }
-
-  @Override
-  public IShieldStatisticsModel getShieldStatisticsModel() {
-    return shieldStatisticsModel;
   }
 
   @Override

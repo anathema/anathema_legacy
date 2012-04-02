@@ -2,7 +2,6 @@ package net.sf.anathema.charmentry.presenter;
 
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.charmentry.module.ICharmEntryViewFactory;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.charmentry.presenter.model.ICostEntryModel;
@@ -38,7 +37,7 @@ public class CostEntryPage extends AbstractAnathemaWizardPage {
         new ICondition() {
           @Override
           public boolean isFulfilled() {
-            return getPageModel().getEdition() == ExaltedEdition.SecondEdition;
+            return true;
           }
         });
   }

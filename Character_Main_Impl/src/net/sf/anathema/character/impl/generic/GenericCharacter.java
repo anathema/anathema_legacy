@@ -17,7 +17,6 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -144,11 +143,6 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public ICasteType getCasteType() {
     return statistics.getCharacterConcept().getCaste().getType();
-  }
-
-  @Override
-  public IExaltedRuleSet getRules() {
-    return statistics.getRules();
   }
 
   @Override

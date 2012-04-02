@@ -19,6 +19,7 @@ public class ApplicableMaterialsModel implements IApplicableMaterialsModel {
       selectedMap.put(material, new BooleanValueModel(true));
   }
   
+  @Override
   public MagicalMaterial[] getValidMaterials()
   {
 	  List<MagicalMaterial> materials = new ArrayList<MagicalMaterial>();
@@ -29,21 +30,8 @@ public class ApplicableMaterialsModel implements IApplicableMaterialsModel {
 	  return materials.toArray(array);
   }
 
+  @Override
   public BooleanValueModel getSelectedModel(MagicalMaterial material) {
     return selectedMap.get(material);
-  }
-
-  public MagicalMaterial[] getSelectedmaterials() {
-    List<MagicalMaterial> materials = new ArrayList<MagicalMaterial>();
-    for (MagicalMaterial material : selectedMap.keySet()) {
-      if (isSelected(material)) {
-        materials.add(material);
-      }
-    }
-    return materials.toArray(new MagicalMaterial[materials.size()]);
-  }
-
-  private boolean isSelected(MagicalMaterial material) {
-    return getSelectedModel(material).getValue();
   }
 }

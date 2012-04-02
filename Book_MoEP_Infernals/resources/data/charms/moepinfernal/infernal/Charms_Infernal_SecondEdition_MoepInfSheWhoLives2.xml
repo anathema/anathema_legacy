@@ -42,6 +42,7 @@
           	<repurchase essence="4"/>
           </repurchases>
           <source source="Infernals" />
+          <source source="ScrollErrata" />
      </charm>
 	 <charm id="Infernal.UnseenForceApplication" exalt="Infernal" group="MindHand">  
           <prerequisite>

@@ -16,7 +16,6 @@ import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -46,7 +45,7 @@ public class EquipmentItem implements IEquipmentItem {
     }
     this.template = template;
     this.material = material != null ? material : template.getMaterial();
-    Collections.addAll(printedStats, template.getStats(ExaltedRuleSet.SecondEdition));
+    Collections.addAll(printedStats, template.getStats());
     initPrintStats(provider);
   }
 
@@ -84,7 +83,7 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   private IEquipmentStats[] getViews() {
-    IEquipmentStats[] statsArray = template.getStats(ExaltedRuleSet.SecondEdition);
+    IEquipmentStats[] statsArray = template.getStats();
     List<IEquipmentStats> views = new ArrayList<IEquipmentStats>();
     for (IEquipmentStats stats : statsArray) {
       if (stats instanceof IWeaponStats) {

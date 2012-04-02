@@ -28,7 +28,6 @@ import java.util.List;
 public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter implements IBeastformModel {
   private final ICharacterModelContext context;
   private final IntValueControl charmLearnControl = new IntValueControl();
-  private final IBeastformGroupCost cost;
   private final BeastformTraitCollection beastCollection;
   private final BeastformTraitCollection spiritCollection;
   private final IMutationsModel mutationModel;
@@ -41,7 +40,6 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
     this.mutationModel = new SecondEditionMutationModel(context, this);
     this.beastCollection = new BeastformTraitCollection();
     this.spiritCollection = new BeastformTraitCollection();
-    this.cost = new BeastformGroupCost(beastCollection, this);
     createAttributes();
     this.allTraitsCollection = new BeastformGenericTraitCollection(context.getTraitCollection(), beastCollection,
             mutationModel);
@@ -67,11 +65,11 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
   private void createAttributes() {
     List<IBeastformAttribute> attributes = new ArrayList<IBeastformAttribute>();
     attributes.add(
-            new BeastformAttribute(context, context.getTraitCollection().getTrait(AttributeType.Strength), 1, cost));
+            new BeastformAttribute(context, context.getTraitCollection().getTrait(AttributeType.Strength), 1));
     attributes.add(
-            new BeastformAttribute(context, context.getTraitCollection().getTrait(AttributeType.Dexterity), 2, cost));
+            new BeastformAttribute(context, context.getTraitCollection().getTrait(AttributeType.Dexterity), 2));
     attributes.add(
-            new BeastformAttribute(context, context.getTraitCollection().getTrait(AttributeType.Stamina), 1, cost));
+            new BeastformAttribute(context, context.getTraitCollection().getTrait(AttributeType.Stamina), 1));
     for (IBeastformAttribute attribute : attributes) {
       beastCollection.addBeastFormAttribute(attribute);
     }

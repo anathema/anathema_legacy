@@ -20,8 +20,7 @@ public class SecondEditionMutationModel extends AbstractMutationsModel {
 
   public SecondEditionMutationModel(final ICharacterModelContext context, IBeastformModel model) {
     super(context);
-    this.allMutations = MutationProvider.getMutations(context.getBasicCharacterContext().getEdition(),
-            new DBTMutationRules());
+    this.allMutations = MutationProvider.getMutations(new DBTMutationRules());
     model.addCharmLearnCountChangedListener(new IIntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {

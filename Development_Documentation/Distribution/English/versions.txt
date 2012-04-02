@@ -7,16 +7,15 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.github.com
 
 ===------------------------------------------------------------------------------===
-			Release 3.2.5
+			Release 4.0.0
 ===------------------------------------------------------------------------------===
 
 -- Changes for Exalted 2.5 --
 * Updated Sidereal XP Cost
 * Errata'd Orichalcum
-* Changed Solar Charms
-* Changed Dragon-Blooded Charms
-* Changed Sidereal Charms
+* Revised Charms for Solar, Dragon-Blooded, Sidereal, Abyssal and Infernal Exalted
 * Added "Shield#" & "Thrust" Tags
+* It is no longer possible to create shields stats.
 * Soak from multiple worn armor no longer stacks, only the highest applies.
 * Equipment that modifies various pools no longer stacks, only the highest applies.
 * Combos no longer cost XP or BP and drop some editing restrictions
@@ -26,14 +25,22 @@ http://anathema.github.com
 Anathema no longer supports First Edition or "classic" Second Edition.
 At first launch, it will create a backup ZIP of your repository, delete all 1E Characters and convert 2E characters to
 the appropriate template from the Scroll of Errata.
+It will also filter your equipment database and remove all stats from 1E and all shield stats.
+It will delete all items that have no stats remaining after filtering.
 If your Character spent XP to change a Combo and you tracked the expenditure in the XP table, please remove the
 entry manually to reflect the new rules.
 
 -- Features --
 * You can enter your own descriptions for Charms and Spells. To do, CTRL-click your Charm and type away.
-* New report (via "File Menu => Save as PDF"): Charm Overview. It prints your Charm data with text, just as the books do.
+* New PDFs (via "File Menu => Save as PDF"):
+    Charm Overview. It prints your Charm data with text, just as the books do.
+    Landscape Character sheet. Re-structured to better utilize space.
 * Equipment keeps track of minimum damage
-* [Jesse Belanger] Added Charm descriptions for the 2E Core Book. Texts taken from the official Wiki.
+* [Jesse Belanger] Added Charm descriptions for the 2E Core Book, Abyssals and the Ink Monkeys. Most texts taken from the official Wiki.
+* New preference: Enable beta content.
+       Stuff that doesn't seem to break but isn't done yet will hide here. Please give feedback!
+* New beta content: An early draft of an extended character sheet.
+* Added new (Infernal/Kimbery) Charms from the Scroll of Errata.
 
 -- Bugfixes --
 * Characters remember which weapons were attuned when saving

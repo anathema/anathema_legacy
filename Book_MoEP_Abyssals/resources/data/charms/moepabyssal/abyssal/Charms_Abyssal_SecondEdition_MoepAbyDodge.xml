@@ -48,7 +48,7 @@
                <charmReference id="Abyssal.FlittingShadowForm" />
           </prerequisite>
           <cost>
-               <essence cost="3" />
+               <essence cost="8" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive">
@@ -60,6 +60,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="FavoredCaste.Dusk" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.UncannyImpulseEvasion" exalt="Abyssal" group="Dodge">
           <prerequisite>
@@ -67,8 +68,7 @@
                <essence value="1" />
           </prerequisite>
           <cost>
-               <essence cost="1 Resonance" />
-               <!-- TODO:  Coding - Is this something you want to code? -->
+               <essence cost="1" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive">
@@ -79,6 +79,7 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Reflex Sidestep Technique -->
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.UntouchablePhantomMien" exalt="Abyssal" group="Dodge">
           <prerequisite>

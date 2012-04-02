@@ -11,8 +11,6 @@ public interface IEquipmentStatisticsCreationModel {
 
   public IRangedCombatStatisticsModel getRangedWeaponStatisticsModel();
 
-  public IShieldStatisticsModel getShieldStatisticsModel();
-
   public IArmourStatisticsModel getArmourStatisticsModel();
   
   public IArtifactStatisticsModel getArtifactStatisticsModel();

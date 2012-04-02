@@ -4,7 +4,6 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
@@ -50,9 +49,7 @@ public class ExaltedCharacter implements ICharacter {
     Ensure.ensureArgumentNotNull("Generics must not be null.", generics); //$NON-NLS-1$
     this.statistics = new CharacterStatistics(template, generics);
     for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
-      if (globalTemplate.supportsEdition(ExaltedEdition.SecondEdition)) {
-        addAdditionalModels(generics, globalTemplate);
-      }
+      addAdditionalModels(generics, globalTemplate);
     }
     addAdditionalModels(generics, template.getAdditionalTemplates());
     addCompulsiveCharms(template);

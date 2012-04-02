@@ -1,15 +1,16 @@
 package net.sf.anathema.character.impl.persistence;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
+import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
+import static net.sf.anathema.character.impl.persistence.SecondEditionEdition.SECOND_EDITION;
+
 public class SecondEditionRules implements IExaltedRuleSet {
-  private static final String SECOND_EDITION = "SecondEdition";
 
   @Override
   public IExaltedEdition getEdition() {
-    return ExaltedEdition.SecondEdition;
+    return SecondEdition;
   }
 
   @Override

@@ -64,6 +64,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Infernals" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Infernal.SunHeartFurnaceSoul" exalt="Infernal" group="InsignificantEmbers">
           <prerequisite>

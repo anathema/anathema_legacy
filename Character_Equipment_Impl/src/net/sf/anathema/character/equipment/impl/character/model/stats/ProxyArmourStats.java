@@ -90,11 +90,6 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
   }
 
   @Override
-  public Object[] getApplicableMaterials() {
-    return delegate.getApplicableMaterials();
-  }
-
-  @Override
   public boolean representsItemForUseInCombat() {
     return delegate.representsItemForUseInCombat();
   }

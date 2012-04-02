@@ -59,6 +59,7 @@
           <!-- NOTE:  Solar Mirror - Heartfelt Honorific Opportunity -->
           <charmAttribute attribute="Social" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.ImprecationOfIllManners" exalt="Abyssal" group="Socialize">
           <prerequisite>
@@ -113,6 +114,7 @@
           <charmAttribute attribute="Emotion" visualize="true" />
           <charmAttribute attribute="Social" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.HateSowingBitterness" exalt="Abyssal" group="Socialize">
           <prerequisite>

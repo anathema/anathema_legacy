@@ -70,6 +70,7 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Perfect Poise Stance -->
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.MistOverIce" exalt="Abyssal" group="Athletics">
           <prerequisite>

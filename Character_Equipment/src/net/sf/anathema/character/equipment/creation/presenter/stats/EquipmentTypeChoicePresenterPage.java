@@ -8,7 +8,6 @@ import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatis
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentTypeChoiceProperties;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
@@ -17,39 +16,26 @@ import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
 import java.awt.Component;
-import java.util.HashMap;
-import java.util.Map;
 
 public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage {
 
-  private final Map<EquipmentStatisticsType, IAnathemaWizardPage> pagesByType = new HashMap<EquipmentStatisticsType, IAnathemaWizardPage>();
   private final EquipmentTypeChoiceProperties properties;
   private final BasicMessage defaultMessage;
   private final IResources resources;
-  //private final IEquipmentTemplateEditModel editModel;
   private final IEquipmentStatisticsCreationModel model;
   private final IEquipmentStatisticsCreationViewFactory viewFactory;
-  private MaterialTypesPresenterPage materialsPage;
-  //private CheckInputListener inputListener;
-  //private boolean materialSpecific;
   private IEquipmentTypeChoiceView view;
 
-  public EquipmentTypeChoicePresenterPage(
-      IResources resources,
-      IEquipmentStatisticsCreationModel model,
-      IEquipmentTemplateEditModel editModel,
-      IEquipmentStatisticsCreationViewFactory viewFactory) {
+  public EquipmentTypeChoicePresenterPage(IResources resources, IEquipmentStatisticsCreationModel model,
+                                          IEquipmentStatisticsCreationViewFactory viewFactory) {
     this.properties = new EquipmentTypeChoiceProperties(resources);
     this.defaultMessage = new BasicMessage(properties.getTypeChoiceMessage());
     this.resources = resources;
     this.model = model;
     this.viewFactory = viewFactory;
-    //this.editModel = editModel;
-/*    materialSpecific = model.getApplicableMaterialsModel().getValidMaterials().length > 0 &&
-    	model.getApplicableMaterialsModel().getValidMaterials().length !=
-    	MagicalMaterial.values().length;*/
   }
 
+  @Override
   public boolean canFinish() {
     return false;
   }
@@ -57,44 +43,21 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
   @Override
   protected void initModelListening(CheckInputListener inputListener) {
     model.addEquipmentTypeChangeListener(inputListener);
-    //this.inputListener = inputListener;
   }
 
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
-	//addMaterialPage(getMaterialsPage(), inputListener);
-    addPage(
-        EquipmentStatisticsType.CloseCombat,
-        new CloseCombatStatisticsPresenterPage(resources, model, viewFactory),
-        inputListener);
-    addPage(
-        EquipmentStatisticsType.RangedCombat,
-        new RangedCombatStatisticsPresenterPage(resources, model, viewFactory),
-        inputListener);
-    addPage(
-        EquipmentStatisticsType.Armor,
-        new ArmourStatisticsPresenterPage(resources, model, viewFactory),
-        inputListener);
-    addPage(
-        EquipmentStatisticsType.Shield,
-        new ShieldStatisticsPresenterPage(resources, model, viewFactory),
-        inputListener);
-    addPage(
-    	EquipmentStatisticsType.Artifact,
-    	new ArtifactStatisticsPresenterPage(resources, model, viewFactory),
-    	inputListener);
-    addPage(
-        EquipmentStatisticsType.TraitModifying,
-        new TraitModifyingStatisticsPresenterPage(resources, model, viewFactory),
-        inputListener);
+    addPage(EquipmentStatisticsType.CloseCombat, new CloseCombatStatisticsPresenterPage(resources, model, viewFactory),
+            inputListener);
+    addPage(EquipmentStatisticsType.RangedCombat,
+            new RangedCombatStatisticsPresenterPage(resources, model, viewFactory), inputListener);
+    addPage(EquipmentStatisticsType.Armor, new ArmourStatisticsPresenterPage(resources, model, viewFactory),
+            inputListener);
+    addPage(EquipmentStatisticsType.Artifact, new ArtifactStatisticsPresenterPage(resources, model, viewFactory),
+            inputListener);
+    addPage(EquipmentStatisticsType.TraitModifying,
+            new TraitModifyingStatisticsPresenterPage(resources, model, viewFactory), inputListener);
   }
-  
-  /*private MaterialTypesPresenterPage getMaterialsPage()
-  {
-	  if (materialsPage == null)
-		  materialsPage = new MaterialTypesPresenterPage(resources, model, viewFactory);
-	  return materialsPage;
-  }*/
 
   @Override
   protected void initPageContent() {
@@ -104,56 +67,24 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     addStatisticsTypeRow("", EquipmentStatisticsType.RangedCombat); //$NON-NLS-1$
     view.addHorizontalLine();
     addStatisticsTypeRow(properties.getDefensiveLabel(), EquipmentStatisticsType.Armor);
-    addStatisticsTypeRow("", EquipmentStatisticsType.Shield); //$NON-NLS-1$
     view.addHorizontalLine();
     addStatisticsTypeRow(properties.getOtherLabel(), EquipmentStatisticsType.TraitModifying);
     addStatisticsTypeRow("", EquipmentStatisticsType.Artifact);
-   /* if (editModel != null &&
-    	editModel.getMaterialComposition() == MaterialComposition.Variable)
-    {
-    	//view.addHorizontalLine();
-    	view.addCheckBox(properties.getMaterialToggleLabel(),
-    			new ItemListener()
-    			{
-					@Override
-					public void itemStateChanged(ItemEvent e) {
-						materialSpecific = e.getStateChange() == ItemEvent.DESELECTED;
-						inputListener.changeOccurred();
-					}
-    			}, !materialSpecific);
-    }*/
   }
 
   private void addPage(final EquipmentStatisticsType type, IAnathemaWizardPage page, CheckInputListener inputListener) {
-    pagesByType.put(type, page);
     addFollowupPage(page, inputListener, new ICondition() {
+      @Override
       public boolean isFulfilled() {
-        /*   return !materialSpecific && model.isEquipmentTypeSelected(type);
-   }
- });
- getMaterialsPage().appendPage(page, inputListener, new ICondition() {
-     public boolean isFulfilled() {*/
         return model.isEquipmentTypeSelected(type);
       }
     });
   }
-  
-  /*private void addMaterialPage(IAnathemaWizardPage page, CheckInputListener inputListener)
-  {
-	addFollowupPage(page, inputListener, new ICondition()
-	{
-		@Override
-		public boolean isFulfilled() {
-			return materialSpecific && getMaterialsPage().canFlipToNextPage();
-		}	
-	});
-  }*/
 
   private void addStatisticsTypeRow(String label, final EquipmentStatisticsType type) {
     Action action = new SmartAction(properties.getIcon(type)) {
-		private static final long serialVersionUID = 1L;
 
-	@Override
+      @Override
       protected void execute(Component parentComponent) {
         model.setEquipmentType(type);
       }
@@ -162,14 +93,17 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     view.addStatisticsRow(label, action, typeLabel, model.getEquipmentType() == type);
   }
 
+  @Override
   public IPageContent getPageContent() {
     return view;
   }
 
+  @Override
   public IBasicMessage getMessage() {
     return defaultMessage;
   }
 
+  @Override
   public String getDescription() {
     return properties.getTypeChoiceTitle();
   }

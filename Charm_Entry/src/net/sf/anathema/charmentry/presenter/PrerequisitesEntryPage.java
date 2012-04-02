@@ -2,7 +2,6 @@ package net.sf.anathema.charmentry.presenter;
 
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -50,8 +49,7 @@ public class PrerequisitesEntryPage extends AbstractAnathemaWizardPage {
           @Override
           public boolean isFulfilled() {
             return isPrerequisiteSelected()
-                && isPermanentCharm()
-                && getPageModel().getEdition() == ExaltedEdition.SecondEdition;
+                && isPermanentCharm();
           }
         });
 

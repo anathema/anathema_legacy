@@ -1,7 +1,5 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import java.util.List;
-
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
@@ -12,111 +10,90 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 
+import java.util.List;
+
 public abstract class AbstractWeaponStats extends AbstractCombatStats implements IWeaponStats {
 
   private int accuracy;
   private int damage;
-  private HealthType damageType;
   private String damageTypeString;
   private Integer defence;
   private Integer range;
   private Integer rate;
   private int speed;
   private boolean inflictsNoDamage;
-  private final List<Object> tags; // Stores String or WeaponTag
+  private final List<String> tags;
   private int minimumDamage;
 
   public AbstractWeaponStats(ICollectionFactory collectionFactory) {
     this.tags = collectionFactory.createList();
   }
 
-  /** Used for conversion of old-type stats with WeaponStats to new-type String storage. */
-  protected AbstractWeaponStats(ICollectionFactory collectionFactory, AbstractWeaponStats stats) {
-    this.tags = collectionFactory.createList();
-    setName(stats.getName());
-    setAccuracy(stats.getAccuracy());
-    setDamage(stats.getDamage());
-    setDamageType(stats.getDamageType());
-    setDefence(stats.getDefence());
-    setRange(stats.getRange());
-    setRate(stats.getRate());
-    setSpeed(stats.getSpeed());
-    setInflictsNoDamage(stats.inflictsNoDamage());
-    setMinimumDamage(stats.getMinimumDamage());
-    for (IIdentificate tag : stats.getTags()) {
-      addTag(tag);
-    }
-  }
-
+  @Override
   public int getAccuracy() {
     return accuracy;
   }
 
+  @Override
   public int getDamage() {
     return damage;
   }
-  
+
+  @Override
   public int getMinimumDamage() {
-	// for backwards compatability; weapons created before
-	// this property was implemented will have a value of 0
-	if (minimumDamage == 0 && !inflictsNoDamage)
-		return 1;
-	return minimumDamage;
+    return minimumDamage;
   }
 
+  @Override
   public ITraitType getDamageTraitType() {
     return AttributeType.Strength;
   }
 
-  // TODO: During transition, both type must be supported.
+  @Override
   public HealthType getDamageType() {
-    if (damageType != null) {
-      System.err.println("Old-type weapon stats encountered. If you see this message after starting this version of Anathema for the second time, please notify the development team."); //$NON-NLS-1$
-      return damageType;
-    }
     return HealthType.valueOf(damageTypeString);
   }
 
+  @Override
   public Integer getDefence() {
     return defence;
   }
 
+  @Override
   public Integer getRange() {
     return range;
   }
 
+  @Override
   public Integer getRate() {
     return rate;
   }
 
+  @Override
   public int getSpeed() {
     return speed;
   }
 
-  // TODO: During transition, both types must be supported.
+  @Override
   public IIdentificate[] getTags() {
-    try {
-      String[] tagIds = tags.toArray(new String[tags.size()]);
-      return ArrayUtilities.transform(tagIds, WeaponTag.class, new ITransformer<String, WeaponTag>() {
-        public WeaponTag transform(String input) {
-          return WeaponTag.valueOf(input);
-        }
-      });
-    }
-    catch (ArrayStoreException e) {
-      System.err.println("Old-type weapon stats encountered. If you see this message after starting this version of Anathema for the second time, please notify the development team."); //$NON-NLS-1$
-      return tags.toArray(new WeaponTag[tags.size()]);
-    }
+    String[] tagIds = tags.toArray(new String[tags.size()]);
+    return ArrayUtilities.transform(tagIds, WeaponTag.class, new ITransformer<String, WeaponTag>() {
+      @Override
+      public WeaponTag transform(String input) {
+        return WeaponTag.valueOf(input);
+      }
+    });
   }
 
   protected final boolean hasTag(WeaponTag tag) {
-    return tags.contains(tag.getId()) || tags.contains(tag);
+    return tags.contains(tag.getId());
   }
 
+  @Override
   public boolean inflictsNoDamage() {
     return inflictsNoDamage;
   }
-  
+
   public void setAccuracy(int accuracy) {
     this.accuracy = accuracy;
   }
@@ -124,13 +101,12 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
   public void setDamage(int damage) {
     this.damage = damage;
   }
-  
+
   public void setMinimumDamage(int damage) {
-	this.minimumDamage = damage;
+    this.minimumDamage = damage;
   }
 
   public void setDamageType(HealthType damageType) {
-    this.damageType = null;
     this.damageTypeString = damageType.name();
   }
 
@@ -158,6 +134,7 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
     tags.add(tag.getId());
   }
 
+  @Override
   public boolean isRangedCombat() {
     return hasTag(WeaponTag.BowType) || hasTag(WeaponTag.FlameType) || hasTag(WeaponTag.Thrown);
   }

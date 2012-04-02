@@ -204,6 +204,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Infernals" />
+          <source source="ScrollErrata" />
      </charm>    
 	 <charm id="Infernal.HollowingEchoVenom" exalt="Infernal" group="Life">          
           <prerequisite>
@@ -433,14 +434,15 @@
 			   <charmReference id="Infernal.CrackedCellCircumvention"/> 	
           </prerequisite>
            <cost>
-               <essence cost="4" />    	   
+               <essence cost="8" />
 		   </cost>
           <duration duration="Instant" />
           <charmtype type="Reflexive" />
-               <special primaryStep="2"  />
+          <special primaryStep="2"  />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Shaping" visualize="true" />
           <source source="Infernals" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>

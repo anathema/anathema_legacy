@@ -153,15 +153,6 @@ public class EquipmentObjectPresenter implements Presenter {
   private boolean viewFilter(IEquipmentStats equipment)
   {
 	  boolean match;
-	  if (model.getMaterialComposition() == MaterialComposition.Variable &&
-		  equipment.getApplicableMaterials() != null)
-	  {
-		  match = false;
-		  for (Object matObj : equipment.getApplicableMaterials())
-			  if (model.getMaterial() == matObj)
-				  match = true;
-		  if (!match) return false;
-	  }
 	  if (equipment instanceof IArtifactStats)
 	  {
 		  IArtifactStats stats = (IArtifactStats)equipment;
