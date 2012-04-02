@@ -1,7 +1,5 @@
 package net.sf.anathema.charmentry.presenter.model;
 
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
-
 public interface ICostEntryModel {
 
   public void setEssenceCostValue(String newValue);
@@ -19,7 +17,4 @@ public interface ICostEntryModel {
   public void setXpCostValue(String newValue);
 
   public void setXpCostText(String newValue);
-
-  public IExaltedEdition getEdition();
-
 }

@@ -76,7 +76,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     IEquipmentStats[] stats = template.getStats();
     for (IEquipmentStats stat : stats) {
       if (stat instanceof IShieldStats) {
-        template.removeStats(new SecondEditionRules().getId(), stat);
+        template.removeStats(new SecondEditionRules(), stat);
       }
     }
   }
