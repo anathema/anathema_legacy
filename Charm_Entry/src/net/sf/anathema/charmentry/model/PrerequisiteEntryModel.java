@@ -51,9 +51,6 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
 
   @Override
   public ITraitType[] getPrimaryPrerequisiteTypes() {
-    if (charmData.getEdition() == null) {
-      return new ITraitType[0];
-    }
     if (charmData.getCharacterType() == CharacterType.LUNAR) {
       return AttributeType.values();
     }

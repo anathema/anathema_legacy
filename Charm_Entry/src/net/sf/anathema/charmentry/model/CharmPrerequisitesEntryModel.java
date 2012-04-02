@@ -42,7 +42,6 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
   @Override
   public ICharm[] getAvailableCharms() throws PersistenceException {
     if (charmData.getCharacterType() == null
-        || charmData.getEdition() == null
         || charmData.getPrimaryTraitType() == null) {
       return new ICharm[0];
     }

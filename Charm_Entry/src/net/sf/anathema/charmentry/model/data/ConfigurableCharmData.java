@@ -3,13 +3,11 @@ package net.sf.anathema.charmentry.model.data;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -43,7 +41,6 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private final IConfigurableCostList temporaryCost = new ConfigurableCostList();
   private IExaltedSourceBook source = null;
   private ITraitType primaryType;
-  private final IExaltedEdition edition = ExaltedEdition.SecondEdition;
   private final List<ICharmAttribute> keywords = new ArrayList<ICharmAttribute>();
   private final CharmTypeModel model = new CharmTypeModel();
   private boolean excellencyRequired;
@@ -196,11 +193,6 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   public void setParentCharms(ICharm[] charms) {
     parentCharms.clear();
     Collections.addAll(parentCharms, charms);
-  }
-
-  @Override
-  public IExaltedEdition getEdition() {
-    return edition;
   }
 
   @Override

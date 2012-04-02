@@ -2,7 +2,6 @@ package net.sf.anathema.charmentry.model;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.charmentry.model.data.ConfigurableCharmData;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
@@ -26,49 +25,56 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
       prerequisitesModel,
       charmData);
 
+  @Override
   public IHeaderDataModel getHeaderDataModel() {
     return headerModel;
   }
 
+  @Override
   public ICharmTypeEntryModel getCharmTypeModel() {
     return typeModel;
   }
 
+  @Override
   public IPrerequisitesModel getPrerequisitesModel() {
     return prerequisitesModel;
   }
 
+  @Override
   public IDurationEntryModel getDurationModel() {
     return durationModel;
   }
 
+  @Override
   public ICostEntryModel getCostEntryModel() {
     return costEntryModel;
   }
 
+  @Override
   public ICharmPrerequisitesEntryModel getCharmPrerequisitesModel() {
     return charmPrerequisitesModel;
   }
 
+  @Override
   public IKeywordEntryModel getKeywordEntryModel() {
     return keywordEntryModel;
   }
 
+  @Override
   public ICharmEntryData getCharmData() {
     return new ICharmEntryData() {
 
+      @Override
       public ICharmData getCoreData() {
         return charmData;
       }
 
-      public IExaltedEdition getEdition() {
-        return charmData.getEdition();
-      }
-
+      @Override
       public String getName() {
         return charmData.getName().getText();
       }
 
+      @Override
       public int getPage() {
         return charmData.getPage();
       }
