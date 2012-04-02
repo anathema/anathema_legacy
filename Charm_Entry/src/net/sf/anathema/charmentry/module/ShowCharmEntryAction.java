@@ -62,9 +62,7 @@ public class ShowCharmEntryAction extends SmartAction {
       final ICharmData coreData = entryData.getCoreData();
       CharmEntryPropertiesPersister charmEntryPropertiesPersister = new CharmEntryPropertiesPersister();
       charmEntryPropertiesPersister.writeCharmNameProperty(
-          coreData.getCharacterType(),
-          entryData.getEdition(),
-          coreData.getId(),
+          coreData.getCharacterType(), coreData.getId(),
           entryData.getName());
       charmEntryPropertiesPersister.writeCharmPageProperty(
           coreData.getCharacterType(),

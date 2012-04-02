@@ -1,7 +1,6 @@
 package net.sf.anathema.charmentry.model;
 
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmTypeEntryModel;
@@ -22,18 +21,22 @@ public class CharmTypeEntryModel implements ICharmTypeEntryModel {
     this.charmData = charmData;
   }
 
+  @Override
   public CharmType[] getCharmTypes() {
     return CharmType.values();
   }
 
+  @Override
   public ISimpleSpecialsEntryModel getSimpleSpecialsModel() {
     return simpleCharmSpecials;
   }
 
+  @Override
   public IReflexiveSpecialsEntryModel getReflexiveSpecialsModel() {
     return reflexiveCharmSpecials;
   }
 
+  @Override
   public void setCharmType(CharmType type) {
     final CharmTypeModel charmTypeModel = charmData.getCharmTypeModel();
     charmTypeModel.setCharmType(type);
@@ -54,10 +57,12 @@ public class CharmTypeEntryModel implements ICharmTypeEntryModel {
     }
   }
 
+  @Override
   public void addModelListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
 
+  @Override
   public void setSpecialModelEnabled(boolean enabled) {
     if (this.enabled != enabled) {
       this.enabled = enabled;
@@ -66,24 +71,25 @@ public class CharmTypeEntryModel implements ICharmTypeEntryModel {
     }
   }
 
+  @Override
   public boolean isSpecialModelEnabled() {
     return enabled;
   }
 
+  @Override
   public boolean isSpecialModelAvailable() {
     return isSimpleSpecialsAvailable() || isReflexiveSpecialsAvailable();
   }
 
   private boolean isSimpleSpecialsAvailable() {
-    return charmData.getCharmTypeModel().getCharmType() == CharmType.Simple
-        && charmData.getEdition() == ExaltedEdition.SecondEdition;
+    return charmData.getCharmTypeModel().getCharmType() == CharmType.Simple;
   }
 
   private boolean isReflexiveSpecialsAvailable() {
-    return charmData.getCharmTypeModel().getCharmType() == CharmType.Reflexive
-        && charmData.getEdition() == ExaltedEdition.SecondEdition;
+    return charmData.getCharmTypeModel().getCharmType() == CharmType.Reflexive;
   }
 
+  @Override
   public CharmType getCharmType() {
     return charmData.getCharmTypeModel().getCharmType();
   }

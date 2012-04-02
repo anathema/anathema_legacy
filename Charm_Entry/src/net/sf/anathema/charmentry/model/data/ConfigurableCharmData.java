@@ -3,6 +3,7 @@ package net.sf.anathema.charmentry.model.data;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
@@ -21,6 +22,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -41,24 +43,28 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private final IConfigurableCostList temporaryCost = new ConfigurableCostList();
   private IExaltedSourceBook source = null;
   private ITraitType primaryType;
-  private IExaltedEdition edition;
+  private final IExaltedEdition edition = ExaltedEdition.SecondEdition;
   private final List<ICharmAttribute> keywords = new ArrayList<ICharmAttribute>();
   private final CharmTypeModel model = new CharmTypeModel();
   private boolean excellencyRequired;
   private int page;
 
+  @Override
   public void setCharacterType(ICharacterType type) {
     this.characterType = type;
   }
 
+  @Override
   public ICharacterType getCharacterType() {
     return characterType;
   }
 
+  @Override
   public void setId(String id) {
     this.id = id;
   }
 
+  @Override
   public String getId() {
     return id;
   }
@@ -67,51 +73,64 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 	this.generic = generic;
   }
   
+  @Override
   public boolean isInstanceOfGenericCharm()
   {
 	return generic;
   }
 
+  @Override
   public IExaltedSourceBook[] getSources() {
     return new IExaltedSourceBook[] { source };
   }
   
+  @Override
   public IExaltedSourceBook getPrimarySource() {
 	return source;
   }
 
+  @Override
   public void setSource(IExaltedSourceBook source) {
     this.source = source;
   }
 
+  @Override
   public IConfigurableCostList getTemporaryCost() {
     return temporaryCost;
   }
 
+  @Override
   public IDuration getDuration() {
     return duration;
   }
 
+  @Override
   public IGenericTrait getEssence() {
     return essence;
   }
 
+  @Override
   public IGenericTrait[] getPrerequisites() {
-    return prerequisitesByType.values().toArray(new IGenericTrait[0]);
+    Collection<IGenericTrait> values = prerequisitesByType.values();
+    return values.toArray(new IGenericTrait[values.size()]);
   }
 
+  @Override
   public String getGroupId() {
     return groupId;
   }
 
+  @Override
   public Set<ICharm> getParentCharms() {
     return parentCharms;
   }
 
+  @Override
   public void setDuration(IDuration duration) {
     this.duration = duration;
   }
 
+  @Override
   public void setEssencePrerequisite(IGenericTrait prerequisite) {
     this.essence = prerequisite;
   }
@@ -120,6 +139,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     prerequisitesByType.put(prerequisite.getType(), prerequisite);
   }
 
+  @Override
   public void setGroupId(String id) {
     this.groupId = id;
   }
@@ -136,18 +156,22 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     prerequisitesByType.remove(type);
   }
 
+  @Override
   public ITextualDescription getName() {
     return name;
   }
   
+  @Override
   public List<String> getParentSubeffects() {
 	    throw new NotYetImplementedException();
 	  }
 
+  @Override
   public IComboRestrictions getComboRules() {
     throw new NotYetImplementedException();
   }
 
+  @Override
   public void setPrimaryPrerequisite(IGenericTrait prerequisite) {
     removePrerequisiteByType(primaryType);
     this.primaryType = prerequisite.getType();
@@ -159,6 +183,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     }
   }
 
+  @Override
   public ITraitType getPrimaryTraitType() {
     return primaryType;
   }
@@ -167,39 +192,43 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     setPrimaryPrerequisite(ValuedTraitType.NULL_TYPE);
   }
 
+  @Override
   public void setParentCharms(ICharm[] charms) {
     parentCharms.clear();
     Collections.addAll(parentCharms, charms);
   }
 
-  public void setEdition(IExaltedEdition edition) {
-    this.edition = edition;
-  }
-
+  @Override
   public IExaltedEdition getEdition() {
     return edition;
   }
 
+  @Override
   public void addAttribute(ICharmAttribute charmAttribute) {
     keywords.add(charmAttribute);
   }
 
+  @Override
   public void removeAttribute(ICharmAttribute charmAttribute) {
     keywords.remove(charmAttribute);
   }
 
+  @Override
   public ICharmAttribute[] getAttributes() {
     return keywords.toArray(new ICharmAttribute[keywords.size()]);
   }
 
+  @Override
   public CharmTypeModel getCharmTypeModel() {
     return model;
   }
 
+  @Override
   public void setExcellencyRequired(boolean required) {
     this.excellencyRequired = required;
   }
 
+  @Override
   public ICharmAttributeRequirement[] getAttributeRequirements() {
     if (!excellencyRequired) {
       return new ICharmAttributeRequirement[0];
@@ -208,10 +237,12 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
         + primaryType.getId(), false), 1) };
   }
 
+  @Override
   public int getPage() {
     return page;
   }
 
+  @Override
   public void setPage(int page) {
     this.page = page;
   }

@@ -1,21 +1,20 @@
 package net.sf.anathema.charmentry.persistence;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.UntilEventDuration;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.impl.persistence.SecondEditionEdition;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class CharmEntryPropertiesPersister {
 
@@ -30,10 +29,10 @@ public class CharmEntryPropertiesPersister {
     writer.close();
   }
 
-  public void writeCharmNameProperty(ICharacterType itype, IExaltedEdition edition, String key, String value)
+  public void writeCharmNameProperty(ICharacterType itype, String key, String value)
           throws IOException {
     CharacterType type = (CharacterType) itype;
-    String fileName = getFileName(edition, type);
+    String fileName = getFileName(type);
     File file = new File(fileName);
     BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
     writer.newLine();
@@ -41,12 +40,8 @@ public class CharmEntryPropertiesPersister {
     writer.close();
   }
 
-  private String getFileName(IExaltedEdition edition, CharacterType type) {
-    if (edition == ExaltedEdition.SecondEdition) {
-      return "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + "_" + edition.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$;
-    } else {
-      return "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
-    }
+  private String getFileName(CharacterType type) {
+      return "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + "_" + new SecondEditionEdition().getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$;
   }
 
   public void writeDurationProperty(IResources resources, IDuration duration) throws IOException {

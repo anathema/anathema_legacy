@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.model.ICharacter;
@@ -41,10 +40,6 @@ public class ExaltedCharacter implements ICharacter {
   public ICharacterStatistics createCharacterStatistics(ICharacterTemplate template,
                                                         ICharacterGenerics generics) throws SpellException {
     Ensure.ensureNull("Character Statistics can only be created once per character.", statistics); //$NON-NLS-1$
-    if (template instanceof IUnsupportedTemplate) {
-      throw new IllegalArgumentException(
-              "The template " + template + " is not yet supported."); //$NON-NLS-1$//$NON-NLS-2$
-    }
     Ensure.ensureArgumentNotNull("Template must not be null.", template); //$NON-NLS-1$
     Ensure.ensureArgumentNotNull("Generics must not be null.", generics); //$NON-NLS-1$
     this.statistics = new CharacterStatistics(template, generics);

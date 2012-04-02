@@ -22,6 +22,7 @@ public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPa
     super(resources);
   }
 
+  @Override
   public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportSession session) {
     return new UrgeEncoder();
   }
@@ -32,6 +33,7 @@ public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPa
     return new AnimaEncoderFactory().create(getResources(), content);
   }
 
+  @Override
   public IVariableContentEncoder[] getAdditionalFirstPageEncoders() {
     return new IVariableContentEncoder[]{new YoziListEncoder()};
   }

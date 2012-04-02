@@ -2,8 +2,6 @@ package net.sf.anathema.charmentry.presenter;
 
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmentry.model.IHeaderDataModel;
@@ -41,17 +39,13 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
 
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
-    addFollowupPage(
-        new SecondEditionCharmTypeEntryPage(resources, model, viewFactory),
-        inputListener,
-        new ICondition() {
-          @Override
-          public boolean isFulfilled() {
-            return isCharacterTypeSelected()
-                && isNameDefined()
-                && getPageModel().getEdition() == ExaltedEdition.SecondEdition;
-          }
-        });
+    addFollowupPage(new SecondEditionCharmTypeEntryPage(resources, model, viewFactory), inputListener,
+            new ICondition() {
+              @Override
+              public boolean isFulfilled() {
+                return isCharacterTypeSelected() && isNameDefined();
+              }
+            });
   }
 
   @Override
@@ -65,7 +59,6 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     initNameView();
     final IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", resources); //$NON-NLS-1$
     initTypeView(renderer);
-    initEditionView();
     initSourceView();
   }
 
@@ -79,25 +72,9 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     });
   }
 
-  private void initEditionView() {
-    final IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("Edition.", resources); //$NON-NLS-1$
-    IObjectSelectionView<IExaltedEdition> editionView = view.addComboBoxRow(
-        properties.getEditionLabel(),
-        renderer,
-        getPageModel().getEditions());
-    editionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedEdition>() {
-      @Override
-      public void valueChanged(IExaltedEdition newValue) {
-        getPageModel().setExaltedEdition(newValue);
-      }
-    });
-  }
-
   private void initTypeView(final IdentificateSelectCellRenderer renderer) {
-    IObjectSelectionView<ICharacterType> typeView = view.addComboBoxRow(
-        properties.getCharacterTypeLabel(),
-        renderer,
-        getPageModel().getCharacterTypes());
+    IObjectSelectionView<ICharacterType> typeView = view.addComboBoxRow(properties.getCharacterTypeLabel(), renderer,
+            getPageModel().getCharacterTypes());
     typeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ICharacterType>() {
       @Override
       public void valueChanged(ICharacterType newValue) {
@@ -108,11 +85,9 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
 
   private void initSourceView() {
     final ISourceEntryModel sourceModel = getPageModel().getSourceModel();
-    final ISourceSelectionView sourceView = view.addSourceView(
-        properties.getBookLabel(),
-        properties.getPageLabel(),
-        sourceModel.getLegalSources(),
-        new IdentificateSelectCellRenderer("ExaltedSourceBook.", resources));//$NON-NLS-1$
+    final ISourceSelectionView sourceView = view.addSourceView(properties.getBookLabel(), properties.getPageLabel(),
+            sourceModel.getLegalSources(),
+            new IdentificateSelectCellRenderer("ExaltedSourceBook.", resources));//$NON-NLS-1$
     sourceView.addSourceChangeListener(new IObjectValueChangedListener<IExaltedSourceBook>() {
       @Override
       public void valueChanged(IExaltedSourceBook newValue) {
@@ -151,14 +126,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     if (!isCharacterTypeSelected()) {
       return properties.getUndefinedTypeMessage();
     }
-    if (!isEditionSelected()) {
-      return properties.getUndefinedEditionMessage();
-    }
     return properties.getHeaderDataMessage();
-  }
-
-  private boolean isEditionSelected() {
-    return getPageModel().getEdition() != null;
   }
 
   private boolean isCharacterTypeSelected() {

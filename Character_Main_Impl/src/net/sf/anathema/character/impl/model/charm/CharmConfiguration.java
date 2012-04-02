@@ -24,7 +24,6 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
@@ -357,7 +356,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private ICharmTemplate getCharmTemplate(ITemplateRegistry registry, ICharacterType type) {
     ICharacterTemplate defaultTemplate = registry.getDefaultTemplate(type,
             context.getBasicCharacterContext().getEdition());
-    if (defaultTemplate == null || defaultTemplate instanceof IUnsupportedTemplate) {
+    if (defaultTemplate == null) {
       return null;
     }
     return defaultTemplate.getMagicTemplate().getCharmTemplate();

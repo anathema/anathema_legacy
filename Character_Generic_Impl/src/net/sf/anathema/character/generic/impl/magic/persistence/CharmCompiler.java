@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -76,7 +75,7 @@ public class CharmCompiler {
   private void buildGenericCharms(IIdentificate type) throws PersistenceException {
     try {
       ICharacterType characterType = CharacterType.getById(type.getId());
-      ITraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypes(ExaltedEdition.SecondEdition);
+      ITraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypes();
       genericBuilder.setTypes(primaryTypes);
       buildCharms(type, genericBuilder);
     } catch (IllegalArgumentException exception) {

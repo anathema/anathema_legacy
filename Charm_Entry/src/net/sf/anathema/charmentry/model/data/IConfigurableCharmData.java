@@ -15,15 +15,15 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
 
   public ITextualDescription getName();
 
+  @Override
   public IConfigurableCostList getTemporaryCost();
 
   public IExaltedEdition getEdition();
 
+  @Override
   public CharmTypeModel getCharmTypeModel();
 
   public void setCharacterType(ICharacterType type);
-
-  public void setEdition(IExaltedEdition edition);
 
   public void setEssencePrerequisite(IGenericTrait type);
 
