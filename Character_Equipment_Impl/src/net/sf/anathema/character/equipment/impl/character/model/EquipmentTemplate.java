@@ -6,6 +6,7 @@ import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.impl.persistence.SecondEditionRules;
 
 import java.util.List;
 import java.util.Map;
@@ -44,19 +45,19 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   }
 
   @Override
-  public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
-    List<IEquipmentStats> relevantStats = statsByRuleSet.get(ruleSet.getId());
+  public IEquipmentStats[] getStats() {
+    List<IEquipmentStats> relevantStats = statsByRuleSet.get(new SecondEditionRules().getId());
     if (relevantStats == null) {
       return new IEquipmentStats[0];
     }
     return relevantStats.toArray(new IEquipmentStats[relevantStats.size()]);
   }
 
-  public synchronized void addStats(IExaltedRuleSet ruleSet, IEquipmentStats stats) {
-    List<IEquipmentStats> statList = statsByRuleSet.get(ruleSet.getId());
+  public synchronized void addStats(IEquipmentStats stats) {
+    List<IEquipmentStats> statList = statsByRuleSet.get(new SecondEditionRules().getId());
     if (statList == null) {
       statList = collectionFactory.createList();
-      statsByRuleSet.put(ruleSet.getId(), statList);
+      statsByRuleSet.put(new SecondEditionRules().getId(), statList);
     }
     statList.add(stats);
   }
@@ -91,7 +92,7 @@ public class EquipmentTemplate implements IEquipmentTemplate {
     statsByRuleSet.remove(ruleset);
   }
 
-  public void removeStats(IExaltedRuleSet ruleSet, IEquipmentStats stat) {
-    statsByRuleSet.get(ruleSet.getId()).remove(stat);
+  public void removeStats(IExaltedRuleSet ruleset, IEquipmentStats stat) {
+    statsByRuleSet.get(ruleset.getId()).remove(stat);
   }
 }

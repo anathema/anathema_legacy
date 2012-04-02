@@ -1,8 +1,6 @@
 package net.sf.anathema.character.mutations.model;
 
 import net.sf.anathema.character.generic.impl.rules.SourceBook;
-import net.sf.anathema.character.generic.rules.IEditionVisitor;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 
 import java.util.ArrayList;
@@ -27,19 +25,9 @@ public class MutationProvider {
   public static final IExaltedSourceBook Lunars2nd = new SourceBook("Lunars2nd");
   public static final IExaltedSourceBook SecondEdition = new SourceBook("SecondEdition");
 
-  public static IMutation[] getMutations(IExaltedEdition edition, IMutationRules rules) {
+  public static IMutation[] getMutations(IMutationRules rules) {
     final List<IMutation> mutations = newArrayList();
-    edition.accept(new IEditionVisitor() {
-      @Override
-      public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        //nothing to do;
-      }
-
-      @Override
-      public void visitSecondEdition(IExaltedEdition visitedEdition) {
-        mutations.addAll(getSecondEditionMutations());
-      }
-    });
+    mutations.addAll(getSecondEditionMutations());
     List<IMutation> toRemove = new ArrayList<IMutation>();
     for (IMutation mutation : mutations) {
       if (!rules.acceptMutation(mutation)) {

@@ -1,14 +1,11 @@
 package net.sf.anathema.character.generic.character;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -17,6 +14,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
+
+import java.util.List;
 
 public interface IGenericCharacter extends ILimitationContext, IMagicCollection, IGenericCharmConfiguration {
 
@@ -29,8 +28,6 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   public INamedGenericTrait[] getSpecialties(ITraitType traitType);
 
   public INamedGenericTrait[] getSubTraits(ITraitType traitType);
-
-  public IExaltedRuleSet getRules();
 
   public int getHealthLevelTypeCount(HealthLevelType type);
 

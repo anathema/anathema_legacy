@@ -1,6 +1,5 @@
 package net.sf.anathema.character.craft.template;
 
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -10,9 +9,5 @@ public class CraftTemplate extends Identificate implements IGlobalAdditionalTemp
 
   public CraftTemplate() {
     super(ID);
-  }
-
-  public boolean supportsEdition(IExaltedEdition edition) {
-    return true;
   }
 }

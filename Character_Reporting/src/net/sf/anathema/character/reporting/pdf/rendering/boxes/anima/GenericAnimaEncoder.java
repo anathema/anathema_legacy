@@ -4,6 +4,7 @@ import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -46,7 +47,7 @@ public class GenericAnimaEncoder implements ContentEncoder {
     // Add standard powers for character type
     Chunk symbolChunk = graphics.createSymbolChunk();
     ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    IExaltedEdition edition = character.getRules().getEdition();
+    IExaltedEdition edition = ExaltedEdition.SecondEdition;
     ListUtils.addBulletedListText(resources, symbolChunk, edition, "Sheet.AnimaPower." + characterType.getId(), phrase, false);  //$NON-NLS-1$
     String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + edition.getId(); //$NON-NLS-1$ //$NON-NLS-2$
     if (resources.supportsKey(casteResourceKey)) {

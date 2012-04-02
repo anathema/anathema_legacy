@@ -22,18 +22,12 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   private IAnathemaWizardPage previousPage = null;
   protected final Map<ICondition, IAnathemaWizardPage> followUpPagesByCondition = new HashMap<ICondition, IAnathemaWizardPage>();
 
+  @Override
   public boolean canFlipToNextPage() {
     return getNextPage() != null;
   }
 
-  public void performHelp() {
-    //Nothing to do
-  }
-
-  public boolean isHelpAvailable() {
-    return false;
-  }
-
+  @Override
   public final IAnathemaWizardPage getPreviousPage() {
     return previousPage;
   }
@@ -41,9 +35,9 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   protected final void addFollowupPage(IAnathemaWizardPage page, CheckInputListener inputListener, ICondition condition) {
     followUpPagesByCondition.put(condition, page);
     page.initPresentation(inputListener);
-    //page.setPreviousPage(this);
   }
 
+  @Override
   public final IWizardPage getNextPage() {
     for (ICondition condition : followUpPagesByCondition.keySet()) {
       if (condition.isFulfilled()) {
@@ -56,10 +50,12 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
     return null;
   }
 
+  @Override
   public final void setPreviousPage(IAnathemaWizardPage page) {
     this.previousPage = page;
   }
 
+  @Override
   public final void initPresentation(CheckInputListener inputListener) {
     initModelListening(inputListener);
     addFollowUpPages(inputListener);

@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.impl.character.model;
 
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.InitializationException;
@@ -22,11 +21,6 @@ public class EquipmentAdditionalModelTemplate extends Identificate implements
   public EquipmentAdditionalModelTemplate(Instantiater instantiater) {
     super(ID);
     this.instantiater = instantiater;
-  }
-
-  @Override
-  public boolean supportsEdition(IExaltedEdition edition) {
-    return true;
   }
 
   @Override
