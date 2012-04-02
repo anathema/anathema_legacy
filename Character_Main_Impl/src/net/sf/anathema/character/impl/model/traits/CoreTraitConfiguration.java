@@ -83,7 +83,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     }
     addAbilities(template);
     this.backgrounds = new BackgroundConfiguration(
-        new BackgroundArbitrator(template, modelContext.getBasicCharacterContext().getEdition()),
+        new BackgroundArbitrator(template),
         template.getTraitTemplateCollection(),
         modelContext.getTraitContext(),
         backgroundRegistry);

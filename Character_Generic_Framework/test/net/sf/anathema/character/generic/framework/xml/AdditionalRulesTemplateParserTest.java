@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTe
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
@@ -23,19 +22,20 @@ import org.dom4j.Element;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class AdditionalRulesTemplateParserTest {
 
   private static final String ORIGINAL_TEMPLATE_ID = "original"; //$NON-NLS-1$
   private DummyXmlTemplateRegistry<GenericAdditionalRules> registry;
-  private GenericAdditionalRules originalTemplate;
   private AdditionalRulesTemplateParser parser;
 
   @Before
   public void setUp() throws Exception {
     this.registry = new DummyXmlTemplateRegistry<GenericAdditionalRules>();
-    originalTemplate = new GenericAdditionalRules();
+    GenericAdditionalRules originalTemplate = new GenericAdditionalRules();
     registry.register(ORIGINAL_TEMPLATE_ID, originalTemplate);
     parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[0], new BackgroundRegistry());
   }
@@ -217,18 +217,22 @@ public class AdditionalRulesTemplateParserTest {
 
   private IBackgroundTemplate getDummyBackgroundTemplate() {
     return new IBackgroundTemplate() {
-      public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
+      @Override
+      public boolean acceptsTemplate(ITemplateType templateType) {
         return false;
       }
 
+      @Override
       public LowerableState getExperiencedState() {
         return null;
       }
 
+      @Override
       public void accept(ITraitTypeVisitor visitor) {
         // nothing to do
       }
 
+      @Override
       public String getId() {
         return "forbidden"; //$NON-NLS-1$
       }
