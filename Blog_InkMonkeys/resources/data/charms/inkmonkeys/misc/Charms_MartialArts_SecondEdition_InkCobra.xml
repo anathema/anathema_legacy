@@ -22,7 +22,7 @@
 
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
-     <!-- Cobra Style -->
+	<!-- Cobra style is removed from the system as of the 2.5 errata
 	<charm id="Celestial.ShowingTheCobrasFangs" exalt="Sidereal" group="CobraStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="2" />
@@ -223,5 +223,5 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Poison" visualize="true" />
 		<source source="InkMonkeys" />
-	</charm>
+	</charm>  -->
 </charmlist>
