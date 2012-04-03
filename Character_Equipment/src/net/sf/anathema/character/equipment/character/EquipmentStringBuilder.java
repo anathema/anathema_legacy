@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.character;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -59,7 +58,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
 
   public String createString(IEquipmentItem item, IEquipmentStats equipment) {
     if (item != null && equipment != null)
-      equipment.setUseAttunementModifiers(checkAttunement(item.getAttunementState()));
+      equipment.setUseAttunementModifiers(item.getAttunementState().grantsMaterialBonuses());
     if (equipment instanceof IWeaponStats) {
       return createWeaponString(item, (IWeaponStats) equipment);
     }
@@ -74,19 +73,6 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     if (equipment instanceof ITraitModifyingStats)
       return createTraitModifyingString((ITraitModifyingStats) equipment);
     throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong."); //$NON-NLS-1$
-  }
-
-  private boolean checkAttunement(ArtifactAttuneType state) {
-    switch (state) {
-      case Unattuned:
-      case PartiallyAttuned:
-      case ExpensivePartiallyAttuned:
-        return false;
-      default:
-      case FullyAttuned:
-      case UnharmoniouslyAttuned:
-        return true;
-    }
   }
 
   private String createArtifactString(IArtifactStats stats) {

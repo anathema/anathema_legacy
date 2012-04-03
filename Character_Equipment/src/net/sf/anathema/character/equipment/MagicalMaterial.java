@@ -49,7 +49,7 @@ public enum MagicalMaterial implements IIdentificate {
 
       @Override
       public void visitMortal(ICharacterType visitedType) {
-        types[0] = new ArtifactAttuneType[0];
+        types[0] = getNullAttunementTypes();
       }
 
       @Override
@@ -76,7 +76,7 @@ public enum MagicalMaterial implements IIdentificate {
 
       @Override
       public void visitSpirit(ICharacterType type) {
-        types[0] = new ArtifactAttuneType[0];
+        types[0] = getNullAttunementTypes();
       }
     });
 
@@ -86,6 +86,10 @@ public enum MagicalMaterial implements IIdentificate {
   private static boolean isVitriolTainted(MagicalMaterial material) {
     List<MagicalMaterial> vitriolTaintedMaterials = newArrayList(VitriolAdamant, VitriolJade, VitriolMoonsilver, VitriolOrichalcum, VitriolSoulsteel, VitriolStarmetal);
     return vitriolTaintedMaterials.contains(material);
+  }
+  
+  private static ArtifactAttuneType[] getNullAttunementTypes() {
+	  return new ArtifactAttuneType[] { Unattuned };
   }
 
   private static ArtifactAttuneType[] getSingleMaterialAttunement(ICharacterType type, MagicalMaterial material) {

@@ -80,6 +80,11 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
   public boolean isRangedCombat() {
     return stats.isRangedCombat();
   }
+  
+  @Override
+  public boolean useAttunementModifiers() {
+    return stats.useAttunementModifiers();
+  }
 
   public IEquipmentStats[] getViews() {
     return new IEquipmentStats[] { this };
