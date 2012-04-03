@@ -49,7 +49,7 @@ public enum MagicalMaterial implements IIdentificate {
 
       @Override
       public void visitMortal(ICharacterType visitedType) {
-        types[0] = null;
+        types[0] = new ArtifactAttuneType[0];
       }
 
       @Override
@@ -76,7 +76,7 @@ public enum MagicalMaterial implements IIdentificate {
 
       @Override
       public void visitSpirit(ICharacterType type) {
-        types[0] = null;
+        types[0] = new ArtifactAttuneType[0];
       }
     });
 
