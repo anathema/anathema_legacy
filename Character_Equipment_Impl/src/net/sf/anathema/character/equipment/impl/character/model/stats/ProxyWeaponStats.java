@@ -194,7 +194,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public String getId() {
-    return getName().getId();
+    return delegate.getId();
   }
 
   @Override
