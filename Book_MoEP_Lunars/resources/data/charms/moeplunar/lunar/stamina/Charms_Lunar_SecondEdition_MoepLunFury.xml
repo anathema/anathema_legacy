@@ -37,7 +37,9 @@
           <charmtype type="Reflexive">
                <special primaryStep="1" secondaryStep="2" />
           </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.DurableBattleMind" exalt="Lunar" group="Fury">
           <prerequisite>

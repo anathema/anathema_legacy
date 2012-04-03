@@ -59,12 +59,13 @@
                <charmAttributeRequirement attribute="ExcellencyStrength" count="1" />
           </prerequisite>
           <cost>
-               <essence cost="4" />
+               <essence cost="2" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <source source="Lunars2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.LightningStrokeAttackStr" exalt="Lunar" group="AttackEnhancement">
           <prerequisite>
@@ -74,7 +75,7 @@
                <charmReference id="Lunar.FerociousBitingTooth" />
           </prerequisite>
           <cost>
-               <essence cost="7" />
+               <essence cost="11" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="Supplemental" />
@@ -82,5 +83,6 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Lunars2nd" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>
