@@ -1,5 +1,8 @@
 package net.sf.anathema.cards;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.anathema.cards.data.providers.CharmCardDataProvider;
 import net.sf.anathema.cards.data.providers.EquipmentCardDataProvider;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
@@ -13,17 +16,20 @@ import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.initialization.ReportFactory;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.framework.module.preferences.EnableBetaContentPreferencesElement.enableBetaContent;
+
 @ReportFactory
 public class CardReportFactory implements IReportFactory {
 	  public Report[] createReport(IResources resources, IAnathemaModel model) {
-		    // potenially offer different reports with differing
-		    // provider mixtures in the future, layouts
-		    ICardDataProvider charmCards = new CharmCardDataProvider(model, resources);
-		    ICardDataProvider spellCards = new SpellCardDataProvider(model, resources);
-		    ICardDataProvider legendCards = new LegendCardDataProvider(resources);
-		    ICardDataProvider equipmentCards = new EquipmentCardDataProvider(resources);
+		    List <ICardDataProvider> dataProviders = new ArrayList<ICardDataProvider>();
+		  	dataProviders.add(new CharmCardDataProvider(model, resources));
+		  	dataProviders.add(new SpellCardDataProvider(model, resources));
+		  	if (enableBetaContent()) {
+		  		dataProviders.add(new EquipmentCardDataProvider(resources));
+		  	}
+		  	dataProviders.add(new LegendCardDataProvider(resources));
 		    ICardLayout layout = new DemocritusCardLayout(resources, .23f);
 		    return new Report[]{
-		    		new CardReport(resources, layout, charmCards, spellCards, equipmentCards, legendCards)};
+		    		new CardReport(resources, layout, dataProviders.toArray(new ICardDataProvider[0]))};
 		  }
 }
