@@ -191,7 +191,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   public void replaceStatistics(IEquipmentStats oldStats, IEquipmentStats newStats) {
     int oldIndex = statses.indexOf(oldStats);
     statses.remove(oldStats);
-    statses.add(oldIndex, oldStats);
+    statses.add(oldIndex, newStats);
     fireStatsChangedEvent();
   }
 }
