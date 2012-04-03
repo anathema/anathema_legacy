@@ -36,7 +36,7 @@ public class CharacterStatisticPersister {
   private final VirtueConfigurationPersister virtuePersister = new VirtueConfigurationPersister();
   private final BackgroundConfigurationPersister backgroundPersister;
   private final WillpowerConfigurationPersister willpowerPersister = new WillpowerConfigurationPersister();
-  private final CharmConfigurationPersister charmPersister = new CharmConfigurationPersister();
+  private final CharmConfigurationPersister charmPersister;
   private final SpellConfigurationPersister spellPersister = new SpellConfigurationPersister();
   private final ExperiencePointsPersister experiencePersister = new ExperiencePointsPersister();
   private final RulesPersister rulesPersister = new RulesPersister();
@@ -46,6 +46,7 @@ public class CharacterStatisticPersister {
   public CharacterStatisticPersister(ICharacterGenerics generics, IAnathemaMessaging messaging) {
     this.generics = generics;
     this.backgroundPersister = new BackgroundConfigurationPersister(generics.getBackgroundRegistry());
+    this.charmPersister = new CharmConfigurationPersister(messaging);
     this.additonalModelPersister = new AdditionalModelPersister(
         generics.getAdditonalPersisterFactoryRegistry(),
         messaging);

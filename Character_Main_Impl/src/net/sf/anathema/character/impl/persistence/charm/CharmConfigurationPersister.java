@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.persistence.charm;
 
+import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
@@ -20,6 +21,7 @@ import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
+import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -39,7 +41,12 @@ public class CharmConfigurationPersister {
   private static final String ATTRIB_ID = "id";
   private static final String TAG_SUBEFFECTS = "Subeffects";
   private static final String TAG_SUBEFFECT = "Subeffect";
+  private IAnathemaMessaging messageIndicator;
   private ITraitContext context;
+  
+  public CharmConfigurationPersister(IAnathemaMessaging messageIndicator) {
+	  this.messageIndicator = messageIndicator;
+  }
 
   public void save(Element parent, ICharacterStatistics statistics) {
     ICharacterTemplate template = statistics.getCharacterTemplate();
@@ -121,17 +128,25 @@ public class CharmConfigurationPersister {
     }
     ILearningCharmGroup group = charmConfiguration.getGroup(groupType, groupName);
     for (Object charmObjectElement : groupElement.elements()) {
-      Element charmElement = (Element) charmObjectElement;
-      String charmId = charmElement.attributeValue(ATTRIB_NAME);
-      String charmTrueName = charmConfiguration.getCharmTrueName(charmId);
-      charmId = parseTrueName(charmElement, charmTrueName);
-      group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), isExperienceLearned(charmElement), false);
-      Element specialElement = charmElement.element(TAG_SPECIAL);
-      ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
-      if (specialElement != null && specialConfiguration != null) {
-        specialPersister.loadConfiguration(specialElement, specialConfiguration);
-      } else if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
-
+      
+	  Element charmElement = (Element) charmObjectElement;
+	  String charmId = charmElement.attributeValue(ATTRIB_NAME);
+	  String charmTrueName = charmConfiguration.getCharmTrueName(charmId);
+	      
+	  charmId = parseTrueName(charmElement, charmTrueName);
+	  try {
+	      group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), isExperienceLearned(charmElement), false);
+	      Element specialElement = charmElement.element(TAG_SPECIAL);
+	      ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
+	      if (specialElement != null && specialConfiguration != null) {
+	        specialPersister.loadConfiguration(specialElement, specialConfiguration);
+	      } else if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
+	
+	      }
+      }
+      catch (IllegalArgumentException e) {
+    	  messageIndicator.addMessage("CharmPersistence.NoCharmFound", //$NON-NLS-1$
+                  MessageType.WARNING, charmId);
       }
     }
   }
@@ -181,8 +196,15 @@ public class CharmConfigurationPersister {
       for (Object charmElementObject : comboElement.elements(TAG_CHARM)) {
         Element charmElement = (Element) charmElementObject;
         boolean charmExperiencedLearned = isExperienceLearned(charmElement);
-        ICharm comboCharm = charms.getCharmById(charmElement.attributeValue(ATTRIB_NAME));
-        comboConfiguration.addCharmToCombo(comboCharm, charmExperiencedLearned);
+        String charmId = charmElement.attributeValue(ATTRIB_NAME);
+        try {
+	        ICharm comboCharm = charms.getCharmById(charmId);
+	        comboConfiguration.addCharmToCombo(comboCharm, charmExperiencedLearned);
+        }
+        catch (IllegalArgumentException e) {
+        	messageIndicator.addMessage("CharmPersistence.NoCharmFound", //$NON-NLS-1$
+                    MessageType.WARNING, charmId);
+        }
       }
       comboConfiguration.finalizeCombo();
     }
