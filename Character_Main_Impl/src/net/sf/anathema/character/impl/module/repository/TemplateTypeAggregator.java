@@ -27,8 +27,6 @@ public class TemplateTypeAggregator {
         aggregation = new TemplateTypeAggregation(template.getTemplateType(), template.getPresentationProperties());
         aggregations.put(template.getTemplateType(), aggregation);
       }
-      aggregation.addSupportedEdition(template.getEdition());
-
     }
     Collection<TemplateTypeAggregation> values = aggregations.values();
     return values.toArray(new ITemplateTypeAggregation[values.size()]);

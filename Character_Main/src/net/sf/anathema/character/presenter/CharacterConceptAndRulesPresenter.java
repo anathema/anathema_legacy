@@ -196,8 +196,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
       return false;
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
-    IObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties(),
-            template.getEdition());
+    IObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
     ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(edition,
             statistics.getCharacterTemplate().getTemplateType());
     final IObjectSelectionView<ICasteType> casteView = view.addObjectSelectionView(

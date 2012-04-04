@@ -97,11 +97,6 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   public ITemplateTypeAggregation[] getAvailableTemplates() {
     List<ITemplateTypeAggregation> list = aggregationsByType.get(selectedType);
     List<ITemplateTypeAggregation> copyList = new ArrayList<ITemplateTypeAggregation>(list);
-    for (ITemplateTypeAggregation aggregation : list) {
-      if (!aggregation.supportsEdition(configuration.getEdition())) {
-        copyList.remove(aggregation);
-      }
-    }
     return copyList.toArray(new ITemplateTypeAggregation[copyList.size()]);
   }
 

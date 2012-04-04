@@ -29,7 +29,7 @@ public class FavorableTraitViewProperties implements IIconToggleButtonProperties
 
   @Override
   public Icon createStandardIcon() {
-    CasteUI casteUI = new CasteUI(resources, context.getEdition(), properties);
+    CasteUI casteUI = new CasteUI(resources, properties);
     if (context.isExperienced() && !ability.getFavorization().isCasteOrFavored()) {
       return casteUI.getEmptyIcon();
     }

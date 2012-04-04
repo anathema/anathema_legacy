@@ -2,7 +2,6 @@ package net.sf.anathema.character.sidereal.reporting.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
@@ -68,8 +67,7 @@ public class SiderealCollegeContent extends FavorableTraitContent {
 
   @Override
   public String getGroupNamePrefix() {
-    String editionString = getCharacter().getTemplate().getEdition() == ExaltedEdition.SecondEdition ? "2E." : "";
-    return "Sheet.Colleges.Houses." + editionString;
+    return "Sheet.Colleges.Houses.";
   }
 
   @Override
@@ -82,6 +80,7 @@ public class SiderealCollegeContent extends FavorableTraitContent {
     return null;
   }
 
+  @Override
   public String getHeaderKey() {
     return "Sidereal.Colleges"; //$NON-NLS-1$
   }
