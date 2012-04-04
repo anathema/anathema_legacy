@@ -49,6 +49,8 @@ entry manually to reflect the new rules.
 * (Infernal/SWLIHN) "Precision Thought-Force Exercise" and "Orbital Impact Storm" attributed to Ink Monkeys
 * Duplication of Series possible on Windows systems
 * Anathema respects Accuracy and MPDV modifiers from equipment
+* Sidereal Colleges names are readable, and the House of Serenity bears the name it has in 2E
+* Martial Arts Weapons remember their print state
 
 ===------------------------------------------------------------------------------===
 			Release 3.1.2

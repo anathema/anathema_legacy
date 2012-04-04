@@ -21,17 +21,19 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
   private JPanel content;
   private final JPanel collegePanel = new JPanel();
   private final JPanel overviewPanel = new JPanel();
-  private final GroupedTraitView groupedTraitView = new GroupedTraitView(collegePanel, 3);
+  private final GroupedTraitView groupedTraitView = new GroupedTraitView(collegePanel, 2);
   private final ISiderealCollegeViewProperties properties;
 
   public SiderealCollegeView(ISiderealCollegeViewProperties properties) {
     this.properties = properties;
   }
 
+  @Override
   public void startGroup(String groupLabel) {
     groupedTraitView.startNewGroup(groupLabel);
   }
 
+  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = new JPanel(new GridDialogLayout(1, false));
@@ -42,6 +44,7 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
     return content;
   }
 
+  @Override
   public IToggleButtonTraitView<SimpleTraitView> addIntValueView(
       String label,
       IIntValueDisplayFactory factory,
@@ -52,10 +55,12 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
     return groupedTraitView.addTraitView(label, value, maxValue, null, selected, viewProperties, factory);
   }
 
+  @Override
   public IOverviewCategory createOverview(String borderLabel) {
     return new OverviewCategory(overviewPanel, borderLabel, false);
   }
 
+  @Override
   public void setOverview(IOverviewCategory overview) {
     overviewPanel.removeAll();
     overviewPanel.add(overview.getComponent());
