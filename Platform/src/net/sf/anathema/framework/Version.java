@@ -62,7 +62,7 @@ public class Version implements Comparable<Version> {
     if (version.getClass() != getClass()) {
       throw new ClassCastException("Uncomparable objects.");
     }
-    
+
     if (majorVersion != version.majorVersion) {
       return majorVersion - version.majorVersion;
     }
@@ -80,12 +80,16 @@ public class Version implements Comparable<Version> {
     if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
-    
+
     return compareTo((Version)obj) == 0;
   }
 
   @Override
   public int hashCode() {
     return majorVersion * 3 + minorVersion * 7 + revision * 13;
+  }
+
+  public boolean isLargerThan(Version otherVersion) {
+    return otherVersion == null || compareTo(otherVersion) > 0;
   }
 }

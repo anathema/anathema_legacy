@@ -34,9 +34,11 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     ObjectContainer container = EquipmentDatabaseConnectionManager.createConnection(databaseFile);
     Version dbVersion = DatabaseUtils.getDatabaseVersion(container);
     Version anathemaVersion = new Version(resources);
-    Version updatedVersion = updateDbVersion(dbVersion, anathemaVersion);
-    updateContent(container);
-    finish(container, updatedVersion);
+    if (anathemaVersion.isLargerThan(dbVersion)) {
+      Version updatedVersion = updateDbVersion(dbVersion, anathemaVersion);
+      updateContent(container);
+      finish(container, updatedVersion);
+    }
   }
 
   private void updateContent(ObjectContainer container) {
@@ -50,7 +52,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
       }
       deleteFirstEditionStats(template);
       deleteShieldStats(template);
-      addMinimumDamage(template,container);
+      addMinimumDamage(template, container);
       if (template.hasStats()) {
         container.set(template);
       } else {
