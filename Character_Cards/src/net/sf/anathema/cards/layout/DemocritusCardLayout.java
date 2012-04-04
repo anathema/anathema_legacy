@@ -116,9 +116,10 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	}
 	
 	private void writeStats(ICard card) throws DocumentException {
+		float width = scale(card.getData().getSecondaryIcon() != null ? SECOND_ICON_X_OFFSET : FIRST_ICON_X_OFFSET);
 		Rectangle rect = new Rectangle(card.getX() + scale(TEXT_MARGIN), // bottom left X
 			 	   card.getY() + scale(STATS_TEXT_Y_OFFSET) - 2 * provider.getBoldFont().getSize(), // bottom left Y 
-			 	   card.getX() + getCardWidth() - 2 * scale(TEXT_MARGIN), // top right X
+			 	   card.getX() + width, // top right X
 			 	   card.getY() + scale(STATS_TEXT_Y_OFFSET)); // top right Y
 		writeText(card.getPdfContent(), rect, card.getData().getStats());
 	}
