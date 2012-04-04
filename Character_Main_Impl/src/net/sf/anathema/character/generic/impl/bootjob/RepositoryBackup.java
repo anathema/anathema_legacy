@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.bootjob;
 
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.tree.FileExporter;
@@ -43,7 +44,7 @@ public class RepositoryBackup {
 
   private File getSaveFile() {
     IRepository repository = model.getRepository();
-    String version = resources.getString("Anathema.Version.Numeric");
+    String version = new Version(resources).asString();
     return new File(repository.getRepositoryPath(), "BackupForFirstLaunchOf" + version + ".zip");
   }
 }
