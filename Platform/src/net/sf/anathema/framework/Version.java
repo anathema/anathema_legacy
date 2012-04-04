@@ -81,7 +81,7 @@ public class Version implements Comparable<Version> {
       return false;
     }
 
-    return compareTo((Version)obj) == 0;
+    return compareTo((Version) obj) == 0;
   }
 
   @Override
@@ -91,5 +91,9 @@ public class Version implements Comparable<Version> {
 
   public boolean isLargerThan(Version otherVersion) {
     return otherVersion == null || compareTo(otherVersion) > 0;
+  }
+
+  public String asString() {
+    return majorVersion + "." + minorVersion + "." + revision;
   }
 }

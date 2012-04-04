@@ -15,16 +15,20 @@ import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.database.DatabaseUtils;
 
 import java.io.File;
+import java.io.IOException;
 
 import static net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase.DATABASE_FILE;
 import static net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase.DATABASE_FOLDER;
 
 @BootJob
 public class DatabaseConversionBootJob implements IAnathemaBootJob {
+
+  private final static Logger logger = Logger.getLogger(DatabaseConversionBootJob.class);
 
   @Override
   public void run(IResources resources, IAnathemaModel anathemaModel, IAnathemaView view) {
@@ -34,10 +38,20 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     ObjectContainer container = EquipmentDatabaseConnectionManager.createConnection(databaseFile);
     Version dbVersion = DatabaseUtils.getDatabaseVersion(container);
     Version anathemaVersion = new Version(resources);
+    logger.info("Found equipment database at version " + dbVersion.asString());
     if (anathemaVersion.isLargerThan(dbVersion)) {
+      backupDatabase(anathemaModel, container, anathemaVersion);
       Version updatedVersion = updateDbVersion(dbVersion, anathemaVersion);
       updateContent(container);
       finish(container, updatedVersion);
+    }
+  }
+
+  private void backupDatabase(IAnathemaModel anathemaModel, ObjectContainer container, Version anathemaVersion) {
+    try {
+      container.ext().backup(getBackupFile(anathemaModel, anathemaVersion));
+    } catch (IOException e) {
+      throw new RuntimeException("Could not backup equipment database.");
     }
   }
 
@@ -104,5 +118,10 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
 
   private File getDatabaseFile(IAnathemaModel model) {
     return new File(model.getRepository().getDataBaseDirectory(DATABASE_FOLDER), DATABASE_FILE);
+  }
+
+  private String getBackupFile(IAnathemaModel anathemaModel, Version version) {
+    return new File(anathemaModel.getRepository().getRepositoryPath(),
+            "BackupForFirstLaunchOf" + version.asString()).getAbsolutePath() + ".Equipment.yap";
   }
 }
