@@ -192,6 +192,7 @@
           <charmtype type="Supplemental" />
 		  <special primaryStep="1" />
           <repurchases>
+            <repurchase essence="2"/>
             <repurchase essence="4"/>
           </repurchases>
           <charmAttribute attribute="Combo-OK" visualize="true" />
