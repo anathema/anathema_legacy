@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.second.content.combat;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.impl.CharacterUtilties;
+import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.reporting.pdf.content.combat.AbstractCombatStatsContent;
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
 import net.sf.anathema.character.reporting.pdf.content.general.QualifiedText;
@@ -25,11 +25,11 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   }
 
   public int getJoinBattle() {
-    return CharacterUtilties.getJoinBattle(getTraitCollection(), getEquipment());
+    return CharacterUtilities.getJoinBattle(getTraitCollection(), getEquipment());
   }
 
   public int getDodgeDv() {
-    return CharacterUtilties.getDodgeDv(getCharacterType(), getTraitCollection(), getEquipment());
+    return CharacterUtilities.getDodgeDv(getCharacterType(), getTraitCollection(), getEquipment());
   }
 
   public String[] getAttacks() {
