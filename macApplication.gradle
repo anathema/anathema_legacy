@@ -48,8 +48,6 @@ task copyContent(type: Copy) {
   }
   into("${appDir}/Contents/Resources/Java/lib") {
     from("${buildDir}/dependencies/");
-  }
-  into("${appDir}/Contents/Resources/Java/lib") {
     from("${buildDir}/plugins/");
   }
 }
