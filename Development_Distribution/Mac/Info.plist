@@ -31,53 +31,11 @@
 		<key>WorkingDirectory</key>
 		<string>$APP_PACKAGE/Contents/Resources/Java</string>
 		<key>JVMVersion</key>
-		<string>1.5+</string>
+		<string>1.6+</string>
 		<!-- May need to update this if any jars get added to the project. -->
 		<key>ClassPath</key>
 			<array>
 			<string>$JAVAROOT/anathema.jar</string>
-			<string>$JAVAROOT/lib/basicplayer2.3.jar</string>
-			<string>$JAVAROOT/lib/batik-anim.jar</string>
-			<string>$JAVAROOT/lib/batik-awt-util.jar</string>
-			<string>$JAVAROOT/lib/batik-bridge.jar</string>
-			<string>$JAVAROOT/lib/batik-codec.jar</string>
-			<string>$JAVAROOT/lib/batik-css.jar</string>
-			<string>$JAVAROOT/lib/batik-dom.jar</string>
-			<string>$JAVAROOT/lib/batik-ext.jar</string>
-			<string>$JAVAROOT/lib/batik-extension.jar</string>
-			<string>$JAVAROOT/lib/batik-gui-util.jar</string>
-			<string>$JAVAROOT/lib/batik-gvt.jar</string>
-			<string>$JAVAROOT/lib/batik-parser.jar</string>
-			<string>$JAVAROOT/lib/batik-script.jar</string>
-			<string>$JAVAROOT/lib/batik-svg-dom.jar</string>
-			<string>$JAVAROOT/lib/batik-svggen.jar</string>
-			<string>$JAVAROOT/lib/batik-svgpp.jar</string>
-			<string>$JAVAROOT/lib/batik-swing.jar</string>
-			<string>$JAVAROOT/lib/batik-transcoder.jar</string>
-			<string>$JAVAROOT/lib/batik-ttf2svg.jar</string>
-			<string>$JAVAROOT/lib/batik-util.jar</string>
-			<string>$JAVAROOT/lib/batik-xml.jar</string>
-			<string>$JAVAROOT/lib/batik.jar</string>
-			<string>$JAVAROOT/lib/commons-io.jar</string>
-			<string>$JAVAROOT/lib/commons-logging-api.jar</string>
-			<string>$JAVAROOT/lib/db4o-6.0-java5.jar</string>
-			<string>$JAVAROOT/lib/disy-commons-core-5.0.0-SNAPSHOT.jar</string>
-			<string>$JAVAROOT/lib/disy-commons-swing-dialog-5.0.0-SNAPSHOT.jar</string>
-			<string>$JAVAROOT/lib/disy-commons-swing-layout-5.0.0-SNAPSHOT.jar</string>
-			<string>$JAVAROOT/lib/disy-commons-swing-5.0.0-SNAPSHOT.jar</string>
-			<string>$JAVAROOT/lib/dom4j-1.5.jar</string>
-			<string>$JAVAROOT/lib/graphlayout.jar</string>
-			<string>$JAVAROOT/lib/idw-gpl-1.4.0.jar</string>
-			<string>$JAVAROOT/lib/itext-1.4.jar</string>
-			<string>$JAVAROOT/lib/javalayer.jar</string>
-			<string>$JAVAROOT/lib/jpf-boot.jar</string>
-			<string>$JAVAROOT/lib/jpf.jar</string>
-			<string>$JAVAROOT/lib/l2fprod-common-directorychooser.jar</string>
-			<string>$JAVAROOT/lib/l2fprod-common-tasks.jar</string>
-			<string>$JAVAROOT/lib/mp3spi1.9.2.jar</string>
-			<string>$JAVAROOT/lib/tritonus_share.jar</string>
-			<string>$JAVAROOT/lib/xml-apis-dom3.jar</string>
-			<string>$JAVAROOT/lib/xml-apis-ext.jar</string>
 			</array>
 		<key>Properties</key>
 		<dict>
