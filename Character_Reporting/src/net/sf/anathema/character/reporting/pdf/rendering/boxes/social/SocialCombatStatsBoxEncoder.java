@@ -7,7 +7,7 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
-import net.sf.anathema.character.generic.impl.CharacterUtilties;
+import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -127,8 +127,8 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
   private float encodeValues(SheetGraphics graphics, Bounds bounds, IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
     String joinLabel = resources.getString("Sheet.SocialCombat.JoinDebateBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.SocialCombat.DodgeMDV"); //$NON-NLS-1$
-    int joinDebate = CharacterUtilties.getJoinDebate(traitCollection, equipment);
-    int dodgeMDV = CharacterUtilties.getDodgeMdv(traitCollection, equipment);
+    int joinDebate = CharacterUtilities.getJoinDebate(traitCollection, equipment);
+    int dodgeMDV = CharacterUtilities.getDodgeMdv(traitCollection, equipment);
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(2, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(graphics, 0, joinLabel, joinDebate);

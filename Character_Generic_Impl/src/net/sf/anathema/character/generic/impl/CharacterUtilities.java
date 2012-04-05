@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
-public class CharacterUtilties {
+public class CharacterUtilities {
 
   public static int getDodgeMdv(IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
     int baseValue = getRoundDownDv(traitCollection, OtherTraitType.Willpower, AbilityType.Integrity,
