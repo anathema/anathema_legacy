@@ -1,6 +1,7 @@
 package net.sf.anathema.magic.description.persistence;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
@@ -32,11 +33,12 @@ public class RepositoryMagicDescriptionDataBase implements MagicDescriptionDataB
 
   private IRepository repository;
   private IItemType itemType;
-  private final Gson gson = new Gson();
+  private final Gson gson;
 
   public RepositoryMagicDescriptionDataBase(IRepository repository, IItemType itemType) {
     this.repository = repository;
     this.itemType = itemType;
+    this.gson = new GsonBuilder().setPrettyPrinting().create();
   }
 
   @Override
