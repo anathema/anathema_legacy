@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.social.ISocialCombatStats;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 
-import static net.sf.anathema.character.generic.impl.CharacterUtilties.getRoundUpDv;
-import static net.sf.anathema.character.generic.impl.CharacterUtilties.getTotalValue;
+import static net.sf.anathema.character.generic.impl.CharacterUtilities.getRoundUpDv;
+import static net.sf.anathema.character.generic.impl.CharacterUtilities.getTotalValue;
 import static net.sf.anathema.character.generic.traits.types.AttributeType.Charisma;
 import static net.sf.anathema.character.generic.traits.types.AttributeType.Manipulation;
 

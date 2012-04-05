@@ -2,7 +2,7 @@ package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
-import net.sf.anathema.character.generic.impl.CharacterUtilties;
+import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
@@ -33,12 +33,12 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
     ICharacterType characterType = reportSession.getCharacter().getTemplate().getTemplateType().getCharacterType();
     IEquipmentModifiers equipment = reportSession.getCharacter().getEquipmentModifiers();
 
-    int joinBattle = CharacterUtilties.getJoinBattle(traitCollection, equipment);
-    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection, equipment);
-    int knockdownThreshold = CharacterUtilties.getKnockdownThreshold(traitCollection);
-    int knockdownPool = CharacterUtilties.getKnockdownPool(traitCollection);
-    int stunningThreshold = CharacterUtilties.getStunningThreshold(traitCollection);
-    int stunningPool = CharacterUtilties.getStunningPool(traitCollection);
+    int joinBattle = CharacterUtilities.getJoinBattle(traitCollection, equipment);
+    int dodgeDV = CharacterUtilities.getDodgeDv(characterType, traitCollection, equipment);
+    int knockdownThreshold = CharacterUtilities.getKnockdownThreshold(traitCollection);
+    int knockdownPool = CharacterUtilities.getKnockdownPool(traitCollection);
+    int stunningThreshold = CharacterUtilities.getStunningThreshold(traitCollection);
+    int stunningPool = CharacterUtilities.getStunningPool(traitCollection);
 
     String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
     String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
