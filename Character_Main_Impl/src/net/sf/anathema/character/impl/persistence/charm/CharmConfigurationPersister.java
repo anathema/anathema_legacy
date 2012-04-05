@@ -133,9 +133,12 @@ public class CharmConfigurationPersister {
 	  String charmId = charmElement.attributeValue(ATTRIB_NAME);
 	  String charmTrueName = charmConfiguration.getCharmTrueName(charmId);
 	      
-	  charmId = parseTrueName(charmElement, charmTrueName);
+	  charmId = parseTrueName(charmElement, charmTrueName, charmConfiguration, isExperienceLearned(charmElement));
 	  try {
-	      group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), isExperienceLearned(charmElement), false);
+		  ICharm charm = charmConfiguration.getCharmById(charmId);
+		  if (!group.isLearned(charm, false)) {
+			  group.learnCharmNoParents(charm, isExperienceLearned(charmElement), false);
+		  }
 	      Element specialElement = charmElement.element(TAG_SPECIAL);
 	      ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
 	      if (specialElement != null && specialConfiguration != null) {
@@ -151,7 +154,7 @@ public class CharmConfigurationPersister {
     }
   }
 
-  private String parseTrueName(Element element, String name) {
+  private String parseTrueName(Element element, String name, ICharmConfiguration config, boolean isExperienceLearned) {
     StringBuilder baseCharmName = new StringBuilder();
     String[] components = name.split("\\.");
     if (components.length > 3) {
@@ -161,10 +164,23 @@ public class CharmConfigurationPersister {
       }
       if (components[components.length - 1].startsWith("Repurchase")) {
     	  int count = Integer.parseInt(components[components.length - 1].replace("Repurchase", ""));
-          Element newElement = element.addElement(TAG_SPECIAL);
-          DefaultTrait trait = new LimitedTrait(new TraitType(TAG_LEARN_COUNT), SimpleTraitTemplate.createEssenceLimitedTemplate(0, count, LowerableState.Default),
-                                                null, context);
-          traitPersister.saveTrait(newElement, TAG_LEARN_COUNT, trait);  
+    	  Element specialCharmElement = element.addElement(TAG_SPECIAL);
+    	  DefaultTrait trait = new LimitedTrait(new TraitType(TAG_LEARN_COUNT), SimpleTraitTemplate.createEssenceLimitedTemplate(0, 0, LowerableState.Default),
+                  null, context);
+    	  ISpecialCharmConfiguration specialConfiguration = config.getSpecialCharmConfiguration(baseCharmName.toString());
+    	  if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
+    		  IMultiLearnableCharmConfiguration multiConfig = (IMultiLearnableCharmConfiguration) specialConfiguration;
+    		  trait.setUncheckedCreationValue(multiConfig.getCreationLearnCount());
+    		  trait.setExperiencedValue(multiConfig.getCurrentLearnCount());
+    	  }
+    	  if (count > trait.getCurrentValue()) {
+	   		  if (isExperienceLearned) {
+	           	  trait.setUncheckedExperiencedValue(count);
+	          } else {
+	         	  trait.setUncheckedCreationValue(count);
+	          }  
+    	  }
+          traitPersister.saveTrait(specialCharmElement, TAG_LEARN_COUNT, trait);  
       }
       if (components[components.length - 2].startsWith("Subeffect")) {
     	  Element newElement = element.addElement(TAG_SPECIAL).addElement(TAG_SUBEFFECTS).addElement(TAG_SUBEFFECT);
