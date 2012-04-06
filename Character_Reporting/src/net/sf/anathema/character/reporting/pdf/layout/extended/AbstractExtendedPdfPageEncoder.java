@@ -23,12 +23,9 @@ public abstract class AbstractExtendedPdfPageEncoder implements PageEncoder {
   private final IResources resources;
 
   private final PageConfiguration pageConfiguration;
-  private final IExtendedPartEncoder partEncoder;
   private final PdfBoxEncoder boxEncoder;
 
-  public AbstractExtendedPdfPageEncoder(IExtendedPartEncoder partEncoder, IResources resources,
-          PageConfiguration pageConfiguration) {
-    this.partEncoder = partEncoder;
+  public AbstractExtendedPdfPageEncoder(IResources resources, PageConfiguration pageConfiguration) {
     this.resources = resources;
     this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder();
@@ -78,10 +75,6 @@ public abstract class AbstractExtendedPdfPageEncoder implements PageEncoder {
 
   public float getContentHeight() {
     return pageConfiguration.getContentHeight();
-  }
-
-  protected IExtendedPartEncoder getPartEncoder() {
-    return partEncoder;
   }
 
   protected PdfBoxEncoder getBoxEncoder() {

@@ -11,8 +11,10 @@ public interface EncoderIds {
   String BACKGROUNDS = "Backgrounds";
   String COMBAT = "Combat";
   String COMBOS = "Combos";
+  String ESSENCE_DOTS = "EssenceDots";
   String ESSENCE_SIMPLE = "EssenceSimple";
   String ESSENCE_EXTENDED = "EssenceExtended";
+  String ESSENCE_REGAIN = "EssenceRegain";
   String EXPERIENCE = "Experience";
   String GENERIC_CHARMS = "GenericCharms";
   String GREAT_CURSE = "GreatCurse";
@@ -23,12 +25,16 @@ public interface EncoderIds {
   String MERITS_AND_FLAWS = "MeritsAndFlaws";
   String MUTATIONS = "Mutations";
   String CHARMS_AND_SORCERY = "CharmsAndSorcery";
+  String CHARMS_ONLY = "CharmsOnly";
+  String SPELLS_ONLY = "SpellsOnly";
   String NOTES = "Notes";
   String PANOPLY = "Panoply";
   String PERSONAL_INFO = "PersonalInfo";
   String POSSESSIONS = "Possessions";
   String SOCIAL_COMBAT = "SocialCombat";
+  String WILLPOWER_DOTS = "WillpowerDots";
   String WILLPOWER_SIMPLE = "WillpowerSimple";
   String WILLPOWER_EXTENDED = "WillpowerExtended";
   String VIRTUES = "Virtues";
+  String YOZI_LIST = "YoziList";
 }

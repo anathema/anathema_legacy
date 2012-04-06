@@ -23,6 +23,5 @@ public class CharacterReportingModule extends CharacterModuleAdapter<CharacterRe
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     moduleObject.getContentRegistry().setResources(resources);
-    moduleObject.getExtendedEncodingRegistry().setResources(resources);
   }
 }

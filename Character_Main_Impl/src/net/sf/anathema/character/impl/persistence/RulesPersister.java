@@ -11,6 +11,6 @@ public class RulesPersister {
   public void save(Element parent) {
     Element rulesElement = parent.addElement(TAG_RULES);
     Element ruleSetElement = rulesElement.addElement(TAG_RULESET);
-    ruleSetElement.addAttribute(ATTRIB_NAME, new SecondEditionRules().getId());
+    ruleSetElement.addAttribute(ATTRIB_NAME, new SecondEditionEdition().getId());
   }
 }

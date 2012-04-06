@@ -1,10 +1,10 @@
 package net.sf.anathema.character.impl.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.google.common.base.Functions;
 import net.sf.anathema.character.model.ISpellMapper;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SpellMapper implements ISpellMapper {
 

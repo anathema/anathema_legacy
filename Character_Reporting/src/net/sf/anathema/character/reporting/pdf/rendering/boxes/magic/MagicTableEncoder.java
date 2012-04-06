@@ -4,19 +4,21 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.content.magic.SimpleCharmContent;
+import net.sf.anathema.character.reporting.pdf.content.magic.AbstractMagicContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
-public class MagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats, ReportSession> {
+public class MagicTableEncoder <C extends AbstractMagicContent> extends AbstractStatsTableEncoder<IMagicStats, ReportSession> {
 
   private final boolean sectionHeaderLines;
+  private Class<C> contentClass;
 
-  public MagicTableEncoder(boolean sectionHeaderLines) {
+  public MagicTableEncoder(boolean sectionHeaderLines, Class<C> contentClass) {
     super(sectionHeaderLines);
     this.sectionHeaderLines = sectionHeaderLines;
+    this.contentClass = contentClass;
   }
 
   @SuppressWarnings("unchecked")
@@ -27,7 +29,7 @@ public class MagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats, Re
 
   @Override
   protected void encodeContent(SheetGraphics graphics, PdfPTable table, ReportSession session, Bounds bounds) {
-    SimpleCharmContent content = createContent(session);
+    AbstractMagicContent content = createContent(session);
     float heightLimit = bounds.height - 3;
     IStatsGroup<IMagicStats>[] groups = createStatsGroups(session);
     boolean encodeLine = true;
@@ -63,7 +65,7 @@ public class MagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats, Re
     table.deleteLastRow();
   }
 
-  private SimpleCharmContent createContent(ReportSession session) {
-    return session.createContent(SimpleCharmContent.class);
+  private AbstractMagicContent createContent(ReportSession session) {
+    return session.createContent(contentClass);
   }
 }

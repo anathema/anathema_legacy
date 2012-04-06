@@ -1,16 +1,59 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
-import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
+import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AbstractDefenceWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.AccuracyWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.RateWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.SecondEditionDefenceWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons.SecondEditionSpeedWeaponStatsGroup;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
-public class WeaponryContent extends AbstractSubBoxContent {
+public class WeaponryContent extends AbstractWeaponryContent implements SubBoxContent {
 
-  public WeaponryContent(IResources resources) {
-    super(resources);
+  private final IEquipmentCharacterDataProvider provider;
+  private final IEquipmentCharacterOptionProvider optionProvider;
+
+  public WeaponryContent(IResources resources, IGenericCharacter character) {
+    super(resources, character);
+    IEquipmentAdditionalModel additionalModel =
+            (IEquipmentAdditionalModel) character.getAdditionalModel(EquipmentAdditionalModelTemplate.ID);
+    provider = additionalModel.getCharacterDataProvider();
+    optionProvider = additionalModel.getCharacterOptionProvider();
   }
 
   @Override
-  public String getHeaderKey() {
-    return "Weapons"; //$NON-NLS-1$
+  public int getLineCount() {
+    return 10;
+  }
+
+  @Override
+  protected SecondEditionSpeedWeaponStatsGroup createSpeedGroup() {
+    return new SecondEditionSpeedWeaponStatsGroup(getResources(), getEquipmentModifiers());
+  }
+
+  @Override
+  protected AbstractDefenceWeaponStatsGroup createDefenceGroup() {
+    return new SecondEditionDefenceWeaponStatsGroup(getResources(), getCharacter(), getTraitCollection(), provider,
+            optionProvider, getEquipmentModifiers());
+  }
+
+  @Override
+  protected AccuracyWeaponStatsGroup createAccuracyGroup() {
+    return new AccuracyWeaponStatsGroup(getResources(), getTraitCollection(), provider, optionProvider);
+  }
+
+  @Override
+  protected RateWeaponStatsGroup createRateGroup() {
+    return new RateWeaponStatsGroup(getResources());
+  }
+
+  @Override
+  public String getHeader() {
+    return getResources().getString("Sheet.Header.Weapons");
   }
 }

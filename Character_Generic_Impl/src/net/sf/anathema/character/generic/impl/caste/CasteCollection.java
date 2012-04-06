@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.impl.caste;
 
-import java.util.Map;
-
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.template.ITemplateType;
+
+import java.util.Map;
 
 public class CasteCollection implements ICasteCollection {
   private Map<ITemplateType, ICasteType[]> templateMap;

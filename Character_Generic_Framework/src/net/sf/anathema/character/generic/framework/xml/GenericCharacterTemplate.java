@@ -16,7 +16,6 @@ import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRu
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;

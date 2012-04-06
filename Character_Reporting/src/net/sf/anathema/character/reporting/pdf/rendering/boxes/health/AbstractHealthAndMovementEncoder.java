@@ -1,8 +1,13 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfTemplate;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.impl.persistence.SecondEditionEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
@@ -78,8 +83,6 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     return resources;
   }
 
-  protected abstract IExaltedEdition getEdition();
-
   private Paragraph createHealthRulesPhrase(SheetGraphics graphics, Font headerFont, Font commentFont, Font commentTitleFont) {
     Paragraph healthText = new Paragraph();
     healthText.setAlignment(Element.ALIGN_JUSTIFIED_ALL);
@@ -96,7 +99,7 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     healthText.add(graphics.createSymbolChunk());
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.DeathHeader"), commentTitleFont)); //$NON-NLS-1$
     healthText.add(seperator);
-    healthText.add(new Chunk(resources.getString("Sheet." + getEdition().getId() + ".Health.Comment.DeathText"), commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
+    healthText.add(new Chunk(resources.getString("Sheet." + new SecondEditionEdition().getId() + ".Health.Comment.DeathText"), commentFont)); //$NON-NLS-1$ //$NON-NLS-2$
     healthText.add(newLine);
     healthText.add(graphics.createSymbolChunk());
     healthText.add(new Chunk(resources.getString("Sheet.Health.Comment.MarkDamageHeader"), commentTitleFont)); //$NON-NLS-1$
