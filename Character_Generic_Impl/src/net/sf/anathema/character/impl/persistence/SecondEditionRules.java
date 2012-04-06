@@ -3,14 +3,13 @@ package net.sf.anathema.character.impl.persistence;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.impl.persistence.SecondEditionEdition.SECOND_EDITION;
 
 public class SecondEditionRules implements IExaltedRuleSet {
 
   @Override
   public IExaltedEdition getEdition() {
-    return SecondEdition;
+    return new SecondEditionEdition();
   }
 
   @Override
