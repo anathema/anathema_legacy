@@ -23,9 +23,8 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
   private ICharmConfiguration characterSet;
 
   public CharacterSourceBookFilter(ICharmConfiguration characterSet) {
-    super(ExaltedEdition.SecondEdition);
     this.characterSet = characterSet;
-    prepareEdition(ExaltedEdition.SecondEdition);
+    prepareEdition();
   }
 
   @Override
@@ -42,7 +41,7 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
   public void save(Element parent) {
     Element sourceBookFilter = parent.addElement(TAG_FILTERNAME);
     for (IExaltedEdition edition : ExaltedEdition.values()) {
-      List<IExaltedSourceBook> list = excludedMaterial.get(edition);
+      List<IExaltedSourceBook> list = excludedMaterial;
       if (list != null) for (IExaltedSourceBook book : list) {
         Element bookElement = sourceBookFilter.addElement(TAG_SOURCEBOOK);
         bookElement.addAttribute(ATTRIB_NAME, book.getId());
@@ -58,13 +57,11 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
       for (Object bookNode : node.elements()) {
         try {
           Element sourceBook = (Element) bookNode;
-          String editionString = sourceBook.attributeValue(ATTRIB_EDITION);
           String idString = sourceBook.attributeValue(ATTRIB_NAME);
-          IExaltedEdition edition = ExaltedEdition.valueOf(editionString);
           IExaltedSourceBook book = new SourceBook(idString);
-          excludedMaterial.get(edition).add(book);
+          excludedMaterial.add(book);
         } catch (Exception e) {
-          excludedMaterial.get(getEdition()).clear();
+          excludedMaterial.clear();
           return false;
         }
       }

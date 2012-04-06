@@ -1,8 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -35,10 +33,6 @@ public class Extended2ndEditionMovementEncoder implements ContentEncoder {
 
   protected ITableEncoder createTableEncoder() {
     return new Simple2ndEditionMovementTableEncoder(getResources());
-  }
-
-  protected final IExaltedEdition getEdition() {
-    return ExaltedEdition.SecondEdition;
   }
 
   @Override

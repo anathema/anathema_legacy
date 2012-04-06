@@ -1,7 +1,6 @@
 package net.sf.anathema.character.presenter.charm;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.presenter.magic.SourceBookCharmFilter;
@@ -15,9 +14,8 @@ public class CascadeSourceBookFilter extends SourceBookCharmFilter {
 
 
   public CascadeSourceBookFilter(CharmGroupCollection charmGroups) {
-    super(ExaltedEdition.SecondEdition);
     this.charmGroups = charmGroups;
-    prepareEdition(ExaltedEdition.SecondEdition);
+    prepareEdition();
   }
 
   @Override

@@ -11,7 +11,7 @@ import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 @RegisteredNaturalWeapon(characterType = ABYSSAL)
 public class FangTemplate implements IEquipmentTemplate {
 
-  private static final SecondEditionFangStats SECOND_EDITION_FANG_STATS = new SecondEditionFangStats();
+  private static final FangStats FANG_STATS = new FangStats();
   private static final String FANG = "Abyssal.Fangs"; //$NON-NLS-1$
 
   @Override
@@ -36,6 +36,6 @@ public class FangTemplate implements IEquipmentTemplate {
 
   @Override
   public IEquipmentStats[] getStats() {
-    return new IEquipmentStats[]{SECOND_EDITION_FANG_STATS};
+    return new IEquipmentStats[]{FANG_STATS};
   }
 }
