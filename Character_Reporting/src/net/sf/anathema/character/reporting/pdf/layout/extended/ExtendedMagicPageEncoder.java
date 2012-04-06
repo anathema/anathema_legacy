@@ -32,16 +32,19 @@ import java.util.List;
 
 public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
 
+  private EncoderRegistry encoderRegistry;
   private IExtendedPartEncoder partEncoder;
 
   public ExtendedMagicPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder,
           IResources resources, PageConfiguration configuration) {
     super(resources, configuration);
+    this.encoderRegistry = encoderRegistry;
     this.partEncoder = partEncoder;
   }
 
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
+    sheet.startPortraitPage(graphics, session);
     float distanceFromTop = 0;
     IGenericCharacter character = session.getCharacter();
     // Essence & Willpower

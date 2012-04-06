@@ -34,8 +34,8 @@ public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
 
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws
-
           DocumentException {
+    sheet.startPortraitPage(graphics, session);
     float distanceFromTop = 0;
     float firstRowHeight = encodePersonalInfo(graphics, session, distanceFromTop, getContentHeight());
     distanceFromTop += calculateBoxIncrement(firstRowHeight);

@@ -17,15 +17,14 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSEN
 public class ExtendedSecondPageEncoder extends AbstractExtendedPdfPageEncoder {
 
   private EncoderRegistry encoderRegistry;
-  private IExtendedPartEncoder partEncoder;
 
-  public ExtendedSecondPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration pageConfiguration) {
+  public ExtendedSecondPageEncoder(EncoderRegistry encoderRegistry, IResources resources, PageConfiguration pageConfiguration) {
     super(resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
-    this.partEncoder = partEncoder;
   }
 
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
+    sheet.startPortraitPage(graphics, session);
     // Left column (top-down)
     float leftDistanceFromTop = 0;
     float healthHeight = encodeHealth(graphics, session, leftDistanceFromTop, 175);
