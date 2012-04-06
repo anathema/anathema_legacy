@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.type.CharacterType;
