@@ -4,7 +4,7 @@
     <abilityGroups uses="template/SolarAbilityGroup2nd.template" />
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
     <essence uses="DefaultEssence.template" />
-    <traitCollection uses="template/SolarTraitCollection2ndDreamsRevisedInfluential.template"/>
+    <traitCollection uses="template/SolarTraitCollection2ndDreamsInfluential.template"/>
     <magicTemplate uses="template/SolarMagic2nd.template"/>
     <presentation uses="template/SolarPresentation2nd.template"/>
     <additionalRules uses="template/SolarAdditionalRules2nd.template">
@@ -28,12 +28,12 @@
     <bonusPointCosts uses="SolaroidDefaultBonusPointCost2nd.template" />
     <creationPoints>
       <attributeDots primary="12" secondary="10" tertiary="8" />
-      <abilityDots general="35" favored="25" favoredPicks="5" />
+      <abilityDots general="60" favored="0" favoredPicks="5" />
       <backgroundDots count="40" />
       <virtueDots count="5" />
       <specialtyDots count="6" />
       <bonusPoints count="50" />
-      <charmPicks favored="25" general="60" />
+      <charmPicks favored="0" general="85" />
     </creationPoints>
   </creation>
   <experience>

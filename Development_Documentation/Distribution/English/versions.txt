@@ -7,6 +7,16 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.github.com
 
 ===------------------------------------------------------------------------------===
+			Release 4.0.1
+===------------------------------------------------------------------------------===
+
+-- Features --
+* [Shadow493] Added missing Lunar and Dragon-Blooded templates from DotFA.
+
+-- Bugfixes --
+* [Shadow493] First Age Solars have the correct points
+
+===------------------------------------------------------------------------------===
 			Release 4.0.0 "Sperimin"
 ===------------------------------------------------------------------------------===
 

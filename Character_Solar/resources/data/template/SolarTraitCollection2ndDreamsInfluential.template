@@ -1,7 +1,7 @@
 <traitTemplates uses="template/SolarTraitCollection2ndDreams.template">
-       <essence startValue="4" lowerableState="Default">
+       <essence startValue="6" lowerableState="Default">
         <limitation type="Static" value="10"/>
-        <minimum value="7"/>
+        <minimum value="6"/>
     </essence>
 
 </traitTemplates>
