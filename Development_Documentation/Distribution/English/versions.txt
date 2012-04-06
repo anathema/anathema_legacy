@@ -15,6 +15,8 @@ http://anathema.github.com
 
 -- Bugfixes --
 * [Shadow493] First Age Solars have the correct points
+* (Infernal/SWLiHN) "Counter-Conceptual Interposition" requires "Essence-Dissecting Stare"
+* (Infernal/Kimbery) "Bitter Heart Unbleeding" has an Essence 3 repurchase
 
 ===------------------------------------------------------------------------------===
 			Release 4.0.0 "Sperimin"

@@ -126,7 +126,7 @@
           <prerequisite>
                <trait id="SheWhoLivesInHerName" value="0" />
                <essence value="2" />		   
-               <charmReference id="Infernal.FactualDeterminationAnalysis"/>
+               <charmReference id="Infernal.Essence-DissectingStare"/>
           </prerequisite>
            <cost> 
                <essence cost="8" />
