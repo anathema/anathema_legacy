@@ -56,8 +56,11 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final TemplateType castelessType = new TemplateType(LUNAR,
           new Identificate("Casteless")); //$NON-NLS-1$
   private static final TemplateType dreamsType = new TemplateType(LUNAR, new Identificate("Dreams")); //$NON-NLS-1$
+  private static final TemplateType dreamsEstablished = new TemplateType(LUNAR, new Identificate("DreamsEstablished")); //$NON-NLS-1$
+  private static final TemplateType dreamsInfluential = new TemplateType(LUNAR, new Identificate("DreamsInfluential")); //$NON-NLS-1$
+  private static final TemplateType dreamsLegendary = new TemplateType(LUNAR, new Identificate("DreamsLegendary")); //$NON-NLS-1$
 
-  private static final TemplateType[] dreams = {dreamsType};
+  private static final TemplateType[] dreams = {dreamsType, dreamsEstablished, dreamsInfluential, dreamsLegendary};
 
   public static final String BACKGROUND_ID_ARSENAL = "LunarDreamsArsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_COMMAND = "LunarDreamsCommand"; //$NON-NLS-1$
@@ -117,6 +120,9 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "template/Lunar2ndCasteless.template");
     registerParsedTemplate(characterGenerics, "template/Lunar2ndSilverPact.template");
     registerParsedTemplate(characterGenerics, "template/Lunar2ndDreams.template");
+    registerParsedTemplate(characterGenerics, "template/Lunar2ndDreamsEstablished.template");
+    registerParsedTemplate(characterGenerics, "template/Lunar2ndDreamsInfluential.template");
+    registerParsedTemplate(characterGenerics, "template/Lunar2ndDreamsLegendary.template");
   }
 
   @Override

@@ -268,6 +268,10 @@
           <cost>
                <essence cost="3" />
           </cost>
+          <repurchases>
+            <repurchase essence="2"/>
+            <repurchase essence="3"/>
+          </repurchases>
           <duration duration="Instant"/>
           <charmtype type="Reflexive" />
           <special primaryStep="7" />
