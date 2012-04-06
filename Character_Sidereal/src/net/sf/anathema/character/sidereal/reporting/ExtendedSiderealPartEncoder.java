@@ -2,23 +2,23 @@ package net.sf.anathema.character.sidereal.reporting;
 
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.RegisteredPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.sidereal.reporting.layout.Sidereal2ndEditionDetailsPageEncoder;
+import net.sf.anathema.character.sidereal.reporting.layout.SiderealDetailsPageEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.anima.AnimaEncoderFactory;
 import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.FlawedFateEncoder;
+import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.generic.type.CharacterType.SIDEREAL;
 
 @RegisteredPartEncoder(characterType = SIDEREAL)
-public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
+public class ExtendedSiderealPartEncoder extends AbstractExtendedPartEncoder {
 
-  public Extended2ndEditionSiderealPartEncoder(IResources resources) {
+  public ExtendedSiderealPartEncoder(IResources resources) {
     super(resources);
   }
 
@@ -28,8 +28,8 @@ public class Extended2ndEditionSiderealPartEncoder extends AbstractSecondEdition
   }
 
   @Override
-  public PageEncoder[] getAdditionalPages(EncoderRegistry encoderRegistry, PageConfiguration configuration) {
-    return new PageEncoder[]{new Sidereal2ndEditionDetailsPageEncoder(getResources(), getFontSize(), configuration)};
+  public PageEncoder[] getAdditionalPages(EncoderRegistry encoderRegistry, PageSize pageSize) {
+    return new PageEncoder[]{new SiderealDetailsPageEncoder(getResources(), getFontSize(), pageSize)};
   }
 
   @Override

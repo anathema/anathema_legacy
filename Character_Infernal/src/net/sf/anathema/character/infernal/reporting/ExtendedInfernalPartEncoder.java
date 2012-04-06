@@ -5,7 +5,7 @@ import net.sf.anathema.character.infernal.reporting.rendering.UrgeEncoder;
 import net.sf.anathema.character.infernal.reporting.rendering.YoziListEncoder;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractSecondEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.RegisteredPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -15,7 +15,7 @@ import net.sf.anathema.lib.resources.IResources;
 import static net.sf.anathema.character.generic.type.CharacterType.INFERNAL;
 
 @RegisteredPartEncoder(characterType = INFERNAL)
-public class ExtendedInfernalPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
+public class ExtendedInfernalPartEncoder extends AbstractExtendedPartEncoder {
 
   public ExtendedInfernalPartEncoder(IResources resources) {
     super(resources);

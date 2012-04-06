@@ -9,8 +9,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEn
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
+import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartEncoder {
@@ -55,7 +55,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IExtendedPartE
   }
 
   @Override
-  public PageEncoder[] getAdditionalPages(EncoderRegistry encoderRegistry, PageConfiguration configuration) {
+  public PageEncoder[] getAdditionalPages(EncoderRegistry encoderRegistry, PageSize pageSize) {
     return new PageEncoder[0];
   }
 }

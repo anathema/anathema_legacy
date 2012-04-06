@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Body;
 import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
+import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
@@ -38,9 +38,9 @@ public class FirstPageEncoder implements PageEncoder {
   }
 
   @Override
-  public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
     SheetPage page = createPage(graphics, session);
-    Body body = createBody();
+    Body body = sheet.startPortraitPage(FIRST_PAGE_CONTENT_HEIGHT);
     LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).andColumnSpan(2).now();
     LayoutField essence = page.place(ESSENCE_SIMPLE).rightOf(personalInfo).withSameHeight().now();
     LayoutField attributes = page.place(ATTRIBUTES).below(personalInfo).withHeight(ATTRIBUTE_HEIGHT).now();
@@ -56,10 +56,6 @@ public class FirstPageEncoder implements PageEncoder {
     LayoutField health = page.place(HEALTH_AND_MOVEMENT).below(panoply).withHeight(HEALTH_HEIGHT).andColumnSpan(2).now();
     page.place(COMBAT).below(health).fillToBottomOfPage().andColumnSpan(2).now();
     new CopyrightEncoder(configuration, FIRST_PAGE_CONTENT_HEIGHT).encodeCopyright(graphics);
-  }
-
-  private Body createBody() {
-    return new Body(configuration, FIRST_PAGE_CONTENT_HEIGHT);
   }
 
   private SheetPage createPage(SheetGraphics graphics, ReportSession session) {

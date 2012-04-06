@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.reporting;
 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.RectangleReadOnly;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -14,12 +13,13 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.landscape.FirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.landscape.SecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.pages.PageRegistry;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -29,6 +29,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static net.sf.anathema.character.impl.util.GenericCharacterUtilities.createGenericCharacter;
@@ -53,32 +54,36 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     PageSize pageSize = pageSizePreference.getPageSize();
-    ICharacter character = (ICharacter) item.getItemData();
-    document.setPageSize(new RectangleReadOnly(pageSize.getPortraitRectangle().getHeight(),
-            pageSize.getPortraitRectangle().getWidth()));
-    document.open();
     PdfContentByte directContent = writer.getDirectContent();
-    PageConfiguration configuration = PageConfiguration.ForLandscape(pageSize);
     try {
-      IGenericCharacter genericCharacter = createGenericCharacter(character.getStatistics());
-      IGenericDescription description = new GenericDescription(character.getDescription());
-      List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
-      encoderList.add(new FirstPageEncoder(getEncoderRegistry(), resources, configuration));
-      encoderList.add(new SecondPageEncoder(pageSize, getEncoderRegistry(), resources, configuration));
-      ReportSession session = new ReportSession(getContentRegistry(), genericCharacter, description);
-      boolean isFirstPrinted = false;
-      for (PageEncoder encoder : encoderList) {
-        if (isFirstPrinted) {
-          document.newPage();
-        } else {
-          isFirstPrinted = true;
-        }
+      ReportSession session = createSession(item);
+      for (PageEncoder encoder : collectPageEncoders(pageSize, session)) {
         SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
-        encoder.encode(document, graphics, session);
+        encoder.encode(new Sheet(document, pageSize), graphics, session);
       }
     } catch (Exception e) {
       throw new ReportException(e);
     }
+  }
+
+  private ReportSession createSession(IItem item) {
+    ICharacter character = (ICharacter) item.getItemData();
+    IGenericCharacter genericCharacter = createGenericCharacter(character.getStatistics());
+    IGenericDescription description = new GenericDescription(character.getDescription());
+    return new ReportSession(getContentRegistry(), genericCharacter, description);
+  }
+
+  private List<PageEncoder> collectPageEncoders(PageSize pageSize, ReportSession session) {
+    List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
+    encoderList.add(new FirstPageEncoder(getEncoderRegistry(), resources));
+    encoderList.add(new SecondPageEncoder(getEncoderRegistry(), resources));
+    Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
+    return encoderList;
+  }
+
+  private PageEncoder[] findAdditionalPages(PageSize pageSize, ReportSession session) {
+    PageRegistry additionalPageRegistry = getReportingModuleObject().getAdditionalPageRegistry();
+    return additionalPageRegistry.createEncoders(pageSize, getEncoderRegistry(), resources, session);
   }
 
   private EncoderRegistry getEncoderRegistry() {

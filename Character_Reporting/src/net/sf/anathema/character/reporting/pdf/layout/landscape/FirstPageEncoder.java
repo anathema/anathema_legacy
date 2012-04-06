@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.layout.landscape;
 
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Body;
 import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
+import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
@@ -12,6 +12,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
+import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ABILITIES_WITH_SPECIALS_TWO_COLUMN;
@@ -39,18 +40,16 @@ public class FirstPageEncoder implements PageEncoder {
   private static final int SOCIAL_COMBAT_HEIGHT = 115;
   private EncoderRegistry encoders;
   private IResources resources;
-  private final PageConfiguration configuration;
 
-  public FirstPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
+  public FirstPageEncoder(EncoderRegistry encoders, IResources resources) {
     this.encoders = encoders;
     this.resources = resources;
-    this.configuration = configuration;
   }
 
   @Override
-  public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
     SheetPage page = createPage(graphics, session);
-    Body body = createBody();
+    Body body = sheet.startLandscapePage();
     LayoutField personalInfo =
             page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).andColumnSpan(2).now();
     LayoutField willpower = page.place(WILLPOWER_SIMPLE).rightOf(personalInfo).withSameHeight().now();
@@ -71,10 +70,6 @@ public class FirstPageEncoder implements PageEncoder {
     LayoutField social =
             page.place(SOCIAL_COMBAT, MERITS_AND_FLAWS).below(greatCurse).withHeight(SOCIAL_COMBAT_HEIGHT).now();
     LayoutField intimacies = page.place(INTIMACIES_EXTENDED, NOTES).below(social).fillToBottomOfPage().now();
-  }
-
-  private Body createBody() {
-    return new Body(configuration);
   }
 
   private SheetPage createPage(SheetGraphics graphics, ReportSession session) {

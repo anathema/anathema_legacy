@@ -3,8 +3,8 @@ package net.sf.anathema.character.reporting.pdf.rendering.pages;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
+import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.logging.Logger;
@@ -21,9 +21,9 @@ public class PageRegistry {
     this.instantiater = instantiater;
   }
 
-  public PageEncoder[] createEncoders(PageConfiguration configuration, EncoderRegistry encoderRegistry, IResources resources,
-                                      ReportSession session) {
-    return findFactory(session).create(encoderRegistry, resources, configuration);
+  public PageEncoder[] createEncoders(PageSize pageSize, EncoderRegistry encoderRegistry, IResources resources,
+          ReportSession session) {
+    return findFactory(session).create(encoderRegistry, resources, pageSize);
   }
 
   private PageFactory findFactory(ReportSession session) {

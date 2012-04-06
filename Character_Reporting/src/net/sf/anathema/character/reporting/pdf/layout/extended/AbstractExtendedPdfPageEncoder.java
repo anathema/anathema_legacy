@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
 import com.itextpdf.text.Anchor;
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -35,7 +35,7 @@ public abstract class AbstractExtendedPdfPageEncoder implements PageEncoder {
   }
 
   @Override
-  public abstract void encode(Document document, SheetGraphics graphics, ReportSession session)
+  public abstract void encode(Sheet sheet, SheetGraphics graphics, ReportSession session)
           throws DocumentException;
 
   protected void encodeCopyright(SheetGraphics graphics) throws DocumentException {

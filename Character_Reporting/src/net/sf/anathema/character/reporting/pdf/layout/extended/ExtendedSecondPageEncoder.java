@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -21,7 +21,7 @@ public class ExtendedSecondPageEncoder extends AbstractExtendedPdfPageEncoder {
     this.encoderRegistry = encoderRegistry;
   }
 
-  public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
     // Left column (top-down)
     float leftDistanceFromTop = 0;
     float healthHeight = encodeHealth(graphics, session, leftDistanceFromTop, 175);

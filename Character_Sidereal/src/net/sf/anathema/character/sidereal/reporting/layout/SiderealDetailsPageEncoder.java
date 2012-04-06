@@ -1,9 +1,9 @@
 package net.sf.anathema.character.sidereal.reporting.layout;
 
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.HorizontalLineBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -18,13 +18,14 @@ import net.sf.anathema.character.sidereal.reporting.rendering.ParadoxInfoEncoder
 import net.sf.anathema.character.sidereal.reporting.rendering.astrology.SecondEditionAstrologyInfoEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.ParadoxEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.resplendentdestiny.ResplendentDestinyEncoder;
+import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 import static net.sf.anathema.character.sidereal.SiderealCharacterModule.dreamsType;
 import static net.sf.anathema.character.sidereal.SiderealCharacterModule.roninType;
 
-public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
+public class SiderealDetailsPageEncoder implements PageEncoder {
 
   private final static float COLLEGE_HEIGHT = 312;
   private final static float DESTINY_HEIGHT = (COLLEGE_HEIGHT - PADDING) / 2;
@@ -34,18 +35,19 @@ public class Sidereal2ndEditionDetailsPageEncoder implements PageEncoder {
   private final PageConfiguration configuration;
   private final int fontSize;
 
-  public Sidereal2ndEditionDetailsPageEncoder(IResources resources, int fontSize, PageConfiguration configuration) {
+  public SiderealDetailsPageEncoder(IResources resources, int fontSize, PageSize pageSize) {
     this.resources = resources;
     this.fontSize = fontSize;
-    this.configuration = configuration;
+    this.configuration = PageConfiguration.ForPortrait(pageSize);
     this.boxEncoder = new PdfBoxEncoder();
   }
 
   @Override
-  public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
     if (isRonin(session.getCharacter())) {
       return;
     }
+    sheet.startPortraitPage();
     float distanceFromTop = 0;
     float collegeHeight = encodeColleges(graphics, session, distanceFromTop);
     encodeAstrology(graphics, session, distanceFromTop);

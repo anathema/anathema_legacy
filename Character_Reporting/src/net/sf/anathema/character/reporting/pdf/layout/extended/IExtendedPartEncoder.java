@@ -5,8 +5,8 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
+import net.sf.anathema.framework.reporting.pdf.PageSize;
 
 public interface IExtendedPartEncoder {
 
@@ -22,9 +22,7 @@ public interface IExtendedPartEncoder {
 
   ContentEncoder getMovementEncoder();
 
-  boolean hasMagicPage();
-
   IVariableContentEncoder[] getAdditionalFirstPageEncoders();
 
-  PageEncoder[] getAdditionalPages(EncoderRegistry encoderRegistry, PageConfiguration configuration);
+  PageEncoder[] getAdditionalPages(EncoderRegistry encoderRegistry, PageSize pageSize);
 }

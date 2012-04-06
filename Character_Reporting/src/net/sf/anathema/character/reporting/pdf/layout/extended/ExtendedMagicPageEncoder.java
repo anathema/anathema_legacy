@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -8,6 +7,7 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.initiation.PdfInitiationEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ExtendedComboEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ExtendedMagicEncoder;
@@ -33,7 +33,7 @@ public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
   }
 
   @Override
-  public void encode(Document document, SheetGraphics graphics, ReportSession session) throws DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
     float distanceFromTop = 0;
     IGenericCharacter character = session.getCharacter();
     // Essence & Willpower
@@ -70,7 +70,7 @@ public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
     ICharmTemplate charmTemplate = character.getTemplate().getMagicTemplate().getCharmTemplate();
     if (charmTemplate.canLearnCharms()) {
       if (restartPage) {
-        document.newPage();
+        sheet.startPortraitPage();
         distanceFromTop = 0;
         restartPage = false;
       }
@@ -97,7 +97,7 @@ public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
       encodeCharms(graphics, session, printCharms, distanceFromTop, remainingHeight);
       while (!printCharms.isEmpty()) {
         encodeCopyright(graphics);
-        document.newPage();
+        sheet.startPortraitPage();
         encodeCharms(graphics, session, printCharms, 0, getPageConfiguration().getContentHeight());
       }
       encodeCopyright(graphics);
