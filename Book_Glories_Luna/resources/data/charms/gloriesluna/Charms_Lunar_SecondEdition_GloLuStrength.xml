@@ -43,8 +43,8 @@
      </charm>
      <charm id="Lunar.TerribleSteelRendingTalons" exalt="Lunar" group="DamageEnhancement">
           <prerequisite>
-               <trait id="Strength" value="6" />
-               <essence value="5" />
+               <trait id="Strength" value="3" />
+               <essence value="2" />
                <charmReference id="Lunar.BurrowingDevilStrike" />
           </prerequisite>
           <cost />
@@ -52,6 +52,7 @@
           <charmtype type="Permanent" />
           <charmAttribute attribute="Gift" visualize="true" />
           <source source="GloriesLuna" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Lunar.DeadlyMantisPractice" exalt="Lunar" group="FeatsOfStrength">
           <prerequisite>
