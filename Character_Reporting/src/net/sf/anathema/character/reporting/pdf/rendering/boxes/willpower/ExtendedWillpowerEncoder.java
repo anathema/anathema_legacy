@@ -12,7 +12,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.AbstractContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 
 public class ExtendedWillpowerEncoder extends AbstractContentEncoder<WillpowerContent> {
 
@@ -21,10 +23,10 @@ public class ExtendedWillpowerEncoder extends AbstractContentEncoder<WillpowerCo
   }
 
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
-    float lineHeight = 1.1f * IVoidStateFormatConstants.COMMENT_FONT_SIZE;
+    float lineHeight = 1.05f * COMMENT_FONT_SIZE;
     PdfTraitEncoder traitEncoder = PdfTraitEncoder.createLargeTraitEncoder();
     WillpowerContent content = createContent(reportSession);
-    float padding = IVoidStateFormatConstants.PADDING / 2f;
+    float padding = PADDING / 4f;
     float width = bounds.width - 2f * padding;
     float leftX = bounds.x + padding;
     float height = bounds.height - padding;
