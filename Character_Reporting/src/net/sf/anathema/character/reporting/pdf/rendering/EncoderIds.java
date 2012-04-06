@@ -11,6 +11,7 @@ public interface EncoderIds {
   String BACKGROUNDS = "Backgrounds";
   String COMBAT = "Combat";
   String COMBOS = "Combos";
+  String ESSENCE_DOTS = "EssenceDots";
   String ESSENCE_SIMPLE = "EssenceSimple";
   String ESSENCE_EXTENDED = "EssenceExtended";
   String ESSENCE_REGAIN = "EssenceRegain";
@@ -31,6 +32,7 @@ public interface EncoderIds {
   String PERSONAL_INFO = "PersonalInfo";
   String POSSESSIONS = "Possessions";
   String SOCIAL_COMBAT = "SocialCombat";
+  String WILLPOWER_DOTS = "WillpowerDots";
   String WILLPOWER_SIMPLE = "WillpowerSimple";
   String WILLPOWER_EXTENDED = "WillpowerExtended";
   String VIRTUES = "Virtues";
