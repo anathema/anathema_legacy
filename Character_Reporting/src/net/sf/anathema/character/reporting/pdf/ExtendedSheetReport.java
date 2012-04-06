@@ -19,6 +19,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
@@ -73,7 +74,7 @@ public class ExtendedSheetReport extends AbstractPdfReport {
       encoderList.add(new ExtendedFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
       encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
       Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
-      //encoderList.add(new ExtendedMagicPageEncoder(partEncoder, resources, configuration));
+      encoderList.add(new ExtendedMagicPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
       boolean firstPagePrinted = false;
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       for (PageEncoder encoder : encoderList) {

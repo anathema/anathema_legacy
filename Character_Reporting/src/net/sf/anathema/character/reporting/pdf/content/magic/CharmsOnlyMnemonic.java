@@ -4,9 +4,9 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 
 import java.util.List;
 
-public class CharmsAndSorceryMnemonic extends  AbstractMagicMnemonic {
+public class CharmsOnlyMnemonic extends  AbstractMagicMnemonic {
 
-  public CharmsAndSorceryMnemonic(List<IMagicStats> printMagic) {
+  public CharmsOnlyMnemonic(List<IMagicStats> printMagic) {
     super(printMagic);
   }
 }

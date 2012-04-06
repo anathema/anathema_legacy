@@ -7,18 +7,17 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.lib.resources.IResources;
 
-@RegisteredReportContent(produces = SimpleCharmContent.class)
-public class SimpleCharmContentFactory implements ReportContentFactory<SimpleCharmContent> {
+@RegisteredReportContent(produces = CharmsOnlyContent.class)
+public class CharmsOnlyContentFactory implements ReportContentFactory<CharmsOnlyContent> {
 
   private IResources resources;
 
-  public SimpleCharmContentFactory(IResources resources) {
-      this.resources = resources;
-    }
+  public CharmsOnlyContentFactory(IResources resources) {
+    this.resources = resources;
+  }
 
   @Override
-  public SimpleCharmContent create(ReportSession session, IGenericCharacter character,
-          IGenericDescription description) {
-    return new SimpleCharmContent(character, session, resources);
+  public CharmsOnlyContent create(ReportSession session, IGenericCharacter character, IGenericDescription description) {
+    return new CharmsOnlyContent (character, session, resources);
   }
 }

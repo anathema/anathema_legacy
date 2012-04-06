@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.character.reporting.pdf.content.magic.AbstractMagicContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;
@@ -22,7 +23,7 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExtendedMagicEncoder implements ContentEncoder {
+public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements ContentEncoder {
   static IIdentificate KNACK = new Identificate("Knack");
   private IResources resources;
 
@@ -84,14 +85,9 @@ public class ExtendedMagicEncoder implements ContentEncoder {
   private final MagicTableEncoder tableEncoder;
   private final String headerKey;
 
-  public ExtendedMagicEncoder(IResources resources, List<IMagicStats> printMagic) {
-    this(resources, printMagic, false, "Charms"); //$NON-NLS-1$
-  }
-
-  public ExtendedMagicEncoder(IResources resources, List<IMagicStats> printMagic, boolean sectionHeaderLines,
-          String headerKey) {
+  public ExtendedMagicEncoder(IResources resources, Class<C> contentClass, boolean sectionHeaderLines, String headerKey) {
     this.resources = resources;
-    this.tableEncoder = new MagicTableEncoder(sectionHeaderLines);
+    this.tableEncoder = new MagicTableEncoder(sectionHeaderLines, contentClass);
     this.headerKey = headerKey;
   }
 
