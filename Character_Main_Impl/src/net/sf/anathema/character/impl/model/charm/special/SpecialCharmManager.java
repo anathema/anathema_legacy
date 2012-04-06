@@ -153,6 +153,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
     if (learnListener)
       configuration.addSpecialCharmLearnListener(new ISpecialCharmLearnListener() {
         public void learnCountChanged(int newValue) {
+          if (!context.isFullyLoaded()) return;
           if (newValue == 0) {
             if (forgetAtZero)
               group.forgetCharm(charm, group.isLearned(charm, true));

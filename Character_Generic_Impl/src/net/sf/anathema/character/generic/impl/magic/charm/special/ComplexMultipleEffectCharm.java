@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,8 @@ import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 public class ComplexMultipleEffectCharm extends MultipleEffectCharm {
   Map<String, String> prereqEffectMap;
-  List<ISubeffect> effectList = new ArrayList<ISubeffect>();
+  Map<IBasicCharacterData, ISubeffect[]> sessionsSubeffects =
+		  new HashMap<IBasicCharacterData, ISubeffect[]>();
 
   public ComplexMultipleEffectCharm(String charmId, String[] effectIds, Map<String, String> prereqEffect) {
     super(charmId, effectIds);
@@ -24,16 +26,21 @@ public class ComplexMultipleEffectCharm extends MultipleEffectCharm {
                                       IGenericTraitCollection traitCollection,
                                       ICharmLearnableArbitrator arbitrator,
                                       ICharm charm) {
-    if (effectList.isEmpty()) {
-      for (String id : effectIds) {
-        String prerequisiteEffect = prereqEffectMap.get(id);
-        effectList.add(new Subeffect(id, data, buildLearnCondition(arbitrator, charm, prerequisiteEffect)));
-      }
+	List<ISubeffect> effectList = new ArrayList<ISubeffect>();
+    for (String id : effectIds) {
+      String prerequisiteEffect = prereqEffectMap.get(id);
+      effectList.add(new Subeffect(id, data, buildLearnCondition(data, arbitrator, charm, prerequisiteEffect)));
     }
-    return effectList.toArray(new ISubeffect[effectList.size()]);
+    ISubeffect[] list = new ISubeffect[0];
+    sessionsSubeffects.put(data, list);
+    return effectList.toArray(list);
+  }
+  
+  public ISubeffect[] getSubeffectsForSession(IBasicCharacterData data) {
+	  return sessionsSubeffects.get(data);
   }
 
-  private ICondition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm, String prereqEffect) {
-    return new PrerequisiteLearnCondition(this, arbitrator, charm, prereqEffect);
+  private ICondition buildLearnCondition(IBasicCharacterData data, ICharmLearnableArbitrator arbitrator, ICharm charm, String prereqEffect) {
+    return new PrerequisiteLearnCondition(data, this, arbitrator, charm, prereqEffect);
   }
 }

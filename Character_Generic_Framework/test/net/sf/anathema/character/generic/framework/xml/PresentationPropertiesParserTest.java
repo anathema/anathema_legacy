@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.impl.persistence.SecondEditionEdition;
+import net.sf.anathema.character.impl.persistence.SecondEdition;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
@@ -38,7 +38,7 @@ public class PresentationPropertiesParserTest extends TestCase {
     parentTemplate.setTemplateType(new TemplateType(CharacterType.SOLAR));
     presentationProperties.setParentTemplate(parentTemplate);
     assertEquals(
-        "SolarButtonLifeSecondEdition16.png", presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), new SecondEditionEdition().getId())); //$NON-NLS-1$
+        "SolarButtonLifeSecondEdition16.png", presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), new SecondEdition().getId())); //$NON-NLS-1$
   }
 
   public void testParseXmlWithoutCharmPresentationProperties() throws Exception {

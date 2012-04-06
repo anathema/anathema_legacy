@@ -4,9 +4,9 @@ import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationPro
 
 public interface IPresentationProperties extends ICommonPresentationProperties {
 
-  public String getSmallCasteIconResource(String casteId, String editionId);
+  String getSmallCasteIconResource(String casteId, String editionId);
 
-  public String getCasteLabelResource();
+  String getCasteLabelResource();
 
-  public ITreePresentationProperties getCharmPresentationProperties();
+  ITreePresentationProperties getCharmPresentationProperties();
 }

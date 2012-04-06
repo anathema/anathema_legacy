@@ -24,7 +24,7 @@ public class ElementalCharmLearnConditionTest {
   private Element element = Air;
   private List<ElementalSubeffect> effects = new ArrayList<ElementalSubeffect>();
   private DummyBasicCharacterData character = new DummyBasicCharacterData();
-  private ElementalCharmLearnCondition condition = new ElementalCharmLearnCondition(effects, arbitrator, charm, character, element);
+  private ElementalCharmLearnCondition condition = new ElementalCharmLearnCondition(null, arbitrator, charm, character, element);
 
   @Before
   public void markCharmLearnable() throws Exception {
