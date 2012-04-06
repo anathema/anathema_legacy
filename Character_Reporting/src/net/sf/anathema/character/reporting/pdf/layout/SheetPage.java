@@ -12,13 +12,13 @@ public class SheetPage {
   private class SheetFieldEncoder implements FieldEncoder {
     private final String[] encoderIds;
 
-    private SheetFieldEncoder(String... encoderIds) {
+    private SheetFieldEncoder(String[] encoderIds) {
       this.encoderIds = encoderIds;
     }
 
     @Override
     public LayoutField encode(LayoutField field) {
-      if (field.isInvisible())  {
+      if (field.isInvisible()) {
         return field;
       }
       return encoderList.encodeBox(graphics, metrics.getSession(), field, encoderIds);
@@ -27,6 +27,30 @@ public class SheetPage {
     @Override
     public float getPreferredHeight(float contentWidth) {
       return encoderList.getPreferredEncoderHeight(metrics, contentWidth, encoderIds);
+    }
+  }
+
+  private class OptionalSheetFieldEncoder implements FieldEncoder {
+    private final String encoderId;
+
+    private OptionalSheetFieldEncoder(String encoderId) {
+      this.encoderId = encoderId;
+    }
+
+    @Override
+    public LayoutField encode(LayoutField field) {
+      if (field.isInvisible()) {
+        return field;
+      }
+      if (!encoderList.hasContentFor(metrics.getSession(), encoderId)) {
+        return field;
+      }
+      return encoderList.encodeBox(graphics, metrics.getSession(), field, encoderId);
+    }
+
+    @Override
+    public float getPreferredHeight(float contentWidth) {
+      return encoderList.getPreferredEncoderHeight(metrics, contentWidth, encoderId);
     }
   }
 
@@ -43,7 +67,12 @@ public class SheetPage {
   }
 
   public Placement place(String... encoderIds) {
-    SheetFieldEncoder fieldEncoder = new SheetFieldEncoder(encoderIds);
+    FieldEncoder fieldEncoder = new SheetFieldEncoder(encoderIds);
+    return new LayoutFieldBuilder(fieldEncoder);
+  }
+
+  public Placement placeOptional(String encoderId) {
+    FieldEncoder fieldEncoder = new OptionalSheetFieldEncoder(encoderId);
     return new LayoutFieldBuilder(fieldEncoder);
   }
 
