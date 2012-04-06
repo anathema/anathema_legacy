@@ -37,6 +37,7 @@
           <charmAttribute attribute="Sidereal" />
           <charmAttribute attribute="Combo-Basic" visualize="true" />
           <source source="GloriesMaidens" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.EternalInfatuationDance" exalt="Sidereal" group="SapphireVeilStyle">
           <prerequisite>
@@ -137,7 +138,10 @@
           <charmAttribute attribute="Form-type" visualize="true" />
           <charmAttribute attribute="Emotion" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Overdrive" visualize="true" />
+          <charmAttribute attribute="Combo-Basic" visualize="true" />
           <source source="GloriesMaidens" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Sidereal.SomeoneElsesConsequence" exalt="Sidereal" group="SapphireVeilStyle">
           <prerequisite>
