@@ -1,11 +1,10 @@
 package net.sf.anathema.character.impl.model;
 
+import com.google.common.base.Functions;
+import net.sf.anathema.character.model.ISpellMapper;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.model.ISpellMapper;
 
 public class SpellMapper implements ISpellMapper {
 
@@ -22,13 +21,8 @@ public class SpellMapper implements ISpellMapper {
     spellMap2e.put("Void.BlackstormWagon", "Void.BlackstormCoffle"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  public String getId(String id, IExaltedEdition edition) {
-    if (edition == ExaltedEdition.SecondEdition) {
-      String mappedId = spellMap2e.get(id);
-      if (mappedId != null) {
-        return mappedId;
-      }
-    }
-    return id;
+  @Override
+  public String getId(String id) {
+    return Functions.forMap(spellMap2e, id).apply(id);
   }
 }

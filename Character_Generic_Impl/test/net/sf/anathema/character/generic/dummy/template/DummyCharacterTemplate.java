@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
@@ -13,7 +12,6 @@ import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
@@ -189,11 +187,6 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   @Override
   public IAdditionalTemplate[] getAdditionalTemplates() {
     return new IAdditionalTemplate[0];
-  }
-
-  @Override
-  public IExaltedEdition getEdition() {
-    return ExaltedEdition.SecondEdition;
   }
 
   @Override

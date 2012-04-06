@@ -3,7 +3,6 @@ package net.sf.anathema.cascades.presenter;
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
@@ -78,10 +77,10 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   private ISpecialCharm[] getSpecialCharmSet() {
     if (type.getId().equals("MartialArts")) {
-      return generics.getCharmProvider().getSpecialMartialArtsCharms(ExaltedEdition.SecondEdition);
+      return generics.getCharmProvider().getSpecialMartialArtsCharms();
     } else {
       try {
-        return generics.getCharmProvider().getSpecialCharms((CharacterType) type, ExaltedEdition.SecondEdition);
+        return generics.getCharmProvider().getSpecialCharms((CharacterType) type);
       } catch (ClassCastException exception) {
         // assuming unique types do not have special charms for now
         return new ISpecialCharm[0];

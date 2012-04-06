@@ -4,7 +4,6 @@ import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.filters.SourceBookCharmFilterPage;
@@ -13,9 +12,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JPanel;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import static com.google.common.collect.Lists.newArrayList;
@@ -23,25 +20,16 @@ import static java.util.Collections.addAll;
 
 public abstract class SourceBookCharmFilter implements ICharmFilter {
 
-  private final Map<IExaltedEdition, ArrayList<IExaltedSourceBook>> allMaterial = new HashMap<IExaltedEdition, ArrayList<IExaltedSourceBook>>();
-  protected final Map<IExaltedEdition, ArrayList<IExaltedSourceBook>> excludedMaterial = new HashMap<IExaltedEdition, ArrayList<IExaltedSourceBook>>();
-  private IExaltedEdition edition;
+  private final ArrayList<IExaltedSourceBook> allMaterial = new ArrayList<IExaltedSourceBook>();
+  protected final ArrayList<IExaltedSourceBook> excludedMaterial = new ArrayList<IExaltedSourceBook>();
   protected boolean includePrereqs = true;
 
   private ArrayList<IExaltedSourceBook> workingExcludedMaterial;
   private boolean[] workingIncludePrereqs = new boolean[1];
 
-  public SourceBookCharmFilter(IExaltedEdition edition) {
-    this.edition = edition;
-  }
-
-  protected void prepareEdition(IExaltedEdition edition) {
-    ArrayList<IExaltedSourceBook> materialList = new ArrayList<IExaltedSourceBook>();
+  protected void prepareEdition() {
     List<IExaltedSourceBook> bookSet = getBooks();
-    materialList.addAll(bookSet);
-    allMaterial.put(edition, materialList);
-    ArrayList<IExaltedSourceBook> materialExcluded = new ArrayList<IExaltedSourceBook>();
-    excludedMaterial.put(edition, materialExcluded);
+    allMaterial.addAll(bookSet);
   }
 
   private List<IExaltedSourceBook> getBooks() {
@@ -61,7 +49,7 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
   }
 
   private boolean isExcluded(IExaltedSourceBook primarySource) {
-    List<IExaltedSourceBook> excludedSourceList = getExcludedMaterialFor(getEdition());
+    List<IExaltedSourceBook> excludedSourceList = excludedMaterial;
     return excludedSourceList.contains(primarySource);
   }
 
@@ -69,22 +57,23 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
 
   @Override
   public JPanel getFilterPreferencePanel(IResources resources) {
-    workingExcludedMaterial = new ArrayList<IExaltedSourceBook>(getExcludedMaterialFor(getEdition()));
+    workingExcludedMaterial = new ArrayList<IExaltedSourceBook>(excludedMaterial);
     workingIncludePrereqs[0] = includePrereqs;
-    SourceBookCharmFilterPage page = new SourceBookCharmFilterPage(resources, getApprovedList(getEdition()),
+    SourceBookCharmFilterPage page = new SourceBookCharmFilterPage(resources, getApprovedList(),
             workingExcludedMaterial, workingIncludePrereqs);
     return page.getContent();
   }
 
-  private List<IExaltedSourceBook> getApprovedList(IExaltedEdition edition) {
-    List<IExaltedSourceBook> approvedMaterial = new ArrayList<IExaltedSourceBook>(allMaterial.get(edition));
-    approvedMaterial.removeAll(getExcludedMaterialFor(edition));
+  private List<IExaltedSourceBook> getApprovedList() {
+    List<IExaltedSourceBook> approvedMaterial = new ArrayList<IExaltedSourceBook>(allMaterial);
+    approvedMaterial.removeAll(excludedMaterial);
     return approvedMaterial;
   }
 
   @Override
   public void apply() {
-    excludedMaterial.put(getEdition(), workingExcludedMaterial);
+    excludedMaterial.clear();
+    excludedMaterial.addAll(workingExcludedMaterial);
     includePrereqs = workingIncludePrereqs[0];
     reset();
   }
@@ -97,14 +86,6 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
   @Override
   public void reset() {
     workingExcludedMaterial = null;
-  }
-
-  protected IExaltedEdition getEdition() {
-    return edition;
-  }
-
-  private List<IExaltedSourceBook> getExcludedMaterialFor(IExaltedEdition edition) {
-    return excludedMaterial.get(edition);
   }
 
   private List<IExaltedSourceBook> getSourceBooksFromCharms(List<ICharm> allCharms) {

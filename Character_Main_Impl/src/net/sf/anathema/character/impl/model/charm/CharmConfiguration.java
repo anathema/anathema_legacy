@@ -94,7 +94,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     initSpecialCharmConfigurations();
     types = allCharacterTypes.toArray(new ICharacterType[allCharacterTypes.size()]);
     filterSet.add(new ObtainableCharmFilter(this));
-    filterSet.add(new CharacterSourceBookFilter(context.getBasicCharacterContext().getEdition(), this));
+    filterSet.add(new CharacterSourceBookFilter(this));
     filterSet.add(new EssenceLevelCharmFilter());
   }
 
@@ -123,8 +123,8 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ISpecialCharm[] getSpecialCharms() {
-    return provider.getSpecialCharms(context.getBasicCharacterContext().getEdition(),
-            new MartialArtsLearnableArbitrator(martialArtsCharmTree), getCharmIdMap(), getNativeCharacterType());
+    return provider.getSpecialCharms(new MartialArtsLearnableArbitrator(martialArtsCharmTree), getCharmIdMap(),
+            getNativeCharacterType());
   }
 
   private IPrerequisiteModifyingCharm[] getPrerequisiteModifyingCharms() {

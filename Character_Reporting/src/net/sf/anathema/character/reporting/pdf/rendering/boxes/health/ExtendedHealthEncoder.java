@@ -1,8 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
 import com.itextpdf.text.DocumentException;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
@@ -34,10 +32,5 @@ public class ExtendedHealthEncoder extends AbstractHealthAndMovementEncoder {
   @Override
   protected ITableEncoder createTableEncoder() {
     return new HealthTableEncoder(getResources());
-  }
-
-  @Override
-  protected final IExaltedEdition getEdition() {
-    return ExaltedEdition.SecondEdition;
   }
 }

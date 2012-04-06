@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelB
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
@@ -28,11 +27,6 @@ public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> i
 
   public HeartsBloodModel(ICharacterModelContext context) {
     this.context = context;
-  }
-
-  @Override
-  public IExaltedEdition getEdition() {
-    return context.getBasicCharacterContext().getEdition();
   }
 
   @Override

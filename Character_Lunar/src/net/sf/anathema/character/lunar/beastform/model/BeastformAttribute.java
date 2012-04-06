@@ -2,10 +2,8 @@ package net.sf.anathema.character.lunar.beastform.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.library.trait.DefaultTrait;
@@ -19,7 +17,6 @@ public class BeastformAttribute implements IBeastformAttribute {
 
   private static final String DEVESTATING_OGRE_ENHANCEMENT = "Lunar.DevastatingOgreEnhancement";
   private final ICharacterModelContext context;
-  private final IExaltedEdition edition;
   private final int pointCost;
   private final IGenericTrait baseTrait;
   private final IDefaultTrait beastmanTrait;
@@ -28,7 +25,6 @@ public class BeastformAttribute implements IBeastformAttribute {
   // TODO: Available dots limit max. value
   public BeastformAttribute(ICharacterModelContext context, final IGenericTrait baseTrait, int pointCost) {
     this.context = context;
-    this.edition = context.getBasicCharacterContext().getEdition();
     ITraitContext traitContext = context.getTraitContext();
     ITraitTemplate template = SimpleTraitTemplate.createStaticLimitedTemplate(0, 12);
     TraitRules traitRules = new TraitRules(baseTrait.getType(), template, traitContext.getLimitationContext());
@@ -73,6 +69,6 @@ public class BeastformAttribute implements IBeastformAttribute {
   @Override
   public void recalculate() {
     beastmanTrait.setCurrentValue(
-            baseTrait.getCurrentValue() + (edition == ExaltedEdition.SecondEdition ? (hasDOE() ? 2 : 1) : additionalValue));
+            baseTrait.getCurrentValue() + (hasDOE() ? 2 : 1));
   }
 }
