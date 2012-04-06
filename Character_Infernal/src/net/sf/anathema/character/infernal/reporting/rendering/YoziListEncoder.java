@@ -16,6 +16,10 @@ public class YoziListEncoder extends FavorableTraitContentEncoder<InfernalYoziLi
 
   @Override
   public float getRequestedHeight(SheetGraphics graphics, ReportSession session, float width) {
+    return getPreferredHeight();
+  }
+
+  public float getPreferredHeight() {
     return LINE_HEIGHT * YoziType.values().length;
   }
 }

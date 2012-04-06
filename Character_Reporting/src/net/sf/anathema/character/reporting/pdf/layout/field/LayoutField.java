@@ -68,16 +68,6 @@ public class LayoutField {
     return fromTop;
   }
 
-  public float getRemainingColumnHeight() {
-    return body.contentHeight - getFromTopBelow();
-  }
-
-  public float getHeightToBottomFrom(LayoutField alignTo) {
-    float bottomLine = alignTo.getBottomFromTop();
-    float topLine = getBottomFromTop() + PADDING;
-    return bottomLine - topLine;
-  }
-
   public int getColumnIndexBelow() {
     return columnIndex;
   }

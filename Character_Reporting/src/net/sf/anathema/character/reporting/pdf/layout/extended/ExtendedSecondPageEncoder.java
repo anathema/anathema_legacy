@@ -62,7 +62,7 @@ public class ExtendedSecondPageEncoder extends AbstractExtendedPdfPageEncoder {
 
   private float encodeSocialCombatStats(SheetGraphics graphics, ReportSession session, float distanceFromTop,
                                         float height) throws DocumentException {
-    ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), session, EncoderIds.SOCIAL_COMBAT, EncoderIds.MERITS_AND_FLAWS);
+    ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), session, EncoderIds.SOCIAL_COMBAT);
     return encodeFixedBox(graphics, session, encoder, 1, 1, distanceFromTop, height);
   }
 

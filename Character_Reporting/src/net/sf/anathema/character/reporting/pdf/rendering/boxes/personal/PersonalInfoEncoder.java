@@ -105,6 +105,10 @@ public class PersonalInfoEncoder implements IVariableContentEncoder {
 
   @Override
   public float getRequestedHeight(SheetGraphics graphics, ReportSession session, float width) {
+    return getPreferredContentHeight(session);
+  }
+
+  public float getPreferredContentHeight(ReportSession session) {
     return getNumberOfLines(session.getCharacter()) * BARE_LINE_HEIGHT + TEXT_PADDING;
   }
 }
