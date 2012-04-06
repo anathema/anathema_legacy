@@ -43,9 +43,9 @@ public class CharmConfigurationPersister {
   private static final String TAG_SUBEFFECT = "Subeffect";
   private IAnathemaMessaging messageIndicator;
   private ITraitContext context;
-  
+
   public CharmConfigurationPersister(IAnathemaMessaging messageIndicator) {
-	  this.messageIndicator = messageIndicator;
+    this.messageIndicator = messageIndicator;
   }
 
   public void save(Element parent, ICharacterStatistics statistics) {
@@ -61,7 +61,8 @@ public class CharmConfigurationPersister {
     saveFilters(charmsElement, charmConfiguration.getCharmFilters());
   }
 
-  private ICharmConfiguration saveCharms(Element charmsElement, ICharmTemplate charmTemplate, ICharmConfiguration charmConfiguration) {
+  private ICharmConfiguration saveCharms(Element charmsElement, ICharmTemplate charmTemplate,
+                                         ICharmConfiguration charmConfiguration) {
     CharmSaver saver = new CharmSaver(charmConfiguration);
     for (IIdentificate type : charmConfiguration.getCharacterTypes(true)) {
       saver.saveCharms(type, charmsElement);
@@ -126,31 +127,46 @@ public class CharmConfigurationPersister {
     if (groupName.equals("Generics")) { //$NON-NLS-1$
       groupName = "MartialArts"; //$NON-NLS-1$
     }
-    ILearningCharmGroup group = charmConfiguration.getGroup(groupType, groupName);
+    ILearningCharmGroup group = loadCharmGroup(charmConfiguration, groupName, groupType);
     for (Object charmObjectElement : groupElement.elements()) {
-      
-	  Element charmElement = (Element) charmObjectElement;
-	  String charmId = charmElement.attributeValue(ATTRIB_NAME);
-	  String charmTrueName = charmConfiguration.getCharmTrueName(charmId);
-	      
-	  charmId = parseTrueName(charmElement, charmTrueName, charmConfiguration, isExperienceLearned(charmElement));
-	  try {
-		  ICharm charm = charmConfiguration.getCharmById(charmId);
-		  if (!group.isLearned(charm, false)) {
-			  group.learnCharmNoParents(charm, isExperienceLearned(charmElement), false);
-		  }
-	      Element specialElement = charmElement.element(TAG_SPECIAL);
-	      ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
-	      if (specialElement != null && specialConfiguration != null) {
-	        specialPersister.loadConfiguration(specialElement, specialConfiguration);
-	      } else if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
-	    	((IMultiLearnableCharmConfiguration)specialConfiguration).learn(isExperienceLearned(charmElement));
-	      }
+
+      Element charmElement = (Element) charmObjectElement;
+      String charmId = charmElement.attributeValue(ATTRIB_NAME);
+      String charmTrueName = charmConfiguration.getCharmTrueName(charmId);
+
+      charmId = parseTrueName(charmElement, charmTrueName, charmConfiguration, isExperienceLearned(charmElement));
+      learnCharm(charmConfiguration, specialPersister, group, charmElement, charmId);
+    }
+  }
+
+  private ILearningCharmGroup loadCharmGroup(ICharmConfiguration charmConfiguration, String groupName,
+                                             String groupType) {
+    try {
+      return charmConfiguration.getGroup(groupType, groupName);
+    } catch (IllegalArgumentException e) {
+      messageIndicator.addMessage("CharmPersistence.NoGroupFound", //$NON-NLS-1$
+              MessageType.WARNING, groupName);
+      return new NullLearningCharmGroup();
+    }
+  }
+
+  private void learnCharm(ICharmConfiguration charmConfiguration, ISpecialCharmPersister specialPersister,
+                          ILearningCharmGroup group, Element charmElement, String charmId) {
+    try {
+      ICharm charm = charmConfiguration.getCharmById(charmId);
+      if (!group.isLearned(charm, false)) {
+        group.learnCharmNoParents(charm, isExperienceLearned(charmElement), false);
       }
-      catch (IllegalArgumentException e) {
-    	  messageIndicator.addMessage("CharmPersistence.NoCharmFound", //$NON-NLS-1$
-                  MessageType.WARNING, charmId);
+      Element specialElement = charmElement.element(TAG_SPECIAL);
+      ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
+      if (specialElement != null && specialConfiguration != null) {
+        specialPersister.loadConfiguration(specialElement, specialConfiguration);
+      } else if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
+        ((IMultiLearnableCharmConfiguration) specialConfiguration).learn(isExperienceLearned(charmElement));
       }
+    } catch (IllegalArgumentException e) {
+      messageIndicator.addMessage("CharmPersistence.NoCharmFound", //$NON-NLS-1$
+              MessageType.WARNING, charmId);
     }
   }
 
@@ -163,31 +179,31 @@ public class CharmConfigurationPersister {
         baseCharmName.append(i == components.length - 3 ? "" : ".");
       }
       if (components[components.length - 1].startsWith("Repurchase")) {
-    	  int count = Integer.parseInt(components[components.length - 1].replace("Repurchase", ""));
-    	  Element specialCharmElement = element.addElement(TAG_SPECIAL);
-    	  DefaultTrait trait = new LimitedTrait(new TraitType(TAG_LEARN_COUNT), SimpleTraitTemplate.createEssenceLimitedTemplate(0, 0, LowerableState.Default),
-                  null, context);
-    	  ISpecialCharmConfiguration specialConfiguration = config.getSpecialCharmConfiguration(baseCharmName.toString());
-    	  if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
-    		  IMultiLearnableCharmConfiguration multiConfig = (IMultiLearnableCharmConfiguration) specialConfiguration;
-    		  trait.setUncheckedCreationValue(multiConfig.getCreationLearnCount());
-    		  trait.setExperiencedValue(multiConfig.getCurrentLearnCount());
-    	  }
-    	  if (count > trait.getCurrentValue()) {
-	   		  if (isExperienceLearned) {
-	           	  trait.setUncheckedExperiencedValue(count);
-	          } else {
-	         	  trait.setUncheckedCreationValue(count);
-	          }  
-    	  }
-          traitPersister.saveTrait(specialCharmElement, TAG_LEARN_COUNT, trait);  
+        int count = Integer.parseInt(components[components.length - 1].replace("Repurchase", ""));
+        Element specialCharmElement = element.addElement(TAG_SPECIAL);
+        DefaultTrait trait = new LimitedTrait(new TraitType(TAG_LEARN_COUNT),
+                SimpleTraitTemplate.createEssenceLimitedTemplate(0, 0, LowerableState.Default), null, context);
+        ISpecialCharmConfiguration specialConfiguration = config.getSpecialCharmConfiguration(baseCharmName.toString());
+        if (specialConfiguration instanceof IMultiLearnableCharmConfiguration) {
+          IMultiLearnableCharmConfiguration multiConfig = (IMultiLearnableCharmConfiguration) specialConfiguration;
+          trait.setUncheckedCreationValue(multiConfig.getCreationLearnCount());
+          trait.setExperiencedValue(multiConfig.getCurrentLearnCount());
+        }
+        if (count > trait.getCurrentValue()) {
+          if (isExperienceLearned) {
+            trait.setUncheckedExperiencedValue(count);
+          } else {
+            trait.setUncheckedCreationValue(count);
+          }
+        }
+        traitPersister.saveTrait(specialCharmElement, TAG_LEARN_COUNT, trait);
       }
       if (components[components.length - 2].startsWith("Subeffect")) {
-    	  Element newElement = element.addElement(TAG_SPECIAL).addElement(TAG_SUBEFFECTS).addElement(TAG_SUBEFFECT);
-    	  boolean creationLearned = !ElementUtilities.getBooleanAttribute(element, ATTRIB_EXPERIENCE_LEARNED, true);
-    	  newElement.addAttribute(ATTRIB_ID, components[components.length - 1]);
-    	  newElement.addAttribute(ATTRIB_CREATION_LEARNED, "" + creationLearned);
-    	  newElement.addAttribute(ATTRIB_EXPERIENCE_LEARNED, "" + true);
+        Element newElement = element.addElement(TAG_SPECIAL).addElement(TAG_SUBEFFECTS).addElement(TAG_SUBEFFECT);
+        boolean creationLearned = !ElementUtilities.getBooleanAttribute(element, ATTRIB_EXPERIENCE_LEARNED, true);
+        newElement.addAttribute(ATTRIB_ID, components[components.length - 1]);
+        newElement.addAttribute(ATTRIB_CREATION_LEARNED, "" + creationLearned);
+        newElement.addAttribute(ATTRIB_EXPERIENCE_LEARNED, "" + true);
       }
     } else {
       baseCharmName.append(name);
@@ -199,7 +215,8 @@ public class CharmConfigurationPersister {
     return ElementUtilities.getBooleanAttribute(charmElement, ATTRIB_EXPERIENCE_LEARNED, false);
   }
 
-  private void loadCombos(Element parent, IComboConfiguration comboConfiguration, ICharmIdMap charms) throws PersistenceException {
+  private void loadCombos(Element parent, IComboConfiguration comboConfiguration,
+                          ICharmIdMap charms) throws PersistenceException {
     Element combosElement = parent.element(TAG_COMBOS);
     if (combosElement == null) {
       return;
@@ -214,12 +231,11 @@ public class CharmConfigurationPersister {
         boolean charmExperiencedLearned = isExperienceLearned(charmElement);
         String charmId = charmElement.attributeValue(ATTRIB_NAME);
         try {
-	        ICharm comboCharm = charms.getCharmById(charmId);
-	        comboConfiguration.addCharmToCombo(comboCharm, charmExperiencedLearned);
-        }
-        catch (IllegalArgumentException e) {
-        	messageIndicator.addMessage("CharmPersistence.NoCharmFound", //$NON-NLS-1$
-                    MessageType.WARNING, charmId);
+          ICharm comboCharm = charms.getCharmById(charmId);
+          comboConfiguration.addCharmToCombo(comboCharm, charmExperiencedLearned);
+        } catch (IllegalArgumentException e) {
+          messageIndicator.addMessage("CharmPersistence.NoCharmFound", //$NON-NLS-1$
+                  MessageType.WARNING, charmId);
         }
       }
       comboConfiguration.finalizeCombo();
