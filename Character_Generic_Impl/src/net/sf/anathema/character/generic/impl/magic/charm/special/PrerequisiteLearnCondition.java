@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
+import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
@@ -9,13 +10,19 @@ class PrerequisiteLearnCondition implements ICondition {
   private final ICharmLearnableArbitrator arbitrator;
   private final ICharm charm;
   private final String prereqEffect;
+  private final IBasicCharacterData data;
   private ComplexMultipleEffectCharm complexMultipleEffectCharm;
 
-  public PrerequisiteLearnCondition(ComplexMultipleEffectCharm complexMultipleEffectCharm, ICharmLearnableArbitrator arbitrator, ICharm charm, String prereqEffect) {
+  public PrerequisiteLearnCondition(IBasicCharacterData data,
+		  ComplexMultipleEffectCharm complexMultipleEffectCharm,
+		  ICharmLearnableArbitrator arbitrator,
+		  ICharm charm,
+		  String prereqEffect) {
     this.complexMultipleEffectCharm = complexMultipleEffectCharm;
     this.arbitrator = arbitrator;
     this.charm = charm;
     this.prereqEffect = prereqEffect;
+    this.data = data;
   }
 
   public boolean isFulfilled() {
@@ -23,7 +30,7 @@ class PrerequisiteLearnCondition implements ICondition {
       return false;
     }
     if (prereqEffect != null) {
-      for (ISubeffect effect : complexMultipleEffectCharm.effectList)
+      for (ISubeffect effect : complexMultipleEffectCharm.getSubeffectsForSession(data))
         if (effect.getId().equals(prereqEffect) && effect.isLearned())
           return true;
       return false;
