@@ -7,18 +7,18 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.lib.resources.IResources;
 
-@RegisteredReportContent(produces = Abyssal2ndResonanceContent.class)
-public class Abyssal2ndResonanceContentFactory implements ReportContentFactory<Abyssal2ndResonanceContent> {
+@RegisteredReportContent(produces = AbyssalResonanceContent.class)
+public class AbyssalResonanceContentFactory implements ReportContentFactory<AbyssalResonanceContent> {
 
   private IResources resources;
 
-  public Abyssal2ndResonanceContentFactory(IResources resources) {
+  public AbyssalResonanceContentFactory(IResources resources) {
     this.resources = resources;
   }
 
   @Override
-  public Abyssal2ndResonanceContent create(ReportSession session, IGenericCharacter character,
+  public AbyssalResonanceContent create(ReportSession session, IGenericCharacter character,
           IGenericDescription description) {
-    return new Abyssal2ndResonanceContent(resources, character);
+    return new AbyssalResonanceContent(resources, character);
   }
 }

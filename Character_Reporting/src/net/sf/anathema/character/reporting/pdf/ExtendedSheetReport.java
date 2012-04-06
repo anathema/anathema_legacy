@@ -7,8 +7,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
@@ -17,11 +15,9 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
-import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedFirstPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedMagicPageEncoder;
 import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
@@ -65,16 +61,15 @@ public class ExtendedSheetReport extends AbstractPdfReport {
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
     try {
-      IExtendedPartEncoder partEncoder = getPartEncoder(stattedCharacter);
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
 
       ReportSession session = new ReportSession(getContentRegistry(), character, description);
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
-      encoderList.add(new ExtendedFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
+      encoderList.add(new ExtendedFirstPageEncoder(getEncoderRegistry(), resources, configuration));
       encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), resources, configuration));
       Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
-      encoderList.add(new ExtendedMagicPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
+      encoderList.add(new ExtendedMagicPageEncoder(getEncoderRegistry(), resources, configuration));
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       for (PageEncoder encoder : encoderList) {
         encoder.encode(sheet, graphics, session);
@@ -87,17 +82,6 @@ public class ExtendedSheetReport extends AbstractPdfReport {
   private PageEncoder[] findAdditionalPages(PageSize pageSize, ReportSession session) {
     PageRegistry additionalPageRegistry = getReportingModuleObject().getAdditionalPageRegistry();
     return additionalPageRegistry.createEncoders(pageSize, getEncoderRegistry(), resources, session);
-  }
-
-  private IExtendedPartEncoder getPartEncoder(ICharacter character) {
-    ExtendedEncodingRegistry encodingRegistry = getEncodingRegistry();
-    ICharacterTemplate characterTemplate = character.getStatistics().getCharacterTemplate();
-    ICharacterType characterType = characterTemplate.getTemplateType().getCharacterType();
-    return encodingRegistry.getPartEncoder(characterType);
-  }
-
-  private ExtendedEncodingRegistry getEncodingRegistry() {
-    return getReportingModuleObject().getExtendedEncodingRegistry();
   }
 
   private EncoderRegistry getEncoderRegistry() {
@@ -123,6 +107,6 @@ public class ExtendedSheetReport extends AbstractPdfReport {
       return false;
     }
     ICharacter character = (ICharacter) itemData;
-    return character.hasStatistics() && getPartEncoder(character) != null;
+    return character.hasStatistics();
   }
 }

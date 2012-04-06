@@ -19,6 +19,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.ExtendedMag
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.magic.GenericCharmEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.willpower.ExtendedWillpowerEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
@@ -30,16 +31,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ANIMA;
+
 public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
 
   private EncoderRegistry encoderRegistry;
-  private IExtendedPartEncoder partEncoder;
 
-  public ExtendedMagicPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder,
-          IResources resources, PageConfiguration configuration) {
+  public ExtendedMagicPageEncoder(EncoderRegistry encoderRegistry, IResources resources, PageConfiguration configuration) {
     super(resources, configuration);
     this.encoderRegistry = encoderRegistry;
-    this.partEncoder = partEncoder;
   }
 
   @Override
@@ -155,7 +155,8 @@ public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
 
   private float encodeAnima(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height)
           throws DocumentException {
-    return encodeFixedBox(graphics, session, partEncoder.getAnimaEncoder(session), 3, 1, distanceFromTop, height);
+    ContentEncoder animaEncoder = encoderRegistry.createEncoder(getResources(), session, ANIMA);
+    return encodeFixedBox(graphics, session, animaEncoder, 3, 1, distanceFromTop, height);
   }
 
   private float encodeGenericCharms(SheetGraphics graphics, ReportSession session, float distanceFromTop,
@@ -211,6 +212,6 @@ public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
   }
 
   private boolean hasAnima(ReportSession session) {
-    return partEncoder.getAnimaEncoder(session) != null;
+    return encoderRegistry.hasEncoder(ANIMA, session);
   }
 }

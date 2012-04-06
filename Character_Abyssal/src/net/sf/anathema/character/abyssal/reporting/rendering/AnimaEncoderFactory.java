@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredEncoderFactory
-public class Anima2ndEditionEncoderFactory extends AbstractAnimaEncoderFactory {
+public class AnimaEncoderFactory extends AbstractAnimaEncoderFactory {
 
   @Override
   protected ITableEncoder getAnimaTableEncoder(IResources resources) {

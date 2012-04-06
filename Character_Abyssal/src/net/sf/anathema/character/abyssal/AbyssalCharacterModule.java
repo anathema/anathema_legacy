@@ -24,7 +24,7 @@ import net.sf.anathema.lib.util.Identificate;
 import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
 @CharacterModule
-public class Abyssal2ndCharacterModule extends NullObjectCharacterModuleAdapter {
+public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @SuppressWarnings("unused")
   private static final TemplateType abyssalTemplateType = new TemplateType(ABYSSAL);

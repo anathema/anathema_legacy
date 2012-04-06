@@ -9,15 +9,15 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredEncoderFactory
-public class Resonance2ndEditionEncoderFactory extends AbstractEncoderFactory {
+public class ResonanceEncoderFactory extends AbstractEncoderFactory {
 
-  public Resonance2ndEditionEncoderFactory() {
+  public ResonanceEncoderFactory() {
     super(EncoderIds.GREAT_CURSE);
   }
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new Resonance2ndEditionEncoder();
+    return new ResonanceEncoder();
   }
 
   @Override

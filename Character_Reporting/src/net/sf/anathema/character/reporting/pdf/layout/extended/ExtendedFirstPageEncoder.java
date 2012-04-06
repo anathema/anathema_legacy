@@ -21,15 +21,15 @@ import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatCo
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.GREAT_CURSE;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.YOZI_LIST;
+
 public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
   private EncoderRegistry encoderRegistry;
-  private IExtendedPartEncoder partEncoder;
 
-  public ExtendedFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder,
-          IResources resources, PageConfiguration pageConfiguration) {
+  public ExtendedFirstPageEncoder(EncoderRegistry encoderRegistry, IResources resources, PageConfiguration pageConfiguration) {
     super(resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
-    this.partEncoder = partEncoder;
   }
 
   @Override
@@ -86,7 +86,7 @@ public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
     float languageHeight = specialtyHeight - experienceIncrement;
     languageHeight = encodeLinguistics(graphics, session, thirdBottom - languageHeight, languageHeight);
     thirdBottom -= calculateBoxIncrement(languageHeight);
-    float additionalIncrement = encodeAdditional(graphics, session, thirdDistanceFromTop, thirdBottom);
+    float additionalIncrement = encodeYoziListEncoder(graphics, session, thirdDistanceFromTop, thirdBottom);
     thirdBottom -= additionalIncrement;
     // Third column - fill in (bottom-up) with backgrounds
     encodeBackgrounds(graphics, session, thirdDistanceFromTop, thirdBottom - thirdDistanceFromTop);
@@ -95,7 +95,8 @@ public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
   }
 
   private float encodeEssenceDots(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, session, getDotsEncoder(OtherTraitType.Essence, EssenceTemplate.SYSTEM_ESSENCE_MAX, "Essence"), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, session, getDotsEncoder(OtherTraitType.Essence, EssenceTemplate.SYSTEM_ESSENCE_MAX,
+            "Essence"), 3, 1, distanceFromTop, height);
   }
 
   private float encodePersonalInfo(SheetGraphics graphics, ReportSession session, float distanceFromTop, float maxHeight) throws DocumentException {
@@ -130,8 +131,8 @@ public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
   }
 
   private float encodeGreatCurse(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
-    ContentEncoder encoder = partEncoder.getGreatCurseEncoder(encoderRegistry, session);
-    if (encoder != null) {
+    if (encoderRegistry.hasEncoder(GREAT_CURSE, session)) {
+      ContentEncoder encoder = encoderRegistry.createEncoder(getResources(), session, GREAT_CURSE);
       return encodeFixedBox(graphics, session, encoder, 2, 1, distanceFromTop, height);
     } else {
       return 0;
@@ -179,9 +180,12 @@ public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
     return encodeFixedBox(graphics, session, encoder, 2, 1, distanceFromTop, height);
   }
 
-  private float encodeAdditional(SheetGraphics graphics, ReportSession session, float distanceFromTop, float bottom) throws DocumentException {
+  private float encodeYoziListEncoder(SheetGraphics graphics, ReportSession session, float distanceFromTop,
+          float bottom) throws DocumentException {
     float increment = 0;
-    for (IVariableContentEncoder encoder : partEncoder.getAdditionalFirstPageEncoders()) {
+    if (encoderRegistry.hasEncoder(YOZI_LIST, session)) {
+      IVariableContentEncoder encoder =
+              (IVariableContentEncoder) encoderRegistry.createEncoder(getResources(), session, YOZI_LIST);
       float height = encodeVariableBoxBottom(graphics, session, encoder, 3, 1, bottom, bottom - distanceFromTop - increment);
       increment += calculateBoxIncrement(height);
     }

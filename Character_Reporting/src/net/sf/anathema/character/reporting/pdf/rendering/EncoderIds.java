@@ -32,4 +32,5 @@ public interface EncoderIds {
   String WILLPOWER_SIMPLE = "WillpowerSimple";
   String WILLPOWER_EXTENDED = "WillpowerExtended";
   String VIRTUES = "Virtues";
+  String YOZI_LIST = "YoziList";
 }
