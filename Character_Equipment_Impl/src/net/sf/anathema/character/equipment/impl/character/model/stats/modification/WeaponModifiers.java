@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
-import net.sf.anathema.character.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.equipment.IWeaponModifiers;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -8,10 +8,10 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EquipmentModifiers implements IEquipmentModifiers {
+public class WeaponModifiers implements IWeaponModifiers {
   private final List<ITraitModifyingStats> stats = new ArrayList<ITraitModifyingStats>();
 
-  public EquipmentModifiers(List<IEquipmentItem> equipmentItems) {
+  public WeaponModifiers(List<IEquipmentItem> equipmentItems) {
     for (IEquipmentItem item : equipmentItems)
       for (IEquipmentStats equipmentStats : item.getStats()) {
         boolean isModifier = equipmentStats instanceof ITraitModifyingStats;

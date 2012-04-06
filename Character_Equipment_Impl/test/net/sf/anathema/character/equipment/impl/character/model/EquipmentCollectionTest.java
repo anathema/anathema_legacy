@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import net.sf.anathema.character.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.equipment.IWeaponModifiers;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -19,7 +19,7 @@ public class EquipmentCollectionTest {
     TraitModifyingStats traitModifyingStats = createStats();
     IEquipmentItem item = createItemWithStats(traitModifyingStats);
     collection.add(item);
-    IEquipmentModifiers modifiers = collection.createModifiers();
+    IWeaponModifiers modifiers = collection.createModifiers();
     assertThat(modifiers.getMeleeAccuracyMod(), is(5));
   }
 

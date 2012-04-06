@@ -29,6 +29,8 @@ import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrateg
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
+import java.util.List;
+
 public class CharacterModelContext implements ICharacterModelContext, ICharmContext, ITraitContext, IGenericSpecialtyContext {
 
   private final ProxyTraitValueStrategy traitValueStrategy = new ProxyTraitValueStrategy(
@@ -135,6 +137,11 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   @Override
   public void setFullyLoaded(boolean loaded) {
     isFullyLoaded = loaded;
+  }
+
+  @Override
+  public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
+    return character.getAllRegistered(interfaceClass);
   }
 
   @Override

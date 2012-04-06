@@ -1,8 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.social;
 
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PerformanceSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PresenceSocialAttack;
@@ -42,7 +44,9 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   protected ISocialCombatStats[] getPrintStats(ReportSession session) {
     IGenericCharacter character = session.getCharacter();
     IGenericTraitCollection traitCollection = character.getTraitCollection();
-    IEquipmentModifiers equipmentModifiers = character.getEquipmentModifiers();
+    IEquipmentAdditionalModel equipment = (IEquipmentAdditionalModel) character.getAdditionalModel(
+            IEquipmentAdditionalModelTemplate.ID);
+    ICharacterStatsModifiers equipmentModifiers = equipment.createStatsModifiers(character);
     return new ISocialCombatStats[]{new PresenceSocialAttack(traitCollection, equipmentModifiers), new PerformanceSocialAttack(
             traitCollection, equipmentModifiers), new InvestigationSocialAttack(traitCollection, equipmentModifiers)};
   }

@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.dummy;
 
+import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -280,19 +280,17 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public IEquipmentModifiers getEquipmentModifiers() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
   public void setLearnCount(String charmName, int newValue) {
-    // TODO Auto-generated method stub
-
+    // nothing to do
   }
 
   @Override
   public void addSpecialtyListChangeListener(IChangeListener listener) {
-    // TODO Auto-generated method stub
+    // nothing to do
+  }
+
+  @Override
+  public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
+    return Lists.newArrayList();
   }
 }

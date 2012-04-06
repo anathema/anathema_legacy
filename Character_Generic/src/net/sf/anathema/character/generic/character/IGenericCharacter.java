@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.character;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -47,8 +46,6 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
 
   public IAdditionalModel getAdditionalModel(String templateId);
 
-  public IEquipmentModifiers getEquipmentModifiers();
-
   public IConcept getConcept();
 
   public List<IMagic> getAllLearnedMagic();
@@ -78,4 +75,6 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   public boolean isSubeffectCharm(ICharm magic);
 
   public void addSpecialtyListChangeListener(IChangeListener listener);
+
+  <T> List<T> getAllRegistered(Class<T> interfaceClass);
 }

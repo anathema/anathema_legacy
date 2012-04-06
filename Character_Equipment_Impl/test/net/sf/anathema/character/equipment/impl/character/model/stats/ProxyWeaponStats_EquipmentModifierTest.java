@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.sf.anathema.character.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.equipment.IWeaponModifiers;
 import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
@@ -15,7 +15,7 @@ import static org.mockito.Mockito.when;
 
 public class ProxyWeaponStats_EquipmentModifierTest {
   IWeaponStats original = mock(IWeaponStats.class);
-  IEquipmentModifiers modifiers = mock(IEquipmentModifiers.class);
+  IWeaponModifiers modifiers = mock(IWeaponModifiers.class);
   ModifierFactory factory = mock(ModifierFactory.class);
   BaseMaterial material = mock(BaseMaterial.class);
   ProxyWeaponStats stats = new ProxyWeaponStats(original, material, factory);

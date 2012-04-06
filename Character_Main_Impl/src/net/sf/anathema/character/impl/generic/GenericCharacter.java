@@ -1,12 +1,12 @@
 package net.sf.anathema.character.impl.generic;
 
+import com.google.common.collect.Lists;
 import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -198,6 +198,18 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
+  public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
+    IAdditionalModel[] additionalModels = statistics.getExtendedConfiguration().getAdditionalModels();
+    List<T> registeredModels = Lists.newArrayList();
+    for (IAdditionalModel additionalModel : additionalModels) {
+      if (interfaceClass.isInstance(additionalModel)) {
+        registeredModels.add((T) additionalModel);
+      }
+    }
+    return registeredModels;
+  }
+
+  @Override
   public IGenericTrait[] getBackgrounds() {
     return statistics.getTraitConfiguration().getBackgrounds().getBackgrounds();
   }
@@ -205,11 +217,6 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public IAdditionalModel getAdditionalModel(String id) {
     return statistics.getExtendedConfiguration().getAdditionalModel(id);
-  }
-
-  @Override
-  public IEquipmentModifiers getEquipmentModifiers() {
-    return EquipmentModifiers.extractFromStatistics(statistics);
   }
 
   @Override

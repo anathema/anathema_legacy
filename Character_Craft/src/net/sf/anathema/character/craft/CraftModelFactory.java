@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 
 public class CraftModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new CraftAdditionalModel(additionalTemplate, context);
   }

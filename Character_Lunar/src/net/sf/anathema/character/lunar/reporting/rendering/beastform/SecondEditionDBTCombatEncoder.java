@@ -1,7 +1,8 @@
 package net.sf.anathema.character.lunar.reporting.rendering.beastform;
 
+import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
@@ -31,7 +32,7 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
     IBeastformModel additionalModel = (IBeastformModel) reportSession.getCharacter().getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getBeastTraitCollection();
     ICharacterType characterType = reportSession.getCharacter().getTemplate().getTemplateType().getCharacterType();
-    IEquipmentModifiers equipment = reportSession.getCharacter().getEquipmentModifiers();
+    ICharacterStatsModifiers equipment = CharacterStatsModifiers.extractFromCharacter(reportSession.getCharacter());
 
     int joinBattle = CharacterUtilities.getJoinBattle(traitCollection, equipment);
     int dodgeDV = CharacterUtilities.getDodgeDv(characterType, traitCollection, equipment);

@@ -5,8 +5,11 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -30,10 +33,13 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
 
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
-    IEquipmentModifiers equipment = reportSession.getCharacter().getEquipmentModifiers();
+    IGenericCharacter character = reportSession.getCharacter();
+    IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) character.getAdditionalModel(
+            IEquipmentAdditionalModelTemplate.ID);
+    ICharacterStatsModifiers equipment = equipmentModel.createStatsModifiers(character);
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height);
-    float valueHeight = encodeValues(graphics, valueBounds, reportSession.getCharacter().getTraitCollection(), equipment);
+    float valueHeight = encodeValues(graphics, valueBounds, character.getTraitCollection(), equipment);
     Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
 
     ITableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources);
@@ -74,9 +80,11 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
 
   private void createCommonDVRow(SheetGraphics graphics, PdfPTable table, String sourceId) {
     Font commentFont = graphics.createCommentFont();
-    String sourceName = resources.getString("Sheet.SocialCombat.DVModifiers." + sourceId + ".Name"); //$NON-NLS-1$//$NON-NLS-2$
+    String sourceName = resources.getString(
+            "Sheet.SocialCombat.DVModifiers." + sourceId + ".Name"); //$NON-NLS-1$//$NON-NLS-2$
     table.addCell(createCommonActionsCell(new Phrase(sourceName, commentFont)));
-    String dvModifier = resources.getString("Sheet.SocialCombat.DVModifiers." + sourceId + ".DV"); //$NON-NLS-1$//$NON-NLS-2$
+    String dvModifier = resources.getString(
+            "Sheet.SocialCombat.DVModifiers." + sourceId + ".DV"); //$NON-NLS-1$//$NON-NLS-2$
     table.addCell(createCommonActionsCell(new Phrase(dvModifier, commentFont)));
   }
 
@@ -110,11 +118,14 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
 
   private void addCommonActionsRow(SheetGraphics graphics, PdfPTable table, String actionId) {
     Font commentFont = graphics.createCommentFont();
-    String actionName = resources.getString("Sheet.SocialCombat.CommonActions." + actionId + ".Name"); //$NON-NLS-1$//$NON-NLS-2$
+    String actionName = resources.getString(
+            "Sheet.SocialCombat.CommonActions." + actionId + ".Name"); //$NON-NLS-1$//$NON-NLS-2$
     table.addCell(createCommonActionsCell(new Phrase(actionName, commentFont)));
-    String actionSpeed = resources.getString("Sheet.SocialCombat.CommonActions." + actionId + ".Speed"); //$NON-NLS-1$//$NON-NLS-2$
+    String actionSpeed = resources.getString(
+            "Sheet.SocialCombat.CommonActions." + actionId + ".Speed"); //$NON-NLS-1$//$NON-NLS-2$
     table.addCell(createCommonActionsCell(new Phrase(actionSpeed, commentFont)));
-    String actionDV = resources.getString("Sheet.SocialCombat.CommonActions." + actionId + ".DV"); //$NON-NLS-1$//$NON-NLS-2$
+    String actionDV = resources.getString(
+            "Sheet.SocialCombat.CommonActions." + actionId + ".DV"); //$NON-NLS-1$//$NON-NLS-2$
     table.addCell(createCommonActionsCell(new Phrase(actionDV, commentFont)));
   }
 
@@ -124,7 +135,8 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     return cell;
   }
 
-  private float encodeValues(SheetGraphics graphics, Bounds bounds, IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
+  private float encodeValues(SheetGraphics graphics, Bounds bounds, IGenericTraitCollection traitCollection,
+                             ICharacterStatsModifiers equipment) {
     String joinLabel = resources.getString("Sheet.SocialCombat.JoinDebateBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.SocialCombat.DodgeMDV"); //$NON-NLS-1$
     int joinDebate = CharacterUtilities.getJoinDebate(traitCollection, equipment);

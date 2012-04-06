@@ -10,11 +10,14 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.equipment.impl.character.model.print.EquipmentPrintModel;
+import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -78,6 +81,11 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   @Override
   public IEquipmentCharacterOptionProvider getCharacterOptionProvider() {
     return this;
+  }
+
+  @Override
+  public ICharacterStatsModifiers createStatsModifiers(IGenericCharacter character) {
+    return CharacterStatsModifiers.extractFromCharacter(character);
   }
 
   private MagicalMaterial evaluateDefaultMaterial() {
@@ -297,7 +305,12 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   @Override
-  public int getTotalAttunementCost() {
+  public void addChangeListener(final IChangeListener listener) {
+    modelChangeControl.addChangeListener(listener);
+  }
+
+  @Override
+  public int getMotesExpended() {
     int total = 0;
     for (IEquipmentItem item : equipmentItems) {
       for (IEquipmentStats stats : item.getStats())
@@ -305,11 +318,6 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
           total += ((IArtifactStats) stats).getAttuneCost();
     }
     return total;
-  }
-
-  @Override
-  public void addChangeListener(final IChangeListener listener) {
-    modelChangeControl.addChangeListener(listener);
   }
 
   private class SpecialtyPrintRemover implements IChangeListener {

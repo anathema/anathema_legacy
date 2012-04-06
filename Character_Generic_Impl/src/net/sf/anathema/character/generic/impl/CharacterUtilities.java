@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -11,20 +11,20 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class CharacterUtilities {
 
-  public static int getDodgeMdv(IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
+  public static int getDodgeMdv(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
     int baseValue = getRoundDownDv(traitCollection, OtherTraitType.Willpower, AbilityType.Integrity,
             OtherTraitType.Essence);
     baseValue += equipment.getMDDVMod();
     return Math.max(baseValue, 0);
   }
 
-  public static int getJoinBattle(IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
+  public static int getJoinBattle(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
     int baseValue = getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
     baseValue += equipment.getJoinBattleMod();
     return Math.max(baseValue, 1);
   }
 
-  public static int getJoinDebate(IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
+  public static int getJoinDebate(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
     int baseValue = getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
     baseValue += equipment.getJoinDebateMod();
     return Math.max(baseValue, 1);
@@ -94,7 +94,7 @@ public class CharacterUtilities {
   }
 
   public static int getDodgeDv(ICharacterType characterType, IGenericTraitCollection traitCollection,
-                               IEquipmentModifiers equipment) {
+                               ICharacterStatsModifiers equipment) {
     int dv;
     int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
     if (essenceValue > 1) {

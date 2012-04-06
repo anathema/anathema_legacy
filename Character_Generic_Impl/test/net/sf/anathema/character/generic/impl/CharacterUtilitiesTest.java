@@ -1,8 +1,7 @@
 package net.sf.anathema.character.generic.impl;
 
 import net.sf.anathema.character.generic.dummy.DummyGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
-import net.sf.anathema.character.generic.impl.CharacterUtilities;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -15,7 +14,7 @@ import static org.mockito.Mockito.mock;
 public class CharacterUtilitiesTest {
 
   private DummyGenericTraitCollection traitCollection = new DummyGenericTraitCollection();
-  private IEquipmentModifiers modifiers = mock(IEquipmentModifiers.class);
+  private ICharacterStatsModifiers modifiers = mock(ICharacterStatsModifiers.class);
 
   @Test
   public void testDodgeMdvWithEvenAttributeSum() throws Exception {

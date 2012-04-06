@@ -34,6 +34,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
         additionalRules);
   }
 
+  @Override
   public String getPersonalPool() {
     Ensure.ensureTrue("No Essence User", isEssenceUser()); //$NON-NLS-1$
     if (!hasAdditionalPools()) {
@@ -42,10 +43,12 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     return poolStrategy.getStandardPersonalPool() + " (" + poolStrategy.getExtendedPersonalPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
   
+  @Override
   public int getPersonalPoolValue() {
     return poolStrategy.getFullPersonalPool();
   }
 
+  @Override
   public String getPeripheralPool() {
     Ensure.ensureTrue("No Peripheral Pool", hasPeripheralPool()); //$NON-NLS-1$
     if (!hasAdditionalPools()) {
@@ -54,23 +57,28 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     return poolStrategy.getStandardPeripheralPool() + " (" + poolStrategy.getExtendedPeripheralPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
   
+  @Override
   public int getPeripheralPoolValue() {
     return poolStrategy.getFullPeripheralPool();
   }
   
+  @Override
   public int getOverdrivePoolValue() {
     return poolStrategy.getOverdrivePool();
   }
   
+  @Override
   public IdentifiedInteger[] getComplexPools() {
     return poolStrategy.getComplexPools();
   }
   
+  @Override
   public String getAttunedPool()
   {
     return "" + poolStrategy.getAttunementExpenditures();
   }
   
+  @Override
   public int getAttunedPoolValue() {
     return poolStrategy.getAttunementExpenditures();
   }
@@ -83,15 +91,18 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 	  return false;
   }
 
+  @Override
   public boolean isEssenceUser() {
     return essenceTemplate.isEssenceUser();
   }
 
+  @Override
   public boolean hasPeripheralPool() {
     return isEssenceUser() && (poolStrategy.getExtendedPeripheralPool() != 0 ||
     		poolStrategy.getUnmodifiedPeripheralPool() != 0);
   }
 
+  @Override
   public void addPoolChangeListener(IChangeListener listener) {
     poolStrategy.addPoolChangeListener(listener);
   }

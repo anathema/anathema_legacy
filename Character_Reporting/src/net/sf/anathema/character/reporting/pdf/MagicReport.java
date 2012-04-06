@@ -173,6 +173,7 @@ public class MagicReport extends AbstractPdfReport {
     } while (columnText.isOverflow());
   }
 
+  @Override
   public boolean supports(IItem item) {
     if (item == null || !(item.getItemData() instanceof ICharacter)) {
       return false;
