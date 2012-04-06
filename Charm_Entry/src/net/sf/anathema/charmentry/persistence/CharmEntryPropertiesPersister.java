@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.magic.charms.duration.UntilEventDuratio
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.impl.persistence.SecondEditionEdition;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.io.BufferedWriter;
@@ -41,7 +40,7 @@ public class CharmEntryPropertiesPersister {
   }
 
   private String getFileName(CharacterType type) {
-      return "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + "_" + new SecondEditionEdition().getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$;
+    throw new RuntimeException("Path is outdated. Please adjust to current protocol.");
   }
 
   public void writeDurationProperty(IResources resources, IDuration duration) throws IOException {

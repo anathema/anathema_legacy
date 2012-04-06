@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 
-public class SecondEditionEdition implements IExaltedEdition {
+public class SecondEdition implements IExaltedEdition {
   public static final String SECOND_EDITION = "SecondEdition";
 
   @Override
@@ -12,7 +12,7 @@ public class SecondEditionEdition implements IExaltedEdition {
 
   @Override
   public boolean equals(Object obj) {
-    return obj instanceof SecondEditionEdition;
+    return obj instanceof SecondEdition;
   }
 
   @Override

@@ -5,11 +5,12 @@ import net.sf.anathema.character.generic.impl.rules.SourceBook;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.impl.persistence.SecondEditionEdition;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import org.dom4j.Element;
 
 import java.util.List;
+
+import static net.sf.anathema.character.impl.persistence.SecondEdition.SECOND_EDITION;
 
 public class CharacterSourceBookFilter extends SourceBookCharmFilter {
 
@@ -43,7 +44,7 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
       if (list != null) for (IExaltedSourceBook book : list) {
         Element bookElement = sourceBookFilter.addElement(TAG_SOURCEBOOK);
         bookElement.addAttribute(ATTRIB_NAME, book.getId());
-        bookElement.addAttribute(ATTRIB_EDITION, new SecondEditionEdition().getId());
+        bookElement.addAttribute(ATTRIB_EDITION, SECOND_EDITION);
       }
     sourceBookFilter.addAttribute(ATTRIB_SHOWPREREQ, includePrereqs ? "true" : "false");
   }
