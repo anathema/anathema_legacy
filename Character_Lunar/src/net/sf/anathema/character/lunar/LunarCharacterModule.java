@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.lunar.beastform.BeastformModelFactory;
@@ -38,7 +37,6 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.LUNAR;
 
 @CharacterModule
@@ -56,9 +54,12 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final TemplateType castelessType = new TemplateType(LUNAR,
           new Identificate("Casteless")); //$NON-NLS-1$
   private static final TemplateType dreamsType = new TemplateType(LUNAR, new Identificate("Dreams")); //$NON-NLS-1$
-  private static final TemplateType dreamsEstablished = new TemplateType(LUNAR, new Identificate("DreamsEstablished")); //$NON-NLS-1$
-  private static final TemplateType dreamsInfluential = new TemplateType(LUNAR, new Identificate("DreamsInfluential")); //$NON-NLS-1$
-  private static final TemplateType dreamsLegendary = new TemplateType(LUNAR, new Identificate("DreamsLegendary")); //$NON-NLS-1$
+  private static final TemplateType dreamsEstablished = new TemplateType(LUNAR,
+          new Identificate("DreamsEstablished")); //$NON-NLS-1$
+  private static final TemplateType dreamsInfluential = new TemplateType(LUNAR,
+          new Identificate("DreamsInfluential")); //$NON-NLS-1$
+  private static final TemplateType dreamsLegendary = new TemplateType(LUNAR,
+          new Identificate("DreamsLegendary")); //$NON-NLS-1$
 
   private static final TemplateType[] dreams = {dreamsType, dreamsEstablished, dreamsInfluential, dreamsLegendary};
 
@@ -84,13 +85,11 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(LunarVirtueFlawTemplate.TEMPLATE_ID,
             new LunarVirtueFlawParser());
 
-    Map<IExaltedEdition, ICasteType[]> editionMap = new HashMap<IExaltedEdition, ICasteType[]>();
-    editionMap.put(SecondEdition, LunarCaste.values());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
     templateMap.put(castelessType, new ICasteType[]{});
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());
     characterGenerics.getCasteCollectionRegistry().register(LUNAR,
-            new CasteCollection(LunarCaste.values(), editionMap, templateMap));
+            new CasteCollection(LunarCaste.values(), templateMap));
   }
 
   @Override

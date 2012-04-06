@@ -5,11 +5,11 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 
 public interface ICasteCollection {
 
-  public boolean containsCasteType(String casteTypeId);
+  boolean containsCasteType(String casteTypeId);
 
-  public ICasteType[] getAllCasteTypes(IExaltedEdition edition, ITemplateType template);
+  ICasteType[] getAllCasteTypes(ITemplateType template);
 
-  public ICasteType getById(String casteTypeId);
+  ICasteType getById(String casteTypeId);
 
-  public boolean isEmpty();
+  boolean isEmpty();
 }

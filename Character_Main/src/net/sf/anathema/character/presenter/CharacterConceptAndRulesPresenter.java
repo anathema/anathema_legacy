@@ -6,7 +6,6 @@ import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.IIntegerDescription;
@@ -190,15 +189,12 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
   private boolean initCastePresentation() {
     final ICharacterTemplate template = statistics.getCharacterTemplate();
-    IExaltedEdition edition = statistics.getCharacterContext().getBasicCharacterContext().getEdition();
-    if (template.getCasteCollection().getAllCasteTypes(edition,
-            statistics.getCharacterTemplate().getTemplateType()).length <= 0) {
+    if (template.getCasteCollection().getAllCasteTypes(statistics.getCharacterTemplate().getTemplateType()).length <= 0) {
       return false;
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     IObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
-    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(edition,
-            statistics.getCharacterTemplate().getTemplateType());
+    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(statistics.getCharacterTemplate().getTemplateType());
     final IObjectSelectionView<ICasteType> casteView = view.addObjectSelectionView(
             resources.getString(casteLabelResourceKey), allCasteTypes, new ObjectUiListCellRenderer(casteUi), false);
     final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();

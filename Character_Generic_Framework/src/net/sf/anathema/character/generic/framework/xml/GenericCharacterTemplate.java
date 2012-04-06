@@ -52,7 +52,6 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   // This is volatile instead of final to allow clone to be implemented
   private volatile List<IAdditionalTemplate> additionalTemplates = new ArrayList<IAdditionalTemplate>();
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
-  private IExaltedEdition edition;
   private boolean npcOnly;
 
   @Override
@@ -163,11 +162,6 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
     this.experienceCosts = experienceCosts;
   }
 
-  @Override
-  public IExaltedEdition getEdition() {
-    return edition;
-  }
-
   public void setTraitFactory(GenericTraitTemplateFactory factory) {
     traitTemplateCollection = new TraitTemplateCollection(factory);
   }
@@ -239,10 +233,6 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
 
   public void setAdditionalRules(GenericAdditionalRules rules) {
     this.additionalRules = rules;
-  }
-
-  public void setEdition(IExaltedEdition edition) {
-    this.edition = edition;
   }
 
   public void setNpcOnly() {

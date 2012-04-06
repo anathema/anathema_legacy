@@ -12,7 +12,6 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import org.junit.Before;
 import org.junit.Test;
 
-import static net.sf.anathema.character.generic.impl.rules.ExaltedEdition.SecondEdition;
 import static net.sf.anathema.character.generic.type.CharacterType.DB;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -33,7 +32,7 @@ public class ExaltedCharacterPersisterTest {
 
   @Before
   public void createCharacterConfiguration() {
-    template = new SimpleDummyCharacterTemplate(DB, null, SecondEdition);
+    template = new SimpleDummyCharacterTemplate(DB, null);
     configuration = new CharacterStatisticsConfiguration();
     configuration.setTemplate(template);
   }

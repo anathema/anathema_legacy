@@ -7,7 +7,5 @@ public interface ICharacterExternalsTemplate {
 
   ITemplateType getTemplateType();
 
-  IExaltedEdition getEdition();
-
   IPresentationProperties getPresentationProperties();
 }
