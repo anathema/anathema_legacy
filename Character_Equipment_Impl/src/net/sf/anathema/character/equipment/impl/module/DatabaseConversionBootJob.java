@@ -9,7 +9,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWe
 import net.sf.anathema.character.equipment.impl.item.model.db4o.EquipmentDatabaseConnectionManager;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
-import net.sf.anathema.character.impl.persistence.SecondEditionRules;
+import net.sf.anathema.character.impl.persistence.SecondEditionEdition;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.view.IAnathemaView;
@@ -95,7 +95,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     IEquipmentStats[] stats = template.getStats();
     for (IEquipmentStats stat : stats) {
       if (stat instanceof IShieldStats) {
-        template.removeStats(new SecondEditionRules(), stat);
+        template.removeStats(new SecondEditionEdition(), stat);
       }
     }
   }
