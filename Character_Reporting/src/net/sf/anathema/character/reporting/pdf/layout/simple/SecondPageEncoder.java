@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.SimpleCharmContent;
-import net.sf.anathema.character.reporting.pdf.layout.Body;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
@@ -26,8 +25,7 @@ public class SecondPageEncoder implements PageEncoder {
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
     SheetPage page = sheet.startPortraitPage(graphics, session);
-    Body body = page.getBody();
-    LayoutField backgrounds = page.place(BACKGROUNDS).atStartOf(body).withHeight(BACKGROUND_HEIGHT).now();
+    LayoutField backgrounds = page.place(BACKGROUNDS).atStartOf(page).withHeight(BACKGROUND_HEIGHT).now();
     LayoutField possessions = page.place(POSSESSIONS).rightOf(backgrounds).withSameHeight().now();
     LayoutField languages = page.place(LANGUAGES).rightOf(possessions).withHeight(LANGUAGE_HEIGHT).now();
     page.place(EXPERIENCE).below(languages).alignBottomTo(backgrounds).now();
@@ -41,8 +39,7 @@ public class SecondPageEncoder implements PageEncoder {
     SimpleCharmContent charmContent = session.createContent(SimpleCharmContent.class);
     while (charmContent.hasUnprintedCharms()) {
       SheetPage page = sheet.startPortraitPage(graphics, session);
-      Body body = page.getBody();
-      page.place(CHARMS_AND_SORCERY).atStartOf(body).fillToBottomOfPage().andColumnSpan(3).now();
+      page.place(CHARMS_AND_SORCERY).atStartOf(page).fillToBottomOfPage().andColumnSpan(3).now();
     }
   }
 }

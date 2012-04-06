@@ -3,16 +3,12 @@ package net.sf.anathema.character.reporting.pdf.layout.landscape;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.SimpleCharmContent;
-import net.sf.anathema.character.reporting.pdf.layout.Body;
-import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
@@ -39,8 +35,7 @@ public class SecondPageEncoder implements PageEncoder {
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
     SheetPage page = sheet.startLandscapePage(graphics, session);
-    Body body = page.getBody();
-    LayoutField genericCharms = page.place(GENERIC_CHARMS).atStartOf(body).withPreferredHeight().andColumnSpan(3).now();
+    LayoutField genericCharms = page.place(GENERIC_CHARMS).atStartOf(page).withPreferredHeight().andColumnSpan(3).now();
     page.place(CHARMS_AND_SORCERY).below(genericCharms).fillToBottomOfPage().andColumnSpan(3).now();
 
     LayoutField combat = page.place(COMBAT).rightOf(genericCharms).withHeight(COMBAT_HEIGHT).andColumnSpan(2).now();
@@ -55,8 +50,7 @@ public class SecondPageEncoder implements PageEncoder {
     SimpleCharmContent charmContent = session.createContent(SimpleCharmContent.class);
     while (charmContent.hasUnprintedCharms()) {
       SheetPage page = sheet.startPortraitPage(graphics, session);
-      Body body = page.getBody();
-      page.place(CHARMS_AND_SORCERY).atStartOf(body).fillToBottomOfPage().andColumnSpan(3).now();
+      page.place(CHARMS_AND_SORCERY).atStartOf(page).fillToBottomOfPage().andColumnSpan(3).now();
     }
   }
 }

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.reporting.pdf.layout.field;
 
-import net.sf.anathema.character.reporting.pdf.layout.Body;
+import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 
 public interface Placement {
 
-  HeightWithoutParent atStartOf(Body body);
+  HeightWithoutParent atStartOf(SheetPage body);
   
   Height below(LayoutField field);
   

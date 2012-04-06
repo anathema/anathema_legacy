@@ -2,20 +2,30 @@ package net.sf.anathema.character.reporting.pdf.layout.simple;
 
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
-import net.sf.anathema.character.reporting.pdf.layout.Body;
-import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.*;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ABILITIES_WITH_CRAFTS_AND_SPECIALTIES;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ANIMA;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ATTRIBUTES;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.COMBAT;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ESSENCE_SIMPLE;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.GREAT_CURSE;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.HEALTH_AND_MOVEMENT;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.INTIMACIES_SIMPLE;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.MERITS_AND_FLAWS;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.NOTES;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.PANOPLY;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.PERSONAL_INFO;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.SOCIAL_COMBAT;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.VIRTUES;
+import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.WILLPOWER_SIMPLE;
 
 public class FirstPageEncoder implements PageEncoder {
 
@@ -36,8 +46,7 @@ public class FirstPageEncoder implements PageEncoder {
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
     SheetPage page = sheet.startPortraitPage(graphics, session, FIRST_PAGE_CONTENT_HEIGHT);
-    Body body = page.getBody();
-    LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).andColumnSpan(2).now();
+    LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(page).withHeight(FIRST_ROW_HEIGHT).andColumnSpan(2).now();
     LayoutField essence = page.place(ESSENCE_SIMPLE).rightOf(personalInfo).withSameHeight().now();
     LayoutField attributes = page.place(ATTRIBUTES).below(personalInfo).withHeight(ATTRIBUTE_HEIGHT).now();
     page.place(ABILITIES_WITH_CRAFTS_AND_SPECIALTIES).below(attributes).fillToBottomOfPage().now();

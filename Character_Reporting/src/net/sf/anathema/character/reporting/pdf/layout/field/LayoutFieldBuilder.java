@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.layout.field;
 
-import net.sf.anathema.character.reporting.pdf.layout.Body;
+import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 
 public class LayoutFieldBuilder implements Height, Placement, ColumnSpan {
 
@@ -19,8 +19,8 @@ public class LayoutFieldBuilder implements Height, Placement, ColumnSpan {
   }
 
   @Override
-  public HeightWithoutParent atStartOf(Body body) {
-    this.alignField = LayoutField.CreateUpperLeftFieldWithHeightAndColumnSpan(body, 0, 1);
+  public HeightWithoutParent atStartOf(SheetPage page) {
+    this.alignField = LayoutField.CreateUpperLeftFieldWithHeightAndColumnSpan(page.getBody(), 0, 1);
     this.columnIndex = 0;
     this.fromTop = 0;
     return this;
