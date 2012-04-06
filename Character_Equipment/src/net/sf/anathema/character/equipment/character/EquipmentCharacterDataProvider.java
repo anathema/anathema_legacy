@@ -42,7 +42,7 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
     switch (item.getMaterialComposition()) {
       default:
       case None:
-        return null;
+        return new ArtifactAttuneType[0];
       case Fixed:
       case Variable:
         return MagicalMaterial.getAttunementTypes(context.getBasicCharacterContext().getCharacterType(), material);
