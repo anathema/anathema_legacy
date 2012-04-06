@@ -40,6 +40,9 @@ public class RegisteredEncoderList {
   }
 
   public boolean hasContentFor(ReportSession session, String encoderId) {
+    if (!encoderRegistry.hasEncoder(encoderId, session)) {
+      return false;
+    }
     ContentEncoder encoder = encoderRegistry.createEncoder(resources, session, encoderId);
     return encoder.hasContent(session);
   }

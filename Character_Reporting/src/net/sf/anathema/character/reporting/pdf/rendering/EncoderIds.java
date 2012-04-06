@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.pdf.rendering;
 @SuppressWarnings({"HardCodedStringLiteral", "DuplicateStringLiteralInspection"})
 public interface EncoderIds {
 
+  String ABILITIES_WITH_CRAFTS = "AbilitiesWithCrafts";
   String ABILITIES_WITH_CRAFTS_AND_SPECIALTIES = "AbilitiesWithCraftsAndSpecialties";
   String ABILITIES_WITH_SPECIALS_TWO_COLUMN = "AbilitiesWithSpecialtiesTwoColumn";
   String ANIMA = "Anima";
@@ -31,6 +32,7 @@ public interface EncoderIds {
   String PANOPLY = "Panoply";
   String PERSONAL_INFO = "PersonalInfo";
   String POSSESSIONS = "Possessions";
+  String SPECIALTIES = "Specialties";
   String SOCIAL_COMBAT = "SocialCombat";
   String WILLPOWER_DOTS = "WillpowerDots";
   String WILLPOWER_SIMPLE = "WillpowerSimple";

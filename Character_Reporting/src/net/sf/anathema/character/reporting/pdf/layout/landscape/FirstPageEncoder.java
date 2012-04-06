@@ -17,7 +17,6 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.EXPER
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.GREAT_CURSE;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.INTIMACIES_EXTENDED;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.LANGUAGES;
-import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.MERITS_AND_FLAWS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.NOTES;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.PERSONAL_INFO;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.POSSESSIONS;
@@ -52,8 +51,7 @@ public class FirstPageEncoder implements PageEncoder {
 
     LayoutField virtues = page.place(VIRTUES).rightOf(essence).withHeight(VIRTUE_HEIGHT).now();
     LayoutField greatCurse = page.place(GREAT_CURSE).below(virtues).alignBottomTo(languages).now();
-    LayoutField social =
-            page.place(SOCIAL_COMBAT, MERITS_AND_FLAWS).below(greatCurse).withHeight(SOCIAL_COMBAT_HEIGHT).now();
+    LayoutField social = page.place(SOCIAL_COMBAT).below(greatCurse).withHeight(SOCIAL_COMBAT_HEIGHT).now();
     LayoutField intimacies = page.place(INTIMACIES_EXTENDED, NOTES).below(social).fillToBottomOfPage().now();
   }
 }

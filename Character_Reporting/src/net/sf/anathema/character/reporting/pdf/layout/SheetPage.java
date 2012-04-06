@@ -17,6 +17,11 @@ public class SheetPage {
     }
 
     @Override
+    public boolean isActive() {
+      return true;
+    }
+
+    @Override
     public LayoutField encode(LayoutField field) {
       if (field.isInvisible()) {
         return field;
@@ -38,11 +43,13 @@ public class SheetPage {
     }
 
     @Override
+    public boolean isActive() {
+      return encoderList.hasContentFor(metrics.getSession(), encoderId);
+    }
+
+    @Override
     public LayoutField encode(LayoutField field) {
       if (field.isInvisible()) {
-        return field;
-      }
-      if (!encoderList.hasContentFor(metrics.getSession(), encoderId)) {
         return field;
       }
       return encoderList.encodeBox(graphics, metrics.getSession(), field, encoderId);

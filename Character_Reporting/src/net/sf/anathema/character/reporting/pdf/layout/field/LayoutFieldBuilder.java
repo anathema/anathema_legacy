@@ -78,11 +78,20 @@ public class LayoutFieldBuilder implements Height, Placement, ColumnSpan {
 
   @Override
   public LayoutField now() {
-    LayoutField field = buildField();
+    LayoutField field = buildField(new HeightStrategy() {
+      @Override
+      public float getHeight(float contentWidth) {
+        if (!encoder.isActive()) {
+          return 0f;
+        }
+        return heightStrategy.getHeight(contentWidth);
+      }
+    });
     return encoder.encode(field);
   }
 
-  private LayoutField buildField() {
-    return alignField.createForFromTopAndHeightAndColumnSpanAndColumnIndex(fromTop, heightStrategy, columnSpan, columnIndex);
+  private LayoutField buildField(HeightStrategy buildHeight) {
+    return alignField
+            .createForFromTopAndHeightAndColumnSpanAndColumnIndex(fromTop, buildHeight, columnSpan, columnIndex);
   }
 }
