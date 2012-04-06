@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.content.willpower;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.impl.persistence.SecondEditionEdition;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.general.BulletList;
 import net.sf.anathema.character.reporting.pdf.rendering.general.ListUtils;
@@ -39,8 +38,8 @@ public class WillpowerContent extends AbstractSubBoxContent {
   }
 
   private BulletList createBulletList(String resourceBase) {
-    String header = ListUtils.getRequiredString(getResources(), new SecondEditionEdition(), resourceBase);
-    String[] items = ListUtils.getAvailableLineItems(getResources(), new SecondEditionEdition(), resourceBase);
+    String header = ListUtils.getRequiredString(getResources(), resourceBase);
+    String[] items = ListUtils.getAvailableLineItems(getResources(), resourceBase);
     return new BulletList(header, items);
   }
 }

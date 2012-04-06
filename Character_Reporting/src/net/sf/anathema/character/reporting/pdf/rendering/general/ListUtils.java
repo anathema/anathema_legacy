@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Phrase;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
@@ -16,10 +15,10 @@ public class ListUtils {
           "Seventh", "Eighth", //$NON-NLS-1$ //$NON-NLS-2$
           "Ninth", "Tenth"}; //$NON-NLS-1$ //$NON-NLS-2$
 
-  public static void addBulletedListText(IResources resources, Chunk symbolChunk, IExaltedEdition edition, String resourceBase, Phrase phrase,
+  public static void addBulletedListText(IResources resources, Chunk symbolChunk, String resourceBase, Phrase phrase,
                                          boolean showHeader) {
-    String header = showHeader ? getRequiredString(resources, edition, resourceBase) : null;
-    String[] items = getAvailableLineItems(resources, edition, resourceBase);
+    String header = showHeader ? getRequiredString(resources, resourceBase) : null;
+    String[] items = getAvailableLineItems(resources, resourceBase);
     addBulletList(phrase, symbolChunk, header, items);
   }
 
@@ -33,10 +32,10 @@ public class ListUtils {
     }
   }
 
-  public static String[] getAvailableLineItems(IResources resources, IExaltedEdition edition, String resourceBase) {
+  public static String[] getAvailableLineItems(IResources resources, String resourceBase) {
     List<String> items = new ArrayList<String>();
     for (String itemId : ListUtils.RESOURCE_ID) {
-      String lineItem = getRequiredString(resources, resourceBase, edition, itemId);
+      String lineItem = getRequiredString(resources, resourceBase, itemId);
       if (lineItem != null) {
         items.add(lineItem);
       }
@@ -44,24 +43,20 @@ public class ListUtils {
     return items.toArray(new String[items.size()]);
   }
 
-  public static String getRequiredString(IResources resources, IExaltedEdition edition, String resourceBase) {
-    return getRequiredString(resources, resourceBase, edition, null);
+  public static String getRequiredString(IResources resources, String resourceBase) {
+    return getRequiredString(resources, resourceBase, null);
   }
 
-  public static String getRequiredString(IResources resources, String resourceBase, IExaltedEdition edition, String resourceId) {
-    String baseId, editionId;
+  private static String getRequiredString(IResources resources, String resourceBase, String resourceId) {
+    String baseId;
     if (resourceId == null) {
       baseId = resourceBase;
-      editionId = resourceBase + "." + edition.getId(); //$NON-NLS-1$
     } else {
       baseId = resourceBase + "." + resourceId; //$NON-NLS-1$
-      editionId = resourceBase + "." + edition.getId() + "." + resourceId; //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     String resource = null;
-    if (resources.supportsKey(editionId)) {
-      resource = resources.getString(editionId);
-    } else if (resources.supportsKey(baseId)) {
+    if (resources.supportsKey(baseId)) {
       resource = resources.getString(baseId);
     }
     return resource;

@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.impl.persistence.SecondEditionEdition;
+import net.sf.anathema.character.impl.persistence.SecondEdition;
 
 import java.util.List;
 import java.util.Map;
@@ -46,7 +46,7 @@ public class EquipmentTemplate implements IEquipmentTemplate {
 
   @Override
   public IEquipmentStats[] getStats() {
-    List<IEquipmentStats> relevantStats = statsByRuleSet.get(new SecondEditionEdition().getId());
+    List<IEquipmentStats> relevantStats = statsByRuleSet.get(new SecondEdition().getId());
     if (relevantStats == null) {
       return new IEquipmentStats[0];
     }
@@ -54,10 +54,10 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   }
 
   public synchronized void addStats(IEquipmentStats stats) {
-    List<IEquipmentStats> statList = statsByRuleSet.get(new SecondEditionEdition().getId());
+    List<IEquipmentStats> statList = statsByRuleSet.get(new SecondEdition().getId());
     if (statList == null) {
       statList = collectionFactory.createList();
-      statsByRuleSet.put(new SecondEditionEdition().getId(), statList);
+      statsByRuleSet.put(new SecondEdition().getId(), statList);
     }
     statList.add(stats);
   }
