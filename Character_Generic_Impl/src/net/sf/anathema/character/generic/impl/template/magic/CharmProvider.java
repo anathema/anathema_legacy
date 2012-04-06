@@ -1,41 +1,38 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.collection.Table;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.util.Collections.addAll;
 
 public class CharmProvider implements ICharmProvider {
 
-  private final Table<IExaltedEdition, ICharacterType, ISpecialCharm[]> charmsByTypeByRuleSet = new Table<IExaltedEdition, ICharacterType, ISpecialCharm[]>();
-  private final Table<IExaltedEdition, ICharacterType, Boolean> dataCharmsPrepared = new Table<IExaltedEdition, ICharacterType, Boolean>();
-  private final MultiEntryMap<IExaltedEdition, ISpecialCharm> martialArtsSpecialCharms = new MultiEntryMap<IExaltedEdition, ISpecialCharm>();
+  private final Map<ICharacterType, ISpecialCharm[]> charmsByTypeByRuleSet = new HashMap<ICharacterType, ISpecialCharm[]>();
+  private final Map<ICharacterType, Boolean> dataCharmsPrepared = new HashMap<ICharacterType, Boolean>();
+  private final List<ISpecialCharm> martialArtsSpecialCharms = new ArrayList<ISpecialCharm>();
   private final CharmCache cache;
 
   public CharmProvider(CharmCache cache) {
-    for (IExaltedEdition edition : ExaltedEdition.values())
-      for (ICharacterType type : CharacterType.values())
-        dataCharmsPrepared.add(edition, type, false);
+    for (ICharacterType type : CharacterType.values()) {
+      dataCharmsPrepared.put(type, false);
+    }
     this.cache = cache;
   }
 
   @Override
-  public ISpecialCharm[] getSpecialCharms(IExaltedEdition edition, ICharmLearnableArbitrator arbitrator,
-                                          ICharmIdMap map, ICharacterType preferredCharacterType) {
+  public ISpecialCharm[] getSpecialCharms(ICharmLearnableArbitrator arbitrator, ICharmIdMap map, ICharacterType preferredCharacterType) {
     List<ISpecialCharm> relevantCharms = new ArrayList<ISpecialCharm>();
-    ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(edition, preferredCharacterType);
+    ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(preferredCharacterType);
     for (ISpecialCharm specialCharm : allSpecialCharms) {
       ICharm charm = map.getCharmById(specialCharm.getCharmId());
       if (charm != null && arbitrator.isLearnable(charm)) {
@@ -46,38 +43,37 @@ public class CharmProvider implements ICharmProvider {
   }
 
   @Override
-  public ISpecialCharm[] getSpecialCharms(ICharacterType characterType, IExaltedEdition edition) {
-    if (!dataCharmsPrepared.get(edition, characterType)) {
-      prepareDataCharms(characterType, edition);
+  public ISpecialCharm[] getSpecialCharms(ICharacterType characterType) {
+    if (!dataCharmsPrepared.get(characterType)) {
+      prepareDataCharms(characterType);
     }
-    ISpecialCharm[] specialCharms = charmsByTypeByRuleSet.get(edition, characterType);
+    ISpecialCharm[] specialCharms = charmsByTypeByRuleSet.get(characterType);
     if (specialCharms == null) {
       specialCharms = new ISpecialCharm[0];
     }
     return specialCharms;
   }
 
-  private ISpecialCharm[] getAllSpecialCharms(IExaltedEdition edition, ICharacterType preferredCharacterType) {
+  private ISpecialCharm[] getAllSpecialCharms(ICharacterType preferredCharacterType) {
     SpecialCharmSet set = new SpecialCharmSet();
     for (ICharacterType type : CharacterType.values()) {
-      set.add(getSpecialCharms(type, edition));
+      set.add(getSpecialCharms(type));
     }
-    set.addAll(martialArtsSpecialCharms.get(edition));
-    for (ISpecialCharm preferredCharm : getSpecialCharms(preferredCharacterType, edition)) {
+    set.addAll(martialArtsSpecialCharms);
+    for (ISpecialCharm preferredCharm : getSpecialCharms(preferredCharacterType)) {
       set.add(preferredCharm);
     }
     return set.toArray(new ISpecialCharm[set.size()]);
   }
 
   @Override
-  public ISpecialCharm[] getSpecialMartialArtsCharms(IExaltedEdition edition) {
-    List<ISpecialCharm> specialCharms = martialArtsSpecialCharms.get(edition);
-    return specialCharms.toArray(new ISpecialCharm[specialCharms.size()]);
+  public ISpecialCharm[] getSpecialMartialArtsCharms() {
+    return martialArtsSpecialCharms.toArray(new ISpecialCharm[martialArtsSpecialCharms.size()]);
   }
 
   @Override
-  public void addMartialArtsSpecialCharm(IExaltedEdition edition, ISpecialCharm charm) {
-    martialArtsSpecialCharms.add(edition, charm);
+  public void addMartialArtsSpecialCharm(ISpecialCharm charm) {
+    martialArtsSpecialCharms.add(charm);
   }
 
   @Override
@@ -85,16 +81,16 @@ public class CharmProvider implements ICharmProvider {
     return cache.getCharmRename(name);
   }
 
-  private void prepareDataCharms(ICharacterType type, IExaltedEdition edition) {
+  private void prepareDataCharms(ICharacterType type) {
     List<ISpecialCharm> specialCharms = new ArrayList<ISpecialCharm>();
-    ISpecialCharm[] base = charmsByTypeByRuleSet.get(edition, type);
+    ISpecialCharm[] base = charmsByTypeByRuleSet.get( type);
     if (base != null) {
       addAll(specialCharms, base);
     }
     addAll(specialCharms, cache.getSpecialCharmData(type));
     ISpecialCharm[] charmArray = new ISpecialCharm[specialCharms.size()];
     specialCharms.toArray(charmArray);
-    dataCharmsPrepared.add(edition, type, true);
-    charmsByTypeByRuleSet.add(edition, type, charmArray);
+    dataCharmsPrepared.put(type, true);
+    charmsByTypeByRuleSet.put(type, charmArray);
   }
 }

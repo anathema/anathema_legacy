@@ -276,8 +276,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(
         registryCollection.getAdditionalRulesRegistry(),
         provider.getSpecialCharms(
-            characterTemplate.getTemplateType().getCharacterType(),
-            characterTemplate.getEdition()),
+            characterTemplate.getTemplateType().getCharacterType()),
         backgroundRegistry);
     GenericAdditionalRules rules = parser.parseTemplate(element);
     characterTemplate.setAdditionalRules(rules);

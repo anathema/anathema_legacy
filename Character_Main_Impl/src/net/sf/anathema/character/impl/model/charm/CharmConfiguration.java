@@ -123,8 +123,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ISpecialCharm[] getSpecialCharms() {
-    return provider.getSpecialCharms(context.getBasicCharacterContext().getEdition(),
-            new MartialArtsLearnableArbitrator(martialArtsCharmTree), getCharmIdMap(), getNativeCharacterType());
+    return provider.getSpecialCharms(new MartialArtsLearnableArbitrator(martialArtsCharmTree), getCharmIdMap(), getNativeCharacterType());
   }
 
   private IPrerequisiteModifyingCharm[] getPrerequisiteModifyingCharms() {
