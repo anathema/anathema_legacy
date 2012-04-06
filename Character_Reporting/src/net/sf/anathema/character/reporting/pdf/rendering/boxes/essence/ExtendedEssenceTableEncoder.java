@@ -1,6 +1,13 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.essence;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -19,7 +26,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 
 import java.util.List;
 
-import static com.itextpdf.text.Element.*;
+import static com.itextpdf.text.Element.ALIGN_CENTER;
+import static com.itextpdf.text.Element.ALIGN_MIDDLE;
+import static com.itextpdf.text.Element.ALIGN_RIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder.DOT_PADDING;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.BARE_LINE_HEIGHT;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TEXT_PADDING;
@@ -35,7 +44,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
   private static final int LABEL_BORDER = Rectangle.BOX;
 
   protected Float[] getEssenceColumns() {
-    return new Float[]{8f, 2f, 3f, (10f / 3f), PADDING, 6f, 2.5f, 2.5f};
+    return new Float[]{8f, 2f, 2f, 2f };
   }
 
   private float[] createColumnWidth() {
@@ -80,41 +89,18 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     TableCell headerCell = new TableCell(firstCell);
     headerCell.setColspan(4);
     table.addCell(headerCell);
-    table.addCell(spaceCell);
-    table.addCell(createBigHeaderCell(graphics, content.getRegainHeaderLabel(), 3));
 
     table.addCell(spaceCell);
     table.addCell(createHeaderCell(font, content.getEssenceTotalHeaderLabel(), 1));
     table.addCell(createHeaderCell(font, content.getCommittedHeaderLabel(), 1));
     table.addCell(createHeaderCell(font, content.getAvailableHeaderLabel(), 1));
-    table.addCell(spaceCell);
-    table.addCell(spaceCell);
-    table.addCell(createHeaderCell(font, content.getAtEaseHeaderLabel(), 1));
-    table.addCell(createHeaderCell(font, content.getRelaxHeaderLabel(), 1));
   }
 
   private void addEssencePoolRows(SheetGraphics graphics, PdfPTable table, ExtendedEssenceContent content) {
     List<PoolRow> poolRows = content.getPoolRows();
-    List<RecoveryRow> recoveryRows = content.getRecoveryRows();
     for (int index = 0; index < content.getNumberOfContentLines(); index++) {
       addPoolCells(getDefaultFont(graphics), table, poolRows.get(index));
-      addSeparator(graphics, table);
-      addRecoveryCells(graphics, table, recoveryRows.get(index));
     }
-  }
-
-  private void addSeparator(SheetGraphics graphics, PdfPTable table) {
-    table.addCell(createSpaceCell(graphics));
-  }
-
-  private void addRecoveryCells(SheetGraphics graphics, PdfPTable table, RecoveryRow recoveryRow) {
-    Font font = getDefaultFont(graphics);
-    String label = recoveryRow.getLabel();
-    String atEase = recoveryRow.getAtEase() != null ? String.valueOf(recoveryRow.getAtEase()) : " ";
-    String relaxed = recoveryRow.getRelaxed() != null ? String.valueOf(recoveryRow.getRelaxed()) : " ";
-    table.addCell(markCell(recoveryRow, new TableCell(new Phrase(label, font), INTERNAL_BORDER, ALIGN_RIGHT, ALIGN_MIDDLE)));
-    table.addCell(markCell(recoveryRow, new TableCell(new Phrase(atEase, font), INTERNAL_BORDER, ALIGN_CENTER, ALIGN_MIDDLE)));
-    table.addCell(markCell(recoveryRow, new TableCell(new Phrase(relaxed, font), INTERNAL_BORDER, ALIGN_CENTER, ALIGN_MIDDLE)));
   }
 
   private TableCell markCell(RecoveryRow recoveryRow, TableCell cell) {
@@ -147,26 +133,10 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     return cell;
   }
 
-  protected final PdfPCell createBigHeaderCell(SheetGraphics graphics, String text, int columnSpan) {
-    PdfPCell cell = new TableCell(new Phrase(text, getBoldFont(graphics)), HEADER_BORDER, ALIGN_CENTER, ALIGN_MIDDLE);
-    cell.setColspan(columnSpan);
-    return cell;
-  }
-
   private PdfPCell createSpaceCell(SheetGraphics graphics) {
     PdfPCell spaceCell = new PdfPCell(new Phrase(" ", getDefaultFont(graphics))); //$NON-NLS-1$
     spaceCell.setBorder(HEADER_BORDER);
     return spaceCell;
-  }
-
-  private PdfPCell createInternalCell(SheetGraphics graphics) {
-    PdfPCell spaceCell = new PdfPCell(new Phrase(" ", getDefaultFont(graphics))); //$NON-NLS-1$
-    spaceCell.setBorder(INTERNAL_BORDER);
-    return spaceCell;
-  }
-
-  protected final Font getCommentFont(SheetGraphics graphics) {
-    return graphics.createCommentFont();
   }
 
   private final Font getDefaultFont(SheetGraphics graphics) {

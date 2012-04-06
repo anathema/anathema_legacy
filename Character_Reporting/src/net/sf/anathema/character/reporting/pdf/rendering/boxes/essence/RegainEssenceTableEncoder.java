@@ -29,7 +29,7 @@ public class RegainEssenceTableEncoder implements ITableEncoder<RegainEssenceCon
   private static final int INTERNAL_BORDER = Rectangle.BOX;
 
   protected Float[] getEssenceColumns() {
-    return new Float[]{8f, 2f, 3f, (10f / 3f), PADDING, 6f, 2.5f, 2.5f};
+    return new Float[]{6f, 2.5f, 2.5f};
   }
 
   private float[] createColumnWidth() {

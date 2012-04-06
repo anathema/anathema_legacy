@@ -7,7 +7,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.lib.resources.IResources;
 
-@RegisteredReportContent(produces = ExtendedEssenceContent.class)
+@RegisteredReportContent(produces = RegainEssenceContent.class)
 public class RegainEssenceContentFactory implements ReportContentFactory<RegainEssenceContent> {
 
   private IResources resources;
