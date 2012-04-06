@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.caste;
 
-import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 
 public interface ICasteCollection {
