@@ -1,11 +1,5 @@
 package net.sf.anathema.character.impl.model.traits.essence;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -21,10 +15,16 @@ import net.sf.anathema.character.generic.template.magic.IGenericCharmConfigurati
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.model.traits.essence.IEssencePoolModifier;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolStrategy;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class EssencePoolStrategy implements IEssencePoolStrategy {
 
@@ -35,7 +35,6 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   private final IMagicCollection magicCollection;
   private final IGenericCharmConfiguration charmConfiguration;
   private final ICharacterModelContext context;
-  private IEquipmentAdditionalModel equipmentModel;
 
   public EssencePoolStrategy(IEssenceTemplate essenceTemplate,
                              ICharacterModelContext context,
@@ -61,10 +60,12 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
     control.fireChangedEvent();
   }
 
+  @Override
   public void addPoolChangeListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
 
+  @Override
   public int getFullPersonalPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
@@ -74,6 +75,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
     return getUnmodifiedPersonalPool() + additionalPool;
   }
 
+  @Override
   public int getExtendedPersonalPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
@@ -84,6 +86,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
     return getStandardPersonalPool() + additionalPool;
   }
 
+  @Override
   public int getStandardPersonalPool() {
     int personal = getUnmodifiedPersonalPool();
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
@@ -96,11 +99,13 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
                          - getUnmodifiedPeripheralPool());
   }
 
+  @Override
   public int getUnmodifiedPersonalPool() {
     return getPool(essenceTemplate.getPersonalTraits(getWillpower(),
                                                      getVirtues(), getEssence()));
   }
 
+  @Override
   public int getFullPeripheralPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
@@ -110,6 +115,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
     return getUnmodifiedPeripheralPool() + additionalPool;
   }
 
+  @Override
   public int getExtendedPeripheralPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
@@ -120,6 +126,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
     return getStandardPeripheralPool() + additionalPool;
   }
 
+  @Override
   public int getStandardPeripheralPool() {
     int peripheral = getUnmodifiedPeripheralPool();
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
@@ -130,12 +137,14 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
     return Math.max(0, peripheral - getAttunementExpenditures());
   }
 
+  @Override
   public int getUnmodifiedPeripheralPool() {
     return getPool(essenceTemplate.getPeripheralTraits(getWillpower(),
                                                        getVirtues(),
                                                        getEssence()));
   }
   
+  @Override
   public int getOverdrivePool() {
     int overdrive = 0;
     for (ICharm charm : charmConfiguration.getLearnedCharms()) {
@@ -160,6 +169,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
     return overdrive;
   }
   
+  @Override
   public IdentifiedInteger[] getComplexPools() {
     Map<String, Integer> complexPools = new HashMap<String, Integer>();
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
@@ -181,9 +191,14 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
     return r;
   }
 
+  @Override
   public int getAttunementExpenditures() {
-    equipmentModel = (IEquipmentAdditionalModel) context.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
-    return equipmentModel == null ? 0 : equipmentModel.getTotalAttunementCost();
+    List<IEssencePoolModifier> modifiers = context.getAllRegistered(IEssencePoolModifier.class);
+    int expenditure = 0;
+    for (IEssencePoolModifier modifier : modifiers) {
+      expenditure += modifier.getMotesExpended();
+    }
+    return expenditure;
   }
 
   private IGenericTrait[] getVirtues() {

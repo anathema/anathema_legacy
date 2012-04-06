@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.social;
 
-import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
@@ -43,7 +44,9 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   protected ISocialCombatStats[] getPrintStats(ReportSession session) {
     IGenericCharacter character = session.getCharacter();
     IGenericTraitCollection traitCollection = character.getTraitCollection();
-    ICharacterStatsModifiers equipmentModifiers = CharacterStatsModifiers.extractFromCharacter(character);
+    IEquipmentAdditionalModel equipment = (IEquipmentAdditionalModel) character.getAdditionalModel(
+            IEquipmentAdditionalModelTemplate.ID);
+    ICharacterStatsModifiers equipmentModifiers = equipment.createStatsModifiers(character);
     return new ISocialCombatStats[]{new PresenceSocialAttack(traitCollection, equipmentModifiers), new PerformanceSocialAttack(
             traitCollection, equipmentModifiers), new InvestigationSocialAttack(traitCollection, equipmentModifiers)};
   }

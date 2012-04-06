@@ -2,6 +2,7 @@ dependencies {
   compile project(':Character_Generic')
   compile project(':Character_Equipment')
   compile project(':Character_Library')
+  compile project(':Character_Reporting')
 }
 
 sourceSets {

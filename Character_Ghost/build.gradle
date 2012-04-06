@@ -2,6 +2,7 @@ dependencies {
   compile 'com.google.guava:guava:10.0'
   compile project(':Character_Library')
   compile project(':Character_Main')
+  compile project(':Character_Reporting')
 }
 
 sourceSets {

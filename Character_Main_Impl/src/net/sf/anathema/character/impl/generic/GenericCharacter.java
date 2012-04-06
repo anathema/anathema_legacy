@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.generic;
 
+import com.google.common.collect.Lists;
 import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -194,6 +195,18 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public int getAttunedPoolValue() {
     return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getAttunedPoolValue() : 0;
+  }
+
+  @Override
+  public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
+    IAdditionalModel[] additionalModels = statistics.getExtendedConfiguration().getAdditionalModels();
+    List<T> registeredModels = Lists.newArrayList();
+    for (IAdditionalModel additionalModel : additionalModels) {
+      if (interfaceClass.isInstance(additionalModel)) {
+        registeredModels.add((T) additionalModel);
+      }
+    }
+    return registeredModels;
   }
 
   @Override

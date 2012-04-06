@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.dummy;
 
+import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
@@ -286,5 +287,10 @@ public class DummyGenericCharacter implements IGenericCharacter {
   @Override
   public void addSpecialtyListChangeListener(IChangeListener listener) {
     // nothing to do
+  }
+
+  @Override
+  public <T> List<T> getAllRegistered(Class<T> interfaceClass) {
+    return Lists.newArrayList();
   }
 }
