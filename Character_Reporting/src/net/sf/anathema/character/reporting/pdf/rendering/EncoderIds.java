@@ -13,6 +13,7 @@ public interface EncoderIds {
   String COMBOS = "Combos";
   String ESSENCE_SIMPLE = "EssenceSimple";
   String ESSENCE_EXTENDED = "EssenceExtended";
+  String ESSENCE_REGAIN = "EssenceRegain";
   String EXPERIENCE = "Experience";
   String GENERIC_CHARMS = "GenericCharms";
   String GREAT_CURSE = "GreatCurse";
