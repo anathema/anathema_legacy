@@ -4,15 +4,11 @@ import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.SimpleCharmContent;
 import net.sf.anathema.character.reporting.pdf.layout.Body;
-import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.BACKGROUNDS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.CHARMS_AND_SORCERY;
