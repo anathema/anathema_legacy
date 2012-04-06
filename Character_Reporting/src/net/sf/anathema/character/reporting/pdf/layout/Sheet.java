@@ -24,19 +24,22 @@ public class Sheet {
     this.pageSize = pageSize;
   }
 
-  public Body startPortraitPage() {
+  public SheetPage startPortraitPage(SheetGraphics graphics, ReportSession session) {
     startNewPage(pageSize.getPortraitRectangle());
-    return createPortraitBody();
+    Body body = createPortraitBody();
+    return createPage(body, graphics, session);
   }
 
-  public Body startPortraitPage(float contentHeight) {
+  public SheetPage startPortraitPage(SheetGraphics graphics, ReportSession session, float contentHeight) {
     startNewPage(pageSize.getPortraitRectangle());
-    return new Body(PageConfiguration.ForPortrait(pageSize), contentHeight);
+    Body body = new Body(PageConfiguration.ForPortrait(pageSize), contentHeight);
+    return createPage(body, graphics, session);
   }
 
-  public Body startLandscapePage() {
+  public SheetPage startLandscapePage(SheetGraphics graphics, ReportSession session) {
     startNewPage(pageSize.getLandscapeRectangle());
-    return createLandscapeBody();
+    Body body = createLandscapeBody();
+    return createPage(body, graphics, session);
   }
 
   private void startNewPage(Rectangle rectangle) {
@@ -60,9 +63,9 @@ public class Sheet {
     return new Body(PageConfiguration.ForLandscape(pageSize));
   }
 
-  public SheetPage createPage(SheetGraphics graphics, ReportSession session) {
+  private SheetPage createPage(Body body, SheetGraphics graphics, ReportSession session) {
     EncodingMetrics metrics = EncodingMetrics.From(graphics, session);
     RegisteredEncoderList registeredEncoderList = new RegisteredEncoderList(resources, encoders);
-    return new SheetPage(registeredEncoderList, metrics, graphics);
+    return new SheetPage(body, registeredEncoderList, metrics, graphics);
   }
 }

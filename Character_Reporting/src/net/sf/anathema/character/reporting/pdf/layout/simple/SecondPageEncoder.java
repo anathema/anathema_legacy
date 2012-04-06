@@ -25,8 +25,8 @@ public class SecondPageEncoder implements PageEncoder {
 
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
-    SheetPage page = sheet.createPage(graphics, session);
-    Body body = sheet.startPortraitPage();
+    SheetPage page = sheet.startPortraitPage(graphics, session);
+    Body body = page.getBody();
     LayoutField backgrounds = page.place(BACKGROUNDS).atStartOf(body).withHeight(BACKGROUND_HEIGHT).now();
     LayoutField possessions = page.place(POSSESSIONS).rightOf(backgrounds).withSameHeight().now();
     LayoutField languages = page.place(LANGUAGES).rightOf(possessions).withHeight(LANGUAGE_HEIGHT).now();
@@ -40,8 +40,8 @@ public class SecondPageEncoder implements PageEncoder {
   private void encodeAdditionalMagicPages(Sheet sheet, SheetGraphics graphics, ReportSession session) {
     SimpleCharmContent charmContent = session.createContent(SimpleCharmContent.class);
     while (charmContent.hasUnprintedCharms()) {
-      Body body = sheet.startPortraitPage();
-      SheetPage page = sheet.createPage(graphics, session);
+      SheetPage page = sheet.startPortraitPage(graphics, session);
+      Body body = page.getBody();
       page.place(CHARMS_AND_SORCERY).atStartOf(body).fillToBottomOfPage().andColumnSpan(3).now();
     }
   }

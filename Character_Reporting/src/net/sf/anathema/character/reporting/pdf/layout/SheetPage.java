@@ -30,11 +30,13 @@ public class SheetPage {
     }
   }
 
+  private Body body;
   private final RegisteredEncoderList encoderList;
   private final EncodingMetrics metrics;
   private final SheetGraphics graphics;
 
-  public SheetPage(RegisteredEncoderList encoderList, EncodingMetrics metrics, SheetGraphics graphics) {
+  public SheetPage(Body body, RegisteredEncoderList encoderList, EncodingMetrics metrics, SheetGraphics graphics) {
+    this.body = body;
     this.encoderList = encoderList;
     this.metrics = metrics;
     this.graphics = graphics;
@@ -43,5 +45,9 @@ public class SheetPage {
   public Placement place(String... encoderIds) {
     SheetFieldEncoder fieldEncoder = new SheetFieldEncoder(encoderIds);
     return new LayoutFieldBuilder(fieldEncoder);
+  }
+
+  public Body getBody() {
+    return body;
   }
 }

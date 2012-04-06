@@ -33,8 +33,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static net.sf.anathema.character.impl.util.GenericCharacterUtilities.createGenericCharacter;
-
 public class LandscapeExaltSheetReport extends AbstractPdfReport {
   private IResources resources;
   private ICharacterGenerics characterGenerics;
@@ -77,7 +75,7 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
 
   private List<PageEncoder> collectPageEncoders(PageSize pageSize, ReportSession session) {
     List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
-    encoderList.add(new FirstPageEncoder(getEncoderRegistry(), resources));
+    encoderList.add(new FirstPageEncoder());
     encoderList.add(new SecondPageEncoder(getEncoderRegistry(), resources));
     Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
     return encoderList;

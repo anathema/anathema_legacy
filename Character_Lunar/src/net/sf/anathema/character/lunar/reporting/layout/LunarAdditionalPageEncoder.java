@@ -47,7 +47,7 @@ public class LunarAdditionalPageEncoder implements PageEncoder {
   }
 
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
-    sheet.startPortraitPage();
+    sheet.startPortraitPage(graphics, session);
     int firstSet = 0, secondSet = 0;
     boolean DBT = hasDBT(session.getCharacter());
     firstSet += encodeSpiritForms(graphics, session, firstSet, DBT);

@@ -3,17 +3,11 @@ package net.sf.anathema.character.reporting.pdf.layout.landscape;
 import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Body;
-import net.sf.anathema.character.reporting.pdf.layout.RegisteredEncoderList;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.framework.reporting.pdf.PageSize;
-import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ABILITIES_WITH_SPECIALS_TWO_COLUMN;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ANIMA;
@@ -38,18 +32,11 @@ public class FirstPageEncoder implements PageEncoder {
   private static final int FIRST_ROW_HEIGHT = 51;
   private static final int VIRTUE_HEIGHT = 72;
   private static final int SOCIAL_COMBAT_HEIGHT = 115;
-  private EncoderRegistry encoders;
-  private IResources resources;
-
-  public FirstPageEncoder(EncoderRegistry encoders, IResources resources) {
-    this.encoders = encoders;
-    this.resources = resources;
-  }
 
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
-    SheetPage page = sheet.createPage(graphics, session);
-    Body body = sheet.startLandscapePage();
+    SheetPage page = sheet.startLandscapePage(graphics, session);
+    Body body = page.getBody();
     LayoutField personalInfo =
             page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).andColumnSpan(2).now();
     LayoutField willpower = page.place(WILLPOWER_SIMPLE).rightOf(personalInfo).withSameHeight().now();

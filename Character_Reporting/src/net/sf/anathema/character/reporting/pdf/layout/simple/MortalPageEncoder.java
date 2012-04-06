@@ -50,8 +50,8 @@ public class MortalPageEncoder implements PageEncoder {
 
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
-    SheetPage page = sheet.createPage(graphics, session);
-    Body body = sheet.startPortraitPage(FIRST_PAGE_CONTENT_HEIGHT);
+    SheetPage page = sheet.startPortraitPage(graphics, session, FIRST_PAGE_CONTENT_HEIGHT);
+    Body body = page.getBody();
     LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).andColumnSpan(2).now();
     LayoutField experience = page.place(EXPERIENCE).rightOf(personalInfo).withSameHeight().now();
     LayoutField attributes = page.place(ATTRIBUTES).below(personalInfo).withHeight(ATTRIBUTE_HEIGHT).now();

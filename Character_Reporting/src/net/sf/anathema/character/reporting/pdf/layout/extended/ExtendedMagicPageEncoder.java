@@ -70,7 +70,7 @@ public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
     ICharmTemplate charmTemplate = character.getTemplate().getMagicTemplate().getCharmTemplate();
     if (charmTemplate.canLearnCharms()) {
       if (restartPage) {
-        sheet.startPortraitPage();
+        sheet.startPortraitPage(graphics, session);
         distanceFromTop = 0;
         restartPage = false;
       }
@@ -97,7 +97,7 @@ public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
       encodeCharms(graphics, session, printCharms, distanceFromTop, remainingHeight);
       while (!printCharms.isEmpty()) {
         encodeCopyright(graphics);
-        sheet.startPortraitPage();
+        sheet.startPortraitPage(graphics, session);
         encodeCharms(graphics, session, printCharms, 0, getPageConfiguration().getContentHeight());
       }
       encodeCopyright(graphics);

@@ -47,7 +47,7 @@ public class SiderealDetailsPageEncoder implements PageEncoder {
     if (isRonin(session.getCharacter())) {
       return;
     }
-    sheet.startPortraitPage();
+    sheet.startPortraitPage(graphics, session);
     float distanceFromTop = 0;
     float collegeHeight = encodeColleges(graphics, session, distanceFromTop);
     encodeAstrology(graphics, session, distanceFromTop);
