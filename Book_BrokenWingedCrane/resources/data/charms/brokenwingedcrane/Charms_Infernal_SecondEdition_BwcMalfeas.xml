@@ -114,7 +114,7 @@
           <prerequisite>
                <trait id="Malfeas" value="0" />
                <essence value="3" />
-               <charmReference id="Infernal.VitriolicCoronaEndowment.Subeffects.Repurchase2"/>
+               <charmReference id="Infernal.VitriolicCoronaEndowment"/>
           </prerequisite>
           <cost/>
           <duration duration="Permanent" />
