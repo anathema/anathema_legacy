@@ -1,12 +1,8 @@
-package net.sf.anathema.character.impl.module.reporting;
+package net.sf.anathema.character.reporting.pdf;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.impl.reporting.ExtendedSheetReport;
-import net.sf.anathema.character.impl.reporting.LandscapeExaltSheetReport;
-import net.sf.anathema.character.impl.reporting.PortraitSimpleExaltSheetReport;
-import net.sf.anathema.character.impl.reporting.PortraitSimpleMortalSheetReport;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.module.preferences.PageSizePreference;

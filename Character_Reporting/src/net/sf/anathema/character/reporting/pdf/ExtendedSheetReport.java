@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.reporting;
+package net.sf.anathema.character.reporting.pdf;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
@@ -7,6 +7,8 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
+import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
@@ -15,13 +17,14 @@ import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
-import net.sf.anathema.character.reporting.pdf.layout.simple.FirstPageEncoder;
-import net.sf.anathema.character.reporting.pdf.layout.simple.SecondPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedEncodingRegistry;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedFirstPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.ExtendedSecondPageEncoder;
+import net.sf.anathema.character.reporting.pdf.layout.extended.IExtendedPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.pages.PageRegistry;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -34,13 +37,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
+public class ExtendedSheetReport extends AbstractPdfReport {
 
   private final IResources resources;
   private final ICharacterGenerics characterGenerics;
   private final PageSizePreference pageSizePreference;
 
-  public PortraitSimpleExaltSheetReport(IResources resources, ICharacterGenerics characterGenerics,
+  public ExtendedSheetReport(IResources resources, ICharacterGenerics characterGenerics,
           PageSizePreference pageSizePreference) {
     this.resources = resources;
     this.characterGenerics = characterGenerics;
@@ -49,7 +52,7 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
 
   @Override
   public String toString() {
-    return resources.getString("CharacterModule.Reporting.Sheet.Name");
+    return "Extended Sheet";
   }
 
   @Override
@@ -58,41 +61,54 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
     PdfContentByte directContent = writer.getDirectContent();
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
+    SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
     try {
+      IExtendedPartEncoder partEncoder = getPartEncoder(stattedCharacter);
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
+
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
-      encoderList.add(new FirstPageEncoder(getEncoderRegistry(), resources, configuration));
-      ReportSession session = new ReportSession(getContentRegistry(), character, description);
-      Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
-      encoderList.add(new SecondPageEncoder(getEncoderRegistry(), resources));
+      encoderList.add(new ExtendedFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
+      encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
+      Collections.addAll(encoderList, partEncoder.getAdditionalPages(getEncoderRegistry(), pageSize));
+      //encoderList.add(new ExtendedMagicPageEncoder(partEncoder, resources, configuration));
+      boolean firstPagePrinted = false;
       for (PageEncoder encoder : encoderList) {
-        SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
-        Sheet sheet = new Sheet(document, pageSize);
-        encoder.encode(sheet, graphics, session);
+        if (firstPagePrinted) {
+          document.newPage();
+        } else {
+          firstPagePrinted = true;
+        }
+        ReportSession session = new ReportSession(getContentRegistry(), character, description);
+        encoder.encode(new Sheet(document, pageSize), graphics, session);
       }
     } catch (Exception e) {
       throw new ReportException(e);
     }
   }
 
-  private PageEncoder[] findAdditionalPages(PageSize pageSize, ReportSession session) {
-    PageRegistry additionalPageRegistry = getReportingModuleObject().getAdditionalPageRegistry();
-    return additionalPageRegistry.createEncoders(pageSize, getEncoderRegistry(), resources, session);
+  private IExtendedPartEncoder getPartEncoder(ICharacter character) {
+    ExtendedEncodingRegistry encodingRegistry = getEncodingRegistry();
+    ICharacterTemplate characterTemplate = character.getStatistics().getCharacterTemplate();
+    ICharacterType characterType = characterTemplate.getTemplateType().getCharacterType();
+    return encodingRegistry.getPartEncoder(characterType);
+  }
+
+  private ExtendedEncodingRegistry getEncodingRegistry() {
+    return getReportingModuleObject().getExtendedEncodingRegistry();
   }
 
   private EncoderRegistry getEncoderRegistry() {
     return getReportingModuleObject().getEncoderRegistry();
   }
 
+  private ReportContentRegistry getContentRegistry() {
+    return getReportingModuleObject().getContentRegistry();
+  }
+
   private CharacterReportingModuleObject getReportingModuleObject() {
     ICharacterModuleObjectMap moduleObjectMap = characterGenerics.getModuleObjectMap();
     return moduleObjectMap.getModuleObject(CharacterReportingModule.class);
-  }
-
-  private ReportContentRegistry getContentRegistry() {
-    CharacterReportingModuleObject moduleObject = getReportingModuleObject();
-    return moduleObject.getContentRegistry();
   }
 
   @Override
@@ -105,9 +121,6 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
       return false;
     }
     ICharacter character = (ICharacter) itemData;
-    if (!character.hasStatistics()) {
-      return false;
-    }
-    return character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isEssenceUser();
+    return character.hasStatistics() && getPartEncoder(character) != null;
   }
 }

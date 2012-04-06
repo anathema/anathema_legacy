@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.reporting;
+package net.sf.anathema.character.reporting.pdf;
 
 import com.google.common.base.Joiner;
 import com.itextpdf.text.Document;
