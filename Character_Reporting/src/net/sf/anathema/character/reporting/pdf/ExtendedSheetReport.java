@@ -25,6 +25,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.pages.PageRegistry;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -67,10 +68,11 @@ public class ExtendedSheetReport extends AbstractPdfReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
 
+      ReportSession session = new ReportSession(getContentRegistry(), character, description);
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       encoderList.add(new ExtendedFirstPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
       encoderList.add(new ExtendedSecondPageEncoder(getEncoderRegistry(), partEncoder, resources, configuration));
-      Collections.addAll(encoderList, partEncoder.getAdditionalPages(getEncoderRegistry(), pageSize));
+      Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
       //encoderList.add(new ExtendedMagicPageEncoder(partEncoder, resources, configuration));
       boolean firstPagePrinted = false;
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
@@ -80,12 +82,16 @@ public class ExtendedSheetReport extends AbstractPdfReport {
         } else {
           firstPagePrinted = true;
         }
-        ReportSession session = new ReportSession(getContentRegistry(), character, description);
         encoder.encode(sheet, graphics, session);
       }
     } catch (Exception e) {
       throw new ReportException(e);
     }
+  }
+
+  private PageEncoder[] findAdditionalPages(PageSize pageSize, ReportSession session) {
+    PageRegistry additionalPageRegistry = getReportingModuleObject().getAdditionalPageRegistry();
+    return additionalPageRegistry.createEncoders(pageSize, getEncoderRegistry(), resources, session);
   }
 
   private IExtendedPartEncoder getPartEncoder(ICharacter character) {

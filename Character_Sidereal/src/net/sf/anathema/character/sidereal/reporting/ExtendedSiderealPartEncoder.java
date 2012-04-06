@@ -6,11 +6,8 @@ import net.sf.anathema.character.reporting.pdf.layout.extended.AbstractExtendedP
 import net.sf.anathema.character.reporting.pdf.layout.extended.RegisteredPartEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
-import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
-import net.sf.anathema.character.sidereal.reporting.layout.SiderealDetailsPageEncoder;
 import net.sf.anathema.character.sidereal.reporting.rendering.anima.AnimaEncoderFactory;
 import net.sf.anathema.character.sidereal.reporting.rendering.greatcurse.FlawedFateEncoder;
-import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.generic.type.CharacterType.SIDEREAL;
@@ -25,11 +22,6 @@ public class ExtendedSiderealPartEncoder extends AbstractExtendedPartEncoder {
   @Override
   public ContentEncoder getGreatCurseEncoder(EncoderRegistry encoderRegistry, ReportSession session) {
     return new FlawedFateEncoder(getResources());
-  }
-
-  @Override
-  public PageEncoder[] getAdditionalPages(EncoderRegistry encoderRegistry, PageSize pageSize) {
-    return new PageEncoder[]{new SiderealDetailsPageEncoder(getResources(), getFontSize(), pageSize)};
   }
 
   @Override

@@ -13,6 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.boxes.backgrounds.Backg
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.experience.ExperienceContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.personal.PersonalInfoEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.virtues.VirtueEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.general.DotBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.IVariableContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
@@ -22,11 +23,13 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
   private EncoderRegistry encoderRegistry;
+  private IExtendedPartEncoder partEncoder;
 
   public ExtendedFirstPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder,
           IResources resources, PageConfiguration pageConfiguration) {
-    super(partEncoder, resources, pageConfiguration);
+    super(resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
+    this.partEncoder = partEncoder;
   }
 
   @Override
@@ -92,15 +95,17 @@ public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
   }
 
   private float encodeEssenceDots(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, session, getPartEncoder().getDotsEncoder(OtherTraitType.Essence, EssenceTemplate.SYSTEM_ESSENCE_MAX, "Essence"), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, session, getDotsEncoder(OtherTraitType.Essence, EssenceTemplate.SYSTEM_ESSENCE_MAX, "Essence"), 3, 1, distanceFromTop, height);
   }
 
   private float encodePersonalInfo(SheetGraphics graphics, ReportSession session, float distanceFromTop, float maxHeight) throws DocumentException {
-    return encodeVariableBox(graphics, session, new PersonalInfoEncoder(getResources()), 1, 3, distanceFromTop, maxHeight);
+    return encodeVariableBox(graphics, session, new PersonalInfoEncoder(getResources()), 1, 3, distanceFromTop,
+            maxHeight);
   }
 
   private float encodeAbilities(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, session, AbilitiesEncoder.createWithCraftsOnly(getResources(), -1), 1, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, session, AbilitiesEncoder.createWithCraftsOnly(getResources(), -1), 1, 1,
+            distanceFromTop, height);
   }
 
   private float encodeSpecialties(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
@@ -121,11 +126,11 @@ public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
   }
 
   private float encodeWillpowerDots(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, session, getPartEncoder().getDotsEncoder(OtherTraitType.Willpower, 10, "Willpower"), 3, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, session, getDotsEncoder(OtherTraitType.Willpower, 10, "Willpower"), 3, 1, distanceFromTop, height);
   }
 
   private float encodeGreatCurse(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
-    ContentEncoder encoder = getPartEncoder().getGreatCurseEncoder(encoderRegistry, session);
+    ContentEncoder encoder = partEncoder.getGreatCurseEncoder(encoderRegistry, session);
     if (encoder != null) {
       return encodeFixedBox(graphics, session, encoder, 2, 1, distanceFromTop, height);
     } else {
@@ -176,10 +181,14 @@ public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
 
   private float encodeAdditional(SheetGraphics graphics, ReportSession session, float distanceFromTop, float bottom) throws DocumentException {
     float increment = 0;
-    for (IVariableContentEncoder encoder : getPartEncoder().getAdditionalFirstPageEncoders()) {
+    for (IVariableContentEncoder encoder : partEncoder.getAdditionalFirstPageEncoders()) {
       float height = encodeVariableBoxBottom(graphics, session, encoder, 3, 1, bottom, bottom - distanceFromTop - increment);
       increment += calculateBoxIncrement(height);
     }
     return increment;
+  }
+
+  private ContentEncoder getDotsEncoder(OtherTraitType trait, int traitMax, String traitHeaderKey) {
+    return new DotBoxContentEncoder(trait, traitMax, getResources(), traitHeaderKey);
   }
 }

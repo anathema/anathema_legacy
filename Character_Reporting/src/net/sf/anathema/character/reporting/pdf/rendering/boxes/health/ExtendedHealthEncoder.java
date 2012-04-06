@@ -1,0 +1,43 @@
+package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
+
+import com.itextpdf.text.DocumentException;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.lib.resources.IResources;
+
+public class ExtendedHealthEncoder extends AbstractHealthAndMovementEncoder {
+
+  public ExtendedHealthEncoder(IResources resources) {
+    super(resources);
+  }
+
+  @Override
+  public String getHeader(ReportSession session) {
+    return getResources().getString("Sheet.Header.Health");
+  }
+
+  @Override
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+    Bounds tableBounds = new Bounds(bounds.x, bounds.y + bounds.height - 94f, bounds.width, 94f);
+    ITableEncoder tableEncoder = createTableEncoder();
+    tableEncoder.encodeTable(graphics, reportSession, tableBounds);
+    float textHeight = tableBounds.getMinY() - bounds.y - IVoidStateFormatConstants.TEXT_PADDING;
+    Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, textHeight);
+    encodeText(graphics, textBounds);
+  }
+
+  @Override
+  protected ITableEncoder createTableEncoder() {
+    return new Health2ndEditionTableEncoder(getResources());
+  }
+
+  @Override
+  protected final IExaltedEdition getEdition() {
+    return ExaltedEdition.SecondEdition;
+  }
+}

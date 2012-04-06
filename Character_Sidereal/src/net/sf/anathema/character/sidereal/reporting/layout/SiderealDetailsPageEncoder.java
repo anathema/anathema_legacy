@@ -10,6 +10,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.FavorableTraitContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 import net.sf.anathema.character.sidereal.reporting.content.SiderealCollegeContent;
@@ -35,9 +36,9 @@ public class SiderealDetailsPageEncoder implements PageEncoder {
   private final PageConfiguration configuration;
   private final int fontSize;
 
-  public SiderealDetailsPageEncoder(IResources resources, int fontSize, PageSize pageSize) {
+  public SiderealDetailsPageEncoder(IResources resources, PageSize pageSize) {
     this.resources = resources;
-    this.fontSize = fontSize;
+    this.fontSize = IVoidStateFormatConstants.SMALLER_FONT_SIZE;
     this.configuration = PageConfiguration.ForPortrait(pageSize);
     this.boxEncoder = new PdfBoxEncoder();
   }

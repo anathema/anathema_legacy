@@ -5,6 +5,8 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.ExtendedHealthEncoder;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.ExtendedMovementEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
@@ -15,10 +17,12 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSEN
 public class ExtendedSecondPageEncoder extends AbstractExtendedPdfPageEncoder {
 
   private EncoderRegistry encoderRegistry;
+  private IExtendedPartEncoder partEncoder;
 
   public ExtendedSecondPageEncoder(EncoderRegistry encoderRegistry, IExtendedPartEncoder partEncoder, IResources resources, PageConfiguration pageConfiguration) {
-    super(partEncoder, resources, pageConfiguration);
+    super(resources, pageConfiguration);
     this.encoderRegistry = encoderRegistry;
+    this.partEncoder = partEncoder;
   }
 
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
@@ -69,11 +73,11 @@ public class ExtendedSecondPageEncoder extends AbstractExtendedPdfPageEncoder {
   }
 
   private float encodeHealth(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, session, getPartEncoder().getHealthEncoder(), 1, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, session, new ExtendedHealthEncoder(getResources()), 1, 1, distanceFromTop, height);
   }
 
   private float encodeMovement(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {
-    return encodeFixedBox(graphics, session, getPartEncoder().getMovementEncoder(), 1, 1, distanceFromTop, height);
+    return encodeFixedBox(graphics, session, new ExtendedMovementEncoder(getResources()), 1, 1, distanceFromTop, height);
   }
 
   private float encodeWeaponry(SheetGraphics graphics, ReportSession session, float distanceFromTop, float height) throws DocumentException {

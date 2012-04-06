@@ -9,14 +9,12 @@ import net.sf.anathema.character.reporting.pdf.rendering.pages.RegisteredAdditio
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.SMALLER_FONT_SIZE;
-
 @RegisteredAdditionalPage
 public class SiderealDetailsPageFactory implements PageFactory {
 
   @Override
   public PageEncoder[] create(EncoderRegistry encoderRegistry, IResources resources, PageSize pageSize) {
-    return new PageEncoder[] { new SiderealDetailsPageEncoder(resources, SMALLER_FONT_SIZE, pageSize) };
+    return new PageEncoder[] { new SiderealDetailsPageEncoder(resources, pageSize) };
   }
 
   @Override
