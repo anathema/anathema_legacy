@@ -19,7 +19,7 @@ public class Version implements Comparable<Version> {
     try {
       parseVersion(resources);
     } catch (NumberFormatException e) {
-      Logger.getLogger(Version.class).warn("Could not parse version. Setting to max.");
+      Logger.getLogger(Version.class).warn("Could not parse version. Assuming max.");
       this.majorVersion = Integer.MAX_VALUE;
       this.minorVersion = Integer.MAX_VALUE;
       this.revision = Integer.MAX_VALUE;
@@ -35,18 +35,6 @@ public class Version implements Comparable<Version> {
     } else {
       revision = 0;
     }
-  }
-
-  public int getMajorVersion() {
-    return majorVersion;
-  }
-
-  public int getMinorVersion() {
-    return minorVersion;
-  }
-
-  public int getRevision() {
-    return revision;
   }
 
   public void updateTo(Version version) {
