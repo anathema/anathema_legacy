@@ -22,10 +22,10 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
 
   private ICharmConfiguration characterSet;
 
-  public CharacterSourceBookFilter(IExaltedEdition edition, ICharmConfiguration characterSet) {
-    super(edition);
+  public CharacterSourceBookFilter(ICharmConfiguration characterSet) {
+    super(ExaltedEdition.SecondEdition);
     this.characterSet = characterSet;
-    prepareEdition(edition);
+    prepareEdition(ExaltedEdition.SecondEdition);
   }
 
   @Override

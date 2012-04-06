@@ -82,8 +82,7 @@ public class CharacterStatistics implements ICharacterStatistics {
     charms.initListening();
     this.combos = new ComboConfiguration(charms);
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
-    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template,
-            context.getBasicCharacterContext().getEdition());
+    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template);
     this.spells.addChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
