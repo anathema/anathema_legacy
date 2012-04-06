@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,8 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 {
 	private static final int NO_BP_UPGRADE = -1;
 	
-	List<Upgrade> upgradeList = new ArrayList<Upgrade>();
+	private final Map<IBasicCharacterData, Upgrade[]> upgradesBySession =
+			new HashMap<IBasicCharacterData, Upgrade[]>();
 	private final Map<String, Integer> bpCosts;
 	private final Map<String, Integer> xpCosts;
 	private final Map<String, Integer> essenceMins;
@@ -49,7 +51,7 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 			  IGenericTraitCollection traitCollection,
 			  ICharmLearnableArbitrator arbitrator,
 			  ICharm charm) {
-		if (upgradeList.isEmpty())
+		List<Upgrade> upgradeList = new ArrayList<Upgrade>();
 	    for (String id : effectIds) {
 	      Integer bpCost = bpCosts.get(id);
 	      Integer xpCost = xpCosts.get(id);
@@ -62,7 +64,9 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 	    				  essenceMin, traitMin, trait),
 	    		  bpCost == null ? NO_BP_UPGRADE : bpCost, xpCost));
 	    }
-	    return upgradeList.toArray(new ISubeffect[upgradeList.size()]);
+	    Upgrade[] list = upgradeList.toArray(new Upgrade[0]);
+	    upgradesBySession.put(data, list);
+	    return list;
 	  }
 
 	  private ICondition buildLearnCondition(final ICharmLearnableArbitrator arbitrator,
@@ -89,18 +93,22 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 	    };
 	  }
 	  
-	  public int getUpgradeBPCost()
+	  public Upgrade[] getUpgradesBySession(IBasicCharacterData data) {
+		  return upgradesBySession.get(data);
+	  }
+	  
+	  public int getUpgradeBPCost(IBasicCharacterData data)
 	  {
 		  int total = 0;
-		  for (Upgrade upgrade : upgradeList)
+		  for (Upgrade upgrade : getUpgradesBySession(data))
 			  total += upgrade.isCreationLearned() ? upgrade.getBPCost() : 0;
 		  return total;
 	  }
 	  
-	  public int getUpgradeXPCost()
+	  public int getUpgradeXPCost(IBasicCharacterData data)
 	  {
 		  int total = 0;
-		  for (Upgrade upgrade : upgradeList)
+		  for (Upgrade upgrade : getUpgradesBySession(data))
 			  total += upgrade.isLearned() && !upgrade.isCreationLearned() ? upgrade.getXPCost() : 0;
 		  return total;
 	  }
