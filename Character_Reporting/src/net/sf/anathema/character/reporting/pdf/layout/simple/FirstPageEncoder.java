@@ -27,19 +27,15 @@ public class FirstPageEncoder implements PageEncoder {
   private static final int WILLPOWER_HEIGHT = 43;
   private static final int ARMOUR_HEIGHT = 68;
   private static final int HEALTH_HEIGHT = 99;
-  private EncoderRegistry encoders;
-  private IResources resources;
   private final PageConfiguration configuration;
 
-  public FirstPageEncoder(EncoderRegistry encoders, IResources resources, PageConfiguration configuration) {
-    this.encoders = encoders;
-    this.resources = resources;
+  public FirstPageEncoder(PageConfiguration configuration) {
     this.configuration = configuration;
   }
 
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
-    SheetPage page = createPage(graphics, session);
+    SheetPage page = sheet.createPage(graphics, session);
     Body body = sheet.startPortraitPage(FIRST_PAGE_CONTENT_HEIGHT);
     LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(body).withHeight(FIRST_ROW_HEIGHT).andColumnSpan(2).now();
     LayoutField essence = page.place(ESSENCE_SIMPLE).rightOf(personalInfo).withSameHeight().now();
@@ -56,11 +52,5 @@ public class FirstPageEncoder implements PageEncoder {
     LayoutField health = page.place(HEALTH_AND_MOVEMENT).below(panoply).withHeight(HEALTH_HEIGHT).andColumnSpan(2).now();
     page.place(COMBAT).below(health).fillToBottomOfPage().andColumnSpan(2).now();
     new CopyrightEncoder(configuration, FIRST_PAGE_CONTENT_HEIGHT).encodeCopyright(graphics);
-  }
-
-  private SheetPage createPage(SheetGraphics graphics, ReportSession session) {
-    EncodingMetrics metrics = EncodingMetrics.From(graphics, session);
-    RegisteredEncoderList registeredEncoderList = new RegisteredEncoderList(resources, encoders);
-    return new SheetPage(registeredEncoderList, metrics, graphics);
   }
 }

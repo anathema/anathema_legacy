@@ -26,23 +26,10 @@ public class SecondPageEncoder implements PageEncoder {
 
   public static final float BACKGROUND_HEIGHT = 104;
   public static final float LANGUAGE_HEIGHT = 60;
-  private final EncoderRegistry encoders;
-  private final IResources resources;
-
-  public SecondPageEncoder(EncoderRegistry encoders, IResources resources) {
-    this.encoders = encoders;
-    this.resources = resources;
-  }
-
-  private SheetPage createPage(SheetGraphics graphics, ReportSession session) {
-    EncodingMetrics metrics = EncodingMetrics.From(graphics, session);
-    RegisteredEncoderList registeredEncoderList = new RegisteredEncoderList(resources, encoders);
-    return new SheetPage(registeredEncoderList, metrics, graphics);
-  }
 
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
-    SheetPage page = createPage(graphics, session);
+    SheetPage page = sheet.createPage(graphics, session);
     Body body = sheet.startPortraitPage();
     LayoutField backgrounds = page.place(BACKGROUNDS).atStartOf(body).withHeight(BACKGROUND_HEIGHT).now();
     LayoutField possessions = page.place(POSSESSIONS).rightOf(backgrounds).withSameHeight().now();
@@ -58,7 +45,7 @@ public class SecondPageEncoder implements PageEncoder {
     SimpleCharmContent charmContent = session.createContent(SimpleCharmContent.class);
     while (charmContent.hasUnprintedCharms()) {
       Body body = sheet.startPortraitPage();
-      SheetPage page = createPage(graphics, session);
+      SheetPage page = sheet.createPage(graphics, session);
       page.place(CHARMS_AND_SORCERY).atStartOf(body).fillToBottomOfPage().andColumnSpan(3).now();
     }
   }

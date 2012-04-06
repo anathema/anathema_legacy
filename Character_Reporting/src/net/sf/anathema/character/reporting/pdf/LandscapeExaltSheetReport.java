@@ -58,9 +58,10 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
     PdfContentByte directContent = writer.getDirectContent();
     try {
       ReportSession session = createSession(item);
+      Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       for (PageEncoder encoder : collectPageEncoders(pageSize, session)) {
         SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
-        encoder.encode(new Sheet(document, pageSize), graphics, session);
+        encoder.encode(sheet, graphics, session);
       }
     } catch (Exception e) {
       throw new ReportException(e);

@@ -55,10 +55,11 @@ public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
     try {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
-      PageEncoder encoder = new MortalPageEncoder(getEncoderRegistry(), resources, configuration);
+      PageEncoder encoder = new MortalPageEncoder(configuration);
       SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
       ReportSession session = new ReportSession(getContentRegistry(), character, description);
-      encoder.encode(new Sheet(document, pageSize), graphics, session);
+      Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
+      encoder.encode(sheet, graphics, session);
     } catch (Exception e) {
       throw new ReportException(e);
     }

@@ -73,6 +73,7 @@ public class ExtendedSheetReport extends AbstractPdfReport {
       Collections.addAll(encoderList, partEncoder.getAdditionalPages(getEncoderRegistry(), pageSize));
       //encoderList.add(new ExtendedMagicPageEncoder(partEncoder, resources, configuration));
       boolean firstPagePrinted = false;
+      Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       for (PageEncoder encoder : encoderList) {
         if (firstPagePrinted) {
           document.newPage();
@@ -80,7 +81,7 @@ public class ExtendedSheetReport extends AbstractPdfReport {
           firstPagePrinted = true;
         }
         ReportSession session = new ReportSession(getContentRegistry(), character, description);
-        encoder.encode(new Sheet(document, pageSize), graphics, session);
+        encoder.encode(sheet, graphics, session);
       }
     } catch (Exception e) {
       throw new ReportException(e);

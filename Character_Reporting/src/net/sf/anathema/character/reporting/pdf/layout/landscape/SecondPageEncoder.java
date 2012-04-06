@@ -38,7 +38,7 @@ public class SecondPageEncoder implements PageEncoder {
 
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
-    SheetPage page = createPage(graphics, session);
+    SheetPage page = sheet.createPage(graphics, session);
     Body body = sheet.startLandscapePage();
     LayoutField genericCharms = page.place(GENERIC_CHARMS).atStartOf(body).withPreferredHeight().andColumnSpan(3).now();
     page.place(CHARMS_AND_SORCERY).below(genericCharms).fillToBottomOfPage().andColumnSpan(3).now();
@@ -55,14 +55,8 @@ public class SecondPageEncoder implements PageEncoder {
     SimpleCharmContent charmContent = session.createContent(SimpleCharmContent.class);
     while (charmContent.hasUnprintedCharms()) {
       Body body = sheet.startPortraitPage();
-      SheetPage page = createPage(graphics, session);
+      SheetPage page = sheet.createPage(graphics, session);
       page.place(CHARMS_AND_SORCERY).atStartOf(body).fillToBottomOfPage().andColumnSpan(3).now();
     }
-  }
-
-  private SheetPage createPage(SheetGraphics graphics, ReportSession session) {
-    EncodingMetrics metrics = EncodingMetrics.From(graphics, session);
-    RegisteredEncoderList registeredEncoderList = new RegisteredEncoderList(resources, encoders);
-    return new SheetPage(registeredEncoderList, metrics, graphics);
   }
 }

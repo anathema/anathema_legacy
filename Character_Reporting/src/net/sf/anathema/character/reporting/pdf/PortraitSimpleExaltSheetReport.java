@@ -62,13 +62,13 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
-      encoderList.add(new FirstPageEncoder(getEncoderRegistry(), resources, configuration));
+      encoderList.add(new FirstPageEncoder(configuration));
       ReportSession session = new ReportSession(getContentRegistry(), character, description);
       Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
-      encoderList.add(new SecondPageEncoder(getEncoderRegistry(), resources));
+      encoderList.add(new SecondPageEncoder());
+      Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       for (PageEncoder encoder : encoderList) {
         SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
-        Sheet sheet = new Sheet(document, pageSize);
         encoder.encode(sheet, graphics, session);
       }
     } catch (Exception e) {
