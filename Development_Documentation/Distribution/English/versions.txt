@@ -7,7 +7,7 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.github.com
 
 ===------------------------------------------------------------------------------===
-			Release 4.0.0
+			Release 4.0.0 "Sperimin"
 ===------------------------------------------------------------------------------===
 
 -- Changes for Exalted 2.5 --
@@ -42,7 +42,6 @@ entry manually to reflect the new rules.
        Stuff that doesn't seem to break but isn't done yet will hide here. Please give feedback!
 * New beta content: An early draft of an extended character sheet.
 * New beta content: Equipment cards, when printing Character Cards.
-* Added new (Infernal/Kimbery) Charms from the Scroll of Errata.
 
 -- Bugfixes --
 * Characters remember which weapons were attuned when saving
