@@ -20,12 +20,12 @@ import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.REDUCED_LINE_HEIGHT;
 
-public class GreatCurse2ndEditionEncoder implements ContentEncoder {
+public class GreatCurseEncoder implements ContentEncoder {
 
   private final VirtueFlawBoxEncoder traitEncoder = new VirtueFlawBoxEncoder();
   private IResources resources;
 
-  public GreatCurse2ndEditionEncoder(IResources resources) {
+  public GreatCurseEncoder(IResources resources) {
     this.resources = resources;
   }
 

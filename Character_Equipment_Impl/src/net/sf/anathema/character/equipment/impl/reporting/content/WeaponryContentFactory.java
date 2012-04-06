@@ -8,16 +8,17 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredReportContent(produces = WeaponryContent.class)
-public class WeaponryContentFactory implements ReportContentFactory<WeaponryContent>{
+public class WeaponryContentFactory implements ReportContentFactory<WeaponryContent> {
 
   private IResources resources;
 
-  public WeaponryContentFactory(IResources resources) {
+  public WeaponryContentFactory(IResources resources){
     this.resources = resources;
   }
 
   @Override
-  public WeaponryContent create(ReportSession session, IGenericCharacter character, IGenericDescription description) {
-    return new WeaponryContent(resources);
+  public WeaponryContent create(ReportSession session, IGenericCharacter character,
+          IGenericDescription description) {
+    return new WeaponryContent(resources, character);
   }
 }

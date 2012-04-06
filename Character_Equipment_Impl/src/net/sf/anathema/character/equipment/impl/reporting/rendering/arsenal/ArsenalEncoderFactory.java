@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.reporting.rendering.arsenal;
 
+import net.sf.anathema.character.equipment.impl.reporting.content.WeaponryContent;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.GlobalEncoderFactory;
@@ -17,6 +18,6 @@ public class ArsenalEncoderFactory extends GlobalEncoderFactory {
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new WeaponryEncoder();
+    return new WeaponryEncoder(WeaponryContent.class);
   }
 }

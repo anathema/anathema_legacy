@@ -10,15 +10,15 @@ import net.sf.anathema.lib.resources.IResources;
 import static net.sf.anathema.character.generic.type.CharacterType.DB;
 
 @RegisteredEncoderFactory
-public class GreatCurse2ndEditionEncoderFactory extends AbstractEncoderFactory {
+public class GreatCurseEncoderFactory extends AbstractEncoderFactory {
 
-  public GreatCurse2ndEditionEncoderFactory() {
+  public GreatCurseEncoderFactory() {
     super(EncoderIds.GREAT_CURSE);
   }
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new GreatCurse2ndEditionEncoder();
+    return new GreatCurseEncoder();
   }
 
   @Override

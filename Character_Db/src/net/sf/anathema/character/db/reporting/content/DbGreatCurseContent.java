@@ -8,11 +8,11 @@ import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
-public class Db2ndEditionGreatCurseContent extends AbstractSubBoxContent {
+public class DbGreatCurseContent extends AbstractSubBoxContent {
 
   private IGenericCharacter character;
 
-  public Db2ndEditionGreatCurseContent(IResources resources, IGenericCharacter character) {
+  public DbGreatCurseContent(IResources resources, IGenericCharacter character) {
     super(resources);
     this.character = character;
   }

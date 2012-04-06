@@ -34,7 +34,7 @@ public class ExtendedMovementEncoder implements ContentEncoder {
   }
 
   protected ITableEncoder createTableEncoder() {
-    return new Simple2ndEditionMovementTableEncoder(getResources());
+    return new SimpleMovementTableEncoder(getResources());
   }
 
   protected final IExaltedEdition getEdition() {

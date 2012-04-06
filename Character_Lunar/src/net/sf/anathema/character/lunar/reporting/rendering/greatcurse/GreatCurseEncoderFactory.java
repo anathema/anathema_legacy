@@ -9,15 +9,15 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredEncoderFactory
-public class GreatCurse2ndEditionEncoderFactory extends AbstractEncoderFactory {
+public class GreatCurseEncoderFactory extends AbstractEncoderFactory {
 
-  public GreatCurse2ndEditionEncoderFactory() {
+  public GreatCurseEncoderFactory() {
     super(EncoderIds.GREAT_CURSE);
   }
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new GreatCurse2ndEditionEncoder(resources);
+    return new GreatCurseEncoder(resources);
   }
 
   @Override

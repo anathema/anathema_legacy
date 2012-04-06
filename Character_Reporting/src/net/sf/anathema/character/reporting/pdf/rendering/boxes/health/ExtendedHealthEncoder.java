@@ -33,7 +33,7 @@ public class ExtendedHealthEncoder extends AbstractHealthAndMovementEncoder {
 
   @Override
   protected ITableEncoder createTableEncoder() {
-    return new Health2ndEditionTableEncoder(getResources());
+    return new HealthTableEncoder(getResources());
   }
 
   @Override

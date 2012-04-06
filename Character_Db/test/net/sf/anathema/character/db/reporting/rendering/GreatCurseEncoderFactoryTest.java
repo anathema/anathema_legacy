@@ -10,13 +10,13 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class GreatCurse2ndEditionEncoderFactoryTest {
+public class GreatCurseEncoderFactoryTest {
 
-  private GreatCurse2ndEditionEncoderFactory factory;
+  private GreatCurseEncoderFactory factory;
 
   @Before
   public void setUp() throws Exception {
-    factory = new GreatCurse2ndEditionEncoderFactory();
+    factory = new GreatCurseEncoderFactory();
   }
 
   @Test

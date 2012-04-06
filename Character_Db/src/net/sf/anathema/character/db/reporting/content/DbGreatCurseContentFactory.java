@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting.content;
+package net.sf.anathema.character.db.reporting.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -7,18 +7,18 @@ import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.lib.resources.IResources;
 
-@RegisteredReportContent(produces = Weaponry2ndEditionContent.class)
-public class Weaponry2ndEditionContentFactory implements ReportContentFactory<Weaponry2ndEditionContent> {
+@RegisteredReportContent(produces = DbGreatCurseContent.class)
+public class DbGreatCurseContentFactory implements ReportContentFactory<DbGreatCurseContent> {
 
   private IResources resources;
 
-  public Weaponry2ndEditionContentFactory(IResources resources){
+  public DbGreatCurseContentFactory(IResources resources) {
     this.resources = resources;
   }
 
   @Override
-  public Weaponry2ndEditionContent create(ReportSession session, IGenericCharacter character,
+  public DbGreatCurseContent create(ReportSession session, IGenericCharacter character,
           IGenericDescription description) {
-    return new Weaponry2ndEditionContent(resources, character);
+    return new DbGreatCurseContent(resources, character);
   }
 }

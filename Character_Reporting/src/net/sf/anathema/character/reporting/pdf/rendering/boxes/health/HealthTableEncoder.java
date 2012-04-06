@@ -4,9 +4,9 @@ import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
-public class Health2ndEditionTableEncoder extends AbstractHealthTableEncoder {
+public class HealthTableEncoder extends AbstractHealthTableEncoder {
 
-  public Health2ndEditionTableEncoder(IResources resources) {
+  public HealthTableEncoder(IResources resources) {
     super(resources);
   }
 
