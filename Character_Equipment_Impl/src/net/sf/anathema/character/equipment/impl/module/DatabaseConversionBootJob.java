@@ -38,7 +38,10 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     ObjectContainer container = EquipmentDatabaseConnectionManager.createConnection(databaseFile);
     Version dbVersion = DatabaseUtils.getDatabaseVersion(container);
     Version anathemaVersion = new Version(resources);
-    logger.info("Found equipment database at version " + dbVersion.asString());
+    if( dbVersion != null )
+		logger.info("Found equipment database at version " + dbVersion.asString());
+	else
+		logger.info("No equipment database found, creating new empty database");
     if (anathemaVersion.isLargerThan(dbVersion)) {
       backupDatabase(anathemaModel, container, anathemaVersion);
       Version updatedVersion = updateDbVersion(dbVersion, anathemaVersion);
