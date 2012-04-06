@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl.social;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.dummy.DummyGenericTrait;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 public class InvestigationSocialAttackTest {
 
   IGenericTraitCollection collection = mock(IGenericTraitCollection.class);
-  IEquipmentModifiers equipment = mock(IEquipmentModifiers.class);
+  ICharacterStatsModifiers equipment = mock(ICharacterStatsModifiers.class);
   private InvestigationSocialAttack socialAttack = new InvestigationSocialAttack(collection, equipment);
 
   @Before

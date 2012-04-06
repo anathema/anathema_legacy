@@ -26,7 +26,7 @@ Anathema no longer supports First Edition or "classic" Second Edition.
 At first launch, it will create a backup ZIP of your repository, delete all 1E Characters and convert 2E characters to
 the appropriate template from the Scroll of Errata.
 It will also filter your equipment database and remove all stats from 1E and all shield stats.
-It will delete all items that have no stats remaining after filtering.
+It will delete all items that have no stats remaining after filtering - if they previously had any.
 If your Character spent XP to change a Combo and you tracked the expenditure in the XP table, please remove the
 entry manually to reflect the new rules.
 

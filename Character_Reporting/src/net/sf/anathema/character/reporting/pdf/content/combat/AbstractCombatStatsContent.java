@@ -1,8 +1,9 @@
 package net.sf.anathema.character.reporting.pdf.content.combat;
 
+import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
@@ -55,8 +56,8 @@ public abstract class AbstractCombatStatsContent extends AbstractSubBoxContent {
     return true;
   }
 
-  protected IEquipmentModifiers getEquipment() {
-    return getCharacter().getEquipmentModifiers();
+  protected ICharacterStatsModifiers getEquipment() {
+    return CharacterStatsModifiers.extractFromCharacter(character);
   }
 
   protected IGenericCharacter getCharacter() {

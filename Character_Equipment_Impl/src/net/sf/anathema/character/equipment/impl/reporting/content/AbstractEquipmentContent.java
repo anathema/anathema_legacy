@@ -3,8 +3,9 @@ package net.sf.anathema.character.equipment.impl.reporting.content;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
+import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.FixedLineStatsContent;
@@ -29,7 +30,7 @@ public abstract class AbstractEquipmentContent<STATS extends IEquipmentStats> ex
     return model.getPrintModel();
   }
 
-  protected IEquipmentModifiers getEquipmentModifiers() {
-    return character.getEquipmentModifiers();
+  protected ICharacterStatsModifiers getEquipmentModifiers() {
+    return CharacterStatsModifiers.extractFromCharacter(character);
   }
 }

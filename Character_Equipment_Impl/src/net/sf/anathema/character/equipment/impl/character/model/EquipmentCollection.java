@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import net.sf.anathema.character.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.equipment.IWeaponModifiers;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.EquipmentModifiers;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponModifiers;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +29,7 @@ public class EquipmentCollection implements Iterable<IEquipmentItem>, ModifierFa
   }
 
   @Override
-  public IEquipmentModifiers createModifiers() {
-    return new EquipmentModifiers(equipmentItems);
+  public IWeaponModifiers createModifiers() {
+    return new WeaponModifiers(equipmentItems);
   }
 }

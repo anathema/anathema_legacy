@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.social;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -14,9 +14,9 @@ import static net.sf.anathema.character.generic.traits.types.AttributeType.Manip
 public abstract class AbstractSocialAttack implements ISocialCombatStats {
 
   private final IGenericTraitCollection collection;
-  private IEquipmentModifiers equipmentModifiers;
+  private ICharacterStatsModifiers equipmentModifiers;
 
-  public AbstractSocialAttack(IGenericTraitCollection collection, IEquipmentModifiers equipmentModifiers) {
+  public AbstractSocialAttack(IGenericTraitCollection collection, ICharacterStatsModifiers equipmentModifiers) {
     this.collection = collection;
     this.equipmentModifiers = equipmentModifiers;
   }

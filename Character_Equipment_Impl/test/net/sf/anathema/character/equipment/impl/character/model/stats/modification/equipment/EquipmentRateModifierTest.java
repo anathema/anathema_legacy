@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification.equipment;
 
-import net.sf.anathema.character.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.equipment.IWeaponModifiers;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
 import org.junit.Test;
 
@@ -10,7 +10,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class EquipmentRateModifierTest {
-  IEquipmentModifiers modifiers = mock(IEquipmentModifiers.class);
+  IWeaponModifiers modifiers = mock(IWeaponModifiers.class);
 
   @Test
   public void returnsRateModifierForMelee() throws Exception {

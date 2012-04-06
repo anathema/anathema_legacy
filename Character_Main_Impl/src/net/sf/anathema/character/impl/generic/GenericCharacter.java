@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -205,11 +204,6 @@ public class GenericCharacter implements IGenericCharacter {
   @Override
   public IAdditionalModel getAdditionalModel(String id) {
     return statistics.getExtendedConfiguration().getAdditionalModel(id);
-  }
-
-  @Override
-  public IEquipmentModifiers getEquipmentModifiers() {
-    return EquipmentModifiers.extractFromStatistics(statistics);
   }
 
   @Override

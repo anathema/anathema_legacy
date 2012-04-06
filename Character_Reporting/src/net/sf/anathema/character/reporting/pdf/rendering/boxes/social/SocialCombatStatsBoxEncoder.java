@@ -5,8 +5,9 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
+import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.IEquipmentModifiers;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -30,7 +31,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
 
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
-    IEquipmentModifiers equipment = reportSession.getCharacter().getEquipmentModifiers();
+    ICharacterStatsModifiers equipment = CharacterStatsModifiers.extractFromCharacter(reportSession.getCharacter());
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height);
     float valueHeight = encodeValues(graphics, valueBounds, reportSession.getCharacter().getTraitCollection(), equipment);
@@ -124,7 +125,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     return cell;
   }
 
-  private float encodeValues(SheetGraphics graphics, Bounds bounds, IGenericTraitCollection traitCollection, IEquipmentModifiers equipment) {
+  private float encodeValues(SheetGraphics graphics, Bounds bounds, IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
     String joinLabel = resources.getString("Sheet.SocialCombat.JoinDebateBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.SocialCombat.DodgeMDV"); //$NON-NLS-1$
     int joinDebate = CharacterUtilities.getJoinDebate(traitCollection, equipment);
