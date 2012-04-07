@@ -18,18 +18,22 @@ public class ArmourStats extends AbstractCombatStats implements IArmourStats {
     soakByHealthType = collectionFactory.createHashMap();
   }
 
+  @Override
   public Integer getFatigue() {
     return fatigue;
   }
 
+  @Override
   public Integer getHardness(HealthType type) {
     return hardnessByHealthType.get(type.name());
   }
 
+  @Override
   public Integer getMobilityPenalty() {
     return mobilityPenalty;
   }
 
+  @Override
   public Integer getSoak(HealthType type) {
     return soakByHealthType.get(type.name());
   }

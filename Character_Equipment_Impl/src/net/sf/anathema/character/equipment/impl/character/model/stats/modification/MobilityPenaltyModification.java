@@ -11,6 +11,6 @@ public class MobilityPenaltyModification implements StatsModification {
   @Override
   public int getModifiedValue(int original) {
     int bonus = modifier.calculate();
-    return Math.max(0, original - bonus);
+    return Math.min(0, original - bonus);
   }
 }
