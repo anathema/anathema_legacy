@@ -7,6 +7,7 @@ import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWeaponStats;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.EquipmentDatabaseConnectionManager;
+import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.impl.persistence.SecondEdition;
@@ -46,7 +47,19 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
       backupDatabase(anathemaModel, container, anathemaVersion);
       Version updatedVersion = updateDbVersion(dbVersion, anathemaVersion);
       updateContent(container);
+      convertToGson(anathemaModel, container);
       finish(container, updatedVersion);
+    }
+  }
+
+  private void convertToGson(IAnathemaModel anathemaModel, ObjectContainer container) {
+    GsonEquipmentDatabase database = new GsonEquipmentDatabase(anathemaModel.getRepository().getDataBaseDirectory(GsonEquipmentDatabase.DATABASE_FOLDER));
+    Query query = container.query();
+    query.constrain(EquipmentTemplate.class);
+    ObjectSet set = query.execute();
+    for (Object object : set) {
+      EquipmentTemplate template = (EquipmentTemplate) object;
+      database.saveTemplate(template);
     }
   }
 
