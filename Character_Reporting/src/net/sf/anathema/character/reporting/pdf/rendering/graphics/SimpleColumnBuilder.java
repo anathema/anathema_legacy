@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfContentByte;
@@ -34,9 +33,9 @@ public class SimpleColumnBuilder {
     return this;
   }
 
-  public SimpleColumn encode() throws DocumentException {
-    simpleColumn.encode();
-    return simpleColumn;
+  public SimpleColumn encode() {
+      simpleColumn.encode();
+      return simpleColumn;
   }
 
   public SimpleColumn get() {

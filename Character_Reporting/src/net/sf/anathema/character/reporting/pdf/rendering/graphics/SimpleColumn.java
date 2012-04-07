@@ -6,6 +6,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.ColumnText;
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.framework.reporting.ReportException;
 
 public class SimpleColumn {
 
@@ -56,11 +57,19 @@ public class SimpleColumn {
     return columnText.getLinesWritten();
   }
 
-  public int encode() throws DocumentException {
-    return columnText.go();
+  public int encode() {
+    try {
+      return columnText.go();
+    } catch (DocumentException e) {
+      throw new ReportException(e);
+    }
   }
 
-  public int simulate() throws DocumentException {
-    return columnText.go(true);
+  public int simulate() {
+    try {
+      return columnText.go(true);
+    } catch (DocumentException e) {
+      throw new ReportException(e);
+    }
   }
 }

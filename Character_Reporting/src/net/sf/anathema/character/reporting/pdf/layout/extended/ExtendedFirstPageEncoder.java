@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
@@ -34,8 +33,7 @@ public class ExtendedFirstPageEncoder implements PageEncoder {
   }
 
   @Override
-  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws
-          DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) {
     SheetPage page = sheet.startPortraitPage(graphics, session);
     LayoutField personalInfo = page.place(PERSONAL_INFO).atStartOf(page).withPreferredHeight().andColumnSpan(3).now();
     LayoutField attributes = page.place(ATTRIBUTES).below(personalInfo).withHeight(117).now();
