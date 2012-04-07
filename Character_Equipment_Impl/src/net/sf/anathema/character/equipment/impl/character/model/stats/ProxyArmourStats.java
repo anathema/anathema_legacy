@@ -62,7 +62,7 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
   }
 
   private AttunementModifier createAttunementModifier(StatModifier modifier) {
-    return new AttunementModifier(modifier, useAttunementModifiers());
+    return new AttunementModifier(modifier);
   }
 
   @Override

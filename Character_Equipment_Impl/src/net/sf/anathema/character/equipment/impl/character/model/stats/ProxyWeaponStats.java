@@ -53,7 +53,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof IWeaponStats && !(obj instanceof WeaponStatsDecorator)) {
+    if (obj instanceof AbstractWeaponStats) {
       return obj.equals(delegate);
     }
     if (!(obj instanceof ProxyWeaponStats)) {
@@ -164,7 +164,7 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   }
 
   private AttunementModifier createAttunementModifier(StatModifier modifier) {
-    return new AttunementModifier(modifier, useAttunementModifiers());
+    return new AttunementModifier(modifier);
   }
 
   @Override

@@ -18,7 +18,6 @@ public class GsonStatMother {
     stats.setRange(400);
     stats.setRate(1);
     stats.setSpeed(5);
-    stats.setUseAttunementModifiers(false);
     return stats;
   }
 
@@ -33,7 +32,6 @@ public class GsonStatMother {
     stats.setMinimumDamage(0);
     stats.setRate(1);
     stats.setSpeed(5);
-    stats.setUseAttunementModifiers(false);
     return stats;
   }
 

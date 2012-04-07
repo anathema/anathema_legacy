@@ -4,18 +4,13 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 
 public class AttunementModifier implements StatModifier {
   private final StatModifier modifier;
-  private final boolean attuned;
 
-  public AttunementModifier(StatModifier modifier, boolean isAttuned) {
+  public AttunementModifier(StatModifier modifier) {
     this.modifier = modifier;
-    attuned = isAttuned;
   }
 
   @Override
   public int calculate() {
-    if (!attuned) {
-      return 0;
-    }
     return modifier.calculate();
   }
 }

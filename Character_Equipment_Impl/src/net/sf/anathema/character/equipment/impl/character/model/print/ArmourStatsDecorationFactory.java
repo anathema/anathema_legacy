@@ -62,16 +62,6 @@ public class ArmourStatsDecorationFactory implements IEquipmentStatsDecorationFa
       }
 
       @Override
-      public void setUseAttunementModifiers(boolean value) {
-        stats.setUseAttunementModifiers(value);
-      }
-
-      @Override
-      public boolean useAttunementModifiers() {
-        return stats.useAttunementModifiers();
-      }
-
-      @Override
       public boolean representsItemForUseInCombat() {
         return stats.representsItemForUseInCombat();
       }
