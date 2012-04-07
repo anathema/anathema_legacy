@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.simple;
 
-import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.AllMagicContent;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
@@ -23,7 +22,7 @@ public class SecondPageEncoder implements PageEncoder {
   public static final float LANGUAGE_HEIGHT = 60;
 
   @Override
-  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) {
     SheetPage page = sheet.startPortraitPage(graphics, session);
     LayoutField backgrounds = page.place(BACKGROUNDS).atStartOf(page).withHeight(BACKGROUND_HEIGHT).now();
     LayoutField possessions = page.place(POSSESSIONS).rightOf(backgrounds).withSameHeight().now();
