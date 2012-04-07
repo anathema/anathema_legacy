@@ -5,9 +5,10 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
+import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ARSENAL;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.COMBAT;
@@ -17,10 +18,12 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.PANOP
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.POSSESSIONS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.SOCIAL_COMBAT;
 
-public class ExtendedSecondPageEncoder extends AbstractExtendedPdfPageEncoder {
+public class ExtendedSecondPageEncoder implements PageEncoder {
 
-  public ExtendedSecondPageEncoder(IResources resources, PageConfiguration pageConfiguration) {
-    super(resources, pageConfiguration);
+  private PageConfiguration pageConfiguration;
+
+  public ExtendedSecondPageEncoder(PageConfiguration pageConfiguration) {
+    this.pageConfiguration = pageConfiguration;
   }
 
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
@@ -32,6 +35,6 @@ public class ExtendedSecondPageEncoder extends AbstractExtendedPdfPageEncoder {
     LayoutField socialCombat = page.place(SOCIAL_COMBAT).below(movement).withHeight(125).now();
     LayoutField combat = page.place(COMBAT).rightOf(socialCombat).withSameHeight().andColumnSpan(2).now();
     LayoutField possessions = page.place(POSSESSIONS).below(socialCombat).fillToBottomOfPage().andColumnSpan(3).now();
-    encodeCopyright(graphics);
+    new CopyrightEncoder(pageConfiguration).encodeCopyright(graphics);
   }
 }

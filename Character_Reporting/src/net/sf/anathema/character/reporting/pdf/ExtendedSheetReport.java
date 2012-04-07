@@ -66,10 +66,10 @@ public class ExtendedSheetReport extends AbstractPdfReport {
 
       ReportSession session = new ReportSession(getContentRegistry(), character, description);
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
-      encoderList.add(new ExtendedFirstPageEncoder(resources, configuration));
-      encoderList.add(new ExtendedSecondPageEncoder(resources, configuration));
+      encoderList.add(new ExtendedFirstPageEncoder(configuration));
+      encoderList.add(new ExtendedSecondPageEncoder(configuration));
       Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
-      encoderList.add(new ExtendedMagicPageEncoder(getEncoderRegistry(), resources, configuration));
+      encoderList.add(new ExtendedMagicPageEncoder(getEncoderRegistry(), configuration));
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       for (PageEncoder encoder : encoderList) {
         encoder.encode(sheet, graphics, session);

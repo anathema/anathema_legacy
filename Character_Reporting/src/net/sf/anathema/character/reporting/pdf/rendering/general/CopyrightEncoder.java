@@ -4,41 +4,89 @@ import com.itextpdf.text.Anchor;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.character.reporting.pdf.rendering.graphics.SimpleColumnBuilder;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.MessageFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+
 import static net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment.Center;
+import static net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment.Left;
 import static net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment.Right;
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration.Offset;
 
 public class CopyrightEncoder {
 
   private PageConfiguration pageConfiguration;
-  private int contentHeight;
+  private float contentHeight;
 
-  public CopyrightEncoder(PageConfiguration pageConfiguration, int contentHeight) {
+
+  public CopyrightEncoder(PageConfiguration pageConfiguration) {
+    this(pageConfiguration, pageConfiguration.getContentHeight());
+  }
+
+  public CopyrightEncoder(PageConfiguration pageConfiguration, float contentHeight) {
     this.pageConfiguration = pageConfiguration;
     this.contentHeight = contentHeight;
   }
 
-  // TODO: Eliminate these hard-coded copyright dates; these should be in a properties file or something.
   public void encodeCopyright(SheetGraphics graphics) throws DocumentException {
-    Font copyrightFont = graphics.createCommentFont();
-    float copyrightHeight = pageConfiguration.getPageHeight() - pageConfiguration.getContentHeight();
-    Bounds firstColumnBounds = pageConfiguration
-            .getColumnRectangle((float) contentHeight, copyrightHeight, 1, PageConfiguration.Offset(0));
-    Anchor voidStatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont); //$NON-NLS-1$
-    voidStatePhrase.setReference("http://www.voidstate.com"); //$NON-NLS-1$
-    graphics.createSimpleColumn(firstColumnBounds).withLeading((float) FONT_SIZE).andTextPart(voidStatePhrase).encode();
-    Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92007-2012\nhttp://anathema.sf.net", copyrightFont); //$NON-NLS-1$
-    anathemaPhrase.setReference("http://anathema.sf.net"); //$NON-NLS-1$
-    Bounds anathemaBounds = pageConfiguration
-            .getColumnRectangle((float) contentHeight, copyrightHeight, 1, PageConfiguration.Offset(1));
-    graphics.createSimpleColumn(anathemaBounds).withLeading(FONT_SIZE).andAlignment(Center).andTextPart(anathemaPhrase).encode();
-    Anchor whiteWolfPhrase = new Anchor("Exalted \u00A92007 by White Wolf, Inc.\nhttp://www.white-wolf.com", copyrightFont); //$NON-NLS-1$
-    whiteWolfPhrase.setReference("http://www.white-wolf.com"); //$NON-NLS-1$
-    Bounds whiteWolfBounds = pageConfiguration
-            .getColumnRectangle((float) contentHeight, copyrightHeight, 1, PageConfiguration.Offset(2));
-    graphics.createSimpleColumn(whiteWolfBounds).withLeading(FONT_SIZE).andAlignment(Right).andTextPart(whiteWolfPhrase).encode();
+    encodeVoidStateColumn(graphics);
+    encodeAnathemaColumn(graphics);
+    encodeWhiteWolfColumn(graphics);
+  }
+
+  private void encodeVoidStateColumn(SheetGraphics graphics) throws DocumentException {
+    Bounds bounds = pageConfiguration.getColumnRectangle(contentHeight, getCopyrightHeight(), 1, Offset(0));
+    String text = "Inspired by Voidstate\nhttp://www.voidstate.com";
+    Anchor phrase = createAnchor(graphics, text, "http://www.voidstate.com");
+    encoderLine(graphics, phrase, Left, bounds);
+  }
+
+  private void encodeAnathemaColumn(SheetGraphics graphics) throws DocumentException {
+    Bounds bounds = pageConfiguration.getColumnRectangle(contentHeight, getCopyrightHeight(), 1, Offset(1));
+    String text = induceYear("Created with Anathema \u00A92007-{0}\nhttp://anathema.sf.net");
+    Anchor phrase = createAnchor(graphics, text, "http://anathema.sf.net");
+    encoderLine(graphics, phrase, Center, bounds);
+  }
+
+  private void encodeWhiteWolfColumn(SheetGraphics graphics) throws DocumentException {
+    Bounds bounds = pageConfiguration.getColumnRectangle(contentHeight, getCopyrightHeight(), 1, Offset(2));
+    String text = induceYear("Exalted \u00A92007-{0} by CCP hf\nhttp://www.white-wolf.com");
+    Anchor phrase = createAnchor(graphics, text, "http://www.white-wolf.com");
+    encoderLine(graphics, phrase, Right, bounds);
+  }
+
+  private String induceYear(String pattern)                               {
+    int year = new GregorianCalendar().get(Calendar.YEAR);
+    DecimalFormat format = new DecimalFormat("####",new DecimalFormatSymbols(Locale.ENGLISH));
+    return MessageFormat.format(pattern, format.format(year));
+  }
+
+  private Anchor createAnchor(SheetGraphics graphics, String text, String reference) {
+    Anchor phrase = new Anchor(text, getFont(graphics)); //$NON-NLS-1$
+    phrase.setReference(reference); //$NON-NLS-1$
+    return phrase;
+  }
+
+  private Font getFont(SheetGraphics graphics) {
+    return graphics.createCommentFont();
+  }
+
+  private float getCopyrightHeight() {
+    return pageConfiguration.getPageHeight() - pageConfiguration.getContentHeight();
+  }
+
+  private void encoderLine(SheetGraphics graphics, Anchor phrase, HorizontalAlignment alignment, Bounds bounds)
+          throws DocumentException {
+    SimpleColumnBuilder column = graphics.createSimpleColumn(bounds);
+    column.withLeading(FONT_SIZE).andAlignment(alignment).andTextPart(phrase).encode();
   }
 }
