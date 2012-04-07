@@ -54,7 +54,7 @@ public class SecondEditionAdamantModificiationTest extends AbstractEquipmentModi
 
   @Test
   public void mobilityDecreasedByOne() {
-    assertMobilityPenaltyModification(1, 2);
+    assertMobilityPenaltyModification(-1, -2);
   }
 
   @Test
