@@ -23,7 +23,8 @@ public interface EncoderIds {
   String INTIMACIES_SIMPLE = "IntimaciesSimple";
   String LANGUAGES = "Languages";
   String HEALTH_AND_MOVEMENT = "HealthAndMovement";
-  String MERITS_AND_FLAWS = "MeritsAndFlaws";
+  String HEALTH = "Health";
+  String MOVEMENT = "Movement";
   String MUTATIONS = "Mutations";
   String CHARMS_AND_SORCERY = "CharmsAndSorcery";
   String CHARMS_ONLY = "CharmsOnly";
