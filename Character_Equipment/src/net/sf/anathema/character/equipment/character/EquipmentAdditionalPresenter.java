@@ -151,20 +151,22 @@ public class EquipmentAdditionalPresenter implements Presenter {
     IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
     Icon removeIcon = new BasicUi(resources).getRemoveIcon();
     viewsByItem.put(selectedObject, objectView);
-    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(),
-            model.getCharacterOptionProvider(), resources).initPresentation();
+    Action[] actions = new Action[0];
     if (model.canBeRemoved(selectedObject)) {
-      objectView.addAction(
-              new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
-                      removeIcon) {
-                private static final long serialVersionUID = 1L;
-
-                @Override
-                protected void execute(Component parentComponent) {
-                  model.removeItem(selectedObject);
-                }
-              });
+    	actions = new Action[] {
+    		new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
+                       removeIcon) {
+	            private static final long serialVersionUID = 1L;
+	            
+	            @Override
+	            protected void execute(Component parentComponent) {
+	                 model.removeItem(selectedObject);
+	            }
+            }	
+    	};
     }
+    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(),
+            model.getCharacterOptionProvider(), resources, actions).initPresentation();
     view.revalidateEquipmentViews();
   }
 }

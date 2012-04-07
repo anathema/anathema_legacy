@@ -113,7 +113,7 @@ public class EquipmentItem implements IEquipmentItem {
 
   @Override
   public ArtifactAttuneType getAttunementState() {
-    for (IEquipmentStats stats : getStats())
+    for (IEquipmentStats stats : getViews())
       if (stats instanceof IArtifactStats) if (isPrintEnabled(stats)) return ((IArtifactStats) stats).getAttuneType();
     return ArtifactAttuneType.Unattuned;
   }
@@ -190,7 +190,7 @@ public class EquipmentItem implements IEquipmentItem {
 
     @Override
     public IEquipmentStats transform(IEquipmentStats stats) {
-      BaseMaterial baseMaterial = createBaseMaterial();
+      BaseMaterial baseMaterial = createBaseMaterial(getAttunementState().grantsMaterialBonuses());
       return createStatsForMaterial(stats, baseMaterial);
     }
 
@@ -204,8 +204,8 @@ public class EquipmentItem implements IEquipmentItem {
       return stats;
     }
 
-    private BaseMaterial createBaseMaterial() {
-      if (Variable == template.getComposition()) {
+    private BaseMaterial createBaseMaterial(boolean allowMaterialBonuses) {
+      if (Variable == template.getComposition() && allowMaterialBonuses) {
         return new ReactiveBaseMaterial(material);
       } else {
         return new InertBaseMaterial();

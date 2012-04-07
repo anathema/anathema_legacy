@@ -57,8 +57,6 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
   }
 
   public String createString(IEquipmentItem item, IEquipmentStats equipment) {
-    if (item != null && equipment != null)
-      equipment.setUseAttunementModifiers(item.getAttunementState().grantsMaterialBonuses());
     if (equipment instanceof IWeaponStats) {
       return createWeaponString(item, (IWeaponStats) equipment);
     }

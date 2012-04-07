@@ -56,7 +56,6 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
     List<K> printStats = new ArrayList<K>();
     for (IEquipmentItem item : collection.getEquipmentItems()) {
       for (K stats : getPrintedStats(item, printedClass)) {
-    	stats.setUseAttunementModifiers(item.getAttunementState().grantsMaterialBonuses());
         printStats.add(factory.createRenamedPrintDecoration(item, stats));
       }
     }
