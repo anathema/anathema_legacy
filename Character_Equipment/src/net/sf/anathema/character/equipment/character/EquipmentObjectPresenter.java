@@ -33,7 +33,6 @@ public class EquipmentObjectPresenter implements Presenter {
   private final IEquipmentCharacterDataProvider dataProvider;
   private final IResources resources;
   private final Action[] additionalActions;
-  private boolean isPreparingContent = false;
   
   public EquipmentObjectPresenter(IEquipmentItem model,
 		  						  IEquipmentObjectView view,
@@ -79,8 +78,6 @@ public class EquipmentObjectPresenter implements Presenter {
 	  attuneStatFlags.clear();
 	  otherStatFlags.clear();
 	  
-	  this.isPreparingContent = true;
-	  
 	  boolean isRequireAttuneArtifact = false;
 	  boolean isAttuned = false;
 	  for (final IEquipmentStats equipment : model.getStats()) {
@@ -98,6 +95,7 @@ public class EquipmentObjectPresenter implements Presenter {
 	    else {
 	  	  otherStatFlags.put(equipment, booleanModel);
 	    }
+	    booleanModel.setValue(model.isPrintEnabled(equipment));
 	    booleanModel.addChangeListener(new IChangeListener() {
 	      @Override
           public void stateChanged() {
@@ -114,14 +112,10 @@ public class EquipmentObjectPresenter implements Presenter {
 		      		  }
 		      	  }
 		        }
-		        // refresh the view, if we aren't already
-		        if (!isPreparingContent) {
-		        	prepareContents();
-		        }
+		        prepareContents();
 	        }
 	      }
 	    });
-	    booleanModel.setValue(model.isPrintEnabled(equipment));
 	      
 	    addOptionalModels(booleanModel, equipment);
 	  }
@@ -136,8 +130,6 @@ public class EquipmentObjectPresenter implements Presenter {
 	  for (Action action : additionalActions) {
 		  view.addAction(action);
 	  }
-	  
-	  this.isPreparingContent = false;
   }
   
   private void addOptionalModels(BooleanModel baseModel, final IEquipmentStats stats)
