@@ -7,17 +7,17 @@ import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 
 public interface IEquipmentAdditionalView extends IView {
 
-  public IListObjectSelectionView<String> getEquipmentTemplatePickList();
+  IListObjectSelectionView<String> getEquipmentTemplatePickList();
 
-  public IEquipmentObjectView addEquipmentObjectView();
+  IEquipmentObjectView addEquipmentObjectView();
 
-  public void removeEquipmentObjectView(IEquipmentObjectView objectView);
+  void removeEquipmentObjectView(IEquipmentObjectView objectView);
 
-  public void setSelectButtonAction(Action action);
+  void setSelectButtonAction(Action action);
 
-  public void setRefreshButtonAction(Action action);
+  void setRefreshButtonAction(Action action);
 
-  public IMagicalMaterialView getMagicMaterialView();
+  IMagicalMaterialView getMagicMaterialView();
 
-  public void revalidateEquipmentViews();
+  void revalidateEquipmentViews();
 }

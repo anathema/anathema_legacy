@@ -11,9 +11,10 @@ import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
+import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ANIMA;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.CHARMS_ONLY;
@@ -24,16 +25,16 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.GENER
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.SPELLS_ONLY;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.WILLPOWER_EXTENDED;
 
-public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
+public class ExtendedMagicPageEncoder implements PageEncoder {
 
   public static final float FIRST_ROW_HEIGHT = 96.625f;
   public static final float COMBO_HEIGHT = 128f;
   private EncoderRegistry encoderRegistry;
+  private PageConfiguration pageConfiguration;
 
-  public ExtendedMagicPageEncoder(EncoderRegistry encoderRegistry, IResources resources,
-          PageConfiguration configuration) {
-    super(resources, configuration);
+  public ExtendedMagicPageEncoder(EncoderRegistry encoderRegistry, PageConfiguration configuration) {
     this.encoderRegistry = encoderRegistry;
+    this.pageConfiguration = configuration;
   }
 
   @Override
@@ -61,7 +62,7 @@ public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
       }
       LayoutField genericCharms = page.place(GENERIC_CHARMS).below(combos).withPreferredHeight().andColumnSpan(3).now();
       page.place(CHARMS_ONLY).below(genericCharms).fillToBottomOfPage().andColumnSpan(3).now();
-      encodeCopyright(graphics);
+      new CopyrightEncoder(pageConfiguration).encodeCopyright(graphics);
       encodeAdditionalCharmPages(sheet, graphics, session);
     }
   }
@@ -84,7 +85,7 @@ public class ExtendedMagicPageEncoder extends AbstractExtendedPdfPageEncoder {
     while (charmContent.hasUnprintedCharms()) {
       SheetPage page = sheet.startPortraitPage(graphics, session);
       page.place(EncoderIds.CHARMS_ONLY).atStartOf(page).fillToBottomOfPage().andColumnSpan(3).now();
-      encodeCopyright(graphics);
+      new CopyrightEncoder(pageConfiguration).encodeCopyright(graphics);
     }
   }
   private boolean hasAnima(ReportSession session) {

@@ -8,9 +8,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-public class ExtendedHealthEncoder extends AbstractHealthAndMovementEncoder {
+public class HealthEncoder extends AbstractHealthAndMovementEncoder {
 
-  public ExtendedHealthEncoder(IResources resources) {
+  public HealthEncoder(IResources resources) {
     super(resources);
   }
 

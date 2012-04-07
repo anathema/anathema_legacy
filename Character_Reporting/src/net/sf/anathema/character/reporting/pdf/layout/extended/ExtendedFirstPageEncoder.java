@@ -5,9 +5,10 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
 import net.sf.anathema.character.reporting.pdf.layout.field.LayoutField;
+import net.sf.anathema.character.reporting.pdf.rendering.general.CopyrightEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageConfiguration;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ABILITIES_WITH_CRAFTS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.ATTRIBUTES;
@@ -24,10 +25,12 @@ import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.VIRTU
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.WILLPOWER_DOTS;
 import static net.sf.anathema.character.reporting.pdf.rendering.EncoderIds.YOZI_LIST;
 
-public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
+public class ExtendedFirstPageEncoder implements PageEncoder {
 
-  public ExtendedFirstPageEncoder(IResources resources, PageConfiguration pageConfiguration) {
-    super(resources, pageConfiguration);
+  private PageConfiguration pageConfiguration;
+
+  public ExtendedFirstPageEncoder(PageConfiguration pageConfiguration) {
+    this.pageConfiguration = pageConfiguration;
   }
 
   @Override
@@ -50,6 +53,6 @@ public class ExtendedFirstPageEncoder extends AbstractExtendedPdfPageEncoder {
     LayoutField backgrounds = page.place(BACKGROUNDS).below(yoziList).alignBottomTo(intimacies).now();
     LayoutField experience = page.place(EXPERIENCE).below(backgrounds).withHeight(30).now();
     LayoutField languages = page.place(LANGUAGES).below(experience).fillToBottomOfPage().now();
-    encodeCopyright(graphics);
+    new CopyrightEncoder(pageConfiguration).encodeCopyright(graphics);
   }
 }

@@ -8,15 +8,15 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredEncoderFactory
-public class ExperienceBoxEncoderFactory extends AbstractEncoderFactory {
+public class ExperienceEncoderFactory extends AbstractEncoderFactory {
 
-  public ExperienceBoxEncoderFactory() {
+  public ExperienceEncoderFactory() {
     super(EncoderIds.EXPERIENCE);
   }
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new ExperienceContentEncoder();
+    return new ExperienceEncoder();
   }
 
   @Override

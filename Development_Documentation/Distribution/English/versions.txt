@@ -14,6 +14,7 @@ http://anathema.github.com
 * [Shadow493] Added missing Lunar and Dragon-Blooded templates from DotFA.
 
 -- Bugfixes --
+* Mobility penalty for equipment is calculated once more
 * [Shadow493] First Age Solars have the correct points
 * (Infernal/SWLiHN) "Counter-Conceptual Interposition" requires "Essence-Dissecting Stare"
 * (Infernal/Kimbery) "Bitter Heart Unbleeding" has an Essence 3 repurchase

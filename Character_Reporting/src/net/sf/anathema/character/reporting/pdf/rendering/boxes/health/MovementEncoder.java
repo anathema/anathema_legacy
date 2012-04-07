@@ -8,11 +8,11 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
-public class ExtendedMovementEncoder implements ContentEncoder {
+public class MovementEncoder implements ContentEncoder {
 
   private final IResources resources;
 
-  public ExtendedMovementEncoder(IResources resources) {
+  public MovementEncoder(IResources resources) {
     this.resources = resources;
   }
 

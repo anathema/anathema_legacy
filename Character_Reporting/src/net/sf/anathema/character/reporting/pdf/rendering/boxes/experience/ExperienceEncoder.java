@@ -10,9 +10,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
 
-public class ExperienceContentEncoder extends AbstractContentEncoder<ExperienceContent> {
+public class ExperienceEncoder extends AbstractContentEncoder<ExperienceContent> {
 
-  public ExperienceContentEncoder() {
+  public ExperienceEncoder() {
     super(ExperienceContent.class);
   }
 

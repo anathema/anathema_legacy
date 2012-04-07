@@ -87,7 +87,7 @@ public abstract class AbstractEquipmentModificationTest {
   }
 
   protected final void assertMobilityPenaltyUnmodified() {
-    assertMobilityPenaltyModification(1, 1);
+    assertMobilityPenaltyModification(-1, -1);
   }
 
   protected final void assertFatigueUnmodified() {

@@ -27,6 +27,7 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
   private final JButton refreshButton = new JButton();
   private final TaskPaneView<EquipmentObjectView> taskPaneView = new TaskPaneView<EquipmentObjectView>(
       new ITaskPaneGroupViewFactory<EquipmentObjectView>() {
+        @Override
         public EquipmentObjectView createView() {
           return new EquipmentObjectView();
         }
@@ -49,34 +50,42 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
     panel.add(taskPaneView.getComponent(), GridDialogLayoutData.FILL_BOTH);
   }
 
+  @Override
   public JComponent getComponent() {
     return panel;
   }
 
+  @Override
   public IEquipmentObjectView addEquipmentObjectView() {
     return taskPaneView.addEquipmentObjectView();
   }
 
+  @Override
   public void removeEquipmentObjectView(IEquipmentObjectView objectView) {
     taskPaneView.removeEquipmentObjectView((EquipmentObjectView) objectView);
   }
 
+  @Override
   public void setSelectButtonAction(Action action) {
     selectButton.setAction(action);
   }
 
+  @Override
   public void setRefreshButtonAction(Action action) {
     refreshButton.setAction(action);
   }
 
+  @Override
   public void revalidateEquipmentViews() {
     taskPaneView.revalidateView();
   }
 
+  @Override
   public IListObjectSelectionView<String> getEquipmentTemplatePickList() {
     return equipmentPickList;
   }
 
+  @Override
   public IMagicalMaterialView getMagicMaterialView() {
     return magicMaterialView;
   }
