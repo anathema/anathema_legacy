@@ -33,7 +33,7 @@ public class EquipmentObjectPresenter implements Presenter {
   private final IEquipmentCharacterDataProvider dataProvider;
   private final IResources resources;
   private final Action[] additionalActions;
-  private boolean contentsPrepared = false;
+  private boolean isPreparingContent = false;
   
   public EquipmentObjectPresenter(IEquipmentItem model,
 		  						  IEquipmentObjectView view,
@@ -79,6 +79,8 @@ public class EquipmentObjectPresenter implements Presenter {
 	  attuneStatFlags.clear();
 	  otherStatFlags.clear();
 	  
+	  this.isPreparingContent = true;
+	  
 	  boolean isRequireAttuneArtifact = false;
 	  boolean isAttuned = false;
 	  for (final IEquipmentStats equipment : model.getStats()) {
@@ -106,29 +108,16 @@ public class EquipmentObjectPresenter implements Presenter {
 		        if (booleanModel.getValue())
 		        {
 		          // disable all other attunement stats
-		      	  for (IEquipmentStats stats : attuneStatFlags.keySet())
-		      		  if (!equipment.equals(stats) && model.isPrintEnabled(stats))
-		      			  attuneStatFlags.get(stats).setValue(false);
+		      	  for (IEquipmentStats stats : attuneStatFlags.keySet()) {
+		      		  if (!equipment.equals(stats) && model.isPrintEnabled(stats)) {
+		      			  model.setPrintEnabled(stats, false);
+		      		  }
+		      	  }
 		        }
-		        // if this artifact requires attunement to use...
-		        if (((IArtifactStats)equipment).requireAttunementToUse()) {
-		        	boolean otherEnableState = false;
-			        // check if any attunement stat is set...
-				    for (IEquipmentStats attuneStats : attuneStatFlags.keySet()) {
-				      if (model.isPrintEnabled(attuneStats)) {
-				    	  otherEnableState = true;
-				      }
-				    }
-			        // and enable or disable all other stats accordingly...
-			        for (IEquipmentStats stats : otherStatFlags.keySet())
-			        {
-			              BooleanModel bool = otherStatFlags.get(stats);
-			        	  if (!otherEnableState)
-			        		  bool.setValue(false);
-			        	  view.setEnabled(bool, otherEnableState);
-				    }
+		        // refresh the view, if we aren't already
+		        if (!isPreparingContent) {
+		        	prepareContents();
 		        }
-		        refreshContents();
 	        }
 	      }
 	    });
@@ -136,6 +125,7 @@ public class EquipmentObjectPresenter implements Presenter {
 	      
 	    addOptionalModels(booleanModel, equipment);
 	  }
+	  // if we require attunement, but we are not, clear and disable all other stats
 	  if (isRequireAttuneArtifact && !isAttuned) {		  
 	   	for (BooleanModel bool : otherStatFlags.values()) {
 	    	view.setEnabled(bool, false);
@@ -147,14 +137,7 @@ public class EquipmentObjectPresenter implements Presenter {
 		  view.addAction(action);
 	  }
 	  
-	  contentsPrepared = true;
-  }
-  
-  private void refreshContents() {
-	  if (contentsPrepared) {
-		  contentsPrepared = false;
-		  prepareContents();
-	  }
+	  this.isPreparingContent = false;
   }
   
   private void addOptionalModels(BooleanModel baseModel, final IEquipmentStats stats)
