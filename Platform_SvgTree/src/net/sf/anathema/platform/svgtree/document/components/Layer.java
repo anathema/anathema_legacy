@@ -27,10 +27,12 @@ public class Layer implements ILayer {
     return new Dimension(gapDimension);
   }
 
+  @Override
   public void setPreviousLayer(ILayer previousLayer) {
     this.previousLayer = previousLayer;
   }
 
+  @Override
   public void addNode(IVisualizableNode node) {
     if (nodes.contains(node)) {
       return;
@@ -39,12 +41,14 @@ public class Layer implements ILayer {
     node.setLayer(this);
   }
 
+  @Override
   public void positionNodes() {
     for (IVisualizableNode node : nodes) {
       positionNode(node);
     }
   }
 
+  @Override
   public void positionNode(IVisualizableNode node) {
     IVisualizableNode[] children = node.getChildren();
     if (children.length == 0) {
@@ -72,6 +76,7 @@ public class Layer implements ILayer {
     throw new IllegalArgumentException("Children not found on layer " + nextLayer); //$NON-NLS-1$
   }
 
+  @Override
   public IVisualizableNode[] getNodes() {
     return nodes.toArray(new IVisualizableNode[nodes.size()]);
   }
@@ -92,6 +97,7 @@ public class Layer implements ILayer {
     throw new IllegalArgumentException("Children not found on layer " + nextLayer); //$NON-NLS-1$
   }
 
+  @Override
   public void setNodePosition(IVisualizableNode node, int position) {
     node.setPosition(position);
     IVisualizableNode previousNode = getPreviousNode(node);
@@ -136,16 +142,19 @@ public class Layer implements ILayer {
     }
   }
 
+  @Override
   public void setNodePositionWithoutChecking(IVisualizableNode node, int position) {
     node.setPosition(position);
   }
 
+  @Override
   public void setNodeOnNextFreePosition(IVisualizableNode node) {
     Integer previousNodeRightSide = getPreviousNodeRightExtreme(node);
     Integer newPosition = calculateNextFreePosition(previousNodeRightSide, node);
     setNodePosition(node, newPosition);
   }
 
+  @Override
   public int getOverlapFreePosition(IVisualizableNode node) {
     IVisualizableNode previousNode = getPreviousNode(node);
     if (previousNode == null) {
@@ -154,6 +163,7 @@ public class Layer implements ILayer {
     return calculateNextFreePosition(previousNode.getRightSide(), node);
   }
 
+  @Override
   public Integer getNextNodeLeftExtreme(IVisualizableNode node) {
     IVisualizableNode nextNode = getNextNode(node);
     if (nextNode == null) {
@@ -162,6 +172,7 @@ public class Layer implements ILayer {
     return nextNode.getLeftExtreme();
   }
 
+  @Override
   public IVisualizableNode getNextNode(IVisualizableNode node) {
     int index = nodes.indexOf(node);
     if (index == nodes.size() - 1) {
@@ -170,6 +181,7 @@ public class Layer implements ILayer {
     return nodes.get(index + 1);
   }
 
+  @Override
   public Integer getPreviousNodeRightExtreme(IVisualizableNode node) {
     IVisualizableNode previousNode = getPreviousNode(node);
     if (previousNode == null) {
@@ -178,6 +190,7 @@ public class Layer implements ILayer {
     return previousNode.getRightExtreme();
   }
 
+  @Override
   public IVisualizableNode getPreviousNode(IVisualizableNode node) {
     int index = nodes.indexOf(node);
     if (index == 0) {
@@ -193,32 +206,38 @@ public class Layer implements ILayer {
     return lastNodeRightSide + gapDimension.width + (node.getWidth() + 1) / 2;
   }
 
+  @Override
   public void setFollowUp(ILayer layer) {
     Ensure.ensureNotNull(layer);
     Ensure.ensureNull(nextLayer);
     this.nextLayer = layer;
   }
 
+  @Override
   public ILayer getNextLayer() {
     return nextLayer;
   }
 
+  @Override
   public void addNodesToXml(Element element) {
     for (IVisualizableNode node : nodes) {
       node.toXML(element);
     }
   }
 
+  @Override
   public void addArrowsToXml(final Element cascade) {
     if (nextLayer == null) {
       return;
     }
     for (IVisualizableNode node : nodes) {
       node.accept(new IVisualizableNodeVisitor() {
+        @Override
         public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
           throw new IllegalStateException("Metanodes must be resolved before arrows are created."); //$NON-NLS-1$
         }
 
+        @Override
         public void visitSingleNode(VisualizableNode visitedNode) {
           for (IVisualizableNode child : visitedNode.getChildren()) {
             PolylineSVGArrow arrow = new PolylineSVGArrow();
@@ -229,6 +248,7 @@ public class Layer implements ILayer {
           }
         }
 
+        @Override
         public void visitDummyNode(VisualizableDummyNode visitedNode) {
           // Nothing to do
         }
@@ -238,14 +258,17 @@ public class Layer implements ILayer {
 
   private void extendArrow(final PolylineSVGArrow arrow, IVisualizableNode node) {
     node.accept(new IVisualizableNodeVisitor() {
+      @Override
       public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
         throw new IllegalStateException("Metanodes must be resolved before arrows are created."); //$NON-NLS-1$
       }
 
+      @Override
       public void visitSingleNode(VisualizableNode visitedNode) {
         // Nothing to do
       }
 
+      @Override
       public void visitDummyNode(VisualizableDummyNode visitedNode) {
         IVisualizableNode child = visitedNode.getChildren()[0];
         arrow.addPoint(visitedNode.getPosition(), visitedNode.getLayer().getYPosition() + visitedNode.getHeight());
@@ -255,10 +278,12 @@ public class Layer implements ILayer {
     });
   }
 
+  @Override
   public int getYPosition() {
     return yPosition;
   }
 
+  @Override
   public int getWidth() {
     if (nodes.isEmpty()) {
       return 0;
@@ -267,9 +292,11 @@ public class Layer implements ILayer {
     return finalNode.getRightSide();
   }
 
+  @Override
   public void unrollHorizontalMetanodes() {
     for (IVisualizableNode node : new ArrayList<IVisualizableNode>(nodes)) {
       node.accept(new IVisualizableNodeVisitor() {
+        @Override
         public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
           int index = nodes.indexOf(visitedNode);
           IVisualizableNode[] innerNodes = visitedNode.getInnerNodes();
@@ -280,10 +307,12 @@ public class Layer implements ILayer {
           nodes.remove(visitedNode);
         }
 
+        @Override
         public void visitSingleNode(VisualizableNode visitedNode) {
           // Nothing to do
         }
 
+        @Override
         public void visitDummyNode(VisualizableDummyNode visitedNode) {
           // Nothing to do
         }
@@ -291,18 +320,21 @@ public class Layer implements ILayer {
     }
   }
 
+  @Override
   public void forceShift(int shift) {
     for (IVisualizableNode node : nodes) {
       node.setPosition(node.getPosition() + shift);
     }
   }
 
+  @Override
   public void shiftRight(int requiredShift) {
     for (IVisualizableNode node : nodes) {
       node.shiftRight(requiredShift);
     }
   }
 
+  @Override
   public void shiftRightRecursivelyWithThreshold(int threshold, int requiredShift) {
     for (IVisualizableNode node : nodes) {
       if (node.getPosition() >= threshold) {
@@ -314,6 +346,7 @@ public class Layer implements ILayer {
     }
   }
 
+  @Override
   public ILayer getPreviousLayer() {
     return previousLayer;
   }
