@@ -32,13 +32,10 @@
 			<charmReference id="Abyssal.SpiritHardenedFrame"/>
 		</prerequisite>
 		<cost>
-			<essence cost="4"/>
-			<willpower cost="1"/>
+			<essence cost="" text="(+4m)"/>
 		</cost>
-		<duration amount="1" unit="scene"/>
-		<charmtype type="Simple">
-			<special speed="6" turntype="Tick" defense="-1"/>
-		</charmtype>
+		<duration duration="Permanent"/>
+		<charmtype type="Permanent" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Mirror" visualize="true" />
