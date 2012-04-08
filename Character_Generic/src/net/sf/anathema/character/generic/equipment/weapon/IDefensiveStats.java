@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.equipment.weapon;
 
 public interface IDefensiveStats extends IEquipmentStats {
-  public Integer getFatigue();
+  Integer getFatigue();
 
-  public Integer getMobilityPenalty();
+  Integer getMobilityPenalty();
 }

@@ -156,8 +156,6 @@ public class EquipmentAdditionalPresenter implements Presenter {
     	actions = new Action[] {
     		new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
                        removeIcon) {
-	            private static final long serialVersionUID = 1L;
-	            
 	            @Override
 	            protected void execute(Component parentComponent) {
 	                 model.removeItem(selectedObject);

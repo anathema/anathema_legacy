@@ -35,6 +35,10 @@ SetCompressor lzma
 !define MUI_UNICON sungearInstall.ico
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
+!define MUI_WELCOMEFINISHPAGE_BITMAP Anathema_Install.bmp
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP Anathema_Install.bmp
+!define MUI_HEADERIMAGE_RIGHT Anathema_Install_small.bmp
+
 # Included files
 !include MultiUser.nsh
 !include Sections.nsh

@@ -16,8 +16,12 @@ public class Version implements Comparable<Version> {
   }
 
   public Version(IResources resources) {
+    this(resources.getString("Anathema.Version.Numeric"));
+  }
+
+  public Version(String versionString) {
     try {
-      parseVersion(resources);
+      parseVersion(versionString);
     } catch (NumberFormatException e) {
       Logger.getLogger(Version.class).warn("Could not parse version. Assuming max.");
       this.majorVersion = Integer.MAX_VALUE;
@@ -26,8 +30,8 @@ public class Version implements Comparable<Version> {
     }
   }
 
-  private void parseVersion(IResources resources) {
-    String[] split = resources.getString("Anathema.Version.Numeric").split("\\."); //$NON-NLS-1$ //$NON-NLS-2$
+  private void parseVersion(String string) {
+    String[] split = string.split("\\."); //$NON-NLS-1$ //$NON-NLS-2$
     majorVersion = Integer.valueOf(split[0]);
     minorVersion = Integer.valueOf(split[1]);
     if (split.length > 2) {

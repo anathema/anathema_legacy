@@ -5,6 +5,5 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 public interface IEquipmentStringBuilder {
 
-  public String createString(IEquipmentItem item, IEquipmentStats equipment);
-
+  String createString(IEquipmentItem item, IEquipmentStats equipment);
 }

@@ -19,7 +19,7 @@ public class MaterialMobilityPenaltyModifier implements StatModifier {
       return original;
     }
     if (magicMaterial.isAdamantBased()) {
-      return 1;
+      return -1;
     }
     return 0;
   }
