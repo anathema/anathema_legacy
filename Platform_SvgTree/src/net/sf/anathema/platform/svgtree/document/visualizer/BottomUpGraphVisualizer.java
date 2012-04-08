@@ -5,7 +5,6 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
-import net.sf.anathema.platform.svgtree.document.components.VisualizableNodeLeftSideComparator;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNodePositionComparator;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 
@@ -338,21 +337,6 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       if (whiteSpace > 0) {
         nodeProjection.forceAllRemainingNodesLeft(nodeIndex + 1, whiteSpace);
       }
-    }
-  }
-
-  private List<IVisualizableNode> projectNodes(ILayer[] layers) {
-    List<IVisualizableNode> nodeProjection = new ArrayList<IVisualizableNode>();
-    for (ILayer layer : layers) {
-      Collections.addAll(nodeProjection, layer.getNodes());
-    }
-    Collections.sort(nodeProjection, new VisualizableNodeLeftSideComparator());
-    return nodeProjection;
-  }
-
-  private void moveAllRemainingNodesLeft(List<IVisualizableNode> nodeProjection, int startIndex, int whiteSpace) {
-    for (int moveNodeIndex = startIndex; moveNodeIndex < nodeProjection.size(); moveNodeIndex++) {
-      nodeProjection.get(moveNodeIndex).shiftRight(-whiteSpace);
     }
   }
 
