@@ -45,4 +45,13 @@ public class NodeProjection {
     }
     return maxRight;
   }
+
+  public void print(String message) {
+    System.out.println();
+    System.out.println(message);
+    for (IVisualizableNode node : nodeProjection) {
+      System.out.println(
+              node + ", left:" + node.getLeftSide() + ", x: " + node.getPosition() + ", right: " + node.getRightSide());
+    }
+  }
 }

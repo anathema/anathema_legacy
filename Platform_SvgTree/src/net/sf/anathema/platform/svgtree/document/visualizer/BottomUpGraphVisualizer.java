@@ -308,30 +308,16 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
 
   private void removeWhiteSpace(ILayer[] layers) {
     NodeProjection nodeProjection = new NodeProjection(layers);
-    printProjection(layers, "Inital");
     int leftSide = nodeProjection.get(0).getLeftSide();
     if (leftSide > 0) {
       nodeProjection.forceAllRemainingNodesLeft(0, leftSide);
-      printProjection(layers, "Cleaned of leading white space " + leftSide);
     }
     for (int nodeIndex = 0; nodeIndex < nodeProjection.size() - 1; nodeIndex++) {
       int distanceToPredecessor = nodeProjection.getDistanceToPredecessors(nodeIndex + 1);
       int whiteSpace = distanceToPredecessor - getProperties().getGapDimension().width;
       if (whiteSpace > 0) {
         nodeProjection.forceAllRemainingNodesLeft(nodeIndex + 1, whiteSpace);
-        printProjection(layers, "After moving followers of " + nodeProjection.get(nodeIndex) + " by " + whiteSpace);
       }
-    }
-    printProjection(layers, "After:");
-  }
-
-  private void printProjection(ILayer[] layers, String message) {
-    System.out.println();
-    System.out.println(message);
-    List<IVisualizableNode> nodeProjection = projectNodes(layers);
-    for (IVisualizableNode node : nodeProjection) {
-      System.out.println(
-              node + ", left:" + node.getLeftSide() + ", x: " + node.getPosition() + ", right: " + node.getRightSide());
     }
   }
 
