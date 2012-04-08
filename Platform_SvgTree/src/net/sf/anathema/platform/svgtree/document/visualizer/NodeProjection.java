@@ -12,7 +12,7 @@ public class NodeProjection {
 
   private List<IVisualizableNode> nodeProjection = new ArrayList<IVisualizableNode>();
 
-  public NodeProjection(ILayer[] layers) {
+  public NodeProjection(ILayer... layers) {
     for (ILayer layer : layers) {
       Collections.addAll(nodeProjection, layer.getNodes());
     }
@@ -53,5 +53,13 @@ public class NodeProjection {
       System.out.println(
               node + ", left:" + node.getLeftSide() + ", x: " + node.getPosition() + ", right: " + node.getRightSide());
     }
+  }
+
+  public int indexOf(IVisualizableNode node) {
+    return nodeProjection.indexOf(node);
+  }
+
+  public IVisualizableNode[] getNodes() {
+    return nodeProjection.toArray(new IVisualizableNode[0]);
   }
 }

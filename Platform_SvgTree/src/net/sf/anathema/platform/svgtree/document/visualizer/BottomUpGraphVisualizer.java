@@ -98,7 +98,27 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     straightenLines(layers);
     separateOverlappingNodes(layers);
     removeWhiteSpace(layers);
+    centerTrailingSingleNodePath(layers);
     return new VisualizedGraph(createXml(layers), getTreeDimension(layers));
+  }
+
+  private void centerTrailingSingleNodePath(ILayer[] layers) {
+    int lengthOfTail = getLengthOfTail(layers);
+    for (int index = layers.length - lengthOfTail; index < layers.length; index++) {
+      centerOnlyChild(layers[index].getNodes()[0]);
+    }
+  }
+
+  private int getLengthOfTail(ILayer[] layers) {
+    int lengthOfTail = 0;
+    for (ILayer layer : new BackwardsIterable<ILayer>(layers)) {
+      if (layer.getNodes().length == 1) {
+        lengthOfTail++;
+      } else {
+        break;
+      }
+    }
+    return lengthOfTail;
   }
 
   private void rectifySingleParentRoots(ILayer[] layers) {
@@ -287,20 +307,20 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
   }
 
   private void separateOverlappingNodes(ILayer[] layers) {
-    List<IVisualizableNode> nodeProjection = projectNodes(layers);
+    NodeProjection nodeProjection = new NodeProjection(layers);
     for (ILayer layer : layers) {
-      IVisualizableNode[] layerNodes = layer.getNodes();
+      IVisualizableNode[] layerNodes = new NodeProjection(layer).getNodes();
       for (int nodeIndex = 0; nodeIndex < layerNodes.length - 1; nodeIndex++) {
         IVisualizableNode node = layerNodes[nodeIndex];
         IVisualizableNode nextNode = layerNodes[nodeIndex + 1];
-        int whiteSpace = node.getRightSide() - nextNode.getLeftSide() + getProperties().getGapDimension().width;
-        if (whiteSpace > 0) {
+        int missingSpace = node.getRightSide() + getProperties().getGapDimension().width - nextNode.getLeftSide();
+        if (missingSpace > 0) {
           int projectionIndex = nodeProjection.indexOf(nextNode);
           while (nodeProjection.get(projectionIndex - 1).getLeftSide() ==
                   nodeProjection.get(projectionIndex).getLeftSide()) {
             projectionIndex--;
           }
-          moveAllRemainingNodesLeft(nodeProjection, projectionIndex, -whiteSpace);
+          nodeProjection.forceAllRemainingNodesLeft(projectionIndex, -missingSpace);
         }
       }
     }
