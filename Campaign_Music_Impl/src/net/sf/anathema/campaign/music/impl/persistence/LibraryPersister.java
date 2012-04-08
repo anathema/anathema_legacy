@@ -28,14 +28,13 @@ public class LibraryPersister {
   }
 
   private ObjectSet<DbLibrary> getLibraryObjectSet(ObjectContainer db, final String name) {
-    ObjectSet<DbLibrary> results = db.query(new Predicate<DbLibrary>() {
+    return db.query(new Predicate<DbLibrary>() {
 
       @Override
       public boolean match(DbLibrary candidate) {
         return candidate.getName().equals(name);
       }
     });
-    return results;
   }
 
   public DbLibrary getLibrary(ObjectContainer db, String name) {
@@ -69,7 +68,6 @@ public class LibraryPersister {
 
   private DbMp3Track findTrack(ObjectContainer db, final Md5Checksum checkSum) {
     ObjectSet<DbMp3Track> results = db.query(new Predicate<DbMp3Track>() {
-      private static final long serialVersionUID = 6653186406942382226L;
 
       @Override
       public boolean match(DbMp3Track candidate) {
@@ -116,6 +114,7 @@ public class LibraryPersister {
 
   private void fireTrackDeleted(final DbMp3Track track) {
     listeners.forAllDo(new IClosure<ITrackDeletionListener>() {
+      @Override
       public void execute(ITrackDeletionListener input) {
         input.trackRemoved(track);
       }

@@ -22,6 +22,7 @@ public class MusicDatabasePersister {
   public MusicDatabasePersister(final ObjectContainer container) {
     db = container;
     libaryPersister.addTrackDeletionListener(new ITrackDeletionListener() {
+      @Override
       public void trackRemoved(DbMp3Track track) {
         fireTrackDeleted(track);
       }
@@ -39,6 +40,7 @@ public class MusicDatabasePersister {
 
   private void fireTrackDeleted(final DbMp3Track track) {
     listeners.forAllDo(new IClosure<ITrackDeletionListener>() {
+      @Override
       public void execute(ITrackDeletionListener input) {
         input.trackRemoved(track);
       }
