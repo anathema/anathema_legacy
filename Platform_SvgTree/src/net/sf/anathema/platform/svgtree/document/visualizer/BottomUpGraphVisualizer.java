@@ -1,12 +1,5 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
-import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
@@ -14,6 +7,13 @@ import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNodePositionComparator;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
+
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
 
@@ -167,7 +167,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
         continue;
       }
       for (IVisualizableNode node : layer.getNodes()) {
-        if (node.getChildren().length == 0) {
+        boolean isLeafNode = node.getChildren().length == 0;
+        if (isLeafNode) {
           centerOnlyChild(node);
         }
       }
@@ -219,11 +220,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
           if (children.length == 1) {
             int childSuggestedShift = children[0].getPosition() - node.getPosition();
             if (Math.signum(parentSuggestedShift) == Math.signum(childSuggestedShift)) {
-              straightenLineToParentAndChild(
-                  layer,
-                  treeWidth,
-                  node,
-                  Math.min(parentSuggestedShift, childSuggestedShift));
+              straightenLineToParentAndChild(layer, treeWidth, node,
+                      Math.min(parentSuggestedShift, childSuggestedShift));
               continue;
             }
           }
@@ -239,13 +237,11 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       Integer nextNodeLeftSide;
       if (nextNode == null) {
         nextNodeLeftSide = treeWidth + getProperties().getGapDimension().width;
-      }
-      else {
+      } else {
         nextNodeLeftSide = nextNode.getLeftSide();
       }
-      int possibleShift = Math.min(suggestedShift, nextNodeLeftSide
-          - getProperties().getGapDimension().width
-          - node.getRightSide());
+      int possibleShift = Math.min(suggestedShift,
+              nextNodeLeftSide - getProperties().getGapDimension().width - node.getRightSide());
       if (possibleShift > 0) {
         node.shiftRight(possibleShift);
       }
@@ -256,13 +252,11 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       Integer previousNodeRightSide;
       if (previousNode == null) {
         previousNodeRightSide = -getProperties().getGapDimension().width;
-      }
-      else {
+      } else {
         previousNodeRightSide = previousNode.getRightSide();
       }
-      int possibleShift = Math.min(Math.abs(suggestedShift), node.getLeftSide()
-          - previousNodeRightSide
-          - getProperties().getGapDimension().width);
+      int possibleShift = Math.min(Math.abs(suggestedShift),
+              node.getLeftSide() - previousNodeRightSide - getProperties().getGapDimension().width);
       if (possibleShift > 0) {
         node.shiftRight(-possibleShift);
       }
@@ -275,9 +269,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       if (nextNodeLeftExtreme == null) {
         nextNodeLeftExtreme = treeWidth + getProperties().getGapDimension().width;
       }
-      int possibleShift = Math.min(suggestedShift, nextNodeLeftExtreme
-          - getProperties().getGapDimension().width
-          - node.getRightSide());
+      int possibleShift = Math.min(suggestedShift,
+              nextNodeLeftExtreme - getProperties().getGapDimension().width - node.getRightSide());
       if (possibleShift > 0) {
         node.shiftRight(possibleShift);
       }
@@ -288,9 +281,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       if (previousNodeRightExtreme == null) {
         previousNodeRightExtreme = -getProperties().getGapDimension().width;
       }
-      int possibleShift = Math.min(Math.abs(suggestedShift), node.getLeftSide()
-          - previousNodeRightExtreme
-          - getProperties().getGapDimension().width);
+      int possibleShift = Math.min(Math.abs(suggestedShift),
+              node.getLeftSide() - previousNodeRightExtreme - getProperties().getGapDimension().width);
       if (possibleShift > 0) {
         node.shiftRight(-possibleShift);
       }
@@ -307,8 +299,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
         int whiteSpace = node.getRightSide() - nextNode.getLeftSide() + getProperties().getGapDimension().width;
         if (whiteSpace > 0) {
           int projectionIndex = nodeProjection.indexOf(nextNode);
-          while (nodeProjection.get(projectionIndex - 1).getLeftSide() == nodeProjection.get(projectionIndex)
-              .getLeftSide()) {
+          while (nodeProjection.get(projectionIndex - 1).getLeftSide() == nodeProjection.get(
+                  projectionIndex).getLeftSide()) {
             projectionIndex--;
           }
           moveAllRemainingNodesLeft(nodeProjection, projectionIndex, -whiteSpace);
@@ -421,8 +413,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     for (ISimpleNode node : node2.getChildren()) {
       secondVisualizableChildren.add(getVisualizableNode(node));
     }
-    return firstVisualizableChildren.containsAll(secondVisualizableChildren)
-        && firstVisualizableChildren.size() == secondVisualizableChildren.size();
+    return firstVisualizableChildren.containsAll(
+            secondVisualizableChildren) && firstVisualizableChildren.size() == secondVisualizableChildren.size();
   }
 
   protected Dimension getTreeDimension(ILayer[] layers) {
