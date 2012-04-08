@@ -39,10 +39,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     ObjectContainer container = EquipmentDatabaseConnectionManager.createConnection(databaseFile);
     Version dbVersion = DatabaseUtils.getDatabaseVersion(container);
     Version anathemaVersion = new Version(resources);
-    if( dbVersion != null )
-		logger.info("Found equipment database at version " + dbVersion.asString());
-	else
-		logger.info("No equipment database found, creating new empty database");
+    logEquipmentDatabaseVersion(dbVersion);
     if (anathemaVersion.isLargerThan(dbVersion)) {
       backupDatabase(anathemaModel, container, anathemaVersion);
       Version updatedVersion = updateDbVersion(dbVersion, anathemaVersion);
@@ -50,6 +47,13 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
       convertToGson(anathemaModel, container);
       finish(container, updatedVersion);
     }
+  }
+
+  private void logEquipmentDatabaseVersion(Version dbVersion) {
+    if( dbVersion != null )
+		logger.info("Found equipment database at version " + dbVersion.asString());
+	else
+		logger.info("No equipment database found, creating new empty database");
   }
 
   private void convertToGson(IAnathemaModel anathemaModel, ObjectContainer container) {
