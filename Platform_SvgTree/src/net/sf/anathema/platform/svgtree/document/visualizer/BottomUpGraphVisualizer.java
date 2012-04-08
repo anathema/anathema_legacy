@@ -217,11 +217,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
           if (children.length == 1) {
             int childSuggestedShift = children[0].getPosition() - node.getPosition();
             if (Math.signum(parentSuggestedShift) == Math.signum(childSuggestedShift)) {
-              straightenLineToParentAndChild(
-                  layer,
-                  treeWidth,
-                  node,
-                  Math.min(parentSuggestedShift, childSuggestedShift));
+              straightenLineToParentAndChild(layer, treeWidth, node,
+                      Math.min(parentSuggestedShift, childSuggestedShift));
               continue;
             }
           }
@@ -237,13 +234,11 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       Integer nextNodeLeftSide;
       if (nextNode == null) {
         nextNodeLeftSide = treeWidth + getProperties().getGapDimension().width;
-      }
-      else {
+      } else {
         nextNodeLeftSide = nextNode.getLeftSide();
       }
-      int possibleShift = Math.min(suggestedShift, nextNodeLeftSide
-          - getProperties().getGapDimension().width
-          - node.getRightSide());
+      int possibleShift = Math.min(suggestedShift,
+              nextNodeLeftSide - getProperties().getGapDimension().width - node.getRightSide());
       if (possibleShift > 0) {
         node.shiftRight(possibleShift);
       }
@@ -254,13 +249,11 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       Integer previousNodeRightSide;
       if (previousNode == null) {
         previousNodeRightSide = -getProperties().getGapDimension().width;
-      }
-      else {
+      } else {
         previousNodeRightSide = previousNode.getRightSide();
       }
-      int possibleShift = Math.min(Math.abs(suggestedShift), node.getLeftSide()
-          - previousNodeRightSide
-          - getProperties().getGapDimension().width);
+      int possibleShift = Math.min(Math.abs(suggestedShift),
+              node.getLeftSide() - previousNodeRightSide - getProperties().getGapDimension().width);
       if (possibleShift > 0) {
         node.shiftRight(-possibleShift);
       }
@@ -273,9 +266,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       if (nextNodeLeftExtreme == null) {
         nextNodeLeftExtreme = treeWidth + getProperties().getGapDimension().width;
       }
-      int possibleShift = Math.min(suggestedShift, nextNodeLeftExtreme
-          - getProperties().getGapDimension().width
-          - node.getRightSide());
+      int possibleShift = Math.min(suggestedShift,
+              nextNodeLeftExtreme - getProperties().getGapDimension().width - node.getRightSide());
       if (possibleShift > 0) {
         node.shiftRight(possibleShift);
       }
@@ -286,9 +278,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       if (previousNodeRightExtreme == null) {
         previousNodeRightExtreme = -getProperties().getGapDimension().width;
       }
-      int possibleShift = Math.min(Math.abs(suggestedShift), node.getLeftSide()
-          - previousNodeRightExtreme
-          - getProperties().getGapDimension().width);
+      int possibleShift = Math.min(Math.abs(suggestedShift),
+              node.getLeftSide() - previousNodeRightExtreme - getProperties().getGapDimension().width);
       if (possibleShift > 0) {
         node.shiftRight(-possibleShift);
       }
@@ -305,8 +296,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
         int whiteSpace = node.getRightSide() - nextNode.getLeftSide() + getProperties().getGapDimension().width;
         if (whiteSpace > 0) {
           int projectionIndex = nodeProjection.indexOf(nextNode);
-          while (nodeProjection.get(projectionIndex - 1).getLeftSide() == nodeProjection.get(projectionIndex)
-              .getLeftSide()) {
+          while (nodeProjection.get(projectionIndex - 1).getLeftSide() ==
+                  nodeProjection.get(projectionIndex).getLeftSide()) {
             projectionIndex--;
           }
           moveAllRemainingNodesLeft(nodeProjection, projectionIndex, -whiteSpace);
@@ -316,19 +307,22 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
   }
 
   private void removeWhiteSpace(ILayer[] layers) {
-    List<IVisualizableNode> nodeProjection = projectNodes(layers);
-     int leftSide = nodeProjection.get(0).getLeftSide();
+    NodeProjection nodeProjection = new NodeProjection(layers);
+    printProjection(layers, "Inital");
+    int leftSide = nodeProjection.get(0).getLeftSide();
     if (leftSide > 0) {
-      forceAllRemainingNodesLeft(nodeProjection, 0, leftSide);
+      nodeProjection.forceAllRemainingNodesLeft(0, leftSide);
+      printProjection(layers, "Cleaned of leading white space " + leftSide);
     }
     for (int nodeIndex = 0; nodeIndex < nodeProjection.size() - 1; nodeIndex++) {
-      IVisualizableNode node = nodeProjection.get(nodeIndex);
-      IVisualizableNode nextNode = nodeProjection.get(nodeIndex + 1);
-      int whiteSpace = nextNode.getLeftSide() - node.getRightSide() - getProperties().getGapDimension().width;
+      int distanceToPredecessor = nodeProjection.getDistanceToPredecessors(nodeIndex + 1);
+      int whiteSpace = distanceToPredecessor - getProperties().getGapDimension().width;
       if (whiteSpace > 0) {
-        forceAllRemainingNodesLeft(nodeProjection, nodeIndex + 1, whiteSpace);
+        nodeProjection.forceAllRemainingNodesLeft(nodeIndex + 1, whiteSpace);
+        printProjection(layers, "After moving followers of " + nodeProjection.get(nodeIndex) + " by " + whiteSpace);
       }
     }
+    printProjection(layers, "After:");
   }
 
   private void printProjection(ILayer[] layers, String message) {
@@ -336,7 +330,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     System.out.println(message);
     List<IVisualizableNode> nodeProjection = projectNodes(layers);
     for (IVisualizableNode node : nodeProjection) {
-      System.out.println(node + ", left:" + node.getLeftSide() + ", x: " + node.getPosition());
+      System.out.println(
+              node + ", left:" + node.getLeftSide() + ", x: " + node.getPosition() + ", right: " + node.getRightSide());
     }
   }
 
@@ -347,12 +342,6 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     }
     Collections.sort(nodeProjection, new VisualizableNodeLeftSideComparator());
     return nodeProjection;
-  }
-
-  private void forceAllRemainingNodesLeft(List<IVisualizableNode> nodeProjection, int startIndex, int whiteSpace) {
-    for (int moveNodeIndex = startIndex; moveNodeIndex < nodeProjection.size(); moveNodeIndex++) {
-      nodeProjection.get(moveNodeIndex).forceShiftRight(-whiteSpace);
-    }
   }
 
   private void moveAllRemainingNodesLeft(List<IVisualizableNode> nodeProjection, int startIndex, int whiteSpace) {
@@ -434,8 +423,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     for (ISimpleNode node : node2.getChildren()) {
       secondVisualizableChildren.add(getVisualizableNode(node));
     }
-    return firstVisualizableChildren.containsAll(secondVisualizableChildren)
-        && firstVisualizableChildren.size() == secondVisualizableChildren.size();
+    return firstVisualizableChildren.containsAll(secondVisualizableChildren) &&
+            firstVisualizableChildren.size() == secondVisualizableChildren.size();
   }
 
   protected Dimension getTreeDimension(ILayer[] layers) {
