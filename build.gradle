@@ -74,7 +74,7 @@ dependencies {
             "./Thirdparty/Distribution/launch4j.jar",
             "./Thirdparty/Distribution/xstream.jar"
     )
-    nsis files("./Thirdparty/Ant/nsisant-1.2.jar")
+    nsis files("./Thirdparty/Distribution/nsisant-1.2.jar")
 }
 
 versionString = "${version_major}.${version_minor}.${version_revision}"
