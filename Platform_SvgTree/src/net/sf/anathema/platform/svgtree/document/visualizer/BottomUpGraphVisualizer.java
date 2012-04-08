@@ -77,6 +77,7 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     super(properties, graph);
   }
 
+  @Override
   public IVisualizedGraph buildTree() {
     int layerCount = getGraph().getDeepestLayer();
     for (int layerIndex = layerCount - 1; layerIndex >= 0; layerIndex--) {
