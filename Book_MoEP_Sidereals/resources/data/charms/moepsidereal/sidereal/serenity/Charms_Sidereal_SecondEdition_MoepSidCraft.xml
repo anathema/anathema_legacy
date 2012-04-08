@@ -74,7 +74,6 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <repurchases limit="3"/>
           <charmAttribute attribute="Native" visualize="true" />
           <source source="Sidereals2nd" />
           <source source="ScrollErrata" />
