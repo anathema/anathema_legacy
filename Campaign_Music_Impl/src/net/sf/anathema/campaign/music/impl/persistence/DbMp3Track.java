@@ -43,26 +43,32 @@ public final class DbMp3Track implements IMp3Track {
     moods = db.ext().collections().newLinkedList();
   }
 
+  @Override
   public String getAlbum() {
     return album;
   }
 
+  @Override
   public String getArtist() {
     return artist;
   }
 
+  @Override
   public String getTrack() {
     return track;
   }
 
+  @Override
   public String getTitle() {
     return title;
   }
 
+  @Override
   public Md5Checksum getCheckSum() {
     return checksum;
   }
 
+  @Override
   public String[] getFileReferences() {
     return fileReferences.toArray(new String[fileReferences.size()]);
   }
@@ -104,41 +110,49 @@ public final class DbMp3Track implements IMp3Track {
     return libraryReferenceCount;
   }
 
+  @Override
   public String getGivenName() {
     return givenName;
   }
 
+  @Override
   public void setGivenName(String givenName) {
     this.givenName = givenName;
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public IMusicEvent[] getEvents() {
     return (IMusicEvent[]) events.toArray(new IMusicEvent[events.size()]);
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public void setEvents(IMusicEvent[] musicMoods) {
     events.clear();
     Collections.addAll(events, musicMoods);
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public IMusicTheme[] getThemes() {
     return (IMusicTheme[]) themes.toArray(new IMusicTheme[themes.size()]);
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public void setThemes(IMusicTheme[] themes) {
     this.themes.clear();
     Collections.addAll(this.themes, themes);
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public IMusicMood[] getMoods() {
     return (IMusicMood[]) moods.toArray(new IMusicMood[moods.size()]);
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public void setMoods(IMusicMood[] moods) {
     this.moods.clear();

@@ -15,10 +15,11 @@ public class StringFieldSearchParameter implements IExtendedSearchParameter {
     this.parameterization = parameterization;
   }
 
+  @Override
   public Constraint configure(Query query) {
     return query.descend(fieldName).constrain(new Evaluation() {
-      private static final long serialVersionUID = 3662382615602783606L;
 
+      @Override
       public void evaluate(Candidate candidate) {
         String value = (String) candidate.getObject();
         if (value == null) {

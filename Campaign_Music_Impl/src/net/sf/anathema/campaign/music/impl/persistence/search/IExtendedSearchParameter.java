@@ -5,5 +5,5 @@ import com.db4o.query.Query;
 
 public interface IExtendedSearchParameter {
 
-  public Constraint configure(Query query);
+  Constraint configure(Query query);
 }

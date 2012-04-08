@@ -15,11 +15,12 @@ public abstract class AbstractArrayFieldSearchParameter<P> implements IExtendedS
     this.parameterArray = parameterArray;
   }
 
+  @Override
   public Constraint configure(Query query) {
     return query.constrain(new Evaluation() {
-      private static final long serialVersionUID = -4742377237041784269L;
 
-	  public void evaluate(Candidate candidate) {
+	  @Override
+      public void evaluate(Candidate candidate) {
         candidate.include(containsAllParameters(candidate));
       }
     });

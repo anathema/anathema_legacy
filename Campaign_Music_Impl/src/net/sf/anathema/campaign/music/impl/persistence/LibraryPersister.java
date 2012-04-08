@@ -29,7 +29,6 @@ public class LibraryPersister {
 
   private ObjectSet<DbLibrary> getLibraryObjectSet(ObjectContainer db, final String name) {
     ObjectSet<DbLibrary> results = db.query(new Predicate<DbLibrary>() {
-      private static final long serialVersionUID = -6570413771357675149L;
 
       @Override
       public boolean match(DbLibrary candidate) {

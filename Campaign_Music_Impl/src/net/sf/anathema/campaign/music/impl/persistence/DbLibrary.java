@@ -19,6 +19,7 @@ public final class DbLibrary implements ILibrary {
     this.content.deleteRemoved(false);
   }
 
+  @Override
   public String getName() {
     return name;
   }
