@@ -35,6 +35,8 @@ public interface IVisualizableNode {
 
   public void shiftRight(int requiredShift);
 
+  public void forceShiftRight(int requiredShift);
+
   public ILayer getLayer();
 
   public int getLeftSide();

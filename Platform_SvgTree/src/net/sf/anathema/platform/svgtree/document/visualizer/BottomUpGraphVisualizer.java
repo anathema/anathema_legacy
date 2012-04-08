@@ -1,19 +1,20 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
+import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.nodes.ISimpleNode;
+import net.sf.anathema.lib.collection.ListOrderedSet;
+import net.sf.anathema.platform.svgtree.document.components.ILayer;
+import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
+import net.sf.anathema.platform.svgtree.document.components.VisualizableNodeLeftSideComparator;
+import net.sf.anathema.platform.svgtree.document.components.VisualizableNodePositionComparator;
+import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
+
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-
-import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
-import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.lib.collection.ListOrderedSet;
-import net.sf.anathema.platform.svgtree.document.components.ILayer;
-import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
-import net.sf.anathema.platform.svgtree.document.components.VisualizableNodePositionComparator;
-import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 
 public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
 
@@ -70,8 +71,6 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
   // they form a childgroup (often they will also be part of a horizontal metanode) and may be placed as close
   // to each other as possible without overlapping their edges
   // Instead of giving the entire map as argument, just give the relevant leaves?
-
-  private final VisualizableNodePositionComparator nodePositionComparator = new VisualizableNodePositionComparator();
 
   public BottomUpGraphVisualizer(IProperHierarchicalGraph graph, ITreePresentationProperties properties) {
     super(properties, graph);
@@ -180,7 +179,7 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
         return;
       }
     }
-    Arrays.sort(parents, nodePositionComparator);
+    Arrays.sort(parents, new VisualizableNodePositionComparator());
     int leftSide = parents[0].getPosition();
     int rightSide = parents[parents.length - 1].getPosition();
     node.setPosition((leftSide + rightSide) / 2);
@@ -318,17 +317,26 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
 
   private void removeWhiteSpace(ILayer[] layers) {
     List<IVisualizableNode> nodeProjection = projectNodes(layers);
-    int leftSide = nodeProjection.get(0).getLeftSide();
+     int leftSide = nodeProjection.get(0).getLeftSide();
     if (leftSide > 0) {
-      moveAllRemainingNodesLeft(nodeProjection, 0, leftSide);
+      forceAllRemainingNodesLeft(nodeProjection, 0, leftSide);
     }
     for (int nodeIndex = 0; nodeIndex < nodeProjection.size() - 1; nodeIndex++) {
       IVisualizableNode node = nodeProjection.get(nodeIndex);
       IVisualizableNode nextNode = nodeProjection.get(nodeIndex + 1);
       int whiteSpace = nextNode.getLeftSide() - node.getRightSide() - getProperties().getGapDimension().width;
       if (whiteSpace > 0) {
-        moveAllRemainingNodesLeft(nodeProjection, nodeIndex + 1, whiteSpace);
+        forceAllRemainingNodesLeft(nodeProjection, nodeIndex + 1, whiteSpace);
       }
+    }
+  }
+
+  private void printProjection(ILayer[] layers, String message) {
+    System.out.println();
+    System.out.println(message);
+    List<IVisualizableNode> nodeProjection = projectNodes(layers);
+    for (IVisualizableNode node : nodeProjection) {
+      System.out.println(node + ", left:" + node.getLeftSide() + ", x: " + node.getPosition());
     }
   }
 
@@ -337,8 +345,14 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     for (ILayer layer : layers) {
       Collections.addAll(nodeProjection, layer.getNodes());
     }
-    Collections.sort(nodeProjection, nodePositionComparator);
+    Collections.sort(nodeProjection, new VisualizableNodeLeftSideComparator());
     return nodeProjection;
+  }
+
+  private void forceAllRemainingNodesLeft(List<IVisualizableNode> nodeProjection, int startIndex, int whiteSpace) {
+    for (int moveNodeIndex = startIndex; moveNodeIndex < nodeProjection.size(); moveNodeIndex++) {
+      nodeProjection.get(moveNodeIndex).forceShiftRight(-whiteSpace);
+    }
   }
 
   private void moveAllRemainingNodesLeft(List<IVisualizableNode> nodeProjection, int startIndex, int whiteSpace) {
