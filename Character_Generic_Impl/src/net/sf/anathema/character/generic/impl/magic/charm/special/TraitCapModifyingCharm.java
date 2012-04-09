@@ -25,10 +25,12 @@ public class TraitCapModifyingCharm implements ITraitCapModifyingCharm {
     return charmId;
   }
 
+  @Override
   public ITraitType getTraitType() {
     return traitType;
   }
 
+  @Override
   public int getModifier() {
     return modifier;
   }

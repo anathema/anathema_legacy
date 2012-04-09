@@ -48,40 +48,49 @@ public class SpecialCharmManager implements ISpecialCharmManager {
           final ICharm charm,
           final ILearningCharmGroup group) {
     specialCharm.accept(new ISpecialCharmVisitor() {
+      @Override
       public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {
         registerMultiLearnableCharm(visitedCharm, charm, group);
       }
 
+      @Override
       public void visitMultipleEffectCharm(IMultipleEffectCharm visitedCharm) {
         registerEffectMultilearnableCharm(visitedCharm, charm, group);
       }
 
+      @Override
       public void visitOxBodyTechnique(IOxBodyTechniqueCharm visitedCharm) {
         registerOxBodyTechnique(visitedCharm, charm, group);
       }
 
+      @Override
       public void visitPainToleranceCharm(IPainToleranceCharm visitedCharm) {
         registerPainToleranceCharm(visitedCharm, charm);
       }
 
+      @Override
       public void visitSubeffectCharm(ISubeffectCharm visitedCharm) {
         registerSubeffectCharm(visitedCharm, charm, group);
       }
 
+      @Override
       public void visitUpgradableCharm(IUpgradableCharm visitedCharm) {
         registerUpgradableCharm(visitedCharm, charm, group);
       }
 
+      @Override
       public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm visitedCharm) {
         // do nothing
       }
 
+      @Override
       public void visitTraitCapModifyingCharm(ITraitCapModifyingCharm visitedCharm) {
         registerTraitCapModifyingCharm(visitedCharm, charm, group);
       }
     });
   }
 
+  @Override
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
     return specialConfigurationsByCharm.get(charm);
   }
@@ -127,6 +136,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
   private void registerPainToleranceCharm(final IPainToleranceCharm visitedCharm, ICharm charm) {
     final ISpecialCharmConfiguration specialCharmConfiguration = getSpecialCharmConfiguration(charm);
     IPainToleranceProvider painToleranceProvider = new IPainToleranceProvider() {
+      @Override
       public int getPainToleranceLevel() {
         int learnCount = specialCharmConfiguration.getCurrentLearnCount();
         return visitedCharm.getPainToleranceLevel(learnCount);
@@ -152,6 +162,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
     specialConfigurationsByCharm.put(charm, configuration);
     if (learnListener)
       configuration.addSpecialCharmLearnListener(new ISpecialCharmLearnListener() {
+        @Override
         public void learnCountChanged(int newValue) {
           if (!context.isFullyLoaded()) return;
           if (newValue == 0) {

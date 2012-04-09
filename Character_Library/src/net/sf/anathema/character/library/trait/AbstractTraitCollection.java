@@ -12,13 +12,12 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
 
   private final Map<ITraitType, ITrait> traitsByType = new HashMap<ITraitType, ITrait>();
 
-
   protected final ITrait[] getAllTraits() {
     Collection<ITrait> traits= traitsByType.values();
     return traits.toArray(new ITrait[traits.size()]);
   }
 
-  
+  @Override
   public ITrait getTrait(ITraitType traitType) {
     return traitsByType.get(traitType);
   }
@@ -27,6 +26,7 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
     return traitsByType.containsKey(traitType);
   }
 
+  @Override
   public final ITrait[] getTraits(ITraitType[] traitTypes) {
     ITrait[] traits = new ITrait[traitTypes.length];
     for (int index = 0; index < traitTypes.length; index++) {
@@ -35,12 +35,14 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
     return traits;
   }
 
+  @Override
   public IFavorableTrait getFavorableTrait(ITraitType traitType) {
     ITrait favorableTrait = getTrait(traitType);
     Ensure.ensureArgumentTrue("No favorable trait type " + traitType, favorableTrait instanceof IFavorableTrait); //$NON-NLS-1$
     return (IFavorableTrait) favorableTrait;
   }
 
+  @Override
   public IFavorableTrait[] getFavorableTraits(ITraitType[] traitTypes) {
     IFavorableTrait[] favorableTraits = new IFavorableTrait[traitTypes.length];
     for (int index = 0; index < favorableTraits.length; index++) {
@@ -60,6 +62,7 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
     }
   }
 
+  @Override
   public final boolean isFavoredOrCasteTrait(ITraitType type) {
     ITrait trait = getTrait(type);
     return trait instanceof IFavorableTrait && ((IFavorableTrait) trait).isCasteOrFavored();

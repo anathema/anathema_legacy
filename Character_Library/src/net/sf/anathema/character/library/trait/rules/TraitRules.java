@@ -24,6 +24,7 @@ public class TraitRules implements ITraitRules
     this.limitationContext = limitationContext;
   }
 
+  @Override
   public int getAbsoluteMaximumValue() {
     return template.getLimitation().getAbsoluteLimit(limitationContext);
   }
@@ -35,11 +36,13 @@ public class TraitRules implements ITraitRules
     return modifiedCreationRange.getUpperBound();
   }
 
+  @Override
   public int getCurrentMaximumValue(boolean modified) {
     return template.getLimitation().getCurrentMaximum(limitationContext, modified) +
     	(modified ? capModifier : 0);
   }
 
+  @Override
   public int getAbsoluteMinimumValue() {
     if (modifiedCreationRange == null) {
       return template.getMinimumValue(limitationContext);
@@ -47,33 +50,40 @@ public class TraitRules implements ITraitRules
     return modifiedCreationRange.getLowerBound();
   }
   
+  @Override
   public int getCalculationMinValue()
   {
 	 return template.getCalculationMinValue(limitationContext, traitType);
   }
 
+  @Override
   public int getStartValue() {
     return template.getStartValue();
   }
   
+  @Override
   public void setCapModifier(int modifier)
   {
 	  capModifier = modifier;
   }
 
+  @Override
   public ITraitRules deriveAggregatedRules(String subname, int startValue) {
     return derive(traitType, new AggregatedTraitTemplate(template, traitType, subname, startValue));
   }
 
+  @Override
   public ITraitRules derive(ITraitType type, ITraitTemplate deriveTemplate) {
     return new TraitRules(type, deriveTemplate, limitationContext);
   }
 
+  @Override
   public boolean isLowerable() {
     LowerableState lowerableState = template.getLowerableState();
     return lowerableState != LowerableState.Default && lowerableState != LowerableState.Immutable;
   }
 
+  @Override
   public int getZeroCalculationCost() {
     return template.getZeroLevelValue();
   }
@@ -82,18 +92,22 @@ public class TraitRules implements ITraitRules
     return template;
   }
 
+  @Override
   public Range getModifiedRange(Range unmodifiedRange) {
     return unmodifiedRange;
   }
 
+  @Override
   public ITraitType getType() {
     return traitType;
   }
 
+  @Override
   public void setModifiedCreationRange(Range range) {
     this.modifiedCreationRange = range;
   }
 
+  @Override
   public int getExperiencedValue(int creationValue, int demandedValue) {
     Range range;
     int maximumValue = getCurrentMaximumValue(true);
@@ -113,6 +127,7 @@ public class TraitRules implements ITraitRules
     //return correctedValue <= creationValue ? ITraitRules.UNEXPERIENCED : correctedValue;
   }
 
+  @Override
   public int getCreationValue(int demandedValue) {
     Range currentCreationPointRange = new Range(getAbsoluteMinimumValue(), getCreationMaximumValue());
     return getCorrectedValue(demandedValue, currentCreationPointRange);
@@ -128,6 +143,7 @@ public class TraitRules implements ITraitRules
     return allowedRange.getUpperBound();
   }
 
+  @Override
   public int getExperienceCalculationValue(int creationValue, int experiencedValue, int currentValue) {
     if (template.getLowerableState() == LowerableState.LowerableRegain) {
       if (experiencedValue == UNEXPERIENCED) {
