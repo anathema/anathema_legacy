@@ -8,7 +8,6 @@ import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNodeLeftSideComparator;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -75,6 +74,7 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     super(properties, graph);
   }
 
+  @Override
   public IVisualizedGraph buildTree() {
     SimplifiedButtonUpGraphVisualizer simplifiedVisualizer =
             new SimplifiedButtonUpGraphVisualizer(getGraph(), getProperties());
@@ -418,17 +418,5 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     }
     return firstVisualizableChildren.containsAll(secondVisualizableChildren) &&
             firstVisualizableChildren.size() == secondVisualizableChildren.size();
-  }
-
-  protected Dimension getTreeDimension(ILayer[] layers) {
-    return new Dimension(getTreeWidth(layers), getTreeHeight(layers));
-  }
-
-  protected int getTreeWidth(ILayer[] layers) {
-    int width = 0;
-    for (ILayer layer : layers) {
-      width = Math.max(width, layer.getWidth());
-    }
-    return width;
   }
 }
