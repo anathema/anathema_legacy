@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
+import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
@@ -19,13 +20,15 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   private final ICollectionFactory collectionFactory;
   private final String material;
   private final String composition;
+  private final ItemCost cost;
 
   public EquipmentTemplate(
       String name,
       String description,
       MaterialComposition composition,
       MagicalMaterial material,
-      ICollectionFactory collectionFactory) {
+      ICollectionFactory collectionFactory,
+      ItemCost cost) {
     this.name = name;
     this.description = description;
     this.composition = composition.getId();
@@ -37,6 +40,7 @@ public class EquipmentTemplate implements IEquipmentTemplate {
     }
     this.collectionFactory = collectionFactory;
     this.statsByRuleSet = collectionFactory.createHashMap();
+    this.cost = cost;
   }
 
   @Override
@@ -79,6 +83,11 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   public MaterialComposition getComposition() {
     return MaterialComposition.valueOf(composition);
   }
+  
+  @Override
+  public ItemCost getCost() {
+	return cost;
+  }
 
   public boolean hasStats() {
     boolean hasStats = false;
@@ -94,5 +103,25 @@ public class EquipmentTemplate implements IEquipmentTemplate {
 
   public void removeStats(IExaltedEdition edition, IEquipmentStats stat) {
     statsByRuleSet.get(edition.getId()).remove(stat);
+  }
+  
+  @Override
+  public String getTooltipDescription() {
+	  StringBuilder builder = new StringBuilder();
+	  builder.append("<html>");
+	  builder.append(getName());
+	  if (getCost() != null) {
+		builder.append(" (" + getCost().toString() + ")");
+	  }
+	  builder.append("<br>");
+	  if (!getDescription().isEmpty()) {
+		builder.append(getDescription() + "<br>");
+	  }
+	  IEquipmentStats[] statsSet = getStats();
+	  for (IEquipmentStats stats : statsSet) {
+		builder.append((stats != statsSet[0] ? ", " : "") + stats.getId());
+	  }
+	  builder.append("</html>");
+	  return builder.toString();
   }
 }

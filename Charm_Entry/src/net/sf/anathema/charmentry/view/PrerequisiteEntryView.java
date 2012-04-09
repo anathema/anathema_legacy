@@ -6,8 +6,9 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.selection.ISelectableIntValueView;
+import net.sf.anathema.character.library.selection.SelectableIntValueView;
 import net.sf.anathema.charmentry.presenter.view.IPrerequisitesEntryView;
-import net.sf.anathema.charmentry.presenter.view.ISelectableTraitView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -21,10 +22,10 @@ public class PrerequisiteEntryView implements IPrerequisitesEntryView {
     this.factory = factory;
   }
 
-  public ISelectableTraitView addSelectablePrerequisiteView(String string, IIdentificate[] traits) {
+  public ISelectableIntValueView<IIdentificate> addSelectablePrerequisiteView(String string, IIdentificate[] traits, int initial, int max) {
     content.add(new JLabel(string));
-    SelectableTraitView view = new SelectableTraitView(factory);
-    view.setSelectableTraits(traits);
+    ISelectableIntValueView<IIdentificate> view = new SelectableIntValueView<IIdentificate>(factory, initial, max);
+    view.setSelectableValues(traits);
     view.addTo(content);
     return view;
   }

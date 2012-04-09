@@ -72,7 +72,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     });
     IMagicalMaterialView magicMaterialView = view.getMagicMaterialView();
     initMaterialView(magicMaterialView);
-    equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer());
+    equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer(model));
     setObjects(equipmentTemplatePickList);
     view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList, magicMaterialView));
     view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
