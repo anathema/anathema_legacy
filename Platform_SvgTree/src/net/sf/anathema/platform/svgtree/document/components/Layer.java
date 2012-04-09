@@ -1,12 +1,12 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
+import com.google.common.collect.Lists;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 import org.dom4j.Element;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Layer implements ILayer {
@@ -81,7 +81,7 @@ public class Layer implements ILayer {
   }
 
   private IVisualizableNode findLastOrderedChild(IVisualizableNode[] children) {
-    List<IVisualizableNode> remainingChildren = new ArrayList<IVisualizableNode>(Arrays.asList(children));
+    List<IVisualizableNode> remainingChildren = Lists.newArrayList(children);
     IVisualizableNode[] nodesByLayer = nextLayer.getNodes();
     for (IVisualizableNode node : nodesByLayer) {
       for (IVisualizableNode child : children) {
