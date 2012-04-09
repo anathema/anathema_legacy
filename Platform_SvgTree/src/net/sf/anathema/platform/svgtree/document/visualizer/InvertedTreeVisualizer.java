@@ -1,12 +1,12 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
-import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.graph.LayeredGraph;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 
 public class InvertedTreeVisualizer extends AbstractTreeVisualizer {
 
-  public InvertedTreeVisualizer(IProperHierarchicalGraph graph, ITreePresentationProperties properties) {
+  public InvertedTreeVisualizer(LayeredGraph graph, ITreePresentationProperties properties) {
     super(properties, graph);
   }
 
