@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.magic.persistence.SpellBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.SpellCache;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -40,7 +41,7 @@ public class SpellConfiguration implements ISpellConfiguration {
     for (CircleType type : CircleType.values()) {
       spellsByCircle.put(type, new ArrayList<ISpell>());
     }
-    for (ISpell spell : new SpellBuilder().getSpells()) {
+    for (ISpell spell : SpellCache.getInstance().getSpells()) {
       spellsByCircle.get(spell.getCircleType()).add(spell);
     }
     spellMapper = new SpellMapper();
