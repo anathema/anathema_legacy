@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 
 import java.awt.Dimension;
@@ -23,7 +22,6 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
   }
 
   public void setLayer(final ILayer layer) {
-    Ensure.ensureNull(this.layer);
     this.layer = layer;
   }
 

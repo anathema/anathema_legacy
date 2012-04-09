@@ -1,6 +1,7 @@
 package net.sf.anathema.graph.ordering;
 
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.graph.LayeredGraph;
 import net.sf.anathema.graph.graph.ProperHierarchicalGraph;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
@@ -9,14 +10,17 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class ProperHierarchicalGraphTest {
 
   @Test
   public void testSingleNodeGraph() throws Exception {
     IRegularNode node = NodeFactory.createChildlessNode(1, "node"); //$NON-NLS-1$
-    IProperHierarchicalGraph graph = new ProperHierarchicalGraph(new ISimpleNode[]{node}, 1);
+    LayeredGraph graph = new ProperHierarchicalGraph(new ISimpleNode[]{node}, 1);
     assertNotNull(graph);
   }
 
@@ -24,7 +28,7 @@ public class ProperHierarchicalGraphTest {
   public void testDualLayerGraph() throws Exception {
     ISimpleNode node = NodeFactory.createChildlessNode(2, "node"); //$NON-NLS-1$
     ISimpleNode root = NodeFactory.createSingleChildNode(1, node, "root"); //$NON-NLS-1$
-    IProperHierarchicalGraph graph = new ProperHierarchicalGraph(new ISimpleNode[]{root, node}, 2);
+    LayeredGraph graph = new ProperHierarchicalGraph(new ISimpleNode[]{root, node}, 2);
     assertEquals(root, graph.getNodesByLayer(1)[0]);
     assertEquals(node, graph.getNodesByLayer(2)[0]);
   }
@@ -47,7 +51,7 @@ public class ProperHierarchicalGraphTest {
     ISimpleNode node2 = NodeFactory.createChildlessNode(1, "node2"); //$NON-NLS-1$
     ISimpleNode node3 = NodeFactory.createChildlessNode(1, "node3"); //$NON-NLS-1$
     ISimpleNode[] originalNodeArray = new ISimpleNode[]{node1, node2, node3};
-    IProperHierarchicalGraph graph = new ProperHierarchicalGraph(originalNodeArray, 1);
+    LayeredGraph graph = new ProperHierarchicalGraph(originalNodeArray, 1);
     ISimpleNode[] layerOneNodes = graph.getNodesByLayer(1);
     assertTrue(Arrays.equals(originalNodeArray, layerOneNodes));
   }

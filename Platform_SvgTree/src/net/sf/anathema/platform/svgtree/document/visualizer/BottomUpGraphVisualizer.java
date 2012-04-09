@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
-import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.graph.LayeredGraph;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
@@ -71,11 +71,16 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
   // to each other as possible without overlapping their edges
   // Instead of giving the entire map as argument, just give the relevant leaves?
 
-  public BottomUpGraphVisualizer(IProperHierarchicalGraph graph, ITreePresentationProperties properties) {
+  public BottomUpGraphVisualizer(LayeredGraph graph, ITreePresentationProperties properties) {
     super(properties, graph);
   }
 
   public IVisualizedGraph buildTree() {
+    SimplifiedButtonUpGraphVisualizer simplifiedVisualizer =
+            new SimplifiedButtonUpGraphVisualizer(getGraph(), getProperties());
+    if (simplifiedVisualizer.isApplicable()) {
+      return simplifiedVisualizer.buildTree();
+    }
     int layerCount = getGraph().getDeepestLayer();
     for (int layerIndex = layerCount - 1; layerIndex >= 0; layerIndex--) {
       createLeafGroups(layerIndex);
@@ -88,44 +93,15 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       layer.positionNodes();
       layer.unrollHorizontalMetanodes();
     }
-    print(layers, "After positioning");
-    printProjection(layers, "After position");
     createSlimWaistSymmetrie(layers);
-    printProjection(layers, "After symmetry");
     centerSingleParents(layers);
-    printProjection(layers, "After center parent");
     centerOnlyChildren(layers);
-    printProjection(layers, "After center children");
     rectifySingleParentRoots(layers);
-    printProjection(layers, "After rectify");
     straightenLines(layers);
-    printProjection(layers, "After straighten");
     separateOverlappingNodes(layers);
-    printProjection(layers, "After overlapping");
     removeWhiteSpace(layers);
-    printProjection(layers, "After whitespace");
     centerTrailingSingleNodePath(layers);
-    printProjection(layers, "In the end");
     return new VisualizedGraph(createXml(layers), getTreeDimension(layers));
-  }
-
-  private void print(ILayer[] layers, String message) {
-    System.out.println();
-    System.out.println(message);
-    for (ILayer layer : layers) {
-      System.out.println(Arrays.deepToString(layer.getNodes()));
-    }
-  }
-
-  private void printProjection(ILayer[] layers, String message) {
-    for (ILayer layer : layers) {
-      IVisualizableNode[] nodes = layer.getNodes();
-      for (int index = 0; index < nodes.length - 1; index++) {
-        if (nodes[index].getLeftSide() > nodes[index + 1].getLeftSide()) {
-          new NodeProjection(layer).print("Wrong ordering " + message);
-        }
-      }
-    }
   }
 
   private void centerTrailingSingleNodePath(ILayer[] layers) {

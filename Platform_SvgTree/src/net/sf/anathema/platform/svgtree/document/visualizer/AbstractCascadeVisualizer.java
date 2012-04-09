@@ -1,9 +1,6 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.graph.LayeredGraph;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
@@ -11,29 +8,30 @@ import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.svgtree.document.components.Layer;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNodeFactory;
 import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
-
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Element;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
 
+import java.awt.Dimension;
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
 
   private final ITreePresentationProperties properties;
-  private final Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent = new HashMap<ISimpleNode, IVisualizableNode>();
-  private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors = new MultiEntryMap<ISimpleNode, ISimpleNode>();
+  private final Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent =
+          new HashMap<ISimpleNode, IVisualizableNode>();
+  private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors =
+          new MultiEntryMap<ISimpleNode, ISimpleNode>();
   private final VisualizableNodeFactory nodeFactory;
-  private final IProperHierarchicalGraph graph;
+  private final LayeredGraph graph;
 
-  public AbstractCascadeVisualizer(ITreePresentationProperties properties, IProperHierarchicalGraph graph) {
+  public AbstractCascadeVisualizer(ITreePresentationProperties properties, LayeredGraph graph) {
     this.properties = properties;
     this.graph = graph;
-    this.nodeFactory = new VisualizableNodeFactory(
-        properties.getNodeDimension(),
-        properties.getGapDimension(),
-        properties.getVerticalLineDimension(),
-        visualizableNodesByContent,
-        leafNodesByAncestors);
+    this.nodeFactory = new VisualizableNodeFactory(properties.getNodeDimension(), properties.getGapDimension(),
+            properties.getVerticalLineDimension(), visualizableNodesByContent, leafNodesByAncestors);
   }
 
   protected ITreePresentationProperties getProperties() {
@@ -44,7 +42,7 @@ public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
     return nodeFactory;
   }
 
-  protected IProperHierarchicalGraph getGraph() {
+  protected LayeredGraph getGraph() {
     return graph;
   }
 
@@ -102,11 +100,20 @@ public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
     return cascadeElement;
   }
 
+  protected Dimension getTreeDimension(ILayer[] layers) {
+    return new Dimension(getTreeWidth(layers), getTreeHeight(layers));
+  }
+
+  protected int getTreeWidth(ILayer[] layers) {
+    int width = 0;
+    for (ILayer layer : layers) {
+      width = Math.max(width, layer.getWidth());
+    }
+    return width;
+  }
+
   protected int getTreeHeight(ILayer[] layers) {
-    int treeHeight = layers.length
-        * getProperties().getNodeDimension().height
-        + (layers.length - 1)
-        * getProperties().getGapDimension().height;
-    return treeHeight;
+    return layers.length * getProperties().getNodeDimension().height +
+            (layers.length - 1) * getProperties().getGapDimension().height;
   }
 }

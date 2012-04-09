@@ -1,15 +1,15 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
-import java.awt.Dimension;
-
-import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.graph.LayeredGraph;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 
+import java.awt.Dimension;
+
 public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
 
-  public AbstractTreeVisualizer(ITreePresentationProperties properties, IProperHierarchicalGraph graph) {
+  public AbstractTreeVisualizer(ITreePresentationProperties properties, LayeredGraph graph) {
     super(properties, graph);
   }
 

@@ -2,13 +2,9 @@ package net.sf.anathema.graph.graph;
 
 import net.sf.anathema.graph.nodes.ISimpleNode;
 
-public interface IProperHierarchicalGraph {
-
-  public ISimpleNode[] getNodesByLayer(int layer);
+public interface IProperHierarchicalGraph extends LayeredGraph {
 
   public void setNewLayerOrder(int layer, ISimpleNode[] orderedNodes);
-
-  public int getDeepestLayer();
 
   public int calculateTotalNumberOfCrossings();
 
