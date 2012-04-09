@@ -11,29 +11,29 @@ import java.util.List;
 
 public interface ICharacterModelContext {
 
-  public IAdditionalRules getAdditionalRules();
+  IAdditionalRules getAdditionalRules();
 
-  public IBasicCharacterData getBasicCharacterContext();
+  IBasicCharacterData getBasicCharacterContext();
 
-  public IPresentationProperties getPresentationProperties();
+  IPresentationProperties getPresentationProperties();
 
-  public ICharacterListening getCharacterListening();
+  ICharacterListening getCharacterListening();
 
-  public ICharmContext getCharmContext();
+  ICharmContext getCharmContext();
 
-  public IMagicCollection getMagicCollection();
+  IMagicCollection getMagicCollection();
 
-  public IGenericTraitCollection getTraitCollection();
+  IGenericTraitCollection getTraitCollection();
 
-  public ITraitContext getTraitContext();
+  ITraitContext getTraitContext();
 
-  public IGenericSpecialtyContext getSpecialtyContext();
+  IGenericSpecialtyContext getSpecialtyContext();
 
-  public IAdditionalModel getAdditionalModel(String id);
+  IAdditionalModel getAdditionalModel(String id);
 
-  public boolean isFullyLoaded();
+  boolean isFullyLoaded();
 
-  public void setFullyLoaded(boolean loaded);
+  void setFullyLoaded(boolean loaded);
 
   <T> List<T> getAllRegistered(Class<T> interfaceClass);
 }

@@ -27,37 +27,43 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
   public SpecialCharmPersister(ISpecialCharm[] charms, final ICharmIdMap charmTree) {
     for (ISpecialCharm specialCharm : charms) {
       specialCharm.accept(new ISpecialCharmVisitor() {
+        @Override
         public void visitMultiLearnableCharm(IMultiLearnableCharm charm) {
           persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultiLearnCharmPersister());
         }
 
+        @Override
         public void visitOxBodyTechnique(IOxBodyTechniqueCharm charm) {
           persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new OxBodyTechniquePersister());
         }
 
+        @Override
         public void visitPainToleranceCharm(IPainToleranceCharm charm) {
           // Nothing to do
         }
 
+        @Override
         public void visitSubeffectCharm(ISubeffectCharm charm) {
           persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
         }
 
+        @Override
         public void visitMultipleEffectCharm(IMultipleEffectCharm charm) {
           persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
         }
-        
+
+        @Override
         public void visitUpgradableCharm(IUpgradableCharm charm) {
           persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
-          }
-        
-        public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm charm)
-        {
+        }
+
+        @Override
+        public void visitPrerequisiteModifyingCharm(IPrerequisiteModifyingCharm charm) {
           // Nothing to do
         }
-        
-        public void visitTraitCapModifyingCharm(ITraitCapModifyingCharm charm)
-        {
+
+        @Override
+        public void visitTraitCapModifyingCharm(ITraitCapModifyingCharm charm) {
           persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new TraitCapModifyingCharmPersister());
         }
       });
@@ -68,16 +74,16 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
     return charmTree.getCharmById(charmId);
   }
 
+  @Override
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
     ISpecialCharmPersister persister = persisterByCharm.get(specialCharmConfiguration.getCharm());
-    if (persister != null)
-    	persister.saveConfiguration(specialElement, specialCharmConfiguration);
+    if (persister != null) persister.saveConfiguration(specialElement, specialCharmConfiguration);
   }
 
-  public void loadConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration)
-      throws PersistenceException {
+  @Override
+  public void loadConfiguration(Element specialElement,
+                                ISpecialCharmConfiguration specialCharmConfiguration) throws PersistenceException {
     ISpecialCharmPersister persister = persisterByCharm.get(specialCharmConfiguration.getCharm());
-    if (persister != null)
-    	persister.loadConfiguration(specialElement, specialCharmConfiguration);
+    if (persister != null) persister.loadConfiguration(specialElement, specialCharmConfiguration);
   }
 }

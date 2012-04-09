@@ -12,6 +12,7 @@ http://anathema.github.com
 
 -- Features --
 * [Shadow493] Added missing Lunar templates from DotFA.
+* [Jesse Belanger] Added Charm descriptions for Infernals. Most texts taken from the official Wiki.
 
 -- Bugfixes --
 * Improved rendering of some Charm cascades, notably Solar Melee, Solar Medicine and Solar Hero Style.

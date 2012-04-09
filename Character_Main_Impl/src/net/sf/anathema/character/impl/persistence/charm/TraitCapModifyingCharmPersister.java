@@ -6,22 +6,17 @@ import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
 
-public class TraitCapModifyingCharmPersister implements ISpecialCharmPersister
-{
+public class TraitCapModifyingCharmPersister implements ISpecialCharmPersister {
 
-	@Override
-	public void loadConfiguration(Element specialElement,
-			ISpecialCharmConfiguration specialCharmConfiguration)
-			throws PersistenceException
-	{
-		((TraitCapModifyingCharmConfiguration)specialCharmConfiguration).applyModifier();
-	}
+  @Override
+  public void loadConfiguration(Element specialElement,
+                                ISpecialCharmConfiguration specialCharmConfiguration) throws PersistenceException {
+    ((TraitCapModifyingCharmConfiguration) specialCharmConfiguration).applyModifier();
+  }
 
-	@Override
-	public void saveConfiguration(Element specialElement,
-			ISpecialCharmConfiguration specialCharmConfiguration)
-	{
-		// nothing to do
-	}
+  @Override
+  public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
+    // nothing to do
+  }
 
 }
