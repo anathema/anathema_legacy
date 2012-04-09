@@ -102,8 +102,8 @@
      </genericCharm>
      <genericCharm id="Abyssal.EssenceFlow" exalt="Abyssal">
           <prerequisite>
-               <trait value="5"/>
-               <essence value="4"/>
+               <trait value="4"/>
+               <essence value="3"/>
                <genericCharmAttributeRequirement attribute="Excellency"/>
           </prerequisite>
           <cost/>
