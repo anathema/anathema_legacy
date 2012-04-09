@@ -52,4 +52,6 @@ public interface ILayer {
   public IVisualizableNode getPreviousNode(IVisualizableNode node);
 
   public IVisualizableNode getNextNode(IVisualizableNode node);
+
+  void moveNodeTo(IVisualizableNode node, int xPosition);
 }

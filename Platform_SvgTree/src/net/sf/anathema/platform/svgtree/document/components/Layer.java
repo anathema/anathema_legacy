@@ -1,14 +1,13 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
+import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
+import org.dom4j.Element;
+
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
-
-import org.dom4j.Element;
 
 public class Layer implements ILayer {
 
@@ -22,7 +21,7 @@ public class Layer implements ILayer {
     this.gapDimension = gapDimension;
     this.yPosition = yPosition;
   }
-  
+
   public Dimension getGapDimension() {
     return new Dimension(gapDimension);
   }
@@ -112,8 +111,7 @@ public class Layer implements ILayer {
         return;
       }
       node.shiftRightWithChildren(requiredShift, sharedChildren);
-    }
-    else {
+    } else {
       previousNodeRightSide = getPreviousNodeRightExtreme(node);
       currentNodeLeftSide = node.getLeftExtreme();
       int requiredShift = previousNodeRightSide + gapDimension.width - currentNodeLeftSide;
@@ -168,6 +166,46 @@ public class Layer implements ILayer {
       return null;
     }
     return nodes.get(index + 1);
+  }
+
+  @Override
+  public void moveNodeTo(IVisualizableNode node, int xPosition) {
+    int shift = xPosition - node.getPosition();
+    if (shift < 0) {
+      getRoomToShiftLeft(getIndexAfter(xPosition));
+      int moveStartIndex = getIndexAfter(xPosition);
+      int roomToShift = getRoomToShiftLeft(moveStartIndex);
+      if (roomToShift >= -shift) {
+        for (int index = moveStartIndex; index < nodes.indexOf(node) + 1; index++) {
+          nodes.get(index).forceShiftRight(shift);
+        }
+      } else {
+        for (int index = moveStartIndex; index < nodes.indexOf(node); index++) {
+          nodes.get(index).forceShiftRight(-roomToShift);
+        }
+        node.setPosition(xPosition);
+      }
+    } else {
+      for (int index = nodes.indexOf(node); index < nodes.size(); index++) {
+        nodes.get(index).forceShiftRight(shift);
+      }
+    }
+  }
+
+  private int getRoomToShiftLeft(int index) {
+    if (index == 0) {
+      return nodes.get(index).getLeftSide();
+    }
+    return nodes.get(index).getPosition() - nodes.get(index - 1).getPosition();
+  }
+
+  private int getIndexAfter(int xPosition) {
+    for (int index = 0; index < nodes.size(); index++) {
+      if (nodes.get(index).getPosition() >= xPosition) {
+        return index;
+      }
+    }
+    throw new IllegalStateException();
   }
 
   public Integer getPreviousNodeRightExtreme(IVisualizableNode node) {

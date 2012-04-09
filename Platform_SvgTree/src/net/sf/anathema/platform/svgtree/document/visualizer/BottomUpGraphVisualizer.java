@@ -5,7 +5,7 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
-import net.sf.anathema.platform.svgtree.document.components.VisualizableNodePositionComparator;
+import net.sf.anathema.platform.svgtree.document.components.VisualizableNodeLeftSideComparator;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 
 import java.awt.Dimension;
@@ -88,17 +88,44 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       layer.positionNodes();
       layer.unrollHorizontalMetanodes();
     }
-    removeWhiteSpace(layers);
+    print(layers, "After positioning");
+    printProjection(layers, "After position");
     createSlimWaistSymmetrie(layers);
+    printProjection(layers, "After symmetry");
     centerSingleParents(layers);
+    printProjection(layers, "After center parent");
     centerOnlyChildren(layers);
+    printProjection(layers, "After center children");
     rectifySingleParentRoots(layers);
+    printProjection(layers, "After rectify");
     straightenLines(layers);
-    straightenLines(layers);
+    printProjection(layers, "After straighten");
     separateOverlappingNodes(layers);
+    printProjection(layers, "After overlapping");
     removeWhiteSpace(layers);
+    printProjection(layers, "After whitespace");
     centerTrailingSingleNodePath(layers);
+    printProjection(layers, "In the end");
     return new VisualizedGraph(createXml(layers), getTreeDimension(layers));
+  }
+
+  private void print(ILayer[] layers, String message) {
+    System.out.println();
+    System.out.println(message);
+    for (ILayer layer : layers) {
+      System.out.println(Arrays.deepToString(layer.getNodes()));
+    }
+  }
+
+  private void printProjection(ILayer[] layers, String message) {
+    for (ILayer layer : layers) {
+      IVisualizableNode[] nodes = layer.getNodes();
+      for (int index = 0; index < nodes.length - 1; index++) {
+        if (nodes[index].getLeftSide() > nodes[index + 1].getLeftSide()) {
+          new NodeProjection(layer).print("Wrong ordering " + message);
+        }
+      }
+    }
   }
 
   private void centerTrailingSingleNodePath(ILayer[] layers) {
@@ -198,10 +225,10 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
         return;
       }
     }
-    Arrays.sort(parents, new VisualizableNodePositionComparator());
+    Arrays.sort(parents, new VisualizableNodeLeftSideComparator());
     int leftSide = parents[0].getPosition();
     int rightSide = parents[parents.length - 1].getPosition();
-    node.setPosition((leftSide + rightSide) / 2);
+    node.getLayer().moveNodeTo(node, (leftSide + rightSide) / 2);
   }
 
   private void centerSingleParents(ILayer[] layers) {
