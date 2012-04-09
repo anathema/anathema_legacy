@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.landscape;
 
-import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.AllMagicContent;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
@@ -33,7 +32,7 @@ public class SecondPageEncoder implements PageEncoder {
   }
 
   @Override
-  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) {
     SheetPage page = sheet.startLandscapePage(graphics, session);
     LayoutField genericCharms = page.place(GENERIC_CHARMS).atStartOf(page).withPreferredHeight().andColumnSpan(3).now();
     page.place(CHARMS_AND_SORCERY).below(genericCharms).fillToBottomOfPage().andColumnSpan(3).now();

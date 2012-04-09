@@ -28,7 +28,6 @@
           <prerequisite>
                <trait id="Archery" value="4" />
                <essence value="1" />
-               <charmAttributeRequirement attribute="ExcellencyArchery" count="1" />
           </prerequisite>
           <cost>
                <essence cost="3" text="or 5m" />
@@ -37,8 +36,10 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
+          <charmAttribute attribute="MartialThrown" visualize="true" />
           <!-- NOTE:  Solar Mirror - There is No Wind -->
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.TwistingSpitefulShaft" exalt="Abyssal" group="Archery">
           <prerequisite>
@@ -62,7 +63,7 @@
                <charmReference id="Abyssal.PulseOfThePrey" />
           </prerequisite>
           <cost>
-               <essence cost="1" />
+               <essence cost="4" />
                <willpower cost="1" />
           </cost>
           <duration duration="Instant" />
@@ -72,6 +73,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <!-- NOTE:  Solar Mirror - Accuracy Without Distance -->
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.PiercingGhostBarb" exalt="Abyssal" group="Archery">
           <prerequisite>
@@ -94,7 +96,7 @@
                <essence value="1" />
           </prerequisite>
           <cost>
-               <essence cost="1" text="or 2m per attack" />
+               <essence cost="2" text="or 3m per attack" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="ExtraAction" />
@@ -218,17 +220,20 @@
                <charmReference id="Abyssal.RelicArrowMethod" />
           </prerequisite>
           <cost>
-               <essence cost="5" />
+               <essence cost="3" text="or 5m"/>
                <willpower cost="1" />
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Simple">
                <special speed="5" defense="-1" />
           </charmtype>
+          <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Emotion" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Immaculate Golden Bow -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.QuiverOfSouls" exalt="Abyssal" group="Archery">
           <prerequisite>

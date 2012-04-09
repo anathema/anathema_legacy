@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
@@ -26,7 +25,7 @@ public class ExtendedSecondPageEncoder implements PageEncoder {
     this.pageConfiguration = pageConfiguration;
   }
 
-  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) {
     SheetPage page = sheet.startPortraitPage(graphics, session);
     LayoutField health = page.place(HEALTH).atStartOf(page).withHeight(175).now();
     LayoutField arsenal = page.place(ARSENAL).rightOf(health).withSameHeight().andColumnSpan(2).now();

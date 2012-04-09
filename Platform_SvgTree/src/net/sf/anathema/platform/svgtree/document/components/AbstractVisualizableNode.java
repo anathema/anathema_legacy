@@ -1,14 +1,14 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
+import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.graph.nodes.ISimpleNode;
+
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.graph.nodes.ISimpleNode;
 
 public abstract class AbstractVisualizableNode implements IVisualizableNode {
 
@@ -49,6 +49,11 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
 
   public void shiftRight(final int shift) {
     setPosition(Math.max(getPosition() + shift, layer.getOverlapFreePosition(this)));
+  }
+
+  public void forceShiftRight(int shift) {
+    setPosition(getPosition() + shift);
+
   }
 
   protected final Map<ISimpleNode, IVisualizableNode> getContentNodeMap() {

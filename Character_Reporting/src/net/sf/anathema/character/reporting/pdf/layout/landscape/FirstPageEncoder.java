@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.landscape;
 
-import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.layout.Sheet;
 import net.sf.anathema.character.reporting.pdf.layout.SheetPage;
@@ -32,7 +31,7 @@ public class FirstPageEncoder implements PageEncoder {
   private static final int SOCIAL_COMBAT_HEIGHT = 115;
 
   @Override
-  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) {
     SheetPage page = sheet.startLandscapePage(graphics, session);
     LayoutField personalInfo =
             page.place(PERSONAL_INFO).atStartOf(page).withHeight(FIRST_ROW_HEIGHT).andColumnSpan(2).now();

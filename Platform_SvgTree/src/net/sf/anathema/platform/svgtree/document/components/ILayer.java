@@ -5,51 +5,53 @@ import org.dom4j.Element;
 
 public interface ILayer {
 
-  void addNode(IVisualizableNode node);
+  public void addNode(IVisualizableNode node);
 
-  void setNodePosition(IVisualizableNode node, int centralPosition);
+  public void setNodePosition(IVisualizableNode node, int centralPosition);
 
-  void setFollowUp(ILayer layer);
+  public void setFollowUp(ILayer layer);
 
-  ILayer getNextLayer();
+  public ILayer getNextLayer();
 
-  void setNodeOnNextFreePosition(IVisualizableNode node);
+  public void setNodeOnNextFreePosition(IVisualizableNode node);
 
-  void addNodesToXml(Element element);
+  public void addNodesToXml(Element element);
 
-  void setNodePositionWithoutChecking(IVisualizableNode node, int position);
+  public void setNodePositionWithoutChecking(IVisualizableNode node, int position);
 
-  void positionNodes();
+  public void positionNodes();
 
-  IVisualizableNode[] getNodes();
+  public IVisualizableNode[] getNodes();
 
-  void addArrowsToXml(Element cascade);
+  public void addArrowsToXml(Element cascade);
 
-  int getYPosition();
+  public int getYPosition();
 
-  int getWidth();
+  public int getWidth();
 
-  void unrollHorizontalMetanodes();
+  public void unrollHorizontalMetanodes();
   
-  void forceShift(int shift);
+  public void forceShift(int shift);
 
-  void shiftRight(int requiredShift);
+  public void shiftRight(int requiredShift);
 
-  void shiftRightRecursivelyWithThreshold(int threshold, int requiredShift);
+  public void shiftRightRecursivelyWithThreshold(int threshold, int requiredShift);
 
-  int getOverlapFreePosition(IVisualizableNode node);
+  public int getOverlapFreePosition(IVisualizableNode node);
 
-  Integer getPreviousNodeRightExtreme(IVisualizableNode node);
+  public Integer getPreviousNodeRightExtreme(IVisualizableNode node);
 
-  Integer getNextNodeLeftExtreme(IVisualizableNode node);
+  public Integer getNextNodeLeftExtreme(IVisualizableNode node);
 
-  ILayer getPreviousLayer();
+  public ILayer getPreviousLayer();
 
-  void setPreviousLayer(ILayer layer);
+  public void setPreviousLayer(ILayer layer);
 
-  void positionNode(IVisualizableNode node);
+  public void positionNode(IVisualizableNode node);
 
-  IVisualizableNode getPreviousNode(IVisualizableNode node);
+  public IVisualizableNode getPreviousNode(IVisualizableNode node);
 
-  IVisualizableNode getNextNode(IVisualizableNode node);
+  public IVisualizableNode getNextNode(IVisualizableNode node);
+
+  void moveNodeTo(IVisualizableNode node, int xPosition);
 }

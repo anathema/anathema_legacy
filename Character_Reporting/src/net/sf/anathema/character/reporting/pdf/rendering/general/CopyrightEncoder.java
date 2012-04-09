@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general;
 
 import com.itextpdf.text.Anchor;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.HorizontalAlignment;
@@ -37,27 +36,27 @@ public class CopyrightEncoder {
     this.contentHeight = contentHeight;
   }
 
-  public void encodeCopyright(SheetGraphics graphics) throws DocumentException {
+  public void encodeCopyright(SheetGraphics graphics) {
     encodeVoidStateColumn(graphics);
     encodeAnathemaColumn(graphics);
     encodeWhiteWolfColumn(graphics);
   }
 
-  private void encodeVoidStateColumn(SheetGraphics graphics) throws DocumentException {
+  private void encodeVoidStateColumn(SheetGraphics graphics) {
     Bounds bounds = pageConfiguration.getColumnRectangle(contentHeight, getCopyrightHeight(), 1, Offset(0));
     String text = "Inspired by Voidstate\nhttp://www.voidstate.com";
     Anchor phrase = createAnchor(graphics, text, "http://www.voidstate.com");
     encoderLine(graphics, phrase, Left, bounds);
   }
 
-  private void encodeAnathemaColumn(SheetGraphics graphics) throws DocumentException {
+  private void encodeAnathemaColumn(SheetGraphics graphics) {
     Bounds bounds = pageConfiguration.getColumnRectangle(contentHeight, getCopyrightHeight(), 1, Offset(1));
     String text = induceYear("Created with Anathema \u00A92007-{0}\nhttp://anathema.sf.net");
     Anchor phrase = createAnchor(graphics, text, "http://anathema.sf.net");
     encoderLine(graphics, phrase, Center, bounds);
   }
 
-  private void encodeWhiteWolfColumn(SheetGraphics graphics) throws DocumentException {
+  private void encodeWhiteWolfColumn(SheetGraphics graphics) {
     Bounds bounds = pageConfiguration.getColumnRectangle(contentHeight, getCopyrightHeight(), 1, Offset(2));
     String text = induceYear("Exalted \u00A92007-{0} by CCP hf\nhttp://www.white-wolf.com");
     Anchor phrase = createAnchor(graphics, text, "http://www.white-wolf.com");
@@ -84,8 +83,7 @@ public class CopyrightEncoder {
     return pageConfiguration.getPageHeight() - pageConfiguration.getContentHeight();
   }
 
-  private void encoderLine(SheetGraphics graphics, Anchor phrase, HorizontalAlignment alignment, Bounds bounds)
-          throws DocumentException {
+  private void encoderLine(SheetGraphics graphics, Anchor phrase, HorizontalAlignment alignment, Bounds bounds) {
     SimpleColumnBuilder column = graphics.createSimpleColumn(bounds);
     column.withLeading(FONT_SIZE).andAlignment(alignment).andTextPart(phrase).encode();
   }

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.rendering.general.traits;
 
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfContentByte;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
@@ -34,7 +33,7 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     return traitEncoder;
   }
 
-  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
+  public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
     FavorableTraitContent content = createContent(reportSession);
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());
     float width = bounds.width;

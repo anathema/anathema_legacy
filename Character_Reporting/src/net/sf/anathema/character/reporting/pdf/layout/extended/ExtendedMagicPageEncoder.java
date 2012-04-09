@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.layout.extended;
 
-import com.itextpdf.text.DocumentException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
@@ -38,7 +37,7 @@ public class ExtendedMagicPageEncoder implements PageEncoder {
   }
 
   @Override
-  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
+  public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) {
     SheetPage page = sheet.startPortraitPage(graphics, session);
     LayoutField essence = page.place(ESSENCE_EXTENDED).atStartOf(page).withHeight(FIRST_ROW_HEIGHT).now();
     LayoutField regain = page.place(ESSENCE_REGAIN).rightOf(essence).withSameHeight().now();
@@ -79,8 +78,7 @@ public class ExtendedMagicPageEncoder implements PageEncoder {
     return charmTemplate.canLearnCharms();
   }
 
-  private void encodeAdditionalCharmPages(Sheet sheet, SheetGraphics graphics, ReportSession session)
-          throws DocumentException {
+  private void encodeAdditionalCharmPages(Sheet sheet, SheetGraphics graphics, ReportSession session) {
     CharmsOnlyContent charmContent = session.createContent(CharmsOnlyContent.class);
     while (charmContent.hasUnprintedCharms()) {
       SheetPage page = sheet.startPortraitPage(graphics, session);

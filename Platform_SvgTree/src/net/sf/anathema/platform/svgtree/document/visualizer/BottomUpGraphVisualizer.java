@@ -5,7 +5,7 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
-import net.sf.anathema.platform.svgtree.document.components.VisualizableNodePositionComparator;
+import net.sf.anathema.platform.svgtree.document.components.VisualizableNodeLeftSideComparator;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 
 import java.awt.Dimension;
@@ -71,13 +71,10 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
   // to each other as possible without overlapping their edges
   // Instead of giving the entire map as argument, just give the relevant leaves?
 
-  private final VisualizableNodePositionComparator nodePositionComparator = new VisualizableNodePositionComparator();
-
   public BottomUpGraphVisualizer(IProperHierarchicalGraph graph, ITreePresentationProperties properties) {
     super(properties, graph);
   }
 
-  @Override
   public IVisualizedGraph buildTree() {
     int layerCount = getGraph().getDeepestLayer();
     for (int layerIndex = layerCount - 1; layerIndex >= 0; layerIndex--) {
@@ -91,16 +88,63 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
       layer.positionNodes();
       layer.unrollHorizontalMetanodes();
     }
-    removeWhiteSpace(layers);
+    print(layers, "After positioning");
+    printProjection(layers, "After position");
     createSlimWaistSymmetrie(layers);
+    printProjection(layers, "After symmetry");
     centerSingleParents(layers);
+    printProjection(layers, "After center parent");
     centerOnlyChildren(layers);
+    printProjection(layers, "After center children");
     rectifySingleParentRoots(layers);
+    printProjection(layers, "After rectify");
     straightenLines(layers);
-    straightenLines(layers);
+    printProjection(layers, "After straighten");
     separateOverlappingNodes(layers);
+    printProjection(layers, "After overlapping");
     removeWhiteSpace(layers);
+    printProjection(layers, "After whitespace");
+    centerTrailingSingleNodePath(layers);
+    printProjection(layers, "In the end");
     return new VisualizedGraph(createXml(layers), getTreeDimension(layers));
+  }
+
+  private void print(ILayer[] layers, String message) {
+    System.out.println();
+    System.out.println(message);
+    for (ILayer layer : layers) {
+      System.out.println(Arrays.deepToString(layer.getNodes()));
+    }
+  }
+
+  private void printProjection(ILayer[] layers, String message) {
+    for (ILayer layer : layers) {
+      IVisualizableNode[] nodes = layer.getNodes();
+      for (int index = 0; index < nodes.length - 1; index++) {
+        if (nodes[index].getLeftSide() > nodes[index + 1].getLeftSide()) {
+          new NodeProjection(layer).print("Wrong ordering " + message);
+        }
+      }
+    }
+  }
+
+  private void centerTrailingSingleNodePath(ILayer[] layers) {
+    int lengthOfTail = getLengthOfTail(layers);
+    for (int index = layers.length - lengthOfTail; index < layers.length; index++) {
+      centerOnlyChild(layers[index].getNodes()[0]);
+    }
+  }
+
+  private int getLengthOfTail(ILayer[] layers) {
+    int lengthOfTail = 0;
+    for (ILayer layer : new BackwardsIterable<ILayer>(layers)) {
+      if (layer.getNodes().length == 1) {
+        lengthOfTail++;
+      } else {
+        break;
+      }
+    }
+    return lengthOfTail;
   }
 
   private void rectifySingleParentRoots(ILayer[] layers) {
@@ -167,8 +211,7 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
         continue;
       }
       for (IVisualizableNode node : layer.getNodes()) {
-        boolean isLeafNode = node.getChildren().length == 0;
-        if (isLeafNode) {
+        if (node.getChildren().length == 0) {
           centerOnlyChild(node);
         }
       }
@@ -182,10 +225,10 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
         return;
       }
     }
-    Arrays.sort(parents, nodePositionComparator);
+    Arrays.sort(parents, new VisualizableNodeLeftSideComparator());
     int leftSide = parents[0].getPosition();
     int rightSide = parents[parents.length - 1].getPosition();
-    node.setPosition((leftSide + rightSide) / 2);
+    node.getLayer().moveNodeTo(node, (leftSide + rightSide) / 2);
   }
 
   private void centerSingleParents(ILayer[] layers) {
@@ -290,53 +333,37 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
   }
 
   private void separateOverlappingNodes(ILayer[] layers) {
-    List<IVisualizableNode> nodeProjection = projectNodes(layers);
+    NodeProjection nodeProjection = new NodeProjection(layers);
     for (ILayer layer : layers) {
-      IVisualizableNode[] layerNodes = layer.getNodes();
+      IVisualizableNode[] layerNodes = new NodeProjection(layer).getNodes();
       for (int nodeIndex = 0; nodeIndex < layerNodes.length - 1; nodeIndex++) {
         IVisualizableNode node = layerNodes[nodeIndex];
         IVisualizableNode nextNode = layerNodes[nodeIndex + 1];
-        int whiteSpace = node.getRightSide() - nextNode.getLeftSide() + getProperties().getGapDimension().width;
-        if (whiteSpace > 0) {
+        int missingSpace = node.getRightSide() + getProperties().getGapDimension().width - nextNode.getLeftSide();
+        if (missingSpace > 0) {
           int projectionIndex = nodeProjection.indexOf(nextNode);
-          while (nodeProjection.get(projectionIndex - 1).getLeftSide() == nodeProjection.get(
-                  projectionIndex).getLeftSide()) {
+          while (nodeProjection.get(projectionIndex - 1).getLeftSide() ==
+                  nodeProjection.get(projectionIndex).getLeftSide()) {
             projectionIndex--;
           }
-          moveAllRemainingNodesLeft(nodeProjection, projectionIndex, -whiteSpace);
+          nodeProjection.forceAllRemainingNodesLeft(projectionIndex, -missingSpace);
         }
       }
     }
   }
 
   private void removeWhiteSpace(ILayer[] layers) {
-    List<IVisualizableNode> nodeProjection = projectNodes(layers);
+    NodeProjection nodeProjection = new NodeProjection(layers);
     int leftSide = nodeProjection.get(0).getLeftSide();
     if (leftSide > 0) {
-      moveAllRemainingNodesLeft(nodeProjection, 0, leftSide);
+      nodeProjection.forceAllRemainingNodesLeft(0, leftSide);
     }
     for (int nodeIndex = 0; nodeIndex < nodeProjection.size() - 1; nodeIndex++) {
-      IVisualizableNode node = nodeProjection.get(nodeIndex);
-      IVisualizableNode nextNode = nodeProjection.get(nodeIndex + 1);
-      int whiteSpace = nextNode.getLeftSide() - node.getRightSide() - getProperties().getGapDimension().width;
+      int distanceToPredecessor = nodeProjection.getDistanceToPredecessors(nodeIndex + 1);
+      int whiteSpace = distanceToPredecessor - getProperties().getGapDimension().width;
       if (whiteSpace > 0) {
-        moveAllRemainingNodesLeft(nodeProjection, nodeIndex + 1, whiteSpace);
+        nodeProjection.forceAllRemainingNodesLeft(nodeIndex + 1, whiteSpace);
       }
-    }
-  }
-
-  private List<IVisualizableNode> projectNodes(ILayer[] layers) {
-    List<IVisualizableNode> nodeProjection = new ArrayList<IVisualizableNode>();
-    for (ILayer layer : layers) {
-      Collections.addAll(nodeProjection, layer.getNodes());
-    }
-    Collections.sort(nodeProjection, nodePositionComparator);
-    return nodeProjection;
-  }
-
-  private void moveAllRemainingNodesLeft(List<IVisualizableNode> nodeProjection, int startIndex, int whiteSpace) {
-    for (int moveNodeIndex = startIndex; moveNodeIndex < nodeProjection.size(); moveNodeIndex++) {
-      nodeProjection.get(moveNodeIndex).shiftRight(-whiteSpace);
     }
   }
 
@@ -413,8 +440,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     for (ISimpleNode node : node2.getChildren()) {
       secondVisualizableChildren.add(getVisualizableNode(node));
     }
-    return firstVisualizableChildren.containsAll(
-            secondVisualizableChildren) && firstVisualizableChildren.size() == secondVisualizableChildren.size();
+    return firstVisualizableChildren.containsAll(secondVisualizableChildren) &&
+            firstVisualizableChildren.size() == secondVisualizableChildren.size();
   }
 
   protected Dimension getTreeDimension(ILayer[] layers) {
