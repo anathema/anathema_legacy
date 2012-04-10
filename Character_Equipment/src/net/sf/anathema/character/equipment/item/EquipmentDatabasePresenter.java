@@ -34,7 +34,7 @@ public class EquipmentDatabasePresenter implements Presenter {
   private final IEquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
   
-  private final String[] defaultCostBackgrounds = { "Artifact", "Resources" };
+  private final String[] defaultCostBackgrounds = { "Artifact", "Manse", "Resources" };
 
   public EquipmentDatabasePresenter(
       IResources resources,
