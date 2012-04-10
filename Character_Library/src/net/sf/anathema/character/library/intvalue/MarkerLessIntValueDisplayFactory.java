@@ -21,13 +21,12 @@ public class MarkerLessIntValueDisplayFactory implements IIntValueDisplayFactory
     this.blockedBallIcon = characterUI.getUnselectableBallResource();
   }
 
-  public IIntValueDisplay createIntValueDisplay(int maxValue, int value, IModifiableCapTrait trait) {
+  public IIntValueDisplay createIntValueDisplay(int maxValue, int value, TwoUpperBounds bounds) {
     IIntValueDisplay intValueDisplay = IntValueDisplay.createMarkerLessDisplay(
     	blockedBallIcon,
         passiveBallIcon,
         activeBallIcon,
-        trait,
-        maxValue);
+        maxValue, bounds);
     intValueDisplay.setValue(value);
     return intValueDisplay;
   }
