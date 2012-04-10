@@ -355,4 +355,14 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
       }
     }
   }
+
+	@Override
+	public String[] getAllAvailableTemplateIds() {
+		return equipmentTemplateProvider.getAllAvailableTemplateIds();
+	}
+	
+	@Override
+	public IEquipmentTemplate loadTemplate(String templateId) {
+		return equipmentTemplateProvider.loadTemplate(templateId);
+	}
 }

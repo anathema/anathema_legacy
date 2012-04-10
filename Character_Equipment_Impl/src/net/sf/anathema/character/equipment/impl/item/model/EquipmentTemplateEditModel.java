@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.impl.item.model;
 
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
@@ -29,9 +30,11 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   private final ChangeControl statsChangeControl = new ChangeControl();
   private final ChangeControl magicalMaterialControl = new ChangeControl();
   private final ChangeControl compositionControl = new ChangeControl();
+  private final ChangeControl costControl = new ChangeControl();
   private String editTemplateId;
   private MaterialComposition composition;
   private MagicalMaterial material;
+  private ItemCost cost;
 
   public EquipmentTemplateEditModel(IEquipmentDatabase database) {
     this.database = database;
@@ -51,6 +54,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     getDescription().getContent().setText(editedTemplate.getDescription());
     setMaterialComposition(editedTemplate.getComposition());
     setMagicalMaterial(editedTemplate.getMaterial());
+    setCost(editedTemplate.getCost());
     statses.clear();
     addAll(statses, editedTemplate.getStats());
     fireStatsChangedEvent();
@@ -88,7 +92,9 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     }
     return !ObjectUtilities.equals(editedTemplate.getName(),
             getDescription().getName().getText()) || !ObjectUtilities.equals(editedTemplate.getDescription(),
-            getDescription().getContent().getText()) || !(editedTemplate.getComposition() == getMaterialComposition()) || !(editedTemplate.getMaterial() == getMagicalMaterial());
+            getDescription().getContent().getText()) ||
+            !(editedTemplate.getComposition() == getMaterialComposition()) || !(editedTemplate.getMaterial() == getMagicalMaterial()) ||
+            (getCost() != null && !getCost().equals(editedTemplate.getCost()));
   }
 
   private List<IEquipmentStats> getAllPreviousStats() {
@@ -134,7 +140,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     String name = getDescription().getName().getText();
     String descriptionText = getDescription().getContent().getText();
     EquipmentTemplate template = new EquipmentTemplate(name, descriptionText, composition, material,
-            database.getCollectionFactory());
+            database.getCollectionFactory(), cost);
     for (IEquipmentStats stats : statses) {
       template.addStats(stats);
     }
@@ -149,6 +155,25 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   @Override
   public void addCompositionChangeListener(IChangeListener listener) {
     compositionControl.addChangeListener(listener);
+  }
+  
+  @Override
+  public void addCostChangeListener(IChangeListener listener) {
+    costControl.addChangeListener(listener);
+  }
+  
+  @Override
+  public void setCost(ItemCost newCost) {
+	if (newCost != null && newCost.equals(cost)) {
+		return;
+	}
+	this.cost = newCost;
+	costControl.fireChangedEvent();
+  }
+  
+  @Override
+  public ItemCost getCost() {
+	return cost;
   }
 
   @Override

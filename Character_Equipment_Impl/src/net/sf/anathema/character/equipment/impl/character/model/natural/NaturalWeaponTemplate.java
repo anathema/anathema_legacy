@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.natural;
 
+import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
@@ -32,5 +33,10 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
   @Override
   public MagicalMaterial getMaterial() {
     return null;
+  }
+  
+  @Override
+  public ItemCost getCost() {
+	return null;
   }
 }

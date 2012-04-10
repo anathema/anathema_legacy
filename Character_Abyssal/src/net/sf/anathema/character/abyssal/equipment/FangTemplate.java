@@ -1,5 +1,6 @@
 package net.sf.anathema.character.abyssal.equipment;
 
+import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.impl.character.model.RegisteredNaturalWeapon;
@@ -37,5 +38,10 @@ public class FangTemplate implements IEquipmentTemplate {
   @Override
   public IEquipmentStats[] getStats() {
     return new IEquipmentStats[]{FANG_STATS};
+  }
+  
+  @Override
+  public ItemCost getCost() {
+	return null;
   }
 }

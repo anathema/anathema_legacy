@@ -103,6 +103,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	}
 	
 	private Image getImage(String filePath) {
+		filePath = filePath.toLowerCase();
 		try {
 			Image image = imageMap.get(filePath); 
 			if (image == null) {

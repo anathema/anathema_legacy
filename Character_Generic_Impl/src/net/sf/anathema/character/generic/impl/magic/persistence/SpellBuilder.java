@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import net.sf.anathema.character.generic.impl.magic.SourceList;
 import net.sf.anathema.character.generic.impl.magic.Spell;
-import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
@@ -13,11 +12,8 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,42 +21,14 @@ public class SpellBuilder {
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
 
-  public ISpell[] getSpells() throws SpellException {
-    try {
-      List<ISpell> spellList = new ArrayList<ISpell>();
-      spellList.addAll(readSpells(getSorceryPath()));
-      spellList.addAll(readSpells(getNecromancyPath()));
-      return spellList.toArray(new ISpell[spellList.size()]);
-    } catch (DocumentException e) {
-      throw new SpellException(e);
-    } catch (PersistenceException e) {
-      throw new SpellException(e);
-    }
-  }
-
-  private String getSorceryPath() {
-    return "data/Spells_Sorcery.xml"; //$NON-NLS-1$
-  }
-
-  private String getNecromancyPath() {
-    return "data/Spells_Necromancy.xml"; //$NON-NLS-1$
-  }
-
-  private List<ISpell> readSpells(String path) throws DocumentException, PersistenceException {
-    URL spellURL = SpellBuilder.class.getClassLoader().getResource(path);
-    Document spellDocument;
-    spellDocument = new SAXReader().read(spellURL);
-    return buildSpells(spellDocument);
-  }
-
-  private List<ISpell> buildSpells(Document spellDocument) throws PersistenceException {
+  public ISpell[] buildSpells(Document spellDocument) throws PersistenceException {
     Element spellListElement = spellDocument.getRootElement();
     List<ISpell> spellList = new ArrayList<ISpell>();
     for (Object spellObject : spellListElement.elements("spell")) { //$NON-NLS-1$
       Element spellElement = (Element) spellObject;
       buildSpell(spellElement, spellList);
     }
-    return spellList;
+    return spellList.toArray(new ISpell[0]);
   }
 
   private void buildSpell(Element spellElement, List<ISpell> spellList) throws PersistenceException {

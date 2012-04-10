@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
+import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
@@ -19,13 +20,15 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   private final ICollectionFactory collectionFactory;
   private final String material;
   private final String composition;
+  private final ItemCost cost;
 
   public EquipmentTemplate(
       String name,
       String description,
       MaterialComposition composition,
       MagicalMaterial material,
-      ICollectionFactory collectionFactory) {
+      ICollectionFactory collectionFactory,
+      ItemCost cost) {
     this.name = name;
     this.description = description;
     this.composition = composition.getId();
@@ -37,6 +40,7 @@ public class EquipmentTemplate implements IEquipmentTemplate {
     }
     this.collectionFactory = collectionFactory;
     this.statsByRuleSet = collectionFactory.createHashMap();
+    this.cost = cost;
   }
 
   @Override
@@ -78,6 +82,11 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   @Override
   public MaterialComposition getComposition() {
     return MaterialComposition.valueOf(composition);
+  }
+  
+  @Override
+  public ItemCost getCost() {
+	return cost;
   }
 
   public boolean hasStats() {

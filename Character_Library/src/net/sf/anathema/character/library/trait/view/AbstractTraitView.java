@@ -1,6 +1,9 @@
 package net.sf.anathema.character.library.trait.view;
 
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.NullUpperBounds;
+import net.sf.anathema.character.library.intvalue.TraitUpperBounds;
+import net.sf.anathema.character.library.intvalue.TwoUpperBounds;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
@@ -13,22 +16,27 @@ public abstract class AbstractTraitView implements IIntValueView {
 
   public AbstractTraitView(IIntValueDisplayFactory factory, String labelText, int value, int maxValue, IModifiableCapTrait trait) {
     this.labelText = labelText;
-    this.valueDisplay = maxValue > 0 ? factory.createIntValueDisplay(maxValue, value, trait) : null;
+    TwoUpperBounds bounds = createBounds(trait);
+    this.valueDisplay = maxValue > 0 ? factory.createIntValueDisplay(maxValue, value, bounds) : null;
+  }
+
+  private TwoUpperBounds createBounds(IModifiableCapTrait trait) {
+    if (trait == null) {
+      return new NullUpperBounds();
+    }
+    return new TraitUpperBounds(trait);
   }
 
   public void setValue(int newValue) {
-	if (valueDisplay != null)
-		valueDisplay.setValue(newValue);
+    if (valueDisplay != null) valueDisplay.setValue(newValue);
   }
-  
+
   public void addIntValueChangedListener(IIntValueChangedListener listener) {
-	  if (valueDisplay != null)
-		  valueDisplay.addIntValueChangedListener(listener);
+    if (valueDisplay != null) valueDisplay.addIntValueChangedListener(listener);
   }
 
   public void removeIntValueChangedListener(IIntValueChangedListener listener) {
-	  if (valueDisplay != null)
-		  valueDisplay.removeIntValueChangedListener(listener);
+    if (valueDisplay != null) valueDisplay.removeIntValueChangedListener(listener);
   }
 
   protected String getLabelText() {
