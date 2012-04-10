@@ -239,7 +239,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   private IEquipmentItem createItem(IEquipmentTemplate template, MagicalMaterial material) {
-    EquipmentItem item = new EquipmentItem(template, material, getCharacterDataProvider(), equipmentItems);
+    EquipmentItem item = new EquipmentItem(template, null, null, material, getCharacterDataProvider(), equipmentItems);
     initItem(item);
     return item;
   }
@@ -266,6 +266,11 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     });
     item.removeChangeListener(itemChangePropagator);
     modelChangeControl.fireChangedEvent();
+  }
+  
+  @Override
+  public void updateItem(IEquipmentItem item) {
+	  modelChangeControl.fireChangedEvent();
   }
 
   @Override

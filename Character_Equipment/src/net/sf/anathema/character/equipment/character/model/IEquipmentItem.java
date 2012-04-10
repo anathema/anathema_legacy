@@ -8,9 +8,15 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IEquipmentItem {
 
+  String getTitle();
+  
+  String getDescription();
+	
   String getTemplateId();
 
-  String getDescription();
+  String getBaseDescription();
+  
+  void setPersonalization(String title, String description);
 
   IEquipmentStats[] getStats();
   

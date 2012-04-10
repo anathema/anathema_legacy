@@ -36,7 +36,7 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
       if (isInArsenalOrPanopoly(item)) {
         continue;
       }
-      String possession = item.getTemplateId();
+      String possession = item.getTitle();
       if (item.getMaterialComposition() == MaterialComposition.Fixed ||
     	  item.getMaterialComposition() == MaterialComposition.Variable) {
     	  possession += " (" + item.getMaterial().getId() + ")";

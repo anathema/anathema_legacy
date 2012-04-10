@@ -36,8 +36,14 @@ public class EquipmentItem implements IEquipmentItem {
   private final IEquipmentTemplate template;
   private final MagicalMaterial material;
   private final ModifierFactory modifiers;
+  private String customTitle;
+  private String customDescription;
 
-  public EquipmentItem(IEquipmentTemplate template, MagicalMaterial material, ItemAttunementEvaluator provider,
+  public EquipmentItem(IEquipmentTemplate template,
+		  			   String title,
+		  			   String description,
+		  			   MagicalMaterial material,
+		  			   ItemAttunementEvaluator provider,
                        ModifierFactory modifiers) {
     this.modifiers = modifiers;
     if (template.getComposition() == Variable && material == null) {
@@ -45,6 +51,8 @@ public class EquipmentItem implements IEquipmentItem {
     }
     this.template = template;
     this.material = material != null ? material : template.getMaterial();
+    this.customTitle = title;
+    this.customDescription = description;
     Collections.addAll(printedStats, template.getStats());
     initPrintStats(provider);
   }
@@ -71,10 +79,20 @@ public class EquipmentItem implements IEquipmentItem {
     }
     return false;
   }
-
+  
   @Override
   public String getDescription() {
+    return customDescription != null ? customDescription : getBaseDescription();
+  }
+
+  @Override
+  public String getBaseDescription() {
     return template.getDescription();
+  }
+  
+  public void setPersonalization(String title, String description) {
+	  this.customTitle = title != null && !title.isEmpty() ? title : null;
+	  this.customDescription = description != null && !description.isEmpty() ? description : null;
   }
 
   @Override
@@ -94,6 +112,11 @@ public class EquipmentItem implements IEquipmentItem {
       }
     }
     return views.toArray(new IEquipmentStats[views.size()]);
+  }
+  
+  @Override
+  public String getTitle() {
+    return customTitle != null ? customTitle : getTemplateId();
   }
 
   @Override

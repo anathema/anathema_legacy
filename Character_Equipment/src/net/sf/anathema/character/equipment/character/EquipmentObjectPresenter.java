@@ -52,11 +52,12 @@ public class EquipmentObjectPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    String itemTitle = model.getTemplateId();
+    String itemTitle = model.getTitle();
+    boolean customTitle = !model.getTemplateId().equals(itemTitle);
     if (resources.supportsKey(EQUIPMENT_NAME_PREFIX + itemTitle)) {
       itemTitle = resources.getString(EQUIPMENT_NAME_PREFIX + itemTitle);
     }
-    if (model.getMaterialComposition() == MaterialComposition.Variable) {
+    if (!customTitle && model.getMaterialComposition() == MaterialComposition.Variable) {
       String materialString = resources.getString("MagicMaterial." + model.getMaterial().name()); //$NON-NLS-1$
       itemTitle += " (" + materialString + ")"; //$NON-NLS-1$ //$NON-NLS-2$
     }

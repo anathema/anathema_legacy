@@ -37,6 +37,10 @@ public class DummyEquipmentObject extends AbstractStats implements IEquipmentIte
   public String getDescription() {
     return description;
   }
+  
+  public void setPersonalization(String title, String description) {
+	  // nothing to do
+  }
 
   public void setPrintEnabled(IEquipmentStats equipment, boolean enabled) {
     //nothing to do;    
@@ -87,5 +91,15 @@ public class DummyEquipmentObject extends AbstractStats implements IEquipmentIte
   @Override
   public boolean representsItemForUseInCombat() {
     return false;
+  }
+
+  @Override
+  public String getBaseDescription() {
+	return getDescription();
+  }
+
+  @Override
+  public String getTitle() {
+	return getTemplateId();
   }
 }

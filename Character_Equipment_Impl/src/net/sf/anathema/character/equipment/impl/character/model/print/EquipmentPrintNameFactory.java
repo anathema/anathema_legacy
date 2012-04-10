@@ -19,7 +19,7 @@ public class EquipmentPrintNameFactory {
   }
 
   public String create(IEquipmentItem item, IWeaponStats stats) {
-    StringBuilder builder = new StringBuilder(item.getTemplateId());
+    StringBuilder builder = new StringBuilder(item.getTitle());
     if (item.getStats().length == 1) {
       return builder.toString();
     }

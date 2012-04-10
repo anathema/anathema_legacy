@@ -41,6 +41,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
 	  taskGroup.removeAll();
 	  boxes.clear();
 	  boxPanels.clear();
+	  taskGroup.add(descriptionLabel);
   }
 
   public BooleanModel addStats(String description) {

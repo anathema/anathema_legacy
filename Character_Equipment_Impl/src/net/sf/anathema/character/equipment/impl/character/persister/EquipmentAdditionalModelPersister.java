@@ -25,6 +25,8 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
   private static final String TAG_TEMPLATE_ID = "templateId"; //$NON-NLS-1$
   private static final String TAG_PRINT_STATS = "printedStats"; //$NON-NLS-1$
   private static final String TAG_SPECIALTY_OPTION = "specialty"; //$NON-NLS-1$
+  private static final String TAG_CUSTOM_TITLE = "customTitle"; //$NON-NLS-1$
+  private static final String TAG_CUSTOM_DESCRIPTION = "customDescription"; //$NON-NLS-1$
   private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
   private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
   private static final String TAG_MATERIAL = "material"; //$NON-NLS-1$
@@ -45,6 +47,12 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
     for (IEquipmentItem item : equipmentItems) {
       Element itemElement = parent.addElement(TAG_ITEM);
       itemElement.addElement(TAG_TEMPLATE_ID).addCDATA(item.getTemplateId());
+      if (!item.getTemplateId().equals(item.getTitle())) {
+    	  itemElement.addElement(TAG_CUSTOM_TITLE).addCDATA(item.getTitle());
+      }
+      if (!item.getBaseDescription().equals(item.getDescription())) {
+    	  itemElement.addElement(TAG_CUSTOM_DESCRIPTION).addCDATA(item.getDescription());
+      }
       if (item.getMaterialComposition() == MaterialComposition.Variable) {
         itemElement.addElement(TAG_MATERIAL).addCDATA(item.getMaterial().name());
       }
@@ -67,6 +75,8 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
     IEquipmentAdditionalModel equipmentModel = (EquipmentAdditionalModel) model;
     for (Element itemElement : ElementUtilities.elements(parent, TAG_ITEM)) {
       String templateId = itemElement.elementText(TAG_TEMPLATE_ID);
+      String title = itemElement.elementText(TAG_CUSTOM_TITLE);
+      String description = itemElement.elementText(TAG_CUSTOM_DESCRIPTION);
       MagicalMaterial magicalMaterial = null;
       Element magicalMaterialElement = itemElement.element(TAG_MATERIAL);
       if (magicalMaterialElement != null) {
@@ -85,6 +95,7 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
                 MessageType.WARNING, templateId);
         continue;
       }
+      item.setPersonalization(title, description);
       item.setUnprinted();
       for (Element statsElement : ElementUtilities.elements(itemElement, TAG_PRINT_STATS)) {
         String printedStatId = statsElement.getText().trim();

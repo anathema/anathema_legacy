@@ -22,6 +22,8 @@ public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentI
   IEquipmentPrintModel getPrintModel();
 
   IEquipmentCharacterDataProvider getCharacterDataProvider();
+  
+  void updateItem(IEquipmentItem item);
 
   void refreshItems();
 
