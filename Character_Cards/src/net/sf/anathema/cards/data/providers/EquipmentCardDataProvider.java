@@ -38,10 +38,20 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
 				getCharacterContext().getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
 		List<ICardData> data = new ArrayList<ICardData>();
 		for (IEquipmentItem item : model.getEquipmentItems()) {
-			String title = item.getTemplateId();
+			String title = item.getTitle();
 			Paragraph headerText = new Paragraph();
+			if (hasCustomTitle(item)) {
+				headerText.add(new Phrase(item.getTemplateId(), resourceProvider.getNormalFont()));
+			}
 			if (item.getMaterialComposition() == MaterialComposition.Variable) {
-				headerText.add(new Phrase(item.getMaterial().getId(), resourceProvider.getNormalFont()));
+				String itemMaterial = "";
+				if (hasCustomTitle(item)) itemMaterial += " (";
+				itemMaterial += item.getMaterial().getId();
+				if (hasCustomTitle(item)) itemMaterial += ")\n";
+				headerText.add(new Phrase(itemMaterial, resourceProvider.getNormalFont()));
+			}
+			if (item.getCost() != null) {
+				headerText.add(new Phrase(item.getCost().toString(), resourceProvider.getNormalFont()));
 			}
 			
 			List<Phrase> bodyText = new ArrayList<Phrase>();
@@ -73,6 +83,10 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
 					resourceProvider.getNullIcon()));
 		}
 		return data.toArray(new ICardData[0]);
+	}
+	
+	private boolean hasCustomTitle(IEquipmentItem item) {
+		return !item.getTemplateId().equals(item.getTitle());
 	}
 
 }

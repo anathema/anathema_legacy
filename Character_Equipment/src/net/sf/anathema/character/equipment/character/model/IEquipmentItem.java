@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.character.model;
 
+import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
@@ -17,6 +18,8 @@ public interface IEquipmentItem {
   String getBaseDescription();
   
   void setPersonalization(String title, String description);
+  
+  ItemCost getCost();
 
   IEquipmentStats[] getStats();
   

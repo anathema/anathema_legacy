@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
 import net.disy.commons.core.util.ITransformer;
+import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.ItemAttunementEvaluator;
@@ -90,9 +91,15 @@ public class EquipmentItem implements IEquipmentItem {
     return template.getDescription();
   }
   
+  @Override
   public void setPersonalization(String title, String description) {
 	  this.customTitle = title != null && !title.isEmpty() ? title : null;
 	  this.customDescription = description != null && !description.isEmpty() ? description : null;
+  }
+  
+  @Override
+  public ItemCost getCost() {
+	  return template.getCost();
   }
 
   @Override

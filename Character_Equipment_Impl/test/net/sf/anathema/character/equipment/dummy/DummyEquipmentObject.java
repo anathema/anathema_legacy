@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.dummy;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
@@ -36,6 +37,10 @@ public class DummyEquipmentObject extends AbstractStats implements IEquipmentIte
   
   public String getDescription() {
     return description;
+  }
+  
+  public ItemCost getCost() {
+	return null;
   }
   
   public void setPersonalization(String title, String description) {
