@@ -21,6 +21,7 @@ public class PrerequisiteEntryView implements IPrerequisitesEntryView {
     this.factory = factory;
   }
 
+  @Override
   public ISelectableIntValueView<IIdentificate> addSelectablePrerequisiteView(String string, IIdentificate[] traits, int initial, int max) {
     content.add(new JLabel(string));
     ISelectableIntValueView<IIdentificate> view = new SelectableIntValueView<IIdentificate>(factory, initial, max);
@@ -29,6 +30,7 @@ public class PrerequisiteEntryView implements IPrerequisitesEntryView {
     return view;
   }
 
+  @Override
   public IIntValueView addEssencePrerequisiteView(String label, int minimum, int maximum) {
     content.add(new JLabel(label));
     content.add(new JLabel());
@@ -37,14 +39,17 @@ public class PrerequisiteEntryView implements IPrerequisitesEntryView {
     return display;
   }
 
+  @Override
   public JComponent getContent() {
     return content;
   }
 
+  @Override
   public void requestFocus() {
     // Nothing to do
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }

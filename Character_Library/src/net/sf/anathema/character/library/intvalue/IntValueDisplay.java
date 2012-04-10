@@ -8,10 +8,14 @@ import net.sf.anathema.framework.value.RectangleMarkerPanel;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
 import java.awt.event.MouseEvent;
@@ -21,12 +25,12 @@ import java.util.List;
 
 public class IntValueDisplay implements IIntValueDisplay {
 
-  public static IIntValueDisplay createMarkerDisplay(Icon blockedIcon, Icon passiveIcon, Icon activeIcon, int maxValue, TwoUpperBounds bounds) {
-    return new IntValueDisplay(blockedIcon, passiveIcon, activeIcon, maxValue, new RectangleMarkerPanel(), bounds);
+  public static IIntValueDisplay createMarkerDisplay(int maxValue, TwoUpperBounds bounds, IntValueDisplayGraphics graphics) {
+    return new IntValueDisplay(maxValue, new RectangleMarkerPanel(), bounds, graphics);
   }
 
-  public static IIntValueDisplay createMarkerLessDisplay(Icon blockedIcon, Icon passiveIcon, Icon activeIcon, int maxValue, TwoUpperBounds bounds) {
-    return new IntValueDisplay(blockedIcon, passiveIcon, activeIcon, maxValue, new NoMarkerPanel(), bounds);
+  public static IIntValueDisplay createMarkerLessDisplay(int maxValue, TwoUpperBounds bounds, IntValueDisplayGraphics graphics) {
+    return new IntValueDisplay(maxValue, new NoMarkerPanel(), bounds, graphics);
   }
 
   private int currentValue;
@@ -63,10 +67,10 @@ public class IntValueDisplay implements IIntValueDisplay {
     }
   };
 
-  private IntValueDisplay(Icon blockedIcon, Icon passiveIcon, Icon activeIcon, int maxValue, AbstractMarkerPanel panel, TwoUpperBounds bounds) {
-    this.activeImage = activeIcon;
-    this.passiveImage = passiveIcon;
-    this.blockedImage = blockedIcon;
+  private IntValueDisplay(int maxValue, AbstractMarkerPanel panel, TwoUpperBounds bounds, IntValueDisplayGraphics graphics) {
+    this.activeImage = graphics.getActiveIcon();
+    this.passiveImage = graphics.getPassiveIcon();
+    this.blockedImage = graphics.getBlockedIcon();
     this.panel = panel;
     this.naturalMaximum = maxValue;
     this.modifiedMaximum = maxValue;
@@ -78,7 +82,7 @@ public class IntValueDisplay implements IIntValueDisplay {
     panel.addMouseMotionListener(mouseListener);
     ImageIcon active = (ImageIcon) activeImage;
     ImageIcon passive = (ImageIcon) passiveImage;
-    capExceededImage = new ImageIcon(createImage(active.getImage(), passive.getImage()));
+    this.capExceededImage = new ImageIcon(createImage(active.getImage(), passive.getImage()));
 
     getComponent().addHierarchyListener(new HierarchyListener() {
       @Override
@@ -97,7 +101,6 @@ public class IntValueDisplay implements IIntValueDisplay {
     final int width = activeTop.getWidth();
     int[] imgData = new int[width];
     int[] maskData = new int[width];
-
     for (int y = 0; y < activeTop.getHeight(); y++) {
       activeTop.getRGB(0, y, width, 1, imgData, 0, 1);
       passiveTop.getRGB(0, y, width, 1, maskData, 0, 1);
@@ -109,7 +112,6 @@ public class IntValueDisplay implements IIntValueDisplay {
       }
       activeTop.setRGB(0, y, width, 1, imgData, 0, 1);
     }
-
     return activeTop;
   }
 
@@ -135,10 +137,12 @@ public class IntValueDisplay implements IIntValueDisplay {
     panel.revalidate();
   }
 
+  @Override
   public void addIntValueChangedListener(IIntValueChangedListener listener) {
     valueControl.addIntValueChangeListener(listener);
   }
 
+  @Override
   public void removeIntValueChangedListener(IIntValueChangedListener listener) {
     valueControl.removeIntValueChangeListener(listener);
   }
@@ -174,6 +178,7 @@ public class IntValueDisplay implements IIntValueDisplay {
     }
   }
 
+  @Override
   public void setValue(int value) {
     currentValue = value;
     for (int imageIndex = 0; imageIndex < value; imageIndex++) {
@@ -185,6 +190,7 @@ public class IntValueDisplay implements IIntValueDisplay {
     fireValueChangedEvent(value);
   }
 
+  @Override
   public JComponent getComponent() {
     return panel;
   }
@@ -197,6 +203,7 @@ public class IntValueDisplay implements IIntValueDisplay {
     valueControl.fireValueChangedEvent(value);
   }
 
+  @Override
   public void setMaximum(int maximalValue) {
     initializeLabels(maximalValue);
   }

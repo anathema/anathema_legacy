@@ -18,6 +18,7 @@ public class GroupedFavorableTraitViewFactory implements IGroupedFavorableTraitV
     this.intValueDisplayFactoryWithoutMarker = intValueDisplayFactoryWithoutMarker;
   }
 
+  @Override
   public IGroupedFavorableTraitConfigurationView createView(int columnCount) {
     return new GroupedFavorableTraitConfigurationView(
         new JPanel(),

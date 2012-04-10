@@ -11,8 +11,7 @@ import net.sf.anathema.character.impl.module.repository.CharacterCreationWizardP
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.impl.view.CharacterView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
-import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
-import net.sf.anathema.character.library.intvalue.MarkerLessIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -69,9 +68,10 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
           return characterView;
         }
         ICharacterType characterType = character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType();
-        IIntValueDisplayFactory intValueDisplayFactory = new MarkerIntValueDisplayFactory(resources, characterType);
-        IIntValueDisplayFactory markerLessIntValueDisplayFactory = new MarkerLessIntValueDisplayFactory(resources,
-                characterType);
+        IIntValueDisplayFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
+                resources, characterType);
+        IIntValueDisplayFactory markerLessIntValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(
+                resources, characterType);
         final Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
         ICharacterView characterView = new CharacterView(intValueDisplayFactory, printName, typeIcon,
                 markerLessIntValueDisplayFactory);

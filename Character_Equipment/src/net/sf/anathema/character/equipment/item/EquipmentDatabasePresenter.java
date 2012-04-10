@@ -13,7 +13,7 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManageme
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -43,6 +43,7 @@ public class EquipmentDatabasePresenter implements Presenter {
     this.view = view;
   }
 
+  @Override
   public void initPresentation() {
     new EquipmentTemplateListPresenter(resources, model, view).initPresentation();
     addEditTemplateActions();
@@ -79,11 +80,13 @@ public class EquipmentDatabasePresenter implements Presenter {
         MagicalMaterial.values());
     panelBuilder.addDialogComponent(new IDialogComponent() {
 
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         compositionView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
         materialView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
       }
 
+      @Override
       public int getColumnCount() {
         return 4;
       }
@@ -98,24 +101,28 @@ public class EquipmentDatabasePresenter implements Presenter {
     });
     final CostSelectionView costView = new CostSelectionView(
             getColonString("Equipment.Creation.Basics.Cost"), //$NON-NLS-1$
-            backgrounds,
-            new MarkerIntValueDisplayFactory(resources, CharacterType.MORTAL));
+            backgrounds, IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
+            CharacterType.MORTAL));
     panelBuilder.addDialogComponent(new IDialogComponent() {
 
+        @Override
         public void fillInto(JPanel panel, int columnCount) {
           costView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
         }
 
+        @Override
         public int getColumnCount() {
           return 4;
         }
       });
     compositionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<MaterialComposition>() {
+      @Override
       public void valueChanged(MaterialComposition newValue) {
         model.getTemplateEditModel().setMaterialComposition(newValue);
       }
     });
     model.getTemplateEditModel().addCompositionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         MaterialComposition materialComposition = model.getTemplateEditModel().getMaterialComposition();
         compositionView.setSelectedObject(materialComposition);
@@ -123,17 +130,20 @@ public class EquipmentDatabasePresenter implements Presenter {
       }
     });
     materialView.addObjectSelectionChangedListener(new IObjectValueChangedListener<MagicalMaterial>() {
+      @Override
       public void valueChanged(MagicalMaterial newValue) {
         model.getTemplateEditModel().setMagicalMaterial(newValue);
       }
     });
     model.getTemplateEditModel().addMagicalMaterialChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         materialView.setSelectedObject(model.getTemplateEditModel().getMagicalMaterial());
       }
     });
     costView.addSelectionChangedListener(new ISelectionIntValueChangedListener<String>() {
-  	  public void valueChanged(String selection, int value) {
+  	  @Override
+        public void valueChanged(String selection, int value) {
   		ItemCost cost = selection == null ? null : new ItemCost(selection, value);
   		ItemCost currentModelCost = model.getTemplateEditModel().getCost();
   		if ((cost == null && currentModelCost != null) ||

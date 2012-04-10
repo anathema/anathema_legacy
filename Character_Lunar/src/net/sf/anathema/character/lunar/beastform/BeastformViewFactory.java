@@ -3,7 +3,8 @@ package net.sf.anathema.character.lunar.beastform;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
@@ -20,7 +21,8 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
 
   @Override
   public IView createView(IAdditionalModel model, final IResources resources, ICharacterType type) {
-    MarkerIntValueDisplayFactory intValueDisplayFactory = new MarkerIntValueDisplayFactory(resources, type);
+    IIntValueDisplayFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
+            resources, type);
     SecondEditionBeastformModel secondmodel = (SecondEditionBeastformModel) model;
     IBeastformViewProperties properties = new SecondEditionBeastformViewProperties(resources, secondmodel);
     IBeastformView view = new SecondEditionBeastformView(intValueDisplayFactory, properties);
