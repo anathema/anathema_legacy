@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
+import static java.text.MessageFormat.format;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -7,9 +8,12 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
+import net.sf.anathema.initialization.IExtensibleDataSetCompiler;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
+import net.sf.anathema.lib.resources.IExtensibleDataSet;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 import org.dom4j.Document;
@@ -21,43 +25,72 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class CharmCompiler {
+@ExtensibleDataSetCompiler
+public class CharmCompiler implements IExtensibleDataSetCompiler {
+  private static final String Charm_File_Recognition_Pattern = "Charms.*\\.xml";
+  //matches stuff like data/charms/solar/Charms_Solar_SecondEdition_Occult.xml
+  //the pattern is data/charms/REST_OF_PATH/Charms_TYPE_EDITION_ANYTHING.xml
+  private static final String Charm_Data_Extraction_Pattern = ".*/Charms_(.*?)_(.*?)(?:_.*)?\\.xml";
   private final Map<IIdentificate, List<Document>> charmFileTable = new HashMap<IIdentificate, List<Document>>();
+  private final IIdentificateRegistry<IIdentificate> registry = new IdentificateRegistry<IIdentificate>();
   private final CharmSetBuilder setBuilder = new CharmSetBuilder();
   private final GenericCharmSetBuilder genericBuilder = new GenericCharmSetBuilder();
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
   private final CharmRenameBuilder renameBuilder = new CharmRenameBuilder();
-  private final IIdentificateRegistry<IIdentificate> registry = new IdentificateRegistry<IIdentificate>();
   private final SAXReader reader = new SAXReader();
   private final CharmCache charmCache;
 
-  public CharmCompiler(CharmCache charmCache) {
-    this.charmCache = charmCache;
-    for (CharacterType characterType : CharacterType.values()) {
-      registry.add(new Identificate(characterType.getId()));
-    }
+  public CharmCompiler() {
+	  charmCache = new CharmCache();
+  }
+  
+  @Override
+  public String getName() {
+  	return "Charms"; 
+  }
+  
+  @Override
+  public String getRecognitionPattern() {
+  	return Charm_File_Recognition_Pattern;
+  }
+  
+  @Override
+  public String getSplashStatusString() {
+  	return "Compiling Charm Sets...";
+  }
+  
+  public void registerFile(String filePath) throws Exception {
+	  Matcher matcher = Pattern.compile(Charm_Data_Extraction_Pattern).matcher(filePath);
+      matcher.matches();
+      String typeString = matcher.group(1);
+      String ruleString = matcher.group(2);
+      
+      URL resource = getClass().getClassLoader().getResource(filePath);
+      if (resource == null) {
+        throw new Exception(format("No resource found at {0} for {1}, {2}.", filePath, typeString, ruleString));
+      }
+      
+      IIdentificate type = new Identificate(typeString);
+	  if (!registry.idRegistered(typeString)) {
+	    registry.add(type);
+	  }
+	  List<Document> list = charmFileTable.get(type);
+	  if (list == null) {
+	    list = new ArrayList<Document>();
+	    charmFileTable.put(type, list);
+	  }
+	  try {
+	    list.add(reader.read(resource));
+	  } catch (DocumentException e) {
+	    throw new CharmException(resource.toExternalForm(), e);
+	  }
   }
 
-  public void registerCharmFile(String typeString, URL resource) throws CharmException {
-    IIdentificate type = new Identificate(typeString);
-    if (!registry.idRegistered(typeString)) {
-      registry.add(type);
-    }
-    List<Document> list = charmFileTable.get(type);
-    if (list == null) {
-      list = new ArrayList<Document>();
-      charmFileTable.put(type, list);
-    }
-    try {
-      list.add(reader.read(resource));
-    } catch (DocumentException e) {
-      throw new CharmException(resource.toExternalForm(), e);
-    }
-  }
-
-  public void buildCharms() throws PersistenceException {
+  public IExtensibleDataSet build() throws PersistenceException {
     for (IIdentificate type : registry.getAll()) {
       buildStandardCharms(type);
       buildGenericCharms(type);
@@ -66,6 +99,8 @@ public class CharmCompiler {
       buildCharmRenames(type);
     }
     extractParents(charmCache.getCharms());
+    
+    return charmCache;
   }
 
   private void buildStandardCharms(IIdentificate type) throws PersistenceException {
