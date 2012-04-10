@@ -1,7 +1,7 @@
-package net.sf.anathema.character.library.intvalue;
+package net.sf.anathema.character.generic.framework.resources;
 
-import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.framework.value.IntValueDisplayGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;

@@ -3,7 +3,7 @@ package net.sf.anathema.character.lunar.beastform;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.lunar.beastform.model.SecondEditionBeastformModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;

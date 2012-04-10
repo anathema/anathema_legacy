@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.lib.control.change.ChangeControl;
@@ -48,6 +48,7 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
     panel.add(specialtyLabel, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(getValueDisplay().getComponent());
     deleteButton = new JButton(new AbstractAction(null, deleteIcon) {
+      @Override
       public void actionPerformed(ActionEvent e) {
         fireDeletionPerformed();
       }
@@ -57,6 +58,7 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
     panel.revalidate();
   }
 
+  @Override
   public void addDeleteListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
@@ -65,6 +67,7 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
     control.fireChangedEvent();
   }
 
+  @Override
   public void delete() {
     traitPanel.remove(abilityLabel);
     traitPanel.remove(separatorLabel);
@@ -75,6 +78,7 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
     traitPanel.repaint();
   }
 
+  @Override
   public void setDeleteButtonEnabled(boolean enabled) {
     deleteButton.setEnabled(enabled);
   }

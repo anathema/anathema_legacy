@@ -8,7 +8,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronView;
 import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronViewProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
@@ -28,10 +28,12 @@ public class InfernalPatronView implements IView, IInfernalPatronView {
     this.properties = properties;
   }
 
+  @Override
   public void startGroup(String groupLabel) {
     groupedTraitView.startNewGroup(groupLabel);
   }
 
+  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = new JPanel(new GridDialogLayout(1, false));
@@ -42,6 +44,7 @@ public class InfernalPatronView implements IView, IInfernalPatronView {
     return content;
   }
 
+  @Override
   public IToggleButtonTraitView<SimpleTraitView> addIntValueView(
       String label,
       IIntValueDisplayFactory factory,
@@ -50,10 +53,12 @@ public class InfernalPatronView implements IView, IInfernalPatronView {
     return groupedTraitView.addTraitView(label, 0, 0, null, selected, viewProperties, factory);
   }
 
+  @Override
   public IOverviewCategory createOverview(String borderLabel) {
     return new OverviewCategory(overviewPanel, borderLabel, false);
   }
 
+  @Override
   public void setOverview(IOverviewCategory overview) {
     overviewPanel.removeAll();
     overviewPanel.add(overview.getComponent());

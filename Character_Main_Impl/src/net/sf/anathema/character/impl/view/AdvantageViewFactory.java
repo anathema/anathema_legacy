@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.view;
 
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 
@@ -12,6 +12,7 @@ public class AdvantageViewFactory implements IAdvantageViewFactory {
     this.intValueDisplayFactory = intValueDisplayFactory;
   }
 
+  @Override
   public IBasicAdvantageView createBasicAdvantageView() {
     return new BasicAdvantageView(intValueDisplayFactory);
   }

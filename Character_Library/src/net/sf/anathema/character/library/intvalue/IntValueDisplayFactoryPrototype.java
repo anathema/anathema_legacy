@@ -1,6 +1,10 @@
 package net.sf.anathema.character.library.intvalue;
 
+import net.sf.anathema.character.generic.framework.resources.CharacterIntValueGraphics;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
+import net.sf.anathema.framework.value.MarkerLessIntValueDisplayFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 public class IntValueDisplayFactoryPrototype {

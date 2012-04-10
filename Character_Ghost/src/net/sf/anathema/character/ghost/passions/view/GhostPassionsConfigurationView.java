@@ -10,7 +10,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
@@ -30,6 +30,7 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
     this.factory = factory;
   }
 
+  @Override
   public IButtonControlledComboEditView<ITraitReference> addPassionSelectionView(
       String labelText,
       ListCellRenderer renderer,
@@ -41,6 +42,7 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
     return objectSelectionView;
   }
   
+  @Override
   public IPassionView addPassionView(
 	      String virtueName,
 	      String passionName,
@@ -53,6 +55,7 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
 	    return passionView;
 	  }
 
+  @Override
   public JComponent getComponent() {
     GridDialogLayoutData data = GridDialogLayoutDataFactory.createFillNoGrab();
     data.setGrabExcessVerticalSpace(true);
@@ -62,16 +65,19 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
     return mainPanel;
   }
   
+  @Override
   public IOverviewCategory createOverview(String borderLabel) {
 	    return new OverviewCategory(overviewPanel, borderLabel, false);
 	  }
 
-	  public void setOverview(IOverviewCategory overview) {
+	  @Override
+      public void setOverview(IOverviewCategory overview) {
 	    overviewPanel.removeAll();
 	    overviewPanel.add(overview.getComponent());
 	  }
 	  
-	  public void removeControls()
+	  @Override
+      public void removeControls()
 	  {
 		  if (objectSelectionView != null)
 			  passionPanel.remove(objectSelectionView.getComponent());

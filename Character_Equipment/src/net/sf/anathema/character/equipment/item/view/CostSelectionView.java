@@ -5,9 +5,9 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.equipment.ItemCost;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
-import net.sf.anathema.character.library.selection.ISelectableIntValueView;
-import net.sf.anathema.character.library.selection.SelectableIntValueView;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.character.generic.framework.intvalue.ISelectableIntValueView;
+import net.sf.anathema.character.generic.framework.intvalue.SelectableIntValueView;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 
 public class CostSelectionView {

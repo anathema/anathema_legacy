@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 
 public class SimpleTraitView extends AbstractTraitView implements ITraitView<SimpleTraitView> {
@@ -63,6 +63,7 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
     this.labelAlignment = labelAlignment;
   }
 
+  @Override
   public void addComponents(JPanel panel) {
     this.traitViewPanel = panel;
     if (label != null)
@@ -79,12 +80,14 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
     	panel.add(displayComponent, data);
   }
 
+  @Override
   public void delete() {
     traitViewPanel.remove(label);
     traitViewPanel.remove(displayComponent);
     traitViewPanel.revalidate();
   }
 
+  @Override
   public SimpleTraitView getInnerView() {
     return this;
   }

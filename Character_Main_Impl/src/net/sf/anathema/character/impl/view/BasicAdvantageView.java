@@ -16,7 +16,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.impl.view.advantage.BackgroundSelectionView;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
@@ -76,18 +76,21 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     return panel;
   }
 
+  @Override
   public IIntValueView addVirtue(String labelText, int value, int maxValue) {
     SimpleTraitView virtueView = new SimpleTraitView(guiConfiguration, labelText, value, maxValue);
     virtueView.addComponents(virtuePanel);
     return virtueView;
   }
 
+  @Override
   public IIntValueView addWillpower(String labelText, int value, int maxValue) {
     SimpleTraitView willpowerView = new SimpleTraitView(guiConfiguration, labelText, value, maxValue);
     willpowerView.addComponents(willpowerPanel);
     return willpowerView;
   }
 
+  @Override
   public IButtonControlledComboEditView<Object> addBackgroundSelectionView(
 	      String labelText,
 	      ListCellRenderer backgroundRenderer,
@@ -102,6 +105,7 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
 	    return objectSelectionView;
 	  }
 
+  @Override
   public IRemovableTraitView<SimpleTraitView> addBackgroundView(
       Icon deleteIcon,
       String labelText,
@@ -115,14 +119,17 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     return backgroundView;
   }
 
+  @Override
   public IIntValueView addEssenceView(String labelText, int value, int maxValue, IModifiableCapTrait trait) {
     return essencePanelView.addEssenceView(labelText, value, maxValue, trait);
   }
 
+  @Override
   public IValueView<String> addPoolView(String labelText, String value) {
     return essencePanelView.addPoolView(labelText, value);
   }
 
+  @Override
   public void setBackgroundPanelEnabled(boolean enabled) {
     GuiUtilities.setEnabled(backgroundPanel, enabled);
   }

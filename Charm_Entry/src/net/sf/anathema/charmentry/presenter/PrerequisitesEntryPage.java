@@ -5,7 +5,7 @@ import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.selection.ISelectableIntValueView;
+import net.sf.anathema.character.generic.framework.intvalue.ISelectableIntValueView;
 import net.sf.anathema.charmentry.module.ICharmEntryViewFactory;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;

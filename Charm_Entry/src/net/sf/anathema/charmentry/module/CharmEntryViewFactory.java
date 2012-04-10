@@ -1,7 +1,7 @@
 package net.sf.anathema.charmentry.module;
 
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.charmentry.presenter.view.IAmountDurationEntryView;
 import net.sf.anathema.charmentry.presenter.view.ICharmTypeEntryView;

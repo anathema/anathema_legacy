@@ -1,4 +1,4 @@
-package net.sf.anathema.character.library.intvalue;
+package net.sf.anathema.framework.value;
 
 import javax.swing.Icon;
 

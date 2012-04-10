@@ -2,7 +2,7 @@ package net.sf.anathema.character.sidereal.colleges.presenter;
 
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 
 public interface ISiderealCollegeView {

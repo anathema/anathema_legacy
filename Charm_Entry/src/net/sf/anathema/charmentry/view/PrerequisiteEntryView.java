@@ -1,10 +1,10 @@
 package net.sf.anathema.charmentry.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
-import net.sf.anathema.character.library.intvalue.NullUpperBounds;
-import net.sf.anathema.character.library.selection.ISelectableIntValueView;
-import net.sf.anathema.character.library.selection.SelectableIntValueView;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.NullUpperBounds;
+import net.sf.anathema.character.generic.framework.intvalue.ISelectableIntValueView;
+import net.sf.anathema.character.generic.framework.intvalue.SelectableIntValueView;
 import net.sf.anathema.charmentry.presenter.view.IPrerequisitesEntryView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
