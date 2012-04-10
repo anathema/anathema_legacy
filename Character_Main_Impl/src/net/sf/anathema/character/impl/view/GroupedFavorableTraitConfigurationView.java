@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.view;
 import javax.swing.JComponent;
 
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.GroupedTraitView;
@@ -33,6 +33,7 @@ public class GroupedFavorableTraitConfigurationView implements IGroupedFavorable
     return parent;
   }
 
+  @Override
   public IToggleButtonTraitView<SimpleTraitView> addTraitView(
       String labelText,
       int value,
@@ -43,6 +44,7 @@ public class GroupedFavorableTraitConfigurationView implements IGroupedFavorable
     return groupedTraitView.addTraitView(labelText, value, maxValue, trait, selected, properties, markerIntValueDisplayFactory);
   }
 
+  @Override
   public IToggleButtonTraitView< ? > addMarkerLessTraitView(
       String labelText,
       int value,
@@ -60,6 +62,7 @@ public class GroupedFavorableTraitConfigurationView implements IGroupedFavorable
         markerLessIntValueDisplayFactory);
   }
 
+  @Override
   public void startNewTraitGroup(String groupLabel) {
     groupedTraitView.startNewGroup(groupLabel);
   }

@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -42,7 +42,8 @@ public class FetterView extends AbstractTraitView implements IFetterView {
     deleteButton = new JButton(new AbstractAction(null, deleteIcon) {
 		private static final long serialVersionUID = 1L;
 
-		public void actionPerformed(ActionEvent e) {
+		@Override
+        public void actionPerformed(ActionEvent e) {
 	        fireDeletionPerformed();
 	      }
     });
@@ -51,6 +52,7 @@ public class FetterView extends AbstractTraitView implements IFetterView {
     panel.revalidate();
   }
 
+  @Override
   public void addDeleteListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
@@ -59,6 +61,7 @@ public class FetterView extends AbstractTraitView implements IFetterView {
     control.fireChangedEvent();
   }
 
+  @Override
   public void delete() {
     traitPanel.remove(fetterLabel);
     traitPanel.remove(getValueDisplay().getComponent());
@@ -67,6 +70,7 @@ public class FetterView extends AbstractTraitView implements IFetterView {
     traitPanel.repaint();
   }
 
+  @Override
   public void setDeleteButtonEnabled(boolean enabled) {
     deleteButton.setEnabled(enabled);
   }

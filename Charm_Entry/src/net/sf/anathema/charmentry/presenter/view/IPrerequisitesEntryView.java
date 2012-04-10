@@ -1,7 +1,7 @@
 package net.sf.anathema.charmentry.presenter.view;
 
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.sf.anathema.character.library.selection.ISelectableIntValueView;
+import net.sf.anathema.character.generic.framework.intvalue.ISelectableIntValueView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.util.IIdentificate;
 

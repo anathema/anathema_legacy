@@ -5,9 +5,9 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
-import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
@@ -39,11 +39,13 @@ public class InfernalPatronPresenter implements Presenter {
     this.characterListening = context.getCharacterListening();
   }
 
+  @Override
   public void initPresentation() {
     final IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
     final ILabelledAlotmentView favoredView = overview.addAlotmentView(
         resources.getString("Infernal.Overview.FavoredYozis"), 1); //$NON-NLS-1$
-    IIntValueDisplayFactory factory = new MarkerIntValueDisplayFactory(resources, CharacterType.INFERNAL);
+    IIntValueDisplayFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
+            CharacterType.INFERNAL);
     view.startGroup(resources.getString("Yozis.Yozis")); //$NON-NLS-1$
     for (final IFavorableDefaultTrait yozi : model.getAllYozis()) {
         String yoziName = resources.getString(yozi.getType().getId()); //$NON-NLS-1$
@@ -57,11 +59,13 @@ public class InfernalPatronPresenter implements Presenter {
             yozi.getFavorization().isCasteOrFavored());
         new TraitPresenter(yozi, yoziView).initPresentation();
         yoziView.addButtonSelectedListener(new IBooleanValueChangedListener() {
+            @Override
             public void valueChanged(boolean newValue) {
               yozi.getFavorization().setFavored(newValue);
             }
           });
         yozi.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+            @Override
             public void favorableStateChanged(FavorableState state) {
               updateView(yoziView, state);
               setOverviewData(favoredView);
@@ -98,15 +102,18 @@ public class InfernalPatronPresenter implements Presenter {
   
   private void updateView(final IToggleButtonTraitView< ? > patronView, FavorableState state) {
 	    state.accept(new IFavorableStateVisitor() {
-	      public void visitDefault(FavorableState visitedState) {
+	      @Override
+          public void visitDefault(FavorableState visitedState) {
 	        patronView.setButtonState(false, true);
 	      }
 
-	      public void visitFavored(FavorableState visitedState) {
+	      @Override
+          public void visitFavored(FavorableState visitedState) {
 	        patronView.setButtonState(true, true);
 	      }
 
-	      public void visitCaste(FavorableState visitedState) {
+	      @Override
+          public void visitCaste(FavorableState visitedState) {
 	        patronView.setButtonState(true, false);
 	      }
 	    });

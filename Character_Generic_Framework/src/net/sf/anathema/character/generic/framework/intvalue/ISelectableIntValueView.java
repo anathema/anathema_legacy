@@ -1,4 +1,4 @@
-package net.sf.anathema.character.library.selection;
+package net.sf.anathema.character.generic.framework.intvalue;
 
 import javax.swing.JPanel;
 

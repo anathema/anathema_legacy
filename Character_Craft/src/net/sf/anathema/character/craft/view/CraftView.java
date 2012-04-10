@@ -8,7 +8,7 @@ import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.selection.IRemovableStringEntriesView;
@@ -32,6 +32,7 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
     this.traitMaximum = maximum;
   }
 
+  @Override
   public JComponent getComponent() {
     GridDialogLayoutData data = GridDialogLayoutDataFactory.createHorizontalFillNoGrab();
     data.setVerticalAlignment(GridAlignment.BEGINNING);
@@ -39,10 +40,12 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
     return mainPanel;
   }
 
+  @Override
   public IStringSelectionView addSelectionView(String labelText, Icon addIcon) {
     return new StringSelectionView(mainPanel, labelText, addIcon);
   }
 
+  @Override
   public IRemovableTraitView<SimpleTraitView> addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
     SimpleTraitView view = new SimpleTraitView(factory, string, 0, traitMaximum, trait, GridAlignment.FILL);
     RearButtonTraitViewWrapper<SimpleTraitView> traitView = new RearButtonTraitViewWrapper<SimpleTraitView>(

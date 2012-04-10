@@ -4,7 +4,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.overview.LabelledOverviewStringValueView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
@@ -33,6 +33,7 @@ public class EssencePanelView implements IView {
     return poolView;
   }
 
+  @Override
   public JComponent getComponent() {
     return panel;
   }

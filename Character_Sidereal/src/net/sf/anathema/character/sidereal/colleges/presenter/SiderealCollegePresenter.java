@@ -5,9 +5,9 @@ import javax.swing.Icon;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
-import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
@@ -33,6 +33,7 @@ public class SiderealCollegePresenter implements Presenter {
     this.model = model;
   }
 
+  @Override
   public void initPresentation() {
     final IOverviewCategory creationOverview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
     final ILabelledAlotmentView favoredView = creationOverview.addAlotmentView(
@@ -44,20 +45,24 @@ public class SiderealCollegePresenter implements Presenter {
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
     final IValueView<Integer> experienceView = experienceOverview.addIntegerValueView(
         resources.getString("Astrology.Overview.Experience"), 3); //$NON-NLS-1$
-    IIntValueDisplayFactory factory = new MarkerIntValueDisplayFactory(resources, CharacterType.SIDEREAL);
+    IIntValueDisplayFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
+            CharacterType.SIDEREAL);
     for (final IAstrologicalHouse house : model.getAllHouses()) {
       view.startGroup(resources.getString("AstrologicalHouses.GroupLabel." + house.getId())); //$NON-NLS-1$
       for (final IFavorableDefaultTrait college : house.getColleges()) {
         String collegeName = resources.getString("AstrologicalCollege.Label." + college.getType().getId()); //$NON-NLS-1$
         IIconToggleButtonProperties properties = new IIconToggleButtonProperties() {
+          @Override
           public Icon createUnselectedIcon() {
             return null;
           }
 
+          @Override
           public Icon createStandardIcon() {
             return new SiderealCasteUI(resources).getCasteIcon(house);
           }
 
+          @Override
           public String getToolTipText() {
             return null;
           }
@@ -71,6 +76,7 @@ public class SiderealCollegePresenter implements Presenter {
             college.getFavorization().isCasteOrFavored());
         new TraitPresenter(college, collegeView).initPresentation();
         college.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+          @Override
           public void favorableStateChanged(FavorableState state) {
             collegeView.setButtonState(college.getFavorization().isCasteOrFavored(), false);
           }
@@ -78,6 +84,7 @@ public class SiderealCollegePresenter implements Presenter {
         collegeView.setButtonState(college.getFavorization().isCasteOrFavored(), false);
       }
       house.addChangeListener(new IChangeListener() {
+        @Override
         public void changeOccurred() {
           setOverviewData(favoredView, generalView, bonusView, experienceView);
         }

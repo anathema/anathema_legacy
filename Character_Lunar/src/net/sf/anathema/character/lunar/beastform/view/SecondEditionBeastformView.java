@@ -4,7 +4,7 @@ import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
 import net.sf.anathema.character.mutations.view.IMutationsView;
@@ -23,12 +23,12 @@ public class SecondEditionBeastformView implements IBeastformView {
   private final JPanel spiritAttributePanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel beastmanAttributePanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
-  private final MarkerIntValueDisplayFactory intValueDisplayFactory;
+  private final IIntValueDisplayFactory intValueDisplayFactory;
   private final JPanel content = new JPanel();
   private final JPanel overviewPanel = new JPanel();
   private final IBeastformViewProperties properties;
 
-  public SecondEditionBeastformView(MarkerIntValueDisplayFactory intValueDisplayFactory,
+  public SecondEditionBeastformView(IIntValueDisplayFactory intValueDisplayFactory,
                                     IBeastformViewProperties properties) {
     this.intValueDisplayFactory = intValueDisplayFactory;
     this.properties = properties;

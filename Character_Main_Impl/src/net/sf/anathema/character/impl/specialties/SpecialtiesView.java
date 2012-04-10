@@ -11,7 +11,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.impl.view.SpecialtyView;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
@@ -28,6 +28,7 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
     this.factory = factory;
   }
 
+  @Override
   public ISpecialtyView addSpecialtyView(
       String abilityName,
       String specialtyName,
@@ -40,6 +41,7 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
     return specialtyView;
   }
 
+  @Override
   public IButtonControlledComboEditView<ITraitReference> addSpecialtySelectionView(
       String labelText,
       ListCellRenderer renderer,
@@ -51,6 +53,7 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
     return objectSelectionView;
   }
 
+  @Override
   public JComponent getComponent() {
     GridDialogLayoutData data = GridDialogLayoutDataFactory.createFillNoGrab();
     data.setGrabExcessVerticalSpace(true);

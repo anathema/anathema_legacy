@@ -8,7 +8,7 @@ import javax.swing.JScrollPane;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.lib.gui.IView;
@@ -25,6 +25,7 @@ public class GhostFettersConfigurationView implements IGhostFettersConfiguration
     this.factory = factory;
   }
 
+  @Override
   public ButtonControlledEditView addFetterSelectionView(
       String labelText,
       Icon addIcon) {
@@ -34,6 +35,7 @@ public class GhostFettersConfigurationView implements IGhostFettersConfiguration
     return objectSelectionView;
   }
   
+  @Override
   public IFetterView addFetterView(
 	      String fetterName,
 	      Icon deleteIcon,
@@ -45,6 +47,7 @@ public class GhostFettersConfigurationView implements IGhostFettersConfiguration
 	    return fetterView;
 	  }
 
+  @Override
   public JComponent getComponent() {
     GridDialogLayoutData data = GridDialogLayoutDataFactory.createFillNoGrab();
     data.setGrabExcessVerticalSpace(true);
@@ -54,11 +57,13 @@ public class GhostFettersConfigurationView implements IGhostFettersConfiguration
     return mainPanel;
   }
   
+  @Override
   public IOverviewCategory createOverview(String borderLabel) {
 	    return new OverviewCategory(overviewPanel, borderLabel, false);
 	  }
 
-	  public void setOverview(IOverviewCategory overview) {
+	  @Override
+      public void setOverview(IOverviewCategory overview) {
 	    overviewPanel.removeAll();
 	    overviewPanel.add(overview.getComponent());
 	  }

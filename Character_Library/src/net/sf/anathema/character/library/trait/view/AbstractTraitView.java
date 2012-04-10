@@ -1,9 +1,9 @@
 package net.sf.anathema.character.library.trait.view;
 
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
-import net.sf.anathema.character.library.intvalue.NullUpperBounds;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.NullUpperBounds;
 import net.sf.anathema.character.library.intvalue.TraitUpperBounds;
-import net.sf.anathema.character.library.intvalue.TwoUpperBounds;
+import net.sf.anathema.framework.value.TwoUpperBounds;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
@@ -27,14 +27,17 @@ public abstract class AbstractTraitView implements IIntValueView {
     return new TraitUpperBounds(trait);
   }
 
+  @Override
   public void setValue(int newValue) {
     if (valueDisplay != null) valueDisplay.setValue(newValue);
   }
 
+  @Override
   public void addIntValueChangedListener(IIntValueChangedListener listener) {
     if (valueDisplay != null) valueDisplay.addIntValueChangedListener(listener);
   }
 
+  @Override
   public void removeIntValueChangedListener(IIntValueChangedListener listener) {
     if (valueDisplay != null) valueDisplay.removeIntValueChangedListener(listener);
   }
@@ -47,6 +50,7 @@ public abstract class AbstractTraitView implements IIntValueView {
     return valueDisplay;
   }
 
+  @Override
   public void setMaximum(int maximalValue) {
     valueDisplay.setMaximum(maximalValue);
   }

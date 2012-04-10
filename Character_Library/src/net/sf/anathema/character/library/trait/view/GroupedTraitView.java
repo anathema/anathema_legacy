@@ -3,7 +3,7 @@ package net.sf.anathema.character.library.trait.view;
 import javax.swing.JComponent;
 
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.lib.gui.layout.GroupedColumnPanel;

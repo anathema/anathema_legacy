@@ -12,7 +12,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.lib.gui.GuiUtilities;
@@ -31,12 +31,14 @@ public class VirtueFlawView implements IVirtueFlawView {
 	  this.intValueDisplayFactory = factory;
   }
 
+  @Override
   public ITextView addTextView(final String labelText, int columns) {
     final ITextView textView = new LineTextView(columns);
     fillIntoVirtueFlawPanel(labelText, textView);
     return textView;
   }
   
+  @Override
   public SimpleTraitView addLimitValueView(String label, int value, int maxValue) {
 	   SimpleTraitView traitView = new SimpleTraitView(
 	        intValueDisplayFactory,
@@ -56,6 +58,7 @@ public class VirtueFlawView implements IVirtueFlawView {
         GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
   }
 
+  @Override
   public void setEnabled(boolean enabled) {
     GuiUtilities.setEnabled(getComponent(), enabled);
     handleSpecialComponents(getComponent(), enabled);
@@ -70,10 +73,12 @@ public class VirtueFlawView implements IVirtueFlawView {
     ExperienceUtilities.setLabelColor(container, enabled);
   }
 
+  @Override
   public JComponent getComponent() {
     return virtueFlawPanel;
   }
 
+  @Override
   public IObjectSelectionView<ITraitType> addVirtueFlawRootSelectionView(
       final String labelText,
       ListCellRenderer renderer) {
