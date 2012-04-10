@@ -1,12 +1,11 @@
 package net.sf.anathema.character.library.intvalue;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.*;
 
 public class MarkerIntValueDisplayFactory implements IIntValueDisplayFactory {
 
@@ -21,8 +20,8 @@ public class MarkerIntValueDisplayFactory implements IIntValueDisplayFactory {
     this.blockedIcon = characterUI.getUnselectableBallResource();
   }
 
-  public IIntValueDisplay createIntValueDisplay(int maxValue, int value, IModifiableCapTrait trait) {
-    IIntValueDisplay intValueDisplay = IntValueDisplay.createMarkerDisplay(blockedIcon, passiveBallIcon, activeBallIcon, trait, maxValue);
+  public IIntValueDisplay createIntValueDisplay(int maxValue, int value, TwoUpperBounds bounds) {
+    IIntValueDisplay intValueDisplay = IntValueDisplay.createMarkerDisplay(blockedIcon, passiveBallIcon, activeBallIcon, maxValue, bounds);
     intValueDisplay.setValue(value);
     return intValueDisplay;
   }

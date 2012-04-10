@@ -1,17 +1,16 @@
 package net.sf.anathema.charmentry.view;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.NullUpperBounds;
 import net.sf.anathema.character.library.selection.ISelectableIntValueView;
 import net.sf.anathema.character.library.selection.SelectableIntValueView;
 import net.sf.anathema.charmentry.presenter.view.IPrerequisitesEntryView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.util.IIdentificate;
+
+import javax.swing.*;
 
 public class PrerequisiteEntryView implements IPrerequisitesEntryView {
 
@@ -33,7 +32,7 @@ public class PrerequisiteEntryView implements IPrerequisitesEntryView {
   public IIntValueView addEssencePrerequisiteView(String label, int minimum, int maximum) {
     content.add(new JLabel(label));
     content.add(new JLabel());
-    IIntValueDisplay display = factory.createIntValueDisplay(maximum, minimum, null);
+    IIntValueDisplay display = factory.createIntValueDisplay(maximum, minimum, new NullUpperBounds());
     content.add(display.getComponent());
     return display;
   }

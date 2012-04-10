@@ -1,13 +1,9 @@
 package net.sf.anathema.character.library.selection;
 
-import java.awt.Component;
-
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.NullUpperBounds;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -16,6 +12,9 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class SelectableIntValueView<V> implements ISelectableIntValueView<V> {
 
@@ -26,7 +25,7 @@ public class SelectableIntValueView<V> implements ISelectableIntValueView<V> {
   private int currentValue;
 
   public SelectableIntValueView(IIntValueDisplayFactory configuration, int initial, int max) {
-    this.valueDisplay = configuration.createIntValueDisplay(max, initial, null);
+    this.valueDisplay = configuration.createIntValueDisplay(max, initial, new NullUpperBounds());
     objectSelectionBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<V>() {
       public void valueChanged(V newValue) {
         fireSelectionChangedEvent();
