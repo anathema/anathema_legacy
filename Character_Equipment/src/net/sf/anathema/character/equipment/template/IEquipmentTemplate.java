@@ -18,6 +18,4 @@ public interface IEquipmentTemplate {
   MagicalMaterial getMaterial();
   
   ItemCost getCost();
-  
-  String getTooltipDescription();
 }

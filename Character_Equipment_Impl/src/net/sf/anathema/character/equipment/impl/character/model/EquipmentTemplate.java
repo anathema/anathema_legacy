@@ -104,24 +104,4 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   public void removeStats(IExaltedEdition edition, IEquipmentStats stat) {
     statsByRuleSet.get(edition.getId()).remove(stat);
   }
-  
-  @Override
-  public String getTooltipDescription() {
-	  StringBuilder builder = new StringBuilder();
-	  builder.append("<html>");
-	  builder.append(getName());
-	  if (getCost() != null) {
-		builder.append(" (" + getCost().toString() + ")");
-	  }
-	  builder.append("<br>");
-	  if (!getDescription().isEmpty()) {
-		builder.append(getDescription() + "<br>");
-	  }
-	  IEquipmentStats[] statsSet = getStats();
-	  for (IEquipmentStats stats : statsSet) {
-		builder.append((stats != statsSet[0] ? ", " : "") + stats.getId());
-	  }
-	  builder.append("</html>");
-	  return builder.toString();
-  }
 }

@@ -44,9 +44,4 @@ public class FangTemplate implements IEquipmentTemplate {
   public ItemCost getCost() {
 	return null;
   }
-  
-  @Override
-  public String getTooltipDescription() {
-	return null;
-  }
 }

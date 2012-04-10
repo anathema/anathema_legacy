@@ -39,9 +39,4 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
   public ItemCost getCost() {
 	return null;
   }
-  
-  @Override
-  public String getTooltipDescription() {
-	return null;
-  }
 }

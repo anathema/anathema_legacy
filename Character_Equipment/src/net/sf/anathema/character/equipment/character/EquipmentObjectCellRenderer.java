@@ -8,15 +8,16 @@ import javax.swing.JList;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 public class EquipmentObjectCellRenderer extends DefaultListCellRenderer {
 	private static final long serialVersionUID = 1L;
 
 	private final IEquipmentTemplateProvider templateProvider;
+	private final EquipmentTemplateTooltipBuilder tooltipBuilder;
 	
 	public EquipmentObjectCellRenderer(IEquipmentTemplateProvider provider) {
 		templateProvider = provider;
+		tooltipBuilder = new EquipmentTemplateTooltipBuilder();
 	}
 	
 @Override
@@ -31,7 +32,7 @@ public class EquipmentObjectCellRenderer extends DefaultListCellRenderer {
     JComponent component = (JComponent) super.getListCellRendererComponent(list, templateId, index, isSelected, cellHasFocus);
 	IEquipmentTemplate template = templateProvider.loadTemplate(templateId);
 	if (template != null) {
-		component.setToolTipText(template.getTooltipDescription());
+		component.setToolTipText(tooltipBuilder.getTooltipDescription(template));
 	}
     return component;
   }
