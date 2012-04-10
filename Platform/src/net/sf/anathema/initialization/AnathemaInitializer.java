@@ -13,6 +13,7 @@ import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
+import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.Collection;
@@ -39,8 +40,8 @@ public class AnathemaInitializer {
   }
 
   public IAnathemaView initialize() throws InitializationException {
-    initializePlugins(reflections);
-    IResources resources = initResources();
+	AnathemaResources resources = initResources();
+    initializePlugins(reflections, resources);
     ProxySplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(resources);
@@ -50,11 +51,11 @@ public class AnathemaInitializer {
 
   }
 
-  private void initializePlugins(AnathemaReflections reflections) throws InitializationException {
+  private void initializePlugins(AnathemaReflections reflections, IExtensibleDataSetRegistry registry) throws InitializationException {
     Collection<Startable> startablePlugins = instantiater.instantiateAll(Plugin.class);
     for (Startable startablePlugin : startablePlugins) {
       try {
-        startablePlugin.doStart(reflections);
+        startablePlugin.doStart(reflections, registry);
       } catch (Exception e) {
         throw new InitializationException("Failed to start plugin.", e);
       }
@@ -75,7 +76,7 @@ public class AnathemaInitializer {
     return new AnathemaView(viewProperties);
   }
 
-  private IResources initResources() {
+  private AnathemaResources initResources() {
     AnathemaResources resources = new AnathemaResources();
     ProxySplashscreen.getInstance().displayStatusMessage("Loading Resources..."); //$NON-NLS-1$
     Set<String> resourcesInPaths = reflections.getResourcesMatching(".*\\.properties");

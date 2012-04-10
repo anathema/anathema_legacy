@@ -20,7 +20,7 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
   public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory,
                           MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
-    ICharmCache cache = CharmCache.getInstance();
+    ICharmCache cache = (ICharmCache) resources.getDataSet(CharmCache.DATASET_ID);
     CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources,
             magicDescriptionProvider, generics, cache, treeIdentificateMap);
     ICascadeView view = factory.createCascadeView(viewProperties);

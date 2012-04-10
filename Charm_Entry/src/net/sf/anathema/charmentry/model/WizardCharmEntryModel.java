@@ -1,5 +1,7 @@
 package net.sf.anathema.charmentry.model;
 
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.charmentry.model.data.ConfigurableCharmData;
@@ -11,6 +13,7 @@ import net.sf.anathema.charmentry.presenter.model.ICostEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IDurationEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IKeywordEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;
+import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
 
 public class WizardCharmEntryModel implements ICharmEntryModel {
   private final IConfigurableCharmData charmData = new ConfigurableCharmData();
@@ -20,10 +23,15 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
   private final IPrerequisitesModel prerequisitesModel = new PrerequisiteEntryModel(headerModel, charmData);
   private final ICostEntryModel costEntryModel = new CostEntryModel(typeModel, charmData);
   private final IKeywordEntryModel keywordEntryModel = new KeywordEntryModel(charmData);
-  private final ICharmPrerequisitesEntryModel charmPrerequisitesModel = new CharmPrerequisitesEntryModel(
-      headerModel,
-      prerequisitesModel,
-      charmData);
+  private final ICharmPrerequisitesEntryModel charmPrerequisitesModel;
+  
+  public WizardCharmEntryModel(IExtensibleDataSetProvider dataSetProvider) {
+	  charmPrerequisitesModel = new CharmPrerequisitesEntryModel(
+		      headerModel,
+		      prerequisitesModel,
+		      charmData,
+		      (ICharmCache)dataSetProvider.getDataSet(CharmCache.DATASET_ID));
+  }
 
   @Override
   public IHeaderDataModel getHeaderDataModel() {

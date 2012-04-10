@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.magic;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.magic.UniqueCharmType;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.CustomizableFreePicksPredicate;
@@ -53,11 +53,14 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String TAG_GROUP_EXCEPTION = "groupException"; //$NON-NLS-1$
   private static final String ATTRIB_SUB_TEMPLATE = "subTemplate";
   private final ICharacterTemplate hostTemplate;
+  private final ICharmCache cache;
 
   public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry,
-                                    ICharacterTemplate template) {
+                                    ICharacterTemplate template,
+                                    ICharmCache cache) {
     super(templateRegistry);
     this.hostTemplate = template;
+    this.cache = cache;
   }
 
   @Override
@@ -151,7 +154,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     if (charmType.equals(VALUE_NONE)) {
         charmSet = new NullCharmSet();
       } else {
-        charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType), uniqueCharms);
+        charmSet = CharmSet.createRegularCharmSet(cache, CharacterType.getById(charmType), uniqueCharms);
       }
     CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet,
             uniqueCharms);

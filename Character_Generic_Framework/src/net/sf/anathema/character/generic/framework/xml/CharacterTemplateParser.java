@@ -26,6 +26,7 @@ import net.sf.anathema.character.generic.framework.xml.rules.AdditionalRulesTemp
 import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactoryParser;
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
@@ -67,19 +68,22 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private final ICharacterTemplateRegistryCollection registryCollection;
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry;
   private final IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParserRegistry;
-  private final ICharmProvider provider;
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
+  private final ICharmProvider provider;
+  private final ICharmCache cache;
 
   public CharacterTemplateParser(
       ICharacterTemplateRegistryCollection registryCollection,
       IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry,
       ICharmProvider provider,
+      ICharmCache cache,
       IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry,
       IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParser) {
     super(registryCollection.getCharacterTemplateRegistry());
     this.registryCollection = registryCollection;
     this.casteCollectionRegistry = casteCollectionRegistry;
     this.provider = provider;
+    this.cache = cache;
     this.backgroundRegistry = backgroundRegistry;
     this.additionModelTemplateParserRegistry = additionModelTemplateParser;
   }
@@ -315,7 +319,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     }
     GenericMagicTemplateParser parser = new GenericMagicTemplateParser(
         registryCollection.getMagicTemplateRegistry(),
-        characterTemplate);
+        characterTemplate,
+        cache);
     GenericMagicTemplate template = parser.parseTemplate(magicTemplateElement);
     characterTemplate.setMagicTemplate(template);
   }

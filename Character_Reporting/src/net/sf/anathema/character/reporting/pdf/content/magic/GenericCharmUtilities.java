@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.pdf.content.magic;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
@@ -42,12 +41,10 @@ public class GenericCharmUtilities {
 
   public static IMagicStats[] getGenericCharmStats(IGenericCharacter character) {
     List<IMagicStats> genericCharmStats = new ArrayList<IMagicStats>();
-    ICharm[] charms = CharmCache.getInstance().getCharms(character.getTemplate().getTemplateType().getCharacterType());
+    ICharm[] charms = character.getGenericCharms();
     for (ICharm charm : charms) {
-      if (charm.isInstanceOfGenericCharm()) {
         IMagicStats stats = new GenericCharmStats(charm, character);
         if (!genericCharmStats.contains(stats)) genericCharmStats.add(stats);
-      }
     }
     return genericCharmStats.toArray(new IMagicStats[genericCharmStats.size()]);
   }

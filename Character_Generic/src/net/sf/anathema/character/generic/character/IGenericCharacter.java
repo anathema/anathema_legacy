@@ -75,6 +75,8 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   public boolean isSubeffectCharm(ICharm magic);
 
   public void addSpecialtyListChangeListener(IChangeListener listener);
+  
+  public ICharm[] getGenericCharms();
 
   <T> List<T> getAllRegistered(Class<T> interfaceClass);
 }

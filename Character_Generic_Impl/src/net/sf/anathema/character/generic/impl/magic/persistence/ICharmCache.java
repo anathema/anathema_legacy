@@ -5,6 +5,8 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ICharmCache {
+  final static String DATASET_ID = "Charms";
+	
   ICharm[] getCharms(IIdentificate type);
 
   ISpecialCharm[] getSpecialCharmData(IIdentificate type);

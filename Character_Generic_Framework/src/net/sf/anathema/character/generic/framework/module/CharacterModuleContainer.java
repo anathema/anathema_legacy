@@ -16,7 +16,7 @@ public class CharacterModuleContainer {
   public CharacterModuleContainer(IResources resources, IDataFileProvider dataFileProvider, Instantiater instantiater)
           throws InitializationException {
     this.resources = resources;
-    this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater);
+    this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater, resources);
     initializeBasicModuleSoOtherModulesCanDependOnIt();
   }
 

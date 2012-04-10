@@ -4,6 +4,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
+import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -82,7 +83,8 @@ public class CharacterStatistics implements ICharacterStatistics {
     charms.initListening();
     this.combos = new ComboConfiguration(charms);
     combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
-    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template);
+    this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), template,
+    		(ISpellCache)generics.getDataSet(ISpellCache.DATASET_ID));
     this.spells.addChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {

@@ -9,6 +9,7 @@ import net.sf.anathema.initialization.Plugin;
 import net.sf.anathema.initialization.Startable;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
 
 import java.net.URL;
 import java.util.Set;
@@ -29,14 +30,18 @@ public class CharacterPlugin implements Startable {
   private static final String Spell_File_Recognition_Pattern = "Spells.*\\.xml";
 
   @Override
-  public void doStart(AnathemaReflections reflections) throws Exception {
+  public void doStart(AnathemaReflections reflections, IExtensibleDataSetRegistry registry) throws Exception {
     ProxySplashscreen.getInstance().displayStatusMessage("Compiling Charm Sets...");
-    CharmCompiler charmCompiler = new CharmCompiler(CharmCache.getInstance());
-    SpellCompiler spellCompiler = new SpellCompiler(SpellCache.getInstance());
+    CharmCache charms = new CharmCache();
+    SpellCache spells = new SpellCache();
+    CharmCompiler charmCompiler = new CharmCompiler(charms);
+    SpellCompiler spellCompiler = new SpellCompiler(spells);
     getCharmFilesFromReflection(reflections, charmCompiler);
     getSpellFilesFromReflection(reflections, spellCompiler);
     charmCompiler.buildCharms();
     spellCompiler.buildSpells();
+    registry.addDataSet(charms);
+    registry.addDataSet(spells);
   }
 
   private void getCharmFilesFromReflection(AnathemaReflections reflections, CharmCompiler charmCompiler) throws Exception {

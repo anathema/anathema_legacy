@@ -11,7 +11,6 @@ import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.disy.commons.swing.util.GuiUtilities;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.charmentry.model.WizardCharmEntryModel;
@@ -41,7 +40,7 @@ public class ShowCharmEntryAction extends SmartAction {
   protected void execute(Component parentComponent) {
     parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     try {
-      ICharmEntryModel model = new WizardCharmEntryModel();
+      ICharmEntryModel model = new WizardCharmEntryModel(resources);
       ICharmEntryViewFactory viewFactory = new CharmEntryViewFactory(resources);
       HeaderDataEntryPage startPage = new HeaderDataEntryPage(resources, model, viewFactory);
       WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
@@ -56,7 +55,7 @@ public class ShowCharmEntryAction extends SmartAction {
       // RLR Best Guess is CharmType
       // Maybe CharacterType
       //CharmCache.getInstance().addCharm(model.getCharmTypeModel().getCharmType(),entryData.getEdition().getDefaultRuleset(), (ICharm) entryData.getCoreData());
-      CharmCache.getInstance().addCharm(entryData);
+      //CharmCache.getInstance().addCharm(entryData);
 
       new CharmIO().writeCharmInternal(entryData);
       final ICharmData coreData = entryData.getCoreData();

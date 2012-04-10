@@ -268,6 +268,11 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public ICharm[] getLearnedCharms() {
     return new ICharm[0];
   }
+  
+  @Override
+  public ICharm[] getGenericCharms() {
+    return new ICharm[0];
+  }
 
   @Override
   public IIdentifiedTraitTypeGroup[] getYoziTypeGroups() {

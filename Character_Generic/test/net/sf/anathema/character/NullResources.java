@@ -4,6 +4,7 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 
+import net.sf.anathema.lib.resources.IExtensibleDataSet;
 import net.sf.anathema.lib.resources.IResources;
 
 public class NullResources implements IResources {
@@ -32,5 +33,9 @@ public class NullResources implements IResources {
 
   public Icon getImageIcon(Class< ? > requestor, String relativePath) {
     return null;
+  }
+  
+  public IExtensibleDataSet getDataSet(String id) {
+	return null;
   }
 }

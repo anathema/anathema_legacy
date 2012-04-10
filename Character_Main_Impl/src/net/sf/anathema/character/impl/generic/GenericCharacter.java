@@ -34,6 +34,7 @@ import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
+import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
@@ -336,6 +337,20 @@ public class GenericCharacter implements IGenericCharacter {
       }
     }
     return learnedEffectIds.toArray(new String[learnedEffectIds.size()]);
+  }
+  
+  @Override
+  public ICharm[] getGenericCharms() {
+    List<ICharm> genericCharms = new ArrayList<ICharm>();
+    for (ILearningCharmGroup group : statistics.getCharms().getAllGroups()) {
+    	for (ICharm charm : group.getAllCharms()) {
+    		if (charm.isInstanceOfGenericCharm() &&
+    			charm.getCharacterType().equals(statistics.getCharacterTemplate().getTemplateType().getCharacterType())) {
+    			genericCharms.add(charm);
+    		}
+    	}
+    }
+    return genericCharms.toArray(new ICharm[0]);
   }
 
   @Override

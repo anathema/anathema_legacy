@@ -10,15 +10,18 @@ import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.DefaultStringProvider;
 import net.sf.anathema.lib.resources.FileStringProvider;
 import net.sf.anathema.lib.resources.IAnathemaImageProvider;
+import net.sf.anathema.lib.resources.IExtensibleDataSet;
+import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.MultiSourceStringProvider;
 import net.sf.anathema.lib.resources.StringProvider;
 
-public class AnathemaResources implements IResources {
+public class AnathemaResources implements IResources, IExtensibleDataSetRegistry {
 
   private static final Logger logger = Logger.getLogger(AnathemaResources.class);
   private final IAnathemaImageProvider imageProvider = new ImageProvider("icons"); //$NON-NLS-1$
   private final MultiSourceStringProvider stringHandler = new MultiSourceStringProvider();
+  private final ExtensibleDataManager dataManager = new ExtensibleDataManager();
 
   public AnathemaResources() {
     try {
@@ -52,5 +55,15 @@ public class AnathemaResources implements IResources {
 
   private Locale getLocale() {
     return Locale.getDefault();
+  }
+
+  @Override
+  public IExtensibleDataSet getDataSet(String id) {
+	return dataManager.getDataSet(id);
+  }
+	
+  @Override
+  public void addDataSet(IExtensibleDataSet data) {
+	dataManager.addDataSet(data);
   }
 }

@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.collection.MultiEntryMap;
+import net.sf.anathema.lib.resources.IExtensibleDataSet;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -12,21 +13,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CharmCache implements ICharmCache {
-
-  private static final CharmCache instance = new CharmCache();
+public class CharmCache implements ICharmCache, IExtensibleDataSet {
+	
   MultiEntryMap<IIdentificate, ICharm> charmSets = new MultiEntryMap<IIdentificate, ICharm>();
   Map<String, String> renameData = new HashMap<String, String>();
   Map<IIdentificate, List<ISpecialCharm>> specialCharms = new HashMap<IIdentificate, List<ISpecialCharm>>();
-
-  private CharmCache() {
-    //nothing to do
-  }
-
-  public static CharmCache getInstance() {
-    return instance;
-  }
-
+  
   @Override
   public ICharm[] getCharms(IIdentificate type) {
     type = new Identificate(type.getId());
@@ -99,4 +91,9 @@ public class CharmCache implements ICharmCache {
     } while (newId != null);
     return id;
   }
+
+	@Override
+	public String getId() {
+		return DATASET_ID;
+	}
 }

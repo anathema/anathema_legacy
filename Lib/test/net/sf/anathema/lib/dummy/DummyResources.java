@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.swing.Icon;
 
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.resources.IExtensibleDataSet;
 import net.sf.anathema.lib.resources.IResources;
 
 public class DummyResources implements IResources {
@@ -30,6 +31,10 @@ public class DummyResources implements IResources {
 
   public Image getImage(Class< ? > requestor, String relativePath) {
     throw new NotYetImplementedException();
+  }
+  
+  public IExtensibleDataSet getDataSet(String id) {
+	throw new NotYetImplementedException();
   }
 
   public Icon getImageIcon(Class< ? > requestor, String relativePath) {

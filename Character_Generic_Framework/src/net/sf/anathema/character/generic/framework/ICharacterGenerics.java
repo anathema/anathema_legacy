@@ -15,6 +15,7 @@ import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.resources.IExtensibleDataSet;
 
 public interface ICharacterGenerics {
 
@@ -41,6 +42,8 @@ public interface ICharacterGenerics {
   ICharacterModuleObjectMap getModuleObjectMap();
 
   IDataFileProvider getDataFileProvider();
+  
+  IExtensibleDataSet getDataSet(String id);
 
   Instantiater getInstantiater();
 }

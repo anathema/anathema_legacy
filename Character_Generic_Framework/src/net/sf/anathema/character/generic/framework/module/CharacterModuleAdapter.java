@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.ICharacterTemplateRegistryCol
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
 import net.sf.anathema.character.generic.framework.xml.CharacterTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.logging.Logger;
@@ -45,8 +46,12 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
   protected final void registerParsedTemplate(ICharacterGenerics generics, String templateId, String prefix) {
     ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
     IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = generics.getAdditionalTemplateParserRegistry();
-    new CharacterTemplateParser(characterTemplateRegistries, generics.getCasteCollectionRegistry(),
-            generics.getCharmProvider(), generics.getBackgroundRegistry(), additionalTemplateParserRegistry);
+    new CharacterTemplateParser(characterTemplateRegistries,
+    		generics.getCasteCollectionRegistry(),
+            generics.getCharmProvider(),
+            (ICharmCache)generics.getDataSet(ICharmCache.DATASET_ID),
+            generics.getBackgroundRegistry(),
+            additionalTemplateParserRegistry);
     try {
       generics.getTemplateRegistry().register(
               characterTemplateRegistries.getCharacterTemplateRegistry().get(templateId, prefix));

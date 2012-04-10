@@ -1,8 +1,7 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.generic.impl.magic.SpellException;
-import net.sf.anathema.character.generic.impl.magic.persistence.SpellBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.SpellCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -34,14 +33,17 @@ public class SpellConfiguration implements ISpellConfiguration {
   private final ICharacterTemplate characterTemplate;
   private final ISpellMapper spellMapper;
 
-  public SpellConfiguration(ICharmConfiguration charms, ISpellLearnStrategy strategy, ICharacterTemplate template) throws SpellException {
+  public SpellConfiguration(ICharmConfiguration charms,
+		  ISpellLearnStrategy strategy,
+		  ICharacterTemplate template,
+		  ISpellCache cache) throws SpellException {
     this.charms = charms;
     this.strategy = strategy;
     this.characterTemplate = template;
     for (CircleType type : CircleType.values()) {
       spellsByCircle.put(type, new ArrayList<ISpell>());
     }
-    for (ISpell spell : SpellCache.getInstance().getSpells()) {
+    for (ISpell spell : cache.getSpells()) {
       spellsByCircle.get(spell.getCircleType()).add(spell);
     }
     spellMapper = new SpellMapper();
