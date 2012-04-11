@@ -44,7 +44,9 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	private final Font BOLD_FONT =
 			new Font(Font.FontFamily.HELVETICA, MAGIC_NORMAL_FONT_SIZE, Font.BOLD, BaseColor.BLACK);
 	private final Font NORMAL_FONT =
-			new Font(Font.FontFamily.HELVETICA, MAGIC_NORMAL_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
+			new Font(Font.FontFamily.TIMES_ROMAN, MAGIC_NORMAL_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
+	private final Font SYMBOL_FONT =
+			new Font(Font.FontFamily.SYMBOL, MAGIC_NORMAL_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
 	private final Font KEYWORD_FONT =
 			new Font(Font.FontFamily.HELVETICA, MAGIC_SMALL_FONT_SIZE, Font.NORMAL, BaseColor.BLACK);
 	private final Font SOURCE_FONT =
@@ -136,6 +138,10 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	
 	public Font getNormalFont() {
 		return NORMAL_FONT;
+	}
+	
+	public Font getSymbolFont() {
+		return SYMBOL_FONT;
 	}
 	
 	public Font getKeywordFont() {

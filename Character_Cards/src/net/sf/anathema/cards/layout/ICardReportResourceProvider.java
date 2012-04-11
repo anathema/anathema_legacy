@@ -36,6 +36,8 @@ public interface ICardReportResourceProvider {
 	
 	Font getBoldFont();
 	
+	Font getSymbolFont();
+	
 	Font getNormalFont();
 	
 	Font getKeywordFont();

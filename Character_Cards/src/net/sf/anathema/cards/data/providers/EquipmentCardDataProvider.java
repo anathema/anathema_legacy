@@ -25,6 +25,8 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
 
 	private final IResources resources;
 	private final IEquipmentStringBuilder stringBuilder;
+	// value of black circle character in standard symbol font
+	private final static char SYMBOL_BLACK_CIRCLE = (char)183; 
 	
 	public EquipmentCardDataProvider(IResources resources) {
 		this.resources = resources;
@@ -51,7 +53,11 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
 				headerText.add(new Phrase(itemMaterial + "\n", resourceProvider.getNormalFont()));
 			}
 			if (item.getCost() != null) {
-				headerText.add(new Phrase(item.getCost().toString(), resourceProvider.getNormalFont()));
+				String[] costSegments = item.getCost().toString().split(" ");
+				costSegments[1] = costSegments[1].replace('*', SYMBOL_BLACK_CIRCLE);
+				
+				headerText.add(new Phrase(costSegments[0] + " ", resourceProvider.getNormalFont()));
+				headerText.add(new Phrase(costSegments[1], resourceProvider.getSymbolFont()));
 			}
 			
 			List<Phrase> bodyText = new ArrayList<Phrase>();
