@@ -47,8 +47,8 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
 				String itemMaterial = "";
 				if (hasCustomTitle(item)) itemMaterial += " (";
 				itemMaterial += item.getMaterial().getId();
-				if (hasCustomTitle(item)) itemMaterial += ")\n";
-				headerText.add(new Phrase(itemMaterial, resourceProvider.getNormalFont()));
+				if (hasCustomTitle(item)) itemMaterial += ")";
+				headerText.add(new Phrase(itemMaterial + "\n", resourceProvider.getNormalFont()));
 			}
 			if (item.getCost() != null) {
 				headerText.add(new Phrase(item.getCost().toString(), resourceProvider.getNormalFont()));
