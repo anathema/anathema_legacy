@@ -16,17 +16,13 @@ import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.initialization.ReportFactory;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.framework.module.preferences.EnableBetaContentPreferencesElement.enableBetaContent;
-
 @ReportFactory
 public class CardReportFactory implements IReportFactory {
 	  public Report[] createReport(IResources resources, IAnathemaModel model) {
 		    List <ICardDataProvider> dataProviders = new ArrayList<ICardDataProvider>();
 		  	dataProviders.add(new CharmCardDataProvider(model, resources));
 		  	dataProviders.add(new SpellCardDataProvider(model, resources));
-		  	if (enableBetaContent()) {
-		  		dataProviders.add(new EquipmentCardDataProvider(resources));
-		  	}
+	  		dataProviders.add(new EquipmentCardDataProvider(resources));
 		  	dataProviders.add(new LegendCardDataProvider(resources));
 		    ICardLayout layout = new DemocritusCardLayout(resources, .23f);
 		    return new Report[]{
