@@ -11,6 +11,10 @@ http://anathema.github.com
 ===------------------------------------------------------------------------------===
 
 -- Features --
+* New preference: Allow equipment customization.
+   Allows to overwrite an item's name and description to make it truly yours.
+* Equipment items have a "cost" statistic, which is not enforced.
+* Character loadout screen shows tooltips for items
 * [Shadow493] Added missing Lunar templates from DotFA.
 * [Jesse Belanger] Added Charm descriptions for Infernals. Most texts taken from the official Wiki.
 
@@ -18,6 +22,8 @@ http://anathema.github.com
 * Improved rendering of some Charm cascades, notably Solar Melee, Solar Medicine and Solar Hero Style.
 * Mobility penalty for equipment is calculated once more
 * Charms that raise the Essence cap still work after reloading
+* Charm Cards show the beautiful icons we already have
+* Character creation calculates the available dots correctly for splats with fixed dots, like Sidereals
 * [Shadow493] First Age Solars have the correct points
 * (Infernal/SWLiHN) "Counter-Conceptual Interposition" requires "Essence-Dissecting Stare"
 * (Infernal/Kimbery) "Bitter Heart Unbleeding" has an Essence 3 repurchase
