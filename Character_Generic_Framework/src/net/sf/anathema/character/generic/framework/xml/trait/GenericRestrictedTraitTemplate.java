@@ -83,7 +83,7 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
 	  	  int newMin = restriction.getCalculationMinValue(limitationContext, type);
 	  	  minimum = newMin > minimum ? newMin : minimum;	  			  
 	  }
-      return Math.max(minimum, traitTemplate.getMinimumValue(limitationContext));
+      return Math.max(minimum, traitTemplate.getCalculationMinValue(limitationContext, type));
   }
 
   public ITraitType getTraitType() {
