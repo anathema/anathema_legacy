@@ -30,7 +30,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	private final String cardBodyBlock = "card_body.png";
 	private final String cardIconBlock = "card_icon.png";
 	private final String cardIconShadow = "card_icon_shadow.png";
-	private final String nullIcon = "nullIcon.png";
+	private final String nullIcon = "null.png";
 	
 	private final Map<String, Image> imageMap = new HashMap<String, Image>(); 
 	
