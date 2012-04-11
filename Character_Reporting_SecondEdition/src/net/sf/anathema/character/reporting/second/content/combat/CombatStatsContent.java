@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.second.content.combat;
 
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.reporting.pdf.content.combat.AbstractCombatStatsContent;
@@ -23,6 +24,10 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   public String getDodgeLabel() {
     return getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
   }
+  
+  public String getDodgeSpecialtyLabel() {
+    return getString( "Sheet.Combat.DodgeDVSpecialty" ); //$NON-NLS-1$
+  }
 
   public int getJoinBattle() {
     return CharacterUtilities.getJoinBattle(getTraitCollection(), getEquipment());
@@ -32,6 +37,10 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
     return CharacterUtilities.getDodgeDv(getCharacterType(), getTraitCollection(), getEquipment());
   }
 
+  public int getDodgeDvWithSpecialty() {
+    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraitCollection(), getEquipment(), getCharacter().getSpecialties( AbilityType.Dodge ));
+  }
+  
   public String[] getAttacks() {
     return new String[] { getString("Sheet.Combat.AttackList.DeclareAttack"), //$NON-NLS-1$
       getString("Sheet.Combat.AttackList.DeclareDefence"), //$NON-NLS-1$

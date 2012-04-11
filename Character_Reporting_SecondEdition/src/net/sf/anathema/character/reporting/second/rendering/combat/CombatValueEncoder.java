@@ -16,7 +16,13 @@ public class CombatValueEncoder implements IContentEncoder {
     Position upperLeft = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(4, upperLeft, bounds.width, 3);
     encoder.addLabelledValue(graphics, 0, content.getJoinLabel(), content.getJoinBattle());
-    encoder.addLabelledValue(graphics, 1, content.getDodgeLabel(), content.getDodgeDv());
+    // Only display the specialty if it is different than the normal dodge dv
+    if( content.getDodgeDv() != content.getDodgeDvWithSpecialty() ) {
+        encoder.addLabelledValue(graphics, 1, content.getDodgeLabel(), content.getDodgeDv(), content.getDodgeDvWithSpecialty());
+        encoder.addComment(graphics, content.getDodgeSpecialtyLabel(), 1);
+    } else {
+        encoder.addLabelledValue(graphics, 1, content.getDodgeLabel(), content.getDodgeDv());
+    }
     encoder.addLabelledValue(graphics, 2, content.getKnockdownLabel(), content.getKnockdownThreshold(), content.getKnockdownPool());
     encoder.addLabelledValue(graphics, 3, content.getStunningLabel(), content.getStunningThreshold(), content.getStunningPool());
     encoder.addComment(graphics, content.getThresholdPoolLabel(), 2);

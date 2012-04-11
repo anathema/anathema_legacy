@@ -49,6 +49,7 @@ public abstract class AbstractSocialAttack implements ISocialCombatStats {
   }
 
   private int getParryMdv(AttributeType type) {
+    // switch to CharacterUtilities.getParryMdv() ?
     return getRoundUpDv(collection, type, getName()) + equipmentModifiers.getMPDVMod();
   }
 }
