@@ -35,7 +35,7 @@ public class NullResources implements IResources {
     return null;
   }
   
-  public IExtensibleDataSet getDataSet(String id) {
+  public <T extends IExtensibleDataSet> T getDataSet(Class<T> set) {
 	return null;
   }
 }

@@ -43,7 +43,7 @@ public interface ICharacterGenerics {
 
   IDataFileProvider getDataFileProvider();
   
-  IExtensibleDataSet getDataSet(String id);
+  <T extends IExtensibleDataSet> T getDataSet(Class<T> set);
 
   Instantiater getInstantiater();
 }

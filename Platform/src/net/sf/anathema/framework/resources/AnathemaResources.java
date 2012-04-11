@@ -58,8 +58,8 @@ public class AnathemaResources implements IResources, IExtensibleDataSetRegistry
   }
 
   @Override
-  public IExtensibleDataSet getDataSet(String id) {
-	return dataManager.getDataSet(id);
+  public <T extends IExtensibleDataSet> T getDataSet(Class<T> setClass) {
+	return dataManager.getDataSet(setClass);
   }
 	
   @Override

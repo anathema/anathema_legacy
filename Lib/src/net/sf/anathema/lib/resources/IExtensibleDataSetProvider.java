@@ -1,5 +1,5 @@
 package net.sf.anathema.lib.resources;
 
 public interface IExtensibleDataSetProvider {
-	IExtensibleDataSet getDataSet(String id);
+	<T extends IExtensibleDataSet> T getDataSet(Class<T> set);
 }

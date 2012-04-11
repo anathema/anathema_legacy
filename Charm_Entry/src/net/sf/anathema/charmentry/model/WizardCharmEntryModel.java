@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.model;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -30,7 +29,7 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
 		      headerModel,
 		      prerequisitesModel,
 		      charmData,
-		      (ICharmCache)dataSetProvider.getDataSet(CharmCache.DATASET_ID));
+		      dataSetProvider.getDataSet(ICharmCache.class));
   }
 
   @Override

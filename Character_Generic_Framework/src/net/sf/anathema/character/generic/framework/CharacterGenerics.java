@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistr
 import net.sf.anathema.character.generic.framework.module.object.CharacterModuleObjectMap;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.CharacterTemplateRegistryCollection;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
 import net.sf.anathema.character.generic.impl.template.magic.CharmProvider;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
@@ -51,7 +51,7 @@ public class CharacterGenerics implements ICharacterGenerics {
             new NullAdditionalPersisterFactory());
     this.dataFileProvider = dataFileProvider;
     this.dataSetProvider = dataSetProvider;
-    this.charmProvider = new CharmProvider((CharmCache) dataSetProvider.getDataSet(CharmCache.DATASET_ID));
+    this.charmProvider = new CharmProvider(dataSetProvider.getDataSet(ICharmCache.class));
   }
 
   @Override
@@ -120,7 +120,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   }
   
   @Override
-  public IExtensibleDataSet getDataSet(String id) {
-	  return dataSetProvider.getDataSet(id);
+  public <T extends IExtensibleDataSet> T getDataSet(Class<T> set) {
+	  return dataSetProvider.getDataSet(set);
   }
 }

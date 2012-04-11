@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
@@ -20,9 +20,9 @@ public class CharmProvider implements ICharmProvider {
   private final Map<ICharacterType, ISpecialCharm[]> charmsByTypeByRuleSet = new HashMap<ICharacterType, ISpecialCharm[]>();
   private final Map<ICharacterType, Boolean> dataCharmsPrepared = new HashMap<ICharacterType, Boolean>();
   private final List<ISpecialCharm> martialArtsSpecialCharms = new ArrayList<ISpecialCharm>();
-  private final CharmCache cache;
+  private final ICharmCache cache;
 
-  public CharmProvider(CharmCache cache) {
+  public CharmProvider(ICharmCache cache) {
     for (ICharacterType type : CharacterType.values()) {
       dataCharmsPrepared.put(type, false);
     }

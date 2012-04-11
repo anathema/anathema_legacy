@@ -49,7 +49,7 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
     new CharacterTemplateParser(characterTemplateRegistries,
     		generics.getCasteCollectionRegistry(),
             generics.getCharmProvider(),
-            (ICharmCache)generics.getDataSet(ICharmCache.DATASET_ID),
+            generics.getDataSet(ICharmCache.class),
             generics.getBackgroundRegistry(),
             additionalTemplateParserRegistry);
     try {

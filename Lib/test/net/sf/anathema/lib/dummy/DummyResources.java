@@ -33,7 +33,7 @@ public class DummyResources implements IResources {
     throw new NotYetImplementedException();
   }
   
-  public IExtensibleDataSet getDataSet(String id) {
+  public <T extends IExtensibleDataSet> T getDataSet(Class<T> set) {
 	throw new NotYetImplementedException();
   }
 
