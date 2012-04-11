@@ -1,10 +1,21 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
+import com.google.common.collect.Lists;
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.lib.util.Identificate;
+import org.junit.Test;
+import org.mockito.Mockito;
+
+import java.util.ArrayList;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 public class CharmCacheTest {
 
-	// is there any way to get access to the cache
-	// now that it is not global?
-  /*private CharmCache cache = CharmCache.getInstance();
+  private CharmCache cache = new CharmCache();
 
   @Test
   public void matchesCharacterTypesToIdentificatesForSpecialCharmLookup() throws Exception {
@@ -27,5 +38,5 @@ public class CharmCacheTest {
   private void addSpecialCharmForSolar(ISpecialCharm specialCharm, Identificate solar) {
     ArrayList<ISpecialCharm> data = Lists.newArrayList(specialCharm);
     cache.addSpecialCharmData(solar, data);
-  }*/
+  }
 }
