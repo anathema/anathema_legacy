@@ -53,10 +53,10 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
 
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof AbstractWeaponStats) {
-      return obj.equals(delegate);
-    }
     if (!(obj instanceof ProxyWeaponStats)) {
+      if (delegate instanceof IWeaponStats) {
+    	  return delegate.equals(obj);
+      }
       return false;
     }
     ProxyWeaponStats other = (ProxyWeaponStats) obj;

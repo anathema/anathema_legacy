@@ -31,4 +31,12 @@ public class InertBaseMaterial implements BaseMaterial {
   public boolean isAdamantBased() {
     return false;
   }
+  
+  @Override
+  public boolean equals(Object obj) {
+	  if (obj instanceof InertBaseMaterial) {
+		  return true;
+	  }
+	  return false;
+  }
 }
