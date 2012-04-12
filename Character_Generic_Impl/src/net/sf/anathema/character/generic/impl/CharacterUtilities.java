@@ -12,12 +12,29 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 public class CharacterUtilities {
 
   public static int getDodgeMdv(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
-    int baseValue = getRoundDownDv(traitCollection, OtherTraitType.Willpower, AbilityType.Integrity,
-            OtherTraitType.Essence);
+    int baseValue = getRoundDownDv(traitCollection, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence);
     baseValue += equipment.getMDDVMod();
     return Math.max(baseValue, 0);
   }
-
+  
+  public static int getParryMdv( IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, ITraitType... types) {
+    int baseValue = getRoundUpDv(traitCollection, types);
+    baseValue += equipment.getMPDVMod();
+    return Math.max( baseValue, 0 );
+  }
+  
+  private static int getRoundDownDv(IGenericTraitCollection traitCollection, ITraitType... types) {
+    return getTotalValue(traitCollection, types) / 2;
+  }
+  
+  private static int getRoundUpDv(IGenericTraitCollection traitCollection, ITraitType... types) {
+    return (int) Math.ceil(( getTotalValue(traitCollection, types)) * 0.5);
+  }
+  
+  public static int getSocialAttackValue( IGenericTraitCollection traitCollection, ITraitType... types ) {
+      return getTotalValue( traitCollection, types );
+  }
+  
   public static int getJoinBattle(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
     int baseValue = getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
     baseValue += equipment.getJoinBattleMod();
@@ -33,7 +50,6 @@ public class CharacterUtilities {
   public static int getKnockdownThreshold(IGenericTraitCollection traitCollection) {
     int baseValue = getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
     return Math.max(baseValue, 0);
-
   }
 
   public static int getKnockdownPool(IGenericCharacter character) {
@@ -59,50 +75,50 @@ public class CharacterUtilities {
 
   private static int getMaxValue(IGenericTraitCollection traitCollection, ITraitType second, ITraitType first) {
     return Math.max(traitCollection.getTrait(first).getCurrentValue(),
-            traitCollection.getTrait(second).getCurrentValue());
+                    traitCollection.getTrait(second).getCurrentValue());
   }
-
-  private static int getRoundDownDv(IGenericTraitCollection traitCollection, ITraitType... types) {
-    int sum = 0;
-    for (ITraitType type : types) {
-      sum += traitCollection.getTrait(type).getCurrentValue();
-    }
-    return sum / 2;
-  }
-
-  private static int getDv(ICharacterType characterType, IGenericTraitCollection traitCollection, ITraitType... types) {
-    if (!characterType.isEssenceUser()) {
-      return getRoundDownDv(traitCollection, types);
-    }
-    return getRoundUpDv(traitCollection, types);
-  }
-
-  public static int getRoundUpDv(IGenericTraitCollection traitCollection, ITraitType... types) {
-    int sum = 0;
-    for (ITraitType type : types) {
-      sum += traitCollection.getTrait(type).getCurrentValue();
-    }
-    return (int) Math.ceil(sum * 0.5);
-  }
-
-  public static int getTotalValue(IGenericTraitCollection traitCollection, ITraitType... types) {
+  
+  private static int getTotalValue(IGenericTraitCollection traitCollection, ITraitType... types) {
     int sum = 0;
     for (ITraitType type : types) {
       sum += traitCollection.getTrait(type).getCurrentValue();
     }
     return sum;
   }
-
-  public static int getDodgeDv(ICharacterType characterType, IGenericTraitCollection traitCollection,
-                               ICharacterStatsModifiers equipment) {
-    int dv;
-    int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
-    if (essenceValue > 1) {
-      dv = getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge, OtherTraitType.Essence);
-    } else {
-      dv = getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge);
+  
+  private static int getDodgeDvPool(IGenericTraitCollection traitCollection) {
+    int essence = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
+    int dvPool  = getTotalValue( traitCollection, AttributeType.Dexterity, AbilityType.Dodge );
+    if( essence >= 2 ) {
+        dvPool += essence;
     }
-    dv += equipment.getDDVMod() + equipment.getMobilityPenalty();
+    return dvPool;
+  }
+  
+  private static int getRoundedDodgeDv( ICharacterType characterType, int dvPool ) {
+    int dv;
+    if(characterType.isEssenceUser()) {
+      dv = (int) Math.ceil(dvPool * 0.5);
+    } else {
+      dv = dvPool / 2;
+    }
+    return dv;
+  }
+
+  public static int getDodgeDv(ICharacterType characterType,
+                               IGenericTraitCollection traitCollection,
+                               ICharacterStatsModifiers equipment) {
+    return getDodgeDvWithSpecialty( characterType, traitCollection, equipment, 0 );
+  }
+
+  public static int getDodgeDvWithSpecialty(ICharacterType characterType,
+                                            IGenericTraitCollection traitCollection,
+                                            ICharacterStatsModifiers equipment,
+                                            int specialty) {
+    int dvPool = getDodgeDvPool(traitCollection) + specialty; // + equipment.getDDVPoolMod()
+    int dv     = getRoundedDodgeDv(characterType, dvPool) +  equipment.getDDVMod() + equipment.getMobilityPenalty();
+    
     return Math.max(dv, 0);
   }
+  
 }
