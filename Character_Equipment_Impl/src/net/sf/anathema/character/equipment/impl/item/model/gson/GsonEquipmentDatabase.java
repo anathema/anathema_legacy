@@ -8,7 +8,6 @@ import net.sf.anathema.framework.itemdata.model.NonPersistableItemData;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +29,7 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
   public String[] getAllAvailableTemplateIds() {
     List<String> ids = Lists.newArrayList();
     for (File file : getAllItemFiles()) {
-      ids.add(FilenameUtils.getBaseName(file.getName()));
+      ids.add(loadTemplateFromFile(file).getName());
     }
     return ids.toArray(new String[ids.size()]);
   }
@@ -89,8 +88,12 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
   }
 
   private IEquipmentTemplate load(String templateId) {
+    File file = getTemplateFile(templateId);
+    return loadTemplateFromFile(file);
+  }
+
+  private IEquipmentTemplate loadTemplateFromFile(File file) {
     try {
-      File file = getTemplateFile(templateId);
       String json = FileUtils.readFileToString(file);
       return gson.fromJson(json);
     } catch (IOException e) {
