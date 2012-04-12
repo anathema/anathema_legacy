@@ -14,11 +14,13 @@ http://anathema.github.com
 * New preference: Allow equipment customization.
    Allows to overwrite an item's name and description to make it truly yours.
 * Equipment items have a "cost" statistic, which is not enforced.
-* Character loadout screen shows tooltips for items
 * Equipment cards are now out of beta.
+* Character loadout screen shows tooltips for items
 * [Shadow493] Added missing Lunar templates from DotFA.
 * [Jesse Belanger] Added Charm descriptions for Infernals. Most texts taken from the official Wiki.
 * [Curtis Tasker] The character sheet now adds the highest Dodge specialty to the Dodge DV
+* We now import custom charms from your repository, if the data files are provided. Consult the provided
+  "Custom Charms.txt" for basic instructions.
 
 -- Bugfixes --
 * Charm Cards now sport the beautiful icons by Democritus.
