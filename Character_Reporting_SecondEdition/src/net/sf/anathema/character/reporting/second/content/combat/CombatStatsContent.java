@@ -29,7 +29,7 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
     return getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
   }
   
-  public String getNormalSpecialtyLabel() {
+  public String getDodgeSpecialtyLabel() {
     return getString( "Sheet.Combat.NormalSpecialty" ) + dodgeSpecialty; //$NON-NLS-1$
   }
 

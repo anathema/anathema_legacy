@@ -50,7 +50,6 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(2, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(graphics, 0, joinLabel, joinBattle);
-    // Only display the specialty if it is different than the normal dodge dv
     if( dodgeDV != dodgeDVWithSpecialty ) {
       encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeDV, dodgeDVWithSpecialty);
       encoder.addComment(graphics, dodgeSpecialtyLabel, 1);
