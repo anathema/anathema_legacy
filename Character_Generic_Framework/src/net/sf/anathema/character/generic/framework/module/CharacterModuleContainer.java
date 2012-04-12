@@ -6,17 +6,17 @@ import net.sf.anathema.character.generic.framework.module.object.ICharacterModul
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.IResourceData;
 
 public class CharacterModuleContainer {
 
   private final CharacterGenerics characterGenerics;
-  private final IResources resources;
+  private final IResourceData resourceData;
 
-  public CharacterModuleContainer(IResources resources, IDataFileProvider dataFileProvider, Instantiater instantiater)
+  public CharacterModuleContainer(IResourceData resourceData, IDataFileProvider dataFileProvider, Instantiater instantiater)
           throws InitializationException {
-    this.resources = resources;
-    this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater, resources);
+    this.resourceData = resourceData;
+    this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater, resourceData.getDataProvider());
     initializeBasicModuleSoOtherModulesCanDependOnIt();
   }
 
@@ -27,7 +27,7 @@ public class CharacterModuleContainer {
     module.addBackgroundTemplates(characterGenerics);
     module.addCharacterTemplates(characterGenerics);
     module.addAdditionalTemplateData(characterGenerics);
-    module.addReportTemplates(characterGenerics, resources);
+    module.addReportTemplates(characterGenerics, resourceData.getUIResources());
     characterGenerics.getModuleObjectMap().addModule(module);
   }
 

@@ -17,7 +17,8 @@ import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
+import net.sf.anathema.lib.resources.IResourceData;
 
 public class AnathemaModel implements IAnathemaModel {
 
@@ -29,10 +30,12 @@ public class AnathemaModel implements IAnathemaModel {
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final Repository repository;
   private final AnathemaMessaging messaging;
+  private final IExtensibleDataSetProvider dataSetProvider;
 
-  public AnathemaModel(File repositoryFolder, IResources resources) {
+  public AnathemaModel(File repositoryFolder, IResourceData resourceData) {
     this.repository = new Repository(repositoryFolder, itemManagment);
-    this.messaging = new AnathemaMessaging(resources);
+    this.messaging = new AnathemaMessaging(resourceData.getUIResources());
+    this.dataSetProvider = resourceData.getDataProvider();
   }
 
   public final IRepository getRepository() {
@@ -69,5 +72,10 @@ public class AnathemaModel implements IAnathemaModel {
 
   public IAnathemaMessageContainer getMessageContainer() {
     return messaging;
+  }
+
+  @Override
+  public IExtensibleDataSetProvider getDataSetProvider() {
+	return dataSetProvider;
   }
 }

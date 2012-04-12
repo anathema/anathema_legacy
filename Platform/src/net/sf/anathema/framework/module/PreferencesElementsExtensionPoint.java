@@ -8,7 +8,7 @@ import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElemen
 import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.IResourceData;
 
 @Extension(id="net.sf.anathema.framework.module.PreferencesElementsExtensionPoint")
 public class PreferencesElementsExtensionPoint implements IAnathemaExtension {
@@ -16,7 +16,7 @@ public class PreferencesElementsExtensionPoint implements IAnathemaExtension {
   public static final String ID = PreferencesElementsExtensionPoint.class.getName();
   private final List<IPreferencesElement> elements = new ArrayList<IPreferencesElement>();
 
-  public void initialize(IResources resources, IDataFileProvider dataFileProvider, Instantiater instantiater) {
+  public void initialize(IResourceData resourceData, IDataFileProvider dataFileProvider, Instantiater instantiater) {
     // nothing to do
   }
 

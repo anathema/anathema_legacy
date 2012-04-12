@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.framework.module.object.ICharacterModul
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.IResourceData;
 
 import java.util.Collection;
 
@@ -19,8 +19,8 @@ public class CharacterModuleContainerInitializer {
     this.instantiater = instantiater;
   }
 
-  public CharacterModuleContainer initContainer(IResources resources, IDataFileProvider dataFileProvider) throws InitializationException {
-    CharacterModuleContainer container = new CharacterModuleContainer(resources, dataFileProvider, instantiater);
+  public CharacterModuleContainer initContainer(IResourceData resourceData, IDataFileProvider dataFileProvider) throws InitializationException {
+    CharacterModuleContainer container = new CharacterModuleContainer(resourceData, dataFileProvider, instantiater);
     Collection<ICharacterModule<ICharacterModuleObject>> modules = instantiater.instantiateAll(CharacterModule.class);
     for (ICharacterModule<ICharacterModuleObject> module : modules) {
       container.addCharacterGenericsModule(module);

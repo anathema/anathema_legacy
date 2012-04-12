@@ -7,14 +7,18 @@ import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.AnathemaResources;
+import net.sf.anathema.framework.resources.ExtensibleDataManager;
 import net.sf.anathema.framework.view.AnathemaView;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
 import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
+import net.sf.anathema.lib.resources.IResourceData;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.ResourceDataPackage;
 
 import java.util.Collection;
 import java.util.Set;
@@ -40,11 +44,12 @@ public class AnathemaInitializer {
 
   public IAnathemaView initialize() throws InitializationException {
 	AnathemaResources resources = initResources();
+	ExtensibleDataManager dataSetManager = new ExtensibleDataManager();
     initializePlugins(reflections);
-    initializeExtensibleResources(reflections, resources);
+    initializeExtensibleResources(reflections, dataSetManager);
     ProxySplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
-    IAnathemaModel anathemaModel = initModel(resources);
+    IAnathemaModel anathemaModel = initModel(new ResourceDataPackage(resources, dataSetManager));
     IAnathemaView view = initView(resources);
     new AnathemaPresenter(anathemaModel, view, resources, itemTypeCollection.getItemTypes(), instantiater).initPresentation();
     return view;
@@ -83,12 +88,12 @@ public class AnathemaInitializer {
 	}
   }
 
-  private IAnathemaModel initModel(IResources resources) throws InitializationException {
+  private IAnathemaModel initModel(IResourceData resourceData) throws InitializationException {
     ProxySplashscreen.getInstance().displayStatusMessage("Creating Model..."); //$NON-NLS-1$
     return new AnathemaModelInitializer(
             anathemaPreferences,
             itemTypeCollection.getItemTypes(),
-            extensionCollection, instantiater).initializeModel(resources);
+            extensionCollection, instantiater).initializeModel(resourceData);
   }
 
   private IAnathemaView initView(IResources resources) {

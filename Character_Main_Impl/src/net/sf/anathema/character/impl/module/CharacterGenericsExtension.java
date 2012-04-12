@@ -9,6 +9,7 @@ import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
+import net.sf.anathema.lib.resources.IResourceData;
 import net.sf.anathema.lib.resources.IResources;
 
 @Extension(id="net.sf.anathema.character.generic.framework.ICharacterGenericsExtension")
@@ -17,9 +18,9 @@ public class CharacterGenericsExtension implements ICharacterGenericsExtension, 
   private ICharacterGenerics characterGenerics;
 
   @Override
-  public void initialize(IResources resources, IDataFileProvider dataFileProvider, Instantiater instantiater) throws InitializationException {
+  public void initialize(IResourceData resourceData, IDataFileProvider dataFileProvider, Instantiater instantiater) throws InitializationException {
     CharacterModuleContainer container = new CharacterModuleContainerInitializer(instantiater).initContainer(
-        resources,
+        resourceData,
         dataFileProvider);
     this.characterGenerics = container.getCharacterGenerics();
   }

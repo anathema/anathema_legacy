@@ -40,7 +40,7 @@ public class ShowCharmEntryAction extends SmartAction {
   protected void execute(Component parentComponent) {
     parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     try {
-      ICharmEntryModel model = new WizardCharmEntryModel(resources);
+      ICharmEntryModel model = new WizardCharmEntryModel(null); // need to figure this one out
       ICharmEntryViewFactory viewFactory = new CharmEntryViewFactory(resources);
       HeaderDataEntryPage startPage = new HeaderDataEntryPage(resources, model, viewFactory);
       WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);

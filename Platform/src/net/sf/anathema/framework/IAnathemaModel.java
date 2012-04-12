@@ -11,6 +11,7 @@ import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
 
 public interface IAnathemaModel {
 
@@ -31,4 +32,6 @@ public interface IAnathemaModel {
   IAnathemaMessaging getMessaging();
 
   IAnathemaMessageContainer getMessageContainer();
+  
+  IExtensibleDataSetProvider getDataSetProvider();
 }

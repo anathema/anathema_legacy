@@ -4,6 +4,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
+import net.sf.anathema.lib.resources.IResourceData;
 import net.sf.anathema.lib.resources.IResources;
 
 //@Menu

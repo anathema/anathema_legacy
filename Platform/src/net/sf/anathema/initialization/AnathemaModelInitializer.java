@@ -8,7 +8,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
-import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.IResourceData;
 
 import java.io.File;
 import java.util.Collection;
@@ -30,10 +30,10 @@ public class AnathemaModelInitializer {
     this.instantiater = instantiater;
   }
 
-  public IAnathemaModel initializeModel(IResources resources) throws InitializationException {
-    AnathemaModel model = createModel(resources);
+  public IAnathemaModel initializeModel(IResourceData resourceData) throws InitializationException {
+    AnathemaModel model = createModel(resourceData);
     for (ExtensionWithId extension : extensions) {
-      extension.register(model, resources, instantiater);
+      extension.register(model, resourceData, instantiater);
     }
     for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
@@ -44,9 +44,9 @@ public class AnathemaModelInitializer {
     return model;
   }
 
-  private AnathemaModel createModel(IResources resources) throws InitializationException {
+  private AnathemaModel createModel(IResourceData resourceData) throws InitializationException {
     try {
-      return new AnathemaModel(createRepositoryFolder(), resources);
+      return new AnathemaModel(createRepositoryFolder(), resourceData);
     }
     catch (RepositoryException e) {
       throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e); //$NON-NLS-1$
