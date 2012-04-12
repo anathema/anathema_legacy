@@ -50,12 +50,8 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(2, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(graphics, 0, joinLabel, joinBattle);
-    if( dodgeDV != dodgeDVWithSpecialty ) {
-      encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeDV, dodgeDVWithSpecialty);
-      encoder.addComment(graphics, dodgeSpecialtyLabel, 1);
-    } else {
-      encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeDV);
-    }
+
+    displayDodgeWithSpecialty(graphics, encoder, dodgeLabel, dodgeDV, dodgeDVWithSpecialty, dodgeSpecialtyLabel);
     upperLeftCorner = new Position(bounds.x, bounds.getMaxY() - 25);
     encoder = new LabelledValueEncoder(2, upperLeftCorner, bounds.width, 3);
 
@@ -73,5 +69,14 @@ public class SecondEditionDBTCombatEncoder implements ContentEncoder {
   @Override
   public String getHeader(ReportSession session) {
     return resources.getString("Sheet.Header.Lunar.WarForm.CombatValues");
+  }
+  
+  private void displayDodgeWithSpecialty( SheetGraphics graphics, LabelledValueEncoder encoder, String dodgeLabel, int dodgeDV, int dodgeDVWithSpecialty, String dodgeSpecialtyLabel ) {
+      if( dodgeDV != dodgeDVWithSpecialty ) {
+        encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeDV, dodgeDVWithSpecialty);
+        encoder.addComment(graphics, dodgeSpecialtyLabel, 1);
+      } else {
+        encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeDV);
+      }
   }
 }
