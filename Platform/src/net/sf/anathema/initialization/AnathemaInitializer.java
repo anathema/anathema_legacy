@@ -13,10 +13,7 @@ import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
-import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
-import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
-import net.sf.anathema.lib.resources.IResourceData;
+import net.sf.anathema.lib.resources.IResourceDataManager;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.ResourceDataPackage;
 
@@ -24,8 +21,6 @@ import java.util.Collection;
 import java.util.Set;
 
 public class AnathemaInitializer {
-
-  private static final Logger logger = Logger.getLogger(AnathemaInitializer.class);
 	
   private final IAnathemaPreferences anathemaPreferences;
   private final ItemTypeConfigurationCollection itemTypeCollection;
@@ -46,10 +41,9 @@ public class AnathemaInitializer {
 	AnathemaResources resources = initResources();
 	ExtensibleDataManager dataSetManager = new ExtensibleDataManager();
     initializePlugins(reflections);
-    initializeExtensibleResources(reflections, dataSetManager);
     ProxySplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
-    IAnathemaModel anathemaModel = initModel(new ResourceDataPackage(resources, dataSetManager));
+    IAnathemaModel anathemaModel = initModel(new ResourceDataPackage(resources, dataSetManager, dataSetManager));
     IAnathemaView view = initView(resources);
     new AnathemaPresenter(anathemaModel, view, resources, itemTypeCollection.getItemTypes(), instantiater).initPresentation();
     return view;
@@ -65,35 +59,13 @@ public class AnathemaInitializer {
       }
     }
   }
-  
-  private void initializeExtensibleResources(AnathemaReflections reflections, IExtensibleDataSetRegistry registry) throws InitializationException {
-	Collection<IExtensibleDataSetCompiler> compilers =
-				instantiater.instantiateAll(ExtensibleDataSetCompiler.class);
-	for (IExtensibleDataSetCompiler compiler : compilers) {
-	  try {
-		ProxySplashscreen.getInstance().displayStatusMessage(compiler.getSplashStatusString());
-		getDataFilesFromReflection(reflections, compiler);
-		registry.addDataSet(compiler.build());
-	  } catch (Exception e) {
-        throw new InitializationException("Failed to start plugin.", e);
-      }
-	}
-  }
-  
-  private void getDataFilesFromReflection(AnathemaReflections reflections, IExtensibleDataSetCompiler compiler) throws Exception {
-	Set<String> files = reflections.getResourcesMatching(compiler.getRecognitionPattern());
-	logger.info(compiler.getName() + ": Found "+ files.size() +" data files.");
-	for (String file : files) {
-		compiler.registerFile(file, reflections.getClassLoaderForResource(file));
-	}
-  }
 
-  private IAnathemaModel initModel(IResourceData resourceData) throws InitializationException {
+  private IAnathemaModel initModel(IResourceDataManager resourceDataManager) throws InitializationException {
     ProxySplashscreen.getInstance().displayStatusMessage("Creating Model..."); //$NON-NLS-1$
     return new AnathemaModelInitializer(
             anathemaPreferences,
             itemTypeCollection.getItemTypes(),
-            extensionCollection, instantiater).initializeModel(resourceData);
+            extensionCollection, instantiater).initializeModel(resourceDataManager, reflections);
   }
 
   private IAnathemaView initView(IResources resources) {

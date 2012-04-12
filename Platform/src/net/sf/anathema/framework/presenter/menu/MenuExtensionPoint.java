@@ -6,15 +6,19 @@ import java.util.List;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.Instantiater;
+import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.resources.IResourceData;
+import net.sf.anathema.lib.resources.IResourceDataManager;
 
 @Extension(id="Menu.Extra")
 public class MenuExtensionPoint implements IAnathemaExtension, IMenuExtensionPoint {
 
   private final List<IMenuItem> menuItems = new ArrayList<IMenuItem>();
 
-  public void initialize(IResourceData resourceData, IDataFileProvider dataFileProvider, Instantiater instantiater) {
+  public void initialize(IResourceDataManager resourceDataManager,
+		  IDataFileProvider dataFileProvider,
+		  AnathemaReflections reflections,
+		  Instantiater instantiater) {
     // nothing to do
   }
 
