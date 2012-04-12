@@ -19,7 +19,7 @@ public class CombatValueEncoder implements IContentEncoder {
     // Only display the specialty if it is different than the normal dodge dv
     if( content.getDodgeDv() != content.getDodgeDvWithSpecialty() ) {
         encoder.addLabelledValue(graphics, 1, content.getDodgeLabel(), content.getDodgeDv(), content.getDodgeDvWithSpecialty());
-        encoder.addComment(graphics, content.getDodgeSpecialtyLabel(), 1);
+        encoder.addComment(graphics, content.getNormalSpecialtyLabel(), 1);
     } else {
         encoder.addLabelledValue(graphics, 1, content.getDodgeLabel(), content.getDodgeDv());
     }

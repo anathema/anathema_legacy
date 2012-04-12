@@ -6,10 +6,7 @@ import net.sf.anathema.character.generic.social.ISocialCombatStats;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 
-import static net.sf.anathema.character.generic.impl.CharacterUtilities.getRoundUpDv;
-import static net.sf.anathema.character.generic.impl.CharacterUtilities.getTotalValue;
-import static net.sf.anathema.character.generic.traits.types.AttributeType.Charisma;
-import static net.sf.anathema.character.generic.traits.types.AttributeType.Manipulation;
+import net.sf.anathema.character.generic.impl.CharacterUtilities;
 
 public abstract class AbstractSocialAttack implements ISocialCombatStats {
 
@@ -23,33 +20,25 @@ public abstract class AbstractSocialAttack implements ISocialCombatStats {
 
   @Override
   public final int getDeceptionAttackValue() {
-    return getSocialAttackValue(Manipulation);
+    return CharacterUtilities.getSocialAttackValue(collection, AttributeType.Manipulation, getName());
   }
 
   @Override
   public final int getDeceptionMDV() {
-    return getParryMdv(Manipulation);
+    return CharacterUtilities.getParryMdv(collection, equipmentModifiers, AttributeType.Manipulation, getName());
   }
 
   @Override
   public final int getHonestyAttackValue() {
-    return getSocialAttackValue(Charisma);
+    return CharacterUtilities.getSocialAttackValue(collection, AttributeType.Charisma, getName());
   }
 
   @Override
   public final int getHonestyMDV() {
-    return getParryMdv(Charisma);
+    return CharacterUtilities.getParryMdv(collection, equipmentModifiers, AttributeType.Charisma, getName());
   }
 
   @Override
   public abstract ITraitType getName();
 
-  private int getSocialAttackValue(AttributeType type) {
-    return getTotalValue(collection, type, getName());
-  }
-
-  private int getParryMdv(AttributeType type) {
-    // switch to CharacterUtilities.getParryMdv() ?
-    return getRoundUpDv(collection, type, getName()) + equipmentModifiers.getMPDVMod();
-  }
 }

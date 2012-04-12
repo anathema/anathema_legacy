@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.second.content.combat;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
+import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.reporting.pdf.content.combat.AbstractCombatStatsContent;
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
 import net.sf.anathema.character.reporting.pdf.content.general.QualifiedText;
@@ -13,8 +14,11 @@ import static net.sf.anathema.character.reporting.pdf.content.general.TextType.N
 
 public class CombatStatsContent extends AbstractCombatStatsContent {
 
+  private HighestSpecialty dodgeSpecialty;
+
   protected CombatStatsContent(IGenericCharacter character, IResources resources) {
     super(resources, character);
+    dodgeSpecialty = new HighestSpecialty( character, AbilityType.Dodge );
   }
 
   public String getJoinLabel() {
@@ -25,8 +29,8 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
     return getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
   }
   
-  public String getDodgeSpecialtyLabel() {
-    return getString( "Sheet.Combat.DodgeDVSpecialty" ); //$NON-NLS-1$
+  public String getNormalSpecialtyLabel() {
+    return getString( "Sheet.Combat.NormalSpecialty" ) + dodgeSpecialty; //$NON-NLS-1$
   }
 
   public int getJoinBattle() {
@@ -38,7 +42,7 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   }
 
   public int getDodgeDvWithSpecialty() {
-    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraitCollection(), getEquipment(), getCharacter().getSpecialties( AbilityType.Dodge ));
+    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraitCollection(), getEquipment(), dodgeSpecialty.getValue());
   }
   
   public String[] getAttacks() {
