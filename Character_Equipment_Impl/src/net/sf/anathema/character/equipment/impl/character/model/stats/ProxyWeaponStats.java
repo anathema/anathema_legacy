@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
+import com.google.common.base.Objects;
 import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.AccuracyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
@@ -54,13 +54,10 @@ public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IPr
   @Override
   public boolean equals(Object obj) {
     if (!(obj instanceof ProxyWeaponStats)) {
-      if (delegate instanceof IWeaponStats) {
-    	  return delegate.equals(obj);
-      }
-      return false;
+      return delegate != null && delegate.equals(obj);
     }
     ProxyWeaponStats other = (ProxyWeaponStats) obj;
-    return ObjectUtilities.equals(delegate, other.delegate) && ObjectUtilities.equals(material, other.material);
+    return Objects.equal(delegate, other.delegate) && Objects.equal(material, other.material);
   }
 
   @Override
