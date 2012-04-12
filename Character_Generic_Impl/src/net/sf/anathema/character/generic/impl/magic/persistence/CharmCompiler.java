@@ -63,13 +63,13 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   	return "Compiling Charm Sets...";
   }
   
-  public void registerFile(String filePath) throws Exception {
+  public void registerFile(String filePath, ClassLoader loader) throws Exception {
 	  Matcher matcher = Pattern.compile(Charm_Data_Extraction_Pattern).matcher(filePath);
       matcher.matches();
       String typeString = matcher.group(1);
       String ruleString = matcher.group(2);
       
-      URL resource = getClass().getClassLoader().getResource(filePath);
+      URL resource = loader.getResource(filePath);
       if (resource == null) {
         throw new Exception(format("No resource found at {0} for {1}, {2}.", filePath, typeString, ruleString));
       }

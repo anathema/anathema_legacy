@@ -8,4 +8,6 @@ public interface AnathemaReflections {
   Set<Class<?>> getTypesAnnotatedWith(Class<? extends Annotation> annotation);
 
   Set<String> getResourcesMatching(String namepattern);
+  
+  ClassLoader getClassLoaderForResource(String resource);
 }

@@ -1,6 +1,5 @@
 package net.sf.anathema.initialization;
 
-import com.google.common.base.Function;
 import net.disy.commons.core.exception.CentralExceptionHandling;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -18,10 +17,7 @@ import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
-
-import static com.google.common.collect.Collections2.transform;
 
 public class AnathemaInitializer {
 
@@ -35,7 +31,7 @@ public class AnathemaInitializer {
 
   public AnathemaInitializer(IAnathemaPreferences anathemaPreferences)
           throws InitializationException {
-    this.reflections = new DefaultAnathemaReflections();
+    this.reflections = new DefaultAnathemaReflections(anathemaPreferences);
     this.instantiater = new ReflectionsInstantiater(reflections);
     this.itemTypeCollection = new ItemTypeConfigurationCollection(instantiater);
     this.extensionCollection = new AnathemaExtensionCollection(instantiater);
@@ -83,7 +79,7 @@ public class AnathemaInitializer {
 	Set<String> files = reflections.getResourcesMatching(compiler.getRecognitionPattern());
 	logger.info(compiler.getName() + ": Found "+ files.size() +" data files.");
 	for (String file : files) {
-		compiler.registerFile(file);
+		compiler.registerFile(file, reflections.getClassLoaderForResource(file));
 	}
   }
 
@@ -105,16 +101,13 @@ public class AnathemaInitializer {
     AnathemaResources resources = new AnathemaResources();
     ProxySplashscreen.getInstance().displayStatusMessage("Loading Resources..."); //$NON-NLS-1$
     Set<String> resourcesInPaths = reflections.getResourcesMatching(".*\\.properties");
-    Collection<String> bundlesInPackages = transform(resourcesInPaths, new ToBundleName());
-    for (String resource : new HashSet<String>(bundlesInPackages)) {
-      resources.addResourceBundle(resource, getClass().getClassLoader());
+    for (String resource : resourcesInPaths) {
+      resources.addResourceBundle(toBundleName(resource), reflections.getClassLoaderForResource(resource));
     }
     return resources;
   }
 
-  private static class ToBundleName implements Function<String, String> {
-    @Override
-    public String apply(String input) {
+  private String toBundleName(String input) {
       String resourceName = input.replace("/", ".").replace(".properties", "");
       boolean isInternationalizationFile = resourceName.matches(".*_..");
       if (isInternationalizationFile) {
@@ -122,6 +115,5 @@ public class AnathemaInitializer {
       } else {
         return resourceName;
       }
-    }
   }
 }

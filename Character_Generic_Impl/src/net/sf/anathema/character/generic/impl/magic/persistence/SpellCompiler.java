@@ -55,8 +55,8 @@ public class SpellCompiler implements IExtensibleDataSetCompiler {
 	}
 	
 	@Override
-	public void registerFile(String fileName) throws Exception {
-		URL resource = getClass().getClassLoader().getResource(fileName);
+	public void registerFile(String fileName, ClassLoader loader) throws Exception {
+		URL resource = loader.getResource(fileName);
 	    if (resource == null) {
 	      throw new Exception(format("No resource found at {0}.", fileName));
 	    }

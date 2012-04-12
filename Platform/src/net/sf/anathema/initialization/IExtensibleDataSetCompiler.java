@@ -9,7 +9,7 @@ public interface IExtensibleDataSetCompiler {
 	
 	String getSplashStatusString();
 	
-	void registerFile(String fileName) throws Exception;
+	void registerFile(String fileName, ClassLoader loader) throws Exception;
 	
 	IExtensibleDataSet build();
 }
