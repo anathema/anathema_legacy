@@ -88,12 +88,6 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
     return getTemplateFile(templateId).exists();
   }
 
-  private File getTemplateFile(String editTemplateId) {
-    String nameWithSlashes = FilenameUtils.separatorsToUnix(editTemplateId);
-    String nameWithDashes = nameWithSlashes.replace("/", "-");
-    return new File(databaseDirectory, nameWithDashes + ".item");
-  }
-
   private IEquipmentTemplate load(String templateId) {
     try {
       File file = getTemplateFile(templateId);
@@ -111,5 +105,10 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  private File getTemplateFile(String editTemplateId) {
+    String cleaned = new FilenameCleaner().clean(editTemplateId);
+    return new File(databaseDirectory, cleaned + ".item");
   }
 }
