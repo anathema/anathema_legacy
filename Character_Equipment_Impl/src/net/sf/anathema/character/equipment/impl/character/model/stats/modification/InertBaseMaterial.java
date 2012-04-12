@@ -34,9 +34,6 @@ public class InertBaseMaterial implements BaseMaterial {
   
   @Override
   public boolean equals(Object obj) {
-	  if (obj instanceof InertBaseMaterial) {
-		  return true;
-	  }
-	  return false;
+	  return obj instanceof InertBaseMaterial;
   }
 }

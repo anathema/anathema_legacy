@@ -25,66 +25,82 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
     this.name = new Identificate(name);
   }
 
+  @Override
   public int getAccuracy() {
     return stats.getAccuracy();
   }
 
+  @Override
   public int getDamage() {
     return stats.getDamage();
   }
   
+  @Override
   public int getMinimumDamage() {
 	return stats.getMinimumDamage();
   }
 
+  @Override
   public ITraitType getDamageTraitType() {
     return stats.getDamageTraitType();
   }
 
+  @Override
   public HealthType getDamageType() {
     return stats.getDamageType();
   }
 
+  @Override
   public Integer getDefence() {
     return stats.getDefence();
   }
   
+  @Override
   public int getMobilityPenalty() {
 	return stats.getMobilityPenalty();
   }
 
+  @Override
   public Integer getRange() {
     return stats.getRange();
   }
 
+  @Override
   public Integer getRate() {
     return stats.getRate();
   }
 
+  @Override
   public int getSpeed() {
     return stats.getSpeed();
   }
 
+  @Override
   public IIdentificate[] getTags() {
     return stats.getTags();
   }
 
+  @Override
   public ITraitType getTraitType() {
     return ability;
   }
 
+  @Override
   public boolean inflictsNoDamage() {
     return stats.inflictsNoDamage();
   }
 
+  @Override
   public boolean isRangedCombat() {
     return stats.isRangedCombat();
   }
 
+  @Override
   public IEquipmentStats[] getViews() {
     return new IEquipmentStats[] { this };
   }
 
+  @Override
   public IIdentificate getName() {
     return name;
   }
