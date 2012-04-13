@@ -186,6 +186,7 @@
           <!-- NOTE:  Solar Mirror - Adamant Skin Technique -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
      <charm id="Abyssal.RestlessAsTheDead" exalt="Abyssal" group="Resistance">
           <prerequisite>

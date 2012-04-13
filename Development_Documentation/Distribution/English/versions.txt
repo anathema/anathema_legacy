@@ -36,6 +36,7 @@ http://anathema.github.com
 * (Infernal) "Past Life" Background shows plain english name
 * (Sidereal/Craft) "World-Shaping Artistic Vision" has no repurchases
 * (Abyssal) Updated Mirrored Charms for Exalted 2.5
+* (Abyssal/Resistance) "Wounds Mean Nothing" shows all sources
 
 ===------------------------------------------------------------------------------===
 			Release 4.0.0 "Sperimin"
