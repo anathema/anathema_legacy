@@ -93,10 +93,11 @@
      </charm>
      <charm id="Abyssal.WitheringFeatheredMaelstrom" exalt="Abyssal" group="Archery">
           <prerequisite>
-               <essence value="1" />
+               <trait id="Archery" value="3" />
+               <essence value="2" />
           </prerequisite>
           <cost>
-               <essence cost="2" text="or 3m per attack" />
+               <essence cost="1" text="or 2m per attack" />
           </cost>
           <duration duration="Instant" />
           <charmtype type="ExtraAction" />
