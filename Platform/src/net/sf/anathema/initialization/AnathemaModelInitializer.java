@@ -5,7 +5,6 @@ import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 import net.sf.anathema.framework.model.AnathemaModel;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
@@ -32,11 +31,10 @@ public class AnathemaModelInitializer {
     this.instantiater = instantiater;
   }
 
-  public IAnathemaModel initializeModel(IResourceDataManager resourceDataManager,
-		  AnathemaReflections reflections) throws InitializationException {
+  public IAnathemaModel initializeModel(IResourceDataManager resourceDataManager) throws InitializationException {
     AnathemaModel model = createModel(resourceDataManager);
     for (ExtensionWithId extension : extensions) {
-      extension.register(model, resourceDataManager, reflections, instantiater);
+      extension.register(model, resourceDataManager, instantiater);
     }
     for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());

@@ -2,7 +2,6 @@ package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.model.AnathemaModel;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.lib.resources.IResourceDataManager;
 
 public class ExtensionWithId {
@@ -15,8 +14,8 @@ public class ExtensionWithId {
     this.extension = extension;
   }
 
-  public void register(AnathemaModel model, IResourceDataManager resourceDataManager, AnathemaReflections reflections, Instantiater instantiater) throws InitializationException {
-    extension.initialize(resourceDataManager, model.getRepository(), reflections, instantiater);
+  public void register(AnathemaModel model, IResourceDataManager resourceDataManager, Instantiater instantiater) throws InitializationException {
+    extension.initialize(resourceDataManager, model.getRepository(), instantiater);
     model.getExtensionPointRegistry().register(id, extension);
   }
 }

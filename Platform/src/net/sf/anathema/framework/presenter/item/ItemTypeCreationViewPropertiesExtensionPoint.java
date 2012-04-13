@@ -5,7 +5,6 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.Instantiater;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResourceDataManager;
@@ -18,7 +17,6 @@ public class ItemTypeCreationViewPropertiesExtensionPoint extends Registry<IItem
 
   public void initialize(IResourceDataManager resourceDataManager,
 		  IDataFileProvider dataFileProvider,
-		  AnathemaReflections reflections,
 		  Instantiater instantiater) {
     // nothing to do
   }

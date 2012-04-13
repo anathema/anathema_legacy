@@ -4,7 +4,6 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResourceDataManager;
 
@@ -18,7 +17,6 @@ public class CharmEditionExtension implements CharmEditor, IAnathemaExtension {
   @Override
   public void initialize(IResourceDataManager resourceDataManager,
 		  IDataFileProvider dataFileProvider,
-		  AnathemaReflections reflections,
 		  Instantiater instantiater) throws InitializationException {
     // nothing to do
   }

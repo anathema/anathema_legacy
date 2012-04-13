@@ -20,9 +20,8 @@ public class CharacterGenericsExtension implements ICharacterGenericsExtension, 
   @Override
   public void initialize(IResourceDataManager resourceDataManager,
 		  IDataFileProvider dataFileProvider,
-		  AnathemaReflections reflections, 
 		  Instantiater instantiater) throws InitializationException {
-    CharacterModuleContainer container = new CharacterModuleContainerInitializer(instantiater, reflections).initContainer(
+    CharacterModuleContainer container = new CharacterModuleContainerInitializer(instantiater).initContainer(
         resourceDataManager,
         dataFileProvider);
     this.characterGenerics = container.getCharacterGenerics();

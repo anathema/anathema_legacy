@@ -14,6 +14,7 @@ import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.lib.resources.IAnathemaResourceFile;
+import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
 import net.sf.anathema.lib.resources.IResourceDataManager;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.ResourceDataPackage;
@@ -41,7 +42,7 @@ public class AnathemaInitializer {
   public IAnathemaView initialize() throws InitializationException {
 	AnathemaResources resources = initResources();
 	ExtensibleDataManager dataSetManager = new ExtensibleDataManager();
-    initializePlugins(reflections);
+    initializePlugins(reflections, dataSetManager);
     ProxySplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(new ResourceDataPackage(resources, dataSetManager, dataSetManager));
@@ -50,11 +51,11 @@ public class AnathemaInitializer {
     return view;
   }
 
-  private void initializePlugins(AnathemaReflections reflections) throws InitializationException {
+  private void initializePlugins(AnathemaReflections reflections, IExtensibleDataSetRegistry registry) throws InitializationException {
     Collection<Startable> startablePlugins = instantiater.instantiateAll(Plugin.class);
     for (Startable startablePlugin : startablePlugins) {
       try {
-        startablePlugin.doStart(reflections);
+        startablePlugin.doStart(reflections, registry);
       } catch (Exception e) {
         throw new InitializationException("Failed to start plugin.", e);
       }
@@ -66,7 +67,7 @@ public class AnathemaInitializer {
     return new AnathemaModelInitializer(
             anathemaPreferences,
             itemTypeCollection.getItemTypes(),
-            extensionCollection, instantiater).initializeModel(resourceDataManager, reflections);
+            extensionCollection, instantiater).initializeModel(resourceDataManager);
   }
 
   private IAnathemaView initView(IResources resources) {
