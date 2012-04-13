@@ -17,7 +17,6 @@ import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.resources.ResourceCollection;
 
 import javax.swing.Icon;
 
@@ -39,8 +38,8 @@ public final class CharmCascadeItemTypeConfiguration extends AbstractNonPersista
         CharmCascadeModuleView view = new CharmCascadeModuleView(printName, icon);
         ICharacterGenerics characterGenerics = CharacterGenericsExtractor.getGenerics(anathemaModel);
         MagicDescriptionProvider magicDescriptionProvider = getCharmDescriptionProvider();
-        new CascadePresenter(new ResourceCollection(resources, anathemaModel.getDataSetProvider()),
-        		characterGenerics, view, magicDescriptionProvider).initPresentation();
+        new CascadePresenter(resources, characterGenerics,
+        		view, magicDescriptionProvider).initPresentation();
         return view;
       }
 

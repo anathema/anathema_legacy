@@ -9,18 +9,18 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.lib.resources.IResourceCollection;
+import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class CascadePresenter extends AbstractCascadePresenter implements ICascadePresenter {
 
   private final CharmTreeIdentificateMap treeIdentificateMap = new CharmTreeIdentificateMap();
 
-  public CascadePresenter(IResourceCollection resourceData, ICharacterGenerics generics, ICascadeViewFactory factory,
+  public CascadePresenter(IResources resources, ICharacterGenerics generics, ICascadeViewFactory factory,
                           MagicDescriptionProvider magicDescriptionProvider) {
-    super(resourceData.getUIResources());
-    ICharmCache cache = resourceData.getDataProvider().getDataSet(ICharmCache.class);
-    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resourceData.getUIResources(),
+    super(resources);
+    ICharmCache cache = generics.getDataSet(ICharmCache.class);
+    CascadeCharmTreeViewProperties viewProperties = new CascadeCharmTreeViewProperties(resources,
             magicDescriptionProvider, generics, cache, treeIdentificateMap);
     ICascadeView view = factory.createCascadeView(viewProperties);
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
