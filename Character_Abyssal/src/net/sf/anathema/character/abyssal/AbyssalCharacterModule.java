@@ -29,7 +29,7 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
 
   public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_LIEGE = "Liege"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SPIES = "Spies"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_SPIES = "AbyssalSpies"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_UNDERWORLD_MANSE = "UnderworldManse"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_WHISPERS = "Whispers"; //$NON-NLS-1$
 
@@ -54,7 +54,7 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
 
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_LIEGE, abyssalTemplateType));
 
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SPIES, abyssalTemplateType));// -- Should be available, but complains of a duplicated background if I uncomment it.
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SPIES, abyssalTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_UNDERWORLD_MANSE, abyssalTemplateType));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_WHISPERS, ABYSSAL));
   }
