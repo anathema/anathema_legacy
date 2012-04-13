@@ -64,7 +64,7 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
 
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_LIEGE, loyalAbyssalTemplateType));
 
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SPIES, loyalAbyssalTemplateType));
+   // backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SPIES, loyalAbyssalTemplateType)); -- Should be available, but complains of a duplicated background if I uncomment it.
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_UNDERWORLD_MANSE, loyalAbyssalTemplateType));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_WHISPERS, ABYSSAL));
   }
