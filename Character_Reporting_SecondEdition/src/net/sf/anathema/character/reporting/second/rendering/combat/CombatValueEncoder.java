@@ -15,7 +15,7 @@ public class CombatValueEncoder implements IContentEncoder {
     CombatStatsContent content = createContent(reportSession);
     Position upperLeft = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(4, upperLeft, bounds.width, 3);
-    encoder.addLabelledValue(graphics, 0, content.getJoinLabel(), content.getJoinBattle());
+    displayJoinBattleWithSpecialty( graphics, encoder, content );
     displayDodgeWithSpecialty( graphics, encoder, content );
     encoder.addLabelledValue(graphics, 2, content.getKnockdownLabel(), content.getKnockdownThreshold(), content.getKnockdownPool());
     encoder.addLabelledValue(graphics, 3, content.getStunningLabel(), content.getStunningThreshold(), content.getStunningPool());
@@ -28,6 +28,15 @@ public class CombatValueEncoder implements IContentEncoder {
     return session.createContent(CombatStatsContent.class);
   }
   
+  private void displayJoinBattleWithSpecialty(  SheetGraphics graphics, LabelledValueEncoder encoder, CombatStatsContent content ) {
+      if( content.getJoinBattle() != content.getJoinBattleWithSpecialty() ) {
+          encoder.addLabelledValue(graphics, 0, content.getJoinLabel(), content.getJoinBattle(), content.getJoinBattleWithSpecialty());
+          encoder.addComment(graphics, content.getJoinBattleSpecialtyLabel(), 0);
+      } else {
+          encoder.addLabelledValue(graphics, 0, content.getJoinLabel(), content.getJoinBattle());
+      }
+  }
+      
   private void displayDodgeWithSpecialty( SheetGraphics graphics, LabelledValueEncoder encoder, CombatStatsContent content ) {
       if( content.getDodgeDv() != content.getDodgeDvWithSpecialty() ) {
           encoder.addLabelledValue(graphics, 1, content.getDodgeLabel(), content.getDodgeDv(), content.getDodgeDvWithSpecialty());
@@ -36,5 +45,4 @@ public class CombatValueEncoder implements IContentEncoder {
           encoder.addLabelledValue(graphics, 1, content.getDodgeLabel(), content.getDodgeDv());
       }     
   }
-  
 }

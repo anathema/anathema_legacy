@@ -42,6 +42,12 @@ public class CharacterUtilities {
     baseValue += equipment.getJoinBattleMod();
     return Math.max(baseValue, 1);
   }
+  
+  public static int getJoinBattleWithSpecialty(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, int awarenessSpecialty) {
+    int baseValue = getJoinBattle( traitCollection, equipment );
+    baseValue += awarenessSpecialty;
+    return Math.max(baseValue, 1);
+  }
 
   public static int getJoinDebate(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
     int baseValue = getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
