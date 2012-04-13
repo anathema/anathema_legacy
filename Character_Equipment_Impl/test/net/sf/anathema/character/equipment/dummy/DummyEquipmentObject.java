@@ -46,6 +46,10 @@ public class DummyEquipmentObject extends AbstractStats implements IEquipmentIte
   public void setPersonalization(String title, String description) {
 	  // nothing to do
   }
+  
+  public void setPersonalization(IEquipmentItem item) {
+	  // nothing to do
+  }
 
   public void setPrintEnabled(IEquipmentStats equipment, boolean enabled) {
     //nothing to do;    

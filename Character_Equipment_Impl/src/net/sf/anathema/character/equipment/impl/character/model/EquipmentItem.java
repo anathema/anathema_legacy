@@ -98,6 +98,12 @@ public class EquipmentItem implements IEquipmentItem {
   }
   
   @Override
+  public void setPersonalization(IEquipmentItem item) {
+	  this.customTitle = ((EquipmentItem)item).customTitle;
+	  this.customDescription = ((EquipmentItem)item).customDescription;
+  }
+  
+  @Override
   public ItemCost getCost() {
 	  return template.getCost();
   }

@@ -19,6 +19,8 @@ public interface IEquipmentItem {
   
   void setPersonalization(String title, String description);
   
+  void setPersonalization(IEquipmentItem item);
+  
   ItemCost getCost();
 
   IEquipmentStats[] getStats();
