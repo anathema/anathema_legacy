@@ -15,10 +15,12 @@ import static net.sf.anathema.character.reporting.pdf.content.general.TextType.N
 public class CombatStatsContent extends AbstractCombatStatsContent {
 
   private HighestSpecialty dodgeSpecialty;
+  private HighestSpecialty awarenessSpecialty;
 
   protected CombatStatsContent(IGenericCharacter character, IResources resources) {
     super(resources, character);
     dodgeSpecialty = new HighestSpecialty( character, AbilityType.Dodge );
+    awarenessSpecialty = new HighestSpecialty( character, AbilityType.Awareness );
   }
 
   public String getJoinLabel() {
@@ -29,12 +31,20 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
     return getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
   }
   
+  public String getJoinBattleSpecialtyLabel() {
+    return getString( "Sheet.Combat.NormalSpecialty" ) + awarenessSpecialty; //$NON-NLS-1$
+  }
+  
   public String getDodgeSpecialtyLabel() {
     return getString( "Sheet.Combat.NormalSpecialty" ) + dodgeSpecialty; //$NON-NLS-1$
   }
 
   public int getJoinBattle() {
     return CharacterUtilities.getJoinBattle(getTraitCollection(), getEquipment());
+  }
+  
+  public int getJoinBattleWithSpecialty() {
+    return CharacterUtilities.getJoinBattleWithSpecialty(getTraitCollection(), getEquipment(), awarenessSpecialty.getValue());
   }
 
   public int getDodgeDv() {
