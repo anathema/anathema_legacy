@@ -5,8 +5,9 @@ import java.util.List;
 
 import net.sf.anathema.lib.resources.IExtensibleDataSet;
 import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
+import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
 
-public class ExtensibleDataManager implements IExtensibleDataSetProvider {
+public class ExtensibleDataManager implements IExtensibleDataSetProvider, IExtensibleDataSetRegistry {
 	private List<IExtensibleDataSet> dataSets = new ArrayList<IExtensibleDataSet>();
 	
 	public void addDataSet(IExtensibleDataSet data) {

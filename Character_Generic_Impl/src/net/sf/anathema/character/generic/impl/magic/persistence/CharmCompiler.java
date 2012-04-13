@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import static java.text.MessageFormat.format;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -10,6 +9,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.IExtensibleDataSetCompiler;
+import net.sf.anathema.initialization.reflections.IAnathemaResource;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
@@ -20,7 +20,6 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,17 +62,13 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   	return "Compiling Charm Sets...";
   }
   
-  public void registerFile(String filePath, ClassLoader loader) throws Exception {
-	  Matcher matcher = Pattern.compile(Charm_Data_Extraction_Pattern).matcher(filePath);
+  @Override
+  public void registerFile(IAnathemaResource resource) throws Exception {
+	  Matcher matcher = Pattern.compile(Charm_Data_Extraction_Pattern).matcher(resource.getFileName());
       matcher.matches();
       String typeString = matcher.group(1);
-      String ruleString = matcher.group(2);
-      
-      URL resource = loader.getResource(filePath);
-      if (resource == null) {
-        throw new Exception(format("No resource found at {0} for {1}, {2}.", filePath, typeString, ruleString));
-      }
-      
+      //String ruleString = matcher.group(2);
+            
       IIdentificate type = new Identificate(typeString);
 	  if (!registry.idRegistered(typeString)) {
 	    registry.add(type);
@@ -84,9 +79,9 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 	    charmFileTable.put(type, list);
 	  }
 	  try {
-	    list.add(reader.read(resource));
+	    list.add(reader.read(resource.getURL()));
 	  } catch (DocumentException e) {
-	    throw new CharmException(resource.toExternalForm(), e);
+	    throw new CharmException(resource.getURL().toExternalForm(), e);
 	  }
   }
 

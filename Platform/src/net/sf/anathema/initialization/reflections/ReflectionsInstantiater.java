@@ -28,7 +28,7 @@ public class ReflectionsInstantiater implements Instantiater {
     return Collections2.transform(pluginClasses, new Function<Class<?>, T>() {
       @Override
       public T apply(Class<?> input) {
-        return instantiate(input);
+        return (T) instantiate(input);
       }
     });
   }
@@ -39,7 +39,7 @@ public class ReflectionsInstantiater implements Instantiater {
     return Collections2.transform(pluginClasses, new Function<Class<?>, T>() {
       @Override
       public T apply(Class<?> input) {
-        return instantiate(input, parameter);
+        return (T) instantiate(input, parameter);
       }
     });
   }
