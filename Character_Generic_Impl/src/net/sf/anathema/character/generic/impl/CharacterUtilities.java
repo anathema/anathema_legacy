@@ -12,23 +12,25 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 public class CharacterUtilities {
 
   public static int getDodgeMdv(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
-    int baseValue = getRoundDownDv(traitCollection, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence);
-    baseValue += equipment.getMDDVMod();
-    return Math.max(baseValue, 0);
+	int dvPool = getTotalValue( traitCollection, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence ); //+ equipment.getMDDVMod();
+	int dv = getRoundDownDv( dvPool ) + equipment.getMDDVMod();
+	
+    return Math.max(dv, 0);
   }
-  
+
   public static int getParryMdv( IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, ITraitType... types) {
-    int baseValue = getRoundUpDv(traitCollection, types);
-    baseValue += equipment.getMPDVMod();
-    return Math.max( baseValue, 0 );
+	int dvPool = getTotalValue( traitCollection, types ); //+ equipment.getMPDVMod();
+	int dv = getRoundUpDv( dvPool ) + equipment.getMPDVMod();
+	
+    return Math.max(dv, 0);
   }
   
-  private static int getRoundDownDv(IGenericTraitCollection traitCollection, ITraitType... types) {
-    return getTotalValue(traitCollection, types) / 2;
+  private static int getRoundDownDv(int dvPool) {
+    return dvPool / 2;
   }
   
-  private static int getRoundUpDv(IGenericTraitCollection traitCollection, ITraitType... types) {
-    return (int) Math.ceil(( getTotalValue(traitCollection, types)) * 0.5);
+  private static int getRoundUpDv(int dvPool) {
+    return (int) Math.ceil( dvPool * 0.5 );
   }
   
   public static int getSocialAttackValue( IGenericTraitCollection traitCollection, ITraitType... types ) {
