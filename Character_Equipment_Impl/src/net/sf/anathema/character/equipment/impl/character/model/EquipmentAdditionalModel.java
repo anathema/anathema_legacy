@@ -278,9 +278,11 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     for (IEquipmentItem item : equipmentItems) {
       if (canBeRemoved(item)) {
         IEquipmentItem refreshedItem = refreshItem(item);
-        refreshedItem.setPersonalization(item);
-        getCharacterOptionProvider().transferOptions(item, refreshedItem);
-        initItem(refreshedItem);
+        if (refreshedItem != null) {
+        	refreshedItem.setPersonalization(item);
+        	getCharacterOptionProvider().transferOptions(item, refreshedItem);
+        	initItem(refreshedItem);
+        }
       }
     }
   }

@@ -50,7 +50,10 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
 				if (hasCustomTitle(item)) itemMaterial += " (";
 				itemMaterial += item.getMaterial().getId();
 				if (hasCustomTitle(item)) itemMaterial += ")";
-				headerText.add(new Phrase(itemMaterial + "\n", resourceProvider.getNormalFont()));
+				headerText.add(new Phrase(itemMaterial, resourceProvider.getNormalFont()));
+			}
+			if (!headerText.isEmpty()) {
+				headerText.add(new Phrase("\n"));
 			}
 			if (item.getCost() != null) {
 				String[] costSegments = item.getCost().toString().split(" ");

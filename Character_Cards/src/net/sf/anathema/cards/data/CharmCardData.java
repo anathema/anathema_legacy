@@ -15,7 +15,6 @@ import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
 
 public class CharmCardData extends AbstractMagicCardData {
 	private ICharm charm;
