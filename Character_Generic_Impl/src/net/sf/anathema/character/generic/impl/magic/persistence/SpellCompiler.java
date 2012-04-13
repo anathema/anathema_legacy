@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import static java.text.MessageFormat.format;
-
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +7,7 @@ import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.IExtensibleDataSetCompiler;
+import net.sf.anathema.initialization.reflections.IAnathemaResource;
 import net.sf.anathema.lib.resources.IExtensibleDataSet;
 
 import org.dom4j.Document;
@@ -55,16 +53,11 @@ public class SpellCompiler implements IExtensibleDataSetCompiler {
 	}
 	
 	@Override
-	public void registerFile(String fileName, ClassLoader loader) throws Exception {
-		URL resource = loader.getResource(fileName);
-	    if (resource == null) {
-	      throw new Exception(format("No resource found at {0}.", fileName));
-	    }
+	public void registerFile(IAnathemaResource resource) throws Exception {
 	    try {
-	      
-	      spellFileList.add(reader.read(resource));
+	      spellFileList.add(reader.read(resource.getURL()));
 	    } catch (DocumentException e) {
-	      throw new SpellException(resource.toExternalForm(), e);
+	      throw new SpellException(resource.getURL().toExternalForm(), e);
 	    }
 	}	
 }

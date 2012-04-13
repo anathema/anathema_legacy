@@ -6,15 +6,20 @@ import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import org.reflections.Reflections;
 import org.reflections.util.ConfigurationBuilder;
 
+import com.google.common.base.Function;
+
 import java.io.File;
 import java.lang.annotation.Annotation;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
+
+import static com.google.common.collect.Collections2.transform;
 
 public class DefaultAnathemaReflections implements AnathemaReflections {
 
@@ -43,9 +48,9 @@ public class DefaultAnathemaReflections implements AnathemaReflections {
   }
 
   @Override
-  public Set<String> getResourcesMatching(String namepattern) {
+  public Set<IAnathemaResource> getResourcesMatching(String namepattern) {
     Pattern pattern = Pattern.compile(namepattern);
-    return reflections.getResources(pattern);
+    return new HashSet<IAnathemaResource>(transform(reflections.getResources(pattern), new ToResource()));
   }
 
   private ConfigurationBuilder createConfiguration() {
@@ -75,4 +80,17 @@ public class DefaultAnathemaReflections implements AnathemaReflections {
 	  }
 	  return null;
   }
+  
+  private class ToResource implements Function<String, IAnathemaResource> {
+	    @Override
+	    public IAnathemaResource apply(String resource) {
+	    	ClassLoader loaderForResource = null;
+	    	for (ClassLoader loader : classLoaders) {
+	  		  if (loader.getResource(resource) != null) {
+	  			 loaderForResource = loader;
+	  		  }
+	  	  	}
+	    	return new AnathemaResource(resource, loaderForResource);
+	    }
+  	}
 }

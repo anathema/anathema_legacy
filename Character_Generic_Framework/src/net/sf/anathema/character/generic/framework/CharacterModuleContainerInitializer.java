@@ -11,6 +11,7 @@ import net.sf.anathema.initialization.IExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
+import net.sf.anathema.initialization.reflections.IAnathemaResource;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
@@ -57,10 +58,10 @@ public class CharacterModuleContainerInitializer {
   }
   
   private void getDataFilesFromReflection(AnathemaReflections reflections, IExtensibleDataSetCompiler compiler) throws Exception {
-	Set<String> files = reflections.getResourcesMatching(compiler.getRecognitionPattern());
+	Set<IAnathemaResource> files = reflections.getResourcesMatching(compiler.getRecognitionPattern());
 	logger.info(compiler.getName() + ": Found "+ files.size() +" data files.");
-	for (String file : files) {
-		compiler.registerFile(file, reflections.getClassLoaderForResource(file));
+	for (IAnathemaResource file : files) {
+		compiler.registerFile(file);
 	}
   }
 }
