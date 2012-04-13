@@ -1,4 +1,4 @@
-<bonusPointCost uses="RevisedDefaultBonusPointCost2nd.template">
+<bonusPointCost uses="RevisedDefaultBonusPointCost.template">
   <abilities>
     <maximumFreeAbilityRank rank="5" />
     <generalAbility>
@@ -12,4 +12,10 @@
       <favoredDotsPerPoint dots="2" />
     </specialties>
   </abilities>
+  <advantages>
+  	<virtues>
+      <fixedCost cost="1" />
+      <maximumFreeVirtueRank rank="4"/>
+    </virtues>
+  </advantages>
 </bonusPointCost>
