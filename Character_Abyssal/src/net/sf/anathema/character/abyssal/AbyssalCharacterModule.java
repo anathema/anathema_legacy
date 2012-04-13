@@ -19,23 +19,13 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
 
 import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
 @CharacterModule
 public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
 
-  @SuppressWarnings("unused")
   private static final TemplateType abyssalTemplateType = new TemplateType(ABYSSAL);
-
-  private static final TemplateType loyalAbyssalTemplateType = new TemplateType(ABYSSAL,
-          new Identificate("default")); //$NON-NLS-1$
-
-  @SuppressWarnings("unused")
-  private static final TemplateType renegadeAbyssalTemplateType = new TemplateType(ABYSSAL,
-          new Identificate("RenegadeAbyssal")); //$NON-NLS-1$
-  @SuppressWarnings("unused")
 
   public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_LIEGE = "Liege"; //$NON-NLS-1$
@@ -60,12 +50,12 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ABYSSAL_COMMAND, loyalAbyssalTemplateType));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ABYSSAL_COMMAND, abyssalTemplateType));
 
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_LIEGE, loyalAbyssalTemplateType));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_LIEGE, abyssalTemplateType));
 
-   // backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SPIES, loyalAbyssalTemplateType)); -- Should be available, but complains of a duplicated background if I uncomment it.
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_UNDERWORLD_MANSE, loyalAbyssalTemplateType));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SPIES, abyssalTemplateType));// -- Should be available, but complains of a duplicated background if I uncomment it.
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_UNDERWORLD_MANSE, abyssalTemplateType));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_WHISPERS, ABYSSAL));
   }
 
