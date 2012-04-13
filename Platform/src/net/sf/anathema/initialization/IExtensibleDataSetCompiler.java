@@ -1,6 +1,6 @@
 package net.sf.anathema.initialization;
 
-import net.sf.anathema.initialization.reflections.IAnathemaResource;
+import net.sf.anathema.lib.resources.IAnathemaResourceFile;
 import net.sf.anathema.lib.resources.IExtensibleDataSet;
 
 public interface IExtensibleDataSetCompiler {
@@ -10,7 +10,7 @@ public interface IExtensibleDataSetCompiler {
 	
 	String getSplashStatusString();
 	
-	void registerFile(IAnathemaResource resource) throws Exception;
+	void registerFile(IAnathemaResourceFile resource) throws Exception;
 	
 	IExtensibleDataSet build();
 }

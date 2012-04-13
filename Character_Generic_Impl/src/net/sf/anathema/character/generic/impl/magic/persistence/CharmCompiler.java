@@ -9,10 +9,10 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.IExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.reflections.IAnathemaResource;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
+import net.sf.anathema.lib.resources.IAnathemaResourceFile;
 import net.sf.anathema.lib.resources.IExtensibleDataSet;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -63,7 +63,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   }
   
   @Override
-  public void registerFile(IAnathemaResource resource) throws Exception {
+  public void registerFile(IAnathemaResourceFile resource) throws Exception {
 	  Matcher matcher = Pattern.compile(Charm_Data_Extraction_Pattern).matcher(resource.getFileName());
       matcher.matches();
       String typeString = matcher.group(1);

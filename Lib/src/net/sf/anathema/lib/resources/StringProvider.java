@@ -11,15 +11,15 @@ public class StringProvider implements IStringResourceHandler {
   private ResourceBundle resourceBundle;
   private final List<String> keyList = new ArrayList<String>();
 
-  public StringProvider(String bundleName, Locale locale, ClassLoader classLoader) {
-    setLocale(locale, bundleName, classLoader);
+  public StringProvider(String bundleName, Locale locale, IAnathemaResourceFile resource) {
+    setLocale(locale, bundleName, resource);
   }
 
-  private void setLocale(Locale locale, String resourceBundleName, ClassLoader classLoader) {
+  private void setLocale(Locale locale, String resourceBundleName, IAnathemaResourceFile resource) {
     if (locale == null) {
       throw new IllegalArgumentException("locale is null."); //$NON-NLS-1$
     }
-    resourceBundle = ResourceBundle.getBundle(resourceBundleName, locale, classLoader);
+    resourceBundle = ResourceBundle.getBundle(resourceBundleName, locale, ((AnathemaResourceFile)resource).getLoader());
     for (Enumeration<String> keys = resourceBundle.getKeys(); keys.hasMoreElements();) {
       this.keyList.add(keys.nextElement());
     }

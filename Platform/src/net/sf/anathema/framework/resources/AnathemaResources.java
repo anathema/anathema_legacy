@@ -10,6 +10,7 @@ import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.DefaultStringProvider;
 import net.sf.anathema.lib.resources.FileStringProvider;
 import net.sf.anathema.lib.resources.IAnathemaImageProvider;
+import net.sf.anathema.lib.resources.IAnathemaResourceFile;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.MultiSourceStringProvider;
 import net.sf.anathema.lib.resources.StringProvider;
@@ -30,8 +31,8 @@ public class AnathemaResources implements IResources {
     }
   }
 
-  public void addResourceBundle(String bundleName, ClassLoader classLoader) {
-    stringHandler.add(new StringProvider(bundleName, getLocale(), classLoader)); //$NON-NLS-1$
+  public void addResourceBundle(String bundleName, IAnathemaResourceFile resource) {
+    stringHandler.add(new StringProvider(bundleName, getLocale(), resource)); //$NON-NLS-1$
   }
 
   public boolean supportsKey(String key) {

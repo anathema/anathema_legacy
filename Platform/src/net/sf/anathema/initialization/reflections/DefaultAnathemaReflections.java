@@ -2,6 +2,8 @@ package net.sf.anathema.initialization.reflections;
 
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
+import net.sf.anathema.lib.resources.AnathemaResourceFile;
+import net.sf.anathema.lib.resources.IAnathemaResourceFile;
 
 import org.reflections.Reflections;
 import org.reflections.util.ConfigurationBuilder;
@@ -48,9 +50,9 @@ public class DefaultAnathemaReflections implements AnathemaReflections {
   }
 
   @Override
-  public Set<IAnathemaResource> getResourcesMatching(String namepattern) {
+  public Set<IAnathemaResourceFile> getResourcesMatching(String namepattern) {
     Pattern pattern = Pattern.compile(namepattern);
-    return new HashSet<IAnathemaResource>(transform(reflections.getResources(pattern), new ToResource()));
+    return new HashSet<IAnathemaResourceFile>(transform(reflections.getResources(pattern), new ToResource()));
   }
 
   private ConfigurationBuilder createConfiguration() {
@@ -81,16 +83,16 @@ public class DefaultAnathemaReflections implements AnathemaReflections {
 	  return null;
   }
   
-  private class ToResource implements Function<String, IAnathemaResource> {
+  private class ToResource implements Function<String, IAnathemaResourceFile> {
 	    @Override
-	    public IAnathemaResource apply(String resource) {
+	    public IAnathemaResourceFile apply(String resource) {
 	    	ClassLoader loaderForResource = null;
 	    	for (ClassLoader loader : classLoaders) {
 	  		  if (loader.getResource(resource) != null) {
 	  			 loaderForResource = loader;
 	  		  }
 	  	  	}
-	    	return new AnathemaResource(resource, loaderForResource);
+	    	return new AnathemaResourceFile(resource, loaderForResource);
 	    }
   	}
 }

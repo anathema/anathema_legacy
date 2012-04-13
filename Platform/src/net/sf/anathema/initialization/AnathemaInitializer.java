@@ -12,9 +12,8 @@ import net.sf.anathema.framework.view.AnathemaView;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
 import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
-import net.sf.anathema.initialization.reflections.IAnathemaReflectionResource;
-import net.sf.anathema.initialization.reflections.IAnathemaResource;
 import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
+import net.sf.anathema.lib.resources.IAnathemaResourceFile;
 import net.sf.anathema.lib.resources.IResourceDataManager;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.ResourceDataPackage;
@@ -79,10 +78,9 @@ public class AnathemaInitializer {
   private AnathemaResources initResources() {
     AnathemaResources resources = new AnathemaResources();
     ProxySplashscreen.getInstance().displayStatusMessage("Loading Resources..."); //$NON-NLS-1$
-    Set<IAnathemaResource> resourcesInPaths = reflections.getResourcesMatching(".*\\.properties");
-    for (IAnathemaResource resource : resourcesInPaths) {
-      resources.addResourceBundle(toBundleName(resource.getFileName()),
-    		  ((IAnathemaReflectionResource)resource).getLoader());
+    Set<IAnathemaResourceFile> resourcesInPaths = reflections.getResourcesMatching(".*\\.properties");
+    for (IAnathemaResourceFile resource : resourcesInPaths) {
+      resources.addResourceBundle(toBundleName(resource.getFileName()), resource);
     }
     return resources;
   }

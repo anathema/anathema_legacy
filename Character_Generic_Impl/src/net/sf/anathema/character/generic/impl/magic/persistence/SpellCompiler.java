@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.IExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.reflections.IAnathemaResource;
+import net.sf.anathema.lib.resources.IAnathemaResourceFile;
 import net.sf.anathema.lib.resources.IExtensibleDataSet;
 
 import org.dom4j.Document;
@@ -53,7 +53,7 @@ public class SpellCompiler implements IExtensibleDataSetCompiler {
 	}
 	
 	@Override
-	public void registerFile(IAnathemaResource resource) throws Exception {
+	public void registerFile(IAnathemaResourceFile resource) throws Exception {
 	    try {
 	      spellFileList.add(reader.read(resource.getURL()));
 	    } catch (DocumentException e) {
