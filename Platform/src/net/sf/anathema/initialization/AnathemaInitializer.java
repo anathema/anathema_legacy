@@ -15,9 +15,9 @@ import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.lib.resources.IAnathemaResourceFile;
 import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
-import net.sf.anathema.lib.resources.IResourceDataManager;
+import net.sf.anathema.lib.resources.IResourceCollection;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.resources.ResourceDataPackage;
+import net.sf.anathema.lib.resources.ResourceCollection;
 
 import java.util.Collection;
 import java.util.Set;
@@ -45,7 +45,7 @@ public class AnathemaInitializer {
     initializePlugins(reflections, dataSetManager);
     ProxySplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
-    IAnathemaModel anathemaModel = initModel(new ResourceDataPackage(resources, dataSetManager, dataSetManager));
+    IAnathemaModel anathemaModel = initModel(new ResourceCollection(resources, dataSetManager));
     IAnathemaView view = initView(resources);
     new AnathemaPresenter(anathemaModel, view, resources, itemTypeCollection.getItemTypes(), instantiater).initPresentation();
     return view;
@@ -62,12 +62,12 @@ public class AnathemaInitializer {
     }
   }
 
-  private IAnathemaModel initModel(IResourceDataManager resourceDataManager) throws InitializationException {
+  private IAnathemaModel initModel(IResourceCollection resources) throws InitializationException {
     ProxySplashscreen.getInstance().displayStatusMessage("Creating Model..."); //$NON-NLS-1$
     return new AnathemaModelInitializer(
             anathemaPreferences,
             itemTypeCollection.getItemTypes(),
-            extensionCollection, instantiater).initializeModel(resourceDataManager);
+            extensionCollection, instantiater).initializeModel(resources);
   }
 
   private IAnathemaView initView(IResources resources) {

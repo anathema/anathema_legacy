@@ -7,14 +7,14 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.resources.IResourceDataManager;
+import net.sf.anathema.lib.resources.IResourceCollection;
 
 @Extension(id="Menu.Extra")
 public class MenuExtensionPoint implements IAnathemaExtension, IMenuExtensionPoint {
 
   private final List<IMenuItem> menuItems = new ArrayList<IMenuItem>();
 
-  public void initialize(IResourceDataManager resourceDataManager,
+  public void initialize(IResourceCollection resources,
 		  IDataFileProvider dataFileProvider,
 		  Instantiater instantiater) {
     // nothing to do

@@ -8,8 +8,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
-import net.sf.anathema.lib.resources.IResourceData;
-import net.sf.anathema.lib.resources.IResourceDataManager;
+import net.sf.anathema.lib.resources.IResourceCollection;
 
 import java.io.File;
 import java.util.Collection;
@@ -31,10 +30,10 @@ public class AnathemaModelInitializer {
     this.instantiater = instantiater;
   }
 
-  public IAnathemaModel initializeModel(IResourceDataManager resourceDataManager) throws InitializationException {
-    AnathemaModel model = createModel(resourceDataManager);
+  public IAnathemaModel initializeModel(IResourceCollection resources) throws InitializationException {
+    AnathemaModel model = createModel(resources);
     for (ExtensionWithId extension : extensions) {
-      extension.register(model, resourceDataManager, instantiater);
+      extension.register(model, resources, instantiater);
     }
     for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
@@ -45,7 +44,7 @@ public class AnathemaModelInitializer {
     return model;
   }
 
-  private AnathemaModel createModel(IResourceData resourceData) throws InitializationException {
+  private AnathemaModel createModel(IResourceCollection resourceData) throws InitializationException {
     try {
       return new AnathemaModel(createRepositoryFolder(), resourceData);
     }

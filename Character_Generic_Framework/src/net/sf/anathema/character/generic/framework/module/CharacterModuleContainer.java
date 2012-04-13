@@ -6,14 +6,14 @@ import net.sf.anathema.character.generic.framework.module.object.ICharacterModul
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.resources.IResourceData;
+import net.sf.anathema.lib.resources.IResourceCollection;
 
 public class CharacterModuleContainer {
 
   private final CharacterGenerics characterGenerics;
-  private final IResourceData resourceData;
+  private final IResourceCollection resourceData;
 
-  public CharacterModuleContainer(IResourceData resourceData, IDataFileProvider dataFileProvider, Instantiater instantiater)
+  public CharacterModuleContainer(IResourceCollection resourceData, IDataFileProvider dataFileProvider, Instantiater instantiater)
           throws InitializationException {
     this.resourceData = resourceData;
     this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater, resourceData.getDataProvider());
