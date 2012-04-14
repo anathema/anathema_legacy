@@ -75,4 +75,20 @@
 		<source source="LordsOfCreation" />
 		<source source="ScrollErrata" />
 	</charm>
+     <charm id="Solar.HonoredCompanionOfTheSun" exalt="Solar" group="Melee">
+          <prerequisite>
+               <trait id="Melee" value="6" />
+               <essence value="6" />
+               <charmReference id="Solar.FireandStonesStrike" />
+               <charmReference id="Solar.SummoningLoyalSteel" />
+          </prerequisite>
+          <cost>
+               <essence cost="-(1m to draw)" />
+          </cost>
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
+          <charmAttribute attribute="Obvious" visualize="true" />
+     	  <source source="ScrollErrata" />
+     </charm>
+	
 </charmlist>
