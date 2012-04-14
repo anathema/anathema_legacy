@@ -3,12 +3,17 @@ package net.sf.anathema.character.impl.persistence;
 import net.sf.anathema.character.generic.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.generic.framework.CharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.ISpellCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.SpellCache;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -46,7 +51,10 @@ public class ExaltedCharacterPersisterTest {
   }
 
   private ICharacterGenerics createCharacterGenerics() {
-    ICharacterGenerics generics = new CharacterGenerics(null, null, null);
+    IExtensibleDataSetProvider dataSetProvider = mock(IExtensibleDataSetProvider.class);
+    when(dataSetProvider.getDataSet(ICharmCache.class)).thenReturn(new CharmCache());
+    when(dataSetProvider.getDataSet(ISpellCache.class)).thenReturn(new SpellCache());
+    ICharacterGenerics generics = new CharacterGenerics(null, null, dataSetProvider);
     generics.getTemplateRegistry().register(template);
     return generics;
   }
