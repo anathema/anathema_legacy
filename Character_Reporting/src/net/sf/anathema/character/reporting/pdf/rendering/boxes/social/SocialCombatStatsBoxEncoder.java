@@ -10,6 +10,8 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalM
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -39,7 +41,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     ICharacterStatsModifiers equipment = equipmentModel.createStatsModifiers(character);
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y +3, valueWidth, bounds.height);
-    float valueHeight = encodeValues(graphics, valueBounds, character.getTraitCollection(), equipment) -5;
+    float valueHeight = encodeValues(graphics, valueBounds, character, equipment) -5;
     Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
 
     ITableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources);
@@ -135,17 +137,42 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     return cell;
   }
 
-  private float encodeValues(SheetGraphics graphics, Bounds bounds, IGenericTraitCollection traitCollection,
+  private float encodeValues(SheetGraphics graphics, Bounds bounds, IGenericCharacter character,
                              ICharacterStatsModifiers equipment) {
+    IGenericTraitCollection traitCollection = character.getTraitCollection();
+    HighestSpecialty awarenessSpecialty = new HighestSpecialty( character, AbilityType.Awareness );
+    HighestSpecialty integritySpecialty = new HighestSpecialty( character, AbilityType.Integrity );
     String joinLabel = resources.getString("Sheet.SocialCombat.JoinDebateBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.SocialCombat.DodgeMDV"); //$NON-NLS-1$
+    String normalLabel = resources.getString("Sheet.Combat.NormalSpecialty"); //$NON-NLS-1$
     int joinDebate = CharacterUtilities.getJoinDebate(traitCollection, equipment);
+    int joinDebateWithSpecialty = CharacterUtilities.getJoinDebateWithSpecialty(traitCollection, equipment, awarenessSpecialty.getValue());
     int dodgeMDV = CharacterUtilities.getDodgeMdv(traitCollection, equipment);
+    int dodgeMDVWithSpecialty = CharacterUtilities.getDodgeMdvWithSpecialty(traitCollection, equipment, integritySpecialty.getValue());
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(2, upperLeftCorner, bounds.width, 3);
-    encoder.addLabelledValue(graphics, 0, joinLabel, joinDebate);
-    encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeMDV);
+    displayJoinDebateWithSpecialty( graphics, encoder,  joinLabel, joinDebate, joinDebateWithSpecialty, normalLabel + awarenessSpecialty );
+    displayDodgeWithSpecialty(      graphics, encoder, dodgeLabel, dodgeMDV,   dodgeMDVWithSpecialty,   normalLabel + integritySpecialty );
     return encoder.getHeight() + 1;
+  }
+  
+  private void displayJoinDebateWithSpecialty(  SheetGraphics graphics, LabelledValueEncoder encoder, String joinLabel, int joinDebate, int joinDebateWithSpecialty, String joinDebateSpecialtyLabel) {
+      if( joinDebate != joinDebateWithSpecialty ) {
+          encoder.addLabelledValue(graphics, 0, joinLabel, joinDebate, joinDebateWithSpecialty);
+          encoder.addComment( graphics, joinDebateSpecialtyLabel, 0 );
+      } else {
+          encoder.addLabelledValue(graphics, 0, joinLabel, joinDebate);
+          encoder.addComment( graphics, "", 0 );
+      }
+  }
+
+  private void displayDodgeWithSpecialty( SheetGraphics graphics, LabelledValueEncoder encoder, String dodgeLabel, int dodgeMDV, int dodgeMDVWithSpecialty, String dodgeSpecialtyLabel ) {
+      if( dodgeMDV != dodgeMDVWithSpecialty ) {
+        encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeMDV, dodgeMDVWithSpecialty);
+        encoder.addComment( graphics, dodgeSpecialtyLabel, 1 );
+      } else {
+        encoder.addLabelledValue(graphics, 1, dodgeLabel, dodgeMDV);
+      }
   }
 
   @Override

@@ -12,7 +12,11 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 public class CharacterUtilities {
 
   public static int getDodgeMdv(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
-	int dvPool = getTotalValue( traitCollection, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence ); //+ equipment.getMDDVMod();
+    return getDodgeMdvWithSpecialty( traitCollection, equipment, 0);
+  }
+  
+  public static int getDodgeMdvWithSpecialty(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, int specialty) {
+	int dvPool = getTotalValue( traitCollection, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence ) + specialty; //+ equipment.getMDDVMod();
 	int dv = getRoundDownDv( dvPool ) + equipment.getMDDVMod();
 	
     return Math.max(dv, 0);
@@ -50,9 +54,11 @@ public class CharacterUtilities {
   }
 
   public static int getJoinDebate(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
-    int baseValue = getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
-    baseValue += equipment.getJoinDebateMod();
-    return Math.max(baseValue, 1);
+    return getJoinBattle( traitCollection, equipment );
+  }
+  
+  public static int getJoinDebateWithSpecialty( IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, int awarenessSpecialty) {
+      return getJoinBattleWithSpecialty( traitCollection, equipment, awarenessSpecialty );
   }
 
   public static int getKnockdownThreshold(IGenericTraitCollection traitCollection) {
