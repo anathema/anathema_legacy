@@ -88,6 +88,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Obvious" visualize="true" />
+		  <repurchases limit="10"/>
      	  <source source="ScrollErrata" />
      </charm>
 	
