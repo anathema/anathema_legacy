@@ -38,8 +38,8 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
             IEquipmentAdditionalModelTemplate.ID);
     ICharacterStatsModifiers equipment = equipmentModel.createStatsModifiers(character);
     float valueWidth = bounds.width;
-    Bounds valueBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height);
-    float valueHeight = encodeValues(graphics, valueBounds, character.getTraitCollection(), equipment);
+    Bounds valueBounds = new Bounds(bounds.x, bounds.y +3, valueWidth, bounds.height);
+    float valueHeight = encodeValues(graphics, valueBounds, character.getTraitCollection(), equipment) -5;
     Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
 
     ITableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources);
