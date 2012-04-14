@@ -35,7 +35,7 @@ public class FilenameCleanerTest {
   }
 
   @Test
-  public void replacesModifiedCharacters() throws Exception {
-    assertThat(cleaner.clean("xáx"), is("x_x"));
+  public void replacesNonLatinCharacters() throws Exception {
+    assertThat(cleaner.clean("xäx"), is("x_x"));
   }
 }
