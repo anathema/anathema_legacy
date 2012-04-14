@@ -73,6 +73,19 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
     availableTemplatesChangeControl.fireChangedEvent();
   }
 
+  public void saveTemplateNoOverwrite(IEquipmentTemplate template) {
+	try {
+		File file = getTemplateFile(template.getName());
+		if( !file.exists() ) {
+	 	  saveTemplate( template );
+	    }
+	}
+	catch (SecurityException e) {
+		throw new RuntimeException(e);
+	}
+    availableTemplatesChangeControl.fireChangedEvent();
+  }
+
   @Override
   public void addAvailableTemplateChangeListener(IChangeListener listener) {
     availableTemplatesChangeControl.addChangeListener(listener);
