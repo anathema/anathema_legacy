@@ -1,7 +1,5 @@
 dependencies {
-  compile files(
-      "../Thirdparty/Swing/l2fprod-common-directorychooser.jar",
-  )
+  compile 'com.l2fprod.common:l2fprod-common-directorychooser:0.2.0'
   compile 'net.infonode:idw-gpl:1.6.1'
   compile 'commons-io:commons-io:2.1'
   compile 'org.reflections:reflections:0.9.6'
