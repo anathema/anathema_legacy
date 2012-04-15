@@ -31,6 +31,7 @@ public class ItemType implements IItemType, IIdentificate {
   }
 
 
+  @Override
   public boolean supportsRepository() {
     return repositoryConfiguration != null;
   }
@@ -40,6 +41,7 @@ public class ItemType implements IItemType, IIdentificate {
     return integrated;
   }
 
+  @Override
   public IRepositoryConfiguration getRepositoryConfiguration() {
     return repositoryConfiguration;
   }

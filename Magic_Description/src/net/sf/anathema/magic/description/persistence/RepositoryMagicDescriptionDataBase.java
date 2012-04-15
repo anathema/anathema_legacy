@@ -6,15 +6,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.repository.IRepository;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
-import net.sf.anathema.lib.exception.PersistenceException;
-import org.apache.commons.io.IOUtils;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import net.sf.anathema.framework.repository.RepositoryStringAccess;
 
 import static net.sf.anathema.magic.description.module.MagicDescriptionItemTypeConfiguration.MAGIC_DESCRIPTION_ITEM_TYPE_ID;
 
@@ -43,14 +35,8 @@ public class RepositoryMagicDescriptionDataBase implements MagicDescriptionDataB
 
   @Override
   public void saveDescription(String charmId, String description) {
-    try {
-      String jsonRepresentation = createJSonRepresentation(charmId, description);
-      IRepositoryWriteAccess writeAccess = repository.createWriteAccess(itemType, charmId);
-      OutputStream stream = writeAccess.createMainOutputStream();
-      stream.write(jsonRepresentation.getBytes());
-    } catch (IOException e) {
-      throw new PersistenceException(e);
-    }
+    String jsonRepresentation = createJSonRepresentation(charmId, description);
+    new RepositoryStringAccess(repository, itemType).write(charmId, jsonRepresentation);
   }
 
   private String createJSonRepresentation(String charmId, String description) {
@@ -63,23 +49,8 @@ public class RepositoryMagicDescriptionDataBase implements MagicDescriptionDataB
     if (!repository.knowsItem(itemType, charmId)) {
       return null;
     }
-    String jsonRepresentation = readJsonRepresentation(charmId);
+    String jsonRepresentation  = new RepositoryStringAccess(repository, itemType).read(charmId);
     MagicDescriptionPO persistenceObject = gson.fromJson(jsonRepresentation, MagicDescriptionPO.class);
     return persistenceObject.description;
-  }
-
-  private String readJsonRepresentation(String charmId) {
-    InputStream stream = null;
-    try {
-      IRepositoryReadAccess access = repository.openReadAccess(itemType, charmId);
-      stream = access.openMainInputStream();
-      ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-      IOUtils.copy(stream, outputStream);
-      return new String(outputStream.toByteArray());
-    } catch (IOException e) {
-      throw new PersistenceException(e);
-    } finally {
-      IOUtils.closeQuietly(stream);
-    }
   }
 }

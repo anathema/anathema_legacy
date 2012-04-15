@@ -16,6 +16,7 @@ public abstract class AbstractPersistableItemTypeConfiguration extends AbstractI
     super(type);
   }
 
+  @Override
   public void fillPresentationExtensionPoints(
       IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IResources resources,
@@ -25,6 +26,7 @@ public abstract class AbstractPersistableItemTypeConfiguration extends AbstractI
     itemCreationExtensionPoint.register(getItemType(), createItemTypeCreationProperties(model, resources));
   }
 
+  @Override
   public void initModel(IAnathemaModel model) {
     model.getPersisterRegistry().register(getItemType(), createPersister(model));
   }

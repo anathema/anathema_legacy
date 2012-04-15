@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl;
 
-import com.db4o.ext.DatabaseFileLockedException;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalModelFactory;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPersisterFactory;
@@ -23,13 +22,8 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException {
     File dataBaseDirectory = characterGenerics.getDataFileProvider().getDataBaseDirectory(DATABASE_FOLDER);
-    IEquipmentTemplateProvider equipmentDatabase;
-    try {
-      equipmentDatabase = new GsonEquipmentDatabase(dataBaseDirectory);
-    } catch (DatabaseFileLockedException e) {
-      throw new InitializationException("Equipment database locked.\nAnathema may already be running.",
-              e); //$NON-NLS-1$
-    }
+    EquipmentDirectAccess access = new EquipmentDirectAccess(dataBaseDirectory);
+    IEquipmentTemplateProvider equipmentDatabase = new GsonEquipmentDatabase(access);
     characterGenerics.getAdditionalModelFactoryRegistry().register(IEquipmentAdditionalModelTemplate.ID,
             new EquipmentAdditionalModelFactory(equipmentDatabase));
     characterGenerics.getAdditonalPersisterFactoryRegistry().register(IEquipmentAdditionalModelTemplate.ID,

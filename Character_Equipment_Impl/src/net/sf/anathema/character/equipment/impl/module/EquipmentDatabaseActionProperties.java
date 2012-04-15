@@ -3,13 +3,13 @@ package net.sf.anathema.character.equipment.impl.module;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
+import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.module.IDatabaseActionProperties;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
-import java.io.File;
 import java.io.IOException;
 
 public class EquipmentDatabaseActionProperties implements IDatabaseActionProperties {
@@ -17,9 +17,11 @@ public class EquipmentDatabaseActionProperties implements IDatabaseActionPropert
   private static final String EQUIPMENT_DATABASE_ITEM_ID = "EquipmentDatabase.Item"; //$NON-NLS-1$
 
   private final IResources resources;
+  private final IAnathemaModel anathemaModel;
 
-  public EquipmentDatabaseActionProperties(IResources resources) {
+  public EquipmentDatabaseActionProperties(IResources resources, IAnathemaModel anathemaModel) {
     this.resources = resources;
+    this.anathemaModel = anathemaModel;
   }
 
   @Override
@@ -59,7 +61,6 @@ public class EquipmentDatabaseActionProperties implements IDatabaseActionPropert
 
   @Override
   public IItemData createItemData(IDataFileProvider provider) throws IOException {
-    File parentFolder = provider.getDataBaseDirectory(GsonEquipmentDatabase.DATABASE_FOLDER);
-    return new GsonEquipmentDatabase(parentFolder);
+    return GsonEquipmentDatabase.CreateFrom(anathemaModel);
   }
 }

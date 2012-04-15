@@ -16,6 +16,7 @@ public abstract class AbstractNonPersistableItemTypeConfiguration extends Abstra
     super(type);
   }
 
+  @Override
   public final void fillPresentationExtensionPoints(
       IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IResources resources,
@@ -33,6 +34,7 @@ public abstract class AbstractNonPersistableItemTypeConfiguration extends Abstra
       IAnathemaModel anathemaModel,
       IResources resources);
 
+  @Override
   public void initModel(IAnathemaModel model) {
     //nothing to do    
   }

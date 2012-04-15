@@ -61,7 +61,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
   }
 
   private void convertToGson(IAnathemaModel anathemaModel, ObjectContainer container) {
-    GsonEquipmentDatabase database = new GsonEquipmentDatabase(anathemaModel.getRepository().getDataBaseDirectory(GsonEquipmentDatabase.DATABASE_FOLDER));
+    GsonEquipmentDatabase database = GsonEquipmentDatabase.CreateFrom(anathemaModel);
     Query query = container.query();
     query.constrain(EquipmentTemplate.class);
     ObjectSet set = query.execute();

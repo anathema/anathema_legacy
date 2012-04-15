@@ -18,18 +18,22 @@ public class RepositoryConfiguration implements IRepositoryConfiguration {
     this.mainFileName = mainFileName;
   }
 
+  @Override
   public String getFileExtension() {
     return extension;
   }
 
+  @Override
   public String getFolderName() {
     return folder;
   }
 
+  @Override
   public String getMainFileName() {
     return mainFileName;
   }
 
+  @Override
   public boolean isItemSavedToSingleFile() {
     return mainFileName == null;
   }

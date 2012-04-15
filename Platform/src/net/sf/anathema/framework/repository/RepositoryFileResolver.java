@@ -1,9 +1,11 @@
 package net.sf.anathema.framework.repository;
 
-import java.io.File;
-
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.util.Collection;
 
 public class RepositoryFileResolver implements IRepositoryFileResolver {
 
@@ -13,6 +15,7 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     this.repositoryFile = repositoryFile;
   }
 
+  @Override
   public File getItemTypeFolder(IItemType type) {
     return new File(repositoryFile, type.getRepositoryConfiguration().getFolderName());
   }
@@ -63,6 +66,7 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     return getItemFile(type, id);
   }
 
+  @Override
   public File getMainFile(IItemType type, String id) {
     if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
       return getItemFile(type, id);
@@ -70,8 +74,24 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     return getMainFile(getItemFolder(type, id), type);
   }
 
+  @Override
   public File getMainFile(File folder, IItemType type) {
     IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
     return new File(folder, repositoryConfiguration.getMainFileName() + repositoryConfiguration.getFileExtension());
+  }
+
+  @Override
+  public Collection<File> listAllFiles(IItemType itemType) {
+    File folder = getExistingItemTypeFolder(itemType);
+    String fileExtension = getExtension(itemType);
+    return FileUtils.listFiles(folder, new String[]{fileExtension}, false);
+  }
+
+  private String getExtension(IItemType itemType) {
+    String fileExtension = itemType.getRepositoryConfiguration().getFileExtension();
+    if (fileExtension.startsWith(".")) {
+      return fileExtension.substring(1);
+    }
+    return fileExtension;
   }
 }

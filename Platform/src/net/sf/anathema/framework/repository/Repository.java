@@ -38,18 +38,22 @@ public class Repository implements IRepository {
     this.printNameFileAccess = new PrintNameFileAccess(resolver, itemManagement);
   }
 
+  @Override
   public String getRepositoryPath() {
     return repositoryFolder.toString();
   }
 
+  @Override
   public IPrintNameFileAccess getPrintNameFileAccess() {
     return printNameFileAccess;
   }
 
+  @Override
   public IRepositoryFileResolver getRepositoryFileResolver() {
     return resolver;
   }
 
+  @Override
   public synchronized IRepositoryWriteAccess createWriteAccess(IItem item) throws RepositoryException {
     try {
       if (item.getId() == null) {
@@ -59,13 +63,13 @@ public class Repository implements IRepository {
         return createSingleFileWriteAccess(item);
       }
       return createMultiFileWriteAccess(item);
-    }
-    catch (RepositoryException e) {
+    } catch (RepositoryException e) {
       String pattern = "Could not create RepositoryItem for {0}, {1}."; //$NON-NLS-1$
-      throw new RepositoryException(MessageFormat.format(pattern, new Object[] { item.getItemType(), item.getId() }), e);
+      throw new RepositoryException(MessageFormat.format(pattern, item.getItemType(), item.getId()), e);
     }
   }
 
+  @Override
   public synchronized IRepositoryWriteAccess createWriteAccess(IItemType type, String id) throws RepositoryException {
     try {
       // TODO: Handle non-unique ID
@@ -76,10 +80,9 @@ public class Repository implements IRepository {
         return createSingleFileWriteAccess(type, id);
       }
       return createMultiFileWriteAccess(type, id);
-    }
-    catch (RepositoryException e) {
+    } catch (RepositoryException e) {
       String pattern = "Could not create RepositoryItem for {0}, {1}."; //$NON-NLS-1$
-      throw new RepositoryException(MessageFormat.format(pattern, new Object[] { type, id }), e);
+      throw new RepositoryException(MessageFormat.format(pattern, type, id), e);
     }
   }
 
@@ -112,14 +115,14 @@ public class Repository implements IRepository {
     if (!file.exists()) {
       try {
         file.createNewFile();
-      }
-      catch (IOException e) {
+      } catch (IOException e) {
         throw new RepositoryException("Error creating file: " + file, e); //$NON-NLS-1$
       }
     }
     return new SingleFileWriteAccess(file);
   }
 
+  @Override
   public String createUniqueRepositoryId(IBasicRepositoryIdData repositoryLocation) {
     int count = 0;
     String repositoryId = repositoryLocation.getIdProposal();
@@ -135,6 +138,7 @@ public class Repository implements IRepository {
     return resolver.getMainFile(type, id).exists();
   }
 
+  @Override
   public IRepositoryReadAccess openReadAccess(IItemType type, IFileProvider provider) {
     if (provider.getFile() == null) {
       return null;
@@ -143,10 +147,8 @@ public class Repository implements IRepository {
       return new SingleFileReadAccess(provider.getFile());
     }
     IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
-    return new MultiFileReadAccess(
-        provider.getFile(),
-        repositoryConfiguration.getMainFileName(),
-        repositoryConfiguration.getFileExtension());
+    return new MultiFileReadAccess(provider.getFile(), repositoryConfiguration.getMainFileName(),
+            repositoryConfiguration.getFileExtension());
   }
 
   @Override
@@ -155,10 +157,8 @@ public class Repository implements IRepository {
       return new SingleFileReadAccess(getRepositoryFileResolver().getMainFile(type, id));
     }
     IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
-    return new MultiFileReadAccess(
-        getRepositoryFileResolver().getItemTypeFolder(type),
-        repositoryConfiguration.getMainFileName(),
-        repositoryConfiguration.getFileExtension());
+    return new MultiFileReadAccess(getRepositoryFileResolver().getItemTypeFolder(type),
+            repositoryConfiguration.getMainFileName(), repositoryConfiguration.getFileExtension());
   }
 
   @Override
@@ -167,8 +167,9 @@ public class Repository implements IRepository {
       return getRepositoryFileResolver().getMainFile(type, id).exists();
     }
     return getRepositoryFileResolver().getItemTypeFolder(type).exists();
-   }
+  }
 
+  @Override
   public boolean containsClosed(IItemType... types) {
     boolean hasClosed = false;
     for (IItemType type : types) {
@@ -177,6 +178,7 @@ public class Repository implements IRepository {
     return hasClosed;
   }
 
+  @Override
   public File getDataBaseDirectory(String subfolder) {
     if (subfolder == null) {
       return defaultDataFolder;
@@ -184,12 +186,12 @@ public class Repository implements IRepository {
     return resolver.getExistingDataFolder(subfolder);
   }
 
+  @Override
   public void deleteAssociatedItem(PrintNameFile file) throws RepositoryException {
     try {
       FileUtilities.deleteFileOrDirectory(file.getFile());
       refresh();
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       throw new RepositoryException("Deletion failed.", e); //$NON-NLS-1$
     }
   }
