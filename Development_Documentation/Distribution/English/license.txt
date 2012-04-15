@@ -92,43 +92,58 @@ END OF TERMS AND CONDITIONS
 
 Anathema includes software developed by
 -The Apache Software Foundation (http://www.apache.org/).
--the DOM4J Project (http://www.dom4j.org).
--Bruno Lowagie (http://www.lowagie.com/iText).
--L2FProd.com (http://www.l2fprod.com).
+-Versant Technologies (http://www.db4o.com/).
 -NNL Technology AB (http://www.infonode.net).
--db4Objects, Inc (http://www.db4o.com).
+-L2FProd.com (http://www.l2fprod.com).
+-the Reflections project (http://code.google.com/p/reflections/)
+-the slf4j project (http://www.slf4j.org)
+-1T3XT BVBA (http://www.itextpdf.com)
+-the Swing Labs project (http://java.net/projects/swinglabs)
 -the Tritonus project (http://www.tritonus.org).
 -the Javazoom team (http://www.javazoom.net).
 -disy Informationssysteme GmbH (http://www.disy.net)
--the JTS Project (http://www.vividsolutions.com/jts/jtshome.htm)
+-the GSON project (http://code.google.com/p/google-gson/)
+-the Jaxen project (http://jaxen.codehaus.org/)
+-the DOM4J Project (http://www.dom4j.org).
+-Google, Inc.
+-eTeks (http://www.eteks.com)
 
 The "Print to PDF" icon was created by Wolfgang Bartelme (http://www.bartelme.at/) and is used with permission.
 Some of the other images are taken with permission from the archives at http://www.wolf-spoor.org.
 
-Apache License 2.0 (See /lib/ApacheLicense20.txt for details)
-=========================
-Xalan is published under the Apache Software License 2.0. 
-L2Fprod.com Commons Components are published under the Apache Software License 2.0.
-Batik 1.7 is published under the Apache Software License 2.0.
-Jakarta Commons are published under the Apache Software License 2.0.
+For the full text of the individual licenses, please visit
+https://github.com/anathema/anathema/tree/master/Thirdparty/License
 
-GNU LGPL (See /lib/LGPL.txt for details.)
+Apache License 2.0
 =========================
-Tritonus is published under the LGPL. 
-MP3SPI is published under the LGPL. 
-jlGui is published under the LGPL. 
-JLayer is published under the LGPL.
-Note that Anathema contains only part of this library in order not to infringe the MP3 copyrights held by Fraunhofer/Thompson.
-JTS is published under the LGPL.
+Xalan
+L2Fprod.com Commons Components
+Batik
+Apache Commons
+Common-IO
+GSON
+Guava
+XML-Commons/XML-APIs
 
-GNU GPL (This file)
+GNU LGPL
+========
+Tritonus
+MP3SPI
+jlGui
+JLayer
+*Note that Anathema contains only part of this library in order not to infringe the MP3 copyrights held by Fraunhofer/Thompson.
+Swing Labs components
+
+GNU GPL 2.0 (This file)
 =========================
-Infonode Tabbed Panel is published under the GPL. 
-db4o is published under the GPL.
-JeksParser is published under the GPL.
+Infonode Docking Window
+db4o
+JeksParser
 
 Individual Licenses:
 =========================
-Xerces is published under the Apache Software License 1.1. See /lib/ApacheLicense11.txt for details.
-GridDialogLayout is published under the Common Public License. See /lib/griddialoglayout_license.html for details.
-IText is published under the Mozilla Public License 1.1. See /lib/ITextLicense.txt for details.
+iText is published under the GNU Affero General Public License 3.0.
+Reflections is published under the WTFPL.
+SLF4J is published under the MIT License.
+jaxen is published under the Jaxen License.
+dom4j is published under the BSD License
