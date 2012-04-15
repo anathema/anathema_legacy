@@ -1,8 +1,6 @@
 dependencies {
-  compile files(
-          "../Thirdparty/Multimedia/mp3spi1.9.2.jar",
-          "../Thirdparty/Multimedia/tritonus_share.jar",
-  )
+  compile 'org.tritonus:tritonus-share:0.3.6'
+  compile 'javazoom:mp3spi:1.9.2'
   compile project(':Platform')
 }
 

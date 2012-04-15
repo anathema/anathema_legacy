@@ -1,11 +1,9 @@
 dependencies {
-  compile files(
-          "../Thirdparty/Multimedia/basicplayer2.3.jar",
-          "../Thirdparty/Multimedia/javalayer.jar"
-  )
   compile 'commons-logging:commons-logging:1.1.1'
   compile project(':Campaign_Music')
   compile project(':Platform_Database')
+  compile 'javazoom:javalayer:1.0.0' //without playback
+  compile 'javazoom:jlgui:2.3.0'
   runtime 'javazoom:javalayer-playback:1.0.0' //included at runtime only, so the MP3 parts don't get distributed.
 }
 
