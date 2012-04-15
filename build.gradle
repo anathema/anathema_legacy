@@ -67,10 +67,10 @@ configurations {
 
 dependencies {
     launch4j files(
-            "./Thirdparty/Distribution/launch4j.jar",
-            "./Thirdparty/Distribution/xstream.jar"
+            "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
+            "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
     )
-    nsis files("./Thirdparty/Distribution/nsisant-1.2.jar")
+    nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.2.jar")
 }
 
 versionString = "${version_major}.${version_minor}.${version_revision}"
