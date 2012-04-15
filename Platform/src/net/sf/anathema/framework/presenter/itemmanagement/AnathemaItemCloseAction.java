@@ -15,7 +15,6 @@ public class AnathemaItemCloseAction extends AbstractAnathemaCloseAction {
 
   public static Action createForItem(IItemManagementModel model, IResources resources, IItem item) {
     SmartAction action = new AnathemaItemCloseAction(model, item, resources);
-    action.setToolTipText(resources.getString("AnathemaCore.Tools.Close.Tooltip")); //$NON-NLS-1$
     action.setIcon(new BasicUi(resources).getClearIcon());
     return action;
   }
