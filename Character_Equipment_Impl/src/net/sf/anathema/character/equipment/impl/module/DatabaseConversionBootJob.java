@@ -42,11 +42,15 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     logEquipmentDatabaseVersion(dbVersion);
     if (anathemaVersion.isLargerThan(dbVersion)) {
       backupDatabase(anathemaModel, container, anathemaVersion);
-      Version updatedVersion = updateDbVersion(dbVersion, anathemaVersion);
       updateContent(container);
       convertToGson(anathemaModel, container);
-      finish(container, updatedVersion);
+      removeDb4oDatabase(databaseFile, container);
     }
+  }
+
+  private void removeDb4oDatabase(File databaseFile, ObjectContainer container) {
+    container.close();
+    databaseFile.delete();
   }
 
   private void logEquipmentDatabaseVersion(Version dbVersion) {
@@ -120,20 +124,6 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
   private void deleteFirstEditionStats(EquipmentTemplate template) {
     template.removeStats("CoreRules");
     template.removeStats("PowerCombat");
-  }
-
-  private Version updateDbVersion(Version dbVersion, Version anathemaVersion) {
-    if (dbVersion != null) {
-      dbVersion.updateTo(anathemaVersion);
-      return dbVersion;
-    }
-    return anathemaVersion;
-  }
-
-  private void finish(ObjectContainer container, Version version) {
-    container.set(version);
-    container.commit();
-    container.close();
   }
 
   private File getDatabaseFile(IAnathemaModel model) {
