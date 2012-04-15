@@ -1,6 +1,6 @@
 package net.sf.anathema.magic.description.module;
 
-import net.sf.anathema.magic.description.view.MagicDescriptionView;
+import net.sf.anathema.framework.view.NullItemView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
@@ -36,10 +36,11 @@ public final class MagicDescriptionItemTypeConfiguration extends AbstractItemTyp
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(final IAnathemaModel anathemaModel, final IResources resources) {
+  protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, IResources resources) {
     return new IItemViewFactory() {
+      @Override
       public IItemView createView(IItem item) throws AnathemaException {
-        return new MagicDescriptionView();
+        return new NullItemView();
       }
     };
   }
