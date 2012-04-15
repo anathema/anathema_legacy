@@ -109,7 +109,7 @@ Apache License 2.0 (See /lib/ApacheLicense20.txt for details)
 =========================
 Xalan is published under the Apache Software License 2.0. 
 L2Fprod.com Commons Components are published under the Apache Software License 2.0.
-Batik 1.6 is published under the Apache Software License 2.0.
+Batik 1.7 is published under the Apache Software License 2.0.
 Jakarta Commons are published under the Apache Software License 2.0.
 
 GNU LGPL (See /lib/LGPL.txt for details.)
@@ -120,7 +120,6 @@ jlGui is published under the LGPL.
 JLayer is published under the LGPL.
 Note that Anathema contains only part of this library in order not to infringe the MP3 copyrights held by Fraunhofer/Thompson.
 JTS is published under the LGPL.
-Geotools is published under the LGPL.
 
 GNU GPL (This file)
 =========================
@@ -131,6 +130,5 @@ JeksParser is published under the GPL.
 Individual Licenses:
 =========================
 Xerces is published under the Apache Software License 1.1. See /lib/ApacheLicense11.txt for details.
-Jasper Reports is published under the Jasper Reports License 1.0. See /lib/JasperLicense.txt for details.
 GridDialogLayout is published under the Common Public License. See /lib/griddialoglayout_license.html for details.
 IText is published under the Mozilla Public License 1.1. See /lib/ITextLicense.txt for details.
