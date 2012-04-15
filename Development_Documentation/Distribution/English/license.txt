@@ -92,7 +92,6 @@ END OF TERMS AND CONDITIONS
 
 Anathema includes software developed by
 -The Apache Software Foundation (http://www.apache.org/).
--Teodor Danciu (http://jasperreports.sourceforge.net).
 -the DOM4J Project (http://www.dom4j.org).
 -Bruno Lowagie (http://www.lowagie.com/iText).
 -L2FProd.com (http://www.l2fprod.com).
@@ -101,14 +100,10 @@ Anathema includes software developed by
 -the Tritonus project (http://www.tritonus.org).
 -the Javazoom team (http://www.javazoom.net).
 -disy Informationssysteme GmbH (http://www.disy.net)
--the Geotools Project(http://www.geotools.org)
 -the JTS Project (http://www.vividsolutions.com/jts/jtshome.htm)
 
 The "Print to PDF" icon was created by Wolfgang Bartelme (http://www.bartelme.at/) and is used with permission.
 Some of the other images are taken with permission from the archives at http://www.wolf-spoor.org.
-
-GISterm is a product of disy Informationssysteme GmbH (http://www.disy.net) and is used under an exclusive license.
-The GISterm libraries included are NOT for public reuse.
 
 Apache License 2.0 (See /lib/ApacheLicense20.txt for details)
 =========================
