@@ -112,7 +112,7 @@ The "Print to PDF" icon was created by Wolfgang Bartelme (http://www.bartelme.at
 Some of the other images are taken with permission from the archives at http://www.wolf-spoor.org.
 
 For the full text of the individual licenses, please visit
-https://github.com/anathema/anathema/tree/master/Thirdparty/License
+https://github.com/anathema/anathema/tree/master/Development_Documentation/Licenses
 
 Apache License 2.0
 =========================
