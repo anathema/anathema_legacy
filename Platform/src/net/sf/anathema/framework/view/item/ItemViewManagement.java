@@ -47,6 +47,8 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     titledTabProperties.addSuperObject(theme.getTitledTabProperties());
     titledTabProperties.getNormalProperties().setTitleComponentVisible(false);
     titledTabProperties.getHighlightedProperties().setTitleComponentVisible(true);
+	titledTabProperties.setFocusable(false);
+	titledTabProperties.setHighlightedRaised(3);
     titledTabProperties.setHoverListener(new HoverListener() {
       @Override
       public void mouseEntered(HoverEvent event) {
