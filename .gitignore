@@ -9,9 +9,20 @@ Anathema*.zip
 out/
 .classpath
 .project
-/repository/
-!/repository/equipment/*.item
 .settings/
 *.launch
 *.pdf
 *.zip
+Thumbs.db
+
+# Repository
+repository.version
+*.item
+*.ecg
+*.yap
+*.xml
+
+# Copied from /Development_Code/.cvsignore
+/Development_Code/*.java
+/Development_Code/*.pdf
+/Development_Code/*.jasper
