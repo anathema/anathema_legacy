@@ -6,7 +6,7 @@ dependencies {
   compile 'commons-logging:commons-logging:1.1.1'
   compile project(':Campaign_Music')
   compile project(':Platform_Database')
-  runtime files("../Thirdparty/Development/jl1.0.jar") //included at runtime only, so the MP3 parts don't get distributed.
+  runtime 'javazoom:javalayer-playback:1.0.0' //included at runtime only, so the MP3 parts don't get distributed.
 }
 
 sourceSets {
