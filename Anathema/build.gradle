@@ -13,14 +13,14 @@ jar {
 dependencies {
   //For development, all projects need to be on the classpath at runtime.
   project.parent.subprojects.each {
-      if (isNotSelfOrThirdparty(it)){
+      if (isNotSelf(it)){
         runtime project(":${it.name}")
       }
   }
 }
 
-private boolean isNotSelfOrThirdparty(project) {
-    return project.name != "Anathema" && project.name != "Thirdparty"
+private boolean isNotSelf(project) {
+    return project.name != "Anathema"
 }
 
 sourceSets {

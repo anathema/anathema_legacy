@@ -14,10 +14,6 @@ subprojects {
     apply plugin: 'eclipse'
     apply plugin: 'idea'
 
-    if (project.name == 'Thirdparty') {
-        return
-    }
-
     repositories {
         maven {
             url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
@@ -53,7 +49,7 @@ subprojects {
 
     task collectTransitiveDependencies() << {
         copy {
-            from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('Thirdparty') || dependency.absolutePath.contains('cache')) }
+            from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('cache')) }
             into dependenciesDir
         }
     }
