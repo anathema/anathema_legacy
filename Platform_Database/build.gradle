@@ -1,6 +1,4 @@
 dependencies {
-	compile files(
-		"../Thirdparty/Database/db4o-6.0-java5.jar",
-    )
+  compile 'com.db4o:db4o-java5:6.0.0'
 	compile project(':Platform')
 }
