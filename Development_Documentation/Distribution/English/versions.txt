@@ -7,8 +7,10 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 http://anathema.github.com
 
 ===------------------------------------------------------------------------------===
-			Release 4.0.1
+			Release 4.1.0
 ===------------------------------------------------------------------------------===
+
+From this version onward, Anathema no longer uses the "Equipment.yap" file, but individual files for each item.
 
 -- Features --
 * New preference: Allow equipment customization.
