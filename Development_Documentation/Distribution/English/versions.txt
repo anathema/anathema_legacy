@@ -11,6 +11,7 @@ http://anathema.github.com
 ===------------------------------------------------------------------------------===
 
 From this version onward, Anathema no longer uses the "Equipment.yap" file, but individual files for each item.
+It will convert existing databases and afterwards remove the .yap file.
 
 -- Features --
 * New preference: Allow equipment customization.
@@ -33,8 +34,10 @@ From this version onward, Anathema no longer uses the "Equipment.yap" file, but 
 * Charms that raise the Essence cap still work after reloading
 * Character creation calculates the available dots correctly for splats with fixed dots, like Sidereals
 * Fixed an issue with items made of non-magical Materials
+* Fixed free Virtue cap for non-Solars at character creation
 * [Shadow493] First Age Solars have the correct points
 * [Curtis Tasker] Item stats can contain the '&' character
+* (Solar/Melee) "Honored Companion of the Sun" is present
 * (Infernal/SWLiHN) "Counter-Conceptual Interposition" requires "Essence-Dissecting Stare"
 * (Infernal/Kimbery) "Bitter Heart Unbleeding" has an Essence 3 repurchase
 * (Infernal) "Ascendancy Mantle" gives Broken Winged Crane as source

@@ -1,7 +1,5 @@
 dependencies {
-  compile 'xml-apis:xml-apis-ext:1.3.04'
-  compile 'xml-apis:xml-apis:1.3.04'
-  compile fileTree(dir: '../Thirdparty/SVG', include: '*.jar')
+  compile 'org.apache.xmlgraphics:batik-swing:1.7'
   compile project(':Lib')
   compile project(':Platform')
   compile project(':GraphLayout')

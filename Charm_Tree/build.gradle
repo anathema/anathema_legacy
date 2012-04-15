@@ -1,7 +1,4 @@
 dependencies {
-  compile files(          
-          "../Thirdparty/SVG/batik-anim.jar",
-  )
   compile project(':GraphLayout')
   compile project(':Platform_SvgTree')
   compile project(':Character_Generic')
