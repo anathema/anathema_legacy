@@ -36,6 +36,9 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     ProxySplashscreen.getInstance().displayStatusMessage(
             resources.getString("Equipment.Bootjob.Splashmessage")); //$NON-NLS-1$
     File databaseFile = getDatabaseFile(anathemaModel);
+    if (!databaseFile.exists()){
+      return;
+    }
     ObjectContainer container = EquipmentDatabaseConnectionManager.createConnection(databaseFile);
     Version dbVersion = DatabaseUtils.getDatabaseVersion(container);
     Version anathemaVersion = new Version(resources);
