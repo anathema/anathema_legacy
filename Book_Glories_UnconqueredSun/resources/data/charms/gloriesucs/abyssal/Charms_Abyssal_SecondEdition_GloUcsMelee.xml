@@ -38,6 +38,7 @@
           <charmAttribute attribute="Obvious" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <source source="GloriesUCS" />
+          <source source="ScrollErrata"/>
      </charm>
     <charm id="Abyssal.CreationSlayingHolocaustBlade6" exalt="Abyssal" group="Melee">
           <prerequisite>

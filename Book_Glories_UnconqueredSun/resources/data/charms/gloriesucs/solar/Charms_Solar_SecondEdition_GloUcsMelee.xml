@@ -67,9 +67,9 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
-          <charmAttribute attribute="Holy" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <source source="GloriesUCS" />
+          <source source="ScrollErrata"/>
      </charm>
      <charm id="Solar.WorldScarringSolarGlory6" exalt="Solar" group="Melee">
           <prerequisite>
