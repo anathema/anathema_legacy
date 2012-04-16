@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.rules;
 
+import com.google.common.base.Functions;
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
@@ -9,9 +10,9 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.collection.DefaultValueHashMap;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class GenericAdditionalRules extends NullAdditionalRules implements ICloneable<GenericAdditionalRules> {
@@ -104,7 +105,7 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
     type.accept(new TraitTypeAdapter() {
       @Override
       public void visitBackground(IBackgroundTemplate template) {
-        modifier[0] = backgroundCostModifiers.get(template.getId());
+        modifier[0] = Functions.forMap(backgroundCostModifiers, new DefaultTraitCostModifier()).apply(template.getId());
       }
     });
     return modifier[0];
@@ -127,8 +128,7 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
     }
   }
 
-  private DefaultValueHashMap<String, ITraitCostModifier> createBackgroundCostModifierMap() {
-    return new DefaultValueHashMap<String, ITraitCostModifier>(
-            new DefaultTraitCostModifier());
+  private Map<String, ITraitCostModifier> createBackgroundCostModifierMap() {
+    return new HashMap<String, ITraitCostModifier>();
   }
 }

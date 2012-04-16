@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.model.charm;
 
+import com.google.common.base.Functions;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -42,7 +43,6 @@ import net.sf.anathema.character.presenter.magic.CharacterSourceBookFilter;
 import net.sf.anathema.character.presenter.magic.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.magic.ObtainableCharmFilter;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
-import net.sf.anathema.lib.collection.DefaultValueHashMap;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -59,8 +59,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final ISpecialCharmManager manager;
   private final MartialArtsCharmTree martialArtsCharmTree;
   private final Map<IIdentificate, ICharmTree> alienTreesByType = new HashMap<IIdentificate, ICharmTree>();
-  private final Map<IIdentificate, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new DefaultValueHashMap<IIdentificate, ILearningCharmGroup[]>(
-          new ILearningCharmGroup[0]);
+  private final Map<IIdentificate, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<IIdentificate, ILearningCharmGroup[]>();
   private final Map<ICharacterType, ICharmTemplate> templatesByType = new HashMap<ICharacterType, ICharmTemplate>();
   private final ICharacterType[] types;
   private final ILearningCharmGroupContainer learningCharmGroupContainer = new ILearningCharmGroupContainer() {
@@ -308,7 +307,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (MartialArtsUtilities.MARTIAL_ARTS.equals(type)) {
       return martialArtsGroups;
     }
-    return nonMartialArtsGroupsByType.get(type);
+    return Functions.forMap(nonMartialArtsGroupsByType, new ILearningCharmGroup[0]).apply(type);
   }
 
   private ILearningCharmGroup[] getMartialArtsGroups() {
