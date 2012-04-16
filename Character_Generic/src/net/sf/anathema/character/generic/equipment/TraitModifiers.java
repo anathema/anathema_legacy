@@ -1,13 +1,13 @@
 package net.sf.anathema.character.generic.equipment;
 
 public interface TraitModifiers {
-  Integer getDDVMod();
+  Integer getDDVPoolMod();
 
-  Integer getPDVMod();
+  Integer getPDVPoolMod();
 
-  Integer getMDDVMod();
+  Integer getMDDVPoolMod();
 
-  Integer getMPDVMod();
+  Integer getMPDVPoolMod();
 
   Integer getMeleeSpeedMod();
 

@@ -46,10 +46,10 @@ public class CharacterStatsModifiers implements ICharacterStatsModifiers {
   }
 
   @Override
-  public int getDDVMod() {
+  public int getDDVPoolMod() {
     int highest = 0;
     for (ITraitModifyingStats stat : stats)
-      highest = stat.getDDVMod() > highest ? stat.getDDVMod() : highest;
+      highest = stat.getDDVPoolMod() > highest ? stat.getDDVPoolMod() : highest;
     return highest;
   }
 
@@ -78,26 +78,26 @@ public class CharacterStatsModifiers implements ICharacterStatsModifiers {
   }
 
   @Override
-  public int getMDDVMod() {
+  public int getMDDVPoolMod() {
     int highest = 0;
     for (ITraitModifyingStats stat : stats)
-      highest = stat.getMDDVMod() > highest ? stat.getMDDVMod() : highest;
+      highest = stat.getMDDVPoolMod() > highest ? stat.getMDDVPoolMod() : highest;
     return highest;
   }
 
   @Override
-  public int getMPDVMod() {
+  public int getMPDVPoolMod() {
     int highest = 0;
     for (ITraitModifyingStats stat : stats)
-      highest = stat.getMPDVMod() > highest ? stat.getMPDVMod() : highest;
+      highest = stat.getMPDVPoolMod() > highest ? stat.getMPDVPoolMod() : highest;
     return highest;
   }
 
   @Override
-  public int getPDVMod() {
+  public int getPDVPoolMod() {
     int highest = 0;
     for (ITraitModifyingStats stat : stats)
-      highest = stat.getPDVMod() > highest ? stat.getPDVMod() : highest;
+      highest = stat.getPDVPoolMod() > highest ? stat.getPDVPoolMod() : highest;
     return highest;
   }
 }

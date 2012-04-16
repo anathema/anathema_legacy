@@ -16,15 +16,16 @@ public class CharacterUtilities {
   }
   
   public static int getDodgeMdvWithSpecialty(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, int specialty) {
-	int dvPool = getTotalValue( traitCollection, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence ) + specialty; //+ equipment.getMDDVMod();
-	int dv = getRoundDownDv( dvPool ) + equipment.getMDDVMod();
+	int dvPool = getTotalValue( traitCollection, OtherTraitType.Willpower, AbilityType.Integrity, OtherTraitType.Essence ) +
+			specialty + equipment.getMDDVPoolMod();
+	int dv = getRoundDownDv( dvPool );
 	
     return Math.max(dv, 0);
   }
 
   public static int getParryMdv( IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, ITraitType... types) {
-	int dvPool = getTotalValue( traitCollection, types ); //+ equipment.getMPDVMod();
-	int dv = getRoundUpDv( dvPool ) + equipment.getMPDVMod();
+	int dvPool = getTotalValue( traitCollection, types ) + equipment.getMPDVPoolMod();
+	int dv = getRoundUpDv( dvPool );
 	
     return Math.max(dv, 0);
   }
@@ -129,8 +130,8 @@ public class CharacterUtilities {
                                             IGenericTraitCollection traitCollection,
                                             ICharacterStatsModifiers equipment,
                                             int specialty) {
-    int dvPool = getDodgeDvPool(traitCollection) + specialty; // + equipment.getDDVPoolMod()
-    int dv     = getRoundedDodgeDv(characterType, dvPool) +  equipment.getDDVMod() + equipment.getMobilityPenalty();
+    int dvPool = getDodgeDvPool(traitCollection) + specialty + equipment.getDDVPoolMod();
+    int dv     = getRoundedDodgeDv(characterType, dvPool) + equipment.getMobilityPenalty();
     
     return Math.max(dv, 0);
   }

@@ -21,7 +21,7 @@ public class TraitModifyingStats extends AbstractNonCombatStats implements ITrai
 	Integer JoinWarMod;
 	
 	@Override
-	public Integer getDDVMod() {
+	public Integer getDDVPoolMod() {
 		return DDVMod;
 	}
 
@@ -41,12 +41,12 @@ public class TraitModifyingStats extends AbstractNonCombatStats implements ITrai
 	}
 
 	@Override
-	public Integer getMDDVMod() {
+	public Integer getMDDVPoolMod() {
 		return MDDVMod;
 	}
 
 	@Override
-	public Integer getMPDVMod() {
+	public Integer getMPDVPoolMod() {
 		return MPDVMod;
 	}
 
@@ -71,7 +71,7 @@ public class TraitModifyingStats extends AbstractNonCombatStats implements ITrai
 	}
 
 	@Override
-	public Integer getPDVMod() {
+	public Integer getPDVPoolMod() {
 		return PDVMod;
 	}
 
@@ -95,7 +95,7 @@ public class TraitModifyingStats extends AbstractNonCombatStats implements ITrai
 		return RangedSpeedMod;
 	}
 	
-	public void setDDVMod(int value) {
+	public void setDDVPoolMod(int value) {
 		DDVMod = value;
 	}
 
@@ -111,11 +111,11 @@ public class TraitModifyingStats extends AbstractNonCombatStats implements ITrai
 		JoinWarMod = value;
 	}
 
-	public void setMDDVMod(int value) {
+	public void setMDDVPoolMod(int value) {
 		MDDVMod = value;
 	}
 
-	public void setMPDVMod(int value) {
+	public void setMPDVPoolMod(int value) {
 		MPDVMod = value;
 	}
 
@@ -135,7 +135,7 @@ public class TraitModifyingStats extends AbstractNonCombatStats implements ITrai
 		MeleeSpeedMod = value;
 	}
 
-	public void setPDVMod(int value) {
+	public void setPDVPoolMod(int value) {
 		PDVMod = value;
 	}
 

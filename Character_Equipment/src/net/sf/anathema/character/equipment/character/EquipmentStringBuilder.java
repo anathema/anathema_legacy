@@ -95,14 +95,14 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(stats.getName().getId());
     stringBuilder.append(":");
-    if (stats.getDDVMod() != 0)
-      stringBuilder.append(getStatsString("DDV", stats.getDDVMod(), true));
-    if (stats.getPDVMod() != 0)
-      stringBuilder.append(getStatsString("PDV", stats.getPDVMod(), true));
-    if (stats.getMDDVMod() != 0)
-      stringBuilder.append(getStatsString("MDDV", stats.getMDDVMod(), true));
-    if (stats.getMPDVMod() != 0)
-      stringBuilder.append(getStatsString("MPDV", stats.getMPDVMod(), true));
+    if (stats.getDDVPoolMod() != 0)
+      stringBuilder.append(getStatsString("DDV", stats.getDDVPoolMod(), true));
+    if (stats.getPDVPoolMod() != 0)
+      stringBuilder.append(getStatsString("PDV", stats.getPDVPoolMod(), true));
+    if (stats.getMDDVPoolMod() != 0)
+      stringBuilder.append(getStatsString("MDDV", stats.getMDDVPoolMod(), true));
+    if (stats.getMPDVPoolMod() != 0)
+      stringBuilder.append(getStatsString("MPDV", stats.getMPDVPoolMod(), true));
     if (stats.getMeleeSpeedMod() != 0)
       stringBuilder.append(getStatsString("MeleeSpeed", stats.getMeleeSpeedMod(), true));
     if (stats.getMeleeAccuracyMod() != 0)
