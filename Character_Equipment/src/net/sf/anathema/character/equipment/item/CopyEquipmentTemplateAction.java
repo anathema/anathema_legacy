@@ -30,6 +30,14 @@ public final class CopyEquipmentTemplateAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
+    DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new ICondition() {
+      public boolean isFulfilled() {
+        return model.getTemplateEditModel().isDirty();
+      }
+    }, parentComponent);
+    if (vetor.vetos()) {
+        return;
+    }
     model.getTemplateEditModel().copyNewTemplate();
     setEnabled(false);
   }
