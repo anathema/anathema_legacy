@@ -29,6 +29,8 @@ public interface IEquipmentTemplateEditModel {
   String getEditTemplateId();
 
   void setNewTemplate();
+  
+  void copyNewTemplate();
 
   void setMagicalMaterial(MagicalMaterial newValue);
 

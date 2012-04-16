@@ -76,7 +76,16 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     getDescription().getName().setText(null);
     getDescription().getContent().setText(new ITextPart[0]);
     setMaterialComposition(MaterialComposition.None);
+    setCost( new ItemCost("Resources",0) );
     statses.clear();
+    fireStatsChangedEvent();
+  }
+  
+  @Override
+  public void copyNewTemplate() {
+    editTemplateId += " copy";
+    getDescription().getName().setText(editTemplateId);
+    
     fireStatsChangedEvent();
   }
 
