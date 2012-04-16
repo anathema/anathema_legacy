@@ -54,7 +54,7 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
 
   @Override
   public IEquipmentTemplate loadTemplate(String templateId) {
-    String id = cleanFilename(templateId);
+    String id = FilenameCleaner.clean(templateId);
     if (!access.exists(id)) {
       return null;
     }
@@ -98,25 +98,21 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
   }
 
   private void delete(String editTemplateId) {
-    String id = cleanFilename(editTemplateId);
+    String id = FilenameCleaner.clean(editTemplateId);
     if (access.exists(id)) {
       access.delete(id);
     }
   }
 
   private IEquipmentTemplate loadExistingTemplate(String templateId) {
-    String id = cleanFilename(templateId);
+    String id = FilenameCleaner.clean(templateId);
     String json = access.read(id);
     return gson.fromJson(json);
   }
 
   private void save(IEquipmentTemplate template) {
-    String id = cleanFilename(template.getName());
+    String id = FilenameCleaner.clean(template.getName());
     String json = gson.toJson(template);
     access.write(id, json);
-  }
-
-  private  String cleanFilename(String input) {
-    return input.replaceAll("\\W", "_");
   }
 }
