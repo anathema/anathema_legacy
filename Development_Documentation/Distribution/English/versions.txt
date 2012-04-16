@@ -14,6 +14,9 @@ From this version onward, Anathema no longer uses the "Equipment.yap" file, but 
 It will convert existing databases and afterwards remove the .yap file.
 
 -- Features --
+* Equipment modifiers to DVs now add to pools instead of modifying the static rating, allowing for more flexibility
+  in designing your gear. All imported equipment from earlier releases will have its values doubled to achieve the
+  same impact it had before; adjust as desired. 
 * New preference: Allow equipment customization.
    Allows to overwrite an item's name and description to make it truly yours.
 * Equipment items have a "cost" statistic, which is not enforced.
