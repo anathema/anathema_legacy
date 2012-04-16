@@ -13,6 +13,8 @@ http://anathema.github.com
 From this version onward, Anathema no longer uses the "Equipment.yap" file, but individual files for each item.
 It will convert existing databases and afterwards remove the .yap file.
 
+This version of Anathema comes with the basic weapons, shields, and armor from the Errata.  When converting your old database, it will not overwrite these items.  If you choose to customize one of these included items, you will need to change the name to avoid it being overwritten in a future update.
+
 -- Features --
 * New preference: Allow equipment customization.
    Allows to overwrite an item's name and description to make it truly yours.
@@ -24,6 +26,10 @@ It will convert existing databases and afterwards remove the .yap file.
 * [Curtis Tasker] The character sheet adds the highest Dodge specialty to the Dodge DV
 * [Curtis Tasker] The character sheet adds the highest Awareness specialty to Join Battle
 * [Curtis Tasker] Improved behaviour of tabs
+* [Curtis Tasker] Added basic weapons, armor, and shields from the Errata into the equipment database.
+* [Curtis Tasker] Added a 'copy item' button to the equipment database.
+* [Curtis Tasker] Added tooltips to the buttons in the equipment database.
+* [Curtis Tasker] Improved confirmation dialog for item deletion in the equipment database.
 * We now import custom charms from your repository, if the data files are provided. Consult the provided
   "Custom Charms.txt" for basic instructions.
 

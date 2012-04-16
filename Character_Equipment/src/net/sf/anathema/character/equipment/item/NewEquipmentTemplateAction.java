@@ -17,6 +17,7 @@ public final class NewEquipmentTemplateAction extends SmartAction {
     super(new PlatformUI(resources).getNewIcon());
     this.resources = resources;
     this.model = model;
+    setToolTipText(resources.getString("Equipment.Creation.Item.NewActionTooltip")); //$NON-NLS-1$
   }
 
   @Override

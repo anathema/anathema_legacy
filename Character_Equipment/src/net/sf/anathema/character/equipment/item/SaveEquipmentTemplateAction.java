@@ -37,6 +37,7 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
     model.getTemplateEditModel().addCostChangeListener(changeListener);
     model.getTemplateEditModel().addMagicalMaterialChangeListener(changeListener);
     updateEnabled();
+    setToolTipText(resources.getString("Equipment.Creation.Item.SaveActionTooltip")); //$NON-NLS-1$
   }
 
   private void updateEnabled() {
