@@ -32,7 +32,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     return new EquipmentAdditionalModel(
         characterType,
         naturalArmour,
-        equipmentTemplateProvider, context, dataProvider,
+        equipmentTemplateProvider, context.getSpecialtyContext(), dataProvider,
         new NaturalWeaponTemplate(),
         template.getNaturalWeaponTemplate(characterType));
   }

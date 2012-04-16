@@ -15,8 +15,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.CreationSpellLearnStrategy;
 import net.sf.anathema.character.impl.model.context.magic.ExperiencedCharmLearnStrategy;
@@ -27,11 +25,10 @@ import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStra
 import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
-import net.sf.anathema.lib.control.change.IChangeListener;
 
 import java.util.List;
 
-public class CharacterModelContext implements ICharacterModelContext, ICharmContext, ITraitContext, IGenericSpecialtyContext {
+public class CharacterModelContext implements ICharacterModelContext, ICharmContext, ITraitContext {
 
   private final ProxyTraitValueStrategy traitValueStrategy = new ProxyTraitValueStrategy(
           new CreationTraitValueStrategy());
@@ -58,6 +55,7 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
   public ITraitValueStrategy getTraitValueStrategy() {
     return traitValueStrategy;
   }
+
   public ISpellLearnStrategy getSpellLearnStrategy() {
     return spellLearnStrategy;
   }
@@ -146,16 +144,6 @@ public class CharacterModelContext implements ICharacterModelContext, ICharmCont
 
   @Override
   public IGenericSpecialtyContext getSpecialtyContext() {
-    return this;
-  }
-
-  @Override
-  public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
-    return character.getSpecialties(traitType);
-  }
-
-  @Override
-  public void addSpecialtyListChangeListener(IChangeListener listener) {
-    character.addSpecialtyListChangeListener(listener);
+    return new GenericSpecialtyContext(character);
   }
 }

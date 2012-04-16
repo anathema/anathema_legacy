@@ -20,7 +20,7 @@ import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGenericSpecialtyContext;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -55,7 +55,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   };
 
   public EquipmentAdditionalModel(ICharacterType characterType, IArmourStats naturalArmour,
-                                  IEquipmentTemplateProvider equipmentTemplateProvider, ICharacterModelContext context,
+                                  IEquipmentTemplateProvider equipmentTemplateProvider, IGenericSpecialtyContext context,
                                   final IEquipmentCharacterDataProvider dataProvider,
                                   IEquipmentTemplate... naturalWeapons) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
@@ -70,7 +70,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
       IEquipmentItem item = createItem(template, null);
       naturalWeaponItems.add(item);
     }
-    context.getSpecialtyContext().addSpecialtyListChangeListener(new SpecialtyPrintRemover(dataProvider));
+    context.addSpecialtyListChangeListener(new SpecialtyPrintRemover(dataProvider));
   }
 
   @Override
