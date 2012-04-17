@@ -61,7 +61,8 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
       int timesLearnedWithExperience = specialCharm.getCurrentLearnCount() - specialCharm.getCreationLearnCount();
       final int specialCharmCost = timesLearnedWithExperience * charmCost;
       if (specialCharm instanceof IUpgradableCharmConfiguration)
-    	  return charmCost + ((IUpgradableCharmConfiguration)specialCharm).getUpgradeXPCost();
+    	  return (costsExperience(charmConfiguration, charm, charmsCalculated) ? charmCost : 0) +
+    			 ((IUpgradableCharmConfiguration)specialCharm).getUpgradeXPCost();
       if (!(specialCharm instanceof ISubeffectCharmConfiguration)) {
         return specialCharmCost;
       }
@@ -74,15 +75,21 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
       int subeffectCost = (int) Math.ceil(count * subeffectCharmConfiguration.getPointCostPerEffect() * 2);
       return subeffectCost + specialCharmCost;
     }
-    else if (charmConfiguration.getGroup(charm).isLearned(charm, true)) {
-      for (ICharm mergedCharm : charm.getMergedCharms()) {
-        if (charmsCalculated.contains(mergedCharm) && !isSpecialCharm(charm)) {
-          return 0;
-        }
-      }
-      return charmCost;
-    }
-    return 0;
+    return costsExperience(charmConfiguration, charm, charmsCalculated) ? charmCost : 0;
+  }
+  
+  private boolean costsExperience(ICharmConfiguration charmConfiguration,
+		  ICharm charm,
+		  Set<ICharm> charmsCalculated) {
+	if (charmConfiguration.getGroup(charm).isLearned(charm, true)) {
+	    for (ICharm mergedCharm : charm.getMergedCharms()) {
+	      if (charmsCalculated.contains(mergedCharm) && !isSpecialCharm(charm)) {
+	        return false;
+	      }
+	    }
+	    return true;
+	}
+	return false;
   }
   
   private boolean isSpecialCharm(ICharm charm)
