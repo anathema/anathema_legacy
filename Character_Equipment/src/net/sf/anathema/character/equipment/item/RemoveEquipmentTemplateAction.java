@@ -25,11 +25,13 @@ public class RemoveEquipmentTemplateAction extends SmartAction {
     this.model = model;
     this.view = view;
     view.getTemplateListView().addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         updateEnabled(newValue);
       }
     });
     updateEnabled(view.getTemplateListView().getSelectedObject());
+    setToolTipText(resources.getString("Equipment.Creation.Item.RemoveActionTooltip")); //$NON-NLS-1$
   }
 
   private void updateEnabled(String string) {
@@ -38,7 +40,7 @@ public class RemoveEquipmentTemplateAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    String messageText = resources.getString("Equipment.Creation.DeleteMessage.Text"); //$NON-NLS-1$
+    String messageText = model.getTemplateEditModel().getEditTemplateId() + " - " + resources.getString("Equipment.Creation.DeleteMessage.Text"); //$NON-NLS-1$
     String okText = resources.getString("Equipment.Creation.DeleteMessage.OKButton"); //$NON-NLS-1$
     ConfigurableVetor vetor = new ConfigurableVetor(parentComponent, messageText, okText);
     if (vetor.vetos()) {

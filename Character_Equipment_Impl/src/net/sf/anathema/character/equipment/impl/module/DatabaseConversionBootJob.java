@@ -71,7 +71,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
     ObjectSet set = query.execute();
     for (Object object : set) {
       EquipmentTemplate template = (EquipmentTemplate) object;
-      database.saveTemplate(template);
+      database.saveTemplateNoOverwrite(template);
     }
   }
 

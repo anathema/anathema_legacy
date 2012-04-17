@@ -24,7 +24,13 @@ It will convert existing databases and afterwards remove the .yap file.
 * Character loadout screen shows tooltips for items
 * [Shadow493] Added missing Lunar templates from DotFA.
 * [Jesse Belanger] Added Charm descriptions for Infernals. Most texts taken from the official Wiki.
-* [Curtis Tasker] Character sheet now uses specialties to calculate Join Battle, Join Debate, Dodge DV, Mental Dodge DV
+* [Curtis Tasker] The character sheet adds the highest Dodge specialty to the Dodge DV
+* [Curtis Tasker] The character sheet adds the highest Awareness specialty to Join Battle
+* [Curtis Tasker] Improved behavior of tabs
+* [Curtis Tasker] Improved look of toolbar buttons
+* [Curtis Tasker] Added a 'copy item' button to the equipment database.
+* [Curtis Tasker] Added tooltips to the buttons in the equipment database.
+* [Curtis Tasker] Improved confirmation dialog for item deletion in the equipment database.
 * We now import custom charms from your repository, if the data files are provided. Consult the provided
   "Custom Charms.txt" for basic instructions.
 

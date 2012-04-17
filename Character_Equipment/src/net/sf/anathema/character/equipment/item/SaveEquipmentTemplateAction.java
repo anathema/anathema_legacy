@@ -16,11 +16,13 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
   private final IResources resources;
   private final IEquipmentDatabaseManagement model;
   private final IChangeListener changeListener = new IChangeListener() {
+    @Override
     public void changeOccurred() {
       updateEnabled();
     }
   };
   private final IObjectValueChangedListener<String> stringChangeListener = new IObjectValueChangedListener<String>() {
+    @Override
     public void valueChanged(String newValue) {
       updateEnabled();
     }
@@ -37,6 +39,7 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
     model.getTemplateEditModel().addCostChangeListener(changeListener);
     model.getTemplateEditModel().addMagicalMaterialChangeListener(changeListener);
     updateEnabled();
+    setToolTipText(resources.getString("Equipment.Creation.Item.SaveActionTooltip")); //$NON-NLS-1$
   }
 
   private void updateEnabled() {

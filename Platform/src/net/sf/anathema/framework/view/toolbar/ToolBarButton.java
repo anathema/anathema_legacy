@@ -34,7 +34,7 @@ public class ToolBarButton extends NoFocusButton {
 
     Image image = new BufferedImage(width, height, Transparency.TRANSLUCENT);
     Graphics2D graphics = (Graphics2D) image.getGraphics();
-    Composite alpha = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, .5f);
+    Composite alpha = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, .8f);
     graphics.setComposite(alpha);
     graphics.drawImage(rolloverIcon.getImage(), 0, 0, null);
     graphics.dispose();
