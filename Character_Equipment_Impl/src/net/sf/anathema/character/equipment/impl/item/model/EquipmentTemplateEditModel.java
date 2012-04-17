@@ -35,6 +35,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   private MaterialComposition composition;
   private MagicalMaterial material;
   private ItemCost cost;
+  private boolean isCopy = false;
 
   public EquipmentTemplateEditModel(IEquipmentDatabase database) {
     this.database = database;
@@ -82,10 +83,10 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
   
   @Override
-  public void copyNewTemplate() {
-    editTemplateId += " copy";
+  public void copyNewTemplate( String salt ) {
+    editTemplateId += salt;
     getDescription().getName().setText(editTemplateId);
-    
+    editedTemplate = createTemplate();
     fireStatsChangedEvent();
   }
 

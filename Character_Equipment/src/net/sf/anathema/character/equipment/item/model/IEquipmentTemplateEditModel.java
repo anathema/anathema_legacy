@@ -30,7 +30,7 @@ public interface IEquipmentTemplateEditModel {
 
   void setNewTemplate();
   
-  void copyNewTemplate();
+  void copyNewTemplate( String salt );
 
   void setMagicalMaterial(MagicalMaterial newValue);
 

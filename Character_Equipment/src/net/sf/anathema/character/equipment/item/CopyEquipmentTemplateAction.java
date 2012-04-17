@@ -25,11 +25,12 @@ public final class CopyEquipmentTemplateAction extends SmartAction {
       }
     });
     setEnabled(true);
-    setToolTipText(resources.getString("Equipment.Creation.Item.CopyActionTooltip")); //$NON-NLS-1$
+    setToolTipText(resources.getString("Equipment.Creation.Item.CopyActionTooltip")); //$NON-NLS-1$  
   }
 
   @Override
   protected void execute(Component parentComponent) {
+    
     DiscardChangesVetor vetor = new DiscardChangesVetor(resources, new ICondition() {
       public boolean isFulfilled() {
         return model.getTemplateEditModel().isDirty();
@@ -38,7 +39,12 @@ public final class CopyEquipmentTemplateAction extends SmartAction {
     if (vetor.vetos()) {
         return;
     }
-    model.getTemplateEditModel().copyNewTemplate();
+    
+    String salt;
+    for( salt = new String(); model.getDatabase().loadTemplate( model.getTemplateEditModel().createTemplate().getName() + salt ) != null; salt += " copy" );
+
+    model.getTemplateEditModel().copyNewTemplate( salt );
+    model.getDatabase().saveTemplate(model.getTemplateEditModel().createTemplate());
     setEnabled(false);
   }
   
