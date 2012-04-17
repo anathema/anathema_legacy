@@ -29,7 +29,7 @@ public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponS
   @Override
   protected int getDefenceValue(IWeaponStats weapon) {
     IGenericTraitCollection traitCollection = getTraitCollection();
-    double finalValue = calculateFinalValue(weapon.getDefence() + getOptionModifiers(weapon),
+    double finalValue = calculateFinalValue(weapon.getDefence() + getOptionModifiers(weapon) + modifiers.getPDVPoolMod(),
             traitCollection.getTrait(AttributeType.Dexterity), traitCollection.getTrait(weapon.getTraitType()));
     boolean isMortal = !getCharacter().getTemplate().getTemplateType().getCharacterType().isEssenceUser();
     if (isMortal) {
@@ -37,7 +37,7 @@ public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponS
     } else {
       finalValue = Math.ceil(finalValue / 2);
     }
-    return (int) finalValue + modifiers.getPDVMod();
+    return (int) finalValue;
   }
 
   private int getOptionModifiers(IWeaponStats stats) {

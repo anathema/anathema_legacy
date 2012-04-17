@@ -92,6 +92,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends Abs
     cell.setColspan(useSpaceCell ? columnSpan + 1 : columnSpan);
     cell.setPaddingLeft(0);
     cell.setPaddingRight(0);
+    cell.setVerticalAlignment( PdfPCell.ALIGN_BOTTOM );
     return cell;
   }
 

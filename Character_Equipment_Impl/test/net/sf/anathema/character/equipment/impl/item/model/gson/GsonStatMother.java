@@ -59,17 +59,17 @@ public class GsonStatMother {
   public static TraitModifyingStats createTraitModifier() {
     TraitModifyingStats stats = new TraitModifyingStats();
     stats.setName(new Identificate("Liftoff!"));
-    stats.setDDVMod(1);
+    stats.setDDVPoolMod(1);
     stats.setJoinBattleMod(2);
     stats.setJoinDebateMod(3);
     stats.setJoinWarMod(4);
-    stats.setMDDVMod(5);
+    stats.setMDDVPoolMod(5);
     stats.setMeleeAccuracyMod(6);
     stats.setMeleeDamageMod(7);
     stats.setMeleeRateMod(8);
     stats.setMeleeSpeedMod(9);
-    stats.setMPDVMod(10);
-    stats.setPDVMod(11);
+    stats.setMPDVPoolMod(10);
+    stats.setPDVPoolMod(11);
     stats.setRangedAccuracyMod(12);
     stats.setRangedDamageMod(13);
     stats.setRangedRateMod(14);

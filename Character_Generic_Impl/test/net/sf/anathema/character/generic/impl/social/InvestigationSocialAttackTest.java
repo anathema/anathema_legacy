@@ -29,15 +29,15 @@ public class InvestigationSocialAttackTest {
 
   @Test
   public void addsParryModifierToDeceptionDV() throws Exception {
-    when(equipment.getMPDVMod()).thenReturn(5);
+    when(equipment.getMPDVPoolMod()).thenReturn(4);
     int deceptionMDV = socialAttack.getDeceptionMDV();
-    assertThat(deceptionMDV, is(5));
+    assertThat(deceptionMDV, is(2));
   }
 
   @Test
   public void addsParryModifierToHonestyDV() throws Exception {
-    when(equipment.getMPDVMod()).thenReturn(5);
+    when(equipment.getMPDVPoolMod()).thenReturn(4);
     int honestyMDV = socialAttack.getHonestyMDV();
-    assertThat(honestyMDV, is(5));
+    assertThat(honestyMDV, is(2));
   }
 }

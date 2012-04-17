@@ -1,15 +1,15 @@
 package net.sf.anathema.character.generic.equipment;
 
 public interface ICharacterStatsModifiers {
-  int getPDVMod();
+  int getPDVPoolMod();
 
   int getMobilityPenalty();
 
-  int getDDVMod();
+  int getDDVPoolMod();
 
-  int getMDDVMod();
+  int getMDDVPoolMod();
 
-  int getMPDVMod();
+  int getMPDVPoolMod();
 
   int getJoinBattleMod();
 

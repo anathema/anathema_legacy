@@ -6,6 +6,7 @@ import com.db4o.query.Query;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWeaponStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.EquipmentDatabaseConnectionManager;
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -94,12 +95,32 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
       deleteFirstEditionStats(template);
       deleteShieldStats(template);
       addMinimumDamage(template, container);
+      changeDVToPools(template, container);
       if (template.hasStats()) {
         container.set(template);
       } else {
         container.delete(template);
       }
     }
+  }
+  
+  private void changeDVToPools(EquipmentTemplate template, ObjectContainer container) {
+	IEquipmentStats[] stats = template.getStats();
+	for (IEquipmentStats stat : stats) {
+	  if (stat instanceof TraitModifyingStats) {
+	    TraitModifyingStats modifiers = (TraitModifyingStats) stat;
+	    if (modifiers.getPDVPoolMod() != 0 ||
+	       	modifiers.getDDVPoolMod() != 0 ||
+	        modifiers.getMDDVPoolMod() != 0 ||
+	        modifiers.getMPDVPoolMod() != 0) {
+		    modifiers.setDDVPoolMod(2 * modifiers.getDDVPoolMod());
+		    modifiers.setPDVPoolMod(2 * modifiers.getPDVPoolMod());
+		    modifiers.setMDDVPoolMod(2 * modifiers.getMDDVPoolMod());
+		    modifiers.setMPDVPoolMod(2 * modifiers.getMPDVPoolMod());
+		    container.set(modifiers);
+	    }
+	  }
+	}
   }
 
   private void addMinimumDamage(EquipmentTemplate template, ObjectContainer container) {
