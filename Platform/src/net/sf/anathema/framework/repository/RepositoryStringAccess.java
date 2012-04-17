@@ -21,12 +21,15 @@ public class RepositoryStringAccess {
   }
 
   public void write(String id, String representation) {
+    OutputStream stream = null;
     try {
       IRepositoryWriteAccess writeAccess = repository.createWriteAccess(itemType, id);
-      OutputStream stream = writeAccess.createMainOutputStream();
+      stream = writeAccess.createMainOutputStream();
       stream.write(representation.getBytes());
     } catch (IOException e) {
       throw new PersistenceException(e);
+    } finally {
+      IOUtils.closeQuietly(stream);
     }
   }
 
