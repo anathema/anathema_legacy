@@ -1,0 +1,42 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 1,
+        "damage": 6,
+        "damageTypeString": "Bashing",
+        "defence": 0,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      },
+      {
+        "accuracy": 0,
+        "damage": 3,
+        "damageTypeString": "Bashing",
+        "range": 10,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "Thrown"
+        ],
+        "minimumDamage": 1,
+        "name": "Ranged",
+        "type": "Ranged Weapon"
+      }
+    ]
+  },
+  "description": "Close: 2E Core p367\nRanged: 2E Core p371",
+  "name": "Club",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 0
+  }
+}
