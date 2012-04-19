@@ -42,6 +42,7 @@
 		<!-- NOTE:  Solar Mirror - Armor-Shattering Strike -->
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Stackable" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
 	<charm id="Celestial.AgonysCrucibleStrike" exalt="Abyssal" group="DarkMessiahStyle">

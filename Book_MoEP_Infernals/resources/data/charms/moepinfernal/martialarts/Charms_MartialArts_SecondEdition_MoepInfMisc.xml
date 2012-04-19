@@ -23,7 +23,7 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Miscellaneous Charms -->
-	<charm id="Infernal.HeroSunderingHands" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Infernal.HeroSunderingHands" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -42,7 +42,7 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="Infernals" />
 	</charm>
-	<charm id="Infernal.CrackTheSky" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Infernal.CrackTheSky" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="5" />
@@ -61,7 +61,7 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<source source="Infernals" />
 	</charm>
-	<charm id="Infernal.OathShatteringStrike" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Infernal.OathShatteringStrike" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="5" />

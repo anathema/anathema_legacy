@@ -39,6 +39,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Exclusive"/>
           <source source="GloriesUCS" page="21"/>
      </charm>
      <charm id="Celestial.UltimateInevitabilityOfTheGrave9" exalt="Abyssal" group="DarkMessiahStyle">
@@ -57,6 +58,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Mirror" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Exclusive"/>
           <source source="GloriesUCS" page="21"/>
      </charm>
 </charmlist>

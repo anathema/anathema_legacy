@@ -24,7 +24,7 @@
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <!-- Miscellaneous Charms  -->
 	<!-- TODO:  Coding:  When appropriate will need to change Solar -> Infernal. -->
-	<charm id="Celestial.SmolderingRageBeast" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.SmolderingRageBeast" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="3" />
 			<essence value="2" />
@@ -37,9 +37,10 @@
 		<charmAttribute attribute="Compulsion" visualize="true" />
 		<charmAttribute attribute="Emotion" visualize="true" />
 		<charmAttribute attribute="Rage" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.AllConsumingRampageRelease" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.AllConsumingRampageRelease" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="2" />
 			<essence value="2" />
@@ -49,9 +50,10 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.FearlessFrenzyAttitude" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.FearlessFrenzyAttitude" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="2" />
 			<essence value="2" />
@@ -61,9 +63,10 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.FuryIsFreedom" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.FuryIsFreedom" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="3" />
 			<essence value="3" />
@@ -75,9 +78,10 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.UntamedApocalypseShintai" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.UntamedApocalypseShintai" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -91,9 +95,10 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.ImpatientSlaughterSpeed" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.ImpatientSlaughterSpeed" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="2" />
@@ -104,9 +109,10 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial"/>
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.BoundingBeastAdvance" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.BoundingBeastAdvance" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="3" />
 			<essence value="2" />
@@ -117,9 +123,10 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.LeapingSmashTechnique" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.LeapingSmashTechnique" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="3" />
 			<essence value="2" />
@@ -135,9 +142,10 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.ShockAndAweSlam" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.ShockAndAweSlam" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="2" />
@@ -151,9 +159,10 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.NowhereToRun" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.NowhereToRun" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="3" />
@@ -165,9 +174,10 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.NowhereToHide" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.NowhereToHide" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="4" />
 			<essence value="3" />
@@ -181,9 +191,10 @@
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="Sorcerous" visualize="true" />
 		<charmAttribute attribute="Stackable" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.BloodHeraldsDeath" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.BloodHeraldsDeath" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -199,9 +210,10 @@
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Sorcerous" visualize="true" />
 		<charmAttribute attribute="Stackable" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.EternalMonstrousHunt" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.EternalMonstrousHunt" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
@@ -211,9 +223,10 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.ArmageddonNightmareDuel" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.ArmageddonNightmareDuel" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
@@ -227,9 +240,10 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Sorcerous" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.DeathDevouringSadism" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.DeathDevouringSadism" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="5" />
@@ -239,9 +253,10 @@
 		<duration duration="Permanent" />
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.PostTraumaticBrutalityRoar" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.PostTraumaticBrutalityRoar" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -261,9 +276,10 @@
 		<charmAttribute attribute="Sorcerous" visualize="true" />
 		<charmAttribute attribute="Stackable" visualize="true" />
 		<charmAttribute attribute="War" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.RabbleTerrorizingPuissance" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.RabbleTerrorizingPuissance" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -275,9 +291,10 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="War" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.PanickedSoldierStampede" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.PanickedSoldierStampede" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -291,9 +308,10 @@
 		<charmAttribute attribute="Celestial" visualize="true" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="War" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.RankParalyzingHorrorInfliction" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.RankParalyzingHorrorInfliction" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
@@ -305,9 +323,10 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="War" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.FearOfForetoldFury" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.FearOfForetoldFury" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
@@ -321,9 +340,10 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Obvious" visualize="true" />
 		<charmAttribute attribute="War" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.UnthinkableShiningHorror" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.UnthinkableShiningHorror" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -339,10 +359,11 @@
 		<charmAttribute attribute="FormEnhancing" visualize="true" />
 		<charmAttribute attribute="Monstrous" visualize="true" />
 		<charmAttribute attribute="Native" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<!-- TODO:  Solar Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.MoonBeastMonster" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.MoonBeastMonster" exalt="Lunar" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -353,10 +374,11 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<!-- TODO:  Lunar Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.FallenStarFury" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.FallenStarFury" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -368,10 +390,11 @@
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
 		<charmAttribute attribute="Shaping" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<!-- TODO:  Sidereal Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.DragonSpawnedDemonMonster" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.DragonSpawnedDemonMonster" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="3" />
@@ -382,10 +405,11 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Native" visualize="true" />
+        <charmAttribute attribute="Exclusive"/>
 		<!-- TODO:  Terrestrial Akuma Only! -->
 		<source source="InkMonkeys" />
 	</charm>
-	<charm id="Celestial.SanityDevouringNightTerror" exalt="Solar" group="InfernalMonsterStyle">
+	<charm id="Celestial.SanityDevouringNightTerror" exalt="Infernal" group="InfernalMonsterStyle">
 		<prerequisite>
 			<trait id="MartialArts" value="5" />
 			<essence value="4" />
@@ -396,6 +420,7 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Celestial" />
 		<charmAttribute attribute="Illusion" visualize="true" />
+        <charmAttribute attribute="Exclusive" />
 		<source source="InkMonkeys" />
 	</charm>
 </charmlist>

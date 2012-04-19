@@ -36,7 +36,8 @@
 	  </cost>
 	  <duration duration="Instant" /> 
 	  <charmtype type="ExtraAction" /> 
-	  <charmAttribute attribute="Terrestrial" /> 
+	  <charmAttribute attribute="Terrestrial" />
+      <charmAttribute attribute="Exclusive" />
 	  <charmAttribute attribute="Combo-OK" visualize="true" /> 
           <source source="ThousandCorrectActions" />
   </charm>

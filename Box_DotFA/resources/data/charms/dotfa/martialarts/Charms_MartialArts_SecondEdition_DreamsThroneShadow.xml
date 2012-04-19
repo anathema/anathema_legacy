@@ -217,6 +217,7 @@
           <charmtype type="Supplemental" />
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
+          <charmAttribute attribute="Exclusive" />
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Sidereals2nd" />
           <source source="ScrollErrata" />
@@ -236,6 +237,7 @@
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Holy" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Exclusive" />
           <source source="Sidereals2nd" />
           <source source="ScrollErrata" />
      </charm>
@@ -255,6 +257,7 @@
           <charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <charmAttribute attribute="Obvious" visualize="true" />
+          <charmAttribute attribute="Exclusive" />
           <source source="Sidereals2nd" />
           <source source="ScrollErrata" />
      </charm>
