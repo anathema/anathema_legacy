@@ -35,6 +35,7 @@ printed them.
 * [Curtis Tasker] Improved confirmation dialog for item deletion in the equipment database.
 * We now import custom charms from your repository, if the data files are provided. Consult the provided
   "Custom Charms.txt" for basic instructions.
+* Abyssal Taint Charms calculate their upgrade cost
 
 -- Bugfixes --
 * Charm Cards now sport the beautiful icons by Democritus.

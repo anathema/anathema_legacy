@@ -92,6 +92,9 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Poetic Expression Style -->
           <charmAttribute attribute="Taint" visualize="true" />
+          <upgradeable requiresBase="true">
+            <upgrade name="Taint" bpCost="4" xpCost="8"/>
+          </upgradeable>
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.ScreamingInSilence" exalt="Abyssal" group="Linguistics">

@@ -201,6 +201,9 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Tireless Sentinel Technique -->
           <charmAttribute attribute="Taint" visualize="true" />
+          <upgradeable requiresBase="true">
+            <upgrade name="Taint" bpCost="1" xpCost="2"/>
+          </upgradeable>
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.CorpseNeedsNoFood" exalt="Abyssal" group="Resistance">
@@ -215,6 +218,9 @@
           <duration duration="Indefinite" />
           <charmtype type="Simple" />
           <charmAttribute attribute="Taint" visualize="true" />
+          <upgradeable requiresBase="true">
+              <upgrade name="Taint" bpCost="2" xpCost="4"/>
+          </upgradeable>
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.BreathlessGhostEmulation" exalt="Abyssal" group="Resistance">
