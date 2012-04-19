@@ -24,8 +24,7 @@ It will convert existing databases and afterwards remove the .yap file.
 * Character loadout screen shows tooltips for items
 * [Shadow493] Added missing Lunar templates from DotFA.
 * [Jesse Belanger] Added Charm descriptions for Infernals. Most texts taken from the official Wiki.
-* [Curtis Tasker] The character sheet adds the highest Dodge specialty to the Dodge DV
-* [Curtis Tasker] The character sheet adds the highest Awareness specialty to Join Battle
+* [Curtis Tasker] The character sheet adds the Dodge and Awareness specialties to the Dodge DV and Join Battle
 * [Curtis Tasker] Improved behavior of tabs
 * [Curtis Tasker] Improved look of toolbar buttons
 * [Curtis Tasker] Added a 'copy item' button to the equipment database.
@@ -57,6 +56,7 @@ It will convert existing databases and afterwards remove the .yap file.
 * (Abyssal) Most backgrounds are limited to loyal Abyssals
 * (Abyssal/Resistance) "Wounds Mean Nothing" shows all sources
 * (Abyssal/Archery) "Withering Feathered Maelstrom" has correct prerequisites and cost
+* (Lunar/Stamina) It is "Purging the Tarnished Silver" now
 
 ===------------------------------------------------------------------------------===
 			Release 4.0.0 "Sperimin"
