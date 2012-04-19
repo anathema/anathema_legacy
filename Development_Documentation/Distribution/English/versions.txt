@@ -31,6 +31,7 @@ It will convert existing databases and afterwards remove the .yap file.
 * [Curtis Tasker] Added a 'copy item' button to the equipment database.
 * [Curtis Tasker] Added tooltips to the buttons in the equipment database.
 * [Curtis Tasker] Improved confirmation dialog for item deletion in the equipment database.
+* [Curtis Tasker] Improved weapon stats tooltip to include weapon tags (Overwhelming, Piercing, etc).
 * We now import custom charms from your repository, if the data files are provided. Consult the provided
   "Custom Charms.txt" for basic instructions.
 
