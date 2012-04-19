@@ -60,8 +60,10 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
           new Identificate("DreamsInfluential")); //$NON-NLS-1$
   private static final TemplateType dreamsLegendary = new TemplateType(LUNAR,
           new Identificate("DreamsLegendary")); //$NON-NLS-1$
+  private static final TemplateType silverpact = new TemplateType(LUNAR); //$NON-NLS-1$
 
   private static final TemplateType[] dreams = {dreamsType, dreamsEstablished, dreamsInfluential, dreamsLegendary};
+  private static final TemplateType[] allButCasteless = {silverpact, dreamsType, dreamsEstablished, dreamsInfluential, dreamsLegendary};
 
   public static final String BACKGROUND_ID_ARSENAL = "LunarDreamsArsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_COMMAND = "LunarDreamsCommand"; //$NON-NLS-1$
@@ -99,8 +101,8 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SOLAR_BOND, LUNAR));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, LUNAR));
     backgroundRegistry.add(
-            new TemplateTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, new ITemplateType[]{castelessType}));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, new ITemplateType[]{castelessType}));
+            new TemplateTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, allButCasteless));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, castelessType));
 
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, dreams));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, dreams));

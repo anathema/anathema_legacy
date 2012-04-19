@@ -57,6 +57,7 @@ It will convert existing databases and afterwards remove the .yap file.
 * (Abyssal/Resistance) "Wounds Mean Nothing" shows all sources
 * (Abyssal/Archery) "Withering Feathered Maelstrom" has correct prerequisites and cost
 * (Lunar/Stamina) It is "Purging the Tarnished Silver" now
+* (Lunar) "Tattoo Artifact" BG is available to all Lunars except Casteless and Half-Caste
 
 ===------------------------------------------------------------------------------===
 			Release 4.0.0 "Sperimin"
