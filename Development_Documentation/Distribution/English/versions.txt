@@ -38,9 +38,10 @@ It will convert existing databases and afterwards remove the .yap file.
 * Charm Cards now sport the beautiful icons by Democritus.
 * Improved rendering of some Charm cascades, notably Solar Melee, Solar Medicine and Solar Hero Style.
 * Mobility penalty for equipment is calculated once more
+* Half-Caste are printable once more
 * Charms that raise the Essence cap still work after reloading
 * Character creation calculates the available dots correctly for splats with fixed dots, like Sidereals
-* Fixed an issue with items made of non-magical Materials
+* Fixed an issue with attunement for items made of non-magical Materials
 * Fixed free Virtue cap for non-Solars at character creation
 * [Shadow493] First Age Solars have the correct points
 * [Curtis Tasker] Item stats can contain the '&' character
