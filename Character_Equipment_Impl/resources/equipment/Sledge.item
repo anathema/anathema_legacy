@@ -2,22 +2,25 @@
   "statsByRuleSet": {
     "SecondEdition": [
       {
-        "accuracy": 1,
-        "damage": 4,
-        "damageTypeString": "Lethal",
-        "defence": -1,
-        "rate": 2,
-        "speed": 4,
+        "accuracy": 0,
+        "damage": 10,
+        "damageTypeString": "Bashing",
+        "defence": -3,
+        "rate": 1,
+        "speed": 6,
         "inflictsNoDamage": false,
-        "tags": [],
+        "tags": [
+          "TwoHanded",
+          "Reach"
+        ],
         "minimumDamage": 1,
         "name": "Close",
         "type": "Melee Weapon"
       }
     ]
   },
-  "description": "2E Core p366, 2.5 Errata p15",
-  "name": "Chopping Sword",
+  "description": "2E Core p367, 2.5 Errata p15",
+  "name": "Sledge",
   "collectionFactory": {},
   "composition": "None",
   "cost": {

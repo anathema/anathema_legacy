@@ -3,11 +3,11 @@
     "SecondEdition": [
       {
         "accuracy": 1,
-        "damage": 4,
+        "damage": 2,
         "damageTypeString": "Lethal",
-        "defence": -1,
+        "defence": 1,
         "rate": 2,
-        "speed": 4,
+        "speed": 5,
         "inflictsNoDamage": false,
         "tags": [],
         "minimumDamage": 1,
@@ -16,12 +16,12 @@
       }
     ]
   },
-  "description": "2E Core p366, 2.5 Errata p15",
-  "name": "Chopping Sword",
+  "description": "2E Core p367, 2.5 Errata p15",
+  "name": "Short Sword",
   "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",
-    "costValue": 2
+    "costValue": 1
   }
 }

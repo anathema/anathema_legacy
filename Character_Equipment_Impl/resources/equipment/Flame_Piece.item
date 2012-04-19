@@ -3,21 +3,24 @@
     "SecondEdition": [
       {
         "accuracy": 1,
-        "damage": 4,
+        "damage": 8,
         "damageTypeString": "Lethal",
-        "defence": -1,
-        "rate": 2,
-        "speed": 4,
+        "range": 8,
+        "rate": 1,
+        "speed": 5,
         "inflictsNoDamage": false,
-        "tags": [],
+        "tags": [
+          "FlameType",
+          "SingleShot"
+        ],
         "minimumDamage": 1,
-        "name": "Close",
-        "type": "Melee Weapon"
+        "name": "Ranged",
+        "type": "Ranged Weapon"
       }
     ]
   },
-  "description": "2E Core p366, 2.5 Errata p15",
-  "name": "Chopping Sword",
+  "description": "2E Core p373",
+  "name": "Flame Piece",
   "collectionFactory": {},
   "composition": "None",
   "cost": {

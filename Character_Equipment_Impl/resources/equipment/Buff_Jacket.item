@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "hardnessByHealthType": {
+          "Lethal": 0,
+          "Aggravated": 0,
+          "Bashing": 0
+        },
+        "soakByHealthType": {
+          "Lethal": 3,
+          "Aggravated": 3,
+          "Bashing": 4
+        },
+        "fatigue": 2,
+        "mobilityPenalty": -1,
+        "name": "Armour",
+        "type": "Armour"
+      }
+    ]
+  },
+  "description": "2E Core p375",
+  "name": "Buff Jacket",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "attuneCost": 5,
+        "allowForeignAttunement": true,
+        "requireAttunement": false,
+        "name": "Artifact",
+        "type": "Artifact"
+      }
+    ]
+  },
+  "description": "2E Core p381",
+  "name": "Mask",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 2
+  }
+}

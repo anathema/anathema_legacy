@@ -3,13 +3,16 @@
     "SecondEdition": [
       {
         "accuracy": 1,
-        "damage": 4,
+        "damage": 6,
         "damageTypeString": "Lethal",
-        "defence": -1,
-        "rate": 2,
-        "speed": 4,
+        "defence": -2,
+        "rate": 1,
+        "speed": 6,
         "inflictsNoDamage": false,
-        "tags": [],
+        "tags": [
+          "TwoHanded",
+          "Reach"
+        ],
         "minimumDamage": 1,
         "name": "Close",
         "type": "Melee Weapon"
@@ -17,7 +20,7 @@
     ]
   },
   "description": "2E Core p366, 2.5 Errata p15",
-  "name": "Chopping Sword",
+  "name": "Great Sword",
   "collectionFactory": {},
   "composition": "None",
   "cost": {

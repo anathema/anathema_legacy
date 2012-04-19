@@ -1,0 +1,50 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": -1,
+        "damage": 10,
+        "damageTypeString": "Lethal",
+        "defence": -3,
+        "rate": 1,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "LanceType",
+          "Reach",
+          "Thrust"
+        ],
+        "minimumDamage": 1,
+        "name": "Bracing / Mounted Charge",
+        "type": "Melee Weapon"
+      },
+      {
+        "accuracy": -1,
+        "damage": 5,
+        "damageTypeString": "Lethal",
+        "defence": -3,
+        "rate": 1,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "LanceType",
+          "Reach",
+          "Thrust"
+        ],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p368, 2.5 Errata p16\nExtrapolated the Thrust tag based on the Artifact version in Errata having it.\nCan use 1 handed only when charging while mounted.",
+  "name": "Lance",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 1
+  }
+}

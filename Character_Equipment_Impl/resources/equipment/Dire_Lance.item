@@ -1,0 +1,59 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 2,
+        "damage": 5,
+        "damageTypeString": "Lethal",
+        "defence": 2,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "LanceType",
+          "Overwhelming",
+          "Reach",
+          "Thrust"
+        ],
+        "minimumDamage": 2,
+        "name": "Close",
+        "type": "Melee Weapon"
+      },
+      {
+        "attuneCost": 5,
+        "allowForeignAttunement": true,
+        "requireAttunement": false,
+        "name": "Artifact",
+        "type": "Artifact"
+      },
+      {
+        "accuracy": 2,
+        "damage": 8,
+        "damageTypeString": "Lethal",
+        "defence": 2,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "LanceType",
+          "Overwhelming",
+          "Reach",
+          "Thrust"
+        ],
+        "minimumDamage": 2,
+        "name": "Bracing / Mounted Charge",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p386, 2.5 Errata p16\nCan use 1 handed only when charging while mounted.",
+  "name": "Dire Lance",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 2
+  }
+}

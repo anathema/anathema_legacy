@@ -3,10 +3,10 @@
     "SecondEdition": [
       {
         "accuracy": 1,
-        "damage": 4,
+        "damage": 3,
         "damageTypeString": "Lethal",
-        "defence": -1,
-        "rate": 2,
+        "defence": 0,
+        "rate": 3,
         "speed": 4,
         "inflictsNoDamage": false,
         "tags": [],
@@ -17,7 +17,7 @@
     ]
   },
   "description": "2E Core p366, 2.5 Errata p15",
-  "name": "Chopping Sword",
+  "name": "Slashing Sword",
   "collectionFactory": {},
   "composition": "None",
   "cost": {

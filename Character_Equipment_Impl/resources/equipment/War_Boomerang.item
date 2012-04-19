@@ -2,26 +2,28 @@
   "statsByRuleSet": {
     "SecondEdition": [
       {
-        "accuracy": 1,
-        "damage": 4,
+        "accuracy": 0,
+        "damage": 3,
         "damageTypeString": "Lethal",
-        "defence": -1,
+        "range": 20,
         "rate": 2,
-        "speed": 4,
+        "speed": 5,
         "inflictsNoDamage": false,
-        "tags": [],
+        "tags": [
+          "Thrown"
+        ],
         "minimumDamage": 1,
-        "name": "Close",
-        "type": "Melee Weapon"
+        "name": "Ranged",
+        "type": "Ranged Weapon"
       }
     ]
   },
-  "description": "2E Core p366, 2.5 Errata p15",
-  "name": "Chopping Sword",
+  "description": "Close: 2E Core p371",
+  "name": "War Boomerang",
   "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",
-    "costValue": 2
+    "costValue": 1
   }
 }

@@ -2,22 +2,24 @@
   "statsByRuleSet": {
     "SecondEdition": [
       {
-        "accuracy": 1,
-        "damage": 4,
+        "accuracy": 0,
+        "damage": 2,
         "damageTypeString": "Lethal",
-        "defence": -1,
-        "rate": 2,
-        "speed": 4,
+        "defence": 3,
+        "rate": 3,
+        "speed": 5,
         "inflictsNoDamage": false,
-        "tags": [],
+        "tags": [
+          "MartialArts"
+        ],
         "minimumDamage": 1,
         "name": "Close",
         "type": "Melee Weapon"
       }
     ]
   },
-  "description": "2E Core p366, 2.5 Errata p15",
-  "name": "Chopping Sword",
+  "description": "2E Core p369",
+  "name": "Khatar",
   "collectionFactory": {},
   "composition": "None",
   "cost": {

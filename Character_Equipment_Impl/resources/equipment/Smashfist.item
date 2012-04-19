@@ -1,0 +1,54 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 1,
+        "damage": 5,
+        "damageTypeString": "Bashing",
+        "defence": 2,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "MartialArts",
+          "Overwhelming"
+        ],
+        "minimumDamage": 2,
+        "name": "Close",
+        "type": "Melee Weapon"
+      },
+      {
+        "attuneCost": 6,
+        "allowForeignAttunement": true,
+        "requireAttunement": false,
+        "name": "Artifact",
+        "type": "Artifact"
+      },
+      {
+        "accuracy": 0,
+        "damage": 4,
+        "damageTypeString": "Bashing",
+        "defence": 0,
+        "rate": 1,
+        "speed": 7,
+        "inflictsNoDamage": false,
+        "tags": [
+          "ClinchEnhancer",
+          "Overwhelming",
+          "Piercing"
+        ],
+        "minimumDamage": 2,
+        "name": "Clinch",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p388, 2.5 Errata p16",
+  "name": "Smashfist",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 1
+  }
+}

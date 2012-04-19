@@ -2,22 +2,24 @@
   "statsByRuleSet": {
     "SecondEdition": [
       {
-        "accuracy": 1,
-        "damage": 4,
+        "accuracy": 2,
+        "damage": 3,
         "damageTypeString": "Lethal",
-        "defence": -1,
-        "rate": 2,
-        "speed": 4,
+        "defence": 0,
+        "rate": 3,
+        "speed": 5,
         "inflictsNoDamage": false,
-        "tags": [],
+        "tags": [
+          "MartialArts"
+        ],
         "minimumDamage": 1,
         "name": "Close",
         "type": "Melee Weapon"
       }
     ]
   },
-  "description": "2E Core p366, 2.5 Errata p15",
-  "name": "Chopping Sword",
+  "description": "2E Core p370",
+  "name": "Tiger Claws",
   "collectionFactory": {},
   "composition": "None",
   "cost": {

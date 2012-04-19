@@ -2,12 +2,12 @@
   "statsByRuleSet": {
     "SecondEdition": [
       {
-        "accuracy": 1,
-        "damage": 4,
+        "accuracy": 2,
+        "damage": 3,
         "damageTypeString": "Lethal",
-        "defence": -1,
+        "defence": 1,
         "rate": 2,
-        "speed": 4,
+        "speed": 5,
         "inflictsNoDamage": false,
         "tags": [],
         "minimumDamage": 1,
@@ -17,7 +17,7 @@
     ]
   },
   "description": "2E Core p366, 2.5 Errata p15",
-  "name": "Chopping Sword",
+  "name": "Straight Sword",
   "collectionFactory": {},
   "composition": "None",
   "cost": {

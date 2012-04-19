@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "hardnessByHealthType": {
+          "Lethal": 0,
+          "Aggravated": 0,
+          "Bashing": 0
+        },
+        "soakByHealthType": {
+          "Lethal": 5,
+          "Aggravated": 5,
+          "Bashing": 8
+        },
+        "fatigue": 2,
+        "mobilityPenalty": -2,
+        "name": "Armour",
+        "type": "Armour"
+      }
+    ]
+  },
+  "description": "2E Core p375",
+  "name": "Reinforced Buff Jacket",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 2
+  }
+}

@@ -2,26 +2,30 @@
   "statsByRuleSet": {
     "SecondEdition": [
       {
-        "accuracy": 1,
-        "damage": 4,
-        "damageTypeString": "Lethal",
-        "defence": -1,
+        "accuracy": 2,
+        "damage": 5,
+        "damageTypeString": "Bashing",
+        "defence": 2,
         "rate": 2,
-        "speed": 4,
+        "speed": 5,
         "inflictsNoDamage": false,
-        "tags": [],
+        "tags": [
+          "TwoHanded",
+          "MartialArts",
+          "Reach"
+        ],
         "minimumDamage": 1,
         "name": "Close",
         "type": "Melee Weapon"
       }
     ]
   },
-  "description": "2E Core p366, 2.5 Errata p15",
-  "name": "Chopping Sword",
+  "description": "2E Core p368, 2.5 Errata p15",
+  "name": "Staff",
   "collectionFactory": {},
   "composition": "None",
   "cost": {
     "costType": "Resources",
-    "costValue": 2
+    "costValue": 0
   }
 }
