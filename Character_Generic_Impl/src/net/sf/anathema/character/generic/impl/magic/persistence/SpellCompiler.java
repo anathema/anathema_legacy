@@ -1,18 +1,17 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.IExtensibleDataSetCompiler;
 import net.sf.anathema.lib.resources.IAnathemaResourceFile;
 import net.sf.anathema.lib.resources.IExtensibleDataSet;
-
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @ExtensibleDataSetCompiler
 public class SpellCompiler implements IExtensibleDataSetCompiler {
@@ -20,11 +19,7 @@ public class SpellCompiler implements IExtensibleDataSetCompiler {
 	private final List<Document> spellFileList = new ArrayList<Document>();
 	private final SpellBuilder builder = new SpellBuilder();
 	private final SAXReader reader = new SAXReader();
-	private final SpellCache cache;
-	
-	public SpellCompiler() {
-		this.cache = new SpellCache();
-	}
+	private final SpellCache cache = new SpellCache();
 	
 	@Override
 	public String getName() {
@@ -35,12 +30,7 @@ public class SpellCompiler implements IExtensibleDataSetCompiler {
 	public String getRecognitionPattern() {
 		return Spell_File_Recognition_Pattern;
 	}
-	
-	@Override
-	public String getSplashStatusString() {
-		return "Compiling spells...";
-	}
-	
+
 	@Override
 	public IExtensibleDataSet build() {
 		for (Document document : spellFileList) {

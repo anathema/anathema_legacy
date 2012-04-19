@@ -21,28 +21,26 @@ import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
 public class CharacterPlugin implements Startable {
 
   private static final Logger logger = Logger.getLogger(AnathemaInitializer.class);
-	
+
   @Override
   public void doStart(AnathemaReflections reflections, IExtensibleDataSetRegistry registry) throws Exception {
 	  initializeCharacterExtensibleResources(reflections, registry);
   }
-  
+
   private void initializeCharacterExtensibleResources(AnathemaReflections reflections, IExtensibleDataSetRegistry registry) throws InitializationException {
 	Instantiater instantiater = new ReflectionsInstantiater(reflections);
-	Collection<IExtensibleDataSetCompiler> compilers =
-					instantiater.instantiateAll(ExtensibleDataSetCompiler.class);
+	Collection<IExtensibleDataSetCompiler> compilers = instantiater.instantiateAll(ExtensibleDataSetCompiler.class);
 	for (IExtensibleDataSetCompiler compiler : compilers) {
 	  try {
-		ProxySplashscreen.getInstance().displayStatusMessage(compiler.getSplashStatusString());
+		ProxySplashscreen.getInstance().displayStatusMessage("Compiling "+compiler.getName()+"...");
 		getDataFilesFromReflection(reflections, compiler);
 		registry.addDataSet(compiler.build());
 	  } catch (Exception e) {
-		  
 	    throw new InitializationException("Failed to start plugin.", e);
 	  }
 	}
   }
-  
+
   private void getDataFilesFromReflection(AnathemaReflections reflections, IExtensibleDataSetCompiler compiler) throws Exception {
 	Set<IAnathemaResourceFile> files = reflections.getResourcesMatching(compiler.getRecognitionPattern());
 	logger.info(compiler.getName() + ": Found "+ files.size() +" data files.");

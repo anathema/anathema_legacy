@@ -8,8 +8,6 @@ public interface IExtensibleDataSetCompiler {
 	
 	String getRecognitionPattern();
 	
-	String getSplashStatusString();
-	
 	void registerFile(IAnathemaResourceFile resource) throws Exception;
 	
 	IExtensibleDataSet build();
