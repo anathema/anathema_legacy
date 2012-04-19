@@ -75,14 +75,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addAbilities(template);
     this.backgrounds = new BackgroundConfiguration(new BackgroundArbitrator(template),
             template.getTraitTemplateCollection(), modelContext.getTraitContext(), backgroundRegistry);
-
-    IIdentifiedCasteTraitTypeGroup[] specialtyGroup = new IIdentifiedCasteTraitTypeGroup[abilityTraitGroups.length + attributeTraitGroups.length];
-    int index = 0;
-    for (; index != abilityTraitGroups.length; index++)
-      specialtyGroup[index] = abilityTraitGroups[index];
-    for (; index != abilityTraitGroups.length + attributeTraitGroups.length; index++)
-      specialtyGroup[index] = attributeTraitGroups[index - abilityTraitGroups.length];
-    this.specialtyConfiguration = new SpecialtiesConfiguration(this, specialtyGroup, modelContext);
+    this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
     getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(new AllTraits(), modelContext));
   }
 

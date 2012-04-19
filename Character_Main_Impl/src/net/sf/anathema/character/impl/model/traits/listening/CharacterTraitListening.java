@@ -42,11 +42,13 @@ public class CharacterTraitListening {
 
   private void initBackgroundListening() {
     traitConfiguration.getBackgrounds().addBackgroundListener(new IBackgroundListener() {
+      @Override
       public void backgroundRemoved(IBackground background) {
         listening.removeTraitListening(background);
         listening.fireCharacterChanged();
       }
 
+      @Override
       public void backgroundAdded(IBackground background) {
         listening.addTraitListening(background);
         listening.fireCharacterChanged();
@@ -62,77 +64,61 @@ public class CharacterTraitListening {
       IFavorableTrait ability = traitConfiguration.getFavorableTrait(traitType);
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+        @Override
         public void favorableStateChanged(FavorableState state) {
           listening.fireCharacterChanged();
         }
       });
       specialtyConfiguration.getSpecialtiesContainer(traitType).addSubTraitListener(new ISubTraitListener() {
+        @Override
         public void subTraitRemoved(ISubTrait specialty) {
           listening.fireCharacterChanged();
         }
 
+        @Override
         public void subTraitAdded(ISubTrait specialty) {
           listening.fireCharacterChanged();
         }
 
+        @Override
         public void subTraitValueChanged() {
           listening.fireCharacterChanged();
         }
       });
     }
   }
-  
-  private void initAttributeListening()
-  {
-	  ITraitTypeGroup[] groups = traitConfiguration.getAttributeTypeGroups();
-	  ITraitType[] allAttributeTypes = TraitTypeGroup.getAllTraitTypes(groups);
-	  ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
-	  for (ITraitType traitType : allAttributeTypes)
-	  {
-	      IFavorableTrait attribute = traitConfiguration.getFavorableTrait(traitType);
-	      listening.addTraitListening(attribute);
-	      attribute.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
-	        public void favorableStateChanged(FavorableState state) {
-	          listening.fireCharacterChanged();
-	        }
-	      });
-	      
-	      specialtyConfiguration.getSpecialtiesContainer(traitType).addSubTraitListener(new ISubTraitListener() {
-	          public void subTraitRemoved(ISubTrait specialty) {
-	            listening.fireCharacterChanged();
-	          }
 
-	          public void subTraitAdded(ISubTrait specialty) {
-	            listening.fireCharacterChanged();
-	          }
-
-	          public void subTraitValueChanged() {
-	            listening.fireCharacterChanged();
-	          }
-	        });
-	  }
+  private void initAttributeListening() {
+    ITraitTypeGroup[] groups = traitConfiguration.getAttributeTypeGroups();
+    ITraitType[] allAttributeTypes = TraitTypeGroup.getAllTraitTypes(groups);
+    for (ITraitType traitType : allAttributeTypes) {
+      IFavorableTrait attribute = traitConfiguration.getFavorableTrait(traitType);
+      listening.addTraitListening(attribute);
+      attribute.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+        @Override
+        public void favorableStateChanged(FavorableState state) {
+          listening.fireCharacterChanged();
+        }
+      });
+    }
   }
-  
-  private void initYoziListening()
-  {
-	  for (YoziType yoziType : YoziType.values())
-	  {
-		  IFavorableTrait yozi;
-		  try
-		  {
-			   yozi = traitConfiguration.getFavorableTrait(yoziType);
-		  }
-		  catch (UnsupportedOperationException e)
-		  {
-			  break; //template does not support yozis
-		  }
-		  
-	      listening.addTraitListening(yozi);
-	      yozi.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
-	        public void favorableStateChanged(FavorableState state) {
-	          listening.fireCharacterChanged();
-	        }
-	      });
-	  }
+
+  private void initYoziListening() {
+    for (YoziType yoziType : YoziType.values()) {
+      IFavorableTrait yozi;
+      try {
+        yozi = traitConfiguration.getFavorableTrait(yoziType);
+      } catch (UnsupportedOperationException e) {
+        break; //template does not support yozis
+      }
+
+      listening.addTraitListening(yozi);
+      yozi.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+        @Override
+        public void favorableStateChanged(FavorableState state) {
+          listening.fireCharacterChanged();
+        }
+      });
+    }
   }
 }

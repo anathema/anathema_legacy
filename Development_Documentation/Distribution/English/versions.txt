@@ -13,6 +13,9 @@ http://anathema.github.com
 From this version onward, Anathema no longer uses the "Equipment.yap" file, but individual files for each item.
 It will convert existing databases and afterwards remove the .yap file.
 
+Anathema no longer tracks the dots of Lunar Attribute specialties. They never factored into BP and XP, nor were they
+printed them.
+
 -- Features --
 * Equipment modifiers to DVs now add to pools instead of modifying the static rating, allowing for more flexibility
   in designing your gear. All imported equipment from earlier releases will have its values doubled to achieve the
