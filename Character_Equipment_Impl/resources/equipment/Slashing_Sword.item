@@ -1,0 +1,27 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 1,
+        "damage": 3,
+        "damageTypeString": "Lethal",
+        "defence": 0,
+        "rate": 3,
+        "speed": 4,
+        "inflictsNoDamage": false,
+        "tags": [],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p366, 2.5 Errata p15",
+  "name": "Slashing Sword",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 2
+  }
+}

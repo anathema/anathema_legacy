@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 2,
+        "damage": 2,
+        "damageTypeString": "Lethal",
+        "defence": 1,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "Reach",
+          "Thrust"
+        ],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p368, 2.5 Errata p15",
+  "name": "Short Spear",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 1
+  }
+}

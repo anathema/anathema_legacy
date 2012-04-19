@@ -1,0 +1,47 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 1,
+        "damage": 12,
+        "damageTypeString": "Lethal",
+        "range": 10,
+        "rate": 1,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "FlameType",
+          "SingleShot"
+        ],
+        "minimumDamage": 1,
+        "name": "Ranged",
+        "type": "Ranged Weapon"
+      },
+      {
+        "accuracy": 2,
+        "damage": 2,
+        "damageTypeString": "Lethal",
+        "defence": 1,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "Reach",
+          "Thrust"
+        ],
+        "minimumDamage": 1,
+        "name": "Bayonet",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p373",
+  "name": "Firewand",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 3
+  }
+}

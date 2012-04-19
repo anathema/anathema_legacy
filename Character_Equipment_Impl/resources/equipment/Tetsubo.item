@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 0,
+        "damage": 10,
+        "damageTypeString": "Bashing",
+        "defence": -3,
+        "rate": 1,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "Reach"
+        ],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p368, 2.5 Errata p15",
+  "name": "Tetsubo",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 2
+  }
+}

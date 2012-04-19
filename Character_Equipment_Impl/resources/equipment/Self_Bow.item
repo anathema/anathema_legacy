@@ -1,0 +1,95 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 0,
+        "damage": 0,
+        "damageTypeString": "Lethal",
+        "range": 150,
+        "rate": 2,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "BowType"
+        ],
+        "minimumDamage": 1,
+        "name": "Base",
+        "type": "Ranged Weapon"
+      },
+      {
+        "accuracy": 0,
+        "damage": 2,
+        "damageTypeString": "Lethal",
+        "range": 150,
+        "rate": 2,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "BowType"
+        ],
+        "minimumDamage": 1,
+        "name": "Broadhead Arrow",
+        "type": "Ranged Weapon"
+      },
+      {
+        "accuracy": 0,
+        "damage": 2,
+        "damageTypeString": "Bashing",
+        "range": 150,
+        "rate": 2,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "BowType"
+        ],
+        "minimumDamage": 1,
+        "name": "Fowling Arrow",
+        "type": "Ranged Weapon"
+      },
+      {
+        "accuracy": 0,
+        "damage": 4,
+        "damageTypeString": "Lethal",
+        "range": 150,
+        "rate": 2,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "BowType"
+        ],
+        "minimumDamage": 1,
+        "name": "Frog Crotch Arrow",
+        "type": "Ranged Weapon"
+      },
+      {
+        "accuracy": 0,
+        "damage": 0,
+        "damageTypeString": "Lethal",
+        "range": 150,
+        "rate": 2,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "BowType",
+          "Piercing"
+        ],
+        "minimumDamage": 1,
+        "name": "Target Arrow",
+        "type": "Ranged Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p372",
+  "name": "Self Bow",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 1
+  }
+}

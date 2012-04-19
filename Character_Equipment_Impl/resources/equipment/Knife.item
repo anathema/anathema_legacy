@@ -1,0 +1,42 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 2,
+        "damage": 1,
+        "damageTypeString": "Lethal",
+        "defence": 0,
+        "rate": 3,
+        "speed": 4,
+        "inflictsNoDamage": false,
+        "tags": [],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      },
+      {
+        "accuracy": 1,
+        "damage": 1,
+        "damageTypeString": "Lethal",
+        "range": 15,
+        "rate": 3,
+        "speed": 4,
+        "inflictsNoDamage": false,
+        "tags": [
+          "Thrown"
+        ],
+        "minimumDamage": 1,
+        "name": "Ranged",
+        "type": "Ranged Weapon"
+      }
+    ]
+  },
+  "description": "Close: 2E Core p366, 2.5 Errata p15\nRanged: 2E Core p371\nDifference between Close and Ranged stats in the Core is used to extrapolate the Errata Ranged stats, by adding the difference to the Errata Close stats to produce \"Errata\" Ranged stats.\nDifference: -1 Accuracy",
+  "name": "Knife",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 0
+  }
+}

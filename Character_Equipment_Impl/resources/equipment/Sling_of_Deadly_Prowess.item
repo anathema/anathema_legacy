@@ -1,0 +1,38 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "attuneCost": 3,
+        "allowForeignAttunement": true,
+        "requireAttunement": false,
+        "name": "Artifact",
+        "type": "Artifact"
+      },
+      {
+        "accuracy": 2,
+        "damage": 4,
+        "damageTypeString": "Lethal",
+        "range": 150,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "Overwhelming",
+          "Thrown",
+          "BowBonuses"
+        ],
+        "minimumDamage": 2,
+        "name": "Ranged",
+        "type": "Ranged Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p389, 2.5 Errata p16",
+  "name": "Sling of Deadly Prowess",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 1
+  }
+}

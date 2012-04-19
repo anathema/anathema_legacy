@@ -1,0 +1,37 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "hardnessByHealthType": {
+          "Lethal": 2,
+          "Aggravated": 2,
+          "Bashing": 2
+        },
+        "soakByHealthType": {
+          "Lethal": 6,
+          "Aggravated": 6,
+          "Bashing": 4
+        },
+        "fatigue": 0,
+        "mobilityPenalty": 0,
+        "name": "Armour",
+        "type": "Armour"
+      },
+      {
+        "attuneCost": 2,
+        "allowForeignAttunement": true,
+        "requireAttunement": true,
+        "name": "Artifact",
+        "type": "Artifact"
+      }
+    ]
+  },
+  "description": "2E Core p390\nMay be concealed under heavy jacket or cloak.",
+  "name": "Breastplate (Artifact)",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 1
+  }
+}

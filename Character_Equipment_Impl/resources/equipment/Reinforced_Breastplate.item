@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "hardnessByHealthType": {
+          "Lethal": 0,
+          "Aggravated": 0,
+          "Bashing": 0
+        },
+        "soakByHealthType": {
+          "Lethal": 7,
+          "Aggravated": 7,
+          "Bashing": 6
+        },
+        "fatigue": 1,
+        "mobilityPenalty": -2,
+        "name": "Armour",
+        "type": "Armour"
+      }
+    ]
+  },
+  "description": "2E Core p376",
+  "name": "Reinforced Breastplate",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 4
+  }
+}

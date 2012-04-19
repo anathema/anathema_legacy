@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 1,
+        "damage": 1,
+        "damageTypeString": "Bashing",
+        "defence": 0,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "Disarming",
+          "Reach"
+        ],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p368",
+  "name": "Whip",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 1
+  }
+}

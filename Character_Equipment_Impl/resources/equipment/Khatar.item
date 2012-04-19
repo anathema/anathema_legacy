@@ -1,0 +1,29 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 0,
+        "damage": 2,
+        "damageTypeString": "Lethal",
+        "defence": 3,
+        "rate": 3,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "MartialArts"
+        ],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p369",
+  "name": "Khatar",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 2
+  }
+}

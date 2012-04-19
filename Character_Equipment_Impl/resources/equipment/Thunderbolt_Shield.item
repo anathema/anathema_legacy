@@ -1,0 +1,120 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "attuneCost": 5,
+        "allowForeignAttunement": true,
+        "requireAttunement": false,
+        "name": "Artifact",
+        "type": "Artifact"
+      },
+      {
+        "accuracy": 1,
+        "damage": 2,
+        "damageTypeString": "Bashing",
+        "defence": 5,
+        "rate": 1,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "MartialArts",
+          "Shield0"
+        ],
+        "minimumDamage": 1,
+        "name": "Jade",
+        "type": "Melee Weapon"
+      },
+      {
+        "accuracy": 1,
+        "damage": 2,
+        "damageTypeString": "Bashing",
+        "defence": 6,
+        "rate": 1,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "MartialArts",
+          "Shield0"
+        ],
+        "minimumDamage": 1,
+        "name": "Orichalcum",
+        "type": "Melee Weapon"
+      },
+      {
+        "DDVMod": 1,
+        "PDVMod": 0,
+        "MDDVMod": 0,
+        "MPDVMod": 0,
+        "MeleeSpeedMod": 0,
+        "MeleeAccuracyMod": 0,
+        "MeleeDamageMod": 0,
+        "MeleeRateMod": 0,
+        "RangedSpeedMod": 0,
+        "RangedAccuracyMod": 0,
+        "RangedDamageMod": 0,
+        "RangedRateMod": 0,
+        "JoinBattleMod": 0,
+        "JoinDebateMod": 0,
+        "JoinWarMod": 0,
+        "name": "Moonsilver",
+        "type": "Trait Modifier"
+      },
+      {
+        "accuracy": 1,
+        "damage": 4,
+        "damageTypeString": "Lethal",
+        "defence": 5,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "MartialArts",
+          "Shield0"
+        ],
+        "minimumDamage": 1,
+        "name": "Adamant",
+        "type": "Melee Weapon"
+      },
+      {
+        "accuracy": 1,
+        "damage": 2,
+        "damageTypeString": "Bashing",
+        "defence": 5,
+        "rate": 1,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "MartialArts",
+          "Shield0"
+        ],
+        "minimumDamage": 1,
+        "name": "Starmetal",
+        "type": "Melee Weapon"
+      },
+      {
+        "accuracy": 1,
+        "damage": 2,
+        "damageTypeString": "Bashing",
+        "defence": 6,
+        "rate": 1,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "MartialArts",
+          "Shield0"
+        ],
+        "minimumDamage": 1,
+        "name": "Soulsteel",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "Oadenol\u0027s Codex p35, 2.5 Errata p15\nWhen adding to your character, select the Material from the droplist at the bottom of the equipment list, and only check the proper Attunement box, and the box for the matching Magical Material your item is made from.\nIn addition to the custom MM bonuses, this item is given MM bonuses as if it was a weapon (all shields are modeled as weapons).",
+  "name": "Thunderbolt Shield",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 2
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "hardnessByHealthType": {
+          "Lethal": 0,
+          "Aggravated": 0,
+          "Bashing": 0
+        },
+        "soakByHealthType": {
+          "Lethal": 9,
+          "Aggravated": 9,
+          "Bashing": 9
+        },
+        "fatigue": 2,
+        "mobilityPenalty": -3,
+        "name": "Armour",
+        "type": "Armour"
+      }
+    ]
+  },
+  "description": "2E Core p376",
+  "name": "Articulated Plate",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 5
+  }
+}
