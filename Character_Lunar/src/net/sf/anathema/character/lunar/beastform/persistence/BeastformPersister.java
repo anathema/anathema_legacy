@@ -28,8 +28,7 @@ public class BeastformPersister implements IAdditionalPersister {
     IBeastformModel beastformModel = (IBeastformModel) model;
     saveAttributes(beastformElement, beastformModel);
     saveGifts(beastformElement, beastformModel);
-    if (model instanceof SecondEditionBeastformModel)
-      beastformElement.addAttribute(ATTRIB_SPIRIT_SHAPE, ((SecondEditionBeastformModel) model).getSpiritForm());
+    beastformElement.addAttribute(ATTRIB_SPIRIT_SHAPE, ((SecondEditionBeastformModel) model).getSpiritForm());
   }
 
   private void saveGifts(Element beastformElement, IBeastformModel beastformModel) {
@@ -41,11 +40,9 @@ public class BeastformPersister implements IAdditionalPersister {
     for (IBeastformAttribute attribute : beastformModel.getAttributes()) {
       traitPersister.saveTrait(attributesElement, attribute.getTrait().getType().getId(), attribute.getTrait());
     }
-    if (beastformModel instanceof SecondEditionBeastformModel) {
-      attributesElement = beastformElement.addElement(TAG_SPIRIT_ATTRIBUTES);
-      for (IBeastformAttribute attribute : ((SecondEditionBeastformModel) beastformModel).getSpiritAttributes())
-        traitPersister.saveTrait(attributesElement, attribute.getTrait().getType().getId(), attribute.getTrait());
-    }
+    attributesElement = beastformElement.addElement(TAG_SPIRIT_ATTRIBUTES);
+    for (IBeastformAttribute attribute : ((SecondEditionBeastformModel) beastformModel).getSpiritAttributes())
+      traitPersister.saveTrait(attributesElement, attribute.getTrait().getType().getId(), attribute.getTrait());
   }
 
   @Override
@@ -55,7 +52,7 @@ public class BeastformPersister implements IAdditionalPersister {
     loadAttributes(beastformElement, beastformModel);
     loadGifts(beastformElement, beastformModel);
     String shape = beastformElement.attributeValue(ATTRIB_SPIRIT_SHAPE, "");
-    if (model instanceof SecondEditionBeastformModel) ((SecondEditionBeastformModel) model).setSpiritForm(shape);
+    ((SecondEditionBeastformModel) model).setSpiritForm(shape);
   }
 
   private void loadGifts(Element beastformElement, IBeastformModel beastformModel) throws PersistenceException {
