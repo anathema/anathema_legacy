@@ -38,42 +38,52 @@ public class AnathemaModel implements IAnathemaModel {
     this.reflections = reflections;
   }
 
+  @Override
   public final IRepository getRepository() {
     return repository;
   }
 
+  @Override
   public final IReportRegistry getReportRegistry() {
     return reportRegistry;
   }
 
+  @Override
   public final IRegistry<String, IAnathemaExtension> getExtensionPointRegistry() {
     return extensionRegistry;
   }
 
+  @Override
   public final IRegistry<IItemType, IRepositoryItemPersister> getPersisterRegistry() {
     return persisterRegistry;
   }
 
+  @Override
   public IItemManagementModel getItemManagement() {
     return itemManagment;
   }
 
+  @Override
   public IRegistry<IItemType, IItemViewFactory> getViewFactoryRegistry() {
     return viewFactoryRegistry;
   }
 
+  @Override
   public IItemTypeRegistry getItemTypeRegistry() {
     return itemTypes;
   }
 
+  @Override
   public IAnathemaMessaging getMessaging() {
     return messaging;
   }
 
+  @Override
   public IAnathemaMessageContainer getMessageContainer() {
     return messaging;
   }
   
+  @Override
   public AnathemaReflections getReflections() {
     return reflections;
   }
