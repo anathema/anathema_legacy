@@ -19,7 +19,6 @@ public class AnathemaPresenter {
   private final IAnathemaModel model;
   private final IAnathemaView view;
   private final IResources resources;
-  private final net.sf.anathema.initialization.reflections.AnathemaReflections reflections;
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
   private final Instantiater instantiater;
 
@@ -27,13 +26,11 @@ public class AnathemaPresenter {
           IAnathemaModel model,
           IAnathemaView view,
           IResources resources,
-          net.sf.anathema.initialization.reflections.AnathemaReflections reflections,
           Collection<IItemTypeConfiguration> itemTypeConfigurations, Instantiater instantiater) {
     this.instantiater = instantiater;
     this.model = model;
     this.view = view;
     this.resources = resources;
-    this.reflections = reflections;
     this.itemTypeConfigurations = itemTypeConfigurations;
   }
 
@@ -65,7 +62,7 @@ public class AnathemaPresenter {
   private void runBootJobs() throws InitializationException {
     Collection<IAnathemaBootJob> jobs = instantiater.instantiateAll(BootJob.class);
     for (IAnathemaBootJob bootJob : jobs) {
-      bootJob.run(resources, model, view, reflections);
+      bootJob.run(resources, model, view);
     }
   }
 

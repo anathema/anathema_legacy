@@ -18,7 +18,7 @@ public class RepositoryPreferenceUpdater implements IAnathemaBootJob {
   private static final String OLD_REPOSITORY_PREFERENCE = "Repository"; //$NON-NLS-1$
 
   @Override
-  public void run(IResources resources, IAnathemaModel model, IAnathemaView view, net.sf.anathema.initialization.reflections.AnathemaReflections reflections) {
+  public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
     if (hasNoPreferenceStored()) {
       String oldValue = getValueOfOldPreference();
       if (valueIsSet(oldValue)) {

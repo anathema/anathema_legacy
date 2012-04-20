@@ -10,6 +10,8 @@ import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.initialization.reflections.AnathemaReflections;
+
 import net.sf.anathema.lib.registry.IRegistry;
 
 public interface IAnathemaModel {
@@ -31,4 +33,6 @@ public interface IAnathemaModel {
   IAnathemaMessaging getMessaging();
 
   IAnathemaMessageContainer getMessageContainer();
+  
+  AnathemaReflections getReflections();
 }

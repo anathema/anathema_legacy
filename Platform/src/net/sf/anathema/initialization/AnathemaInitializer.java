@@ -47,7 +47,7 @@ public class AnathemaInitializer {
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(new ResourceCollection(resources, dataSetManager));
     IAnathemaView view = initView(resources);
-    new AnathemaPresenter(anathemaModel, view, resources, reflections, itemTypeCollection.getItemTypes(), instantiater).initPresentation();
+    new AnathemaPresenter(anathemaModel, view, resources, itemTypeCollection.getItemTypes(), instantiater).initPresentation();
     return view;
   }
 
@@ -67,7 +67,7 @@ public class AnathemaInitializer {
     return new AnathemaModelInitializer(
             anathemaPreferences,
             itemTypeCollection.getItemTypes(),
-            extensionCollection, instantiater).initializeModel(resources);
+            extensionCollection, instantiater).initializeModel(resources, reflections);
   }
 
   private IAnathemaView initView(IResources resources) {

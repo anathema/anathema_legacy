@@ -19,7 +19,7 @@ public class RepositoryCleanup implements IAnathemaBootJob {
   private static final Logger logger = Logger.getLogger(RepositoryCleanup.class);
 
   @Override
-  public void run(IResources resources, IAnathemaModel model, IAnathemaView view, net.sf.anathema.initialization.reflections.AnathemaReflections reflections) {
+  public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
     if (!repositoryAlreadyExists(model)) {
       createRepositoryAtVersion(resources, model);
       return;

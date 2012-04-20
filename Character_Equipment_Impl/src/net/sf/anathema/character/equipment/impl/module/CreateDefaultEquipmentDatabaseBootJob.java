@@ -10,6 +10,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.initialization.reflections.AnathemaReflections;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IAnathemaBootJob {
     private GsonEquipmentDatabase database;
 
     @Override
-    public void run(IResources resources, IAnathemaModel anathemaModel, IAnathemaView view, net.sf.anathema.initialization.reflections.AnathemaReflections reflections) {
+    public void run(IResources resources, IAnathemaModel anathemaModel, IAnathemaView view) {
         /* Once bootjob ordering is in place, any of this class' variables/functions with
            the word 'legacy' in it, and any code that calls it, can be safely removed.
            Just make sure this runs *after* DatabaseConversionBootJob. */
@@ -43,7 +44,7 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IAnathemaBootJob {
         if( !legacyDatabaseFile.exists() && isDatabaseEmpty() ) {
             ProxySplashscreen.getInstance().displayStatusMessage( resources.getString("Equipment.Bootjob.DefaultDatabaseSplashmessage")); //$NON-NLS-1$
             try {
-                for( IAnathemaResourceFile file : reflections.getResourcesMatching( EQUIPMENT_REGEX ) ) {
+                for( IAnathemaResourceFile file : anathemaModel.getReflections().getResourcesMatching( EQUIPMENT_REGEX ) ) {
                     String itemJSON = getStringFromStream( file.getURL().openStream() );
                     database.saveTemplate( gson.fromJson( itemJSON ) );
                 }
