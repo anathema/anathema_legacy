@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.character;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -41,6 +42,8 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     stringBuilder.append(getStatsString("Defence", weapon.getDefence(), true)); //$NON-NLS-1$
     stringBuilder.append(getStatsString("Range", weapon.getRange(), false)); //$NON-NLS-1$
     stringBuilder.append(getStatsString("Rate", weapon.getRate(), false)); //$NON-NLS-1$
+    stringBuilder.append( getTagsString( weapon.getTags() ) );
+    
     return stringBuilder.toString();
   }
 
@@ -50,6 +53,14 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     }
     String signum = printSignum && value >= 0 ? "+" : ""; //$NON-NLS-1$ //$NON-NLS-2$
     return createtNewStatsStart(keyPart) + signum + value;
+  }
+  
+  private String getTagsString( IIdentificate[] tags ) {
+      StringBuilder result = new StringBuilder();
+      for( IIdentificate tag : tags ) {
+          result.append( " " + tag.getId() );
+      }
+      return result.toString();
   }
 
   private String createtNewStatsStart(String keyPart) {

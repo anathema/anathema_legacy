@@ -1,0 +1,38 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 0,
+        "damage": 13,
+        "damageTypeString": "Lethal",
+        "defence": -1,
+        "rate": 1,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "Overwhelming",
+          "Reach"
+        ],
+        "minimumDamage": 3,
+        "name": "Close",
+        "type": "Melee Weapon"
+      },
+      {
+        "attuneCost": 8,
+        "allowForeignAttunement": true,
+        "requireAttunement": false,
+        "name": "Artifact",
+        "type": "Artifact"
+      }
+    ]
+  },
+  "description": "2E Core p387, 2.5 Errata p16",
+  "name": "Grand Grimcleaver",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 3
+  }
+}

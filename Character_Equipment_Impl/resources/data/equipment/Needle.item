@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": -1,
+        "damage": 1,
+        "damageTypeString": "Lethal",
+        "range": 10,
+        "rate": 3,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "Piercing",
+          "Thrown"
+        ],
+        "minimumDamage": 1,
+        "name": "Ranged",
+        "type": "Ranged Weapon"
+      }
+    ]
+  },
+  "description": "Close: 2E Core p371",
+  "name": "Needle",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 1
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 0,
+        "damage": 2,
+        "damageTypeString": "Lethal",
+        "defence": 2,
+        "rate": 3,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "Disarming",
+          "MartialArts"
+        ],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      },
+      {
+        "accuracy": 2,
+        "damage": 1,
+        "damageTypeString": "Bashing",
+        "defence": 0,
+        "rate": 1,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "ClinchEnhancer",
+          "Disarming",
+          "Reach"
+        ],
+        "minimumDamage": 1,
+        "name": "Clinch",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p370",
+  "name": "Sai",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 2
+  }
+}

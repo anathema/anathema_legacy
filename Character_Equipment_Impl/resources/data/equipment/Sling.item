@@ -1,0 +1,29 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": -1,
+        "damage": 2,
+        "damageTypeString": "Lethal",
+        "range": 100,
+        "rate": 1,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "Thrown"
+        ],
+        "minimumDamage": 1,
+        "name": "Ranged",
+        "type": "Ranged Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p371",
+  "name": "Sling",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 1
+  }
+}

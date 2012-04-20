@@ -1,0 +1,37 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "hardnessByHealthType": {
+          "Lethal": 5,
+          "Aggravated": 5,
+          "Bashing": 5
+        },
+        "soakByHealthType": {
+          "Lethal": 8,
+          "Aggravated": 8,
+          "Bashing": 9
+        },
+        "fatigue": 0,
+        "mobilityPenalty": -1,
+        "name": "Armour",
+        "type": "Armour"
+      },
+      {
+        "attuneCost": 3,
+        "allowForeignAttunement": true,
+        "requireAttunement": true,
+        "name": "Artifact",
+        "type": "Artifact"
+      }
+    ]
+  },
+  "description": "2E Core p390\nMay be concealed under heavy jacket or cloak.",
+  "name": "Lamellar (Artifact)",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 2
+  }
+}

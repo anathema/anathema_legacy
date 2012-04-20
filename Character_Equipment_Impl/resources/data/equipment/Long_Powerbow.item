@@ -1,0 +1,107 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "attuneCost": 6,
+        "allowForeignAttunement": true,
+        "requireAttunement": false,
+        "name": "Artifact",
+        "type": "Artifact"
+      },
+      {
+        "accuracy": 1,
+        "damage": 3,
+        "damageTypeString": "Lethal",
+        "range": 350,
+        "rate": 3,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "BowType",
+          "Overwhelming"
+        ],
+        "minimumDamage": 2,
+        "name": "Base",
+        "type": "Ranged Weapon"
+      },
+      {
+        "accuracy": 1,
+        "damage": 5,
+        "damageTypeString": "Lethal",
+        "range": 350,
+        "rate": 3,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "BowType",
+          "Overwhelming"
+        ],
+        "minimumDamage": 2,
+        "name": "Broadhead Arrow",
+        "type": "Ranged Weapon"
+      },
+      {
+        "accuracy": 1,
+        "damage": 5,
+        "damageTypeString": "Bashing",
+        "range": 350,
+        "rate": 3,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "BowType",
+          "Overwhelming"
+        ],
+        "minimumDamage": 2,
+        "name": "Fowling Arrow",
+        "type": "Ranged Weapon"
+      },
+      {
+        "accuracy": 1,
+        "damage": 7,
+        "damageTypeString": "Lethal",
+        "range": 350,
+        "rate": 3,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "BowType",
+          "Overwhelming"
+        ],
+        "minimumDamage": 2,
+        "name": "Frog Crotch Arrow",
+        "type": "Ranged Weapon"
+      },
+      {
+        "accuracy": 1,
+        "damage": 3,
+        "damageTypeString": "Lethal",
+        "range": 350,
+        "rate": 3,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "BowType",
+          "Overwhelming",
+          "Piercing"
+        ],
+        "minimumDamage": 2,
+        "name": "Target Arrow",
+        "type": "Ranged Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p389 p372, 2.5 Errata p16",
+  "name": "Long Powerbow",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 3
+  }
+}

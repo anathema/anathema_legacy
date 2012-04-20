@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "hardnessByHealthType": {
+          "Lethal": 0,
+          "Aggravated": 0,
+          "Bashing": 0
+        },
+        "soakByHealthType": {
+          "Lethal": 12,
+          "Aggravated": 12,
+          "Bashing": 12
+        },
+        "fatigue": 3,
+        "mobilityPenalty": -4,
+        "name": "Armour",
+        "type": "Armour"
+      }
+    ]
+  },
+  "description": "2E Core p376",
+  "name": "Superheavy Plate",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 5
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 0,
+        "damage": 7,
+        "damageTypeString": "Lethal",
+        "defence": -2,
+        "rate": 1,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "TwoHanded",
+          "Reach"
+        ],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p367, 2.5 Errata p15",
+  "name": "Great Axe",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 0
+  }
+}

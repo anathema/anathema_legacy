@@ -1,0 +1,38 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 3,
+        "damage": 7,
+        "damageTypeString": "Lethal",
+        "defence": 0,
+        "rate": 1,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "ClinchEnhancer",
+          "Overwhelming",
+          "Piercing"
+        ],
+        "minimumDamage": 2,
+        "name": "Close",
+        "type": "Melee Weapon"
+      },
+      {
+        "attuneCost": 5,
+        "allowForeignAttunement": true,
+        "requireAttunement": false,
+        "name": "Artifact",
+        "type": "Artifact"
+      }
+    ]
+  },
+  "description": "2E Core p387, 2.5 Errata p16",
+  "name": "Bloodspike Harness",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 2
+  }
+}

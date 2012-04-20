@@ -1,0 +1,56 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 0,
+        "damage": 8,
+        "damageTypeString": "Bashing",
+        "defence": 2,
+        "rate": 2,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "MartialArts",
+          "Overwhelming",
+          "Reach"
+        ],
+        "minimumDamage": 2,
+        "name": "Close",
+        "type": "Melee Weapon"
+      },
+      {
+        "attuneCost": 3,
+        "allowForeignAttunement": true,
+        "requireAttunement": false,
+        "name": "Artifact",
+        "type": "Artifact"
+      },
+      {
+        "accuracy": 1,
+        "damage": 6,
+        "damageTypeString": "Bashing",
+        "defence": 0,
+        "rate": 1,
+        "speed": 6,
+        "inflictsNoDamage": false,
+        "tags": [
+          "ClinchEnhancer",
+          "Overwhelming",
+          "Piercing",
+          "Reach"
+        ],
+        "minimumDamage": 2,
+        "name": "Clinch",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p387, 2.5 Errata p16",
+  "name": "Dire Chain",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 1
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "hardnessByHealthType": {
+          "Lethal": 8,
+          "Aggravated": 8,
+          "Bashing": 8
+        },
+        "soakByHealthType": {
+          "Lethal": 10,
+          "Aggravated": 10,
+          "Bashing": 9
+        },
+        "fatigue": 1,
+        "mobilityPenalty": -1,
+        "name": "Armour",
+        "type": "Armour"
+      },
+      {
+        "attuneCost": 4,
+        "allowForeignAttunement": true,
+        "requireAttunement": true,
+        "name": "Artifact",
+        "type": "Artifact"
+      }
+    ]
+  },
+  "description": "2E Core p391",
+  "name": "Reinforced Breastplate (Artifact)",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 2
+  }
+}

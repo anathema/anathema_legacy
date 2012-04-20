@@ -1,0 +1,30 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 0,
+        "damage": 0,
+        "damageTypeString": "Bashing",
+        "defence": 3,
+        "rate": 1,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "MartialArts",
+          "Shield0"
+        ],
+        "minimumDamage": 1,
+        "name": "Close",
+        "type": "Melee Weapon"
+      }
+    ]
+  },
+  "description": "2E Core p377, 2.5 Errata p15",
+  "name": "Buckler",
+  "collectionFactory": {},
+  "composition": "None",
+  "cost": {
+    "costType": "Resources",
+    "costValue": 1
+  }
+}

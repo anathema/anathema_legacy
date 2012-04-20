@@ -1,0 +1,36 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "accuracy": 2,
+        "damage": 5,
+        "damageTypeString": "Lethal",
+        "defence": 2,
+        "rate": 3,
+        "speed": 5,
+        "inflictsNoDamage": false,
+        "tags": [
+          "Overwhelming"
+        ],
+        "minimumDamage": 2,
+        "name": "Close",
+        "type": "Melee Weapon"
+      },
+      {
+        "attuneCost": 5,
+        "allowForeignAttunement": true,
+        "requireAttunement": false,
+        "name": "Artifact",
+        "type": "Artifact"
+      }
+    ]
+  },
+  "description": "2E Core p385, 2.5 Errata p16",
+  "name": "Daiklave",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 2
+  }
+}

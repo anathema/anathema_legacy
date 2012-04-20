@@ -1,0 +1,113 @@
+{
+  "statsByRuleSet": {
+    "SecondEdition": [
+      {
+        "DDVMod": 3,
+        "PDVMod": 0,
+        "MDDVMod": 0,
+        "MPDVMod": 0,
+        "MeleeSpeedMod": 0,
+        "MeleeAccuracyMod": 0,
+        "MeleeDamageMod": 0,
+        "MeleeRateMod": 0,
+        "RangedSpeedMod": 0,
+        "RangedAccuracyMod": 0,
+        "RangedDamageMod": 0,
+        "RangedRateMod": 0,
+        "JoinBattleMod": 0,
+        "JoinDebateMod": 0,
+        "JoinWarMod": 0,
+        "name": "Always",
+        "type": "Trait Modifier"
+      },
+      {
+        "attuneCost": 4,
+        "allowForeignAttunement": true,
+        "requireAttunement": true,
+        "name": "Artifact",
+        "type": "Artifact"
+      },
+      {
+        "DDVMod": 0,
+        "PDVMod": 0,
+        "MDDVMod": 0,
+        "MPDVMod": 0,
+        "MeleeSpeedMod": 0,
+        "MeleeAccuracyMod": 0,
+        "MeleeDamageMod": 2,
+        "MeleeRateMod": 0,
+        "RangedSpeedMod": 0,
+        "RangedAccuracyMod": 0,
+        "RangedDamageMod": 2,
+        "RangedRateMod": 0,
+        "JoinBattleMod": 0,
+        "JoinDebateMod": 0,
+        "JoinWarMod": 0,
+        "name": "Orichalcum",
+        "type": "Trait Modifier"
+      },
+      {
+        "hardnessByHealthType": {
+          "Lethal": 0,
+          "Aggravated": 0,
+          "Bashing": 0
+        },
+        "soakByHealthType": {
+          "Lethal": 2,
+          "Aggravated": 0,
+          "Bashing": 0
+        },
+        "fatigue": 0,
+        "mobilityPenalty": 0,
+        "name": "Moonsilver",
+        "type": "Armour"
+      },
+      {
+        "DDVMod": 0,
+        "PDVMod": 0,
+        "MDDVMod": 0,
+        "MPDVMod": 0,
+        "MeleeSpeedMod": -1,
+        "MeleeAccuracyMod": 0,
+        "MeleeDamageMod": 0,
+        "MeleeRateMod": 0,
+        "RangedSpeedMod": -1,
+        "RangedAccuracyMod": 0,
+        "RangedDamageMod": 0,
+        "RangedRateMod": 0,
+        "JoinBattleMod": 0,
+        "JoinDebateMod": 0,
+        "JoinWarMod": 0,
+        "name": "Jade",
+        "type": "Trait Modifier"
+      },
+      {
+        "DDVMod": 0,
+        "PDVMod": 1,
+        "MDDVMod": 0,
+        "MPDVMod": 0,
+        "MeleeSpeedMod": 0,
+        "MeleeAccuracyMod": 1,
+        "MeleeDamageMod": 0,
+        "MeleeRateMod": 0,
+        "RangedSpeedMod": 0,
+        "RangedAccuracyMod": 1,
+        "RangedDamageMod": 0,
+        "RangedRateMod": 0,
+        "JoinBattleMod": 0,
+        "JoinDebateMod": 0,
+        "JoinWarMod": 0,
+        "name": "Starmetal",
+        "type": "Trait Modifier"
+      }
+    ]
+  },
+  "description": "2E Core p381\nWhen adding to your character, select the Material from the droplist at the bottom of the equipment list, and only check the Always box, the proper Attunement box, and the box for the matching Magical Material your item is made from.\n\nSoulsteel\u0027s effect isn\u0027t modelable by Anathema.",
+  "name": "Hearthstone Bracers",
+  "collectionFactory": {},
+  "composition": "Variable",
+  "cost": {
+    "costType": "Artifact",
+    "costValue": 2
+  }
+}

@@ -11,7 +11,15 @@ http://anathema.github.com
 ===------------------------------------------------------------------------------===
 
 From this version onward, Anathema no longer uses the "Equipment.yap" file, but individual files for each item.
-It will convert existing databases and afterwards remove the .yap file.
+It will back up your existing database, convert it, and remove the original Equipment.yap file.
+
+Anathema now includes a default equipment database, which contains the mundane and artifact weapons, shields,
+and armor from the 2E Core and 2.5 Errata.  If Anathema detects no items in your equipment database, it will
+populate it with the default database.  If you're an existing user and wish to see this database, simply
+back up your old database, delete the equipment folder from your repository, and re-launch the program.
+
+We now import custom charms from your repository, if the data files are provided. Consult the provided
+"Custom Charms.txt" for basic instructions.
 
 Anathema no longer tracks the dots of Lunar Attribute specialties. They never factored into BP and XP, nor were they
 printed them.
@@ -27,14 +35,17 @@ printed them.
 * Character loadout screen shows tooltips for items
 * [Shadow493] Added missing Lunar templates from DotFA.
 * [Jesse Belanger] Added Charm descriptions for Infernals. Most texts taken from the official Wiki.
-* [Curtis Tasker] The character sheet adds the Dodge and Awareness specialties to the Dodge DV and Join Battle
-* [Curtis Tasker] Improved behavior of tabs
-* [Curtis Tasker] Improved look of toolbar buttons
-* [Curtis Tasker] Added a 'copy item' button to the equipment database.
-* [Curtis Tasker] Added tooltips to the buttons in the equipment database.
+* [Curtis Tasker] The character sheet uses your Awareness, Dodge, and Integrity specialties to display Join Battle,
+                  Join Debate, Dodge DV, and Mental Dodge DV values.
+* [Curtis Tasker] Improved behavior of tabs.
+* [Curtis Tasker] Improved look of toolbar buttons.
+* [Curtis Tasker] Added a toolbar button for the equipment database.
+* [Curtis Tasker] Added a 'Copy Item' button to the equipment database.
+* [Curtis Tasker] Added tooltips to the New Item, Copy Item, Save Item, Delete Item buttons in the equipment database.
 * [Curtis Tasker] Improved confirmation dialog for item deletion in the equipment database.
-* We now import custom charms from your repository, if the data files are provided. Consult the provided
-  "Custom Charms.txt" for basic instructions.
+* [Curtis Tasker] Improved weapon stats tooltip in the equipment database.  Now shows weapon tags (Overwhelming, Piercing, etc).
+* [Curtis Tasker] Default equipment database now included with Anathema.
+* Added support for custom charm loading from the repository.
 * Abyssal Taint Charms calculate their upgrade cost
 
 -- Bugfixes --
