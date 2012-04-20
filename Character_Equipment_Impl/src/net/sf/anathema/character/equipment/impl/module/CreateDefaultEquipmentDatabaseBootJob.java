@@ -36,8 +36,8 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IAnathemaBootJob {
         /* Once bootjob ordering is in place, any of this class' variables/functions with
            the word 'legacy' in it, and any code that calls it, can be safely removed.
            Just make sure this runs *after* DatabaseConversionBootJob. */
-        File legacyDatabaseFile = new File( anathemaModel.getRepository().getRepositoryPath() + "equipment/Equipment.yap" );
-        
+        File legacyDatabaseFile = new File( anathemaModel.getRepository().getRepositoryPath(),  "equipment" + File.separatorChar + "Equipment.yap" );
+
         database = GsonEquipmentDatabase.CreateFrom(anathemaModel);
         EquipmentGson gson = new EquipmentGson();
 
@@ -46,7 +46,7 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IAnathemaBootJob {
             try {
                 for( IAnathemaResourceFile file : anathemaModel.getReflections().getResourcesMatching( EQUIPMENT_REGEX ) ) {
                     String itemJSON = getStringFromStream( file.getURL().openStream() );
-                    database.saveTemplate( gson.fromJson( itemJSON ) );
+                    database.saveTemplateNoOverwrite( gson.fromJson( itemJSON ) );
                 }
             } catch ( IOException e ) {
                 throw new RuntimeException("Could not create default database.");
