@@ -9,15 +9,11 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.ListSelectionModel;
-import java.awt.Component;
 
 public final class ComboViewProperties extends AbstractMagicLearnProperties implements IComboViewProperties {
   private final IComboConfiguration comboConfiguration;
@@ -60,45 +56,12 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
 
   @Override
   public ListCellRenderer getLearnedMagicRenderer() {
-    return new LegalityCheckListCellRenderer(getResources()) {
-
-      @Override
-      protected boolean isLegal(Object object) {
-        return true;
-      }
-
-      @Override
-      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
-                                                    boolean cellHasFocus) {
-        JComponent renderComponent = (JComponent) super.getListCellRendererComponent(list, value, index, isSelected,
-                cellHasFocus);
-        String tooltipString = charmInfoStringProvider.getInfoString((ICharm) value, null);
-        renderComponent.setToolTipText(tooltipString);
-        return renderComponent;
-      }
-    };
+    return new AlwaysLegalCharmRenderer(getResources(), charmInfoStringProvider);
   }
 
   @Override
   public ListCellRenderer getAvailableMagicRenderer() {
-    return new LegalityCheckListCellRenderer(getResources()) {
-      private static final long serialVersionUID = -4341837486327899321L;
-
-      @Override
-      protected boolean isLegal(Object object) {
-        return comboConfiguration.isComboLegal((ICharm) object);
-      }
-
-      @Override
-      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
-                                                    boolean cellHasFocus) {
-        JComponent renderComponent = (JComponent) super.getListCellRendererComponent(list, value, index, isSelected,
-                cellHasFocus);
-        String tooltipString = charmInfoStringProvider.getInfoString((ICharm) value, null);
-        renderComponent.setToolTipText(tooltipString);
-        return renderComponent;
-      }
-    };
+    return new ComboLegalityCharmRenderer(getResources(), charmInfoStringProvider, comboConfiguration);
   }
 
   @Override

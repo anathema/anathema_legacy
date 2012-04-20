@@ -148,7 +148,6 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   private void addComboToView(final IComboConfigurationView comboConfigurationView, final ICombo combo) {
     SmartAction deleteAction = new SmartAction(
             resources.getString("CardView.CharmConfiguration.ComboCreation.DeleteLabel"), new BasicUi(resources).getClearIcon()) { //$NON-NLS-1$
-      private static final long serialVersionUID = 3964418545450534344L;
 
       @Override
       protected void execute(Component parentComponent) {
@@ -157,7 +156,6 @@ public class ComboConfigurationPresenter implements IContentPresenter {
     };
     SmartAction editAction = new SmartAction(
             resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"), new BasicUi(resources).getEditIcon()) {//$NON-NLS-1$
-      private static final long serialVersionUID = -7491597143093367976L;
 
       @Override
       protected void execute(Component parentComponent) {
