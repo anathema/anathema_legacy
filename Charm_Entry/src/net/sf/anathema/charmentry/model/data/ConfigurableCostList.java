@@ -7,14 +7,17 @@ public class ConfigurableCostList implements IConfigurableCostList {
   private final IConfigurableHealthCost healthCost = new ConfigurableHealthCost();
   private final IConfigurableCost xpCost = new ConfigurableCost();
 
+  @Override
   public IConfigurableCost getEssenceCost() {
     return essenceCost;
   }
 
+  @Override
   public IConfigurableCost getWillpowerCost() {
     return willpowerCost;
   }
 
+  @Override
   public IConfigurableHealthCost getHealthCost() {
     return healthCost;
   }

@@ -81,6 +81,7 @@ public class DummyCharm extends Identificate implements ICharm {
     this.prerequisites = prerequisites;
   }
 
+  @Override
   public void accept(IMagicVisitor visitor) {
     visitor.visitCharm(this);
   }
@@ -93,10 +94,12 @@ public class DummyCharm extends Identificate implements ICharm {
     learnFollowUpCharms.add(charm);
   }
 
+  @Override
   public ICharmAttributeRequirement[] getAttributeRequirements() {
     return requirements.toArray(new ICharmAttributeRequirement[requirements.size()]);
   }
 
+  @Override
   public ICharacterType getCharacterType() {
     return characterType;
   }
@@ -105,46 +108,57 @@ public class DummyCharm extends Identificate implements ICharm {
     characterType = type;
   }
   
+  @Override
   public boolean isInstanceOfGenericCharm() {
 	return false;
   }
 
+  @Override
   public List<String> getParentSubeffects() {
     return new ArrayList<String>();
   }
 
+  @Override
   public IComboRestrictions getComboRules() {
     return comboRestrictions;
   }
 
+  @Override
   public IDuration getDuration() {
     return duration;
   }
 
+  @Override
   public IGenericTrait getEssence() {
     return essence;
   }
 
+  @Override
   public String getGroupId() {
     return groupId != null ? groupId : prerequisites[0].getType().getId();
   }
 
+  @Override
   public Set<ICharm> getLearnFollowUpCharms(ICharmLearnArbitrator learnArbitrator) {
     return learnFollowUpCharms;
   }
 
+  @Override
   public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
     return parentCharms;
   }
 
+  @Override
   public Set<ICharm> getLearnChildCharms() {
     return learnFollowUpCharms;
   }
 
+  @Override
   public Set<ICharm> getParentCharms() {
     return parentCharms;
   }
 
+  @Override
   public IGenericTrait[] getPrerequisites() {
     return prerequisites;
   }
@@ -154,14 +168,17 @@ public class DummyCharm extends Identificate implements ICharm {
     return prerequisites[0].getType();
   }
 
+  @Override
   public Set<ICharm> getRenderingPrerequisiteCharms() {
     return parentCharms;
   }
 
+  @Override
   public Set<String> getRenderingPrerequisiteLabels() {
     return emptySet();
   }
 
+  @Override
   public CostList getTemporaryCost() {
     return temporaryCost;
   }
@@ -170,22 +187,27 @@ public class DummyCharm extends Identificate implements ICharm {
     temporaryCost = list;
   }
 
+  @Override
   public boolean hasAttribute(IIdentificate attribute) {
     return false;
   }
 
+  @Override
   public String getAttributeValue(IIdentificate attribute) {
     return null;
   }
 
+  @Override
   public boolean isBlockedByAlternative(IMagicCollection magicCollection) {
     return false;
   }
 
+  @Override
   public Set<ICharm> getMergedCharms() {
     return new HashSet<ICharm>();
   }
 
+  @Override
   public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
     if (prerequisites.length <= 0) {
       return false;
@@ -194,6 +216,7 @@ public class DummyCharm extends Identificate implements ICharm {
     return trait instanceof IFavorableGenericTrait && ((IFavorableGenericTrait) trait).isCasteOrFavored();
   }
 
+  @Override
   public boolean isTreeRoot() {
     return parentCharms.size() == 0;
   }
@@ -207,12 +230,18 @@ public class DummyCharm extends Identificate implements ICharm {
     this.groupId = expectedGroup;
   }
 
+  @Override
   public IExaltedSourceBook[] getSources() {
     return new IExaltedSourceBook[] { source };
   }
   
+  @Override
   public IExaltedSourceBook getPrimarySource() {
 	return source;
+  }
+
+  public void setSource(IExaltedSourceBook source) {
+    this.source = source;
   }
 
   public void setCharmType(CharmType type) {
@@ -231,10 +260,12 @@ public class DummyCharm extends Identificate implements ICharm {
     this.prerequisites = prerequisites;
   }
 
+  @Override
   public CharmTypeModel getCharmTypeModel() {
     return model;
   }
 
+  @Override
   public ICharmAttribute[] getAttributes() {
     return attributes.toArray(new ICharmAttribute[attributes.size()]);
   }
@@ -243,6 +274,7 @@ public class DummyCharm extends Identificate implements ICharm {
     this.attributes.add(attribute);
   }
 
+  @Override
   public boolean hasChildren() {
     return false;
   }
