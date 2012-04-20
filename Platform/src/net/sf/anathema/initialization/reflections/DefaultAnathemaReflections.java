@@ -74,15 +74,7 @@ public class DefaultAnathemaReflections implements AnathemaReflections {
     }
     return classLoaders.toArray(new ClassLoader[0]);
   }
-  
-  public ClassLoader getClassLoaderForResource(String resource) {
-	  for (ClassLoader loader : classLoaders) {
-		  if (loader.getResource(resource) != null)
-			  return loader;
-	  }
-	  return null;
-  }
-  
+
   private class ToResource implements Function<String, IAnathemaResourceFile> {
 	    @Override
 	    public IAnathemaResourceFile apply(String resource) {
