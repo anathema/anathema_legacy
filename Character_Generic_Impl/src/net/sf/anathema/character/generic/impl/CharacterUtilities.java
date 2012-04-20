@@ -55,11 +55,15 @@ public class CharacterUtilities {
   }
 
   public static int getJoinDebate(IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment) {
-    return getJoinBattle( traitCollection, equipment );
+      int baseValue = getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
+      baseValue += equipment.getJoinDebateMod();
+      return Math.max(baseValue, 1);
   }
   
   public static int getJoinDebateWithSpecialty( IGenericTraitCollection traitCollection, ICharacterStatsModifiers equipment, int awarenessSpecialty) {
-      return getJoinBattleWithSpecialty( traitCollection, equipment, awarenessSpecialty );
+      int baseValue = getJoinDebate( traitCollection, equipment );
+      baseValue += awarenessSpecialty;
+      return Math.max(baseValue, 1);
   }
 
   public static int getKnockdownThreshold(IGenericTraitCollection traitCollection) {
