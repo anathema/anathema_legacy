@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.impl.module;
 
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.IAnathemaResourceFile;
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.equipment.impl.item.model.gson.EquipmentGson;
 import net.sf.anathema.character.generic.impl.bootjob.RepositoryVersion;
@@ -26,34 +27,27 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IAnathemaBootJob {
 
     //private final static Logger logger = Logger.getLogger(CreateDefaultEquipmentDatabaseBootJob.class);
     
-    private final String EQUIPMENT_REGEX = "^equipment/.*\\.item$";
+    private final String EQUIPMENT_REGEX = "^.*\\.item$";
     private GsonEquipmentDatabase database;
 
     @Override
-    public void run(IResources resources, IAnathemaModel anathemaModel, IAnathemaView view) {
-        /* Once bootjob ordering is in place, any of this class' variables, functions with
+    public void run(IResources resources, IAnathemaModel anathemaModel, IAnathemaView view, net.sf.anathema.initialization.reflections.AnathemaReflections reflections) {
+        /* Once bootjob ordering is in place, any of this class' variables/functions with
            the word 'legacy' in it, and any code that calls it, can be safely removed.
            Just make sure this runs *after* DatabaseConversionBootJob. */
         File legacyDatabaseFile = new File( anathemaModel.getRepository().getRepositoryPath() + "equipment/Equipment.yap" );
         
         database = GsonEquipmentDatabase.CreateFrom(anathemaModel);
         EquipmentGson gson = new EquipmentGson();
-        
+
         if( !legacyDatabaseFile.exists() && isDatabaseEmpty() ) {
             ProxySplashscreen.getInstance().displayStatusMessage( resources.getString("Equipment.Bootjob.DefaultDatabaseSplashmessage")); //$NON-NLS-1$
-            
             try {
-                ZipInputStream jarFile = new ZipInputStream( new BufferedInputStream( getJarFileLocation().openStream() ) );
-                ZipEntry file;
-                while( (file = jarFile.getNextEntry()) != null ) {
-                    if( file.getName().matches( EQUIPMENT_REGEX ) ){
-                        String itemJSON = getStringFromStream( jarFile );
-                        database.saveTemplate( gson.fromJson( itemJSON ) );
-                    }
+                for( IAnathemaResourceFile file : reflections.getResourcesMatching( EQUIPMENT_REGEX ) ) {
+                    String itemJSON = getStringFromStream( file.getURL().openStream() );
+                    database.saveTemplate( gson.fromJson( itemJSON ) );
                 }
             } catch ( IOException e ) {
-                throw new RuntimeException("Could not create default database.");
-            } catch ( NoSuchElementException e ) {
                 throw new RuntimeException("Could not create default database.");
             }
         }
@@ -61,10 +55,6 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IAnathemaBootJob {
     
     private boolean isDatabaseEmpty() {
         return database.getAllAvailableTemplateIds().length == 0;
-    }
-    
-    private URL getJarFileLocation() {
-        return this.getClass().getProtectionDomain().getCodeSource().getLocation();
     }
     
     private String getStringFromStream( InputStream stream ) {

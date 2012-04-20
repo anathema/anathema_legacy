@@ -24,7 +24,7 @@ public class LookAndFeelNormalizerBootJob implements IAnathemaBootJob {
   private static final String LOOK_AND_FEEL_PREFERENCE = "ForceMetalLookAndFeel"; //$NON-NLS-1$
 
   @Override
-  public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
+  public void run(IResources resources, IAnathemaModel model, IAnathemaView view, net.sf.anathema.initialization.reflections.AnathemaReflections reflections) {
     String storedClassName = SYSTEM_PREFERENCES.get(USER_LOOK_AND_FEEL_CLASSNAME, null);
     if (storedClassName == null) {
       if (SYSTEM_PREFERENCES.getBoolean(LOOK_AND_FEEL_PREFERENCE, false)) {

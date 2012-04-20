@@ -28,7 +28,7 @@ import javax.swing.*;
 @BootJob
 public class LookAndFeelOverrideBootjob implements IAnathemaBootJob {
   @Override
-  public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
+  public void run(IResources resources, IAnathemaModel model, IAnathemaView view, net.sf.anathema.initialization.reflections.AnathemaReflections reflections) {
     if (userRequestedLookAndFeelOverride()) {
       resetLookAndFeelPreference();
       if (currentLookAndFeelIsNotSystemLookAndFeel()) {

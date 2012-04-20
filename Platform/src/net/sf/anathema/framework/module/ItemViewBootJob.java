@@ -14,7 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 @BootJob
 public class ItemViewBootJob implements IAnathemaBootJob {
 
-  public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
+  public void run(IResources resources, IAnathemaModel model, IAnathemaView view, net.sf.anathema.initialization.reflections.AnathemaReflections reflections) {
     IModelViewMapping mapping = new ModelViewMapping();
     IItemManagementModel itemManagement = model.getItemManagement();
     itemManagement.addListener(new ItemManagmentModelListener(

@@ -33,7 +33,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
   private final static Logger logger = Logger.getLogger(DatabaseConversionBootJob.class);
 
   @Override
-  public void run(IResources resources, IAnathemaModel anathemaModel, IAnathemaView view) {
+  public void run(IResources resources, IAnathemaModel anathemaModel, IAnathemaView view, net.sf.anathema.initialization.reflections.AnathemaReflections reflections) {
     ProxySplashscreen.getInstance().displayStatusMessage(
             resources.getString("Equipment.Bootjob.Splashmessage")); //$NON-NLS-1$
     File databaseFile = getDatabaseFile(anathemaModel);
