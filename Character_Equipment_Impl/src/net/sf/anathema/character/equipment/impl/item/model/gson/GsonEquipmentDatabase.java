@@ -74,9 +74,9 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
   }
 
   public void saveTemplateNoOverwrite(IEquipmentTemplate template) {
-	if( loadTemplate( template.getName() ) == null ) {
-		saveTemplate( template );
-	}
+    if (loadTemplate(template.getName()) == null) {
+      saveTemplate(template);
+    }
   }
 
   @Override
@@ -114,5 +114,9 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
     String id = FilenameCleaner.clean(template.getName());
     String json = gson.toJson(template);
     access.write(id, json);
+  }
+
+  public boolean isEmpty() {
+    return getAllAvailableTemplateIds().length == 0;
   }
 }
