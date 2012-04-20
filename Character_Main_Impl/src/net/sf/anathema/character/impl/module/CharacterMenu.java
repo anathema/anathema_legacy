@@ -34,7 +34,6 @@ public class CharacterMenu implements IAnathemaMenu {
     public MakeCharacterExperienced(IResources resources, IAnathemaModel model) {
       super(resources.getString("CharacterMenu.ToExperienced.Title"));
       this.model = model;
-      setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_MASK));
       new AbstractSelectedItemEnabler(model.getItemManagement(), this) {
         @Override
         protected boolean isEnabled(IItem selectedItem) {
