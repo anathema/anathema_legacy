@@ -8,8 +8,12 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.Arrays;
 
 public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
@@ -56,7 +60,14 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
   }
 
   protected int getFinalValue(IWeaponStats weapon, int weaponValue) {
-    return calculateFinalValue(weaponValue + getOptionModifiers(weapon), collection.getTrait(AttributeType.Dexterity),
+    IGenericTrait trait = collection.getTrait(AttributeType.Dexterity);
+    if( Arrays.asList( weapon.getTags() ).contains( WeaponTag.ClinchEnhancer ) ) {
+      IGenericTrait str = collection.getTrait(AttributeType.Strength);
+      if( trait.getCurrentValue() < str.getCurrentValue() ) {
+        trait = str;
+      }
+    }
+    return calculateFinalValue(weaponValue + getOptionModifiers(weapon), trait,
             collection.getTrait(weapon.getTraitType()));
   }
 }

@@ -48,6 +48,7 @@ printed them.
 * Fixed free Virtue cap for non-Solars at character creation
 * [Shadow493] First Age Solars have the correct points
 * [Curtis Tasker] Item stats can contain the '&' character
+* [Curtis Tasker] Clinch attacks now calculate using the higher of your Strength or Dexterity
 * Hero style extension Charms are only available to matching Exalts
 * (Solar/Melee) "Honored Companion of the Sun" is present
 * (Solar/Melee) "Deft Hands Deflection" has correct cost
