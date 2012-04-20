@@ -8,10 +8,9 @@ confuse or break the application. The onus of not bricking Anathema is on you.
 :)
 
 To make use of this feature, find your Anathema repository folder, and create
-a subdirectory under it called 'custom'. Within this, create a new subfolder
-called 'charms'. For each custom charm you wish to add, there are two files
-you will need to be concerned with: One for the charm data itself, and one for
-labeling it in the application.
+a subdirectory under it called 'CustomMagic'. For each custom charm you wish to
+add, there are two files you will need to be concerned with: One for the charm
+data itself, and one for labeling it in the application.
 
 =====================================================
    1) Charm data file
