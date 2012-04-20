@@ -31,6 +31,7 @@ public class MagicLearnView implements IMagicLearnView {
     learnedList.setCellRenderer(properties.getLearnedMagicRenderer());
     addButton = createAddMagicButton(properties.getAddButtonIcon(), properties.getAddButtonToolTip());
     addOptionListListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         addButton.setEnabled(properties.isMagicSelectionAvailable(learnOptionsList.getSelectedValue()));
       }
@@ -82,6 +83,7 @@ public class MagicLearnView implements IMagicLearnView {
 
   private void fireMagicRemoved(final Object[] removedMagics) {
     control.forAllDo(new IClosure<IMagicViewListener>() {
+      @Override
       public void execute(IMagicViewListener input) {
         input.magicRemoved(removedMagics);
       }
@@ -90,12 +92,14 @@ public class MagicLearnView implements IMagicLearnView {
 
   private void fireMagicAdded(final Object[] addedMagics) {
     control.forAllDo(new IClosure<IMagicViewListener>() {
+      @Override
       public void execute(IMagicViewListener input) {
         input.magicAdded(addedMagics);
       }
     });
   }
 
+  @Override
   public void setMagicOptions(Object[] magics) {
     exchangeObjects((DefaultListModel) learnOptionsList.getModel(), magics);
   }
@@ -107,10 +111,12 @@ public class MagicLearnView implements IMagicLearnView {
     }
   }
 
+  @Override
   public void setLearnedMagic(Object[] magics) {
     exchangeObjects((DefaultListModel) learnedList.getModel(), magics);
   }
 
+  @Override
   public void addMagicViewListener(IMagicViewListener listener) {
     control.addListener(listener);
   }
@@ -149,18 +155,22 @@ public class MagicLearnView implements IMagicLearnView {
     return learnedList.getModel();
   }
 
+  @Override
   public void clearSelection() {
     learnedList.clearSelection();
   }
 
+  @Override
   public void addSelectionListListener(ListSelectionListener listener) {
     learnedList.addListSelectionListener(listener);
   }
 
+  @Override
   public void addOptionListListener(ListSelectionListener listener) {
     learnOptionsList.addListSelectionListener(listener);
   }
 
+  @Override
   public void addLearnedMagic(Object[] magics) {
     DefaultListModel listModel = (DefaultListModel) learnedList.getModel();
     for (Object spell : magics) {
@@ -168,6 +178,7 @@ public class MagicLearnView implements IMagicLearnView {
     }
   }
 
+  @Override
   public void addMagicOptions(IIdentificate[] magics, Comparator<IIdentificate> comparator) {
     DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
     for (IIdentificate spell : magics) {
@@ -189,6 +200,7 @@ public class MagicLearnView implements IMagicLearnView {
     }
   }
 
+  @Override
   public void removeLearnedMagic(Object[] magics) {
     DefaultListModel listModel = (DefaultListModel) learnedList.getModel();
     for (Object spell : magics) {
@@ -196,6 +208,7 @@ public class MagicLearnView implements IMagicLearnView {
     }
   }
 
+  @Override
   public void removeMagicOptions(Object[] magics) {
     DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
     for (Object spell : magics) {
