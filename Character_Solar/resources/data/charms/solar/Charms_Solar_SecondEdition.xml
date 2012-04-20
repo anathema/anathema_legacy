@@ -1432,7 +1432,6 @@
 		</prerequisite>
 		<cost>
 			<essence cost="" text="(+4m)"/>
-			<willpower cost="1"/>
 		</cost>
 		<duration duration="Permanent"/>
 		<charmtype type="Permanent"/>
