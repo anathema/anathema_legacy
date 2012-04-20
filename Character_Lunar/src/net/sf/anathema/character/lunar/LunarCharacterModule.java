@@ -22,10 +22,6 @@ import net.sf.anathema.character.lunar.heartsblood.HeartsBloodFactory;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodPersisterFactory;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodViewFactory;
-import net.sf.anathema.character.lunar.renown.RenownFactory;
-import net.sf.anathema.character.lunar.renown.RenownPersisterFactory;
-import net.sf.anathema.character.lunar.renown.RenownTemplate;
-import net.sf.anathema.character.lunar.renown.RenownViewFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawModelFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
@@ -43,13 +39,10 @@ import static net.sf.anathema.character.generic.type.CharacterType.LUNAR;
 public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_RENOWN = "Renown"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_REPUTATION = "Reputation"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SOLAR_BOND = "SolarBond"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_TATTOO_ARTIFACT = "TattooArtifact"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_TABOO = "Taboo"; //$NON-NLS-1$
-  public static final IBackgroundTemplate RENOWN_BACKGROUND_TYPE = new CharacterTypeBackgroundTemplate(
-          BACKGROUND_ID_RENOWN, LUNAR);
 
   private static final TemplateType castelessType = new TemplateType(LUNAR,
           new Identificate("Casteless")); //$NON-NLS-1$
@@ -82,11 +75,8 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
             new LunarBeastformParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(HeartsBloodTemplate.TEMPLATE_ID,
             new LunarHeartsBloodParser());
-    characterGenerics.getAdditionalTemplateParserRegistry().register(RenownTemplate.TEMPLATE_ID,
-            new LunarRenownParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(LunarVirtueFlawTemplate.TEMPLATE_ID,
             new LunarVirtueFlawParser());
-
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<ITemplateType, ICasteType[]>();
     templateMap.put(castelessType, new ICasteType[]{});
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());
@@ -133,7 +123,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     registerBeastform(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
     registerHeartsblood(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
-    registerRenown(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
     registerVirtueFlaw(additionalModelFactoryRegistry, additionalViewFactoryRegistry, persisterFactory);
   }
 
@@ -145,15 +134,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     additionalViewFactoryRegistry.register(templateId, new LunarVirtueFlawViewFactory());
     persisterFactory.register(templateId, new LunarVirtueFlawPersisterFactory());
 
-  }
-
-  private void registerRenown(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
-                              IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry,
-                              IRegistry<String, IAdditionalPersisterFactory> persisterFactory) {
-    String templateId = RenownTemplate.TEMPLATE_ID;
-    additionalModelFactoryRegistry.register(templateId, new RenownFactory());
-    additionalViewFactoryRegistry.register(templateId, new RenownViewFactory());
-    persisterFactory.register(templateId, new RenownPersisterFactory());
   }
 
   private void registerHeartsblood(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry,
