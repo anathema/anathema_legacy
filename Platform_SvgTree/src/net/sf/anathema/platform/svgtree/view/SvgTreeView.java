@@ -61,6 +61,7 @@ public class SvgTreeView implements ISvgTreeView {
     this.manager = new SVGSpecialNodeViewManager(canvas, calculator);
     this.listening = new SvgTreeListening(canvas, calculator, properties);
     addDocumentLoadedListener(new CascadeLoadedListener() {
+      @Override
       public void cascadeLoaded() {
         initNodeNames();
       }
@@ -73,6 +74,7 @@ public class SvgTreeView implements ISvgTreeView {
     });
   }
 
+  @Override
   public JComponent getComponent() {
     return canvas;
   }
@@ -82,6 +84,7 @@ public class SvgTreeView implements ISvgTreeView {
     return manager;
   }
 
+  @Override
   public void loadCascade(final org.dom4j.Document dom4jDocument, boolean resetView) throws DocumentException {
     final AffineTransform transform = resetView ? null : canvas.getRenderingTransform();
 	if (resetView)
@@ -142,10 +145,12 @@ public class SvgTreeView implements ISvgTreeView {
     document.getDocumentElement().insertBefore(rectangle, document.getElementById(VALUE_CASCADE_ID));
   }
 
+  @Override
   public void addNodeSelectionListener(final CharmInteractionListener listener) {
     listening.addNodeSelectionListener(listener);
   }
 
+  @Override
   public void setNodeBackgroundColor(final String nodeId, final Color color) {
     Ensure.ensureNotNull("Color must not be null.", color); //$NON-NLS-1$
     SVGElement nodeGroup = (SVGElement) canvas.getElementById(nodeId);
@@ -168,6 +173,7 @@ public class SvgTreeView implements ISvgTreeView {
     }
   }
 
+  @Override
   public void setNodeAlpha(final String nodeId, int alpha) {
     if (alpha > 255) {
       alpha = 255;
@@ -182,6 +188,7 @@ public class SvgTreeView implements ISvgTreeView {
     nodeGroup.setAttribute(SVG_OPACITY_ATTRIBUTE, String.valueOf((float) alpha / 255));
   }
 
+  @Override
   public void addDocumentLoadedListener(final CascadeLoadedListener listener) {
     canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
       @Override
@@ -202,10 +209,12 @@ public class SvgTreeView implements ISvgTreeView {
     }
   }
 
+  @Override
   public void setCanvasBackground(final Color color) {
     canvas.setBackground(color);
   }
 
+  @Override
   public void dispose() {
     SVGDocument document = canvas.getSVGDocument();
     if (document != null) {
