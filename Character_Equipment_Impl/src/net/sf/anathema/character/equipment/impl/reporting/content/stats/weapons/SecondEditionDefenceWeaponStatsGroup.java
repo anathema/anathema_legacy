@@ -5,7 +5,6 @@ import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionPr
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.resources.IResources;
@@ -14,22 +13,20 @@ public class SecondEditionDefenceWeaponStatsGroup extends AbstractDefenceWeaponS
 
   private final IEquipmentCharacterDataProvider provider;
   private IEquipmentCharacterOptionProvider optionProvider;
-  private final ICharacterStatsModifiers modifiers;
 
   public SecondEditionDefenceWeaponStatsGroup(IResources resources, IGenericCharacter character,
                                               IGenericTraitCollection traitCollection,
                                               IEquipmentCharacterDataProvider provider,
-                                              IEquipmentCharacterOptionProvider optionProvider, ICharacterStatsModifiers modifiers) {
+                                              IEquipmentCharacterOptionProvider optionProvider) {
     super(resources, character, traitCollection);
     this.provider = provider;
     this.optionProvider = optionProvider;
-    this.modifiers = modifiers;
   }
 
   @Override
   protected int getDefenceValue(IWeaponStats weapon) {
     IGenericTraitCollection traitCollection = getTraitCollection();
-    double finalValue = calculateFinalValue(weapon.getDefence() + getOptionModifiers(weapon) + modifiers.getPDVPoolMod(),
+    double finalValue = calculateFinalValue(weapon.getDefence() + getOptionModifiers(weapon),
             traitCollection.getTrait(AttributeType.Dexterity), traitCollection.getTrait(weapon.getTraitType()));
     boolean isMortal = !getCharacter().getTemplate().getTemplateType().getCharacterType().isEssenceUser();
     if (isMortal) {

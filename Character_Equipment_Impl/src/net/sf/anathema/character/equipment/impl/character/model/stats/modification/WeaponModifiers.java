@@ -85,4 +85,12 @@ public class WeaponModifiers implements IWeaponModifiers {
       highest = stat.getRangedSpeedMod() < highest ? stat.getRangedSpeedMod() : highest;
     return highest;
   }
+
+  @Override
+  public int getPDVPoolMod() {
+    int highest = 0;
+    for (ITraitModifyingStats stat : stats)
+      highest = stat.getPDVPoolMod() > highest ? stat.getPDVPoolMod() : highest;
+    return highest;
+  }
 }

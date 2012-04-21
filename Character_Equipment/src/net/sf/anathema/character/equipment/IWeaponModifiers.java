@@ -17,4 +17,6 @@ public interface IWeaponModifiers {
   int getRangedDamageMod();
 
   int getRangedRateMod();
+
+  int getPDVPoolMod();
 }

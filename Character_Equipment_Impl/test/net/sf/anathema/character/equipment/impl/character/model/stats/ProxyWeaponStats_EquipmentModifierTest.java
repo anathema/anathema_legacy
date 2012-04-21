@@ -81,6 +81,21 @@ public class ProxyWeaponStats_EquipmentModifierTest {
   }
 
   @Test
+  public void respectsPDVPoolFromEquipment() throws Exception {
+    when(modifiers.getPDVPoolMod()).thenReturn(2);
+    int defence = stats.getDefence();
+    assertThat(defence, is(2));
+  }
+
+  @Test
+  public void usesBestDefenceFromEquipmentAndMaterial() throws Exception {
+    when(material.isMoonsilverBased()).thenReturn(true);
+    when(modifiers.getPDVPoolMod()).thenReturn(3);
+    int defence = stats.getDefence();
+    assertThat(defence, is(3));
+  }
+
+  @Test
   public void respectsRateFromEquipment() throws Exception {
     when(modifiers.getMeleeRateMod()).thenReturn(2);
     int rate = stats.getRate();

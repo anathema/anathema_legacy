@@ -39,7 +39,7 @@ public class WeaponryContent extends AbstractWeaponryContent implements SubBoxCo
   @Override
   protected AbstractDefenceWeaponStatsGroup createDefenceGroup() {
     return new SecondEditionDefenceWeaponStatsGroup(getResources(), getCharacter(), getTraitCollection(), provider,
-            optionProvider, getEquipmentModifiers());
+            optionProvider);
   }
 
   @Override

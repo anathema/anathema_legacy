@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.equipment;
 
 public interface ICharacterStatsModifiers {
-  int getPDVPoolMod();
 
   int getMobilityPenalty();
 
