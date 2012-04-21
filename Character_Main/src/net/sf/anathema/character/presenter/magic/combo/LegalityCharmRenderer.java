@@ -1,5 +1,6 @@
 package net.sf.anathema.character.presenter.magic.combo;
 
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringCache;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
@@ -15,13 +16,13 @@ public abstract class LegalityCharmRenderer extends LegalityCheckListCellRendere
 
   public LegalityCharmRenderer(IResources resources, ICharmInfoStringBuilder charmInfoStringProvider) {
     super(resources);
-    this.charmInfoStringProvider = charmInfoStringProvider;
+    this.charmInfoStringProvider = new CharmInfoStringCache(charmInfoStringProvider);
   }
 
   @Override
-  public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+  public Component getListCellRendererComponent(JList list, final Object value, int index, boolean isSelected,
                                                 boolean cellHasFocus) {
-    JComponent renderComponent = (JComponent) super.getListCellRendererComponent(list, value, index, isSelected,
+    final JComponent renderComponent = (JComponent) super.getListCellRendererComponent(list, value, index, isSelected,
             cellHasFocus);
     String tooltipString = charmInfoStringProvider.getInfoString((ICharm) value, null);
     renderComponent.setToolTipText(tooltipString);

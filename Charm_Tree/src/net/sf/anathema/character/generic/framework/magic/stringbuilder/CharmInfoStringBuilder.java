@@ -15,7 +15,6 @@ import java.util.Map;
 
 public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   private final List<IMagicTooltipStringBuilder> builders = new ArrayList<IMagicTooltipStringBuilder>();
-  private final Map<ICharm, String> cache = Maps.newHashMap();
 
   public CharmInfoStringBuilder(IResources resources, MagicDescriptionProvider magicDescriptionProvider) {
     builders.add(new MagicNameStringBuilder(resources));
@@ -32,9 +31,6 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
 
   @Override
   public final String getInfoString(ICharm charm, ISpecialCharm specialDetails) {
-    if (cache.containsKey(charm)) {
-      return cache.get(charm);
-    }
     Ensure.ensureNotNull("Charm must not be null.", charm); //$NON-NLS-1$
     StringBuilder builder = new StringBuilder();
     builder.append("<html><body>"); //$NON-NLS-1$
@@ -42,9 +38,6 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
       lineBuilder.buildStringForMagic(builder, charm, specialDetails);
     }
     builder.append("</body></html>"); //$NON-NLS-1$
-    String result = builder.toString();
-    cache.put(charm, result);
-    return result;
+    return builder.toString();
   }
-
 }

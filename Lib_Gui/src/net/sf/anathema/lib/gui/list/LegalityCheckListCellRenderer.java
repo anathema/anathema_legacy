@@ -10,7 +10,6 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public abstract class LegalityCheckListCellRenderer extends
 		DefaultListCellRenderer {
-	private static final long serialVersionUID = 3008058308556319618L;
 	private final IResources resources;
 
 	protected LegalityCheckListCellRenderer(IResources resources) {
