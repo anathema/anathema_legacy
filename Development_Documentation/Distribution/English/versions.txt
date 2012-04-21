@@ -48,6 +48,8 @@ printed them.
 * [Curtis Tasker] Preferences window has button to reset repository location to default.
 * [Curtis Tasker] Preferences window has button to open repository location in OS-Specific File Manager (Explorer, Finder, etc).
 * [Curtis Tasker] Preferences window browse button now opens to the location of the current repository.
+* [Curtis Tasker] Preferences window repository location field now shows the location of the default repository when it is
+                  selected, rather than [Default Repository]
 * Added support for custom charm loading from the repository.
 * Abyssal Taint Charms calculate their upgrade cost
 
