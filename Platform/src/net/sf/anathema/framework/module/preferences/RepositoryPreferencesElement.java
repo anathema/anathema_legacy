@@ -37,7 +37,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 public class RepositoryPreferencesElement implements IPreferencesElement {
 
   private File repositoryDirectory;
-  private File defaultFile;
+  private File defaultDirectory;
   private RepositoryLocationResolver repository;
   private boolean dirty;
   private boolean modificationAllowed = false;
@@ -46,13 +46,37 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
 
   public RepositoryPreferencesElement() {
+    try {
       repository = new RepositoryLocationResolver( AnathemaPreferences.getDefaultPreferences() );
-      repositoryDirectory = new File( repository.resolve() );
-      defaultFile = new File( repository.getDefaultLocation() );
+      repositoryDirectory = new File( repository.resolve() ).getCanonicalFile();
+      defaultDirectory = new File( repository.getDefaultLocation() ).getCanonicalFile();
+
+      verifyDirectoriesExist();
+    }
+    catch( IOException e ) {
+      Throwable cause = e.getCause();
+      MessageDialogFactory.showMessageDialog(null,
+               new Message("An error occured while setting up the repository paths: " + cause.getMessage(), cause)); //$NON-NLS-1$
+    }
+  }
+
+  private void verifyDirectoriesExist() {
+    try {
+      if( !isValid() || !isDefaultValid() ) {
+	throw new IOException( "Unable to read/write/create user selected repository folder and default repository folder" );
+      }
+    }
+    catch( IOException e ) {
+      Throwable cause = e.getCause();
+      MessageDialogFactory.showMessageDialog(null,
+               new Message("An error occured while setting up the repository paths: " + cause.getMessage(), cause)); //$NON-NLS-1$
+    }
   }
 
   @Override
   public void addComponent(IGridDialogPanel panel, IResources resource) {
+    verifyDirectoriesExist();
+    
     this.resources = resource;
     panel.add(getComponent());
   }
@@ -105,11 +129,9 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
               File selectedDir = DirectoryFileChooser.createDirectoryChooser( repositoryDirectory.getCanonicalPath(),
                                  resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory") );
               if (selectedDir != null) {
-                System.out.println( "preferences.createBrowseButton(selectedDir): " + selectedDir );
                 setDisplayedPath(selectedDir);
                 repositoryDirectory = selectedDir;
                 dirty = modificationAllowed;
-                System.out.println( "preferences.createBrowseButton(repositoryDirectory): " + repositoryDirectory );
               }
             }
             catch( IOException e ) {
@@ -127,10 +149,17 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
       @Override
       protected void execute(Component parent) {
-          System.out.println( "preferences.createDefaultButton(defaultFile): " + defaultFile );
-          repositoryDirectory = defaultFile;
-          setDisplayedPath(defaultFile);
-          dirty = modificationAllowed;
+          try {
+            repositoryDirectory = new File( defaultDirectory.getCanonicalPath() );
+            setDisplayedPath(defaultDirectory);
+            dirty = modificationAllowed;
+          }
+          catch( IOException e ) {
+            Throwable cause = e.getCause();
+            MessageDialogFactory.showMessageDialog(null,
+                    new Message("An error occured while setting the default path: " + cause.getMessage(), cause)); //$NON-NLS-1$
+          }
+
       }
     });
   }
@@ -142,8 +171,13 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
       @Override
       protected void execute(Component parent) {
           try {
-              System.out.println( "preferences.createOpenButton(repositoryDirectory): " + repositoryDirectory );
+            if( repositoryDirectory.exists() ) {
               Desktop.getDesktop().open(repositoryDirectory);
+            } else if( repositoryDirectory.getParentFile().exists() ) {
+              Desktop.getDesktop().open(repositoryDirectory.getParentFile());
+            } else {
+                throw new IOException( "Repository directory (and parent directory) deleted by user while the preferences dialog was open" );
+            }
           }
           catch( IOException e ) {
             Throwable cause = e.getCause();
@@ -157,10 +191,10 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   @Override
   public void savePreferences() {
     try {
-      if (repositoryDirectory.getCanonicalFile().equals(defaultFile.getCanonicalFile())) {
+      if (repositoryDirectory.getCanonicalFile().equals(defaultDirectory.getCanonicalFile())) {
         SYSTEM_PREFERENCES.remove(REPOSITORY_PREFERENCE);
       } else {
-        SYSTEM_PREFERENCES.put(REPOSITORY_PREFERENCE, repositoryDirectory.getAbsolutePath());
+        SYSTEM_PREFERENCES.put(REPOSITORY_PREFERENCE, repositoryDirectory.getCanonicalPath());
       }
     } catch (IOException e) {
       Throwable cause = e.getCause();
@@ -180,7 +214,36 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
       new RepositoryFolderCreator(fileSystem, new IStringResolver() {
         @Override
         public String resolve() {
-          return repositoryDirectory.getAbsolutePath();
+          try {
+            return repositoryDirectory.getCanonicalPath();
+          } catch( IOException e ) {
+            throw new RepositoryException( "Could not resolve path of default directory" );
+          } 
+        }
+      }).createRepositoryFolder();
+      return true;
+    } catch (RepositoryException e) {
+      Throwable cause = e.getCause();
+      if (cause == null) {
+        cause = e;
+      }
+      MessageDialogFactory.showMessageDialog(null,
+              new Message("Could not create the new repository: " + cause.getMessage(), cause)); //$NON-NLS-1$
+      return false;
+    }
+  }
+
+  public boolean isDefaultValid() {
+    try {
+      IOFileSystemAbstraction fileSystem = new IOFileSystemAbstraction();
+      new RepositoryFolderCreator(fileSystem, new IStringResolver() {
+        @Override
+        public String resolve() {
+          try {
+            return defaultDirectory.getCanonicalPath();
+          } catch( IOException e ) {
+            throw new RepositoryException( "Could not resolve path of default directory" );
+          } 
         }
       }).createRepositoryFolder();
       return true;

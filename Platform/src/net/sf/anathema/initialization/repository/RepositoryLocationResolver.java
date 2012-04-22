@@ -35,7 +35,6 @@ public class RepositoryLocationResolver implements IStringResolver {
       if( repository == null ) {
           repository = DEFAULT_REPOSITORY_LOCATION;                               // handles everything else
       }
-      System.out.println( "resolver.getDefaultLocation(repository): " + repository );
       return parseOutUserHome( repository );
   }
 }
