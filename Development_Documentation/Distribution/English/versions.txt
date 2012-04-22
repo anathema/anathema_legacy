@@ -6,6 +6,18 @@ Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 
 http://anathema.github.com
 
+
+===------------------------------------------------------------------------------===
+			Release 4.1.1
+===------------------------------------------------------------------------------===
+
+-- Features --
+* [Curtis Tasker] Preferences window has button to reset repository location to default.
+* [Curtis Tasker] Preferences window has button to open repository location in OS-Specific File Manager (Explorer, Finder, etc).
+* [Curtis Tasker] Preferences window browse button now opens to the location of the current repository.
+* [Curtis Tasker] Preferences window repository location field now shows the location of
+                  the default repository when it is selected, rather than [Default Repository]
+
 ===------------------------------------------------------------------------------===
 			Release 4.1.0 "Varang"
 ===------------------------------------------------------------------------------===
@@ -45,11 +57,6 @@ printed them.
 * [Curtis Tasker] Improved confirmation dialog for item deletion in the equipment database.
 * [Curtis Tasker] Improved weapon stats tooltip in the equipment database.  Now shows weapon tags (Overwhelming, Piercing, etc).
 * [Curtis Tasker] Default equipment database now included with Anathema.
-* [Curtis Tasker] Preferences window has button to reset repository location to default.
-* [Curtis Tasker] Preferences window has button to open repository location in OS-Specific File Manager (Explorer, Finder, etc).
-* [Curtis Tasker] Preferences window browse button now opens to the location of the current repository.
-* [Curtis Tasker] Preferences window repository location field now shows the location of the default repository when it is
-                  selected, rather than [Default Repository]
 * Added support for custom charm loading from the repository.
 * Abyssal Taint Charms calculate their upgrade cost
 
