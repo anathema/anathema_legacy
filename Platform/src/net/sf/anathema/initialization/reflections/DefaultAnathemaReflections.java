@@ -56,7 +56,7 @@ public class DefaultAnathemaReflections implements AnathemaReflections {
   }
 
   private ConfigurationBuilder createConfiguration() {
-    String[] prefixes = new String[]{"net.sf.anathema", "data", "CustomMagic"};
+    String[] prefixes = new String[]{"net.sf.anathema", "data", "custom"};
     return createIdeCompatibleConfiguration(prefixes);
   }
 
