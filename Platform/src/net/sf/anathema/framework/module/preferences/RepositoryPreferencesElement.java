@@ -105,9 +105,11 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
               File selectedDir = DirectoryFileChooser.createDirectoryChooser( repositoryDirectory.getCanonicalPath(),
                                  resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory") );
               if (selectedDir != null) {
+                System.out.println( "preferences.createBrowseButton(selectedDir): " + selectedDir );
                 setDisplayedPath(selectedDir);
                 repositoryDirectory = selectedDir;
                 dirty = modificationAllowed;
+                System.out.println( "preferences.createBrowseButton(repositoryDirectory): " + repositoryDirectory );
               }
             }
             catch( IOException e ) {
@@ -125,6 +127,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
       @Override
       protected void execute(Component parent) {
+          System.out.println( "preferences.createDefaultButton(defaultFile): " + defaultFile );
           repositoryDirectory = defaultFile;
           setDisplayedPath(defaultFile);
           dirty = modificationAllowed;
@@ -139,6 +142,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
       @Override
       protected void execute(Component parent) {
           try {
+              System.out.println( "preferences.createOpenButton(repositoryDirectory): " + repositoryDirectory );
               Desktop.getDesktop().open(repositoryDirectory);
           }
           catch( IOException e ) {
