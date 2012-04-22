@@ -18,7 +18,9 @@ public class DirectoryFileChooser {
   public static File createDirectoryChooser(String startDirectory, String okayButtonString) {
     JDirectoryChooser chooser = new JDirectoryChooser(startDirectory);
     chooser.setMultiSelectionEnabled(false);
-    chooser.setPreferredSize( chooser.getPreferredSize().setSize( size.width*1.5, size.height*1.5 ) );
+    Dimension size = chooser.getPreferredSize();
+    size.setSize( size.width*1.5, size.height*1.5 );
+    chooser.setPreferredSize( size );
     int selected = chooser.showDialog(null, okayButtonString);
     if (selected == JFileChooser.APPROVE_OPTION) {
       return chooser.getSelectedFile();
