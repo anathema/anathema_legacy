@@ -1,6 +1,6 @@
 package net.sf.anathema.character.ghost.reporting.rendering;
 
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.ghost.passions.GhostPassionsTemplate;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
@@ -22,6 +22,6 @@ public class PassionEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isOfType(CharacterType.GHOST);
+    return content.getAdditionalModel(GhostPassionsTemplate.ID) != null;
   }
 }

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.layout;
 
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.page.PageEncoder;
@@ -19,6 +19,6 @@ public class LunarAdditionalPageFactory implements PageFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isOfType(CharacterType.LUNAR);
+    return content.getAdditionalModel(BeastformTemplate.TEMPLATE_ID) != null;
   }
 }
