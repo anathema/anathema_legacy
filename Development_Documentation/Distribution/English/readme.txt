@@ -150,7 +150,7 @@ visit voidstate at http://www.voidstate.com. Praises to him, too.
 		X - License
 ===------------------------------------------------------------------------------===
 
-Anathema is published under the GNU General Public License (GPL).
+Anathema is published under the GNU General Public License (GPLv3).
 You may use and distribute it freely.
 Please note that Anathema makes extensive use of third party
 software which might be governed by other licenses.

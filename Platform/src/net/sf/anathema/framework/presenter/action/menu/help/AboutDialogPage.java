@@ -17,7 +17,7 @@ public class AboutDialogPage extends AbstractDialogPage {
   private final IResources resources;
 
   public AboutDialogPage(IResources resources) {
-    super(resources.getString("Help.AboutDialog.CreatedLabel")); //$NON-NLS-1$
+    super(resources.getString("Help.AboutDialog.CreatedLabel")+"\n\n"+resources.getString("Help.AboutDialog.LicenseLabel")); //$NON-NLS-1$
     this.resources = resources;
   }
 
