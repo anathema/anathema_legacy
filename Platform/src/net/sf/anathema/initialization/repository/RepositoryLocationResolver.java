@@ -12,8 +12,11 @@ public class RepositoryLocationResolver implements IStringResolver {
   }
 
   public String resolve() {
-    String repositryLocationDescription = findRepositoryLocationDescription();
-    return new LeadingPropertyResolver(System.getProperties(), "%USER_HOME%", "user.home").parse(repositryLocationDescription); //$NON-NLS-1$//$NON-NLS-2$
+    return parseOutUserHome( findRepositoryLocationDescription() );
+  }
+  
+  private String parseOutUserHome( String directory ) {
+    return new LeadingPropertyResolver(System.getProperties(), "%USER_HOME%", "user.home").parse(directory); //$NON-NLS-1$//$NON-NLS-2$
   }
 
   private String findRepositoryLocationDescription() {
@@ -30,8 +33,8 @@ public class RepositoryLocationResolver implements IStringResolver {
           repository = System.getProperty("defaultrepository"); //$NON-NLS-1$     // handles mac
       }
       if( repository == null ) {
-          repository = DEFAULT_REPOSITORY_LOCATION; // handles everything else
+          repository = DEFAULT_REPOSITORY_LOCATION;                               // handles everything else
       }
-      return repository;
+      return parseOutUserHome( repository );
   }
 }

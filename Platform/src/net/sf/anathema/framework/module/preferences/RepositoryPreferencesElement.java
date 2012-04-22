@@ -101,12 +101,19 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
       @Override
       protected void execute(Component parent) { 
-            File selectedDir = DirectoryFileChooser.createDirectoryChooser( repositoryDirectory.getName(),
-                               resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory") );
-            if (selectedDir != null) {
-              setDisplayedPath(selectedDir);
-              repositoryDirectory = selectedDir;
-              dirty = modificationAllowed;
+            try {
+              File selectedDir = DirectoryFileChooser.createDirectoryChooser( repositoryDirectory.getCanonicalPath(),
+                                 resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory") );
+              if (selectedDir != null) {
+                setDisplayedPath(selectedDir);
+                repositoryDirectory = selectedDir;
+                dirty = modificationAllowed;
+              }
+            }
+            catch( IOException e ) {
+              Throwable cause = e.getCause();
+              MessageDialogFactory.showMessageDialog(null,
+                      new Message("An error occured while opening the directory browser: " + cause.getMessage(), cause)); //$NON-NLS-1$
             }
       }
     });
