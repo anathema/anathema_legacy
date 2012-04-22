@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.io.File;
 import java.util.prefs.Preferences;
 
+import java.awt.Dimension;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
@@ -11,11 +12,22 @@ import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferenc
 
 import com.l2fprod.common.swing.JDirectoryChooser;
 
+
 public class DirectoryFileChooser {
+  
+  public static File createDirectoryChooser(String startDirectory, String okayButtonString) {
+    JDirectoryChooser chooser = new JDirectoryChooser(startDirectory);
+    chooser.setMultiSelectionEnabled(false);
+    chooser.setPreferredSize( chooser.getPreferredSize().setSize( size.width*1.5, size.height*1.5 ) );
+    int selected = chooser.showDialog(null, okayButtonString);
+    if (selected == JFileChooser.APPROVE_OPTION) {
+      return chooser.getSelectedFile();
+    } else {
+      return null;
+    }
+  }
 
-  public static final String ADD_MUSIC_CHOOSER_VALUE = "AddMusicFolder"; //$NON-NLS-1$
-
-  public static File createDirectoryChooser(String preferencesValue, String okayButtonString) {
+  public static File createMusicDirectoryChooser(String preferencesValue, String okayButtonString) {
     File startDirectory = getStartDirectory(preferencesValue);
     JDirectoryChooser chooser = new JDirectoryChooser(startDirectory);
     chooser.setMultiSelectionEnabled(false);

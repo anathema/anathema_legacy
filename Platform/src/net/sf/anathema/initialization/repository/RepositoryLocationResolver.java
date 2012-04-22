@@ -1,6 +1,7 @@
 package net.sf.anathema.initialization.repository;
 
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
+import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.DEFAULT_REPOSITORY_LOCATION;
 
 public class RepositoryLocationResolver implements IStringResolver {
 
@@ -16,11 +17,21 @@ public class RepositoryLocationResolver implements IStringResolver {
   }
 
   private String findRepositoryLocationDescription() {
-    String repository = System.getProperty("repository"); //$NON-NLS-1$
-    if (repository != null) {
+      String repository = getDefaultLocation();
+      if( System.getProperty("repository") != null ) {
+          return repository;
+      }
+      return preferences.getRepositoryLocationPreference(repository);
+  }
+  
+  public String getDefaultLocation() {
+      String repository = System.getProperty("repository"); //$NON-NLS-1$         // handles linux
+      if( repository == null ) {
+          repository = System.getProperty("defaultrepository"); //$NON-NLS-1$     // handles mac
+      }
+      if( repository == null ) {
+          repository = DEFAULT_REPOSITORY_LOCATION; // handles everything else
+      }
       return repository;
-    }
-    String defaultrepository = System.getProperty("defaultrepository"); //$NON-NLS-1$
-    return preferences.getRepositoryLocationPreference(defaultrepository);
   }
 }

@@ -21,13 +21,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JFileChooser;
-import javax.swing.BorderFactory;
-import javax.swing.border.EtchedBorder;
+import javax.swing.JFileChooser;;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-import java.awt.Desktop;
+
+import net.sf.anathema.framework.configuration.AnathemaPreferences;
+import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.DEFAULT_REPOSITORY_LOCATION;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.REPOSITORY_PREFERENCE;
@@ -35,14 +36,20 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 @PreferenceElement
 public class RepositoryPreferencesElement implements IPreferencesElement {
 
-  private static final String REPOSITORY_PREFERENCE_DIRECTORY_CHOOSER_VALUE = "RepositoryPreference"; //$NON-NLS-1$
-  private File repositoryDirectory = new File(
-          SYSTEM_PREFERENCES.get(REPOSITORY_PREFERENCE, DEFAULT_REPOSITORY_LOCATION));
-  private File defaultFile = new File(DEFAULT_REPOSITORY_LOCATION);
+  private File repositoryDirectory;
+  private File defaultFile;
+  private RepositoryLocationResolver repository;
   private boolean dirty;
   private boolean modificationAllowed = false;
   private JTextField repositoryTextField;
   private IResources resources;
+
+
+  public RepositoryPreferencesElement() {
+      repository = new RepositoryLocationResolver( AnathemaPreferences.getDefaultPreferences() );
+      repositoryDirectory = new File( repository.resolve() );
+      defaultFile = new File( repository.getDefaultLocation() );
+  }
 
   @Override
   public void addComponent(IGridDialogPanel panel, IResources resource) {
@@ -94,7 +101,8 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
       @Override
       protected void execute(Component parent) { 
-            File selectedDir = chooseDirectory( repositoryDirectory );
+            File selectedDir = DirectoryFileChooser.createDirectoryChooser( repositoryDirectory.getName(),
+                               resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory") );
             if (selectedDir != null) {
               setDisplayedPath(selectedDir);
               repositoryDirectory = selectedDir;
@@ -103,32 +111,20 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
       }
     });
   }
-  
-  private File chooseDirectory(File startDirectory) {
-      JFileChooser chooser = new JFileChooser(repositoryDirectory);
-      chooser.setFileSelectionMode( JFileChooser.DIRECTORIES_ONLY );
-      chooser.setDialogTitle( resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectoryTitle")); //$NON-NLS-1$
-      int selected = chooser.showDialog( null, resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectoryTitle")); //$NON-NLS-1$
-      if (selected == JFileChooser.APPROVE_OPTION) {
-          return chooser.getSelectedFile();
-      } else {
-          return null;
-      }
-  }
-  
+
   private JButton createDefaultButton() {
     return new JButton(new SmartAction(
             resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.DefaultDirectory")) {
 
       @Override
       protected void execute(Component parent) {
-          setDisplayedPath(defaultFile);
           repositoryDirectory = defaultFile;
+          setDisplayedPath(defaultFile);
           dirty = modificationAllowed;
       }
     });
   }
-  
+
   private JButton createOpenButton() {
     return new JButton(new SmartAction(
             resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.OpenDirectory")) {
@@ -200,7 +196,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
   @Override
   public void reset() {
-    repositoryDirectory = new File(SYSTEM_PREFERENCES.get(REPOSITORY_PREFERENCE, DEFAULT_REPOSITORY_LOCATION));
+    repositoryDirectory = new File( repository.resolve() );
     setDisplayedPath(repositoryDirectory);
     dirty = false;
   }
