@@ -1,6 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.rendering.greatcurse;
 
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
@@ -22,6 +22,6 @@ public class GreatCurseEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isOfType(CharacterType.LUNAR);
+    return content.getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID) != null;
   }
 }

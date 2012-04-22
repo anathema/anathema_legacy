@@ -1,6 +1,6 @@
 package net.sf.anathema.character.abyssal.reporting.rendering;
 
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceTemplate;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
@@ -22,6 +22,6 @@ public class ResonanceEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isOfType(CharacterType.ABYSSAL);
+    return content.getAdditionalModel(AbyssalResonanceTemplate.ID) != null;
   }
 }

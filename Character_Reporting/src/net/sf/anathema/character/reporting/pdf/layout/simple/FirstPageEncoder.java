@@ -49,7 +49,7 @@ public class FirstPageEncoder implements PageEncoder {
     LayoutField essence = page.place(ESSENCE_SIMPLE).rightOf(personalInfo).withSameHeight().now();
     LayoutField attributes = page.place(ATTRIBUTES).below(personalInfo).withHeight(ATTRIBUTE_HEIGHT).now();
     page.place(ABILITIES_WITH_CRAFTS_AND_SPECIALTIES).below(attributes).fillToBottomOfPage().now();
-    LayoutField anima = page.place(ANIMA).below(essence).withHeight(ANIMA_HEIGHT).now();
+    LayoutField anima = page.place(ANIMA, NOTES).below(essence).withHeight(ANIMA_HEIGHT).now();
     LayoutField social = page.place(SOCIAL_COMBAT).below(anima).withHeight(SOCIAL_COMBAT_HEIGHT).now();
     LayoutField virtues = page.place(VIRTUES).rightOf(attributes).withHeight(VIRTUE_HEIGHT).now();
     LayoutField greatCurse = page.place(GREAT_CURSE, MUTATIONS).below(virtues).alignBottomTo(anima).now();
