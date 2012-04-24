@@ -187,12 +187,17 @@
       <charmReference id="Terrestrial.BecomeHammer"/>
     </prerequisite>
     <cost>
-      
         <essence cost="1"/>
-      
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+    <multiEffects>
+    	<effect name="Air"/>
+    	<effect name="Earth"/>
+    	<effect name="Fire"/>
+    	<effect name="Water"/>
+    	<effect name="Wood"/>
+    </multiEffects>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Exclusive"/>    
     <charmAttribute attribute="Combo-OK" visualize="true"/>    

@@ -5,34 +5,30 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identificate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.util.Collections.addAll;
-
 public class CharmProvider implements ICharmProvider {
 
-  private final Map<ICharacterType, ISpecialCharm[]> charmsByTypeByRuleSet = new HashMap<ICharacterType, ISpecialCharm[]>();
-  private final Map<ICharacterType, Boolean> dataCharmsPrepared = new HashMap<ICharacterType, Boolean>();
-  private final List<ISpecialCharm> martialArtsSpecialCharms = new ArrayList<ISpecialCharm>();
+  private final Map<IIdentificate, ISpecialCharm[]> charmsByType = new HashMap<IIdentificate, ISpecialCharm[]>();
   private final ICharmCache cache;
 
   public CharmProvider(ICharmCache cache) {
-    for (ICharacterType type : CharacterType.values()) {
-      dataCharmsPrepared.put(type, false);
+	this.cache = cache;
+    for (IIdentificate type : cache.getCharmTypes()) {
+    	charmsByType.put(type, cache.getSpecialCharmData(type));
     }
-    this.cache = cache;
   }
 
   @Override
-  public ISpecialCharm[] getSpecialCharms(ICharmLearnableArbitrator arbitrator, ICharmIdMap map, ICharacterType preferredCharacterType) {
+  public ISpecialCharm[] getSpecialCharms(ICharmLearnableArbitrator arbitrator, ICharmIdMap map, IIdentificate preferredType) {
     List<ISpecialCharm> relevantCharms = new ArrayList<ISpecialCharm>();
-    ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(preferredCharacterType);
+    ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(preferredType);
     for (ISpecialCharm specialCharm : allSpecialCharms) {
       ICharm charm = map.getCharmById(specialCharm.getCharmId());
       if (charm != null && arbitrator.isLearnable(charm)) {
@@ -43,23 +39,19 @@ public class CharmProvider implements ICharmProvider {
   }
 
   @Override
-  public ISpecialCharm[] getSpecialCharms(ICharacterType characterType) {
-    if (!dataCharmsPrepared.get(characterType)) {
-      prepareDataCharms(characterType);
-    }
-    ISpecialCharm[] specialCharms = charmsByTypeByRuleSet.get(characterType);
+  public ISpecialCharm[] getSpecialCharms(IIdentificate type) {
+    ISpecialCharm[] specialCharms = charmsByType.get(new Identificate(type.getId()));
     if (specialCharms == null) {
       specialCharms = new ISpecialCharm[0];
     }
     return specialCharms;
   }
 
-  private ISpecialCharm[] getAllSpecialCharms(ICharacterType preferredCharacterType) {
+  private ISpecialCharm[] getAllSpecialCharms(IIdentificate preferredCharacterType) {
     SpecialCharmSet set = new SpecialCharmSet();
-    for (ICharacterType type : CharacterType.values()) {
+    for (IIdentificate type : charmsByType.keySet()) {
       set.add(getSpecialCharms(type));
     }
-    set.addAll(martialArtsSpecialCharms);
     for (ISpecialCharm preferredCharm : getSpecialCharms(preferredCharacterType)) {
       set.add(preferredCharm);
     }
@@ -67,30 +59,7 @@ public class CharmProvider implements ICharmProvider {
   }
 
   @Override
-  public ISpecialCharm[] getSpecialMartialArtsCharms() {
-    return martialArtsSpecialCharms.toArray(new ISpecialCharm[martialArtsSpecialCharms.size()]);
-  }
-
-  @Override
-  public void addMartialArtsSpecialCharm(ISpecialCharm charm) {
-    martialArtsSpecialCharms.add(charm);
-  }
-
-  @Override
   public String getCharmRename(String name) {
     return cache.getCharmRename(name);
-  }
-
-  private void prepareDataCharms(ICharacterType type) {
-    List<ISpecialCharm> specialCharms = new ArrayList<ISpecialCharm>();
-    ISpecialCharm[] base = charmsByTypeByRuleSet.get( type);
-    if (base != null) {
-      addAll(specialCharms, base);
-    }
-    addAll(specialCharms, cache.getSpecialCharmData(type));
-    ISpecialCharm[] charmArray = new ISpecialCharm[specialCharms.size()];
-    specialCharms.toArray(charmArray);
-    dataCharmsPrepared.put(type, true);
-    charmsByTypeByRuleSet.put(type, charmArray);
   }
 }

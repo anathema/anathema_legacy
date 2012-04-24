@@ -7,6 +7,8 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ICharmCache extends IExtensibleDataSet {
   ICharm[] getCharms(IIdentificate type);
+  
+  IIdentificate[] getCharmTypes();
 
   ISpecialCharm[] getSpecialCharmData(IIdentificate type);
 

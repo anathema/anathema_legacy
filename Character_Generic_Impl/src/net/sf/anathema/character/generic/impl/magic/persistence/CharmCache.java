@@ -90,4 +90,9 @@ public class CharmCache implements ICharmCache {
     } while (newId != null);
     return id;
   }
+
+  @Override
+  public IIdentificate[] getCharmTypes() {
+	return charmSets.keySet().toArray(new IIdentificate[0]);
+  }
 }
