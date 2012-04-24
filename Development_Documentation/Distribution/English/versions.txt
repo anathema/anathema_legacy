@@ -11,7 +11,8 @@ http://anathema.github.com
 ===------------------------------------------------------------------------------===
 
 -- Bugfixes --
-* (Infernal Monster Style) Correct Essence prereq for "Screaming Meat Shield" and "One Hand Fury"
+* [Curtis Tasker]Dodge DV takes into account mobility penalties from shields.
+* (Infernal Monster Style) Correct Essence prereq for "Screaming Meat Shield" and "One Hand Fury".
 
 ===------------------------------------------------------------------------------===
 			Release 4.1.0 "Varang"
