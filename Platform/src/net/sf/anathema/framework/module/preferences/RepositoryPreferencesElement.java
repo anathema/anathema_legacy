@@ -21,9 +21,14 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JFileChooser;;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+
+import net.sf.anathema.framework.configuration.AnathemaPreferences;
+import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.DEFAULT_REPOSITORY_LOCATION;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.REPOSITORY_PREFERENCE;
@@ -31,17 +36,47 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 @PreferenceElement
 public class RepositoryPreferencesElement implements IPreferencesElement {
 
-  private static final String REPOSITORY_PREFERENCE_DIRECTORY_CHOOSER_VALUE = "RepositoryPreference"; //$NON-NLS-1$
-  private File repositoryDirectory = new File(
-          SYSTEM_PREFERENCES.get(REPOSITORY_PREFERENCE, DEFAULT_REPOSITORY_LOCATION));
-  private File defaultFile = new File(DEFAULT_REPOSITORY_LOCATION);
+  private File repositoryDirectory;
+  private File defaultDirectory;
+  private RepositoryLocationResolver repository;
   private boolean dirty;
   private boolean modificationAllowed = false;
   private JTextField repositoryTextField;
   private IResources resources;
 
+
+  public RepositoryPreferencesElement() {
+    try {
+      repository = new RepositoryLocationResolver( AnathemaPreferences.getDefaultPreferences() );
+      repositoryDirectory = new File( repository.resolve() ).getCanonicalFile();
+      defaultDirectory = new File( repository.getDefaultLocation() ).getCanonicalFile();
+
+      verifyDirectoriesExist();
+    }
+    catch( IOException e ) {
+      Throwable cause = e.getCause();
+      MessageDialogFactory.showMessageDialog(null,
+               new Message("An error occured while setting up the repository paths: " + cause.getMessage(), cause)); //$NON-NLS-1$
+    }
+  }
+
+  private void verifyDirectoriesExist() {
+    try {
+      if( !isValid() || !isDefaultValid() ) {
+	throw new IOException( "Unable to read/write/create user selected repository folder and default repository folder" );
+      }
+    }
+    catch( IOException e ) {
+      Throwable cause = e.getCause();
+      MessageDialogFactory.showMessageDialog(null,
+               new Message("An error occured while setting up the repository paths: " + cause.getMessage(), cause)); //$NON-NLS-1$
+    }
+  }
+
   @Override
   public void addComponent(IGridDialogPanel panel, IResources resource) {
+    verifyDirectoriesExist();
+    
     this.resources = resource;
     panel.add(getComponent());
   }
@@ -51,16 +86,19 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
             "AnathemaCore.Tools.Preferences.RepositoryDirectory.Label") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     repositoryTextField = new JTextField(45);
     repositoryTextField.setEditable(false);
-    setDisplayedPath(repositoryTextField, repositoryDirectory);
-    final JButton browseButton = createBrowseButton();
+    setDisplayedPath(repositoryDirectory);
+    final JButton browseButton  = createBrowseButton();
+    final JButton defaultButton = createDefaultButton();
+    final JButton openButton    = createOpenButton();
     modificationAllowed = true;
     return new IDialogComponent() {
       @Override
       public void fillInto(JPanel panel, int columnCount) {
-        panel.add(repositoryLabel);
-        panel.add(browseButton, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount - 1));
-        panel.add(repositoryTextField, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount,
-                GridDialogLayoutData.FILL_HORIZONTAL));
+        panel.add(     repositoryLabel, GridDialogLayoutDataFactory.createHorizontalSpanData(1));
+        panel.add(        browseButton, GridDialogLayoutDataFactory.createRightData() );
+        panel.add( repositoryTextField, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount, GridDialogLayoutData.FILL_HORIZONTAL));
+        panel.add(       defaultButton, GridDialogLayoutDataFactory.createHorizontalSpanData(1));
+        panel.add(          openButton, GridDialogLayoutDataFactory.createRightData());
       }
 
       @Override
@@ -70,13 +108,9 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     };
   }
 
-  private void setDisplayedPath(final JTextField repositoryTextField, File selectedDirectory) {
+  private void setDisplayedPath(File selectedDirectory) {
     try {
-      String displayedPath = selectedDirectory.getAbsolutePath();
-      if (repositoryDirectory.getCanonicalFile().equals(defaultFile.getCanonicalFile())) {
-        displayedPath = createDefaultString();
-      }
-      repositoryTextField.setText(displayedPath);
+      repositoryTextField.setText(selectedDirectory.getCanonicalPath());
     } catch (IOException e) {
       Throwable cause = e.getCause();
       MessageDialogFactory.showMessageDialog(null,
@@ -85,24 +119,71 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     }
   }
 
-  private String createDefaultString() {
-    return "[" + resources.getString(
-            "AnathemaCore.Tools.Preferences.RepositoryDirectory.DefaultRepository") + "]";
-  }
-
   private JButton createBrowseButton() {
     return new JButton(new SmartAction(
-            resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.BrowseButton")) { //$NON-NLS-1$
+            resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory")) { //$NON-NLS-1$
+
+      @Override
+      protected void execute(Component parent) { 
+            try {
+              File selectedDir = DirectoryFileChooser.createDirectoryChooser( repositoryDirectory.getCanonicalPath(),
+                                 resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory") );
+              if (selectedDir != null) {
+                setDisplayedPath(selectedDir);
+                repositoryDirectory = selectedDir;
+                dirty = modificationAllowed;
+              }
+            }
+            catch( IOException e ) {
+              Throwable cause = e.getCause();
+              MessageDialogFactory.showMessageDialog(null,
+                      new Message("An error occured while opening the directory browser: " + cause.getMessage(), cause)); //$NON-NLS-1$
+            }
+      }
+    });
+  }
+
+  private JButton createDefaultButton() {
+    return new JButton(new SmartAction(
+            resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.DefaultDirectory")) {
 
       @Override
       protected void execute(Component parent) {
-        File selectedDir = DirectoryFileChooser.createDirectoryChooser(REPOSITORY_PREFERENCE_DIRECTORY_CHOOSER_VALUE,
-                resources.getString("UserDialog.OkayButton.Text")); //$NON-NLS-1$
-        if (selectedDir != null) {
-          setDisplayedPath(repositoryTextField, selectedDir);
-          repositoryDirectory = selectedDir;
-          dirty = modificationAllowed;
-        }
+          try {
+            repositoryDirectory = new File( defaultDirectory.getCanonicalPath() );
+            setDisplayedPath(defaultDirectory);
+            dirty = modificationAllowed;
+          }
+          catch( IOException e ) {
+            Throwable cause = e.getCause();
+            MessageDialogFactory.showMessageDialog(null,
+                    new Message("An error occured while setting the default path: " + cause.getMessage(), cause)); //$NON-NLS-1$
+          }
+
+      }
+    });
+  }
+
+  private JButton createOpenButton() {
+    return new JButton(new SmartAction(
+            resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.OpenDirectory")) {
+
+      @Override
+      protected void execute(Component parent) {
+          try {
+            if( repositoryDirectory.exists() ) {
+              Desktop.getDesktop().open(repositoryDirectory);
+            } else if( repositoryDirectory.getParentFile().exists() ) {
+              Desktop.getDesktop().open(repositoryDirectory.getParentFile());
+            } else {
+                throw new IOException( "Repository directory (and parent directory) deleted by user while the preferences dialog was open" );
+            }
+          }
+          catch( IOException e ) {
+            Throwable cause = e.getCause();
+            MessageDialogFactory.showMessageDialog(null,
+                    new Message("An error occured while opening the repository path: " + cause.getMessage(), cause)); //$NON-NLS-1$
+          }
       }
     });
   }
@@ -110,10 +191,10 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   @Override
   public void savePreferences() {
     try {
-      if (repositoryDirectory.getCanonicalFile().equals(defaultFile.getCanonicalFile())) {
+      if (repositoryDirectory.getCanonicalFile().equals(defaultDirectory.getCanonicalFile())) {
         SYSTEM_PREFERENCES.remove(REPOSITORY_PREFERENCE);
       } else {
-        SYSTEM_PREFERENCES.put(REPOSITORY_PREFERENCE, repositoryDirectory.getAbsolutePath());
+        SYSTEM_PREFERENCES.put(REPOSITORY_PREFERENCE, repositoryDirectory.getCanonicalPath());
       }
     } catch (IOException e) {
       Throwable cause = e.getCause();
@@ -133,7 +214,36 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
       new RepositoryFolderCreator(fileSystem, new IStringResolver() {
         @Override
         public String resolve() {
-          return repositoryDirectory.getAbsolutePath();
+          try {
+            return repositoryDirectory.getCanonicalPath();
+          } catch( IOException e ) {
+            throw new RepositoryException( "Could not resolve path of default directory" );
+          } 
+        }
+      }).createRepositoryFolder();
+      return true;
+    } catch (RepositoryException e) {
+      Throwable cause = e.getCause();
+      if (cause == null) {
+        cause = e;
+      }
+      MessageDialogFactory.showMessageDialog(null,
+              new Message("Could not create the new repository: " + cause.getMessage(), cause)); //$NON-NLS-1$
+      return false;
+    }
+  }
+
+  public boolean isDefaultValid() {
+    try {
+      IOFileSystemAbstraction fileSystem = new IOFileSystemAbstraction();
+      new RepositoryFolderCreator(fileSystem, new IStringResolver() {
+        @Override
+        public String resolve() {
+          try {
+            return defaultDirectory.getCanonicalPath();
+          } catch( IOException e ) {
+            throw new RepositoryException( "Could not resolve path of default directory" );
+          } 
         }
       }).createRepositoryFolder();
       return true;
@@ -160,8 +270,8 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
   @Override
   public void reset() {
-    repositoryDirectory = new File(SYSTEM_PREFERENCES.get(REPOSITORY_PREFERENCE, DEFAULT_REPOSITORY_LOCATION));
-    setDisplayedPath(repositoryTextField, repositoryDirectory);
+    repositoryDirectory = new File( repository.resolve() );
+    setDisplayedPath(repositoryDirectory);
     dirty = false;
   }
 }

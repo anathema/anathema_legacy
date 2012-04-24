@@ -18,6 +18,8 @@ import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.lib.resources.IResources;
 
+import static net.sf.anathema.campaign.music.presenter.library.content.AddMusicFolderAction.ADD_MUSIC_CHOOSER_VALUE;
+
 public class AddMusicFileAction extends SmartAction {
   private static final long serialVersionUID = 8615290963297510380L;
   private final ILibraryControl model;
@@ -52,7 +54,7 @@ public class AddMusicFileAction extends SmartAction {
   protected void execute(Component parentComponent) {
     final File mp3File = DirectoryFileChooser.chooseSingleFile(
         parentComponent,
-        DirectoryFileChooser.ADD_MUSIC_CHOOSER_VALUE,
+        ADD_MUSIC_CHOOSER_VALUE,
         resources.getString("Music.Actions.AddFile.FileDialogTitle"), new Mp3FileFilter(resources)); //$NON-NLS-1$
     if (mp3File == null) {
       return;
