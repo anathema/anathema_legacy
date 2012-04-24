@@ -149,7 +149,7 @@
     <charm id="Celestial.ScreamingMeatShield" exalt="Solar" group="InfernalMonsterStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
-               <essence value="5" />
+               <essence value="3" />
                <charmReference id="Celestial.WorldBreakerGrip" />
           </prerequisite>
           <cost>
@@ -165,7 +165,7 @@
     <charm id="Celestial.OneHandFury" exalt="Solar" group="InfernalMonsterStyle">
           <prerequisite>
                <trait id="MartialArts" value="5" />
-               <essence value="3" />
+               <essence value="5" />
                <charmReference id="Celestial.ScreamingMeatShield" />
                <charmReference id="Celestial.JoyfulCessationOfRestraint" />
                <charmReference id="Celestial.FistsOfTheOldOnes" />
