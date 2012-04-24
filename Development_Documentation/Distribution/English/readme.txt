@@ -74,17 +74,7 @@ To determine your version please type "java -version".
 See versions.txt for a version history.
 
 ===------------------------------------------------------------------------------===
-		V - Notes
-===------------------------------------------------------------------------------===
-
-The Dreams of the First Age Solar templates give 2 more bonus dots than the the rules
-do, to allow the player to place the free manse and free cult dots that they automatically get.
-Also, the Solar types that get 1 or 2 dots of an Ability of their choice from a selection of
-options, those dots will be the first dots chosen from that range and are not deletable, so
-choose carefully. These templates need some revising as well, but are a start.
-
-===------------------------------------------------------------------------------===
-		VI - Contact
+		V - Contact
 ===------------------------------------------------------------------------------===
 
 Anathema was created  by Sandra Sieroux and Urs Reupke, with further development
@@ -98,7 +88,7 @@ For bug reports, please use our tracking system at
 http://github.com/anathema/anathema/issues
 
 ===------------------------------------------------------------------------------===
-		VIII - Contribute
+		VI - Contribute
 ===------------------------------------------------------------------------------===
 
 Anathema is open source, and thus, you have free access to the source code.
@@ -106,7 +96,7 @@ If you think something is at odds, or have a great idea for a new feature or ano
 fork the repo from https://github.com/anathema/anathema and send us a pull request.
 
 ===------------------------------------------------------------------------------===
-		IX - Thanks
+		VII - Thanks
 ===------------------------------------------------------------------------------===
 
 Credit for the creation of the Anathema project goes to Urs Reupke, without whom the
@@ -145,6 +135,8 @@ create the fully automated system.
 
 If you are interested in the original version of our character sheets, please
 visit voidstate at http://www.voidstate.com. Praises to him, too.
+
+Once we moved to github, Attila Kelemen and Curtis Tasker provided valuable additions to the program.
 
 ===------------------------------------------------------------------------------===
 		X - License
