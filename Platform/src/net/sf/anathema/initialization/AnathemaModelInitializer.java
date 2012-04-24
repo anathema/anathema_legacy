@@ -9,7 +9,6 @@ import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.initialization.reflections.AnathemaReflections;
-import net.sf.anathema.lib.resources.IResourceCollection;
 import net.sf.anathema.lib.resources.IResources;
 
 
@@ -21,22 +20,20 @@ public class AnathemaModelInitializer {
   private final IAnathemaPreferences anathemaPreferences;
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
   private Iterable<ExtensionWithId> extensions;
-  private Instantiater instantiater;
 
   public AnathemaModelInitializer(
           IAnathemaPreferences anathemaPreferences,
           Collection<IItemTypeConfiguration> itemTypeConfigurations,
-          Iterable<ExtensionWithId> extensions, Instantiater instantiater) {
+          Iterable<ExtensionWithId> extensions) {
     this.anathemaPreferences = anathemaPreferences;
     this.itemTypeConfigurations = itemTypeConfigurations;
     this.extensions = extensions;
-    this.instantiater = instantiater;
   }
 
-  public IAnathemaModel initializeModel(IResourceCollection resources, AnathemaReflections reflections) throws InitializationException {
-    AnathemaModel model = createModel(resources.getUIResources(), reflections);
+  public IAnathemaModel initializeModel(IResources resources, AnathemaReflections reflections) throws InitializationException {
+    AnathemaModel model = createModel(resources, reflections);
     for (ExtensionWithId extension : extensions) {
-      extension.register(model, resources, instantiater);
+      extension.register(model, resources, reflections);
     }
     for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
