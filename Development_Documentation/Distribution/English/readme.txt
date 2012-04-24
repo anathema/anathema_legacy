@@ -99,10 +99,6 @@ fork the repo from https://github.com/anathema/anathema and send us a pull reque
 		VII - Thanks
 ===------------------------------------------------------------------------------===
 
-Credit for the creation of the Anathema project goes to Urs Reupke, without whom the
-project would never have gotten off the ground.
-
-Special Thanks to vestrial, for staying with Urs on this project despite her urges to the contrary.
 A huge "Thank you" to Mr. Ricardo Rodriguez who has translated the program to spanish.
 Same to Martin, for the cool new artwork.
 
@@ -126,8 +122,7 @@ To uteck, for efforts in making the user's guide.
 
 Ricardo also deserves to be mentioned for finding innummerable errors & typos within
 both code and database. As I said before: You rock!
-Thanks to everyone pointing out bugs, be they large or small over the
-past two years. 
+Thanks to everyone pointing out bugs, be they large or small.
 
 At http://hd42.de you can visit Mr. Daniel Hohenberger, who first wrote software to 
 generate charm tree images. Thank you, you saved us lots of work and inspired us to 
