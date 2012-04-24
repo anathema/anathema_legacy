@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IDefensiveStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class CharacterStatsModifiers implements ICharacterStatsModifiers {
     for (IEquipmentItem item : equipmentItems)
       for (IEquipmentStats equipmentStats : item.getStats()) {
         boolean isDefensive = equipmentStats instanceof IDefensiveStats;
+        boolean isShield = equipmentStats instanceof IWeaponStats;
         boolean isModifier = equipmentStats instanceof ITraitModifyingStats;
         boolean isPrinted = item.isPrintEnabled(equipmentStats);
         if (isModifier && isPrinted) {
@@ -36,6 +38,9 @@ public class CharacterStatsModifiers implements ICharacterStatsModifiers {
         }
         if (isDefensive && isPrinted) {
           mobilityPenalty += ((IDefensiveStats) equipmentStats).getMobilityPenalty();
+        }
+        if( isShield && isPrinted ) {
+          mobilityPenalty += ((IWeaponStats) equipmentStats).getMobilityPenalty();
         }
       }
   }
