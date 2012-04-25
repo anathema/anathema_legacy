@@ -1,18 +1,20 @@
 package net.sf.anathema.initialization.repository;
 
-import net.sf.anathema.framework.configuration.IAnathemaPreferences;
+import net.sf.anathema.framework.configuration.IInitializationPreferences;
+
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.DEFAULT_REPOSITORY_LOCATION;
 
 public class RepositoryLocationResolver implements IStringResolver {
 
-  private final IAnathemaPreferences preferences;
+  private final IInitializationPreferences preferences;
 
-  public RepositoryLocationResolver(IAnathemaPreferences preferences) {
+  public RepositoryLocationResolver(IInitializationPreferences preferences) {
     this.preferences = preferences;
   }
 
+  @Override
   public String resolve() {
-    return parseOutUserHome( findRepositoryLocationDescription() );
+    return parseOutUserHome(findRepositoryLocationDescription());
   }
   
   private String parseOutUserHome( String directory ) {
@@ -35,6 +37,6 @@ public class RepositoryLocationResolver implements IStringResolver {
       if( repository == null ) {
           repository = DEFAULT_REPOSITORY_LOCATION;                               // handles everything else
       }
-      return parseOutUserHome( repository );
+      return parseOutUserHome(repository);
   }
 }

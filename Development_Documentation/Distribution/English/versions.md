@@ -9,8 +9,16 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 4.1.1
 
-Anathema no longer supports the ``custom.properties``.
+Anathema no longer supports ``custom.properties``.
 Please use the custom data facility introduced in v4.1.0 in its stead, placing your existing file into the repository's ``custom`` folder.
+
+
+### Features
+* [Curtis Tasker] Preferences window has button to reset repository location to default.
+* [Curtis Tasker] Preferences window has button to open repository location in OS-Specific File Manager (Explorer, Finder, etc).
+* [Curtis Tasker] Preferences window browse button now opens to the location of the current repository.
+* [Curtis Tasker] Preferences window repository location field now shows the location of the default repository when it is selected, rather than [Default Repository]
+
 
 ### Bugfixes
 * [Curtis Tasker] Dodge DV takes into account mobility penalties from shields.
