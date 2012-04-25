@@ -12,14 +12,13 @@ import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 import org.jdesktop.swingx.JXTaskPaneContainer;
+import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -43,7 +42,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
   private static final int TEXT_COLUMNS = 20;
   private MagicLearnView magicLearnView = new MagicLearnView();
   private JComponent content;
-  private final GenericControl<IComboViewListener> comboViewListeners = new GenericControl<IComboViewListener>();
+  private final Announcer<IComboViewListener> comboViewListeners = Announcer.to(IComboViewListener.class);
   private final JPanel namePanel = new JPanel(new GridDialogLayout(1, false));
   private JButton clearButton;
   private JButton finalizeButton;
@@ -130,12 +129,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private void fireComboCleared() {
-    comboViewListeners.forAllDo(new IClosure<IComboViewListener>() {
-      @Override
-      public void execute(IComboViewListener input) {
-        input.comboCleared();
-      }
-    });
+    comboViewListeners.announce().comboCleared();
   }
 
   private JButton createFinalizeComboButton(Icon icon) {
@@ -151,12 +145,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private void fireComboFinalized() {
-    comboViewListeners.forAllDo(new IClosure<IComboViewListener>() {
-      @Override
-      public void execute(IComboViewListener input) {
-        input.comboFinalized();
-      }
-    });
+    comboViewListeners.announce().comboFinalized();
   }
 
   @Override

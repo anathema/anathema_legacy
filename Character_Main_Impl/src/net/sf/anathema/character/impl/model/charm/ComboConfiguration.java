@@ -8,9 +8,8 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public class ComboConfiguration implements IComboConfiguration {
   private final List<ICombo> comboList = new ArrayList<ICombo>();
   private final IComboArbitrator rules;
   private final ICombo editCombo = new Combo();
-  private final GenericControl<IComboConfigurationListener> control = new GenericControl<IComboConfigurationListener>();
+  private final Announcer<IComboConfigurationListener> control = Announcer.to(IComboConfigurationListener.class);
   private final ComboIdProvider idProvider = new ComboIdProvider();
 
   public ComboConfiguration(ICharmConfiguration charmConfiguration) {
@@ -113,48 +112,23 @@ public class ComboConfiguration implements IComboConfiguration {
   }
 
   private void fireComboAdded(final ICombo combo) {
-    control.forAllDo(new IClosure<IComboConfigurationListener>() {
-      @Override
-      public void execute(IComboConfigurationListener input) {
-        input.comboAdded(combo);
-      }
-    });
+    control.announce().comboAdded(combo);
   }
 
   private void fireComboDeleted(final ICombo combo) {
-    control.forAllDo(new IClosure<IComboConfigurationListener>() {
-      @Override
-      public void execute(IComboConfigurationListener input) {
-        input.comboDeleted(combo);
-      }
-    });
+    control.announce().comboDeleted(combo);
   }
 
   private void fireComboChanged(final ICombo combo) {
-    control.forAllDo(new IClosure<IComboConfigurationListener>() {
-      @Override
-      public void execute(IComboConfigurationListener input) {
-        input.comboChanged(combo);
-      }
-    });
+    control.announce().comboChanged(combo);
   }
 
   private void fireBeginEditEvent(final ICombo combo) {
-    control.forAllDo(new IClosure<IComboConfigurationListener>() {
-      @Override
-      public void execute(IComboConfigurationListener input) {
-        input.editBegun(combo);
-      }
-    });
+    control.announce().editBegun(combo);
   }
 
   private void fireEndEditEvent() {
-    control.forAllDo(new IClosure<IComboConfigurationListener>() {
-      @Override
-      public void execute(IComboConfigurationListener input) {
-        input.editEnded();
-      }
-    });
+    control.announce().editEnded();
   }
 
   @Override

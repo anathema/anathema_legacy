@@ -1,19 +1,18 @@
 package net.sf.anathema.framework.styledtext.model;
 
+import net.sf.anathema.framework.styledtext.presentation.TextFormat;
+import net.sf.anathema.framework.styledtext.presentation.TextPart;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.workflow.textualdescription.model.AbstractTextualDescription;
+import org.jmock.example.announcer.Announcer;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sf.anathema.framework.styledtext.presentation.TextFormat;
-import net.sf.anathema.framework.styledtext.presentation.TextPart;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.workflow.textualdescription.model.AbstractTextualDescription;
-
 public class StyledTextualDescription extends AbstractTextualDescription implements IStyledTextualDescription {
 
-  private final GenericControl<IStyledTextChangeListener> textListeners = new GenericControl<IStyledTextChangeListener>();
+  private final Announcer<IStyledTextChangeListener> textListeners = Announcer.to(IStyledTextChangeListener.class);
   private ITextPart[] textParts = new ITextPart[0];
   private final Map<IObjectValueChangedListener<String>, IStyledTextChangeListener> listenerMap = new HashMap<IObjectValueChangedListener<String>, IStyledTextChangeListener>();
 
@@ -33,12 +32,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
 
   @Override
   protected void fireChangedEvent() {
-    textListeners.forAllDo(new IClosure<IStyledTextChangeListener>() {
-      @Override
-      public void execute(IStyledTextChangeListener input) {
-        input.textChanged(textParts);
-      }
-    });
+    textListeners.announce().textChanged(textParts);
   }
 
   @Override

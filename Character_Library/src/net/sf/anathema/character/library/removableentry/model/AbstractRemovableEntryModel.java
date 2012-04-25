@@ -1,29 +1,23 @@
 package net.sf.anathema.character.library.removableentry.model;
 
+import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
+import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryModel;
+import org.jmock.example.announcer.Announcer;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryModel;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-
 public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryModel<E> {
 
   private final List<E> entries = new ArrayList<E>();
-  private final GenericControl<IRemovableEntryListener<E>> control = new GenericControl<IRemovableEntryListener<E>>();
+  private final Announcer<IRemovableEntryListener> control = Announcer.to(IRemovableEntryListener.class);
 
   @Override
   public E commitSelection() {
     final E entry = createEntry();
     entries.add(entry);
-    control.forAllDo(new IClosure<IRemovableEntryListener<E>>() {
-      @Override
-      public void execute(IRemovableEntryListener<E> input) {
-        input.entryAdded(entry);
-      }
-    });
+    control.announce().entryAdded(entry);
     return entry;
   }
 
@@ -32,12 +26,7 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
   @Override
   public void removeEntry(final E entry) {
     entries.remove(entry);
-    control.forAllDo(new IClosure<IRemovableEntryListener<E>>() {
-      @Override
-      public void execute(IRemovableEntryListener<E> input) {
-        input.entryRemoved(entry);
-      }
-    });
+    control.announce().entryRemoved(entry);
   }
 
   @Override
@@ -46,12 +35,7 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
   }
 
   protected void fireEntryChanged() {
-    control.forAllDo(new IClosure<IRemovableEntryListener<E>>() {
-      @Override
-      public void execute(IRemovableEntryListener<E> input) {
-        input.entryAllowed(isEntryAllowed());
-      }
-    });
+    control.announce().entryAllowed(isEntryAllowed());
   }
 
   protected abstract boolean isEntryAllowed();

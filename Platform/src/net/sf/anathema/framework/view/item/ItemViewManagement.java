@@ -15,9 +15,8 @@ import net.infonode.tabbedpanel.titledtab.TitledTabProperties;
 import net.infonode.util.Direction;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import org.jmock.example.announcer.Announcer;
 
 import javax.swing.AbstractButton;
 import javax.swing.Action;
@@ -35,7 +34,7 @@ public class ItemViewManagement implements IComponentItemViewManagement {
   private final TabbedPanel tabbedPane = new TabbedPanel();
   private final Map<Component, IItemView> itemViewsByComponent = new HashMap<Component, IItemView>();
   private final Map<IItemView, IObjectValueChangedListener<String>> nameListenersByView = new HashMap<IItemView, IObjectValueChangedListener<String>>();
-  private final GenericControl<IViewSelectionListener> control = new GenericControl<IViewSelectionListener>();
+  private final Announcer<IViewSelectionListener> control = Announcer.to(IViewSelectionListener.class);
   private final TitledTabProperties titledTabProperties = new TitledTabProperties();
   private final ShapedGradientTheme theme = new ShapedGradientTheme(0f, 0.5f, new FixedColorProvider(new Color(
       150,
@@ -140,12 +139,7 @@ public class ItemViewManagement implements IComponentItemViewManagement {
   }
 
   private void fireItemViewChanged(final IItemView view) {
-    control.forAllDo(new IClosure<IViewSelectionListener>() {
-      @Override
-      public void execute(IViewSelectionListener input) {
-        input.viewSelectionChangedTo(view);
-      }
-    });
+    control.announce().viewSelectionChangedTo(view);
   }
 
   @Override

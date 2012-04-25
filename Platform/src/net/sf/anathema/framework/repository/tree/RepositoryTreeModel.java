@@ -1,27 +1,25 @@
 package net.sf.anathema.framework.repository.tree;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
 import net.sf.anathema.framework.repository.IRepository;
-import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   private final IItemType[] integratedItemTypes;
-  private final GenericControl<IRepositoryTreeModelListener> control = new GenericControl<IRepositoryTreeModelListener>();
+  private final Announcer<IRepositoryTreeModelListener> control = Announcer.to(IRepositoryTreeModelListener.class);
   private final ChangeControl changeControl = new ChangeControl();
   private final IItemManagementModel itemManagementModel;
   private final IRepository repository;
@@ -37,14 +35,14 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     this.repositoryFileAccessFactory = new RepositoryFileAccessFactory(repository);
   }
 
-  private ItemType[] createIntegratedItemTypes() {
+  private IItemType[] createIntegratedItemTypes() {
     List<IItemType> integratedItemTypes = new ArrayList<IItemType>();
     for (IItemType itemType : itemTypes.getAllItemTypes()) {
       if (itemType.isIntegrated()) {
         integratedItemTypes.add(itemType);
       }
     }
-    return integratedItemTypes.toArray(new ItemType[integratedItemTypes.size()]);
+    return integratedItemTypes.toArray(new IItemType[integratedItemTypes.size()]);
   }
 
   @Override
@@ -88,12 +86,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     for (Object object : currentlySelectedUserObjects) {
       final PrintNameFile file = (PrintNameFile) object;
       repository.deleteAssociatedItem(file);
-      control.forAllDo(new IClosure<IRepositoryTreeModelListener>() {
-        @Override
-        public void execute(IRepositoryTreeModelListener input) {
-          input.printNameFileRemoved(file);
-        }
-      });
+      control.announce().printNameFileRemoved(file);
     }
   }
 
@@ -165,12 +158,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   @Override
   public void refreshItem(final IItemType type, final String id) {
-    control.forAllDo(new IClosure<IRepositoryTreeModelListener>() {
-      @Override
-      public void execute(IRepositoryTreeModelListener input) {
-        input.printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
-      }
-    });
+    control.announce().printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
     repository.refresh();
   }
 }

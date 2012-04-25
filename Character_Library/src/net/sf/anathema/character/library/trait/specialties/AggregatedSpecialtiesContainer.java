@@ -1,48 +1,32 @@
 package net.sf.anathema.character.library.trait.specialties;
 
+import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
+import org.jmock.example.announcer.Announcer;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-
 public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
 
   private final List<SpecialtiesContainer> containers = new ArrayList<SpecialtiesContainer>();
-  private final GenericControl<ISubTraitListener> listeners = new GenericControl<ISubTraitListener>();
+  private final Announcer<ISubTraitListener> listeners =Announcer.to(ISubTraitListener.class);
   private final ISubTraitListener listener = new ISubTraitListener() {
     @Override
     public void subTraitAdded(final ISubTrait subTrait) {
-      listeners.forAllDo(new IClosure<ISubTraitListener>() {
-        @Override
-        public void execute(ISubTraitListener input) {
-          input.subTraitAdded(subTrait);
-        }
-      });
+      listeners.announce().subTraitAdded(subTrait);
     }
 
     @Override
     public void subTraitRemoved(final ISubTrait subTrait) {
-      listeners.forAllDo(new IClosure<ISubTraitListener>() {
-        @Override
-        public void execute(ISubTraitListener input) {
-          input.subTraitRemoved(subTrait);
-        }
-      });
+      listeners.announce().subTraitRemoved(subTrait);
     }
 
     @Override
     public void subTraitValueChanged() {
-      listeners.forAllDo(new IClosure<ISubTraitListener>() {
-        @Override
-        public void execute(ISubTraitListener input) {
-          input.subTraitValueChanged();
-        }
-      });
+      listeners.announce().subTraitValueChanged();
     }
   };
 

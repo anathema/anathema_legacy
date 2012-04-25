@@ -15,9 +15,8 @@ import net.sf.anathema.character.model.background.Background;
 import net.sf.anathema.character.model.background.IBackground;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,7 @@ import java.util.List;
 public class BackgroundConfiguration implements IBackgroundConfiguration {
 
   private final List<IBackground> backgrounds = new ArrayList<IBackground>();
-  private final GenericControl<IBackgroundListener> listeners = new GenericControl<IBackgroundListener>();
+  private final Announcer<IBackgroundListener> listeners = Announcer.to(IBackgroundListener.class);
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final ITraitTemplateCollection traitTemplates;
   private final ITraitContext context;
@@ -124,12 +123,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   }
 
   private void fireBackgroundAddedEvent(final IBackground background) {
-    listeners.forAllDo(new IClosure<IBackgroundListener>() {
-      @Override
-      public void execute(IBackgroundListener input) {
-        input.backgroundAdded(background);
-      }
-    });
+    listeners.announce().backgroundAdded(background);
   }
 
   @Override
@@ -139,12 +133,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   }
 
   private void fireBackgroundRemovedEvent(final IBackground background) {
-    listeners.forAllDo(new IClosure<IBackgroundListener>() {
-      @Override
-      public void execute(IBackgroundListener input) {
-        input.backgroundRemoved(background);
-      }
-    });
+    listeners.announce().backgroundRemoved(background);
   }
 
   @Override

@@ -1,9 +1,5 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -16,34 +12,33 @@ import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.character.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfiguration {
 
-  private final GenericControl<ISpecialCharmLearnListener> control = new GenericControl<ISpecialCharmLearnListener>();
+  private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final IIncrementChecker incrementChecker;
   private final OxBodyCategory[] categories;
   private final ICharm oxBodyTechnique;
   private final IHealthLevelProvider healthLevelProvider;
 
-  public OxBodyTechniqueConfiguration(
-      ITraitContext context,
-      final IGenericTraitCollection collection,
-      ICharm oxBodyTechnique,
-      final ITraitType[] relevantTraits,
-      final IOxBodyTechniqueArbitrator arbitrator,
-      IOxBodyTechniqueCharm properties) {
+  public OxBodyTechniqueConfiguration(ITraitContext context, final IGenericTraitCollection collection,
+                                      ICharm oxBodyTechnique, final ITraitType[] relevantTraits,
+                                      final IOxBodyTechniqueArbitrator arbitrator, IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
     incrementChecker = new IIncrementChecker() {
       @Override
       public boolean isValidIncrement(int increment) {
-    	  int minTrait = Integer.MAX_VALUE;
-    	  for (ITraitType type : relevantTraits)
-    		  minTrait = Math.min(minTrait, collection.getTrait(type).getCurrentValue());
-        return increment < 0
-            || (arbitrator.isIncrementAllowed(increment) && getCurrentLearnCount() + increment <= minTrait);
+        int minTrait = Integer.MAX_VALUE;
+        for (ITraitType type : relevantTraits)
+          minTrait = Math.min(minTrait, collection.getTrait(type).getCurrentValue());
+        return increment < 0 || (arbitrator.isIncrementAllowed(
+                increment) && getCurrentLearnCount() + increment <= minTrait);
       }
     };
     categories = createOxBodyCategories(context, properties);
@@ -81,8 +76,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     OxBodyCategory trait = getCategories()[0];
     if (experienced && getCurrentLearnCount() == 0) {
       trait.setExperiencedValue(1);
-    }
-    else if (!experienced && getCreationLearnCount() == 0) {
+    } else if (!experienced && getCreationLearnCount() == 0) {
       trait.setCreationValue(1);
     }
   }
@@ -116,12 +110,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
   }
 
   private void fireLearnCountChanged(final int learnCount) {
-    control.forAllDo(new IClosure<ISpecialCharmLearnListener>() {
-      @Override
-      public void execute(ISpecialCharmLearnListener input) {
-        input.learnCountChanged(learnCount);
-      }
-    });
+    control.announce().learnCountChanged(learnCount);
   }
 
   @Override

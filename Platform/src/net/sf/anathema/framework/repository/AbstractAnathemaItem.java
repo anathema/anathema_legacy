@@ -4,9 +4,8 @@ import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.util.IIdentificate;
+import org.jmock.example.announcer.Announcer;
 
 public abstract class AbstractAnathemaItem implements IItem {
 
@@ -14,10 +13,11 @@ public abstract class AbstractAnathemaItem implements IItem {
   private final IItemType itemType;
   private final RepositoryLocation repositoryLocation;
   private final IIdentificate identificate;
-  private final GenericControl<IItemListener> repositoryItemListeners = new GenericControl<IItemListener>();
+  private final Announcer<IItemListener> repositoryItemListeners = Announcer.to(IItemListener.class);
 
   public AbstractAnathemaItem(IItemType type) {
-    Ensure.ensureArgumentTrue("Use second constructor for non-persisted items.", type.supportsRepository()); //$NON-NLS-1$
+    Ensure.ensureArgumentTrue("Use second constructor for non-persisted items.",
+            type.supportsRepository()); //$NON-NLS-1$
     this.itemType = type;
     this.repositoryLocation = new RepositoryLocation(this);
     this.identificate = new IIdentificate() {
@@ -45,12 +45,7 @@ public abstract class AbstractAnathemaItem implements IItem {
   }
 
   private void firePrintNameChanged(final String name) {
-    repositoryItemListeners.forAllDo(new IClosure<IItemListener>() {
-      @Override
-      public void execute(IItemListener input) {
-        input.printNameChanged(name);
-      }
-    });
+    repositoryItemListeners.announce().printNameChanged(name);
   }
 
   @Override

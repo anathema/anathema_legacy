@@ -4,17 +4,16 @@ import net.sf.anathema.character.impl.model.ProxyTextualDescription;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+import org.jmock.example.announcer.Announcer;
 
 public class Motivation implements IMotivation {
 
   private final SimpleTextualDescription persistenceDescription = new SimpleTextualDescription();
   private final ProxyTextualDescription editableDescription;
   private final IExperiencePointConfiguration experiencePoints;
-  private final GenericControl<IEditMotivationListener> control = new GenericControl<IEditMotivationListener>();
+  private final Announcer<IEditMotivationListener> control = Announcer.to(IEditMotivationListener.class);
 
   public Motivation(IExperiencePointConfiguration experiencePoints) {
     this.experiencePoints = experiencePoints;
@@ -34,12 +33,7 @@ public class Motivation implements IMotivation {
   @Override
   public void beginEdit() {
     switchDescription(1);
-    control.forAllDo(new IClosure<IEditMotivationListener>() {
-      @Override
-      public void execute(IEditMotivationListener input) {
-        input.editBegun();
-      }
-    });
+    control.announce().editBegun();
   }
 
   @Override
@@ -67,12 +61,7 @@ public class Motivation implements IMotivation {
   }
 
   private void fireEditEnded() {
-    control.forAllDo(new IClosure<IEditMotivationListener>() {
-      @Override
-      public void execute(IEditMotivationListener input) {
-        input.editEnded();
-      }
-    });
+    control.announce().editEnded();
   }
 
   @Override

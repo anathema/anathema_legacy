@@ -2,19 +2,18 @@ package net.sf.anathema.framework.model;
 
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.exception.AnathemaException;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemManagmentModel implements IItemManagementModel {
 
-  private final GenericControl<IItemManagementModelListener> listeners = new GenericControl<IItemManagementModelListener>();
+  private final Announcer<IItemManagementModelListener> listeners = Announcer.to(IItemManagementModelListener.class);
   private final List<IItem> allItems = new ArrayList<IItem>();
   private IItem selectedItem;
 
@@ -39,42 +38,16 @@ public class ItemManagmentModel implements IItemManagementModel {
     listeners.addListener(listener);
   }
 
-  private void fireItemRemovedEvent(final IItem item) {
-    listeners.forAllDo(new IClosure<IItemManagementModelListener>() {
-      @Override
-      public void execute(IItemManagementModelListener input) {
-        input.itemRemoved(item);
-      }
-    });
+  private void fireItemRemovedEvent(IItem item) {
+    listeners.announce().itemRemoved(item);
   }
 
   private void fireItemAddedEvent(final IItem item) throws AnathemaException {
-    try {
-      listeners.forAllDo(new IClosure<IItemManagementModelListener>() {
-        @Override
-        public void execute(IItemManagementModelListener input) {
-          try {
-            input.itemAdded(item);
-          } catch (AnathemaException e) {
-            throw new RuntimeException(e);
-          }
-        }
-      });
-    } catch (RuntimeException e) {
-      if (e.getCause() instanceof AnathemaException) {
-        throw (AnathemaException) e.getCause();
-      }
-      throw e;
-    }
+    listeners.announce().itemAdded(item);
   }
 
   private void fireCharacterSelectionChangedEvent(final IItem item) {
-    listeners.forAllDo(new IClosure<IItemManagementModelListener>() {
-      @Override
-      public void execute(IItemManagementModelListener input) {
-        input.itemSelected(item);
-      }
-    });
+    listeners.announce().itemSelected(item);
   }
 
   @Override

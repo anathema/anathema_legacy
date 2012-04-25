@@ -7,13 +7,12 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
+import org.jmock.example.announcer.Announcer;
 
 public class TraitFavorization implements ITraitFavorization {
 
   private FavorableState state;
-  private final GenericControl<IFavorableStateChangedListener> favorableStateControl = new GenericControl<IFavorableStateChangedListener>();
+  private final Announcer<IFavorableStateChangedListener> favorableStateControl = Announcer.to(IFavorableStateChangedListener.class);
   private final IIncrementChecker favoredIncrementChecker;
   private final ITrait trait;
   private final ICasteType[] castes;
@@ -105,13 +104,8 @@ public class TraitFavorization implements ITraitFavorization {
     favorableStateControl.addListener(listener);
   }
 
-  private final void fireFavorableStateChangedEvent() {
-    favorableStateControl.forAllDo(new IClosure<IFavorableStateChangedListener>() {
-      @Override
-      public void execute(IFavorableStateChangedListener input) {
-        input.favorableStateChanged(state);
-      }
-    });
+  private void fireFavorableStateChangedEvent() {
+    favorableStateControl.announce().favorableStateChanged(state);
   }
 
   @Override

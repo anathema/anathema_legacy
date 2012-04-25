@@ -11,10 +11,9 @@ import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.character.model.ISpellMapper;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +25,7 @@ public class SpellConfiguration implements ISpellConfiguration {
   private final List<ISpell> creationLearnedList = new ArrayList<ISpell>();
   private final List<ISpell> experiencedLearnedList = new ArrayList<ISpell>();
   private final ChangeControl changeControl = new ChangeControl();
-  private final GenericControl<IMagicLearnListener<ISpell>> magicLearnControl = new GenericControl<IMagicLearnListener<ISpell>>();
+  private final Announcer<IMagicLearnListener> magicLearnControl = Announcer.to(IMagicLearnListener.class);
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<CircleType, List<ISpell>>();
   private final ICharmConfiguration charms;
   private final ISpellLearnStrategy strategy;
@@ -88,22 +87,12 @@ public class SpellConfiguration implements ISpellConfiguration {
   }
 
   private void fireSpellsAddedEvent(final ISpell[] addedSpells) {
-    magicLearnControl.forAllDo(new IClosure<IMagicLearnListener<ISpell>>() {
-      @Override
-      public void execute(IMagicLearnListener<ISpell> input) {
-        input.magicLearned(addedSpells);
-      }
-    });
+    magicLearnControl.announce().magicLearned(addedSpells);
     changeControl.fireChangedEvent();
   }
 
   private void fireSpellsForgottenEvent(final ISpell[] removedSpells) {
-    magicLearnControl.forAllDo(new IClosure<IMagicLearnListener<ISpell>>() {
-      @Override
-      public void execute(IMagicLearnListener<ISpell> input) {
-        input.magicForgotten(removedSpells);
-      }
-    });
+    magicLearnControl.announce().magicForgotten(removedSpells);
     changeControl.fireChangedEvent();
   }
 
