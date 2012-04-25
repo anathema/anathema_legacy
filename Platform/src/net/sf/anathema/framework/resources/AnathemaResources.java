@@ -1,16 +1,12 @@
 package net.sf.anathema.framework.resources;
 
-import net.sf.anathema.initialization.reflections.ExternalResourceFile;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.DefaultStringProvider;
 import net.sf.anathema.lib.resources.FileStringProvider;
 import net.sf.anathema.lib.resources.IAnathemaImageProvider;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.resources.InternalResourceFile;
 import net.sf.anathema.lib.resources.MultiSourceStringProvider;
 import net.sf.anathema.lib.resources.ResourceFile;
-import net.sf.anathema.lib.resources.StringProvider;
-import org.apache.commons.io.FilenameUtils;
 
 import javax.swing.Icon;
 import java.awt.Image;

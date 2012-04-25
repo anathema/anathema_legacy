@@ -76,15 +76,6 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
   }
 
   private ISpecialCharm[] getSpecialCharmSet() {
-    if (type.getId().equals("MartialArts")) {
-      return generics.getCharmProvider().getSpecialMartialArtsCharms();
-    } else {
-      try {
-        return generics.getCharmProvider().getSpecialCharms((CharacterType) type);
-      } catch (ClassCastException exception) {
-        // assuming unique types do not have special charms for now
-        return new ISpecialCharm[0];
-      }
-    }
+     return generics.getCharmProvider().getSpecialCharms(type);
   }
 }

@@ -73,6 +73,10 @@
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Reflexive" />
+          <upgradeable requiresBase="true">
+          	<upgrade name="BoneSpurs" bpCost="2" xpCost="4"/>
+          	<upgrade name="SkeletalProtrusions" bpCost="4" xpCost="8"/>
+          </upgradeable>
 		<charmAttribute attribute="Celestial" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
 		<charmAttribute attribute="Exclusive" />
@@ -91,6 +95,9 @@
           </cost>
           <duration amount="1" unit="scene" />
           <charmtype type="Simple" />
+          <upgradeable requiresBase="true">
+          	<upgrade name="Taint" bpCost="6" xpCost="12"/>
+          </upgradeable>
 		<charmAttribute attribute="Celestial" />
         <charmAttribute attribute="Combo-Basic" visualize="true" />
 		<charmAttribute attribute="Exclusive" />

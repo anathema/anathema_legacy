@@ -20,8 +20,6 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 
-import static net.sf.anathema.character.abyssal.AbyssalSpecialMartialArtsCharms.FiveKnifeFist;
-import static net.sf.anathema.character.abyssal.AbyssalSpecialMartialArtsCharms.WrithingBloodChainTechnique;
 import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
 @CharacterModule
@@ -40,8 +38,6 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(AbyssalResonanceTemplate.ID,
             new AbyssalResonanceParser());
     characterGenerics.getCasteCollectionRegistry().register(ABYSSAL, new CasteCollection(AbyssalCaste.values()));
-    characterGenerics.getCharmProvider().addMartialArtsSpecialCharm(FiveKnifeFist());
-    characterGenerics.getCharmProvider().addMartialArtsSpecialCharm(WrithingBloodChainTechnique());
   }
 
   @Override
