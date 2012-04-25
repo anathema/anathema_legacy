@@ -6,7 +6,9 @@ import net.sf.anathema.graph.nodes.WeightedNode;
 import net.sf.anathema.graph.util.BarycenterCalculator;
 import net.sf.anathema.graph.util.IncidentMatrixUtilities;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.lang.IntegerUtilities;
+import org.apache.commons.lang3.ArrayUtils;
+
+import java.util.List;
 
 public class SandraVertexOrderer extends AbstractVertexOrderer {
 
@@ -54,7 +56,7 @@ public class SandraVertexOrderer extends AbstractVertexOrderer {
     WeightedNode[] weightedLowerLayerNodes = getWeightedLowerLayerNodes(upperLayer, lowerLayer);
     MultiEntryMap<Double, Integer> weightSeparation = getWeightSeparation(weightedLowerLayerNodes);
     for (Double key : weightSeparation.keySet()) {
-      int[] indices = IntegerUtilities.toIntArray(weightSeparation.get(key));
+      int[] indices = toIntArray(weightSeparation.get(key));
       for (int index = 0; index < indices.length - 1; index++) {
         exchangeNodes(weightedLowerLayerNodes, indices[index], indices[index + 1]);
         reorderLayer(upperLayerIndex + 1, weightedLowerLayerNodes);
@@ -73,7 +75,7 @@ public class SandraVertexOrderer extends AbstractVertexOrderer {
     WeightedNode[] weightedUpperLayerNodes = getWeightedUpperLayerNodes(upperLayer, lowerLayer);
     MultiEntryMap<Double, Integer> weightSeparation = getWeightSeparation(weightedUpperLayerNodes);
     for (Double key : weightSeparation.keySet()) {
-      int[] indices = IntegerUtilities.toIntArray(weightSeparation.get(key));
+      int[] indices = toIntArray(weightSeparation.get(key));
       for (int index = 0; index < indices.length - 1; index++) {
         exchangeNodes(weightedUpperLayerNodes, indices[index], indices[index + 1]);
         reorderLayer(upperLayerIndex, weightedUpperLayerNodes);
@@ -120,5 +122,9 @@ public class SandraVertexOrderer extends AbstractVertexOrderer {
       weightedNodes[columnIndex] = new WeightedNode(lowerLayer[columnIndex], vectorCenter);
     }
     return weightedNodes;
+  }
+
+  private int[] toIntArray(List<Integer> values) {
+    return ArrayUtils.toPrimitive(values.toArray(new Integer[values.size()]));
   }
 }

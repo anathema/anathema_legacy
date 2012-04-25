@@ -15,6 +15,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEnco
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
+import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class AbstractHealthAndMovementTableEncoder implements ITableEncoder<ReportSession> {
   public static final int HEALTH_RECT_SIZE = 6;
@@ -210,7 +211,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     Float[] movementAndLevelColumns = ArrayUtilities.concat(Float.class, getMovementColumns(), HEALTH_LEVEL_COLUMNS);
     Float[] healthColumns = TableEncodingUtilities.createStandardColumnWidths(HEALTH_COLUMN_COUNT, 0.4f);
     Float[] objectArray = ArrayUtilities.concat(Float.class, movementAndLevelColumns, healthColumns);
-    return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(objectArray);
+    return ArrayUtils.toPrimitive(objectArray);
   }
 
   protected final IResources getResources() {

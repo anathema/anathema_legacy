@@ -19,11 +19,4 @@ public class IntegerUtilitiesTest {
         5,
         6 })));
   }
-
-  @Test
-  public void testIsNullOrZero() throws Exception {
-    Assert.assertTrue(IntegerUtilities.isNullOrZero(0));
-    Assert.assertTrue(IntegerUtilities.isNullOrZero(null));
-    Assert.assertFalse(IntegerUtilities.isNullOrZero(2));
-  }
 }

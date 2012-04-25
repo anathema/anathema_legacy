@@ -74,7 +74,7 @@ public class TemplateTransformer_RulesTest {
   }
 
   private void assertTransformationResultsIn(String input, String expectation) {
-    String result = transformer.transform(input);
+    String result = transformer.apply(input);
     assertThat(result, is(expectation));
   }
 

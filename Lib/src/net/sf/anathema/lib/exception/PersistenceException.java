@@ -2,8 +2,6 @@ package net.sf.anathema.lib.exception;
 
 public class PersistenceException extends AnathemaException {
 
-  private static final long serialVersionUID = -2080027597535577602L;
-
   public PersistenceException() {
     super();
   }

@@ -1,18 +1,14 @@
 package net.sf.anathema.lib.lang;
 
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.common.base.Objects;
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-
 public class ArrayUtilities {
-
-  public static void copyAll(Object[] sourceArray, Object[] targetArray) {
-    System.arraycopy(sourceArray, 0, targetArray, 0, sourceArray.length);
-  }
 
   public static int[] createIndexArray(int length) {
     int[] indexArray = new int[length];
@@ -39,18 +35,6 @@ public class ArrayUtilities {
     return ranks;
   }
 
-  public static boolean equals(Object[] first, Object[] second) {
-    if (first.length != second.length) {
-      return false;
-    }
-    for (int index = 0; index < first.length; index++) {
-      if (!Objects.equal(first[index], second[index])) {
-        return false;
-      }
-    }
-    return true;
-  }
-
   public static <T> T find(Predicate<T> predicate, T[] inputArray) {
     for (T input : inputArray) {
       if (predicate.apply(input)) {
@@ -61,10 +45,9 @@ public class ArrayUtilities {
   }
 
   public static <R> int indexOf(R[] array, R value) {
-    for (int index = 0; index < array.length; index++) {
-      if (array[index].equals(value)) {
-        return index;
-      }
+    int index = ArrayUtils.indexOf(array, value);
+    if (index != ArrayUtils.INDEX_NOT_FOUND){
+      return index;
     }
     throw new IllegalArgumentException("Value not contained in array: " + value); //$NON-NLS-1$
   }
@@ -101,13 +84,5 @@ public class ArrayUtilities {
       int newIndex = newIndices[indexIndex];
       objects[newIndex] = nodesByOriginalIndex.get(originalIndex);
     }
-  }
-
-  public static float[] toPrimitive(Float[] objectArray) {
-    float[] primitiveArray = new float[objectArray.length];
-    for (int index = 0; index < primitiveArray.length; index++) {
-      primitiveArray[index] = objectArray[index];
-    }
-    return primitiveArray;
   }
 }

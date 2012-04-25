@@ -2,6 +2,7 @@ package net.sf.anathema.framework.styledtext.presentation;
 
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.event.DocumentEvent;
@@ -19,7 +20,6 @@ import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class StyledTextManager implements IStyledTextManager {
 
@@ -49,7 +49,7 @@ public class StyledTextManager implements IStyledTextManager {
 
   @Override
   public void setText(ITextPart[] textParts) {
-    if (ArrayUtilities.equals(textParts, actualTextParts)) {
+    if (Arrays.equals(textParts, actualTextParts)) {
       return;
     }
     try {

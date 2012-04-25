@@ -13,6 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEnco
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
+import org.apache.commons.lang3.ArrayUtils;
 
 import static com.itextpdf.text.Element.*;
 import static com.itextpdf.text.Rectangle.BOX;
@@ -132,7 +133,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
   }
 
   private float[] createColumnWidth() {
-    return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(getMovementColumns());
+    return ArrayUtils.toPrimitive(getMovementColumns());
   }
 
   protected final Font getCommentFont(SheetGraphics graphics) {

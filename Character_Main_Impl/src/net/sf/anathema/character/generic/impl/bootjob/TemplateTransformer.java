@@ -1,13 +1,13 @@
 package net.sf.anathema.character.generic.impl.bootjob;
 
+import com.google.common.base.Function;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.lib.lang.ITransformer;
 
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TemplateTransformer implements ITransformer<String, String> {
+public class TemplateTransformer implements Function<String, String> {
 
   private final Map<String, String> mapping = new HashMap<String, String>() {{
     put("RevisedLoyalAbyssal", TemplateType.DEFAULT_SUB_TYPE.getId());
@@ -44,7 +44,7 @@ public class TemplateTransformer implements ITransformer<String, String> {
   }};
 
   @Override
-  public String transform(String input) {
+  public String apply(String input) {
     for (Map.Entry<String, String> entry : mapping.entrySet()) {
       String replacee = getPatternForReplacement(entry.getKey());
       String replacement = getPatternForReplacement(entry.getValue());

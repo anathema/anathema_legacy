@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.styledtext.model;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +9,6 @@ import net.sf.anathema.framework.styledtext.presentation.TextPart;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.model.AbstractTextualDescription;
 
 public class StyledTextualDescription extends AbstractTextualDescription implements IStyledTextualDescription {
@@ -19,7 +19,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
 
   @Override
   public void setText(ITextPart[] textParts) {
-    if (ArrayUtilities.equals(this.textParts, textParts)) {
+    if (Arrays.equals(this.textParts, textParts)) {
       return;
     }
     this.textParts = textParts;

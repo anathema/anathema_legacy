@@ -1,6 +1,6 @@
 package net.sf.anathema.namegenerator.domain.general;
 
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
+import org.apache.commons.lang3.StringUtils;
 
 public class ConcatenatedNameTokenFactory implements INameTokenFactory {
 
@@ -17,7 +17,7 @@ public class ConcatenatedNameTokenFactory implements INameTokenFactory {
     for (INameTokenFactory factory : tokenFactories) {
       String tokenPart = factory.createToken();
       if (isFirstToken) {
-        tokenPart = AnathemaStringUtilities.capitalizeFirstCharacter(tokenPart);
+        tokenPart = StringUtils.capitalize(tokenPart);
         isFirstToken = false;
       }
       token.append(tokenPart);

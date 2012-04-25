@@ -23,6 +23,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTrait
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.GraphicsTemplate;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
   }
 
   private float[] createColumnWidth() {
-    return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(getEssenceColumns());
+    return ArrayUtils.toPrimitive(getEssenceColumns());
   }
 
   public final float getTableHeight(ExtendedEssenceContent content, float width) throws DocumentException {

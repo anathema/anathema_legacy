@@ -3,6 +3,7 @@ package net.sf.anathema.lib.lang;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import net.disy.commons.core.util.StringUtilities;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -116,10 +117,5 @@ public class AnathemaStringUtilities {
 
   public static String cutOffLastCharacters(String string, int characterCount) {
     return string.substring(0, string.length() - characterCount);
-  }
-
-  public static String capitalizeFirstCharacter(String string) {
-    String firstCharacter = string.substring(0, 1);
-    return string.replaceFirst(firstCharacter, firstCharacter.toUpperCase());
   }
 }

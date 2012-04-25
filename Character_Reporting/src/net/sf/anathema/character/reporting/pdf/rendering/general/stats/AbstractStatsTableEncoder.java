@@ -13,6 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends AbstractTableEncoder<C> {
 
@@ -77,7 +78,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends Abs
       }
       columnWidths = ArrayUtilities.concat(Float.class, columnWidths, group.getColumnWeights());
     }
-    return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(columnWidths);
+    return ArrayUtils.toPrimitive(columnWidths);
   }
 
   protected PdfPCell createSpaceCell(SheetGraphics graphics) {

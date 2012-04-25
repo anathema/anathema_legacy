@@ -15,6 +15,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEnco
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
+import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class AbstractHealthTableEncoder implements ITableEncoder<ReportSession> {
   private static final int HEALTH_COLUMN_COUNT = 15;
@@ -158,7 +159,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
   private float[] createColumnWidth() {
     Float[] healthColumns = TableEncodingUtilities.createStandardColumnWidths(HEALTH_COLUMN_COUNT, 0.4f);
     Float[] objectArray = ArrayUtilities.concat(Float.class, HEALTH_LEVEL_COLUMNS, healthColumns);
-    return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(objectArray);
+    return ArrayUtils.toPrimitive(objectArray);
   }
 
   protected final IResources getResources() {

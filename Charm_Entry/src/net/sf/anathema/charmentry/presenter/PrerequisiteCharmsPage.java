@@ -13,9 +13,10 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
+
+import java.util.Arrays;
 
 public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
 
@@ -49,14 +50,13 @@ public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
   @Override
   protected void initPageContent() {
     this.view = viewFactory.createPrerequisiteCharmsView();
-    final ISelectionContainerView<ICharm> charmView = view.addPrerequisiteCharmView(new IdentificateListCellRenderer(
-        resources));
+    final ISelectionContainerView<ICharm> charmView = view.addPrerequisiteCharmView(
+            new IdentificateListCellRenderer(resources));
     charmView.addSelectionChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
-        Object[] selectedValues = charmView.getSelectedValues();
-        ICharm[] charms = new ICharm[selectedValues.length];
-        ArrayUtilities.copyAll(selectedValues, charms);
+        ICharm[] selectedValues = charmView.getSelectedValues();
+        ICharm[] charms = Arrays.copyOf(selectedValues, selectedValues.length);
         getPageModel().setPrerequisiteCharms(charms);
       }
     });
@@ -65,8 +65,7 @@ public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
       public void changeOccurred() {
         try {
           charmView.populate(getPageModel().getAvailableCharms());
-        }
-        catch (PersistenceException e) {
+        } catch (PersistenceException e) {
           // TODO : Handle
           e.printStackTrace();
         }

@@ -13,6 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class RegainEssenceTableEncoder implements ITableEncoder<RegainEssenceCon
   }
 
   private float[] createColumnWidth() {
-    return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(getEssenceColumns());
+    return ArrayUtils.toPrimitive(getEssenceColumns());
   }
 
   public final float getTableHeight(RegainEssenceContent content) {

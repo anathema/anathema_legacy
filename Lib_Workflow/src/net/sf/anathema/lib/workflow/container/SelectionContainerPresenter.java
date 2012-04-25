@@ -3,8 +3,9 @@ package net.sf.anathema.lib.workflow.container;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.lang.ArrayFactory;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.lang.IArrayFactory;
+
+import java.util.Arrays;
 
 public class SelectionContainerPresenter<V> implements Presenter {
 
@@ -26,9 +27,8 @@ public class SelectionContainerPresenter<V> implements Presenter {
     view.addSelectionChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
-        Object[] selectedValues = view.getSelectedValues();
-        V[] valueArray = arrayFactory.createArray(selectedValues.length);
-        ArrayUtilities.copyAll(selectedValues, valueArray);
+        V[] selectedValues = view.getSelectedValues();
+        V[] valueArray = Arrays.copyOf(selectedValues, selectedValues.length);
         model.setSelectedValues(valueArray);
       }
     });
