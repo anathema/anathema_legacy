@@ -7,9 +7,9 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
-import net.sf.anathema.lib.resources.IAnathemaResourceFile;
+import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.ResourceFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,14 +33,14 @@ Just make sure this runs *after* DatabaseConversionBootJob. */
     if (thereIsNoDataYet) {
       ProxySplashscreen.getInstance().displayStatusMessage(
               resources.getString("Equipment.Bootjob.DefaultDatabaseSplashmessage")); //$NON-NLS-1$
-      populateRepository(database, anathemaModel.getReflections());
+      populateRepository(database, anathemaModel.getResourceLoader());
     }
   }
 
-  private void populateRepository(GsonEquipmentDatabase database, AnathemaReflections reflections) {
+  private void populateRepository(GsonEquipmentDatabase database, ResourceLoader reflections) {
     EquipmentGson gson = new EquipmentGson();
     try {
-      for (IAnathemaResourceFile file : reflections.getResourcesMatching(EQUIPMENT_REGEX)) {
+      for (ResourceFile file : reflections.getResourcesMatching(EQUIPMENT_REGEX)) {
         String itemJSON = getStringFromStream(file.getURL().openStream());
         database.saveTemplateNoOverwrite(gson.fromJson(itemJSON));
       }

@@ -1,18 +1,20 @@
 package net.sf.anathema.initialization.repository;
 
-import net.sf.anathema.framework.configuration.IAnathemaPreferences;
+import net.sf.anathema.framework.configuration.IInitializationPreferences;
 
 public class RepositoryLocationResolver implements IStringResolver {
 
-  private final IAnathemaPreferences preferences;
+  private final IInitializationPreferences preferences;
 
-  public RepositoryLocationResolver(IAnathemaPreferences preferences) {
+  public RepositoryLocationResolver(IInitializationPreferences preferences) {
     this.preferences = preferences;
   }
 
+  @Override
   public String resolve() {
-    String repositryLocationDescription = findRepositoryLocationDescription();
-    return new LeadingPropertyResolver(System.getProperties(), "%USER_HOME%", "user.home").parse(repositryLocationDescription); //$NON-NLS-1$//$NON-NLS-2$
+    String repositoryLocationDescription = findRepositoryLocationDescription();
+    LeadingPropertyResolver resolver = new LeadingPropertyResolver(System.getProperties(), "%USER_HOME%", "user.home");
+    return resolver.parse(repositoryLocationDescription);
   }
 
   private String findRepositoryLocationDescription() {

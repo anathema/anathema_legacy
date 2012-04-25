@@ -1,8 +1,9 @@
 package net.sf.anathema.initialization;
 
+import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
-import net.sf.anathema.framework.model.AnathemaModel;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
+import net.sf.anathema.initialization.reflections.AnnotationFinder;
+import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ExtensionWithId {
@@ -15,8 +16,9 @@ public class ExtensionWithId {
     this.extension = extension;
   }
 
-  public void register(AnathemaModel model, IResources resources, AnathemaReflections reflections) throws InitializationException {
-    extension.initialize(resources, model.getRepository(), reflections);
+  public void register(IAnathemaModel model, IResources resources, AnnotationFinder finder,
+                       ResourceLoader loader) throws InitializationException {
+    extension.initialize(resources, model.getRepository(), finder, loader);
     model.getExtensionPointRegistry().register(id, extension);
   }
 }

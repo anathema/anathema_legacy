@@ -6,14 +6,17 @@ import java.util.Locale;
 
 import javax.swing.Icon;
 
+import net.sf.anathema.initialization.reflections.ExternalResourceFile;
 import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.resources.InternalResourceFile;
 import net.sf.anathema.lib.resources.DefaultStringProvider;
 import net.sf.anathema.lib.resources.FileStringProvider;
 import net.sf.anathema.lib.resources.IAnathemaImageProvider;
-import net.sf.anathema.lib.resources.IAnathemaResourceFile;
+import net.sf.anathema.lib.resources.ResourceFile;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.MultiSourceStringProvider;
 import net.sf.anathema.lib.resources.StringProvider;
+import org.apache.commons.io.FilenameUtils;
 
 public class AnathemaResources implements IResources {
 
@@ -25,29 +28,40 @@ public class AnathemaResources implements IResources {
     try {
       stringHandler.add(new FileStringProvider("custom", getLocale())); //$NON-NLS-1$
       stringHandler.add(new DefaultStringProvider("Literal")); //$NON-NLS-1$
-    }
-    catch (IOException ioException) {
+    } catch (IOException ioException) {
       logger.error("Error loading custom properties.", ioException); //$NON-NLS-1$
     }
   }
 
-  public void addResourceBundle(String bundleName, IAnathemaResourceFile resource) {
-    stringHandler.add(new StringProvider(bundleName, getLocale(), resource)); //$NON-NLS-1$
+  public void addResourceBundle(String bundleName, ResourceFile resource) {
+    if (resource instanceof InternalResourceFile) {
+      stringHandler.add(new StringProvider(bundleName, getLocale())); //$NON-NLS-1$
+    } else if (resource instanceof ExternalResourceFile) {
+      try {
+        stringHandler.add(new FileStringProvider(FilenameUtils.removeExtension(resource.getFileName()), getLocale()));
+      } catch (IOException e) {
+        logger.warn("Could not load properties from file system.", e);
+      }
+    }
   }
 
+  @Override
   public boolean supportsKey(String key) {
     return stringHandler.supportsKey(key);
   }
 
+  @Override
   public String getString(String key, Object... arguments) {
     return stringHandler.getString(key, arguments);
   }
 
-  public Image getImage(Class< ? > requestor, String relativePath) {
+  @Override
+  public Image getImage(Class<?> requestor, String relativePath) {
     return imageProvider.getImage(requestor, relativePath);
   }
 
-  public Icon getImageIcon(Class< ? > requestor, String relativePath) {
+  @Override
+  public Icon getImageIcon(Class<?> requestor, String relativePath) {
     return imageProvider.getImageIcon(requestor, relativePath);
   }
 

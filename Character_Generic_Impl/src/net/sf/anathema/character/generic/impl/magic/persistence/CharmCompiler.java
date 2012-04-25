@@ -8,12 +8,12 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
-import net.sf.anathema.initialization.IExtensibleDataSetCompiler;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
-import net.sf.anathema.lib.resources.IAnathemaResourceFile;
+import net.sf.anathema.lib.resources.ResourceFile;
 import net.sf.anathema.lib.resources.IExtensibleDataSet;
+import net.sf.anathema.lib.resources.IExtensibleDataSetCompiler;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 import org.dom4j.Document;
@@ -54,12 +54,10 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   }
 
   @Override
-  public void registerFile(IAnathemaResourceFile resource) throws Exception {
+  public void registerFile(ResourceFile resource) throws Exception {
     Matcher matcher = Pattern.compile(Charm_Data_Extraction_Pattern).matcher(resource.getFileName());
     matcher.matches();
     String typeString = matcher.group(1);
-    //String ruleString = matcher.group(2);
-
     IIdentificate type = new Identificate(typeString);
     if (!registry.idRegistered(typeString)) {
       registry.add(type);

@@ -7,22 +7,23 @@ import net.sf.anathema.character.generic.framework.module.CharacterModuleContain
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.InitializationException;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
+import net.sf.anathema.initialization.reflections.AnnotationFinder;
+import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
+import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
 
-@Extension(id="net.sf.anathema.character.generic.framework.ICharacterGenericsExtension")
+@Extension(id = "net.sf.anathema.character.generic.framework.ICharacterGenericsExtension")
 public class CharacterGenericsExtension implements ICharacterGenericsExtension, IAnathemaExtension {
 
   private ICharacterGenerics characterGenerics;
 
   @Override
-  public void initialize(IResources resources,
-		  IDataFileProvider dataFileProvider,
-		  AnathemaReflections reflections) throws InitializationException {
-    CharacterModuleContainer container = new CharacterModuleContainerInitializer(reflections).initContainer(
-        resources,
-        dataFileProvider);
+  public void initialize(IResources resources, IDataFileProvider dataFileProvider, AnnotationFinder finder,
+                         ResourceLoader loader) throws InitializationException {
+    ReflectionsInstantiater instantiater = new ReflectionsInstantiater(finder);
+    CharacterModuleContainerInitializer initializer = new CharacterModuleContainerInitializer(loader, instantiater);
+    CharacterModuleContainer container = initializer.initContainer(resources, dataFileProvider);
     this.characterGenerics = container.getCharacterGenerics();
   }
 

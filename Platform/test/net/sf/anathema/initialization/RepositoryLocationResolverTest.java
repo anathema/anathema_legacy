@@ -1,7 +1,7 @@
 package net.sf.anathema.initialization;
 
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
-import net.sf.anathema.platform.environment.DummyAnathemaPreferences;
+import net.sf.anathema.platform.environment.DummyInitializationPreferences;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -12,7 +12,7 @@ public class RepositoryLocationResolverTest {
   private static final String SYSTEM_PROPERTY_REPOSITORY = "repository"; //$NON-NLS-1$
   private static final String SYSTEM_PROPERTY_DEFAULT_REPOSITORY = "defaultrepository"; //$NON-NLS-1$
 
-  private DummyAnathemaPreferences anathemaPreferences;
+  private DummyInitializationPreferences anathemaPreferences;
 
   private void assertRepositoryLocation(String expected) {
     Assert.assertEquals(expected, new RepositoryLocationResolver(anathemaPreferences).resolve());
@@ -24,7 +24,7 @@ public class RepositoryLocationResolverTest {
 
   @Before
   public void setUp() throws Exception {
-    anathemaPreferences = new DummyAnathemaPreferences();
+    anathemaPreferences = new DummyInitializationPreferences();
   }
 
   @Test

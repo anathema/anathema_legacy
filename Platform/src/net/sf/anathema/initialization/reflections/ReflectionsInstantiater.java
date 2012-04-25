@@ -16,15 +16,15 @@ import static org.apache.commons.lang3.reflect.ConstructorUtils.getMatchingAcces
 
 public class ReflectionsInstantiater implements Instantiater {
 
-  private AnathemaReflections reflections;
+  private AnnotationFinder finder;
 
-  public ReflectionsInstantiater(AnathemaReflections reflections) {
-    this.reflections = reflections;
+  public ReflectionsInstantiater(AnnotationFinder finder) {
+    this.finder = finder;
   }
 
   @Override
   public <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation) throws InitializationException {
-    Set<Class<?>> pluginClasses = reflections.getTypesAnnotatedWith(annotation);
+    Set<Class<?>> pluginClasses = finder.getTypesAnnotatedWith(annotation);
     return Collections2.transform(pluginClasses, new Function<Class<?>, T>() {
       @Override
       public T apply(Class<?> input) {
@@ -35,7 +35,7 @@ public class ReflectionsInstantiater implements Instantiater {
 
   @Override
   public <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation, final Object parameter) throws InitializationException {
-    Set<Class<?>> pluginClasses = reflections.getTypesAnnotatedWith(annotation);
+    Set<Class<?>> pluginClasses = finder.getTypesAnnotatedWith(annotation);
     return Collections2.transform(pluginClasses, new Function<Class<?>, T>() {
       @Override
       public T apply(Class<?> input) {

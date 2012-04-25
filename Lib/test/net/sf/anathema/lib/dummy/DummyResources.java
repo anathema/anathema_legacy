@@ -7,13 +7,13 @@ import java.util.Map;
 import javax.swing.Icon;
 
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.resources.IExtensibleDataSet;
 import net.sf.anathema.lib.resources.IResources;
 
 public class DummyResources implements IResources {
   public static final Icon ANY_ICON = new EmptyIcon();
   private final Map<String, String> stringMap = new HashMap<String, String>();
 
+  @Override
   public boolean supportsKey(String key) {
     return stringMap.containsKey(key);
   }
@@ -22,6 +22,7 @@ public class DummyResources implements IResources {
     stringMap.put(key, value);
   }
 
+  @Override
   public String getString(String key, Object... arguments) {
     if (arguments.length == 0) {
       return stringMap.get(key);
@@ -29,14 +30,12 @@ public class DummyResources implements IResources {
     throw new NotYetImplementedException();
   }
 
+  @Override
   public Image getImage(Class< ? > requestor, String relativePath) {
     throw new NotYetImplementedException();
   }
   
-  public <T extends IExtensibleDataSet> T getDataSet(Class<T> set) {
-	throw new NotYetImplementedException();
-  }
-
+  @Override
   public Icon getImageIcon(Class< ? > requestor, String relativePath) {
     return ANY_ICON;
   }

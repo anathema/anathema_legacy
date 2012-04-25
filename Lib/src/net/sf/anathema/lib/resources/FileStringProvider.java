@@ -40,6 +40,7 @@ public class FileStringProvider implements IStringResourceHandler {
     return new File(fileBase + ".properties"); //$NON-NLS-1$
   }
 
+  @Override
   public String getString(String key, Object... arguments) {
     if (arguments.length == 0) {
       return properties.getProperty(key);
@@ -48,6 +49,7 @@ public class FileStringProvider implements IStringResourceHandler {
     return MessageFormat.format(formatPattern, arguments);
   }
 
+  @Override
   public boolean supportsKey(String key) {
     return properties.containsKey(key);
   }

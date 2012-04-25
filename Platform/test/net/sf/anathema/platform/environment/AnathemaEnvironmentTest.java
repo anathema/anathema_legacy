@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class AnathemaEnvironmentTest {
 
-  private DummyAnathemaPreferences preferences = new DummyAnathemaPreferences();
+  private DummyInitializationPreferences preferences = new DummyInitializationPreferences();
 
   @Test
   public void testSetDefaultLocale() throws Exception {

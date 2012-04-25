@@ -3,7 +3,7 @@ package net.sf.anathema.framework.module.preferences;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.framework.configuration.AnathemaPreferences;
+import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
@@ -146,6 +146,7 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
             : getLookAndFeelClassName();
   }
 
+  @Override
   public void savePreferences() {
     String selectedClass = getSelectedClassName();
     if (selectedClass != null) {
@@ -156,13 +157,14 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   }
 
   private static String getLookAndFeelClassName() {
-    return AnathemaPreferences.getDefaultPreferences().getUserLookAndFeel();
+    return InitializationPreferences.getDefaultPreferences().getUserLookAndFeel();
   }
 
   private static String resolveLookAndFeelClassName(String className) {
     return className != null ? className : UIManager.getSystemLookAndFeelClassName();
   }
 
+  @Override
   public IIdentificate getCategory() {
     return SYSTEM_CATEGORY;
   }
@@ -206,10 +208,12 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
       this.label = label;
     }
 
+    @Override
     public int getColumnCount() {
       return 2;
     }
 
+    @Override
     public void fillInto(JPanel panel, int columnCount) {
       panel.add(label);
       if (allowCustom) {
@@ -262,6 +266,7 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
       this.resources = resources;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
       selected = (LookAndFeelItem) combo.getSelectedItem();
       if (selected != null && selected.getClassName() == null) {

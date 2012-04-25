@@ -1,7 +1,7 @@
 package net.sf.anathema;
 
-import net.sf.anathema.framework.configuration.AnathemaPreferences;
-import net.sf.anathema.framework.configuration.IAnathemaPreferences;
+import net.sf.anathema.framework.configuration.InitializationPreferences;
+import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.view.ErrorWindow;
 import net.sf.anathema.framework.view.IWindow;
@@ -15,34 +15,34 @@ public class Anathema {
   /*Called by the boot loader using reflection.*/
   @SuppressWarnings("UnusedDeclaration")
   public void startApplication() throws Exception {
-    IAnathemaPreferences anathemaPreferences = loadPreferences();
-    prepareEnvironment(anathemaPreferences);
-    showMainFrame(anathemaPreferences);
+    IInitializationPreferences initializationPreferences = loadPreferences();
+    prepareEnvironment(initializationPreferences);
+    showMainFrame(initializationPreferences);
   }
 
-  private IAnathemaPreferences loadPreferences() {
+  private IInitializationPreferences loadPreferences() {
     displayStatus("Retrieving Preferences...");
-    return AnathemaPreferences.getDefaultPreferences();
+    return InitializationPreferences.getDefaultPreferences();
   }
 
-  private void prepareEnvironment(IAnathemaPreferences anathemaPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+  private void prepareEnvironment(IInitializationPreferences initializationPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
     displayStatus("Preparing Environment..."); //$NON-NLS-1$
     AnathemaEnvironment.initLogging();
-    AnathemaEnvironment.initLocale(anathemaPreferences);
-    AnathemaEnvironment.initLookAndFeel(anathemaPreferences);
-    AnathemaEnvironment.initTooltipManager(anathemaPreferences);
+    AnathemaEnvironment.initLocale(initializationPreferences);
+    AnathemaEnvironment.initLookAndFeel(initializationPreferences);
+    AnathemaEnvironment.initTooltipManager(initializationPreferences);
   }
 
-  private void showMainFrame(IAnathemaPreferences anathemaPreferences) {
-    IWindow anathemaView = createView(anathemaPreferences);
+  private void showMainFrame(IInitializationPreferences initializationPreferences) {
+    IWindow anathemaView = createView(initializationPreferences);
     displayStatus("Done.");
     anathemaView.show();
   }
 
-  private IWindow createView(IAnathemaPreferences anathemaPreferences) {
+  private IWindow createView(IInitializationPreferences initializationPreferences) {
     try {
       displayStatus("Starting Platform..."); //$NON-NLS-1$
-      return new AnathemaInitializer(anathemaPreferences).initialize();
+      return new AnathemaInitializer(initializationPreferences).initialize();
     } catch (InitializationException e) {
       e.printStackTrace();
       return new ErrorWindow(e);

@@ -8,7 +8,7 @@ import java.util.logging.LogManager;
 import javax.swing.ToolTipManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import net.sf.anathema.framework.configuration.IAnathemaPreferences;
+import net.sf.anathema.framework.configuration.IInitializationPreferences;
 
 public class AnathemaEnvironment {
 
@@ -23,22 +23,22 @@ public class AnathemaEnvironment {
     }
   }
 
-  public static void initTooltipManager(IAnathemaPreferences anathemaPreferences) {
+  public static void initTooltipManager(IInitializationPreferences initializationPreferences) {
     ToolTipManager.sharedInstance().setInitialDelay(0);
     ToolTipManager.sharedInstance().setReshowDelay(0);
-    int toolTipTime = anathemaPreferences.getTooltipTimePreference();
+    int toolTipTime = initializationPreferences.getTooltipTimePreference();
     ToolTipManager.sharedInstance().setDismissDelay(toolTipTime * 1000);
   }
 
-  public static void initLookAndFeel(IAnathemaPreferences anathemaPreferences)
+  public static void initLookAndFeel(IInitializationPreferences initializationPreferences)
           throws ClassNotFoundException,
           InstantiationException,
           IllegalAccessException,
           UnsupportedLookAndFeelException {
-    new LookAndFeelInitializer(anathemaPreferences).initialize();
+    new LookAndFeelInitializer(initializationPreferences).initialize();
   }
 
-  public static void initLocale(IAnathemaPreferences preferences) {
+  public static void initLocale(IInitializationPreferences preferences) {
     Locale.setDefault(preferences.getPreferredLocale());
   }
 }

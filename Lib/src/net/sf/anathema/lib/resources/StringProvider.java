@@ -11,20 +11,21 @@ public class StringProvider implements IStringResourceHandler {
   private ResourceBundle resourceBundle;
   private final List<String> keyList = new ArrayList<String>();
 
-  public StringProvider(String bundleName, Locale locale, IAnathemaResourceFile resource) {
-    setLocale(locale, bundleName, resource);
+  public StringProvider(String bundleName, Locale locale) {
+    setLocale(locale, bundleName);
   }
 
-  private void setLocale(Locale locale, String resourceBundleName, IAnathemaResourceFile resource) {
+  private void setLocale(Locale locale, String resourceBundleName) {
     if (locale == null) {
       throw new IllegalArgumentException("locale is null."); //$NON-NLS-1$
     }
-    resourceBundle = ResourceBundle.getBundle(resourceBundleName, locale, ((AnathemaResourceFile)resource).getLoader());
+    resourceBundle = ResourceBundle.getBundle(resourceBundleName, locale);
     for (Enumeration<String> keys = resourceBundle.getKeys(); keys.hasMoreElements();) {
       this.keyList.add(keys.nextElement());
     }
   }
 
+  @Override
   public String getString(String key, Object... arguments) {
     if (arguments.length == 0) {
       return resourceBundle.getString(key);
@@ -33,6 +34,7 @@ public class StringProvider implements IStringResourceHandler {
     return MessageFormat.format(formatPattern, arguments);
   }
 
+  @Override
   public boolean supportsKey(String key) {
     return keyList.contains(key);
   }

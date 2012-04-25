@@ -15,7 +15,7 @@ import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
-import net.sf.anathema.initialization.reflections.AnathemaReflections;
+import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;
@@ -30,12 +30,12 @@ public class AnathemaModel implements IAnathemaModel {
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final Repository repository;
   private final AnathemaMessaging messaging;
-  private final AnathemaReflections reflections;
+  private final ResourceLoader resourceLoader;
 
-  public AnathemaModel(File repositoryFolder, IResources resources, AnathemaReflections reflections) {
+  public AnathemaModel(File repositoryFolder, IResources resources, ResourceLoader resourceLoader) {
     this.repository = new Repository(repositoryFolder, itemManagment);
     this.messaging = new AnathemaMessaging(resources);
-    this.reflections = reflections;
+    this.resourceLoader = resourceLoader;
   }
 
   @Override
@@ -84,7 +84,7 @@ public class AnathemaModel implements IAnathemaModel {
   }
   
   @Override
-  public AnathemaReflections getReflections() {
-    return reflections;
+  public ResourceLoader getResourceLoader() {
+    return resourceLoader;
   }
 }

@@ -3,17 +3,17 @@ package net.sf.anathema.framework.environment;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import net.sf.anathema.framework.configuration.IAnathemaPreferences;
+import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.lib.logging.Logger;
 
 public class LookAndFeelInitializer {
   private static final String AQUA_LOOK_AND_FEEL_CLASSNAME = "apple.laf.AquaLookAndFeel"; //$NON-NLS-1$
   private static final String AQUA_USE_SCREEN_MENU_BAR = "apple.laf.useScreenMenuBar"; //$NON-NLS-1$
   private static final String AQUA_APPLICATION_NAME = "com.apple.mrj.application.apple.menu.about.name"; //$NON-NLS-1$
-  private final IAnathemaPreferences anathemaPreferences;
+  private final IInitializationPreferences initializationPreferences;
 
-  public LookAndFeelInitializer(IAnathemaPreferences anathemaPreferences) {
-    this.anathemaPreferences = anathemaPreferences;
+  public LookAndFeelInitializer(IInitializationPreferences initializationPreferences) {
+    this.initializationPreferences = initializationPreferences;
   }
 
   public void initialize()
@@ -31,7 +31,7 @@ public class LookAndFeelInitializer {
   }
 
   private String getLookAndFeelToUse() {
-    String lookAndFeelClassName = anathemaPreferences.getUserLookAndFeel();
+    String lookAndFeelClassName = initializationPreferences.getUserLookAndFeel();
     if (lookAndFeelClassName == null) {
       lookAndFeelClassName = UIManager.getSystemLookAndFeelClassName();
     }
