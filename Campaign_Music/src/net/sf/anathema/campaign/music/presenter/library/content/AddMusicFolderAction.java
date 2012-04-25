@@ -32,7 +32,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AddMusicFolderAction extends SmartAction {
   private static final long serialVersionUID = -509736641362821213L;
-  private static final String ADD_MUSIC_FOLDER_DIRECTORY_CHOOSER_VALUE = "AddMusicFolder"; //$NON-NLS-1$
+  public static final String ADD_MUSIC_CHOOSER_VALUE = "AddMusicFolder"; //$NON-NLS-1$
   private final ILibraryControl model;
   private final ILibraryControlView view;
   private final IMusicSearchControl searchControl;
@@ -63,8 +63,8 @@ public class AddMusicFolderAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    final File directory = DirectoryFileChooser.createDirectoryChooser(
-        ADD_MUSIC_FOLDER_DIRECTORY_CHOOSER_VALUE,
+    final File directory = DirectoryFileChooser.createMusicDirectoryChooser(
+        ADD_MUSIC_CHOOSER_VALUE,
         resources.getString("Music.Actions.AddFolder.FileDialogTitle")); //$NON-NLS-1$
     if (directory == null) {
       return;
