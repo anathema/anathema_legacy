@@ -23,7 +23,7 @@ public class MultiSourceStringProvider implements IStringResourceHandler {
         return handler.getString(key);
       }
     }
-    return "##" + key + "##"; //$NON-NLS-1$ //$NON-NLS-2$
+    return new NullStringProvider().getString(key);
   }
 
   @Override
