@@ -45,6 +45,8 @@ Here is an example of what the content of that file should look like:
 		<duration duration="Instant" />
 		<charmtype type="Simple" />
 		<charmAttribute attribute="Native" visualize="true" />
+		<!-- For Martial Arts, make sure to add a charmAttribute denoting the Charms level, like-->
+		<!-- charmAttribute attribute="Celestial" /-->
 		<source source="Custom" />
 	</charm>
 </charmlist>
