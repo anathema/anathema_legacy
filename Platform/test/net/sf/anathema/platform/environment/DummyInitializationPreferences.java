@@ -18,11 +18,11 @@ public class DummyInitializationPreferences implements IInitializationPreference
   }
 
   @Override
-  public String getRepositoryLocationPreference(String string) {
-    if (string != null) {
-      return string;
+  public String getRepositoryLocationPreference(String defaultValue) {
+    if (repositoryLocation != null) {
+      return repositoryLocation;
     }
-    return repositoryLocation;
+    return defaultValue;
   }
 
   public void setRepositoryLocationPreference(String preference) {
