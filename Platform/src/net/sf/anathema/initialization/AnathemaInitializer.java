@@ -67,7 +67,7 @@ public class AnathemaInitializer {
     ProxySplashscreen.getInstance().displayStatusMessage("Loading Resources..."); //$NON-NLS-1$
     Set<ResourceFile> resourcesInPaths = loader.getResourcesMatching(".*\\.properties");
     for (ResourceFile resource : resourcesInPaths) {
-      resources.addResourceBundle(toBundleName(resource.getFileName()), resource);
+      resources.addResourceBundle(resource);
     }
     return resources;
   }
@@ -76,15 +76,5 @@ public class AnathemaInitializer {
     RepositoryLocationResolver resolver = new RepositoryLocationResolver(initializationPreferences);
     CustomDataResourceLoader customLoader = new CustomDataResourceLoader(resolver);
     return new AggregatedResourceLoader(reflections, customLoader);
-  }
-
-  private String toBundleName(String input) {
-    String resourceName = input.replace("/", ".").replace(".properties", "");
-    boolean isInternationalizationFile = resourceName.matches(".*_..");
-    if (isInternationalizationFile) {
-      return resourceName.substring(0, resourceName.lastIndexOf("_"));
-    } else {
-      return resourceName;
-    }
   }
 }

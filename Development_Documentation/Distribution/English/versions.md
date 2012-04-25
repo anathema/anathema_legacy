@@ -7,7 +7,14 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.1.1
 
+Anathema no longer supports the ``custom.properties``.
+Please use the custom data facility introduced in v4.1.0 in its stead, placing your existing file into the repository's ``custom`` folder.
+
+### Bugfixes
+* [Curtis Tasker] Dodge DV takes into account mobility penalties from shields.
+* (Infernal Monster Style) Correct Essence prereq for "Screaming Meat Shield" and "One Hand Fury".
 
 
 ## Release 4.1.0 "Varang"

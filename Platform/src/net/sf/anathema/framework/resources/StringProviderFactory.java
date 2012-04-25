@@ -14,16 +14,16 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class StringProviderFactory {
-  private static final Logger logger = Logger.getLogger(AnathemaResources.class);
+  private static final Logger logger = Logger.getLogger(StringProviderFactory.class);
   private final Locale locale;
 
   public StringProviderFactory(Locale locale) {
     this.locale = locale;
   }
 
-  public IStringResourceHandler create(String bundleName, ResourceFile resource) {
+  public IStringResourceHandler create(ResourceFile resource) {
     if (resource instanceof InternalResourceFile) {
-      return createInternalProvider(bundleName);
+      return createInternalProvider(resource);
     }
     if (resource instanceof ExternalResourceFile) {
       return createExternalProvider(resource);
@@ -41,7 +41,17 @@ public class StringProviderFactory {
     }
   }
 
-  private IStringResourceHandler createInternalProvider(String bundleName) {
-    return new StringProvider(bundleName, locale); //$NON-NLS-1$
+  private IStringResourceHandler createInternalProvider(ResourceFile resourceFile) {
+    String bundle = toBundleName(resourceFile.getFileName());
+    return new StringProvider(bundle, locale);
+  }
+
+  private String toBundleName(String input) {
+    String resourceName = input.replace("/", ".").replace(".properties", "");
+    boolean isInternationalizationFile = resourceName.matches(".*_..");
+    if (isInternationalizationFile) {
+      return resourceName.substring(0, resourceName.lastIndexOf("_"));
+    }
+    return resourceName;
   }
 }
