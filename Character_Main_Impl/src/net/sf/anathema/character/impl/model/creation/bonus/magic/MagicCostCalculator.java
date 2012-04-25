@@ -84,10 +84,12 @@ public class MagicCostCalculator {
       this.handledMagic = handledMagic;
     }
 
+    @Override
     public void visitCharm(ICharm charm) {
       learnCount = determineLearnCount(charm, handledMagic);
     }
 
+    @Override
     public void visitSpell(ISpell spell) {
       learnCount = 1;
     }
@@ -197,10 +199,12 @@ public class MagicCostCalculator {
     } else {
       bonusPools.spendOn(magic, bonusPointFactor);
       magic.accept(new IMagicVisitor() {
+        @Override
         public void visitCharm(ICharm charm) {
           bonusPointsSpentForCharms += bonusPointFactor;
         }
 
+        @Override
         public void visitSpell(ISpell spell) {
           bonusPointsSpentForSpells += bonusPointFactor;
         }

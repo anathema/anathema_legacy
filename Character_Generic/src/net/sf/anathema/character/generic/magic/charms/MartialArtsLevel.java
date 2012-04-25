@@ -5,6 +5,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 public enum MartialArtsLevel implements IIdentificate {
   Mortal, Terrestrial, Celestial, Sidereal;
 
+  @Override
   public String getId() {
     return name();
   }

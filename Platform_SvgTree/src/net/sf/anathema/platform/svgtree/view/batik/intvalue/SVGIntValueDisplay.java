@@ -25,6 +25,7 @@ import org.w3c.dom.svg.SVGRectElement;
 public class SVGIntValueDisplay implements IIntValueView {
 
   private final EventListener selectionListener = new EventListener() {
+    @Override
     public void handleEvent(Event evt) {
       if (selectionRectangle != null) {
         removeSelectionRectangle();
@@ -36,6 +37,7 @@ public class SVGIntValueDisplay implements IIntValueView {
   };
 
   private final EventListener rectangleChangeListener = new EventListener() {
+    @Override
     public void handleEvent(Event evt) {
       if (evt instanceof MouseEvent && selectionRectangle != null) {
         MouseEvent mouseEvent = (MouseEvent) evt;
@@ -47,6 +49,7 @@ public class SVGIntValueDisplay implements IIntValueView {
   };
 
   private final EventListener displayRectangleListener = new EventListener() {
+    @Override
     public void handleEvent(Event evt) {
       if (visible && evt instanceof MouseEvent) {
         MouseEvent mouseEvent = (MouseEvent) evt;
@@ -201,6 +204,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     return (SVGCircleElement) circle;
   }
 
+  @Override
   public void setValue(final int value) {
     this.value = value;
     if (visible) {
@@ -214,10 +218,12 @@ public class SVGIntValueDisplay implements IIntValueView {
     fireValueChangedEvent(value);
   }
 
+  @Override
   public void addIntValueChangedListener(final IIntValueChangedListener listener) {
     valueControl.addIntValueChangeListener(listener);
   }
 
+  @Override
   public void removeIntValueChangedListener(final IIntValueChangedListener listener) {
     valueControl.removeIntValueChangeListener(listener);
   }
@@ -231,6 +237,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     selectionRectangle = null;
   }
 
+  @Override
   public void setMaximum(final int maximalValue) {
     // nothing to do
   }

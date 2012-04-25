@@ -49,6 +49,7 @@ public class SeriesPersister implements IRepositoryItemPersister {
     this.campaignType = campaignType;
   }
 
+  @Override
   public void save(IRepositoryWriteAccess writeAccess, IItem item) throws RepositoryException, IOException {
     Element rootElement = DocumentHelper.createElement(TAG_SERIES_ROOT);
     repositoryItemPerister.save(rootElement, item);
@@ -109,6 +110,7 @@ public class SeriesPersister implements IRepositoryItemPersister {
     textPersister.restoreTextualDescription(documentRoot, TAG_SUMMARY, description.getContent());
   }
 
+  @Override
   public final IItem load(IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException {
     InputStream stream = null;
     try {
@@ -184,6 +186,7 @@ public class SeriesPersister implements IRepositoryItemPersister {
     }
   }
 
+  @Override
   public IItem createNew(IAnathemaWizardModelTemplate template) {
     return new AnathemaDataItem(campaignType, new Series());
   }

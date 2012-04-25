@@ -6,6 +6,7 @@ public class SolarVirtueFlawTemplate implements IAdditionalTemplate {
 
   public static final String ID = "SolarVirtueFlaw"; //$NON-NLS-1$
 
+  @Override
   public String getId() {
     return ID;
   }

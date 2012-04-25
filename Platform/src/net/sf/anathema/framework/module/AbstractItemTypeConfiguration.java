@@ -14,11 +14,13 @@ public abstract class AbstractItemTypeConfiguration implements IItemTypeConfigur
     this.type = type;
   }
 
+  @Override
   public final void registerViewFactory(IAnathemaModel anathemaModel, IResources resources) {
     IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = anathemaModel.getViewFactoryRegistry();
     viewFactoryRegistry.register(type, createItemViewFactory(anathemaModel, resources));
   }
 
+  @Override
   public final IItemType getItemType() {
     return type;
   }

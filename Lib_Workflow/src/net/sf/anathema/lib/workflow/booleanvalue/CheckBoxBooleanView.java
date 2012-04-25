@@ -17,18 +17,22 @@ public class CheckBoxBooleanView implements IBooleanValueView, IView {
     checkBox = new JCheckBox(label);
   }
 
+  @Override
   public void addChangeListener(final IBooleanValueChangedListener listener) {
     checkBox.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         listener.valueChanged(checkBox.isSelected());
       }
     });
   }
 
+  @Override
   public void setSelected(boolean selected) {
     checkBox.setSelected(selected);
   }
 
+  @Override
   public JToggleButton getComponent() {
     return checkBox;
   }

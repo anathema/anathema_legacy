@@ -17,10 +17,12 @@ public class UntilEventDuration extends ReflectionEqualsObject implements IDurat
     return event;
   }
 
+  @Override
   public void accept(IDurationVisitor visitor) {
     visitor.acceptUntilEventDuration(this);
   }
 
+  @Override
   public String getText(IStringResourceHandler resources) {
     final String eventText = resources.getString("Charm.Event." + getEvent()); //$NON-NLS-1$
     return resources.getString("Charm.UntilEvent", new Object[] { eventText }); //$NON-NLS-1$

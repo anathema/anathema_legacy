@@ -7,6 +7,7 @@ import org.dom4j.Element;
 
 public class SiderealFlawedFateParser implements IAdditionalTemplateParser {
 
+  @Override
   public IAdditionalTemplate parse(Element element) {
     return new SiderealFlawedFateTemplate();
   }

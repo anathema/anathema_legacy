@@ -31,6 +31,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
     innerVisualizableNodesByContent.put(node, visualizableNode);
   }
 
+  @Override
   public IVisualizableNode[] getChildren() {
     Set<IVisualizableNode> children = new ListOrderedSet<IVisualizableNode>();
     for (ISimpleNode node : contentNodes) {
@@ -41,6 +42,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
     return children.toArray(new IVisualizableNode[children.size()]);
   }
 
+  @Override
   public IVisualizableNode[] getParents() {
     Set<IVisualizableNode> parents = new ListOrderedSet<IVisualizableNode>();
     for (ISimpleNode node : contentNodes) {
@@ -51,6 +53,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
     return parents.toArray(new IVisualizableNode[parents.size()]);
   }
 
+  @Override
   public int getWidth() {
     int width = 0;
     for (ISimpleNode node : contentNodes) {
@@ -71,6 +74,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
     }
   }
 
+  @Override
   public boolean isOfSameLeafGroup(final IVisualizableNode node) {
     for (IVisualizableNode visualizableNode : getInnerNodes()) {
       if (visualizableNode.isOfSameLeafGroup(node)) {
@@ -80,6 +84,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
     return false;
   }
 
+  @Override
   public void accept(final IVisualizableNodeVisitor visitor) {
     visitor.visitHorizontalMetaNode(this);
   }
@@ -107,10 +112,12 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
     }
   }
 
+  @Override
   public boolean isRootNode() {
     return false;
   }
 
+  @Override
   public final void toXML(final Element element) {
     throw new UnsupportedOperationException("Metanodes should be unrolled before creating XML."); //$NON-NLS-1$
   }

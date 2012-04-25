@@ -13,10 +13,12 @@ public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IDefensi
     super(resources, "Fatigue"); //$NON-NLS-1$
   }
 
+  @Override
   public int getColumnCount() {
     return 1;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IDefensiveStats stats) {
     if (stats == null) {
       table.addCell(createEmptyValueCell(font));
@@ -25,6 +27,7 @@ public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IDefensi
     }
   }
 
+  @Override
   public void addTotal(PdfPTable table, Font font, IArmourStats totalArmour) {
     table.addCell(createFinalValueCell(font, totalArmour.getFatigue()));
   }

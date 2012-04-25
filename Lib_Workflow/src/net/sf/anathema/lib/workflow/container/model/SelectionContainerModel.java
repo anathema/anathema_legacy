@@ -21,6 +21,7 @@ public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
     this.container = container;
   }
 
+  @Override
   public void setSelectedValues(V[] values) {
     if (Arrays.equals(container.getValues(), values)) {
       return;
@@ -29,18 +30,22 @@ public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
     changeControl.fireChangedEvent();
   }
 
+  @Override
   public V[] getSelectedValues() {
     return container.getValues();
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
 
+  @Override
   public void removeChangeListener(IChangeListener listener) {
     changeControl.removeChangeListener(listener);
   }
 
+  @Override
   public V[] getAllAvailableValues() {
     return container.getAllAvailableValues();
   }

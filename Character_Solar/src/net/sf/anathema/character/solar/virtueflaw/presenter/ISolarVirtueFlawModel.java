@@ -5,5 +5,6 @@ import net.sf.anathema.character.solar.virtueflaw.model.ISolarVirtueFlaw;
 
 public interface ISolarVirtueFlawModel extends IVirtueFlawModel {
 
+  @Override
   public ISolarVirtueFlaw getVirtueFlaw();
 }

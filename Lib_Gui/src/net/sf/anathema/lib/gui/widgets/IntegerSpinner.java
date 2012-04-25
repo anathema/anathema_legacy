@@ -53,12 +53,14 @@ public class IntegerSpinner implements IView {
     return (SpinnerNumberModel) spinner.getModel();
   }
 
+  @Override
   public JComponent getComponent() {
     return spinner;
   }
 
   public void addChangeListener(final IIntValueChangedListener listener) {
     ChangeListener changeListener = new ChangeListener() {
+      @Override
       public void stateChanged(ChangeEvent e) {
         listener.valueChanged(getValue());
       }
@@ -69,10 +71,12 @@ public class IntegerSpinner implements IView {
 
   private void initDigitsOnlyDocument(final JTextComponent textField) {
     DigitsOnlyDocument document = new DigitsOnlyDocument(true, new IOverline() {
+      @Override
       public int getNearestValue(int value) {
         return createRange().getNearestValue(value);
       }
 
+      @Override
       public int getLowerBound() {
         return createRange().getLowerBound();
       }
@@ -86,10 +90,12 @@ public class IntegerSpinner implements IView {
     textField.setDocument(document);
     document.addDocumentListener(new DocumentListener() {
 
+      @Override
       public void changedUpdate(DocumentEvent evt) {
         updateSpinnerModel();
       }
 
+      @Override
       public void insertUpdate(DocumentEvent evt) {
         updateSpinnerModel();
       }
@@ -105,6 +111,7 @@ public class IntegerSpinner implements IView {
         }
       }
 
+      @Override
       public void removeUpdate(DocumentEvent e) {
         updateSpinnerModel();
       }

@@ -24,6 +24,7 @@ public class RearButtonTraitViewWrapper<K extends ITraitView< ? >> extends Abstr
     button.setPreferredSize(new Dimension(buttonIcon.getIconWidth() + 4, buttonIcon.getIconHeight() + 4));
   }
 
+  @Override
   public void addComponents(JPanel panel) {
     this.traitViewPanel = panel;
     this.innerViewPanel = new JPanel(new GridDialogLayout(2, false));
@@ -33,14 +34,17 @@ public class RearButtonTraitViewWrapper<K extends ITraitView< ? >> extends Abstr
     panel.revalidate();
   }
 
+  @Override
   public void setButtonEnabled(boolean enabled) {
     button.setEnabled(enabled);
   }
 
+  @Override
   public void addButtonListener(ActionListener listener) {
     button.addActionListener(listener);
   }
 
+  @Override
   public void delete() {
     getInnerView().delete();
     traitViewPanel.remove(innerViewPanel);

@@ -31,6 +31,7 @@ public class NameGeneratorPresenter implements Presenter {
     this.typePresentation = typePresentation;
   }
 
+  @Override
   public void initPresentation() {
     for (IIdentificate generatorType : model.getGeneratorTypes()) {
       JComponent modelPresentation = typePresentation.initGeneratorTypePresentation(generatorType);
@@ -55,11 +56,13 @@ public class NameGeneratorPresenter implements Presenter {
 
   private void initSelectedGeneratorTypePresentation() {
     view.addGeneratorTypeChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         model.setGeneratorType((IIdentificate) view.getSelectedGeneratorType());
       }
     });
     model.addGeneratorTypeChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         view.setSelectedGeneratorType(model.getSelectedGeneratorType());
       }

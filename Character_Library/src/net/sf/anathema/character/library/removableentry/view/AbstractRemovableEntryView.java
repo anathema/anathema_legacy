@@ -8,6 +8,7 @@ public abstract class AbstractRemovableEntryView<V extends IRemovableEntryView> 
     IRemovableEntriesView<V>,
     IView {
 
+  @Override
   public void removeEntryView(IRemovableEntryView removableView) {
     removableView.delete();
   }

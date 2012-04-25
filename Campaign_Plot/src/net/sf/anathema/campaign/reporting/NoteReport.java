@@ -20,6 +20,7 @@ public class NoteReport extends AbstractPdfReport {
 
   private final PdfReportUtils reportUtils = new PdfReportUtils();
 
+  @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     if (!supports(item)) {
       throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
@@ -43,6 +44,7 @@ public class NoteReport extends AbstractPdfReport {
     }
   }
 
+  @Override
   public boolean supports(IItem item) {
     if (item == null) {
       return false;

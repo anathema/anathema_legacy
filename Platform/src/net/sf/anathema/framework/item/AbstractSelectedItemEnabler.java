@@ -14,14 +14,17 @@ public abstract class AbstractSelectedItemEnabler {
   public AbstractSelectedItemEnabler(final IItemManagementModel model, Action action) {
     this.action = action;
     model.addListener(new IItemManagementModelListener() {
+      @Override
       public void itemAdded(IItem item) throws AnathemaException {
         adjustEnabled(model.getSelectedItem());
       }
 
+      @Override
       public void itemSelected(IItem item) {
         adjustEnabled(model.getSelectedItem());
       }
 
+      @Override
       public void itemRemoved(IItem item) {
         adjustEnabled(model.getSelectedItem());
       }

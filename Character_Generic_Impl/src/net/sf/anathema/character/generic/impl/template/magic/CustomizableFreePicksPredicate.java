@@ -17,6 +17,7 @@ public class CustomizableFreePicksPredicate implements IPredicate<IMagic> {
     this.defaultResponse = defaultResponse;
   }
 
+  @Override
   public boolean evaluate(IMagic magic) {
     if (exceptionMagicIds.contains(magic.getId())) {
       return !defaultResponse;

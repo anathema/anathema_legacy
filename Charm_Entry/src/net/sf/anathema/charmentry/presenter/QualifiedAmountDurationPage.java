@@ -42,6 +42,7 @@ public class QualifiedAmountDurationPage extends AbstractAnathemaWizardPage {
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new PrerequisitesEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
+      @Override
       public boolean isFulfilled() {
         return getPageModel().isDurationComplete();
       }
@@ -59,6 +60,7 @@ public class QualifiedAmountDurationPage extends AbstractAnathemaWizardPage {
     final IntegerSpinner spinner = view.addRadioButtonSpinner();
     spinner.setMinimum(1);
     spinner.addChangeListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         if (spinner.getComponent().isEnabled()) {
           getPageModel().setValueForAmountDuration(newValue);
@@ -87,11 +89,13 @@ public class QualifiedAmountDurationPage extends AbstractAnathemaWizardPage {
     initComboBoxListening(otherBox);
     final ITextView textView = view.addTextView();
     textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         getPageModel().setTextForAmountDuration(newValue);
       }
     });
     view.addTypeChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         abilityBox.setSelectedObject(null);
         attributeBox.setSelectedObject(null);
@@ -108,24 +112,29 @@ public class QualifiedAmountDurationPage extends AbstractAnathemaWizardPage {
 
   private void initComboBoxListening(ObjectSelectionView<ITraitType> selectionView) {
     selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ITraitType>() {
+      @Override
       public void valueChanged(ITraitType newValue) {
         getPageModel().setTraitForAmountDuration(newValue);
       }
     });
   }
 
+  @Override
   public boolean canFinish() {
     return false;
   }
 
+  @Override
   public String getDescription() {
     return properties.getDurationPageTitle();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     return properties.getBasicMessage();
   }
 
+  @Override
   public IPageContent getPageContent() {
     return view;
   }

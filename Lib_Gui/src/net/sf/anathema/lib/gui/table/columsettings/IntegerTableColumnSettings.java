@@ -58,6 +58,7 @@ public class IntegerTableColumnSettings extends AbstractTableColumnSettings {
     this.negativeColor = negativeColor;
   }
 
+  @Override
   public TableCellEditor getEditor() {
     return new NumbersOnlyIntegerCellEditor(minimum, maximum, stepsize);
   }

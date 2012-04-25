@@ -19,6 +19,7 @@ public class PlotElement extends PlotElementContainer implements IPlotElement {
     this.itemDescription = description;
   }
 
+  @Override
   public IItemDescription getDescription() {
     return itemDescription;
   }

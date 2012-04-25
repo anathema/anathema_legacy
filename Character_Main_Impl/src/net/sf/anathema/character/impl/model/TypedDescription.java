@@ -15,10 +15,12 @@ public class TypedDescription<T extends ITypedDescriptionType> implements ITyped
     this.type = type;
   }
 
+  @Override
   public final T getType() {
     return type;
   }
 
+  @Override
   public final void setType(T type) {
     Ensure.ensureNotNull("Type must not be set to null.", type); //$NON-NLS-1$
     if (this.type == type) {
@@ -28,6 +30,7 @@ public class TypedDescription<T extends ITypedDescriptionType> implements ITyped
     fireTypeChangedEvent();
   }
 
+  @Override
   public final void addChangeListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }

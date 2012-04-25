@@ -8,6 +8,7 @@ import net.sf.anathema.character.solar.virtueflaw.model.SolarVirtueFlawModel;
 
 public class SolarVirtueFlawModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new SolarVirtueFlawModel(context, additionalTemplate);
   }

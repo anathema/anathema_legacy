@@ -23,10 +23,12 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
     this.effectIds = effectIds;
   }
 
+  @Override
   public void accept(ISpecialCharmVisitor visitor) {
     visitor.visitMultipleEffectCharm(this);
   }
 
+  @Override
   public String getCharmId() {
     return charmId;
   }

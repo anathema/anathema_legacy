@@ -105,6 +105,7 @@ public class RegainEssenceTableEncoder implements ITableEncoder<RegainEssenceCon
     return graphics.createTableFont();
   }
 
+  @Override
   public boolean hasContent(RegainEssenceContent content) {
     return content.hasContent();
   }

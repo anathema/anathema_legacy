@@ -20,7 +20,8 @@ public class DisableableProxyAction extends AbstractAction {
 		Ensure.ensureNotNull(action);
 		this.action = action;
 		action.addPropertyChangeListener(new PropertyChangeListener() {
-			public void propertyChange(PropertyChangeEvent evt) {
+			@Override
+            public void propertyChange(PropertyChangeEvent evt) {
 				firePropertyChange(evt.getPropertyName(), evt.getOldValue(),
 						evt.getNewValue());
 			}
@@ -42,7 +43,8 @@ public class DisableableProxyAction extends AbstractAction {
 				Boolean.valueOf(!isEnabled()), Boolean.valueOf(isEnabled()));
 	}
 
-	public void actionPerformed(ActionEvent e) {
+	@Override
+    public void actionPerformed(ActionEvent e) {
 		action.actionPerformed(e);
 	}
 

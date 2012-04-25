@@ -29,10 +29,12 @@ public class UpgradableCharmConfiguration extends MultipleEffectCharmConfigurati
     //nothing to do
   }
 
+  @Override
   public int getUpgradeBPCost() {
     return upgrade.getUpgradeBPCost(data);
   }
 
+  @Override
   public int getUpgradeXPCost() {
     return upgrade.getUpgradeXPCost(data);
   }

@@ -17,10 +17,12 @@ public class DefaultSelectionContainer<V> implements IGenericSelectionContainer<
     this.arrayFactory = new ArrayFactory<V>(componentType);
   }
 
+  @Override
   public V[] getAllAvailableValues() {
     return availableValues;
   }
 
+  @Override
   public void setValues(V[] values) {
     valueList.clear();
     if (values != null) {
@@ -28,6 +30,7 @@ public class DefaultSelectionContainer<V> implements IGenericSelectionContainer<
     }
   }
 
+  @Override
   public V[] getValues() {
     return valueList.toArray(arrayFactory.createArray(valueList.size()));
   }

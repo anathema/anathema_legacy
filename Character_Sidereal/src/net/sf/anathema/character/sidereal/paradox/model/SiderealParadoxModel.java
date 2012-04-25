@@ -37,6 +37,7 @@ public class SiderealParadoxModel extends VirtueFlawModel
     super.addChangeListener(listener);
   }
 
+  @Override
   public ITraitType[] getFlawVirtueTypes() {
     List<ITraitType> flawVirtues = new ArrayList<ITraitType>();
     for (VirtueType virtueType : VirtueType.values()) {

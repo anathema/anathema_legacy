@@ -34,6 +34,7 @@ public class TraitFavorization implements ITraitFavorization {
     this.state = isRequiredFavored ? FavorableState.Favored : FavorableState.Default;
   }
 
+  @Override
   public final void setFavorableState(FavorableState state) {
     if (state == FavorableState.Caste && isRequiredFavored) {
       throw new IllegalStateException("Traits with required favored must not  be of any caste"); //$NON-NLS-1$
@@ -55,15 +56,18 @@ public class TraitFavorization implements ITraitFavorization {
     fireFavorableStateChangedEvent();
   }
 
+  @Override
   public void ensureMinimalValue() {
     final int minimalValue = getMinimalValue();
     if (trait.getCurrentValue() < minimalValue) {
       trait.accept(new ITraitVisitor() {
 
+        @Override
         public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
           visitedTrait.getFallbackTrait().setCurrentValue(minimalValue);
         }
 
+        @Override
         public void visitDefaultTrait(IDefaultTrait visitedTrait) {
           visitedTrait.setCurrentValue(minimalValue);
         }
@@ -71,10 +75,12 @@ public class TraitFavorization implements ITraitFavorization {
     }
   }
 
+  @Override
   public int getMinimalValue() {
     return this.state == FavorableState.Favored ? 1 : 0;
   }
 
+  @Override
   public void setFavored(boolean favored) {
     if (isCaste() || isFavored() == favored) {
       return;
@@ -89,38 +95,46 @@ public class TraitFavorization implements ITraitFavorization {
     setFavorableState(caste ? FavorableState.Caste : (isCaste() ? FavorableState.Default : FavorableState.Favored));
   }
 
+  @Override
   public final FavorableState getFavorableState() {
     return state;
   }
 
+  @Override
   public final void addFavorableStateChangedListener(IFavorableStateChangedListener listener) {
     favorableStateControl.addListener(listener);
   }
 
   private final void fireFavorableStateChangedEvent() {
     favorableStateControl.forAllDo(new IClosure<IFavorableStateChangedListener>() {
+      @Override
       public void execute(IFavorableStateChangedListener input) {
         input.favorableStateChanged(state);
       }
     });
   }
 
+  @Override
   public final boolean isFavored() {
     return state == FavorableState.Favored;
   }
 
+  @Override
   public final boolean isCaste() {
     return state == FavorableState.Caste;
   }
 
+  @Override
   public final boolean isCasteOrFavored() {
     return isCaste() || isFavored();
   }
 
+  @Override
   public ICasteType[] getCastes() {
     return castes;
   }
 
+  @Override
   public void updateFavorableStateToCaste() {
     ICasteType casteType = basicData.getCasteType();
     setCaste(isSupportedCasteType(casteType));

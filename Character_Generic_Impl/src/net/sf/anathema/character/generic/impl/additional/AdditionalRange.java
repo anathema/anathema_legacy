@@ -15,11 +15,13 @@ public class AdditionalRange implements IAdditionalTraitRange {
     this.additionalMinimum = additionalMinimum;
   }
 
+  @Override
   public void modify(Range range) {
     range.setLowerBound(range.getLowerBound() + additionalMinimum);
     range.setUpperBoundBound(range.getUpperBound() + additionalMaximum);
   }
 
+  @Override
   public ITraitType getType() {
     return type;
   }

@@ -11,19 +11,23 @@ public class DummyPlotElementContainerListener implements IPlotElementContainerL
   public IPlotElement addedChild;
   public IPlotElement removedChild;
 
+  @Override
   public void childRemoved(IPlotElement removal) {
     removedChild = removal;
   }
 
+  @Override
   public void childAdded(IPlotElementContainer container, IPlotElement newChild) {
     addContainer = container;
     addedChild = newChild;
   }
 
+  @Override
   public void childMoved(IPlotElement element, int newIndex) {
     //Nothing to do
   }
 
+  @Override
   public void childInserted(IPlotElement insertion, IPlotElementContainer parentContainer, int index) {
     //Nothing to do
   }

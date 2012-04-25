@@ -21,6 +21,7 @@ public class CheckBoxTableColumnSettings extends AbstractTableColumnSettings {
     super(2);
   }
 
+  @Override
   public TableCellEditor getEditor() {
     return new DefaultCellEditor(new JCheckBox());
   }
@@ -28,6 +29,7 @@ public class CheckBoxTableColumnSettings extends AbstractTableColumnSettings {
   @Override
   public TableCellRenderer getRenderer() {
     return new TableCellRenderer() {
+      @Override
       public Component getTableCellRendererComponent(
           JTable table,
           Object value,

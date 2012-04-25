@@ -24,6 +24,7 @@ public class WeaponDamagePresenter implements Presenter {
     this.properties = new WeaponDamageProperties(resources);
   }
 
+  @Override
   public void initPresentation() {
     view.setDamageLabelText(properties.getDamageLabel());
     IntegerSpinner damageSpinner = view.getDamageIntegerSpinner();
@@ -31,11 +32,13 @@ public class WeaponDamagePresenter implements Presenter {
     damageSpinner.setMinimum(0);
     view.setObjects(HealthType.values());
     model.addHealthTypeChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateHealthTypeInView();
       }
     });
     view.addObjectSelectionChangedListener(new IObjectValueChangedListener<HealthType>() {
+      @Override
       public void valueChanged(HealthType newValue) {
         model.setHealthType(newValue);
       }

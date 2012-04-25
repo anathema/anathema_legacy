@@ -11,6 +11,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEnco
 
 public abstract class AbstractTextStatsGroup<T extends IStats> implements IStatsGroup<T> {
 
+  @Override
   public final int getColumnCount() {
     return getColumnWeights().length;
   }

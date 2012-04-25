@@ -32,6 +32,7 @@ public final class MusicDatabaseItemTypeConfiguration extends AbstractNonPersist
   @Override
   protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
+      @Override
       public IItemView createView(IItem item) throws AnathemaException {
         IMusicDatabase database = (IMusicDatabase) item.getItemData();
         Icon icon = new MusicUI(resources).getMusicTabIcon();

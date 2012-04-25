@@ -22,14 +22,17 @@ public class AnathemaToolBar implements IAnathemaToolbar, IView {
     this.toolBar.setRollover(true);
   }
 
+  @Override
   public JToolBar getComponent() {
     return toolBar;
   }
 
+  @Override
   public void addSeparator() {
     toolBar.addSeparator();
   }
 
+  @Override
   public void addTools(Action... toolBarActions) {
     for (Action action : toolBarActions) {
       addComponent(new ToolBarButton(), action);
@@ -48,6 +51,7 @@ public class AnathemaToolBar implements IAnathemaToolbar, IView {
     button.setSize(dimension);
   }
 
+  @Override
   public void addMenu(Icon buttonIcon, Action[] menuActions, String toolTip) {
     final JPopupMenu menu = new JPopupMenu();
     for (Action action : menuActions) {

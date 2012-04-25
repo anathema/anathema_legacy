@@ -14,10 +14,12 @@ public class VirtueBasedLimitation implements ITraitLimitation {
     this.limitingType = limitingType;
   }
 
+  @Override
   public int getAbsoluteLimit(ILimitationContext limitationContext) {
     return 5;
   }
 
+  @Override
   public int getCurrentMaximum(ILimitationContext limitationContext, boolean modified) {
     return limitationContext.getTraitCollection().getTrait(limitingType).getCurrentValue();
   }

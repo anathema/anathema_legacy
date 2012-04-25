@@ -21,22 +21,27 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
     this.template = template;
   }
 
+  @Override
   public CircleType[] getSorceryCircles() {
     return sorceryCircles;
   }
 
+  @Override
   public CircleType[] getNecromancyCircles() {
     return necromancyCircles;
   }
 
+  @Override
   public boolean canLearnSorcery() {
     return getSorceryCircles() != null && getSorceryCircles().length != 0;
   }
 
+  @Override
   public boolean canLearnNecromancy() {
     return getNecromancyCircles() != null && getNecromancyCircles().length != 0;
   }
 
+  @Override
   public boolean canLearnSpellMagic() {
     return canLearnSorcery() || canLearnNecromancy();
   }
@@ -48,6 +53,7 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
       return false;
   }
   
+  @Override
   public boolean knowsSorcery(ICharm[] knownCharms) {
     for (CircleType circle : sorceryCircles) {
       if (knowsSpellMagic(knownCharms, circle)) {
@@ -57,6 +63,7 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
     return false;
   }
   
+  @Override
   public boolean knowsNecromancy(ICharm[] knownCharms) {
     for (CircleType circle : necromancyCircles) {
       if (knowsSpellMagic(knownCharms, circle)) {
@@ -66,14 +73,17 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
     return false;
   }
   
+  @Override
   public boolean knowsSpellMagic(ICharm[] knownCharms) {
     return knowsSorcery(knownCharms) || knowsNecromancy(knownCharms);
   }
   
+  @Override
   public boolean knowsSpellMagic(ICharm[] knownCharms, CircleType circle) {
     return knowsCharm(getInitiation(circle), knownCharms);
   }
 
+  @Override
   public boolean canLearnSpell(ISpell spell, ICharm[] knownCharms) {
 	  return knowsCharm(getInitiation(spell.getCircleType()), knownCharms);
   }
@@ -81,26 +91,32 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   public String getInitiation(CircleType type) {
     final String[] initiation = new String[1];
     type.accept(new ICircleTypeVisitor() {
+      @Override
       public void visitTerrestrial(CircleType type) {
         initiation[0] = template.getTemplateType().getCharacterType().getId() + ".TerrestrialCircleSorcery"; //$NON-NLS-1$
       }
 
+      @Override
       public void visitCelestial(CircleType type) {
         initiation[0] = template.getTemplateType().getCharacterType().getId() + ".CelestialCircleSorcery"; //$NON-NLS-1$
       }
 
+      @Override
       public void visitSolar(CircleType type) {
         initiation[0] = template.getTemplateType().getCharacterType().getId() + ".SolarCircleSorcery"; //$NON-NLS-1$
       }
 
+      @Override
       public void visitShadowland(CircleType type) {
         initiation[0] = template.getTemplateType().getCharacterType().getId() + ".ShadowlandsCircleNecromancy"; //$NON-NLS-1$        
       }
 
+      @Override
       public void visitLabyrinth(CircleType type) {
         initiation[0] = template.getTemplateType().getCharacterType().getId() + ".LabyrinthCircleNecromancy"; //$NON-NLS-1$        
       }
 
+      @Override
       public void visitVoid(CircleType type) {
         initiation[0] = template.getTemplateType().getCharacterType().getId() + ".VoidCircleNecromancy"; //$NON-NLS-1$        
       }

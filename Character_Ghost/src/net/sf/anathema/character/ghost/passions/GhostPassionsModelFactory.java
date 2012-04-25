@@ -8,6 +8,7 @@ import net.sf.anathema.character.ghost.passions.model.GhostPassionsModel;
 
 public class GhostPassionsModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new GhostPassionsModel((GhostPassionsTemplate) additionalTemplate, context);
   }

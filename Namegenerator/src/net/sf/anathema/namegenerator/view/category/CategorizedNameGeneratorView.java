@@ -12,6 +12,7 @@ public class CategorizedNameGeneratorView implements ICategorizedNameGeneratorVi
   private JComboBox[] comboBoxes;
   private JPanel content;
 
+  @Override
   public void initGui(Object[] categories, int columnCount, ListCellRenderer renderer) {
     content = new JPanel(new GridDialogLayout(columnCount, true));
     comboBoxes = new JComboBox[columnCount];
@@ -22,10 +23,12 @@ public class CategorizedNameGeneratorView implements ICategorizedNameGeneratorVi
     }
   }
 
+  @Override
   public JComponent getComponent() {
     return content;
   }
 
+  @Override
   public Object[] getSelectedCategories() {
     Object[] categories = new Object[comboBoxes.length];
     for (int index = 0; index < categories.length; index++) {

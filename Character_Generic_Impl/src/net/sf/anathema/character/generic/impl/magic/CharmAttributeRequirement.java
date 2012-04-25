@@ -10,10 +10,12 @@ public class CharmAttributeRequirement extends ReflectionEqualsObject implements
   private final ICharmAttribute attribute;
   private final int count;
 
+  @Override
   public ICharmAttribute getAttribute() {
     return attribute;
   }
 
+  @Override
   public int getCount() {
     return count;
   }
@@ -32,6 +34,7 @@ public class CharmAttributeRequirement extends ReflectionEqualsObject implements
     return attribute.toString() + "x" + count; //$NON-NLS-1$
   }
 
+  @Override
   public boolean isFulfilled(ICharm[] charms) {
     int amount = 0;
     for (ICharm charm : charms) {

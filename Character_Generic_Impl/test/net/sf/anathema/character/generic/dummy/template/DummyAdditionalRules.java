@@ -14,42 +14,52 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public final class DummyAdditionalRules implements IAdditionalRules, IAdditionalTraitRules {
 
+  @Override
   public IAdditionalBonusPointPool[] getAdditionalBonusPointPools() {
     return new IAdditionalBonusPointPool[0];
   }
 
+  @Override
   public IAdditionalMagicLearnPool[] getAdditionalMagicLearnPools() {
     return new IAdditionalMagicLearnPool[0];
   }
 
+  @Override
   public IAdditionalEssencePool[] getAdditionalEssencePools() {
     return new IAdditionalEssencePool[0];
   }
 
+  @Override
   public boolean isRejected(IBackgroundTemplate backgroundTemplate) {
     return false;
   }
   
+  @Override
   public boolean isRevisedIntimacies() {
     return false;
   }
   
+  @Override
   public boolean isWillpowerVirtueBased() {
     return true;
   }
 
+  @Override
   public boolean isAllowedTraitValue(IGenericTrait trait, IGenericTraitCollection collection) {
     return true;
   }
 
+  @Override
   public ITraitCostModifier getCostModifier(ITraitType type) {
     return new DefaultTraitCostModifier();
   }
 
+  @Override
   public String[] getCompulsiveCharmIDs() {
     return new String[0];
   }
 
+  @Override
   public IAdditionalTraitRules getAdditionalTraitRules() {
     return this;
   }

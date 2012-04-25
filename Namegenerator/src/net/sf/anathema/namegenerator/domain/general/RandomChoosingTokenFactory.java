@@ -12,6 +12,7 @@ public class RandomChoosingTokenFactory implements INameTokenFactory {
     this.tokens = tokens;
   }
 
+  @Override
   public final String createToken() {
     return RandomUtilities.choose(tokens);
   }

@@ -38,6 +38,7 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
   @Override
   protected ILegalityProvider<IItemType> getLegalityProvider() {
     return new ILegalityProvider<IItemType>() {
+      @Override
       public boolean isLegal(IItemType value) {
         return getRepository().containsClosed(value);
       }

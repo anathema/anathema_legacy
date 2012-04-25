@@ -9,6 +9,7 @@ import net.sf.anathema.lib.resources.IResources;
 //@Menu
 public class CharmEntryMenu implements IAnathemaMenu {
 
+  @Override
   public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
     IMenu menu = menubar.addMenu(resources.getString("CharmEntry.Show.Name")); //$NON-NLS-1$
     menu.addMenuItem(ShowCharmEntryAction.createMenuAction(resources));

@@ -9,6 +9,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class NullResources implements IResources {
 
+  @Override
   public String getString(String key, Object... arguments) {
     if (arguments.length == 0) {
       return key;
@@ -23,14 +24,17 @@ public class NullResources implements IResources {
     return stringBuilder.toString();
   }
 
+  @Override
   public boolean supportsKey(String key) {
     return true;
   }
 
+  @Override
   public Image getImage(Class< ? > requestor, String relativePath) {
     return null;
   }
 
+  @Override
   public Icon getImageIcon(Class< ? > requestor, String relativePath) {
     return null;
   }

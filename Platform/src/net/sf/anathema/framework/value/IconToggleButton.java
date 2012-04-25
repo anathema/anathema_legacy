@@ -49,6 +49,7 @@ public class IconToggleButton implements IView {
     button.setEnabled(enabled);
   }
 
+  @Override
   public JComponent getComponent() {
     return button;
   }

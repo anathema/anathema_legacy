@@ -13,18 +13,22 @@ public class DummyLearnableArbitrator implements IExtendedCharmLearnableArbitrat
     this.learnableCharmIds = learnableCharmIds;
   }
 
+  @Override
   public boolean isLearnable(ICharm charm) {
     return ArrayUtilities.containsValue(learnableCharmIds, charm.getId());
   }
 
+  @Override
   public void addCharmLearnListener(ICharmLearnListener listener) {
     // Nothing to do
   }
 
+  @Override
   public boolean isLearned(ICharm charm) {
     return false;
   }
 
+  @Override
   public boolean isCompulsiveCharm(ICharm charm) {
     return false;
   }

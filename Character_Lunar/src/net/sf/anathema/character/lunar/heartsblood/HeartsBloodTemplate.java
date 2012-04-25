@@ -6,6 +6,7 @@ public class HeartsBloodTemplate implements IAdditionalTemplate {
 
   public static final String TEMPLATE_ID = "Lunar.HeartsBlood.Template"; //$NON-NLS-1$
 
+  @Override
   public String getId() {
     return TEMPLATE_ID;
   }

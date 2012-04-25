@@ -43,26 +43,32 @@ public class CharmTypeBuilder {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(charmType);
     charmType.accept(new ICharmTypeVisitor() {
+      @Override
       public void visitExtraAction(CharmType visitedType) {
         // Nothing to do
       }
 
+      @Override
       public void visitReflexive(CharmType visitedType) {
         charmTypeModel.setSpecialModel(buildReflexiveModel(typeElement));
       }
 
+      @Override
       public void visitSimple(CharmType visitedType) {
         charmTypeModel.setSpecialModel(buildSimpleModel(typeElement));
       }
 
+      @Override
       public void visitSpecial(CharmType visitedType) {
         // Nothing to do
       }
 
+      @Override
       public void visitPermanent(CharmType visitedType) {
         // Nothing to do
       }
 
+      @Override
       public void visitSupplemental(CharmType visitedType) {
         // Nothing to do
       }

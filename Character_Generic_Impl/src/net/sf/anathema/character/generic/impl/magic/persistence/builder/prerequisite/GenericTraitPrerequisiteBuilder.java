@@ -14,6 +14,7 @@ public class GenericTraitPrerequisiteBuilder implements ITraitPrerequisiteBuilde
 
   private ITraitType type;
 
+  @Override
   public IGenericTrait build(Element element) throws PersistenceException {
     int minValue = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
     return new ValuedTraitType(type, minValue);

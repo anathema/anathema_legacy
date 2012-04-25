@@ -16,6 +16,7 @@ public class WeaponStatisticsView implements IWeaponStatisticsView {
   private JPanel content;
   private JComponent focusComponent;
 
+  @Override
   public JComponent getContent() {
     if (content == null) {
       content = panelBuilder.getUntitledContent();
@@ -23,10 +24,12 @@ public class WeaponStatisticsView implements IWeaponStatisticsView {
     return content;
   }
 
+  @Override
   public ITextView addLineTextView(String label) {
     return panelBuilder.addLineTextView(label, COLUMN_COUNT);
   }
 
+  @Override
   public IntegerSpinner addIntegerSpinner(String label, int startValue) {
     IntegerSpinner spinner = panelBuilder.addIntegerSpinner(label, startValue);
     if (focusComponent == null) {
@@ -35,16 +38,19 @@ public class WeaponStatisticsView implements IWeaponStatisticsView {
     return spinner;
   }
 
+  @Override
   public void requestFocus() {
     if (focusComponent != null) {
       focusComponent.requestFocus();
     }
   }
 
+  @Override
   public void dispose() {
     //Nothing to do
   }
 
+  @Override
   public void addDialogComponent(IDialogComponent component) {
     panelBuilder.addDialogComponent(component);
   }

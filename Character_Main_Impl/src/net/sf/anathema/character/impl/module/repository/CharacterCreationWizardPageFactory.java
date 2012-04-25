@@ -17,6 +17,7 @@ public class CharacterCreationWizardPageFactory implements IWizardFactory {
     this.resources = resources;
   }
 
+  @Override
   public IAnathemaWizardPage createPage(IAnathemaWizardModelTemplate template) {
     if (!(template instanceof CharacterStatisticsConfiguration)) {
       throw new IllegalArgumentException("Bad template type for character creation wizard"); //$NON-NLS-1$
@@ -28,10 +29,12 @@ public class CharacterCreationWizardPageFactory implements IWizardFactory {
     return new CharacterCreationWizardPage(model, view, resources);
   }
 
+  @Override
   public IAnathemaWizardModelTemplate createTemplate() {
     return new CharacterStatisticsConfiguration();
   }
 
+  @Override
   public boolean needsFurtherDetails() {
     return true;
   }

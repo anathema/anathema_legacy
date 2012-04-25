@@ -21,6 +21,7 @@ public class AdditionRulesTraitValueChangeChecker implements IValueChangeChecker
     this.additionalRules = additionalRules;
   }
 
+  @Override
   public boolean isValidNewValue(int value) {
     return additionalRules.isAllowedTraitValue(new ValuedTraitType(traitType, value), context.getTraitCollection());
   }

@@ -13,14 +13,17 @@ public class FavoredCharmModel extends AbstractSpendingModel {
     this.creationPoints = creationPoints;
   }
 
+  @Override
   public int getSpentBonusPoints() {
     return 0;
   }
 
+  @Override
   public Integer getValue() {
     return magicCalculator.getFavoredCharmPicksSpent();
   }
 
+  @Override
   public int getAlotment() {
     return creationPoints.getFavoredCreationCharmCount();
   }

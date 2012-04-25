@@ -12,10 +12,12 @@ public class SimpleItemTypeUi implements IObjectUi<Object> {
     this.icon = icon;
   }
 
+  @Override
   public Icon getIcon(Object file) {
     return icon;
   }
 
+  @Override
   public String getLabel(Object file) {
     return file.toString();
   }

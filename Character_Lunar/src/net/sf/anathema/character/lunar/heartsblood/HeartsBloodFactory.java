@@ -8,6 +8,7 @@ import net.sf.anathema.character.lunar.heartsblood.model.HeartsBloodModel;
 
 public class HeartsBloodFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new HeartsBloodModel(context);
   }

@@ -15,14 +15,17 @@ public class NamedGenericTraitReference implements IValuedTraitReference {
     this.value = trait.getCurrentValue();
   }
 
+  @Override
   public String getName() {
     return name;
   }
 
+  @Override
   public ITraitType getTraitType() {
     return type;
   }
 
+  @Override
   public int getValue() {
     return value;
   }

@@ -26,10 +26,12 @@ public class TieredMultiLearnableCharm extends AbstractMultiLearnableCharm {
 	  return tiers;
   }
 
+  @Override
   public int getAbsoluteLearnLimit() {
     return tiers.length;
   }
 
+  @Override
   public int getMaximumLearnCount(IGenericTraitCollection traitCollection)
   {
 	  int tierLimit = 0;

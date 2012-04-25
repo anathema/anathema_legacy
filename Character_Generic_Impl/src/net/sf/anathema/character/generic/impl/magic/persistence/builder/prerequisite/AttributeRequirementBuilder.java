@@ -18,6 +18,7 @@ import org.dom4j.Element;
 
 public class AttributeRequirementBuilder implements IAttributeRequirementBuilder {
 
+  @Override
   public ICharmAttributeRequirement[] getCharmAttributeRequirements(Element prerequisitesElement) throws CharmException {
     List<ICharmAttributeRequirement> attributeRequirements = new ArrayList<ICharmAttributeRequirement>();
     for (Element attributeRequirementElement : ElementUtilities.elements(

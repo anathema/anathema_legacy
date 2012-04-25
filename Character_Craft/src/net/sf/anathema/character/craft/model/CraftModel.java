@@ -26,41 +26,50 @@ public class CraftModel implements ICraftModel {
     this.context = context;
     this.trait = (IAggregatedTrait) context.getTraitCollection().getFavorableTrait(AbilityType.Craft);
     trait.getSubTraits().addSubTraitListener(new ISubTraitListener() {
+      @Override
       public void subTraitAdded(final ISubTrait subTrait) {
         control.forAllDo(new IClosure<IRemovableEntryListener<ISubTrait>>() {
+          @Override
           public void execute(IRemovableEntryListener<ISubTrait> input) {
             input.entryAdded(subTrait);
           }
         });
       }
 
+      @Override
       public void subTraitRemoved(final ISubTrait subTrait) {
         control.forAllDo(new IClosure<IRemovableEntryListener<ISubTrait>>() {
+          @Override
           public void execute(IRemovableEntryListener<ISubTrait> input) {
             input.entryRemoved(subTrait);
           }
         });
       }
 
+      @Override
       public void subTraitValueChanged() {
         // nothing to do;
       }
     });
   }
 
+  @Override
   public int getAbsoluteMaximum() {
     return trait.getMaximalValue();
   }
 
+  @Override
   public boolean isRemovable(ISubTrait craft) {
     return trait.getSubTraits().isRemovable(craft);
   }
 
+  @Override
   public void setCurrentName(String newValue) {
     this.currentName = newValue;
     fireEntryChanged();
   }
 
+  @Override
   public void removeEntry(final ISubTrait entry) {
     trait.getSubTraits().removeSubTrait(entry);
   }
@@ -69,31 +78,37 @@ public class CraftModel implements ICraftModel {
     return !StringUtilities.isNullOrEmpty(currentName);
   }
 
+  @Override
   public ISubTrait commitSelection() {
     final ISubTrait subTrait = trait.getSubTraits().addSubTrait(currentName);
     return subTrait;
   }
 
+  @Override
   public List<ISubTrait> getEntries() {
     return Arrays.asList(trait.getSubTraits().getSubTraits());
   }
 
   private void fireEntryChanged() {
     control.forAllDo(new IClosure<IRemovableEntryListener<ISubTrait>>() {
+      @Override
       public void execute(IRemovableEntryListener<ISubTrait> input) {
         input.entryAllowed(isEntryAllowed());
       }
     });
   }
 
+  @Override
   public void addModelChangeListener(IRemovableEntryListener<ISubTrait> listener) {
     control.addListener(listener);
   }
 
+  @Override
   public void addCharacterChangeListener(ICharacterChangeListener listener) {
     context.getCharacterListening().addChangeListener(listener);
   }
 
+  @Override
   public boolean isExperienced() {
     return context.getBasicCharacterContext().isExperienced();
   }

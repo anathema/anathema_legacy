@@ -14,15 +14,18 @@ public class MagicTypeStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
     this.resources = resources;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IMagicStats stats) {
     String text = stats == null ? null : stats.getType(resources);
     table.addCell(createTextCell(font, text));
   }
 
+  @Override
   public Float[] getColumnWeights() {
     return new Float[]{2.5f};
   }
 
+  @Override
   public String getTitle() {
     return resources.getString("Sheet.Magic.Type"); //$NON-NLS-1$
   }

@@ -22,6 +22,7 @@ public class ExtendedWillpowerEncoder extends AbstractContentEncoder<WillpowerCo
     super(WillpowerContent.class);
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     float lineHeight = 1.05f * COMMENT_FONT_SIZE;
     PdfTraitEncoder traitEncoder = PdfTraitEncoder.createLargeTraitEncoder();

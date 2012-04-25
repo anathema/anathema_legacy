@@ -31,54 +31,67 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   private final IXmlTemplateRegistry<GenericHealthTemplate> healthTemplateRegistry = new XmlTemplateRegistry<GenericHealthTemplate>();
   private final IXmlTemplateRegistry<GenericAdditionalRules> rulesRegistry = new XmlTemplateRegistry<GenericAdditionalRules>();
 
+  @Override
   public IXmlTemplateRegistry<GenericCharacterTemplate> getCharacterTemplateRegistry() {
     return characterTemplateRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> getTraitGroupTemplateRegistry() {
     return groupedTraitTypeRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericEssenceTemplate> getEssenceTemplateRegistry() {
     return essenceRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericCreationPoints> getCreationPointTemplateRegistry() {
     return creationPointsRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericBonusPointCosts> getBonusPointTemplateRegistry() {
     return bonusPointsRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericExperiencePointCosts> getExperienceTemplateRegistry() {
     return experienceTemplateRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericTraitTemplateFactory> getTraitFactoryRegistry() {
     return traitFactoryRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericTraitTemplatePool> getTraitTemplatePoolRegistry() {
     return traitTemplatePoolRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericMagicTemplate> getMagicTemplateRegistry() {
     return magicTemplateRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericPresentationTemplate> getPresentationTemplateRegistry() {
     return presentationTemplateRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericCharmPresentationProperties> getCharmPresentationTemplateRegistry() {
     return charmPresentationTemplateRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericHealthTemplate> getHealthTemplateRegistry() {
     return healthTemplateRegistry;
   }
 
+  @Override
   public IXmlTemplateRegistry<GenericAdditionalRules> getAdditionalRulesRegistry() {
     return rulesRegistry;
   }

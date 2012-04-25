@@ -18,6 +18,7 @@ public class VirtueEncoder extends AbstractContentEncoder<VirtueContent> {
     super(VirtueContent.class);
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     VirtueContent virtueContent = createContent(session);
     encodeVirtues(graphics, bounds, virtueContent);

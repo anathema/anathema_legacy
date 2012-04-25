@@ -15,10 +15,12 @@ public class LunarVirtueFlaw extends VirtueFlaw implements ILunarVirtueFlaw {
 	  super(context);
   }
   
+  @Override
   public ITextualDescription getDescription() {
     return description;
   }
 
+  @Override
   public ITextualDescription getLimitBreak() {
     return limitBreak;
   }

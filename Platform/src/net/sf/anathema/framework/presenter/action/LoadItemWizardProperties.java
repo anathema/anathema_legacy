@@ -19,14 +19,17 @@ public class LoadItemWizardProperties implements IObjectSelectionProperties {
     this.renderer = new ObjectUiListCellRenderer(ui);
   }
 
+  @Override
   public ListCellRenderer getCellRenderer() {
     return renderer;
   }
 
+  @Override
   public IBasicMessage getSelectMessage() {
     return new BasicMessage(resources.getString("AnathemaPersistence.LoadAction.Message.Default")); //$NON-NLS-1$
   }
 
+  @Override
   public String getSelectionTitle() {
     return resources.getString("AnathemaPersistence.LoadMenu.Name"); //$NON-NLS-1$
   }

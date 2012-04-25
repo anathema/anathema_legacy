@@ -32,6 +32,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
     return !file.isDirectory() && file.getAbsolutePath().endsWith(".mp3"); //$NON-NLS-1$
   }
 
+  @Override
   public List<File> walk(IResources resources, IProgressMonitor monitor, ICancelable cancelFlag, ITrackHandler handler)
       throws InterruptedException {
     monitor.beginTask(
@@ -49,6 +50,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
 
   private int getTrackCount() {
     return FileUtilities.getFileCount(musicFolder, true, new IPredicate<File>() {
+      @Override
       public boolean evaluate(File file) {
         return isMp3File(file);
       }

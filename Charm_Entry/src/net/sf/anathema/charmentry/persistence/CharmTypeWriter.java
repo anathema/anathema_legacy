@@ -29,10 +29,12 @@ public class CharmTypeWriter {
       return;
     }
     charmTypeModel.getCharmType().accept(new ICharmTypeVisitor() {
+      @Override
       public void visitExtraAction(CharmType visitedType) {
         // Nothing to do
       }
 
+      @Override
       public void visitReflexive(CharmType visitedType) {
         IReflexiveSpecialsModel model = (IReflexiveSpecialsModel) charmTypeModel.getSpecialsModel();
         if (model == null) {
@@ -50,6 +52,7 @@ public class CharmTypeWriter {
         }
       }
 
+      @Override
       public void visitSimple(CharmType visitedType) {
         ISimpleSpecialsModel model = (ISimpleSpecialsModel) charmTypeModel.getSpecialsModel();
         if (model == null) {
@@ -61,14 +64,17 @@ public class CharmTypeWriter {
         ElementUtilities.addAttribute(specialElement, ATTRIB_DEFENSE, model.getDefenseModifier());
       }
 
+      @Override
       public void visitSpecial(CharmType visitedType) {
         // Nothing to do
       }
 
+      @Override
       public void visitPermanent(CharmType visitedType) {
         // Nothing to do
       }
 
+      @Override
       public void visitSupplemental(CharmType visitedType) {
         // Nothing to do
       }

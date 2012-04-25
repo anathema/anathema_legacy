@@ -8,6 +8,7 @@ import net.sf.anathema.character.infernal.patron.model.InfernalPatronModel;
 
 public class InfernalPatronModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new InfernalPatronModel((InfernalPatronTemplate) additionalTemplate, context);
   }

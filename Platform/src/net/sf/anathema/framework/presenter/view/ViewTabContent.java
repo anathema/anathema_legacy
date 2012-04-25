@@ -14,10 +14,12 @@ public class ViewTabContent implements IViewContent {
     this.tabProperties = tabProperties;
   }
 
+  @Override
   public void addTo(IMultiContentView view) {
     view.addView(this.contentView, tabProperties);
   }
 
+  @Override
   public IDisposable getDisposable() {
     return null;
   }

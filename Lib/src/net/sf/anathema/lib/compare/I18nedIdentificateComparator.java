@@ -13,6 +13,7 @@ public class I18nedIdentificateComparator implements Comparator<IIdentificate> {
     this.resources = resources;
   }
 
+  @Override
   public int compare(IIdentificate group1, IIdentificate group2) {
     String firstGroupName = getString(group1);
     String secondGroupName = getString(group2);

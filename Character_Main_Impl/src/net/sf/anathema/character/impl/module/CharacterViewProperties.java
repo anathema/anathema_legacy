@@ -20,6 +20,7 @@ public class CharacterViewProperties extends AbstractItemTypeViewProperties {
     this.factory = factory;
   }
 
+  @Override
   public IWizardFactory getNewItemWizardFactory() {
     return factory;
   }

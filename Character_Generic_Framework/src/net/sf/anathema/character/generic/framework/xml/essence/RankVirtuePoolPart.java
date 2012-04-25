@@ -18,6 +18,7 @@ public class RankVirtuePoolPart implements IVirtuePoolPart {
     this.virtueMultiplier = virtueMultiplier;
   }
 
+  @Override
   public FactorizedTrait createFactorizedTrait(IGenericTrait[] virtues) {
     List<IGenericTrait> sortedVirtues = new ValueWeightGenericTraitSorter().sortDescending(virtues);
     IGenericTrait[] topVirtues = new IGenericTrait[ranks];

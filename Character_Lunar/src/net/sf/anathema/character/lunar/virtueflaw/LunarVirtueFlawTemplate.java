@@ -6,6 +6,7 @@ public class LunarVirtueFlawTemplate implements IAdditionalTemplate {
 
   public static final String TEMPLATE_ID = "Lunar.VirtueFlaw.Template"; //$NON-NLS-1$
 
+  @Override
   public String getId() {
     return TEMPLATE_ID;
   }

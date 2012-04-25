@@ -10,10 +10,12 @@ public class VirtueCost implements IVirtueCost {
     this.bonusPointsSpent = bonusPointsSpent;
   }
 
+  @Override
   public int getBonusPointsSpent() {
     return bonusPointsSpent;
   }
 
+  @Override
   public int getDotsSpent() {
     return dotsSpent;
   }

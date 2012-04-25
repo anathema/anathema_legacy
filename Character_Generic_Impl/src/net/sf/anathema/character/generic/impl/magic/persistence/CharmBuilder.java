@@ -70,11 +70,13 @@ public class CharmBuilder implements ICharmBuilder {
     this.charmPrerequisiteBuilder = charmPrerequisiteBuilder;
   }
   
+  @Override
   public Charm buildCharm(Element charmElement) throws PersistenceException
   {
 	  return buildCharm(charmElement, new ArrayList<ISpecialCharm>());
   }
 
+  @Override
   public Charm buildCharm(Element charmElement, List<ISpecialCharm> specialCharms) throws PersistenceException {
     String id = idBuilder.build(charmElement);
     try {

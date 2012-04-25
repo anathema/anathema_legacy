@@ -30,14 +30,17 @@ public class RemovableStringView implements IRemovableEntryView {
     panel.revalidate();
   }
 
+  @Override
   public void addButtonListener(ActionListener listener) {
     button.addActionListener(listener);
   }
 
+  @Override
   public void setButtonEnabled(boolean enabled) {
     button.setEnabled(enabled);
   }
 
+  @Override
   public void delete() {
     contentPanel.remove(label);
     contentPanel.remove(button);

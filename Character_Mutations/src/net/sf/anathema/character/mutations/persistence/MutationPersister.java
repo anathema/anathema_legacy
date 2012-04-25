@@ -20,6 +20,7 @@ public class MutationPersister extends AbstractQualityPersister<IMutation> {
   private static final String TAG_GIFTS = "Gifts"; //$NON-NLS-1$
   private static final String TAG_GIFT = "Gift"; //$NON-NLS-1$
 
+  @Override
   public void load(Element parent, IQualityModel<IMutation> model) throws PersistenceException {
     Element qualityGroupElement = parent.element(TAG_MUTATIONS);
     if (qualityGroupElement != null) {

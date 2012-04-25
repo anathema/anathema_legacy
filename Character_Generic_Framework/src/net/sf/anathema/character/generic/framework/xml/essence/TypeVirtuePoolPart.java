@@ -14,6 +14,7 @@ public class TypeVirtuePoolPart implements IVirtuePoolPart {
     this.multiplier = multiplier;
   }
 
+  @Override
   public FactorizedTrait createFactorizedTrait(IGenericTrait[] virtues) {
     return new FactorizedTrait(getVirtue(virtues), multiplier);
   }

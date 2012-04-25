@@ -34,6 +34,7 @@ public class WeightedObject<V> implements Comparable<WeightedObject<V>> {
     return weight;
   }
 
+  @Override
   public int compareTo(WeightedObject<V> o) {
     return weight - o.weight;
   }

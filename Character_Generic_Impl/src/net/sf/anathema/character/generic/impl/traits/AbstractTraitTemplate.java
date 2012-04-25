@@ -20,27 +20,33 @@ public abstract class AbstractTraitTemplate implements ITraitTemplate {
     this.zeroValue = zeroValue;
   }
 
+  @Override
   public final int getStartValue() {
     return startValue;
   }
 
+  @Override
   public final LowerableState getLowerableState() {
     return lowerable;
   }
 
+  @Override
   public final int getZeroLevelValue() {
     return zeroValue;
   }
 
+  @Override
   public boolean isRequiredFavored() {
     return false;
   }
   
+  @Override
   public int getCalculationMinValue(ILimitationContext context, ITraitType type)
   {
 	  return getMinimumValue(context);
   }
   
+  @Override
   public String getTag()
   {
 	  return null;

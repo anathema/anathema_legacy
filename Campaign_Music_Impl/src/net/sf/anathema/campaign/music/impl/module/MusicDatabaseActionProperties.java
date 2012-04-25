@@ -20,34 +20,42 @@ public class MusicDatabaseActionProperties implements IDatabaseActionProperties 
     this.resources = resources;
   }
 
+  @Override
   public String getItemTypeId() {
     return MusicDatabaseItemTypeConfiguration.MUSIC_DATABASE_ITEM_TYPE_ID;
   }
 
+  @Override
   public String getActionName() {
     return resources.getString("MusicDatabase.NewAction.Name"); //$NON-NLS-1$
   }
 
+  @Override
   public Icon getActionIcon() {
     return new MusicUI(resources).getMusicToolBarIcon();
   }
 
+  @Override
   public String getToolTipText() {
     return resources.getString("MusicDatabase.NewAction.Tooltip"); //$NON-NLS-1$
   }
 
+  @Override
   public String getProgressMonitorTitle() {
     return resources.getString("Music.DatabaseStart.Progress.Title"); //$NON-NLS-1$;
   }
 
+  @Override
   public String getProgressTaskTitle() {
     return resources.getString("Music.DatabaseStart.Progress.Presentation"); //$NON-NLS-1$
   }
 
+  @Override
   public String getItemId() {
     return MUSIC_DATABASE_ITEM_ID;
   }
 
+  @Override
   public IItemData createItemData(IDataFileProvider provider) throws IOException {
     File parentFolder = provider.getDataBaseDirectory("music"); //$NON-NLS-1$
     return new MusicDatabase(new File(parentFolder, "musicdatabase.yap")); //$NON-NLS-1$

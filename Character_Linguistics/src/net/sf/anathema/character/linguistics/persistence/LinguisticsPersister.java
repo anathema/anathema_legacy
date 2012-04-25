@@ -15,6 +15,7 @@ public class LinguisticsPersister implements IAdditionalPersister {
   private static final String TAG_LANGUAGES = "linguistics"; //$NON-NLS-1$
   private static final String TAG_LANGUAGE = "language"; //$NON-NLS-1$
 
+  @Override
   public void load(Element parent, IAdditionalModel additionalModel) throws PersistenceException {
     Element element = parent.element(TAG_LANGUAGES);
     ILinguisticsModel model = ((ILinguisticsAdditionalModel) additionalModel).getLinguisticsModel();
@@ -31,6 +32,7 @@ public class LinguisticsPersister implements IAdditionalPersister {
     }
   }
 
+  @Override
   public void save(Element parent, IAdditionalModel additionalModel) {
     Element element = parent.addElement(TAG_LANGUAGES);
     ILinguisticsModel model = ((ILinguisticsAdditionalModel) additionalModel).getLinguisticsModel();

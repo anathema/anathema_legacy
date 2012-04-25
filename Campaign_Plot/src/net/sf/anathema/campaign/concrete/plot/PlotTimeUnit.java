@@ -16,10 +16,12 @@ public class PlotTimeUnit extends Identificate implements IPlotTimeUnit {
     this.successor = successor;
   }
 
+  @Override
   public IPlotTimeUnit getSuccessor() {
     return successor;
   }
 
+  @Override
   public boolean hasSuccessor() {
     return successor != null;
   }

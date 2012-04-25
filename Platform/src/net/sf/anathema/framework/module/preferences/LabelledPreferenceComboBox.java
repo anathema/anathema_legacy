@@ -26,10 +26,12 @@ public class LabelledPreferenceComboBox<T> {
 
   public IDialogComponent getDialogComponent() {
     return new IDialogComponent() {
+      @Override
       public int getColumnCount() {
         return 2;
       }
 
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(label);
         panel.add(box);

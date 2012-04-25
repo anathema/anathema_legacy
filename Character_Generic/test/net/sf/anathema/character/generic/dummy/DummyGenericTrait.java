@@ -13,10 +13,12 @@ public class DummyGenericTrait implements IGenericTrait {
     this.currentValue = currentValue;
   }
   
+  @Override
   public ITraitType getType() {
     return type;
   }
 
+  @Override
   public int getCurrentValue() {
     return currentValue;
   }

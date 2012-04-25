@@ -25,6 +25,7 @@ public class ExtendedSecondPageEncoder implements PageEncoder {
     this.pageConfiguration = pageConfiguration;
   }
 
+  @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) {
     SheetPage page = sheet.startPortraitPage(graphics, session);
     LayoutField health = page.place(HEALTH).atStartOf(page).withHeight(175).now();

@@ -30,18 +30,22 @@ public class OxBodyTechniqueCharm implements IOxBodyTechniqueCharm {
     this.charmId = charmId;
   }
 
+  @Override
   public ITraitType[] getRelevantTraits() {
     return traitTypes;
   }
 
+  @Override
   public Map<String, HealthLevelType[]> getHealthLevels() {
     return new LinkedHashMap<String, HealthLevelType[]>(healthLevels);
   }
 
+  @Override
   public String getCharmId() {
     return charmId;
   }
 
+  @Override
   public void accept(ISpecialCharmVisitor visitor) {
     visitor.visitOxBodyTechnique(this);
   }

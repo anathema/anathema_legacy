@@ -40,6 +40,7 @@ public class LinguisticsPresenter implements Presenter {
     this.resources = resources;
   }
 
+  @Override
   public void initPresentation() {
     initEntryPresentation();
     initPointPresentation();
@@ -54,19 +55,23 @@ public class LinguisticsPresenter implements Presenter {
     final ILabelledAlotmentView totalView = overview.addAlotmentView(
         resources.getString("Linguistics.Overview.Total"), 2); //$NON-NLS-1$
     model.addModelChangeListener(new IRemovableEntryListener<IIdentificate>() {
+      @Override
       public void entryAdded(IIdentificate entry) {
         updateOverview(familyView, totalView, barbarianView);
       }
 
+      @Override
       public void entryAllowed(boolean complete) {
         //nothing to do;
       }
 
+      @Override
       public void entryRemoved(IIdentificate entry) {
         updateOverview(familyView, totalView, barbarianView);
       }
     });
     model.addCharacterChangedListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateOverview(familyView, totalView, barbarianView);
       }
@@ -121,6 +126,7 @@ private void initEntryPresentation() {
         addIcon);
     selectionView.setObjects(model.getPredefinedLanguages());
     selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<Object>() {
+      @Override
       public void valueChanged(Object newValue) {
         if (newValue == null) {
           return;
@@ -135,6 +141,7 @@ private void initEntryPresentation() {
       }
     });
     selectionView.addButtonListener(new IObjectValueChangedListener<Object>() {
+      @Override
       public void valueChanged(Object newValue) {
         if (!model.isEntryAllowed()) {
           return;
@@ -143,15 +150,18 @@ private void initEntryPresentation() {
       }
     });
     model.addModelChangeListener(new IRemovableEntryListener<IIdentificate>() {
+      @Override
       public void entryAdded(final IIdentificate entry) {
         addEntry(basicUi, entry);
         selectionView.setSelectedObject(null);
       }
 
+      @Override
       public void entryAllowed(boolean complete) {
         selectionView.setButtonEnabled(complete);
       }
 
+      @Override
       public void entryRemoved(IIdentificate entry) {
         IRemovableEntryView entryView = viewsByEntry.remove(entry);
         view.removeEntryView(entryView);
@@ -169,6 +179,7 @@ private void initEntryPresentation() {
     IRemovableEntryView entryView = view.addEntryView(basicUi.getRemoveIcon(), null, getDisplayString(language));
     viewsByEntry.put(language, entryView);
     entryView.addButtonListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         model.removeEntry(language);
       }

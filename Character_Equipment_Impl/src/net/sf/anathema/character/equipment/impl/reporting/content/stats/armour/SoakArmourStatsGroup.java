@@ -15,6 +15,7 @@ public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmo
     super(resources, "Soak"); //$NON-NLS-1$
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IArmourStats armour) {
     if (armour == null) {
       table.addCell(createEmptyValueCell(font));
@@ -28,12 +29,14 @@ public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmo
     valuePrefix = "+"; //$NON-NLS-1$
   }
 
+  @Override
   public void addTotal(PdfPTable table, Font font, IArmourStats armour) {
     table.addCell(createFinalValueCell(font, armour.getSoak(HealthType.Bashing)));
     table.addCell(createFinalValueCell(font, armour.getSoak(HealthType.Lethal)));
     table.addCell(createFinalValueCell(font, armour.getSoak(HealthType.Aggravated)));
   }
 
+  @Override
   public int getColumnCount() {
     return 3;
   }

@@ -20,18 +20,22 @@ public class LinguisticsAdditionalModel extends AbstractAdditionalModelAdapter i
     this.model = new LinguisticsModel(context);
   }
 
+  @Override
   public ILinguisticsModel getLinguisticsModel() {
     return model;
   }
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Abilities;
   }
 
+  @Override
   public String getTemplateId() {
     return template.getId();
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     model.addModelChangeListener(new RemovableEntryChangeAdapter<IIdentificate>(listener));
   }

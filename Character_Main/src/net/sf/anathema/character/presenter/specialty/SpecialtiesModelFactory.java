@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 
 public class SpecialtiesModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new SpecialtiesAdditionalModel(additionalTemplate, context);
   }

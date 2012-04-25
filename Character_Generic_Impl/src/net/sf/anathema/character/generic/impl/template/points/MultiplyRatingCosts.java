@@ -24,6 +24,7 @@ public class MultiplyRatingCosts implements ICurrentRatingCosts {
     this.summand = summand;
   }
 
+  @Override
   public int getRatingCosts(int currentRating) {
     if (currentRating > 0) {
       return currentRating * factor + summand;

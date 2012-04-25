@@ -12,10 +12,12 @@ public class StaticTraitLimitation extends ReflectionCloneableObject<ITraitLimit
     this.staticLimit = staticLimit;
   }
 
+  @Override
   public int getAbsoluteLimit(ILimitationContext limitationContext) {
     return staticLimit;
   }
 
+  @Override
   public int getCurrentMaximum(ILimitationContext limitationContext, boolean modified) {
     return staticLimit;
   }

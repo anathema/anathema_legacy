@@ -15,6 +15,7 @@ public class SingleFileReadAccess implements IRepositoryReadAccess {
     this.repositoryFile = repositoryFile;
   }
 
+  @Override
   public InputStream openMainInputStream() throws RepositoryException {
     try {
       return new FileInputStream(repositoryFile);
@@ -24,10 +25,12 @@ public class SingleFileReadAccess implements IRepositoryReadAccess {
     }
   }
 
+  @Override
   public InputStream openSubInputStream(String streamID) throws RepositoryException {
     throw new UnsupportedOperationException();
   }
 
+  @Override
   public File[] getFiles() {
     return new File[] { repositoryFile };
   }

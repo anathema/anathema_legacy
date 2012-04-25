@@ -28,6 +28,7 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
     this.resources = resources;
   }
 
+  @Override
   public void initPresentation() {
     String labelText = resources.getString("Crafts.SelectionLabel"); //$NON-NLS-1$
     BasicUi basicUi = new BasicUi(resources);
@@ -85,6 +86,7 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
     craftView.setValue(craft.getCurrentValue());
     new TraitPresenter(craft, craftView).initPresentation();
     craftView.addButtonListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         model.removeEntry(craft);
       }

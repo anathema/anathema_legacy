@@ -56,30 +56,36 @@ public class KeywordEntryPage extends AbstractAnathemaWizardPage {
         properties.getAddIcon());
     selectionView.setObjects(getPageModel().getAvailableKeywords());
     selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
+      @Override
       public void valueChanged(IIdentificate newValue) {
         getPageModel().setCurrentKeyword(newValue);
       }
     });
     selectionView.addButtonListener(new IObjectValueChangedListener<IIdentificate>() {
+      @Override
       public void valueChanged(IIdentificate newValue) {
         getPageModel().commitSelection();
       }
     });
     getPageModel().addModelChangeListener(new IRemovableEntryListener<ICharmAttribute>() {
+      @Override
       public void entryAdded(final ICharmAttribute entry) {
         IRemovableEntryView entryView = view.addEntryView(properties.getRemoveIcon(), null, entry.getId());
         viewsByAttribute.put(entry, entryView);
         entryView.addButtonListener(new ActionListener() {
+          @Override
           public void actionPerformed(ActionEvent e) {
             getPageModel().removeEntry(entry);
           }
         });
       }
 
+      @Override
       public void entryAllowed(boolean complete) {
         selectionView.setButtonEnabled(complete);
       }
 
+      @Override
       public void entryRemoved(ICharmAttribute entry) {
         view.removeEntryView(viewsByAttribute.get(entry));
         viewsByAttribute.remove(entry);
@@ -92,18 +98,22 @@ public class KeywordEntryPage extends AbstractAnathemaWizardPage {
     return model.getKeywordEntryModel();
   }
 
+  @Override
   public boolean canFinish() {
     return true;
   }
 
+  @Override
   public String getDescription() {
     return properties.getPageTitle();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     return properties.getDefaultMessage();
   }
 
+  @Override
   public IPageContent getPageContent() {
     return view;
   }

@@ -27,10 +27,12 @@ public class MusicDatabaseView extends AbstractItemView implements IMusicDatabas
     super(name, icon);
   }
 
+  @Override
   public JComponent getComponent() {
     return content;
   }
 
+  @Override
   public IMusicSelectionView addMusicSelectionView(
       ITableColumnViewSettings columnSettings,
       boolean playerView,
@@ -50,6 +52,7 @@ public class MusicDatabaseView extends AbstractItemView implements IMusicDatabas
     return selectionView;
   }
 
+  @Override
   public ILibraryControlView addLibraryControlView(
       ITableColumnViewSettings settings,
       IMusicCategorizationProperties categorizationProperties,

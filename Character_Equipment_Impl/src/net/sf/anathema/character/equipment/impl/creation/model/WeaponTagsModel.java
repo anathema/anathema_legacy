@@ -18,6 +18,7 @@ public class WeaponTagsModel implements IWeaponTagsModel {
       WeaponTag.class);
 
   private final IBooleanValueChangedListener updateRangeEnabledListener = new IBooleanValueChangedListener() {
+    @Override
     public void valueChanged(boolean newValue) {
       setTagsRangedCombatStyle();
     }
@@ -33,18 +34,22 @@ public class WeaponTagsModel implements IWeaponTagsModel {
     }
   }
 
+  @Override
   public IWeaponTag[] getAllTags() {
     return WeaponTag.values();
   }
 
+  @Override
   public BooleanValueModel getEnabledModel(IWeaponTag tag) {
     return enabledMap.get(tag);
   }
 
+  @Override
   public BooleanValueModel getSelectedModel(IWeaponTag tag) {
     return selectedMap.get(tag);
   }
 
+  @Override
   public IWeaponTag[] getSelectedTags() {
     List<IWeaponTag> tags = new ArrayList<IWeaponTag>();
     for (WeaponTag tag : selectedMap.keySet()) {
@@ -81,11 +86,13 @@ public class WeaponTagsModel implements IWeaponTagsModel {
     }
   }
 
+  @Override
   public void setTagsCloseCombatStyle() {
     setAllRangedWeaponTagsEnabled(false);
     setAllCloseCombatTagsEnabled(true);
   }
 
+  @Override
   public void setTagsRangedCombatStyle() {
     setAllCloseCombatTagsEnabled(false);
     if (isRangedTypeTagSelected()) {

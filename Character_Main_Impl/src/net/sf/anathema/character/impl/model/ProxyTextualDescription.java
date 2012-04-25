@@ -28,16 +28,19 @@ public class ProxyTextualDescription implements ITextualDescription {
     }
   }
 
+  @Override
   public void addTextChangedListener(IObjectValueChangedListener<String> listener) {
     listeners.add(listener);
     getCurrent().addTextChangedListener(listener);
   }
 
+  @Override
   public void removeTextChangeListener(IObjectValueChangedListener<String> listener) {
     listeners.remove(listener);
     getCurrent().removeTextChangeListener(listener);
   }
 
+  @Override
   public String getText() {
     return getCurrent().getText();
   }
@@ -46,18 +49,22 @@ public class ProxyTextualDescription implements ITextualDescription {
     return descriptions[currentDescriptionIndex];
   }
 
+  @Override
   public boolean isDirty() {
     return getCurrent().isDirty();
   }
 
+  @Override
   public boolean isEmpty() {
     return getCurrent().isEmpty();
   }
 
+  @Override
   public void setDirty(boolean isDirty) {
     getCurrent().setDirty(isDirty);
   }
 
+  @Override
   public void setText(String text) {
     getCurrent().setText(text);
   }

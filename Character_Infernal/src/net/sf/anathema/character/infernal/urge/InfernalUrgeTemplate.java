@@ -6,6 +6,7 @@ public class InfernalUrgeTemplate implements IAdditionalTemplate {
 
   public static final String ID = "Infernal.Urge.Template"; //$NON-NLS-1$
 
+  @Override
   public String getId() {
     return ID;
   }

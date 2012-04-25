@@ -21,10 +21,12 @@ public class AboutDialogPage extends AbstractDialogPage {
     this.resources = resources;
   }
 
+  @Override
   public IBasicMessage createCurrentMessage() {
     return new BasicMessage(getString("Help.AboutDialog.CreatedLabel")); //$NON-NLS-1$
   }
 
+  @Override
   public String getTitle() {
     return getString("Help.AboutDialog.Title"); //$NON-NLS-1$
   }
@@ -43,6 +45,7 @@ public class AboutDialogPage extends AbstractDialogPage {
         + ")"; //$NON-NLS-1$
   }
 
+  @Override
   public JComponent createContent() {
     JPanel panel = new JPanel(new GridDialogLayout(2, false));
     addCredit(panel, "Help.AboutDialog.Artwork", "Martin Nerukar"); //$NON-NLS-1$//$NON-NLS-2$

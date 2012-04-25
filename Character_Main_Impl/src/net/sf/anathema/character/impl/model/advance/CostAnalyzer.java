@@ -19,14 +19,17 @@ public class CostAnalyzer implements ICostAnalyzer {
     this.traitCollection = traitCollection;
   }
 
+  @Override
   public final boolean isOccultFavored() {
     return traitCollection.getFavorableTrait(AbilityType.Occult).isCasteOrFavored();
   }
 
+  @Override
   public final boolean isMagicFavored(IMagic magic) {
     return magic.isFavored(basicCharacter, traitCollection);
   }
 
+  @Override
   public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
     return MartialArtsUtilities.getLevel(charm);
   }

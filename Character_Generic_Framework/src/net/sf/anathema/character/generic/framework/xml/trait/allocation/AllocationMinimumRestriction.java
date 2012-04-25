@@ -26,6 +26,7 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
     this.siblings = siblings;
   }
 
+  @Override
   public boolean isFullfilledWithout(ILimitationContext context, ITraitType traitType) {
     int remainingDots = dotCount;
     latestContext = context;
@@ -44,6 +45,7 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
     return remainingDots == 0;
   }
   
+  @Override
   public int getCalculationMinValue(ILimitationContext context, ITraitType traitType)
   {
 	  if (!isFreebie)
@@ -65,6 +67,7 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
       return traitDots + getExternalClaims(context, traitType);
   }
   
+  @Override
   public void setIsFreebie(boolean value)
   {
 	  isFreebie = value;
@@ -98,6 +101,7 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
 	  return claimed;
   }
 
+  @Override
   public void clear()
   {
 	  claimMap.clear();
@@ -105,10 +109,12 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
 		  sibling.claimMap.clear();
   }
 
+  @Override
   public void addTraitType(ITraitType traitType) {
     alternateTraitTypes.add(traitType);
   }
 
+  @Override
   public int getStrictMinimumValue()
   {
 	  claimDots(latestContext, latestTrait, strictMinimumValue);

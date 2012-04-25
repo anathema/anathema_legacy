@@ -6,6 +6,7 @@ public enum MutationType implements IQualityType {
   Pox, Affliction, Blight, Abomination,
   Deficiency, Debility, Deformity;
 
+  @Override
   public String getId() {
     return name();
   }

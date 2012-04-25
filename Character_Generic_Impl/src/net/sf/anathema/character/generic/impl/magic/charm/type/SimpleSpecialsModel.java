@@ -15,14 +15,17 @@ public class SimpleSpecialsModel implements ISimpleSpecialsModel {
     this.defense = defense;
   }
 
+  @Override
   public int getDefenseModifier() {
     return defense;
   }
 
+  @Override
   public int getSpeed() {
     return speed;
   }
 
+  @Override
   public TurnType getTurnType() {
     return type;
   }

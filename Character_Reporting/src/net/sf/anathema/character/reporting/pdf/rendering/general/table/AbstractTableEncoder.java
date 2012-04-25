@@ -9,6 +9,7 @@ public abstract class AbstractTableEncoder<C> implements ITableEncoder<C> {
 
   protected abstract PdfPTable createTable(SheetGraphics graphics, C content, Bounds bounds) throws DocumentException;
 
+  @Override
   public float encodeTable(SheetGraphics graphics, C content, Bounds bounds) throws DocumentException {
     PdfPTable table = createTable(graphics, content, bounds);
     table.setWidthPercentage(100);
@@ -16,6 +17,7 @@ public abstract class AbstractTableEncoder<C> implements ITableEncoder<C> {
     return table.getTotalHeight();
   }
 
+  @Override
   public boolean hasContent(C content) {
     return true;
   }

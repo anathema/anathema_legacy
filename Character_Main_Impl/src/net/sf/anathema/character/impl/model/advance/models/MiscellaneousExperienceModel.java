@@ -11,6 +11,7 @@ public class MiscellaneousExperienceModel extends AbstractIntegerValueModel {
     this.statistics = statistics;
   }
 
+  @Override
   public Integer getValue() {
     return getMiscCosts();
   }

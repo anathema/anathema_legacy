@@ -16,18 +16,22 @@ public class Menu implements IMenuBarView {
     menu.setMnemonic(mnemonic);
   }
 
+  @Override
   public JMenu getComponent() {
     return menu;
   }
 
+  @Override
   public void addMenuItem(Action action) {
     menu.add(action);
   }
 
+  @Override
   public void addSeparator() {
     menu.addSeparator();
   }
 
+  @Override
   public void setMnemonic(char c) {
     menu.setMnemonic(c);
   }

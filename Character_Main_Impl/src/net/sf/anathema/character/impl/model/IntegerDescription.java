@@ -13,10 +13,12 @@ public class IntegerDescription implements IIntegerDescription {
     this.value = value;
   }
 
+  @Override
   public final int getValue() {
     return value;
   }
 
+  @Override
   public final void setValue(int value) {
     if (this.value == value) {
       return;
@@ -25,6 +27,7 @@ public class IntegerDescription implements IIntegerDescription {
     fireValueChangedEvent();
   }
 
+  @Override
   public final void addChangeListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }

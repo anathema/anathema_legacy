@@ -30,14 +30,17 @@ public class AnathemaPreferencesPage extends AbstractDialogPage {
     this.elements = elements;
   }
 
+  @Override
   public IBasicMessage createCurrentMessage() {
     return getDefaultMessage();
   }
 
+  @Override
   public String getTitle() {
     return resources.getString("AnathemaCore.Tools.Preferences.Name"); //$NON-NLS-1$
   }
 
+  @Override
   public JComponent createContent() {
     TabbedPanel panel = new TabbedPanel();
     for (IPreferencesElement element : elements) {

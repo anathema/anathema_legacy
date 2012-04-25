@@ -24,10 +24,12 @@ public class SearchSelectionComponent implements ISearchComponent {
     ToggleComponentEnabler.connect(checkBox, this.label);
   }
 
+  @Override
   public boolean isSelected() {
     return checkBox.isSelected();
   }
 
+  @Override
   public String getSearchString() {
     return textField.getText();
   }

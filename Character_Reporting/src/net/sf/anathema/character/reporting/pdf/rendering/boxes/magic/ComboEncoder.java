@@ -28,6 +28,7 @@ public class ComboEncoder extends AbstractContentEncoder<ComboContent> {
     encodeCombos(graphics, reportSession, bounds);
   }
 
+  @Override
   public String getHeader(ReportSession reportSession) {
     return createContent(reportSession).getHeader();
   }

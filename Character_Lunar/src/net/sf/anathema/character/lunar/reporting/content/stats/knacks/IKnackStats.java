@@ -6,6 +6,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IKnackStats extends IStats {
 
+  @Override
   public IIdentificate getName();
 
   public String getGroupName(IResources resources);

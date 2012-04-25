@@ -58,6 +58,7 @@ public class SugiyamaVertexOrderer extends AbstractVertexOrderer {
     return true;
   }
 
+  @Override
   public void processMultiLayerGraph() {
     doPhaseOne();
     for (int reorderCount = 0; reorderCount < PHASE_TWO_COUNT; reorderCount++) {

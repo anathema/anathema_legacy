@@ -11,6 +11,7 @@ public class ItemTypeRegistry implements IItemTypeRegistry {
 
   private final List<IItemType> itemTypes = new ArrayList<IItemType>();
 
+  @Override
   public IItemType getById(String id) {
     for (IItemType itemType : itemTypes) {
       if (itemType.getId().equals(id)) {
@@ -20,11 +21,13 @@ public class ItemTypeRegistry implements IItemTypeRegistry {
     throw new IllegalArgumentException("No item type registered for id: " + id); //$NON-NLS-1$
   }
 
+  @Override
   public void registerItemType(IItemType type) {
     // todo ensures
     itemTypes.add(type);
   }
 
+  @Override
   public IItemType[] getAllItemTypes() {
     return itemTypes.toArray(new ItemType[itemTypes.size()]);
   }

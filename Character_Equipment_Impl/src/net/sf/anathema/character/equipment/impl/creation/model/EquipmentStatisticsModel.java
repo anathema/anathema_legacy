@@ -10,15 +10,18 @@ public class EquipmentStatisticsModel implements IEquipmentStatisticsModel {
   private final ITextualDescription name = new SimpleTextualDescription();
   private MagicalMaterial materialType = null;
 
+  @Override
   public final ITextualDescription getName() {
     return name;
   }
   
+  @Override
   public MagicalMaterial getMaterialType()
   {
 	  return materialType;
   }
   
+  @Override
   public void setMaterialType(MagicalMaterial material)
   {
 	  materialType = material;

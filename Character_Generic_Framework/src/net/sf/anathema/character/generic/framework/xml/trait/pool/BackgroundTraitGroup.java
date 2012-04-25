@@ -13,14 +13,17 @@ public class BackgroundTraitGroup implements ITraitTypeGroup {
     this.registry = registry;
   }
 
+  @Override
   public boolean contains(ITraitType traitType) {
     return registry.idRegistered(traitType.getId());
   }
 
+  @Override
   public ITraitType[] getAllGroupTypes() {
     return registry.getAll().toArray(new ITraitType[0]);
   }
 
+  @Override
   public ITraitType getById(String typeId) {
     return registry.getById(typeId);
   }

@@ -15,10 +15,12 @@ public class OxBodyTechniqueArbitrator implements IOxBodyTechniqueArbitrator {
     this.controllingTraits = toughnessControllingTraits;
   }
 
+  @Override
   public void addOxBodyTechniqueConfiguration(IOxBodyTechniqueConfiguration oxBodyTechniqueConfiguration) {
     oxBodyList.add(oxBodyTechniqueConfiguration);
   }
 
+  @Override
   public boolean isIncrementAllowed(int increment) {
     int oxBodyCount = 0;
     int maxCount = Integer.MAX_VALUE;

@@ -38,6 +38,7 @@ public class TextReport extends AbstractPdfReport {
     return resources.getString("CharacterModule.Reporting.Text.Name"); //$NON-NLS-1$
   }
 
+  @Override
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
@@ -84,6 +85,7 @@ public class TextReport extends AbstractPdfReport {
     while (columnText.isOverflow());
   }
 
+  @Override
   public boolean supports(IItem item) {
     if (item == null) {
       return false;

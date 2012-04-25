@@ -8,6 +8,7 @@ import org.dom4j.Element;
 
 public class LunarVirtueFlawParser implements IAdditionalTemplateParser {
 
+  @Override
   public IAdditionalTemplate parse(Element element) {
     return new LunarVirtueFlawTemplate();
   }

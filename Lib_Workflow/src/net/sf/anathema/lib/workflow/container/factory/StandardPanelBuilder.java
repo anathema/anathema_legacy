@@ -40,10 +40,12 @@ public class StandardPanelBuilder {
     final ITextView textView = new LineTextView(textFieldColumns);
     ToggleComponentEnabler.connect(checkBoxView.getComponent(), textView.getComponent());
     addDialogComponent(new IDialogComponent() {
+      @Override
       public int getColumnCount() {
         return 2;
       }
 
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(checkBoxView.getComponent(), GridDialogLayoutDataFactory.createTopData());
         JComponent textContent = textView.getComponent();
@@ -54,10 +56,12 @@ public class StandardPanelBuilder {
     });
     return new ICheckableTextView() {
 
+      @Override
       public IBooleanValueView getBooleanValueView() {
         return checkBoxView;
       }
 
+      @Override
       public ITextView getTextView() {
         return textView;
       }
@@ -71,10 +75,12 @@ public class StandardPanelBuilder {
   private ITextView addLabelledTextView(final String labelText, final ITextView textView) {
     final LabelTextView labelTextView = new LabelTextView(labelText, textView);
     addDialogComponent(new IDialogComponent() {
+      @Override
       public int getColumnCount() {
         return 2;
       }
 
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         labelTextView.addToStandardPanel(panel, columnCount - 1);
       }
@@ -93,10 +99,12 @@ public class StandardPanelBuilder {
   public IntegerSpinner addIntegerSpinner(final String labelString, int startValue) {
     final IntegerSpinner spinner = new IntegerSpinner(startValue);
     addDialogComponent(new IDialogComponent() {
+      @Override
       public int getColumnCount() {
         return 2;
       }
 
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(new JLabel(labelString));
         panel.add(spinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
@@ -120,10 +128,12 @@ public class StandardPanelBuilder {
       boolean editable) {
     final ObjectSelectionView<V> view = new ObjectSelectionView<V>(label, renderer, editable, objects);
     addDialogComponent(new IDialogComponent() {
+      @Override
       public int getColumnCount() {
         return 2;
       }
 
+      @Override
       public void fillInto(JPanel layoutPanel, int columnCount) {
         view.addTo(layoutPanel, new GridDialogLayoutData());
       }

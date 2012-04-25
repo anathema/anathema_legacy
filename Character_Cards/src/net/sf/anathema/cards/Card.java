@@ -17,19 +17,23 @@ public class Card implements ICard {
 		this.data = data;
 	}
 	
-	public PdfContentByte getPdfContent() {
+	@Override
+    public PdfContentByte getPdfContent() {
 		return directContent;
 	}
 	
-	public float getX() {
+	@Override
+    public float getX() {
 		return upperleftX;
 	}
 	
-	public float getY() {
+	@Override
+    public float getY() {
 		return upperleftY;
 	}
 	
-	public ICardData getData() {
+	@Override
+    public ICardData getData() {
 		return data;
 	}
 }

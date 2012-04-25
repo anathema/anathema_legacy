@@ -14,6 +14,7 @@ public class NewItemCreator implements IItemCreator {
     this.anathemaModel = anathemaModel;
   }
 
+  @Override
   public IItem createItem(IItemType type, IAnathemaWizardModelTemplate template) throws PersistenceException {
     IItem item = anathemaModel.getPersisterRegistry().get(type).createNew(template);
     item.setClean();

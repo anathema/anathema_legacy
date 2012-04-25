@@ -19,6 +19,7 @@ public class ListObjectSelectionPageView<V> implements IObjectSelectionView<V> {
     this.clazz = clazz;
   }
 
+  @Override
   public IListObjectSelectionView<V> addSelectionView() {
     ListObjectSelectionView<V> view = new ListObjectSelectionView<V>(clazz);
     JComponent content = view.getComponent();
@@ -27,16 +28,19 @@ public class ListObjectSelectionPageView<V> implements IObjectSelectionView<V> {
     return view;
   }
 
+  @Override
   public JComponent getContent() {
     return panel;
   }
 
+  @Override
   public void requestFocus() {
     if (focusComponent != null) {
       focusComponent.requestFocus();
     }
   }
 
+  @Override
   public void dispose() {
     //nothing to do;
   }

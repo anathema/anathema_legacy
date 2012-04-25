@@ -48,14 +48,17 @@ public class PlotView implements IPlotView {
   private JButton downButton;
   private DefaultMutableTreeNode selectedNode;
 
+  @Override
   public final void initGui(IPlotViewProperties properties) {
     createContent(content, properties);
   }
 
+  @Override
   public void addPlotViewListener(IPlotViewListener listener) {
     listenerControl.addPlotViewListener(listener);
   }
 
+  @Override
   public void collapseNode(DefaultMutableTreeNode node) {
     tree.collapsePath(new TreePath(node.getPath()));
   }
@@ -70,14 +73,17 @@ public class PlotView implements IPlotView {
     panel.add(splitPane, BorderLayout.CENTER);
   }
 
+  @Override
   public void expandNode(DefaultMutableTreeNode node) {
     tree.expandPath(new TreePath(node.getPath()));
   }
 
+  @Override
   public void setSelectedHierarchyNode(DefaultMutableTreeNode node) {
     tree.setSelectionPath(new TreePath(node.getPath()));
   }
 
+  @Override
   public IBasicItemDescriptionView initBasicItemDescriptionView() {
     this.itemDescriptionView = new BasicItemDescriptionView();
     return itemDescriptionView;
@@ -135,11 +141,13 @@ public class PlotView implements IPlotView {
     downButton = new JButton(downAction);
   }
 
+  @Override
   public void initSeriesHierarchyView(TreeModel model, TreeCellRenderer renderer, String title) {
     tree = new JTree(model);
     tree.setCellRenderer(renderer);
     new PlotDnD(createHierarchyTreeView(), listenerControl).initDragAndDrop();
     tree.addTreeSelectionListener(new TreeSelectionListener() {
+      @Override
       public void valueChanged(TreeSelectionEvent e) {
         DefaultMutableTreeNode currentSelection = TreeUtilities.getSelectedHierachyNode(tree);
         if (selectedNode == currentSelection) {
@@ -176,30 +184,37 @@ public class PlotView implements IPlotView {
     return panel;
   }
 
+  @Override
   public void setAddButtonEnabled(boolean enabled) {
     addButton.setEnabled(enabled);
   }
 
+  @Override
   public void setRemoveButtonEnabled(boolean enabled) {
     removeButton.setEnabled(enabled);
   }
 
+  @Override
   public void setHierarchieTreeCellRenderer(TreeCellRenderer renderer) {
     tree.setCellRenderer(renderer);
   }
 
+  @Override
   public void setUpButtonEnabled(boolean enabled) {
     upButton.setEnabled(enabled);
   }
 
+  @Override
   public void setDownButtonEnabled(boolean enabled) {
     downButton.setEnabled(enabled);
   }
 
+  @Override
   public ITreeView createHierarchyTreeView() {
     return new DefaultTreeView(tree);
   }
 
+  @Override
   public JComponent getComponent() {
     return content;
   }

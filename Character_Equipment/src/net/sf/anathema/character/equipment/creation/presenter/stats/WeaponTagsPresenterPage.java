@@ -55,6 +55,7 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
       booleanValuePresentation.initPresentation(checkBox, model.getWeaponTagsModel().getSelectedModel(tag));
       final BooleanValueModel enabledModel = model.getWeaponTagsModel().getEnabledModel(tag);
       enabledModel.addChangeListener(new IBooleanValueChangedListener() {
+        @Override
         public void valueChanged(boolean newValue) {
           checkBox.setEnabled(enabledModel.getValue());
         }
@@ -63,6 +64,7 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
     }
   }
 
+  @Override
   public boolean canFinish() {
     return !isIllegalRangedWeapon();
   }
@@ -80,10 +82,12 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
     return false;
   }
 
+  @Override
   public String getDescription() {
     return properties.getPageTitle();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     if (isIllegalRangedWeapon()) {
       if (!model.getWeaponTagsModel().isRangedTypeTagSelected()) {
@@ -97,6 +101,7 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
     return properties.getDefaultMessage();
   }
 
+  @Override
   public IPageContent getPageContent() {
     return content;
   }

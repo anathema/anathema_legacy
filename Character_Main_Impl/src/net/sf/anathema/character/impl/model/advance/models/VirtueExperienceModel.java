@@ -16,6 +16,7 @@ public class VirtueExperienceModel extends AbstractIntegerValueModel {
     this.calculator = calculator;
   }
 
+  @Override
   public Integer getValue() {
     return getVirtueCosts();
   }

@@ -27,6 +27,7 @@ public class RetrieveSelectionAction extends SmartAction {
     this.selectionModel = selectionModel;
     setToolTipText(resources.getString("Music.Actions.RetrieveSelection.Tooltip")); //$NON-NLS-1$
     selectionListView.addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         setEnabled(selectionListView.getSelectedItems().length != 0);
       }

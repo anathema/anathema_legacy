@@ -6,6 +6,7 @@ import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 
 public class FriendlyCharmGroupArbitrator implements ICharmGroupArbitrator {
 
+  @Override
   public ICharm[] getCharms(ICharmGroup charmGroup) {
     return charmGroup.getAllCharms();
   }

@@ -21,6 +21,7 @@ public final class LibrarySelectionListener implements ListSelectionListener {
     this.resources = resources;
   }
 
+  @Override
   public void valueChanged(ListSelectionEvent e) {
     ILibrary library = (ILibrary) view.getSelectedLibrary();
     updateTracks(library);

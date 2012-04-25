@@ -12,14 +12,17 @@ public class ReflexiveSpecialsModel implements IReflexiveSpecialsModel {
     this.secondaryStep = secondaryStep;
   }
 
+  @Override
   public Integer getPrimaryStep() {
     return primaryStep;
   }
 
+  @Override
   public Integer getSecondaryStep() {
     return secondaryStep;
   }
 
+  @Override
   public boolean isSplitEnabled() {
     return secondaryStep != null;
   }

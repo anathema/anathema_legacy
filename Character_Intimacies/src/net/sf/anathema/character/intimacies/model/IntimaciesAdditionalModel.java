@@ -24,27 +24,33 @@ public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
 	this(additionalTemplate, new IntimaciesModel(context));
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     model.addModelChangeListener(new RemovableEntryChangeAdapter<IIntimacy>(listener));
     model.addModelChangeListener(listener);
   }
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Concept;
   }
 
+  @Override
   public IAdditionalModelBonusPointCalculator getBonusPointCalculator() {
     return new IntimaciesBonusPointCalculator(model);
   }
 
+  @Override
   public IAdditionalModelExperienceCalculator getExperienceCalculator() {
     return new NullAdditionalModelExperienceCalculator();
   }
 
+  @Override
   public String getTemplateId() {
     return additionalTemplate.getId();
   }
 
+  @Override
   public IIntimaciesModel getIntimaciesModel() {
     return model;
   }

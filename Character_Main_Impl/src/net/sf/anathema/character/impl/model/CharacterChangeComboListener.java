@@ -15,22 +15,27 @@ public final class CharacterChangeComboListener implements IComboConfigurationLi
     this.listening = listening;
   }
 
+  @Override
   public void editEnded() {
     // Nothing to do
   }
 
+  @Override
   public void editBegun(ICombo combo) {
     // Nothing to do
   }
 
+  @Override
   public void comboDeleted(ICombo combo) {
     listening.fireCharacterChanged();
   }
 
+  @Override
   public void comboChanged(ICombo combo) {
     listening.fireCharacterChanged();
   }
 
+  @Override
   public void comboAdded(ICombo combo) {
     listening.fireCharacterChanged();
   }

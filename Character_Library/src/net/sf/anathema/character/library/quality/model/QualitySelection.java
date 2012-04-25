@@ -38,26 +38,32 @@ public class QualitySelection<Q extends IQuality> implements IQualitySelection<Q
     return quality.hashCode() + pointValue * 11;
   }
 
+  @Override
   public Q getQuality() {
     return quality;
   }
 
+  @Override
   public int getPointValue() {
     return pointValue;
   }
 
+  @Override
   public boolean isCreationActive() {
     return creationActive;
   }
 
+  @Override
   public boolean isExperienceActive() {
     return experienceActive;
   }
 
+  @Override
   public void setExperienceActive(boolean active) {
     experienceActive = active;
   }
 
+  @Override
   public void setCreationActive(boolean active) {
     creationActive = active;
   }

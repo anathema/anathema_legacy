@@ -11,6 +11,7 @@ public class WillpowerListening {
   public void initListening(final IDefaultTrait willpower, final IDefaultTrait[] virtues) {
     for (ITrait virtue : virtues) {
       virtue.addCreationPointListener(new IIntValueChangedListener() {
+        @Override
         public void valueChanged(int newValue) {
           updateWillpowerCreationRange(willpower, virtues);
         }

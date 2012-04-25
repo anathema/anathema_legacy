@@ -21,16 +21,19 @@ public class SpellsOnlyContent extends AbstractMagicContent {
     storeMnemonicIfNecessary(session);
   }
 
+  @Override
   protected MagicMnemonic createMnemonic() {
     List<IMagicStats> printMagic = ExtendedMagicEncoder.collectPrintSpells(session);
     Collections.sort(printMagic);
     return new SpellsOnlyMnemonic(printMagic);
   }
 
+  @Override
   protected boolean knowsMnemonic(ReportSession session) {
     return session.knowsMnemonic(SpellsOnlyMnemonic.class);
   }
 
+  @Override
   protected MagicMnemonic getMnemonic() {
     return session.retrieveMnemonic(SpellsOnlyMnemonic.class);
   }

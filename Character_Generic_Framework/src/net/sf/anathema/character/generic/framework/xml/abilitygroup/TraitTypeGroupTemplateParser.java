@@ -27,6 +27,7 @@ public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<Gene
     this.traitTypeGroup = traitTypeGroup;
   }
 
+  @Override
   public GenericGroupedTraitTypeProvider parseTemplate(Element element) throws PersistenceException {
     GenericGroupedTraitTypeProvider abilityGroupProvider = getBasicTemplate(element);
     updateGroups(element, abilityGroupProvider);

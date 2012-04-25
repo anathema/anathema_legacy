@@ -67,14 +67,17 @@ public class SoakProvidingMutation extends Mutation {
   public float getSoakStaminaModifier(HealthType type) {
     final float[] modifier = new float[1];
     type.accept(new IHealthTypeVisitor() {
+      @Override
       public void visitBashing(HealthType bashing) {
         modifier[0] = 1;
       }
 
+      @Override
       public void visitLethal(HealthType lethal) {
         modifier[0] = 1;
       }
 
+      @Override
       public void visitAggravated(HealthType aggravated) {
         throw new UnsupportedOperationException();
       }

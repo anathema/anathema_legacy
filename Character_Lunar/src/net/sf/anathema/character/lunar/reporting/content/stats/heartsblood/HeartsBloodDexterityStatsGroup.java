@@ -13,15 +13,18 @@ public class HeartsBloodDexterityStatsGroup extends AbstractTextStatsGroup<IHear
     this.resources = resources;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IHeartsBloodStats stats) {
     String text = stats == null ? null : stats.getDexterityString();
     table.addCell(createTextCell(font, text));
   }
 
+  @Override
   public Float[] getColumnWeights() {
     return new Float[]{1.5f};
   }
 
+  @Override
   public String getTitle() {
     return resources.getString("Sheet.Lunar.HeartsBlood.Dexterity"); //$NON-NLS-1$
   }

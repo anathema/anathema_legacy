@@ -28,26 +28,32 @@ public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
     // may be some special spell specific stuff here for demon summoning
 
     spell.getCircleType().accept(new ICircleTypeVisitor() {
+      @Override
       public void visitTerrestrial(CircleType type) {
         canLearn[0] = canLearnSorcerySpell(spell, knownCharms);
       }
 
+      @Override
       public void visitCelestial(CircleType type) {
         canLearn[0] = canLearnSorcerySpell(spell, knownCharms);
       }
 
+      @Override
       public void visitSolar(CircleType type) {
         canLearn[0] = canLearnSorcerySpell(spell, knownCharms);
       }
 
+      @Override
       public void visitShadowland(CircleType type) {
         canLearn[0] = canLearnNecromancySpell(spell, knownCharms);
       }
 
+      @Override
       public void visitLabyrinth(CircleType type) {
         canLearn[0] = canLearnNecromancySpell(spell, knownCharms);
       }
 
+      @Override
       public void visitVoid(CircleType type) {
         canLearn[0] = canLearnNecromancySpell(spell, knownCharms);
       }
@@ -56,6 +62,7 @@ public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
     return canLearn[0];
   }
 
+  @Override
   protected boolean knowsCharm(String charm, ICharm[] knownCharms) {
     for (ICharm knownCharm : knownCharms)
       if (charm.equals(knownCharm.getId()))
@@ -99,26 +106,32 @@ public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
     final List<String> names = new ArrayList<String>();
     for (final YoziType yozi : YoziType.values()) {
       circle.accept(new ICircleTypeVisitor() {
+        @Override
         public void visitTerrestrial(CircleType type) {
           names.add("Infernal.SorcerousEnlightenment." + yozi.getId());
         }
 
+        @Override
         public void visitCelestial(CircleType type) {
           names.add("Infernal.SorcerousEnlightenment2." + yozi.getId());
         }
 
+        @Override
         public void visitSolar(CircleType type) {
           names.add("Infernal.SorcerousEnlightenment3." + yozi.getId());
         }
 
+        @Override
         public void visitShadowland(CircleType type) {
           names.add("Infernal.SorcerousEnlightenment." + yozi.getId());
         }
 
+        @Override
         public void visitLabyrinth(CircleType type) {
           names.add("Infernal.SorcerousEnlightenment2." + yozi.getId());
         }
 
+        @Override
         public void visitVoid(CircleType type) {
           names.add("Infernal.SorcerousEnlightenment3." + yozi.getId());
         }

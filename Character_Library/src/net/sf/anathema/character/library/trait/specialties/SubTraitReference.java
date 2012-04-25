@@ -14,10 +14,12 @@ public class SubTraitReference implements ITraitReference {
     name = subTrait.getName();
   }
 
+  @Override
   public ITraitType getTraitType() {
     return basicTraitType;
   }
 
+  @Override
   public String getName() {
     return name;
   }

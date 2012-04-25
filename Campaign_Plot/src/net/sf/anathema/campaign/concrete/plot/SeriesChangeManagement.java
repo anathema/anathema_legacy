@@ -16,20 +16,24 @@ public class SeriesChangeManagement implements IChangeManagement {
       this.changeListener = listener;
     }
 
+    @Override
     public void childAdded(IPlotElementContainer container, IPlotElement newChild) {
       newChild.addPlotElementContainerListener(this);
       newChild.getDescription().addDirtyListener(changeListener);
       setDirty();
     }
 
+    @Override
     public void childInserted(IPlotElement insertion, IPlotElementContainer parentContainer, int index) {
       setDirty();
     }
 
+    @Override
     public void childMoved(IPlotElement element, int newIndex) {
       setDirty();
     }
 
+    @Override
     public void childRemoved(IPlotElement removal) {
       removal.getDescription().removeDirtyListener(changeListener);
       removal.removePlotElementContainerListener(this);
@@ -38,6 +42,7 @@ public class SeriesChangeManagement implements IChangeManagement {
   }
 
   private final IChangeListener listener = new IChangeListener() {
+    @Override
     public void changeOccurred() {
       setDirty();
     }
@@ -58,18 +63,22 @@ public class SeriesChangeManagement implements IChangeManagement {
     control.fireChangedEvent();
   }
 
+  @Override
   public void addDirtyListener(IChangeListener changeListener) {
     control.addChangeListener(changeListener);
   }
 
+  @Override
   public boolean isDirty() {
     return dirty;
   }
 
+  @Override
   public void removeDirtyListener(IChangeListener changeListener) {
     control.removeChangeListener(changeListener);
   }
 
+  @Override
   public void setClean() {
     this.dirty = false;
     control.fireChangedEvent();

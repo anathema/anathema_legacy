@@ -7,6 +7,7 @@ public class IntValuePresentation {
 
   public void initView(final IntegerSpinner integerSpinner, final IIntValueModel intValueModel) {
     intValueModel.addIntValueChangeListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         integerSpinner.setValue(newValue);
       }
@@ -17,6 +18,7 @@ public class IntValuePresentation {
     // SpinnerListening umbedingt erst nach Initialisierung des Spinners durchfuehren, weil dieser
     // sonst bei setMinimum potentiell den value auf Minimum setzt und der Startwert verloren geht.
     integerSpinner.addChangeListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         intValueModel.setValue(newValue);
       }

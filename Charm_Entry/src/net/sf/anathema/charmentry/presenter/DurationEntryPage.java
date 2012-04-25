@@ -37,11 +37,13 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new PrerequisitesEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
+      @Override
       public boolean isFulfilled() {
         return getPageModel().isDurationComplete();
       }
     });
     addFollowupPage(new QualifiedAmountDurationPage(resources, model, viewFactory), inputListener, new ICondition() {
+      @Override
       public boolean isFulfilled() {
         return qualifiedAmountDuration;
       }
@@ -59,18 +61,21 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
     final JRadioButton instantButton = view.addRadioButton(properties.getInstantString());
     final ITextView simpleDurationView = view.addRadioButtonTextField(properties.getSimpleDurationString());
     simpleDurationView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         getPageModel().setSimpleDuration(newValue);
       }
     });
     final ITextView untilView = view.addRadioButtonTextField(properties.getUntilString());
     untilView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         getPageModel().setUntilDuration(newValue);
       }
     });
     final JRadioButton amountButton = view.addRadioButton(properties.getQualifiedAmountDurationString());
     view.addTypeChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         qualifiedAmountDuration = amountButton.isSelected();
         getPageModel().clearDuration();
@@ -87,18 +92,22 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
     return model.getDurationModel();
   }
 
+  @Override
   public boolean canFinish() {
     return false;
   }
 
+  @Override
   public String getDescription() {
     return properties.getDurationPageTitle();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     return properties.getBasicMessage();
   }
 
+  @Override
   public IPageContent getPageContent() {
     return view;
   }

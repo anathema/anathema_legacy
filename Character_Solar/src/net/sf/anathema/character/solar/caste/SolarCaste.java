@@ -6,6 +6,7 @@ public enum SolarCaste implements ICasteType {
 
   Dawn, Zenith, Twilight, Night, Eclipse;
 
+  @Override
   public String getId() {
     return name();
   }

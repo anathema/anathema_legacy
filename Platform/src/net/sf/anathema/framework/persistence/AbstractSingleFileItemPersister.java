@@ -17,6 +17,7 @@ import org.dom4j.io.SAXReader;
 
 public abstract class AbstractSingleFileItemPersister implements IRepositoryItemPersister {
 
+  @Override
   public void save(IRepositoryWriteAccess writeAccess, IItem item) throws IOException, RepositoryException {
     OutputStream stream = null;
     try {
@@ -30,6 +31,7 @@ public abstract class AbstractSingleFileItemPersister implements IRepositoryItem
 
   protected abstract void save(OutputStream stream, IItem item) throws IOException;
 
+  @Override
   public final IItem load(IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException {
     InputStream stream = null;
     try {

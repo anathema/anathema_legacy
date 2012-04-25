@@ -8,10 +8,12 @@ public enum CollegeType implements ITraitType {
   Captain, Gull, Mast, Messenger, ShipsWheel, Ewer, Lovers, Musician, Peacock, Pillar, Banner, Gauntlet, Quiver,
   Shield, Spear, Guardians, Key, Mask, Sorcerer, TreasureTrove, Corpse, Crow, Haywain, RisingSmoke, Sword;
 
+  @Override
   public String getId() {
     return name();
   }
 
+  @Override
   public void accept(ITraitTypeVisitor visitor) {
     visitor.visitCustomTraitType(this);
   }

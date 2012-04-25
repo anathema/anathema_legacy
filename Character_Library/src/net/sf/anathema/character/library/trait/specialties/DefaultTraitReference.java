@@ -12,10 +12,12 @@ public class DefaultTraitReference implements ITraitReference {
     this.type = visitedTrait.getType();
   }
 
+  @Override
   public ITraitType getTraitType() {
     return type;
   }
 
+  @Override
   public String getName() {
     return null;
   }

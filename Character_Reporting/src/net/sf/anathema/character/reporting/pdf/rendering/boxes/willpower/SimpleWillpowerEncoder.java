@@ -16,6 +16,7 @@ public class SimpleWillpowerEncoder extends AbstractContentEncoder<WillpowerCont
     super(WillpowerContent.class);
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
     PdfTraitEncoder traitEncoder = PdfTraitEncoder.createLargeTraitEncoder();
     WillpowerContent content = createContent(reportSession);

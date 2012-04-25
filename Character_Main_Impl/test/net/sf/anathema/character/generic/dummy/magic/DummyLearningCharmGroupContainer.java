@@ -13,6 +13,7 @@ public class DummyLearningCharmGroupContainer implements ILearningCharmGroupCont
     this.groups = groups;
   }
 
+  @Override
   public ILearningCharmGroup getLearningCharmGroup(ICharm charm) {
     for (ILearningCharmGroup group : groups) {
       if (charm.getGroupId().equals(group.getId())) {

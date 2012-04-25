@@ -19,6 +19,7 @@ public class SimpleEssenceContent extends AbstractSubBoxContent {
     return "Essence"; //$NON-NLS-1$
   }
 
+  @Override
   public boolean hasContent() {
     return true;
   }

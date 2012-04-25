@@ -17,6 +17,7 @@ public class TraitCollectionUtilities {
         collection.getTraits(VirtueType.values()),
         IDefaultTrait.class,
         new ITransformer<ITrait, IDefaultTrait>() {
+          @Override
           public IDefaultTrait transform(ITrait input) {
             return (IDefaultTrait) input;
           }

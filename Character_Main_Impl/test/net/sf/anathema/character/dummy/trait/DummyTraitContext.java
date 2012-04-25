@@ -18,34 +18,42 @@ public class DummyTraitContext implements ITraitContext {
 
   private class DummyLimitationContext implements ILimitationContext {
 
+    @Override
     public ITraitLimitation getEssenceLimitation() {
       return new StaticTraitLimitation(7);
     }
 
+    @Override
     public ICasteType getCasteType() {
       return null;
     }
 
+    @Override
     public IGenericTraitCollection getTraitCollection() {
       return new IGenericTraitCollection() {
+        @Override
         public IGenericTrait getTrait(ITraitType type) {
           return traitCollection.getTrait(type);
         }
 
+        @Override
         public IGenericTrait[] getTraits(ITraitType[] traitTypes) {
           throw new NotYetImplementedException();
         }
 
+        @Override
         public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
           return traitCollection.getFavorableTrait(type);
         }
 
+        @Override
         public boolean isFavoredOrCasteTrait(ITraitType type) {
           return traitCollection.isFavoredOrCasteTrait(type);
         }
       };
     }
     
+    @Override
     public int getEssenceCap(boolean modified)
     {
   	  return 0;
@@ -65,10 +73,12 @@ public class DummyTraitContext implements ITraitContext {
     this.traitCollection = traitCollection;
   }
 
+  @Override
   public ITraitValueStrategy getTraitValueStrategy() {
     return traitValueStrategy;
   }
 
+  @Override
   public ILimitationContext getLimitationContext() {
     return limitationContext;
   }

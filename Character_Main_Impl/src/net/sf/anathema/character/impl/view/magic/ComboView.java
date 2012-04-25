@@ -25,6 +25,7 @@ public class ComboView implements IComboView {
     return taskPaneGroup;
   }
 
+  @Override
   public void initGui(String name, String description) {
     label = new JLabel(description);
     taskPaneGroup.add(label);
@@ -33,16 +34,19 @@ public class ComboView implements IComboView {
     taskPaneGroup.setTitle(name);
   }
 
+  @Override
   public void updateCombo(String name, String description) {
     taskPaneGroup.setTitle(name);
     label.setText(description);
     GuiUtilities.revalidate(taskPaneGroup);
   }
 
+  @Override
   public void setEditText(String text) {
     editAction.putValue(Action.NAME, text);
   }
 
+  @Override
   public void setEditButtonsVisible(boolean enabled) {
     if (!enabled) {
       taskPaneGroup.remove(deleteComponent);

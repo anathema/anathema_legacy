@@ -13,10 +13,12 @@ public class DefaultGridDialogPanel implements IGridDialogPanel {
     panelBuilder = new GridDialogPanelBuilder();
   }
 
+  @Override
   public void add(IDialogComponent component) {
     panelBuilder.add(component);
   }
 
+  @Override
   public JPanel getComponent() {
     return panelBuilder.createPanel();
   }

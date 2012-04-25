@@ -118,6 +118,7 @@ public class GenericMagicLearnPoolTest {
   @Test
   public void testModifiedValue() {
     pool.setCostModification(new IPointModification() {
+      @Override
       public int getAdditionalPoints(int value) {
         return Math.max(0, value - 3);
       }

@@ -24,16 +24,19 @@ public class AllMagicContent extends AbstractMagicContent {
     storeMnemonicIfNecessary(session);
   }
 
+  @Override
   protected MagicMnemonic createMnemonic() {
     List<IMagicStats> printMagic = collectPrintMagic();
     Collections.sort(printMagic);
     return new CharmsAndSorceryMnemonic(printMagic);
   }
 
+  @Override
   protected boolean knowsMnemonic(ReportSession session) {
     return session.knowsMnemonic(CharmsAndSorceryMnemonic.class);
   }
 
+  @Override
   protected MagicMnemonic getMnemonic() {
     return session.retrieveMnemonic(CharmsAndSorceryMnemonic.class);
   }

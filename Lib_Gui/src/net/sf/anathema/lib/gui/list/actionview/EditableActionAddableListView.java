@@ -29,6 +29,7 @@ public class EditableActionAddableListView<V> extends AbstractActionAddableListV
     return table.getComponent();
   }
 
+  @Override
   public void setObjects(V[] items) {
     for (int index = 0; index < tableModel.getRowCount(); index++) {
       tableModel.removeRow(index);
@@ -39,10 +40,12 @@ public class EditableActionAddableListView<V> extends AbstractActionAddableListV
     }
   }
 
+  @Override
   public void addListSelectionListener(ListSelectionListener listener) {
     table.getTable().getSelectionModel().addListSelectionListener(listener);
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public V[] getSelectedItems() {
     int selectedRowIndex = table.getSelectedRowIndex();

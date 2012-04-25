@@ -25,6 +25,7 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
     this.boundsCalculator = calculator;
   }
 
+  @Override
   public void setVisible(final ISVGSpecialNodeView specialView, boolean visible) {
     if (!visible) {
       specialView.setVisible(false);

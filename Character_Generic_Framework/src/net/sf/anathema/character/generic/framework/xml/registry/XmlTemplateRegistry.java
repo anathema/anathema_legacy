@@ -19,14 +19,17 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
   private final IRegistry<String, T> templateRegistry = new Registry<String, T>();
   private ITemplateParser<T> templateParser;
 
+  @Override
   public void setTemplateParser(ITemplateParser<T> templateParser) {
     this.templateParser = templateParser;
   }
 
+  @Override
   public T get(String id) throws PersistenceException {
     return get(id, "");
   }
   
+  @Override
   public T get(String id, String prefix) throws PersistenceException {
     T template = templateRegistry.get(id);
     if (template != null) {

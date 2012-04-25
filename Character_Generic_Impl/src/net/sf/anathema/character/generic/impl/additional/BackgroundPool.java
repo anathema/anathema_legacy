@@ -28,14 +28,17 @@ public class BackgroundPool implements IAdditionalEssencePool {
     this.modifiesBase = modifiesBase;
   }
   
+  @Override
   public int getAdditionalPeripheralPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
     return peripheralPool.getPool(getCurrentValue(traitCollection));
   }
 
+  @Override
   public int getAdditionalPersonalPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
     return personalPool.getPool(getCurrentValue(traitCollection));
   }
 
+  @Override
   public IdentifiedInteger[] getAdditionalComplexPools(IGenericTraitCollection traitCollection,
                                                        IMagicCollection magicCollection) {
     IdentifiedInteger[] poolValues = new IdentifiedInteger[complexPools.length];
@@ -55,6 +58,7 @@ public class BackgroundPool implements IAdditionalEssencePool {
     return background.getCurrentValue();
   }
   
+  @Override
   public boolean modifiesBasePool()
   {
 	  return modifiesBase;

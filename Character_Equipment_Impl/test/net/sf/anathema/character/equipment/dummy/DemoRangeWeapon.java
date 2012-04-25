@@ -46,62 +46,77 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
     this.isNoDamage = isNoDamage;
   }
 
+  @Override
   public int getAccuracy() {
     return accuracy;
   }
 
+  @Override
   public int getDamage() {
     return damage;
   }
   
+  @Override
   public int getMinimumDamage() {
 	return minimumDamage;
   }
 
+  @Override
   public HealthType getDamageType() {
     return damageType;
   }
 
+  @Override
   public Integer getDefence() {
     return null;
   }
   
+  @Override
   public int getMobilityPenalty() {
 	return 0;
   }
 
+  @Override
   public Integer getRange() {
     return range;
   }
 
+  @Override
   public Integer getRate() {
     return rate;
   }
 
+  @Override
   public int getSpeed() {
     return speed;
   }
 
+  @Override
   public IIdentificate[] getTags() {
     return new IIdentificate[0];
   }
 
+  @Override
   public ITraitType getTraitType() {
     return AbilityType.MartialArts;
   }
 
+  @Override
   public ITraitType getDamageTraitType() {
     return null;
   }
 
+  @Override
   public boolean inflictsNoDamage() {
     return isNoDamage;
   }
 
+  @Override
   public IIdentificate getName() {
     return name;
   }
 
+  @Override
   public boolean isRangedCombat() {
     return true;
   }

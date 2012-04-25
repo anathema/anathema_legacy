@@ -17,6 +17,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
   private ITextPart[] textParts = new ITextPart[0];
   private final Map<IObjectValueChangedListener<String>, IStyledTextChangeListener> listenerMap = new HashMap<IObjectValueChangedListener<String>, IStyledTextChangeListener>();
 
+  @Override
   public void setText(ITextPart[] textParts) {
     if (ArrayUtilities.equals(this.textParts, textParts)) {
       return;
@@ -25,6 +26,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
     setDirty(true);
   }
 
+  @Override
   public ITextPart[] getTextParts() {
     return textParts;
   }
@@ -32,24 +34,29 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
   @Override
   protected void fireChangedEvent() {
     textListeners.forAllDo(new IClosure<IStyledTextChangeListener>() {
+      @Override
       public void execute(IStyledTextChangeListener input) {
         input.textChanged(textParts);
       }
     });
   }
 
+  @Override
   public void addTextChangedListener(IStyledTextChangeListener listener) {
     textListeners.addListener(listener);
   }
 
+  @Override
   public void removeTextChangedListener(IStyledTextChangeListener listener) {
     textListeners.removeListener(listener);
   }
 
+  @Override
   public boolean isEmpty() {
     return textParts.length == 0;
   }
 
+  @Override
   public void setText(String text) {
     if (text == null) {
       setText(new ITextPart[0]);
@@ -59,8 +66,10 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
     }
   }
 
+  @Override
   public void addTextChangedListener(final IObjectValueChangedListener<String> listener) {
     IStyledTextChangeListener styledListener = new IStyledTextChangeListener() {
+      @Override
       public void textChanged(ITextPart[] newParts) {
         listener.valueChanged(getText(newParts));
       }
@@ -69,6 +78,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
     listenerMap.put(listener, styledListener);
   }
 
+  @Override
   public void removeTextChangeListener(IObjectValueChangedListener<String> listener) {
     removeTextChangedListener(listenerMap.get(listener));
   }
@@ -81,6 +91,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
     return builder.toString();
   }
 
+  @Override
   public String getText() {
     return getText(getTextParts());
   }

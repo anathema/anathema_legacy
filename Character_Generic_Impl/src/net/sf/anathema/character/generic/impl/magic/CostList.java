@@ -18,18 +18,22 @@ public class CostList implements ICostList {
     this.health = health;
   }
 
+  @Override
   public ICost getXPCost() {
     return xp != null ? xp : Cost.NULL_COST;
   }
 
+  @Override
   public ICost getEssenceCost() {
     return essence != null ? essence : Cost.NULL_COST;
   }
 
+  @Override
   public IHealthCost getHealthCost() {
     return health != null ? health : HealthCost.NULL_HEALTH_COST;
   }
 
+  @Override
   public ICost getWillpowerCost() {
     return willpower != null ? willpower : Cost.NULL_COST;
   }

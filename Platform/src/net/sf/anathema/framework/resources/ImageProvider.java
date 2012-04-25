@@ -20,6 +20,7 @@ public class ImageProvider implements IAnathemaImageProvider {
     this.rootPath = rootPath;
   }
 
+  @Override
   public Image getImage(Class< ? > requestor, String relativePath) {
     InputStream inputStream = getInputStream(requestor, relativePath);
     return loadImage(inputStream);
@@ -44,6 +45,7 @@ public class ImageProvider implements IAnathemaImageProvider {
     }
   }
 
+  @Override
   public ImageIcon getImageIcon(Class< ? > requestor, String relativePath) {
     Image image = getImage(requestor, relativePath);
     return image == null ? null : new ImageIcon(image);

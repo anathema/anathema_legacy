@@ -18,11 +18,13 @@ public class DigitsOnlyDocument extends PlainDocument {
 	public DigitsOnlyDocument(boolean beepOnInvalidCharacter) {
 		this(beepOnInvalidCharacter, new IOverline() {
 
-			public int getNearestValue(int value) {
+			@Override
+            public int getNearestValue(int value) {
 				return value;
 			}
 
-			public int getLowerBound() {
+			@Override
+            public int getLowerBound() {
 				return Integer.MIN_VALUE;
 			}
 		});

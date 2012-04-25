@@ -20,11 +20,13 @@ public class AnathemaMessaging implements IAnathemaMessaging, IAnathemaMessageCo
     this.resources = resources;
   }
 
+  @Override
   public void addMessage(String pattern, MessageType messageType, Object... arguments) {
     String messageText = resources.getString(pattern, arguments);
     addMessage(new BasicMessage(messageText, messageType));
   }
 
+  @Override
   public synchronized void addMessage(IBasicMessage message) {
     messages.add(0, message);
     changeControl.fireChangedEvent();
@@ -33,10 +35,12 @@ public class AnathemaMessaging implements IAnathemaMessaging, IAnathemaMessageCo
     }
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
 
+  @Override
   public synchronized IBasicMessage[] getAllMessages() {
     return messages.toArray(new IBasicMessage[messages.size()]);
   }
@@ -45,6 +49,7 @@ public class AnathemaMessaging implements IAnathemaMessaging, IAnathemaMessageCo
     return 100;
   }
 
+  @Override
   public synchronized IBasicMessage getLatestMessage() {
     if (messages.isEmpty()) {
       return null;

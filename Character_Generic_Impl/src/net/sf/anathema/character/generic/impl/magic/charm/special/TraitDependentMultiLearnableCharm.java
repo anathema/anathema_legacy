@@ -32,10 +32,12 @@ public class TraitDependentMultiLearnableCharm extends AbstractMultiLearnableCha
 	  return traitType;
   }
 
+  @Override
   public int getAbsoluteLearnLimit() {
     return absoluteLearnLimit;
   }
 
+  @Override
   public int getMaximumLearnCount(IGenericTraitCollection traitCollection) {
     IGenericTrait trait = traitCollection.getTrait(traitType);
     int count = trait.getCurrentValue();

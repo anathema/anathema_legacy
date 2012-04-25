@@ -18,6 +18,7 @@ public class TrackDetailModel extends AbstractTrackDetailModel {
       new IGenericSelectionContainer<IMusicMood>() {
         private IMusicMood[] selectedValues = new IMusicMood[0];
 
+        @Override
         public void setValues(IMusicMood[] values) {
           if (getSelectedTrack() == null) {
             return;
@@ -27,10 +28,12 @@ public class TrackDetailModel extends AbstractTrackDetailModel {
           updateDbTrack();
         }
 
+        @Override
         public IMusicMood[] getValues() {
           return selectedValues;
         }
 
+        @Override
         public IMusicMood[] getAllAvailableValues() {
           return new MoodProvider(persister).getAvailableValues();
         }
@@ -39,6 +42,7 @@ public class TrackDetailModel extends AbstractTrackDetailModel {
       new IGenericSelectionContainer<IMusicTheme>() {
         private IMusicTheme[] selectedValues = new IMusicTheme[0];
 
+        @Override
         public void setValues(IMusicTheme[] values) {
           if (getSelectedTrack() == null) {
             return;
@@ -48,10 +52,12 @@ public class TrackDetailModel extends AbstractTrackDetailModel {
           updateDbTrack();
         }
 
+        @Override
         public IMusicTheme[] getValues() {
           return selectedValues;
         }
 
+        @Override
         public IMusicTheme[] getAllAvailableValues() {
           return new ThemeProvider(persister).getAvailableValues();
         }
@@ -61,6 +67,7 @@ public class TrackDetailModel extends AbstractTrackDetailModel {
       new IGenericSelectionContainer<IMusicEvent>() {
         private IMusicEvent[] selectedValues = new IMusicEvent[0];
 
+        @Override
         public void setValues(IMusicEvent[] values) {
           if (getSelectedTrack() == null) {
             return;
@@ -70,10 +77,12 @@ public class TrackDetailModel extends AbstractTrackDetailModel {
           updateDbTrack();
         }
 
+        @Override
         public IMusicEvent[] getValues() {
           return selectedValues;
         }
 
+        @Override
         public IMusicEvent[] getAllAvailableValues() {
           return new EventProvider(persister).getAvailableValues();
         }
@@ -83,6 +92,7 @@ public class TrackDetailModel extends AbstractTrackDetailModel {
     this.persister = persister;
   }
 
+  @Override
   public void updateGivenName(String givenName) {
     if (getSelectedTrack().getGivenName() != null && getSelectedTrack().getGivenName().equals(givenName)) {
       return;
@@ -92,6 +102,7 @@ public class TrackDetailModel extends AbstractTrackDetailModel {
     fireGivenNamesChangedEvent();
   }
 
+  @Override
   public ISelectionContainerModel<IMusicMood> getMoodsModel() {
     return moodsModel;
   }
@@ -100,10 +111,12 @@ public class TrackDetailModel extends AbstractTrackDetailModel {
     persister.updateTrackInfo(getSelectedTrack());
   }
 
+  @Override
   public ISelectionContainerModel<IMusicTheme> getThemesModel() {
     return themesModel;
   }
 
+  @Override
   public ISelectionContainerModel<IMusicEvent> getEventsModel() {
     return eventsModel;
   }

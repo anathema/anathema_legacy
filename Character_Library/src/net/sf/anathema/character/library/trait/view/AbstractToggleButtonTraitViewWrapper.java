@@ -33,11 +33,13 @@ public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView<
     button.setSelected(selected);
   }
 
+  @Override
   public void addComponents(JPanel viewPanel) {
     this.traitViewPanel = viewPanel;
 
   }
 
+  @Override
   public void delete() {
     getInnerView().delete();
     traitViewPanel.remove(innerViewPanel);
@@ -47,6 +49,7 @@ public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView<
 
   public void addButtonSelectedListener(final IBooleanValueChangedListener listener) {
     button.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         listener.valueChanged(!button.isSelected());
       }

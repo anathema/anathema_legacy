@@ -20,18 +20,22 @@ public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter i
     this.model = ((ICoreTraitConfiguration) traitCollection).getSpecialtyConfiguration();
   }
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Abilities;
   }
 
+  @Override
   public String getTemplateId() {
     return additionalTemplate.getId();
   }
 
+  @Override
   public ISpecialtiesConfiguration getSpecialtiesModel() {
     return model;
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     // Dirty/Changed-state handled via abilities.
   }

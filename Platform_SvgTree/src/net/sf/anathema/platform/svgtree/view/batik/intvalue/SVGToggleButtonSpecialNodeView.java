@@ -27,6 +27,7 @@ public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
     this.color = color;
   }
 
+  @Override
   public SVGGElement initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator) {
     SVGGElement groupElement = (SVGGElement) document.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
@@ -42,16 +43,19 @@ public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
     return groupElement;
   }
 
+  @Override
   public void reset() {
     // Nothing to do
   }
 
+  @Override
   public void setVisible(boolean visible) {
     for (SVGBooleanValueDisplay effect : effects) {
       effect.setVisible(visible);
     }
   }
 
+  @Override
   public String getNodeId() {
     return id;
   }

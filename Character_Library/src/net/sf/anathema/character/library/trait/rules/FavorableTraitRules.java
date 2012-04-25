@@ -10,6 +10,7 @@ public class FavorableTraitRules extends TraitRules implements IFavorableTraitRu
     super(traitType, template, limitationContext);
   }
 
+  @Override
   public boolean isRequiredFavored() {
     return getTemplate().isRequiredFavored();
   }

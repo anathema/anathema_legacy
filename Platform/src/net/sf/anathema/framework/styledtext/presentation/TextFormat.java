@@ -45,14 +45,17 @@ public class TextFormat implements ITextFormat {
     this.textColor = textColor;
   }
 
+  @Override
   public boolean isStyled() {
     return isUnderline() || !fontStyle.isPlain() || getFontSize() != null || fontName != null || textColor != null;
   }
 
+  @Override
   public boolean isUnderline() {
     return underline;
   }
 
+  @Override
   public FontStyle getFontStyle() {
     return fontStyle;
   }
@@ -76,14 +79,17 @@ public class TextFormat implements ITextFormat {
     return "[" + fontStyle + "," + isUnderline() + "," + getFontSize() + "," + getColor() + "," + getFontName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
   }
 
+  @Override
   public Integer getFontSize() {
     return fontSize;
   }
 
+  @Override
   public String getFontName() {
     return fontName;
   }
 
+  @Override
   public Color getColor() {
     return textColor;
   }

@@ -7,10 +7,12 @@ import net.sf.anathema.lib.data.Range;
 
 public class NullEssenceTemplate implements IEssenceTemplate {
 
+  @Override
   public FactorizedTrait[] getPersonalTraits(IGenericTrait willpower, IGenericTrait[] virtues, IGenericTrait essence) {
     return new FactorizedTrait[0];
   }
 
+  @Override
   public FactorizedTrait[] getPeripheralTraits(IGenericTrait willpower, IGenericTrait[] virtues, IGenericTrait essence) {
     return new FactorizedTrait[0];
   }
@@ -19,6 +21,7 @@ public class NullEssenceTemplate implements IEssenceTemplate {
     return new Range(1, 1);
   }
 
+  @Override
   public boolean isEssenceUser() {
     return false;
   }

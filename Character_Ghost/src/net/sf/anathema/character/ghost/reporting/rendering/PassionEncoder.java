@@ -18,6 +18,7 @@ public class PassionEncoder extends AbstractContentEncoder<GhostPassionContent> 
     super(GhostPassionContent.class);
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     GhostPassionContent content = createContent(reportSession);
     float groupSpacing = traitEncoder.getTraitHeight() / 2;

@@ -15,6 +15,7 @@ import org.dom4j.Element;
 public class TraitPrerequisiteBuilder implements ITraitPrerequisiteBuilder {
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
 
+  @Override
   public IGenericTrait build(Element element) throws PersistenceException {
     ITraitType propertyType = traitUtils.getTraitTypeById(element.attributeValue(ATTRIB_ID));
     int minValue = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);

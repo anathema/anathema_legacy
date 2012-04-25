@@ -13,6 +13,7 @@ class ArbitratorLearnCondition implements ICondition {
     this.charm = charm;
   }
 
+  @Override
   public boolean isFulfilled() {
     return arbitrator.isLearnable(charm);
   }

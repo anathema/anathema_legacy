@@ -18,6 +18,7 @@ public abstract class AbstractItemView implements IItemView {
     this.icon = icon;
   }
   
+  @Override
   public final void setName(String name) {
     if (Objects.equal(name, this.name)) {
       return;
@@ -26,18 +27,22 @@ public abstract class AbstractItemView implements IItemView {
     fireNameChangedEvent(name);
   }
 
+  @Override
   public final String getName() {
     return name;
   }
 
+  @Override
   public final Icon getIcon() {
     return icon;
   }
 
+  @Override
   public void addNameChangedListener(IObjectValueChangedListener<String> nameListener) {
     control.addObjectValueChangeListener(nameListener);
   }
 
+  @Override
   public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener) {
     control.removeObjectValueChangeListener(nameListener);
   }
@@ -46,6 +51,7 @@ public abstract class AbstractItemView implements IItemView {
     control.fireValueChangedEvent(newName);
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }

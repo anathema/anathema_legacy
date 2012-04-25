@@ -19,10 +19,12 @@ public enum CircleType implements IIdentificate {
       return getSorceryCircles();
     }
     
+    @Override
     public boolean isSorceryCircle() {
       return true;
     }
     
+    @Override
     public boolean isNecromancyCircle() {
       return false;
     }
@@ -38,10 +40,12 @@ public enum CircleType implements IIdentificate {
       return getSorceryCircles();
     }
     
+    @Override
     public boolean isSorceryCircle() {
       return true;
     }
     
+    @Override
     public boolean isNecromancyCircle() {
       return false;
     }
@@ -57,10 +61,12 @@ public enum CircleType implements IIdentificate {
       return getSorceryCircles();
     }
     
+    @Override
     public boolean isSorceryCircle() {
       return true;
     }
     
+    @Override
     public boolean isNecromancyCircle() {
       return false;
     }
@@ -76,10 +82,12 @@ public enum CircleType implements IIdentificate {
       return getNecromancyCircles();
     }
     
+    @Override
     public boolean isSorceryCircle() {
       return false;
     }
     
+    @Override
     public boolean isNecromancyCircle() {
       return true;
     }
@@ -95,10 +103,12 @@ public enum CircleType implements IIdentificate {
       return getNecromancyCircles();
     }
     
+    @Override
     public boolean isSorceryCircle() {
       return false;
     }
     
+    @Override
     public boolean isNecromancyCircle() {
       return true;
     }
@@ -114,15 +124,18 @@ public enum CircleType implements IIdentificate {
       return getNecromancyCircles();
     }
     
+    @Override
     public boolean isSorceryCircle() {
       return false;
     }
     
+    @Override
     public boolean isNecromancyCircle() {
       return true;
     }
   };
 
+  @Override
   public String getId() {
     return name();
   }

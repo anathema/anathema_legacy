@@ -15,10 +15,12 @@ public class SolarVirtueFlaw extends VirtueFlaw implements ISolarVirtueFlaw {
 	  super(context);
   }
   
+  @Override
   public ITextualDescription getDescription() {
     return description;
   }
 
+  @Override
   public ITextualDescription getLimitBreak() {
     return limitBreak;
   }

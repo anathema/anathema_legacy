@@ -11,11 +11,13 @@ public class BooleanValuePresentation {
 
   public void initPresentation(final JToggleButton button, final BooleanValueModel model) {
     button.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         model.setValue(button.isSelected());
       }
     });
     model.addChangeListener(new IBooleanValueChangedListener() {
+      @Override
       public void valueChanged(boolean newValue) {
         button.setSelected(newValue);
       }
@@ -25,11 +27,13 @@ public class BooleanValuePresentation {
 
   public void initPresentation(final IBooleanValueView view, final BooleanValueModel model) {
     view.addChangeListener(new IBooleanValueChangedListener() {
+      @Override
       public void valueChanged(boolean newValue) {
         model.setValue(newValue);
       }
     });
     model.addChangeListener(new IBooleanValueChangedListener() {
+      @Override
       public void valueChanged(boolean newValue) {
         view.setSelected(newValue);
       }

@@ -27,20 +27,24 @@ public class AnathemaSaveAllAction extends SmartAction {
   private static final long serialVersionUID = 5438516323175076524L;
   private IItem currentItem;
   private final IChangeListener changeListener = new IChangeListener() {
+    @Override
     public void changeOccurred() {
       setSaveAllEnabled();
     }
   };
 
   private class SaveAllEnabledListener implements IItemManagementModelListener {
+    @Override
     public void itemAdded(IItem item) {
       setSaveAllEnabled();
     }
 
+    @Override
     public void itemRemoved(IItem item) {
       setSaveAllEnabled();
     }
 
+    @Override
     public void itemSelected(final IItem item) {
       if (currentItem != null) {
         currentItem.removeDirtyListener(changeListener);

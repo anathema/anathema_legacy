@@ -59,6 +59,7 @@ public class CollapsibleView implements IView {
     collapsiblePane.setCollapsed(false);
   }
 
+  @Override
   public JComponent getComponent() {
     return panel;
   }

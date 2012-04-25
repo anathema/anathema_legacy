@@ -43,6 +43,7 @@ public class GhostPassionsPresenter implements Presenter {
   private final IdentityMapping<ISubTrait, IPassionView> viewsByPassion = new IdentityMapping<ISubTrait, IPassionView>();
   private final TraitInternationalizer i18ner;
   private final Comparator<ITraitReference> comparator = new Comparator<ITraitReference>() {
+    @Override
     public int compare(ITraitReference o1, ITraitReference o2) {
       String name1 = i18ner.getScreenName(o1);
       String name2 = i18ner.getScreenName(o2);
@@ -51,16 +52,19 @@ public class GhostPassionsPresenter implements Presenter {
   };
 
   private final ISubTraitListener passionListener = new ISubTraitListener() {
+    @Override
     public void subTraitAdded(ISubTrait passion) {
       addPassionView((IPassion) passion);
     }
 
+    @Override
     public void subTraitRemoved(ISubTrait passion) {
       IPassionView view = viewsByPassion.get(passion);
       viewsByPassion.remove(passion);
       view.delete();
     }
 
+    @Override
     public void subTraitValueChanged() {
     	updateOverviewData();
     	setSelectionObjects();
@@ -81,6 +85,7 @@ public class GhostPassionsPresenter implements Presenter {
     this.i18ner = new TraitInternationalizer(resources);
   }
 
+  @Override
   public void initPresentation() {
     initTraitListening();
     final IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
@@ -104,17 +109,20 @@ public class GhostPassionsPresenter implements Presenter {
         addIcon);
     setSelectionObjects();
     passionSelectionView.addSelectionChangedListener(new IObjectValueChangedListener<ITraitReference>() {
+      @Override
       public void valueChanged(ITraitReference newValue) {
         model.setCurrentTrait(newValue);
         updateOverviewData();
       }
     });
     passionSelectionView.addEditChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newPassionName) {
         model.setCurrentPassionName(newPassionName);
       }
     });
     passionSelectionView.addButtonListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         model.commitSelection();
         reset(passionSelectionView);
@@ -122,17 +130,20 @@ public class GhostPassionsPresenter implements Presenter {
       }
     });
     model.addSelectionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
     	  passionSelectionView.setButtonEnabled(!model.isExperienced() && model.isEntryComplete());
       }
     });
     model.addTraitListChangeListener(new ITraitReferencesChangeListener() {
+      @Override
       public void referenceAdded(ITraitReference reference) {
         getPassionContainer(reference).addSubTraitListener(passionListener);
         setSelectionObjects();
         updateOverviewData();
       }
 
+      @Override
       public void referenceRemoved(ITraitReference reference) {
     	  passionSelectionView.setObjects(model.getAllEligibleTraits());
     	  updateOverviewData();
@@ -242,6 +253,7 @@ public class GhostPassionsPresenter implements Presenter {
         passion.getMaximalValue());
     new TraitPresenter(passion, passionView).initPresentation();
     passionView.addDeleteListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         getPassionContainer(traitReference).removeSubTrait(passion);
         updateOverviewData();

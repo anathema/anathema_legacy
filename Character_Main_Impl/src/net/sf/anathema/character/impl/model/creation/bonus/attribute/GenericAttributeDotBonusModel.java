@@ -18,10 +18,12 @@ public class GenericAttributeDotBonusModel extends AbstractSpendingModel {
     this.isExtraDots = isExtraDots;
   }
 
+  @Override
   public Integer getValue() {
     return attributeCalculator.getExtraGenericDotsSpent();
   }
 
+  @Override
   public int getSpentBonusPoints() {
     if (isExtraDots)
     	return 0;
@@ -32,6 +34,7 @@ public class GenericAttributeDotBonusModel extends AbstractSpendingModel {
 		  attributeCalculator.getAttributePoints(AttributeGroupPriority.Tertiary).getBonusPointsSpent();
   }
 
+  @Override
   public int getAlotment() {
     return creationPoints.getAttributeCreationPoints().getExtraGenericDotCount();
   }

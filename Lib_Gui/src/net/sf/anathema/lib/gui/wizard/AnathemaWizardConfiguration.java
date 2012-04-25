@@ -13,6 +13,7 @@ public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
 
   private final IAnathemaWizardPage startPage;
   private final CheckInputListener inputListener = new CheckInputListener(new SimpleBlock() {
+    @Override
     public void execute() {
       IWizardContainer wizardContainer = getContainer();
       if (wizardContainer == null) {
@@ -31,18 +32,22 @@ public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
 
   private IWizardContainer container;
 
+  @Override
   public IWizardContainer getContainer() {
     return container;
   }
 
+  @Override
   public void setContainer(IWizardContainer container) {
     this.container = container;
   }
 
+  @Override
   public boolean canFinish() {
     return getContainer().getCurrentPage().canFinish();
   }
 
+  @Override
   public boolean isHelpAvailable() {
     return false;
   }
@@ -51,6 +56,7 @@ public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
     return true;
   }
 
+  @Override
   public IWizardPage getStartingPage() {
     return startPage;
   }

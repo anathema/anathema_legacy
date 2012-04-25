@@ -16,14 +16,17 @@ public class CheckInputListener implements
     this.executionBlock = executionBlock;
   }
 
+  @Override
   public void changeOccurred() {
     executionBlock.execute();
   }
 
+  @Override
   public void valueChanged(boolean newValue) {
     executionBlock.execute();
   }
 
+  @Override
   public void valueChanged(String newValue) {
     executionBlock.execute();
   }

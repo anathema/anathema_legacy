@@ -10,6 +10,7 @@ public class SiderealCollegeViewProperties implements ISiderealCollegeViewProper
     this.resources = resources;
   }
 
+  @Override
   public String getCollegeString() {
     return resources.getString("Astrology.Border.Colleges"); //$NON-NLS-1$
   }

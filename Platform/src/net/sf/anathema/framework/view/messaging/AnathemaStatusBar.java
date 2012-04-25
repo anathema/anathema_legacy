@@ -16,10 +16,12 @@ public class AnathemaStatusBar implements IAnathemaStatusBar {
     label.setPreferredSize(new Dimension(350, 25));
   }
 
+  @Override
   public JComponent getComponent() {
     return label;
   }
 
+  @Override
   public void setLatestMessage(IBasicMessage message) {
     label.setIcon(message == null ? null : MessageTypeUi.getInstance().getIcon(message.getType()));
     label.setText(message == null ? "  " : message.getText()); //$NON-NLS-1$

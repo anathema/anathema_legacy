@@ -13,10 +13,12 @@ final class SearchParameter implements ISearchParameter {
 
   }
 
+  @Override
   public String getDisplayKey() {
     return displayKey;
   }
 
+  @Override
   public String getFieldName() {
     return fieldName;
   }

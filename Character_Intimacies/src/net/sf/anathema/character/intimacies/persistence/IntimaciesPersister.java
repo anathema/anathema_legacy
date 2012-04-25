@@ -20,6 +20,7 @@ public class IntimaciesPersister implements IAdditionalPersister {
   private static final String ATTRIB_COMPLETE = "complete"; //$NON-NLS-1$
   private final TraitPersister traitPersister = new TraitPersister();
 
+  @Override
   public void save(Element parent, IAdditionalModel model) {
     Element element = parent.addElement(TAG_INTIMACIES);
     IIntimaciesModel intimaciesModel = ((IIntimaciesAdditionalModel) model).getIntimaciesModel();
@@ -35,6 +36,7 @@ public class IntimaciesPersister implements IAdditionalPersister {
     traitPersister.saveTrait(intimacyElement, TAG_TRAIT, intimacy.getTrait());
   }
 
+  @Override
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
     Element element = parent.element(TAG_INTIMACIES);
     IIntimaciesModel intimaciesModel = ((IIntimaciesAdditionalModel) model).getIntimaciesModel();

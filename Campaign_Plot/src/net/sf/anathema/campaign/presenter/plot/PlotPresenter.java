@@ -34,6 +34,7 @@ public class PlotPresenter implements Presenter {
   private IStyledTextManager itemSummaryViewManager;
   private IStyledTextView itemSummaryView;
   private final IPlotElementContainerListener modelListener = new IPlotElementContainerListener() {
+    @Override
     public void childAdded(IPlotElementContainer container, IPlotElement newChild) {
       DefaultMutableTreeNode parentNode = nodesByContainer.get(container);
       boolean childrenAllowed = newChild.getTimeUnit().hasSuccessor();
@@ -44,6 +45,7 @@ public class PlotPresenter implements Presenter {
       initListening(newChild, childNode);
     }
 
+    @Override
     public void childInserted(IPlotElement insertion, IPlotElementContainer parentContainer, int index) {
       DefaultMutableTreeNode insertedNode = nodesByContainer.get(insertion);
       DefaultMutableTreeNode parentNode = nodesByContainer.get(parentContainer);
@@ -53,6 +55,7 @@ public class PlotPresenter implements Presenter {
       view.getComponent().repaint();
     }
 
+    @Override
     public void childRemoved(IPlotElement removal) {
       DefaultMutableTreeNode nodeToRemove = nodesByContainer.get(removal);
       removeFromListening(removal);
@@ -64,6 +67,7 @@ public class PlotPresenter implements Presenter {
       view.getComponent().repaint();
     }
 
+    @Override
     public void childMoved(IPlotElement element, int newIndex) {
       DefaultMutableTreeNode movedChild = nodesByContainer.get(element);
       DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) movedChild.getParent();
@@ -80,14 +84,17 @@ public class PlotPresenter implements Presenter {
   private final DefaultTreeModel treeModel;
   private final IPlotView view;
   private final IPlotViewListener viewListener = new IPlotViewListener() {
+    @Override
     public void contentAddedRequested(DefaultMutableTreeNode node) {
       addNewTo((IPlotElementContainer) node.getUserObject());
     }
 
+    @Override
     public void removeRequested(DefaultMutableTreeNode node) {
       plotModel.getRootElement().removeChild((IPlotElement) node.getUserObject());
     }
 
+    @Override
     public void moveToRequested(DefaultMutableTreeNode node, int index) {
       IPlotElement moveElement = (IPlotElement) node.getUserObject();
       DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) node.getParent();
@@ -95,6 +102,7 @@ public class PlotPresenter implements Presenter {
       parentContainer.moveChildTo(moveElement, index);
     }
 
+    @Override
     public void moveToRequested(DefaultMutableTreeNode dropTargetNode, DefaultMutableTreeNode node, int index) {
       DefaultMutableTreeNode oldParentNode = (DefaultMutableTreeNode) node.getParent();
       if (oldParentNode == dropTargetNode.getParent()) {
@@ -121,6 +129,7 @@ public class PlotPresenter implements Presenter {
       }
     }
 
+    @Override
     public void selectionChangedTo(DefaultMutableTreeNode node) {
       PlotPresenter.this.selectedNode = node;
       updateButtons(node);
@@ -173,6 +182,7 @@ public class PlotPresenter implements Presenter {
     itemNameView = descriptionView.addLineTextView(resources.getString("SeriesPlot.ElementName.Label") + ":"); //$NON-NLS-1$//$NON-NLS-2$
     itemNameView.setEnabled(false);
     itemNameView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         if (selectedNode == null) {
           return;
@@ -189,6 +199,7 @@ public class PlotPresenter implements Presenter {
         new TextEditorProperties(resources));
     itemSummaryView.setEnabled(false);
     itemSummaryViewManager.addStyledTextListener(new IStyledTextChangeListener() {
+      @Override
       public void textChanged(ITextPart[] newParts) {
         if (selectedNode == null) {
           return;
@@ -204,6 +215,7 @@ public class PlotPresenter implements Presenter {
     nodesByContainer.put(container, childNode);
   }
 
+  @Override
   public void initPresentation() {
     view.addPlotViewListener(viewListener);
     view.initSeriesHierarchyView(

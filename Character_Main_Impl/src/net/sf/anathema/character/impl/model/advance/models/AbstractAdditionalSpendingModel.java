@@ -9,6 +9,7 @@ public abstract class AbstractAdditionalSpendingModel extends AbstractOverviewMo
     super(categoryId, id);
   }
 
+  @Override
   public void accept(IOverviewModelVisitor visitor) {
     visitor.visitAdditionalAlotmentModel(this);
   }

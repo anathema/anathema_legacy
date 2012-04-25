@@ -34,6 +34,7 @@ public final class NameGeneratorItemTypeConfiguration extends AbstractNonPersist
   @Override
   protected IItemViewFactory createItemViewFactory(final IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
+      @Override
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         Icon icon = new NamegeneratorUI(resources).getNameGeneratorTabIcon();

@@ -24,6 +24,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
     this.displayDefaultValues = displayDefaultValues;
   }
 
+  @Override
   public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
     if (magic instanceof ICharm) {
       builder.append(resources.getString("CharmTreeView.ToolTip.Type")); //$NON-NLS-1$
@@ -90,32 +91,39 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
 
   protected abstract StringBuilder buildSpeedString(ISimpleSpecialsModel model);
 
+  @Override
   public String createTypeString(final ICharmTypeModel charmTypeModel) {
     final StringBuilder builder = new StringBuilder();
     final CharmType charmType = charmTypeModel.getCharmType();
     builder.append(getResources().getString(charmType.getId()));
     if (charmTypeModel.hasSpecialsModel()) {
       charmType.accept(new ICharmTypeVisitor() {
+        @Override
         public void visitExtraAction(CharmType visitedType) {
           // Nothing to do
         }
 
+        @Override
         public void visitPermanent(CharmType visitedType) {
           // Nothing to do
         }
 
+        @Override
         public void visitReflexive(CharmType visitedType) {
           builder.append(buildReflexiveModelString((IReflexiveSpecialsModel) charmTypeModel.getSpecialsModel()));
         }
 
+        @Override
         public void visitSimple(CharmType visitedType) {
           builder.append(buildSimpleModelString((ISimpleSpecialsModel) charmTypeModel.getSpecialsModel()));
         }
 
+        @Override
         public void visitSpecial(CharmType visitedType) {
           // Nothing to do
         }
 
+        @Override
         public void visitSupplemental(CharmType visitedType) {
           // Nothing to do
         }

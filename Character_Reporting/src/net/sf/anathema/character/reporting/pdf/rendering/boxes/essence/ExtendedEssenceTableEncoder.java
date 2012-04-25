@@ -147,6 +147,7 @@ public class ExtendedEssenceTableEncoder implements ITableEncoder<ExtendedEssenc
     return TableEncodingUtilities.createBoldTableFont(graphics.getBaseFont());
   }
 
+  @Override
   public boolean hasContent(ExtendedEssenceContent content) {
     return content.hasContent();
   }

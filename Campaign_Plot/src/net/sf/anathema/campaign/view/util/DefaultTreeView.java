@@ -14,22 +14,27 @@ public class DefaultTreeView implements ITreeView {
     this.tree = tree;
   }
 
+  @Override
   public TreePath getPathForLocation(int x, int y) {
     return tree.getPathForLocation(x, y);
   }
 
+  @Override
   public TreePath[] getSelectionPaths() {
     return tree.getSelectionPaths();
   }
 
+  @Override
   public void setSelectionPath(TreePath path) {
     tree.getSelectionModel().setSelectionPath(path);
   }
 
+  @Override
   public JTree getTreeComponent() {
     return tree;
   }
 
+  @Override
   public DefaultMutableTreeNode getSelectedNode() {
     TreePath selectionPath = tree.getSelectionModel().getSelectionPath();
     if (selectionPath == null) {
@@ -38,6 +43,7 @@ public class DefaultTreeView implements ITreeView {
     return (DefaultMutableTreeNode) selectionPath.getLastPathComponent();
   }
 
+  @Override
   public boolean isRootNodeSelected() {
     return getSelectedNode() == tree.getModel().getRoot();
   }

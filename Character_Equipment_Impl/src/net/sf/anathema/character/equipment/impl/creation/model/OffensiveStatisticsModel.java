@@ -17,18 +17,22 @@ public abstract class OffensiveStatisticsModel extends EquipmentStatisticsModel 
     this.speedModel = speedModel;
   }
 
+  @Override
   public IIntValueModel getSpeedModel() {
     return speedModel;
   }
 
+  @Override
   public IIntValueModel getAccuracyModel() {
     return accuracyModel;
   }
 
+  @Override
   public IIntValueModel getRateModel() {
     return rateModel;
   }
 
+  @Override
   public IWeaponDamageModel getWeaponDamageModel() {
     return weaponDamageModel;
   }

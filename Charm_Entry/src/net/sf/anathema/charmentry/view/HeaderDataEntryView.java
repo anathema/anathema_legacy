@@ -16,6 +16,7 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
   private JPanel content;
   private JComponent focusComponent;
 
+  @Override
   public JComponent getContent() {
     if (content == null) {
       content = builder.getUntitledContent();
@@ -23,10 +24,12 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
     return content;
   }
 
+  @Override
   public <V> IObjectSelectionView<V> addComboBoxRow(String label, ListCellRenderer renderer, V[] objects) {
     return builder.addObjectSelectionView(label, renderer, objects);
   }
 
+  @Override
   public ITextView addLineTextRow(String label) {
     final ITextView textView = builder.addLineTextView(label, 15);
     if (focusComponent == null) {
@@ -35,6 +38,7 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
     return textView;
   }
 
+  @Override
   public ISourceSelectionView addSourceView(
       String bookLabel,
       String pageLabel,
@@ -46,10 +50,12 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
     return view;
   }
 
+  @Override
   public void requestFocus() {
     focusComponent.requestFocus();
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }

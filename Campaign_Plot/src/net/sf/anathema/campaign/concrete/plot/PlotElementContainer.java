@@ -31,14 +31,17 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
     this.provider.setIDNumberUsed(unit, Integer.parseInt(id.substring(unit.getId().length())));
   }
 
+  @Override
   public IPlotTimeUnit getTimeUnit() {
     return unit;
   }
 
+  @Override
   public IPlotElement[] getChildren() {
     return children.toArray(new IPlotElement[children.size()]);
   }
 
+  @Override
   public IPlotElement addChild(String name) {
     Ensure.ensureTrue("Tried to add to non-successable plot element container.", unit.hasSuccessor()); //$NON-NLS-1$
     PlotElement plotElement = new PlotElement(provider, getTimeUnit().getSuccessor(), name);
@@ -47,6 +50,7 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
     return plotElement;
   }
 
+  @Override
   public IPlotElement addChild(IItemDescription description, String repositoryId) {
     Ensure.ensureTrue("Tried to add to non-successable plot element container.", unit.hasSuccessor()); //$NON-NLS-1$
     PlotElement plotElement = new PlotElement(provider, getTimeUnit().getSuccessor(), description, repositoryId);
@@ -57,6 +61,7 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
 
   private void fireChildAddedEvent(final IPlotElement element) {
     listeners.forAllDo(new IClosure<IPlotElementContainerListener>() {
+      @Override
       public void execute(IPlotElementContainerListener input) {
         input.childAdded(PlotElementContainer.this, element);
       }
@@ -65,6 +70,7 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
 
   private void fireChildMovedEvent(final IPlotElement element, final int newIndex) {
     listeners.forAllDo(new IClosure<IPlotElementContainerListener>() {
+      @Override
       public void execute(IPlotElementContainerListener input) {
         input.childMoved(element, newIndex);
       }
@@ -73,6 +79,7 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
 
   private void fireChildRemovedEvent(final IPlotElement element) {
     listeners.forAllDo(new IClosure<IPlotElementContainerListener>() {
+      @Override
       public void execute(IPlotElementContainerListener input) {
         input.childRemoved(element);
       }
@@ -81,12 +88,14 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
 
   private void fireChildInsertedEvent(final IPlotElement element, final int index) {
     listeners.forAllDo(new IClosure<IPlotElementContainerListener>() {
+      @Override
       public void execute(IPlotElementContainerListener input) {
         input.childInserted(element, PlotElementContainer.this, index);
       }
     });
   }
 
+  @Override
   public void removeChild(IPlotElement element) {
     Ensure.ensureTrue("Tried to remove from non-successable plot element container.", unit.hasSuccessor()); //$NON-NLS-1$
     if (!children.remove(element)) {
@@ -101,6 +110,7 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
     }
   }
 
+  @Override
   public void removeChildSilent(IPlotElement element) {
     if (!children.remove(element)) {
       for (IPlotElement child : children) {
@@ -111,10 +121,12 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
     }
   }
 
+  @Override
   public void removePlotElementContainerListener(IPlotElementContainerListener listener) {
     listeners.removeListener(listener);
   }
 
+  @Override
   public void addPlotElementContainerListener(IPlotElementContainerListener listener) {
     listeners.addListener(listener);
   }
@@ -124,6 +136,7 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
     return getTimeUnit().getId();
   }
 
+  @Override
   public void moveChildTo(IPlotElement element, int newIndex) {
     int originalIndex = children.indexOf(element);
     if (originalIndex == newIndex || originalIndex < 0 || newIndex >= children.size() || newIndex < 0) {
@@ -134,10 +147,12 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
     fireChildMovedEvent(element, newIndex);
   }
 
+  @Override
   public boolean contains(IPlotElement element) {
     return children.contains(element);
   }
 
+  @Override
   public void insertChild(IPlotElement plotElement, int index) {
     children.add(index, plotElement);
     fireChildInsertedEvent(plotElement, index);

@@ -16,18 +16,22 @@ import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 public class SimpleSpecialsView implements ISimpleSpecialsView {
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
 
+  @Override
   public JComponent getContent() {
     return content;
   }
 
+  @Override
   public void requestFocus() {
     // Nothing to do
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }
 
+  @Override
   public IIntValueDisplay addIntegerSelectionView(String typeLabel, int maximum) {
     ObjectSelectionIntValueView view = new ObjectSelectionIntValueView(
         typeLabel,
@@ -37,6 +41,7 @@ public class SimpleSpecialsView implements ISimpleSpecialsView {
     return view;
   }
 
+  @Override
   public <V> IObjectSelectionView<V> addObjectSelectionView(String labelString, ListCellRenderer renderer, V[] objects) {
     ObjectSelectionView<V> view = new ObjectSelectionView<V>(labelString, renderer, objects);
     view.addTo(content, new GridDialogLayoutData());

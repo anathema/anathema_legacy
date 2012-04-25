@@ -14,6 +14,7 @@ import org.dom4j.Element;
 
 public class BackgroundPrerequisiteBuilder implements ITraitPrerequisiteBuilder {
 
+  @Override
   public IGenericTrait build(Element element) throws PersistenceException {
     ITraitType propertyType = new CustomizedBackgroundTemplate(element.attributeValue(ATTRIB_ID));
     int minValue = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);

@@ -14,6 +14,7 @@ public class EssenceExperienceModel extends AbstractIntegerValueModel {
     this.calculator = calculator;
   }
 
+  @Override
   public Integer getValue() {
     return calculator.getEssenceCosts(TraitCollectionUtilities.getEssence(traitCollection));
   }

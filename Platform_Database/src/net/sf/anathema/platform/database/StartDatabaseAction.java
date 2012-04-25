@@ -38,16 +38,19 @@ public class StartDatabaseAction extends SmartAction {
     this.resources = resources;
     this.properties = properties;
     anathemaModel.getItemManagement().addListener(new IItemManagementModelListener() {
+      @Override
       public void itemAdded(IItem item) throws AnathemaException {
         if (isOwnItem(item)) {
           StartDatabaseAction.this.setEnabled(false);
         }
       }
 
+      @Override
       public void itemSelected(IItem item) {
         // Nothing to do
       }
 
+      @Override
       public void itemRemoved(IItem item) {
         if (isOwnItem(item)) {
           StartDatabaseAction.this.setEnabled(true);
@@ -84,6 +87,7 @@ public class StartDatabaseAction extends SmartAction {
     try {
       String title = properties.getProgressMonitorTitle();
       new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptableRunnableWithProgress() {
+        @Override
         public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {
             monitor.beginTask(properties.getProgressTaskTitle(), IProgressMonitor.UNKNOWN);

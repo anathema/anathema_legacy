@@ -37,6 +37,7 @@ public class Range implements IOverline {
     return getLowerBound() + 7 * getUpperBound();
   }
 
+  @Override
   public int getLowerBound() {
     return low;
   }
@@ -66,6 +67,7 @@ public class Range implements IOverline {
     }
   }
 
+  @Override
   public int getNearestValue(int value) {
     if (value < getLowerBound()) {
       return getLowerBound();

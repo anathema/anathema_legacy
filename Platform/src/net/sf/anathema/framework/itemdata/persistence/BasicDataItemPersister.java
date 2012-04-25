@@ -49,6 +49,7 @@ public class BasicDataItemPersister extends AbstractSingleFileItemPersister {
     return item;
   }
 
+  @Override
   public IItem createNew(IAnathemaWizardModelTemplate template) {
     return new AnathemaDataItem(type, new BasicItemData());
   }

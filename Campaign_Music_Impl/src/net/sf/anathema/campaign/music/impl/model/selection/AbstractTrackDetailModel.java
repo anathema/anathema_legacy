@@ -18,10 +18,12 @@ public abstract class AbstractTrackDetailModel implements ITrackDetailModel {
     givenNameChangeControl.fireChangedEvent();
   }
 
+  @Override
   public final void addChangeDetailListener(IChangeListener changeListener) {
     givenNameChangeControl.addChangeListener(changeListener);
   }
 
+  @Override
   public final void addTrackChangeListener(IChangeListener tracklistener) {
     trackChangeControl.addChangeListener(tracklistener);
   }
@@ -41,6 +43,7 @@ public abstract class AbstractTrackDetailModel implements ITrackDetailModel {
     trackChangeControl.fireChangedEvent();
   }
 
+  @Override
   public final IMp3Track getSelectedTrack() {
     return selectedTrack;
   }

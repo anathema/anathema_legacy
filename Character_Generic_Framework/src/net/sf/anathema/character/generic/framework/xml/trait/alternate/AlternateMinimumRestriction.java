@@ -20,6 +20,7 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
     this.strictMinimumValue = strictMinimumValue;
   }
 
+  @Override
   public boolean isFullfilledWithout(ILimitationContext context, ITraitType traitType) {
     int fullfillingTraitCount = 0;
     for (ITraitType type : alternateTraitTypes) {
@@ -31,6 +32,7 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
     return fullfillingTraitCount >= minimumTraitCount;
   }
   
+  @Override
   public int getCalculationMinValue(ILimitationContext context, ITraitType traitType)
   {
 	  if (!isFreebie)
@@ -50,19 +52,23 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
 	  return 0;
   }
   
+  @Override
   public void setIsFreebie(boolean value)
   {
 	  isFreebie = value;
   }
 
+  @Override
   public void addTraitType(ITraitType traitType) {
     alternateTraitTypes.add(traitType);
   }
 
+  @Override
   public int getStrictMinimumValue() {
     return strictMinimumValue;
   }
   
+  @Override
   public void clear()
   {
   }

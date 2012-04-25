@@ -16,10 +16,12 @@ public class ItemTypeUi implements IObjectUi<Object> {
     this.extension = extension;
   }
 
+  @Override
   public Icon getIcon(Object value) {
     return extension.get((IItemType) value).getIcon();
   }
 
+  @Override
   public String getLabel(Object value) {
     return resources.getString(extension.get((IItemType) value).getLabelKey());
   }

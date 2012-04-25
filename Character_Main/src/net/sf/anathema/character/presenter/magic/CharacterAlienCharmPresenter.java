@@ -16,6 +16,7 @@ public class CharacterAlienCharmPresenter implements AlienCharmPresenter {
     this.view = view;
   }
 
+  @Override
   public void initPresentation() {
     model.addCasteChangeListener(new IChangeListener() {
       @Override

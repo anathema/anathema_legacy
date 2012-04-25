@@ -11,6 +11,7 @@ public class GenericSpecialty implements IGenericSpecialty {
     this.trait = trait;
   }
 
+  @Override
   public IGenericTrait getBasicTrait() {
     return trait;
   }

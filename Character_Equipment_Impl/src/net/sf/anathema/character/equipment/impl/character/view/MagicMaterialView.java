@@ -20,6 +20,7 @@ public class MagicMaterialView implements IMagicalMaterialView {
   private final JLabel label = new JLabel();
   private JPanel content;
 
+  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = new JPanel(new GridDialogLayout(2, false));
@@ -29,6 +30,7 @@ public class MagicMaterialView implements IMagicalMaterialView {
     return content;
   }
 
+  @Override
   public void initView(String labelString, ListCellRenderer renderer, MagicalMaterial[] materials) {
     this.label.setText(labelString);
     materialCombo.setObjects(materials);
@@ -39,11 +41,13 @@ public class MagicMaterialView implements IMagicalMaterialView {
     }
   }
 
+  @Override
   public void setSelectedMaterial(MagicalMaterial selection, boolean viewEnabled) {
     materialCombo.setSelectedObject(selection);
     materialCombo.getComponent().setEnabled(viewEnabled);
   }
 
+  @Override
   public MagicalMaterial getSelectedMaterial() {
     return materialCombo.getSelectedObject();
   }

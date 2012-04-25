@@ -14,14 +14,17 @@ public class PrerequisiteCharmsPageProperties implements IPrerequisiteCharmsPage
     defaultMessage = new BasicMessage(resources.getString("CharmEntry.PrerequisiteCharms.Message.Default")); //$NON-NLS-1$
   }
 
+  @Override
   public IBasicMessage getDefaultMessage() {
     return defaultMessage;
   }
 
+  @Override
   public String getPageTitle() {
     return resources.getString("CharmEntry.PrerequisiteCharms.Title"); //$NON-NLS-1$
   }
 
+  @Override
   public String getExcellencyString() {
     return resources.getString("CharmEntry.PrerequisiteCharms.AnyExcellency"); //$NON-NLS-1$ 
   }

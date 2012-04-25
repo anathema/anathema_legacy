@@ -21,6 +21,7 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
     this.model = model;
   }
 
+  @Override
   public JComponent createContent() {
     RepositoryTreeView treeView = new RepositoryTreeView();
     ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) model.getExtensionPointRegistry()
@@ -46,10 +47,12 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
     return treeView.getComponent();
   }
 
+  @Override
   public IBasicMessage createCurrentMessage() {
     return new BasicMessage(resources.getString("AnathemaCore.Tools.RepositoryView.DialogMessage")); //$NON-NLS-1$
   }
 
+  @Override
   public String getTitle() {
     return resources.getString("AnathemaCore.Tools.RepositoryView.DialogTitle"); //$NON-NLS-1$
   }

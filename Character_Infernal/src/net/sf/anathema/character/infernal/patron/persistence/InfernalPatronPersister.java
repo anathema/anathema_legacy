@@ -12,6 +12,7 @@ public class InfernalPatronPersister implements IAdditionalPersister {
   private static final String TAG_PATRON_YOZI = "patronYozi";
   private static final String ATTRIB_FAVORED = "favored";
 
+  @Override
   public void save(Element parent, IAdditionalModel model)
   {
 	  Element element = parent.addElement(TAG_PATRON_YOZI);
@@ -22,6 +23,7 @@ public class InfernalPatronPersister implements IAdditionalPersister {
 		  element.addAttribute(ATTRIB_FAVORED, favored);
   }
 
+  @Override
   public void load(Element parent, IAdditionalModel model) throws PersistenceException
   {
 	  IInfernalPatronModel patronModel = (IInfernalPatronModel)model;

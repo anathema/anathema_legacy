@@ -84,6 +84,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     return new GenericAdditionalRules();
   }
 
+  @Override
   public GenericAdditionalRules parseTemplate(Element element) throws PersistenceException {
     GenericAdditionalRules basicTemplate = getBasicTemplate(element);
     setCompulsiveCharms(element, basicTemplate);
@@ -113,6 +114,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
         dotCostModifications.add(createPointCostModification(modificationElement));
       }
       basicTemplate.addBackgroundCostModifier(backgroundTemplate.getId(), new ITraitCostModifier() {
+        @Override
         public int getAdditionalBonusPointsToSpend(int traitValue) {
           int cost = 0;
           for (IPointModification modification : bonusModifications) {
@@ -141,6 +143,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     final int multiplier = ElementUtilities.getIntAttrib(bonusModification, ATTRIB_MULTIPLIER, 0);
     final int fixedCost = ElementUtilities.getIntAttrib(bonusModification, ATTRIB_FIXED_COST, 0);
     return new IPointModification() {
+      @Override
       public int getAdditionalPoints(int traitValue) {
         int variable = Math.max(0, (traitValue - minimumValue) * multiplier);
         int fixed = traitValue > minimumValue ? fixedCost : 0;
@@ -210,6 +213,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
         final String charmId = ElementUtilities.getRequiredAttrib(multiPool.element(TAG_CHARM_REFERENCE), ATTRIB_ID);
 
         ISpecialCharm charm = ArrayUtilities.getFirst(charms, new IPredicate<ISpecialCharm>() {
+          @Override
           public boolean evaluate(ISpecialCharm value) {
             return value.getCharmId().equals(charmId);
           }

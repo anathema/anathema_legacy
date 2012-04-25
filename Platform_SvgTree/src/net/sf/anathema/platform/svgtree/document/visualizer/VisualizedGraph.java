@@ -15,14 +15,17 @@ public class VisualizedGraph implements IVisualizedGraph {
     this.dimension = dimension;
   }
 
+  @Override
   public final Element getCascadeElement() {
     return cascadeElement;
   }
 
+  @Override
   public final Dimension getDimension() {
     return dimension;
   }
 
+  @Override
   public boolean isSingleNode() {
     return false;
   }

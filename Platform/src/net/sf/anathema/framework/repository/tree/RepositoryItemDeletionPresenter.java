@@ -31,6 +31,7 @@ public class RepositoryItemDeletionPresenter implements Presenter {
     this.messaging = fileCountMessaging;
   }
 
+  @Override
   public void initPresentation() {
     final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteName"), //$NON-NLS-1$
         new FileUi(resources).getRemoveFileIcon()) {
@@ -59,6 +60,7 @@ public class RepositoryItemDeletionPresenter implements Presenter {
     action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.DeleteToolTip")); //$NON-NLS-1$
     treeView.addActionButton(action);
     repositoryModel.addTreeSelectionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         action.setEnabled(repositoryModel.canSelectionBeDeleted());
       }

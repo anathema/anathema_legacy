@@ -12,6 +12,7 @@ public class IdentifiedTraitTypeGroup extends TraitTypeGroup implements IIdentif
     this.groupId = groupId;
   }
 
+  @Override
   public IIdentificate getGroupId() {
     return groupId;
   }

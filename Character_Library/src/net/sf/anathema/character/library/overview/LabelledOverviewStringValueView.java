@@ -29,6 +29,7 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
     return beginData;
   }
 
+  @Override
   public void setValue(String value) {
     setText(value);
   }

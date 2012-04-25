@@ -10,10 +10,12 @@ public class SimpleCostElement implements ICostElement {
     this.calculationValue = calculationValue;
   }
 
+  @Override
   public int getCalculationValue() {
     return calculationValue;
   }
 
+  @Override
   public int getZeroCalculationValue() {
     return zeroCalculationValue;
   }

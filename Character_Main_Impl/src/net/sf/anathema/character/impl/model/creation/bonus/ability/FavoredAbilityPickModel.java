@@ -15,14 +15,17 @@ public class FavoredAbilityPickModel extends AbstractSpendingModel {
     this.creationPoints = creationPoints;
   }
 
+  @Override
   public int getSpentBonusPoints() {
     return 0;
   }
 
+  @Override
   public Integer getValue() {
     return abilityCalculator.getFavoredPicksSpent();
   }
 
+  @Override
   public int getAlotment() {
     return creationPoints.getAbilityCreationPoints().getFavorableTraitCount();
   }

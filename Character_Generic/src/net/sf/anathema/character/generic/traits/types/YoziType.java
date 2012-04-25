@@ -9,10 +9,12 @@ public enum YoziType implements ITraitType {
   private YoziType() {
   }
 
+  @Override
   public String getId() {
     return name();
   }
 
+  @Override
   public void accept(ITraitTypeVisitor visitor) {
     visitor.visitYozi(this);
   }

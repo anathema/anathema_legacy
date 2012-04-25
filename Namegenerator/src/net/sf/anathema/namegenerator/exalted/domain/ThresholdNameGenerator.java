@@ -343,6 +343,7 @@ public class ThresholdNameGenerator implements INameGenerator {
     factory = new CategorizedTokenNameFactory(tokenRegistry);
   }
 
+  @Override
   public String[] createNames(int count) {
     String[] names = new String[count];
     for (int nameIndex = 0; nameIndex < names.length; nameIndex++) {

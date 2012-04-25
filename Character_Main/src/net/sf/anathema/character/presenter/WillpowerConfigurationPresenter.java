@@ -19,6 +19,7 @@ public class WillpowerConfigurationPresenter implements Presenter {
     this.view = view;
   }
 
+  @Override
   public void initPresentation() {
     String labelText = resources.getString("WillpowerType.Name"); //$NON-NLS-1$
     IIntValueView willpowerView = view.addWillpower(labelText, willpower.getCurrentValue(), willpower.getMaximalValue());

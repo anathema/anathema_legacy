@@ -15,11 +15,13 @@ public class EquipmentSpecialtyOption implements IEquipmentStatsOption {
 		this.type = type;
 	}
 	
-	public String getName() {
+	@Override
+    public String getName() {
 		return specialty.getName();
 	}
 	
-	public String getType() {
+	@Override
+    public String getType() {
 		return type.getId();
 	}
 	
@@ -33,7 +35,8 @@ public class EquipmentSpecialtyOption implements IEquipmentStatsOption {
 		return specialty.getCurrentValue();
 	}
 	
-	public INamedGenericTrait getUnderlyingTrait() {
+	@Override
+    public INamedGenericTrait getUnderlyingTrait() {
 		return specialty;
 	}
 	

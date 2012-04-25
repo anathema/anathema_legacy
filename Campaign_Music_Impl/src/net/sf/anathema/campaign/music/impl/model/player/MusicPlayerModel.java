@@ -31,17 +31,21 @@ public class MusicPlayerModel implements IMusicPlayerModel {
   public MusicPlayerModel() throws ClassNotFoundException {
     Class.forName("javazoom.jl.decoder.Decoder"); //$NON-NLS-1$
     player.addBasicPlayerListener(new BasicPlayerListener() {
+      @Override
       public void setController(BasicController controller) {
         // Nothing to do
       }
 
+      @Override
       public void stateUpdated(BasicPlayerEvent event) {
         // Nothing to do
       }
 
+      @Override
       public void progress(final int bytesread, final long microseconds, byte[] pcmdata,
                            @SuppressWarnings("rawtypes") Map properties) {
         control.forAllDo(new IClosure<IMusicPlayerModelListener>() {
+          @Override
           public void execute(IMusicPlayerModelListener input) {
             currentBytePosition = bytesread;
             input.positionChanged(bytesread, (playStartTime + player.getElapsedTime()) / 1000);
@@ -49,11 +53,13 @@ public class MusicPlayerModel implements IMusicPlayerModel {
         });
       }
 
+      @Override
       public void opened(Object stream,
                          @SuppressWarnings("rawtypes") final Map properties) {
         lengthInMilliseconds = getTimeLengthEstimation(properties);
         lengthInBytes = (Integer) properties.get(PROP_LENGTH);
         control.forAllDo(new IClosure<IMusicPlayerModelListener>() {
+          @Override
           public void execute(IMusicPlayerModelListener input) {
             input.trackOpenend(track, lengthInBytes, lengthInMilliseconds / 1000);
           }
@@ -76,6 +82,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     }
   }
 
+  @Override
   public void startPlayback() throws AnathemaException {
     try {
       player.play();
@@ -86,11 +93,13 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     }
   }
 
+  @Override
   public void stopPlayback() throws AnathemaException {
     try {
       player.stop();
       playStartTime = 0;
       control.forAllDo(new IClosure<IMusicPlayerModelListener>() {
+        @Override
         public void execute(IMusicPlayerModelListener input) {
           input.positionChanged(0, 0);
         }
@@ -102,6 +111,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     }
   }
 
+  @Override
   public void seek(int bytePosition) throws AnathemaException {
     try {
       if (Math.abs(currentBytePosition - bytePosition) < 32769) {
@@ -115,10 +125,12 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     }
   }
 
+  @Override
   public void addMusicModelListener(IMusicPlayerModelListener listener) {
     control.addListener(listener);
   }
 
+  @Override
   public void pausePlayback() throws AnathemaException {
     try {
       player.pause();
@@ -129,6 +141,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     }
   }
 
+  @Override
   public void resumePlayback() throws AnathemaException {
     try {
       player.resume();
@@ -141,12 +154,14 @@ public class MusicPlayerModel implements IMusicPlayerModel {
 
   private void setStatus(final MusicPlayerStatus status) {
     control.forAllDo(new IClosure<IMusicPlayerModelListener>() {
+      @Override
       public void execute(IMusicPlayerModelListener input) {
         input.statusChanged(status);
       }
     });
   }
 
+  @Override
   public void setTrack(IMp3Track mp3Track) throws AnathemaException {
     initPlayer(mp3Track);
   }

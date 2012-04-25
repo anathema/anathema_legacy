@@ -15,10 +15,12 @@ public class ToggleButtonPanel implements IToggleButtonPanel, IView {
   private final ButtonGroup buttonGroup = new ButtonGroup();
   private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
 
+  @Override
   public JComponent getComponent() {
     return panel;
   }
 
+  @Override
   public JToggleButton addButton(Action action, String text) {
     JToggleButton toggleButton = new JToggleButton(action);
     ToolBarUtilities.configureToolBarButton(toggleButton);

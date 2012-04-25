@@ -89,10 +89,12 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
     return costFactor;
   }
 
+  @Override
   public int getSpecialtyBonusPointCosts() {
     return specialtyBonusPointCosts;
   }
   
+  @Override
   public int getFreeSpecialtyPointsSpent() {
 	  return specialtyDotSum;
   }

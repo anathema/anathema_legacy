@@ -14,10 +14,12 @@ public class SimpleViewContent implements IViewContent {
     this.tabView = tabView;
   }
 
+  @Override
   public void addTo(IMultiContentView view) {
     view.addView(tabView, properties);
   }
 
+  @Override
   public IDisposable getDisposable() {
     return tabView instanceof IDisposable ? (IDisposable) tabView : null;
   }

@@ -26,10 +26,12 @@ public class AttributesPresenter implements IContentPresenter {
     this.contentHeader = resources.getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
   }
 
+  @Override
   public IViewContent getTabContent() {
     return new SimpleViewContent(new ContentProperties(contentHeader).needsScrollbar(), attributeView);
   }
 
+  @Override
   public void initPresentation() {
     presenter.init("AttributeGroupType.Name"); //$NON-NLS-1$
   }

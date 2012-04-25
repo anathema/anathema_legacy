@@ -18,10 +18,12 @@ public class CharmAttribute extends Identificate implements ICharmAttribute {
     this.value = value;
   }
 
+  @Override
   public boolean isVisualized() {
     return visualized;
   }
   
+  @Override
   public String getValue() {
     return value;
   }

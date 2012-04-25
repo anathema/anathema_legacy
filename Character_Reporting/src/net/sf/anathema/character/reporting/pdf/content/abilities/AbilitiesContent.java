@@ -58,6 +58,7 @@ public class AbilitiesContent extends FavorableTraitContent {
     return "Sheet.Comment.AbilityExcellency"; //$NON-NLS-1$
   }
 
+  @Override
   public String getHeaderKey() {
     return "Abilities"; //$NON-NLS-1$
   }

@@ -20,6 +20,7 @@ public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
     this.calculator = calculator;
   }
 
+  @Override
   public Integer getValue() {
     return getSpecialtyCosts();
   }

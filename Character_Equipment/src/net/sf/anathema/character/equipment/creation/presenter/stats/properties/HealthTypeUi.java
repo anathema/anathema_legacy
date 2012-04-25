@@ -14,10 +14,12 @@ public class HealthTypeUi implements IObjectUi<Object> {
     this.resources = resources;
   }
 
+  @Override
   public Icon getIcon(Object value) {
     return null;
   }
 
+  @Override
   public String getLabel(Object value) {
     if (value == null) {
       return resources.getString("ComboBox.SelectLabel"); //$NON-NLS-1$

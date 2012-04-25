@@ -26,12 +26,15 @@ public class ObjectSelectionIntValueView implements IIntValueDisplay {
     this.view = new ObjectSelectionView<Integer>(label, renderer, ArrayUtilities.createIntegerArray(minimum, maximum));
   }
 
+  @Override
   public void setValue(int newValue) {
     view.setSelectedObject(newValue);
   }
 
+  @Override
   public void addIntValueChangedListener(final IIntValueChangedListener listener) {
     IObjectValueChangedListener<Integer> changeListener = new IObjectValueChangedListener<Integer>() {
+      @Override
       public void valueChanged(Integer newValue) {
         listener.valueChanged(newValue);
       }
@@ -39,10 +42,12 @@ public class ObjectSelectionIntValueView implements IIntValueDisplay {
     view.addObjectSelectionChangedListener(changeListener);
   }
 
+  @Override
   public void removeIntValueChangedListener(IIntValueChangedListener listener) {
     throw new NotYetImplementedException();
   }
 
+  @Override
   public void setMaximum(int maximalValue) {
     throw new NotYetImplementedException();
   }
@@ -51,6 +56,7 @@ public class ObjectSelectionIntValueView implements IIntValueDisplay {
     view.setEnabled(enabled);
   }
 
+  @Override
   public JComponent getComponent() {
     view.addTo(content, GridDialogLayoutData.FILL_HORIZONTAL);
     return content;

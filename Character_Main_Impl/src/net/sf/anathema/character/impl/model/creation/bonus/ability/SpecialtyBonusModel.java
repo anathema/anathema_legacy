@@ -13,14 +13,17 @@ public class SpecialtyBonusModel extends AbstractSpendingModel {
     this.creationPoints = creationPoints;
   }
 
+  @Override
   public Integer getValue() {
     return abilityCalculator.getFreeSpecialtyPointsSpent();
   }
 
+  @Override
   public int getSpentBonusPoints() {
     return abilityCalculator.getSpecialtyBonusPointCosts();
   }
 
+  @Override
   public int getAlotment() {
     return creationPoints.getSpecialtyCreationPoints();
   }

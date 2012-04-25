@@ -70,7 +70,8 @@ public abstract class AbstractMagicCardData implements ICardData {
 			   magic.getTemporaryCost().getXPCost() != Cost.NULL_COST;
 	}
 	
-	public boolean wantsNewPage() {
+	@Override
+    public boolean wantsNewPage() {
 		return false;
 	}
 }

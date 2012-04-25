@@ -10,31 +10,38 @@ import javax.swing.event.EventListenerList;
 public class AbstractCellEditor implements CellEditor {
   protected EventListenerList listenerList = new EventListenerList();
 
+  @Override
   public Object getCellEditorValue() {
     return null;
   }
 
+  @Override
   public boolean isCellEditable(EventObject e) {
     return true;
   }
 
+  @Override
   public boolean shouldSelectCell(EventObject anEvent) {
     return false;
   }
 
+  @Override
   public boolean stopCellEditing() {
     fireEditingStopped();
     return true;
   }
 
+  @Override
   public void cancelCellEditing() {
     fireEditingCanceled();
   }
 
+  @Override
   public void addCellEditorListener(CellEditorListener l) {
     listenerList.add(CellEditorListener.class, l);
   }
 
+  @Override
   public void removeCellEditorListener(CellEditorListener l) {
     listenerList.remove(CellEditorListener.class, l);
   }

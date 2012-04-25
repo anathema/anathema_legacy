@@ -6,6 +6,7 @@ public class DbVirtueFlawTemplate implements IAdditionalTemplate {
 
   public static final String TEMPLATE_ID = "Db.VirtueFlaw.Template"; //$NON-NLS-1$
 
+  @Override
   public String getId() {
     return TEMPLATE_ID;
   }

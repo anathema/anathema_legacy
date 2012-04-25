@@ -32,6 +32,7 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
   private final ChangeControl bonusControl = new ChangeControl();
 
   private final IChangeListener houseChangeListener = new IChangeListener() {
+    @Override
     public void changeOccurred() {
       bonusControl.fireChangedEvent();
     }
@@ -46,10 +47,12 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
     }
   }
 
+  @Override
   public IAstrologicalHouse[] getAllHouses() {
     return allHouses;
   }
 
+  @Override
   public String getTemplateId() {
     return template.getId();
   }
@@ -65,30 +68,37 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
     throw new UnreachableCodeReachedException();
   }
 
+  @Override
   public IAdditionalModelBonusPointCalculator getBonusPointCalculator() {
     return new CollegeModelBonusPointCalculator(allHouses, template.getBonusCosts(), template.getPoints());
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     bonusControl.addChangeListener(listener);
   }
 
+  @Override
   public IAdditionalModelExperienceCalculator getExperienceCalculator() {
     return new CollegeModelExperienceCalculator(allHouses, template.getExperienceCosts());
   }
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Miscellaneous;
   }
 
+  @Override
   public int getTotalFavoredDotCount() {
     return template.getPoints().getFavoredDotCount();
   }
 
+  @Override
   public int getTotalGeneralDotCount() {
     return template.getPoints().getDefaultDotCount();
   }
 
+  @Override
   public void addCharacterChangeListener(ICharacterChangeListener listener) {
     context.getCharacterListening().addChangeListener(listener);
   }

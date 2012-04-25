@@ -8,6 +8,7 @@ public class CategorizedTokenNameTemplate implements ICategorizedTokenNameTempla
     this.categories = categories;
   }
 
+  @Override
   public TokenCategory[] getCategories() {
     return categories;
   }

@@ -6,10 +6,12 @@ public class ConfigurableHealthCost extends ConfigurableCost implements IConfigu
 
   private HealthType type = HealthType.Lethal;
 
+  @Override
   public HealthType getType() {
     return type;
   }
 
+  @Override
   public void setType(HealthType type) {
     this.type = type;
   }

@@ -13,12 +13,14 @@ public class MultiLearnCharmPersister implements ISpecialCharmPersister {
   private static final String TAG_LEARN_COUNT = "LearnCount"; //$NON-NLS-1$
   private final TraitPersister traitPersister = new TraitPersister();
 
+  @Override
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
     IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) specialCharmConfiguration;
     IDefaultTrait category = configuration.getCategory();
     traitPersister.saveTrait(specialElement, TAG_LEARN_COUNT, category);
   }
 
+  @Override
   public void loadConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration)
       throws PersistenceException {
     IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) specialCharmConfiguration;

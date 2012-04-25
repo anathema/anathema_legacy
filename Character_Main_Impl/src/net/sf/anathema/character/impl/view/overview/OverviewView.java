@@ -19,10 +19,12 @@ public class OverviewView implements IOverviewView, IView {
       ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
       ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+  @Override
   public JComponent getComponent() {
     return content;
   }
 
+  @Override
   public final IOverviewCategory addOverviewCategory(String borderText) {
     return new OverviewCategory(panel, borderText, true);
   }

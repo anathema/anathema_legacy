@@ -22,6 +22,7 @@ public class ComplexMultipleEffectCharm extends MultipleEffectCharm {
     prereqEffectMap = prereqEffect;
   }
 
+  @Override
   public ISubeffect[] buildSubeffects(IBasicCharacterData data,
                                       IGenericTraitCollection traitCollection,
                                       ICharmLearnableArbitrator arbitrator,

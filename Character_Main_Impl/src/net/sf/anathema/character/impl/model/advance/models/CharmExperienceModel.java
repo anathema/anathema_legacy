@@ -31,6 +31,7 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
     this.basicCharacter = basicCharacter;
   }
 
+  @Override
   public Integer getValue() {
     return getCharmCosts();
   }

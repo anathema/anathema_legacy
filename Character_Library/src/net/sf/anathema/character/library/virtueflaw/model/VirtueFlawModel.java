@@ -23,27 +23,33 @@ public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter imp
     virtueFlaw = new VirtueFlaw(context);
   }
 
+  @Override
   public boolean isVirtueFlawChangable() {
     return !getContext().getBasicCharacterContext().isExperienced();
   }
 
+  @Override
   public IVirtueFlaw getVirtueFlaw() {
     return virtueFlaw;
   }
 
+  @Override
   public String getTemplateId() {
     return templateId;
   }
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Advantages;
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     virtueFlaw.addRootChangeListener(listener);
     virtueFlaw.getName().addTextChangedListener(new GlobalChangeAdapter<String>(listener));
   }
 
+  @Override
   public void addVirtueChangeListener(VirtueChangeListener listener) {
     context.getCharacterListening().addChangeListener(listener);
   }
@@ -52,6 +58,7 @@ public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter imp
     return context;
   }
 
+  @Override
   public void addVirtueFlawChangableListener(final IBooleanValueChangedListener listener) {
     getContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override

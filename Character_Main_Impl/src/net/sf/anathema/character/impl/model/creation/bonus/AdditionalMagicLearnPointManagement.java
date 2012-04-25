@@ -18,6 +18,7 @@ public class AdditionalMagicLearnPointManagement implements IAdditionalMagicLear
     }
   }
 
+  @Override
   public List<IMagic> spendOn(List<IMagic> magicToHandle) {
     List<IMagic> unhandledMagic = new ArrayList<IMagic>(magicToHandle);
     for (IMagic magic : magicToHandle) {
@@ -35,6 +36,7 @@ public class AdditionalMagicLearnPointManagement implements IAdditionalMagicLear
     }
   }
 
+  @Override
   public int getPointsSpent() {
     int pointsSpent = 0;
     for (IAdditionalMagicLearnPoolCalculator calculator : calculators) {
@@ -43,6 +45,7 @@ public class AdditionalMagicLearnPointManagement implements IAdditionalMagicLear
     return pointsSpent;
   }
 
+  @Override
   public int getAdditionalPointsAmount() {
     int totalPoints = 0;
     for (IAdditionalMagicLearnPoolCalculator calculator : calculators) {
@@ -51,6 +54,7 @@ public class AdditionalMagicLearnPointManagement implements IAdditionalMagicLear
     return totalPoints;
   }
 
+  @Override
   public void clear() {
     for (IAdditionalMagicLearnPoolCalculator calculator : calculators) {
       calculator.reset();

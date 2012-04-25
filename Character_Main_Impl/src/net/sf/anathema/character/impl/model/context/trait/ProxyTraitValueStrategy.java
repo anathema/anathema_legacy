@@ -13,18 +13,22 @@ public class ProxyTraitValueStrategy implements ITraitValueStrategy {
     this.strategy = strategy;
   }
 
+  @Override
   public int getCurrentValue(IBasicTrait trait) {
     return strategy.getCurrentValue(trait);
   }
 
+  @Override
   public int getMinimalValue(IBasicTrait trait) {
     return strategy.getMinimalValue(trait);
   }
 
+  @Override
   public void setValue(IModifiableBasicTrait trait, int value) {
     strategy.setValue(trait, value);
   }
 
+  @Override
   public void notifyOnCreationValueChange(int value, IntValueControl currentValueControl) {
     strategy.notifyOnCreationValueChange(value, currentValueControl);
   }
@@ -33,14 +37,17 @@ public class ProxyTraitValueStrategy implements ITraitValueStrategy {
     this.strategy = strategy;
   }
 
+  @Override
   public void notifyOnLearnedValueChange(int value, IntValueControl currentValueControl) {
     strategy.notifyOnLearnedValueChange(value, currentValueControl);
   }
 
+  @Override
   public void resetCurrentValue(IModifiableBasicTrait trait) {
     strategy.resetCurrentValue(trait);
   }
 
+  @Override
   public int getCalculationValue(IModifiableBasicTrait trait) {
     return strategy.getCalculationValue(trait);
   }

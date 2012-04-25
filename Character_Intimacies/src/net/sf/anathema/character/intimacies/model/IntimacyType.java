@@ -11,6 +11,7 @@ public class IntimacyType extends Identificate implements ITraitType {
     super(name);
   }
 
+  @Override
   public void accept(ITraitTypeVisitor visitor) {
     throw new NotYetImplementedException();
   }

@@ -18,6 +18,7 @@ public class GenericIdStringBuilder extends IdStringBuilder implements IIdString
     return super.build(element) + "." + type.getId(); //$NON-NLS-1$
   }
 
+  @Override
   public void setType(ITraitType type) {
     this.type = type;
   }

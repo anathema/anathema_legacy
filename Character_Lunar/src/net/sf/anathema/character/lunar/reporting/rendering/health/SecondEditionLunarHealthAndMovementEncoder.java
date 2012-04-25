@@ -18,6 +18,7 @@ public class SecondEditionLunarHealthAndMovementEncoder extends HealthAndMovemen
   @Override
   protected final ITableEncoder createTableEncoder() {
     return new HealthAndMovementTableEncoder(getResources()) {
+      @Override
       protected IGenericTraitCollection getTraits(IGenericCharacter character) {
         return ((IBeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID)).getBeastTraitCollection();
       }

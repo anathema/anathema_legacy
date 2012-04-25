@@ -53,18 +53,22 @@ public class UpdateChecker implements IUpdateChecker {
     control.fireChangedEvent();
   }
 
+  @Override
   public Boolean isCheckSuccessful() {
     return success;
   }
 
+  @Override
   public String getCurrentVersion() {
     return resources.getString("Anathema.Version.Numeric"); //$NON-NLS-1$
   }
 
+  @Override
   public String getLatestVersion() {
     return remoteVersion;
   }
 
+  @Override
   public IMessageData getMessageData() {
     return data;
   }
@@ -84,6 +88,7 @@ public class UpdateChecker implements IUpdateChecker {
     return response;
   }
 
+  @Override
   public void addDataChangedListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }

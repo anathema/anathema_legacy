@@ -12,7 +12,8 @@ public class EssenceFixedMultiLearnableCharm extends TraitDependentMultiLearnabl
 		super(charmId, absoluteLearnLimit, traitType);
 	}
 	
-	public int getMinimumLearnCount(IGenericTraitCollection traitCollection)
+	@Override
+    public int getMinimumLearnCount(IGenericTraitCollection traitCollection)
 	{
 		return getMaximumLearnCount(traitCollection);
 	}

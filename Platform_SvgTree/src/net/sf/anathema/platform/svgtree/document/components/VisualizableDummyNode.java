@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class VisualizableDummyNode extends AbstractSingleVisualizableNode {
 
+  @Override
   public void accept(final IVisualizableNodeVisitor visitor) {
     visitor.visitDummyNode(this);
   }
@@ -21,6 +22,7 @@ public class VisualizableDummyNode extends AbstractSingleVisualizableNode {
     super(contentNode, map, nodeDimension, leafNodesByAncestors);
   }
 
+  @Override
   public void toXML(final Element element) {
     // Nothing to do
   }

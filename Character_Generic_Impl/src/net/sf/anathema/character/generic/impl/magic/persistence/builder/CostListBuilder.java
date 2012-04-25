@@ -12,6 +12,7 @@ public class CostListBuilder implements ICostListBuilder {
   private final CostBuilder costBuilder = new CostBuilder();
   private final HealthCostBuilder healthCostBuilder = new HealthCostBuilder();
 
+  @Override
   public ICostList buildCostList(Element costListElement) throws PersistenceException {
     try {
       ICost essenceCost = costBuilder.buildCost(costListElement.element("essence")); //$NON-NLS-1$

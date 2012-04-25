@@ -29,18 +29,22 @@ public class GroupedTraitType implements IGroupedTraitType {
     this.traitCasteIds = traitCastes;
   }
 
+  @Override
   public ITraitType getTraitType() {
     return type;
   }
 
+  @Override
   public String getGroupId() {
     return groupId;
   }
 
+  @Override
   public String getGroupCasteId() {
     return groupCasteId;
   }
   
+  @Override
   public List<String> getTraitCasteSet()
   {
 	  return traitCasteIds; 

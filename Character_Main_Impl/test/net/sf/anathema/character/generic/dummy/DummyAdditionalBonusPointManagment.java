@@ -8,14 +8,17 @@ import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditiona
 
 public class DummyAdditionalBonusPointManagment implements IAdditionalBonusPointManagment {
 
+  @Override
   public void spendOn(IGenericTrait trait, int bonusCost) {
     // Nothing to do
   }
 
+  @Override
   public void spendOn(IMagic magic, int bonusCost) {
     // Nothing to do
   }
 
+  @Override
   public void spendOn(IGenericSpecialty[] specialties, IAbilityPointCosts costs) {
     // Nothing to do
   }

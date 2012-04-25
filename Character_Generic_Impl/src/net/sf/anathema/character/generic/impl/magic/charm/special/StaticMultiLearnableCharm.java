@@ -11,10 +11,12 @@ public class StaticMultiLearnableCharm extends AbstractMultiLearnableCharm {
     this.learnCount = learnCount;
   }
 
+  @Override
   public int getAbsoluteLearnLimit() {
     return learnCount;
   }
 
+  @Override
   public int getMaximumLearnCount(IGenericTraitCollection traitCollection) {
     return learnCount;
   }

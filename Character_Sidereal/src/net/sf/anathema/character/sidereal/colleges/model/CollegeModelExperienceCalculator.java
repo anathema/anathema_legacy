@@ -16,6 +16,7 @@ public class CollegeModelExperienceCalculator implements IAdditionalModelExperie
     this.costs = experienceCosts;
   }
 
+  @Override
   public int calculateCost() {
     int totalCost = 0;
     for (IAstrologicalHouse house : allHouses) {
@@ -27,6 +28,7 @@ public class CollegeModelExperienceCalculator implements IAdditionalModelExperie
     return totalCost;
   }
 
+  @Override
   public int calculateGain() {
     return 0;
   }

@@ -35,6 +35,7 @@ public class AnathemaSplashscreen implements ISplashscreen {
     this.font = graphics.getFont().deriveFont(Font.BOLD);
   }
 
+  @Override
   public void displayStatusMessage(String message) {
     if (isSplashscreenVisible()) {
       return;
@@ -52,6 +53,7 @@ public class AnathemaSplashscreen implements ISplashscreen {
     graphics.setPaint(oldPaint);
   }
 
+  @Override
   public void displayVersion(String string) {
     if (isSplashscreenVisible()) {
       return;

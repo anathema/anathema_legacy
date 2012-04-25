@@ -17,6 +17,7 @@ public class AdditionalMagicLearnPoolCalculator implements IAdditionalMagicLearn
     this.character = abstraction;
   }
 
+  @Override
   public boolean canSpendOn(IMagic magic) {
     IGenericTraitCollection traitCollection = character.getTraitCollection();
     if (!pool.isAllowedFor(traitCollection, magic)) {
@@ -25,6 +26,7 @@ public class AdditionalMagicLearnPoolCalculator implements IAdditionalMagicLearn
     return pointsSpent < pool.getAdditionalMagicCount(traitCollection);
   }
 
+  @Override
   public void spendPointsFor(IMagic magic) {
     if (canSpendOn(magic)) {
       if (magic instanceof ICharm && character.isAlienCharm((ICharm) magic)) {
@@ -34,14 +36,17 @@ public class AdditionalMagicLearnPoolCalculator implements IAdditionalMagicLearn
     }
   }
 
+  @Override
   public int getPointsSpent() {
     return pointsSpent;
   }
 
+  @Override
   public int getTotalPoints() {
     return pool.getAdditionalMagicCount(character.getTraitCollection());
   }
 
+  @Override
   public void reset() {
     pointsSpent = 0;
   }

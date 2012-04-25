@@ -123,14 +123,17 @@ public class ExperienceTemplateParserTest {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+      @Override
       public boolean isOccultFavored() {
         return false;
       }
 
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return null;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return false;
       }
@@ -142,14 +145,17 @@ public class ExperienceTemplateParserTest {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(8, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+      @Override
       public boolean isOccultFavored() {
         return true;
       }
 
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return null;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return true;
       }
@@ -161,14 +167,17 @@ public class ExperienceTemplateParserTest {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+      @Override
       public boolean isOccultFavored() {
         return true;
       }
 
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Celestial;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return false;
       }
@@ -180,14 +189,17 @@ public class ExperienceTemplateParserTest {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(15, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+      @Override
       public boolean isOccultFavored() {
         return true;
       }
 
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Sidereal;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return false;
       }
@@ -199,14 +211,17 @@ public class ExperienceTemplateParserTest {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
     assertEquals(13, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+      @Override
       public boolean isOccultFavored() {
         return true;
       }
 
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Sidereal;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return true;
       }

@@ -44,6 +44,7 @@ public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<Ge
     return new GenericTraitTemplatePool();
   }
 
+  @Override
   public GenericTraitTemplatePool parseTemplate(Element element) throws PersistenceException {
     GenericTraitTemplatePool pool = getBasicTemplate(element);
     parseDefaultTraitTemplate(pool, element);

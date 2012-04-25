@@ -46,6 +46,7 @@ public class LunarAdditionalPageEncoder implements PageEncoder {
     this.boxEncoder = new PdfBoxEncoder();
   }
 
+  @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
     sheet.startPortraitPage(graphics, session);
     int firstSet = 0, secondSet = 0;

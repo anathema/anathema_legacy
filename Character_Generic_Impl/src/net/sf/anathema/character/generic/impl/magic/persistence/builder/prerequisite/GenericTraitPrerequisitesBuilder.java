@@ -16,6 +16,7 @@ public class GenericTraitPrerequisitesBuilder implements ITraitPrerequisitesBuil
 
   private final GenericTraitPrerequisiteBuilder genericBuilder = new GenericTraitPrerequisiteBuilder();
 
+  @Override
   public IGenericTrait[] buildTraitPrerequisites(Element prerequisiteListElement) throws PersistenceException {
     List<IGenericTrait> allPrerequisites = new ArrayList<IGenericTrait>();
     ITraitPrerequisiteBuilder traitBuilder = new TraitPrerequisiteBuilder();

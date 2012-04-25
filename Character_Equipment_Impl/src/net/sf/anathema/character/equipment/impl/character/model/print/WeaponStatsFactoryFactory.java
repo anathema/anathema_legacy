@@ -5,6 +5,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class WeaponStatsFactoryFactory implements IWeaponStatsFactoryFactory {
 
+  @Override
   public IEquipmentStatsDecorationFactory<IWeaponStats> create(IResources resources){
     return new WeaponStatsDecorationFactory(resources);
   }

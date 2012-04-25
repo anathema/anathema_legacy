@@ -16,6 +16,7 @@ public abstract class AbstractListViewSelectionEnabledAction<V> extends SmartAct
     super(icon);
     this.view = view;
     view.addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         updateEnabled();
       }

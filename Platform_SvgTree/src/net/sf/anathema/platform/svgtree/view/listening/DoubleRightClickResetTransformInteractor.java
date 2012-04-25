@@ -14,6 +14,7 @@ public class DoubleRightClickResetTransformInteractor extends AbstractResetTrans
     this.calculator = boundsCalculator;
   }
 
+  @Override
   public boolean startInteraction(InputEvent ie) {
     if (!(ie instanceof MouseEvent)) {
       return false;

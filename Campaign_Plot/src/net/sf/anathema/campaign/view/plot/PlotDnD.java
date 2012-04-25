@@ -85,6 +85,7 @@ public class PlotDnD {
       }
     });
     new DropTarget(treeView.getTreeComponent(), DnDConstants.ACTION_MOVE, new DropTargetAdapter() {
+      @Override
       public void drop(DropTargetDropEvent dtde) {
         Point dropLocation = dtde.getLocation();
         TreePath pathForLocation = treeView.getTreeComponent().getPathForLocation(dropLocation.x, dropLocation.y);

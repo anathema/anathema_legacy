@@ -15,18 +15,22 @@ public class GenericMagicTemplate extends ReflectionCloneableObject<GenericMagic
   private ISpellMagicTemplate spellTemplate;
   private FavoringTraitType favoringTraitType = FavoringTraitType.AbilityType;
 
+  @Override
   public boolean canBuyFromFreePicks(IMagic magic) {
     return predicate.evaluate(magic);
   }
 
+  @Override
   public ISpellMagicTemplate getSpellMagic() {
     return spellTemplate;
   }
 
+  @Override
   public ICharmTemplate getCharmTemplate() {
     return charmTemplate;
   }
 
+  @Override
   public FavoringTraitType getFavoringTraitType() {
     return favoringTraitType;
   }

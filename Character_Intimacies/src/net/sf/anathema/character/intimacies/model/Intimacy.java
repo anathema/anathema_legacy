@@ -34,6 +34,7 @@ public class Intimacy implements IIntimacy {
         VirtueType.Conviction);
     traitRules = new TraitRules(new IntimacyType(name), template, context.getLimitationContext());
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
+      @Override
       public boolean isValidNewValue(int value) {
         int currentMaximum = maxValueTrait.getCurrentValue();
         if (value == currentMaximum) {
@@ -45,14 +46,17 @@ public class Intimacy implements IIntimacy {
     this.trait = new DefaultTrait(traitRules, context, incrementChecker);
   }
 
+  @Override
   public String getName() {
     return name;
   }
 
+  @Override
   public IDefaultTrait getTrait() {
     return trait;
   }
 
+  @Override
   public void resetCurrentValue() {
     int maximumValue = maxValueTrait.getCurrentValue();
     if (complete || trait.getCurrentValue() > maximumValue) {
@@ -60,16 +64,19 @@ public class Intimacy implements IIntimacy {
     }
   }
 
+  @Override
   public void setComplete(boolean complete) {
     this.complete = complete;
     resetCurrentValue();
     control.fireValueChangedEvent(this.complete);
   }
 
+  @Override
   public void addCompletionListener(IBooleanValueChangedListener listener) {
     control.addValueChangeListener(listener);
   }
 
+  @Override
   public boolean isComplete() {
     return complete;
   }

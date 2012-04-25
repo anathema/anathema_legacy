@@ -14,6 +14,7 @@ public class PrintTrait implements NamedValue {
     this.trait = trait;
   }
 
+  @Override
   public String getLabel() {
     String typeId = getTypeId();
     return resources.getString(typeId);
@@ -24,6 +25,7 @@ public class PrintTrait implements NamedValue {
     return type.getId();
   }
 
+  @Override
   public int getValue() {
     return trait.getCurrentValue();
   }

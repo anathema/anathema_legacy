@@ -12,10 +12,12 @@ public class RangeWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWea
     super(resources, "Range"); //$NON-NLS-1$
   }
 
+  @Override
   public int getColumnCount() {
     return 1;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IWeaponStats weapon) {
     if (weapon == null) {
       table.addCell(createFinalValueCell(font));

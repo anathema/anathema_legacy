@@ -6,6 +6,7 @@ public enum SiderealCaste implements ICasteType {
 
   Journeys, Serenity, Battles, Secrets, Endings;
 
+  @Override
   public String getId() {
     return name();
   }

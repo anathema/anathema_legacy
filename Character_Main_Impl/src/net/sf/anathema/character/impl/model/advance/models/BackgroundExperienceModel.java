@@ -15,6 +15,7 @@ public class BackgroundExperienceModel extends AbstractIntegerValueModel {
     this.experiencePointCosts = experiencePointCosts;
   }
 
+  @Override
   public Integer getValue() {
     return getBackgroundExperience();
   }

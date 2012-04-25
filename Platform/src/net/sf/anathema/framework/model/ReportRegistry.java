@@ -16,10 +16,12 @@ public class ReportRegistry implements IReportRegistry {
     super();
   }
 
+  @Override
   public void addReports(Report... newReports) {
     Collections.addAll(this.reports, newReports);
   }
 
+  @Override
   public Report[] getReports(IItem item) {
     List<Report> supportedReports = new ArrayList<Report>();
     for (Report report : reports) {

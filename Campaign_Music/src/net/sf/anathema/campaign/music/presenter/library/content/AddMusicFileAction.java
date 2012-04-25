@@ -39,6 +39,7 @@ public class AddMusicFileAction extends SmartAction {
     this.model = model;
     this.view = view;
     view.addLibraryListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         updateEnabled();
       }

@@ -17,14 +17,17 @@ public class TerrestrialMartialArtsRules implements IMartialArtsRules {
 
   private boolean highLevelAtCreation;
 
+  @Override
   public void setHighLevelAtCreation(boolean highLevelAtCreation) {
     this.highLevelAtCreation = highLevelAtCreation;
   }
 
+  @Override
   public MartialArtsLevel getStandardLevel() {
     return MartialArtsLevel.Terrestrial;
   }
 
+  @Override
   public boolean isCharmAllowed(
       ICharm martialArtsCharm,
       IGenericCharmConfiguration charmConfiguration,

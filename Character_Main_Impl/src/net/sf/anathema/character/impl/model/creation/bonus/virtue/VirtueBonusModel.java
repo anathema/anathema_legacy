@@ -13,14 +13,17 @@ public class VirtueBonusModel extends AbstractSpendingModel {
     this.creationPoints = creationPoints;
   }
 
+  @Override
   public Integer getValue() {
     return virtueCalculator.getVirtueDotsSpent();
   }
 
+  @Override
   public int getSpentBonusPoints() {
     return virtueCalculator.getBonusPointsSpent();
   }
 
+  @Override
   public int getAlotment() {
     return creationPoints.getVirtueCreationPoints();
   }

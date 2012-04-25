@@ -31,6 +31,7 @@ public class InfernalUrgeModel extends VirtueFlawModel implements IInfernalUrgeM
 	  return virtueFlaw;
   }
   
+  @Override
   public ITraitType[] getFlawVirtueTypes() {
 	    List<ITraitType> flawVirtues = new ArrayList<ITraitType>();
 	    for (VirtueType virtueType : VirtueType.values()) {

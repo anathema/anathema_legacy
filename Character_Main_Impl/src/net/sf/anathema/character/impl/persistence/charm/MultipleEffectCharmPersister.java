@@ -16,6 +16,7 @@ public class MultipleEffectCharmPersister implements ISpecialCharmPersister {
   private static final String ATTRIB_CREATION_LEARNED = "creationlearned"; //$NON-NLS-1$
   private static final String ATTRIB_EXPERIENCE_LEARNED = "experiencelearned"; //$NON-NLS-1$
 
+  @Override
   public void loadConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration)
       throws PersistenceException {
     Element subeffectsElement = specialElement.element(TAG_SUBEFFECTS);
@@ -33,6 +34,7 @@ public class MultipleEffectCharmPersister implements ISpecialCharmPersister {
     }
   }
 
+  @Override
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
     IMultipleEffectCharmConfiguration configuration = (IMultipleEffectCharmConfiguration) specialCharmConfiguration;
     Element subeffectsElement = specialElement.addElement(TAG_SUBEFFECTS);

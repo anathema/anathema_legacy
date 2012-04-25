@@ -14,10 +14,12 @@ public class CharacterPoints implements ICharacterPoints {
     this.experiencePointManagement = experiencePointManagement;
   }
 
+  @Override
   public int getExperiencePointsSpent() {
     return experiencePointManagement.getTotalCosts();
   }
 
+  @Override
   public int getExperiencePointsTotal() {
     return statistics.getExperiencePoints().getTotalExperiencePoints();
   }

@@ -10,6 +10,7 @@ public class ConcatenatedNameTokenFactory implements INameTokenFactory {
     this.tokenFactories = tokenFactories;
   }
 
+  @Override
   public String createToken() {
     StringBuilder token = new StringBuilder();
     boolean isFirstToken = true;

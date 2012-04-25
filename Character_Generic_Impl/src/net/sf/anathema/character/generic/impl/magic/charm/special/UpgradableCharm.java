@@ -43,11 +43,13 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 		this.requiresBase = requiresBase;
 	}
 	
-	  public void accept(ISpecialCharmVisitor visitor) {
+	  @Override
+      public void accept(ISpecialCharmVisitor visitor) {
 		    visitor.visitUpgradableCharm(this);
 		  }
 	  
-	  public ISubeffect[] buildSubeffects(IBasicCharacterData data,
+	  @Override
+      public ISubeffect[] buildSubeffects(IBasicCharacterData data,
 			  IGenericTraitCollection traitCollection,
 			  ICharmLearnableArbitrator arbitrator,
 			  ICharm charm) {
@@ -78,7 +80,8 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 			  final Integer traitMin,
 			  final ITraitType trait) {
 	    return new ICondition() {
-	      public boolean isFulfilled() {
+	      @Override
+          public boolean isFulfilled() {
 	        boolean learnable = arbitrator.isLearnable(charm) &&
 	        	(bpUpgradeAllowed || data.isExperienced());
 	        learnable = !learnable ? learnable :
@@ -97,7 +100,8 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 		  return upgradesBySession.get(data);
 	  }
 	  
-	  public int getUpgradeBPCost(IBasicCharacterData data)
+	  @Override
+      public int getUpgradeBPCost(IBasicCharacterData data)
 	  {
 		  int total = 0;
 		  for (Upgrade upgrade : getUpgradesBySession(data))
@@ -105,7 +109,8 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 		  return total;
 	  }
 	  
-	  public int getUpgradeXPCost(IBasicCharacterData data)
+	  @Override
+      public int getUpgradeXPCost(IBasicCharacterData data)
 	  {
 		  int total = 0;
 		  for (Upgrade upgrade : getUpgradesBySession(data))
@@ -113,7 +118,8 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 		  return total;
 	  }
 	  
-	  public boolean requiresBase()
+	  @Override
+      public boolean requiresBase()
 	  {
 		  return requiresBase;
 	  }

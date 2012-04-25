@@ -9,10 +9,12 @@ public class ShieldStats extends AbstractCombatStats implements IShieldStats {
   private Integer fatigue;
   private Integer mobilityPenalty;
 
+  @Override
   public int getCloseCombatBonus() {
     return closeCombatDv;
   }
 
+  @Override
   public int getRangedCombatBonus() {
     return rangedCombatDv;
   }
@@ -25,10 +27,12 @@ public class ShieldStats extends AbstractCombatStats implements IShieldStats {
     this.rangedCombatDv = rangedCombatDv;
   }
 
+  @Override
   public Integer getFatigue() {
     return fatigue;
   }
 
+  @Override
   public Integer getMobilityPenalty() {
     return mobilityPenalty;
   }

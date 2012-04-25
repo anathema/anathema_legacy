@@ -44,6 +44,7 @@ public class AdditionalModelPersister {
 
   private IAdditionalModel findModel(IAdditionalModel[] additionalModels, final String templateId) {
     return ArrayUtilities.find(new Predicate<IAdditionalModel>() {
+      @Override
       public boolean apply(IAdditionalModel input) {
         return input.getTemplateId().equals(templateId);
       }

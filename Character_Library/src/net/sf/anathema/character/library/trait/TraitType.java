@@ -10,6 +10,7 @@ public class TraitType extends Identificate implements ITraitType {
     super(id);
   }
 
+  @Override
   public void accept(ITraitTypeVisitor visitor) {
     throw new UnsupportedOperationException();
     // visitor.visitCustomTraitType(this);

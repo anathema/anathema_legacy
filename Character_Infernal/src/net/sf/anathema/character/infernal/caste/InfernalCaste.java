@@ -6,6 +6,7 @@ public enum InfernalCaste implements ICasteType {
 
   Slayer, Malefactor, Defiler, Scourge, Fiend;
 
+  @Override
   public String getId() {
     return name();
   }

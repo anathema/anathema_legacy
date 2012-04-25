@@ -24,20 +24,24 @@ public class CollegeModelBonusPointCalculator implements IAdditionalModelBonusPo
       Collections.addAll(colleges, house.getColleges());
     }
     this.calculator = new CollegeBonusPointCalculator(new IAdditionalTraitBonusPointManagement() {
+      @Override
       public void spendOn(IGenericTrait trait, int bonusCost) {
         // nothing to do
       }
     }, points, colleges.toArray(new IFavorableDefaultTrait[colleges.size()]), costs);
   }
 
+  @Override
   public void recalculate() {
     calculator.calculateCosts();
   }
 
+  @Override
   public int getBonusPointsGranted() {
     return 0;
   }
 
+  @Override
   public int getBonusPointCost() {
     return calculator.getBonusPointsSpent();
   }

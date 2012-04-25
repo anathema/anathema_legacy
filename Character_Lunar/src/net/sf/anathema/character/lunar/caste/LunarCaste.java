@@ -6,6 +6,7 @@ public enum LunarCaste implements ICasteType {
 
   FullMoon, ChangingMoon, NoMoon, WaxingMoon, HalfMoon, WaningMoon;
 
+  @Override
   public String getId() {
     return name();
   }

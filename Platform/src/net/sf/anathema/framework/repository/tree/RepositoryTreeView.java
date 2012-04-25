@@ -16,6 +16,7 @@ public class RepositoryTreeView implements IRepositoryTreeView {
   private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel buttonPanel = new JPanel(new GridDialogLayout(4, true));
 
+  @Override
   public JTree addTree() {
     final JTree tree = new JTree();
     panel.add(new JScrollPane(
@@ -25,10 +26,12 @@ public class RepositoryTreeView implements IRepositoryTreeView {
     return tree;
   }
 
+  @Override
   public void addActionButton(Action action) {
     buttonPanel.add(new JButton(action), GridDialogLayoutData.FILL_HORIZONTAL);
   }
 
+  @Override
   public JComponent getComponent() {
     panel.add(buttonPanel);
     return panel;

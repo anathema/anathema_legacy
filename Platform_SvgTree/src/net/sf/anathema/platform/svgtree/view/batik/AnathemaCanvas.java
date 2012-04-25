@@ -35,10 +35,12 @@ public AnathemaCanvas() {
     // Nothing to do
   }
 
+  @Override
   public void setCursorInternal(Cursor cursor) {
     super.setCursor(cursor);
   }
 
+  @Override
   public List<SVGGElement> getNodeElements() {
     return getElementByAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE);
   }
@@ -55,10 +57,12 @@ public AnathemaCanvas() {
     return list;
   }
 
+  @Override
   public List<SVGGElement> getControlElements() {
     return getElementByAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_CONTROL);
   }
 
+  @Override
   public Element getElementById(String id) {
     return getSVGDocument().getElementById(id);
   }

@@ -19,6 +19,7 @@ public class BoundsCalculator implements IBoundsCalculator {
   
   private SVGContext savedContext;
 
+  @Override
   public Rectangle getBounds(SVGLocatable svgElement) {
     if (boundsByElement.containsKey(svgElement)) {
       return boundsByElement.get(svgElement);
@@ -65,6 +66,7 @@ public class BoundsCalculator implements IBoundsCalculator {
     return boundingRectangle;
   }
 
+  @Override
   public void reset() {
     boundsByElement.clear();
   }

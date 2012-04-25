@@ -18,6 +18,7 @@ public class GenericCharmPrerequisiteBuilder extends CharmPrerequisiteBuilder im
     return GenericCharmUtilities.getAllReferencedGenericCharms(parent, type);
   }
 
+  @Override
   public void setType(ITraitType type) {
     this.type = type;
   }

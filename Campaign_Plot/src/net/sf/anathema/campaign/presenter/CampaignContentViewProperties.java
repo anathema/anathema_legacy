@@ -10,10 +10,12 @@ public class CampaignContentViewProperties implements ICampaignContentViewProper
     this.resources = resources;
   }
 
+  @Override
   public String getAddToolTip() {
     return resources.getString("CampaignContent.AddToolTip"); //$NON-NLS-1$
   }
 
+  @Override
   public String getRemoveToolTip() {
     return resources.getString("CampaignContent.RemoveToolTip"); //$NON-NLS-1$  
   }

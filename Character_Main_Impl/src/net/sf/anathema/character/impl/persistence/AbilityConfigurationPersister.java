@@ -48,6 +48,7 @@ public class AbilityConfigurationPersister {
       ElementUtilities.addAttribute(abilityElement, ATTRIB_FAVORED, ability.getFavorization().isFavored());
     }
     ability.accept(new ITraitVisitor() {
+      @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         try {
           for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
@@ -64,6 +65,7 @@ public class AbilityConfigurationPersister {
         }
       }
 
+      @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         DefaultTraitReference reference = new DefaultTraitReference(visitedTrait);
         saveSpecialties(specialtyConfiguration, abilityElement, reference);
@@ -107,6 +109,7 @@ public class AbilityConfigurationPersister {
     ability.getFavorization().setFavored(favored);
     final ISpecialtiesConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
     ability.accept(new ITraitVisitor() {
+      @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         try {
           for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
@@ -123,6 +126,7 @@ public class AbilityConfigurationPersister {
         }
       }
 
+      @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         try {
           loadSpecialties(abilityElement, specialtyConfiguration, new DefaultTraitReference(visitedTrait));

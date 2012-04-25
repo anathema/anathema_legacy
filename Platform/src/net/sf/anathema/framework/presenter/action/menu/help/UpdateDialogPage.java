@@ -23,6 +23,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
     this.resources = resources;
     this.checker = checker;
     checker.addDataChangedListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateLatestVersionLabel();
       }
@@ -35,6 +36,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
     latestVersionLabel.setText(latestVersion != null ? latestVersion : "?.??"); //$NON-NLS-1$
   }
 
+  @Override
   public JComponent createContent() {
     JPanel panel = new JPanel(new GridDialogLayout(2, false));
     panel.add(new JLabel(getString("Help.UpdateCheck.CurrentVersion") + ":"), IGridDialogLayoutData.DEFAULT); //$NON-NLS-1$ //$NON-NLS-2$
@@ -44,6 +46,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
     return panel;
   }
 
+  @Override
   public IBasicMessage createCurrentMessage() {
     IMessageData messageData = checker.getMessageData();
     if (messageData == null) {
@@ -64,6 +67,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
     return getString("Help.UpdateCheck.Failure"); //$NON-NLS-1$
   }
 
+  @Override
   public String getTitle() {
     return getString("Help.UpdateCheck.Title"); //$NON-NLS-1$
   }

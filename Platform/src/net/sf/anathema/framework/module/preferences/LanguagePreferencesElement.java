@@ -28,6 +28,7 @@ public class LanguagePreferencesElement implements IPreferencesElement {
   private boolean dirty;
   private JComboBox languageBox;
 
+  @Override
   public void addComponent(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
@@ -54,6 +55,7 @@ public class LanguagePreferencesElement implements IPreferencesElement {
       }
     });
     languageBox.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         if (languageBox.getSelectedItem() != locale) {
           locale = (SupportedLocale) languageBox.getSelectedItem();
@@ -64,10 +66,12 @@ public class LanguagePreferencesElement implements IPreferencesElement {
     languageBox.setSelectedItem(locale);
     return new IDialogComponent() {
 
+      @Override
       public int getColumnCount() {
         return 2;
       }
 
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(languageLabel);
         panel.add(languageBox);
@@ -75,22 +79,27 @@ public class LanguagePreferencesElement implements IPreferencesElement {
     };
   }
 
+  @Override
   public void savePreferences() {
     SYSTEM_PREFERENCES.put(LOCALE_PREFERENCE, locale.name());
   }
   
+  @Override
   public boolean isValid() {
     return true;
   }
 
+  @Override
   public boolean isDirty() {
     return dirty;
   }
 
+  @Override
   public IIdentificate getCategory() {
     return SYSTEM_CATEGORY;
   }
 
+  @Override
   public void reset() {
     locale = SupportedLocale.valueOf(SYSTEM_PREFERENCES.get(LOCALE_PREFERENCE, DEFAULT_LOCALE));
     languageBox.setSelectedItem(locale);

@@ -26,6 +26,7 @@ public class ButtonControlledEditView implements IView {
     addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
   }
 
+  @Override
   public JPanel getComponent() {
     JPanel panel = new JPanel(new GridDialogLayout(3, false));
     panel.add(text, GridDialogLayoutData.FILL_HORIZONTAL);
@@ -35,14 +36,17 @@ public class ButtonControlledEditView implements IView {
 
   public void addEditChangedListener(final IObjectValueChangedListener<String> listener) {
     text.getDocument().addDocumentListener(new DocumentListener() {
+      @Override
       public void changedUpdate(DocumentEvent e) {
         listener.valueChanged(text.getText());
       }
 
+      @Override
       public void insertUpdate(DocumentEvent e) {
         listener.valueChanged(text.getText());
       }
 
+      @Override
       public void removeUpdate(DocumentEvent e) {
         listener.valueChanged(text.getText());
       }

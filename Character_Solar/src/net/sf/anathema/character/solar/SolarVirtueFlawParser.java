@@ -8,6 +8,7 @@ import org.dom4j.Element;
 
 public class SolarVirtueFlawParser implements IAdditionalTemplateParser {
 
+  @Override
   public IAdditionalTemplate parse(Element element) {
     return new SolarVirtueFlawTemplate();
   }

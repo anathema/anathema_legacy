@@ -14,6 +14,7 @@ public class MusicLibraryColumnViewSettings extends AbstractTableColumnSettings 
     this.control = control;
   }
 
+  @Override
   public TableCellEditor getEditor() {
     return new MusicLibraryCellEditor(control);
   }

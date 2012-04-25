@@ -22,6 +22,7 @@ public class DurationEntryModel implements IDurationEntryModel {
   public DurationEntryModel(final ICharmTypeEntryModel typeModel, final IConfigurableCharmData charmData) {
     this.charmData = charmData;
     typeModel.addModelListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         if (typeModel.getCharmType() == CharmType.Permanent) {
           setSimpleDuration("Permanent"); //$NON-NLS-1$
@@ -30,10 +31,12 @@ public class DurationEntryModel implements IDurationEntryModel {
     });
   }
 
+  @Override
   public void addModelListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
 
+  @Override
   public void setUntilDuration(String newValue) {
     if (StringUtilities.isNullOrTrimmedEmpty(newValue)) {
       clearDuration();
@@ -43,6 +46,7 @@ public class DurationEntryModel implements IDurationEntryModel {
     control.fireChangedEvent();
   }
 
+  @Override
   public void setSimpleDuration(String newValue) {
     if (StringUtilities.isNullOrTrimmedEmpty(newValue)) {
       clearDuration();
@@ -52,26 +56,31 @@ public class DurationEntryModel implements IDurationEntryModel {
     control.fireChangedEvent();
   }
 
+  @Override
   public boolean isDurationComplete() {
     return charmData.getDuration() != null;
   }
 
+  @Override
   public void clearDuration() {
     charmData.setDuration(null);
     amount = null;
     control.fireChangedEvent();
   }
 
+  @Override
   public void setValueForAmountDuration(int newValue) {
     this.amount = String.valueOf(newValue);
     setQualifiedAmountDuration();
   }
 
+  @Override
   public void setTraitForAmountDuration(ITraitType newValue) {
     this.amount = newValue.getId();
     setQualifiedAmountDuration();
   }
 
+  @Override
   public void setTextForAmountDuration(String newValue) {
     this.text = newValue;
     setQualifiedAmountDuration();

@@ -21,46 +21,57 @@ public class CharacterDescription implements ICharacterDescription {
   private final ITextualDescription skin = new SimpleTextualDescription();
   private final ITextualDescription anima = new SimpleTextualDescription();
 
+  @Override
   public ITextualDescription getName() {
     return nameDescription;
   }
 
+  @Override
   public ITextualDescription getPlayer() {
     return player;
   }
 
+  @Override
   public ITextualDescription getPeriphrase() {
     return periphraseDescription;
   }
 
+  @Override
   public ITextualDescription getCharacterization() {
     return characterization;
   }
 
+  @Override
   public ITextualDescription getPhysicalDescription() {
     return physicalDescription;
   }
 
+  @Override
   public ITextualDescription getEyes() {
     return eyes;
   }
 
+  @Override
   public ITextualDescription getHair() {
     return hair;
   }
 
+  @Override
   public ITextualDescription getSex() {
     return sex;
   }
 
+  @Override
   public ITextualDescription getSkin() {
     return skin;
   }
   
+  @Override
   public ITextualDescription getAnima() {
 	return anima;
   }
 
+  @Override
   public ITextualDescription getNotes() {
     return notes;
   }
@@ -81,10 +92,12 @@ public class CharacterDescription implements ICharacterDescription {
         concept };
   }
 
+  @Override
   public ITextualDescription getConcept() {
     return concept;
   }
 
+  @Override
   public void addOverallChangeListener(IObjectValueChangedListener<String> listener) {
     for (ITextualDescription description : getAllDescriptions()) {
       description.addTextChangedListener(listener);

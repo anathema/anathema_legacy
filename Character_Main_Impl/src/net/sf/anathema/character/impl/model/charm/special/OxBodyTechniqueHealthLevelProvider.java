@@ -12,6 +12,7 @@ public class OxBodyTechniqueHealthLevelProvider implements IHealthLevelProvider 
     this.categories = categories;
   }
 
+  @Override
   public int getHealthLevelTypeCount(HealthLevelType type) {
     int count = 0;
     for (OxBodyCategory category : categories) {

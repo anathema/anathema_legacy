@@ -121,6 +121,7 @@ public class FavorableTraitTest {
     trait.setCurrentValue(3);
     final int[] holder = new int[1];
     trait.addCurrentValueListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         holder[0] = newValue;
       }

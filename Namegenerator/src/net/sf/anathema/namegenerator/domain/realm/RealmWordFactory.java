@@ -28,6 +28,7 @@ public class RealmWordFactory implements IWordFactory {
     this.commonFamilyPercent = commonFamilyPercent;
   }
 
+  @Override
   public String createWord(int wordIndex) {
     if (wordIndex == 0 && RandomUtilities.nextPercent() < commonFamilyPercent) {
       return RandomUtilities.choose(commonFamilyNames);

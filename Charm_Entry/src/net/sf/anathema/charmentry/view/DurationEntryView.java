@@ -23,12 +23,14 @@ public class DurationEntryView implements IDurationEntryView {
   private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
   private final ChangeControl control = new ChangeControl();
 
+  @Override
   public JRadioButton addRadioButton(String string) {
     JRadioButton button = createRadioButton(string);
     panel.add(new EndOfLineMarkerComponent());
     return button;
   }
 
+  @Override
   public ITextView addRadioButtonTextField(String string) {
     JRadioButton radioButton = createRadioButton(string);
     LineTextView textField = new LineTextView(15);
@@ -43,6 +45,7 @@ public class DurationEntryView implements IDurationEntryView {
     group.add(radioButton);
     panel.add(radioButton);
     radioButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         control.fireChangedEvent();
       }
@@ -50,18 +53,22 @@ public class DurationEntryView implements IDurationEntryView {
     return radioButton;
   }
 
+  @Override
   public JComponent getContent() {
     return panel;
   }
 
+  @Override
   public void addTypeChangeListener(IChangeListener changeListener) {
     control.addChangeListener(changeListener);
   }
 
+  @Override
   public void requestFocus() {
     // Nothing to do
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }

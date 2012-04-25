@@ -20,11 +20,13 @@ public class Registry<I, V> implements IRegistry<I, V> {
     this.defaultValue = defaultValue;
   }
 
+  @Override
   public void register(I id, V anObject) {
     objects.put(id, anObject);
     keySet.add(id);
   }
 
+  @Override
   public V get(I id) {
     if (defaultValue != null && !objects.containsKey(id)) {
       return defaultValue;
@@ -32,6 +34,7 @@ public class Registry<I, V> implements IRegistry<I, V> {
     return objects.get(id);
   }
 
+  @Override
   public I[] getIds(I[] array) {
     return keySet.toArray(array);
   }

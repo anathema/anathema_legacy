@@ -15,10 +15,12 @@ public class Cost implements ICost {
     this.permanent = permanent;
   }
 
+  @Override
   public String getCost() {
     return costString;
   }
 
+  @Override
   public String getText() {
     return text;
   }

@@ -21,6 +21,7 @@ public class ComponentEnablingListSelectionListener implements ListSelectionList
     this(component, list.getSelectionModel());
   }
 
+  @Override
   public void valueChanged(ListSelectionEvent e) {
     component.setEnabled(!model.isSelectionEmpty());
   }

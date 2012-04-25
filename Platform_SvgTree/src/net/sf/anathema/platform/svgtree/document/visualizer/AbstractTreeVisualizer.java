@@ -20,6 +20,7 @@ public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
     }
   }
 
+  @Override
   public IVisualizedGraph buildTree() {
     int layerCount = getGraph().getDeepestLayer();
     for (int layerIndex = layerCount - 1; layerIndex >= 0; layerIndex--) {

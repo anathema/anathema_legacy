@@ -39,6 +39,7 @@ public class ReflexiveSpecialEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new DurationEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
+      @Override
       public boolean isFulfilled() {
         return true;
       }
@@ -55,6 +56,7 @@ public class ReflexiveSpecialEntryPage extends AbstractAnathemaWizardPage {
     this.view = viewFactory.createReflexiveSpecialsView();
     IIntValueView firstStepView = view.addIntegerSelectionView(properties.getDefaultStepLabel(), 1, 10);
     firstStepView.addIntValueChangedListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         getPageModel().setStep(newValue);
       }
@@ -62,6 +64,7 @@ public class ReflexiveSpecialEntryPage extends AbstractAnathemaWizardPage {
     firstStepView.setValue(getPageModel().getPrimaryStep());
     final JToggleButton button = view.addCheckBoxRow(properties.getSplitStepLabel());
     button.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         getPageModel().setSplitEnabled(button.isSelected());
       }
@@ -70,6 +73,7 @@ public class ReflexiveSpecialEntryPage extends AbstractAnathemaWizardPage {
     IIntValueDisplay defensiveView = view.addIntegerSelectionView(properties.getDefensiveStepLabel(), 1, 10);
     ToggleComponentEnabler.connect(button, defensiveView.getComponent());
     defensiveView.addIntValueChangedListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         getPageModel().setDefenseStep(newValue);
       }
@@ -81,18 +85,22 @@ public class ReflexiveSpecialEntryPage extends AbstractAnathemaWizardPage {
     return model.getCharmTypeModel().getReflexiveSpecialsModel();
   }
 
+  @Override
   public boolean canFinish() {
     return false;
   }
 
+  @Override
   public String getDescription() {
     return properties.getReflexiveSpecialsTitle();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     return properties.getReflexiveSpecialsMessage();
   }
 
+  @Override
   public IPageContent getPageContent() {
     return view;
   }

@@ -10,6 +10,7 @@ import net.sf.anathema.platform.database.StartDatabaseAction;
 @Tool
 public class StartDatabaseTool implements IAnathemaTool {
 
+  @Override
   public void add(IResources resources, IAnathemaModel model, IAnathemaToolbar toolbar) {
     toolbar.addSeparator();
     MusicDatabaseActionProperties properties = new MusicDatabaseActionProperties(resources);

@@ -23,6 +23,7 @@ public class TraitPersister {
       this.element = element;
     }
 
+    @Override
     public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
       try {
         List<Element> subTraitElements = ElementUtilities.elements(element, TAG_SUB_TRAIT);
@@ -46,6 +47,7 @@ public class TraitPersister {
       }
     }
 
+    @Override
     public void visitDefaultTrait(IDefaultTrait visitedTrait) {
       try {
         restoreDefaultTrait(element, visitedTrait);
@@ -65,10 +67,12 @@ public class TraitPersister {
     final Element traitElement = parent.addElement(tagName);
     trait.accept(new ITraitVisitor() {
 
+      @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         saveTrait(traitElement, visitedTrait);
       }
 
+      @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
           final Element subTraitElement = traitElement.addElement(TAG_SUB_TRAIT);

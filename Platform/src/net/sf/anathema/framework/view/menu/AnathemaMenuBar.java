@@ -26,16 +26,19 @@ public class AnathemaMenuBar implements IMenuBar {
     menuBar.add(helpMenu.getComponent());
   }
 
+  @Override
   public IMenu addMenu(String title) {
     Menu menu = new Menu(title);
     menuBar.add(menu.getComponent(), menuBar.getComponentCount() - 1);
     return menu;
   }
 
+  @Override
   public IMenu getMainMenu() {
     return mainMenu;
   }
 
+  @Override
   public IMenu getHelpMenu() {
     return helpMenu;
   }

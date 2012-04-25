@@ -28,6 +28,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
     		context.getTraitCollection(), arbitrator, charm);
     for (ISubeffect subeffect : subeffects) {
       subeffect.addChangeListener(new IChangeListener() {
+        @Override
         public void changeOccurred() {
           fireLearnCountChanged();
         }
@@ -54,32 +55,39 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
 
   private void fireLearnCountChanged() {
     control.forAllDo(new IClosure<ISpecialCharmLearnListener>() {
+      @Override
       public void execute(ISpecialCharmLearnListener input) {
         input.learnCountChanged(getCurrentLearnCount());
       }
     });
   }
 
+  @Override
   public void addSpecialCharmLearnListener(ISpecialCharmLearnListener listener) {
     control.addListener(listener);
   }
 
+  @Override
   public ICharm getCharm() {
     return charm;
   }
 
+  @Override
   public ISubeffect[] getEffects() {
     return subeffects;
   }
 
+  @Override
   public ISubeffect getEffectById(final String id) {
     return ArrayUtilities.getFirst(subeffects, new IPredicate<ISubeffect>() {
+      @Override
       public boolean evaluate(ISubeffect t) {
         return t.getId().equals(id);
       }
     });
   }
 
+  @Override
   public int getCreationLearnCount() {
     int sum = 0;
     for (ISubeffect subeffect : subeffects) {
@@ -90,6 +98,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
     return sum;
   }
 
+  @Override
   public int getCurrentLearnCount() {
     int sum = 0;
     for (ISubeffect subeffect : subeffects) {

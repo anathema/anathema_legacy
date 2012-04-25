@@ -18,6 +18,7 @@ public class CampaignPresenter implements Presenter {
     this.campaign = campaign;
   }
 
+  @Override
   public void initPresentation() {
     new PlotPresenter(
         resources,

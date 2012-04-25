@@ -5,6 +5,7 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 
 public class LongestPathLayerer implements ILayerer {
 
+  @Override
   public int layerGraph(IRegularNode[] acyclicGraph) {
     IRegularNode[] topologicallySortedNodes = TopologyBuilder.sortGraphByTopology(acyclicGraph);
     setLayersToOne(topologicallySortedNodes);

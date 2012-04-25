@@ -12,6 +12,7 @@ public class EnablePersonalizationPreferencesElement extends AbstractCheckBoxPre
 
   private boolean enablePersonalization = EQUIPMENT_PREFERENCES.getBoolean(ENABLE_PERSONALIZATION, false);
 
+  @Override
   public void savePreferences() {
 	  EQUIPMENT_PREFERENCES.putBoolean(ENABLE_PERSONALIZATION, enablePersonalization);
   }
@@ -36,6 +37,7 @@ public class EnablePersonalizationPreferencesElement extends AbstractCheckBoxPre
     enablePersonalization = value;
   }
 
+  @Override
   public IIdentificate getCategory() {
     return EQUIPMENT_CATEGORY;
   }

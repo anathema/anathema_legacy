@@ -23,26 +23,32 @@ public class CraftAdditionalModel implements ICraftAdditionalModel {
     this.model = new CraftModel(context);
   }
 
+  @Override
   public ICraftModel getCraftModel() {
     return model;
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     model.addModelChangeListener(new RemovableEntryChangeAdapter<ISubTrait>(listener));
   }
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Abilities;
   }
 
+  @Override
   public IAdditionalModelBonusPointCalculator getBonusPointCalculator() {
     return new NullAdditionalModelBonusPointCalculator();
   }
 
+  @Override
   public IAdditionalModelExperienceCalculator getExperienceCalculator() {
     return new NullAdditionalModelExperienceCalculator();
   }
 
+  @Override
   public String getTemplateId() {
     return additionalTemplate.getId();
   }

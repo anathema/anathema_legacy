@@ -21,6 +21,7 @@ public class AbilitiesTwoColumnEncoder extends FavorableTraitContentEncoder<Abil
     this.resources = resources;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
     float columnWidth = (bounds.getWidth() - PADDING - PADDING) / 2f;
     Bounds firstColumnBounds = new Bounds(bounds.x, bounds.y, columnWidth, bounds.height);

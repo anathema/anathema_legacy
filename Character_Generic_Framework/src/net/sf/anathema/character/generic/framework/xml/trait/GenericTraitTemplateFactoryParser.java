@@ -36,6 +36,7 @@ public class GenericTraitTemplateFactoryParser extends AbstractXmlTemplateParser
     return new GenericTraitTemplateFactory();
   }
 
+  @Override
   public GenericTraitTemplateFactory parseTemplate(Element element) throws PersistenceException {
     GenericTraitTemplateFactory templateFactory = getBasicTemplate(element);
     parseBackgrounds(element, templateFactory);

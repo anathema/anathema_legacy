@@ -17,14 +17,17 @@ public abstract class AbstractItemTypeViewProperties implements IItemTypeViewPro
     this.ui = ui;
   }
 
+  @Override
   public Icon getIcon() {
     return icon;
   }
 
+  @Override
   public IObjectUi<Object> getItemTypeUI() {
     return ui;
   }
 
+  @Override
   public String getLabelKey() {
     return "ItemType." + type.getId() + ".PrintName"; //$NON-NLS-1$ //$NON-NLS-2$
   }

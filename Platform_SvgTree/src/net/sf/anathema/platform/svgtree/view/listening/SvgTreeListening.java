@@ -31,6 +31,7 @@ public class SvgTreeListening {
   private String selectionId;
 
   private final EventListener nodeExitListener = new EventListener() {
+    @Override
     public void handleEvent(Event event) {
       canvas.setToolTipText(null);
       String nodeId = ((SVGGElement) event.getCurrentTarget()).getId();
@@ -65,6 +66,7 @@ public class SvgTreeListening {
   };
 
   private final EventListener cursorTooltipInitListener = new EventListener() {
+    @Override
     public void handleEvent(Event event) {
       leftClickPanner.disable();
       String nodeId = ((SVGGElement) event.getCurrentTarget()).getId();
@@ -77,6 +79,7 @@ public class SvgTreeListening {
   };
 
   private final EventListener selectionInvokingListener = new EventListener() {
+    @Override
     public void handleEvent(Event event) {
       MouseEvent mouseEvent = (MouseEvent) event;
       if (mouseEvent.getCtrlKey()) {
@@ -160,6 +163,7 @@ public SvgTreeListening(
 
   private void fireNodeSelectionEvent(final String nodeId) {
     control.forAllDo(new IClosure<CharmInteractionListener>() {
+      @Override
       public void execute(CharmInteractionListener input) {
         input.nodeSelected(nodeId);
       }
@@ -168,6 +172,7 @@ public SvgTreeListening(
  
   private void fireNodeEditedEvent(final String nodeId) {
     control.forAllDo(new IClosure<CharmInteractionListener>() {
+      @Override
       public void execute(CharmInteractionListener input) {
         input.nodeDetailsDemanded(nodeId);
       }

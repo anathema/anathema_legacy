@@ -14,10 +14,12 @@ public class DummyNode implements ISimpleNode {
     this.layer = layer;
   }
 
+  @Override
   public ISimpleNode[] getChildren() {
     return child;
   }
 
+  @Override
   public int getLayer() {
     return layer;
   }
@@ -26,35 +28,43 @@ public class DummyNode implements ISimpleNode {
     return ArrayUtilities.containsValue(this.child, potential);
   }
 
+  @Override
   public ISimpleNode[] getParents() {
     return parent;
   }
 
+  @Override
   public void addParent(ISimpleNode node) {
     Ensure.ensureNull(this.parent[0]);
     this.parent[0] = node;
   }
 
+  @Override
   public boolean isRootNode() {
     return false;
   }
 
+  @Override
   public boolean isLeafNode() {
     return false;
   }
 
+  @Override
   public void removeParent(ISimpleNode node) {
     // Nothing to do
   }
 
+  @Override
   public boolean hasMultipleParents() {
     return false;
   }
 
+  @Override
   public ISimpleNode[] getChildren(ISimpleNode[] childrenLayer) {
     return getChildren();
   }
 
+  @Override
   public void reorderChildren(ISimpleNode[] orderedNodes) {
     // Nothing to do
   }

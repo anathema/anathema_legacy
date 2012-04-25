@@ -15,6 +15,7 @@ import org.dom4j.Element;
 
 public abstract class AbstractQualityPersister<Q extends IQuality> implements IQualityPersister<Q> {
 
+  @Override
   public void save(Element parent, IQualityModel<Q> model) {
     Element perksElement = parent.addElement(getGroupElementName());
     for (IQualitySelection<Q> selection : model.getSelectedQualities()) {

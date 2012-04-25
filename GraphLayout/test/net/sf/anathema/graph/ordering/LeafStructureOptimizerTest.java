@@ -19,10 +19,12 @@ public class LeafStructureOptimizerTest {
       this.isLeaf = isLeaf;
     }
 
+    @Override
     public boolean isLeafNode() {
       return isLeaf;
     }
 
+    @Override
     public boolean hasMultipleParents() {
       return false;
     }

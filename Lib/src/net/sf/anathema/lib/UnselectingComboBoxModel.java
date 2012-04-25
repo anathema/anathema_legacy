@@ -28,6 +28,7 @@ public class UnselectingComboBoxModel extends AbstractListModel implements Mutab
     }
   }
 
+  @Override
   public void setSelectedItem(Object anObject) {
     if (!Objects.equal(selectedObject, anObject)) {
       selectedObject = anObject;
@@ -35,14 +36,17 @@ public class UnselectingComboBoxModel extends AbstractListModel implements Mutab
     }
   }
 
+  @Override
   public Object getSelectedItem() {
     return selectedObject;
   }
 
+  @Override
   public int getSize() {
     return objects.size();
   }
 
+  @Override
   public Object getElementAt(int index) {
     if (index >= 0 && index < objects.size()) {
       return objects.get(index);
@@ -54,16 +58,19 @@ public class UnselectingComboBoxModel extends AbstractListModel implements Mutab
     return objects.indexOf(anObject);
   }
 
+  @Override
   public void addElement(Object anObject) {
     objects.add(anObject);
     fireIntervalAdded(this, objects.size() - 1, objects.size() - 1);
   }
 
+  @Override
   public void insertElementAt(Object anObject, int index) {
     objects.add(index, anObject);
     fireIntervalAdded(this, index, index);
   }
 
+  @Override
   public void removeElementAt(int index) {
     if (getElementAt(index) == selectedObject) {
       selectedObject = null;
@@ -72,6 +79,7 @@ public class UnselectingComboBoxModel extends AbstractListModel implements Mutab
     fireIntervalRemoved(this, index, index);
   }
 
+  @Override
   public void removeElement(Object anObject) {
     int index = objects.indexOf(anObject);
     if (index != -1) {

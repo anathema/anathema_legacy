@@ -61,35 +61,43 @@ public class AnathemaView implements IAnathemaView {
     applicationPanel.add(itemViewManagement.getComponent(), BorderLayout.CENTER);
   }
 
+  @Override
   public IAnathemaStatusBar getStatusBar() {
     return statusBar;
   }
 
+  @Override
   public void show() {
     JFrame mainFrame = initGui();
     GuiUtilities.displayOnScreenCenter(mainFrame, new Dimension(1024, 768));
   }
 
+  @Override
   public IAnathemaToolbar getToolbar() {
     return toolbar;
   }
 
+  @Override
   public void addItemView(IItemView view, Action action) {
     itemViewManagement.addItemView(view, action);
   }
 
+  @Override
   public void removeItemView(IItemView view) {
     itemViewManagement.removeItemView(view);
   }
 
+  @Override
   public void addViewSelectionListener(IViewSelectionListener listener) {
     itemViewManagement.addViewSelectionListener(listener);
   }
 
+  @Override
   public void setSelectedItemView(IItemView view) {
     itemViewManagement.setSelectedItemView(view);
   }
 
+  @Override
   public IMenuBar getMenuBar() {
     return menu;
   }

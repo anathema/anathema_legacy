@@ -10,28 +10,34 @@ public class ReflexiveSpecialsEntryModel implements IReflexiveSpecialsEntryModel
   private Integer defenseStep = DEFAULT_DEFENSE_STEP;
   private boolean split = false;
 
+  @Override
   public Integer getSecondaryStep() {
     return defenseStep;
   }
 
+  @Override
   public Integer getPrimaryStep() {
     return step;
   }
 
+  @Override
   public boolean isSplitEnabled() {
     return split;
   }
 
+  @Override
   public void setSplitEnabled(boolean splitEnabled) {
     this.split = splitEnabled;
   }
 
+  @Override
   public void setDefenseStep(Integer newValue) {
     if (split) {
       this.defenseStep = newValue;
     }
   }
 
+  @Override
   public void setStep(Integer newValue) {
     this.step = newValue;
   }

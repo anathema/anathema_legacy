@@ -36,10 +36,12 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
     this.button = new SVGButton(nodeWidth, label);
   }
 
+  @Override
   public String getNodeId() {
     return display.getNodeId();
   }
 
+  @Override
   public SVGGElement initGui(final SVGOMDocument svgDocument, final IBoundsCalculator boundsCalculator) {
     this.outerGroupElement = (SVGGElement) svgDocument.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
@@ -64,6 +66,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
 
   private EventListener createRemoveListener(final IBoundsCalculator boundsCalculator, final SVGGElement buttonGroup) {
     return new EventListener() {
+      @Override
       public void handleEvent(final Event evt) {
         if (!enabled) {
           return;
@@ -84,6 +87,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
 
   private EventListener createDisplayListener() {
     return new EventListener() {
+      @Override
       public void handleEvent(final Event evt) {
         if (!(evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0)) {
           return;
@@ -134,6 +138,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
+  @Override
   public void setVisible(boolean visible) {
     setDisplayVisible(visible);
     if (!visible) {
@@ -152,6 +157,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
     }
   }
 
+  @Override
   public void reset() {
     if (enabled) {
       removeFromView();

@@ -34,6 +34,7 @@ public enum MaterialComposition implements IIdentificate {
     }
   };
 
+  @Override
   public String getId() {
     return name();
   }

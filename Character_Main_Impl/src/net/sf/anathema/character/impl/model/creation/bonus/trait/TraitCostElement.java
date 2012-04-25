@@ -11,10 +11,12 @@ public class TraitCostElement implements ICostElement {
     this.trait = trait;
   }
 
+  @Override
   public int getCalculationValue() {
     return trait.getCalculationValue();
   }
 
+  @Override
   public int getZeroCalculationValue() {
     return trait.getZeroCalculationValue();
   }

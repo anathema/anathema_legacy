@@ -22,6 +22,7 @@ public enum HealthType implements IIdentificate {
     }
   };
 
+  @Override
   public String getId() {
     return name();
   }

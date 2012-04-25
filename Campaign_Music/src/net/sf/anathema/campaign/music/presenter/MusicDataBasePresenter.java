@@ -28,6 +28,7 @@ public class MusicDataBasePresenter implements Presenter {
     this.view = view;
   }
 
+  @Override
   public void initPresentation() {
     IMusicCategorizationProperties categoryProperties = new MusicCategorizationProperties(resources);
     ILibraryControlProperties libraryProperties = new LibraryControlProperties(resources);

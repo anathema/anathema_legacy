@@ -7,6 +7,7 @@ public enum WeaponTag implements IWeaponTag {
   TwoHanded, Armor, BowType, ClinchEnhancer, Disarming, FlameType, LanceType, MartialArts, Natural, Overwhelming,
   Piercing, Reach, SingleShot, Thrown, BowBonuses, FlatDamage, Shield0, Shield1, Shield2, Thrust;
 
+  @Override
   public String getId() {
     return name();
   }

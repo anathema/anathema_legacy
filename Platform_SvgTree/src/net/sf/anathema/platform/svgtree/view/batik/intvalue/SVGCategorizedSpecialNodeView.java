@@ -36,16 +36,19 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
     this.widthInDots = widthInDots;
   }
 
+  @Override
   public String getNodeId() {
     return nodeId;
   }
 
+  @Override
   public void setVisible(final boolean visible) {
     for (SVGIntValueView view : categories) {
       view.setVisible(visible);
     }
   }
 
+  @Override
   public SVGGElement initGui(final SVGOMDocument document, final IBoundsCalculator boundsCalculator) {
     SVGGElement groupElement = (SVGGElement) document.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
@@ -82,12 +85,14 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
     return rectangle;
   }
 
+  @Override
   public IIntValueView addCategory(final String labelText, final int maxValue, final int value) {
     SVGIntValueView view = new SVGIntValueView(maxValue, widthInDots, nodeWidth, nodeColor, labelText, value);
     categories.add(view);
     return view;
   }
 
+  @Override
   public void reset() {
     // Nothing to do
   }

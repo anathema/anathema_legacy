@@ -12,14 +12,17 @@ public abstract class AbstractMultiLearnableCharm implements IMultiLearnableChar
     this.charmId = charmId;
   }
 
+  @Override
   public final String getCharmId() {
     return charmId;
   }
 
+  @Override
   public void accept(ISpecialCharmVisitor visitor) {
     visitor.visitMultiLearnableCharm(this);
   }
   
+  @Override
   public int getMinimumLearnCount(IGenericTraitCollection traitCollection)
   {
 	  return 1;

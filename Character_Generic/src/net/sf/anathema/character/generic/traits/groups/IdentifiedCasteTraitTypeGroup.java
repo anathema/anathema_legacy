@@ -15,10 +15,12 @@ public class IdentifiedCasteTraitTypeGroup extends IdentifiedTraitTypeGroup impl
     this.traitCasteTypes = traitCasteTypes;
   }
 
+  @Override
   public ICasteType getGroupCasteType() {
     return groupCasteType;
   }
   
+  @Override
   public ICasteType[] getTraitCasteTypes(ITraitType traitType)
   {
 	  ITraitType[] types = getAllGroupTypes();

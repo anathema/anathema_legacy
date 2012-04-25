@@ -26,6 +26,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
     this.context = context;
   }
 
+  @Override
   public ICharm[] getCharms(ICharmGroup charmGroup) {
     IBasicCharacterData data = context.getBasicCharacterContext();
     final ICharm[] allCharms = charmGroup.getAllCharms();
@@ -42,6 +43,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
     return charms.toArray(new ICharm[charms.size()]);
   }
 
+  @Override
   public String[] getUncompletedCelestialMartialArtsGroups(ILearningCharmGroup[] groups) {
     Set<String> uncompletedGroups = new HashSet<String>();
     for (ILearningCharmGroup group : groups) {
@@ -56,6 +58,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
     return uncompletedGroups.toArray(new String[uncompletedGroups.size()]);
   }
 
+  @Override
   public final boolean isCelestialMartialArtsGroupCompleted(ILearningCharmGroup[] groups) {
     for (ILearningCharmGroup group : groups) {
       ICharm martialArtsCharm = group.getCoreCharms()[0];

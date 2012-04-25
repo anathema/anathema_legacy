@@ -18,6 +18,7 @@ public class CloseCombatShieldStatsGroup extends AbstractValueEquipmentStatsGrou
     super(resources, "CloseCombatShield"); //$NON-NLS-1$
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IShieldStats shield) {
     PdfPCell cell = TableEncodingUtilities.createContentCellTable(null, getResources().getString("Sheet.Equipment.Header.CloseCombatBonus"), font,
             0f, Rectangle.NO_BORDER, Element.ALIGN_LEFT); //$NON-NLS-1$
@@ -30,6 +31,7 @@ public class CloseCombatShieldStatsGroup extends AbstractValueEquipmentStatsGrou
     }
   }
 
+  @Override
   public int getColumnCount() {
     return 3;
   }

@@ -30,6 +30,7 @@ public class CharmStats extends AbstractCharmStats {
     return details.toArray(new String[details.size()]);
   }
 
+  @Override
   public String getNameString(IResources resources) {
     final StringBuilder nameString = new StringBuilder();
     nameString.append(resources.getString(getMagic().getId()));

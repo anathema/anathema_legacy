@@ -14,14 +14,17 @@ public abstract class AbstractNameStatsGroup<T extends IStats> extends AbstractT
     this.title = resources.getString(getHeaderResourceKey());
   }
 
+  @Override
   public final String getTitle() {
     return title;
   }
 
+  @Override
   public Float[] getColumnWeights() {
     return new Float[]{new Float(6)};
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, T stats) {
     if (stats == null) {
       table.addCell(createTextCell(font, "")); //$NON-NLS-1$

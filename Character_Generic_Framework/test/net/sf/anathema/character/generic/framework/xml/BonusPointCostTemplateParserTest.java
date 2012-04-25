@@ -96,27 +96,33 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     assertCosts7WhenItsUnfavoredMartialArts(costs, testCharm);
     assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
     assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Sidereal;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return false;
       }
 
+      @Override
       public boolean isOccultFavored() {
         return false;
       }
     }));
     assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Sidereal;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return true;
       }
 
+      @Override
       public boolean isOccultFavored() {
         return false;
       }
@@ -130,14 +136,17 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
   private void assertCosts5WhenItsFavoredMartialArts(GenericBonusPointCosts costs, DummyCharm testCharm) {
     assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Celestial;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return true;
       }
 
+      @Override
       public boolean isOccultFavored() {
         return false;
       }
@@ -146,14 +155,17 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
   private void assertCosts5WhenItIsFavored(GenericBonusPointCosts costs, DummyCharm testCharm) {
     assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return null;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return true;
       }
 
+      @Override
       public boolean isOccultFavored() {
         return false;
       }
@@ -162,14 +174,17 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
   private void assertCosts7WhenItsNotFavored(GenericBonusPointCosts costs, DummyCharm testCharm) {
     assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return null;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return false;
       }
 
+      @Override
       public boolean isOccultFavored() {
         return false;
       }
@@ -187,27 +202,33 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     assertCosts7WhenItsUnfavoredMartialArts(costs, testCharm);
     assertCosts5WhenItsFavoredMartialArts(costs, testCharm);
     assertEquals(10, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Sidereal;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return false;
       }
 
+      @Override
       public boolean isOccultFavored() {
         return false;
       }
     }));
     assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Sidereal;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return true;
       }
 
+      @Override
       public boolean isOccultFavored() {
         return false;
       }
@@ -216,14 +237,17 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
   private void assertCosts7WhenItsUnfavoredMartialArts(GenericBonusPointCosts costs, DummyCharm testCharm) {
     assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      @Override
       public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
         return MartialArtsLevel.Celestial;
       }
 
+      @Override
       public boolean isMagicFavored(IMagic magic) {
         return false;
       }
 
+      @Override
       public boolean isOccultFavored() {
         return false;
       }

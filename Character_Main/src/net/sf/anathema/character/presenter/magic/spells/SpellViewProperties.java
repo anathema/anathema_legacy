@@ -27,14 +27,17 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
     this.spellConfiguration = statistics.getSpells();
   }
 
+  @Override
   public String getCircleString() {
     return getResources().getString("CardView.CharmConfiguration.Spells.Circle"); //$NON-NLS-1$
   }
 
+  @Override
   public String getLearnedSpellString() {
     return getResources().getString("CardView.CharmConfiguration.Spells.LearnedSpells"); //$NON-NLS-1$
   }
 
+  @Override
   public ListCellRenderer getAvailableMagicRenderer() {
     return new LegalityCheckListCellRenderer(getResources()) {
       private static final long serialVersionUID = 7840060419690645799L;
@@ -46,28 +49,35 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
     };
   }
 
+  @Override
   public ListCellRenderer getCircleSelectionRenderer() {
     return new IdentificateListCellRenderer(getResources());
   }
 
+  @Override
   public boolean isMagicSelectionAvailable(Object selection) {
     return selection != null && spellConfiguration.isSpellAllowed((ISpell) selection);
   }
 
+  @Override
   public int getAvailableListSelectionMode() {
     return ListSelectionModel.MULTIPLE_INTERVAL_SELECTION;
   }
 
+  @Override
   public String getAddButtonToolTip() {
     return getResources().getString("CardView.CharmConfiguration.Spells.AddToolTip"); //$NON-NLS-1$  
   }
 
+  @Override
   public String getRemoveButtonToolTip() {
     return getResources().getString("CardView.CharmConfiguration.Spells.RemoveToolTip"); //$NON-NLS-1$
   }
 
+  @Override
   public ListSelectionListener getRemoveButtonEnabledListener(final JButton button, final JList list) {
     return new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
         if (enabled && statistics.isExperienced()) {
@@ -84,18 +94,22 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
     };
   }
 
+  @Override
   public String getDetailTitle() {
     return getResources().getString("CardView.CharmConfiguration.Spells.Details.Title"); //$NON-NLS-1$;
   }
 
+  @Override
   public String getCostString() {
     return getResources().getString("CardView.CharmConfiguration.Spells.Cost"); //$NON-NLS-1$
   }
 
+  @Override
   public String getSourceString() {
     return getResources().getString("CardView.CharmConfiguration.Spells.Source"); //$NON-NLS-1$
   }
 
+  @Override
   public String getSelectionTitle() {
     return getResources().getString("CardView.CharmConfiguration.Spells.Selection.Title"); //$NON-NLS-1$
   }

@@ -47,6 +47,7 @@ public class SolarVirtueFlawModel extends VirtueFlawModel implements ISolarVirtu
     return virtueFlaw;
   }
 
+  @Override
   public ITraitType[] getFlawVirtueTypes() {
     List<ITraitType> flawVirtues = new ArrayList<ITraitType>();
     for (VirtueType virtueType : VirtueType.values()) {

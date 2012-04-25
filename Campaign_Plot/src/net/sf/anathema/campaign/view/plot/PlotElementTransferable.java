@@ -25,14 +25,17 @@ public final class PlotElementTransferable implements Transferable {
     this.transferNode = selectedNode;
   }
 
+  @Override
   public DataFlavor[] getTransferDataFlavors() {
     return new DataFlavor[] { FLAVOR };
   }
 
+  @Override
   public boolean isDataFlavorSupported(DataFlavor demandedFlavor) {
     return demandedFlavor.equals(FLAVOR);
   }
 
+  @Override
   public Object getTransferData(DataFlavor flavor) {
     return transferNode;
   }

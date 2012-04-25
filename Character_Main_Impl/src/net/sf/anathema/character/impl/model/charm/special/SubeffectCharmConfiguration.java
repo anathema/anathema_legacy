@@ -31,6 +31,7 @@ public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguratio
     return super.getCurrentLearnCount() > 0 ? 1 : 0;
   }
 
+  @Override
   public int getCreationLearnedSubeffectCount() {
     int count = 0;
     for (ISubeffect subeffect : getEffects()) {
@@ -41,6 +42,7 @@ public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguratio
     return count;
   }
 
+  @Override
   public int getExperienceLearnedSubeffectCount() {
     int count = 0;
     for (ISubeffect subeffect : getEffects()) {
@@ -51,6 +53,7 @@ public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguratio
     return count;
   }
 
+  @Override
   public double getPointCostPerEffect() {
     return pointCost;
   }

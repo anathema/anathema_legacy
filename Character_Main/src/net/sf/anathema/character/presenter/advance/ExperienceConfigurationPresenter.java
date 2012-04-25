@@ -38,37 +38,45 @@ public class ExperienceConfigurationPresenter implements IContentPresenter {
     this.experienceView = experienceView;
   }
 
+  @Override
   public void initPresentation() {
     initTableModel();
     experienceView.addExperienceConfigurationViewListener(new IExperienceConfigurationViewListener() {
+      @Override
       public void removeRequested(int index) {
         experiencePoints.removeEntry(entriesByIndex.get(index));
       }
 
+      @Override
       public void addRequested() {
         experiencePoints.addEntry();
       }
 
+      @Override
       public void selectionChanged(int index) {
         experienceView.setRemoveButtonEnabled(index != -1);
       }
 
     });
     experiencePoints.addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
+      @Override
       public void entryRemoved(IExperiencePointEntry entry) {
         removeFromView(entry);
       }
 
+      @Override
       public void entryAdded(IExperiencePointEntry entry) {
         addToView(entry);
       }
 
+      @Override
       public void entryChanged(IExperiencePointEntry entry) {
         updateView(entry);
       }
     });
     experienceView.initGui(new ExperienceConfigurationViewProperties(resources, tableModel));
     tableModel.addTableModelListener(new TableModelListener() {
+      @Override
       public void tableChanged(TableModelEvent e) {
         if (e.getType() != TableModelEvent.UPDATE) {
           return;
@@ -82,6 +90,7 @@ public class ExperienceConfigurationPresenter implements IContentPresenter {
     updateTotal();
   }
 
+  @Override
   public IViewContent getTabContent() {
     String title = resources.getString("CardView.ExperienceConfiguration.Title");//$NON-NLS-1$
     return new SimpleViewContent(new ContentProperties(title).needsScrollbar(), experienceView);

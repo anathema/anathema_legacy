@@ -20,10 +20,12 @@ public class SimpleCharmSpecialsView implements IDialogComponent, ISimpleCharmSp
     dvView = new ObjectSelectionIntValueView(dvLabel, new DefaultListCellRenderer(), -10);
   }
 
+  @Override
   public void fillInto(JPanel panel, int columnCount) {
     addTo(panel);
   }
 
+  @Override
   public int getColumnCount() {
     return 3;
   }
@@ -35,16 +37,19 @@ public class SimpleCharmSpecialsView implements IDialogComponent, ISimpleCharmSp
     panel.add(dvView.getComponent());
   }
 
+  @Override
   public void setEnabled(boolean enabled) {
     mainLabel.setEnabled(enabled);
     speedView.setEnabled(enabled);
     dvView.setEnabled(enabled);
   }
 
+  @Override
   public void addSpeedValueChangedListener(IIntValueChangedListener listener) {
     speedView.addIntValueChangedListener(listener);
   }
 
+  @Override
   public void addDefenseValueChangedListener(IIntValueChangedListener listener) {
     dvView.addIntValueChangedListener(listener);
   }

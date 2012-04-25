@@ -11,6 +11,7 @@ public class SocialSpeedStatsGroup extends AbstractSocialCombatsValueStatsGroup 
     super(resources, "Speed"); //$NON-NLS-1$
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, ISocialCombatStats stats) {
     if (stats == null) {
       table.addCell(createFinalValueCell(font));
@@ -19,6 +20,7 @@ public class SocialSpeedStatsGroup extends AbstractSocialCombatsValueStatsGroup 
     }
   }
 
+  @Override
   public int getColumnCount() {
     return 1;
   }

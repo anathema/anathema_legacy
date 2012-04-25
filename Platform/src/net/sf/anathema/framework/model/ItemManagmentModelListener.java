@@ -29,6 +29,7 @@ public class ItemManagmentModelListener implements IItemManagementModelListener 
 
   }
 
+  @Override
   public void itemAdded(final IItem item) throws AnathemaException {
     IItemViewFactory viewFactory = viewFactoryRegistry.get(item.getItemType());
     IItemView itemView = viewFactory.createView(item);
@@ -36,6 +37,7 @@ public class ItemManagmentModelListener implements IItemManagementModelListener 
     anathemaView.addItemView(itemView, actionFactory.createAction(item));
   }
 
+  @Override
   public void itemSelected(IItem item) {
     if (item == null) {
       return;
@@ -43,6 +45,7 @@ public class ItemManagmentModelListener implements IItemManagementModelListener 
     anathemaView.setSelectedItemView(mapping.getViewByModel(item));
   }
 
+  @Override
   public void itemRemoved(final IItem item) {
     IItemView view = mapping.getViewByModel(item);
     mapping.removeModelAndView(item, view);

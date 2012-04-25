@@ -20,6 +20,7 @@ public class CasteRangeTraitTemplate extends AbstractTraitTemplate {
     this.casteMinimums = casteRanges;
   }
 
+  @Override
   public int getMinimumValue(ILimitationContext limiationContext) {
     for (ICasteTraitMinimum casteMinimum : casteMinimums) {
       ICasteType casteType = limiationContext.getCasteType();
@@ -30,6 +31,7 @@ public class CasteRangeTraitTemplate extends AbstractTraitTemplate {
     return defaultTemplate.getMinimumValue(limiationContext);
   }
 
+  @Override
   public ITraitLimitation getLimitation() {
     return limitation;
   }

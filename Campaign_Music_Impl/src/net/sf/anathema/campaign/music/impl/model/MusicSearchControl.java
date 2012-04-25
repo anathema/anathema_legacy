@@ -32,10 +32,12 @@ public class MusicSearchControl implements IMusicSearchControl {
     this.musicCategorizationModel = new DbMusicCategorizationModel(persister);
   }
 
+  @Override
   public IMp3Track[] getTracks(String libraryName) {
     return persister.getTracksFromLibrary(libraryName);
   }
 
+  @Override
   public ISearchParameter[] getSearchParameters() {
     return new ISearchParameter[] { new SearchParameter("Music.Labels.TrackDetails.GivenName", "givenName"), //$NON-NLS-1$//$NON-NLS-2$
         new SearchParameter("Music.Labels.TrackDetails.TrackTitle", "title"), //$NON-NLS-1$//$NON-NLS-2$
@@ -44,10 +46,12 @@ public class MusicSearchControl implements IMusicSearchControl {
         new SearchParameter("Music.Labels.TrackDetails.TrackNumber", "track") }; //$NON-NLS-1$//$NON-NLS-2$
   }
 
+  @Override
   public IMp3Track[] getSearchResult() {
     return searchResult == null ? new IMp3Track[0] : searchResult;
   }
 
+  @Override
   public void executeSearch(Map<ISearchParameter, String> constraintsByParameter) {
     List<IExtendedSearchParameter> parameterList = new ArrayList<IExtendedSearchParameter>();
     for (Map.Entry<ISearchParameter, String> keyValue : constraintsByParameter.entrySet()) {
@@ -86,10 +90,12 @@ public class MusicSearchControl implements IMusicSearchControl {
     searchControl.fireChangedEvent();
   }
 
+  @Override
   public void addSearchResultChangedListener(IChangeListener listener) {
     searchControl.addChangeListener(listener);
   }
 
+  @Override
   public IMusicCategorizationModel getMusicCategorizationModel() {
     return musicCategorizationModel;
   }

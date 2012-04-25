@@ -9,14 +9,17 @@ public class MusicCategorizationProperties extends AbstractMusicProperties imple
     super(resources);
   }
 
+  @Override
   public String getThemesString() {
     return getString("Music.Labels.Categorization.Themes"); //$NON-NLS-1$
   }
 
+  @Override
   public String getEventsString() {
     return getString("Music.Labels.Categorization.Events"); //$NON-NLS-1$
   }
 
+  @Override
   public String getMoodsString() {
     return getString("Music.Labels.Categorization.Moods"); //$NON-NLS-1$
   }

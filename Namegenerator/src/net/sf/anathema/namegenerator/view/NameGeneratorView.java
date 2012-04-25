@@ -33,6 +33,7 @@ public class NameGeneratorView implements INameGeneratorView {
   private final ChangeControl generatorListeners = new ChangeControl();
   private final JPanel generateButtonPanel = new JPanel(new GridLayout());
   private final ActionListener generatorButtonListener = new ActionListener() {
+    @Override
     public void actionPerformed(ActionEvent e) {
       generatorListeners.fireChangedEvent();
     }
@@ -50,10 +51,12 @@ public class NameGeneratorView implements INameGeneratorView {
     return panel;
   }
 
+  @Override
   public JComponent getComponent() {
     return content;
   }
 
+  @Override
   public void addNameGeneratorType(String label, JComponent component, Object generatorType) {
     JRadioButton generatorButton = new JRadioButton(label);
     generatorButton.addActionListener(generatorButtonListener);
@@ -67,10 +70,12 @@ public class NameGeneratorView implements INameGeneratorView {
     }
   }
 
+  @Override
   public void setResult(String result) {
     resultTextView.setText(result);
   }
 
+  @Override
   public Object getSelectedGeneratorType() {
     for (JRadioButton button : generatorsByButton.keySet()) {
       if (button.isSelected()) {
@@ -80,14 +85,17 @@ public class NameGeneratorView implements INameGeneratorView {
     return null;
   }
 
+  @Override
   public void addGeneratorTypeChangeListener(IChangeListener listener) {
     generatorListeners.addChangeListener(listener);
   }
 
+  @Override
   public void setSelectedGeneratorType(Object generatorType) {
     buttonsByGenerator.get(generatorType).setSelected(true);
   }
 
+  @Override
   public void addGenerationAction(Action action) {
     generateButtonPanel.add(new JButton(action));
   }

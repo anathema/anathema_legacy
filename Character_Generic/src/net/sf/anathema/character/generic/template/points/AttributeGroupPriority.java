@@ -25,6 +25,7 @@ public enum AttributeGroupPriority implements IIdentificate {
 
   public abstract void accept(IAttributeGroupPriorityVisitor visitor);
 
+  @Override
   public String getId() {
     return name();
   }

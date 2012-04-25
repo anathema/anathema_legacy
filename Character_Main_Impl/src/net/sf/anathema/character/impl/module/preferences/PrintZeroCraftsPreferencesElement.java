@@ -11,6 +11,7 @@ public class PrintZeroCraftsPreferencesElement extends AbstractCheckBoxPreferenc
 
   private boolean printZeroCrafts = CHARACTER_PREFERENCES.getBoolean(PRINT_ZERO_CRAFTS, true);
 
+  @Override
   public void savePreferences() {
     CHARACTER_PREFERENCES.putBoolean(PRINT_ZERO_CRAFTS, printZeroCrafts);
   }
@@ -35,6 +36,7 @@ public class PrintZeroCraftsPreferencesElement extends AbstractCheckBoxPreferenc
     printZeroCrafts = value;
   }
 
+  @Override
   public IIdentificate getCategory() {
     return CHARACTER_CATEGORY;
   }

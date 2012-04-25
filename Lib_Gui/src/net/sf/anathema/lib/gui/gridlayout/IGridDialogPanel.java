@@ -9,5 +9,6 @@ public interface IGridDialogPanel extends IView {
 
   public void add(IDialogComponent component);
 
+  @Override
   public JPanel getComponent();
 }

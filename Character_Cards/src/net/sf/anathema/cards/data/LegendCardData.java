@@ -75,7 +75,8 @@ public class LegendCardData implements ICardData {
 		return null;
 	}
 	
-	public boolean wantsNewPage() {
+	@Override
+    public boolean wantsNewPage() {
 		return newPage;
 	}
 

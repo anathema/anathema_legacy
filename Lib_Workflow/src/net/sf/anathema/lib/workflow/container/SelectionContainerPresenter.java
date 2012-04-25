@@ -21,8 +21,10 @@ public class SelectionContainerPresenter<V> implements Presenter {
     this.arrayFactory = new ArrayFactory<V>(componentType);
   }
 
+  @Override
   public void initPresentation() {
     view.addSelectionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         Object[] selectedValues = view.getSelectedValues();
         V[] valueArray = arrayFactory.createArray(selectedValues.length);
@@ -31,6 +33,7 @@ public class SelectionContainerPresenter<V> implements Presenter {
       }
     });
     model.addChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         V[] values = model.getSelectedValues();
         if (values == null) {

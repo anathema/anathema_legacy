@@ -32,14 +32,17 @@ public class InfernalPatronModel extends AbstractAdditionalModelAdapter implemen
     allYozis = gatherYozis(context);
   }
 
+  @Override
   public String getTemplateId() {
     return template.getId();
   }
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Concept;
   }
 
+  @Override
   public void addCharacterChangeListener(ICharacterChangeListener listener) {
     context.getCharacterListening().addChangeListener(listener);
   }
@@ -58,14 +61,16 @@ public class InfernalPatronModel extends AbstractAdditionalModelAdapter implemen
 		return null;
 	}
 	
-	public void setFavoredYozi(String yozi)
+	@Override
+    public void setFavoredYozi(String yozi)
 	{
 		IFavorableDefaultTrait trait = (IFavorableDefaultTrait) context.getTraitCollection().
 			getTrait(YoziType.valueOf(yozi));
 		trait.getFavorization().setFavored(true);
 	}
 	 
-	 public ICharacterModelContext getContext()
+	 @Override
+     public ICharacterModelContext getContext()
 	 {
 		 return context;
 	 }

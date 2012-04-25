@@ -13,10 +13,12 @@ public class TextPart implements ITextPart {
     this.format = format;
   }
 
+  @Override
   public String getText() {
     return text;
   }
 
+  @Override
   public ITextFormat getFormat() {
     return format;
   }

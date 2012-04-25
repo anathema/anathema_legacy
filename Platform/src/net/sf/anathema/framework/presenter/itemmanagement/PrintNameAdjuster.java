@@ -11,6 +11,7 @@ public class PrintNameAdjuster implements IObjectValueChangedListener<String> {
     this.item = item;
   }
 
+  @Override
   public void valueChanged(String newValue) {
     item.setPrintName(newValue);
   }

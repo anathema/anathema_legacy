@@ -11,6 +11,7 @@ public class PrintZeroBackgroundsPreferencesElement extends AbstractCheckBoxPref
 
   private boolean printZeroBackgrounds = CHARACTER_PREFERENCES.getBoolean(PRINT_ZERO_BACKGROUNDS, true);
 
+  @Override
   public void savePreferences() {
     CHARACTER_PREFERENCES.putBoolean(PRINT_ZERO_BACKGROUNDS, printZeroBackgrounds);
   }
@@ -35,6 +36,7 @@ public class PrintZeroBackgroundsPreferencesElement extends AbstractCheckBoxPref
     printZeroBackgrounds = value;
   }
 
+  @Override
   public IIdentificate getCategory() {
     return CHARACTER_CATEGORY;
   }

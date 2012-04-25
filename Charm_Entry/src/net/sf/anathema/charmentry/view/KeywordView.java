@@ -20,6 +20,7 @@ public class KeywordView implements IKeywordView {
   private final JPanel dataPanel = new JPanel(new GridDialogLayout(5, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
 
+  @Override
   public IButtonControlledObjectSelectionView<IIdentificate> addObjectSelectionView(
       ListCellRenderer renderer,
       String label,
@@ -34,6 +35,7 @@ public class KeywordView implements IKeywordView {
     return view;
   }
 
+  @Override
   public IRemovableEntryView addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
     RemovableStringView view = new RemovableStringView(removeIcon, string);
     view.addContent(entryPanel);
@@ -41,20 +43,24 @@ public class KeywordView implements IKeywordView {
     return view;
   }
 
+  @Override
   public void removeEntryView(IRemovableEntryView removableView) {
     removableView.delete();
   }
 
+  @Override
   public JComponent getContent() {
     contentPanel.add(dataPanel);
     contentPanel.add(entryPanel);
     return contentPanel;
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }
 
+  @Override
   public void requestFocus() {
     // Nothing to do
   }

@@ -9,14 +9,17 @@ public final class RemovableEntryChangeAdapter<T> implements IRemovableEntryList
     this.listener = listener;
   }
 
+  @Override
   public void entryAdded(T entry) {
     listener.changeOccurred();
   }
 
+  @Override
   public void entryAllowed(boolean complete) {
     // nothing to do
   }
 
+  @Override
   public void entryRemoved(T entry) {
     listener.changeOccurred();
   }

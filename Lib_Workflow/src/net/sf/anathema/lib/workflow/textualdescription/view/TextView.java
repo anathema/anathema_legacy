@@ -25,6 +25,7 @@ public class TextView implements ITextView {
     this.textComponent.setDisabledTextColor(Color.DARK_GRAY);
   }
 
+  @Override
   public final void setText(String text) {
     if (ObjectUtilities.equals(textComponent.getText(), text)) {
       return;
@@ -32,6 +33,7 @@ public class TextView implements ITextView {
     textComponent.setText(text == null ? "" : text); //$NON-NLS-1$
   }
 
+  @Override
   public final void addTextChangedListener(final IObjectValueChangedListener<String> listener) {
     textComponent.getDocument().addDocumentListener(new AbstractDocumentListener() {
       @Override
@@ -42,6 +44,7 @@ public class TextView implements ITextView {
     });
   }
 
+  @Override
   public JComponent getComponent() {
     return textComponent;
   }
@@ -50,6 +53,7 @@ public class TextView implements ITextView {
     return textComponent;
   }
 
+  @Override
   public void setEnabled(boolean enabled) {
     textComponent.setEditable(enabled);
     getComponent().setEnabled(enabled);

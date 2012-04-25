@@ -16,10 +16,12 @@ public enum OtherTraitType implements ITraitType {
     }
   };
 
+  @Override
   public String getId() {
     return name();
   }
 
+  @Override
   public abstract void accept(ITraitTypeVisitor visitor);
 
   @Override

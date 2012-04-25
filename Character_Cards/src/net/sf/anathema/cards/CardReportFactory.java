@@ -18,7 +18,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 @ReportFactory
 public class CardReportFactory implements IReportFactory {
-	  public Report[] createReport(IResources resources, IAnathemaModel model) {
+	  @Override
+      public Report[] createReport(IResources resources, IAnathemaModel model) {
 		    List <ICardDataProvider> dataProviders = new ArrayList<ICardDataProvider>();
 		  	dataProviders.add(new CharmCardDataProvider(model, resources));
 		  	dataProviders.add(new SpellCardDataProvider(model, resources));

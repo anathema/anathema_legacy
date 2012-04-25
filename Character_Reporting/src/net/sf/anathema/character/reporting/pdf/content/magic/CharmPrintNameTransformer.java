@@ -12,6 +12,7 @@ public class CharmPrintNameTransformer implements ITransformer<ICharm, String> {
     this.resources = resources;
   }
 
+  @Override
   public String transform(ICharm input) {
     return resources.getString(input.getId());
   }

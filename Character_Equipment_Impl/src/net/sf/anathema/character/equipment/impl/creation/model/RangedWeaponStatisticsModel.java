@@ -13,10 +13,12 @@ public class RangedWeaponStatisticsModel extends OffensiveStatisticsModel implem
 
   private final IIntValueModel rangeModel = new RangedIntValueModel(new Range(1, Integer.MAX_VALUE), 1);
 
+  @Override
   public IIntValueModel getRangeModel() {
     return rangeModel;
   }
 
+  @Override
   public boolean supportsRate() {
     return true;
   }

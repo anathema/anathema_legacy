@@ -86,6 +86,7 @@ public class GuiUtilities extends net.disy.commons.swing.util.GuiUtilities {
 
   public static void revalidate(final Container component) {
     invokeOnEventDispatchThread(new Runnable() {
+      @Override
       public void run() {
         component.invalidate();
         component.validate();

@@ -14,6 +14,7 @@ public class AlotmentSubPresenter implements IOverviewSubPresenter {
     this.setter = new FontParameterSetter(model, view);
   }
 
+  @Override
   public void update() {
     view.setValue(model.getValue());
     view.setAlotment(model.getAlotment());

@@ -30,6 +30,7 @@ public class QualifiedAmountDurationView implements IAmountDurationEntryView {
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(2, false));
   private final ChangeControl control = new ChangeControl();
 
+  @Override
   public IntegerSpinner addRadioButtonSpinner() {
     JRadioButton button = createRadioButton(""); //$NON-NLS-1$
     IntegerSpinner integerSpinner = new IntegerSpinner(1);
@@ -39,12 +40,14 @@ public class QualifiedAmountDurationView implements IAmountDurationEntryView {
     return integerSpinner;
   }
 
+  @Override
   public JComponent getContent() {
     mainPanel.add(panel);
     mainPanel.add(textPanel);
     return mainPanel;
   }
 
+  @Override
   public ObjectSelectionView<ITraitType> addRadioButtonComboBox(
       String label,
       ListCellRenderer renderer,
@@ -62,6 +65,7 @@ public class QualifiedAmountDurationView implements IAmountDurationEntryView {
     group.add(radioButton);
     panel.add(radioButton);
     radioButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         control.fireChangedEvent();
       }
@@ -69,20 +73,24 @@ public class QualifiedAmountDurationView implements IAmountDurationEntryView {
     return radioButton;
   }
 
+  @Override
   public ITextView addTextView() {
     LineTextView lineTextView = new LineTextView(15);
     textPanel.add(lineTextView.getComponent());
     return lineTextView;
   }
 
+  @Override
   public void addTypeChangeListener(IChangeListener changeListener) {
     control.addChangeListener(changeListener);
   }
 
+  @Override
   public void requestFocus() {
     // nothing to do;
   }
 
+  @Override
   public void dispose() {
     // nothing to do;
   }

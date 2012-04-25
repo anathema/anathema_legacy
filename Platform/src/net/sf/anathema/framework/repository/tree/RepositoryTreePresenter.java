@@ -39,16 +39,19 @@ public class RepositoryTreePresenter implements Presenter {
         + "]", true); //$NON-NLS-1$
     this.treeModel = new DefaultTreeModel(root);
     repositoryModel.addRepositoryTreeModelListener(new IRepositoryTreeModelListener() {
+      @Override
       public void printNameFileAdded(PrintNameFile file) {
         addPrintNameFileToTree(file);
       }
 
+      @Override
       public void printNameFileRemoved(PrintNameFile file) {
         removePrintNameFileFromTree(file);
       }
     });
   }
 
+  @Override
   public void initPresentation() {
     for (IItemType type : repositoryModel.getAllItemTypes()) {
       if (type.supportsRepository()) {
@@ -65,6 +68,7 @@ public class RepositoryTreePresenter implements Presenter {
     tree.getSelectionModel().setSelectionMode(TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
     tree.setCellRenderer(renderer);
     tree.addTreeSelectionListener(new TreeSelectionListener() {
+      @Override
       public void valueChanged(TreeSelectionEvent e) {
         DefaultMutableTreeNode[] nodes = TreeUtilities.getSelectedHierachyNodes(tree);
         if (nodes.length == 0) {
@@ -75,6 +79,7 @@ public class RepositoryTreePresenter implements Presenter {
               nodes,
               Object.class,
               new ITransformer<DefaultMutableTreeNode, Object>() {
+                @Override
                 public Object transform(DefaultMutableTreeNode input) {
                   return input.getUserObject();
                 }

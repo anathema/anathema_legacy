@@ -20,6 +20,7 @@ public class MouseWheelMagnifyListener implements MouseWheelListener {
   
   
 
+  @Override
   public void mouseWheelMoved(MouseWheelEvent event) {
     JGVTComponent component = (JGVTComponent) event.getSource();
     double scale = 1 - 0.2 * event.getWheelRotation();

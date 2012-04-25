@@ -50,6 +50,7 @@ public class RepositoryFolderCreatorTest {
 
   private File createRepositoryFolder(final String repositoryPath) throws RepositoryException {
     return new RepositoryFolderCreator(dummyFileSystemAbstraction, new IStringResolver() {
+      @Override
       public String resolve() {
         return repositoryPath;
       }

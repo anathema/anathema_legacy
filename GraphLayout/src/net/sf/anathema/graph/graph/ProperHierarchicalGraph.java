@@ -18,6 +18,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
   private final ISimpleNode[] allNodes;
   private final IGraphType type;
 
+  @Override
   public IGraphType getType() {
     return type;
   }
@@ -89,14 +90,17 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     return true;
   }
 
+  @Override
   public ISimpleNode[] getNodesByLayer(final int layer) {
     return nodesByLayer.get(layer).toArray(new ISimpleNode[0]);
   }
 
+  @Override
   public int getDeepestLayer() {
     return deepestLayer;
   }
 
+  @Override
   public void setNewLayerOrder(final int layer, final ISimpleNode[] orderedNodes) {
     List<ISimpleNode> layerNodes = nodesByLayer.get(layer);
     boolean equalSize = layerNodes.size() == orderedNodes.length;
@@ -114,6 +118,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     }
   }
 
+  @Override
   public int calculateNumberOfCrossings(final int upperLayerIndex) {
     ISimpleNode[] upperLayer = getNodesByLayer(upperLayerIndex);
     ISimpleNode[] lowerLayer = getNodesByLayer(upperLayerIndex + 1);
@@ -135,6 +140,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     return crossCount;
   }
 
+  @Override
   public int calculateTotalNumberOfCrossings() {
     int crossCount = 0;
     for (int upperLayerIndex = 1; upperLayerIndex < getDeepestLayer(); upperLayerIndex++) {
@@ -156,6 +162,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     return clone;
   }
 
+  @Override
   public boolean containsRoot(final int layer) {
     for (ISimpleNode node : getNodesByLayer(layer)) {
       if (node.isRootNode()) {

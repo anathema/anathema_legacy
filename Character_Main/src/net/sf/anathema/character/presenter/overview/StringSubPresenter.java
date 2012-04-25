@@ -17,6 +17,7 @@ public class StringSubPresenter implements IOverviewSubPresenter {
     this.resources = resources;
   }
 
+  @Override
   public void update() {
     String value = model.getValue();
     boolean nullOrEmptyValue = StringUtilities.isNullOrEmpty(value);

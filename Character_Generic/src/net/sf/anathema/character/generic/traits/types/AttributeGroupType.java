@@ -6,6 +6,7 @@ public enum AttributeGroupType implements IIdentificate {
 
   Physical, Social, Mental;
 
+  @Override
   public String getId() {
     return name();
   }

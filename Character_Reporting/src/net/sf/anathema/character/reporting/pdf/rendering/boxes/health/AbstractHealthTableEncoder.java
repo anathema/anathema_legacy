@@ -26,6 +26,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
     this.resources = resources;
   }
 
+  @Override
   public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     PdfPTable table = createTable(graphics, session);
     table.setWidthPercentage(100);
@@ -182,6 +183,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
     return graphics.createTableFont();
   }
 
+  @Override
   public boolean hasContent(ReportSession session) {
     return true;
   }

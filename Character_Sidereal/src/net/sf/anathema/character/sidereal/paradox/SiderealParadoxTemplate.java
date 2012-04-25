@@ -6,6 +6,7 @@ public class SiderealParadoxTemplate implements IAdditionalTemplate {
 
   public static final String ID = "Sidereal.Paradox.Template"; //$NON-NLS-1$
 
+  @Override
   public String getId() {
     return ID;
   }

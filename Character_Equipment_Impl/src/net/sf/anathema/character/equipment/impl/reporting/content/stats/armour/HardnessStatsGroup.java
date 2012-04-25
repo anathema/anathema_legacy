@@ -13,10 +13,12 @@ public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour
     super(resources, "Hardness"); //$NON-NLS-1$
   }
 
+  @Override
   public int getColumnCount() {
     return 2;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IArmourStats armour) {
     if (armour == null) {
       table.addCell(createEmptyValueCell(font));
@@ -27,6 +29,7 @@ public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour
     }
   }
 
+  @Override
   public void addTotal(PdfPTable table, Font font, IArmourStats armour) {
     table.addCell(createFinalValueCell(font, armour.getHardness(HealthType.Bashing)));
     table.addCell(createFinalValueCell(font, armour.getHardness(HealthType.Lethal)));

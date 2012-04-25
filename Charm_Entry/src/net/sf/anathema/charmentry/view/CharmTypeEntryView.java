@@ -17,10 +17,12 @@ public class CharmTypeEntryView implements ICharmTypeEntryView {
   private final StandardPanelBuilder builder = new StandardPanelBuilder();
   private JComponent content;
 
+  @Override
   public IObjectSelectionView<CharmType> addComboBoxRow(String typeLabel, ListCellRenderer renderer, CharmType[] objects) {
     return builder.addObjectSelectionView(typeLabel, renderer, objects);
   }
 
+  @Override
   public JComponent getContent() {
     if (content == null) {
       content = builder.getUntitledContent();
@@ -28,21 +30,26 @@ public class CharmTypeEntryView implements ICharmTypeEntryView {
     return content;
   }
 
+  @Override
   public void requestFocus() {
     // Nothing to do
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }
 
+  @Override
   public JToggleButton addCheckBoxRow(String label) {
     final JCheckBox box = new JCheckBox(label);
     builder.addDialogComponent(new IDialogComponent() {
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(box);
       }
 
+      @Override
       public int getColumnCount() {
         return 1;
       }

@@ -22,26 +22,32 @@ public class AlternateRequirementTraitTemplate extends AlternateRequirementTrait
     this.zeroValue = zeroValue;
   }
 
+  @Override
   public int getZeroLevelValue() {
     return zeroValue;
   }
 
+  @Override
   public int getStartValue() {
     return startValue;
   }
 
+  @Override
   public LowerableState getLowerableState() {
     return LowerableState.Default;
   }
 
+  @Override
   public ITraitLimitation getLimitation() {
     return limitation;
   }
 
+  @Override
   public boolean isRequiredFavored() {
     return false;
   }
   
+  @Override
   public String getTag()
   {
 	  return null;

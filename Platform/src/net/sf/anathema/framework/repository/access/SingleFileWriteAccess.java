@@ -15,6 +15,7 @@ public class SingleFileWriteAccess implements IRepositoryWriteAccess {
     this.repositoryFile = repositoryfile;
   }
 
+  @Override
   public OutputStream createMainOutputStream() throws RepositoryException {
     try {
       return new FileOutputStream(repositoryFile);
@@ -24,6 +25,7 @@ public class SingleFileWriteAccess implements IRepositoryWriteAccess {
     }
   }
 
+  @Override
   public OutputStream createSubOutputStream(String streamID) throws RepositoryException {
     throw new UnsupportedOperationException();
   }

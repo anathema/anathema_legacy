@@ -15,6 +15,7 @@ public class ExperiencePointEntry implements IExperiencePointEntry {
 
   public ExperiencePointEntry() {
     description.addTextChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         fireChangeEvent();
       }
@@ -23,16 +24,19 @@ public class ExperiencePointEntry implements IExperiencePointEntry {
 
   private void fireChangeEvent() {
     changeControl.forAllDo(new IClosure<IObjectValueChangedListener<IExperiencePointEntry>>() {
+      @Override
       public void execute(IObjectValueChangedListener<IExperiencePointEntry> input) {
         input.valueChanged(ExperiencePointEntry.this);
       }
     });
   }
 
+  @Override
   public int getExperiencePoints() {
     return experiencePoints;
   }
 
+  @Override
   public void setExperiencePoints(int value) {
     if (experiencePoints == value) {
       return;
@@ -41,14 +45,17 @@ public class ExperiencePointEntry implements IExperiencePointEntry {
     fireChangeEvent();
   }
 
+  @Override
   public ITextualDescription getTextualDescription() {
     return description;
   }
 
+  @Override
   public void addChangeListener(IObjectValueChangedListener<IExperiencePointEntry> listener) {
     changeControl.addListener(listener);
   }
 
+  @Override
   public void removeChangeListener(IObjectValueChangedListener<IExperiencePointEntry> listener) {
     changeControl.removeListener(listener);
   }

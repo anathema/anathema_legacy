@@ -20,14 +20,17 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     this.willpowerMultiplier = willpowerMultiplier;
   }
 
+  @Override
   public int getEssenceMultiplier() {
     return essenceMultiplier;
   }
 
+  @Override
   public int getWillpowerMultiplier() {
     return willpowerMultiplier;
   }
 
+  @Override
   public FactorizedTrait[] createVirtueFactorizedTrait(IGenericTrait[] virtues) {
     List<FactorizedTrait> traits = new ArrayList<FactorizedTrait>();
     for (IVirtuePoolPart part : virtuePoolParts) {

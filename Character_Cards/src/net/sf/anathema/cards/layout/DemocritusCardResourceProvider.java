@@ -60,47 +60,58 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 		return resources.getString(id);
 	}
 	
-	public Image getCardBaseImage() {
+	@Override
+    public Image getCardBaseImage() {
 		return getImage(basePath + cardBackground);
 	}
 	
-	public Image getCardStatBlockImage() {
+	@Override
+    public Image getCardStatBlockImage() {
 		return getImage(basePath + cardStatBlock);
 	}
 	
-	public Image getCardBodyBlockImage() {
+	@Override
+    public Image getCardBodyBlockImage() {
 		return getImage(basePath + cardBodyBlock);
 	}
 	
-	public Image getCardIconBlockImage() {
+	@Override
+    public Image getCardIconBlockImage() {
 		return getImage(basePath + cardIconBlock);
 	}
 	
-	public Image getCardIconShadowImage() {
+	@Override
+    public Image getCardIconShadowImage() {
 		return getImage(basePath + cardIconShadow);
 	}
 	
-	public Image getCharacterIcon(ICharacterType type) {
+	@Override
+    public Image getCharacterIcon(ICharacterType type) {
 		return getImage(characterPath + type.getId() + ".png");
 	}
 	
-	public Image getTraitIcon(ITraitType trait) {
+	@Override
+    public Image getTraitIcon(ITraitType trait) {
 		return getImage(traitPath + trait.getId() + ".png");
 	}
 	
-	public Image getSpellIcon(CircleType circle) {
+	@Override
+    public Image getSpellIcon(CircleType circle) {
 		return getImage(spellPath + circle.getId() + ".png");
 	}
 	
-	public Image getMartialArtLevelIcon(MartialArtsLevel level) {
+	@Override
+    public Image getMartialArtLevelIcon(MartialArtsLevel level) {
 		return getImage(martialArtLevelPath + level.getId() + ".png");
 	}
 	
-	public Image getMartialArtIcon(String groupId) {
+	@Override
+    public Image getMartialArtIcon(String groupId) {
 		return getImage(martialArtPath + groupId + ".png");
 	}
 	
-	public Image getNullIcon() {
+	@Override
+    public Image getNullIcon() {
 		return getImage(nullIcon);
 	}
 	
@@ -128,27 +139,33 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 		}
 	}
 	
-	public Font getTitleFont() {
+	@Override
+    public Font getTitleFont() {
 		return TITLE_FONT;
 	}
 	
-	public Font getBoldFont() {
+	@Override
+    public Font getBoldFont() {
 		return BOLD_FONT;
 	}
 	
-	public Font getNormalFont() {
+	@Override
+    public Font getNormalFont() {
 		return NORMAL_FONT;
 	}
 	
-	public Font getSymbolFont() {
+	@Override
+    public Font getSymbolFont() {
 		return SYMBOL_FONT;
 	}
 	
-	public Font getKeywordFont() {
+	@Override
+    public Font getKeywordFont() {
 		return KEYWORD_FONT;
 	}
 	
-	public Font getSourceFont() {
+	@Override
+    public Font getSourceFont() {
 		return SOURCE_FONT;
 	}
 }

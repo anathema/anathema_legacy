@@ -15,14 +15,17 @@ public class RepositoryMessagingPresenter implements Presenter {
     this.messaging = messaging;
   }
 
+  @Override
   public void initPresentation() {
     repositoryTreeModel.addRepositoryTreeModelListener(new IRepositoryTreeModelListener() {
+      @Override
       public void printNameFileAdded(PrintNameFile file) {
         messaging.addMessage("AnathemaCore.Tools.RepositoryView.ItemAddedMessage", //$NON-NLS-1$
             MessageType.INFORMATION,
             file.getPrintName());
       }
 
+      @Override
       public void printNameFileRemoved(PrintNameFile file) {
         messaging.addMessage("AnathemaCore.Tools.RepositoryView.ItemRemovedMessage", //$NON-NLS-1$
             MessageType.INFORMATION,

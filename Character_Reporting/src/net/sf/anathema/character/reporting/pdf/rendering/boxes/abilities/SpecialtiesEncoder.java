@@ -25,6 +25,7 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
     this.specialtyCount = specialtyCount;
   }
 
+  @Override
   public float encode(SheetGraphics graphics, ReportSession session, Position position, float width, float height) {
     IGenericCharacter character = session.getCharacter();
     String title = getResources().getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$

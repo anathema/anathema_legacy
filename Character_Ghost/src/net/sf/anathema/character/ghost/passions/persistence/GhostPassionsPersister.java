@@ -21,6 +21,7 @@ public class GhostPassionsPersister implements IAdditionalPersister {
   private static final String ATTRIB_VIRTUE = "virtue";
   private final TraitPersister persister = new TraitPersister();
 
+  @Override
   public void save(Element parent, IAdditionalModel model)
   {
 	  IGhostPassionsModel passionsModel = (IGhostPassionsModel) model;
@@ -33,6 +34,7 @@ public class GhostPassionsPersister implements IAdditionalPersister {
 	    }
   }
 
+  @Override
   public void load(Element parent, IAdditionalModel model) throws PersistenceException
   {
 	  IGhostPassionsModel passionsModel = (IGhostPassionsModel) model;

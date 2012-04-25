@@ -15,6 +15,7 @@ public class EquipmentDatabaseItemView extends AbstractItemView {
     this.view = view;
   }
 
+  @Override
   public JComponent getComponent() {
     return view.getComponent();
   }

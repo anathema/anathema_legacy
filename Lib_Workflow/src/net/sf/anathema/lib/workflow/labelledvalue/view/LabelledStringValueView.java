@@ -30,16 +30,19 @@ public class LabelledStringValueView implements IValueView<String> {
     panel.add(valueLabel, textData);
   }
 
+  @Override
   public void setTextColor(Color color) {
     titleLabel.setForeground(color);
     valueLabel.setForeground(color);
   }
 
+  @Override
   public void setFontStyle(int style) {
     titleLabel.setFont(titleLabel.getFont().deriveFont(style));
     valueLabel.setFont(valueLabel.getFont().deriveFont(style));
   }
 
+  @Override
   public void setValue(String value) {
     valueLabel.setText(value);
   }

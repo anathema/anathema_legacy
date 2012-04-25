@@ -45,14 +45,17 @@ public class CharmTypeWriterTest {
   public void testSimpleSpecialsModel() throws Exception {
     charm.setCharmType(CharmType.Simple);
     ISimpleSpecialsModel model = new ISimpleSpecialsModel() {
+      @Override
       public int getSpeed() {
         return 5;
       }
 
+      @Override
       public TurnType getTurnType() {
         return TurnType.Tick;
       }
 
+      @Override
       public int getDefenseModifier() {
         return -1;
       }
@@ -70,14 +73,17 @@ public class CharmTypeWriterTest {
   public void testReflexiveSpecialsModel() throws Exception {
     charm.setCharmType(CharmType.Reflexive);
     ITypeSpecialsModel model = new IReflexiveSpecialsModel() {
+      @Override
       public Integer getPrimaryStep() {
         return 5;
       }
 
+      @Override
       public Integer getSecondaryStep() {
         return null;
       }
 
+      @Override
       public boolean isSplitEnabled() {
         return false;
       }
@@ -94,14 +100,17 @@ public class CharmTypeWriterTest {
   public void testSplitReflexiveSpecialsModel() throws Exception {
     charm.setCharmType(CharmType.Reflexive);
     ITypeSpecialsModel model = new IReflexiveSpecialsModel() {
+      @Override
       public Integer getPrimaryStep() {
         return 3;
       }
 
+      @Override
       public Integer getSecondaryStep() {
         return 4;
       }
 
+      @Override
       public boolean isSplitEnabled() {
         return true;
       }

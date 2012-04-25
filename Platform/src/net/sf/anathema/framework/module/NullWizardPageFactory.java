@@ -6,14 +6,17 @@ import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public class NullWizardPageFactory implements IWizardFactory {
 
+  @Override
   public IAnathemaWizardPage createPage(IAnathemaWizardModelTemplate template) {
     return null;
   }
 
+  @Override
   public IAnathemaWizardModelTemplate createTemplate() {
     return null;
   }
 
+  @Override
   public boolean needsFurtherDetails() {
     return false;
   }

@@ -30,6 +30,7 @@ public class VirtueFlawPresenter implements Presenter {
     this.model = model;
   }
 
+  @Override
   public void initPresentation() {
     initBasicPresentation();
     initAdditionalPresentation();
@@ -87,11 +88,13 @@ public class VirtueFlawPresenter implements Presenter {
           }
         });
     virtueFlaw.addRootChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         rootView.setSelectedObject(virtueFlaw.getRoot());
       }
     });
     rootView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ITraitType>() {
+      @Override
       public void valueChanged(ITraitType newValue) {
         virtueFlaw.setRoot(newValue);
       }
@@ -119,6 +122,7 @@ public class VirtueFlawPresenter implements Presenter {
 
   protected void initChangeableListening() {
     model.addVirtueFlawChangableListener(new IBooleanValueChangedListener() {
+      @Override
       public void valueChanged(boolean newValue) {
         view.setEnabled(newValue);
       }

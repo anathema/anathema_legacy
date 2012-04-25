@@ -55,6 +55,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     this.standardMartialArtsLevel = martialArtsLevel;
   }
 
+  @Override
   public GenericBonusPointCosts parseTemplate(Element element) throws PersistenceException {
     GenericBonusPointCosts costs = getBasicTemplate(element);
     setAttributeCost(element, costs);

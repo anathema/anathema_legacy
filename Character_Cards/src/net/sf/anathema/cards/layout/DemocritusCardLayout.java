@@ -152,7 +152,8 @@ public class DemocritusCardLayout extends AbstractCardLayout {
 	    writeText(card.getPdfContent(), rect, new Phrase(card.getData().getSource(), provider.getSourceFont()));
 	}
 	
-	protected void adjustContentImage(Image image) {
+	@Override
+    protected void adjustContentImage(Image image) {
 		image.scalePercent(scale * 100);
 	}
 	

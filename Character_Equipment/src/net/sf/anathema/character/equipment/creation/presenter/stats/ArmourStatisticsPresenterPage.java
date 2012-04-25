@@ -50,6 +50,7 @@ public class ArmourStatisticsPresenterPage extends
     final IIntValueModel aggravatedSoakModel = getPageModel().getSoakModel(HealthType.Aggravated);
     final JComponent aggravatedSoakSpinner = initIntegerSpinner(aggravatedSoakModel).getComponent();
     getPageContent().addDialogComponent(new IDialogComponent() {
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(new JLabel(getProperties().getAggravatedSoakLabel()));
         panel.add(aggravatedSoakSpinner, GridDialogLayoutData.FILL_HORIZONTAL);
@@ -59,6 +60,7 @@ public class ArmourStatisticsPresenterPage extends
         panel.add(internalPanel, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount - 2));
       }
 
+      @Override
       public int getColumnCount() {
         return 4;
       }
@@ -69,6 +71,7 @@ public class ArmourStatisticsPresenterPage extends
             initIntegerSpinner(getPageModel().getMobilityPenaltyModel()).getComponent(),
             initIntegerSpinner(getPageModel().getFatigueModel()).getComponent() });
     linkToggleButton.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         boolean isLinkToggled = !linkToggleButton.isSelected();
         if (isLinkToggled) {
@@ -82,6 +85,7 @@ public class ArmourStatisticsPresenterPage extends
     linkToggleButton.setSelected(linked);
     aggravatedSoakSpinner.setEnabled(!linked);
     lethalSoakModel.addIntValueChangeListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         if (linkToggleButton.isSelected()) {
           aggravatedSoakModel.setValue(lethalSoakModel.getValue());

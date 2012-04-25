@@ -25,6 +25,7 @@ public final class DummyCharmContext implements ICharmContext {
     return character;
   }
 
+  @Override
   public ICharmLearnStrategy getCharmLearnStrategy() {
     return learnStrategy;
   }

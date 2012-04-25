@@ -18,27 +18,33 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   private boolean isFreebie;
   private String tag;
   
+  @Override
   public String getTag()
   {
 	return tag;
   }
 
+  @Override
   public ITraitLimitation getLimitation() {
     return limitation;
   }
 
+  @Override
   public LowerableState getLowerableState() {
     return lowerableState;
   }
 
+  @Override
   public int getStartValue() {
     return startValue;
   }
 
+  @Override
   public int getZeroLevelValue() {
     return zeroLevelValue;
   }
 
+  @Override
   public int getMinimumValue(ILimitationContext limitationContext) {
     return minimumValue;
   }
@@ -73,6 +79,7 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
     this.isRequiredFavored = isRequiredFavored;
   }
 
+  @Override
   public boolean isRequiredFavored() {
     return isRequiredFavored;
   }
@@ -87,6 +94,7 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
 	  this.tag = tag;
   }
   
+  @Override
   public int getCalculationMinValue(ILimitationContext context, ITraitType type)
   {
 	  return isFreebie ? getMinimumValue(context) : 0;

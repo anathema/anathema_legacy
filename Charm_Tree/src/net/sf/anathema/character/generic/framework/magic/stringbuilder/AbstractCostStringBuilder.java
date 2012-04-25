@@ -17,6 +17,7 @@ public abstract class AbstractCostStringBuilder<T extends ICost> implements ICos
     this.pluralKey = pluralKey;
   }
 
+  @Override
   public String getCostString(T cost) {
     String value = cost.getCost();
     String text = cost.getText();

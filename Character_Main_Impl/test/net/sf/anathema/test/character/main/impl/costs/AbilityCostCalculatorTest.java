@@ -24,18 +24,22 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     private final ICurrentRatingCosts defaultCosts = new FixedValueRatingCosts(2);
     private final ICurrentRatingCosts favoredCosts = new FixedValueRatingCosts(1);
 
+    @Override
     public ICurrentRatingCosts getAbilityCosts(boolean favored) {
       return favored ? favoredCosts : defaultCosts;
     }
 
+    @Override
     public int getDefaultSpecialtyDotsPerPoint() {
       return 1;
     }
 
+    @Override
     public int getFavoredSpecialtyDotsPerPoint() {
       return 2;
     }
 
+    @Override
     public int getMaximumFreeAbilityRank() {
       return 3;
     }

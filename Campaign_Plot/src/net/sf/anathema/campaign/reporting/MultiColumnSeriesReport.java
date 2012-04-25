@@ -36,6 +36,7 @@ public class MultiColumnSeriesReport extends AbstractPdfReport {
     this.resources = resources;
   }
 
+  @Override
   public void performPrint(IItem item, final Document document, final PdfWriter writer) throws ReportException {
     if (!supports(item)) {
       throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
@@ -177,6 +178,7 @@ public class MultiColumnSeriesReport extends AbstractPdfReport {
     return contentParagraph;
   }
 
+  @Override
   public boolean supports(IItem item) {
     return item != null && item.getItemData() instanceof ISeries;
   }

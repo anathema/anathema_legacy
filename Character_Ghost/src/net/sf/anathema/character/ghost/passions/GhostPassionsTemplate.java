@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 public class GhostPassionsTemplate implements IAdditionalTemplate {
   public static final String ID = "Ghost.Passions.Template"; //$NON-NLS-1$
 
+  @Override
   public String getId() {
     return ID;
   }

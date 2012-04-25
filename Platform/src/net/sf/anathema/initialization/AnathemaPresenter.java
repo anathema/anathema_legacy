@@ -52,6 +52,7 @@ public class AnathemaPresenter {
 
   private void init(final IAnathemaMessageContainer messageContainer) {
     messageContainer.addChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         view.getStatusBar().setLatestMessage(messageContainer.getLatestMessage());
       }

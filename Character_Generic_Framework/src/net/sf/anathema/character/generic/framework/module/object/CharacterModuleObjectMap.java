@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.framework.module.ICharacterModule;
 public class CharacterModuleObjectMap implements ICharacterModuleObjectMap {
   private final Map<Class< ? extends ICharacterModule< ? >>, ICharacterModuleObject> moduleObjects = new HashMap<Class< ? extends ICharacterModule< ? >>, ICharacterModuleObject>();
 
+  @Override
   @SuppressWarnings("unchecked")
   public <T extends ICharacterModuleObject> T getModuleObject(Class< ? extends ICharacterModule<T>> moduleClass) {
     Ensure.ensureArgumentTrue("Must implement ICoreModule", ICharacterModule.class //$NON-NLS-1$

@@ -8,6 +8,7 @@ import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 
 public class LunarHeartsBloodParser implements IAdditionalTemplateParser {
 
+  @Override
   public IAdditionalTemplate parse(Element element) {
     return new HeartsBloodTemplate();
   }

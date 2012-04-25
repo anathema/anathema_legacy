@@ -30,6 +30,7 @@ public enum AttributeType implements ITraitType {
     this.groupType = groupType;
   }
 
+  @Override
   public String getId() {
     return name();
   }
@@ -38,6 +39,7 @@ public enum AttributeType implements ITraitType {
     return groupType;
   }
 
+  @Override
   public void accept(ITraitTypeVisitor visitor) {
     visitor.visitAttribute(this);
   }

@@ -16,14 +16,17 @@ public class ProxyCharmLearnStrategy implements ICharmLearnStrategy {
     this.strategy = strategy;
   }
 
+  @Override
   public boolean isUnlearnable(IBasicLearnCharmGroup group, ICharm charm) {
     return strategy.isUnlearnable(group, charm);
   }
 
+  @Override
   public boolean isLearned(IBasicLearnCharmGroup group, ICharm charm) {
     return strategy.isLearned(group, charm);
   }
 
+  @Override
   public void toggleLearned(IBasicLearnCharmGroup group, ICharm charm) {
     strategy.toggleLearned(group, charm);
   }

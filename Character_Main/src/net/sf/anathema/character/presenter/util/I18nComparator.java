@@ -15,6 +15,7 @@ public class I18nComparator implements Comparator<IIdentificate> {
     this.resourceKeyPrefix = resourceKeyPrefix;
   }
 
+  @Override
   public int compare(IIdentificate identificate1, IIdentificate identificate2) {
     String firstDescription = resources.getString(resourceKeyPrefix + identificate1.getId());
     String secondDescription = resources.getString(resourceKeyPrefix + identificate2.getId());

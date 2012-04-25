@@ -7,6 +7,7 @@ import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 
 public class HeartsBloodPersisterFactory implements IAdditionalPersisterFactory {
 
+  @Override
   public IAdditionalPersister createPersister(IAnathemaMessaging messaging) {
     return new HeartsBloodPersister();
   }

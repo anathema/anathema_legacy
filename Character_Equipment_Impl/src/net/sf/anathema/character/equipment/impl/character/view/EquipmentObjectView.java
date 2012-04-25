@@ -28,15 +28,18 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
     taskGroup.add(descriptionLabel);
   }
 
+  @Override
   public void setItemTitle(String title) {
     taskGroup.setTitle(title);
   }
 
+  @Override
   public void setItemDescription(String text) {
     descriptionLabel.setText(text);
     GuiUtilities.revalidate(taskGroup);
   }
   
+  @Override
   public void clearContents() {
 	  taskGroup.removeAll();
 	  boxes.clear();
@@ -44,6 +47,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
 	  taskGroup.add(descriptionLabel);
   }
 
+  @Override
   public BooleanModel addStats(String description) {
     BooleanModel isSelectedModel = new BooleanModel();
     JCheckBox box = ActionWidgetFactory.createCheckBox(new SmartToggleAction(isSelectedModel, description.replaceAll( "&", "&&" )));
@@ -60,6 +64,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
     return isSelectedModel;
   }
   
+  @Override
   public BooleanModel addOptionFlag(BooleanModel base, String description) {
 	BooleanModel isSelectedModel = new BooleanModel();
 	JPanel basePanel = boxPanels.get(base);
@@ -75,20 +80,24 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
 	return isSelectedModel;
   }
   
+  @Override
   public void updateStatText(BooleanModel model, String newText)
   {
 	  boxes.get(model).setText(newText);
   }
   
+  @Override
   public void setEnabled(BooleanModel model, boolean enabled)
   {
 	  boxes.get(model).setEnabled(enabled);
   }
 
+  @Override
   public JXTaskPane getTaskGroup() {
     return taskGroup;
   }
 
+  @Override
   public void addAction(Action action) {
     taskGroup.add(action);
   }

@@ -31,6 +31,7 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
   private final JPanel content = new JPanel(new GridDialogLayout(3, false));
   private final List<JPanel> buttonPanels = new ArrayList<JPanel>();
   
+  @Override
   public void addBlankLine() {
     GridDialogLayoutData lineLayout = new GridDialogLayoutData();
     lineLayout.setGrabExcessHorizontalSpace(true);
@@ -38,6 +39,7 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
     content.add(new JPanel(), lineLayout);
   }
   
+  @Override
   public ITextView[] addFieldsView(final String[] labelText) {
     ITextView[] textView = new ITextView[labelText.length];
     for (int i = 0; i < textView.length; i++) {
@@ -46,10 +48,12 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
     return addTextViews(labelText, textView);
   }
 
+  @Override
   public ITextView addLineView(final String labelText) {
     return addTextView(labelText, new LineTextView(TEXT_COLUMNS));
   }
 
+  @Override
   public ITextView addAreaView(final String labelText, int rows) {
     return addTextView(labelText, new AreaTextView(rows, TEXT_COLUMNS));
   }
@@ -107,10 +111,12 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
     return textView;
   }
 
+  @Override
   public void addEditAction(SmartAction action, int row) {
     buttonPanels.get(row).add(ToolBarUtilities.createToolBarButton(action));
   }
 
+  @Override
   public JComponent getComponent() {
     return content;
   }

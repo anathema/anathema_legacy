@@ -10,6 +10,7 @@ public class InfernalPatronViewProperties implements IInfernalPatronViewProperti
     this.resources = resources;
   }
 
+  @Override
   public String getCollegeString() {
     return resources.getString("InfernalPatron.Overview.Title"); //$NON-NLS-1$
   }

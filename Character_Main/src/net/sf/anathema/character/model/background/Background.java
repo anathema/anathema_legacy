@@ -20,12 +20,14 @@ public class Background extends DefaultTrait implements IBackground
 		this.description = description;
 	}
 	
-	public String getDescription()
+	@Override
+    public String getDescription()
 	{
 		return description;
 	}
 	
-	public String getName(IResources resources)
+	@Override
+    public String getName(IResources resources)
 	{
 		ITraitType type = getType();
 		String backgroundId = type.getId();

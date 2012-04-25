@@ -18,12 +18,14 @@ public class ItemManagmentModel implements IItemManagementModel {
   private final List<IItem> allItems = new ArrayList<IItem>();
   private IItem selectedItem;
 
+  @Override
   public synchronized void addItem(IItem item) throws AnathemaException {
     allItems.add(item);
     fireItemAddedEvent(item);
     setSelectedItem(item);
   }
 
+  @Override
   public void removeItem(IItem item) {
     int itemIndex = allItems.indexOf(item);
     allItems.remove(item);
@@ -32,12 +34,14 @@ public class ItemManagmentModel implements IItemManagementModel {
     setSelectedItem(itemIndex < 0 ? null : allItems.get(itemIndex));
   }
 
+  @Override
   public void addListener(IItemManagementModelListener listener) {
     listeners.addListener(listener);
   }
 
   private void fireItemRemovedEvent(final IItem item) {
     listeners.forAllDo(new IClosure<IItemManagementModelListener>() {
+      @Override
       public void execute(IItemManagementModelListener input) {
         input.itemRemoved(item);
       }
@@ -47,6 +51,7 @@ public class ItemManagmentModel implements IItemManagementModel {
   private void fireItemAddedEvent(final IItem item) throws AnathemaException {
     try {
       listeners.forAllDo(new IClosure<IItemManagementModelListener>() {
+        @Override
         public void execute(IItemManagementModelListener input) {
           try {
             input.itemAdded(item);
@@ -65,16 +70,19 @@ public class ItemManagmentModel implements IItemManagementModel {
 
   private void fireCharacterSelectionChangedEvent(final IItem item) {
     listeners.forAllDo(new IClosure<IItemManagementModelListener>() {
+      @Override
       public void execute(IItemManagementModelListener input) {
         input.itemSelected(item);
       }
     });
   }
 
+  @Override
   public void removeListener(IItemManagementModelListener listener) {
     listeners.removeListener(listener);
   }
 
+  @Override
   public void setSelectedItem(IItem item) {
     if (this.selectedItem == item) {
       return;
@@ -83,10 +91,12 @@ public class ItemManagmentModel implements IItemManagementModel {
     fireCharacterSelectionChangedEvent(selectedItem);
   }
 
+  @Override
   public IItem getSelectedItem() {
     return selectedItem;
   }
 
+  @Override
   public boolean isOpen(String itemId, IItemType type) {
     for (IItem item : allItems) {
       if (ObjectUtilities.equals(itemId, item.getId()) && type == item.getItemType()) {
@@ -96,6 +106,7 @@ public class ItemManagmentModel implements IItemManagementModel {
     return false;
   }
 
+  @Override
   public IItem[] getAllItems() {
     return allItems.toArray(new IItem[allItems.size()]);
   }

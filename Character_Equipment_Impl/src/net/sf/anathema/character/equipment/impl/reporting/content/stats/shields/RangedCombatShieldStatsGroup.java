@@ -16,10 +16,12 @@ public class RangedCombatShieldStatsGroup extends AbstractValueEquipmentStatsGro
     super(resources, "RangedCombatShield"); //$NON-NLS-1$
   }
 
+  @Override
   public int getColumnCount() {
     return 2;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IShieldStats shield) {
     PdfPCell cell = TableEncodingUtilities.createContentCellTable(null, getResources().getString("Sheet.Equipment.Header.RangeBonus"), //$NON-NLS-1$
             font, 0f, Rectangle.NO_BORDER, Element.ALIGN_LEFT);

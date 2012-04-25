@@ -33,6 +33,7 @@ public class FavorableTraitContentEncoder<C extends FavorableTraitContent> exten
     return traitEncoder;
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
     FavorableTraitContent content = createContent(reportSession);
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());

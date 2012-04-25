@@ -31,10 +31,12 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
     this.context = context;
   }
 
+  @Override
   public Integer getFatigue() {
     return null;
   }
 
+  @Override
   public Integer getHardness(HealthType type) {
     if (context == null) {
       return null;
@@ -52,10 +54,12 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
     }
   }
 
+  @Override
   public Integer getMobilityPenalty() {
     return null;
   }
 
+  @Override
   public Integer getSoak(HealthType type) {
     if (type == HealthType.Aggravated) {
       return null;
@@ -81,6 +85,7 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
     return stamina.getCurrentValue() / 2;
   }
 
+  @Override
   public IIdentificate getName() {
     return new Identificate("NaturalSoak"); //$NON-NLS-1$
   }

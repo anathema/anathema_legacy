@@ -15,6 +15,7 @@ public class HealthCost extends Cost implements IHealthCost {
     this.type = type;
   }
 
+  @Override
   public HealthType getType() {
     return type;
   }

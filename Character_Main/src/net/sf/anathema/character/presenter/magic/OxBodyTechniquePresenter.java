@@ -23,6 +23,7 @@ public class OxBodyTechniquePresenter implements Presenter {
     this.model = model;
   }
 
+  @Override
   public void initPresentation() {
     for (OxBodyCategory category : model.getCategories()) {
       String label = resources.getString("OxBodyTechnique." + category.getId()); //$NON-NLS-1$

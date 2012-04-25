@@ -27,6 +27,7 @@ public abstract class AbstractActionAddableListView<T> implements IActionAddable
     titleLabel = title != null ? new JLabel(title) : null;
   }
 
+  @Override
   public void addAction(Action action) {
     buttonPanel.add(new JButton(action));
   }
@@ -47,6 +48,7 @@ public abstract class AbstractActionAddableListView<T> implements IActionAddable
 
   protected abstract JComponent getDisplayComponent();
 
+  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = createContent();
@@ -54,10 +56,12 @@ public abstract class AbstractActionAddableListView<T> implements IActionAddable
     return content;
   }
 
+  @Override
   public void setListTitle(String title) {
     titleLabel.setText(title);
   }
 
+  @Override
   public void refreshView() {
     getDisplayComponent().repaint();
   }

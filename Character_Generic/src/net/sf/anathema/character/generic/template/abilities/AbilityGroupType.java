@@ -25,6 +25,7 @@ public enum AbilityGroupType implements IIdentificate {
 
   public abstract void accept(IAbilityGroupTypeVisitor visitor);
 
+  @Override
   public String getId() {
     return name();
   }

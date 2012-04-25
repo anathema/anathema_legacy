@@ -12,23 +12,28 @@ public class CharacterChangeManagement implements IChangeManagement {
   private final ChangeControl control = new ChangeControl();
   private boolean dirty = false;
   private final ICharacterChangeListener listener = new ICharacterChangeListener() {
+    @Override
     public void casteChanged() {
       setDirty();
     }
 
+    @Override
     public void characterChanged() {
       setDirty();
     }
 
+    @Override
     public void experiencedChanged(boolean experienced) {
       setDirty();
     }
 
+    @Override
     public void traitChanged(ITraitType type) {
       setDirty();
     }
   };
   private final IObjectValueChangedListener<String> textListener = new IObjectValueChangedListener<String>() {
+    @Override
     public void valueChanged(String newValue) {
       setDirty();
     }
@@ -42,10 +47,12 @@ public class CharacterChangeManagement implements IChangeManagement {
     return textListener;
   }
 
+  @Override
   public boolean isDirty() {
     return dirty;
   }
 
+  @Override
   public void addDirtyListener(IChangeListener changeListener) {
     control.addChangeListener(changeListener);
   }
@@ -55,11 +62,13 @@ public class CharacterChangeManagement implements IChangeManagement {
     control.fireChangedEvent();
   }
 
+  @Override
   public void setClean() {
     this.dirty = false;
     control.fireChangedEvent();
   }
 
+  @Override
   public void removeDirtyListener(IChangeListener changeListener) {
     control.removeChangeListener(changeListener);
   }

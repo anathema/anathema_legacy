@@ -29,6 +29,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
 
   protected abstract Float[] getMovementColumns();
 
+  @Override
   public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     PdfPTable table = createTable(graphics, session);
     table.setWidthPercentage(100);
@@ -146,6 +147,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
     return resources;
   }
 
+  @Override
   public boolean hasContent(ReportSession session) {
     return true;
   }

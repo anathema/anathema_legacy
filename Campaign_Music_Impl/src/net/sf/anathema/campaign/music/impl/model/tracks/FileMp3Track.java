@@ -40,6 +40,7 @@ public class FileMp3Track implements IMp3Track {
     }
   }
 
+  @Override
   public String getAlbum() {
     return getBriefDescription("album"); //$NON-NLS-1$
   }
@@ -48,54 +49,67 @@ public class FileMp3Track implements IMp3Track {
     return (String) audioFileFormat.properties().get(key);
   }
 
+  @Override
   public String getArtist() {
     return getBriefDescription("author"); //$NON-NLS-1$
   }
 
+  @Override
   public String getTrack() {
     return getBriefDescription("mp3.id3tag.track"); //$NON-NLS-1$
   }
 
+  @Override
   public String getTitle() {
     return getBriefDescription("title"); //$NON-NLS-1$
   }
 
+  @Override
   public Md5Checksum getCheckSum() {
     return checksum;
   }
 
+  @Override
   public String[] getFileReferences() {
     return fileReferences;
   }
 
+  @Override
   public String getGivenName() {
     return givenName == null ? getArtist() + " - " + getTitle() : givenName; //$NON-NLS-1$
   }
 
+  @Override
   public void setGivenName(String givenName) {
     this.givenName = givenName;
   }
 
+  @Override
   public IMusicEvent[] getEvents() {
     return moods;
   }
 
+  @Override
   public void setEvents(IMusicEvent[] musicMoods) {
     this.moods = musicMoods;
   }
 
+  @Override
   public IMusicTheme[] getThemes() {
     return themes;
   }
 
+  @Override
   public void setThemes(IMusicTheme[] themes) {
     this.themes = themes;
   }
 
+  @Override
   public IMusicMood[] getMoods() {
     return feelings;
   }
 
+  @Override
   public void setMoods(IMusicMood[] feelings) {
     this.feelings = feelings;
   }

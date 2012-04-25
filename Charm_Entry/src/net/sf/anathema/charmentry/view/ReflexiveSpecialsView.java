@@ -15,6 +15,7 @@ public class ReflexiveSpecialsView implements IReflexiveSpecialsView {
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
 
+  @Override
   public IIntValueDisplay addIntegerSelectionView(String typeLabel, int minimum, int maximum) {
     ObjectSelectionIntValueView view = new ObjectSelectionIntValueView(
         typeLabel,
@@ -25,20 +26,24 @@ public class ReflexiveSpecialsView implements IReflexiveSpecialsView {
     return view;
   }
 
+  @Override
   public JToggleButton addCheckBoxRow(String label) {
     final JCheckBox box = new JCheckBox(label);
     content.add(box);
     return box;
   }
 
+  @Override
   public JComponent getContent() {
     return content;
   }
 
+  @Override
   public void requestFocus() {
     // Nothing to do
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }

@@ -17,14 +17,17 @@ public class DummyFileSystemAbstraction implements IFileSystemAbstraction {
     return createdFolders.contains(file);
   }
 
+  @Override
   public void createFolder(File folder) {
     createdFolders.add(folder);
   }
 
+  @Override
   public boolean canWrite(File file) {
     return !writeProtectedFiles.contains(file);
   }
 
+  @Override
   public boolean canRead(File file) {
     return !readProtectedFiles.contains(file);
   }
@@ -37,6 +40,7 @@ public class DummyFileSystemAbstraction implements IFileSystemAbstraction {
     readProtectedFiles.add(file);
   }
 
+  @Override
   public boolean exists(File file) {
     return existingFiles.contains(file) || createdFolders.contains(file);
   }

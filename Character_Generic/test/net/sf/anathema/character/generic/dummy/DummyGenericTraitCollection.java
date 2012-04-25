@@ -13,14 +13,17 @@ public class DummyGenericTraitCollection implements IGenericTraitCollection {
 
   private final Map<ITraitType, IGenericTrait> traits = new HashMap<ITraitType, IGenericTrait>();
 
+  @Override
   public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
     return (IFavorableGenericTrait) getTrait(type);
   }
 
+  @Override
   public IGenericTrait getTrait(ITraitType type) {
     return traits.get(type);
   }
 
+  @Override
   public IGenericTrait[] getTraits(ITraitType[] traitTypes) {
     throw new NotYetImplementedException();
   }
@@ -29,6 +32,7 @@ public class DummyGenericTraitCollection implements IGenericTraitCollection {
     traits.put(type, new DummyGenericTrait(type, value));
   }
 
+  @Override
   public boolean isFavoredOrCasteTrait(ITraitType type) {
     return getFavorableTrait(type).isCasteOrFavored();
   }

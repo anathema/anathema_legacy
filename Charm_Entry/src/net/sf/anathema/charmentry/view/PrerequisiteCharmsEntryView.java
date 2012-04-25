@@ -19,6 +19,7 @@ public class PrerequisiteCharmsEntryView implements IPrerequisiteCharmsEntryView
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
 
+  @Override
   public ISelectionContainerView<ICharm> addPrerequisiteCharmView(ListCellRenderer renderer) {
     SelectionContainerListView<ICharm> view = new SelectionContainerListView<ICharm>(ICharm.class);
     view.setRenderer(renderer);
@@ -29,18 +30,22 @@ public class PrerequisiteCharmsEntryView implements IPrerequisiteCharmsEntryView
     return view;
   }
 
+  @Override
   public JComponent getContent() {
     return content;
   }
 
+  @Override
   public void requestFocus() {
     // Nothing to do
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }
 
+  @Override
   public JToggleButton addToggleButton(String label) {
     JCheckBox box = new JCheckBox(label);
     content.add(box);

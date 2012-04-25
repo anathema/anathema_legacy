@@ -27,6 +27,7 @@ public class ComboRulesBuilder implements IComboRulesBuilder {
 
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
 
+  @Override
   public IComboRestrictions buildComboRules(Element rulesElement) throws CharmException {
     Element comboElement = rulesElement.element(TAG_COMBO);
     if (comboElement == null) {

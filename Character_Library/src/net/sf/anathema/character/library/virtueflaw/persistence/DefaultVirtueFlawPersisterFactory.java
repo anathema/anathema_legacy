@@ -6,6 +6,7 @@ import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 
 public class DefaultVirtueFlawPersisterFactory implements IAdditionalPersisterFactory {
 
+  @Override
   public IAdditionalPersister createPersister(IAnathemaMessaging messaging) {
     return new VirtueFlawPersister();
   }

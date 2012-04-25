@@ -13,6 +13,7 @@ public class MiscBonusModel extends AbstractIntegerValueModel {
     this.additionalCalculators = additionalCalculators;
   }
 
+  @Override
   public Integer getValue() {
     return getAdditionalModelTotalValue();
   }

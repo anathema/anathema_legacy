@@ -13,6 +13,7 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 public class TraitPrerequisitesBuilder implements ITraitPrerequisitesBuilder {
+  @Override
   public IGenericTrait[] buildTraitPrerequisites(Element prerequisiteListElement) throws PersistenceException {
     List<IGenericTrait> allPrerequisites = new ArrayList<IGenericTrait>();
     ITraitPrerequisiteBuilder traitBuilder = new TraitPrerequisiteBuilder();

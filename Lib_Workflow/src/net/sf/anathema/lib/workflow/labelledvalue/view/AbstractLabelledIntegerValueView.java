@@ -16,6 +16,7 @@ public abstract class AbstractLabelledIntegerValueView extends AbstractLabelledV
     super(labelText, String.valueOf(value), sizeText, adjustFontSize);
   }
 
+  @Override
   public void setValue(Integer value) {
     setText(String.valueOf(value));
   }

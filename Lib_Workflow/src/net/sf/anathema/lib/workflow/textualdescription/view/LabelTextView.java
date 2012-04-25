@@ -24,14 +24,17 @@ public class LabelTextView implements ITextView {
     this.textView = textView;
   }
 
+  @Override
   public void setText(String text) {
     textView.setText(text);
   }
 
+  @Override
   public void addTextChangedListener(final IObjectValueChangedListener<String> listener) {
     textView.addTextChangedListener(listener);
   }
 
+  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = textView.getComponent();
@@ -39,6 +42,7 @@ public class LabelTextView implements ITextView {
     return content;
   }
 
+  @Override
   public void setEnabled(boolean enabled) {
     textView.setEnabled(enabled);
     if (enabled) {

@@ -35,26 +35,32 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
 	  restrictions.add(restriction);
   }
 
+  @Override
   public ITraitLimitation getLimitation() {
     return traitTemplate.getLimitation();
   }
 
+  @Override
   public LowerableState getLowerableState() {
     return traitTemplate.getLowerableState();
   }
 
+  @Override
   public int getStartValue() {
     return traitTemplate.getStartValue();
   }
 
+  @Override
   public int getZeroLevelValue() {
     return traitTemplate.getZeroLevelValue();
   }
 
+  @Override
   public boolean isRequiredFavored() {
     return traitTemplate.isRequiredFavored();
   }
 
+  @Override
   public int getMinimumValue(ILimitationContext limitationContext)
   {
 	  boolean restricted = false;
@@ -73,6 +79,7 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
       return traitTemplate.getMinimumValue(limitationContext);
   }
   
+  @Override
   public int getCalculationMinValue(ILimitationContext limitationContext, ITraitType type)
   {
 	  int minimum = 0;
@@ -112,6 +119,7 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
     return clone;
   }
   
+  @Override
   public String getTag()
   {
 	  return null;

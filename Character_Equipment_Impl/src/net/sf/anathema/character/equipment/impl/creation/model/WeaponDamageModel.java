@@ -20,22 +20,27 @@ public class WeaponDamageModel implements IWeaponDamageModel {
 	minDamageModel = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 1);
   }
   
+  @Override
   public IIntValueModel getDamageModel() {
 	return damageModel;
   }
   
+  @Override
   public IIntValueModel getMinDamageModel() {
 	return minDamageModel;
   }
 
+  @Override
   public HealthType getHealthType() {
     return healthType;
   }
 
+  @Override
   public void addHealthTypeChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
 
+  @Override
   public void setHealthType(HealthType healthType) {
     if (this.healthType == healthType) {
       return;

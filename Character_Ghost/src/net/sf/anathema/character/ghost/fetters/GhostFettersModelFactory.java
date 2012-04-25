@@ -8,6 +8,7 @@ import net.sf.anathema.character.ghost.fetters.model.GhostFettersModel;
 
 public class GhostFettersModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new GhostFettersModel((GhostFettersTemplate) additionalTemplate, context);
   }

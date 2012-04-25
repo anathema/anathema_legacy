@@ -12,6 +12,7 @@ public class ThresholdRatingCosts implements ICurrentRatingCosts {
     this.highCost = highCost;
   }
 
+  @Override
   public int getRatingCosts(int currentRating) {
     return currentRating < 3 ? lowCost : highCost;
   }

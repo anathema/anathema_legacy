@@ -21,6 +21,7 @@ public class ItemDescription implements IItemDescription {
   public ItemDescription(String initialName) {
     this.name = new SimpleTextualDescription(initialName);
     IObjectValueChangedListener<String> listener = new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         control.fireChangedEvent();
       }
@@ -30,28 +31,34 @@ public class ItemDescription implements IItemDescription {
     content.addTextChangedListener(listener);
   }
 
+  @Override
   public ITextualDescription getName() {
     return name;
   }
 
+  @Override
   public IStyledTextualDescription getContent() {
     return content;
   }
 
+  @Override
   public void setClean() {
     name.setDirty(false);
     content.setDirty(false);
     control.fireChangedEvent();
   }
 
+  @Override
   public boolean isDirty() {
     return name.isDirty() || content.isDirty();
   }
 
+  @Override
   public void addDirtyListener(IChangeListener changeListener) {
     control.addChangeListener(changeListener);
   }
 
+  @Override
   public void removeDirtyListener(IChangeListener changeListener) {
     control.removeChangeListener(changeListener);
   }

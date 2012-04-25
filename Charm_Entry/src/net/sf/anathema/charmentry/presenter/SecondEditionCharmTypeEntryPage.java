@@ -29,6 +29,7 @@ public class SecondEditionCharmTypeEntryPage extends CharmTypeEntryPage {
         new SimpleSpecialEntryPage(getResources(), getModel(), getViewFactory()),
         inputListener,
         new ICondition() {
+          @Override
           public boolean isFulfilled() {
             return isSimpleCharm();
           }
@@ -37,6 +38,7 @@ public class SecondEditionCharmTypeEntryPage extends CharmTypeEntryPage {
         new ReflexiveSpecialEntryPage(getResources(), getModel(), getViewFactory()),
         inputListener,
         new ICondition() {
+          @Override
           public boolean isFulfilled() {
             return isReflexiveWithModel();
           }
@@ -65,11 +67,13 @@ public class SecondEditionCharmTypeEntryPage extends CharmTypeEntryPage {
   private void initAnnotationView() {
     final JToggleButton button = getPageContent().addCheckBoxRow(getProperties().getSpecialModelLabel());
     button.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         getPageModel().setSpecialModelEnabled(button.isSelected());
       }
     });
     getPageModel().addModelListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         final boolean available = getPageModel().isSpecialModelAvailable();
         if (!available) {

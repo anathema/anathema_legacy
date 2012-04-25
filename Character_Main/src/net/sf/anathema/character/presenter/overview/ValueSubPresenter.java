@@ -12,6 +12,7 @@ public class ValueSubPresenter implements IOverviewSubPresenter {
     this.view = view;
   }
 
+  @Override
   public void update() {
     view.setValue(model.getValue());
   }

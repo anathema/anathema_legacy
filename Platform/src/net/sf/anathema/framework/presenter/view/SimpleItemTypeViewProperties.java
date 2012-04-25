@@ -12,6 +12,7 @@ public class SimpleItemTypeViewProperties extends AbstractItemTypeViewProperties
     super(type, icon, new SimpleItemTypeUi(icon));
   }
 
+  @Override
   public IWizardFactory getNewItemWizardFactory() {
     return new NullWizardPageFactory();
   }

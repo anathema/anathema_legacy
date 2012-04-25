@@ -12,6 +12,7 @@ public class Dot extends AbstractShape {
     this.dotSize = dotSize;
   }
 
+  @Override
   protected void configureShape(Position lowerLeft) {
     float upperRightX = lowerLeft.x + dotSize;
     float upperRightY = lowerLeft.y + dotSize;

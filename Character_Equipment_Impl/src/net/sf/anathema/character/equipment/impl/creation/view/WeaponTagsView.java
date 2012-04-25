@@ -11,18 +11,22 @@ public class WeaponTagsView implements IWeaponTagsView {
 
   private final JPanel content = new JPanel(new GridDialogLayout(3, true));
 
+  @Override
   public JComponent getContent() {
     return content;
   }
 
+  @Override
   public void requestFocus() {
     //nothing to do
   }
 
+  @Override
   public void dispose() {
     //nothing to do
   }
 
+  @Override
   public JCheckBox addCheckBox(String string) {
     JCheckBox box = new JCheckBox(string);
     content.add(box);

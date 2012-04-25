@@ -15,6 +15,7 @@ public class ItemViewSelectionListener implements IViewSelectionListener {
     this.mapping = mapping;
   }
 
+  @Override
   public void viewSelectionChangedTo(IItemView view) {
     model.setSelectedItem(mapping.getModelByView(view));
   }

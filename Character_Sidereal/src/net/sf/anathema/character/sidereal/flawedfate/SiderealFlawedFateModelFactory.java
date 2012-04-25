@@ -8,6 +8,7 @@ import net.sf.anathema.character.sidereal.flawedfate.model.SiderealFlawedFateMod
 
 public class SiderealFlawedFateModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new SiderealFlawedFateModel(context, additionalTemplate);
   }

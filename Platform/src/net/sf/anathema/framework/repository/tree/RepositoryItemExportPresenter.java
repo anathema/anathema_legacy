@@ -35,6 +35,7 @@ public class RepositoryItemExportPresenter implements Presenter {
     fileExporter = new FileExporter(new RepositoryZipPathCreator(model.getRepositoryPath()), model, resources);
   }
 
+  @Override
   public void initPresentation() {
     final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.ExportName"), //$NON-NLS-1$
         new FileUi(resources).getExportFileIcon()) {
@@ -62,6 +63,7 @@ public class RepositoryItemExportPresenter implements Presenter {
     action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.ExportToolTip")); //$NON-NLS-1$
     view.addActionButton(action);
     model.addTreeSelectionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         action.setEnabled(model.canSelectionBeDeleted());
       }

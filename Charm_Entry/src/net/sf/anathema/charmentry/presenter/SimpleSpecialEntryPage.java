@@ -35,6 +35,7 @@ public class SimpleSpecialEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new DurationEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
+      @Override
       public boolean isFulfilled() {
         return true;
       }
@@ -51,6 +52,7 @@ public class SimpleSpecialEntryPage extends AbstractAnathemaWizardPage {
     this.view = viewFactory.createSimpleSpecialsView();
     IIntValueView speedView = view.addIntegerSelectionView(properties.getSpeedLabel(), 10);
     speedView.addIntValueChangedListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         getPageModel().setSpeed(newValue);
       }
@@ -61,6 +63,7 @@ public class SimpleSpecialEntryPage extends AbstractAnathemaWizardPage {
         properties.getDefaultIdentificateRenderer(),
         getPageModel().getTurnTypes());
     turnView.addObjectSelectionChangedListener(new IObjectValueChangedListener<TurnType>() {
+      @Override
       public void valueChanged(TurnType newValue) {
         getPageModel().setTurnType(newValue);
       }
@@ -68,6 +71,7 @@ public class SimpleSpecialEntryPage extends AbstractAnathemaWizardPage {
     turnView.setSelectedObject(getPageModel().getTurnType());
     IIntValueView defenseView = view.addIntegerSelectionView(properties.getDefenseLabel(), -10);
     defenseView.addIntValueChangedListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         getPageModel().setDefenseValue(newValue);
       }
@@ -79,18 +83,22 @@ public class SimpleSpecialEntryPage extends AbstractAnathemaWizardPage {
     return model.getCharmTypeModel().getSimpleSpecialsModel();
   }
 
+  @Override
   public boolean canFinish() {
     return false;
   }
 
+  @Override
   public String getDescription() {
     return properties.getSimpleSpecialsTitle();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     return properties.getSimpleSpecialsMessage();
   }
 
+  @Override
   public IPageContent getPageContent() {
     return view;
   }

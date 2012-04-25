@@ -19,6 +19,7 @@ public class ItemTypeTreeUi implements IObjectUi<Object> {
     this.itemtypeUi = new ItemTypeUi(resources, extension);
   }
 
+  @Override
   public Icon getIcon(Object value) {
     if (value instanceof IItemType) {
       return itemtypeUi.getIcon(value);
@@ -29,6 +30,7 @@ public class ItemTypeTreeUi implements IObjectUi<Object> {
     return null;
   }
 
+  @Override
   public String getLabel(Object value) {
     if (value instanceof IItemType) {
       return itemtypeUi.getLabel(value);

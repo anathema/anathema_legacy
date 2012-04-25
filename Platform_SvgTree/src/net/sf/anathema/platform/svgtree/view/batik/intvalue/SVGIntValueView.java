@@ -65,19 +65,23 @@ public class SVGIntValueView implements IIntValueView {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
+  @Override
   public void setValue(final int newValue) {
     valueDisplay.setValue(newValue);
   }
 
+  @Override
   public void addIntValueChangedListener(final IIntValueChangedListener listener) {
     valueDisplay.addIntValueChangedListener(listener);
 
   }
 
+  @Override
   public void removeIntValueChangedListener(final IIntValueChangedListener listener) {
     valueDisplay.removeIntValueChangedListener(listener);
   }
 
+  @Override
   public void setMaximum(final int maximalValue) {
     valueDisplay.setMaximum(maximalValue);
   }

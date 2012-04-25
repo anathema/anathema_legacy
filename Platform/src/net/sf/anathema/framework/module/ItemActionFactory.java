@@ -18,6 +18,7 @@ public class ItemActionFactory implements IItemActionFactory {
     this.resources = resources;
   }
 
+  @Override
   public Action createAction(IItem item) {
     return AnathemaItemCloseAction.createForItem(model, resources, item);
   }

@@ -6,6 +6,7 @@ public enum TurnType implements IIdentificate {
 
   Tick, LongTick, DramaticAction;
 
+  @Override
   public String getId() {
     return name();
   }

@@ -52,6 +52,7 @@ public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
     final ISelectionContainerView<ICharm> charmView = view.addPrerequisiteCharmView(new IdentificateListCellRenderer(
         resources));
     charmView.addSelectionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         Object[] selectedValues = charmView.getSelectedValues();
         ICharm[] charms = new ICharm[selectedValues.length];
@@ -60,6 +61,7 @@ public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
       }
     });
     getPageModel().addModelListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         try {
           charmView.populate(getPageModel().getAvailableCharms());
@@ -72,18 +74,22 @@ public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
     });
   }
 
+  @Override
   public boolean canFinish() {
     return true;
   }
 
+  @Override
   public String getDescription() {
     return properties.getPageTitle();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     return properties.getDefaultMessage();
   }
 
+  @Override
   public IPrerequisiteCharmsEntryView getPageContent() {
     return view;
   }

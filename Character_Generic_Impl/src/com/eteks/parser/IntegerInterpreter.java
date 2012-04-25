@@ -18,6 +18,7 @@ public class IntegerInterpreter implements Interpreter {
    * @return the value of the literal. The returned value is an instance of <code>Integer</code>.
    * @throws IllegalArgumentException if <code>literal</code> isn't an instance of <code>Integer</code>.
    */
+  @Override
   public Object getLiteralValue (Object literal)
   {
     if (literal instanceof Integer)
@@ -38,6 +39,7 @@ public class IntegerInterpreter implements Interpreter {
    * @return the value of the parameter. The returned value is an instance of <code>Integer</code>.
    * @throws IllegalArgumentException if <code>parameter</code> isn't an instance of <code>Number</code>.
    */
+  @Override
   public Object getParameterValue (Object parameter)
   {
     if (parameter instanceof Integer)
@@ -55,6 +57,7 @@ public class IntegerInterpreter implements Interpreter {
    * @throws IllegalArgumentException if <code>constantKey</code> isn't a key of a constant of
    *         <code>Syntax</code>.
    */
+  @Override
   public Object getConstantValue (Object constantKey)
   {
     if (Syntax.CONSTANT_FALSE.equals (constantKey))
@@ -78,6 +81,7 @@ public class IntegerInterpreter implements Interpreter {
    *         key <code>Syntax.OPERATOR_BITWISE_NOT</code> or if <code>unaryOperatorKey</code>
    *         isn't the key of an unary operator of <code>Syntax</code>.
    */
+  @Override
   public Object getUnaryOperatorValue (Object unaryOperatorKey, Object operand)
   {
     if (!(operand instanceof Integer))
@@ -114,6 +118,7 @@ public class IntegerInterpreter implements Interpreter {
    *         (<code>Syntax.OPERATOR_BITWISE_...</code> and Syntax.OPERATOR_SHIFT_...)
    *         or if <code>binaryOperatorKey</code> isn't the key of a binary operator of <code>Syntax</code>.
    */
+  @Override
   public Object getBinaryOperatorValue (Object binaryOperatorKey, Object operand1, Object operand2)
   {
     if (!(operand1 instanceof Integer))
@@ -185,6 +190,7 @@ public class IntegerInterpreter implements Interpreter {
    * @throws IllegalArgumentException if <code>param</code> isn't an instance of <code>Number</code>
    *         or if <code>commonFunctionKey</code> isn't the key of a commomon function of <code>Syntax</code>.
    */
+  @Override
   public Object getCommonFunctionValue (Object commonFunctionKey, Object param)
   {
     if (!(param instanceof Integer))
@@ -231,6 +237,7 @@ public class IntegerInterpreter implements Interpreter {
    * @return the result of the condition.
    * @see #supportsRecursiveCall
    */
+  @Override
   public Object getConditionValue (Object paramIf, Object paramThen,  Object paramElse)
   {
     return isTrue (paramIf) ? paramThen : paramElse;
@@ -242,6 +249,7 @@ public class IntegerInterpreter implements Interpreter {
    * @return <code>false</code> if the double value of <code>condition</code> equals 0.
    *         otherwise <code>true</code>.
    */
+  @Override
   public boolean isTrue (Object condition)
   {
     if (!(condition instanceof Integer))
@@ -259,6 +267,7 @@ public class IntegerInterpreter implements Interpreter {
    * @return <code>true</code>.
    * @see #getConditionValue
    */
+  @Override
   public boolean supportsRecursiveCall ()
   {
     return true;
@@ -273,6 +282,7 @@ public class IntegerInterpreter implements Interpreter {
    *                      the current evaluated function calls itself.
    * @return the result of the function.
    */
+  @Override
   public Object getFunctionValue (Function    function,
                                   Object []   parametersValue,
                                   boolean     recursiveCall)

@@ -24,10 +24,12 @@ public class QualifiedAmountDuration extends ReflectionEqualsObject implements I
     return unit;
   }
 
+  @Override
   public void accept(IDurationVisitor visitor) {
     visitor.visitQualifiedAmountDuration(this);
   }
 
+  @Override
   public String getText(IStringResourceHandler resources) {
     String amountText = resources.getString("Charm.Amount." + getAmount()); //$NON-NLS-1$
     String unitText = resources.getString(getUnitKey());

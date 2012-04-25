@@ -12,6 +12,7 @@ public class FixedValueRatingCosts implements ICurrentRatingCosts {
     this.value = value;
   }
 
+  @Override
   public int getRatingCosts(int currentRating) {
     return value;
   }

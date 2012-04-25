@@ -19,10 +19,12 @@ public class SimpleTextualDescription extends AbstractTextualDescription impleme
     this.text = text;
   }
 
+  @Override
   public String getText() {
     return text;
   }
 
+  @Override
   public void setText(String text) {
     if (ObjectUtilities.equals(this.text, text)) {
       return;
@@ -36,14 +38,17 @@ public class SimpleTextualDescription extends AbstractTextualDescription impleme
     textControl.fireValueChangedEvent(text);
   }
 
+  @Override
   public void addTextChangedListener(IObjectValueChangedListener<String> listener) {
     textControl.addObjectValueChangeListener(listener);
   }
 
+  @Override
   public void removeTextChangeListener(IObjectValueChangedListener<String> listener) {
     textControl.removeObjectValueChangeListener(listener);
   }
 
+  @Override
   public boolean isEmpty() {
     return StringUtilities.isNullOrEmpty(getText());
   }

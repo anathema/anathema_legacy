@@ -27,6 +27,7 @@ public class SecondEditionPrerequisiteCharmsPage extends PrerequisiteCharmsPage 
         new KeywordEntryPage(getResources(), getModel(), getViewFactory()),
         inputListener,
         new ICondition() {
+          @Override
           public boolean isFulfilled() {
             return true;
           }
@@ -39,6 +40,7 @@ public class SecondEditionPrerequisiteCharmsPage extends PrerequisiteCharmsPage 
     super.initPageContent();
     final JToggleButton button = getPageContent().addToggleButton(getProperties().getExcellencyString());
     button.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         getPageModel().setRequiresExcellency(button.isSelected());
       }

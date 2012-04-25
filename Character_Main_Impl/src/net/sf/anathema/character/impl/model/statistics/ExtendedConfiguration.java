@@ -29,10 +29,12 @@ public class ExtendedConfiguration implements IExtendedConfiguration {
     additionalModels.add(model);
   }
 
+  @Override
   public IAdditionalModel[] getAdditionalModels() {
     return additionalModels.toArray(new IAdditionalModel[additionalModels.size()]);
   }
 
+  @Override
   public IAdditionalModel[] getAdditionalModels(AdditionalModelType type) {
     List<IAdditionalModel> models = new ArrayList<IAdditionalModel>();
     for (IAdditionalModel model : additionalModels) {
@@ -50,6 +52,7 @@ public class ExtendedConfiguration implements IExtendedConfiguration {
     listeners.add(listener);
   }
 
+  @Override
   public IAdditionalModel getAdditionalModel(String id) {
     for (IAdditionalModel model : getAdditionalModels()) {
       if (model.getTemplateId().equals(id)) {

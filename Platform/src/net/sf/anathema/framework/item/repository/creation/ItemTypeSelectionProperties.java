@@ -27,6 +27,7 @@ public class ItemTypeSelectionProperties implements IObjectSelectionProperties {
 
   }
 
+  @Override
   public ListCellRenderer getCellRenderer() {
     return new ObjectUiListCellRenderer(ui) {
       private static final long serialVersionUID = -3220572466818925411L;
@@ -48,10 +49,12 @@ public class ItemTypeSelectionProperties implements IObjectSelectionProperties {
     };
   }
 
+  @Override
   public String getSelectionTitle() {
     return resources.getString("AnathemaPersistence.NewWizard.SelectItem.Title"); //$NON-NLS-1$
   }
 
+  @Override
   public IBasicMessage getSelectMessage() {
     return new BasicMessage(resources.getString("AnathemaPersistence.NewWizard.SelectItem.Message")); //$NON-NLS-1$
   }

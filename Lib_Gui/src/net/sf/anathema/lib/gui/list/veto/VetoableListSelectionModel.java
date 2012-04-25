@@ -27,7 +27,8 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 	@Override
 	public void addSelectionInterval(final int index0, final int index1) {
 		executeVetoable(new SimpleBlock() {
-			public void execute() {
+			@Override
+            public void execute() {
 				VetoableListSelectionModel.super.addSelectionInterval(index0,
 						index1);
 			}
@@ -57,7 +58,8 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 			return;
 		}
 		executeVetoable(new SimpleBlock() {
-			public void execute() {
+			@Override
+            public void execute() {
 				VetoableListSelectionModel.super.removeSelectionInterval(
 						index0, index1);
 			}
@@ -71,7 +73,8 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 	@Override
 	public void setSelectionInterval(final int index0, final int index1) {
 		executeVetoable(new SimpleBlock() {
-			public void execute() {
+			@Override
+            public void execute() {
 				VetoableListSelectionModel.super.setSelectionInterval(index0,
 						index1);
 			}

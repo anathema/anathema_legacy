@@ -33,6 +33,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     this.hasAnima = hasAnima;
   }
 
+  @Override
   public void initPresentation() {
     TextualPresentation presentation = new TextualPresentation();
     initNameLineView(0, presentation);
@@ -68,6 +69,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     initAreaView("CharacterDescription.Label.Notes", 5, description.getNotes(), presentation); //$NON-NLS-1$
   }
 
+  @Override
   public IViewContent getTabContent() {
     String title = resources.getString("CardView.CharacterDescription.Title");//$NON-NLS-1$
     ContentProperties tabProperties = new ContentProperties(title).needsScrollbar();

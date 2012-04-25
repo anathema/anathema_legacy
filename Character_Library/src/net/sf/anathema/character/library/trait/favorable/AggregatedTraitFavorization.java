@@ -20,6 +20,7 @@ public class AggregatedTraitFavorization implements ITraitFavorization {
     this.container = container;
   }
 
+  @Override
   public int getMinimalValue() {
     if (getFavorableState() != FavorableState.Favored) {
       return 0;
@@ -35,42 +36,52 @@ public class AggregatedTraitFavorization implements ITraitFavorization {
     return 1;
   }
 
+  @Override
   public void addFavorableStateChangedListener(IFavorableStateChangedListener listener) {
     favorization.addFavorableStateChangedListener(listener);
   }
 
+  @Override
   public ICasteType[] getCastes() {
     return favorization.getCastes();
   }
 
+  @Override
   public FavorableState getFavorableState() {
     return favorization.getFavorableState();
   }
 
+  @Override
   public boolean isCaste() {
     return favorization.isCaste();
   }
 
+  @Override
   public boolean isCasteOrFavored() {
     return favorization.isCasteOrFavored();
   }
 
+  @Override
   public boolean isFavored() {
     return favorization.isFavored();
   }
 
+  @Override
   public void setFavorableState(FavorableState state) {
     // nothing to do
   }
 
+  @Override
   public void setFavored(boolean favored) {
     // nothing to do
   }
 
+  @Override
   public void updateFavorableStateToCaste() {
     // nothing to do
   }
 
+  @Override
   public void ensureMinimalValue() {
     // nothing to do
   }

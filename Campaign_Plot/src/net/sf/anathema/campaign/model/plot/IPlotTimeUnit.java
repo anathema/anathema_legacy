@@ -5,6 +5,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 // Story, Episode, Scene
 public interface IPlotTimeUnit extends IIdentificate {
 
+  @Override
   public String getId();
 
   public IPlotTimeUnit getSuccessor();

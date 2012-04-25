@@ -29,14 +29,17 @@ public class CharmGroup implements ICharmGroup, IIdentificate {
     return id;
   }
 
+  @Override
   public ICharm[] getAllCharms() {
     return charms;
   }
 
+  @Override
   public ICharacterType getCharacterType() {
     return type;
   }
 
+  @Override
   public boolean isMartialArtsGroup() {
     return isMartialArtsGroup;
   }

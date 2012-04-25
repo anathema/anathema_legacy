@@ -19,6 +19,7 @@ public class CharacterTypeUi implements IObjectUi<Object> {
     this.scanner = scanner;
   }
 
+  @Override
   public String getLabel(Object value) {
     PrintNameFile file = (PrintNameFile) value;
     String printName = file.getPrintName();
@@ -35,6 +36,7 @@ public class CharacterTypeUi implements IObjectUi<Object> {
         printName, characterString, casteTypeString, casteString });
   }
 
+  @Override
   public Icon getIcon(Object value) {
     PrintNameFile file = (PrintNameFile) value;
     ICharacterType characterType = scanner.getCharacterType(file);

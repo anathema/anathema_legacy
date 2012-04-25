@@ -5,10 +5,12 @@ import net.sf.anathema.character.generic.framework.module.object.NullCharacterMo
 
 public abstract class NullObjectCharacterModuleAdapter extends CharacterModuleAdapter<NullCharacterModuleObject> {
 
+  @Override
   public final void initModuleObject(ICharacterGenerics characterGenerics) {
     // nothing to do
   }
 
+  @Override
   public final NullCharacterModuleObject getModuleObject() {
     return null;
   }

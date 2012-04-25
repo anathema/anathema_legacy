@@ -11,14 +11,17 @@ public abstract class AbstractTableColumnSettings implements ITableColumnViewSet
     this.preferredWidth = (int) new JTextField(preferredColumnCount).getPreferredSize().getWidth();
   }
 
+  @Override
   public final int getPreferredWidth() {
     return preferredWidth;
   }
 
+  @Override
   public TableCellRenderer getRenderer() {
     return null;
   }
 
+  @Override
   public boolean isResizable() {
     return true;
   }

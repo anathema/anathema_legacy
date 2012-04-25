@@ -14,14 +14,17 @@ public class FavoredAttributeDotBonusModel extends AbstractSpendingModel {
     this.creationPoints = creationPoints;
   }
 
+  @Override
   public Integer getValue() {
     return attributeCalculator.getExtraFavoredDotsSpent();
   }
 
+  @Override
   public int getSpentBonusPoints() {
     return 0;
   }
 
+  @Override
   public int getAlotment() {
     return creationPoints.getAttributeCreationPoints().getExtraFavoredDotCount();
   }

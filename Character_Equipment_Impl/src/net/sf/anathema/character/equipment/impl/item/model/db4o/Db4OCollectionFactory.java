@@ -16,6 +16,7 @@ public class Db4OCollectionFactory implements ICollectionFactory {
     this.container = container;
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public <K, V> Map<K, V> createHashMap() {
     Db4oMap map = container.ext().collections().newHashMap(16);
@@ -23,6 +24,7 @@ public class Db4OCollectionFactory implements ICollectionFactory {
     return map;
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public <T> List<T> createList() {
     return container.ext().collections().newLinkedList();

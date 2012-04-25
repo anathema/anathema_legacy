@@ -10,6 +10,7 @@ import net.sf.anathema.lib.gui.IView;
 
 public interface IChangeableJComboBox<V> extends IView {
 
+  @Override
   public JComboBox getComponent();
 
   public void setSelectedObject(V object);

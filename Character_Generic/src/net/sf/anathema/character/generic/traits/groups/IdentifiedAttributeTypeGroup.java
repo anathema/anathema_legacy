@@ -14,6 +14,7 @@ public class IdentifiedAttributeTypeGroup extends TraitTypeGroup implements IIde
     this.groupType = groupType;
   }
 
+  @Override
   public AttributeGroupType getGroupId() {
     return groupType;
   }

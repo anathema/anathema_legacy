@@ -26,24 +26,29 @@ public final class LibraryControl implements ILibraryControl {
     this.musicDataBasePersister = persister;
   }
 
+  @Override
   public void updateLibrary(ILibrary library, String newName) {
     musicDataBasePersister.updateLibaryName(library, newName);
     fireLibraryChanged(newName);
   }
 
+  @Override
   public ILibrary[] getAllLibraries() {
     return musicDataBasePersister.getAllLibraries();
   }
 
+  @Override
   public boolean containsLibraryName(String name) {
     return musicDataBasePersister.isRegisteredLibrary(name);
   }
 
+  @Override
   public void addNewLibrary(final String name) {
     musicDataBasePersister.addLibrary(name);
     fireLibraryChanged(name);
   }
 
+  @Override
   public void addNewUnnamedLibrary(String unnamedLibraryBaseString) {
     int count = 1;
     ILibrary[] allLibraries = getAllLibraries();
@@ -62,6 +67,7 @@ public final class LibraryControl implements ILibraryControl {
 
   private void fireLibraryChanged(final String name) {
     listenerControl.forAllDo(new IClosure<ILibraryChangedListener>() {
+      @Override
       public void execute(ILibraryChangedListener input) {
         ILibrary[] allLibraries = getAllLibraries();
         ILibrary newLibrary = getLibraryByName(allLibraries, name);
@@ -79,28 +85,34 @@ public final class LibraryControl implements ILibraryControl {
     return null;
   }
 
+  @Override
   public void addLibraryChangedListener(ILibraryChangedListener listener) {
     listenerControl.addListener(listener);
   }
 
+  @Override
   public void addTracks(String name, List<IMp3Track> tracks) {
     musicDataBasePersister.addTracks(name, tracks);
   }
 
+  @Override
   public IMusicFolderWalker createMusicFolderWalker(File folder) throws IOException {
     return new MusicFolderWalker(folder);
   }
 
+  @Override
   public void removeLibrary(ILibrary library) {
     musicDataBasePersister.removeLibrary(library.getName());
     fireLibraryChanged(null);
   }
 
+  @Override
   public void removeTracksFromLibrary(ILibrary library, IMp3Track[] tracks) {
     musicDataBasePersister.removeTracksFromLibrary(library.getName(), tracks);
     fireLibraryChanged(library.getName());
   }
 
+  @Override
   public void addTrack(String name, File mp3File) throws AnathemaException, IOException {
     List<IMp3Track> tracks = new ArrayList<IMp3Track>();
     tracks.add(new FileMp3Track(mp3File));

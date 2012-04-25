@@ -8,6 +8,7 @@ import net.sf.anathema.character.sidereal.paradox.model.SiderealParadoxModel;
 
 public class SiderealParadoxModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new SiderealParadoxModel(context, additionalTemplate);
   }

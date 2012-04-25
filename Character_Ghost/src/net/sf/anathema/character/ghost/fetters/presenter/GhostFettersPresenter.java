@@ -51,6 +51,7 @@ public class GhostFettersPresenter implements Presenter {
     this.resources = resources;
   }
 
+  @Override
   public void initPresentation() {
     final IOverviewCategory creationOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title"));
@@ -66,11 +67,13 @@ public class GhostFettersPresenter implements Presenter {
         resources.getString("View.SelectionCombo.Label"),
         addIcon);
     fetterSelectionView.addEditChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newFetterName) {
         model.setCurrentFetterName(newFetterName);
       }
     });
     fetterSelectionView.addButtonListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         addFetterView(model.commitSelection());
         fetterSelectionView.clear();
@@ -78,6 +81,7 @@ public class GhostFettersPresenter implements Presenter {
       }
     });
     model.addSelectionChangeListener(new IChangeListener() {
+        @Override
         public void changeOccurred() {
       	  fetterSelectionView.setButtonEnabled(model.isEntryComplete());
         }
@@ -162,6 +166,7 @@ public class GhostFettersPresenter implements Presenter {
         fetter.getMaximalValue());
     new TraitPresenter(fetter, fetterView).initPresentation();
     fetterView.addDeleteListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
     	model.removeFetter(fetter);
     	viewsByFetter.get(fetter).delete();

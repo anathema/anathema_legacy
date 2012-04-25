@@ -35,6 +35,7 @@ public class ExperienceConfigurationView extends
   protected void createContent(JPanel panel, final IExperienceConfigurationViewProperties properties) {
     smartTable = new SmartTable(properties.getTableModel(), properties.getColumnSettings());
     smartTable.addActionFactory(new ITableActionFactory() {
+      @Override
       public Action createAction(SmartTable table) {
         return new SmartAction(properties.getAddIcon()) {
           private static final long serialVersionUID = -6922420757124813943L;
@@ -56,12 +57,14 @@ public class ExperienceConfigurationView extends
       }
     };
     smartTable.addActionFactory(new ITableActionFactory() {
+      @Override
       public Action createAction(SmartTable table) {
         return deleteAction;
       }
     });
 
     smartTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         fireSelectionChanged();
       }
@@ -83,6 +86,7 @@ public class ExperienceConfigurationView extends
 
   protected void fireSelectionChanged() {
     listeners.forAllDo(new IClosure<IExperienceConfigurationViewListener>() {
+      @Override
       public void execute(IExperienceConfigurationViewListener input) {
         input.selectionChanged(smartTable.getSelectedRowIndex());
       }
@@ -91,6 +95,7 @@ public class ExperienceConfigurationView extends
 
   private void fireRemoveRequested() {
     listeners.forAllDo(new IClosure<IExperienceConfigurationViewListener>() {
+      @Override
       public void execute(IExperienceConfigurationViewListener input) {
         input.removeRequested(smartTable.getSelectedRowIndex());
       }
@@ -99,20 +104,24 @@ public class ExperienceConfigurationView extends
 
   private void fireAddRequested() {
     listeners.forAllDo(new IClosure<IExperienceConfigurationViewListener>() {
+      @Override
       public void execute(IExperienceConfigurationViewListener input) {
         input.addRequested();
       }
     });
   }
 
+  @Override
   public void addExperienceConfigurationViewListener(IExperienceConfigurationViewListener listener) {
     listeners.addListener(listener);
   }
 
+  @Override
   public void setRemoveButtonEnabled(boolean enabled) {
     deleteAction.setEnabled(enabled);
   }
 
+  @Override
   public void setTotalValueLabel(int overallExperiencePoints) {
     labelledIntValueView.setValue(overallExperiencePoints);
   }

@@ -32,6 +32,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   private final MultiEntryMap<String, ITraitType> abilityGroupsByType = new MultiEntryMap<String, ITraitType>();
   private ISpecialtiesConfiguration specialtyConfiguration;
 
+  @Override
   public IBackgroundConfiguration getBackgrounds() {
     throw new NotYetImplementedException();
   }
@@ -39,6 +40,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   private IIdentifiedTraitTypeGroup getAttributeTypeGroup(final AttributeGroupType type) {
     IIdentifiedCasteTraitTypeGroup[] allAttributeTypeGroups = getAttributeTypeGroups();
     return ArrayUtilities.getFirst(allAttributeTypeGroups, new IPredicate<IIdentifiedCasteTraitTypeGroup>() {
+      @Override
       public boolean evaluate(IIdentifiedCasteTraitTypeGroup group) {
         return group.getGroupId() == type;
       }
@@ -64,6 +66,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     addTrait(trait);
   }
 
+  @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     List<IIdentifiedTraitTypeGroup> groups = new ArrayList<IIdentifiedTraitTypeGroup>();
     for (String groupId : abilityGroupsByType.keySet()) {
@@ -74,10 +77,12 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     return groups.toArray(new IIdentifiedTraitTypeGroup[groups.size()]);
   }
   
+  @Override
   public IIdentifiedTraitTypeGroup[] getYoziTypeGroups() {
 	    return null;
 	  }
 
+  @Override
   public ISpecialtiesConfiguration getSpecialtyConfiguration() {
     if (specialtyConfiguration == null) {
       specialtyConfiguration = new SpecialtiesConfiguration(
@@ -88,6 +93,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     return specialtyConfiguration;
   }
 
+  @Override
   public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
     return new IIdentifiedCasteTraitTypeGroup[] {
         new IdentifiedAttributeTypeGroup(AttributeGroupType.Physical),
@@ -95,6 +101,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
         new IdentifiedAttributeTypeGroup(AttributeGroupType.Mental) };
   }
 
+  @Override
   public IIdentificate getAbilityGroupId(AbilityType abilityType) {
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
       if (group.contains(abilityType)) {
@@ -108,6 +115,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     abilityGroupsByType.add(id, traitType);
   }
 
+  @Override
   public IFavorableTrait[] getAllAbilities() {
     List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {

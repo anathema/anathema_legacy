@@ -16,10 +16,12 @@ public class CompositeLearnWorker implements ICharmLearnWorker {
     this.learnArbitrator = learnArbitrator;
   }
 
+  @Override
   public boolean isLearned(ICharm charm) {
     return learnArbitrator.isLearned(charm) && !forgottenCharm.contains(charm);
   }
 
+  @Override
   public void forget(Charm charm) {
     forgottenCharm.add(charm);
   }

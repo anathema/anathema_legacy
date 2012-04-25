@@ -105,7 +105,8 @@ public class SmartTable implements IView {
 		}
 	}
 
-	public final JPanel getComponent() {
+	@Override
+    public final JPanel getComponent() {
 		if (content == null) {
 			content = createContent();
 			updateEnabled();

@@ -12,14 +12,17 @@ public class IntimaciesBonusPointCalculator implements IAdditionalModelBonusPoin
     this.model = model;
   }
 
+  @Override
   public void recalculate() {
     this.cost = model.getEntries().size() > model.getFreeIntimacies() ? 3 : 0;
   }
 
+  @Override
   public int getBonusPointCost() {
     return cost;
   }
 
+  @Override
   public int getBonusPointsGranted() {
     return 0;
   }

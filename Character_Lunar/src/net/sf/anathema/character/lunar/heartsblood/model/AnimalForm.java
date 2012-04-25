@@ -21,28 +21,34 @@ public class AnimalForm implements IAnimalForm {
     this.experienceLearned = experienceLearned;
   }
 
+  @Override
   public String getName() {
     return name;
   }
 
+  @Override
   public int getStrength() {
     return strength;
   }
   
+  @Override
   public int getDexterity()
   {
 	  return dexterity;
   }
 
+  @Override
   public int getStamina() {
     return stamina;
   }
   
+  @Override
   public int getAppearance()
   {
 	  return appearance;
   }
 
+  @Override
   public boolean isCreationLearned() {
     return !experienceLearned;
   }

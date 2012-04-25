@@ -32,6 +32,7 @@ public class AutoSaveMagicDescriptionEditModel implements MagicDescriptionEditMo
     return currentDescription;
   }
   
+  @Override
   public String getEditId() {
     return editId;
   }

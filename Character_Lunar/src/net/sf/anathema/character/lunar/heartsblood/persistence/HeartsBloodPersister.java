@@ -19,6 +19,7 @@ public class HeartsBloodPersister implements IAdditionalPersister {
   private static final String ATTRIB_DEXTERITY_VALUE = "animalDexterity"; //$NON-NLS-1$
   private static final String ATTRIB_APPEARANCE_VALUE = "animalAppearance"; //$NON-NLS-1$
 
+  @Override
   public void save(Element parent, IAdditionalModel model) {
     Element element = parent.addElement(TAG_HEARTS_BLOOD);
     IHeartsBloodModel heartsBloodModel = (IHeartsBloodModel) model;
@@ -38,6 +39,7 @@ public class HeartsBloodPersister implements IAdditionalPersister {
     	ElementUtilities.addAttribute(animalFormElement, ATTRIB_APPEARANCE_VALUE, form.getAppearance());
   }
 
+  @Override
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
     Element element = parent.element(TAG_HEARTS_BLOOD);
     IHeartsBloodModel heartsBloodModel = (IHeartsBloodModel) model;

@@ -21,14 +21,17 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     this.nodeDimension = nodeDimension;
   }
 
+  @Override
   public void setLayer(final ILayer layer) {
     this.layer = layer;
   }
 
+  @Override
   public ILayer getLayer() {
     return layer;
   }
 
+  @Override
   public void shiftRightWithChildren(final int requiredShift, final IVisualizableNode[] excludedNodes) {
     // Note: Better implementation: Traverse the tree down to the children
     // Set children's new position
@@ -45,10 +48,12 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     }
   }
 
+  @Override
   public void shiftRight(final int shift) {
     setPosition(Math.max(getPosition() + shift, layer.getOverlapFreePosition(this)));
   }
 
+  @Override
   public void forceShiftRight(int shift) {
     setPosition(getPosition() + shift);
 
@@ -62,6 +67,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     return nodeDimension;
   }
 
+  @Override
   public Integer getLeftExtreme() {
     Integer extreme = Integer.MAX_VALUE;
     for (IVisualizableNode child : getChildren()) {
@@ -71,6 +77,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     return extreme;
   }
 
+  @Override
   public Integer getRightExtreme() {
     Integer extreme = 0;
     for (IVisualizableNode child : getChildren()) {
@@ -80,18 +87,22 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     return extreme;
   }
 
+  @Override
   public int getHeight() {
     return nodeDimension.height;
   }
 
+  @Override
   public void setPosition(final int position) {
     xPosition = position;
   }
 
+  @Override
   public Integer getPosition() {
     return xPosition;
   }
 
+  @Override
   public IVisualizableNode[] getSharedChildren(final IVisualizableNode otherNode) {
     List<IVisualizableNode> ownChildren = new ArrayList<IVisualizableNode>(Arrays.asList(getChildren()));
     List<IVisualizableNode> otherChildren = new ArrayList<IVisualizableNode>(Arrays.asList(otherNode.getChildren()));
@@ -99,10 +110,12 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     return ownChildren.toArray(new IVisualizableNode[ownChildren.size()]);
   }
 
+  @Override
   public int getLeftSide() {
     return getPosition() - (getWidth() + 1) / 2;
   }
 
+  @Override
   public int getRightSide() {
     return getPosition() + (getWidth() + 1) / 2;
   }

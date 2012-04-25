@@ -61,62 +61,77 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
     this.tags = tags;
   }
 
+  @Override
   public int getAccuracy() {
     return accuracy;
   }
 
+  @Override
   public int getDamage() {
     return damage;
   }
 
+  @Override
   public HealthType getDamageType() {
     return healthType;
   }
   
+  @Override
   public int getMinimumDamage() {
 	return minimumDamage;
   }
 
+  @Override
   public Integer getDefence() {
     return defense;
   }
   
+  @Override
   public int getMobilityPenalty() {
 	return mobility;
   }
 
+  @Override
   public Integer getRange() {
     return null;
   }
 
+  @Override
   public Integer getRate() {
     return rate;
   }
 
+  @Override
   public int getSpeed() {
     return speed;
   }
 
+  @Override
   public IIdentificate[] getTags() {
     return tags;
   }
 
+  @Override
   public ITraitType getTraitType() {
     return AbilityType.Melee;
   }
 
+  @Override
   public ITraitType getDamageTraitType() {
     return AttributeType.Strength;
   }
 
+  @Override
   public boolean inflictsNoDamage() {
     return false;
   }
 
+  @Override
   public IIdentificate getName() {
     return name;
   }
 
+  @Override
   public boolean isRangedCombat() {
     return false;
   }

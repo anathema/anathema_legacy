@@ -27,6 +27,7 @@ public class DiscardChangesVetor implements IVetor {
     this.parentComponent = parentComponent;
   }
 
+  @Override
   public boolean vetos() {
     if (!preCondition.isFulfilled()) {
       return false;

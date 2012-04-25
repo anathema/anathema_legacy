@@ -56,27 +56,33 @@ public class MusicPlayerView implements IMusicPlayerView {
     return panel;
   }
 
+  @Override
   public void setPlayAction(Action playAction) {
     playButton.setAction(playAction);
   }
 
+  @Override
   public void setStopAction(Action action) {
     stopButton.setAction(action);
   }
 
+  @Override
   public void addPositionChangeListener(ChangeListener listener) {
     slider.addChangeListener(listener);
   }
 
+  @Override
   public int getCurrentPosition() {
     return slider.getValue();
   }
 
+  @Override
   public void setMaximumPosition(int maximum, String time) {
     slider.setMaximum(maximum);
     totalTimeLabel.setText(time);
   }
 
+  @Override
   public void setCurrentPosition(int position, String time) {
     if (slider.getValueIsAdjusting()) {
       return;

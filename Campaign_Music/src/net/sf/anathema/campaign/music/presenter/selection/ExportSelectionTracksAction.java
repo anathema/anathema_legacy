@@ -29,6 +29,7 @@ public class ExportSelectionTracksAction extends SmartAction {
     this.selectionModel = selectionModel;
     setToolTipText(resources.getString("Music.Actions.ExportList.Tooltip")); //$NON-NLS-1$
     selectionModel.addCurrentSelectionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateEnabled();
       }

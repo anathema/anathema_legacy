@@ -17,6 +17,7 @@ public class SingleNodeVisualizer extends AbstractCascadeVisualizer {
     super(properties, graph);
   }
 
+  @Override
   public IVisualizedGraph buildTree() {
     ISimpleNode node = getGraph().getNodesByLayer(1)[0];
     IVisualizableNode visualizableNode = getNodeFactory().registerVisualizableNode(node);

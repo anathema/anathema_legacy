@@ -29,18 +29,22 @@ public class StringSelectionView implements IStringSelectionView {
   }
 
 
+  @Override
   public void addTextChangeListener(IObjectValueChangedListener<String> listener) {
     labelTextView.addTextChangedListener(listener);
   }
 
+  @Override
   public void addAddButtonListener(ActionListener listener) {
     button.addActionListener(listener);
   }
 
+  @Override
   public void setAddButtonEnabled(boolean enabled) {
     button.setEnabled(enabled);
   }
 
+  @Override
   public void clear() {
     labelTextView.setText(null);
   }

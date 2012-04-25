@@ -28,22 +28,27 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
     generatorsByIdentificate.put(nameGeneratorTypes[1], new ThresholdNameGenerator());
   }
 
+  @Override
   public IIdentificate[] getGeneratorTypes() {
     return nameGeneratorTypes;
   }
 
+  @Override
   public IGeneratorTypeModel getGeneratorTypeModel(IIdentificate type) {
     return typeModelsByType.get(type);
   }
 
+  @Override
   public void addGeneratorTypeChangeListener(IChangeListener listener) {
     selectedGeneratorTypeListeners.addChangeListener(listener);
   }
 
+  @Override
   public IIdentificate getSelectedGeneratorType() {
     return selectedGeneratorType;
   }
 
+  @Override
   public void setGeneratorType(IIdentificate selectedGeneratorType) {
     if (ObjectUtilities.equals(selectedGeneratorType, this.selectedGeneratorType)) {
       return;
@@ -52,6 +57,7 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
     selectedGeneratorTypeListeners.fireChangedEvent();
   }
 
+  @Override
   public String[] generateNames(int count) {
     INameGenerator generator = generatorsByIdentificate.get(getSelectedGeneratorType());
     return generator.createNames(count);

@@ -35,6 +35,7 @@ public class LibraryControlPresenter implements Presenter {
     this.resources = resources;
   }
 
+  @Override
   public void initPresentation() {
     initLibraryListView();
     initTrackListView();
@@ -44,16 +45,19 @@ public class LibraryControlPresenter implements Presenter {
   private void initListening() {
     controlView.addLibraryListSelectionListener(new LibrarySelectionListener(controlView, searchControl, resources));
     libraryModel.addLibraryChangedListener(new ILibraryChangedListener() {
+      @Override
       public void librariesChanged(ILibrary[] allLibraries, ILibrary selectedLibrary) {
         controlView.getLibraryView().setObjects(allLibraries);
       }
     });
     selectionModel.addCurrentSelectionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         refreshTrackView();
       }
     });
     selectionModel.getTrackDetailModel().addChangeDetailListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         refreshTrackView();
       }

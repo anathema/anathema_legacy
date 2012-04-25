@@ -9,6 +9,7 @@ public abstract class AbstractIntegerValueModel extends AbstractOverviewModel im
     super(categoryId, id);
   }
 
+  @Override
   public void accept(IOverviewModelVisitor visitor) {
     visitor.visitIntegerValueModel(this);
   }

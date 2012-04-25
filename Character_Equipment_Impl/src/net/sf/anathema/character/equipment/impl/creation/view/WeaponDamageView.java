@@ -22,6 +22,7 @@ public class WeaponDamageView implements IWeaponDamageView {
   private final IntegerSpinner minDamageValueSpinner = new IntegerSpinner(0);
   private final IChangeableJComboBox<HealthType> typeBox = new ChangeableJComboBox<HealthType>(new HealthType[0], false);
 
+  @Override
   public void fillInto(JPanel panel, int columnCount) {
     panel.add(damageLabel);
     panel.add(damageValueSpinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
@@ -32,50 +33,62 @@ public class WeaponDamageView implements IWeaponDamageView {
     panel.add(minDamageValueSpinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
   }
 
+  @Override
   public void setEnabled(boolean enabled) {
     throw new NotYetImplementedException();
   }
 
+  @Override
   public int getColumnCount() {
     return 3;
   }
 
+  @Override
   public IntegerSpinner getDamageIntegerSpinner() {
     return damageValueSpinner;
   }
   
+  @Override
   public IntegerSpinner getMinDamageIntegerSpinner() {
 	return minDamageValueSpinner;
   }
 
+  @Override
   public void setHealthTypeRenderer(ListCellRenderer renderer) {
     typeBox.setRenderer(renderer);
   }
 
+  @Override
   public void setDamageLabelText(String labelText) {
     this.damageLabel.setText(labelText);
   }
   
+  @Override
   public void setMinDamageLabelText(String labelText) {
 	this.minDamageLabel.setText(labelText);
   }
 
+  @Override
   public void addObjectSelectionChangedListener(IObjectValueChangedListener<HealthType> listener) {
     typeBox.addObjectSelectionChangedListener(listener);
   }
 
+  @Override
   public void setObjects(HealthType[] objects) {
     typeBox.setObjects(objects);
   }
 
+  @Override
   public void setSelectedObject(HealthType object) {
     typeBox.setSelectedObject(object);
   }
 
+  @Override
   public HealthType getSelectedObject() {
     return typeBox.getSelectedObject();
   }
 
+  @Override
   public boolean isObjectSelected() {
     return getSelectedObject() != null;
   }

@@ -14,6 +14,7 @@ public class MusicSelectionColumnViewSettings extends AbstractTableColumnSetting
     this.musicSelectionModel = musicSelectionModel;
   }
 
+  @Override
   public TableCellEditor getEditor() {
     return new MusicSelectionCellEditor(musicSelectionModel);
   }

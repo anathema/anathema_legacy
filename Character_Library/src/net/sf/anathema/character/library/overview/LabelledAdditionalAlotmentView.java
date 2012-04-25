@@ -8,10 +8,12 @@ public class LabelledAdditionalAlotmentView extends LabelledAlotmentView impleme
     super(labelText, 0, 0, maxValueLength);
   }
 
+  @Override
   public void setAlotment(int alotment, int additionalAlotment) {
     maxPointLabel.setText(String.valueOf(alotment) + "+" + String.valueOf(additionalAlotment)); //$NON-NLS-1$
   }
 
+  @Override
   public void setValue(int value, int additionalValue) {
     valueLabel.setText(String.valueOf(value) + "+" + String.valueOf(additionalValue)); //$NON-NLS-1$
   }

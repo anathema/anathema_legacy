@@ -48,27 +48,33 @@ public class BackgroundSelectionView<V> extends ButtonControlledComboEditView<V>
     });
   }
 
+  @Override
   public void addEditChangedListener(final IObjectValueChangedListener<String> listener) {
     detailBox.getDocument().addDocumentListener(new DocumentListener() {
+      @Override
       public void changedUpdate(DocumentEvent e) {
         listener.valueChanged(detailBox.getText());
       }
 
+      @Override
       public void insertUpdate(DocumentEvent e) {
         listener.valueChanged(detailBox.getText());
       }
 
+      @Override
       public void removeUpdate(DocumentEvent e) {
         listener.valueChanged(detailBox.getText());
       }
     });
   }
 
+  @Override
   public void clear() {
     super.clear();
     detailBox.setText("");
   }
 
+  @Override
   public JPanel getComponent() {
     JPanel panel = new JPanel(new GridDialogLayout(4, false));
     panel.add(label);

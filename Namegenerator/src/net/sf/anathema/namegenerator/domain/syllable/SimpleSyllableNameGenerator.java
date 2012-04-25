@@ -12,6 +12,7 @@ public class SimpleSyllableNameGenerator implements INameGenerator {
     this.wordCalculator = wordCalculator;
   }
 
+  @Override
   public String[] createNames(int count) {
     String[] names = new String[count];
     for (int nameIndex = 0; nameIndex < names.length; nameIndex++) {

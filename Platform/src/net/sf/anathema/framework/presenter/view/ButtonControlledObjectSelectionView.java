@@ -55,8 +55,10 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
     }
   }
 
+  @Override
   public void addButtonListener(final IObjectValueChangedListener<V> listener) {
     addButton.addActionListener(new ActionListener() {
+      @Override
       @SuppressWarnings("unchecked")
       public void actionPerformed(ActionEvent e) {
         listener.valueChanged((V) comboBox.getSelectedItem());
@@ -71,8 +73,10 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
     panel.add(addButton, GridDialogLayoutData.RIGHT);
   }
 
+  @Override
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
     comboBox.addItemListener(new ItemListener() {
+      @Override
       @SuppressWarnings("unchecked")
       public void itemStateChanged(ItemEvent e) {
         listener.valueChanged((V) comboBox.getSelectedItem());
@@ -80,25 +84,30 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
     });
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public V getSelectedObject() {
     return (V) comboBox.getSelectedItem();
   }
 
+  @Override
   public boolean isObjectSelected() {
     return getSelectedObject() != null;
   }
 
+  @Override
   public void setButtonEnabled(boolean enabled) {
     addButton.setEnabled(enabled);
   }
 
+  @Override
   public void setEnabled(boolean enabled) {
     comboBox.setEnabled(enabled);
     addButton.setEnabled(enabled);
     label.setEnabled(enabled);
   }
 
+  @Override
   public void setObjects(V[] objects) {
     Object selectedItem = comboBox.getSelectedItem();
     DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
@@ -109,6 +118,7 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
     comboBox.setSelectedItem(selectedItem);
   }
 
+  @Override
   public void setSelectedObject(Object object) {
     comboBox.setSelectedItem(object);
   }

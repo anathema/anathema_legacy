@@ -28,6 +28,7 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, 
     this.charmPrerequisiteBuilder = charmPrerequisiteBuilder;
   }
 
+  @Override
   public void setType(ITraitType type) {
     idBuilder.setType(type);
     traitBuilder.setType(type);

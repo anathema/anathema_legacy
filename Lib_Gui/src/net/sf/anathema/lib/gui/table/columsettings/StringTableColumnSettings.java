@@ -16,6 +16,7 @@ public class StringTableColumnSettings extends AbstractTableColumnSettings {
     super(preferredColumnCount);
   }
 
+  @Override
   public TableCellEditor getEditor() {
     return new StringCellEditor();
   }

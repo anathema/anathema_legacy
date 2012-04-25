@@ -32,6 +32,7 @@ public class EssenceConfigurationPresenter implements Presenter {
     this.view = view;
   }
 
+  @Override
   public void initPresentation() {
     ITrait essenceTrait = traitConfiguration.getTrait(OtherTraitType.Essence);
     IIntValueView essenceView = view.addEssenceView(resources.getString("Essence.Name"), //$NON-NLS-1$
@@ -45,6 +46,7 @@ public class EssenceConfigurationPresenter implements Presenter {
       final IValueView<String> peripheralView = createPeripheralPoolView();
       final IValueView<String> attunementView = addPool("EssencePool.Name.Attunement", essence.getAttunedPool());
       essence.addPoolChangeListener(new IChangeListener() {
+        @Override
         public void changeOccurred() {
           personalView.setValue(essence.getPersonalPool());
           listenToPeripheralChanges(peripheralView);

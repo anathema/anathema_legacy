@@ -30,6 +30,7 @@ import static org.apache.batik.util.SVGConstants.SVG_Y_ATTRIBUTE;
 
 public class VisualizableNode extends AbstractSingleVisualizableNode {
 
+  @Override
   public void accept(final IVisualizableNodeVisitor visitor) {
     visitor.visitSingleNode(this);
   }
@@ -42,6 +43,7 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     super(contentNode, map, nodeDimension, leafNodesByAncestors);
   }
 
+  @Override
   public void toXML(final Element element) {
     QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element g = element.addElement(group);

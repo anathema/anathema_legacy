@@ -25,11 +25,13 @@ public abstract class AbstractPersistSelectionAction extends SmartAction {
     this.selectionListView = selectionListView;
     this.selectionModel = selectionModel;
     selectionModel.addCurrentSelectionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateEnabled();
       }
     });
     selectionListView.addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         updateEnabled();
       }

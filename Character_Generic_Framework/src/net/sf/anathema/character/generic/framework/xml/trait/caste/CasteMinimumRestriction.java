@@ -34,12 +34,14 @@ public class CasteMinimumRestriction extends ReflectionEqualsObject implements I
 		this.isFreebie = isFreebie;
 	}
 
-	public void addTraitType(ITraitType traitType)
+	@Override
+    public void addTraitType(ITraitType traitType)
 	{
 		affectedTraitTypes.add(traitType);
 	}
 
-	public int getStrictMinimumValue()
+	@Override
+    public int getStrictMinimumValue()
 	{
 	    return restriction != null ? restriction.getStrictMinimumValue() : strictMinimum;
 	}
@@ -54,7 +56,8 @@ public class CasteMinimumRestriction extends ReflectionEqualsObject implements I
 		return caste || fulfilled;
 	}
 	
-	public int getCalculationMinValue(ILimitationContext context, ITraitType traitType)
+	@Override
+    public int getCalculationMinValue(ILimitationContext context, ITraitType traitType)
 	{
 		if (!isFreebie)
 			return 0;
@@ -65,13 +68,15 @@ public class CasteMinimumRestriction extends ReflectionEqualsObject implements I
 		return getStrictMinimumValue();
 	}
 	
-	public void setIsFreebie(boolean value)
+	@Override
+    public void setIsFreebie(boolean value)
 	{
 		if (restriction != null)
 			restriction.setIsFreebie(value);
 	}
 	
-	public void clear()
+	@Override
+    public void clear()
 	{
 		if (restriction != null)
 			restriction.clear();

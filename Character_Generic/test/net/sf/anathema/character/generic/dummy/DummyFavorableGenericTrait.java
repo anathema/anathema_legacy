@@ -16,6 +16,7 @@ public class DummyFavorableGenericTrait extends DummyGenericTrait implements IFa
     this.isFavored = isFavored;
   }
 
+  @Override
   public boolean isCasteOrFavored() {
     return isFavored;
   }

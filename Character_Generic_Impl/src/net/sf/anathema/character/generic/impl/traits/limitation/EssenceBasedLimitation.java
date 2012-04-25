@@ -8,11 +8,13 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 
 public class EssenceBasedLimitation implements ITraitLimitation {
 
+  @Override
   public int getAbsoluteLimit(ILimitationContext limitationContext) {
     int essenceMaximum = limitationContext.getEssenceLimitation().getAbsoluteLimit(limitationContext);
     return Math.max(essenceMaximum, 5);
   }
 
+  @Override
   public int getCurrentMaximum(ILimitationContext limitationContext, boolean modified) {
 	IGenericTrait essence = limitationContext.getTraitCollection()
     							.getTrait(OtherTraitType.Essence);

@@ -11,14 +11,17 @@ public class DummyMagicCollection implements IMagicCollection {
 
   private final Map<IMultiLearnableCharm, Integer> counts = new HashMap<IMultiLearnableCharm, Integer>();
 
+  @Override
   public int getLearnCount(IMultiLearnableCharm multiLearnableCharm) {
     return counts.get(multiLearnableCharm);
   }
 
+  @Override
   public boolean isLearned(IMagic magic) {
     return false;
   }
 
+  @Override
   public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
     counts.put(multiLearnableCharm, newValue);
   }

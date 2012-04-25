@@ -20,10 +20,12 @@ public final class TemplateType implements ITemplateType {
     this.subType = subType;
   }
 
+  @Override
   public ICharacterType getCharacterType() {
     return characterType;
   }
 
+  @Override
   public IIdentificate getSubType() {
     return subType;
   }

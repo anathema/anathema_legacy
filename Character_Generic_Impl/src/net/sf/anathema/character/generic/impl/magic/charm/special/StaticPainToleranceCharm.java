@@ -21,6 +21,7 @@ public class StaticPainToleranceCharm extends StaticMultiLearnableCharm implemen
     visitor.visitPainToleranceCharm(this);
   }
 
+  @Override
   public int getPainToleranceLevel(int learnCount) {
     if (learnCount <= 0) {
       return 0;

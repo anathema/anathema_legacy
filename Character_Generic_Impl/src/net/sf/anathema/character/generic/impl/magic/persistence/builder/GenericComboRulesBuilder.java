@@ -19,6 +19,7 @@ public class GenericComboRulesBuilder extends ComboRulesBuilder implements IComb
     }
   }
 
+  @Override
   public void setType(ITraitType type) {
     this.type = type;
   }

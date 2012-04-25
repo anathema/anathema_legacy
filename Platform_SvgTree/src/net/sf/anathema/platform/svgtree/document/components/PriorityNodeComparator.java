@@ -12,7 +12,8 @@ public final class PriorityNodeComparator implements Comparator<IVisualizableNod
 		this.direction = direction;
 	}
 
-	public int compare(IVisualizableNode node1, IVisualizableNode node2) {
+	@Override
+    public int compare(IVisualizableNode node1, IVisualizableNode node2) {
 		if (direction == Direction.DOWN) {
 			return priority(node1, node1.getParents()) - priority(node2, node2.getParents());
 		}

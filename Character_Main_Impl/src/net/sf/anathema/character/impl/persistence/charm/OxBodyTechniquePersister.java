@@ -12,6 +12,7 @@ import org.dom4j.Element;
 public class OxBodyTechniquePersister implements ISpecialCharmPersister {
   private final TraitPersister traitPersister = new ExperiencedRestoringTraitPersister();
 
+  @Override
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
     IOxBodyTechniqueConfiguration configuration = (IOxBodyTechniqueConfiguration) specialCharmConfiguration;
     Element categoriesElement = specialElement.addElement(TAG_CATEGORIES);
@@ -20,6 +21,7 @@ public class OxBodyTechniquePersister implements ISpecialCharmPersister {
     }
   }
 
+  @Override
   public void loadConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration)
       throws PersistenceException {
     IOxBodyTechniqueConfiguration configuration = (IOxBodyTechniqueConfiguration) specialCharmConfiguration;

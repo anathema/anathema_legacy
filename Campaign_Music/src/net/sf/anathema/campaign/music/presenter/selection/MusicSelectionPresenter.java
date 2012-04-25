@@ -31,18 +31,22 @@ public class MusicSelectionPresenter implements Presenter {
     this.selectionModel = selectionModel;
   }
 
+  @Override
   public void initPresentation() {
     selectionModel.addCurrentSelectionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateTrackList();
       }
     });
     selectionModel.getTrackDetailModel().addChangeDetailListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         refreshTrackList();
       }
     });
     selectionModel.addSelectionsChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateSelectionList();
       }
@@ -60,6 +64,7 @@ public class MusicSelectionPresenter implements Presenter {
     trackListView.addAction(new DeleteSelectionTracksAction(resources, trackListView, selectionModel));
     trackListView.addAction(new ExportSelectionTracksAction(resources, selectionModel));
     trackListView.addListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         List<IMp3Track> trackList = new ArrayList<IMp3Track>();
         IMp3Track[] selectedItems = trackListView.getSelectedItems();

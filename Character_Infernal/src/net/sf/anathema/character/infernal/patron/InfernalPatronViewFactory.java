@@ -13,6 +13,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class InfernalPatronViewFactory implements IAdditionalViewFactory {
 
+  @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     IInfernalPatronViewProperties properties = new InfernalPatronViewProperties(resources);
     InfernalPatronView view = new InfernalPatronView(properties);

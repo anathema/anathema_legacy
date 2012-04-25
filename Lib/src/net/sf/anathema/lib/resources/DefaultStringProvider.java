@@ -10,6 +10,7 @@ public class DefaultStringProvider implements IStringResourceHandler {
     this.defaultKey = defaultKey;
   }
 
+  @Override
   public String getString(String key, Object... arguments) {
     if (arguments.length == 0) {
       String[] splitKey = key.split("\\."); //$NON-NLS-1$
@@ -21,6 +22,7 @@ public class DefaultStringProvider implements IStringResourceHandler {
     return MessageFormat.format(formatPattern, arguments);
   }
 
+  @Override
   public boolean supportsKey(String key) {
     return key.endsWith("." + defaultKey); //$NON-NLS-1$
   }

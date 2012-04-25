@@ -10,6 +10,7 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 
 public class HierarchyBuilder implements IHierachyBuilder {
 
+  @Override
   public ISimpleNode[] removeLongEdges(IRegularNode[] acyclicGraph) {
     List<ISimpleNode> hierarchicalGraph = new ArrayList<ISimpleNode>();
     Collections.addAll(hierarchicalGraph, acyclicGraph);

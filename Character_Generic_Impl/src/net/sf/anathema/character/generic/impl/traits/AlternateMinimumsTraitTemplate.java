@@ -21,10 +21,12 @@ public class AlternateMinimumsTraitTemplate extends AbstractTraitTemplate {
     this.demandedMinimum = demandedMinimum;
   }
 
+  @Override
   public ITraitLimitation getLimitation() {
     return limitation;
   }
 
+  @Override
   public int getMinimumValue(ILimitationContext context) {
     ITraitType alternateType = alternativeType.getType();
     IGenericTrait trait = context.getTraitCollection().getTrait(alternateType);
@@ -34,6 +36,7 @@ public class AlternateMinimumsTraitTemplate extends AbstractTraitTemplate {
     return DEFAULT_MINIMUM;
   }
   
+  @Override
   public int getCalculationMinValue(ILimitationContext context, ITraitType type)
   {
 	  return getMinimumValue(context);

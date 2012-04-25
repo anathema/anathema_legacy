@@ -6,6 +6,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IMagicStats extends IStats, Comparable<IMagicStats> {
 
+  @Override
   IIdentificate getName();
 
   String getCostString(IResources resources);

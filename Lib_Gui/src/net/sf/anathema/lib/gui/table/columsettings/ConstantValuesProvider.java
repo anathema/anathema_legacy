@@ -10,6 +10,7 @@ public class ConstantValuesProvider implements IComboBoxValuesProvider {
     this.values = values;
   }
 
+  @Override
   public Object[] getValues(int rowIndex) {
     return values;
   }

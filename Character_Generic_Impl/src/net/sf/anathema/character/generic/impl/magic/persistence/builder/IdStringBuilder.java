@@ -8,6 +8,7 @@ import org.dom4j.Element;
 
 public class IdStringBuilder implements IIdStringBuilder {
 
+  @Override
   public String build(Element element) throws CharmException {
     final String value = element.attributeValue(ICharmXMLConstants.ATTRIB_ID);
     if (StringUtilities.isNullOrTrimmedEmpty(value)) {

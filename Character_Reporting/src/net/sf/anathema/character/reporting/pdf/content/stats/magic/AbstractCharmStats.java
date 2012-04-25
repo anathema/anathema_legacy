@@ -20,19 +20,23 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
     super(magic);
   }
 
+  @Override
   public String getGroupName(final IResources resources) {
     return resources.getString(getMagic().getGroupId());
   }
 
+  @Override
   public String getType(IResources resources) {
     ICharmTypeModel model = getMagic().getCharmTypeModel();
     return new ShortCharmTypeStringBuilder(resources).createTypeString(model);
   }
 
+  @Override
   public String getDurationString(final IResources resources) {
     return getMagic().getDuration().getText(resources);
   }
 
+  @Override
   public String getSourceString(IResources resources) {
     final IMagicSourceStringBuilder<ICharm> stringBuilder = new MagicSourceStringBuilder<ICharm>(resources);
     return stringBuilder.createShortSourceString(getMagic());
@@ -49,8 +53,10 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
     return details.toArray(new String[details.size()]);
   }
 
+  @Override
   public String[] getDetailStrings(final IResources resources) {
     return ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
+      @Override
       public String transform(String input) {
         return resources.getString(input);
       }

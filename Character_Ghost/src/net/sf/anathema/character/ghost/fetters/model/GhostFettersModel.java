@@ -34,6 +34,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
   private static final int FETTER_BONUS_POINT_COST = 3;
   private final int maxFreeRating;
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Miscellaneous;
   }
@@ -48,6 +49,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
     maxFreeRating = 3;
   }
   
+  @Override
   public String getTemplateId()
   {
 	  return template.getId();
@@ -58,6 +60,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	  return context.getTraitCollection().getTrait(type).getCurrentValue();
   }
 
+  @Override
   public void setCurrentFetterName(String newFetterName) {
     this.currentName = newFetterName;
     control.fireChangedEvent();
@@ -69,6 +72,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	  return ageTrait == null ? 0 : ageTrait.getCurrentValue();
   }
   
+  @Override
   public int getMaxFetterDots()
   {
 	  IGenericTrait essence = context.getTraitCollection().getTrait(OtherTraitType.Essence);
@@ -76,6 +80,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	  return essence.getCurrentValue() + will.getCurrentValue() - getAge();
   }
   
+  @Override
   public int getCurrentFetterDots()
   {
 	  int total = 0;
@@ -85,11 +90,13 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	  return total;
   }
   
+  @Override
   public int getFreeDotAllotment()
   {
 	  return baseFreeFetterDotsPerAge[getAge()]; 
   }
   
+  @Override
   public int getFreeDotsSpent()
   {
 	  int spent = 0;
@@ -98,6 +105,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	  return Math.min(spent, getFreeDotAllotment());
   }
   
+  @Override
   public int getBonusPointsSpent()
   {
 	  int freeDotsRemaining = getFreeDotAllotment();
@@ -114,6 +122,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	  return FETTER_BONUS_POINT_COST * bonusPointDots;
   }
   
+  @Override
   public int getXPSpent()
   {
 	  int xpMult = 0;
@@ -122,11 +131,13 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	  return FETTER_XP_MULTIPLIER * xpMult;
   }
   
+  @Override
   public IAdditionalModelBonusPointCalculator getBonusPointCalculator()
   {
 	return new FetterModelBonusPointCalculator(this);
   }
 
+  @Override
   public IAdditionalModelExperienceCalculator getExperienceCalculator()
   {
 	return new FetterModelExperiencePointCalculator(this);
@@ -142,6 +153,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	  return total == 1 ? 0 : total;		  
   }
   
+  @Override
   public Fetter[] getFetters()
   {
 	  Fetter[] fetterSet = new Fetter[fetters.size()];
@@ -149,6 +161,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	  return fetterSet;
   }
 
+  @Override
   public Fetter commitSelection() {
 	Fetter newFetter = new Fetter(currentName, context.getTraitContext(), this);
 	fetters.add(newFetter);
@@ -167,34 +180,41 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 	return newFetter;
   }
   
+  @Override
   public void removeFetter(Fetter fetter)
   {
 	  fetters.remove(fetter);
   }
 
+  @Override
   public void clear() {
     currentName = null;
     control.fireChangedEvent();
   }
 
+  @Override
   public boolean isEntryComplete() {
     return !StringUtilities.isNullOrEmpty(currentName);
   }
 
+  @Override
   public boolean isExperienced() {
     return context.getBasicCharacterContext().isExperienced();
   }
  
+  @Override
   public void setValueChangedListener(IIntValueChangedListener listener) {
 	    this.listener = listener;
 	    for (Fetter fetter : fetters)
 	    	fetter.addCurrentValueListener(listener);
 	  }
 
+  @Override
   public void addCharacterChangeListener(ICharacterChangeListener listener) {
     context.getCharacterListening().addChangeListener(listener);
   }
   
+  @Override
   public void addSelectionChangeListener(IChangeListener listener) {
 	    control.addChangeListener(listener);
 	  }

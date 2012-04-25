@@ -45,6 +45,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
         }
       }
       Collections.sort(excellencies, new Comparator<IMagicStats>() {
+        @Override
         public int compare(IMagicStats a, IMagicStats b) {
           String aId = a.getName().getId();
           String bId = b.getName().getId();
@@ -71,6 +72,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
     for (int i = 0; i < excellencies.length; i++) {
       final String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
       excellencyLearned[i] = CollectionUtilities.getFirst(allLearnedMagic, new IPredicate<IMagic>() {
+        @Override
         public boolean evaluate(IMagic value) {
           return charmId.equals(value.getId());
         }
@@ -88,10 +90,12 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
     return template.getLimitation().getAbsoluteLimit(character);
   }
 
+  @Override
   public boolean hasContent() {
     return true;
   }
 
+  @Override
   public abstract String getHeaderKey();
 
   public String getGroupLabel(IIdentificate groupId) {

@@ -15,14 +15,17 @@ public class TraitRequirement implements ITraitRequirement {
     this.traitType = traitType;
   }
 
+  @Override
   public int getFreeMinimum() {
     return freeMinimum;
   }
 
+  @Override
   public int getStrictMinimum() {
     return strictMinimum;
   }
 
+  @Override
   public boolean isCurrentlyStrict(IGenericTraitCollection collection) {
     int currentValue = collection.getTrait(traitType).getCurrentValue();
     return currentValue >= getStrictMinimum();

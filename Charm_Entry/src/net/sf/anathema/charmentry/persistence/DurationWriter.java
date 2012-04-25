@@ -19,15 +19,18 @@ public class DurationWriter {
   public void write(ICharmData charm, Element charmElement) {
     final Element durationElement = charmElement.addElement(TAG_DURATION);
     charm.getDuration().accept(new IDurationVisitor() {
+      @Override
       public void visitSimpleDuration(SimpleDuration duration) {
         durationElement.addAttribute(ATTRIB_DURATION, duration.getText());
       }
 
+      @Override
       public void visitQualifiedAmountDuration(QualifiedAmountDuration visitedDuration) {
         durationElement.addAttribute(ATTRIB_AMOUNT, visitedDuration.getAmount());
         durationElement.addAttribute(ATTRIB_UNIT, visitedDuration.getUnit());
       }
 
+      @Override
       public void acceptUntilEventDuration(UntilEventDuration visitedDuration) {
         durationElement.addAttribute(ATTRIB_EVENT, visitedDuration.getEvent());
       }

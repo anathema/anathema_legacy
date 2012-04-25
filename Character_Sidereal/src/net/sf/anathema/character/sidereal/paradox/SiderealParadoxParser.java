@@ -7,6 +7,7 @@ import org.dom4j.Element;
 
 public class SiderealParadoxParser implements IAdditionalTemplateParser {
 
+  @Override
   public IAdditionalTemplate parse(Element element) {
     return new SiderealParadoxTemplate();
   }

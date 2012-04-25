@@ -28,22 +28,27 @@ public class SourceSelectionView implements ISourceSelectionView, IDialogCompone
 
   }
 
+  @Override
   public void addSourceChangeListener(IObjectValueChangedListener<IExaltedSourceBook> listener) {
     bookBox.addObjectSelectionChangedListener(listener);
   }
 
+  @Override
   public void addPageChangeListener(IIntValueChangedListener listener) {
     spinner.addChangeListener(listener);
   }
 
+  @Override
   public void setPageSelectionEnabled(boolean enabled) {
     spinner.getComponent().setEnabled(enabled);
   }
 
+  @Override
   public int getColumnCount() {
     return 4;
   }
 
+  @Override
   public void fillInto(JPanel panel, int columnCount) {
     addTo(panel);
   }
@@ -59,6 +64,7 @@ public class SourceSelectionView implements ISourceSelectionView, IDialogCompone
     bookBox.setRenderer(renderer);
   }
 
+  @Override
   public void setObjects(IExaltedSourceBook[] legalSources) {
     bookBox.setObjects(legalSources);
   }

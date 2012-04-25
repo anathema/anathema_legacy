@@ -18,6 +18,7 @@ public class MusicCategorizationPresenter implements Presenter {
     this.view = view;
   }
 
+  @Override
   public void initPresentation() {
     new SelectionContainerPresenter<IMusicTheme>(model.getThemesModel(), view.getThemesView(), IMusicTheme.class).initPresentation();
     new SelectionContainerPresenter<IMusicMood>(model.getMoodsModel(), view.getMoodsView(), IMusicMood.class).initPresentation();

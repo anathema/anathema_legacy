@@ -14,6 +14,7 @@ public class TraitListener implements IIntValueChangedListener {
     this.closure = new TraitChangeClosure(control, traitType);
   }
 
+  @Override
   public void valueChanged(int newValue) {
     closure.fireEvent();
   }

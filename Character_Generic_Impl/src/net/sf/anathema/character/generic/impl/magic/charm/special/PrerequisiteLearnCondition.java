@@ -25,6 +25,7 @@ class PrerequisiteLearnCondition implements ICondition {
     this.data = data;
   }
 
+  @Override
   public boolean isFulfilled() {
     if (!arbitrator.isLearnable(charm)) {
       return false;

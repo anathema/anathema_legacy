@@ -48,29 +48,35 @@ public class BasicAdvantagePresenter implements IContentPresenter {
         view));
   }
 
+  @Override
   public void initPresentation() {
     for (Presenter presenter : subPresenters) {
       presenter.initPresentation();
     }
     view.initGui(new IAdvantageViewProperties() {
+      @Override
       public String getVirtueTitle() {
         return resources.getString("AdvantagesView.Virtues.Title"); //$NON-NLS-1$
       }
 
+      @Override
       public String getWillpowerTitle() {
         return resources.getString("AdvantagesView.Willpower.Title"); //$NON-NLS-1$
       }
 
+      @Override
       public String getEssenceTitle() {
         return resources.getString("AdvantagesView.Essence.Title"); //$NON-NLS-1$
       }
 
+      @Override
       public String getBackgroundTitle() {
         return resources.getString("AdvantagesView.Backgrounds.Title"); //$NON-NLS-1$
       }
     });
   }
 
+  @Override
   public IViewContent getTabContent() {
     String basicAdvantageHeader = resources.getString("CardView.Advantages.Title"); //$NON-NLS-1$
     return new SimpleViewContent(new ContentProperties(basicAdvantageHeader), view);

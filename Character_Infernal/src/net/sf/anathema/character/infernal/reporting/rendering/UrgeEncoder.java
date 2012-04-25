@@ -22,6 +22,7 @@ public class UrgeEncoder extends AbstractContentEncoder<InfernalUrgeContent> {
     super(InfernalUrgeContent.class);
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     InfernalUrgeContent content = createContent(reportSession);
     Bounds textBounds = traitEncoder.encode(graphics, bounds, content.getLimitValue());

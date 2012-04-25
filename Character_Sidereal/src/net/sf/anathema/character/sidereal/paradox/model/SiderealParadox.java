@@ -10,6 +10,7 @@ public class SiderealParadox extends VirtueFlaw {
 	  this.getName().setText("Flawed Virtue");
   }
   
+  @Override
   protected String getLimitString()
   {
 	  return "VirtueFlaw.Paradox";

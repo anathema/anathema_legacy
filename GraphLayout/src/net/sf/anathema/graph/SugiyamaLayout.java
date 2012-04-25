@@ -34,18 +34,22 @@ public class SugiyamaLayout {
     final List<IProperHierarchicalGraph> orderedGraphs = new ArrayList<IProperHierarchicalGraph>(separatedGraphs.length);
     for (final IProperHierarchicalGraph graph : separatedGraphs) {
       graph.getType().accept(new IGraphTypeVisitor() {
+        @Override
         public void visitDirectedGraph(final IGraphType visitedType) {
           orderedGraphs.add(createOrderedGraph(graph));
         }
 
+        @Override
         public void visitInvertedTree(final IGraphType visitedType) {
           orderedGraphs.add(graph);
         }
 
+        @Override
         public void visitTree(final IGraphType visitedType) {
           orderedGraphs.add(graph);
         }
 
+        @Override
         public void visitSingle(final IGraphType visitedType) {
           orderedGraphs.add(graph);
         }
@@ -96,16 +100,19 @@ public class SugiyamaLayout {
   private List<IVertexOrdererFactory> populateVertexOrdererFactoryList() {
     List<IVertexOrdererFactory> list = new ArrayList<IVertexOrdererFactory>();
     list.add(new IVertexOrdererFactory() {
+      @Override
       public IVertexOrderer createVertexOrderer(final IProperHierarchicalGraph graph) {
         return new SugiyamaVertexOrderer(graph);
       }
     });
     list.add(new IVertexOrdererFactory() {
+      @Override
       public IVertexOrderer createVertexOrderer(final IProperHierarchicalGraph graph) {
         return new UrsVertexOrderer(graph);
       }
     });
     list.add(new IVertexOrdererFactory() {
+      @Override
       public IVertexOrderer createVertexOrderer(final IProperHierarchicalGraph graph) {
         return new SandraVertexOrderer(graph);
       }

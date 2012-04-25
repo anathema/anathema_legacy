@@ -12,6 +12,7 @@ public class ConfigurableFileProvider implements IAnathemaWizardModelTemplate, I
     this.file = file;
   }
 
+  @Override
   public File getFile() {
     return file;
   }

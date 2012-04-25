@@ -49,7 +49,8 @@ public class NumberTableColumnSettings extends AbstractTableColumnSettings {
 		this.nullValueStrategy = nullValueStrategy;
 	}
 
-	public TableCellEditor getEditor() {
+	@Override
+    public TableCellEditor getEditor() {
 		return new NumberCellEditor(format, valueClass, nullValueStrategy);
 	}
 

@@ -27,10 +27,12 @@ public class ReflexiveCharmSpecialsView implements IDialogComponent, IReflexiveC
     splitBox = new JCheckBox(splitLabel);
   }
 
+  @Override
   public void fillInto(JPanel panel, int columnCount) {
     addTo(panel);
   }
 
+  @Override
   public int getColumnCount() {
     return 4;
   }
@@ -43,6 +45,7 @@ public class ReflexiveCharmSpecialsView implements IDialogComponent, IReflexiveC
     panel.add(splitBox);
   }
 
+  @Override
   public void setEnabled(boolean enabled) {
     mainLabel.setEnabled(enabled);
     stepView.setEnabled(enabled);
@@ -50,8 +53,10 @@ public class ReflexiveCharmSpecialsView implements IDialogComponent, IReflexiveC
     splitBox.setEnabled(enabled);
   }
 
+  @Override
   public void addSplitListener(final IBooleanValueChangedListener listener) {
     splitBox.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         listener.valueChanged(splitBox.isSelected());
       }
@@ -71,10 +76,12 @@ public class ReflexiveCharmSpecialsView implements IDialogComponent, IReflexiveC
     defenderView.setValue(defenseStep);
   }
 
+  @Override
   public void addStepListener(IIntValueChangedListener listener) {
     stepView.addIntValueChangedListener(listener);
   }
 
+  @Override
   public void addDefenseStepListener(IIntValueChangedListener listener) {
     defenderView.addIntValueChangedListener(listener);
   }

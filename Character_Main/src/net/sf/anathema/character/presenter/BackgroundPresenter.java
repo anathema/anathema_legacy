@@ -51,10 +51,12 @@ public class BackgroundPresenter implements Presenter {
     this.backgroundRegistry = backgroundRegistry;
     this.internationalizer = new BackgroundInternationalizer(resources);
     this.configuration.addBackgroundListener(new IBackgroundListener() {
+      @Override
       public void backgroundAdded(IBackground background) {
         addBackgroundView(background);
       }
 
+      @Override
       public void backgroundRemoved(IBackground background) {
         removeBackgroundView(background);
       }
@@ -68,6 +70,7 @@ public class BackgroundPresenter implements Presenter {
     this.displayer = new Displayer(internationalizer);
   }
 
+  @Override
   public void initPresentation() {
     Icon addIcon = new BasicUi(resources).getAddIcon();
     final IButtonControlledComboEditView<Object> view = configurationView.addBackgroundSelectionView(
@@ -76,12 +79,14 @@ public class BackgroundPresenter implements Presenter {
             new BackgroundBoxEditor(displayer),
             addIcon);
     view.addEditChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newBackgroundDescription) {
         backgroundDescription = newBackgroundDescription;
       }
     });
     view.setObjects(getSortedBackgrounds());
     view.addButtonListener(new IObjectValueChangedListener<Object>() {
+      @Override
       public void valueChanged(Object newValue) {
         IBackgroundTemplate backgroundType = getBackgroundType(newValue);
         String description = backgroundDescription.equals("") ? null : backgroundDescription;
@@ -112,6 +117,7 @@ public class BackgroundPresenter implements Presenter {
             background.getCurrentValue(), background.getMaximalValue());
     new TraitPresenter(background, backgroundView).initPresentation();
     backgroundView.addButtonListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         configuration.removeBackground(background);
       }

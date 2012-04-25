@@ -21,6 +21,7 @@ public class MultiFileReadAccess implements IRepositoryReadAccess {
     this.extension = extension;
   }
 
+  @Override
   public InputStream openMainInputStream() throws RepositoryException {
     try {
       return openInputStream(mainFileName);
@@ -30,6 +31,7 @@ public class MultiFileReadAccess implements IRepositoryReadAccess {
     }
   }
 
+  @Override
   public InputStream openSubInputStream(String streamID) throws RepositoryException {
     try {
       return openInputStream(streamID);
@@ -43,6 +45,7 @@ public class MultiFileReadAccess implements IRepositoryReadAccess {
     return new FileInputStream(new File(itemFolder, id + extension));
   }
 
+  @Override
   public File[] getFiles() {
     return itemFolder.listFiles();
   }

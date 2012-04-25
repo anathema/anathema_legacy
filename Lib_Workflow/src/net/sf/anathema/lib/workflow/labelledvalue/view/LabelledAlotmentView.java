@@ -44,6 +44,7 @@ public class LabelledAlotmentView extends AbstractLabelledIntegerValueView imple
     return collection;
   }
 
+  @Override
   public void setAlotment(int value) {
     maxPointLabel.setText(String.valueOf(value));
   }

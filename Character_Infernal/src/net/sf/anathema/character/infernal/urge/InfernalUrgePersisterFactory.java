@@ -7,6 +7,7 @@ import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 
 public class InfernalUrgePersisterFactory implements IAdditionalPersisterFactory {
 
+  @Override
   public IAdditionalPersister createPersister(IAnathemaMessaging messaging) {
     return new InfernalUrgePersister();
   }

@@ -71,6 +71,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     return !pageModel.getName().isEmpty();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     if (!isNameDefined()) {
       return properties.getUndefinedNameMessage();
@@ -85,10 +86,12 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     return overallModel.isNameUnique(pageModel.getName().getText());
   }
 
+  @Override
   public final String getDescription() {
     return properties.getPageDescription();
   }
 
+  @Override
   public boolean canFinish() {
     return isNameDefined() && isNameUnique();
   }
@@ -111,6 +114,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
       return;
     }
     addFollowupPage(new WeaponTagsPresenterPage(resources, overallModel, viewFactory), inputListener, new ICondition() {
+      @Override
       public boolean isFulfilled() {
         return isInLegalState();
       }
@@ -130,6 +134,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     getPageModel().getName().addTextChangedListener(inputListener);
   }
 
+  @Override
   public final IWeaponStatisticsView getPageContent() {
     return view;
   }
@@ -137,6 +142,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   protected final void addLabelledComponentRow(final String[] labels, final Component[] contents) {
     Ensure.ensureArgumentTrue("Same number of labels required", labels.length == contents.length); //$NON-NLS-1$
     getPageContent().addDialogComponent(new IDialogComponent() {
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         for (int index = 0; index < contents.length; index++) {
           panel.add(new JLabel(labels[index]));
@@ -144,6 +150,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
         }
       }
 
+      @Override
       public int getColumnCount() {
         return contents.length * 2;
       }

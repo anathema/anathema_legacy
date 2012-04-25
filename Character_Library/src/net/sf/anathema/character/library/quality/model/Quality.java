@@ -34,6 +34,7 @@ public abstract class Quality implements IQuality, IIdentificate {
     return prerequisites;
   }
 
+  @Override
   public IQualityType getType() {
     return type;
   }
@@ -42,6 +43,7 @@ public abstract class Quality implements IQuality, IIdentificate {
     prerequisites.add(prerequisite);
   }
 
+  @Override
   public boolean prerequisitesFulfilled(IQualitySelection< ? extends IQuality>[] selectedQualities) {
     for (IQualityPredicate prerequisite : prerequisites) {
       if (!prerequisite.isFulfilled(selectedQualities)) {

@@ -33,6 +33,7 @@ public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeCo
   @Override
   protected IItemViewFactory createItemViewFactory(final IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
+      @Override
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         Icon icon = new PlotUI(resources).getSeriesTabIcon();

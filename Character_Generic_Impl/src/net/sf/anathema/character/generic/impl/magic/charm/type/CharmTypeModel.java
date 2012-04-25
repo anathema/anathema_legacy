@@ -9,10 +9,12 @@ public class CharmTypeModel implements ICharmTypeModel {
   private CharmType type;
   private ITypeSpecialsModel model;
 
+  @Override
   public CharmType getCharmType() {
     return type;
   }
 
+  @Override
   public ITypeSpecialsModel getSpecialsModel() {
     return model;
   }
@@ -25,6 +27,7 @@ public class CharmTypeModel implements ICharmTypeModel {
     this.model = model;
   }
 
+  @Override
   public boolean hasSpecialsModel() {
     return model != null;
   }

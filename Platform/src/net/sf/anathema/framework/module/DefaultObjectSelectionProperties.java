@@ -18,10 +18,12 @@ public final class DefaultObjectSelectionProperties extends AnathemaDialogProper
     this.titleKey = titleKey;
   }
 
+  @Override
   public IBasicMessage getDefaultMessage() {
     return new BasicMessage(getResources().getString(loadMessageKey), MessageType.NORMAL);
   }
 
+  @Override
   public String getTitle() {
     return getResources().getString(titleKey);
   }

@@ -12,10 +12,12 @@ public class MessageData implements IMessageData {
     this.type = type;
   }
 
+  @Override
   public String getKey() {
     return key;
   }
 
+  @Override
   public MessageType getType() {
     return type;
   }

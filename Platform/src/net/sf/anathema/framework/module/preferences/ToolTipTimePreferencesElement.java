@@ -21,6 +21,7 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
   private boolean dirty;
   private IntegerSpinner spinner;
 
+  @Override
   public void addComponent(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
@@ -31,6 +32,7 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
     spinner.setPreferredWidth(70);
     spinner.setMinimum(0);
     spinner.addChangeListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         if (toolTipTime == newValue) {
           return;
@@ -40,10 +42,12 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
       }
     });
     return new IDialogComponent() {
+      @Override
       public int getColumnCount() {
         return 2;
       }
 
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(toolTipTimeLabel);
         panel.add(spinner.getComponent());
@@ -51,22 +55,27 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
     };
   }
 
+  @Override
   public void savePreferences() {
     IPreferencesElement.SYSTEM_PREFERENCES.putInt(TOOL_TIP_TIME_PREFERENCE, toolTipTime);
   }
   
+  @Override
   public boolean isValid() {
     return true;
   }
 
+  @Override
   public boolean isDirty() {
     return dirty;
   }
 
+  @Override
   public IIdentificate getCategory() {
     return SYSTEM_CATEGORY;
   }
 
+  @Override
   public void reset() {
     toolTipTime = SYSTEM_PREFERENCES.getInt(TOOL_TIP_TIME_PREFERENCE, 10);
     spinner.setValue(toolTipTime);

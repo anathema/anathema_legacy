@@ -16,10 +16,12 @@ public class SingleOverallComponent implements IDialogComponent {
     this.component = component;
   }
 
+  @Override
   public int getColumnCount() {
     return 1;
   }
 
+  @Override
   public void fillInto(JPanel panel, int columnCount) {
     panel.add(component, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount, GridDialogLayoutData.FILL_HORIZONTAL));
   }

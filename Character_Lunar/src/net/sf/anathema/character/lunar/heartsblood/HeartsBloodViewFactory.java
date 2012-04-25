@@ -11,6 +11,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class HeartsBloodViewFactory implements IAdditionalViewFactory {
 
+  @Override
   public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     HeartsBloodView view = new HeartsBloodView();
     new HeartsBloodPresenter((IHeartsBloodModel) model, view, resources).initPresentation();

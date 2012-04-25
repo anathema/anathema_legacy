@@ -16,12 +16,14 @@ public class AlternateRequirementTraitMinimum implements ITraitMinimum {
     this.requirementCollection = collection;
   }
 
+  @Override
   public int getMinimumValue(ILimitationContext limitationContext) {
     return requirementCollection.isStrictWithout(requirement, limitationContext.getTraitCollection())
         ? requirement.getFreeMinimum()
         : requirement.getStrictMinimum();
   }
   
+  @Override
   public int getCalculationMinValue(ILimitationContext context, ITraitType type)
   {
 	  return getMinimumValue(context);

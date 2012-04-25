@@ -15,10 +15,12 @@ public abstract class AbstractMagicLearnProperties implements IMagicLearnPropert
     this.resources = resources;
   }
 
+  @Override
   public Icon getAddButtonIcon() {
     return new BasicUi(resources).getRightArrowIcon();
   }
 
+  @Override
   public Icon getRemoveButtonIcon() {
     return new BasicUi(resources).getRemoveIcon();
   }
@@ -27,6 +29,7 @@ public abstract class AbstractMagicLearnProperties implements IMagicLearnPropert
     return resources;
   }
 
+  @Override
   public ListCellRenderer getLearnedMagicRenderer() {
     return new IdentificateListCellRenderer(getResources());
   }

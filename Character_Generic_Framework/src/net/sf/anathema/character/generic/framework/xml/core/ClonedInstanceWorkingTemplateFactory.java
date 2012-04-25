@@ -6,10 +6,12 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public class ClonedInstanceWorkingTemplateFactory<T extends ICloneable<T>> implements IWorkingTemplateFactory<T> {
 
+  @Override
   public T getWorkingTemplateForId(IXmlTemplateRegistry<T> templateRegistry, String templateId)
       throws PersistenceException {
     return templateRegistry.get(templateId).clone();
   }
+  @Override
   public T getWorkingTemplateForId(IXmlTemplateRegistry<T> templateRegistry, String templateId, String prefix)
       throws PersistenceException {
     return templateRegistry.get(templateId, prefix).clone();

@@ -20,17 +20,21 @@ public class BackwardsIterable<T> implements Iterable<T> {
     this(Arrays.asList(array));
   }
 
+  @Override
   public Iterator<T> iterator() {
     return new Iterator<T>() {
+      @Override
       public boolean hasNext() {
         return currentIndex > 0;
       }
 
+      @Override
       public T next() {
         currentIndex--;
         return list.get(currentIndex);
       }
 
+      @Override
       public void remove() {
         throw new NotYetImplementedException();
       }

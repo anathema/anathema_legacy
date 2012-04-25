@@ -72,6 +72,7 @@ public class TextEditor implements IStyledTextView, IView {
     return KeyStroke.getKeyStroke(key, Event.CTRL_MASK | Event.SHIFT_MASK);
   }
 
+  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = new JPanel(new BorderLayout());
@@ -119,6 +120,7 @@ public class TextEditor implements IStyledTextView, IView {
     final JToggleButton button = new JToggleButton(action);
     button.setText(null);
     textPane.addCaretListener(new CaretListener() {
+      @Override
       public void caretUpdate(CaretEvent e) {
         selectButton(styleConstant, button);
       }
@@ -136,6 +138,7 @@ public class TextEditor implements IStyledTextView, IView {
       }
     });
     button.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         textPane.requestFocus();
       }
@@ -158,6 +161,7 @@ public class TextEditor implements IStyledTextView, IView {
     button.setSelected(selected);
   }
 
+  @Override
   public void setEnabled(boolean enabled) {
     textPane.setEnabled(enabled);
     for (JToggleButton button : toolBarButtons) {

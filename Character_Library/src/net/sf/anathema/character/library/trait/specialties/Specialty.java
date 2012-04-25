@@ -29,14 +29,17 @@ public class Specialty extends DefaultTrait implements ISpecialty {
     this.subTraitName = specialtyName;
   }
 
+  @Override
   public String getName() {
     return subTraitName;
   }
 
+  @Override
   public ITraitReference getTraitReference() {
     return reference;
   }
 
+  @Override
   public ITraitType getBasicTraitType() {
     return reference.getTraitType();
   }

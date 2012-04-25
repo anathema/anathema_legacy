@@ -16,6 +16,7 @@ public class SimpleWordFactory implements IWordFactory {
     this.upperCase = upperCase;
   }
 
+  @Override
   public String createWord(int wordIndex) {
     StringBuffer word = new StringBuffer();
     int syllableCount = countCalculator.calculateNamePartCount();

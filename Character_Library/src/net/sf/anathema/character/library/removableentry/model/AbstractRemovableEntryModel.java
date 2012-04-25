@@ -14,10 +14,12 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
   private final List<E> entries = new ArrayList<E>();
   private final GenericControl<IRemovableEntryListener<E>> control = new GenericControl<IRemovableEntryListener<E>>();
 
+  @Override
   public E commitSelection() {
     final E entry = createEntry();
     entries.add(entry);
     control.forAllDo(new IClosure<IRemovableEntryListener<E>>() {
+      @Override
       public void execute(IRemovableEntryListener<E> input) {
         input.entryAdded(entry);
       }
@@ -27,21 +29,25 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
 
   protected abstract E createEntry();
 
+  @Override
   public void removeEntry(final E entry) {
     entries.remove(entry);
     control.forAllDo(new IClosure<IRemovableEntryListener<E>>() {
+      @Override
       public void execute(IRemovableEntryListener<E> input) {
         input.entryRemoved(entry);
       }
     });
   }
 
+  @Override
   public List<E> getEntries() {
     return Collections.unmodifiableList(entries);
   }
 
   protected void fireEntryChanged() {
     control.forAllDo(new IClosure<IRemovableEntryListener<E>>() {
+      @Override
       public void execute(IRemovableEntryListener<E> input) {
         input.entryAllowed(isEntryAllowed());
       }
@@ -50,6 +56,7 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
 
   protected abstract boolean isEntryAllowed();
 
+  @Override
   public void addModelChangeListener(IRemovableEntryListener<E> listener) {
     control.addListener(listener);
   }

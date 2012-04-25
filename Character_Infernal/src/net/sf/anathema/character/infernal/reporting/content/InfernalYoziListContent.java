@@ -42,14 +42,17 @@ public class InfernalYoziListContent extends FavorableTraitContent {
     return null;
   }
 
+  @Override
   public String getMarkerCommentKey() {
     return null;
   }
 
+  @Override
   public String getExcellencyCommentKey() {
     return null;
   }
 
+  @Override
   public String getTraitTypePrefix() {
     return ""; //$NON-NLS-1$
   }

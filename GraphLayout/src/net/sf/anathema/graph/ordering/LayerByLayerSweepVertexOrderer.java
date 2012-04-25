@@ -10,6 +10,7 @@ public class LayerByLayerSweepVertexOrderer extends AbstractVertexOrderer {
     super(graph);
   }
 
+  @Override
   public void processMultiLayerGraph() {
     for (int phaseCount = 0; phaseCount < MAX_PHASE_COUNT; phaseCount++) {
       if (isCrossingFree()) {

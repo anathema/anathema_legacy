@@ -32,6 +32,7 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
     }
   };
 
+  @Override
   public IDefaultTrait getFallbackTrait() {
     return getSubTraits().getSubTraits()[0];
   }
@@ -60,14 +61,17 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
         traitFavorization,
         unremovableSubTraits);
     subTraits.addSubTraitListener(new ISubTraitListener() {
+      @Override
       public void subTraitAdded(ISubTrait subTrait) {
         fireValueChangedEvent();
       }
 
+      @Override
       public void subTraitRemoved(ISubTrait subTrait) {
         fireValueChangedEvent();
       }
 
+      @Override
       public void subTraitValueChanged() {
         fireValueChangedEvent();
       }
@@ -80,10 +84,12 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
     getCurrentValueControl().fireValueChangedEvent(getCurrentValue());
   }
 
+  @Override
   public ITraitFavorization getFavorization() {
     return traitFavorization;
   }
 
+  @Override
   public int getCurrentValue() {
     int currentValue = 0;
     for (IGenericTrait trait : subTraits.getSubTraits()) {
@@ -92,10 +98,12 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
     return currentValue;
   }
 
+  @Override
   public ISubTraitContainer getSubTraits() {
     return subTraits;
   }
 
+  @Override
   public void accept(ITraitVisitor visitor) {
     visitor.visitAggregatedTrait(this);
   }

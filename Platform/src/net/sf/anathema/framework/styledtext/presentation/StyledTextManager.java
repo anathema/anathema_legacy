@@ -30,20 +30,24 @@ public class StyledTextManager implements IStyledTextManager {
   public StyledTextManager(DefaultStyledDocument document) {
     this.document = document;
     this.document.addDocumentListener(new DocumentListener() {
+      @Override
       public void changedUpdate(DocumentEvent e) {
         fireTextChangedEvent();
       }
 
+      @Override
       public void removeUpdate(DocumentEvent e) {
         fireTextChangedEvent();
       }
 
+      @Override
       public void insertUpdate(DocumentEvent e) {
         fireTextChangedEvent();
       }
     });
   }
 
+  @Override
   public void setText(ITextPart[] textParts) {
     if (ArrayUtilities.equals(textParts, actualTextParts)) {
       return;
@@ -72,6 +76,7 @@ public class StyledTextManager implements IStyledTextManager {
     return textAttributes;
   }
 
+  @Override
   public ITextPart[] getTextParts() {
     return actualTextParts;
   }
@@ -124,24 +129,28 @@ public class StyledTextManager implements IStyledTextManager {
       throw new IllegalStateException(e);
     }
     listeners.forAllDo(new IClosure<IStyledTextChangeListener>() {
+      @Override
       public void execute(IStyledTextChangeListener input) {
         input.textChanged(actualTextParts);
       }
     });
   }
 
+  @Override
   public void addStyledTextListener(IStyledTextChangeListener listener) {
     listeners.addListener(listener);
   }
 
   public static void initView(final IStyledTextManager manager, final IStyledTextualDescription textualDescription) {
     manager.addStyledTextListener(new IStyledTextChangeListener() {
+      @Override
       public void textChanged(ITextPart[] newParts) {
         textualDescription.setText(newParts);
       }
     });
     manager.setText(textualDescription.getTextParts());
     textualDescription.addTextChangedListener(new IStyledTextChangeListener() {
+      @Override
       public void textChanged(ITextPart[] newParts) {
         manager.setText(newParts);
       }

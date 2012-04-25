@@ -82,6 +82,7 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
 		  priorityPermutations.add(parent);
   }
 
+  @Override
   public void calculateAttributeCosts()
   {
 	  clear();
@@ -176,14 +177,17 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
   public TraitGroupCost getAttributePoints(AttributeGroupPriority priority) {
     final TraitGroupCost[] cost = new TraitGroupCost[1];
     priority.accept(new IAttributeGroupPriorityVisitor() {
+      @Override
       public void acceptTertiary() {
         cost[0] = orderedGroups.get(2);
       }
 
+      @Override
       public void acceptSecondary() {
         cost[0] = orderedGroups.get(1);
       }
 
+      @Override
       public void acceptPrimary() {
         cost[0] = orderedGroups.get(0);
       }
@@ -200,6 +204,7 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
     throw new IllegalArgumentException("Unknown Attribute Group"); //$NON-NLS-1$
   }
 
+  @Override
   public int getBonusPoints() {
     int pointsSpent = 0;
     for (TraitGroupCost cost : orderedGroups) {
@@ -208,7 +213,8 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
     return pointsSpent;
   }
 
-	public ElementCreationCost getCosts(IDefaultTrait attribute)
+	@Override
+    public ElementCreationCost getCosts(IDefaultTrait attribute)
 	{
 	  return costsByAttribute.get(attribute);
 	}

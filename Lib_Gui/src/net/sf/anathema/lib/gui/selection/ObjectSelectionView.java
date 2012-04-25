@@ -48,18 +48,22 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V> {
     panel.add(comboBox.getComponent(), data);
   }
 
+  @Override
   public void setSelectedObject(V object) {
     comboBox.setSelectedObject(object);
   }
 
+  @Override
   public void setObjects(V[] objects) {
     comboBox.setObjects(objects);
   }
 
+  @Override
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
     comboBox.addObjectSelectionChangedListener(listener);
   }
 
+  @Override
   public void setEnabled(boolean enabled) {
     if (enabled) {
       label.setForeground(SystemColor.textText);
@@ -70,10 +74,12 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V> {
     comboBox.getComponent().setEnabled(enabled);
   }
 
+  @Override
   public V getSelectedObject() {
     return comboBox.getSelectedObject();
   }
 
+  @Override
   public boolean isObjectSelected() {
     return getSelectedObject() != null;
   }

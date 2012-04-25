@@ -27,58 +27,72 @@ public class DummyEquipmentObject extends AbstractStats implements IEquipmentIte
     this.allEquipments.add(equipment);
   }
   
+  @Override
   public IEquipmentStats[] getStats() {
     return allEquipments.toArray(new IEquipmentStats[allEquipments.size()]);
   }
   
+  @Override
   public String getTemplateId() {
     return name;
   }
   
+  @Override
   public String getDescription() {
     return description;
   }
   
+  @Override
   public ItemCost getCost() {
 	return null;
   }
   
+  @Override
   public void setPersonalization(String title, String description) {
 	  // nothing to do
   }
   
+  @Override
   public void setPersonalization(IEquipmentItem item) {
 	  // nothing to do
   }
 
+  @Override
   public void setPrintEnabled(IEquipmentStats equipment, boolean enabled) {
     //nothing to do;    
   }
 
+  @Override
   public boolean isPrintEnabled(IEquipmentStats stats) {
     return false;
   }
   
+  @Override
   public void setUnprinted() {
     //nothing to do    
   }
   
+  @Override
   public void setPrinted(String printedStatId) {
     //nothing to do
   }
 
+  @Override
   public MagicalMaterial getMaterial() {
     return null;
   }
 
+  @Override
   public MaterialComposition getMaterialComposition() {
     return MaterialComposition.None;
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     // nothing to do
   }
 
+  @Override
   public void removeChangeListener(IChangeListener listener) {
     // nothing to do
   }
@@ -93,7 +107,8 @@ public class DummyEquipmentObject extends AbstractStats implements IEquipmentIte
 		return null;
 	}
 	
-	public IEquipmentStats getStat(String name) {
+	@Override
+    public IEquipmentStats getStat(String name) {
 		return null;
 	}
 

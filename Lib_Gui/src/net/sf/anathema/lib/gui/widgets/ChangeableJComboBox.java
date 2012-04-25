@@ -29,6 +29,7 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
     this.comboBox.setEditable(editable);
     setSelectedObject(null);
     comboBox.addItemListener(new ItemListener() {
+      @Override
       @SuppressWarnings("unchecked")
       public void itemStateChanged(ItemEvent e) {
         control.fireValueChangedEvent((V) e.getItem());
@@ -36,14 +37,17 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
     });
   }
 
+  @Override
   public JComboBox getComponent() {
     return comboBox;
   }
 
+  @Override
   public void setSelectedObject(Object object) {
     comboBox.setSelectedItem(object);
   }
 
+  @Override
   public void setObjects(V[] objects) {
     Object selectedItem = comboBox.getSelectedItem();
     UnselectingComboBoxModel model = (UnselectingComboBoxModel) comboBox.getModel();
@@ -57,27 +61,33 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
     }
   }
 
+  @Override
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
     control.addObjectValueChangeListener(listener);
   }
 
+  @Override
   public void removeObjectSelectionChangeListener(IObjectValueChangedListener<V> listener) {
     control.addObjectValueChangeListener(listener);
   }
 
+  @Override
   @SuppressWarnings("unchecked")
   public V getSelectedObject() {
     return (V) comboBox.getSelectedItem();
   }
 
+  @Override
   public void setRenderer(ListCellRenderer renderer) {
     comboBox.setRenderer(renderer);
   }
 
+  @Override
   public Dimension getPreferredSize() {
     return comboBox.getPreferredSize();
   }
 
+  @Override
   public void setPreferredSize(Dimension preferredSize) {
     comboBox.setPreferredSize(preferredSize);
   }

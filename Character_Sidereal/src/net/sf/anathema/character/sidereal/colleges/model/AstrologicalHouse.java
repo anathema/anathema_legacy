@@ -77,11 +77,13 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
   private final IFavorableDefaultTrait[] colleges;
   private final ChangeControl collegeValueChangeControl = new ChangeControl();
   private final IIntValueChangedListener collegeValueChangeListener = new IIntValueChangedListener() {
+    @Override
     public void valueChanged(int newValue) {
       collegeValueChangeControl.fireChangedEvent();
     }
   };
   private final IFavorableStateChangedListener collegeStateChangeListener = new IFavorableStateChangedListener() {
+    @Override
     public void favorableStateChanged(FavorableState state) {
       collegeValueChangeControl.fireChangedEvent();
     }
@@ -110,10 +112,12 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
     }
   }
 
+  @Override
   public IFavorableDefaultTrait[] getColleges() {
     return colleges;
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     collegeValueChangeControl.addChangeListener(listener);
   }

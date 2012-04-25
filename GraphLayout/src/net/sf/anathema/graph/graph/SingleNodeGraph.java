@@ -20,10 +20,12 @@ public class SingleNodeGraph implements IProperHierarchicalGraph, Cloneable {
     this.node = node;
   }
 
+  @Override
   public IGraphType getType() {
     return GraphType.Single;
   }
 
+  @Override
   public ISimpleNode[] getNodesByLayer(final int layer) {
     if (layer == 1) {
       return new ISimpleNode[] { node };
@@ -31,22 +33,27 @@ public class SingleNodeGraph implements IProperHierarchicalGraph, Cloneable {
     return null;
   }
 
+  @Override
   public void setNewLayerOrder(final int layer, final ISimpleNode[] orderedNodes) {
     // nothing to do
   }
 
+  @Override
   public int getDeepestLayer() {
     return 1;
   }
 
+  @Override
   public int calculateTotalNumberOfCrossings() {
     return 0;
   }
 
+  @Override
   public int calculateNumberOfCrossings(final int upperLayerIndex) {
     return 0;
   }
 
+  @Override
   public boolean containsRoot(final int layer) {
     return true;
   }

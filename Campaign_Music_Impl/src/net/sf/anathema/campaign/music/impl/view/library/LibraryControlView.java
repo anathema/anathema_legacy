@@ -52,10 +52,12 @@ public class LibraryControlView implements ILibraryControlView, IView {
     mp3ListView = new ActionAddableListView<IMp3Track>(viewProperties.getNoContentString(), IMp3Track.class);
   }
 
+  @Override
   public void addLibraryListSelectionListener(ListSelectionListener listener) {
     libraryListView.addListSelectionListener(listener);
   }
 
+  @Override
   public ISearchComponent addSearchParameter(String labelString) {
     SearchSelectionComponent searchSelectionComponent = new SearchSelectionComponent(labelString);
     searchSelectionComponent.addTo(searchParameterPanel);
@@ -72,18 +74,22 @@ public class LibraryControlView implements ILibraryControlView, IView {
     return mp3ListView.getComponent();
   }
 
+  @Override
   public JComponent getComponent() {
     return content;
   }
 
+  @Override
   public IActionAddableListView<ILibrary> getLibraryView() {
     return libraryListView;
   }
 
+  @Override
   public IMusicCategorizationView getSearchMusicCategorizationView() {
     return searchMusicCategorizationView;
   }
 
+  @Override
   public Object getSelectedLibrary() {
     Object[] selectedItems = libraryListView.getSelectedItems();
     if (selectedItems.length == 0) {
@@ -92,10 +98,12 @@ public class LibraryControlView implements ILibraryControlView, IView {
     return selectedItems[0];
   }
 
+  @Override
   public IActionAddableListView<IMp3Track> getTrackListView() {
     return mp3ListView;
   }
 
+  @Override
   public void initGui() {
     content.setLayout(new GridDialogLayout(3, true));
     TabbedView leftTabbedView = new TabbedView(TabDirection.Up);
@@ -118,6 +126,7 @@ public class LibraryControlView implements ILibraryControlView, IView {
     content.setBorder(new TitledBorder(viewProperties.getLibraryControlBorderTitle()));
   }
 
+  @Override
   public void setSearchAction(SmartAction action) {
     searchButton.setAction(action);
   }

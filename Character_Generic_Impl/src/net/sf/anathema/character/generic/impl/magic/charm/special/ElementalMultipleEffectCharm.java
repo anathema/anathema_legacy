@@ -24,14 +24,17 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
     this.charmId = charmId;
   }
 
+  @Override
   public void accept(ISpecialCharmVisitor visitor) {
     visitor.visitMultipleEffectCharm(this);
   }
 
+  @Override
   public String getCharmId() {
     return charmId;
   }
 
+  @Override
   public ISubeffect[] buildSubeffects(IBasicCharacterData data,
                                       IGenericTraitCollection traitCollection,
                                       ICharmLearnableArbitrator arbitrator,

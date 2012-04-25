@@ -6,18 +6,22 @@ public class ConfigurableCost implements IConfigurableCost {
   private String text;
   private boolean permanent;
 
+  @Override
   public String getCost() {
     return value;
   }
 
+  @Override
   public String getText() {
     return text;
   }
 
+  @Override
   public void setValue(String value) {
     this.value = value;
   }
 
+  @Override
   public void setText(String text) {
     this.text = text;
   }

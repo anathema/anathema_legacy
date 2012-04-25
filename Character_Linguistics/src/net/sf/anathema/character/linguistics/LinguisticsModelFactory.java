@@ -8,6 +8,7 @@ import net.sf.anathema.character.linguistics.model.LinguisticsAdditionalModel;
 
 public class LinguisticsModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new LinguisticsAdditionalModel(additionalTemplate, context);
   }

@@ -24,16 +24,19 @@ public abstract class AbstractStringEntryTraitPresenter<V> {
 
   protected void initModelListening(final BasicUi basicUi, final IStringSelectionView selectionView) {
     model.addModelChangeListener(new IRemovableEntryListener<V>() {
+      @Override
       public void entryAdded(final V v) {
         addSubView(basicUi, v);
         reset(selectionView);
       }
 
+      @Override
       public void entryRemoved(V v) {
         IRemovableEntryView removableView = viewsByEntry.get(v);
         view.removeEntryView(removableView);
       }
 
+      @Override
       public void entryAllowed(boolean complete) {
         selectionView.setAddButtonEnabled(complete);
       }
@@ -57,11 +60,13 @@ public abstract class AbstractStringEntryTraitPresenter<V> {
 
   protected final void initSelectionViewListening(IStringSelectionView selectionView) {
     selectionView.addTextChangeListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         model.setCurrentName(newValue);
       }
     });
     selectionView.addAddButtonListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         model.commitSelection();
       }

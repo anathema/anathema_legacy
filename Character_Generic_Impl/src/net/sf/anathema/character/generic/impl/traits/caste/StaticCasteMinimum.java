@@ -13,10 +13,12 @@ public class StaticCasteMinimum implements ICasteTraitMinimum {
     this.minimum = minimum;
   }
 
+  @Override
   public ICasteType getCaste() {
     return caste;
   }
 
+  @Override
   public int getMinimumValue(ILimitationContext limitationContext) {
     return minimum;
   }

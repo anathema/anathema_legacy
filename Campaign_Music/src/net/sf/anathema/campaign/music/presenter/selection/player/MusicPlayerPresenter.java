@@ -47,6 +47,7 @@ public class MusicPlayerPresenter implements Presenter {
     }
     final ITrackDetailModel trackDetailModel = selectionModel.getTrackDetailModel();
     trackDetailModel.addTrackChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         IMp3Track selectedTrack = trackDetailModel.getSelectedTrack();
         if (selectedTrack != null) {
@@ -62,6 +63,7 @@ public class MusicPlayerPresenter implements Presenter {
     });
   }
 
+  @Override
   public void initPresentation() {
     initSelectionModelListening();
     initPlayerModelListening();
@@ -126,6 +128,7 @@ public class MusicPlayerPresenter implements Presenter {
       }
     });
     view.addPositionChangeListener(new ChangeListener() {
+      @Override
       public void stateChanged(ChangeEvent event) {
         JSlider slider = (JSlider) event.getSource();
         int bytes = slider.getValue();
@@ -143,24 +146,30 @@ public class MusicPlayerPresenter implements Presenter {
 
   private void initPlayerModelListening() {
     playerModel.addMusicModelListener(new IMusicPlayerModelListener() {
+      @Override
       public void trackOpenend(IMp3Track track, int bytesLength, long totalTime) {
         view.setMaximumPosition(bytesLength, getTimeLabel(totalTime));
       }
 
+      @Override
       public void positionChanged(int bytesread, long timeElapsed) {
         view.setCurrentPosition(bytesread, getTimeLabel(timeElapsed));
       }
 
+      @Override
       public void statusChanged(MusicPlayerStatus status) {
         status.accept(new IMusicPlayerStatusVisitor() {
+          @Override
           public void visitPaused(MusicPlayerStatus visitedStatus) {
             view.setPlayAction(resumeAction);
           }
 
+          @Override
           public void visitStopped(MusicPlayerStatus visitedStatus) {
             view.setPlayAction(playAction);
           }
 
+          @Override
           public void visitPlaying(MusicPlayerStatus visitedStatus) {
             view.setPlayAction(pauseAction);
           }

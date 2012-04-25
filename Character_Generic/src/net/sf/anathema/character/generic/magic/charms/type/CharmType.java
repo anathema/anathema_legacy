@@ -41,6 +41,7 @@ public enum CharmType implements IIdentificate {
     }
   };
 
+  @Override
   public String getId() {
     return name();
   }

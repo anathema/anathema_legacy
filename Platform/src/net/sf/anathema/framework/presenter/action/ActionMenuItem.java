@@ -13,6 +13,7 @@ public class ActionMenuItem implements IMenuItem {
     this.action = action;
   }
 
+  @Override
   public void addToMenu(IMenu menu) {
     menu.addMenuItem(action);
   }

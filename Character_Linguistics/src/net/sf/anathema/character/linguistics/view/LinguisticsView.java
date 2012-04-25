@@ -30,6 +30,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
   private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
 
+  @Override
   public JComponent getComponent() {
     mainPanel.add(selectionPanel);
     GridDialogLayoutData entryData = GridDialogLayoutDataFactory.createHorizontalFillNoGrab();
@@ -41,6 +42,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
     return panel;
   }
 
+  @Override
   public IRemovableEntryView addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
     RemovableStringView view = new RemovableStringView(removeIcon, string);
     view.addContent(entryPanel);
@@ -54,6 +56,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
     entryPanel.repaint();
   }
 
+  @Override
   public IButtonControlledObjectSelectionView<Object> addSelectionView(
       String labelText,
       ITextFieldComboBoxEditor editor,
@@ -68,6 +71,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
     return objectSelectionView;
   }
 
+  @Override
   public IOverviewCategory addOverview(String border) {
     return new OverviewCategory(overviewPanel, border, false);
   }

@@ -19,6 +19,7 @@ public abstract class AbstractSelectObjectUi<V> implements IObjectUi<Object> {
     return null;
   }
 
+  @Override
   public Icon getIcon(Object value) {
     if (value == null) {
       return null;
@@ -28,6 +29,7 @@ public abstract class AbstractSelectObjectUi<V> implements IObjectUi<Object> {
 
   protected abstract Icon getNonNullIcon(V value);
 
+  @Override
   public String getLabel(Object value) {
     if (value == null) {
       return resources.getString("ComboBox.SelectLabel"); //$NON-NLS-1$

@@ -41,6 +41,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     this.traitTemplates = traitTemplates;
   }
 
+  @Override
   public void initStartingBackgrounds()
   {
 	  //load starting backgrounds from template
@@ -56,6 +57,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
 	  	  fireBackgroundAddedEvent(background);
   }
   
+  @Override
   public IBackgroundTemplate[] getAllAvailableBackgroundTemplates() {
     List<IBackgroundTemplate> backgroundList = new ArrayList<IBackgroundTemplate>();
     for (IBackgroundTemplate backgroundTemplate : backgroundRegistry.getAll()) {
@@ -66,21 +68,25 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     return backgroundList.toArray(new IBackgroundTemplate[backgroundList.size()]);
   }
   
+  @Override
   public IBackground addBackground(String customBackgroundName, String description)
   {
 	  return addBackground(customBackgroundName, description, false);
   }
   
+  @Override
   public IBackground addBackground(final IBackgroundTemplate backgroundType, String description)
   {
 	  return addBackground(backgroundType, description, false);
   }
 
+  @Override
   public IBackground addBackground(String customBackgroundName, String description, boolean loadIfExists) {
     Ensure.ensureNotNull(customBackgroundName);
     return addBackground(new CustomizedBackgroundTemplate(customBackgroundName), description, loadIfExists);
   }
 
+  @Override
   public IBackground addBackground(final IBackgroundTemplate backgroundType, final String description, boolean loadIfExists) {
     Ensure.ensureNotNull(backgroundType);
     IBackground foundBackground = Iterables.find(backgrounds,new Predicate<IBackground>() {
@@ -107,22 +113,26 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     return background;
   }
 
+  @Override
   public IBackground[] getBackgrounds() {
     return backgrounds.toArray(new IBackground[backgrounds.size()]);
   }
 
+  @Override
   public void addBackgroundListener(IBackgroundListener listener) {
     listeners.addListener(listener);
   }
 
   private void fireBackgroundAddedEvent(final IBackground background) {
     listeners.forAllDo(new IClosure<IBackgroundListener>() {
+      @Override
       public void execute(IBackgroundListener input) {
         input.backgroundAdded(background);
       }
     });
   }
 
+  @Override
   public void removeBackground(IBackground background) {
     backgrounds.remove(background);
     fireBackgroundRemovedEvent(background);
@@ -130,12 +140,14 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
 
   private void fireBackgroundRemovedEvent(final IBackground background) {
     listeners.forAllDo(new IClosure<IBackgroundListener>() {
+      @Override
       public void execute(IBackgroundListener input) {
         input.backgroundRemoved(background);
       }
     });
   }
 
+  @Override
   public IBackground getBackgroundByTemplate(IBackgroundTemplate type) {
     Ensure.ensureNotNull("Background type must not be null.", type); //$NON-NLS-1$
     for (IBackground background : getBackgrounds()) {

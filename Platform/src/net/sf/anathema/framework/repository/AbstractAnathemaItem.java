@@ -34,34 +34,41 @@ public abstract class AbstractAnathemaItem implements IItem {
     this.identificate = identificate;
   }
 
+  @Override
   public void addItemListener(IItemListener listener) {
     repositoryItemListeners.addListener(listener);
   }
 
+  @Override
   public void removeItemListener(IItemListener listener) {
     repositoryItemListeners.removeListener(listener);
   }
 
   private void firePrintNameChanged(final String name) {
     repositoryItemListeners.forAllDo(new IClosure<IItemListener>() {
+      @Override
       public void execute(IItemListener input) {
         input.printNameChanged(name);
       }
     });
   }
 
+  @Override
   public final IItemType getItemType() {
     return itemType;
   }
 
+  @Override
   public final synchronized String getId() {
     return identificate.getId();
   }
 
+  @Override
   public String getDisplayName() {
     return printName == null ? DEFAULT_PRINT_NAME : printName;
   }
 
+  @Override
   public void setPrintName(String printName) {
     if (StringUtilities.isNullOrEmpty(printName)) {
       printName = null;
@@ -73,6 +80,7 @@ public abstract class AbstractAnathemaItem implements IItem {
     firePrintNameChanged(getDisplayName());
   }
 
+  @Override
   public IItemRepositoryLocation getRepositoryLocation() {
     return repositoryLocation;
   }

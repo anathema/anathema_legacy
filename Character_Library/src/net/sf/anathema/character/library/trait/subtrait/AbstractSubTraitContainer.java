@@ -14,6 +14,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
   private final List<ISubTrait> subtraits = new ArrayList<ISubTrait>();
   private final GenericControl<ISubTraitListener> subTraitListeners = new GenericControl<ISubTraitListener>();
   private final IIntValueChangedListener subTraitCreationPointListener = new IIntValueChangedListener() {
+    @Override
     public void valueChanged(int newValue) {
       fireSubTraitValueChangedEvent();
     }
@@ -26,12 +27,14 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     }
   }
 
+  @Override
   public boolean isRemovable(ISubTrait subTrait) {
     return !unremovableSubTraits.contains(subTrait);
   }
 
   private void fireSubTraitAddedEvent(final ISubTrait subTrait) {
     subTraitListeners.forAllDo(new IClosure<ISubTraitListener>() {
+      @Override
       public void execute(ISubTraitListener input) {
         input.subTraitAdded(subTrait);
       }
@@ -40,6 +43,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
 
   private void fireSubTraitValueChangedEvent() {
     subTraitListeners.forAllDo(new IClosure<ISubTraitListener>() {
+      @Override
       public void execute(ISubTraitListener input) {
         input.subTraitValueChanged();
       }
@@ -48,20 +52,24 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
 
   private void fireSubTraitRemovedEvent(final ISubTrait subTrait) {
     subTraitListeners.forAllDo(new IClosure<ISubTraitListener>() {
+      @Override
       public void execute(ISubTraitListener input) {
         input.subTraitRemoved(subTrait);
       }
     });
   }
 
+  @Override
   public void addSubTraitListener(ISubTraitListener listener) {
     subTraitListeners.addListener(listener);
   }
 
+  @Override
   public final void removeSubTraitListener(ISubTraitListener listener) {
     subTraitListeners.removeListener(listener);
   }
 
+  @Override
   public ISubTrait getSubTrait(String name) {
     for (ISubTrait subtrait : getSubTraits()) {
       if (subtrait.getName().equals(name)) {
@@ -71,6 +79,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     return null;
   }
 
+  @Override
   public final int getCreationDotTotal() {
     int count = 0;
     for (ISubTrait specialty : getSubTraits()) {
@@ -79,6 +88,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     return count;
   }
 
+  @Override
   public final int getCurrentDotTotal() {
     int count = 0;
     for (ISubTrait specialty : getSubTraits()) {
@@ -87,12 +97,14 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     return count;
   }
 
+  @Override
   public void removeSubTrait(ISubTrait subtrait) {
     subtraits.remove(subtrait);
     subtrait.removeCreationPointListener(subTraitCreationPointListener);
     fireSubTraitRemovedEvent(subtrait);
   }
 
+  @Override
   public final int getExperienceDotTotal() {
     int count = 0;
     for (ISubTrait specialty : getSubTraits()) {
@@ -101,6 +113,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     return count;
   }
 
+  @Override
   public final ISubTrait[] getSubTraits() {
     return subtraits.toArray(new ISubTrait[subtraits.size()]);
   }
@@ -109,6 +122,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
 
   protected abstract void handleAdditionOfContainedEquivalent(ISubTrait subTrait);
 
+  @Override
   public final ISubTrait addSubTrait(String traitName) {
     Ensure.ensureArgumentNotNull(traitName);
     if (isNewSubTraitAllowed()) {
@@ -127,6 +141,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     return null;
   }
 
+  @Override
   public void dispose() {
     for (ISubTrait trait : getSubTraits()) {
       removeSubTrait(trait);

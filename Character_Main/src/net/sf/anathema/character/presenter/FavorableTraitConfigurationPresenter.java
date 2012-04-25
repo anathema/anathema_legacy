@@ -85,6 +85,7 @@ public class FavorableTraitConfigurationPresenter {
     final String id = favorableTrait.getType().getId();
     final IToggleButtonTraitView< ? >[] view = new IToggleButtonTraitView< ? >[1];
     favorableTrait.accept(new ITraitVisitor() {
+      @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         view[0] = configurationView.addMarkerLessTraitView(
             resources.getString(id),
@@ -95,6 +96,7 @@ public class FavorableTraitConfigurationPresenter {
             new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait, resources));
       }
 
+      @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         view[0] = configurationView.addTraitView(
             resources.getString(id),
@@ -108,11 +110,13 @@ public class FavorableTraitConfigurationPresenter {
     final IToggleButtonTraitView< ? > abilityView = view[0];
     new TraitPresenter(favorableTrait, abilityView).initPresentation();
     abilityView.addButtonSelectedListener(new IBooleanValueChangedListener() {
+      @Override
       public void valueChanged(boolean newValue) {
         favorableTrait.getFavorization().setFavored(newValue);
       }
     });
     favorableTrait.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+      @Override
       public void favorableStateChanged(FavorableState state) {
         updateView(abilityView, state);
       }
@@ -123,14 +127,17 @@ public class FavorableTraitConfigurationPresenter {
 
   private void updateView(final IToggleButtonTraitView< ? > abilityView, FavorableState state) {
     state.accept(new IFavorableStateVisitor() {
+      @Override
       public void visitDefault(FavorableState visitedState) {
         abilityView.setButtonState(false, true);
       }
 
+      @Override
       public void visitFavored(FavorableState visitedState) {
         abilityView.setButtonState(true, true);
       }
 
+      @Override
       public void visitCaste(FavorableState visitedState) {
         abilityView.setButtonState(true, false);
       }

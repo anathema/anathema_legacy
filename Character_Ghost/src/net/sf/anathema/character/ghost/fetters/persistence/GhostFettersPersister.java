@@ -18,6 +18,7 @@ public class GhostFettersPersister implements IAdditionalPersister
   private static final String ATTRIB_NAME = "name";
   private final TraitPersister persister = new TraitPersister();
 
+  @Override
   public void save(Element parent, IAdditionalModel model)
   {
 	  IGhostFettersModel fettersModel = (IGhostFettersModel) model;
@@ -28,6 +29,7 @@ public class GhostFettersPersister implements IAdditionalPersister
 	  }
   }
 
+  @Override
   public void load(Element parent, IAdditionalModel model) throws PersistenceException
   {
 	  IGhostFettersModel fettersModel = (IGhostFettersModel) model;

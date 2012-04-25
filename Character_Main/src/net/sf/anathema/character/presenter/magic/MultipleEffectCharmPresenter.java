@@ -24,17 +24,20 @@ public class MultipleEffectCharmPresenter implements Presenter {
     this.model = model;
   }
 
+  @Override
   public void initPresentation() {
     for (final ISubeffect subeffect : model.getEffects()) {
       String key = model.getCharm().getId() + ".Subeffects." + subeffect.getId();
       String label = resources.getString(key);
       final IBooleanValueView display = view.addSubeffect(label);
       subeffect.addChangeListener(new IChangeListener() {
+        @Override
         public void changeOccurred() {
           display.setSelected(subeffect.isLearned());
         }
       });
       display.addChangeListener(new IBooleanValueChangedListener() {
+        @Override
         public void valueChanged(boolean newValue) {
           subeffect.setLearned(newValue);
         }

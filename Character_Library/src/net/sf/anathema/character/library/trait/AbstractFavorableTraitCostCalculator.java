@@ -38,6 +38,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     this.traits = traits;
   }
 
+  @Override
   public void calculateCosts() {
     clear();
     countFavoredTraits();
@@ -75,6 +76,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     costsByTrait.clear();
   }
   
+  @Override
   public int getBonusPointsSpent() {
     int bonusPointSum = 0;
     for (FavorableTraitCost[] allCosts : costsByTrait.values()) {
@@ -87,6 +89,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
 
   protected abstract int getCostFactor(IFavorableDefaultTrait trait);
 
+  @Override
   public FavorableTraitCost[] getCosts(IFavorableTrait trait) {
     return costsByTrait.get(trait);
   }
@@ -109,20 +112,24 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
 	return points.getExtraGenericDotCount();
   }
 
+  @Override
   public int getFavoredPicksSpent() {
     return favoredPicksSpent;
   }
   
+  @Override
   public int getExtraFavoredDotsSpent()
   {
 	  return extraFavoredDotSum;
   }
   
+  @Override
   public int getExtraGenericDotsSpent()
   {
 	  return extraGenericDotSum;
   }
 
+  @Override
   public int getFreePointsSpent(boolean favored) {
     return favored ? favoredDotSum : generalDotSum;
   }
@@ -172,12 +179,14 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     final List<FavorableTraitCost> allCosts = new ArrayList<FavorableTraitCost>();
     trait.accept(new ITraitVisitor() {
 
+      @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
           allCosts.add(handleFavoredSingleTrait(subTrait, bonusPointCostFactor));
         }
       }
 
+      @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         allCosts.add(handleFavoredSingleTrait(visitedTrait, bonusPointCostFactor));
       }
@@ -208,12 +217,14 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     final List<FavorableTraitCost> allCosts = new ArrayList<FavorableTraitCost>();
     trait.accept(new ITraitVisitor() {
 
+      @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
           allCosts.add(handleGeneralSingleTrait(subTrait, bonusPointCostFactor));
         }
       }
 
+      @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         allCosts.add(handleGeneralSingleTrait(visitedTrait, bonusPointCostFactor));
       }
@@ -262,12 +273,14 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
 
   private void addAllTraits(final Set<IFavorableDefaultTrait> orderedTraits, IFavorableTrait trait) {
     trait.accept(new ITraitVisitor() {
+      @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         for (ISubTrait subtrait : visitedTrait.getSubTraits().getSubTraits()) {
           orderedTraits.add((IFavorableDefaultTrait) subtrait);
         }
       }
 
+      @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         orderedTraits.add((IFavorableDefaultTrait) visitedTrait);
       }

@@ -18,6 +18,7 @@ public class FetterEncoder extends AbstractContentEncoder<GhostFetterContent> {
     super(GhostFetterContent.class);
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     GhostFetterContent content = createContent(reportSession);
     float groupSpacing = traitEncoder.getTraitHeight() / 2;

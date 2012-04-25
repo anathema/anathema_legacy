@@ -11,6 +11,7 @@ public class PrintAllGenericsPreferencesElement extends AbstractCheckBoxPreferen
 
   private boolean printAllGenerics = CHARACTER_PREFERENCES.getBoolean(PRINT_ALL_GENERICS, false);
 
+  @Override
   public void savePreferences() {
     CHARACTER_PREFERENCES.putBoolean(PRINT_ALL_GENERICS, printAllGenerics);
   }
@@ -35,6 +36,7 @@ public class PrintAllGenericsPreferencesElement extends AbstractCheckBoxPreferen
     printAllGenerics = value;
   }
 
+  @Override
   public IIdentificate getCategory() {
     return CHARACTER_CATEGORY;
   }

@@ -42,14 +42,17 @@ public class HealthConfiguration implements IHealthConfiguration {
     }
   }
 
+  @Override
   public void addHealthLevelProvider(IHealthLevelProvider provider) {
     healthLevelProviders.add(provider);
   }
 
+  @Override
   public void addPainToleranceProvider(IPainToleranceProvider provider) {
     painResistanceProviders.add(provider);
   }
 
+  @Override
   public int getHealthLevelTypeCount(HealthLevelType type) {
     int typeCount = getBasicHealthLevel(type);
     for (IHealthLevelProvider provider : healthLevelProviders) {
@@ -61,26 +64,32 @@ public class HealthConfiguration implements IHealthConfiguration {
   private int getBasicHealthLevel(HealthLevelType type) {
     final int[] basicCount = new int[1];
     type.accept(new IHealthLevelTypeVisitor() {
+      @Override
       public void visitZero(HealthLevelType visitedType) {
         basicCount[0] = 1;
       }
 
+      @Override
       public void visitOne(HealthLevelType visitedType) {
         basicCount[0] = 2;
       }
 
+      @Override
       public void visitTwo(HealthLevelType visitedType) {
         basicCount[0] = 2;
       }
 
+      @Override
       public void visitFour(HealthLevelType visitedType) {
         basicCount[0] = 1;
       }
 
+      @Override
       public void visitIncapacitated(HealthLevelType visitedType) {
         basicCount[0] = 1;
       }
 
+      @Override
       public void visitDying(HealthLevelType visitedType) {
         basicCount[0] = 0;
       }
@@ -88,10 +97,12 @@ public class HealthConfiguration implements IHealthConfiguration {
     return basicCount[0];
   }
 
+  @Override
   public IOxBodyTechniqueArbitrator getOxBodyLearnArbitrator() {
     return arbitrator;
   }
 
+  @Override
   public int getPainToleranceLevel() {
     int painToleranceLevel = 0;
     for (IPainToleranceProvider provider : painResistanceProviders) {

@@ -40,6 +40,7 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
   private final TrackDetailsView trackDetailsView = new TrackDetailsView();
   private MusicPlayerView playerView;
 
+  @Override
   public JComponent getComponent() {
     return content;
   }
@@ -97,18 +98,22 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     return panel;
   }
 
+  @Override
   public IMultiSelectionActionAddableListView<IMp3Track> getTrackListView() {
     return trackListView;
   }
 
+  @Override
   public IActionAddableListView<IMusicSelection> getSelectionListView() {
     return selectionsView;
   }
 
+  @Override
   public ITrackDetailsView getTrackDetailsView() {
     return trackDetailsView;
   }
 
+  @Override
   public IMusicPlayerView getPlayerView() {
     return playerView;
   }

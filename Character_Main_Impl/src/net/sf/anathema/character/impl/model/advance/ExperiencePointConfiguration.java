@@ -15,15 +15,18 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   private final List<IExperiencePointEntry> entries = new ArrayList<IExperiencePointEntry>();
   private final GenericControl<IExperiencePointConfigurationListener> control = new GenericControl<IExperiencePointConfigurationListener>();
   private final IObjectValueChangedListener<IExperiencePointEntry> entryChangeListener = new IObjectValueChangedListener<IExperiencePointEntry>() {
+    @Override
     public void valueChanged(IExperiencePointEntry entry) {
       fireEntryChangedEvent(entry);
     }
   };
 
+  @Override
   public IExperiencePointEntry[] getAllEntries() {
     return entries.toArray(new IExperiencePointEntry[entries.size()]);
   }
 
+  @Override
   public IExperiencePointEntry addEntry() {
     IExperiencePointEntry newEntry = addEntryWithoutEvent();
     addEntryListeningAndFireEvent(newEntry);
@@ -41,6 +44,7 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
     return newEntry;
   }
 
+  @Override
   public void removeEntry(IExperiencePointEntry entry) {
     entries.remove(entry);
     entry.removeChangeListener(entryChangeListener);
@@ -49,6 +53,7 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
 
   private void fireEntryRemovedEvent(final IExperiencePointEntry entry) {
     control.forAllDo(new IClosure<IExperiencePointConfigurationListener>() {
+      @Override
       public void execute(IExperiencePointConfigurationListener input) {
         input.entryRemoved(entry);
       }
@@ -57,6 +62,7 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
 
   private void fireEntryAddedEvent(final IExperiencePointEntry entry) {
     control.forAllDo(new IClosure<IExperiencePointConfigurationListener>() {
+      @Override
       public void execute(IExperiencePointConfigurationListener input) {
         input.entryAdded(entry);
       }
@@ -65,16 +71,19 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
 
   private void fireEntryChangedEvent(final IExperiencePointEntry entry) {
     control.forAllDo(new IClosure<IExperiencePointConfigurationListener>() {
+      @Override
       public void execute(IExperiencePointConfigurationListener input) {
         input.entryChanged(entry);
       }
     });
   }
 
+  @Override
   public void addExperiencePointConfigurationListener(IExperiencePointConfigurationListener listener) {
     control.addListener(listener);
   }
 
+  @Override
   public int getTotalExperiencePoints() {
     int sum = 0;
     for (IExperiencePointEntry entry : getAllEntries()) {
@@ -85,6 +94,7 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
     return sum;
   }
 
+  @Override
   public int getExtraSpendings() {
     int sum = 0;
     for (IExperiencePointEntry entry : getAllEntries()) {
@@ -95,6 +105,7 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
     return sum;
   }
 
+  @Override
   public void addEntry(String description, int xpCost) {
     IExperiencePointEntry entry = addEntryWithoutEvent();
     entry.getTextualDescription().setText(description);

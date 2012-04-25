@@ -84,22 +84,27 @@ public class TrackDetailsView implements ITrackDetailsView {
     return panel;
   }
 
+  @Override
   public void setOriginalTitle(String title) {
     titleView.setValue(title);
   }
 
+  @Override
   public void setAlbumTitle(String album) {
     albumView.setValue(album);
   }
 
+  @Override
   public void setTrackNumber(String track) {
     trackNumberView.setValue(track);
   }
 
+  @Override
   public void setArtistName(String artist) {
     artistView.setValue(artist);
   }
 
+  @Override
   public void showTrackInfo(boolean show) {
     content.removeAll();
     if (show) {
@@ -111,10 +116,12 @@ public class TrackDetailsView implements ITrackDetailsView {
     content.revalidate();
   }
 
+  @Override
   public IMusicCategorizationView getMusicCategorizationView() {
     return musicCategorizationView;
   }
 
+  @Override
   public ITextView getGivenNameView() {
     return givenNameView;
   }

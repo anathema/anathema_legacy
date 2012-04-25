@@ -10,6 +10,7 @@ public class AbyssalResonance extends VirtueFlaw {
 	  this.getName().setText("Flawed Virtue");
   }
   
+  @Override
   protected String getLimitString()
   {
 	  return "VirtueFlaw.Resonance";

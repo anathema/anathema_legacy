@@ -29,6 +29,7 @@ public enum FavorableState implements IIdentificate {
     return getId();
   }
 
+  @Override
   public String getId() {
     return name();
   }

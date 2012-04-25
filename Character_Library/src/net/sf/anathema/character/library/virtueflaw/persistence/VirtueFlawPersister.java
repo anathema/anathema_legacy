@@ -22,6 +22,7 @@ public class VirtueFlawPersister implements IAdditionalPersister {
   private final TextPersister textPersister = new TextPersister();
   private final TraitPersister traitPersister = new TraitPersister();
 
+  @Override
   public void save(Element parent, IAdditionalModel model) {
     IVirtueFlawModel virtueFlawModel = (IVirtueFlawModel) model;
     saveVirtueFlaw(createFlawElement(parent), virtueFlawModel.getVirtueFlaw());
@@ -45,6 +46,7 @@ public class VirtueFlawPersister implements IAdditionalPersister {
     }
   }
 
+  @Override
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
     IVirtueFlawModel virtueFlawModel = (IVirtueFlawModel) model;
     loadVirtueFlaw(parent.element(TAG_VIRTUE_FLAW), virtueFlawModel.getVirtueFlaw());

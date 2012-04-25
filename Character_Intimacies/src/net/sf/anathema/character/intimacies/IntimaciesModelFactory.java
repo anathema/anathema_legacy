@@ -8,6 +8,7 @@ import net.sf.anathema.character.intimacies.model.IntimaciesAdditionalModel;
 
 public class IntimaciesModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new IntimaciesAdditionalModel(additionalTemplate, context);
   }

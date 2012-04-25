@@ -16,18 +16,22 @@ public class ActionAddableListView<T> extends AbstractActionAddableListView<T> i
     list = new SmartJList<T>(contentClass);
   }
 
+  @Override
   public void setObjects(T[] items) {
     list.setObjects(items);
   }
 
+  @Override
   public void addListSelectionListener(ListSelectionListener listener) {
     list.addListSelectionListener(listener);
   }
 
+  @Override
   public T[] getSelectedItems() {
     return list.getSelectedValues();
   }
 
+  @Override
   public int[] getSelectedIndices() {
     return list.getSelectedIndices();
   }

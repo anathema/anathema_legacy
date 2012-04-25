@@ -26,22 +26,27 @@ public class AnathemaDataItem extends AbstractAnathemaItem {
     itemData.setPrintNameAdjuster(new PrintNameAdjuster(this));
   }
 
+  @Override
   public IItemData getItemData() {
     return itemData;
   }
 
+  @Override
   public boolean isDirty() {
     return itemData.isDirty();
   }
 
+  @Override
   public void setClean() {
     itemData.setClean();
   }
 
+  @Override
   public void addDirtyListener(IChangeListener changeListener) {
     itemData.addDirtyListener(changeListener);
   }
 
+  @Override
   public void removeDirtyListener(IChangeListener changeListener) {
     itemData.removeDirtyListener(changeListener);
   }

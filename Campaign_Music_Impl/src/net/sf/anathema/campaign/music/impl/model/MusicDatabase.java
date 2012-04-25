@@ -39,18 +39,22 @@ public class MusicDatabase extends NonPersistableItemData implements IMusicDatab
     }
   }
 
+  @Override
   public ILibraryControl getLibraryControl() {
     return libraryControl;
   }
 
+  @Override
   public IMusicSelectionModel getMusicSelectionModel() {
     return musicSelection;
   }
 
+  @Override
   public IMusicPlayerModel getMusicPlayerModel() {
     return musicPlayerModel;
   }
 
+  @Override
   public IMusicSearchControl getMusicSearchControl() {
     return musicSearchControl;
   }

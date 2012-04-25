@@ -42,6 +42,7 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
     	
   }
 
+  @Override
   public JPanel getComponent() {
     JPanel panel = new JPanel(new GridDialogLayout(3 + (label != null ? 1 : 0), false));
     if (label != null)
@@ -52,47 +53,58 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
     return panel;
   }
 
+  @Override
   public void addEditChangedListener(final IObjectValueChangedListener<String> listener) {
     text.getDocument().addDocumentListener(new DocumentListener() {
+      @Override
       public void changedUpdate(DocumentEvent e) {
         listener.valueChanged(text.getText());
       }
 
+      @Override
       public void insertUpdate(DocumentEvent e) {
         listener.valueChanged(text.getText());
       }
 
+      @Override
       public void removeUpdate(DocumentEvent e) {
         listener.valueChanged(text.getText());
       }
     });
   }
 
+  @Override
   public void setObjects(V[] objects) {
     comboBox.setObjects(objects);
   }
 
+  @Override
   public void addSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
     comboBox.addObjectSelectionChangedListener(listener);
   }
 
+  @Override
   public void addButtonListener(ActionListener listener) {
     addButton.addActionListener(listener);
   }
   
+  @Override
   public void addButtonListener(final IObjectValueChangedListener<V> listener) {
 	    addButton.addActionListener(new ActionListener() {
-	      public void actionPerformed(ActionEvent e) {
+	      @Override
+          public void actionPerformed(ActionEvent e) {
 	        listener.valueChanged(comboBox.getSelectedObject());
 	      }
 	    });
 	  }
 
+  @Override
   public void clear() {
     comboBox.setSelectedObject(null);
     text.setText(null);
   }
 
+  @Override
   public void setButtonEnabled(boolean enabled) {
     addButton.setEnabled(enabled);
   }

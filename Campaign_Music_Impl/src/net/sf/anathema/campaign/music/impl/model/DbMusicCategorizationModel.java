@@ -29,14 +29,17 @@ public class DbMusicCategorizationModel implements IMusicCategorizationModel {
         new EventProvider(databasePersister).getAvailableValues());
   }
 
+  @Override
   public ISelectionContainerModel<IMusicMood> getMoodsModel() {
     return feelingsModel;
   }
 
+  @Override
   public ISelectionContainerModel<IMusicTheme> getThemesModel() {
     return themesModel;
   }
 
+  @Override
   public ISelectionContainerModel<IMusicEvent> getEventsModel() {
     return moodsModel;
   }

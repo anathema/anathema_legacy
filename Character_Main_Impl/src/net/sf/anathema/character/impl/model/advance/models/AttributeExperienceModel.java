@@ -25,6 +25,7 @@ public class AttributeExperienceModel extends AbstractIntegerValueModel {
     this.statistics = statistics;
   }
 
+  @Override
   public Integer getValue() {
     return getAttributeCosts();
   }

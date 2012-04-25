@@ -8,6 +8,7 @@ public class Identificate implements IIdentificate {
     this.id = id;
   }
 
+  @Override
   public final String getId() {
     return id;
   }

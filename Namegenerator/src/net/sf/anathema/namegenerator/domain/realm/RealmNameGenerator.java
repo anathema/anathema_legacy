@@ -17,6 +17,7 @@ public class RealmNameGenerator implements INameGenerator {
         new RealmWordCalculator());
   }
 
+  @Override
   public String[] createNames(int count) {
     String[] names = new String[count];
     for (int index = 0; index < names.length; index++) {

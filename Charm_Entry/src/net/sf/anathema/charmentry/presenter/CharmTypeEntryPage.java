@@ -31,12 +31,14 @@ public class CharmTypeEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new DurationEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
+      @Override
       public boolean isFulfilled() {
         final CharmType charmType = getPageModel().getCharmType();
         return charmType != null && !isSpecialCharmType();
       }
     });
     addFollowupPage(new PrerequisitesEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
+      @Override
       public boolean isFulfilled() {
         return isPermanentCharm();
       }
@@ -68,24 +70,29 @@ public class CharmTypeEntryPage extends AbstractAnathemaWizardPage {
         getProperties().getDefaultIdentificateRenderer(),
         getPageModel().getCharmTypes());
     typeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharmType>() {
+      @Override
       public void valueChanged(CharmType newValue) {
         getPageModel().setCharmType(newValue);
       }
     });
   }
 
+  @Override
   public boolean canFinish() {
     return false;
   }
 
+  @Override
   public String getDescription() {
     return properties.getPageHeader();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     return properties.getCharmTypeDefaultMessage();
   }
 
+  @Override
   public ICharmTypeEntryView getPageContent() {
     return view;
   }

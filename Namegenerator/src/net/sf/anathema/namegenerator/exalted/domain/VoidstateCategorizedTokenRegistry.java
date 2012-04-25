@@ -99,10 +99,12 @@ public class VoidstateCategorizedTokenRegistry implements ICategorizedTokenConfi
     tokensByCategory.put(THE, new String[] { "the" }); //$NON-NLS-1$
   }
 
+  @Override
   public TokenCategory[] getRootTokenCategories() {
     return rootTokenCategories;
   }
 
+  @Override
   public INameTokenFactory createTokenFactory(TokenCategory tokenCategory) {
     return new RandomChoosingTokenFactory(getAllAvailableTokens(tokenCategory));
   }

@@ -32,14 +32,17 @@ public class Passion extends DefaultTrait implements IPassion {
     this.model = model;
   }
 
+  @Override
   public String getName() {
     return subTraitName;
   }
 
+  @Override
   public ITraitReference getTraitReference() {
     return reference;
   }
 
+  @Override
   public ITraitType getBasicTraitType() {
     return reference.getTraitType();
   }

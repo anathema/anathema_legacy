@@ -18,6 +18,7 @@ public class CentralExceptionHandler implements IExceptionHandler {
 
   }
 
+  @Override
   public void handle(Throwable exception) {
     Logger.getLogger(getClass()).error("Uncaught Exception", exception); //$NON-NLS-1$
     if (exception instanceof Exception) {

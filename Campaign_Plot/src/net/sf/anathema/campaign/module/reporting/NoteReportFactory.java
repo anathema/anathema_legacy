@@ -10,6 +10,7 @@ import net.sf.anathema.lib.resources.IResources;
 @ReportFactory
 public class NoteReportFactory implements IReportFactory {
 
+  @Override
   public Report[] createReport(IResources resources, IAnathemaModel model) {
     return new Report[]{new NoteReport()};
   }

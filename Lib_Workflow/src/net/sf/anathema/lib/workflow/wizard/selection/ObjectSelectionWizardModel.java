@@ -15,10 +15,12 @@ public class ObjectSelectionWizardModel<V> implements IObjectSelectionWizardMode
     this.provider = provider;
   }
 
+  @Override
   public V getSelectedObject() {
     return value;
   }
 
+  @Override
   public void setSelectedObject(V value) {
     if (value == this.value) {
       return;
@@ -29,10 +31,12 @@ public class ObjectSelectionWizardModel<V> implements IObjectSelectionWizardMode
     control.fireChangedEvent();
   }
 
+  @Override
   public V[] getRegisteredObjects() {
     return allObjects;
   }
 
+  @Override
   public void addListener(IChangeListener inputListener) {
     control.addChangeListener(inputListener);
   }

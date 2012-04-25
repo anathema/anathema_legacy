@@ -17,14 +17,17 @@ public class DummyModifiableGenericTrait implements IModifiableGenericTrait {
     this.currentValue = value;
   }
 
+  @Override
   public void setCurrentValue(int value) {
     this.currentValue = value;
   }
 
+  @Override
   public ITraitType getType() {
     return type;
   }
 
+  @Override
   public int getCurrentValue() {
     return currentValue;
   }

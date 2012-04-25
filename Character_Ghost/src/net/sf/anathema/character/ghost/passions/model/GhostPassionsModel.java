@@ -37,6 +37,7 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
   private String currentName;
   private ITraitReference currentType;
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Concept;
   }
@@ -54,6 +55,7 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
     }
   }
   
+  @Override
   public String getTemplateId()
   {
 	  return template.getId();
@@ -65,6 +67,7 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
 	  return ageTrait == null ? 0 : ageTrait.getCurrentValue();
   }
   
+  @Override
   public int getCurrentTotalPassions()
   {
 	  int total = 0;
@@ -73,6 +76,7 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
 	  return total;
   }
   
+  @Override
   public int getMaxTotalPassions()
   {
 	  int total = 0;
@@ -81,6 +85,7 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
 	  return total - getAge();
   }
   
+  @Override
   public int getCurrentVirtueRating(VirtueType type)
   {
 	  return context.getTraitCollection().getTrait(type).getCurrentValue();
@@ -93,19 +98,23 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
     return passionsContainer;
   }
 
+  @Override
   public ISubTraitContainer getPassionContainer(ITraitReference trait) {
     return passionsByTrait.get(trait);
   }
 
+  @Override
   public ISubTraitContainer getPassionContainer(ITraitType traitType) {
     return passionByType.get(traitType);
   }
 
+  @Override
   public ITraitReference[] getAllTraits() {
     Set<ITraitReference> keySet = passionsByTrait.keySet();
     return keySet.toArray(new ITraitReference[keySet.size()]);
   }
   
+  @Override
   public ITraitReference[] getAllEligibleTraits()
   {
 	   List<ITraitReference> keySet = new ArrayList<ITraitReference>(passionsByTrait.keySet());
@@ -123,16 +132,19 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
 	   return keySet.toArray(new ITraitReference[keySet.size()]);
   }
 
+  @Override
   public void setCurrentPassionName(String newPassionName) {
     this.currentName = newPassionName;
     control.fireChangedEvent();
   }
 
+  @Override
   public void setCurrentTrait(ITraitReference newValue) {
     this.currentType = newValue;
     control.fireChangedEvent();
   }
 
+  @Override
   public void commitSelection() {
     ISubTrait passion = passionsByTrait.get(currentType).addSubTrait(currentName);
     if (passion != null && passion.getCurrentValue() == 0) {
@@ -140,28 +152,34 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
     }
   }
 
+  @Override
   public void clear() {
     currentName = null;
     currentType = null;
     control.fireChangedEvent();
   }
 
+  @Override
   public void addSelectionChangeListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
 
+  @Override
   public boolean isEntryComplete() {
     return !StringUtilities.isNullOrEmpty(currentName) && currentType != null;
   }
 
+  @Override
   public boolean isExperienced() {
     return context.getBasicCharacterContext().isExperienced();
   }
 
+  @Override
   public void addCharacterChangeListener(ICharacterChangeListener listener) {
     context.getCharacterListening().addChangeListener(listener);
   }
 
+  @Override
   public void addTraitListChangeListener(ITraitReferencesChangeListener listener) {
     traitControl.addListener(listener);
   }

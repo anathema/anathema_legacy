@@ -24,6 +24,7 @@ public class CharacterCharmDye extends AbstractCharmDye {
     this.view = view;
   }
 
+  @Override
   public void setCharmVisuals(ICharm charm) {
     ICharmConfiguration charmConfiguration = model.getCharmConfiguration();
     ICharmGroup selectedGroup = informer.getCurrentGroup();

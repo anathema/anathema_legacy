@@ -21,6 +21,7 @@ public class ResonanceEncoder extends AbstractContentEncoder<AbyssalResonanceCon
     super(AbyssalResonanceContent.class);
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     AbyssalResonanceContent content = createContent(reportSession);
     Bounds textBounds = traitEncoder.encode(graphics, bounds, content.getLimitValue());

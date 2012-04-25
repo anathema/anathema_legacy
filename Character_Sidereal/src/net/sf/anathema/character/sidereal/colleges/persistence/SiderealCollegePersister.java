@@ -17,6 +17,7 @@ public class SiderealCollegePersister implements IAdditionalPersister {
   private static final String TAG_COLLEGES = "Colleges"; //$NON-NLS-1$
   private final TraitPersister traitPersister = new TraitPersister();
 
+  @Override
   public void save(Element parent, IAdditionalModel model) {
     Element collegesElement = parent.addElement(TAG_COLLEGES);
     SiderealCollegeModel collegeModel = (SiderealCollegeModel) model;
@@ -27,6 +28,7 @@ public class SiderealCollegePersister implements IAdditionalPersister {
     }
   }
 
+  @Override
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
     Element collegesElement = parent.element(TAG_COLLEGES);
     SiderealCollegeModel collegeModel = (SiderealCollegeModel) model;

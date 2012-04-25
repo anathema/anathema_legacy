@@ -27,6 +27,7 @@ public class MagicInfoStringBuilder implements IMagicInfoStringBuilder {
     this.concatenator = new MagicInfoStringConcatenator(resources);
   }
 
+  @Override
   public String createCostString(IMagic magic) {
     ICostList temporaryCost = magic.getTemporaryCost();
     String essenceCost = essenceBuilder.getCostString(temporaryCost.getEssenceCost());

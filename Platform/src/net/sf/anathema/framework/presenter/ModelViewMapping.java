@@ -14,14 +14,17 @@ public class ModelViewMapping implements IModelViewMapping {
   private final Map<IItem, IItemView> viewByModel = new HashMap<IItem, IItemView>();
   private final Map<IItem, IItemListener> listenersByModel = new HashMap<IItem, IItemListener>();
 
+  @Override
   public IItem getModelByView(IItemView view) {
     return modelByView.get(view);
   }
 
+  @Override
   public synchronized void addModelAndView(IItem model, final IItemView view) {
     Ensure.ensureFalse("Model already managed.", viewByModel.containsKey(model)); //$NON-NLS-1$
     modelByView.put(view, model);
     IItemListener listener = new IItemListener() {
+      @Override
       public void printNameChanged(String newName) {
         view.setName(newName);
       }
@@ -31,10 +34,12 @@ public class ModelViewMapping implements IModelViewMapping {
     viewByModel.put(model, view);
   }
 
+  @Override
   public IItemView getViewByModel(IItem model) {
     return viewByModel.get(model);
   }
 
+  @Override
   public void removeModelAndView(IItem model, IItemView view) {
     modelByView.remove(view);
     IItemListener listener = listenersByModel.get(model);

@@ -23,6 +23,7 @@ public class PageFormatPreferenceElement implements IPreferencesElement {
   private boolean dirty;
   private LabelledPreferenceComboBox<PageSize> box;
 
+  @Override
   public void addComponent(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
@@ -32,6 +33,7 @@ public class PageFormatPreferenceElement implements IPreferencesElement {
     EnumSelectCellRenderer renderer = new EnumSelectCellRenderer("PageSize.", resources); //$NON-NLS-1$
     box = new LabelledPreferenceComboBox<PageSize>(labelText, renderer, PageSize.values());
     box.addActionListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         PageSize selectedFormat = box.getSelectedItem();
         if (selectedFormat != pageFormat) {
@@ -44,6 +46,7 @@ public class PageFormatPreferenceElement implements IPreferencesElement {
     return box.getDialogComponent();
   }
 
+  @Override
   public void savePreferences() {
     SYSTEM_PREFERENCES.put(PAGE_FORMAT_PREFERENCE, pageFormat.name());
   }
@@ -52,16 +55,19 @@ public class PageFormatPreferenceElement implements IPreferencesElement {
     return PageSize.valueOf(SYSTEM_PREFERENCES.get(PAGE_FORMAT_PREFERENCE, Letter.name()));
   }
 
+  @Override
   public void reset() {
     pageFormat = loadPreference();
     box.setSelectedItem(pageFormat);
     dirty = false;
   }
 
+  @Override
   public boolean isValid() {
     return true;
   }
 
+  @Override
   public boolean isDirty() {
     return dirty;
   }

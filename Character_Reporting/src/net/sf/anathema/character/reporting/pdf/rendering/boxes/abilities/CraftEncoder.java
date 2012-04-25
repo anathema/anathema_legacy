@@ -25,6 +25,7 @@ public class CraftEncoder extends AbstractNamedTraitEncoder implements INamedTra
     this.craftCount = craftCount;
   }
 
+  @Override
   public float encode(SheetGraphics graphics, ReportSession session, Position position, float width, float height) {
     IGenericCharacter character = session.getCharacter();
     int essenceMax = character.getEssenceLimitation().getAbsoluteLimit(character);

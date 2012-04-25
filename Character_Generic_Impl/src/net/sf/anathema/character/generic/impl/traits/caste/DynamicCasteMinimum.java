@@ -14,10 +14,12 @@ public class DynamicCasteMinimum implements ICasteTraitMinimum {
     this.minimum = range;
   }
 
+  @Override
   public ICasteType getCaste() {
     return caste;
   }
 
+  @Override
   public int getMinimumValue(ILimitationContext limitationContext) {
     return minimum.getMinimumValue(limitationContext);
   }

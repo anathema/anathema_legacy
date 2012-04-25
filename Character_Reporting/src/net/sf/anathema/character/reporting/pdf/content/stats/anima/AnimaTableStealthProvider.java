@@ -10,6 +10,7 @@ public class AnimaTableStealthProvider implements IAnimaTableStealthProvider {
     this.resources = resources;
   }
 
+  @Override
   public String getStealth(int level) {
     switch (level) {
       case 0:

@@ -31,14 +31,17 @@ public class GenericEssenceTemplate extends ReflectionCloneableObject<GenericEss
     return traits.toArray(new FactorizedTrait[traits.size()]);
   }
 
+  @Override
   public FactorizedTrait[] getPersonalTraits(IGenericTrait willpower, IGenericTrait[] virtues, IGenericTrait essence) {
     return createFactorizedTraits(personalPoolConfiguration, willpower, virtues, essence);
   }
 
+  @Override
   public FactorizedTrait[] getPeripheralTraits(IGenericTrait willpower, IGenericTrait[] virtues, IGenericTrait essence) {
     return createFactorizedTraits(peripheralPoolConfiguration, willpower, virtues, essence);
   }
 
+  @Override
   public boolean isEssenceUser() {
     return isEssenceUser;
   }

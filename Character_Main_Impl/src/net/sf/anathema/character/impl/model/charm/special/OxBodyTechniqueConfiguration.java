@@ -37,6 +37,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
       IOxBodyTechniqueCharm properties) {
     this.oxBodyTechnique = oxBodyTechnique;
     incrementChecker = new IIncrementChecker() {
+      @Override
       public boolean isValidIncrement(int increment) {
     	  int minTrait = Integer.MAX_VALUE;
     	  for (ITraitType type : relevantTraits)
@@ -48,6 +49,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     categories = createOxBodyCategories(context, properties);
     for (OxBodyCategory category : categories) {
       category.addCurrentValueListener(new IIntValueChangedListener() {
+        @Override
         public void valueChanged(int newValue) {
           fireLearnCountChanged(getCurrentLearnCount());
         }
@@ -85,10 +87,12 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     }
   }
 
+  @Override
   public OxBodyCategory[] getCategories() {
     return categories;
   }
 
+  @Override
   public int getCreationLearnCount() {
     int sum = 0;
     for (OxBodyCategory category : getCategories()) {
@@ -97,6 +101,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     return sum;
   }
 
+  @Override
   public int getCurrentLearnCount() {
     int sum = 0;
     for (OxBodyCategory category : getCategories()) {
@@ -105,22 +110,26 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     return sum;
   }
 
+  @Override
   public void addSpecialCharmLearnListener(ISpecialCharmLearnListener listener) {
     control.addListener(listener);
   }
 
   private void fireLearnCountChanged(final int learnCount) {
     control.forAllDo(new IClosure<ISpecialCharmLearnListener>() {
+      @Override
       public void execute(ISpecialCharmLearnListener input) {
         input.learnCountChanged(learnCount);
       }
     });
   }
 
+  @Override
   public ICharm getCharm() {
     return oxBodyTechnique;
   }
 
+  @Override
   public OxBodyCategory getCategoryById(String id) {
     for (OxBodyCategory category : categories) {
       if (category.getId().equals(id)) {
@@ -130,6 +139,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     throw new IllegalArgumentException("No ox body category found with id " + id); //$NON-NLS-1$
   }
 
+  @Override
   public IHealthLevelProvider getHealthLevelProvider() {
     return healthLevelProvider;
   }

@@ -13,6 +13,7 @@ public class GhostAgeModel extends AbstractAdditionalModelAdapter
   private final ICharacterModelContext context;
   private final GhostAgeTemplate template;
 
+  @Override
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Miscellaneous;
   }
@@ -24,11 +25,13 @@ public class GhostAgeModel extends AbstractAdditionalModelAdapter
     this.template = template;
   }
   
+  @Override
   public String getTemplateId()
   {
 	  return template.getId();
   }
   
+  @Override
   public IAdditionalModelBonusPointCalculator getBonusPointCalculator()
   {
 	return new AgeModelBonusPointCalculator(context);

@@ -13,6 +13,7 @@ public class I18nedIdentificateSorter<T extends IIdentificate> {
     Preconditions.checkState(originalGroup.length == emptyArray.length, "Arrays must be of equal length"); //$NON-NLS-1$
     System.arraycopy(originalGroup, 0, emptyArray, 0, emptyArray.length);
     Arrays.sort(emptyArray, new Comparator<T>() {
+      @Override
       public int compare(T group1, T group2) {
         String firstGroupName = getString(resources, group1);
         String secondGroupName = getString(resources, group2);

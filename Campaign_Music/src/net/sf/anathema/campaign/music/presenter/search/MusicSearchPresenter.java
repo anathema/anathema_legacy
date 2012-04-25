@@ -29,6 +29,7 @@ public class MusicSearchPresenter implements Presenter {
     this.searchControl = dataBase.getMusicSearchControl();
   }
 
+  @Override
   public void initPresentation() {
     ISearchParameter[] searchParameters = searchControl.getSearchParameters();
     for (ISearchParameter parameter : searchParameters) {
@@ -59,6 +60,7 @@ public class MusicSearchPresenter implements Presenter {
 
   private void initListening() {
     searchControl.addSearchResultChangedListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         controlView.getTrackListView().setObjects(searchControl.getSearchResult());
         controlView.getTrackListView().setListTitle(

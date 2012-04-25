@@ -17,6 +17,7 @@ public class LoadItemCreator implements IItemCreator {
     this.model = model;
   }
 
+  @Override
   public IItem createItem(IItemType type, IAnathemaWizardModelTemplate template) throws PersistenceException {
     IRepositoryItemPersister persister = model.getPersisterRegistry().get(type);
     try {

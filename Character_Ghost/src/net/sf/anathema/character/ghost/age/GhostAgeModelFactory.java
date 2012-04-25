@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 
 public class GhostAgeModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new GhostAgeModel((GhostAgeTemplate) additionalTemplate, context);
   }

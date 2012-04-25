@@ -16,6 +16,7 @@ public class CascadeCharmDye extends AbstractCharmDye {
     this.view = view;
   }
 
+  @Override
   public void setCharmVisuals(ICharm charm) {
     view.setCharmVisuals(charm.getId(), Color.WHITE);
   }

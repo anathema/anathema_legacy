@@ -12,18 +12,22 @@ public class CostEntryPageView implements ICostEntryPageView {
 
   private final JPanel content = new JPanel(new GridDialogLayout(5, false));
 
+  @Override
   public JComponent getContent() {
     return content;
   }
 
+  @Override
   public void requestFocus() {
     // Nothing to do
   }
 
+  @Override
   public void dispose() {
     // Nothing to do
   }
 
+  @Override
   public ICostEntryView addCostEntryView(String typeLabel, String costLabel, String textLabel) {
     content.add(new JLabel(typeLabel));
     CostEntryView view = new CostEntryView(costLabel, textLabel);

@@ -24,10 +24,12 @@ public class PlotModel implements IPlotModel, IChangeManagement {
     seriesChangeManagement = new SeriesChangeManagement(root);
   }
 
+  @Override
   public IPlotElement getRootElement() {
     return root;
   }
 
+  @Override
   public IPlotElement getParentElement(IPlotElement element) {
     if (element == root) {
       return null;
@@ -51,18 +53,22 @@ public class PlotModel implements IPlotModel, IChangeManagement {
     return null;
   }
 
+  @Override
   public boolean isDirty() {
     return seriesChangeManagement.isDirty();
   }
 
+  @Override
   public void setClean() {
     seriesChangeManagement.setClean();
   }
 
+  @Override
   public void addDirtyListener(IChangeListener changeListener) {
     seriesChangeManagement.addDirtyListener(changeListener);
   }
 
+  @Override
   public void removeDirtyListener(IChangeListener changeListener) {
     seriesChangeManagement.removeDirtyListener(changeListener);
   }

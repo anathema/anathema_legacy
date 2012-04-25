@@ -12,6 +12,7 @@ public interface ISimpleNode extends IStructureNode {
 
   public boolean isRootNode();
 
+  @Override
   public boolean isLeafNode();
 
   public void removeParent(ISimpleNode node);

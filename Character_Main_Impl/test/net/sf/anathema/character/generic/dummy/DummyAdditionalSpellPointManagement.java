@@ -7,18 +7,22 @@ import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearn
 
 public class DummyAdditionalSpellPointManagement implements IAdditionalMagicLearnPointManagement {
 
+  @Override
   public List<IMagic> spendOn(List<IMagic> magicToHandle) {
     return magicToHandle;
   }
 
+  @Override
   public int getPointsSpent() {
     return 0;
   }
 
+  @Override
   public int getAdditionalPointsAmount() {
     return 0;
   }
 
+  @Override
   public void clear() {
     //Nothing to do
   }

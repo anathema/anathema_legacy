@@ -22,15 +22,18 @@ public class ObjectSelectionDialogPage extends AbstractDialogPage {
     this.comboBox = new JComboBox(objects);
   }
 
+  @Override
   public IBasicMessage createCurrentMessage() {
     return getDefaultMessage();
   }
 
+  @Override
   public JComponent createContent() {
     content.add(comboBox, BorderLayout.NORTH);
     return content;
   }
 
+  @Override
   public String getTitle() {
     return properties.getTitle();
   }

@@ -37,6 +37,7 @@ public final class NoteTypeConfiguration extends AbstractPersistableItemTypeConf
   @Override
   protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
+      @Override
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         Icon icon = new PlotUI(resources).getNoteTabIcon();

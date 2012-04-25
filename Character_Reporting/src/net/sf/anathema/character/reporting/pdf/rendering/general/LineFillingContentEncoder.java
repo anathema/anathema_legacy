@@ -21,6 +21,7 @@ public class LineFillingContentEncoder<C extends ListSubBoxContent> extends Abst
     super(contentClass);
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     Phrase phrase = new Phrase();
     addToPhrase(createContent(reportSession), createDefaultFont(graphics), phrase);

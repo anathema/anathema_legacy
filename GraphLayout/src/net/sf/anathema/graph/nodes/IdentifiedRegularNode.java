@@ -18,6 +18,7 @@ public class IdentifiedRegularNode extends Identificate implements IIdentifiedRe
       this.orderedNodes = orderedNodes;
     }
 
+    @Override
     public int compare(ISimpleNode o1, ISimpleNode o2) {
       return ArrayUtilities.indexOf(orderedNodes, o1) - ArrayUtilities.indexOf(orderedNodes, o2);
     }
@@ -33,62 +34,77 @@ public class IdentifiedRegularNode extends Identificate implements IIdentifiedRe
     Collections.addAll(childList, children);
   }
 
+  @Override
   public void removeParent(ISimpleNode node) {
     parentList.remove(node);
   }
 
+  @Override
   public void addParent(ISimpleNode parentNode) {
     parentList.add(parentNode);
   }
 
+  @Override
   public ISimpleNode[] getParents() {
     return parentList.toArray(new ISimpleNode[parentList.size()]);
   }
 
+  @Override
   public boolean isRootNode() {
     return parentList.isEmpty();
   }
 
+  @Override
   public void setLayer(int newLayer) {
     layer = newLayer;
   }
 
+  @Override
   public ISimpleNode[] getChildren() {
     return childList.toArray(new ISimpleNode[childList.size()]);
   }
 
+  @Override
   public int getLayer() {
     return layer;
   }
 
+  @Override
   public void removeChild(ISimpleNode child) {
     childList.remove(child);
   }
 
+  @Override
   public void addChild(ISimpleNode child) {
     childList.add(child);
   }
 
+  @Override
   public void setLowerToChildren(boolean lower) {
     this.lowerToChildren = lower;
   }
 
+  @Override
   public boolean getLowerToChildren() {
     return lowerToChildren;
   }
 
+  @Override
   public boolean isLeafNode() {
     return childList.isEmpty();
   }
 
+  @Override
   public boolean hasMultipleParents() {
     return parentList.size() > 1;
   }
 
+  @Override
   public void reorderChildren(final ISimpleNode[] childrenLayer) {
     Collections.sort(childList, new NodeIndexComparator(childrenLayer));
   }
 
+  @Override
   public ISimpleNode[] getChildren(final ISimpleNode[] childrenLayer) {
     ISimpleNode[] unsortedChildren = getChildren();
     Arrays.sort(unsortedChildren, new NodeIndexComparator(childrenLayer));

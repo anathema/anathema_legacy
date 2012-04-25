@@ -26,6 +26,7 @@ public class CategorizedNamegeneratorPresenter implements Presenter {
     this.tokenRegistry = tokenRegistry;
   }
 
+  @Override
   public void initPresentation() {
     Object[] categories = getAllVoidStateCategories();
     //TODO Replace with AbstractSelectCellRenderer once IResources are available

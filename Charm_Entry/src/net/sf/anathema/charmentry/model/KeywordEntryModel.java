@@ -51,17 +51,20 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
     return true;
   }
 
+  @Override
   public void setCurrentKeyword(IIdentificate keyword) {
     this.keyword = keyword;
     fireEntryChanged();
   }
 
+  @Override
   public void clear() {
     for (ICharmAttribute entry : getEntries()) {
       removeEntry(entry);
     }
   }
 
+  @Override
   public IIdentificate[] getAvailableKeywords() {
     return new IIdentificate[] {
         ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE,

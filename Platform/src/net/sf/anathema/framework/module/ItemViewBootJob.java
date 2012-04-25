@@ -14,6 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 @BootJob
 public class ItemViewBootJob implements IAnathemaBootJob {
 
+  @Override
   public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
     IModelViewMapping mapping = new ModelViewMapping();
     IItemManagementModel itemManagement = model.getItemManagement();

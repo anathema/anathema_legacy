@@ -67,6 +67,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":"; //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
   }
 
+  @Override
   public String createString(IEquipmentItem item, IEquipmentStats equipment) {
     if (equipment instanceof IWeaponStats) {
       return createWeaponString(item, (IWeaponStats) equipment);

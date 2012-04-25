@@ -40,10 +40,12 @@ public class TraitGroup {
   protected final int getModifiedTraitValue(ITrait trait) {
     final int[] creationValueSum = new int[1];
     trait.accept(new ITraitVisitor() {
+      @Override
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         creationValueSum[0] = visitedTrait.getCreationValue();
       }
 
+      @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         creationValueSum[0] = visitedTrait.getSubTraits().getCreationDotTotal();
       }

@@ -14,14 +14,17 @@ public class SimpleDefaultCharmModel extends AbstractSpendingModel {
     this.creationPoints = creationPoints;
   }
 
+  @Override
   public int getAlotment() {
     return creationPoints.getDefaultCreationCharmCount();
   }
 
+  @Override
   public int getSpentBonusPoints() {
     return getCharmBonusPointsSpent() + getSpellBonusPointsSpent();
   }
 
+  @Override
   public Integer getValue() {
     return magicCalculator.getGeneralCharmPicksSpent();
   }

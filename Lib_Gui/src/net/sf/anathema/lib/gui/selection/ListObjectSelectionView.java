@@ -27,66 +27,80 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 		this.smartList.setSelectionModel(selectionModel);
 	}
 
-	public void setEnabled(boolean enabled) {
+	@Override
+    public void setEnabled(boolean enabled) {
 		smartList.setEnabled(enabled);
 	}
 
-	public void setCellRenderer(ListCellRenderer renderer) {
+	@Override
+    public void setCellRenderer(ListCellRenderer renderer) {
 		smartList.setCellRenderer(renderer);
 
 	}
 
-	public void addObjectSelectionChangedListener(
+	@Override
+    public void addObjectSelectionChangedListener(
 			final IObjectValueChangedListener<V> listener) {
 		smartList.getSelectionModel().addListSelectionListener(
 				new ListSelectionListener() {
 
-					public void valueChanged(ListSelectionEvent e) {
+					@Override
+                    public void valueChanged(ListSelectionEvent e) {
 						listener.valueChanged(smartList.getSelectedValue());
 					}
 				});
 	}
 
-	public void setObjects(V[] objects) {
+	@Override
+    public void setObjects(V[] objects) {
 		smartList.setObjects(objects);
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
+    @SuppressWarnings("unchecked")
 	public void setSelectedObject(V object) {
 		// URS: Ich habe die Array-Konversion an dieser Stelle entfernt, weil
 		// ich einen Fehler vermutete.
 		smartList.setSelectedObjects(object);
 	}
 
-	public void setSelectedObjects(V[] objects) {
+	@Override
+    public void setSelectedObjects(V[] objects) {
 		smartList.setSelectedObjects(objects);
 	}
 
-	public JComponent getComponent() {
+	@Override
+    public JComponent getComponent() {
 		return smartList;
 	}
 
-	public V getSelectedObject() {
+	@Override
+    public V getSelectedObject() {
 		return smartList.getSelectedValue();
 	}
 
-	public V[] getSelectedObjects() {
+	@Override
+    public V[] getSelectedObjects() {
 		return smartList.getSelectedValues();
 	}
 
-	public boolean isObjectSelected() {
+	@Override
+    public boolean isObjectSelected() {
 		return getSelectedObject() != null;
 	}
 
-	public void setSelectionType(ListSelectionMode mode) {
+	@Override
+    public void setSelectionType(ListSelectionMode mode) {
 		smartList.setSelectionMode(mode);
 	}
 
-	public void addSelectionVetor(IVetor vetor) {
+	@Override
+    public void addSelectionVetor(IVetor vetor) {
 		selectionModel.addVetor(vetor);
 	}
 
-	public void removeSelectionVetor(IVetor vetor) {
+	@Override
+    public void removeSelectionVetor(IVetor vetor) {
 		selectionModel.removeVetor(vetor);
 	}
 }

@@ -17,12 +17,14 @@ public class CampaignView extends AbstractItemView implements ISeriesView {
     super(name, icon);
   }
 
+  @Override
   public IPlotView addPlotView(String title) {
     Ensure.ensureNull("Only one view allowed.", plotView); //$NON-NLS-1$
     this.plotView = new PlotView();
     return plotView;
   }
 
+  @Override
   public JComponent getComponent() {
     return plotView.getComponent();
   }

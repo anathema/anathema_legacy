@@ -21,6 +21,7 @@ public class ExtendedIntimaciesEncoder extends AbstractContentEncoder<ExtendedIn
     super(ExtendedIntimaciesContent.class);
   }
 
+  @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     ExtendedIntimaciesContent content = createContent(reportSession);
     float yPosition = bounds.getMaxY() - LINE_HEIGHT;

@@ -56,6 +56,7 @@ public class SVGBooleanValueDisplay implements IBooleanValueView {
 
   private EventListener createEventListener() {
     return new EventListener() {
+      @Override
       public void handleEvent(Event evt) {
         if (!(evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0)) {
           return;
@@ -95,10 +96,12 @@ public class SVGBooleanValueDisplay implements IBooleanValueView {
     return buttonTextElement;
   }
 
+  @Override
   public void addChangeListener(IBooleanValueChangedListener listener) {
     control.addValueChangeListener(listener);
   }
 
+  @Override
   public void setSelected(boolean selected) {
     this.selected = selected;
     if (visible) {

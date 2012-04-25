@@ -45,6 +45,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
 	        specialCharm.getAbsoluteLearnLimit()), new MultiLearnableIncrementChecker(), 
 	        context.getTraitContext());
     this.trait.addCurrentValueListener(new IIntValueChangedListener() {
+      @Override
       public void valueChanged(int newValue) {
         fireLearnCountChanged(newValue);
       }
@@ -74,34 +75,41 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     }
   }
 
+  @Override
   public int getCreationLearnCount() {
     return trait.getCreationValue();
   }
 
+  @Override
   public void addSpecialCharmLearnListener(ISpecialCharmLearnListener listener) {
     control.addListener(listener);
   }
 
   private void fireLearnCountChanged(final int learnCount) {
     control.forAllDo(new IClosure<ISpecialCharmLearnListener>() {
+      @Override
       public void execute(ISpecialCharmLearnListener input) {
         input.learnCountChanged(learnCount);
       }
     });
   }
 
+  @Override
   public ICharm getCharm() {
     return charm;
   }
 
+  @Override
   public IDefaultTrait getCategory() {
     return trait;
   }
 
+  @Override
   public int getCurrentLearnCount() {
     return trait.getCurrentValue();
   }
 
+  @Override
   public void setCurrentLearnCount(int newValue) {
     trait.setCurrentValue(newValue);
   }
@@ -135,6 +143,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   
   private class MultiLearnableIncrementChecker implements IIncrementChecker
   {
+      @Override
       public boolean isValidIncrement(int increment)
       {
 	      int incrementedValue = MultiLearnableCharmConfiguration.this.trait.getCurrentValue() + increment;

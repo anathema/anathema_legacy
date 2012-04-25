@@ -59,6 +59,7 @@ public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor im
     delegate.cancelCellEditing();
   }
 
+  @Override
   public final Component getTreeCellEditorComponent(
       JTree tree,
       Object value,
@@ -70,6 +71,7 @@ public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor im
     return editorComponent;
   }
 
+  @Override
   public final Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
     delegate.setValue(value);
     return editorComponent;

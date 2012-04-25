@@ -11,6 +11,7 @@ public class SiderealCollegeTemplate implements IAdditionalTemplate {
   private final ICollegeBonusPointCosts bonusPointCosts;
   private final ICollegeExperienceCosts experiencePointCosts;
 
+  @Override
   public String getId() {
     return ID;
   }

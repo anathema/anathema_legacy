@@ -29,10 +29,12 @@ public class AggregatedSubTrait extends DefaultTrait implements ISubTrait {
     super.setTraitFavorization(favorization);
   }
 
+  @Override
   public ITraitType getBasicTraitType() {
     return basicType;
   }
 
+  @Override
   public String getName() {
     return name;
   }

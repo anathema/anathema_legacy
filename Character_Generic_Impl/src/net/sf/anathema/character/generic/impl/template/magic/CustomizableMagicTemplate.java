@@ -22,18 +22,22 @@ public class CustomizableMagicTemplate implements IMagicTemplate {
     this.spellTemplate = spellTemplate;
   }
 
+  @Override
   public ISpellMagicTemplate getSpellMagic() {
     return spellTemplate;
   }
 
+  @Override
   public ICharmTemplate getCharmTemplate() {
     return charmTemplate;
   }
 
+  @Override
   public boolean canBuyFromFreePicks(IMagic magic) {
     return freePicksPredicate.evaluate(magic);
   }
 
+  @Override
   public FavoringTraitType getFavoringTraitType() {
     return FavoringTraitType.AbilityType;
   }

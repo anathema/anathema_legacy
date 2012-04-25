@@ -92,18 +92,22 @@ public class CascadeDocumentFactory {
     final List<IVisualizedGraph> visualizedGraphs = new ArrayList<IVisualizedGraph>(graphs.length);
     for (final IProperHierarchicalGraph graph : graphs) {
       graph.getType().accept(new IGraphTypeVisitor() {
+        @Override
         public void visitDirectedGraph(final IGraphType visitedType) {
           visualizedGraphs.add(new BottomUpGraphVisualizer(graph, properties).buildTree());
         }
 
+        @Override
         public void visitInvertedTree(final IGraphType visitedType) {
           visualizedGraphs.add(new InvertedTreeVisualizer(graph, properties).buildTree());
         }
 
+        @Override
         public void visitTree(final IGraphType visitedType) {
           visualizedGraphs.add(new TreeVisualizer(graph, properties).buildTree());
         }
 
+        @Override
         public void visitSingle(final IGraphType visitedType) {
           visualizedGraphs.add(new SingleNodeVisualizer(properties, graph).buildTree());
         }

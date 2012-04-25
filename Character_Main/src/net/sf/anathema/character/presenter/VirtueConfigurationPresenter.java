@@ -21,6 +21,7 @@ public class VirtueConfigurationPresenter implements Presenter {
     this.view = view;
   }
 
+  @Override
   public void initPresentation() {
     for (ITrait virtue : virtues) {
       String labelText = resources.getString("VirtueType.Name." + virtue.getType().getId()); //$NON-NLS-1$

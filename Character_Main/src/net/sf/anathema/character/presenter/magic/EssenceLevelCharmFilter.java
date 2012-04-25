@@ -59,7 +59,8 @@ public class EssenceLevelCharmFilter implements ICharmFilter
 		}
 	}
 	
-	public boolean load(Element node)
+	@Override
+    public boolean load(Element node)
 	{
 		if (node.getName().equals(TAG_FILTERNAME))
 		{

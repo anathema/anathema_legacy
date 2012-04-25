@@ -26,15 +26,18 @@ public class VirtueFlaw implements IVirtueFlaw {
 	  this.context = context;
   }
 
+  @Override
   public ITraitType getRoot() {
     return root;
   }
 
+  @Override
   public void setRoot(ITraitType root) {
     this.root = root;
     control.fireChangedEvent();
   }
   
+  @Override
   public IDefaultTrait getLimitTrait()
   {
 	  if (limitTrait == null)
@@ -49,14 +52,17 @@ public class VirtueFlaw implements IVirtueFlaw {
 	  return "VirtueFlaw.LimitTrait";
   }
 
+  @Override
   public void addRootChangeListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
 
+  @Override
   public ITextualDescription getName() {
     return name;
   }
 
+  @Override
   public boolean isFlawComplete() {
     return !(root == null || name.isEmpty());
   }

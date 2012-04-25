@@ -22,26 +22,32 @@ public class AggregatedTraitTemplate implements ITraitTemplate {
     this.startValue = startValue;
   }
 
+  @Override
   public ITraitLimitation getLimitation() {
     return template.getLimitation();
   }
 
+  @Override
   public LowerableState getLowerableState() {
     return template.getLowerableState();
   }
 
+  @Override
   public int getStartValue() {
     return startValue;
   }
 
+  @Override
   public int getZeroLevelValue() {
     return template.getZeroLevelValue();
   }
 
+  @Override
   public boolean isRequiredFavored() {
     return template.isRequiredFavored();
   }
 
+  @Override
   public int getMinimumValue(ILimitationContext collection) {
     IAggregatedTrait trait = (IAggregatedTrait) collection.getTraitCollection().getTrait(traitType);
     int necessaryMinimumValue = template.getMinimumValue(collection);
@@ -56,11 +62,13 @@ public class AggregatedTraitTemplate implements ITraitTemplate {
     return necessaryMinimumValue;
   }
   
+  @Override
   public int getCalculationMinValue(ILimitationContext context, ITraitType type)
   {
 	  return getMinimumValue(context);
   }
   
+  @Override
   public String getTag()
   {
 	  return null;

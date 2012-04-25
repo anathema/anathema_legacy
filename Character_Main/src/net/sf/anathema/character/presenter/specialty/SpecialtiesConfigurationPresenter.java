@@ -32,6 +32,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<ISubTrait, ISpecialtyView>();
   private final TraitInternationalizer i18ner;
   private final Comparator<ITraitReference> comparator = new Comparator<ITraitReference>() {
+    @Override
     public int compare(ITraitReference o1, ITraitReference o2) {
       String name1 = i18ner.getScreenName(o1);
       String name2 = i18ner.getScreenName(o2);
@@ -40,16 +41,19 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
   };
 
   private final ISubTraitListener specialtyListener = new ISubTraitListener() {
+    @Override
     public void subTraitAdded(ISubTrait specialty) {
       addSpecialtyView((ISpecialty) specialty);
     }
 
+    @Override
     public void subTraitRemoved(ISubTrait specialty) {
       ISpecialtyView view = viewsBySpecialty.get(specialty);
       viewsBySpecialty.remove(specialty);
       view.delete();
     }
 
+    @Override
     public void subTraitValueChanged() {
       // Nothing to do
     }
@@ -69,6 +73,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     this.i18ner = new TraitInternationalizer(resources);
   }
 
+  @Override
   public void initPresentation() {
     initTraitListening();
     Icon addIcon = new BasicUi(resources).getAddIcon();
@@ -85,32 +90,38 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
         addIcon);
     setObjects(specialtySelectionView);
     specialtySelectionView.addSelectionChangedListener(new IObjectValueChangedListener<ITraitReference>() {
+      @Override
       public void valueChanged(ITraitReference newValue) {
         specialtyManagement.setCurrentTrait(newValue);
       }
     });
     specialtySelectionView.addEditChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newSpecialtyName) {
         specialtyManagement.setCurrentSpecialtyName(newSpecialtyName);
       }
     });
     specialtySelectionView.addButtonListener(new ActionListener() {
+      @Override
       public void actionPerformed(ActionEvent e) {
         specialtyManagement.commitSelection();
         reset(specialtySelectionView);
       }
     });
     specialtyManagement.addSelectionChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         specialtySelectionView.setButtonEnabled(specialtyManagement.isEntryComplete());
       }
     });
     specialtyManagement.addTraitListChangeListener(new ITraitReferencesChangeListener() {
+      @Override
       public void referenceAdded(ITraitReference reference) {
         setObjects(specialtySelectionView);
         getSpecialtyContainer(reference).addSubTraitListener(specialtyListener);
       }
 
+      @Override
       public void referenceRemoved(ITraitReference reference) {
         specialtySelectionView.setObjects(specialtyManagement.getAllEligibleTraits());
       }
@@ -195,6 +206,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
         specialty.getMaximalValue());
     new TraitPresenter(specialty, specialtyView).initPresentation();
     specialtyView.addDeleteListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         getSpecialtyContainer(traitReference).removeSubTrait(specialty);
       }

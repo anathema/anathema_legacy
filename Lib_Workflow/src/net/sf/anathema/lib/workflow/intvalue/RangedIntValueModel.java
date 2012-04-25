@@ -24,6 +24,7 @@ public class RangedIntValueModel implements IIntValueModel {
     this.range = range;
   }
 
+  @Override
   public final void addIntValueChangeListener(IIntValueChangedListener changeListener) {
     intValueControl.addIntValueChangeListener(changeListener);
   }
@@ -32,10 +33,12 @@ public class RangedIntValueModel implements IIntValueModel {
     return range;
   }
 
+  @Override
   public int getValue() {
     return value;
   }
 
+  @Override
   public void setValue(int value) {
     value = range.getNearestValue(value);
     if (this.value == value) {
@@ -45,10 +48,12 @@ public class RangedIntValueModel implements IIntValueModel {
     intValueControl.fireValueChangedEvent(value);
   }
 
+  @Override
   public Integer getMaximum() {
     return range.getUpperBound();
   }
 
+  @Override
   public Integer getMinimum() {
     return range.getLowerBound();
   }

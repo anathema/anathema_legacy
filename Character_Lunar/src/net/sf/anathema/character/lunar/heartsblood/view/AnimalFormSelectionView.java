@@ -69,6 +69,7 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
     return spinner;
   }
 
+  @Override
   public JComponent getComponent() {
 	int width = 7;
 	if (animalDexterityString  != null) width += 2;
@@ -94,50 +95,62 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
     return panel;
   }
 
+  @Override
   public void addNameListener(IObjectValueChangedListener<String> listener) {
     textField.addTextChangedListener(listener);
   }
 
+  @Override
   public void addStaminaListener(IIntValueChangedListener listener) {
     staminaSpinner.addChangeListener(listener);
   }
 
+  @Override
   public void addStrengthListener(IIntValueChangedListener listener) {
     strengthSpinner.addChangeListener(listener);
   }
   
+  @Override
   public void addDexterityListener(IIntValueChangedListener listener) {
 	    dexteritySpinner.addChangeListener(listener);
 	  }
   
+  @Override
   public void addAppearanceListener(IIntValueChangedListener listener) {
 	    appearanceSpinner.addChangeListener(listener);
 	  }
 
+  @Override
   public void addAddButtonListener(ActionListener listener) {
     button.addActionListener(listener);
   }
 
+  @Override
   public void setAddButtonEnabled(boolean enabled) {
     button.setEnabled(enabled);
   }
 
+  @Override
   public void setName(String name) {
     textField.setText(name);
   }
 
+  @Override
   public void setStamina(int value) {
     staminaSpinner.setValue(value);
   }
 
+  @Override
   public void setStrength(int value) {
     strengthSpinner.setValue(value);
   }
   
+  @Override
   public void setDexterity(int value) {
 	    dexteritySpinner.setValue(value);
 	  }
   
+  @Override
   public void setAppearance(int value) {
 	    appearanceSpinner.setValue(value);
 	  }

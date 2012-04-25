@@ -24,6 +24,7 @@ public class SpellExperienceModel extends AbstractIntegerValueModel {
     this.traitConfiguration = traitConfiguration;
   }
 
+  @Override
   public Integer getValue() {
     return getSpellCosts();
   }

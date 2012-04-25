@@ -34,10 +34,12 @@ public class EssenceTemplate extends AbstractTraitTemplate {
     this.limitation = new StaticTraitLimitation(maxValue);
   }
 
+  @Override
   public int getMinimumValue(ILimitationContext limitationContext) {
     return getStartValue();
   }
 
+  @Override
   public ITraitLimitation getLimitation() {
     return limitation;
   }

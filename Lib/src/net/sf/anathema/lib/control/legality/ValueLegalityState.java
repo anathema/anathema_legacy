@@ -35,6 +35,7 @@ public enum ValueLegalityState implements IIdentificate {
     }
   };
 
+  @Override
   public String getId() {
     return name();
   }

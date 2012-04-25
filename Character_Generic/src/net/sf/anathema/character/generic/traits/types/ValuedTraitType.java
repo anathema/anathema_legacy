@@ -9,10 +9,12 @@ public class ValuedTraitType implements IGenericTrait {
   private final ITraitType traitType;
   private final int value;
 
+  @Override
   public ITraitType getType() {
     return traitType;
   }
 
+  @Override
   public int getCurrentValue() {
     return value;
   }

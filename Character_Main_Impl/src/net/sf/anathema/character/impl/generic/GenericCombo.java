@@ -12,10 +12,12 @@ public class GenericCombo implements IGenericCombo {
     this.combo = combo;
   }
 
+  @Override
   public String getName() {
     return combo.getName().getText();
   }
 
+  @Override
   public ICharm[] getCharms() {
     return combo.getCharms();
   }

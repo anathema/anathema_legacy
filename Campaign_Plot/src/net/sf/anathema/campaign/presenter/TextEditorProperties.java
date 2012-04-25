@@ -21,14 +21,17 @@ public class TextEditorProperties implements ITextEditorProperties {
     this.resources = resources;
   }
 
+  @Override
   public void initBoldAction(Action action) {
     initWithIcon(action, new Font("Serif", Font.BOLD, 12), resources.getString("TextEditor.BoldLetter")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
+  @Override
   public void initItalicAction(Action action) {
     initWithIcon(action, new Font("Serif", Font.ITALIC, 12), resources.getString("TextEditor.ItalicsLetter")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
+  @Override
   public void initUnderlineAction(Action action) {
     action.putValue(Action.SMALL_ICON, new PlotUI(resources).getUnderlineButtonIcon());
   }
@@ -37,14 +40,17 @@ public class TextEditorProperties implements ITextEditorProperties {
     action.putValue(Action.SMALL_ICON, new Icon() {
       private static final int SIZE = 16;
 
+      @Override
       public int getIconHeight() {
         return SIZE;
       }
 
+      @Override
       public int getIconWidth() {
         return SIZE;
       }
 
+      @Override
       public void paintIcon(Component c, Graphics g, int x, int y) {
         g.setFont(font);
         if (action.isEnabled()) {

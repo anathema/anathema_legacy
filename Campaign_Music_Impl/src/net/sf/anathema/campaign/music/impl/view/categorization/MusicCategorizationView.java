@@ -54,14 +54,17 @@ public class MusicCategorizationView implements IMusicCategorizationView {
     return panel;
   }
 
+  @Override
   public ISelectionContainerView<IMusicMood> getMoodsView() {
     return moodsView;
   }
 
+  @Override
   public ISelectionContainerView<IMusicEvent> getEventsView() {
     return eventsView;
   }
 
+  @Override
   public ISelectionContainerView<IMusicTheme> getThemesView() {
     return themesView;
   }

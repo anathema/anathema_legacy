@@ -13,6 +13,7 @@ public class MutationsBonusPointCalculator implements IAdditionalModelBonusPoint
     this.model = model;
   }
 
+  @Override
   public void recalculate() {
     cost = 0;
     gain = 0;
@@ -22,10 +23,12 @@ public class MutationsBonusPointCalculator implements IAdditionalModelBonusPoint
     }
   }
 
+  @Override
   public int getBonusPointCost() {
     return cost;
   }
 
+  @Override
   public int getBonusPointsGranted() {
     return gain;
   }

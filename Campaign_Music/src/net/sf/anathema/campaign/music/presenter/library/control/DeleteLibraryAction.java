@@ -29,6 +29,7 @@ public class DeleteLibraryAction extends SmartAction {
 
   private void addEnabledListener() {
     controlView.addLibraryListSelectionListener(new ListSelectionListener() {
+      @Override
       public void valueChanged(ListSelectionEvent e) {
         setEnabled(controlView.getSelectedLibrary() != null);
       }

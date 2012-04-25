@@ -100,6 +100,7 @@ public class RealmSyllableFactory implements ISyllableFactory {
       "yu" //$NON-NLS-1$
   });
 
+  @Override
   public String createToken(String lastSyllable) {
     String uncleanSyllable = uncleanFactory.createToken();
     if (lastSyllable == null || lastSyllable.length() == 0 || uncleanSyllable.length() == 1) {

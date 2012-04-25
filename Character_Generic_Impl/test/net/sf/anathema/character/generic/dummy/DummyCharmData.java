@@ -25,6 +25,7 @@ import java.util.Set;
 public class DummyCharmData implements ICharmData {
   private final Set<ICharm> parents = new HashSet<ICharm>();
 
+  @Override
   public CharacterType getCharacterType() {
     return null;
   }
@@ -33,34 +34,42 @@ public class DummyCharmData implements ICharmData {
     return null;
   }
 
+  @Override
   public SimpleDuration getDuration() {
     return null;
   }
 
+  @Override
   public IGenericTrait getEssence() {
     return new ValuedTraitType(null, 1);
   }
   
+  @Override
   public List<String> getParentSubeffects() {
 	    throw new NotYetImplementedException();
 	  }
 
+  @Override
   public IGenericTrait[] getPrerequisites() {
     return new IGenericTrait[0];
   }
 
+  @Override
   public String getGroupId() {
     return null;
   }
   
+  @Override
   public boolean isInstanceOfGenericCharm() {
 	return false;
   }
 
+  @Override
   public IComboRestrictions getComboRules() {
     return null;
   }
 
+  @Override
   public ICharmAttributeRequirement[] getAttributeRequirements() {
     return null;
   }
@@ -69,30 +78,37 @@ public class DummyCharmData implements ICharmData {
     Collections.addAll(this.parents, parentcharms);
   }
 
+  @Override
   public Set<ICharm> getParentCharms() {
     return parents;
   }
 
+  @Override
   public IExaltedSourceBook[] getSources() {
     return null;
   }
   
+  @Override
   public IExaltedSourceBook getPrimarySource() {
 	return null;
   }
 
+  @Override
   public ICostList getTemporaryCost() {
     return null;
   }
 
+  @Override
   public String getId() {
     return null;
   }
 
+  @Override
   public ICharmTypeModel getCharmTypeModel() {
     return null;
   }
 
+  @Override
   public ICharmAttribute[] getAttributes() {
     return new ICharmAttribute[0];
   }

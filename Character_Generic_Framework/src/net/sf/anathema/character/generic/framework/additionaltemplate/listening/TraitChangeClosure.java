@@ -13,6 +13,7 @@ public class TraitChangeClosure extends AbstractListenerClosure<ICharacterChange
     this.traitType = traitType;
   }
 
+  @Override
   public void execute(ICharacterChangeListener input) {
     input.traitChanged(traitType);
   }

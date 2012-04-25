@@ -24,14 +24,17 @@ public class LearnableCharmPool implements IAdditionalEssencePool {
     this.complexPools = complexPools;
   }
 
+  @Override
   public int getAdditionalPeripheralPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
     return peripheralPool.getPool(magicCollection.isLearned(charm) ? 1 : 0);
   }
 
+  @Override
   public int getAdditionalPersonalPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
     return personalPool.getPool(magicCollection.isLearned(charm) ? 1 : 0);
   }
 
+  @Override
   public IdentifiedInteger[] getAdditionalComplexPools(IGenericTraitCollection traitCollection,
                                                        IMagicCollection magicCollection) {
     IdentifiedInteger[] poolValues = new IdentifiedInteger[complexPools.length];

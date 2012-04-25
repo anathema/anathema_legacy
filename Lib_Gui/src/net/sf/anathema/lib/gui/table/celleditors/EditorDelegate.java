@@ -45,10 +45,12 @@ public class EditorDelegate implements ActionListener, ItemListener, Serializabl
     editor.fireEditingCanceled();
   }
 
+  @Override
   public void actionPerformed(ActionEvent e) {
     this.editor.stopCellEditing();
   }
 
+  @Override
   public void itemStateChanged(ItemEvent e) {
     this.editor.stopCellEditing();
   }

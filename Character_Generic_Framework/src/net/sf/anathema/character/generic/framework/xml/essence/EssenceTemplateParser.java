@@ -26,6 +26,7 @@ public class EssenceTemplateParser extends AbstractXmlTemplateParser<GenericEsse
     super(templateRegistry);
   }
 
+  @Override
   public GenericEssenceTemplate parseTemplate(Element element) throws PersistenceException {
     GenericEssenceTemplate genericEssenceTemplate = getBasicTemplate(element);
     boolean isEssenceUser = ElementUtilities.getBooleanAttribute(

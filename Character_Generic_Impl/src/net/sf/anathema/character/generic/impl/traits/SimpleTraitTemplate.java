@@ -44,10 +44,12 @@ public class SimpleTraitTemplate extends AbstractTraitTemplate {
     this.limitation = limitation;
   }
 
+  @Override
   public int getMinimumValue(ILimitationContext limitationContext) {
     return minimumValue;
   }
 
+  @Override
   public ITraitLimitation getLimitation() {
     return limitation;
   }

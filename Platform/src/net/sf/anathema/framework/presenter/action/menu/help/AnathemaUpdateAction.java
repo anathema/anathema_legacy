@@ -33,6 +33,7 @@ public class AnathemaUpdateAction extends SmartAction {
     final UserDialog dialog = new UserDialog(parentComponent, page);
     dialog.getDialog().setModal(false);
     updateChecker.addDataChangedListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         dialog.updateDescription();
         dialog.getDialogControl().checkInputValid();
@@ -40,6 +41,7 @@ public class AnathemaUpdateAction extends SmartAction {
     });
     dialog.show();
     new Thread(new Runnable() {
+      @Override
       public void run() {
         updateChecker.checkForUpdates();
       }

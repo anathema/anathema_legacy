@@ -42,6 +42,7 @@ public class ObjectSelectionWizardPage<V> extends AbstractAnathemaWizardPage {
       }
       IAnathemaWizardPage followUpPage = wizardFactory.createPage(modelTemplateRegistry.get(type));
       addFollowupPage(followUpPage, inputListener, new ICondition() {
+        @Override
         public boolean isFulfilled() {
           return model.getSelectedObject() == type;
         }
@@ -61,6 +62,7 @@ public class ObjectSelectionWizardPage<V> extends AbstractAnathemaWizardPage {
     listView.setSelectionType(ListSelectionMode.SingleSelection);
     listView.setCellRenderer(properties.getCellRenderer());
     listView.addObjectSelectionChangedListener(new IObjectValueChangedListener<V>() {
+      @Override
       public void valueChanged(V newValue) {
         if (newValue == null) {
           return;
@@ -69,25 +71,30 @@ public class ObjectSelectionWizardPage<V> extends AbstractAnathemaWizardPage {
       }
     });
     model.addListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         listView.setSelectedObject(model.getSelectedObject());
       }
     });
   }
 
+  @Override
   public boolean canFinish() {
     V value = model.getSelectedObject();
     return value != null && !followUpRegistry.get(value).needsFurtherDetails();
   }
 
+  @Override
   public String getDescription() {
     return properties.getSelectionTitle();
   }
 
+  @Override
   public IBasicMessage getMessage() {
     return properties.getSelectMessage();
   }
 
+  @Override
   public IPageContent getPageContent() {
     return view;
   }

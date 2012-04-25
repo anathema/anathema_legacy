@@ -25,10 +25,12 @@ public class BasicItemDescriptionView extends AbstractInitializableContentView<O
 
   private static final int COLUMN_COUNT = 45;
 
+  @Override
   public ITextView addLineTextView(final String labelName) {
     return standardPanelBuilder.addLineTextView(labelName, COLUMN_COUNT);
   }
 
+  @Override
   public IStyledTextView addStyledTextView(
       final String labelName,
       StyledDocument document,
@@ -36,10 +38,12 @@ public class BasicItemDescriptionView extends AbstractInitializableContentView<O
       ITextEditorProperties properties) {
     final TextEditor textEditor = new TextEditor(document, properties, preferredSize);
     standardPanelBuilder.addDialogComponent(new IDialogComponent() {
+      @Override
       public int getColumnCount() {
         return 2;
       }
 
+      @Override
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(new JLabel(labelName), GridDialogLayoutDataFactory.createTopData());
         panel.add(textEditor.getComponent(), GridDialogLayoutData.FILL_BOTH);

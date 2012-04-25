@@ -21,6 +21,7 @@ public class ElementalCharmLearnCondition implements ICondition {
     this.element = element;
   }
 
+  @Override
   public boolean isFulfilled() {
     boolean learnable = arbitrator.isLearnable(charm);
     if (!data.getCharacterType().equals(CharacterType.DB)) {

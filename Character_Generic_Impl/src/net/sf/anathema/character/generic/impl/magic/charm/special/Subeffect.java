@@ -21,14 +21,17 @@ public class Subeffect extends Identificate implements ISubeffect {
     this.learnable = learnable;
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
 
+  @Override
   public boolean isCreationLearned() {
     return creationLearned;
   }
 
+  @Override
   public boolean isLearned() {
     if (!data.isExperienced()) {
       return creationLearned;
@@ -36,6 +39,7 @@ public class Subeffect extends Identificate implements ISubeffect {
     return learned;
   }
 
+  @Override
   public void setLearned(boolean learned) {
     if (this.learned == learned) {
       return;
@@ -51,12 +55,14 @@ public class Subeffect extends Identificate implements ISubeffect {
     }
   }
 
+  @Override
   public void setCreationLearned(boolean creationLearned) {
     this.creationLearned = creationLearned;
     this.learned = creationLearned;
     control.fireChangedEvent();
   }
 
+  @Override
   public void setExperienceLearned(boolean experienceLearned) {
     if (!creationLearned) {
       this.learned = experienceLearned;

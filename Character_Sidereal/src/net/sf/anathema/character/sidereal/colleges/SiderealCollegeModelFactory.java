@@ -8,6 +8,7 @@ import net.sf.anathema.character.sidereal.colleges.model.SiderealCollegeModel;
 
 public class SiderealCollegeModelFactory implements IAdditionalModelFactory {
 
+  @Override
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     return new SiderealCollegeModel((SiderealCollegeTemplate) additionalTemplate, context);
   }

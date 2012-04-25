@@ -24,18 +24,22 @@ public class DefaultCharmModel extends AbstractAdditionalSpendingModel {
     this.additionalRules = additionalRules;
   }
 
+  @Override
   public int getAdditionalRestrictedAlotment() {
     return magicAdditionalPools.getAdditionalPointsAmount();
   }
 
+  @Override
   public int getAdditionalValue() {
     return magicCalculator.getAdditionalPointsSpent();
   }
 
+  @Override
   public int getSpentBonusPoints() {
     return getCharmBonusPointsSpent() + getSpellBonusPointsSpent();
   }
 
+  @Override
   public Integer getValue() {
     return magicCalculator.getGeneralCharmPicksSpent();
   }
@@ -54,14 +58,17 @@ public class DefaultCharmModel extends AbstractAdditionalSpendingModel {
     return magicCalculator.getBonusPointsSpentForSpells();
   }
 
+  @Override
   public int getAlotment() {
     return creationPoints.getDefaultCreationCharmCount();
   }
 
+  @Override
   public boolean isExtensionRequired() {
     return additionalRules != null && additionalRules.getAdditionalMagicLearnPools().length > 0;
   }
 
+  @Override
   public int getRequiredSize() {
     return 3;
   }

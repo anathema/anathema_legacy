@@ -12,6 +12,7 @@ public class SubeffectCharm extends MultipleEffectCharm implements ISubeffectCha
     this.pointCost = pointCost;
   }
 
+  @Override
   public double getPointCost() {
     return pointCost;
   }

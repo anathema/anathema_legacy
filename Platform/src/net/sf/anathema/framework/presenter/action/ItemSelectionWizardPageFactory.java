@@ -31,6 +31,7 @@ public class ItemSelectionWizardPageFactory implements IWizardFactory {
     this.selectionProperties = selectionProperties;
   }
 
+  @Override
   public IAnathemaWizardPage createPage(final IAnathemaWizardModelTemplate template) {
     if (!(template instanceof ConfigurableFileProvider)) {
       throw new IllegalArgumentException("Bad template type."); //$NON-NLS-1$
@@ -40,6 +41,7 @@ public class ItemSelectionWizardPageFactory implements IWizardFactory {
         printNameFiles,
         new LenientLegalityProvider<PrintNameFile>());
     model.addListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         ((ConfigurableFileProvider) template).setFile(model.getSelectedObject().getFile());
       }
@@ -54,10 +56,12 @@ public class ItemSelectionWizardPageFactory implements IWizardFactory {
         selectionProperties);
   }
 
+  @Override
   public IAnathemaWizardModelTemplate createTemplate() {
     return new ConfigurableFileProvider();
   }
 
+  @Override
   public boolean needsFurtherDetails() {
     return true;
   }

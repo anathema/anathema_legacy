@@ -21,26 +21,32 @@ public class KeywordEntryPageProperties implements IKeywordEntryPageProperties {
     defaultMessage = new BasicMessage(resources.getString("CharmEntry.Keywords.Message.Default")); //$NON-NLS-1$
   }
 
+  @Override
   public IBasicMessage getDefaultMessage() {
     return defaultMessage;
   }
 
+  @Override
   public String getPageTitle() {
     return resources.getString("CharmEntry.Keywords.Title"); //$NON-NLS-1$
   }
 
+  @Override
   public Icon getAddIcon() {
     return ui.getAddIcon();
   }
 
+  @Override
   public String getKeywordLabel() {
     return resources.getString("CharmEntry.Keywords.Keyword"); //$NON-NLS-1$
   }
 
+  @Override
   public Icon getRemoveIcon() {
     return ui.getRemoveIcon();
   }
 
+  @Override
   public ListCellRenderer getKeywordRenderer() {
     return new IdentificateSelectCellRenderer("Keyword.", resources); //$NON-NLS-1$
   }

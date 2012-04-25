@@ -29,6 +29,7 @@ public class ItemCreationOperator implements IItemOperator {
     this.model = model;
   }
 
+  @Override
   public void operate(Component parentComponent, IItemType type, IAnathemaWizardModelTemplate template)
       throws PersistenceException {
     final IItem item = creator.createItem(type, template);
@@ -36,6 +37,7 @@ public class ItemCreationOperator implements IItemOperator {
     String title = resources.getString("AnathemaCore.AddItem.Progress.Title", internationalizedType); //$NON-NLS-1$
     try {
       new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptableRunnableWithProgress() {
+        @Override
         public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {
             monitor.beginTask(

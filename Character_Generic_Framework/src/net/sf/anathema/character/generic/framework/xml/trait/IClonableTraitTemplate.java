@@ -5,5 +5,6 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public interface IClonableTraitTemplate extends ITraitTemplate, ICloneable<IClonableTraitTemplate> {
 
+  @Override
   public IClonableTraitTemplate clone();
 }

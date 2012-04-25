@@ -17,6 +17,7 @@ public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
     this.resources = resources;
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, IKnackStats stats) {
     if (stats == null) {
       table.addCell(createTextCell(font, null));
@@ -25,6 +26,7 @@ public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
               stats.getDetailString(resources),
               String.class,
               new ITransformer<String, String>() {
+                @Override
                 public String transform(String input) {
                   return resources.getString(input);
                 }
@@ -37,10 +39,12 @@ public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
     }
   }
 
+  @Override
   public Float[] getColumnWeights() {
     return new Float[]{7f};
   }
 
+  @Override
   public String getTitle() {
     return resources.getString("Sheet.Magic.Details"); //$NON-NLS-1$
   }

@@ -26,13 +26,16 @@ public class TrackDetailsPresenter implements Presenter {
     this.unknownString = resources.getString("Music.TrackDetails.Unknown"); //$NON-NLS-1$
   }
 
+  @Override
   public void initPresentation() {
     trackDetailModel.addTrackChangeListener(new IChangeListener() {
+      @Override
       public void changeOccurred() {
         updateTrackInfo(trackDetailModel.getSelectedTrack());
       }
     });
     trackDetailsView.getGivenNameView().addTextChangedListener(new IObjectValueChangedListener<String>() {
+      @Override
       public void valueChanged(String newValue) {
         trackDetailModel.updateGivenName(newValue);
       }
@@ -58,21 +61,25 @@ public class TrackDetailsPresenter implements Presenter {
     }
     trackDetailsView.showTrackInfo(true);
     setStringValue(mp3Track.getTitle(), new IClosure<String>() {
+      @Override
       public void execute(String input) {
         trackDetailsView.setOriginalTitle(input);
       }
     });
     setStringValue(mp3Track.getAlbum(), new IClosure<String>() {
+      @Override
       public void execute(String input) {
         trackDetailsView.setAlbumTitle(input);
       }
     });
     setStringValue(mp3Track.getTrack(), new IClosure<String>() {
+      @Override
       public void execute(String input) {
         trackDetailsView.setTrackNumber(input);
       }
     });
     setStringValue(mp3Track.getArtist(), new IClosure<String>() {
+      @Override
       public void execute(String input) {
         trackDetailsView.setArtistName(input);
       }
@@ -82,6 +89,7 @@ public class TrackDetailsPresenter implements Presenter {
       givenName = mp3Track.getTitle();
     }
     setStringValue(givenName, new IClosure<String>() {
+      @Override
       public void execute(String input) {
         trackDetailsView.getGivenNameView().setText(input);
       }

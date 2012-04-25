@@ -14,14 +14,17 @@ public class BackgroundBonusModel extends AbstractSpendingModel {
     this.creationPoints = creationPoints;
   }
 
+  @Override
   public Integer getValue() {
     return backgroundCalculator.getSpentDots();
   }
 
+  @Override
   public int getSpentBonusPoints() {
     return backgroundCalculator.getBonusPointSpent();
   }
 
+  @Override
   public int getAlotment() {
     return creationPoints.getBackgroundPointCount();
   }

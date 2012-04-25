@@ -19,10 +19,12 @@ public class CostEntryView implements ICostEntryView {
     this.additionalTextString = additionalTextString;
   }
 
+  @Override
   public ITextView getValueView() {
     return valueField;
   }
 
+  @Override
   public ITextView getTextView() {
     return textField;
   }

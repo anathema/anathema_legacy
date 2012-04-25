@@ -24,24 +24,29 @@ public class ExperienceConfigurationViewProperties implements IExperienceConfigu
     this.resources = resources;
   }
 
+  @Override
   public TableModel getTableModel() {
     return tableModel;
   }
 
+  @Override
   public ITableColumnViewSettings[] getColumnSettings() {
     return new ITableColumnViewSettings[] {
         new StringTableColumnSettings(),
         new IntegerTableColumnSettings(-10000, 10000, 5, Color.RED) };
   }
 
+  @Override
   public Icon getDeleteIcon() {
     return basicUi.getRemoveIcon();
   }
 
+  @Override
   public Icon getAddIcon() {
     return basicUi.getAddIcon();
   }
 
+  @Override
   public String getTotalString() {
     return resources.getString("CardView.Experience.Total"); //$NON-NLS-1$
   }

@@ -27,10 +27,12 @@ public class AbilitiesPresenter implements IContentPresenter {
     this.contentHeader = resources.getString("CardView.AbilityConfiguration.Title"); //$NON-NLS-1$
   }
 
+  @Override
   public IViewContent getTabContent() {
     return new SimpleViewContent(new ContentProperties(contentHeader).needsScrollbar(), abilityView);
   }
 
+  @Override
   public void initPresentation() {
     presenter.init("AbilityGroup"); //$NON-NLS-1$
   }

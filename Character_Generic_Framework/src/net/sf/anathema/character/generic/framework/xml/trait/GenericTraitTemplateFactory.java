@@ -21,34 +21,42 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
   private GenericTraitTemplate essenceTemplate;
   private GenericTraitTemplate willpowerTemplate;
 
+  @Override
   public ITraitTemplate createBackgroundTemplate(IBackgroundTemplate template) {
     return backgroundPool.getTemplate(template);
   }
   
+  @Override
   public ITraitTemplate createDefaultBackgroundTemplate() {
     return backgroundPool.getDefaultTemplate();
   }
 
+  @Override
   public ITraitTemplate createWillpowerTemplate() {
     return willpowerTemplate;
   }
 
+  @Override
   public ITraitTemplate createEssenceTemplate() {
     return essenceTemplate;
   }
 
+  @Override
   public ITraitTemplate createVirtueTemplate(VirtueType type) {
     return virtuesPool.getTemplate(type);
   }
 
+  @Override
   public ITraitTemplate createAttributeTemplate(AttributeType type) {
     return attributesPool.getTemplate(type);
   }
 
+  @Override
   public ITraitTemplate createAbilityTemplate(AbilityType type) {
     return abilitiesPool.getTemplate(type);
   }
   
+  @Override
   public ITraitTemplate createYoziTemplate(YoziType type)
   {
 	return SimpleTraitTemplate.createEssenceLimitedTemplate(0);

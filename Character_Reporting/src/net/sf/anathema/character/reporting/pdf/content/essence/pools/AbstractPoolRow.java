@@ -12,10 +12,12 @@ public abstract class AbstractPoolRow implements PoolRow {
     return Integer.toString(getCapacityValue()) + " m";
   }
 
+  @Override
   public String getCommitted() {
     return isCommitmentEnabled() ? String.valueOf(getCommittedValue()) + " m" : " ";
   }
 
+  @Override
   public String getAvailable() {
     int availableValue = getAvailableValue();
     return Integer.toString(availableValue) + " m";
@@ -26,6 +28,7 @@ public abstract class AbstractPoolRow implements PoolRow {
     return getCommittedValue() != null;
   }
 
+  @Override
   public boolean isDisplayable() {
     return getCapacityValue() > 0;
   }

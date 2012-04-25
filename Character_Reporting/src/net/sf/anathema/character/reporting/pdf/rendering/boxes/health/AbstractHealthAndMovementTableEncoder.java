@@ -30,6 +30,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected abstract Float[] getMovementColumns();
 
+  @Override
   public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     PdfPTable table = createTable(graphics, session);
     table.setWidthPercentage(100);
@@ -234,6 +235,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return graphics.createTableFont();
   }
 
+  @Override
   public boolean hasContent(ReportSession session) {
     return true;
   }

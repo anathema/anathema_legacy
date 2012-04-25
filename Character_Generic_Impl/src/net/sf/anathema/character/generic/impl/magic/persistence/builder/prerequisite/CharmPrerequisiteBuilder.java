@@ -15,6 +15,7 @@ import org.dom4j.Element;
 
 public class CharmPrerequisiteBuilder implements ICharmPrerequisiteBuilder {
 
+  @Override
   public final String[] buildCharmPrerequisites(Element parent) throws CharmException {
     List<String> prerequisiteCharmIds = new ArrayList<String>();
     prerequisiteCharmIds.addAll(getCharmIds(parent));
