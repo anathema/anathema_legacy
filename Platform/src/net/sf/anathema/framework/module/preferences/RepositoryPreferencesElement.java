@@ -18,6 +18,7 @@ import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identificate;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -87,7 +88,6 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     setDisplayedPath(repositoryDirectory);
     final JButton browseButton = createBrowseButton();
     final JButton defaultButton = createDefaultButton();
-    final JButton openButton = createOpenButton();
     modificationAllowed = true;
     return new IDialogComponent() {
       @Override
@@ -97,7 +97,10 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
         panel.add(repositoryTextField, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount,
                 GridDialogLayoutData.FILL_HORIZONTAL));
         panel.add(defaultButton, GridDialogLayoutDataFactory.createHorizontalSpanData(1));
-        panel.add(openButton, GridDialogLayoutDataFactory.createRightData());
+        if (Desktop.isDesktopSupported()) {
+          JButton openButton = createOpenButton();
+          panel.add(openButton, GridDialogLayoutDataFactory.createRightData());
+        }
       }
 
       @Override
@@ -265,7 +268,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
   @Override
   public IIdentificate getCategory() {
-    return SYSTEM_CATEGORY;
+    return new Identificate("Repository");
   }
 
   @Override
