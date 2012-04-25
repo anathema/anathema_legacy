@@ -15,7 +15,7 @@ import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.resources.IExtensibleDataSet;
+import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 
 public interface ICharacterGenerics {
 

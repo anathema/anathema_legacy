@@ -12,7 +12,7 @@ import net.sf.anathema.charmentry.presenter.model.ICostEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IDurationEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IKeywordEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;
-import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 
 public class WizardCharmEntryModel implements ICharmEntryModel {
   private final IConfigurableCharmData charmData = new ConfigurableCharmData();

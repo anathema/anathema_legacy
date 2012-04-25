@@ -3,9 +3,9 @@ package net.sf.anathema.character.generic.framework;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.lib.resources.IExtensibleDataSet;
-import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
-import net.sf.anathema.lib.resources.IExtensibleDataSetRegistry;
+import net.sf.anathema.character.generic.data.IExtensibleDataSet;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetRegistry;
 
 public class ExtensibleDataManager implements IExtensibleDataSetProvider, IExtensibleDataSetRegistry {
   private List<IExtensibleDataSet> dataSets = new ArrayList<IExtensibleDataSet>();

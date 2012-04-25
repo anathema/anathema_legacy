@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.resources;
+package net.sf.anathema.character.generic.data;
 
 public interface IExtensibleDataSet {
 	// nothing to do

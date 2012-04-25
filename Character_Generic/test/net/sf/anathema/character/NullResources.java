@@ -4,7 +4,7 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 
-import net.sf.anathema.lib.resources.IExtensibleDataSet;
+import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.lib.resources.IResources;
 
 public class NullResources implements IResources {

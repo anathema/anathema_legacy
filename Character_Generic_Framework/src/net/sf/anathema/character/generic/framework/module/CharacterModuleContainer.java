@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.framework.module.object.ICharacterModul
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterModuleContainer {

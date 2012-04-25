@@ -13,7 +13,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import org.junit.Before;
 import org.junit.Test;
 

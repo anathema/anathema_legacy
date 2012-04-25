@@ -23,8 +23,8 @@ import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.registry.Registry;
-import net.sf.anathema.lib.resources.IExtensibleDataSet;
-import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
+import net.sf.anathema.character.generic.data.IExtensibleDataSet;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 
 public class CharacterGenerics implements ICharacterGenerics {
 

@@ -1,4 +1,6 @@
-package net.sf.anathema.lib.resources;
+package net.sf.anathema.character.generic.data;
+
+import net.sf.anathema.lib.resources.ResourceFile;
 
 public interface IExtensibleDataSetCompiler {
 	String getName();

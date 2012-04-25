@@ -7,8 +7,8 @@ import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.resources.IExtensibleDataSetCompiler;
-import net.sf.anathema.lib.resources.IExtensibleDataSetProvider;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.lib.resources.ResourceFile;
 
 import java.util.Collection;
