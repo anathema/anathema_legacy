@@ -36,7 +36,7 @@ public class CharacterModuleContainerInitializer {
   }
 
   private IExtensibleDataSetProvider loadExtensibleResources() {
-    DataSetInitializer2 dataSetInitializer = new DataSetInitializer2(resourceLoader, instantiater);
+    DataSetInitializer dataSetInitializer = new DataSetInitializer(resourceLoader, instantiater);
     return dataSetInitializer.initializeExtensibleResources();
   }
 }
