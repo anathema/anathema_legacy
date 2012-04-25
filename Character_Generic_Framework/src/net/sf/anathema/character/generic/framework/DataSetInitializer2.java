@@ -14,13 +14,13 @@ import net.sf.anathema.lib.resources.ResourceFile;
 import java.util.Collection;
 import java.util.Set;
 
-public class DataSetInitializer {
+public class DataSetInitializer2 {
 
   private static final Logger logger = Logger.getLogger(AnathemaInitializer.class);
   private final ResourceLoader resourceLoader;
   private final Instantiater instantiater;
 
-  public DataSetInitializer(ResourceLoader resourceLoader, Instantiater instantiater) {
+  public DataSetInitializer2(ResourceLoader resourceLoader, Instantiater instantiater) {
     this.resourceLoader = resourceLoader;
     this.instantiater = instantiater;
   }
