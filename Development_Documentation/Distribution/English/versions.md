@@ -4,7 +4,7 @@
                    Sean Mattox, Dennis Fotheringham, and Erin Martell.
 Exalted (C) 2001-2012 by White Wolf Publishing, Inc.
 
-Website: [anathema.github.com](anathema.github.com)
+Website: [anathema.github.com](http://anathema.github.com)
 
 
 ## Release 4.1.0 "Varang"
