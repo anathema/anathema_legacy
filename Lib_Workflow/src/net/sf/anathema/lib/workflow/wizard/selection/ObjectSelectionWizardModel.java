@@ -1,13 +1,13 @@
 package net.sf.anathema.lib.workflow.wizard.selection;
 
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public class ObjectSelectionWizardModel<V> implements IObjectSelectionWizardModel<V> {
 
   private V value;
   private final V[] allObjects;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ILegalityProvider<V> provider;
 
   public ObjectSelectionWizardModel(V[] allObjects, ILegalityProvider<V> provider) {
@@ -28,7 +28,7 @@ public class ObjectSelectionWizardModel<V> implements IObjectSelectionWizardMode
     if (provider.isLegal(value)) {
       this.value = value;
     }
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
@@ -38,6 +38,6 @@ public class ObjectSelectionWizardModel<V> implements IObjectSelectionWizardMode
 
   @Override
   public void addListener(IChangeListener inputListener) {
-    control.addChangeListener(inputListener);
+    control.addListener(inputListener);
   }
 }

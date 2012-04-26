@@ -1,12 +1,12 @@
 package net.sf.anathema.lib.workflow.container.model;
 
-import java.util.Arrays;
-
 import net.sf.anathema.lib.container.DefaultSelectionContainer;
 import net.sf.anathema.lib.container.IGenericSelectionContainer;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerModel;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.Arrays;
 
 public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
 
@@ -14,7 +14,7 @@ public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
     return new SelectionContainerModel<V>(new DefaultSelectionContainer<V>(componentType, availableValues));
   }
 
-  private final ChangeControl changeControl = new ChangeControl();
+  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final IGenericSelectionContainer<V> container;
 
   public SelectionContainerModel(IGenericSelectionContainer<V> container) {
@@ -27,7 +27,7 @@ public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
       return;
     }
     container.setValues(values);
-    changeControl.fireChangedEvent();
+    changeControl.announce().changeOccurred();
   }
 
   @Override
@@ -37,12 +37,12 @@ public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
 
   @Override
   public void addChangeListener(IChangeListener listener) {
-    changeControl.addChangeListener(listener);
+    changeControl.addListener(listener);
   }
 
   @Override
   public void removeChangeListener(IChangeListener listener) {
-    changeControl.removeChangeListener(listener);
+    changeControl.removeListener(listener);
   }
 
   @Override

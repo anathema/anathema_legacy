@@ -5,11 +5,11 @@ import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
 import net.sf.anathema.framework.repository.IRepository;
+import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -20,7 +20,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   private final IItemType[] integratedItemTypes;
   private final Announcer<IRepositoryTreeModelListener> control = Announcer.to(IRepositoryTreeModelListener.class);
-  private final ChangeControl changeControl = new ChangeControl();
+  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final IItemManagementModel itemManagementModel;
   private final IRepository repository;
   private final IItemTypeRegistry itemTypes;
@@ -35,14 +35,14 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     this.repositoryFileAccessFactory = new RepositoryFileAccessFactory(repository);
   }
 
-  private IItemType[] createIntegratedItemTypes() {
+  private ItemType[] createIntegratedItemTypes() {
     List<IItemType> integratedItemTypes = new ArrayList<IItemType>();
     for (IItemType itemType : itemTypes.getAllItemTypes()) {
       if (itemType.isIntegrated()) {
         integratedItemTypes.add(itemType);
       }
     }
-    return integratedItemTypes.toArray(new IItemType[integratedItemTypes.size()]);
+    return integratedItemTypes.toArray(new ItemType[integratedItemTypes.size()]);
   }
 
   @Override
@@ -98,12 +98,12 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   @Override
   public void setSelectedObject(Object[] objects) {
     this.currentlySelectedUserObjects = objects;
-    changeControl.fireChangedEvent();
+    changeControl.announce().changeOccurred();
   }
 
   @Override
   public void addTreeSelectionChangeListener(IChangeListener changeListener) {
-    changeControl.addChangeListener(changeListener);
+    changeControl.addListener(changeListener);
   }
 
   @Override

@@ -10,12 +10,12 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> implements IIntimaciesModel {
 
-  private final ChangeControl changeControl = new ChangeControl();
+  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final ICharacterModelContext context;
   private String name;
 
@@ -34,7 +34,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     ConfigurableCharacterChangeListener maximumListener = new ConfigurableCharacterChangeListener() {
       @Override
       public void configuredChangeOccured() {
-        changeControl.fireChangedEvent();
+        fireModelChangedEvent();
         fireEntryChanged();
       }
     };
@@ -70,14 +70,14 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     intimacy.addChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
-        changeControl.fireChangedEvent();        
+        fireModelChangedEvent();
       }      
     });
     return intimacy;
   }
 
   private void fireModelChangedEvent() {
-    changeControl.fireChangedEvent();
+    changeControl.announce().changeOccurred();
   }
 
   @Override
@@ -108,7 +108,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
 
   @Override
   public void addModelChangeListener(IChangeListener listener) {
-    changeControl.addChangeListener(listener);
+    changeControl.addListener(listener);
   }
 
   @Override

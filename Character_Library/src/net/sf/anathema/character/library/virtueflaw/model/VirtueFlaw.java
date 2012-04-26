@@ -8,17 +8,17 @@ import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+import org.jmock.example.announcer.Announcer;
 
 public class VirtueFlaw implements IVirtueFlaw {
 
   private ITraitType root;
   private IDefaultTrait limitTrait;
   private final ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharacterModelContext context;
   
   public VirtueFlaw(ICharacterModelContext context)
@@ -34,7 +34,7 @@ public class VirtueFlaw implements IVirtueFlaw {
   @Override
   public void setRoot(ITraitType root) {
     this.root = root;
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
   
   @Override
@@ -54,7 +54,7 @@ public class VirtueFlaw implements IVirtueFlaw {
 
   @Override
   public void addRootChangeListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override

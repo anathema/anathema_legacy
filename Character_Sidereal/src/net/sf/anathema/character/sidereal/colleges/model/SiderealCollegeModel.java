@@ -11,8 +11,8 @@ import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeModel;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public class SiderealCollegeModel implements ISiderealCollegeModel {
 
@@ -29,12 +29,11 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
 
   private final IAstrologicalHouse[] allHouses;
   private final SiderealCollegeTemplate template;
-  private final ChangeControl bonusControl = new ChangeControl();
-
+  private final Announcer<IChangeListener> bonusControl = Announcer.to(IChangeListener.class);
   private final IChangeListener houseChangeListener = new IChangeListener() {
     @Override
     public void changeOccurred() {
-      bonusControl.fireChangedEvent();
+      bonusControl.announce().changeOccurred();
     }
   };
 
@@ -75,7 +74,7 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
 
   @Override
   public void addChangeListener(IChangeListener listener) {
-    bonusControl.addChangeListener(listener);
+    bonusControl.addListener(listener);
   }
 
   @Override

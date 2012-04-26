@@ -2,17 +2,17 @@ package net.sf.anathema.framework.itemdata.model;
 
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.StyledTextualDescription;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+import org.jmock.example.announcer.Announcer;
 
 public class ItemDescription implements IItemDescription {
 
   private final ITextualDescription name;
   private final IStyledTextualDescription content;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
 
   public ItemDescription() {
     this(""); //$NON-NLS-1$
@@ -23,7 +23,7 @@ public class ItemDescription implements IItemDescription {
     IObjectValueChangedListener<String> listener = new IObjectValueChangedListener<String>() {
       @Override
       public void valueChanged(String newValue) {
-        control.fireChangedEvent();
+        control.announce().changeOccurred();
       }
     };
     this.content = new StyledTextualDescription();
@@ -45,7 +45,7 @@ public class ItemDescription implements IItemDescription {
   public void setClean() {
     name.setDirty(false);
     content.setDirty(false);
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
@@ -55,11 +55,11 @@ public class ItemDescription implements IItemDescription {
 
   @Override
   public void addDirtyListener(IChangeListener changeListener) {
-    control.addChangeListener(changeListener);
+    control.addListener(changeListener);
   }
 
   @Override
   public void removeDirtyListener(IChangeListener changeListener) {
-    control.removeChangeListener(changeListener);
+    control.removeListener(changeListener);
   }
 }

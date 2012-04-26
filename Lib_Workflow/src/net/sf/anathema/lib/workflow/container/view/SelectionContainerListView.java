@@ -1,20 +1,20 @@
 package net.sf.anathema.lib.workflow.container.view;
 
+import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.list.SmartJList;
+import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
+import org.jmock.example.announcer.Announcer;
+
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.list.SmartJList;
-import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
-
 public class SelectionContainerListView<V> implements ISelectionContainerView<V>, IView {
 
   private final SmartJList<V> smartList;
-  private final ChangeControl changeControl = new ChangeControl();
+  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
 
   public SelectionContainerListView(Class<V> contentClass) {
     smartList = new SmartJList<V>(contentClass);
@@ -24,7 +24,7 @@ public class SelectionContainerListView<V> implements ISelectionContainerView<V>
         if (e.getValueIsAdjusting()) {
           return;
         }
-        changeControl.fireChangedEvent();
+        changeControl.announce().changeOccurred();
       }
     });
   }
@@ -46,7 +46,7 @@ public class SelectionContainerListView<V> implements ISelectionContainerView<V>
 
   @Override
   public void addSelectionChangeListener(IChangeListener listener) {
-    changeControl.addChangeListener(listener);
+    changeControl.addListener(listener);
   }
 
   @Override

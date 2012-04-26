@@ -2,15 +2,15 @@ package net.sf.anathema.character.equipment.impl.creation.model;
 
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
+import org.jmock.example.announcer.Announcer;
 
 public class WeaponDamageModel implements IWeaponDamageModel {
 
-  private final ChangeControl changeControl = new ChangeControl();
+  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final IIntValueModel damageModel;
   private final IIntValueModel minDamageModel;
   private HealthType healthType = HealthType.Lethal;
@@ -37,7 +37,7 @@ public class WeaponDamageModel implements IWeaponDamageModel {
 
   @Override
   public void addHealthTypeChangeListener(IChangeListener listener) {
-    changeControl.addChangeListener(listener);
+    changeControl.addListener(listener);
   }
 
   @Override
@@ -46,6 +46,6 @@ public class WeaponDamageModel implements IWeaponDamageModel {
       return;
     }
     this.healthType = healthType;
-    changeControl.fireChangedEvent();
+    changeControl.announce().changeOccurred();
   }
 }

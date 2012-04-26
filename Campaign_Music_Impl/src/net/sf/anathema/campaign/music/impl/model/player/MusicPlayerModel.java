@@ -1,21 +1,19 @@
 package net.sf.anathema.campaign.music.impl.model.player;
 
-import java.io.File;
-import java.util.Map;
-
 import javazoom.jlgui.basicplayer.BasicController;
 import javazoom.jlgui.basicplayer.BasicPlayerEvent;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 import javazoom.jlgui.basicplayer.BasicPlayerListener;
-
 import net.sf.anathema.campaign.music.export.Mp3Utilities;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerModel;
 import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerModelListener;
 import net.sf.anathema.campaign.music.presenter.selection.player.MusicPlayerStatus;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.exception.AnathemaException;
 import org.jmock.example.announcer.Announcer;
+
+import java.io.File;
+import java.util.Map;
 
 public class MusicPlayerModel implements IMusicPlayerModel {
 

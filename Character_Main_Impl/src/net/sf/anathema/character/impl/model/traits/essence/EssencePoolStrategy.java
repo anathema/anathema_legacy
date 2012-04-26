@@ -17,9 +17,9 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolModifier;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolStrategy;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +28,7 @@ import java.util.Map.Entry;
 
 public class EssencePoolStrategy implements IEssencePoolStrategy {
 
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final IEssenceTemplate essenceTemplate;
   private final IAdditionalRules additionalRules;
   private final IGenericTraitCollection traitCollection;
@@ -57,12 +57,12 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   }
 
   private void firePoolsChanged() {
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
   public void addPoolChangeListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override

@@ -10,11 +10,11 @@ import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatSta
 import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
+import org.jmock.example.announcer.Announcer;
 
 public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCreationModel {
 
@@ -24,7 +24,7 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   private final IArtifactStatisticsModel artifactStatisticsModel = new ArtifactStatisticsModel();
   private final ITraitModifyingStatisticsModel traitModifyingStatisticsModel = new TraitModifyingStatisticsModel();
   private final IApplicableMaterialsModel applicableMaterialsModel = new ApplicableMaterialsModel();
-  private final ChangeControl equpimentTypeChangeControl = new ChangeControl();
+  private final Announcer<IChangeListener> equipmentTypeChangeControl = Announcer.to(IChangeListener.class);
   private final IWeaponTagsModel weaponTagsModel = new WeaponTagsModel();
   private EquipmentStatisticsType statisticsType;
   private final String[] existingNames;
@@ -51,7 +51,7 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
       getWeaponTagsModel().setTagsCloseCombatStyle();
     }
     this.statisticsType = statisticsType;
-    equpimentTypeChangeControl.fireChangedEvent();
+    equipmentTypeChangeControl.announce().changeOccurred();
   }
 
   @Override
@@ -61,7 +61,7 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   @Override
   public void addEquipmentTypeChangeListener(IChangeListener changeListener) {
-    equpimentTypeChangeControl.addChangeListener(changeListener);
+    equipmentTypeChangeControl.addListener(changeListener);
   }
 
   @Override

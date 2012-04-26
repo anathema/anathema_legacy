@@ -1,11 +1,11 @@
 package net.sf.anathema.magic.description.model;
 
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public class ProxyMagicDescriptionEditModel implements MagicDescriptionEditModel {
 
-  private final ChangeControl changeControl = new ChangeControl();
+  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final IChangeListener notifyingListener = new NotifyingChangeListener(changeControl);
   private MagicDescriptionEditModel delegate = new NullMagicDescriptionEditModel();
 
@@ -42,11 +42,11 @@ public class ProxyMagicDescriptionEditModel implements MagicDescriptionEditModel
 
   @Override
   public void addDescriptionChangedListener(IChangeListener listener) {
-    changeControl.addChangeListener(listener);
+    changeControl.addListener(listener);
   }
 
   @Override
   public void removeDescriptionChangeListener(IChangeListener listener) {
-    changeControl.removeChangeListener(listener);
+    changeControl.removeListener(listener);
   }
 }

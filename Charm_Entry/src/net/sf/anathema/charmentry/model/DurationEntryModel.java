@@ -9,13 +9,13 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmTypeEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IDurationEntryModel;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public class DurationEntryModel implements IDurationEntryModel {
 
   private final IConfigurableCharmData charmData;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private String text;
   private String amount;
 
@@ -33,7 +33,7 @@ public class DurationEntryModel implements IDurationEntryModel {
 
   @Override
   public void addModelListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override
@@ -43,7 +43,11 @@ public class DurationEntryModel implements IDurationEntryModel {
       return;
     }
     charmData.setDuration(new UntilEventDuration(newValue));
-    control.fireChangedEvent();
+    fireChangeEvent();
+  }
+
+  private void fireChangeEvent() {
+    control.announce().changeOccurred();
   }
 
   @Override
@@ -53,7 +57,7 @@ public class DurationEntryModel implements IDurationEntryModel {
       return;
     }
     charmData.setDuration(SimpleDuration.getDuration(newValue));
-    control.fireChangedEvent();
+    fireChangeEvent();
   }
 
   @Override
@@ -65,7 +69,7 @@ public class DurationEntryModel implements IDurationEntryModel {
   public void clearDuration() {
     charmData.setDuration(null);
     amount = null;
-    control.fireChangedEvent();
+    fireChangeEvent();
   }
 
   @Override
@@ -90,7 +94,7 @@ public class DurationEntryModel implements IDurationEntryModel {
     if (amount != null && !StringUtilities.isNullOrTrimmedEmpty(text)) {
       charmData.setDuration(new QualifiedAmountDuration(amount, text));
     }
-    control.fireChangedEvent();
+    fireChangeEvent();
   }
 
 }

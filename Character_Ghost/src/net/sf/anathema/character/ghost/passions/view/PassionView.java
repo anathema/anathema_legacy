@@ -1,24 +1,23 @@
 package net.sf.anathema.character.ghost.passions.view;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.character.library.trait.view.AbstractTraitView;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
-import net.sf.anathema.character.library.trait.view.AbstractTraitView;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 
 public class PassionView extends AbstractTraitView implements IPassionView {
 
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Component abilityLabel;
   private final Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
   private final Component passionLabel;
@@ -60,11 +59,11 @@ public class PassionView extends AbstractTraitView implements IPassionView {
 
   @Override
   public void addDeleteListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   private void fireDeletionPerformed() {
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override

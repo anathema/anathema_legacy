@@ -13,8 +13,8 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +27,10 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   private final IEquipmentDatabase database;
   private IEquipmentTemplate editedTemplate;
   private final List<IEquipmentStats> statses = new ArrayList<IEquipmentStats>();
-  private final ChangeControl statsChangeControl = new ChangeControl();
-  private final ChangeControl magicalMaterialControl = new ChangeControl();
-  private final ChangeControl compositionControl = new ChangeControl();
-  private final ChangeControl costControl = new ChangeControl();
+  private final Announcer<IChangeListener> statsChangeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<IChangeListener> magicalMaterialControl = Announcer.to(IChangeListener.class);
+  private final Announcer<IChangeListener> compositionControl = Announcer.to(IChangeListener.class);
+  private final Announcer<IChangeListener> costControl = Announcer.to(IChangeListener.class);
   private String editTemplateId;
   private MaterialComposition composition;
   private MagicalMaterial material;
@@ -66,7 +66,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
 
   private void fireStatsChangedEvent() {
-    statsChangeControl.fireChangedEvent();
+    statsChangeControl.announce().changeOccurred();
   }
 
   @Override
@@ -141,7 +141,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
   @Override
   public void addStatsChangeListener(IChangeListener changeListener) {
-    statsChangeControl.addChangeListener(changeListener);
+    statsChangeControl.addListener(changeListener);
   }
 
   @Override
@@ -158,17 +158,17 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
   @Override
   public void addMagicalMaterialChangeListener(IChangeListener listener) {
-    magicalMaterialControl.addChangeListener(listener);
+    magicalMaterialControl.addListener(listener);
   }
 
   @Override
   public void addCompositionChangeListener(IChangeListener listener) {
-    compositionControl.addChangeListener(listener);
+    compositionControl.addListener(listener);
   }
   
   @Override
   public void addCostChangeListener(IChangeListener listener) {
-    costControl.addChangeListener(listener);
+    costControl.addListener(listener);
   }
   
   @Override
@@ -177,7 +177,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 		return;
 	}
 	this.cost = newCost;
-	costControl.fireChangedEvent();
+	costControl.announce().changeOccurred();
   }
   
   @Override
@@ -199,7 +199,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
       return;
     }
     this.material = material;
-    magicalMaterialControl.fireChangedEvent();
+    magicalMaterialControl.announce().changeOccurred();
   }
 
   @Override
@@ -213,7 +213,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     } else {
       setMagicalMaterial(null);
     }
-    compositionControl.fireChangedEvent();
+    compositionControl.announce().changeOccurred();
   }
 
   @Override

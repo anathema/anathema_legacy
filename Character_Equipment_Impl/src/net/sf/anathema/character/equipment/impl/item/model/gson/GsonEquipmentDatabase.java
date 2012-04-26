@@ -9,9 +9,9 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.itemdata.model.NonPersistableItemData;
 import net.sf.anathema.framework.repository.IRepository;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import org.apache.commons.io.FilenameUtils;
+import org.jmock.example.announcer.Announcer;
 
 import java.io.File;
 import java.util.List;
@@ -32,8 +32,7 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
     return registry.getById(EQUIPMENT_DATABASE_ITEM_TYPE_ID);
   }
 
-  private final ChangeControl availableTemplatesChangeControl = new ChangeControl();
-
+  private final Announcer<IChangeListener> availableTemplatesChangeControl = Announcer.to(IChangeListener.class);
   private final ICollectionFactory collectionFactory = new GsonCollectionFactory();
   private final EquipmentGson gson = new EquipmentGson();
   private final EquipmentAccess access;
@@ -70,7 +69,7 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
   @Override
   public void saveTemplate(IEquipmentTemplate template) {
     save(template);
-    availableTemplatesChangeControl.fireChangedEvent();
+    availableTemplatesChangeControl.announce().changeOccurred();
   }
 
   public void saveTemplateNoOverwrite(IEquipmentTemplate template) {
@@ -81,13 +80,13 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
 
   @Override
   public void addAvailableTemplateChangeListener(IChangeListener listener) {
-    availableTemplatesChangeControl.addChangeListener(listener);
+    availableTemplatesChangeControl.addListener(listener);
   }
 
   @Override
   public void deleteTemplate(String editTemplateId) {
     delete(editTemplateId);
-    availableTemplatesChangeControl.fireChangedEvent();
+    availableTemplatesChangeControl.announce().changeOccurred();
   }
 
 

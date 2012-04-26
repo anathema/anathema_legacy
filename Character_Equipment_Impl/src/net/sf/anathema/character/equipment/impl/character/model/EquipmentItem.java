@@ -18,8 +18,8 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.util.IProxy;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,7 +33,7 @@ import static net.sf.anathema.character.equipment.MaterialComposition.Variable;
 public class EquipmentItem implements IEquipmentItem {
 
   private final Set<IEquipmentStats> printedStats = new HashSet<IEquipmentStats>();
-  private final ChangeControl changeControl = new ChangeControl();
+  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final IEquipmentTemplate template;
   private final MagicalMaterial material;
   private final ModifierFactory modifiers;
@@ -179,13 +179,13 @@ public class EquipmentItem implements IEquipmentItem {
     } else {
       printedStats.remove(stats);
     }
-    changeControl.fireChangedEvent();
+    changeControl.announce().changeOccurred();
   }
 
   @Override
   public void setUnprinted() {
     printedStats.clear();
-    changeControl.fireChangedEvent();
+    changeControl.announce().changeOccurred();
   }
 
   @Override
@@ -210,12 +210,12 @@ public class EquipmentItem implements IEquipmentItem {
 
   @Override
   public void addChangeListener(IChangeListener listener) {
-    changeControl.addChangeListener(listener);
+    changeControl.addListener(listener);
   }
 
   @Override
   public void removeChangeListener(IChangeListener listener) {
-    changeControl.removeChangeListener(listener);
+    changeControl.removeListener(listener);
   }
 
   public String toString() {

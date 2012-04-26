@@ -74,7 +74,7 @@ public class InfernalPatronPresenter implements Presenter {
         traitViewsByTrait.put(yozi, yoziView);
         updateView(yoziView, yozi.getFavorization().getFavorableState());
       }
-      /*yozi.addChangeListener(new IChangeListener() {
+      /*yozi.addListener(new IChangeListener() {
         public void changeOccurred() {
           setOverviewData(favoredView, generalView, bonusView, experienceView);
         }

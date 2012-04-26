@@ -1,8 +1,5 @@
 package net.sf.anathema.character.sidereal.colleges.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
@@ -17,10 +14,13 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.util.Identificate;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AstrologicalHouse extends Identificate implements IAstrologicalHouse {
 
@@ -75,17 +75,17 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
   }
 
   private final IFavorableDefaultTrait[] colleges;
-  private final ChangeControl collegeValueChangeControl = new ChangeControl();
+  private final Announcer<IChangeListener> collegeValueChangeControl = Announcer.to(IChangeListener.class);
   private final IIntValueChangedListener collegeValueChangeListener = new IIntValueChangedListener() {
     @Override
     public void valueChanged(int newValue) {
-      collegeValueChangeControl.fireChangedEvent();
+      collegeValueChangeControl.announce().changeOccurred();
     }
   };
   private final IFavorableStateChangedListener collegeStateChangeListener = new IFavorableStateChangedListener() {
     @Override
     public void favorableStateChanged(FavorableState state) {
-      collegeValueChangeControl.fireChangedEvent();
+      collegeValueChangeControl.announce().changeOccurred();
     }
   };
 
@@ -119,6 +119,6 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
 
   @Override
   public void addChangeListener(IChangeListener listener) {
-    collegeValueChangeControl.addChangeListener(listener);
+    collegeValueChangeControl.addListener(listener);
   }
 }

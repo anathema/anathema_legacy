@@ -11,7 +11,6 @@ import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.character.model.ISpellMapper;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -24,7 +23,7 @@ public class SpellConfiguration implements ISpellConfiguration {
 
   private final List<ISpell> creationLearnedList = new ArrayList<ISpell>();
   private final List<ISpell> experiencedLearnedList = new ArrayList<ISpell>();
-  private final ChangeControl changeControl = new ChangeControl();
+  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final Announcer<IMagicLearnListener> magicLearnControl = Announcer.to(IMagicLearnListener.class);
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<CircleType, List<ISpell>>();
   private final ICharmConfiguration charms;
@@ -88,12 +87,12 @@ public class SpellConfiguration implements ISpellConfiguration {
 
   private void fireSpellsAddedEvent(final ISpell[] addedSpells) {
     magicLearnControl.announce().magicLearned(addedSpells);
-    changeControl.fireChangedEvent();
+    changeControl.announce().changeOccurred();
   }
 
   private void fireSpellsForgottenEvent(final ISpell[] removedSpells) {
     magicLearnControl.announce().magicForgotten(removedSpells);
-    changeControl.fireChangedEvent();
+    changeControl.announce().changeOccurred();
   }
 
   @Override
@@ -127,7 +126,7 @@ public class SpellConfiguration implements ISpellConfiguration {
 
   @Override
   public void addChangeListener(IChangeListener listener) {
-    changeControl.addChangeListener(listener);
+    changeControl.addListener(listener);
   }
 
   @Override

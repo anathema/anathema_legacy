@@ -1,13 +1,13 @@
 package net.sf.anathema.magic.description.model;
 
 import net.disy.commons.core.util.ObjectUtilities;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.magic.description.persistence.MagicDescriptionDataBase;
+import org.jmock.example.announcer.Announcer;
 
 public class AutoSaveMagicDescriptionEditModel implements MagicDescriptionEditModel {
 
-  private final ChangeControl changeControl = new ChangeControl();
+  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final MagicDescriptionDataBase dataBase;
   private String editId = "";
   private String currentDescription;
@@ -51,16 +51,16 @@ public class AutoSaveMagicDescriptionEditModel implements MagicDescriptionEditMo
       return;
     }
     this.currentDescription = newDescription;
-    changeControl.fireChangedEvent();
+    changeControl.announce().changeOccurred();
   }
 
   @Override
   public void addDescriptionChangedListener(IChangeListener listener) {
-    changeControl.addChangeListener(listener);
+    changeControl.addListener(listener);
   }
 
   @Override
   public void removeDescriptionChangeListener(IChangeListener listener) {
-    changeControl.removeChangeListener(listener);
+    changeControl.removeListener(listener);
   }
 }
