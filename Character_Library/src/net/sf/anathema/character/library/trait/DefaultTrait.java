@@ -102,7 +102,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
       return;
     }
     this.creationValue = correctedValue;
-    getCreationPointControl().fireValueChangedEvent(this.creationValue);
+    getCreationPointControl().announce().valueChanged(this.creationValue);
     getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
   }
   
@@ -112,7 +112,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
 	  if (this.creationValue == value)
 	      return;
 	  this.creationValue = value;
-	  getCreationPointControl().fireValueChangedEvent(this.creationValue);
+	  getCreationPointControl().announce().valueChanged(this.creationValue);
 	  getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
   }
 

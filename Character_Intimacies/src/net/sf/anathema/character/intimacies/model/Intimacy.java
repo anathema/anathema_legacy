@@ -10,19 +10,18 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.lib.control.booleanvalue.BooleanValueControl;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public class Intimacy implements IIntimacy {
 
   private final String name;
   private final IDefaultTrait trait;
-  private final TraitRules traitRules;
   private final IGenericTrait maxValueTrait;
   private boolean complete;
-  private final BooleanValueControl control = new BooleanValueControl();
+  private final Announcer<IBooleanValueChangedListener> control = Announcer.to(IBooleanValueChangedListener.class);
 
   public Intimacy(String name, Integer initialValue, final IGenericTrait maxValueTrait, ITraitContext context) {
     this.name = name;
@@ -32,7 +31,7 @@ public class Intimacy implements IIntimacy {
         initialValue,
         LowerableState.LowerableLoss,
         VirtueType.Conviction);
-    traitRules = new TraitRules(new IntimacyType(name), template, context.getLimitationContext());
+    TraitRules traitRules = new TraitRules(new IntimacyType(name), template, context.getLimitationContext());
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
       @Override
       public boolean isValidNewValue(int value) {
@@ -68,12 +67,12 @@ public class Intimacy implements IIntimacy {
   public void setComplete(boolean complete) {
     this.complete = complete;
     resetCurrentValue();
-    control.fireValueChangedEvent(this.complete);
+    control.announce().valueChanged(this.complete);
   }
 
   @Override
   public void addCompletionListener(IBooleanValueChangedListener listener) {
-    control.addValueChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override
@@ -83,7 +82,7 @@ public class Intimacy implements IIntimacy {
 
   public void addChangeListener(IChangeListener listener) {
     GlobalChangeAdapter< ? > adapter = new GlobalChangeAdapter<Object>(listener);
-    control.addValueChangeListener(adapter);
+    control.addListener(adapter);
     trait.addCurrentValueListener(adapter);
   }
 }

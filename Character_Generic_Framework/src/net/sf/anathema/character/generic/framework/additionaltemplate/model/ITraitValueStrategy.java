@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.additionaltemplate.model;
 
-import net.sf.anathema.lib.control.intvalue.IntValueControl;
+import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import org.jmock.example.announcer.Announcer;
 
 public interface ITraitValueStrategy {
 
@@ -10,9 +11,9 @@ public interface ITraitValueStrategy {
 
   void setValue(IModifiableBasicTrait trait, int value);
 
-  void notifyOnCreationValueChange(int value, IntValueControl currentValueControl);
+  void notifyOnCreationValueChange(int value, Announcer<IIntValueChangedListener> currentValueControl);
 
-  void notifyOnLearnedValueChange(int value, IntValueControl currentValueControl);
+  void notifyOnLearnedValueChange(int value, Announcer<IIntValueChangedListener> currentValueControl);
 
   void resetCurrentValue(IModifiableBasicTrait trait);
 

@@ -3,12 +3,12 @@ package net.sf.anathema.lib.workflow.textualdescription.model;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
+import org.jmock.example.announcer.Announcer;
 
 public class SimpleTextualDescription extends AbstractTextualDescription implements ITextualDescription {
 
-  private final ObjectValueControl<String> textControl = new ObjectValueControl<String>();
+  private final Announcer<IObjectValueChangedListener> control = Announcer.to(IObjectValueChangedListener.class);
   private String text;
 
   public SimpleTextualDescription() {
@@ -35,17 +35,17 @@ public class SimpleTextualDescription extends AbstractTextualDescription impleme
 
   @Override
   protected void fireChangedEvent() {
-    textControl.fireValueChangedEvent(text);
+    control.announce().valueChanged(text);
   }
 
   @Override
   public void addTextChangedListener(IObjectValueChangedListener<String> listener) {
-    textControl.addObjectValueChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override
   public void removeTextChangeListener(IObjectValueChangedListener<String> listener) {
-    textControl.removeObjectValueChangeListener(listener);
+    control.removeListener(listener);
   }
 
   @Override
