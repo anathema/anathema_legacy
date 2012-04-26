@@ -23,7 +23,7 @@ import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.IStyledTextManager;
 import net.sf.anathema.framework.styledtext.presentation.StyledTextManager;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;

@@ -4,7 +4,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.value.IIntValueDisplayFactory;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.AbstractAction;

@@ -4,7 +4,7 @@ import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;

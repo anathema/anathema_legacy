@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.item;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.framework.presenter.resources.FileUi;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 

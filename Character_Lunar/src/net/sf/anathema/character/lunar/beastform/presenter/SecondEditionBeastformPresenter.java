@@ -8,7 +8,7 @@ import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.character.mutations.presenter.MutationsPresenter;
 import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 

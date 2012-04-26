@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IEquipmentItem {
 

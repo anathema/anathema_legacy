@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.textualdescription;
 
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IView;
 
 public interface ITextView extends IView {

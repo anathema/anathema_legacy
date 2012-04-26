@@ -3,7 +3,7 @@ package net.sf.anathema.character.mutations.model;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.quality.presenter.IQualityModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public interface IMutationsModel extends IQualityModel<IMutation> {

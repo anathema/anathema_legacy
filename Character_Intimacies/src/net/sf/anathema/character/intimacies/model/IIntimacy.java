@@ -1,7 +1,7 @@
 package net.sf.anathema.character.intimacies.model;
 
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 
 public interface IIntimacy {
 

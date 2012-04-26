@@ -17,7 +17,7 @@ import net.sf.anathema.charmentry.presenter.view.IKeywordView;
 import net.sf.anathema.charmentry.properties.IKeywordEntryPageProperties;
 import net.sf.anathema.charmentry.properties.KeywordEntryPageProperties;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.resources.IResources;

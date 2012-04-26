@@ -1,7 +1,7 @@
 package net.sf.anathema.character.library.trait.subtrait;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

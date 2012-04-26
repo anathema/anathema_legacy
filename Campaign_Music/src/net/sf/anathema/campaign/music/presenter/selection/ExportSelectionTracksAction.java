@@ -13,7 +13,7 @@ import net.sf.anathema.campaign.music.export.PlayListExporter;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 

@@ -12,7 +12,7 @@ import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.character.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

@@ -5,8 +5,8 @@ import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageMod
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.WeaponDamageProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.IResources;

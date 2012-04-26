@@ -10,7 +10,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponTagsView;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.resources.IResources;

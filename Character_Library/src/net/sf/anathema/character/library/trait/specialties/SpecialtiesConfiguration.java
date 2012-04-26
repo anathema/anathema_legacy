@@ -15,7 +15,7 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

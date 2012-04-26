@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

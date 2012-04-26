@@ -9,7 +9,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.itemdata.model.NonPersistableItemData;
 import net.sf.anathema.framework.repository.IRepository;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.apache.commons.io.FilenameUtils;
 import org.jmock.example.announcer.Announcer;
 

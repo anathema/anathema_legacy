@@ -3,8 +3,8 @@ package net.sf.anathema.character.impl.model;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.repository.IChangeManagement;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 public class CharacterChangeManagement implements IChangeManagement {

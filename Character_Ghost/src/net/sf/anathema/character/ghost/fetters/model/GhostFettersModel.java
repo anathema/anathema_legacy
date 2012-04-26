@@ -11,8 +11,8 @@ import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTe
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

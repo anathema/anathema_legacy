@@ -21,7 +21,7 @@ import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 

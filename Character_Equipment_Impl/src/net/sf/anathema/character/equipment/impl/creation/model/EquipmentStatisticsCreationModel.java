@@ -10,7 +10,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatSta
 import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;

@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.infernal.patron.InfernalPatronTemplate;
 import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronModel;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class InfernalPatronModel extends AbstractAdditionalModelAdapter implements IInfernalPatronModel {
 

@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExpe
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class MutationsAdditionalModel implements IAdditionalModel {
   private final IMutationsModel model;

@@ -2,7 +2,7 @@ package net.sf.anathema.framework.styledtext.model;
 
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;
 import net.sf.anathema.framework.styledtext.presentation.TextPart;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.model.AbstractTextualDescription;
 import org.jmock.example.announcer.Announcer;
 

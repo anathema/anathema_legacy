@@ -2,8 +2,8 @@ package net.sf.anathema.character.ghost.fetters.model;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface IGhostFettersModel extends IAdditionalModel
 {

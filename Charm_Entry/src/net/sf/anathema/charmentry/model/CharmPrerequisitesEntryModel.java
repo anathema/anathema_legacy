@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmPrerequisitesEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import org.jmock.example.announcer.Announcer;

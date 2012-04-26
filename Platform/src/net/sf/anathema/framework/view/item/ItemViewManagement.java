@@ -15,7 +15,7 @@ import net.infonode.tabbedpanel.titledtab.TitledTabProperties;
 import net.infonode.util.Direction;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.AbstractButton;

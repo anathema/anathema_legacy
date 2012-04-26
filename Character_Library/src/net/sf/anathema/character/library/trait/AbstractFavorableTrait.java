@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 public abstract class AbstractFavorableTrait implements IFavorableTrait {

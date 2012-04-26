@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.util.Identificate;
 import org.jmock.example.announcer.Announcer;

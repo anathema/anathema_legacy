@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.model.IIntegerDescription;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class IntegerDescription implements IIntegerDescription {

@@ -16,7 +16,7 @@ import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference
 import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

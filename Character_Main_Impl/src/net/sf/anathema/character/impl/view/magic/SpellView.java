@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.presenter.magic.spells.SpellViewProperties;
 import net.sf.anathema.character.view.magic.ISpellView;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledStringValueView;

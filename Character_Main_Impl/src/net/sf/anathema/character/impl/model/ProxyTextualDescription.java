@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public class ProxyTextualDescription implements ITextualDescription {

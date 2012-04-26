@@ -4,7 +4,7 @@ import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.util.ToggleComponentEnabler;
 import net.sf.anathema.charmentry.presenter.view.IDurationEntryView;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 import org.jmock.example.announcer.Announcer;

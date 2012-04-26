@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

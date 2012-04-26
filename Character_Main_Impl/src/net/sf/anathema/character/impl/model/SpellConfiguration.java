@@ -11,7 +11,7 @@ import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.character.model.ISpellMapper;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

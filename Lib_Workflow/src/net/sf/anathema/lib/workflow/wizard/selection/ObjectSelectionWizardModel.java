@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.wizard.selection;
 
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class ObjectSelectionWizardModel<V> implements IObjectSelectionWizardModel<V> {

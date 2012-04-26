@@ -9,7 +9,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.framework.value.IconToggleButton;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 
 public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView< ? >> extends
     AbstractTraitViewWrapper<K> {

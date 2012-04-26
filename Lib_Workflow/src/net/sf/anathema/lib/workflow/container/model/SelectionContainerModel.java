@@ -2,7 +2,7 @@ package net.sf.anathema.lib.workflow.container.model;
 
 import net.sf.anathema.lib.container.DefaultSelectionContainer;
 import net.sf.anathema.lib.container.IGenericSelectionContainer;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerModel;
 import org.jmock.example.announcer.Announcer;
 

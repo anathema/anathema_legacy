@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.model.listening;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 public class TraitListener implements IIntValueChangedListener {

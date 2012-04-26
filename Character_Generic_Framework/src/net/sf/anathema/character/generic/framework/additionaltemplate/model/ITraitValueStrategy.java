@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.framework.additionaltemplate.model;
 
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 public interface ITraitValueStrategy {

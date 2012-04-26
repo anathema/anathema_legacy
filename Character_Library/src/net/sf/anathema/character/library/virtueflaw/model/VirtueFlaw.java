@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;

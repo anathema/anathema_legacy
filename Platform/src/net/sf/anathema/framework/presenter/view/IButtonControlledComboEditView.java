@@ -2,7 +2,7 @@ package net.sf.anathema.framework.presenter.view;
 
 import java.awt.event.ActionListener;
 
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 
 public interface IButtonControlledComboEditView<K> {
 

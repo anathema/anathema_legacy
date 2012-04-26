@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.caste.ITypedDescriptionType;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class TypedDescription<T extends ITypedDescriptionType> implements ITypedDescription<T> {

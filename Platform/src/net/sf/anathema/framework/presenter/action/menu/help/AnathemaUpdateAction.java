@@ -7,7 +7,7 @@ import javax.swing.Action;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.disy.commons.swing.dialog.userdialog.page.IDialogPage;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaUpdateAction extends SmartAction {

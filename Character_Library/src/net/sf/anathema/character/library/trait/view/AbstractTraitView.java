@@ -7,7 +7,7 @@ import net.sf.anathema.framework.value.TwoUpperBounds;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public abstract class AbstractTraitView implements IIntValueView {
 

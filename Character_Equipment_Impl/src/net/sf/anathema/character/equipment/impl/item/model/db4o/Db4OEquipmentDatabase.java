@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.framework.itemdata.model.NonPersistableItemData;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.File;

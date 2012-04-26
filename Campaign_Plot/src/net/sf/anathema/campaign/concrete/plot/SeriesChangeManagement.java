@@ -4,7 +4,7 @@ import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainer;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainerListener;
 import net.sf.anathema.framework.repository.IChangeManagement;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class SeriesChangeManagement implements IChangeManagement {

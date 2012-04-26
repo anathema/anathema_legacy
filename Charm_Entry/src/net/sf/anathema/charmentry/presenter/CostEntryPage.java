@@ -8,7 +8,7 @@ import net.sf.anathema.charmentry.presenter.model.ICostEntryModel;
 import net.sf.anathema.charmentry.presenter.view.ICostEntryPageView;
 import net.sf.anathema.charmentry.presenter.view.ICostEntryView;
 import net.sf.anathema.charmentry.properties.CostEntryProperties;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;

@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import org.jmock.example.announcer.Announcer;
 

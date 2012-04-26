@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IEquipmentTemplateEditModel {
 

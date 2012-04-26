@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCha
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmConfiguration {

@@ -10,7 +10,7 @@ import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import java.util.ArrayList;
 import java.util.List;

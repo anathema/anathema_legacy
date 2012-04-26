@@ -17,9 +17,9 @@ import net.sf.anathema.character.lunar.beastform.model.gift.SecondEditionMutatio
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.mutations.model.IMutationsModel;
-import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.GlobalChangeAdapter;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

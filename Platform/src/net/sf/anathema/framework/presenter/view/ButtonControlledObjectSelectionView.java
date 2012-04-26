@@ -18,7 +18,7 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.core.util.StringUtilities;
 import net.disy.commons.swing.events.AbstractDocumentChangeListener;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
 
 public class ButtonControlledObjectSelectionView<V> implements IButtonControlledObjectSelectionView<V> {

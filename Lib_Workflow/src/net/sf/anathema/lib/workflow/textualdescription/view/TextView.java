@@ -11,7 +11,7 @@ import javax.swing.text.JTextComponent;
 
 import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.event.AbstractDocumentListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 

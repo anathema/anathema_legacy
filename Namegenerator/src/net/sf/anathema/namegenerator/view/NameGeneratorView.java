@@ -3,7 +3,7 @@ package net.sf.anathema.namegenerator.view;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
 import org.jmock.example.announcer.Announcer;

@@ -25,8 +25,8 @@ import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.collection.ICollectionListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import org.jmock.example.announcer.Announcer;
 

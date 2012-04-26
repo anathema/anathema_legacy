@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.container.view;
 
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;

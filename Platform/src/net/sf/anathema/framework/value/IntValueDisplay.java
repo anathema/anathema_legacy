@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.value;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Icon;

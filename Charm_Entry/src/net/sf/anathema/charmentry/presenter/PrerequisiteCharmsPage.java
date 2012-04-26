@@ -9,7 +9,7 @@ import net.sf.anathema.charmentry.presenter.view.IPrerequisiteCharmsEntryView;
 import net.sf.anathema.charmentry.properties.IPrerequisiteCharmsPageProperties;
 import net.sf.anathema.charmentry.properties.PrerequisiteCharmsPageProperties;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;

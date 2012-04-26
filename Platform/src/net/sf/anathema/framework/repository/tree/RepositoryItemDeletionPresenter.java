@@ -7,7 +7,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.dialog.ConfigurableVetor;
 import net.sf.anathema.lib.logging.Logger;

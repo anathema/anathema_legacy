@@ -1,9 +1,9 @@
 package net.sf.anathema.lib.gui.wizard.workflow;
 
 import net.disy.commons.core.util.SimpleBlock;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 
 public class CheckInputListener implements
     IChangeListener,

@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.itemdata.model;
 
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IItemDescription {

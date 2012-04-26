@@ -11,7 +11,7 @@ import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class SiderealCollegeModel implements ISiderealCollegeModel {

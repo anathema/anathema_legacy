@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;

@@ -3,7 +3,7 @@ package net.sf.anathema.framework.messaging;
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.message.MessageType;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import org.jmock.example.announcer.Announcer;
 

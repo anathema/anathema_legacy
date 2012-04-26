@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.advance;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

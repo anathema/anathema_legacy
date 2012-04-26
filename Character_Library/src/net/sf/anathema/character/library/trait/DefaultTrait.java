@@ -13,7 +13,7 @@ import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.data.Range;
 import org.jmock.example.announcer.Announcer;
 

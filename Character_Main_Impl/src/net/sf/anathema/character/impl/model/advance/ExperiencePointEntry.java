@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.advance;
 
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;

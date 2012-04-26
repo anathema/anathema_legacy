@@ -15,7 +15,7 @@ import net.sf.anathema.framework.repository.access.SingleFileWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.File;

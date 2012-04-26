@@ -17,9 +17,9 @@ import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntr
 import net.sf.anathema.character.library.util.ProxyComboBoxEditor;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;

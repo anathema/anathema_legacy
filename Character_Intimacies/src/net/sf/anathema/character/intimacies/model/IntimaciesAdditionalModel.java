@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
   private final IIntimaciesModel model;

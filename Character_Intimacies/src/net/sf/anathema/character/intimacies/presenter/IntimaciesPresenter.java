@@ -12,8 +12,8 @@ import net.sf.anathema.character.library.selection.AbstractStringEntryTraitPrese
 import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;

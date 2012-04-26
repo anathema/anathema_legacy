@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.presenter.view;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 

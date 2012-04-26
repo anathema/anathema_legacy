@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmTypeEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IDurationEntryModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class DurationEntryModel implements IDurationEntryModel {

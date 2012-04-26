@@ -18,7 +18,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.A
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.framework.value.IconToggleButton;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 

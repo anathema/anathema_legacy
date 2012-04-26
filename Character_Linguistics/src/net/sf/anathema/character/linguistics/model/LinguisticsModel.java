@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 import org.jmock.example.announcer.Announcer;

@@ -9,7 +9,7 @@ import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public class UpdateDialogPage extends AbstractDialogPage {

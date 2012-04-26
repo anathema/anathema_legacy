@@ -6,7 +6,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.util.ToggleComponentEnabler;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.charmentry.presenter.view.IAmountDurationEntryView;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;

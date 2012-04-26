@@ -2,8 +2,8 @@ package net.sf.anathema.character.lunar.heartsblood.view;
 
 import java.awt.event.ActionListener;
 
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 
 public interface IAnimalFormSelectionView {
 

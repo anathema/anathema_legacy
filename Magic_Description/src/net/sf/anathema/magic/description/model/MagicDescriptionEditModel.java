@@ -1,6 +1,6 @@
 package net.sf.anathema.magic.description.model;
 
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface MagicDescriptionEditModel {
 

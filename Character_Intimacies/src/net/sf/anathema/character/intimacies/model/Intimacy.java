@@ -10,9 +10,9 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
-import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.GlobalChangeAdapter;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class Intimacy implements IIntimacy {

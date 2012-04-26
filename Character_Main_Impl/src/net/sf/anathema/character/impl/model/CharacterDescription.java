@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.model.ICharacterDescription;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 

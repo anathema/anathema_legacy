@@ -11,7 +11,7 @@ import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public class BeastformAttribute implements IBeastformAttribute {
 

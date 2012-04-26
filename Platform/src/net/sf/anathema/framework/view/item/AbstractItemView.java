@@ -2,7 +2,7 @@ package net.sf.anathema.framework.view.item;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.framework.view.IItemView;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Icon;

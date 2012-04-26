@@ -43,7 +43,7 @@ import net.sf.anathema.character.presenter.magic.CharacterSourceBookFilter;
 import net.sf.anathema.character.presenter.magic.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.magic.ObtainableCharmFilter;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import org.jmock.example.announcer.Announcer;
 

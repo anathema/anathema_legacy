@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalMo
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class GhostAgeModel extends AbstractAdditionalModelAdapter {
   private final ICharacterModelContext context;

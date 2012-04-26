@@ -2,7 +2,7 @@ package net.sf.anathema.charmentry.model;
 
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmentry.presenter.model.ISourceEntryModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 

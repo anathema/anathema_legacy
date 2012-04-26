@@ -11,7 +11,7 @@ import net.sf.anathema.character.mutations.model.IMutationsModel;
 import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.character.mutations.view.MutationViewLearnProperties;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 

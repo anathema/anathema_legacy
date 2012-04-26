@@ -12,7 +12,7 @@ import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.campaign.music.presenter.ISearchParameter;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

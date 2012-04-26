@@ -4,7 +4,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class AnathemaDataItem extends AbstractAnathemaItem {

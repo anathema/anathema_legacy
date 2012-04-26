@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.intvalue;
 
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 
 public class IntValuePresentation {

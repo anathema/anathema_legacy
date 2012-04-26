@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.widgets;
 
 import net.sf.anathema.lib.UnselectingComboBoxModel;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComboBox;
