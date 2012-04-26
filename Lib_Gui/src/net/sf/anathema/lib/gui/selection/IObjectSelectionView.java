@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.selection;
 
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 
 public interface IObjectSelectionView<V> {
 

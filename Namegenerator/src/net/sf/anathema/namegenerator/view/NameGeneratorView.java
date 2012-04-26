@@ -1,11 +1,12 @@
 package net.sf.anathema.namegenerator.view;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
+import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
+import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
@@ -13,14 +14,12 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
-import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NameGeneratorView implements INameGeneratorView {
 
@@ -30,12 +29,12 @@ public class NameGeneratorView implements INameGeneratorView {
   private final AreaTextView resultTextView = new AreaTextView(5, 25);
   private final Map<JRadioButton, Object> generatorsByButton = new HashMap<JRadioButton, Object>();
   private final Map<Object, JRadioButton> buttonsByGenerator = new HashMap<Object, JRadioButton>();
-  private final ChangeControl generatorListeners = new ChangeControl();
+  private final Announcer<IChangeListener> generatorListeners = Announcer.to(IChangeListener.class);
   private final JPanel generateButtonPanel = new JPanel(new GridLayout());
   private final ActionListener generatorButtonListener = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
-      generatorListeners.fireChangedEvent();
+      generatorListeners.announce().changeOccurred();
     }
   };
 
@@ -87,7 +86,7 @@ public class NameGeneratorView implements INameGeneratorView {
 
   @Override
   public void addGeneratorTypeChangeListener(IChangeListener listener) {
-    generatorListeners.addChangeListener(listener);
+    generatorListeners.addListener(listener);
   }
 
   @Override

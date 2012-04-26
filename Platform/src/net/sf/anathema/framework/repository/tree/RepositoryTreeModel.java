@@ -1,8 +1,5 @@
 package net.sf.anathema.framework.repository.tree;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
@@ -13,16 +10,17 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   private final IItemType[] integratedItemTypes;
-  private final GenericControl<IRepositoryTreeModelListener> control = new GenericControl<IRepositoryTreeModelListener>();
-  private final ChangeControl changeControl = new ChangeControl();
+  private final Announcer<IRepositoryTreeModelListener> control = Announcer.to(IRepositoryTreeModelListener.class);
+  private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final IItemManagementModel itemManagementModel;
   private final IRepository repository;
   private final IItemTypeRegistry itemTypes;
@@ -88,12 +86,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     for (Object object : currentlySelectedUserObjects) {
       final PrintNameFile file = (PrintNameFile) object;
       repository.deleteAssociatedItem(file);
-      control.forAllDo(new IClosure<IRepositoryTreeModelListener>() {
-        @Override
-        public void execute(IRepositoryTreeModelListener input) {
-          input.printNameFileRemoved(file);
-        }
-      });
+      control.announce().printNameFileRemoved(file);
     }
   }
 
@@ -105,12 +98,12 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   @Override
   public void setSelectedObject(Object[] objects) {
     this.currentlySelectedUserObjects = objects;
-    changeControl.fireChangedEvent();
+    changeControl.announce().changeOccurred();
   }
 
   @Override
   public void addTreeSelectionChangeListener(IChangeListener changeListener) {
-    changeControl.addChangeListener(changeListener);
+    changeControl.addListener(changeListener);
   }
 
   @Override
@@ -165,12 +158,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   @Override
   public void refreshItem(final IItemType type, final String id) {
-    control.forAllDo(new IClosure<IRepositoryTreeModelListener>() {
-      @Override
-      public void execute(IRepositoryTreeModelListener input) {
-        input.printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
-      }
-    });
+    control.announce().printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
     repository.refresh();
   }
 }

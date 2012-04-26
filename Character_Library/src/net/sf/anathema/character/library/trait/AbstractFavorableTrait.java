@@ -6,14 +6,14 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.intvalue.IntValueControl;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
+import org.jmock.example.announcer.Announcer;
 
 public abstract class AbstractFavorableTrait implements IFavorableTrait {
 
   private final ITraitRules traitRules;
-  private final IntValueControl creationPointControl = new IntValueControl();
-  private final IntValueControl currentValueControl = new IntValueControl();
+  private final Announcer<IIntValueChangedListener> creationPointControl = Announcer.to(IIntValueChangedListener.class);
+  private final Announcer<IIntValueChangedListener> currentValueControl = Announcer.to(IIntValueChangedListener.class);
   private final ITraitContext traitContext;
 
   public AbstractFavorableTrait(ITraitRules traitRules, ITraitContext traitContext) {
@@ -61,33 +61,33 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
 
   @Override
   public final void addCreationPointListener(IIntValueChangedListener listener) {
-    getCreationPointControl().addIntValueChangeListener(listener);
+    getCreationPointControl().addListener(listener);
   }
 
   @Override
   public final void removeCreationPointListener(IIntValueChangedListener listener) {
-    getCreationPointControl().removeIntValueChangeListener(listener);
+    getCreationPointControl().removeListener(listener);
   }
 
   @Override
   public final void addCurrentValueListener(IIntValueChangedListener listener) {
-    getCurrentValueControl().addIntValueChangeListener(listener);
+    getCurrentValueControl().addListener(listener);
   }
 
   @Override
   public final void removeCurrentValueListener(IIntValueChangedListener listener) {
-    getCurrentValueControl().removeIntValueChangeListener(listener);
+    getCurrentValueControl().removeListener(listener);
   }
 
   protected ITraitRules getTraitRules() {
     return traitRules;
   }
 
-  protected IntValueControl getCreationPointControl() {
+  protected Announcer<IIntValueChangedListener> getCreationPointControl() {
     return creationPointControl;
   }
 
-  protected IntValueControl getCurrentValueControl() {
+  protected Announcer<IIntValueChangedListener> getCurrentValueControl() {
     return currentValueControl;
   }
 

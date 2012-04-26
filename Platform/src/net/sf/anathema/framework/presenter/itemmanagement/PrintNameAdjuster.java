@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 
 public class PrintNameAdjuster implements IObjectValueChangedListener<String> {
 

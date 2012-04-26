@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface ITrait extends IGenericTrait {
 

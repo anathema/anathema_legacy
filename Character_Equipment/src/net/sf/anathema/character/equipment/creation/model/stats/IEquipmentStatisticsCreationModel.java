@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.creation.model.stats;
 
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IEquipmentStatisticsCreationModel {
 

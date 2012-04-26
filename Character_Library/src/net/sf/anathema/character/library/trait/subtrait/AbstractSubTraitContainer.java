@@ -1,18 +1,17 @@
 package net.sf.anathema.character.library.trait.subtrait;
 
+import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
+import org.jmock.example.announcer.Announcer;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
 
   private final List<ISubTrait> unremovableSubTraits = new ArrayList<ISubTrait>();
   private final List<ISubTrait> subtraits = new ArrayList<ISubTrait>();
-  private final GenericControl<ISubTraitListener> subTraitListeners = new GenericControl<ISubTraitListener>();
+  private final Announcer<ISubTraitListener> subTraitListeners = Announcer.to(ISubTraitListener.class);
   private final IIntValueChangedListener subTraitCreationPointListener = new IIntValueChangedListener() {
     @Override
     public void valueChanged(int newValue) {
@@ -33,30 +32,15 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
   }
 
   private void fireSubTraitAddedEvent(final ISubTrait subTrait) {
-    subTraitListeners.forAllDo(new IClosure<ISubTraitListener>() {
-      @Override
-      public void execute(ISubTraitListener input) {
-        input.subTraitAdded(subTrait);
-      }
-    });
+    subTraitListeners.announce().subTraitAdded(subTrait);
   }
 
   private void fireSubTraitValueChangedEvent() {
-    subTraitListeners.forAllDo(new IClosure<ISubTraitListener>() {
-      @Override
-      public void execute(ISubTraitListener input) {
-        input.subTraitValueChanged();
-      }
-    });
+    subTraitListeners.announce().subTraitValueChanged();
   }
 
   private void fireSubTraitRemovedEvent(final ISubTrait subTrait) {
-    subTraitListeners.forAllDo(new IClosure<ISubTraitListener>() {
-      @Override
-      public void execute(ISubTraitListener input) {
-        input.subTraitRemoved(subTrait);
-      }
-    });
+    subTraitListeners.announce().subTraitRemoved(subTrait);
   }
 
   @Override

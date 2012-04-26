@@ -43,9 +43,9 @@ import net.sf.anathema.character.presenter.magic.CharacterSourceBookFilter;
 import net.sf.anathema.character.presenter.magic.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.magic.ObtainableCharmFilter;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,7 +70,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   };
   private ILearningCharmGroup[] martialArtsGroups;
   private final ICharacterModelContext context;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharmProvider provider;
   private final ILearningCharmGroupArbitrator arbitrator;
   private List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
@@ -448,11 +448,11 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public void addLearnableListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   private void fireLearnConditionsChanged() {
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   private ICharmLearnStrategy getLearnStrategy() {

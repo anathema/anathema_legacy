@@ -3,13 +3,13 @@ package net.sf.anathema.character.impl.model;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.repository.IChangeManagement;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import org.jmock.example.announcer.Announcer;
 
 public class CharacterChangeManagement implements IChangeManagement {
 
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private boolean dirty = false;
   private final ICharacterChangeListener listener = new ICharacterChangeListener() {
     @Override
@@ -54,22 +54,22 @@ public class CharacterChangeManagement implements IChangeManagement {
 
   @Override
   public void addDirtyListener(IChangeListener changeListener) {
-    control.addChangeListener(changeListener);
+    control.addListener(changeListener);
   }
 
   private void setDirty() {
     this.dirty = true;
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
   public void setClean() {
     this.dirty = false;
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
   public void removeDirtyListener(IChangeListener changeListener) {
-    control.removeChangeListener(changeListener);
+    control.removeListener(changeListener);
   }
 }

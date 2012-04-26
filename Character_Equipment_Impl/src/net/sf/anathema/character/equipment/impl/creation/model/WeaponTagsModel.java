@@ -7,7 +7,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
 public class WeaponTagsModel implements IWeaponTagsModel {

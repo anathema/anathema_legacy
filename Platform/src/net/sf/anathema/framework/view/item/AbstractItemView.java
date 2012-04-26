@@ -2,15 +2,15 @@ package net.sf.anathema.framework.view.item;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.framework.view.IItemView;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import org.jmock.example.announcer.Announcer;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 public abstract class AbstractItemView implements IItemView {
 
   private String name;
-  private final ObjectValueControl<String> control = new ObjectValueControl<String>();
+  private final Announcer<IObjectValueChangedListener> control = Announcer.to(IObjectValueChangedListener.class);
   private final Icon icon;
 
   protected AbstractItemView(String name, Icon icon) {
@@ -39,16 +39,16 @@ public abstract class AbstractItemView implements IItemView {
 
   @Override
   public void addNameChangedListener(IObjectValueChangedListener<String> nameListener) {
-    control.addObjectValueChangeListener(nameListener);
+    control.addListener(nameListener);
   }
 
   @Override
   public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener) {
-    control.removeObjectValueChangeListener(nameListener);
+    control.removeListener(nameListener);
   }
 
   public void fireNameChangedEvent(String newName) {
-    control.fireValueChangedEvent(newName);
+    control.announce().valueChanged(newName);
   }
 
   @Override

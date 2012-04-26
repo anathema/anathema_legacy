@@ -11,10 +11,10 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.Arrays;
 
@@ -27,7 +27,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   private IIdentificate selection;
   private int languagePointsAllowed;
   private final ICharacterModelContext context;
-  private final ChangeControl pointControl = new ChangeControl();
+  private final Announcer<IChangeListener> pointControl = Announcer.to(IChangeListener.class);
 
   public LinguisticsModel(final ICharacterModelContext context) {
     this.context = context;
@@ -46,7 +46,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
 	int currentPoints = languagePointsAllowed;
     languagePointsAllowed = context.getTraitCollection().getTrait(AbilityType.Linguistics).getCurrentValue() + 1;
     if (currentPoints != languagePointsAllowed)
-    	pointControl.fireChangedEvent();
+    	pointControl.announce().changeOccurred();
   }
 
   @Override
@@ -109,7 +109,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
 
   @Override
   public void addCharacterChangedListener(IChangeListener listener) {
-    pointControl.addChangeListener(listener);
+    pointControl.addListener(listener);
   }
 
   @Override

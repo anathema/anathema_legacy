@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmTypeEntryModel;
 import net.sf.anathema.charmentry.presenter.model.ICostEntryModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class CostEntryModel implements ICostEntryModel {
 

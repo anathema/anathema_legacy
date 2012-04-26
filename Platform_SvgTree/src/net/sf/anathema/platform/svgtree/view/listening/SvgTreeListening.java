@@ -1,32 +1,30 @@
 package net.sf.anathema.platform.svgtree.view.listening;
 
-import java.awt.Cursor;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.List;
-
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-
 import org.apache.batik.swing.gvt.Interactor;
 import org.apache.batik.util.SVGConstants;
+import org.jmock.example.announcer.Announcer;
 import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGGElement;
 
+import java.awt.Cursor;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.List;
+
 public class SvgTreeListening {
 
   private final ISvgTreeViewProperties properties;
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator boundsCalculator;
-  private final GenericControl<CharmInteractionListener> control = new GenericControl<CharmInteractionListener>();
+  private final Announcer<CharmInteractionListener> control = Announcer.to(CharmInteractionListener.class);
   private final LeftClickPanInteractor leftClickPanner;
   private String selectionId;
 
@@ -161,22 +159,12 @@ public SvgTreeListening(
     }
   }
 
-  private void fireNodeSelectionEvent(final String nodeId) {
-    control.forAllDo(new IClosure<CharmInteractionListener>() {
-      @Override
-      public void execute(CharmInteractionListener input) {
-        input.nodeSelected(nodeId);
-      }
-    });
+  private void fireNodeSelectionEvent(String nodeId) {
+    control.announce().nodeSelected(nodeId);
   }
  
-  private void fireNodeEditedEvent(final String nodeId) {
-    control.forAllDo(new IClosure<CharmInteractionListener>() {
-      @Override
-      public void execute(CharmInteractionListener input) {
-        input.nodeDetailsDemanded(nodeId);
-      }
-    });
+  private void fireNodeEditedEvent(String nodeId) {
+    control.announce().nodeDetailsDemanded(nodeId);
    }
  
   public void initDocumentListening(final SVGDocument document) {

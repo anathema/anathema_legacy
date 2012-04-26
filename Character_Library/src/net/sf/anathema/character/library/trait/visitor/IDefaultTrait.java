@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IMod
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.IModifiableGenericTrait;
 import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IDefaultTrait extends ITrait, IModifiableBasicTrait, IModifiableGenericTrait, IModifiableCapTrait {
 

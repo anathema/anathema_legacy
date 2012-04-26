@@ -3,7 +3,7 @@ package net.sf.anathema.campaign.concrete.plot;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotModel;
 import net.sf.anathema.framework.repository.IChangeManagement;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class PlotModel implements IPlotModel, IChangeManagement {
 

@@ -9,14 +9,13 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCha
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmConfiguration {
   private final ICharm charm;
   private final ISubeffect[] subeffects;
-  private final GenericControl<ISpecialCharmLearnListener> control = new GenericControl<ISpecialCharmLearnListener>();
+  private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
 
   public MultipleEffectCharmConfiguration(
       ICharacterModelContext context,
@@ -54,12 +53,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
   }
 
   private void fireLearnCountChanged() {
-    control.forAllDo(new IClosure<ISpecialCharmLearnListener>() {
-      @Override
-      public void execute(ISpecialCharmLearnListener input) {
-        input.learnCountChanged(getCurrentLearnCount());
-      }
-    });
+    control.announce().learnCountChanged(getCurrentLearnCount());
   }
 
   @Override

@@ -1,11 +1,5 @@
 package net.sf.anathema.character.ghost.passions.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
@@ -22,16 +16,20 @@ import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference
 import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class GhostPassionsModel extends AbstractAdditionalModelAdapter implements IGhostPassionsModel {
 
   private final Map<ITraitType, ISubTraitContainer> passionByType = new HashMap<ITraitType, ISubTraitContainer>();
   private final Map<ITraitReference, ISubTraitContainer> passionsByTrait = new HashMap<ITraitReference, ISubTraitContainer>();
-  private final ChangeControl control = new ChangeControl();
-  private final GenericControl<ITraitReferencesChangeListener> traitControl = new GenericControl<ITraitReferencesChangeListener>();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharacterModelContext context;
   private final GhostPassionsTemplate template;
   private String currentName;
@@ -135,13 +133,13 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
   @Override
   public void setCurrentPassionName(String newPassionName) {
     this.currentName = newPassionName;
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
   public void setCurrentTrait(ITraitReference newValue) {
     this.currentType = newValue;
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
@@ -156,12 +154,12 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
   public void clear() {
     currentName = null;
     currentType = null;
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
   public void addSelectionChangeListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override
@@ -181,7 +179,7 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
 
   @Override
   public void addTraitListChangeListener(ITraitReferencesChangeListener listener) {
-    traitControl.addListener(listener);
+    //nothing to do
   }
 
 	@Override

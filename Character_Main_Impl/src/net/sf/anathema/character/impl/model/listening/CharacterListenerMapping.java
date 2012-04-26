@@ -1,18 +1,18 @@
 package net.sf.anathema.character.impl.model.listening;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.lib.control.GenericControl;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CharacterListenerMapping {
 
   private final Map<ITrait, TraitListener> traitListeners = new HashMap<ITrait, TraitListener>();
-  private final GenericControl<ICharacterChangeListener> control;
+  private final Announcer<ICharacterChangeListener> control;
 
-  public CharacterListenerMapping(GenericControl<ICharacterChangeListener> control) {
+  public CharacterListenerMapping(Announcer<ICharacterChangeListener> control) {
     this.control = control;
   }
 

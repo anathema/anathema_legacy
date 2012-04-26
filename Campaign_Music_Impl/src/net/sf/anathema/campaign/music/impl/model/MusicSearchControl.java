@@ -1,9 +1,6 @@
 package net.sf.anathema.campaign.music.impl.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
+import com.db4o.query.Candidate;
 import net.sf.anathema.campaign.music.impl.persistence.MusicDatabasePersister;
 import net.sf.anathema.campaign.music.impl.persistence.search.AbstractArrayFieldSearchParameter;
 import net.sf.anathema.campaign.music.impl.persistence.search.IExtendedSearchParameter;
@@ -15,15 +12,17 @@ import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.campaign.music.presenter.ISearchParameter;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
-import com.db4o.query.Candidate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class MusicSearchControl implements IMusicSearchControl {
 
   private final MusicDatabasePersister persister;
-  private final ChangeControl searchControl = new ChangeControl();
+  private final Announcer<IChangeListener> searchControl = Announcer.to(IChangeListener.class);
   private final IMusicCategorizationModel musicCategorizationModel;
   private IMp3Track[] searchResult;
 
@@ -87,12 +86,12 @@ public class MusicSearchControl implements IMusicSearchControl {
       });
     }
     this.searchResult = persister.executeSearch(parameterList.toArray(new IExtendedSearchParameter[parameterList.size()]));
-    searchControl.fireChangedEvent();
+    searchControl.announce().changeOccurred();
   }
 
   @Override
   public void addSearchResultChangedListener(IChangeListener listener) {
-    searchControl.addChangeListener(listener);
+    searchControl.addListener(listener);
   }
 
   @Override

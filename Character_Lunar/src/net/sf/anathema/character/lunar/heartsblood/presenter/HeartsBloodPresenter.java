@@ -6,8 +6,8 @@ import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntr
 import net.sf.anathema.character.lunar.heartsblood.view.HeartsBloodView;
 import net.sf.anathema.character.lunar.heartsblood.view.IAnimalFormSelectionView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 

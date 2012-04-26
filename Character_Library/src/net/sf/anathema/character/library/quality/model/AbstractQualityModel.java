@@ -4,8 +4,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
 
   private Q currentQuality;
   private final ICharacterModelContext context;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final List<IQualitySelection<Q>> selectedQualities = new ArrayList<IQualitySelection<Q>>();
 
   public AbstractQualityModel(ICharacterModelContext context) {
@@ -62,12 +62,12 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
   }
 
   protected final void fireModelChangedEvent() {
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
   public final void addModelChangeListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override

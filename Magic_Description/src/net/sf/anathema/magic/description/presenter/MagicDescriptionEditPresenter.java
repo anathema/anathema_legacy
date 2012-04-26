@@ -6,8 +6,8 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditDetailModel;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditModel;
 import net.sf.anathema.magic.description.view.MagicDescriptionEditView;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IView;
 
 public class MagicDescriptionEditPresenter implements MagicDetailPresenter {

@@ -4,11 +4,11 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ISourceEntryModel;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class HeaderDataModel implements IHeaderDataModel {
   private final ISourceEntryModel sourceModel;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final IConfigurableCharmData charmData;
 
   public HeaderDataModel(final IConfigurableCharmData charmData) {
@@ -63,17 +63,17 @@ public class HeaderDataModel implements IHeaderDataModel {
     if (text != null) {
       charmData.setId(CharmIdGenerator.createIDFromName(type, text));
     }
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
   public void addModelListener(CheckInputListener inputListener) {
-    control.addChangeListener(inputListener);
+    control.addListener(inputListener);
     charmData.getName().addTextChangedListener(inputListener);
   }
 
   @Override
   public void addChangeListener(IChangeListener inputListener) {
-    control.addChangeListener(inputListener);
+    control.addListener(inputListener);
   }
 }

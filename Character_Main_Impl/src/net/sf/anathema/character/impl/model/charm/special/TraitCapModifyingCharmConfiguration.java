@@ -7,10 +7,8 @@ import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifying
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ITraitCapModifyingCharmConfiguration;
-import net.sf.anathema.lib.control.GenericControl;
 
 public class TraitCapModifyingCharmConfiguration implements ITraitCapModifyingCharmConfiguration {
-  private final GenericControl<ISpecialCharmLearnListener> control = new GenericControl<ISpecialCharmLearnListener>();
   private final ICharacterModelContext context;
   private final ITraitCapModifyingCharm specialCharm;
   private final ICharmConfiguration config;
@@ -26,7 +24,7 @@ public class TraitCapModifyingCharmConfiguration implements ITraitCapModifyingCh
 
   @Override
   public void addSpecialCharmLearnListener(ISpecialCharmLearnListener listener) {
-    control.addListener(listener);
+    //nothing to do
   }
 
   @Override

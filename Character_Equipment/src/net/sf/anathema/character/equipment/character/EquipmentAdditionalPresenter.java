@@ -15,11 +15,10 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.E
 import net.sf.anathema.character.equipment.item.EquipmentTemplateNameComparator;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationModel;
 import net.sf.anathema.character.equipment.item.personalization.EquipmentPersonalizationPresenterPage;
-import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.collection.ICollectionListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ICollectionListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;

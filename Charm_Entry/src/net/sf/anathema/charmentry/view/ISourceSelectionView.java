@@ -1,8 +1,8 @@
 package net.sf.anathema.charmentry.view;
 
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 
 public interface ISourceSelectionView {
 

@@ -1,7 +1,5 @@
 package net.sf.anathema.campaign.music.impl.model.selection;
 
-import java.util.Arrays;
-
 import net.sf.anathema.campaign.music.impl.persistence.DbMp3Track;
 import net.sf.anathema.campaign.music.impl.persistence.ITrackDeletionListener;
 import net.sf.anathema.campaign.music.impl.persistence.MusicDatabasePersister;
@@ -9,15 +7,18 @@ import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.Arrays;
 
 public class MusicSelectionModel implements IMusicSelectionModel {
   private IMusicSelection currentSelection = new MusicSelection();
   private IMp3Track[] markedTracks = new IMp3Track[0];
   private final MusicDatabasePersister persister;
-  private final ChangeControl selectionChangeControl = new ChangeControl();
-  private final ChangeControl currentSelectionControl = new ChangeControl();
+  private final Announcer<IChangeListener> selectionChangeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<IChangeListener> currentSelectionControl = Announcer.to(IChangeListener.class);
+
   private final TrackDetailModel trackDetailModel;
 
   public MusicSelectionModel(final MusicDatabasePersister persister) {
@@ -27,9 +28,9 @@ public class MusicSelectionModel implements IMusicSelectionModel {
       @Override
       public void trackRemoved(DbMp3Track track) {
         persister.pruneSelections(track);
-        currentSelection.removeTracks(new IMp3Track[] { track });
+        currentSelection.removeTracks(new IMp3Track[]{track});
         fireTrackSelectionChanged();
-        selectionChangeControl.fireChangedEvent();
+        selectionChangeControl.announce().changeOccurred();
       }
     });
   }
@@ -43,12 +44,12 @@ public class MusicSelectionModel implements IMusicSelectionModel {
       selection = getSelectionByName(unnamedSelectionBase + " " + count); //$NON-NLS-1$
     }
     persister.addSelection(unnamedSelectionBase + " " + count); //$NON-NLS-1$
-    selectionChangeControl.fireChangedEvent();
+    selectionChangeControl.announce().changeOccurred();
   }
 
   @Override
   public void addSelectionsChangeListener(IChangeListener listener) {
-    selectionChangeControl.addChangeListener(listener);
+    selectionChangeControl.addListener(listener);
   }
 
   @Override
@@ -68,11 +69,11 @@ public class MusicSelectionModel implements IMusicSelectionModel {
   @Override
   public void deleteSelection(IMusicSelection selection) {
     persister.removeSelection(selection);
-    selectionChangeControl.fireChangedEvent();
+    selectionChangeControl.announce().changeOccurred();
   }
 
   private void fireTrackSelectionChanged() {
-    currentSelectionControl.fireChangedEvent();
+    currentSelectionControl.announce().changeOccurred();
   }
 
   @Override
@@ -97,7 +98,7 @@ public class MusicSelectionModel implements IMusicSelectionModel {
   @Override
   public void persistSelection(IMusicSelection selection) {
     persister.updateSelection(selection);
-    selectionChangeControl.fireChangedEvent();
+    selectionChangeControl.announce().changeOccurred();
   }
 
   @Override
@@ -127,7 +128,7 @@ public class MusicSelectionModel implements IMusicSelectionModel {
 
   @Override
   public void addCurrentSelectionChangeListener(IChangeListener listener) {
-    currentSelectionControl.addChangeListener(listener);
+    currentSelectionControl.addListener(listener);
   }
 
   @Override

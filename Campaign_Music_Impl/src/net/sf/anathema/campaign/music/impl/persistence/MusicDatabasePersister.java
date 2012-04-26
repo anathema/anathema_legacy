@@ -1,15 +1,13 @@
 package net.sf.anathema.campaign.music.impl.persistence;
 
-import java.util.List;
-
+import com.db4o.ObjectContainer;
 import net.sf.anathema.campaign.music.impl.persistence.search.IExtendedSearchParameter;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
+import org.jmock.example.announcer.Announcer;
 
-import com.db4o.ObjectContainer;
+import java.util.List;
 
 public class MusicDatabasePersister {
 
@@ -17,7 +15,7 @@ public class MusicDatabasePersister {
   private final SelectionPersister selectionPersister = new SelectionPersister();
   private final SearchPersister searchPersister = new SearchPersister();
   private final ObjectContainer db;
-  private final GenericControl<ITrackDeletionListener> listeners = new GenericControl<ITrackDeletionListener>();
+  private final Announcer<ITrackDeletionListener> listeners = Announcer.to(ITrackDeletionListener.class);
 
   public MusicDatabasePersister(final ObjectContainer container) {
     db = container;
@@ -39,12 +37,7 @@ public class MusicDatabasePersister {
   }
 
   private void fireTrackDeleted(final DbMp3Track track) {
-    listeners.forAllDo(new IClosure<ITrackDeletionListener>() {
-      @Override
-      public void execute(ITrackDeletionListener input) {
-        input.trackRemoved(track);
-      }
-    });
+    listeners.announce().trackRemoved(track);
   }
 
   public void addTrackDeletionListener(ITrackDeletionListener listener) {

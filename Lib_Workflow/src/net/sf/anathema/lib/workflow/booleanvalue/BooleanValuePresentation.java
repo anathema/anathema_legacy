@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JToggleButton;
 
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 
 public class BooleanValuePresentation {
 

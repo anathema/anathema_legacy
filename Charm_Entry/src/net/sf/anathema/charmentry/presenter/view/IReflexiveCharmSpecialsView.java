@@ -1,7 +1,7 @@
 package net.sf.anathema.charmentry.presenter.view;
 
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface IReflexiveCharmSpecialsView {
 

@@ -1,16 +1,11 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
-
-import java.awt.Color;
-
-import net.sf.anathema.lib.control.booleanvalue.BooleanValueControl;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
+import org.jmock.example.announcer.Announcer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
@@ -20,13 +15,17 @@ import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGGElement;
 
+import java.awt.Color;
+
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
+
 public class SVGBooleanValueDisplay implements IBooleanValueView {
 
   private boolean visible;
   private boolean selected = false;
   private final String label;
   private final double width;
-  private final BooleanValueControl control = new BooleanValueControl();
+  private final Announcer<IBooleanValueChangedListener> control = Announcer.to(IBooleanValueChangedListener.class);
   private String fillColorString;
   private String fillOpacityString;
   private Element bodyNode;
@@ -61,7 +60,7 @@ public class SVGBooleanValueDisplay implements IBooleanValueView {
         if (!(evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0)) {
           return;
         }
-        control.fireValueChangedEvent(!selected);
+        control.announce().valueChanged(!selected);
       }
     };
   }
@@ -98,7 +97,7 @@ public class SVGBooleanValueDisplay implements IBooleanValueView {
 
   @Override
   public void addChangeListener(IBooleanValueChangedListener listener) {
-    control.addValueChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override
@@ -112,7 +111,7 @@ public class SVGBooleanValueDisplay implements IBooleanValueView {
         DomUtilities.setAttribute(bodyNode, SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
       }
     }
-    control.fireValueChangedEvent(selected);
+    control.announce().valueChanged(selected);
   }
 
   public void setVisible(boolean visible) {

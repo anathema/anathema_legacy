@@ -4,8 +4,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public class DummyDefaultTrait extends DummyModifiableGenericTrait implements IDefaultTrait {
 

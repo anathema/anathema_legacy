@@ -1,11 +1,11 @@
 package net.sf.anathema.lib.workflow.booleanvalue;
 
-import net.sf.anathema.lib.control.booleanvalue.BooleanValueControl;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import org.jmock.example.announcer.Announcer;
 
 public class BooleanValueModel {
 
-  private final BooleanValueControl control = new BooleanValueControl();
+  private final Announcer<IBooleanValueChangedListener> control = Announcer.to(IBooleanValueChangedListener.class);
   private boolean value;
 
   public BooleanValueModel(boolean value) {
@@ -17,7 +17,7 @@ public class BooleanValueModel {
   }
 
   public void addChangeListener(IBooleanValueChangedListener listener) {
-    control.addValueChangeListener(listener);
+    control.addListener(listener);
   }
 
   public void setValue(boolean value) {
@@ -25,10 +25,6 @@ public class BooleanValueModel {
       return;
     }
     this.value = value;
-    control.fireValueChangedEvent(value);
-  }
-
-  public void setValueSilent(boolean value) {
-    this.value = value;
+    control.announce().valueChanged(value);
   }
 }

@@ -5,10 +5,10 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,9 +16,7 @@ import java.util.List;
 
 public class Combo implements ICombo {
 
-  // Final fields were turned to volatile to allow clone to be implemented
-
-  private volatile ChangeControl control = new ChangeControl();
+  private volatile Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private volatile List<ICharm> creationCharmList = new ArrayList<ICharm>();
   private volatile List<ICharm> experiencedCharmList = new ArrayList<ICharm>();
   private ICharm extraActionCharm = null;
@@ -60,11 +58,11 @@ public class Combo implements ICombo {
 
   @Override
   public void addComboModelListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   private void fireComboChanged() {
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
@@ -89,7 +87,7 @@ public class Combo implements ICombo {
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
-    clone.control = new ChangeControl();
+    clone.control = Announcer.to(IChangeListener.class);
     clone.creationCharmList = new ArrayList<ICharm>(creationCharmList.size());
     clone.experiencedCharmList = new ArrayList<ICharm>(experiencedCharmList.size());
     clone.name = new SimpleTextualDescription();

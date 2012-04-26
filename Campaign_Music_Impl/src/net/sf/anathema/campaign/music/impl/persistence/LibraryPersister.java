@@ -1,21 +1,19 @@
 package net.sf.anathema.campaign.music.impl.persistence;
 
-import java.util.List;
-
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import com.db4o.query.Predicate;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.model.track.Md5Checksum;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
+import org.jmock.example.announcer.Announcer;
 
-import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
-import com.db4o.query.Predicate;
+import java.util.List;
 
 public class LibraryPersister {
 
-  private final GenericControl<ITrackDeletionListener> listeners = new GenericControl<ITrackDeletionListener>();
+  private final Announcer<ITrackDeletionListener> listeners = Announcer.to(ITrackDeletionListener.class);
 
   public final void addLibrary(final ObjectContainer db, String libraryName) {
     Ensure.ensureArgumentFalse("Library name must be unique.", isRegisteredLibrary(db, libraryName)); //$NON-NLS-1$
@@ -54,8 +52,7 @@ public class LibraryPersister {
       DbMp3Track dbTrack = findTrack(db, track.getCheckSum());
       if (dbTrack == null) {
         dbTrack = new DbMp3Track(track, db);
-      }
-      else {
+      } else {
         for (String fileReference : track.getFileReferences()) {
           dbTrack.addFileReference(fileReference);
         }
@@ -106,19 +103,13 @@ public class LibraryPersister {
     if (track.getLibraryReferenceCount() == 0) {
       db.delete(track);
       fireTrackDeleted(track);
-    }
-    else {
+    } else {
       db.set(track);
     }
   }
 
   private void fireTrackDeleted(final DbMp3Track track) {
-    listeners.forAllDo(new IClosure<ITrackDeletionListener>() {
-      @Override
-      public void execute(ITrackDeletionListener input) {
-        input.trackRemoved(track);
-      }
-    });
+    listeners.announce().trackRemoved(track);
   }
 
   public void addTrackDeletionListener(ITrackDeletionListener listener) {

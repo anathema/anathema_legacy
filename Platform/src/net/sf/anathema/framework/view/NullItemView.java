@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.view;
 
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;

@@ -14,7 +14,7 @@ import net.sf.anathema.character.library.removableentry.presenter.RemovableEntry
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> implements IAdditionalModel, IHeartsBloodModel {
 

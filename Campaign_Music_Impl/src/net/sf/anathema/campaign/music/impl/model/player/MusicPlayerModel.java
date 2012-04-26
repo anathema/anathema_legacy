@@ -1,27 +1,25 @@
 package net.sf.anathema.campaign.music.impl.model.player;
 
-import java.io.File;
-import java.util.Map;
-
 import javazoom.jlgui.basicplayer.BasicController;
 import javazoom.jlgui.basicplayer.BasicPlayerEvent;
 import javazoom.jlgui.basicplayer.BasicPlayerException;
 import javazoom.jlgui.basicplayer.BasicPlayerListener;
-
 import net.sf.anathema.campaign.music.export.Mp3Utilities;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerModel;
 import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerModelListener;
 import net.sf.anathema.campaign.music.presenter.selection.player.MusicPlayerStatus;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.exception.AnathemaException;
+import org.jmock.example.announcer.Announcer;
+
+import java.io.File;
+import java.util.Map;
 
 public class MusicPlayerModel implements IMusicPlayerModel {
 
   private static final String PROP_LENGTH = "audio.length.bytes"; //$NON-NLS-1$
   private final ExtendedBasicPlayer player = new ExtendedBasicPlayer();
-  private final GenericControl<IMusicPlayerModelListener> control = new GenericControl<IMusicPlayerModelListener>();
+  private final Announcer<IMusicPlayerModelListener> control = Announcer.to(IMusicPlayerModelListener.class);
   private long lengthInMilliseconds;
   private int lengthInBytes;
   private int currentBytePosition;
@@ -44,26 +42,15 @@ public class MusicPlayerModel implements IMusicPlayerModel {
       @Override
       public void progress(final int bytesread, final long microseconds, byte[] pcmdata,
                            @SuppressWarnings("rawtypes") Map properties) {
-        control.forAllDo(new IClosure<IMusicPlayerModelListener>() {
-          @Override
-          public void execute(IMusicPlayerModelListener input) {
-            currentBytePosition = bytesread;
-            input.positionChanged(bytesread, (playStartTime + player.getElapsedTime()) / 1000);
-          }
-        });
+        currentBytePosition = bytesread;
+        control.announce().positionChanged(bytesread, (playStartTime + player.getElapsedTime()) / 1000);
       }
 
       @Override
-      public void opened(Object stream,
-                         @SuppressWarnings("rawtypes") final Map properties) {
+      public void opened(Object stream, @SuppressWarnings("rawtypes") final Map properties) {
         lengthInMilliseconds = getTimeLengthEstimation(properties);
         lengthInBytes = (Integer) properties.get(PROP_LENGTH);
-        control.forAllDo(new IClosure<IMusicPlayerModelListener>() {
-          @Override
-          public void execute(IMusicPlayerModelListener input) {
-            input.trackOpenend(track, lengthInBytes, lengthInMilliseconds / 1000);
-          }
-        });
+        control.announce().trackOpenend(track, lengthInBytes, lengthInMilliseconds / 1000);
       }
     });
   }
@@ -76,8 +63,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
         throw new AnathemaException("No file found for track " + track); //$NON-NLS-1$
       }
       player.open(preferredFile);
-    }
-    catch (BasicPlayerException e) {
+    } catch (BasicPlayerException e) {
       throw new AnathemaException(e);
     }
   }
@@ -87,8 +73,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     try {
       player.play();
       setStatus(MusicPlayerStatus.PLAYING);
-    }
-    catch (BasicPlayerException e) {
+    } catch (BasicPlayerException e) {
       throw new AnathemaException(e);
     }
   }
@@ -98,15 +83,9 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     try {
       player.stop();
       playStartTime = 0;
-      control.forAllDo(new IClosure<IMusicPlayerModelListener>() {
-        @Override
-        public void execute(IMusicPlayerModelListener input) {
-          input.positionChanged(0, 0);
-        }
-      });
+      control.announce().positionChanged(0,0);
       setStatus(MusicPlayerStatus.STOPPED);
-    }
-    catch (BasicPlayerException e) {
+    } catch (BasicPlayerException e) {
       throw new AnathemaException(e);
     }
   }
@@ -119,8 +98,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
       }
       playStartTime = lengthInMilliseconds * bytePosition / lengthInBytes;
       player.seek(bytePosition);
-    }
-    catch (BasicPlayerException e) {
+    } catch (BasicPlayerException e) {
       throw new AnathemaException(e);
     }
   }
@@ -135,8 +113,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     try {
       player.pause();
       setStatus(MusicPlayerStatus.PAUSED);
-    }
-    catch (BasicPlayerException e) {
+    } catch (BasicPlayerException e) {
       throw new AnathemaException(e);
     }
   }
@@ -146,19 +123,13 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     try {
       player.resume();
       setStatus(MusicPlayerStatus.PLAYING);
-    }
-    catch (BasicPlayerException e) {
+    } catch (BasicPlayerException e) {
       throw new AnathemaException(e);
     }
   }
 
   private void setStatus(final MusicPlayerStatus status) {
-    control.forAllDo(new IClosure<IMusicPlayerModelListener>() {
-      @Override
-      public void execute(IMusicPlayerModelListener input) {
-        input.statusChanged(status);
-      }
-    });
+    control.announce().statusChanged(status);
   }
 
   @Override
@@ -175,8 +146,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
       }
       if (properties.containsKey("duration")) { //$NON-NLS-1$
         milliseconds = (int) ((Long) properties.get("duration")).longValue() / 1000; //$NON-NLS-1$
-      }
-      else {
+      } else {
         // Try to compute duration
         int bitspersample = -1;
         int channels = -1;
@@ -196,8 +166,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
         }
         if (bitspersample > 0) {
           milliseconds = (int) (1000.0f * byteslength / (samplerate * channels * bitspersample / 8));
-        }
-        else {
+        } else {
           milliseconds = (int) (1000.0f * byteslength / (samplerate * framesize));
         }
       }

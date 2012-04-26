@@ -1,10 +1,5 @@
 package net.sf.anathema.campaign.music.impl.model.library;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.campaign.music.impl.model.tracks.FileMp3Track;
 import net.sf.anathema.campaign.music.impl.model.tracks.MusicFolderWalker;
 import net.sf.anathema.campaign.music.impl.persistence.MusicDatabasePersister;
@@ -13,13 +8,17 @@ import net.sf.anathema.campaign.music.model.libary.ILibraryChangedListener;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.exception.AnathemaException;
+import org.jmock.example.announcer.Announcer;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class LibraryControl implements ILibraryControl {
 
-  private final GenericControl<ILibraryChangedListener> listenerControl = new GenericControl<ILibraryChangedListener>();
+  private final Announcer<ILibraryChangedListener> listenerControl = Announcer.to(ILibraryChangedListener.class);
   private MusicDatabasePersister musicDataBasePersister;
 
   public LibraryControl(MusicDatabasePersister persister) {
@@ -66,14 +65,9 @@ public final class LibraryControl implements ILibraryControl {
   }
 
   private void fireLibraryChanged(final String name) {
-    listenerControl.forAllDo(new IClosure<ILibraryChangedListener>() {
-      @Override
-      public void execute(ILibraryChangedListener input) {
-        ILibrary[] allLibraries = getAllLibraries();
-        ILibrary newLibrary = getLibraryByName(allLibraries, name);
-        input.librariesChanged(allLibraries, newLibrary);
-      }
-    });
+    ILibrary[] allLibraries = getAllLibraries();
+    ILibrary newLibrary = getLibraryByName(allLibraries, name);
+    listenerControl.announce().librariesChanged(allLibraries, newLibrary);
   }
 
   protected ILibrary getLibraryByName(ILibrary[] allLibraries, String name) {

@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.wizard.selection;
 
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IObjectSelectionWizardModel<T> {
   public void setSelectedObject(T newValue);

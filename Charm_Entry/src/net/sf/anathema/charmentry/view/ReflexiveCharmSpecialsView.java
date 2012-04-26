@@ -11,8 +11,8 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.charmentry.presenter.view.IReflexiveCharmSpecialsView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public class ReflexiveCharmSpecialsView implements IDialogComponent, IReflexiveCharmSpecialsView {
   private final ObjectSelectionIntValueView stepView;

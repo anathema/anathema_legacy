@@ -2,26 +2,25 @@ package net.sf.anathema.character.generic.framework.intvalue;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.framework.value.NullUpperBounds;
-import net.sf.anathema.framework.value.IIntValueDisplay;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
+import org.jmock.example.announcer.Announcer;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 public class SelectableIntValueView<V> implements ISelectableIntValueView<V> {
 
   private final IChangeableJComboBox<V> objectSelectionBox = new ChangeableJComboBox<V>(false);
 
   private final IIntValueDisplay valueDisplay;
-  private final GenericControl<ISelectionIntValueChangedListener<V>> control = new GenericControl<ISelectionIntValueChangedListener<V>>();
+  private final Announcer<ISelectionIntValueChangedListener> control = Announcer.to(ISelectionIntValueChangedListener.class);
   private int currentValue;
 
   public SelectableIntValueView(IIntValueDisplayFactory configuration, int initial, int max) {
@@ -46,12 +45,7 @@ public class SelectableIntValueView<V> implements ISelectableIntValueView<V> {
   }
 
   private void fireSelectionChangedEvent() {
-    control.forAllDo(new IClosure<ISelectionIntValueChangedListener<V>>() {
-      @Override
-      public void execute(ISelectionIntValueChangedListener<V> input) {
-    	input.valueChanged(objectSelectionBox.getSelectedObject(), currentValue);
-      }
-    });
+    control.announce().valueChanged(objectSelectionBox.getSelectedObject(), currentValue);
   }
 
   public JComponent getContent() {
@@ -85,13 +79,5 @@ public class SelectableIntValueView<V> implements ISelectableIntValueView<V> {
   @Override
   public void setValue(int value) {
     valueDisplay.setValue(value);
-  }
-
-  public JComponent getSelectionComponent() {
-    return objectSelectionBox.getComponent();
-  }
-
-  public Component getValueComponent() {
-    return valueDisplay.getComponent();
   }
 }

@@ -1,27 +1,26 @@
 package net.sf.anathema.charmentry.view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.util.ToggleComponentEnabler;
+import net.sf.anathema.charmentry.presenter.view.IDurationEntryView;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
+import org.jmock.example.announcer.Announcer;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-
-import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.util.ToggleComponentEnabler;
-import net.sf.anathema.charmentry.presenter.view.IDurationEntryView;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.workflow.textualdescription.ITextView;
-import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class DurationEntryView implements IDurationEntryView {
 
   private final ButtonGroup group = new ButtonGroup();
   private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
 
   @Override
   public JRadioButton addRadioButton(String string) {
@@ -47,7 +46,7 @@ public class DurationEntryView implements IDurationEntryView {
     radioButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        control.fireChangedEvent();
+        control.announce().changeOccurred();
       }
     });
     return radioButton;
@@ -60,7 +59,7 @@ public class DurationEntryView implements IDurationEntryView {
 
   @Override
   public void addTypeChangeListener(IChangeListener changeListener) {
-    control.addChangeListener(changeListener);
+    control.addListener(changeListener);
   }
 
   @Override

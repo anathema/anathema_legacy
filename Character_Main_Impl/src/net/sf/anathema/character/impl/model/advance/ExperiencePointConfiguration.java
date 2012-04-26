@@ -1,19 +1,18 @@
 package net.sf.anathema.character.impl.model.advance;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExperiencePointConfiguration implements IExperiencePointConfiguration {
 
   private final List<IExperiencePointEntry> entries = new ArrayList<IExperiencePointEntry>();
-  private final GenericControl<IExperiencePointConfigurationListener> control = new GenericControl<IExperiencePointConfigurationListener>();
+  private final Announcer<IExperiencePointConfigurationListener> control = Announcer.to(IExperiencePointConfigurationListener.class);
   private final IObjectValueChangedListener<IExperiencePointEntry> entryChangeListener = new IObjectValueChangedListener<IExperiencePointEntry>() {
     @Override
     public void valueChanged(IExperiencePointEntry entry) {
@@ -52,30 +51,15 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   }
 
   private void fireEntryRemovedEvent(final IExperiencePointEntry entry) {
-    control.forAllDo(new IClosure<IExperiencePointConfigurationListener>() {
-      @Override
-      public void execute(IExperiencePointConfigurationListener input) {
-        input.entryRemoved(entry);
-      }
-    });
+    control.announce().entryRemoved(entry);
   }
 
   private void fireEntryAddedEvent(final IExperiencePointEntry entry) {
-    control.forAllDo(new IClosure<IExperiencePointConfigurationListener>() {
-      @Override
-      public void execute(IExperiencePointConfigurationListener input) {
-        input.entryAdded(entry);
-      }
-    });
+    control.announce().entryAdded(entry);
   }
 
   private void fireEntryChangedEvent(final IExperiencePointEntry entry) {
-    control.forAllDo(new IClosure<IExperiencePointConfigurationListener>() {
-      @Override
-      public void execute(IExperiencePointConfigurationListener input) {
-        input.entryChanged(entry);
-      }
-    });
+    control.announce().entryChanged(entry);
   }
 
   @Override

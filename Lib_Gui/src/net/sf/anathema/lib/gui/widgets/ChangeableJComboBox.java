@@ -1,20 +1,19 @@
 package net.sf.anathema.lib.gui.widgets;
 
+import net.sf.anathema.lib.UnselectingComboBoxModel;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import org.jmock.example.announcer.Announcer;
+
+import javax.swing.JComboBox;
+import javax.swing.ListCellRenderer;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.JComboBox;
-import javax.swing.ListCellRenderer;
-
-import net.sf.anathema.lib.UnselectingComboBoxModel;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
-
 public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
 
   private final JComboBox comboBox;
-  private final ObjectValueControl<V> control = new ObjectValueControl<V>();
+  private final Announcer<IObjectValueChangedListener> control = Announcer.to(IObjectValueChangedListener.class);
 
   public ChangeableJComboBox(boolean editable) {
     this(new UnselectingComboBoxModel(), editable);
@@ -32,7 +31,7 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
       @Override
       @SuppressWarnings("unchecked")
       public void itemStateChanged(ItemEvent e) {
-        control.fireValueChangedEvent((V) e.getItem());
+        control.announce().valueChanged(e.getItem());
       }
     });
   }
@@ -57,18 +56,18 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
     }
     setSelectedObject(selectedItem);
     if (comboBox.getSelectedItem() == null) {
-      control.fireValueChangedEvent(null);
+      control.announce().valueChanged(null);
     }
   }
 
   @Override
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
-    control.addObjectValueChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override
   public void removeObjectSelectionChangeListener(IObjectValueChangedListener<V> listener) {
-    control.addObjectValueChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override

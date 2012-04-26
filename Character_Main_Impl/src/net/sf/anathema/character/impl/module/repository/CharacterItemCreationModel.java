@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private ICharacterType selectedType;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private ITemplateTypeAggregation selectedTemplate;
   private final MultiEntryMap<ICharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<ICharacterType, ITemplateTypeAggregation>();
   private final CharacterStatisticsConfiguration configuration;
@@ -75,7 +75,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     }
     this.selectedType = type;
     setTemplateToDefault();
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   private void setTemplateToDefault() {
@@ -111,7 +111,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     } else {
       setEditionDependentTemplate();
     }
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   private void setEditionDependentTemplate() {
@@ -126,6 +126,6 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   @Override
   public void addListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 }

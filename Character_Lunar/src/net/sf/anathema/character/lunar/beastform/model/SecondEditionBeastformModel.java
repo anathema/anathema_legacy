@@ -17,17 +17,17 @@ import net.sf.anathema.character.lunar.beastform.model.gift.SecondEditionMutatio
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.mutations.model.IMutationsModel;
-import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.intvalue.IntValueControl;
+import net.sf.anathema.lib.control.GlobalChangeAdapter;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter implements IBeastformModel {
   private final ICharacterModelContext context;
-  private final IntValueControl charmLearnControl = new IntValueControl();
+  private final Announcer<IIntValueChangedListener> charmLearnControl = Announcer.to(IIntValueChangedListener.class);
   private final BeastformTraitCollection beastCollection;
   private final BeastformTraitCollection spiritCollection;
   private final IMutationsModel mutationModel;
@@ -85,7 +85,7 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
   }
 
   private void update() {
-    charmLearnControl.fireValueChangedEvent(getCharmValue());
+    charmLearnControl.announce().valueChanged(getCharmValue());
     for (IBeastformAttribute attribute : getAttributes()) {
       attribute.recalculate();
     }
@@ -128,7 +128,7 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
 
   @Override
   public void addCharmLearnCountChangedListener(IIntValueChangedListener listener) {
-    charmLearnControl.addIntValueChangeListener(listener);
+    charmLearnControl.addListener(listener);
   }
 
   @Override

@@ -3,7 +3,7 @@ package net.sf.anathema.charmentry.presenter.view;
 import javax.swing.JRadioButton;
 
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface IDurationEntryView extends IPageContent {

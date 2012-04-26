@@ -1,7 +1,7 @@
 package net.sf.anathema.charmentry.presenter.model;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 public interface ICharmPrerequisitesEntryModel {

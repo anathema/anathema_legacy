@@ -6,12 +6,12 @@ import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmTypeEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IReflexiveSpecialsEntryModel;
 import net.sf.anathema.charmentry.presenter.model.ISimpleSpecialsEntryModel;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public class CharmTypeEntryModel implements ICharmTypeEntryModel {
 
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final IConfigurableCharmData charmData;
   private final SimpleSpecialsEntryModel simpleCharmSpecials = new SimpleSpecialsEntryModel();
   private final ReflexiveSpecialsEntryModel reflexiveCharmSpecials = new ReflexiveSpecialsEntryModel();
@@ -41,7 +41,7 @@ public class CharmTypeEntryModel implements ICharmTypeEntryModel {
     final CharmTypeModel charmTypeModel = charmData.getCharmTypeModel();
     charmTypeModel.setCharmType(type);
     setSpecialModel();
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   private void setSpecialModel() {
@@ -59,7 +59,7 @@ public class CharmTypeEntryModel implements ICharmTypeEntryModel {
 
   @Override
   public void addModelListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override
@@ -67,7 +67,7 @@ public class CharmTypeEntryModel implements ICharmTypeEntryModel {
     if (this.enabled != enabled) {
       this.enabled = enabled;
       setSpecialModel();
-      control.fireChangedEvent();
+      control.announce().changeOccurred();
     }
   }
 

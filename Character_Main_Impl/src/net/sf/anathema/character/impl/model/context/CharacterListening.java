@@ -5,12 +5,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.impl.model.listening.CharacterListenerMapping;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
+import org.jmock.example.announcer.Announcer;
 
 public class CharacterListening implements ICharacterListening {
 
-  private final GenericControl<ICharacterChangeListener> changeControl = new GenericControl<ICharacterChangeListener>();
+  private final Announcer<ICharacterChangeListener> changeControl = Announcer.to(ICharacterChangeListener.class);
   private final CharacterListenerMapping listenerMapping = new CharacterListenerMapping(changeControl);
 
   @Override
@@ -27,29 +26,14 @@ public class CharacterListening implements ICharacterListening {
   }
 
   public void fireCharacterChanged() {
-    changeControl.forAllDo(new IClosure<ICharacterChangeListener>() {
-      @Override
-      public void execute(ICharacterChangeListener listener) {
-        listener.characterChanged();
-      }
-    });
+    changeControl.announce().characterChanged();
   }
 
   public void fireCasteChanged() {
-    changeControl.forAllDo(new IClosure<ICharacterChangeListener>() {
-      @Override
-      public void execute(ICharacterChangeListener listener) {
-        listener.casteChanged();
-      }
-    });
+    changeControl.announce().casteChanged();
   }
 
   public void fireExperiencedChanged(final boolean isExperienced) {
-    changeControl.forAllDo(new IClosure<ICharacterChangeListener>() {
-      @Override
-      public void execute(ICharacterChangeListener listener) {
-        listener.experiencedChanged(isExperienced);
-      }
-    });
+    changeControl.announce().experiencedChanged(isExperienced);
   }
 }

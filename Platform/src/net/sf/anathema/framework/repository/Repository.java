@@ -1,9 +1,5 @@
 package net.sf.anathema.framework.repository;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.MessageFormat;
-
 import net.disy.commons.core.io.FileUtilities;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.framework.item.IItemType;
@@ -19,8 +15,12 @@ import net.sf.anathema.framework.repository.access.SingleFileWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.MessageFormat;
 
 public class Repository implements IRepository {
 
@@ -28,7 +28,7 @@ public class Repository implements IRepository {
   private final File repositoryFolder;
   private final File defaultDataFolder;
   private final RepositoryFileResolver resolver;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
 
   public Repository(File repositoryFolder, IItemManagementModel itemManagement) {
     Ensure.ensureArgumentTrue("Repositoryfolder must exist.", repositoryFolder.exists()); //$NON-NLS-1$
@@ -198,11 +198,11 @@ public class Repository implements IRepository {
 
   @Override
   public void addRefreshListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override
   public void refresh() {
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 }

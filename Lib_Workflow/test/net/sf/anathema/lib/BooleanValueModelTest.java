@@ -1,6 +1,6 @@
 package net.sf.anathema.lib;
 
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
 import org.easymock.EasyMock;

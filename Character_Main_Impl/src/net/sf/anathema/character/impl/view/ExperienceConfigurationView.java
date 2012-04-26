@@ -1,15 +1,5 @@
 package net.sf.anathema.character.impl.view;
 
-import java.awt.Component;
-import java.awt.Dimension;
-
-import javax.swing.Action;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableColumn;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
@@ -17,16 +7,24 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
+import org.jmock.example.announcer.Announcer;
+
+import javax.swing.Action;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableColumn;
+import java.awt.Component;
+import java.awt.Dimension;
 
 public class ExperienceConfigurationView extends
     AbstractInitializableContentView<IExperienceConfigurationViewProperties> implements IExperienceConfigurationView {
 
-  private final GenericControl<IExperienceConfigurationViewListener> listeners = new GenericControl<IExperienceConfigurationViewListener>();
+  private final Announcer<IExperienceConfigurationViewListener> listeners = Announcer.to(IExperienceConfigurationViewListener.class);
   private SmartTable smartTable;
   private Action deleteAction;
   private LabelledIntegerValueView labelledIntValueView;
@@ -85,30 +83,15 @@ public class ExperienceConfigurationView extends
   }
 
   protected void fireSelectionChanged() {
-    listeners.forAllDo(new IClosure<IExperienceConfigurationViewListener>() {
-      @Override
-      public void execute(IExperienceConfigurationViewListener input) {
-        input.selectionChanged(smartTable.getSelectedRowIndex());
-      }
-    });
+    listeners.announce().selectionChanged(smartTable.getSelectedRowIndex());
   }
 
   private void fireRemoveRequested() {
-    listeners.forAllDo(new IClosure<IExperienceConfigurationViewListener>() {
-      @Override
-      public void execute(IExperienceConfigurationViewListener input) {
-        input.removeRequested(smartTable.getSelectedRowIndex());
-      }
-    });
+    listeners.announce().removeRequested(smartTable.getSelectedRowIndex());
   }
 
   private void fireAddRequested() {
-    listeners.forAllDo(new IClosure<IExperienceConfigurationViewListener>() {
-      @Override
-      public void execute(IExperienceConfigurationViewListener input) {
-        input.addRequested();
-      }
-    });
+    listeners.announce().addRequested();
   }
 
   @Override

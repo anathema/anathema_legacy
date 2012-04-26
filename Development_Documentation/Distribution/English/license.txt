@@ -209,6 +209,7 @@ Anathema includes software developed by
 -the DOM4J Project (http://www.dom4j.org).
 -Google, Inc.
 -eTeks (http://www.eteks.com)
+-Nat Pryce (http://nat.truemesh.com/archives/000710.html)
 
 The "Save as PDF" icon was created by Wolfgang Bartelme (http://www.bartelme.at/) and is used with permission.
 Some of the other images are taken with permission from the archives at http://www.wolf-spoor.org.
@@ -249,3 +250,4 @@ Reflections is published under the WTFPL.
 SLF4J is published under the MIT License.
 jaxen is published under the Jaxen License.
 dom4j is published under the BSD License
+Nat Pryce's "Announcer" class is published under an unrestricted license.

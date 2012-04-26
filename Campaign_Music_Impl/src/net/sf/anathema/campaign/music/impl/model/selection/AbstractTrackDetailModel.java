@@ -5,27 +5,27 @@ import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.IMusicEvent;
 import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public abstract class AbstractTrackDetailModel implements ITrackDetailModel {
 
-  private final ChangeControl givenNameChangeControl = new ChangeControl();
-  private final ChangeControl trackChangeControl = new ChangeControl();
+  private final Announcer<IChangeListener> givenNameChangeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<IChangeListener> trackChangeControl = Announcer.to(IChangeListener.class);
   private IMp3Track selectedTrack;
 
   protected final void fireGivenNamesChangedEvent() {
-    givenNameChangeControl.fireChangedEvent();
+    givenNameChangeControl.announce().changeOccurred();
   }
 
   @Override
   public final void addChangeDetailListener(IChangeListener changeListener) {
-    givenNameChangeControl.addChangeListener(changeListener);
+    givenNameChangeControl.addListener(changeListener);
   }
 
   @Override
   public final void addTrackChangeListener(IChangeListener tracklistener) {
-    trackChangeControl.addChangeListener(tracklistener);
+    trackChangeControl.addListener(tracklistener);
   }
 
   public final void setSelectedTrack(IMp3Track selectedTrack) {
@@ -40,7 +40,7 @@ public abstract class AbstractTrackDetailModel implements ITrackDetailModel {
       getEventsModel().setSelectedValues(new IMusicEvent[0]);
       getThemesModel().setSelectedValues(new IMusicTheme[0]);
     }
-    trackChangeControl.fireChangedEvent();
+    trackChangeControl.announce().changeOccurred();
   }
 
   @Override

@@ -1,7 +1,7 @@
 package net.sf.anathema.charmentry.presenter.model;
 
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ICharmTypeEntryModel {
 

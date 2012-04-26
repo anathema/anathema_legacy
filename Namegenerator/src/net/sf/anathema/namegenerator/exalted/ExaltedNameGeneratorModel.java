@@ -1,11 +1,7 @@
 package net.sf.anathema.namegenerator.exalted;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.disy.commons.core.util.ObjectUtilities;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
@@ -13,6 +9,10 @@ import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
 import net.sf.anathema.namegenerator.presenter.model.IGeneratorTypeModel;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
+import org.jmock.example.announcer.Announcer;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ExaltedNameGeneratorModel implements INameGeneratorModel {
 
@@ -20,7 +20,7 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
   private final IIdentificate[] nameGeneratorTypes = new IIdentificate[] { new Identificate("Realm"), THRESHOLD_ID }; //$NON-NLS-1$
   private final Map<IIdentificate, IGeneratorTypeModel> typeModelsByType = new HashMap<IIdentificate, IGeneratorTypeModel>();
   private IIdentificate selectedGeneratorType = nameGeneratorTypes[1];
-  private final ChangeControl selectedGeneratorTypeListeners = new ChangeControl();
+  private final Announcer<IChangeListener> selectedGeneratorTypeListeners = Announcer.to(IChangeListener.class);
   private final Map<IIdentificate, INameGenerator> generatorsByIdentificate = new HashMap<IIdentificate, INameGenerator>();
 
   public ExaltedNameGeneratorModel() {
@@ -40,7 +40,7 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
 
   @Override
   public void addGeneratorTypeChangeListener(IChangeListener listener) {
-    selectedGeneratorTypeListeners.addChangeListener(listener);
+    selectedGeneratorTypeListeners.addListener(listener);
   }
 
   @Override
@@ -54,7 +54,7 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
       return;
     }
     this.selectedGeneratorType = selectedGeneratorType;
-    selectedGeneratorTypeListeners.fireChangedEvent();
+    selectedGeneratorTypeListeners.announce().changeOccurred();
   }
 
   @Override

@@ -25,12 +25,10 @@ import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.collection.ICollectionListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.lang.ArrayUtilities;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,14 +41,14 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<IEquipmentItem>();
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = new Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>>();
   private final IEquipmentCharacterDataProvider dataProvider;
-  private final ChangeControl modelChangeControl = new ChangeControl();
-  private final GenericControl<ICollectionListener<IEquipmentItem>> equipmentItemControl = new GenericControl<ICollectionListener<IEquipmentItem>>();
+  private final Announcer<IChangeListener> modelChangeControl = Announcer.to(IChangeListener.class);
+  private final Announcer<ICollectionListener> equipmentItemControl = Announcer.to(ICollectionListener.class);
   private final EquipmentCollection equipmentItems = new EquipmentCollection();
   private final IEquipmentPrintModel printModel;
   private final IChangeListener itemChangePropagator = new IChangeListener() {
     @Override
     public void changeOccurred() {
-      modelChangeControl.fireChangedEvent();
+      fireModelChanged();
     }
   };
 
@@ -142,14 +140,14 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   public void enableStatOption(IEquipmentItem item, IEquipmentStats stats, IEquipmentStatsOption option) {
     if (item == null || stats == null) return;
     getOptionsList(item, stats).add(option);
-    modelChangeControl.fireChangedEvent();
+    fireModelChanged();
   }
 
   @Override
   public void disableStatOption(IEquipmentItem item, IEquipmentStats stats, IEquipmentStatsOption option) {
     if (item == null || stats == null) return;
     getOptionsList(item, stats).remove(option);
-    modelChangeControl.fireChangedEvent();
+    fireModelChanged();
   }
 
   @Override
@@ -245,32 +243,26 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   private void initItem(final IEquipmentItem item) {
-    equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
-      @Override
-      public void execute(ICollectionListener<IEquipmentItem> input) {
-        input.itemAdded(item);
-      }
-    });
-    modelChangeControl.fireChangedEvent();
+    equipmentItemControl.announce().itemAdded(item);
+    fireModelChanged();
     item.addChangeListener(itemChangePropagator);
   }
 
   @Override
   public void removeItem(final IEquipmentItem item) {
     equipmentItems.remove(item);
-    equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
-      @Override
-      public void execute(final ICollectionListener<IEquipmentItem> input) {
-        input.itemRemoved(item);
-      }
-    });
+    equipmentItemControl.announce().itemRemoved(item);
     item.removeChangeListener(itemChangePropagator);
-    modelChangeControl.fireChangedEvent();
+    fireModelChanged();
   }
   
   @Override
   public void updateItem(IEquipmentItem item) {
-	  modelChangeControl.fireChangedEvent();
+    fireModelChanged();
+  }
+
+  private void fireModelChanged() {
+    modelChangeControl.announce().changeOccurred();
   }
 
   @Override
@@ -313,7 +305,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
   @Override
   public void addChangeListener(final IChangeListener listener) {
-    modelChangeControl.addChangeListener(listener);
+    modelChangeControl.addListener(listener);
   }
 
   @Override

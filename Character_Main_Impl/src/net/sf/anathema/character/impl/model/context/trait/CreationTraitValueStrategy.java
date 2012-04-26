@@ -3,7 +3,8 @@ package net.sf.anathema.character.impl.model.context.trait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
-import net.sf.anathema.lib.control.intvalue.IntValueControl;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
+import org.jmock.example.announcer.Announcer;
 
 public class CreationTraitValueStrategy implements ITraitValueStrategy {
 
@@ -23,12 +24,12 @@ public class CreationTraitValueStrategy implements ITraitValueStrategy {
   }
 
   @Override
-  public void notifyOnCreationValueChange(int value, IntValueControl creationValueControl) {
-    creationValueControl.fireValueChangedEvent(value);
+  public void notifyOnCreationValueChange(int value, Announcer<IIntValueChangedListener> creationValueControl) {
+    creationValueControl.announce().valueChanged(value);
   }
 
   @Override
-  public void notifyOnLearnedValueChange(int value, IntValueControl currentValueControl) {
+  public void notifyOnLearnedValueChange(int value, Announcer<IIntValueChangedListener> currentValueControl) {
     // throw new IllegalStateException("No changes on learn value should occur in character creation."); //$NON-NLS-1$
   }
 

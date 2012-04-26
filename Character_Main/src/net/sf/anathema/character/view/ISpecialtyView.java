@@ -1,7 +1,7 @@
 package net.sf.anathema.character.view;
 
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ISpecialtyView extends IIntValueView {
 

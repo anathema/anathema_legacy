@@ -3,14 +3,12 @@ package net.sf.anathema.character.mutations.model;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.library.quality.model.AbstractQualityModel;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import java.util.ArrayList;
 
 public abstract class AbstractMutationsModel extends AbstractQualityModel<IMutation> implements IMutationsModel {
   protected IMutation[] allMutations;
-  private final ChangeControl overviewControl = new ChangeControl();
 
   public AbstractMutationsModel(ICharacterModelContext context) {
     super(context);
@@ -50,7 +48,7 @@ public abstract class AbstractMutationsModel extends AbstractQualityModel<IMutat
 
   @Override
   public void addOverviewChangedListener(IChangeListener listener) {
-    overviewControl.addChangeListener(listener);
+    //nothing to do
   }
 
   @Override

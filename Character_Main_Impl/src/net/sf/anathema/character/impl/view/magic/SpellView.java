@@ -9,11 +9,11 @@ import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.presenter.magic.spells.SpellViewProperties;
 import net.sf.anathema.character.view.magic.ISpellView;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledStringValueView;
+import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -34,7 +34,7 @@ public class SpellView implements ISpellView {
   private MagicLearnView magicLearnView;
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
-  private final ObjectValueControl<CircleType> circleControl = new ObjectValueControl<CircleType>();
+  private final Announcer<IObjectValueChangedListener> circleControl = Announcer.to(IObjectValueChangedListener.class);
   private final JPanel detailPanel = new JPanel(new GridDialogLayout(2, false));
 
   private final SpellViewProperties properties;
@@ -97,7 +97,7 @@ public class SpellView implements ISpellView {
     box.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        circleControl.fireValueChangedEvent((CircleType) box.getSelectedItem());
+        circleControl.announce().valueChanged(box.getSelectedItem());
       }
     });
     return panel;
@@ -120,7 +120,7 @@ public class SpellView implements ISpellView {
 
   @Override
   public void addCircleSelectionListener(IObjectValueChangedListener<CircleType> listener) {
-    circleControl.addObjectValueChangeListener(listener);
+    circleControl.addListener(listener);
   }
 
   @Override

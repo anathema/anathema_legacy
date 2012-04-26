@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;

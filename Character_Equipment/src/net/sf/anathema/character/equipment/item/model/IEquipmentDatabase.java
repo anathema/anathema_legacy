@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.item.model;
 
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IEquipmentDatabase extends IEquipmentTemplateProvider {
 

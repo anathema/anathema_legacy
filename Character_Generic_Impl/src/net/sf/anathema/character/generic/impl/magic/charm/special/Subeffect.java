@@ -2,14 +2,14 @@ package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.util.Identificate;
+import org.jmock.example.announcer.Announcer;
 
 public class Subeffect extends Identificate implements ISubeffect {
 
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final IBasicCharacterData data;
   private boolean learned = false;
   private boolean creationLearned = false;
@@ -23,7 +23,7 @@ public class Subeffect extends Identificate implements ISubeffect {
 
   @Override
   public void addChangeListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override
@@ -59,14 +59,14 @@ public class Subeffect extends Identificate implements ISubeffect {
   public void setCreationLearned(boolean creationLearned) {
     this.creationLearned = creationLearned;
     this.learned = creationLearned;
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
   public void setExperienceLearned(boolean experienceLearned) {
     if (!creationLearned) {
       this.learned = experienceLearned;
-      control.fireChangedEvent();
+      control.announce().changeOccurred();
     }
   }
 }

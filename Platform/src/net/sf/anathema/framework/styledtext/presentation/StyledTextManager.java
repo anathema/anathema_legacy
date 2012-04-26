@@ -1,9 +1,10 @@
 package net.sf.anathema.framework.styledtext.presentation;
 
-import java.awt.Font;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import net.disy.commons.core.text.font.FontStyle;
+import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
+import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
+import net.sf.anathema.framework.styledtext.model.ITextPart;
+import org.jmock.example.announcer.Announcer;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -13,17 +14,14 @@ import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Element;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
-
-import net.disy.commons.core.text.font.FontStyle;
-import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
-import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
-import net.sf.anathema.framework.styledtext.model.ITextPart;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class StyledTextManager implements IStyledTextManager {
 
-  private final GenericControl<IStyledTextChangeListener> listeners = new GenericControl<IStyledTextChangeListener>();
+  private final Announcer<IStyledTextChangeListener> listeners = Announcer.to(IStyledTextChangeListener.class);
   private final DefaultStyledDocument document;
   private ITextPart[] actualTextParts = new ITextPart[0];
 
@@ -128,12 +126,7 @@ public class StyledTextManager implements IStyledTextManager {
     catch (BadLocationException e) {
       throw new IllegalStateException(e);
     }
-    listeners.forAllDo(new IClosure<IStyledTextChangeListener>() {
-      @Override
-      public void execute(IStyledTextChangeListener input) {
-        input.textChanged(actualTextParts);
-      }
-    });
+    listeners.announce().textChanged(actualTextParts);
   }
 
   @Override

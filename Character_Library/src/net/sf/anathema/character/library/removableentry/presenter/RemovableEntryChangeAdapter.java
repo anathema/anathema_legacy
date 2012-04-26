@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.removableentry.presenter;
 
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public final class RemovableEntryChangeAdapter<T> implements IRemovableEntryListener<T> {
   private final IChangeListener listener;

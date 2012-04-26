@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.value;
 
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface IIntValueView {
 

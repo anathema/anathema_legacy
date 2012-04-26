@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.value;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.intvalue.IntValueControl;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
+import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -32,7 +32,7 @@ public class IntValueDisplay implements IIntValueDisplay {
   private int currentValue;
   private int naturalMaximum;
   private int modifiedMaximum;
-  private final IntValueControl valueControl = new IntValueControl();
+  private final Announcer<IIntValueChangedListener> valueControl = Announcer.to(IIntValueChangedListener.class);
   private final TwoUpperBounds bounds;
   private final AbstractMarkerPanel panel;
   private final Icon capExceededImage;
@@ -135,12 +135,12 @@ public class IntValueDisplay implements IIntValueDisplay {
 
   @Override
   public void addIntValueChangedListener(IIntValueChangedListener listener) {
-    valueControl.addIntValueChangeListener(listener);
+    valueControl.addListener(listener);
   }
 
   @Override
   public void removeIntValueChangedListener(IIntValueChangedListener listener) {
-    valueControl.removeIntValueChangeListener(listener);
+    valueControl.removeListener(listener);
   }
 
   private void updateIcons(double xPosition) {
@@ -196,7 +196,7 @@ public class IntValueDisplay implements IIntValueDisplay {
   }
 
   private void fireValueChangedEvent(int value) {
-    valueControl.fireValueChangedEvent(value);
+    valueControl.announce().valueChanged(value);
   }
 
   @Override

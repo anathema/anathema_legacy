@@ -7,7 +7,7 @@ import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.charmentry.presenter.model.ICharmTypeEntryModel;
 import net.sf.anathema.charmentry.presenter.view.ICharmTypeEntryView;
 import net.sf.anathema.charmentry.properties.CharmTypeEntryPageProperties;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;

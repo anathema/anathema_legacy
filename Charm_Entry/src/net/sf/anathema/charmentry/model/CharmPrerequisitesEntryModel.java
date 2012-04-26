@@ -6,10 +6,10 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmPrerequisitesEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
 
   private final IConfigurableCharmData charmData;
   private final ICharmCache cache;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
 
   public CharmPrerequisitesEntryModel(
       IHeaderDataModel headerModel,
@@ -30,7 +30,7 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
     final CheckInputListener changeListener = new CheckInputListener(new SimpleBlock() {
       @Override
       public void execute() {
-        control.fireChangedEvent();
+        control.announce().changeOccurred();
       }
     });
     headerModel.addModelListener(changeListener);
@@ -39,7 +39,7 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
 
   @Override
   public void addModelListener(IChangeListener inputListener) {
-    control.addChangeListener(inputListener);
+    control.addListener(inputListener);
   }
 
   @Override

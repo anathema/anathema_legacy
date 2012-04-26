@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.container;
 
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ISelectionContainerView<V> {
 

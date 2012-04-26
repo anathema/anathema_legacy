@@ -2,7 +2,7 @@ package net.sf.anathema.charmentry.presenter.model;
 
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IPrerequisitesModel {
 

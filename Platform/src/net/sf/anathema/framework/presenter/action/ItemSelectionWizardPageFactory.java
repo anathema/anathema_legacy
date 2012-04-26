@@ -3,7 +3,7 @@ package net.sf.anathema.framework.presenter.action;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;

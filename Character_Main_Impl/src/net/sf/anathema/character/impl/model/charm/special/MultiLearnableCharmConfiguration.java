@@ -14,14 +14,13 @@ import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
+import org.jmock.example.announcer.Announcer;
 
 public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmConfiguration {
 
-  private final GenericControl<ISpecialCharmLearnListener> control = new GenericControl<ISpecialCharmLearnListener>();
+  private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
   private final IDefaultTrait trait;
   private ICharmConfiguration config;
   private ICharm charm;
@@ -86,12 +85,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   }
 
   private void fireLearnCountChanged(final int learnCount) {
-    control.forAllDo(new IClosure<ISpecialCharmLearnListener>() {
-      @Override
-      public void execute(ISpecialCharmLearnListener input) {
-        input.learnCountChanged(learnCount);
-      }
-    });
+    control.announce().learnCountChanged(learnCount);
   }
 
   @Override

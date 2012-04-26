@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.context;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;

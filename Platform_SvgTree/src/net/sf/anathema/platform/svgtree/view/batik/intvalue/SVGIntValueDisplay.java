@@ -1,18 +1,12 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
-
-import java.awt.Color;
-import java.awt.Rectangle;
-
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.intvalue.IntValueControl;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
+import org.jmock.example.announcer.Announcer;
 import org.w3c.dom.Element;
 import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
@@ -21,6 +15,12 @@ import org.w3c.dom.svg.SVGCircleElement;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGLocatable;
 import org.w3c.dom.svg.SVGRectElement;
+
+import java.awt.Color;
+import java.awt.Rectangle;
+
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_COLOR_LIGHT_MEDIUM_GRAY;
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 
 public class SVGIntValueDisplay implements IIntValueView {
 
@@ -88,7 +88,7 @@ public class SVGIntValueDisplay implements IIntValueView {
   private final double gap;
 
   private final double maximumWidth;
-  private final IntValueControl valueControl = new IntValueControl();
+  private final Announcer<IIntValueChangedListener> valueControl = Announcer.to(IIntValueChangedListener.class);
   private IBoundsCalculator boundsCalculator;
   private final int dotCount;
   private final SVGCircleElement[] circles;
@@ -163,7 +163,6 @@ public class SVGIntValueDisplay implements IIntValueView {
         return;
       }
     }
-    return;
   }
 
   private SVGRectElement createGlassPane() {
@@ -220,16 +219,16 @@ public class SVGIntValueDisplay implements IIntValueView {
 
   @Override
   public void addIntValueChangedListener(final IIntValueChangedListener listener) {
-    valueControl.addIntValueChangeListener(listener);
+    valueControl.addListener(listener);
   }
 
   @Override
   public void removeIntValueChangedListener(final IIntValueChangedListener listener) {
-    valueControl.removeIntValueChangeListener(listener);
+    valueControl.removeListener(listener);
   }
 
   private void fireValueChangedEvent(final int newValue) {
-    valueControl.fireValueChangedEvent(newValue);
+    valueControl.announce().valueChanged(newValue);
   }
 
   private void removeSelectionRectangle() {

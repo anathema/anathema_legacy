@@ -2,7 +2,7 @@ package net.sf.anathema.framework.view;
 
 import javax.swing.Icon;
 
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IView;
 

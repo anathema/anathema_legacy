@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public class InfernalUrgeModel extends VirtueFlawModel implements IInfernalUrgeModel

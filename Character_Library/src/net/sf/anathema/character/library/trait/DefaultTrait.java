@@ -13,13 +13,13 @@ import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.data.Range;
+import org.jmock.example.announcer.Announcer;
 
 public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDefaultTrait {
 
-  private final ChangeControl rangeControl = new ChangeControl();
+  private final Announcer<IChangeListener> rangeControl = Announcer.to(IChangeListener.class);
   private int capModifier = 0;
   private int creationValue;
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
@@ -33,21 +33,12 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     }
   };
 
-  public DefaultTrait(
-      IFavorableTraitRules traitRules,
-      ICasteType[] castes,
-      ITraitContext traitContext,
-      IBasicCharacterData basicData,
-      ICharacterListening listening,
-      IValueChangeChecker valueChangeChecker,
-      IIncrementChecker favoredIncrementChecker) {
+  public DefaultTrait(IFavorableTraitRules traitRules, ICasteType[] castes, ITraitContext traitContext,
+                      IBasicCharacterData basicData, ICharacterListening listening,
+                      IValueChangeChecker valueChangeChecker, IIncrementChecker favoredIncrementChecker) {
     this(traitRules, traitContext, valueChangeChecker);
-    setTraitFavorization(new TraitFavorization(
-        basicData,
-        castes,
-        favoredIncrementChecker,
-        this,
-        traitRules.isRequiredFavored()));
+    setTraitFavorization(
+            new TraitFavorization(basicData, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored()));
     listening.addChangeListener(changeListener);
     getFavorization().updateFavorableStateToCaste();
   }
@@ -58,24 +49,21 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     this.checker = checker;
     this.creationValue = traitRules.getStartValue();
   }
-  
+
   @Override
-  public void applyCapModifier(int modifier)
-  {
-	  capModifier += modifier;
-	  getTraitRules().setCapModifier(capModifier);
+  public void applyCapModifier(int modifier) {
+    capModifier += modifier;
+    getTraitRules().setCapModifier(capModifier);
   }
-  
+
   @Override
-  public int getUnmodifiedMaximalValue()
-  {
-	  return getTraitRules().getCurrentMaximumValue(false);
+  public int getUnmodifiedMaximalValue() {
+    return getTraitRules().getCurrentMaximumValue(false);
   }
-  
+
   @Override
-  public int getModifiedMaximalValue()
-  {
-	  return getTraitRules().getCurrentMaximumValue(true);
+  public int getModifiedMaximalValue() {
+    return getTraitRules().getCurrentMaximumValue(true);
   }
 
   protected void setTraitFavorization(ITraitFavorization favorization) {
@@ -102,18 +90,16 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
       return;
     }
     this.creationValue = correctedValue;
-    getCreationPointControl().fireValueChangedEvent(this.creationValue);
+    getCreationPointControl().announce().valueChanged(this.creationValue);
     getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
   }
-  
+
   @Override
-  public void setUncheckedCreationValue(int value)
-  {
-	  if (this.creationValue == value)
-	      return;
-	  this.creationValue = value;
-	  getCreationPointControl().fireValueChangedEvent(this.creationValue);
-	  getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
+  public void setUncheckedCreationValue(int value) {
+    if (this.creationValue == value) return;
+    this.creationValue = value;
+    getCreationPointControl().announce().valueChanged(this.creationValue);
+    getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
   }
 
   @Override
@@ -123,13 +109,13 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
 
   @Override
   public final void resetExperiencedValue() {
-	if (getExperiencedValue() != ITraitRules.UNEXPERIENCED)
-		setExperiencedValue(Math.max(getCreationValue(), getExperiencedValue()));
+    if (getExperiencedValue() != ITraitRules.UNEXPERIENCED)
+      setExperiencedValue(Math.max(getCreationValue(), getExperiencedValue()));
   }
 
   @Override
   public final void addRangeListener(IChangeListener listener) {
-    rangeControl.addChangeListener(listener);
+    rangeControl.addListener(listener);
   }
 
   @Override
@@ -161,8 +147,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   public void setCurrentValue(int value) {
     if (!checker.isValidNewValue(value)) {
       resetCurrentValue();
-    }
-    else {
+    } else {
       if (value == getCurrentValue()) {
         return;
       }
@@ -184,15 +169,13 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     this.experiencedValue = correctedValue;
     getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
   }
-  
+
   @Override
-  public final void setUncheckedExperiencedValue(int value)
-  {
-	if (value == experiencedValue)
-	   return;
-	this.experiencedValue = value;
-	getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
-   }
+  public final void setUncheckedExperiencedValue(int value) {
+    if (value == experiencedValue) return;
+    this.experiencedValue = value;
+    getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
+  }
 
   @Override
   public final void resetCurrentValue() {
@@ -214,10 +197,9 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   public final int getMinimalValue() {
     return getTraitValueStrategy().getMinimalValue(this);
   }
-  
+
   @Override
-  public final int getCalculationMinValue()
-  {
-	return getTraitRules().getCalculationMinValue();
+  public final int getCalculationMinValue() {
+    return getTraitRules().getCalculationMinValue();
   }
 }

@@ -11,28 +11,28 @@ import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import org.jmock.example.announcer.Announcer;
 
 public class PrerequisiteEntryModel implements IPrerequisitesModel {
 
   private final IConfigurableCharmData charmData;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
 
   public PrerequisiteEntryModel(IHeaderDataModel headerModel, IConfigurableCharmData charmData) {
     this.charmData = charmData;
     headerModel.addModelListener(new CheckInputListener(new SimpleBlock() {
       @Override
       public void execute() {
-        control.fireChangedEvent();
+        control.announce().changeOccurred();
       }
     }));
   }
 
   @Override
   public void addModelListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 
   @Override
@@ -41,7 +41,7 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
       return;
     }
     charmData.setEssencePrerequisite(new ValuedTraitType(OtherTraitType.Essence, minimum));
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
@@ -74,7 +74,7 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
     }
     charmData.setPrimaryPrerequisite(new ValuedTraitType(type, value));
     charmData.setGroupId(type.getId());
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override

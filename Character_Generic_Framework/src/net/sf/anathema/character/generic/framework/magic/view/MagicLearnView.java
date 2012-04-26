@@ -3,22 +3,30 @@ package net.sf.anathema.character.generic.framework.magic.view;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
 import net.sf.anathema.lib.util.IIdentificate;
+import org.jmock.example.announcer.Announcer;
 
-import javax.swing.*;
+import javax.swing.Action;
+import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class MagicLearnView implements IMagicLearnView {
 
-  private final GenericControl<IMagicViewListener> control = new GenericControl<IMagicViewListener>();
+  private final Announcer<IMagicViewListener> control = Announcer.to(IMagicViewListener.class);
   private JList learnOptionsList = new JList(new DefaultListModel());
   private final JList learnedList = new JList(new DefaultListModel());
   private final List<JButton> endButtons = new ArrayList<JButton>();
@@ -82,21 +90,11 @@ public class MagicLearnView implements IMagicLearnView {
   }
 
   private void fireMagicRemoved(final Object[] removedMagics) {
-    control.forAllDo(new IClosure<IMagicViewListener>() {
-      @Override
-      public void execute(IMagicViewListener input) {
-        input.magicRemoved(removedMagics);
-      }
-    });
+    control.announce().magicRemoved(removedMagics);
   }
 
   private void fireMagicAdded(final Object[] addedMagics) {
-    control.forAllDo(new IClosure<IMagicViewListener>() {
-      @Override
-      public void execute(IMagicViewListener input) {
-        input.magicAdded(addedMagics);
-      }
-    });
+    control.announce().magicAdded(addedMagics);
   }
 
   @Override

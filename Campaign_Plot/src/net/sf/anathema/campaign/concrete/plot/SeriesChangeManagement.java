@@ -4,8 +4,8 @@ import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainer;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainerListener;
 import net.sf.anathema.framework.repository.IChangeManagement;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public class SeriesChangeManagement implements IChangeManagement {
 
@@ -47,8 +47,7 @@ public class SeriesChangeManagement implements IChangeManagement {
       setDirty();
     }
   };
-
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private boolean dirty = false;
 
   public SeriesChangeManagement(IPlotElement rootElement) {
@@ -60,12 +59,12 @@ public class SeriesChangeManagement implements IChangeManagement {
 
   private void setDirty() {
     this.dirty = true;
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
   public void addDirtyListener(IChangeListener changeListener) {
-    control.addChangeListener(changeListener);
+    control.addListener(changeListener);
   }
 
   @Override
@@ -75,12 +74,12 @@ public class SeriesChangeManagement implements IChangeManagement {
 
   @Override
   public void removeDirtyListener(IChangeListener changeListener) {
-    control.removeChangeListener(changeListener);
+    control.removeListener(changeListener);
   }
 
   @Override
   public void setClean() {
     this.dirty = false;
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 }

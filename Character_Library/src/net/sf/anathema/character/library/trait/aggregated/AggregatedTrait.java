@@ -81,7 +81,7 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
   }
 
   private void fireValueChangedEvent() {
-    getCurrentValueControl().fireValueChangedEvent(getCurrentValue());
+    getCurrentValueControl().announce().valueChanged(getCurrentValue());
   }
 
   @Override

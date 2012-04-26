@@ -11,8 +11,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
 import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawModel;
-import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
-import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.GlobalChangeAdapter;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class SolarVirtueFlawModel extends VirtueFlawModel implements ISolarVirtueFlawModel {
 

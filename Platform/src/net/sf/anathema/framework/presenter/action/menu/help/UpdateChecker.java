@@ -1,5 +1,10 @@
 package net.sf.anathema.framework.presenter.action.menu.help;
 
+import net.disy.commons.core.message.MessageType;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.resources.IResources;
+import org.jmock.example.announcer.Announcer;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,16 +14,11 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
 
-import net.disy.commons.core.message.MessageType;
-import net.sf.anathema.lib.control.change.ChangeControl;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.resources.IResources;
-
 public class UpdateChecker implements IUpdateChecker {
 
   public static final String Update_Url = "http://anathema.github.com/version/version.txt";
   private final IResources resources;
-  private final ChangeControl control = new ChangeControl();
+  private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private IMessageData data;
   private String remoteVersion;
   private Boolean success = null;
@@ -50,7 +50,7 @@ public class UpdateChecker implements IUpdateChecker {
       this.success = false;
       this.data = new MessageData("Help.UpdateCheck.GeneralException", MessageType.ERROR); //$NON-NLS-1$      
     }
-    control.fireChangedEvent();
+    control.announce().changeOccurred();
   }
 
   @Override
@@ -90,6 +90,6 @@ public class UpdateChecker implements IUpdateChecker {
 
   @Override
   public void addDataChangedListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    control.addListener(listener);
   }
 }

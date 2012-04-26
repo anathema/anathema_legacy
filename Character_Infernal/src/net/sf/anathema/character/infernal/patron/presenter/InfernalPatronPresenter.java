@@ -17,7 +17,7 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.presenter.FavorableTraitViewProperties;
 import net.sf.anathema.lib.collection.IdentityMapping;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
@@ -74,7 +74,7 @@ public class InfernalPatronPresenter implements Presenter {
         traitViewsByTrait.put(yozi, yoziView);
         updateView(yoziView, yozi.getFavorization().getFavorableState());
       }
-      /*yozi.addChangeListener(new IChangeListener() {
+      /*yozi.addListener(new IChangeListener() {
         public void changeOccurred() {
           setOverviewData(favoredView, generalView, bonusView, experienceView);
         }

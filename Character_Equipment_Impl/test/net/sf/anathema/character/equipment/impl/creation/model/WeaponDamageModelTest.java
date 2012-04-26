@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.impl.creation.model;
 
 import junit.framework.TestCase;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
