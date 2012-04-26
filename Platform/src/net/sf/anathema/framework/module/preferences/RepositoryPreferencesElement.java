@@ -9,11 +9,7 @@ import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
-import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.PreferenceElement;
-import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
-import net.sf.anathema.initialization.repository.IStringResolver;
-import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
@@ -212,53 +208,11 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
   @Override
   public boolean isValid() {
-    try {
-      IOFileSystemAbstraction fileSystem = new IOFileSystemAbstraction();
-      new RepositoryFolderCreator(fileSystem, new IStringResolver() {
-        @Override
-        public String resolve() {
-          try {
-            return repositoryDirectory.getCanonicalPath();
-          } catch (IOException e) {
-            throw new RepositoryException("Could not resolve path of default directory");
-          }
-        }
-      }).createRepositoryFolder();
-      return true;
-    } catch (RepositoryException e) {
-      Throwable cause = e.getCause();
-      if (cause == null) {
-        cause = e;
-      }
-      MessageDialogFactory.showMessageDialog(null,
-              new Message("Could not create the new repository: " + cause.getMessage(), cause)); //$NON-NLS-1$
-      return false;
-    }
+    return new RepositoryFolderWorker().isValid(repositoryDirectory);
   }
 
   public boolean isDefaultValid() {
-    try {
-      IOFileSystemAbstraction fileSystem = new IOFileSystemAbstraction();
-      new RepositoryFolderCreator(fileSystem, new IStringResolver() {
-        @Override
-        public String resolve() {
-          try {
-            return defaultDirectory.getCanonicalPath();
-          } catch (IOException e) {
-            throw new RepositoryException("Could not resolve path of default directory");
-          }
-        }
-      }).createRepositoryFolder();
-      return true;
-    } catch (RepositoryException e) {
-      Throwable cause = e.getCause();
-      if (cause == null) {
-        cause = e;
-      }
-      MessageDialogFactory.showMessageDialog(null,
-              new Message("Could not create the new repository: " + cause.getMessage(), cause)); //$NON-NLS-1$
-      return false;
-    }
+    return new RepositoryFolderWorker().isValid(defaultDirectory);
   }
 
   @Override
