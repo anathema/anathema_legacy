@@ -40,7 +40,7 @@ public class Announcer<T> {
 	
 	private void announce(Method m, Object[] args) {
 		try {
-			for (T listener : listeners) {
+			for (T listener : new ArrayList<T>(listeners)) {
 				m.invoke(listener, args);
 			}
 		}
