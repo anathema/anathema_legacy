@@ -2,13 +2,14 @@ package net.sf.anathema.platform.svgtree.document.visualizer;
 
 import net.sf.anathema.graph.graph.LayeredGraph;
 import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class SimplifiedButtonUpGraphVisualizer extends AbstractCascadeVisualizer {
 
@@ -60,7 +61,7 @@ public class SimplifiedButtonUpGraphVisualizer extends AbstractCascadeVisualizer
   private void createVisualizableNodes(int layerIndex) {
     ISimpleNode[] layerNodes = getGraph().getNodesByLayer(layerIndex + 1);
     if (layerNodes.length > 1) {
-      ListOrderedSet<ISimpleNode> nodeSet = new ListOrderedSet<ISimpleNode>();
+      Set<ISimpleNode> nodeSet = new LinkedHashSet<ISimpleNode>();
       nodeSet.addAll(Arrays.asList(layerNodes));
       getNodeFactory().registerHorizontalMetaNode(nodeSet);
     } else {

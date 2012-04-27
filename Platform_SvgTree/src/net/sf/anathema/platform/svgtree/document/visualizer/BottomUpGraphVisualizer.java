@@ -2,7 +2,6 @@ package net.sf.anathema.platform.svgtree.document.visualizer;
 
 import net.sf.anathema.graph.graph.LayeredGraph;
 import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNodeLeftSideComparator;
@@ -11,6 +10,7 @@ import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -386,7 +386,7 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
   }
 
   private boolean lookForHorizontalMetaNodes(ISimpleNode[] layerNodes, int nodeIndex, ISimpleNode currentNode) {
-    Set<ISimpleNode> identicalChildrenNodes = new ListOrderedSet<ISimpleNode>();
+    Set<ISimpleNode> identicalChildrenNodes = new LinkedHashSet<ISimpleNode>();
     identicalChildrenNodes.add(currentNode);
     for (int compareNodeIndex = nodeIndex + 1; compareNodeIndex < layerNodes.length; compareNodeIndex++) {
       ISimpleNode compareNode = layerNodes[compareNodeIndex];

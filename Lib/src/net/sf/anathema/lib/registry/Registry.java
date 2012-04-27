@@ -1,15 +1,14 @@
 package net.sf.anathema.lib.registry;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
-
-import net.sf.anathema.lib.collection.ListOrderedSet;
 
 public class Registry<I, V> implements IRegistry<I, V> {
 
   private final Map<I, V> objects = new HashMap<I, V>();
-  private final Set<I> keySet = new ListOrderedSet<I>();
+  private final Set<I> keySet = new LinkedHashSet<I>();
   private V defaultValue;
 
   public Registry() {

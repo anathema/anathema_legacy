@@ -1,13 +1,12 @@
 package net.sf.anathema.lib.registry;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Set;
-
-import net.sf.anathema.lib.collection.ListOrderedSet;
 
 public class CollectionRegistry<E> implements ICollectionRegistry<E> {
 
-  private final Set<E> elements = new ListOrderedSet<E>();
+  private final Set<E> elements = new LinkedHashSet<E>();
 
   @Override
   public void add(E... newElements) {

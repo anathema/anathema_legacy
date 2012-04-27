@@ -3,6 +3,7 @@ package net.sf.anathema.platform.svgtree.document.components;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -10,7 +11,6 @@ import java.util.Set;
 import org.dom4j.Element;
 
 import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 
 public class HorizontalMetaNode extends AbstractVisualizableNode {
 
@@ -33,7 +33,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
 
   @Override
   public IVisualizableNode[] getChildren() {
-    Set<IVisualizableNode> children = new ListOrderedSet<IVisualizableNode>();
+    Set<IVisualizableNode> children = new LinkedHashSet<IVisualizableNode>();
     for (ISimpleNode node : contentNodes) {
       for (ISimpleNode child : node.getChildren()) {
         children.add(getContentNodeMap().get(child));
@@ -44,7 +44,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
 
   @Override
   public IVisualizableNode[] getParents() {
-    Set<IVisualizableNode> parents = new ListOrderedSet<IVisualizableNode>();
+    Set<IVisualizableNode> parents = new LinkedHashSet<IVisualizableNode>();
     for (ISimpleNode node : contentNodes) {
       for (ISimpleNode parent : node.getParents()) {
         parents.add(getContentNodeMap().get(parent));

@@ -6,10 +6,10 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.graph.nodes.IRegularNode;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener, CharmGroupInformer {
@@ -37,7 +37,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   private Set<ICharm> getDisplayCharms(ICharmGroup charmGroup) {
     ICharm[] allCharms = arbitrator.getCharms(charmGroup);
-    Set<ICharm> charmsToDisplay = new ListOrderedSet<ICharm>();
+    Set<ICharm> charmsToDisplay = new LinkedHashSet<ICharm>();
     for (ICharm charm : allCharms) {
       if (!charmFilterSet.filterCharm(charm, false) || !filterAncestors(charm)) continue;
       charmsToDisplay.add(charm);

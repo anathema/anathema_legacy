@@ -14,7 +14,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
@@ -23,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -36,7 +36,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private IGenericTrait essence = new ValuedTraitType(OtherTraitType.Essence, 1);
   private Map<ITraitType, IGenericTrait> prerequisitesByType = new LinkedHashMap<ITraitType, IGenericTrait>();
   private String groupId;
-  private final Set<ICharm> parentCharms = new ListOrderedSet<ICharm>();
+  private final Set<ICharm> parentCharms = new LinkedHashSet<ICharm>();
   private final ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
   private final IConfigurableCostList temporaryCost = new ConfigurableCostList();
   private IExaltedSourceBook source = null;

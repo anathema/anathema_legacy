@@ -22,13 +22,13 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -76,7 +76,7 @@ public class DummyCharm extends Identificate implements ICharm {
 
   public DummyCharm(String id, ICharm[] parents, IGenericTrait[] prerequisites) {
     super(id);
-    this.parentCharms = new ListOrderedSet<ICharm>();
+    this.parentCharms = new LinkedHashSet<ICharm>();
     Collections.addAll(parentCharms, parents);
     this.prerequisites = prerequisites;
   }

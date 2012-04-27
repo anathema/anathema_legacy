@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -14,7 +15,6 @@ import net.sf.anathema.graph.graph.ProperHierarchicalGraph;
 import net.sf.anathema.graph.graph.SingleNodeGraph;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 
 public class SubtreeSeparator {
@@ -35,9 +35,9 @@ public class SubtreeSeparator {
       if (handledRoots.contains(root)) {
         continue;
       }
-      Set<ISimpleNode> peerRoots = new ListOrderedSet<ISimpleNode>();
+      Set<ISimpleNode> peerRoots = new LinkedHashSet<ISimpleNode>();
       getPeerRoots(root, roots, handledRoots, peerRoots, leafNodesByAncestors);
-      Set<ISimpleNode> subtreeNodes = new ListOrderedSet<ISimpleNode>();
+      Set<ISimpleNode> subtreeNodes = new LinkedHashSet<ISimpleNode>();
       int deepestSubtreeLayer = 1;
       for (ISimpleNode peerRoot : peerRoots) {
         deepestSubtreeLayer = Math.max(deepestSubtreeLayer, addChildrenRecursively(subtreeNodes, peerRoot));

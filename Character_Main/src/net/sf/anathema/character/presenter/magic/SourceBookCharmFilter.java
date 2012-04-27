@@ -7,11 +7,11 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.filters.SourceBookCharmFilterPage;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JPanel;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -108,7 +108,7 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
   }
 
   private List<IExaltedSourceBook> reduceToUniqueBooks(List<IExaltedSourceBook> allBooks) {
-    Set<IExaltedSourceBook> uniqueBooks = new ListOrderedSet<IExaltedSourceBook>();
+    Set<IExaltedSourceBook> uniqueBooks = new LinkedHashSet<IExaltedSourceBook>();
     uniqueBooks.addAll(allBooks);
     return new ArrayList<IExaltedSourceBook>(uniqueBooks);
   }

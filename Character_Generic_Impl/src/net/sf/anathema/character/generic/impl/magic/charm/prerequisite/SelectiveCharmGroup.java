@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.charm.prerequisite;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -10,7 +11,6 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 
 public class SelectiveCharmGroup {
 
@@ -32,7 +32,7 @@ public class SelectiveCharmGroup {
   }
 
   public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
-    Set<ICharm> prerequisiteCharms = new ListOrderedSet<ICharm>();
+    Set<ICharm> prerequisiteCharms = new LinkedHashSet<ICharm>();
     List<Charm> charmsToLearn = selectCharmsToLearn(learnArbitrator);
     for (Charm learnCharm : charmsToLearn) {
       prerequisiteCharms.addAll(learnCharm.getLearnPrerequisitesCharms(learnArbitrator));

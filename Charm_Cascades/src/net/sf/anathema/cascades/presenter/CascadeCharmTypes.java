@@ -6,10 +6,10 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.presenter.magic.AbstractCharmTypes;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.util.IIdentificate;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -22,7 +22,7 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
 
   @Override
   protected List<IIdentificate> getCurrentCharacterTypes() {
-    Set<IIdentificate> set = new ListOrderedSet<IIdentificate>();
+    Set<IIdentificate> set = new LinkedHashSet<IIdentificate>();
     for (ICharacterType type : CharacterType.values()) {
       ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
@@ -37,7 +37,7 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
 
   @Override
   protected List<IIdentificate> getAdditionalCharmTypes() {
-    Set<IIdentificate> set = new ListOrderedSet<IIdentificate>();
+    Set<IIdentificate> set = new LinkedHashSet<IIdentificate>();
     for (ICharacterType type : CharacterType.values()) {
       ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {

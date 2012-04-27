@@ -2,6 +2,7 @@ package net.sf.anathema.character.library.trait;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -12,7 +13,6 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.lib.collection.ListOrderedSet;
 
 public abstract class AbstractFavorableTraitCostCalculator implements IFavorableTraitCostCalculator {
 
@@ -257,7 +257,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   private Set<IFavorableDefaultTrait> sortTraitsByStatus() {
-    Set<IFavorableDefaultTrait> orderedTraits = new ListOrderedSet<IFavorableDefaultTrait>();
+    Set<IFavorableDefaultTrait> orderedTraits = new LinkedHashSet<IFavorableDefaultTrait>();
     for (IFavorableTrait trait : traits) {
       if (!trait.getFavorization().isCasteOrFavored()) {
         addAllTraits(orderedTraits, trait);
