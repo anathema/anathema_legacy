@@ -1,12 +1,19 @@
 dependencies {
   compile project(':Character_Generic_Framework')
   compile project(':Character_Main')
+  testCompile 'junit:junit:4.+'
+  testCompile 'org.mockito:mockito-core:1.8.5'
 }
 
 sourceSets {
   main {
     resources {
       srcDir 'resources'
+    }
+  }
+  test {
+    java {
+      srcDir 'test'
     }
   }
 }

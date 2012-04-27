@@ -22,10 +22,10 @@ public class CharmFinder {
 
   public ICharm find() {
     ICharm charm = searchCharmByCharacterType();
-    if (charm == null) {
-      charm = searchCharmFromMartialArts();
+    if (charm != null) {
+      return charm;
     }
-    return charm;
+    return searchCharmFromMartialArts();
   }
 
   private ICharm searchCharmByCharacterType() {
