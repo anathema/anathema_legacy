@@ -85,7 +85,7 @@
           <prerequisite>
                <trait id="Cecelyne" value="0" />
                <essence value="2" />
-               <charmReference id="Infernal.DustDevilFeint"/>
+               <charmReference id="Infernal.Sand-SlipTrick"/>
           </prerequisite>
           <cost> 
                <essence cost="1" />   

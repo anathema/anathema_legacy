@@ -23,7 +23,7 @@ Please use the custom data facility introduced in v4.1.0 in its stead, placing y
 ### Bugfixes
 * [Curtis Tasker] Dodge DV takes into account mobility penalties from shields.
 * (Infernal Monster Style) Correct Essence prereq for "Screaming Meat Shield" and "One Hand Fury".
-
+* (Infernal/Cecelyne) Correct Charm prereqs for "Swallowed in Eternity"
 
 ## Release 4.1.0 "Varang"
 
