@@ -1,13 +1,10 @@
 package net.sf.anathema.graph.ordering;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.Arrays;
 
-import net.sf.anathema.graph.ordering.IStructureNode;
-import net.sf.anathema.graph.ordering.LeafStructureOptimizer;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class LeafStructureOptimizerTest {
 
