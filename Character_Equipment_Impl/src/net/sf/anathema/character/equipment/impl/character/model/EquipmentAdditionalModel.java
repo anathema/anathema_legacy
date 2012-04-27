@@ -1,5 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -24,7 +26,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IGen
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.collection.Table;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
 import net.sf.anathema.lib.lang.ArrayUtilities;
@@ -39,7 +40,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   private final ICharacterType characterType;
   private final MagicalMaterial defaultMaterial;
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<IEquipmentItem>();
-  private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = new Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>>();
+  private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = HashBasedTable.create();
   private final IEquipmentCharacterDataProvider dataProvider;
   private final Announcer<IChangeListener> modelChangeControl = Announcer.to(IChangeListener.class);
   private final Announcer<ICollectionListener> equipmentItemControl = Announcer.to(ICollectionListener.class);
@@ -131,7 +132,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
     if (list == null) {
       list = new ArrayList<IEquipmentStatsOption>();
-      optionsTable.add(item, stats, list);
+      optionsTable.put(item, stats, list);
     }
     return list;
   }
@@ -191,10 +192,10 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     boolean transferred = false;
     for (IEquipmentStats fromStats : fromItem.getStats()) {
       List<IEquipmentStatsOption> optionList = optionsTable.get(fromItem, fromStats);
-      optionsTable.add(fromItem, fromStats, null);
+      optionsTable.put(fromItem, fromStats, null);
       IEquipmentStats toStats = toItem.getStat(fromStats.getId());
       if (toStats != null && optionList != null) {
-        optionsTable.add(toItem, toStats, optionList);
+        optionsTable.put(toItem, toStats, optionList);
         transferred = true;
       }
     }
