@@ -102,7 +102,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
 
   private ICharm findNonNullCharm(final String charmId) {
     ICharm charm = getCharmById(charmId);
-    Ensure.ensureNotNull("Charm with id '" + charmId + " not found.", charm); //$NON-NLS-1$ //$NON-NLS-2$
+    Ensure.ensureNotNull("Charm with id '" + charmId + "' not found.", charm); //$NON-NLS-1$ //$NON-NLS-2$
     return charm;
   }
 
