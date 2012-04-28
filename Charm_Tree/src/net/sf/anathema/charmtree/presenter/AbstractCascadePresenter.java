@@ -141,6 +141,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
       }
     };
     selectionView.addCharmFilterButton(buttonAction, resources.getString("CharmFilters.Filters"), resources.getString("CharmFilters.Define"));
+    selectionView.addCharmCascadeHelp(resources.getString("CharmTreeView.GUI.HelpText"));
   }
 
   private ICharmGroup[] sortCharmGroups(ICharmGroup[] originalGroups) {

@@ -114,5 +114,4 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
 			}
 			return result;
 	}
-
 }
