@@ -51,6 +51,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     resetSpecialViewsAndTooltipsWhenCursorLeavesCharmArea();
     createCharmGroupSelector();
     initFilters();
+    createHelpText();
     alienPresenter.initPresentation();
     interactionPresenter.initPresentation();
     view.initGui();
@@ -141,7 +142,10 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
       }
     };
     selectionView.addCharmFilterButton(buttonAction, resources.getString("CharmFilters.Filters"), resources.getString("CharmFilters.Define"));
-    selectionView.addCharmCascadeHelp(resources.getString("CharmTreeView.GUI.HelpText"));
+  }
+	
+  private void createHelpText() {
+    view.addCharmCascadeHelp(resources.getString("CharmTreeView.GUI.HelpText"));
   }
 
   private ICharmGroup[] sortCharmGroups(ICharmGroup[] originalGroups) {
