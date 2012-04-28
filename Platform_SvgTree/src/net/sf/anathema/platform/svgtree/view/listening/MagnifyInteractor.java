@@ -15,10 +15,9 @@ import org.apache.batik.swing.gvt.JGVTComponent;
 
 public class MagnifyInteractor extends InteractorAdapter implements MouseWheelListener {
 	
-  public static final float MAX_ZOOM_OUT_DETERMINANT = .65f;
-  public static final float MAX_ZOOM_IN_DETERMINANT  = 5.0f;
-	//private double scale = 1.0;
-	//private AffineTransform at = new AffineTransform();
+  public static final float MAX_ZOOM_OUT_DETERMINANT = 0.5f;  // 50%
+  public static final float MAX_ZOOM_IN_DETERMINANT  = 8.0f;  // 800%
+	public static final float PERCENTAGE_INCREMENT     = 0.05f; // 5%
   private final IBoundsCalculator calculator;
   private boolean finished = true;
   private int yStart;
@@ -78,58 +77,52 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
 
   @Override
   public void mouseDragged(MouseEvent event) {
-    JGVTComponent component = (JGVTComponent) event.getSource();
-    //AffineTransform at = AffineTransform.getTranslateInstance(xStart, yStart);
-    int movement = yStart - event.getY();
-    if (movement < 0) {
-      movement = movement > -5 ? 15 : movement - 10;
-    }
-    else {
-      movement = movement < 5 ? 15 : movement + 10;
-    }
-    double scale = movement / 15.0;
-    scale = scale > 0 ? scale : -1 / scale;
-
-		AffineTransform at = new AffineTransform();
-    translate( at, xStart, yStart, scale);
+    int verticalMovement = yStart - event.getY();/*
 		
-    JGVTComponent c = (JGVTComponent) event.getSource();
-    AffineTransform rt = (AffineTransform) c.getRenderingTransform().clone();
-    rt.preConcatenate(at);
-    if (rt.getDeterminant() < MAX_ZOOM_OUT_DETERMINANT || rt.getDeterminant() > MAX_ZOOM_IN_DETERMINANT)
-  	  return;
-    component.setRenderingTransform(at);
-		calculator.reset();
+		double scale = Math.max(0.00001, 1 - 0.05 *
+					                  Math.copySign(Math.min(5,Math.abs(movement)),
+												                  movement));
+		double scale = Math.max(0.00001, 1 - 0.05 * event.getWheelRotation());
+		System.out.println( "scale = " + scale);*/
+
+		magnify((JGVTComponent)event.getSource(), xStart, yStart, verticalMovement);
   }
 	
   @Override
   public void mouseWheelMoved(MouseWheelEvent event) {
-    JGVTComponent component = (JGVTComponent) event.getSource();
-    //double scale = 1 - 0.2 * event.getWheelRotation();
-		double scale = Math.max(0.00001, 1 - 0.05 * event.getWheelRotation());
-		//double scale = event.getWheelRotation()/15;
-		//scale = scale > 0 ? scale : -1 / scale;
-    int x = event.getX();
-    int y = event.getY();
-		
-		System.out.println( "scale = " + scale);
-    AffineTransform at = translate( new AffineTransform(), x, y, scale);
-		
-		AffineTransform rt = (AffineTransform) component.getRenderingTransform().clone();
-    rt.preConcatenate(at);
-    if (rt.getDeterminant() < MAX_ZOOM_OUT_DETERMINANT || rt.getDeterminant() > MAX_ZOOM_IN_DETERMINANT) {
-			return;
-    }
-    component.setRenderingTransform(rt);
-    calculator.reset();
+		int wheelClicks = event.getWheelRotation();
+
+		magnify((JGVTComponent)event.getSource(), event.getX(), event.getY(), wheelClicks);
   }
 	
-	private AffineTransform translate(AffineTransform at, int x, int y, double scale) {
-		at.setToIdentity();
-    at.translate(x, y);
-    at.scale(scale, scale);
-    at.translate(-x, -y);
-		return at;
+	private void magnify(JGVTComponent c, int x, int y, int movement) {
+		double scale = Math.max(0.00001, 1 - PERCENTAGE_INCREMENT * movement);
+		AffineTransform current = c.getRenderingTransform();
+    AffineTransform zoom = translate( x, y, scale);
+		
+		if( testTransform(current, zoom) ) {
+			current.preConcatenate(zoom);
+			c.setRenderingTransform(current);
+		}
+	}
+	
+	private AffineTransform translate(int x, int y, double scale) {
+    AffineTransform zoom = new AffineTransform();
+		zoom.translate(x, y);
+    zoom.scale(scale, scale);
+    zoom.translate(-x, -y);
+		return zoom;
+	}
+	
+	private boolean testTransform(AffineTransform current, AffineTransform zoom) {
+			boolean result = true;
+			AffineTransform clone = (AffineTransform)current.clone();
+			clone.preConcatenate(zoom);
+	    if (clone.getDeterminant() < MAX_ZOOM_OUT_DETERMINANT ||
+				  clone.getDeterminant() > MAX_ZOOM_IN_DETERMINANT) {
+				result = false;
+			}
+			return result;
 	}
 
 }
