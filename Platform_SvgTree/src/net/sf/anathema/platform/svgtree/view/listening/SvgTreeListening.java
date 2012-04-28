@@ -127,14 +127,15 @@ public SvgTreeListening(
         }
       }
     });
+		MagnifyInteractor magnify = new MagnifyInteractor(boundsCalculator, canvas, this, properties.getZoomCursor());
     List<Interactor> interactors = canvas.getInteractors();
-    interactors.add(new RightClickMagnifyInteractor(boundsCalculator, canvas, this, properties.getZoomCursor()));
+    interactors.add(magnify);
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
     this.leftClickPanner = new LeftClickPanInteractor(boundsCalculator, canvas, properties);
     interactors.add(leftClickPanner);
     canvas.addMouseListener(leftClickPanner);
     canvas.addMouseListener(new RightClickPanAdapter(boundsCalculator));
-    canvas.addMouseWheelListener(new MouseWheelMagnifyListener(boundsCalculator));
+    canvas.addMouseWheelListener(magnify);
     canvas.setCursorInternal(properties.getDefaultCursor());
   }
 

@@ -3,6 +3,8 @@ package net.sf.anathema.platform.svgtree.view.listening;
 import java.awt.Cursor;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
 
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
@@ -11,9 +13,12 @@ import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 import org.apache.batik.swing.gvt.InteractorAdapter;
 import org.apache.batik.swing.gvt.JGVTComponent;
 
-public class RightClickMagnifyInteractor extends InteractorAdapter {
+public class MagnifyInteractor extends InteractorAdapter implements MouseWheelListener {
 	
-  public static final float MAX_ZOOM_DETERMINANT = .65f;
+  public static final float MAX_ZOOM_OUT_DETERMINANT = .65f;
+  public static final float MAX_ZOOM_IN_DETERMINANT  = 5.0f;
+	//private double scale = 1.0;
+	//private AffineTransform at = new AffineTransform();
   private final IBoundsCalculator calculator;
   private boolean finished = true;
   private int yStart;
@@ -22,7 +27,7 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
   private final IAnathemaCanvas canvas;
   private final SvgTreeListening listening;
 
-  public RightClickMagnifyInteractor(
+  public MagnifyInteractor(
       IBoundsCalculator boundsCalculator,
       IAnathemaCanvas canvas,
       SvgTreeListening svgTreeListening,
@@ -74,7 +79,7 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
   @Override
   public void mouseDragged(MouseEvent event) {
     JGVTComponent component = (JGVTComponent) event.getSource();
-    AffineTransform at = AffineTransform.getTranslateInstance(xStart, yStart);
+    //AffineTransform at = AffineTransform.getTranslateInstance(xStart, yStart);
     int movement = yStart - event.getY();
     if (movement < 0) {
       movement = movement > -5 ? 15 : movement - 10;
@@ -85,14 +90,46 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
     double scale = movement / 15.0;
     scale = scale > 0 ? scale : -1 / scale;
 
-    at.scale(scale, scale);
-    at.translate(-xStart, -yStart);
-    
+		AffineTransform at = new AffineTransform();
+    translate( at, xStart, yStart, scale);
+		
     JGVTComponent c = (JGVTComponent) event.getSource();
     AffineTransform rt = (AffineTransform) c.getRenderingTransform().clone();
     rt.preConcatenate(at);
-    if (rt.getDeterminant() < MAX_ZOOM_DETERMINANT)
+    if (rt.getDeterminant() < MAX_ZOOM_OUT_DETERMINANT || rt.getDeterminant() > MAX_ZOOM_IN_DETERMINANT)
   	  return;
-    component.setPaintingTransform(at);
+    component.setRenderingTransform(at);
+		calculator.reset();
   }
+	
+  @Override
+  public void mouseWheelMoved(MouseWheelEvent event) {
+    JGVTComponent component = (JGVTComponent) event.getSource();
+    //double scale = 1 - 0.2 * event.getWheelRotation();
+		double scale = Math.max(0.00001, 1 - 0.05 * event.getWheelRotation());
+		//double scale = event.getWheelRotation()/15;
+		//scale = scale > 0 ? scale : -1 / scale;
+    int x = event.getX();
+    int y = event.getY();
+		
+		System.out.println( "scale = " + scale);
+    AffineTransform at = translate( new AffineTransform(), x, y, scale);
+		
+		AffineTransform rt = (AffineTransform) component.getRenderingTransform().clone();
+    rt.preConcatenate(at);
+    if (rt.getDeterminant() < MAX_ZOOM_OUT_DETERMINANT || rt.getDeterminant() > MAX_ZOOM_IN_DETERMINANT) {
+			return;
+    }
+    component.setRenderingTransform(rt);
+    calculator.reset();
+  }
+	
+	private AffineTransform translate(AffineTransform at, int x, int y, double scale) {
+		at.setToIdentity();
+    at.translate(x, y);
+    at.scale(scale, scale);
+    at.translate(-x, -y);
+		return at;
+	}
+
 }
