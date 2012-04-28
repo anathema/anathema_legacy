@@ -27,6 +27,7 @@ Please use the custom data facility introduced in v4.1.0 in its stead, placing y
 ### Bugfixes
 * [Curtis Tasker] Dodge DV takes into account mobility penalties from shields.
 * [Curtis Tasker] Mousewheel Zoom-Out no longer flips the charm cascade when zooming out too quickly.
+* [Curtis Tasker] Charm Cascade now resets zoom levels when changing Charm Types.
 * (Infernal Monster Style) Correct Essence prereq for "Screaming Meat Shield" and "One Hand Fury".
 
 

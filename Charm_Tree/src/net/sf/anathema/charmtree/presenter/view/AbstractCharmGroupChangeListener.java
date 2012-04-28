@@ -60,14 +60,13 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   }
 
   private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type) {
+		boolean resetView = !(currentGroup != null && currentGroup.equals(charmGroup) && currentType != null && currentType.equals(type) );
     this.currentGroup = charmGroup;
     this.currentType = type;
     modifyCharmVisuals(type);
     if (charmGroup == null) {
       charmTreeRenderer.clearView();
-    } else {
-      boolean resetView = !(currentGroup == charmGroup && currentType != null && currentType.getId().equals(
-              type.getId()));
+    } else {	
       ITreePresentationProperties presentationProperties = getDisplayProperties(charmGroup);
       IRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(getDisplayCharms(charmGroup));
       charmTreeRenderer.renderTree(resetView, presentationProperties, nodes);

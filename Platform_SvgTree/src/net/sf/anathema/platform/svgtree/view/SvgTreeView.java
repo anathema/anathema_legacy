@@ -87,8 +87,10 @@ public class SvgTreeView implements ISvgTreeView {
   @Override
   public void loadCascade(final org.dom4j.Document dom4jDocument, boolean resetView) throws DocumentException {
     final AffineTransform transform = resetView ? null : canvas.getRenderingTransform();
-	if (resetView)
-	  calculator.reset();
+    if (resetView) {
+      canvas.resetRenderingTransform();
+      calculator.reset();
+    }
     listening.destructDocumentListening(canvas.getSVGDocument());
     SVGDocument document = null;
     if (dom4jDocument != null) {
