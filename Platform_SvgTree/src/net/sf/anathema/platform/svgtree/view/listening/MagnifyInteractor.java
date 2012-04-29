@@ -14,10 +14,10 @@ import org.apache.batik.swing.gvt.InteractorAdapter;
 import org.apache.batik.swing.gvt.JGVTComponent;
 
 public class MagnifyInteractor extends InteractorAdapter implements MouseWheelListener {
-	
-  public static final float MAX_ZOOM_OUT_DETERMINANT =  0.50f;  //   50%
-  public static final float MAX_ZOOM_IN_DETERMINANT  = 12.00f;  // 1200%
-  public static final float PERCENTAGE_INCREMENT     =  0.05f;  //    5%
+  
+  private static final float MAX_ZOOM_OUT_DETERMINANT =  0.50f;  //   50%
+  private static final float MAX_ZOOM_IN_DETERMINANT  = 12.00f;  // 1200%
+  private static final float PERCENTAGE_INCREMENT     =  0.05f;  //    5%
   private final IBoundsCalculator calculator;
   private boolean finished = true;
   private int yStart;
@@ -40,7 +40,8 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
   @Override
   public boolean startInteraction(InputEvent ie) {
     int mods = ie.getModifiers();
-    return ie.getID() == MouseEvent.MOUSE_PRESSED && (mods & InputEvent.BUTTON3_MASK) != 0;
+    return ie.getID() == MouseEvent.MOUSE_PRESSED && 
+           (mods & InputEvent.BUTTON3_MASK) != 0;
   }
 
   @Override
@@ -57,7 +58,7 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
       canvas.setCursorInternal(zoomCursor);
     }
   }
-	
+  
   @Override
   public void mouseReleased(MouseEvent e) {
     finished = true;
@@ -68,53 +69,53 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
   @Override
   public void mouseDragged(MouseEvent event) {
     int verticalMovement = event.getY() - yStart;
-		
+    
     // minimum of 20 points of movement for the drag event
-		int	movement  = Math.max(20, Math.abs(verticalMovement) );
-			  movement *= verticalMovement < 0 ? -1 : 1;  // preserve direction after abs()
-				
+    int movement  = Math.max(20, Math.abs(verticalMovement) );
+        movement *= verticalMovement < 0 ? -1 : 1;  // preserve direction after abs()
+        
     // dividing by 20 to produce one PERCENTAGE_INCREMENT zoom per 20 units of movement.
     movement /= 20;
     
     // 20 is not a magic number, just happened to be produce smooth values during testing.
-		
+    
     magnify((JGVTComponent)event.getSource(), xStart, yStart, movement);
   }
-	
+  
   @Override
   public void mouseWheelMoved(MouseWheelEvent event) {
     int wheelClicks = event.getWheelRotation();
     
     magnify((JGVTComponent)event.getSource(), event.getX(), event.getY(), wheelClicks);
   }
-	
+  
   private void magnify(JGVTComponent c, int x, int y, int movement) {
     double scale = Math.max(0.00001, 1 - PERCENTAGE_INCREMENT * movement);
     AffineTransform current = c.getRenderingTransform();
     AffineTransform zoom = translate(x, y, scale);
-		
+    
     if( testTransform(current, zoom) ) {
       current.preConcatenate(zoom);
       c.setRenderingTransform(current);
     }
   }
-	
-	private AffineTransform translate(int x, int y, double scale) {
+  
+  private AffineTransform translate(int x, int y, double scale) {
     AffineTransform zoom = new AffineTransform();
-		zoom.translate(x, y);
+    zoom.translate(x, y);
     zoom.scale(scale, scale);
     zoom.translate(-x, -y);
-		return zoom;
-	}
-	
-	private boolean testTransform(AffineTransform current, AffineTransform zoom) {
-			boolean result = true;
-			AffineTransform clone = (AffineTransform)current.clone();
-			clone.preConcatenate(zoom);
-	    if (clone.getDeterminant() < MAX_ZOOM_OUT_DETERMINANT ||
-				  clone.getDeterminant() > MAX_ZOOM_IN_DETERMINANT) {
-				result = false;
-			}
-			return result;
-	}
+    return zoom;
+  }
+  
+  private boolean testTransform(AffineTransform current, AffineTransform zoom) {
+    boolean result = true;
+    AffineTransform clone = (AffineTransform)current.clone();
+    clone.preConcatenate(zoom);
+    if( clone.getDeterminant() < MAX_ZOOM_OUT_DETERMINANT ||
+        clone.getDeterminant() > MAX_ZOOM_IN_DETERMINANT   ) {
+      result = false;
+    }
+    return result;
+  }
 }
