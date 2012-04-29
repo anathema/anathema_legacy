@@ -38,16 +38,24 @@ public class SimpleMovementTableEncoder extends AbstractMovementTableEncoder {
     addHealthPenaltyCells(graphics, table, level, painTolerance);
     addSpaceCells(graphics, table, 1);
 
-    int penalty = getPenalty(level, painTolerance);
-    int dexValue = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
-    int moveValue = dexValue + penalty;
-    table.addCell(createMovementCell(graphics, moveValue, 1));
+    int woundPenalty    = getPenalty(level, painTolerance);
+    int mobilityPenalty = getMobilityPenalty();
+    int dex             = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
+    int str             = collection.getTrait(AttributeType.Strength).getCurrentValue();
+    int athletics       = collection.getTrait(AbilityType.Athletics).getCurrentValue();
+      
+    int move            = Math.min( dex + woundPenalty + mobilityPenalty    , 1 ); // minimum movement rate is 1
+    int dash            = Math.min( dex + woundPenalty + mobilityPenalty + 6, 2 ); // minimum dash rate is 2
+    int verticalJump    = str + athletics + woundPenalty + mobilityPenalty;
+    int horizontalJump  = verticalJump * 2;
+    int swimClimb       = move / 2;  // not used yet, future addition to the sheet
+
+    table.addCell(createMovementCell(graphics, move, 1));
     addSpaceCells(graphics, table, 1);
-    table.addCell(createMovementCell(graphics, moveValue + 6, 2));
-    int verticalJump = collection.getTrait(AttributeType.Strength).getCurrentValue() + collection.getTrait(AbilityType.Athletics).getCurrentValue()
-            + penalty;
+    table.addCell(createMovementCell(graphics, dash, 2));
+
     addSpaceCells(graphics, table, 1);
-    table.addCell(createMovementCell(graphics, verticalJump * 2, 0));
+    table.addCell(createMovementCell(graphics, horizontalJump, 0));
     table.addCell(createMovementCell(graphics, verticalJump, 0));
   }
 }
