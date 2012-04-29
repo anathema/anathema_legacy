@@ -67,15 +67,18 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
 
   @Override
   public void mouseDragged(MouseEvent event) {
-    int verticalMovement = yStart - event.getY();
-    // minimum of 20 points of movement positive or negative for the drag event
-    verticalMovement = (int)Math.copySign((float)Math.max(20,
-			                                                    Math.abs(verticalMovement)),
-																					(float)verticalMovement);
+    int verticalMovement = event.getY() - yStart;
+		
+    // minimum of 20 points of movement for the drag event
+		int	movement  = Math.max(20, Math.abs(verticalMovement) );
+			  movement *= verticalMovement < 0 ? -1 : 1;  // preserve direction after abs()
+				
     // dividing by 20 to produce one PERCENTAGE_INCREMENT zoom per 20 units of movement.
-    verticalMovement /= 20;
+    movement /= 20;
     
-    magnify((JGVTComponent)event.getSource(), xStart, yStart, verticalMovement);
+    // 20 is not a magic number, just happened to be produce smooth values during testing.
+		
+    magnify((JGVTComponent)event.getSource(), xStart, yStart, movement);
   }
 	
   @Override
@@ -88,7 +91,7 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
   private void magnify(JGVTComponent c, int x, int y, int movement) {
     double scale = Math.max(0.00001, 1 - PERCENTAGE_INCREMENT * movement);
     AffineTransform current = c.getRenderingTransform();
-    AffineTransform zoom = translate( x, y, scale);
+    AffineTransform zoom = translate(x, y, scale);
 		
     if( testTransform(current, zoom) ) {
       current.preConcatenate(zoom);
