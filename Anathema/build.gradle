@@ -1,5 +1,10 @@
 archivesBaseName= 'anathema'
 
+task(run, dependsOn: compileJava, type: JavaExec) {
+  main = "net.sf.anathema.AnathemaBootLoader"
+  classpath = sourceSets.main.runtimeClasspath
+}
+
 jar {
   manifest {
     attributes(
