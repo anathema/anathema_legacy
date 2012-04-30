@@ -136,7 +136,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
     return Math.min(0, level.getIntValue() + painTolerance);
   }
   
-  private final int getMobilityPenaty() {
+  protected final int getMobilityPenalty() {
     return Math.min( 0, mobilityPenalty);
   }
 
