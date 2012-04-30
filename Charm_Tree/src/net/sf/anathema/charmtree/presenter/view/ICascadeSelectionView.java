@@ -25,6 +25,8 @@ public interface ICascadeSelectionView {
   void fillCharmTypeBox(IIdentificate[] cascadeTypes);
 
   void addCharmGroupSelector(String title, ListCellRenderer renderer, ICharmGroupChangeListener selectionListener, Dimension preferredSize);
+	
+  void addCharmCascadeHelp(String helpText);
 
   JComponent getCharmComponent();
 
