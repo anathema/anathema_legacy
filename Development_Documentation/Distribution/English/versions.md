@@ -18,7 +18,8 @@ Please use the custom data facility introduced in v4.1.0 in its stead, placing y
 * [Curtis Tasker] Preferences window has button to open repository location in OS-Specific File Manager (Explorer, Finder, etc).
 * [Curtis Tasker] Preferences window browse button now opens to the location of the current repository.
 * [Curtis Tasker] Preferences window repository location field now shows the location of the default repository when it is selected, rather than [Default Repository]
-
+* All canonical Yozis are supported as possible patrons for Green Sun Princes. Obviously, they do not have any charms defined beyond the generics, but you are free
+  to hang your favorite custom charm set off of them.
 
 ### Bugfixes
 * [Curtis Tasker] Dodge DV takes into account mobility penalties from shields.
