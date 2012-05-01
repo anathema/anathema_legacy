@@ -32,8 +32,8 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
       SvgTreeListening svgTreeListening,
       Cursor zoomCursor) {
     this.calculator = boundsCalculator;
-    this.canvas = canvas;
-    this.listening = svgTreeListening;
+    this.canvas     = canvas;
+    this.listening  = svgTreeListening;
     this.zoomCursor = zoomCursor;
   }
 
@@ -97,6 +97,7 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
     if( testTransform(current, zoom) ) {
       current.preConcatenate(zoom);
       c.setRenderingTransform(current);
+      calculator.reset();
     }
   }
   
