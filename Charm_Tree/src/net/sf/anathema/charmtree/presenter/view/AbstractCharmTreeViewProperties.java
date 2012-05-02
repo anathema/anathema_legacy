@@ -1,6 +1,7 @@
 package net.sf.anathema.charmtree.presenter.view;
 
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -17,6 +18,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
 
   private static final String REQUIREMENT = "Requirement"; //$NON-NLS-1$
   private final ICharmInfoStringBuilder tooltipTextProvider;
+  private final MagicDisplayLabeler charmLabeler;
   private final IResources resources;
   private final Cursor openHandCursor;
   private final Cursor dragHandCursor;
@@ -27,6 +29,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   public AbstractCharmTreeViewProperties(IResources resources, MagicDescriptionProvider magicDescriptionProvider) {
     this.resources = resources;
     this.tooltipTextProvider = new CharmInfoStringBuilder(resources, magicDescriptionProvider);
+    this.charmLabeler = new MagicDisplayLabeler(resources);
     this.openHandCursor = Toolkit.getDefaultToolkit().createCustomCursor(
         resources.getImage(this.getClass(), "CursorHandOpen.png"), //$NON-NLS-1$
         new Point(5, 0),
@@ -70,8 +73,9 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
 
   @Override
   public final String getNodeName(final String nodeId) {
-    if (resources.supportsKey(nodeId)) {
-      return resources.getString(nodeId);
+	ICharm charm = getCharmById(nodeId);
+    if (charmLabeler.supportsMagic(charm)) {
+      return charmLabeler.getLabelForMagic(charm);
     }
     else if (isRequirementNode(nodeId)) {
       String requirementWithCount = nodeId.replaceFirst(REQUIREMENT + ".", ""); //$NON-NLS-1$ //$NON-NLS-2$

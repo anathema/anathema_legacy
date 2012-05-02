@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.lib.resources.IResources;
@@ -32,7 +33,7 @@ public class GenericCharmStats extends CharmStats {
   @Override
   public String getNameString(IResources resources)
   {
-	  return resources.getString(genericId);
+	  return new MagicDisplayLabeler(resources).getGenericLabelForMagic(getMagic());
   }
   
   @Override

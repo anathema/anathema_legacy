@@ -5,7 +5,7 @@
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
     <essence uses="template/GodBloodedEssence.template" />
     <traitCollection uses="template/GodBloodedTraitCollection2nd.template"/>
-    <magicTemplate uses="template/HalfCasteSolarMagic2nd.template"/>
+    <magicTemplate uses="template/HalfCasteSiderealMagic2nd.template"/>
     <presentation uses="template/SiderealPresentation.template"/>
     <additionalRules uses="template/GodBloodedAdditionalRules2nd.template"/>
     <additionalTemplates>

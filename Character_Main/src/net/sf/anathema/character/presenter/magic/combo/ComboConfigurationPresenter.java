@@ -3,6 +3,7 @@ package net.sf.anathema.character.presenter.magic.combo;
 import net.disy.commons.core.util.StringUtilities;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -41,12 +42,14 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   private final ComboConfigurationModel comboModel;
   private final IResources resources;
   private final IComboConfigurationView view;
+  private final MagicDisplayLabeler labeler;
 
   public ComboConfigurationPresenter(IResources resources, ComboConfigurationModel comboModel, IMagicViewFactory factory) {
     this.resources = resources;
     this.comboModel = comboModel;
     this.charmConfiguration = comboModel.getCharmConfiguration();
     this.comboConfiguration = comboModel.getCombos();
+    this.labeler = new MagicDisplayLabeler(resources);
     this.view = factory.createCharmComboView();
   }
 
@@ -176,10 +179,10 @@ public class ComboConfigurationPresenter implements IContentPresenter {
     String charmList = "<b>"; //$NON-NLS-1$
     Iterator<ICharm> charmIterator = Arrays.asList(charms).iterator();
     if (charmIterator.hasNext()) {
-      charmList = charmList.concat(resources.getString(charmIterator.next().getId()));
+      charmList = charmList.concat(labeler.getLabelForMagic(charmIterator.next()));
     }
     while (charmIterator.hasNext()) {
-      charmList = charmList.concat(", " + resources.getString(charmIterator.next().getId())); //$NON-NLS-1$
+      charmList = charmList.concat(", " + labeler.getLabelForMagic(charmIterator.next())); //$NON-NLS-1$
     }
     charmList += "</b>"; //$NON-NLS-1$
     if (StringUtilities.isNullOrEmpty(text)) {

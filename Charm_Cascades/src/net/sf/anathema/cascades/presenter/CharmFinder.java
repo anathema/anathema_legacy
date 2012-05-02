@@ -30,8 +30,13 @@ public class CharmFinder {
 
   private ICharm searchCharmByCharacterType() {
     String[] idParts = id.split("\\."); //$NON-NLS-1$
-    ICharacterType characterTypeId = CharacterType.getById(idParts[0]);
-    return findCharm(characterTypeId);
+    try {
+    	ICharacterType characterTypeId = CharacterType.getById(idParts[0]);
+    	return findCharm(characterTypeId);
+    }
+    catch (IllegalArgumentException e) {
+    	return null;
+    }
   }
 
   private ICharm searchCharmFromMartialArts() {
