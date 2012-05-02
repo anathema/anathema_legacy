@@ -3,7 +3,7 @@ dependencies {
   compile 'net.disy.commons:disy-commons-swing-dialog:5.0.0-SNAPSHOT'
   compile project(':Lib')
   testCompile 'junit:junit:4.+'
-  testCompile 'org.easymock:easymock:3.1'
+  testCompile 'org.mockito:mockito-core:1.9.0'
 }
 
 sourceSets {

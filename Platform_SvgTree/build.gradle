@@ -4,7 +4,7 @@ dependencies {
   compile project(':Platform')
   compile project(':GraphLayout')
   testCompile group: 'junit', name: 'junit', version: '4.+'
-  testCompile 'org.mockito:mockito-core:1.8.5'
+  testCompile 'org.mockito:mockito-core:1.9.0'
 }
 
 sourceSets {

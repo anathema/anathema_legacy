@@ -3,27 +3,25 @@ package net.sf.anathema.lib;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
-import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
 public class BooleanValueModelTest {
+  private BooleanValueModel model = new BooleanValueModel(false);
 
   @Test
-  public void testCreation() throws Exception {
-    BooleanValueModel model = new BooleanValueModel(false);
+  public void storesFalseAfterCreation() throws Exception {
     Assert.assertFalse(model.getValue());
   }
 
   @Test
-  public void testEventFired() throws Exception {
-    BooleanValueModel model = new BooleanValueModel(false);
-    IBooleanValueChangedListener listener = EasyMock.createMock(IBooleanValueChangedListener.class);
+  public void notifiesListenersOfChange() throws Exception {
+    IBooleanValueChangedListener listener = mock(IBooleanValueChangedListener.class);
     model.addChangeListener(listener);
-    Object[] mocks = new Object[] { listener };
-    listener.valueChanged(true);
-    EasyMock.replay(mocks);
     model.setValue(true);
-    EasyMock.verify(mocks);
+    verify(listener).valueChanged(true);
   }
 }
