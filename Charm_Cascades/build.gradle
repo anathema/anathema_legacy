@@ -1,8 +1,7 @@
 dependencies {
   compile project(':Character_Generic_Framework')
   compile project(':Character_Main')
-  testCompile 'junit:junit:4.+'
-  testCompile 'org.mockito:mockito-core:1.9.0'
+  testCompile testDependencies
 }
 
 sourceSets {

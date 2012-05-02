@@ -2,8 +2,7 @@ dependencies {
   compile project(':Charm_Tree')
   compile project(':Character_Library')
   compile project(':Namegenerator')
-  testCompile group: 'junit', name: 'junit', version: '4.+'
-  testCompile 'org.mockito:mockito-core:1.9.0'
+  testCompile testDependencies
 }
 
 sourceSets {

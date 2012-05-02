@@ -2,8 +2,7 @@ dependencies {
   compile 'com.eteks:parser:1.0.2'
   compile project(':Lib_Gui')
   compile project(':Character_Generic')
-  testCompile group: 'junit', name: 'junit', version: '4.+'
-  testCompile group: 'org.mockito', name: 'mockito-core', version: '1.9.0'
+  testCompile testDependencies
   testCompile project(path: ':Character_Generic', configuration: 'tests')
 }
 

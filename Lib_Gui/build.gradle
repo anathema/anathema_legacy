@@ -2,8 +2,7 @@ dependencies {
   compile 'net.disy.commons:disy-commons-swing-layout:5.0.0-SNAPSHOT'
   compile 'net.disy.commons:disy-commons-swing-dialog:5.0.0-SNAPSHOT'
   compile project(':Lib')
-  testCompile 'junit:junit:4.+'
-  testCompile 'org.mockito:mockito-core:1.9.0'
+  testCompile testDependencies
 }
 
 sourceSets {

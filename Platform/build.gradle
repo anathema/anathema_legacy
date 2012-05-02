@@ -8,8 +8,7 @@ dependencies {
   compile 'org.swinglabs:swingx:1.6.1'
   compile project(':Lib_Workflow')
   compile project(':Lib_Gui')
-  testCompile 'junit:junit:4.+'
-  testCompile 'org.mockito:mockito-core:1.9.0'
+  testCompile testDependencies
 }
 
 processResources {
