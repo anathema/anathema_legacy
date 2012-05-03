@@ -1,3 +1,3 @@
 <presentation>
-  <charmPresentation uses="template/DbCharmPresentation2nd.template"/>
+  <color red="139" green="0" blue="0" />
 </presentation>

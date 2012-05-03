@@ -3,18 +3,17 @@ package net.sf.anathema.character.generic.framework.xml.presentation;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
+
+import java.awt.*;
 
 public class PresentationPropertiesParser extends AbstractXmlTemplateParser<GenericPresentationTemplate> {
 
-  private static final String TAG_CHARM_PRESENTATION = "charmPresentation";//$NON-NLS-1$
-  private final AbstractXmlTemplateParser<GenericCharmPresentationProperties> charmPresentationParser;
+  private static final String TAG_COLOR = "color";
 
-  public PresentationPropertiesParser(
-      IXmlTemplateRegistry<GenericPresentationTemplate> templateRegistry,
-      IXmlTemplateRegistry<GenericCharmPresentationProperties> charmPresentationTemplateRegistry) {
+  public PresentationPropertiesParser(IXmlTemplateRegistry<GenericPresentationTemplate> templateRegistry) {
     super(templateRegistry);
-    this.charmPresentationParser = new CharmPresentationPropertiesParser(charmPresentationTemplateRegistry);
   }
 
   @Override
@@ -25,17 +24,19 @@ public class PresentationPropertiesParser extends AbstractXmlTemplateParser<Gene
   @Override
   public GenericPresentationTemplate parseTemplate(Element element) throws PersistenceException {
     GenericPresentationTemplate basicTemplate = getBasicTemplate(element);
-    updateCharmPresentation(element, basicTemplate);
+    updateColor(element, basicTemplate);
     return basicTemplate;
   }
 
-  private void updateCharmPresentation(Element element, GenericPresentationTemplate basicTemplate)
-      throws PersistenceException {
-    Element charmPresentationElement = element.element(TAG_CHARM_PRESENTATION);
-    if (charmPresentationElement == null) {
+  private void updateColor(Element parent, GenericPresentationTemplate basicTemplate) throws PersistenceException {
+    Element colorElement = parent.element(TAG_COLOR);
+    if (colorElement == null) {
       return;
     }
-    GenericCharmPresentationProperties properties = charmPresentationParser.parseTemplate(charmPresentationElement);
-    basicTemplate.setCharmPresentationProperties(properties);
+    int red = ElementUtilities.getRequiredIntAttrib(colorElement, "red"); //$NON-NLS-1$
+    int green = ElementUtilities.getRequiredIntAttrib(colorElement, "green"); //$NON-NLS-1$
+    int blue = ElementUtilities.getRequiredIntAttrib(colorElement, "blue"); //$NON-NLS-1$
+    Color color = new Color(red, green, blue);
+    basicTemplate.getCharmPresentationProperties().setColor(color);
   }
 }
