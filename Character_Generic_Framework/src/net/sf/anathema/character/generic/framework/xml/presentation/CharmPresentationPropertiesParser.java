@@ -10,7 +10,6 @@ import java.awt.*;
 
 public class CharmPresentationPropertiesParser extends AbstractXmlTemplateParser<GenericCharmPresentationProperties> {
   private static final String TAG_COLOR = "color"; //$NON-NLS-1$
-  private static final String TAG_POLYGON = "polygon"; //$NON-NLS-1$
 
   public CharmPresentationPropertiesParser(IXmlTemplateRegistry<GenericCharmPresentationProperties> templateRegistry) {
     super(templateRegistry);
@@ -24,18 +23,8 @@ public class CharmPresentationPropertiesParser extends AbstractXmlTemplateParser
   @Override
   public GenericCharmPresentationProperties parseTemplate(Element element) throws PersistenceException {
     GenericCharmPresentationProperties basicTemplate = getBasicTemplate(element);
-    parsePolygonString(element, basicTemplate);
     parseColor(element, basicTemplate);
     return basicTemplate;
-  }
-
-  private void parsePolygonString(Element element, GenericCharmPresentationProperties basicTemplate) {
-    Element polygonElement = element.element(TAG_POLYGON);
-    if (polygonElement == null) {
-      return;
-    }
-    String polygonString = polygonElement.getText();
-    basicTemplate.setPolygonString(polygonString);
   }
 
   private void parseColor(Element parent, GenericCharmPresentationProperties basicTemplate) throws PersistenceException {

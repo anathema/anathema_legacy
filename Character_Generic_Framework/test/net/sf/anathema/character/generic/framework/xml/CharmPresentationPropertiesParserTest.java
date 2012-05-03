@@ -13,7 +13,6 @@ import java.awt.*;
 public class CharmPresentationPropertiesParserTest extends TestCase {
 
   private static final String XML = "<charmPresentation>" //$NON-NLS-1$
-          + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$
           + "<color red=\"111\" green=\"133\" blue=\"255\" />" //$NON-NLS-1$
           + "</charmPresentation>"; //$NON-NLS-1$
   private CharmPresentationPropertiesParser parser;
@@ -30,14 +29,11 @@ public class CharmPresentationPropertiesParserTest extends TestCase {
     return parser.parseTemplate(templateElement);
   }
 
-  public void testParsePolygonString() throws Exception {
+  public void testPolygonIsFixed() throws Exception {
     GenericCharmPresentationProperties presentationProperties = parseXml(XML);
-    assertEquals("157.07742,9.777771", presentationProperties.getNodeFramePolygonString()); //$NON-NLS-1$
-  }
-
-  public void testNoPolygon() throws Exception {
-    GenericCharmPresentationProperties properties = parseXml("<charmPresentation/>"); //$NON-NLS-1$
-    assertNull(properties.getNodeFramePolygonString());
+    assertEquals(
+            "5.5,11.3542 35.3236,11.3542 30.24724,3.5 155.2527,3.5 150.17636,11.3542 180.0,11.3542 180.0,82.64578 150.17636,82.64578 155.2527,90.5 30.24724,90.5 35.3236,82.64578 5.5,82.64578",
+            presentationProperties.getNodeFramePolygonString()); //$NON-NLS-1$
   }
 
   public void testCharmDimensionIsFixed() throws Exception {
