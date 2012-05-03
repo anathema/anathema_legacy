@@ -50,7 +50,6 @@ public class PresentationPropertiesParserTest extends TestCase {
   public void testUpdateCharmPresentationProperties() throws Exception {
     String xml = "<presentation><charmPresentation>" //$NON-NLS-1$
         + "<polygon>157.07742,9.777771 153.65161,19.199997</polygon>" //$NON-NLS-1$
-        + "<charmDimension width=\"190\" height=\"72\"/>+" //$NON-NLS-1$
         + "<gapDimension width=\"25\" height=\"50\"/>" //$NON-NLS-1$
         + "<lineDimension width=\"25\" height=\"72\"/>" //$NON-NLS-1$
         + "</charmPresentation>   </presentation>"; //$NON-NLS-1$

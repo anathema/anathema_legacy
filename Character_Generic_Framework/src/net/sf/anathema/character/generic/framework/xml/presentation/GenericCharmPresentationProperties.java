@@ -10,7 +10,6 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
         ITreePresentationProperties {
 
   private String polygonString;
-  private Dimension charmDimension;
   private Color color;
 
   @Override
@@ -20,7 +19,7 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
 
   @Override
   public Dimension getNodeDimension() {
-    return charmDimension;
+    return new Dimension(180, 90);
   }
 
   @Override
@@ -40,10 +39,6 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
 
   public void setPolygonString(String polygonString) {
     this.polygonString = polygonString;
-  }
-
-  public void setCharmDimension(Dimension dimension) {
-    this.charmDimension = dimension;
   }
 
   public void setColor(Color color) {

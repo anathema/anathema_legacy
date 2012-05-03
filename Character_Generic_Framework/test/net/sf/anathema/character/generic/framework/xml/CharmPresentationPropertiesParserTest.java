@@ -8,14 +8,12 @@ import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 
 public class CharmPresentationPropertiesParserTest extends TestCase {
 
   private static final String XML = "<charmPresentation>" //$NON-NLS-1$
           + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$
-          + "<charmDimension width=\"150\" height=\"75\"/>" //$NON-NLS-1$
           + "<color red=\"111\" green=\"133\" blue=\"255\" />" //$NON-NLS-1$
           + "</charmPresentation>"; //$NON-NLS-1$
   private CharmPresentationPropertiesParser parser;
@@ -42,19 +40,9 @@ public class CharmPresentationPropertiesParserTest extends TestCase {
     assertNull(properties.getNodeFramePolygonString());
   }
 
-  public void testParseCharmDimension() throws Exception {
-    GenericCharmPresentationProperties presentationProperties = parseXml(XML);
-    assertEquals(new Dimension(150, 75), presentationProperties.getNodeDimension());
-  }
-
-  public void testNoCharmDimension() throws Exception {
-    String challengedXml = "<charmPresentation>" //$NON-NLS-1$
-            + "<polygon>157.07742,9.777771</polygon>" //$NON-NLS-1$
-            + "<gapDimension width=\"25\" height=\"50\"/>" //$NON-NLS-1$
-            + "<lineDimension width=\"25\" height=\"75\"/>" //$NON-NLS-1$
-            + "</charmPresentation>"; //$NON-NLS-1$
-    GenericCharmPresentationProperties properties = parseXml(challengedXml);
-    assertNull(properties.getNodeDimension());
+  public void testCharmDimensionIsFixed() throws Exception {
+    GenericCharmPresentationProperties properties = parseXml(XML);
+    assertEquals(new Dimension(180, 90), properties.getNodeDimension());
   }
 
   public void testDefaultGapDimension() throws Exception {
@@ -64,7 +52,7 @@ public class CharmPresentationPropertiesParserTest extends TestCase {
 
   public void testDefaultLineDimension() throws Exception {
     GenericCharmPresentationProperties presentationProperties = parseXml(XML);
-    assertEquals(new Dimension(25, 75), presentationProperties.getVerticalLineDimension());
+    assertEquals(new Dimension(25, 90), presentationProperties.getVerticalLineDimension());
   }
 
   public void testParseXmlWithoutColor() throws Exception {
