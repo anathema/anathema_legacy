@@ -111,8 +111,6 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
     AffineTransform zoom = translate(x, y, scale);
     System.out.println( "movement = " + movement);
     System.out.println( "scale = " + scale);
-    System.out.println( "getProgressivePaint() = " + c.getProgressivePaint());
-    System.out.println( "getDoubleBufferedRendering() = " + c.getDoubleBufferedRendering());
     if( isZoomInRange(current, zoom) ) {
       current.preConcatenate(zoom);
       if(renderImmediately) {
