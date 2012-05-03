@@ -8,7 +8,6 @@ import java.awt.event.MouseWheelListener;
 import java.awt.geom.AffineTransform;
 
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.swing.gvt.InteractorAdapter;
 import org.apache.batik.swing.gvt.JGVTComponent;
@@ -18,7 +17,6 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
   private static final float MAX_ZOOM_OUT_DETERMINANT =  0.50f;  //   50%
   private static final float MAX_ZOOM_IN_DETERMINANT  = 12.00f;  // 1200%
   private static final float PERCENTAGE_INCREMENT     =  0.05f;  //    5%
-  private final IBoundsCalculator calculator;
   private boolean finished = true;
   private int yStart;
   private int xStart;
@@ -27,21 +25,19 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
   private final SvgTreeListening listening;
 
   public MagnifyInteractor(
-      IBoundsCalculator boundsCalculator,
       IAnathemaCanvas canvas,
       SvgTreeListening svgTreeListening,
       Cursor zoomCursor) {
-    this.calculator = boundsCalculator;
     this.canvas     = canvas;
     this.listening  = svgTreeListening;
     this.zoomCursor = zoomCursor;
   }
 
   @Override
-  public boolean startInteraction(InputEvent ie) {
-    int mods = ie.getModifiers();
-    return ie.getID() == MouseEvent.MOUSE_PRESSED && 
-           (mods & InputEvent.BUTTON3_MASK) != 0;
+  public boolean startInteraction(InputEvent event) {
+    int mods = event.getModifiers();
+    return event.getID() == MouseEvent.MOUSE_PRESSED
+           && (mods & InputEvent.BUTTON3_MASK) != 0;
   }
 
   @Override
@@ -50,54 +46,80 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
   }
 
   @Override
-  public void mousePressed(MouseEvent e) {
+  public void mousePressed(MouseEvent event) {
     if (finished) {
       finished = false;
-      yStart = e.getY();
-      xStart = e.getX();
+      yStart = event.getY();
+      xStart = event.getX();
       canvas.setCursorInternal(zoomCursor);
+    } else {
+      JGVTComponent c = (JGVTComponent)event.getSource();
+      c.setPaintingTransform(null);
+      System.out.println( "******** IS THIS EVER CALLED??? ********");
     }
   }
   
   @Override
-  public void mouseReleased(MouseEvent e) {
+  public void mouseReleased(MouseEvent event) {
     finished = true;
+    
+    JGVTComponent c = (JGVTComponent)event.getSource();
+    AffineTransform current = (AffineTransform)c.getRenderingTransform().clone();
+    AffineTransform zoom = c.getPaintingTransform();
+    if( zoom != null ) {
+      //if( isZoomInRange(current, zoom) ) {
+      current.preConcatenate(zoom);
+      c.setRenderingTransform(current);
+      //}
+    }
     listening.resetCursor();
-    calculator.reset();
   }
 
   @Override
   public void mouseDragged(MouseEvent event) {
     int verticalMovement = event.getY() - yStart;
     
-    // minimum of 20 points of movement for the drag event
-    int movement  = Math.max(20, Math.abs(verticalMovement) );
+    // The 10 used here is a bit of a magic number.
+    // It was selected based on testing, to allow for a smooth zoom
+    // Every 10 pixels of drag equals a PERCENTAGE_INCREMENT zoom, up to 100% per action.
+    verticalMovement /= 10;
+    
+    // minimum of 1 increment of movement allowed.
+    verticalMovement = verticalMovement < 0 ? Math.min(-1, verticalMovement) : Math.max(1, verticalMovement);
+    
+    // Force movement to conform to between 1 and 1/PERCENTAGE_INCREMENTS increments
+/*    int percentageTicks = (int)(1/PERCENTAGE_INCREMENT);
+    int movement  = Math.max(Math.abs(verticalMovement), 1 );
+        movement  = Math.min(Math.abs(verticalMovement), percentageTicks );
         movement *= verticalMovement < 0 ? -1 : 1;  // preserve direction after abs()
-        
-    // dividing by 20 to produce one PERCENTAGE_INCREMENT zoom per 20 units of movement.
-    movement /= 20;
-    
-    // 20 is not a magic number, just happened to be produce smooth values during testing.
-    
-    magnify((JGVTComponent)event.getSource(), xStart, yStart, movement);
+  */  
+    magnify((JGVTComponent)event.getSource(), xStart, yStart, verticalMovement, false);
   }
   
   @Override
   public void mouseWheelMoved(MouseWheelEvent event) {
     int wheelClicks = event.getWheelRotation();
     
-    magnify((JGVTComponent)event.getSource(), event.getX(), event.getY(), wheelClicks);
+    magnify((JGVTComponent)event.getSource(), event.getX(), event.getY(), wheelClicks, true);
   }
   
-  private void magnify(JGVTComponent c, int x, int y, int movement) {
+  private void magnify(JGVTComponent c, int x, int y, int movement, boolean renderImmediately) {
+    int percentageTicks = (int)(1/PERCENTAGE_INCREMENT);
+    movement = movement < 0 ? Math.max(-percentageTicks, movement) : Math.min(percentageTicks, movement);
     double scale = Math.max(0.00001, 1 - PERCENTAGE_INCREMENT * movement);
-    AffineTransform current = c.getRenderingTransform();
+    AffineTransform current = (AffineTransform)c.getRenderingTransform().clone();
     AffineTransform zoom = translate(x, y, scale);
-    
-    if( testTransform(current, zoom) ) {
+    System.out.println( "movement = " + movement);
+    System.out.println( "scale = " + scale);
+    System.out.println( "getProgressivePaint() = " + c.getProgressivePaint());
+    System.out.println( "getDoubleBufferedRendering() = " + c.getDoubleBufferedRendering());
+    if( isZoomInRange(current, zoom) ) {
       current.preConcatenate(zoom);
-      c.setRenderingTransform(current);
-      calculator.reset();
+      if(renderImmediately) {
+        c.setRenderingTransform(current);
+      } else {
+        c.setPaintingTransform(zoom);
+      }
     }
   }
   
@@ -109,13 +131,15 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
     return zoom;
   }
   
-  private boolean testTransform(AffineTransform current, AffineTransform zoom) {
-    boolean result = true;
-    AffineTransform clone = (AffineTransform)current.clone();
-    clone.preConcatenate(zoom);
-    if( clone.getDeterminant() < MAX_ZOOM_OUT_DETERMINANT ||
-        clone.getDeterminant() > MAX_ZOOM_IN_DETERMINANT   ) {
-      result = false;
+  private boolean isZoomInRange(AffineTransform current, AffineTransform zoom) {
+    boolean result = false;
+    if(current != null && zoom != null) {
+      AffineTransform clone = (AffineTransform)current.clone();
+      clone.preConcatenate(zoom);
+      if(   clone.getDeterminant() > MAX_ZOOM_OUT_DETERMINANT
+         && clone.getDeterminant() < MAX_ZOOM_IN_DETERMINANT  ) {
+        result = true;
+      }
     }
     return result;
   }
