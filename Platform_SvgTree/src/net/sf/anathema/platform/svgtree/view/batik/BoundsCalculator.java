@@ -19,12 +19,10 @@ public class BoundsCalculator implements IBoundsCalculator {
 
   @Override
   public Rectangle getBounds(SVGLocatable svgElement) {
-    System.out.println( "BoundsCalculator.getBounds(svgElement) = "+ svgElement);
     //below block to protect against exceptions related to special display components
     boolean useStoredContext = false;
     if (svgElement instanceof SVGOMGElement) {
       SVGOMGElement element = (SVGOMGElement) svgElement;
-      System.out.println( "BoundsCalculator.getBounds(element) = "+ element.getLocalName());
       if (element.getSVGContext() == null && savedContext != null) {
         element.setSVGContext(savedContext);
         useStoredContext = true;
