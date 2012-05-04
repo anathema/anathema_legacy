@@ -31,8 +31,10 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected abstract Float[] getMovementColumns();
 
+  protected abstract int getMobilityPenalty();
+
   @Override
-  public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
+  public float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     PdfPTable table = createTable(graphics, session);
     table.setWidthPercentage(100);
     graphics.createSimpleColumn(bounds).withElement(table).encode();
@@ -132,7 +134,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return TableEncodingUtilities.createContentCellTable(BaseColor.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
   }
 
-  private void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
+  protected void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
     Font font = createDefaultFont(graphics);
     final String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
     final Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);

@@ -8,7 +8,6 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 
-import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -25,17 +24,17 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
   protected static float PADDING = 0.3f;
 
   private final IResources resources;
-  private int mobilityPenalty;
 
   public AbstractMovementTableEncoder(IResources resources) {
     this.resources = resources;
   }
 
   protected abstract Float[] getMovementColumns();
+  
+  protected abstract int getMobilityPenalty();
 
   @Override
   public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
-    mobilityPenalty = CharacterStatsModifiers.extractFromCharacter(session.getCharacter()).getMobilityPenalty();
     PdfPTable table = createTable(graphics, session);
     table.setWidthPercentage(100);
     graphics.createSimpleColumn(bounds).withElement(table).encode();
@@ -134,10 +133,6 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
 
   protected final int getPenalty(HealthLevelType level, int painTolerance) {
     return Math.min(0, level.getIntValue() + painTolerance);
-  }
-  
-  protected final int getMobilityPenalty() {
-    return Math.min( 0, mobilityPenalty);
   }
 
   private float[] createColumnWidth() {
