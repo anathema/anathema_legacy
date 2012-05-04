@@ -1,6 +1,8 @@
 package net.sf.anathema.platform.tree.view;
 
+import com.google.common.collect.Lists;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
+import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -11,6 +13,7 @@ import java.awt.Point;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
+import java.util.List;
 
 import static java.awt.Cursor.HAND_CURSOR;
 import static java.awt.Cursor.getPredefinedCursor;
@@ -20,6 +23,8 @@ import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 public class PolygonPanel extends JPanel {
   private AffineTransform transform = new AffineTransform();
   private NodeContainer container = new NodeContainer();
+
+  private List<FlexibleArrow> arrows = Lists.newArrayList();
 
   public PolygonPanel() {
     setBackground(Color.WHITE);
@@ -34,6 +39,9 @@ public class PolygonPanel extends JPanel {
     for (FilledPolygon polygon : container) {
       polygon.paint(graphics);
     }
+    for (FlexibleArrow arrow : arrows) {
+      arrow.paint(graphics);
+    }
   }
 
   public void addPolygon(FilledPolygon polygon) {
@@ -47,17 +55,8 @@ public class PolygonPanel extends JPanel {
   }
 
   public void resetTransformation() {
-    reset();
+    transform.setToIdentity();
     repaint();
-  }
-
-  private void reset() {
-    try {
-      AffineTransform inverse = transform.createInverse();
-      transform.concatenate(inverse);
-    } catch (NoninvertibleTransformException e) {
-      throw new RuntimeException("Could not reset transformation.", e);
-    }
   }
 
   public void changeCursor(Point point) {
@@ -76,6 +75,10 @@ public class PolygonPanel extends JPanel {
     } catch (NoninvertibleTransformException e1) {
       throw new RuntimeException(e1);
     }
+  }
+
+  public void addArrow(FlexibleArrow flexibleArrow) {
+    arrows.add(flexibleArrow);
   }
 
   private class ToggleAndRepaint implements Closure {
