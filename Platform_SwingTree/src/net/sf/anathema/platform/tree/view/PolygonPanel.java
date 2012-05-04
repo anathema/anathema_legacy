@@ -1,8 +1,8 @@
 package net.sf.anathema.platform.tree.view;
 
-import com.google.common.collect.Lists;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
+import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -15,6 +15,7 @@ import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static java.awt.Cursor.HAND_CURSOR;
 import static java.awt.Cursor.getPredefinedCursor;
 import static java.awt.RenderingHints.KEY_ANTIALIASING;
@@ -23,8 +24,7 @@ import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 public class PolygonPanel extends JPanel {
   private AffineTransform transform = new AffineTransform();
   private NodeContainer container = new NodeContainer();
-
-  private List<FlexibleArrow> arrows = Lists.newArrayList();
+  private List<GraphicsElement> elements = newArrayList();
 
   public PolygonPanel() {
     setBackground(Color.WHITE);
@@ -36,16 +36,18 @@ public class PolygonPanel extends JPanel {
     Graphics2D graphics = (Graphics2D) g;
     graphics.transform(transform);
     graphics.setRenderingHint(KEY_ANTIALIASING, VALUE_ANTIALIAS_ON);
-    for (FilledPolygon polygon : container) {
+    for (GraphicsElement polygon : elements) {
       polygon.paint(graphics);
-    }
-    for (FlexibleArrow arrow : arrows) {
-      arrow.paint(graphics);
     }
   }
 
   public void addPolygon(FilledPolygon polygon) {
     container.add(polygon);
+    elements.add(polygon);
+  }
+
+  public void addArrow(FlexibleArrow flexibleArrow) {
+    elements.add(flexibleArrow);
   }
 
   public void scale(int unitsToScroll) {
@@ -75,10 +77,6 @@ public class PolygonPanel extends JPanel {
     } catch (NoninvertibleTransformException e1) {
       throw new RuntimeException(e1);
     }
-  }
-
-  public void addArrow(FlexibleArrow flexibleArrow) {
-    arrows.add(flexibleArrow);
   }
 
   private class ToggleAndRepaint implements Closure {
