@@ -16,7 +16,7 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
   
   private static final float MAX_ZOOM_OUT_DETERMINANT =  0.50f;  //   50%
   private static final float MAX_ZOOM_IN_DETERMINANT  = 12.00f;  // 1200%
-  private static final float PERCENTAGE_INCREMENT     =  0.05f;  //    5%
+  private static final float PERCENTAGE_INCREMENT     =  0.05f;  //    5% used for mousewheel zoom only
   private boolean finished = true;
   private int yStart;
   private int xStart;
@@ -31,6 +31,7 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
     this.canvas     = canvas;
     this.listening  = svgTreeListening;
     this.zoomCursor = zoomCursor;
+    zoomDeterminant = new AffineTransform();
   }
 
   @Override
@@ -54,7 +55,7 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
       canvas.setCursorInternal(zoomCursor);
     } else {
       JGVTComponent c = (JGVTComponent)event.getSource();
-      c.setPaintingTransform(null);
+      //c.setPaintingTransform(null);
       System.out.println( "******** IS THIS EVER CALLED??? ********");
     }
   }
@@ -62,66 +63,70 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
   @Override
   public void mouseReleased(MouseEvent event) {
     finished = true;
+    listening.resetCursor();
     
     JGVTComponent c = (JGVTComponent)event.getSource();
-    AffineTransform current = (AffineTransform)c.getRenderingTransform().clone();
-    AffineTransform zoom = c.getPaintingTransform();
-    if( zoom != null ) {
-      //if( isZoomInRange(current, zoom) ) {
-      current.preConcatenate(zoom);
-      c.setRenderingTransform(current);
-      //}
+    AffineTransform currentTransform = c.getRenderingTransform();
+    AffineTransform zoomTransform    = c.getPaintingTransform();
+    AffineTransform finalTransform   = attemptTransform(currentTransform, zoomTransform); 
+
+    if( finalTransform != null ) {
+      c.setRenderingTransform(finalTransform);
     }
-    listening.resetCursor();
   }
 
   @Override
   public void mouseDragged(MouseEvent event) {
-    int verticalMovement = event.getY() - yStart;
+    int verticalMovement = yStart - event.getY();
     
-    // The 10 used here is a bit of a magic number.
-    // It was selected based on testing, to allow for a smooth zoom
-    // Every 10 pixels of drag equals a PERCENTAGE_INCREMENT zoom, up to 100% per action.
-    verticalMovement /= 10;
+    verticalMovement = verticalMovement < 0 ? Math.min(-15, verticalMovement) : Math.max(15, verticalMovement);
     
-    // minimum of 1 increment of movement allowed.
-    verticalMovement = verticalMovement < 0 ? Math.min(-1, verticalMovement) : Math.max(1, verticalMovement);
+    // The 15 used here is a bit of a magic number.
+    // We make 15 the minimum value for drag distance.
+    // Every 15 units dragged equals 100% zoom.
     
-    // Force movement to conform to between 1 and 1/PERCENTAGE_INCREMENTS increments
-/*    int percentageTicks = (int)(1/PERCENTAGE_INCREMENT);
-    int movement  = Math.max(Math.abs(verticalMovement), 1 );
-        movement  = Math.min(Math.abs(verticalMovement), percentageTicks );
-        movement *= verticalMovement < 0 ? -1 : 1;  // preserve direction after abs()
-  */  
-    magnify((JGVTComponent)event.getSource(), xStart, yStart, verticalMovement, false);
+    System.out.println( "verticalMovement = " + verticalMovement);
+    
+    double scale = verticalMovement / 15.0; 
+    scale = scale < 0 ? -1/scale : scale;
+
+    magnifyView((JGVTComponent)event.getSource(), xStart, yStart, scale, false);
   }
   
   @Override
   public void mouseWheelMoved(MouseWheelEvent event) {
     int wheelClicks = event.getWheelRotation();
+    int percentageTicks = (int)(1/PERCENTAGE_INCREMENT);
+
+    // max movement is capped at 1/PERCENTAGE_INCREMENTS
+    int movement = wheelClicks < 0 ? Math.max(wheelClicks, -percentageTicks)
+                                   : Math.min(wheelClicks,  percentageTicks);
     
-    magnify((JGVTComponent)event.getSource(), event.getX(), event.getY(), wheelClicks, true);
+    System.out.println( "wheelClicks = " + movement);
+    
+    // ensuring scale does not go to zero or negative
+    double scale = Math.max(0.00001, 1 - PERCENTAGE_INCREMENT * movement);
+
+    magnifyView((JGVTComponent)event.getSource(), event.getX(), event.getY(), scale, true);
   }
   
-  private void magnify(JGVTComponent c, int x, int y, int movement, boolean renderImmediately) {
-    int percentageTicks = (int)(1/PERCENTAGE_INCREMENT);
-    movement = movement < 0 ? Math.max(-percentageTicks, movement) : Math.min(percentageTicks, movement);
-    double scale = Math.max(0.00001, 1 - PERCENTAGE_INCREMENT * movement);
-    AffineTransform current = (AffineTransform)c.getRenderingTransform().clone();
-    AffineTransform zoom = translate(x, y, scale);
-    System.out.println( "movement = " + movement);
+  private void magnifyView(JGVTComponent c, int x, int y, double scale, boolean renderImmediately) {
+    
+    AffineTransform currentTransform = c.getRenderingTransform();
+    AffineTransform zoomTransform    = createZoomTransform(x, y, scale);
+    AffineTransform finalTransform   = attemptTransform(currentTransform, zoomTransform); 
     System.out.println( "scale = " + scale);
-    if( isZoomInRange(current, zoom) ) {
-      current.preConcatenate(zoom);
+
+    if( finalTransform != null ) {
       if(renderImmediately) {
-        c.setRenderingTransform(current);
+        c.setRenderingTransform(finalTransform);
       } else {
-        c.setPaintingTransform(zoom);
+        c.setPaintingTransform(zoomTransform);
       }
     }
   }
   
-  private AffineTransform translate(int x, int y, double scale) {
+  private AffineTransform createZoomTransform(int x, int y, double scale) {
     AffineTransform zoom = new AffineTransform();
     zoom.translate(x, y);
     zoom.scale(scale, scale);
@@ -129,14 +134,15 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
     return zoom;
   }
   
-  private boolean isZoomInRange(AffineTransform current, AffineTransform zoom) {
-    boolean result = false;
+  // returns null if the transform is out of zoom range
+  private AffineTransform attemptTransform(AffineTransform current, AffineTransform zoom) {
+    AffineTransform result = null;
     if(current != null && zoom != null) {
       AffineTransform clone = (AffineTransform)current.clone();
       clone.preConcatenate(zoom);
       if(   clone.getDeterminant() > MAX_ZOOM_OUT_DETERMINANT
          && clone.getDeterminant() < MAX_ZOOM_IN_DETERMINANT  ) {
-        result = true;
+        result = clone;
       }
     }
     return result;
