@@ -11,13 +11,9 @@ public interface ILayer {
 
   public void setFollowUp(ILayer layer);
 
-  public ILayer getNextLayer();
-
   public void setNodeOnNextFreePosition(IVisualizableNode node);
 
   public void addNodesToXml(Element element);
-
-  public void setNodePositionWithoutChecking(IVisualizableNode node, int position);
 
   public void positionNodes();
 
@@ -30,8 +26,6 @@ public interface ILayer {
   public int getWidth();
 
   public void unrollHorizontalMetanodes();
-  
-  public void forceShift(int shift);
 
   public void shiftRight(int requiredShift);
 

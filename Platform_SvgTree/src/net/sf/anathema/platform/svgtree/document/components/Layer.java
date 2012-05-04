@@ -22,10 +22,6 @@ public class Layer implements ILayer {
     this.yPosition = yPosition;
   }
 
-  public Dimension getGapDimension() {
-    return new Dimension(gapDimension);
-  }
-
   @Override
   public void setPreviousLayer(ILayer previousLayer) {
     this.previousLayer = previousLayer;
@@ -107,11 +103,10 @@ public class Layer implements ILayer {
     boolean sameLeafGroup = previousNode.isOfSameLeafGroup(node);
     Integer currentNodeLeftSide;
     Integer previousNodeRightSide;
-    IVisualizableNode[] sharedChildren = null;
     if (sameLeafGroup) {
       previousNodeRightSide = previousNode.getRightSide();
       currentNodeLeftSide = node.getLeftSide();
-      sharedChildren = node.getSharedChildren(previousNode);
+      IVisualizableNode[] sharedChildren = node.getSharedChildren(previousNode);
       int requiredShift = previousNodeRightSide + gapDimension.width - currentNodeLeftSide;
       if (requiredShift <= 0) {
         return;
@@ -138,11 +133,6 @@ public class Layer implements ILayer {
       node.shiftRight(leftSideOverlap);
       nextLayer.shiftRight(leftSideOverlap);
     }
-  }
-
-  @Override
-  public void setNodePositionWithoutChecking(IVisualizableNode node, int position) {
-    node.setPosition(position);
   }
 
   @Override
@@ -252,11 +242,6 @@ public class Layer implements ILayer {
   }
 
   @Override
-  public ILayer getNextLayer() {
-    return nextLayer;
-  }
-
-  @Override
   public void addNodesToXml(Element element) {
     for (IVisualizableNode node : nodes) {
       node.toXML(element);
@@ -355,13 +340,6 @@ public class Layer implements ILayer {
           // Nothing to do
         }
       });
-    }
-  }
-
-  @Override
-  public void forceShift(int shift) {
-    for (IVisualizableNode node : nodes) {
-      node.setPosition(node.getPosition() + shift);
     }
   }
 
