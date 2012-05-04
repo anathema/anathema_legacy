@@ -11,7 +11,7 @@ import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlexibleArrow {
+public class FlexibleArrow implements GraphicsElement {
   private static final int RADIUS = 6;
   private static final int DIAMETER = RADIUS * 2;
   private final List<Point> points = new ArrayList<Point>();
@@ -20,6 +20,7 @@ public class FlexibleArrow {
     points.add(new Point(x, y));
   }
 
+  @Override
   public void paint(Graphics2D graphics) {
     int[] xCoordinates = collectXCoordinates();
     int[] yCoordinates = collectYCoordinates();

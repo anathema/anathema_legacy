@@ -18,8 +18,8 @@ public class NodeContainerTest {
 
   @Test
   public void iteratesOverAll() throws Exception {
-    FilledPolygon firstPolygon = PolygonMother.any();
-    FilledPolygon secondPolygon = PolygonMother.any();
+    FilledPolygon firstPolygon = mock(FilledPolygon.class);
+    FilledPolygon secondPolygon = mock(FilledPolygon.class);
     container.add(firstPolygon);
     container.add(secondPolygon);
     assertThat(Iterables.contains(container, firstPolygon), is(true));

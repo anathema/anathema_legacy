@@ -6,10 +6,11 @@ import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
-public class FilledPolygon {
+public class FilledPolygon implements GraphicsElement {
   private final Polygon polygon = new Polygon();
   private Color fill = Color.YELLOW;
 
+  @Override
   public void paint(Graphics2D graphics) {
     new ShapeFiller(polygon, fill).fill(graphics);
     new ShapeDrawer(polygon).draw(graphics);
