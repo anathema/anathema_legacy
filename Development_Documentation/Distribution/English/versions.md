@@ -21,9 +21,9 @@ Please use the custom data facility introduced in v4.1.0 in its stead, placing y
 * [Curtis Tasker] Mousewheel Zoom levels on Charm Cascades been smoothed out. (It will zoom less per rotating "click" of your wheel)
 * [Curtis Tasker] Zoom-In on Charm Cascades now has a cap, and the existing cap on Zoom-Out has been enlarged.
 * [Curtis Tasker] There is now help text for the charm cascades, detailing how to pan, zoom, and reset the view.
+* [Curtis Tasker] Movement speed calculation now takes into account mobility penalty.
 * [Jesse Belanger] Charm descriptions for Scroll of the Monk, Return of the Scarlet Empress, and Spirits are now incorporated.
 * All canonical Yozis are supported as possible patrons for Green Sun Princes. Obviously, they do not have any charms defined beyond the generics, but you are free to hang your favorite custom charm set off of them.
-* [Curtis Tasker] Movement speeds now take into account Mobility Penalty.
 
 ### Bugfixes
 * [Curtis Tasker] Dodge DV takes into account mobility penalties from shields.
