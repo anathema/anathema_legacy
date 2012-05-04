@@ -49,7 +49,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
   private PdfPTable createTable(SheetGraphics graphics, ReportSession session) throws DocumentException {
     try {
       PdfContentByte directContent = graphics.getDirectContent();
-      Image activeTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, BaseColor.BLACK));
+      Image activeTemplate  = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, BaseColor.BLACK));
       Image passiveTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, BaseColor.LIGHT_GRAY));
       float[] columnWidth = createColumnWidth();
       PdfPTable table = new PdfPTable(columnWidth);

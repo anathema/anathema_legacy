@@ -34,7 +34,7 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
   protected abstract int getMobilityPenalty();
 
   @Override
-  public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
+  public float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     PdfPTable table = createTable(graphics, session);
     table.setWidthPercentage(100);
     graphics.createSimpleColumn(bounds).withElement(table).encode();
