@@ -18,11 +18,11 @@ import org.w3c.dom.svg.SVGSVGElement;
 public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
 
   private final IAnathemaCanvas canvas;
-  private final IBoundsCalculator boundsCalculator;
+  private final IBoundsCalculator calculator;
 
   public SVGSpecialNodeViewManager(AnathemaCanvas canvas, IBoundsCalculator calculator) {
     this.canvas = canvas;
-    this.boundsCalculator = calculator;
+    this.calculator = calculator;
   }
 
   @Override
@@ -32,7 +32,7 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
       return;
     }
     SVGOMDocument document = (SVGOMDocument) canvas.getSVGDocument();
-    Element viewElement = specialView.initGui(document, boundsCalculator);
+    Element viewElement = specialView.initGui(document, calculator);
     DomUtilities.setAttribute(viewElement, ISVGCascadeXMLConstants.ATTRIB_IS_CONTROL, SVGConstants.SVG_TRUE_VALUE);
     Rectangle bounds = getGroupBounds(specialView.getNodeId());
     if (bounds == null) {
@@ -54,6 +54,6 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
     if (svgElement == null) {
       return null;
     }
-    return boundsCalculator.getBounds(svgElement);
+    return calculator.getBounds(svgElement);
   }
 }
