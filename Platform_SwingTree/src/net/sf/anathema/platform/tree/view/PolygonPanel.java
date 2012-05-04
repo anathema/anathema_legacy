@@ -3,6 +3,8 @@ package net.sf.anathema.platform.tree.view;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
+import net.sf.anathema.platform.tree.view.interaction.Closure;
+import net.sf.anathema.platform.tree.view.interaction.NodeContainer;
 
 import javax.swing.JPanel;
 import java.awt.Color;

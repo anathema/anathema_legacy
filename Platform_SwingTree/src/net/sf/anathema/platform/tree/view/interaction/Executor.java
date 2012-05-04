@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.tree.view;
+package net.sf.anathema.platform.tree.view.interaction;
 
 public interface Executor {
   Executor perform(Closure closure);

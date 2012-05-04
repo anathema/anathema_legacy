@@ -116,10 +116,6 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     charmTreeView.addDocumentLoadedListener(documentListener);
   }
 
-  public final void dispose() {
-    charmTreeView.dispose();
-  }
-
   protected void unselect() {
     typeComboBox.setSelectedObject(null);
     groupComboBox.setSelectedObject(null);

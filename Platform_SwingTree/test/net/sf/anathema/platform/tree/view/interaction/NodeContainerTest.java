@@ -1,30 +1,17 @@
-package net.sf.anathema.platform.tree.view;
+package net.sf.anathema.platform.tree.view.interaction;
 
-import com.google.common.collect.Iterables;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.PolygonMother;
 import org.junit.Test;
 
 import java.awt.Point;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class NodeContainerTest {
 
   NodeContainer container = new NodeContainer();
-
-  @Test
-  public void iteratesOverAll() throws Exception {
-    FilledPolygon firstPolygon = mock(FilledPolygon.class);
-    FilledPolygon secondPolygon = mock(FilledPolygon.class);
-    container.add(firstPolygon);
-    container.add(secondPolygon);
-    assertThat(Iterables.contains(container, firstPolygon), is(true));
-    assertThat(Iterables.contains(container, secondPolygon), is(true));
-  }
 
   @Test
   public void actsOnPolygonAtPoint() throws Exception {

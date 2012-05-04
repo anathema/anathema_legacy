@@ -1,24 +1,17 @@
-package net.sf.anathema.platform.tree.view;
+package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 
-import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class NodeContainer implements Iterable<FilledPolygon> {
+public class NodeContainer {
 
   private List<FilledPolygon> polygons = new ArrayList<FilledPolygon>();
 
   public void add(FilledPolygon polygon) {
     polygons.add(polygon);
-  }
-
-  @Override
-  public Iterator<FilledPolygon> iterator() {
-    return polygons.iterator();
   }
 
   public Executor onPolygonAtPoint(Point2D point) {
