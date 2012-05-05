@@ -2,13 +2,13 @@ package net.sf.anathema.platform.svgtree.document.visualizer;
 
 import java.awt.Dimension;
 
-import org.dom4j.Element;
-
-public interface IVisualizedGraph {
-
-  Element getCascadeElement();
+public interface IVisualizedGraph<G> {
 
   Dimension getDimension();
 
   boolean isSingleNode();
+
+  void translateBy(double x, double y);
+
+  void addTo(G cascade);
 }
