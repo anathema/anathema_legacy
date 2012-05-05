@@ -16,7 +16,7 @@ public class GenericCascadeFactory<CASCADE> implements CascadeFactory<CASCADE> {
 
   @Override
   public CASCADE createCascade(IRegularNode[] nodes, ITreePresentationProperties properties) {
-    VisualizerFactory visualizerFactory = creationStrategy.getVisualizer(properties);
+    VisualizerFactory visualizerFactory = new GenericVisualizerFactory(properties, creationStrategy.getFactoryForVisualizedGraphs(properties));
     List<IVisualizedGraph> visualizedGraphs = new NodeToGraphConverter(nodes, visualizerFactory).visualizeGraphs();
     CascadeBuilder<?, CASCADE> cascadeBuilder = creationStrategy.createCascadeBuilder(properties);
     cascadeBuilder.initialize();

@@ -8,7 +8,7 @@ import net.sf.anathema.platform.svgtree.document.components.Layer;
 
 public class SingleNodeVisualizer extends AbstractCascadeVisualizer {
 
-  public SingleNodeVisualizer(ITreePresentationProperties properties, LayeredGraph graph, VisualizedGraphFactory factory) {
+  public SingleNodeVisualizer(LayeredGraph graph, ITreePresentationProperties properties, VisualizedGraphFactory factory) {
     super(properties, graph, factory);
   }
 

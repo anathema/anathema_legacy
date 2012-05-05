@@ -6,16 +6,16 @@ import net.sf.anathema.platform.svgtree.document.visualizer.ICascadeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.document.visualizer.InvertedTreeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.SingleNodeVisualizer;
-import net.sf.anathema.platform.svgtree.document.visualizer.SvgGraphFactory;
 import net.sf.anathema.platform.svgtree.document.visualizer.TreeVisualizer;
+import net.sf.anathema.platform.svgtree.document.visualizer.VisualizedGraphFactory;
 
-public class SvgVisualizerFactory implements VisualizerFactory {
+public class GenericVisualizerFactory implements VisualizerFactory {
   private final ITreePresentationProperties properties;
-  private final SvgGraphFactory factory;
+  private final VisualizedGraphFactory factory;
 
-  public SvgVisualizerFactory(ITreePresentationProperties properties) {
+  public GenericVisualizerFactory(ITreePresentationProperties properties, VisualizedGraphFactory graphFactory) {
     this.properties = properties;
-    this.factory = new SvgGraphFactory(this.properties);
+    this.factory = graphFactory;
   }
 
   @Override
@@ -35,6 +35,6 @@ public class SvgVisualizerFactory implements VisualizerFactory {
 
   @Override
   public ICascadeVisualizer createForSingle(IProperHierarchicalGraph graph) {
-    return new SingleNodeVisualizer(properties, graph, factory);
+    return new SingleNodeVisualizer(graph, properties, factory);
   }
 }
