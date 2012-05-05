@@ -6,8 +6,8 @@ import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 
 public class TreeVisualizer extends AbstractTreeVisualizer {
 
-  public TreeVisualizer(LayeredGraph graph, ITreePresentationProperties properties) {
-    super(properties, graph);
+  public TreeVisualizer(LayeredGraph graph, ITreePresentationProperties properties, VisualizedGraphFactory factory) {
+    super(properties, graph, factory);
   }
 
   @Override

@@ -70,14 +70,15 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
   // to each other as possible without overlapping their edges
   // Instead of giving the entire map as argument, just give the relevant leaves?
 
-  public BottomUpGraphVisualizer(LayeredGraph graph, ITreePresentationProperties properties) {
-    super(properties, graph);
+  public BottomUpGraphVisualizer(LayeredGraph graph, ITreePresentationProperties properties,
+                                 VisualizedGraphFactory factory) {
+    super(properties, graph, factory);
   }
 
   @Override
   public IVisualizedGraph buildTree() {
-    SimplifiedButtonUpGraphVisualizer simplifiedVisualizer = new SimplifiedButtonUpGraphVisualizer(getGraph(),
-            getProperties());
+    SimplifiedBottomUpGraphVisualizer simplifiedVisualizer = new SimplifiedBottomUpGraphVisualizer(getGraph(),
+            getProperties(), getGraphFactory());
     if (simplifiedVisualizer.isApplicable()) {
       return simplifiedVisualizer.buildTree();
     }
@@ -101,7 +102,7 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     separateOverlappingNodes(layers);
     removeWhiteSpace(layers);
     centerTrailingSingleNodePath(layers);
-    return new SvgGraphFactory(getProperties()).create(layers);
+    return getGraphFactory().create(layers);
   }
 
   private void centerTrailingSingleNodePath(ILayer[] layers) {
