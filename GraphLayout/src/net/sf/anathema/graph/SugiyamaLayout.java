@@ -5,7 +5,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.sf.anathema.graph.graph.IGraphType;
 import net.sf.anathema.graph.graph.IGraphTypeVisitor;
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.graph.hierarchy.HierarchyBuilder;
@@ -35,22 +34,22 @@ public class SugiyamaLayout {
     for (final IProperHierarchicalGraph graph : separatedGraphs) {
       graph.getType().accept(new IGraphTypeVisitor() {
         @Override
-        public void visitDirectedGraph(final IGraphType visitedType) {
+        public void visitDirectedGraph() {
           orderedGraphs.add(createOrderedGraph(graph));
         }
 
         @Override
-        public void visitInvertedTree(final IGraphType visitedType) {
+        public void visitInvertedTree() {
           orderedGraphs.add(graph);
         }
 
         @Override
-        public void visitTree(final IGraphType visitedType) {
+        public void visitTree() {
           orderedGraphs.add(graph);
         }
 
         @Override
-        public void visitSingle(final IGraphType visitedType) {
+        public void visitSingle() {
           orderedGraphs.add(graph);
         }
       });

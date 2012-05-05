@@ -6,9 +6,9 @@ import org.dom4j.Element;
 
 public interface IVisualizedGraph {
 
-  public Element getCascadeElement();
+  Element getCascadeElement();
 
-  public Dimension getDimension();
+  Dimension getDimension();
 
-  public boolean isSingleNode();
+  boolean isSingleNode();
 }
