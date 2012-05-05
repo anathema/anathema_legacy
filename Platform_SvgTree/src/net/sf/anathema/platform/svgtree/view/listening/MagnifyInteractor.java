@@ -31,7 +31,6 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
     this.canvas     = canvas;
     this.listening  = svgTreeListening;
     this.zoomCursor = zoomCursor;
-    zoomDeterminant = new AffineTransform();
   }
 
   @Override
@@ -53,10 +52,6 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
       yStart = event.getY();
       xStart = event.getX();
       canvas.setCursorInternal(zoomCursor);
-    } else {
-      JGVTComponent c = (JGVTComponent)event.getSource();
-      //c.setPaintingTransform(null);
-      System.out.println( "******** IS THIS EVER CALLED??? ********");
     }
   }
   
@@ -79,13 +74,11 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
   public void mouseDragged(MouseEvent event) {
     int verticalMovement = yStart - event.getY();
     
-    verticalMovement = verticalMovement < 0 ? Math.min(-15, verticalMovement) : Math.max(15, verticalMovement);
-    
     // The 15 used here is a bit of a magic number.
     // We make 15 the minimum value for drag distance.
     // Every 15 units dragged equals 100% zoom.
     
-    System.out.println( "verticalMovement = " + verticalMovement);
+    verticalMovement = verticalMovement < 0 ? Math.min(-15, verticalMovement) : Math.max(15, verticalMovement);
     
     double scale = verticalMovement / 15.0; 
     scale = scale < 0 ? -1/scale : scale;
@@ -102,8 +95,6 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
     int movement = wheelClicks < 0 ? Math.max(wheelClicks, -percentageTicks)
                                    : Math.min(wheelClicks,  percentageTicks);
     
-    System.out.println( "wheelClicks = " + movement);
-    
     // ensuring scale does not go to zero or negative
     double scale = Math.max(0.00001, 1 - PERCENTAGE_INCREMENT * movement);
 
@@ -115,7 +106,6 @@ public class MagnifyInteractor extends InteractorAdapter implements MouseWheelLi
     AffineTransform currentTransform = c.getRenderingTransform();
     AffineTransform zoomTransform    = createZoomTransform(x, y, scale);
     AffineTransform finalTransform   = attemptTransform(currentTransform, zoomTransform); 
-    System.out.println( "scale = " + scale);
 
     if( finalTransform != null ) {
       if(renderImmediately) {
