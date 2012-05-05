@@ -16,13 +16,15 @@ import net.sf.anathema.platform.svgtree.document.SvgCascadeStrategy;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ITreeView;
 import net.sf.anathema.platform.svgtree.view.SvgTreeView;
+import net.sf.anathema.platform.tree.view.SwingTreeView;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
@@ -34,9 +36,11 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   private IChangeableJComboBox<IIdentificate> groupComboBox;
   private IChangeableJComboBox<IIdentificate> typeComboBox;
   private final ISvgTreeView charmTreeView;
-    
+  private final ITreeView treeView;
+
   public AbstractCascadeSelectionView(ISvgTreeViewProperties treeProperties) {
     this.charmTreeView = new SvgTreeView(treeProperties);
+    this.treeView = new SwingTreeView();
   }
 
   @Override
@@ -66,11 +70,8 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   @Override
-  public void addCharmGroupSelector(
-      String title,
-      ListCellRenderer renderer,
-      final ICharmGroupChangeListener selectionListener,
-      Dimension preferredSize) {
+  public void addCharmGroupSelector(String title, ListCellRenderer renderer,
+                                    final ICharmGroupChangeListener selectionListener, Dimension preferredSize) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
     groupComboBox = new ChangeableJComboBox<IIdentificate>(null, false);
@@ -89,42 +90,49 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
 
   @Override
   public void addCharmFilterButton(SmartAction action, String titleText, String buttonText) {
-	  JPanel buttonPanel = new JPanel();
-	  JButton filterButton = new JButton();
-	  filterButton.setAction(action);
-	  filterButton.setText(buttonText);
-	  buttonPanel.add(filterButton);
-	  
-	  TitledBorder title;
-	  title = BorderFactory.createTitledBorder(titleText);
-	  buttonPanel.setBorder(title);
-	  
-	  getSelectionComponent().add(buttonPanel);
+    JPanel buttonPanel = new JPanel();
+    JButton filterButton = new JButton();
+    filterButton.setAction(action);
+    filterButton.setText(buttonText);
+    buttonPanel.add(filterButton);
+
+    TitledBorder title;
+    title = BorderFactory.createTitledBorder(titleText);
+    buttonPanel.setBorder(title);
+
+    getSelectionComponent().add(buttonPanel);
   }
-	
-	@Override
-	public void addCharmCascadeHelp(String helpText) {
-		JLabel help = new JLabel(helpText);
-		getSelectionComponent().add( help, GridDialogLayoutData.FILL_HORIZONTAL );
-		
-	}
+
+  @Override
+  public void addCharmCascadeHelp(String helpText) {
+    JLabel help = new JLabel(helpText);
+    getSelectionComponent().add(help, GridDialogLayoutData.FILL_HORIZONTAL);
+
+  }
 
   protected final JComponent getSelectionComponent() {
     return selectionPanel;
   }
 
-  protected final ISvgTreeView getCharmTreeView() {
+  protected final ITreeView getCharmTreeView() {
+    //return charmTreeView;
+    return treeView;
+  }
+
+  protected ISvgTreeView getSpecialCharmTreeView() {
     return charmTreeView;
   }
 
   @Override
   public CharmTreeRenderer getCharmTreeRenderer() {
     return GenericCascadeRenderer.CreateFor(charmTreeView, new GenericCascadeFactory(new SvgCascadeStrategy()));
+    //return GenericCascadeRenderer.CreateFor(treeView, new GenericCascadeFactory(new SwingCascadeStrategy()));
   }
 
   @Override
   public final void addCascadeLoadedListener(CascadeLoadedListener documentListener) {
     charmTreeView.addCascadeLoadedListener(documentListener);
+    //treeView.addCascadeLoadedListener(documentListener);
   }
 
   protected void unselect() {

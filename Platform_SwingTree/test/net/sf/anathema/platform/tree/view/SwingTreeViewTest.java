@@ -19,7 +19,9 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class SwingTreeViewTest {
 
@@ -108,5 +110,27 @@ public class SwingTreeViewTest {
     ArgumentCaptor<NodeInteractionListener> captor = ArgumentCaptor.forClass(NodeInteractionListener.class);
     verify(oldCascade).addInteractionListener(captor.capture());
     verify(oldCascade).removeInteractionListener(captor.getValue());
+  }
+
+  @Test
+  public void isEmptyAfterClear() throws Exception {
+    swingTreeView.clear();
+    verify(panel).clear();
+  }
+
+  @Test
+  public void removesListenersOnClear() throws Exception {
+    swingTreeView.loadCascade(cascade, true);
+    swingTreeView.clear();
+    verify(cascade).removeInteractionListener(isA(NodeInteractionListener.class));
+  }
+
+  @Test
+  public void forgetsCascadeOnClear() throws Exception {
+    swingTreeView.loadCascade(cascade, true);
+    swingTreeView.clear();
+    reset(cascade);
+    swingTreeView.setNodeAlpha("X", 124);
+    verifyZeroInteractions(cascade);
   }
 }

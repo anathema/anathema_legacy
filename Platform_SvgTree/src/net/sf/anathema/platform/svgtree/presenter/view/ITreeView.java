@@ -17,4 +17,6 @@ public interface ITreeView<G> extends IView, IDisposable {
   void setCanvasBackground(Color color);
 
   void loadCascade(G cascade, boolean resetView) throws CascadeLoadException;
+
+  void clear();
 }

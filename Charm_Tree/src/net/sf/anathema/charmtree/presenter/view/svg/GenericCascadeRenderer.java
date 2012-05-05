@@ -29,7 +29,7 @@ public class GenericCascadeRenderer<G> implements CharmTreeRenderer {
 
   @Override
   public void clearView() {
-    loadCascade(null, true);
+    treeView.clear();
   }
 
   private void loadCascade(G cascade, boolean resetView) {

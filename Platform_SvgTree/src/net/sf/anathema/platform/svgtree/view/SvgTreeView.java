@@ -5,13 +5,12 @@ import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
-import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.DomUtilities;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.view.listening.SvgTreeListening;
@@ -54,12 +53,10 @@ public class SvgTreeView implements ISvgTreeView {
   private final ISvgTreeViewProperties properties;
   private final SvgTreeListening listening;
   private final SVGSpecialNodeViewManager manager;
-  private final IBoundsCalculator calculator;
 
   public SvgTreeView(ISvgTreeViewProperties properties) {
     this.properties = properties;
-    this.calculator = new BoundsCalculator();
-    this.manager = new SVGSpecialNodeViewManager(canvas, calculator);
+    this.manager = new SVGSpecialNodeViewManager(canvas, new BoundsCalculator());
     this.listening = new SvgTreeListening(canvas, properties);
     addCascadeLoadedListener(new CascadeLoadedListener() {
       @Override
@@ -134,6 +131,11 @@ public class SvgTreeView implements ISvgTreeView {
         }
       );
     }
+  }
+
+  @Override
+  public void clear() {
+    loadCascade(null, true);
   }
 
   private SVGDocument createSvgDocument(org.dom4j.Document dom4jDocument) {
