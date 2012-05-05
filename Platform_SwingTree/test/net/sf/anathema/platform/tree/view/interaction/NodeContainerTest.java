@@ -22,7 +22,7 @@ public class NodeContainerTest {
     InteractiveGraphicsElement polygon = PolygonMother.squareAtOriginWithLength2();
     container.add(polygon);
     Closure closure = mock(Closure.class);
-    container.onPolygonAtPoint(new Point(1, 1)).perform(closure);
+    container.onElementAtPoint(new Point(1, 1)).perform(closure);
     verify(closure).execute(polygon);
   }
 
@@ -32,7 +32,7 @@ public class NodeContainerTest {
     container.add(polygon);
     Closure closure = mock(Closure.class);
     Runnable defaultAction = mock(Runnable.class);
-    container.onPolygonAtPoint(new Point(3, 3)).perform(closure).orFallBackTo(defaultAction);
+    container.onElementAtPoint(new Point(3, 3)).perform(closure).orFallBackTo(defaultAction);
     verify(defaultAction).run();
   }
 

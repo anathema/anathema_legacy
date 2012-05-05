@@ -59,13 +59,13 @@ public class PolygonPanel extends JPanel {
   }
 
   public void changeCursor(Point point) {
-    Point2D polygonPoint = transformClickPointToObjectCoordinates(point);
-    container.onPolygonAtPoint(polygonPoint).perform(new SetHandCursor()).orFallBackTo(new SetDefaultCursor());
+    Point2D elementPoint = transformClickPointToObjectCoordinates(point);
+    container.onElementAtPoint(elementPoint).perform(new SetHandCursor()).orFallBackTo(new SetDefaultCursor());
   }
 
-  public void togglePolygonAtPoint(Point point) {
-    Point2D polygonPoint = transformClickPointToObjectCoordinates(point);
-    container.onPolygonAtPoint(polygonPoint).perform(new ToggleAndRepaint());
+  public void toggleElementAtPoint(Point point) {
+    Point2D elementPoint = transformClickPointToObjectCoordinates(point);
+    container.onElementAtPoint(elementPoint).perform(new ToggleAndRepaint());
   }
 
   private Point2D transformClickPointToObjectCoordinates(Point p) {
