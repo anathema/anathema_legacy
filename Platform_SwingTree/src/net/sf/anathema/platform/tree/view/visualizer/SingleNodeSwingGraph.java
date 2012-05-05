@@ -2,18 +2,17 @@ package net.sf.anathema.platform.tree.view.visualizer;
 
 import net.sf.anathema.platform.svgtree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.tree.view.container.AggregatedCascade;
-import net.sf.anathema.platform.tree.view.container.SingleNodeContainer;
-import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
+import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 
 import java.awt.Dimension;
 
-public class SwingSingleNodeGraph implements IVisualizedGraph<AggregatedCascade> {
-  private final FilledPolygon element;
+public class SingleNodeSwingGraph implements IVisualizedGraph<AggregatedCascade> {
   private final Dimension dimension;
+  private final DefaultContainerCascade container;
 
-  public SwingSingleNodeGraph(FilledPolygon element, Dimension dimension) {
-    this.element = element;
+  public SingleNodeSwingGraph(Dimension dimension, DefaultContainerCascade nodeContainer) {
     this.dimension = dimension;
+    this.container = nodeContainer;
   }
 
   @Override
@@ -28,11 +27,11 @@ public class SwingSingleNodeGraph implements IVisualizedGraph<AggregatedCascade>
 
   @Override
   public void translateBy(double x, double y) {
-    element.moveBy((int) x, (int) y);
+    container.moveBy(x, y);
   }
 
   @Override
   public void addTo(AggregatedCascade cascade) {
-    cascade.add(new SingleNodeContainer(element));
+    cascade.add(container);
   }
 }

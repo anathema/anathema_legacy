@@ -7,13 +7,15 @@ import java.awt.Shape;
 
 public class ShapeDrawer {
   private final Shape shape;
+  private final Color stroke;
 
-  public ShapeDrawer(Shape shape) {
+  public ShapeDrawer(Shape shape, Color stroke) {
     this.shape = shape;
+    this.stroke = stroke;
   }
 
   public void draw(Graphics2D graphics) {
-    graphics.setColor(Color.BLACK);
+    graphics.setColor(stroke);
     graphics.setStroke(new BasicStroke(4));
     graphics.draw(shape);
   }

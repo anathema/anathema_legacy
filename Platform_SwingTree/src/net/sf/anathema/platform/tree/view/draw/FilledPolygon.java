@@ -1,19 +1,24 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import org.jmock.example.announcer.Announcer;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
-import java.util.Random;
+
+import static net.disy.commons.swing.color.ColorUtilities.getTransparentColor;
 
 public class FilledPolygon implements InteractiveGraphicsElement {
+  private final Announcer<Runnable> toggleListeners = Announcer.to(Runnable.class);
   private final Polygon polygon = new Polygon();
   private Color fill = Color.YELLOW;
+  private Color stroke = Color.BLACK;
 
   @Override
   public void paint(Graphics2D graphics) {
     new ShapeFiller(polygon, fill).fill(graphics);
-    new ShapeDrawer(polygon).draw(graphics);
+    new ShapeDrawer(polygon, stroke).draw(graphics);
   }
 
   @Override
@@ -23,11 +28,7 @@ public class FilledPolygon implements InteractiveGraphicsElement {
 
   @Override
   public void toggle() {
-    this.fill = getColor();
-  }
-
-  private Color getColor() {
-    return new Color(new Random().nextInt(0xffffff));
+    toggleListeners.announce().run();
   }
 
   public void addPoint(int x, int y) {
@@ -36,5 +37,18 @@ public class FilledPolygon implements InteractiveGraphicsElement {
 
   public void moveBy(int x, int y) {
     polygon.translate(x, y);
+  }
+
+  public void fill(Color fill) {
+    this.fill = fill;
+  }
+
+  public void setAlpha(int alpha) {
+    fill(getTransparentColor(fill, alpha));
+    this.stroke = getTransparentColor(stroke, alpha);
+  }
+
+  public void whenToggledDo(Runnable runnable) {
+    toggleListeners.addListener(runnable);
   }
 }

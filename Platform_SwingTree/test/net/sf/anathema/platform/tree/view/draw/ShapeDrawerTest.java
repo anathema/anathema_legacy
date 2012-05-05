@@ -14,13 +14,15 @@ import static org.mockito.Mockito.mock;
 
 public class ShapeDrawerTest {
 
+  private Color stroke = Color.CYAN;
+
   @Test
   public void drawsPolygonOutline() throws Exception {
     Graphics2D graphics = mock(Graphics2D.class);
     Shape polygon = new Polygon();
-    new ShapeDrawer(polygon).draw(graphics);
+    new ShapeDrawer(polygon, stroke).draw(graphics);
     InOrder inOrder = inOrder(graphics);
-    inOrder.verify(graphics).setColor(Color.BLACK);
+    inOrder.verify(graphics).setColor(Color.CYAN);
     inOrder.verify(graphics).setStroke(new BasicStroke(4));
     inOrder.verify(graphics).draw(polygon);
   }
