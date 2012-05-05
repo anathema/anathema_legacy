@@ -14,9 +14,9 @@ import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class NodeContainerTest {
+public class ElementContainerTest {
 
-  private NodeContainer container = new NodeContainer();
+  private ElementContainer container = new ElementContainer();
 
   @Test
   public void actsOnPolygonAtPoint() throws Exception {
