@@ -4,6 +4,7 @@ import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.platform.svgtree.document.VisualizerFactory;
 import net.sf.anathema.platform.svgtree.document.visualizer.ICascadeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.visualizer.NullCascadeVisualizer;
 
 public class SwingVisualizerFactory implements VisualizerFactory {
   private final ITreePresentationProperties properties;
@@ -14,21 +15,21 @@ public class SwingVisualizerFactory implements VisualizerFactory {
 
   @Override
   public ICascadeVisualizer createForBottomUp(IProperHierarchicalGraph graph) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return new NullCascadeVisualizer();
   }
 
   @Override
   public ICascadeVisualizer createForInvertedTree(IProperHierarchicalGraph graph) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return new NullCascadeVisualizer();
   }
 
   @Override
   public ICascadeVisualizer createForTree(IProperHierarchicalGraph graph) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return new NullCascadeVisualizer();
   }
 
   @Override
   public ICascadeVisualizer createForSingle(IProperHierarchicalGraph graph) {
-    return null;  //To change body of implemented methods use File | Settings | File Templates.
+    return new NullCascadeVisualizer();
   }
 }

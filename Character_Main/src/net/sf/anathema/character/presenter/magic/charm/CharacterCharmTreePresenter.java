@@ -41,7 +41,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
     setCharmTypes(new CharacterCharmTypes(charmModel));
     setChangeListener(charmGroupChangeListener);
     setView(view);
-    setSpecialPresenter(new CharacterSpecialCharmPresenter(view, resources, charmGroupChangeListener, charmModel, presentationProperties));
+    setSpecialPresenter(new CharacterSpecialCharmPresenter(view, factory.createSpecialViewFactory(), resources, charmGroupChangeListener, charmModel, presentationProperties));
     setCharmDye(dye);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
     setInteractionPresenter(new LearnInteractionPresenter(model, view, charmGroupChangeListener, viewProperties, dye));

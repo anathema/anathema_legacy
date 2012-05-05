@@ -7,6 +7,7 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.SpecialCharmViewPresenter;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
 import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewContainer;
+import net.sf.anathema.charmtree.presenter.view.SpecialCharmViewFactory;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
@@ -17,15 +18,19 @@ import java.util.List;
 
 public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter {
   private final List<ISVGSpecialNodeView> specialCharmViews = new ArrayList<ISVGSpecialNodeView>();
-  private ISpecialCharmViewContainer view;
+  private ISpecialCharmViewContainer container;
   private IResources resources;
   private CharmGroupInformer charmGroupInformer;
   private CharacterCharmModel charmModel;
   private ITreePresentationProperties presentationProperties;
+  private SpecialCharmViewFactory factory;
 
-  public CharacterSpecialCharmPresenter(ISpecialCharmViewContainer view, IResources resources, CharmGroupInformer informer, CharacterCharmModel charmModel,
+  public CharacterSpecialCharmPresenter(ISpecialCharmViewContainer container, SpecialCharmViewFactory factory,
+                                        IResources resources, CharmGroupInformer informer,
+                                        CharacterCharmModel charmModel,
                                         ITreePresentationProperties presentationProperties) {
-    this.view = view;
+    this.container = container;
+    this.factory = factory;
     this.resources = resources;
     this.charmGroupInformer = informer;
     this.charmModel = charmModel;
@@ -35,7 +40,8 @@ public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter
   @Override
   public void initPresentation() {
     for (ISpecialCharm charm : getCharmConfiguration().getSpecialCharms()) {
-      SpecialCharmViewBuilder builder = new SpecialCharmViewBuilder(resources, view, charmModel, presentationProperties);
+      SpecialCharmViewBuilder builder = new SpecialCharmViewBuilder(resources, factory, charmModel,
+              presentationProperties);
       charm.accept(builder);
       ISVGSpecialNodeView nodeView = builder.getResult();
       if (nodeView != null) {
@@ -68,7 +74,7 @@ public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter
       String nodeId = charmView.getNodeId();
       ICharm charm = getCharmConfiguration().getCharmById(nodeId);
       boolean isVisible = isVisible(charm);
-      view.setSpecialCharmViewVisible(charmView, isVisible);
+      container.setSpecialCharmViewVisible(charmView, isVisible);
     }
   }
 

@@ -15,7 +15,7 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
-import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewContainer;
+import net.sf.anathema.charmtree.presenter.view.SpecialCharmViewFactory;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
@@ -26,13 +26,12 @@ import java.awt.Color;
 
 public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   private final IResources resources;
-  private final ISpecialCharmViewContainer factory;
+  private final SpecialCharmViewFactory factory;
   private CharacterCharmModel charmModel;
   private ITreePresentationProperties presentationProperties;
   private ISVGSpecialNodeView createdView;
 
-  public SpecialCharmViewBuilder(IResources resources,
-                                 ISpecialCharmViewContainer factory, CharacterCharmModel charmModel,
+  public SpecialCharmViewBuilder(IResources resources, SpecialCharmViewFactory factory, CharacterCharmModel charmModel,
                                  ITreePresentationProperties presentationProperties) {
     this.resources = resources;
     this.factory = factory;
@@ -91,9 +90,7 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   }
 
   private void createMultipleEffectCharmView(IMultipleEffectCharm visitedCharm, final String labelKey) {
-    SVGToggleButtonSpecialNodeView subeffectView = factory.createSubeffectCharmView(
-            visitedCharm,
-            getCharmWidth(),
+    SVGToggleButtonSpecialNodeView subeffectView = factory.createSubeffectCharmView(visitedCharm, getCharmWidth(),
             getCharacterColor());
     IMultipleEffectCharmConfiguration model = getModelFormCharm(visitedCharm);
     new MultipleEffectCharmPresenter(resources, subeffectView, model).initPresentation();
@@ -117,9 +114,7 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   }
 
   private void addButtonForCharmConfiguration(String labelKey, ISVGSpecialNodeView subeffectView) {
-    ISVGSpecialNodeView viewControlButton = factory.createViewControlButton(
-            subeffectView,
-            getCharmWidth(),
+    ISVGSpecialNodeView viewControlButton = factory.createViewControlButton(subeffectView, getCharmWidth(),
             resources.getString(labelKey));
     addViewDirectly(viewControlButton);
   }
@@ -155,10 +150,7 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
   }
 
   private SVGCategorizedSpecialNodeView createViewForCharm(ISpecialCharm visitedCharm) {
-    return factory.createMultiLearnableCharmView(
-            visitedCharm,
-            getCharmWidth(),
-            getCharacterColor());
+    return factory.createMultiLearnableCharmView(visitedCharm, getCharmWidth(), getCharacterColor());
   }
 
   @SuppressWarnings("unchecked")
