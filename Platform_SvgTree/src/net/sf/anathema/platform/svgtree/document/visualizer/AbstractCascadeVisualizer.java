@@ -8,7 +8,6 @@ import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.svgtree.document.components.Layer;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNodeFactory;
 
-import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,21 +78,5 @@ public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
     for (int layerIndex = 0; layerIndex < layers.length - 1; layerIndex++) {
       layers[layerIndex].setFollowUp(layers[layerIndex + 1]);
     }
-  }
-
-  protected Dimension getTreeDimension(ILayer... layers) {
-    return new Dimension(getTreeWidth(layers), getTreeHeight(layers));
-  }
-
-  protected int getTreeWidth(ILayer[] layers) {
-    int width = 0;
-    for (ILayer layer : layers) {
-      width = Math.max(width, layer.getWidth());
-    }
-    return width;
-  }
-
-  protected int getTreeHeight(ILayer[] layers) {
-    return layers.length * getProperties().getNodeDimension().height + (layers.length - 1) * getProperties().getGapDimension().height;
   }
 }

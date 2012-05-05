@@ -19,6 +19,6 @@ public class SingleNodeVisualizer extends AbstractCascadeVisualizer {
     ILayer layer = new Layer(getProperties().getGapDimension(), 0);
     layer.addNode(visualizableNode);
     visualizableNode.setPosition(visualizableNode.getWidth() / 2);
-    return new SingleNodeVisualizedGraph(new SvgLayerElementCreator(getProperties()).createXml(layer), getTreeDimension(layer));
+    return new SvgGraphFactory(getProperties()).createForSingleNode(layer);
   }
 }
