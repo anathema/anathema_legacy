@@ -14,11 +14,9 @@ public abstract class AbstractSingleVisualizableNode extends AbstractVisualizabl
   private final ISimpleNode content;
   private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors;
 
-  public AbstractSingleVisualizableNode(
-      final ISimpleNode content,
-      final Map<ISimpleNode, IVisualizableNode> map,
-      final Dimension nodeDimension,
-      final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
+  public AbstractSingleVisualizableNode(ISimpleNode content, Map<ISimpleNode, IVisualizableNode> map,
+                                        Dimension nodeDimension,
+                                        MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
     super(map, nodeDimension);
     this.content = content;
     this.leafNodesByAncestors = leafNodesByAncestors;

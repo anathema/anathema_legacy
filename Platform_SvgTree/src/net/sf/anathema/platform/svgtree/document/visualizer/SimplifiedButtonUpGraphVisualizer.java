@@ -30,7 +30,7 @@ public class SimplifiedButtonUpGraphVisualizer extends AbstractCascadeVisualizer
     for (ILayer layer : new BackwardsIterable<ILayer>(layers)) {
       layer.unrollHorizontalMetanodes();
     }
-    return new VisualizedGraph(createXml(layers), getTreeDimension(layers));
+    return new VisualizedGraph(new SvgLayerElementCreator().createXml(layers), getTreeDimension(layers));
   }
 
   public boolean isApplicable() {

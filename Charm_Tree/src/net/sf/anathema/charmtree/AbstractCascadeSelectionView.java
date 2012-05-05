@@ -36,11 +36,11 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   private IChangeableJComboBox<IIdentificate> groupComboBox;
   private IChangeableJComboBox<IIdentificate> typeComboBox;
   private final ISvgTreeView charmTreeView;
-  private final ITreeView treeView;
+  //private final ITreeView treeView;
 
   public AbstractCascadeSelectionView(ISvgTreeViewProperties treeProperties) {
     this.charmTreeView = new SvgTreeView(treeProperties);
-    this.treeView = new SwingTreeView();
+    //this.treeView = new SwingTreeView();
   }
 
   @Override
@@ -115,8 +115,8 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   protected final ITreeView getCharmTreeView() {
-    //return charmTreeView;
-    return treeView;
+    return charmTreeView;
+    //return treeView;
   }
 
   protected ISvgTreeView getSpecialCharmTreeView() {

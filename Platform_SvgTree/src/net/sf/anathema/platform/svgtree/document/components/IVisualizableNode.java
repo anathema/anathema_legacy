@@ -1,49 +1,45 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
-import org.dom4j.Element;
-
 public interface IVisualizableNode {
 
   /**
    * Return central Position of rightmost Node in the subtree
    */
-  public Integer getRightExtreme();
+  Integer getRightExtreme();
 
-  public void toXML(Element element);
+  void setLayer(ILayer layer);
 
-  public void setLayer(ILayer layer);
+  Integer getLeftExtreme();
 
-  public Integer getLeftExtreme();
+  void shiftRightWithChildren(int requiredShift, IVisualizableNode[] excludedNodes);
 
-  public void shiftRightWithChildren(int requiredShift, IVisualizableNode[] excludedNodes);
+  int getWidth();
 
-  public int getWidth();
+  boolean isOfSameLeafGroup(IVisualizableNode node);
 
-  public boolean isOfSameLeafGroup(IVisualizableNode node);
+  void accept(IVisualizableNodeVisitor visitor);
 
-  public void accept(IVisualizableNodeVisitor visitor);
+  IVisualizableNode[] getChildren();
 
-  public IVisualizableNode[] getChildren();
+  int getHeight();
 
-  public int getHeight();
+  void setPosition(int position);
 
-  public void setPosition(int position);
+  Integer getPosition();
 
-  public Integer getPosition();
+  IVisualizableNode[] getSharedChildren(IVisualizableNode otherNode);
 
-  public IVisualizableNode[] getSharedChildren(IVisualizableNode otherNode);
+  void shiftRight(int requiredShift);
 
-  public void shiftRight(int requiredShift);
+  void forceShiftRight(int requiredShift);
 
-  public void forceShiftRight(int requiredShift);
+  ILayer getLayer();
 
-  public ILayer getLayer();
+  int getLeftSide();
 
-  public int getLeftSide();
+  int getRightSide();
 
-  public int getRightSide();
+  boolean isRootNode();
 
-  public boolean isRootNode();
-
-  public IVisualizableNode[] getParents();
+  IVisualizableNode[] getParents();
 }

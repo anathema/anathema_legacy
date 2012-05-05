@@ -1,51 +1,50 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
-
 import org.dom4j.Element;
 
 public interface ILayer {
 
-  public void addNode(IVisualizableNode node);
+  void addNode(IVisualizableNode node);
 
-  public void setNodePosition(IVisualizableNode node, int centralPosition);
+  void setNodePosition(IVisualizableNode node, int centralPosition);
 
-  public void setFollowUp(ILayer layer);
+  void setFollowUp(ILayer layer);
 
-  public void setNodeOnNextFreePosition(IVisualizableNode node);
+  void setNodeOnNextFreePosition(IVisualizableNode node);
 
-  public void addNodesToXml(Element element);
+  void addNodesToXml(Element element);
 
-  public void positionNodes();
+  void positionNodes();
 
-  public IVisualizableNode[] getNodes();
+  IVisualizableNode[] getNodes();
 
-  public void addArrowsToXml(Element cascade);
+  void addArrowsToXml(Element cascade);
 
-  public int getYPosition();
+  int getYPosition();
 
-  public int getWidth();
+  int getWidth();
 
-  public void unrollHorizontalMetanodes();
+  void unrollHorizontalMetanodes();
 
-  public void shiftRight(int requiredShift);
+  void shiftRight(int requiredShift);
 
-  public void shiftRightRecursivelyWithThreshold(int threshold, int requiredShift);
+  void shiftRightRecursivelyWithThreshold(int threshold, int requiredShift);
 
-  public int getOverlapFreePosition(IVisualizableNode node);
+  int getOverlapFreePosition(IVisualizableNode node);
 
-  public Integer getPreviousNodeRightExtreme(IVisualizableNode node);
+  Integer getPreviousNodeRightExtreme(IVisualizableNode node);
 
-  public Integer getNextNodeLeftExtreme(IVisualizableNode node);
+  Integer getNextNodeLeftExtreme(IVisualizableNode node);
 
-  public ILayer getPreviousLayer();
+  ILayer getPreviousLayer();
 
-  public void setPreviousLayer(ILayer layer);
+  void setPreviousLayer(ILayer layer);
 
-  public void positionNode(IVisualizableNode node);
+  void positionNode(IVisualizableNode node);
 
-  public IVisualizableNode getPreviousNode(IVisualizableNode node);
+  IVisualizableNode getPreviousNode(IVisualizableNode node);
 
-  public IVisualizableNode getNextNode(IVisualizableNode node);
+  IVisualizableNode getNextNode(IVisualizableNode node);
 
   void moveNodeTo(IVisualizableNode node, int xPosition);
 }

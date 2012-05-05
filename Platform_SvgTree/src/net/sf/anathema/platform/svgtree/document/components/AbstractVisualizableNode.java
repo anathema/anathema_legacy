@@ -32,7 +32,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
   }
 
   @Override
-  public void shiftRightWithChildren(final int requiredShift, final IVisualizableNode[] excludedNodes) {
+  public void shiftRightWithChildren(int requiredShift, IVisualizableNode[] excludedNodes) {
     // Note: Better implementation: Traverse the tree down to the children
     // Set children's new position
     // Recalculate all other positions using the given algorithms.

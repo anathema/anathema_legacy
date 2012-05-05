@@ -3,16 +3,9 @@ package net.sf.anathema.platform.svgtree.document.components;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
-import org.apache.batik.util.SVGConstants;
-import org.dom4j.Element;
-import org.dom4j.QName;
 
-import java.awt.*;
+import java.awt.Dimension;
 import java.util.Map;
-
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
-import static org.apache.batik.util.SVGConstants.*;
 
 public class VisualizableNode extends AbstractSingleVisualizableNode {
 
@@ -21,41 +14,9 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     visitor.visitSingleNode(this);
   }
 
-  public VisualizableNode(IIdentifiedRegularNode contentNode, Map<ISimpleNode, IVisualizableNode> map, Dimension nodeDimension,
-                          MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
+  public VisualizableNode(IIdentifiedRegularNode contentNode, Map<ISimpleNode, IVisualizableNode> map,
+                          Dimension nodeDimension, MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
     super(contentNode, map, nodeDimension, leafNodesByAncestors);
-  }
-
-  @Override
-  public void toXML(Element element) {
-    QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
-    Element g = element.addElement(group);
-    g.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, getContentNode().getId());
-    g.addAttribute(ATTRIB_IS_TREE_NODE, SVGConstants.SVG_TRUE_VALUE);
-    addUseElement(g);
-    addTextElement(g);
-  }
-
-  private void addTextElement(Element g) {
-    QName textName = SVGCreationUtils.createSVGQName(SVGConstants.SVG_TEXT_TAG);
-    Element text = g.addElement(textName);
-    text.addAttribute(SVG_X_ATTRIBUTE, String.valueOf(getPosition()));
-    text.addAttribute(SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition() + getNodeDimension().getHeight() / 2));
-    text.addAttribute(SVG_TEXT_ANCHOR_ATTRIBUTE, SVG_MIDDLE_VALUE);
-    text.addAttribute(SVG_FONT_SIZE_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_15);
-    text.addAttribute(ATTRIB_POINTER_EVENTS, SVG_NONE_VALUE);
-    text.setText(getContentNode().getId());
-
-  }
-
-  private void addUseElement(Element g) {
-    QName useName = SVGCreationUtils.createSVGQName(SVG_USE_TAG);
-    Element use = g.addElement(useName);
-    use.addAttribute(SVG_X_ATTRIBUTE, String.valueOf(getPosition() - getNodeDimension().width / 2));
-    use.addAttribute(SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition()));
-    use.addAttribute(ATTRIB_POINTER_EVENTS, VALUE_VISIBLE);
-    use.addAttribute(SVG_FILL_ATTRIBUTE, SVG_NONE_VALUE);
-    use.addAttribute(SVGCreationUtils.createXLinkQName(), VALUE_FRAME_REFERENCE);
   }
 
   @Override
@@ -63,7 +24,11 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     return (IIdentifiedRegularNode) super.getContentNode();
   }
 
-  public String toString() {
+  public String getId(){
     return getContentNode().getId();
+  }
+
+  public String toString() {
+    return getId();
   }
 }

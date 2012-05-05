@@ -21,12 +21,17 @@ public class SingleNodeVisualizer extends AbstractCascadeVisualizer {
   public IVisualizedGraph buildTree() {
     ISimpleNode node = getGraph().getNodesByLayer(1)[0];
     IVisualizableNode visualizableNode = getNodeFactory().registerVisualizableNode(node);
-    ILayer layer = new Layer(getProperties().getGapDimension(), 0);
+    ILayer layer = new Layer(getProperties().getGapDimension(), 0, getProperties());
     visualizableNode.setLayer(layer);
     visualizableNode.setPosition(visualizableNode.getWidth() / 2);
+    return makeSvgGraph(visualizableNode, layer);
+  }
+
+  private IVisualizedGraph makeSvgGraph(IVisualizableNode visualizableNode, ILayer layer) {
     QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element cascadeElement = new DefaultElement(group);
-    visualizableNode.toXML(cascadeElement);
+    visualizableNode.accept(new CreateSvgElementFromNode(layer, cascadeElement, getProperties()));
     return new SingleNodeVisualizedGraph(cascadeElement, getProperties().getNodeDimension());
   }
+
 }

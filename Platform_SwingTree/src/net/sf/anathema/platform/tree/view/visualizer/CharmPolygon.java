@@ -1,4 +1,6 @@
-package net.sf.anathema.platform.tree.view.draw;
+package net.sf.anathema.platform.tree.view.visualizer;
+
+import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 
 public class CharmPolygon extends FilledPolygon {
   public CharmPolygon(int x, int y) {
