@@ -7,7 +7,7 @@ import net.sf.anathema.charmtree.presenter.CharmInteractionPresenter;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
@@ -32,7 +32,7 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
   @Override
   public void initPresentation() {
     ICharmConfiguration charms = model.getCharmConfiguration();
-    view.addCharmInteractionListener(new CharmInteractionListener() {
+    view.addCharmInteractionListener(new NodeInteractionListener() {
       @Override
       public void nodeSelected(String charmId) {
         if (viewProperties.isRequirementNode(charmId)) {

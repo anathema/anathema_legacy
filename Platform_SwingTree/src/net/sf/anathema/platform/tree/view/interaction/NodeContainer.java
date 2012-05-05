@@ -34,4 +34,9 @@ public class NodeContainer implements Iterable<GraphicsElement>{
   public Iterator<GraphicsElement> iterator() {
     return elements.iterator();
   }
+
+  public void clear() {
+    elements.clear();
+    interactiveElements.clear();
+  }
 }

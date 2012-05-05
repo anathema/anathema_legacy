@@ -1,6 +1,7 @@
 dependencies {
   compile project(':Lib')
   compile project(':Platform_SvgTree')
+  compile project(':Platform_SwingTree')
   testCompile testDependencies
 }
 

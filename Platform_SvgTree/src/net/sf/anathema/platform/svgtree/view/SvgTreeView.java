@@ -5,7 +5,7 @@ import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
@@ -156,7 +156,7 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   @Override
-  public void addNodeSelectionListener(final CharmInteractionListener listener) {
+  public void addNodeInteractionListener(final NodeInteractionListener listener) {
     listening.addNodeSelectionListener(listener);
   }
 

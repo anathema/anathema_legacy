@@ -39,13 +39,13 @@ public class CascadeDocumentFactory implements CascadeFactory<Document> {
     double currentWidth = properties.getGapDimension().width;
     double maximumHeight = 0;
     for (IVisualizedGraph graph : visualizedGraphs) {
-      cascadeElement.add(graph.getCascadeElement());
+      Element graphElement = graph.getCascadeElement();
+      cascadeElement.add(graphElement);
       if (graph.isSingleNode()) {
-        graph.getCascadeElement().addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
-                "translate(" + firstRowWidth + " 0)"); //$NON-NLS-1$ //$NON-NLS-2$
+        graphElement.addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" + firstRowWidth + " 0)"); //$NON-NLS-1$ //$NON-NLS-2$
         firstRowWidth += properties.getGapDimension().width + graph.getDimension().width;
       } else {
-        graph.getCascadeElement().addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
+        graphElement.addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
                 "translate(" + currentWidth + " " + firstRowHeight + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         currentWidth += properties.getGapDimension().width + graph.getDimension().width;
         maximumHeight = Math.max(maximumHeight, graph.getDimension().height);

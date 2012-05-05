@@ -13,6 +13,7 @@ import static java.awt.RenderingHints.KEY_ANTIALIASING;
 import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 public class PolygonPanelTest {
@@ -77,5 +78,14 @@ public class PolygonPanelTest {
     polygonPanel.paintComponent(graphics);
     verify(firstPolygon).paint(graphics);
     verify(secondPolygon).paint(graphics);
+  }
+
+  @Test
+  public void hasNoElementsAfterClear() throws Exception {
+    InteractiveGraphicsElement element = mock(FilledPolygon.class);
+    polygonPanel.add(element);
+    polygonPanel.clear();
+    polygonPanel.paintComponent(graphics);
+    verifyZeroInteractions(element);
   }
 }

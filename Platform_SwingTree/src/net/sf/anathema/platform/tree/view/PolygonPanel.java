@@ -76,6 +76,11 @@ public class PolygonPanel extends JPanel {
     }
   }
 
+  public void clear() {
+    container.clear();
+    repaint();
+  }
+
   private class ToggleAndRepaint implements Closure {
     @Override
     public void execute(InteractiveGraphicsElement polygon) {

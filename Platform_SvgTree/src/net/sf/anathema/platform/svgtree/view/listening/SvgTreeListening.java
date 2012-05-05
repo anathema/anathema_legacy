@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.svgtree.view.listening;
 
-import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
@@ -24,7 +24,7 @@ public class SvgTreeListening {
   private final ISvgTreeViewProperties properties;
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator boundsCalculator;
-  private final Announcer<CharmInteractionListener> control = Announcer.to(CharmInteractionListener.class);
+  private final Announcer<NodeInteractionListener> control = Announcer.to(NodeInteractionListener.class);
   private final LeftClickPanInteractor leftClickPanner;
   private String selectionId;
 
@@ -138,7 +138,7 @@ public SvgTreeListening(
     canvas.setCursorInternal(properties.getDefaultCursor());
   }
 
-  public void addNodeSelectionListener(final CharmInteractionListener listener) {
+  public void addNodeSelectionListener(final NodeInteractionListener listener) {
     control.addListener(listener);
   }
 
