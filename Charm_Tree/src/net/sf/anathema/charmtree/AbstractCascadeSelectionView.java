@@ -5,12 +5,13 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.charmtree.presenter.view.CharmTreeRenderer;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
-import net.sf.anathema.charmtree.presenter.view.svg.SvgCharmTreeRenderer;
+import net.sf.anathema.charmtree.presenter.view.svg.GenericCascadeRenderer;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.platform.svgtree.document.CascadeDocumentFactory;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
@@ -117,7 +118,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
 
   @Override
   public CharmTreeRenderer getCharmTreeRenderer() {
-    return new SvgCharmTreeRenderer(charmTreeView);
+    return GenericCascadeRenderer.CreateFor(charmTreeView, new CascadeDocumentFactory());
   }
 
   @Override

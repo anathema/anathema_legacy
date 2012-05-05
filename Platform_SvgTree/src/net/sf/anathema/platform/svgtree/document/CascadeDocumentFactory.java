@@ -21,14 +21,15 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CascadeDocumentFactory {
+public class CascadeDocumentFactory implements CascadeFactory<Document> {
 
   private final static Dimension MAXIMUM_DIMENSION = new Dimension(1400, 625);
   private final SugiyamaLayout layout = new SugiyamaLayout();
   private final SVGDocumentFrameFactory factory = new SVGDocumentFrameFactory();
 
-  public Document createCascadeDocument(IRegularNode[] nodes, ITreePresentationProperties properties) {
-    List<IVisualizedGraph> visualizedGraphs = visualizeGraphs(nodes, properties);
+  @Override
+  public Document createCascade(IRegularNode[] nodes, ITreePresentationProperties properties) {
+    final List<IVisualizedGraph> visualizedGraphs = visualizeGraphs(nodes, properties);
     return placeOnCanvas(properties, visualizedGraphs);
   }
 
