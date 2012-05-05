@@ -3,9 +3,6 @@ package net.sf.anathema.platform.svgtree.document.components;
 import com.google.common.collect.Lists;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
-import net.sf.anathema.platform.svgtree.document.visualizer.CreateSvgElementFromNode;
-import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
-import org.dom4j.Element;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -17,18 +14,21 @@ public class Layer implements ILayer {
   private ILayer nextLayer;
   private final Dimension gapDimension;
   private final int yPosition;
-  private final ITreePresentationProperties properties;
   private ILayer previousLayer;
 
-  public Layer(Dimension gapDimension, int yPosition, ITreePresentationProperties properties) {
+  public Layer(Dimension gapDimension, int yPosition) {
     this.gapDimension = gapDimension;
     this.yPosition = yPosition;
-    this.properties = properties;
   }
 
   @Override
   public void setPreviousLayer(ILayer previousLayer) {
     this.previousLayer = previousLayer;
+  }
+
+  @Override
+  public boolean isBottomMostLayer() {
+    return nextLayer == null;
   }
 
   @Override
@@ -243,66 +243,6 @@ public class Layer implements ILayer {
     Ensure.ensureNotNull(layer);
     Ensure.ensureNull(nextLayer);
     this.nextLayer = layer;
-  }
-
-  @Override
-  public void addNodesToXml(Element element) {
-    for (IVisualizableNode node : nodes) {
-      node.accept(new CreateSvgElementFromNode(this, element, properties));
-    }
-  }
-
-  @Override
-  public void addArrowsToXml(final Element cascade) {
-    if (nextLayer == null) {
-      return;
-    }
-    for (IVisualizableNode node : nodes) {
-      node.accept(new IVisualizableNodeVisitor() {
-        @Override
-        public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
-          throw new IllegalStateException("Metanodes must be resolved before arrows are created."); //$NON-NLS-1$
-        }
-
-        @Override
-        public void visitSingleNode(VisualizableNode visitedNode) {
-          for (IVisualizableNode child : visitedNode.getChildren()) {
-            PolylineSVGArrow arrow = new PolylineSVGArrow();
-            arrow.addPoint(visitedNode.getPosition(), yPosition + visitedNode.getHeight());
-            arrow.addPoint(child.getPosition(), child.getLayer().getYPosition());
-            extendArrow(arrow, child);
-            cascade.add(arrow.toXML());
-          }
-        }
-
-        @Override
-        public void visitDummyNode(VisualizableDummyNode visitedNode) {
-          // Nothing to do
-        }
-      });
-    }
-  }
-
-  private void extendArrow(final PolylineSVGArrow arrow, IVisualizableNode node) {
-    node.accept(new IVisualizableNodeVisitor() {
-      @Override
-      public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
-        throw new IllegalStateException("Metanodes must be resolved before arrows are created."); //$NON-NLS-1$
-      }
-
-      @Override
-      public void visitSingleNode(VisualizableNode visitedNode) {
-        // Nothing to do
-      }
-
-      @Override
-      public void visitDummyNode(VisualizableDummyNode visitedNode) {
-        IVisualizableNode child = visitedNode.getChildren()[0];
-        arrow.addPoint(visitedNode.getPosition(), visitedNode.getLayer().getYPosition() + visitedNode.getHeight());
-        arrow.addPoint(child.getPosition(), child.getLayer().getYPosition());
-        extendArrow(arrow, child);
-      }
-    });
   }
 
   @Override
