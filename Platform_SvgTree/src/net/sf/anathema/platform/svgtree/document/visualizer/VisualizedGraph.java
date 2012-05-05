@@ -3,11 +3,11 @@ package net.sf.anathema.platform.svgtree.document.visualizer;
 import java.awt.Dimension;
 
 
-import net.sf.anathema.platform.svgtree.document.DocumentCascade;
+import net.sf.anathema.platform.svgtree.document.SvgDocumentBuilder;
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Element;
 
-public class VisualizedGraph implements IVisualizedGraph<DocumentCascade> {
+public class VisualizedGraph implements IVisualizedGraph<SvgDocumentBuilder> {
 
   private final Element graphElement;
   private final Dimension dimension;
@@ -33,7 +33,7 @@ public class VisualizedGraph implements IVisualizedGraph<DocumentCascade> {
   }
 
   @Override
-  public void addTo(DocumentCascade cascade) {
-    cascade.add(graphElement);
+  public void addTo(SvgDocumentBuilder cascadeBuilder) {
+    cascadeBuilder.add(graphElement);
   }
 }
