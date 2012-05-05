@@ -71,7 +71,7 @@ public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
   private void initLayers(ILayer[] layers) {
     for (int layerIndex = 0; layerIndex < layers.length; layerIndex++) {
       int yPosition = layerIndex * (properties.getNodeDimension().height + properties.getGapDimension().height);
-      layers[layerIndex] = new Layer(properties.getGapDimension(), yPosition, properties);
+      layers[layerIndex] = new Layer(properties.getGapDimension(), yPosition);
     }
     for (int layerIndex = 1; layerIndex < layers.length; layerIndex++) {
       layers[layerIndex].setPreviousLayer(layers[layerIndex - 1]);

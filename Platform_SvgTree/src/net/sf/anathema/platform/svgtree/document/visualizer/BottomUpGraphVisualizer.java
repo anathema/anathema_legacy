@@ -101,7 +101,7 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     separateOverlappingNodes(layers);
     removeWhiteSpace(layers);
     centerTrailingSingleNodePath(layers);
-    return new VisualizedGraph(new SvgLayerElementCreator().createXml(layers), getTreeDimension(layers));
+    return new VisualizedGraph(new SvgLayerElementCreator(getProperties()).createXml(layers), getTreeDimension(layers));
   }
 
   private void centerTrailingSingleNodePath(ILayer[] layers) {
