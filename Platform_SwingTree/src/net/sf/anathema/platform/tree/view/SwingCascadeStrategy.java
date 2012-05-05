@@ -2,11 +2,11 @@ package net.sf.anathema.platform.tree.view;
 
 import net.sf.anathema.platform.svgtree.document.CascadeBuilder;
 import net.sf.anathema.platform.svgtree.document.CascadeCreationStrategy;
-import net.sf.anathema.platform.svgtree.document.VisualizerFactory;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.visualizer.VisualizedGraphFactory;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ContainerCascade;
-import net.sf.anathema.platform.tree.view.visualizer.SwingVisualizerFactory;
+import net.sf.anathema.platform.tree.view.visualizer.SwingGraphFactory;
 
 public class SwingCascadeStrategy implements CascadeCreationStrategy<Cascade> {
 
@@ -16,7 +16,7 @@ public class SwingCascadeStrategy implements CascadeCreationStrategy<Cascade> {
   }
 
   @Override
-  public VisualizerFactory getVisualizer(ITreePresentationProperties properties) {
-    return new SwingVisualizerFactory(properties);
+  public VisualizedGraphFactory getFactoryForVisualizedGraphs(ITreePresentationProperties properties) {
+    return new SwingGraphFactory(properties);
   }
 }
