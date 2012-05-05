@@ -1,41 +1,29 @@
 package net.sf.anathema.platform.svgtree.document;
 
-import net.sf.anathema.graph.SugiyamaLayout;
-import net.sf.anathema.graph.graph.IGraphType;
-import net.sf.anathema.graph.graph.IGraphTypeVisitor;
-import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
-import net.sf.anathema.platform.svgtree.document.visualizer.BottomUpGraphVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.document.visualizer.IVisualizedGraph;
-import net.sf.anathema.platform.svgtree.document.visualizer.InvertedTreeVisualizer;
-import net.sf.anathema.platform.svgtree.document.visualizer.SingleNodeVisualizer;
-import net.sf.anathema.platform.svgtree.document.visualizer.TreeVisualizer;
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Document;
 import org.dom4j.Element;
 
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CascadeDocumentFactory implements CascadeFactory<Document> {
 
   private final static Dimension MAXIMUM_DIMENSION = new Dimension(1400, 625);
-  private final SugiyamaLayout layout = new SugiyamaLayout();
   private final SVGDocumentFrameFactory factory = new SVGDocumentFrameFactory();
 
   @Override
   public Document createCascade(IRegularNode[] nodes, ITreePresentationProperties properties) {
-    final List<IVisualizedGraph> visualizedGraphs = visualizeGraphs(nodes, properties);
+    List<IVisualizedGraph> visualizedGraphs = new VisualizedGraphFactory(nodes, properties).visualizeGraphs();
     return placeOnCanvas(properties, visualizedGraphs);
   }
 
-  private Document placeOnCanvas(
-      ITreePresentationProperties properties,
-      List<IVisualizedGraph> visualizedGraphs) {
+  private Document placeOnCanvas(ITreePresentationProperties properties, List<IVisualizedGraph> visualizedGraphs) {
     Document cascadeDocument = factory.createFrame(properties);
     Element root = cascadeDocument.getRootElement();
     Element cascadeElement = createCascadeElement(root);
@@ -53,15 +41,12 @@ public class CascadeDocumentFactory implements CascadeFactory<Document> {
     for (IVisualizedGraph graph : visualizedGraphs) {
       cascadeElement.add(graph.getCascadeElement());
       if (graph.isSingleNode()) {
-        graph.getCascadeElement().addAttribute(
-            SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
-            "translate(" + firstRowWidth + " 0)"); //$NON-NLS-1$ //$NON-NLS-2$
+        graph.getCascadeElement().addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
+                "translate(" + firstRowWidth + " 0)"); //$NON-NLS-1$ //$NON-NLS-2$
         firstRowWidth += properties.getGapDimension().width + graph.getDimension().width;
-      }
-      else {
-        graph.getCascadeElement().addAttribute(
-            SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
-            "translate(" + currentWidth + " " + firstRowHeight + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      } else {
+        graph.getCascadeElement().addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
+                "translate(" + currentWidth + " " + firstRowHeight + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         currentWidth += properties.getGapDimension().width + graph.getDimension().width;
         maximumHeight = Math.max(maximumHeight, graph.getDimension().height);
       }
@@ -82,38 +67,8 @@ public class CascadeDocumentFactory implements CascadeFactory<Document> {
     if (height > MAXIMUM_DIMENSION.height || width > MAXIMUM_DIMENSION.width) {
       double viewBoxHeight = Math.max(height, width / 2.24);
       double viewBoxWidth = Math.max(width, height * 2.24) + 10;
-      root.addAttribute(SVGConstants.SVG_VIEW_BOX_ATTRIBUTE, "0 0 " + viewBoxWidth + " " + viewBoxHeight); //$NON-NLS-1$ //$NON-NLS-2$
+      root.addAttribute(SVGConstants.SVG_VIEW_BOX_ATTRIBUTE,
+              "0 0 " + viewBoxWidth + " " + viewBoxHeight); //$NON-NLS-1$ //$NON-NLS-2$
     }
-  }
-
-  private List<IVisualizedGraph> visualizeGraphs(
-      IRegularNode[] nodes,
-      final ITreePresentationProperties properties) {
-    IProperHierarchicalGraph[] graphs = layout.createProperHierarchicalGraphs(nodes);
-    final List<IVisualizedGraph> visualizedGraphs = new ArrayList<IVisualizedGraph>(graphs.length);
-    for (final IProperHierarchicalGraph graph : graphs) {
-      graph.getType().accept(new IGraphTypeVisitor() {
-        @Override
-        public void visitDirectedGraph(IGraphType visitedType) {
-          visualizedGraphs.add(new BottomUpGraphVisualizer(graph, properties).buildTree());
-        }
-
-        @Override
-        public void visitInvertedTree(IGraphType visitedType) {
-          visualizedGraphs.add(new InvertedTreeVisualizer(graph, properties).buildTree());
-        }
-
-        @Override
-        public void visitTree(IGraphType visitedType) {
-          visualizedGraphs.add(new TreeVisualizer(graph, properties).buildTree());
-        }
-
-        @Override
-        public void visitSingle(IGraphType visitedType) {
-          visualizedGraphs.add(new SingleNodeVisualizer(properties, graph).buildTree());
-        }
-      });
-    }
-    return visualizedGraphs;
   }
 }
