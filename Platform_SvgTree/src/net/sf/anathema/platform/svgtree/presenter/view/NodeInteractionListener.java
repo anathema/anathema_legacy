@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.svgtree.presenter.view;
 
-public interface CharmInteractionListener {
+public interface NodeInteractionListener {
 
   void nodeSelected(String nodeId);
 
