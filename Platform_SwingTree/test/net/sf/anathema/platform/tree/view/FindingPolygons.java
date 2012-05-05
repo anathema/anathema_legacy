@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.tree.view;
 
 import net.sf.anathema.platform.tree.view.draw.CharmPolygon;
-import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.interaction.CursorChanger;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickToggler;
@@ -14,7 +13,7 @@ import javax.swing.WindowConstants;
 public class FindingPolygons {
   public static void main(String[] args) {
     PolygonPanel polygonPanel = new PolygonPanel();
-    polygonPanel.addPolygon(new CharmPolygon(15, 85));
+    polygonPanel.add(new CharmPolygon(15, 85));
     addArrow(polygonPanel);
     initListening(polygonPanel);
     JFrame f = new JFrame();
@@ -30,7 +29,7 @@ public class FindingPolygons {
     flexibleArrow.addPoint(10,10);
     flexibleArrow.addPoint(17,43);
     flexibleArrow.addPoint(200,80);
-    polygonPanel.addArrow(flexibleArrow);
+    polygonPanel.add(flexibleArrow);
   }
 
   private static void initListening(PolygonPanel polygonPanel) {

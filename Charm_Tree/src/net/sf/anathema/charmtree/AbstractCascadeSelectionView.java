@@ -5,7 +5,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.charmtree.presenter.view.CharmTreeRenderer;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
-import net.sf.anathema.charmtree.presenter.view.SvgCharmTreeRenderer;
+import net.sf.anathema.charmtree.presenter.view.svg.SvgCharmTreeRenderer;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;

@@ -6,7 +6,7 @@ import java.awt.Polygon;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
-public class FilledPolygon implements GraphicsElement {
+public class FilledPolygon implements InteractiveGraphicsElement {
   private final Polygon polygon = new Polygon();
   private Color fill = Color.YELLOW;
 
@@ -16,10 +16,12 @@ public class FilledPolygon implements GraphicsElement {
     new ShapeDrawer(polygon).draw(graphics);
   }
 
+  @Override
   public boolean contains(Point2D p) {
     return polygon.contains(p);
   }
 
+  @Override
   public void toggle() {
     this.fill = getColor();
   }

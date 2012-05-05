@@ -1,8 +1,7 @@
 package net.sf.anathema.platform.tree.view;
 
-import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
-import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
+import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import net.sf.anathema.platform.tree.view.interaction.Closure;
 import net.sf.anathema.platform.tree.view.interaction.NodeContainer;
 
@@ -15,9 +14,7 @@ import java.awt.Point;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
-import java.util.List;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static java.awt.Cursor.HAND_CURSOR;
 import static java.awt.Cursor.getPredefinedCursor;
 import static java.awt.RenderingHints.KEY_ANTIALIASING;
@@ -26,7 +23,6 @@ import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 public class PolygonPanel extends JPanel {
   private AffineTransform transform = new AffineTransform();
   private NodeContainer container = new NodeContainer();
-  private List<GraphicsElement> elements = newArrayList();
 
   public PolygonPanel() {
     setBackground(Color.WHITE);
@@ -38,18 +34,17 @@ public class PolygonPanel extends JPanel {
     Graphics2D graphics = (Graphics2D) g;
     graphics.transform(transform);
     graphics.setRenderingHint(KEY_ANTIALIASING, VALUE_ANTIALIAS_ON);
-    for (GraphicsElement polygon : elements) {
+    for (GraphicsElement polygon : container) {
       polygon.paint(graphics);
     }
   }
 
-  public void addPolygon(FilledPolygon polygon) {
-    container.add(polygon);
-    elements.add(polygon);
+  public void add(InteractiveGraphicsElement element) {
+    container.add(element);
   }
 
-  public void addArrow(FlexibleArrow flexibleArrow) {
-    elements.add(flexibleArrow);
+  public void add(GraphicsElement element) {
+    container.add(element);
   }
 
   public void scale(int unitsToScroll) {
@@ -83,7 +78,7 @@ public class PolygonPanel extends JPanel {
 
   private class ToggleAndRepaint implements Closure {
     @Override
-    public void execute(FilledPolygon polygon) {
+    public void execute(InteractiveGraphicsElement polygon) {
       polygon.toggle();
       repaint();
     }
@@ -98,7 +93,7 @@ public class PolygonPanel extends JPanel {
 
   private class SetHandCursor implements Closure {
     @Override
-    public void execute(FilledPolygon polygon) {
+    public void execute(InteractiveGraphicsElement polygon) {
       setCursor(getPredefinedCursor(HAND_CURSOR));
     }
   }

@@ -1,5 +1,6 @@
-package net.sf.anathema.charmtree.presenter.view;
+package net.sf.anathema.charmtree.presenter.view.svg;
 
+import net.sf.anathema.charmtree.presenter.view.CharmTreeRenderer;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.platform.svgtree.document.CascadeDocumentFactory;
