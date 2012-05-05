@@ -4,57 +4,39 @@ import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
-import org.apache.batik.util.SVG12Constants;
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Element;
 import org.dom4j.QName;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.util.Map;
 
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.ATTRIB_IS_TREE_NODE;
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.ATTRIB_POINTER_EVENTS;
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_15;
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_FRAME_REFERENCE;
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_VISIBLE;
-import static org.apache.batik.util.SVGConstants.SVG_FILL_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_FONT_SIZE_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_HEIGHT_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_MIDDLE_VALUE;
-import static org.apache.batik.util.SVGConstants.SVG_NONE_VALUE;
-import static org.apache.batik.util.SVGConstants.SVG_TEXT_ANCHOR_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_USE_TAG;
-import static org.apache.batik.util.SVGConstants.SVG_WIDTH_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_X_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_Y_ATTRIBUTE;
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
+import static org.apache.batik.util.SVGConstants.*;
 
 public class VisualizableNode extends AbstractSingleVisualizableNode {
 
   @Override
-  public void accept(final IVisualizableNodeVisitor visitor) {
+  public void accept(IVisualizableNodeVisitor visitor) {
     visitor.visitSingleNode(this);
   }
 
-  public VisualizableNode(
-      final IIdentifiedRegularNode contentNode,
-      final Map<ISimpleNode, IVisualizableNode> map,
-      final Dimension nodeDimension,
-      final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
+  public VisualizableNode(IIdentifiedRegularNode contentNode, Map<ISimpleNode, IVisualizableNode> map, Dimension nodeDimension,
+                          MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
     super(contentNode, map, nodeDimension, leafNodesByAncestors);
   }
 
   @Override
-  public void toXML(final Element element) {
+  public void toXML(Element element) {
     QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element g = element.addElement(group);
     g.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, getContentNode().getId());
     g.addAttribute(ATTRIB_IS_TREE_NODE, SVGConstants.SVG_TRUE_VALUE);
     addUseElement(g);
     addTextElement(g);
-    // addFlowTextElement(g);
   }
 
-  private void addTextElement(final Element g) {
+  private void addTextElement(Element g) {
     QName textName = SVGCreationUtils.createSVGQName(SVGConstants.SVG_TEXT_TAG);
     Element text = g.addElement(textName);
     text.addAttribute(SVG_X_ATTRIBUTE, String.valueOf(getPosition()));
@@ -66,29 +48,7 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
 
   }
 
-  @SuppressWarnings("unused")
-  private void addFlowTextElement(final Element g) {
-    QName textName = SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_ROOT_TAG);
-    Element flowText = g.addElement(textName);
-    Element region = flowText.addElement(SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_REGION_TAG));
-    Element regionRect = region.addElement(SVGCreationUtils.createSVGQName(SVGConstants.SVG_RECT_TAG));
-    regionRect.addAttribute(SVG_X_ATTRIBUTE, String.valueOf(getPosition() - getNodeDimension().width / 2));
-    regionRect.addAttribute(SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition()));
-    regionRect.addAttribute(SVG_WIDTH_ATTRIBUTE, String.valueOf(getNodeDimension().getWidth()));
-    regionRect.addAttribute(SVG_HEIGHT_ATTRIBUTE, String.valueOf(getNodeDimension().getHeight()));
-    regionRect.addAttribute("visibility", "hidden"); //$NON-NLS-1$ //$NON-NLS-2$
-    Element flowDiv = flowText.addElement(SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_DIV_TAG));
-    Element paragraph = flowDiv.addElement(SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_PARA_TAG));
-    paragraph.addAttribute(SVG_FONT_SIZE_ATTRIBUTE, VALUE_15);
-    paragraph.addAttribute("text-align", SVG_MIDDLE_VALUE); //$NON-NLS-1$
-    paragraph.addAttribute("margin-top", "10"); //$NON-NLS-1$ //$NON-NLS-2$
-    paragraph.addAttribute("margin-bottom", "10"); //$NON-NLS-1$ //$NON-NLS-2$
-    paragraph.addAttribute("margin-left", "10"); //$NON-NLS-1$ //$NON-NLS-2$
-    paragraph.addAttribute("margin-right", "10"); //$NON-NLS-1$ //$NON-NLS-2$
-    paragraph.setText(getContentNode().getId());
-  }
-
-  private void addUseElement(final Element g) {
+  private void addUseElement(Element g) {
     QName useName = SVGCreationUtils.createSVGQName(SVG_USE_TAG);
     Element use = g.addElement(useName);
     use.addAttribute(SVG_X_ATTRIBUTE, String.valueOf(getPosition() - getNodeDimension().width / 2));

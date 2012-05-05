@@ -9,9 +9,8 @@ import java.awt.Dimension;
 public class GenericCharmPresentationProperties extends ReflectionCloneableObject<GenericCharmPresentationProperties> implements
         ITreePresentationProperties {
 
-  private String polygonString;
-  private Dimension charmDimension;
-  private Color color;
+  private static final String polygonString = "5.5,11.3542 35.3236,11.3542 30.24724,3.5 155.2527,3.5 150.17636,11.3542 180.0,11.3542 180.0,82.64578 150.17636,82.64578 155.2527,90.5 30.24724,90.5 35.3236,82.64578 5.5,82.64578";
+  private Color color = Color.WHITE;
 
   @Override
   public String getNodeFramePolygonString() {
@@ -20,7 +19,7 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
 
   @Override
   public Dimension getNodeDimension() {
-    return charmDimension;
+    return new Dimension(180, 90);
   }
 
   @Override
@@ -36,14 +35,6 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
   @Override
   public final Dimension getVerticalLineDimension() {
     return new Dimension(getGapDimension().width, getNodeDimension().height);
-  }
-
-  public void setPolygonString(String polygonString) {
-    this.polygonString = polygonString;
-  }
-
-  public void setCharmDimension(Dimension dimension) {
-    this.charmDimension = dimension;
   }
 
   public void setColor(Color color) {
