@@ -4,13 +4,8 @@ import net.sf.anathema.graph.SugiyamaLayout;
 import net.sf.anathema.graph.graph.IGraphTypeVisitor;
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.graph.nodes.IRegularNode;
-import net.sf.anathema.platform.svgtree.document.visualizer.BottomUpGraphVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.ICascadeVisualizer;
-import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.document.visualizer.IVisualizedGraph;
-import net.sf.anathema.platform.svgtree.document.visualizer.InvertedTreeVisualizer;
-import net.sf.anathema.platform.svgtree.document.visualizer.SingleNodeVisualizer;
-import net.sf.anathema.platform.svgtree.document.visualizer.TreeVisualizer;
 
 import java.util.List;
 
@@ -20,11 +15,11 @@ public class VisualizedGraphFactory {
   private final SugiyamaLayout layout = new SugiyamaLayout();
   private final List<IVisualizedGraph> visualizedGraphs = newArrayList();
   private final IRegularNode[] nodes;
-  private final ITreePresentationProperties properties;
+  private final VisualizerFactory factory;
 
-  public VisualizedGraphFactory(IRegularNode[] nodes, ITreePresentationProperties properties) {
+  public VisualizedGraphFactory(IRegularNode[] nodes, VisualizerFactory visualizerFactory) {
     this.nodes = nodes;
-    this.properties = properties;
+    this.factory = visualizerFactory;
   }
 
   public List<IVisualizedGraph> visualizeGraphs() {
@@ -33,22 +28,22 @@ public class VisualizedGraphFactory {
       graph.getType().accept(new IGraphTypeVisitor() {
         @Override
         public void visitDirectedGraph() {
-          add(new BottomUpGraphVisualizer(graph, properties));
+          add(factory.createForBottomUp(graph));
         }
 
         @Override
         public void visitInvertedTree() {
-          add(new InvertedTreeVisualizer(graph, properties));
+          add(factory.createForInvertedTree(graph));
         }
 
         @Override
         public void visitTree() {
-          add(new TreeVisualizer(graph, properties));
+          add(factory.createForTree(graph));
         }
 
         @Override
         public void visitSingle() {
-          add(new SingleNodeVisualizer(properties, graph));
+          add(factory.createForSingle(graph));
         }
       });
     }
