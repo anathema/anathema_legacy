@@ -64,5 +64,4 @@ public class SvgNodeElementAdder {
     use.addAttribute(SVG_FILL_ATTRIBUTE, SVG_NONE_VALUE);
     use.addAttribute(SVGCreationUtils.createXLinkQName(), VALUE_FRAME_REFERENCE);
   }
-
 }

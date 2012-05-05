@@ -81,7 +81,7 @@ public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
     }
   }
 
-  protected Dimension getTreeDimension(ILayer[] layers) {
+  protected Dimension getTreeDimension(ILayer... layers) {
     return new Dimension(getTreeWidth(layers), getTreeHeight(layers));
   }
 
