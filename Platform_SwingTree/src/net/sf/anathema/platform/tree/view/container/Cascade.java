@@ -1,6 +1,7 @@
-package net.sf.anathema.platform.tree.view;
+package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.tree.view.PolygonPanel;
 
 import java.awt.Color;
 

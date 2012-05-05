@@ -4,6 +4,8 @@ import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ITreeView;
+import net.sf.anathema.platform.tree.view.container.Cascade;
+import net.sf.anathema.platform.tree.view.container.NullCascade;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;

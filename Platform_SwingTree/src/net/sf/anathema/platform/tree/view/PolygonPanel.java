@@ -3,7 +3,7 @@ package net.sf.anathema.platform.tree.view;
 import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import net.sf.anathema.platform.tree.view.interaction.Closure;
-import net.sf.anathema.platform.tree.view.interaction.NodeContainer;
+import net.sf.anathema.platform.tree.view.interaction.ElementContainer;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -22,7 +22,7 @@ import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 
 public class PolygonPanel extends JPanel {
   private AffineTransform transform = new AffineTransform();
-  private NodeContainer container = new NodeContainer();
+  private ElementContainer container = new ElementContainer();
 
   public PolygonPanel() {
     setBackground(Color.WHITE);

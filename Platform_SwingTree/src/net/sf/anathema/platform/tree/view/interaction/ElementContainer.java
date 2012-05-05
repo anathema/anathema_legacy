@@ -9,7 +9,7 @@ import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 
-public class NodeContainer implements Iterable<GraphicsElement>{
+public class ElementContainer implements Iterable<GraphicsElement>{
   private List<GraphicsElement> elements = newArrayList();
   private List<InteractiveGraphicsElement> interactiveElements = newArrayList();
 
