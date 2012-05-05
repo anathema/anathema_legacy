@@ -1,14 +1,13 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
-import java.awt.Dimension;
-
-
 import org.dom4j.Element;
+
+import java.awt.Dimension;
 
 public class SingleNodeVisualizedGraph extends VisualizedGraph {
 
-  public SingleNodeVisualizedGraph(Element cascadeElement, Dimension dimension) {
-    super(cascadeElement, dimension);
+  public SingleNodeVisualizedGraph(Element graphElement, Dimension dimension) {
+    super(graphElement, dimension);
   }
 
   @Override
