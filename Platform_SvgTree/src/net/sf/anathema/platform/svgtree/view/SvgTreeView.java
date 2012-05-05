@@ -5,10 +5,10 @@ import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
@@ -145,6 +145,11 @@ public class SvgTreeView implements ISvgTreeView {
         }
       });
     }
+  }
+
+  @Override
+  public void clear() {
+    loadCascade(null, true);
   }
 
   private SVGDocument createSvgDocument(org.dom4j.Document dom4jDocument) {

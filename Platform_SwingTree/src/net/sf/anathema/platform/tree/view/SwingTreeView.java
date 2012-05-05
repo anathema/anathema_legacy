@@ -55,12 +55,18 @@ public class SwingTreeView implements ITreeView<Cascade> {
 
   @Override
   public void loadCascade(Cascade cascade, boolean resetView) throws CascadeLoadException {
-    this.cascade.removeInteractionListener(currentCascadeInteractionListener);
+    clear();
     this.cascade = cascade;
-    polygonPanel.clear();
     cascade.addTo(polygonPanel);
     cascade.addInteractionListener(currentCascadeInteractionListener);
     loadListeners.announce().cascadeLoaded();
+  }
+
+  @Override
+  public void clear() {
+    cascade.removeInteractionListener(currentCascadeInteractionListener);
+    cascade = new NullCascade();
+    polygonPanel.clear();
   }
 
   @Override
