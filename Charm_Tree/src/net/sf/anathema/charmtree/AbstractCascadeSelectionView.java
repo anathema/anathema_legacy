@@ -11,7 +11,8 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.platform.svgtree.document.CascadeDocumentFactory;
+import net.sf.anathema.platform.svgtree.document.GenericCascadeFactory;
+import net.sf.anathema.platform.svgtree.document.SvgCascadeStrategy;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
@@ -118,7 +119,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
 
   @Override
   public CharmTreeRenderer getCharmTreeRenderer() {
-    return GenericCascadeRenderer.CreateFor(charmTreeView, new CascadeDocumentFactory());
+    return GenericCascadeRenderer.CreateFor(charmTreeView, new GenericCascadeFactory(new SvgCascadeStrategy()));
   }
 
   @Override

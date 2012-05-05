@@ -9,7 +9,7 @@ import org.dom4j.Element;
 
 import java.awt.Dimension;
 
-public class DocumentCascade {
+public class SvgDocumentBuilder implements CascadeBuilder<Element, Document> {
   private final static Dimension MAXIMUM_DIMENSION = new Dimension(1400, 625);
   private final SVGDocumentFrameFactory factory;
   private final ITreePresentationProperties properties;
@@ -17,17 +17,19 @@ public class DocumentCascade {
   private Element root;
   private Element cascadeElement;
 
-  public DocumentCascade(SVGDocumentFrameFactory factory, ITreePresentationProperties properties) {
+  public SvgDocumentBuilder(SVGDocumentFrameFactory factory, ITreePresentationProperties properties) {
     this.factory = factory;
     this.properties = properties;
   }
 
+  @Override
   public void initialize() {
     this.cascadeDocument = factory.createFrame(properties);
     this.root = cascadeDocument.getRootElement();
     this.cascadeElement = createCascadeElement(root);
   }
 
+  @Override
   public void applyFinalTouch(double currentWidth, double maximumHeight) {
     setViewBox(currentWidth, maximumHeight, root);
   }
@@ -47,10 +49,12 @@ public class DocumentCascade {
     return cascadeElement;
   }
 
+  @Override
   public Document create() {
     return cascadeDocument;
   }
 
+  @Override
   public void add(Element graphElement) {
     cascadeElement.add(graphElement);
   }
