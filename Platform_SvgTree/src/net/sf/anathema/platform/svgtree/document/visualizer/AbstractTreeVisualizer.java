@@ -27,9 +27,10 @@ public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
       createVisualizableNodes(layerIndex);
     }
     ILayer[] layers = createLayers(layerCount);
-    int treeWidth = setPositionRecursively(getInitialLayer(layers).getNodes()[0], 0)
-        - getProperties().getGapDimension().width;
-    return new VisualizedGraph(createXml(layers), new Dimension(treeWidth, getTreeHeight(layers)));
+    int treeWidth = setPositionRecursively(getInitialLayer(layers).getNodes()[0],
+            0) - getProperties().getGapDimension().width;
+    return new VisualizedGraph(new SvgLayerElementCreator().createXml(layers),
+            new Dimension(treeWidth, getTreeHeight(layers)));
   }
 
   private int setPositionRecursively(IVisualizableNode node, int rightSide) {

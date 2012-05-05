@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.tree.view;
+package net.sf.anathema.platform.tree.view.visualizer;
 
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.platform.svgtree.document.VisualizerFactory;

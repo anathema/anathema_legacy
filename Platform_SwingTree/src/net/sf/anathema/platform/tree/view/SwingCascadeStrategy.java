@@ -6,6 +6,7 @@ import net.sf.anathema.platform.svgtree.document.VisualizerFactory;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ContainerCascade;
+import net.sf.anathema.platform.tree.view.visualizer.SwingVisualizerFactory;
 
 public class SwingCascadeStrategy implements CascadeCreationStrategy<Cascade> {
 

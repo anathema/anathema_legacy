@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
 import net.sf.anathema.graph.nodes.ISimpleNode;
-import org.dom4j.Element;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -17,10 +16,8 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
   private final Dimension gapDimension;
   private final Map<ISimpleNode, IVisualizableNode> innerVisualizableNodesByContent = new HashMap<ISimpleNode, IVisualizableNode>();
 
-  public HorizontalMetaNode(
-      Map<ISimpleNode, IVisualizableNode> map,
-      Dimension nodeDimension,
-      Dimension gapDimension) {
+  public HorizontalMetaNode(Map<ISimpleNode, IVisualizableNode> map, Dimension nodeDimension,
+                            Dimension gapDimension) {
     super(map, nodeDimension);
     this.gapDimension = gapDimension;
   }
@@ -114,11 +111,6 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
   @Override
   public boolean isRootNode() {
     return false;
-  }
-
-  @Override
-  public final void toXML(Element element) {
-    throw new UnsupportedOperationException("Metanodes should be unrolled before creating XML."); //$NON-NLS-1$
   }
 
   public void resolveMetanode() {

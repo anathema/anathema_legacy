@@ -3,6 +3,8 @@ package net.sf.anathema.platform.svgtree.document.components;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
+import net.sf.anathema.platform.svgtree.document.visualizer.CreateSvgElementFromNode;
+import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import org.dom4j.Element;
 
 import java.awt.Dimension;
@@ -15,11 +17,13 @@ public class Layer implements ILayer {
   private ILayer nextLayer;
   private final Dimension gapDimension;
   private final int yPosition;
+  private final ITreePresentationProperties properties;
   private ILayer previousLayer;
 
-  public Layer(Dimension gapDimension, int yPosition) {
+  public Layer(Dimension gapDimension, int yPosition, ITreePresentationProperties properties) {
     this.gapDimension = gapDimension;
     this.yPosition = yPosition;
+    this.properties = properties;
   }
 
   @Override
@@ -244,7 +248,7 @@ public class Layer implements ILayer {
   @Override
   public void addNodesToXml(Element element) {
     for (IVisualizableNode node : nodes) {
-      node.toXML(element);
+      node.accept(new CreateSvgElementFromNode(this, element, properties));
     }
   }
 

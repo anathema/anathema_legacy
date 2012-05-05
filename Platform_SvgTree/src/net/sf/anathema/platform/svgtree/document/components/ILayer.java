@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
-
 import org.dom4j.Element;
 
 public interface ILayer {
@@ -26,7 +25,7 @@ public interface ILayer {
   int getWidth();
 
   void unrollHorizontalMetanodes();
-  
+
   void shiftRight(int requiredShift);
 
   void shiftRightRecursivelyWithThreshold(int threshold, int requiredShift);

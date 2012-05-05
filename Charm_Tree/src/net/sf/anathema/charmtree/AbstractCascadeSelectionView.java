@@ -18,7 +18,6 @@ import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.ITreeView;
 import net.sf.anathema.platform.svgtree.view.SvgTreeView;
-import net.sf.anathema.platform.tree.view.SwingTreeView;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -36,11 +35,11 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   private IChangeableJComboBox<Identified> groupComboBox;
   private IChangeableJComboBox<Identified> typeComboBox;
   private final ISvgTreeView charmTreeView;
-  private final ITreeView treeView;
+  //private final ITreeView treeView;
 
   public AbstractCascadeSelectionView(ISvgTreeViewProperties treeProperties) {
     this.charmTreeView = new SvgTreeView(treeProperties);
-    this.treeView = new SwingTreeView();
+    //this.treeView = new SwingTreeView();
   }
 
   @Override
@@ -115,8 +114,8 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   protected final ITreeView getCharmTreeView() {
-    //return charmTreeView;
-    return treeView;
+    return charmTreeView;
+    //return treeView;
   }
 
   protected ISvgTreeView getSpecialCharmTreeView() {

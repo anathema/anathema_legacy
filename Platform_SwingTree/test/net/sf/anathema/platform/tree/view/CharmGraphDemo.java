@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view;
 
-import net.sf.anathema.platform.tree.view.draw.CharmPolygon;
+import net.sf.anathema.platform.tree.view.visualizer.CharmPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.interaction.CursorChanger;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickToggler;
