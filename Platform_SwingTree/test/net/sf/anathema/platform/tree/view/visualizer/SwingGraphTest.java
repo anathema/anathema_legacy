@@ -13,15 +13,15 @@ import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class SingleNodeSwingGraphTest {
+public class SwingGraphTest {
 
   private final Dimension dimension = new Dimension(0, 0);
   private final DefaultContainerCascade nodeContainer = mock(DefaultContainerCascade.class);
-  private final SingleNodeSwingGraph swingGraph = new SingleNodeSwingGraph(nodeContainer, dimension);
+  private final SwingGraph swingGraph = new SwingGraph(nodeContainer, dimension);
 
   @Test
   public void isSingleNode() throws Exception {
-    assertThat(swingGraph.isSingleNode(), is(true));
+    assertThat(swingGraph.isSingleNode(), is(false));
   }
 
   @Test
