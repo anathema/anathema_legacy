@@ -5,14 +5,16 @@ import net.sf.anathema.lib.gui.swing.IDisposable;
 
 import java.awt.Color;
 
-public interface ITreeView extends IView, IDisposable {
-    void addNodeSelectionListener(CharmInteractionListener listener);
+public interface ITreeView<G> extends IView, IDisposable {
+  void addNodeSelectionListener(CharmInteractionListener listener);
 
-    void setNodeBackgroundColor(String nodeId, Color color);
+  void setNodeBackgroundColor(String nodeId, Color color);
 
-    void setNodeAlpha(String nodeId, int alpha);
+  void setNodeAlpha(String nodeId, int alpha);
 
-    void addDocumentLoadedListener(CascadeLoadedListener listener);
+  void addCascadeLoadedListener(CascadeLoadedListener listener);
 
-    void setCanvasBackground(Color color);
+  void setCanvasBackground(Color color);
+
+  void loadCascade(G cascade, boolean resetView) throws CascadeLoadException;
 }
