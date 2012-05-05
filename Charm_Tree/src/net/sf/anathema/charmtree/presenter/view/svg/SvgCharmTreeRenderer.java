@@ -5,9 +5,9 @@ import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.platform.svgtree.document.CascadeDocumentFactory;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 
 public class SvgCharmTreeRenderer implements CharmTreeRenderer {
   private final CascadeDocumentFactory provider = new CascadeDocumentFactory();
@@ -31,7 +31,7 @@ public class SvgCharmTreeRenderer implements CharmTreeRenderer {
   private void loadCascade(Document document, boolean resetView) {
     try {
       charmTreeView.loadCascade(document, resetView);
-    } catch (DocumentException e) {
+    } catch (CascadeLoadException e) {
       Logger.getLogger(SvgCharmTreeRenderer.class).error(e);
     }
   }

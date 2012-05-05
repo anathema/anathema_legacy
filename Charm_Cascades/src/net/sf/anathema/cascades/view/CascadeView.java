@@ -29,7 +29,7 @@ public class CascadeView extends AbstractCascadeSelectionView implements ICascad
   @Override
   public void initGui() {
     content.add(getSelectionComponent());
-    JComponent treeViewComponent = getCharmTreeView().getComponent();
+    JComponent treeViewComponent = getCharmComponent();
     treeViewComponent.setBackground(Color.WHITE);
     content.add(treeViewComponent, createHorizontalSpanData(1, GridDialogLayoutData.FILL_BOTH));
   }

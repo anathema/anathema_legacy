@@ -3,6 +3,7 @@ package net.sf.anathema.platform.svgtree.view;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
+import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
@@ -55,12 +56,12 @@ public class SvgTreeView implements ISvgTreeView {
   private final SVGSpecialNodeViewManager manager;
   private final IBoundsCalculator calculator;
 
-  public SvgTreeView(final ISvgTreeViewProperties properties) {
+  public SvgTreeView(ISvgTreeViewProperties properties) {
     this.properties = properties;
     this.calculator = new BoundsCalculator();
     this.manager = new SVGSpecialNodeViewManager(canvas, calculator);
     this.listening = new SvgTreeListening(canvas, calculator, properties);
-    addDocumentLoadedListener(new CascadeLoadedListener() {
+    addCascadeLoadedListener(new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {
         initNodeNames();
@@ -85,15 +86,14 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   @Override
-  public void loadCascade(final org.dom4j.Document dom4jDocument, boolean resetView) throws DocumentException {
+  public void loadCascade(final org.dom4j.Document cascade, boolean resetView) throws CascadeLoadException {
     final AffineTransform transform = resetView ? null : canvas.getRenderingTransform();
 	if (resetView)
 	  calculator.reset();
     listening.destructDocumentListening(canvas.getSVGDocument());
     SVGDocument document = null;
-    if (dom4jDocument != null) {
-      DOMImplementation implementation = SVGDOMImplementation.getDOMImplementation();
-      document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
+    if (cascade != null) {
+      document = createSvgDocument(cascade);
       injectGlassPane(document);
     }
     canvas.setDocument(document);
@@ -132,6 +132,16 @@ public class SvgTreeView implements ISvgTreeView {
 		}
     	
     });
+  }
+
+  private SVGDocument createSvgDocument(org.dom4j.Document dom4jDocument) {
+    SVGDocument document;DOMImplementation implementation = SVGDOMImplementation.getDOMImplementation();
+    try {
+      document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
+    } catch (DocumentException e) {
+      throw new CascadeLoadException(e);
+    }
+    return document;
   }
 
   private void injectGlassPane(SVGDocument document) {
@@ -189,7 +199,7 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   @Override
-  public void addDocumentLoadedListener(final CascadeLoadedListener listener) {
+  public void addCascadeLoadedListener(final CascadeLoadedListener listener) {
     canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
       @Override
       public void svgLoadEventDispatchCompleted(final SVGLoadEventDispatcherEvent arg0) {

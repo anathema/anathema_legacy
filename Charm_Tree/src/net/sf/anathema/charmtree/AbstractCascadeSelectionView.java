@@ -113,7 +113,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
 
   @Override
   public final void addCascadeLoadedListener(CascadeLoadedListener documentListener) {
-    charmTreeView.addDocumentLoadedListener(documentListener);
+    charmTreeView.addCascadeLoadedListener(documentListener);
   }
 
   protected void unselect() {

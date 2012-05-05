@@ -29,7 +29,7 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
   @Override
   public void initGui() {
     content.add(getSelectionComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
-    content.add(getCharmTreeView().getComponent(), GridDialogLayoutData.FILL_BOTH);
+    content.add(getCharmComponent(), GridDialogLayoutData.FILL_BOTH);
   }
 
   @Override
