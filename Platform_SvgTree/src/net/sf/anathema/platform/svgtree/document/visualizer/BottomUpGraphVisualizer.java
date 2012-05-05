@@ -76,8 +76,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
 
   @Override
   public IVisualizedGraph buildTree() {
-    SimplifiedButtonUpGraphVisualizer simplifiedVisualizer =
-            new SimplifiedButtonUpGraphVisualizer(getGraph(), getProperties());
+    SimplifiedButtonUpGraphVisualizer simplifiedVisualizer = new SimplifiedButtonUpGraphVisualizer(getGraph(),
+            getProperties());
     if (simplifiedVisualizer.isApplicable()) {
       return simplifiedVisualizer.buildTree();
     }
@@ -101,7 +101,7 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     separateOverlappingNodes(layers);
     removeWhiteSpace(layers);
     centerTrailingSingleNodePath(layers);
-    return new VisualizedGraph(new SvgLayerElementCreator(getProperties()).createXml(layers), getTreeDimension(layers));
+    return new SvgGraphFactory(getProperties()).create(layers);
   }
 
   private void centerTrailingSingleNodePath(ILayer[] layers) {
@@ -227,7 +227,7 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
 
   private void straightenLines(ILayer[] layers) {
     for (ILayer layer : layers) {
-      int treeWidth = getTreeWidth(layers);
+      int treeWidth = new TreeDimensionCalculator(getProperties()).getTreeWidth(layers);
       if (layer.getPreviousLayer() == null) {
         continue;
       }
@@ -318,8 +318,8 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
         int missingSpace = node.getRightSide() + getProperties().getGapDimension().width - nextNode.getLeftSide();
         if (missingSpace > 0) {
           int projectionIndex = nodeProjection.indexOf(nextNode);
-          while (nodeProjection.get(projectionIndex - 1).getLeftSide() ==
-                  nodeProjection.get(projectionIndex).getLeftSide()) {
+          while (nodeProjection.get(projectionIndex - 1).getLeftSide() == nodeProjection.get(
+                  projectionIndex).getLeftSide()) {
             projectionIndex--;
           }
           nodeProjection.forceAllRemainingNodesLeft(projectionIndex, -missingSpace);
@@ -416,7 +416,7 @@ public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
     for (ISimpleNode node : node2.getChildren()) {
       secondVisualizableChildren.add(getVisualizableNode(node));
     }
-    return firstVisualizableChildren.containsAll(secondVisualizableChildren) &&
-            firstVisualizableChildren.size() == secondVisualizableChildren.size();
+    return firstVisualizableChildren.containsAll(
+            secondVisualizableChildren) && firstVisualizableChildren.size() == secondVisualizableChildren.size();
   }
 }

@@ -11,13 +11,13 @@ import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
 
-public class VisualizedGraphFactory {
+public class NodeToGraphConverter {
   private final SugiyamaLayout layout = new SugiyamaLayout();
   private final List<IVisualizedGraph> visualizedGraphs = newArrayList();
   private final IRegularNode[] nodes;
   private final VisualizerFactory factory;
 
-  public VisualizedGraphFactory(IRegularNode[] nodes, VisualizerFactory visualizerFactory) {
+  public NodeToGraphConverter(IRegularNode[] nodes, VisualizerFactory visualizerFactory) {
     this.nodes = nodes;
     this.factory = visualizerFactory;
   }
