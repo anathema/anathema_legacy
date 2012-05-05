@@ -20,6 +20,6 @@ public class LeftClickToggler extends MouseAdapter {
         if (!SwingUtilities.isLeftMouseButton(e)){
             return;
         }
-        polygonPanel.togglePolygonAtPoint(e.getPoint());
+        polygonPanel.toggleElementAtPoint(e.getPoint());
     }
 }

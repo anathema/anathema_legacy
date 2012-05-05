@@ -10,7 +10,7 @@ import net.sf.anathema.platform.tree.view.interaction.WheelScaler;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-public class FindingPolygons {
+public class CharmGraphDemo {
   public static void main(String[] args) {
     PolygonPanel polygonPanel = new PolygonPanel();
     polygonPanel.add(new CharmPolygon(15, 85));

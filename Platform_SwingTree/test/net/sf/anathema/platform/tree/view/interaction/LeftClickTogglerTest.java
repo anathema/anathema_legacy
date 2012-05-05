@@ -4,8 +4,6 @@ import net.sf.anathema.platform.tree.view.PolygonPanel;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.event.MenuEvent;
-
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 
@@ -32,7 +30,7 @@ public class LeftClickTogglerTest {
   public void togglesPointOfLeftClickOnPanel() throws Exception {
     when(event.getModifiers()).thenReturn(MouseEvent.BUTTON1_MASK);
     toggler.mouseClicked(event);
-    verify(panel).togglePolygonAtPoint(AnyPoint);
+    verify(panel).toggleElementAtPoint(AnyPoint);
   }
 
   @Test

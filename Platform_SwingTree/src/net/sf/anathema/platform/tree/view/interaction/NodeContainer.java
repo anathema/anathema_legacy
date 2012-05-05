@@ -22,7 +22,7 @@ public class NodeContainer implements Iterable<GraphicsElement>{
     elements.add(element);
   }
 
-  public Executor onPolygonAtPoint(Point2D point) {
+  public Executor onElementAtPoint(Point2D point) {
     for (InteractiveGraphicsElement element : interactiveElements)
       if (element.contains(point)) {
         return new ElementExecutor(element);
