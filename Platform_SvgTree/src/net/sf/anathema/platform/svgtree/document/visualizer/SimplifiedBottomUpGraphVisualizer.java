@@ -11,10 +11,11 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class SimplifiedButtonUpGraphVisualizer extends AbstractCascadeVisualizer {
+public class SimplifiedBottomUpGraphVisualizer extends AbstractCascadeVisualizer {
 
-  public SimplifiedButtonUpGraphVisualizer(LayeredGraph graph, final ITreePresentationProperties properties) {
-    super(new WideDummyTreePresentationProperties(properties), graph);
+  public SimplifiedBottomUpGraphVisualizer(LayeredGraph graph, ITreePresentationProperties properties,
+                                           VisualizedGraphFactory factory) {
+    super(new WideDummyTreePresentationProperties(properties), graph, factory);
   }
 
   @Override
@@ -30,7 +31,7 @@ public class SimplifiedButtonUpGraphVisualizer extends AbstractCascadeVisualizer
     for (ILayer layer : new BackwardsIterable<ILayer>(layers)) {
       layer.unrollHorizontalMetanodes();
     }
-    return new SvgGraphFactory(getProperties()).create(layers);
+    return getGraphFactory().create(layers);
   }
 
   public boolean isApplicable() {

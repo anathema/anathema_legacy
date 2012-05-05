@@ -9,8 +9,8 @@ import java.awt.Dimension;
 
 public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
 
-  public AbstractTreeVisualizer(ITreePresentationProperties properties, LayeredGraph graph) {
-    super(properties, graph);
+  public AbstractTreeVisualizer(ITreePresentationProperties properties, LayeredGraph graph, VisualizedGraphFactory factory) {
+    super(properties, graph, factory);
   }
 
   private void createVisualizableNodes(int layerIndex) {
@@ -30,7 +30,7 @@ public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
     int treeWidth = setPositionRecursively(getInitialLayer(layers).getNodes()[0],
             0) - getProperties().getGapDimension().width;
     Dimension dimension = new Dimension(treeWidth, new TreeDimensionCalculator(getProperties()).getTreeHeight(layers));
-    return new SvgGraphFactory(getProperties()).createWithDimension(layers, dimension);
+    return getGraphFactory().createWithDimension(layers, dimension);
   }
 
   private int setPositionRecursively(IVisualizableNode node, int rightSide) {

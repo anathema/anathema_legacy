@@ -18,16 +18,23 @@ public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
   private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors = new MultiEntryMap<ISimpleNode, ISimpleNode>();
   private final VisualizableNodeFactory nodeFactory;
   private final LayeredGraph graph;
+  private final VisualizedGraphFactory graphFactory;
 
-  public AbstractCascadeVisualizer(ITreePresentationProperties properties, LayeredGraph graph) {
+  public AbstractCascadeVisualizer(ITreePresentationProperties properties, LayeredGraph graph,
+                                   VisualizedGraphFactory graphFactory) {
     this.properties = properties;
     this.graph = graph;
+    this.graphFactory = graphFactory;
     this.nodeFactory = new VisualizableNodeFactory(properties.getNodeDimension(), properties.getGapDimension(),
             properties.getVerticalLineDimension(), visualizableNodesByContent, leafNodesByAncestors);
   }
 
   protected ITreePresentationProperties getProperties() {
     return properties;
+  }
+
+  protected VisualizedGraphFactory getGraphFactory() {
+    return graphFactory;
   }
 
   protected VisualizableNodeFactory getNodeFactory() {

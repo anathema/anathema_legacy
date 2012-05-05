@@ -8,11 +8,12 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 
-public class SimplifiedButtonUpGraphVisualizerTest {
+public class SimplifiedBottomUpGraphVisualizerTest {
 
   private ITreePresentationProperties properties = mock(ITreePresentationProperties.class);
   private TestLayeredGraph graph = new TestLayeredGraph();
-  private SimplifiedButtonUpGraphVisualizer visualizer = new SimplifiedButtonUpGraphVisualizer(graph, properties);
+  private SimplifiedBottomUpGraphVisualizer visualizer = new SimplifiedBottomUpGraphVisualizer(graph, properties,
+          new SvgGraphFactory(properties));
 
   @Test
   public void doesNotApplyForMiddleLeaf() throws Exception {

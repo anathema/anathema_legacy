@@ -5,7 +5,7 @@ import org.dom4j.Element;
 
 import java.awt.Dimension;
 
-public class SvgGraphFactory {
+public class SvgGraphFactory implements VisualizedGraphFactory {
   private final ITreePresentationProperties properties;
   private final TreeDimensionCalculator calculator;
 
@@ -14,14 +14,17 @@ public class SvgGraphFactory {
     this.calculator = new TreeDimensionCalculator(properties);
   }
 
+  @Override
   public IVisualizedGraph createForSingleNode(ILayer layer) {
     return new SingleNodeSvgVisualizedGraph(createElement(layer), calculateSize(layer));
   }
 
+  @Override
   public IVisualizedGraph create(ILayer[] layers) {
     return createWithDimension(layers, calculateSize(layers));
   }
 
+  @Override
   public IVisualizedGraph createWithDimension(ILayer[] layers, Dimension dimension) {
     return new SvgVisualizedGraph(createElement(layers), dimension);
   }

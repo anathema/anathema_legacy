@@ -8,8 +8,8 @@ import net.sf.anathema.platform.svgtree.document.components.Layer;
 
 public class SingleNodeVisualizer extends AbstractCascadeVisualizer {
 
-  public SingleNodeVisualizer(ITreePresentationProperties properties, LayeredGraph graph) {
-    super(properties, graph);
+  public SingleNodeVisualizer(ITreePresentationProperties properties, LayeredGraph graph, VisualizedGraphFactory factory) {
+    super(properties, graph, factory);
   }
 
   @Override
@@ -19,6 +19,6 @@ public class SingleNodeVisualizer extends AbstractCascadeVisualizer {
     ILayer layer = new Layer(getProperties().getGapDimension(), 0);
     layer.addNode(visualizableNode);
     visualizableNode.setPosition(visualizableNode.getWidth() / 2);
-    return new SvgGraphFactory(getProperties()).createForSingleNode(layer);
+    return getGraphFactory().createForSingleNode(layer);
   }
 }
