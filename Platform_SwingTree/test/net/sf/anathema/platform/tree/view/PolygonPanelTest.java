@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.view;
 
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
+import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -53,8 +54,8 @@ public class PolygonPanelTest {
 
   @Test
   public void paintsPolygon() throws Exception {
-    FilledPolygon polygon = mock(FilledPolygon.class);
-    polygonPanel.addPolygon(polygon);
+    InteractiveGraphicsElement polygon = mock(FilledPolygon.class);
+    polygonPanel.add(polygon);
     polygonPanel.paintComponent(graphics);
     verify(polygon).paint(graphics);
   }
@@ -62,17 +63,17 @@ public class PolygonPanelTest {
   @Test
   public void paintsArrow() throws Exception {
     FlexibleArrow arrow = mock(FlexibleArrow.class);
-    polygonPanel.addArrow(arrow);
+    polygonPanel.add(arrow);
     polygonPanel.paintComponent(graphics);
     verify(arrow).paint(graphics);
   }
 
   @Test
   public void paintsAllPolygon() throws Exception {
-    FilledPolygon firstPolygon = mock(FilledPolygon.class);
-    FilledPolygon secondPolygon = mock(FilledPolygon.class);
-    polygonPanel.addPolygon(firstPolygon);
-    polygonPanel.addPolygon(secondPolygon);
+    InteractiveGraphicsElement firstPolygon = mock(FilledPolygon.class);
+    InteractiveGraphicsElement secondPolygon = mock(FilledPolygon.class);
+    polygonPanel.add(firstPolygon);
+    polygonPanel.add(secondPolygon);
     polygonPanel.paintComponent(graphics);
     verify(firstPolygon).paint(graphics);
     verify(secondPolygon).paint(graphics);
