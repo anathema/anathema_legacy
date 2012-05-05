@@ -8,7 +8,7 @@ import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
 
 public class SvgLayerElementCreator {
-  public Element createXml(ILayer[] layers) {
+  public Element createXml(ILayer... layers) {
     QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element cascadeElement = new DefaultElement(group);
     for (ILayer layer : layers) {
