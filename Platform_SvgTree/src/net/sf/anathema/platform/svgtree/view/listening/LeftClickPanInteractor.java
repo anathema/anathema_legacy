@@ -7,7 +7,6 @@ import java.awt.geom.AffineTransform;
 
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
-import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.swing.gvt.AbstractPanInteractor;
 import org.apache.batik.swing.gvt.JGVTComponent;
@@ -19,16 +18,13 @@ public class LeftClickPanInteractor extends AbstractPanInteractor {
   private Cursor previousCursor;
 
   private final IAnathemaCanvas canvas;
-  private final IBoundsCalculator calculator;
   private final ISvgTreeViewProperties properties;
   private boolean panningEnabled;
   private boolean cursorEnabled;
 
   public LeftClickPanInteractor(
-      IBoundsCalculator boundsCalculator,
       IAnathemaCanvas canvas,
       ISvgTreeViewProperties properties) {
-    this.calculator = boundsCalculator;
     this.canvas = canvas;
     this.properties = properties;
     togglePanning();
@@ -82,7 +78,6 @@ public class LeftClickPanInteractor extends AbstractPanInteractor {
     rt.preConcatenate(at);
     c.setRenderingTransform(rt);
     canvas.setCursorInternal(previousCursor);
-    calculator.reset();
   }
 
   @Override

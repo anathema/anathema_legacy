@@ -14,30 +14,23 @@ import org.w3c.dom.svg.SVGMatrix;
 import org.w3c.dom.svg.SVGRect;
 
 public class BoundsCalculator implements IBoundsCalculator {
-
-  private final Map<SVGLocatable, Rectangle> boundsByElement = new HashMap<SVGLocatable, Rectangle>();
   
   private SVGContext savedContext;
 
   @Override
   public Rectangle getBounds(SVGLocatable svgElement) {
-    if (boundsByElement.containsKey(svgElement)) {
-      return boundsByElement.get(svgElement);
-    }
-    
     //below block to protect against exceptions related to special display components
     boolean useStoredContext = false;
-    if (svgElement instanceof SVGOMGElement)
-    {
-		SVGOMGElement element = (SVGOMGElement) svgElement;
-		if (element.getSVGContext() == null && savedContext != null)
-		{
-			element.setSVGContext(savedContext);
-			useStoredContext = true;
-		}
-		else
-			savedContext = savedContext == null && element.getSVGContext() instanceof SVGGElementBridge ?
-					element.getSVGContext() : savedContext;
+    if (svgElement instanceof SVGOMGElement) {
+      SVGOMGElement element = (SVGOMGElement) svgElement;
+      if (element.getSVGContext() == null && savedContext != null) {
+        element.setSVGContext(savedContext);
+        useStoredContext = true;
+      } else {
+        savedContext = savedContext == null
+                    && element.getSVGContext() instanceof SVGGElementBridge
+                     ? element.getSVGContext() : savedContext;
+      }
     }
     
     SVGMatrix screenCTM = svgElement.getScreenCTM();
@@ -58,16 +51,11 @@ public class BoundsCalculator implements IBoundsCalculator {
         (int) startPoint.getY(),
         (int) (endPoint.getX() - startPoint.getX()),
         (int) (endPoint.getY() - startPoint.getY()));
-    boundsByElement.put(svgElement, boundingRectangle);
     
-    if (useStoredContext)
-    	((SVGOMGElement)svgElement).setSVGContext(null);
-    	
+    if (useStoredContext) {
+      ((SVGOMGElement)svgElement).setSVGContext(null);
+    }
+    
     return boundingRectangle;
-  }
-
-  @Override
-  public void reset() {
-    boundsByElement.clear();
   }
 }

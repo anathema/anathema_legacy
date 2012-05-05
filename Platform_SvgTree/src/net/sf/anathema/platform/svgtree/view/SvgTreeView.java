@@ -59,7 +59,7 @@ public class SvgTreeView implements ISvgTreeView {
     this.properties = properties;
     this.calculator = new BoundsCalculator();
     this.manager = new SVGSpecialNodeViewManager(canvas, calculator);
-    this.listening = new SvgTreeListening(canvas, calculator, properties);
+    this.listening = new SvgTreeListening(canvas, properties);
     addDocumentLoadedListener(new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {
@@ -87,8 +87,9 @@ public class SvgTreeView implements ISvgTreeView {
   @Override
   public void loadCascade(final org.dom4j.Document dom4jDocument, boolean resetView) throws DocumentException {
     final AffineTransform transform = resetView ? null : canvas.getRenderingTransform();
-	if (resetView)
-	  calculator.reset();
+    if (resetView) {
+      canvas.resetRenderingTransform();
+    }
     listening.destructDocumentListening(canvas.getSVGDocument());
     SVGDocument document = null;
     if (dom4jDocument != null) {
@@ -97,41 +98,42 @@ public class SvgTreeView implements ISvgTreeView {
       injectGlassPane(document);
     }
     canvas.setDocument(document);
-    if (transform != null)
-    canvas.addGVTTreeRendererListener(new GVTTreeRendererListener()
-    {
+    if (transform != null) {
+      canvas.addGVTTreeRendererListener(
+        new GVTTreeRendererListener() {
 
-		@Override
-		public void gvtRenderingCancelled(GVTTreeRendererEvent e) {
-			// TODO Auto-generated method stub
+          @Override
+          public void gvtRenderingCancelled(GVTTreeRendererEvent e) {
+          	// TODO Auto-generated method stub
 			
-		}
+          }
 
-		@Override
-		public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
-			// TODO Auto-generated method stub
+          @Override
+          public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
+          	// TODO Auto-generated method stub
 			
-		}
+          }
 
-		@Override
-		public void gvtRenderingFailed(GVTTreeRendererEvent e) {
-			// TODO Auto-generated method stub
+          @Override
+          public void gvtRenderingFailed(GVTTreeRendererEvent e) {
+          	// TODO Auto-generated method stub
 			
-		}
+          }
 
-		@Override
-		public void gvtRenderingPrepare(GVTTreeRendererEvent e) {
-		    canvas.setRenderingTransform(transform);
-		    canvas.removeGVTTreeRendererListener(this);
-		}
+          @Override
+          public void gvtRenderingPrepare(GVTTreeRendererEvent e) {
+            canvas.setRenderingTransform(transform);
+            canvas.removeGVTTreeRendererListener(this);
+          }
 
-		@Override
-		public void gvtRenderingStarted(GVTTreeRendererEvent e) {
-			// TODO Auto-generated method stub
+          @Override
+          public void gvtRenderingStarted(GVTTreeRendererEvent e) {
+          	// TODO Auto-generated method stub
 			
-		}
-    	
-    });
+          }
+        }
+      );
+    }
   }
 
   private void injectGlassPane(SVGDocument document) {

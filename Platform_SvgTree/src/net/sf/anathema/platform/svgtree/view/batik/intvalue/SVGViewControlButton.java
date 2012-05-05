@@ -43,28 +43,29 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
 
   @Override
   public SVGGElement initGui(final SVGOMDocument svgDocument, final IBoundsCalculator boundsCalculator) {
+    this.calculator = boundsCalculator;
     this.outerGroupElement = (SVGGElement) svgDocument.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
         SVGConstants.SVG_G_TAG);
     final SVGGElement buttonGroup = button.initGui(svgDocument);
     outerGroupElement.appendChild(buttonGroup);
-    this.displayElement = display.initGui(svgDocument, boundsCalculator);
+    this.displayElement = display.initGui(svgDocument, calculator);
     setAttribute(
         displayElement,
         SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
         "translate(0," + SVGIntValueDisplay.getDiameter(nodeWidth) * 1.15 + SVGButton.SHADOW_OFFSET + ")"); //$NON-NLS-1$ //$NON-NLS-2$
     outerGroupElement.appendChild(displayElement);
     this.rootElement = svgDocument.getRootElement();
-    EventListener removeListener = createRemoveListener(boundsCalculator, buttonGroup);
+    EventListener removeListener = createRemoveListener(buttonGroup);
     buttonGroup.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(), false);
     buttonGroup.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, removeListener, false);
     displayElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, removeListener, false);
     setDisplayVisible(false);
-    this.calculator = boundsCalculator;
+
     return outerGroupElement;
   }
 
-  private EventListener createRemoveListener(final IBoundsCalculator boundsCalculator, final SVGGElement buttonGroup) {
+  private EventListener createRemoveListener(final SVGGElement buttonGroup) {
     return new EventListener() {
       @Override
       public void handleEvent(final Event evt) {
@@ -131,7 +132,6 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
       }
     }
     setEnabled(false);
-    calculator.reset();
   }
 
   private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final String attributeValue) {

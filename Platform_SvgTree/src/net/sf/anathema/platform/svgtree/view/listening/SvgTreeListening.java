@@ -4,7 +4,6 @@ import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
-import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 import org.apache.batik.swing.gvt.Interactor;
 import org.apache.batik.util.SVGConstants;
 import org.jmock.example.announcer.Announcer;
@@ -23,7 +22,6 @@ public class SvgTreeListening {
 
   private final ISvgTreeViewProperties properties;
   private final IAnathemaCanvas canvas;
-  private final IBoundsCalculator boundsCalculator;
   private final Announcer<CharmInteractionListener> control = Announcer.to(CharmInteractionListener.class);
   private final LeftClickPanInteractor leftClickPanner;
   private String selectionId;
@@ -111,30 +109,20 @@ public class SvgTreeListening {
   };
 
   @SuppressWarnings("unchecked")
-public SvgTreeListening(
+  public SvgTreeListening(
       final AnathemaCanvas canvas,
-      IBoundsCalculator calculator,
       ISvgTreeViewProperties viewProperties) {
     this.canvas = canvas;
-    this.boundsCalculator = calculator;
     this.properties = viewProperties;
-    canvas.addKeyListener(new KeyAdapter() {
-      @Override
-      public void keyPressed(final KeyEvent e) {
-        int key = e.getKeyCode();
-        if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_LEFT || key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN) {
-          boundsCalculator.reset();
-        }
-      }
-    });
+		MagnifyInteractor magnify = new MagnifyInteractor(canvas, this, properties.getZoomCursor());
     List<Interactor> interactors = canvas.getInteractors();
-    interactors.add(new RightClickMagnifyInteractor(boundsCalculator, canvas, this, properties.getZoomCursor()));
-    interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
-    this.leftClickPanner = new LeftClickPanInteractor(boundsCalculator, canvas, properties);
+    interactors.add(magnify);
+    interactors.add(new DoubleRightClickResetTransformInteractor());
+    this.leftClickPanner = new LeftClickPanInteractor(canvas, properties);
     interactors.add(leftClickPanner);
     canvas.addMouseListener(leftClickPanner);
-    canvas.addMouseListener(new RightClickPanAdapter(boundsCalculator));
-    canvas.addMouseWheelListener(new MouseWheelMagnifyListener(boundsCalculator));
+    canvas.addMouseListener(new RightClickPanAdapter());
+    canvas.addMouseWheelListener(magnify);
     canvas.setCursorInternal(properties.getDefaultCursor());
   }
 
