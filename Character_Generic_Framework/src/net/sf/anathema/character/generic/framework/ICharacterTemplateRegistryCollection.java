@@ -17,29 +17,27 @@ import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTe
 
 public interface ICharacterTemplateRegistryCollection {
 
-  public abstract IXmlTemplateRegistry<GenericCharacterTemplate> getCharacterTemplateRegistry();
+  IXmlTemplateRegistry<GenericCharacterTemplate> getCharacterTemplateRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> getTraitGroupTemplateRegistry();
+  IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> getTraitGroupTemplateRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericEssenceTemplate> getEssenceTemplateRegistry();
+  IXmlTemplateRegistry<GenericEssenceTemplate> getEssenceTemplateRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericCreationPoints> getCreationPointTemplateRegistry();
+  IXmlTemplateRegistry<GenericCreationPoints> getCreationPointTemplateRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericBonusPointCosts> getBonusPointTemplateRegistry();
+  IXmlTemplateRegistry<GenericBonusPointCosts> getBonusPointTemplateRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericExperiencePointCosts> getExperienceTemplateRegistry();
+  IXmlTemplateRegistry<GenericExperiencePointCosts> getExperienceTemplateRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericTraitTemplateFactory> getTraitFactoryRegistry();
+  IXmlTemplateRegistry<GenericTraitTemplateFactory> getTraitFactoryRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericTraitTemplatePool> getTraitTemplatePoolRegistry();
+  IXmlTemplateRegistry<GenericTraitTemplatePool> getTraitTemplatePoolRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericMagicTemplate> getMagicTemplateRegistry();
+  IXmlTemplateRegistry<GenericMagicTemplate> getMagicTemplateRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericPresentationTemplate> getPresentationTemplateRegistry();
+  IXmlTemplateRegistry<GenericPresentationTemplate> getPresentationTemplateRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericCharmPresentationProperties> getCharmPresentationTemplateRegistry();
+  IXmlTemplateRegistry<GenericHealthTemplate> getHealthTemplateRegistry();
 
-  public abstract IXmlTemplateRegistry<GenericHealthTemplate> getHealthTemplateRegistry();
-
-  public abstract IXmlTemplateRegistry<GenericAdditionalRules> getAdditionalRulesRegistry();
+  IXmlTemplateRegistry<GenericAdditionalRules> getAdditionalRulesRegistry();
 }

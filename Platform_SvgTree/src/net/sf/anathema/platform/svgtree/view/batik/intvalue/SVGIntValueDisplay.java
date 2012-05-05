@@ -60,8 +60,7 @@ public class SVGIntValueDisplay implements IIntValueView {
           selectionRectangle.setAttributeNS(null, SVGConstants.SVG_X_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
           selectionRectangle.setAttributeNS(null, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ONE_VALUE);
           setAttribute(selectionRectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
-          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_HEIGHT_ATTRIBUTE,
-        		  String.valueOf(2 * radius + gap));
+          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_HEIGHT_ATTRIBUTE, String.valueOf(2 * radius + gap));
           selectionRectangle.setAttributeNS(null, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
           selectionRectangle.setAttributeNS(null, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_LIGHT_MEDIUM_GRAY);
           selectionRectangle.setAttributeNS(
@@ -76,8 +75,8 @@ public class SVGIntValueDisplay implements IIntValueView {
   };
   
   public static double getDiameter(final double nodeWidth) {
-	    return nodeWidth / 10;
-	  }
+    return nodeWidth / 10;
+  }
 
   public static double getDisplayDiameter(final double nodeWidth, final int numDots) {
 	final double modifier = .7;

@@ -7,7 +7,7 @@ import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements
     IPresentationProperties {
 
-  private GenericCharmPresentationProperties charmPresentationProperties;
+  private GenericCharmPresentationProperties charmPresentationProperties = new GenericCharmPresentationProperties();
   private ICharacterTemplate template;
 
   @Override
@@ -49,9 +49,5 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
 
   private String getSubTypeId() {
     return template.getTemplateType().getSubType().getId();
-  }
-
-  public void setCharmPresentationProperties(GenericCharmPresentationProperties properties) {
-    charmPresentationProperties = properties;
   }
 }

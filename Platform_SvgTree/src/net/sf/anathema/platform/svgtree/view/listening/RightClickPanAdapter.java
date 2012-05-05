@@ -5,17 +5,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 
-import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.swing.gvt.JGVTComponent;
 
 public class RightClickPanAdapter extends MouseAdapter {
-
-  private final IBoundsCalculator calculator;
-
-  public RightClickPanAdapter(IBoundsCalculator boundsCalculator) {
-    this.calculator = boundsCalculator;
-  }
 
   @Override
   public void mouseClicked(MouseEvent e) {
@@ -29,6 +22,5 @@ public class RightClickPanAdapter extends MouseAdapter {
     AffineTransform rt = (AffineTransform) component.getRenderingTransform().clone();
     rt.preConcatenate(at);
     component.setRenderingTransform(rt);
-    calculator.reset();
   }
 }

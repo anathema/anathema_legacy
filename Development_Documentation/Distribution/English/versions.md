@@ -18,12 +18,17 @@ Please use the custom data facility introduced in v4.1.0 in its stead, placing y
 * [Curtis Tasker] Preferences window has button to open repository location in OS-Specific File Manager (Explorer, Finder, etc).
 * [Curtis Tasker] Preferences window browse button now opens to the location of the current repository.
 * [Curtis Tasker] Preferences window repository location field now shows the location of the default repository when it is selected, rather than [Default Repository]
+* [Curtis Tasker] Mousewheel Zoom levels on Charm Cascades been smoothed out. (It will zoom less per rotating "click" of your wheel)
+* [Curtis Tasker] Zoom-In on Charm Cascades now has a cap, and the existing cap on Zoom-Out has been enlarged.
+* [Curtis Tasker] There is now help text for the charm cascades, detailing how to pan, zoom, and reset the view.
 * [Jesse Belanger] Charm descriptions for Scroll of the Monk, Return of the Scarlet Empress, and Spirits are now incorporated.
 * All canonical Yozis are supported as possible patrons for Green Sun Princes. Obviously, they do not have any charms defined beyond the generics, but you are free
   to hang your favorite custom charm set off of them.
 
 ### Bugfixes
 * [Curtis Tasker] Dodge DV takes into account mobility penalties from shields.
+* [Curtis Tasker] Mousewheel Zoom-Out no longer flips the charm cascade when zooming out too quickly.
+* [Curtis Tasker] Charm Cascade now resets zoom levels when changing Charm Types.
 * (Infernal Monster Style) Correct Essence prereq for "Screaming Meat Shield" and "One Hand Fury".
 * (Infernal/Cecelyne) Correct Charm prereqs for "Swallowed in Eternity"
 

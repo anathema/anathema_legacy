@@ -2,6 +2,7 @@ package net.sf.anathema.charmtree;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.charmtree.presenter.view.CharmTreeRenderer;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
@@ -20,6 +21,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
@@ -27,7 +29,7 @@ import java.awt.Dimension;
 
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
 
-  private final JPanel selectionPanel = new JPanel(new GridDialogLayout(3, false));
+  private final JPanel selectionPanel = new JPanel(new GridDialogLayout(4, false));
   private IChangeableJComboBox<IIdentificate> groupComboBox;
   private IChangeableJComboBox<IIdentificate> typeComboBox;
   private final ISvgTreeView charmTreeView;
@@ -98,6 +100,13 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
 	  
 	  getSelectionComponent().add(buttonPanel);
   }
+	
+	@Override
+	public void addCharmCascadeHelp(String helpText) {
+		JLabel help = new JLabel(helpText);
+		getSelectionComponent().add( help, GridDialogLayoutData.FILL_HORIZONTAL );
+		
+	}
 
   protected final JComponent getSelectionComponent() {
     return selectionPanel;
