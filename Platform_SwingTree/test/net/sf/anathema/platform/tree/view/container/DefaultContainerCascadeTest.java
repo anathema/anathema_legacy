@@ -5,6 +5,7 @@ import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InOrder;
 import org.mockito.Matchers;
 
 import java.awt.Color;
@@ -14,6 +15,8 @@ import static net.sf.anathema.platform.tree.view.draw.PolygonMother.squareAtOrig
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -80,6 +83,22 @@ public class DefaultContainerCascadeTest {
     PolygonPanel panel = mock(PolygonPanel.class);
     container.addTo(panel);
     verify(panel).add(polygon1);
+  }
+
+  @Test
+  public void setsNodeIdAsTextOnPolygon() throws Exception {
+    PolygonPanel panel = mock(PolygonPanel.class);
+    container.addTo(panel);
+    verify(polygon1).setText("X");
+  }
+
+  @Test
+  public void setsTextBeforeAdding() throws Exception {
+    PolygonPanel panel = mock(PolygonPanel.class);
+    container.addTo(panel);
+    InOrder inOrder = inOrder(panel, polygon1);
+    inOrder.verify(polygon1).setText(anyString());
+    inOrder.verify(panel).add(polygon1);
   }
 
   @Test

@@ -43,6 +43,7 @@ public class DefaultContainerCascade implements ContainerCascade {
   @Override
   public void addTo(PolygonPanel panel) {
     for (IdentifiedPolygon node : nodes) {
+      node.element.setText(node.id);
       panel.add(node.element);
     }
   }
