@@ -31,19 +31,18 @@ public class SvgTreeListening {
       String nodeId = ((SVGGElement) event.getCurrentTarget()).getId();
       if (((MouseEvent) event).getButton() == 0) {
         if (selectionId == null) {
-          selectionId=nodeId;
+          selectionId = nodeId;
         }
         canvas.setCursorInternal(properties.getForbiddenCursor());
         leftClickPanner.toggleCursorControls();
-      }
-      else if (selectionId == null || selectionId.equals(nodeId)) {
+      } else if (selectionId == null || selectionId.equals(nodeId)) {
         leftClickPanner.togglePanning();
         selectionId = null;
         resetCursor();
       }
     }
   };
-  
+
   private final EventListener nodeEditedListener = new EventListener() {
     @Override
     public void handleEvent(Event event) {
@@ -107,12 +106,10 @@ public class SvgTreeListening {
   };
 
   @SuppressWarnings("unchecked")
-  public SvgTreeListening(
-      AnathemaCanvas canvas,
-      ISvgTreeViewProperties viewProperties) {
+  public SvgTreeListening(AnathemaCanvas canvas, ISvgTreeViewProperties viewProperties) {
     this.canvas = canvas;
     this.properties = viewProperties;
-		MagnifyInteractor magnify = new MagnifyInteractor(canvas, this, properties.getZoomCursor());
+    MagnifyInteractor magnify = new MagnifyInteractor(canvas, this, properties.getZoomCursor());
     List<Interactor> interactors = canvas.getInteractors();
     interactors.add(magnify);
     interactors.add(new DoubleRightClickResetTransformInteractor());
@@ -148,11 +145,11 @@ public class SvgTreeListening {
   private void fireNodeSelectionEvent(String nodeId) {
     control.announce().nodeSelected(nodeId);
   }
- 
+
   private void fireNodeEditedEvent(String nodeId) {
     control.announce().nodeDetailsDemanded(nodeId);
-   }
- 
+  }
+
   public void initDocumentListening(SVGDocument document) {
     if (document == null) {
       return;
