@@ -3,31 +3,39 @@ package net.sf.anathema.platform.svgtree.document.visualizer;
 import net.sf.anathema.platform.svgtree.document.components.HorizontalMetaNode;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNodeVisitor;
-import net.sf.anathema.platform.svgtree.document.components.SvgNodeElementAdder;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableDummyNode;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNode;
-import org.dom4j.Element;
 
-public class CreateElementForNode implements IVisualizableNodeVisitor {
+public class CreateElementForNode<PARENT> implements IVisualizableNodeVisitor {
+  public static <PARENT> CreateElementForNode<PARENT> create(ILayer layer, ITreePresentationProperties properties,
+                                                             PARENT cascadeElement, NodeAdderFactory<PARENT> factory) {
+    return new CreateElementForNode<PARENT>(layer, properties, cascadeElement, factory);
+  }
+
   private final ILayer layer;
-  private final Element cascadeElement;
+  private final PARENT parent;
   private final ITreePresentationProperties properties;
 
-  public CreateElementForNode(ILayer layer, Element cascadeElement, ITreePresentationProperties properties) {
+  private final NodeAdderFactory<PARENT> adderFactory;
+
+  private CreateElementForNode(ILayer layer, ITreePresentationProperties properties, PARENT parent,
+                               NodeAdderFactory<PARENT> factory) {
     this.layer = layer;
-    this.cascadeElement = cascadeElement;
+    this.parent = parent;
     this.properties = properties;
+    this.adderFactory = factory;
   }
 
   @Override
   public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
-    throw new UnsupportedOperationException("Unroll Metanodes before creating XML.");
+    throw new UnsupportedOperationException("Unroll meta nodes before positioning.");
   }
 
   @Override
   public void visitSingleNode(VisualizableNode visitedNode) {
-    new SvgNodeElementAdder(layer, visitedNode.getId(), visitedNode.getPosition(), properties.getNodeDimension()).toXML(
-            cascadeElement);
+    NodeAdder<PARENT> adder = adderFactory.create(visitedNode.getId(), properties.getNodeDimension(),
+            visitedNode.getPosition(), layer.getYPosition());
+    adder.addTo(parent);
   }
 
   @Override

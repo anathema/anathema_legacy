@@ -23,26 +23,26 @@ public class SvgLayerElementCreator {
   public Element createXml(ILayer... layers) {
     QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element cascadeElement = new DefaultElement(group);
-    createNodeXml(cascadeElement, layers);
-    createArrowXml(cascadeElement, layers);
+    addNodes(cascadeElement, layers);
+    addArrows(cascadeElement, layers);
     return cascadeElement;
   }
 
-  private void createNodeXml(Element cascadeElement, ILayer[] layers) {
+  private void addNodes(Element cascadeElement, ILayer[] layers) {
     for (ILayer layer : layers) {
       for (IVisualizableNode node : layer.getNodes()) {
-        node.accept(new CreateElementForNode(layer, cascadeElement, properties));
+        node.accept(CreateElementForNode.create(layer, properties, cascadeElement, new SvgNodeAdderFactory()));
       }
     }
   }
 
-  private void createArrowXml(Element cascadeElement, ILayer[] layers) {
+  private void addArrows(Element cascadeElement, ILayer[] layers) {
     for (ILayer layer : layers) {
-      addArrowsToXml(cascadeElement, layer);
+      addArrows(cascadeElement, layer);
     }
   }
 
-  public void addArrowsToXml(final Element cascade, final ILayer layer) {
+  public void addArrows(final Element cascade, final ILayer layer) {
     if (layer.isBottomMostLayer()) {
       return;
     }

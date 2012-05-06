@@ -1,12 +1,12 @@
 package net.sf.anathema.platform.tree.view.visualizer;
 
 import net.sf.anathema.platform.svgtree.document.visualizer.IVisualizedGraph;
-import net.sf.anathema.platform.tree.view.container.AggregatedCascade;
+import net.sf.anathema.platform.tree.view.SwingCascadeBuilder;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 
 import java.awt.Dimension;
 
-public class SwingGraph implements IVisualizedGraph<AggregatedCascade> {
+public class SwingGraph implements IVisualizedGraph<SwingCascadeBuilder> {
   private final DefaultContainerCascade container;
   private final Dimension dimension;
   private final boolean containsSingleNode;
@@ -33,7 +33,7 @@ public class SwingGraph implements IVisualizedGraph<AggregatedCascade> {
   }
 
   @Override
-  public void addTo(AggregatedCascade cascade) {
-    cascade.add(container);
+  public void addTo(SwingCascadeBuilder builder) {
+    builder.add(container);
   }
 }

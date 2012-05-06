@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.visualizer;
 
-import net.sf.anathema.platform.tree.view.container.AggregatedCascade;
+import net.sf.anathema.platform.tree.view.SwingCascadeBuilder;
 import net.sf.anathema.platform.tree.view.container.ContainerCascade;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import org.junit.Test;
@@ -43,7 +43,7 @@ public class SwingGraphTest {
 
   @Test
   public void addsSelfToCascade() throws Exception {
-    AggregatedCascade cascade = mock(AggregatedCascade.class);
+    SwingCascadeBuilder cascade = mock(SwingCascadeBuilder.class);
     swingGraph.addTo(cascade);
     verify(cascade).add(isA(ContainerCascade.class));
   }
