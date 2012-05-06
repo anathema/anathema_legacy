@@ -17,18 +17,9 @@ public class SwingGraphFactory implements VisualizedGraphFactory {
   }
 
   @Override
-  public IVisualizedGraph createForSingleNode(ILayer layer) {
-    return new SwingGraph(createCascade(layer), calculateSize(layer), true);
-  }
-
-  @Override
   public IVisualizedGraph create(ILayer... layers) {
-    return createWithDimension(layers, calculateSize(layers));
-  }
-
-  @Override
-  public IVisualizedGraph createWithDimension(ILayer[] layers, Dimension dimension) {
-    return new SwingGraph(createCascade(layers), dimension, false);
+    boolean singleNode = layers.length == 1 && layers[0].getNodes().length == 1;
+    return new SwingGraph(createCascade(layers), calculateSize(layers), singleNode);
   }
 
   private Dimension calculateSize(ILayer... layers) {

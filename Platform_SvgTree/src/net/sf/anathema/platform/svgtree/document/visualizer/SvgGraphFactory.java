@@ -15,18 +15,9 @@ public class SvgGraphFactory implements VisualizedGraphFactory {
   }
 
   @Override
-  public IVisualizedGraph createForSingleNode(ILayer layer) {
-    return new SvgVisualizedGraph(createElement(layer), calculateSize(layer), true);
-  }
-
-  @Override
   public IVisualizedGraph create(ILayer[] layers) {
-    return createWithDimension(layers, calculateSize(layers));
-  }
-
-  @Override
-  public IVisualizedGraph createWithDimension(ILayer[] layers, Dimension dimension) {
-    return new SvgVisualizedGraph(createElement(layers), dimension, false);
+    boolean singleNode = layers.length == 1 && layers[0].getNodes().length == 1;
+    return new SvgVisualizedGraph(createElement(layers), calculateSize(layers), singleNode);
   }
 
   private Dimension calculateSize(ILayer... layers) {

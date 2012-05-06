@@ -17,7 +17,6 @@ public class SwingGraph implements IVisualizedGraph<AggregatedCascade> {
     this.containsSingleNode = containsSingleNode;
   }
 
-
   @Override
   public Dimension getDimension() {
     return dimension;
