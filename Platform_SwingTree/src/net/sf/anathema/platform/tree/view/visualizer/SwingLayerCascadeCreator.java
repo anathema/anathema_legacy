@@ -57,6 +57,7 @@ public class SwingLayerCascadeCreator {
           for (IVisualizableNode childNode : currentNode.getChildren()) {
             FlexibleArrow arrow = new FlexibleArrow();
             new Fletcher().createArrow(currentNode, childNode, arrow);
+            arrow.moveBy(properties.getNodeDimension().width / 2, 0);
             container.add(arrow);
           }
         }
