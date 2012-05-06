@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.view.draw;
 
 import com.google.common.collect.Lists;
+import net.sf.anathema.platform.svgtree.document.components.ExtensibleArrow;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.awt.BasicStroke;
@@ -11,11 +12,12 @@ import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlexibleArrow implements GraphicsElement {
+public class FlexibleArrow implements GraphicsElement, ExtensibleArrow {
   private static final int RADIUS = 6;
   private static final int DIAMETER = RADIUS * 2;
   private final List<Point> points = new ArrayList<Point>();
 
+  @Override
   public void addPoint(int x, int y) {
     points.add(new Point(x, y));
   }

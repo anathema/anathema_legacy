@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
+import net.sf.anathema.platform.svgtree.document.components.ExtensibleArrow;
 import net.sf.anathema.platform.svgtree.document.components.HorizontalMetaNode;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
@@ -50,16 +51,14 @@ public class SvgLayerElementCreator {
       node.accept(new IVisualizableNodeVisitor() {
         @Override
         public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
-          throw new IllegalStateException("Unroll Metanodes before creating XML."); //$NON-NLS-1$
+          throw new IllegalStateException("Unroll Metanodes before positioning."); //$NON-NLS-1$
         }
 
         @Override
-        public void visitSingleNode(VisualizableNode visitedNode) {
-          for (IVisualizableNode child : visitedNode.getChildren()) {
+        public void visitSingleNode(VisualizableNode currentNode) {
+          for (IVisualizableNode childNode : currentNode.getChildren()) {
             PolylineSVGArrow arrow = new PolylineSVGArrow();
-            arrow.addPoint(visitedNode.getPosition(), layer.getYPosition() + visitedNode.getHeight());
-            arrow.addPoint(child.getPosition(), child.getLayer().getYPosition());
-            extendArrow(arrow, child);
+            new Fletcher().createArrow(currentNode, childNode, arrow);
             cascade.add(arrow.toXML());
           }
         }
@@ -70,27 +69,5 @@ public class SvgLayerElementCreator {
         }
       });
     }
-  }
-
-  private void extendArrow(final PolylineSVGArrow arrow, IVisualizableNode node) {
-    node.accept(new IVisualizableNodeVisitor() {
-      @Override
-      public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
-        throw new IllegalStateException("Unroll Metanodes before creating XML."); //$NON-NLS-1$
-      }
-
-      @Override
-      public void visitSingleNode(VisualizableNode visitedNode) {
-        // Nothing to do
-      }
-
-      @Override
-      public void visitDummyNode(VisualizableDummyNode visitedNode) {
-        IVisualizableNode child = visitedNode.getChildren()[0];
-        arrow.addPoint(visitedNode.getPosition(), visitedNode.getLayer().getYPosition() + visitedNode.getHeight());
-        arrow.addPoint(child.getPosition(), child.getLayer().getYPosition());
-        extendArrow(arrow, child);
-      }
-    });
   }
 }
