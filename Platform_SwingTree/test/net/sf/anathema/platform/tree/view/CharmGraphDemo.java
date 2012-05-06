@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view;
 
+import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
 import net.sf.anathema.platform.tree.view.visualizer.CharmPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.interaction.CursorChanger;
@@ -39,5 +40,8 @@ public class CharmGraphDemo {
     polygonPanel.addMouseListener(new RightClickResetter(polygonPanel));
     polygonPanel.addMouseWheelListener(new WheelScaler(polygonPanel));
     polygonPanel.addMouseMotionListener(new CursorChanger(polygonPanel));
+    LeftClickPanner panner = new LeftClickPanner(polygonPanel);
+    polygonPanel.addMouseListener(panner);
+    polygonPanel.addMouseMotionListener(panner);
   }
 }
