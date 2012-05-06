@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import org.junit.Before;
 import org.junit.Test;
@@ -67,5 +68,12 @@ public class AggregatedCascadeTest {
   public void doesNotForwardAlphaChangeToDifferentChild() throws Exception {
     cascade.setNodeAlpha("X", 17);
     verify(child, never()).setNodeAlpha("X", 17);
+  }
+
+  @Test
+  public void forwardsRequestForInitializationToAllChildren() throws Exception {
+    NodeProperties properties = mock(NodeProperties.class);
+    cascade.initNodeNames(properties);
+    verify(child).initNodeNames(properties);
   }
 }

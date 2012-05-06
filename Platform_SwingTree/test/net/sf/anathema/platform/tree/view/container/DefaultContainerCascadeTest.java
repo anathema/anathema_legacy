@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.view.container;
 
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
@@ -22,6 +23,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.when;
 
 public class DefaultContainerCascadeTest {
 
@@ -140,5 +142,13 @@ public class DefaultContainerCascadeTest {
     container.removeInteractionListener(listener);
     element.toggle();
     verifyZeroInteractions(listener);
+  }
+
+  @Test
+  public void setsInternationalizedNamesOnElements() throws Exception {
+    NodeProperties properties = mock(NodeProperties.class);
+    when(properties.getNodeName("X")).thenReturn("XNAME");
+    container.initNodeNames(properties);
+    verify(polygon1).setText("XNAME");
   }
 }

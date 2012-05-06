@@ -2,11 +2,7 @@ package net.sf.anathema.platform.svgtree.presenter.view;
 
 import java.awt.Cursor;
 
-public interface ISvgTreeViewProperties {
-
-  public String getNodeName(String nodeId);
-
-  public boolean isRootNode(String nodeId);
+public interface ISvgTreeViewProperties extends NodeProperties {
 
   public String getToolTip(String nodeId);
 

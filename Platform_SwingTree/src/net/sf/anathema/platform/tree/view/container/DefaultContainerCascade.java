@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.view.container;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import org.jmock.example.announcer.Announcer;
@@ -65,6 +66,14 @@ public class DefaultContainerCascade implements ContainerCascade {
   @Override
   public void removeInteractionListener(NodeInteractionListener listener) {
     listeners.removeListener(listener);
+  }
+
+  @Override
+  public void initNodeNames(NodeProperties properties) {
+    for (IdentifiedPolygon node : nodes) {
+      String nodeName = properties.getNodeName(node.id);
+      node.element.setText(nodeName);
+    }
   }
 
   @Override

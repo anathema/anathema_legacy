@@ -9,6 +9,7 @@ import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
 import net.sf.anathema.platform.svgtree.view.batik.intvalue.DomUtilities;
@@ -50,20 +51,12 @@ import static org.apache.batik.util.SVGConstants.*;
 public class SvgTreeView implements ISvgTreeView {
 
   private AnathemaCanvas canvas = new AnathemaCanvas();
-  private final ISvgTreeViewProperties properties;
   private final SvgTreeListening listening;
   private final SVGSpecialNodeViewManager manager;
 
-  public SvgTreeView(ISvgTreeViewProperties properties) {
-    this.properties = properties;
+  public SvgTreeView(final ISvgTreeViewProperties properties) {
     this.manager = new SVGSpecialNodeViewManager(canvas, new BoundsCalculator());
     this.listening = new SvgTreeListening(canvas, properties);
-    addCascadeLoadedListener(new CascadeLoadedListener() {
-      @Override
-      public void cascadeLoaded() {
-        initNodeNames();
-      }
-    });
     canvas.addGVTTreeRendererListener(new GVTTreeRendererAdapter() {
       @Override
       public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
@@ -208,17 +201,6 @@ public class SvgTreeView implements ISvgTreeView {
     });
   }
 
-  private void initNodeNames() {
-    for (SVGGElement groupElement : canvas.getNodeElements()) {
-      NodeList textNodes = groupElement.getElementsByTagName(SVG_TEXT_TAG);
-      for (int i = 0; i < textNodes.getLength(); i++) {
-        SVGTextElement currentNode = (SVGTextElement) textNodes.item(i);
-        internationalize(currentNode);
-        breakText(currentNode);
-      }
-    }
-  }
-
   @Override
   public void setCanvasBackground(Color color) {
     canvas.setBackground(color);
@@ -233,6 +215,28 @@ public class SvgTreeView implements ISvgTreeView {
     canvas.setDocument(null);
     // todo vom (22.02.2005) (sieroux): Notify pool of unused canvas
     canvas = null;
+  }
+
+  @Override
+  public void initNodeNames(NodeProperties properties) {
+    for (SVGGElement groupElement : canvas.getNodeElements()) {
+      NodeList textNodes = groupElement.getElementsByTagName(SVG_TEXT_TAG);
+      for (int i = 0; i < textNodes.getLength(); i++) {
+        SVGTextElement currentNode = (SVGTextElement) textNodes.item(i);
+        internationalize(currentNode, properties);
+        breakText(currentNode);
+      }
+    }
+  }
+
+  private void internationalize(SVGTextElement text, NodeProperties properties) {
+    String id = ((Text) text.getFirstChild()).getData();
+    String nodeName = properties.getNodeName(id);
+    if (properties.isRootNode(id)) {
+      text.getFirstChild().setNodeValue(nodeName.toUpperCase());
+    } else {
+      text.getFirstChild().setNodeValue(nodeName);
+    }
   }
 
   private void breakText(SVGTextElement text) {
@@ -273,15 +277,5 @@ public class SvgTreeView implements ISvgTreeView {
     tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_POINTER_EVENTS, SVG_NONE_VALUE);
     tSpanElement.appendChild(textNode);
     return tSpanElement;
-  }
-
-  private void internationalize(SVGTextElement text) {
-    String id = ((Text) text.getFirstChild()).getData();
-    String nodeName = properties.getNodeName(id);
-    if (properties.isRootNode(id)) {
-      text.getFirstChild().setNodeValue(nodeName.toUpperCase());
-    } else {
-      text.getFirstChild().setNodeValue(nodeName);
-    }
   }
 }
