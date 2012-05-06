@@ -4,7 +4,6 @@ import net.sf.anathema.platform.svgtree.document.components.HorizontalMetaNode;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNodeVisitor;
-import net.sf.anathema.platform.svgtree.document.components.PolylineSVGArrow;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableDummyNode;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNode;
 import net.sf.anathema.platform.svgtree.document.visualizer.CreateElementForNode;
@@ -12,7 +11,6 @@ import net.sf.anathema.platform.svgtree.document.visualizer.Fletcher;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
-import org.dom4j.Element;
 
 public class SwingLayerCascadeCreator {
   private final ITreePresentationProperties properties;

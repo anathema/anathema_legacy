@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
-import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import org.jmock.example.announcer.Announcer;
 
 import java.awt.Color;
@@ -13,7 +12,7 @@ import java.util.List;
 public class DefaultContainerCascade implements ContainerCascade {
   private final Announcer<NodeInteractionListener> listeners = Announcer.to(NodeInteractionListener.class);
   private final List<IdentifiedPolygon> nodes = Lists.newArrayList();
-  private final List<GraphicsElement> elements = Lists.newArrayList();
+  private final List<FlexibleArrow> edges = Lists.newArrayList();
 
   public void add(final IdentifiedPolygon node) {
     nodes.add(node);
@@ -25,8 +24,8 @@ public class DefaultContainerCascade implements ContainerCascade {
     });
   }
 
-  public void add(GraphicsElement element) {
-    elements.add(element);
+  public void add(FlexibleArrow element) {
+    edges.add(element);
   }
 
   @Override
@@ -53,8 +52,8 @@ public class DefaultContainerCascade implements ContainerCascade {
       node.element.setText(node.id);
       panel.add(node.element);
     }
-    for (GraphicsElement element : elements) {
-      panel.add(element);
+    for (FlexibleArrow edge : edges) {
+      panel.add(edge);
     }
   }
 
@@ -81,6 +80,9 @@ public class DefaultContainerCascade implements ContainerCascade {
   public void moveBy(double x, double y) {
     for (IdentifiedPolygon node : nodes) {
       node.element.moveBy((int) x, (int) y);
+    }
+    for (FlexibleArrow edge : edges) {
+      edge.moveBy((int) x, (int) y);
     }
   }
 }

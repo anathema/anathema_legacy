@@ -54,4 +54,10 @@ public class FlexibleArrow implements GraphicsElement, ExtensibleArrow {
     }
     return ArrayUtils.toPrimitive(coordinates.toArray(new Integer[coordinates.size()]));
   }
+
+  public void moveBy(int x, int y) {
+    for (Point point : points) {
+      point.translate(x, y);
+    }
+  }
 }

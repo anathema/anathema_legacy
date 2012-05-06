@@ -3,7 +3,7 @@ package net.sf.anathema.platform.tree.view.container;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
-import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
+import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -43,6 +43,14 @@ public class DefaultContainerCascadeTest {
     container.add(node);
     container.moveBy(5.5, 7.5);
     assertThat(node.element.contains(new Point(6, 8)), is(true));
+  }
+
+  @Test
+  public void movesOtherElements() throws Exception {
+    FlexibleArrow element = mock(FlexibleArrow.class);
+    container.add(element);
+    container.moveBy(5.5, 7.5);
+    verify(element).moveBy(5, 7);
   }
 
   @Test
@@ -89,7 +97,7 @@ public class DefaultContainerCascadeTest {
   @Test
   public void addsOtherElementsToPanel() throws Exception {
     PolygonPanel panel = mock(PolygonPanel.class);
-    GraphicsElement element = mock(GraphicsElement.class);
+    FlexibleArrow element = mock(FlexibleArrow.class);
     container.add(element);
     container.addTo(panel);
     verify(panel).add(element);
