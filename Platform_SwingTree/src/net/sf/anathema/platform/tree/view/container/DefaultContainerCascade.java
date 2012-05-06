@@ -3,6 +3,8 @@ package net.sf.anathema.platform.tree.view.container;
 import com.google.common.collect.Lists;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
+import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
+import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import org.jmock.example.announcer.Announcer;
 
 import java.awt.Color;
@@ -11,6 +13,7 @@ import java.util.List;
 public class DefaultContainerCascade implements ContainerCascade {
   private final Announcer<NodeInteractionListener> listeners = Announcer.to(NodeInteractionListener.class);
   private final List<IdentifiedPolygon> nodes = Lists.newArrayList();
+  private final List<GraphicsElement> elements = Lists.newArrayList();
 
   public void add(final IdentifiedPolygon node) {
     nodes.add(node);
@@ -20,6 +23,10 @@ public class DefaultContainerCascade implements ContainerCascade {
         listeners.announce().nodeSelected(node.id);
       }
     });
+  }
+
+  public void add(GraphicsElement element) {
+    elements.add(element);
   }
 
   @Override
@@ -45,6 +52,9 @@ public class DefaultContainerCascade implements ContainerCascade {
     for (IdentifiedPolygon node : nodes) {
       node.element.setText(node.id);
       panel.add(node.element);
+    }
+    for (GraphicsElement element : elements) {
+      panel.add(element);
     }
   }
 

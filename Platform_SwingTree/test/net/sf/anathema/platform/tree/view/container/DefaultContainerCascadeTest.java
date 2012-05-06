@@ -3,6 +3,7 @@ package net.sf.anathema.platform.tree.view.container;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
+import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -83,6 +84,15 @@ public class DefaultContainerCascadeTest {
     PolygonPanel panel = mock(PolygonPanel.class);
     container.addTo(panel);
     verify(panel).add(polygon1);
+  }
+
+  @Test
+  public void addsOtherElementsToPanel() throws Exception {
+    PolygonPanel panel = mock(PolygonPanel.class);
+    GraphicsElement element = mock(GraphicsElement.class);
+    container.add(element);
+    container.addTo(panel);
+    verify(panel).add(element);
   }
 
   @Test

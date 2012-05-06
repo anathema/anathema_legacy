@@ -12,11 +12,12 @@ import org.dom4j.Element;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
 
-public class PolylineSVGArrow {
+public class PolylineSVGArrow implements ExtensibleArrow {
   private static final double ShaftWidth = 6.5;
   private final List<Double> pointList = new ArrayList<Double>();
 
-  public void addPoint(double x, double y) {
+  @Override
+  public void addPoint(int x, int y) {
     pointList.add(new Point2D.Double(x, y));
   }
 
