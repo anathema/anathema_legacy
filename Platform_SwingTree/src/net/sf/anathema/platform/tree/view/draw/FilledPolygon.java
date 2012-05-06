@@ -14,11 +14,13 @@ public class FilledPolygon implements InteractiveGraphicsElement {
   private final Polygon polygon = new Polygon();
   private Color fill = Color.YELLOW;
   private Color stroke = Color.BLACK;
+  private String text = "";
 
   @Override
   public void paint(Graphics2D graphics) {
     new ShapeFiller(polygon, fill).fill(graphics);
     new ShapeDrawer(polygon, stroke).draw(graphics);
+    new TextWriter(polygon.getBounds(), stroke, text).write(graphics);
   }
 
   @Override
@@ -50,5 +52,9 @@ public class FilledPolygon implements InteractiveGraphicsElement {
 
   public void whenToggledDo(Runnable runnable) {
     toggleListeners.addListener(runnable);
+  }
+
+  public void setText(String text) {
+    this.text = text;
   }
 }
