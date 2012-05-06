@@ -17,11 +17,17 @@ public class SwingGraphTest {
 
   private final Dimension dimension = new Dimension(0, 0);
   private final DefaultContainerCascade nodeContainer = mock(DefaultContainerCascade.class);
-  private final SwingGraph swingGraph = new SwingGraph(nodeContainer, dimension);
+  private final SwingGraph swingGraph = new SwingGraph(nodeContainer, dimension, false);
 
   @Test
-  public void isSingleNode() throws Exception {
+  public void isNoSingleNode() throws Exception {
     assertThat(swingGraph.isSingleNode(), is(false));
+  }
+
+  @Test
+  public void isSingleNodeIfSoConstructed() throws Exception {
+    SwingGraph swingGraph = new SwingGraph(nodeContainer, dimension, true);
+    assertThat(swingGraph.isSingleNode(), is(true));
   }
 
   @Test
