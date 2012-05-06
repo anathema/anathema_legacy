@@ -11,8 +11,10 @@ import java.awt.Dimension;
 
 public class SwingGraphFactory implements VisualizedGraphFactory {
   private TreeDimensionCalculator calculator;
+  private final ITreePresentationProperties properties;
 
   public SwingGraphFactory(ITreePresentationProperties properties) {
+    this.properties = properties;
     this.calculator = new TreeDimensionCalculator(properties);
   }
 
@@ -27,6 +29,6 @@ public class SwingGraphFactory implements VisualizedGraphFactory {
   }
 
   private DefaultContainerCascade createCascade(ILayer... layers) {
-    return new DefaultContainerCascade();
+    return new SwingLayerCascadeCreator(properties).create(layers);
   }
 }

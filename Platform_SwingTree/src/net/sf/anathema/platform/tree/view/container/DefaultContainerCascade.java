@@ -1,25 +1,25 @@
 package net.sf.anathema.platform.tree.view.container;
 
+import com.google.common.collect.Lists;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import org.jmock.example.announcer.Announcer;
 
 import java.awt.Color;
+import java.util.List;
 
 public class DefaultContainerCascade implements ContainerCascade {
   private final Announcer<NodeInteractionListener> listeners = Announcer.to(NodeInteractionListener.class);
-  private final IdentifiedPolygon[] nodes;
+  private final List<IdentifiedPolygon> nodes = Lists.newArrayList();
 
-  public DefaultContainerCascade(IdentifiedPolygon... nodes) {
-    this.nodes = nodes;
-    for (final IdentifiedPolygon node : nodes) {
-      node.element.whenToggledDo(new Runnable() {
-        @Override
-        public void run() {
-          listeners.announce().nodeSelected(node.id);
-        }
-      });
-    }
+  public void add(final IdentifiedPolygon node) {
+    nodes.add(node);
+    node.element.whenToggledDo(new Runnable() {
+      @Override
+      public void run() {
+        listeners.announce().nodeSelected(node.id);
+      }
+    });
   }
 
   @Override

@@ -3,6 +3,7 @@ package net.sf.anathema.platform.tree.view.container;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Matchers;
 
@@ -23,13 +24,19 @@ public class DefaultContainerCascadeTest {
   private final FilledPolygon polygon1 = mock(FilledPolygon.class);
   private IdentifiedPolygon node1 = new IdentifiedPolygon(polygon1, "X");
   private final FilledPolygon polygon2 = mock(FilledPolygon.class);
-  private IdentifiedPolygon node2 = new IdentifiedPolygon(polygon2, "X");
-  private final DefaultContainerCascade container = new DefaultContainerCascade(node1,node2);
+  private IdentifiedPolygon node2 = new IdentifiedPolygon(polygon2, "Y");
+  private final DefaultContainerCascade container = new DefaultContainerCascade();
+
+  @Before
+  public void setUp() throws Exception {
+    container.add(node1);
+    container.add(node2);
+  }
 
   @Test
   public void movesPolygon() throws Exception {
-    IdentifiedPolygon node = new IdentifiedPolygon(squareAtOriginWithLength2(), "X");
-    DefaultContainerCascade container = new DefaultContainerCascade(node);
+    IdentifiedPolygon node = new IdentifiedPolygon(squareAtOriginWithLength2(), "Z");
+    container.add(node);
     container.moveBy(5.5, 7.5);
     assertThat(node.element.contains(new Point(6, 8)), is(true));
   }
@@ -41,7 +48,7 @@ public class DefaultContainerCascadeTest {
 
   @Test
   public void doesNotHaveNodeWithDifferentId() throws Exception {
-    assertThat(container.hasNode("Y"), is(false));
+    assertThat(container.hasNode("Z"), is(false));
   }
 
   @Test
@@ -78,19 +85,19 @@ public class DefaultContainerCascadeTest {
   @Test
   public void notifiesListenersOfToggledPolygon() throws Exception {
     FilledPolygon element = squareAtOriginWithLength2();
-    IdentifiedPolygon node = new IdentifiedPolygon(element, "X");
-    DefaultContainerCascade container = new DefaultContainerCascade(node);
+    IdentifiedPolygon node = new IdentifiedPolygon(element, "Z");
+    container.add(node);
     NodeInteractionListener listener = mock(NodeInteractionListener.class);
     container.addInteractionListener(listener);
     element.toggle();
-    verify(listener).nodeSelected("X");
+    verify(listener).nodeSelected("Z");
   }
 
   @Test
   public void removesListeners() throws Exception {
     FilledPolygon element = squareAtOriginWithLength2();
-    IdentifiedPolygon node = new IdentifiedPolygon(element, "X");
-    DefaultContainerCascade container = new DefaultContainerCascade(node);
+    IdentifiedPolygon node = new IdentifiedPolygon(element, "Z");
+    container.add(node);
     NodeInteractionListener listener = mock(NodeInteractionListener.class);
     container.addInteractionListener(listener);
     container.removeInteractionListener(listener);
