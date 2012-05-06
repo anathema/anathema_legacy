@@ -11,10 +11,12 @@ public class SvgVisualizedGraph implements IVisualizedGraph<SvgDocumentBuilder> 
 
   private final Element graphElement;
   private final Dimension dimension;
+  private final boolean containsSingleNode;
 
-  public SvgVisualizedGraph(Element graphElement, Dimension dimension) {
+  public SvgVisualizedGraph(Element graphElement, Dimension dimension, boolean containsSingleNode) {
     this.graphElement = graphElement;
     this.dimension = dimension;
+    this.containsSingleNode = containsSingleNode;
   }
 
   @Override
@@ -24,7 +26,7 @@ public class SvgVisualizedGraph implements IVisualizedGraph<SvgDocumentBuilder> 
 
   @Override
   public boolean isSingleNode() {
-    return false;
+    return containsSingleNode;
   }
 
   @Override

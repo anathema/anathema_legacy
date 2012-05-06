@@ -9,10 +9,12 @@ import java.awt.Dimension;
 public class SwingGraph implements IVisualizedGraph<AggregatedCascade> {
   private final DefaultContainerCascade container;
   private final Dimension dimension;
+  private final boolean containsSingleNode;
 
-  public SwingGraph(DefaultContainerCascade container, Dimension dimension) {
+  public SwingGraph(DefaultContainerCascade container, Dimension dimension, boolean containsSingleNode) {
     this.container = container;
     this.dimension = dimension;
+    this.containsSingleNode = containsSingleNode;
   }
 
 
@@ -23,7 +25,7 @@ public class SwingGraph implements IVisualizedGraph<AggregatedCascade> {
 
   @Override
   public boolean isSingleNode() {
-    return false;
+    return containsSingleNode;
   }
 
   @Override
