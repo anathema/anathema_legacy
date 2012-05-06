@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.view.visualizer;
 
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
+import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,11 +27,19 @@ public class SwingGraphFactoryTest {
 
   @Test
   public void createsSingleNode() throws Exception {
-    assertThat(factory.createForSingleNode(layer).isSingleNode(), is(true));
+    when(layer.getNodes()).thenReturn(new IVisualizableNode[1]);
+    assertThat(factory.create(layer).isSingleNode(), is(true));
   }
 
   @Test
-  public void createsMultiNode() throws Exception {
+  public void createsNoSingleNodeForMultipleLayers() throws Exception {
+    ILayer nextLayer = mock(ILayer.class);
+    assertThat(factory.create(layer, nextLayer).isSingleNode(), is(false));
+  }
+
+  @Test
+  public void createsNoSingleNodeForMultipleNodes() throws Exception {
+    when(layer.getNodes()).thenReturn(new IVisualizableNode[2]);
     assertThat(factory.create(layer).isSingleNode(), is(false));
   }
 }

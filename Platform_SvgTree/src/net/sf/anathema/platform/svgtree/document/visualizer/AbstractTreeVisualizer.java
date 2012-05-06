@@ -5,11 +5,10 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 
-import java.awt.Dimension;
-
 public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
 
-  public AbstractTreeVisualizer(ITreePresentationProperties properties, LayeredGraph graph, VisualizedGraphFactory factory) {
+  public AbstractTreeVisualizer(ITreePresentationProperties properties, LayeredGraph graph,
+                                VisualizedGraphFactory factory) {
     super(properties, graph, factory);
   }
 
@@ -27,10 +26,8 @@ public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
       createVisualizableNodes(layerIndex);
     }
     ILayer[] layers = createLayers(layerCount);
-    int treeWidth = setPositionRecursively(getInitialLayer(layers).getNodes()[0],
-            0) - getProperties().getGapDimension().width;
-    Dimension dimension = new Dimension(treeWidth, new TreeDimensionCalculator(getProperties()).getTreeHeight(layers));
-    return getGraphFactory().createWithDimension(layers, dimension);
+    setPositionRecursively(getInitialLayer(layers).getNodes()[0], 0);
+    return getGraphFactory().create(layers);
   }
 
   private int setPositionRecursively(IVisualizableNode node, int rightSide) {
