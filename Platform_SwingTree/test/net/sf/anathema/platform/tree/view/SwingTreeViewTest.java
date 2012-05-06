@@ -4,6 +4,7 @@ import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
+import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
@@ -143,5 +144,10 @@ public class SwingTreeViewTest {
     InOrder inOrder = inOrder(cascade, panel);
     inOrder.verify(cascade).initNodeNames(properties);
     inOrder.verify(panel).repaint();
+  }
+
+  @Test
+  public void registersListenersOnPanel() throws Exception {
+    verify(panel).addMouseListener(isA(LeftClickPanner.class));
   }
 }
