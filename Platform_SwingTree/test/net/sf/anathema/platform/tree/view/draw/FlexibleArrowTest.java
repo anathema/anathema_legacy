@@ -6,21 +6,14 @@ import org.mockito.InOrder;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class FlexibleArrowTest {
 
@@ -63,7 +56,9 @@ public class FlexibleArrowTest {
   }
 
   @Test
-  public void hasRotatedArrowAtHead() throws Exception {
-
+  public void movesPoints() throws Exception {
+    arrow.moveBy(1, 2);
+    arrow.paint(graphics);
+    verify(graphics).drawPolyline(new int[]{18, 7}, new int[]{8, 12}, 2);
   }
 }
