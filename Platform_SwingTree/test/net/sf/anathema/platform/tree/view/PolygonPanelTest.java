@@ -34,9 +34,16 @@ public class PolygonPanelTest {
 
   @Test
   public void scalesGraphics() throws Exception {
-    polygonPanel.scale(5);
+    polygonPanel.scale(0.5);
     polygonPanel.paintComponent(graphics);
     verify(graphics).transform(AffineTransform.getScaleInstance(0.5, 0.5));
+  }
+
+  @Test
+  public void translatesGraphics() throws Exception {
+    polygonPanel.translate(5, 7);
+    polygonPanel.paintComponent(graphics);
+    verify(graphics).transform(AffineTransform.getTranslateInstance(5, 7));
   }
 
   @Test

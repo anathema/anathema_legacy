@@ -47,10 +47,12 @@ public class PolygonPanel extends JPanel {
     container.add(element);
   }
 
-  public void scale(int unitsToScroll) {
-    double delta = 1 - unitsToScroll * 0.1;
-    transform.scale(delta, delta);
-    repaint();
+  public void scale(double scale) {
+    transform.scale(scale, scale);
+  }
+
+  public void translate(int x, int y) {
+    transform.translate(x, y);
   }
 
   public void resetTransformation() {
