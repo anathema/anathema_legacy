@@ -1,12 +1,8 @@
 package net.sf.anathema.platform.tree.view;
 
-import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
-import net.sf.anathema.platform.tree.view.visualizer.CharmPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.interaction.CursorChanger;
-import net.sf.anathema.platform.tree.view.interaction.LeftClickToggler;
-import net.sf.anathema.platform.tree.view.interaction.RightClickResetter;
-import net.sf.anathema.platform.tree.view.interaction.WheelScaler;
+import net.sf.anathema.platform.tree.view.visualizer.CharmPolygon;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -36,12 +32,7 @@ public class CharmGraphDemo {
   }
 
   private static void initListening(PolygonPanel polygonPanel) {
-    polygonPanel.addMouseListener(new LeftClickToggler(polygonPanel));
-    polygonPanel.addMouseListener(new RightClickResetter(polygonPanel));
-    polygonPanel.addMouseWheelListener(new WheelScaler(polygonPanel));
+    new SwingTreeListening(polygonPanel).initialize();
     polygonPanel.addMouseMotionListener(new CursorChanger(polygonPanel));
-    LeftClickPanner panner = new LeftClickPanner(polygonPanel);
-    polygonPanel.addMouseListener(panner);
-    polygonPanel.addMouseMotionListener(panner);
   }
 }

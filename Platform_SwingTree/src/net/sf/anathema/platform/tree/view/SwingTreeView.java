@@ -25,6 +25,7 @@ public class SwingTreeView implements ITreeView<Cascade> {
 
   public SwingTreeView(PolygonPanel polygonPanel) {
     this.polygonPanel = polygonPanel;
+    new SwingTreeListening(polygonPanel).initialize();
   }
 
   @Override
