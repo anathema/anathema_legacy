@@ -37,9 +37,17 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   private final ISvgTreeView charmTreeView;
   //private final ITreeView treeView;
 
-  public AbstractCascadeSelectionView(ISvgTreeViewProperties treeProperties) {
+  public AbstractCascadeSelectionView(final ISvgTreeViewProperties treeProperties) {
     this.charmTreeView = new SvgTreeView(treeProperties);
     //this.treeView = new SwingTreeView();
+    CascadeLoadedListener listener = new CascadeLoadedListener() {
+      @Override
+      public void cascadeLoaded() {
+        charmTreeView.initNodeNames(treeProperties);
+      }
+    };
+    charmTreeView.addCascadeLoadedListener(listener);
+    //treeView.addCascadeLoadedListener(listener);
   }
 
   @Override

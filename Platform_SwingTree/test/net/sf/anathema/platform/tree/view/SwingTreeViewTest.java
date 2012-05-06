@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.view;
 
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -132,5 +133,15 @@ public class SwingTreeViewTest {
     reset(cascade);
     swingTreeView.setNodeAlpha("X", 124);
     verifyZeroInteractions(cascade);
+  }
+
+  @Test
+  public void initializesNodeNamesOnCascadesAndRepaints() throws Exception {
+    NodeProperties properties = mock(NodeProperties.class);
+    swingTreeView.loadCascade(cascade, true);
+    swingTreeView.initNodeNames(properties);
+    InOrder inOrder = inOrder(cascade, panel);
+    inOrder.verify(cascade).initNodeNames(properties);
+    inOrder.verify(panel).repaint();
   }
 }

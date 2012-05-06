@@ -2,6 +2,7 @@ package net.sf.anathema.platform.tree.view.container;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 
 import java.awt.Color;
@@ -46,6 +47,13 @@ public class AggregatedCascade implements Cascade {
   public void removeInteractionListener(NodeInteractionListener listener) {
     for (Cascade cascade : cascades) {
       cascade.removeInteractionListener(listener);
+    }
+  }
+
+  @Override
+  public void initNodeNames(NodeProperties properties) {
+    for (Cascade cascade : cascades) {
+      cascade.initNodeNames(properties);
     }
   }
 
