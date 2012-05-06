@@ -99,7 +99,7 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   @Override
-  public void loadCascade(final org.dom4j.Document cascade, boolean resetView) throws CascadeLoadException {
+  public void loadCascade(org.dom4j.Document cascade, boolean resetView) throws CascadeLoadException {
     final AffineTransform transform = resetView ? null : canvas.getRenderingTransform();
     if (resetView) {
       canvas.resetRenderingTransform();
@@ -123,13 +123,11 @@ public class SvgTreeView implements ISvgTreeView {
         @Override
         public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
           // TODO Auto-generated method stub
-
         }
 
         @Override
         public void gvtRenderingFailed(GVTTreeRendererEvent e) {
           // TODO Auto-generated method stub
-
         }
 
         @Override
@@ -153,7 +151,8 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   private SVGDocument createSvgDocument(org.dom4j.Document dom4jDocument) {
-    SVGDocument document;DOMImplementation implementation = SVGDOMImplementation.getDOMImplementation();
+    SVGDocument document;
+    DOMImplementation implementation = SVGDOMImplementation.getDOMImplementation();
     try {
       document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
     } catch (DocumentException e) {
