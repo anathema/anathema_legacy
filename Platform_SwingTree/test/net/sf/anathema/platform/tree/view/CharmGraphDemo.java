@@ -13,7 +13,9 @@ import javax.swing.WindowConstants;
 public class CharmGraphDemo {
   public static void main(String[] args) {
     PolygonPanel polygonPanel = new PolygonPanel();
-    polygonPanel.add(new CharmPolygon(15, 85));
+    CharmPolygon polygon = new CharmPolygon(15, 85);
+    polygon.setText("Something Rotten Attitude");
+    polygonPanel.add(polygon);
     addArrow(polygonPanel);
     initListening(polygonPanel);
     JFrame f = new JFrame();
