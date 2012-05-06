@@ -13,13 +13,12 @@ import java.util.Set;
 
 public class SimplifiedBottomUpGraphVisualizer extends AbstractCascadeVisualizer {
 
-  public SimplifiedBottomUpGraphVisualizer(LayeredGraph graph, ITreePresentationProperties properties,
-                                           VisualizedGraphFactory factory) {
-    super(new WideDummyTreePresentationProperties(properties), graph, factory);
+  public SimplifiedBottomUpGraphVisualizer(LayeredGraph graph, ITreePresentationProperties properties) {
+    super(new WideDummyTreePresentationProperties(properties), graph);
   }
 
   @Override
-  public IVisualizedGraph buildTree() {
+  public ILayer[] buildTree() {
     ILayer[] layers = createLayers();
     int width = 0;
     for (ILayer layer : layers) {
@@ -31,7 +30,7 @@ public class SimplifiedBottomUpGraphVisualizer extends AbstractCascadeVisualizer
     for (ILayer layer : new BackwardsIterable<ILayer>(layers)) {
       layer.unrollHorizontalMetanodes();
     }
-    return getGraphFactory().create(layers);
+    return layers;
   }
 
   public boolean isApplicable() {

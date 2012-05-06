@@ -12,8 +12,7 @@ public class SimplifiedBottomUpGraphVisualizerTest {
 
   private ITreePresentationProperties properties = mock(ITreePresentationProperties.class);
   private TestLayeredGraph graph = new TestLayeredGraph();
-  private SimplifiedBottomUpGraphVisualizer visualizer = new SimplifiedBottomUpGraphVisualizer(graph, properties,
-          new SvgGraphFactory(properties));
+  private SimplifiedBottomUpGraphVisualizer visualizer = new SimplifiedBottomUpGraphVisualizer(graph, properties);
 
   @Test
   public void doesNotApplyForMiddleLeaf() throws Exception {

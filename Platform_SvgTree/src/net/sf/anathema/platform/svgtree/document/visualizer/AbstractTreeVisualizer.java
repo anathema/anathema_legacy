@@ -7,9 +7,8 @@ import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 
 public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
 
-  public AbstractTreeVisualizer(ITreePresentationProperties properties, LayeredGraph graph,
-                                VisualizedGraphFactory factory) {
-    super(properties, graph, factory);
+  public AbstractTreeVisualizer(ITreePresentationProperties properties, LayeredGraph graph) {
+    super(properties, graph);
   }
 
   private void createVisualizableNodes(int layerIndex) {
@@ -20,14 +19,14 @@ public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
   }
 
   @Override
-  public IVisualizedGraph buildTree() {
+  public ILayer[] buildTree() {
     int layerCount = getGraph().getDeepestLayer();
     for (int layerIndex = layerCount - 1; layerIndex >= 0; layerIndex--) {
       createVisualizableNodes(layerIndex);
     }
     ILayer[] layers = createLayers(layerCount);
     setPositionRecursively(getInitialLayer(layers).getNodes()[0], 0);
-    return getGraphFactory().create(layers);
+    return layers;
   }
 
   private int setPositionRecursively(IVisualizableNode node, int rightSide) {
