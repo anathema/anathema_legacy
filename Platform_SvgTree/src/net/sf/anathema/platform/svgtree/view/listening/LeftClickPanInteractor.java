@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 
 import org.apache.batik.swing.gvt.AbstractPanInteractor;
 import org.apache.batik.swing.gvt.JGVTComponent;
@@ -18,13 +18,13 @@ public class LeftClickPanInteractor extends AbstractPanInteractor {
   private Cursor previousCursor;
 
   private final IAnathemaCanvas canvas;
-  private final ISvgTreeViewProperties properties;
+  private final TreeViewProperties properties;
   private boolean panningEnabled;
   private boolean cursorEnabled;
 
   public LeftClickPanInteractor(
       IAnathemaCanvas canvas,
-      ISvgTreeViewProperties properties) {
+      TreeViewProperties properties) {
     this.canvas = canvas;
     this.properties = properties;
     togglePanning();

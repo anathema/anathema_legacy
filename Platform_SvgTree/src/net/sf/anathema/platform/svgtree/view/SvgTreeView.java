@@ -7,7 +7,7 @@ import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
@@ -68,7 +68,7 @@ public class SvgTreeView implements ISvgTreeView {
   private final SvgTreeListening listening;
   private final SVGSpecialNodeViewManager manager;
 
-  public SvgTreeView(ISvgTreeViewProperties properties) {
+  public SvgTreeView(TreeViewProperties properties) {
     IBoundsCalculator calculator = new BoundsCalculator();
     this.manager = new SVGSpecialNodeViewManager(canvas, calculator);
     this.listening = new SvgTreeListening(canvas, properties);

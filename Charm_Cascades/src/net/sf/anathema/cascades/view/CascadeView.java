@@ -5,7 +5,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -17,7 +17,7 @@ public class CascadeView extends AbstractCascadeSelectionView implements ICascad
 
   private JPanel content = new JPanel(new GridDialogLayout(1, false));
 
-  public CascadeView(ISvgTreeViewProperties treeProperties) {
+  public CascadeView(TreeViewProperties treeProperties) {
     super(treeProperties);
   }
 

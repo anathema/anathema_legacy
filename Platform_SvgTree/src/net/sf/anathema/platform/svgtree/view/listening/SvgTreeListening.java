@@ -2,7 +2,7 @@ package net.sf.anathema.platform.svgtree.view.listening;
 
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import org.apache.batik.swing.gvt.Interactor;
 import org.apache.batik.util.SVGConstants;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class SvgTreeListening {
 
-  private final ISvgTreeViewProperties properties;
+  private final TreeViewProperties properties;
   private final IAnathemaCanvas canvas;
   private final Announcer<NodeInteractionListener> control = Announcer.to(NodeInteractionListener.class);
   private final LeftClickPanInteractor leftClickPanner;
@@ -106,7 +106,7 @@ public class SvgTreeListening {
   };
 
   @SuppressWarnings("unchecked")
-  public SvgTreeListening(AnathemaCanvas canvas, ISvgTreeViewProperties viewProperties) {
+  public SvgTreeListening(AnathemaCanvas canvas, TreeViewProperties viewProperties) {
     this.canvas = canvas;
     this.properties = viewProperties;
     MagnifyInteractor magnify = new MagnifyInteractor(canvas, this, properties.getZoomCursor());
