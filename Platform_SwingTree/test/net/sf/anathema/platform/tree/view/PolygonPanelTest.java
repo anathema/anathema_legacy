@@ -3,14 +3,18 @@ package net.sf.anathema.platform.tree.view;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
+import net.sf.anathema.platform.tree.view.draw.PolygonMother;
+import net.sf.anathema.platform.tree.view.interaction.Closure;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.geom.AffineTransform;
 
 import static java.awt.RenderingHints.KEY_ANTIALIASING;
 import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
@@ -94,5 +98,23 @@ public class PolygonPanelTest {
     polygonPanel.clear();
     polygonPanel.paintComponent(graphics);
     verifyZeroInteractions(element);
+  }
+
+  @Test
+  public void transformsPointForElements() throws Exception {
+    InteractiveGraphicsElement polygon = PolygonMother.squareAtOriginWithLength2();
+    polygonPanel.add(polygon);
+    polygonPanel.translate(2, 2);
+    polygonPanel.onElementAtPoint(new Point(3, 3)).perform(new Closure() {
+      @Override
+      public void execute(InteractiveGraphicsElement polygon) {
+        //nothing to do
+      }
+    }).orFallBackTo(new Runnable() {
+      @Override
+      public void run() {
+        fail();
+      }
+    });
   }
 }

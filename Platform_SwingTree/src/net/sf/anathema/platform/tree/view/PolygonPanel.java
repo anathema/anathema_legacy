@@ -4,6 +4,7 @@ import net.sf.anathema.platform.tree.view.draw.GraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import net.sf.anathema.platform.tree.view.interaction.Closure;
 import net.sf.anathema.platform.tree.view.interaction.ElementContainer;
+import net.sf.anathema.platform.tree.view.interaction.Executor;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -65,9 +66,14 @@ public class PolygonPanel extends JPanel {
     container.onElementAtPoint(elementPoint).perform(new SetHandCursor()).orFallBackTo(new SetDefaultCursor());
   }
 
-  public void toggleElementAtPoint(Point point) {
+  public void clear() {
+    container.clear();
+    repaint();
+  }
+
+  public Executor onElementAtPoint(Point point) {
     Point2D elementPoint = transformClickPointToObjectCoordinates(point);
-    container.onElementAtPoint(elementPoint).perform(new ToggleAndRepaint());
+    return container.onElementAtPoint(elementPoint);
   }
 
   private Point2D transformClickPointToObjectCoordinates(Point p) {
@@ -75,19 +81,6 @@ public class PolygonPanel extends JPanel {
       return transform.inverseTransform(p, p);
     } catch (NoninvertibleTransformException e1) {
       throw new RuntimeException(e1);
-    }
-  }
-
-  public void clear() {
-    container.clear();
-    repaint();
-  }
-
-  private class ToggleAndRepaint implements Closure {
-    @Override
-    public void execute(InteractiveGraphicsElement polygon) {
-      polygon.toggle();
-      repaint();
     }
   }
 
