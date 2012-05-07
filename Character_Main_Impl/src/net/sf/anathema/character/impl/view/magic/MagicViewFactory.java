@@ -6,12 +6,12 @@ import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.charmtree.presenter.view.SpecialCharmViewFactory;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 
 public class MagicViewFactory implements IMagicViewFactory {
 
   @Override
-  public ICharmView createCharmSelectionView(final ISvgTreeViewProperties properties) {
+  public ICharmView createCharmSelectionView(final TreeViewProperties properties) {
     return new CharmView(properties);
   }
 
