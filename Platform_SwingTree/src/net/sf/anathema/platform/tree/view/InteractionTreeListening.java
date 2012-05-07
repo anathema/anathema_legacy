@@ -5,10 +5,10 @@ import net.sf.anathema.platform.tree.view.interaction.LeftClickToggler;
 import net.sf.anathema.platform.tree.view.interaction.RightClickResetter;
 import net.sf.anathema.platform.tree.view.interaction.WheelScaler;
 
-public class SwingTreeListening {
+public class InteractionTreeListening {
   private final PolygonPanel polygonPanel;
 
-  public SwingTreeListening(PolygonPanel polygonPanel) {
+  public InteractionTreeListening(PolygonPanel polygonPanel) {
     this.polygonPanel = polygonPanel;
   }
 

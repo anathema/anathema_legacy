@@ -11,10 +11,10 @@ import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class SwingTreeListeningTest {
+public class InteractionTreeListeningTest {
 
   PolygonPanel panel = mock(PolygonPanel.class);
-  SwingTreeListening listening = new SwingTreeListening(panel);
+  InteractionTreeListening listening = new InteractionTreeListening(panel);
 
   @Test
   public void addsPanListenerForDragAndClick() throws Exception {

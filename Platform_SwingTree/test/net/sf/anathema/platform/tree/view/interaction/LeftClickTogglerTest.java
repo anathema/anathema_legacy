@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.platform.tree.view.PolygonPanel;
+import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,21 +17,23 @@ public class LeftClickTogglerTest {
 
   public static final Point AnyPoint = new Point(1, 2);
 
+  private InteractiveGraphicsElement element = mock(InteractiveGraphicsElement.class);
   private PolygonPanel panel = mock(PolygonPanel.class);
   private MouseEvent event = mock(MouseEvent.class);
   private LeftClickToggler toggler = new LeftClickToggler(panel);
 
-
   @Before
   public void setUp() throws Exception {
     when(event.getPoint()).thenReturn(AnyPoint);
+    when(panel.onElementAtPoint(AnyPoint)).thenReturn(new ElementExecutor(element));
   }
 
   @Test
   public void togglesPointOfLeftClickOnPanel() throws Exception {
     when(event.getModifiers()).thenReturn(MouseEvent.BUTTON1_MASK);
     toggler.mouseClicked(event);
-    verify(panel).toggleElementAtPoint(AnyPoint);
+    verify(element).toggle();
+    verify(panel).repaint();
   }
 
   @Test

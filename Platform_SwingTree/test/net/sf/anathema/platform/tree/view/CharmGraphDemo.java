@@ -32,7 +32,7 @@ public class CharmGraphDemo {
   }
 
   private static void initListening(PolygonPanel polygonPanel) {
-    new SwingTreeListening(polygonPanel).initialize();
+    new InteractionTreeListening(polygonPanel).initialize();
     polygonPanel.addMouseMotionListener(new CursorChanger(polygonPanel));
   }
 }
