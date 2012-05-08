@@ -12,6 +12,7 @@ import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
@@ -38,6 +39,12 @@ public class PolygonPanel extends JPanel {
     for (GraphicsElement polygon : container) {
       polygon.paint(graphics);
     }
+  }
+
+  @Override
+  public Point getPopupLocation(MouseEvent event) {
+    return super.getPopupLocation(
+            event);    //To change body of overridden methods use File | Settings | File Templates.
   }
 
   public void add(InteractiveGraphicsElement element) {

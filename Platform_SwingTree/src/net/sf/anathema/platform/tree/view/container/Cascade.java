@@ -3,6 +3,7 @@ package net.sf.anathema.platform.tree.view.container;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
+import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 
 import java.awt.Color;
 
@@ -18,4 +19,8 @@ public interface Cascade {
   void removeInteractionListener(NodeInteractionListener listener);
 
   void initNodeNames(NodeProperties properties);
+
+  String getIdForElement(InteractiveGraphicsElement element);
+
+  boolean hasElement(InteractiveGraphicsElement element);
 }

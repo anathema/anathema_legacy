@@ -5,6 +5,7 @@ import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
+import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import org.jmock.example.announcer.Announcer;
 
 import java.awt.Color;
@@ -74,6 +75,27 @@ public class DefaultContainerCascade implements ContainerCascade {
       String nodeName = properties.getNodeText(node.id);
       node.element.setText(nodeName);
     }
+  }
+
+  @Override
+  public String getIdForElement(InteractiveGraphicsElement element) {
+    for (IdentifiedPolygon node : nodes) {
+      if (node.element.equals(element)) {
+        return node.id;
+      }
+    }
+    throw new IllegalArgumentException(
+            "Received a request to identify, but the element is not part of the currently shown cascades.");
+  }
+
+  @Override
+  public boolean hasElement(InteractiveGraphicsElement element) {
+    for (IdentifiedPolygon node : nodes) {
+      if (node.element.equals(element)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   @Override
