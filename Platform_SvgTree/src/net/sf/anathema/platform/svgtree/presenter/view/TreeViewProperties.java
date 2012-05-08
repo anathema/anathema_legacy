@@ -2,7 +2,7 @@ package net.sf.anathema.platform.svgtree.presenter.view;
 
 import java.awt.Cursor;
 
-public interface TreeViewProperties extends NodeProperties {
+public interface TreeViewProperties {
 
   String getToolTip(String nodeId);
 

@@ -14,8 +14,9 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
-import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.ITreeView;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.SvgTreeView;
 import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
 import net.sf.anathema.platform.tree.view.SwingTreeView;
@@ -38,13 +39,13 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   private final ISvgTreeView charmTreeView;
   private final ITreeView treeView;
 
-  public AbstractCascadeSelectionView(final TreeViewProperties treeProperties) {
+  public AbstractCascadeSelectionView(final TreeViewProperties treeProperties, final NodeProperties properties) {
     this.charmTreeView = new SvgTreeView(treeProperties);
     this.treeView = new SwingTreeView();
     CascadeLoadedListener listener = new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {
-        treeView.initNodeNames(treeProperties);
+        treeView.initNodeNames(properties);
       }
     };
     //charmTreeView.addCascadeLoadedListener(listener);

@@ -17,7 +17,7 @@ import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.charmtree.presenter.view.DefaultNodeProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -32,8 +32,9 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
                                      ITreePresentationProperties presentationProperties, CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
-    ICharmTreeViewProperties viewProperties = new CharacterCharmTreeViewProperties(resources, model.getCharmConfiguration(), model.getMagicDescriptionProvider());
-    this.view = factory.createCharmSelectionView(viewProperties);
+    CharacterCharmTreeViewProperties viewProperties = new CharacterCharmTreeViewProperties(resources, model.getCharmConfiguration(), model.getMagicDescriptionProvider());
+    DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
+    this.view = factory.createCharmSelectionView(viewProperties, nodeProperties);
     CharacterCharmGroupChangeListener charmGroupChangeListener = new CharacterCharmGroupChangeListener(model.getCharmConfiguration(), filterSet,
             view.getCharmTreeRenderer(),
             displayPropertiesMap);

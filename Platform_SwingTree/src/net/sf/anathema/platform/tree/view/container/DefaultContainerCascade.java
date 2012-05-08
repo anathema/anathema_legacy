@@ -71,7 +71,7 @@ public class DefaultContainerCascade implements ContainerCascade {
   @Override
   public void initNodeNames(NodeProperties properties) {
     for (IdentifiedPolygon node : nodes) {
-      String nodeName = properties.getNodeName(node.id);
+      String nodeName = properties.getNodeText(node.id);
       node.element.setText(nodeName);
     }
   }

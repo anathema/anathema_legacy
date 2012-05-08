@@ -5,6 +5,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 
@@ -16,8 +17,8 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
 
-  public CharmView(TreeViewProperties treeProperties) {
-    super(treeProperties);
+  public CharmView(TreeViewProperties treeProperties, NodeProperties nodeProperties) {
+    super(treeProperties, nodeProperties);
   }
 
   @Override
