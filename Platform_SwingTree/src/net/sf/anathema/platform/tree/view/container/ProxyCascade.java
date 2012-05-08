@@ -7,44 +7,54 @@ import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 
 import java.awt.Color;
 
-public class NullCascade implements Cascade {
+public class ProxyCascade implements Cascade {
+  private Cascade delegate = new NullCascade();
+
+  public void setDelegate(Cascade cascade) {
+    this.delegate = cascade;
+  }
+
   @Override
   public void colorNode(String nodeId, Color fillColor) {
-    //nothing to do
+    delegate.colorNode(nodeId, fillColor);
   }
 
   @Override
   public void setNodeAlpha(String nodeId, int alpha) {
-    //nothing to do
+    delegate.setNodeAlpha(nodeId, alpha);
   }
 
   @Override
   public void addTo(PolygonPanel panel) {
-    //nothing to do
+    delegate.addTo(panel);
   }
 
   @Override
   public void addInteractionListener(NodeInteractionListener listener) {
-    //nothing to do
+    delegate.addInteractionListener(listener);
   }
 
   @Override
   public void removeInteractionListener(NodeInteractionListener listener) {
-    //nothing to do
+    delegate.removeInteractionListener(listener);
   }
 
   @Override
   public void initNodeNames(NodeProperties properties) {
-    //nothing to do
+    delegate.initNodeNames(properties);
   }
 
   @Override
   public String getIdForElement(InteractiveGraphicsElement element) {
-    throw new UnsupportedOperationException("There are no polygons here, so this should never be called.");
+    return delegate.getIdForElement(element);
   }
 
   @Override
   public boolean hasElement(InteractiveGraphicsElement element) {
-    return false;
+    return delegate.hasElement(element);
+  }
+
+  public void clear() {
+    this.delegate = new NullCascade();
   }
 }
