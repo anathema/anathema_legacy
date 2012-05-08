@@ -244,12 +244,8 @@ public class SvgTreeView implements ISvgTreeView {
 
   private void internationalize(SVGTextElement text, NodeProperties properties) {
     String id = ((Text) text.getFirstChild()).getData();
-    String nodeName = properties.getNodeName(id);
-    if (properties.isRootNode(id)) {
-      text.getFirstChild().setNodeValue(nodeName.toUpperCase());
-    } else {
-      text.getFirstChild().setNodeValue(nodeName);
-    }
+    String nodeName = properties.getNodeText(id);
+    text.getFirstChild().setNodeValue(nodeName);
   }
 
   private void breakText(SVGTextElement text) {

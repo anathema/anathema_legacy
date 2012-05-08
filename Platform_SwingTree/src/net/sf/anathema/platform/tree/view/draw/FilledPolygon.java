@@ -7,8 +7,6 @@ import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.geom.Point2D;
 
-import static net.disy.commons.swing.color.ColorUtilities.getTransparentColor;
-
 public class FilledPolygon implements InteractiveGraphicsElement {
   private final Announcer<Runnable> toggleListeners = Announcer.to(Runnable.class);
   private final Polygon polygon = new Polygon();
@@ -46,7 +44,8 @@ public class FilledPolygon implements InteractiveGraphicsElement {
   }
 
   public void setAlpha(int alpha) {
-    fill(getTransparentColor(fill, alpha));
+    Color original = fill;
+    fill(getTransparentColor(original, alpha));
     this.stroke = getTransparentColor(stroke, alpha);
   }
 
@@ -56,5 +55,9 @@ public class FilledPolygon implements InteractiveGraphicsElement {
 
   public void setText(String text) {
     this.text = text;
+  }
+
+  private Color getTransparentColor(Color original, int alpha) {
+    return new Color(original.getRed(), original.getGreen(), original.getBlue(),alpha);
   }
 }

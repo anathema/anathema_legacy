@@ -147,7 +147,7 @@ public class DefaultContainerCascadeTest {
   @Test
   public void setsInternationalizedNamesOnElements() throws Exception {
     NodeProperties properties = mock(NodeProperties.class);
-    when(properties.getNodeName("X")).thenReturn("XNAME");
+    when(properties.getNodeText("X")).thenReturn("XNAME");
     container.initNodeNames(properties);
     verify(polygon1).setText("XNAME");
   }

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -13,13 +14,14 @@ import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.Toolkit;
 
-public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewProperties {
+public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewProperties implements ICharmIdMap {
 
   private final Cursor addCursor;
   private final Cursor removeCursor;
   private final ICharmConfiguration configuration;
 
-  public CharacterCharmTreeViewProperties(IResources resources, ICharmConfiguration configuration, MagicDescriptionProvider magicDescriptionProvider) {
+  public CharacterCharmTreeViewProperties(IResources resources, ICharmConfiguration configuration,
+                                          MagicDescriptionProvider magicDescriptionProvider) {
     super(resources, magicDescriptionProvider);
     this.configuration = configuration;
     addCursor = Toolkit.getDefaultToolkit().createCustomCursor(
@@ -28,11 +30,10 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
     removeCursor = Toolkit.getDefaultToolkit().createCustomCursor(
             resources.getImage(this.getClass(), "CursorHandMinus.png"), new Point(5, 0),
             resources.getString("CharmTreeView.GUI.RemoveCursor")); //$NON-NLS-1$ //$NON-NLS-2$
-
   }
 
   @Override
-  protected ICharm getCharmById(String id) {
+  public ICharm getCharmById(String id) {
     if (isRequirementNode(id)) {
       return null;
     }
