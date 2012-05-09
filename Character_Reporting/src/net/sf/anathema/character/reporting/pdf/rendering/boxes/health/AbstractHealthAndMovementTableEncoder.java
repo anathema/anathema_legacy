@@ -1,10 +1,23 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+
+import org.apache.commons.lang3.ArrayUtils;
+
 import net.disy.commons.core.util.ArrayUtilities;
+
+import net.sf.anathema.lib.resources.IResources;
+
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -14,8 +27,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
-import net.sf.anathema.lib.resources.IResources;
-import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class AbstractHealthAndMovementTableEncoder implements ITableEncoder<ReportSession> {
   public static final int HEALTH_RECT_SIZE = 6;
@@ -31,8 +42,10 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected abstract Float[] getMovementColumns();
 
+  protected abstract int getMobilityPenalty();
+
   @Override
-  public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
+  public float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     PdfPTable table = createTable(graphics, session);
     table.setWidthPercentage(100);
     graphics.createSimpleColumn(bounds).withElement(table).encode();
@@ -53,7 +66,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   protected final PdfPTable createTable(SheetGraphics graphics, ReportSession session) throws DocumentException {
     try {
       PdfContentByte directContent = graphics.getDirectContent();
-      Image activeTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, BaseColor.BLACK));
+      Image activeTemplate  = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, BaseColor.BLACK));
       Image passiveTemplate = Image.getInstance(HealthTemplateFactory.createRectTemplate(directContent, BaseColor.LIGHT_GRAY));
       float[] columnWidth = createColumnWidth();
       PdfPTable table = new PdfPTable(columnWidth);
@@ -132,7 +145,7 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
     return TableEncodingUtilities.createContentCellTable(BaseColor.BLACK, String.valueOf(Math.max(value, minValue)), font, 0.5f, Rectangle.BOX, Element.ALIGN_CENTER);
   }
 
-  private void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
+  protected void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
     Font font = createDefaultFont(graphics);
     final String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
     final Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);

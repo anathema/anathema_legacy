@@ -1,8 +1,13 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
+import static com.itextpdf.text.Element.*;
+import static com.itextpdf.text.Rectangle.BOX;
+import static com.itextpdf.text.Rectangle.NO_BORDER;
+
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -15,10 +20,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.lang3.ArrayUtils;
 
-import static com.itextpdf.text.Element.*;
-import static com.itextpdf.text.Rectangle.BOX;
-import static com.itextpdf.text.Rectangle.NO_BORDER;
-
 public abstract class AbstractMovementTableEncoder implements ITableEncoder<ReportSession> {
   protected static float PADDING = 0.3f;
 
@@ -29,9 +30,11 @@ public abstract class AbstractMovementTableEncoder implements ITableEncoder<Repo
   }
 
   protected abstract Float[] getMovementColumns();
+  
+  protected abstract int getMobilityPenalty();
 
   @Override
-  public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
+  public float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     PdfPTable table = createTable(graphics, session);
     table.setWidthPercentage(100);
     graphics.createSimpleColumn(bounds).withElement(table).encode();
