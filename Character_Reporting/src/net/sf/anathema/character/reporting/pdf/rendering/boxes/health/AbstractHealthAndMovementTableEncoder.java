@@ -42,8 +42,6 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected abstract Float[] getMovementColumns();
 
-  protected abstract int getMobilityPenalty();
-
   @Override
   public float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
     PdfPTable table = createTable(graphics, session);

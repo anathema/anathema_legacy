@@ -30,11 +30,6 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
   }
 
   @Override
-  protected final int getMobilityPenalty() {
-    return mobilityPenalty;
-  }
-
-  @Override
   protected final Float[] getMovementColumns() {
     return new Float[]{1f, PADDING, 1f, PADDING, 1f, 1f};
   }
@@ -55,7 +50,6 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
   protected final void addMovementCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance, IGenericTraitCollection collection) {
 
     int woundPenalty    = getPenalty(level, painTolerance);
-    int mobilityPenalty = getMobilityPenalty();
     int dex             = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
     int str             = collection.getTrait(AttributeType.Strength).getCurrentValue();
     int athletics       = collection.getTrait(AbilityType.Athletics).getCurrentValue();
@@ -65,7 +59,6 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
     int dash            = Math.max( dex + woundPenalty + mobilityPenalty + 6, 2 );
     int verticalJump    = str + athletics + woundPenalty + mobilityPenalty;
     int horizontalJump  = verticalJump * 2;
-    int swimClimb       = move / 2;  // not used yet, future addition to the sheet
 
     table.addCell(createMovementCell(graphics, move, 1));
     addSpaceCells(graphics, table, 1);

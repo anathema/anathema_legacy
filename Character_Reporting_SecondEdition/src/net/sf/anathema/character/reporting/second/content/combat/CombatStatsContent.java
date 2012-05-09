@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.second.content.combat;
 
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
@@ -7,6 +8,7 @@ import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.reporting.pdf.content.combat.AbstractCombatStatsContent;
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;
 import net.sf.anathema.character.reporting.pdf.content.general.QualifiedText;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.content.general.TextType.Comment;
@@ -16,11 +18,13 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
 
   private HighestSpecialty dodgeSpecialty;
   private HighestSpecialty awarenessSpecialty;
+  private ICharacterStatsModifiers equipment;
 
   protected CombatStatsContent(IGenericCharacter character, IResources resources) {
     super(resources, character);
-    dodgeSpecialty = new HighestSpecialty( character, AbilityType.Dodge );
-    awarenessSpecialty = new HighestSpecialty( character, AbilityType.Awareness );
+    dodgeSpecialty = new HighestSpecialty(character, AbilityType.Dodge);
+    awarenessSpecialty = new HighestSpecialty(character, AbilityType.Awareness);
+    this.equipment = StatsModifierFactory.create(character);
   }
 
   public String getJoinLabel() {
@@ -30,51 +34,55 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
   public String getDodgeLabel() {
     return getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
   }
-  
+
   public String getJoinBattleSpecialtyLabel() {
-    return getString( "Sheet.Combat.NormalSpecialty" ) + awarenessSpecialty; //$NON-NLS-1$
+    return getString("Sheet.Combat.NormalSpecialty") + awarenessSpecialty; //$NON-NLS-1$
   }
-  
+
   public String getDodgeSpecialtyLabel() {
-    return getString( "Sheet.Combat.NormalSpecialty" ) + dodgeSpecialty; //$NON-NLS-1$
+    return getString("Sheet.Combat.NormalSpecialty") + dodgeSpecialty; //$NON-NLS-1$
   }
 
   public int getJoinBattle() {
-    return CharacterUtilities.getJoinBattle(getTraitCollection(), getEquipment());
+    return CharacterUtilities.getJoinBattle(getTraitCollection(), equipment);
   }
-  
+
   public int getJoinBattleWithSpecialty() {
-    return CharacterUtilities.getJoinBattleWithSpecialty(getTraitCollection(), getEquipment(), awarenessSpecialty.getValue());
+    return CharacterUtilities.getJoinBattleWithSpecialty(getTraitCollection(), equipment,
+            awarenessSpecialty.getValue());
   }
 
   public int getDodgeDv() {
-    return CharacterUtilities.getDodgeDv(getCharacterType(), getTraitCollection(), getEquipment());
+    return CharacterUtilities.getDodgeDv(getCharacterType(), getTraitCollection(), equipment);
   }
 
   public int getDodgeDvWithSpecialty() {
-    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraitCollection(), getEquipment(), dodgeSpecialty.getValue());
+    return CharacterUtilities.getDodgeDvWithSpecialty(getCharacterType(), getTraitCollection(), equipment,
+            dodgeSpecialty.getValue());
   }
-  
+
   public String[] getAttacks() {
-    return new String[] { getString("Sheet.Combat.AttackList.DeclareAttack"), //$NON-NLS-1$
-      getString("Sheet.Combat.AttackList.DeclareDefence"), //$NON-NLS-1$
-      getString("Sheet.Combat.AttackList.AttackRoll"), //$NON-NLS-1$
-      getString("Sheet.Combat.AttackList.AttackReroll"), //$NON-NLS-1$
-      getString("Sheet.Combat.AttackList.SubstractPenalties"), //$NON-NLS-1$
-      getString("Sheet.Combat.AttackList.DefenseReroll"), //$NON-NLS-1$
-      getString("Sheet.Combat.AttackList.CalculateRawDamage"), //$NON-NLS-1$
-      getString("Sheet.Combat.AttackList.RollDamage"), //$NON-NLS-1$
-      getString("Sheet.Combat.AttackList.Counterattack"), //$NON-NLS-1$
-      getString("Sheet.Combat.AttackList.ApplyDamage") //$NON-NLS-1$
+    return new String[]{getString("Sheet.Combat.AttackList.DeclareAttack"), //$NON-NLS-1$
+            getString("Sheet.Combat.AttackList.DeclareDefence"), //$NON-NLS-1$
+            getString("Sheet.Combat.AttackList.AttackRoll"), //$NON-NLS-1$
+            getString("Sheet.Combat.AttackList.AttackReroll"), //$NON-NLS-1$
+            getString("Sheet.Combat.AttackList.SubstractPenalties"), //$NON-NLS-1$
+            getString("Sheet.Combat.AttackList.DefenseReroll"), //$NON-NLS-1$
+            getString("Sheet.Combat.AttackList.CalculateRawDamage"), //$NON-NLS-1$
+            getString("Sheet.Combat.AttackList.RollDamage"), //$NON-NLS-1$
+            getString("Sheet.Combat.AttackList.Counterattack"), //$NON-NLS-1$
+            getString("Sheet.Combat.AttackList.ApplyDamage") //$NON-NLS-1$
 
     };
   }
 
   public QualifiedText[] getKnockdownAndStunningTexts() {
-    return new QualifiedText[] { new QualifiedText(getString("Sheet.Combat.Knockdown.Header") + "\n", Normal), //$NON-NLS-1$ //$NON-NLS-2$
-      new QualifiedText(getString("Sheet.Combat.Knockdown.Second.Comment") + "\n\n", Comment), //$NON-NLS-1$ //$NON-NLS-2$
-      new QualifiedText(getString("Sheet.Combat.Stunning.Header") + "\n", Normal), //$NON-NLS-1$ //$NON-NLS-2$
-      new QualifiedText(getString("Sheet.Combat.Stunning.Second.Comment"), Comment) //$NON-NLS-1$
+    return new QualifiedText[]{new QualifiedText(getString("Sheet.Combat.Knockdown.Header") + "\n",
+            Normal), //$NON-NLS-1$ //$NON-NLS-2$
+            new QualifiedText(getString("Sheet.Combat.Knockdown.Second.Comment") + "\n\n",
+                    Comment), //$NON-NLS-1$ //$NON-NLS-2$
+            new QualifiedText(getString("Sheet.Combat.Stunning.Header") + "\n", Normal), //$NON-NLS-1$ //$NON-NLS-2$
+            new QualifiedText(getString("Sheet.Combat.Stunning.Second.Comment"), Comment) //$NON-NLS-1$
 
     };
   }
@@ -93,18 +101,18 @@ public class CombatStatsContent extends AbstractCombatStatsContent {
     String dvHeader = getResources().getString("Sheet.Combat.CommonActions.DV"); //$NON-NLS-1$
     CombatAction headerData = new CombatAction(nameHeader, speedHeader, dvHeader);
     CombatAction emptyData = new CombatAction(" ", " ", " ");
-    return new CombatAction[] { headerData, emptyData, getCombatAction("JoinBattle"), //$NON-NLS-1$
-      getCombatAction("ReadyWeapon"), //$NON-NLS-1$
-      getCombatAction("PhysicalAttack"), //$NON-NLS-1$
-      getCombatAction("CoordinateAttack"), //$NON-NLS-1$
-      getCombatAction("Aim"), //$NON-NLS-1$
-      getCombatAction("Guard"), //$NON-NLS-1$
-      getCombatAction("Move"), //$NON-NLS-1$
-      getCombatAction("Dash"), //$NON-NLS-1$
-      getCombatAction("Misc"), //$NON-NLS-1$
-      getCombatAction("Jump"), //$NON-NLS-1$
-      getCombatAction("Rise"), //$NON-NLS-1$
-      getCombatAction("Inactive") //$NON-NLS-1$
+    return new CombatAction[]{headerData, emptyData, getCombatAction("JoinBattle"), //$NON-NLS-1$
+            getCombatAction("ReadyWeapon"), //$NON-NLS-1$
+            getCombatAction("PhysicalAttack"), //$NON-NLS-1$
+            getCombatAction("CoordinateAttack"), //$NON-NLS-1$
+            getCombatAction("Aim"), //$NON-NLS-1$
+            getCombatAction("Guard"), //$NON-NLS-1$
+            getCombatAction("Move"), //$NON-NLS-1$
+            getCombatAction("Dash"), //$NON-NLS-1$
+            getCombatAction("Misc"), //$NON-NLS-1$
+            getCombatAction("Jump"), //$NON-NLS-1$
+            getCombatAction("Rise"), //$NON-NLS-1$
+            getCombatAction("Inactive") //$NON-NLS-1$
 
     };
   }

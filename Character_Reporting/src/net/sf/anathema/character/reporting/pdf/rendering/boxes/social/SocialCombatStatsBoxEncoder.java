@@ -5,8 +5,6 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
@@ -14,6 +12,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.LabelledValueEncoder;
@@ -36,9 +35,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
     IGenericCharacter character = reportSession.getCharacter();
-    IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) character.getAdditionalModel(
-            IEquipmentAdditionalModelTemplate.ID);
-    ICharacterStatsModifiers equipment = equipmentModel.createStatsModifiers(character);
+    ICharacterStatsModifiers equipment = StatsModifierFactory.create(character);
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y +3, valueWidth, bounds.height);
     float valueHeight = encodeValues(graphics, valueBounds, character, equipment) -5;
