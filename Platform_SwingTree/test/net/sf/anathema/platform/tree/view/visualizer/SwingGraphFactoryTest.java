@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,9 +16,9 @@ import static org.mockito.Mockito.when;
 
 public class SwingGraphFactoryTest {
 
-  ITreePresentationProperties properties = mock(ITreePresentationProperties.class);
-  ILayer layer = mock(ILayer.class);
-  private SwingGraphFactory factory = new SwingGraphFactory(properties);
+  private final ITreePresentationProperties properties = mock(ITreePresentationProperties.class);
+  private final ILayer layer = mock(ILayer.class);
+  private final SwingGraphFactory factory = new SwingGraphFactory(properties);
 
   @Before
   public void setUp() throws Exception {
@@ -27,19 +28,30 @@ public class SwingGraphFactoryTest {
 
   @Test
   public void createsSingleNode() throws Exception {
-    when(layer.getNodes()).thenReturn(new IVisualizableNode[1]);
+    addNodesToLayer(layer, 1);
     assertThat(factory.create(layer).isSingleNode(), is(true));
   }
 
   @Test
   public void createsNoSingleNodeForMultipleLayers() throws Exception {
+    addNodesToLayer(layer, 1);
     ILayer nextLayer = mock(ILayer.class);
+    addNodesToLayer(nextLayer, 1);
     assertThat(factory.create(layer, nextLayer).isSingleNode(), is(false));
   }
 
   @Test
   public void createsNoSingleNodeForMultipleNodes() throws Exception {
-    when(layer.getNodes()).thenReturn(new IVisualizableNode[2]);
+    addNodesToLayer(layer, 2);
     assertThat(factory.create(layer).isSingleNode(), is(false));
+  }
+
+  private void addNodesToLayer(ILayer layer, int amount) {
+    IVisualizableNode[] nodes = new IVisualizableNode[amount];
+    ArrayList<IVisualizableNode> list = new ArrayList<IVisualizableNode>();
+    for (int i = 0; i < amount; i++) {
+      list.add(mock(IVisualizableNode.class));
+    }
+    when(layer.getNodes()).thenReturn(list.toArray(nodes));
   }
 }

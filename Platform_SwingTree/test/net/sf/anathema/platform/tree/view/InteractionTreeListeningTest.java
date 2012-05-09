@@ -1,5 +1,7 @@
 package net.sf.anathema.platform.tree.view;
 
+import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickToggler;
 import net.sf.anathema.platform.tree.view.interaction.RightClickResetter;
@@ -14,14 +16,16 @@ import static org.mockito.Mockito.verify;
 public class InteractionTreeListeningTest {
 
   PolygonPanel panel = mock(PolygonPanel.class);
-  InteractionTreeListening listening = new InteractionTreeListening(panel);
+  private Cascade cascade = mock(Cascade.class);
+  private NodeInteractionListener interactionListener = mock(NodeInteractionListener.class);
+  InteractionTreeListening listening = new InteractionTreeListening(cascade, panel, interactionListener);
 
   @Test
   public void addsPanListenerForDragAndClick() throws Exception {
     listening.initialize();
     ArgumentCaptor<LeftClickPanner> captor = ArgumentCaptor.forClass(LeftClickPanner.class);
-    verify(panel).addMouseListener(captor.capture());
-    verify(panel).addMouseMotionListener(captor.getValue());
+    verify(panel).addMouseMotionListener(captor.capture());
+    verify(panel).addMouseListener(captor.getValue());
   }
 
   @Test

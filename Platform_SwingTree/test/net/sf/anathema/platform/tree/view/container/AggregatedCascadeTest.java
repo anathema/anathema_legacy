@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.view.container;
 
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import org.junit.Before;
@@ -32,16 +31,16 @@ public class AggregatedCascadeTest {
 
   @Test
   public void addsListenersToAllChildren() throws Exception {
-    NodeInteractionListener listener = mock(NodeInteractionListener.class);
-    cascade.addInteractionListener(listener);
-    verify(child).addInteractionListener(listener);
+    NodeToggleListener listener = mock(NodeToggleListener.class);
+    cascade.addToggleListener(listener);
+    verify(child).addToggleListener(listener);
   }
 
   @Test
   public void removesListenersFromAllChildren() throws Exception {
-    NodeInteractionListener listener = mock(NodeInteractionListener.class);
-    cascade.removeInteractionListener(listener);
-    verify(child).removeInteractionListener(listener);
+    NodeToggleListener listener = mock(NodeToggleListener.class);
+    cascade.removeToggleListener(listener);
+    verify(child).removeToggleListener(listener);
   }
 
   @Test

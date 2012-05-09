@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.view.container;
 
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
@@ -126,10 +125,10 @@ public class DefaultContainerCascadeTest {
     FilledPolygon element = squareAtOriginWithLength2();
     IdentifiedPolygon node = new IdentifiedPolygon(element, "Z");
     container.add(node);
-    NodeInteractionListener listener = mock(NodeInteractionListener.class);
-    container.addInteractionListener(listener);
+    NodeToggleListener listener = mock(NodeToggleListener.class);
+    container.addToggleListener(listener);
     element.toggle();
-    verify(listener).nodeSelected("Z");
+    verify(listener).toggled("Z");
   }
 
   @Test
@@ -137,9 +136,9 @@ public class DefaultContainerCascadeTest {
     FilledPolygon element = squareAtOriginWithLength2();
     IdentifiedPolygon node = new IdentifiedPolygon(element, "Z");
     container.add(node);
-    NodeInteractionListener listener = mock(NodeInteractionListener.class);
-    container.addInteractionListener(listener);
-    container.removeInteractionListener(listener);
+    NodeToggleListener listener = mock(NodeToggleListener.class);
+    container.addToggleListener(listener);
+    container.removeToggleListener(listener);
     element.toggle();
     verifyZeroInteractions(listener);
   }

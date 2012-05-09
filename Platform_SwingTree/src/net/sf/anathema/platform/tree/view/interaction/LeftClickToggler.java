@@ -1,32 +1,32 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
+import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
-import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
+import net.sf.anathema.platform.tree.view.container.Cascade;
 
 import javax.swing.SwingUtilities;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class LeftClickToggler extends MouseAdapter {
+  private final Cascade cascade;
   private final PolygonPanel polygonPanel;
+  private final NodeInteractionListener interactionListener;
 
-  public LeftClickToggler(PolygonPanel panel) {
+  public LeftClickToggler(Cascade cascade, PolygonPanel panel, NodeInteractionListener interactionListener) {
+    this.cascade = cascade;
     this.polygonPanel = panel;
+    this.interactionListener = interactionListener;
   }
 
   @Override
   public void mouseClicked(MouseEvent e) {
-    if (!SwingUtilities.isLeftMouseButton(e)) {
+    if (!SwingUtilities.isLeftMouseButton(e) || e.isControlDown()) {
       return;
     }
-    polygonPanel.onElementAtPoint(e.getPoint()).perform(new ToggleAndRepaint());
-  }
-
-  private class ToggleAndRepaint implements Closure {
-    @Override
-    public void execute(InteractiveGraphicsElement polygon) {
-      polygon.toggle();
-      polygonPanel.repaint();
-    }
+    Point point = e.getPoint();
+    polygonPanel.onElementAtPoint(point).perform(new NodeSelectionTrigger(cascade, interactionListener));
+    polygonPanel.repaint();
   }
 }

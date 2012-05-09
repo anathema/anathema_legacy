@@ -1,9 +1,7 @@
 package net.sf.anathema.platform.tree.view.container;
 
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
-import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 
 import java.awt.Color;
 
@@ -30,28 +28,18 @@ public class ProxyCascade implements Cascade {
   }
 
   @Override
-  public void addInteractionListener(NodeInteractionListener listener) {
-    delegate.addInteractionListener(listener);
+  public void addToggleListener(NodeToggleListener listener) {
+    delegate.addToggleListener(listener);
   }
 
   @Override
-  public void removeInteractionListener(NodeInteractionListener listener) {
-    delegate.removeInteractionListener(listener);
+  public void removeToggleListener(NodeToggleListener listener) {
+    delegate.removeToggleListener(listener);
   }
 
   @Override
   public void initNodeNames(NodeProperties properties) {
     delegate.initNodeNames(properties);
-  }
-
-  @Override
-  public String getIdForElement(InteractiveGraphicsElement element) {
-    return delegate.getIdForElement(element);
-  }
-
-  @Override
-  public boolean hasElement(InteractiveGraphicsElement element) {
-    return delegate.hasElement(element);
   }
 
   public void clear() {

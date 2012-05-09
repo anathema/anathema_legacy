@@ -8,6 +8,7 @@ import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
+import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
@@ -17,7 +18,7 @@ public class SwingTreeView implements ITreeView<Cascade> {
 
   private final PolygonPanel polygonPanel;
   private final Announcer<CascadeLoadedListener> loadListeners = Announcer.to(CascadeLoadedListener.class);
-  private final AggregatingInteractionListener currentCascadeInteractionListener = new AggregatingInteractionListener();
+  private final AggregatingInteractionListener allInteractionListeners = new AggregatingInteractionListener();
   private final ProxyCascade cascade = new ProxyCascade();
 
   public SwingTreeView() {
@@ -26,12 +27,12 @@ public class SwingTreeView implements ITreeView<Cascade> {
 
   public SwingTreeView(final PolygonPanel polygonPanel) {
     this.polygonPanel = polygonPanel;
-    new InteractionTreeListening(polygonPanel).initialize();
+    new InteractionTreeListening(cascade, polygonPanel, allInteractionListeners).initialize();
   }
 
   @Override
   public void addNodeInteractionListener(NodeInteractionListener listener) {
-    currentCascadeInteractionListener.addNodeInteractionListener(listener);
+    allInteractionListeners.addNodeInteractionListener(listener);
   }
 
   @Override
@@ -61,7 +62,6 @@ public class SwingTreeView implements ITreeView<Cascade> {
     clear();
     cascade.setDelegate(newCascade);
     cascade.addTo(polygonPanel);
-    cascade.addInteractionListener(currentCascadeInteractionListener);
     loadListeners.announce().cascadeLoaded();
   }
 
@@ -77,7 +77,6 @@ public class SwingTreeView implements ITreeView<Cascade> {
 
   @Override
   public void clear() {
-    cascade.removeInteractionListener(currentCascadeInteractionListener);
     cascade.clear();
     polygonPanel.clear();
   }
