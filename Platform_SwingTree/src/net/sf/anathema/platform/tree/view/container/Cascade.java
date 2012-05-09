@@ -1,6 +1,5 @@
 package net.sf.anathema.platform.tree.view.container;
 
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
@@ -14,13 +13,9 @@ public interface Cascade {
 
   void addTo(PolygonPanel panel);
 
-  void addInteractionListener(NodeInteractionListener listener);
+  void addToggleListener(NodeToggleListener listener);
 
-  void removeInteractionListener(NodeInteractionListener listener);
+  void removeToggleListener(NodeToggleListener listener);
 
   void initNodeNames(NodeProperties properties);
-
-  String getIdForElement(InteractiveGraphicsElement element);
-
-  boolean hasElement(InteractiveGraphicsElement element);
 }

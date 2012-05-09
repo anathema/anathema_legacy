@@ -55,7 +55,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
 
   @Override
   public void addCharmTypeSelector(String title, IIdentificate[] types, ListCellRenderer renderer) {
-    final JPanel panel = new JPanel(new BorderLayout());
+    JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
     typeComboBox = new ChangeableJComboBox<IIdentificate>(types, false);
     typeComboBox.setSelectedObject(null);

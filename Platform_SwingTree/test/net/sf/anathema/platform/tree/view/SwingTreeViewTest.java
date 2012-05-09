@@ -1,13 +1,12 @@
 package net.sf.anathema.platform.tree.view;
 
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
+import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;
 import org.junit.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
 import org.mockito.Matchers;
 
@@ -100,32 +99,9 @@ public class SwingTreeViewTest {
   }
 
   @Test
-  public void addsInteractionListenerToCascade() throws Exception {
-    swingTreeView.loadCascade(cascade, true);
-    verify(cascade).addInteractionListener(isA(NodeInteractionListener.class));
-  }
-
-  @Test
-  public void removesInteractionListenerFromOldCascadePriorToChanging() throws Exception {
-    Cascade oldCascade = mock(Cascade.class);
-    swingTreeView.loadCascade(oldCascade, true);
-    swingTreeView.loadCascade(cascade, true);
-    ArgumentCaptor<NodeInteractionListener> captor = ArgumentCaptor.forClass(NodeInteractionListener.class);
-    verify(oldCascade).addInteractionListener(captor.capture());
-    verify(oldCascade).removeInteractionListener(captor.getValue());
-  }
-
-  @Test
   public void isEmptyAfterClear() throws Exception {
     swingTreeView.clear();
     verify(panel).clear();
-  }
-
-  @Test
-  public void removesListenersOnClear() throws Exception {
-    swingTreeView.loadCascade(cascade, true);
-    swingTreeView.clear();
-    verify(cascade).removeInteractionListener(isA(NodeInteractionListener.class));
   }
 
   @Test

@@ -1,18 +1,16 @@
 package net.sf.anathema.platform.tree.view.container;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
-import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import org.jmock.example.announcer.Announcer;
 
 import java.awt.Color;
 import java.util.List;
 
 public class DefaultContainerCascade implements ContainerCascade {
-  private final Announcer<NodeInteractionListener> listeners = Announcer.to(NodeInteractionListener.class);
+  private final Announcer<NodeToggleListener> listeners = Announcer.to(NodeToggleListener.class);
   private final List<IdentifiedPolygon> nodes = Lists.newArrayList();
   private final List<FlexibleArrow> edges = Lists.newArrayList();
 
@@ -21,7 +19,7 @@ public class DefaultContainerCascade implements ContainerCascade {
     node.element.whenToggledDo(new Runnable() {
       @Override
       public void run() {
-        listeners.announce().nodeSelected(node.id);
+        listeners.announce().toggled(node.id);
       }
     });
   }
@@ -60,12 +58,12 @@ public class DefaultContainerCascade implements ContainerCascade {
   }
 
   @Override
-  public void addInteractionListener(NodeInteractionListener listener) {
+  public void addToggleListener(NodeToggleListener listener) {
     listeners.addListener(listener);
   }
 
   @Override
-  public void removeInteractionListener(NodeInteractionListener listener) {
+  public void removeToggleListener(NodeToggleListener listener) {
     listeners.removeListener(listener);
   }
 
@@ -75,27 +73,6 @@ public class DefaultContainerCascade implements ContainerCascade {
       String nodeName = properties.getNodeText(node.id);
       node.element.setText(nodeName);
     }
-  }
-
-  @Override
-  public String getIdForElement(InteractiveGraphicsElement element) {
-    for (IdentifiedPolygon node : nodes) {
-      if (node.element.equals(element)) {
-        return node.id;
-      }
-    }
-    throw new IllegalArgumentException(
-            "Received a request to identify, but the element is not part of the currently shown cascades.");
-  }
-
-  @Override
-  public boolean hasElement(InteractiveGraphicsElement element) {
-    for (IdentifiedPolygon node : nodes) {
-      if (node.element.equals(element)) {
-        return true;
-      }
-    }
-    return false;
   }
 
   @Override
