@@ -9,12 +9,12 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class LeftClickToggler extends MouseAdapter {
+public class LeftClickSelector extends MouseAdapter {
   private final Cascade cascade;
   private final PolygonPanel polygonPanel;
   private final NodeInteractionListener interactionListener;
 
-  public LeftClickToggler(Cascade cascade, PolygonPanel panel, NodeInteractionListener interactionListener) {
+  public LeftClickSelector(Cascade cascade, PolygonPanel panel, NodeInteractionListener interactionListener) {
     this.cascade = cascade;
     this.polygonPanel = panel;
     this.interactionListener = interactionListener;

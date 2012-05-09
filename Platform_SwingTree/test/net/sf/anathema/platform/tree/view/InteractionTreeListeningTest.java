@@ -2,8 +2,9 @@ package net.sf.anathema.platform.tree.view;
 
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.container.Cascade;
+import net.sf.anathema.platform.tree.view.interaction.CtrlLeftClickDetailsRequester;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
-import net.sf.anathema.platform.tree.view.interaction.LeftClickToggler;
+import net.sf.anathema.platform.tree.view.interaction.LeftClickSelector;
 import net.sf.anathema.platform.tree.view.interaction.RightClickResetter;
 import net.sf.anathema.platform.tree.view.interaction.WheelScaler;
 import org.junit.Test;
@@ -31,7 +32,7 @@ public class InteractionTreeListeningTest {
   @Test
   public void addsToggleListenerForLeftClick() throws Exception {
     listening.initialize();
-    verify(panel).addMouseListener(isA(LeftClickToggler.class));
+    verify(panel).addMouseListener(isA(LeftClickSelector.class));
   }
 
   @Test
@@ -44,5 +45,11 @@ public class InteractionTreeListeningTest {
   public void addsScalerForWheel() throws Exception {
     listening.initialize();
     verify(panel).addMouseWheelListener(isA(WheelScaler.class));
+  }
+
+  @Test
+  public void addsDetailRequesterForCtrlLeftClick() throws Exception {
+    listening.initialize();
+    verify(panel).addMouseListener(isA(CtrlLeftClickDetailsRequester.class));
   }
 }
