@@ -7,16 +7,17 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
-## Release 4.1.1
+
+## Release 4.1.2
 
 ### Features
 * If no PDF reader is installed, Anathema asks you to install one instead of showing an ugly error message.
+
 
 ## Release 4.1.1
 
 Anathema no longer supports ``custom.properties``.
 Please use the custom data facility introduced in v4.1.0 in its stead, placing your existing file into the repository's ``custom`` folder.
-
 
 ### Features
 * [Curtis Tasker] Preferences window has button to reset repository location to default.
@@ -36,6 +37,7 @@ Please use the custom data facility introduced in v4.1.0 in its stead, placing y
 * [Curtis Tasker] Charm Cascade now resets zoom levels when changing Charm Types.
 * (Infernal Monster Style) Correct Essence prereq for "Screaming Meat Shield" and "One Hand Fury".
 * (Infernal/Cecelyne) Correct Charm prereqs for "Swallowed in Eternity"
+
 
 ## Release 4.1.0 "Varang"
 
