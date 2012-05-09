@@ -9,6 +9,11 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 4.1.1
 
+### Features
+* If no PDF reader is installed, Anathema asks you to install one instead of showing an ugly error message.
+
+## Release 4.1.1
+
 Anathema no longer supports ``custom.properties``.
 Please use the custom data facility introduced in v4.1.0 in its stead, placing your existing file into the repository's ``custom`` folder.
 

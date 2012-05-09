@@ -18,8 +18,8 @@ import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.presenter.menu.MenuExtensionPoint;
 import net.sf.anathema.framework.reporting.AbstractPrintAction;
-import net.sf.anathema.framework.reporting.AnathemaPrintAction;
-import net.sf.anathema.framework.reporting.AnathemaQuickPrintAction;
+import net.sf.anathema.framework.reporting.ControlledPrintAction;
+import net.sf.anathema.framework.reporting.QuickPrintAction;
 import net.sf.anathema.framework.repository.tree.RepositoryViewAction;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
@@ -46,9 +46,9 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     mainMenu.addSeparator();
     mainMenu.addMenuItem(createExportImportAction(resources, model));
     mainMenu.addSeparator();
-    mainMenu.addMenuItem(AnathemaPrintAction.createMenuAction(model, resources));
+    mainMenu.addMenuItem(ControlledPrintAction.createMenuAction(model, resources));
     if (AbstractPrintAction.isAutoOpenSupported()) {
-      mainMenu.addMenuItem(AnathemaQuickPrintAction.createMenuAction(model, resources));
+      mainMenu.addMenuItem(QuickPrintAction.createMenuAction(model, resources));
     }
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaExitAction.createMenuAction(resources));

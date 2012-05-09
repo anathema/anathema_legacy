@@ -18,23 +18,23 @@ import java.lang.reflect.InvocationTargetException;
 
 import static javax.swing.KeyStroke.getKeyStroke;
 
-public class AnathemaQuickPrintAction extends AbstractPrintAction {
+public class QuickPrintAction extends AbstractPrintAction {
 
   public static Action createToolAction(IAnathemaModel model, IResources resources) {
-    SmartAction action = new AnathemaQuickPrintAction(model, resources);
+    SmartAction action = new QuickPrintAction(model, resources);
     action.setToolTipText(resources.getString("Anathema.Reporting.Menu.QuickPrint.Tooltip")); //$NON-NLS-1$
     action.setIcon(new PlatformUI(resources).getPDFTaskBarIcon());
     return action;
   }
 
   public static Action createMenuAction(IAnathemaModel model, IResources resources) {
-    SmartAction action = new AnathemaQuickPrintAction(model, resources);
+    SmartAction action = new QuickPrintAction(model, resources);
     action.setName(
             resources.getString("Anathema.Reporting.Menu.QuickPrint.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
     return action;
   }
 
-  private AnathemaQuickPrintAction(IAnathemaModel anathemaModel, IResources resources) {
+  private QuickPrintAction(IAnathemaModel anathemaModel, IResources resources) {
     super(anathemaModel, resources);
   }
 
@@ -68,6 +68,8 @@ public class AnathemaQuickPrintAction extends AbstractPrintAction {
       File selectedFile = getPrintFile(item);
       printWithProgress(parentComponent, item, selectedReport, selectedFile);
       openFile(selectedFile);
+    } catch (IOException e) {
+      handleFailedToOpenException(parentComponent, e);
     } catch (InvocationTargetException e) {
       handleInvocationTargetException(parentComponent, e);
     } catch (Exception e) {

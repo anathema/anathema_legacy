@@ -76,26 +76,32 @@ public abstract class AbstractPrintAction extends SmartAction {
     }
   }
 
-  protected String getErrorMessage(InvocationTargetException e) {
-    if (e.getCause() instanceof FileNotFoundException) {
-      return resources.getString("Anathema.Reporting.Message.PrintError.FileOpen"); //$NON-NLS-1$
-    } else {
-      return resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
-    }
-  }
-
   protected abstract KeyStroke createKeyStroke();
 
   protected abstract IItemManagementModelListener createEnablingListener();
 
   protected void handleGeneralException(Component parentComponent, Exception e) {
-    String errorMessage = resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
-    MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e));
+    showMessage(parentComponent, e, "Anathema.Reporting.Message.PrintError");
   }
 
   protected void handleInvocationTargetException(Component parentComponent, InvocationTargetException e) {
-    String errorMessage = getErrorMessage(e);
-    MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e.getCause()));
+    showMessage(parentComponent, e.getCause(), getErrorMessage(e));
+  }
+
+  protected void handleFailedToOpenException(Component parentComponent, IOException e) {
+    showMessage(parentComponent, e, "Anathema.Reporting.Message.NoApplication");
+  }
+
+  private void showMessage(Component parentComponent, Throwable e, String errorMessageKey) {
+    String errorMessage = resources.getString(errorMessageKey); //$NON-NLS-1$
+    MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e));
+  }
+
+  private String getErrorMessage(InvocationTargetException e) {
+    if (e.getCause() instanceof FileNotFoundException) {
+      return "Anathema.Reporting.Message.PrintError.FileOpen"; //$NON-NLS-1$
+    }
+    return "Anathema.Reporting.Message.PrintError"; //$NON-NLS-1$
   }
 
   protected void openFile(File selectedFile) throws IOException {

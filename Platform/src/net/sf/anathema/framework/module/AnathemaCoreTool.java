@@ -7,8 +7,8 @@ import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
 import net.sf.anathema.framework.reporting.AbstractPrintAction;
-import net.sf.anathema.framework.reporting.AnathemaPrintAction;
-import net.sf.anathema.framework.reporting.AnathemaQuickPrintAction;
+import net.sf.anathema.framework.reporting.ControlledPrintAction;
+import net.sf.anathema.framework.reporting.QuickPrintAction;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 import net.sf.anathema.initialization.Tool;
 import net.sf.anathema.lib.resources.IResources;
@@ -33,10 +33,10 @@ public class AnathemaCoreTool implements IAnathemaTool {
 
   private Action getPrintAction(IResources resources, IAnathemaModel model) {
     if (AbstractPrintAction.isAutoOpenSupported()) {
-      return AnathemaQuickPrintAction.createToolAction(model, resources);
+      return QuickPrintAction.createToolAction(model, resources);
     }
     else {
-      return AnathemaPrintAction.createToolAction(model, resources);
+      return ControlledPrintAction.createToolAction(model, resources);
     }
   }
 }
