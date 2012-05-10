@@ -13,6 +13,8 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Features
 * If no PDF reader is installed, Anathema asks you to install one instead of showing an ugly error message.
 
+### Bugfixes
+* Corrects default descriptions for Sidereal Generic Charms
 
 ## Release 4.1.1
 
