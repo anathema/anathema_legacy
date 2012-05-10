@@ -11,7 +11,7 @@ import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.health.AbstractHealthAndMovementTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.character.equipment.impl.character.model.stats.CharacterStatsModifiers;
+import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 
 import net.sf.anathema.lib.resources.IResources;
 
@@ -25,7 +25,7 @@ public class HealthAndMovementTableEncoder extends AbstractHealthAndMovementTabl
   
   @Override
   public final float encodeTable(SheetGraphics graphics, ReportSession session, Bounds bounds) throws DocumentException {
-    mobilityPenalty = Math.min( 0, CharacterStatsModifiers.extractFromCharacter(session.getCharacter()).getMobilityPenalty() );
+    mobilityPenalty = Math.min( 0, StatsModifierFactory.create(session.getCharacter()).getMobilityPenalty() );
     return super.encodeTable(graphics, session, bounds);
   }
 

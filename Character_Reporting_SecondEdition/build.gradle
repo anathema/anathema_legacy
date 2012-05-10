@@ -1,4 +1,3 @@
 dependencies {
   compile project(':Character_Reporting')
-  compile project(':Character_Equipment_Impl')
 }
