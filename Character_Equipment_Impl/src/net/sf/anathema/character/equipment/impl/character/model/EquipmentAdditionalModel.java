@@ -192,7 +192,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     boolean transferred = false;
     for (IEquipmentStats fromStats : fromItem.getStats()) {
       List<IEquipmentStatsOption> optionList = optionsTable.get(fromItem, fromStats);
-      optionsTable.put(fromItem, fromStats, null);
+      optionsTable.remove(fromItem, fromStats);
       IEquipmentStats toStats = toItem.getStat(fromStats.getId());
       if (toStats != null && optionList != null) {
         optionsTable.put(toItem, toStats, optionList);
