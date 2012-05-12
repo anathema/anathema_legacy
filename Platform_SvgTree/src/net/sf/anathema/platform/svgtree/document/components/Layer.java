@@ -252,11 +252,11 @@ public class Layer implements ILayer {
 
   @Override
   public int getWidth() {
-    if (nodes.isEmpty()) {
-      return 0;
+    int width = 0;
+    for (IVisualizableNode node : nodes) {
+      width = Math.max(width, node.getRightSide());
     }
-    IVisualizableNode finalNode = nodes.get(nodes.size() - 1);
-    return finalNode.getRightSide();
+    return width;
   }
 
   @Override
