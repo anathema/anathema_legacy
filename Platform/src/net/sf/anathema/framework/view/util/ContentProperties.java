@@ -3,7 +3,7 @@ package net.sf.anathema.framework.view.util;
 public class ContentProperties {
 
   private final String name;
-  private boolean needsScrollbar = false;
+  private boolean needsScrollBar = false;
 
   public ContentProperties(String name) {
     this.name = name;
@@ -13,12 +13,12 @@ public class ContentProperties {
     return name;
   }
 
-  public boolean isNeedsScrollbar() {
-    return needsScrollbar;
+  public boolean isScrollBarNeeded() {
+    return needsScrollBar;
   }
 
-  public ContentProperties needsScrollbar() {
-    this.needsScrollbar = true;
+  public ContentProperties needsScrollBar() {
+    this.needsScrollBar = true;
     return this;
   }
 }

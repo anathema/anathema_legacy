@@ -93,7 +93,7 @@ public class ExperienceConfigurationPresenter implements IContentPresenter {
   @Override
   public IViewContent getTabContent() {
     String title = resources.getString("CardView.ExperienceConfiguration.Title");//$NON-NLS-1$
-    return new SimpleViewContent(new ContentProperties(title).needsScrollbar(), experienceView);
+    return new SimpleViewContent(new ContentProperties(title).needsScrollBar(), experienceView);
   }
 
   private void initTableModel() {

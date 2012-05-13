@@ -15,7 +15,7 @@ import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.framework.view.util.MultiTabContentView;
+import net.sf.anathema.framework.view.util.MultipleTabContentView;
 import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.lib.gui.IDisposable;
 
@@ -32,7 +32,7 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
   private OverviewView overviewView;
   private final List<IDisposable> disposables = new ArrayList<IDisposable>();
   private final IIntValueDisplayFactory intValueDisplayFactoryWithoutMarker;
-  private final IMultiContentView contentView = new MultiTabContentView();
+  private final IMultiContentView contentView = new MultipleTabContentView();
 
   private JComponent content;
 
@@ -64,7 +64,7 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
 
   @Override
   public IMultiContentView addMultiContentView(String header) {
-    IMultiContentView multiTabView = new MultiTabContentView(TabDirection.Up);
+    IMultiContentView multiTabView = new MultipleTabContentView(TabDirection.Up);
     contentView.addView(multiTabView, new ContentProperties(header));
     return multiTabView;
   }

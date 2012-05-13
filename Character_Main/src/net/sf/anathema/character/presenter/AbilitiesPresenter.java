@@ -29,7 +29,7 @@ public class AbilitiesPresenter implements IContentPresenter {
 
   @Override
   public IViewContent getTabContent() {
-    return new SimpleViewContent(new ContentProperties(contentHeader).needsScrollbar(), abilityView);
+    return new SimpleViewContent(new ContentProperties(contentHeader).needsScrollBar(), abilityView);
   }
 
   @Override
