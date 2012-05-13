@@ -11,6 +11,7 @@ public class MultiTabContentView implements IMultiContentView {
 
   private final TabbedView tabbedView;
   private JPanel content;
+  private JPanel additionalViewPanel = new JPanel();
 
   public MultiTabContentView() {
     this(TabDirection.Left);
@@ -25,6 +26,7 @@ public class MultiTabContentView implements IMultiContentView {
     if (content == null) {
       content = new JPanel(new BorderLayout());
       content.add(tabbedView.getComponent(), BorderLayout.CENTER);
+      content.add(additionalViewPanel, BorderLayout.EAST);
     }
     return content;
   }
@@ -37,7 +39,7 @@ public class MultiTabContentView implements IMultiContentView {
 
   @Override
   public void setAdditionalComponent(JComponent component) {
-    tabbedView.setTabAreaComponents(component);
-    tabbedView.getComponent().revalidate();
+    additionalViewPanel.removeAll();
+    additionalViewPanel.add(component);
   }
 }
