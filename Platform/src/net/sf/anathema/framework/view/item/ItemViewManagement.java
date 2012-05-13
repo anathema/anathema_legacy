@@ -96,6 +96,7 @@ public class ItemViewManagement implements IComponentItemViewManagement {
 
   private JComponent createTabComponent(IItemView view, Action closeAction) {
     JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+    panel.setFocusable(false);
     panel.setOpaque(false);
     JXLabel label = new JXLabel(view.getName(), view.getIcon(), SwingConstants.LEFT);
     panel.add(label);

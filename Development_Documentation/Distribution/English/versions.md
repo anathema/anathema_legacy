@@ -8,10 +8,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 Website: [anathema.github.com](http://anathema.github.com)
 
 
-## Release 4.1.2
+## Release 4.2.0
 
 ### Features
 * If no PDF reader is installed, Anathema asks you to install one instead of showing an ugly error message.
+* The overview is collapsible and hidden by default.
 
 ### Bugfixes
 * Can refresh items in the loadout screen
