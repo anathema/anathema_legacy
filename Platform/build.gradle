@@ -1,6 +1,5 @@
 dependencies {
   compile 'com.l2fprod.common:l2fprod-common-directorychooser:0.2.0'
-  compile 'net.infonode:idw-gpl:1.6.1'
   compile 'commons-io:commons-io:2.1'
   compile 'org.reflections:reflections:0.9.6'
   compile 'org.slf4j:slf4j-simple:1.6.4'

@@ -195,7 +195,6 @@ THIRDPARTY LICENSES
 Anathema includes software developed by
 -The Apache Software Foundation (http://www.apache.org/).
 -Versant Technologies (http://www.db4o.com/).
--NNL Technology AB (http://www.infonode.net).
 -L2FProd.com (http://www.l2fprod.com).
 -the Reflections project (http://code.google.com/p/reflections/)
 -the slf4j project (http://www.slf4j.org)
@@ -239,7 +238,6 @@ Swing Labs components
 
 GNU GPL v2
 =========================
-Infonode Docking Window
 db4o
 JeksParser
 

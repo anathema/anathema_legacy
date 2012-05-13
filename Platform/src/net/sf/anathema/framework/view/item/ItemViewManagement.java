@@ -1,12 +1,9 @@
 package net.sf.anathema.framework.view.item;
 
-import net.infonode.gui.colorprovider.FixedColorProvider;
-import net.infonode.tabbedpanel.theme.ShapedGradientTheme;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
 import net.sf.anathema.lib.control.IObjectValueChangedListener;
 import org.jdesktop.swingx.JXLabel;
-import org.jdesktop.swingx.painter.*;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.*;

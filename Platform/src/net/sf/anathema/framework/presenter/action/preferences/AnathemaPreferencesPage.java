@@ -1,27 +1,22 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.infonode.tabbedpanel.Tab;
-import net.infonode.tabbedpanel.TabbedPanel;
-import net.infonode.tabbedpanel.titledtab.TitledTab;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class AnathemaPreferencesPage extends AbstractDialogPage {
 
   private IResources resources;
   private IPreferencesElement[] elements;
-  private final Map<String, Tab> tabsByName = new LinkedHashMap<String, Tab>();
+  private final Map<String, JPanel> tabContentByCategory = new LinkedHashMap<String, JPanel>();
   private final Map<String, IGridDialogPanel> panelsByName = new HashMap<String, IGridDialogPanel>();
 
   public AnathemaPreferencesPage(IResources resources, IPreferencesElement[] elements) {
@@ -42,27 +37,26 @@ public class AnathemaPreferencesPage extends AbstractDialogPage {
 
   @Override
   public JComponent createContent() {
-    TabbedPanel panel = new TabbedPanel();
+    JTabbedPane panel = new JTabbedPane();
     for (IPreferencesElement element : elements) {
       String category = element.getCategory().getId();
-      if (tabsByName.get(category) == null) {
+      if (tabContentByCategory.get(category) == null) {
         createCategoryTab(panel, category);
         panelsByName.put(category, new DefaultGridDialogPanel());
       }
       element.addComponent(panelsByName.get(category), resources);
     }
-    for (String key : tabsByName.keySet()) {
-      Tab tab = tabsByName.get(key);
-      tab.getContentComponent().add(panelsByName.get(key).getComponent());
+    for (String key : tabContentByCategory.keySet()) {
+      JPanel categoryPanel = tabContentByCategory.get(key);
+      categoryPanel.add(panelsByName.get(key).getComponent());
     }
     return panel;
   }
 
-  private Tab createCategoryTab(TabbedPanel panel, String category) {
-    Tab tab = new TitledTab(
-        resources.getString("AnathemaCore.Preferences.Group." + category), null, new JPanel(new GridDialogLayout(1, false)), null); //$NON-NLS-1$
-    tabsByName.put(category, tab);
-    panel.addTab(tab);
-    return tab;
+  private void createCategoryTab(JTabbedPane panel, String category) {
+    String tabName = resources.getString("AnathemaCore.Preferences.Group." + category);
+    JPanel content = new JPanel(new GridDialogLayout(1, false));
+    tabContentByCategory.put(category, content);
+    panel.addTab(tabName, content);
   }
 }
