@@ -14,21 +14,21 @@ public abstract class AbstractVerticalButtonUi extends BasicButtonUI {
   }
 
   protected void paintScaffold(Graphics graphics, JComponent component) {
-    JButton button = (JButton) component;
+    AbstractButton button = (AbstractButton) component;
     ButtonModel model = button.getModel();
     if (model.isRollover()) {
       Rectangle bounds = component.getBounds();
       graphics.setColor(model.isArmed() ? UIManager.getColor("controlShadow") : UIManager.getColor("controlLHighlight"));
-      graphics.fillRect(bounds.x - 5, bounds.y - 5, bounds.width - 1, bounds.height - 1);
+      graphics.fillRect(0, 0, bounds.width - 1, bounds.height - 1);
       graphics.setColor(Color.DARK_GRAY);
-      graphics.drawRect(bounds.x - 5, bounds.y - 5, bounds.width - 1, bounds.height - 1);
+      graphics.drawRect(0, 0, bounds.width - 1, bounds.height - 1);
     }
   }
 
   @Override
   public final void paint(Graphics graphics, JComponent component) {
-    JButton button = (JButton) component;
     paintScaffold(graphics, component);
+    AbstractButton button = (AbstractButton) component;
     String text = button.getText();
     Icon icon = (button.isEnabled()) ? button.getIcon() : button.getDisabledIcon();
     if ((icon == null) && (text == null)) {
