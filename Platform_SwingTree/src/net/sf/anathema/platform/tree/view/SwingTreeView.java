@@ -25,7 +25,7 @@ public class SwingTreeView implements ITreeView<Cascade> {
     this(new PolygonPanel());
   }
 
-  public SwingTreeView(final PolygonPanel polygonPanel) {
+  public SwingTreeView(PolygonPanel polygonPanel) {
     this.polygonPanel = polygonPanel;
     new InteractionTreeListening(cascade, polygonPanel, allInteractionListeners).initialize();
   }
@@ -65,13 +65,17 @@ public class SwingTreeView implements ITreeView<Cascade> {
     loadListeners.announce().cascadeLoaded();
   }
 
+  public void addSpecialControl(String nodeId, Runnable actionListener){
+    //polygonPanel.add(new ButtonSpecialControl("XXX"));
+  }
+
   @Override
   public void initNodeNames(NodeProperties properties) {
     cascade.initNodeNames(properties);
     polygonPanel.repaint();
   }
 
-  public void initToolTips(ToolTipProperties properties){
+  public void initToolTips(ToolTipProperties properties) {
     polygonPanel.addMouseMotionListener(new ToolTipListener(properties, polygonPanel, cascade));
   }
 

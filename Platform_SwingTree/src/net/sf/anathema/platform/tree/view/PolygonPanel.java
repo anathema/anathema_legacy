@@ -5,6 +5,7 @@ import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import net.sf.anathema.platform.tree.view.interaction.Closure;
 import net.sf.anathema.platform.tree.view.interaction.ElementContainer;
 import net.sf.anathema.platform.tree.view.interaction.Executor;
+import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -12,10 +13,11 @@ import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.awt.Cursor.HAND_CURSOR;
 import static java.awt.Cursor.getPredefinedCursor;
@@ -25,26 +27,38 @@ import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 public class PolygonPanel extends JPanel {
   private AffineTransform transform = new AffineTransform();
   private ElementContainer container = new ElementContainer();
+  private final List<SpecialControl> specialControls = new ArrayList<SpecialControl>();
 
   public PolygonPanel() {
+    setLayout(null);
     setBackground(Color.WHITE);
   }
 
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);
-    Graphics2D graphics = (Graphics2D) g;
+    Graphics2D graphics = (Graphics2D) g.create();
     graphics.transform(transform);
     graphics.setRenderingHint(KEY_ANTIALIASING, VALUE_ANTIALIAS_ON);
-    for (GraphicsElement polygon : container) {
-      polygon.paint(graphics);
+    for (GraphicsElement element : container) {
+      element.paint(graphics);
     }
   }
 
   @Override
-  public Point getPopupLocation(MouseEvent event) {
-    return super.getPopupLocation(
-            event);    //To change body of overridden methods use File | Settings | File Templates.
+  public void revalidate() {
+    if (specialControls != null) {
+      for (SpecialControl specialControl : specialControls) {
+        specialControl.transformThrough(transform);
+      }
+    }
+    super.revalidate();
+  }
+
+  public void add(SpecialControl control) {
+    specialControls.add(control);
+    control.transformOriginalCoordinates(transform);
+    control.addTo(this);
   }
 
   public void add(InteractiveGraphicsElement element) {
@@ -75,6 +89,10 @@ public class PolygonPanel extends JPanel {
 
   public void clear() {
     container.clear();
+    for (SpecialControl specialControl : specialControls) {
+      specialControl.remove(this);
+    }
+    specialControls.clear();
     repaint();
   }
 

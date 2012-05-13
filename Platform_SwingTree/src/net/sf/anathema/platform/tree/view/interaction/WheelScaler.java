@@ -17,6 +17,7 @@ public class WheelScaler implements MouseWheelListener {
     polygonPanel.translate(e.getX(), e.getY());
     polygonPanel.scale(calculateScale(e));
     polygonPanel.translate(-e.getX(), -e.getY());
+    polygonPanel.revalidate();
     polygonPanel.repaint();
   }
 
