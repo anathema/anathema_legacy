@@ -126,6 +126,6 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
       return;
     }
     JComponent component = overviewView.getComponent();
-    contentView.setAdditionalComponent(component);
+    contentView.setAdditionalComponent("Overview", component);
   }
 }

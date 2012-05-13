@@ -9,5 +9,5 @@ public interface IMultiContentView extends IView {
 
   void addView(IView view, ContentProperties tabProperties);
 
-  void setAdditionalComponent(JComponent components);
+  void setAdditionalComponent(String title, JComponent components);
 }
