@@ -138,6 +138,11 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   @Override
+  public void addSpecialControl(String nodeId, Runnable actionListener) {
+    //To change body of implemented methods use File | Settings | File Templates.
+  }
+
+  @Override
   public void clear() {
     loadCascade(null, true);
   }

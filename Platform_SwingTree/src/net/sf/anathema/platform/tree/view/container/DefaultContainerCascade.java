@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;
+import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 import org.jmock.example.announcer.Announcer;
 
 import java.awt.Color;
@@ -72,6 +73,15 @@ public class DefaultContainerCascade implements ContainerCascade {
     for (IdentifiedPolygon node : nodes) {
       String nodeName = properties.getNodeText(node.id);
       node.element.setText(nodeName);
+    }
+  }
+
+  @Override
+  public void determinePositionFor(String nodeId, SpecialControl control) {
+    for (IdentifiedPolygon node : nodes) {
+      if (node.id.equals(nodeId)) {
+        node.element.position(control);
+      }
     }
   }
 

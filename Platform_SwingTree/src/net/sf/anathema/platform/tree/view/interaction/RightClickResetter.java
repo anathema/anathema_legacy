@@ -7,17 +7,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class RightClickResetter extends MouseAdapter {
-    private final PolygonPanel polygonPanel;
+  private final PolygonPanel polygonPanel;
 
-    public RightClickResetter(PolygonPanel polygonPanel) {
-        this.polygonPanel = polygonPanel;
-    }
+  public RightClickResetter(PolygonPanel polygonPanel) {
+    this.polygonPanel = polygonPanel;
+  }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        boolean rightMouseButton = SwingUtilities.isRightMouseButton(e);
-        if (e.getClickCount() == 2 && rightMouseButton) {
-            polygonPanel.resetTransformation();
-        }
+  @Override
+  public void mouseClicked(MouseEvent e) {
+    boolean rightMouseButton = SwingUtilities.isRightMouseButton(e);
+    if (e.getClickCount() == 2 && rightMouseButton) {
+      polygonPanel.resetTransformation();
+      polygonPanel.revalidate();
     }
+  }
 }
