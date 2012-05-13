@@ -3,6 +3,7 @@ package net.sf.anathema.platform.tree.view.container;
 import com.google.common.collect.Lists;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
+import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 
 import java.awt.Color;
 import java.util.List;
@@ -53,6 +54,13 @@ public class AggregatedCascade implements Cascade {
   public void initNodeNames(NodeProperties properties) {
     for (Cascade cascade : cascades) {
       cascade.initNodeNames(properties);
+    }
+  }
+
+  @Override
+  public void determinePositionFor(String nodeId, SpecialControl control) {
+    for (ContainerCascade cascade : cascades) {
+      cascade.determinePositionFor(nodeId, control);
     }
   }
 

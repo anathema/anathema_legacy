@@ -11,4 +11,8 @@ public interface SpecialControl {
   void remove(JComponent parent);
 
   void transformOriginalCoordinates(AffineTransform transform);
+
+  void setPosition(int x, int y);
+
+  void setWidth(int width);
 }

@@ -18,7 +18,9 @@ public interface ITreeView<G> extends IView, IDisposable {
 
   void loadCascade(G cascade, boolean resetView) throws CascadeLoadException;
 
-  void initNodeNames(NodeProperties properties);
+  void addSpecialControl(String nodeId, Runnable actionListener);
+
+  void initNodeNames (NodeProperties properties);
 
   void clear();
 }

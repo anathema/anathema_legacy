@@ -8,6 +8,7 @@ import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
+import net.sf.anathema.platform.tree.view.interaction.ButtonSpecialControl;
 import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -65,8 +66,12 @@ public class SwingTreeView implements ITreeView<Cascade> {
     loadListeners.announce().cascadeLoaded();
   }
 
+  @Override
   public void addSpecialControl(String nodeId, Runnable actionListener){
-    //polygonPanel.add(new ButtonSpecialControl("XXX"));
+    ButtonSpecialControl control = new ButtonSpecialControl("Special");
+    control.whenTriggeredExecute(actionListener);
+    cascade.determinePositionFor(nodeId, control);
+    polygonPanel.add(control);
   }
 
   @Override

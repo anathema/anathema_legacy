@@ -1,10 +1,12 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 import org.jmock.example.announcer.Announcer;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 
 import static net.disy.commons.swing.color.ColorUtilities.getTransparentColor;
@@ -56,5 +58,11 @@ public class FilledPolygon implements InteractiveGraphicsElement {
 
   public void setText(String text) {
     this.text = text;
+  }
+
+  public void position(SpecialControl control) {
+    Rectangle bounds = polygon.getBounds();
+    control.setPosition((int) bounds.getMinX(), (int) bounds.getMaxY() + 10);
+    control.setWidth((int) bounds.getWidth());
   }
 }
