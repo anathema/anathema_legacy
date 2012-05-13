@@ -1,11 +1,7 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import java.awt.Rectangle;
-
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-
-import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
@@ -15,6 +11,16 @@ import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGSVGElement;
+
+import java.awt.Rectangle;
+
+import static java.text.MessageFormat.format;
+import static net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGButton.SHADOW_OFFSET;
+import static org.apache.batik.dom.svg.SVGDOMImplementation.SVG_NAMESPACE_URI;
+import static org.apache.batik.util.SVGConstants.SVG_G_TAG;
+import static org.apache.batik.util.SVGConstants.SVG_MOUSEOUT_EVENT_TYPE;
+import static org.apache.batik.util.SVGConstants.SVG_MOUSEUP_EVENT_TYPE;
+import static org.apache.batik.util.SVGConstants.SVG_TRANSFORM_ATTRIBUTE;
 
 public class SVGViewControlButton implements ISVGSpecialNodeView {
 
@@ -42,26 +48,21 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
   }
 
   @Override
-  public SVGGElement initGui(final SVGOMDocument svgDocument, final IBoundsCalculator boundsCalculator) {
+  public SVGGElement initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
     this.calculator = boundsCalculator;
-    this.outerGroupElement = (SVGGElement) svgDocument.createElementNS(
-        SVGDOMImplementation.SVG_NAMESPACE_URI,
-        SVGConstants.SVG_G_TAG);
-    final SVGGElement buttonGroup = button.initGui(svgDocument);
+    this.outerGroupElement = (SVGGElement) svgDocument.createElementNS(SVG_NAMESPACE_URI, SVG_G_TAG);
+    SVGGElement buttonGroup = button.initGui(svgDocument);
     outerGroupElement.appendChild(buttonGroup);
     this.displayElement = display.initGui(svgDocument, calculator);
-    setAttribute(
-        displayElement,
-        SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
-        "translate(0," + SVGIntValueDisplay.getDiameter(nodeWidth) * 1.15 + SVGButton.SHADOW_OFFSET + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+    setAttribute(displayElement, SVG_TRANSFORM_ATTRIBUTE,
+            format("translate(0,{0}{1})", SVGIntValueDisplay.getDiameter(nodeWidth) * 1.15, SHADOW_OFFSET));
     outerGroupElement.appendChild(displayElement);
     this.rootElement = svgDocument.getRootElement();
     EventListener removeListener = createRemoveListener(buttonGroup);
-    buttonGroup.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(), false);
-    buttonGroup.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, removeListener, false);
-    displayElement.addEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, removeListener, false);
+    buttonGroup.addEventListener(SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(), false);
+    buttonGroup.addEventListener(SVG_MOUSEOUT_EVENT_TYPE, removeListener, false);
+    displayElement.addEventListener(SVG_MOUSEOUT_EVENT_TYPE, removeListener, false);
     setDisplayVisible(false);
-
     return outerGroupElement;
   }
 
@@ -74,9 +75,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
         }
         MouseEvent event = (MouseEvent) evt;
         Rectangle bounds = calculator.getBounds(displayElement);
-        boolean outOfDisplay = !bounds.contains(
-            event.getClientX(),
-            event.getClientY());
+        boolean outOfDisplay = !bounds.contains(event.getClientX(), event.getClientY());
         boolean outOfButton = !calculator.getBounds(buttonGroup).contains(event.getClientX(), event.getClientY());
         if (outOfDisplay && outOfButton) {
           removeFromView();
@@ -95,8 +94,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
         }
         if (enabled) {
           removeFromView();
-        }
-        else {
+        } else {
           addToView();
         }
       }
@@ -125,33 +123,29 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
     NodeList childNodes = rootElement.getChildNodes();
     for (int index = 0; index < childNodes.getLength(); index++) {
       if (childNodes.item(index) instanceof Element) {
-        setAttribute(
-            (Element) childNodes.item(index),
-            SVGConstants.SVG_OPACITY_ATTRIBUTE,
-            SVGConstants.SVG_OPAQUE_VALUE);
+        setAttribute((Element) childNodes.item(index), SVGConstants.SVG_OPACITY_ATTRIBUTE,
+                SVGConstants.SVG_OPAQUE_VALUE);
       }
     }
     setEnabled(false);
   }
 
-  private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final String attributeValue) {
+  private void setAttribute(final org.w3c.dom.Element element, final String attributeName,
+                            final String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
   @Override
-  public void setVisible(boolean visible) {
-    setDisplayVisible(visible);
-    if (!visible) {
-      enabled = false;
-    }
+  public void hide() {
+    setDisplayVisible(false);
+    enabled = false;
   }
 
   private void setDisplayVisible(boolean visible) {
     if (displayElement != null) {
       if (visible) {
         setAttribute(displayElement, ATTRIB_DISPLAY, VALUE_INHERIT);
-      }
-      else {
+      } else {
         setAttribute(displayElement, ATTRIB_DISPLAY, VALUE_NONE);
       }
     }

@@ -49,9 +49,9 @@ public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
   }
 
   @Override
-  public void setVisible(boolean visible) {
+  public void hide() {
     for (SVGBooleanValueDisplay effect : effects) {
-      effect.setVisible(visible);
+      effect.setVisible(false);
     }
   }
 

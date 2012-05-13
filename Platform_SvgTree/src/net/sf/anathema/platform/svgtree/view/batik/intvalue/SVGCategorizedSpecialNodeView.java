@@ -42,9 +42,9 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
   }
 
   @Override
-  public void setVisible(final boolean visible) {
+  public void hide() {
     for (SVGIntValueView view : categories) {
-      view.setVisible(visible);
+      view.setVisible(false);
     }
   }
 
