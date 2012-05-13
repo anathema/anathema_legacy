@@ -11,7 +11,7 @@ public interface ISVGSpecialNodeView {
 
   SVGGElement initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator);
 
-  void setVisible(boolean visible);
+  void hide();
 
   void reset();
 }
