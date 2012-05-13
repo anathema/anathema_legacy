@@ -1,16 +1,13 @@
 package net.sf.anathema.framework.view.util;
 
 import net.infonode.tabbedpanel.TabDropDownListVisiblePolicy;
-import net.infonode.tabbedpanel.TabbedPanel;
 import net.infonode.tabbedpanel.TabbedPanelProperties;
-import net.infonode.tabbedpanel.titledtab.TitledTab;
 import net.infonode.util.Direction;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
 
 public class TabbedView implements IView {
 
@@ -26,10 +23,10 @@ public class TabbedView implements IView {
     paneProperties.getTabAreaComponentsProperties().setStretchEnabled(true);
   }
 
-  private final TabbedPanel tabbedPane = new TabbedPanel();
+  private final JTabbedPane tabbedPane = new JTabbedPane();
 
   public TabbedView(TabDirection tabDirection) {
-    initTabbedPaneProperties(tabbedPane.getProperties(), tabDirection);
+    tabbedPane.setTabPlacement(tabDirection.getPlacement());
   }
 
   public void addView(IView content, ContentProperties properties) {
@@ -39,16 +36,11 @@ public class TabbedView implements IView {
       viewComponent.add(tabContent);
       tabContent = new RevalidatingScrollPane(viewComponent);
     }
-    TitledTab tab = new TitledTab(properties.getName(), null, tabContent, null);
-    tabbedPane.addTab(tab);
+    tabbedPane.addTab(properties.getName(), tabContent);
   }
 
   @Override
   public final JComponent getComponent() {
     return tabbedPane;
-  }
-
-  public final void setTabAreaComponents(JComponent... components) {
-    tabbedPane.setTabAreaComponents(components);
   }
 }
