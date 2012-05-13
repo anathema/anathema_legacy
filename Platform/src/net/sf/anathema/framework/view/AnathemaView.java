@@ -33,9 +33,7 @@ public class AnathemaView implements IAnathemaView {
   }
 
   private IComponentItemViewManagement createItemViewManagement() {
-    ItemViewManagement management = new ItemViewManagement();
-    management.setTabAreaComponents(statusBar.getComponent());
-    return management;
+    return new ItemViewManagement();
   }
 
   private JFrame initGui() {
@@ -59,6 +57,7 @@ public class AnathemaView implements IAnathemaView {
   private void initApplicationPanel(JPanel applicationPanel) {
     applicationPanel.add(toolbar.getComponent(), BorderLayout.NORTH);
     applicationPanel.add(itemViewManagement.getComponent(), BorderLayout.CENTER);
+    applicationPanel.add(statusBar.getComponent(), BorderLayout.SOUTH);
   }
 
   @Override

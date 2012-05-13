@@ -21,7 +21,7 @@ public class CollapsibleView implements IView {
 
   public CollapsibleView() {
     collapsiblePane.add(collapsible, BorderLayout.CENTER);
-    collapsiblePane.setAnimated(true);
+    collapsiblePane.setAnimated(false);
     collapsiblePane.setCollapsed(true);
     collapsible.add(titledPanel, BorderLayout.CENTER);
     panel.add(collapsiblePane, BorderLayout.SOUTH);

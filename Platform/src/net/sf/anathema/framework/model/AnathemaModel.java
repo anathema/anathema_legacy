@@ -2,6 +2,8 @@ package net.sf.anathema.framework.model;
 
 import java.io.File;
 
+import net.disy.commons.core.message.BasicMessage;
+import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
@@ -35,6 +37,7 @@ public class AnathemaModel implements IAnathemaModel {
   public AnathemaModel(File repositoryFolder, IResources resources, ResourceLoader resourceLoader) {
     this.repository = new Repository(repositoryFolder, itemManagment);
     this.messaging = new AnathemaMessaging(resources);
+    messaging.addMessage(new BasicMessage("Welcome to Anathema", MessageType.INFORMATION));
     this.resourceLoader = resourceLoader;
   }
 

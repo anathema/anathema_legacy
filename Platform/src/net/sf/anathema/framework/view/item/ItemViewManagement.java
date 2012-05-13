@@ -170,8 +170,4 @@ public class ItemViewManagement implements IComponentItemViewManagement {
   private void setItemViewName(IItemView view, String name) {
     getTab(view).setText(name);
   }
-
-  public void setTabAreaComponents(JComponent... components) {
-    tabbedPane.setTabAreaComponents(components);
-  }
 }
