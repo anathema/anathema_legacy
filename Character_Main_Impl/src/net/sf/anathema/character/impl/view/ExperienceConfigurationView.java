@@ -1,12 +1,12 @@
 package net.sf.anathema.character.impl.view;
 
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;

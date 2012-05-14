@@ -1,13 +1,6 @@
 package net.sf.anathema.campaign.music.presenter.selection.player;
 
-import java.awt.Component;
-
-import javax.swing.JSlider;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
@@ -16,7 +9,13 @@ import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.Component;
 
 public class MusicPlayerPresenter implements Presenter {
 

@@ -1,12 +1,5 @@
 package net.sf.anathema.campaign.music.impl.view.library;
 
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionListener;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
@@ -23,10 +16,17 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.EditableActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
+
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionListener;
 
 public class LibraryControlView implements ILibraryControlView, IView {
 

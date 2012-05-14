@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.ui.IObjectUi;
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -23,6 +22,7 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.IResources;

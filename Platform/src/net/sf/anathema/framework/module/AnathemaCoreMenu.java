@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.module;
 
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
@@ -24,11 +23,13 @@ import net.sf.anathema.framework.repository.tree.RepositoryViewAction;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.initialization.Menu;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Action;
+import javax.swing.KeyStroke;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 @Menu

@@ -1,9 +1,17 @@
 package net.sf.anathema.campaign.view.plot;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.dnd.DnDConstants;
-import java.awt.event.MouseMotionAdapter;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.campaign.presenter.view.IPlotViewListener;
+import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
+import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
+import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
+import net.sf.anathema.campaign.view.BasicItemDescriptionView;
+import net.sf.anathema.campaign.view.util.DefaultTreeView;
+import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
+import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
+import net.sf.anathema.lib.util.TreeUtilities;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -20,19 +28,10 @@ import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
-
-import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.campaign.presenter.view.IPlotViewListener;
-import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
-import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
-import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
-import net.sf.anathema.campaign.view.BasicItemDescriptionView;
-import net.sf.anathema.campaign.view.util.DefaultTreeView;
-import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
-import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
-import net.sf.anathema.lib.util.TreeUtilities;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.dnd.DnDConstants;
+import java.awt.event.MouseMotionAdapter;
 
 public class PlotView implements IPlotView {
 

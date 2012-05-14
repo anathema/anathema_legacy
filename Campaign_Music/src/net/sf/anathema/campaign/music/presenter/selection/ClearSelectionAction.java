@@ -1,12 +1,12 @@
 package net.sf.anathema.campaign.music.presenter.selection;
 
-import java.awt.Component;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.Component;
 
 public class ClearSelectionAction extends SmartAction {
 

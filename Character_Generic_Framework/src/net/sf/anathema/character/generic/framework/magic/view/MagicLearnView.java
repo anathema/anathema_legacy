@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.framework.magic.view;
 
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import org.jmock.example.announcer.Announcer;

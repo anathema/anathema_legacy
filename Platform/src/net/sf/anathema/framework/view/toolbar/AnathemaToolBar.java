@@ -1,16 +1,15 @@
 package net.sf.anathema.framework.view.toolbar;
 
-import java.awt.Component;
-import java.awt.Dimension;
+import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.action.SmartAction;
 
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
-
-import net.disy.commons.swing.action.SmartAction;
-import net.sf.anathema.lib.gui.IView;
+import java.awt.Component;
+import java.awt.Dimension;
 
 public class AnathemaToolBar implements IAnathemaToolbar, IView {
 

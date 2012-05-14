@@ -1,10 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.search;
 
-import java.awt.Component;
-import java.util.HashMap;
-import java.util.Map;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.IMusicDatabase;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
 import net.sf.anathema.campaign.music.presenter.ISearchParameter;
@@ -14,7 +9,12 @@ import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.Component;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MusicSearchPresenter implements Presenter {
 

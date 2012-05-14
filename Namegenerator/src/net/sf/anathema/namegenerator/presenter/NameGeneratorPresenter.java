@@ -1,17 +1,16 @@
 package net.sf.anathema.namegenerator.presenter;
 
-import java.awt.Component;
-
-import javax.swing.JComponent;
-
 import com.google.common.base.Joiner;
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
+
+import javax.swing.JComponent;
+import java.awt.Component;
 
 public class NameGeneratorPresenter implements Presenter {
 

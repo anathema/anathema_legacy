@@ -1,12 +1,6 @@
 package net.sf.anathema.charmentry.module;
 
-import java.awt.Component;
-import java.awt.Cursor;
-
-import javax.swing.Action;
-
 import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
@@ -19,8 +13,13 @@ import net.sf.anathema.charmentry.persistence.CharmIO;
 import net.sf.anathema.charmentry.presenter.HeaderDataEntryPage;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.framework.message.MessageUtilities;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Action;
+import java.awt.Component;
+import java.awt.Cursor;
 
 public class ShowCharmEntryAction extends SmartAction {
 

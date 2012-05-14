@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.module;
 
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.AbstractSelectedItemEnabler;
@@ -10,12 +9,10 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.initialization.Menu;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.KeyStroke;
 import java.awt.Component;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
 @Menu
 public class CharacterMenu implements IAnathemaMenu {

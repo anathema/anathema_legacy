@@ -1,12 +1,12 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
-import javax.swing.Action;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Action;
 
 public class AnathemaItemCloseAction extends AbstractAnathemaCloseAction {
 

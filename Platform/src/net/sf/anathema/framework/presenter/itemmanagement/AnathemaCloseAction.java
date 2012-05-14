@@ -1,15 +1,14 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
-import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
+import net.sf.anathema.framework.presenter.IItemManagementModel;
+import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
 import javax.swing.KeyStroke;
-
-import net.disy.commons.swing.action.SmartAction;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
-import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.resources.IResources;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 
 public class AnathemaCloseAction extends AbstractAnathemaCloseAction {
 

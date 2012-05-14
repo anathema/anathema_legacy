@@ -2,7 +2,6 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.disy.commons.core.message.Message;
 import net.disy.commons.core.message.MessageType;
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.presenter.resources.FileUi;
@@ -11,6 +10,7 @@ import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 

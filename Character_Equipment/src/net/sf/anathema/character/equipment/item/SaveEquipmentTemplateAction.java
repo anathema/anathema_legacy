@@ -1,15 +1,15 @@
 package net.sf.anathema.character.equipment.item;
 
-import java.awt.Component;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.Component;
 
 public final class SaveEquipmentTemplateAction extends SmartAction {
   private static final long serialVersionUID = -5365592768651657434L;

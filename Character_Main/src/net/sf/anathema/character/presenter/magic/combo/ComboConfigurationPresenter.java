@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter.magic.combo;
 
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -21,6 +20,7 @@ import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;

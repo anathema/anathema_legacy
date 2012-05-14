@@ -1,16 +1,15 @@
 package net.sf.anathema.framework.repository.tree;
 
-import java.awt.Component;
-
-import javax.swing.Action;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.userdialog.DefaultDialogConfigurationBuilder;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
 import net.disy.commons.swing.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Action;
+import java.awt.Component;
 
 public final class RepositoryViewAction extends SmartAction {
   private static final long serialVersionUID = 8273752454261073572L;

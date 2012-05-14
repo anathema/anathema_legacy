@@ -1,19 +1,19 @@
 package net.sf.anathema.framework.presenter.action;
 
-import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractItemAction extends SmartAction {
 

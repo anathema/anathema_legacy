@@ -1,17 +1,6 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Event;
-import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.io.IOException;
-
-import javax.swing.Action;
-import javax.swing.KeyStroke;
-
 import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
@@ -21,7 +10,17 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Action;
+import javax.swing.KeyStroke;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Event;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 public class AnathemaSaveAllAction extends SmartAction {
   private static final long serialVersionUID = 5438516323175076524L;

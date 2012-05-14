@@ -1,14 +1,13 @@
 package net.sf.anathema.framework.presenter.action.menu.help;
 
-import java.awt.Component;
-
-import javax.swing.Action;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.disy.commons.swing.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Action;
+import java.awt.Component;
 
 public class AnathemaUpdateAction extends SmartAction {
 

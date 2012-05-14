@@ -1,16 +1,15 @@
 package net.sf.anathema.campaign.music.presenter.selection;
 
-import java.awt.Component;
-
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.Component;
 
 public class RetrieveSelectionAction extends SmartAction {
 

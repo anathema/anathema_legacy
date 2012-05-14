@@ -1,6 +1,5 @@
 package net.sf.anathema.charmtree.presenter;
 
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -14,12 +13,14 @@ import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.GuiUtilities;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;

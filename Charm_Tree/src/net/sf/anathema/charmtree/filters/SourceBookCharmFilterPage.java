@@ -1,8 +1,8 @@
 package net.sf.anathema.charmtree.filters;
 
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.BorderFactory;

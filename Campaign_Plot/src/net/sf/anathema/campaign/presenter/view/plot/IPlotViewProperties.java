@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.presenter.view.plot;
 
-import net.disy.commons.swing.action.SmartAction;
+import net.sf.anathema.lib.gui.action.SmartAction;
 
 public interface IPlotViewProperties {
 

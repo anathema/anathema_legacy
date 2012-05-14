@@ -1,14 +1,13 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
-import java.awt.Component;
+import net.disy.commons.swing.dialog.core.IDialogResult;
+import net.disy.commons.swing.dialog.userdialog.UserDialog;
+import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
 import javax.swing.JOptionPane;
-
-import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.dialog.core.IDialogResult;
-import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.resources.IResources;
+import java.awt.Component;
 
 public class AnathemaPreferencesAction extends SmartAction {
 

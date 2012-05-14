@@ -1,20 +1,19 @@
 package net.sf.anathema.namegenerator.anathema;
 
-import java.awt.Component;
-import java.awt.Cursor;
-
-import javax.swing.Action;
-
 import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.repository.AnathemaNullDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
+
+import javax.swing.Action;
+import java.awt.Component;
+import java.awt.Cursor;
 
 public class ShowNameGeneratorAction extends SmartAction {
 

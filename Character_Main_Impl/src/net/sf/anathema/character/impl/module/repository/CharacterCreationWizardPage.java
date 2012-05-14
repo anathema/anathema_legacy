@@ -1,13 +1,13 @@
 package net.sf.anathema.character.impl.module.repository;
 
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.module.IToggleButtonPanel;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;

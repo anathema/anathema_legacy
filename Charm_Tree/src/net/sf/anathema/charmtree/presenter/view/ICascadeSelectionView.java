@@ -1,12 +1,13 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import javax.swing.ListCellRenderer;
+import java.awt.Dimension;
 
 public interface ICascadeSelectionView {
 

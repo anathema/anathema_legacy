@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.reporting;
 
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.lib.gui.action.SmartAction;
 
 public class QuickPrintEnabledListener extends ItemManagementModelAdapter {
 

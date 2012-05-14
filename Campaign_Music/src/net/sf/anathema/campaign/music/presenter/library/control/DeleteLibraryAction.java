@@ -1,16 +1,15 @@
 package net.sf.anathema.campaign.music.presenter.library.control;
 
-import java.awt.Component;
-
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.Component;
 
 public class DeleteLibraryAction extends SmartAction {
 

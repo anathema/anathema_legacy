@@ -1,12 +1,11 @@
 package net.sf.anathema.character.presenter.description;
 
-import java.awt.Component;
-
-import javax.swing.Icon;
-
-import net.disy.commons.swing.action.SmartAction;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
+
+import javax.swing.Icon;
+import java.awt.Component;
 
 public class NameGeneratorAction extends SmartAction {
 

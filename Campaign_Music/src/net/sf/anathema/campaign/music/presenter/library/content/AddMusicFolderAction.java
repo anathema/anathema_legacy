@@ -5,7 +5,6 @@ import net.disy.commons.core.message.MessageType;
 import net.disy.commons.core.progress.IInterruptableRunnableWithProgress;
 import net.disy.commons.core.progress.IObservableCancelable;
 import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
@@ -18,6 +17,7 @@ import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.event.ListSelectionEvent;

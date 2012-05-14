@@ -1,11 +1,10 @@
 package net.sf.anathema.framework.presenter.action;
 
-import java.awt.Component;
+import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
-
-import net.disy.commons.swing.action.SmartAction;
-import net.sf.anathema.lib.resources.IResources;
+import java.awt.Component;
 
 public class AnathemaExitAction extends SmartAction {
 

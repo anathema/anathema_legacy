@@ -1,9 +1,14 @@
 package net.sf.anathema.character.impl.view;
 
-import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.toolbar.ToolBarUtilities;
+import net.sf.anathema.character.view.ICharacterDescriptionView;
+import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
+import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
+import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -13,16 +18,10 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
-import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.toolbar.ToolBarUtilities;
-import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.lib.workflow.textualdescription.ITextView;
-import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
-import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
-import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 
 public class CharacterDescriptionView implements ICharacterDescriptionView {
 

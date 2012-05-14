@@ -1,11 +1,11 @@
 package net.sf.anathema.campaign.music.presenter.library.control;
 
-import java.awt.Component;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.Component;
 
 public class AddLibraryAction extends SmartAction {
 

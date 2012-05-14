@@ -1,15 +1,9 @@
 package net.sf.anathema.platform.database;
 
-import java.awt.Component;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-
-import javax.swing.Action;
-
+import com.db4o.ext.DatabaseFileLockedException;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
 import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -21,10 +15,14 @@ import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
-import com.db4o.ext.DatabaseFileLockedException;
+import javax.swing.Action;
+import java.awt.Component;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public class StartDatabaseAction extends SmartAction {
 

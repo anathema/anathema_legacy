@@ -1,14 +1,14 @@
 package net.sf.anathema.campaign.music.presenter.selection;
 
-import javax.swing.Icon;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
+
+import javax.swing.Icon;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public abstract class AbstractPersistSelectionAction extends SmartAction {
 

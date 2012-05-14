@@ -1,11 +1,11 @@
 package net.sf.anathema.campaign.presenter.plot;
 
-import javax.swing.Icon;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 public class PlotViewProperties implements IPlotViewProperties {
 
