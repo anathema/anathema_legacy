@@ -41,16 +41,13 @@ public class ShowNameGeneratorAction extends SmartAction {
       IItem generatorItem = new AnathemaNullDataItem(itemType, new Identificate(id));
       generatorItem.setPrintName(resources.getString("ItemType.NameGenerator.PrintName")); //$NON-NLS-1$
       anathemaModel.getItemManagement().addItem(generatorItem);
-    }
-    catch (AnathemaException e) {
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-          "An error occured while creating character: " + e.getMessage(), e)); //$NON-NLS-1$
-    }
-    catch (Throwable e) {
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-          "An error occured while creating character.", e)); //$NON-NLS-1$
-    }
-    finally {
+    } catch (AnathemaException e) {
+      Message message = new Message("An error occured while creating character: " + e.getMessage(), e);
+      MessageUtilities.indicateMessage(getClass(), parentComponent, message);
+    } catch (Throwable e) {
+      Message message = new Message("An error occured while creating character.", e);
+      MessageUtilities.indicateMessage(getClass(), parentComponent, message);
+    } finally {
       parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
   }
