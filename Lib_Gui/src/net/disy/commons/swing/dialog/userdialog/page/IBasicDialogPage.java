@@ -17,14 +17,6 @@ import net.disy.commons.swing.events.ICheckInputValidListener;
 import javax.swing.JComponent;
 
 public interface IBasicDialogPage extends IPage, IDisposable {
-  /**
-   * Gibt die zum aktuellen Dialogzustand passende Meldung zurück. Der Typ der Message entscheidet,
-   * ob im Dialog der Ok-Button enabled ist (disabled bei <code>MessageType.ERROR</code>). Die
-   * Meldung wird auch zur Anzeige des Dialogzustands für den Benutzer verwendet. Bei der
-   * Implementierung der Methode sollte darauf geachtet werden, dass der Zustand der Eingabeelemente
-   * von oben nach unten überprüft wird, ausserdem müssen Fehler vor Warnungen und
-   * Informationsmeldungen überprüft werden.
-   */
   public IBasicMessage createCurrentMessage();
 
   public void requestFocus();

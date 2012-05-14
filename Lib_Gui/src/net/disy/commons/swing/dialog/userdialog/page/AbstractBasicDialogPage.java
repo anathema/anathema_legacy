@@ -34,8 +34,8 @@ public abstract class AbstractBasicDialogPage extends AbstractPage implements IB
             public Object invoke(final Object proxy, final Method method, final Object[] args)
                 throws Throwable {
               changeListeners.forAllDo(NotifyChangeListenerClosure.INSTANCE);
-              // (ip, mg) Events können schon kommen, bevor inputValidListener gesetzt wurde
-              //          können wir aber getrost ignorieren, da nach dem Setzen des inputValidListeners
+              // (ip, mg) Events koennen schon kommen, bevor inputValidListener gesetzt wurde
+              //          koennen wir aber getrost ignorieren, da nach dem Setzen des inputValidListeners
               //          Message und Button-Zustand der Seite eh initialisiert werden.
               if (inputValidListener == null) {
                 return null;

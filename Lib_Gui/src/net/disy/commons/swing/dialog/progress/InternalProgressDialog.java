@@ -226,7 +226,7 @@ public class InternalProgressDialog
          So we just request focus as often as possible in order to stay on top of hiding window. */
 
         /*
-         * hier stand ursprünglich 
+         * hier stand urspruenglich
          *  dialog.requestFocus()
          * das sorgt unter linux dazu das sich die sich der focus von anderen Programmen
          * geholt wird wenn diese aktive sind.

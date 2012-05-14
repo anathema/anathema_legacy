@@ -68,7 +68,6 @@ public class DialogHeaderPanel {
       final JPanel innerPanel = new JPanel(new BorderLayout(
           LayoutUtilities.getDpiAdjusted(2),
           LayoutUtilities.getDpiAdjusted(2)));
-      //Platzhalter um Dialog in der Höhe zu entzerren
       innerPanel.add(Box.createRigidArea(new Dimension(1, 22)), BorderLayout.EAST);
       innerPanel.add(messagePanel.getContent(), BorderLayout.CENTER);
       innerPanel.add(descriptionLabel, BorderLayout.NORTH);
