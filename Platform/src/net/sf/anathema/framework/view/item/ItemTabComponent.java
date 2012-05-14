@@ -10,9 +10,14 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Insets;
 import java.util.HashMap;
 import java.util.Map;
+
+import static javax.swing.SwingConstants.CENTER;
+import static javax.swing.SwingConstants.LEFT;
 
 public class ItemTabComponent {
 
@@ -29,10 +34,10 @@ public class ItemTabComponent {
   }
 
   private JComponent createTabComponent(IItemView view, Action closeAction) {
-    JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+    JPanel panel = new JPanel(new FlowLayout(CENTER, 0, 0));
     panel.setFocusable(false);
     panel.setOpaque(false);
-    JXLabel label = new JXLabel(view.getName(), view.getIcon(), javax.swing.SwingConstants.LEFT);
+    JXLabel label = new JXLabel(view.getName(), view.getIcon(), LEFT);
     panel.add(label);
     panel.add(createButton(closeAction));
     return panel;
@@ -40,8 +45,8 @@ public class ItemTabComponent {
 
   private AbstractButton createButton(Action closeAction) {
     JButton button = new JButton(closeAction);
-    button.setMargin(new java.awt.Insets(1, 1, 1, 1));
-    button.setPreferredSize(new java.awt.Dimension(24, 24));
+    button.setMargin(new Insets(1, 1, 1, 1));
+    button.setPreferredSize(new Dimension(24, 24));
     button.setBorderPainted(false);
     return button;
   }
@@ -69,7 +74,7 @@ public class ItemTabComponent {
     disposeNameListening(view);
   }
 
-  private void disposeNameListening(final IItemView view) {
+  private void disposeNameListening(IItemView view) {
     ObjectValueListener<String> listener = nameListenersByView.get(view);
     nameListenersByView.remove(view);
     view.removeNameChangedListener(listener);
