@@ -9,7 +9,6 @@
 package net.disy.commons.swing.dialog.core;
 
 import net.disy.commons.core.model.ObjectModel;
-import net.disy.commons.core.model.listener.IChangeListener;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.dialog.DisyCommonsSwingDialogIconResources;
 import net.disy.commons.swing.dialog.core.message.DialogMessageModel;
@@ -20,6 +19,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.util.LayoutUtilities;
 import net.disy.commons.swing.widgets.HorizontalLine;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import javax.swing.Box;
 import javax.swing.Icon;
@@ -56,7 +56,7 @@ public class DialogHeaderPanel {
 
     descriptionModel.addChangeListener(new IChangeListener() {
       @Override
-      public void stateChanged() {
+      public void changeOccurred() {
         updateDescription();
       }
     });

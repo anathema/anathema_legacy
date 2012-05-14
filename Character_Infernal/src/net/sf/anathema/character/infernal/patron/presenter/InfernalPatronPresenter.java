@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
@@ -16,6 +15,7 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateVisitor;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.presenter.FavorableTraitViewProperties;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -74,11 +74,6 @@ public class InfernalPatronPresenter implements Presenter {
         traitViewsByTrait.put(yozi, yoziView);
         updateView(yoziView, yozi.getFavorization().getFavorableState());
       }
-      /*yozi.addListener(new IChangeListener() {
-        public void changeOccurred() {
-          setOverviewData(favoredView, generalView, bonusView, experienceView);
-        }
-      });*/
     view.setOverview(overview);
     setOverviewData(favoredView);
     

@@ -10,8 +10,8 @@ package net.disy.commons.swing.icon;
 
 import net.disy.commons.core.model.AbstractChangeableModel;
 import net.disy.commons.core.model.IChangeableModel;
-import net.disy.commons.core.model.listener.IChangeListener;
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import javax.swing.Icon;
 import java.awt.Component;
@@ -22,7 +22,7 @@ public class CompositeIcon extends AbstractChangeableModel implements Icon {
   private final Icon[] icons;
   private final IChangeListener delegatingChangeListener = new IChangeListener() {
     @Override
-    public void stateChanged() {
+    public void changeOccurred() {
       fireChangeEvent();
     }
   };

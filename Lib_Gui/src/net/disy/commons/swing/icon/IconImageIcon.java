@@ -9,7 +9,7 @@
 package net.disy.commons.swing.icon;
 
 import net.disy.commons.core.model.IChangeableModel;
-import net.disy.commons.core.model.listener.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.IconUtilities;
 
 import javax.swing.Icon;
@@ -24,7 +24,7 @@ public class IconImageIcon extends ImageIcon {
       final IChangeableModel changeableModel = (IChangeableModel) icon;
       changeableModel.addChangeListener(new IChangeListener() {
         @Override
-        public void stateChanged() {
+        public void changeOccurred() {
           setImage(createImage(icon));
         }
       });

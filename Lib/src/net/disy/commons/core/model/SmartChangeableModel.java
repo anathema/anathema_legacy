@@ -8,10 +8,10 @@
  */
 package net.disy.commons.core.model;
 
-import net.disy.commons.core.model.listener.IChangeListener;
 import net.disy.commons.core.model.listener.ListenerList;
 import net.disy.commons.core.model.listener.NotifyChangeListenerClosure;
 import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 import java.util.concurrent.locks.Lock;

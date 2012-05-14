@@ -8,10 +8,10 @@
  */
 package net.disy.commons.swing.dialog.core.message;
 
-import net.disy.commons.core.model.listener.IChangeListener;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.dialog.animation.AnimatedCompositeComponent;
 import net.disy.commons.swing.dialog.animation.OverlaidComponentBorder;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import javax.swing.JComponent;
 
@@ -33,7 +33,7 @@ public class DialogMessagePanel {
 
     messageModel.addChangeListener(new IChangeListener() {
       @Override
-      public void stateChanged() {
+      public void changeOccurred() {
         updateMessage();
       }
     });

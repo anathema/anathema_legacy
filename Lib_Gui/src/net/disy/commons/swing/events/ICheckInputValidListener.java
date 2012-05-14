@@ -8,7 +8,7 @@
  */
 package net.disy.commons.swing.events;
 
-import net.disy.commons.core.model.listener.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentListener;

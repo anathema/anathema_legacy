@@ -9,11 +9,11 @@
 package net.disy.commons.swing.dialog.input.check;
 
 import net.disy.commons.core.model.BooleanModel;
-import net.disy.commons.core.model.listener.IChangeListener;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.dialog.input.AbstractSmartDialogPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
 import net.sf.anathema.lib.gui.action.SmartToggleAction;
 

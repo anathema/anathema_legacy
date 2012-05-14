@@ -58,7 +58,7 @@ public class CheckInputValidListener implements ICheckInputValidListener {
   }
 
   @Override
-  public void stateChanged() {
+  public void changeOccurred() {
     checkInputValid();
   }
 

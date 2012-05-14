@@ -9,12 +9,12 @@
 package net.disy.commons.swing.dialog.userdialog.page;
 
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.core.model.listener.IChangeListener;
 import net.disy.commons.core.model.listener.ListenerList;
 import net.disy.commons.core.model.listener.NotifyChangeListenerClosure;
 import net.disy.commons.swing.dialog.core.internal.AbstractPage;
 import net.disy.commons.swing.dialog.input.IRequestFinishListener;
 import net.disy.commons.swing.events.ICheckInputValidListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

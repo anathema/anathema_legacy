@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.action;
 
-import net.disy.commons.core.model.listener.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
@@ -20,7 +20,7 @@ public class ActionWidgetFactory {
     button.setSelected(action.getSelectionModel().getValue());
     action.getSelectionModel().addChangeListener(new IChangeListener() {
       @Override
-      public void stateChanged() {
+      public void changeOccurred() {
         button.setSelected(action.getSelectionModel().getValue());
       }
     });
@@ -32,7 +32,7 @@ public class ActionWidgetFactory {
     checkBox.setSelected(action.getSelectionModel().getValue());
     action.getSelectionModel().addChangeListener(new IChangeListener() {
       @Override
-      public void stateChanged() {
+      public void changeOccurred() {
         checkBox.setSelected(action.getSelectionModel().getValue());
       }
     });

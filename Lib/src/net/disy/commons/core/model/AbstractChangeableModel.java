@@ -8,9 +8,9 @@
  */
 package net.disy.commons.core.model;
 
-import net.disy.commons.core.model.listener.IChangeListener;
 import net.disy.commons.core.model.listener.ListenerList;
 import net.disy.commons.core.model.listener.NotifyChangeListenerClosure;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 public abstract class AbstractChangeableModel implements Cloneable, IChangeableModel {

@@ -8,7 +8,7 @@
  */
 package net.disy.commons.core.model;
 
-import net.disy.commons.core.model.listener.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IChangeableModel {
 

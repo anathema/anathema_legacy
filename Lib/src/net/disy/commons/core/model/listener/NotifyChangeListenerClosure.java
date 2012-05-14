@@ -9,6 +9,7 @@
 package net.disy.commons.core.model.listener;
 
 import net.disy.commons.core.util.IClosure;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public final class NotifyChangeListenerClosure implements IClosure<IChangeListener> {
 
@@ -16,6 +17,6 @@ public final class NotifyChangeListenerClosure implements IClosure<IChangeListen
 
   @Override
   public void execute(final IChangeListener listener) {
-    listener.stateChanged();
+    listener.changeOccurred();
   }
 }

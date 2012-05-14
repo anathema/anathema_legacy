@@ -8,8 +8,8 @@
  */
 package net.disy.commons.swing.dialog.input;
 
-import net.disy.commons.core.model.listener.IChangeListener;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ISmartDialogPanel extends IDialogComponent  {
 
