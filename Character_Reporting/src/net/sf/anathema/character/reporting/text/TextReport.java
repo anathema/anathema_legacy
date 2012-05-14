@@ -5,22 +5,15 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.reporting.text.AbilityTextEncoder;
-import net.sf.anathema.character.reporting.text.AttributeTextEncoder;
-import net.sf.anathema.character.reporting.text.BackgroundsTextEncoder;
-import net.sf.anathema.character.reporting.text.CharacterDescriptionTextEncoder;
-import net.sf.anathema.character.reporting.text.ConceptTextEncoder;
-import net.sf.anathema.character.reporting.text.TextPartFactory;
-import net.sf.anathema.character.reporting.text.VirtueTextEncoder;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class TextReport extends AbstractPdfReport {

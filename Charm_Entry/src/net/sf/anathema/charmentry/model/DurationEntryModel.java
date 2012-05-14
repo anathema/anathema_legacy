@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.model;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.UntilEventDuration;
@@ -10,6 +9,7 @@ import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmTypeEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IDurationEntryModel;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.lang.StringUtilities;
 import org.jmock.example.announcer.Announcer;
 
 public class DurationEntryModel implements IDurationEntryModel {

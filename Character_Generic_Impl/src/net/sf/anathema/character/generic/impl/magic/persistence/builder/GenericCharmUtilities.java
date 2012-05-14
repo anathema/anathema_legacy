@@ -1,18 +1,17 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_CHARM_REFERENCE;
+import net.sf.anathema.character.generic.magic.charms.CharmException;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.lib.lang.StringUtilities;
+import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Element;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.xml.ElementUtilities;
-
-import org.dom4j.Element;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_CHARM_REFERENCE;
 
 public class GenericCharmUtilities {
 

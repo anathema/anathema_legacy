@@ -1,6 +1,10 @@
 package net.sf.anathema.lib.workflow.textualdescription.view;
 
-import java.awt.Color;
+import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.event.AbstractDocumentListener;
+import net.sf.anathema.lib.lang.StringUtilities;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 import javax.swing.JComponent;
 import javax.swing.JTextField;
@@ -8,12 +12,7 @@ import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.JTextComponent;
-
-import net.disy.commons.core.util.ObjectUtilities;
-import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.event.AbstractDocumentListener;
-import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import java.awt.Color;
 
 public class TextView implements ITextView {
 

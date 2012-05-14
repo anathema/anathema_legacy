@@ -1,6 +1,6 @@
 package net.sf.anathema.namegenerator.domain.realm;
 
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.random.RandomUtilities;
 import net.sf.anathema.namegenerator.domain.general.INameTokenFactory;
 import net.sf.anathema.namegenerator.domain.general.RandomChoosingTokenFactory;
@@ -106,11 +106,11 @@ public class RealmSyllableFactory implements ISyllableFactory {
     if (lastSyllable == null || lastSyllable.length() == 0 || uncleanSyllable.length() == 1) {
       return uncleanSyllable;
     }
-    char lastNameCharacter = AnathemaStringUtilities.lastCharacter(lastSyllable);
-    char lastUncleanCharacter = AnathemaStringUtilities.lastCharacter(uncleanSyllable);
+    char lastNameCharacter = StringUtilities.lastCharacter(lastSyllable);
+    char lastUncleanCharacter = StringUtilities.lastCharacter(uncleanSyllable);
     if (lastNameCharacter != lastUncleanCharacter || RandomUtilities.nextPercent() < 50) {
       return uncleanSyllable;
     }
-    return AnathemaStringUtilities.cutOffLastCharacters(uncleanSyllable, 1);
+    return StringUtilities.cutOffLastCharacters(uncleanSyllable, 1);
   }
 }

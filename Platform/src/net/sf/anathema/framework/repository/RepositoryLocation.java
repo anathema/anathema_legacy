@@ -2,7 +2,7 @@ package net.sf.anathema.framework.repository;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
+import net.sf.anathema.lib.lang.StringUtilities;
 
 public class RepositoryLocation implements IItemRepositoryLocation {
 
@@ -15,7 +15,7 @@ public class RepositoryLocation implements IItemRepositoryLocation {
 
   @Override
   public String getIdProposal() {
-    return AnathemaStringUtilities.getFileNameRepresentation(item.getDisplayName());
+    return StringUtilities.getFileNameRepresentation(item.getDisplayName());
   }
 
   @Override

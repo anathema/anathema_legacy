@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.lib.resources.IResources;
 
 import static java.text.MessageFormat.format;
-import static net.sf.anathema.lib.lang.AnathemaStringUtilities.createFixedWidthParagraph;
+import static net.sf.anathema.lib.lang.StringUtilities.createFixedWidthParagraph;
 
 public class MagicDescriptionStringBuilder implements IMagicTooltipStringBuilder {
   private final IResources resources;

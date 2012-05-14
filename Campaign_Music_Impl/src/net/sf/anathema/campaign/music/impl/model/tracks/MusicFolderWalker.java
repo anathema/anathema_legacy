@@ -5,10 +5,10 @@ import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.progress.ICancelable;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.ProgressUtilities;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
 import net.sf.anathema.campaign.music.model.libary.ITrackHandler;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.io.File;

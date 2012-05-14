@@ -1,7 +1,8 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
+
+import static net.sf.anathema.lib.lang.StringUtilities.isNullOrEmpty;
 
 public class MagicInfoStringConcatenator {
 
@@ -24,7 +25,7 @@ public class MagicInfoStringConcatenator {
   }
 
   private void appendToString(StringBuilder builder, String appendix) {
-    if (StringUtilities.isNullOrEmpty(appendix)) {
+    if (isNullOrEmpty(appendix)) {
       return;
     }
     if (builder.length() == 0) {

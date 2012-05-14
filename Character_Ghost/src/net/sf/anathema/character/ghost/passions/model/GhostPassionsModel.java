@@ -1,6 +1,5 @@
 package net.sf.anathema.character.ghost.passions.model;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.framework.ITraitReference;
@@ -17,6 +16,7 @@ import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChang
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.lang.StringUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

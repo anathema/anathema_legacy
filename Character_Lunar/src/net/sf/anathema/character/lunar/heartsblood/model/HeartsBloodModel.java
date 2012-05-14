@@ -1,6 +1,5 @@
 package net.sf.anathema.character.lunar.heartsblood.model;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
@@ -15,6 +14,7 @@ import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.lang.StringUtilities;
 
 public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> implements IAdditionalModel, IHeartsBloodModel {
 

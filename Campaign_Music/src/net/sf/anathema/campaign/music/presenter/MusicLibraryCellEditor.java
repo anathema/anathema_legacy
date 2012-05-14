@@ -1,13 +1,13 @@
 package net.sf.anathema.campaign.music.presenter;
 
-import javax.swing.JComponent;
-import javax.swing.JTextField;
-
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.lib.gui.table.celleditors.AbstractDelegatingCellEditor;
 import net.sf.anathema.lib.gui.table.celleditors.EditorDelegate;
+import net.sf.anathema.lib.lang.StringUtilities;
+
+import javax.swing.JComponent;
+import javax.swing.JTextField;
 
 public class MusicLibraryCellEditor extends AbstractDelegatingCellEditor {
 

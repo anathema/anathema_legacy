@@ -1,9 +1,8 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
-
+import net.sf.anathema.lib.lang.StringUtilities;
 import org.dom4j.Element;
 
 public class IdStringBuilder implements IIdStringBuilder {

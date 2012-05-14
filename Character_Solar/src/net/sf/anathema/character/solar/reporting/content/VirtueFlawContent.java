@@ -1,11 +1,11 @@
 package net.sf.anathema.character.solar.reporting.content;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.model.ISolarVirtueFlaw;
 import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawModel;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class VirtueFlawContent extends AbstractSubBoxContent {

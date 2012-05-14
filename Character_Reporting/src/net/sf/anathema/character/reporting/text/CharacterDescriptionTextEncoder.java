@@ -7,9 +7,9 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.MultiColumnText;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterDescriptionTextEncoder extends AbstractTextEncoder {

@@ -1,18 +1,17 @@
 package net.sf.anathema.framework.persistence;
 
-import java.util.List;
-
 import net.disy.commons.core.text.font.FontStyle;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.ITextFormat;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;
 import net.sf.anathema.framework.styledtext.presentation.TextPart;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.List;
 
 public class TextPersister {
 

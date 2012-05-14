@@ -3,9 +3,9 @@ package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 import com.google.common.base.Joiner;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MagicDetailsStatsGroup extends AbstractTextStatsGroup<IMagicStats> {

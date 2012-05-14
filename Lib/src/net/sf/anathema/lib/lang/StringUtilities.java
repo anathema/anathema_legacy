@@ -2,8 +2,6 @@ package net.sf.anathema.lib.lang;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
-import net.disy.commons.core.util.StringUtilities;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +9,7 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class AnathemaStringUtilities {
+public class StringUtilities {
 
   public static final String EMPTY_STRING = ""; //$NON-NLS-1$
 
@@ -105,7 +103,7 @@ public class AnathemaStringUtilities {
 
   public static String joinStringsWithDelimiter(String[] stringsToJoin, String delimiter, String nullString) {
     String finalText = Joiner.on(delimiter).join(stringsToJoin);
-    if (StringUtilities.isNullOrEmpty(finalText)) {
+    if (isNullOrEmpty(finalText)) {
       finalText = nullString;
     }
     return finalText;
@@ -117,5 +115,13 @@ public class AnathemaStringUtilities {
 
   public static String cutOffLastCharacters(String string, int characterCount) {
     return string.substring(0, string.length() - characterCount);
+  }
+
+  public static boolean isNullOrEmpty(final String text) {
+    return text == null || text.length() == 0;
+  }
+
+  public static boolean isNullOrTrimmedEmpty(final String text) {
+    return text == null || text.trim().length() == 0;
   }
 }

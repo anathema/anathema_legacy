@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.character;
 
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
+import net.sf.anathema.lib.lang.StringUtilities;
 
 public class EquipmentTemplateTooltipBuilder {
 	private final String UNICODE_DOT = "\u25CF";
@@ -23,8 +23,7 @@ public class EquipmentTemplateTooltipBuilder {
 		  builder.append(BREAKPOINT);
 		  if (!template.getDescription().isEmpty()) {
 			builder.append("<i>" +
-					AnathemaStringUtilities.createFixedWidthParagraph(template.getDescription(),
-							BREAKPOINT, 80) +
+					StringUtilities.createFixedWidthParagraph(template.getDescription(), BREAKPOINT, 80) +
 						   "</i>");
 		  }
 		  builder.append("</html>");

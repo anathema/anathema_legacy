@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.svgtree.view;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
@@ -251,7 +251,7 @@ public class SvgTreeView implements ISvgTreeView {
     varY += lineHeight - lines * lineHeight / 2 - (lines == 1 ? 2 : 0);
     List<Integer> wrap = new ArrayList<Integer>();
     wrap.add(0);
-    for (int breakpoint : AnathemaStringUtilities.findBreakPoints(oldNode.getData(), lines)) {
+    for (int breakpoint : StringUtilities.findBreakPoints(oldNode.getData(), lines)) {
       wrap.add(breakpoint);
     }
     wrap.add(oldNode.getData().length());

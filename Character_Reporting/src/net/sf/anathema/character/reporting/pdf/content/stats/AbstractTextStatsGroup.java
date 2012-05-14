@@ -5,9 +5,9 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.lib.lang.StringUtilities;
 
 public abstract class AbstractTextStatsGroup<T extends IStats> implements IStatsGroup<T> {
 

@@ -1,12 +1,11 @@
 package net.sf.anathema.charmentry.persistence;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.general.ICost;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
-
+import net.sf.anathema.lib.lang.StringUtilities;
 import org.dom4j.Element;
 
 public class CostWriter implements ICharmXMLConstants {

@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.presenter.view;
 
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import net.disy.commons.swing.events.AbstractDocumentChangeListener;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
+import net.sf.anathema.lib.lang.StringUtilities;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
@@ -14,12 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
-
-import net.disy.commons.core.util.StringUtilities;
-import net.disy.commons.swing.events.AbstractDocumentChangeListener;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class ButtonControlledObjectSelectionView<V> implements IButtonControlledObjectSelectionView<V> {
 

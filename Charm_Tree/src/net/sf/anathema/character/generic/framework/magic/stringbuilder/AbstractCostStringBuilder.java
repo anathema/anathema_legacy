@@ -1,9 +1,10 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.magic.general.ICost;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
+
+import static net.sf.anathema.lib.lang.StringUtilities.EMPTY_STRING;
+import static net.sf.anathema.lib.lang.StringUtilities.isNullOrEmpty;
 
 public abstract class AbstractCostStringBuilder<T extends ICost> implements ICostStringBuilder<T> {
 
@@ -21,7 +22,7 @@ public abstract class AbstractCostStringBuilder<T extends ICost> implements ICos
   public String getCostString(T cost) {
     String value = cost.getCost();
     String text = cost.getText();
-    String costString = AnathemaStringUtilities.EMPTY_STRING;
+    String costString = EMPTY_STRING;
     try {
       int intValue = Integer.parseInt(value);
       if (intValue != 0) {
@@ -29,11 +30,11 @@ public abstract class AbstractCostStringBuilder<T extends ICost> implements ICos
       }
     }
     catch (NumberFormatException e) {
-      if (!StringUtilities.isNullOrEmpty(value)) {
+      if (!isNullOrEmpty(value)) {
         costString = value;
       }
     }
-    if (!StringUtilities.isNullOrEmpty(text)) {
+    if (!isNullOrEmpty(text)) {
       costString = costString.concat(IMagicTooltipStringBuilder.Space + text);
     }
     return costString;

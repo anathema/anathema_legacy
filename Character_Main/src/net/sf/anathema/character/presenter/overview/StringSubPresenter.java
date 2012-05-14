@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.overview;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 

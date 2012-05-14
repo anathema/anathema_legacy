@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.workflow.textualdescription.model;
 
 import net.disy.commons.core.util.ObjectUtilities;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import org.jmock.example.announcer.Announcer;
 

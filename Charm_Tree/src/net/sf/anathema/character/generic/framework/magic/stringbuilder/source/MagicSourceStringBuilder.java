@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSou
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicTooltipStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MagicSourceStringBuilder<T extends IMagic>
@@ -27,7 +27,7 @@ public class MagicSourceStringBuilder<T extends IMagic>
     descriptionString += ColonSpace;
     descriptionString += createSourceString((T) magic);
     descriptionString =
-            AnathemaStringUtilities.createFixedWidthParagraph(descriptionString, HtmlLineBreak, DEFAULT_TOOLTIP_WIDTH);
+            StringUtilities.createFixedWidthParagraph(descriptionString, HtmlLineBreak, DEFAULT_TOOLTIP_WIDTH);
     builder.append(descriptionString);
     builder.append(HtmlLineBreak);
   }
@@ -49,7 +49,7 @@ public class MagicSourceStringBuilder<T extends IMagic>
       sourceStrings[i] = builder.toString();
     }
     String andString = resources.getString("CharmTreeView.ToolTip.SourceAnd");
-    return AnathemaStringUtilities.joinStringsWithDelimiter(sourceStrings, ", " + andString + " ");
+    return StringUtilities.joinStringsWithDelimiter(sourceStrings, ", " + andString + " ");
   }
 
   private String createSourceBookKey(final IExaltedSourceBook source) {

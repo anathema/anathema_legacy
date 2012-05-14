@@ -2,8 +2,8 @@ package net.sf.anathema.framework.repository;
 
 import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.ObjectUtilities;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
 import org.jmock.example.announcer.Announcer;
 

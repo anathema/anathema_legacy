@@ -1,13 +1,13 @@
 package net.sf.anathema.campaign.music.presenter;
 
 import net.disy.commons.core.util.IClosure;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.SelectionContainerPresenter;
 

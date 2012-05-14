@@ -1,18 +1,17 @@
 package net.sf.anathema.campaign.music.impl.persistence;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import net.disy.commons.core.util.StringUtilities;
+import com.db4o.ObjectContainer;
+import com.db4o.types.Db4oList;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.model.track.Md5Checksum;
 import net.sf.anathema.campaign.music.presenter.IMusicEvent;
 import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
+import net.sf.anathema.lib.lang.StringUtilities;
 
-import com.db4o.ObjectContainer;
-import com.db4o.types.Db4oList;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public final class DbMp3Track implements IMp3Track {
 

@@ -5,8 +5,8 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {

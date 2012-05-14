@@ -1,9 +1,9 @@
 package net.sf.anathema.charmentry.model;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ISourceEntryModel;
+import net.sf.anathema.lib.lang.StringUtilities;
 
 public class SourceEntryModel implements ISourceEntryModel {
 
