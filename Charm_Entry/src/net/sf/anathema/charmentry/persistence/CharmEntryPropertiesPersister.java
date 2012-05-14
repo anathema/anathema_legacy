@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.persistence;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
@@ -8,6 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.duration.UntilEventDuratio
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.io.BufferedWriter;

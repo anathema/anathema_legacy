@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.impl.traits.limitation;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 public class AgeBasedLimitation implements ITraitLimitation {
   private final int absoluteLimit;

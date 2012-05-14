@@ -1,11 +1,11 @@
 package net.sf.anathema.character.impl.model.charm;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;

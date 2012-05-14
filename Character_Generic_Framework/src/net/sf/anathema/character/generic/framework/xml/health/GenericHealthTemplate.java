@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.framework.xml.health;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public class GenericHealthTemplate implements IHealthTemplate, ICloneable<GenericHealthTemplate> {

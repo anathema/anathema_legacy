@@ -1,6 +1,5 @@
 package net.sf.anathema.character.sidereal.colleges.model;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
@@ -12,6 +11,7 @@ import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeModel;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import org.jmock.example.announcer.Announcer;
 
 public class SiderealCollegeModel implements ISiderealCollegeModel {

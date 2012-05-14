@@ -1,14 +1,14 @@
 package net.sf.anathema.character.generic.framework.xml.trait.pool;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.IClonableTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplatePool> {
 

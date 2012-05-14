@@ -27,7 +27,7 @@
           <prerequisite>
                <trait id="MartialArts" value="5" />
                <essence value="5" />
-				<!-- TODO:  net.disy.commons.core.util.ContractFailedException: Charm with id 'Dragon-Blooded.Tiger-and-BearUnity not found. -->
+				<!-- TODO:  Preconditions: Charm with id 'Dragon-Blooded.Tiger-and-BearUnity not found. -->
                <charmReference id="Dragon-Blooded.Tiger-and-BearUnity" />
                <!-- TODO:  One complete Celestial Style. -->
           </prerequisite>

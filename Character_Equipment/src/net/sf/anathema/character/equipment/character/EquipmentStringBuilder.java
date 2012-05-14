@@ -1,8 +1,6 @@
 package net.sf.anathema.character.equipment.character;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.ITraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -10,7 +8,9 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class EquipmentStringBuilder implements IEquipmentStringBuilder {
 

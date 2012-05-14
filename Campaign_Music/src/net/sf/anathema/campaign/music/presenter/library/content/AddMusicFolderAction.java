@@ -1,16 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.library.content;
 
-import java.awt.Component;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.core.message.MessageType;
 import net.disy.commons.core.progress.IInterruptableRunnableWithProgress;
@@ -28,7 +17,17 @@ import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.Component;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddMusicFolderAction extends SmartAction {
   private static final long serialVersionUID = -509736641362821213L;

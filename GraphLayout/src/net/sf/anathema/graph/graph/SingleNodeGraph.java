@@ -1,7 +1,7 @@
 package net.sf.anathema.graph.graph;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.graph.nodes.ISimpleNode;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 public class SingleNodeGraph implements IProperHierarchicalGraph, Cloneable {
 

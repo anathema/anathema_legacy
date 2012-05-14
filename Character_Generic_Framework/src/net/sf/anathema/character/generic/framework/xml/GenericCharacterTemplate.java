@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -28,6 +27,7 @@ import net.sf.anathema.character.generic.template.experience.IExperiencePointCos
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
 import java.util.ArrayList;

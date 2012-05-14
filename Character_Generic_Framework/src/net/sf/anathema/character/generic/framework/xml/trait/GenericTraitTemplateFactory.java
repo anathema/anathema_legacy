@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.trait;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
 import net.sf.anathema.character.generic.impl.traits.ITraitTemplateFactory;
@@ -10,6 +9,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public class GenericTraitTemplateFactory implements ITraitTemplateFactory, ICloneable<GenericTraitTemplateFactory> {

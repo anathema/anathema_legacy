@@ -1,7 +1,6 @@
 package net.sf.anathema.character.lunar.beastform.model;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -12,6 +11,7 @@ import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.mutations.model.MutationVisitorAdapter;
 import net.sf.anathema.character.mutations.model.types.SoakProvidingMutation;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
