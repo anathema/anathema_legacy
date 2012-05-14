@@ -58,15 +58,4 @@ public class MultiEntryMap<K, V> {
   public Set<K> keySet() {
     return Collections.unmodifiableSet(map.keySet());
   }
-
-  public void removeValue(K key, V value) {
-    if (!containsKey(key)) {
-      return;
-    }
-    getList(key).remove(value);
-  }
-
-  public void clear() {
-    map.clear();
-  }
 }

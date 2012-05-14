@@ -38,10 +38,6 @@ public class Logger {
     debug(null, throwable);
   }
 
-  public void error(String message) {
-    error(message, null);
-  }
-
   public void error(String message, Throwable exception) {
     printMessage(ERROR_PREFIX, message);
     printThrowable(ERROR_PREFIX, exception);

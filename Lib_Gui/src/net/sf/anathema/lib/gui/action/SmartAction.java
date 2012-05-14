@@ -1,6 +1,17 @@
+/**
+ * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Common Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/cpl-v10.html
+ */
 package net.sf.anathema.lib.gui.action;
 
-import net.sf.anathema.lib.gui.GuiUtilities;
+import net.disy.commons.core.util.Ensure;
+import net.disy.commons.swing.icon.IconImageIcon;
+import net.disy.commons.swing.util.GuiUtilities;
+import net.disy.commons.swing.util.IEnableable;
 import net.sf.anathema.lib.lang.StringUtilities;
 
 import javax.swing.AbstractAction;
@@ -11,9 +22,7 @@ import javax.swing.KeyStroke;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 
-public abstract class SmartAction extends AbstractAction {
-
-  private Component explicitParentComponent;
+public abstract class SmartAction extends AbstractAction implements IEnableable {
 
   public SmartAction() {
     this(new ActionConfiguration());
@@ -32,14 +41,11 @@ public abstract class SmartAction extends AbstractAction {
   }
 
   public SmartAction(final IActionConfiguration configuration) {
+    Ensure.ensureArgumentNotNull(configuration);
     setName(configuration.getName());
     setIcon(configuration.getIcon());
     final String toolTipText = configuration.getToolTipText();
     setToolTipText(StringUtilities.isNullOrEmpty(toolTipText) ? null : toolTipText);
-  }
-
-  public final IActionConfiguration getActionConfiguration() {
-    return new ActionConfiguration(getName(), getIcon(), getToolTipText());
   }
 
   @Override
@@ -53,18 +59,9 @@ public abstract class SmartAction extends AbstractAction {
    * as parent for any dialogs shown in this method.
    *
    * @param parentComponent A parent component from which the action was invoked. Can be used as
-   *          parent for new dialogs.
+   *                        parent for new dialogs.
    */
   protected abstract void execute(Component parentComponent);
-
-  /**
-   * For Tree/Table/...CellEditors the parentComponent cannot be determined from the ActionEvent. So
-   * you can set an explicit parentComponent here.
-   */
-  //TODO 20.01.2006 (gebhard): Verify if this is still necessary with JDK >= 1.5
-  public final void setExplicitParentComponent(final Component explicitParentComponent) {
-    this.explicitParentComponent = explicitParentComponent;
-  }
 
   /**
    * Sets the name of the action - may include the mnemonic character but must not contain line
@@ -81,17 +78,13 @@ public abstract class SmartAction extends AbstractAction {
       if (mnemonicLabel.getMnemonicCharacter() != null) {
         setMnemonic(mnemonicLabel.getMnemonicCharacter().charValue());
       }
-    }
-    else {
+    } else {
       putValue(Action.NAME, name);
     }
   }
 
   protected final Component getParentComponent(final ActionEvent e) {
-    if (explicitParentComponent == null) {
-      return GuiUtilities.getWindowFor(e);
-    }
-    return explicitParentComponent;
+    return GuiUtilities.getWindowFor(e);
   }
 
   public final void setMnemonic(final int keyCode) {
@@ -118,28 +111,16 @@ public abstract class SmartAction extends AbstractAction {
     return Character.isLetter(ch);
   }
 
-  public final String getName() {
-    return (String) getValue(Action.NAME);
-  }
-
   public final void setIcon(final Icon icon) {
     if (icon instanceof ImageIcon || icon == null) {
       putValue(SMALL_ICON, icon);
       return;
     }
-    ImageIcon imageIcon = new ImageIcon(IconUtilities.createBufferedImage(icon));
+    final ImageIcon imageIcon = new IconImageIcon(icon);
     putValue(SMALL_ICON, imageIcon);
   }
 
   public final void setToolTipText(final String shortDescription) {
     putValue(Action.SHORT_DESCRIPTION, shortDescription);
-  }
-
-  public final String getToolTipText() {
-    return (String) getValue(Action.SHORT_DESCRIPTION);
-  }
-
-  public final Icon getIcon() {
-    return (Icon) getValue(Action.SMALL_ICON);
   }
 }

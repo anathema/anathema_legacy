@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.styledtext.presentation;
 
-import net.disy.commons.core.text.font.FontStyle;
+import net.disy.commons.core.text.FontStyle;
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;

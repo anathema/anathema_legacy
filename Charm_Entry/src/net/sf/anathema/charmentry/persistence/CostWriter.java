@@ -20,12 +20,6 @@ public class CostWriter implements ICharmXMLConstants {
     }
   }
 
-  // ICost xpCost = charm.getPermanentCost().getXPCost();
-  // if (!(StringUtilities.isNullOrEmpty(xpCost.getCost()) && StringUtilities.isNullOrEmpty(xpCost.getText()))) {
-  // writeCost(TAG_EXPERIENCE_COST, xpCost, costElement.addElement(TAG_PERMANENT));
-  // }
-  // }
-  //
   private void writeCost(String tagName, ICost cost, Element listElement) {
     if (cost == null) {
       return;

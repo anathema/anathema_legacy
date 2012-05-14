@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.styledtext.presentation;
 
-import java.awt.Color;
-
-import net.disy.commons.core.text.font.FontStyle;
+import net.disy.commons.core.text.FontStyle;
 import net.sf.anathema.framework.styledtext.model.ITextFormat;
+
+import java.awt.Color;
 
 public class TextFormat implements ITextFormat {
 

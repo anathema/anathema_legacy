@@ -74,11 +74,6 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   }
 
   @Override
-  public void setWizard(IWizardConfiguration newWizard) {
-    wizard = newWizard;
-  }
-
-  @Override
   public IWizardConfiguration getWizard() {
     return wizard;
   }

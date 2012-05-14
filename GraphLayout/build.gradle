@@ -1,5 +1,4 @@
 dependencies {
-    compile 'net.disy.commons:disy-commons-core:5.0.0-SNAPSHOT'
     compile project(':Lib')
     testCompile testDependencies
 }

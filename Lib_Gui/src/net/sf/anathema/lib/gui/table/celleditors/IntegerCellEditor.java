@@ -25,13 +25,6 @@ public class IntegerCellEditor extends AbstractDelegatingCellEditor {
 			public void setValue(Object value) {
 				spinner.setModel(spinnerNumberModel);
 				spinnerNumberModel.setValue(value);
-
-				// selectall() Does not work :-(
-				// JComponent editor = spinner.getEditor();
-				// if (editor instanceof JSpinner.DefaultEditor) {
-				// JSpinner.DefaultEditor defaultEditor =(DefaultEditor) editor;
-				// defaultEditor.getTextField().selectAll();
-				// }
 			}
 
 			@Override

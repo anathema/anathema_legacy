@@ -1,19 +1,18 @@
 package net.sf.anathema.character.equipment.impl.character.view;
 
 import net.disy.commons.core.model.BooleanModel;
-import net.disy.commons.swing.action.ActionWidgetFactory;
-import net.disy.commons.swing.action.SmartToggleAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupView;
 import net.sf.anathema.lib.gui.GuiUtilities;
+import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
+import net.sf.anathema.lib.gui.action.SmartToggleAction;
 import org.jdesktop.swingx.JXTaskPane;
 
 import javax.swing.Action;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import java.util.HashMap;
 import java.util.Map;
 

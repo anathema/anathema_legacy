@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui.dialog;
 
-import net.disy.commons.swing.action.ActionConfiguration;
-import net.disy.commons.swing.action.IActionConfiguration;
 import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfiguration;
+import net.sf.anathema.lib.gui.action.ActionConfiguration;
+import net.sf.anathema.lib.gui.action.IActionConfiguration;
 import net.sf.anathema.lib.resources.IResources;
 
 public class YesNoDialogButtonConfiguration extends DialogButtonConfiguration {

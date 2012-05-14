@@ -1,3 +1,11 @@
+/**
+ * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Common Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/cpl-v10.html
+ */
 package net.sf.anathema.lib.gui.action;
 
 import net.disy.commons.core.util.ObjectUtilities;
@@ -18,16 +26,8 @@ public class ActionConfiguration implements IActionConfiguration {
     this(name, null, null);
   }
 
-  public ActionConfiguration(final Icon icon) {
-    this(null, icon);
-  }
-
   public ActionConfiguration(final String name, final Icon icon) {
     this(name, icon, null);
-  }
-
-  public ActionConfiguration(final String name, final String toolTipText) {
-    this(name, null, toolTipText);
   }
 
   public ActionConfiguration(final String name, final Icon icon, final String toolTipText) {

@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.styledtext.model;
 
-import java.awt.Color;
+import net.disy.commons.core.text.FontStyle;
 
-import net.disy.commons.core.text.font.FontStyle;
+import java.awt.Color;
 
 public interface ITextFormat {
 

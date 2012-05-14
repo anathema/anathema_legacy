@@ -32,17 +32,4 @@ public class Registry<I, V> implements IRegistry<I, V> {
     }
     return objects.get(id);
   }
-
-  @Override
-  public I[] getIds(I[] array) {
-    return keySet.toArray(array);
-  }
-
-  public void setDefaultValue(V defaultValue) {
-    this.defaultValue = defaultValue;
-  }
-
-  protected Set<I> getKeys() {
-    return keySet;
-  }
 }
