@@ -1,12 +1,12 @@
 package net.sf.anathema.framework.presenter;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IItemListener;
 import net.sf.anathema.framework.view.IItemView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ModelViewMapping implements IModelViewMapping {
 
@@ -21,7 +21,7 @@ public class ModelViewMapping implements IModelViewMapping {
 
   @Override
   public synchronized void addModelAndView(IItem model, final IItemView view) {
-    Ensure.ensureFalse("Model already managed.", viewByModel.containsKey(model)); //$NON-NLS-1$
+    Preconditions.checkArgument(!viewByModel.containsKey(model), "Model already managed."); //$NON-NLS-1$
     modelByView.put(view, model);
     IItemListener listener = new IItemListener() {
       @Override

@@ -1,13 +1,13 @@
 package net.sf.anathema.lib.gui.wizard;
 
-import javax.swing.Icon;
-
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.SimpleBlock;
 import net.disy.commons.swing.dialog.wizard.AbstractWizardConfiguration;
 import net.disy.commons.swing.dialog.wizard.IWizardContainer;
 import net.disy.commons.swing.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+
+import javax.swing.Icon;
 
 public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
 
@@ -25,7 +25,7 @@ public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
   });
 
   public AnathemaWizardConfiguration(IAnathemaWizardPage startPage) {
-    Ensure.ensureArgumentNotNull(startPage);
+    Preconditions.checkNotNull(startPage);
     this.startPage = startPage;
     this.startPage.initPresentation(inputListener);
   }

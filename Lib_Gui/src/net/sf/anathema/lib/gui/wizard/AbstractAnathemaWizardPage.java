@@ -1,18 +1,18 @@
 package net.sf.anathema.lib.gui.wizard;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.model.listener.ListenerList;
-import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.dialog.core.IDialogHelpHandler;
 import net.disy.commons.swing.dialog.input.IRequestFinishListener;
 import net.disy.commons.swing.dialog.wizard.IWizardConfiguration;
 import net.disy.commons.swing.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage {
 
@@ -124,7 +124,7 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
 
   @Override
   public void setMessage(IBasicMessage message) {
-    Ensure.ensureNotNull("message", message);
+    Preconditions.checkNotNull(message);
     this.message = message;
   }
 }

@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 import org.dom4j.Element;
 
@@ -246,8 +246,8 @@ public class Layer implements ILayer {
 
   @Override
   public void setFollowUp(ILayer layer) {
-    Ensure.ensureNotNull(layer);
-    Ensure.ensureNull(nextLayer);
+    Preconditions.checkNotNull(layer);
+    Preconditions.checkArgument(nextLayer == null);
     this.nextLayer = layer;
   }
 

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.model.traits.backgrounds;
 
+import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
@@ -81,13 +81,13 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
 
   @Override
   public IBackground addBackground(String customBackgroundName, String description, boolean loadIfExists) {
-    Ensure.ensureNotNull(customBackgroundName);
+    Preconditions.checkNotNull(customBackgroundName);
     return addBackground(new CustomizedBackgroundTemplate(customBackgroundName), description, loadIfExists);
   }
 
   @Override
   public IBackground addBackground(final IBackgroundTemplate backgroundType, final String description, boolean loadIfExists) {
-    Ensure.ensureNotNull(backgroundType);
+    Preconditions.checkNotNull(backgroundType);
     IBackground foundBackground = Iterables.find(backgrounds,new Predicate<IBackground>() {
       @Override
       public boolean apply(IBackground listBackground) {
@@ -138,7 +138,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
 
   @Override
   public IBackground getBackgroundByTemplate(IBackgroundTemplate type) {
-    Ensure.ensureNotNull("Background type must not be null.", type); //$NON-NLS-1$
+    Preconditions.checkNotNull(type);
     for (IBackground background : getBackgrounds()) {
       if (type.equals(background.getType()) || type.getId().equals(background.getType().getId())) {
         return background;

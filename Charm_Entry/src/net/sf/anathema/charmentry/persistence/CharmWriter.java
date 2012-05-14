@@ -1,18 +1,17 @@
 package net.sf.anathema.charmentry.persistence;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
-
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Element;
+
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
 
 public class CharmWriter {
 
   public void writeCharm(ICharmData charm, Element charmListElement) throws PersistenceException {
-    Ensure.ensureArgumentNotNull(charm);
-    Ensure.ensureArgumentNotNull(charmListElement);
+    Preconditions.checkNotNull(charm);
+    Preconditions.checkNotNull(charmListElement);
     Element charmElement = charmListElement.addElement(TAG_CHARM);
     new HeadDataWriter().write(charm, charmElement);
     new PrerequisiteWriter().write(charm, charmElement);

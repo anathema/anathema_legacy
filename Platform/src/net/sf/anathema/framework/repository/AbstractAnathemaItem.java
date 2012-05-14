@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.repository;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.framework.item.IItemType;
@@ -16,8 +16,7 @@ public abstract class AbstractAnathemaItem implements IItem {
   private final Announcer<IItemListener> repositoryItemListeners = Announcer.to(IItemListener.class);
 
   public AbstractAnathemaItem(IItemType type) {
-    Ensure.ensureArgumentTrue("Use second constructor for non-persisted items.",
-            type.supportsRepository()); //$NON-NLS-1$
+    Preconditions.checkArgument(type.supportsRepository(), "Use second constructor for non-persisted items."); //$NON-NLS-1$
     this.itemType = type;
     this.repositoryLocation = new RepositoryLocation(this);
     this.identificate = new IIdentificate() {

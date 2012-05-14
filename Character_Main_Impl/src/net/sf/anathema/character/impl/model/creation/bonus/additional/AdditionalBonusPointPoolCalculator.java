@@ -1,9 +1,6 @@
 package net.sf.anathema.character.impl.model.creation.bonus.additional;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPool;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -12,6 +9,9 @@ import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.SpecialtyCalculator;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdditionalBonusPointPoolCalculator {
 
@@ -27,7 +27,7 @@ public class AdditionalBonusPointPoolCalculator {
   }
 
   public void spendPoints(int pointsToSpent) {
-    Ensure.ensureTrue("Too many bonuspoints spent.", pointsSpent <= getRemainingPoints()); //$NON-NLS-1$
+    Preconditions.checkArgument(pointsSpent <= getRemainingPoints(), "Too many bonuspoints spent."); //$NON-NLS-1$
     pointsSpent += pointsToSpent;
   }
 

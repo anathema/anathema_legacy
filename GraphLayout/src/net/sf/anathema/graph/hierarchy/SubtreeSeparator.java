@@ -1,5 +1,12 @@
 package net.sf.anathema.graph.hierarchy;
 
+import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.graph.graph.ProperHierarchicalGraph;
+import net.sf.anathema.graph.graph.SingleNodeGraph;
+import net.sf.anathema.graph.nodes.IRegularNode;
+import net.sf.anathema.graph.nodes.ISimpleNode;
+import net.sf.anathema.lib.collection.MultiEntryMap;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,14 +15,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
-import net.sf.anathema.graph.graph.ProperHierarchicalGraph;
-import net.sf.anathema.graph.graph.SingleNodeGraph;
-import net.sf.anathema.graph.nodes.IRegularNode;
-import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.lib.collection.MultiEntryMap;
 
 public class SubtreeSeparator {
 
@@ -90,7 +89,6 @@ public class SubtreeSeparator {
   }
 
   private MultiEntryMap<ISimpleNode, ISimpleNode> createLeafGroups(int deepestLayer, ISimpleNode[] hierarchicalGraph) {
-    Ensure.ensureArgumentArrayContentsNotNull(hierarchicalGraph);
     Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<Integer, List<ISimpleNode>>();
     for (int index = 1; index <= deepestLayer; index++) {
       nodesByLayer.put(index, new ArrayList<ISimpleNode>());

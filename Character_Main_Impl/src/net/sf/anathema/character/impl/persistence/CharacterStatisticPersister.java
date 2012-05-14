@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.persistence;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
@@ -46,13 +46,11 @@ public class CharacterStatisticPersister {
     this.generics = generics;
     this.backgroundPersister = new BackgroundConfigurationPersister(generics.getBackgroundRegistry());
     this.charmPersister = new CharmConfigurationPersister(messaging);
-    this.additonalModelPersister = new AdditionalModelPersister(
-        generics.getAdditonalPersisterFactoryRegistry(),
-        messaging);
+    this.additonalModelPersister = new AdditionalModelPersister(generics.getAdditonalPersisterFactoryRegistry(), messaging);
   }
 
   public void save(Element parent, ICharacterStatistics statistics) {
-    Ensure.ensureNotNull("Statistics must not be null", statistics); //$NON-NLS-1$
+    Preconditions.checkNotNull(statistics);
     Element statisticsElement = parent.addElement(TAG_STATISTICS);
     rulesPersister.save(statisticsElement);
     statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(statistics.isExperienced()));
@@ -84,11 +82,7 @@ public class CharacterStatisticPersister {
       ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
       ICharacterStatistics statistics = character.createCharacterStatistics(template, generics);
       ICasteCollection casteCollection = template.getCasteCollection();
-      characterConceptPersister.load(
-          statisticsElement,
-          statistics.getCharacterConcept(),
-          character.getDescription(),
-          casteCollection);
+      characterConceptPersister.load(statisticsElement, statistics.getCharacterConcept(), character.getDescription(), casteCollection);
       statistics.setExperienced(experienced);
       essencePersister.load(statisticsElement, statistics.getTraitConfiguration());
       virtuePersister.load(statisticsElement, statistics.getTraitConfiguration());
@@ -100,11 +94,9 @@ public class CharacterStatisticPersister {
       experiencePersister.load(statisticsElement, statistics.getExperiencePoints());
       willpowerPersister.load(statisticsElement, statistics.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
       additonalModelPersister.load(statisticsElement, statistics.getExtendedConfiguration().getAdditionalModels());
-    }
-    catch (CharmException e) {
+    } catch (CharmException e) {
       throw new PersistenceException(e);
-    }
-    catch (SpellException e) {
+    } catch (SpellException e) {
       throw new PersistenceException(e);
     }
   }

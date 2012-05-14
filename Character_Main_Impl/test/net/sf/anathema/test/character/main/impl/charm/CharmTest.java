@@ -1,6 +1,5 @@
 package net.sf.anathema.test.character.main.impl.charm;
 
-import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.CostList;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
@@ -35,7 +34,7 @@ public class CharmTest {
         false, prerequisiteList, new CostList(null, null, null, null), new ComboRestrictions(), SimpleDuration.getDuration("Duration"), //$NON-NLS-1$
         model, null);
       fail();
-    } catch (ContractFailedException e) {
+    } catch (NullPointerException e) {
       // Nothing to do
     }
   }

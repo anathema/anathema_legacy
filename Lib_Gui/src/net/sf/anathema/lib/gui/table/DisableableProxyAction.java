@@ -1,14 +1,13 @@
 //Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table;
 
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import com.google.common.base.Preconditions;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-
-import net.disy.commons.core.util.Ensure;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 // NOT_PUBLISHED
 public class DisableableProxyAction extends AbstractAction {
@@ -17,7 +16,7 @@ public class DisableableProxyAction extends AbstractAction {
 	private boolean enabled = true;
 
 	public DisableableProxyAction(Action action) {
-		Ensure.ensureNotNull(action);
+		Preconditions.checkNotNull(action);
 		this.action = action;
 		action.addPropertyChangeListener(new PropertyChangeListener() {
 			@Override

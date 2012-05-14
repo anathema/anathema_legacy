@@ -1,6 +1,6 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
@@ -104,9 +104,9 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     return charm.isTreeRoot();
   }
 
-  private ICharm findNonNullCharm(final String charmId) {
+  private ICharm findNonNullCharm(String charmId) {
     ICharm charm = getCharmById(charmId);
-    Ensure.ensureNotNull("Charm with id '" + charmId + "' not found.", charm); //$NON-NLS-1$ //$NON-NLS-2$
+    Preconditions.checkNotNull(charm, "Charm with id '" + charmId + "' not found."); //$NON-NLS-1$ //$NON-NLS-2$
     return charm;
   }
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.repository;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 
@@ -20,7 +20,7 @@ public class RepositoryLocation implements IItemRepositoryLocation {
 
   @Override
   public synchronized void setId(String id) {
-    Ensure.ensureNull("Item's id must not be changed.", this.id); //$NON-NLS-1$
+    Preconditions.checkArgument(this.id == null, "Item's id must not be changed."); //$NON-NLS-1$
     this.id = id;
   }
 

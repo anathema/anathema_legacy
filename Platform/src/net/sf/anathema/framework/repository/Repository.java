@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.repository;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.io.FileUtilities;
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
@@ -31,7 +31,7 @@ public class Repository implements IRepository {
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
 
   public Repository(File repositoryFolder, IItemManagementModel itemManagement) {
-    Ensure.ensureArgumentTrue("Repositoryfolder must exist.", repositoryFolder.exists()); //$NON-NLS-1$
+    Preconditions.checkArgument(repositoryFolder.exists());
     this.resolver = new RepositoryFileResolver(repositoryFolder);
     this.defaultDataFolder = resolver.getExistingDataFolder("data"); //$NON-NLS-1$
     this.repositoryFolder = repositoryFolder;

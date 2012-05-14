@@ -1,10 +1,10 @@
 package net.sf.anathema.character.linguistics.model;
 
 import com.google.common.base.Objects;
+import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -83,7 +83,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
 
   @Override
   public void selectLanguage(final IIdentificate language) {
-    Ensure.ensureNotNull(language);
+    Preconditions.checkNotNull(language);
     IIdentificate foundLanguage = Iterables.find(getEntries(), new Predicate<IIdentificate>() {
       @Override
       public boolean apply(IIdentificate selectedLanguage) {

@@ -1,11 +1,10 @@
 package net.sf.anathema.lib.gui.text;
 
-import java.awt.Dimension;
-import java.awt.FontMetrics;
+import com.google.common.base.Preconditions;
 
 import javax.swing.JLabel;
-
-import net.disy.commons.core.util.Ensure;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
 
 public class TextPreferredSizeLabel extends JLabel {
 
@@ -19,7 +18,7 @@ private final int verticalPadding;
   }
 
   public TextPreferredSizeLabel(String text, int verticalPadding, int horizontalPadding) {
-    Ensure.ensureArgumentNotNull(text);
+    Preconditions.checkNotNull(text);
     this.verticalPadding = verticalPadding;
     this.horizontalPadding = horizontalPadding;
     this.text = text;

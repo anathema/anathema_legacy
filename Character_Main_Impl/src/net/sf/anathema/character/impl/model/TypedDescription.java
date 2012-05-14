@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.caste.ITypedDescriptionType;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -22,7 +22,7 @@ public class TypedDescription<T extends ITypedDescriptionType> implements ITyped
 
   @Override
   public final void setType(T type) {
-    Ensure.ensureNotNull("Type must not be set to null.", type); //$NON-NLS-1$
+    Preconditions.checkNotNull(type);
     if (this.type == type) {
       return;
     }

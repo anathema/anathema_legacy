@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
@@ -68,8 +68,8 @@ public class CharacterStatistics implements ICharacterStatistics {
   private final ICoreTraitConfiguration traitConfiguration;
 
   public CharacterStatistics(final ICharacterTemplate template, ICharacterGenerics generics) throws SpellException {
-    Ensure.ensureArgumentNotNull(template);
-    Ensure.ensureArgumentNotNull(generics);
+    Preconditions.checkNotNull(template);
+    Preconditions.checkNotNull(generics);
     this.characterTemplate = template;
     this.concept = initConcept();
     this.traitConfiguration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry());

@@ -1,15 +1,15 @@
 package net.sf.anathema.graph.graph;
 
+import com.google.common.base.Preconditions;
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
+import net.sf.anathema.graph.nodes.ISimpleNode;
+import net.sf.anathema.graph.util.IncidentMatrixUtilities;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.graph.util.IncidentMatrixUtilities;
 
 public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Cloneable {
   // This is volatile instead of final to allow clone to be implemented
@@ -31,9 +31,8 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     }
     for (ISimpleNode node : hierarchicalGraph) {
       for (ISimpleNode child : node.getChildren()) {
-        Ensure.ensureArgumentEquals(node + " and " + child + " are more than one layer apart.", //$NON-NLS-1$ //$NON-NLS-2$
-            1,
-            child.getLayer() - node.getLayer());
+        String message = node + " and " + child + " are more than one layer apart.";
+        Preconditions.checkArgument(child.getLayer() - node.getLayer() == 1, message);
       }
       nodesByLayer.get(node.getLayer()).add(node);
     }

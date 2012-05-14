@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
-import com.google.common.collect.Maps;
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.VerboseCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -11,7 +10,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   private final List<IMagicTooltipStringBuilder> builders = new ArrayList<IMagicTooltipStringBuilder>();
@@ -31,7 +29,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
 
   @Override
   public final String getInfoString(ICharm charm, ISpecialCharm specialDetails) {
-    Ensure.ensureNotNull("Charm must not be null.", charm); //$NON-NLS-1$
+    Preconditions.checkNotNull(charm);
     StringBuilder builder = new StringBuilder();
     builder.append("<html><body>"); //$NON-NLS-1$
     for (IMagicTooltipStringBuilder lineBuilder : builders) {

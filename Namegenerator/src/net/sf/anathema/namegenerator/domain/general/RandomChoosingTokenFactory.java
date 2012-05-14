@@ -1,6 +1,6 @@
 package net.sf.anathema.namegenerator.domain.general;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.random.RandomUtilities;
 
 public class RandomChoosingTokenFactory implements INameTokenFactory {
@@ -8,7 +8,7 @@ public class RandomChoosingTokenFactory implements INameTokenFactory {
   private String[] tokens;
 
   public RandomChoosingTokenFactory(String[] tokens) {
-    Ensure.ensureArgumentTrue("At least one token must be given.", tokens.length > 0); //$NON-NLS-1$
+    Preconditions.checkArgument(tokens.length > 0, "At least one token must be given."); //$NON-NLS-1$
     this.tokens = tokens;
   }
 

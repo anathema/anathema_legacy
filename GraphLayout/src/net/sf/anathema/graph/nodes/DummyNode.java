@@ -1,7 +1,7 @@
 package net.sf.anathema.graph.nodes;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.Ensure;
 
 public class DummyNode implements ISimpleNode {
 
@@ -35,7 +35,7 @@ public class DummyNode implements ISimpleNode {
 
   @Override
   public void addParent(ISimpleNode node) {
-    Ensure.ensureNull(this.parent[0]);
+    Preconditions.checkArgument(this.parent[0] == null);
     this.parent[0] = node;
   }
 

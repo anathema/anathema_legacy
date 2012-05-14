@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
@@ -37,19 +37,17 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   @Override
-  public ICharacterStatistics createCharacterStatistics(ICharacterTemplate template,
-                                                        ICharacterGenerics generics) throws SpellException {
-    Ensure.ensureNull("Character Statistics can only be created once per character.", statistics); //$NON-NLS-1$
-    Ensure.ensureArgumentNotNull("Template must not be null.", template); //$NON-NLS-1$
-    Ensure.ensureArgumentNotNull("Generics must not be null.", generics); //$NON-NLS-1$
+  public ICharacterStatistics createCharacterStatistics(ICharacterTemplate template, ICharacterGenerics generics) throws SpellException {
+    Preconditions.checkArgument(statistics == null, "Character Statistics can only be created once per character."); //$NON-NLS-1$
+    Preconditions.checkNotNull(template);
+    Preconditions.checkNotNull(generics);
     this.statistics = new CharacterStatistics(template, generics);
     for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
       addAdditionalModels(generics, globalTemplate);
     }
     addAdditionalModels(generics, template.getAdditionalTemplates());
     addCompulsiveCharms(template);
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(
-            management.getStatisticsChangeListener());
+    statistics.getCharacterContext().getCharacterListening().addChangeListener(management.getStatisticsChangeListener());
     return statistics;
   }
 

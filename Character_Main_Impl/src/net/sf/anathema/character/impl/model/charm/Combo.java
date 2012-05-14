@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.charm;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -147,7 +147,7 @@ public class Combo implements ICombo {
 
   @Override
   public void setId(Integer id) {
-    Ensure.ensureNotNull("Id must not be null.", id); //$NON-NLS-1$
+    Preconditions.checkNotNull(id);
     this.id = id;
   }
 }

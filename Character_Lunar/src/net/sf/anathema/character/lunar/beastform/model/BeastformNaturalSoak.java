@@ -1,7 +1,7 @@
 package net.sf.anathema.character.lunar.beastform.model;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -59,7 +59,7 @@ public class BeastformNaturalSoak extends AbstractCombatStats implements IArmour
   }
 
   private int getUncappedSoak(HealthType type) {
-    Ensure.ensureTrue("Aggravated Soak not supported", type != HealthType.Aggravated); //$NON-NLS-1$
+    Preconditions.checkArgument(type != HealthType.Aggravated, "Aggravated Soak not supported"); //$NON-NLS-1$
     int staminaValue = getStaminaValue();
     return doMutations(type, staminaValue);
   }

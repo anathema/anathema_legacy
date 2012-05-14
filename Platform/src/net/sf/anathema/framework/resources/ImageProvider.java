@@ -1,33 +1,32 @@
 package net.sf.anathema.framework.resources;
 
-import java.awt.Image;
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.swing.ImageIcon;
-
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.disy.commons.swing.image.ImageLoader;
 import net.disy.commons.swing.image.ImageLoadingException;
 import net.sf.anathema.lib.resources.IAnathemaImageProvider;
+
+import javax.swing.ImageIcon;
+import java.awt.Image;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class ImageProvider implements IAnathemaImageProvider {
 
   private final String rootPath;
 
   public ImageProvider(String rootPath) {
-    Ensure.ensureNotNull("RootPath is null.", rootPath); //$NON-NLS-1$
+    Preconditions.checkNotNull(rootPath);
     this.rootPath = rootPath;
   }
 
   @Override
-  public Image getImage(Class< ? > requestor, String relativePath) {
+  public Image getImage(Class<?> requestor, String relativePath) {
     InputStream inputStream = getInputStream(requestor, relativePath);
     return loadImage(inputStream);
   }
 
-  private InputStream getInputStream(Class< ? > requestor, String relativePath) {
-    Ensure.ensureNotNull("RelativePath to image is null.", relativePath); //$NON-NLS-1$
+  private InputStream getInputStream(Class<?> requestor, String relativePath) {
+    Preconditions.checkNotNull(relativePath);
     String resourceName = rootPath + "/" + relativePath; //$NON-NLS-1$
     InputStream inputStream = requestor.getClassLoader().getResourceAsStream(resourceName);
     if (inputStream == null) {
@@ -39,14 +38,13 @@ public class ImageProvider implements IAnathemaImageProvider {
   private Image loadImage(InputStream inputStream) {
     try {
       return ImageLoader.getMemoryImageWithoutCaching(inputStream);
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       throw new ImageLoadingException("Cannot open image: " + e.getMessage()); //$NON-NLS-1$
     }
   }
 
   @Override
-  public ImageIcon getImageIcon(Class< ? > requestor, String relativePath) {
+  public ImageIcon getImageIcon(Class<?> requestor, String relativePath) {
     Image image = getImage(requestor, relativePath);
     return image == null ? null : new ImageIcon(image);
   }

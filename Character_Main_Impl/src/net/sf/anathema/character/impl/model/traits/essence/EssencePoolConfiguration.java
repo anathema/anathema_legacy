@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.traits.essence;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -36,7 +36,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 
   @Override
   public String getPersonalPool() {
-    Ensure.ensureTrue("No Essence User", isEssenceUser()); //$NON-NLS-1$
+    Preconditions.checkArgument(isEssenceUser());
     if (!hasAdditionalPools()) {
       return String.valueOf(poolStrategy.getStandardPersonalPool());
     }
@@ -50,7 +50,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 
   @Override
   public String getPeripheralPool() {
-    Ensure.ensureTrue("No Peripheral Pool", hasPeripheralPool()); //$NON-NLS-1$
+    Preconditions.checkArgument(hasPeripheralPool());
     if (!hasAdditionalPools()) {
       return String.valueOf(poolStrategy.getStandardPeripheralPool());
     }

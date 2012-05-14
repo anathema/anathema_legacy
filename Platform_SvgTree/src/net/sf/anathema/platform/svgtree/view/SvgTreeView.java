@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.svgtree.view;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
@@ -45,7 +45,20 @@ import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXM
 import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_3000;
 import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_CASCADE_ID;
 import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_FILL;
-import static org.apache.batik.util.SVGConstants.*;
+import static org.apache.batik.util.SVGConstants.SVG_DX_ATTRIBUTE;
+import static org.apache.batik.util.SVGConstants.SVG_DY_ATTRIBUTE;
+import static org.apache.batik.util.SVGConstants.SVG_FILL_ATTRIBUTE;
+import static org.apache.batik.util.SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE;
+import static org.apache.batik.util.SVGConstants.SVG_HEIGHT_ATTRIBUTE;
+import static org.apache.batik.util.SVGConstants.SVG_NONE_VALUE;
+import static org.apache.batik.util.SVGConstants.SVG_OPACITY_ATTRIBUTE;
+import static org.apache.batik.util.SVGConstants.SVG_RECT_TAG;
+import static org.apache.batik.util.SVGConstants.SVG_TEXT_TAG;
+import static org.apache.batik.util.SVGConstants.SVG_TSPAN_TAG;
+import static org.apache.batik.util.SVGConstants.SVG_WIDTH_ATTRIBUTE;
+import static org.apache.batik.util.SVGConstants.SVG_X_ATTRIBUTE;
+import static org.apache.batik.util.SVGConstants.SVG_Y_ATTRIBUTE;
+import static org.apache.batik.util.SVGConstants.SVG_ZERO_VALUE;
 
 public class SvgTreeView implements ISvgTreeView {
 
@@ -154,7 +167,7 @@ public class SvgTreeView implements ISvgTreeView {
 
   @Override
   public void setNodeBackgroundColor(final String nodeId, final Color color) {
-    Ensure.ensureNotNull("Color must not be null.", color); //$NON-NLS-1$
+    Preconditions.checkNotNull(color);
     SVGElement nodeGroup = (SVGElement) canvas.getElementById(nodeId);
     if (nodeGroup == null) {
       return;

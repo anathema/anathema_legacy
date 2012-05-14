@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.view.magic;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
@@ -168,7 +168,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
       @Override
       public void magicAdded(Object[] addedMagic) {
-        Ensure.ensureTrue("Only one charm may be added.", addedMagic.length == 1); //$NON-NLS-1$
+        Preconditions.checkArgument(addedMagic.length == 1, "Only one charm may be added."); //$NON-NLS-1$
         listener.charmAdded(addedMagic[0]);
       }
     });

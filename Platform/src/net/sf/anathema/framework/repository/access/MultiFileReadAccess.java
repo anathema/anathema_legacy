@@ -1,12 +1,12 @@
 package net.sf.anathema.framework.repository.access;
 
+import com.google.common.base.Preconditions;
+import net.sf.anathema.framework.repository.RepositoryException;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.framework.repository.RepositoryException;
 
 public class MultiFileReadAccess implements IRepositoryReadAccess {
 
@@ -15,7 +15,7 @@ public class MultiFileReadAccess implements IRepositoryReadAccess {
   private final String extension;
 
   public MultiFileReadAccess(File itemFolder, String mainFileName, String extension) {
-    Ensure.ensureTrue("Must be a directory.", itemFolder.isDirectory()); //$NON-NLS-1$
+    Preconditions.checkArgument(itemFolder.isDirectory());
     this.itemFolder = itemFolder;
     this.mainFileName = mainFileName;
     this.extension = extension;
