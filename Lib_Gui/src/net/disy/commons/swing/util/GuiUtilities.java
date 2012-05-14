@@ -8,8 +8,8 @@
  */
 package net.disy.commons.swing.util;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.swing.geometry.SmartRectangle;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;

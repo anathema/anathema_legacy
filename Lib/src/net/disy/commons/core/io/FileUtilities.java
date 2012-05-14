@@ -8,7 +8,7 @@
  */
 package net.disy.commons.core.io;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 import java.io.File;
 import java.io.IOException;

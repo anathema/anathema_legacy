@@ -8,7 +8,7 @@
  */
 package net.disy.commons.core.text;
 
-import net.disy.commons.core.exception.UnreachableCodeReachedException;
+import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 
 import java.util.Arrays;
 import java.util.HashSet;
