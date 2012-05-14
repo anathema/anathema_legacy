@@ -267,12 +267,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     return configuration;
   }
 
-  private final void performFinish(final Component parentComponent) {
-    /*
-     * Zur Sicherheit nochmal getNextPage auf der aktuellen Seite aufrufen, um
-     */
-    // 30.10.2003: Diskussion ob nextPage oder pageDeactivated (mg): Wenn überhaupt dann sollte 
-    // pageDeactivated aufgerufen werden. Die getNextPage() hat semantisch nichts mit finish zu tun, oder?
+  private void performFinish(final Component parentComponent) {
     currentPage.getNextPage();
     currentPage.leave();
 

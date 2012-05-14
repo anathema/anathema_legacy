@@ -41,7 +41,7 @@ public class GuiUtilities {
     throw new UnreachableCodeReachedException();
   }
 
-  public static final Window getWindowFor(final EventObject event) {
+  public static Window getWindowFor(final EventObject event) {
     if (event == null) {
       return JOptionPane.getRootFrame();
     }
@@ -52,7 +52,7 @@ public class GuiUtilities {
     return JOptionPane.getRootFrame();
   }
 
-  public final static Window getWindowFor(final Component component) {
+  public static Window getWindowFor(final Component component) {
     if (component == null) {
       return JOptionPane.getRootFrame();
     }
@@ -69,7 +69,7 @@ public class GuiUtilities {
    * Sets the location of the given window relative to another component. If the other component is
    * not currently showing, the window is centered on the screen.
    */
-  public static final void centerToComponent(final Window window, final Component component) {
+  public static void centerToComponent(final Window window, final Component component) {
     final Window parentWindow = getWindowFor(component);
     if (parentWindow == null || !parentWindow.isVisible()) {
       centerOnScreen(window);
@@ -89,7 +89,7 @@ public class GuiUtilities {
     assureIsOnScreen(window);
   }
 
-  public static final void centerOnScreen(final Window window) {
+  public static void centerOnScreen(final Window window) {
     final Point screenCenter = new SmartRectangle(getScreenBounds(window)).getCenter();
     centerToPoint(window, screenCenter);
   }
@@ -98,7 +98,7 @@ public class GuiUtilities {
     return component.getGraphicsConfiguration().getBounds();
   }
 
-  public static final void centerToPoint(final Window window, final Point center) {
+  public static void centerToPoint(final Window window, final Point center) {
     final Dimension size = window.getSize();
     int x = center.x - size.width / 2;
     int y = center.y - size.height / 2;
@@ -107,11 +107,11 @@ public class GuiUtilities {
     window.setLocation(x, y);
   }
 
-   public static final void centerToParent(final Window window) {
+   public static void centerToParent(final Window window) {
     centerToComponent(window, window.getParent());
   }
 
-  public static final JDialog createDialog(final Component parentComponent, final String title) {
+  public static JDialog createDialog(final Component parentComponent, final String title) {
     final JDialog dialog = createRawDialogForParentComponent(parentComponent);
     dialog.setTitle(title);
     accountForScreenSize(dialog);
@@ -129,7 +129,7 @@ public class GuiUtilities {
     return new JDialog();
   }
 
-  public static final void accountForScreenSize(final Window window) {
+  public static void accountForScreenSize(final Window window) {
     window.addComponentListener(new ComponentAdapter() {
       @Override
       public void componentResized(final ComponentEvent e) {
@@ -138,20 +138,20 @@ public class GuiUtilities {
     });
   }
 
-  public static final void assureIsOnScreen(final Window window) {
+  public static void assureIsOnScreen(final Window window) {
     assureIsOnScreen(window, calculateScreenBounds(window));
   }
 
-  public static final void assureIsOnScreen(final Window window, final Rectangle screenBounds) {
+  public static void assureIsOnScreen(final Window window, final Rectangle screenBounds) {
     if (window instanceof Frame && ((Frame) window).getExtendedState() == Frame.MAXIMIZED_BOTH) {
       return; //setting bounds would cause the extended state to be set from maximized back to normal!
       //Also in maximized mode the system will take care of the frame being on the screen   
     }
     window.setBounds(calculateOnScreenBounds(window.getBounds(), screenBounds));
-    window.validate(); // ohne das war bei niedrigen Auflösungen die Toolbar in GISterm initial nicht sichtbar (ip)
+    window.validate(); // ohne das war bei niedrigen Aufloesungen die Toolbar in GISterm initial nicht sichtbar (ip)
   }
 
-  public static final Rectangle calculateOnScreenBounds(
+  public static Rectangle calculateOnScreenBounds(
       final Rectangle componentBounds,
       final Rectangle screenBounds) {
     final Rectangle onScreenBounds = new Rectangle(componentBounds);
