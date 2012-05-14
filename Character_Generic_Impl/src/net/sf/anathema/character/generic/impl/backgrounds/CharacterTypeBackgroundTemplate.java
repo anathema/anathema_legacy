@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.backgrounds;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -24,7 +24,7 @@ public class CharacterTypeBackgroundTemplate extends AbstractBackgroundTemplate 
   }
 
   public void addContent(CharacterTypeBackgroundTemplate template) {
-    Ensure.ensureArgumentTrue("Combine only identical backgrounds", getId().equals(template.getId())); //$NON-NLS-1$
+    Preconditions.checkArgument(getId().equals(template.getId()), "Combine only identical backgrounds"); //$NON-NLS-1$
     types.addAll(template.types);
   }
 

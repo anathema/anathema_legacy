@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.prerequisite;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 
 public class SelectiveCharmGroupTemplate {
 
@@ -9,7 +9,7 @@ public class SelectiveCharmGroupTemplate {
   private final String label;
 
   public SelectiveCharmGroupTemplate(String[] groupCharmIds, int threshold, String label) {
-    Ensure.ensureTrue("No selective charm groups without charms.", groupCharmIds.length > 0); //$NON-NLS-1$
+    Preconditions.checkArgument(groupCharmIds.length > 0, "No selective charm groups without charms."); //$NON-NLS-1$
     this.groupCharmIds = groupCharmIds;
     this.threshold = threshold;
     this.label = label;

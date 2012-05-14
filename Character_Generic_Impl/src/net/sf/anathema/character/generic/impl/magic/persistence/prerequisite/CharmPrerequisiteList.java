@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.prerequisite;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 
@@ -18,10 +18,10 @@ public class CharmPrerequisiteList {
       String[] prerequisiteCharmID,
       SelectiveCharmGroupTemplate[] selectiveCharmGroups,
       ICharmAttributeRequirement[] attributeRequirements) {
-    Ensure.ensureNotNull("Argument must not be null.", prerequisites); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", essence); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", prerequisiteCharmID); //$NON-NLS-1$
-    Ensure.ensureNotNull("SelectiveCharmGroups must not be null.", selectiveCharmGroups); //$NON-NLS-1$
+    Preconditions.checkNotNull(prerequisites);
+    Preconditions.checkNotNull(essence);
+    Preconditions.checkNotNull(prerequisiteCharmID);
+    Preconditions.checkNotNull(selectiveCharmGroups);
     this.prerequisites = prerequisites;
     this.essence = essence;
     this.parentCharmIDs = prerequisiteCharmID;

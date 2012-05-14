@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 
@@ -10,8 +10,7 @@ public class StaticPainToleranceCharm extends StaticMultiLearnableCharm implemen
 
   public StaticPainToleranceCharm(String charmId, int learnCount, int[] painToleranceLevels) {
     super(charmId, learnCount);
-    Ensure.ensureTrue(
-        "Number of pain tolerance levels must equal learn count.", painToleranceLevels.length == learnCount); //$NON-NLS-1$
+    Preconditions.checkArgument(painToleranceLevels.length == learnCount, "Number of pain tolerance levels must equal learn count."); //$NON-NLS-1$
     this.painToleranceLevels = painToleranceLevels;
   }
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.trait.rules;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -8,8 +8,7 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.library.trait.aggregated.AggregatedTraitTemplate;
 import net.sf.anathema.lib.data.Range;
 
-public class TraitRules implements ITraitRules
-{
+public class TraitRules implements ITraitRules {
   private int capModifier = 0;
   private final ITraitTemplate template;
   private final ILimitationContext limitationContext;
@@ -17,8 +16,8 @@ public class TraitRules implements ITraitRules
   private Range modifiedCreationRange;
 
   public TraitRules(ITraitType traitType, ITraitTemplate template, ILimitationContext limitationContext) {
-    Ensure.ensureArgumentNotNull("TemplateType must not be null.", traitType); //$NON-NLS-1$
-    Ensure.ensureArgumentNotNull("Template must not be null.", template); //$NON-NLS-1$
+    Preconditions.checkNotNull(traitType, "TemplateType must not be null."); //$NON-NLS-1$
+    Preconditions.checkNotNull(template, "Template must not be null."); //$NON-NLS-1$
     this.traitType = traitType;
     this.template = template;
     this.limitationContext = limitationContext;
@@ -38,8 +37,7 @@ public class TraitRules implements ITraitRules
 
   @Override
   public int getCurrentMaximumValue(boolean modified) {
-    return template.getLimitation().getCurrentMaximum(limitationContext, modified) +
-    	(modified ? capModifier : 0);
+    return template.getLimitation().getCurrentMaximum(limitationContext, modified) + (modified ? capModifier : 0);
   }
 
   @Override
@@ -49,22 +47,20 @@ public class TraitRules implements ITraitRules
     }
     return modifiedCreationRange.getLowerBound();
   }
-  
+
   @Override
-  public int getCalculationMinValue()
-  {
-	 return template.getCalculationMinValue(limitationContext, traitType);
+  public int getCalculationMinValue() {
+    return template.getCalculationMinValue(limitationContext, traitType);
   }
 
   @Override
   public int getStartValue() {
     return template.getStartValue();
   }
-  
+
   @Override
-  public void setCapModifier(int modifier)
-  {
-	  capModifier = modifier;
+  public void setCapModifier(int modifier) {
+    capModifier = modifier;
   }
 
   @Override
@@ -113,8 +109,7 @@ public class TraitRules implements ITraitRules
     int maximumValue = getCurrentMaximumValue(true);
     if (isLowerable()) {
       range = new Range(getAbsoluteMinimumValue(), maximumValue);
-    }
-    else {
+    } else {
       boolean isImmutable = template.getLowerableState() == LowerableState.Immutable;
       range = new Range(Math.max(Math.min(creationValue, maximumValue), getAbsoluteMinimumValue()), isImmutable ? creationValue : maximumValue);
     }

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.trait;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -17,7 +17,7 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   private final ITraitContext traitContext;
 
   public AbstractFavorableTrait(ITraitRules traitRules, ITraitContext traitContext) {
-    Ensure.ensureArgumentNotNull(traitRules);
+    Preconditions.checkNotNull(traitRules);
     this.traitRules = traitRules;
     this.traitContext = traitContext;
   }

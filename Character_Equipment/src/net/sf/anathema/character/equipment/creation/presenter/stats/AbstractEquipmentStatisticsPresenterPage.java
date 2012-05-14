@@ -5,8 +5,8 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
@@ -140,7 +140,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   protected final void addLabelledComponentRow(final String[] labels, final Component[] contents) {
-    Ensure.ensureArgumentTrue("Same number of labels required", labels.length == contents.length); //$NON-NLS-1$
+    Preconditions.checkArgument(labels.length == contents.length, "Same number of labels required"); //$NON-NLS-1$
     getPageContent().addDialogComponent(new IDialogComponent() {
       @Override
       public void fillInto(JPanel panel, int columnCount) {

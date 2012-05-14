@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.concrete.plot;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainer;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainerListener;
@@ -42,7 +42,7 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
 
   @Override
   public IPlotElement addChild(String name) {
-    Ensure.ensureTrue("Tried to add to non-successable plot element container.", unit.hasSuccessor()); //$NON-NLS-1$
+    Preconditions.checkArgument(unit.hasSuccessor(), "Tried to add to non-successable plot element container."); //$NON-NLS-1$
     PlotElement plotElement = new PlotElement(provider, getTimeUnit().getSuccessor(), name);
     children.add(plotElement);
     fireChildAddedEvent(plotElement);
@@ -51,7 +51,7 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
 
   @Override
   public IPlotElement addChild(IItemDescription description, String repositoryId) {
-    Ensure.ensureTrue("Tried to add to non-successable plot element container.", unit.hasSuccessor()); //$NON-NLS-1$
+    Preconditions.checkArgument(unit.hasSuccessor(), "Tried to add to non-successable plot element container."); //$NON-NLS-1$
     PlotElement plotElement = new PlotElement(provider, getTimeUnit().getSuccessor(), description, repositoryId);
     children.add(plotElement);
     fireChildAddedEvent(plotElement);
@@ -76,7 +76,7 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
 
   @Override
   public void removeChild(IPlotElement element) {
-    Ensure.ensureTrue("Tried to remove from non-successable plot element container.", unit.hasSuccessor()); //$NON-NLS-1$
+    Preconditions.checkArgument(unit.hasSuccessor(), "Tried to remove from non-successable plot element container."); //$NON-NLS-1$
     if (!children.remove(element)) {
       for (IPlotElement child : children) {
         if (child.getTimeUnit().hasSuccessor()) {

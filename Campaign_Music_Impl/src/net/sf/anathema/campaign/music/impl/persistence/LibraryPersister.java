@@ -3,7 +3,7 @@ package net.sf.anathema.campaign.music.impl.persistence;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.model.track.Md5Checksum;
@@ -16,7 +16,7 @@ public class LibraryPersister {
   private final Announcer<ITrackDeletionListener> listeners = Announcer.to(ITrackDeletionListener.class);
 
   public final void addLibrary(final ObjectContainer db, String libraryName) {
-    Ensure.ensureArgumentFalse("Library name must be unique.", isRegisteredLibrary(db, libraryName)); //$NON-NLS-1$
+    Preconditions.checkArgument(!isRegisteredLibrary(db, libraryName), "Library name must be unique."); //$NON-NLS-1$
     db.set(new DbLibrary(libraryName, db));
   }
 

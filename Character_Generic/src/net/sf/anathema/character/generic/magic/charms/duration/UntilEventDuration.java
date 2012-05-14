@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.magic.charms.duration;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 import net.sf.anathema.lib.resources.IStringResourceHandler;
 
@@ -9,7 +9,7 @@ public class UntilEventDuration extends ReflectionEqualsObject implements IDurat
   private final String event;
 
   public UntilEventDuration(String event) {
-    Ensure.ensureArgumentNotNull(event);
+    Preconditions.checkNotNull(event);
     this.event = event;
   }
 

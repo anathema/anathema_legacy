@@ -1,17 +1,16 @@
 package net.sf.anathema.character.generic.framework.xml.registry;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.framework.xml.ITemplateParser;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-
 import org.dom4j.Document;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
 
@@ -35,7 +34,7 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
     if (template != null) {
       return template;
     }
-    Ensure.ensureNotNull(templateParser);
+    Preconditions.checkNotNull(templateParser);
     if (idsInProgress.contains(id)) {
       throw new PersistenceException("Illegal recursion in template file:" + id); //$NON-NLS-1$
     }

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.IMagicCollection;
@@ -65,19 +65,19 @@ public class Charm extends Identificate implements ICharm {
 
   private final ICharmTypeModel typeModel;
 
-  public Charm(ICharacterType characterType, String id, String group, boolean isGeneric,
-               CharmPrerequisiteList prerequisiteList, ICostList temporaryCost, IComboRestrictions comboRules,
-               IDuration duration, ICharmTypeModel charmTypeModel, IExaltedSourceBook[] sources) {
+  public Charm(ICharacterType characterType, String id, String group, boolean isGeneric, CharmPrerequisiteList prerequisiteList,
+               ICostList temporaryCost, IComboRestrictions comboRules, IDuration duration, ICharmTypeModel charmTypeModel,
+               IExaltedSourceBook[] sources) {
     super(id);
-    Ensure.ensureNotNull("Argument must not be null.", prerequisiteList); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", characterType); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", id); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", group); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", temporaryCost); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", comboRules); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", duration); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", charmTypeModel.getCharmType()); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", sources); //$NON-NLS-1$
+    Preconditions.checkNotNull(prerequisiteList);
+    Preconditions.checkNotNull(characterType);
+    Preconditions.checkNotNull(id);
+    Preconditions.checkNotNull(group);
+    Preconditions.checkNotNull(temporaryCost);
+    Preconditions.checkNotNull(comboRules);
+    Preconditions.checkNotNull(duration);
+    Preconditions.checkNotNull(charmTypeModel.getCharmType());
+    Preconditions.checkNotNull(sources);
     this.characterType = characterType;
     this.group = group;
     this.isGeneric = isGeneric;
@@ -101,8 +101,9 @@ public class Charm extends Identificate implements ICharm {
     this.comboRules = new ComboRestrictions();
     this.duration = charmData.getDuration();
     this.sources = charmData.getSources();
-    this.prerequisisteList = new CharmPrerequisiteList(charmData.getPrerequisites(), charmData.getEssence(),
-            new String[0], new SelectiveCharmGroupTemplate[0], new ICharmAttributeRequirement[0]);
+    this.prerequisisteList =
+            new CharmPrerequisiteList(charmData.getPrerequisites(), charmData.getEssence(), new String[0], new SelectiveCharmGroupTemplate[0],
+                    new ICharmAttributeRequirement[0]);
     parentCharms.addAll(charmData.getParentCharms());
     this.typeModel = charmData.getCharmTypeModel();
   }
@@ -238,8 +239,7 @@ public class Charm extends Identificate implements ICharm {
       }
 
       Charm parentCharm = charmsById.get(id);
-      Ensure.ensureNotNull("Parent Charm " + id + " not defined for " + getId(),
-              parentCharm); //$NON-NLS-1$//$NON-NLS-2$
+      Preconditions.checkNotNull(parentCharm, "Parent Charm " + id + " not defined for " + getId()); //$NON-NLS-1$//$NON-NLS-2$
       parentCharms.add(parentCharm);
       parentCharm.addChild(this);
     }
@@ -262,7 +262,9 @@ public class Charm extends Identificate implements ICharm {
     Set<ICharm> prerequisiteCharms = new HashSet<ICharm>();
     prerequisiteCharms.addAll(parentCharms);
     for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
-      if (charmGroup.getLabel() == null) prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
+      if (charmGroup.getLabel() == null) {
+        prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
+      }
     }
 
     return prerequisiteCharms;
@@ -271,8 +273,11 @@ public class Charm extends Identificate implements ICharm {
   @Override
   public Set<String> getRenderingPrerequisiteLabels() {
     Set<String> prerequisiteLabels = new HashSet<String>();
-    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups)
-      if (charmGroup.getLabel() != null) prerequisiteLabels.add(charmGroup.getLabel());
+    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
+      if (charmGroup.getLabel() != null) {
+        prerequisiteLabels.add(charmGroup.getLabel());
+      }
+    }
 
     return prerequisiteLabels;
   }
@@ -374,8 +379,10 @@ public class Charm extends Identificate implements ICharm {
 
     final boolean[] characterCanFavorMagicOfPrimaryType = new boolean[1];
     final ITraitType primaryTraitType = getPrimaryTraitType();
-    if (hasAttribute(new Identificate("MartialArts")) && ((IFavorableGenericTrait) traitCollection.getTrait(
-            AbilityType.MartialArts)).isCasteOrFavored()) return true;
+    if (hasAttribute(new Identificate("MartialArts")) &&
+        ((IFavorableGenericTrait) traitCollection.getTrait(AbilityType.MartialArts)).isCasteOrFavored()) {
+      return true;
+    }
 
     basicCharacter.getCharacterType().getFavoringTraitType().accept(new IFavoringTraitTypeVisitor() {
       @Override

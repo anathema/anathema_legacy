@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.item.model;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
@@ -47,7 +47,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
   @Override
   public void setEditTemplate(String templateId) {
-    Ensure.ensureArgumentNotNull(templateId);
+    Preconditions.checkNotNull(templateId);
     this.editTemplateId = templateId;
     editedTemplate = database.loadTemplate(templateId);
     getDescription().getName().setText(editedTemplate.getName());

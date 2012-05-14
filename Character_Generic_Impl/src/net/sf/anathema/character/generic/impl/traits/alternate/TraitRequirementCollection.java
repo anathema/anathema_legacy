@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl.traits.alternate;
 
 import java.util.List;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 
 public class TraitRequirementCollection {
@@ -16,8 +16,8 @@ public class TraitRequirementCollection {
   }
 
   public boolean isStrictWithout(ITraitRequirement testRequirement, IGenericTraitCollection collection) {
-    Ensure.ensureArgumentTrue("Foreign requirement", requirements.contains(testRequirement)); //$NON-NLS-1$
-    Ensure.ensureArgumentNotNull(testRequirement);
+    Preconditions.checkArgument(requirements.contains(testRequirement), "Foreign requirement"); //$NON-NLS-1$
+    Preconditions.checkNotNull(testRequirement);
     int strictCount = 0;
     for (ITraitRequirement requirement : requirements) {
       if (requirement.equals(testRequirement)) {

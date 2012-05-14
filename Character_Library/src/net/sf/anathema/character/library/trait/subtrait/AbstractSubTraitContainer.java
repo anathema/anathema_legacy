@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.trait.subtrait;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -108,7 +108,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
 
   @Override
   public final ISubTrait addSubTrait(String traitName) {
-    Ensure.ensureArgumentNotNull(traitName);
+    Preconditions.checkNotNull(traitName);
     if (isNewSubTraitAllowed()) {
       ISubTrait subTrait = getSubTrait(traitName);
       if (subTrait == null) {

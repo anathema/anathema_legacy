@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -18,14 +18,14 @@ public class SelectiveCharmGroup {
   private final List<Charm> charms = new ArrayList<Charm>();
 
   public SelectiveCharmGroup(SelectiveCharmGroupTemplate template) {
-    Ensure.ensureNotNull(template);
+    Preconditions.checkNotNull(template);
     this.template = template;
   }
 
   public void extractCharms(Map<String, ? extends Charm> charmsById, Charm child) {
     for (String charmId : template.getGroupCharmIds()) {
       Charm groupCharm = charmsById.get(charmId);
-      Ensure.ensureNotNull("Charm not found for id " + charmId, groupCharm); //$NON-NLS-1$
+      Preconditions.checkNotNull(groupCharm, "Charm not found for id " + charmId); //$NON-NLS-1$
       charms.add(groupCharm);
       groupCharm.addChild(child);
     }

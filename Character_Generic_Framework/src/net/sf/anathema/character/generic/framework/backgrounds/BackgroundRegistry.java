@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.framework.backgrounds;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.ContractFailedException;
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
@@ -17,11 +17,11 @@ public class BackgroundRegistry extends IdentificateRegistry<IBackgroundTemplate
         IBackgroundTemplate registeredBackground = getById(backgroundId);
         String message = "Duplicated background with id " + backgroundId; //$NON-NLS-1$
         if (registeredBackground instanceof TemplateTypeBackgroundTemplate) {
-          Ensure.ensureArgumentTrue(message, background instanceof TemplateTypeBackgroundTemplate);
+          Preconditions.checkArgument(background instanceof TemplateTypeBackgroundTemplate, message);
           ((TemplateTypeBackgroundTemplate) registeredBackground).addContent((TemplateTypeBackgroundTemplate) background);
         }
         else if (registeredBackground instanceof CharacterTypeBackgroundTemplate) {
-          Ensure.ensureArgumentTrue(message, background instanceof CharacterTypeBackgroundTemplate);
+          Preconditions.checkArgument(background instanceof CharacterTypeBackgroundTemplate, message);
           ((CharacterTypeBackgroundTemplate) registeredBackground).addContent((CharacterTypeBackgroundTemplate) background);
         }
         else {

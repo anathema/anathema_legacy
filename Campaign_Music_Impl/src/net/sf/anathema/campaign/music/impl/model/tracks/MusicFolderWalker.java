@@ -1,27 +1,27 @@
 package net.sf.anathema.campaign.music.impl.model.tracks;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.progress.ICancelable;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.ProgressUtilities;
-import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
 import net.sf.anathema.campaign.music.model.libary.ITrackHandler;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.lib.resources.IResources;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MusicFolderWalker implements IMusicFolderWalker {
 
   private final File musicFolder;
 
   public MusicFolderWalker(File musicFolder) throws IOException {
-    Ensure.ensureNotNull(musicFolder);
+    Preconditions.checkNotNull(musicFolder);
     if (!musicFolder.exists()) {
       throw new IOException("LibraryFile does not exist." + musicFolder); //$NON-NLS-1$
     }

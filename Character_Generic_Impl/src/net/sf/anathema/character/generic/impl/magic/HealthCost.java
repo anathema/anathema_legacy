@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
 
@@ -11,7 +11,7 @@ public class HealthCost extends Cost implements IHealthCost {
 
   public HealthCost(int cost, String text, boolean permanent, HealthType type) {
     super(String.valueOf(cost), text, permanent);
-    Ensure.ensureNotNull(type);
+    Preconditions.checkNotNull(type);
     this.type = type;
   }
 

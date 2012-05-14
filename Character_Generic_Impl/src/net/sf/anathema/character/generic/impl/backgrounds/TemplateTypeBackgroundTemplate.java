@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 
@@ -24,7 +24,7 @@ public class TemplateTypeBackgroundTemplate extends AbstractBackgroundTemplate {
   }
 
   public void addContent(TemplateTypeBackgroundTemplate template) {
-    Ensure.ensureArgumentTrue("Combine only identical backgrounds", getId().equals(template.getId())); //$NON-NLS-1$
+    Preconditions.checkArgument(getId().equals(template.getId()), "Combine only identical backgrounds"); //$NON-NLS-1$
     types.addAll(template.types);
   }
 

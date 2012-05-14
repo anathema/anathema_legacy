@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.creation;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
@@ -49,11 +49,10 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
   public int getFavoredCreationCharmCount() {
     return favoredCreationCharmCount;
   }
-  
+
   @Override
-  public int getUniqueRequiredCreationCharmCount()
-  {
-	  return uniqueCreationCharmCount;
+  public int getUniqueRequiredCreationCharmCount() {
+    return uniqueCreationCharmCount;
   }
 
   @Override
@@ -63,55 +62,54 @@ public class GenericCreationPoints extends ReflectionCloneableObject<GenericCrea
 
   @Override
   public int getSpecialtyCreationPoints() {
-	    return specialityCreationPoints;
-	  }
+    return specialityCreationPoints;
+  }
 
   public void setAbilityCreationPoints(IAbilityCreationPoints abiltyCreationPoints) {
-    Ensure.ensureNotNull(abiltyCreationPoints);
+    Preconditions.checkNotNull(abiltyCreationPoints);
     this.abilityCreationPoints = abiltyCreationPoints;
   }
 
   public void setAttributeCreationPoints(IAttributeCreationPoints attributeCreationPoints) {
-    Ensure.ensureNotNull(attributeCreationPoints);
+    Preconditions.checkNotNull(attributeCreationPoints);
     this.attributeCreationPoints = attributeCreationPoints;
   }
 
   public void setBackgroundPointCount(int backgroundPointCount) {
-    Ensure.ensureArgumentTrue("Background point count must be positive.", backgroundPointCount >= 0); //$NON-NLS-1$
+    Preconditions.checkArgument(backgroundPointCount >= 0, "Background point count must be positive."); //$NON-NLS-1$
     this.backgroundPointCount = backgroundPointCount;
   }
 
   public void setBonusPointCount(int bonusPointCount) {
-    Ensure.ensureArgumentTrue("Bonus point count must be positive.", bonusPointCount >= 0); //$NON-NLS-1$
+    Preconditions.checkArgument(bonusPointCount >= 0, "Bonus point count must be positive."); //$NON-NLS-1$
     this.bonusPointCount = bonusPointCount;
   }
 
   public void setGeneralCreationCharmCount(int charmCount) {
-    Ensure.ensureArgumentTrue("Default charm count must be positive.", charmCount >= 0); //$NON-NLS-1$
+    Preconditions.checkArgument(charmCount >= 0, "Default charm count must be positive."); //$NON-NLS-1$
     this.defaultCreationCharmCount = charmCount;
   }
 
   public void setFavoredCreationCharmCount(int charmCount) {
-    Ensure.ensureArgumentTrue("Favored charm count must be positive.", charmCount >= 0); //$NON-NLS-1$
+    Preconditions.checkArgument(charmCount >= 0, "Favored charm count must be positive."); //$NON-NLS-1$
     this.favoredCreationCharmCount = charmCount;
   }
-  
-  public void setUniqueCreationCharmCount(int charmCount)
-  {
-	  Ensure.ensureArgumentTrue("Unique charm count must be positive.", charmCount >= 0); //$NON-NLS-1$
-	  this.uniqueCreationCharmCount = charmCount;  
+
+  public void setUniqueCreationCharmCount(int charmCount) {
+    Preconditions.checkArgument(charmCount >= 0, "Unique charm count must be positive."); //$NON-NLS-1$
+    this.uniqueCreationCharmCount = charmCount;
   }
 
   public void setVirtueCreationPoints(int virtueCreationPoints) {
-    Ensure.ensureArgumentTrue("Virtue creation points must be positive.", virtueCreationPoints >= 0); //$NON-NLS-1$
+    Preconditions.checkArgument(virtueCreationPoints >= 0, "Virtue creation points must be positive."); //$NON-NLS-1$
     this.virtueCreationPoints = virtueCreationPoints;
   }
 
   public void setSpecialityPoints(int specialityCreationPoints) {
-	    Ensure.ensureArgumentTrue("Speciality creation points must be positive.", specialityCreationPoints >= 0); //$NON-NLS-1$
-	    this.specialityCreationPoints = specialityCreationPoints;
-	  }
-  
+    Preconditions.checkArgument(specialityCreationPoints >= 0, "Speciality creation points must be positive."); //$NON-NLS-1$
+    this.specialityCreationPoints = specialityCreationPoints;
+  }
+
   @Override
   public GenericCreationPoints clone() {
     GenericCreationPoints clone = super.clone();

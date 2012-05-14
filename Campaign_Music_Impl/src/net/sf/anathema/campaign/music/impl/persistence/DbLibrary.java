@@ -1,11 +1,10 @@
 package net.sf.anathema.campaign.music.impl.persistence;
 
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.campaign.music.model.libary.ILibrary;
-import net.sf.anathema.campaign.music.model.track.IMp3Track;
-
 import com.db4o.ObjectContainer;
 import com.db4o.types.Db4oList;
+import com.google.common.base.Preconditions;
+import net.sf.anathema.campaign.music.model.libary.ILibrary;
+import net.sf.anathema.campaign.music.model.track.IMp3Track;
 
 public final class DbLibrary implements ILibrary {
 
@@ -13,7 +12,7 @@ public final class DbLibrary implements ILibrary {
   private String name;
 
   public DbLibrary(String name, ObjectContainer db) {
-    Ensure.ensureNotNull(name);
+    Preconditions.checkNotNull(name);
     this.name = name;
     this.content = db.ext().collections().newLinkedList();
     this.content.deleteRemoved(false);

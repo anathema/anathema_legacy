@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.taskpane;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 
@@ -30,7 +30,7 @@ public class TaskPaneView<V extends ITaskPaneGroupView> {
   }
 
   public void removeEquipmentObjectView(V taskView) {
-    Ensure.ensureArgumentTrue("Tried to remove unmanaged task view.", taskViews.contains(taskView)); //$NON-NLS-1$
+    Preconditions.checkArgument(taskViews.contains(taskView), "Tried to remove unmanaged task view."); //$NON-NLS-1$
     taskViews.remove(taskView);
     taskPane.remove(taskView.getTaskGroup());
     revalidateView();

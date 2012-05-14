@@ -1,12 +1,12 @@
 package net.sf.anathema.campaign.view;
 
-import javax.swing.Icon;
-import javax.swing.JComponent;
-
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.itemdata.view.IBasicItemView;
 import net.sf.anathema.framework.view.item.AbstractItemView;
+
+import javax.swing.Icon;
+import javax.swing.JComponent;
 
 public class BasicItemView extends AbstractItemView implements IBasicItemView {
 
@@ -18,7 +18,7 @@ public class BasicItemView extends AbstractItemView implements IBasicItemView {
 
   @Override
   public IBasicItemDescriptionView addDescriptionView() {
-    Ensure.ensureNull("Only one description view allowed.", descriptionView); //$NON-NLS-1$
+    Preconditions.checkArgument(descriptionView == null, "Only one description view allowed."); //$NON-NLS-1$
     descriptionView = new BasicItemDescriptionView();
     return descriptionView;
   }

@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.trait;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -21,9 +21,9 @@ public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IC
       IClonableTraitTemplate traitTemplate,
       IMinimumRestriction restriction,
       ITraitType traitType) {
-    Ensure.ensureArgumentNotNull(traitTemplate);
-    Ensure.ensureArgumentNotNull(restriction);
-    Ensure.ensureArgumentNotNull(traitType);
+    Preconditions.checkNotNull(traitTemplate);
+    Preconditions.checkNotNull(restriction);
+    Preconditions.checkNotNull(traitType);
     this.traitType = traitType;
     this.traitTemplate = traitTemplate;
     restrictions.add(restriction);

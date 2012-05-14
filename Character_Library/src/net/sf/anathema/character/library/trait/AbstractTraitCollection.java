@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 
@@ -38,7 +38,7 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
   @Override
   public IFavorableTrait getFavorableTrait(ITraitType traitType) {
     ITrait favorableTrait = getTrait(traitType);
-    Ensure.ensureArgumentTrue("No favorable trait type " + traitType, favorableTrait instanceof IFavorableTrait); //$NON-NLS-1$
+    Preconditions.checkArgument(favorableTrait instanceof IFavorableTrait, "No favorable trait type " + traitType); //$NON-NLS-1$
     return (IFavorableTrait) favorableTrait;
   }
 
@@ -52,7 +52,7 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
   }
 
   protected final void addTrait(ITrait trait) {
-    Ensure.ensureArgumentFalse("Trait of type already contained " + trait.getType(), contains(trait.getType())); //$NON-NLS-1$
+    Preconditions.checkArgument(!contains(trait.getType()), "Trait of type already contained " + trait.getType()); //$NON-NLS-1$
     traitsByType.put(trait.getType(), trait);
   }
 

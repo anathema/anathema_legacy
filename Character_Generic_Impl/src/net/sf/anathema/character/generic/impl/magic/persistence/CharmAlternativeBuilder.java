@@ -1,23 +1,22 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVES;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
+import com.google.common.base.Preconditions;
+import net.disy.commons.core.predicate.IPredicate;
+import net.disy.commons.core.util.ArrayUtilities;
+import net.sf.anathema.character.generic.impl.magic.Charm;
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Document;
+import org.dom4j.Element;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.character.generic.impl.magic.Charm;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.lib.xml.ElementUtilities;
-
-import org.dom4j.Document;
-import org.dom4j.Element;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVES;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
 
 public class CharmAlternativeBuilder {
 
@@ -47,7 +46,7 @@ public class CharmAlternativeBuilder {
           return candidate.getId().equals(charmId);
         }
       });
-      Ensure.ensureNotNull("Charm not found " + charmId, charm); //$NON-NLS-1$
+      Preconditions.checkNotNull(charm, "Charm not found " + charmId); //$NON-NLS-1$
       charms.add(charm);
     }
     for (ICharm charm : charms) {

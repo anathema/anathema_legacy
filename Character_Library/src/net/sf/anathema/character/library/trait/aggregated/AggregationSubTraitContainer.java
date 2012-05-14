@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.trait.aggregated;
 
 import java.awt.Toolkit;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
@@ -27,7 +27,7 @@ public class AggregationSubTraitContainer extends AbstractSubTraitContainer {
       ITraitType basicType,
       ITraitFavorization traitFavorization,
       String... unremovableNames) {
-    Ensure.ensureArgumentNotNull(traitRules);
+    Preconditions.checkNotNull(traitRules);
     this.traitRules = traitRules;
     this.traitContext = traitContext;
     this.valueChangeChecker = valueChangeChecker;

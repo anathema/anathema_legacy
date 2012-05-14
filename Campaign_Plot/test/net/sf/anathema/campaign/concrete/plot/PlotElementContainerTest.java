@@ -13,7 +13,7 @@ public class PlotElementContainerTest {
   private static final PlotTimeUnit STORY = new PlotTimeUnit("Story", EPISODE); //$NON-NLS-1$
   private final PlotIDProvider provider = new PlotIDProvider(STORY);
 
-  @Test(expected = ContractFailedException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void testIllegalArgumentExceptionOnAddElementToNonSuccessablePlotElementContainer() {
     PlotElementContainer container = new PlotElementContainer(provider, SCENE);
     container.addChild("illegal child"); //$NON-NLS-1$

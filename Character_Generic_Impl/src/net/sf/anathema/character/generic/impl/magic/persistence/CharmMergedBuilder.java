@@ -9,9 +9,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -47,7 +47,7 @@ public class CharmMergedBuilder {
           return candidate.getId().equals(charmId);
         }
       });
-      Ensure.ensureNotNull("Charm not found " + charmId, charm); //$NON-NLS-1$
+      Preconditions.checkNotNull(charm, "Charm not found " + charmId); //$NON-NLS-1$
       charms.add(charm);
     }
     for (ICharm charm : charms) {
