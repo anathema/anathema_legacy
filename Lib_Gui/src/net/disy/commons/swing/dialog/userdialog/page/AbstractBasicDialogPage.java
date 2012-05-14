@@ -9,20 +9,19 @@
 package net.disy.commons.swing.dialog.userdialog.page;
 
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.core.model.listener.ListenerList;
-import net.disy.commons.core.model.listener.NotifyChangeListenerClosure;
 import net.disy.commons.swing.dialog.core.internal.AbstractPage;
 import net.disy.commons.swing.dialog.input.IRequestFinishListener;
 import net.disy.commons.swing.events.ICheckInputValidListener;
 import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public abstract class AbstractBasicDialogPage extends AbstractPage implements IBasicDialogPage {
-  private final ListenerList<IRequestFinishListener> requestFinishListeners = new ListenerList<IRequestFinishListener>();
-  private final ListenerList<IChangeListener> changeListeners = new ListenerList<IChangeListener>();
+  private final Announcer<IRequestFinishListener> requestFinishListeners = Announcer.to(IRequestFinishListener.class);
+  private final Announcer<IChangeListener> changeListeners = Announcer.to(IChangeListener.class);
 
   private ICheckInputValidListener inputValidListener;
   private final ICheckInputValidListener inputValidListenerProxy = (ICheckInputValidListener) Proxy
@@ -33,7 +32,7 @@ public abstract class AbstractBasicDialogPage extends AbstractPage implements IB
             @Override
             public Object invoke(final Object proxy, final Method method, final Object[] args)
                 throws Throwable {
-              changeListeners.forAllDo(NotifyChangeListenerClosure.INSTANCE);
+              changeListeners.announce().changeOccurred();
               // (ip, mg) Events koennen schon kommen, bevor inputValidListener gesetzt wurde
               //          koennen wir aber getrost ignorieren, da nach dem Setzen des inputValidListeners
               //          Message und Button-Zustand der Seite eh initialisiert werden.
@@ -86,12 +85,12 @@ public abstract class AbstractBasicDialogPage extends AbstractPage implements IB
 
   @Override
   public final void addRequestFinishListener(final IRequestFinishListener requestFinishListener) {
-    requestFinishListeners.add(requestFinishListener);
+    requestFinishListeners.addListener(requestFinishListener);
   }
 
   @Override
   public final void removeRequestFinishListener(final IRequestFinishListener requestFinishListener) {
-    requestFinishListeners.remove(requestFinishListener);
+    requestFinishListeners.removeListener(requestFinishListener);
   }
 
   @Override

@@ -8,19 +8,14 @@
  */
 package net.disy.commons.swing.dialog.input;
 
-import net.disy.commons.core.model.listener.ListenerList;
-import net.disy.commons.core.util.IClosure;
+import org.jmock.example.announcer.Announcer;
 
 public abstract class AbstractSmartDialogPanel implements ISmartDialogPanel {
-  private final transient ListenerList<IRequestFinishListener> listeners = new ListenerList<IRequestFinishListener>();
+
+  private transient Announcer<IRequestFinishListener> listeners = Announcer.to(IRequestFinishListener.class);
 
   protected final void fireRequestFinish() {
-    listeners.forAllDo(new IClosure<IRequestFinishListener>() {
-      @Override
-      public void execute(final IRequestFinishListener listener) {
-        listener.requestFinish();
-      }
-    });
+    listeners.announce().requestFinish();
   }
 
 }

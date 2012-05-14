@@ -3,13 +3,13 @@ package net.sf.anathema.lib.gui.wizard;
 import com.google.common.base.Preconditions;
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.core.model.listener.ListenerList;
 import net.disy.commons.swing.dialog.core.IDialogHelpHandler;
 import net.disy.commons.swing.dialog.input.IRequestFinishListener;
 import net.disy.commons.swing.dialog.wizard.IWizardConfiguration;
 import net.disy.commons.swing.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +17,7 @@ import java.util.Map;
 public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage {
 
   private IBasicMessage message = new BasicMessage("!!! UNSET-MESSAGE !!!");
-  private final ListenerList<IRequestFinishListener> requestFinishListeners = new ListenerList<IRequestFinishListener>();
+  private final Announcer<IRequestFinishListener> requestFinishListeners = Announcer.to(IRequestFinishListener.class);
   private IWizardConfiguration wizard = null;
   private IAnathemaWizardPage previousPage = null;
   protected final Map<ICondition, IAnathemaWizardPage> followUpPagesByCondition = new HashMap<ICondition, IAnathemaWizardPage>();
@@ -41,10 +41,11 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   public final IWizardPage getNextPage() {
     for (ICondition condition : followUpPagesByCondition.keySet()) {
       if (condition.isFulfilled()) {
-    	  IWizardPage page = followUpPagesByCondition.get(condition);
-    	  if (page instanceof IAnathemaWizardPage)
-    		  ((IAnathemaWizardPage)page).setPreviousPage(this);
-          return page;
+        IWizardPage page = followUpPagesByCondition.get(condition);
+        if (page instanceof IAnathemaWizardPage) {
+          ((IAnathemaWizardPage) page).setPreviousPage(this);
+        }
+        return page;
       }
     }
     return null;
@@ -83,15 +84,13 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   }
 
   @Override
-  public void addRequestFinishListener(
-      IRequestFinishListener requestFinishListener) {
-    requestFinishListeners.add(requestFinishListener);
+  public void addRequestFinishListener(IRequestFinishListener requestFinishListener) {
+    requestFinishListeners.addListener(requestFinishListener);
   }
 
   @Override
-  public void removeRequestFinishListener(
-      IRequestFinishListener requestFinishListener) {
-    requestFinishListeners.remove(requestFinishListener);
+  public void removeRequestFinishListener(IRequestFinishListener requestFinishListener) {
+    requestFinishListeners.removeListener(requestFinishListener);
   }
 
   @Override

@@ -8,20 +8,19 @@
  */
 package net.disy.commons.core.model;
 
-import net.disy.commons.core.model.listener.ListenerList;
-import net.disy.commons.core.model.listener.NotifyChangeListenerClosure;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
+import org.jmock.example.announcer.Announcer;
 
 public abstract class AbstractChangeableModel implements Cloneable, IChangeableModel {
 
-  private transient ListenerList<IChangeListener> listeners = new ListenerList<IChangeListener>();
+  private transient Announcer<IChangeListener> listeners = Announcer.to(IChangeListener.class);
 
   @Override
   protected Object clone() {
     try {
       final AbstractChangeableModel clone = (AbstractChangeableModel) super.clone();
-      clone.listeners = new ListenerList<IChangeListener>();
+      clone.listeners = Announcer.to(IChangeListener.class);
       return clone;
     }
     catch (final CloneNotSupportedException e) {
@@ -31,16 +30,16 @@ public abstract class AbstractChangeableModel implements Cloneable, IChangeableM
 
   @Override
   public void addChangeListener(final IChangeListener listener) {
-    listeners.add(listener);
+    listeners.addListener(listener);
   }
 
   @Override
   public void removeChangeListener(final IChangeListener listener) {
-    listeners.remove(listener);
+    listeners.removeListener(listener);
   }
 
   protected void fireChangeEvent() {
-    listeners.forAllDo(NotifyChangeListenerClosure.INSTANCE);
+    listeners.announce().changeOccurred();
   }
 
   protected final Object getMutex() {
