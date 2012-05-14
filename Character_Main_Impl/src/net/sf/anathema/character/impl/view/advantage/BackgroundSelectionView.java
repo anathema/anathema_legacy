@@ -5,7 +5,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 
 import javax.swing.Icon;
 import javax.swing.JPanel;
@@ -49,7 +49,7 @@ public class BackgroundSelectionView<V> extends ButtonControlledComboEditView<V>
   }
 
   @Override
-  public void addEditChangedListener(final IObjectValueChangedListener<String> listener) {
+  public void addEditChangedListener(final ObjectValueListener<String> listener) {
     detailBox.getDocument().addDocumentListener(new DocumentListener() {
       @Override
       public void changedUpdate(DocumentEvent e) {

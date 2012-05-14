@@ -8,7 +8,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
@@ -69,7 +69,7 @@ public class WeaponDamageView implements IWeaponDamageView {
   }
 
   @Override
-  public void addObjectSelectionChangedListener(IObjectValueChangedListener<HealthType> listener) {
+  public void addObjectSelectionChangedListener(ObjectValueListener<HealthType> listener) {
     typeBox.addObjectSelectionChangedListener(listener);
   }
 

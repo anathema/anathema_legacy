@@ -7,7 +7,7 @@ import net.sf.anathema.magic.description.model.MagicDescriptionEditDetailModel;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditModel;
 import net.sf.anathema.magic.description.view.MagicDescriptionEditView;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
 
 public class MagicDescriptionEditPresenter implements MagicDetailPresenter {
@@ -32,7 +32,7 @@ public class MagicDescriptionEditPresenter implements MagicDetailPresenter {
         view.setDescription(model.getCurrentDescription());
       }
     });
-    view.addDescriptionChangeListener(new IObjectValueChangedListener<String>() {
+    view.addDescriptionChangeListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         model.updateCurrentDescription(newValue);

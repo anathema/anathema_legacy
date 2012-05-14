@@ -23,7 +23,7 @@ import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -89,13 +89,13 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
         },
         addIcon);
     setObjects(specialtySelectionView);
-    specialtySelectionView.addSelectionChangedListener(new IObjectValueChangedListener<ITraitReference>() {
+    specialtySelectionView.addSelectionChangedListener(new ObjectValueListener<ITraitReference>() {
       @Override
       public void valueChanged(ITraitReference newValue) {
         specialtyManagement.setCurrentTrait(newValue);
       }
     });
-    specialtySelectionView.addEditChangedListener(new IObjectValueChangedListener<String>() {
+    specialtySelectionView.addEditChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newSpecialtyName) {
         specialtyManagement.setCurrentSpecialtyName(newSpecialtyName);

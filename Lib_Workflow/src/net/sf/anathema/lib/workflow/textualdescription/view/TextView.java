@@ -11,7 +11,7 @@ import javax.swing.text.JTextComponent;
 
 import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.event.AbstractDocumentListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
@@ -34,7 +34,7 @@ public class TextView implements ITextView {
   }
 
   @Override
-  public final void addTextChangedListener(final IObjectValueChangedListener<String> listener) {
+  public final void addTextChangedListener(final ObjectValueListener<String> listener) {
     textComponent.getDocument().addDocumentListener(new AbstractDocumentListener() {
       @Override
       protected void updateText(DocumentEvent e) {

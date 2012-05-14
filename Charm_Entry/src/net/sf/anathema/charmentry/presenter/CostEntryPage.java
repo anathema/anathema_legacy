@@ -8,7 +8,7 @@ import net.sf.anathema.charmentry.presenter.model.ICostEntryModel;
 import net.sf.anathema.charmentry.presenter.view.ICostEntryPageView;
 import net.sf.anathema.charmentry.presenter.view.ICostEntryView;
 import net.sf.anathema.charmentry.properties.CostEntryProperties;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
@@ -54,13 +54,13 @@ public class CostEntryPage extends AbstractAnathemaWizardPage {
         properties.getEssenceLabel(),
         properties.getCostLabel(),
         properties.getTextLabel());
-    essenceView.getValueView().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    essenceView.getValueView().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setEssenceCostValue(newValue);
       }
     });
-    essenceView.getTextView().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    essenceView.getTextView().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setEssenceCostText(newValue);
@@ -70,13 +70,13 @@ public class CostEntryPage extends AbstractAnathemaWizardPage {
         properties.getWillpowerLabel(),
         properties.getCostLabel(),
         properties.getTextLabel());
-    willpowerView.getValueView().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    willpowerView.getValueView().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setWillpowerCostValue(newValue);
       }
     });
-    willpowerView.getTextView().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    willpowerView.getTextView().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setWillpowerCostText(newValue);
@@ -86,13 +86,13 @@ public class CostEntryPage extends AbstractAnathemaWizardPage {
         properties.getHealthLabel(),
         properties.getCostLabel(),
         properties.getTextLabel());
-    healthView.getValueView().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    healthView.getValueView().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setHealthCostValue(newValue);
       }
     });
-    healthView.getTextView().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    healthView.getTextView().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setHealthCostText(newValue);
@@ -102,13 +102,13 @@ public class CostEntryPage extends AbstractAnathemaWizardPage {
         properties.getExperienceLabel(),
         properties.getCostLabel(),
         properties.getTextLabel());
-    experienceView.getValueView().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    experienceView.getValueView().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setXpCostValue(newValue);
       }
     });
-    experienceView.getTextView().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    experienceView.getTextView().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setXpCostText(newValue);

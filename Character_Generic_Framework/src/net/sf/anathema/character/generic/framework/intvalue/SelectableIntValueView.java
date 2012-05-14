@@ -6,7 +6,7 @@ import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.framework.value.NullUpperBounds;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
@@ -25,7 +25,7 @@ public class SelectableIntValueView<V> implements ISelectableIntValueView<V> {
 
   public SelectableIntValueView(IIntValueDisplayFactory configuration, int initial, int max) {
     this.valueDisplay = configuration.createIntValueDisplay(max, initial, new NullUpperBounds());
-    objectSelectionBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<V>() {
+    objectSelectionBox.addObjectSelectionChangedListener(new ObjectValueListener<V>() {
       @Override
       public void valueChanged(V newValue) {
         fireSelectionChangedEvent();

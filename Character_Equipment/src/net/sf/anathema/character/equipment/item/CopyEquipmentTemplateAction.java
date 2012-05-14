@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.item;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.framework.presenter.resources.FileUi;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -18,7 +18,7 @@ public final class CopyEquipmentTemplateAction extends SmartAction {
     super(new FileUi(resources).getDuplicateFileIcon());
     this.resources = resources;
     this.model = model;
-    model.getTemplateEditModel().getDescription().getName().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    model.getTemplateEditModel().getDescription().getName().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         setEnabled(true);

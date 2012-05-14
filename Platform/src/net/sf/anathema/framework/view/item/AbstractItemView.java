@@ -2,7 +2,7 @@ package net.sf.anathema.framework.view.item;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.framework.view.IItemView;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Icon;
@@ -10,7 +10,7 @@ import javax.swing.Icon;
 public abstract class AbstractItemView implements IItemView {
 
   private String name;
-  private final Announcer<IObjectValueChangedListener> control = Announcer.to(IObjectValueChangedListener.class);
+  private final Announcer<ObjectValueListener> control = Announcer.to(ObjectValueListener.class);
   private final Icon icon;
 
   protected AbstractItemView(String name, Icon icon) {
@@ -38,12 +38,12 @@ public abstract class AbstractItemView implements IItemView {
   }
 
   @Override
-  public void addNameChangedListener(IObjectValueChangedListener<String> nameListener) {
+  public void addNameChangedListener(ObjectValueListener<String> nameListener) {
     control.addListener(nameListener);
   }
 
   @Override
-  public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener) {
+  public void removeNameChangedListener(ObjectValueListener<String> nameListener) {
     control.removeListener(nameListener);
   }
 

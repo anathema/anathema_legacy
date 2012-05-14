@@ -14,7 +14,7 @@ import net.sf.anathema.charmentry.view.ISourceSelectionView;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
@@ -64,7 +64,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
 
   private void initNameView() {
     ITextView nameView = view.addLineTextRow(properties.getCharmNameLabel());
-    nameView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+    nameView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().getName().setText(newValue);
@@ -75,7 +75,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
   private void initTypeView(final IdentificateSelectCellRenderer renderer) {
     IObjectSelectionView<ICharacterType> typeView = view.addComboBoxRow(properties.getCharacterTypeLabel(), renderer,
             getPageModel().getCharacterTypes());
-    typeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ICharacterType>() {
+    typeView.addObjectSelectionChangedListener(new ObjectValueListener<ICharacterType>() {
       @Override
       public void valueChanged(ICharacterType newValue) {
         getPageModel().setCharacterType(newValue);
@@ -88,7 +88,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     final ISourceSelectionView sourceView = view.addSourceView(properties.getBookLabel(), properties.getPageLabel(),
             sourceModel.getLegalSources(),
             new IdentificateSelectCellRenderer("ExaltedSourceBook.", resources));//$NON-NLS-1$
-    sourceView.addSourceChangeListener(new IObjectValueChangedListener<IExaltedSourceBook>() {
+    sourceView.addSourceChangeListener(new ObjectValueListener<IExaltedSourceBook>() {
       @Override
       public void valueChanged(IExaltedSourceBook newValue) {
         sourceModel.setSourceBook(newValue);

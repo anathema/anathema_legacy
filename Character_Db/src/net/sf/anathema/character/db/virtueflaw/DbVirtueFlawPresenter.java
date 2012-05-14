@@ -7,7 +7,7 @@ import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.character.library.virtueflaw.presenter.VirtueFlawPresenter;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
@@ -23,7 +23,7 @@ public class DbVirtueFlawPresenter extends VirtueFlawPresenter {
     return new ITextView() {
       
       @Override
-      public void addTextChangedListener(IObjectValueChangedListener<String> listener) {
+      public void addTextChangedListener(ObjectValueListener<String> listener) {
         //nothing to do;
       }
 

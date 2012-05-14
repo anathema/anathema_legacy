@@ -11,7 +11,7 @@ import net.sf.anathema.charmentry.presenter.model.IDurationEntryModel;
 import net.sf.anathema.charmentry.presenter.view.IDurationEntryView;
 import net.sf.anathema.charmentry.properties.DurationPageProperties;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
@@ -60,14 +60,14 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
     this.view = viewFactory.createDurationView();
     final JRadioButton instantButton = view.addRadioButton(properties.getInstantString());
     final ITextView simpleDurationView = view.addRadioButtonTextField(properties.getSimpleDurationString());
-    simpleDurationView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+    simpleDurationView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setSimpleDuration(newValue);
       }
     });
     final ITextView untilView = view.addRadioButtonTextField(properties.getUntilString());
-    untilView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+    untilView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setUntilDuration(newValue);

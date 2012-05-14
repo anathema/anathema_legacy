@@ -26,7 +26,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
@@ -108,14 +108,14 @@ public class GhostPassionsPresenter implements Presenter {
         },
         addIcon);
     setSelectionObjects();
-    passionSelectionView.addSelectionChangedListener(new IObjectValueChangedListener<ITraitReference>() {
+    passionSelectionView.addSelectionChangedListener(new ObjectValueListener<ITraitReference>() {
       @Override
       public void valueChanged(ITraitReference newValue) {
         model.setCurrentTrait(newValue);
         updateOverviewData();
       }
     });
-    passionSelectionView.addEditChangedListener(new IObjectValueChangedListener<String>() {
+    passionSelectionView.addEditChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newPassionName) {
         model.setCurrentPassionName(newPassionName);

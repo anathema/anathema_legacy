@@ -18,7 +18,7 @@ import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -96,7 +96,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
         spellConfiguration.addSpells(spellList.toArray(new ISpell[spellList.size()]));
       }
     });
-    view.addCircleSelectionListener(new IObjectValueChangedListener<CircleType>() {
+    view.addCircleSelectionListener(new ObjectValueListener<CircleType>() {
       @Override
       public void valueChanged(CircleType circleType) {
         circle = circleType;

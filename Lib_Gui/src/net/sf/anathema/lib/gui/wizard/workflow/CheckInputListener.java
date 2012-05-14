@@ -3,12 +3,11 @@ package net.sf.anathema.lib.gui.wizard.workflow;
 import net.disy.commons.core.util.SimpleBlock;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 
 public class CheckInputListener implements
     IChangeListener,
-    IBooleanValueChangedListener,
-    IObjectValueChangedListener<String> {
+    IBooleanValueChangedListener, ObjectValueListener<String> {
 
   private final SimpleBlock executionBlock;
 

@@ -14,7 +14,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
@@ -60,7 +60,7 @@ public class GhostFettersPresenter implements Presenter {
 
     Icon addIcon = new BasicUi(resources).getAddIcon();
     fetterSelectionView = view.addFetterSelectionView(resources.getString("View.SelectionCombo.Label"), addIcon);
-    fetterSelectionView.addEditChangedListener(new IObjectValueChangedListener<String>() {
+    fetterSelectionView.addEditChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newFetterName) {
         model.setCurrentFetterName(newFetterName);

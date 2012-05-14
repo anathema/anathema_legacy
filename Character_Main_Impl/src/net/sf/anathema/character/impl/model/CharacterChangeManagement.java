@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.repository.IChangeManagement;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import org.jmock.example.announcer.Announcer;
 
 public class CharacterChangeManagement implements IChangeManagement {
@@ -32,7 +32,7 @@ public class CharacterChangeManagement implements IChangeManagement {
       setDirty();
     }
   };
-  private final IObjectValueChangedListener<String> textListener = new IObjectValueChangedListener<String>() {
+  private final ObjectValueListener<String> textListener = new ObjectValueListener<String>() {
     @Override
     public void valueChanged(String newValue) {
       setDirty();
@@ -43,7 +43,7 @@ public class CharacterChangeManagement implements IChangeManagement {
     return listener;
   }
 
-  public IObjectValueChangedListener<String> getDescriptionChangeListener() {
+  public ObjectValueListener<String> getDescriptionChangeListener() {
     return textListener;
   }
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.view;
 
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -23,12 +23,12 @@ public class NullItemView implements IItemView {
   }
 
   @Override
-  public void addNameChangedListener(IObjectValueChangedListener<String> nameListener) {
+  public void addNameChangedListener(ObjectValueListener<String> nameListener) {
     //nothing to do
   }
 
   @Override
-  public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener) {
+  public void removeNameChangedListener(ObjectValueListener<String> nameListener) {
     //nothing to do
   }
 

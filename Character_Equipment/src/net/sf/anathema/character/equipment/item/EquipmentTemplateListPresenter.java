@@ -6,14 +6,14 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManageme
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentTemplateListPresenter implements Presenter {
 
-  private final class EquipmentTemplateLoadListener implements IObjectValueChangedListener<String> {
+  private final class EquipmentTemplateLoadListener implements ObjectValueListener<String> {
     @Override
     public void valueChanged(String newValue) {
       if (newValue == null) {

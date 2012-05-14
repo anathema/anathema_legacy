@@ -1,6 +1,6 @@
 package net.sf.anathema.character.model.advance;
 
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IExperiencePointEntry {
@@ -11,7 +11,7 @@ public interface IExperiencePointEntry {
 
   public ITextualDescription getTextualDescription();
 
-  public void addChangeListener(IObjectValueChangedListener<IExperiencePointEntry> entryChangeListener);
+  public void addChangeListener(ObjectValueListener<IExperiencePointEntry> entryChangeListener);
 
-  public void removeChangeListener(IObjectValueChangedListener<IExperiencePointEntry> entryChangeListener);
+  public void removeChangeListener(ObjectValueListener<IExperiencePointEntry> entryChangeListener);
 }

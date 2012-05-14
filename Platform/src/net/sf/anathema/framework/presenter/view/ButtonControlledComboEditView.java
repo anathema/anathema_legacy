@@ -16,7 +16,7 @@ import javax.swing.event.DocumentListener;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
@@ -54,7 +54,7 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   }
 
   @Override
-  public void addEditChangedListener(final IObjectValueChangedListener<String> listener) {
+  public void addEditChangedListener(final ObjectValueListener<String> listener) {
     text.getDocument().addDocumentListener(new DocumentListener() {
       @Override
       public void changedUpdate(DocumentEvent e) {
@@ -79,7 +79,7 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   }
 
   @Override
-  public void addSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
+  public void addSelectionChangedListener(final ObjectValueListener<V> listener) {
     comboBox.addObjectSelectionChangedListener(listener);
   }
 
@@ -89,7 +89,7 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   }
   
   @Override
-  public void addButtonListener(final IObjectValueChangedListener<V> listener) {
+  public void addButtonListener(final ObjectValueListener<V> listener) {
 	    addButton.addActionListener(new ActionListener() {
 	      @Override
           public void actionPerformed(ActionEvent e) {

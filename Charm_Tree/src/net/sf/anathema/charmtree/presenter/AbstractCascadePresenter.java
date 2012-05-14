@@ -12,7 +12,7 @@ import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -58,7 +58,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   private void initCharmTypeSelectionListening() {
-    view.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
+    view.addCharmTypeSelectionListener(new ObjectValueListener<IIdentificate>() {
       @Override
       public void valueChanged(IIdentificate cascadeType) {
         currentType = cascadeType;

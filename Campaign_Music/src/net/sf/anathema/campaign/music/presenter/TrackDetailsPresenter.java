@@ -6,7 +6,7 @@ import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.SelectionContainerPresenter;
@@ -34,7 +34,7 @@ public class TrackDetailsPresenter implements Presenter {
         updateTrackInfo(trackDetailModel.getSelectedTrack());
       }
     });
-    trackDetailsView.getGivenNameView().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    trackDetailsView.getGivenNameView().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         trackDetailModel.updateGivenName(newValue);

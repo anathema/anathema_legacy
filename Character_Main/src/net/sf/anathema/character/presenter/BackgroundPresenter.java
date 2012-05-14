@@ -15,7 +15,7 @@ import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.lib.collection.IdentityMapping;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -78,14 +78,14 @@ public class BackgroundPresenter implements Presenter {
             new BackgroundListRenderer(displayer),
             new BackgroundBoxEditor(displayer),
             addIcon);
-    view.addEditChangedListener(new IObjectValueChangedListener<String>() {
+    view.addEditChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newBackgroundDescription) {
         backgroundDescription = newBackgroundDescription;
       }
     });
     view.setObjects(getSortedBackgrounds());
-    view.addButtonListener(new IObjectValueChangedListener<Object>() {
+    view.addButtonListener(new ObjectValueListener<Object>() {
       @Override
       public void valueChanged(Object newValue) {
         IBackgroundTemplate backgroundType = getBackgroundType(newValue);

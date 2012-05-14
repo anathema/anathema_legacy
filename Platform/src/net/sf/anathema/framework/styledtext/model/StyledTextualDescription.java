@@ -2,7 +2,7 @@ package net.sf.anathema.framework.styledtext.model;
 
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;
 import net.sf.anathema.framework.styledtext.presentation.TextPart;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.model.AbstractTextualDescription;
 import org.jmock.example.announcer.Announcer;
 
@@ -14,7 +14,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
 
   private final Announcer<IStyledTextChangeListener> textListeners = Announcer.to(IStyledTextChangeListener.class);
   private ITextPart[] textParts = new ITextPart[0];
-  private final Map<IObjectValueChangedListener<String>, IStyledTextChangeListener> listenerMap = new HashMap<IObjectValueChangedListener<String>, IStyledTextChangeListener>();
+  private final Map<ObjectValueListener<String>, IStyledTextChangeListener> listenerMap = new HashMap<ObjectValueListener<String>, IStyledTextChangeListener>();
 
   @Override
   public void setText(ITextPart[] textParts) {
@@ -61,7 +61,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
   }
 
   @Override
-  public void addTextChangedListener(final IObjectValueChangedListener<String> listener) {
+  public void addTextChangedListener(final ObjectValueListener<String> listener) {
     IStyledTextChangeListener styledListener = new IStyledTextChangeListener() {
       @Override
       public void textChanged(ITextPart[] newParts) {
@@ -73,7 +73,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
   }
 
   @Override
-  public void removeTextChangeListener(IObjectValueChangedListener<String> listener) {
+  public void removeTextChangeListener(ObjectValueListener<String> listener) {
     removeTextChangedListener(listenerMap.get(listener));
   }
 

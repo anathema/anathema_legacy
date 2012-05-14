@@ -19,7 +19,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -125,7 +125,7 @@ private void initEntryPresentation() {
         renderer,
         addIcon);
     selectionView.setObjects(model.getPredefinedLanguages());
-    selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<Object>() {
+    selectionView.addObjectSelectionChangedListener(new ObjectValueListener<Object>() {
       @Override
       public void valueChanged(Object newValue) {
         if (newValue == null) {
@@ -140,7 +140,7 @@ private void initEntryPresentation() {
         }
       }
     });
-    selectionView.addButtonListener(new IObjectValueChangedListener<Object>() {
+    selectionView.addButtonListener(new ObjectValueListener<Object>() {
       @Override
       public void valueChanged(Object newValue) {
         if (!model.isEntryAllowed()) {

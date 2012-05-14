@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ISourceEntryModel;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import org.jmock.example.announcer.Announcer;
@@ -22,7 +22,7 @@ public class HeaderDataModel implements IHeaderDataModel {
   public HeaderDataModel(final IConfigurableCharmData charmData) {
     this.charmData = charmData;
     this.sourceModel = new SourceEntryModel(charmData);
-    charmData.getName().addTextChangedListener(new IObjectValueChangedListener<String>() {
+    charmData.getName().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         final ICharacterType type = charmData.getCharacterType();

@@ -12,7 +12,7 @@ import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
@@ -183,7 +183,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
   @Override
   public ITextView addComboNameView(String viewTitle) {
     ITextView textView = new LineTextView(TEXT_COLUMNS);
-    textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+    textView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         isNameEntered = newValue != null && !newValue.equals(""); //$NON-NLS-1$
@@ -216,7 +216,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
   @Override
   public ITextView addComboDescriptionView(String viewTitle) {
     ITextView textView = new AreaTextView(5, TEXT_COLUMNS);
-    textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+    textView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         isDescriptionEntered = newValue != null && !newValue.equals(""); //$NON-NLS-1$

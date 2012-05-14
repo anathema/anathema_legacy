@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.presenter.magic.spells.SpellViewProperties;
 import net.sf.anathema.character.view.magic.ISpellView;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledStringValueView;
@@ -34,7 +34,7 @@ public class SpellView implements ISpellView {
   private MagicLearnView magicLearnView;
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
-  private final Announcer<IObjectValueChangedListener> circleControl = Announcer.to(IObjectValueChangedListener.class);
+  private final Announcer<ObjectValueListener> circleControl = Announcer.to(ObjectValueListener.class);
   private final JPanel detailPanel = new JPanel(new GridDialogLayout(2, false));
 
   private final SpellViewProperties properties;
@@ -119,7 +119,7 @@ public class SpellView implements ISpellView {
   }
 
   @Override
-  public void addCircleSelectionListener(IObjectValueChangedListener<CircleType> listener) {
+  public void addCircleSelectionListener(ObjectValueListener<CircleType> listener) {
     circleControl.addListener(listener);
   }
 

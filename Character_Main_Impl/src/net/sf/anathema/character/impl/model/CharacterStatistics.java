@@ -32,7 +32,7 @@ import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 
 public class CharacterStatistics implements ICharacterStatistics {
 
@@ -46,7 +46,7 @@ public class CharacterStatistics implements ICharacterStatistics {
   private final IHealthConfiguration health;
   private final IExperiencePointConfiguration experiencePoints = new ExperiencePointConfiguration();
   private boolean experienced = false;
-  private final IObjectValueChangedListener<String> motivationChangeListener = new IObjectValueChangedListener<String>() {
+  private final ObjectValueListener<String> motivationChangeListener = new ObjectValueListener<String>() {
     @Override
     public void valueChanged(String newValue) {
       context.getCharacterListening().fireCharacterChanged();

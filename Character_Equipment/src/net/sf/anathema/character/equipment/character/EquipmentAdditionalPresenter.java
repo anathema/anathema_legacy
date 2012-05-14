@@ -18,7 +18,7 @@ import net.sf.anathema.character.equipment.item.personalization.EquipmentPersona
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ICollectionListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
@@ -89,7 +89,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     setObjects(equipmentTemplatePickList);
     view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList, magicMaterialView));
     view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
-    equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
+    equipmentTemplatePickList.addObjectSelectionChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String templateId) {
         MaterialComposition composition = templateId == null ? MaterialComposition.None : model.getMaterialComposition(
@@ -143,7 +143,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
       }
     };
     addAction.setToolTipText(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip")); //$NON-NLS-1$
-    equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
+    equipmentTemplatePickList.addObjectSelectionChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         addAction.setEnabled(equipmentTemplatePickList.isObjectSelected());

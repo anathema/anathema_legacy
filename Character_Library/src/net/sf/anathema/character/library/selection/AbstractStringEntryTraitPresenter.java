@@ -9,7 +9,7 @@ import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 
 public abstract class AbstractStringEntryTraitPresenter<V> {
 
@@ -59,7 +59,7 @@ public abstract class AbstractStringEntryTraitPresenter<V> {
   protected abstract IRemovableTraitView< ? > createSubView(BasicUi basicUi, V v);
 
   protected final void initSelectionViewListening(IStringSelectionView selectionView) {
-    selectionView.addTextChangeListener(new IObjectValueChangedListener<String>() {
+    selectionView.addTextChangeListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         model.setCurrentName(newValue);

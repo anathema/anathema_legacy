@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.widgets;
 
 import net.sf.anathema.lib.UnselectingComboBoxModel;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComboBox;
@@ -13,7 +13,7 @@ import java.awt.event.ItemListener;
 public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
 
   private final JComboBox comboBox;
-  private final Announcer<IObjectValueChangedListener> control = Announcer.to(IObjectValueChangedListener.class);
+  private final Announcer<ObjectValueListener> control = Announcer.to(ObjectValueListener.class);
 
   public ChangeableJComboBox(boolean editable) {
     this(new UnselectingComboBoxModel(), editable);
@@ -61,12 +61,12 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
   }
 
   @Override
-  public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
+  public void addObjectSelectionChangedListener(final ObjectValueListener<V> listener) {
     control.addListener(listener);
   }
 
   @Override
-  public void removeObjectSelectionChangeListener(IObjectValueChangedListener<V> listener) {
+  public void removeObjectSelectionChangeListener(ObjectValueListener<V> listener) {
     control.addListener(listener);
   }
 

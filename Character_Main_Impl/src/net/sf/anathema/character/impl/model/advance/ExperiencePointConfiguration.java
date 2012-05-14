@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.advance;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -13,7 +13,8 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
 
   private final List<IExperiencePointEntry> entries = new ArrayList<IExperiencePointEntry>();
   private final Announcer<IExperiencePointConfigurationListener> control = Announcer.to(IExperiencePointConfigurationListener.class);
-  private final IObjectValueChangedListener<IExperiencePointEntry> entryChangeListener = new IObjectValueChangedListener<IExperiencePointEntry>() {
+  private final ObjectValueListener<IExperiencePointEntry>
+          entryChangeListener = new ObjectValueListener<IExperiencePointEntry>() {
     @Override
     public void valueChanged(IExperiencePointEntry entry) {
       fireEntryChangedEvent(entry);

@@ -12,7 +12,7 @@ import javax.swing.event.DocumentListener;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
 
 public class ButtonControlledEditView implements IView {
@@ -34,7 +34,7 @@ public class ButtonControlledEditView implements IView {
     return panel;
   }
 
-  public void addEditChangedListener(final IObjectValueChangedListener<String> listener) {
+  public void addEditChangedListener(final ObjectValueListener<String> listener) {
     text.getDocument().addDocumentListener(new DocumentListener() {
       @Override
       public void changedUpdate(DocumentEvent e) {

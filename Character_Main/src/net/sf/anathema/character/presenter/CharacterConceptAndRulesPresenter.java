@@ -22,7 +22,7 @@ import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.IResources;
@@ -199,7 +199,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
             resources.getString(casteLabelResourceKey), allCasteTypes, new ObjectUiListCellRenderer(casteUi), false);
     final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
     casteView.setSelectedObject(caste.getType());
-    casteView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ICasteType>() {
+    casteView.addObjectSelectionChangedListener(new ObjectValueListener<ICasteType>() {
       @Override
       public void valueChanged(ICasteType newValue) {
         caste.setType(newValue);

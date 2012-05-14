@@ -3,13 +3,13 @@ package net.sf.anathema.character.impl.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public class ProxyTextualDescription implements ITextualDescription {
 
   private final ITextualDescription[] descriptions;
-  private final List<IObjectValueChangedListener<String>> listeners = new ArrayList<IObjectValueChangedListener<String>>();
+  private final List<ObjectValueListener<String>> listeners = new ArrayList<ObjectValueListener<String>>();
   private int currentDescriptionIndex = 0;
 
   public ProxyTextualDescription(ITextualDescription... descriptions) {
@@ -18,24 +18,24 @@ public class ProxyTextualDescription implements ITextualDescription {
 
   public void setCurrentDescription(int index) {
     ITextualDescription old = getCurrent();
-    for (IObjectValueChangedListener<String> listener : listeners) {
+    for (ObjectValueListener<String> listener : listeners) {
       old.removeTextChangeListener(listener);
     }
     this.currentDescriptionIndex = index;
     ITextualDescription newDescription = getCurrent();
-    for (IObjectValueChangedListener<String> listener : listeners) {
+    for (ObjectValueListener<String> listener : listeners) {
       newDescription.addTextChangedListener(listener);
     }
   }
 
   @Override
-  public void addTextChangedListener(IObjectValueChangedListener<String> listener) {
+  public void addTextChangedListener(ObjectValueListener<String> listener) {
     listeners.add(listener);
     getCurrent().addTextChangedListener(listener);
   }
 
   @Override
-  public void removeTextChangeListener(IObjectValueChangedListener<String> listener) {
+  public void removeTextChangeListener(ObjectValueListener<String> listener) {
     listeners.remove(listener);
     getCurrent().removeTextChangeListener(listener);
   }

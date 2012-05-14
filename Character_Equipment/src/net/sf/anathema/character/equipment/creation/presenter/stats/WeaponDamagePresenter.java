@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.W
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.IResources;
@@ -37,7 +37,7 @@ public class WeaponDamagePresenter implements Presenter {
         updateHealthTypeInView();
       }
     });
-    view.addObjectSelectionChangedListener(new IObjectValueChangedListener<HealthType>() {
+    view.addObjectSelectionChangedListener(new ObjectValueListener<HealthType>() {
       @Override
       public void valueChanged(HealthType newValue) {
         model.setHealthType(newValue);

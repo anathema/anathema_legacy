@@ -3,7 +3,7 @@ package net.sf.anathema.framework.itemdata.model;
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.StyledTextualDescription;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;
@@ -20,7 +20,7 @@ public class ItemDescription implements IItemDescription {
 
   public ItemDescription(String initialName) {
     this.name = new SimpleTextualDescription(initialName);
-    IObjectValueChangedListener<String> listener = new IObjectValueChangedListener<String>() {
+    ObjectValueListener<String> listener = new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         control.announce().changeOccurred();

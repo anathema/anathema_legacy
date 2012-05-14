@@ -15,7 +15,7 @@ import net.sf.anathema.charmentry.properties.DurationPageProperties;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
@@ -88,7 +88,7 @@ public class QualifiedAmountDurationPage extends AbstractAnathemaWizardPage {
         OtherTraitType.values());
     initComboBoxListening(otherBox);
     final ITextView textView = view.addTextView();
-    textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+    textView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         getPageModel().setTextForAmountDuration(newValue);
@@ -111,7 +111,7 @@ public class QualifiedAmountDurationPage extends AbstractAnathemaWizardPage {
   }
 
   private void initComboBoxListening(ObjectSelectionView<ITraitType> selectionView) {
-    selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ITraitType>() {
+    selectionView.addObjectSelectionChangedListener(new ObjectValueListener<ITraitType>() {
       @Override
       public void valueChanged(ITraitType newValue) {
         getPageModel().setTraitForAmountDuration(newValue);

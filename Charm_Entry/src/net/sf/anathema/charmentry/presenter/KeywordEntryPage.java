@@ -17,7 +17,7 @@ import net.sf.anathema.charmentry.presenter.view.IKeywordView;
 import net.sf.anathema.charmentry.properties.IKeywordEntryPageProperties;
 import net.sf.anathema.charmentry.properties.KeywordEntryPageProperties;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.resources.IResources;
@@ -55,13 +55,13 @@ public class KeywordEntryPage extends AbstractAnathemaWizardPage {
         properties.getKeywordLabel(),
         properties.getAddIcon());
     selectionView.setObjects(getPageModel().getAvailableKeywords());
-    selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
+    selectionView.addObjectSelectionChangedListener(new ObjectValueListener<IIdentificate>() {
       @Override
       public void valueChanged(IIdentificate newValue) {
         getPageModel().setCurrentKeyword(newValue);
       }
     });
-    selectionView.addButtonListener(new IObjectValueChangedListener<IIdentificate>() {
+    selectionView.addButtonListener(new ObjectValueListener<IIdentificate>() {
       @Override
       public void valueChanged(IIdentificate newValue) {
         getPageModel().commitSelection();

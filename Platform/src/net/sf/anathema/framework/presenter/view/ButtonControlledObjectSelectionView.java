@@ -18,7 +18,7 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.core.util.StringUtilities;
 import net.disy.commons.swing.events.AbstractDocumentChangeListener;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
 
 public class ButtonControlledObjectSelectionView<V> implements IButtonControlledObjectSelectionView<V> {
@@ -56,7 +56,7 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
   }
 
   @Override
-  public void addButtonListener(final IObjectValueChangedListener<V> listener) {
+  public void addButtonListener(final ObjectValueListener<V> listener) {
     addButton.addActionListener(new ActionListener() {
       @Override
       @SuppressWarnings("unchecked")
@@ -74,7 +74,7 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
   }
 
   @Override
-  public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
+  public void addObjectSelectionChangedListener(final ObjectValueListener<V> listener) {
     comboBox.addItemListener(new ItemListener() {
       @Override
       @SuppressWarnings("unchecked")

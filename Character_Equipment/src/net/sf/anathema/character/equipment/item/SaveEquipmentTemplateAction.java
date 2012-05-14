@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditMode
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public final class SaveEquipmentTemplateAction extends SmartAction {
@@ -21,7 +21,7 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
       updateEnabled();
     }
   };
-  private final IObjectValueChangedListener<String> stringChangeListener = new IObjectValueChangedListener<String>() {
+  private final ObjectValueListener<String> stringChangeListener = new ObjectValueListener<String>() {
     @Override
     public void valueChanged(String newValue) {
       updateEnabled();

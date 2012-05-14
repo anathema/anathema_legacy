@@ -7,7 +7,7 @@ import net.sf.anathema.charmtree.presenter.view.CharmTreeRenderer;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
 import net.sf.anathema.charmtree.presenter.view.SvgCharmTreeRenderer;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -59,7 +59,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   @Override
-  public void addCharmTypeSelectionListener(final IObjectValueChangedListener<IIdentificate> selectionListener) {
+  public void addCharmTypeSelectionListener(final ObjectValueListener<IIdentificate> selectionListener) {
     typeComboBox.addObjectSelectionChangedListener(selectionListener);
   }
 
@@ -75,7 +75,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     groupComboBox.setSelectedObject(null);
     groupComboBox.setRenderer(renderer);
     groupComboBox.setPreferredSize(preferredSize);
-    groupComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
+    groupComboBox.addObjectSelectionChangedListener(new ObjectValueListener<IIdentificate>() {
       @Override
       public void valueChanged(IIdentificate newValue) {
         selectionListener.valueChanged(groupComboBox.getSelectedObject(), typeComboBox.getSelectedObject());

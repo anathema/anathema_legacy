@@ -23,7 +23,7 @@ import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.IStyledTextManager;
 import net.sf.anathema.framework.styledtext.presentation.StyledTextManager;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -181,7 +181,7 @@ public class PlotPresenter implements Presenter {
   private void initDescriptionViewPresentation(IBasicItemDescriptionView descriptionView) {
     itemNameView = descriptionView.addLineTextView(resources.getString("SeriesPlot.ElementName.Label") + ":"); //$NON-NLS-1$//$NON-NLS-2$
     itemNameView.setEnabled(false);
-    itemNameView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+    itemNameView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         if (selectedNode == null) {

@@ -44,7 +44,7 @@ public class InfernalUrgePresenter extends VirtueFlawPresenter
     final ITextView descriptionView = view.addTextView(resources.getString("InfernalUrge.Title"), 30, 2); //$NON-NLS-1$
     presentation.initView(descriptionView, new SimpleTextualDescription(model.getUrge()));
     
-    descriptionView.addTextChangedListener(new IObjectValueChangedListener<String>()
+    descriptionView.addTextChangedListener(new ObjectValueListener<String>()
     		{
 				@Override
 				public void valueChanged(String newValue)

@@ -1,19 +1,19 @@
 package net.sf.anathema.character.impl.model.advance;
 
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 import org.jmock.example.announcer.Announcer;
 
 public class ExperiencePointEntry implements IExperiencePointEntry {
 
-  private final Announcer<IObjectValueChangedListener> changeControl = Announcer.to(IObjectValueChangedListener.class);
+  private final Announcer<ObjectValueListener> changeControl = Announcer.to(ObjectValueListener.class);
   private final ITextualDescription description = new SimpleTextualDescription();
   private int experiencePoints = 0;
 
   public ExperiencePointEntry() {
-    description.addTextChangedListener(new IObjectValueChangedListener<String>() {
+    description.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
         fireChangeEvent();
@@ -45,12 +45,12 @@ public class ExperiencePointEntry implements IExperiencePointEntry {
   }
 
   @Override
-  public void addChangeListener(IObjectValueChangedListener<IExperiencePointEntry> listener) {
+  public void addChangeListener(ObjectValueListener<IExperiencePointEntry> listener) {
     changeControl.addListener(listener);
   }
 
   @Override
-  public void removeChangeListener(IObjectValueChangedListener<IExperiencePointEntry> listener) {
+  public void removeChangeListener(ObjectValueListener<IExperiencePointEntry> listener) {
     changeControl.removeListener(listener);
   }
 }

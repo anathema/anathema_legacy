@@ -1,6 +1,6 @@
 package net.sf.anathema.magic.description.view;
 
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.TextView;
@@ -27,7 +27,7 @@ public class MagicDescriptionEditView implements IView {
     descriptionView.setText(description);
   }
 
-  public void addDescriptionChangeListener(IObjectValueChangedListener<String> listener) {
+  public void addDescriptionChangeListener(ObjectValueListener<String> listener) {
     descriptionView.addTextChangedListener(listener);
   }
 }

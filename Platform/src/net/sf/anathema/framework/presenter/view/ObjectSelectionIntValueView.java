@@ -4,7 +4,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.lang.ArrayUtilities;
@@ -33,7 +33,7 @@ public class ObjectSelectionIntValueView implements IIntValueDisplay {
 
   @Override
   public void addIntValueChangedListener(final IIntValueChangedListener listener) {
-    IObjectValueChangedListener<Integer> changeListener = new IObjectValueChangedListener<Integer>() {
+    ObjectValueListener<Integer> changeListener = new ObjectValueListener<Integer>() {
       @Override
       public void valueChanged(Integer newValue) {
         listener.valueChanged(newValue);

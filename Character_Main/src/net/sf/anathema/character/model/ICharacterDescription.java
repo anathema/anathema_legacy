@@ -1,6 +1,6 @@
 package net.sf.anathema.character.model;
 
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface ICharacterDescription {
@@ -29,5 +29,5 @@ public interface ICharacterDescription {
 
   public ITextualDescription getConcept();
   
-  public void addOverallChangeListener(IObjectValueChangedListener<String> listener);
+  public void addOverallChangeListener(ObjectValueListener<String> listener);
 }

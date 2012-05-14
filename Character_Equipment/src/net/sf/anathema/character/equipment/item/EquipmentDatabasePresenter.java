@@ -18,7 +18,7 @@ import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
@@ -117,7 +117,7 @@ public class EquipmentDatabasePresenter implements Presenter {
           return 4;
         }
       });
-    compositionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<MaterialComposition>() {
+    compositionView.addObjectSelectionChangedListener(new ObjectValueListener<MaterialComposition>() {
       @Override
       public void valueChanged(MaterialComposition newValue) {
         model.getTemplateEditModel().setMaterialComposition(newValue);
@@ -131,7 +131,7 @@ public class EquipmentDatabasePresenter implements Presenter {
         materialView.setEnabled(materialComposition.requiresMaterial());
       }
     });
-    materialView.addObjectSelectionChangedListener(new IObjectValueChangedListener<MagicalMaterial>() {
+    materialView.addObjectSelectionChangedListener(new ObjectValueListener<MagicalMaterial>() {
       @Override
       public void valueChanged(MagicalMaterial newValue) {
         model.getTemplateEditModel().setMagicalMaterial(newValue);

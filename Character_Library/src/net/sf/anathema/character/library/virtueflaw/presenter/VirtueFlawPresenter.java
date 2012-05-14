@@ -11,7 +11,7 @@ import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
@@ -93,7 +93,7 @@ public class VirtueFlawPresenter implements Presenter {
         rootView.setSelectedObject(virtueFlaw.getRoot());
       }
     });
-    rootView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ITraitType>() {
+    rootView.addObjectSelectionChangedListener(new ObjectValueListener<ITraitType>() {
       @Override
       public void valueChanged(ITraitType newValue) {
         virtueFlaw.setRoot(newValue);

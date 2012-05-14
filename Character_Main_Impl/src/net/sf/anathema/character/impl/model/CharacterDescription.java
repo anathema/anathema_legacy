@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.model.ICharacterDescription;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
@@ -98,7 +98,7 @@ public class CharacterDescription implements ICharacterDescription {
   }
 
   @Override
-  public void addOverallChangeListener(IObjectValueChangedListener<String> listener) {
+  public void addOverallChangeListener(ObjectValueListener<String> listener) {
     for (ITextualDescription description : getAllDescriptions()) {
       description.addTextChangedListener(listener);
     }

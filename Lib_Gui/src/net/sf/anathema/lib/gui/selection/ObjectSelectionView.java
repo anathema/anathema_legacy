@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 
@@ -59,7 +59,7 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V> {
   }
 
   @Override
-  public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
+  public void addObjectSelectionChangedListener(final ObjectValueListener<V> listener) {
     comboBox.addObjectSelectionChangedListener(listener);
   }
 

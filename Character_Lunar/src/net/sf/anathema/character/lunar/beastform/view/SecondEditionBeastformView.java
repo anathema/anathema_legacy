@@ -8,7 +8,7 @@ import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
 import net.sf.anathema.character.mutations.view.IMutationsView;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 import javax.swing.BorderFactory;
@@ -76,7 +76,7 @@ public class SecondEditionBeastformView implements IBeastformView {
     return traitView;
   }
 
-  public void setSpiritListener(IObjectValueChangedListener<String> listener) {
+  public void setSpiritListener(ObjectValueListener<String> listener) {
     spiritNameBox.addTextChangedListener(listener);
   }
 

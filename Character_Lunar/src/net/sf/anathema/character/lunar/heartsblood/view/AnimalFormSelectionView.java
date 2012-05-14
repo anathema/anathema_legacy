@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.control.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -96,7 +96,7 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
   }
 
   @Override
-  public void addNameListener(IObjectValueChangedListener<String> listener) {
+  public void addNameListener(ObjectValueListener<String> listener) {
     textField.addTextChangedListener(listener);
   }
 
