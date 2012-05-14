@@ -1,4 +1,5 @@
 dependencies {
+  compile 'com.miglayout:miglayout-swing:4.2'
   compile 'net.disy.commons:disy-commons-swing-layout:5.0.0-SNAPSHOT'
   compile 'net.disy.commons:disy-commons-swing-dialog:5.0.0-SNAPSHOT'
   compile project(':Lib')
