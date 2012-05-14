@@ -1,14 +1,14 @@
 package net.sf.anathema.campaign.music.impl.model.tracks;
 
+import net.sf.anathema.campaign.music.model.track.Md5Checksum;
+import org.apache.commons.io.IOUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import net.disy.commons.core.io.IOUtilities;
-import net.sf.anathema.campaign.music.model.track.Md5Checksum;
 
 public class Mp3ChecksumCalculator {
 
@@ -88,7 +88,7 @@ public class Mp3ChecksumCalculator {
       return bytes;
     }
     finally {
-      IOUtilities.close(stream);
+      IOUtils.closeQuietly(stream);
     }
   }
 }

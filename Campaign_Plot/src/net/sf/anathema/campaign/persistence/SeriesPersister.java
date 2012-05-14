@@ -1,17 +1,5 @@
 package net.sf.anathema.campaign.persistence;
 
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.ATTRIB_REPOSITORY_ID;
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.ATTRIB_REPOSITORY_PRINT_NAME;
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_NAME;
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_PLOT;
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_SERIES_ROOT;
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_SUMMARY;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-
-import net.disy.commons.core.io.IOUtilities;
 import net.sf.anathema.campaign.concrete.Series;
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
@@ -31,12 +19,23 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
+import org.apache.commons.io.IOUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.ATTRIB_REPOSITORY_ID;
+import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.ATTRIB_REPOSITORY_PRINT_NAME;
+import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_NAME;
+import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_PLOT;
+import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_SERIES_ROOT;
+import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_SUMMARY;
 
 public class SeriesPersister implements IRepositoryItemPersister {
 
@@ -126,7 +125,7 @@ public class SeriesPersister implements IRepositoryItemPersister {
       throw new PersistenceException(e);
     }
     finally {
-      IOUtilities.close(stream);
+      IOUtils.closeQuietly(stream);
     }
   }
 
@@ -182,7 +181,7 @@ public class SeriesPersister implements IRepositoryItemPersister {
       throw new PersistenceException(e);
     }
     finally {
-      IOUtilities.close(stream);
+      IOUtils.closeQuietly(stream);
     }
   }
 

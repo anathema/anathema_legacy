@@ -1,12 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.selection;
 
-import java.awt.Component;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-
-import net.disy.commons.core.io.IOUtilities;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.export.PlayListExporter;
@@ -16,6 +9,13 @@ import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.resources.IResources;
+import org.apache.commons.io.IOUtils;
+
+import java.awt.Component;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 
 public class ExportSelectionTracksAction extends SmartAction {
 
@@ -59,7 +59,7 @@ public class ExportSelectionTracksAction extends SmartAction {
       MessageUtilities.indicateMessage(getClass(), parentComponent, message);
     }
     finally {
-      IOUtilities.close(writer);
+      IOUtils.closeQuietly(writer);
     }
   }
 }

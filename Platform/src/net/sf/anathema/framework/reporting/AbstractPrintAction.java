@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.reporting;
 
-import net.disy.commons.core.io.IOUtilities;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
 import net.disy.commons.core.progress.IProgressMonitor;
@@ -11,6 +10,7 @@ import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
+import org.apache.commons.io.IOUtils;
 
 import javax.swing.KeyStroke;
 import java.awt.Component;
@@ -72,7 +72,7 @@ public abstract class AbstractPrintAction extends SmartAction {
       stream = new FileOutputStream(selectedFile);
       selectedReport.print(item, stream);
     } finally {
-      IOUtilities.close(stream);
+      IOUtils.closeQuietly(stream);
     }
   }
 

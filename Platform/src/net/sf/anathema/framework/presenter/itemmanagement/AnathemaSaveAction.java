@@ -1,16 +1,5 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.io.OutputStream;
-
-import javax.swing.Action;
-import javax.swing.KeyStroke;
-
-import net.disy.commons.core.io.IOUtilities;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
@@ -24,6 +13,16 @@ import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
+import org.apache.commons.io.IOUtils;
+
+import javax.swing.Action;
+import javax.swing.KeyStroke;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class AnathemaSaveAction extends SmartAction {
 
@@ -110,7 +109,7 @@ public class AnathemaSaveAction extends SmartAction {
       Logger.getLogger(getClass()).error(e);
     }
     finally {
-      IOUtilities.close(stream);
+      IOUtils.closeQuietly(stream);
       parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
   }

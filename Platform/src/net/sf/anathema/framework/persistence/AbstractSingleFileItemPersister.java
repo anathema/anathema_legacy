@@ -1,19 +1,18 @@
 package net.sf.anathema.framework.persistence;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import net.disy.commons.core.io.IOUtilities;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.lib.exception.PersistenceException;
-
+import org.apache.commons.io.IOUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public abstract class AbstractSingleFileItemPersister implements IRepositoryItemPersister {
 
@@ -25,7 +24,7 @@ public abstract class AbstractSingleFileItemPersister implements IRepositoryItem
       save(stream, item);
     }
     finally {
-      IOUtilities.close(stream);
+      IOUtils.closeQuietly(stream);
     }
   }
 
@@ -47,7 +46,7 @@ public abstract class AbstractSingleFileItemPersister implements IRepositoryItem
       throw new PersistenceException(e);
     }
     finally {
-      IOUtilities.close(stream);
+      IOUtils.closeQuietly(stream);
     }
   }
 
