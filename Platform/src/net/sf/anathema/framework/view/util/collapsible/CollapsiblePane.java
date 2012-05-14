@@ -2,7 +2,8 @@ package net.sf.anathema.framework.view.util.collapsible;
 
 import org.jdesktop.swingx.JXCollapsiblePane;
 
-import javax.swing.*;
+import javax.swing.Action;
+import javax.swing.JComponent;
 
 public class CollapsiblePane {
 
@@ -16,6 +17,7 @@ public class CollapsiblePane {
   public void setContent(JComponent component) {
     collapsiblePane.removeAll();
     collapsiblePane.add(component);
+    collapsiblePane.revalidate();
   }
 
   public Action getToggleAction() {
@@ -40,5 +42,9 @@ public class CollapsiblePane {
 
   public void collapse() {
     collapsiblePane.setCollapsed(true);
+  }
+
+  public void expand() {
+    collapsiblePane.setCollapsed(false);
   }
 }

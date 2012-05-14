@@ -1,13 +1,16 @@
 package net.sf.anathema.framework.view.util;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.framework.view.util.collapsible.CollapsiblePane;
 import net.sf.anathema.framework.view.util.collapsible.CollapsiblePaneMap;
 import net.sf.anathema.framework.view.util.collapsible.ExpandOnlyThisPaneListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +34,13 @@ public class OptionalViewBar {
     }
     CollapsiblePane pane = collapsiblePanesById.get(title);
     pane.setContent(component);
+    expandFirstPane(pane);
+  }
+
+  private void expandFirstPane(CollapsiblePane pane) {
+    if (collapsiblePanesById.size() == 1) {
+      pane.expand();
+    }
   }
 
   private CollapsiblePane addPaneForTitle(String title) {
@@ -40,7 +50,7 @@ public class OptionalViewBar {
     return collapsiblePane;
   }
 
-  private void addButtonForTitle(String title, CollapsiblePane collapsiblePane) {
+  private void addButtonForTitle(String title, final CollapsiblePane collapsiblePane) {
     JButton button = new JButton(title);
     ExpandOnlyThisPaneListener listener = new ExpandOnlyThisPaneListener(collapsiblePane, new CollapsiblePaneMap(collapsiblePanesById));
     button.addActionListener(listener);
