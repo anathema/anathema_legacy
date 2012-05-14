@@ -1,6 +1,5 @@
 package net.sf.anathema.campaign.music.presenter;
 
-import net.disy.commons.core.util.IClosure;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
@@ -9,6 +8,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.Closure;
 import net.sf.anathema.lib.workflow.container.SelectionContainerPresenter;
 
 public class TrackDetailsPresenter implements Presenter {
@@ -60,25 +60,25 @@ public class TrackDetailsPresenter implements Presenter {
       return;
     }
     trackDetailsView.showTrackInfo(true);
-    setStringValue(mp3Track.getTitle(), new IClosure<String>() {
+    setStringValue(mp3Track.getTitle(), new Closure<String>() {
       @Override
       public void execute(String input) {
         trackDetailsView.setOriginalTitle(input);
       }
     });
-    setStringValue(mp3Track.getAlbum(), new IClosure<String>() {
+    setStringValue(mp3Track.getAlbum(), new Closure<String>() {
       @Override
       public void execute(String input) {
         trackDetailsView.setAlbumTitle(input);
       }
     });
-    setStringValue(mp3Track.getTrack(), new IClosure<String>() {
+    setStringValue(mp3Track.getTrack(), new Closure<String>() {
       @Override
       public void execute(String input) {
         trackDetailsView.setTrackNumber(input);
       }
     });
-    setStringValue(mp3Track.getArtist(), new IClosure<String>() {
+    setStringValue(mp3Track.getArtist(), new Closure<String>() {
       @Override
       public void execute(String input) {
         trackDetailsView.setArtistName(input);
@@ -88,7 +88,7 @@ public class TrackDetailsPresenter implements Presenter {
     if (StringUtilities.isNullOrEmpty(givenName)) {
       givenName = mp3Track.getTitle();
     }
-    setStringValue(givenName, new IClosure<String>() {
+    setStringValue(givenName, new Closure<String>() {
       @Override
       public void execute(String input) {
         trackDetailsView.getGivenNameView().setText(input);
@@ -96,7 +96,7 @@ public class TrackDetailsPresenter implements Presenter {
     });
   }
 
-  private void setStringValue(String value, IClosure<String> setter) {
+  private void setStringValue(String value, Closure<String> setter) {
     String setValue = StringUtilities.isNullOrEmpty(value) ? unknownString : value;
     setter.execute(setValue);
   }
