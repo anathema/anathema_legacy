@@ -1,7 +1,5 @@
 package net.sf.anathema.framework.presenter.action;
 
-import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.IProgressMonitor;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
@@ -11,6 +9,8 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.progress.INonInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 

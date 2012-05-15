@@ -1,8 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.library.content;
 
-import net.disy.commons.core.progress.IInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.IObservableCancelable;
-import net.disy.commons.core.progress.IProgressMonitor;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
@@ -18,6 +15,9 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
+import net.sf.anathema.lib.progress.IInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.IObservableCancelable;
+import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.event.ListSelectionEvent;

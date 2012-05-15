@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.character.view;
 
-import javax.swing.Action;
+import net.sf.anathema.lib.model.BooleanModel;
 
-import net.disy.commons.core.model.BooleanModel;
+import javax.swing.Action;
 
 public interface IEquipmentObjectView {
 

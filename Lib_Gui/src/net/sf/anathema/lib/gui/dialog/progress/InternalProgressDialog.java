@@ -9,13 +9,13 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.progress.ICanceledListener;
-import net.disy.commons.core.progress.IObservableCancelable;
-import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.swing.layout.util.ButtonPanelBuilder;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.DialogMessages;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
+import net.sf.anathema.lib.progress.ICanceledListener;
+import net.sf.anathema.lib.progress.IObservableCancelable;
+import net.sf.anathema.lib.progress.IProgressMonitor;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;

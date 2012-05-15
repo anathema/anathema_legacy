@@ -8,9 +8,9 @@
  */
 package net.sf.anathema.lib.collection;
 
-import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.provider.IProvider;
-import net.sf.anathema.lib.util.NullProvider;
+import net.sf.anathema.lib.provider.IProvider;
+import net.sf.anathema.lib.provider.NullProvider;
+import net.sf.anathema.lib.util.IPredicate;
 
 public class CollectionUtilities {
 

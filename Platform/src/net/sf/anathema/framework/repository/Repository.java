@@ -1,7 +1,6 @@
 package net.sf.anathema.framework.repository;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.io.FileUtilities;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
@@ -16,6 +15,7 @@ import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAcces
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.io.FileUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.File;

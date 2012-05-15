@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.rules;
 
 import com.eteks.parser.CompilationException;
-import net.disy.commons.core.predicate.IPredicate;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
@@ -24,6 +23,7 @@ import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
+import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 

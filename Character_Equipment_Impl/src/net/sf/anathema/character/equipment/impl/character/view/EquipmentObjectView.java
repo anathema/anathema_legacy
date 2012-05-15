@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment.impl.character.view;
 
-import net.disy.commons.core.model.BooleanModel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupView;
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
 import net.sf.anathema.lib.gui.action.SmartToggleAction;
+import net.sf.anathema.lib.model.BooleanModel;
 import org.jdesktop.swingx.JXTaskPane;
 
 import javax.swing.Action;

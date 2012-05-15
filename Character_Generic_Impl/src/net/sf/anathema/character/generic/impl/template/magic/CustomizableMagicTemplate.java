@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
-import net.disy.commons.core.predicate.IPredicate;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
+import net.sf.anathema.lib.util.IPredicate;
 
 public class CustomizableMagicTemplate implements IMagicTemplate {
 

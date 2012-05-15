@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.styledtext.presentation;
 
-import net.disy.commons.core.text.FontStyle;
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
+import net.sf.anathema.lib.text.FontStyle;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.event.DocumentEvent;

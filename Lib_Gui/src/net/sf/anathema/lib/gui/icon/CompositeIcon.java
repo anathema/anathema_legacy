@@ -9,9 +9,9 @@
 package net.sf.anathema.lib.gui.icon;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.model.AbstractChangeableModel;
-import net.disy.commons.core.model.IChangeableModel;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.model.AbstractChangeableModel;
+import net.sf.anathema.lib.model.IChangeableModel;
 
 import javax.swing.Icon;
 import java.awt.Component;

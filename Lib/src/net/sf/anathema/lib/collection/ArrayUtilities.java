@@ -8,8 +8,8 @@
  */
 package net.sf.anathema.lib.collection;
 
-import net.disy.commons.core.predicate.IPredicate;
 import net.sf.anathema.lib.util.CastingTransformer;
+import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.ObjectUtilities;
 

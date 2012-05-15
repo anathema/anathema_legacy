@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.action;
 
-import net.disy.commons.core.model.IModifiableBooleanModel;
+import net.sf.anathema.lib.model.IModifiableBooleanModel;
 
 import java.awt.Component;
 

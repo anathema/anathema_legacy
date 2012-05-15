@@ -9,7 +9,7 @@
 package net.sf.anathema.lib.gui.image;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.io.IOUtilities;
+import net.sf.anathema.lib.io.IOUtilities;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;

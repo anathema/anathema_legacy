@@ -8,9 +8,9 @@
  */
 package net.sf.anathema.lib.gui.icon;
 
-import net.disy.commons.core.model.IChangeableModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.IconUtilities;
+import net.sf.anathema.lib.model.IChangeableModel;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;

@@ -1,6 +1,6 @@
 package net.sf.anathema.development.properties;
 
-import net.sf.anathema.lib.io.file.AbstractFileTypeFilter;
+import net.sf.anathema.lib.io.AbstractFileTypeFilter;
 
 public class PropertiesFilter extends AbstractFileTypeFilter {
 

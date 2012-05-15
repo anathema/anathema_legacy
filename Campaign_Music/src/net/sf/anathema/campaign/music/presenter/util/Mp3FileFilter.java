@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.music.presenter.util;
 
-import net.sf.anathema.lib.io.file.AbstractFileTypeFilter;
+import net.sf.anathema.lib.io.AbstractFileTypeFilter;
 import net.sf.anathema.lib.resources.IResources;
 
 public class Mp3FileFilter extends AbstractFileTypeFilter {

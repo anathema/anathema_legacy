@@ -8,7 +8,6 @@
  */
 package net.sf.anathema.lib.gui.dialog.userdialog;
 
-import net.disy.commons.core.model.BooleanModel;
 import net.sf.anathema.lib.gui.dialog.core.AbstractGenericDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.core.DialogHeaderPanelConfiguration;
 import net.sf.anathema.lib.gui.dialog.core.IDialogHeaderPanelConfiguration;
@@ -20,6 +19,7 @@ import net.sf.anathema.lib.gui.dialog.input.check.CheckBoxSmartDialogPanel;
 import net.sf.anathema.lib.gui.dialog.setting.IDialogVisibilitySetting;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
+import net.sf.anathema.lib.model.BooleanModel;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

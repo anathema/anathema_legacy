@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
-import net.disy.commons.core.number.MaxIntegerValueBuilder;
+import net.sf.anathema.lib.number.MaxIntegerValueBuilder;
 import net.sf.anathema.lib.util.Range;
 
 public class LineCountingRenderingHandler implements IBlockRenderingHandler {

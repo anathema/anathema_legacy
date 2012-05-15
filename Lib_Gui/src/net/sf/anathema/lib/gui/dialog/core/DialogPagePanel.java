@@ -9,12 +9,12 @@
 package net.sf.anathema.lib.gui.dialog.core;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.model.ObjectModel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.gui.dialog.core.message.DialogMessageModel;
 import net.sf.anathema.lib.gui.dialog.userdialog.IMessageSetable;
 import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.model.ObjectModel;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;

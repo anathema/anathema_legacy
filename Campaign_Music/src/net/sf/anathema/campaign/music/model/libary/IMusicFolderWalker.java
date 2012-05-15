@@ -1,11 +1,11 @@
 package net.sf.anathema.campaign.music.model.libary;
 
+import net.sf.anathema.lib.progress.ICancelable;
+import net.sf.anathema.lib.progress.IProgressMonitor;
+import net.sf.anathema.lib.resources.IResources;
+
 import java.io.File;
 import java.util.List;
-
-import net.disy.commons.core.progress.ICancelable;
-import net.disy.commons.core.progress.IProgressMonitor;
-import net.sf.anathema.lib.resources.IResources;
 
 public interface IMusicFolderWalker {
 

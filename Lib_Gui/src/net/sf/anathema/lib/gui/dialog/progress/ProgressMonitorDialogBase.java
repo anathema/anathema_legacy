@@ -9,9 +9,9 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.progress.IInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.IRunnableContext;
+import net.sf.anathema.lib.progress.IInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.INonInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.IRunnableContext;
 
 import java.lang.reflect.InvocationTargetException;
 

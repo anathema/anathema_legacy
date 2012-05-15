@@ -9,8 +9,8 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.progress.ICanceledListener;
-import net.disy.commons.core.progress.IProgressMonitor;
+import net.sf.anathema.lib.progress.ICanceledListener;
+import net.sf.anathema.lib.progress.IProgressMonitor;
 
 import javax.swing.JProgressBar;
 import javax.swing.Timer;

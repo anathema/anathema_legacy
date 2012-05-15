@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.character;
 
-import net.disy.commons.core.model.BooleanModel;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
@@ -12,6 +11,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;

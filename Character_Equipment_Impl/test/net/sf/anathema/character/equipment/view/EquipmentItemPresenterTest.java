@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.view;
 
 import junit.framework.TestCase;
-import net.disy.commons.core.model.BooleanModel;
 import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
@@ -15,6 +14,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.resources.AnathemaResources;
+import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.util.Identificate;
 
 import static org.mockito.Matchers.isA;

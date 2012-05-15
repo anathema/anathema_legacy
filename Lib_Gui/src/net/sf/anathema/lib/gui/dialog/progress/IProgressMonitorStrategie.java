@@ -8,8 +8,8 @@
  */
 package net.sf.anathema.lib.gui.dialog.progress;
 
-import net.disy.commons.core.progress.IInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.IInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.INonInterruptableRunnableWithProgress;
 
 import java.lang.reflect.InvocationTargetException;
 

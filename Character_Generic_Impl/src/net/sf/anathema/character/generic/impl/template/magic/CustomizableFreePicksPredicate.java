@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.disy.commons.core.predicate.IPredicate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.lib.util.IPredicate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomizableFreePicksPredicate implements IPredicate<IMagic> {
 

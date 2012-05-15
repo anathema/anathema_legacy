@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.image;
 
-import net.disy.commons.core.io.IOUtilities;
+import net.sf.anathema.lib.io.IOUtilities;
 
 import java.awt.Image;
 import java.awt.Toolkit;

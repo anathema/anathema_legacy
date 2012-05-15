@@ -9,9 +9,9 @@
 package net.sf.anathema.lib.gui.dialog.core.message;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.model.AbstractChangeableModel;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.message.MessageType;
+import net.sf.anathema.lib.model.AbstractChangeableModel;
 
 public class DialogMessageModel extends AbstractChangeableModel {
 

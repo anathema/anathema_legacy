@@ -8,12 +8,12 @@
  */
 package net.sf.anathema.lib.gui.dialog.progress;
 
-import net.disy.commons.core.progress.DefaultRunnableExecuter;
-import net.disy.commons.core.progress.IInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.IObservableCancelable;
-import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.core.progress.IRunnableExecuter;
+import net.sf.anathema.lib.progress.DefaultRunnableExecuter;
+import net.sf.anathema.lib.progress.IInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.INonInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.IObservableCancelable;
+import net.sf.anathema.lib.progress.IProgressMonitor;
+import net.sf.anathema.lib.progress.IRunnableExecuter;
 
 import java.lang.reflect.InvocationTargetException;
 

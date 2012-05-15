@@ -9,13 +9,13 @@
 package net.sf.anathema.lib.gui.dialog.input.check;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.model.BooleanModel;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
 import net.sf.anathema.lib.gui.action.SmartToggleAction;
 import net.sf.anathema.lib.gui.dialog.input.AbstractSmartDialogPanel;
+import net.sf.anathema.lib.model.BooleanModel;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;

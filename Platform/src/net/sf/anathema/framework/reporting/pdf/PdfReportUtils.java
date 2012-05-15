@@ -4,8 +4,8 @@ import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
-import net.disy.commons.core.text.FontStyle;
 import net.sf.anathema.framework.styledtext.model.ITextFormat;
+import net.sf.anathema.lib.text.FontStyle;
 
 public class PdfReportUtils {
 

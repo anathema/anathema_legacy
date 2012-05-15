@@ -9,8 +9,8 @@
 package net.sf.anathema.lib.gui.dialog.widgets;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.model.ObjectModel;
-import net.disy.commons.core.provider.IProvider;
+import net.sf.anathema.lib.model.ObjectModel;
+import net.sf.anathema.lib.provider.IProvider;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;

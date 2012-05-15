@@ -1,6 +1,5 @@
 package net.sf.anathema.character.dummy.trait;
 
-import net.disy.commons.core.predicate.IPredicate;
 import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -21,6 +20,7 @@ import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.util.Identificate;
 
 import java.util.ArrayList;

@@ -9,11 +9,11 @@
 package net.sf.anathema.lib.gui.dialog.widgets;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.model.ObjectModel;
-import net.disy.commons.core.provider.IProvider;
-import net.disy.commons.core.text.TextAlignment;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.swing.SwingColors;
+import net.sf.anathema.lib.model.ObjectModel;
+import net.sf.anathema.lib.provider.IProvider;
+import net.sf.anathema.lib.text.TextAlignment;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;

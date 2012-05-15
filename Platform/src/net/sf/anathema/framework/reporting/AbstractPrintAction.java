@@ -1,7 +1,5 @@
 package net.sf.anathema.framework.reporting;
 
-import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.IProgressMonitor;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
@@ -9,6 +7,8 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.progress.INonInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.io.IOUtils;
 
@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import static java.awt.Desktop.isDesktopSupported;
-import static net.disy.commons.core.progress.IProgressMonitor.UNKNOWN;
+import static net.sf.anathema.lib.progress.IProgressMonitor.UNKNOWN;
 
 public abstract class AbstractPrintAction extends SmartAction {
   public static final String PDF_EXTENSION = ".pdf"; //$NON-NLS-1$
