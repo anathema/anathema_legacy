@@ -14,7 +14,7 @@ public class DialogMessagePanel {
   private final DialogMessageComponent overlaidMessageComponent;
   private final AnimatedCompositeComponent content;
 
-  public DialogMessagePanel(final DialogMessageModel messageModel) {
+  public DialogMessagePanel(DialogMessageModel messageModel) {
     Preconditions.checkNotNull(messageModel);
     this.messageModel = messageModel;
     baseMessageComponent = new DialogMessageComponent(false);

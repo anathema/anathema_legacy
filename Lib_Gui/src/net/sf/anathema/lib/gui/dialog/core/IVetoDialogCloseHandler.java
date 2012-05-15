@@ -9,5 +9,5 @@ public interface IVetoDialogCloseHandler {
    * or finished/ok.
    * @param parentComponent a gui swing that can be used to create dialogs from
    * @return <code>true</code> if the dialog can be closed, <code>false</code> if it shall stay open.*/
-  public boolean handleDialogAboutToClose(IDialogResult result, Component parentComponent);
+  boolean handleDialogAboutToClose(IDialogResult result, Component parentComponent);
 }

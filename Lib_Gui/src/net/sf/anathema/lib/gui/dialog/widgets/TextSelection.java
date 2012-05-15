@@ -5,8 +5,8 @@ import com.google.common.base.Preconditions;
 public class TextSelection {
 
   public static TextSelection createSelection(
-      final TextPosition position1,
-      final TextPosition position2) {
+      TextPosition position1,
+      TextPosition position2) {
     Preconditions.checkNotNull(position1);
     Preconditions.checkNotNull(position2);
     if (position1.getBlockIndex() < position2.getBlockIndex()) {
@@ -22,17 +22,17 @@ public class TextSelection {
   public final TextPosition endPosition;
   public final TextPosition startPosition;
 
-  private TextSelection(final TextPosition startPosition, final TextPosition endPosition) {
+  private TextSelection(TextPosition startPosition, TextPosition endPosition) {
     this.startPosition = startPosition;
     this.endPosition = endPosition;
   }
 
   @Override
-  public boolean equals(final Object obj) {
+  public boolean equals(Object obj) {
     if (!(obj instanceof TextSelection)) {
       return false;
     }
-    final TextSelection other = (TextSelection) obj;
+    TextSelection other = (TextSelection) obj;
     return startPosition.equals(other.startPosition) && endPosition.equals(other.endPosition);
   }
 

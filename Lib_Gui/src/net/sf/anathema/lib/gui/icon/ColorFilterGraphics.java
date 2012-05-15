@@ -35,58 +35,47 @@ public class ColorFilterGraphics extends Graphics2D {
   private final Component imageComponent;
   private final RGBImageFilter rgbFilter;
 
-  public ColorFilterGraphics(final Graphics2D delegate, final Component imageComponent) {
+  public ColorFilterGraphics(Graphics2D delegate, Component imageComponent) {
     this(delegate, imageComponent, new DisabledFilter());
   }
 
-  public ColorFilterGraphics(
-      final Graphics2D delegate,
-      final Component imageComponent,
-      final RGBImageFilter rgbFilter) {
+  public ColorFilterGraphics(Graphics2D delegate, Component imageComponent, RGBImageFilter rgbFilter) {
     this.delegate = delegate;
     this.imageComponent = imageComponent;
     this.rgbFilter = rgbFilter;
   }
 
-  private Image disabledImage(final Image img) {
-    final FilteredImageSource filteredImageSource = new FilteredImageSource(
-        img.getSource(),
-        rgbFilter);
+  private Image disabledImage(Image img) {
+    FilteredImageSource filteredImageSource = new FilteredImageSource(img.getSource(), rgbFilter);
     return imageComponent.createImage(filteredImageSource);
   }
 
-  private Color disabledColor(final Color color) {
+  private Color disabledColor(Color color) {
     return new Color(rgbFilter.filterRGB(0, 0, color.getRGB()));
   }
 
   @Override
-  public void addRenderingHints(final Map<?, ?> hints) {
+  public void addRenderingHints(Map<?, ?> hints) {
     delegate.addRenderingHints(hints);
   }
 
   @Override
-  public void clearRect(final int x, final int y, final int width, final int height) {
+  public void clearRect(int x, int y, int width, int height) {
     delegate.clearRect(x, y, width, height);
   }
 
   @Override
-  public void clip(final Shape s) {
+  public void clip(Shape s) {
     delegate.clip(s);
   }
 
   @Override
-  public void clipRect(final int x, final int y, final int width, final int height) {
+  public void clipRect(int x, int y, int width, int height) {
     delegate.clipRect(x, y, width, height);
   }
 
   @Override
-  public void copyArea(
-      final int x,
-      final int y,
-      final int width,
-      final int height,
-      final int dx,
-      final int dy) {
+  public void copyArea(int x, int y, int width, int height, int dx, int dy) {
     delegate.copyArea(x, y, width, height, dx, dy);
   }
 
@@ -96,7 +85,7 @@ public class ColorFilterGraphics extends Graphics2D {
   }
 
   @Override
-  public Graphics create(final int x, final int y, final int width, final int height) {
+  public Graphics create(int x, int y, int width, int height) {
     return delegate.create(x, y, width, height);
   }
 
@@ -106,283 +95,182 @@ public class ColorFilterGraphics extends Graphics2D {
   }
 
   @Override
-  public void draw(final Shape s) {
+  public void draw(Shape s) {
     delegate.draw(s);
   }
 
   @Override
-  public void draw3DRect(
-      final int x,
-      final int y,
-      final int width,
-      final int height,
-      final boolean raised) {
+  public void draw3DRect(int x, int y, int width, int height, boolean raised) {
     delegate.draw3DRect(x, y, width, height, raised);
   }
 
   @Override
-  public void drawArc(
-      final int x,
-      final int y,
-      final int width,
-      final int height,
-      final int startAngle,
-      final int arcAngle) {
+  public void drawArc(int x, int y, int width, int height, int startAngle, int arcAngle) {
     delegate.drawArc(x, y, width, height, startAngle, arcAngle);
   }
 
   @Override
-  public void drawBytes(
-      final byte[] data,
-      final int offset,
-      final int length,
-      final int x,
-      final int y) {
+  public void drawBytes(byte[] data, int offset, int length, int x, int y) {
     delegate.drawBytes(data, offset, length, x, y);
   }
 
   @Override
-  public void drawChars(
-      final char[] data,
-      final int offset,
-      final int length,
-      final int x,
-      final int y) {
+  public void drawChars(char[] data, int offset, int length, int x, int y) {
     delegate.drawChars(data, offset, length, x, y);
   }
 
   @Override
-  public void drawGlyphVector(final GlyphVector g, final float x, final float y) {
+  public void drawGlyphVector(GlyphVector g, float x, float y) {
     delegate.drawGlyphVector(g, x, y);
   }
 
   @Override
-  public boolean drawImage(
-      final Image img,
-      final int dx1,
-      final int dy1,
-      final int dx2,
-      final int dy2,
-      final int sx1,
-      final int sy1,
-      final int sx2,
-      final int sy2,
-      final Color bgcolor,
-      final ImageObserver observer) {
-    return delegate.drawImage(
-        disabledImage(img),
-        dx1,
-        dy1,
-        dx2,
-        dy2,
-        sx1,
-        sy1,
-        sx2,
-        sy2,
-        disabledColor(bgcolor),
-        observer);
+  public boolean drawImage(Image img, int dx1, int dy1, int dx2, int dy2, int sx1, int sy1, int sx2, int sy2, Color bgcolor, ImageObserver observer) {
+    return delegate.drawImage(disabledImage(img), dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, disabledColor(bgcolor), observer);
   }
 
   @Override
-  public boolean drawImage(
-      final Image img,
-      final int dx1,
-      final int dy1,
-      final int dx2,
-      final int dy2,
-      final int sx1,
-      final int sy1,
-      final int sx2,
-      final int sy2,
-      final ImageObserver observer) {
+  public boolean drawImage(Image img, int dx1, int dy1, int dx2, int dy2, int sx1, int sy1, int sx2, int sy2, ImageObserver observer) {
     return delegate.drawImage(disabledImage(img), dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, observer);
   }
 
   @Override
-  public boolean drawImage(
-      final Image img,
-      final int x,
-      final int y,
-      final int width,
-      final int height,
-      final Color bgcolor,
-      final ImageObserver observer) {
-    return delegate.drawImage(
-        disabledImage(img),
-        x,
-        y,
-        width,
-        height,
-        disabledColor(bgcolor),
-        observer);
+  public boolean drawImage(Image img, int x, int y, int width, int height, Color bgcolor, ImageObserver observer) {
+    return delegate.drawImage(disabledImage(img), x, y, width, height, disabledColor(bgcolor), observer);
   }
 
   @Override
-  public boolean drawImage(
-      final Image img,
-      final int x,
-      final int y,
-      final int width,
-      final int height,
-      final ImageObserver observer) {
+  public boolean drawImage(Image img, int x, int y, int width, int height, ImageObserver observer) {
     return delegate.drawImage(disabledImage(img), x, y, width, height, observer);
   }
 
   @Override
-  public boolean drawImage(
-      final Image img,
-      final int x,
-      final int y,
-      final Color bgcolor,
-      final ImageObserver observer) {
+  public boolean drawImage(Image img, int x, int y, Color bgcolor, ImageObserver observer) {
     return delegate.drawImage(disabledImage(img), x, y, disabledColor(bgcolor), observer);
   }
 
   @Override
-  public boolean drawImage(final Image img, final int x, final int y, final ImageObserver observer) {
+  public boolean drawImage(Image img, int x, int y, ImageObserver observer) {
     return delegate.drawImage(disabledImage(img), x, y, observer);
   }
 
   @Override
-  public boolean drawImage(final Image img, final AffineTransform xform, final ImageObserver obs) {
+  public boolean drawImage(Image img, AffineTransform xform, ImageObserver obs) {
     return delegate.drawImage(disabledImage(img), xform, obs);
   }
 
   @Override
-  public void drawImage(final BufferedImage img, final BufferedImageOp op, final int x, final int y) {
+  public void drawImage(BufferedImage img, BufferedImageOp op, int x, int y) {
     throw new UnsupportedOperationException("not yet implemented"); //$NON-NLS-1$
   }
 
   @Override
-  public void drawLine(final int x1, final int y1, final int x2, final int y2) {
+  public void drawLine(int x1, int y1, int x2, int y2) {
     delegate.drawLine(x1, y1, x2, y2);
   }
 
   @Override
-  public void drawOval(final int x, final int y, final int width, final int height) {
+  public void drawOval(int x, int y, int width, int height) {
     delegate.drawOval(x, y, width, height);
   }
 
   @Override
-  public void drawPolygon(final int[] xPoints, final int[] yPoints, final int nPoints) {
+  public void drawPolygon(int[] xPoints, int[] yPoints, int nPoints) {
     delegate.drawPolygon(xPoints, yPoints, nPoints);
   }
 
   @Override
-  public void drawPolygon(final Polygon p) {
+  public void drawPolygon(Polygon p) {
     delegate.drawPolygon(p);
   }
 
   @Override
-  public void drawPolyline(final int[] xPoints, final int[] yPoints, final int nPoints) {
+  public void drawPolyline(int[] xPoints, int[] yPoints, int nPoints) {
     delegate.drawPolyline(xPoints, yPoints, nPoints);
   }
 
   @Override
-  public void drawRect(final int x, final int y, final int width, final int height) {
+  public void drawRect(int x, int y, int width, int height) {
     delegate.drawRect(x, y, width, height);
   }
 
   @Override
-  public void drawRenderableImage(final RenderableImage img, final AffineTransform xform) {
+  public void drawRenderableImage(RenderableImage img, AffineTransform xform) {
     delegate.drawRenderableImage(img, xform);
   }
 
   @Override
-  public void drawRenderedImage(final RenderedImage img, final AffineTransform xform) {
+  public void drawRenderedImage(RenderedImage img, AffineTransform xform) {
     delegate.drawRenderedImage(img, xform);
   }
 
   @Override
-  public void drawRoundRect(
-      final int x,
-      final int y,
-      final int width,
-      final int height,
-      final int arcWidth,
-      final int arcHeight) {
+  public void drawRoundRect(int x, int y, int width, int height, int arcWidth, int arcHeight) {
     delegate.drawRoundRect(x, y, width, height, arcWidth, arcHeight);
   }
 
   @Override
-  public void drawString(final String s, final float x, final float y) {
+  public void drawString(String s, float x, float y) {
     delegate.drawString(s, x, y);
   }
 
   @Override
-  public void drawString(final String str, final int x, final int y) {
+  public void drawString(String str, int x, int y) {
     delegate.drawString(str, x, y);
   }
 
   @Override
-  public void drawString(final AttributedCharacterIterator iterator, final float x, final float y) {
+  public void drawString(AttributedCharacterIterator iterator, float x, float y) {
     delegate.drawString(iterator, x, y);
   }
 
   @Override
-  public void drawString(final AttributedCharacterIterator iterator, final int x, final int y) {
+  public void drawString(AttributedCharacterIterator iterator, int x, int y) {
     delegate.drawString(iterator, x, y);
   }
 
   @Override
-  public boolean equals(final Object obj) {
+  public boolean equals(Object obj) {
     return delegate.equals(obj);
   }
 
   @Override
-  public void fill(final Shape s) {
+  public void fill(Shape s) {
     delegate.fill(s);
   }
 
   @Override
-  public void fill3DRect(
-      final int x,
-      final int y,
-      final int width,
-      final int height,
-      final boolean raised) {
+  public void fill3DRect(int x, int y, int width, int height, boolean raised) {
     delegate.fill3DRect(x, y, width, height, raised);
   }
 
   @Override
-  public void fillArc(
-      final int x,
-      final int y,
-      final int width,
-      final int height,
-      final int startAngle,
-      final int arcAngle) {
+  public void fillArc(int x, int y, int width, int height, int startAngle, int arcAngle) {
     delegate.fillArc(x, y, width, height, startAngle, arcAngle);
   }
 
   @Override
-  public void fillOval(final int x, final int y, final int width, final int height) {
+  public void fillOval(int x, int y, int width, int height) {
     delegate.fillOval(x, y, width, height);
   }
 
   @Override
-  public void fillPolygon(final int[] xPoints, final int[] yPoints, final int nPoints) {
+  public void fillPolygon(int[] xPoints, int[] yPoints, int nPoints) {
     delegate.fillPolygon(xPoints, yPoints, nPoints);
   }
 
   @Override
-  public void fillPolygon(final Polygon p) {
+  public void fillPolygon(Polygon p) {
     delegate.fillPolygon(p);
   }
 
   @Override
-  public void fillRect(final int x, final int y, final int width, final int height) {
+  public void fillRect(int x, int y, int width, int height) {
     delegate.fillRect(x, y, width, height);
   }
 
   @Override
-  public void fillRoundRect(
-      final int x,
-      final int y,
-      final int width,
-      final int height,
-      final int arcWidth,
-      final int arcHeight) {
+  public void fillRoundRect(int x, int y, int width, int height, int arcWidth, int arcHeight) {
     delegate.fillRoundRect(x, y, width, height, arcWidth, arcHeight);
   }
 
@@ -402,7 +290,7 @@ public class ColorFilterGraphics extends Graphics2D {
   }
 
   @Override
-  public Rectangle getClipBounds(final Rectangle r) {
+  public Rectangle getClipBounds(Rectangle r) {
     return delegate.getClipBounds(r);
   }
 
@@ -441,7 +329,7 @@ public class ColorFilterGraphics extends Graphics2D {
   }
 
   @Override
-  public FontMetrics getFontMetrics(final Font f) {
+  public FontMetrics getFontMetrics(Font f) {
     return delegate.getFontMetrics(f);
   }
 
@@ -456,7 +344,7 @@ public class ColorFilterGraphics extends Graphics2D {
   }
 
   @Override
-  public Object getRenderingHint(final Key hintKey) {
+  public Object getRenderingHint(Key hintKey) {
     return delegate.getRenderingHint(hintKey);
   }
 
@@ -481,62 +369,62 @@ public class ColorFilterGraphics extends Graphics2D {
   }
 
   @Override
-  public boolean hit(final Rectangle rect, final Shape s, final boolean onStroke) {
+  public boolean hit(Rectangle rect, Shape s, boolean onStroke) {
     return delegate.hit(rect, s, onStroke);
   }
 
   @Override
-  public boolean hitClip(final int x, final int y, final int width, final int height) {
+  public boolean hitClip(int x, int y, int width, int height) {
     return delegate.hitClip(x, y, width, height);
   }
 
   @Override
-  public void rotate(final double theta) {
+  public void rotate(double theta) {
     delegate.rotate(theta);
   }
 
   @Override
-  public void rotate(final double theta, final double x, final double y) {
+  public void rotate(double theta, double x, double y) {
     delegate.rotate(theta, x, y);
   }
 
   @Override
-  public void scale(final double sx, final double sy) {
+  public void scale(double sx, double sy) {
     delegate.scale(sx, sy);
   }
 
   @Override
-  public void setBackground(final Color color) {
+  public void setBackground(Color color) {
     delegate.setBackground(disabledColor(color));
   }
 
   @Override
-  public void setClip(final int x, final int y, final int width, final int height) {
+  public void setClip(int x, int y, int width, int height) {
     delegate.setClip(x, y, width, height);
   }
 
   @Override
-  public void setClip(final Shape clip) {
+  public void setClip(Shape clip) {
     delegate.setClip(clip);
   }
 
   @Override
-  public void setColor(final Color color) {
+  public void setColor(Color color) {
     delegate.setColor(disabledColor(color));
   }
 
   @Override
-  public void setComposite(final Composite comp) {
+  public void setComposite(Composite comp) {
     delegate.setComposite(comp);
   }
 
   @Override
-  public void setFont(final Font font) {
+  public void setFont(Font font) {
     delegate.setFont(font);
   }
 
   @Override
-  public void setPaint(final Paint paint) {
+  public void setPaint(Paint paint) {
     delegate.setPaint(paint);
   }
 
@@ -546,32 +434,32 @@ public class ColorFilterGraphics extends Graphics2D {
   }
 
   @Override
-  public void setRenderingHint(final Key hintKey, final Object hintValue) {
+  public void setRenderingHint(Key hintKey, Object hintValue) {
     delegate.setRenderingHint(hintKey, hintValue);
   }
 
   @Override
-  public void setRenderingHints(final Map hints) {
+  public void setRenderingHints(Map hints) {
     delegate.setRenderingHints(hints);
   }
 
   @Override
-  public void setStroke(final Stroke s) {
+  public void setStroke(Stroke s) {
     delegate.setStroke(s);
   }
 
   @Override
-  public void setTransform(final AffineTransform Tx) {
+  public void setTransform(AffineTransform Tx) {
     delegate.setTransform(Tx);
   }
 
   @Override
-  public void setXORMode(final Color c1) {
+  public void setXORMode(Color c1) {
     delegate.setXORMode(c1);
   }
 
   @Override
-  public void shear(final double shx, final double shy) {
+  public void shear(double shx, double shy) {
     delegate.shear(shx, shy);
   }
 
@@ -581,17 +469,17 @@ public class ColorFilterGraphics extends Graphics2D {
   }
 
   @Override
-  public void transform(final AffineTransform Tx) {
+  public void transform(AffineTransform Tx) {
     delegate.transform(Tx);
   }
 
   @Override
-  public void translate(final double tx, final double ty) {
+  public void translate(double tx, double ty) {
     delegate.translate(tx, ty);
   }
 
   @Override
-  public void translate(final int x, final int y) {
+  public void translate(int x, int y) {
     delegate.translate(x, y);
   }
 }

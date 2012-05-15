@@ -15,7 +15,7 @@ public class LineBuffer {
     final TextBlock block;
     final int width;
 
-    public LinePart(final TextBlock block, final int width) {
+    public LinePart(TextBlock block, int width) {
       this.block = block;
       this.width = width;
     }
@@ -31,8 +31,8 @@ public class LineBuffer {
   private int lineIndex = 0;
   private final ObjectModel<TextSelection> selectionModel;
 
-  public LineBuffer(final FontMetrics metrics, final int layoutWidth, final IBlockRenderingHandler blockRenderer, final TextAlignment textAlignment,
-                    final ObjectModel<TextSelection> selectionModel) {
+  public LineBuffer(FontMetrics metrics, int layoutWidth, IBlockRenderingHandler blockRenderer, TextAlignment textAlignment,
+                    ObjectModel<TextSelection> selectionModel) {
     this.metrics = metrics;
     this.layoutWidth = layoutWidth;
     this.blockRenderer = blockRenderer;
@@ -40,7 +40,7 @@ public class LineBuffer {
     this.selectionModel = selectionModel;
   }
 
-  public void add(final TextBlock block, final int blockWidth) {
+  public void add(TextBlock block, int blockWidth) {
     buffer.add(new LinePart(block, blockWidth));
   }
 
@@ -54,10 +54,10 @@ public class LineBuffer {
     }
   }
 
-  private void renderLine(final boolean isAutoBreak) {
-    final int lineWidth = calculateLineWidth();
-    final int spaceLeft = layoutWidth - lineWidth;
-    final int xOffset;
+  private void renderLine(boolean isAutoBreak) {
+    int lineWidth = calculateLineWidth();
+    int spaceLeft = layoutWidth - lineWidth;
+    int xOffset;
     switch (textAlignment) {
       case CENTER: {
         xOffset = spaceLeft / 2;
@@ -74,18 +74,18 @@ public class LineBuffer {
     }
     int x = xOffset;
     for (int blockIndex = 0; blockIndex < buffer.size(); blockIndex++) {
-      final TextBlock block = buffer.get(blockIndex).block;
-      final int blockWidth = metrics.stringWidth(block.text);
-      final int absoluteBlockIndex = blockIndex + blockIndexOffset;
-      final Range selectionRange = getSelectionRangeIfAny(selectionModel.getValue(), absoluteBlockIndex, block);
+      TextBlock block = buffer.get(blockIndex).block;
+      int blockWidth = metrics.stringWidth(block.text);
+      int absoluteBlockIndex = blockIndex + blockIndexOffset;
+      Range selectionRange = getSelectionRangeIfAny(selectionModel.getValue(), absoluteBlockIndex, block);
       blockRenderer.handleText(absoluteBlockIndex, block.text, x, lineIndex, metrics.getHeight(), selectionRange);
       x += blockWidth;
-      final TextBlockDelimiter delimiter = block.delimiter;
-      final boolean delimiterSelected = isDelimiterSelected(selectionModel.getValue(), block.text.length(), absoluteBlockIndex);
+      TextBlockDelimiter delimiter = block.delimiter;
+      boolean delimiterSelected = isDelimiterSelected(selectionModel.getValue(), block.text.length(), absoluteBlockIndex);
       if (delimiter.isNewLine()) {
         blockRenderer.handleLineEndsAt(absoluteBlockIndex, block.text.length(), x, lineIndex, metrics.getHeight());
       } else if (delimiter.isWhitespace()) {
-        final int delimiterWidth = delimiter.calculateWidth(metrics);
+        int delimiterWidth = delimiter.calculateWidth(metrics);
         blockRenderer
                 .handleWhiteSpace(x, x + delimiterWidth, lineIndex, new TextPosition(absoluteBlockIndex, block.text.length()), metrics.getHeight(),
                         delimiterSelected);
@@ -103,7 +103,7 @@ public class LineBuffer {
   private int calculateLineWidth() {
     int lineWidth = 0;
     int lastDelimiterWidth = 0;
-    for (final LinePart linePart : buffer) {
+    for (LinePart linePart : buffer) {
       lineWidth += linePart.width;
       lastDelimiterWidth = linePart.block.delimiter.calculateWidth(metrics);
       lineWidth += lastDelimiterWidth;
@@ -112,7 +112,7 @@ public class LineBuffer {
     return lineWidth - lastDelimiterWidth;
   }
 
-  private boolean isDelimiterSelected(final TextSelection selection, final int blockSize, final int blockIndex) {
+  private boolean isDelimiterSelected(TextSelection selection, int blockSize, int blockIndex) {
     if (selection == null) {
       return false;
     }
@@ -125,11 +125,11 @@ public class LineBuffer {
     if (selection.endPosition.getBlockIndex() > blockIndex) {
       return true;
     }
-    final int indexInBlock = selection.endPosition.getIndexInBlock();
+    int indexInBlock = selection.endPosition.getIndexInBlock();
     return indexInBlock >= blockSize;
   }
 
-  private Range getSelectionRangeIfAny(final TextSelection selection, final int blockIndex, final TextBlock block) {
+  private Range getSelectionRangeIfAny(TextSelection selection, int blockIndex, TextBlock block) {
     if (selection == null) {
       return null;
     }

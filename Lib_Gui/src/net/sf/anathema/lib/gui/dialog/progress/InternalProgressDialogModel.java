@@ -11,7 +11,7 @@ public class InternalProgressDialogModel {
   private RuntimeException runtimeException;
   private Error error;
 
-  public void setCanceled(final boolean canceled) {
+  public void setCanceled(boolean canceled) {
     this.canceled = canceled;
   }
 
@@ -27,19 +27,19 @@ public class InternalProgressDialogModel {
     return finished;
   }
 
-  public void interrupted(final InterruptedException withInterruptedException) {
+  public void interrupted(InterruptedException withInterruptedException) {
     this.interruptedException = withInterruptedException;
   }
 
-  public void crashed(final InvocationTargetException withInvocationTargetException) {
+  public void crashed(InvocationTargetException withInvocationTargetException) {
     this.invocationTargetException = withInvocationTargetException;
   }
 
-  public void crashed(final RuntimeException withRuntimeException) {
+  public void crashed(RuntimeException withRuntimeException) {
     this.runtimeException = withRuntimeException;
   }
 
-  public void crashed(final Error withError) {
+  public void crashed(Error withError) {
     this.error = withError;
   }
 

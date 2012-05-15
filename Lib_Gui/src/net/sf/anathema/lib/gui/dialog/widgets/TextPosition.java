@@ -5,7 +5,7 @@ public class TextPosition {
   private final int indexInBlock;
   private final int blockIndex;
 
-  public TextPosition(final int blockIndex, final int indexInBlock) {
+  public TextPosition(int blockIndex, int indexInBlock) {
     if (blockIndex < 0) {
       throw new IllegalArgumentException("Illegal block index " + blockIndex); //$NON-NLS-1$
     }
@@ -17,11 +17,11 @@ public class TextPosition {
   }
 
   @Override
-  public boolean equals(final Object obj) {
+  public boolean equals(Object obj) {
     if (!(obj instanceof TextPosition)) {
       return false;
     }
-    final TextPosition other = (TextPosition) obj;
+    TextPosition other = (TextPosition) obj;
     return indexInBlock == other.indexInBlock && blockIndex == other.blockIndex;
   }
 

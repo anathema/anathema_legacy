@@ -10,20 +10,20 @@ import java.awt.Component;
 
 public class MessageDialogFactory {
 
-  public static UserDialog createMessageDialog(final Component parentComponent, final IMessage message) {
+  public static UserDialog createMessageDialog(Component parentComponent, IMessage message) {
     UserDialog userDialog;
     if (message.getDetail() == null) {
       userDialog = new UserDialog(parentComponent, new MessageUserDialogConfiguration(message));
       userDialog.getDialog().setResizable(false);
     } else {
-      final IFoldOutPage foldOutPage = new MessageDetailsFoldOutPage(message.getDetail());
-      final FoldOutMessageDialogConfiguration dialogConfiguration = new FoldOutMessageDialogConfiguration(message, foldOutPage);
+      IFoldOutPage foldOutPage = new MessageDetailsFoldOutPage(message.getDetail());
+      FoldOutMessageDialogConfiguration dialogConfiguration = new FoldOutMessageDialogConfiguration(message, foldOutPage);
       userDialog = new FoldOutDialog(parentComponent, dialogConfiguration);
     }
     return userDialog;
   }
 
-  public static void showMessageDialog(final Component parent, final IMessage message) {
+  public static void showMessageDialog(Component parent, IMessage message) {
     createMessageDialog(parent, message).show();
   }
 }

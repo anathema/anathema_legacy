@@ -12,7 +12,7 @@ public class OverlaidComponentBorder implements Border {
   private static final Insets INSETS = new Insets(2, 2, 0, 2);
 
   @Override
-  public Insets getBorderInsets(final Component c) {
+  public Insets getBorderInsets(Component c) {
     return INSETS;
   }
 
@@ -23,12 +23,12 @@ public class OverlaidComponentBorder implements Border {
 
   @Override
   public void paintBorder(
-      final Component c,
-      final Graphics g,
-      final int x,
-      final int y,
-      final int width,
-      final int height) {
+      Component c,
+      Graphics g,
+      int x,
+      int y,
+      int width,
+      int height) {
     g.setColor(IDialogConstants.HEADER_OVERLAID_BORDER_COLOR);
     g.drawLine(x + 2, y, x + width - 3, y);
     g.drawLine(x + 1, y + 1, x + 1, y + 1);

@@ -19,7 +19,7 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
   private final IDialogPage dialogPage;
   private IBasicMessage message;
 
-  public DialogPageControl(final IDialogPage dialogPage) {
+  public DialogPageControl(IDialogPage dialogPage) {
     this.dialogPage = dialogPage;
     setMessage(dialogPage.getDefaultMessage());
   }
@@ -29,7 +29,7 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
   }
 
   @Override
-  public final void setMessage(final IBasicMessage message) {
+  public final void setMessage(IBasicMessage message) {
     Preconditions.checkNotNull(message);
     if (ObjectUtilities.equals(this.message, message)) {
       updateCanFinish();
@@ -48,7 +48,7 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
     return message;
   }
 
-  public final void setDialogControl(final IDialogControl dialogControl) {
+  public final void setDialogControl(IDialogControl dialogControl) {
     this.dialogControl = dialogControl;
   }
 
@@ -57,10 +57,9 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
       content = dialogPage.createContent();
       if (content == null) {
         throw new ContractFailedException("Method createContent() must not return null in " //$NON-NLS-1$
-            + dialogPage.getClass().getName());
+                                          + dialogPage.getClass().getName());
       }
-      dialogPage.setInputValidListener(new CheckInputValidListener(
-          new DialogPageInputValidCheckable(this, dialogPage)));
+      dialogPage.setInputValidListener(new CheckInputValidListener(new DialogPageInputValidCheckable(this, dialogPage)));
       updateButtons();
     }
     return content;

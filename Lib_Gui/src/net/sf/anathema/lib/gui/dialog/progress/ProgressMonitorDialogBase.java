@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.progress.IInterruptableRunnableWithProgress;
-import net.sf.anathema.lib.progress.INonInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.IInterruptibleRunnableWithProgress;
+import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
 import net.sf.anathema.lib.progress.IRunnableContext;
 
 import java.lang.reflect.InvocationTargetException;
@@ -12,13 +12,12 @@ import java.lang.reflect.InvocationTargetException;
  */
 public abstract class ProgressMonitorDialogBase
     implements
-    IRunnableContext,
-    IProgressMonitorStrategie {
+    IRunnableContext, IProgressMonitorStrategy {
 
   private boolean first = true;
 
   @Override
-  public void run(final INonInterruptableRunnableWithProgress runnable)
+  public void run(INonInterruptibleRunnableWithProgress runnable)
       throws InvocationTargetException {
     Preconditions.checkNotNull(runnable);
     synchronized (this) {
@@ -30,7 +29,7 @@ public abstract class ProgressMonitorDialogBase
   }
 
   @Override
-  public void run(final IInterruptableRunnableWithProgress runnable)
+  public void run(IInterruptibleRunnableWithProgress runnable)
       throws InterruptedException,
       InvocationTargetException {
     Preconditions.checkNotNull(runnable);

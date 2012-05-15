@@ -7,31 +7,25 @@ import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 
-public abstract class AbstractFoldOutDialogConfiguration<P extends IDialogPage>
-    extends
-    DefaultDialogConfiguration<P> implements IFoldOutDialogConfiguration<P> {
+public abstract class AbstractFoldOutDialogConfiguration<P extends IDialogPage> extends DefaultDialogConfiguration<P> implements
+        IFoldOutDialogConfiguration<P> {
 
   private final IFoldOutPage foldOutPage;
 
-  public AbstractFoldOutDialogConfiguration(
-      final P dialogPage,
-      final IFoldOutPage foldOutPage,
-      final IDialogButtonConfiguration buttonConfiguration) {
+  public AbstractFoldOutDialogConfiguration(P dialogPage, IFoldOutPage foldOutPage, IDialogButtonConfiguration buttonConfiguration) {
     super(dialogPage, buttonConfiguration);
     this.foldOutPage = foldOutPage;
   }
 
   @Override
   public IActionConfiguration getFoldOutButtonConfiguration() {
-    final String label = DialogMessages
-        .getString("FoldOutDialog.Button.showDetails.text"); //$NON-NLS-1$
+    String label = DialogMessages.getString("FoldOutDialog.Button.showDetails.text"); //$NON-NLS-1$
     return new ActionConfiguration(label);
   }
 
   @Override
   public IActionConfiguration getFoldInButtonConfiguration() {
-    final String label = DialogMessages
-        .getString("FoldOutDialog.Button.hideDetails.text"); //$NON-NLS-1$
+    String label = DialogMessages.getString("FoldOutDialog.Button.hideDetails.text"); //$NON-NLS-1$
     return new ActionConfiguration(label);
   }
 

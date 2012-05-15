@@ -19,13 +19,13 @@ public class SwingFrame implements ISwingFrameOrDialog {
   private final JFrame frame;
   private boolean modal = false;
 
-  public SwingFrame(final JFrame frame) {
+  public SwingFrame(JFrame frame) {
     Preconditions.checkNotNull(frame);
     this.frame = frame;
   }
 
   @Override
-  public void setTitle(final String title) {
+  public void setTitle(String title) {
     frame.setTitle(title);
   }
 
@@ -40,7 +40,7 @@ public class SwingFrame implements ISwingFrameOrDialog {
   }
 
   @Override
-  public void setModal(final boolean modal) {
+  public void setModal(boolean modal) {
     this.modal = modal;
   }
 
@@ -50,17 +50,17 @@ public class SwingFrame implements ISwingFrameOrDialog {
   }
 
   @Override
-  public void setDefaultCloseOperation(final int closeOperation) {
+  public void setDefaultCloseOperation(int closeOperation) {
     frame.setDefaultCloseOperation(closeOperation);
   }
 
   @Override
-  public void addWindowListener(final WindowListener windowListener) {
+  public void addWindowListener(WindowListener windowListener) {
     frame.addWindowListener(windowListener);
   }
 
   @Override
-  public void removeWindowListener(final WindowListener windowListener) {
+  public void removeWindowListener(WindowListener windowListener) {
     frame.removeWindowListener(windowListener);
   }
 
@@ -76,7 +76,7 @@ public class SwingFrame implements ISwingFrameOrDialog {
   }
 
   @Override
-  public void setResizable(final boolean resizable) {
+  public void setResizable(boolean resizable) {
     frame.setResizable(resizable);
   }
 
@@ -86,7 +86,7 @@ public class SwingFrame implements ISwingFrameOrDialog {
   }
 
   @Override
-  public void setVisible(final boolean visible) {
+  public void setVisible(boolean visible) {
     frame.setVisible(visible);
     if (!modal) {
       return;
@@ -102,10 +102,10 @@ public class SwingFrame implements ISwingFrameOrDialog {
   private synchronized void startModal() {
     try {
       if (SwingUtilities.isEventDispatchThread()) {
-        final EventQueue theQueue = frame.getToolkit().getSystemEventQueue();
+        EventQueue theQueue = frame.getToolkit().getSystemEventQueue();
         while (isVisible()) {
-          final AWTEvent event = theQueue.getNextEvent();
-          final Object source = event.getSource();
+          AWTEvent event = theQueue.getNextEvent();
+          Object source = event.getSource();
           if (event instanceof ActiveEvent) {
             ((ActiveEvent) event).dispatch();
           }
@@ -126,7 +126,7 @@ public class SwingFrame implements ISwingFrameOrDialog {
         }
       }
     }
-    catch (final InterruptedException ignored) {
+    catch (InterruptedException ignored) {
       //nothing to do
     }
   }

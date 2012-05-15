@@ -6,12 +6,9 @@ import java.awt.image.BufferedImage;
 
 public class IconUtilities {
 
-  public static BufferedImage createBufferedImage(final Icon icon) {
-    final BufferedImage image = new BufferedImage(
-        icon.getIconWidth(),
-        icon.getIconHeight(),
-        BufferedImage.TYPE_INT_ARGB);
-    final Graphics2D graphics = image.createGraphics();
+  public static BufferedImage createBufferedImage(Icon icon) {
+    BufferedImage image = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+    Graphics2D graphics = image.createGraphics();
     icon.paintIcon(null, graphics, 0, 0);
     graphics.dispose();
     return image;

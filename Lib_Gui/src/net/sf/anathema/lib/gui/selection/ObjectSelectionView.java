@@ -1,17 +1,16 @@
 package net.sf.anathema.lib.gui.selection;
 
-import java.awt.Color;
-import java.awt.SystemColor;
+import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
+import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
-import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class ObjectSelectionView<V> implements IObjectSelectionView<V> {
 
@@ -59,7 +58,7 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V> {
   }
 
   @Override
-  public void addObjectSelectionChangedListener(final ObjectValueListener<V> listener) {
+  public void addObjectSelectionChangedListener(ObjectValueListener<V> listener) {
     comboBox.addObjectSelectionChangedListener(listener);
   }
 

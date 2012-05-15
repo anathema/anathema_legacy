@@ -18,7 +18,7 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
 
   private final Timer expirationTimer = new Timer(EXPIRATION_MILLIS, new ActionListener() {
     @Override
-    public void actionPerformed(final ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
       setIndeterminate(active);
     }
   });
@@ -39,12 +39,12 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
   }
 
   @Override
-  public final void beginTaskWithUnknownTotalWork(final String name) {
+  public final void beginTaskWithUnknownTotalWork(String name) {
     beginTask(name, UNKNOWN);
   }
 
   @Override
-  public void beginTask(final String name, final int totalWork) {
+  public void beginTask(String name, int totalWork) {
     canceled = false;
     setMinimum(0);
 
@@ -69,7 +69,7 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
   }
 
   @Override
-  public void setCanceled(final boolean canceled) {
+  public void setCanceled(boolean canceled) {
     this.canceled = canceled;
     if (canceled) {
       fireCanceled();
@@ -77,18 +77,18 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
   }
 
   @Override
-  public void subTask(final String name) {
+  public void subTask(String name) {
     //nothing to do
   }
 
   @Override
-  public void worked(final int work) {
+  public void worked(int work) {
     if (!unknownTotalWork) {
       actuallySetValue(getValue() + work, true);
     }
   }
 
-  private void actuallySetValue(final int newValue, final boolean newActive) {
+  private void actuallySetValue(int newValue, boolean newActive) {
     this.active = newActive;
     setValue(newValue);
     expirationTimer.restart();
@@ -100,22 +100,22 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
     actuallySetValue(getMaximum(), false);
   }
 
-  public synchronized void addCanceledListener(final ICanceledListener listener) {
+  public synchronized void addCanceledListener(ICanceledListener listener) {
     Preconditions.checkNotNull(listener);
     canceledListeners.add(listener);
   }
 
-  public synchronized void removeCanceledListener(final ICanceledListener listener) {
+  public synchronized void removeCanceledListener(ICanceledListener listener) {
     canceledListeners.remove(listener);
   }
 
   private void fireCanceled() {
-    final List<ICanceledListener> clonedListeners;
+    List<ICanceledListener> clonedListeners;
     synchronized (this) {
       clonedListeners = new ArrayList<ICanceledListener>(canceledListeners);
     }
-    for (final Iterator<ICanceledListener> iter = clonedListeners.iterator(); iter.hasNext();) {
-      final ICanceledListener listener = iter.next();
+    for (Iterator<ICanceledListener> iter = clonedListeners.iterator(); iter.hasNext();) {
+      ICanceledListener listener = iter.next();
       listener.canceled();
     }
   }

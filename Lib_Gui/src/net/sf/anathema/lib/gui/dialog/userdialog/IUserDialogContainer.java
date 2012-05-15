@@ -9,7 +9,7 @@ public interface IUserDialogContainer extends IDialogContainer {
    * @see #show()
    * @see #showNonModal(IDialogCloseHandler)
    */
-  public void showNonModal();
+  void showNonModal();
 
   /**
    * Executes this Dialog by showing a non-modal instance. The given close handler will be informed on
@@ -17,8 +17,8 @@ public interface IUserDialogContainer extends IDialogContainer {
    * @see #showNonModal()
    * @see #show()
    */
-  public void showNonModal(IDialogCloseHandler dialogCloseHandler);
+  void showNonModal(IDialogCloseHandler dialogCloseHandler);
 
-  public void setVisible(boolean visible);
+  void setVisible(boolean visible);
 
 }

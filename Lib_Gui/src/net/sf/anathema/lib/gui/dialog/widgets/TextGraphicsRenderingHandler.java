@@ -14,7 +14,7 @@ public final class TextGraphicsRenderingHandler implements IBlockRenderingHandle
   private final FontMetrics metrics;
   private final Color foregroundColor;
 
-  public TextGraphicsRenderingHandler(final Graphics graphics, final Color foregroundColor) {
+  public TextGraphicsRenderingHandler(Graphics graphics, Color foregroundColor) {
     Preconditions.checkNotNull(graphics);
     Preconditions.checkNotNull(foregroundColor);
     this.graphics = graphics;
@@ -24,26 +24,26 @@ public final class TextGraphicsRenderingHandler implements IBlockRenderingHandle
 
   @Override
   public void handleText(
-      final int blockIndex,
-      final String text,
-      final int x,
-      final int lineIndex,
-      final int lineHeight,
-      final Range optionalSelectionRange) {
-    final int yOffset = metrics.getLeading() + metrics.getAscent();
-    final int y = yOffset + lineIndex * lineHeight;
+      int blockIndex,
+      String text,
+      int x,
+      int lineIndex,
+      int lineHeight,
+      Range optionalSelectionRange) {
+    int yOffset = metrics.getLeading() + metrics.getAscent();
+    int y = yOffset + lineIndex * lineHeight;
     if (optionalSelectionRange != null) {
-      final String prefix = text.substring(
+      String prefix = text.substring(
           0,
           Math.min(text.length(), optionalSelectionRange.getLowerBound()));
-      final int dStartX = metrics.stringWidth(prefix);
-      final String selectionPart = text.substring(
+      int dStartX = metrics.stringWidth(prefix);
+      String selectionPart = text.substring(
           optionalSelectionRange.getLowerBound(),
           Math.min(text.length(), optionalSelectionRange.getUpperBound()));
-      final String endPart = text.substring(Math.min(
+      String endPart = text.substring(Math.min(
           text.length(),
           optionalSelectionRange.getUpperBound()));
-      final int dEndX = metrics.stringWidth(selectionPart);
+      int dEndX = metrics.stringWidth(selectionPart);
       graphics.setColor(SwingColors.getTextAreaSelectionBackgroundColor());
       graphics.fillRect(x + dStartX, lineIndex * lineHeight, dEndX, lineHeight);
 
@@ -65,12 +65,12 @@ public final class TextGraphicsRenderingHandler implements IBlockRenderingHandle
 
   @Override
   public void handleWhiteSpace(
-      final int xMin,
-      final int xMax,
-      final int lineIndex,
-      final TextPosition textPosition,
-      final int lineHeight,
-      final boolean selected) {
+      int xMin,
+      int xMax,
+      int lineIndex,
+      TextPosition textPosition,
+      int lineHeight,
+      boolean selected) {
     if (selected) {
       graphics.setColor(SwingColors.getTextAreaSelectionBackgroundColor());
       graphics.fillRect(xMin, lineIndex * lineHeight, xMax - xMin, lineHeight);
@@ -79,11 +79,11 @@ public final class TextGraphicsRenderingHandler implements IBlockRenderingHandle
 
   @Override
   public void handleLineEndsAt(
-      final int blockIndex,
-      final int blockLength,
-      final int x,
-      final int lineIndex,
-      final int height) {
+      int blockIndex,
+      int blockLength,
+      int x,
+      int lineIndex,
+      int height) {
     //nothing to do
   }
 }

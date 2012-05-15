@@ -20,26 +20,26 @@ import java.beans.PropertyChangeListener;
 
 public class TitledPanel extends JPanel {
 
-  public TitledPanel(final String title, final JComponent content) {
+  public TitledPanel(String title, JComponent content) {
     this(title, content, new GridDialogLayoutData());
   }
 
   public TitledPanel(
-      final String title,
-      final JComponent content,
-      final IGridDialogLayoutData layoutData) {
+      String title,
+      JComponent content,
+      IGridDialogLayoutData layoutData) {
     this(title, content, layoutData, new NullClosure<TitledBorder>());
   }
 
   public TitledPanel(
-      final String title,
+      String title,
       final JComponent content,
-      final IGridDialogLayoutData layoutData,
-      final Closure<TitledBorder> decorator) {
+      IGridDialogLayoutData layoutData,
+      Closure<TitledBorder> decorator) {
     super(new GridLayout(1, 0));
     Preconditions.checkNotNull(title);
     Preconditions.checkNotNull(content);
-    final TitledBorder titledBorder = new TitledBorder(title);
+    TitledBorder titledBorder = new TitledBorder(title);
     BorderUtilities.attachDisableableTitledBorder(this, titledBorder);
     decorator.execute(titledBorder);
 
@@ -54,7 +54,7 @@ public class TitledPanel extends JPanel {
         GuiUtilities.ENABLED_PROPERTY_NAME,
         new PropertyChangeListener() {
           @Override
-          public void propertyChange(final PropertyChangeEvent evt) {
+          public void propertyChange(PropertyChangeEvent evt) {
             setEnabled(content.isEnabled());
           }
         });

@@ -61,7 +61,7 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
   }
 
   @Override
-  public void addObjectSelectionChangedListener(final ObjectValueListener<V> listener) {
+  public void addObjectSelectionChangedListener(ObjectValueListener<V> listener) {
     control.addListener(listener);
   }
 

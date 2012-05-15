@@ -8,7 +8,7 @@ public class DialogPageInputValidCheckable implements IInputValidCheckable {
   private final IMessageSetable messageSetable;
   private final IDialogPage page;
 
-  public DialogPageInputValidCheckable(final IMessageSetable messageSetable, final IDialogPage page) {
+  public DialogPageInputValidCheckable(IMessageSetable messageSetable, IDialogPage page) {
     this.messageSetable = messageSetable;
     this.page = page;
   }

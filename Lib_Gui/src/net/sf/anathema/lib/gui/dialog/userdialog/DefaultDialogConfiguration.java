@@ -34,7 +34,7 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
 
     @Override
     public boolean getValue() {
-      final boolean value = !visible;
+      boolean value = !visible;
       return value;
     }
 
@@ -58,15 +58,15 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
    */
   @Deprecated
   public DefaultDialogConfiguration(
-      final P dialogPage,
-      final IDialogButtonConfiguration buttonConfiguration) {
+      P dialogPage,
+      IDialogButtonConfiguration buttonConfiguration) {
     this(dialogPage, buttonConfiguration, null, null);
   }
 
   public DefaultDialogConfiguration(
-      final P dialogPage,
-      final IDialogButtonConfiguration buttonConfiguration,
-      final IDialogVisibilitySetting dialogVisibilitySetting) {
+      P dialogPage,
+      IDialogButtonConfiguration buttonConfiguration,
+      IDialogVisibilitySetting dialogVisibilitySetting) {
     this(
         dialogPage,
         buttonConfiguration,
@@ -82,10 +82,10 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
    */
   @Deprecated
   public DefaultDialogConfiguration(
-      final P dialogPage,
-      final IDialogButtonConfiguration buttonConfiguration,
-      final Dimension customizedPreferedSize,
-      final IDialogPreferences preferences) {
+      P dialogPage,
+      IDialogButtonConfiguration buttonConfiguration,
+      Dimension customizedPreferedSize,
+      IDialogPreferences preferences) {
     this(
         dialogPage,
         buttonConfiguration,
@@ -96,12 +96,12 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
   }
 
   public DefaultDialogConfiguration(
-          final P dialogPage,
-          final IDialogButtonConfiguration buttonConfiguration,
+          P dialogPage,
+          IDialogButtonConfiguration buttonConfiguration,
           IDialogHeaderPanelConfiguration headerPanelConfiguration,
-          final Dimension customizedPreferedSize,
-          final IDialogPreferences preferences,
-          final JComponent[] additionalButtons) {
+          Dimension customizedPreferedSize,
+          IDialogPreferences preferences,
+          JComponent[] additionalButtons) {
     this(
             dialogPage,
             buttonConfiguration,
@@ -116,14 +116,14 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
    * Use {@link DefaultDialogConfigurationBuilder} to create a configuration 
    */
   public DefaultDialogConfiguration(
-      final P dialogPage,
-      final IDialogButtonConfiguration buttonConfiguration,
+      P dialogPage,
+      IDialogButtonConfiguration buttonConfiguration,
       IDialogHeaderPanelConfiguration headerPanelConfiguration,
-      final Dimension customizedPreferedSize,
-      final IDialogPreferences preferences,
-      final JComponent[] additionalButtons,
+      Dimension customizedPreferedSize,
+      IDialogPreferences preferences,
+      JComponent[] additionalButtons,
       final IVetoDialogCloseHandler vetoDialogCloseHandler,
-      final IDialogVisibilitySetting dialogVisibilitySetting,
+      IDialogVisibilitySetting dialogVisibilitySetting,
       boolean updateVisibilitySettingOnCancel) {
     super(buttonConfiguration, headerPanelConfiguration, preferences);
     this.dialogPage = dialogPage;
@@ -142,12 +142,12 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
   }
 
   public DefaultDialogConfiguration(
-      final P dialogPage,
-      final IDialogButtonConfiguration buttonConfiguration,
+      P dialogPage,
+      IDialogButtonConfiguration buttonConfiguration,
       IDialogHeaderPanelConfiguration headerPanelConfiguration,
-      final Dimension customizedPreferedSize,
-      final IDialogPreferences preferences,
-      final JComponent[] additionalButtons,
+      Dimension customizedPreferedSize,
+      IDialogPreferences preferences,
+      JComponent[] additionalButtons,
       IDialogVisibilitySetting dialogVisibilitySetting) {
     super(buttonConfiguration, headerPanelConfiguration, preferences);
     this.dialogPage = dialogPage;
@@ -158,8 +158,8 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
     this.vetoDialogCloseHandler = new IVetoDialogCloseHandler() {
       @Override
       public boolean handleDialogAboutToClose(
-          final IDialogResult result,
-          final Component parentComponent) {
+          IDialogResult result,
+          Component parentComponent) {
         updateDialogVisibilitySetting(result);
         if (result.isCanceled()) {
           return performCancel(parentComponent);
@@ -200,7 +200,7 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
     }
     JPanel panel = new JPanel(new FlowLayout());
     visibilityCheckboxModel = new VisibilityCheckboxModel();
-    final CheckBoxSmartDialogPanel checkBox = new CheckBoxSmartDialogPanel(
+    CheckBoxSmartDialogPanel checkBox = new CheckBoxSmartDialogPanel(
         visibilityCheckboxModel,
         dialogVisibilitySetting.getMessageText());
     checkBox.fillInto(panel, 2);
@@ -220,12 +220,12 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
   }
 
   @Deprecated
-  public boolean performOk(final Component parentComponent) {
+  public boolean performOk(Component parentComponent) {
     return true;
   }
 
   @Deprecated
-  public boolean performCancel(final Component parentComponent) {
+  public boolean performCancel(Component parentComponent) {
     return true;
   }
 

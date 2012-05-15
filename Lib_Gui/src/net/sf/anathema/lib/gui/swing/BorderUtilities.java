@@ -17,7 +17,7 @@ public class BorderUtilities {
         GuiUtilities.ENABLED_PROPERTY_NAME,
         new PropertyChangeListener() {
           @Override
-          public void propertyChange(final PropertyChangeEvent evt) {
+          public void propertyChange(PropertyChangeEvent evt) {
             BorderUtilities.setEnabled(border, component, component.isEnabled());
           }
         });
@@ -29,9 +29,9 @@ public class BorderUtilities {
    * its title text.
    */
   public static void setEnabled(
-      final TitledBorder border,
-      final JComponent ownerComponent,
-      final boolean enabled) {
+      TitledBorder border,
+      JComponent ownerComponent,
+      boolean enabled) {
     if (enabled) {
       border.setTitleColor(SwingColors.getTextAreaForegroundColor());
     }

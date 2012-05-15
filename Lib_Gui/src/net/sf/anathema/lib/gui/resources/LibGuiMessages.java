@@ -12,11 +12,11 @@ public class LibGuiMessages {
     //no instance available
   }
 
-  public static String getString(final String key) {
+  public static String getString(String key) {
     try {
       return RESOURCE_BUNDLE.getString(key);
     }
-    catch (final MissingResourceException e) {
+    catch (MissingResourceException e) {
       return '!' + key + '!';
     }
   }

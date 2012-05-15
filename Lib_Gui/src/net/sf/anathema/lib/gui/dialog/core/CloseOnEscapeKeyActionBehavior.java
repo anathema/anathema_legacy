@@ -15,12 +15,12 @@ public final class CloseOnEscapeKeyActionBehavior {
 
   public static void attachTo(final AbstractDialog dialog) {
     Preconditions.checkNotNull(dialog);
-    final KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
+    KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
     JRootPane rootPane = dialog.getDialog().getRootPane();
     ActionListener listener = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        final Window parentComponent = GuiUtilities.getWindowFor(e);
+        Window parentComponent = GuiUtilities.getWindowFor(e);
         dialog.performCancel(parentComponent);
       }
     };

@@ -27,24 +27,16 @@ public class CheckBoxTableColumnSettings extends AbstractTableColumnSettings {
   public TableCellRenderer getRenderer() {
     return new TableCellRenderer() {
       @Override
-      public Component getTableCellRendererComponent(
-          JTable table,
-          Object value,
-          boolean isSelected,
-          final boolean hasFocus,
-          int row,
-          int column) {
+      public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         JCheckBox checkBox = new JCheckBox();
         checkBox.setSelected((Boolean) value);
         if (hasFocus && table.isCellEditable(row, column)) {
           checkBox.setForeground(UIManager.getColor("Table.focusCellForeground")); //$NON-NLS-1$
           checkBox.setBackground(UIManager.getColor("Table.focusCellBackground")); //$NON-NLS-1$
-        }
-        else if (isSelected) {
+        } else if (isSelected) {
           checkBox.setForeground(table.getSelectionForeground());
           checkBox.setBackground(table.getSelectionBackground());
-        }
-        else {
+        } else {
           checkBox.setForeground(table.getForeground());
           checkBox.setBackground(table.getBackground());
         }

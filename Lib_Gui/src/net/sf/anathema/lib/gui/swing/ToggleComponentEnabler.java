@@ -27,19 +27,19 @@ import java.beans.PropertyChangeListener;
 public class ToggleComponentEnabler {
 
   public static void connect(
-      final JToggleButton button,
-      final IEnableableComponentContainer... components) {
+      JToggleButton button,
+      IEnableableComponentContainer... components) {
     connectWithDecorations(button, components, new JComponent[0]);
   }
 
   public static void connectWithDecorations(
-      final JToggleButton button,
-      final IEnableableComponentContainer[] components,
-      final JComponent[] decorations) {
+      JToggleButton button,
+      IEnableableComponentContainer[] components,
+      JComponent[] decorations) {
     new ToggleComponentEnabler(button, components, decorations);
   }
 
-  public static void connect(final JToggleButton button, final JComponent component) {
+  public static void connect(JToggleButton button, JComponent component) {
     connect(button, new DefaultEnableableComponentContainer(component));
   }
 
@@ -47,9 +47,9 @@ public class ToggleComponentEnabler {
   private final IEnableableComponentContainer[] components;
 
   private ToggleComponentEnabler(
-      final JToggleButton button,
-      final IEnableableComponentContainer[] components,
-      final JComponent[] decorations) {
+      JToggleButton button,
+      IEnableableComponentContainer[] components,
+      JComponent[] decorations) {
     Preconditions.checkNotNull(button);
     Preconditions.checkNotNull(components);
     this.button = button;
@@ -60,12 +60,12 @@ public class ToggleComponentEnabler {
     addDecorationListeners(decorations);
   }
 
-  private void addDecorationListeners(final Component[] decorations) {
+  private void addDecorationListeners(Component[] decorations) {
     for (int i = 0; i < decorations.length; i++) {
-      final Component currentDecoration = decorations[i];
+      Component currentDecoration = decorations[i];
       currentDecoration.addMouseListener(new MouseAdapter() {
         @Override
-        public void mousePressed(final MouseEvent e) {
+        public void mousePressed(MouseEvent e) {
           button.doClick();
         }
       });
@@ -78,25 +78,25 @@ public class ToggleComponentEnabler {
         GuiUtilities.ENABLED_PROPERTY_NAME,
         new PropertyChangeListener() {
           @Override
-          public void propertyChange(final PropertyChangeEvent evt) {
+          public void propertyChange(PropertyChangeEvent evt) {
             component.setEnabled(button.isEnabled());
           }
         });
     component.setEnabled(button.isEnabled());
   }
 
-  private void listenToComponentClicks(final IEnableableComponentContainer[] componentsToListenTo) {
+  private void listenToComponentClicks(IEnableableComponentContainer[] componentsToListenTo) {
     for (int i = 0; i < componentsToListenTo.length; ++i) {
       listenToComponentClicks(componentsToListenTo[i].getComponents());
     }
   }
 
-  private void listenToComponentClicks(final Component[] componentsToListenTo) {
+  private void listenToComponentClicks(Component[] componentsToListenTo) {
     for (int i = 0; i < componentsToListenTo.length; ++i) {
-      final Component component = componentsToListenTo[i];
+      Component component = componentsToListenTo[i];
       component.addMouseListener(new MouseAdapter() {
         @Override
-        public void mousePressed(final MouseEvent e) {
+        public void mousePressed(MouseEvent e) {
           if (button.isEnabled() && !button.isSelected()) {
             button.doClick();
             if (e.getSource() instanceof Component) {
@@ -114,7 +114,7 @@ public class ToggleComponentEnabler {
   private void setButtonListeners() {
     button.addItemListener(new ItemListener() {
       @Override
-      public void itemStateChanged(final ItemEvent e) {
+      public void itemStateChanged(ItemEvent e) {
         updateComponentsEnabled();
       }
     });
@@ -122,13 +122,13 @@ public class ToggleComponentEnabler {
         GuiUtilities.ENABLED_PROPERTY_NAME,
         new PropertyChangeListener() {
           @Override
-          public void propertyChange(final PropertyChangeEvent evt) {
+          public void propertyChange(PropertyChangeEvent evt) {
             updateComponentsEnabled();
           }
         });
   }
 
-  private void setComponentsEnabled(final boolean enabled) {
+  private void setComponentsEnabled(boolean enabled) {
     for (int i = 0; i < components.length; ++i) {
       components[i].setEnabled(enabled);
     }

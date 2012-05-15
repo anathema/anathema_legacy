@@ -30,19 +30,19 @@ public abstract class AbstractWizardConfiguration extends AbstractGenericDialogC
   }
 
   @Override
-  public void setContainer(final IWizardContainer container) {
+  public void setContainer(IWizardContainer container) {
     this.container = container;
   }
 
   @Override
   public boolean canCancel() {
-    final IWizardPage currentPage = getContainer().getCurrentPage();
+    IWizardPage currentPage = getContainer().getCurrentPage();
     return currentPage.canCancel();
   }
 
   @Override
   public boolean canFinish() {
-    final IWizardPage currentPage = getContainer().getCurrentPage();
+    IWizardPage currentPage = getContainer().getCurrentPage();
     return currentPage.canFinish();
   }
 
@@ -56,8 +56,8 @@ public abstract class AbstractWizardConfiguration extends AbstractGenericDialogC
     return new IVetoDialogCloseHandler() {
       @Override
       public boolean handleDialogAboutToClose(
-          final IDialogResult result,
-          final Component parentComponent) {
+          IDialogResult result,
+          Component parentComponent) {
         if (result.isCanceled()) {
           return true;
         }
@@ -68,7 +68,7 @@ public abstract class AbstractWizardConfiguration extends AbstractGenericDialogC
 
   @Deprecated
   @Override
-  public boolean performFinish(final Component parentComponent) {
+  public boolean performFinish(Component parentComponent) {
     return true;
   }
 }

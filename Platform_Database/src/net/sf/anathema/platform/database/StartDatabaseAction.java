@@ -14,7 +14,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.progress.INonInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
@@ -84,7 +84,7 @@ public class StartDatabaseAction extends SmartAction {
   protected void execute(final Component parentComponent) {
     try {
       String title = properties.getProgressMonitorTitle();
-      new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptableRunnableWithProgress() {
+      new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptibleRunnableWithProgress() {
         @Override
         public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {

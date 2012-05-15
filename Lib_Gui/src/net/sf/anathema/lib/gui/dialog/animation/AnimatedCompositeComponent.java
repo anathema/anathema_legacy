@@ -15,9 +15,7 @@ public class AnimatedCompositeComponent extends JPanel {
 
   private final Timer timer;
 
-  public AnimatedCompositeComponent(
-      final JComponent baseComponent,
-      final JComponent overlaidComponent) {
+  public AnimatedCompositeComponent(JComponent baseComponent, JComponent overlaidComponent) {
     Preconditions.checkNotNull(baseComponent);
     Preconditions.checkNotNull(overlaidComponent);
     setLayout(new AnimatedCompositeLayout(baseComponent, overlaidComponent));
@@ -26,14 +24,14 @@ public class AnimatedCompositeComponent extends JPanel {
 
     timer = new Timer(15, new ActionListener() {
       @Override
-      public void actionPerformed(final ActionEvent e) {
+      public void actionPerformed(ActionEvent e) {
         updateAnimation();
       }
     });
     timer.setInitialDelay(0);
   }
 
-  public void setOverlaidComponentVisible(final boolean overlaidComponentVisible) {
+  public void setOverlaidComponentVisible(boolean overlaidComponentVisible) {
     if (overlaidComponentVisible == this.overlaidComponentVisible) {
       return;
     }
@@ -45,8 +43,7 @@ public class AnimatedCompositeComponent extends JPanel {
   private void updateAnimation() {
     if (oneStep()) {
       revalidate();
-    }
-    else {
+    } else {
       timer.stop();
     }
   }

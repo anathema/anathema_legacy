@@ -27,7 +27,7 @@ public class DialogPagePanel implements IMessageSetable {
   private final ObjectModel<String> descriptionModel = new ObjectModel<String>();
   private JComponent content;
 
-  public DialogPagePanel(final IDialogHeaderPanelConfiguration headerPanelConfiguration) {
+  public DialogPagePanel(IDialogHeaderPanelConfiguration headerPanelConfiguration) {
     Preconditions.checkNotNull(headerPanelConfiguration);
     this.headerPanelConfiguration = headerPanelConfiguration;
     contentPanel = new JPanel(new GridLayout(0, 1));
@@ -35,9 +35,9 @@ public class DialogPagePanel implements IMessageSetable {
   }
 
   public JComponent createPanel() {
-    final JPanel dialogPagePanel = new JPanel(new BorderLayout());
+    JPanel dialogPagePanel = new JPanel(new BorderLayout());
     if (headerPanelConfiguration.isHeaderPanelVisible()) {
-      final DialogHeaderPanel headerPanel = new DialogHeaderPanel(
+      DialogHeaderPanel headerPanel = new DialogHeaderPanel(
           messageModel,
           descriptionModel,
           headerPanelConfiguration.getLargeDialogIcon());
@@ -48,8 +48,8 @@ public class DialogPagePanel implements IMessageSetable {
   }
 
   private Component createDialogPagePanel() {
-    final JPanel dialogPagePanel = new JPanel(new GridDialogLayout(1, false, 0, 0));
-    final GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
+    JPanel dialogPagePanel = new JPanel(new GridDialogLayout(1, false, 0, 0));
+    GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
     data.setWidthHint(IDialogConstants.MINIMUM_CONTENT_SIZE.width);
     data.setHeightHint(IDialogConstants.MINIMUM_CONTENT_SIZE.height);
     if (headerPanelConfiguration.getToolBar() != null) {
@@ -63,17 +63,17 @@ public class DialogPagePanel implements IMessageSetable {
   }
 
   @Override
-  public final void setMessage(final IBasicMessage message) {
+  public final void setMessage(IBasicMessage message) {
     messageModel.setMessage(message);
     contentPanel.validate();
     contentPanel.repaint();
   }
 
-  public final void setDescription(final String description) {
+  public final void setDescription(String description) {
     descriptionModel.setValue(description);
   }
 
-  public void setContent(final JComponent content) {
+  public void setContent(JComponent content) {
     this.content = content;
     contentPanel.removeAll();
     contentPanel.add(content);

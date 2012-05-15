@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
-import net.sf.anathema.lib.progress.IInterruptableRunnableWithProgress;
-import net.sf.anathema.lib.progress.INonInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.IInterruptibleRunnableWithProgress;
+import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
 
 import java.awt.Component;
 import java.lang.reflect.InvocationTargetException;
@@ -15,7 +15,7 @@ public class ProgressMonitorDialog extends ProgressMonitorDialogBase {
   private final InternalProgressDialogModel model;
   private final ProgressMonitorExecutor progressMonitorExecutor;
 
-  public ProgressMonitorDialog(final Component parentComponent, final String title) {
+  public ProgressMonitorDialog(Component parentComponent, String title) {
     model = new InternalProgressDialogModel();
     progressDialog = new InternalProgressDialog(parentComponent, title, model);
 
@@ -23,7 +23,7 @@ public class ProgressMonitorDialog extends ProgressMonitorDialogBase {
   }
 
   @Override
-  public void run(final INonInterruptableRunnableWithProgress runnable)
+  public void run(INonInterruptibleRunnableWithProgress runnable)
       throws InvocationTargetException {
     super.run(runnable);
     progressDialog.setCancelable(false);
@@ -32,7 +32,7 @@ public class ProgressMonitorDialog extends ProgressMonitorDialogBase {
   }
 
   @Override
-  public void run(final IInterruptableRunnableWithProgress runnable)
+  public void run(IInterruptibleRunnableWithProgress runnable)
       throws InterruptedException,
       InvocationTargetException {
     super.run(runnable);

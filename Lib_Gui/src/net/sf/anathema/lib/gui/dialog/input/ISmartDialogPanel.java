@@ -5,7 +5,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ISmartDialogPanel extends IDialogComponent  {
 
-  public void addChangeListener(IChangeListener listener);
+  void addChangeListener(IChangeListener listener);
 
-  public void requestFocus();
+  void requestFocus();
 }

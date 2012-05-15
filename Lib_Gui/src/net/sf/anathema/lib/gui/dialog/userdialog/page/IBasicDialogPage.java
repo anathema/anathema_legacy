@@ -9,23 +9,23 @@ import net.sf.anathema.lib.message.IBasicMessage;
 import javax.swing.JComponent;
 
 public interface IBasicDialogPage extends IPage, IDisposable {
-  public IBasicMessage createCurrentMessage();
+  IBasicMessage createCurrentMessage();
 
-  public void requestFocus();
+  void requestFocus();
 
-  public JComponent createContent();
+  JComponent createContent();
 
-  public void setInputValidListener(ICheckInputValidListener inputValidListener);
-
-  /** @deprecated As of 11.11.2009 (gebhard), replaced by {@link IDialogConfiguration#getVetoCloseHandler()}
-   */
-  @Deprecated
-  public boolean performCancel();
+  void setInputValidListener(ICheckInputValidListener inputValidListener);
 
   /** @deprecated As of 11.11.2009 (gebhard), replaced by {@link IDialogConfiguration#getVetoCloseHandler()}
    */
   @Deprecated
-  public boolean performOk();
+  boolean performCancel();
 
-  public void updateInputValid();
+  /** @deprecated As of 11.11.2009 (gebhard), replaced by {@link IDialogConfiguration#getVetoCloseHandler()}
+   */
+  @Deprecated
+  boolean performOk();
+
+  void updateInputValid();
 }

@@ -13,7 +13,7 @@ public class IconImageIcon extends ImageIcon {
   public IconImageIcon(final Icon icon) {
     super(createImage(icon));
     if (icon instanceof IChangeableModel) {
-      final IChangeableModel changeableModel = (IChangeableModel) icon;
+      IChangeableModel changeableModel = (IChangeableModel) icon;
       changeableModel.addChangeListener(new IChangeListener() {
         @Override
         public void changeOccurred() {
@@ -23,7 +23,7 @@ public class IconImageIcon extends ImageIcon {
     }
   }
 
-  private static Image createImage(final Icon icon) {
+  private static Image createImage(Icon icon) {
     return IconUtilities.createBufferedImage(icon);
   }
 

@@ -40,9 +40,9 @@ public class InternalProgressDialog
   private final ProgressMonitorComponent monitorComponent;
 
   public InternalProgressDialog(
-      final Component parentComponent,
-      final String title,
-      final InternalProgressDialogModel model) {
+      Component parentComponent,
+      String title,
+      InternalProgressDialogModel model) {
     Preconditions.checkNotNull(model);
     this.parentComponent = parentComponent;
     this.title = title;
@@ -50,7 +50,7 @@ public class InternalProgressDialog
 
     cancelAction = new SmartAction(DialogMessages.CANCEL) {
       @Override
-      protected void execute(final Component parent) {
+      protected void execute(Component parent) {
         performCancel();
       }
     };
@@ -66,7 +66,7 @@ public class InternalProgressDialog
     yield();
   }
 
-  public void setCancelable(final boolean cancelable) {
+  public void setCancelable(boolean cancelable) {
     this.cancelable = cancelable;
     cancelAction.setEnabled(cancelable);
   }
@@ -85,11 +85,11 @@ public class InternalProgressDialog
   }
 
   private JDialog createDialog() {
-    final JButton cancelButton = new JButton(cancelAction);
-    final ButtonPanelBuilder builder = new ButtonPanelBuilder();
+    JButton cancelButton = new JButton(cancelAction);
+    ButtonPanelBuilder builder = new ButtonPanelBuilder();
     builder.add(cancelButton);
 
-    final JDialog newDialog = GuiUtilities.createDialog(parentComponent, title);
+    JDialog newDialog = GuiUtilities.createDialog(parentComponent, title);
     newDialog.getContentPane().setLayout(new BorderLayout(2, 2));
     newDialog.getContentPane().add(monitorComponent.getContent(), BorderLayout.CENTER);
 
@@ -105,12 +105,12 @@ public class InternalProgressDialog
 
     newDialog.addWindowListener(new WindowAdapter() {
       @Override
-      public void windowClosing(final WindowEvent e) {
+      public void windowClosing(WindowEvent e) {
         performCancel();
       }
 
       @Override
-      public void windowClosed(final WindowEvent e) {
+      public void windowClosed(WindowEvent e) {
         synchronized (InternalProgressDialog.this) {
           dialogClosed = true;
         }
@@ -128,7 +128,7 @@ public class InternalProgressDialog
           try {
             wait(50); // give up monitor for WindowListener
           }
-          catch (final InterruptedException e) {
+          catch (InterruptedException e) {
             //nothing to do
           }
         }
@@ -140,13 +140,13 @@ public class InternalProgressDialog
   }
 
   @Override
-  public final void beginTaskWithUnknownTotalWork(final String name) {
+  public final void beginTaskWithUnknownTotalWork(String name) {
     monitorComponent.beginTaskWithUnknownTotalWork(name);
     yield();
   }
 
   @Override
-  public void beginTask(final String name, final int totalWork) {
+  public void beginTask(String name, int totalWork) {
     monitorComponent.beginTask(name, totalWork);
     yield();
   }
@@ -158,7 +158,7 @@ public class InternalProgressDialog
   }
 
   @Override
-  public void setCanceled(final boolean canceled) {
+  public void setCanceled(boolean canceled) {
     model.setCanceled(canceled);
     if (canceled) {
       fireCanceled();
@@ -167,13 +167,13 @@ public class InternalProgressDialog
   }
 
   @Override
-  public synchronized void addCanceledListener(final ICanceledListener listener) {
+  public synchronized void addCanceledListener(ICanceledListener listener) {
     Preconditions.checkNotNull(listener);
     canceledListeners.add(listener);
   }
 
   @Override
-  public synchronized void removeCanceledListener(final ICanceledListener listener) {
+  public synchronized void removeCanceledListener(ICanceledListener listener) {
     canceledListeners.remove(listener);
   }
 
@@ -182,20 +182,20 @@ public class InternalProgressDialog
     synchronized (this) {
       clonedListeners = new ArrayList<ICanceledListener>(canceledListeners);
     }
-    for (final Iterator<ICanceledListener> iter = clonedListeners.iterator(); iter.hasNext();) {
-      final ICanceledListener listener = iter.next();
+    for (Iterator<ICanceledListener> iter = clonedListeners.iterator(); iter.hasNext();) {
+      ICanceledListener listener = iter.next();
       listener.canceled();
     }
   }
 
   @Override
-  public void subTask(final String name) {
+  public void subTask(String name) {
     monitorComponent.subTask(name);
     yield();
   }
 
   @Override
-  public void worked(final int work) {
+  public void worked(int work) {
     monitorComponent.worked(work);
     yield();
   }

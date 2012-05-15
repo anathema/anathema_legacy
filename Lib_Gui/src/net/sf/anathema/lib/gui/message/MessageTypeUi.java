@@ -18,31 +18,31 @@ public class MessageTypeUi extends AbstractMessageTypeUi {
   private static MessageTypeUi instance = new MessageTypeUi();
 
   @Override
-  public Icon getIcon(final MessageType type) {
+  public Icon getIcon(MessageType type) {
     final Icon[] icon = new Icon[1];
     type.accept(new IMessageTypeVisitor() {
       @Override
-      public void visitError(final MessageType visitedType) {
+      public void visitError(MessageType visitedType) {
         icon[0] = errorIcon;
       }
 
       @Override
-      public void visitNormal(final MessageType visitedType) {
+      public void visitNormal(MessageType visitedType) {
         icon[0] = normalIcon;
       }
 
       @Override
-      public void visitWarning(final MessageType visitedType) {
+      public void visitWarning(MessageType visitedType) {
         icon[0] = warningIcon;
       }
 
       @Override
-      public void visitInformation(final MessageType visitedType) {
+      public void visitInformation(MessageType visitedType) {
         icon[0] = infoIcon;
       }
 
       @Override
-      public void visitQuestion(final MessageType visitedType) {
+      public void visitQuestion(MessageType visitedType) {
         icon[0] = questionIcon;
       }
     });

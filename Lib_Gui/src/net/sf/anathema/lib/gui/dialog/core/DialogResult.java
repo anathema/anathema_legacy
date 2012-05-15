@@ -4,7 +4,7 @@ public class DialogResult implements IDialogResult {
 
   private final boolean canceled;
 
-  public DialogResult(final boolean canceled) {
+  public DialogResult(boolean canceled) {
     this.canceled = canceled;
   }
 

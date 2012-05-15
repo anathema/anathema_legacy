@@ -19,10 +19,10 @@ public class CompositeIcon extends AbstractChangeableModel implements Icon {
     }
   };
 
-  public CompositeIcon(final Icon... icons) {
+  public CompositeIcon(Icon... icons) {
     Preconditions.checkNotNull(icons);
     this.icons = icons;
-    for (final Icon icon : icons) {
+    for (Icon icon : icons) {
       if (icon instanceof IChangeableModel) {
         ((IChangeableModel) icon).addChangeListener(delegatingChangeListener);
       }
@@ -30,8 +30,8 @@ public class CompositeIcon extends AbstractChangeableModel implements Icon {
   }
 
   @Override
-  public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
-    for (final Icon icon : icons) {
+  public void paintIcon(Component c, Graphics g, int x, int y) {
+    for (Icon icon : icons) {
       icon.paintIcon(c, g, x, y);
     }
   }

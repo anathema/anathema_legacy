@@ -14,7 +14,7 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
   private final JComponent overlaidComponent;
   private final JComponent baseComponent;
 
-  public AnimatedCompositeLayout(final JComponent baseComponent, final JComponent overlaidComponent) {
+  public AnimatedCompositeLayout(JComponent baseComponent, JComponent overlaidComponent) {
     Preconditions.checkNotNull(baseComponent);
     Preconditions.checkNotNull(overlaidComponent);
     this.baseComponent = baseComponent;
@@ -22,7 +22,7 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
   }
 
   @Override
-  public void addLayoutComponent(final String name, final Component comp) {
+  public void addLayoutComponent(String name, Component comp) {
     if (comp != baseComponent && comp != overlaidComponent) {
       throw new IllegalArgumentException(
           "No other components may be added to an animated composite panel, tried to add " + comp); //$NON-NLS-1$
@@ -30,7 +30,7 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
   }
 
   @Override
-  public void addLayoutComponent(final Component comp, final Object constraints) {
+  public void addLayoutComponent(Component comp, Object constraints) {
     if (comp != baseComponent && comp != overlaidComponent) {
       throw new IllegalArgumentException(
           "No other components may be added to an animated composite panel, tried to add " + comp); //$NON-NLS-1$
@@ -38,17 +38,17 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
   }
 
   @Override
-  public void layoutContainer(final Container parent) {
+  public void layoutContainer(Container parent) {
     synchronized (parent.getTreeLock()) {
-      final AnimatedCompositeComponent component = (AnimatedCompositeComponent) parent;
-      final Insets insets = parent.getInsets();
-      final Dimension size = parent.getSize();
+      AnimatedCompositeComponent component = (AnimatedCompositeComponent) parent;
+      Insets insets = parent.getInsets();
+      Dimension size = parent.getSize();
       baseComponent.setBounds(
           insets.left,
           insets.top,
           size.width - (insets.left + insets.right),
           size.height - (insets.top + insets.bottom));
-      final int overlayPositionFromBottom = component.isOverlayVisible()
+      int overlayPositionFromBottom = component.isOverlayVisible()
           ? component.getSize().height - component.getOverlayPosition()
           : component.getOverlayPosition();
       overlaidComponent.setBounds(
@@ -63,11 +63,11 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
   }
 
   @Override
-  public Dimension minimumLayoutSize(final Container parent) {
+  public Dimension minimumLayoutSize(Container parent) {
     synchronized (parent.getTreeLock()) {
-      final Insets insets = parent.getInsets();
-      final Dimension size1 = baseComponent.getMinimumSize();
-      final Dimension size2 = overlaidComponent.getMinimumSize();
+      Insets insets = parent.getInsets();
+      Dimension size1 = baseComponent.getMinimumSize();
+      Dimension size2 = overlaidComponent.getMinimumSize();
       return new Dimension(
           insets.left + insets.right + Math.max(size1.width, size2.width),
           insets.top + insets.bottom + Math.max(size1.height, size2.height));
@@ -75,11 +75,11 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
   }
 
   @Override
-  public Dimension preferredLayoutSize(final Container parent) {
+  public Dimension preferredLayoutSize(Container parent) {
     synchronized (parent.getTreeLock()) {
-      final Insets insets = parent.getInsets();
-      final Dimension size1 = baseComponent.getPreferredSize();
-      final Dimension size2 = overlaidComponent.getPreferredSize();
+      Insets insets = parent.getInsets();
+      Dimension size1 = baseComponent.getPreferredSize();
+      Dimension size2 = overlaidComponent.getPreferredSize();
       return new Dimension(
           insets.left + insets.right + Math.max(size1.width, size2.width),
           insets.top + insets.bottom + Math.max(size1.height, size2.height));
@@ -87,12 +87,12 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
   }
 
   @Override
-  public Dimension maximumLayoutSize(final Container target) {
+  public Dimension maximumLayoutSize(Container target) {
     return new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE);
   }
 
   @Override
-  public float getLayoutAlignmentX(final Container parent) {
+  public float getLayoutAlignmentX(Container parent) {
     return 0.5f;
   }
 
@@ -104,17 +104,17 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
    * the furthest away from the origin, 0.5 is centered, etc.
    */
   @Override
-  public float getLayoutAlignmentY(final Container parent) {
+  public float getLayoutAlignmentY(Container parent) {
     return 0.5f;
   }
 
   @Override
-  public void invalidateLayout(final Container target) {
+  public void invalidateLayout(Container target) {
     //nothing to do
   }
 
   @Override
-  public void removeLayoutComponent(final Component comp) {
+  public void removeLayoutComponent(Component comp) {
     //nothing to do
   }
 }

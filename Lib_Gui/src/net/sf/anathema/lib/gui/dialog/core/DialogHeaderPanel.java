@@ -31,10 +31,7 @@ public class DialogHeaderPanel {
   private final Icon largeDialogHeaderIcon;
   private JComponent content;
 
-  public DialogHeaderPanel(
-      final DialogMessageModel messageModel,
-      final ObjectModel<String> descriptionModel,
-      final Icon largeDialogHeaderIcon) {
+  public DialogHeaderPanel(DialogMessageModel messageModel, ObjectModel<String> descriptionModel, Icon largeDialogHeaderIcon) {
     Preconditions.checkNotNull(messageModel);
     Preconditions.checkNotNull(descriptionModel);
     this.descriptionModel = descriptionModel;
@@ -57,33 +54,30 @@ public class DialogHeaderPanel {
 
   public JComponent getContent() {
     if (content == null) {
-      final JPanel innerPanel = new JPanel(new BorderLayout(
-          LayoutUtilities.getDpiAdjusted(2),
-          LayoutUtilities.getDpiAdjusted(2)));
+      JPanel innerPanel = new JPanel(new BorderLayout(LayoutUtilities.getDpiAdjusted(2), LayoutUtilities.getDpiAdjusted(2)));
       innerPanel.add(Box.createRigidArea(new Dimension(1, 22)), BorderLayout.EAST);
       innerPanel.add(messagePanel.getContent(), BorderLayout.CENTER);
       innerPanel.add(descriptionLabel, BorderLayout.NORTH);
-      innerPanel.setBorder(new EmptyBorder(LayoutUtilities.getDpiAdjusted(2), LayoutUtilities
-          .getDpiAdjusted(4), 0, LayoutUtilities.getDpiAdjusted(2)));
+      innerPanel
+              .setBorder(new EmptyBorder(LayoutUtilities.getDpiAdjusted(2), LayoutUtilities.getDpiAdjusted(4), 0, LayoutUtilities.getDpiAdjusted(2)));
       innerPanel.setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
 
-      final Icon icon;
+      Icon icon;
       if (largeDialogHeaderIcon != null) {
         icon = new CompositeIcon(DialogIconResources.DIALOG_HEADER_ICON_BACKGROUND, largeDialogHeaderIcon);
-      }
-      else {
+      } else {
         icon = new CompositeIcon(DialogIconResources.DIALOG_HEADER_ICON_BACKGROUND);
       }
-      final JLabel label = new JLabel(icon);
+      JLabel label = new JLabel(icon);
 
-      final JPanel panel = new JPanel(new GridDialogLayout(2, false, 0, 0));
+      JPanel panel = new JPanel(new GridDialogLayout(2, false, 0, 0));
       panel.setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
       panel.add(innerPanel, GridDialogLayoutData.FILL_BOTH);
-      final GridDialogLayoutData iconLayout = new GridDialogLayoutData();
+      GridDialogLayoutData iconLayout = new GridDialogLayoutData();
       iconLayout.setVerticalAlignment(GridAlignment.END);
       panel.add(label, iconLayout);
 
-      final JPanel contentPanel = new JPanel(new BorderLayout(0, 0));
+      JPanel contentPanel = new JPanel(new BorderLayout(0, 0));
       contentPanel.add(panel, BorderLayout.CENTER);
       contentPanel.add(new HorizontalLine(), BorderLayout.SOUTH);
 
@@ -93,7 +87,7 @@ public class DialogHeaderPanel {
   }
 
   private void updateDescription() {
-    final String description = descriptionModel.getValue();
+    String description = descriptionModel.getValue();
     descriptionLabel.setText(description);
   }
 }

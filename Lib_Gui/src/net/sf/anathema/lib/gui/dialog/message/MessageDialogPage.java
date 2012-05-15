@@ -19,7 +19,7 @@ public class MessageDialogPage extends AbstractDialogPage {
 
   private final IMessage message;
 
-  public MessageDialogPage(final IMessage message) {
+  public MessageDialogPage(IMessage message) {
     super(""); //$NON-NLS-1$
     Preconditions.checkNotNull(message);
     this.message = message;
@@ -27,9 +27,9 @@ public class MessageDialogPage extends AbstractDialogPage {
 
   @Override
   public JComponent createContent() {
-    final Icon icon = new LargeIconMessageTypeUi().getIcon(message.getType());
-    final AutoWrappingLabel label = new AutoWrappingLabel(message.getText(), 294);
-    final JPanel panel = new JPanel(new GridDialogLayout(2, false, 13, 0));
+    Icon icon = new LargeIconMessageTypeUi().getIcon(message.getType());
+    AutoWrappingLabel label = new AutoWrappingLabel(message.getText(), 294);
+    JPanel panel = new JPanel(new GridDialogLayout(2, false, 13, 0));
     label.setBackground(panel.getBackground());
     panel.add(new JLabel(icon), GridDialogLayoutData.FILL_VERTICAL);
     panel.add(label.getContent(), GridDialogLayoutData.FILL_HORIZONTAL);

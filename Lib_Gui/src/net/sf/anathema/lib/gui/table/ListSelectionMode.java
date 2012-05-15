@@ -14,12 +14,12 @@ public class ListSelectionMode {
     return listSelectionMode;
   }
 
-  public final static ListSelectionMode SINGLE_SELECTION = new ListSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+  public static final ListSelectionMode SINGLE_SELECTION = new ListSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-  public final static ListSelectionMode MULTIPLE_INTERVAL_SELECTION = new ListSelectionMode(
+  public static final ListSelectionMode MULTIPLE_INTERVAL_SELECTION = new ListSelectionMode(
       ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-  public final static ListSelectionMode SINGLE_INTERVAL_SELECTION = new ListSelectionMode(
+  public static final ListSelectionMode SINGLE_INTERVAL_SELECTION = new ListSelectionMode(
       ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
 }

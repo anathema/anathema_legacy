@@ -37,18 +37,18 @@ public class GuiUtilities {
     throw new UnreachableCodeReachedException();
   }
 
-  public static Window getWindowFor(final EventObject event) {
+  public static Window getWindowFor(EventObject event) {
     if (event == null) {
       return JOptionPane.getRootFrame();
     }
-    final Object object = event.getSource();
+    Object object = event.getSource();
     if (object instanceof Component) {
       return getWindowFor((Component) object);
     }
     return JOptionPane.getRootFrame();
   }
 
-  public static Window getWindowFor(final Component component) {
+  public static Window getWindowFor(Component component) {
     if (component == null) {
       return JOptionPane.getRootFrame();
     }
@@ -65,37 +65,37 @@ public class GuiUtilities {
    * Sets the location of the given window relative to another swing. If the other swing is
    * not currently showing, the window is centered on the screen.
    */
-  public static void centerToComponent(final Window window, final Component component) {
-    final Window parentWindow = getWindowFor(component);
+  public static void centerToComponent(Window window, Component component) {
+    Window parentWindow = getWindowFor(component);
     if (parentWindow == null || !parentWindow.isVisible()) {
       centerOnScreen(window);
-    }
-    else {
-      final SmartRectangle parentBounds = getSizeOnScreen(parentWindow);
+    } else {
+
+      SmartRectangle parentBounds = getSizeOnScreen(parentWindow);
       centerToPoint(window, parentBounds.getCenter());
     }
   }
 
-  private static SmartRectangle getSizeOnScreen(final Component component) {
+  private static SmartRectangle getSizeOnScreen(Component component) {
     return new SmartRectangle(component.getLocationOnScreen(), component.getSize());
   }
 
-  public static void placeRelativeToOwner(final Window window, final RelativePosition position) {
+  public static void placeRelativeToOwner(Window window, RelativePosition position) {
     position.place(window);
     assureIsOnScreen(window);
   }
 
-  public static void centerOnScreen(final Window window) {
-    final Point screenCenter = new SmartRectangle(getScreenBounds(window)).getCenter();
+  public static void centerOnScreen(Window window) {
+    Point screenCenter = new SmartRectangle(getScreenBounds(window)).getCenter();
     centerToPoint(window, screenCenter);
   }
 
-  public static Rectangle getScreenBounds(final Component component) {
+  public static Rectangle getScreenBounds(Component component) {
     return component.getGraphicsConfiguration().getBounds();
   }
 
-  public static void centerToPoint(final Window window, final Point center) {
-    final Dimension size = window.getSize();
+  public static void centerToPoint(Window window, Point center) {
+    Dimension size = window.getSize();
     int x = center.x - size.width / 2;
     int y = center.y - size.height / 2;
     x = x < 0 ? 0 : x;
@@ -103,19 +103,19 @@ public class GuiUtilities {
     window.setLocation(x, y);
   }
 
-   public static void centerToParent(final Window window) {
+  public static void centerToParent(Window window) {
     centerToComponent(window, window.getParent());
   }
 
-  public static JDialog createDialog(final Component parentComponent, final String title) {
-    final JDialog dialog = createRawDialogForParentComponent(parentComponent);
+  public static JDialog createDialog(Component parentComponent, String title) {
+    JDialog dialog = createRawDialogForParentComponent(parentComponent);
     dialog.setTitle(title);
     accountForScreenSize(dialog);
     return dialog;
   }
 
-  private static JDialog createRawDialogForParentComponent(final Component parentComponent) {
-    final Window window = getWindowFor(parentComponent);
+  private static JDialog createRawDialogForParentComponent(Component parentComponent) {
+    Window window = getWindowFor(parentComponent);
     if (window instanceof Frame) {
       return new JDialog((Frame) window);
     }
@@ -125,20 +125,20 @@ public class GuiUtilities {
     return new JDialog();
   }
 
-  public static void accountForScreenSize(final Window window) {
+  public static void accountForScreenSize(Window window) {
     window.addComponentListener(new ComponentAdapter() {
       @Override
-      public void componentResized(final ComponentEvent e) {
+      public void componentResized(ComponentEvent e) {
         assureIsOnScreen((Window) e.getSource());
       }
     });
   }
 
-  public static void assureIsOnScreen(final Window window) {
+  public static void assureIsOnScreen(Window window) {
     assureIsOnScreen(window, calculateScreenBounds(window));
   }
 
-  public static void assureIsOnScreen(final Window window, final Rectangle screenBounds) {
+  public static void assureIsOnScreen(Window window, Rectangle screenBounds) {
     if (window instanceof Frame && ((Frame) window).getExtendedState() == Frame.MAXIMIZED_BOTH) {
       return; //setting bounds would cause the extended state to be set from maximized back to normal!
       //Also in maximized mode the system will take care of the frame being on the screen   
@@ -147,10 +147,8 @@ public class GuiUtilities {
     window.validate(); // ohne das war bei niedrigen Aufloesungen die Toolbar in GISterm initial nicht sichtbar (ip)
   }
 
-  public static Rectangle calculateOnScreenBounds(
-      final Rectangle componentBounds,
-      final Rectangle screenBounds) {
-    final Rectangle onScreenBounds = new Rectangle(componentBounds);
+  public static Rectangle calculateOnScreenBounds(Rectangle componentBounds, Rectangle screenBounds) {
+    Rectangle onScreenBounds = new Rectangle(componentBounds);
     if (onScreenBounds.height > screenBounds.height) {
       onScreenBounds.height = screenBounds.height;
     }
@@ -161,93 +159,67 @@ public class GuiUtilities {
     return onScreenBounds;
   }
 
-  public static void stopCellEditing(final JTable table) {
-    final TableCellEditor cellEditor = table.getCellEditor();
+  public static void stopCellEditing(JTable table) {
+    TableCellEditor cellEditor = table.getCellEditor();
     if (cellEditor != null) {
       cellEditor.stopCellEditing();
     }
   }
 
-  public static Point calculateScreenFittingLocation(
-      final Rectangle screenBounds,
-      final Rectangle rectangle) {
-    final int x = (int) Math.max(
-        screenBounds.x,
-        Math.min(screenBounds.getMaxX() - rectangle.width, rectangle.x));
-    final int y = (int) Math.max(
-        screenBounds.y,
-        Math.min(screenBounds.getMaxY() - rectangle.height, rectangle.y));
+  public static Point calculateScreenFittingLocation(Rectangle screenBounds, Rectangle rectangle) {
+    int x = (int) Math.max(screenBounds.x, Math.min(screenBounds.getMaxX() - rectangle.width, rectangle.x));
+    int y = (int) Math.max(screenBounds.y, Math.min(screenBounds.getMaxY() - rectangle.height, rectangle.y));
     return new Point(x, y);
   }
 
-  public static Rectangle calculateScreenBounds(final Component anyComponentOnScreen) {
-    return calculateScreenBounds(
-        anyComponentOnScreen.getGraphicsConfiguration(),
-        anyComponentOnScreen.getToolkit());
+  public static Rectangle calculateScreenBounds(Component anyComponentOnScreen) {
+    return calculateScreenBounds(anyComponentOnScreen.getGraphicsConfiguration(), anyComponentOnScreen.getToolkit());
   }
 
-  public static Rectangle calculateScreenBounds(
-      final GraphicsConfiguration graphicsConfiguration,
-      final Toolkit toolkit) {
-    final Rectangle overallScreenBounds = graphicsConfiguration.getBounds();
-    final Insets screenInsets = toolkit.getScreenInsets(graphicsConfiguration);
-    final Rectangle screenBounds = new Rectangle(
-        overallScreenBounds.x + screenInsets.left,
-        overallScreenBounds.y + screenInsets.top,
-        overallScreenBounds.width - screenInsets.left - screenInsets.right,
-        overallScreenBounds.height - screenInsets.top - screenInsets.bottom);
+  public static Rectangle calculateScreenBounds(GraphicsConfiguration graphicsConfiguration, Toolkit toolkit) {
+    Rectangle overallScreenBounds = graphicsConfiguration.getBounds();
+    Insets screenInsets = toolkit.getScreenInsets(graphicsConfiguration);
+    Rectangle screenBounds = new Rectangle(overallScreenBounds.x + screenInsets.left, overallScreenBounds.y + screenInsets.top,
+            overallScreenBounds.width - screenInsets.left - screenInsets.right, overallScreenBounds.height - screenInsets.top - screenInsets.bottom);
     return screenBounds;
   }
 
-  public static Set<Container> setContainerEnabled(final Container control, final boolean enabled) {
+  public static Set<Container> setContainerEnabled(Container control, boolean enabled) {
     return setContainerEnabled(control, enabled, new HashSet<Container>());
   }
 
   /**
    * Enabled / Disabled einen Container mit allen Unterkomponenten
-   * 
-   * @param c der Container
-   * @param enable true, wenn der Container enabled werden soll
+   *
+   * @param c          der Container
+   * @param enable     true, wenn der Container enabled werden soll
    * @param components die Komponenten, die nicht enabled / disabled werden sollen
    * @return die Komponenten, die vorher schon enabled / disabled waren
    */
-  public static Set<Container> setContainerEnabled(
-      final Container c,
-      final boolean enable,
-      final Set<Container> components) {
-    final HashSet<Container> enabledComps = new HashSet<Container>();
+  public static Set<Container> setContainerEnabled(Container c, boolean enable, Set<Container> components) {
+    HashSet<Container> enabledComps = new HashSet<Container>();
 
     if (!components.contains(c)) {
       if (c.isEnabled() == enable) {
         enabledComps.add(c);
-      }
-      else {
+      } else {
         c.setEnabled(enable);
       }
     }
     return setSubComponentsEnabled(c, enable, components, enabledComps);
   }
 
-  private static Set<Container> setSubComponentsEnabled(
-      final Container c,
-      final boolean enable,
-      final Set<Container> components,
-      final Set<Container> enabledComps) {
-    final Component[] comps = c.getComponents();
+  private static Set<Container> setSubComponentsEnabled(Container c, boolean enable, Set<Container> components, Set<Container> enabledComps) {
+    Component[] comps = c.getComponents();
     for (int i = 0; i < comps.length; i++) {
       if (comps[i] instanceof Container) {
-        final Set<Container> enabledContainers = setContainerEnabled(
-            (Container) comps[i],
-            enable,
-            components);
+        Set<Container> enabledContainers = setContainerEnabled((Container) comps[i], enable, components);
         enabledComps.addAll(enabledContainers);
-      }
-      else {
+      } else {
         if (!components.contains(comps[i])) {
           if (comps[i].isEnabled() == enable) {
             enabledComps.add(c);
-          }
-          else {
+          } else {
             comps[i].setEnabled(enable);
           }
         }
@@ -256,28 +228,25 @@ public class GuiUtilities {
     return enabledComps;
   }
 
-  public static void repack(final Window window) {
+  public static void repack(Window window) {
     if (!window.isVisible()) {
       window.pack();
       return;
     }
-    final Rectangle oldBounds = window.getBounds();
-    final Dimension newSize = window.getPreferredSize();
-    final Point newLocation = new Point(
-        oldBounds.x + (oldBounds.width - newSize.width) / 2,
-        oldBounds.y + (oldBounds.height - newSize.height) / 2);
+    Rectangle oldBounds = window.getBounds();
+    Dimension newSize = window.getPreferredSize();
+    Point newLocation = new Point(oldBounds.x + (oldBounds.width - newSize.width) / 2, oldBounds.y + (oldBounds.height - newSize.height) / 2);
     Rectangle newBounds = new Rectangle(newLocation, newSize);
     newBounds = calculateOnScreenBounds(newBounds, calculateScreenBounds(window));
     window.setBounds(newBounds);
     window.validate();
   }
 
-  public static void stopCellEditing(final Container container) {
+  public static void stopCellEditing(Container container) {
     if (container instanceof JTable) {
       stopCellEditing((JTable) container);
-    }
-    else {
-      for (final Component component : container.getComponents()) {
+    } else {
+      for (Component component : container.getComponents()) {
         if (component instanceof Container) {
           stopCellEditing((Container) component);
         }
@@ -295,8 +264,7 @@ public class GuiUtilities {
     for (Component component : container.getComponents()) {
       if (component instanceof Container) {
         setEnabled((Container) component, enabled);
-      }
-      else {
+      } else {
         component.setEnabled(enabled);
       }
     }
@@ -329,15 +297,12 @@ public class GuiUtilities {
   public static void invokeOnEventDispatchThread(Runnable runner) {
     if (SwingUtilities.isEventDispatchThread()) {
       runner.run();
-    }
-    else {
+    } else {
       try {
         SwingUtilities.invokeAndWait(runner);
-      }
-      catch (InterruptedException e) {
+      } catch (InterruptedException e) {
         throw new RuntimeException(e);
-      }
-      catch (InvocationTargetException e) {
+      } catch (InvocationTargetException e) {
         throw new RuntimeException(e);
       }
     }

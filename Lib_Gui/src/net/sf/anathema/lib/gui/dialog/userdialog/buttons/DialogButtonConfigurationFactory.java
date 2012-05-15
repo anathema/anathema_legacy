@@ -9,13 +9,11 @@ public class DialogButtonConfigurationFactory {
     return createOkOnly(DialogButtonConfiguration.DEFAULT_OK_CONFIG);
   }
 
-  public static IDialogButtonConfiguration createOkCancelWithOkText(final String okText) {
+  public static IDialogButtonConfiguration createOkCancelWithOkText(String okText) {
     return createOkCancelWithTexts(okText, DialogMessages.CANCEL);
   }
 
-  public static IDialogButtonConfiguration createOkCancelWithTexts(
-      final String okText,
-      final String cancelText) {
+  public static IDialogButtonConfiguration createOkCancelWithTexts(String okText, String cancelText) {
     return new DialogButtonConfiguration(okText, cancelText);
   }
 
@@ -23,7 +21,7 @@ public class DialogButtonConfigurationFactory {
     return new DialogButtonConfiguration();
   }
 
-  private static DialogButtonConfiguration createOkOnly(final ActionConfiguration config) {
+  private static DialogButtonConfiguration createOkOnly(ActionConfiguration config) {
     return new DialogButtonConfiguration(config, null);
   }
 }

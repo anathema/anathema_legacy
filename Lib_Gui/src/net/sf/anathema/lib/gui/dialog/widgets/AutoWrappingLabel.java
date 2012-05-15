@@ -11,7 +11,7 @@ import java.awt.Font;
  */
 public class AutoWrappingLabel {
 
-  private final static int INITIAL_WIDTH = 330;
+  private static final int INITIAL_WIDTH = 330;
 
   //10.11.2007 (Markus Gebhard): I have tried to implement this using a JTextArea, but this failed.
   // Problem is the size: there is no good way to find out the required height in order not to crop
@@ -22,16 +22,16 @@ public class AutoWrappingLabel {
     this(""); //$NON-NLS-1$
   }
 
-  public AutoWrappingLabel(final String text) {
+  public AutoWrappingLabel(String text) {
     this(text, INITIAL_WIDTH);
   }
 
-  public AutoWrappingLabel(final String text, final int width) {
+  public AutoWrappingLabel(String text, int width) {
     component = new AutoWrappingTextComponent(text, width);
     LookAndFeelUtilities.installColorsAndFont(component, LookAndFeelUtilities.COMPONENT_TYPE_LABEL);
   }
 
-  public void setFont(final Font font) {
+  public void setFont(Font font) {
     component.setFont(font);
   }
 
@@ -39,19 +39,19 @@ public class AutoWrappingLabel {
     return component;
   }
 
-  public void setForeground(final Color color) {
+  public void setForeground(Color color) {
     component.setForeground(color);
   }
 
-  public void setBackground(final Color color) {
+  public void setBackground(Color color) {
     component.setBackground(color);
   }
 
-  public void setText(final String text) {
+  public void setText(String text) {
     component.setText(text);
   }
 
-  public void setOpaque(final boolean opaque) {
+  public void setOpaque(boolean opaque) {
     component.setOpaque(opaque);
   }
 }

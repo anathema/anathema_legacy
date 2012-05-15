@@ -9,7 +9,7 @@ public class DisabledIconDecorator implements Icon {
 
   private final Icon icon;
 
-  public DisabledIconDecorator(final Icon icon) {
+  public DisabledIconDecorator(Icon icon) {
     this.icon = icon;
   }
 
@@ -24,8 +24,8 @@ public class DisabledIconDecorator implements Icon {
   }
 
   @Override
-  public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
-    final ColorFilterGraphics disabledGraphics = new ColorFilterGraphics((Graphics2D) g, c);
+  public void paintIcon(Component c, Graphics g, int x, int y) {
+    ColorFilterGraphics disabledGraphics = new ColorFilterGraphics((Graphics2D) g, c);
     icon.paintIcon(c, disabledGraphics, x, y);
   }
 

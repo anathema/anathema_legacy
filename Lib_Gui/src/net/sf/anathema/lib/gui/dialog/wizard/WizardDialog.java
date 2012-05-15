@@ -64,7 +64,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
    * @param parent a parent swing
    * @param configuration the wizard configuration this dialog is working on
    */
-  public WizardDialog(final Component parent, final IWizardConfiguration configuration) {
+  public WizardDialog(Component parent, IWizardConfiguration configuration) {
     super(parent, configuration);
     this.configuration = configuration;
     configuration.setContainer(this);
@@ -74,33 +74,33 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
   @Override
   protected JComponent createButtonBar() {
-    final SmartAction backAction = new SmartAction(DialogMessages.WIZARD_BACK) {
+    SmartAction backAction = new SmartAction(DialogMessages.WIZARD_BACK) {
       @Override
-      protected void execute(final Component parentComponent) {
+      protected void execute(Component parentComponent) {
         backPressed();
       }
     };
 
     backButton = new JButton(backAction);
 
-    final SmartAction nextAction = new SmartAction(DialogMessages.WIZARD_NEXT) {
+    SmartAction nextAction = new SmartAction(DialogMessages.WIZARD_NEXT) {
       @Override
-      protected void execute(final Component parentComponent) {
+      protected void execute(Component parentComponent) {
         nextPressed();
       }
     };
 
     nextButton = new JButton(nextAction);
 
-    final IDialogButtonConfiguration buttonConfiguration = getWizard().getButtonConfiguration();
+    IDialogButtonConfiguration buttonConfiguration = getWizard().getButtonConfiguration();
 
     final IActionConfiguration okActionConfiguration = buttonConfiguration
         .getOkActionConfiguration();
-    final SmartAction finishAction = new SmartAction(okActionConfiguration != null
+    SmartAction finishAction = new SmartAction(okActionConfiguration != null
         ? okActionConfiguration
         : new ActionConfiguration()) {
       @Override
-      protected void execute(final Component parentComponent) {
+      protected void execute(Component parentComponent) {
         performFinish(parentComponent);
       }
     };
@@ -110,20 +110,20 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
     final IActionConfiguration cancelActionConfiguration = buttonConfiguration
         .getCancelActionConfiguration();
-    final SmartAction cancelAction = new SmartAction(cancelActionConfiguration != null
+    SmartAction cancelAction = new SmartAction(cancelActionConfiguration != null
         ? cancelActionConfiguration
         : new ActionConfiguration()) {
       @Override
-      protected void execute(final Component parentComponent) {
+      protected void execute(Component parentComponent) {
         performCancel(parentComponent);
       }
     };
 
     cancelButton = new JButton(cancelAction);
 
-    final DialogButtonBarBuilder buttonBarBuilder = new DialogButtonBarBuilder();
+    DialogButtonBarBuilder buttonBarBuilder = new DialogButtonBarBuilder();
     buttonBarBuilder.addButtonsCompacted(backButton, nextButton);
-    final JButton[] additionalButtons = createAdditionalButtons();
+    JButton[] additionalButtons = createAdditionalButtons();
     buttonBarBuilder.addButtons(additionalButtons);
     if (okActionConfiguration != null) {
       buttonBarBuilder.addButtons(finishButton);
@@ -132,10 +132,10 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
       buttonBarBuilder.addButtons(cancelButton);
     }
     if (getWizard().isHelpAvailable()) {
-      final IDialogHelpHandler helpHandler = new IDialogHelpHandler() {
+      IDialogHelpHandler helpHandler = new IDialogHelpHandler() {
         @Override
-        public void execute(final Component parentComponent) {
-          final IDialogHelpHandler pageHelpHandler = getCurrentPage().getHelpHandler();
+        public void execute(Component parentComponent) {
+          IDialogHelpHandler pageHelpHandler = getCurrentPage().getHelpHandler();
           pageHelpHandler.execute(parentComponent);
         }
       };
@@ -155,9 +155,9 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
   /** Notifies that the cancel button of this dialog has been pressed. */
   @Override
-  protected final boolean cancelPressed(final Component parentComponent) {
-    final IVetoDialogCloseHandler vetoCloseHandler = configuration.getVetoCloseHandler();
-    final boolean success = vetoCloseHandler.handleDialogAboutToClose(
+  protected final boolean cancelPressed(Component parentComponent) {
+    IVetoDialogCloseHandler vetoCloseHandler = configuration.getVetoCloseHandler();
+    boolean success = vetoCloseHandler.handleDialogAboutToClose(
         new DialogResult(true),
         parentComponent);
     return success;
@@ -168,7 +168,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     showPage(getCurrentPage().getNextPage());
   }
 
-  public void showPage(final IWizardPage page) {
+  public void showPage(IWizardPage page) {
     Preconditions.checkNotNull(page);
     if (currentPage != null) {
       currentPage.leave();
@@ -198,7 +198,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
   @Override
   public void updateButtons() {
-    final IWizardPage page = getCurrentPage();
+    IWizardPage page = getCurrentPage();
     nextButton.setEnabled(page.canFlipToNextPage());
     backButton.setEnabled(page.getPreviousPage() != null);
     finishButton.setEnabled(getWizard().canFinish());
@@ -231,7 +231,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
   @Override
   public final IDialogResult show() {
-    final ISwingFrameOrDialog configuredDialog = getConfiguredDialog();
+    ISwingFrameOrDialog configuredDialog = getConfiguredDialog();
     GuiUtilities.centerToParent(configuredDialog.getWindow());
     configuredDialog.show();
     return new DialogResult(isCanceled());
@@ -239,12 +239,12 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
   /** For internal use only (demos) */
   public ISwingFrameOrDialog getConfiguredDialog() {
-    final IWizardPage startingPage = getWizard().getStartingPage();
+    IWizardPage startingPage = getWizard().getStartingPage();
     if (startingPage == null) {
       throw new RuntimeException("Starting page may not be null in IWizard.getStartingPage()"); //$NON-NLS-1$
     }
     showPage(startingPage);
-    final ISwingFrameOrDialog configuredDialog = getDialog();
+    ISwingFrameOrDialog configuredDialog = getDialog();
     if (configuredDialog == null) {
       throw new IllegalStateException(
           "WizardDialog is already disposed and may not be shown more often than once"); //$NON-NLS-1$
@@ -259,12 +259,12 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     return configuration;
   }
 
-  private void performFinish(final Component parentComponent) {
+  private void performFinish(Component parentComponent) {
     currentPage.getNextPage();
     currentPage.leave();
 
-    final IVetoDialogCloseHandler vetoCloseHandler = configuration.getVetoCloseHandler();
-    final boolean success = vetoCloseHandler.handleDialogAboutToClose(
+    IVetoDialogCloseHandler vetoCloseHandler = configuration.getVetoCloseHandler();
+    boolean success = vetoCloseHandler.handleDialogAboutToClose(
         new DialogResult(false),
         parentComponent);
     if (success) {
@@ -281,7 +281,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   protected final void closeDialog() {
     super.closeDialog();
     currentPage.leave();
-    for (final IWizardPage page : pages) {
+    for (IWizardPage page : pages) {
       page.getPageContent().dispose();
     }
   }

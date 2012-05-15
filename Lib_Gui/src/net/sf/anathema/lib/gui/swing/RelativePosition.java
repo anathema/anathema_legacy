@@ -19,8 +19,8 @@ public abstract class RelativePosition {
     //nothing to do
   }
 
-  public void place(final Window window) {
-    final Window owner = window.getOwner();
+  public void place(Window window) {
+    Window owner = window.getOwner();
     if (owner != null && owner.isVisible()) {
       window.setLocation(createLocation(window.getBounds(), window.getOwner().getBounds()));
     }

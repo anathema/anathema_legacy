@@ -23,22 +23,22 @@ public class AutoWrappingTextComponent extends JComponent {
   private final ObjectModel<TextSelection> selectionModel = new ObjectModel<TextSelection>();
   private TextAlignment textAlignment = TextAlignment.LEFT;
 
-  public AutoWrappingTextComponent(final String text, final int width) {
+  public AutoWrappingTextComponent(String text, int width) {
     Preconditions.checkNotNull(text);
     this.width = width;
     setForeground(SwingColors.getTextAreaForegroundColor());
     setBackground(SwingColors.getTextAreaBackgroundColor());
     content.setTextBlocks(TextBlockFactory.createTextBlocks(text));
     setOpaque(true);
-    final MouseAdapter mouseListener = new MouseAdapter() {
+    MouseAdapter mouseListener = new MouseAdapter() {
       private TextPosition startPosition;
 
       @Override
-      public void mouseReleased(final MouseEvent e) {
+      public void mouseReleased(MouseEvent e) {
         if (!isEnabled()) {
           return;
         }
-        final TextPosition position = getTextPositionAt(e.getPoint());
+        TextPosition position = getTextPositionAt(e.getPoint());
         if (position == null) {
           startPosition = null;
           return;
@@ -50,22 +50,22 @@ public class AutoWrappingTextComponent extends JComponent {
       }
 
       @Override
-      public void mousePressed(final MouseEvent e) {
+      public void mousePressed(MouseEvent e) {
         if (!isEnabled()) {
           return;
         }
         clearSelection();
-        final TextPosition position = getTextPositionAt(e.getPoint());
+        TextPosition position = getTextPositionAt(e.getPoint());
         startPosition = position;
         requestFocus();
       }
 
       @Override
-      public void mouseDragged(final MouseEvent e) {
+      public void mouseDragged(MouseEvent e) {
         if (!isEnabled()) {
           return;
         }
-        final TextPosition position = getTextPositionAt(e.getPoint());
+        TextPosition position = getTextPositionAt(e.getPoint());
         if (position == null) {
           return;
         }
@@ -75,11 +75,11 @@ public class AutoWrappingTextComponent extends JComponent {
         selectionModel.setValue(TextSelection.createSelection(startPosition, position));
       }
 
-      private TextPosition getTextPositionAt(final Point point) {
-        final FontMetrics metrics = getFontMetrics(getFont());
-        final TextPositionFindingHandler finder = new TextPositionFindingHandler(metrics, point);
+      private TextPosition getTextPositionAt(Point point) {
+        FontMetrics metrics = getFontMetrics(getFont());
+        TextPositionFindingHandler finder = new TextPositionFindingHandler(metrics, point);
         render(metrics, getWidth(), finder);
-        final TextPosition textPosition = finder.getTextPosition();
+        TextPosition textPosition = finder.getTextPosition();
         if (textPosition == null) {
           if (point.y < 0) {
             return new TextPosition(0, 0);
@@ -112,54 +112,54 @@ public class AutoWrappingTextComponent extends JComponent {
 
   @Override
   public Dimension getPreferredSize() {
-    final FontMetrics fontMetrics = getFontMetrics(getFont());
+    FontMetrics fontMetrics = getFontMetrics(getFont());
     LineCountingAndMaxWidthCalculatingRenderingHandler handler = new LineCountingAndMaxWidthCalculatingRenderingHandler(
         fontMetrics);
     render(fontMetrics, width, handler);
-    final int preferredSizeWidth = Math.max(handler.getMaxLineWidth(), width);
+    int preferredSizeWidth = Math.max(handler.getMaxLineWidth(), width);
     if (preferredSizeWidth > width) {
       handler = new LineCountingAndMaxWidthCalculatingRenderingHandler(fontMetrics);
       render(fontMetrics, preferredSizeWidth, handler);
     }
-    final int lineCount = handler.getLineCount();
+    int lineCount = handler.getLineCount();
     return new Dimension(preferredSizeWidth, (fontMetrics.getHeight() * lineCount));
   }
 
   @Override
-  public void paintComponent(final Graphics g) {
+  public void paintComponent(Graphics g) {
     if (isOpaque()) {
       g.setColor(getBackground());
       g.fillRect(0, 0, getWidth(), getHeight());
     }
     g.setFont(getFont());
-    final FontMetrics metrics = g.getFontMetrics();
+    FontMetrics metrics = g.getFontMetrics();
     render(metrics, getWidth(), new TextGraphicsRenderingHandler(g, getForeground()));
   }
 
   protected void render(
-      final FontMetrics metrics,
-      final int layoutWidth,
-      final IBlockRenderingHandler blockRenderer) {
-    final LineBuffer lineBuffer = new LineBuffer(
+      FontMetrics metrics,
+      int layoutWidth,
+      IBlockRenderingHandler blockRenderer) {
+    LineBuffer lineBuffer = new LineBuffer(
         metrics,
         layoutWidth,
         blockRenderer,
         textAlignment,
         selectionModel);
-    final int xOffset = 0;
+    int xOffset = 0;
     int x = xOffset;
     for (int blockIndex = 0; blockIndex < content.getBlockCount(); ++blockIndex) {
-      final TextBlock block = content.getBlock(blockIndex);
-      final int spaceLeft = layoutWidth - x;
-      final int blockWidth = metrics.stringWidth(block.text);
-      final boolean fits = spaceLeft >= blockWidth;
+      TextBlock block = content.getBlock(blockIndex);
+      int spaceLeft = layoutWidth - x;
+      int blockWidth = metrics.stringWidth(block.text);
+      boolean fits = spaceLeft >= blockWidth;
       if (!fits && blockIndex > 0) {
         lineBuffer.handleAutoLineBreak();
         x = xOffset;
       }
       lineBuffer.add(block, blockWidth);
       x += blockWidth;
-      final TextBlockDelimiter delimiter = block.delimiter;
+      TextBlockDelimiter delimiter = block.delimiter;
       if (delimiter.isNewLine()) {
         lineBuffer.handleNewLine();
         x = xOffset;
@@ -170,7 +170,7 @@ public class AutoWrappingTextComponent extends JComponent {
     }
   }
 
-  public void setText(final String text) {
+  public void setText(String text) {
     clearSelection();
     content.setTextBlocks(TextBlockFactory.createTextBlocks(text));
     invalidate();

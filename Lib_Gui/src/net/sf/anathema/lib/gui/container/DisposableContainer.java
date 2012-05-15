@@ -7,7 +7,7 @@ public class DisposableContainer implements IDisposable {
 
   private final AggregatedDisposable disposables = new AggregatedDisposable();
 
-  protected final void addDisposable(final IDisposable disposable) {
+  protected final void addDisposable(IDisposable disposable) {
     disposables.add(disposable);
   }
 

@@ -6,11 +6,11 @@ import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 
 public interface IFoldOutDialogConfiguration<P extends IDialogPage> extends IDialogConfiguration<P> {
 
-  public IFoldOutPage getFoldOutPage();
+  IFoldOutPage getFoldOutPage();
 
-  public IActionConfiguration getFoldOutButtonConfiguration();
+  IActionConfiguration getFoldOutButtonConfiguration();
 
-  public IActionConfiguration getFoldInButtonConfiguration();
+  IActionConfiguration getFoldInButtonConfiguration();
 
-  public boolean isInitiallyFoldedOut();
+  boolean isInitiallyFoldedOut();
 }

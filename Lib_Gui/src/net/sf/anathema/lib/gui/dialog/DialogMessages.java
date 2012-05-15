@@ -22,7 +22,7 @@ public class DialogMessages {
   public static final String WIZARD_BACK = getString("Wizard.SmartBack"); //$NON-NLS-1$
   public static final String WIZARD_FINISH = getString("Wizard.SmartFinish"); //$NON-NLS-1$
 
-  public static String getString(final String key) {
+  public static String getString(String key) {
     return RESOURCE_BUNDLE.getString(key);
   }
 }

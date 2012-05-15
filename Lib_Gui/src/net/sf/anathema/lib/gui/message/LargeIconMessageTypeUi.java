@@ -10,31 +10,31 @@ import javax.swing.Icon;
 public class LargeIconMessageTypeUi extends AbstractMessageTypeUi {
 
   @Override
-  public Icon getIcon(final MessageType type) {
+  public Icon getIcon(MessageType type) {
     final Icon[] icon = new Icon[1];
     type.accept(new IMessageTypeVisitor() {
       @Override
-      public void visitError(final MessageType visitedType) {
+      public void visitError(MessageType visitedType) {
         icon[0] = SwingIcons.getOptionPaneErrorIcon();
       }
 
       @Override
-      public void visitNormal(final MessageType visitedType) {
+      public void visitNormal(MessageType visitedType) {
         icon[0] = new EmptyIcon();
       }
 
       @Override
-      public void visitWarning(final MessageType visitedType) {
+      public void visitWarning(MessageType visitedType) {
         icon[0] = SwingIcons.getOptionPaneWarningIcon();
       }
 
       @Override
-      public void visitInformation(final MessageType visitedType) {
+      public void visitInformation(MessageType visitedType) {
         icon[0] = SwingIcons.getOptionPaneInformationIcon();
       }
 
       @Override
-      public void visitQuestion(final MessageType visitedType) {
+      public void visitQuestion(MessageType visitedType) {
         icon[0] = SwingIcons.getOptionPaneQuestionIcon();
       }
     });

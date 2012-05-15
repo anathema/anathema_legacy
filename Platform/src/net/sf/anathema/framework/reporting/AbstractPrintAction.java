@@ -7,7 +7,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.lib.message.Message;
-import net.sf.anathema.lib.progress.INonInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.io.IOUtils;
@@ -50,7 +50,7 @@ public abstract class AbstractPrintAction extends SmartAction {
                                    final File selectedFile) throws InvocationTargetException {
     new ProgressMonitorDialog(parentComponent, resources.getString("Anathema.Reporting.Print.Progress.Title")).run(
             //$NON-NLS-1$
-            new INonInterruptableRunnableWithProgress() {
+            new INonInterruptibleRunnableWithProgress() {
               @Override
               public void run(IProgressMonitor monitor) throws InvocationTargetException {
                 try {

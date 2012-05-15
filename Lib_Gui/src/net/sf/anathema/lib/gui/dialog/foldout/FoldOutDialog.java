@@ -20,7 +20,7 @@ public class FoldOutDialog extends UserDialog {
   private boolean isFoldedOut = false;
   private JPanel foldOutPanel;
 
-  public FoldOutDialog(final Component parent, final IFoldOutDialogConfiguration userDialog) {
+  public FoldOutDialog(Component parent, IFoldOutDialogConfiguration userDialog) {
     super(parent, userDialog);
     isFoldedOut = userDialog.isInitiallyFoldedOut();
     updateResizeable();
@@ -41,7 +41,7 @@ public class FoldOutDialog extends UserDialog {
     foldOutButton = new JButton();
     foldOutButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(final ActionEvent e) {
+      public void actionPerformed(ActionEvent e) {
         toggleFoldOut();
       }
     });
@@ -76,20 +76,20 @@ public class FoldOutDialog extends UserDialog {
     }
   }
 
-  private static void configure(final JButton button, final IActionConfiguration actionConfiguration) {
-    final MnemonicLabel label = MnemonicLabelParser.parse(actionConfiguration.getName());
+  private static void configure(JButton button, IActionConfiguration actionConfiguration) {
+    MnemonicLabel label = MnemonicLabelParser.parse(actionConfiguration.getName());
     button.setText(label.getPlainText());
     if (label.getMnemonicCharacter() != null) {
       button.setMnemonic(label.getMnemonicCharacter().charValue());
     }
-    final String toolTipText = actionConfiguration.getToolTipText();
+    String toolTipText = actionConfiguration.getToolTipText();
     button.setToolTipText(StringUtilities.isNullOrEmpty(toolTipText) ? null : toolTipText);
     button.setIcon(actionConfiguration.getIcon());
   }
 
   @Override
   protected JComponent createOptionalBelowButtonsPanel() {
-    final JComponent foldOutContent = getFoldOutUserDialog().getFoldOutPage().getContent();
+    JComponent foldOutContent = getFoldOutUserDialog().getFoldOutPage().getContent();
     foldOutPanel = new JPanel(new BorderLayout());
     foldOutPanel.setVisible(false);
     foldOutPanel.setBorder(BorderFactory.createEmptyBorder(10, 8, 0, 8));

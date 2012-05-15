@@ -7,31 +7,31 @@ import java.awt.event.WindowListener;
 
 public interface ISwingFrameOrDialog {
 
-  public void setTitle(String title);
+  void setTitle(String title);
 
-  public JRootPane getRootPane();
+  JRootPane getRootPane();
 
-  public void pack();
+  void pack();
 
-  public void setModal(boolean modal);
+  void setModal(boolean modal);
 
-  public Container getContentPane();
+  Container getContentPane();
 
-  public void setDefaultCloseOperation(int closeOperation);
+  void setDefaultCloseOperation(int closeOperation);
 
-  public void addWindowListener(WindowListener windowListener);
+  void addWindowListener(WindowListener windowListener);
 
-  public void removeWindowListener(WindowListener windowListener);
+  void removeWindowListener(WindowListener windowListener);
 
-  public void dispose();
+  void dispose();
 
-  public Window getWindow();
+  Window getWindow();
 
-  public void setResizable(boolean resizable);
+  void setResizable(boolean resizable);
 
-  public void show();
+  void show();
 
-  public void setVisible(boolean visible);
+  void setVisible(boolean visible);
 
-  public boolean isVisible();
+  boolean isVisible();
 }

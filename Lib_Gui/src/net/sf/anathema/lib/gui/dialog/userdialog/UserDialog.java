@@ -33,15 +33,15 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
   private boolean showErrorOnStartup = false;
 
   public UserDialog(
-      final Component parentComponent,
-      final IDialogConfiguration<? extends IDialogPage> userDialog) {
+      Component parentComponent,
+      IDialogConfiguration<? extends IDialogPage> userDialog) {
     this(parentComponent, userDialog, RelativePosition.CENTER);
   }
 
   public UserDialog(
-      final Component parentComponent,
-      final IDialogConfiguration<?> dialogConfiguration,
-      final RelativePosition relativePosition) {
+      Component parentComponent,
+      IDialogConfiguration<?> dialogConfiguration,
+      RelativePosition relativePosition) {
     super(parentComponent, dialogConfiguration);
     dialogControl = new DialogPageControl(dialogConfiguration.getDialogPage());
     dialogConfiguration.setUserDialogContainer(this);
@@ -53,7 +53,7 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
     this.relativePosition = relativePosition;
   }
 
-  public UserDialog(final Component parentComponent, final IDialogPage dialogPage) {
+  public UserDialog(Component parentComponent, IDialogPage dialogPage) {
     this(parentComponent, new DefaultDialogConfigurationBuilder<IDialogPage>(dialogPage).build());
   }
 
@@ -90,17 +90,17 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
 
   @Override
   protected final JComponent createButtonBar() {
-    final JComponent[] buttons = createButtons();
+    JComponent[] buttons = createButtons();
     if (buttons.length > 0 && buttons[0] instanceof JButton) {
       setDefaultButton((JButton) buttons[0]);
     }
-    final DialogButtonBarBuilder buttonBarBuilder = new DialogButtonBarBuilder();
+    DialogButtonBarBuilder buttonBarBuilder = new DialogButtonBarBuilder();
     buttonBarBuilder.addButtons(buttons);
-    final IDialogHelpHandler helpHandler = getDialogControl().getHelpHandler();
+    IDialogHelpHandler helpHandler = getDialogControl().getHelpHandler();
     if (helpHandler != null) {
       buttonBarBuilder.setHelpHandler(helpHandler);
     }
-    final JComponent leftComponent = getConfiguration().createOptionalButtonPanelLeftComponent();
+    JComponent leftComponent = getConfiguration().createOptionalButtonPanelLeftComponent();
     if (leftComponent != null) {
       buttonBarBuilder.addLeftSideComponent(leftComponent);
     }
@@ -108,16 +108,16 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
   }
 
   private final JComponent[] createButtons() {
-    final IDialogButtonConfiguration buttonConfiguration = getConfiguration()
+    IDialogButtonConfiguration buttonConfiguration = getConfiguration()
         .getButtonConfiguration();
     final IActionConfiguration okActionConfiguration = buttonConfiguration
         .getOkActionConfiguration();
 
-    final SmartAction okAction = new SmartAction(okActionConfiguration != null
+    SmartAction okAction = new SmartAction(okActionConfiguration != null
         ? okActionConfiguration
         : new ActionConfiguration()) {
       @Override
-      protected void execute(final Component parentComponent) {
+      protected void execute(Component parentComponent) {
         requestFinish();
       }
     };
@@ -126,22 +126,22 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
 
     final IActionConfiguration cancelActionConfiguration = buttonConfiguration
         .getCancelActionConfiguration();
-    final SmartAction cancelAction = new SmartAction(cancelActionConfiguration != null
+    SmartAction cancelAction = new SmartAction(cancelActionConfiguration != null
         ? cancelActionConfiguration
         : new ActionConfiguration()) {
       @Override
-      protected void execute(final Component parentComponent) {
+      protected void execute(Component parentComponent) {
         performCancel(parentComponent);
       }
     };
     cancelButton = new JButton(cancelAction);
 
-    final List<JComponent> buttonList = new ArrayList<JComponent>();
+    List<JComponent> buttonList = new ArrayList<JComponent>();
     if (okActionConfiguration != null) {
       buttonList.add(okButton);
     }
 
-    final JComponent[] additionalButtons = getConfiguration().createAdditionalButtons();
+    JComponent[] additionalButtons = getConfiguration().createAdditionalButtons();
     buttonList.addAll(Arrays.asList(additionalButtons));
     buttonList.addAll(Arrays.asList(createAdditionalButtons()));
 
@@ -159,7 +159,7 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
     if (!getDialogControl().performOk()) {
       return false;
     }
-    final IVetoDialogCloseHandler closeHandler = getConfiguration().getVetoCloseHandler();
+    IVetoDialogCloseHandler closeHandler = getConfiguration().getVetoCloseHandler();
     return closeHandler.handleDialogAboutToClose(new DialogResult(false), getDialog().getWindow());
   }
 
@@ -168,27 +168,27 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
   }
 
   @Override
-  protected final boolean cancelPressed(final Component parentComponent) {
+  protected final boolean cancelPressed(Component parentComponent) {
     if (!getDialogControl().performCancel()) {
       return false;
     }
-    final IVetoDialogCloseHandler closeHandler = getConfiguration().getVetoCloseHandler();
+    IVetoDialogCloseHandler closeHandler = getConfiguration().getVetoCloseHandler();
     return closeHandler.handleDialogAboutToClose(new DialogResult(true), parentComponent);
   }
 
   @Override
-  public void setVisible(final boolean visible) {
+  public void setVisible(boolean visible) {
     if (getConfiguration().isVisible()) {
       if (visible) {
         if (neverVisualized) {
-          final Dimension customizedPreferedSize = getConfiguration().getCustomizedPreferedSize();
+          Dimension customizedPreferedSize = getConfiguration().getCustomizedPreferedSize();
           if (customizedPreferedSize != null) {
             getDialog().getWindow().setSize(customizedPreferedSize);
           }
           placeRelativeToOwner();
           neverVisualized = false;
         }
-        final IDialogPage page = getConfiguration().getDialogPage();
+        IDialogPage page = getConfiguration().getDialogPage();
         page.enter();
         adjustToPreferences();
         getDialog().show();
@@ -235,7 +235,7 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
   @Override
   protected void closeDialog() {
     super.closeDialog();
-    final IDialogPage page = getConfiguration().getDialogPage();
+    IDialogPage page = getConfiguration().getDialogPage();
     page.leave();
     page.dispose();
   }
@@ -246,11 +246,11 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
   }
 
   @Override
-  public void showNonModal(final IDialogCloseHandler dialogCloseHandler) {
+  public void showNonModal(IDialogCloseHandler dialogCloseHandler) {
     showDialog(dialogCloseHandler, false);
   }
 
-  private void showDialog(final IDialogCloseHandler dialogCloseHandler, boolean modal) {
+  private void showDialog(IDialogCloseHandler dialogCloseHandler, boolean modal) {
     checkInputValidIfNeccessary();
     setCloseHandler(dialogCloseHandler);
     getDialog().setModal(modal);

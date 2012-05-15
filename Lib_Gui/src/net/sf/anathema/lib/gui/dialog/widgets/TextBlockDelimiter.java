@@ -23,8 +23,8 @@ public enum TextBlockDelimiter {
   private static Map<Character, TextBlockDelimiter> DELIMITER_MAP = new HashMap<Character, TextBlockDelimiter>();
 
   static {
-    for (final TextBlockDelimiter tag : values()) {
-      final char key = tag.getCharacter();
+    for (TextBlockDelimiter tag : values()) {
+      char key = tag.getCharacter();
       if (key != 0) {
         DELIMITER_MAP.put(key, tag);
       }
@@ -39,12 +39,12 @@ public enum TextBlockDelimiter {
   boolean additionalCharacterIncluded;
 
   TextBlockDelimiter(
-      final char character,
-      final String string,
-      final String replacement,
-      final boolean newLine,
-      final boolean whitespace,
-      final boolean additionalCharacterIncluded) {
+      char character,
+      String string,
+      String replacement,
+      boolean newLine,
+      boolean whitespace,
+      boolean additionalCharacterIncluded) {
     this.character = character;
     this.string = string;
     this.replacement = replacement;
@@ -61,7 +61,7 @@ public enum TextBlockDelimiter {
     return string;
   }
 
-  public int calculateWidth(final FontMetrics metrics) {
+  public int calculateWidth(FontMetrics metrics) {
     return metrics.stringWidth(replacement);
   }
 
@@ -73,7 +73,7 @@ public enum TextBlockDelimiter {
     return whitespace;
   }
 
-  public static TextBlockDelimiter forCharacterOrNull(final char character) {
+  public static TextBlockDelimiter forCharacterOrNull(char character) {
     return DELIMITER_MAP.get(character);
   }
 

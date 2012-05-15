@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 public interface IRunnableContext {
 
   /**
-   * Runs the given {@link IInterruptableRunnableWithProgress} in this context. For example, if this
+   * Runs the given {@link IInterruptibleRunnableWithProgress} in this context. For example, if this
    * is a ProgressMonitorDialog then the runnable is run using this dialog's progress monitor.
    * 
    * @param runnable the runnable to run
@@ -19,20 +19,20 @@ public interface IRunnableContext {
    *           runnable
    * @throws InterruptedException propagated by the context if the runnable acknowledges cancelation
    *           by throwing this exception.
-   * @see #run(INonInterruptableRunnableWithProgress)
+   * @see #run(INonInterruptibleRunnableWithProgress)
    */
-  public void run(IInterruptableRunnableWithProgress runnable)
+  public void run(IInterruptibleRunnableWithProgress runnable)
       throws InterruptedException,
       InvocationTargetException;
 
   /**
-   * Runs the given {@link INonInterruptableRunnableWithProgress} in this context. For example, if
+   * Runs the given {@link INonInterruptibleRunnableWithProgress} in this context. For example, if
    * this is a ProgressMonitorDialog then the runnable is run using this dialog's progress monitor.
    * 
    * @param runnable the runnable to run
    * @throws InvocationTargetException wraps any exception or error which occurs while running the
    *           runnable
-   * @see #run(IInterruptableRunnableWithProgress)
+   * @see #run(IInterruptibleRunnableWithProgress)
    */
-  public void run(INonInterruptableRunnableWithProgress runnable) throws InvocationTargetException;
+  public void run(INonInterruptibleRunnableWithProgress runnable) throws InvocationTargetException;
 }

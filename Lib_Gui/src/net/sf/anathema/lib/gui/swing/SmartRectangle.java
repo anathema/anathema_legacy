@@ -8,15 +8,15 @@ import java.awt.Rectangle;
 
 public class SmartRectangle extends Rectangle {
 
-  public SmartRectangle(final Rectangle rect) {
+  public SmartRectangle(Rectangle rect) {
     this(rect.x, rect.y, rect.width, rect.height);
   }
 
-  public SmartRectangle(final Point position, final Dimension size) {
+  public SmartRectangle(Point position, Dimension size) {
     this(position.x, position.y, size.width, size.height);
   }
 
-  public SmartRectangle(final int ulx, final int uly, final int width, final int height) {
+  public SmartRectangle(int ulx, int uly, int width, int height) {
     super(ulx, uly, width, height);
     Preconditions.checkArgument(width >= 0, "Width <0 : '" + width + "'");
     Preconditions.checkArgument(height >= 0, "Height <0 : '" + height + "'");
@@ -45,7 +45,7 @@ public class SmartRectangle extends Rectangle {
    * @param dy y coordinate of the moving vectot
    */
   @Override
-  public void setLocation(final int dx, final int dy) {
+  public void setLocation(int dx, int dy) {
     x += dx;
     y += dy;
   }

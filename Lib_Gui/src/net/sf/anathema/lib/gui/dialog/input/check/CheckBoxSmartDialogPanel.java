@@ -17,14 +17,14 @@ public class CheckBoxSmartDialogPanel extends AbstractSmartDialogPanel {
   private final JCheckBox checkBox;
   private final BooleanModel model;
 
-  public CheckBoxSmartDialogPanel(final BooleanModel model, final String label) {
+  public CheckBoxSmartDialogPanel(BooleanModel model, String label) {
     this.model = model;
     Preconditions.checkNotNull(model);
     checkBox = ActionWidgetFactory.createCheckBox(new SmartToggleAction(model, label));
   }
 
   @Override
-  public void addChangeListener(final IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     model.addChangeListener(listener);
   }
 
@@ -34,8 +34,8 @@ public class CheckBoxSmartDialogPanel extends AbstractSmartDialogPanel {
   }
 
   @Override
-  public void fillInto(final JPanel panel, final int columnCount) {
-    final GridDialogLayoutData layoutData = GridDialogLayoutDataFactory
+  public void fillInto(JPanel panel, int columnCount) {
+    GridDialogLayoutData layoutData = GridDialogLayoutDataFactory
         .createHorizontalSpanData(columnCount);
     panel.add(checkBox, layoutData);
   }

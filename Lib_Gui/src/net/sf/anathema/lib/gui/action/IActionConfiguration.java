@@ -4,11 +4,11 @@ import javax.swing.Icon;
 
 public interface IActionConfiguration {
 
-  public Icon getIcon();
+  Icon getIcon();
 
-  public String getName();
+  String getName();
 
   /** @return the tooltip text for the combo box or <code>null</code> if none. */
-  public String getToolTipText();
+  String getToolTipText();
 
 }

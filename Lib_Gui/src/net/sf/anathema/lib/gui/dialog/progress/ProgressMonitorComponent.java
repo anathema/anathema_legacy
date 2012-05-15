@@ -39,13 +39,13 @@ public class ProgressMonitorComponent implements IProgressMonitor, IComponentCon
 
   @Override
   public JComponent getContent() {
-    final Icon icon = new LargeIconMessageTypeUi().getIcon(MessageType.INFORMATION);
-    final JPanel topPanel = new JPanel(new BorderLayout(10, 8));
+    Icon icon = new LargeIconMessageTypeUi().getIcon(MessageType.INFORMATION);
+    JPanel topPanel = new JPanel(new BorderLayout(10, 8));
     topPanel.add(new JLabel(icon), BorderLayout.WEST);
     topPanel.add(taskNameLabel.getContent(), BorderLayout.CENTER);
     topPanel.setBorder(new EmptyBorder(8, 0, 0, 0));
 
-    final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
+    JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
     mainPanel.add(topPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     mainPanel.add(progressBar, GridDialogLayoutData.FILL_HORIZONTAL);
     mainPanel.add(subTaskNameLabel, GridDialogLayoutData.FILL_HORIZONTAL);
@@ -54,12 +54,12 @@ public class ProgressMonitorComponent implements IProgressMonitor, IComponentCon
   }
 
   @Override
-  public final void beginTaskWithUnknownTotalWork(final String name) {
+  public final void beginTaskWithUnknownTotalWork(String name) {
     beginTask(name, UNKNOWN);
   }
 
   @Override
-  public void beginTask(final String name, final int totalWork) {
+  public void beginTask(String name, final int totalWork) {
     final String taskName = addTaskLabelEllipsis(name);
     subTask(""); //$NON-NLS-1$
     SwingUtilities.invokeLater(new Runnable() {
@@ -71,7 +71,7 @@ public class ProgressMonitorComponent implements IProgressMonitor, IComponentCon
     });
   }
 
-  public static String addTaskLabelEllipsis(final String name) {
+  public static String addTaskLabelEllipsis(String name) {
     if (name.length() == 0) {
       return name;
     }
@@ -102,12 +102,12 @@ public class ProgressMonitorComponent implements IProgressMonitor, IComponentCon
   }
 
   @Override
-  public void worked(final int work) {
+  public void worked(int work) {
     progressBar.worked(work);
   }
 
   @Override
-  public void setCanceled(final boolean canceled) {
+  public void setCanceled(boolean canceled) {
     throw new UnsupportedOperationException();
   }
 }

@@ -31,8 +31,8 @@ public abstract class AbstractDialog {
 
   private final WindowAdapter cancelingWindowListener = new WindowAdapter() {
     @Override
-    public void windowClosing(final WindowEvent e) {
-      final Window parentComponent = GuiUtilities.getWindowFor(e);
+    public void windowClosing(WindowEvent e) {
+      Window parentComponent = GuiUtilities.getWindowFor(e);
       performCancel(parentComponent);
     }
   };
@@ -61,14 +61,14 @@ public abstract class AbstractDialog {
     if (preferences == null) {
       return;
     }
-    final Rectangle bounds = preferences.getBounds();
+    Rectangle bounds = preferences.getBounds();
     if (bounds == null) {
       return;
     }
     dialog.getWindow().setBounds(bounds);
   }
 
-  private void storePereferences(final ISwingFrameOrDialog dialog, final IDialogPreferences preferences) {
+  private void storePereferences(ISwingFrameOrDialog dialog, IDialogPreferences preferences) {
     if (preferences == null) {
       return;
     }
@@ -79,20 +79,20 @@ public abstract class AbstractDialog {
     return true;
   }
 
-  private static ISwingFrameOrDialog createFrameOrDialog(final Component parent) {
-    final Window window = GuiUtilities.getWindowFor(parent);
+  private static ISwingFrameOrDialog createFrameOrDialog(Component parent) {
+    Window window = GuiUtilities.getWindowFor(parent);
     if (window == null || !window.isVisible()) {
-      final JFrame frame = new JFrame(INITIAL_DIALOG_TITLE);
+      JFrame frame = new JFrame(INITIAL_DIALOG_TITLE);
 
       if (window != null) {
-        final List<Image> originalIconImages = window.getIconImages();
+        List<Image> originalIconImages = window.getIconImages();
         if (!originalIconImages.isEmpty()) {
           frame.setIconImages(originalIconImages);
         } else {
           frame.setIconImages(DialogDefaults.getInstance().getFrameIconImages());
         }
       }
-      final DialogDefaults dialogDefaults = DialogDefaults.getInstance();
+      DialogDefaults dialogDefaults = DialogDefaults.getInstance();
       if (frame.getIconImages().isEmpty()) {
         //happens when 'window' is the swing fallback frame
         frame.setIconImages(dialogDefaults.getFrameIconImages());
@@ -102,8 +102,8 @@ public abstract class AbstractDialog {
     return new SwingDialog(GuiUtilities.createDialog(parent, INITIAL_DIALOG_TITLE));
   }
 
-  public final void performCancel(final Component parentComponent) {
-    final boolean success = cancelPressed(parentComponent);
+  public final void performCancel(Component parentComponent) {
+    boolean success = cancelPressed(parentComponent);
     if (!success) {
       return;
     }
@@ -128,12 +128,12 @@ public abstract class AbstractDialog {
   }
 
   protected final void initializeContent() {
-    final IGridDialogLayoutData mainContentLayoutData =
+    IGridDialogLayoutData mainContentLayoutData =
             isMainContentGrabVerticalSpace() ? GridDialogLayoutData.FILL_BOTH : GridDialogLayoutData.FILL_HORIZONTAL;
     dialog.getContentPane().add(dialogPagePanel.createPanel(), mainContentLayoutData);
     dialog.getContentPane().add(new HorizontalLine(), GridDialogLayoutData.FILL_HORIZONTAL);
     dialog.getContentPane().add(createButtonBar(), GridDialogLayoutData.FILL_HORIZONTAL);
-    final JComponent belowButtonsPanel = createOptionalBelowButtonsPanel();
+    JComponent belowButtonsPanel = createOptionalBelowButtonsPanel();
     if (belowButtonsPanel != null) {
       dialog.getContentPane().add(belowButtonsPanel, GridDialogLayoutData.FILL_BOTH);
     }
@@ -163,14 +163,14 @@ public abstract class AbstractDialog {
       dialog.pack();
       return;
     }
-    final Dimension preferredSize = dialogPagePanel.getPreferredSize();
-    final Dimension actualSize = dialogPagePanel.getSize();
+    Dimension preferredSize = dialogPagePanel.getPreferredSize();
+    Dimension actualSize = dialogPagePanel.getSize();
     if (preferredSize.width > actualSize.width || preferredSize.height > actualSize.height) {
       GuiUtilities.repack(dialog.getWindow());
     }
   }
 
-  protected final void setContent(final JComponent content) {
+  protected final void setContent(JComponent content) {
     dialogPagePanel.setContent(content);
   }
 
@@ -178,20 +178,20 @@ public abstract class AbstractDialog {
     return dialogPagePanel.getContent();
   }
 
-  protected final void setMessage(final IBasicMessage message) {
+  protected final void setMessage(IBasicMessage message) {
     dialogPagePanel.setMessage(message);
     updateSize();
   }
 
-  protected final void setDescription(final String description) {
+  protected final void setDescription(String description) {
     dialogPagePanel.setDescription(description);
   }
 
-  protected final void setTitle(final String title) {
+  protected final void setTitle(String title) {
     dialog.setTitle(title);
   }
 
-  protected final void setDefaultButton(final JButton button) {
+  protected final void setDefaultButton(JButton button) {
     dialog.getRootPane().setDefaultButton(button);
   }
 
@@ -199,7 +199,7 @@ public abstract class AbstractDialog {
     return dialog;
   }
 
-  protected final void setCloseHandler(final IDialogCloseHandler dialogCloseHandler) {
+  protected final void setCloseHandler(IDialogCloseHandler dialogCloseHandler) {
     Preconditions.checkNotNull(dialogCloseHandler);
     closeHandler = dialogCloseHandler;
   }

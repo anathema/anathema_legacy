@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DialogDefaults {
 
-  private final static DialogDefaults instance = new DialogDefaults();
+  private static final DialogDefaults instance = new DialogDefaults();
 
   public static DialogDefaults getInstance() {
     return instance;

@@ -17,7 +17,7 @@ public class DialogMessageComponent extends JPanel {
   private final AutoWrappingLabel messageLabel;
   private final JLabel iconLabel;
 
-  public DialogMessageComponent(final boolean withIcon) {
+  public DialogMessageComponent(boolean withIcon) {
     super(new BorderLayout());
 
     setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
@@ -28,7 +28,7 @@ public class DialogMessageComponent extends JPanel {
     messageLabel.setForeground(IDialogConstants.HEADER_TEXT_COLOR);
     messageLabel.setFont(IDialogConstants.MESSAGE_LABEL_FONT);
 
-    final JPanel iconPanel = new JPanel(new GridDialogLayout(1, false, 3, 0));
+    JPanel iconPanel = new JPanel(new GridDialogLayout(1, false, 3, 0));
     iconPanel.add(iconLabel);
     iconPanel.setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
     if (withIcon) {
@@ -40,7 +40,7 @@ public class DialogMessageComponent extends JPanel {
     add(messageLabel.getContent(), BorderLayout.CENTER);
   }
 
-  public void setMessage(final IBasicMessage message) {
+  public void setMessage(IBasicMessage message) {
     if (message == null) {
       return;
     }

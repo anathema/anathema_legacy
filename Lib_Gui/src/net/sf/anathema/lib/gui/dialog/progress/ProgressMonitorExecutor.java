@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
 import net.sf.anathema.lib.progress.DefaultRunnableExecuter;
-import net.sf.anathema.lib.progress.IInterruptableRunnableWithProgress;
-import net.sf.anathema.lib.progress.INonInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.IInterruptibleRunnableWithProgress;
+import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
 import net.sf.anathema.lib.progress.IObservableCancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.progress.IRunnableExecuter;
@@ -18,31 +18,31 @@ public class ProgressMonitorExecutor {
   private static IRunnableExecuter defaultExecuter = new DefaultRunnableExecuter("runWithProgress"); //$NON-NLS-1$
 
   public ProgressMonitorExecutor(
-      final InternalProgressDialogModel model,
-      final IProgressComponent progressComponent) {
+      InternalProgressDialogModel model,
+      IProgressComponent progressComponent) {
     this.model = model;
     this.progressComponent = progressComponent;
   }
 
   public void run(
-      final INonInterruptableRunnableWithProgress runnable,
+      final INonInterruptibleRunnableWithProgress runnable,
       final IProgressMonitor monitor) throws InvocationTargetException {
-    final Runnable actualRunnable = new Runnable() {
+    Runnable actualRunnable = new Runnable() {
       @Override
       public void run() {
         try {
           runnable.run(monitor);
         }
-        catch (final InvocationTargetException e) {
+        catch (InvocationTargetException e) {
           model.crashed(e);
         }
-        catch (final RuntimeException e) {
+        catch (RuntimeException e) {
           model.crashed(e);
         }
-        catch (final Error e) {
+        catch (Error e) {
           model.crashed(e);
         }
-        catch (final Throwable e) {
+        catch (Throwable e) {
           model.crashed(new InvocationTargetException(e));
         }
         finally {
@@ -69,36 +69,36 @@ public class ProgressMonitorExecutor {
       }
       model.throwThrowableIfAny();
     }
-    catch (final InterruptedException e) {
+    catch (InterruptedException e) {
       throw new RuntimeException("InterruptedException during non interruptable progress", e); //$NON-NLS-1$
     }
   }
 
   public void run(
-      final IInterruptableRunnableWithProgress runnable,
+      final IInterruptibleRunnableWithProgress runnable,
       final IProgressMonitor progressMonitor,
       final IObservableCancelable cancelable)
       throws InterruptedException,
       InvocationTargetException {
-    final Runnable actualRunnable = new Runnable() {
+    Runnable actualRunnable = new Runnable() {
       @Override
       public void run() {
         try {
           runnable.run(progressMonitor, cancelable);
         }
-        catch (final InterruptedException e) {
+        catch (InterruptedException e) {
           model.interrupted(e);
         }
-        catch (final InvocationTargetException e) {
+        catch (InvocationTargetException e) {
           model.crashed(e);
         }
-        catch (final RuntimeException e) {
+        catch (RuntimeException e) {
           model.crashed(e);
         }
-        catch (final Error e) {
+        catch (Error e) {
           model.crashed(e);
         }
-        catch (final Throwable e) {
+        catch (Throwable e) {
           model.crashed(new InvocationTargetException(e));
         }
         finally {

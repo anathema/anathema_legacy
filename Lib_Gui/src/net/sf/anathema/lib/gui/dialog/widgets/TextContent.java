@@ -7,7 +7,7 @@ public class TextContent {
 
   private final List<TextBlock> textBlocks = new ArrayList<TextBlock>();
 
-  public void setTextBlocks(final List<TextBlock> textBlocks) {
+  public void setTextBlocks(List<TextBlock> textBlocks) {
     this.textBlocks.clear();
     this.textBlocks.addAll(textBlocks);
   }
@@ -16,7 +16,7 @@ public class TextContent {
     if (isEmpty()) {
       return null;
     }
-    final int lastBlockIndex = textBlocks.size() - 1;
+    int lastBlockIndex = textBlocks.size() - 1;
     return new TextPosition(lastBlockIndex, textBlocks.get(lastBlockIndex).text.length());
   }
 
@@ -24,7 +24,7 @@ public class TextContent {
     return textBlocks.size();
   }
 
-  public TextBlock getBlock(final int blockIndex) {
+  public TextBlock getBlock(int blockIndex) {
     return textBlocks.get(blockIndex);
   }
 
@@ -32,10 +32,10 @@ public class TextContent {
     return textBlocks.isEmpty();
   }
 
-  public String getText(final TextPosition start, final TextPosition end) {
-    final StringBuilder builder = new StringBuilder();
+  public String getText(TextPosition start, TextPosition end) {
+    StringBuilder builder = new StringBuilder();
     for (int blockIndex = start.getBlockIndex(); blockIndex <= end.getBlockIndex(); ++blockIndex) {
-      final TextBlock block = getBlock(blockIndex);
+      TextBlock block = getBlock(blockIndex);
       if (blockIndex == start.getBlockIndex() && blockIndex == end.getBlockIndex()) {
         builder.append(block.text.subSequence(start.getIndexInBlock(), end.getIndexInBlock()));
       }
@@ -51,7 +51,7 @@ public class TextContent {
         builder.append(block.delimiter.getString());
       }
     }
-    final String text = builder.toString();
+    String text = builder.toString();
     return text;
   }
 }

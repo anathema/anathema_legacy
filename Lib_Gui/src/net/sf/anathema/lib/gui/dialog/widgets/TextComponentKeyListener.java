@@ -17,9 +17,9 @@ public final class TextComponentKeyListener extends KeyAdapter {
   private final Provider<Toolkit> toolkitProvider;
 
   public TextComponentKeyListener(
-      final TextContent content,
-      final ObjectModel<TextSelection> selectionModel,
-      final Provider<Toolkit> toolkitProvider) {
+      TextContent content,
+      ObjectModel<TextSelection> selectionModel,
+      Provider<Toolkit> toolkitProvider) {
     Preconditions.checkNotNull(content);
     Preconditions.checkNotNull(selectionModel);
     Preconditions.checkNotNull(toolkitProvider);
@@ -29,7 +29,7 @@ public final class TextComponentKeyListener extends KeyAdapter {
   }
 
   @Override
-  public void keyReleased(final KeyEvent e) {
+  public void keyReleased(KeyEvent e) {
     if (content.isEmpty()) {
       return;
     }
@@ -49,24 +49,24 @@ public final class TextComponentKeyListener extends KeyAdapter {
   }
 
   private void copyToClipboard() {
-    final TextSelection selection = selectionModel.getValue();
-    final TextPosition start = selection == null ? new TextPosition(0, 0) : selection.startPosition;
-    final TextPosition end = selection == null
+    TextSelection selection = selectionModel.getValue();
+    TextPosition start = selection == null ? new TextPosition(0, 0) : selection.startPosition;
+    TextPosition end = selection == null
         ? content.getLastTextPosition()
         : selection.endPosition;
-    final String text = content.getText(start, end);
+    String text = content.getText(start, end);
     writeToSystemClipboard(text);
   }
 
-  private void writeToSystemClipboard(final String string) {
-    final StringSelection stringSelection = new StringSelection(string);
-    final Clipboard clipboard = toolkitProvider.getObject().getSystemClipboard();
+  private void writeToSystemClipboard(String string) {
+    StringSelection stringSelection = new StringSelection(string);
+    Clipboard clipboard = toolkitProvider.getObject().getSystemClipboard();
     clipboard.setContents(stringSelection, stringSelection);
   }
 
   private void selectAll() {
-    final TextPosition start = new TextPosition(0, 0);
-    final TextPosition end = content.getLastTextPosition();
+    TextPosition start = new TextPosition(0, 0);
+    TextPosition end = content.getLastTextPosition();
     selectionModel.setValue(TextSelection.createSelection(start, end));
   }
 }

@@ -11,7 +11,7 @@ public class DialogMessageModel extends AbstractChangeableModel {
   private IBasicMessage overlaidMessage;
   private boolean overlaidMessageActive = false;
 
-  public void setMessage(final IBasicMessage message) {
+  public void setMessage(IBasicMessage message) {
     Preconditions.checkNotNull(message);
     synchronized (getMutex()) {
       if (message.equals(getMessage())) {

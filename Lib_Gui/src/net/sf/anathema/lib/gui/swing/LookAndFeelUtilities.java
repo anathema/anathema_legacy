@@ -7,7 +7,7 @@ public class LookAndFeelUtilities {
 
   public static final String COMPONENT_TYPE_LABEL = "Label"; //$NON-NLS-1$
 
-  public static void installColorsAndFont(final JComponent component, final String type) {
+  public static void installColorsAndFont(JComponent component, String type) {
     LookAndFeel.installColorsAndFont(component, type + ".background", type + ".foreground", type + ".font");
   }
 

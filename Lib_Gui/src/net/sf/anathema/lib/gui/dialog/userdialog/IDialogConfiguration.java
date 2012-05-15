@@ -8,15 +8,15 @@ import java.awt.Dimension;
 
 public interface IDialogConfiguration<P extends IDialogPage> extends IGenericDialogConfiguration {
 
-  public P getDialogPage();
+  P getDialogPage();
 
-  public void setUserDialogContainer(IUserDialogContainer userDialog);
+  void setUserDialogContainer(IUserDialogContainer userDialog);
 
-  public JComponent[] createAdditionalButtons();
+  JComponent[] createAdditionalButtons();
 
-  public JComponent createOptionalButtonPanelLeftComponent();
+  JComponent createOptionalButtonPanelLeftComponent();
 
-  public Dimension getCustomizedPreferedSize();
+  Dimension getCustomizedPreferedSize();
 
-  public boolean isVisible();
+  boolean isVisible();
 }

@@ -15,7 +15,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.progress.IInterruptableRunnableWithProgress;
+import net.sf.anathema.lib.progress.IInterruptibleRunnableWithProgress;
 import net.sf.anathema.lib.progress.IObservableCancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
@@ -79,7 +79,7 @@ public class AddMusicFolderAction extends SmartAction {
     try {
       new ProgressMonitorDialog(
           parentComponent,
-          resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(new IInterruptableRunnableWithProgress() { //$NON-NLS-1$
+          resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(new IInterruptibleRunnableWithProgress() { //$NON-NLS-1$
             @Override
             public void run(final IProgressMonitor monitor, IObservableCancelable cancelable) throws InterruptedException, InvocationTargetException {
               final List<IMp3Track> foundTracks = new ArrayList<IMp3Track>();

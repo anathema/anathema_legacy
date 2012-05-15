@@ -10,12 +10,12 @@ public class AggregatedDisposable implements IDisposable {
 
   @Override
   public void dispose() {
-    for (final IDisposable disposable : allDisposables) {
+    for (IDisposable disposable : allDisposables) {
       disposable.dispose();
     }
   }
 
-  public void add(final IDisposable disposable) {
+  public void add(IDisposable disposable) {
     allDisposables.add(disposable);
   }
 }

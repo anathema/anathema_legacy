@@ -22,7 +22,7 @@ public final class MessageDetailsFoldOutPage extends AbstractFoldOutPage {
   private final String detailText;
   private JTextArea textArea;
 
-  public MessageDetailsFoldOutPage(final String detailText) {
+  public MessageDetailsFoldOutPage(String detailText) {
     Preconditions.checkNotNull(detailText);
     this.detailText = detailText;
   }
@@ -33,7 +33,7 @@ public final class MessageDetailsFoldOutPage extends AbstractFoldOutPage {
     return new JScrollPane(textArea);
   }
 
-  private static JTextArea createMessageDetailsTextArea(final String detailsText) {
+  private static JTextArea createMessageDetailsTextArea(String detailsText) {
     final JTextArea textArea = new JTextArea(12, 70);
     textArea.setEditable(false);
     textArea.setFont(FIXEDWIDTH_FONT);
@@ -41,7 +41,7 @@ public final class MessageDetailsFoldOutPage extends AbstractFoldOutPage {
     textArea.setCaretPosition(0);
     textArea.addMouseListener(new MouseAdapter() {
       @Override
-      public void mouseReleased(final MouseEvent e) {
+      public void mouseReleased(MouseEvent e) {
         if (!e.isMetaDown()) {
           return;
         }
@@ -51,19 +51,19 @@ public final class MessageDetailsFoldOutPage extends AbstractFoldOutPage {
     return textArea;
   }
 
-  private static void showPopupMenu(final JTextArea textArea, final Point point) {
-    final JPopupMenu menu = new JPopupMenu();
-    final SmartAction copyAction = new AbstractCopyAction() {
+  private static void showPopupMenu(final JTextArea textArea, Point point) {
+    JPopupMenu menu = new JPopupMenu();
+    SmartAction copyAction = new AbstractCopyAction() {
       @Override
-      protected void execute(final Component parentComponent) {
-        final boolean hasSelection = textArea.getSelectedText() != null;
+      protected void execute(Component parentComponent) {
+        boolean hasSelection = textArea.getSelectedText() != null;
         if (!hasSelection) {
           textArea.selectAll();
         }
         textArea.copy();
       }
     };
-    final SmartAction selectAllAction = new TextComponentSelectAllAction(textArea);
+    SmartAction selectAllAction = new TextComponentSelectAllAction(textArea);
     menu.add(copyAction);
     menu.add(selectAllAction);
     menu.show(textArea, point.x, point.y);

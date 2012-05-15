@@ -7,7 +7,7 @@ public class TextBlock {
   public final String text;
   public final TextBlockDelimiter delimiter;
 
-  public TextBlock(final String text, final TextBlockDelimiter delimiter) {
+  public TextBlock(String text, TextBlockDelimiter delimiter) {
     Preconditions.checkNotNull(text);
     Preconditions.checkNotNull(delimiter);
     this.text = text;
@@ -15,11 +15,11 @@ public class TextBlock {
   }
 
   @Override
-  public boolean equals(final Object obj) {
+  public boolean equals(Object obj) {
     if (!(obj instanceof TextBlock)) {
       return false;
     }
-    final TextBlock other = (TextBlock) obj;
+    TextBlock other = (TextBlock) obj;
     return delimiter == other.delimiter && text.equals(other.text);
   }
 

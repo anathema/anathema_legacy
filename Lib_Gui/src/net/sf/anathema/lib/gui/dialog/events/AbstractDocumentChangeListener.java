@@ -6,17 +6,17 @@ import javax.swing.event.DocumentListener;
 public abstract class AbstractDocumentChangeListener implements DocumentListener {
 
   @Override
-  public void insertUpdate(final DocumentEvent e) {
+  public void insertUpdate(DocumentEvent e) {
     documentChanged();
   }
 
   @Override
-  public void removeUpdate(final DocumentEvent e) {
+  public void removeUpdate(DocumentEvent e) {
     documentChanged();
   }
 
   @Override
-  public void changedUpdate(final DocumentEvent e) {
+  public void changedUpdate(DocumentEvent e) {
     documentChanged();
   }
 

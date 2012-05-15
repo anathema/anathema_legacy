@@ -15,7 +15,7 @@ public class CheckInputValidListener implements ICheckInputValidListener {
 
   private final IInputValidCheckable checkable;
 
-  public CheckInputValidListener(final IInputValidCheckable checkable) {
+  public CheckInputValidListener(IInputValidCheckable checkable) {
     this.checkable = checkable;
   }
 
@@ -25,27 +25,27 @@ public class CheckInputValidListener implements ICheckInputValidListener {
   }
 
   @Override
-  public void itemStateChanged(final ItemEvent e) {
+  public void itemStateChanged(ItemEvent e) {
     checkInputValid();
   }
 
   @Override
-  public void valueChanged(final ListSelectionEvent e) {
+  public void valueChanged(ListSelectionEvent e) {
     checkInputValid();
   }
 
   @Override
-  public void insertUpdate(final DocumentEvent e) {
+  public void insertUpdate(DocumentEvent e) {
     checkInputValid();
   }
 
   @Override
-  public void removeUpdate(final DocumentEvent e) {
+  public void removeUpdate(DocumentEvent e) {
     checkInputValid();
   }
 
   @Override
-  public void changedUpdate(final DocumentEvent e) {
+  public void changedUpdate(DocumentEvent e) {
     checkInputValid();
   }
 
@@ -55,32 +55,32 @@ public class CheckInputValidListener implements ICheckInputValidListener {
   }
 
   @Override
-  public void tableChanged(final TableModelEvent e) {
+  public void tableChanged(TableModelEvent e) {
     checkInputValid();
   }
 
   @Override
-  public void propertyChange(final PropertyChangeEvent evt) {
+  public void propertyChange(PropertyChangeEvent evt) {
     checkInputValid();
   }
 
   @Override
-  public void valueChanged(final TreeSelectionEvent e) {
+  public void valueChanged(TreeSelectionEvent e) {
     checkInputValid();
   }
 
   @Override
-  public void actionPerformed(final ActionEvent e) {
+  public void actionPerformed(ActionEvent e) {
     checkInputValid();
   }
 
   @Override
-  public void stateChanged(final ChangeEvent e) {
+  public void stateChanged(ChangeEvent e) {
     checkInputValid();
   }
 
   @Override
-  public void flavorsChanged(final FlavorEvent e) {
+  public void flavorsChanged(FlavorEvent e) {
     checkInputValid();
   }
 

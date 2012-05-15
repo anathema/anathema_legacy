@@ -27,61 +27,61 @@ public class DialogButtonBarBuilder {
   private final List<JComponent> buttons = new ArrayList<JComponent>();
   private AbstractButton helpButton;
 
-  public void addLeftSideComponent(final JComponent component) {
+  public void addLeftSideComponent(JComponent component) {
     leftSideComponents.add(component);
   }
 
-  public void addButtons(final JComponent... buttonComponents) {
+  public void addButtons(JComponent... buttonComponents) {
     buttons.addAll(Arrays.asList(buttonComponents));
   }
 
-  public void addButtonsCompacted(final JComponent... buttonComponents) {
-    final JPanel compactedButtonPanel = new JPanel(new GridLayout(1, 0, 0, 0));
-    for (final JComponent component : buttonComponents) {
+  public void addButtonsCompacted(JComponent... buttonComponents) {
+    JPanel compactedButtonPanel = new JPanel(new GridLayout(1, 0, 0, 0));
+    for (JComponent component : buttonComponents) {
       compactedButtonPanel.add(component);
     }
     addButtons(compactedButtonPanel);
   }
 
-  public IEnableable setHelpHandler(final IDialogHelpHandler helpHandler) {
+  public IEnableable setHelpHandler(IDialogHelpHandler helpHandler) {
     helpButton = createHelpButton(helpHandler);
     return new IEnableable() {
       @Override
-      public void setEnabled(final boolean enabled) {
+      public void setEnabled(boolean enabled) {
         helpButton.setEnabled(enabled);
       }
     };
   }
 
   public JComponent createButtonBar() {
-    final ArrayList<JComponent> allLeftComponents = new ArrayList<JComponent>();
+    ArrayList<JComponent> allLeftComponents = new ArrayList<JComponent>();
     if (helpButton != null) {
       allLeftComponents.add(new Gap(0, 0));//Add a little gap for moving the button to the right a bit 
       allLeftComponents.add(helpButton);
     }
     allLeftComponents.addAll(leftSideComponents);
 
-    final JPanel panel = new JPanel(new GridDialogLayout(allLeftComponents.size() + 1, false));
-    for (final JComponent component : allLeftComponents) {
+    JPanel panel = new JPanel(new GridDialogLayout(allLeftComponents.size() + 1, false));
+    for (JComponent component : allLeftComponents) {
       panel.add(component);
     }
-    final ButtonPanelBuilder buttonPanelBuilder = new ButtonPanelBuilder(LayoutDirection.HORIZONTAL);
-    for (final JComponent createdButton : buttons) {
+    ButtonPanelBuilder buttonPanelBuilder = new ButtonPanelBuilder(LayoutDirection.HORIZONTAL);
+    for (JComponent createdButton : buttons) {
       buttonPanelBuilder.add(createdButton);
     }
-    final JPanel buttonPanel = buttonPanelBuilder.createPanel();
+    JPanel buttonPanel = buttonPanelBuilder.createPanel();
     panel.add(buttonPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     return panel;
   }
 
   private static AbstractButton createHelpButton(final IDialogHelpHandler helpHandler) {
-    final SmartAction helpAction = new SmartAction(DialogIconResources.DIALOG_HELP) {
+    SmartAction helpAction = new SmartAction(DialogIconResources.DIALOG_HELP) {
       @Override
-      protected void execute(final Component parentComponent) {
+      protected void execute(Component parentComponent) {
         helpHandler.execute(parentComponent);
       }
     };
-    final String helpText = MnemonicLabelParser
+    String helpText = MnemonicLabelParser
         .parse(DialogMessages.HELP)
         .getPlainText();
     helpAction.setToolTipText(helpText);

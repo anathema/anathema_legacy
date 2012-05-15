@@ -17,14 +17,11 @@ public class DialogHeaderPanelConfiguration implements IDialogHeaderPanelConfigu
   private final boolean visible;
   private final JToolBar toolBar;
 
-  private DialogHeaderPanelConfiguration(final Icon icon, final boolean visible) {
+  private DialogHeaderPanelConfiguration(Icon icon, boolean visible) {
     this(icon, visible, null);
   }
 
-  private DialogHeaderPanelConfiguration(
-      final Icon icon,
-      final boolean visible,
-      final JToolBar toolBar) {
+  private DialogHeaderPanelConfiguration(Icon icon, boolean visible, JToolBar toolBar) {
     this.icon = icon;
     this.visible = visible;
     this.toolBar = toolBar;

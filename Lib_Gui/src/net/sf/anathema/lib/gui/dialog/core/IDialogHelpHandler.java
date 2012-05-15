@@ -4,5 +4,5 @@ import java.awt.Component;
 
 public interface IDialogHelpHandler {
 
-  public void execute(Component parentComponent);
+  void execute(Component parentComponent);
 }

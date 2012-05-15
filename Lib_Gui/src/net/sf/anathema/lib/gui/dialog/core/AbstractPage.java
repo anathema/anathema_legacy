@@ -22,7 +22,7 @@ public abstract class AbstractPage extends DisposableContainer implements IPage 
   public IDialogHelpHandler getHelpHandler() {
     return isHelpAvailable() ? new IDialogHelpHandler() {
       @Override
-      public void execute(final Component parentComponent) {
+      public void execute(Component parentComponent) {
         performHelp();
       }
     } : null;

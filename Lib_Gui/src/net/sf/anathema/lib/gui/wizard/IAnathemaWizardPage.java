@@ -5,7 +5,7 @@ import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 
 public interface IAnathemaWizardPage extends IWizardPage {
 
-  public void initPresentation(CheckInputListener inputListener);
+  void initPresentation(CheckInputListener inputListener);
 
-  public void setPreviousPage(IAnathemaWizardPage page);
+  void setPreviousPage(IAnathemaWizardPage page);
 }

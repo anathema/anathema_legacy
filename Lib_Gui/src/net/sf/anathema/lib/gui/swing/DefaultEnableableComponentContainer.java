@@ -6,7 +6,7 @@ public class DefaultEnableableComponentContainer implements IEnableableComponent
 
   private final JComponent panel;
 
-  public DefaultEnableableComponentContainer(final JComponent panel) {
+  public DefaultEnableableComponentContainer(JComponent panel) {
     this.panel = panel;
     GuiUtilities.setContainerEnabled(panel, isEnabled());
   }
@@ -21,7 +21,7 @@ public class DefaultEnableableComponentContainer implements IEnableableComponent
   }
 
   @Override
-  public void setEnabled(final boolean enabled) {
+  public void setEnabled(boolean enabled) {
     GuiUtilities.setContainerEnabled(panel, enabled);
   }
 }

@@ -11,14 +11,14 @@ public class TextComponentSelectAllAction extends SmartAction {
 
   private final JTextComponent textComponent;
 
-  public TextComponentSelectAllAction(final JTextComponent textComponent) {
+  public TextComponentSelectAllAction(JTextComponent textComponent) {
     super(DialogMessages.SELECT_ALL);
     Preconditions.checkNotNull(textComponent);
     this.textComponent = textComponent;
   }
 
   @Override
-  protected void execute(final Component parentComponent) {
+  protected void execute(Component parentComponent) {
     textComponent.selectAll();
   }
 }

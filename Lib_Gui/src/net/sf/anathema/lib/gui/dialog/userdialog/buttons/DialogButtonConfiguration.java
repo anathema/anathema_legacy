@@ -15,15 +15,15 @@ public class DialogButtonConfiguration implements IDialogButtonConfiguration {
     this(DEFAULT_OK_CONFIG);
   }
 
-  public DialogButtonConfiguration(final IActionConfiguration okConfiguration) {
+  public DialogButtonConfiguration(IActionConfiguration okConfiguration) {
     this(okConfiguration, DEFAULT_CANCEL_CONFIG);
   }
 
-  public DialogButtonConfiguration(final String okText, final String cancelText) {
+  public DialogButtonConfiguration(String okText, String cancelText) {
     this(new ActionConfiguration(okText), new ActionConfiguration(cancelText));
   }
 
-  public DialogButtonConfiguration(final IActionConfiguration okConfiguration, final IActionConfiguration cancelConfiguration) {
+  public DialogButtonConfiguration(IActionConfiguration okConfiguration, IActionConfiguration cancelConfiguration) {
     this.okConfiguration = okConfiguration;
     this.cancelConfiguration = cancelConfiguration;
   }

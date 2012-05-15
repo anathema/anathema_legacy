@@ -18,7 +18,7 @@ public class SwingColors {
   }
 
   public static Color getControlLtHighlightColor() {
-    final Color ltHighlightColor = UIManager.getColor("controlLtHighlight"); //$NON-NLS-1$
+    Color ltHighlightColor = UIManager.getColor("controlLtHighlight"); //$NON-NLS-1$
     if (ltHighlightColor == null) {
       //Happens with "Nimbus" L&F
       return getControlHighlightColor();

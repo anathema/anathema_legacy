@@ -14,5 +14,5 @@ import net.sf.anathema.lib.gui.dialog.core.IDialogContainer;
  */
 public interface IWizardContainer extends IDialogContainer {
 
-  public IWizardPage getCurrentPage();
+  IWizardPage getCurrentPage();
 }

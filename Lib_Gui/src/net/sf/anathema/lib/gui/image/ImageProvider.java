@@ -17,7 +17,7 @@ public class ImageProvider implements IImageProvider {
    * class for loading images out of a central path
    * @param rootPath central path where all images are located
    */
-  public ImageProvider(final String rootPath) {
+  public ImageProvider(String rootPath) {
     Preconditions.checkNotNull(rootPath, "RootPath is null.");
     this.rootPath = rootPath;
   }
@@ -28,7 +28,7 @@ public class ImageProvider implements IImageProvider {
    * @return Image or null, if image cannot be loaded and hasDummyImage is false
    */
   @Override
-  public Image getImage(final String relativePath) {
+  public Image getImage(String relativePath) {
     return getImage(relativePath, false);
   }
 
@@ -37,8 +37,8 @@ public class ImageProvider implements IImageProvider {
    * @param isAnimated
    * @return Image or null, if image cannot be loaded and hasDummyImage is false
    */
-  private Image getImage(final String relativePath, final boolean isAnimated) {
-    final InputStream inputStream = getInputStream(relativePath);
+  private Image getImage(String relativePath, boolean isAnimated) {
+    InputStream inputStream = getInputStream(relativePath);
     if (inputStream == null) {
       return null;
     }
@@ -50,22 +50,22 @@ public class ImageProvider implements IImageProvider {
     }
   }
 
-  private Image loadImage(final boolean isAnimated, final InputStream inputStream) {
+  private Image loadImage(boolean isAnimated, InputStream inputStream) {
     try {
       if (isAnimated) {
         return ImageLoader.getImageWithoutCaching(inputStream);
       }
       return ImageLoader.getMemoryImageWithoutCaching(inputStream);
     }
-    catch (final IOException e) {
+    catch (IOException e) {
       throw new ImageLoadingException("Cannot open image: " + e.getMessage()); //$NON-NLS-1$
     }
   }
 
-  private InputStream getInputStream(final String relativePath) {
+  private InputStream getInputStream(String relativePath) {
     Preconditions.checkNotNull(relativePath, "RelativePath to image is null.");
-    final String resourceName = rootPath + "/" + relativePath; //$NON-NLS-1$
-    final InputStream inputStream = getClass().getClassLoader().getResourceAsStream(resourceName);
+    String resourceName = rootPath + "/" + relativePath; //$NON-NLS-1$
+    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(resourceName);
     if (inputStream == null) {
       throw new ImageLoadingException("Cannot find image resource: " + resourceName); //$NON-NLS-1$
     }
@@ -73,8 +73,8 @@ public class ImageProvider implements IImageProvider {
   }
 
   @Override
-  public Icon getImageIcon(final String relativePath) {
-    final Image image = getImage(relativePath);
+  public Icon getImageIcon(String relativePath) {
+    Image image = getImage(relativePath);
     return image == null ? null : new ImageIcon(image);
   }
 

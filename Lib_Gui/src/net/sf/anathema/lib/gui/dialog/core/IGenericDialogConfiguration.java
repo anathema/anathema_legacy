@@ -8,9 +8,9 @@ import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
 
 public interface IGenericDialogConfiguration {
 
-  public IDialogButtonConfiguration getButtonConfiguration();
+  IDialogButtonConfiguration getButtonConfiguration();
 
-  public IDialogHeaderPanelConfiguration getHeaderPanelConfiguration();
+  IDialogHeaderPanelConfiguration getHeaderPanelConfiguration();
 
   /** Returns the close handler for this dialog, that will be informed when the dialog
    * is about to close. 
@@ -24,7 +24,7 @@ public interface IGenericDialogConfiguration {
    * 
    * @return a close handler and never <code>null</code>.
    */
-  public IVetoDialogCloseHandler getVetoCloseHandler();
+  IVetoDialogCloseHandler getVetoCloseHandler();
 
-  public IDialogPreferences getPreferences();
+  IDialogPreferences getPreferences();
 }

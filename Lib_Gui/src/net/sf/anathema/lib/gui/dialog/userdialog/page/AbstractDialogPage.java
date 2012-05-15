@@ -7,7 +7,7 @@ import net.sf.anathema.lib.message.IBasicMessage;
 public abstract class AbstractDialogPage extends AbstractBasicDialogPage implements IDialogPage {
   private final IBasicMessage defaultMessage;
 
-  public AbstractDialogPage(final String defaultMessageText) {
+  public AbstractDialogPage(String defaultMessageText) {
     Preconditions.checkNotNull(defaultMessageText, "DefaultMessage text must not be null.");
     this.defaultMessage = new BasicMessage(defaultMessageText);
   }

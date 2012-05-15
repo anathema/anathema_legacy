@@ -17,13 +17,9 @@ public abstract class AbstractBasicDialogPage extends AbstractPage implements IB
 
   private ICheckInputValidListener inputValidListener;
   private final ICheckInputValidListener inputValidListenerProxy = (ICheckInputValidListener) Proxy
-      .newProxyInstance(
-          getClass().getClassLoader(),
-          new Class[]{ ICheckInputValidListener.class },
-          new InvocationHandler() {
+          .newProxyInstance(getClass().getClassLoader(), new Class[]{ICheckInputValidListener.class}, new InvocationHandler() {
             @Override
-            public Object invoke(final Object proxy, final Method method, final Object[] args)
-                throws Throwable {
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
               changeListeners.announce().changeOccurred();
               // (ip, mg) Events koennen schon kommen, bevor inputValidListener gesetzt wurde
               //          koennen wir aber getrost ignorieren, da nach dem Setzen des inputValidListeners
@@ -41,7 +37,7 @@ public abstract class AbstractBasicDialogPage extends AbstractPage implements IB
   }
 
   @Override
-  public void setInputValidListener(final ICheckInputValidListener inputValidListener) {
+  public void setInputValidListener(ICheckInputValidListener inputValidListener) {
     this.inputValidListener = inputValidListener;
   }
 
@@ -76,12 +72,12 @@ public abstract class AbstractBasicDialogPage extends AbstractPage implements IB
   }
 
   @Override
-  public final void addRequestFinishListener(final RequestFinishListener requestFinishListener) {
+  public final void addRequestFinishListener(RequestFinishListener requestFinishListener) {
     requestFinishListeners.addListener(requestFinishListener);
   }
 
   @Override
-  public final void removeRequestFinishListener(final RequestFinishListener requestFinishListener) {
+  public final void removeRequestFinishListener(RequestFinishListener requestFinishListener) {
     requestFinishListeners.removeListener(requestFinishListener);
   }
 

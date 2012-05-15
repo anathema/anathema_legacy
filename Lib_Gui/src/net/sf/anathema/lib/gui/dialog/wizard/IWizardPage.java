@@ -18,22 +18,22 @@ public interface IWizardPage extends IPage {
    * 
    * @return the message, or <code>null</code> if none
    */
-  public IBasicMessage getMessage();
+  IBasicMessage getMessage();
 
-  public IPageContent getPageContent();
+  IPageContent getPageContent();
 
   /**
    * Returns whether the next page could be displayed.
    * 
    * @return <code>true</code> if the next page could be displayed, and <code>false</code> otherwise
    */
-  public boolean canFlipToNextPage();
+  boolean canFlipToNextPage();
 
   /** Returns the wizard page that would to be shown if the user was to press the Next button. */
-  public IWizardPage getNextPage();
+  IWizardPage getNextPage();
 
   /** Returns the wizard page that would to be shown if the user was to press the Back button. */
-  public IWizardPage getPreviousPage();
+  IWizardPage getPreviousPage();
 
   /**
    * Returns whether this page is cancellable or not. This information is typically used by the
@@ -41,14 +41,14 @@ public interface IWizardPage extends IPage {
    * 
    * @return <code>true</code> if this page is cancellable, and <code>false</code> otherwise
    */
-  public boolean canCancel();
+  boolean canCancel();
 
   /** Returns the wizard that hosts this wizard page.
    * @deprecated As of 29.05.2009 (gebhard) - use listeners or other ways to retrieve the required
    * information
    */
   @Deprecated
-  public IWizardConfiguration getWizard();
+  IWizardConfiguration getWizard();
 
   /**
    * Sets the current message for this page. May be <code>null</code> to indicate no
@@ -56,13 +56,13 @@ public interface IWizardPage extends IPage {
    * message which may simply provide instruction or information to the user.
    * @param message the message
    */
-  public void setMessage(IBasicMessage message);
+  void setMessage(IBasicMessage message);
 
   /** Initializes all widgets from the data attached to this wizard page. This method will be called
    * from the wizard container after creating the content.
    * @deprecated As of 10.12.2004 (gebhard)
    * @see #getContent() */
   @Deprecated
-  public void initializeFromData();
+  void initializeFromData();
 
 }

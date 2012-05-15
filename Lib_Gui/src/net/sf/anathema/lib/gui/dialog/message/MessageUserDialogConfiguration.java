@@ -10,21 +10,16 @@ import net.sf.anathema.lib.message.IMessage;
 
 public class MessageUserDialogConfiguration extends DefaultDialogConfiguration<MessageDialogPage> {
 
-  public MessageUserDialogConfiguration(
-      final IMessage message) {
+  public MessageUserDialogConfiguration(IMessage message) {
     this(message, DialogButtonConfigurationFactory.createOkOnly());
   }
 
-  public MessageUserDialogConfiguration(
-      final IMessage message,
-      final IDialogButtonConfiguration buttonConfiguration) {
+  public MessageUserDialogConfiguration(IMessage message, IDialogButtonConfiguration buttonConfiguration) {
     this(message, buttonConfiguration, null);
   }
 
-  public MessageUserDialogConfiguration(
-      final IMessage message,
-      final IDialogButtonConfiguration buttonConfiguration,
-      IDialogVisibilitySetting dialogVisibilitySetting) {
+  public MessageUserDialogConfiguration(IMessage message, IDialogButtonConfiguration buttonConfiguration,
+                                        IDialogVisibilitySetting dialogVisibilitySetting) {
     super(new MessageDialogPage(message), buttonConfiguration, dialogVisibilitySetting);
   }
 

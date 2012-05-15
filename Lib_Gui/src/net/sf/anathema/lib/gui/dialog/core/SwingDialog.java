@@ -12,13 +12,13 @@ public class SwingDialog implements ISwingFrameOrDialog {
 
   private final JDialog dialog;
 
-  public SwingDialog(final JDialog dialog) {
+  public SwingDialog(JDialog dialog) {
     Preconditions.checkNotNull(dialog);
     this.dialog = dialog;
   }
 
   @Override
-  public void setTitle(final String title) {
+  public void setTitle(String title) {
     dialog.setTitle(title);
   }
 
@@ -33,7 +33,7 @@ public class SwingDialog implements ISwingFrameOrDialog {
   }
 
   @Override
-  public void setModal(final boolean modal) {
+  public void setModal(boolean modal) {
     dialog.setModal(modal);
   }
 
@@ -43,17 +43,17 @@ public class SwingDialog implements ISwingFrameOrDialog {
   }
 
   @Override
-  public void setDefaultCloseOperation(final int closeOperation) {
+  public void setDefaultCloseOperation(int closeOperation) {
     dialog.setDefaultCloseOperation(closeOperation);
   }
 
   @Override
-  public void addWindowListener(final WindowListener windowListener) {
+  public void addWindowListener(WindowListener windowListener) {
     dialog.addWindowListener(windowListener);
   }
 
   @Override
-  public void removeWindowListener(final WindowListener windowListener) {
+  public void removeWindowListener(WindowListener windowListener) {
     dialog.removeWindowListener(windowListener);
   }
 
@@ -73,7 +73,7 @@ public class SwingDialog implements ISwingFrameOrDialog {
   }
 
   @Override
-  public void setResizable(final boolean resizable) {
+  public void setResizable(boolean resizable) {
     dialog.setResizable(resizable);
   }
 
@@ -83,7 +83,7 @@ public class SwingDialog implements ISwingFrameOrDialog {
   }
 
   @Override
-  public void setVisible(final boolean visible) {
+  public void setVisible(boolean visible) {
     dialog.setVisible(visible);
   }
 

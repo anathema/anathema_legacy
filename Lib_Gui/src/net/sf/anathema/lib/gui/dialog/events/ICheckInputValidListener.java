@@ -27,5 +27,5 @@ public interface ICheckInputValidListener
     FlavorListener,
     ListDataListener {
 
-  public void checkInputValid();
+  void checkInputValid();
 }

@@ -10,16 +10,13 @@ public abstract class AbstractGenericDialogConfiguration implements IGenericDial
   private final IDialogPreferences preference;
   private final IDialogHeaderPanelConfiguration headerPanelConfiguration;
 
-  public AbstractGenericDialogConfiguration(
-      final IDialogButtonConfiguration buttonConfiguration,
-      IDialogHeaderPanelConfiguration headerPanelConfiguration) {
+  public AbstractGenericDialogConfiguration(IDialogButtonConfiguration buttonConfiguration,
+                                            IDialogHeaderPanelConfiguration headerPanelConfiguration) {
     this(buttonConfiguration, headerPanelConfiguration, null);
   }
 
-  public AbstractGenericDialogConfiguration(
-      final IDialogButtonConfiguration buttonConfiguration,
-      IDialogHeaderPanelConfiguration headerPanelConfiguration,
-      final IDialogPreferences preference) {
+  public AbstractGenericDialogConfiguration(IDialogButtonConfiguration buttonConfiguration, IDialogHeaderPanelConfiguration headerPanelConfiguration,
+                                            IDialogPreferences preference) {
     Preconditions.checkNotNull(buttonConfiguration);
     Preconditions.checkNotNull(headerPanelConfiguration);
     this.headerPanelConfiguration = headerPanelConfiguration;
