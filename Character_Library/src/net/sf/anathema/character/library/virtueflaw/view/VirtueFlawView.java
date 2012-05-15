@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -22,9 +22,9 @@ import java.awt.Container;
 
 public class VirtueFlawView implements IVirtueFlawView {
   private final JPanel virtueFlawPanel = new JPanel(new GridDialogLayout(2, false));
-  private final IIntValueDisplayFactory intValueDisplayFactory;
+  private final IntegerViewFactory intValueDisplayFactory;
   
-  public VirtueFlawView(IIntValueDisplayFactory factory)
+  public VirtueFlawView(IntegerViewFactory factory)
   {
 	  this.intValueDisplayFactory = factory;
   }

@@ -15,7 +15,7 @@ public class SimpleViewContent implements IViewContent {
   }
 
   @Override
-  public void addTo(IMultiContentView view) {
+  public void addTo(MultipleContentView view) {
     view.addView(tabView, properties);
   }
 

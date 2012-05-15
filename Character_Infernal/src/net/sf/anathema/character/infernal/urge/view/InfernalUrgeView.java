@@ -1,7 +1,7 @@
 package net.sf.anathema.character.infernal.urge.view;
 
 import net.sf.anathema.character.library.virtueflaw.view.VirtueFlawView;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class InfernalUrgeView extends VirtueFlawView implements IInfernalUrgeView {
   private final List<ITextView> textViews = new ArrayList<ITextView>();
 
-  public InfernalUrgeView(IIntValueDisplayFactory factory) {
+  public InfernalUrgeView(IntegerViewFactory factory) {
     super(factory);
   }
 

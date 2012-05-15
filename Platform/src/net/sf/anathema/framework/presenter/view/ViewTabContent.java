@@ -15,7 +15,7 @@ public class ViewTabContent implements IViewContent {
   }
 
   @Override
-  public void addTo(IMultiContentView view) {
+  public void addTo(MultipleContentView view) {
     view.addView(this.contentView, tabProperties);
   }
 

@@ -4,7 +4,7 @@ import net.sf.anathema.lib.gui.swing.IDisposable;
 
 public interface IViewContent {
 
-  void addTo(IMultiContentView view);
+  void addTo(MultipleContentView view);
 
   IDisposable getDisposable();
 }

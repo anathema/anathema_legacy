@@ -2,7 +2,7 @@ package net.sf.anathema.character.solar.virtueflaw.view;
 
 import net.sf.anathema.character.library.virtueflaw.view.VirtueFlawView;
 import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawView;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class SolarVirtueFlawView extends VirtueFlawView implements ISolarVirtueFlawView {
   private final List<ITextView> textViews = new ArrayList<ITextView>();
 
-  public SolarVirtueFlawView(IIntValueDisplayFactory factory) {
+  public SolarVirtueFlawView(IntegerViewFactory factory) {
     super(factory);
   }
 

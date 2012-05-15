@@ -1,32 +1,32 @@
 package net.sf.anathema.character.ghost.passions.view;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.sf.anathema.character.generic.framework.ITraitReference;
+import net.sf.anathema.character.library.overview.IOverviewCategory;
+import net.sf.anathema.character.library.overview.OverviewCategory;
+import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
+import net.sf.anathema.lib.gui.IView;
+
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
-import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.character.library.overview.OverviewCategory;
-import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
-import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
-import net.sf.anathema.lib.gui.IView;
-
 public class GhostPassionsConfigurationView implements IGhostPassionsConfigurationView, IView {
 
-  private final IIntValueDisplayFactory factory;
+  private final IntegerViewFactory factory;
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel passionListPanel = new JPanel(new GridDialogLayout(5, false));
   private final JPanel passionPanel = new JPanel(new GridDialogLayout(1, true));
   private final JPanel overviewPanel = new JPanel();
   private ButtonControlledComboEditView<ITraitReference> objectSelectionView;
 
-  public GhostPassionsConfigurationView(IIntValueDisplayFactory factory) {
+  public GhostPassionsConfigurationView(IntegerViewFactory factory) {
     this.factory = factory;
   }
 

@@ -1,12 +1,12 @@
 package net.sf.anathema.character.library.trait.view;
 
-import javax.swing.JComponent;
-
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.layout.GroupedColumnPanel;
+
+import javax.swing.JComponent;
 
 public class GroupedTraitView {
 
@@ -23,7 +23,7 @@ public class GroupedTraitView {
       IModifiableCapTrait trait,
       boolean selected,
       IIconToggleButtonProperties properties,
-      IIntValueDisplayFactory factory) {
+      IntegerViewFactory factory) {
     SimpleTraitView view = new SimpleTraitView(factory, labelText, value, maxValue, trait);
     FrontToggleButtonTraitViewWrapper<SimpleTraitView> traitView = new FrontToggleButtonTraitViewWrapper<SimpleTraitView>(
         view,

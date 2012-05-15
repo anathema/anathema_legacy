@@ -10,7 +10,7 @@ import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.framework.resources.CharacterIntValueGraphics;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.collection.ArrayUtilities;
@@ -166,7 +166,7 @@ public class EquipmentDatabasePresenter implements Presenter {
     view.fillDescriptionPanel(panelBuilder.getTitledContent(resources.getString("Equipment.Creation.Basics"))); //$NON-NLS-1$
   }
   
-  private IIntValueDisplayFactory getIntValueDisplayFactory() {
+  private IntegerViewFactory getIntValueDisplayFactory() {
 	  return new MarkerIntValueDisplayFactory(new CharacterIntValueGraphics(resources, CharacterType.MORTAL));
   }
 }

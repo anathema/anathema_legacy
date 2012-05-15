@@ -9,7 +9,7 @@ import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.impl.module.repository.CharacterCreationWizardPageFactory;
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
-import net.sf.anathema.character.impl.view.CharacterView;
+import net.sf.anathema.character.impl.view.TabbedCharacterView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -28,7 +28,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -62,18 +62,18 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         CharacterUI characterUI = new CharacterUI(resources);
         if (statistics == null) {
           Icon icon = characterUI.getCharacterDescriptionTabIcon();
-          ICharacterView characterView = new CharacterView(null, printName, icon, null);
+          ICharacterView characterView = new TabbedCharacterView(null, printName, icon, null);
           new CharacterPresenter(character, characterView, resources, anathemaModel,
                   new NpcPointPresentation()).initPresentation();
           return characterView;
         }
         ICharacterType characterType = character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType();
-        IIntValueDisplayFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
+        IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
                 resources, characterType);
-        IIntValueDisplayFactory markerLessIntValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(
+        IntegerViewFactory markerLessIntValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(
                 resources, characterType);
         Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
-        ICharacterView characterView = new CharacterView(intValueDisplayFactory, printName, typeIcon,
+        ICharacterView characterView = new TabbedCharacterView(intValueDisplayFactory, printName, typeIcon,
                 markerLessIntValueDisplayFactory);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(character.getStatistics());
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character.getStatistics());

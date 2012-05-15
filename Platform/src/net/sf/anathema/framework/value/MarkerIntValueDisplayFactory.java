@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.value;
 
-public class MarkerIntValueDisplayFactory implements IIntValueDisplayFactory {
+public class MarkerIntValueDisplayFactory implements IntegerViewFactory {
 
   private final IntValueDisplayGraphics graphics;
 

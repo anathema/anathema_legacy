@@ -15,7 +15,7 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateVisitor;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.presenter.FavorableTraitViewProperties;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -44,7 +44,7 @@ public class InfernalPatronPresenter implements Presenter {
     IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
     final ILabelledAlotmentView favoredView = overview.addAlotmentView(
         resources.getString("Infernal.Overview.FavoredYozis"), 1); //$NON-NLS-1$
-    IIntValueDisplayFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
+    IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
             CharacterType.INFERNAL);
     view.startGroup(resources.getString("Yozis.Yozis")); //$NON-NLS-1$
     for (final IFavorableDefaultTrait yozi : model.getAllYozis()) {

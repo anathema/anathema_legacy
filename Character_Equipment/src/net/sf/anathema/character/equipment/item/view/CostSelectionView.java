@@ -4,7 +4,7 @@ import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.generic.framework.intvalue.ISelectableIntValueView;
 import net.sf.anathema.character.generic.framework.intvalue.SelectableIntValueView;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 
 import javax.swing.JLabel;
@@ -14,7 +14,7 @@ public class CostSelectionView {
 	private final ISelectableIntValueView<String> selection;
 	protected final JLabel label;
 	  
-	public CostSelectionView(String labelText, String[] backgrounds, IIntValueDisplayFactory factory) {
+	public CostSelectionView(String labelText, String[] backgrounds, IntegerViewFactory factory) {
 	  this.label = new JLabel(labelText);
 	  this.selection = new SelectableIntValueView<String>(factory, 0, 6);
 	  

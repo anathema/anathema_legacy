@@ -18,7 +18,7 @@ public class PlayerCharacterPointPresentation implements PointPresentationStrate
   }
 
   @Override
-  public void initPresentation(MultiTabViewPresenter viewPresenter) {
+  public void initPresentation(MultipleContentViewPresenter viewPresenter) {
     overviewPresenter.initPresentation();
     experiencePointPresenter.initPresentation(viewPresenter);
   }

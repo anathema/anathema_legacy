@@ -1,30 +1,30 @@
 package net.sf.anathema.character.impl.specialties;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.sf.anathema.character.generic.framework.ITraitReference;
+import net.sf.anathema.character.impl.view.SpecialtyView;
+import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
+import net.sf.anathema.character.view.ISpecialtyView;
+import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
+import net.sf.anathema.lib.gui.IView;
+
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.sf.anathema.character.generic.framework.ITraitReference;
-import net.sf.anathema.character.impl.view.SpecialtyView;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
-import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
-import net.sf.anathema.character.view.ISpecialtyView;
-import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
-import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
-import net.sf.anathema.lib.gui.IView;
-
 public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
 
-  private final IIntValueDisplayFactory factory;
+  private final IntegerViewFactory factory;
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel specialtyPanel = new JPanel(new GridDialogLayout(5, false));
 
-  public SpecialtiesView(IIntValueDisplayFactory factory) {
+  public SpecialtiesView(IntegerViewFactory factory) {
     this.factory = factory;
   }
 

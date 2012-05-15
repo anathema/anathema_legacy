@@ -75,6 +75,10 @@ public abstract class SmartAction extends AbstractAction implements IEnableable 
     }
   }
 
+  public final void setNameWithoutMnemonic(String name) {
+    putValue(Action.NAME, name);
+  }
+
   protected final Component getParentComponent(ActionEvent e) {
     return GuiUtilities.getWindowFor(e);
   }

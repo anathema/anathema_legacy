@@ -17,8 +17,8 @@ import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 import javax.swing.Icon;
@@ -37,10 +37,10 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
   private final JPanel backgroundSelectionPanel = new JPanel(new GridDialogLayout(3, false));
   private final JPanel backgroundDisplayPanel = new JPanel(new GridDialogLayout(2, false));
   private final EssencePanelView essencePanelView;
-  private final IIntValueDisplayFactory guiConfiguration;
+  private final IntegerViewFactory guiConfiguration;
   private JPanel backgroundPanel;
 
-  public BasicAdvantageView(IIntValueDisplayFactory intValueDisplayFactory) {
+  public BasicAdvantageView(IntegerViewFactory intValueDisplayFactory) {
     this.guiConfiguration = intValueDisplayFactory;
     essencePanelView = new EssencePanelView(intValueDisplayFactory);
   }

@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.framework.intvalue.ISelectableIntValueV
 import net.sf.anathema.character.generic.framework.intvalue.SelectableIntValueView;
 import net.sf.anathema.charmentry.presenter.view.IPrerequisitesEntryView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.NullUpperBounds;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -16,10 +16,10 @@ import javax.swing.JPanel;
 
 public class PrerequisiteEntryView implements IPrerequisitesEntryView {
 
-  private final IIntValueDisplayFactory factory;
+  private final IntegerViewFactory factory;
   private final JPanel content = new JPanel(new GridDialogLayout(3, false));
 
-  public PrerequisiteEntryView(IIntValueDisplayFactory factory) {
+  public PrerequisiteEntryView(IntegerViewFactory factory) {
     this.factory = factory;
   }
 

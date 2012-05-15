@@ -7,5 +7,5 @@ public interface OverviewContainer {
 
   IOverviewView addExperienceOverviewView();
 
-  void toogleOverviewView(boolean experienced);
+  void toggleOverviewView(boolean experienced);
 }
