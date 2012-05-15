@@ -8,8 +8,8 @@
  */
 package net.sf.anathema.lib.gui.image;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.io.IOUtilities;
-import net.disy.commons.core.util.Ensure;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -26,7 +26,7 @@ public class ImageProvider implements IImageProvider {
    * @param rootPath central path where all images are located
    */
   public ImageProvider(final String rootPath) {
-    Ensure.ensureNotNull("RootPath is null.", rootPath); //$NON-NLS-1$
+    Preconditions.checkNotNull(rootPath, "RootPath is null.");
     this.rootPath = rootPath;
   }
 
@@ -71,7 +71,7 @@ public class ImageProvider implements IImageProvider {
   }
 
   private InputStream getInputStream(final String relativePath) {
-    Ensure.ensureNotNull("RelativePath to image is null.", relativePath); //$NON-NLS-1$
+    Preconditions.checkNotNull(relativePath, "RelativePath to image is null.");
     final String resourceName = rootPath + "/" + relativePath; //$NON-NLS-1$
     final InputStream inputStream = getClass().getClassLoader().getResourceAsStream(resourceName);
     if (inputStream == null) {

@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.message;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 
 /** A basic message only contains the text and type of a message. */
 public class BasicMessage implements IBasicMessage {
@@ -20,8 +20,8 @@ public class BasicMessage implements IBasicMessage {
   }
 
   public BasicMessage(final String text, final MessageType type) {
-    Ensure.ensureArgumentNotNull("Text for message may not be null.", text); //$NON-NLS-1$
-    Ensure.ensureArgumentNotNull("Type for message may not be null.", type); //$NON-NLS-1$
+    Preconditions.checkNotNull(text, "Text for message may not be null.");
+    Preconditions.checkNotNull(type, "Type for message may not be null.");
     this.text = text;
     this.type = type;
   }

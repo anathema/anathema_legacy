@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.Range;
 
 import java.awt.FontMetrics;
@@ -20,8 +20,8 @@ public final class TextPositionFindingHandler implements IBlockRenderingHandler 
   private TextPosition textPosition;
 
   public TextPositionFindingHandler(final FontMetrics metrics, final Point point) {
-    Ensure.ensureArgumentNotNull(metrics);
-    Ensure.ensureArgumentNotNull(point);
+    Preconditions.checkNotNull(metrics);
+    Preconditions.checkNotNull(point);
     this.metrics = metrics;
     this.point = point;
   }

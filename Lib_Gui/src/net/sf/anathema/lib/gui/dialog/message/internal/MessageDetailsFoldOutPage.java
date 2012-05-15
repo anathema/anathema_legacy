@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.message.internal;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.action.AbstractCopyAction;
 import net.sf.anathema.lib.gui.dialog.action.TextComponentSelectAllAction;
@@ -31,7 +31,7 @@ public final class MessageDetailsFoldOutPage extends AbstractFoldOutPage {
   private JTextArea textArea;
 
   public MessageDetailsFoldOutPage(final String detailText) {
-    Ensure.ensureArgumentNotNull(detailText);
+    Preconditions.checkNotNull(detailText);
     this.detailText = detailText;
   }
 

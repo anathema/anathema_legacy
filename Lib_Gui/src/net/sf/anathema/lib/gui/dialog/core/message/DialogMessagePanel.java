@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.core.message;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.dialog.animation.AnimatedCompositeComponent;
 import net.sf.anathema.lib.gui.dialog.animation.OverlaidComponentBorder;
@@ -23,7 +23,7 @@ public class DialogMessagePanel {
   private final AnimatedCompositeComponent content;
 
   public DialogMessagePanel(final DialogMessageModel messageModel) {
-    Ensure.ensureArgumentNotNull(messageModel);
+    Preconditions.checkNotNull(messageModel);
     this.messageModel = messageModel;
     baseMessageComponent = new DialogMessageComponent(false);
     overlaidMessageComponent = new DialogMessageComponent(true);

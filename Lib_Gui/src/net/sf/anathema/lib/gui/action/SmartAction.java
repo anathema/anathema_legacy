@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.action;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.icon.IconImageIcon;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.swing.IEnableable;
@@ -41,7 +41,7 @@ public abstract class SmartAction extends AbstractAction implements IEnableable 
   }
 
   public SmartAction(final IActionConfiguration configuration) {
-    Ensure.ensureArgumentNotNull(configuration);
+    Preconditions.checkNotNull(configuration);
     setName(configuration.getName());
     setIcon(configuration.getIcon());
     final String toolTipText = configuration.getToolTipText();

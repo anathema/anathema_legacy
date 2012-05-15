@@ -8,10 +8,10 @@
  */
 package net.sf.anathema.lib.gui.dialog.progress;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.progress.IInterruptableRunnableWithProgress;
 import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
 import net.disy.commons.core.progress.IRunnableContext;
-import net.disy.commons.core.util.Ensure;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -30,7 +30,7 @@ public abstract class ProgressMonitorDialogBase
   @Override
   public void run(final INonInterruptableRunnableWithProgress runnable)
       throws InvocationTargetException {
-    Ensure.ensureArgumentNotNull(runnable);
+    Preconditions.checkNotNull(runnable);
     synchronized (this) {
       if (!first) {
         throw new IllegalStateException("Progress monitor dialog can only be run once."); //$NON-NLS-1$
@@ -43,7 +43,7 @@ public abstract class ProgressMonitorDialogBase
   public void run(final IInterruptableRunnableWithProgress runnable)
       throws InterruptedException,
       InvocationTargetException {
-    Ensure.ensureArgumentNotNull(runnable);
+    Preconditions.checkNotNull(runnable);
     synchronized (this) {
       if (!first) {
         throw new IllegalStateException("Progress monitor dialog can only be run once."); //$NON-NLS-1$

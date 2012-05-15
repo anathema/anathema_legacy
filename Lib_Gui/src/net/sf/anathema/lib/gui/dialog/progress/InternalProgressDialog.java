@@ -8,10 +8,10 @@
  */
 package net.sf.anathema.lib.gui.dialog.progress;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.progress.ICanceledListener;
 import net.disy.commons.core.progress.IObservableCancelable;
 import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.layout.util.ButtonPanelBuilder;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.DialogMessages;
@@ -51,7 +51,7 @@ public class InternalProgressDialog
       final Component parentComponent,
       final String title,
       final InternalProgressDialogModel model) {
-    Ensure.ensureArgumentNotNull(model);
+    Preconditions.checkNotNull(model);
     this.parentComponent = parentComponent;
     this.title = title;
     this.model = model;
@@ -176,7 +176,7 @@ public class InternalProgressDialog
 
   @Override
   public synchronized void addCanceledListener(final ICanceledListener listener) {
-    Ensure.ensureNotNull(listener);
+    Preconditions.checkNotNull(listener);
     canceledListeners.add(listener);
   }
 

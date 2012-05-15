@@ -8,9 +8,9 @@
  */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.model.ObjectModel;
 import net.disy.commons.core.provider.IProvider;
-import net.disy.commons.core.util.Ensure;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -28,9 +28,9 @@ public final class TextComponentKeyListener extends KeyAdapter {
       final TextContent content,
       final ObjectModel<TextSelection> selectionModel,
       final IProvider<Toolkit> toolkitProvider) {
-    Ensure.ensureArgumentNotNull(content);
-    Ensure.ensureArgumentNotNull(selectionModel);
-    Ensure.ensureArgumentNotNull(toolkitProvider);
+    Preconditions.checkNotNull(content);
+    Preconditions.checkNotNull(selectionModel);
+    Preconditions.checkNotNull(toolkitProvider);
     this.content = content;
     this.selectionModel = selectionModel;
     this.toolkitProvider = toolkitProvider;

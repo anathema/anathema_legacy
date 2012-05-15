@@ -8,8 +8,8 @@
  */
 package net.sf.anathema.lib.gui.dialog.core;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.model.ObjectModel;
-import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
@@ -43,8 +43,8 @@ public class DialogHeaderPanel {
       final DialogMessageModel messageModel,
       final ObjectModel<String> descriptionModel,
       final Icon largeDialogHeaderIcon) {
-    Ensure.ensureArgumentNotNull(messageModel);
-    Ensure.ensureArgumentNotNull(descriptionModel);
+    Preconditions.checkNotNull(messageModel);
+    Preconditions.checkNotNull(descriptionModel);
     this.descriptionModel = descriptionModel;
     this.largeDialogHeaderIcon = largeDialogHeaderIcon;
 

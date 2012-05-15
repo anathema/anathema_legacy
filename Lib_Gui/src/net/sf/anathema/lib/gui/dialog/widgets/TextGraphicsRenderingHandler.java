@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.Range;
 import net.sf.anathema.lib.gui.swing.SwingColors;
 
@@ -23,8 +23,8 @@ public final class TextGraphicsRenderingHandler implements IBlockRenderingHandle
   private final Color foregroundColor;
 
   public TextGraphicsRenderingHandler(final Graphics graphics, final Color foregroundColor) {
-    Ensure.ensureArgumentNotNull(graphics);
-    Ensure.ensureArgumentNotNull(foregroundColor);
+    Preconditions.checkNotNull(graphics);
+    Preconditions.checkNotNull(foregroundColor);
     this.graphics = graphics;
     this.foregroundColor = foregroundColor;
     metrics = graphics.getFontMetrics();

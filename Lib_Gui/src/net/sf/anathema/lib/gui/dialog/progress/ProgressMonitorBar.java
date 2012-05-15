@@ -8,9 +8,9 @@
  */
 package net.sf.anathema.lib.gui.dialog.progress;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.progress.ICanceledListener;
 import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.core.util.Ensure;
 
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
@@ -109,7 +109,7 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
   }
 
   public synchronized void addCanceledListener(final ICanceledListener listener) {
-    Ensure.ensureNotNull(listener);
+    Preconditions.checkNotNull(listener);
     canceledListeners.add(listener);
   }
 

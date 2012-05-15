@@ -8,15 +8,15 @@
  */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 
 public class TextSelection {
 
   public static TextSelection createSelection(
       final TextPosition position1,
       final TextPosition position2) {
-    Ensure.ensureArgumentNotNull(position1);
-    Ensure.ensureArgumentNotNull(position2);
+    Preconditions.checkNotNull(position1);
+    Preconditions.checkNotNull(position2);
     if (position1.getBlockIndex() < position2.getBlockIndex()) {
       return new TextSelection(position1, position2);
     }

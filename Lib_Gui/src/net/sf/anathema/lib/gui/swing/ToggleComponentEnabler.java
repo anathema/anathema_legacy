@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.swing;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 
 import javax.swing.JComponent;
 import javax.swing.JToggleButton;
@@ -58,9 +58,8 @@ public class ToggleComponentEnabler {
       final JToggleButton button,
       final IEnableableComponentContainer[] components,
       final JComponent[] decorations) {
-    Ensure.ensureNotNull(button);
-    Ensure.ensureNotNull(components);
-    Ensure.ensureArgumentArrayContentsNotNull(components);
+    Preconditions.checkNotNull(button);
+    Preconditions.checkNotNull(components);
     this.button = button;
     this.components = components;
     setButtonListeners();

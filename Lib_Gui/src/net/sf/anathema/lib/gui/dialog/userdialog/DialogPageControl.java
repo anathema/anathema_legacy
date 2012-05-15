@@ -8,8 +8,8 @@
  */
 package net.sf.anathema.lib.gui.dialog.userdialog;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.ContractFailedException;
-import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.lib.gui.dialog.core.DialogPageInputValidCheckable;
 import net.sf.anathema.lib.gui.dialog.core.IDialogControl;
@@ -38,7 +38,7 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
 
   @Override
   public final void setMessage(final IBasicMessage message) {
-    Ensure.ensureArgumentNotNull(message);
+    Preconditions.checkNotNull(message);
     if (ObjectUtilities.equals(this.message, message)) {
       updateCanFinish();
       return;

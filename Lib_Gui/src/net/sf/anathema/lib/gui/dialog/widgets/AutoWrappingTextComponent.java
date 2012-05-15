@@ -8,10 +8,10 @@
  */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.model.ObjectModel;
 import net.disy.commons.core.provider.IProvider;
 import net.disy.commons.core.text.TextAlignment;
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.swing.SwingColors;
 
@@ -32,7 +32,7 @@ public class AutoWrappingTextComponent extends JComponent {
   private TextAlignment textAlignment = TextAlignment.LEFT;
 
   public AutoWrappingTextComponent(final String text, final int width) {
-    Ensure.ensureArgumentNotNull(text);
+    Preconditions.checkNotNull(text);
     this.width = width;
     setForeground(SwingColors.getTextAreaForegroundColor());
     setBackground(SwingColors.getTextAreaBackgroundColor());

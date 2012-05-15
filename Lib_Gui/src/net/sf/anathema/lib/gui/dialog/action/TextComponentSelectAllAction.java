@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.dialog.action;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.DialogMessages;
 
@@ -13,7 +13,7 @@ public class TextComponentSelectAllAction extends SmartAction {
 
   public TextComponentSelectAllAction(final JTextComponent textComponent) {
     super(DialogMessages.SELECT_ALL);
-    Ensure.ensureArgumentNotNull(textComponent);
+    Preconditions.checkNotNull(textComponent);
     this.textComponent = textComponent;
   }
 

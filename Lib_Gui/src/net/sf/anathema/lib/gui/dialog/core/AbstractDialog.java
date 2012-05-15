@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
@@ -52,7 +52,7 @@ public abstract class AbstractDialog {
   private IDialogCloseHandler closeHandler = IDialogCloseHandler.NULL_HANDLER;
 
   public AbstractDialog(Component parent, IGenericDialogConfiguration dialogConfiguration) {
-    Ensure.ensureArgumentNotNull(dialogConfiguration);
+    Preconditions.checkNotNull(dialogConfiguration);
     this.dialogConfiguration = dialogConfiguration;
     dialogPagePanel = new DialogPagePanel(dialogConfiguration.getHeaderPanelConfiguration());
     dialog = createFrameOrDialog(parent);
@@ -208,7 +208,7 @@ public abstract class AbstractDialog {
   }
 
   protected final void setCloseHandler(final IDialogCloseHandler dialogCloseHandler) {
-    Ensure.ensureArgumentNotNull(dialogCloseHandler);
+    Preconditions.checkNotNull(dialogCloseHandler);
     closeHandler = dialogCloseHandler;
   }
 

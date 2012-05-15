@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 public class TextBlockFactory {
 
   public static List<TextBlock> createTextBlocks(final String text) {
-    Ensure.ensureArgumentNotNull(text);
+    Preconditions.checkNotNull(text);
     int endIndex = 0;
     int startIndex = 0;
     final ArrayList<TextBlock> blocks = new ArrayList<TextBlock>();

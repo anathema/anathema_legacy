@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.swing;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 
 import java.awt.Dimension;
 import java.awt.Point;
@@ -26,8 +26,8 @@ public class SmartRectangle extends Rectangle {
 
   public SmartRectangle(final int ulx, final int uly, final int width, final int height) {
     super(ulx, uly, width, height);
-    Ensure.ensureArgumentTrue("Width <0 : '" + width + "'", width >= 0); //$NON-NLS-1$ //$NON-NLS-2$
-    Ensure.ensureArgumentTrue("Height <0 : '" + height + "'", height >= 0); //$NON-NLS-1$ //$NON-NLS-2$
+    Preconditions.checkArgument(width >= 0, "Width <0 : '" + width + "'");
+    Preconditions.checkArgument(height >= 0, "Height <0 : '" + height + "'");
   }
 
   public int getUlx() {

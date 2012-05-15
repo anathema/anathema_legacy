@@ -8,8 +8,8 @@
  */
 package net.sf.anathema.lib.gui.dialog.input.check;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.model.BooleanModel;
-import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -27,7 +27,7 @@ public class CheckBoxSmartDialogPanel extends AbstractSmartDialogPanel {
 
   public CheckBoxSmartDialogPanel(final BooleanModel model, final String label) {
     this.model = model;
-    Ensure.ensureArgumentNotNull(model);
+    Preconditions.checkNotNull(model);
     checkBox = ActionWidgetFactory.createCheckBox(new SmartToggleAction(model, label));
   }
 

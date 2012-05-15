@@ -8,9 +8,9 @@
  */
 package net.sf.anathema.lib.gui.icon;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.model.AbstractChangeableModel;
 import net.disy.commons.core.model.IChangeableModel;
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.control.IChangeListener;
 
 import javax.swing.Icon;
@@ -28,8 +28,7 @@ public class CompositeIcon extends AbstractChangeableModel implements Icon {
   };
 
   public CompositeIcon(final Icon... icons) {
-    Ensure.ensureArgumentNotNull(icons);
-    Ensure.ensureArgumentArrayContentsNotNull(icons);
+    Preconditions.checkNotNull(icons);
     this.icons = icons;
     for (final Icon icon : icons) {
       if (icon instanceof IChangeableModel) {

@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.wizard;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -177,7 +177,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   }
 
   public void showPage(final IWizardPage page) {
-    Ensure.ensureArgumentNotNull(page);
+    Preconditions.checkNotNull(page);
     if (currentPage != null) {
       currentPage.leave();
       currentPage.removeRequestFinishListener(requestFinishListener);

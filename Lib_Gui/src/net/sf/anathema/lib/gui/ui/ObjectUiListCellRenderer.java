@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.ui;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.icon.DisabledIconDecorator;
 import net.sf.anathema.lib.lang.StringUtilities;
 
@@ -22,7 +22,7 @@ public class ObjectUiListCellRenderer extends DefaultListCellRenderer {
   private final IObjectUi ui;
 
   public ObjectUiListCellRenderer(final IObjectUi ui) {
-    Ensure.ensureArgumentNotNull(ui);
+    Preconditions.checkNotNull(ui);
     this.ui = ui;
   }
 

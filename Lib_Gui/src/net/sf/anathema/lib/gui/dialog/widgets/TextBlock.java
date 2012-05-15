@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 
 public class TextBlock {
 
@@ -16,8 +16,8 @@ public class TextBlock {
   public final TextBlockDelimiter delimiter;
 
   public TextBlock(final String text, final TextBlockDelimiter delimiter) {
-    Ensure.ensureArgumentNotNull(text);
-    Ensure.ensureArgumentNotNull(delimiter);
+    Preconditions.checkNotNull(text);
+    Preconditions.checkNotNull(delimiter);
     this.text = text;
     this.delimiter = delimiter;
   }

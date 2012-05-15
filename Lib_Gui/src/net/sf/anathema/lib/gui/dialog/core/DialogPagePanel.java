@@ -8,8 +8,8 @@
  */
 package net.sf.anathema.lib.gui.dialog.core;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.model.ObjectModel;
-import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.gui.dialog.core.message.DialogMessageModel;
@@ -36,7 +36,7 @@ public class DialogPagePanel implements IMessageSetable {
   private JComponent content;
 
   public DialogPagePanel(final IDialogHeaderPanelConfiguration headerPanelConfiguration) {
-    Ensure.ensureArgumentNotNull(headerPanelConfiguration);
+    Preconditions.checkNotNull(headerPanelConfiguration);
     this.headerPanelConfiguration = headerPanelConfiguration;
     contentPanel = new JPanel(new GridLayout(0, 1));
     contentPanel.setBorder(DEFAULT_BORDER);

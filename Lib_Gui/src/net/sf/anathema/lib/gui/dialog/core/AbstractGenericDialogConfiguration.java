@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.dialog.core.preferences.IDialogPreferences;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 
@@ -28,8 +28,8 @@ public abstract class AbstractGenericDialogConfiguration implements IGenericDial
       final IDialogButtonConfiguration buttonConfiguration,
       IDialogHeaderPanelConfiguration headerPanelConfiguration,
       final IDialogPreferences preference) {
-    Ensure.ensureArgumentNotNull(buttonConfiguration);
-    Ensure.ensureArgumentNotNull(headerPanelConfiguration);
+    Preconditions.checkNotNull(buttonConfiguration);
+    Preconditions.checkNotNull(headerPanelConfiguration);
     this.headerPanelConfiguration = headerPanelConfiguration;
     this.buttonConfiguration = buttonConfiguration;
     this.preference = preference;

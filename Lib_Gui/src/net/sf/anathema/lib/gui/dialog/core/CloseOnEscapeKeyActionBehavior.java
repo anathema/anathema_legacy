@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 
 import javax.swing.JComponent;
@@ -22,7 +22,7 @@ import java.awt.event.KeyEvent;
 public final class CloseOnEscapeKeyActionBehavior {
 
   public static void attachTo(final AbstractDialog dialog) {
-    Ensure.ensureArgumentNotNull(dialog);
+    Preconditions.checkNotNull(dialog);
     final KeyStroke keyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
     JRootPane rootPane = dialog.getDialog().getRootPane();
     ActionListener listener = new ActionListener() {

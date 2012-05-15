@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.userdialog.page;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 
@@ -16,7 +16,7 @@ public abstract class AbstractDialogPage extends AbstractBasicDialogPage impleme
   private final IBasicMessage defaultMessage;
 
   public AbstractDialogPage(final String defaultMessageText) {
-    Ensure.ensureArgumentNotNull("DefaultMessage text must not be null.", defaultMessageText); //$NON-NLS-1$
+    Preconditions.checkNotNull(defaultMessageText, "DefaultMessage text must not be null.");
     this.defaultMessage = new BasicMessage(defaultMessageText);
   }
 

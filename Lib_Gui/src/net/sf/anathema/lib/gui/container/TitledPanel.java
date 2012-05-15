@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.container;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.IClosure;
 import net.disy.commons.core.util.NullClosure;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
@@ -45,8 +45,8 @@ public class TitledPanel extends JPanel {
       final IGridDialogLayoutData layoutData,
       final IClosure<TitledBorder> decorator) {
     super(new GridLayout(1, 0));
-    Ensure.ensureArgumentNotNull(title);
-    Ensure.ensureArgumentNotNull(content);
+    Preconditions.checkNotNull(title);
+    Preconditions.checkNotNull(content);
     final TitledBorder titledBorder = new TitledBorder(title);
     BorderUtilities.attachDisableableTitledBorder(this, titledBorder);
     decorator.execute(titledBorder);

@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
@@ -28,7 +28,7 @@ public class SwingFrame implements ISwingFrameOrDialog {
   private boolean modal = false;
 
   public SwingFrame(final JFrame frame) {
-    Ensure.ensureArgumentNotNull(frame);
+    Preconditions.checkNotNull(frame);
     this.frame = frame;
   }
 

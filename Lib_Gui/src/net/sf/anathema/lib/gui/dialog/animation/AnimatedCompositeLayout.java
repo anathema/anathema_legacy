@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.dialog.animation;
 
-import net.disy.commons.core.util.Ensure;
+import com.google.common.base.Preconditions;
 
 import javax.swing.JComponent;
 import java.awt.Component;
@@ -15,8 +15,8 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
   private final JComponent baseComponent;
 
   public AnimatedCompositeLayout(final JComponent baseComponent, final JComponent overlaidComponent) {
-    Ensure.ensureArgumentNotNull(baseComponent);
-    Ensure.ensureArgumentNotNull(overlaidComponent);
+    Preconditions.checkNotNull(baseComponent);
+    Preconditions.checkNotNull(overlaidComponent);
     this.baseComponent = baseComponent;
     this.overlaidComponent = overlaidComponent;
   }
