@@ -8,13 +8,13 @@
  */
 package net.disy.commons.swing.dialog.progress;
 
-import net.disy.commons.core.message.MessageType;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.swing.component.IComponentContainer;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.message.LargeIconMessageTypeUi;
 import net.disy.commons.swing.widgets.AutoWrappingLabel;
+import net.sf.anathema.lib.message.MessageType;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;

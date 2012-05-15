@@ -1,11 +1,5 @@
 package net.sf.anathema.charmentry.presenter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JToggleButton;
-
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.disy.commons.swing.util.ToggleComponentEnabler;
 import net.sf.anathema.charmentry.module.ICharmEntryViewFactory;
@@ -19,7 +13,12 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.JToggleButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ReflexiveSpecialEntryPage extends AbstractAnathemaWizardPage {
 

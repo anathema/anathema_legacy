@@ -8,10 +8,10 @@
  */
 package net.disy.commons.swing.dialog.core.message;
 
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.core.message.MessageType;
 import net.disy.commons.core.model.AbstractChangeableModel;
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.message.MessageType;
 
 public class DialogMessageModel extends AbstractChangeableModel {
 

@@ -8,10 +8,10 @@
  */
 package net.disy.commons.swing.message;
 
-import net.disy.commons.core.message.IMessageTypeVisitor;
-import net.disy.commons.core.message.MessageType;
 import net.disy.commons.swing.icon.EmptyIcon;
 import net.disy.commons.swing.icon.SwingIcons;
+import net.sf.anathema.lib.message.IMessageTypeVisitor;
+import net.sf.anathema.lib.message.MessageType;
 
 import javax.swing.Icon;
 

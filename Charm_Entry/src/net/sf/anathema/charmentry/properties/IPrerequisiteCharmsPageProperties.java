@@ -1,6 +1,6 @@
 package net.sf.anathema.charmentry.properties;
 
-import net.disy.commons.core.message.IBasicMessage;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 public interface IPrerequisiteCharmsPageProperties {
 

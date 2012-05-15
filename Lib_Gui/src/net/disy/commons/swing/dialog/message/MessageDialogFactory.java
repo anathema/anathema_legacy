@@ -8,11 +8,11 @@
  */
 package net.disy.commons.swing.dialog.message;
 
-import net.disy.commons.core.message.IMessage;
 import net.disy.commons.swing.dialog.foldout.FoldOutDialog;
 import net.disy.commons.swing.dialog.foldout.IFoldOutPage;
 import net.disy.commons.swing.dialog.message.internal.MessageDetailsFoldOutPage;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
+import net.sf.anathema.lib.message.IMessage;
 
 import java.awt.Component;
 

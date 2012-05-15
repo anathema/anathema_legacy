@@ -8,13 +8,13 @@
  */
 package net.disy.commons.swing.dialog.message;
 
-import net.disy.commons.core.message.IMessage;
 import net.disy.commons.swing.dialog.core.DialogHeaderPanelConfiguration;
 import net.disy.commons.swing.dialog.core.IDialogHeaderPanelConfiguration;
 import net.disy.commons.swing.dialog.setting.IDialogVisibilitySetting;
 import net.disy.commons.swing.dialog.userdialog.DefaultDialogConfiguration;
 import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
 import net.disy.commons.swing.dialog.userdialog.buttons.IDialogButtonConfiguration;
+import net.sf.anathema.lib.message.IMessage;
 
 public class MessageUserDialogConfiguration extends DefaultDialogConfiguration<MessageDialogPage> {
 

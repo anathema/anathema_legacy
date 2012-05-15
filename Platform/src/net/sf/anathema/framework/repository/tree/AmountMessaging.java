@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
+import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AmountMessaging {

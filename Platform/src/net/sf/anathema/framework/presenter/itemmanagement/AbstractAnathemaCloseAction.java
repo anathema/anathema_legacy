@@ -1,8 +1,5 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
-import net.disy.commons.core.message.IMessage;
-import net.disy.commons.core.message.Message;
-import net.disy.commons.core.message.MessageType;
 import net.disy.commons.swing.dialog.core.IDialogResult;
 import net.disy.commons.swing.dialog.message.MessageUserDialogConfiguration;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
@@ -12,6 +9,9 @@ import net.sf.anathema.framework.presenter.SelectedItemActionEnabler;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.YesNoDialogButtonConfiguration;
+import net.sf.anathema.lib.message.IMessage;
+import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;

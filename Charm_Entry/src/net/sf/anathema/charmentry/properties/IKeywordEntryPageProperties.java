@@ -1,9 +1,9 @@
 package net.sf.anathema.charmentry.properties;
 
+import net.sf.anathema.lib.message.IBasicMessage;
+
 import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
-
-import net.disy.commons.core.message.IBasicMessage;
 
 public interface IKeywordEntryPageProperties {
 

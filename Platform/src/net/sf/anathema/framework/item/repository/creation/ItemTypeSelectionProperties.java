@@ -1,18 +1,17 @@
 package net.sf.anathema.framework.item.repository.creation;
 
-import java.awt.Component;
-
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-
-import net.disy.commons.core.message.BasicMessage;
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.ui.IObjectUi;
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.lib.message.BasicMessage;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.ILegalityProvider;
 import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionProperties;
+
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import java.awt.Component;
 
 public class ItemTypeSelectionProperties implements IObjectSelectionProperties {
 

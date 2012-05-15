@@ -8,9 +8,9 @@
  */
 package net.disy.commons.swing.dialog.wizard;
 
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPage;
 import net.disy.commons.swing.dialog.core.IPageContent;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 /**
  * Interface for a wizard page.

@@ -1,14 +1,14 @@
 package net.sf.anathema.lib.gui.wizard;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.message.BasicMessage;
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IDialogHelpHandler;
 import net.disy.commons.swing.dialog.input.IRequestFinishListener;
 import net.disy.commons.swing.dialog.wizard.IWizardConfiguration;
 import net.disy.commons.swing.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.message.BasicMessage;
+import net.sf.anathema.lib.message.IBasicMessage;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.HashMap;

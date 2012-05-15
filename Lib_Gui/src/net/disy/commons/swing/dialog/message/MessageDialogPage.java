@@ -8,8 +8,6 @@
  */
 package net.disy.commons.swing.dialog.message;
 
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.core.message.IMessage;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
@@ -17,6 +15,8 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.message.LargeIconMessageTypeUi;
 import net.disy.commons.swing.message.MessageTypeUi;
 import net.disy.commons.swing.widgets.AutoWrappingLabel;
+import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.message.IMessage;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;

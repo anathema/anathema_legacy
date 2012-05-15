@@ -8,7 +8,7 @@
  */
 package net.disy.commons.swing.dialog.userdialog.page;
 
-import net.disy.commons.core.message.IBasicMessage;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 public interface IDialogPage extends IBasicDialogPage {
   public IBasicMessage getDefaultMessage();

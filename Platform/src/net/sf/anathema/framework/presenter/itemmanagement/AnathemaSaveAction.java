@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
-import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
@@ -12,6 +11,7 @@ import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.io.IOUtils;
 

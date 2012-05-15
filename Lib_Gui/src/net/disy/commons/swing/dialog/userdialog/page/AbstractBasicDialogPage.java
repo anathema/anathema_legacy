@@ -8,11 +8,11 @@
  */
 package net.disy.commons.swing.dialog.userdialog.page;
 
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.internal.AbstractPage;
 import net.disy.commons.swing.dialog.input.IRequestFinishListener;
 import net.disy.commons.swing.events.ICheckInputValidListener;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.message.IBasicMessage;
 import org.jmock.example.announcer.Announcer;
 
 import java.lang.reflect.InvocationHandler;

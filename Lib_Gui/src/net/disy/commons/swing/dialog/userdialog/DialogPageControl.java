@@ -8,7 +8,6 @@
  */
 package net.disy.commons.swing.dialog.userdialog;
 
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.util.ContractFailedException;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
@@ -18,6 +17,7 @@ import net.disy.commons.swing.dialog.core.IDialogHelpHandler;
 import net.disy.commons.swing.dialog.userdialog.page.IDialogPage;
 import net.disy.commons.swing.events.CheckInputValidListener;
 import net.disy.commons.swing.events.IInputValidCheckable;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComponent;
 

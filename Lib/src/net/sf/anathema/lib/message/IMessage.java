@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/cpl-v10.html
  */
-package net.disy.commons.core.message;
+package net.sf.anathema.lib.message;
 
 public interface IMessage extends IBasicMessage {
 

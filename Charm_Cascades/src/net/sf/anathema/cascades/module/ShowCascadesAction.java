@@ -1,6 +1,5 @@
 package net.sf.anathema.cascades.module;
 
-import net.disy.commons.core.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
@@ -8,6 +7,7 @@ import net.sf.anathema.framework.repository.AnathemaNullDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 

@@ -8,12 +8,12 @@
  */
 package net.disy.commons.swing.dialog.core.message;
 
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IDialogConstants;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.message.AbstractMessageTypeUi;
 import net.disy.commons.swing.message.MessageTypeUi;
 import net.disy.commons.swing.widgets.AutoWrappingLabel;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.Box;
 import javax.swing.JLabel;

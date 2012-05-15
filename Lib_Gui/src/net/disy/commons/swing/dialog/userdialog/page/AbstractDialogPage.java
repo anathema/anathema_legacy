@@ -8,9 +8,9 @@
  */
 package net.disy.commons.swing.dialog.userdialog.page;
 
-import net.disy.commons.core.message.BasicMessage;
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.lib.message.BasicMessage;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 public abstract class AbstractDialogPage extends AbstractBasicDialogPage implements IDialogPage {
   private final IBasicMessage defaultMessage;

@@ -8,11 +8,11 @@
  */
 package net.disy.commons.swing.message;
 
-import net.disy.commons.core.message.IMessageTypeVisitor;
-import net.disy.commons.core.message.MessageType;
 import net.disy.commons.swing.color.SwingColors;
 import net.disy.commons.swing.resources.DisyCommonsSwingMessages;
 import net.disy.commons.swing.ui.AbstractObjectUi;
+import net.sf.anathema.lib.message.IMessageTypeVisitor;
+import net.sf.anathema.lib.message.MessageType;
 
 import java.awt.Color;
 

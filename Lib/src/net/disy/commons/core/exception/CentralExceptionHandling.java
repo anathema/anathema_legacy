@@ -37,12 +37,6 @@ public class CentralExceptionHandling {
     });
   }
 
-  /**
-   * Sets the {@link IExceptionHandler} object where any uncaught exception will be delegated to.
-   * 
-   * @param handler The exception handler to which any uncaught exception will be delegated to.  
-   * @published
-   */
   public static void setHandler(final IExceptionHandler handler) {
     getInstance().handler = handler;
   }
@@ -51,9 +45,6 @@ public class CentralExceptionHandling {
     return instance;
   }
 
-  /** 
-   * Delegates the given {@link Throwable} object to the attached {@link IExceptionHandler} object.
-   */
   public void handle(final Throwable exception) {
     if (handler != null) {
       handler.handle(exception);
@@ -64,9 +55,6 @@ public class CentralExceptionHandling {
     }
   }
 
-  /** 
-   * @see java.awt.EventDispatchThread#handleException(java.lang.Throwable) 
-   */
   private void attachForEventDispatchExceptionHandling() {
     System.setProperty("sun.awt.exception.handler", InternalAwtExceptionHandler.class.getName()); //$NON-NLS-1$
   }

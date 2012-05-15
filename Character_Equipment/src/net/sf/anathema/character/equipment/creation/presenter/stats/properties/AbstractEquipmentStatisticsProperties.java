@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
-import net.disy.commons.core.message.BasicMessage;
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.core.message.MessageType;
+import net.sf.anathema.lib.message.BasicMessage;
+import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractEquipmentStatisticsProperties extends AbstractProperties {

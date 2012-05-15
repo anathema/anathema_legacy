@@ -1,6 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.library.content;
 
-import net.disy.commons.core.message.Message;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
@@ -10,6 +9,7 @@ import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.event.ListSelectionEvent;

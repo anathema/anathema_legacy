@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl.character.persister;
 
-import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
@@ -15,8 +14,8 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
 
 public class EquipmentAdditionalModelPersister implements IAdditionalPersister {

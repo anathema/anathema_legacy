@@ -8,7 +8,6 @@
  */
 package net.disy.commons.swing.dialog.core;
 
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.dialog.core.internal.CloseOnEscapeKeyActionBehavior;
 import net.disy.commons.swing.dialog.core.preferences.IDialogPreferences;
@@ -20,6 +19,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.disy.commons.swing.util.GuiUtilities;
 import net.disy.commons.swing.widgets.HorizontalLine;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;

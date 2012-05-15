@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.persistence;
 
-import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
@@ -13,6 +12,7 @@ import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Document;

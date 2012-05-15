@@ -8,13 +8,13 @@
  */
 package net.disy.commons.swing.dialog.core;
 
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.model.ObjectModel;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.dialog.core.message.DialogMessageModel;
 import net.disy.commons.swing.dialog.userdialog.IMessageSetable;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;

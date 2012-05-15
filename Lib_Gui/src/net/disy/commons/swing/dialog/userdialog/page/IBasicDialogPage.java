@@ -8,11 +8,11 @@
  */
 package net.disy.commons.swing.dialog.userdialog.page;
 
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPage;
 import net.disy.commons.swing.dialog.userdialog.IDialogConfiguration;
 import net.disy.commons.swing.dispose.IDisposable;
 import net.disy.commons.swing.events.ICheckInputValidListener;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComponent;
 

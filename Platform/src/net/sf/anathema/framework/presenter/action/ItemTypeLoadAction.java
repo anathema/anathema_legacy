@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.presenter.action;
 
-import net.disy.commons.core.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
@@ -11,6 +10,7 @@ import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 

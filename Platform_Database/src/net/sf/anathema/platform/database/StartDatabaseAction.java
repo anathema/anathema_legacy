@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.database;
 
 import com.db4o.ext.DatabaseFileLockedException;
-import net.disy.commons.core.message.Message;
 import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
@@ -16,6 +15,7 @@ import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 

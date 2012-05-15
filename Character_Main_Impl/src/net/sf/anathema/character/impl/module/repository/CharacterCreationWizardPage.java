@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.module.repository;
 
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.module.IToggleButtonPanel;
@@ -11,6 +10,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JToggleButton;
