@@ -1,6 +1,5 @@
 package net.sf.anathema.initialization;
 
-import net.disy.commons.core.exception.CentralExceptionHandling;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
@@ -15,6 +14,7 @@ import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
 import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
+import net.sf.anathema.lib.exception.CentralExceptionHandling;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.ResourceFile;
 

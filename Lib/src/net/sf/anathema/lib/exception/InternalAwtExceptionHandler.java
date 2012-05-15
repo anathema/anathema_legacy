@@ -6,11 +6,11 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/cpl-v10.html
  */
-package net.disy.commons.core.exception;
+package net.sf.anathema.lib.exception;
 
 /**
  * This class is intended only for internal use of the
- * {@link net.disy.commons.core.exception.CentralExceptionHandling}.
+ * {@link CentralExceptionHandling}.
  */
 public class InternalAwtExceptionHandler implements IExceptionHandler {
 

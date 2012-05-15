@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/cpl-v10.html
  */
-package net.disy.commons.core.exception;
+package net.sf.anathema.lib.exception;
 
 /**
  * Common interface for any object able to handle a {@link java.lang.Throwable} object.
