@@ -241,6 +241,10 @@ GNU GPL v2
 db4o
 JeksParser
 
+GNU GPL v3
+=========================
+disy-commons (special licence for anathema, parts of the library are repackaged, integrated and modified in anathema code)
+
 Individual Licenses:
 =========================
 iText is published under the GNU Affero General Public License 3.0.
