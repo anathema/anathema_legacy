@@ -59,7 +59,7 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
       }
 
       offsetY += writePowerNotes(graphics, "Tell", bounds, offsetX, offsetY);
-    } catch (DocumentException e) {
+    } catch (DocumentException ignored) {
     }
   }
 

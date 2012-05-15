@@ -1,9 +1,9 @@
 package net.sf.anathema.character.presenter;
 
-import net.disy.commons.swing.icon.EmptyIcon;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.impl.persistence.SecondEdition;
+import net.sf.anathema.lib.gui.icon.EmptyIcon;
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
 

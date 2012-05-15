@@ -4,9 +4,9 @@ import javax.swing.JTree;
 
 public interface IContentChangeListener {
 
-  public void addRequested();
+  void addRequested();
 
-  public void removeRequested();
+  void removeRequested();
 
-  public void selectionChanged(JTree tree);
+  void selectionChanged(JTree tree);
 }

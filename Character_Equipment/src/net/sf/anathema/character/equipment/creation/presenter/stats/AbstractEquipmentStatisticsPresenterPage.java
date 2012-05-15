@@ -1,12 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
-import java.awt.Component;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
@@ -17,12 +11,17 @@ import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Component;
 
 public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipmentStatisticsModel, P extends AbstractEquipmentStatisticsProperties> extends
     AbstractAnathemaWizardPage {
@@ -158,7 +157,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   protected final IntegerSpinner initIntegerSpinner(IIntValueModel intModel) {
-    final IntegerSpinner spinner = new IntegerSpinner(intModel.getValue());
+    IntegerSpinner spinner = new IntegerSpinner(intModel.getValue());
     new IntValuePresentation().initView(spinner, intModel);
     return spinner;
   }

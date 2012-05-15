@@ -4,9 +4,9 @@ import java.awt.event.ActionListener;
 
 public interface IRemovableEntryView {
 
-  public void addButtonListener(ActionListener listener);
+  void addButtonListener(ActionListener listener);
 
-  public void setButtonEnabled(boolean enabled);
+  void setButtonEnabled(boolean enabled);
 
-  public void delete();
+  void delete();
 }

@@ -4,23 +4,23 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 
 public interface IBackgroundConfiguration {
 	
-  public void initStartingBackgrounds();
+  void initStartingBackgrounds();
 
-  public IBackgroundTemplate[] getAllAvailableBackgroundTemplates();
+  IBackgroundTemplate[] getAllAvailableBackgroundTemplates();
   
-  public IBackground addBackground(String customBackgroundName, String description);
+  IBackground addBackground(String customBackgroundName, String description);
   
-  public IBackground addBackground(IBackgroundTemplate type, String description);
+  IBackground addBackground(IBackgroundTemplate type, String description);
 
-  public IBackground addBackground(String customBackgroundName, String description, boolean loadIfExists);
+  IBackground addBackground(String customBackgroundName, String description, boolean loadIfExists);
 
-  public IBackground addBackground(IBackgroundTemplate type, String description, boolean loadIfExists);
+  IBackground addBackground(IBackgroundTemplate type, String description, boolean loadIfExists);
 
-  public IBackground[] getBackgrounds();
+  IBackground[] getBackgrounds();
 
-  public void addBackgroundListener(IBackgroundListener listener);
+  void addBackgroundListener(IBackgroundListener listener);
 
-  public void removeBackground(IBackground background);
+  void removeBackground(IBackground background);
 
-  public IBackground getBackgroundByTemplate(IBackgroundTemplate type);
+  IBackground getBackgroundByTemplate(IBackgroundTemplate type);
 }

@@ -117,11 +117,11 @@ public class StringUtilities {
     return string.substring(0, string.length() - characterCount);
   }
 
-  public static boolean isNullOrEmpty(final String text) {
+  public static boolean isNullOrEmpty(String text) {
     return text == null || text.length() == 0;
   }
 
-  public static boolean isNullOrTrimmedEmpty(final String text) {
+  public static boolean isNullOrTrimmedEmpty(String text) {
     return text == null || text.trim().length() == 0;
   }
 }

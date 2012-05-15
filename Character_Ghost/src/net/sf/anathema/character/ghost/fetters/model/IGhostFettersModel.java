@@ -7,35 +7,35 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface IGhostFettersModel extends IAdditionalModel
 {
-  public Fetter[] getFetters();
+  Fetter[] getFetters();
   
-  public void setCurrentFetterName(String newFetterName);
+  void setCurrentFetterName(String newFetterName);
 
-  public Fetter commitSelection();
+  Fetter commitSelection();
 
-  public void clear();
+  void clear();
 
-  public boolean isEntryComplete();
+  boolean isEntryComplete();
 
-  public boolean isExperienced();
+  boolean isExperienced();
   
-  public void removeFetter(Fetter fetter);
+  void removeFetter(Fetter fetter);
   
-  public void setValueChangedListener(IIntValueChangedListener listener);
+  void setValueChangedListener(IIntValueChangedListener listener);
 
-  public void addCharacterChangeListener(ICharacterChangeListener listener);
+  void addCharacterChangeListener(ICharacterChangeListener listener);
   
-  public void addSelectionChangeListener(IChangeListener listener);
+  void addSelectionChangeListener(IChangeListener listener);
 
-  public int getFreeDotAllotment();
+  int getFreeDotAllotment();
   
-  public int getFreeDotsSpent();
+  int getFreeDotsSpent();
   
-  public int getBonusPointsSpent();
+  int getBonusPointsSpent();
   
-  public int getXPSpent();
+  int getXPSpent();
   
-  public int getMaxFetterDots();
+  int getMaxFetterDots();
   
-  public int getCurrentFetterDots();
+  int getCurrentFetterDots();
 }

@@ -7,13 +7,13 @@ import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 
 public interface IVirtueFlawModel extends IAdditionalModel {
-  public boolean isVirtueFlawChangable();
+  boolean isVirtueFlawChangable();
 
-  public void addVirtueChangeListener(VirtueChangeListener listener);
+  void addVirtueChangeListener(VirtueChangeListener listener);
 
-  public IVirtueFlaw getVirtueFlaw();
+  IVirtueFlaw getVirtueFlaw();
 
-  public ITraitType[] getFlawVirtueTypes();
+  ITraitType[] getFlawVirtueTypes();
 
-  public void addVirtueFlawChangableListener(IBooleanValueChangedListener listener);
+  void addVirtueFlawChangableListener(IBooleanValueChangedListener listener);
 }

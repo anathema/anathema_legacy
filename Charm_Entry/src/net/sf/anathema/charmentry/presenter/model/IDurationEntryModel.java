@@ -5,19 +5,19 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IDurationEntryModel {
 
-  public void setSimpleDuration(String newValue);
+  void setSimpleDuration(String newValue);
 
-  public void setUntilDuration(String newValue);
+  void setUntilDuration(String newValue);
 
-  public boolean isDurationComplete();
+  boolean isDurationComplete();
 
-  public void addModelListener(IChangeListener listener);
+  void addModelListener(IChangeListener listener);
 
-  public void clearDuration();
+  void clearDuration();
 
-  public void setTraitForAmountDuration(ITraitType newValue);
+  void setTraitForAmountDuration(ITraitType newValue);
 
-  public void setValueForAmountDuration(int newValue);
+  void setValueForAmountDuration(int newValue);
 
-  public void setTextForAmountDuration(String newValue);
+  void setTextForAmountDuration(String newValue);
 }

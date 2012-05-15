@@ -1,12 +1,5 @@
 package net.sf.anathema.charmentry.presenter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
-
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
@@ -18,10 +11,17 @@ import net.sf.anathema.charmentry.properties.IKeywordEntryPageProperties;
 import net.sf.anathema.charmentry.properties.KeywordEntryPageProperties;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 public class KeywordEntryPage extends AbstractAnathemaWizardPage {
 

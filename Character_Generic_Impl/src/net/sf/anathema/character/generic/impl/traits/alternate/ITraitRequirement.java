@@ -4,9 +4,9 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 
 public interface ITraitRequirement {
 
-  public int getStrictMinimum();
+  int getStrictMinimum();
 
-  public int getFreeMinimum();
+  int getFreeMinimum();
 
-  public boolean isCurrentlyStrict(IGenericTraitCollection collection);
+  boolean isCurrentlyStrict(IGenericTraitCollection collection);
 }

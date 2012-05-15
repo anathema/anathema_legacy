@@ -1,21 +1,20 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
-
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGCategorizedSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGGElement;
+
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 
 public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNodeView {
 
@@ -26,10 +25,10 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
   private final int widthInDots;
 
   public SVGCategorizedSpecialNodeView(
-      final String nodeId,
-      final double nodeWidth,
-      final Color nodeColor,
-      final int widthInDots) {
+      String nodeId,
+      double nodeWidth,
+      Color nodeColor,
+      int widthInDots) {
     this.nodeId = nodeId;
     this.nodeWidth = nodeWidth;
     this.nodeColor = nodeColor;
@@ -42,14 +41,14 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
   }
 
   @Override
-  public void setVisible(final boolean visible) {
+  public void setVisible(boolean visible) {
     for (SVGIntValueView view : categories) {
       view.setVisible(visible);
     }
   }
 
   @Override
-  public SVGGElement initGui(final SVGOMDocument document, final IBoundsCalculator boundsCalculator) {
+  public SVGGElement initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator) {
     SVGGElement groupElement = (SVGGElement) document.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
         SVGConstants.SVG_G_TAG);
@@ -65,11 +64,11 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
     return groupElement;
   }
 
-  private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final String attributeValue) {
+  private void setAttribute(org.w3c.dom.Element element, String attributeName, String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
-  private Element createBorder(final SVGDocument document) {
+  private Element createBorder(SVGDocument document) {
     Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
     int length = categories.size();
     double dotHeight = SVGIntValueDisplay.getDisplayDiameter(nodeWidth, widthInDots);
@@ -86,7 +85,7 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
   }
 
   @Override
-  public IIntValueView addCategory(final String labelText, final int maxValue, final int value) {
+  public IIntValueView addCategory(String labelText, int maxValue, int value) {
     SVGIntValueView view = new SVGIntValueView(maxValue, widthInDots, nodeWidth, nodeColor, labelText, value);
     categories.add(view);
     return view;

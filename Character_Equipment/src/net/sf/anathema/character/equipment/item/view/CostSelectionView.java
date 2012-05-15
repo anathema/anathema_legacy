@@ -1,20 +1,20 @@
 package net.sf.anathema.character.equipment.item.view;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.equipment.ItemCost;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.generic.framework.intvalue.ISelectableIntValueView;
 import net.sf.anathema.character.generic.framework.intvalue.SelectableIntValueView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class CostSelectionView {
 	private final ISelectableIntValueView<String> selection;
 	protected final JLabel label;
 	  
-	public CostSelectionView(String labelText, String[] backgrounds, IIntValueDisplayFactory factory) {
+	public CostSelectionView(String labelText, String[] backgrounds, IntegerViewFactory factory) {
 	  this.label = new JLabel(labelText);
 	  this.selection = new SelectableIntValueView<String>(factory, 0, 6);
 	  
@@ -36,7 +36,7 @@ public class CostSelectionView {
 		}
 	}
 
-	public void addSelectionChangedListener(final ISelectionIntValueChangedListener<String> listener) {
+	public void addSelectionChangedListener(ISelectionIntValueChangedListener<String> listener) {
 	  selection.addSelectionChangedListener(listener);
 	}
 }

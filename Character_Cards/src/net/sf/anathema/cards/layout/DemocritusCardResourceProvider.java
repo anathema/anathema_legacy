@@ -1,20 +1,19 @@
 package net.sf.anathema.cards.layout;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
-
-import net.disy.commons.swing.image.ImageLoadingException;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.lib.gui.image.ImageLoadingException;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DemocritusCardResourceProvider implements ICardReportResourceProvider {
 	private IResources resources;

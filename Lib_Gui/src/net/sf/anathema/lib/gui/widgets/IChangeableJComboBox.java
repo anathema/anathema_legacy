@@ -1,31 +1,30 @@
 package net.sf.anathema.lib.gui.widgets;
 
-import java.awt.Dimension;
+import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.JComboBox;
 import javax.swing.ListCellRenderer;
-
-import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.IView;
+import java.awt.Dimension;
 
 public interface IChangeableJComboBox<V> extends IView {
 
   @Override
-  public JComboBox getComponent();
+  JComboBox getComponent();
 
-  public void setSelectedObject(V object);
+  void setSelectedObject(V object);
 
-  public V getSelectedObject();
+  V getSelectedObject();
 
   void setObjects(V[] objects);
 
-  public void addObjectSelectionChangedListener(ObjectValueListener<V> listener);
+  void addObjectSelectionChangedListener(ObjectValueListener<V> listener);
 
-  public void setRenderer(ListCellRenderer renderer);
+  void setRenderer(ListCellRenderer renderer);
 
-  public void removeObjectSelectionChangeListener(ObjectValueListener<V> listener);
+  void removeObjectSelectionChangeListener(ObjectValueListener<V> listener);
 
-  public void setPreferredSize(Dimension preferredSize);
+  void setPreferredSize(Dimension preferredSize);
 
-  public Dimension getPreferredSize();
+  Dimension getPreferredSize();
 }

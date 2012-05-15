@@ -27,7 +27,7 @@ public class BeastformGenericTraitCollection implements IGenericTraitCollection 
 
   @Override
   public IGenericTrait getTrait(final ITraitType type) {
-    final IGenericTrait attribute;
+    IGenericTrait attribute;
     IBeastformAttribute beastformattribute = beastmanCollection.getDeadlyBeastmanAttribute(type);
     if (beastformattribute == null) {
       attribute = collection.getTrait(type);
@@ -50,7 +50,7 @@ public class BeastformGenericTraitCollection implements IGenericTraitCollection 
   }
 
   @Override
-  public IFavorableGenericTrait getFavorableTrait(final ITraitType type) {
+  public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
     throw new UnsupportedOperationException("Irrelevant for DBTGenericTraitCollection."); //$NON-NLS-1$
   }
 

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
-import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.ITransformer;
 
 public class CharmPrintNameTransformer implements ITransformer<ICharm, String> {
 

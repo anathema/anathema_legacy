@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 
 public interface IAdditionalMagicLearnPool {
 
-  public boolean isAllowedFor(IGenericTraitCollection characterAbstraction, IMagic magic);
+  boolean isAllowedFor(IGenericTraitCollection characterAbstraction, IMagic magic);
 
-  public int getAdditionalMagicCount(IGenericTraitCollection traitCollection);
+  int getAdditionalMagicCount(IGenericTraitCollection traitCollection);
 }

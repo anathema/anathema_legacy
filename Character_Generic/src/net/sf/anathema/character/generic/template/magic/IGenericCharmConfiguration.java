@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 
 public interface IGenericCharmConfiguration {
 
-  public String[] getUncompletedCelestialMartialArtsGroups();
+  String[] getUncompletedCelestialMartialArtsGroups();
 
-  public ICharm[] getLearnedCharms();
+  ICharm[] getLearnedCharms();
 }

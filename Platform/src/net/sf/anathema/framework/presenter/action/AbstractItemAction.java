@@ -1,12 +1,12 @@
 package net.sf.anathema.framework.presenter.action;
 
-import net.disy.commons.swing.dialog.core.IDialogResult;
-import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
-import net.disy.commons.swing.dialog.wizard.WizardDialog;
-import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
+import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
@@ -28,7 +28,7 @@ public abstract class AbstractItemAction extends SmartAction {
 
   protected final boolean showDialog(Component parentComponent, IAnathemaWizardPage startPage) {
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-    final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
+    ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
     configuredDialog.setResizable(false);
     GuiUtilities.centerToParent(configuredDialog.getWindow());
     IDialogResult result = dialog.show();

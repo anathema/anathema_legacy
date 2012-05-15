@@ -45,7 +45,7 @@ public class PdfTraitEncoder {
     return encodeShapeCenteredAndUngrouped(position, width, value, dotCount, dot);
   }
 
-  private int encodeGroupedDots(SheetGraphics graphics, Position position, float width, int value, int dotCount, final int dotSpacing) {
+  private int encodeGroupedDots(SheetGraphics graphics, Position position, float width, int value, int dotCount, int dotSpacing) {
     int groupSpacing = dotCount > 5 ? dotSize / 2 : 0;
     int spacecount = (int) Math.ceil((double) dotCount / 5);
     for (int dot = 0; dot < dotCount; dot++) {
@@ -63,7 +63,7 @@ public class PdfTraitEncoder {
 
   private float encodeShapeCenteredAndUngrouped(Position position, float width, int value, int dotCount, Shape shape) {
     int dotWidth = dotCount * dotSize;
-    final float dotSpacing = (width - dotWidth) / (dotCount + 1);
+    float dotSpacing = (width - dotWidth) / (dotCount + 1);
     float neededWidth = dotWidth + (dotCount - 1) * dotSpacing;
     float leftDotX = position.x + (width - neededWidth) / 2;
     for (int dot = 0; dot < dotCount; dot++) {

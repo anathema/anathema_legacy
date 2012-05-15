@@ -4,9 +4,9 @@ import net.sf.anathema.framework.view.menu.IMenu;
 
 public interface IMenuBar {
 
-  public IMenu getMainMenu();
+  IMenu getMainMenu();
 
-  public IMenu getHelpMenu();
+  IMenu getHelpMenu();
 
-  public IMenu addMenu(String title);
+  IMenu addMenu(String title);
 }

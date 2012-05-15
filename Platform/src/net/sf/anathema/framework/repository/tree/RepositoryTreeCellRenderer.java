@@ -1,13 +1,12 @@
 package net.sf.anathema.framework.repository.tree;
 
-import java.awt.Component;
+import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
-
-import net.disy.commons.swing.ui.IObjectUi;
-import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.lib.resources.IResources;
+import java.awt.Component;
 
 public class RepositoryTreeCellRenderer extends ObjectUiTreeCellRenderer {
 

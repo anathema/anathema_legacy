@@ -5,9 +5,9 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IEquipmentStatisticsModel {
 
-  public ITextualDescription getName();
+  ITextualDescription getName();
   
-  public MagicalMaterial getMaterialType();
+  MagicalMaterial getMaterialType();
   
-  public void setMaterialType(MagicalMaterial type);
+  void setMaterialType(MagicalMaterial type);
 }

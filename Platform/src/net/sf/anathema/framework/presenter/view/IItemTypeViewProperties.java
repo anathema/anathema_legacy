@@ -1,17 +1,17 @@
 package net.sf.anathema.framework.presenter.view;
 
-import javax.swing.Icon;
-
-import net.disy.commons.swing.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
+
+import javax.swing.Icon;
 
 public interface IItemTypeViewProperties {
 
-  public Icon getIcon();
+  Icon getIcon();
 
-  public IWizardFactory getNewItemWizardFactory();
+  IWizardFactory getNewItemWizardFactory();
 
-  public String getLabelKey();
+  String getLabelKey();
 
-  public IObjectUi<Object> getItemTypeUI();
+  IObjectUi<Object> getItemTypeUI();
 }

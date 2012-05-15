@@ -15,7 +15,7 @@ public class TableEncodingUtilities {
     return createStandardColumnWidths(columnCount, 1);
   }
 
-  public static Float[] createStandardColumnWidths(int columnCount, final float value) {
+  public static Float[] createStandardColumnWidths(int columnCount, float value) {
     Float[] columnWeights = new Float[columnCount];
     for (int index = 0; index < columnWeights.length; index++) {
       columnWeights[index] = value;

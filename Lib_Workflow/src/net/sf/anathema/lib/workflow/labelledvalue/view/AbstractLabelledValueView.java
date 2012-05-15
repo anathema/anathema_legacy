@@ -1,7 +1,12 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -17,11 +22,7 @@ public abstract class AbstractLabelledValueView {
     return sizeLabel.getPreferredSize();
   }
 
-  protected static JLabel createLabel(
-          String text,
-          String sizeText,
-          int horizontalAlignment,
-          boolean adjustFontSize) {
+  protected static JLabel createLabel(String text, String sizeText, int horizontalAlignment, boolean adjustFontSize) {
     JLabel label = new JLabel(text);
     label.setPreferredSize(createBoldSize(sizeText, adjustFontSize));
     if (adjustFontSize) {
@@ -67,7 +68,6 @@ public abstract class AbstractLabelledValueView {
       component.setFont(component.getFont().deriveFont(style));
     }
   }
-
 
   protected Collection<JComponent> getComponents() {
     List<JComponent> components = new ArrayList<JComponent>();

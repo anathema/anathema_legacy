@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.dialog.ConfigurableVetor;
+import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;

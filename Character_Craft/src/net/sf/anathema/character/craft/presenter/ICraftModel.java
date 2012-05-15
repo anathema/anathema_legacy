@@ -5,10 +5,10 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 
 public interface ICraftModel extends IStringEntryTraitModel<ISubTrait> {
 
-  public int getAbsoluteMaximum();
+  int getAbsoluteMaximum();
 
-  public boolean isRemovable(ISubTrait craft);
+  boolean isRemovable(ISubTrait craft);
 
-  public boolean isExperienced();
+  boolean isExperienced();
 
 }

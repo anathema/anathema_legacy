@@ -2,11 +2,11 @@ package net.sf.anathema.character.presenter.overview;
 
 public interface IAdditionalSpendingModel extends ISpendingModel {
 
-  public int getAdditionalValue();
+  int getAdditionalValue();
 
-  public int getAdditionalRestrictedAlotment();
+  int getAdditionalRestrictedAlotment();
 
-  public boolean isExtensionRequired();
+  boolean isExtensionRequired();
 
-  public int getRequiredSize();
+  int getRequiredSize();
 }

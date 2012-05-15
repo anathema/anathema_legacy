@@ -7,5 +7,5 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface IAdditionalViewFactory {
 
-  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type);
+  IView createView(IAdditionalModel model, IResources resources, ICharacterType type);
 }

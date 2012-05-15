@@ -4,7 +4,7 @@ import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfigurati
 
 public interface IOxBodyTechniqueArbitrator {
 
-  public void addOxBodyTechniqueConfiguration(IOxBodyTechniqueConfiguration configuration);
+  void addOxBodyTechniqueConfiguration(IOxBodyTechniqueConfiguration configuration);
 
-  public boolean isIncrementAllowed(int increment);
+  boolean isIncrementAllowed(int increment);
 }

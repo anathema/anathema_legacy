@@ -1,10 +1,5 @@
 package net.sf.anathema.graph;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
 import net.sf.anathema.graph.graph.IGraphType;
 import net.sf.anathema.graph.graph.IGraphTypeVisitor;
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
@@ -21,13 +16,18 @@ import net.sf.anathema.graph.ordering.SandraVertexOrderer;
 import net.sf.anathema.graph.ordering.SugiyamaVertexOrderer;
 import net.sf.anathema.graph.ordering.UrsVertexOrderer;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 public class SugiyamaLayout {
   private final HierarchyBuilder hierarchyBuilder = new HierarchyBuilder();
   private final SubtreeSeparator subtreeSeparator = new SubtreeSeparator();
   private final List<IVertexOrdererFactory> factoryList = populateVertexOrdererFactoryList();
   private final ILayerer layerer = new LongestPathLayerer();
 
-  public IProperHierarchicalGraph[] createProperHierarchicalGraphs(final IRegularNode[] acyclicGraph) {
+  public IProperHierarchicalGraph[] createProperHierarchicalGraphs(IRegularNode[] acyclicGraph) {
     int deepestLayer = layerer.layerGraph(acyclicGraph);
     ISimpleNode[] hierarchicalGraph = hierarchyBuilder.removeLongEdges(acyclicGraph);
     IProperHierarchicalGraph[] separatedGraphs = subtreeSeparator.separateSubtrees(hierarchicalGraph, deepestLayer);
@@ -35,22 +35,22 @@ public class SugiyamaLayout {
     for (final IProperHierarchicalGraph graph : separatedGraphs) {
       graph.getType().accept(new IGraphTypeVisitor() {
         @Override
-        public void visitDirectedGraph(final IGraphType visitedType) {
+        public void visitDirectedGraph(IGraphType visitedType) {
           orderedGraphs.add(createOrderedGraph(graph));
         }
 
         @Override
-        public void visitInvertedTree(final IGraphType visitedType) {
+        public void visitInvertedTree(IGraphType visitedType) {
           orderedGraphs.add(graph);
         }
 
         @Override
-        public void visitTree(final IGraphType visitedType) {
+        public void visitTree(IGraphType visitedType) {
           orderedGraphs.add(graph);
         }
 
         @Override
-        public void visitSingle(final IGraphType visitedType) {
+        public void visitSingle(IGraphType visitedType) {
           orderedGraphs.add(graph);
         }
       });
@@ -59,7 +59,7 @@ public class SugiyamaLayout {
     return orderedGraphs.toArray(new IProperHierarchicalGraph[orderedGraphs.size()]);
   }
 
-  private void optimizeLeavePositioning(final List<IProperHierarchicalGraph> orderedGraphs) {
+  private void optimizeLeavePositioning(List<IProperHierarchicalGraph> orderedGraphs) {
     LeafStructureOptimizer<ISimpleNode> leafStructureOptimizer = new LeafStructureOptimizer<ISimpleNode>();
     for (IProperHierarchicalGraph graph : orderedGraphs) {
       for (int layerIndex = 1; layerIndex < graph.getDeepestLayer(); layerIndex++) {
@@ -79,7 +79,7 @@ public class SugiyamaLayout {
     }
   }
 
-  private IProperHierarchicalGraph createOrderedGraph(final IProperHierarchicalGraph graph) {
+  private IProperHierarchicalGraph createOrderedGraph(IProperHierarchicalGraph graph) {
     IProperHierarchicalGraph bestGraph = null;
     int bestCrossingCount = Integer.MAX_VALUE;
     for (IVertexOrdererFactory ordererFactory : factoryList) {
@@ -101,19 +101,19 @@ public class SugiyamaLayout {
     List<IVertexOrdererFactory> list = new ArrayList<IVertexOrdererFactory>();
     list.add(new IVertexOrdererFactory() {
       @Override
-      public IVertexOrderer createVertexOrderer(final IProperHierarchicalGraph graph) {
+      public IVertexOrderer createVertexOrderer(IProperHierarchicalGraph graph) {
         return new SugiyamaVertexOrderer(graph);
       }
     });
     list.add(new IVertexOrdererFactory() {
       @Override
-      public IVertexOrderer createVertexOrderer(final IProperHierarchicalGraph graph) {
+      public IVertexOrderer createVertexOrderer(IProperHierarchicalGraph graph) {
         return new UrsVertexOrderer(graph);
       }
     });
     list.add(new IVertexOrdererFactory() {
       @Override
-      public IVertexOrderer createVertexOrderer(final IProperHierarchicalGraph graph) {
+      public IVertexOrderer createVertexOrderer(IProperHierarchicalGraph graph) {
         return new SandraVertexOrderer(graph);
       }
     });

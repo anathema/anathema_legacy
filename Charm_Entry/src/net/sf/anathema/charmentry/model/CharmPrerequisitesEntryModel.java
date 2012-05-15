@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.model;
 
-import net.disy.commons.core.util.SimpleBlock;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
@@ -9,6 +8,7 @@ import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import net.sf.anathema.lib.util.SimpleBlock;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
       ICharmCache cache) {
     this.charmData = charmData;
     this.cache = cache;
-    final CheckInputListener changeListener = new CheckInputListener(new SimpleBlock() {
+    CheckInputListener changeListener = new CheckInputListener(new SimpleBlock() {
       @Override
       public void execute() {
         control.announce().changeOccurred();

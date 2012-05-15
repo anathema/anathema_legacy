@@ -1,7 +1,6 @@
 package net.sf.anathema.charmentry.module;
 
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.charmentry.presenter.view.IAmountDurationEntryView;
 import net.sf.anathema.charmentry.presenter.view.ICharmTypeEntryView;
@@ -23,11 +22,12 @@ import net.sf.anathema.charmentry.view.PrerequisiteEntryView;
 import net.sf.anathema.charmentry.view.QualifiedAmountDurationView;
 import net.sf.anathema.charmentry.view.ReflexiveSpecialsView;
 import net.sf.anathema.charmentry.view.SimpleSpecialsView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharmEntryViewFactory implements ICharmEntryViewFactory {
 
-  private final IIntValueDisplayFactory factory;
+  private final IntegerViewFactory factory;
 
   public CharmEntryViewFactory(IResources resources) {
     this.factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, CharacterType.MORTAL);

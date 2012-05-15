@@ -20,7 +20,7 @@ public class CharmStats extends AbstractCharmStats {
   @Override
   protected String[] getDetailKeys() {
     String[] detailKeys = super.getDetailKeys();
-    final List<String> details = new ArrayList<String>();
+    List<String> details = new ArrayList<String>();
     Collections.addAll(details, detailKeys);
     if (character.isSubeffectCharm(getMagic())) {
       for (String subeffectId : character.getLearnedEffects(getMagic())) {
@@ -32,7 +32,7 @@ public class CharmStats extends AbstractCharmStats {
 
   @Override
   public String getNameString(IResources resources) {
-    final StringBuilder nameString = new StringBuilder();
+    StringBuilder nameString = new StringBuilder();
     nameString.append(resources.getString(getMagic().getId()));
     int learnCount = character.getLearnCount(getMagic());
     if (learnCount > 1) {

@@ -4,12 +4,12 @@ import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -29,7 +29,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   private final ICharacterModelContext context;
   private final Announcer<IChangeListener> pointControl = Announcer.to(IChangeListener.class);
 
-  public LinguisticsModel(final ICharacterModelContext context) {
+  public LinguisticsModel(ICharacterModelContext context) {
     this.context = context;
     ConfigurableCharacterChangeListener listener = new ConfigurableCharacterChangeListener() {
       @Override

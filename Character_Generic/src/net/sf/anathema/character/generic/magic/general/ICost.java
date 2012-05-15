@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.magic.general;
 
 public interface ICost {
-  public String getCost();
+  String getCost();
 
-  public String getText();
+  String getText();
 
-  public boolean isPermanent();
+  boolean isPermanent();
 }

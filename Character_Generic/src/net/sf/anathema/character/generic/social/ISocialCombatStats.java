@@ -4,15 +4,15 @@ import net.sf.anathema.character.generic.util.IStats;
 
 public interface ISocialCombatStats extends IStats {
 
-  public int getDeceptionAttackValue();
+  int getDeceptionAttackValue();
 
-  public int getDeceptionMDV();
+  int getDeceptionMDV();
 
-  public int getHonestyAttackValue();
+  int getHonestyAttackValue();
 
-  public int getHonestyMDV();
+  int getHonestyMDV();
 
-  public int getRate();
+  int getRate();
 
-  public int getSpeed();
+  int getSpeed();
 }

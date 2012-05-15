@@ -5,9 +5,9 @@ import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 public interface IArtifactStatisticsModel extends IEquipmentStatisticsModel
 {
-	public IIntValueModel getAttuneCostModel();
+	IIntValueModel getAttuneCostModel();
 	
-	public BooleanValueModel getForeignAttunementModel();
+	BooleanValueModel getForeignAttunementModel();
 	
-	public BooleanValueModel getRequireAttunementModel();
+	BooleanValueModel getRequireAttunementModel();
 }

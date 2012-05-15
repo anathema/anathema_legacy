@@ -14,11 +14,11 @@ public class ShortCharmTypeStringBuilder extends AbstractCharmTypeStringBuilder 
   @Override
   protected StringBuilder buildDefenseString(
       ISimpleSpecialsModel model,
-      final boolean defaultSpeed,
-      final boolean longAction) {
+      boolean defaultSpeed,
+      boolean longAction) {
     StringBuilder builder = new StringBuilder();
     builder.append(IMagicTooltipStringBuilder.CommaSpace);
-    final int defenseModifier = model.getDefenseModifier();
+    int defenseModifier = model.getDefenseModifier();
     if (defenseModifier == 0) {
       builder.append("-"); //$NON-NLS-1$
     }

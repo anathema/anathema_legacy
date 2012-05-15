@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.view.renderer;
 
-import javax.swing.Icon;
-
-import net.disy.commons.swing.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 @SuppressWarnings("unchecked")
 public abstract class AbstractSelectObjectUi<V> implements IObjectUi<Object> {

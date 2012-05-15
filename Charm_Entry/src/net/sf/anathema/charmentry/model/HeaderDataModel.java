@@ -25,7 +25,7 @@ public class HeaderDataModel implements IHeaderDataModel {
     charmData.getName().addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
-        final ICharacterType type = charmData.getCharacterType();
+        ICharacterType type = charmData.getCharacterType();
         if (type != null) {
           charmData.setId(CharmIdGenerator.createIDFromName(type, newValue));
         }
@@ -59,7 +59,7 @@ public class HeaderDataModel implements IHeaderDataModel {
   @Override
   public void setCharacterType(ICharacterType type) {
     charmData.setCharacterType(type);
-    final String text = charmData.getName().getText();
+    String text = charmData.getName().getText();
     if (text != null) {
       charmData.setId(CharmIdGenerator.createIDFromName(type, text));
     }

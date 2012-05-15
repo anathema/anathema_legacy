@@ -1,11 +1,11 @@
 package net.sf.anathema.character.mutations.model;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.library.quality.model.Quality;
 import net.sf.anathema.character.library.quality.model.QualityPrerequisite;
 import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityPredicate;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 
 import java.util.List;
 

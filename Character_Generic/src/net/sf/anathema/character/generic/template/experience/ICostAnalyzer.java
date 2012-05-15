@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 
 public interface ICostAnalyzer {
 
-  public boolean isOccultFavored();
+  boolean isOccultFavored();
 
-  public MartialArtsLevel getMartialArtsLevel(ICharm charm);
+  MartialArtsLevel getMartialArtsLevel(ICharm charm);
 
-  public boolean isMagicFavored(IMagic magic);
+  boolean isMagicFavored(IMagic magic);
 }

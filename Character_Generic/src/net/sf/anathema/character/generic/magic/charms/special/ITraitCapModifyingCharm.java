@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface ITraitCapModifyingCharm extends ISpecialCharm
 {
-	public ITraitType getTraitType();
+	ITraitType getTraitType();
 	
-	public int getModifier();
+	int getModifier();
 }

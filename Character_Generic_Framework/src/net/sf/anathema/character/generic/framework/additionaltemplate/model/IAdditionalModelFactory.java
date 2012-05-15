@@ -5,5 +5,5 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 
 public interface IAdditionalModelFactory {
 
-  public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context);
+  IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context);
 }

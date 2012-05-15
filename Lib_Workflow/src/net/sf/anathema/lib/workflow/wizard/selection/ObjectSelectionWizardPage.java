@@ -1,15 +1,15 @@
 package net.sf.anathema.lib.workflow.wizard.selection;
 
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.list.ListSelectionMode;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 

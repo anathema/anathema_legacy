@@ -4,9 +4,9 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 
 public interface IUpgradableCharm extends IMultipleEffectCharm
 {
-	public int getUpgradeBPCost(IBasicCharacterData data);
+	int getUpgradeBPCost(IBasicCharacterData data);
 	
-	public int getUpgradeXPCost(IBasicCharacterData data);
+	int getUpgradeXPCost(IBasicCharacterData data);
 	
-	public boolean requiresBase();
+	boolean requiresBase();
 }

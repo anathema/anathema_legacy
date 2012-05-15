@@ -1,14 +1,14 @@
 package net.sf.anathema.character.generic.framework.xml.trait.allocation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AllocationMinimumRestriction extends ReflectionEqualsObject implements IMinimumRestriction
 {
@@ -96,7 +96,7 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
 			  Map<ITraitType, Integer> map = sibling.claimMap.get(context);
 			  claimed += map.get(traitType);
 		  }
-		  catch (NullPointerException e) { }
+		  catch (NullPointerException ignored) { }
 	  }
 	  return claimed;
   }

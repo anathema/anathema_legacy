@@ -5,5 +5,5 @@ import net.sf.anathema.lib.gui.Presenter;
 
 public interface IContentPresenter extends Presenter {
 
-  public IViewContent getTabContent();
+  IViewContent getTabContent();
 }

@@ -4,11 +4,11 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface IIntValueView {
 
-  public void setValue(int newValue);
+  void setValue(int newValue);
   
-  public void addIntValueChangedListener(IIntValueChangedListener listener);
+  void addIntValueChangedListener(IIntValueChangedListener listener);
 
-  public void removeIntValueChangedListener(IIntValueChangedListener listener);
+  void removeIntValueChangedListener(IIntValueChangedListener listener);
 
-  public void setMaximum(int maximalValue);
+  void setMaximum(int maximalValue);
 }

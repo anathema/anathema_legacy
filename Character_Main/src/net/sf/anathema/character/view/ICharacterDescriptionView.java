@@ -6,13 +6,13 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ICharacterDescriptionView extends IView {
   
-  public void addBlankLine();
+  void addBlankLine();
 
-  public ITextView[] addFieldsView(String[] labelText);
+  ITextView[] addFieldsView(String[] labelText);
 
-  public ITextView addLineView(String labelText);
+  ITextView addLineView(String labelText);
 
-  public ITextView addAreaView(String labelText, int rowCount);
+  ITextView addAreaView(String labelText, int rowCount);
 
-  public void addEditAction(SmartAction action, int row);
+  void addEditAction(SmartAction action, int row);
 }

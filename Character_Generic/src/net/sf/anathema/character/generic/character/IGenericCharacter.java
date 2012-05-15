@@ -18,65 +18,65 @@ import java.util.List;
 
 public interface IGenericCharacter extends ILimitationContext, IMagicCollection, IGenericCharmConfiguration {
 
-  public boolean isAlienCharm(ICharm charm);
+  boolean isAlienCharm(ICharm charm);
 
-  public ICharacterTemplate getTemplate();
+  ICharacterTemplate getTemplate();
 
-  public IGenericTrait[] getBackgrounds();
+  IGenericTrait[] getBackgrounds();
 
-  public INamedGenericTrait[] getSpecialties(ITraitType traitType);
+  INamedGenericTrait[] getSpecialties(ITraitType traitType);
 
-  public INamedGenericTrait[] getSubTraits(ITraitType traitType);
+  INamedGenericTrait[] getSubTraits(ITraitType traitType);
 
-  public int getHealthLevelTypeCount(HealthLevelType type);
+  int getHealthLevelTypeCount(HealthLevelType type);
 
-  public String getPeripheralPool();
+  String getPeripheralPool();
 
-  public int getPeripheralPoolValue();
+  int getPeripheralPoolValue();
 
-  public String getPersonalPool();
+  String getPersonalPool();
 
-  public int getPersonalPoolValue();
+  int getPersonalPoolValue();
 
-  public int getOverdrivePoolValue();
+  int getOverdrivePoolValue();
 
-  public IdentifiedInteger[] getComplexPools();
+  IdentifiedInteger[] getComplexPools();
 
-  public int getAttunedPoolValue();
+  int getAttunedPoolValue();
 
-  public IAdditionalModel getAdditionalModel(String templateId);
+  IAdditionalModel getAdditionalModel(String templateId);
 
-  public IConcept getConcept();
+  IConcept getConcept();
 
-  public List<IMagic> getAllLearnedMagic();
+  List<IMagic> getAllLearnedMagic();
 
-  public int getLearnCount(ICharm charm);
+  int getLearnCount(ICharm charm);
 
-  public IGenericCombo[] getCombos();
+  IGenericCombo[] getCombos();
 
-  public boolean isExperienced();
+  boolean isExperienced();
 
-  public int getPainTolerance();
+  int getPainTolerance();
 
-  public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
+  IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
 
-  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
+  IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
 
-  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups();
+  IIdentifiedTraitTypeGroup[] getYoziTypeGroups();
 
-  public int getTotalExperiencePoints();
+  int getTotalExperiencePoints();
 
-  public int getSpentExperiencePoints();
+  int getSpentExperiencePoints();
 
-  public String[] getLearnedEffects(ICharm charm);
+  String[] getLearnedEffects(ICharm charm);
 
-  public boolean isMultipleEffectCharm(ICharm magic);
+  boolean isMultipleEffectCharm(ICharm magic);
 
-  public boolean isSubeffectCharm(ICharm magic);
+  boolean isSubeffectCharm(ICharm magic);
 
-  public void addSpecialtyListChangeListener(IChangeListener listener);
+  void addSpecialtyListChangeListener(IChangeListener listener);
   
-  public ICharm[] getGenericCharms();
+  ICharm[] getGenericCharms();
 
   <T> List<T> getAllRegistered(Class<T> interfaceClass);
 }

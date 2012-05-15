@@ -1,11 +1,10 @@
 package net.sf.anathema.campaign.music.impl.persistence.search;
 
-import net.disy.commons.core.util.ArrayUtilities;
-
 import com.db4o.query.Candidate;
 import com.db4o.query.Constraint;
 import com.db4o.query.Evaluation;
 import com.db4o.query.Query;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 
 public abstract class AbstractArrayFieldSearchParameter<P> implements IExtendedSearchParameter {
 

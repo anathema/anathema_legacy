@@ -32,7 +32,7 @@ public class KnackContent extends AbstractSubBoxContent {
   }
 
   public List<IKnackStats> createPrintKnacks() {
-    final List<IKnackStats> printKnacks = new ArrayList<IKnackStats>();
+    List<IKnackStats> printKnacks = new ArrayList<IKnackStats>();
     ICharm[] charmSet = character.getLearnedCharms();
     for (ICharm charm : charmSet) {
       if (!charm.hasAttribute(KNACK)) {

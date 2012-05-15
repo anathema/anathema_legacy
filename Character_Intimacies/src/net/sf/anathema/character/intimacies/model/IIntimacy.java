@@ -5,15 +5,15 @@ import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 
 public interface IIntimacy {
 
-  public String getName();
+  String getName();
 
-  public IDefaultTrait getTrait();
+  IDefaultTrait getTrait();
 
-  public void resetCurrentValue();
+  void resetCurrentValue();
 
-  public void setComplete(boolean complete);
+  void setComplete(boolean complete);
 
-  public boolean isComplete();
+  boolean isComplete();
 
-  public void addCompletionListener(IBooleanValueChangedListener listener);
+  void addCompletionListener(IBooleanValueChangedListener listener);
 }

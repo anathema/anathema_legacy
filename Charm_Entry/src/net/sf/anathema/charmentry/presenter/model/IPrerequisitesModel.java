@@ -6,17 +6,17 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IPrerequisitesModel {
 
-  public ITraitType[] getPrimaryPrerequisiteTypes();
+  ITraitType[] getPrimaryPrerequisiteTypes();
 
-  public void setEssenceMinimum(int minimum);
+  void setEssenceMinimum(int minimum);
 
-  public void addModelListener(IChangeListener listener);
+  void addModelListener(IChangeListener listener);
 
-  public int getEssenceMinimum();
+  int getEssenceMinimum();
 
-  public IGenericTrait getPrimaryPrerequisite();
+  IGenericTrait getPrimaryPrerequisite();
 
-  public void setPrimaryPrerequisite(ITraitType type, int value);
+  void setPrimaryPrerequisite(ITraitType type, int value);
 
-  public boolean isPermanentCharm();
+  boolean isPermanentCharm();
 }

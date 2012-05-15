@@ -21,7 +21,7 @@ public class GenericConcept implements IConcept {
   }
 
   @Override
-  public String getWillpowerRegainingComment(final IResources resources) {
+  public String getWillpowerRegainingComment(IResources resources) {
     IMotivation motivation = characterConcept.getWillpowerRegainingConcept();
     return motivation.getDescription().getText();
   }

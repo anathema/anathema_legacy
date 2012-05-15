@@ -1,11 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.rules;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ContractFailedException;
+import com.eteks.parser.CompilationException;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
@@ -24,13 +19,16 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.util.IPointModification;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
+import net.sf.anathema.lib.collection.ArrayUtilities;
+import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
+import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
 
-import com.eteks.parser.CompilationException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<GenericAdditionalRules> {
 

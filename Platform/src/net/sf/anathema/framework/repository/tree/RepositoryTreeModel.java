@@ -84,7 +84,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
       return;
     }
     for (Object object : currentlySelectedUserObjects) {
-      final PrintNameFile file = (PrintNameFile) object;
+      PrintNameFile file = (PrintNameFile) object;
       repository.deleteAssociatedItem(file);
       control.announce().printNameFileRemoved(file);
     }
@@ -157,7 +157,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   @Override
-  public void refreshItem(final IItemType type, final String id) {
+  public void refreshItem(IItemType type, String id) {
     control.announce().printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
     repository.refresh();
   }

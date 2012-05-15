@@ -7,13 +7,13 @@ import net.sf.anathema.lib.util.IIdentificate;
 public interface IKnackStats extends IStats {
 
   @Override
-  public IIdentificate getName();
+  IIdentificate getName();
 
-  public String getGroupName(IResources resources);
+  String getGroupName(IResources resources);
 
-  public String getSourceString(IResources resources);
+  String getSourceString(IResources resources);
   
-  public String[] getDetailString(IResources resources);
+  String[] getDetailString(IResources resources);
 
-  public String getNameString(IResources resources);
+  String getNameString(IResources resources);
 }

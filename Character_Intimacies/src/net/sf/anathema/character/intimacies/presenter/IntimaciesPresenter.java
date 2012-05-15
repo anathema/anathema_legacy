@@ -122,20 +122,20 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
     adjustOverview(bonusPointsView);
   }
 
-  private void adjustOverview(final IValueView<Integer> valueView) {
+  private void adjustOverview(IValueView<Integer> valueView) {
     IAdditionalModelBonusPointCalculator bonusPointCalculator = additionalModel.getBonusPointCalculator();
     bonusPointCalculator.recalculate();
     valueView.setValue(bonusPointCalculator.getBonusPointCost());
   }
 
-  private void adjustTotalOverview(final ILabelledAlotmentView alotmentView, int currentValue, int maxValue) {
+  private void adjustTotalOverview(ILabelledAlotmentView alotmentView, int currentValue, int maxValue) {
     alotmentView.setValue(currentValue);
     alotmentView.setAlotment(maxValue);
     ValueLegalityState state = currentValue > maxValue ? ValueLegalityState.High : ValueLegalityState.Okay;
     alotmentView.setTextColor(new LegalityColorProvider().getTextColor(state));
   }
 
-  private void adjustBonusPointsOverview(final ILabelledAlotmentView alotmentView, int currentValue, int maxValue) {
+  private void adjustBonusPointsOverview(ILabelledAlotmentView alotmentView, int currentValue, int maxValue) {
     alotmentView.setValue(Math.min(currentValue, maxValue));
     alotmentView.setAlotment(maxValue);
     ValueLegalityState state = currentValue > maxValue ? ValueLegalityState.Increased : ValueLegalityState.Okay;
@@ -143,7 +143,7 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
   }
 
   @Override
-  protected IRemovableTraitView< ? > createSubView(final BasicUi basicUi, final IIntimacy intimacy) {
+  protected IRemovableTraitView< ? > createSubView(BasicUi basicUi, final IIntimacy intimacy) {
     final IRemovableTraitView<IToggleButtonTraitView< ? >> intimacyView = view.addEntryView(
         basicUi.getRemoveIcon(),
         null,

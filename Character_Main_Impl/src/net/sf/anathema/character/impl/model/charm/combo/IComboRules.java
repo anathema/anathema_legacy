@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 
 public interface IComboRules {
 
-  public boolean isComboLegal(ICharm charm1, ICharm charm2);
+  boolean isComboLegal(ICharm charm1, ICharm charm2);
 
-  public void setCrossPrerequisiteTypeComboAllowed(boolean allowed);
+  void setCrossPrerequisiteTypeComboAllowed(boolean allowed);
 }

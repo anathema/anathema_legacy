@@ -1,5 +1,13 @@
 package net.sf.anathema.framework.repository.tree;
 
+import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.collection.ArrayUtilities;
+import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.ITransformer;
+import net.sf.anathema.lib.util.TreeUtilities;
+
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
@@ -8,14 +16,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
-
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ITransformer;
-import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.TreeUtilities;
 
 public class RepositoryTreePresenter implements Presenter {
 

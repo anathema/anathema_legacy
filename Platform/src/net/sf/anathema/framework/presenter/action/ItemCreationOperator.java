@@ -1,21 +1,21 @@
 package net.sf.anathema.framework.presenter.action;
 
-import java.awt.Component;
-import java.lang.reflect.InvocationTargetException;
-
-import net.disy.commons.core.message.Message;
-import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.swing.dialog.message.MessageDialogFactory;
-import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
+import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
+import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
+import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+
+import java.awt.Component;
+import java.lang.reflect.InvocationTargetException;
 
 public class ItemCreationOperator implements IItemOperator {
 
@@ -36,7 +36,7 @@ public class ItemCreationOperator implements IItemOperator {
     final Object[] internationalizedType = new Object[] { resources.getString("ItemType." + item.getItemType() + ".PrintName") }; //$NON-NLS-1$ //$NON-NLS-2$
     String title = resources.getString("AnathemaCore.AddItem.Progress.Title", internationalizedType); //$NON-NLS-1$
     try {
-      new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptableRunnableWithProgress() {
+      new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptibleRunnableWithProgress() {
         @Override
         public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {

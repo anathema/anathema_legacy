@@ -5,6 +5,6 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 public interface IEquipmentStatsDecorationFactory<K extends IEquipmentStats> {
 
-  public K createRenamedPrintDecoration(IEquipmentItem item, K stats);
+  K createRenamedPrintDecoration(IEquipmentItem item, K stats);
 
 }

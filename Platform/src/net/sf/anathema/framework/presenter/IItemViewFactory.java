@@ -6,5 +6,5 @@ import net.sf.anathema.lib.exception.AnathemaException;
 
 public interface IItemViewFactory {
 
-  public IItemView createView(IItem item) throws AnathemaException;
+  IItemView createView(IItem item) throws AnathemaException;
 }

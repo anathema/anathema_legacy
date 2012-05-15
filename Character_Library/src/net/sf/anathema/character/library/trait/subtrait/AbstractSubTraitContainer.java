@@ -31,7 +31,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     return !unremovableSubTraits.contains(subTrait);
   }
 
-  private void fireSubTraitAddedEvent(final ISubTrait subTrait) {
+  private void fireSubTraitAddedEvent(ISubTrait subTrait) {
     subTraitListeners.announce().subTraitAdded(subTrait);
   }
 
@@ -39,7 +39,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     subTraitListeners.announce().subTraitValueChanged();
   }
 
-  private void fireSubTraitRemovedEvent(final ISubTrait subTrait) {
+  private void fireSubTraitRemovedEvent(ISubTrait subTrait) {
     subTraitListeners.announce().subTraitRemoved(subTrait);
   }
 

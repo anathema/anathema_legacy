@@ -7,9 +7,9 @@ import net.sf.anathema.lib.workflow.container.ISelectionContainerModel;
 
 public interface IMusicCategorizationModel {
 
-  public ISelectionContainerModel<IMusicMood> getMoodsModel();
+  ISelectionContainerModel<IMusicMood> getMoodsModel();
 
-  public ISelectionContainerModel<IMusicTheme> getThemesModel();
+  ISelectionContainerModel<IMusicTheme> getThemesModel();
 
-  public ISelectionContainerModel<IMusicEvent> getEventsModel();
+  ISelectionContainerModel<IMusicEvent> getEventsModel();
 }

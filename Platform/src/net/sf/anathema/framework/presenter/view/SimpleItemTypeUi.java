@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter.view;
 
-import javax.swing.Icon;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 
-import net.disy.commons.swing.ui.IObjectUi;
+import javax.swing.Icon;
 
 public class SimpleItemTypeUi implements IObjectUi<Object> {
 

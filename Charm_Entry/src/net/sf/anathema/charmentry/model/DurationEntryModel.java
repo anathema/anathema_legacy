@@ -19,7 +19,7 @@ public class DurationEntryModel implements IDurationEntryModel {
   private String text;
   private String amount;
 
-  public DurationEntryModel(final ICharmTypeEntryModel typeModel, final IConfigurableCharmData charmData) {
+  public DurationEntryModel(final ICharmTypeEntryModel typeModel, IConfigurableCharmData charmData) {
     this.charmData = charmData;
     typeModel.addModelListener(new IChangeListener() {
       @Override

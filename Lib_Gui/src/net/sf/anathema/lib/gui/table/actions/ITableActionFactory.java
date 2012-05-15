@@ -1,12 +1,10 @@
-//Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table.actions;
-
-import javax.swing.Action;
 
 import net.sf.anathema.lib.gui.table.SmartTable;
 
-// NOT_PUBLISHED
+import javax.swing.Action;
+
 public interface ITableActionFactory {
 
-  public Action createAction(SmartTable table);
+  Action createAction(SmartTable table);
 }

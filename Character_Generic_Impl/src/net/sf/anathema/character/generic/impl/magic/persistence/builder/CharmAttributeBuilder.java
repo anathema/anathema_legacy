@@ -1,20 +1,19 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
+import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Element;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VALUE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VISUALIZE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ATTRIBUTE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_ATTRIBUTE;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.lib.xml.ElementUtilities;
-
-import org.dom4j.Element;
 
 public class CharmAttributeBuilder {
 
@@ -32,7 +31,7 @@ public class CharmAttributeBuilder {
       }
     }
     if (primaryPrerequisite != null) {
-      final String id = primaryPrerequisite.getType().getId();
+      String id = primaryPrerequisite.getType().getId();
       attributes.add(new CharmAttribute(id, false));
       for (Element genericAttributeElement : ElementUtilities.elements(rulesElement, TAG_GENERIC_ATTRIBUTE)) {
         String attributeId = genericAttributeElement.attributeValue(ATTRIB_ATTRIBUTE) + id;

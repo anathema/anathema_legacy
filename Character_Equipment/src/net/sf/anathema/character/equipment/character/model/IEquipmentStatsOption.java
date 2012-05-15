@@ -4,15 +4,15 @@ import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 
 public interface IEquipmentStatsOption
 {
-	public String getName();
+	String getName();
 	
-	public String getType();
+	String getType();
 	
 	// Options only apply to weapon stats for now
 	
-	public int getAccuracyModifier();
+	int getAccuracyModifier();
 	
-	public int getDefenseModifier();
+	int getDefenseModifier();
 	
-	public INamedGenericTrait getUnderlyingTrait();
+	INamedGenericTrait getUnderlyingTrait();
 }

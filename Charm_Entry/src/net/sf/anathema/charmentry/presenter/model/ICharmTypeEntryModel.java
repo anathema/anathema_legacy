@@ -5,21 +5,21 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ICharmTypeEntryModel {
 
-  public CharmType[] getCharmTypes();
+  CharmType[] getCharmTypes();
 
-  public void setCharmType(CharmType type);
+  void setCharmType(CharmType type);
 
-  public ISimpleSpecialsEntryModel getSimpleSpecialsModel();
+  ISimpleSpecialsEntryModel getSimpleSpecialsModel();
 
-  public IReflexiveSpecialsEntryModel getReflexiveSpecialsModel();
+  IReflexiveSpecialsEntryModel getReflexiveSpecialsModel();
 
-  public void addModelListener(IChangeListener inputListener);
+  void addModelListener(IChangeListener inputListener);
 
-  public void setSpecialModelEnabled(boolean enabled);
+  void setSpecialModelEnabled(boolean enabled);
 
-  public boolean isSpecialModelAvailable();
+  boolean isSpecialModelAvailable();
 
-  public CharmType getCharmType();
+  CharmType getCharmType();
 
-  public boolean isSpecialModelEnabled();
+  boolean isSpecialModelEnabled();
 }

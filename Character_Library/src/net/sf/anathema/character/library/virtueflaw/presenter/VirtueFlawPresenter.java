@@ -1,7 +1,5 @@
 package net.sf.anathema.character.library.virtueflaw.presenter;
 
-import java.awt.Component;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
@@ -17,6 +15,8 @@ import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
+
+import java.awt.Component;
 
 public class VirtueFlawPresenter implements Presenter {
 
@@ -58,10 +58,10 @@ public class VirtueFlawPresenter implements Presenter {
 	new TraitPresenter(trait, traitView).initPresentation();
   }
 
-  protected void initRootPresentation(final IVirtueFlaw virtueFlaw) {
+  protected void initRootPresentation(IVirtueFlaw virtueFlaw) {
     initRootPresentation(virtueFlaw, "VirtueFlaw.Root.Name");
   }
-  protected void initRootPresentation(final IVirtueFlaw virtueFlaw, final String nameReference) {
+  protected void initRootPresentation(final IVirtueFlaw virtueFlaw, String nameReference) {
     final IObjectSelectionView<ITraitType> rootView = view.addVirtueFlawRootSelectionView(
         resources.getString(nameReference), 
         new AbstractSelectCellRenderer<ITraitType>(resources) {

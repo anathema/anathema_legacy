@@ -2,9 +2,9 @@ package net.sf.anathema.character.view;
 
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
-import net.sf.anathema.framework.presenter.view.IMultiContentView;
+import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.view.IItemView;
-import net.sf.anathema.lib.gui.IDisposable;
+import net.sf.anathema.lib.gui.swing.IDisposable;
 
 public interface ICharacterView extends IItemView, OverviewContainer {
 
@@ -12,7 +12,7 @@ public interface ICharacterView extends IItemView, OverviewContainer {
 
   IExperienceConfigurationView createExperienceConfigurationView();
 
-  IMultiContentView addMultiContentView(String header);
+  MultipleContentView addMultipleContentView(String header);
 
   void addDisposable(IDisposable disposable);
 

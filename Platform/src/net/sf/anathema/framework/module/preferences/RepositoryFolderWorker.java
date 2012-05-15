@@ -1,14 +1,14 @@
 package net.sf.anathema.framework.module.preferences;
 
-import net.disy.commons.core.message.Message;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
+import net.sf.anathema.lib.message.Message;
 
 import java.io.File;
 
 import static java.text.MessageFormat.format;
-import static net.disy.commons.swing.dialog.message.MessageDialogFactory.showMessageDialog;
+import static net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory.showMessageDialog;
 
 public class RepositoryFolderWorker {
   public boolean isValid(File folder) {

@@ -1,17 +1,14 @@
-// Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table.columsettings;
 
-import java.awt.Color;
-import java.awt.Component;
+import net.sf.anathema.lib.gui.table.celleditors.NumbersOnlyIntegerCellEditor;
 
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+import java.awt.Color;
+import java.awt.Component;
 
-import net.sf.anathema.lib.gui.table.celleditors.NumbersOnlyIntegerCellEditor;
-
-// NOT_PUBLISHED
 public class IntegerTableColumnSettings extends AbstractTableColumnSettings {
 
   private final int stepsize;

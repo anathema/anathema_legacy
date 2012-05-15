@@ -2,8 +2,18 @@ package net.sf.anathema.character.equipment.impl.item.model.gson;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import com.google.gson.*;
-import net.sf.anathema.character.equipment.impl.character.model.stats.*;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.ArtifactStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.TraitModifyingStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 import java.lang.reflect.Type;

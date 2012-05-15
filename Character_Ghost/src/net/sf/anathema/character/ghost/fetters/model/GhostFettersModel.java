@@ -37,7 +37,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
     return AdditionalModelType.Miscellaneous;
   }
 
-  public GhostFettersModel(GhostFettersTemplate template, final ICharacterModelContext context) {
+  public GhostFettersModel(GhostFettersTemplate template, ICharacterModelContext context) {
     this.context = context;
     this.template = template;
     fetters = new ArrayList<Fetter>();

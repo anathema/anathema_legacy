@@ -6,9 +6,9 @@ import net.sf.anathema.lib.util.IIdentificate;
 public interface IPlotTimeUnit extends IIdentificate {
 
   @Override
-  public String getId();
+  String getId();
 
-  public IPlotTimeUnit getSuccessor();
+  IPlotTimeUnit getSuccessor();
 
-  public boolean hasSuccessor();
+  boolean hasSuccessor();
 }

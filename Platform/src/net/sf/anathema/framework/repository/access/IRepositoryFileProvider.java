@@ -4,5 +4,5 @@ import java.io.File;
 
 public interface IRepositoryFileProvider {
 
-  public File[] getFiles();
+  File[] getFiles();
 }

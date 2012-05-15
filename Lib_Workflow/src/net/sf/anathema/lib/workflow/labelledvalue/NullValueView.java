@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.labelledvalue;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class NullValueView<E> implements IValueView<E>{
   @Override

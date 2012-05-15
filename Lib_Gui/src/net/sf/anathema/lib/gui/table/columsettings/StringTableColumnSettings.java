@@ -1,11 +1,9 @@
-// Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table.columsettings;
-
-import javax.swing.table.TableCellEditor;
 
 import net.sf.anathema.lib.gui.table.celleditors.StringCellEditor;
 
-// NOT_PUBLISHED
+import javax.swing.table.TableCellEditor;
+
 public class StringTableColumnSettings extends AbstractTableColumnSettings {
 
   public StringTableColumnSettings() {

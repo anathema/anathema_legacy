@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
-import net.disy.commons.core.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
@@ -11,6 +10,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
@@ -44,7 +44,7 @@ public class AnathemaSaveAllAction extends SmartAction {
     }
 
     @Override
-    public void itemSelected(final IItem item) {
+    public void itemSelected(IItem item) {
       if (currentItem != null) {
         currentItem.removeDirtyListener(changeListener);
       }

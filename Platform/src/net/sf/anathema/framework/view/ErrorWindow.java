@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.view;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 

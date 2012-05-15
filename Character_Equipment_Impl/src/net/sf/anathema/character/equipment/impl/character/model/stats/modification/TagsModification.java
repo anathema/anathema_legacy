@@ -5,8 +5,8 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-import static net.disy.commons.core.util.ArrayUtilities.containsValue;
 import static net.sf.anathema.character.equipment.impl.creation.model.WeaponTag.Piercing;
+import static net.sf.anathema.lib.collection.ArrayUtilities.containsValue;
 
 public class TagsModification {
   private BaseMaterial material;

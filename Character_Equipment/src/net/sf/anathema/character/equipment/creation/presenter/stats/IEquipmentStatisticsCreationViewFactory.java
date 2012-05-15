@@ -7,11 +7,11 @@ import net.sf.anathema.character.equipment.creation.view.IWeaponTagsView;
 
 public interface IEquipmentStatisticsCreationViewFactory {
 
-  public IEquipmentTypeChoiceView createTypeChoiceView();
+  IEquipmentTypeChoiceView createTypeChoiceView();
 
-  public IWeaponStatisticsView createEquipmentStatisticsView();
+  IWeaponStatisticsView createEquipmentStatisticsView();
 
-  public IWeaponDamageView createWeaponDamageView();
+  IWeaponDamageView createWeaponDamageView();
 
-  public IWeaponTagsView createWeaponTagsView();
+  IWeaponTagsView createWeaponTagsView();
 }

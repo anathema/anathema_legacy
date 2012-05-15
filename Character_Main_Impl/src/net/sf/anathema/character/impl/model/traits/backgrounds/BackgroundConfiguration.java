@@ -3,7 +3,6 @@ package net.sf.anathema.character.impl.model.traits.backgrounds;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
@@ -16,6 +15,7 @@ import net.sf.anathema.character.model.background.IBackground;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
+import net.sf.anathema.lib.util.ObjectUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   }
   
   @Override
-  public IBackground addBackground(final IBackgroundTemplate backgroundType, String description)
+  public IBackground addBackground(IBackgroundTemplate backgroundType, String description)
   {
 	  return addBackground(backgroundType, description, false);
   }
@@ -122,7 +122,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     listeners.addListener(listener);
   }
 
-  private void fireBackgroundAddedEvent(final IBackground background) {
+  private void fireBackgroundAddedEvent(IBackground background) {
     listeners.announce().backgroundAdded(background);
   }
 
@@ -132,7 +132,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     fireBackgroundRemovedEvent(background);
   }
 
-  private void fireBackgroundRemovedEvent(final IBackground background) {
+  private void fireBackgroundRemovedEvent(IBackground background) {
     listeners.announce().backgroundRemoved(background);
   }
 

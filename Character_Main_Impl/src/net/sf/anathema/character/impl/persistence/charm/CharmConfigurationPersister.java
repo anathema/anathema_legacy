@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.persistence.charm;
 
-import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
@@ -24,13 +23,25 @@ import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 import java.util.List;
 
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.*;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_TYPE;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARM;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARMFILTERS;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARMGROUP;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARMS;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_COMBO;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_COMBOS;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_DESCRIPTION;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_NAME;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPECIAL;
 
 public class CharmConfigurationPersister {
 

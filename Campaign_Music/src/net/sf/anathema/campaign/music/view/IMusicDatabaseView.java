@@ -12,16 +12,10 @@ import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 
 public interface IMusicDatabaseView extends IItemView {
 
-  public ILibraryControlView addLibraryControlView(
-      ITableColumnViewSettings settings,
-      IMusicCategorizationProperties properties,
-      ILibraryControlProperties libraryProperties);
+  ILibraryControlView addLibraryControlView(ITableColumnViewSettings settings, IMusicCategorizationProperties properties,
+                                            ILibraryControlProperties libraryProperties);
 
-  public IMusicSelectionView addMusicSelectionView(
-      ITableColumnViewSettings columnSettings,
-      boolean includePlayerView,
-      IMusicCategorizationProperties categoryProperties,
-      IMusicPlayerProperties playerProperties,
-      IMusicSelectionProperties selectionProperties,
-      ITrackDetailsProperties detailsProperties);
+  IMusicSelectionView addMusicSelectionView(ITableColumnViewSettings columnSettings, boolean includePlayerView,
+                                            IMusicCategorizationProperties categoryProperties, IMusicPlayerProperties playerProperties,
+                                            IMusicSelectionProperties selectionProperties, ITrackDetailsProperties detailsProperties);
 }

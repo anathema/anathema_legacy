@@ -1,11 +1,9 @@
 package net.sf.anathema.platform.svgtree.view.listening;
 
+import org.apache.batik.swing.gvt.AbstractResetTransformInteractor;
+
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
-
-import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-
-import org.apache.batik.swing.gvt.AbstractResetTransformInteractor;
 
 public class DoubleRightClickResetTransformInteractor extends AbstractResetTransformInteractor {
 

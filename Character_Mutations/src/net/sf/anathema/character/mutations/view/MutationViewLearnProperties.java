@@ -82,7 +82,7 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
 
   }
 
-  private String createSourceBookKey(final IExaltedSourceBook source) {
+  private String createSourceBookKey(IExaltedSourceBook source) {
     return "ExaltedSourceBook." + source.getId(); //$NON-NLS-1$
   }
 

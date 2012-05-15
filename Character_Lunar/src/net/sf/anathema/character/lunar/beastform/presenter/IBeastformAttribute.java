@@ -4,12 +4,12 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 public interface IBeastformAttribute {
 
-  public int getPointCost();
+  int getPointCost();
 
-  public IDefaultTrait getTrait();
+  IDefaultTrait getTrait();
 
-  public void recalculate();
+  void recalculate();
 
-  public int getAdditionalDots();
+  int getAdditionalDots();
 
 }

@@ -5,11 +5,11 @@ import net.sf.anathema.framework.view.IItemView;
 
 public interface IModelViewMapping {
 
-  public IItem getModelByView(IItemView view);
+  IItem getModelByView(IItemView view);
 
-  public void addModelAndView(IItem model, IItemView view);
+  void addModelAndView(IItem model, IItemView view);
 
-  public IItemView getViewByModel(IItem model);
+  IItemView getViewByModel(IItem model);
 
-  public void removeModelAndView(IItem item, IItemView view);
+  void removeModelAndView(IItem item, IItemView view);
 }

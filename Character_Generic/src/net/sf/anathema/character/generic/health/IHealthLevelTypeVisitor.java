@@ -2,15 +2,15 @@ package net.sf.anathema.character.generic.health;
 
 public interface IHealthLevelTypeVisitor {
 
-  public void visitZero(HealthLevelType type);
+  void visitZero(HealthLevelType type);
 
-  public void visitOne(HealthLevelType type);
+  void visitOne(HealthLevelType type);
 
-  public void visitTwo(HealthLevelType type);
+  void visitTwo(HealthLevelType type);
 
-  public void visitFour(HealthLevelType type);
+  void visitFour(HealthLevelType type);
 
-  public void visitIncapacitated(HealthLevelType type);
+  void visitIncapacitated(HealthLevelType type);
   
-  public void visitDying(HealthLevelType type);
+  void visitDying(HealthLevelType type);
 }

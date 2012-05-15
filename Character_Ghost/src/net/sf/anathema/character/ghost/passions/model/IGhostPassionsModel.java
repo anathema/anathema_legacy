@@ -11,36 +11,36 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IGhostPassionsModel extends IAdditionalModel {
 
-  public ISubTraitContainer getPassionContainer(ITraitReference reference);
+  ISubTraitContainer getPassionContainer(ITraitReference reference);
 
-  public ISubTraitContainer getPassionContainer(ITraitType traitType);
+  ISubTraitContainer getPassionContainer(ITraitType traitType);
 
-  public ITraitReference[] getAllTraits();
+  ITraitReference[] getAllTraits();
 	  
-  public ITraitReference[] getAllEligibleTraits();
+  ITraitReference[] getAllEligibleTraits();
 
-  public void setCurrentTrait(ITraitReference newValue);
+  void setCurrentTrait(ITraitReference newValue);
 
-  public void setCurrentPassionName(String newPassionName);
+  void setCurrentPassionName(String newPassionName);
 
-  public void commitSelection();
+  void commitSelection();
 
-  public void clear();
+  void clear();
 
-  public boolean isEntryComplete();
+  boolean isEntryComplete();
 
-  public boolean isExperienced();
+  boolean isExperienced();
 
-  public void addCharacterChangeListener(ICharacterChangeListener listener);
+  void addCharacterChangeListener(ICharacterChangeListener listener);
 
-  public void addSelectionChangeListener(IChangeListener listener);
+  void addSelectionChangeListener(IChangeListener listener);
 
-  public void addTraitListChangeListener(ITraitReferencesChangeListener listener);
+  void addTraitListChangeListener(ITraitReferencesChangeListener listener);
   
-  public int getCurrentVirtueRating(VirtueType type);
+  int getCurrentVirtueRating(VirtueType type);
   
-  public int getCurrentTotalPassions();
+  int getCurrentTotalPassions();
   
-  public int getMaxTotalPassions();
+  int getMaxTotalPassions();
 
 }

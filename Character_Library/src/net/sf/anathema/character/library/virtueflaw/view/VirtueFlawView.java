@@ -1,39 +1,37 @@
 package net.sf.anathema.character.library.virtueflaw.view;
 
-import java.awt.Component;
-import java.awt.Container;
-
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
-
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
-import net.sf.anathema.lib.gui.GuiUtilities;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
+import java.awt.Component;
+import java.awt.Container;
+
 public class VirtueFlawView implements IVirtueFlawView {
   private final JPanel virtueFlawPanel = new JPanel(new GridDialogLayout(2, false));
-  private final IIntValueDisplayFactory intValueDisplayFactory;
+  private final IntegerViewFactory intValueDisplayFactory;
   
-  public VirtueFlawView(IIntValueDisplayFactory factory)
+  public VirtueFlawView(IntegerViewFactory factory)
   {
 	  this.intValueDisplayFactory = factory;
   }
 
   @Override
-  public ITextView addTextView(final String labelText, int columns) {
-    final ITextView textView = new LineTextView(columns);
+  public ITextView addTextView(String labelText, int columns) {
+    ITextView textView = new LineTextView(columns);
     fillIntoVirtueFlawPanel(labelText, textView);
     return textView;
   }
@@ -52,7 +50,7 @@ public class VirtueFlawView implements IVirtueFlawView {
 	    return traitView;
 	  }
 
-  protected void fillIntoVirtueFlawPanel(final String labelText, final ITextView textView) {
+  protected void fillIntoVirtueFlawPanel(String labelText, ITextView textView) {
     new LabelTextView(labelText, textView).addToStandardPanel(
         virtueFlawPanel,
         GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
@@ -60,7 +58,7 @@ public class VirtueFlawView implements IVirtueFlawView {
 
   @Override
   public void setEnabled(boolean enabled) {
-    GuiUtilities.setEnabled(getComponent(), enabled);
+    net.sf.anathema.lib.gui.swing.GuiUtilities.setEnabled(getComponent(), enabled);
     handleSpecialComponents(getComponent(), enabled);
   }
 
@@ -80,9 +78,9 @@ public class VirtueFlawView implements IVirtueFlawView {
 
   @Override
   public IObjectSelectionView<ITraitType> addVirtueFlawRootSelectionView(
-      final String labelText,
+      String labelText,
       ListCellRenderer renderer) {
-    final ObjectSelectionView<ITraitType> rootSelectionView = new ObjectSelectionView<ITraitType>(
+    ObjectSelectionView<ITraitType> rootSelectionView = new ObjectSelectionView<ITraitType>(
         labelText,
         renderer,
         new ITraitType[0]);

@@ -8,11 +8,11 @@ import net.sf.anathema.lib.gui.list.actionview.IMultiSelectionActionAddableListV
 
 public interface IMusicSelectionView {
 
-  public IMultiSelectionActionAddableListView<IMp3Track> getTrackListView();
+  IMultiSelectionActionAddableListView<IMp3Track> getTrackListView();
 
-  public IActionAddableListView<IMusicSelection> getSelectionListView();
+  IActionAddableListView<IMusicSelection> getSelectionListView();
 
-  public ITrackDetailsView getTrackDetailsView();
+  ITrackDetailsView getTrackDetailsView();
 
-  public IMusicPlayerView getPlayerView();
+  IMusicPlayerView getPlayerView();
 }

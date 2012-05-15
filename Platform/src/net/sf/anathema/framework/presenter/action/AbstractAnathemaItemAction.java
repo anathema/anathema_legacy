@@ -1,15 +1,13 @@
 package net.sf.anathema.framework.presenter.action;
 
-import java.awt.Component;
-
-import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionProperties;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;
@@ -19,6 +17,8 @@ import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 import net.sf.anathema.lib.workflow.wizard.selection.ListObjectSelectionPageView;
 import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardModel;
 import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardPage;
+
+import java.awt.Component;
 
 public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
 
@@ -62,7 +62,7 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
   }
 
   protected ItemTypeSelectionProperties createSelectionProperties() {
-    final ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
+    ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
         .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     IObjectUi<Object> objectUi = new ItemTypeUi(getResources(), extension);
     return new ItemTypeSelectionProperties(getResources(), getLegalityProvider(), objectUi);

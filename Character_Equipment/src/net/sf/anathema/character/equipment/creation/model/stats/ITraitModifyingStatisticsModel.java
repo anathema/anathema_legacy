@@ -4,33 +4,33 @@ import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 public interface ITraitModifyingStatisticsModel extends IEquipmentStatisticsModel
 {
-	public IIntValueModel getDDVModel();
+	IIntValueModel getDDVModel();
 	
-	public IIntValueModel getPDVModel();
+	IIntValueModel getPDVModel();
 	
-	public IIntValueModel getMDDVModel();
+	IIntValueModel getMDDVModel();
 	
-	public IIntValueModel getMPDVModel();
+	IIntValueModel getMPDVModel();
 	
-	public IIntValueModel getMeleeWeaponSpeedModel();
+	IIntValueModel getMeleeWeaponSpeedModel();
 	
-	public IIntValueModel getMeleeWeaponAccuracyModel();
+	IIntValueModel getMeleeWeaponAccuracyModel();
 	
-	public IIntValueModel getMeleeWeaponDamageModel();
+	IIntValueModel getMeleeWeaponDamageModel();
 	
-	public IIntValueModel getMeleeWeaponRateModel();
+	IIntValueModel getMeleeWeaponRateModel();
 	
-	public IIntValueModel getRangedWeaponSpeedModel();
+	IIntValueModel getRangedWeaponSpeedModel();
 	
-	public IIntValueModel getRangedWeaponAccuracyModel();
+	IIntValueModel getRangedWeaponAccuracyModel();
 	
-	public IIntValueModel getRangedWeaponDamageModel();
+	IIntValueModel getRangedWeaponDamageModel();
 	
-	public IIntValueModel getRangedWeaponRateModel();
+	IIntValueModel getRangedWeaponRateModel();
 	
-	public IIntValueModel getJoinBattleModel();
+	IIntValueModel getJoinBattleModel();
 	
-	public IIntValueModel getJoinDebateModel();
+	IIntValueModel getJoinDebateModel();
 	
-	public IIntValueModel getJoinWarModel();
+	IIntValueModel getJoinWarModel();
 }

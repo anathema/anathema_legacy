@@ -8,29 +8,29 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ISpecialtiesConfiguration {
 
-  public ISubTraitContainer getSpecialtiesContainer(ITraitReference reference);
+  ISubTraitContainer getSpecialtiesContainer(ITraitReference reference);
 
-  public ISubTraitContainer getSpecialtiesContainer(ITraitType traitType);
+  ISubTraitContainer getSpecialtiesContainer(ITraitType traitType);
 
-  public ITraitReference[] getAllTraits();
+  ITraitReference[] getAllTraits();
   
-  public ITraitReference[] getAllEligibleTraits();
+  ITraitReference[] getAllEligibleTraits();
 
-  public void setCurrentTrait(ITraitReference newValue);
+  void setCurrentTrait(ITraitReference newValue);
 
-  public void setCurrentSpecialtyName(String newSpecialtyName);
+  void setCurrentSpecialtyName(String newSpecialtyName);
 
-  public void commitSelection();
+  void commitSelection();
 
-  public void clear();
+  void clear();
 
-  public boolean isEntryComplete();
+  boolean isEntryComplete();
 
-  public boolean isExperienced();
+  boolean isExperienced();
 
-  public void addCharacterChangeListener(ICharacterChangeListener listener);
+  void addCharacterChangeListener(ICharacterChangeListener listener);
 
-  public void addSelectionChangeListener(IChangeListener listener);
+  void addSelectionChangeListener(IChangeListener listener);
 
-  public void addTraitListChangeListener(ITraitReferencesChangeListener listener);
+  void addTraitListChangeListener(ITraitReferencesChangeListener listener);
 }

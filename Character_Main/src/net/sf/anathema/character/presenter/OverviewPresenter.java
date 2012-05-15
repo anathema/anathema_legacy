@@ -46,6 +46,6 @@ public class OverviewPresenter implements Presenter {
   }
 
   private void setOverviewView(boolean experienced) {
-    container.toogleOverviewView(experienced);
+    container.toggleOverviewView(experienced);
   }
 }

@@ -6,12 +6,12 @@ import net.sf.anathema.lib.exception.PersistenceException;
 
 public interface ICharmPrerequisitesEntryModel {
 
-  public void addModelListener(IChangeListener inputListener);
+  void addModelListener(IChangeListener inputListener);
 
-  public void setPrerequisiteCharms(ICharm[] charms);
+  void setPrerequisiteCharms(ICharm[] charms);
 
-  public ICharm[] getAvailableCharms() throws PersistenceException;
+  ICharm[] getAvailableCharms() throws PersistenceException;
 
-  public void setRequiresExcellency(boolean required);
+  void setRequiresExcellency(boolean required);
 
 }

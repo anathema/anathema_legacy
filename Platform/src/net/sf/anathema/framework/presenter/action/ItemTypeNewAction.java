@@ -1,13 +1,5 @@
 package net.sf.anathema.framework.presenter.action;
 
-import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.Action;
-import javax.swing.Icon;
-
-import net.disy.commons.core.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
@@ -15,9 +7,16 @@ import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesEx
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
+
+import javax.swing.Action;
+import javax.swing.Icon;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemTypeNewAction extends AbstractItemAction {
 

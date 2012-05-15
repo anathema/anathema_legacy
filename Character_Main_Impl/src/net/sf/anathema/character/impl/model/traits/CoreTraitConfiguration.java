@@ -47,7 +47,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private final IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups;
   private final SpecialtiesConfiguration specialtyConfiguration;
 
-  public CoreTraitConfiguration(ICharacterTemplate template, final ICharacterModelContext modelContext,
+  public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext,
                                 IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
     this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(template.getCasteCollection(),
             template.getAbilityGroups());

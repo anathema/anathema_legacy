@@ -10,15 +10,15 @@ import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 
 public interface ILibraryControlView extends ILibraryListView {
 
-  public ISearchComponent addSearchParameter(String string);
+  ISearchComponent addSearchParameter(String string);
 
-  public IActionAddableListView<ILibrary> getLibraryView();
+  IActionAddableListView<ILibrary> getLibraryView();
 
-  public IMusicCategorizationView getSearchMusicCategorizationView();
+  IMusicCategorizationView getSearchMusicCategorizationView();
 
-  public IActionAddableListView<IMp3Track> getTrackListView();
+  IActionAddableListView<IMp3Track> getTrackListView();
 
-  public void initGui();
+  void initGui();
 
-  public void setSearchAction(SmartAction action);
+  void setSearchAction(SmartAction action);
 }

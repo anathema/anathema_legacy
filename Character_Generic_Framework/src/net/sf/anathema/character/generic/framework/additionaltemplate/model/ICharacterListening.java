@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 
 public interface ICharacterListening {
 
-  public void addChangeListener(ICharacterChangeListener changeListener);
+  void addChangeListener(ICharacterChangeListener changeListener);
 }

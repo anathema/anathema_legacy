@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface IIdentifiedCasteTraitTypeGroup extends IIdentifiedTraitTypeGroup {
 
-  public ICasteType getGroupCasteType();
+  ICasteType getGroupCasteType();
   
-  public ICasteType[] getTraitCasteTypes(ITraitType type);
+  ICasteType[] getTraitCasteTypes(ITraitType type);
 }

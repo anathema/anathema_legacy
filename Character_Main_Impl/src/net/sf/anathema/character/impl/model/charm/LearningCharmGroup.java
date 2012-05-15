@@ -159,19 +159,19 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     return subeffect.split("\\.")[3];
   }
 
-  private void fireCharmLearned(final ICharm charm) {
+  private void fireCharmLearned(ICharm charm) {
     control.announce().charmLearned(charm);
   }
 
-  private void fireCharmForgotten(final ICharm charm) {
+  private void fireCharmForgotten(ICharm charm) {
     control.announce().charmForgotten(charm);
   }
 
-  private void fireNotLearnableEvent(final ICharm charm) {
+  private void fireNotLearnableEvent(ICharm charm) {
     control.announce().charmNotLearnable(charm);
   }
 
-  private void fireNotUnlearnableEvent(final ICharm charm) {
+  private void fireNotUnlearnableEvent(ICharm charm) {
     control.announce().charmNotUnlearnable(charm);
   }
 

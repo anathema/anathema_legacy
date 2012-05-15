@@ -4,7 +4,7 @@ import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 
 public interface ICheckableTextView {
 
-  public ITextView getTextView();
+  ITextView getTextView();
 
-  public IBooleanValueView getBooleanValueView();
+  IBooleanValueView getBooleanValueView();
 }

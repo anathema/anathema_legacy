@@ -108,7 +108,7 @@ public class MusicSelectionModel implements IMusicSelectionModel {
   }
 
   @Override
-  public void setMarkedTracks(final IMp3Track[] tracks) {
+  public void setMarkedTracks(IMp3Track[] tracks) {
     if (Arrays.equals(tracks, markedTracks)) {
       return;
     }

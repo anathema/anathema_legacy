@@ -6,7 +6,6 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
@@ -18,6 +17,7 @@ import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.RearToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.Icon;
@@ -32,10 +32,10 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
-  private final IIntValueDisplayFactory factory;
+  private final IntegerViewFactory factory;
   private final IIconToggleButtonProperties properties;
 
-  public IntimaciesView(IIntValueDisplayFactory factory, IIconToggleButtonProperties properties) {
+  public IntimaciesView(IntegerViewFactory factory, IIconToggleButtonProperties properties) {
     this.factory = factory;
     this.properties = properties;
   }

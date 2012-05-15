@@ -19,7 +19,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   private final ICharacterModelContext context;
   private String name;
 
-  public IntimaciesModel(final ICharacterModelContext context) {
+  public IntimaciesModel(ICharacterModelContext context) {
     this.context = context;
     VirtueChangeListener convictionListener = new VirtueChangeListener() {
       @Override

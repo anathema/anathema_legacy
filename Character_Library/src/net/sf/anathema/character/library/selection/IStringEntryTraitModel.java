@@ -7,5 +7,5 @@ public interface IStringEntryTraitModel<V> extends IRemovableEntryModel<V> {
 
   void setCurrentName(String newValue);
 
-  public void addCharacterChangeListener(ICharacterChangeListener listener);
+  void addCharacterChangeListener(ICharacterChangeListener listener);
 }

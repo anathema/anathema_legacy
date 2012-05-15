@@ -2,13 +2,13 @@ package net.sf.anathema.character.model.charm;
 
 public interface IComboConfigurationListener {
 
-  public void comboAdded(ICombo combo);
+  void comboAdded(ICombo combo);
 
-  public void comboChanged(ICombo combo);
+  void comboChanged(ICombo combo);
 
-  public void comboDeleted(ICombo combo);
+  void comboDeleted(ICombo combo);
 
-  public void editBegun(ICombo combo);
+  void editBegun(ICombo combo);
 
-  public void editEnded();
+  void editEnded();
 }

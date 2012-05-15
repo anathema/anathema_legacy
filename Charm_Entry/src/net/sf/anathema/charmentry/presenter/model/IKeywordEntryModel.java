@@ -6,9 +6,9 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IKeywordEntryModel extends IRemovableEntryModel<ICharmAttribute> {
 
-  public void setCurrentKeyword(IIdentificate keyword);
+  void setCurrentKeyword(IIdentificate keyword);
 
-  public void clear();
+  void clear();
 
-  public IIdentificate[] getAvailableKeywords();
+  IIdentificate[] getAvailableKeywords();
 }

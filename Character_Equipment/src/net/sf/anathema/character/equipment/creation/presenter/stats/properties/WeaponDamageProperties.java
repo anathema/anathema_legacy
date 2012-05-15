@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
-import net.disy.commons.swing.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 
 public class WeaponDamageProperties extends AbstractProperties {

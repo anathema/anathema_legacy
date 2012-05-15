@@ -1,10 +1,10 @@
 package net.sf.anathema.character.library.trait;
 
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.lib.collection.ArrayUtilities;
+import net.sf.anathema.lib.util.ITransformer;
 
 public class TraitCollectionUtilities {
 

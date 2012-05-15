@@ -1,10 +1,7 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import java.awt.Rectangle;
-
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
@@ -15,6 +12,8 @@ import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGSVGElement;
+
+import java.awt.Rectangle;
 
 public class SVGViewControlButton implements ISVGSpecialNodeView {
 
@@ -30,7 +29,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
   private SVGGElement outerGroupElement;
   private SVGSVGElement rootElement;
 
-  public SVGViewControlButton(final ISVGSpecialNodeView display, final double nodeWidth, final String label) {
+  public SVGViewControlButton(ISVGSpecialNodeView display, double nodeWidth, String label) {
     this.display = display;
     this.nodeWidth = nodeWidth;
     this.button = new SVGButton(nodeWidth, label);
@@ -42,12 +41,12 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
   }
 
   @Override
-  public SVGGElement initGui(final SVGOMDocument svgDocument, final IBoundsCalculator boundsCalculator) {
+  public SVGGElement initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
     this.calculator = boundsCalculator;
     this.outerGroupElement = (SVGGElement) svgDocument.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
         SVGConstants.SVG_G_TAG);
-    final SVGGElement buttonGroup = button.initGui(svgDocument);
+    SVGGElement buttonGroup = button.initGui(svgDocument);
     outerGroupElement.appendChild(buttonGroup);
     this.displayElement = display.initGui(svgDocument, calculator);
     setAttribute(
@@ -68,7 +67,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
   private EventListener createRemoveListener(final SVGGElement buttonGroup) {
     return new EventListener() {
       @Override
-      public void handleEvent(final Event evt) {
+      public void handleEvent(Event evt) {
         if (!enabled) {
           return;
         }
@@ -89,7 +88,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
   private EventListener createDisplayListener() {
     return new EventListener() {
       @Override
-      public void handleEvent(final Event evt) {
+      public void handleEvent(Event evt) {
         if (!(evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0)) {
           return;
         }
@@ -115,7 +114,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
     setEnabled(true);
   }
 
-  private void setEnabled(final boolean enabled) {
+  private void setEnabled(boolean enabled) {
     this.enabled = enabled;
     button.setSelected(enabled);
   }
@@ -134,7 +133,7 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
     setEnabled(false);
   }
 
-  private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final String attributeValue) {
+  private void setAttribute(org.w3c.dom.Element element, String attributeName, String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 

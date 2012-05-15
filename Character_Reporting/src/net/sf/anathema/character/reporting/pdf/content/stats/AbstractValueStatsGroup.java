@@ -93,7 +93,7 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
     return TableEncodingUtilities.createContentCellTable(borderColor, text, font, borderWidth, Rectangle.BOX, alignment, enabled);
   }
 
-  protected final int calculateFinalValue(final int weaponValue, IGenericTrait... traits) {
+  protected final int calculateFinalValue(int weaponValue, IGenericTrait... traits) {
     int totalValue = weaponValue;
     for (IGenericTrait trait : traits) {
       totalValue += trait.getCurrentValue();

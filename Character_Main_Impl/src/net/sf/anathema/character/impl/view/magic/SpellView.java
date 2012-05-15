@@ -43,7 +43,7 @@ public class SpellView implements ISpellView {
     this.properties = properties;
     this.magicLearnView = new MagicLearnView() {
       @Override
-      protected ListSelectionListener createLearnedListListener(final JButton button, final JList list) {
+      protected ListSelectionListener createLearnedListListener(JButton button, JList list) {
         return properties.getRemoveButtonEnabledListener(button, list);
       }
     };

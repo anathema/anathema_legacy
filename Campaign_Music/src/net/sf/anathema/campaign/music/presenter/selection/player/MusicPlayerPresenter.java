@@ -1,6 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.selection.player;
 
-import net.disy.commons.core.message.Message;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
@@ -10,6 +9,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JSlider;
@@ -30,9 +30,9 @@ public class MusicPlayerPresenter implements Presenter {
 
   public MusicPlayerPresenter(
       IResources resources,
-      final IMusicPlayerView view,
-      final IMusicPlayerModel playerModel,
-      final IMusicSelectionModel selectionModel) {
+      IMusicPlayerView view,
+      IMusicPlayerModel playerModel,
+      IMusicSelectionModel selectionModel) {
     this.resources = resources;
     this.view = view;
     this.playerModel = playerModel;

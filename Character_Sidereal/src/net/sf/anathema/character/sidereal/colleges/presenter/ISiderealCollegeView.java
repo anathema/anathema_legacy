@@ -1,23 +1,18 @@
 package net.sf.anathema.character.sidereal.colleges.presenter;
 
-import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 
 public interface ISiderealCollegeView {
 
-  public void startGroup(String groupLabel);
+  void startGroup(String groupLabel);
 
-  public IToggleButtonTraitView< ? > addIntValueView(
-      String label,
-      IIntValueDisplayFactory factory,
-      IIconToggleButtonProperties properties,
-      int value,
-      int maxValue,
-      boolean selected);
+  IToggleButtonTraitView< ? > addIntValueView(String label, IntegerViewFactory factory, IIconToggleButtonProperties properties, int value,
+                                              int maxValue, boolean selected);
 
-  public void setOverview(IOverviewCategory overview);
+  void setOverview(IOverviewCategory overview);
 
-  public IOverviewCategory createOverview(String borderLabel);
+  IOverviewCategory createOverview(String borderLabel);
 }

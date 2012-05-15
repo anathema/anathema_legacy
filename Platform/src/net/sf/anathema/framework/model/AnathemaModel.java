@@ -1,9 +1,5 @@
 package net.sf.anathema.framework.model;
 
-import java.io.File;
-
-import net.disy.commons.core.message.BasicMessage;
-import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
@@ -18,9 +14,13 @@ import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
+import net.sf.anathema.lib.message.BasicMessage;
+import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.io.File;
 
 public class AnathemaModel implements IAnathemaModel {
 

@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.presenter.view;
 
-import net.sf.anathema.lib.gui.IDisposable;
+import net.sf.anathema.lib.gui.swing.IDisposable;
 
 public interface IViewContent {
 
-  public abstract void addTo(IMultiContentView view);
+  void addTo(MultipleContentView view);
 
-  public abstract IDisposable getDisposable();
+  IDisposable getDisposable();
 }

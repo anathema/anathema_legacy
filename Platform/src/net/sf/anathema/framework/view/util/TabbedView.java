@@ -3,8 +3,10 @@ package net.sf.anathema.framework.view.util;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import java.awt.FlowLayout;
 
 public class TabbedView implements IView {
 

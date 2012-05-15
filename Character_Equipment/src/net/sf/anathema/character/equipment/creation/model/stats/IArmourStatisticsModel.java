@@ -5,22 +5,22 @@ import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 public interface IArmourStatisticsModel extends IEquipmentStatisticsModel {
 
-  public IIntValueModel getBashingSoakModel();
+  IIntValueModel getBashingSoakModel();
 
-  public IIntValueModel getLethalSoakModel();
+  IIntValueModel getLethalSoakModel();
 
-  public IIntValueModel getBashingHardnessModel();
+  IIntValueModel getBashingHardnessModel();
 
-  public IIntValueModel getLethalHardnessModel();
+  IIntValueModel getLethalHardnessModel();
 
   /** Mobility penalty is modelled as negativ number. */
-  public IIntValueModel getMobilityPenaltyModel();
+  IIntValueModel getMobilityPenaltyModel();
 
-  public IIntValueModel getFatigueModel();
+  IIntValueModel getFatigueModel();
 
-  public IIntValueModel getSoakModel(HealthType healthType);
+  IIntValueModel getSoakModel(HealthType healthType);
 
-  public IIntValueModel getHardnessModel(HealthType healthType);
+  IIntValueModel getHardnessModel(HealthType healthType);
 
-  public IIntValueModel getAggravatedSoakModel();
+  IIntValueModel getAggravatedSoakModel();
 }

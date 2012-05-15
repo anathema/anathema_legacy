@@ -5,7 +5,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ITemplateType {
 
-  public ICharacterType getCharacterType();
+  ICharacterType getCharacterType();
 
-  public IIdentificate getSubType();
+  IIdentificate getSubType();
 }

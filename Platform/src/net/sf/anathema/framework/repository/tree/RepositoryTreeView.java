@@ -1,5 +1,8 @@
 package net.sf.anathema.framework.repository.tree;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -8,9 +11,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.ScrollPaneConstants;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-
 public class RepositoryTreeView implements IRepositoryTreeView {
 
   private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
@@ -18,7 +18,7 @@ public class RepositoryTreeView implements IRepositoryTreeView {
 
   @Override
   public JTree addTree() {
-    final JTree tree = new JTree();
+    JTree tree = new JTree();
     panel.add(new JScrollPane(
         tree,
         ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,

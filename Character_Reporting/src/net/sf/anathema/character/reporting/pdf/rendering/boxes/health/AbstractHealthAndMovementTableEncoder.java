@@ -11,13 +11,6 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-
-import org.apache.commons.lang3.ArrayUtils;
-
-import net.disy.commons.core.util.ArrayUtilities;
-
-import net.sf.anathema.lib.resources.IResources;
-
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -27,6 +20,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.lib.collection.ArrayUtilities;
+import net.sf.anathema.lib.resources.IResources;
+import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class AbstractHealthAndMovementTableEncoder implements ITableEncoder<ReportSession> {
   public static final int HEALTH_RECT_SIZE = 6;
@@ -107,8 +103,8 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   }
 
   private void addIncapacitatedMovement(SheetGraphics graphics, PdfPTable table) {
-    final Phrase commentPhrase = createIncapacitatedComment(graphics);
-    final TableCell cell = new TableCell(commentPhrase, Rectangle.NO_BORDER);
+    Phrase commentPhrase = createIncapacitatedComment(graphics);
+    TableCell cell = new TableCell(commentPhrase, Rectangle.NO_BORDER);
     cell.setColspan(getMovementColumns().length);
     cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
     table.addCell(cell);
@@ -145,8 +141,8 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
     Font font = createDefaultFont(graphics);
-    final String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
-    final Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);
+    String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
+    Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);
     PdfPCell healthPdfPCell = new TableCell(healthPenaltyPhrase, Rectangle.NO_BORDER);
     if (level == HealthLevelType.INCAPACITATED) {
       healthPdfPCell.setColspan(2);
@@ -155,10 +151,10 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
       table.addCell(healthPdfPCell);
       String painToleranceText = " "; //$NON-NLS-1$
       if (painTolerance > 0) {
-        final int value = getPenalty(level, painTolerance);
+        int value = getPenalty(level, painTolerance);
         painToleranceText = "(" + (value == 0 ? "-" : "") + value + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
       }
-      final TableCell painToleranceCell = new TableCell(new Phrase(painToleranceText, font), Rectangle.NO_BORDER);
+      TableCell painToleranceCell = new TableCell(new Phrase(painToleranceText, font), Rectangle.NO_BORDER);
       painToleranceCell.setHorizontalAlignment(Element.ALIGN_CENTER);
       table.addCell(painToleranceCell);
     }

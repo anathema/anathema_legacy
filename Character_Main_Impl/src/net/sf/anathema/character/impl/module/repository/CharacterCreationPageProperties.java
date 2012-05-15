@@ -1,11 +1,11 @@
 package net.sf.anathema.character.impl.module.repository;
 
-import net.disy.commons.core.message.BasicMessage;
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.lib.message.BasicMessage;
+import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.DefaultListCellRenderer;

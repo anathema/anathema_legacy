@@ -4,6 +4,6 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 
 public interface IBackgroundArbitrator {
 
-  public boolean accepts(IBackgroundTemplate backgroundTemplate);
+  boolean accepts(IBackgroundTemplate backgroundTemplate);
 
 }

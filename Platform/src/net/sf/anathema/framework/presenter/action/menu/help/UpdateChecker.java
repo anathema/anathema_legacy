@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.presenter.action.menu.help;
 
-import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.IResources;
 import org.jmock.example.announcer.Announcer;
 

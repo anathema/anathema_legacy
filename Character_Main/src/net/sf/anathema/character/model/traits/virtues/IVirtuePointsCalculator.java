@@ -1,7 +1,7 @@
 package net.sf.anathema.character.model.traits.virtues;
 
 public interface IVirtuePointsCalculator {
-  public abstract int calculateVirtuePoints();
+  int calculateVirtuePoints();
 
-  public abstract int calculateBonusPoints();
+  int calculateBonusPoints();
 }

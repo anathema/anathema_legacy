@@ -1,16 +1,16 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.disy.commons.core.message.IMessage;
-import net.disy.commons.core.message.Message;
-import net.disy.commons.core.message.MessageType;
-import net.disy.commons.swing.dialog.core.IDialogResult;
-import net.disy.commons.swing.dialog.message.MessageUserDialogConfiguration;
-import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfiguration;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
+import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.message.MessageUserDialogConfiguration;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfiguration;
 import net.sf.anathema.lib.gui.list.veto.IVetor;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.message.IMessage;
+import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;

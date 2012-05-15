@@ -15,7 +15,7 @@ public class LibraryPersister {
 
   private final Announcer<ITrackDeletionListener> listeners = Announcer.to(ITrackDeletionListener.class);
 
-  public final void addLibrary(final ObjectContainer db, String libraryName) {
+  public final void addLibrary(ObjectContainer db, String libraryName) {
     Preconditions.checkArgument(!isRegisteredLibrary(db, libraryName), "Library name must be unique."); //$NON-NLS-1$
     db.set(new DbLibrary(libraryName, db));
   }
@@ -108,7 +108,7 @@ public class LibraryPersister {
     }
   }
 
-  private void fireTrackDeleted(final DbMp3Track track) {
+  private void fireTrackDeleted(DbMp3Track track) {
     listeners.announce().trackRemoved(track);
   }
 

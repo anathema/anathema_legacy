@@ -1,7 +1,5 @@
 package net.sf.anathema.character.equipment.item;
 
-import java.util.Arrays;
-
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
@@ -10,6 +8,8 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.Arrays;
 
 public class EquipmentTemplateListPresenter implements Presenter {
 
@@ -50,7 +50,7 @@ public class EquipmentTemplateListPresenter implements Presenter {
     view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(resources, new ICondition() {
       @Override
       public boolean isFulfilled() {
-        final IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
+        IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
         return editModel.isDirty();
       }
     }, view.getTemplateListView().getComponent()));

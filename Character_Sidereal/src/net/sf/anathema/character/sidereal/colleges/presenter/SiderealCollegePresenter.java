@@ -1,11 +1,8 @@
 package net.sf.anathema.character.sidereal.colleges.presenter;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
@@ -15,11 +12,14 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeModelBonusPointCalculator;
 import net.sf.anathema.character.sidereal.presentation.SiderealCasteUI;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
+
+import javax.swing.Icon;
 
 public class SiderealCollegePresenter implements Presenter {
 
@@ -45,7 +45,7 @@ public class SiderealCollegePresenter implements Presenter {
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
     final IValueView<Integer> experienceView = experienceOverview.addIntegerValueView(
         resources.getString("Astrology.Overview.Experience"), 3); //$NON-NLS-1$
-    IIntValueDisplayFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
+    IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
             CharacterType.SIDEREAL);
     for (final IAstrologicalHouse house : model.getAllHouses()) {
       view.startGroup(resources.getString("AstrologicalHouses.GroupLabel." + house.getId())); //$NON-NLS-1$

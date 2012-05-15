@@ -1,28 +1,28 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.SYSTEM_PREFERENCES_NODE;
-
-import java.util.prefs.Preferences;
-
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
+import java.util.prefs.Preferences;
+
+import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.SYSTEM_PREFERENCES_NODE;
+
 public interface IPreferencesElement {
 
-  public static final Preferences SYSTEM_PREFERENCES = Preferences.userRoot().node(SYSTEM_PREFERENCES_NODE);
-  public static final IIdentificate SYSTEM_CATEGORY = new Identificate("System"); //$NON-NLS-1$
+  Preferences SYSTEM_PREFERENCES = Preferences.userRoot().node(SYSTEM_PREFERENCES_NODE);
+  IIdentificate SYSTEM_CATEGORY = new Identificate("System"); //$NON-NLS-1$
 
-  public void savePreferences();
+  void savePreferences();
   
-  public boolean isValid();
+  boolean isValid();
 
-  public boolean isDirty();
+  boolean isDirty();
 
-  public IIdentificate getCategory();
+  IIdentificate getCategory();
 
-  public void reset();
+  void reset();
 
-  public void addComponent(IGridDialogPanel panel, IResources resources);
+  void addComponent(IGridDialogPanel panel, IResources resources);
 }

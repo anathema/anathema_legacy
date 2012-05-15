@@ -4,5 +4,5 @@ import net.sf.anathema.framework.view.menu.IMenu;
 
 public interface IMenuItem {
 
-  public void addToMenu(IMenu menu);
+  void addToMenu(IMenu menu);
 }

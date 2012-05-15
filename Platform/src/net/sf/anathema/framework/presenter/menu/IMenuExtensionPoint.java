@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter.menu;
 
 public interface IMenuExtensionPoint {
-  public static final String EXTRA_MENU_EXTENSION_POINT_ID = "Menu.Extra"; //$NON-NLS-1$
+  String EXTRA_MENU_EXTENSION_POINT_ID = "Menu.Extra"; //$NON-NLS-1$
 
-  public IMenuItem[] getMenuItems();
+  IMenuItem[] getMenuItems();
 
-  public void addMenuItem(IMenuItem item);
+  void addMenuItem(IMenuItem item);
 }

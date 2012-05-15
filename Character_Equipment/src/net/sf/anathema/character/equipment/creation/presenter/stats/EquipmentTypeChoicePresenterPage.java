@@ -1,17 +1,17 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
-import net.disy.commons.core.message.BasicMessage;
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentTypeChoiceProperties;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.message.BasicMessage;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;

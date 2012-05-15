@@ -8,12 +8,11 @@ import net.sf.anathema.framework.itemdata.model.IItemData;
 
 public interface ICharacter extends IItemData {
 
-  public boolean hasStatistics();
+  boolean hasStatistics();
 
-  public ICharacterDescription getDescription();
+  ICharacterDescription getDescription();
 
-  public ICharacterStatistics getStatistics();
+  ICharacterStatistics getStatistics();
 
-  public ICharacterStatistics createCharacterStatistics(ICharacterTemplate template,
-                                                        ICharacterGenerics generics) throws CharmException, SpellException;
+  ICharacterStatistics createCharacterStatistics(ICharacterTemplate template, ICharacterGenerics generics) throws CharmException, SpellException;
 }

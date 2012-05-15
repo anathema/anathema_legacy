@@ -1,13 +1,5 @@
 package net.sf.anathema.character.equipment.character;
 
-import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.Action;
-
-import net.disy.commons.core.model.BooleanModel;
-import net.disy.commons.core.model.listener.IChangeListener;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
@@ -17,8 +9,15 @@ import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.model.BooleanModel;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Action;
+import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EquipmentObjectPresenter implements Presenter {
 
@@ -99,7 +98,7 @@ public class EquipmentObjectPresenter implements Presenter {
 	    booleanModel.setValue(model.isPrintEnabled(equipment));
 	    booleanModel.addChangeListener(new IChangeListener() {
 	      @Override
-          public void stateChanged() {
+          public void changeOccurred() {
 	        model.setPrintEnabled(equipment, booleanModel.getValue());
 	        if (equipment instanceof IArtifactStats)
 	        {
@@ -133,13 +132,13 @@ public class EquipmentObjectPresenter implements Presenter {
 	  }
   }
   
-  private void addOptionalModels(BooleanModel baseModel, final IEquipmentStats stats)
+  private void addOptionalModels(BooleanModel baseModel, IEquipmentStats stats)
   {
 	  if (stats instanceof IWeaponStats)
 	  {
-		  final IWeaponStats weaponStats = (IWeaponStats)stats;
+		  IWeaponStats weaponStats = (IWeaponStats)stats;
 		  INamedGenericTrait[] specialties = dataProvider.getSpecialties(((IWeaponStats)stats).getTraitType());
-		  for (final INamedGenericTrait specialty : specialties)
+		  for (INamedGenericTrait specialty : specialties)
 		  {
 			  String label = MessageFormat.format(resources.getString("Equipment.Specialty"), specialty.getName());
 			  final BooleanModel booleanModel = view.addOptionFlag(baseModel, label);
@@ -148,7 +147,7 @@ public class EquipmentObjectPresenter implements Presenter {
 			  booleanModel.setValue(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
 		      booleanModel.addChangeListener(new IChangeListener() {
 		        @Override
-                public void stateChanged()
+                public void changeOccurred()
 		        {
 		        	if (booleanModel.getValue())
                       characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);

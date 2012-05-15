@@ -15,7 +15,7 @@ public class GhostAgeModel extends AbstractAdditionalModelAdapter {
     return AdditionalModelType.Miscellaneous;
   }
 
-  public GhostAgeModel(GhostAgeTemplate template, final ICharacterModelContext context) {
+  public GhostAgeModel(GhostAgeTemplate template, ICharacterModelContext context) {
     this.context = context;
     this.template = template;
   }

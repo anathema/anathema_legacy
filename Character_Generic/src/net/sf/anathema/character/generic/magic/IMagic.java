@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 
 public interface IMagic extends IMagicData {
 
-  public void accept(IMagicVisitor visitor);
+  void accept(IMagicVisitor visitor);
 
-  public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection);
+  boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection);
 }

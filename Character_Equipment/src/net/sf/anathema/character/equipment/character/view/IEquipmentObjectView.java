@@ -1,24 +1,24 @@
 package net.sf.anathema.character.equipment.character.view;
 
-import javax.swing.Action;
+import net.sf.anathema.lib.model.BooleanModel;
 
-import net.disy.commons.core.model.BooleanModel;
+import javax.swing.Action;
 
 public interface IEquipmentObjectView {
 
-  public void setItemTitle(String title);
+  void setItemTitle(String title);
 
-  public void setItemDescription(String text);
+  void setItemDescription(String text);
   
-  public void clearContents();
+  void clearContents();
   
-  public BooleanModel addStats(String description);
+  BooleanModel addStats(String description);
   
-  public BooleanModel addOptionFlag(BooleanModel base, String description);
+  BooleanModel addOptionFlag(BooleanModel base, String description);
   
-  public void updateStatText(BooleanModel model, String newText);
+  void updateStatText(BooleanModel model, String newText);
   
-  public void setEnabled(BooleanModel model, boolean enabled);
+  void setEnabled(BooleanModel model, boolean enabled);
 
-  public void addAction(Action action);
+  void addAction(Action action);
 }

@@ -2,27 +2,27 @@ package net.sf.anathema.character.generic.character;
 
 public interface IGenericDescription {
 
-  public String getName();
+  String getName();
 
-  public String getPeriphrase();
+  String getPeriphrase();
 
-  public String getCharacterization();
+  String getCharacterization();
 
-  public String getPhysicalAppearance();
+  String getPhysicalAppearance();
 
-  public String getEyes();
+  String getEyes();
 
-  public String getHair();
+  String getHair();
 
-  public String getSex();
+  String getSex();
 
-  public String getSkin();
+  String getSkin();
   
-  public String getAnima();
+  String getAnima();
 
-  public String getPlayer();
+  String getPlayer();
 
-  public String getNotes();
+  String getNotes();
 
-  public String getConceptText();
+  String getConceptText();
 }

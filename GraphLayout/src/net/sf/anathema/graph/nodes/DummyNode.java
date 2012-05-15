@@ -1,7 +1,7 @@
 package net.sf.anathema.graph.nodes;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.util.ArrayUtilities;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 
 public class DummyNode implements ISimpleNode {
 

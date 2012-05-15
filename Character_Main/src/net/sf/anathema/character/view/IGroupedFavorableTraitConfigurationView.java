@@ -7,21 +7,11 @@ import net.sf.anathema.lib.gui.IView;
 
 public interface IGroupedFavorableTraitConfigurationView extends IView {
 
-  public IToggleButtonTraitView< ? > addTraitView(
-      String labelText,
-      int value,
-      int maxValue,
-      IModifiableCapTrait trait,
-      boolean selected,
-      IIconToggleButtonProperties properties);
+  IToggleButtonTraitView< ? > addTraitView(String labelText, int value, int maxValue, IModifiableCapTrait trait, boolean selected,
+                                           IIconToggleButtonProperties properties);
 
-  public IToggleButtonTraitView< ? > addMarkerLessTraitView(
-      String labelText,
-      int value,
-      int maxValue,
-      IModifiableCapTrait trait,
-      boolean selected,
-      IIconToggleButtonProperties properties);
+  IToggleButtonTraitView< ? > addMarkerLessTraitView(String labelText, int value, int maxValue, IModifiableCapTrait trait, boolean selected,
+                                                     IIconToggleButtonProperties properties);
 
-  public void startNewTraitGroup(String groupLabel);
+  void startNewTraitGroup(String groupLabel);
 }

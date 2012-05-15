@@ -4,15 +4,15 @@ import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 
 public interface ICharmTypeVisitor {
 
-  public void visitSimple(CharmType visitedType);
+  void visitSimple(CharmType visitedType);
 
-  public void visitExtraAction(CharmType visitedType);
+  void visitExtraAction(CharmType visitedType);
 
-  public void visitReflexive(CharmType visitedType);
+  void visitReflexive(CharmType visitedType);
 
-  public void visitSupplemental(CharmType visitedType);
+  void visitSupplemental(CharmType visitedType);
 
-  public void visitPermanent(CharmType visitedType);
+  void visitPermanent(CharmType visitedType);
 
-  public void visitSpecial(CharmType visitedType);
+  void visitSpecial(CharmType visitedType);
 }

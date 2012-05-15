@@ -6,11 +6,11 @@ import javax.swing.table.TableCellRenderer;
 // NOT_PUBLISHED
 public interface ITableColumnViewSettings {
 
-  public TableCellEditor getEditor();
+  TableCellEditor getEditor();
 
-  public TableCellRenderer getRenderer();
+  TableCellRenderer getRenderer();
 
-  public boolean isResizable();
+  boolean isResizable();
 
-  public int getPreferredWidth();
+  int getPreferredWidth();
 }

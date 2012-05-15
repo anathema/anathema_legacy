@@ -1,12 +1,12 @@
 package net.sf.anathema.character.equipment.item.personalization;
 
-import net.disy.commons.core.message.BasicMessage;
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPersonalizationModel;
 import net.sf.anathema.character.equipment.item.view.EquipmentPersonalizationView;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import net.sf.anathema.lib.message.BasicMessage;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JTextField;
@@ -72,7 +72,7 @@ public class EquipmentPersonalizationPresenterPage extends AbstractAnathemaWizar
 			try {
 				Document document = event.getDocument();
 				listener.textChanged(document.getText(0, document.getLength()));
-			} catch (BadLocationException e) {
+			} catch (BadLocationException ignored) {
 			}
 		}
 
@@ -81,7 +81,7 @@ public class EquipmentPersonalizationPresenterPage extends AbstractAnathemaWizar
 			try {
 				Document document = event.getDocument();
 				listener.textChanged(document.getText(0, document.getLength()));
-			} catch (BadLocationException e) {
+			} catch (BadLocationException ignored) {
 			}
 		}
 
@@ -90,7 +90,7 @@ public class EquipmentPersonalizationPresenterPage extends AbstractAnathemaWizar
 			try {
 				Document document = event.getDocument();
 				listener.textChanged(document.getText(0, document.getLength()));
-			} catch (BadLocationException e) {
+			} catch (BadLocationException ignored) {
 			}
 		}
 		  

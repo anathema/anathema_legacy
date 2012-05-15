@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.styledtext.presentation;
 
-import net.disy.commons.core.text.FontStyle;
 import net.sf.anathema.framework.styledtext.model.ITextFormat;
+import net.sf.anathema.lib.text.FontStyle;
 
 import java.awt.Color;
 

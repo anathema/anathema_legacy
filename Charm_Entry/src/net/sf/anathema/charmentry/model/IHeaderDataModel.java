@@ -7,17 +7,17 @@ import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IHeaderDataModel {
-  public ICharacterType[] getCharacterTypes();
+  ICharacterType[] getCharacterTypes();
 
-  public ISourceEntryModel getSourceModel();
+  ISourceEntryModel getSourceModel();
 
-  public ICharacterType getCharacterType();
+  ICharacterType getCharacterType();
 
-  public ITextualDescription getName();
+  ITextualDescription getName();
 
-  public void setCharacterType(ICharacterType type);
+  void setCharacterType(ICharacterType type);
 
-  public void addModelListener(CheckInputListener inputListener);
+  void addModelListener(CheckInputListener inputListener);
 
-  public void addChangeListener(IChangeListener inputListener);
+  void addChangeListener(IChangeListener inputListener);
 }

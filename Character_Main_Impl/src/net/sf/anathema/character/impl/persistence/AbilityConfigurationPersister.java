@@ -1,12 +1,5 @@
 package net.sf.anathema.character.impl.persistence;
 
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_FAVORED;
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_ABILITIES;
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPECIALTY;
-
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -24,8 +17,14 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.NestedRuntimeException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.List;
+
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_FAVORED;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_ABILITIES;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPECIALTY;
 
 public class AbilityConfigurationPersister {
 
@@ -83,8 +82,8 @@ public class AbilityConfigurationPersister {
   }
 
   private void saveSpecialties(
-      final ISpecialtiesConfiguration specialtyConfiguration,
-      final Element abilityElement,
+      ISpecialtiesConfiguration specialtyConfiguration,
+      Element abilityElement,
       ITraitReference reference) {
     for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(reference).getSubTraits()) {
       Element specialtyElement = persister.saveTrait(abilityElement, TAG_SPECIALTY, specialty);
@@ -139,8 +138,8 @@ public class AbilityConfigurationPersister {
   }
 
   private void loadSpecialties(
-      final Element abilityElement,
-      final ISpecialtiesConfiguration specialtyConfiguration,
+      Element abilityElement,
+      ISpecialtiesConfiguration specialtyConfiguration,
       ITraitReference reference) throws PersistenceException {
     List<Element> specialtyElements = ElementUtilities.elements(abilityElement, TAG_SPECIALTY);
     for (Element specialtyElement : specialtyElements) {

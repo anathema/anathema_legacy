@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.presenter.action;
 
-import javax.swing.Icon;
-
-import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 public class ItemTypeUi implements IObjectUi<Object> {
   private final ItemTypeCreationViewPropertiesExtensionPoint extension;

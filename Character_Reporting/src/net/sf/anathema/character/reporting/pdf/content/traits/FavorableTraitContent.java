@@ -1,7 +1,5 @@
 package net.sf.anathema.character.reporting.pdf.content.traits;
 
-import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -12,8 +10,10 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
+import net.sf.anathema.lib.collection.CollectionUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.IPredicate;
 
 import java.util.ArrayList;
 import java.util.Collections;

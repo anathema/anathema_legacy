@@ -1,10 +1,7 @@
 package net.sf.anathema.lib.gui.widgets;
 
-import java.awt.Component;
-
 import javax.swing.JScrollPane;
-
-import net.sf.anathema.lib.gui.GuiUtilities;
+import java.awt.Component;
 
 public class RevalidatingScrollPane extends JScrollPane {
 
@@ -20,6 +17,6 @@ public class RevalidatingScrollPane extends JScrollPane {
 
   @Override
   public void revalidate() {
-    GuiUtilities.revalidateTree(this);
+    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidateTree(this);
   }
 }

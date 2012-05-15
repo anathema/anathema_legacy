@@ -6,5 +6,5 @@ import net.sf.anathema.character.lunar.virtueflaw.model.ILunarVirtueFlaw;
 public interface ILunarVirtueFlawModel extends IVirtueFlawModel {
 
   @Override
-  public ILunarVirtueFlaw getVirtueFlaw();
+  ILunarVirtueFlaw getVirtueFlaw();
 }

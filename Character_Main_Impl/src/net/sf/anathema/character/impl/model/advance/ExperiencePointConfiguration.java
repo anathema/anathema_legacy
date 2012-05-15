@@ -51,15 +51,15 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
     fireEntryRemovedEvent(entry);
   }
 
-  private void fireEntryRemovedEvent(final IExperiencePointEntry entry) {
+  private void fireEntryRemovedEvent(IExperiencePointEntry entry) {
     control.announce().entryRemoved(entry);
   }
 
-  private void fireEntryAddedEvent(final IExperiencePointEntry entry) {
+  private void fireEntryAddedEvent(IExperiencePointEntry entry) {
     control.announce().entryAdded(entry);
   }
 
-  private void fireEntryChangedEvent(final IExperiencePointEntry entry) {
+  private void fireEntryChangedEvent(IExperiencePointEntry entry) {
     control.announce().entryChanged(entry);
   }
 

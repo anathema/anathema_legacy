@@ -1,11 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.library.content;
 
-import net.disy.commons.core.message.Message;
-import net.disy.commons.core.message.MessageType;
-import net.disy.commons.core.progress.IInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.IObservableCancelable;
-import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
@@ -18,6 +12,12 @@ import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
+import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.message.MessageType;
+import net.sf.anathema.lib.progress.IInterruptibleRunnableWithProgress;
+import net.sf.anathema.lib.progress.IObservableCancelable;
+import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.event.ListSelectionEvent;
@@ -63,7 +63,7 @@ public class AddMusicFolderAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    final File directory = DirectoryFileChooser.createMusicDirectoryChooser(
+    File directory = DirectoryFileChooser.createMusicDirectoryChooser(
         ADD_MUSIC_CHOOSER_VALUE,
         resources.getString("Music.Actions.AddFolder.FileDialogTitle")); //$NON-NLS-1$
     if (directory == null) {
@@ -79,7 +79,7 @@ public class AddMusicFolderAction extends SmartAction {
     try {
       new ProgressMonitorDialog(
           parentComponent,
-          resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(new IInterruptableRunnableWithProgress() { //$NON-NLS-1$
+          resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(new IInterruptibleRunnableWithProgress() { //$NON-NLS-1$
             @Override
             public void run(final IProgressMonitor monitor, IObservableCancelable cancelable) throws InterruptedException, InvocationTargetException {
               final List<IMp3Track> foundTracks = new ArrayList<IMp3Track>();

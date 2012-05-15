@@ -11,7 +11,7 @@ public class MutationsModel extends AbstractMutationsModel {
   private IValueView<Integer> bonusPointSpentView;
   private IValueView<Integer> bonusPointGainedView;
 
-  public MutationsModel(final ICharacterModelContext context) {
+  public MutationsModel(ICharacterModelContext context) {
     super(context);
     this.allMutations = MutationProvider.getMutations(new IMutationRules() {
       @Override

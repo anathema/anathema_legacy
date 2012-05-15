@@ -4,13 +4,13 @@ import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 public interface IOffensiveStatisticsModel extends IEquipmentStatisticsModel {
 
-  public IIntValueModel getSpeedModel();
+  IIntValueModel getSpeedModel();
 
-  public IIntValueModel getAccuracyModel();
+  IIntValueModel getAccuracyModel();
 
-  public IIntValueModel getRateModel();
+  IIntValueModel getRateModel();
 
-  public IWeaponDamageModel getWeaponDamageModel();
+  IWeaponDamageModel getWeaponDamageModel();
 
-  public boolean supportsRate();
+  boolean supportsRate();
 }

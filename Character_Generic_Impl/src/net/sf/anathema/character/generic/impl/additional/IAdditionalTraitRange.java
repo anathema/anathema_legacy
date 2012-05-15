@@ -5,7 +5,7 @@ import net.sf.anathema.lib.data.Range;
 
 public interface IAdditionalTraitRange {
 
-  public ITraitType getType();
+  ITraitType getType();
 
-  public void modify(Range range);
+  void modify(Range range);
 }

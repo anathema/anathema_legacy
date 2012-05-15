@@ -4,17 +4,17 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 
 public interface IFavorableTraitCostCalculator {
 
-  public void calculateCosts();
+  void calculateCosts();
 
-  public int getFreePointsSpent(boolean favored);
+  int getFreePointsSpent(boolean favored);
   
-  public int getExtraFavoredDotsSpent();
+  int getExtraFavoredDotsSpent();
   
-  public int getExtraGenericDotsSpent();
+  int getExtraGenericDotsSpent();
 
-  public int getBonusPointsSpent();
+  int getBonusPointsSpent();
 
-  public int getFavoredPicksSpent();
+  int getFavoredPicksSpent();
 
-  public FavorableTraitCost[] getCosts(IFavorableTrait trait);
+  FavorableTraitCost[] getCosts(IFavorableTrait trait);
 }

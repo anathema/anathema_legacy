@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.dummy.magic.DummyMartialArtsRules;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
@@ -13,6 +12,7 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;

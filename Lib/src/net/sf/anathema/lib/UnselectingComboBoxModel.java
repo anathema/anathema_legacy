@@ -1,13 +1,12 @@
 package net.sf.anathema.lib;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.Vector;
+import com.google.common.base.Objects;
 
 import javax.swing.AbstractListModel;
 import javax.swing.MutableComboBoxModel;
-
-import com.google.common.base.Objects;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Vector;
 
 public class UnselectingComboBoxModel extends AbstractListModel implements MutableComboBoxModel, Serializable {
   private static final long serialVersionUID = -1300185569514469592L;
@@ -18,7 +17,7 @@ public class UnselectingComboBoxModel extends AbstractListModel implements Mutab
     objects = new Vector<Object>();
   }
 
-  public UnselectingComboBoxModel(final Object items[]) {
+  public UnselectingComboBoxModel(Object items[]) {
     this();
     if (items == null) {
       return;

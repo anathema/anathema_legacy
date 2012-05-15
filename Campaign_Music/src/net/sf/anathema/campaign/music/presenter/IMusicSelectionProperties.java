@@ -2,18 +2,18 @@ package net.sf.anathema.campaign.music.presenter;
 
 public interface IMusicSelectionProperties {
 
-  public String getSavedSelectionsTitle();
+  String getSavedSelectionsTitle();
 
-  public String getMusicSelectionBorderTitle();
+  String getMusicSelectionBorderTitle();
 
-  public String getSelectionsString();
+  String getSelectionsString();
 
-  public String getTrackDetailsString();
+  String getTrackDetailsString();
 
-  public String getNoDecoderString();
+  String getNoDecoderString();
 
-  public String getCurrentSelectionString();
+  String getCurrentSelectionString();
 
-  public String getCurrentlySelectedTracksString();
+  String getCurrentlySelectedTracksString();
 
 }

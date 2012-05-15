@@ -5,5 +5,5 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 
 public interface ILearningCharmGroupContainer {
 
-  public ILearningCharmGroup getLearningCharmGroup(ICharm charm);
+  ILearningCharmGroup getLearningCharmGroup(ICharm charm);
 }

@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter.view;
 
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.swing.IDisposable;
 
 public class SimpleViewContent implements IViewContent {
 
@@ -15,7 +15,7 @@ public class SimpleViewContent implements IViewContent {
   }
 
   @Override
-  public void addTo(IMultiContentView view) {
+  public void addTo(MultipleContentView view) {
     view.addView(tabView, properties);
   }
 

@@ -57,7 +57,7 @@ public class TableOfContentsPrinter {
     reorderPages(document, writer, lastContentPage);
   }
 
-  private void reorderPages(Document document, PdfWriter writer, final int lastContentPage) throws DocumentException {
+  private void reorderPages(Document document, PdfWriter writer, int lastContentPage) throws DocumentException {
     document.newPage();
     int totalPages = writer.getPageNumber() - 1;
     int tocPageLength = totalPages - lastContentPage;

@@ -1,9 +1,5 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
-import javax.swing.JCheckBox;
-
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
@@ -11,11 +7,15 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.T
 import net.sf.anathema.character.equipment.creation.view.IWeaponTagsView;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
+
+import javax.swing.JCheckBox;
 
 public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
 

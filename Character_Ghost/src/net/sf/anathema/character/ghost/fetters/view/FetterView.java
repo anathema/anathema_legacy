@@ -2,7 +2,7 @@ package net.sf.anathema.character.ghost.fetters.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -24,7 +24,7 @@ public class FetterView extends AbstractTraitView implements IFetterView {
   private final Icon deleteIcon;
 
   public FetterView(
-      IIntValueDisplayFactory configuration,
+      IntegerViewFactory configuration,
       Icon deleteIcon,
       String id,
       int value,

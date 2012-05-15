@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.view.magic;
 
 import net.sf.anathema.character.view.magic.IComboView;
-import net.sf.anathema.lib.gui.GuiUtilities;
 import org.jdesktop.swingx.JXTaskPane;
 
 import javax.swing.Action;
@@ -38,7 +37,7 @@ public class ComboView implements IComboView {
   public void updateCombo(String name, String description) {
     taskPaneGroup.setTitle(name);
     label.setText(description);
-    GuiUtilities.revalidate(taskPaneGroup);
+    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate(taskPaneGroup);
   }
 
   @Override
@@ -50,7 +49,7 @@ public class ComboView implements IComboView {
   public void setEditButtonsVisible(boolean enabled) {
     if (!enabled) {
       taskPaneGroup.remove(deleteComponent);
-      GuiUtilities.revalidateTree(taskPaneGroup);
+      net.sf.anathema.lib.gui.swing.GuiUtilities.revalidateTree(taskPaneGroup);
     } else {
       // todo vom (04.04.2005) (sieroux): Komponenten einfuegen falls noch nicht enthalten
     }

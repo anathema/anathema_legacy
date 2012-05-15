@@ -16,9 +16,9 @@ public class MagicDescriptionEditPresenterFactory implements MagicDetailPresente
 
   @Override
   public MagicDetailPresenter create(IAnathemaModel anathemaModel, IResources resources) {
-    final MagicDescriptionEditView view = new MagicDescriptionEditView();
+    MagicDescriptionEditView view = new MagicDescriptionEditView();
     MagicDescriptionDataBase dataBase = RepositoryMagicDescriptionDataBase.CreateFrom(anathemaModel);
-    final MagicDescriptionEditModel model = new AutoSaveMagicDescriptionEditModel(dataBase);
+    MagicDescriptionEditModel model = new AutoSaveMagicDescriptionEditModel(dataBase);
     return new MagicDescriptionEditPresenter(view, model, resources);
   }
 }

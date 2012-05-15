@@ -5,25 +5,25 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IPlotElementContainer extends IIdentificate {
 
-  public IPlotElement addChild(IItemDescription description, String repositoryId);
+  IPlotElement addChild(IItemDescription description, String repositoryId);
 
-  public IPlotElement addChild(String name);
+  IPlotElement addChild(String name);
 
-  public void addPlotElementContainerListener(IPlotElementContainerListener listener);
+  void addPlotElementContainerListener(IPlotElementContainerListener listener);
 
-  public boolean contains(IPlotElement element);
+  boolean contains(IPlotElement element);
 
-  public IPlotElement[] getChildren();
+  IPlotElement[] getChildren();
 
-  public IPlotTimeUnit getTimeUnit();
+  IPlotTimeUnit getTimeUnit();
 
-  public void moveChildTo(IPlotElement element, int newIndex);
+  void moveChildTo(IPlotElement element, int newIndex);
 
-  public void removeChild(IPlotElement element);
+  void removeChild(IPlotElement element);
 
-  public void removePlotElementContainerListener(IPlotElementContainerListener modelListener);
+  void removePlotElementContainerListener(IPlotElementContainerListener modelListener);
 
-  public void insertChild(IPlotElement element, int index);
+  void insertChild(IPlotElement element, int index);
 
-  public void removeChildSilent(IPlotElement element);
+  void removeChildSilent(IPlotElement element);
 }

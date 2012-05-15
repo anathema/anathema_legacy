@@ -1,11 +1,6 @@
 package net.sf.anathema.platform.database;
 
 import com.db4o.ext.DatabaseFileLockedException;
-import net.disy.commons.core.message.Message;
-import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
-import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.swing.dialog.message.MessageDialogFactory;
-import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
@@ -16,6 +11,11 @@ import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
+import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
+import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
+import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -81,10 +81,10 @@ public class StartDatabaseAction extends SmartAction {
   }
 
   @Override
-  protected void execute(final Component parentComponent) {
+  protected void execute(Component parentComponent) {
     try {
       String title = properties.getProgressMonitorTitle();
-      new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptableRunnableWithProgress() {
+      new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptibleRunnableWithProgress() {
         @Override
         public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {

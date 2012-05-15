@@ -1,16 +1,15 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import java.awt.Color;
-
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
+
+import java.awt.Color;
 
 public class SVGIntValueView implements IIntValueView {
 
@@ -21,12 +20,12 @@ public class SVGIntValueView implements IIntValueView {
   private final int widthInDots;
 
   public SVGIntValueView(
-      final int maxValue,
-      final int widthInDots,
-      final double maxWidth,
-      final Color fillColor,
-      final String labelString,
-      final int initialValue) {
+      int maxValue,
+      int widthInDots,
+      double maxWidth,
+      Color fillColor,
+      String labelString,
+      int initialValue) {
     this.widthInDots = widthInDots;
     this.maxWidth = maxWidth;
     this.labelString = labelString;
@@ -39,7 +38,7 @@ public class SVGIntValueView implements IIntValueView {
         dotDiameter);
   }
 
-  public Element initGui(final SVGOMDocument svgDocument, final IBoundsCalculator boundsCalculator) {
+  public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
     Element groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
     Element textElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_TEXT_TAG);
     setAttribute(
@@ -61,32 +60,32 @@ public class SVGIntValueView implements IIntValueView {
     return groupElement;
   }
 
-  private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final String attributeValue) {
+  private void setAttribute(org.w3c.dom.Element element, String attributeName, String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
   @Override
-  public void setValue(final int newValue) {
+  public void setValue(int newValue) {
     valueDisplay.setValue(newValue);
   }
 
   @Override
-  public void addIntValueChangedListener(final IIntValueChangedListener listener) {
+  public void addIntValueChangedListener(IIntValueChangedListener listener) {
     valueDisplay.addIntValueChangedListener(listener);
 
   }
 
   @Override
-  public void removeIntValueChangedListener(final IIntValueChangedListener listener) {
+  public void removeIntValueChangedListener(IIntValueChangedListener listener) {
     valueDisplay.removeIntValueChangedListener(listener);
   }
 
   @Override
-  public void setMaximum(final int maximalValue) {
+  public void setMaximum(int maximalValue) {
     valueDisplay.setMaximum(maximalValue);
   }
 
-  public void setVisible(final boolean visible) {
+  public void setVisible(boolean visible) {
     valueDisplay.setVisible(visible);
   }
 }

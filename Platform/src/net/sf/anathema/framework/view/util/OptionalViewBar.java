@@ -50,7 +50,7 @@ public class OptionalViewBar {
     return collapsiblePane;
   }
 
-  private void addButtonForTitle(String title, final CollapsiblePane collapsiblePane) {
+  private void addButtonForTitle(String title, CollapsiblePane collapsiblePane) {
     JButton button = new JButton(title);
     ExpandOnlyThisPaneListener listener = new ExpandOnlyThisPaneListener(collapsiblePane, new CollapsiblePaneMap(collapsiblePanesById));
     button.addActionListener(listener);

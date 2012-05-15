@@ -5,9 +5,9 @@ import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.health.IHealthLevelProvider;
 
 public interface IOxBodyTechniqueConfiguration extends ISpecialCharmConfiguration {
-  public OxBodyCategory[] getCategories();
+  OxBodyCategory[] getCategories();
 
-  public IHealthLevelProvider getHealthLevelProvider();
+  IHealthLevelProvider getHealthLevelProvider();
 
-  public OxBodyCategory getCategoryById(String name);
+  OxBodyCategory getCategoryById(String name);
 }

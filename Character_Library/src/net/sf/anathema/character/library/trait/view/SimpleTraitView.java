@@ -1,15 +1,14 @@
 package net.sf.anathema.character.library.trait.view;
 
-import java.awt.Component;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
+import net.sf.anathema.framework.value.IntegerViewFactory;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Component;
 
 public class SimpleTraitView extends AbstractTraitView implements ITraitView<SimpleTraitView> {
 
@@ -19,16 +18,16 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
   private final IGridDialogLayoutData labelAlignment;
   private JPanel traitViewPanel;
   
-  public SimpleTraitView(IIntValueDisplayFactory factory, String labelText, int value, int maxValue) {
+  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue) {
 	    this(factory, labelText, value, maxValue, null, GridAlignment.END);
 	  }
 
-  public SimpleTraitView(IIntValueDisplayFactory factory, String labelText, int value, int maxValue, IModifiableCapTrait trait) {
+  public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue, IModifiableCapTrait trait) {
     this(factory, labelText, value, maxValue, trait, GridAlignment.END);
   }
   
   public SimpleTraitView(
-	      IIntValueDisplayFactory factory,
+	      IntegerViewFactory factory,
 	      String labelText,
 	      int value,
 	      int maxValue,
@@ -38,7 +37,7 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
   }
   
   public SimpleTraitView(
-	      IIntValueDisplayFactory factory,
+	      IntegerViewFactory factory,
 	      String labelText,
 	      int value,
 	      int maxValue,
@@ -49,7 +48,7 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
   }
 
   public SimpleTraitView(
-      IIntValueDisplayFactory factory,
+      IntegerViewFactory factory,
       String labelText,
       int value,
       int maxValue,

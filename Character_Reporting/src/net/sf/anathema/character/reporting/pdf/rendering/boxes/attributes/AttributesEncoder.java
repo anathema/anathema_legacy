@@ -1,8 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes;
 
 import com.itextpdf.text.DocumentException;
-import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -18,7 +16,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.lib.collection.CollectionUtilities;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.IPredicate;
 
 import java.util.ArrayList;
 import java.util.Collections;

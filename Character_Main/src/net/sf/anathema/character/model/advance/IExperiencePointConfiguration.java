@@ -2,17 +2,17 @@ package net.sf.anathema.character.model.advance;
 
 public interface IExperiencePointConfiguration {
 
-  public IExperiencePointEntry[] getAllEntries();
+  IExperiencePointEntry[] getAllEntries();
 
-  public IExperiencePointEntry addEntry();
+  IExperiencePointEntry addEntry();
 
-  public void addEntry(String description, int xpCost);
+  void addEntry(String description, int xpCost);
 
-  public void removeEntry(IExperiencePointEntry entry);
+  void removeEntry(IExperiencePointEntry entry);
 
-  public int getTotalExperiencePoints();
+  int getTotalExperiencePoints();
 
-  public void addExperiencePointConfigurationListener(IExperiencePointConfigurationListener listener);
+  void addExperiencePointConfigurationListener(IExperiencePointConfigurationListener listener);
 
-  public int getExtraSpendings();
+  int getExtraSpendings();
 }

@@ -1,13 +1,12 @@
 package net.sf.anathema.lib.gui.widgets;
 
-import java.awt.Toolkit;
+import net.sf.anathema.lib.data.IOverline;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
-
-import net.disy.commons.core.util.ObjectUtilities;
-import net.sf.anathema.lib.data.IOverline;
+import java.awt.Toolkit;
 
 public class DigitsOnlyDocument extends PlainDocument {
 

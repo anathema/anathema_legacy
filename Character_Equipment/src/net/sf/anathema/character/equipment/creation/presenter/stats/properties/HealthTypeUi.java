@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
-import javax.swing.Icon;
-
-import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 public class HealthTypeUi implements IObjectUi<Object> {
 

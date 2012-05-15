@@ -4,13 +4,13 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IAdditionalModel {
 
-  public String getTemplateId();
+  String getTemplateId();
 
-  public AdditionalModelType getAdditionalModelType();
+  AdditionalModelType getAdditionalModelType();
 
-  public IAdditionalModelBonusPointCalculator getBonusPointCalculator();
+  IAdditionalModelBonusPointCalculator getBonusPointCalculator();
 
-  public void addChangeListener(IChangeListener listener);
+  void addChangeListener(IChangeListener listener);
 
-  public IAdditionalModelExperienceCalculator getExperienceCalculator();
+  IAdditionalModelExperienceCalculator getExperienceCalculator();
 }

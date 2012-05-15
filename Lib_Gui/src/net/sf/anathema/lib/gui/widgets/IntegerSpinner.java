@@ -1,24 +1,23 @@
 package net.sf.anathema.lib.gui.widgets;
 
-import java.awt.Dimension;
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.data.IOverline;
+import net.sf.anathema.lib.data.Range;
+import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.JComponent;
 import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.JSpinner.NumberEditor;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.JTextComponent;
-
-import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.data.IOverline;
-import net.sf.anathema.lib.data.Range;
-import net.sf.anathema.lib.gui.IView;
+import java.awt.Dimension;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class IntegerSpinner implements IView {
 
@@ -31,7 +30,7 @@ public class IntegerSpinner implements IView {
     spinner = new JSpinner(numberModel);
     DecimalFormat decimalFormat = new DecimalFormat();
     decimalFormat.setGroupingSize(0);
-    final JSpinner.NumberEditor numberEditor = new JSpinner.NumberEditor(spinner, decimalFormat.toPattern());
+    JSpinner.NumberEditor numberEditor = new JSpinner.NumberEditor(spinner, decimalFormat.toPattern());
     initDigitsOnlyDocument(numberEditor.getTextField());
     spinner.setEditor(numberEditor);
     numberEditor.getTextField().setValue(initialValue);

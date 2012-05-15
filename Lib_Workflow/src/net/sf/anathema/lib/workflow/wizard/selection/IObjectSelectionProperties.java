@@ -1,14 +1,14 @@
 package net.sf.anathema.lib.workflow.wizard.selection;
 
-import javax.swing.ListCellRenderer;
+import net.sf.anathema.lib.message.IBasicMessage;
 
-import net.disy.commons.core.message.IBasicMessage;
+import javax.swing.ListCellRenderer;
 
 public interface IObjectSelectionProperties {
 
-  public ListCellRenderer getCellRenderer();
+  ListCellRenderer getCellRenderer();
 
-  public String getSelectionTitle();
+  String getSelectionTitle();
 
-  public IBasicMessage getSelectMessage();
+  IBasicMessage getSelectMessage();
 }

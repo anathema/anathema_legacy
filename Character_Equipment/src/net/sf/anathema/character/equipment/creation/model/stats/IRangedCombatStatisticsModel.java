@@ -4,5 +4,5 @@ import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 public interface IRangedCombatStatisticsModel extends IOffensiveStatisticsModel {
 
-  public IIntValueModel getRangeModel();
+  IIntValueModel getRangeModel();
 }

@@ -4,11 +4,11 @@ import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 public interface IShieldStatisticsModel extends IEquipmentStatisticsModel {
 
-  public IIntValueModel getCloseCombatDvBonusModel();
+  IIntValueModel getCloseCombatDvBonusModel();
 
-  public IIntValueModel getRangedCombatDvBonusModel();
+  IIntValueModel getRangedCombatDvBonusModel();
 
-  public IIntValueModel getMobilityPenaltyModel();
+  IIntValueModel getMobilityPenaltyModel();
 
-  public IIntValueModel getFatigueModel();
+  IIntValueModel getFatigueModel();
 }

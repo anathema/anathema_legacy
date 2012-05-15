@@ -69,7 +69,7 @@ public class ExperienceConfigurationView extends
     });
     JPanel smartTablePanel = smartTable.getComponent();
     smartTablePanel.setPreferredSize(new Dimension(700, 400));
-    final TableColumn descriptionColumn = smartTable.getTable().getTableHeader().getColumnModel().getColumn(0);
+    TableColumn descriptionColumn = smartTable.getTable().getTableHeader().getColumnModel().getColumn(0);
     descriptionColumn.setPreferredWidth(500);
     descriptionColumn.setWidth(descriptionColumn.getPreferredWidth());
     setRemoveButtonEnabled(false);

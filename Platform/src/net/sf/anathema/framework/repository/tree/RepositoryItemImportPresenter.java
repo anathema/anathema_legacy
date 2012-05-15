@@ -1,15 +1,15 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;
@@ -43,7 +43,7 @@ public class RepositoryItemImportPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    final SmartAction action = new SmartAction(
+    SmartAction action = new SmartAction(
         resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"), new FileUi(resources).getImportFileIcon()) { //$NON-NLS-1$
       private static final long serialVersionUID = 5316978362277544910L;
 

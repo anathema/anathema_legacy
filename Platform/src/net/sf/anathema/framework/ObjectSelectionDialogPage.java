@@ -1,14 +1,13 @@
 package net.sf.anathema.framework;
 
-import java.awt.BorderLayout;
+import net.sf.anathema.framework.repository.IObjectSelectionProperties;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
-import net.sf.anathema.framework.repository.IObjectSelectionProperties;
+import java.awt.BorderLayout;
 
 public class ObjectSelectionDialogPage extends AbstractDialogPage {
 

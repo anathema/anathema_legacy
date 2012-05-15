@@ -1,16 +1,15 @@
 package net.sf.anathema.namegenerator;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JComponent;
-
 import net.sf.anathema.namegenerator.domain.category.CategorizedTokenNameFactory;
 import net.sf.anathema.namegenerator.domain.category.CategorizedTokenNameTemplate;
 import net.sf.anathema.namegenerator.domain.category.ICategorizedTokenConfiguration;
 import net.sf.anathema.namegenerator.domain.category.TokenCategory;
 import net.sf.anathema.namegenerator.view.category.CategorizedNameGeneratorView;
 import net.sf.anathema.namegenerator.view.category.ICategorizedNameGeneratorView;
+
+import javax.swing.JComponent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PresentedCategorizedNameGenerator {
 
@@ -28,7 +27,7 @@ public class PresentedCategorizedNameGenerator {
   }
 
   private TokenCategory[] getRelevantTokens() {
-    final List<TokenCategory> relevantTokens = new ArrayList<TokenCategory>();
+    List<TokenCategory> relevantTokens = new ArrayList<TokenCategory>();
     for (Object category : view.getSelectedCategories()) {
       if (category instanceof TokenCategory) {
         relevantTokens.add((TokenCategory) category);

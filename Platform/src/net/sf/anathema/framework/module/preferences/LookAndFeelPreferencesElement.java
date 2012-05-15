@@ -10,7 +10,14 @@ import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-import javax.swing.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.LookAndFeel;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
@@ -103,9 +110,9 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     }
   }
 
-  private IDialogComponent getComponent(final IResources resources) {
+  private IDialogComponent getComponent(IResources resources) {
     allowCustom = "true".equals(resources.getString("AnathemaCore.Tools.Preferences.AllowCustomLAF").trim().toLowerCase(Locale.US));
-    final JLabel label = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.LookAndFeelCaption")); //$NON-NLS-1$
+    JLabel label = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.LookAndFeelCaption")); //$NON-NLS-1$
 
     // This implementation is a bit nasty but I (kelemen@github.com) was not sure
     // about the intended contract of some methods. So to be on the safe side,

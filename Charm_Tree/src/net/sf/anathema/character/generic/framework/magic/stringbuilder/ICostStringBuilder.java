@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.magic.general.ICost;
 
 public interface ICostStringBuilder<T extends ICost> {
 
-  public String getCostString(T cost);
+  String getCostString(T cost);
 }

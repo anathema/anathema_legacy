@@ -4,7 +4,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IQuality extends IIdentificate {
 
-  public IQualityType getType();
+  IQualityType getType();
 
-  public boolean prerequisitesFulfilled(IQualitySelection< ? extends IQuality>[] selectedQualities);
+  boolean prerequisitesFulfilled(IQualitySelection<? extends IQuality>[] selectedQualities);
 }

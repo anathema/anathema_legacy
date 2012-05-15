@@ -6,33 +6,33 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ISpellConfiguration {
 
-  public void removeSpells(ISpell[] removedSpells);
+  void removeSpells(ISpell[] removedSpells);
 
-  public void addSpells(ISpell[] addedSpells);
+  void addSpells(ISpell[] addedSpells);
 
-  public ISpell[] getLearnedSpells();
+  ISpell[] getLearnedSpells();
 
-  public void addChangeListener(IChangeListener listener);
+  void addChangeListener(IChangeListener listener);
 
-  public void addMagicLearnListener(IMagicLearnListener<ISpell> listener);
+  void addMagicLearnListener(IMagicLearnListener<ISpell> listener);
 
-  public boolean isSpellAllowed(ISpell spell);
+  boolean isSpellAllowed(ISpell spell);
 
-  public ISpell[] getSpellsByCircle(CircleType circle);
+  ISpell[] getSpellsByCircle(CircleType circle);
 
-  public ISpell getSpellById(String string);
+  ISpell getSpellById(String string);
 
-  public boolean isLearnedOnCreation(ISpell spell);
+  boolean isLearnedOnCreation(ISpell spell);
 
-  public ISpell[] getLearnedSpells(boolean experienced);
+  ISpell[] getLearnedSpells(boolean experienced);
 
-  public void addSpells(ISpell[] addedSpells, boolean experienced);
+  void addSpells(ISpell[] addedSpells, boolean experienced);
 
-  public void removeSpells(ISpell[] removedSpells, boolean experienced);
+  void removeSpells(ISpell[] removedSpells, boolean experienced);
 
-  public boolean isSpellAllowed(ISpell spell, boolean experienced);
+  boolean isSpellAllowed(ISpell spell, boolean experienced);
 
-  public boolean isLearned(ISpell spell);
+  boolean isLearned(ISpell spell);
 
-  public boolean isLearnedOnCreationOrExperience(ISpell spell);
+  boolean isLearnedOnCreationOrExperience(ISpell spell);
 }

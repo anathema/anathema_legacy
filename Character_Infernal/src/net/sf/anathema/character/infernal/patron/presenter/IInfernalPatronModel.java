@@ -7,13 +7,13 @@ import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 
 public interface IInfernalPatronModel extends IAdditionalModel {
 
-  public IFavorableDefaultTrait[] getAllYozis();
+  IFavorableDefaultTrait[] getAllYozis();
   
-  public ICharacterModelContext getContext();
+  ICharacterModelContext getContext();
 
-  public String getFavoredYozi();
+  String getFavoredYozi();
   
-  public void setFavoredYozi(String yozi);
+  void setFavoredYozi(String yozi);
 
-  public void addCharacterChangeListener(ICharacterChangeListener listener);
+  void addCharacterChangeListener(ICharacterChangeListener listener);
 }

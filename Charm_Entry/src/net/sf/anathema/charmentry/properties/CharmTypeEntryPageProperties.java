@@ -1,11 +1,11 @@
 package net.sf.anathema.charmentry.properties;
 
-import javax.swing.ListCellRenderer;
-
-import net.disy.commons.core.message.BasicMessage;
-import net.disy.commons.core.message.IBasicMessage;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
+import net.sf.anathema.lib.message.BasicMessage;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.ListCellRenderer;
 
 public class CharmTypeEntryPageProperties {
 

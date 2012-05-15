@@ -1,7 +1,5 @@
 package net.sf.anathema.charmentry.presenter;
 
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.charmentry.module.ICharmEntryViewFactory;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
@@ -11,10 +9,12 @@ import net.sf.anathema.charmentry.properties.CharmTypeEntryPageProperties;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SimpleSpecialEntryPage extends AbstractAnathemaWizardPage {

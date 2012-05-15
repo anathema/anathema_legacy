@@ -1,13 +1,13 @@
 package net.sf.anathema.graph.nodes;
 
+import net.sf.anathema.lib.lang.ArrayUtilities;
+import net.sf.anathema.lib.util.Identificate;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import net.sf.anathema.lib.lang.ArrayUtilities;
-import net.sf.anathema.lib.util.Identificate;
 
 public class IdentifiedRegularNode extends Identificate implements IIdentifiedRegularNode {
 
@@ -100,12 +100,12 @@ public class IdentifiedRegularNode extends Identificate implements IIdentifiedRe
   }
 
   @Override
-  public void reorderChildren(final ISimpleNode[] childrenLayer) {
+  public void reorderChildren(ISimpleNode[] childrenLayer) {
     Collections.sort(childList, new NodeIndexComparator(childrenLayer));
   }
 
   @Override
-  public ISimpleNode[] getChildren(final ISimpleNode[] childrenLayer) {
+  public ISimpleNode[] getChildren(ISimpleNode[] childrenLayer) {
     ISimpleNode[] unsortedChildren = getChildren();
     Arrays.sort(unsortedChildren, new NodeIndexComparator(childrenLayer));
     return unsortedChildren;

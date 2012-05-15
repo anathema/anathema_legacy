@@ -5,11 +5,11 @@ import net.sf.anathema.character.library.quality.presenter.IQuality;
 
 public interface IMutation extends IQuality {
 
-  public void accept(IMutationVisitor visitor);
+  void accept(IMutationVisitor visitor);
 
-  public IExaltedSourceBook getSource();
+  IExaltedSourceBook getSource();
 
-  public Integer getPage();
+  Integer getPage();
 
-  public int getCost();
+  int getCost();
 }

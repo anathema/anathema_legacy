@@ -1,21 +1,21 @@
 package net.sf.anathema.charmentry.properties;
 
+import net.sf.anathema.lib.message.IBasicMessage;
+
 import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.core.message.IBasicMessage;
-
 public interface IKeywordEntryPageProperties {
 
-  public IBasicMessage getDefaultMessage();
+  IBasicMessage getDefaultMessage();
 
-  public String getPageTitle();
+  String getPageTitle();
 
-  public Icon getAddIcon();
+  Icon getAddIcon();
 
-  public String getKeywordLabel();
+  String getKeywordLabel();
 
-  public Icon getRemoveIcon();
+  Icon getRemoveIcon();
 
-  public ListCellRenderer getKeywordRenderer();
+  ListCellRenderer getKeywordRenderer();
 }

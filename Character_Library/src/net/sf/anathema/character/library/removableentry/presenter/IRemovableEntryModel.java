@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface IRemovableEntryModel<E> {
 
-  public E commitSelection();
+  E commitSelection();
 
-  public List<E> getEntries();
+  List<E> getEntries();
 
-  public void removeEntry(E entry);
+  void removeEntry(E entry);
 
-  public void addModelChangeListener(IRemovableEntryListener<E> listener);
+  void addModelChangeListener(IRemovableEntryListener<E> listener);
 }

@@ -4,13 +4,13 @@ import net.sf.anathema.campaign.music.model.track.IMp3Track;
 
 public interface IMusicSelection {
 
-  public IMp3Track[] getContent();
+  IMp3Track[] getContent();
 
-  public void clear();
+  void clear();
 
-  public boolean removeTracks(IMp3Track[] tracks);
+  boolean removeTracks(IMp3Track[] tracks);
 
-  public boolean addTracks(IMp3Track[] tracks);
+  boolean addTracks(IMp3Track[] tracks);
 
-  public void removeTracks(int[] indices);
+  void removeTracks(int[] indices);
 }

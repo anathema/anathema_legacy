@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.impl.item.view;
 
-import net.disy.commons.swing.border.TitledPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;

@@ -6,5 +6,5 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 public interface ISubTrait extends IDefaultTrait, INamedGenericTrait {
 
-  public ITraitType getBasicTraitType();
+  ITraitType getBasicTraitType();
 }

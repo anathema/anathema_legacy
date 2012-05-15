@@ -159,7 +159,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   @Override
-  public ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
+  public ISpendingModel getAttributeModel(AttributeGroupPriority priority) {
     return new AttributeBonusModel(attributeCalculator, priority, creationPoints);
   }
 

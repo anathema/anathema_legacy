@@ -1,20 +1,20 @@
 package net.sf.anathema.framework.view;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.swing.IDisposable;
+
+import javax.swing.Icon;
 
 public interface IItemView extends IView, IDisposable {
 
-  public void setName(String newName);
+  void setName(String newName);
 
-  public String getName();
+  String getName();
 
-  public Icon getIcon();
+  Icon getIcon();
 
-  public void addNameChangedListener(ObjectValueListener<String> nameListener);
+  void addNameChangedListener(ObjectValueListener<String> nameListener);
 
-  public void removeNameChangedListener(ObjectValueListener<String> nameListener);
+  void removeNameChangedListener(ObjectValueListener<String> nameListener);
 }

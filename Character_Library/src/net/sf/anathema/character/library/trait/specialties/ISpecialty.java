@@ -5,6 +5,6 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 
 public interface ISpecialty extends ISubTrait {
 
-  public ITraitReference getTraitReference();
+  ITraitReference getTraitReference();
 
 }

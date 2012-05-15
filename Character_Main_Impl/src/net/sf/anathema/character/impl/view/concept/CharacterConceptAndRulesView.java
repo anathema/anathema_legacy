@@ -2,13 +2,13 @@ package net.sf.anathema.character.impl.view.concept;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
@@ -79,7 +79,7 @@ public class CharacterConceptAndRulesView extends
   }
 
   @Override
-  public void addRulesLabel(final String labelText) {
+  public void addRulesLabel(String labelText) {
     rulesPanel.add(new JLabel(labelText));
   }
 

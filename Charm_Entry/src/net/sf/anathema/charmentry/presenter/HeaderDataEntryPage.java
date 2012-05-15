@@ -1,7 +1,5 @@
 package net.sf.anathema.charmentry.presenter;
 
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmentry.model.IHeaderDataModel;
@@ -15,10 +13,12 @@ import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
@@ -57,7 +57,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
   protected void initPageContent() {
     this.view = viewFactory.createHeaderDataEntryView();
     initNameView();
-    final IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", resources); //$NON-NLS-1$
+    IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", resources); //$NON-NLS-1$
     initTypeView(renderer);
     initSourceView();
   }
@@ -72,7 +72,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     });
   }
 
-  private void initTypeView(final IdentificateSelectCellRenderer renderer) {
+  private void initTypeView(IdentificateSelectCellRenderer renderer) {
     IObjectSelectionView<ICharacterType> typeView = view.addComboBoxRow(properties.getCharacterTypeLabel(), renderer,
             getPageModel().getCharacterTypes());
     typeView.addObjectSelectionChangedListener(new ObjectValueListener<ICharacterType>() {

@@ -2,13 +2,13 @@ package net.sf.anathema.campaign.music.presenter;
 
 public interface ILibraryControlProperties {
 
-  public String getLibrariesString();
+  String getLibrariesString();
 
-  public String getNoContentString();
+  String getNoContentString();
 
-  public String getSearchString();
+  String getSearchString();
 
-  public String getTracksString();
+  String getTracksString();
 
-  public String getLibraryControlBorderTitle();
+  String getLibraryControlBorderTitle();
 }

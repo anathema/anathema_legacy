@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.model.charm;
 
 import com.google.common.base.Functions;
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
@@ -43,6 +42,7 @@ import net.sf.anathema.character.presenter.magic.CharacterSourceBookFilter;
 import net.sf.anathema.character.presenter.magic.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.magic.ObtainableCharmFilter;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import org.jmock.example.announcer.Announcer;
@@ -391,7 +391,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ILearningCharmGroup getGroup(String characterTypeId, String groupName) {
-    final ICharacterType characterType = characterTypeId == null ? getNativeCharacterType() : CharacterType.getById(
+    ICharacterType characterType = characterTypeId == null ? getNativeCharacterType() : CharacterType.getById(
             characterTypeId);
     return getGroupById(characterType, groupName);
   }
@@ -549,12 +549,12 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public final boolean isUnlearnable(ICharm charm) {
-    final ILearningCharmGroup group = getGroup(charm);
+    ILearningCharmGroup group = getGroup(charm);
     return group.isUnlearnable(charm);
   }
 
   protected boolean isUnlearnableWithoutConsequences(ICharm charm) {
-    final ILearningCharmGroup group = getGroup(charm);
+    ILearningCharmGroup group = getGroup(charm);
     return group.isUnlearnableWithoutConsequences(charm);
   }
 

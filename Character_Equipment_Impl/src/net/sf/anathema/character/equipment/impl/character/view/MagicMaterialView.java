@@ -1,16 +1,15 @@
 package net.sf.anathema.character.equipment.impl.character.view;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
-import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
+
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
 
 public class MagicMaterialView implements IMagicalMaterialView {
 
@@ -37,7 +36,7 @@ public class MagicMaterialView implements IMagicalMaterialView {
     materialCombo.setRenderer(renderer);
     setSelectedMaterial(null, false);
     if (content != null) {
-      GuiUtilities.revalidateTree(content);
+      net.sf.anathema.lib.gui.swing.GuiUtilities.revalidateTree(content);
     }
   }
 

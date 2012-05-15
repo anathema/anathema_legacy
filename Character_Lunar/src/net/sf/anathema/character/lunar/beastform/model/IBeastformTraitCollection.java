@@ -6,5 +6,5 @@ import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 
 public interface IBeastformTraitCollection extends ITraitCollection {
 
-  public IBeastformAttribute getDeadlyBeastmanAttribute(ITraitType traitType);
+  IBeastformAttribute getDeadlyBeastmanAttribute(ITraitType traitType);
 }

@@ -1,23 +1,23 @@
 package net.sf.anathema.character.impl.view.advantage;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.overview.LabelledOverviewStringValueView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 public class EssencePanelView implements IView {
 
   private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
-  private final IIntValueDisplayFactory guiConfiguration;
+  private final IntegerViewFactory guiConfiguration;
 
-  public EssencePanelView(IIntValueDisplayFactory guiConfiguration) {
+  public EssencePanelView(IntegerViewFactory guiConfiguration) {
     this.guiConfiguration = guiConfiguration;
   }
 

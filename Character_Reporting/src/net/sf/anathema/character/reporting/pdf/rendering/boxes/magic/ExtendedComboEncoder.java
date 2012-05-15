@@ -4,7 +4,6 @@ import com.google.common.base.Joiner;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTransformer;
@@ -16,6 +15,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.PdfBoxEncod
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SimpleColumn;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;

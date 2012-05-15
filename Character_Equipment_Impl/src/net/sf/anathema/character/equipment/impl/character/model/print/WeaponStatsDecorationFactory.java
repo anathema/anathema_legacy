@@ -14,7 +14,7 @@ public class WeaponStatsDecorationFactory implements IEquipmentStatsDecorationFa
   }
 
   @Override
-  public IWeaponStats createRenamedPrintDecoration(IEquipmentItem item, final IWeaponStats stats) {
+  public IWeaponStats createRenamedPrintDecoration(IEquipmentItem item, IWeaponStats stats) {
     return new WeaponStatsDecorator(stats, nameFactory.create(item, stats));
   }
 }

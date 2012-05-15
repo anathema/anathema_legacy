@@ -27,7 +27,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
   private static final int collegesPerHouse = 5;
 
   public static IAstrologicalHouse createAstrologicalHouse(SiderealCaste caste, ICharacterModelContext context) {
-    final List<CollegeType> collegeTypeList = new ArrayList<CollegeType>(collegesPerHouse);
+    List<CollegeType> collegeTypeList = new ArrayList<CollegeType>(collegesPerHouse);
     switch (caste) {
       case Journeys: {
         collegeTypeList.add(CollegeType.Captain);

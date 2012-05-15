@@ -26,12 +26,12 @@ public class CraftModel implements ICraftModel {
     this.trait = (IAggregatedTrait) context.getTraitCollection().getFavorableTrait(AbilityType.Craft);
     trait.getSubTraits().addSubTraitListener(new ISubTraitListener() {
       @Override
-      public void subTraitAdded(final ISubTrait subTrait) {
+      public void subTraitAdded(ISubTrait subTrait) {
         control.announce().entryAdded(subTrait);
       }
 
       @Override
-      public void subTraitRemoved(final ISubTrait subTrait) {
+      public void subTraitRemoved(ISubTrait subTrait) {
         control.announce().entryRemoved(subTrait);
       }
 
@@ -59,7 +59,7 @@ public class CraftModel implements ICraftModel {
   }
 
   @Override
-  public void removeEntry(final ISubTrait entry) {
+  public void removeEntry(ISubTrait entry) {
     trait.getSubTraits().removeSubTrait(entry);
   }
 

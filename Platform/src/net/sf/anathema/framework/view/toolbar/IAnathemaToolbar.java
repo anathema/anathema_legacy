@@ -5,9 +5,9 @@ import javax.swing.Icon;
 
 public interface IAnathemaToolbar {
 
-  public void addTools(Action... action);
+  void addTools(Action... action);
 
-  public void addMenu(Icon buttonIcon, Action[] menuActions, String toolTip);
+  void addMenu(Icon buttonIcon, Action[] menuActions, String toolTip);
 
-  public void addSeparator();
+  void addSeparator();
 }

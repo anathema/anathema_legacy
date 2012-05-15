@@ -6,9 +6,9 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ICharmGroup extends IIdentificate {
 
-  public ICharm[] getAllCharms();
+  ICharm[] getAllCharms();
 
-  public ICharacterType getCharacterType();
+  ICharacterType getCharacterType();
 
   boolean isMartialArtsGroup();
 }

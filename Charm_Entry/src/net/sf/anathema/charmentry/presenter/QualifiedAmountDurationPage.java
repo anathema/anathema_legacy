@@ -1,7 +1,5 @@
 package net.sf.anathema.charmentry.presenter;
 
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -16,11 +14,13 @@ import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
@@ -87,7 +87,7 @@ public class QualifiedAmountDurationPage extends AbstractAnathemaWizardPage {
         new IdentificateListCellRenderer(resources),
         OtherTraitType.values());
     initComboBoxListening(otherBox);
-    final ITextView textView = view.addTextView();
+    ITextView textView = view.addTextView();
     textView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {

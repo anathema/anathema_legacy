@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 
 public interface ICharmTypeStringBuilder {
 
-  public String createTypeString(ICharmTypeModel charmTypeModel);
+  String createTypeString(ICharmTypeModel charmTypeModel);
 }

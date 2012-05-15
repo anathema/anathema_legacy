@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.presenter;
 
 public interface ICampaignContentViewProperties {
 
-  public String getAddToolTip();
+  String getAddToolTip();
 
-  public String getRemoveToolTip();
+  String getRemoveToolTip();
 }

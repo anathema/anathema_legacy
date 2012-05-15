@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.intvalue;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.framework.value.IIntValueDisplay;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.NullUpperBounds;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -23,7 +23,7 @@ public class SelectableIntValueView<V> implements ISelectableIntValueView<V> {
   private final Announcer<ISelectionIntValueChangedListener> control = Announcer.to(ISelectionIntValueChangedListener.class);
   private int currentValue;
 
-  public SelectableIntValueView(IIntValueDisplayFactory configuration, int initial, int max) {
+  public SelectableIntValueView(IntegerViewFactory configuration, int initial, int max) {
     this.valueDisplay = configuration.createIntValueDisplay(max, initial, new NullUpperBounds());
     objectSelectionBox.addObjectSelectionChangedListener(new ObjectValueListener<V>() {
       @Override

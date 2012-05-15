@@ -4,5 +4,5 @@ import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 
 public interface IAdditionalPersisterFactory {
 
-  public IAdditionalPersister createPersister(IAnathemaMessaging messaging);
+  IAdditionalPersister createPersister(IAnathemaMessaging messaging);
 }

@@ -5,7 +5,7 @@ import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 
 public interface IButtonControlledObjectSelectionView<V> extends IObjectSelectionView<V> {
 
-  public void setButtonEnabled(boolean enabled);
+  void setButtonEnabled(boolean enabled);
 
-  public void addButtonListener(ObjectValueListener<V> listener);
+  void addButtonListener(ObjectValueListener<V> listener);
 }

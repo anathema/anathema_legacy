@@ -1,16 +1,5 @@
 package net.sf.anathema.character.linguistics.presenter;
 
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.Icon;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
@@ -18,13 +7,23 @@ import net.sf.anathema.character.library.util.ProxyComboBoxEditor;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
+
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.Icon;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LinguisticsPresenter implements Presenter {
 
@@ -151,7 +150,7 @@ private void initEntryPresentation() {
     });
     model.addModelChangeListener(new IRemovableEntryListener<IIdentificate>() {
       @Override
-      public void entryAdded(final IIdentificate entry) {
+      public void entryAdded(IIdentificate entry) {
         addEntry(basicUi, entry);
         selectionView.setSelectedObject(null);
       }
@@ -175,7 +174,7 @@ private void initEntryPresentation() {
     }
   }
 
-  private void addEntry(final BasicUi basicUi, final IIdentificate language) {
+  private void addEntry(BasicUi basicUi, final IIdentificate language) {
     IRemovableEntryView entryView = view.addEntryView(basicUi.getRemoveIcon(), null, getDisplayString(language));
     viewsByEntry.put(language, entryView);
     entryView.addButtonListener(new ActionListener() {

@@ -1,14 +1,6 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.action;
 
-import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 import javax.swing.Icon;
 
@@ -22,15 +14,15 @@ public class ActionConfiguration implements IActionConfiguration {
     this(null, null, null);
   }
 
-  public ActionConfiguration(final String name) {
+  public ActionConfiguration(String name) {
     this(name, null, null);
   }
 
-  public ActionConfiguration(final String name, final Icon icon) {
+  public ActionConfiguration(String name, Icon icon) {
     this(name, icon, null);
   }
 
-  public ActionConfiguration(final String name, final Icon icon, final String toolTipText) {
+  public ActionConfiguration(String name, Icon icon, String toolTipText) {
     this.name = name;
     this.icon = icon;
     this.toolTipText = toolTipText;
@@ -52,11 +44,11 @@ public class ActionConfiguration implements IActionConfiguration {
   }
 
   @Override
-  public boolean equals(final Object obj) {
+  public boolean equals(Object obj) {
     if (!(obj instanceof ActionConfiguration)) {
       return false;
     }
-    final ActionConfiguration other = (ActionConfiguration) obj;
+    ActionConfiguration other = (ActionConfiguration) obj;
     return ObjectUtilities.equals(other.name, name)
         && ObjectUtilities.equals(other.icon, icon)
         && ObjectUtilities.equals(toolTipText, other.toolTipText);

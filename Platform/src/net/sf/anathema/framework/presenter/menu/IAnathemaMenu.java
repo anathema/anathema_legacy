@@ -6,5 +6,5 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface IAnathemaMenu {
 
-  public void add(IResources resources, IAnathemaModel model, IMenuBar menubar);
+  void add(IResources resources, IAnathemaModel model, IMenuBar menubar);
 }

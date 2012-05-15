@@ -1,15 +1,15 @@
 package net.sf.anathema.character.library.selection;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.ObjectValueListener;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class AbstractStringEntryTraitPresenter<V> {
 
@@ -25,7 +25,7 @@ public abstract class AbstractStringEntryTraitPresenter<V> {
   protected void initModelListening(final BasicUi basicUi, final IStringSelectionView selectionView) {
     model.addModelChangeListener(new IRemovableEntryListener<V>() {
       @Override
-      public void entryAdded(final V v) {
+      public void entryAdded(V v) {
         addSubView(basicUi, v);
         reset(selectionView);
       }
@@ -73,7 +73,7 @@ public abstract class AbstractStringEntryTraitPresenter<V> {
     });
   }
 
-  protected final void reset(final IStringSelectionView selectionView) {
+  protected final void reset(IStringSelectionView selectionView) {
     selectionView.clear();
     model.setCurrentName(null);
   }

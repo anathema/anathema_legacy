@@ -6,15 +6,15 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IAttributeGroup extends IIdentificate {
 
-  public boolean containsAttribute(AttributeType type);
+  boolean containsAttribute(AttributeType type);
 
-  public IDefaultTrait getAttributeById(String id);
+  IDefaultTrait getAttributeById(String id);
 
-  public IDefaultTrait getAttributeByType(AttributeType type);
+  IDefaultTrait getAttributeByType(AttributeType type);
 
-  public IDefaultTrait[] getAttributes();
+  IDefaultTrait[] getAttributes();
 
-  public int getCreationValueSum();
+  int getCreationValueSum();
 
-  public int getInitialAttributeSum();
+  int getInitialAttributeSum();
 }

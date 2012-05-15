@@ -6,13 +6,13 @@ import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
 public interface IWeaponDamageModel {
 
-  public IIntValueModel getDamageModel();
+  IIntValueModel getDamageModel();
   
-  public IIntValueModel getMinDamageModel();
+  IIntValueModel getMinDamageModel();
 	
-  public HealthType getHealthType();
+  HealthType getHealthType();
 
-  public void addHealthTypeChangeListener(IChangeListener listener);
+  void addHealthTypeChangeListener(IChangeListener listener);
 
-  public void setHealthType(HealthType healthType);
+  void setHealthType(HealthType healthType);
 }

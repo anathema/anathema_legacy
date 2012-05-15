@@ -5,5 +5,5 @@ import net.sf.anathema.framework.repository.IChangeManagement;
 
 public interface IItemData extends IChangeManagement {
 
-  public void setPrintNameAdjuster(PrintNameAdjuster adjuster);
+  void setPrintNameAdjuster(PrintNameAdjuster adjuster);
 }

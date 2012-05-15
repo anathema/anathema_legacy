@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.additionaltemplate;
 
 public interface IAdditionalModelBonusPointCalculator {
 
-  public void recalculate();
+  void recalculate();
 
-  public int getBonusPointCost();
+  int getBonusPointCost();
 
-  public int getBonusPointsGranted();
+  int getBonusPointsGranted();
 }

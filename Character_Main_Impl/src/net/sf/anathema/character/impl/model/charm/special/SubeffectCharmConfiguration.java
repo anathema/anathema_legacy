@@ -14,9 +14,9 @@ public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguratio
 
   public SubeffectCharmConfiguration(
       ICharacterModelContext context,
-      final ICharm charm,
+      ICharm charm,
       ISubeffectCharm visited,
-      final IExtendedCharmLearnableArbitrator arbitrator) {
+      IExtendedCharmLearnableArbitrator arbitrator) {
     super(context, charm, visited, arbitrator);
     this.pointCost = visited.getPointCost();
   }

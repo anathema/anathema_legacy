@@ -2,7 +2,7 @@ package net.sf.anathema.character.ghost.passions.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -26,7 +26,7 @@ public class PassionView extends AbstractTraitView implements IPassionView {
   private final Icon deleteIcon;
 
   public PassionView(
-      IIntValueDisplayFactory configuration,
+      IntegerViewFactory configuration,
       String labelText,
       Icon deleteIcon,
       String id,

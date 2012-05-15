@@ -1,19 +1,14 @@
 package net.sf.anathema.lib.workflow.container.factory;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
-
-import net.disy.commons.swing.border.TitledPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.disy.commons.swing.util.ToggleComponentEnabler;
+import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+import net.sf.anathema.lib.gui.swing.ToggleComponentEnabler;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.booleanvalue.CheckBoxBooleanView;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
@@ -23,6 +18,11 @@ import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
+
 public class StandardPanelBuilder {
 
   private final IGridDialogPanel dialogPanel = new DefaultGridDialogPanel();
@@ -31,7 +31,7 @@ public class StandardPanelBuilder {
     dialogPanel.add(component);
   }
 
-  public ITextView addLineTextView(final String labelName, int columnCount) {
+  public ITextView addLineTextView(String labelName, int columnCount) {
     return addLabelledTextView(labelName, new LineTextView(columnCount));
   }
 
@@ -68,11 +68,11 @@ public class StandardPanelBuilder {
     };
   }
 
-  public ITextView addAreaTextView(final String labelName, int rowCount, int columnCount) {
+  public ITextView addAreaTextView(String labelName, int rowCount, int columnCount) {
     return addLabelledTextView(labelName, new AreaTextView(rowCount, columnCount));
   }
 
-  private ITextView addLabelledTextView(final String labelText, final ITextView textView) {
+  private ITextView addLabelledTextView(String labelText, ITextView textView) {
     final LabelTextView labelTextView = new LabelTextView(labelText, textView);
     addDialogComponent(new IDialogComponent() {
       @Override

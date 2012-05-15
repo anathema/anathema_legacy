@@ -1,14 +1,14 @@
 package net.sf.anathema.lib.gui.gridlayout;
 
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.gui.IView;
 
+import javax.swing.JPanel;
+
 public interface IGridDialogPanel extends IView {
 
-  public void add(IDialogComponent component);
+  void add(IDialogComponent component);
 
   @Override
-  public JPanel getComponent();
+  JPanel getComponent();
 }

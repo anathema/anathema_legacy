@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
-
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Document;
@@ -21,13 +20,13 @@ public class SVGButton {
   private Element lowerRightShadow;
   private Element buttonRectangle;
 
-  public SVGButton(final double nodeWidth, final String text) {
+  public SVGButton(double nodeWidth, String text) {
     this.nodeWidth = nodeWidth;
     this.rectHeight = SVGIntValueDisplay.getDiameter(nodeWidth) * 1.15;
     this.text = text;
   }
 
-  public SVGGElement initGui(final Document document) {
+  public SVGGElement initGui(Document document) {
     SVGGElement buttonGroupElement = (SVGGElement) document.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
         SVGConstants.SVG_G_TAG);
@@ -38,7 +37,7 @@ public class SVGButton {
     return buttonGroupElement;
   }
 
-  private Element createTextLabel(final Document document) {
+  private Element createTextLabel(Document document) {
     Element buttonTextElement = document.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
         SVGConstants.SVG_TEXT_TAG);
@@ -53,7 +52,7 @@ public class SVGButton {
     return buttonTextElement;
   }
 
-  private Element createButtonRectangle(final Document document) {
+  private Element createButtonRectangle(Document document) {
     this.buttonRectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
     setAttribute(buttonRectangle, SVGConstants.SVG_X_ATTRIBUTE, 0);
     setAttribute(buttonRectangle, SVGConstants.SVG_Y_ATTRIBUTE, 0);
@@ -63,13 +62,13 @@ public class SVGButton {
     return buttonRectangle;
   }
 
-  private Element createLowerRightShadow(final Document document) {
+  private Element createLowerRightShadow(Document document) {
     this.lowerRightShadow = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
     setAttribute(lowerRightShadow, SVGConstants.SVG_X_ATTRIBUTE, SHADOW_OFFSET);
     setAttribute(lowerRightShadow, SVGConstants.SVG_Y_ATTRIBUTE, SHADOW_OFFSET);
     setAttribute(lowerRightShadow, SVGConstants.SVG_WIDTH_ATTRIBUTE, nodeWidth);
     setAttribute(lowerRightShadow, SVGConstants.SVG_HEIGHT_ATTRIBUTE, rectHeight);
-    final String points = "0," //$NON-NLS-1$
+    String points = "0," //$NON-NLS-1$
         + rectHeight
         + " 0,0 " //$NON-NLS-1$
         + nodeWidth
@@ -79,13 +78,13 @@ public class SVGButton {
     return lowerRightShadow;
   }
 
-  private Element createUpperLeftShadow(final Document document) {
+  private Element createUpperLeftShadow(Document document) {
     this.upperLeftShadow = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
     setAttribute(upperLeftShadow, SVGConstants.SVG_X_ATTRIBUTE, -SHADOW_OFFSET);
     setAttribute(upperLeftShadow, SVGConstants.SVG_Y_ATTRIBUTE, -SHADOW_OFFSET);
     setAttribute(upperLeftShadow, SVGConstants.SVG_WIDTH_ATTRIBUTE, nodeWidth);
     setAttribute(upperLeftShadow, SVGConstants.SVG_HEIGHT_ATTRIBUTE, rectHeight);
-    final String points = "0," //$NON-NLS-1$
+    String points = "0," //$NON-NLS-1$
         + rectHeight
         + " 0,0 " //$NON-NLS-1$
         + nodeWidth
@@ -95,15 +94,15 @@ public class SVGButton {
     return upperLeftShadow;
   }
 
-  private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final String attributeValue) {
+  private void setAttribute(org.w3c.dom.Element element, String attributeName, String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
-  private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final double attributeValue) {
+  private void setAttribute(org.w3c.dom.Element element, String attributeName, double attributeValue) {
     element.setAttributeNS(null, attributeName, String.valueOf(attributeValue));
   }
 
-  public void setSelected(final boolean selected) {
+  public void setSelected(boolean selected) {
     if (selected) {
       setAttribute(upperLeftShadow, SVGConstants.SVG_FILL_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_COLOR_SVG_NAVY);
       setAttribute(lowerRightShadow, SVGConstants.SVG_FILL_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_COLOR_SVG_WHITE);

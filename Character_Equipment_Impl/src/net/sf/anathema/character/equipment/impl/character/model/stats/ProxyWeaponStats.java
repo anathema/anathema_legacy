@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import com.google.common.base.Objects;
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.AccuracyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
@@ -33,6 +32,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.util.IProxy;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class ProxyWeaponStats extends AbstractStats implements IWeaponStats, IProxy<IWeaponStats> {

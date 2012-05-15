@@ -23,9 +23,9 @@ public abstract class LegalityCharmRenderer extends LegalityCheckListCellRendere
   }
 
   @Override
-  public Component getListCellRendererComponent(JList list, final Object value, int index, boolean isSelected,
+  public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
                                                 boolean cellHasFocus) {
-    final JComponent renderComponent = (JComponent) super.getListCellRendererComponent(list, value, index, isSelected,
+    JComponent renderComponent = (JComponent) super.getListCellRendererComponent(list, value, index, isSelected,
     		cellHasFocus);
     String tooltipString = charmInfoStringProvider.getInfoString((ICharm) value, null);
     renderComponent.setToolTipText(tooltipString);

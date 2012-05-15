@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts
 
 public interface ICollegeExperienceCosts {
 
-  public ICurrentRatingCosts getCollegeExperienceCost(boolean favored);
+  ICurrentRatingCosts getCollegeExperienceCost(boolean favored);
 }

@@ -4,9 +4,9 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 
 public interface IMultiLearnableCharm extends ISpecialCharm {
 
-  public int getAbsoluteLearnLimit();
+  int getAbsoluteLearnLimit();
   
-  public int getMinimumLearnCount(IGenericTraitCollection traitCollection);
+  int getMinimumLearnCount(IGenericTraitCollection traitCollection);
 
-  public int getMaximumLearnCount(IGenericTraitCollection traitCollection);
+  int getMaximumLearnCount(IGenericTraitCollection traitCollection);
 }

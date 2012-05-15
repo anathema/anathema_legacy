@@ -147,7 +147,7 @@ public class GhostFettersPresenter implements Presenter {
   private void addFetterView(final Fetter fetter) {
     String fetterName = fetter.getName();
     Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
-    final IFetterView fetterView = view.addFetterView(fetterName, deleteIcon, fetter.getCurrentValue(),
+    IFetterView fetterView = view.addFetterView(fetterName, deleteIcon, fetter.getCurrentValue(),
             fetter.getMaximalValue());
     new TraitPresenter(fetter, fetterView).initPresentation();
     fetterView.addDeleteListener(new IChangeListener() {

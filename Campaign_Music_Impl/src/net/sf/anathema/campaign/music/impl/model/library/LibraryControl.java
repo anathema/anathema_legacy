@@ -42,7 +42,7 @@ public final class LibraryControl implements ILibraryControl {
   }
 
   @Override
-  public void addNewLibrary(final String name) {
+  public void addNewLibrary(String name) {
     musicDataBasePersister.addLibrary(name);
     fireLibraryChanged(name);
   }
@@ -64,7 +64,7 @@ public final class LibraryControl implements ILibraryControl {
     return unnamedLibraryBaseString + " " + count; //$NON-NLS-1$
   }
 
-  private void fireLibraryChanged(final String name) {
+  private void fireLibraryChanged(String name) {
     ILibrary[] allLibraries = getAllLibraries();
     ILibrary newLibrary = getLibraryByName(allLibraries, name);
     listenerControl.announce().librariesChanged(allLibraries, newLibrary);

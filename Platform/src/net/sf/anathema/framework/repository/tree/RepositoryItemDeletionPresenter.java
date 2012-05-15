@@ -1,14 +1,14 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.dialog.ConfigurableVetor;
+import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
+import net.sf.anathema.lib.gui.dialog.userdialog.buttons.ConfigurableVetor;
 import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;

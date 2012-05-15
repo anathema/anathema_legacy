@@ -1,4 +1,3 @@
-// Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table;
 
 import com.google.common.base.Preconditions;
@@ -28,7 +27,6 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-// NOT_PUBLISHED
 public class SmartTable implements IView {
 
   private boolean enabled = true;

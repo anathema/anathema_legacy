@@ -14,8 +14,6 @@ import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGGElement;
 
 import java.awt.Cursor;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class SvgTreeListening {
@@ -110,7 +108,7 @@ public class SvgTreeListening {
 
   @SuppressWarnings("unchecked")
   public SvgTreeListening(
-      final AnathemaCanvas canvas,
+      AnathemaCanvas canvas,
       ISvgTreeViewProperties viewProperties) {
     this.canvas = canvas;
     this.properties = viewProperties;
@@ -126,11 +124,11 @@ public class SvgTreeListening {
     canvas.setCursorInternal(properties.getDefaultCursor());
   }
 
-  public void addNodeSelectionListener(final CharmInteractionListener listener) {
+  public void addNodeSelectionListener(CharmInteractionListener listener) {
     control.addListener(listener);
   }
 
-  public void destructDocumentListening(final SVGDocument document) {
+  public void destructDocumentListening(SVGDocument document) {
     if (document == null) {
       return;
     }
@@ -141,7 +139,7 @@ public class SvgTreeListening {
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEOVER_EVENT_TYPE, cursorTooltipInitListener, false);
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
-    for (final SVGGElement groupElement : canvas.getControlElements()) {
+    for (SVGGElement groupElement : canvas.getControlElements()) {
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEMOVE_EVENT_TYPE, controlListener, false);
       groupElement.removeEventListener(SVGConstants.SVG_MOUSEOUT_EVENT_TYPE, nodeExitListener, false);
     }
@@ -155,7 +153,7 @@ public class SvgTreeListening {
     control.announce().nodeDetailsDemanded(nodeId);
    }
  
-  public void initDocumentListening(final SVGDocument document) {
+  public void initDocumentListening(SVGDocument document) {
     if (document == null) {
       return;
     }
@@ -172,11 +170,11 @@ public class SvgTreeListening {
     }
   }
 
-  private void setCanvasTooltip(final String node) {
+  private void setCanvasTooltip(String node) {
     canvas.setToolTipText(properties.getToolTip(node));
   }
 
-  private void setCursor(final String nodeId) {
+  private void setCursor(String nodeId) {
     Cursor cursor = properties.getCursor(nodeId);
     canvas.setCursorInternal(cursor);
   }

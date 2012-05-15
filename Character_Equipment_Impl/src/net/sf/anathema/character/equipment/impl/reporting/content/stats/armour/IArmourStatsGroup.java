@@ -6,5 +6,5 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 
 public interface IArmourStatsGroup {
 
-  public void addTotal(PdfPTable table, Font font, IArmourStats armour);
+  void addTotal(PdfPTable table, Font font, IArmourStats armour);
 }

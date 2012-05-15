@@ -8,6 +8,6 @@ import net.sf.anathema.framework.repository.IItem;
 
 public interface PdfReport extends Report {
 
-  public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException;
+  void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException;
 
 }

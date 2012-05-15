@@ -4,11 +4,11 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ISelectionContainerView<V> {
 
-  public void populate(V[] contentValues);
+  void populate(V[] contentValues);
 
-  public void setSelectedValues(V[] selectedValues);
+  void setSelectedValues(V[] selectedValues);
 
-  public void addSelectionChangeListener(IChangeListener listener);
+  void addSelectionChangeListener(IChangeListener listener);
 
-  public V[] getSelectedValues();
+  V[] getSelectedValues();
 }

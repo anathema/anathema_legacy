@@ -5,7 +5,7 @@ import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
 public interface IApplicableMaterialsModel {
 
-  public MagicalMaterial[] getValidMaterials();
+  MagicalMaterial[] getValidMaterials();
 	
-  public BooleanValueModel getSelectedModel(MagicalMaterial material);
+  BooleanValueModel getSelectedModel(MagicalMaterial material);
 }

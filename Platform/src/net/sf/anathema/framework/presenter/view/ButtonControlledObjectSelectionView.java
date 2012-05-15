@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter.view;
 
-import net.disy.commons.swing.events.AbstractDocumentChangeListener;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.dialog.events.AbstractDocumentChangeListener;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
 import net.sf.anathema.lib.lang.StringUtilities;
 

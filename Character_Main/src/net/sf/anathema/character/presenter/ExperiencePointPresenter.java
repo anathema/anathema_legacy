@@ -21,7 +21,7 @@ public class ExperiencePointPresenter {
     this.view = view;
   }
 
-  public void initPresentation(final MultiTabViewPresenter tabPresenter){
+  public void initPresentation(final MultipleContentViewPresenter tabPresenter){
     initExperiencePointPresentation(statistics.isExperienced(), tabPresenter);
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
@@ -31,13 +31,13 @@ public class ExperiencePointPresenter {
     });
   }
 
-  private void initExperiencePointPresentation(boolean experienced, MultiTabViewPresenter tabPresenter) {
+  private void initExperiencePointPresentation(boolean experienced, MultipleContentViewPresenter tabPresenter) {
     if (experienced) {
       IExperienceConfigurationView experienceView = view.createExperienceConfigurationView();
       IContentPresenter presenter = new ExperienceConfigurationPresenter(resources, statistics.getExperiencePoints(),
               experienceView);
       String title = resources.getString("CardView.ExperienceConfiguration.Title");
-      tabPresenter.initMultiTabViewPresentation(title, presenter, AdditionalModelType.Experience);
+      tabPresenter.initMultipleContentViewPresentation(title, presenter, AdditionalModelType.Experience);
     }
   }
 }

@@ -111,19 +111,19 @@ public class ComboConfiguration implements IComboConfiguration {
     control.addListener(listener);
   }
 
-  private void fireComboAdded(final ICombo combo) {
+  private void fireComboAdded(ICombo combo) {
     control.announce().comboAdded(combo);
   }
 
-  private void fireComboDeleted(final ICombo combo) {
+  private void fireComboDeleted(ICombo combo) {
     control.announce().comboDeleted(combo);
   }
 
-  private void fireComboChanged(final ICombo combo) {
+  private void fireComboChanged(ICombo combo) {
     control.announce().comboChanged(combo);
   }
 
-  private void fireBeginEditEvent(final ICombo combo) {
+  private void fireBeginEditEvent(ICombo combo) {
     control.announce().editBegun(combo);
   }
 

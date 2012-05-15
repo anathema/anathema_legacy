@@ -1,12 +1,12 @@
 package net.sf.anathema.campaign.music.presenter.selection;
 
-import java.awt.Component;
-
 import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.Component;
 
 public class PersistReplaceSelectionAction extends AbstractPersistSelectionAction {
 
@@ -14,7 +14,7 @@ public class PersistReplaceSelectionAction extends AbstractPersistSelectionActio
 
   public PersistReplaceSelectionAction(
       IActionAddableListView<IMusicSelection> selectionListView,
-      final IMusicSelectionModel selectionModel,
+      IMusicSelectionModel selectionModel,
       IResources resources) {
     super(new MusicUI(resources).getReplaceToLeftIcon(), resources.getString("Music.Actions.ReplaceSelection.Tooltip"), //$NON-NLS-1$
         selectionListView,

@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.model;
 
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.util.ObjectUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -42,11 +42,11 @@ public class ItemManagmentModel implements IItemManagementModel {
     listeners.announce().itemRemoved(item);
   }
 
-  private void fireItemAddedEvent(final IItem item) throws AnathemaException {
+  private void fireItemAddedEvent(IItem item) throws AnathemaException {
     listeners.announce().itemAdded(item);
   }
 
-  private void fireCharacterSelectionChangedEvent(final IItem item) {
+  private void fireCharacterSelectionChangedEvent(IItem item) {
     listeners.announce().itemSelected(item);
   }
 

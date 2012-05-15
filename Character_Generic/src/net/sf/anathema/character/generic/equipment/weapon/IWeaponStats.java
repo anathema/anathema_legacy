@@ -6,33 +6,33 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IWeaponStats extends IEquipmentStats {
 
-  public int getAccuracy();
+  int getAccuracy();
 
-  public int getDamage();
+  int getDamage();
 
-  public HealthType getDamageType();
+  HealthType getDamageType();
 
-  public int getSpeed();
+  int getSpeed();
 
-  public IIdentificate[] getTags();
+  IIdentificate[] getTags();
 
-  public ITraitType getTraitType();
+  ITraitType getTraitType();
 
-  public Integer getDefence();
+  Integer getDefence();
 
-  public Integer getRange();
+  Integer getRange();
 
-  public Integer getRate();
+  Integer getRate();
   
-  public int getMinimumDamage();
+  int getMinimumDamage();
 
-  public ITraitType getDamageTraitType();
+  ITraitType getDamageTraitType();
 
-  public boolean inflictsNoDamage();
+  boolean inflictsNoDamage();
 
-  public boolean isRangedCombat();
+  boolean isRangedCombat();
   
-  public int getMobilityPenalty();
+  int getMobilityPenalty();
 
-  public IEquipmentStats[] getViews();
+  IEquipmentStats[] getViews();
 }

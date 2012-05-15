@@ -1,10 +1,5 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
@@ -15,6 +10,11 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrator {
 
@@ -29,7 +29,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
   @Override
   public ICharm[] getCharms(ICharmGroup charmGroup) {
     IBasicCharacterData data = context.getBasicCharacterContext();
-    final ICharm[] allCharms = charmGroup.getAllCharms();
+    ICharm[] allCharms = charmGroup.getAllCharms();
     if (template.isAllowedAlienCharms(data.getCasteType())) {
       return allCharms;
     }

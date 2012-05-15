@@ -1,10 +1,16 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -14,6 +20,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -102,8 +109,8 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
 
   private void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
     Font font = createDefaultFont(graphics);
-    final String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
-    final Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);
+    String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
+    Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);
     PdfPCell healthPdfPCell = new TableCell(healthPenaltyPhrase, Rectangle.NO_BORDER);
     healthPdfPCell.setHorizontalAlignment(Element.ALIGN_CENTER);
     if (level == HealthLevelType.INCAPACITATED || level == HealthLevelType.DYING) {
@@ -113,10 +120,10 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
       table.addCell(healthPdfPCell);
       String painToleranceText = " "; //$NON-NLS-1$
       if (painTolerance > 0) {
-        final int value = getPenalty(level, painTolerance);
+        int value = getPenalty(level, painTolerance);
         painToleranceText = "(" + (value == 0 ? "-" : "") + value + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
       }
-      final TableCell painToleranceCell = new TableCell(new Phrase(painToleranceText, font), Rectangle.NO_BORDER);
+      TableCell painToleranceCell = new TableCell(new Phrase(painToleranceText, font), Rectangle.NO_BORDER);
       painToleranceCell.setHorizontalAlignment(Element.ALIGN_CENTER);
       table.addCell(painToleranceCell);
     }

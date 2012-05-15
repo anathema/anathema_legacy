@@ -3,7 +3,11 @@ package net.sf.anathema.charmtree.filters;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;

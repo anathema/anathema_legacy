@@ -1,8 +1,7 @@
 package net.sf.anathema.framework.view.util;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.AffineTransform;
+import javax.swing.JComponent;
+import java.awt.Graphics2D;
 
 public class TopDownButtonUI extends AbstractVerticalButtonUi {
 

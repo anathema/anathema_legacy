@@ -8,11 +8,11 @@ import net.sf.anathema.framework.itemdata.model.IItemData;
 
 public interface IMusicDatabase extends IItemData {
 
-  public ILibraryControl getLibraryControl();
+  ILibraryControl getLibraryControl();
 
-  public IMusicSelectionModel getMusicSelectionModel();
+  IMusicSelectionModel getMusicSelectionModel();
 
-  public IMusicPlayerModel getMusicPlayerModel();
+  IMusicPlayerModel getMusicPlayerModel();
 
-  public IMusicSearchControl getMusicSearchControl();
+  IMusicSearchControl getMusicSearchControl();
 }

@@ -5,11 +5,11 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface IConcept {
 
-  public String getWillpowerRegainingConceptName();
+  String getWillpowerRegainingConceptName();
 
-  public String getWillpowerRegainingComment(IResources resources);
+  String getWillpowerRegainingComment(IResources resources);
 
-  public ICasteType getCasteType();
+  ICasteType getCasteType();
   
-  public int getAge();
+  int getAge();
 }

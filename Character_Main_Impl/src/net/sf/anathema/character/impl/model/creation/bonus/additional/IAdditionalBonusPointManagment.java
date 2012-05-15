@@ -6,5 +6,5 @@ import net.sf.anathema.character.library.trait.IAdditionalTraitBonusPointManagem
 public interface IAdditionalBonusPointManagment extends
     IAdditionalTraitBonusPointManagement,
     IAdditionalSpecialtyBonusPointManagement {
-  public void spendOn(IMagic magic, int bonusCost);
+  void spendOn(IMagic magic, int bonusCost);
 }

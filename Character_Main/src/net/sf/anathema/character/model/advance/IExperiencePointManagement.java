@@ -4,9 +4,9 @@ import net.sf.anathema.character.presenter.overview.IValueModel;
 
 public interface IExperiencePointManagement {
 
-  public int getMiscGain();
+  int getMiscGain();
 
-  public int getTotalCosts();
+  int getTotalCosts();
 
-  public IValueModel<Integer>[] getAllModels();
+  IValueModel<Integer>[] getAllModels();
 }

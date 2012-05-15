@@ -1,8 +1,11 @@
 package net.sf.anathema.framework.presenter.view;
 
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -12,13 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ButtonControlledComboEditView<V> implements IButtonControlledComboEditView<V>, IView {
 
@@ -79,7 +78,7 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   }
 
   @Override
-  public void addSelectionChangedListener(final ObjectValueListener<V> listener) {
+  public void addSelectionChangedListener(ObjectValueListener<V> listener) {
     comboBox.addObjectSelectionChangedListener(listener);
   }
 

@@ -2,13 +2,13 @@ package net.sf.anathema.character.library.trait;
 
 public interface IModifiableCapTrait
 {
-	public void applyCapModifier(int modifier);
+	void applyCapModifier(int modifier);
 	
-	public int getModifiedMaximalValue();
+	int getModifiedMaximalValue();
 	
-	public int getUnmodifiedMaximalValue();
+	int getUnmodifiedMaximalValue();
 	
-	public void setUncheckedCreationValue(int value);
+	void setUncheckedCreationValue(int value);
 	
-	public void setUncheckedExperiencedValue(int value);
+	void setUncheckedExperiencedValue(int value);
 }

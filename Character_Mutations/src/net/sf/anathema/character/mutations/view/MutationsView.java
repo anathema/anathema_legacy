@@ -39,7 +39,7 @@ public class MutationsView implements IMutationsView {
   public IMagicLearnView addMutationsView(final IMutationLearnViewProperties giftViewProperties) {
     MagicLearnView learnView = new MagicLearnView() {
       @Override
-      protected ListSelectionListener createLearnedListListener(final JButton button, final JList list) {
+      protected ListSelectionListener createLearnedListListener(JButton button, JList list) {
         return giftViewProperties.getRemoveButtonEnabledListener(button, list);
       }
     };

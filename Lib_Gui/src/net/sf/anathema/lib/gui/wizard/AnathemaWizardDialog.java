@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui.wizard;
 
-import java.awt.Component;
+import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
 
-import net.disy.commons.swing.dialog.wizard.WizardDialog;
+import java.awt.Component;
 
 public class AnathemaWizardDialog extends WizardDialog {
 

@@ -28,7 +28,7 @@ public class ArmourStatsDecorationFactory implements IEquipmentStatsDecorationFa
   }
 
   @Override
-  public IArmourStats createRenamedPrintDecoration(final IEquipmentItem item, final IArmourStats stats) {
+  public IArmourStats createRenamedPrintDecoration(IEquipmentItem item, final IArmourStats stats) {
     final String name = createItemName(item, stats);
     return new IArmourStats() {
       @Override

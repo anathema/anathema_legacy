@@ -1,20 +1,20 @@
 package net.sf.anathema.character.infernal.patron.view;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronView;
 import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronViewProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.trait.view.GroupedTraitView;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.IView;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 public class InfernalPatronView implements IView, IInfernalPatronView {
 
@@ -47,7 +47,7 @@ public class InfernalPatronView implements IView, IInfernalPatronView {
   @Override
   public IToggleButtonTraitView<SimpleTraitView> addIntValueView(
       String label,
-      IIntValueDisplayFactory factory,
+      IntegerViewFactory factory,
       IIconToggleButtonProperties viewProperties,
       boolean selected) {
     return groupedTraitView.addTraitView(label, 0, 0, null, selected, viewProperties, factory);

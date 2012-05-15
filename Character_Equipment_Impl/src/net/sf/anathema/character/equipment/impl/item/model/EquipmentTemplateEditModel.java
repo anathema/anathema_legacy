@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.impl.item.model;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -14,6 +13,7 @@ import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.util.ObjectUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

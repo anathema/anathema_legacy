@@ -56,7 +56,7 @@ public class MagicLearnView implements IMagicLearnView {
   }
 
   private JButton createAddMagicButton(Icon icon, String tooltip) {
-    final SmartAction smartAction = new SmartAction(icon) {
+    SmartAction smartAction = new SmartAction(icon) {
       private static final long serialVersionUID = 1L;
 
       @Override
@@ -68,7 +68,7 @@ public class MagicLearnView implements IMagicLearnView {
   }
 
   private JButton createRemoveMagicButton(Icon icon, String tooltip) {
-    final SmartAction smartAction = new SmartAction(icon) {
+    SmartAction smartAction = new SmartAction(icon) {
       private static final long serialVersionUID = 1L;
 
       @Override
@@ -83,17 +83,17 @@ public class MagicLearnView implements IMagicLearnView {
     this.boxPanel = panel;
   }
 
-  private JButton createButton(String tooltip, final SmartAction smartAction) {
+  private JButton createButton(String tooltip, SmartAction smartAction) {
     smartAction.setEnabled(false);
     smartAction.setToolTipText(tooltip);
     return new JButton(smartAction);
   }
 
-  private void fireMagicRemoved(final Object[] removedMagics) {
+  private void fireMagicRemoved(Object[] removedMagics) {
     control.announce().magicRemoved(removedMagics);
   }
 
-  private void fireMagicAdded(final Object[] addedMagics) {
+  private void fireMagicAdded(Object[] addedMagics) {
     control.announce().magicAdded(addedMagics);
   }
 

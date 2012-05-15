@@ -13,7 +13,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class CraftViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, final IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     ICraftModel craftModel = ((ICraftAdditionalModel) model).getCraftModel();
     int maximum = craftModel.getAbsoluteMaximum();
     CraftView view = new CraftView(IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, type), maximum);

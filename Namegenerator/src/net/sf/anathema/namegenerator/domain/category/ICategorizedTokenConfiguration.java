@@ -4,8 +4,8 @@ import net.sf.anathema.namegenerator.domain.general.INameTokenFactory;
 
 public interface ICategorizedTokenConfiguration {
 
-  public TokenCategory[] getRootTokenCategories();
+  TokenCategory[] getRootTokenCategories();
 
-  public INameTokenFactory createTokenFactory(TokenCategory tokenCategory);
+  INameTokenFactory createTokenFactory(TokenCategory tokenCategory);
 
 }

@@ -42,7 +42,7 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
 
   public GhostPassionsModel(
 	  GhostPassionsTemplate template,
-      final ICharacterModelContext context) {
+      ICharacterModelContext context) {
     this.context = context;
     this.template = template;
     ITraitType[] traitTypes = VirtueType.values();

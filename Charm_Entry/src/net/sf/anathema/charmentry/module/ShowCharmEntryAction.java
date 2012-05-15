@@ -1,10 +1,5 @@
 package net.sf.anathema.charmentry.module;
 
-import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.dialog.core.IDialogResult;
-import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
-import net.disy.commons.swing.dialog.wizard.WizardDialog;
-import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.charmentry.model.WizardCharmEntryModel;
@@ -14,7 +9,12 @@ import net.sf.anathema.charmentry.presenter.HeaderDataEntryPage;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
+import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
+import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
@@ -43,16 +43,16 @@ public class ShowCharmEntryAction extends SmartAction {
       ICharmEntryViewFactory viewFactory = new CharmEntryViewFactory(resources);
       HeaderDataEntryPage startPage = new HeaderDataEntryPage(resources, model, viewFactory);
       WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-      final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
+      ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
       configuredDialog.setResizable(false);
       GuiUtilities.centerToParent(configuredDialog.getWindow());
       IDialogResult result = dialog.show();
       if (result.isCanceled()) {
         return;
       }
-      final ICharmEntryData entryData = model.getCharmData();
+      ICharmEntryData entryData = model.getCharmData();
       new CharmIO().writeCharmInternal(entryData);
-      final ICharmData coreData = entryData.getCoreData();
+      ICharmData coreData = entryData.getCoreData();
       CharmEntryPropertiesPersister charmEntryPropertiesPersister = new CharmEntryPropertiesPersister();
       charmEntryPropertiesPersister.writeCharmNameProperty(
           coreData.getCharacterType(), coreData.getId(),

@@ -1,7 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import net.disy.commons.swing.ui.IObjectUi;
-import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
@@ -24,6 +22,8 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -49,7 +49,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   @Override
   public void initPresentation() {
     initRulesPresentation();
-    final boolean casteRow = initCastePresentation();
+    boolean casteRow = initCastePresentation();
     IMotivation motivation = statistics.getCharacterConcept().getWillpowerRegainingConcept();
     initMotivationPresentation(motivation, casteRow);
     initAgePresentation();
@@ -155,7 +155,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     });
   }
 
-  private ITextView initTextualDescriptionPresentation(final ITextualDescription description, String resourceKey) {
+  private ITextView initTextualDescriptionPresentation(ITextualDescription description, String resourceKey) {
     final ITextView textView = view.addLabelTextView(resources.getString(resourceKey));
     new TextualPresentation().initView(textView, description);
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
@@ -188,7 +188,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   private boolean initCastePresentation() {
-    final ICharacterTemplate template = statistics.getCharacterTemplate();
+    ICharacterTemplate template = statistics.getCharacterTemplate();
     if (template.getCasteCollection().getAllCasteTypes(statistics.getCharacterTemplate().getTemplateType()).length <= 0) {
       return false;
     }

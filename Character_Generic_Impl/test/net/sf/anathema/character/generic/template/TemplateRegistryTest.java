@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.template;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import org.junit.Before;
 import org.junit.Test;
 

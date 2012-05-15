@@ -1,6 +1,10 @@
 package net.sf.anathema.framework.view.util;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Insets;
 
 public class VerticalFlowLayout extends FlowLayout {
 
@@ -167,7 +171,7 @@ public boolean getHorizontalFill() {
 *  Returns the preferred dimensions given the components in the target
 *  container.
 *
-* @param  target  the component to lay out
+* @param  target  the swing to lay out
 * @paramreturn         Description of the Returned Value
 */
 public Dimension preferredLayoutSize(Container target) {
@@ -195,7 +199,7 @@ public Dimension preferredLayoutSize(Container target) {
 /**
 *  Returns the minimum size needed to layout the target container
 *
-* @param  target  the component to lay out
+* @param  target  the swing to lay out
 * @paramreturn         Description of the Returned Value
 */
 public Dimension minimumLayoutSize(Container target) {
@@ -243,7 +247,7 @@ public void layoutContainer(Container target) {
 		Component m = target.getComponent(i);
 		if (m.isVisible()) {
 			Dimension d = m.getPreferredSize();
-			// fit last component to remaining height
+			// fit last swing to remaining height
 			if ((this.vfill) && (i == (numcomp - 1))) {
 				d.height =
 				    Math.max((maxheight - y),
@@ -289,8 +293,8 @@ public void layoutContainer(Container target) {
 * @param  y       the y coordinate of the area
 * @param  width   the width of the area
 * @param  height  the height of the area
-* @param  first   the first component of the container to place
-* @param  last    the last component of the container to place
+* @param  first   the first swing of the container to place
+* @param  last    the last swing of the container to place
 */
 private void placethem(Container target, int x, int y, int width, int
 		       height, int first, int last) {

@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.music.view.search;
 
 public interface ISearchComponent {
 
-  public boolean isSelected();
+  boolean isSelected();
 
-  public String getSearchString();
+  String getSearchString();
 }

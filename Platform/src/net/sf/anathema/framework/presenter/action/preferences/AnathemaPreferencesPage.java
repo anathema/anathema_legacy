@@ -1,13 +1,15 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
+import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;

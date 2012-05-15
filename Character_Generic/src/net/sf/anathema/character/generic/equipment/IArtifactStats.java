@@ -4,13 +4,13 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 public interface IArtifactStats extends IEquipmentStats
 {
-	public Integer getAttuneCost();
+	Integer getAttuneCost();
 	
-	public boolean allowForeignAttunement();
+	boolean allowForeignAttunement();
 	
-	public boolean requireAttunementToUse();
+	boolean requireAttunementToUse();
 	
-	public ArtifactAttuneType getAttuneType();
+	ArtifactAttuneType getAttuneType();
 	
-	public IEquipmentStats[] getViews();
+	IEquipmentStats[] getViews();
 }

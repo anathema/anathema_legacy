@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.magic.IMagic;
 
 public interface IMagicInfoStringBuilder {
 
-  public String createCostString(IMagic magic);
+  String createCostString(IMagic magic);
 }

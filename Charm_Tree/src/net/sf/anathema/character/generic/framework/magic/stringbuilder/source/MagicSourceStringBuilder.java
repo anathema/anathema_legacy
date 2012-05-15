@@ -52,17 +52,17 @@ public class MagicSourceStringBuilder<T extends IMagic>
     return StringUtilities.joinStringsWithDelimiter(sourceStrings, ", " + andString + " ");
   }
 
-  private String createSourceBookKey(final IExaltedSourceBook source) {
+  private String createSourceBookKey(IExaltedSourceBook source) {
     return "ExaltedSourceBook." + source.getId(); //$NON-NLS-1$
   }
 
-  private String createPageKey(String id, final IExaltedSourceBook source) {
+  private String createPageKey(String id, IExaltedSourceBook source) {
     return source.getId() + "." + id + ".Page"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @Override
   public String createShortSourceString(T t) {
-    final IExaltedSourceBook source = t.getPrimarySource();
+    IExaltedSourceBook source = t.getPrimarySource();
     String id = t.getId();
     return createShortSourceString(source, id);
   }

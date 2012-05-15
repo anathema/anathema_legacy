@@ -1,12 +1,11 @@
 package net.sf.anathema.framework.view.messaging;
 
-import java.awt.Dimension;
+import net.sf.anathema.lib.gui.message.MessageTypeUi;
+import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-
-import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.message.MessageTypeUi;
+import java.awt.Dimension;
 
 public class AnathemaStatusBar implements IAnathemaStatusBar {
 

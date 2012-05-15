@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.magic.charms.type;
 
 public interface ICharmTypeModel {
 
-  public CharmType getCharmType();
+  CharmType getCharmType();
 
-  public ITypeSpecialsModel getSpecialsModel();
+  ITypeSpecialsModel getSpecialsModel();
 
-  public boolean hasSpecialsModel();
+  boolean hasSpecialsModel();
 }

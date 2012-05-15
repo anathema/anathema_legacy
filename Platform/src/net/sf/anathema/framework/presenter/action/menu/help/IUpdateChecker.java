@@ -4,13 +4,13 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IUpdateChecker {
 
-  public String getCurrentVersion();
+  String getCurrentVersion();
 
-  public String getLatestVersion();
+  String getLatestVersion();
 
-  public IMessageData getMessageData();
+  IMessageData getMessageData();
 
-  public void addDataChangedListener(IChangeListener listener);
+  void addDataChangedListener(IChangeListener listener);
 
-  public Boolean isCheckSuccessful();
+  Boolean isCheckSuccessful();
 }

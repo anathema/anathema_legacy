@@ -1,14 +1,6 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.action;
 
-import net.disy.commons.core.model.listener.IChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
@@ -20,7 +12,7 @@ public class ActionWidgetFactory {
     button.setSelected(action.getSelectionModel().getValue());
     action.getSelectionModel().addChangeListener(new IChangeListener() {
       @Override
-      public void stateChanged() {
+      public void changeOccurred() {
         button.setSelected(action.getSelectionModel().getValue());
       }
     });
@@ -32,7 +24,7 @@ public class ActionWidgetFactory {
     checkBox.setSelected(action.getSelectionModel().getValue());
     action.getSelectionModel().addChangeListener(new IChangeListener() {
       @Override
-      public void stateChanged() {
+      public void changeOccurred() {
         checkBox.setSelected(action.getSelectionModel().getValue());
       }
     });

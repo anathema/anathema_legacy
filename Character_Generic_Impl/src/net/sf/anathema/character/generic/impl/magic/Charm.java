@@ -224,7 +224,7 @@ public class Charm extends Identificate implements ICharm {
     if (parentCharms.size() > 0) {
       return;
     }
-    for (final String parentId : prerequisisteList.getParentIDs()) {
+    for (String parentId : prerequisisteList.getParentIDs()) {
       String id = parentId;
 
       if (isSubeffectReference(parentId)) {

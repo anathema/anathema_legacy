@@ -1,8 +1,8 @@
 package net.sf.anathema.campaign.music.impl.model.tracks;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.predicate.IPredicate;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
+import net.sf.anathema.lib.util.IPredicate;
 
 import java.io.File;
 

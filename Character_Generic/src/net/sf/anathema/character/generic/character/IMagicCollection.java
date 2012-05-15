@@ -5,13 +5,13 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCha
 
 public interface IMagicCollection {
 	
-  public int getLearnCount(String charmName);
+  int getLearnCount(String charmName);
 
-  public int getLearnCount(IMultiLearnableCharm multiLearnableCharm);
+  int getLearnCount(IMultiLearnableCharm multiLearnableCharm);
 
-  public boolean isLearned(IMagic magic);
+  boolean isLearned(IMagic magic);
   
-  public void setLearnCount(String charmName, int newValue);
+  void setLearnCount(String charmName, int newValue);
 
-  public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue);
+  void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue);
 }

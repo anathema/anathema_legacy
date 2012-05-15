@@ -4,5 +4,5 @@ import javax.swing.JToggleButton;
 
 public interface IAttributeRequirementsView {
 
-  public JToggleButton addCheckBox(String label);
+  JToggleButton addCheckBox(String label);
 }

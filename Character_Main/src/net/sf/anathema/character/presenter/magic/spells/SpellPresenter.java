@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter.magic.spells;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
@@ -16,6 +15,7 @@ import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPres
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -130,10 +130,10 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
     final IValueView<String> costView = view.addDetailValueView(properties.getCostString() + ":"); //$NON-NLS-1$
     final IValueView<String> targetView = view.addDetailValueView(properties.getTargetString() + ":"); //$NON-NLS-1$
     final IValueView<String> sourceView = view.addDetailValueView(properties.getSourceString() + ":"); //$NON-NLS-1$
-    final ListSelectionListener detailListener = new ListSelectionListener() {
+    ListSelectionListener detailListener = new ListSelectionListener() {
       @Override
       public void valueChanged(ListSelectionEvent e) {
-        final ISpell spell = (ISpell) ((JList) e.getSource()).getSelectedValue();
+        ISpell spell = (ISpell) ((JList) e.getSource()).getSelectedValue();
         if (spell == null) {
           return;
         }
@@ -152,18 +152,18 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
     view.addSelectionListListener(detailListener);
   }
 
-  private void initSpellListsInView(final ISpellView spellView) {
+  private void initSpellListsInView(ISpellView spellView) {
     spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()));
     spellView.setMagicOptions(getSpellsToShow());
   }
 
-  private void forgetSpellListsInView(final ISpellView spellView, ISpell[] spells) {
+  private void forgetSpellListsInView(ISpellView spellView, ISpell[] spells) {
     spellView.removeLearnedMagic(spells);
     ISpell[] supportedSpells = getSpellsOfCurrentCircle(spells);
     spellView.addMagicOptions(supportedSpells, new I18nedIdentificateComparator(resources));
   }
 
-  private void learnSpellListsInView(final ISpellView spellView, ISpell[] spells) {
+  private void learnSpellListsInView(ISpellView spellView, ISpell[] spells) {
     ISpell[] supportedSpells = getSpellsOfCurrentCircle(spells);
     spellView.addLearnedMagic(supportedSpells);
     spellView.removeMagicOptions(supportedSpells);
@@ -210,7 +210,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
     ListSelectionListener editListener = new ListSelectionListener() {
       @Override
       public void valueChanged(ListSelectionEvent e) {
-        final ISpell spell = (ISpell) ((JList) e.getSource()).getSelectedValue();
+        ISpell spell = (ISpell) ((JList) e.getSource()).getSelectedValue();
         if (spell == null) {
           return;
         }

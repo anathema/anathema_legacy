@@ -1,11 +1,11 @@
 package net.sf.anathema.lib.compare;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class I18nedIdentificateSorter<T extends IIdentificate> {
 
@@ -23,7 +23,7 @@ public class I18nedIdentificateSorter<T extends IIdentificate> {
     return emptyArray;
   }
 
-  protected String getString(final IResources resources, T group1) {
+  protected String getString(IResources resources, T group1) {
     return resources.getString(group1.getId());
   }
 }

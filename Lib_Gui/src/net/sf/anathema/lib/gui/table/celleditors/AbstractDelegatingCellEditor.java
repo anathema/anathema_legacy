@@ -1,18 +1,15 @@
-//Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table.celleditors;
-
-import java.awt.Component;
-import java.awt.event.ActionListener;
-import java.lang.reflect.Method;
-import java.util.EventObject;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.JTree;
 import javax.swing.table.TableCellEditor;
 import javax.swing.tree.TreeCellEditor;
+import java.awt.Component;
+import java.awt.event.ActionListener;
+import java.lang.reflect.Method;
+import java.util.EventObject;
 
-// NOT_PUBLISHED
 public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor implements
     TableCellEditor,
     TreeCellEditor {

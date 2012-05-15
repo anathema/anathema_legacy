@@ -14,15 +14,15 @@ public class VerboseCharmTypeStringBuilder extends AbstractCharmTypeStringBuilde
   @Override
   protected StringBuilder buildDefenseString(
       ISimpleSpecialsModel model,
-      final boolean defaultSpeed,
-      final boolean longAction) {
+      boolean defaultSpeed,
+      boolean longAction) {
     StringBuilder builder = new StringBuilder();
     if (!defaultSpeed || longAction) {
       builder.append(IMagicTooltipStringBuilder.CommaSpace);
     }
     builder.append(getResources().getString("CharmTreeView.ToolTip.Type.Defense")); //$NON-NLS-1$
     builder.append(IMagicTooltipStringBuilder.Space);
-    final int defenseModifier = model.getDefenseModifier();
+    int defenseModifier = model.getDefenseModifier();
     if (defenseModifier == 0) {
       builder.append("-"); //$NON-NLS-1$
     }

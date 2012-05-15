@@ -40,14 +40,14 @@ public class MusicPlayerModel implements IMusicPlayerModel {
       }
 
       @Override
-      public void progress(final int bytesread, final long microseconds, byte[] pcmdata,
+      public void progress(int bytesread, long microseconds, byte[] pcmdata,
                            @SuppressWarnings("rawtypes") Map properties) {
         currentBytePosition = bytesread;
         control.announce().positionChanged(bytesread, (playStartTime + player.getElapsedTime()) / 1000);
       }
 
       @Override
-      public void opened(Object stream, @SuppressWarnings("rawtypes") final Map properties) {
+      public void opened(Object stream, @SuppressWarnings("rawtypes") Map properties) {
         lengthInMilliseconds = getTimeLengthEstimation(properties);
         lengthInBytes = (Integer) properties.get(PROP_LENGTH);
         control.announce().trackOpenend(track, lengthInBytes, lengthInMilliseconds / 1000);
@@ -128,7 +128,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
     }
   }
 
-  private void setStatus(final MusicPlayerStatus status) {
+  private void setStatus(MusicPlayerStatus status) {
     control.announce().statusChanged(status);
   }
 

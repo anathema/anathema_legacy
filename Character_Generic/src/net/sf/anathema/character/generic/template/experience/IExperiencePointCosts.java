@@ -7,21 +7,21 @@ import net.sf.anathema.character.generic.magic.ISpell;
 
 public interface IExperiencePointCosts {
 
-  public ICurrentRatingCosts getAbilityCosts(boolean favored);
+  ICurrentRatingCosts getAbilityCosts(boolean favored);
 
-  public ICurrentRatingCosts getAttributeCosts(boolean favored);
+  ICurrentRatingCosts getAttributeCosts(boolean favored);
 
-  public int getCharmCosts(ICharm charm, ICostAnalyzer costMapping);
+  int getCharmCosts(ICharm charm, ICostAnalyzer costMapping);
 
-  public ICurrentRatingCosts getEssenceCosts();
+  ICurrentRatingCosts getEssenceCosts();
 
-  public int getSpecialtyCosts(boolean favored);
+  int getSpecialtyCosts(boolean favored);
 
-  public ICurrentRatingCosts getVirtueCosts();
+  ICurrentRatingCosts getVirtueCosts();
 
-  public ICurrentRatingCosts getWillpowerCosts();
+  ICurrentRatingCosts getWillpowerCosts();
 
-  public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection);
+  int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection);
 
-  public int getBackgroundCost();
+  int getBackgroundCost();
 }

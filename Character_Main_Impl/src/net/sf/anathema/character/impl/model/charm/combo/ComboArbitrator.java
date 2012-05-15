@@ -1,11 +1,11 @@
 package net.sf.anathema.character.impl.model.charm.combo;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 
 public abstract class ComboArbitrator implements IComboArbitrator {
 
@@ -39,7 +39,7 @@ public abstract class ComboArbitrator implements IComboArbitrator {
   }
 
   @Override
-  public boolean isComboLegal(final ICharm charm1, final ICharm charm2) {
+  public boolean isComboLegal(ICharm charm1, ICharm charm2) {
     if (charm1 == charm2) {
       return false;
     }

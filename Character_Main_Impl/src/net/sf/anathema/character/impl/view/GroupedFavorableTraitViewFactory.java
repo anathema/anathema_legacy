@@ -1,19 +1,19 @@
 package net.sf.anathema.character.impl.view;
 
-import javax.swing.JPanel;
-
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
+import net.sf.anathema.framework.value.IntegerViewFactory;
+
+import javax.swing.JPanel;
 
 public class GroupedFavorableTraitViewFactory implements IGroupedFavorableTraitViewFactory {
 
-  private final IIntValueDisplayFactory intValueDisplayFactory;
-  private final IIntValueDisplayFactory intValueDisplayFactoryWithoutMarker;
+  private final IntegerViewFactory intValueDisplayFactory;
+  private final IntegerViewFactory intValueDisplayFactoryWithoutMarker;
 
   public GroupedFavorableTraitViewFactory(
-      IIntValueDisplayFactory intValueDisplayFactory,
-      IIntValueDisplayFactory intValueDisplayFactoryWithoutMarker) {
+      IntegerViewFactory intValueDisplayFactory,
+      IntegerViewFactory intValueDisplayFactoryWithoutMarker) {
     this.intValueDisplayFactory = intValueDisplayFactory;
     this.intValueDisplayFactoryWithoutMarker = intValueDisplayFactoryWithoutMarker;
   }

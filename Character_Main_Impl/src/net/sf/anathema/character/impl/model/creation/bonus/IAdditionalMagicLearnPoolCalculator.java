@@ -4,13 +4,13 @@ import net.sf.anathema.character.generic.magic.IMagic;
 
 public interface IAdditionalMagicLearnPoolCalculator {
 
-  public boolean canSpendOn(IMagic magic);
+  boolean canSpendOn(IMagic magic);
 
-  public void spendPointsFor(IMagic magic);
+  void spendPointsFor(IMagic magic);
 
-  public int getPointsSpent();
+  int getPointsSpent();
 
-  public int getTotalPoints();
+  int getTotalPoints();
 
-  public void reset();
+  void reset();
 }

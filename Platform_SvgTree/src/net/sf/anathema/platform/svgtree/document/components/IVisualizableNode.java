@@ -7,43 +7,43 @@ public interface IVisualizableNode {
   /**
    * Return central Position of rightmost Node in the subtree
    */
-  public Integer getRightExtreme();
+  Integer getRightExtreme();
 
-  public void toXML(Element element);
+  void toXML(Element element);
 
-  public void setLayer(ILayer layer);
+  void setLayer(ILayer layer);
 
-  public Integer getLeftExtreme();
+  Integer getLeftExtreme();
 
-  public void shiftRightWithChildren(int requiredShift, IVisualizableNode[] excludedNodes);
+  void shiftRightWithChildren(int requiredShift, IVisualizableNode[] excludedNodes);
 
-  public int getWidth();
+  int getWidth();
 
-  public boolean isOfSameLeafGroup(IVisualizableNode node);
+  boolean isOfSameLeafGroup(IVisualizableNode node);
 
-  public void accept(IVisualizableNodeVisitor visitor);
+  void accept(IVisualizableNodeVisitor visitor);
 
-  public IVisualizableNode[] getChildren();
+  IVisualizableNode[] getChildren();
 
-  public int getHeight();
+  int getHeight();
 
-  public void setPosition(int position);
+  void setPosition(int position);
 
-  public Integer getPosition();
+  Integer getPosition();
 
-  public IVisualizableNode[] getSharedChildren(IVisualizableNode otherNode);
+  IVisualizableNode[] getSharedChildren(IVisualizableNode otherNode);
 
-  public void shiftRight(int requiredShift);
+  void shiftRight(int requiredShift);
 
-  public void forceShiftRight(int requiredShift);
+  void forceShiftRight(int requiredShift);
 
-  public ILayer getLayer();
+  ILayer getLayer();
 
-  public int getLeftSide();
+  int getLeftSide();
 
-  public int getRightSide();
+  int getRightSide();
 
-  public boolean isRootNode();
+  boolean isRootNode();
 
-  public IVisualizableNode[] getParents();
+  IVisualizableNode[] getParents();
 }

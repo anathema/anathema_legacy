@@ -1,13 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmAttributeBuilder;
@@ -39,8 +31,15 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
 
 public class CharmBuilder implements ICharmBuilder {
 
@@ -94,7 +93,7 @@ public class CharmBuilder implements ICharmBuilder {
       IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(charmElement);
       CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement);
       IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
-      final IGenericTrait primaryPrerequisite = prerequisites.length != 0 ? prerequisites[0] : null;
+      IGenericTrait primaryPrerequisite = prerequisites.length != 0 ? prerequisites[0] : null;
       String group = groupBuilder.build(charmElement, primaryPrerequisite);
       Charm charm = new Charm(
           characterType,

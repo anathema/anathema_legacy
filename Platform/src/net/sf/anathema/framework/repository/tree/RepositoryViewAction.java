@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.disy.commons.swing.dialog.userdialog.DefaultDialogConfigurationBuilder;
-import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.disy.commons.swing.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
-import net.disy.commons.swing.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfigurationBuilder;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;

@@ -5,17 +5,17 @@ import net.sf.anathema.lib.exception.AnathemaException;
 
 public interface IMusicPlayerModel {
 
-  public void startPlayback() throws AnathemaException;
+  void startPlayback() throws AnathemaException;
 
-  public void stopPlayback() throws AnathemaException;
+  void stopPlayback() throws AnathemaException;
 
-  public void seek(int percent) throws AnathemaException;
+  void seek(int percent) throws AnathemaException;
 
-  public void addMusicModelListener(IMusicPlayerModelListener listener);
+  void addMusicModelListener(IMusicPlayerModelListener listener);
 
-  public void pausePlayback() throws AnathemaException;
+  void pausePlayback() throws AnathemaException;
 
-  public void resumePlayback() throws AnathemaException;
+  void resumePlayback() throws AnathemaException;
 
-  public void setTrack(IMp3Track mp3Track) throws AnathemaException;
+  void setTrack(IMp3Track mp3Track) throws AnathemaException;
 }

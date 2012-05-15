@@ -32,7 +32,7 @@ public class PrerequisiteModifyingCharm implements IPrerequisiteModifyingCharm
 		if (charm.getPrimaryTraitType() == traitType)
 			return value + modifier;
 		}
-		catch (Exception e) { }
+		catch (Exception ignored) { }
 		return value;
 	}
 

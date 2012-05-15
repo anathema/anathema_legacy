@@ -42,9 +42,9 @@ public class MutationPersister extends AbstractQualityPersister<IMutation> {
     giftId = giftId.replace("DeadlyBeastmanTransformation.Gift", "Mutations.Mutation");
     giftId = giftId.replace("BioLuimsnescene", "BioLuminescence");
     IMutationsModel mutationModel = (IMutationsModel) model;
-    final int value = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
-    final boolean creationActive = ElementUtilities.getBooleanAttribute(element, ATTRIB_CREATION_ACTIVE, true);
-    final boolean experienceActive = ElementUtilities.getBooleanAttribute(element, ATTRIB_EXPERIENCE_ACTIVE, false);
+    int value = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
+    boolean creationActive = ElementUtilities.getBooleanAttribute(element, ATTRIB_CREATION_ACTIVE, true);
+    boolean experienceActive = ElementUtilities.getBooleanAttribute(element, ATTRIB_EXPERIENCE_ACTIVE, false);
     model.addQualitySelection(new QualitySelection<IMutation>(mutationModel.getMutationById(giftId), value, creationActive, experienceActive));
   }
 

@@ -10,17 +10,17 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ICoreTraitConfiguration extends ITraitCollection {
 
-  public ISpecialtiesConfiguration getSpecialtyConfiguration();
+  ISpecialtiesConfiguration getSpecialtyConfiguration();
 
-  public IBackgroundConfiguration getBackgrounds();
+  IBackgroundConfiguration getBackgrounds();
 
-  public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
+  IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
 
-  public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
+  IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
   
-  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups();
+  IIdentifiedTraitTypeGroup[] getYoziTypeGroups();
 
-  public IFavorableTrait[] getAllAbilities();
+  IFavorableTrait[] getAllAbilities();
 
-  public IIdentificate getAbilityGroupId(AbilityType abilityType);
+  IIdentificate getAbilityGroupId(AbilityType abilityType);
 }

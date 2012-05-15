@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface IGenericsBuilder {
 
-  public void setType(ITraitType type);
+  void setType(ITraitType type);
 }

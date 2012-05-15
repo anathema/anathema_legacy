@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.equipment.weapon;
 
 public interface IShieldStats extends IDefensiveStats {
 
-  public int getCloseCombatBonus();
+  int getCloseCombatBonus();
 
-  public int getRangedCombatBonus();
+  int getRangedCombatBonus();
 }

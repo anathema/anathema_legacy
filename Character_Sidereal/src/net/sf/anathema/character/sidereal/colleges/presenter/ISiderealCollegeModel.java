@@ -5,11 +5,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 
 public interface ISiderealCollegeModel extends IAdditionalModel {
 
-  public IAstrologicalHouse[] getAllHouses();
+  IAstrologicalHouse[] getAllHouses();
 
-  public int getTotalFavoredDotCount();
+  int getTotalFavoredDotCount();
 
-  public int getTotalGeneralDotCount();
+  int getTotalGeneralDotCount();
 
-  public void addCharacterChangeListener(ICharacterChangeListener listener);
+  void addCharacterChangeListener(ICharacterChangeListener listener);
 }

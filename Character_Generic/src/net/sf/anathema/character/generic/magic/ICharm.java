@@ -1,32 +1,32 @@
 package net.sf.anathema.character.generic.magic;
 
-import java.util.Set;
-
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.lib.util.IIdentificate;
 
+import java.util.Set;
+
 public interface ICharm extends ICharmData, IMagic {
 
-  public Set<ICharm> getLearnFollowUpCharms(ICharmLearnArbitrator learnArbitrator);
+  Set<ICharm> getLearnFollowUpCharms(ICharmLearnArbitrator learnArbitrator);
   
-  public Set<ICharm> getLearnChildCharms();
+  Set<ICharm> getLearnChildCharms();
 
-  public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator);
+  Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator);
 
-  public boolean isBlockedByAlternative(IMagicCollection magicCollection);
+  boolean isBlockedByAlternative(IMagicCollection magicCollection);
   
-  public Set<ICharm> getMergedCharms();
+  Set<ICharm> getMergedCharms();
   
-  public boolean isTreeRoot();
+  boolean isTreeRoot();
 
-  public Set<ICharm> getRenderingPrerequisiteCharms();
+  Set<ICharm> getRenderingPrerequisiteCharms();
   
-  public Set<String> getRenderingPrerequisiteLabels();
+  Set<String> getRenderingPrerequisiteLabels();
 
-  public boolean hasAttribute(IIdentificate attribute);
+  boolean hasAttribute(IIdentificate attribute);
   
-  public String getAttributeValue(IIdentificate attribute);
+  String getAttributeValue(IIdentificate attribute);
 
-  public boolean hasChildren();
+  boolean hasChildren();
 }

@@ -8,13 +8,13 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IDefaultTrait extends ITrait, IModifiableBasicTrait, IModifiableGenericTrait, IModifiableCapTrait {
 
-  public int getMinimalValue();
+  int getMinimalValue();
   
-  public int getCalculationMinValue();
+  int getCalculationMinValue();
 
-  public void resetCurrentValue();
+  void resetCurrentValue();
 
-  public void setModifiedCreationRange(int newInitialValue, int newUpperValue);
+  void setModifiedCreationRange(int newInitialValue, int newUpperValue);
 
-  public void addRangeListener(IChangeListener listener);
+  void addRangeListener(IChangeListener listener);
 }

@@ -6,5 +6,5 @@ import net.sf.anathema.character.library.trait.ITrait;
 
 public interface IFavorableTrait extends ITrait, IFavorableGenericTrait {
 
-  public ITraitFavorization getFavorization();
+  ITraitFavorization getFavorization();
 }

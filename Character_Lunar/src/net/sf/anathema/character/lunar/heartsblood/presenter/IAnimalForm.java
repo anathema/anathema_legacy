@@ -2,15 +2,15 @@ package net.sf.anathema.character.lunar.heartsblood.presenter;
 
 public interface IAnimalForm {
 
-  public String getName();
+  String getName();
 
-  public int getStrength();
+  int getStrength();
   
-  public int getDexterity();
+  int getDexterity();
 
-  public int getStamina();
+  int getStamina();
   
-  public int getAppearance();
+  int getAppearance();
 
-  public boolean isCreationLearned();
+  boolean isCreationLearned();
 }

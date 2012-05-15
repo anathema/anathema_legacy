@@ -5,15 +5,15 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface INameGeneratorModel {
 
-  public void addGeneratorTypeChangeListener(IChangeListener listener);
+  void addGeneratorTypeChangeListener(IChangeListener listener);
 
-  public IGeneratorTypeModel getGeneratorTypeModel(IIdentificate type);
+  IGeneratorTypeModel getGeneratorTypeModel(IIdentificate type);
 
-  public IIdentificate[] getGeneratorTypes();
+  IIdentificate[] getGeneratorTypes();
 
-  public IIdentificate getSelectedGeneratorType();
+  IIdentificate getSelectedGeneratorType();
 
-  public void setGeneratorType(IIdentificate selectedGeneratorType);
+  void setGeneratorType(IIdentificate selectedGeneratorType);
 
-  public String[] generateNames(int count);
+  String[] generateNames(int count);
 }

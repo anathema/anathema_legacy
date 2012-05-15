@@ -2,17 +2,17 @@ package net.sf.anathema.campaign.music.presenter;
 
 public interface ITrackDetailsProperties {
 
-  public String getNoContentString();
+  String getNoContentString();
 
-  public String getOriginalNameString();
+  String getOriginalNameString();
 
-  public String getInfoBorder();
+  String getInfoBorder();
 
-  public String getGivenNameLabel();
+  String getGivenNameLabel();
 
-  public String getArtistLabel();
+  String getArtistLabel();
 
-  public String getTrackNumberLabel();
+  String getTrackNumberLabel();
 
-  public String getAlbumLabel();
+  String getAlbumLabel();
 }

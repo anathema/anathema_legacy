@@ -6,25 +6,25 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 
 public interface ITraitFavorization {
 
-  public ICasteType[] getCastes();
+  ICasteType[] getCastes();
 
-  public void addFavorableStateChangedListener(IFavorableStateChangedListener listener);
+  void addFavorableStateChangedListener(IFavorableStateChangedListener listener);
 
-  public FavorableState getFavorableState();
+  FavorableState getFavorableState();
 
-  public boolean isCaste();
+  boolean isCaste();
 
-  public boolean isCasteOrFavored();
+  boolean isCasteOrFavored();
 
-  public boolean isFavored();
+  boolean isFavored();
 
-  public void setFavorableState(FavorableState state);
+  void setFavorableState(FavorableState state);
 
-  public void setFavored(boolean favored);
+  void setFavored(boolean favored);
 
-  public void updateFavorableStateToCaste();
+  void updateFavorableStateToCaste();
 
-  public int getMinimalValue();
+  int getMinimalValue();
 
-  public void ensureMinimalValue();
+  void ensureMinimalValue();
 }

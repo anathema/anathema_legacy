@@ -2,8 +2,8 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.model.ICharacterDescription;
-import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.description.NameGeneratorAction;
+import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.ViewTabContent;
@@ -96,7 +96,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
   }
   
   private void initFieldsView(String[] labelResourceKey,
-                              final ITextualDescription[] textualDescription,
+                              ITextualDescription[] textualDescription,
                               TextualPresentation presentation) {
     String[] labelText = new String[labelResourceKey.length];
     for (int i = 0; i < labelText.length; i++) {
@@ -111,7 +111,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
 
   private void initLineView(
       String labelResourceKey,
-      final ITextualDescription textualDescription,
+      ITextualDescription textualDescription,
       TextualPresentation presentation) {
     ITextView textView = descriptionView.addLineView(resources.getString(labelResourceKey));
     presentation.initView(textView, textualDescription);
@@ -120,7 +120,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
   private void initAreaView(
       String labelResourceKey,
       int rows,
-      final ITextualDescription textualDescription,
+      ITextualDescription textualDescription,
       TextualPresentation presentation) {
     ITextView textView = descriptionView.addAreaView(resources.getString(labelResourceKey), rows);
     presentation.initView(textView, textualDescription);

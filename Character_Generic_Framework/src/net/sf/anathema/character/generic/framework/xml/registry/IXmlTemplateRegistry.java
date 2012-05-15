@@ -5,8 +5,8 @@ import net.sf.anathema.lib.exception.PersistenceException;
 
 public interface IXmlTemplateRegistry<T> {
 
-  public abstract void setTemplateParser(ITemplateParser<T> templateParser);
+  void setTemplateParser(ITemplateParser<T> templateParser);
 
-  public abstract T get(String id) throws PersistenceException;
-  public abstract T get(String id, String prefix) throws PersistenceException;
+  T get(String id) throws PersistenceException;
+  T get(String id, String prefix) throws PersistenceException;
 }

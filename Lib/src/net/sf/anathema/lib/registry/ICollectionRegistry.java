@@ -4,7 +4,7 @@ import java.util.Collection;
 
 public interface ICollectionRegistry<E> {
 
-  public void add(E... elements);
+  void add(E... elements);
 
-  public Collection<E> getAll();
+  Collection<E> getAll();
 }

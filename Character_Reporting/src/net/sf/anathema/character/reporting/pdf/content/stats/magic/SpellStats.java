@@ -1,13 +1,13 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ITransformer;
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.ITransformer;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 public class SpellStats extends AbstractMagicStats<ISpell> {
 
@@ -16,17 +16,17 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   }
 
   @Override
-  public String getGroupName(final IResources resources) {
+  public String getGroupName(IResources resources) {
     return resources.getString("Sheet.Magic.Group.Sorcery"); //$NON-NLS-1$
   }
 
   @Override
-  public String getType(final IResources resources) {
+  public String getType(IResources resources) {
     return resources.getString(getMagic().getCircleType().getId());
   }
 
   @Override
-  public String getDurationString(final IResources resources) {
+  public String getDurationString(IResources resources) {
     return "-"; //$NON-NLS-1$
   }
 
@@ -37,7 +37,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   }
 
   protected String[] getDetailKeys() {
-    final String target = getMagic().getTarget();
+    String target = getMagic().getTarget();
     if (target != null) {
       return new String[]{"Spells.Target." + target}; //$NON-NLS-1$
     }

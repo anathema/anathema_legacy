@@ -1,7 +1,5 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
@@ -9,7 +7,9 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCha
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.util.IPredicate;
 import org.jmock.example.announcer.Announcer;
 
 public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmConfiguration {
