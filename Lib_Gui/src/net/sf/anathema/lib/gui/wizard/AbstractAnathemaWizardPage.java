@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.gui.wizard;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.swing.dialog.core.IDialogHelpHandler;
-import net.disy.commons.swing.dialog.input.IRequestFinishListener;
-import net.disy.commons.swing.dialog.wizard.IWizardConfiguration;
-import net.disy.commons.swing.dialog.wizard.IWizardPage;
+import net.sf.anathema.lib.gui.dialog.core.IDialogHelpHandler;
+import net.sf.anathema.lib.gui.dialog.input.IRequestFinishListener;
+import net.sf.anathema.lib.gui.dialog.wizard.IWizardConfiguration;
+import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.message.BasicMessage;

@@ -1,7 +1,5 @@
 package net.sf.anathema.charmtree.presenter;
 
-import net.disy.commons.swing.dialog.core.IDialogResult;
-import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
@@ -14,6 +12,8 @@ import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;

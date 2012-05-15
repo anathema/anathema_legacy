@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.presenter;
 
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.framework.intvalue.ISelectableIntValueView;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -13,6 +12,7 @@ import net.sf.anathema.charmentry.properties.PrerequisitePageProperties;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;

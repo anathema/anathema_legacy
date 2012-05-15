@@ -1,10 +1,9 @@
 package net.sf.anathema.character.equipment.creation.view;
 
-import java.awt.event.ItemListener;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 
 import javax.swing.Action;
-
-import net.disy.commons.swing.dialog.core.IPageContent;
+import java.awt.event.ItemListener;
 
 public interface IEquipmentTypeChoiceView extends IPageContent {
 

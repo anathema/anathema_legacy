@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.presenter;
 
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmentry.model.IHeaderDataModel;
@@ -14,6 +13,7 @@ import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;

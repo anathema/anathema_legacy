@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.presenter;
 
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.charmentry.module.ICharmEntryViewFactory;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.charmentry.presenter.model.ICostEntryModel;
@@ -8,6 +7,7 @@ import net.sf.anathema.charmentry.presenter.view.ICostEntryPageView;
 import net.sf.anathema.charmentry.presenter.view.ICostEntryView;
 import net.sf.anathema.charmentry.properties.CostEntryProperties;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;

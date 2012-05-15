@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
-import net.disy.commons.swing.dialog.core.IDialogResult;
-import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;

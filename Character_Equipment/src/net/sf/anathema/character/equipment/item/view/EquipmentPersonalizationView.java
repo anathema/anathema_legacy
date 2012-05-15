@@ -1,14 +1,14 @@
 package net.sf.anathema.character.equipment.item.view;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
+
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import net.disy.commons.swing.dialog.core.IPageContent;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 
 public class EquipmentPersonalizationView implements IPageContent, IEquipmentPersonalizationView {
 

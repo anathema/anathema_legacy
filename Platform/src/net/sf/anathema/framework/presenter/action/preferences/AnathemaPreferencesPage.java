@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
-import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.message.IBasicMessage;

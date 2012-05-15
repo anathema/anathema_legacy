@@ -8,7 +8,7 @@ import net.sf.anathema.lib.message.Message;
 import java.io.File;
 
 import static java.text.MessageFormat.format;
-import static net.disy.commons.swing.dialog.message.MessageDialogFactory.showMessageDialog;
+import static net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory.showMessageDialog;
 
 public class RepositoryFolderWorker {
   public boolean isValid(File folder) {

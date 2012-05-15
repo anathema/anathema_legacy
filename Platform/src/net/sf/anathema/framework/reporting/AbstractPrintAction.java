@@ -2,12 +2,12 @@ package net.sf.anathema.framework.reporting;
 
 import net.disy.commons.core.progress.INonInterruptableRunnableWithProgress;
 import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.io.IOUtils;

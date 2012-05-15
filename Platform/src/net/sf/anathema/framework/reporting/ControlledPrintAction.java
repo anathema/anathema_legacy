@@ -1,7 +1,5 @@
 package net.sf.anathema.framework.reporting;
 
-import net.disy.commons.swing.dialog.core.IDialogResult;
-import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.ObjectSelectionDialogPage;
 import net.sf.anathema.framework.module.DefaultObjectSelectionProperties;
@@ -10,6 +8,8 @@ import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 

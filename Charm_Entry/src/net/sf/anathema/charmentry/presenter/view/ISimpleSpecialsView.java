@@ -1,10 +1,10 @@
 package net.sf.anathema.charmentry.presenter.view;
 
-import javax.swing.ListCellRenderer;
-
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+
+import javax.swing.ListCellRenderer;
 
 public interface ISimpleSpecialsView extends IPageContent {
 

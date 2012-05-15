@@ -1,7 +1,7 @@
 package net.sf.anathema.framework;
 
-import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComboBox;

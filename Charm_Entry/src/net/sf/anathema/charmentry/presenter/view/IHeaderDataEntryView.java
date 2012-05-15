@@ -1,12 +1,12 @@
 package net.sf.anathema.charmentry.presenter.view;
 
-import javax.swing.ListCellRenderer;
-
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.charmentry.view.ISourceSelectionView;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+
+import javax.swing.ListCellRenderer;
 
 public interface IHeaderDataEntryView extends IPageContent {
 

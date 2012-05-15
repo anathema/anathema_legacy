@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.filters;
 
-import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.charmtree.presenter.CharmFilterSet;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 

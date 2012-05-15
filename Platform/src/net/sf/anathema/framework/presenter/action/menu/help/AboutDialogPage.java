@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter.action.menu.help;
 
-import net.disy.commons.swing.dialog.userdialog.page.AbstractDialogPage;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;

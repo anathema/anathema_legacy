@@ -2,9 +2,9 @@ package net.sf.anathema.lib.gui.wizard;
 
 import com.google.common.base.Preconditions;
 import net.disy.commons.core.util.SimpleBlock;
-import net.disy.commons.swing.dialog.wizard.AbstractWizardConfiguration;
-import net.disy.commons.swing.dialog.wizard.IWizardContainer;
-import net.disy.commons.swing.dialog.wizard.IWizardPage;
+import net.sf.anathema.lib.gui.dialog.wizard.AbstractWizardConfiguration;
+import net.sf.anathema.lib.gui.dialog.wizard.IWizardContainer;
+import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 
 import javax.swing.Icon;

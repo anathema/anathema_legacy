@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter.action.menu.help;
 
-import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.disy.commons.swing.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
+import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;

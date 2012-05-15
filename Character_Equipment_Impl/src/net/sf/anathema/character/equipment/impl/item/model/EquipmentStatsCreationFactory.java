@@ -1,7 +1,5 @@
 package net.sf.anathema.character.equipment.impl.item.model;
 
-import net.disy.commons.swing.dialog.core.IDialogResult;
-import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.ICloseCombatStatsticsModel;
@@ -34,6 +32,8 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;

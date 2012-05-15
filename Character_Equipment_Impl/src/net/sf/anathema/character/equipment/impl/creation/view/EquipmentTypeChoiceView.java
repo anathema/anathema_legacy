@@ -1,6 +1,13 @@
 package net.sf.anathema.character.equipment.impl.creation.view;
 
-import java.awt.event.ItemListener;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.disy.commons.swing.toolbar.ToolBarUtilities;
+import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
+import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
@@ -9,15 +16,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-
-import net.disy.commons.swing.dialog.core.IPageContent;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.disy.commons.swing.toolbar.ToolBarUtilities;
-import net.disy.commons.swing.widgets.HorizontalLine;
-import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
+import java.awt.event.ItemListener;
 
 public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoiceView {
 

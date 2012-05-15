@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.creation.view;
 
-import javax.swing.JCheckBox;
+import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 
-import net.disy.commons.swing.dialog.core.IPageContent;
+import javax.swing.JCheckBox;
 
 public interface IWeaponTagsView extends IPageContent {
 

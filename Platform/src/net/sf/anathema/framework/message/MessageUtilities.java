@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.message;
 
-import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
+import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.message.Message;
 

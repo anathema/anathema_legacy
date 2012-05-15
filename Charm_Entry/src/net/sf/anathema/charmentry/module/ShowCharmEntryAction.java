@@ -1,8 +1,5 @@
 package net.sf.anathema.charmentry.module;
 
-import net.disy.commons.swing.dialog.core.IDialogResult;
-import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
-import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -13,6 +10,9 @@ import net.sf.anathema.charmentry.presenter.HeaderDataEntryPage;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
+import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
+import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;

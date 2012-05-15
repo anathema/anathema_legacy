@@ -19,7 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static net.disy.commons.swing.dialog.message.MessageDialogFactory.showMessageDialog;
+import static net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory.showMessageDialog;
 
 public class RepositoryItemDuplicationPresenter implements Presenter {
 
