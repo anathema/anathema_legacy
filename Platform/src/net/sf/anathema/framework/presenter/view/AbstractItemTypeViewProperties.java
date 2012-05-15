@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter.view;
 
-import javax.swing.Icon;
-
-import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
+
+import javax.swing.Icon;
 
 public abstract class AbstractItemTypeViewProperties implements IItemTypeViewProperties {
 

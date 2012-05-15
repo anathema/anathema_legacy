@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
-import net.disy.commons.swing.laf.LookAndFeelUtilities;
+import net.sf.anathema.lib.gui.swing.LookAndFeelUtilities;
 
 import javax.swing.JComponent;
 import java.awt.Color;
@@ -24,7 +24,7 @@ public class AutoWrappingLabel {
 
   //10.11.2007 (Markus Gebhard): I have tried to implement this using a JTextArea, but this failed.
   // Problem is the size: there is no good way to find out the required height in order not to crop
-  // the text. So after trying really hard, I decided to write my own text component
+  // the text. So after trying really hard, I decided to write my own text swing
   private final AutoWrappingTextComponent component;
 
   public AutoWrappingLabel() {

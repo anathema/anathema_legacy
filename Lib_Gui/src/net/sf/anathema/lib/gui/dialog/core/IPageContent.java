@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.disy.commons.swing.component.IDisposableComponentContainer;
+import net.sf.anathema.lib.gui.container.IDisposableComponentContainer;
 
 public interface IPageContent extends IDisposableComponentContainer {
 

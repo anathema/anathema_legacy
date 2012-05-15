@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.svgtree.presenter.view;
 
-import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.swing.IDisposable;
 
 import java.awt.Color;
 

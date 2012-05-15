@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.generic.equipment.IArtifactStats;
@@ -9,6 +8,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;

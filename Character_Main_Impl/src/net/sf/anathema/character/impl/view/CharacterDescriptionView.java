@@ -2,9 +2,9 @@ package net.sf.anathema.character.impl.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;

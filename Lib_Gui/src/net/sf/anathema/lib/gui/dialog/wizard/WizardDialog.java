@@ -9,8 +9,6 @@
 package net.sf.anathema.lib.gui.dialog.wizard;
 
 import net.disy.commons.core.util.Ensure;
-import net.disy.commons.swing.util.GuiUtilities;
-import net.disy.commons.swing.util.IEnableable;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -25,6 +23,8 @@ import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
 import net.sf.anathema.lib.gui.dialog.core.IVetoDialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.input.IRequestFinishListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
+import net.sf.anathema.lib.gui.swing.IEnableable;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -69,7 +69,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   /**
    * Creates a new wizard dialog for the given wizard.
    * 
-   * @param parent a parent component
+   * @param parent a parent swing
    * @param configuration the wizard configuration this dialog is working on
    */
   public WizardDialog(final Component parent, final IWizardConfiguration configuration) {

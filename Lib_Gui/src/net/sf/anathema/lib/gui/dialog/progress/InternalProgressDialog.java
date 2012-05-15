@@ -13,9 +13,9 @@ import net.disy.commons.core.progress.IObservableCancelable;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.layout.util.ButtonPanelBuilder;
-import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.DialogMessages;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;

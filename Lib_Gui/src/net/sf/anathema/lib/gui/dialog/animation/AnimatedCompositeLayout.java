@@ -56,7 +56,7 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
           insets.top + size.height - overlayPositionFromBottom,
           size.width - (insets.left + insets.right),
           size.height - (insets.top + insets.bottom));
-      //baseComponent.setVisible(!component.isOverlayVisible());
+      //baseComponent.setVisible(!swing.isOverlayVisible());
       overlaidComponent.setVisible(overlayPositionFromBottom > 0);
       baseComponent.setVisible(overlayPositionFromBottom < size.height);
     }
@@ -98,7 +98,7 @@ public class AnimatedCompositeLayout implements LayoutManager2 {
 
   /**
    * Returns the alignment along the y axis.  This specifies how
-   * the component would like to be aligned relative to other
+   * the swing would like to be aligned relative to other
    * components.  The value should be a number between 0 and 1
    * where 0 represents alignment along the origin, 1 is aligned
    * the furthest away from the origin, 0.5 is centered, etc.

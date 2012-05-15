@@ -9,9 +9,9 @@
 package net.sf.anathema.lib.gui.action;
 
 import net.disy.commons.core.util.Ensure;
-import net.disy.commons.swing.icon.IconImageIcon;
-import net.disy.commons.swing.util.GuiUtilities;
-import net.disy.commons.swing.util.IEnableable;
+import net.sf.anathema.lib.gui.icon.IconImageIcon;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
+import net.sf.anathema.lib.gui.swing.IEnableable;
 import net.sf.anathema.lib.lang.StringUtilities;
 
 import javax.swing.AbstractAction;
@@ -58,7 +58,7 @@ public abstract class SmartAction extends AbstractAction implements IEnableable 
    * Called from the action when being invoked by the user. The given parentComponeent can be used
    * as parent for any dialogs shown in this method.
    *
-   * @param parentComponent A parent component from which the action was invoked. Can be used as
+   * @param parentComponent A parent swing from which the action was invoked. Can be used as
    *                        parent for new dialogs.
    */
   protected abstract void execute(Component parentComponent);

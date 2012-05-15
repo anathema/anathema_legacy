@@ -8,9 +8,9 @@
  */
 package net.sf.anathema.lib.gui.dialog.userdialog.page;
 
-import net.disy.commons.swing.events.ICheckInputValidListener;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.dialog.core.AbstractPage;
+import net.sf.anathema.lib.gui.dialog.events.ICheckInputValidListener;
 import net.sf.anathema.lib.gui.dialog.input.IRequestFinishListener;
 import net.sf.anathema.lib.message.IBasicMessage;
 import org.jmock.example.announcer.Announcer;

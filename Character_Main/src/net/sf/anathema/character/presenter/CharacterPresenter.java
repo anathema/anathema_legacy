@@ -18,9 +18,9 @@ import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.lib.gui.IDisposable;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.Presenter;
+import net.sf.anathema.lib.gui.swing.IDisposable;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 

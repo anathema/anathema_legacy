@@ -8,10 +8,10 @@
  */
 package net.sf.anathema.lib.gui.dialog.userdialog.page;
 
-import net.disy.commons.swing.dispose.IDisposable;
-import net.disy.commons.swing.events.ICheckInputValidListener;
 import net.sf.anathema.lib.gui.dialog.core.IPage;
+import net.sf.anathema.lib.gui.dialog.events.ICheckInputValidListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.IDialogConfiguration;
+import net.sf.anathema.lib.gui.swing.IDisposable;
 import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComponent;

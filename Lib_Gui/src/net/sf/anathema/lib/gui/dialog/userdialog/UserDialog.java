@@ -8,8 +8,6 @@
  */
 package net.sf.anathema.lib.gui.dialog.userdialog;
 
-import net.disy.commons.swing.util.GuiUtilities;
-import net.disy.commons.swing.util.RelativePosition;
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
 import net.sf.anathema.lib.gui.action.IActionConfiguration;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -22,6 +20,8 @@ import net.sf.anathema.lib.gui.dialog.core.IVetoDialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.core.preferences.IDialogPreferences;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
+import net.sf.anathema.lib.gui.swing.RelativePosition;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;

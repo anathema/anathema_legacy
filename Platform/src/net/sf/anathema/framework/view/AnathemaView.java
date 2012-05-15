@@ -1,13 +1,5 @@
 package net.sf.anathema.framework.view;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-
-import javax.swing.Action;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.view.item.IComponentItemViewManagement;
 import net.sf.anathema.framework.view.item.ItemViewManagement;
@@ -16,7 +8,13 @@ import net.sf.anathema.framework.view.messaging.AnathemaStatusBar;
 import net.sf.anathema.framework.view.messaging.IAnathemaStatusBar;
 import net.sf.anathema.framework.view.toolbar.AnathemaToolBar;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
-import net.sf.anathema.lib.gui.GuiUtilities;
+
+import javax.swing.Action;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 public class AnathemaView implements IAnathemaView {
 
@@ -68,7 +66,7 @@ public class AnathemaView implements IAnathemaView {
   @Override
   public void show() {
     JFrame mainFrame = initGui();
-    GuiUtilities.displayOnScreenCenter(mainFrame, new Dimension(1024, 768));
+    net.sf.anathema.lib.gui.swing.GuiUtilities.displayOnScreenCenter(mainFrame, new Dimension(1024, 768));
   }
 
   @Override

@@ -12,11 +12,11 @@ import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.lib.gui.dialog.core.preferences.IDialogPreferences;
 import net.sf.anathema.lib.gui.dialog.userdialog.IDialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.message.IBasicMessage;
 

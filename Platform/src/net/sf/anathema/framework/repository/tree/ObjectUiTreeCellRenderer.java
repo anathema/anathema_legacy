@@ -1,14 +1,13 @@
 package net.sf.anathema.framework.repository.tree;
 
-import java.awt.Component;
+import net.sf.anathema.lib.gui.icon.DisabledIconDecorator;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 
 import javax.swing.Icon;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
-
-import net.disy.commons.swing.icon.DisabledIconDecorator;
-import net.disy.commons.swing.ui.IObjectUi;
+import java.awt.Component;
 
 public class ObjectUiTreeCellRenderer extends DefaultTreeCellRenderer {
 

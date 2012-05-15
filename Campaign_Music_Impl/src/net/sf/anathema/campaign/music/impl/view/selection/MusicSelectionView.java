@@ -1,12 +1,5 @@
 package net.sf.anathema.campaign.music.impl.view.selection;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.TitledBorder;
-
-import net.disy.commons.swing.border.TitledPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
@@ -25,11 +18,18 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.EditableActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IMultiSelectionActionAddableListView;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
+
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.TitledBorder;
 
 public class MusicSelectionView implements IMusicSelectionView, IView {
 

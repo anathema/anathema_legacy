@@ -9,11 +9,11 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
 import net.disy.commons.core.progress.IProgressMonitor;
-import net.disy.commons.swing.component.IComponentContainer;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.message.LargeIconMessageTypeUi;
+import net.sf.anathema.lib.gui.container.IComponentContainer;
 import net.sf.anathema.lib.gui.dialog.widgets.AutoWrappingLabel;
+import net.sf.anathema.lib.gui.message.LargeIconMessageTypeUi;
 import net.sf.anathema.lib.message.MessageType;
 
 import javax.swing.Icon;

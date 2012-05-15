@@ -8,17 +8,17 @@
  */
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.disy.commons.swing.button.RolloverButtonFactory;
-import net.disy.commons.swing.component.Gap;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.util.ButtonPanelBuilder;
 import net.disy.commons.swing.layout.util.LayoutDirection;
-import net.disy.commons.swing.util.IEnableable;
 import net.sf.anathema.lib.gui.action.MnemonicLabelParser;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.DialogIconResources;
 import net.sf.anathema.lib.gui.dialog.DialogMessages;
+import net.sf.anathema.lib.gui.swing.IEnableable;
+import net.sf.anathema.lib.gui.widgets.Gap;
+import net.sf.anathema.lib.gui.widgets.RolloverButtonFactory;
 
 import javax.swing.AbstractButton;
 import javax.swing.JComponent;

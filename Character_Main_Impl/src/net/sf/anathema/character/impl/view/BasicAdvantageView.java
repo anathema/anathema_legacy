@@ -1,14 +1,5 @@
 package net.sf.anathema.character.impl.view;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
-import javax.swing.border.TitledBorder;
-
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
@@ -16,7 +7,6 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.impl.view.advantage.BackgroundSelectionView;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
@@ -27,9 +17,17 @@ import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
+
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
+import javax.swing.border.TitledBorder;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
 public class BasicAdvantageView extends AbstractInitializableContentView<IAdvantageViewProperties> implements
     IBasicAdvantageView {
@@ -131,7 +129,7 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
 
   @Override
   public void setBackgroundPanelEnabled(boolean enabled) {
-    GuiUtilities.setEnabled(backgroundPanel, enabled);
+    net.sf.anathema.lib.gui.swing.GuiUtilities.setEnabled(backgroundPanel, enabled);
   }
 
   private JComponent addTitledPanel(

@@ -12,8 +12,8 @@ import net.disy.commons.core.model.ObjectModel;
 import net.disy.commons.core.provider.IProvider;
 import net.disy.commons.core.text.TextAlignment;
 import net.disy.commons.core.util.Ensure;
-import net.disy.commons.swing.color.SwingColors;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.gui.swing.SwingColors;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;

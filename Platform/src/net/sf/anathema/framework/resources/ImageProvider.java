@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.resources;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.swing.image.ImageLoader;
-import net.disy.commons.swing.image.ImageLoadingException;
+import net.sf.anathema.lib.gui.image.ImageLoader;
+import net.sf.anathema.lib.gui.image.ImageLoadingException;
 import net.sf.anathema.lib.resources.IAnathemaImageProvider;
 
 import javax.swing.ImageIcon;

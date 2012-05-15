@@ -1,7 +1,6 @@
 package net.sf.anathema.character.library.taskpane;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.gui.GuiUtilities;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 
 import javax.swing.JComponent;
@@ -37,8 +36,8 @@ public class TaskPaneView<V extends ITaskPaneGroupView> {
   }
 
   public void revalidateView() {
-    GuiUtilities.revalidate(taskPane);
-    GuiUtilities.revalidate(taskScrollPane);
+    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate(taskPane);
+    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate(taskScrollPane);
   }
 
   public JComponent getComponent() {

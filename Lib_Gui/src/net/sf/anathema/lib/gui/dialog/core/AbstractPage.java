@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.disy.commons.swing.component.DisposableContainer;
+import net.sf.anathema.lib.gui.container.DisposableContainer;
 
 import java.awt.Component;
 

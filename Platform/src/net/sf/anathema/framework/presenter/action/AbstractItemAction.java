@@ -1,12 +1,12 @@
 package net.sf.anathema.framework.presenter.action;
 
-import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
 import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;

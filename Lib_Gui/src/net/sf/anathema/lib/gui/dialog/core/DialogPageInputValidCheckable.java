@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.disy.commons.swing.events.IInputValidCheckable;
+import net.sf.anathema.lib.gui.dialog.events.IInputValidCheckable;
 import net.sf.anathema.lib.gui.dialog.userdialog.IMessageSetable;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 

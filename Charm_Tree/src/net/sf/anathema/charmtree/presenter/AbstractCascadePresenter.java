@@ -10,7 +10,6 @@ import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
@@ -103,7 +102,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   protected void createCharmGroupSelector() {
     ICharmGroup[] allGroups = charmGroups.getCharmGroups();
     IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", getResources()); //$NON-NLS-1$
-    Dimension preferredSize = GuiUtilities.calculateComboBoxSize(allGroups, renderer);
+    Dimension preferredSize = net.sf.anathema.lib.gui.swing.GuiUtilities.calculateComboBoxSize(allGroups, renderer);
     view.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), renderer, changeListener, preferredSize);
   }
 

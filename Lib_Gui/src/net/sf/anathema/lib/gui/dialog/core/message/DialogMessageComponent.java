@@ -9,10 +9,10 @@
 package net.sf.anathema.lib.gui.dialog.core.message;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.message.AbstractMessageTypeUi;
-import net.disy.commons.swing.message.MessageTypeUi;
 import net.sf.anathema.lib.gui.dialog.core.IDialogConstants;
 import net.sf.anathema.lib.gui.dialog.widgets.AutoWrappingLabel;
+import net.sf.anathema.lib.gui.message.AbstractMessageTypeUi;
+import net.sf.anathema.lib.gui.message.MessageTypeUi;
 import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.Box;

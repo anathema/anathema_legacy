@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.view.messaging;
 
-import net.disy.commons.swing.message.MessageTypeUi;
+import net.sf.anathema.lib.gui.message.MessageTypeUi;
 import net.sf.anathema.lib.message.IBasicMessage;
 
 import javax.swing.JComponent;

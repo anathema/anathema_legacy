@@ -12,7 +12,6 @@ import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
@@ -203,8 +202,8 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private void revalidateView() {
-    GuiUtilities.revalidate(comboPane);
-    GuiUtilities.revalidate(comboScrollPane);
+    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate(comboPane);
+    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate(comboScrollPane);
   }
 
   private ITextView addTextView(String viewTitle, ITextView textView) {

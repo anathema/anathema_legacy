@@ -1,12 +1,12 @@
 package net.sf.anathema.campaign.music.impl.view.library;
 
+import net.sf.anathema.campaign.music.view.search.ISearchComponent;
+import net.sf.anathema.lib.gui.swing.ToggleComponentEnabler;
+
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import net.disy.commons.swing.util.ToggleComponentEnabler;
-import net.sf.anathema.campaign.music.view.search.ISearchComponent;
 
 public class SearchSelectionComponent implements ISearchComponent {
 

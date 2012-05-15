@@ -24,7 +24,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.initialization.Instantiater;
-import net.sf.anathema.lib.gui.IDisposable;
+import net.sf.anathema.lib.gui.swing.IDisposable;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;

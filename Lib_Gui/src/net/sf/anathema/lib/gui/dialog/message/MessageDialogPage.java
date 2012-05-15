@@ -11,10 +11,10 @@ package net.sf.anathema.lib.gui.dialog.message;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.message.LargeIconMessageTypeUi;
-import net.disy.commons.swing.message.MessageTypeUi;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.dialog.widgets.AutoWrappingLabel;
+import net.sf.anathema.lib.gui.message.LargeIconMessageTypeUi;
+import net.sf.anathema.lib.gui.message.MessageTypeUi;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.message.IMessage;
 

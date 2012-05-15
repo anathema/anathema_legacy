@@ -1,13 +1,13 @@
 package net.sf.anathema.framework.repository.tree;
 
-import javax.swing.Icon;
-
-import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.action.ItemTypeUi;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 public class ItemTypeTreeUi implements IObjectUi<Object> {
 

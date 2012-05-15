@@ -1,15 +1,15 @@
 package net.sf.anathema.character.impl.module;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
+
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.toolbar.ToolBarUtilities;
-import net.sf.anathema.lib.gui.IView;
 
 public class ToggleButtonPanel implements IToggleButtonPanel, IView {
   private final ButtonGroup buttonGroup = new ButtonGroup();

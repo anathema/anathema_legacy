@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.presenter.action;
 
-import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionProperties;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.registry.IRegistry;

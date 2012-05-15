@@ -1,13 +1,13 @@
 package net.sf.anathema.character.impl.module;
 
-import javax.swing.Icon;
-
-import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+
+import javax.swing.Icon;
 
 public class CharacterTypeUi implements IObjectUi<Object> {
 

@@ -9,7 +9,7 @@
 package net.sf.anathema.lib.gui.dialog.core;
 
 import net.disy.commons.core.util.Ensure;
-import net.disy.commons.swing.util.GuiUtilities;
+import net.sf.anathema.lib.gui.swing.GuiUtilities;
 
 import javax.swing.JComponent;
 import javax.swing.JRootPane;

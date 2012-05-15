@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.presenter.action;
 
-import net.disy.commons.swing.ui.IObjectUi;
-import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
+import net.sf.anathema.lib.gui.ui.IObjectUi;
+import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;

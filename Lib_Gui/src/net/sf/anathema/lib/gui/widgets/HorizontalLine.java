@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.widgets;
 
-import net.disy.commons.swing.color.SwingColors;
+import net.sf.anathema.lib.gui.swing.SwingColors;
 
 import javax.swing.JComponent;
 import java.awt.Dimension;
