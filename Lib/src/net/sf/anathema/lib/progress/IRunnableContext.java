@@ -1,11 +1,3 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.progress;
 
 import java.lang.reflect.InvocationTargetException;
@@ -15,8 +7,6 @@ import java.lang.reflect.InvocationTargetException;
  * responsible for displaying a progress indicator and optional Cancel button to the end user while
  * the operation is in progress; the context supplies a progress monitor to be used from code
  * running inside the operation. Note that an {@link IRunnableContext} is not a runnable itself.
- * 
- * @author gebhard
  */
 public interface IRunnableContext {
 

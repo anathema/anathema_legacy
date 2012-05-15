@@ -1,11 +1,3 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.widgets;
 
 import net.sf.anathema.lib.gui.swing.SwingColors;
@@ -20,27 +12,25 @@ import java.awt.Insets;
  */
 public class HorizontalLine extends JComponent {
 
-  private Insets margin = new Insets(0, 0, 0, 0);
+  private final Insets margin = new Insets(0, 0, 0, 0);
 
   public HorizontalLine() {
     this(100);
   }
 
-  public HorizontalLine(final int preferredWidth) {
+  public HorizontalLine(int preferredWidth) {
     setPreferredSize(new Dimension(preferredWidth, 2));
   }
 
   @Override
   public Dimension getPreferredSize() {
-    final Dimension dimension = super.getPreferredSize();
-    return new Dimension(dimension.width + margin.left + margin.right, dimension.height
-        + margin.top
-        + margin.bottom);
+    Dimension dimension = super.getPreferredSize();
+    return new Dimension(dimension.width + margin.left + margin.right, dimension.height + margin.top + margin.bottom);
   }
 
   @Override
-  protected void paintComponent(final Graphics g) {
-    final int y = margin.top + (getSize().height - 2 - margin.top - margin.bottom) / 2;
+  protected void paintComponent(Graphics g) {
+    int y = margin.top + (getSize().height - 2 - margin.top - margin.bottom) / 2;
     g.setColor(SwingColors.getControlShadowColor());
     g.drawLine(margin.left, y, getSize().width - margin.right, y);
     g.setColor(SwingColors.getControlLtHighlightColor());

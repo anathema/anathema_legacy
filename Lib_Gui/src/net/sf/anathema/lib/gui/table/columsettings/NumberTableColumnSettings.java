@@ -1,4 +1,3 @@
-//Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table.columsettings;
 
 import com.google.common.base.Preconditions;
@@ -13,7 +12,6 @@ import java.awt.Component;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-// NOT_PUBLISHED
 public class NumberTableColumnSettings extends AbstractTableColumnSettings {
 
   private final NumberFormat format;

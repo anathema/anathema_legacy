@@ -1,13 +1,11 @@
-// Copyright (c) 2006 by disy Informationssysteme GmbH
 package net.sf.anathema.character.generic.framework.module.object;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.framework.module.ICharacterModule;
 
-// NOT_PUBLISHED
+import java.util.HashMap;
+import java.util.Map;
+
 public class CharacterModuleObjectMap implements ICharacterModuleObjectMap {
   private final Map<Class<? extends ICharacterModule<?>>, ICharacterModuleObject> moduleObjects =
           new HashMap<Class<? extends ICharacterModule<?>>, ICharacterModuleObject>();

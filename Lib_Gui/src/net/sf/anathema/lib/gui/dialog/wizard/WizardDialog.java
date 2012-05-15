@@ -1,11 +1,3 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.dialog.wizard;
 
 import com.google.common.base.Preconditions;
@@ -21,7 +13,7 @@ import net.sf.anathema.lib.gui.dialog.core.IDialogHelpHandler;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
 import net.sf.anathema.lib.gui.dialog.core.IVetoDialogCloseHandler;
-import net.sf.anathema.lib.gui.dialog.input.IRequestFinishListener;
+import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.swing.IEnableable;
@@ -51,7 +43,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   private final IWizardConfiguration configuration;
   private final Collection<IWizardPage> pages = new HashSet<IWizardPage>();
 
-  private final IRequestFinishListener requestFinishListener = new IRequestFinishListener() {
+  private final RequestFinishListener requestFinishListener = new RequestFinishListener() {
     @Override
     public void requestFinish() {
       if (nextButton != null && nextButton.isEnabled()) {

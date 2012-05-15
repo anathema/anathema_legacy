@@ -1,13 +1,11 @@
-//Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table.celleditors;
-
-import java.text.Format;
-import java.text.ParseException;
 
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.text.DefaultFormatterFactory;
+import java.text.Format;
+import java.text.ParseException;
 
 public abstract class AbstractFormattedCellEditor extends
 		AbstractDelegatingCellEditor {

@@ -1,11 +1,3 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
 import net.sf.anathema.lib.model.ObjectModel;
@@ -39,12 +31,8 @@ public class LineBuffer {
   private int lineIndex = 0;
   private final ObjectModel<TextSelection> selectionModel;
 
-  public LineBuffer(
-      final FontMetrics metrics,
-      final int layoutWidth,
-      final IBlockRenderingHandler blockRenderer,
-      final TextAlignment textAlignment,
-      final ObjectModel<TextSelection> selectionModel) {
+  public LineBuffer(final FontMetrics metrics, final int layoutWidth, final IBlockRenderingHandler blockRenderer, final TextAlignment textAlignment,
+                    final ObjectModel<TextSelection> selectionModel) {
     this.metrics = metrics;
     this.layoutWidth = layoutWidth;
     this.blockRenderer = blockRenderer;
@@ -89,47 +77,24 @@ public class LineBuffer {
       final TextBlock block = buffer.get(blockIndex).block;
       final int blockWidth = metrics.stringWidth(block.text);
       final int absoluteBlockIndex = blockIndex + blockIndexOffset;
-      final Range selectionRange = getSelectionRangeIfAny(
-          selectionModel.getValue(),
-          absoluteBlockIndex,
-          block);
-      blockRenderer.handleText(
-          absoluteBlockIndex,
-          block.text,
-          x,
-          lineIndex,
-          metrics.getHeight(),
-          selectionRange);
+      final Range selectionRange = getSelectionRangeIfAny(selectionModel.getValue(), absoluteBlockIndex, block);
+      blockRenderer.handleText(absoluteBlockIndex, block.text, x, lineIndex, metrics.getHeight(), selectionRange);
       x += blockWidth;
       final TextBlockDelimiter delimiter = block.delimiter;
-      final boolean delimiterSelected = isDelimiterSelected(
-          selectionModel.getValue(),
-          block.text.length(),
-          absoluteBlockIndex);
+      final boolean delimiterSelected = isDelimiterSelected(selectionModel.getValue(), block.text.length(), absoluteBlockIndex);
       if (delimiter.isNewLine()) {
-        blockRenderer.handleLineEndsAt(
-            absoluteBlockIndex,
-            block.text.length(),
-            x,
-            lineIndex,
-            metrics.getHeight());
-      }
-      else if (delimiter.isWhitespace()) {
+        blockRenderer.handleLineEndsAt(absoluteBlockIndex, block.text.length(), x, lineIndex, metrics.getHeight());
+      } else if (delimiter.isWhitespace()) {
         final int delimiterWidth = delimiter.calculateWidth(metrics);
-        blockRenderer.handleWhiteSpace(x, x + delimiterWidth, lineIndex, new TextPosition(
-            absoluteBlockIndex,
-            block.text.length()), metrics.getHeight(), delimiterSelected);
+        blockRenderer
+                .handleWhiteSpace(x, x + delimiterWidth, lineIndex, new TextPosition(absoluteBlockIndex, block.text.length()), metrics.getHeight(),
+                        delimiterSelected);
         x += delimiterWidth;
       }
     }
     blockIndexOffset += buffer.size();
     if (isAutoBreak) {
-      blockRenderer.handleLineEndsAt(
-          blockIndexOffset - 1,
-          buffer.get(buffer.size() - 1).block.text.length(),
-          x,
-          lineIndex,
-          metrics.getHeight());
+      blockRenderer.handleLineEndsAt(blockIndexOffset - 1, buffer.get(buffer.size() - 1).block.text.length(), x, lineIndex, metrics.getHeight());
     }
     lineIndex++;
     buffer.clear();
@@ -147,10 +112,7 @@ public class LineBuffer {
     return lineWidth - lastDelimiterWidth;
   }
 
-  private boolean isDelimiterSelected(
-      final TextSelection selection,
-      final int blockSize,
-      final int blockIndex) {
+  private boolean isDelimiterSelected(final TextSelection selection, final int blockSize, final int blockIndex) {
     if (selection == null) {
       return false;
     }
@@ -167,10 +129,7 @@ public class LineBuffer {
     return indexInBlock >= blockSize;
   }
 
-  private Range getSelectionRangeIfAny(
-      final TextSelection selection,
-      final int blockIndex,
-      final TextBlock block) {
+  private Range getSelectionRangeIfAny(final TextSelection selection, final int blockIndex, final TextBlock block) {
     if (selection == null) {
       return null;
     }
@@ -189,8 +148,6 @@ public class LineBuffer {
     if (selection.endPosition.getBlockIndex() > blockIndex) {
       return new Range(selection.startPosition.getIndexInBlock(), block.text.length());
     }
-    return new Range(
-        selection.startPosition.getIndexInBlock(),
-        selection.endPosition.getIndexInBlock());
+    return new Range(selection.startPosition.getIndexInBlock(), selection.endPosition.getIndexInBlock());
   }
 }

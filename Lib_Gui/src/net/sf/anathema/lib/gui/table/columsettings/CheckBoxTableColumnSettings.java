@@ -1,7 +1,4 @@
-//Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table.columsettings;
-
-import java.awt.Component;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
@@ -11,8 +8,8 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+import java.awt.Component;
 
-// NOT_PUBLISHED
 public class CheckBoxTableColumnSettings extends AbstractTableColumnSettings {
 
   private static final Border BORDER = new EmptyBorder(0, 3, 0, 0);

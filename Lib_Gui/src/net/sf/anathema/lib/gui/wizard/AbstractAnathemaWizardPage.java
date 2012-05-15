@@ -2,7 +2,7 @@ package net.sf.anathema.lib.gui.wizard;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.dialog.core.IDialogHelpHandler;
-import net.sf.anathema.lib.gui.dialog.input.IRequestFinishListener;
+import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardConfiguration;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
@@ -17,7 +17,7 @@ import java.util.Map;
 public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage {
 
   private IBasicMessage message = new BasicMessage("!!! UNSET-MESSAGE !!!");
-  private final Announcer<IRequestFinishListener> requestFinishListeners = Announcer.to(IRequestFinishListener.class);
+  private final Announcer<RequestFinishListener> requestFinishListeners = Announcer.to(RequestFinishListener.class);
   private IWizardConfiguration wizard = null;
   private IAnathemaWizardPage previousPage = null;
   protected final Map<ICondition, IAnathemaWizardPage> followUpPagesByCondition = new HashMap<ICondition, IAnathemaWizardPage>();
@@ -84,12 +84,12 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   }
 
   @Override
-  public void addRequestFinishListener(IRequestFinishListener requestFinishListener) {
+  public void addRequestFinishListener(RequestFinishListener requestFinishListener) {
     requestFinishListeners.addListener(requestFinishListener);
   }
 
   @Override
-  public void removeRequestFinishListener(IRequestFinishListener requestFinishListener) {
+  public void removeRequestFinishListener(RequestFinishListener requestFinishListener) {
     requestFinishListeners.removeListener(requestFinishListener);
   }
 

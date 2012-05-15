@@ -1,11 +1,3 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.message;
 
 import java.io.PrintWriter;
@@ -30,8 +22,6 @@ public class Message extends BasicMessage implements IMessage {
 
   /**
    * Creates a new Message object using the specified parameters.
-   * 
-   * @published
    */
   public Message(
       final String title,
@@ -52,8 +42,6 @@ public class Message extends BasicMessage implements IMessage {
 
   /**
    * Creates a new error message.
-   * 
-   * @published
    */
   public Message(final String title, final String text, final Throwable throwable) {
     this(title, text, MessageType.ERROR, throwable);
@@ -61,8 +49,6 @@ public class Message extends BasicMessage implements IMessage {
 
   /**
    * Creates a new error Message object using the specified parameters.
-   * 
-   * @published
    */
   public Message(final String text, final Throwable throwable) {
     this(null, text, throwable);
@@ -70,8 +56,6 @@ public class Message extends BasicMessage implements IMessage {
 
   /**
    * Creates a new Message object using the specified parameters.
-   * 
-   * @published
    */
   public Message(final String text, final MessageType type) {
     this(text, type, (String) null);

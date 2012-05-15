@@ -1,4 +1,3 @@
-//Copyright (c) 2012 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.dialog.setting;
 
 // NOT_PUBLISHED

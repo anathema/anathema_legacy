@@ -1,17 +1,9 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.dialog.userdialog.page;
 
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.dialog.core.AbstractPage;
 import net.sf.anathema.lib.gui.dialog.events.ICheckInputValidListener;
-import net.sf.anathema.lib.gui.dialog.input.IRequestFinishListener;
+import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.message.IBasicMessage;
 import org.jmock.example.announcer.Announcer;
 
@@ -20,7 +12,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public abstract class AbstractBasicDialogPage extends AbstractPage implements IBasicDialogPage {
-  private final Announcer<IRequestFinishListener> requestFinishListeners = Announcer.to(IRequestFinishListener.class);
+  private final Announcer<RequestFinishListener> requestFinishListeners = Announcer.to(RequestFinishListener.class);
   private final Announcer<IChangeListener> changeListeners = Announcer.to(IChangeListener.class);
 
   private ICheckInputValidListener inputValidListener;
@@ -84,12 +76,12 @@ public abstract class AbstractBasicDialogPage extends AbstractPage implements IB
   }
 
   @Override
-  public final void addRequestFinishListener(final IRequestFinishListener requestFinishListener) {
+  public final void addRequestFinishListener(final RequestFinishListener requestFinishListener) {
     requestFinishListeners.addListener(requestFinishListener);
   }
 
   @Override
-  public final void removeRequestFinishListener(final IRequestFinishListener requestFinishListener) {
+  public final void removeRequestFinishListener(final RequestFinishListener requestFinishListener) {
     requestFinishListeners.removeListener(requestFinishListener);
   }
 

@@ -1,11 +1,9 @@
-// Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table.celleditors;
 
 import javax.swing.JComponent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-// NOT_PUBLISHED
 public class IntegerCellEditor extends AbstractDelegatingCellEditor {
 
 	private final SpinnerNumberModel spinnerNumberModel;

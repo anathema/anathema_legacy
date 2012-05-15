@@ -1,9 +1,7 @@
-//Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table;
 
 import javax.swing.ListSelectionModel;
 
-// NOT_PUBLISHED
 public class ListSelectionMode {
 
   private final int listSelectionMode;

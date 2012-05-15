@@ -1,21 +1,13 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.sf.anathema.lib.gui.dialog.input.IRequestFinishListener;
+import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardConfiguration;
 
 public interface IPage {
 
-  public void addRequestFinishListener(IRequestFinishListener requestFinishListener);
+  public void addRequestFinishListener(RequestFinishListener requestFinishListener);
 
-  public void removeRequestFinishListener(IRequestFinishListener requestFinishListener);
+  public void removeRequestFinishListener(RequestFinishListener requestFinishListener);
 
   /** Returns this dialog page's description text.
    * @return the description text for this dialog page, or <code>null</code> if none */

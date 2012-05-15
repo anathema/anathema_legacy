@@ -1,11 +1,3 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.dialog.userdialog.buttons;
 
 import net.sf.anathema.lib.gui.action.ActionConfiguration;
@@ -14,10 +6,8 @@ import net.sf.anathema.lib.gui.dialog.DialogMessages;
 
 public class DialogButtonConfiguration implements IDialogButtonConfiguration {
 
-  static final ActionConfiguration DEFAULT_CANCEL_CONFIG = new ActionConfiguration(
-      DialogMessages.CANCEL);
-  static final ActionConfiguration DEFAULT_OK_CONFIG = new ActionConfiguration(
-      DialogMessages.OK);
+  static final ActionConfiguration DEFAULT_CANCEL_CONFIG = new ActionConfiguration(DialogMessages.CANCEL);
+  static final ActionConfiguration DEFAULT_OK_CONFIG = new ActionConfiguration(DialogMessages.OK);
   private final IActionConfiguration okConfiguration;
   private final IActionConfiguration cancelConfiguration;
 
@@ -33,9 +23,7 @@ public class DialogButtonConfiguration implements IDialogButtonConfiguration {
     this(new ActionConfiguration(okText), new ActionConfiguration(cancelText));
   }
 
-  public DialogButtonConfiguration(
-      final IActionConfiguration okConfiguration,
-      final IActionConfiguration cancelConfiguration) {
+  public DialogButtonConfiguration(final IActionConfiguration okConfiguration, final IActionConfiguration cancelConfiguration) {
     this.okConfiguration = okConfiguration;
     this.cancelConfiguration = cancelConfiguration;
   }

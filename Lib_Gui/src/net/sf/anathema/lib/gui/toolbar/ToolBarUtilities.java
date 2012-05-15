@@ -1,11 +1,3 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.toolbar;
 
 import net.sf.anathema.lib.gui.action.ActionWidgetFactory;
@@ -20,18 +12,15 @@ public class ToolBarUtilities {
 
   private static final Insets TOOLBAR_BUTTON_MARGIN = new Insets(1, 1, 1, 1);
 
-  public static AbstractButton createToolBarButton(final Action action) {
+  public static AbstractButton createToolBarButton(Action action) {
     return createToolBarButton(action, new DefaultToolBarButtonConfiguration());
   }
 
-  public static AbstractButton createToolBarButton(
-      final Action action,
-      final IToolBarButtonConfiguration configuration) {
-    final AbstractButton button;
+  public static AbstractButton createToolBarButton(Action action, IToolBarButtonConfiguration configuration) {
+    AbstractButton button;
     if (action instanceof SmartToggleAction) {
       button = ActionWidgetFactory.createToggleButton((SmartToggleAction) action);
-    }
-    else {
+    } else {
       button = new JButton();
     }
     button.setAction(action);
@@ -39,13 +28,11 @@ public class ToolBarUtilities {
     return button;
   }
 
-  public static void configureToolBarButton(final AbstractButton button) {
+  public static void configureToolBarButton(AbstractButton button) {
     configureToolBarButton(button, new DefaultToolBarButtonConfiguration());
   }
 
-  public static void configureToolBarButton(
-      final AbstractButton button,
-      final IToolBarButtonConfiguration configuration) {
+  public static void configureToolBarButton(AbstractButton button, IToolBarButtonConfiguration configuration) {
     button.setFocusPainted(configuration.isFocusPainted());
     button.setMargin(TOOLBAR_BUTTON_MARGIN);
 

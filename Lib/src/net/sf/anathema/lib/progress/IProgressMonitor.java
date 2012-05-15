@@ -1,11 +1,3 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.progress;
 
 /**
@@ -29,16 +21,11 @@ package net.sf.anathema.lib.progress;
  * actual processing deferred (or perhaps delegated to a separate thread).
  * <p>
  * Clients may implement this interface.
- * 
- * @author gebhard
- * @published
  */
 public interface IProgressMonitor {
 
   /**
    * Constant indicating an unknown amount of work.
-   * 
-   * @published
    */
   public static final int UNKNOWN = -1;
 
@@ -50,7 +37,6 @@ public interface IProgressMonitor {
    * @param totalWork the total number of work units into which the main task is been subdivided. If
    *          the value is {@link #UNKNOWN} the implemenation is free to indicate progress in a way
    *          which doesn't require the total number of work units in advance.
-   * @published
    * @see #beginTaskWithUnknownTotalWork(String)
    */
   public void beginTask(String name, int totalWork);
@@ -62,8 +48,6 @@ public interface IProgressMonitor {
    * Notifies that the work is done; that is, either the main task is completed or the user canceled
    * it. This method may be called more than once (implementations should be prepared to handle this
    * case).
-   * 
-   * @published
    */
   public void done();
 
@@ -72,7 +56,6 @@ public interface IProgressMonitor {
    * 
    * @param canceled <code>true</code> indicates that cancelation has been requested (but not
    *          necessarily acknowledged); <code>false</code> clears this flag
-   * @published
    */
   public void setCanceled(boolean canceled);
 
@@ -81,7 +64,6 @@ public interface IProgressMonitor {
    * might not have subtasks.
    * 
    * @param name the name (or description) of the subtask
-   * @published
    */
   public void subTask(String name);
 
@@ -90,8 +72,6 @@ public interface IProgressMonitor {
    * amount represents an installment, as opposed to a cumulative amount of work done to date.
    * 
    * @param work the number of work units just completed
-   * @published
    */
   public void worked(int work);
-
 }

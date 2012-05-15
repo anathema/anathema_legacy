@@ -1,11 +1,3 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.ui;
 
 import com.google.common.base.Preconditions;
@@ -21,18 +13,13 @@ public class ObjectUiListCellRenderer extends DefaultListCellRenderer {
 
   private final IObjectUi ui;
 
-  public ObjectUiListCellRenderer(final IObjectUi ui) {
+  public ObjectUiListCellRenderer(IObjectUi ui) {
     Preconditions.checkNotNull(ui);
     this.ui = ui;
   }
 
   @Override
-  public Component getListCellRendererComponent(
-      final JList list,
-      final Object value,
-      final int index,
-      final boolean isSelected,
-      final boolean cellHasFocus) {
+  public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
     super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
     Icon icon = ui.getIcon(value);
     if (icon != null && !list.isEnabled()) {
@@ -40,9 +27,9 @@ public class ObjectUiListCellRenderer extends DefaultListCellRenderer {
     }
     setIcon(icon);
     setDisabledIcon(icon == null ? null : new DisabledIconDecorator(icon));
-    final String label = ui.getLabel(value);
-    setText(label == null || label.equals("") ? " " : label); //$NON-NLS-1$ //$NON-NLS-2$
-    final String toolTipText = ui.getToolTipText(value);
+    String label = ui.getLabel(value);
+    setText(label == null || label.equals("") ? " " : label);
+    String toolTipText = ui.getToolTipText(value);
     setToolTipText(StringUtilities.isNullOrEmpty(toolTipText) ? null : toolTipText);
     return this;
   }

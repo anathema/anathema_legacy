@@ -1,11 +1,3 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.message;
 
 import net.sf.anathema.lib.gui.icon.EmptyIcon;
@@ -17,15 +9,11 @@ import javax.swing.Icon;
 
 public class MessageTypeUi extends AbstractMessageTypeUi {
 
-  public static final Icon errorIcon = LibGuiImageProvider.getInstance().getImageIcon(
-      "message/small/error.gif"); //$NON-NLS-1$
-  public static final Icon warningIcon = LibGuiImageProvider.getInstance().getImageIcon(
-      "message/small/warning.gif"); //$NON-NLS-1$
-  public static final Icon infoIcon = LibGuiImageProvider.getInstance().getImageIcon(
-      "message/small/info.gif"); //$NON-NLS-1$
   public static final Icon normalIcon = EmptyIcon.DEFAULT_ICON;
-  public static final Icon questionIcon = LibGuiImageProvider.getInstance().getImageIcon(
-      "message/small/question.gif"); //$NON-NLS-1$
+  public static final Icon errorIcon = LibGuiImageProvider.getInstance().getImageIcon("message/small/error.gif"); //$NON-NLS-1$
+  public static final Icon warningIcon = LibGuiImageProvider.getInstance().getImageIcon("message/small/warning.gif"); //$NON-NLS-1$
+  public static final Icon infoIcon = LibGuiImageProvider.getInstance().getImageIcon("message/small/info.gif"); //$NON-NLS-1$
+  public static final Icon questionIcon = LibGuiImageProvider.getInstance().getImageIcon("message/small/question.gif"); //$NON-NLS-1$
 
   private static MessageTypeUi instance = new MessageTypeUi();
 

@@ -1,11 +1,9 @@
-//Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table.celleditors;
-
-import javax.swing.JFormattedTextField.AbstractFormatter;
 
 import net.sf.anathema.lib.gui.table.NullAsEmptyFormatterDecorator;
 
-// NOT_PUBLISHED
+import javax.swing.JFormattedTextField.AbstractFormatter;
+
 public abstract class NullValueStrategy {
 
   public static final NullValueStrategy EMPTY = new NullValueStrategy() {

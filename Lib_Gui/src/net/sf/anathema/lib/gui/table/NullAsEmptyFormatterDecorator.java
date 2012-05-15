@@ -1,11 +1,8 @@
-//Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table;
 
+import javax.swing.JFormattedTextField.AbstractFormatter;
 import java.text.ParseException;
 
-import javax.swing.JFormattedTextField.AbstractFormatter;
-
-// NOT_PUBLISHED
 public class NullAsEmptyFormatterDecorator extends AbstractFormatter {
 
 	private static final long serialVersionUID = 2539156433587133643L;

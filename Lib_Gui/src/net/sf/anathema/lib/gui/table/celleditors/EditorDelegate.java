@@ -1,4 +1,3 @@
-//Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.lib.gui.table.celleditors;
 
 import java.awt.event.ActionEvent;
@@ -9,7 +8,6 @@ import java.awt.event.MouseEvent;
 import java.io.Serializable;
 import java.util.EventObject;
 
-// NOT_PUBLISHED
 public class EditorDelegate implements ActionListener, ItemListener, Serializable {
 
   private static final long serialVersionUID = -214509974492448353L;

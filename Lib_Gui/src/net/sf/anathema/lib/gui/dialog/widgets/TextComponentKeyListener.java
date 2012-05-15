@@ -1,16 +1,8 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.model.ObjectModel;
-import net.sf.anathema.lib.provider.IProvider;
+import net.sf.anathema.lib.provider.Provider;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -22,12 +14,12 @@ public final class TextComponentKeyListener extends KeyAdapter {
 
   private final TextContent content;
   private final ObjectModel<TextSelection> selectionModel;
-  private final IProvider<Toolkit> toolkitProvider;
+  private final Provider<Toolkit> toolkitProvider;
 
   public TextComponentKeyListener(
       final TextContent content,
       final ObjectModel<TextSelection> selectionModel,
-      final IProvider<Toolkit> toolkitProvider) {
+      final Provider<Toolkit> toolkitProvider) {
     Preconditions.checkNotNull(content);
     Preconditions.checkNotNull(selectionModel);
     Preconditions.checkNotNull(toolkitProvider);

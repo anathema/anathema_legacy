@@ -1,18 +1,10 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.swing.SwingColors;
 import net.sf.anathema.lib.model.ObjectModel;
-import net.sf.anathema.lib.provider.IProvider;
+import net.sf.anathema.lib.provider.Provider;
 import net.sf.anathema.lib.text.TextAlignment;
 
 import javax.swing.JComponent;
@@ -105,7 +97,7 @@ public class AutoWrappingTextComponent extends JComponent {
         repaint();
       }
     });
-    addKeyListener(new TextComponentKeyListener(content, selectionModel, new IProvider<Toolkit>() {
+    addKeyListener(new TextComponentKeyListener(content, selectionModel, new Provider<Toolkit>() {
       @Override
       public Toolkit getObject() {
         return getToolkit();
