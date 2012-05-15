@@ -4,10 +4,10 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface ISimpleCharmSpecialsView {
 
-  public void addSpeedValueChangedListener(IIntValueChangedListener listener);
+  void addSpeedValueChangedListener(IIntValueChangedListener listener);
 
-  public void addDefenseValueChangedListener(IIntValueChangedListener listener);
+  void addDefenseValueChangedListener(IIntValueChangedListener listener);
 
-  public void setEnabled(boolean enabled);
+  void setEnabled(boolean enabled);
 
 }

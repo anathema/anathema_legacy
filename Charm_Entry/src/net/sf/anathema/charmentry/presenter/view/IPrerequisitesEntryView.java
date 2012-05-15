@@ -7,7 +7,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IPrerequisitesEntryView extends IPageContent {
 
-  public ISelectableIntValueView<IIdentificate> addSelectablePrerequisiteView(String string, IIdentificate[] traits, int initial, int max);
+  ISelectableIntValueView<IIdentificate> addSelectablePrerequisiteView(String string, IIdentificate[] traits, int initial, int max);
 
-  public IIntValueView addEssencePrerequisiteView(String label, int minimum, int maximum);
+  IIntValueView addEssencePrerequisiteView(String label, int minimum, int maximum);
 }

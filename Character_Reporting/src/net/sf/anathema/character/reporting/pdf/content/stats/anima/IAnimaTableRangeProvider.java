@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 
 public interface IAnimaTableRangeProvider {
 
-  public String getRange(int level, IGenericCharacter character);
+  String getRange(int level, IGenericCharacter character);
 }

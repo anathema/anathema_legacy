@@ -12,39 +12,39 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IConfigurableCharmData extends IExtendedCharmData {
 
-  public ITextualDescription getName();
+  ITextualDescription getName();
 
   @Override
-  public IConfigurableCostList getTemporaryCost();
+  IConfigurableCostList getTemporaryCost();
 
   @Override
-  public CharmTypeModel getCharmTypeModel();
+  CharmTypeModel getCharmTypeModel();
 
-  public void setCharacterType(ICharacterType type);
+  void setCharacterType(ICharacterType type);
 
-  public void setEssencePrerequisite(IGenericTrait type);
+  void setEssencePrerequisite(IGenericTrait type);
 
-  public void setPrimaryPrerequisite(IGenericTrait trait);
+  void setPrimaryPrerequisite(IGenericTrait trait);
 
-  public void setDuration(IDuration duration);
+  void setDuration(IDuration duration);
 
-  public void setParentCharms(ICharm[] charms);
+  void setParentCharms(ICharm[] charms);
 
-  public void setExcellencyRequired(boolean required);
+  void setExcellencyRequired(boolean required);
 
-  public void addAttribute(ICharmAttribute charmAttribute);
+  void addAttribute(ICharmAttribute charmAttribute);
 
-  public void removeAttribute(ICharmAttribute charmAttribute);
+  void removeAttribute(ICharmAttribute charmAttribute);
 
-  public void setId(String id);
+  void setId(String id);
 
-  public void setGroupId(String id);
+  void setGroupId(String id);
 
-  public void setSource(IExaltedSourceBook sourceBook);
+  void setSource(IExaltedSourceBook sourceBook);
 
-  public int getPage();
+  int getPage();
 
-  public void setPage(int newValue);
+  void setPage(int newValue);
 
-  public IGenericTrait getPrimaryPrerequisite();
+  IGenericTrait getPrimaryPrerequisite();
 }

@@ -49,7 +49,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   @Override
   public void initPresentation() {
     initRulesPresentation();
-    final boolean casteRow = initCastePresentation();
+    boolean casteRow = initCastePresentation();
     IMotivation motivation = statistics.getCharacterConcept().getWillpowerRegainingConcept();
     initMotivationPresentation(motivation, casteRow);
     initAgePresentation();
@@ -155,7 +155,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     });
   }
 
-  private ITextView initTextualDescriptionPresentation(final ITextualDescription description, String resourceKey) {
+  private ITextView initTextualDescriptionPresentation(ITextualDescription description, String resourceKey) {
     final ITextView textView = view.addLabelTextView(resources.getString(resourceKey));
     new TextualPresentation().initView(textView, description);
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
@@ -188,7 +188,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   private boolean initCastePresentation() {
-    final ICharacterTemplate template = statistics.getCharacterTemplate();
+    ICharacterTemplate template = statistics.getCharacterTemplate();
     if (template.getCasteCollection().getAllCasteTypes(statistics.getCharacterTemplate().getTemplateType()).length <= 0) {
       return false;
     }

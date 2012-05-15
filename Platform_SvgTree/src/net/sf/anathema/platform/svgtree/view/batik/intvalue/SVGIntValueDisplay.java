@@ -74,12 +74,12 @@ public class SVGIntValueDisplay implements IIntValueView {
     }
   };
   
-  public static double getDiameter(final double nodeWidth) {
+  public static double getDiameter(double nodeWidth) {
     return nodeWidth / 10;
   }
 
-  public static double getDisplayDiameter(final double nodeWidth, final int numDots) {
-	final double modifier = .7;
+  public static double getDisplayDiameter(double nodeWidth, int numDots) {
+	double modifier = .7;
     return modifier * nodeWidth / numDots;
   }
 
@@ -102,11 +102,11 @@ public class SVGIntValueDisplay implements IIntValueView {
   private SVGOMDocument document;
 
   public SVGIntValueDisplay(
-      final int maxValue,
-      final int widthInDots,
-      final Color fillColor,
-      final int initialValue,
-      final double diameter) {
+      int maxValue,
+      int widthInDots,
+      Color fillColor,
+      int initialValue,
+      double diameter) {
     this.dotCount = maxValue;
     this.value = initialValue;
     this.radius = diameter / 2;
@@ -121,7 +121,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     this.fillOpacityString = String.valueOf((float) fillColor.getAlpha() / 255);
   }
 
-  public Element initGui(final SVGOMDocument svgDocument, final IBoundsCalculator calculator) {
+  public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator calculator) {
     this.boundsCalculator = calculator;
     this.document = svgDocument;
     this.groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
@@ -136,14 +136,14 @@ public class SVGIntValueDisplay implements IIntValueView {
     return groupElement;
   }
 
-  private void setSelectionRectangleWidth(final float clientX) {
+  private void setSelectionRectangleWidth(float clientX) {
     Rectangle groupBounds = boundsCalculator.getBounds((SVGLocatable) groupElement);
     float width = selectionRectangle.getScreenCTM().inverse().getA() * (clientX - groupBounds.x);
     double boundedWidth = Math.max(0, Math.min(maximumWidth, width));
     setAttribute(selectionRectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, String.valueOf(boundedWidth));
   }
 
-  private void selectCircles(final int xPosition) {
+  private void selectCircles(int xPosition) {
     Rectangle[] bounds = new Rectangle[dotCount];
     for (int index = 0; index < circles.length; index++) {
       bounds[index] = boundsCalculator.getBounds(circles[index]);
@@ -178,7 +178,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     return rectangle;
   }
 
-  private void setAttribute(final Element element, final String attributeName, final String attributeValue) {
+  private void setAttribute(Element element, String attributeName, String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
@@ -189,7 +189,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     }
   }
 
-  private SVGCircleElement createCircleElement(final SVGDocument svgDocument, final double xCoordinate) {
+  private SVGCircleElement createCircleElement(SVGDocument svgDocument, double xCoordinate) {
     org.w3c.dom.Element circle = svgDocument.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
         SVGConstants.SVG_CIRCLE_TAG);
@@ -203,7 +203,7 @@ public class SVGIntValueDisplay implements IIntValueView {
   }
 
   @Override
-  public void setValue(final int value) {
+  public void setValue(int value) {
     this.value = value;
     if (visible) {
       for (int imageIndex = 0; imageIndex < dotCount; imageIndex++) {
@@ -217,16 +217,16 @@ public class SVGIntValueDisplay implements IIntValueView {
   }
 
   @Override
-  public void addIntValueChangedListener(final IIntValueChangedListener listener) {
+  public void addIntValueChangedListener(IIntValueChangedListener listener) {
     valueControl.addListener(listener);
   }
 
   @Override
-  public void removeIntValueChangedListener(final IIntValueChangedListener listener) {
+  public void removeIntValueChangedListener(IIntValueChangedListener listener) {
     valueControl.removeListener(listener);
   }
 
-  private void fireValueChangedEvent(final int newValue) {
+  private void fireValueChangedEvent(int newValue) {
     valueControl.announce().valueChanged(newValue);
   }
 
@@ -236,11 +236,11 @@ public class SVGIntValueDisplay implements IIntValueView {
   }
 
   @Override
-  public void setMaximum(final int maximalValue) {
+  public void setMaximum(int maximalValue) {
     // nothing to do
   }
 
-  public void setVisible(final boolean visible) {
+  public void setVisible(boolean visible) {
     this.visible = visible;
     if (visible) {
       setValue(value);

@@ -29,11 +29,11 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   private ICharmLearnableArbitrator arbitrator;
   
   public MultiLearnableCharmConfiguration(
-	      final ICharacterModelContext context,
-	      final ICharmConfiguration config,
-	      final ICharm charm,
-	      final IMultiLearnableCharm specialCharm,
-	      final ICharmLearnableArbitrator arbitrator){
+	      ICharacterModelContext context,
+	      ICharmConfiguration config,
+	      ICharm charm,
+	      IMultiLearnableCharm specialCharm,
+	      ICharmLearnableArbitrator arbitrator){
 	this.context = context;
 	this.config = config;
 	this.charm = charm;
@@ -84,7 +84,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     control.addListener(listener);
   }
 
-  private void fireLearnCountChanged(final int learnCount) {
+  private void fireLearnCountChanged(int learnCount) {
     control.announce().learnCountChanged(learnCount);
   }
 

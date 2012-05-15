@@ -11,22 +11,22 @@ public abstract class AbstractChangeableModel implements Cloneable, IChangeableM
   @Override
   protected Object clone() {
     try {
-      final AbstractChangeableModel clone = (AbstractChangeableModel) super.clone();
+      AbstractChangeableModel clone = (AbstractChangeableModel) super.clone();
       clone.listeners = Announcer.to(IChangeListener.class);
       return clone;
     }
-    catch (final CloneNotSupportedException e) {
+    catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
   }
 
   @Override
-  public void addChangeListener(final IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     listeners.addListener(listener);
   }
 
   @Override
-  public void removeChangeListener(final IChangeListener listener) {
+  public void removeChangeListener(IChangeListener listener) {
     listeners.removeListener(listener);
   }
 

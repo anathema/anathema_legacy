@@ -1,26 +1,26 @@
 package net.sf.anathema.platform.svgtree.presenter.view;
 
-import java.awt.Cursor;
-import java.util.List;
-
 import org.apache.batik.swing.gvt.Interactor;
 import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGGElement;
 
+import java.awt.Cursor;
+import java.util.List;
+
 public interface IAnathemaCanvas {
 
-  public void setCursorInternal(Cursor currentCursor);
+  void setCursorInternal(Cursor currentCursor);
 
-  public void setToolTipText(String toolTip);
+  void setToolTipText(String toolTip);
 
-  public Element getElementById(String id);
+  Element getElementById(String id);
 
-  public SVGDocument getSVGDocument();
+  SVGDocument getSVGDocument();
 
-  public List<Interactor> getInteractors();
+  List<Interactor> getInteractors();
 
-  public List<SVGGElement> getNodeElements();
+  List<SVGGElement> getNodeElements();
 
-  public List<SVGGElement> getControlElements();
+  List<SVGGElement> getControlElements();
 }

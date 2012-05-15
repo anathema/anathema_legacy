@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTe
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePoolParser;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Element;
 
 public abstract class AbstractPoolTemplateParser {
@@ -31,11 +30,11 @@ public abstract class AbstractPoolTemplateParser {
     if (traitElement == null) {
       return;
     }
-    final GenericTraitTemplatePool traitPool = createPoolParser().parseTemplate(traitElement);
+    GenericTraitTemplatePool traitPool = createPoolParser().parseTemplate(traitElement);
     executeResult(traitPool);
   }
 
-  protected abstract void executeResult(final GenericTraitTemplatePool traitPool);
+  protected abstract void executeResult(GenericTraitTemplatePool traitPool);
 
   protected abstract String getTagName();
 

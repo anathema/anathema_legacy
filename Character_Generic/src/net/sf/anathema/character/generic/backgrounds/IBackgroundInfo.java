@@ -4,7 +4,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface IBackgroundInfo
 {
-	public String getName(IResources resources);
+	String getName(IResources resources);
 	
-	public String getDescription();
+	String getDescription();
 }

@@ -72,7 +72,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   }
 
   @Override
-  public final String getNodeName(final String nodeId) {
+  public final String getNodeName(String nodeId) {
 	ICharm charm = getCharmById(nodeId);
     if (charmLabeler.supportsMagic(charm)) {
       return charmLabeler.getLabelForMagic(charm);
@@ -91,12 +91,12 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   }
 
   @Override
-  public final boolean isRequirementNode(final String nodeId) {
+  public final boolean isRequirementNode(String nodeId) {
     return nodeId.startsWith(REQUIREMENT);
   }
 
   @Override
-  public final boolean isRootNode(final String charmId) {
+  public final boolean isRootNode(String charmId) {
     if (isRequirementNode(charmId)) {
       return false;
     }
@@ -115,7 +115,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   protected abstract ISpecialCharm getSpecialCharm(String id);
 
   @Override
-  public final String getToolTip(final String charmId) {
+  public final String getToolTip(String charmId) {
     if (isRequirementNode(charmId)) {
       return null;
     }

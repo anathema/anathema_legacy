@@ -2,8 +2,8 @@ package net.sf.anathema.campaign.music.presenter;
 
 public interface ISearchParameter {
 
-  public String getDisplayKey();
+  String getDisplayKey();
 
-  public String getFieldName();
+  String getFieldName();
 
 }

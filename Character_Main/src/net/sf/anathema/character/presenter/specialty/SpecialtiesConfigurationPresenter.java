@@ -1,12 +1,5 @@
 package net.sf.anathema.character.presenter.specialty;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
-import java.util.Comparator;
-
-import javax.swing.Icon;
-
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
@@ -26,6 +19,12 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class SpecialtiesConfigurationPresenter implements Presenter {
 
@@ -164,7 +163,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     return specialtyManagement.getSpecialtiesContainer(reference);
   }
 
-  private void reset(final IButtonControlledComboEditView< ? > specialtySelectionView) {
+  private void reset(IButtonControlledComboEditView< ? > specialtySelectionView) {
     specialtyManagement.clear();
     specialtySelectionView.clear();
   }
@@ -198,7 +197,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     String traitName = i18ner.getScreenName(traitReference);
     String specialtyName = specialty.getName();
     Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
-    final ISpecialtyView specialtyView = configurationView.addSpecialtyView(
+    ISpecialtyView specialtyView = configurationView.addSpecialtyView(
         traitName,
         specialtyName,
         deleteIcon,

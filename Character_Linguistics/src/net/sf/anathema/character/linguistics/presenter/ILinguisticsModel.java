@@ -6,25 +6,25 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ILinguisticsModel extends IRemovableEntryModel<IIdentificate> {
 
-  public IIdentificate[] getPredefinedLanguages();
+  IIdentificate[] getPredefinedLanguages();
 
-  public boolean isPredefinedLanguage(Object object);
+  boolean isPredefinedLanguage(Object object);
 
-  public IIdentificate getPredefinedLanguageById(String displayName);
+  IIdentificate getPredefinedLanguageById(String displayName);
 
-  public void selectBarbarianLanguage(String customName);
+  void selectBarbarianLanguage(String customName);
 
-  public void selectLanguage(IIdentificate language);
+  void selectLanguage(IIdentificate language);
 
-  public boolean isEntryAllowed();
+  boolean isEntryAllowed();
 
-  public int getPredefinedLanguageCount();
+  int getPredefinedLanguageCount();
 
-  public int getBarbarianLanguageCount();
+  int getBarbarianLanguageCount();
 
-  public int getLanguagePointsSpent();
+  int getLanguagePointsSpent();
 
-  public void addCharacterChangedListener(IChangeListener listener);
+  void addCharacterChangedListener(IChangeListener listener);
 
-  public int getLanguagePointsAllowed();
+  int getLanguagePointsAllowed();
 }

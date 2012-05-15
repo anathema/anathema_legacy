@@ -3,9 +3,9 @@ package net.sf.anathema.lib.message;
 public interface IMessage extends IBasicMessage {
 
   @Deprecated
-  public String getTitle();
+  String getTitle();
 
-  public Throwable getThrowable();
+  Throwable getThrowable();
 
-  public String getDetail();
+  String getDetail();
 }

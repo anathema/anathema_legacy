@@ -67,7 +67,7 @@ public class CharacterStatistics implements ICharacterStatistics {
   private final ExtendedConfiguration extendedConfiguration = new ExtendedConfiguration(context);
   private final ICoreTraitConfiguration traitConfiguration;
 
-  public CharacterStatistics(final ICharacterTemplate template, ICharacterGenerics generics) throws SpellException {
+  public CharacterStatistics(ICharacterTemplate template, ICharacterGenerics generics) throws SpellException {
     Preconditions.checkNotNull(template);
     Preconditions.checkNotNull(generics);
     this.characterTemplate = template;

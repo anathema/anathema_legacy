@@ -81,7 +81,7 @@ public class StartDatabaseAction extends SmartAction {
   }
 
   @Override
-  protected void execute(final Component parentComponent) {
+  protected void execute(Component parentComponent) {
     try {
       String title = properties.getProgressMonitorTitle();
       new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptibleRunnableWithProgress() {

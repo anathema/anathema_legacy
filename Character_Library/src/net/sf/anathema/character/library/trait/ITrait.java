@@ -6,17 +6,17 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface ITrait extends IGenericTrait {
 
-  public int getInitialValue();
+  int getInitialValue();
 
-  public int getMaximalValue();
+  int getMaximalValue();
 
-  public void addCreationPointListener(IIntValueChangedListener listener);
+  void addCreationPointListener(IIntValueChangedListener listener);
 
-  public void removeCreationPointListener(IIntValueChangedListener listener);
+  void removeCreationPointListener(IIntValueChangedListener listener);
 
-  public void addCurrentValueListener(IIntValueChangedListener listener);
+  void addCurrentValueListener(IIntValueChangedListener listener);
 
-  public void removeCurrentValueListener(IIntValueChangedListener listener);
+  void removeCurrentValueListener(IIntValueChangedListener listener);
 
-  public void accept(ITraitVisitor visitor);
+  void accept(ITraitVisitor visitor);
 }

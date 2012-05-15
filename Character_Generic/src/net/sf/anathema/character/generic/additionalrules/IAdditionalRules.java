@@ -5,19 +5,19 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface IAdditionalRules {
 
-  public IAdditionalBonusPointPool[] getAdditionalBonusPointPools();
+  IAdditionalBonusPointPool[] getAdditionalBonusPointPools();
 
-  public IAdditionalMagicLearnPool[] getAdditionalMagicLearnPools();
+  IAdditionalMagicLearnPool[] getAdditionalMagicLearnPools();
 
-  public IAdditionalEssencePool[] getAdditionalEssencePools();
+  IAdditionalEssencePool[] getAdditionalEssencePools();
 
-  public boolean isRejected(IBackgroundTemplate backgroundTemplate);
+  boolean isRejected(IBackgroundTemplate backgroundTemplate);
   
-  public boolean isRevisedIntimacies();
+  boolean isRevisedIntimacies();
 
-  public ITraitCostModifier getCostModifier(ITraitType type);
+  ITraitCostModifier getCostModifier(ITraitType type);
 
-  public String[] getCompulsiveCharmIDs();
+  String[] getCompulsiveCharmIDs();
 
-  public IAdditionalTraitRules getAdditionalTraitRules();
+  IAdditionalTraitRules getAdditionalTraitRules();
 }

@@ -6,9 +6,9 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 public interface IAttributeCostCalculator extends IFavorableTraitCostCalculator
 {
-  public abstract void calculateAttributeCosts();
+  void calculateAttributeCosts();
 
-  public abstract int getBonusPoints();
+  int getBonusPoints();
 
-  public abstract ElementCreationCost getCosts(IDefaultTrait attribute);
+  ElementCreationCost getCosts(IDefaultTrait attribute);
 }

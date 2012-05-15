@@ -5,27 +5,27 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IEquipmentStatisticsCreationModel {
 
-  public void setEquipmentType(EquipmentStatisticsType type);
+  void setEquipmentType(EquipmentStatisticsType type);
 
-  public ICloseCombatStatsticsModel getCloseCombatStatsticsModel();
+  ICloseCombatStatsticsModel getCloseCombatStatsticsModel();
 
-  public IRangedCombatStatisticsModel getRangedWeaponStatisticsModel();
+  IRangedCombatStatisticsModel getRangedWeaponStatisticsModel();
 
-  public IArmourStatisticsModel getArmourStatisticsModel();
+  IArmourStatisticsModel getArmourStatisticsModel();
   
-  public IArtifactStatisticsModel getArtifactStatisticsModel();
+  IArtifactStatisticsModel getArtifactStatisticsModel();
   
-  public ITraitModifyingStatisticsModel getTraitModifyingStatisticsModel();
+  ITraitModifyingStatisticsModel getTraitModifyingStatisticsModel();
 
-  public void addEquipmentTypeChangeListener(IChangeListener changeListener);
+  void addEquipmentTypeChangeListener(IChangeListener changeListener);
 
-  public boolean isEquipmentTypeSelected(EquipmentStatisticsType type);
+  boolean isEquipmentTypeSelected(EquipmentStatisticsType type);
   
-  public IApplicableMaterialsModel getApplicableMaterialsModel();
+  IApplicableMaterialsModel getApplicableMaterialsModel();
 
-  public IWeaponTagsModel getWeaponTagsModel();
+  IWeaponTagsModel getWeaponTagsModel();
 
-  public EquipmentStatisticsType getEquipmentType();
+  EquipmentStatisticsType getEquipmentType();
 
-  public boolean isNameUnique(String name);
+  boolean isNameUnique(String name);
 }

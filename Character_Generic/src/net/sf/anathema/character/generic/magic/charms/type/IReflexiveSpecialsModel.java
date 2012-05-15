@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.magic.charms.type;
 
 public interface IReflexiveSpecialsModel extends ITypeSpecialsModel {
 
-  public Integer getPrimaryStep();
+  Integer getPrimaryStep();
 
-  public Integer getSecondaryStep();
+  Integer getSecondaryStep();
 
-  public boolean isSplitEnabled();
+  boolean isSplitEnabled();
 }

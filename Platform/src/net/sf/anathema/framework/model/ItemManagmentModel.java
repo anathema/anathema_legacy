@@ -42,11 +42,11 @@ public class ItemManagmentModel implements IItemManagementModel {
     listeners.announce().itemRemoved(item);
   }
 
-  private void fireItemAddedEvent(final IItem item) throws AnathemaException {
+  private void fireItemAddedEvent(IItem item) throws AnathemaException {
     listeners.announce().itemAdded(item);
   }
 
-  private void fireCharacterSelectionChangedEvent(final IItem item) {
+  private void fireCharacterSelectionChangedEvent(IItem item) {
     listeners.announce().itemSelected(item);
   }
 

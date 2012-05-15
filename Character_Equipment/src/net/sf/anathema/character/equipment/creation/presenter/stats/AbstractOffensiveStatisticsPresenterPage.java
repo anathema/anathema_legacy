@@ -1,15 +1,14 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
-import java.awt.Component;
-
-import javax.swing.JPanel;
-
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.JPanel;
+import java.awt.Component;
 
 public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffensiveStatisticsModel, P extends OffensiveStatisticsProperties> extends
     AbstractEquipmentStatisticsPresenterPage<O, P> {
@@ -48,8 +47,8 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
         secondComponent });
   }
 
-  private void initWeaponDamageRow(final IWeaponDamageModel damageModel) {
-    final IWeaponDamageView damageView = getViewFactory().createWeaponDamageView();
+  private void initWeaponDamageRow(IWeaponDamageModel damageModel) {
+    IWeaponDamageView damageView = getViewFactory().createWeaponDamageView();
     new WeaponDamagePresenter(getResources(), damageModel, damageView).initPresentation();
     getPageContent().addDialogComponent(damageView);
   }

@@ -1,30 +1,29 @@
 package net.sf.anathema.character.generic.framework.magic.view;
 
-import java.util.Comparator;
+import net.sf.anathema.lib.util.IIdentificate;
 
 import javax.swing.event.ListSelectionListener;
-
-import net.sf.anathema.lib.util.IIdentificate;
+import java.util.Comparator;
 
 public interface IMagicLearnView {
 
-  public void setMagicOptions(Object[] magics);
+  void setMagicOptions(Object[] magics);
 
-  public void setLearnedMagic(Object[] magics);
+  void setLearnedMagic(Object[] magics);
 
-  public void addMagicOptions(IIdentificate[] magics, Comparator<IIdentificate> comparator);
+  void addMagicOptions(IIdentificate[] magics, Comparator<IIdentificate> comparator);
 
-  public void addLearnedMagic(Object[] magics);
+  void addLearnedMagic(Object[] magics);
 
-  public void removeMagicOptions(Object[] magics);
+  void removeMagicOptions(Object[] magics);
 
-  public void removeLearnedMagic(Object[] magics);
+  void removeLearnedMagic(Object[] magics);
 
-  public void clearSelection();
+  void clearSelection();
 
-  public void addMagicViewListener(IMagicViewListener listener);
+  void addMagicViewListener(IMagicViewListener listener);
 
-  public void addSelectionListListener(ListSelectionListener listener);
+  void addSelectionListListener(ListSelectionListener listener);
 
-  public void addOptionListListener(ListSelectionListener listener);
+  void addOptionListListener(ListSelectionListener listener);
 }

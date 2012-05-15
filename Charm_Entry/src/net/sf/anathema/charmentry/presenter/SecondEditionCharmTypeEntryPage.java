@@ -1,10 +1,5 @@
 package net.sf.anathema.charmentry.presenter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JToggleButton;
-
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.charmentry.module.ICharmEntryViewFactory;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
@@ -12,6 +7,10 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.JToggleButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SecondEditionCharmTypeEntryPage extends CharmTypeEntryPage {
 
@@ -75,7 +74,7 @@ public class SecondEditionCharmTypeEntryPage extends CharmTypeEntryPage {
     getPageModel().addModelListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
-        final boolean available = getPageModel().isSpecialModelAvailable();
+        boolean available = getPageModel().isSpecialModelAvailable();
         if (!available) {
           button.setSelected(false);
           getPageModel().setSpecialModelEnabled(false);

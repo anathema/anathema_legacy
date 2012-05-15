@@ -1,7 +1,5 @@
 package net.sf.anathema.namegenerator.anathema;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -22,6 +20,8 @@ import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
 import net.sf.anathema.namegenerator.view.NameGeneratorView;
 
+import javax.swing.Icon;
+
 @ItemTypeConfiguration
 public final class NameGeneratorItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
@@ -32,7 +32,7 @@ public final class NameGeneratorItemTypeConfiguration extends AbstractNonPersist
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(final IAnathemaModel anathemaModel, final IResources resources) {
+  protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {

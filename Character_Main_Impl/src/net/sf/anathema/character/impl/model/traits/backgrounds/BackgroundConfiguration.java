@@ -74,7 +74,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   }
   
   @Override
-  public IBackground addBackground(final IBackgroundTemplate backgroundType, String description)
+  public IBackground addBackground(IBackgroundTemplate backgroundType, String description)
   {
 	  return addBackground(backgroundType, description, false);
   }
@@ -122,7 +122,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     listeners.addListener(listener);
   }
 
-  private void fireBackgroundAddedEvent(final IBackground background) {
+  private void fireBackgroundAddedEvent(IBackground background) {
     listeners.announce().backgroundAdded(background);
   }
 
@@ -132,7 +132,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     fireBackgroundRemovedEvent(background);
   }
 
-  private void fireBackgroundRemovedEvent(final IBackground background) {
+  private void fireBackgroundRemovedEvent(IBackground background) {
     listeners.announce().backgroundRemoved(background);
   }
 

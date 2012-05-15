@@ -8,7 +8,7 @@ import javax.swing.ListCellRenderer;
 
 public interface ISimpleSpecialsView extends IPageContent {
 
-  public IIntValueView addIntegerSelectionView(String speedLabel, int maximum);
+  IIntValueView addIntegerSelectionView(String speedLabel, int maximum);
 
-  public <V> IObjectSelectionView<V> addObjectSelectionView(String labelString, ListCellRenderer renderer, V[] objects);
+  <V> IObjectSelectionView<V> addObjectSelectionView(String labelString, ListCellRenderer renderer, V[] objects);
 }

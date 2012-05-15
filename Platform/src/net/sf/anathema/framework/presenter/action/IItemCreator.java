@@ -7,5 +7,5 @@ import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplat
 
 public interface IItemCreator {
 
-  public IItem createItem(IItemType type, IAnathemaWizardModelTemplate template) throws PersistenceException;
+  IItem createItem(IItemType type, IAnathemaWizardModelTemplate template) throws PersistenceException;
 }

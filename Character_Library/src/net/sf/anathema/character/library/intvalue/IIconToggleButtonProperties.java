@@ -4,9 +4,9 @@ import javax.swing.Icon;
 
 public interface IIconToggleButtonProperties {
 
-  public Icon createStandardIcon();
+  Icon createStandardIcon();
 
-  public Icon createUnselectedIcon();
+  Icon createUnselectedIcon();
 
-  public String getToolTipText();
+  String getToolTipText();
 }

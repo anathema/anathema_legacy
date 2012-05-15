@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 
 public interface IAdditionalTraitRules {
 
-  public boolean isAllowedTraitValue(IGenericTrait trait, IGenericTraitCollection collection);
+  boolean isAllowedTraitValue(IGenericTrait trait, IGenericTraitCollection collection);
   
-  public boolean isWillpowerVirtueBased();
+  boolean isWillpowerVirtueBased();
 }

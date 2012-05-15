@@ -103,8 +103,8 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   }
 
   private void addIncapacitatedMovement(SheetGraphics graphics, PdfPTable table) {
-    final Phrase commentPhrase = createIncapacitatedComment(graphics);
-    final TableCell cell = new TableCell(commentPhrase, Rectangle.NO_BORDER);
+    Phrase commentPhrase = createIncapacitatedComment(graphics);
+    TableCell cell = new TableCell(commentPhrase, Rectangle.NO_BORDER);
     cell.setColspan(getMovementColumns().length);
     cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
     table.addCell(cell);
@@ -141,8 +141,8 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
 
   protected void addHealthPenaltyCells(SheetGraphics graphics, PdfPTable table, HealthLevelType level, int painTolerance) {
     Font font = createDefaultFont(graphics);
-    final String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
-    final Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);
+    String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
+    Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);
     PdfPCell healthPdfPCell = new TableCell(healthPenaltyPhrase, Rectangle.NO_BORDER);
     if (level == HealthLevelType.INCAPACITATED) {
       healthPdfPCell.setColspan(2);
@@ -151,10 +151,10 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
       table.addCell(healthPdfPCell);
       String painToleranceText = " "; //$NON-NLS-1$
       if (painTolerance > 0) {
-        final int value = getPenalty(level, painTolerance);
+        int value = getPenalty(level, painTolerance);
         painToleranceText = "(" + (value == 0 ? "-" : "") + value + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
       }
-      final TableCell painToleranceCell = new TableCell(new Phrase(painToleranceText, font), Rectangle.NO_BORDER);
+      TableCell painToleranceCell = new TableCell(new Phrase(painToleranceText, font), Rectangle.NO_BORDER);
       painToleranceCell.setHorizontalAlignment(Element.ALIGN_CENTER);
       table.addCell(painToleranceCell);
     }

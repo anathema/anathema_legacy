@@ -5,6 +5,6 @@ import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 
 public interface ILinguisticsAdditionalModel extends IAdditionalModel {
 
-  public ILinguisticsModel getLinguisticsModel();
+  ILinguisticsModel getLinguisticsModel();
 
 }

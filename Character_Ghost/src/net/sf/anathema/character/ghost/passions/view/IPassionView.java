@@ -5,9 +5,9 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IPassionView extends IIntValueView {
 
-  public void addDeleteListener(IChangeListener listener);
+  void addDeleteListener(IChangeListener listener);
 
-  public void delete();
+  void delete();
 
-  public void setDeleteButtonEnabled(boolean enabled);
+  void setDeleteButtonEnabled(boolean enabled);
 }

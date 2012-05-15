@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -25,6 +22,9 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.health.IPainToleranceProvider;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SpecialCharmManager implements ISpecialCharmManager {
   private final Map<ICharm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<ICharm, ISpecialCharmConfiguration>();
   private final IHealthConfiguration health;
@@ -44,7 +44,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
 
   @Override
   public void registerSpecialCharmConfiguration(
-          final ISpecialCharm specialCharm,
+          ISpecialCharm specialCharm,
           final ICharm charm,
           final ILearningCharmGroup group) {
     specialCharm.accept(new ISpecialCharmVisitor() {

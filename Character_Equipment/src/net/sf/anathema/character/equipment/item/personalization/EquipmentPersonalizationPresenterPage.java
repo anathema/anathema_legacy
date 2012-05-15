@@ -72,7 +72,7 @@ public class EquipmentPersonalizationPresenterPage extends AbstractAnathemaWizar
 			try {
 				Document document = event.getDocument();
 				listener.textChanged(document.getText(0, document.getLength()));
-			} catch (BadLocationException e) {
+			} catch (BadLocationException ignored) {
 			}
 		}
 
@@ -81,7 +81,7 @@ public class EquipmentPersonalizationPresenterPage extends AbstractAnathemaWizar
 			try {
 				Document document = event.getDocument();
 				listener.textChanged(document.getText(0, document.getLength()));
-			} catch (BadLocationException e) {
+			} catch (BadLocationException ignored) {
 			}
 		}
 
@@ -90,7 +90,7 @@ public class EquipmentPersonalizationPresenterPage extends AbstractAnathemaWizar
 			try {
 				Document document = event.getDocument();
 				listener.textChanged(document.getText(0, document.getLength()));
-			} catch (BadLocationException e) {
+			} catch (BadLocationException ignored) {
 			}
 		}
 		  

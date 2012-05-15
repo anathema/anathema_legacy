@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 
 public class ToPrintFetter implements Function<Fetter, NamedValue> {
   @Override
-  public NamedValue apply(@Nullable final Fetter input) {
+  public NamedValue apply(@Nullable Fetter input) {
     return new PrintFetter(input);
   }
 }

@@ -4,7 +4,7 @@ import javax.swing.event.ListSelectionListener;
 
 public interface ILibraryListView {
 
-  public void addLibraryListSelectionListener(ListSelectionListener listener);
+  void addLibraryListSelectionListener(ListSelectionListener listener);
 
-  public Object getSelectedLibrary();
+  Object getSelectedLibrary();
 }

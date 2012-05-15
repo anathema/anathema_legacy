@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.util.IStats;
 
 public interface IHeartsBloodStats extends IStats {
 
-  public String getStrengthString();
+  String getStrengthString();
   
-  public String getDexterityString();
+  String getDexterityString();
 
-  public String getStaminaString();
+  String getStaminaString();
   
-  public String getAppearanceString();
+  String getAppearanceString();
 
 }

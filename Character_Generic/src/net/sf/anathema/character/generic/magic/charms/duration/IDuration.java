@@ -4,7 +4,7 @@ import net.sf.anathema.lib.resources.IStringResourceHandler;
 
 public interface IDuration {
 
-  public String getText(IStringResourceHandler resources);
+  String getText(IStringResourceHandler resources);
 
-  public void accept(IDurationVisitor visitor);
+  void accept(IDurationVisitor visitor);
 }

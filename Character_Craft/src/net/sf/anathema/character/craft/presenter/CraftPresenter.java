@@ -1,8 +1,5 @@
 package net.sf.anathema.character.craft.presenter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.selection.AbstractStringEntryTraitPresenter;
@@ -14,6 +11,9 @@ import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait> implements Presenter {
 
@@ -82,7 +82,7 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
   }
 
   private IRemovableTraitView< ? > createSubView(BasicUi basicUi, final ISubTrait craft, String name) {
-    final IRemovableTraitView< ? > craftView = view.addEntryView(basicUi.getRemoveIcon(), craft, name);
+    IRemovableTraitView< ? > craftView = view.addEntryView(basicUi.getRemoveIcon(), craft, name);
     craftView.setValue(craft.getCurrentValue());
     new TraitPresenter(craft, craftView).initPresentation();
     craftView.addButtonListener(new ActionListener() {

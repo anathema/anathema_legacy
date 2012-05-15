@@ -2,11 +2,11 @@ package net.sf.anathema.framework.item;
 
 public interface IRepositoryConfiguration {
 
-  public String getMainFileName();
+  String getMainFileName();
 
-  public boolean isItemSavedToSingleFile();
+  boolean isItemSavedToSingleFile();
 
-  public String getFileExtension();
+  String getFileExtension();
 
-  public String getFolderName();
+  String getFolderName();
 }

@@ -8,9 +8,9 @@ import javax.swing.JRadioButton;
 
 public interface IDurationEntryView extends IPageContent {
 
-  public ITextView addRadioButtonTextField(String string);
+  ITextView addRadioButtonTextField(String string);
 
-  public JRadioButton addRadioButton(String string);
+  JRadioButton addRadioButton(String string);
 
-  public void addTypeChangeListener(IChangeListener changeListener);
+  void addTypeChangeListener(IChangeListener changeListener);
 }

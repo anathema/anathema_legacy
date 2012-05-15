@@ -4,5 +4,5 @@ import org.jdesktop.swingx.JXTaskPane;
 
 public interface ITaskPaneGroupView {
 
-  public JXTaskPane getTaskGroup();
+  JXTaskPane getTaskGroup();
 }

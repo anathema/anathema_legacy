@@ -1,10 +1,10 @@
 package net.sf.anathema.namegenerator.presenter;
 
-import javax.swing.JComponent;
-
 import net.sf.anathema.lib.util.IIdentificate;
+
+import javax.swing.JComponent;
 
 public interface INameGeneratorTypePresentation {
 
-  public JComponent initGeneratorTypePresentation(IIdentificate generatorType);
+  JComponent initGeneratorTypePresentation(IIdentificate generatorType);
 }

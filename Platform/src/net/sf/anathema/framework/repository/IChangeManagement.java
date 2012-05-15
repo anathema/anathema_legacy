@@ -3,11 +3,11 @@ package net.sf.anathema.framework.repository;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IChangeManagement {
-  public boolean isDirty();
+  boolean isDirty();
 
-  public void setClean();
+  void setClean();
 
-  public void removeDirtyListener(IChangeListener changeListener);
+  void removeDirtyListener(IChangeListener changeListener);
 
-  public void addDirtyListener(IChangeListener changeListener);
+  void addDirtyListener(IChangeListener changeListener);
 }

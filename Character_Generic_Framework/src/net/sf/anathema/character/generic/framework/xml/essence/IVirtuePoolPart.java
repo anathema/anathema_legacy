@@ -5,5 +5,5 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 
 public interface IVirtuePoolPart {
 
-  public FactorizedTrait createFactorizedTrait(IGenericTrait[] virtues);
+  FactorizedTrait createFactorizedTrait(IGenericTrait[] virtues);
 }

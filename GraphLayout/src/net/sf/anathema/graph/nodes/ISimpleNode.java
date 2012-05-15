@@ -4,22 +4,22 @@ import net.sf.anathema.graph.ordering.IStructureNode;
 
 public interface ISimpleNode extends IStructureNode {
 
-  public ISimpleNode[] getChildren();
+  ISimpleNode[] getChildren();
 
-  public int getLayer();
+  int getLayer();
 
-  public ISimpleNode[] getParents();
+  ISimpleNode[] getParents();
 
-  public boolean isRootNode();
+  boolean isRootNode();
 
   @Override
-  public boolean isLeafNode();
+  boolean isLeafNode();
 
-  public void removeParent(ISimpleNode node);
+  void removeParent(ISimpleNode node);
 
-  public void addParent(ISimpleNode newNode);
+  void addParent(ISimpleNode newNode);
 
-  public void reorderChildren(ISimpleNode[] orderedNodes);
+  void reorderChildren(ISimpleNode[] orderedNodes);
 
   ISimpleNode[] getChildren(ISimpleNode[] childrenLayer);
 }

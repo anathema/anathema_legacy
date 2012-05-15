@@ -157,7 +157,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   protected final IntegerSpinner initIntegerSpinner(IIntValueModel intModel) {
-    final IntegerSpinner spinner = new IntegerSpinner(intModel.getValue());
+    IntegerSpinner spinner = new IntegerSpinner(intModel.getValue());
     new IntValuePresentation().initView(spinner, intModel);
     return spinner;
   }

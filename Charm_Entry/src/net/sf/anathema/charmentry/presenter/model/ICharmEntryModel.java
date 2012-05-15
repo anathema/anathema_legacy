@@ -5,19 +5,19 @@ import net.sf.anathema.charmentry.model.IHeaderDataModel;
 
 public interface ICharmEntryModel {
 
-  public IHeaderDataModel getHeaderDataModel();
+  IHeaderDataModel getHeaderDataModel();
 
-  public ICharmTypeEntryModel getCharmTypeModel();
+  ICharmTypeEntryModel getCharmTypeModel();
 
-  public IPrerequisitesModel getPrerequisitesModel();
+  IPrerequisitesModel getPrerequisitesModel();
 
-  public IDurationEntryModel getDurationModel();
+  IDurationEntryModel getDurationModel();
 
-  public ICostEntryModel getCostEntryModel();
+  ICostEntryModel getCostEntryModel();
 
-  public ICharmPrerequisitesEntryModel getCharmPrerequisitesModel();
+  ICharmPrerequisitesEntryModel getCharmPrerequisitesModel();
 
-  public IKeywordEntryModel getKeywordEntryModel();
+  IKeywordEntryModel getKeywordEntryModel();
 
-  public ICharmEntryData getCharmData();
+  ICharmEntryData getCharmData();
 }

@@ -2,19 +2,19 @@ package net.sf.anathema.charmentry.presenter.model;
 
 public interface ICostEntryModel {
 
-  public void setEssenceCostValue(String newValue);
+  void setEssenceCostValue(String newValue);
 
-  public void setEssenceCostText(String newValue);
+  void setEssenceCostText(String newValue);
 
-  public void setWillpowerCostValue(String newValue);
+  void setWillpowerCostValue(String newValue);
 
-  public void setWillpowerCostText(String newValue);
+  void setWillpowerCostText(String newValue);
 
-  public void setHealthCostValue(String newValue);
+  void setHealthCostValue(String newValue);
 
-  public void setHealthCostText(String newValue);
+  void setHealthCostText(String newValue);
 
-  public void setXpCostValue(String newValue);
+  void setXpCostValue(String newValue);
 
-  public void setXpCostText(String newValue);
+  void setXpCostText(String newValue);
 }

@@ -10,20 +10,20 @@ import java.util.Map;
 public class VisualizableDummyNode extends AbstractSingleVisualizableNode {
 
   @Override
-  public void accept(final IVisualizableNodeVisitor visitor) {
+  public void accept(IVisualizableNodeVisitor visitor) {
     visitor.visitDummyNode(this);
   }
 
   public VisualizableDummyNode(
-      final ISimpleNode contentNode,
-      final Map<ISimpleNode, IVisualizableNode> map,
-      final Dimension nodeDimension,
-      final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
+      ISimpleNode contentNode,
+      Map<ISimpleNode, IVisualizableNode> map,
+      Dimension nodeDimension,
+      MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
     super(contentNode, map, nodeDimension, leafNodesByAncestors);
   }
 
   @Override
-  public void toXML(final Element element) {
+  public void toXML(Element element) {
     // Nothing to do
   }
 

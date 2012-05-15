@@ -5,7 +5,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface ISolarVirtueFlaw extends IVirtueFlaw {
 
-  public ITextualDescription getDescription();
+  ITextualDescription getDescription();
 
-  public ITextualDescription getLimitBreak();
+  ITextualDescription getLimitBreak();
 }

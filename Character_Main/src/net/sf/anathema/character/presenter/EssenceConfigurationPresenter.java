@@ -23,9 +23,9 @@ public class EssenceConfigurationPresenter implements Presenter {
 
   public EssenceConfigurationPresenter(
           IResources resources,
-          final IEssencePoolConfiguration essence,
-          final ICoreTraitConfiguration traitConfiguration,
-          final IBasicAdvantageView view) {
+          IEssencePoolConfiguration essence,
+          ICoreTraitConfiguration traitConfiguration,
+          IBasicAdvantageView view) {
     this.resources = resources;
     this.essence = essence;
     this.traitConfiguration = traitConfiguration;

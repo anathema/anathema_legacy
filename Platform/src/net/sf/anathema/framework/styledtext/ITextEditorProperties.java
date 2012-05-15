@@ -4,9 +4,9 @@ import javax.swing.Action;
 
 public interface ITextEditorProperties {
 
-  public void initBoldAction(Action action);
+  void initBoldAction(Action action);
 
-  public void initItalicAction(Action action);
+  void initItalicAction(Action action);
 
-  public void initUnderlineAction(Action action);
+  void initUnderlineAction(Action action);
 }

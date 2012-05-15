@@ -6,9 +6,9 @@ import javax.swing.ListCellRenderer;
 
 public interface IObjectSelectionProperties {
 
-  public ListCellRenderer getCellRenderer();
+  ListCellRenderer getCellRenderer();
 
-  public String getSelectionTitle();
+  String getSelectionTitle();
 
-  public IBasicMessage getSelectMessage();
+  IBasicMessage getSelectMessage();
 }

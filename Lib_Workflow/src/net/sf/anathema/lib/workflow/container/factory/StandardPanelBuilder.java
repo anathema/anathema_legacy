@@ -31,7 +31,7 @@ public class StandardPanelBuilder {
     dialogPanel.add(component);
   }
 
-  public ITextView addLineTextView(final String labelName, int columnCount) {
+  public ITextView addLineTextView(String labelName, int columnCount) {
     return addLabelledTextView(labelName, new LineTextView(columnCount));
   }
 
@@ -68,11 +68,11 @@ public class StandardPanelBuilder {
     };
   }
 
-  public ITextView addAreaTextView(final String labelName, int rowCount, int columnCount) {
+  public ITextView addAreaTextView(String labelName, int rowCount, int columnCount) {
     return addLabelledTextView(labelName, new AreaTextView(rowCount, columnCount));
   }
 
-  private ITextView addLabelledTextView(final String labelText, final ITextView textView) {
+  private ITextView addLabelledTextView(String labelText, ITextView textView) {
     final LabelTextView labelTextView = new LabelTextView(labelText, textView);
     addDialogComponent(new IDialogComponent() {
       @Override

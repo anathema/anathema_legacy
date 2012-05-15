@@ -7,11 +7,11 @@ import net.sf.anathema.character.mutations.model.types.SoakProvidingMutation;
 
 public interface IMutationVisitor {
 
-  public void visitAttributePointsProvidingMutation(AttributePointsProvidingMutation mutation);
+  void visitAttributePointsProvidingMutation(AttributePointsProvidingMutation mutation);
 
-  public void visitAttributeEnhancingMutation(AttributeEnhancingMutation mutation);
+  void visitAttributeEnhancingMutation(AttributeEnhancingMutation mutation);
 
-  public void acceptSoakProvidingMutation(SoakProvidingMutation mutation);
+  void acceptSoakProvidingMutation(SoakProvidingMutation mutation);
 
-  public void acceptBrawlWeaponProvidingMutation(BrawlWeaponProvidingMutation mutation);
+  void acceptBrawlWeaponProvidingMutation(BrawlWeaponProvidingMutation mutation);
 }

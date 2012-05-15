@@ -4,5 +4,5 @@ import net.sf.anathema.framework.value.IIntValueView;
 
 public interface ISVGCategorizedSpecialNodeView extends ISVGSpecialNodeView {
 
-  public IIntValueView addCategory(String labelText, int maxValue, int value);
+  IIntValueView addCategory(String labelText, int maxValue, int value);
 }

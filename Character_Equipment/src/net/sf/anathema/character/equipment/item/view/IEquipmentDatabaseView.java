@@ -11,15 +11,15 @@ import javax.swing.ListCellRenderer;
 
 public interface IEquipmentDatabaseView extends IView {
 
-  public void fillDescriptionPanel(JComponent content);
+  void fillDescriptionPanel(JComponent content);
 
-  public IActionAddableListView<IEquipmentStats> initStatsListView(ListCellRenderer renderer);
+  IActionAddableListView<IEquipmentStats> initStatsListView(ListCellRenderer renderer);
 
-  public IListObjectSelectionView<String> getTemplateListView();
+  IListObjectSelectionView<String> getTemplateListView();
 
-  public void setTemplateListHeader(String headerText);
+  void setTemplateListHeader(String headerText);
 
-  public void addEditTemplateAction(Action action);
+  void addEditTemplateAction(Action action);
 
-  public void setStatsListHeader(String headerText);
+  void setStatsListHeader(String headerText);
 }

@@ -5,5 +5,5 @@ import net.sf.anathema.character.generic.magic.general.IHealthCost;
 
 public interface IConfigurableHealthCost extends IConfigurableCost, IHealthCost {
 
-  public void setType(HealthType type);
+  void setType(HealthType type);
 }

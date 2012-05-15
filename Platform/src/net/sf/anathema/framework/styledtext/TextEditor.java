@@ -1,16 +1,6 @@
 package net.sf.anathema.framework.styledtext;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Event;
-import java.awt.Insets;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.Action;
 import javax.swing.InputMap;
@@ -29,8 +19,17 @@ import javax.swing.text.DefaultEditorKit;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import javax.swing.text.StyledEditorKit;
-
-import net.sf.anathema.lib.gui.IView;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Event;
+import java.awt.Insets;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TextEditor implements IStyledTextView, IView {
 
@@ -94,7 +93,7 @@ public class TextEditor implements IStyledTextView, IView {
   private JToolBar createStyleToolBar() {
     JToolBar toolBar = new JToolBar(SwingConstants.VERTICAL);
     toolBar.setFloatable(false);
-    for (final JToggleButton button : toolBarButtons) {
+    for (JToggleButton button : toolBarButtons) {
       toolBar.add(button);
     }
     return toolBar;
@@ -116,7 +115,7 @@ public class TextEditor implements IStyledTextView, IView {
     return new JToggleButton[] { boldButton, italicButton, underlineButton };
   }
 
-  private JToggleButton initStyleToggleButton(final Action action, final Object styleConstant) {
+  private JToggleButton initStyleToggleButton(Action action, final Object styleConstant) {
     final JToggleButton button = new JToggleButton(action);
     button.setText(null);
     textPane.addCaretListener(new CaretListener() {
@@ -146,7 +145,7 @@ public class TextEditor implements IStyledTextView, IView {
     return button;
   }
 
-  private void selectButton(final Object styleConstant, final JToggleButton button) {
+  private void selectButton(Object styleConstant, JToggleButton button) {
     boolean selected = false;
     if (textPane.getSelectedText() == null) {
       int index = textPane.getCaretPosition();

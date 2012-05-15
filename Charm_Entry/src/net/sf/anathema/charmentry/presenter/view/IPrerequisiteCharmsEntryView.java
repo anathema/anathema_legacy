@@ -9,8 +9,8 @@ import javax.swing.ListCellRenderer;
 
 public interface IPrerequisiteCharmsEntryView extends IPageContent {
 
-  public ISelectionContainerView<ICharm> addPrerequisiteCharmView(ListCellRenderer renderer);
+  ISelectionContainerView<ICharm> addPrerequisiteCharmView(ListCellRenderer renderer);
 
-  public JToggleButton addToggleButton(String excellencyString);
+  JToggleButton addToggleButton(String excellencyString);
 
 }

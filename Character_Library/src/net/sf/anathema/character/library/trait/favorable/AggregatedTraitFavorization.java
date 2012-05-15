@@ -13,7 +13,7 @@ public class AggregatedTraitFavorization implements ITraitFavorization {
 
   public AggregatedTraitFavorization(
       ITraitFavorization favorization,
-      final ISubTrait subTrait,
+      ISubTrait subTrait,
       ISubTraitContainer container) {
     this.favorization = favorization;
     this.subTrait = subTrait;

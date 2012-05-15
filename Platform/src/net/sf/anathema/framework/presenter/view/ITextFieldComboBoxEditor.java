@@ -6,5 +6,5 @@ import javax.swing.JTextField;
 public interface ITextFieldComboBoxEditor extends ComboBoxEditor {
 
   @Override
-  public JTextField getEditorComponent();
+  JTextField getEditorComponent();
 }

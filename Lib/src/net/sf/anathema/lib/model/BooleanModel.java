@@ -8,7 +8,7 @@ public class BooleanModel extends AbstractChangeableModel implements IModifiable
     this(false);
   }
 
-  public BooleanModel(final boolean value) {
+  public BooleanModel(boolean value) {
     this.value = value;
   }
 
@@ -18,7 +18,7 @@ public class BooleanModel extends AbstractChangeableModel implements IModifiable
   }
 
   @Override
-  public void setValue(final boolean selected) {
+  public void setValue(boolean selected) {
     if (this.value == selected) {
       return;
     }

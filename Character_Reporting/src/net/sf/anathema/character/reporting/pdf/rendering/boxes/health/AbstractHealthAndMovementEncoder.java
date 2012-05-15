@@ -45,7 +45,7 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     int leading = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 1;
     float yLine = graphics.createSimpleColumn(textBounds).withLeading((float) leading).andTextPart(healthText).encode().getYLine();
     int rectangleOffset = AbstractHealthAndMovementTableEncoder.HEALTH_RECT_SIZE + 1;
-    final float additionalOffset = 2.5f;
+    float additionalOffset = 2.5f;
     float rectYPosition = yLine - rectangleOffset - additionalOffset;
     float textYPosition = yLine - leading - additionalOffset;
     float xPosition = textBounds.x;
@@ -54,7 +54,7 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     PdfTemplate bashingTemplate = HealthTemplateFactory.createBashingTemplate(graphics.getDirectContent(), BaseColor.GRAY);
     graphics.getDirectContent().addTemplate(bashingTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
-    final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
+    String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
     String bashingString = createSpacedString;
     graphics.drawComment(bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += graphics.getTextMetrics().getCommentTextWidth(bashingString);
@@ -74,7 +74,7 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
     xPosition += graphics.getTextMetrics().getCommentTextWidth(lethalString);
   }
 
-  private String createSpacedString(final String string) {
+  private String createSpacedString(String string) {
     return " " + string + "   "; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
@@ -85,9 +85,9 @@ public abstract class AbstractHealthAndMovementEncoder implements ContentEncoder
   private Paragraph createHealthRulesPhrase(SheetGraphics graphics, Font headerFont, Font commentFont, Font commentTitleFont) {
     Paragraph healthText = new Paragraph();
     healthText.setAlignment(Element.ALIGN_JUSTIFIED_ALL);
-    final Chunk seperator = new Chunk(": ", commentTitleFont); //$NON-NLS-1$
-    final Chunk newLine = new Chunk("\n", commentFont); //$NON-NLS-1$
-    final Chunk header = new Chunk(resources.getString("Sheet.Health.Comment.Rules"), headerFont); //$NON-NLS-1$
+    Chunk seperator = new Chunk(": ", commentTitleFont); //$NON-NLS-1$
+    Chunk newLine = new Chunk("\n", commentFont); //$NON-NLS-1$
+    Chunk header = new Chunk(resources.getString("Sheet.Health.Comment.Rules"), headerFont); //$NON-NLS-1$
     healthText.add(header);
     healthText.add(newLine);
     healthText.add(graphics.createSymbolChunk());

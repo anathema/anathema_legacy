@@ -16,13 +16,13 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
   private final Dimension nodeDimension;
   private Integer xPosition;
 
-  public AbstractVisualizableNode(final Map<ISimpleNode, IVisualizableNode> map, final Dimension nodeDimension) {
+  public AbstractVisualizableNode(Map<ISimpleNode, IVisualizableNode> map, Dimension nodeDimension) {
     this.map = map;
     this.nodeDimension = nodeDimension;
   }
 
   @Override
-  public void setLayer(final ILayer layer) {
+  public void setLayer(ILayer layer) {
     this.layer = layer;
   }
 
@@ -32,7 +32,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
   }
 
   @Override
-  public void shiftRightWithChildren(final int requiredShift, final IVisualizableNode[] excludedNodes) {
+  public void shiftRightWithChildren(int requiredShift, IVisualizableNode[] excludedNodes) {
     // Note: Better implementation: Traverse the tree down to the children
     // Set children's new position
     // Recalculate all other positions using the given algorithms.
@@ -49,7 +49,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
   }
 
   @Override
-  public void shiftRight(final int shift) {
+  public void shiftRight(int shift) {
     setPosition(Math.max(getPosition() + shift, layer.getOverlapFreePosition(this)));
   }
 
@@ -93,7 +93,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
   }
 
   @Override
-  public void setPosition(final int position) {
+  public void setPosition(int position) {
     xPosition = position;
   }
 
@@ -103,7 +103,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
   }
 
   @Override
-  public IVisualizableNode[] getSharedChildren(final IVisualizableNode otherNode) {
+  public IVisualizableNode[] getSharedChildren(IVisualizableNode otherNode) {
     List<IVisualizableNode> ownChildren = new ArrayList<IVisualizableNode>(Arrays.asList(getChildren()));
     List<IVisualizableNode> otherChildren = new ArrayList<IVisualizableNode>(Arrays.asList(otherNode.getChildren()));
     ownChildren.retainAll(otherChildren);

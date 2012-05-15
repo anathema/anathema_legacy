@@ -9,7 +9,7 @@ import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.*;
+import javax.swing.UIManager;
 
 /**
  * Removes the Look and Feel settings if the "overrideLookAndFeel" system property

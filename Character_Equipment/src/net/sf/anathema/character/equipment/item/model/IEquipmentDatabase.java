@@ -5,13 +5,13 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IEquipmentDatabase extends IEquipmentTemplateProvider {
 
-  public void addAvailableTemplateChangeListener(IChangeListener listener);
+  void addAvailableTemplateChangeListener(IChangeListener listener);
 
-  public void deleteTemplate(String editTemplateId);
+  void deleteTemplate(String editTemplateId);
 
-  public ICollectionFactory getCollectionFactory();
+  ICollectionFactory getCollectionFactory();
 
-  public void saveTemplate(IEquipmentTemplate template);
+  void saveTemplate(IEquipmentTemplate template);
 
-  public void updateTemplate(String editTemplateId, IEquipmentTemplate saveTemplate);
+  void updateTemplate(String editTemplateId, IEquipmentTemplate saveTemplate);
 }

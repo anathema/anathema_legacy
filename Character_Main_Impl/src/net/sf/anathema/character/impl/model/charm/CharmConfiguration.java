@@ -391,7 +391,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ILearningCharmGroup getGroup(String characterTypeId, String groupName) {
-    final ICharacterType characterType = characterTypeId == null ? getNativeCharacterType() : CharacterType.getById(
+    ICharacterType characterType = characterTypeId == null ? getNativeCharacterType() : CharacterType.getById(
             characterTypeId);
     return getGroupById(characterType, groupName);
   }
@@ -549,12 +549,12 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public final boolean isUnlearnable(ICharm charm) {
-    final ILearningCharmGroup group = getGroup(charm);
+    ILearningCharmGroup group = getGroup(charm);
     return group.isUnlearnable(charm);
   }
 
   protected boolean isUnlearnableWithoutConsequences(ICharm charm) {
-    final ILearningCharmGroup group = getGroup(charm);
+    ILearningCharmGroup group = getGroup(charm);
     return group.isUnlearnableWithoutConsequences(charm);
   }
 

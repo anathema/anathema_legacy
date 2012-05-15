@@ -44,7 +44,7 @@ public class AnathemaSaveAction extends SmartAction {
     }
 
     @Override
-    public void itemSelected(final IItem item) {
+    public void itemSelected(IItem item) {
       if (currentItem != null) {
         currentItem.removeDirtyListener(changeListener);
       }

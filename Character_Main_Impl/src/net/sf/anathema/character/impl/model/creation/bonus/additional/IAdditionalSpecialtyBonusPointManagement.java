@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 
 public interface IAdditionalSpecialtyBonusPointManagement {
-  public void spendOn(IGenericSpecialty[] specialties, IAbilityPointCosts costs);
+  void spendOn(IGenericSpecialty[] specialties, IAbilityPointCosts costs);
 }

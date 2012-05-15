@@ -1,27 +1,26 @@
 package net.sf.anathema.framework.module;
 
-import java.io.IOException;
-
-import javax.swing.Icon;
-
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 
+import javax.swing.Icon;
+import java.io.IOException;
+
 public interface IDatabaseActionProperties {
 
-  public String getItemTypeId();
+  String getItemTypeId();
 
-  public String getActionName();
+  String getActionName();
 
-  public Icon getActionIcon();
+  Icon getActionIcon();
 
-  public String getToolTipText();
+  String getToolTipText();
 
-  public String getProgressMonitorTitle();
+  String getProgressMonitorTitle();
 
-  public String getProgressTaskTitle();
+  String getProgressTaskTitle();
 
-  public String getItemId();
+  String getItemId();
 
-  public IItemData createItemData(IDataFileProvider provider) throws IOException;
+  IItemData createItemData(IDataFileProvider provider) throws IOException;
 }

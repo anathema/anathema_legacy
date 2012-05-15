@@ -7,7 +7,7 @@ import javax.swing.JToggleButton;
 
 public interface IReflexiveSpecialsView extends IPageContent {
 
-  public JToggleButton addCheckBoxRow(String label);
+  JToggleButton addCheckBoxRow(String label);
 
-  public IIntValueDisplay addIntegerSelectionView(String typeLabel, int minimum, int maximum);
+  IIntValueDisplay addIntegerSelectionView(String typeLabel, int minimum, int maximum);
 }

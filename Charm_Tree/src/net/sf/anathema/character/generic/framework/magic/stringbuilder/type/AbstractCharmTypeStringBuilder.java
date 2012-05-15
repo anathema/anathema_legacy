@@ -65,15 +65,15 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
 
   private StringBuilder buildSimpleModelString(ISimpleSpecialsModel model) {
     StringBuilder builder = new StringBuilder();
-    final boolean defaultSpeed = model.getSpeed() == ISimpleSpecialsModel.DEFAULT_SPEED;
-    final boolean defaultDefense = model.getDefenseModifier() == ISimpleSpecialsModel.DEFAULT_DEFENSE_MODIFIER;
-    final boolean defaultTurnType = model.getTurnType() == TurnType.Tick;
+    boolean defaultSpeed = model.getSpeed() == ISimpleSpecialsModel.DEFAULT_SPEED;
+    boolean defaultDefense = model.getDefenseModifier() == ISimpleSpecialsModel.DEFAULT_DEFENSE_MODIFIER;
+    boolean defaultTurnType = model.getTurnType() == TurnType.Tick;
     if (defaultSpeed && defaultDefense && defaultTurnType) {
       return builder;
     }
     builder.append(IMagicTooltipStringBuilder.Space);
     builder.append("("); //$NON-NLS-1$
-    final boolean dramaticAction = model.getTurnType() == TurnType.DramaticAction;
+    boolean dramaticAction = model.getTurnType() == TurnType.DramaticAction;
     boolean longTick = model.getTurnType() == TurnType.LongTick;
     if (dramaticAction) {
       builder.append(getResources().getString(getDramaticActionKey()));
@@ -94,7 +94,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
   @Override
   public String createTypeString(final ICharmTypeModel charmTypeModel) {
     final StringBuilder builder = new StringBuilder();
-    final CharmType charmType = charmTypeModel.getCharmType();
+    CharmType charmType = charmTypeModel.getCharmType();
     builder.append(getResources().getString(charmType.getId()));
     if (charmTypeModel.hasSpecialsModel()) {
       charmType.accept(new ICharmTypeVisitor() {

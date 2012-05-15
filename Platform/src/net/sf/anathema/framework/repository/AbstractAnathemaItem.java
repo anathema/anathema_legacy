@@ -43,7 +43,7 @@ public abstract class AbstractAnathemaItem implements IItem {
     repositoryItemListeners.removeListener(listener);
   }
 
-  private void firePrintNameChanged(final String name) {
+  private void firePrintNameChanged(String name) {
     repositoryItemListeners.announce().printNameChanged(name);
   }
 

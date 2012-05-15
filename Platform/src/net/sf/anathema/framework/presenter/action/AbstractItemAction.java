@@ -28,7 +28,7 @@ public abstract class AbstractItemAction extends SmartAction {
 
   protected final boolean showDialog(Component parentComponent, IAnathemaWizardPage startPage) {
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-    final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
+    ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
     configuredDialog.setResizable(false);
     GuiUtilities.centerToParent(configuredDialog.getWindow());
     IDialogResult result = dialog.show();

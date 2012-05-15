@@ -30,9 +30,9 @@ public class MusicPlayerPresenter implements Presenter {
 
   public MusicPlayerPresenter(
       IResources resources,
-      final IMusicPlayerView view,
-      final IMusicPlayerModel playerModel,
-      final IMusicSelectionModel selectionModel) {
+      IMusicPlayerView view,
+      IMusicPlayerModel playerModel,
+      IMusicSelectionModel selectionModel) {
     this.resources = resources;
     this.view = view;
     this.playerModel = playerModel;

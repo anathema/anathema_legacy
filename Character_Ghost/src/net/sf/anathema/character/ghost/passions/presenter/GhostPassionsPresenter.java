@@ -1,12 +1,5 @@
 package net.sf.anathema.character.ghost.passions.presenter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
-import java.util.Comparator;
-
-import javax.swing.Icon;
-
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
@@ -21,8 +14,8 @@ import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChang
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
-import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -30,6 +23,12 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
+
+import javax.swing.Icon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class GhostPassionsPresenter implements Presenter {
 
@@ -88,7 +87,7 @@ public class GhostPassionsPresenter implements Presenter {
   @Override
   public void initPresentation() {
     initTraitListening();
-    final IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
+    IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
     maxPassionView = overview.addAlotmentView(resources.getString("Passions.Overview.Max"), 2); //$NON-NLS-1$
     compassionView = overview.addAlotmentView(resources.getString("Compassion"), 2); //$NON-NLS-1$
     convictionView = overview.addAlotmentView(resources.getString("Conviction"), 2); //$NON-NLS-1$
@@ -210,7 +209,7 @@ public class GhostPassionsPresenter implements Presenter {
     return model.getPassionContainer(reference);
   }
 
-  private void reset(final IButtonControlledComboEditView<ITraitReference> passionSelectionView) {
+  private void reset(IButtonControlledComboEditView<ITraitReference> passionSelectionView) {
     model.clear();
     passionSelectionView.clear();
   }
@@ -245,7 +244,7 @@ public class GhostPassionsPresenter implements Presenter {
     String traitName = i18ner.getScreenName(traitReference);
     String passionName = passion.getName();
     Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
-    final IPassionView passionView = view.addPassionView(
+    IPassionView passionView = view.addPassionView(
         traitName,
         passionName,
         deleteIcon,

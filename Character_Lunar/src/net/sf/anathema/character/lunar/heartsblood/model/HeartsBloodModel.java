@@ -45,7 +45,7 @@ public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> i
   }
 
   @Override
-  public void addChangeListener(final IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     addModelChangeListener(new RemovableEntryChangeAdapter<IAnimalForm>(listener));
   }
 

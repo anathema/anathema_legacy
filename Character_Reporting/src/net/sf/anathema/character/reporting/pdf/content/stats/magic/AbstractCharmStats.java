@@ -21,7 +21,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
   }
 
   @Override
-  public String getGroupName(final IResources resources) {
+  public String getGroupName(IResources resources) {
     return resources.getString(getMagic().getGroupId());
   }
 
@@ -32,20 +32,20 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
   }
 
   @Override
-  public String getDurationString(final IResources resources) {
+  public String getDurationString(IResources resources) {
     return getMagic().getDuration().getText(resources);
   }
 
   @Override
   public String getSourceString(IResources resources) {
-    final IMagicSourceStringBuilder<ICharm> stringBuilder = new MagicSourceStringBuilder<ICharm>(resources);
+    IMagicSourceStringBuilder<ICharm> stringBuilder = new MagicSourceStringBuilder<ICharm>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
 
   protected String[] getDetailKeys() {
-    final List<String> details = new ArrayList<String>();
+    List<String> details = new ArrayList<String>();
     for (ICharmAttribute attribute : getMagic().getAttributes()) {
-      final String attributeId = attribute.getId();
+      String attributeId = attribute.getId();
       if (attribute.isVisualized()) {
         details.add("Keyword." + attributeId); //$NON-NLS-1$
       }

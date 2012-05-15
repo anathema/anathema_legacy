@@ -1,13 +1,13 @@
 package net.sf.anathema.framework.repository.tree;
 
+import net.sf.anathema.lib.gui.IView;
+
 import javax.swing.Action;
 import javax.swing.JTree;
 
-import net.sf.anathema.lib.gui.IView;
-
 public interface IRepositoryTreeView extends IView {
 
-  public void addActionButton(Action action);
+  void addActionButton(Action action);
 
-  public JTree addTree();
+  JTree addTree();
 }

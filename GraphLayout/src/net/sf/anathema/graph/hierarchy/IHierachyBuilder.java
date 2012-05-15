@@ -5,6 +5,6 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 
 public interface IHierachyBuilder {
 
-  public ISimpleNode[] removeLongEdges(IRegularNode[] acyclicGraph);
+  ISimpleNode[] removeLongEdges(IRegularNode[] acyclicGraph);
 
 }

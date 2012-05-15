@@ -1,16 +1,16 @@
 package net.sf.anathema.character.impl.model.creation.bonus;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.magic.IMagic;
+
+import java.util.List;
 
 public interface IAdditionalMagicLearnPointManagement {
 
-  public List<IMagic> spendOn(List<IMagic> magicToHandle);
+  List<IMagic> spendOn(List<IMagic> magicToHandle);
 
-  public int getPointsSpent();
+  int getPointsSpent();
 
-  public int getAdditionalPointsAmount();
+  int getAdditionalPointsAmount();
 
-  public void clear();
+  void clear();
 }

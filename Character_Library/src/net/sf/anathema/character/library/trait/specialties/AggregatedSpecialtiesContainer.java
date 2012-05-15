@@ -15,12 +15,12 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
   private final Announcer<ISubTraitListener> listeners =Announcer.to(ISubTraitListener.class);
   private final ISubTraitListener listener = new ISubTraitListener() {
     @Override
-    public void subTraitAdded(final ISubTrait subTrait) {
+    public void subTraitAdded(ISubTrait subTrait) {
       listeners.announce().subTraitAdded(subTrait);
     }
 
     @Override
-    public void subTraitRemoved(final ISubTrait subTrait) {
+    public void subTraitRemoved(ISubTrait subTrait) {
       listeners.announce().subTraitRemoved(subTrait);
     }
 

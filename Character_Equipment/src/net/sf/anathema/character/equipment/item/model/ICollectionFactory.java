@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface ICollectionFactory {
 
-  public <T> List<T> createList();
+  <T> List<T> createList();
 
-  public <K, V> Map<K, V> createHashMap();
+  <K, V> Map<K, V> createHashMap();
 }

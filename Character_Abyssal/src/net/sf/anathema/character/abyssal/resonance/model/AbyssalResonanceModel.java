@@ -1,8 +1,5 @@
 package net.sf.anathema.character.abyssal.resonance.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -10,11 +7,14 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
 import net.sf.anathema.lib.control.IChangeListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AbyssalResonanceModel extends VirtueFlawModel
 {
   private final AbyssalResonance virtueFlaw;
 	
-  public AbyssalResonanceModel(final ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
+  public AbyssalResonanceModel(ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
     super(context, additionalTemplate);
     virtueFlaw = new AbyssalResonance(context);
   }

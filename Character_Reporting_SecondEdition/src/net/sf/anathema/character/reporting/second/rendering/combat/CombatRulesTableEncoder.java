@@ -57,7 +57,7 @@ public class CombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     String header = content.getActionHeader();
-    final TableCell headerCell = createCommonActionsCell(new Phrase(header, graphics.createTextFont()));
+    TableCell headerCell = createCommonActionsCell(new Phrase(header, graphics.createTextFont()));
     headerCell.setColspan(columnWidths.length);
     table.addCell(headerCell);
     for (CombatAction combatAction : content.getCombatActions()) {

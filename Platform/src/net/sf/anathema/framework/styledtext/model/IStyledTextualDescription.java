@@ -4,11 +4,11 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IStyledTextualDescription extends ITextualDescription {
 
-  public void setText(ITextPart[] textParts);
+  void setText(ITextPart[] textParts);
 
-  public ITextPart[] getTextParts();
+  ITextPart[] getTextParts();
 
-  public void addTextChangedListener(IStyledTextChangeListener listener);
+  void addTextChangedListener(IStyledTextChangeListener listener);
 
-  public void removeTextChangedListener(IStyledTextChangeListener listener);
+  void removeTextChangedListener(IStyledTextChangeListener listener);
 }

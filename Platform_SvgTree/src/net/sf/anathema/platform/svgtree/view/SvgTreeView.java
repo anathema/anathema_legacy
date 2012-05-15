@@ -68,7 +68,7 @@ public class SvgTreeView implements ISvgTreeView {
   private final SVGSpecialNodeViewManager manager;
   private final IBoundsCalculator calculator;
 
-  public SvgTreeView(final ISvgTreeViewProperties properties) {
+  public SvgTreeView(ISvgTreeViewProperties properties) {
     this.properties = properties;
     this.calculator = new BoundsCalculator();
     this.manager = new SVGSpecialNodeViewManager(canvas, calculator);
@@ -98,7 +98,7 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   @Override
-  public void loadCascade(final org.dom4j.Document dom4jDocument, boolean resetView) throws DocumentException {
+  public void loadCascade(org.dom4j.Document dom4jDocument, boolean resetView) throws DocumentException {
     final AffineTransform transform = resetView ? null : canvas.getRenderingTransform();
     if (resetView) {
       canvas.resetRenderingTransform();
@@ -161,12 +161,12 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   @Override
-  public void addNodeSelectionListener(final CharmInteractionListener listener) {
+  public void addNodeSelectionListener(CharmInteractionListener listener) {
     listening.addNodeSelectionListener(listener);
   }
 
   @Override
-  public void setNodeBackgroundColor(final String nodeId, final Color color) {
+  public void setNodeBackgroundColor(String nodeId, Color color) {
     Preconditions.checkNotNull(color);
     SVGElement nodeGroup = (SVGElement) canvas.getElementById(nodeId);
     if (nodeGroup == null) {
@@ -189,7 +189,7 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   @Override
-  public void setNodeAlpha(final String nodeId, int alpha) {
+  public void setNodeAlpha(String nodeId, int alpha) {
     if (alpha > 255) {
       alpha = 255;
     }
@@ -207,7 +207,7 @@ public class SvgTreeView implements ISvgTreeView {
   public void addDocumentLoadedListener(final CascadeLoadedListener listener) {
     canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
       @Override
-      public void svgLoadEventDispatchCompleted(final SVGLoadEventDispatcherEvent arg0) {
+      public void svgLoadEventDispatchCompleted(SVGLoadEventDispatcherEvent arg0) {
         listener.cascadeLoaded();
       }
     });
@@ -225,7 +225,7 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   @Override
-  public void setCanvasBackground(final Color color) {
+  public void setCanvasBackground(Color color) {
     canvas.setBackground(color);
   }
 
@@ -240,7 +240,7 @@ public class SvgTreeView implements ISvgTreeView {
     canvas = null;
   }
 
-  private void breakText(final SVGTextElement text) {
+  private void breakText(SVGTextElement text) {
     float textLength = text.getComputedTextLength();
     int lines = Math.min(3, (int) Math.ceil(textLength / 95));
     Document document = text.getOwnerDocument();
@@ -270,11 +270,11 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   private Element createTSpanElement(
-      final Document document,
-      final Text textNode,
-      final String xPosition,
-      final float varY,
-      final int dy) {
+      Document document,
+      Text textNode,
+      String xPosition,
+      float varY,
+      int dy) {
     Element tSpanElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVG_TSPAN_TAG);
     tSpanElement.setAttribute(SVG_X_ATTRIBUTE, xPosition);
     tSpanElement.setAttribute(SVG_Y_ATTRIBUTE, String.valueOf(varY));
@@ -285,7 +285,7 @@ public class SvgTreeView implements ISvgTreeView {
     return tSpanElement;
   }
 
-  private void internationalize(final SVGTextElement text) {
+  private void internationalize(SVGTextElement text) {
     String id = ((Text) text.getFirstChild()).getData();
     String nodeName = properties.getNodeName(id);
     if (properties.isRootNode(id)) {

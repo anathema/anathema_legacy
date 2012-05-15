@@ -1,14 +1,14 @@
 package net.sf.anathema.charmentry.view;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
-
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.charmentry.presenter.view.IHeaderDataEntryView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
 
 public class HeaderDataEntryView implements IHeaderDataEntryView {
 
@@ -31,7 +31,7 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
 
   @Override
   public ITextView addLineTextRow(String label) {
-    final ITextView textView = builder.addLineTextView(label, 15);
+    ITextView textView = builder.addLineTextView(label, 15);
     if (focusComponent == null) {
       focusComponent = textView.getComponent();
     }

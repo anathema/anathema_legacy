@@ -36,7 +36,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   private ITraitReference currentType;
 
   public SpecialtiesConfiguration(ITraitCollection traitCollection, ITraitTypeGroup[] groups,
-                                  final ICharacterModelContext context) {
+                                  ICharacterModelContext context) {
     this.context = context;
     ITraitType[] traitTypes = TraitTypeGroup.getAllTraitTypes(groups);
     for (ITrait trait : traitCollection.getTraits(traitTypes)) {
@@ -65,7 +65,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
       }
 
       @Override
-      public void subTraitRemoved(final ISubTrait subTrait) {
+      public void subTraitRemoved(ISubTrait subTrait) {
         ISubTraitContainer container = specialtiesByType.get(visitedTrait.getType());
         removeSubTraitSpecialtiesContainer(subTrait, (AggregatedSpecialtiesContainer) container);
       }
@@ -82,7 +82,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
     specialtiesByType.put(visitedTrait.getType(), container);
   }
 
-  private void removeSubTraitSpecialtiesContainer(final ISubTrait subTrait, AggregatedSpecialtiesContainer container) {
+  private void removeSubTraitSpecialtiesContainer(ISubTrait subTrait, AggregatedSpecialtiesContainer container) {
     ITraitReference reference = new SubTraitReference(subTrait);
     ISubTraitContainer subContainer = specialtiesByTrait.remove(reference);
     subContainer.dispose();
@@ -91,7 +91,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   }
 
   private void addSubTraitSpecialtiesContainer(ISubTrait subTrait, AggregatedSpecialtiesContainer container) {
-    final SubTraitReference reference = new SubTraitReference(subTrait);
+    SubTraitReference reference = new SubTraitReference(subTrait);
     SpecialtiesContainer subContainer = addSpecialtiesContainer(reference);
     container.addContainer(subContainer);
     traitControl.announce().referenceAdded(reference);

@@ -2,19 +2,19 @@ package net.sf.anathema.character.generic.framework.additionaltemplate.model;
 
 public interface IBasicTrait {
 
-  public int getCreationValue();
+  int getCreationValue();
 
-  public int getExperiencedValue();
+  int getExperiencedValue();
 
-  public int getAbsoluteMinValue();
+  int getAbsoluteMinValue();
 
-  public int getCreationCalculationValue();
+  int getCreationCalculationValue();
 
-  public int getExperiencedCalculationValue();
+  int getExperiencedCalculationValue();
 
-  public boolean isLowerable();
+  boolean isLowerable();
 
-  public int getCalculationValue();
+  int getCalculationValue();
 
-  public int getZeroCalculationValue();
+  int getZeroCalculationValue();
 }

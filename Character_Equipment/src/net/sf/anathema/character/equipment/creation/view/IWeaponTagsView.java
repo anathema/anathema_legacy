@@ -6,6 +6,6 @@ import javax.swing.JCheckBox;
 
 public interface IWeaponTagsView extends IPageContent {
 
-  public JCheckBox addCheckBox(String string);
+  JCheckBox addCheckBox(String string);
 
 }

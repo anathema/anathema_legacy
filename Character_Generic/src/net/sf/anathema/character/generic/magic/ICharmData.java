@@ -15,37 +15,37 @@ import java.util.List;
 import java.util.Set;
 
 public interface ICharmData extends IMagicData {
-  public static final IIdentificate FORM_ATTRIBUTE = new Identificate("Form"); //$NON-NLS-1$
-  public static final IIdentificate MERGED_ATTRIBUTE = new Identificate("Merged"); //$NON-NLS-1$
-  public static final IIdentificate ALLOWS_CELESTIAL_ATTRIBUTE = new Identificate("AllowsCelestial"); //$NON-NLS-1$
-  public static final IIdentificate UNRESTRICTED_ATTRIBUTE = new Identificate("Unrestricted"); //$NON-NLS-1$
-  public static final IIdentificate NO_STYLE_ATTRIBUTE = new Identificate("NoStyle"); //$NON-NLS-1$
-  public static final IIdentificate NATIVE = new Identificate("Native"); //$NON-NLS-1$
-  public static final String FAVORED_CASTE_PREFIX = "FavoredCaste."; //$NON-NLS-1$
+  IIdentificate FORM_ATTRIBUTE = new Identificate("Form"); //$NON-NLS-1$
+  IIdentificate MERGED_ATTRIBUTE = new Identificate("Merged"); //$NON-NLS-1$
+  IIdentificate ALLOWS_CELESTIAL_ATTRIBUTE = new Identificate("AllowsCelestial"); //$NON-NLS-1$
+  IIdentificate UNRESTRICTED_ATTRIBUTE = new Identificate("Unrestricted"); //$NON-NLS-1$
+  IIdentificate NO_STYLE_ATTRIBUTE = new Identificate("NoStyle"); //$NON-NLS-1$
+  IIdentificate NATIVE = new Identificate("Native"); //$NON-NLS-1$
+  String FAVORED_CASTE_PREFIX = "FavoredCaste."; //$NON-NLS-1$
 
-  public ICharacterType getCharacterType();
+  ICharacterType getCharacterType();
 
-  public IDuration getDuration();
+  IDuration getDuration();
 
-  public IGenericTrait getEssence();
+  IGenericTrait getEssence();
 
-  public IGenericTrait[] getPrerequisites();
+  IGenericTrait[] getPrerequisites();
 
-  public ITraitType getPrimaryTraitType();
+  ITraitType getPrimaryTraitType();
 
-  public String getGroupId();
+  String getGroupId();
 
-  public IComboRestrictions getComboRules();
+  IComboRestrictions getComboRules();
 
-  public ICharmAttribute[] getAttributes();
+  ICharmAttribute[] getAttributes();
 
-  public ICharmAttributeRequirement[] getAttributeRequirements();
+  ICharmAttributeRequirement[] getAttributeRequirements();
 
-  public Set<ICharm> getParentCharms();
+  Set<ICharm> getParentCharms();
   
-  public List<String> getParentSubeffects();
+  List<String> getParentSubeffects();
 
-  public ICharmTypeModel getCharmTypeModel();
+  ICharmTypeModel getCharmTypeModel();
   
-  public boolean isInstanceOfGenericCharm();
+  boolean isInstanceOfGenericCharm();
 }

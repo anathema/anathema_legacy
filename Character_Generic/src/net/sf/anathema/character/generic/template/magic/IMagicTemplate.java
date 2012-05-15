@@ -4,11 +4,11 @@ import net.sf.anathema.character.generic.magic.IMagic;
 
 public interface IMagicTemplate {
 
-  public boolean canBuyFromFreePicks(IMagic magic);
+  boolean canBuyFromFreePicks(IMagic magic);
 
-  public ISpellMagicTemplate getSpellMagic();
+  ISpellMagicTemplate getSpellMagic();
 
-  public ICharmTemplate getCharmTemplate();
+  ICharmTemplate getCharmTemplate();
 
-  public FavoringTraitType getFavoringTraitType();
+  FavoringTraitType getFavoringTraitType();
 }

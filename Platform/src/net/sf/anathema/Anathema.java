@@ -1,14 +1,14 @@
 package net.sf.anathema;
 
-import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.view.ErrorWindow;
 import net.sf.anathema.framework.view.IWindow;
 import net.sf.anathema.initialization.AnathemaInitializer;
 import net.sf.anathema.initialization.InitializationException;
 
-import javax.swing.*;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Anathema {
 

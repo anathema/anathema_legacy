@@ -11,7 +11,7 @@ public class InternalAwtExceptionHandler implements IExceptionHandler {
   }
 
   @Override
-  public void handle(final Throwable exception) {
+  public void handle(Throwable exception) {
     CentralExceptionHandling.getInstance().handle(exception);
   }
 }

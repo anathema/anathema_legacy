@@ -4,7 +4,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IChangeableModel {
 
-  public void addChangeListener(IChangeListener listener);
+  void addChangeListener(IChangeListener listener);
 
-  public void removeChangeListener(IChangeListener listener);
+  void removeChangeListener(IChangeListener listener);
 }

@@ -8,7 +8,7 @@ public class ObjectModel<T> extends SmartChangeableModel implements IObjectModel
     this(null);
   }
 
-  public ObjectModel(final T value) {
+  public ObjectModel(T value) {
     property.setValue(value);
   }
 
@@ -18,7 +18,7 @@ public class ObjectModel<T> extends SmartChangeableModel implements IObjectModel
   }
 
   @Override
-  public void setValue(final T value) {
+  public void setValue(T value) {
     setValue(property, value);
   }
 

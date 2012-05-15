@@ -5,19 +5,19 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface ITraitTypeVisitor {
 
-  public void visitAbility(AbilityType type);
+  void visitAbility(AbilityType type);
 
-  public void visitAttribute(AttributeType type);
+  void visitAttribute(AttributeType type);
 
-  public void visitVirtue(VirtueType type);
+  void visitVirtue(VirtueType type);
 
-  public void visitEssence(OtherTraitType type);
+  void visitEssence(OtherTraitType type);
 
-  public void visitWillpower(OtherTraitType type);
+  void visitWillpower(OtherTraitType type);
   
-  public void visitYozi(YoziType type);
+  void visitYozi(YoziType type);
 
-  public void visitBackground(IBackgroundTemplate template);
+  void visitBackground(IBackgroundTemplate template);
 
-  public void visitCustomTraitType(ITraitType visitedType);
+  void visitCustomTraitType(ITraitType visitedType);
 }

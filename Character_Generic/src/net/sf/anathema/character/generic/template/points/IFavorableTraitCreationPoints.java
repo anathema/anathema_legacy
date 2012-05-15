@@ -2,13 +2,13 @@ package net.sf.anathema.character.generic.template.points;
 
 public interface IFavorableTraitCreationPoints
 {
-  public int getFavoredDotCount();
+  int getFavoredDotCount();
 
-  public int getFavorableTraitCount();
+  int getFavorableTraitCount();
   
-  public int getExtraFavoredDotCount();
+  int getExtraFavoredDotCount();
   
-  public int getExtraGenericDotCount();
+  int getExtraGenericDotCount();
 
-  public int getDefaultDotCount();
+  int getDefaultDotCount();
 }

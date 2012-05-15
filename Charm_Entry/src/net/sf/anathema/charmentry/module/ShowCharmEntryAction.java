@@ -43,16 +43,16 @@ public class ShowCharmEntryAction extends SmartAction {
       ICharmEntryViewFactory viewFactory = new CharmEntryViewFactory(resources);
       HeaderDataEntryPage startPage = new HeaderDataEntryPage(resources, model, viewFactory);
       WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-      final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
+      ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
       configuredDialog.setResizable(false);
       GuiUtilities.centerToParent(configuredDialog.getWindow());
       IDialogResult result = dialog.show();
       if (result.isCanceled()) {
         return;
       }
-      final ICharmEntryData entryData = model.getCharmData();
+      ICharmEntryData entryData = model.getCharmData();
       new CharmIO().writeCharmInternal(entryData);
-      final ICharmData coreData = entryData.getCoreData();
+      ICharmData coreData = entryData.getCoreData();
       CharmEntryPropertiesPersister charmEntryPropertiesPersister = new CharmEntryPropertiesPersister();
       charmEntryPropertiesPersister.writeCharmNameProperty(
           coreData.getCharacterType(), coreData.getId(),

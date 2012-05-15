@@ -27,7 +27,7 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
       ICharmCache cache) {
     this.charmData = charmData;
     this.cache = cache;
-    final CheckInputListener changeListener = new CheckInputListener(new SimpleBlock() {
+    CheckInputListener changeListener = new CheckInputListener(new SimpleBlock() {
       @Override
       public void execute() {
         control.announce().changeOccurred();

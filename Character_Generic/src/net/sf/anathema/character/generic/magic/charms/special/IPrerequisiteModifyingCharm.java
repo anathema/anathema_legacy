@@ -5,5 +5,5 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface IPrerequisiteModifyingCharm extends ISpecialCharm
 {
-	public int getTraitModifier(ICharm charm, ITraitType trait, int value);
+	int getTraitModifier(ICharm charm, ITraitType trait, int value);
 }

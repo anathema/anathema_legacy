@@ -5,5 +5,5 @@ import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 
 public interface ICharmLearnWorker extends ICharmLearnArbitrator {
 
-  public void forget(Charm charm);
+  void forget(Charm charm);
 }

@@ -1,16 +1,16 @@
 package net.sf.anathema.character.generic.template.abilities;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.traits.ITraitType;
+
+import java.util.List;
 
 public interface IGroupedTraitType {
 
-  public ITraitType getTraitType();
+  ITraitType getTraitType();
 
-  public String getGroupId();
+  String getGroupId();
 
-  public String getGroupCasteId();
+  String getGroupCasteId();
   
-  public List<String> getTraitCasteSet();
+  List<String> getTraitCasteSet();
 }

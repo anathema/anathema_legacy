@@ -6,15 +6,15 @@ import java.awt.Color;
 
 public interface ITextFormat {
 
-  public boolean isUnderline();
+  boolean isUnderline();
 
-  public FontStyle getFontStyle();
+  FontStyle getFontStyle();
 
-  public Integer getFontSize();
+  Integer getFontSize();
 
-  public String getFontName();
+  String getFontName();
 
-  public Color getColor();
+  Color getColor();
 
-  public boolean isStyled();
+  boolean isStyled();
 }

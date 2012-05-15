@@ -6,7 +6,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IAstrologicalHouse extends IIdentificate {
 
-  public IFavorableDefaultTrait[] getColleges();
+  IFavorableDefaultTrait[] getColleges();
 
-  public void addChangeListener(IChangeListener houseChangeListener);
+  void addChangeListener(IChangeListener houseChangeListener);
 }

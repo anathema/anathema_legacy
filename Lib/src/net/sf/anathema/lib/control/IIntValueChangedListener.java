@@ -2,5 +2,5 @@ package net.sf.anathema.lib.control;
 
 public interface IIntValueChangedListener {
 
-  public void valueChanged(int newValue);
+  void valueChanged(int newValue);
 }

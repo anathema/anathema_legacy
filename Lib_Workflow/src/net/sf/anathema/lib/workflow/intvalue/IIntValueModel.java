@@ -4,13 +4,13 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 
 public interface IIntValueModel {
 
-  public Integer getMinimum();
+  Integer getMinimum();
 
-  public Integer getMaximum();
+  Integer getMaximum();
 
-  public void setValue(int value);
+  void setValue(int value);
 
-  public int getValue();
+  int getValue();
 
-  public void addIntValueChangeListener(IIntValueChangedListener changeListener);
+  void addIntValueChangeListener(IIntValueChangedListener changeListener);
 }

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.resources.IResources;
 import org.dom4j.Element;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 public interface ICharmFilter {
   boolean acceptsCharm(ICharm charm, boolean isAncestor);

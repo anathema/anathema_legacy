@@ -5,5 +5,5 @@ import net.sf.anathema.lib.message.IBasicMessage;
 
 public interface IAnathemaStatusBar extends IView {
 
-  public void setLatestMessage(IBasicMessage message);
+  void setLatestMessage(IBasicMessage message);
 }

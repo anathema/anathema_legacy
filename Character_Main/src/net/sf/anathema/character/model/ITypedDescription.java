@@ -5,9 +5,9 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ITypedDescription<T extends ITypedDescriptionType> {
 
-  public T getType();
+  T getType();
 
-  public void setType(T type);
+  void setType(T type);
 
-  public void addChangeListener(IChangeListener listener);
+  void addChangeListener(IChangeListener listener);
 }

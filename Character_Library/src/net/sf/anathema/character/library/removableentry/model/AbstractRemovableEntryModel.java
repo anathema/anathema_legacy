@@ -15,7 +15,7 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
 
   @Override
   public E commitSelection() {
-    final E entry = createEntry();
+    E entry = createEntry();
     entries.add(entry);
     control.announce().entryAdded(entry);
     return entry;
@@ -24,7 +24,7 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
   protected abstract E createEntry();
 
   @Override
-  public void removeEntry(final E entry) {
+  public void removeEntry(E entry) {
     entries.remove(entry);
     control.announce().entryRemoved(entry);
   }

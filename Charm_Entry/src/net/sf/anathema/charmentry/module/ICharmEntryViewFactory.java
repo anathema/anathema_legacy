@@ -13,23 +13,23 @@ import net.sf.anathema.charmentry.presenter.view.ISimpleSpecialsView;
 
 public interface ICharmEntryViewFactory {
 
-  public IHeaderDataEntryView createHeaderDataEntryView();
+  IHeaderDataEntryView createHeaderDataEntryView();
 
-  public ICharmTypeEntryView getCharmTypeEntryView();
+  ICharmTypeEntryView getCharmTypeEntryView();
 
-  public IPrerequisitesEntryView createPrerequisiteTraitsView();
+  IPrerequisitesEntryView createPrerequisiteTraitsView();
 
-  public IReflexiveSpecialsView createReflexiveSpecialsView();
+  IReflexiveSpecialsView createReflexiveSpecialsView();
 
-  public ISimpleSpecialsView createSimpleSpecialsView();
+  ISimpleSpecialsView createSimpleSpecialsView();
 
-  public IDurationEntryView createDurationView();
+  IDurationEntryView createDurationView();
 
-  public ICostEntryPageView createCostEntryView();
+  ICostEntryPageView createCostEntryView();
 
-  public IPrerequisiteCharmsEntryView createPrerequisiteCharmsView();
+  IPrerequisiteCharmsEntryView createPrerequisiteCharmsView();
 
-  public IKeywordView createKeywordEntryView();
+  IKeywordView createKeywordEntryView();
 
-  public IAmountDurationEntryView createQualifiedAmountDurationView();
+  IAmountDurationEntryView createQualifiedAmountDurationView();
 }

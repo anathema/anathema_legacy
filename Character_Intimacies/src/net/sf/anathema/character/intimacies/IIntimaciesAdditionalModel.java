@@ -5,5 +5,5 @@ import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 
 public interface IIntimaciesAdditionalModel extends IAdditionalModel {
 
-  public IIntimaciesModel getIntimaciesModel();
+  IIntimaciesModel getIntimaciesModel();
 }

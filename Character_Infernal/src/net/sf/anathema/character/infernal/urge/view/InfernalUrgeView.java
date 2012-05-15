@@ -1,7 +1,7 @@
 package net.sf.anathema.character.infernal.urge.view;
 
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.virtueflaw.view.VirtueFlawView;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 
@@ -16,8 +16,8 @@ public class InfernalUrgeView extends VirtueFlawView implements IInfernalUrgeVie
   }
 
   @Override
-  public ITextView addTextView(final String labelText, int columns, int rows) {
-    final ITextView textView = new AreaTextView(rows, columns);
+  public ITextView addTextView(String labelText, int columns, int rows) {
+    ITextView textView = new AreaTextView(rows, columns);
     textViews.add(textView);
     fillIntoVirtueFlawPanel(labelText, textView);
     return textView;

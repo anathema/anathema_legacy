@@ -9,7 +9,7 @@ import javax.swing.ListCellRenderer;
 
 public interface ICharmTypeEntryView extends IPageContent {
 
-  public IObjectSelectionView<CharmType> addComboBoxRow(String label, ListCellRenderer renderer, CharmType[] objects);
+  IObjectSelectionView<CharmType> addComboBoxRow(String label, ListCellRenderer renderer, CharmType[] objects);
 
-  public JToggleButton addCheckBoxRow(String label);
+  JToggleButton addCheckBoxRow(String label);
 }

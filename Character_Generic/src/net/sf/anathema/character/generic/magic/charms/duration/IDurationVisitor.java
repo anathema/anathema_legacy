@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.magic.charms.duration;
 
 public interface IDurationVisitor {
 
-  public void visitSimpleDuration(SimpleDuration visitedDuration);
+  void visitSimpleDuration(SimpleDuration visitedDuration);
 
-  public void visitQualifiedAmountDuration(QualifiedAmountDuration visitedDuration);
+  void visitQualifiedAmountDuration(QualifiedAmountDuration visitedDuration);
 
-  public void acceptUntilEventDuration(UntilEventDuration visitedDuration);
+  void acceptUntilEventDuration(UntilEventDuration visitedDuration);
 }

@@ -57,7 +57,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
   protected void initPageContent() {
     this.view = viewFactory.createHeaderDataEntryView();
     initNameView();
-    final IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", resources); //$NON-NLS-1$
+    IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", resources); //$NON-NLS-1$
     initTypeView(renderer);
     initSourceView();
   }
@@ -72,7 +72,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     });
   }
 
-  private void initTypeView(final IdentificateSelectCellRenderer renderer) {
+  private void initTypeView(IdentificateSelectCellRenderer renderer) {
     IObjectSelectionView<ICharacterType> typeView = view.addComboBoxRow(properties.getCharacterTypeLabel(), renderer,
             getPageModel().getCharacterTypes());
     typeView.addObjectSelectionChangedListener(new ObjectValueListener<ICharacterType>() {

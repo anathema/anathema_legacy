@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface ITraitReference {
 
-  public ITraitType getTraitType();
+  ITraitType getTraitType();
 
-  public String getName();
+  String getName();
 }

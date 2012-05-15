@@ -1,17 +1,15 @@
 package net.sf.anathema.platform.svgtree.view.batik;
 
-import java.awt.Rectangle;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Point2D;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.batik.bridge.SVGGElementBridge;
 import org.apache.batik.dom.svg.SVGContext;
 import org.apache.batik.dom.svg.SVGOMGElement;
 import org.w3c.dom.svg.SVGLocatable;
 import org.w3c.dom.svg.SVGMatrix;
 import org.w3c.dom.svg.SVGRect;
+
+import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 
 public class BoundsCalculator implements IBoundsCalculator {
   

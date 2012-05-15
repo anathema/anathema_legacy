@@ -16,7 +16,7 @@ public enum FontStyle {
   private final String name;
   private final Set<FontStyleProperty> properties;
 
-  private FontStyle(final String name, final FontStyleProperty... properties) {
+  private FontStyle(String name, FontStyleProperty... properties) {
     this.name = name;
     this.properties = new HashSet<FontStyleProperty>(Arrays.asList(properties));
   }
@@ -37,8 +37,8 @@ public enum FontStyle {
     return name;
   }
 
-  public static FontStyle getByName(final String name) {
-    for (final FontStyle fontStyle : values()) {
+  public static FontStyle getByName(String name) {
+    for (FontStyle fontStyle : values()) {
       if (name.equals(fontStyle.getName())) {
         return fontStyle;
       }
@@ -46,8 +46,8 @@ public enum FontStyle {
     throw new IllegalArgumentException("No font style defined for name " + name); //$NON-NLS-1$
   }
 
-  public static FontStyle getStyle(final boolean isBold, final boolean isItalic) {
-    final Set<FontStyleProperty> properties = new HashSet<FontStyleProperty>();
+  public static FontStyle getStyle(boolean isBold, boolean isItalic) {
+    Set<FontStyleProperty> properties = new HashSet<FontStyleProperty>();
     if (isBold) {
       properties.add(FontStyleProperty.BOLD);
     }
@@ -57,8 +57,8 @@ public enum FontStyle {
     return getStyle(properties);
   }
 
-  public static FontStyle getStyle(final Set<FontStyleProperty> properties) {
-    for (final FontStyle style : values()) {
+  public static FontStyle getStyle(Set<FontStyleProperty> properties) {
+    for (FontStyle style : values()) {
       if (style.properties.equals(properties)) {
         return style;
       }

@@ -24,7 +24,7 @@ public class CharacterConceptPersister {
   private final TextPersister textPersister = new TextPersister();
 
   public void save(Element parent, ICharacterConcept characterConcept) {
-    final Element characterConceptElement = parent.addElement(TAG_CHARACTER_CONCEPT);
+    Element characterConceptElement = parent.addElement(TAG_CHARACTER_CONCEPT);
     saveCaste(characterConceptElement, characterConcept.getCaste());
     saveAge(characterConceptElement, characterConcept.getAge());
     IMotivation motivation = characterConcept.getWillpowerRegainingConcept();
@@ -45,7 +45,7 @@ public class CharacterConceptPersister {
 
   public void load(Element parent, ICharacterConcept characterConcept, ICharacterDescription description,
                    ICasteCollection casteCollection) throws PersistenceException {
-    final Element conceptElement = parent.element(TAG_CHARACTER_CONCEPT);
+    Element conceptElement = parent.element(TAG_CHARACTER_CONCEPT);
     loadCaste(conceptElement, characterConcept, casteCollection);
     loadAge(conceptElement, characterConcept);
     IMotivation motivation = characterConcept.getWillpowerRegainingConcept();

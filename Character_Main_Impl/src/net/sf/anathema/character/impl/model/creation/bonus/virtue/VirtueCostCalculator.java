@@ -1,11 +1,11 @@
 package net.sf.anathema.character.impl.model.creation.bonus.virtue;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class VirtueCostCalculator {
 
@@ -31,7 +31,7 @@ public class VirtueCostCalculator {
   }
 
   private IVirtueCost handleVirtue(IDefaultTrait virtue, int costFactor) {
-    final int maximumFreeVirtueRank = costs.getMaximumFreeVirtueRank();
+    int maximumFreeVirtueRank = costs.getMaximumFreeVirtueRank();
     int dotsToAdd = Math.min(virtue.getCalculationValue(), maximumFreeVirtueRank) - virtue.getMinimalValue();
     int dotsRemaining = maxVirtuePoints - dotsSpent;
     int dotsAssigned = Math.min(dotsToAdd, dotsRemaining);

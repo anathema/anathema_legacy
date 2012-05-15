@@ -6,7 +6,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class PresentationPropertiesParser extends AbstractXmlTemplateParser<GenericPresentationTemplate> {
 

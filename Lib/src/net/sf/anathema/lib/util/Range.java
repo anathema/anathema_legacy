@@ -5,7 +5,7 @@ public class Range {
   private final int lowerBound;
   private final int upperBound;
 
-  public Range(final int lowerBound, final int upperBound) {
+  public Range(int lowerBound, int upperBound) {
     if (lowerBound > upperBound) {
       throw new IllegalArgumentException("LowerBound may not be less than upperBound: " //$NON-NLS-1$
           + lowerBound

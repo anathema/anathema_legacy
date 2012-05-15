@@ -4,5 +4,5 @@ import net.sf.anathema.character.library.overview.IOverviewCategory;
 
 public interface IOverviewView {
 
-  public IOverviewCategory addOverviewCategory(String borderLabel);
+  IOverviewCategory addOverviewCategory(String borderLabel);
 }

@@ -17,7 +17,7 @@ public class MusicDatabasePersister {
   private final ObjectContainer db;
   private final Announcer<ITrackDeletionListener> listeners = Announcer.to(ITrackDeletionListener.class);
 
-  public MusicDatabasePersister(final ObjectContainer container) {
+  public MusicDatabasePersister(ObjectContainer container) {
     db = container;
     libaryPersister.addTrackDeletionListener(new ITrackDeletionListener() {
       @Override
@@ -36,7 +36,7 @@ public class MusicDatabasePersister {
     db.commit();
   }
 
-  private void fireTrackDeleted(final DbMp3Track track) {
+  private void fireTrackDeleted(DbMp3Track track) {
     listeners.announce().trackRemoved(track);
   }
 
@@ -57,7 +57,7 @@ public class MusicDatabasePersister {
     return libaryPersister.isRegisteredLibrary(db, name);
   }
 
-  public IMp3Track[] getTracksFromLibrary(final String name) {
+  public IMp3Track[] getTracksFromLibrary(String name) {
     DbLibrary library = libaryPersister.getLibrary(db, name);
     if (library == null) {
       return new IMp3Track[0];

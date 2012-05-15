@@ -1,7 +1,5 @@
 package net.sf.anathema.character.library.trait.persistence;
 
-import java.util.List;
-
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
@@ -12,8 +10,9 @@ import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.lib.exception.NestedRuntimeException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.List;
 
 public class TraitPersister {
   private final class LoadTraitVisitor implements ITraitVisitor {
@@ -75,7 +74,7 @@ public class TraitPersister {
       @Override
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
-          final Element subTraitElement = traitElement.addElement(TAG_SUB_TRAIT);
+          Element subTraitElement = traitElement.addElement(TAG_SUB_TRAIT);
           subTraitElement.addElement(TAG_TRAIT_NAME).addCDATA(subTrait.getName());
           saveTrait(subTraitElement, subTrait);
         }
@@ -98,7 +97,7 @@ public class TraitPersister {
     return traitElement;
   }
 
-  public final void restoreTrait(final Element traitElement, ITrait trait) throws PersistenceException {
+  public final void restoreTrait(Element traitElement, ITrait trait) throws PersistenceException {
     if (traitElement != null) {
       try {
         trait.accept(new LoadTraitVisitor(traitElement));

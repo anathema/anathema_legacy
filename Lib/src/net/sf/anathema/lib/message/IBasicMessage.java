@@ -8,10 +8,10 @@ import java.io.Serializable;
 public interface IBasicMessage extends Serializable {
 
   /** Returns the text of this message, must not return <code>null</code>. */
-  public String getText();
+  String getText();
 
   /** Returns the type of this message, must not return <code>null</code>. */
-  public MessageType getType();
+  MessageType getType();
 
-  public boolean isErrorMessage();
+  boolean isErrorMessage();
 }

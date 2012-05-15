@@ -7,11 +7,11 @@ import javax.swing.Icon;
 
 public interface IItemTypeViewProperties {
 
-  public Icon getIcon();
+  Icon getIcon();
 
-  public IWizardFactory getNewItemWizardFactory();
+  IWizardFactory getNewItemWizardFactory();
 
-  public String getLabelKey();
+  String getLabelKey();
 
-  public IObjectUi<Object> getItemTypeUI();
+  IObjectUi<Object> getItemTypeUI();
 }

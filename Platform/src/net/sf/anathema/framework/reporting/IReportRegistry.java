@@ -4,7 +4,7 @@ import net.sf.anathema.framework.repository.IItem;
 
 public interface IReportRegistry {
 
-  public void addReports(Report... report);
+  void addReports(Report... report);
 
-  public Report[] getReports(IItem item);
+  Report[] getReports(IItem item);
 }

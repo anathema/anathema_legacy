@@ -1,5 +1,8 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
+import net.sf.anathema.graph.nodes.ISimpleNode;
+import org.dom4j.Element;
+
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,10 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.dom4j.Element;
-
-import net.sf.anathema.graph.nodes.ISimpleNode;
-
 public class HorizontalMetaNode extends AbstractVisualizableNode {
 
   private final List<ISimpleNode> contentNodes = new ArrayList<ISimpleNode>();
@@ -19,14 +18,14 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
   private final Map<ISimpleNode, IVisualizableNode> innerVisualizableNodesByContent = new HashMap<ISimpleNode, IVisualizableNode>();
 
   public HorizontalMetaNode(
-      final Map<ISimpleNode, IVisualizableNode> map,
-      final Dimension nodeDimension,
-      final Dimension gapDimension) {
+      Map<ISimpleNode, IVisualizableNode> map,
+      Dimension nodeDimension,
+      Dimension gapDimension) {
     super(map, nodeDimension);
     this.gapDimension = gapDimension;
   }
 
-  public void addInnerNode(final ISimpleNode node, final IVisualizableNode visualizableNode) {
+  public void addInnerNode(ISimpleNode node, IVisualizableNode visualizableNode) {
     contentNodes.add(node);
     innerVisualizableNodesByContent.put(node, visualizableNode);
   }
@@ -75,7 +74,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
   }
 
   @Override
-  public boolean isOfSameLeafGroup(final IVisualizableNode node) {
+  public boolean isOfSameLeafGroup(IVisualizableNode node) {
     for (IVisualizableNode visualizableNode : getInnerNodes()) {
       if (visualizableNode.isOfSameLeafGroup(node)) {
         return true;
@@ -85,7 +84,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
   }
 
   @Override
-  public void accept(final IVisualizableNodeVisitor visitor) {
+  public void accept(IVisualizableNodeVisitor visitor) {
     visitor.visitHorizontalMetaNode(this);
   }
 
@@ -98,7 +97,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
   }
 
   @Override
-  public void setLayer(final ILayer layer) {
+  public void setLayer(ILayer layer) {
     for (IVisualizableNode node : getInnerNodes()) {
       node.setLayer(layer);
     }
@@ -118,7 +117,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
   }
 
   @Override
-  public final void toXML(final Element element) {
+  public final void toXML(Element element) {
     throw new UnsupportedOperationException("Metanodes should be unrolled before creating XML."); //$NON-NLS-1$
   }
 

@@ -41,7 +41,7 @@ public class InfernalPatronPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    final IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
+    IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
     final ILabelledAlotmentView favoredView = overview.addAlotmentView(
         resources.getString("Infernal.Overview.FavoredYozis"), 1); //$NON-NLS-1$
     IIntValueDisplayFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
@@ -87,7 +87,7 @@ public class InfernalPatronPresenter implements Presenter {
   }
   
   private void updateButtons() {
-	    for (final IFavorableDefaultTrait yozi : model.getAllYozis()) {
+	    for (IFavorableDefaultTrait yozi : model.getAllYozis()) {
 	      IToggleButtonTraitView< ? > view = traitViewsByTrait.get(yozi);
 	      boolean disabled = context.getBasicCharacterContext().isExperienced() || yozi.getFavorization().isCaste();
 	      boolean favored = yozi.getFavorization().isCasteOrFavored();

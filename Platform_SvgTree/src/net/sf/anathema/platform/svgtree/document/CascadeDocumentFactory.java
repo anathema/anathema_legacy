@@ -27,14 +27,14 @@ public class CascadeDocumentFactory {
   private final SugiyamaLayout layout = new SugiyamaLayout();
   private final SVGDocumentFrameFactory factory = new SVGDocumentFrameFactory();
 
-  public Document createCascadeDocument(final IRegularNode[] nodes, final ITreePresentationProperties properties) {
-    final List<IVisualizedGraph> visualizedGraphs = visualizeGraphs(nodes, properties);
+  public Document createCascadeDocument(IRegularNode[] nodes, ITreePresentationProperties properties) {
+    List<IVisualizedGraph> visualizedGraphs = visualizeGraphs(nodes, properties);
     return placeOnCanvas(properties, visualizedGraphs);
   }
 
   private Document placeOnCanvas(
-      final ITreePresentationProperties properties,
-      final List<IVisualizedGraph> visualizedGraphs) {
+      ITreePresentationProperties properties,
+      List<IVisualizedGraph> visualizedGraphs) {
     Document cascadeDocument = factory.createFrame(properties);
     Element root = cascadeDocument.getRootElement();
     Element cascadeElement = createCascadeElement(root);
@@ -71,13 +71,13 @@ public class CascadeDocumentFactory {
     return cascadeDocument;
   }
 
-  private Element createCascadeElement(final Element root) {
+  private Element createCascadeElement(Element root) {
     Element cascadeElement = root.addElement(SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG));
     cascadeElement.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_CASCADE_ID);
     return cascadeElement;
   }
 
-  private void setViewBox(final double width, final double height, final Element root) {
+  private void setViewBox(double width, double height, Element root) {
     if (height > MAXIMUM_DIMENSION.height || width > MAXIMUM_DIMENSION.width) {
       double viewBoxHeight = Math.max(height, width / 2.24);
       double viewBoxWidth = Math.max(width, height * 2.24) + 10;
@@ -86,29 +86,29 @@ public class CascadeDocumentFactory {
   }
 
   private List<IVisualizedGraph> visualizeGraphs(
-      final IRegularNode[] nodes,
+      IRegularNode[] nodes,
       final ITreePresentationProperties properties) {
-    final IProperHierarchicalGraph[] graphs = layout.createProperHierarchicalGraphs(nodes);
+    IProperHierarchicalGraph[] graphs = layout.createProperHierarchicalGraphs(nodes);
     final List<IVisualizedGraph> visualizedGraphs = new ArrayList<IVisualizedGraph>(graphs.length);
     for (final IProperHierarchicalGraph graph : graphs) {
       graph.getType().accept(new IGraphTypeVisitor() {
         @Override
-        public void visitDirectedGraph(final IGraphType visitedType) {
+        public void visitDirectedGraph(IGraphType visitedType) {
           visualizedGraphs.add(new BottomUpGraphVisualizer(graph, properties).buildTree());
         }
 
         @Override
-        public void visitInvertedTree(final IGraphType visitedType) {
+        public void visitInvertedTree(IGraphType visitedType) {
           visualizedGraphs.add(new InvertedTreeVisualizer(graph, properties).buildTree());
         }
 
         @Override
-        public void visitTree(final IGraphType visitedType) {
+        public void visitTree(IGraphType visitedType) {
           visualizedGraphs.add(new TreeVisualizer(graph, properties).buildTree());
         }
 
         @Override
-        public void visitSingle(final IGraphType visitedType) {
+        public void visitSingle(IGraphType visitedType) {
           visualizedGraphs.add(new SingleNodeVisualizer(properties, graph).buildTree());
         }
       });

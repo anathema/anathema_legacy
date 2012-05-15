@@ -1,13 +1,13 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
+import net.sf.anathema.graph.nodes.ISimpleNode;
+import net.sf.anathema.lib.collection.MultiEntryMap;
+
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
-import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.lib.collection.MultiEntryMap;
 
 public abstract class AbstractSingleVisualizableNode extends AbstractVisualizableNode {
 
@@ -15,10 +15,10 @@ public abstract class AbstractSingleVisualizableNode extends AbstractVisualizabl
   private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors;
 
   public AbstractSingleVisualizableNode(
-      final ISimpleNode content,
-      final Map<ISimpleNode, IVisualizableNode> map,
-      final Dimension nodeDimension,
-      final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
+      ISimpleNode content,
+      Map<ISimpleNode, IVisualizableNode> map,
+      Dimension nodeDimension,
+      MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
     super(map, nodeDimension);
     this.content = content;
     this.leafNodesByAncestors = leafNodesByAncestors;
@@ -57,29 +57,29 @@ public abstract class AbstractSingleVisualizableNode extends AbstractVisualizabl
   }
 
   @Override
-  public boolean isOfSameLeafGroup(final IVisualizableNode node) {
+  public boolean isOfSameLeafGroup(IVisualizableNode node) {
     final boolean[] result = new boolean[1];
     node.accept(new IVisualizableNodeVisitor() {
 
       @Override
-      public void visitSingleNode(final VisualizableNode visitedNode) {
+      public void visitSingleNode(VisualizableNode visitedNode) {
         result[0] = visitAbstractSingleNode(visitedNode);
       }
 
       @Override
-      public void visitHorizontalMetaNode(final HorizontalMetaNode visitedNode) {
+      public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
         result[0] = visitedNode.isOfSameLeafGroup(AbstractSingleVisualizableNode.this);
       }
 
       @Override
-      public void visitDummyNode(final VisualizableDummyNode visitedNode) {
+      public void visitDummyNode(VisualizableDummyNode visitedNode) {
         result[0] = visitAbstractSingleNode(visitedNode);
       }
     });
     return result[0];
   }
 
-  private boolean visitAbstractSingleNode(final AbstractSingleVisualizableNode visitedNode) {
+  private boolean visitAbstractSingleNode(AbstractSingleVisualizableNode visitedNode) {
     ISimpleNode otherContent = visitedNode.getContentNode();
     List<ISimpleNode> otherLeaves = leafNodesByAncestors.get(otherContent);
     List<ISimpleNode> thisLeaves = leafNodesByAncestors.get(content);

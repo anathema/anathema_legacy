@@ -21,7 +21,7 @@ public interface IRunnableContext {
    *           by throwing this exception.
    * @see #run(INonInterruptibleRunnableWithProgress)
    */
-  public void run(IInterruptibleRunnableWithProgress runnable)
+  void run(IInterruptibleRunnableWithProgress runnable)
       throws InterruptedException,
       InvocationTargetException;
 
@@ -34,5 +34,5 @@ public interface IRunnableContext {
    *           runnable
    * @see #run(IInterruptibleRunnableWithProgress)
    */
-  public void run(INonInterruptibleRunnableWithProgress runnable) throws InvocationTargetException;
+  void run(INonInterruptibleRunnableWithProgress runnable) throws InvocationTargetException;
 }

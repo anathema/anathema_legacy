@@ -10,13 +10,9 @@ import javax.swing.ListCellRenderer;
 
 public interface IHeaderDataEntryView extends IPageContent {
 
-  public ITextView addLineTextRow(String label);
+  ITextView addLineTextRow(String label);
 
-  public <V> IObjectSelectionView<V> addComboBoxRow(String label, ListCellRenderer renderer, V[] objects);
+  <V> IObjectSelectionView<V> addComboBoxRow(String label, ListCellRenderer renderer, V[] objects);
 
-  public ISourceSelectionView addSourceView(
-      String bookLabel,
-      String pageLabel,
-      IExaltedSourceBook[] predefinedSources,
-      ListCellRenderer renderer);
+  ISourceSelectionView addSourceView(String bookLabel, String pageLabel, IExaltedSourceBook[] predefinedSources, ListCellRenderer renderer);
 }

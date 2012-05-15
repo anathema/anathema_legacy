@@ -35,7 +35,7 @@ public class MusicDataBasePresenter implements Presenter {
     IMusicPlayerProperties playerProperties = new MusicPlayerProperties(resources);
     IMusicSelectionProperties selectionProperties = new MusicSelectionProperties(resources);
     ITrackDetailsProperties detailsProperties = new TrackDetailsProperties(resources);
-    final ILibraryControlView controlView = view.addLibraryControlView(new MusicLibraryColumnViewSettings(
+    ILibraryControlView controlView = view.addLibraryControlView(new MusicLibraryColumnViewSettings(
         dataBase.getLibraryControl()), categoryProperties, libraryProperties);
     IMusicPlayerModel musicPlayerModel = dataBase.getMusicPlayerModel();
     IMusicSelectionView selectionView = view.addMusicSelectionView(

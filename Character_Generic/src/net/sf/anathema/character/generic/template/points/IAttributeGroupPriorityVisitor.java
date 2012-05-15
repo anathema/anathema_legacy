@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.template.points;
 
 public interface IAttributeGroupPriorityVisitor {
 
-  public void acceptPrimary();
+  void acceptPrimary();
 
-  public void acceptSecondary();
+  void acceptSecondary();
 
-  public void acceptTertiary();
+  void acceptTertiary();
 }

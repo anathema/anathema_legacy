@@ -5,9 +5,9 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 
 public interface IEssencePoolConfiguration {
 
-  public int getEssenceMultiplier();
+  int getEssenceMultiplier();
 
-  public int getWillpowerMultiplier();
+  int getWillpowerMultiplier();
 
-  public FactorizedTrait[] createVirtueFactorizedTrait(IGenericTrait[] virtues);
+  FactorizedTrait[] createVirtueFactorizedTrait(IGenericTrait[] virtues);
 }

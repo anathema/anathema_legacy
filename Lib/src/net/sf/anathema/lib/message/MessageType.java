@@ -7,31 +7,31 @@ public enum MessageType {
 
   ERROR("Fehler") { //$NON-NLS-1$
     @Override
-    public void accept(final IMessageTypeVisitor visitor) {
+    public void accept(IMessageTypeVisitor visitor) {
       visitor.visitError(this);
     }
   },
   WARNING("Warnung") { //$NON-NLS-1$
     @Override
-    public void accept(final IMessageTypeVisitor visitor) {
+    public void accept(IMessageTypeVisitor visitor) {
       visitor.visitWarning(this);
     }
   },
   INFORMATION("Information") { //$NON-NLS-1$
     @Override
-    public void accept(final IMessageTypeVisitor visitor) {
+    public void accept(IMessageTypeVisitor visitor) {
       visitor.visitInformation(this);
     }
   },
   NORMAL("Normal") { //$NON-NLS-1$
     @Override
-    public void accept(final IMessageTypeVisitor visitor) {
+    public void accept(IMessageTypeVisitor visitor) {
       visitor.visitNormal(this);
     }
   },
   QUESTION("Question") { //$NON-NLS-1$
     @Override
-    public void accept(final IMessageTypeVisitor visitor) {
+    public void accept(IMessageTypeVisitor visitor) {
       visitor.visitQuestion(this);
     }
   };

@@ -90,7 +90,7 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
     createMultipleEffectCharmView(visited, visited.getCharmId() + ".ControlButton"); //$NON-NLS-1$
   }
 
-  private void createMultipleEffectCharmView(IMultipleEffectCharm visitedCharm, final String labelKey) {
+  private void createMultipleEffectCharmView(IMultipleEffectCharm visitedCharm, String labelKey) {
     SVGToggleButtonSpecialNodeView subeffectView = factory.createSubeffectCharmView(
             visitedCharm,
             getCharmWidth(),

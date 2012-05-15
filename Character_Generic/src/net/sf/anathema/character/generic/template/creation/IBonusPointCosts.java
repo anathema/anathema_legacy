@@ -9,19 +9,19 @@ import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 
 public interface IBonusPointCosts extends IAbilityPointCosts, IBackgroundCreationPointCosts {
 
-  public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer);
+  int getCharmCosts(ICharm charm, ICostAnalyzer analyzer);
 
-  public int getAttributeCosts(IFavorableGenericTrait trait);
+  int getAttributeCosts(IFavorableGenericTrait trait);
 
-  public ICurrentRatingCosts getVirtueCosts();
+  ICurrentRatingCosts getVirtueCosts();
 
-  public int getWillpowerCosts();
+  int getWillpowerCosts();
 
-  public int getSpellCosts(ICostAnalyzer costMapping);
+  int getSpellCosts(ICostAnalyzer costMapping);
 
-  public int getEssenceCost();
+  int getEssenceCost();
 
-  public int getMagicCosts(IMagic magic, ICostAnalyzer analyzer);
+  int getMagicCosts(IMagic magic, ICostAnalyzer analyzer);
 
-  public int getMaximumFreeVirtueRank();
+  int getMaximumFreeVirtueRank();
 }

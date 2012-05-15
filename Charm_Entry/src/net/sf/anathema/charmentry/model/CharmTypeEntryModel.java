@@ -38,14 +38,14 @@ public class CharmTypeEntryModel implements ICharmTypeEntryModel {
 
   @Override
   public void setCharmType(CharmType type) {
-    final CharmTypeModel charmTypeModel = charmData.getCharmTypeModel();
+    CharmTypeModel charmTypeModel = charmData.getCharmTypeModel();
     charmTypeModel.setCharmType(type);
     setSpecialModel();
     control.announce().changeOccurred();
   }
 
   private void setSpecialModel() {
-    final CharmTypeModel charmTypeModel = charmData.getCharmTypeModel();
+    CharmTypeModel charmTypeModel = charmData.getCharmTypeModel();
     if (isSimpleSpecialsAvailable() && enabled) {
       charmTypeModel.setSpecialModel(simpleCharmSpecials);
     }

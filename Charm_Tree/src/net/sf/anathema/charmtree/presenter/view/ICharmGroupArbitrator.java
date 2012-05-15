@@ -5,5 +5,5 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 
 public interface ICharmGroupArbitrator {
 
-  public ICharm[] getCharms(ICharmGroup charmGroup);
+  ICharm[] getCharms(ICharmGroup charmGroup);
 }

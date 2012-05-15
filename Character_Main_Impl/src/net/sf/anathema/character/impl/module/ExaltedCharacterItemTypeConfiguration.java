@@ -10,7 +10,6 @@ import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.impl.module.repository.CharacterCreationWizardPageFactory;
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.impl.view.CharacterView;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -29,6 +28,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -72,7 +72,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
                 resources, characterType);
         IIntValueDisplayFactory markerLessIntValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(
                 resources, characterType);
-        final Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
+        Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
         ICharacterView characterView = new CharacterView(intValueDisplayFactory, printName, typeIcon,
                 markerLessIntValueDisplayFactory);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(character.getStatistics());

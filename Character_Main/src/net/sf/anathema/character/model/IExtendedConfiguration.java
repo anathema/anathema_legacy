@@ -5,9 +5,9 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 
 public interface IExtendedConfiguration {
 
-  public IAdditionalModel[] getAdditionalModels();
+  IAdditionalModel[] getAdditionalModels();
 
-  public IAdditionalModel[] getAdditionalModels(AdditionalModelType type);
+  IAdditionalModel[] getAdditionalModels(AdditionalModelType type);
 
-  public IAdditionalModel getAdditionalModel(String id);
+  IAdditionalModel getAdditionalModel(String id);
 }

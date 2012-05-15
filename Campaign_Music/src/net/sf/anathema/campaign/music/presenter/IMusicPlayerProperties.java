@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.music.presenter;
 
 public interface IMusicPlayerProperties {
 
-  public String getPlayerBorderString();
+  String getPlayerBorderString();
 
-  public String getTimeString();
+  String getTimeString();
 }

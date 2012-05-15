@@ -16,7 +16,7 @@ public class SingleNodeGraph implements IProperHierarchicalGraph, Cloneable {
     }
   }
 
-  public SingleNodeGraph(final ISimpleNode node) {
+  public SingleNodeGraph(ISimpleNode node) {
     this.node = node;
   }
 
@@ -26,7 +26,7 @@ public class SingleNodeGraph implements IProperHierarchicalGraph, Cloneable {
   }
 
   @Override
-  public ISimpleNode[] getNodesByLayer(final int layer) {
+  public ISimpleNode[] getNodesByLayer(int layer) {
     if (layer == 1) {
       return new ISimpleNode[] { node };
     }
@@ -34,7 +34,7 @@ public class SingleNodeGraph implements IProperHierarchicalGraph, Cloneable {
   }
 
   @Override
-  public void setNewLayerOrder(final int layer, final ISimpleNode[] orderedNodes) {
+  public void setNewLayerOrder(int layer, ISimpleNode[] orderedNodes) {
     // nothing to do
   }
 
@@ -49,12 +49,12 @@ public class SingleNodeGraph implements IProperHierarchicalGraph, Cloneable {
   }
 
   @Override
-  public int calculateNumberOfCrossings(final int upperLayerIndex) {
+  public int calculateNumberOfCrossings(int upperLayerIndex) {
     return 0;
   }
 
   @Override
-  public boolean containsRoot(final int layer) {
+  public boolean containsRoot(int layer) {
     return true;
   }
 }

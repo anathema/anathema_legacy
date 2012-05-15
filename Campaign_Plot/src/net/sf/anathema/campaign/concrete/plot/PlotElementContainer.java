@@ -58,19 +58,19 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
     return plotElement;
   }
 
-  private void fireChildAddedEvent(final IPlotElement element) {
+  private void fireChildAddedEvent(IPlotElement element) {
     listeners.announce().childAdded(PlotElementContainer.this, element);
   }
 
-  private void fireChildMovedEvent(final IPlotElement element, final int newIndex) {
+  private void fireChildMovedEvent(IPlotElement element, int newIndex) {
     listeners.announce().childMoved(element, newIndex);
   }
 
-  private void fireChildRemovedEvent(final IPlotElement element) {
+  private void fireChildRemovedEvent(IPlotElement element) {
     listeners.announce().childRemoved(element);
   }
 
-  private void fireChildInsertedEvent(final IPlotElement element, final int index) {
+  private void fireChildInsertedEvent(IPlotElement element, int index) {
     listeners.announce().childInserted(element, PlotElementContainer.this, index);
   }
 

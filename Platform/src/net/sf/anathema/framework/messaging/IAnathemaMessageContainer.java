@@ -5,9 +5,9 @@ import net.sf.anathema.lib.message.IBasicMessage;
 
 public interface IAnathemaMessageContainer {
 
-  public void addChangeListener(IChangeListener listener);
+  void addChangeListener(IChangeListener listener);
 
-  public IBasicMessage getLatestMessage();
+  IBasicMessage getLatestMessage();
 
-  public IBasicMessage[] getAllMessages();
+  IBasicMessage[] getAllMessages();
 }

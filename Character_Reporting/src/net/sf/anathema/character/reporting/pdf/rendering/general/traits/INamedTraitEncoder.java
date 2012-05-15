@@ -6,5 +6,5 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public interface INamedTraitEncoder {
 
-  public float encode(SheetGraphics graphics, ReportSession session, Position position, float width, float height);
+  float encode(SheetGraphics graphics, ReportSession session, Position position, float width, float height);
 }

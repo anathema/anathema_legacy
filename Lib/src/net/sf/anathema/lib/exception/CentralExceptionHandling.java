@@ -23,13 +23,13 @@ public class CentralExceptionHandling {
   private void attachForThreadUncaughtExceptionHandling() {
     Thread.setDefaultUncaughtExceptionHandler(new UncaughtExceptionHandler() {
       @Override
-      public void uncaughtException(final Thread t, final Throwable e) {
+      public void uncaughtException(Thread t, Throwable e) {
         handle(e);
       }
     });
   }
 
-  public static void setHandler(final IExceptionHandler handler) {
+  public static void setHandler(IExceptionHandler handler) {
     getInstance().handler = handler;
   }
 
@@ -37,7 +37,7 @@ public class CentralExceptionHandling {
     return instance;
   }
 
-  public void handle(final Throwable exception) {
+  public void handle(Throwable exception) {
     if (handler != null) {
       handler.handle(exception);
     }

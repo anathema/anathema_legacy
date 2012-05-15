@@ -132,13 +132,13 @@ public class EquipmentObjectPresenter implements Presenter {
 	  }
   }
   
-  private void addOptionalModels(BooleanModel baseModel, final IEquipmentStats stats)
+  private void addOptionalModels(BooleanModel baseModel, IEquipmentStats stats)
   {
 	  if (stats instanceof IWeaponStats)
 	  {
-		  final IWeaponStats weaponStats = (IWeaponStats)stats;
+		  IWeaponStats weaponStats = (IWeaponStats)stats;
 		  INamedGenericTrait[] specialties = dataProvider.getSpecialties(((IWeaponStats)stats).getTraitType());
-		  for (final INamedGenericTrait specialty : specialties)
+		  for (INamedGenericTrait specialty : specialties)
 		  {
 			  String label = MessageFormat.format(resources.getString("Equipment.Specialty"), specialty.getName());
 			  final BooleanModel booleanModel = view.addOptionFlag(baseModel, label);

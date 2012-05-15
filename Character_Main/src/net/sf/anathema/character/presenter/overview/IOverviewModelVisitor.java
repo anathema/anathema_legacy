@@ -2,11 +2,11 @@ package net.sf.anathema.character.presenter.overview;
 
 public interface IOverviewModelVisitor {
 
-  public void visitStringValueModel(IValueModel<String> visitedModel);
+  void visitStringValueModel(IValueModel<String> visitedModel);
 
-  public void visitIntegerValueModel(IValueModel<Integer> model);
+  void visitIntegerValueModel(IValueModel<Integer> model);
 
-  public void visitAlotmentModel(ISpendingModel visitedModel);
+  void visitAlotmentModel(ISpendingModel visitedModel);
 
-  public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel);
+  void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel);
 }

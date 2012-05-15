@@ -17,23 +17,23 @@ public abstract class SmartChangeableModel implements Cloneable, IChangeableMode
   @Override
   protected Object clone() {
     try {
-      final SmartChangeableModel clone = (SmartChangeableModel) super.clone();
+      SmartChangeableModel clone = (SmartChangeableModel) super.clone();
       clone.listeners = Announcer.to(IChangeListener.class);
       clone.readWriteLock = new ReentrantReadWriteLock();
       return clone;
     }
-    catch (final CloneNotSupportedException e) {
+    catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
   }
 
   @Override
-  public void addChangeListener(final IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     listeners.addListener(listener);
   }
 
   @Override
-  public void removeChangeListener(final IChangeListener listener) {
+  public void removeChangeListener(IChangeListener listener) {
     listeners.removeListener(listener);
   }
 
@@ -41,8 +41,8 @@ public abstract class SmartChangeableModel implements Cloneable, IChangeableMode
     listeners.announce().changeOccurred();
   }
 
-  protected <T> T getValue(final IProperty<T> property) {
-    final Lock readLock = readWriteLock.readLock();
+  protected <T> T getValue(IProperty<T> property) {
+    Lock readLock = readWriteLock.readLock();
     readLock.lock();
     try {
       return property.getValue();
@@ -52,8 +52,8 @@ public abstract class SmartChangeableModel implements Cloneable, IChangeableMode
     }
   }
 
-  protected final <T> void setValue(final IProperty<T> property, final T value) {
-    final Lock writeLock = readWriteLock.writeLock();
+  protected final <T> void setValue(IProperty<T> property, T value) {
+    Lock writeLock = readWriteLock.writeLock();
     writeLock.lock();
     try {
       if (ObjectUtilities.equals(property.getValue(), value)) {

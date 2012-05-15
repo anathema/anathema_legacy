@@ -5,5 +5,5 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ISolarVirtueFlawView extends IVirtueFlawView {
 
-  public ITextView addTextView(String label, int columnCount, int rows);
+  ITextView addTextView(String label, int columnCount, int rows);
 }

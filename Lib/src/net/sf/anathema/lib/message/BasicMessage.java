@@ -7,11 +7,11 @@ public class BasicMessage implements IBasicMessage {
   private final MessageType type;
   private final String text;
 
-  public BasicMessage(final String text) {
+  public BasicMessage(String text) {
     this(text, MessageType.NORMAL);
   }
 
-  public BasicMessage(final String text, final MessageType type) {
+  public BasicMessage(String text, MessageType type) {
     Preconditions.checkNotNull(text, "Text for message may not be null.");
     Preconditions.checkNotNull(type, "Type for message may not be null.");
     this.text = text;
@@ -34,11 +34,11 @@ public class BasicMessage implements IBasicMessage {
   }
 
   @Override
-  public boolean equals(final Object obj) {
+  public boolean equals(Object obj) {
     if (!(obj instanceof BasicMessage)) {
       return false;
     }
-    final BasicMessage other = (BasicMessage) obj;
+    BasicMessage other = (BasicMessage) obj;
     return other.type == type && text.equals(other.text);
   }
 

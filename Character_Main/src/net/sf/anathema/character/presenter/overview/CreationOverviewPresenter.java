@@ -49,7 +49,7 @@ public class CreationOverviewPresenter implements Presenter {
     IOverviewModel[] allModels = management.getAllModels();
     initConcept();
     initCategories(allModels);
-    for (final IOverviewModel model : allModels) {
+    for (IOverviewModel model : allModels) {
       model.accept(new IOverviewModelVisitor() {
         @Override
         public void visitStringValueModel(IValueModel<String> visitedModel) {
@@ -87,8 +87,8 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private void initCategories(IOverviewModel[] allModels) {
-    for (final IOverviewModel model : allModels) {
-      final String categoryId = model.getCategoryId();
+    for (IOverviewModel model : allModels) {
+      String categoryId = model.getCategoryId();
       IOverviewCategory category = categoriesById.get(categoryId);
       if (category == null) {
         category = view.addOverviewCategory(getString("Overview.Creation.Category." + categoryId)); //$NON-NLS-1$

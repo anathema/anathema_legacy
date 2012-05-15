@@ -5,15 +5,15 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface IMinimumRestriction {
 
-  public boolean isFullfilledWithout(ILimitationContext context, ITraitType traitType);
+  boolean isFullfilledWithout(ILimitationContext context, ITraitType traitType);
   
-  public void clear();
+  void clear();
 
-  public int getStrictMinimumValue();
+  int getStrictMinimumValue();
   
-  public int getCalculationMinValue(ILimitationContext context, ITraitType traitType);
+  int getCalculationMinValue(ILimitationContext context, ITraitType traitType);
 
-  public void addTraitType(ITraitType type);
+  void addTraitType(ITraitType type);
   
-  public void setIsFreebie(boolean isFreebie);
+  void setIsFreebie(boolean isFreebie);
 }

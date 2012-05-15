@@ -23,7 +23,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     return type;
   }
 
-  public ProperHierarchicalGraph(final ISimpleNode[] hierarchicalGraph, final int deepestLayer) {
+  public ProperHierarchicalGraph(ISimpleNode[] hierarchicalGraph, int deepestLayer) {
     this.allNodes = hierarchicalGraph;
     this.deepestLayer = deepestLayer;
     for (int index = 1; index <= deepestLayer; index++) {
@@ -39,7 +39,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
     this.type = identifyGraphType();
   }
 
-  private ProperHierarchicalGraph(final ISimpleNode[] nodes, final int deepestLayer, final IGraphType type) {
+  private ProperHierarchicalGraph(ISimpleNode[] nodes, int deepestLayer, IGraphType type) {
     this.allNodes = nodes;
     this.deepestLayer = deepestLayer;
     this.type = type;
@@ -90,7 +90,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
   }
 
   @Override
-  public ISimpleNode[] getNodesByLayer(final int layer) {
+  public ISimpleNode[] getNodesByLayer(int layer) {
     return nodesByLayer.get(layer).toArray(new ISimpleNode[0]);
   }
 
@@ -100,7 +100,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
   }
 
   @Override
-  public void setNewLayerOrder(final int layer, final ISimpleNode[] orderedNodes) {
+  public void setNewLayerOrder(int layer, ISimpleNode[] orderedNodes) {
     List<ISimpleNode> layerNodes = nodesByLayer.get(layer);
     boolean equalSize = layerNodes.size() == orderedNodes.length;
     List<ISimpleNode> orderedNodeList = Arrays.asList(orderedNodes);
@@ -118,7 +118,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
   }
 
   @Override
-  public int calculateNumberOfCrossings(final int upperLayerIndex) {
+  public int calculateNumberOfCrossings(int upperLayerIndex) {
     ISimpleNode[] upperLayer = getNodesByLayer(upperLayerIndex);
     ISimpleNode[] lowerLayer = getNodesByLayer(upperLayerIndex + 1);
     boolean[][] matrix = IncidentMatrixUtilities.buildMatrix(upperLayer, lowerLayer);
@@ -162,7 +162,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Clonea
   }
 
   @Override
-  public boolean containsRoot(final int layer) {
+  public boolean containsRoot(int layer) {
     for (ISimpleNode node : getNodesByLayer(layer)) {
       if (node.isRootNode()) {
         return true;

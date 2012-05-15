@@ -39,7 +39,7 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
   }
   
   @Override
-  public ITextView[] addFieldsView(final String[] labelText) {
+  public ITextView[] addFieldsView(String[] labelText) {
     ITextView[] textView = new ITextView[labelText.length];
     for (int i = 0; i < textView.length; i++) {
       textView[i] = new LineTextView(FIELD_COLUMNS);
@@ -48,16 +48,16 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
   }
 
   @Override
-  public ITextView addLineView(final String labelText) {
+  public ITextView addLineView(String labelText) {
     return addTextView(labelText, new LineTextView(TEXT_COLUMNS));
   }
 
   @Override
-  public ITextView addAreaView(final String labelText, int rows) {
+  public ITextView addAreaView(String labelText, int rows) {
     return addTextView(labelText, new AreaTextView(rows, TEXT_COLUMNS));
   }
   
-  private synchronized ITextView[] addTextViews(final String[] labelText, final ITextView[] textView)
+  private synchronized ITextView[] addTextViews(String[] labelText, ITextView[] textView)
       throws InputMismatchException, IllegalArgumentException {
     if (labelText.length != textView.length) {
       throw new InputMismatchException("There must be as many labels as text views.");
@@ -102,7 +102,7 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
     return textView;
   }
 
-  private synchronized ITextView addTextView(final String labelText, final ITextView textView) {
+  private synchronized ITextView addTextView(String labelText, ITextView textView) {
     new LabelTextView(labelText, textView).addToStandardPanel(content);
     JPanel buttonPanel = new JPanel(new GridLayout(1, 0));
     buttonPanels.add(buttonPanel);

@@ -6,11 +6,11 @@ import net.sf.anathema.character.generic.util.IStats;
 
 public interface IStatsGroup<T extends IStats> {
 
-  public int getColumnCount();
+  int getColumnCount();
 
-  public String getTitle();
+  String getTitle();
 
-  public Float[] getColumnWeights();
+  Float[] getColumnWeights();
 
-  public void addContent(PdfPTable table, Font font, T stats);
+  void addContent(PdfPTable table, Font font, T stats);
 }

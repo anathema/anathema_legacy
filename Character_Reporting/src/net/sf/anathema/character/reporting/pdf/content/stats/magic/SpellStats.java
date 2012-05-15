@@ -16,17 +16,17 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   }
 
   @Override
-  public String getGroupName(final IResources resources) {
+  public String getGroupName(IResources resources) {
     return resources.getString("Sheet.Magic.Group.Sorcery"); //$NON-NLS-1$
   }
 
   @Override
-  public String getType(final IResources resources) {
+  public String getType(IResources resources) {
     return resources.getString(getMagic().getCircleType().getId());
   }
 
   @Override
-  public String getDurationString(final IResources resources) {
+  public String getDurationString(IResources resources) {
     return "-"; //$NON-NLS-1$
   }
 
@@ -37,7 +37,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
   }
 
   protected String[] getDetailKeys() {
-    final String target = getMagic().getTarget();
+    String target = getMagic().getTarget();
     if (target != null) {
       return new String[]{"Spells.Target." + target}; //$NON-NLS-1$
     }

@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 
 public interface IModifiableGenericTrait extends IGenericTrait {
 
-  public void setCurrentValue(int value);
+  void setCurrentValue(int value);
 }

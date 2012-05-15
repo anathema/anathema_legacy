@@ -5,17 +5,17 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ITrackDetailsView {
 
-  public ITextView getGivenNameView();
+  ITextView getGivenNameView();
 
-  public IMusicCategorizationView getMusicCategorizationView();
+  IMusicCategorizationView getMusicCategorizationView();
 
-  public void setAlbumTitle(String album);
+  void setAlbumTitle(String album);
 
-  public void setArtistName(String artist);
+  void setArtistName(String artist);
 
-  public void setOriginalTitle(String title);
+  void setOriginalTitle(String title);
 
-  public void setTrackNumber(String track);
+  void setTrackNumber(String track);
 
-  public void showTrackInfo(boolean show);
+  void showTrackInfo(boolean show);
 }

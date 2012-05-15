@@ -87,7 +87,7 @@ public class QualifiedAmountDurationPage extends AbstractAnathemaWizardPage {
         new IdentificateListCellRenderer(resources),
         OtherTraitType.values());
     initComboBoxListening(otherBox);
-    final ITextView textView = view.addTextView();
+    ITextView textView = view.addTextView();
     textView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {

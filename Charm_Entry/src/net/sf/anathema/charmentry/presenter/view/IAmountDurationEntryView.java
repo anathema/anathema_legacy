@@ -11,14 +11,11 @@ import javax.swing.ListCellRenderer;
 
 public interface IAmountDurationEntryView extends IPageContent {
 
-  public IntegerSpinner addRadioButtonSpinner();
+  IntegerSpinner addRadioButtonSpinner();
 
-  public ObjectSelectionView<ITraitType> addRadioButtonComboBox(
-      String label,
-      ListCellRenderer renderer,
-      ITraitType[] types);
+  ObjectSelectionView<ITraitType> addRadioButtonComboBox(String label, ListCellRenderer renderer, ITraitType[] types);
 
-  public void addTypeChangeListener(IChangeListener changeListener);
+  void addTypeChangeListener(IChangeListener changeListener);
 
-  public ITextView addTextView();
+  ITextView addTextView();
 }

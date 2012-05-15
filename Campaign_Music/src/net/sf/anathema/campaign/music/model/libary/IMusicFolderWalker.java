@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface IMusicFolderWalker {
 
-  public List<File> walk(IResources resources, IProgressMonitor monitor, ICancelable cancelFlag, ITrackHandler handler)
+  List<File> walk(IResources resources, IProgressMonitor monitor, ICancelable cancelFlag, ITrackHandler handler)
       throws InterruptedException;
 }

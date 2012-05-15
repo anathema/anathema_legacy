@@ -7,7 +7,7 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 
 public interface ISpecialCharmManager {
 
-  public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm);
+  ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm);
 
-  public void registerSpecialCharmConfiguration(ISpecialCharm specialCharm, ICharm charm, ILearningCharmGroup group);
+  void registerSpecialCharmConfiguration(ISpecialCharm specialCharm, ICharm charm, ILearningCharmGroup group);
 }

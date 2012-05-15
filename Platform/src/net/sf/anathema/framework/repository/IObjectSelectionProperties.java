@@ -5,7 +5,7 @@ import net.sf.anathema.lib.message.IBasicMessage;
 
 public interface IObjectSelectionProperties extends IDialogProperties {
 
-  public String getTitle();
+  String getTitle();
 
-  public IBasicMessage getDefaultMessage();
+  IBasicMessage getDefaultMessage();
 }

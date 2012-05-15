@@ -5,14 +5,14 @@ import net.sf.anathema.character.generic.magic.general.ICostList;
 public interface IConfigurableCostList extends ICostList {
 
   @Override
-  public IConfigurableCost getEssenceCost();
+  IConfigurableCost getEssenceCost();
 
   @Override
-  public IConfigurableCost getWillpowerCost();
+  IConfigurableCost getWillpowerCost();
 
   @Override
-  public IConfigurableHealthCost getHealthCost();
+  IConfigurableHealthCost getHealthCost();
   
   @Override
-  public IConfigurableCost getXPCost();
+  IConfigurableCost getXPCost();
 }

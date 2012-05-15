@@ -1,15 +1,15 @@
 package net.sf.anathema.charmentry.view;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.sf.anathema.charmentry.presenter.view.IReflexiveSpecialsView;
+import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
+import net.sf.anathema.framework.value.IIntValueDisplay;
+
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.charmentry.presenter.view.IReflexiveSpecialsView;
-import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
-import net.sf.anathema.framework.value.IIntValueDisplay;
 
 public class ReflexiveSpecialsView implements IReflexiveSpecialsView {
 
@@ -28,7 +28,7 @@ public class ReflexiveSpecialsView implements IReflexiveSpecialsView {
 
   @Override
   public JToggleButton addCheckBoxRow(String label) {
-    final JCheckBox box = new JCheckBox(label);
+    JCheckBox box = new JCheckBox(label);
     content.add(box);
     return box;
   }

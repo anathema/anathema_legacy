@@ -2,8 +2,8 @@ package net.sf.anathema.lib.model;
 
 public interface IProperty<T> {
 
-  public T getValue();
+  T getValue();
 
-  public void setValue(T value);
+  void setValue(T value);
 
 }

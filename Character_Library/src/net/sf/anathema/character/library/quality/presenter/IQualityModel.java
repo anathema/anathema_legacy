@@ -4,23 +4,23 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IQualityModel<Q extends IQuality> {
 
-  public void setCurrentQuality(Q quality);
+  void setCurrentQuality(Q quality);
 
-  public Q getCurrentQuality();
+  Q getCurrentQuality();
 
-  public boolean isSelectable(Q quality);
+  boolean isSelectable(Q quality);
 
-  public boolean isActive(IQualitySelection<Q> selection);
+  boolean isActive(IQualitySelection<Q> selection);
 
-  public IQualitySelection<Q>[] getSelectedQualities();
+  IQualitySelection<Q>[] getSelectedQualities();
 
-  public void removeQualitySelection(IQualitySelection<Q> selection);
+  void removeQualitySelection(IQualitySelection<Q> selection);
 
-  public void addQualitySelection(IQualitySelection<Q> selection);
+  void addQualitySelection(IQualitySelection<Q> selection);
 
-  public boolean isCharacterExperienced();
+  boolean isCharacterExperienced();
 
-  public void addModelChangeListener(IChangeListener listener);
+  void addModelChangeListener(IChangeListener listener);
 
-  public Q[] getAvailableQualities();
+  Q[] getAvailableQualities();
 }

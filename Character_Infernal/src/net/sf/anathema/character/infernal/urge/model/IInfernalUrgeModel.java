@@ -5,7 +5,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IInfernalUrgeModel extends IVirtueFlawModel
 {
-	public ITextualDescription getDescription();
+	ITextualDescription getDescription();
 	
-	public void setDescription(String urge);
+	void setDescription(String urge);
 }

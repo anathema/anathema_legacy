@@ -4,15 +4,15 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 
 public interface ITraitTemplate extends ITraitMinimum {
 
-  public ITraitLimitation getLimitation();
+  ITraitLimitation getLimitation();
 
-  public LowerableState getLowerableState();
+  LowerableState getLowerableState();
 
-  public int getStartValue();
+  int getStartValue();
 
-  public int getZeroLevelValue();
+  int getZeroLevelValue();
 
-  public boolean isRequiredFavored();
+  boolean isRequiredFavored();
   
-  public String getTag();
+  String getTag();
 }

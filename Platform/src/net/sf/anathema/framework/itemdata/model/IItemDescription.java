@@ -6,15 +6,15 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IItemDescription {
 
-  public ITextualDescription getName();
+  ITextualDescription getName();
 
-  public IStyledTextualDescription getContent();
+  IStyledTextualDescription getContent();
 
-  public void setClean();
+  void setClean();
 
-  public boolean isDirty();
+  boolean isDirty();
 
-  public void addDirtyListener(IChangeListener changeListener);
+  void addDirtyListener(IChangeListener changeListener);
 
-  public void removeDirtyListener(IChangeListener changeListener);
+  void removeDirtyListener(IChangeListener changeListener);
 }

@@ -4,5 +4,5 @@ import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 
 public interface IVertexOrdererFactory {
 
-  public IVertexOrderer createVertexOrderer(IProperHierarchicalGraph graph);
+  IVertexOrderer createVertexOrderer(IProperHierarchicalGraph graph);
 }

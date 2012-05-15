@@ -6,16 +6,16 @@ import net.sf.anathema.lib.util.IPredicate;
 
 public class CollectionUtilities {
 
-  public static <T> T getFirst(final Iterable<? extends T> iterable, final IPredicate<T> predicate) {
+  public static <T> T getFirst(Iterable<? extends T> iterable, IPredicate<T> predicate) {
     return getFirst(iterable, predicate, new NullProvider<T>());
   }
 
   public static <T> T getFirst(
-      final Iterable<? extends T> iterable,
-      final IPredicate<T> predicate,
-      final Provider<T> fallback) {
+      Iterable<? extends T> iterable,
+      IPredicate<T> predicate,
+      Provider<T> fallback) {
     if (iterable != null && predicate != null) {
-      for (final T item : iterable) {
+      for (T item : iterable) {
         if (predicate.evaluate(item)) {
           return item;
         }

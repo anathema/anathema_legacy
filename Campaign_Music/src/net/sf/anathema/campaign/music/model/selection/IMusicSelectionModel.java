@@ -5,35 +5,35 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IMusicSelectionModel {
 
-  public void addCurrentSelectionChangeListener(IChangeListener listener);
+  void addCurrentSelectionChangeListener(IChangeListener listener);
 
-  public void addNewSelection(String unnamedSelectionBase);
+  void addNewSelection(String unnamedSelectionBase);
 
-  public void addSelectionsChangeListener(IChangeListener listener);
+  void addSelectionsChangeListener(IChangeListener listener);
 
-  public void addToCurrentSelection(IMp3Track[] tracks);
+  void addToCurrentSelection(IMp3Track[] tracks);
 
-  public void clearCurrentSelection();
+  void clearCurrentSelection();
 
-  public void deleteSelection(IMusicSelection selection);
+  void deleteSelection(IMusicSelection selection);
 
-  public IMusicSelection getCurrentSelection();
+  IMusicSelection getCurrentSelection();
 
-  public IMp3Track[] getMarkedTracks();
+  IMp3Track[] getMarkedTracks();
 
-  public IMusicSelection[] getPersistedSelections();
+  IMusicSelection[] getPersistedSelections();
 
-  public void persistSelection(IMusicSelection currentSelection);
+  void persistSelection(IMusicSelection currentSelection);
 
-  public void setCurrentSelection(IMusicSelection selection);
+  void setCurrentSelection(IMusicSelection selection);
 
-  public void setMarkedTracks(IMp3Track[] tracks);
+  void setMarkedTracks(IMp3Track[] tracks);
 
-  public ITrackDetailModel getTrackDetailModel();
+  ITrackDetailModel getTrackDetailModel();
 
-  public IMp3Track getSelectedTrack();
+  IMp3Track getSelectedTrack();
 
-  public void updateSelectionName(IMusicSelection selection, String newName);
+  void updateSelectionName(IMusicSelection selection, String newName);
 
-  public void removeFromCurrentSelection(int[] selectedIndices);
+  void removeFromCurrentSelection(int[] selectedIndices);
 }

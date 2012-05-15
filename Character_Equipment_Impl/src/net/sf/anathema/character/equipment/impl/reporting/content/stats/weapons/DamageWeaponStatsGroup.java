@@ -42,7 +42,7 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
       table.addCell(createFinalValueCell(font, (Integer) null));
       table.addCell(createFinalValueCell(font, (Integer) null));
     } else {
-      final int weaponValue = weapon.getDamage();
+      int weaponValue = weapon.getDamage();
       int finalValue = weaponValue;
       ITraitType damageTraitType = weapon.getDamageTraitType();
       if (damageTraitType != null) {

@@ -6,15 +6,15 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IVirtueFlaw {
-  public ITraitType getRoot();
+  ITraitType getRoot();
 
-  public void setRoot(ITraitType root);
+  void setRoot(ITraitType root);
 
-  public ITextualDescription getName();
+  ITextualDescription getName();
 
-  public boolean isFlawComplete();
+  boolean isFlawComplete();
   
-  public IDefaultTrait getLimitTrait();
+  IDefaultTrait getLimitTrait();
 
-  public void addRootChangeListener(IChangeListener listener);
+  void addRootChangeListener(IChangeListener listener);
 }

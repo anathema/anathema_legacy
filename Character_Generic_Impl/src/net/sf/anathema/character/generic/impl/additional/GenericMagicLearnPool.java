@@ -96,7 +96,7 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
   }
 
   private boolean isBackgroundValueLessThanMinimumValueForCircle(
-      final IGenericTraitCollection traitCollection,
+      IGenericTraitCollection traitCollection,
       CircleType type) {
     return Functions.forMap(typesByMinimumValue, 0).apply(type) > getBackgroundValue(traitCollection);
   }

@@ -8,9 +8,9 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
-import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.StatsModifierFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -45,7 +45,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     float attackHeight = tableEncoder.encodeTable(graphics, reportSession, attackTableBounds);
     Bounds actionBounds = new Bounds(bounds.x, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
     encodeActionTable(graphics, actionBounds);
-    final float center = bounds.x + valueWidth / 2f;
+    float center = bounds.x + valueWidth / 2f;
     Bounds commentBounds = new Bounds(center + 4, bounds.y, valueWidth / 2f, attackTableBounds.height - attackHeight);
     encodeDVTable(graphics, commentBounds);
     Position lineStart = new Position(center, bounds.y + 3);
@@ -60,7 +60,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     String header = resources.getString("Sheet.SocialCombat.DVModifiers.Header"); //$NON-NLS-1$
-    final TableCell headerCell = createCommonActionsCell(new Phrase(header, font));
+    TableCell headerCell = createCommonActionsCell(new Phrase(header, font));
     headerCell.setColspan(columnWidths.length);
     headerCell.setPaddingTop(1.5f);
     table.addCell(headerCell);
@@ -94,7 +94,7 @@ public class SocialCombatStatsBoxEncoder implements ContentEncoder {
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     String header = resources.getString("Sheet.SocialCombat.CommonActions.Header"); //$NON-NLS-1$
-    final TableCell headerCell = createCommonActionsCell(new Phrase(header, font));
+    TableCell headerCell = createCommonActionsCell(new Phrase(header, font));
     headerCell.setColspan(columnWidths.length);
     headerCell.setPaddingTop(1.5f);
     table.addCell(headerCell);

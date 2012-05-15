@@ -70,7 +70,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     for (IEquipmentItem item : model.getEquipmentItems()) {
       initEquipmentObjectPresentation(item);
     }
-    final IListObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
+    IListObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
     model.addEquipmentObjectListener(new ICollectionListener<IEquipmentItem>() {
       @Override
       public void itemAdded(IEquipmentItem item) {
@@ -125,7 +125,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     return refreshAction;
   }
 
-  private void setObjects(final IListObjectSelectionView<String> equipmentTemplatePickList) {
+  private void setObjects(IListObjectSelectionView<String> equipmentTemplatePickList) {
     String[] templates = model.getAvailableTemplateIds();
     Arrays.sort(templates, new EquipmentTemplateNameComparator());
     equipmentTemplatePickList.setObjects(templates);
@@ -188,7 +188,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     view.revalidateEquipmentViews();
   }
   
-  private void doPersonalization(final IEquipmentItem item, Component component) {
+  private void doPersonalization(IEquipmentItem item, Component component) {
 	  EquipmentPersonalizationModel model = new EquipmentPersonalizationModel(item);
 	  EquipmentPersonalizationPresenterPage page =
    			new EquipmentPersonalizationPresenterPage(resources, model);

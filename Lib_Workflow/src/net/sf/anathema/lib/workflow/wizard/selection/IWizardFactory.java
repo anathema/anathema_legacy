@@ -4,9 +4,9 @@ import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 
 public interface IWizardFactory {
 
-  public boolean needsFurtherDetails();
+  boolean needsFurtherDetails();
 
-  public IAnathemaWizardPage createPage(IAnathemaWizardModelTemplate template);
+  IAnathemaWizardPage createPage(IAnathemaWizardModelTemplate template);
 
-  public IAnathemaWizardModelTemplate createTemplate();
+  IAnathemaWizardModelTemplate createTemplate();
 }

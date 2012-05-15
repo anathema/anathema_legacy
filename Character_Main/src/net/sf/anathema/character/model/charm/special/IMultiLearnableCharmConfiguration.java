@@ -5,7 +5,7 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 public interface IMultiLearnableCharmConfiguration extends ISpecialCharmConfiguration {
 
-  public IDefaultTrait getCategory();
+  IDefaultTrait getCategory();
 
-  public void setCurrentLearnCount(int newValue);
+  void setCurrentLearnCount(int newValue);
 }

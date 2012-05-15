@@ -1,14 +1,13 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
-import java.awt.Component;
-
-import javax.swing.JCheckBox;
-
 import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArtifactStatisticsProperties;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
+
+import javax.swing.JCheckBox;
+import java.awt.Component;
 
 public class ArtifactStatisticsPresenterPage extends
     AbstractEquipmentStatisticsPresenterPage<IArtifactStatisticsModel, ArtifactStatisticsProperties> {
@@ -25,8 +24,8 @@ public class ArtifactStatisticsPresenterPage extends
     addLabelledComponentRow(new String[] {
         getProperties().getAttuneCostLabel()}, new Component[] {
         initIntegerSpinner(getPageModel().getAttuneCostModel()).getComponent() });
-    final JCheckBox foreignAttuneBox = new JCheckBox();
-    final JCheckBox requireAttuneBox = new JCheckBox();  
+    JCheckBox foreignAttuneBox = new JCheckBox();
+    JCheckBox requireAttuneBox = new JCheckBox();
     BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
     
     foreignAttuneBox.setSelected(getPageModel().getForeignAttunementModel().getValue());

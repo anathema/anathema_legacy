@@ -4,11 +4,11 @@ import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 
 public interface ISourceEntryModel {
 
-  public void setSourceBook(IExaltedSourceBook identificate);
+  void setSourceBook(IExaltedSourceBook identificate);
 
-  public boolean enablePageSelection();
+  boolean enablePageSelection();
 
-  public void setSourcePage(int newValue);
+  void setSourcePage(int newValue);
 
-  public IExaltedSourceBook[] getLegalSources();
+  IExaltedSourceBook[] getLegalSources();
 }

@@ -7,23 +7,23 @@ import net.sf.anathema.character.presenter.overview.ISpendingModel;
 
 public interface IBonusPointManagement {
 
-  public void recalculate();
+  void recalculate();
 
-  public ISpendingModel getBackgroundModel();
+  ISpendingModel getBackgroundModel();
 
-  public ISpendingModel getDefaultAbilityModel();
+  ISpendingModel getDefaultAbilityModel();
 
-  public ISpendingModel getFavoredAbilityModel();
+  ISpendingModel getFavoredAbilityModel();
 
-  public ISpendingModel getFavoredAbilityPickModel();
+  ISpendingModel getFavoredAbilityPickModel();
 
-  public ISpendingModel getAttributeModel(AttributeGroupPriority priority);
+  ISpendingModel getAttributeModel(AttributeGroupPriority priority);
 
-  public ISpendingModel getFavoredCharmModel();
+  ISpendingModel getFavoredCharmModel();
 
-  public IAdditionalSpendingModel getDefaultCharmModel();
+  IAdditionalSpendingModel getDefaultCharmModel();
 
-  public IAdditionalSpendingModel getTotalModel();
+  IAdditionalSpendingModel getTotalModel();
 
-  public IOverviewModel[] getAllModels();
+  IOverviewModel[] getAllModels();
 }

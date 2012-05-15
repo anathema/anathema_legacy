@@ -51,7 +51,7 @@ public class SecondEditionLunarDBTFormEncoder implements ContentEncoder {
       for (int i = 1; i <= numNotes; i++) {
         writeLine(graphics, resources.getString(NOTES + ".Note" + i), bounds, offsetX, offsetY + LINE_HEIGHT * (i - 1));
       }
-    } catch (DocumentException e) {
+    } catch (DocumentException ignored) {
     }
   }
 

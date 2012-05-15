@@ -4,21 +4,21 @@ import java.awt.Cursor;
 
 public interface ISvgTreeViewProperties {
 
-  public String getNodeName(String nodeId);
+  String getNodeName(String nodeId);
 
-  public boolean isRootNode(String nodeId);
+  boolean isRootNode(String nodeId);
 
-  public String getToolTip(String nodeId);
+  String getToolTip(String nodeId);
 
-  public Cursor getCursor(String nodeId);
+  Cursor getCursor(String nodeId);
 
-  public Cursor getDefaultCursor();
+  Cursor getDefaultCursor();
 
-  public Cursor getDragCursor();
+  Cursor getDragCursor();
 
-  public Cursor getForbiddenCursor();
+  Cursor getForbiddenCursor();
 
-  public Cursor getZoomCursor();
+  Cursor getZoomCursor();
 
-  public Cursor getControlCursor();
+  Cursor getControlCursor();
 }

@@ -6,7 +6,7 @@ public enum FontStyleProperty {
 
   private final String name;
 
-  private FontStyleProperty(final String name) {
+  private FontStyleProperty(String name) {
     this.name = name;
   }
 

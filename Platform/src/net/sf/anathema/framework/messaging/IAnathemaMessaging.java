@@ -5,7 +5,7 @@ import net.sf.anathema.lib.message.MessageType;
 
 public interface IAnathemaMessaging {
 
-  public void addMessage(String messagePattern, MessageType messageType, Object... arguments);
+  void addMessage(String messagePattern, MessageType messageType, Object... arguments);
 
-  public void addMessage(IBasicMessage message);
+  void addMessage(IBasicMessage message);
 }

@@ -4,7 +4,7 @@ public class MaxIntegerValueBuilder {
 
   private int maxValue;
 
-  public MaxIntegerValueBuilder(final int startValue) {
+  public MaxIntegerValueBuilder(int startValue) {
     this.maxValue = startValue;
   }
 
@@ -12,7 +12,7 @@ public class MaxIntegerValueBuilder {
     return maxValue;
   }
 
-  public void add(final int value) {
+  public void add(int value) {
     maxValue = value > maxValue ? value : maxValue;
   }
 }

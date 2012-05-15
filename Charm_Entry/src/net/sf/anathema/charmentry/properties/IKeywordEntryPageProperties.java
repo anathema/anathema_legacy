@@ -7,15 +7,15 @@ import javax.swing.ListCellRenderer;
 
 public interface IKeywordEntryPageProperties {
 
-  public IBasicMessage getDefaultMessage();
+  IBasicMessage getDefaultMessage();
 
-  public String getPageTitle();
+  String getPageTitle();
 
-  public Icon getAddIcon();
+  Icon getAddIcon();
 
-  public String getKeywordLabel();
+  String getKeywordLabel();
 
-  public Icon getRemoveIcon();
+  Icon getRemoveIcon();
 
-  public ListCellRenderer getKeywordRenderer();
+  ListCellRenderer getKeywordRenderer();
 }

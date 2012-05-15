@@ -4,9 +4,9 @@ import net.sf.anathema.campaign.music.model.track.IMp3Track;
 
 public interface IMusicPlayerModelListener {
 
-  public void trackOpenend(IMp3Track track, int lengthInBytes, long totalTime);
+  void trackOpenend(IMp3Track track, int lengthInBytes, long totalTime);
 
-  public void positionChanged(int bytesread, long timeElapsed);
+  void positionChanged(int bytesread, long timeElapsed);
 
-  public void statusChanged(MusicPlayerStatus status);
+  void statusChanged(MusicPlayerStatus status);
 }

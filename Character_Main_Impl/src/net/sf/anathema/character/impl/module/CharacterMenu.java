@@ -18,7 +18,7 @@ import java.awt.Component;
 public class CharacterMenu implements IAnathemaMenu {
 
   @Override
-  public void add(IResources resources, final IAnathemaModel model, IMenuBar menubar) {
+  public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
     IMenu menu = menubar.addMenu(resources.getString("CharacterMenu.Title")); //$NON-NLS-1$
     menu.setMnemonic('C');
     menu.addMenuItem(new MakeCharacterExperienced(resources, model));

@@ -11,13 +11,13 @@ public class FileUtilities {
     throw new UnreachableCodeReachedException();
   }
 
-  public static void deleteFileOrDirectory(final File file) throws IOException {
+  public static void deleteFileOrDirectory(File file) throws IOException {
     if (!file.exists()) {
       return;
     }
     if (file.isDirectory()) {
-      final File[] files = file.listFiles();
-      for (final File file2 : files) {
+      File[] files = file.listFiles();
+      for (File file2 : files) {
         deleteFileOrDirectory(file2);
       }
     }

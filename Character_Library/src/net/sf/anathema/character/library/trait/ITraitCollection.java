@@ -7,13 +7,13 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 public interface ITraitCollection extends IGenericTraitCollection {
 
   @Override
-  public ITrait getTrait(ITraitType type);
+  ITrait getTrait(ITraitType type);
 
   @Override
-  public IFavorableTrait getFavorableTrait(ITraitType type);
+  IFavorableTrait getFavorableTrait(ITraitType type);
 
   @Override
-  public ITrait[] getTraits(ITraitType[] traitTypes);
+  ITrait[] getTraits(ITraitType[] traitTypes);
 
-  public IFavorableTrait[] getFavorableTraits(ITraitType[] traitTypes);
+  IFavorableTrait[] getFavorableTraits(ITraitType[] traitTypes);
 }

@@ -94,7 +94,7 @@ public class IntValueDisplay implements IIntValueDisplay {
     BufferedImage passiveTop = new BufferedImage(active.getWidth(null), active.getHeight(null), BufferedImage.TYPE_4BYTE_ABGR);
     activeTop.getGraphics().drawImage(active, 0, 0, null);
     passiveTop.getGraphics().drawImage(passive, 0, 0, null);
-    final int width = activeTop.getWidth();
+    int width = activeTop.getWidth();
     int[] imgData = new int[width];
     int[] maskData = new int[width];
     for (int y = 0; y < activeTop.getHeight(); y++) {

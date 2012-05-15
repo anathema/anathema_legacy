@@ -2,7 +2,7 @@ package net.sf.anathema.framework.styledtext.model;
 
 public interface ITextPart {
 
-  public String getText();
+  String getText();
 
-  public ITextFormat getFormat();
+  ITextFormat getFormat();
 }

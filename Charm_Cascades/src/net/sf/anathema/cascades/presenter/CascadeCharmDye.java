@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmtree.presenter.AbstractCharmDye;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class CascadeCharmDye extends AbstractCharmDye {
 

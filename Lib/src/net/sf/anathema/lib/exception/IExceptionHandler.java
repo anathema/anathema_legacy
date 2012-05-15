@@ -8,5 +8,5 @@ public interface IExceptionHandler {
    * Handles the given {@link Throwable} object. 
    * @param exception the {@link Throwable} object to handle.
    */
-  public void handle(Throwable exception);
+  void handle(Throwable exception);
 }

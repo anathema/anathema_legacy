@@ -39,7 +39,7 @@ public abstract class ComboArbitrator implements IComboArbitrator {
   }
 
   @Override
-  public boolean isComboLegal(final ICharm charm1, final ICharm charm2) {
+  public boolean isComboLegal(ICharm charm1, ICharm charm2) {
     if (charm1 == charm2) {
       return false;
     }

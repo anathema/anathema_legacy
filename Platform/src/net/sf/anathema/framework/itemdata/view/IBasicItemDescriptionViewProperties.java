@@ -2,7 +2,7 @@ package net.sf.anathema.framework.itemdata.view;
 
 public interface IBasicItemDescriptionViewProperties {
 
-  public String getCardTitle();
+  String getCardTitle();
 
-  public String getNameLabel();
+  String getNameLabel();
 }

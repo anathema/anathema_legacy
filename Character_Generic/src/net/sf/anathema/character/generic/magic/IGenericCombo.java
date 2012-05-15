@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.magic;
 
 public interface IGenericCombo {
 
-  public String getName();
+  String getName();
 
-  public ICharm[] getCharms();
+  ICharm[] getCharms();
 }

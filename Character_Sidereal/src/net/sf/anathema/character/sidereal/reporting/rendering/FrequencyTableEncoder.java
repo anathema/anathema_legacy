@@ -1,6 +1,10 @@
 package net.sf.anathema.character.sidereal.reporting.rendering;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.CellPadding;

@@ -4,10 +4,10 @@ import net.sf.anathema.lib.message.IBasicMessage;
 
 public interface IPrerequisiteCharmsPageProperties {
 
-  public String getPageTitle();
+  String getPageTitle();
 
-  public IBasicMessage getDefaultMessage();
+  IBasicMessage getDefaultMessage();
 
-  public String getExcellencyString();
+  String getExcellencyString();
 
 }

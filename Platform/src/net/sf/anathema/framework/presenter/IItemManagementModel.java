@@ -6,19 +6,19 @@ import net.sf.anathema.lib.exception.AnathemaException;
 
 public interface IItemManagementModel {
 
-  public void addItem(IItem item) throws AnathemaException;
+  void addItem(IItem item) throws AnathemaException;
 
-  public void setSelectedItem(IItem item);
+  void setSelectedItem(IItem item);
 
-  public void addListener(IItemManagementModelListener listener);
+  void addListener(IItemManagementModelListener listener);
 
-  public void removeListener(IItemManagementModelListener listener);
+  void removeListener(IItemManagementModelListener listener);
 
-  public IItem getSelectedItem();
+  IItem getSelectedItem();
 
-  public boolean isOpen(String itemId, IItemType type);
+  boolean isOpen(String itemId, IItemType type);
 
-  public void removeItem(IItem item);
+  void removeItem(IItem item);
 
-  public IItem[] getAllItems();
+  IItem[] getAllItems();
 }

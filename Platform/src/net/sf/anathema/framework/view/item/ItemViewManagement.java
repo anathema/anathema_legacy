@@ -50,7 +50,7 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     control.addListener(listener);
   }
 
-  private void fireItemViewChanged(final IItemView view) {
+  private void fireItemViewChanged(IItemView view) {
     control.announce().viewSelectionChangedTo(view);
   }
 

@@ -11,8 +11,5 @@ import javax.swing.ListCellRenderer;
 
 public interface IKeywordView extends IRemovableEntriesView<IRemovableEntryView>, IPageContent {
 
-  public IButtonControlledObjectSelectionView<IIdentificate> addObjectSelectionView(
-      ListCellRenderer renderer,
-      String label,
-      Icon icon);
+  IButtonControlledObjectSelectionView<IIdentificate> addObjectSelectionView(ListCellRenderer renderer, String label, Icon icon);
 }

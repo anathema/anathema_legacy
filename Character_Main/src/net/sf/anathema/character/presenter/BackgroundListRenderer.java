@@ -1,7 +1,8 @@
 package net.sf.anathema.character.presenter;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
+import java.awt.Component;
 
 public class BackgroundListRenderer extends DefaultListCellRenderer {
   private static final long serialVersionUID = 1L;
@@ -12,12 +13,7 @@ public class BackgroundListRenderer extends DefaultListCellRenderer {
   }
 
   @Override
-  public Component getListCellRendererComponent(
-          JList list,
-          Object value,
-          int index,
-          boolean isSelected,
-          boolean cellHasFocus) {
+  public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
     return super.getListCellRendererComponent(list, displayer.getDisplayObject(value), index, isSelected, cellHasFocus);
   }
 }

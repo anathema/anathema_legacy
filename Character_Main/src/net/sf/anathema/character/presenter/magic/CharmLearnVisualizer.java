@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter.magic;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 
-import java.awt.*;
+import java.awt.Toolkit;
 
 public final class CharmLearnVisualizer extends CharmLearnAdapter {
   private final CharacterCharmDye dye;

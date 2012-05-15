@@ -109,7 +109,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     control.addListener(listener);
   }
 
-  private void fireLearnCountChanged(final int learnCount) {
+  private void fireLearnCountChanged(int learnCount) {
     control.announce().learnCountChanged(learnCount);
   }
 

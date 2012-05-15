@@ -6,7 +6,7 @@ import net.sf.anathema.character.equipment.impl.character.model.natural.seconded
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 public interface INaturalWeaponConstants {
-  public static final IEquipmentStats[] SECOND_EDITION = new IEquipmentStats[] {
+  IEquipmentStats[] SECOND_EDITION = new IEquipmentStats[] {
           new Punch(),
           new Kick(),
           new Clinch() };

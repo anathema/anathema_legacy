@@ -4,9 +4,9 @@ import javax.swing.Action;
 
 public interface IMenu {
 
-  public void addMenuItem(Action action);
+  void addMenuItem(Action action);
 
-  public void addSeparator();
+  void addSeparator();
 
-  public void setMnemonic(char c);
+  void setMnemonic(char c);
 }

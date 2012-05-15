@@ -5,27 +5,27 @@ import net.sf.anathema.lib.util.IdentifiedInteger;
 
 public interface IEssencePoolStrategy {
 
-  public int getFullPersonalPool();
+  int getFullPersonalPool();
 
-  public int getFullPeripheralPool();
+  int getFullPeripheralPool();
 
-  public int getExtendedPersonalPool();
+  int getExtendedPersonalPool();
 
-  public int getExtendedPeripheralPool();
+  int getExtendedPeripheralPool();
 
-  public int getStandardPersonalPool();
+  int getStandardPersonalPool();
 
-  public int getStandardPeripheralPool();
+  int getStandardPeripheralPool();
   
-  public int getUnmodifiedPersonalPool();
+  int getUnmodifiedPersonalPool();
   
-  public int getUnmodifiedPeripheralPool();
+  int getUnmodifiedPeripheralPool();
   
-  public int getOverdrivePool();
+  int getOverdrivePool();
   
-  public IdentifiedInteger[] getComplexPools();
+  IdentifiedInteger[] getComplexPools();
   
-  public int getAttunementExpenditures();
+  int getAttunementExpenditures();
 
-  public void addPoolChangeListener(IChangeListener listener);
+  void addPoolChangeListener(IChangeListener listener);
 }

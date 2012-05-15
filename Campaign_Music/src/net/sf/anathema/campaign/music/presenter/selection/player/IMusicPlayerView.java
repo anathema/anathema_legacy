@@ -5,15 +5,15 @@ import javax.swing.event.ChangeListener;
 
 public interface IMusicPlayerView {
 
-  public void setPlayAction(Action playAction);
+  void setPlayAction(Action playAction);
 
-  public void setStopAction(Action action);
+  void setStopAction(Action action);
 
-  public void addPositionChangeListener(ChangeListener listener);
+  void addPositionChangeListener(ChangeListener listener);
 
-  public int getCurrentPosition();
+  int getCurrentPosition();
 
-  public void setMaximumPosition(int maximum, String time);
+  void setMaximumPosition(int maximum, String time);
 
-  public void setCurrentPosition(int position, String time);
+  void setCurrentPosition(int position, String time);
 }

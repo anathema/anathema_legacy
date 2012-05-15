@@ -2,7 +2,7 @@ package net.sf.anathema.graph.ordering;
 
 public interface IStructureNode {
 
-  public boolean isLeafNode();
+  boolean isLeafNode();
   
-  public boolean hasMultipleParents();
+  boolean hasMultipleParents();
 }

@@ -9,19 +9,19 @@ import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public interface ITraitTemplateFactory {
 
-  public ITraitTemplate createBackgroundTemplate(IBackgroundTemplate template);
+  ITraitTemplate createBackgroundTemplate(IBackgroundTemplate template);
   
-  public ITraitTemplate createDefaultBackgroundTemplate();
+  ITraitTemplate createDefaultBackgroundTemplate();
 
-  public ITraitTemplate createWillpowerTemplate();
+  ITraitTemplate createWillpowerTemplate();
 
-  public ITraitTemplate createEssenceTemplate();
+  ITraitTemplate createEssenceTemplate();
 
-  public ITraitTemplate createVirtueTemplate(VirtueType type);
+  ITraitTemplate createVirtueTemplate(VirtueType type);
 
-  public ITraitTemplate createAttributeTemplate(AttributeType type);
+  ITraitTemplate createAttributeTemplate(AttributeType type);
 
-  public ITraitTemplate createAbilityTemplate(AbilityType type);
+  ITraitTemplate createAbilityTemplate(AbilityType type);
   
-  public ITraitTemplate createYoziTemplate(YoziType type);
+  ITraitTemplate createYoziTemplate(YoziType type);
 }

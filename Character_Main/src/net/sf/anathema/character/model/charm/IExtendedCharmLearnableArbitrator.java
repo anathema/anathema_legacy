@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 
 public interface IExtendedCharmLearnableArbitrator extends ICharmLearnArbitrator, ICharmLearnableArbitrator {
 
-  public void addCharmLearnListener(ICharmLearnListener listener);
+  void addCharmLearnListener(ICharmLearnListener listener);
 
-  public boolean isCompulsiveCharm(ICharm charm);
+  boolean isCompulsiveCharm(ICharm charm);
 }

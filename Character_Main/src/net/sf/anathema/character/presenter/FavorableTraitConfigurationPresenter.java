@@ -37,7 +37,7 @@ public class FavorableTraitConfigurationPresenter {
   public FavorableTraitConfigurationPresenter(
       IIdentifiedTraitTypeGroup[] traitTypeGroups,
       ICharacterStatistics statistics,
-      final IGroupedFavorableTraitConfigurationView configurationView,
+      IGroupedFavorableTraitConfigurationView configurationView,
       IResources resources) {
     this.traitTypeGroups = traitTypeGroups;
     this.traitConfiguration = statistics.getTraitConfiguration();
@@ -75,7 +75,7 @@ public class FavorableTraitConfigurationPresenter {
     return traitConfiguration.getFavorableTraits(TraitTypeGroup.getAllTraitTypes(traitTypeGroups));
   }
 
-  private void addAbilityViews(final IFavorableTrait[] abilityGroup) {
+  private void addAbilityViews(IFavorableTrait[] abilityGroup) {
     for (IFavorableTrait ability : abilityGroup) {
       traitViewsByTrait.put(ability, addAbilityView(ability));
     }

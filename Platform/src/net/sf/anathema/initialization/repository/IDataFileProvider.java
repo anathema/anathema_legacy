@@ -4,5 +4,5 @@ import java.io.File;
 
 public interface IDataFileProvider {
 
-  public File getDataBaseDirectory(String subfolderName);
+  File getDataBaseDirectory(String subfolderName);
 }

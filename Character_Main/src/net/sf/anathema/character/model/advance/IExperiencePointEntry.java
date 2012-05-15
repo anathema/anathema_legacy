@@ -5,13 +5,13 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IExperiencePointEntry {
 
-  public int getExperiencePoints();
+  int getExperiencePoints();
 
-  public void setExperiencePoints(int points);
+  void setExperiencePoints(int points);
 
-  public ITextualDescription getTextualDescription();
+  ITextualDescription getTextualDescription();
 
-  public void addChangeListener(ObjectValueListener<IExperiencePointEntry> entryChangeListener);
+  void addChangeListener(ObjectValueListener<IExperiencePointEntry> entryChangeListener);
 
-  public void removeChangeListener(ObjectValueListener<IExperiencePointEntry> entryChangeListener);
+  void removeChangeListener(ObjectValueListener<IExperiencePointEntry> entryChangeListener);
 }

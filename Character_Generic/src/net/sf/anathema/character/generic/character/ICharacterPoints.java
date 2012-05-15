@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.character;
 
 public interface ICharacterPoints {
 
-  public int getExperiencePointsSpent();
+  int getExperiencePointsSpent();
 
-  public int getExperiencePointsTotal();
+  int getExperiencePointsTotal();
 }

@@ -6,13 +6,13 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 
 public interface IComboRestrictions {
 
-  public abstract boolean combosAllAbilities();
+  boolean combosAllAbilities();
   
-  public abstract boolean combosSelectAbility(AbilityType type);
+  boolean combosSelectAbility(AbilityType type);
 
-  public abstract boolean isComboAllowed(boolean isAllowedByDefault);
+  boolean isComboAllowed(boolean isAllowedByDefault);
 
-  public boolean isRestrictedCharm(ICharm charm);
+  boolean isRestrictedCharm(ICharm charm);
 
-  public abstract ITraitType[] getRestrictedTraitTypes();
+  ITraitType[] getRestrictedTraitTypes();
 }

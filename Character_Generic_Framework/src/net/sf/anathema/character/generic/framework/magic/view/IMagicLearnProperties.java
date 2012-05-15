@@ -5,19 +5,19 @@ import javax.swing.ListCellRenderer;
 
 public interface IMagicLearnProperties {
 
-  public Icon getAddButtonIcon();
+  Icon getAddButtonIcon();
 
-  public String getAddButtonToolTip();
+  String getAddButtonToolTip();
 
-  public Icon getRemoveButtonIcon();
+  Icon getRemoveButtonIcon();
 
-  public String getRemoveButtonToolTip();
+  String getRemoveButtonToolTip();
 
-  public ListCellRenderer getAvailableMagicRenderer();
+  ListCellRenderer getAvailableMagicRenderer();
 
-  public ListCellRenderer getLearnedMagicRenderer();
+  ListCellRenderer getLearnedMagicRenderer();
   
-  public boolean isMagicSelectionAvailable(Object selectedValue);
+  boolean isMagicSelectionAvailable(Object selectedValue);
 
-  public int getAvailableListSelectionMode();
+  int getAvailableListSelectionMode();
 }

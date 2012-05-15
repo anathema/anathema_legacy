@@ -5,5 +5,5 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ITraitType extends IIdentificate {
 
-  public void accept(ITraitTypeVisitor visitor);
+  void accept(ITraitTypeVisitor visitor);
 }

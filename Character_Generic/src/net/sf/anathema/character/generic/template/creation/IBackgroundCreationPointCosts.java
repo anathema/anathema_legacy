@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts
 
 public interface IBackgroundCreationPointCosts {
 
-  public ICurrentRatingCosts getBackgroundBonusPointCost();
+  ICurrentRatingCosts getBackgroundBonusPointCost();
 }

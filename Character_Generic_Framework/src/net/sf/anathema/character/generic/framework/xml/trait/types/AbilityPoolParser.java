@@ -27,7 +27,7 @@ public class AbilityPoolParser extends AbstractPoolTemplateParser {
   }
 
   @Override
-  protected void executeResult(final GenericTraitTemplatePool traitPool) {
+  protected void executeResult(GenericTraitTemplatePool traitPool) {
     templateFactory.setAbilitiesPool(traitPool);
   }
 }

@@ -36,7 +36,7 @@ public class HeartsBloodPresenter implements Presenter {
     String animalDexterityString = resources.getString("Lunar.HeartsBlood.AnimalDexterity"); //$NON-NLS-1$
     String animalStrengthString = resources.getString("Lunar.HeartsBlood.AnimalStrength"); //$NON-NLS-1$
     String animalAppearanceString = resources.getString("Lunar.HeartsBlood.AnimalAppearance"); //$NON-NLS-1$
-    final BasicUi basicUi = new BasicUi(resources);
+    BasicUi basicUi = new BasicUi(resources);
     IAnimalFormSelectionView selectionView = view.createAnimalFormSelectionView(basicUi.getAddIcon(), animalFormString, animalStrengthString,
             animalDexterityString, animalStaminaString, animalAppearanceString);
     initSelectionViewListening(selectionView);
@@ -86,7 +86,7 @@ public class HeartsBloodPresenter implements Presenter {
     });
   }
 
-  private void addAnimalFormView(final BasicUi basicUi, final IAnimalForm form) {
+  private void addAnimalFormView(BasicUi basicUi, final IAnimalForm form) {
     IRemovableEntryView formView = view.addEntryView(basicUi.getRemoveIcon(), null, form.getName() +
             (" (" + form.getStrength() + "/" + form.getDexterity() + "/" + form.getStamina() +
                     "/" + form.getAppearance()) + ")"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -102,7 +102,7 @@ public class HeartsBloodPresenter implements Presenter {
   private void initModelListening(final BasicUi basicUi, final IAnimalFormSelectionView selectionView) {
     model.addModelChangeListener(new IRemovableEntryListener<IAnimalForm>() {
       @Override
-      public void entryAdded(final IAnimalForm form) {
+      public void entryAdded(IAnimalForm form) {
         addAnimalFormView(basicUi, form);
         reset(selectionView);
       }

@@ -5,5 +5,5 @@ import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 
 public interface IObjectSelectionView<V> extends IPageContent {
 
-  public IListObjectSelectionView<V> addSelectionView();
+  IListObjectSelectionView<V> addSelectionView();
 }

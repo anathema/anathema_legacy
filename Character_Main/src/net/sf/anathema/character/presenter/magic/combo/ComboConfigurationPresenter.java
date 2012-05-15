@@ -148,7 +148,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
     }
   }
 
-  private void addComboToView(final IComboConfigurationView comboConfigurationView, final ICombo combo) {
+  private void addComboToView(IComboConfigurationView comboConfigurationView, final ICombo combo) {
     SmartAction deleteAction = new SmartAction(
             resources.getString("CardView.CharmConfiguration.ComboCreation.DeleteLabel"), new BasicUi(resources).getClearIcon()) { //$NON-NLS-1$
 
@@ -165,7 +165,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
         comboConfiguration.beginComboEdit(combo);
       }
     };
-    final IComboView comboView = comboConfigurationView.addComboView(
+    IComboView comboView = comboConfigurationView.addComboView(
             createComboNameString(combo),
             convertToHtml(combo),
             deleteAction,
@@ -196,7 +196,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
     return "<html><body>" + text + "</body></html>"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
-  private void updateCharmListsInView(final IComboConfigurationView comboView) {
+  private void updateCharmListsInView(IComboConfigurationView comboView) {
     comboView.setComboCharms(comboConfiguration.getEditCombo().getCharms());
     ICharm[] learnedCharms = comboModel.getLearnedCharms();
     comboView.setAllCharms(learnedCharms);
@@ -211,7 +211,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
     });
   }
 
-  private void initViewListening(final IComboConfigurationView comboView) {
+  private void initViewListening(IComboConfigurationView comboView) {
     comboView.addComboViewListener(new IComboViewListener() {
       @Override
       public void charmAdded(Object addedCharm) {

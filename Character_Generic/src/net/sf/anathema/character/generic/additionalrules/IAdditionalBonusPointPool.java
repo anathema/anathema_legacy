@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 
 public interface IAdditionalBonusPointPool {
 
-  public int getAmount(IGenericTraitCollection traitCollection);
+  int getAmount(IGenericTraitCollection traitCollection);
 
-  public boolean isAllowedForTrait(IGenericTraitCollection traitCollection, IGenericTrait trait);
+  boolean isAllowedForTrait(IGenericTraitCollection traitCollection, IGenericTrait trait);
 
-  public boolean isAllowedForMagic(IGenericTraitCollection traitCollection, IMagic magic);
+  boolean isAllowedForMagic(IGenericTraitCollection traitCollection, IMagic magic);
 }

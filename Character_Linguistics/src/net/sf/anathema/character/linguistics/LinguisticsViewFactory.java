@@ -12,7 +12,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class LinguisticsViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(IAdditionalModel model, final IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, IResources resources, ICharacterType type) {
     ILinguisticsModel linguisticsModel = ((ILinguisticsAdditionalModel) model).getLinguisticsModel();
     LinguisticsView view = new LinguisticsView();
     new LinguisticsPresenter(linguisticsModel, view, resources).initPresentation();

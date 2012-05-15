@@ -27,7 +27,7 @@ public interface IProgressMonitor {
   /**
    * Constant indicating an unknown amount of work.
    */
-  public static final int UNKNOWN = -1;
+  int UNKNOWN = -1;
 
   /**
    * Notifies that the main task is beginning. This must only be called once on a given progress
@@ -39,17 +39,17 @@ public interface IProgressMonitor {
    *          which doesn't require the total number of work units in advance.
    * @see #beginTaskWithUnknownTotalWork(String)
    */
-  public void beginTask(String name, int totalWork);
+  void beginTask(String name, int totalWork);
 
   /** @see #beginTask(String, int) */
-  public void beginTaskWithUnknownTotalWork(String name);
+  void beginTaskWithUnknownTotalWork(String name);
 
   /**
    * Notifies that the work is done; that is, either the main task is completed or the user canceled
    * it. This method may be called more than once (implementations should be prepared to handle this
    * case).
    */
-  public void done();
+  void done();
 
   /**
    * Sets the cancel state to the given value.
@@ -57,7 +57,7 @@ public interface IProgressMonitor {
    * @param canceled <code>true</code> indicates that cancelation has been requested (but not
    *          necessarily acknowledged); <code>false</code> clears this flag
    */
-  public void setCanceled(boolean canceled);
+  void setCanceled(boolean canceled);
 
   /**
    * Notifies that a subtask of the main task is beginning. Subtasks are optional; the main task
@@ -65,7 +65,7 @@ public interface IProgressMonitor {
    * 
    * @param name the name (or description) of the subtask
    */
-  public void subTask(String name);
+  void subTask(String name);
 
   /**
    * Notifies that a given number of work unit of the main task has been completed. Note that this
@@ -73,5 +73,5 @@ public interface IProgressMonitor {
    * 
    * @param work the number of work units just completed
    */
-  public void worked(int work);
+  void worked(int work);
 }

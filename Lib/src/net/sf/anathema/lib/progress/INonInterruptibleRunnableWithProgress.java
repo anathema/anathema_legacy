@@ -21,6 +21,6 @@ public interface INonInterruptibleRunnableWithProgress {
    * 
    * @param monitor the progress monitor to use to display progress
    */
-  public void run(IProgressMonitor monitor) throws InvocationTargetException;
+  void run(IProgressMonitor monitor) throws InvocationTargetException;
 
 }

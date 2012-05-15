@@ -2,7 +2,7 @@ package net.sf.anathema.namegenerator.exalted.domain;
 
 public interface IVoidstateTokenCollection {
 
-  public static final String[] COLOR_TOKENS = { "Alabaster", //$NON-NLS-1$
+  String[] COLOR_TOKENS = { "Alabaster", //$NON-NLS-1$
       "Amber", //$NON-NLS-1$
       "Amythest", //$NON-NLS-1$
       "Ashen", //$NON-NLS-1$
@@ -28,7 +28,7 @@ public interface IVoidstateTokenCollection {
       "Violet", //$NON-NLS-1$
       "White" //$NON-NLS-1$ 
   };
-  public static final String[] CONDITION_TOKENS = { "Condition", //$NON-NLS-1$
+  String[] CONDITION_TOKENS = { "Condition", //$NON-NLS-1$
       "Adamant", //$NON-NLS-1$
       "Blazing", //$NON-NLS-1$
       "Blind", //$NON-NLS-1$
@@ -53,7 +53,7 @@ public interface IVoidstateTokenCollection {
       "Veiled", //$NON-NLS-1$
       "Weeping", //$NON-NLS-1$
       "Whispering" }; //$NON-NLS-1$
-  public static final String[] EMOTION_NEGATIVE_TOKENS = { "Bitter", //$NON-NLS-1$
+  String[] EMOTION_NEGATIVE_TOKENS = { "Bitter", //$NON-NLS-1$
       "Blighted", //$NON-NLS-1$
       "Deadly", //$NON-NLS-1$
       "Death", //$NON-NLS-1$
@@ -73,7 +73,7 @@ public interface IVoidstateTokenCollection {
       "Vengeful", //$NON-NLS-1$
       "Venomous", //$NON-NLS-1$
       "Wrathful" }; //$NON-NLS-1$
-  public static final String[] EMOTION_POSITIVE_TOKENS = { "Auspicious", //$NON-NLS-1$
+  String[] EMOTION_POSITIVE_TOKENS = { "Auspicious", //$NON-NLS-1$
       "Benificent", //$NON-NLS-1$
       "Blessed", //$NON-NLS-1$
       "Bounteous", //$NON-NLS-1$
@@ -89,7 +89,7 @@ public interface IVoidstateTokenCollection {
       "Sagacious", //$NON-NLS-1$
       "Silken", //$NON-NLS-1$
       "Virtuous" }; //$NON-NLS-1$
-  public static final String[] HEROIC_TOKENS = { "Battleworn", //$NON-NLS-1$
+  String[] HEROIC_TOKENS = { "Battleworn", //$NON-NLS-1$
       "Glorious", //$NON-NLS-1$
       "Great", //$NON-NLS-1$
       "Invincible", //$NON-NLS-1$
@@ -101,7 +101,7 @@ public interface IVoidstateTokenCollection {
       "Undefeated", //$NON-NLS-1$
       "Victorious" }; //$NON-NLS-1$
 
-  public static final String[] MOVEMENT_TOKENS = { "Ascending", //$NON-NLS-1$
+  String[] MOVEMENT_TOKENS = { "Ascending", //$NON-NLS-1$
       "Descending", //$NON-NLS-1$
       "Flickering", //$NON-NLS-1$
       "Flowing", //$NON-NLS-1$
@@ -113,7 +113,7 @@ public interface IVoidstateTokenCollection {
       "Towering", //$NON-NLS-1$
       "Unfettered", //$NON-NLS-1$
       "Wandering" }; //$NON-NLS-1$
-  public static final String[] NUMBER_TOKENS = { "Eighth", //$NON-NLS-1$
+  String[] NUMBER_TOKENS = { "Eighth", //$NON-NLS-1$
       "Eleventh", //$NON-NLS-1$
       "Fifth", //$NON-NLS-1$
       "First", //$NON-NLS-1$
@@ -131,7 +131,7 @@ public interface IVoidstateTokenCollection {
       "Tenth", //$NON-NLS-1$
       "Third", //$NON-NLS-1$
       "Twentieth" }; //$NON-NLS-1$
-  public static final String[] ANIMAL_TOKENS = { "Bat", //$NON-NLS-1$
+  String[] ANIMAL_TOKENS = { "Bat", //$NON-NLS-1$
       "Bear", //$NON-NLS-1$
       "Bull", //$NON-NLS-1$
       "Carp", //$NON-NLS-1$
@@ -167,7 +167,7 @@ public interface IVoidstateTokenCollection {
       "Viper", //$NON-NLS-1$
       "Vulture", //$NON-NLS-1$
       "Wolf" }; //$NON-NLS-1$
-  public static final String[] BODY_PART_TOKENS = { "Blood", //$NON-NLS-1$
+  String[] BODY_PART_TOKENS = { "Blood", //$NON-NLS-1$
       "Claw", //$NON-NLS-1$
       "Eyes", //$NON-NLS-1$
       "Face", //$NON-NLS-1$
@@ -182,7 +182,7 @@ public interface IVoidstateTokenCollection {
       "Stance", //$NON-NLS-1$
       "Tooth", //$NON-NLS-1$
       "Wing" }; //$NON-NLS-1$
-  public static final String[] BUILDING_TOKENS = { "Bier", //$NON-NLS-1$
+  String[] BUILDING_TOKENS = { "Bier", //$NON-NLS-1$
       "Catacomb", //$NON-NLS-1$
       "Citadel", //$NON-NLS-1$
       "Demesne", //$NON-NLS-1$
@@ -207,7 +207,7 @@ public interface IVoidstateTokenCollection {
       "Tomb", //$NON-NLS-1$
       "Tower", //$NON-NLS-1$
       "Vault" }; //$NON-NLS-1$
-  public static final String[] CELESTIAL_BODY_TOKENS = { "Cloud", //$NON-NLS-1$
+  String[] CELESTIAL_BODY_TOKENS = { "Cloud", //$NON-NLS-1$
       "Heaven", //$NON-NLS-1$
       "Heavens", //$NON-NLS-1$
       "Horizon", //$NON-NLS-1$
@@ -220,7 +220,7 @@ public interface IVoidstateTokenCollection {
       "Sunrise", //$NON-NLS-1$
       "Void", //$NON-NLS-1$
       "Wyld" }; //$NON-NLS-1$
-  public static final String[] CHARM_GENERAL_TOKENS = { "Attack", //$NON-NLS-1$
+  String[] CHARM_GENERAL_TOKENS = { "Attack", //$NON-NLS-1$
       "Attitude", //$NON-NLS-1$
       "Discipline", //$NON-NLS-1$
       "Evasion", //$NON-NLS-1$
@@ -238,7 +238,7 @@ public interface IVoidstateTokenCollection {
       "Technique", //$NON-NLS-1$
       "Temper", //$NON-NLS-1$
       "Understanding" }; //$NON-NLS-1$
-  public static final String[] CHARM_COMBAT_TOKENS = { "Attack", //$NON-NLS-1$
+  String[] CHARM_COMBAT_TOKENS = { "Attack", //$NON-NLS-1$
       "Block", //$NON-NLS-1$
       "Blow", //$NON-NLS-1$
       "Counterattack", //$NON-NLS-1$
@@ -252,7 +252,7 @@ public interface IVoidstateTokenCollection {
       "Strike", //$NON-NLS-1$
       "Technique", //$NON-NLS-1$
       "Throw" }; //$NON-NLS-1$
-  public static final String[] LOCATION_TOKENS = { "City", //$NON-NLS-1$
+  String[] LOCATION_TOKENS = { "City", //$NON-NLS-1$
       "Depths", //$NON-NLS-1$
       "East", //$NON-NLS-1$
       "Forests", //$NON-NLS-1$
@@ -269,7 +269,7 @@ public interface IVoidstateTokenCollection {
       "Waves", //$NON-NLS-1$
       "West", //$NON-NLS-1$
       "Woods" }; //$NON-NLS-1$
-  public static final String[] METAL_STONE_TOKENS = { "Bronze", //$NON-NLS-1$
+  String[] METAL_STONE_TOKENS = { "Bronze", //$NON-NLS-1$
       "Copper", //$NON-NLS-1$
       "Granite", //$NON-NLS-1$
       "Iron", //$NON-NLS-1$
@@ -280,7 +280,7 @@ public interface IVoidstateTokenCollection {
       "Ore", //$NON-NLS-1$
       "Steel", //$NON-NLS-1$
       "Stone" }; //$NON-NLS-1$
-  public static final String[] NATURAL_OBJECT_TOKENS = { "Blossom", //$NON-NLS-1$
+  String[] NATURAL_OBJECT_TOKENS = { "Blossom", //$NON-NLS-1$
       "Boulder", //$NON-NLS-1$
       "Cliff", //$NON-NLS-1$
       "Dawn", //$NON-NLS-1$
@@ -317,7 +317,7 @@ public interface IVoidstateTokenCollection {
       "Waterfall", //$NON-NLS-1$
       "Willow", //$NON-NLS-1$
       "Wind" }; //$NON-NLS-1$
-  public static final String[] NEGATIVE_TOKENS = { "Abyss", //$NON-NLS-1$
+  String[] NEGATIVE_TOKENS = { "Abyss", //$NON-NLS-1$
       "Anger", //$NON-NLS-1$
       "Ash", //$NON-NLS-1$
       "Ashes", //$NON-NLS-1$
@@ -335,7 +335,7 @@ public interface IVoidstateTokenCollection {
       "Vengeance", //$NON-NLS-1$
       "Venom", //$NON-NLS-1$
       "Wrath" }; //$NON-NLS-1$
-  public static final String[] PERSON_TOKENS = { "Assassin", //$NON-NLS-1$
+  String[] PERSON_TOKENS = { "Assassin", //$NON-NLS-1$
       "Bodhissatva", //$NON-NLS-1$
       "Bureaucrat", //$NON-NLS-1$
       "Empress", //$NON-NLS-1$
@@ -355,7 +355,7 @@ public interface IVoidstateTokenCollection {
       "Scholar", //$NON-NLS-1$
       "Tyrant", //$NON-NLS-1$
       "Warrior" }; //$NON-NLS-1$
-  public static final String[] PRECIOUS_MATERIAL_TOKENS = { "Crystal", //$NON-NLS-1$
+  String[] PRECIOUS_MATERIAL_TOKENS = { "Crystal", //$NON-NLS-1$
       "Diamond", //$NON-NLS-1$
       "Emerald", //$NON-NLS-1$
       "Gemstone", //$NON-NLS-1$
@@ -371,7 +371,7 @@ public interface IVoidstateTokenCollection {
       "Silk", //$NON-NLS-1$
       "Soulsteel", //$NON-NLS-1$
       "Starmetal" }; //$NON-NLS-1$
-  public static final String[] RELATION_TOKENS = { "Ally", //$NON-NLS-1$
+  String[] RELATION_TOKENS = { "Ally", //$NON-NLS-1$
       "Child", //$NON-NLS-1$
       "Daimyo", //$NON-NLS-1$
       "Daughter", //$NON-NLS-1$
@@ -384,7 +384,7 @@ public interface IVoidstateTokenCollection {
       "Servant", //$NON-NLS-1$
       "Slave", //$NON-NLS-1$
       "Son" }; //$NON-NLS-1$
-  public static final String[] WEAPON_TOKENS = { "Axe", //$NON-NLS-1$
+  String[] WEAPON_TOKENS = { "Axe", //$NON-NLS-1$
       "Blade", //$NON-NLS-1$
       "Bow", //$NON-NLS-1$
       "Fist", //$NON-NLS-1$
@@ -396,7 +396,7 @@ public interface IVoidstateTokenCollection {
       "Spear", //$NON-NLS-1$
       "Staff", //$NON-NLS-1$
       "Sword" }; //$NON-NLS-1$
-  public static final String[] DESTROYING_TOKENS = { "Breaking", //$NON-NLS-1$
+  String[] DESTROYING_TOKENS = { "Breaking", //$NON-NLS-1$
       "Consuming", //$NON-NLS-1$
       "Crushing", //$NON-NLS-1$
       "Destroying", //$NON-NLS-1$
@@ -409,7 +409,7 @@ public interface IVoidstateTokenCollection {
       "Sundering", //$NON-NLS-1$
       "Tearing", //$NON-NLS-1$
       "Thrashing" }; //$NON-NLS-1$
-  public static final String[] LOVING_TOKENS = { "Esteeming", //$NON-NLS-1$
+  String[] LOVING_TOKENS = { "Esteeming", //$NON-NLS-1$
       "Glorifying", //$NON-NLS-1$
       "Kissing", //$NON-NLS-1$
       "Loving", //$NON-NLS-1$

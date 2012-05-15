@@ -1,8 +1,5 @@
 package net.sf.anathema.character.db.virtueflaw;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
@@ -11,6 +8,9 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+
 public class DbVirtueFlawPresenter extends VirtueFlawPresenter {
 
   public DbVirtueFlawPresenter(IResources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
@@ -18,7 +18,7 @@ public class DbVirtueFlawPresenter extends VirtueFlawPresenter {
   }
 
   @Override
-  protected ITextView initNamePresentation(final IVirtueFlaw virtueFlaw) {
+  protected ITextView initNamePresentation(IVirtueFlaw virtueFlaw) {
     // Nothing to do. Dragon-Blooded flaws are generic.
     return new ITextView() {
       

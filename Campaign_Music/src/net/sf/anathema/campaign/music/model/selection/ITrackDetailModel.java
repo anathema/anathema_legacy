@@ -6,11 +6,11 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ITrackDetailModel extends IMusicCategorizationModel {
 
-  public void updateGivenName(String givenName);
+  void updateGivenName(String givenName);
 
-  public void addChangeDetailListener(IChangeListener changeListener);
+  void addChangeDetailListener(IChangeListener changeListener);
 
-  public void addTrackChangeListener(IChangeListener tracklistener);
+  void addTrackChangeListener(IChangeListener tracklistener);
 
-  public IMp3Track getSelectedTrack();
+  IMp3Track getSelectedTrack();
 }

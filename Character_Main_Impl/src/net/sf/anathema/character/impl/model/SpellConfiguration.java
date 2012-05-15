@@ -85,12 +85,12 @@ public class SpellConfiguration implements ISpellConfiguration {
     fireSpellsAddedEvent(addedSpells);
   }
 
-  private void fireSpellsAddedEvent(final ISpell[] addedSpells) {
+  private void fireSpellsAddedEvent(ISpell[] addedSpells) {
     magicLearnControl.announce().magicLearned(addedSpells);
     changeControl.announce().changeOccurred();
   }
 
-  private void fireSpellsForgottenEvent(final ISpell[] removedSpells) {
+  private void fireSpellsForgottenEvent(ISpell[] removedSpells) {
     magicLearnControl.announce().magicForgotten(removedSpells);
     changeControl.announce().changeOccurred();
   }
@@ -101,7 +101,7 @@ public class SpellConfiguration implements ISpellConfiguration {
   }
 
   @Override
-  public boolean isSpellAllowed(ISpell spell, final boolean experienced) {
+  public boolean isSpellAllowed(ISpell spell, boolean experienced) {
     if (creationLearnedList.contains(spell) || (experienced && experiencedLearnedList.contains(spell))) {
       return false;
     }

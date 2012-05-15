@@ -145,7 +145,7 @@ public class PrerequisitesEntryPage extends AbstractAnathemaWizardPage {
   }
 
   private boolean prerequisitesSelected() {
-    final IGenericTrait primaryPrerequisite = getPageModel().getPrimaryPrerequisite();
+    IGenericTrait primaryPrerequisite = getPageModel().getPrimaryPrerequisite();
     return primaryPrerequisite != null && getPageModel().getEssenceMinimum() >= 1;
   }
 

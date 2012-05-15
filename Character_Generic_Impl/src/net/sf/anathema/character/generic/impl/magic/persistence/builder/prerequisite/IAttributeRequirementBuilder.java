@@ -2,11 +2,10 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequ
 
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
-
 import org.dom4j.Element;
 
 public interface IAttributeRequirementBuilder {
 
-  public ICharmAttributeRequirement[] getCharmAttributeRequirements(Element prerequisitesElement) throws CharmException;
+  ICharmAttributeRequirement[] getCharmAttributeRequirements(Element prerequisitesElement) throws CharmException;
 
 }

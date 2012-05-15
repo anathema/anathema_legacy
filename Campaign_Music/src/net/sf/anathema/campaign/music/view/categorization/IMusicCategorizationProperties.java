@@ -2,9 +2,9 @@ package net.sf.anathema.campaign.music.view.categorization;
 
 public interface IMusicCategorizationProperties {
 
-  public String getThemesString();
+  String getThemesString();
 
-  public String getEventsString();
+  String getEventsString();
 
-  public String getMoodsString();
+  String getMoodsString();
 }

@@ -6,15 +6,15 @@ import javax.swing.tree.TreePath;
 
 public interface ITreeView {
 
-  public TreePath getPathForLocation(int x, int y);
+  TreePath getPathForLocation(int x, int y);
 
-  public TreePath[] getSelectionPaths();
+  TreePath[] getSelectionPaths();
 
-  public DefaultMutableTreeNode getSelectedNode();
+  DefaultMutableTreeNode getSelectedNode();
 
-  public void setSelectionPath(TreePath path);
+  void setSelectionPath(TreePath path);
 
-  public JTree getTreeComponent();
+  JTree getTreeComponent();
 
-  public boolean isRootNodeSelected();
+  boolean isRootNodeSelected();
 }

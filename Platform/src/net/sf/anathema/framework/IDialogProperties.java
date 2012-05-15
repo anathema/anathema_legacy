@@ -1,13 +1,13 @@
 package net.sf.anathema.framework;
 
 public interface IDialogProperties {
-  public String getOkButtonText();
+  String getOkButtonText();
 
-  public String getCancelButtonText();
+  String getCancelButtonText();
 
-  public String getHelpButtonText();
+  String getHelpButtonText();
 
-  public String getFoldOutButtonText();
+  String getFoldOutButtonText();
 
-  public String getFoldInButtonText();
+  String getFoldInButtonText();
 }

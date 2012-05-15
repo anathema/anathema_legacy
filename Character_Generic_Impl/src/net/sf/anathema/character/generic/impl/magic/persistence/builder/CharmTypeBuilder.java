@@ -101,7 +101,7 @@ public class CharmTypeBuilder {
       return null;
     }
     try {
-      final String attributeValue = element.attributeValue(ATTRIB_TURN_TYPE);
+      String attributeValue = element.attributeValue(ATTRIB_TURN_TYPE);
       TurnType type = TurnType.Tick;
       if (attributeValue != null) {
         type = TurnType.valueOf(attributeValue);

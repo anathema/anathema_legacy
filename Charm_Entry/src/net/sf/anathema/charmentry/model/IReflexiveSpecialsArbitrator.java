@@ -5,5 +5,5 @@ import net.sf.anathema.lib.control.IChangeListener;
 public interface IReflexiveSpecialsArbitrator {
   boolean isReflexiveSpecialsAvailable();
 
-  public void addModelListener(IChangeListener listener);
+  void addModelListener(IChangeListener listener);
 }

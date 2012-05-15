@@ -4,5 +4,5 @@ import net.sf.anathema.graph.nodes.IRegularNode;
 
 public interface ILayerer {
 
-  public int layerGraph(IRegularNode[] acyclicGraph);
+  int layerGraph(IRegularNode[] acyclicGraph);
 }

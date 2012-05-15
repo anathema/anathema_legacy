@@ -5,6 +5,6 @@ import javax.swing.JToggleButton;
 
 public interface IToggleButtonPanel {
 
-  public JToggleButton addButton(Action action, String text);
+  JToggleButton addButton(Action action, String text);
 
 }

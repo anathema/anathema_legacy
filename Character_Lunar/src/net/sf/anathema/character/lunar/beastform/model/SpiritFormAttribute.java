@@ -19,7 +19,7 @@ public class SpiritFormAttribute implements IBeastformAttribute
 
   // TODO: Available dots limit max. value
   public SpiritFormAttribute(
-      final IGenericTrait baseTrait,
+      IGenericTrait baseTrait,
       final ICharacterModelContext charContext)
   {
 	ITraitContext context = charContext.getTraitContext();

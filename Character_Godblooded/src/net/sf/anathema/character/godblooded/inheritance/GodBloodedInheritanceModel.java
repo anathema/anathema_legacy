@@ -15,7 +15,7 @@ public class GodBloodedInheritanceModel extends AbstractAdditionalModelAdapter {
     return AdditionalModelType.Miscellaneous;
   }
 
-  public GodBloodedInheritanceModel(GodBloodedInheritanceTemplate template, final ICharacterModelContext context) {
+  public GodBloodedInheritanceModel(GodBloodedInheritanceTemplate template, ICharacterModelContext context) {
     this.context = context;
     this.template = template;
   }

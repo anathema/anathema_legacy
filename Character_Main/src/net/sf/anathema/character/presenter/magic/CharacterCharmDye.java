@@ -7,7 +7,7 @@ import net.sf.anathema.charmtree.presenter.AbstractCharmDye;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class CharacterCharmDye extends AbstractCharmDye {
 

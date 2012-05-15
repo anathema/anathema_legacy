@@ -5,29 +5,29 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface ICharacterDescription {
 
-  public ITextualDescription getName();
+  ITextualDescription getName();
 
-  public ITextualDescription getPeriphrase();
+  ITextualDescription getPeriphrase();
 
-  public ITextualDescription getCharacterization();
+  ITextualDescription getCharacterization();
 
-  public ITextualDescription getPhysicalDescription();
+  ITextualDescription getPhysicalDescription();
 
-  public ITextualDescription getEyes();
+  ITextualDescription getEyes();
 
-  public ITextualDescription getHair();
+  ITextualDescription getHair();
 
-  public ITextualDescription getSex();
+  ITextualDescription getSex();
 
-  public ITextualDescription getSkin();
+  ITextualDescription getSkin();
   
-  public ITextualDescription getAnima();
+  ITextualDescription getAnima();
 
-  public ITextualDescription getNotes();
+  ITextualDescription getNotes();
 
-  public ITextualDescription getPlayer();
+  ITextualDescription getPlayer();
 
-  public ITextualDescription getConcept();
+  ITextualDescription getConcept();
   
-  public void addOverallChangeListener(ObjectValueListener<String> listener);
+  void addOverallChangeListener(ObjectValueListener<String> listener);
 }

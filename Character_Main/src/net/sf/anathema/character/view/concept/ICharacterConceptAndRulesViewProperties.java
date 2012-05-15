@@ -2,8 +2,8 @@ package net.sf.anathema.character.view.concept;
 
 public interface ICharacterConceptAndRulesViewProperties {
 
-  public String getConceptTitle();
+  String getConceptTitle();
 
-  public String getRulesTitle();
+  String getRulesTitle();
 
 }

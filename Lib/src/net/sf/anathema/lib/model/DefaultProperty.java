@@ -12,16 +12,16 @@ public class DefaultProperty<T> implements IProperty<T> {
   }
 
   @Override
-  public void setValue(final T value) {
+  public void setValue(T value) {
     this.value = value;
   }
 
   @Override
-  public boolean equals(final Object object) {
+  public boolean equals(Object object) {
     if (!(object instanceof DefaultProperty)) {
       return false;
     }
-    final DefaultProperty<?> other = (DefaultProperty<?>) object;
+    DefaultProperty<?> other = (DefaultProperty<?>) object;
     return ObjectUtilities.equals(value, other.value);
   }
 

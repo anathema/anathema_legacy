@@ -19,8 +19,8 @@ public abstract class AbstractPersistSelectionAction extends SmartAction {
   public AbstractPersistSelectionAction(
       Icon icon,
       String tooltip,
-      final IActionAddableListView<IMusicSelection> selectionListView,
-      final IMusicSelectionModel selectionModel) {
+      IActionAddableListView<IMusicSelection> selectionListView,
+      IMusicSelectionModel selectionModel) {
     super(icon);
     this.selectionListView = selectionListView;
     this.selectionModel = selectionModel;

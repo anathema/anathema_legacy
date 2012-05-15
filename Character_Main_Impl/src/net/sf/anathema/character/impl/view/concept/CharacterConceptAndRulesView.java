@@ -79,7 +79,7 @@ public class CharacterConceptAndRulesView extends
   }
 
   @Override
-  public void addRulesLabel(final String labelText) {
+  public void addRulesLabel(String labelText) {
     rulesPanel.add(new JLabel(labelText));
   }
 

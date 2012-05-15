@@ -5,5 +5,5 @@ import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 
 public interface ICascadeViewFactory {
 
-  public ICascadeView createCascadeView(ISvgTreeViewProperties viewProperties);
+  ICascadeView createCascadeView(ISvgTreeViewProperties viewProperties);
 }

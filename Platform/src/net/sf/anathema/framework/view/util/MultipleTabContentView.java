@@ -3,8 +3,9 @@ package net.sf.anathema.framework.view.util;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.lib.gui.IView;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
 public class MultipleTabContentView implements IMultiContentView {
 

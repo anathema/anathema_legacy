@@ -6,19 +6,19 @@ import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ICharacterItemCreationModel {
 
-  public ICharacterType[] getAvailableCharacterTypes();
+  ICharacterType[] getAvailableCharacterTypes();
 
-  public void setCharacterType(ICharacterType type);
+  void setCharacterType(ICharacterType type);
 
-  public void addListener(IChangeListener listener);
+  void addListener(IChangeListener listener);
 
-  public ITemplateTypeAggregation[] getAvailableTemplates();
+  ITemplateTypeAggregation[] getAvailableTemplates();
 
-  public ITemplateTypeAggregation getSelectedTemplate();
+  ITemplateTypeAggregation getSelectedTemplate();
 
-  public void setSelectedTemplate(ITemplateTypeAggregation newValue);
+  void setSelectedTemplate(ITemplateTypeAggregation newValue);
 
-  public boolean isSelectionComplete();
+  boolean isSelectionComplete();
 
-  public boolean isCharacterTypeSelected();
+  boolean isCharacterTypeSelected();
 }

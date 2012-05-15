@@ -1,19 +1,19 @@
 package net.sf.anathema.character.view.advance;
 
+import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
+
 import javax.swing.Icon;
 import javax.swing.table.TableModel;
 
-import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
-
 public interface IExperienceConfigurationViewProperties {
 
-  public TableModel getTableModel();
+  TableModel getTableModel();
 
-  public ITableColumnViewSettings[] getColumnSettings();
+  ITableColumnViewSettings[] getColumnSettings();
 
-  public Icon getDeleteIcon();
+  Icon getDeleteIcon();
 
-  public Icon getAddIcon();
+  Icon getAddIcon();
 
-  public String getTotalString();
+  String getTotalString();
 }

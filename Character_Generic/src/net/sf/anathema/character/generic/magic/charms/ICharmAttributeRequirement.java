@@ -5,12 +5,12 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ICharmAttributeRequirement {
 
-  public String getStringRepresentation();
+  String getStringRepresentation();
 
   boolean isFulfilled(ICharm[] charms);
 
-  public IIdentificate getAttribute();
+  IIdentificate getAttribute();
 
-  public int getCount();
+  int getCount();
 
 }

@@ -5,9 +5,9 @@ import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 public interface IAnathemaView extends IItemViewManagement, IWindow {
 
-  public IMenuBar getMenuBar();
+  IMenuBar getMenuBar();
 
-  public IAnathemaToolbar getToolbar();
+  IAnathemaToolbar getToolbar();
 
-  public IAnathemaStatusBar getStatusBar();
+  IAnathemaStatusBar getStatusBar();
 }

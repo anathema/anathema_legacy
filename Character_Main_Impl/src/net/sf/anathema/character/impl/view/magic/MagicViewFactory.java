@@ -10,7 +10,7 @@ import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 public class MagicViewFactory implements IMagicViewFactory {
 
   @Override
-  public ICharmView createCharmSelectionView(final ISvgTreeViewProperties properties) {
+  public ICharmView createCharmSelectionView(ISvgTreeViewProperties properties) {
     return new CharmView(properties);
   }
 
@@ -20,7 +20,7 @@ public class MagicViewFactory implements IMagicViewFactory {
   }
 
   @Override
-  public ISpellView createSpellView(final SpellViewProperties properties) {
+  public ISpellView createSpellView(SpellViewProperties properties) {
     return new SpellView(properties);
   }
 }

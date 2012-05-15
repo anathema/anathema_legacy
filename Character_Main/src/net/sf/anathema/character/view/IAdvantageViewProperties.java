@@ -2,11 +2,11 @@ package net.sf.anathema.character.view;
 
 public interface IAdvantageViewProperties {
 
-  public String getVirtueTitle();
+  String getVirtueTitle();
 
-  public String getWillpowerTitle();
+  String getWillpowerTitle();
 
-  public String getEssenceTitle();
+  String getEssenceTitle();
 
-  public String getBackgroundTitle();
+  String getBackgroundTitle();
 }

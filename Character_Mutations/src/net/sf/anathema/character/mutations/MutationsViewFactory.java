@@ -14,7 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class MutationsViewFactory implements IAdditionalViewFactory {
 
   @Override
-  public IView createView(final IAdditionalModel model, final IResources resources, ICharacterType type) {
+  public IView createView(IAdditionalModel model, final IResources resources, ICharacterType type) {
     IMutationsViewProperties properties = new IMutationsViewProperties() {
       @Override
       public String getMutationsString() {

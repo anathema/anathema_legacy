@@ -4,9 +4,9 @@ import net.sf.anathema.character.generic.magic.charms.type.IReflexiveSpecialsMod
 
 public interface IReflexiveSpecialsEntryModel extends IReflexiveSpecialsModel {
 
-  public void setSplitEnabled(boolean splitEnabled);
+  void setSplitEnabled(boolean splitEnabled);
 
-  public void setStep(Integer newValue);
+  void setStep(Integer newValue);
 
-  public void setDefenseStep(Integer newValue);
+  void setDefenseStep(Integer newValue);
 }

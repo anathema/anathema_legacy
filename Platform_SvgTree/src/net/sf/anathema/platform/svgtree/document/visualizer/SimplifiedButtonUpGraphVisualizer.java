@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class SimplifiedButtonUpGraphVisualizer extends AbstractCascadeVisualizer {
 
-  public SimplifiedButtonUpGraphVisualizer(LayeredGraph graph, final ITreePresentationProperties properties) {
+  public SimplifiedButtonUpGraphVisualizer(LayeredGraph graph, ITreePresentationProperties properties) {
     super(new WideDummyTreePresentationProperties(properties), graph);
   }
 

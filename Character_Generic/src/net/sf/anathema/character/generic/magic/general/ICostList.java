@@ -2,11 +2,11 @@ package net.sf.anathema.character.generic.magic.general;
 
 public interface ICostList {
 
-  public ICost getEssenceCost();
+  ICost getEssenceCost();
 
-  public IHealthCost getHealthCost();
+  IHealthCost getHealthCost();
 
-  public ICost getWillpowerCost();
+  ICost getWillpowerCost();
 
-  public ICost getXPCost();
+  ICost getXPCost();
 }

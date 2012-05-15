@@ -29,7 +29,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   private final ICharacterModelContext context;
   private final Announcer<IChangeListener> pointControl = Announcer.to(IChangeListener.class);
 
-  public LinguisticsModel(final ICharacterModelContext context) {
+  public LinguisticsModel(ICharacterModelContext context) {
     this.context = context;
     ConfigurableCharacterChangeListener listener = new ConfigurableCharacterChangeListener() {
       @Override

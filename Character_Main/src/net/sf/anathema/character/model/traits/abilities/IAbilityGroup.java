@@ -5,5 +5,5 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IAbilityGroup extends IIdentificate {
 
-  public IFavorableDefaultTrait[] getAbilities();
+  IFavorableDefaultTrait[] getAbilities();
 }

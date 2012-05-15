@@ -2,11 +2,11 @@ package net.sf.anathema.campaign.model.plot;
 
 public interface IPlotModel {
 
-  public IPlotElement getRootElement();
+  IPlotElement getRootElement();
 
-  public IPlotElement getParentElement(IPlotElement element);
+  IPlotElement getParentElement(IPlotElement element);
 
-  public boolean isDirty();
+  boolean isDirty();
 
-  public void setClean();
+  void setClean();
 }

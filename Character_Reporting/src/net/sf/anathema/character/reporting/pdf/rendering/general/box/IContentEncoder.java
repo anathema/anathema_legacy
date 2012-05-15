@@ -6,5 +6,5 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 
 public interface IContentEncoder {
 
-  public float encode(SheetGraphics graphics, ReportSession session, Bounds bounds);
+  float encode(SheetGraphics graphics, ReportSession session, Bounds bounds);
 }

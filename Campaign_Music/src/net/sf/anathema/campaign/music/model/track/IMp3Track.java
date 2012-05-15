@@ -6,31 +6,31 @@ import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 
 public interface IMp3Track {
 
-  public String getAlbum();
+  String getAlbum();
 
-  public String getArtist();
+  String getArtist();
 
-  public String getTrack();
+  String getTrack();
 
-  public String getTitle();
+  String getTitle();
 
-  public Md5Checksum getCheckSum();
+  Md5Checksum getCheckSum();
 
-  public String[] getFileReferences();
+  String[] getFileReferences();
 
-  public String getGivenName();
+  String getGivenName();
 
-  public void setGivenName(String givenName);
+  void setGivenName(String givenName);
 
-  public IMusicEvent[] getEvents();
+  IMusicEvent[] getEvents();
 
-  public void setEvents(IMusicEvent[] musics);
+  void setEvents(IMusicEvent[] musics);
 
-  public IMusicTheme[] getThemes();
+  IMusicTheme[] getThemes();
 
-  public void setThemes(IMusicTheme[] themes);
+  void setThemes(IMusicTheme[] themes);
 
-  public IMusicMood[] getMoods();
+  IMusicMood[] getMoods();
 
-  public void setMoods(IMusicMood[] feelings);
+  void setMoods(IMusicMood[] feelings);
 }

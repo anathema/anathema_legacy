@@ -100,7 +100,7 @@ public class MagicCostCalculator {
   }
 
   private void handleMagic(IMagic magic, Set<IMagic> handledMagic) {
-    final int bonusPointFactor = costs.getMagicCosts(magic, analyzer);
+    int bonusPointFactor = costs.getMagicCosts(magic, analyzer);
     CountVisitor visitor = new CountVisitor(handledMagic);
     magic.accept(visitor);
     boolean favored = analyzer.isMagicFavored(magic);
@@ -128,7 +128,7 @@ public class MagicCostCalculator {
       return;
     }
     ISubeffectCharmConfiguration configuration = (ISubeffectCharmConfiguration) specialCharmConfiguration;
-    final int count = Math.max(0, (configuration.getCreationLearnedSubeffectCount() - 1));
+    int count = Math.max(0, (configuration.getCreationLearnedSubeffectCount() - 1));
     int cost = (int) Math.ceil(count * configuration.getPointCostPerEffect());
     bonusPointsSpentForCharms += cost;
   }

@@ -5,7 +5,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.List;
 
 //Nat Pryce's Announcer, taken from jmock examples: http://nat.truemesh.com/archives/000710.html

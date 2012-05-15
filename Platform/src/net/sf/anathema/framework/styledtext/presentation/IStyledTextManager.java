@@ -5,9 +5,9 @@ import net.sf.anathema.framework.styledtext.model.ITextPart;
 
 public interface IStyledTextManager {
 
-  public void setText(ITextPart[] textParts);
+  void setText(ITextPart[] textParts);
 
-  public ITextPart[] getTextParts();
+  ITextPart[] getTextParts();
 
-  public void addStyledTextListener(IStyledTextChangeListener listener);
+  void addStyledTextListener(IStyledTextChangeListener listener);
 }

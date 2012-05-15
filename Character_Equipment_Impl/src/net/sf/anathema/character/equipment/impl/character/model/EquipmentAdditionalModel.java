@@ -55,7 +55,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
   public EquipmentAdditionalModel(ICharacterType characterType, IArmourStats naturalArmour,
                                   IEquipmentTemplateProvider equipmentTemplateProvider, IGenericSpecialtyContext context,
-                                  final IEquipmentCharacterDataProvider dataProvider,
+                                  IEquipmentCharacterDataProvider dataProvider,
                                   IEquipmentTemplate... naturalWeapons) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
     this.characterType = characterType;
@@ -243,14 +243,14 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     return item;
   }
 
-  private void initItem(final IEquipmentItem item) {
+  private void initItem(IEquipmentItem item) {
     equipmentItemControl.announce().itemAdded(item);
     fireModelChanged();
     item.addChangeListener(itemChangePropagator);
   }
 
   @Override
-  public void removeItem(final IEquipmentItem item) {
+  public void removeItem(IEquipmentItem item) {
     equipmentItems.remove(item);
     equipmentItemControl.announce().itemRemoved(item);
     item.removeChangeListener(itemChangePropagator);
@@ -280,7 +280,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     }
   }
 
-  private IEquipmentItem refreshItem(final IEquipmentItem item) {
+  private IEquipmentItem refreshItem(IEquipmentItem item) {
     String templateId = item.getTemplateId();
     MagicalMaterial material = item.getMaterial();
     removeItem(item);
@@ -288,24 +288,24 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   @Override
-  public void addEquipmentObjectListener(final ICollectionListener<IEquipmentItem> listener) {
+  public void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener) {
     equipmentItemControl.addListener(listener);
   }
 
   @Override
-  public MaterialComposition getMaterialComposition(final String templateId) {
+  public MaterialComposition getMaterialComposition(String templateId) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     return template.getComposition();
   }
 
   @Override
-  public MagicalMaterial getMagicalMaterial(final String templateId) {
+  public MagicalMaterial getMagicalMaterial(String templateId) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     return template.getMaterial();
   }
 
   @Override
-  public void addChangeListener(final IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     modelChangeControl.addListener(listener);
   }
 

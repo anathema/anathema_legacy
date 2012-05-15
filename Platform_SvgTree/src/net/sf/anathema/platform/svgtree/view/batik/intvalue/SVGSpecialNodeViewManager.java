@@ -1,19 +1,18 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import java.awt.Rectangle;
-
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGSVGElement;
+
+import java.awt.Rectangle;
 
 public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
 
@@ -26,7 +25,7 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
   }
 
   @Override
-  public void setVisible(final ISVGSpecialNodeView specialView, boolean visible) {
+  public void setVisible(ISVGSpecialNodeView specialView, boolean visible) {
     if (!visible) {
       specialView.setVisible(false);
       return;
@@ -49,7 +48,7 @@ public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
     rootElement.appendChild(viewElement);
   }
 
-  private Rectangle getGroupBounds(final String nodeId) {
+  private Rectangle getGroupBounds(String nodeId) {
     SVGGElement svgElement = (SVGGElement) canvas.getElementById(nodeId);
     if (svgElement == null) {
       return null;

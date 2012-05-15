@@ -2,27 +2,27 @@ package net.sf.anathema.character.library.trait.subtrait;
 
 public interface ISubTraitContainer {
 
-  public ISubTrait[] getSubTraits();
+  ISubTrait[] getSubTraits();
 
-  public ISubTrait addSubTrait(String subName);
+  ISubTrait addSubTrait(String subName);
   
-  public boolean isNewSubTraitAllowed();
+  boolean isNewSubTraitAllowed();
 
-  public void removeSubTrait(ISubTrait specialty);
+  void removeSubTrait(ISubTrait specialty);
 
-  public void addSubTraitListener(ISubTraitListener listener);
+  void addSubTraitListener(ISubTraitListener listener);
 
-  public void removeSubTraitListener(ISubTraitListener listener);
+  void removeSubTraitListener(ISubTraitListener listener);
 
-  public int getCreationDotTotal();
+  int getCreationDotTotal();
 
-  public int getCurrentDotTotal();
+  int getCurrentDotTotal();
 
-  public int getExperienceDotTotal();
+  int getExperienceDotTotal();
 
-  public boolean isRemovable(ISubTrait subTrait);
+  boolean isRemovable(ISubTrait subTrait);
 
-  public void dispose();
+  void dispose();
 
-  public ISubTrait getSubTrait(String traitName);
+  ISubTrait getSubTrait(String traitName);
 }

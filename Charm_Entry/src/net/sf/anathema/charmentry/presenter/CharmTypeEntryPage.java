@@ -33,7 +33,7 @@ public class CharmTypeEntryPage extends AbstractAnathemaWizardPage {
     addFollowupPage(new DurationEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
       @Override
       public boolean isFulfilled() {
-        final CharmType charmType = getPageModel().getCharmType();
+        CharmType charmType = getPageModel().getCharmType();
         return charmType != null && !isSpecialCharmType();
       }
     });

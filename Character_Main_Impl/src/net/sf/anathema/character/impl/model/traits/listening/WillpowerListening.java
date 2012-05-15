@@ -1,10 +1,10 @@
 package net.sf.anathema.character.impl.model.traits.listening;
 
-import java.util.Arrays;
-
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
+
+import java.util.Arrays;
 
 public class WillpowerListening {
 
@@ -20,19 +20,19 @@ public class WillpowerListening {
     updateWillpowerCreationRange(willpower, virtues);
   }
 
-  private void updateWillpowerCreationRange(final IDefaultTrait willpower, final IDefaultTrait[] virtues) {
+  private void updateWillpowerCreationRange(IDefaultTrait willpower, IDefaultTrait[] virtues) {
     int newInitialValue = Math.min(calculateAbsoluteMinimalValue(virtues), willpower.getMaximalValue());
     int newUpperValue = Math.min(calculateUpperValue(virtues), willpower.getMaximalValue());
     willpower.setModifiedCreationRange(newInitialValue, newUpperValue);
   }
 
-  private int calculateAbsoluteMinimalValue(final IDefaultTrait[] virtues) {
+  private int calculateAbsoluteMinimalValue(IDefaultTrait[] virtues) {
     int[] virtueCreationValues = orderVirtueCreationValuesAscending(virtues);
     return virtueCreationValues[virtueCreationValues.length - 1]
         + virtueCreationValues[virtueCreationValues.length - 2];
   }
 
-  private int[] orderVirtueCreationValuesAscending(final IDefaultTrait[] virtues) {
+  private int[] orderVirtueCreationValuesAscending(IDefaultTrait[] virtues) {
     int[] virtueValues = new int[virtues.length];
     for (int index = 0; index < virtueValues.length; index++) {
       virtueValues[index] = virtues[index].getCreationValue();
@@ -41,7 +41,7 @@ public class WillpowerListening {
     return virtueValues;
   }
 
-  private int calculateUpperValue(final IDefaultTrait[] virtues) {
+  private int calculateUpperValue(IDefaultTrait[] virtues) {
     int[] virtueValues = orderVirtueCreationValuesAscending(virtues);
     return Math.max(virtueValues[virtueValues.length - 1] + virtueValues[virtueValues.length - 2], 8);
   }

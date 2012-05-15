@@ -4,6 +4,6 @@ import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 
 public interface ICostEntryPageView extends IPageContent {
 
-  public ICostEntryView addCostEntryView(String typeLabel, String costLabel, String textLabel);
+  ICostEntryView addCostEntryView(String typeLabel, String costLabel, String textLabel);
 
 }

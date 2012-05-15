@@ -63,7 +63,7 @@ public class AddMusicFolderAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    final File directory = DirectoryFileChooser.createMusicDirectoryChooser(
+    File directory = DirectoryFileChooser.createMusicDirectoryChooser(
         ADD_MUSIC_CHOOSER_VALUE,
         resources.getString("Music.Actions.AddFolder.FileDialogTitle")); //$NON-NLS-1$
     if (directory == null) {

@@ -51,7 +51,7 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
   }
 
   @Override
-  public int getAttributeCosts(ITrait attribute, final boolean favored) {
+  public int getAttributeCosts(ITrait attribute, boolean favored) {
     return getTraitRatingCosts((IDefaultTrait)attribute, costs.getAttributeCosts(favored));
   }
 

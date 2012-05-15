@@ -2,53 +2,53 @@ package net.sf.anathema.character.generic.traits.types;
 
 public interface IAbilityTypeVisitor {
 
-  public void visitArchery();
+  void visitArchery();
 
-  public void visitAthletics();
+  void visitAthletics();
 
-  public void visitAwareness();
+  void visitAwareness();
 
-  public void visitBureaucracy();
+  void visitBureaucracy();
 
-  public void visitCraft();
+  void visitCraft();
 
-  public void visitDodge();
+  void visitDodge();
 
-  public void visitIntegrity();
+  void visitIntegrity();
 
-  public void visitInvestigation();
+  void visitInvestigation();
 
-  public void visitLarceny();
+  void visitLarceny();
 
-  public void visitLinguistics();
+  void visitLinguistics();
 
-  public void visitLore();
+  void visitLore();
 
-  public void visitMartialArts();
+  void visitMartialArts();
 
-  public void visitMedicine();
+  void visitMedicine();
 
-  public void visitMelee();
+  void visitMelee();
 
-  public void visitOccult();
+  void visitOccult();
 
-  public void visitPerformance();
+  void visitPerformance();
 
-  public void visitPresence();
+  void visitPresence();
 
-  public void visitResistance();
+  void visitResistance();
 
-  public void visitRide();
+  void visitRide();
 
-  public void visitSail();
+  void visitSail();
 
-  public void visitSocialize();
+  void visitSocialize();
 
-  public void visitStealth();
+  void visitStealth();
 
-  public void visitSurvival();
+  void visitSurvival();
 
-  public void visitThrown();
+  void visitThrown();
 
-  public void visitWar();
+  void visitWar();
 }

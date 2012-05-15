@@ -4,21 +4,21 @@ import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
 public interface IWeaponTagsModel {
 
-  public IWeaponTag[] getAllTags();
+  IWeaponTag[] getAllTags();
 
-  public BooleanValueModel getEnabledModel(IWeaponTag tag);
+  BooleanValueModel getEnabledModel(IWeaponTag tag);
 
-  public BooleanValueModel getSelectedModel(IWeaponTag tag);
+  BooleanValueModel getSelectedModel(IWeaponTag tag);
 
-  public void setTagsCloseCombatStyle();
+  void setTagsCloseCombatStyle();
 
-  public void setTagsRangedCombatStyle();
+  void setTagsRangedCombatStyle();
 
-  public IWeaponTag[] getSelectedTags();
+  IWeaponTag[] getSelectedTags();
 
-  public boolean isRangedTypeTagSelected();
+  boolean isRangedTypeTagSelected();
   
-  public boolean isThrownTypeTagSelected();
+  boolean isThrownTypeTagSelected();
   
-  public boolean isThrownWeaponTagSelected();
+  boolean isThrownWeaponTagSelected();
 }

@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
@@ -12,6 +9,9 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IUpgradableCharmConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class CharmExperienceModel extends AbstractIntegerValueModel {
   private final ICoreTraitConfiguration traitConfiguration;
@@ -60,15 +60,15 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
         statistics.getCharacterTemplate().getMagicTemplate().getFavoringTraitType());
     if (specialCharm != null) {
       int timesLearnedWithExperience = specialCharm.getCurrentLearnCount() - specialCharm.getCreationLearnCount();
-      final int specialCharmCost = timesLearnedWithExperience * charmCost;
+      int specialCharmCost = timesLearnedWithExperience * charmCost;
       if (specialCharm instanceof IUpgradableCharmConfiguration)
     	  return (costsExperience(charmConfiguration, charm, charmsCalculated) ? charmCost : 0) +
     			 ((IUpgradableCharmConfiguration)specialCharm).getUpgradeXPCost();
       if (!(specialCharm instanceof ISubeffectCharmConfiguration)) {
         return specialCharmCost;
       }
-      final ISubeffectCharmConfiguration subeffectCharmConfiguration = (ISubeffectCharmConfiguration) specialCharm;
-      final int count = Math.max(
+      ISubeffectCharmConfiguration subeffectCharmConfiguration = (ISubeffectCharmConfiguration) specialCharm;
+      int count = Math.max(
           0,
           (subeffectCharmConfiguration.getExperienceLearnedSubeffectCount() - (subeffectCharmConfiguration.getCreationLearnedSubeffectCount() == 0
               ? 1

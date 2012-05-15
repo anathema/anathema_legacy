@@ -1,7 +1,5 @@
 package net.sf.anathema.campaign.module;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.persistence.SeriesPersister;
 import net.sf.anathema.campaign.presenter.CampaignPresenter;
@@ -21,6 +19,8 @@ import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.Icon;
+
 @ItemTypeConfiguration
 public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
@@ -31,7 +31,7 @@ public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeCo
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(final IAnathemaModel anathemaModel, final IResources resources) {
+  protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {

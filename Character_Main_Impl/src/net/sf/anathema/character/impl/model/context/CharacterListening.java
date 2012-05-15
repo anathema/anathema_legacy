@@ -33,7 +33,7 @@ public class CharacterListening implements ICharacterListening {
     changeControl.announce().casteChanged();
   }
 
-  public void fireExperiencedChanged(final boolean isExperienced) {
+  public void fireExperiencedChanged(boolean isExperienced) {
     changeControl.announce().experiencedChanged(isExperienced);
   }
 }

@@ -6,5 +6,5 @@ import java.io.InputStream;
 
 public interface IRepositoryFileAccess extends IRepositoryFileProvider {
 
-  public InputStream openInputStream(File file) throws FileNotFoundException;
+  InputStream openInputStream(File file) throws FileNotFoundException;
 }

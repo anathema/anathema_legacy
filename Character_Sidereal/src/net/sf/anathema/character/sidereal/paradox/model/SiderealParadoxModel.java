@@ -1,8 +1,5 @@
 package net.sf.anathema.character.sidereal.paradox.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
@@ -12,11 +9,14 @@ import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
 import net.sf.anathema.lib.control.IChangeListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SiderealParadoxModel extends VirtueFlawModel
 {
   SiderealParadox virtueFlaw;
 	
-  public SiderealParadoxModel(final ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
+  public SiderealParadoxModel(ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
     super(context, additionalTemplate);
     virtueFlaw = new SiderealParadox(context);
   }

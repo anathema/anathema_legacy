@@ -28,7 +28,7 @@ public interface IInterruptibleRunnableWithProgress {
    *           {@link ICancelable#isCanceled()}, it should exit by throwing an
    *           {@link InterruptedException}
    */
-  public void run(IProgressMonitor monitor, IObservableCancelable cancelable)
+  void run(IProgressMonitor monitor, IObservableCancelable cancelable)
       throws InterruptedException,
       InvocationTargetException;
 

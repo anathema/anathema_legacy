@@ -5,13 +5,13 @@ import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 
 public interface ISimpleSpecialsEntryModel extends ISimpleSpecialsModel {
 
-  public void reset();
+  void reset();
 
-  public void setDefenseValue(int newValue);
+  void setDefenseValue(int newValue);
 
-  public void setSpeed(int newValue);
+  void setSpeed(int newValue);
 
-  public TurnType[] getTurnTypes();
+  TurnType[] getTurnTypes();
 
-  public void setTurnType(TurnType newValue);
+  void setTurnType(TurnType newValue);
 }

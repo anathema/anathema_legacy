@@ -1,16 +1,18 @@
 package net.sf.anathema.charmentry.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.framework.value.IIntValueDisplayFactory;
-import net.sf.anathema.framework.value.NullUpperBounds;
 import net.sf.anathema.character.generic.framework.intvalue.ISelectableIntValueView;
 import net.sf.anathema.character.generic.framework.intvalue.SelectableIntValueView;
 import net.sf.anathema.charmentry.presenter.view.IPrerequisitesEntryView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
+import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.NullUpperBounds;
 import net.sf.anathema.lib.util.IIdentificate;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class PrerequisiteEntryView implements IPrerequisitesEntryView {
 

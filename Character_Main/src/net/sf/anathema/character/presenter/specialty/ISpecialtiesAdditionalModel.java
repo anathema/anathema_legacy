@@ -5,5 +5,5 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfigura
 
 public interface ISpecialtiesAdditionalModel extends IAdditionalModel {
 
-  public ISpecialtiesConfiguration getSpecialtiesModel();
+  ISpecialtiesConfiguration getSpecialtiesModel();
 }

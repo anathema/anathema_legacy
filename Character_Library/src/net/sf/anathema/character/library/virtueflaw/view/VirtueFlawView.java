@@ -30,8 +30,8 @@ public class VirtueFlawView implements IVirtueFlawView {
   }
 
   @Override
-  public ITextView addTextView(final String labelText, int columns) {
-    final ITextView textView = new LineTextView(columns);
+  public ITextView addTextView(String labelText, int columns) {
+    ITextView textView = new LineTextView(columns);
     fillIntoVirtueFlawPanel(labelText, textView);
     return textView;
   }
@@ -50,7 +50,7 @@ public class VirtueFlawView implements IVirtueFlawView {
 	    return traitView;
 	  }
 
-  protected void fillIntoVirtueFlawPanel(final String labelText, final ITextView textView) {
+  protected void fillIntoVirtueFlawPanel(String labelText, ITextView textView) {
     new LabelTextView(labelText, textView).addToStandardPanel(
         virtueFlawPanel,
         GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
@@ -78,9 +78,9 @@ public class VirtueFlawView implements IVirtueFlawView {
 
   @Override
   public IObjectSelectionView<ITraitType> addVirtueFlawRootSelectionView(
-      final String labelText,
+      String labelText,
       ListCellRenderer renderer) {
-    final ObjectSelectionView<ITraitType> rootSelectionView = new ObjectSelectionView<ITraitType>(
+    ObjectSelectionView<ITraitType> rootSelectionView = new ObjectSelectionView<ITraitType>(
         labelText,
         renderer,
         new ITraitType[0]);

@@ -26,7 +26,7 @@ public class MutationProvider {
   public static final IExaltedSourceBook SecondEdition = new SourceBook("SecondEdition");
 
   public static IMutation[] getMutations(IMutationRules rules) {
-    final List<IMutation> mutations = newArrayList();
+    List<IMutation> mutations = newArrayList();
     mutations.addAll(getSecondEditionMutations());
     List<IMutation> toRemove = new ArrayList<IMutation>();
     for (IMutation mutation : mutations) {

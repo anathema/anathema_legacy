@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.view.util;
 
-import javax.swing.*;
+import javax.swing.JTabbedPane;
 
 public enum TabDirection {
 
