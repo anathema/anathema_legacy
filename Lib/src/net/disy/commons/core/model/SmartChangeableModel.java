@@ -8,9 +8,9 @@
  */
 package net.disy.commons.core.model;
 
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
+import net.sf.anathema.lib.util.ObjectUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.concurrent.locks.Lock;

@@ -1,14 +1,14 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.ITransformer;
 
 import java.util.List;
 

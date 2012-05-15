@@ -1,9 +1,5 @@
 package net.sf.anathema.character.equipment.item;
 
-import javax.swing.JPanel;
-
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ITransformer;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.ItemCost;
@@ -17,15 +13,19 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.framework.value.IIntValueDisplayFactory;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
+
+import javax.swing.JPanel;
 
 public class EquipmentDatabasePresenter implements Presenter {
 

@@ -6,9 +6,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/cpl-v10.html
  */
-package net.disy.commons.core.util;
+package net.sf.anathema.lib.collection;
 
 import net.disy.commons.core.predicate.IPredicate;
+import net.sf.anathema.lib.util.CastingTransformer;
+import net.sf.anathema.lib.util.ITransformer;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 import java.lang.reflect.Array;
 

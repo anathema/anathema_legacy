@@ -1,7 +1,7 @@
 package net.sf.anathema.magic.description.model;
 
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.util.ObjectUtilities;
 import net.sf.anathema.magic.description.persistence.MagicDescriptionDataBase;
 import org.jmock.example.announcer.Announcer;
 

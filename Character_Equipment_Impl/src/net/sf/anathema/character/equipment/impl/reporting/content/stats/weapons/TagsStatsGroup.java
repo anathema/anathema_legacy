@@ -7,13 +7,13 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.ITransformer;
 
 public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> {
   private final String title;

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -19,6 +18,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.util.ITransformer;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -27,8 +27,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static net.disy.commons.core.util.ArrayUtilities.transform;
 import static net.sf.anathema.character.equipment.MaterialComposition.Variable;
+import static net.sf.anathema.lib.collection.ArrayUtilities.transform;
 
 public class EquipmentItem implements IEquipmentItem {
 

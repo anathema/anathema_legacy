@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.rules;
 
 import com.google.common.base.Functions;
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
@@ -9,6 +8,7 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 

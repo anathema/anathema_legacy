@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter.magic.spells;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
@@ -16,6 +15,7 @@ import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPres
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;

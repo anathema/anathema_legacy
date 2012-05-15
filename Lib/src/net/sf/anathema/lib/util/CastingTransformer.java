@@ -6,8 +6,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/cpl-v10.html
  */
-package net.disy.commons.core.util;
+package net.sf.anathema.lib.util;
 
-public interface IClosure<T> extends IExceptionThrowingClosure<T, RuntimeException> {
-  // nothing to do
+public final class CastingTransformer<I, O> implements ITransformer<I, O> {
+  @SuppressWarnings("unchecked")
+  @Override
+  public O transform(final I input) {
+    return (O) input;
+  }
 }

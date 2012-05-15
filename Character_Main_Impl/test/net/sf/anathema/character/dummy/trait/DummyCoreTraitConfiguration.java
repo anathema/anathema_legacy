@@ -1,7 +1,7 @@
 package net.sf.anathema.character.dummy.trait;
 
 import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.util.ArrayUtilities;
+import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -17,7 +17,7 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfigura
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;

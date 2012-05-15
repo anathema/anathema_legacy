@@ -6,14 +6,10 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/cpl-v10.html
  */
-package net.disy.commons.core.util;
+package net.sf.anathema.lib.util;
 
-import net.disy.commons.core.provider.IProvider;
+public interface IIntValueProvider {
 
-public class NullProvider<T> implements IProvider<T> {
+  int value();
 
-  @Override
-  public T getObject() {
-    return null;
-  }
 }

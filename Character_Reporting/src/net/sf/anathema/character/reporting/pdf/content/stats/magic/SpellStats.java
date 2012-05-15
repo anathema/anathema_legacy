@@ -1,13 +1,13 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ITransformer;
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.ITransformer;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 public class SpellStats extends AbstractMagicStats<ISpell> {
 

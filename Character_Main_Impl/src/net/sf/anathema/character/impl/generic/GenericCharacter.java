@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.generic;
 
 import com.google.common.collect.Lists;
-import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
@@ -39,6 +38,7 @@ import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfigu
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.ArrayList;

@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.framework.backgrounds;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
+import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
 
 public class BackgroundRegistry extends IdentificateRegistry<IBackgroundTemplate> {

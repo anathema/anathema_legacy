@@ -1,21 +1,13 @@
-/**
- * Copyright (C) 2005, 2011 disy Informationssysteme GmbH and others
- *
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Common Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/cpl-v10.html
- */
 package net.sf.anathema.lib.gui.container;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.util.IClosure;
-import net.disy.commons.core.util.NullClosure;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.disy.commons.swing.layout.util.LayoutUtilities;
 import net.sf.anathema.lib.gui.swing.BorderUtilities;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
+import net.sf.anathema.lib.util.Closure;
+import net.sf.anathema.lib.util.NullClosure;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -43,7 +35,7 @@ public class TitledPanel extends JPanel {
       final String title,
       final JComponent content,
       final IGridDialogLayoutData layoutData,
-      final IClosure<TitledBorder> decorator) {
+      final Closure<TitledBorder> decorator) {
     super(new GridLayout(1, 0));
     Preconditions.checkNotNull(title);
     Preconditions.checkNotNull(content);

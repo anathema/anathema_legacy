@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.action;
 
-import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 import javax.swing.Icon;
 

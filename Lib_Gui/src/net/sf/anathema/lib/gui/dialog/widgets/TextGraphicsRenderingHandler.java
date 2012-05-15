@@ -9,8 +9,8 @@
 package net.sf.anathema.lib.gui.dialog.widgets;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.util.Range;
 import net.sf.anathema.lib.gui.swing.SwingColors;
+import net.sf.anathema.lib.util.Range;
 
 import java.awt.Color;
 import java.awt.FontMetrics;

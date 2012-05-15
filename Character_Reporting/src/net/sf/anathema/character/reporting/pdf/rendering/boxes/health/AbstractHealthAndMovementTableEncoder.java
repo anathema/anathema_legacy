@@ -11,13 +11,6 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-
-import org.apache.commons.lang3.ArrayUtils;
-
-import net.disy.commons.core.util.ArrayUtilities;
-
-import net.sf.anathema.lib.resources.IResources;
-
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -27,6 +20,9 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.lib.collection.ArrayUtilities;
+import net.sf.anathema.lib.resources.IResources;
+import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class AbstractHealthAndMovementTableEncoder implements ITableEncoder<ReportSession> {
   public static final int HEALTH_RECT_SIZE = 6;

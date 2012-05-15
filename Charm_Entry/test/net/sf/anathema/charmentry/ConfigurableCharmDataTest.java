@@ -1,14 +1,17 @@
 package net.sf.anathema.charmentry;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.charmentry.model.data.ConfigurableCharmData;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 public class ConfigurableCharmDataTest {
 

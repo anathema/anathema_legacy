@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.FatigueModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.HardnessModification;
@@ -17,6 +16,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 public class ProxyArmourStats extends AbstractStats implements IArmourStats, IProxy<IArmourStats> {
 

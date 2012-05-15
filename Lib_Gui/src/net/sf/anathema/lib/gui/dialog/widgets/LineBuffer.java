@@ -10,7 +10,7 @@ package net.sf.anathema.lib.gui.dialog.widgets;
 
 import net.disy.commons.core.model.ObjectModel;
 import net.disy.commons.core.text.TextAlignment;
-import net.disy.commons.core.util.Range;
+import net.sf.anathema.lib.util.Range;
 
 import java.awt.FontMetrics;
 import java.util.ArrayList;

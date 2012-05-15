@@ -13,7 +13,6 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfTemplate;
 import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.util.CollectionUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
@@ -27,6 +26,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
+import net.sf.anathema.lib.collection.CollectionUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.Arrays;

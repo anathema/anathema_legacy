@@ -1,13 +1,12 @@
 package net.sf.anathema.lib.gui.list;
 
-import java.util.ArrayList;
-import java.util.List;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JList;
-
-import net.disy.commons.core.util.ArrayUtilities;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SmartJList<T> extends JList {
 

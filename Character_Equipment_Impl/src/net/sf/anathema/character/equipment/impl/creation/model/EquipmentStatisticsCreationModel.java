@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.equipment.creation.model.stats.IApplicableMaterialsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
@@ -10,6 +9,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatSta
 import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;

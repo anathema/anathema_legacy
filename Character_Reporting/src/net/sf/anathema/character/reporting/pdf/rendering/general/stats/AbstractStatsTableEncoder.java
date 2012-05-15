@@ -5,7 +5,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -13,6 +12,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends AbstractTableEncoder<C> {

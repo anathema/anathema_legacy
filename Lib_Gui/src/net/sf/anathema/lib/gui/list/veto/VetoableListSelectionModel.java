@@ -1,12 +1,11 @@
 package net.sf.anathema.lib.gui.list.veto;
 
-import java.util.ArrayList;
-import java.util.List;
+import net.sf.anathema.lib.gui.list.ListSelectionMode;
+import net.sf.anathema.lib.util.SimpleBlock;
 
 import javax.swing.DefaultListSelectionModel;
-
-import net.disy.commons.core.util.SimpleBlock;
-import net.sf.anathema.lib.gui.list.ListSelectionMode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VetoableListSelectionModel extends DefaultListSelectionModel {
 

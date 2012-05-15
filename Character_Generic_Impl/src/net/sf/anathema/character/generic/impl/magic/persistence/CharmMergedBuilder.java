@@ -1,23 +1,22 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_MERGED;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_MERGES;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
+import com.google.common.base.Preconditions;
+import net.disy.commons.core.predicate.IPredicate;
+import net.sf.anathema.character.generic.impl.magic.Charm;
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.lib.collection.ArrayUtilities;
+import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Document;
+import org.dom4j.Element;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.google.common.base.Preconditions;
-import net.disy.commons.core.predicate.IPredicate;
-import net.disy.commons.core.util.ArrayUtilities;
-import net.sf.anathema.character.generic.impl.magic.Charm;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.lib.xml.ElementUtilities;
-
-import org.dom4j.Document;
-import org.dom4j.Element;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_MERGED;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_MERGES;
 
 public class CharmMergedBuilder {
 

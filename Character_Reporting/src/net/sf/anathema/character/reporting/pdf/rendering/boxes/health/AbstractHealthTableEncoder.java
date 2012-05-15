@@ -1,10 +1,16 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.health;
 
-import com.itextpdf.text.*;
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -14,6 +20,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.lang3.ArrayUtils;
 

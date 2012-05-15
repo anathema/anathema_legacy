@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.traits.groups;
 
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.lib.collection.ArrayUtilities;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import net.disy.commons.core.util.ArrayUtilities;
-import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class TraitTypeGroup implements ITraitTypeGroup {
 

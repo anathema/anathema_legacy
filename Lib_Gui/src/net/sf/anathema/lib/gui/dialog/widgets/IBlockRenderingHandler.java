@@ -8,7 +8,7 @@
  */
 package net.sf.anathema.lib.gui.dialog.widgets;
 
-import net.disy.commons.core.util.Range;
+import net.sf.anathema.lib.util.Range;
 
 public interface IBlockRenderingHandler {
 

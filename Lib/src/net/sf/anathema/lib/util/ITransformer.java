@@ -6,15 +6,8 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/cpl-v10.html
  */
-package net.disy.commons.core.util;
+package net.sf.anathema.lib.util;
 
-/**
- * Exception that is thrown if the contract of method was not fullfilled.
- */
-public class ContractFailedException extends RuntimeException {
-
-  public ContractFailedException(final String message) {
-    super(message);
-  }
-
+public interface ITransformer<I, O> {
+  public O transform(I input);
 }

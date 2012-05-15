@@ -6,10 +6,11 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/cpl-v10.html
  */
-package net.disy.commons.core.util;
+package net.sf.anathema.lib.collection;
 
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.provider.IProvider;
+import net.sf.anathema.lib.util.NullProvider;
 
 public class CollectionUtilities {
 

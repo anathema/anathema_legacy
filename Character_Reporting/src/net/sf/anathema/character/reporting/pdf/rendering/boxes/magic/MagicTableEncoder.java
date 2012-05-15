@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
 import com.itextpdf.text.pdf.PdfPTable;
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.magic.AbstractMagicContent;
@@ -9,6 +8,7 @@ import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 public class MagicTableEncoder <C extends AbstractMagicContent> extends AbstractStatsTableEncoder<IMagicStats, ReportSession> {
 

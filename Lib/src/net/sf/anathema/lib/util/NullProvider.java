@@ -6,12 +6,14 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/cpl-v10.html
  */
-package net.disy.commons.core.util;
+package net.sf.anathema.lib.util;
 
-/**
- * A block of code to be executed. This particular abstract class is set to throw RuntimeExceptions
- * only.
- */
-public abstract class SimpleBlock implements IExceptionThrowingBlock<RuntimeException> {
-  //nothing to do
+import net.disy.commons.core.provider.IProvider;
+
+public class NullProvider<T> implements IProvider<T> {
+
+  @Override
+  public T getObject() {
+    return null;
+  }
 }

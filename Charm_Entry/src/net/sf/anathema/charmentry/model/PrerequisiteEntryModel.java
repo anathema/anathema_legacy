@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.model;
 
-import net.disy.commons.core.util.SimpleBlock;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -13,6 +12,7 @@ import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import net.sf.anathema.lib.util.SimpleBlock;
 import org.jmock.example.announcer.Announcer;
 
 public class PrerequisiteEntryModel implements IPrerequisitesModel {

@@ -8,7 +8,7 @@
  */
 package net.disy.commons.core.model;
 
-import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 public class DefaultProperty<T> implements IProperty<T> {
 

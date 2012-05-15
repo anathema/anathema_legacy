@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.model;
 
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.util.ObjectUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;

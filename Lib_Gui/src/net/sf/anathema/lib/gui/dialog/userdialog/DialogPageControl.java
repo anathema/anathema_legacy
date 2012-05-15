@@ -9,8 +9,7 @@
 package net.sf.anathema.lib.gui.dialog.userdialog;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.core.util.ContractFailedException;
-import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.gui.dialog.core.DialogPageInputValidCheckable;
 import net.sf.anathema.lib.gui.dialog.core.IDialogControl;
 import net.sf.anathema.lib.gui.dialog.core.IDialogHelpHandler;
@@ -18,6 +17,7 @@ import net.sf.anathema.lib.gui.dialog.events.CheckInputValidListener;
 import net.sf.anathema.lib.gui.dialog.events.IInputValidCheckable;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 import javax.swing.JComponent;
 

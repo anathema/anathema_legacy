@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.impl.traits.caste;
 
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.impl.traits.AbstractTraitTemplate;
 import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
+import net.sf.anathema.lib.util.ObjectUtilities;
 
 public class CasteRangeTraitTemplate extends AbstractTraitTemplate {
 

@@ -1,6 +1,5 @@
 package net.sf.anathema.character.mutations.model.types;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.health.IHealthTypeVisitor;
 import net.sf.anathema.character.library.quality.model.QualityPrerequisite;
@@ -8,6 +7,7 @@ import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityPredicate;
 import net.sf.anathema.character.mutations.model.IMutationVisitor;
 import net.sf.anathema.character.mutations.model.Mutation;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,9 @@
 package net.sf.anathema.lib.workflow.textualdescription.view;
 
-import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.event.AbstractDocumentListener;
 import net.sf.anathema.lib.lang.StringUtilities;
+import net.sf.anathema.lib.util.ObjectUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 import javax.swing.JComponent;
