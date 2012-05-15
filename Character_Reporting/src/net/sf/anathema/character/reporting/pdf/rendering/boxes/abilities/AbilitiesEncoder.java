@@ -14,19 +14,4 @@ public class AbilitiesEncoder {
     encoder.addNamedTraitEncoder(craftEncoder);
     return encoder;
   }
-
-  public static FavorableTraitContentEncoder<AbilitiesContent> createWithSpecialtiesOnly(IResources resources, int specialtyCount) {
-    FavorableTraitContentEncoder<AbilitiesContent> encoder = new FavorableTraitContentEncoder<AbilitiesContent>(AbilitiesContent.class);
-    PdfTraitEncoder traitEncoder = encoder.getTraitEncoder();
-    encoder.addNamedTraitEncoder(new SpecialtiesEncoder(resources, traitEncoder, specialtyCount));
-    return encoder;
-  }
-
-  public static FavorableTraitContentEncoder<AbilitiesContent> createWithCraftsAndSpecialties(IResources resources, int craftCount, int specialtyCount) {
-    FavorableTraitContentEncoder<AbilitiesContent> encoder = new FavorableTraitContentEncoder<AbilitiesContent>(AbilitiesContent.class);
-    PdfTraitEncoder traitEncoder = encoder.getTraitEncoder();
-    encoder.addNamedTraitEncoder(new CraftEncoder(resources, traitEncoder, craftCount));
-    encoder.addNamedTraitEncoder(new SpecialtiesEncoder(resources, traitEncoder, specialtyCount));
-    return encoder;
-  }
 }
