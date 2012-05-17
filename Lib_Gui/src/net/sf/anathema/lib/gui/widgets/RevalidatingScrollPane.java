@@ -11,10 +11,6 @@ public class RevalidatingScrollPane extends JScrollPane {
     super(view);
   }
 
-  public RevalidatingScrollPane(Component view, int vsbPolicy, int hsbPolicy) {
-    super(view, vsbPolicy, hsbPolicy);
-  }
-
   @Override
   public void revalidate() {
     net.sf.anathema.lib.gui.swing.GuiUtilities.revalidateTree(this);

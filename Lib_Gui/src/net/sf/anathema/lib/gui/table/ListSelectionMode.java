@@ -15,11 +15,4 @@ public class ListSelectionMode {
   }
 
   public static final ListSelectionMode SINGLE_SELECTION = new ListSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-  public static final ListSelectionMode MULTIPLE_INTERVAL_SELECTION = new ListSelectionMode(
-      ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-
-  public static final ListSelectionMode SINGLE_INTERVAL_SELECTION = new ListSelectionMode(
-      ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-
 }

@@ -7,8 +7,6 @@ import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.util.SimpleBlock;
 
-import javax.swing.Icon;
-
 public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
 
   private final IAnathemaWizardPage startPage;
@@ -52,17 +50,9 @@ public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
     return false;
   }
 
-  public boolean isHeaderPanelVisible() {
-    return true;
-  }
-
   @Override
   public IWizardPage getStartingPage() {
     return startPage;
-  }
-
-  public Icon getLargeDialogIcon() {
-    return null;
   }
 
   @Override

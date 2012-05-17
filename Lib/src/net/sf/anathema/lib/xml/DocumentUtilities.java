@@ -1,5 +1,16 @@
 package net.sf.anathema.lib.xml;
 
+import com.google.common.io.Closeables;
+import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.exception.PersistenceException;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.XPath;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,21 +21,7 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.util.List;
-
-import com.google.common.io.Closeables;
-import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.exception.PersistenceException;
-
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.XPath;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
-import org.xml.sax.EntityResolver;
 
 public class DocumentUtilities {
 
@@ -48,10 +45,6 @@ public class DocumentUtilities {
 
   public static void save(Document document, OutputStream outputStream) throws IOException {
     save(document, new XMLWriter(outputStream, createOutputFormat()));
-  }
-
-  public static void save(Document document, Writer writer) throws IOException {
-    save(document, new XMLWriter(writer, createOutputFormat()));
   }
 
   private static void save(Document document, XMLWriter writer) throws IOException {
@@ -111,27 +104,6 @@ public class DocumentUtilities {
     catch (DocumentException exception) {
       throw new PersistenceException(exception);
     }
-  }
-
-  public static Document read(InputStream inputStream, String systemId, EntityResolver resolver)
-      throws AnathemaException {
-    try {
-      SAXReader saxReader = new SAXReader();
-      saxReader.setEntityResolver(resolver);
-      return saxReader.read(inputStream, systemId);
-    }
-    catch (DocumentException exception) {
-      throw new AnathemaException(exception);
-    }
-  }
-
-  public static Element getRootElement(Document document, String expectedRootElementName) throws PersistenceException {
-    Element rootElement = document.getRootElement();
-    if (!expectedRootElementName.equals(rootElement.getName())) {
-      throw new PersistenceException(
-          "Element '" + expectedRootElementName + "' expected, was:'" + rootElement.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    }
-    return rootElement;
   }
 
   /**

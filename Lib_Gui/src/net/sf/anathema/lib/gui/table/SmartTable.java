@@ -78,17 +78,9 @@ public class SmartTable implements IView {
     return table;
   }
 
-  public TableModel getModel() {
-    return table.getModel();
-  }
-
   public void setEnabled(boolean enabled) {
     this.enabled = enabled;
     updateEnabled();
-  }
-
-  public boolean isEnabled() {
-    return enabled;
   }
 
   protected void updateEnabled() {
@@ -180,18 +172,6 @@ public class SmartTable implements IView {
     return buttonPanel;
   }
 
-  public void requestFocus() {
-    table.requestFocus();
-  }
-
-  public synchronized void addSelectionActionListener(ActionListener listener) {
-    selectionActionListeners.add(listener);
-  }
-
-  public synchronized void removeSelectionActionListener(ActionListener listener) {
-    selectionActionListeners.remove(listener);
-  }
-
   private void fireSelectionActionEvent() {
     List<ActionListener> clone;
     synchronized (this) {
@@ -201,12 +181,6 @@ public class SmartTable implements IView {
     for (ActionListener element : clone) {
       element.actionPerformed(actionEvent);
     }
-  }
-
-  public final void scrollToAndSelect(int rowIndex) {
-    getTable().scrollRectToVisible(getTable().getCellRect(rowIndex, 0, true));
-    getTable().getSelectionModel().setSelectionInterval(rowIndex, rowIndex);
-    getTable().requestFocus();
   }
 
   public void stopCellEditing() {
@@ -220,10 +194,6 @@ public class SmartTable implements IView {
     return toolbarStyleButtons;
   }
 
-  public void setToobarStyleButtons(boolean toobarStyleButtons) {
-    this.toolbarStyleButtons = toobarStyleButtons;
-  }
-
   public int getSelectedRowIndex() {
     // Bugfix for JDK1.4 JTable Bug 4905083: Pressing enter on empty table
     // moves selection to 1
@@ -232,7 +202,4 @@ public class SmartTable implements IView {
     return selectedRowIndex > table.getRowCount() ? -1 : selectedRowIndex;
   }
 
-  public boolean isSelectionEmpty() {
-    return getSelectedRowIndex() == -1;
-  }
 }

@@ -53,10 +53,6 @@ public class UnselectingComboBoxModel extends AbstractListModel implements Mutab
     return null;
   }
 
-  public int getIndexOf(Object anObject) {
-    return objects.indexOf(anObject);
-  }
-
   @Override
   public void addElement(Object anObject) {
     objects.add(anObject);
