@@ -18,6 +18,8 @@ import java.util.List;
 
 public interface IGenericCharacter extends ILimitationContext, IMagicCollection, IGenericCharmConfiguration {
 
+  IGenericDescription getDescription();
+
   boolean isAlienCharm(ICharm charm);
 
   ICharacterTemplate getTemplate();

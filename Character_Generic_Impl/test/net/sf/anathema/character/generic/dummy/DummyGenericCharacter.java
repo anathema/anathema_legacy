@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
@@ -81,6 +82,11 @@ public class DummyGenericCharacter implements IGenericCharacter {
   @Override
   public boolean isLearned(IMagic magic) {
     return false;
+  }
+
+  @Override
+  public IGenericDescription getDescription() {
+    return null;
   }
 
   @Override

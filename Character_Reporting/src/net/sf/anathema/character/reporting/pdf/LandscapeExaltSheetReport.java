@@ -4,10 +4,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
-import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -69,8 +67,7 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   private ReportSession createSession(IItem item) {
     ICharacter character = (ICharacter) item.getItemData();
     IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character);
-    IGenericDescription description = new GenericDescription(character.getDescription());
-    return new ReportSession(getContentRegistry(), genericCharacter, description);
+    return new ReportSession(getContentRegistry(), genericCharacter);
   }
 
   private List<PageEncoder> collectPageEncoders(PageSize pageSize, ReportSession session) {

@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.lib.resources.IResources;
 
 @RegisteredReportContent(produces = BasicContent.class)
@@ -13,7 +12,7 @@ public class BasicContentFactory implements ReportContentFactory<BasicContent> {
   }
 
   @Override
-  public BasicContent create(ReportSession session, IGenericCharacter character, IGenericDescription description) {
+  public BasicContent create(ReportSession session, IGenericCharacter character) {
     return new BasicContent(character);
   }
 }

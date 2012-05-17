@@ -4,10 +4,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
-import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -54,10 +52,9 @@ public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     try {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
-      IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       PageEncoder encoder = new MortalPageEncoder(configuration);
       SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
-      ReportSession session = new ReportSession(getContentRegistry(), character, description);
+      ReportSession session = new ReportSession(getContentRegistry(), character);
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
       encoder.encode(sheet, graphics, session);
     } catch (Exception e) {

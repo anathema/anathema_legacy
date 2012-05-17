@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -103,6 +104,11 @@ public class GenericCharacter implements IGenericCharacter {
       }
     });
     return isLearned[0];
+  }
+
+  @Override
+  public IGenericDescription getDescription() {
+    return new GenericDescription(character.getDescription());
   }
 
   @Override

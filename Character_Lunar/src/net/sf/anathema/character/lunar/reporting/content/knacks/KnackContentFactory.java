@@ -1,7 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.content.knacks;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,7 +16,7 @@ public class KnackContentFactory implements ReportContentFactory<KnackContent> {
   }
 
   @Override
-  public KnackContent create(ReportSession session, IGenericCharacter character, IGenericDescription description) {
+  public KnackContent create(ReportSession session, IGenericCharacter character) {
     return new KnackContent(resources, character);
   }
 }

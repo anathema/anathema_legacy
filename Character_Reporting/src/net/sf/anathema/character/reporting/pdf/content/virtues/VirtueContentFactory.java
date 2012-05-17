@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content.virtues;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,7 +16,7 @@ public class VirtueContentFactory implements ReportContentFactory<VirtueContent>
   }
 
   @Override
-  public VirtueContent create(ReportSession session, IGenericCharacter character, IGenericDescription description) {
+  public VirtueContent create(ReportSession session, IGenericCharacter character) {
     return new VirtueContent(resources, character);
   }
 }

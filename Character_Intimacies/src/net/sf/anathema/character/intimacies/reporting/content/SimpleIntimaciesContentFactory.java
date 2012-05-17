@@ -1,7 +1,6 @@
 package net.sf.anathema.character.intimacies.reporting.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,8 +16,7 @@ public class SimpleIntimaciesContentFactory implements ReportContentFactory<Simp
 
   @Override
 
-  public SimpleIntimaciesContent create(ReportSession session, IGenericCharacter character,
-          IGenericDescription description) {
+  public SimpleIntimaciesContent create(ReportSession session, IGenericCharacter character) {
     return new SimpleIntimaciesContent(resources, character);
   }
 }
