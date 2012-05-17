@@ -19,11 +19,13 @@ import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.swing.IDisposable;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.ITransformer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -78,18 +80,22 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   }
 
   private void initCharacterConceptPresentation() {
-    ICharacterConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
-    IContentPresenter presenter = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources);
+    IContentPresenter descriptionPresenter = createDescriptionPresenter();
+    IContentPresenter conceptPresenter = createConceptPresenter();
     String title = getString("CardView.CharacterConcept.Title");
-    initMultipleContentPresentation(title, AdditionalModelType.Concept, presenter);
+    initMultipleContentPresentation(title, AdditionalModelType.Concept, descriptionPresenter, conceptPresenter);
   }
 
-  private void initCharacterDescriptionPresentation() {
+  private IContentPresenter createConceptPresenter() {
+    ICharacterConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
+    return new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources);
+  }
+
+
+  private IContentPresenter createDescriptionPresenter() {
     ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
-    IContentPresenter presenter = new CharacterDescriptionPresenter(resources, character.getDescription(), view,
+    return new CharacterDescriptionPresenter(resources, character.getDescription(), view,
             getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
-    String title = getString("CardView.CharacterDescription.Title");
-    initMultipleContentPresentation(title, AdditionalModelType.Description, presenter);
   }
 
   private void initMagicPresentation() {
@@ -109,9 +115,17 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   }
 
   @Override
-  public void initMultipleContentPresentation(String viewTitle, AdditionalModelType type, IContentPresenter presenter) {
-    presenter.initPresentation();
-    addMultipleContentViewGroup(viewTitle, type, presenter.getTabContent());
+  public void initMultipleContentPresentation(String viewTitle, AdditionalModelType type, IContentPresenter... corePresenters) {
+    for (IContentPresenter presenter : corePresenters) {
+      presenter.initPresentation();
+    }
+    ContentView[] coreViews = ArrayUtilities.transform(corePresenters, ContentView.class, new ITransformer<IContentPresenter, ContentView>() {
+      @Override
+      public ContentView transform(IContentPresenter input) {
+        return input.getTabContent();
+      }
+    });
+    addMultipleContentViewGroup(viewTitle, type, coreViews);
   }
 
   private void addMultipleContentViewGroup(String viewTitle, AdditionalModelType type, ContentView... coreViewViews) {
@@ -139,14 +153,6 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
 
   @Override
   public void initPresentation() {
-    initCharacterDescriptionPresentation();
-    initStatisticsPresentation();
-  }
-
-  private void initStatisticsPresentation() {
-    if (!character.hasStatistics()) {
-      return;
-    }
     initCharacterConceptPresentation();
     initAttributePresentation();
     initAbilityPresentation();
