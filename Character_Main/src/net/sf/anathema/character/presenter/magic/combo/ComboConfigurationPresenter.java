@@ -16,8 +16,8 @@ import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.presenter.view.IViewContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewContent;
+import net.sf.anathema.framework.presenter.view.ContentView;
+import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -77,9 +77,9 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   }
 
   @Override
-  public IViewContent getTabContent() {
+  public ContentView getTabContent() {
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title"); //$NON-NLS-1$
-    return new SimpleViewContent(new ContentProperties(header), view);
+    return new SimpleViewContentView(new ContentProperties(header), view);
   }
 
   private void enableCrossPrerequisiteTypeCombos() {

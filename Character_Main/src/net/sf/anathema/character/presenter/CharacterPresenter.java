@@ -15,9 +15,9 @@ import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.presenter.view.IViewContent;
+import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
-import net.sf.anathema.framework.presenter.view.SimpleViewContent;
+import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.Presenter;
@@ -100,12 +100,12 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     String magicViewHeader = getString("CardView.CharmConfiguration.Title");
     MagicPresenter presenter = new MagicPresenter(getStatistics(), characterView.createMagicViewFactory(), resources, anathemaModel);
     presenter.initPresentation();
-    IViewContent content = presenter.getTabContent();
-    IDisposable disposable = content.getDisposable();
+    ContentView contentView = presenter.getTabContent();
+    IDisposable disposable = contentView.getDisposable();
     if (disposable != null) {
       characterView.addDisposable(disposable);
     }
-    initMultipleContentViewPresentation(magicViewHeader, AdditionalModelType.Magic, content);
+    initMultipleContentViewPresentation(magicViewHeader, AdditionalModelType.Magic, contentView);
   }
 
   @Override
@@ -114,11 +114,12 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     initMultipleContentViewPresentation(viewTitle, additionalModelType, presenter.getTabContent());
   }
 
-  private void initMultipleContentViewPresentation(String viewTitle, AdditionalModelType additionalType, IViewContent... coreViews) {
-    List<IViewContent> contents = new ArrayList<IViewContent>();
-    Collections.addAll(contents, coreViews);
+  private void initMultipleContentViewPresentation(String viewTitle, AdditionalModelType type, ContentView... coreViewViews) {
+    MultipleContentView multipleContentView = characterView.addMultipleContentView(viewTitle);
+    List<ContentView> contentViews = new ArrayList<ContentView>();
+    Collections.addAll(contentViews, coreViewViews);
     IRegistry<String, IAdditionalViewFactory> factoryRegistry = getGenerics(anathemaModel).getAdditionalViewFactoryRegistry();
-    for (IAdditionalModel model : getStatistics().getExtendedConfiguration().getAdditionalModels(additionalType)) {
+    for (IAdditionalModel model : getStatistics().getExtendedConfiguration().getAdditionalModels(type)) {
       IAdditionalViewFactory viewFactory = factoryRegistry.get(model.getTemplateId());
       if (viewFactory == null) {
         continue;
@@ -126,14 +127,13 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
       String viewName = getString("AdditionalTemplateView.TabName." + model.getTemplateId());
       ICharacterType characterType = getStatistics().getCharacterTemplate().getTemplateType().getCharacterType();
       IView additionalView = viewFactory.createView(model, resources, characterType);
-      contents.add(new SimpleViewContent(new ContentProperties(viewName), additionalView));
+      contentViews.add(new SimpleViewContentView(new ContentProperties(viewName), additionalView));
     }
-    if (contents.size() == 0) {
+    if (contentViews.size() == 0) {
       return;
     }
-    MultipleContentView multipleContentView = characterView.addMultipleContentView(viewTitle);
-    for (IViewContent content : contents) {
-      content.addTo(multipleContentView);
+    for (ContentView contentView : contentViews) {
+      contentView.addTo(multipleContentView);
     }
   }
 

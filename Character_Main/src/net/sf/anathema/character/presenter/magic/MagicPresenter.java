@@ -21,7 +21,7 @@ import net.sf.anathema.character.presenter.magic.spells.SpellContentPresenter;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.presenter.view.IViewContent;
+import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.gui.swing.IDisposable;
@@ -113,8 +113,8 @@ public class MagicPresenter implements IContentPresenter {
   }
 
   @Override
-  public IViewContent getTabContent() {
-    return new IViewContent() {
+  public ContentView getTabContent() {
+    return new ContentView() {
       @Override
       public void addTo(MultipleContentView view) {
         for (IContentPresenter presenter : subPresenters) {

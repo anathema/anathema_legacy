@@ -1,8 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -11,11 +8,14 @@ import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
 import net.sf.anathema.character.view.IBasicAdvantageView;
-import net.sf.anathema.framework.presenter.view.IViewContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewContent;
+import net.sf.anathema.framework.presenter.view.ContentView;
+import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BasicAdvantagePresenter implements IContentPresenter {
   private final List<Presenter> subPresenters = new ArrayList<Presenter>();
@@ -77,8 +77,8 @@ public class BasicAdvantagePresenter implements IContentPresenter {
   }
 
   @Override
-  public IViewContent getTabContent() {
+  public ContentView getTabContent() {
     String basicAdvantageHeader = resources.getString("CardView.Advantages.Title"); //$NON-NLS-1$
-    return new SimpleViewContent(new ContentProperties(basicAdvantageHeader), view);
+    return new SimpleViewContentView(new ContentProperties(basicAdvantageHeader), view);
   }
 }

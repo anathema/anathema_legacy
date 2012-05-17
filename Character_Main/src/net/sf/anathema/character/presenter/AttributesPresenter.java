@@ -5,8 +5,8 @@ import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
-import net.sf.anathema.framework.presenter.view.IViewContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewContent;
+import net.sf.anathema.framework.presenter.view.ContentView;
+import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -27,8 +27,8 @@ public class AttributesPresenter implements IContentPresenter {
   }
 
   @Override
-  public IViewContent getTabContent() {
-    return new SimpleViewContent(new ContentProperties(contentHeader).needsScrollBar(), attributeView);
+  public ContentView getTabContent() {
+    return new SimpleViewContentView(new ContentProperties(contentHeader).needsScrollBar(), attributeView);
   }
 
   @Override

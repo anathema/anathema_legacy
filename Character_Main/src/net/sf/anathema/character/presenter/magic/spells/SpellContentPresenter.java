@@ -5,8 +5,8 @@ import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.magic.detail.MagicAndDetailPresenter;
 import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenter;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
-import net.sf.anathema.framework.presenter.view.IViewContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewContent;
+import net.sf.anathema.framework.presenter.view.ContentView;
+import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -40,7 +40,7 @@ public class SpellContentPresenter implements IContentPresenter {
   }
 
   @Override
-  public IViewContent getTabContent() {
-    return new SimpleViewContent(new ContentProperties(title), spellPresenter.getView());
+  public ContentView getTabContent() {
+    return new SimpleViewContentView(new ContentProperties(title), spellPresenter.getView());
   }
 }

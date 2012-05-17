@@ -14,8 +14,8 @@ import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.presenter.view.IViewContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewContent;
+import net.sf.anathema.framework.presenter.view.ContentView;
+import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
@@ -57,9 +57,9 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   @Override
-  public IViewContent getTabContent() {
+  public ContentView getTabContent() {
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
-    return new SimpleViewContent(new ContentProperties(conceptHeader), view);
+    return new SimpleViewContentView(new ContentProperties(conceptHeader), view);
   }
 
   private void initAgePresentation() {
