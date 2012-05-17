@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.collection.MultiEntryMap;
@@ -28,11 +27,6 @@ public class CharmCache implements ICharmCache {
   public void addCharm(IIdentificate type, ICharm charm) {
     type = new Identificate(type.getId());
     charmSets.replace(type, charm, charm);
-  }
-
-  public void addCharm(ICharmEntryData charmData) {
-    ICharm charm = new Charm(charmData.getCoreData());
-    addCharm(charm.getCharacterType(), charm);
   }
 
   public boolean isEmpty() {
