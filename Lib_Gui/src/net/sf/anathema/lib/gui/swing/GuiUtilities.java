@@ -184,6 +184,10 @@ public class GuiUtilities {
     return screenBounds;
   }
 
+  public static Set<Container> setContainerEnabled(Container control, boolean enabled) {
+    return setContainerEnabled(control, enabled, new HashSet<Container>());
+  }
+
   /**
    * Enabled / Disabled einen Container mit allen Unterkomponenten
    *

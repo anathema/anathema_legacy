@@ -42,18 +42,6 @@ public abstract class AbstractBasicDialogPage extends AbstractPage implements IB
   }
 
   @Override
-  @Deprecated
-  public boolean performOk() {
-    return true;
-  }
-
-  @Override
-  @Deprecated
-  public boolean performCancel() {
-    return true;
-  }
-
-  @Override
   public String getDescription() {
     return getTitle();
   }
