@@ -2,6 +2,7 @@ package net.sf.anathema.character.presenter.magic.spells;
 
 import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
@@ -24,11 +25,11 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   private final ICharacter character;
   private final SpellTooltipBuilder tooltipBuilder;
 
-  public SpellViewProperties(IResources resources, ICharacter character) {
+  public SpellViewProperties(IResources resources, ICharacter character, MagicDescriptionProvider magicDescriptionProvider) {
     super(resources);
     this.character = character;
     this.spellConfiguration = character.getSpells();
-    this.tooltipBuilder = new SpellTooltipBuilder(resources, this);
+    this.tooltipBuilder = new SpellTooltipBuilder(resources, this, magicDescriptionProvider);
   }
 
   @Override

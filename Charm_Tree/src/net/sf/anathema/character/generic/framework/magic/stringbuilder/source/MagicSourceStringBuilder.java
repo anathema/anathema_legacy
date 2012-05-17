@@ -28,7 +28,7 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
     String descriptionString = resources.getString("CharmTreeView.ToolTip.Source"); //$NON-NLS-1$
     descriptionString += TooltipBuilder.ColonSpace;
     descriptionString += createSourceString((T) magic);
-    descriptionString = createFixedWidthParagraph(descriptionString, TooltipBuilder.HtmlLineBreak, DEFAULT_TOOLTIP_WIDTH);
+    descriptionString = createFixedWidthParagraph(descriptionString, TooltipBuilder.HtmlLineBreak, TooltipBuilder.DEFAULT_TOOLTIP_WIDTH);
     builder.append(descriptionString);
     builder.append(TooltipBuilder.HtmlLineBreak);
   }

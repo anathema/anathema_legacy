@@ -56,24 +56,24 @@ public class MagicPresenter implements IContentPresenter {
   private void addSpellPresenter(ICharacter character, IMagicViewFactory factory, IResources resources) {
     ISpellMagicTemplate spellMagic = character.getCharacterTemplate().getMagicTemplate().getSpellMagic();
     if (spellMagic.canLearnSorcery()) {
-      subPresenters.add(SpellContentPresenter.ForSorcery(createMagicDetailPresenter(), character, resources, factory));
+      subPresenters.add(SpellContentPresenter.ForSorcery(createMagicDetailPresenter(), character, resources, factory, getMagicDescriptionProvider()));
     }
     if (spellMagic.canLearnNecromancy()) {
-      subPresenters.add(SpellContentPresenter.ForNecromancy(createMagicDetailPresenter(), character, resources, factory));
+      subPresenters.add(SpellContentPresenter.ForNecromancy(createMagicDetailPresenter(), character, resources, factory, getMagicDescriptionProvider()));
     }
   }
 
   private ComboConfigurationModel createComboModel(ICharacter character) {
-    return new ComboConfigurationModel(character, getCharmDescriptionProvider());
+    return new ComboConfigurationModel(character, getMagicDescriptionProvider());
   }
 
-  private MagicDescriptionProvider getCharmDescriptionProvider() {
+  private MagicDescriptionProvider getMagicDescriptionProvider() {
     return CharmDescriptionProviderExtractor.CreateFor(anathemaModel, resources);
   }
 
   private MagicAndDetailPresenter createCharmPresenter(ICharacter character, IMagicViewFactory factory, IResources resources,
                                                        ITemplateRegistry templateRegistry) {
-    CharacterCharmModel model = new CharacterCharmModel(character, getCharmDescriptionProvider());
+    CharacterCharmModel model = new CharacterCharmModel(character, getMagicDescriptionProvider());
     ITreePresentationProperties presentationProperties =
             character.getCharacterTemplate().getPresentationProperties().getCharmPresentationProperties();
     CharmDisplayPropertiesMap propertiesMap = new CharmDisplayPropertiesMap(templateRegistry);

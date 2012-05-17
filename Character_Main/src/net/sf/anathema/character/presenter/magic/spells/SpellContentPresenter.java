@@ -1,5 +1,6 @@
 package net.sf.anathema.character.presenter.magic.spells;
 
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.magic.detail.MagicAndDetailPresenter;
@@ -13,16 +14,16 @@ import net.sf.anathema.lib.resources.IResources;
 public class SpellContentPresenter implements IContentPresenter {
 
   public static IContentPresenter ForSorcery(MagicDetailPresenter detailPresenter, ICharacter character, IResources resources,
-                                             IMagicViewFactory factory) {
+                                             IMagicViewFactory factory, MagicDescriptionProvider magicDescriptionProvider) {
     String title = resources.getString("CardView.CharmConfiguration.Spells.Title");
-    SpellPresenter spellPresenter = SpellPresenter.ForSorcery(character, resources, factory);
+    SpellPresenter spellPresenter = SpellPresenter.ForSorcery(character, resources, factory, magicDescriptionProvider);
     return new MagicAndDetailPresenter(title, detailPresenter, spellPresenter);
   }
 
   public static IContentPresenter ForNecromancy(MagicDetailPresenter detailPresenter, ICharacter character, IResources resources,
-                                                IMagicViewFactory factory) {
+                                                IMagicViewFactory factory, MagicDescriptionProvider magicDescriptionProvider) {
     String title = resources.getString("CardView.CharmConfiguration.Necromancy.Title");
-    SpellPresenter spellPresenter = SpellPresenter.ForNecromancy(character, resources, factory);
+    SpellPresenter spellPresenter = SpellPresenter.ForNecromancy(character, resources, factory, magicDescriptionProvider);
     return new MagicAndDetailPresenter(title, detailPresenter, spellPresenter);
   }
 

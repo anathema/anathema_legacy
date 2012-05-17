@@ -7,13 +7,10 @@ import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static java.text.MessageFormat.format;
-import static net.sf.anathema.lib.lang.StringUtilities.createFixedWidthParagraph;
 
 public class MagicDescriptionStringBuilder implements IMagicTooltipStringBuilder {
   private final IResources resources;
   private MagicDescriptionProvider magicDescriptionProvider;
-
-  private final int MAX_DESCRIPTION_LENGTH = 80;
 
   public MagicDescriptionStringBuilder(IResources resources, MagicDescriptionProvider magicDescriptionProvider) {
     this.resources = resources;
@@ -22,21 +19,19 @@ public class MagicDescriptionStringBuilder implements IMagicTooltipStringBuilder
 
   @Override
   public void buildStringForMagic(StringBuilder builder, IMagic magic, Object specialDetails) {
+    TooltipBuilder tooltipBuilder = new TooltipBuilder();
+    tooltipBuilder.appendParagraphs(getDisplayParagraphs(magic));
+    builder.append(tooltipBuilder.build());
+  }
+
+  public String[] getDisplayParagraphs(IMagic magic) {
     MagicDescription charmDescription = magicDescriptionProvider.getCharmDescription(magic);
     if (charmDescription.isEmpty()) {
-      return;
+      return new String[0];
     }
-    boolean isFirst = true;
     String[] paragraphs = charmDescription.getParagraphs();
-    for (String paragraph : paragraphs) {
-      builder.append(TooltipBuilder.HtmlLineBreak);
-      String displayParagraph = isFirst ? getDescriptionHead() + paragraph : paragraph;
-      if (isFirst) {
-        isFirst = false;
-      }
-      String shortedParagraph = createFixedWidthParagraph(displayParagraph, TooltipBuilder.HtmlLineBreak, MAX_DESCRIPTION_LENGTH);
-      builder.append(shortedParagraph);
-    }
+    paragraphs[0] =  getDescriptionHead() + paragraphs[0];
+    return paragraphs;
   }
 
   private String getDescriptionHead() {

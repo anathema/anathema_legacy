@@ -3,6 +3,7 @@ package net.sf.anathema.character.presenter.magic.spells;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.IMagicLearnListener;
@@ -29,14 +30,16 @@ import java.util.List;
 
 public class SpellPresenter implements DetailDemandingMagicPresenter {
 
-  public static SpellPresenter ForSorcery(ICharacter character, IResources resources, IMagicViewFactory factory) {
+  public static SpellPresenter ForSorcery(ICharacter character, IResources resources, IMagicViewFactory factory,
+                                          MagicDescriptionProvider magicDescriptionProvider) {
     SpellModel spellModel = new SorceryModel(character);
-    return new SpellPresenter(spellModel, character, resources, factory);
+    return new SpellPresenter(spellModel, character, resources, factory, magicDescriptionProvider);
   }
 
-  public static SpellPresenter ForNecromancy(ICharacter character, IResources resources, IMagicViewFactory factory) {
+  public static SpellPresenter ForNecromancy(ICharacter character, IResources resources, IMagicViewFactory factory,
+                                             MagicDescriptionProvider magicDescriptionProvider) {
     SpellModel spellModel = new NecromancyModel(character);
-    return new SpellPresenter(spellModel, character, resources, factory);
+    return new SpellPresenter(spellModel, character, resources, factory, magicDescriptionProvider);
   }
 
   private final ISpellConfiguration spellConfiguration;
@@ -47,10 +50,11 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
   private final SpellViewProperties properties;
   private final ISpellView view;
 
-  public SpellPresenter(SpellModel spellModel, ICharacter character, IResources resources, IMagicViewFactory factory) {
+  public SpellPresenter(SpellModel spellModel, ICharacter character, IResources resources, IMagicViewFactory factory,
+                        MagicDescriptionProvider magicDescriptionProvider) {
     this.spellModel = spellModel;
     this.character = character;
-    this.properties = new SpellViewProperties(resources, character);
+    this.properties = new SpellViewProperties(resources, character, magicDescriptionProvider);
     this.resources = resources;
     this.spellConfiguration = character.getSpells();
     this.view = factory.createSpellView(properties);
