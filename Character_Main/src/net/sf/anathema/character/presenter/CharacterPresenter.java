@@ -60,28 +60,28 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     IGroupedFavorableTraitViewFactory viewFactory = characterView.createGroupedFavorableTraitViewFactory();
     IContentPresenter presenter = new AbilitiesPresenter(getStatistics(), resources, viewFactory);
     String title = getString("CardView.AbilityConfiguration.Title");
-    initMultipleContentViewPresentation(title, presenter, AdditionalModelType.Abilities);
+    initMultipleContentPresentation(title, AdditionalModelType.Abilities, presenter);
   }
 
   private void initAdvantagePresentation() {
     IAdvantageViewFactory viewFactory = characterView.createAdvantageViewFactory();
     IContentPresenter presenter = new BasicAdvantagePresenter(resources, getStatistics(), viewFactory, getGenerics(anathemaModel));
     String title = getString("CardView.Advantages.Title");
-    initMultipleContentViewPresentation(title, presenter, AdditionalModelType.Advantages);
+    initMultipleContentPresentation(title, AdditionalModelType.Advantages, presenter);
   }
 
   private void initAttributePresentation() {
     IGroupedFavorableTraitViewFactory viewFactory = characterView.createGroupedFavorableTraitViewFactory();
     IContentPresenter presenter = new AttributesPresenter(getStatistics(), resources, viewFactory);
     String title = getString("CardView.AttributeConfiguration.Title");
-    initMultipleContentViewPresentation(title, presenter, AdditionalModelType.Attributes);
+    initMultipleContentPresentation(title, AdditionalModelType.Attributes, presenter);
   }
 
   private void initCharacterConceptPresentation() {
     ICharacterConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
     IContentPresenter presenter = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources);
     String title = getString("CardView.CharacterConcept.Title");
-    initMultipleContentViewPresentation(title, presenter, AdditionalModelType.Concept);
+    initMultipleContentPresentation(title, AdditionalModelType.Concept, presenter);
   }
 
   private void initCharacterDescriptionPresentation() {
@@ -89,7 +89,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     IContentPresenter presenter = new CharacterDescriptionPresenter(resources, character.getDescription(), view,
             getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
     String title = getString("CardView.CharacterDescription.Title");
-    initMultipleContentViewPresentation(title, presenter, AdditionalModelType.Description);
+    initMultipleContentPresentation(title, AdditionalModelType.Description, presenter);
   }
 
   private void initMagicPresentation() {
@@ -105,16 +105,16 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     if (disposable != null) {
       characterView.addDisposable(disposable);
     }
-    initMultipleContentViewPresentation(magicViewHeader, AdditionalModelType.Magic, contentView);
+    addMultipleContentViewGroup(magicViewHeader, AdditionalModelType.Magic, contentView);
   }
 
   @Override
-  public void initMultipleContentViewPresentation(String viewTitle, IContentPresenter presenter, AdditionalModelType additionalModelType) {
+  public void initMultipleContentPresentation(String viewTitle, AdditionalModelType type, IContentPresenter presenter) {
     presenter.initPresentation();
-    initMultipleContentViewPresentation(viewTitle, additionalModelType, presenter.getTabContent());
+    addMultipleContentViewGroup(viewTitle, type, presenter.getTabContent());
   }
 
-  private void initMultipleContentViewPresentation(String viewTitle, AdditionalModelType type, ContentView... coreViewViews) {
+  private void addMultipleContentViewGroup(String viewTitle, AdditionalModelType type, ContentView... coreViewViews) {
     MultipleContentView multipleContentView = characterView.addMultipleContentView(viewTitle);
     List<ContentView> contentViews = new ArrayList<ContentView>();
     Collections.addAll(contentViews, coreViewViews);
@@ -152,7 +152,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     initAbilityPresentation();
     initAdvantagePresentation();
     initMagicPresentation();
-    initMultipleContentViewPresentation(getString("CardView.MiscellaneousConfiguration.Title"), AdditionalModelType.Miscellaneous);
+    addMultipleContentViewGroup(getString("CardView.MiscellaneousConfiguration.Title"), AdditionalModelType.Miscellaneous);
     pointPresentation.initPresentation(this);
   }
 }

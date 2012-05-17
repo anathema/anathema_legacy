@@ -37,7 +37,7 @@ public class ExperiencePointPresenter {
       IContentPresenter presenter = new ExperienceConfigurationPresenter(resources, statistics.getExperiencePoints(),
               experienceView);
       String title = resources.getString("CardView.ExperienceConfiguration.Title");
-      tabPresenter.initMultipleContentViewPresentation(title, presenter, AdditionalModelType.Experience);
+      tabPresenter.initMultipleContentPresentation(title, AdditionalModelType.Experience, presenter);
     }
   }
 }
