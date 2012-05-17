@@ -1,10 +1,10 @@
 package net.sf.anathema.character.solar.reporting.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.library.virtueflaw.model.IDescriptiveVirtueFlaw;
+import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtueFlawModel;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
-import net.sf.anathema.character.solar.virtueflaw.model.ISolarVirtueFlaw;
-import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawModel;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -42,7 +42,7 @@ public class VirtueFlawContent extends AbstractSubBoxContent {
     return !StringUtilities.isNullOrEmpty(getLimitBreakCondition());
   }
 
-  private ISolarVirtueFlaw getVirtueFlawModel() {
-    return ((ISolarVirtueFlawModel) character.getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
+  private IDescriptiveVirtueFlaw getVirtueFlawModel() {
+    return ((IDescriptiveVirtueFlawModel) character.getAdditionalModel(SolarVirtueFlawTemplate.ID)).getVirtueFlaw();
   }
 }
