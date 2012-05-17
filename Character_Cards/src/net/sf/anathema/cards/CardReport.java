@@ -1,13 +1,8 @@
 package net.sf.anathema.cards;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
-
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
 import net.sf.anathema.cards.layout.ICardLayout;
@@ -17,6 +12,10 @@ import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class CardReport extends AbstractPdfReport {
 
@@ -89,13 +88,10 @@ public class CardReport extends AbstractPdfReport {
 		      return false;
 		}
 		ICharacter character = (ICharacter) item.getItemData();
-		if (!character.hasStatistics()) {
-		   return false;
-		}
 		return getCurrentCharms(character).length > 0;
 	}
 	
 	private ICharm[] getCurrentCharms(ICharacter character) {
-	  return character.getStatistics().getCharms().getLearnedCharms(character.getStatistics().isExperienced());
+	  return character.getCharms().getLearnedCharms(character.isExperienced());
 	}
 }

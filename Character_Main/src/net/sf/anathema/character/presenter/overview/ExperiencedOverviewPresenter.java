@@ -1,11 +1,8 @@
 package net.sf.anathema.character.presenter.overview;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -16,33 +13,33 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ExperiencedOverviewPresenter implements Presenter {
 
   private final IExperiencePointManagement management;
   private final IOverviewView view;
-  private final ICharacterStatistics statistics;
+  private final ICharacter character;
   private final IResources resources;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
 
   private ILabelledAlotmentView totalView;
 
-  public ExperiencedOverviewPresenter(
-      IResources resources,
-      final ICharacterStatistics statistics,
-      IOverviewView experiencePointView,
-      IExperiencePointManagement management) {
+  public ExperiencedOverviewPresenter(IResources resources, final ICharacter character, IOverviewView overview,
+                                      IExperiencePointManagement experiencePoints) {
     this.resources = resources;
-    this.statistics = statistics;
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
+    this.character = character;
+    character.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void characterChanged() {
-        if (statistics.isExperienced()) {
+        if (character.isExperienced()) {
           calculateXPCost();
         }
       }
     });
-    this.management = management;
-    this.view = experiencePointView;
+    this.management = experiencePoints;
+    this.view = overview;
   }
 
   @Override
@@ -58,23 +55,22 @@ public class ExperiencedOverviewPresenter implements Presenter {
 
   private void initTotal(IOverviewCategory category) {
     totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4); //$NON-NLS-1$
-    statistics.getExperiencePoints().addExperiencePointConfigurationListener(
-        new IExperiencePointConfigurationListener() {
-          @Override
-          public void entryAdded(IExperiencePointEntry entry) {
-            calculateXPCost();
-          }
+    character.getExperiencePoints().addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
+      @Override
+      public void entryAdded(IExperiencePointEntry entry) {
+        calculateXPCost();
+      }
 
-          @Override
-          public void entryRemoved(IExperiencePointEntry entry) {
-            calculateXPCost();
-          }
+      @Override
+      public void entryRemoved(IExperiencePointEntry entry) {
+        calculateXPCost();
+      }
 
-          @Override
-          public void entryChanged(IExperiencePointEntry entry) {
-            calculateXPCost();
-          }
-        });
+      @Override
+      public void entryChanged(IExperiencePointEntry entry) {
+        calculateXPCost();
+      }
+    });
   }
 
   private void calculateXPCost() {
@@ -93,7 +89,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
   }
 
   private int getTotalXP() {
-    return statistics.getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
+    return character.getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
   }
 
   private String getString(String string) {

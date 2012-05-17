@@ -5,28 +5,28 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class CharacterCharmModel {
-  private ICharacterStatistics statistics;
+  private ICharacter character;
   private MagicDescriptionProvider magicDescriptionProvider;
 
-  public CharacterCharmModel(ICharacterStatistics statistics, MagicDescriptionProvider magicDescriptionProvider) {
-    this.statistics = statistics;
+  public CharacterCharmModel(ICharacter character, MagicDescriptionProvider magicDescriptionProvider) {
+    this.character = character;
     this.magicDescriptionProvider = magicDescriptionProvider;
   }
 
   public boolean isAllowedAlienCharms() {
-    ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
+    ICharmTemplate charmTemplate = character.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
     return charmTemplate.isAllowedAlienCharms(getCaste().getType());
   }
 
   public IUniqueCharmType getUniqueCharmType() {
-    ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
+    ICharmTemplate charmTemplate = character.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
     return charmTemplate.getUniqueCharmType();
   }
 
@@ -36,11 +36,11 @@ public class CharacterCharmModel {
   }
 
   public ICharmConfiguration getCharmConfiguration() {
-    return statistics.getCharms();
+    return character.getCharms();
   }
 
   private ITypedDescription<ICasteType> getCaste() {
-    return statistics.getCharacterConcept().getCaste();
+    return character.getCharacterConcept().getCaste();
   }
 
   public void toggleLearned(String charmId) {
@@ -56,7 +56,7 @@ public class CharacterCharmModel {
   }
 
   public boolean hasUniqueCharmType() {
-    ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
+    ICharmTemplate charmTemplate = character.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
     return charmTemplate.hasUniqueCharms();
   }
 

@@ -13,7 +13,7 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
@@ -59,16 +59,16 @@ public class CharmConfigurationPersister {
     this.messageIndicator = messageIndicator;
   }
 
-  public void save(Element parent, ICharacterStatistics statistics) {
-    ICharacterTemplate template = statistics.getCharacterTemplate();
+  public void save(Element parent, ICharacter character) {
+    ICharacterTemplate template = character.getCharacterTemplate();
     ICharmTemplate charmTemplate = template.getMagicTemplate().getCharmTemplate();
     if (!charmTemplate.canLearnCharms()) {
       return;
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);
-    ICharmConfiguration charmConfiguration = statistics.getCharms();
+    ICharmConfiguration charmConfiguration = character.getCharms();
     saveCharms(charmsElement, charmTemplate, charmConfiguration);
-    saveCombos(charmsElement, statistics.getCombos());
+    saveCombos(charmsElement, character.getCombos());
     saveFilters(charmsElement, charmConfiguration.getCharmFilters());
   }
 
@@ -115,20 +115,20 @@ public class CharmConfigurationPersister {
     }
   }
 
-  public void load(Element parent, ICharacterStatistics statistics) throws PersistenceException {
+  public void load(Element parent, ICharacter character) throws PersistenceException {
     Element charmsElement = parent.element(TAG_CHARMS);
     if (charmsElement == null) {
       return;
     }
-    context = statistics.getCharacterContext().getTraitContext();
-    ICharmConfiguration charmConfiguration = statistics.getCharms();
+    context = character.getCharacterContext().getTraitContext();
+    ICharmConfiguration charmConfiguration = character.getCharms();
     ISpecialCharmPersister specialPersister = createSpecialCharmPersister(charmConfiguration);
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
       Element groupElement = (Element) groupObjectElement;
       loadCharmFromConfiguration(charmConfiguration, groupElement, specialPersister);
     }
-    loadCombos(charmsElement, statistics.getCombos(), charmConfiguration);
-    loadFilters(charmsElement, statistics);
+    loadCombos(charmsElement, character.getCombos(), charmConfiguration);
+    loadFilters(charmsElement, character);
   }
 
   private void loadCharmFromConfiguration(ICharmConfiguration charmConfiguration, Element groupElement,
@@ -253,8 +253,8 @@ public class CharmConfigurationPersister {
     }
   }
 
-  private void loadFilters(Element parent, ICharacterStatistics statistics) {
-    ICharmConfiguration configuration = statistics.getCharms();
+  private void loadFilters(Element parent, ICharacter character) {
+    ICharmConfiguration configuration = character.getCharms();
     Element charmFilterNode = parent.element(TAG_CHARMFILTERS);
     if (charmFilterNode != null) {
       for (Object filterNode : charmFilterNode.elements()) {

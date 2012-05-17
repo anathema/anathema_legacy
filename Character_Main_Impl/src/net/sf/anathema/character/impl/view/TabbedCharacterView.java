@@ -1,12 +1,12 @@
 package net.sf.anathema.character.impl.view;
 
-import net.sf.anathema.character.impl.view.concept.CharacterConceptAndRulesViewFactory;
+import net.sf.anathema.character.impl.view.concept.ConceptAndRulesViewFactory;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.OverviewView;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
-import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
+import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
@@ -83,8 +83,8 @@ public class TabbedCharacterView extends AbstractItemView implements ICharacterV
   }
 
   @Override
-  public ICharacterConceptAndRulesViewFactory createConceptViewFactory() {
-    return new CharacterConceptAndRulesViewFactory();
+  public IConceptAndRulesViewFactory createConceptViewFactory() {
+    return new ConceptAndRulesViewFactory();
   }
 
   @Override

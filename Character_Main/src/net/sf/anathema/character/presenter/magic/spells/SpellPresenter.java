@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.Ma
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPresenter;
@@ -35,21 +35,19 @@ import java.util.List;
 
 public class SpellPresenter implements DetailDemandingMagicPresenter {
 
-  public static SpellPresenter ForSorcery(ICharacterStatistics statistics, IResources resources,
-          IMagicViewFactory factory) {
-    SpellModel spellModel = new SorceryModel(statistics);
-    return new SpellPresenter(spellModel, statistics, resources, factory);
+  public static SpellPresenter ForSorcery(ICharacter character, IResources resources, IMagicViewFactory factory) {
+    SpellModel spellModel = new SorceryModel(character);
+    return new SpellPresenter(spellModel, character, resources, factory);
   }
 
-  public static SpellPresenter ForNecromancy(ICharacterStatistics statistics, IResources resources,
-          IMagicViewFactory factory) {
-    SpellModel spellModel = new NecromancyModel(statistics);
-    return new SpellPresenter(spellModel, statistics, resources, factory);
+  public static SpellPresenter ForNecromancy(ICharacter character, IResources resources, IMagicViewFactory factory) {
+    SpellModel spellModel = new NecromancyModel(character);
+    return new SpellPresenter(spellModel, character, resources, factory);
   }
 
   private final ISpellConfiguration spellConfiguration;
   private SpellModel spellModel;
-  private final ICharacterStatistics statistics;
+  private final ICharacter character;
   private final MagicInfoStringBuilder creator;
   private final IResources resources;
   private CircleType circle;
@@ -57,15 +55,14 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
   private final SpellViewProperties properties;
   private final ISpellView view;
 
-  public SpellPresenter(SpellModel spellModel, ICharacterStatistics statistics, IResources resources,
-          IMagicViewFactory factory) {
+  public SpellPresenter(SpellModel spellModel, ICharacter character, IResources resources, IMagicViewFactory factory) {
     this.spellModel = spellModel;
-    this.statistics = statistics;
-    this.properties = new SpellViewProperties(resources, statistics);
+    this.character = character;
+    this.properties = new SpellViewProperties(resources, character);
     this.resources = resources;
     this.creator = new ScreenDisplayInfoStringBuilder(resources);
     this.sourceStringBuilder = new MagicSourceStringBuilder<ISpell>(resources);
-    this.spellConfiguration = statistics.getSpells();
+    this.spellConfiguration = character.getSpells();
     this.view = factory.createSpellView(properties);
     circle = spellModel.getCircles()[0];
   }
@@ -115,7 +112,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
       }
     });
     initSpellListsInView(view);
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
         view.clearSelection();
@@ -185,8 +182,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
     showSpells.removeAll(Arrays.asList(spellConfiguration.getLearnedSpells()));
     int count = showSpells.size();
     ISpell[] sortedSpells = new ISpell[count];
-    sortedSpells = new I18nedIdentificateSorter<ISpell>()
-            .sortAscending(showSpells.toArray(new ISpell[count]), sortedSpells, resources);
+    sortedSpells = new I18nedIdentificateSorter<ISpell>().sortAscending(showSpells.toArray(new ISpell[count]), sortedSpells, resources);
     return sortedSpells;
   }
 

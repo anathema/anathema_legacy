@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
@@ -16,13 +16,10 @@ public class AttributesPresenter implements IContentPresenter {
   private final FavorableTraitConfigurationPresenter presenter;
   private final String contentHeader;
 
-  public AttributesPresenter(
-      ICharacterStatistics statistics,
-      IResources resources,
-      IGroupedFavorableTraitViewFactory factory) {
-    IIdentifiedTraitTypeGroup[] traitTypeGroups = statistics.getTraitConfiguration().getAttributeTypeGroups();
+  public AttributesPresenter(ICharacter character, IResources resources, IGroupedFavorableTraitViewFactory factory) {
+    IIdentifiedTraitTypeGroup[] traitTypeGroups = character.getTraitConfiguration().getAttributeTypeGroups();
     this.attributeView = factory.createView(1);
-    this.presenter = new FavorableTraitConfigurationPresenter(traitTypeGroups, statistics, attributeView, resources);
+    this.presenter = new FavorableTraitConfigurationPresenter(traitTypeGroups, character, attributeView, resources);
     this.contentHeader = resources.getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
   }
 

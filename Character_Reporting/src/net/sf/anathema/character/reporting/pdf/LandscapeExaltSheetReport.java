@@ -68,7 +68,7 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
 
   private ReportSession createSession(IItem item) {
     ICharacter character = (ICharacter) item.getItemData();
-    IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character.getStatistics());
+    IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character);
     IGenericDescription description = new GenericDescription(character.getDescription());
     return new ReportSession(getContentRegistry(), genericCharacter, description);
   }
@@ -110,9 +110,6 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
       return false;
     }
     ICharacter character = (ICharacter) itemData;
-    if (!character.hasStatistics()) {
-      return false;
-    }
-    return character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isEssenceUser();
+    return character.getCharacterTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

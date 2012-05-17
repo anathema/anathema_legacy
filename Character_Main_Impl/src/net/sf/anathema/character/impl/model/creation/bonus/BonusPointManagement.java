@@ -33,7 +33,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalc
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
@@ -56,23 +56,23 @@ public class BonusPointManagement implements IBonusPointManagement {
   private final IBonusPointCosts cost;
   private final IDefaultTrait essence;
   private final ICreationPoints creationPoints;
-  private final ICharacterStatistics statistics;
+  private final ICharacter character;
   private int essenceBonusPoints;
   private int willpowerBonusPoints;
   private final BonusPointCalculator bonusPointCalculator = new BonusPointCalculator();
 
-  public BonusPointManagement(ICharacterStatistics statistics) {
-    this.statistics = statistics;
-    this.creationPoints = statistics.getCharacterTemplate().getCreationPoints();
-    for (IAdditionalModel model : statistics.getExtendedConfiguration().getAdditionalModels()) {
+  public BonusPointManagement(ICharacter character) {
+    this.character = character;
+    this.creationPoints = character.getCharacterTemplate().getCreationPoints();
+    for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels()) {
       bonusPointCalculator.addAdditionalBonusPointCalculator(model.getBonusPointCalculator());
     }
-    bonusAdditionalPools = new AdditionalBonusPointPoolManagement(statistics.getTraitConfiguration(),
-            statistics.getCharacterTemplate().getAdditionalRules().getAdditionalBonusPointPools());
-    this.cost = statistics.getCharacterTemplate().getBonusPointCosts();
-    ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
-    GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(statistics);
-    ICoreTraitConfiguration traitConfiguration = statistics.getTraitConfiguration();
+    bonusAdditionalPools = new AdditionalBonusPointPoolManagement(character.getTraitConfiguration(),
+            character.getCharacterTemplate().getAdditionalRules().getAdditionalBonusPointPools());
+    this.cost = character.getCharacterTemplate().getBonusPointCosts();
+    ICharacterTemplate characterTemplate = character.getCharacterTemplate();
+    GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(character);
+    ICoreTraitConfiguration traitConfiguration = character.getTraitConfiguration();
     this.abilityCalculator = new AbilityCostCalculator(traitConfiguration, creationPoints.getAbilityCreationPoints(),
             creationPoints.getSpecialtyCreationPoints(), cost, bonusAdditionalPools);
     this.attributeCalculator = new AttributeCostCalculator(traitConfiguration,
@@ -84,11 +84,11 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
     magicAdditionalPools = new AdditionalMagicLearnPointManagement(
             characterTemplate.getAdditionalRules().getAdditionalMagicLearnPools(), characterAbstraction);
-    this.magicCalculator = new MagicCostCalculator(characterTemplate.getMagicTemplate(), statistics.getCharms(),
-            statistics.getSpells(), creationPoints.getFavoredCreationCharmCount(),
+    this.magicCalculator = new MagicCostCalculator(characterTemplate.getMagicTemplate(), character.getCharms(),
+            character.getSpells(), creationPoints.getFavoredCreationCharmCount(),
             creationPoints.getDefaultCreationCharmCount(), cost, bonusAdditionalPools, magicAdditionalPools,
-            statistics.getCharacterContext().getBasicCharacterContext(),
-            statistics.getCharacterContext().getTraitCollection());
+            character.getCharacterContext().getBasicCharacterContext(),
+            character.getCharacterContext().getTraitCollection());
     this.willpower = TraitCollectionUtilities.getWillpower(traitConfiguration);
     this.essence = TraitCollectionUtilities.getEssence(traitConfiguration);
   }
@@ -186,7 +186,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   @Override
   public IAdditionalSpendingModel getDefaultCharmModel() {
-    IAdditionalRules additionalRules = statistics.getCharacterTemplate().getAdditionalRules();
+    IAdditionalRules additionalRules = character.getCharacterTemplate().getAdditionalRules();
     return new DefaultCharmModel(magicCalculator, magicAdditionalPools, creationPoints, additionalRules);
   }
 
@@ -220,7 +220,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       @Override
       public boolean isExtensionRequired() {
-        IAdditionalRules additionalRules = statistics.getCharacterTemplate().getAdditionalRules();
+        IAdditionalRules additionalRules = character.getCharacterTemplate().getAdditionalRules();
         return additionalRules != null && additionalRules.getAdditionalBonusPointPools().length > 0;
       }
 
@@ -262,13 +262,13 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private void addCharmModels(List<IOverviewModel> models) {
-    if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms()) {
+    if (!character.getCharacterTemplate().getMagicTemplate().getCharmTemplate().canLearnCharms()) {
       return;
     }
     if (getFavoredCharmModel().getAlotment() > 0) {
       models.add(getFavoredCharmModel());
     }
-    ICharmTemplate charmTemplate = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
+    ICharmTemplate charmTemplate = character.getCharacterTemplate().getMagicTemplate().getCharmTemplate();
     if (charmTemplate.hasUniqueCharms()) {
       if (getSpecialCharmModel(charmTemplate.getUniqueCharmType()).getAlotment() > 0) {
         models.add(getSpecialCharmModel(charmTemplate.getUniqueCharmType()));

@@ -12,7 +12,6 @@ import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.impl.view.TabbedCharacterView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.CharacterPresenter;
@@ -47,8 +46,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
 
   @Override
   protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
-    return new ExaltedCharacterPersister(getItemType(), CharacterGenericsExtractor.getGenerics(model),
-            model.getMessaging());
+    return new ExaltedCharacterPersister(getItemType(), CharacterGenericsExtractor.getGenerics(model), model.getMessaging());
   }
 
   @Override
@@ -58,50 +56,42 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         ICharacter character = (ICharacter) item.getItemData();
-        ICharacterStatistics statistics = character.getStatistics();
         CharacterUI characterUI = new CharacterUI(resources);
-        if (statistics == null) {
+        if (character == null) {
           Icon icon = characterUI.getCharacterDescriptionTabIcon();
           ICharacterView characterView = new TabbedCharacterView(null, printName, icon, null);
-          new CharacterPresenter(character, characterView, resources, anathemaModel,
-                  new NpcPointPresentation()).initPresentation();
+          new CharacterPresenter((ICharacter) item.getItemData(), characterView, resources, anathemaModel, new NpcPointPresentation())
+                  .initPresentation();
           return characterView;
         }
-        ICharacterType characterType = character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType();
-        IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(
-                resources, characterType);
-        IntegerViewFactory markerLessIntValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(
-                resources, characterType);
+        ICharacterType characterType = ((ICharacter) item.getItemData()).getCharacterTemplate().getTemplateType().getCharacterType();
+        IntegerViewFactory intValueDisplayFactory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources, characterType);
+        IntegerViewFactory markerLessIntValueDisplayFactory =
+                IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(resources, characterType);
         Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
-        ICharacterView characterView = new TabbedCharacterView(intValueDisplayFactory, printName, typeIcon,
-                markerLessIntValueDisplayFactory);
-        IBonusPointManagement bonusPointManagement = new BonusPointManagement(character.getStatistics());
-        IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character.getStatistics());
-        PointPresentationStrategy pointPresentation = choosePointPresentation(statistics, characterView,
-                bonusPointManagement, experiencePointManagement, resources);
-        new CharacterPresenter(character, characterView, resources, anathemaModel,
-                pointPresentation).initPresentation();
-        character.setClean();
+        ICharacterView characterView = new TabbedCharacterView(intValueDisplayFactory, printName, typeIcon, markerLessIntValueDisplayFactory);
+        IBonusPointManagement bonusPointManagement = new BonusPointManagement(((ICharacter) item.getItemData()));
+        IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(((ICharacter) item.getItemData()));
+        PointPresentationStrategy pointPresentation =
+                choosePointPresentation(character, characterView, bonusPointManagement, experiencePointManagement, resources);
+        new CharacterPresenter((ICharacter) item.getItemData(), characterView, resources, anathemaModel, pointPresentation).initPresentation();
+        ((ICharacter) item.getItemData()).setClean();
         return characterView;
       }
     };
   }
 
-  private PointPresentationStrategy choosePointPresentation(ICharacterStatistics statistics,
-                                                            ICharacterView characterView,
+  private PointPresentationStrategy choosePointPresentation(ICharacter character, ICharacterView characterView,
                                                             IBonusPointManagement bonusPointManagement,
-                                                            IExperiencePointManagement experiencePointManagement,
-                                                            IResources resources) {
-    if (statistics.getCharacterTemplate().isNpcOnly()) {
+                                                            IExperiencePointManagement experiencePointManagement, IResources resources) {
+    if (character.getCharacterTemplate().isNpcOnly()) {
       return new NpcPointPresentation();
     }
-    return new PlayerCharacterPointPresentation(resources, statistics, characterView, bonusPointManagement,
-            experiencePointManagement);
+    return new PlayerCharacterPointPresentation(resources, character, characterView, bonusPointManagement, experiencePointManagement);
   }
 
   @Override
-  protected IItemTypeViewProperties createItemTypeCreationProperties(IAnathemaModel anathemaModel,
-                                                                     IResources resources) {
+  protected IItemTypeViewProperties createItemTypeCreationProperties(IAnathemaModel anathemaModel, IResources resources) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(anathemaModel);
     CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, resources);
     IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();

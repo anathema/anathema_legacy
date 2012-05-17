@@ -42,8 +42,7 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
 
   @Override
   public void save(OutputStream stream, IItem item) throws IOException {
-    messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION,
-            item.getDisplayName()); //$NON-NLS-1$
+    messaging.addMessage("CharacterPersistence.SavingCharacter", MessageType.INFORMATION, item.getDisplayName()); //$NON-NLS-1$
     Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
     repositoryItemPerister.save(rootElement, item);
     save(rootElement, (ICharacter) item.getItemData());
@@ -52,20 +51,17 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
 
   private void save(Element rootElement, ICharacter character) {
     descriptionPersister.save(rootElement, character.getDescription());
-    if (character.hasStatistics()) {
-      statisticsPersister.save(rootElement, character.getStatistics());
-    }
+    statisticsPersister.save(rootElement, character);
   }
 
   @Override
   public IItem load(Document characterXml) throws PersistenceException {
     Element documentRoot = characterXml.getRootElement();
-    ICharacter character = new ExaltedCharacter();
+    ICharacter character = statisticsPersister.load(documentRoot);
+    descriptionPersister.load(documentRoot, character.getDescription());
+    markCharacterReadyForWork(character);
     IItem item = new AnathemaDataItem(characterType, character);
     repositoryItemPerister.load(documentRoot, item);
-    descriptionPersister.load(documentRoot, character.getDescription());
-    statisticsPersister.load(documentRoot, character);
-    markCharacterReadyForWork(character);
     return item;
   }
 
@@ -75,9 +71,8 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
       throw new IllegalArgumentException("Bad template type for character creation."); //$NON-NLS-1$
     }
     CharacterStatisticsConfiguration configuration = (CharacterStatisticsConfiguration) template;
-    ExaltedCharacter character = new ExaltedCharacter();
     try {
-      character.createCharacterStatistics(configuration.getTemplate(), generics);
+      ExaltedCharacter character = new ExaltedCharacter(configuration.getTemplate(), generics);
       markCharacterReadyForWork(character);
       return new AnathemaDataItem(characterType, character);
     } catch (SpellException e) {
@@ -86,6 +81,6 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   }
 
   private void markCharacterReadyForWork(ICharacter character) {
-    character.getStatistics().getCharacterContext().setFullyLoaded(true);
+    character.getCharacterContext().setFullyLoaded(true);
   }
 }

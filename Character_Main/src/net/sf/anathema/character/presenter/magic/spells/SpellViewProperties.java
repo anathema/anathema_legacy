@@ -1,5 +1,14 @@
 package net.sf.anathema.character.presenter.magic.spells;
 
+import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
+import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.model.ISpellConfiguration;
+import net.sf.anathema.character.view.magic.ISpellViewProperties;
+import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
+import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
+import net.sf.anathema.lib.resources.IResources;
+
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
@@ -7,24 +16,15 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.view.magic.ISpellViewProperties;
-import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
-import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
-import net.sf.anathema.lib.resources.IResources;
-
 public class SpellViewProperties extends AbstractMagicLearnProperties implements ISpellViewProperties {
 
   private final ISpellConfiguration spellConfiguration;
-  private final ICharacterStatistics statistics;
+  private final ICharacter character;
 
-  public SpellViewProperties(IResources resources, ICharacterStatistics statistics) {
+  public SpellViewProperties(IResources resources, ICharacter character) {
     super(resources);
-    this.statistics = statistics;
-    this.spellConfiguration = statistics.getSpells();
+    this.character = character;
+    this.spellConfiguration = character.getSpells();
   }
 
   @Override
@@ -80,7 +80,7 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
       @Override
       public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
-        if (enabled && statistics.isExperienced()) {
+        if (enabled && character.isExperienced()) {
           for (Object spellObject : list.getSelectedValues()) {
             ISpell spell = (ISpell) spellObject;
             if (spellConfiguration.isLearnedOnCreation(spell)) {

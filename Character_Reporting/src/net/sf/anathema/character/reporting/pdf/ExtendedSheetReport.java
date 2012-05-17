@@ -61,7 +61,7 @@ public class ExtendedSheetReport extends AbstractPdfReport {
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
     try {
-      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
+      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
 
       ReportSession session = new ReportSession(getContentRegistry(), character, description);
@@ -103,10 +103,6 @@ public class ExtendedSheetReport extends AbstractPdfReport {
       return false;
     }
     IItemData itemData = item.getItemData();
-    if (!(itemData instanceof ICharacter)) {
-      return false;
-    }
-    ICharacter character = (ICharacter) itemData;
-    return character.hasStatistics();
+    return itemData instanceof ICharacter;
   }
 }

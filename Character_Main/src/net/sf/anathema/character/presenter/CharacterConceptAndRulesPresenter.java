@@ -4,13 +4,13 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
-import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
+import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
@@ -36,12 +36,11 @@ import java.awt.Component;
 public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
   private final ICharacterConceptAndRulesView view;
-  private final ICharacterStatistics statistics;
+  private final ICharacter character;
   private final IResources resources;
 
-  public CharacterConceptAndRulesPresenter(ICharacterStatistics statistics,
-                                           ICharacterConceptAndRulesViewFactory viewFactory, IResources resources) {
-    this.statistics = statistics;
+  public CharacterConceptAndRulesPresenter(ICharacter character, IConceptAndRulesViewFactory viewFactory, IResources resources) {
+    this.character = character;
     this.view = viewFactory.createCharacterConceptView();
     this.resources = resources;
   }
@@ -50,7 +49,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   public void initPresentation() {
     initRulesPresentation();
     boolean casteRow = initCastePresentation();
-    IMotivation motivation = statistics.getCharacterConcept().getWillpowerRegainingConcept();
+    IMotivation motivation = character.getCharacterConcept().getWillpowerRegainingConcept();
     initMotivationPresentation(motivation, casteRow);
     initAgePresentation();
     initGui();
@@ -63,7 +62,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   private void initAgePresentation() {
-    final IIntegerDescription age = statistics.getCharacterConcept().getAge();
+    final IIntegerDescription age = character.getCharacterConcept().getAge();
 
     IntegerSpinner ageSpinner = new IntegerSpinner(age.getValue());
     ageSpinner.setPreferredWidth(48);
@@ -79,8 +78,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {
-    final ITextView textView = initTextualDescriptionPresentation(motivation.getEditableDescription(),
-            "Label.Motivation"); //$NON-NLS-1$
+    final ITextView textView = initTextualDescriptionPresentation(motivation.getEditableDescription(), "Label.Motivation"); //$NON-NLS-1$
     final SmartAction beginEditAction = new SmartAction(new BasicUi(resources).getEditIcon()) {
       private static final long serialVersionUID = -1054675766697466937L;
 
@@ -99,8 +97,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
         motivation.cancelEdit();
       }
     };
-    cancelEditAction.setToolTipText(
-            resources.getString("CharacterConcept.Motivation.CancelEdit.Tooltip")); //$NON-NLS-1$
+    cancelEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.CancelEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
       private static final long serialVersionUID = 1191861661014239378L;
 
@@ -142,10 +139,10 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
       }
     });
 
-    beginEditAction.setEnabled(statistics.isExperienced());
+    beginEditAction.setEnabled(character.isExperienced());
     endEditAction.setEnabled(false);
     endEditXPAction.setEnabled(false);
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
         beginEditAction.setEnabled(experienced);
@@ -158,13 +155,13 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   private ITextView initTextualDescriptionPresentation(ITextualDescription description, String resourceKey) {
     final ITextView textView = view.addLabelTextView(resources.getString(resourceKey));
     new TextualPresentation().initView(textView, description);
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
         textView.setEnabled(!experienced);
       }
     });
-    textView.setEnabled(!statistics.isExperienced());
+    textView.setEnabled(!character.isExperienced());
     return textView;
   }
 
@@ -183,21 +180,21 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   private void initRulesPresentation() {
-    view.addRulesLabel(resources.getString("Rules.CharacterType.Message", resources.getString(
-            statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
+    view.addRulesLabel(resources.getString("Rules.CharacterType.Message",
+            resources.getString(character.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
   }
 
   private boolean initCastePresentation() {
-    ICharacterTemplate template = statistics.getCharacterTemplate();
-    if (template.getCasteCollection().getAllCasteTypes(statistics.getCharacterTemplate().getTemplateType()).length <= 0) {
+    ICharacterTemplate template = character.getCharacterTemplate();
+    if (template.getCasteCollection().getAllCasteTypes(character.getCharacterTemplate().getTemplateType()).length <= 0) {
       return false;
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     IObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
-    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(statistics.getCharacterTemplate().getTemplateType());
-    final IObjectSelectionView<ICasteType> casteView = view.addObjectSelectionView(
-            resources.getString(casteLabelResourceKey), allCasteTypes, new ObjectUiListCellRenderer(casteUi), false);
-    final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
+    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(character.getCharacterTemplate().getTemplateType());
+    final IObjectSelectionView<ICasteType> casteView =
+            view.addObjectSelectionView(resources.getString(casteLabelResourceKey), allCasteTypes, new ObjectUiListCellRenderer(casteUi), false);
+    final ITypedDescription<ICasteType> caste = character.getCharacterConcept().getCaste();
     casteView.setSelectedObject(caste.getType());
     casteView.addObjectSelectionChangedListener(new ObjectValueListener<ICasteType>() {
       @Override
@@ -211,13 +208,13 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
         casteView.setSelectedObject(caste.getType());
       }
     });
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
         casteView.setEnabled(!experienced);
       }
     });
-    casteView.setEnabled(!statistics.isExperienced());
+    casteView.setEnabled(!character.isExperienced());
     return true;
   }
 }

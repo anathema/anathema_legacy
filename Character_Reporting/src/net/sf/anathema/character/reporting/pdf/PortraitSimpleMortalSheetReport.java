@@ -53,7 +53,7 @@ public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
     PdfContentByte directContent = writer.getDirectContent();
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     try {
-      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
+      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       PageEncoder encoder = new MortalPageEncoder(configuration);
       SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
@@ -89,9 +89,6 @@ public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
       return false;
     }
     ICharacter character = (ICharacter) itemData;
-    if (!character.hasStatistics()) {
-      return false;
-    }
-    return !character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isEssenceUser();
+    return !character.getCharacterTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

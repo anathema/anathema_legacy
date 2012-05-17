@@ -39,20 +39,13 @@ public class TextReport extends AbstractPdfReport {
     try {
       GenericDescription description = new GenericDescription(character.getDescription());
       new CharacterDescriptionTextEncoder(utils, resources).createParagraphs(columnText, description);
-      boolean hasStatistics = character.hasStatistics();
-      if (hasStatistics) {
-        IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character.getStatistics());
-        new ConceptTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-      }
+      IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character);
+      new ConceptTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
       createConceptParagraph(columnText, description);
-      if (hasStatistics) {
-        IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character.getStatistics());
-        new AttributeTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-        new VirtueTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-        new AbilityTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-        new BackgroundsTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-        // new CharmTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-      }
+      new AttributeTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
+      new VirtueTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
+      new AbilityTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
+      new BackgroundsTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
       writeColumnText(document, columnText);
     } catch (DocumentException e) {
       e.printStackTrace();
@@ -63,19 +56,18 @@ public class TextReport extends AbstractPdfReport {
     TextPartFactory factory = new TextPartFactory(utils);
     String conceptText = description.getConceptText();
     if (!StringUtilities.isNullOrEmpty(conceptText)) {
-      Phrase conceptPhrase = factory.createTextParagraph(factory.createBoldTitle(resources.getString("Sheet.Label.Concept") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
+      Phrase conceptPhrase =
+              factory.createTextParagraph(factory.createBoldTitle(resources.getString("Sheet.Label.Concept") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
       conceptPhrase.add(factory.createTextChunk(conceptText));
       columnText.addElement(conceptPhrase);
     }
   }
 
-
   private void writeColumnText(Document document, MultiColumnText columnText) throws DocumentException {
     do {
       document.add(columnText);
       columnText.nextColumn();
-    }
-    while (columnText.isOverflow());
+    } while (columnText.isOverflow());
   }
 
   @Override

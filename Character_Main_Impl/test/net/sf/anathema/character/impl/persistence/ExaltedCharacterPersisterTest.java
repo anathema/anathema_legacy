@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.persistence;
 
+import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.generic.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.generic.framework.CharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -13,7 +14,6 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,7 +47,7 @@ public class ExaltedCharacterPersisterTest {
     ICharacterGenerics generics = createCharacterGenerics();
     ExaltedCharacterPersister persister = new ExaltedCharacterPersister(type, generics, messaging);
     ICharacter character = createNewCharacter(persister);
-    assertThat(character.getStatistics().getCharacterContext().isFullyLoaded(), is(true));
+    assertThat(character.getCharacterContext().isFullyLoaded(), is(true));
   }
 
   private ICharacterGenerics createCharacterGenerics() {

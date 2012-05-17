@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
@@ -22,30 +22,15 @@ public class BasicAdvantagePresenter implements IContentPresenter {
   private final IBasicAdvantageView view;
   private final IResources resources;
 
-  public BasicAdvantagePresenter(
-      IResources resources,
-      ICharacterStatistics statistics,
-      IAdvantageViewFactory factory,
-      ICharacterGenerics generics) {
+  public BasicAdvantagePresenter(IResources resources, ICharacter character, IAdvantageViewFactory factory, ICharacterGenerics generics) {
     this.resources = resources;
     this.view = factory.createBasicAdvantageView();
-    ICoreTraitConfiguration traitConfiguration = statistics.getTraitConfiguration();
+    ICoreTraitConfiguration traitConfiguration = character.getTraitConfiguration();
     subPresenters.add(new VirtueConfigurationPresenter(resources, traitConfiguration, view));
-    subPresenters.add(new WillpowerConfigurationPresenter(
-        resources,
-        traitConfiguration.getTrait(OtherTraitType.Willpower),
-        view));
-    subPresenters.add(new BackgroundPresenter(
-        resources,
-        traitConfiguration.getBackgrounds(),
-        statistics.getCharacterContext(),
-        view,
-        generics.getBackgroundRegistry()));
-    subPresenters.add(new EssenceConfigurationPresenter(
-        resources,
-        statistics.getEssencePool(),
-        traitConfiguration,
-        view));
+    subPresenters.add(new WillpowerConfigurationPresenter(resources, traitConfiguration.getTrait(OtherTraitType.Willpower), view));
+    subPresenters.add(new BackgroundPresenter(resources, traitConfiguration.getBackgrounds(), character.getCharacterContext(), view,
+            generics.getBackgroundRegistry()));
+    subPresenters.add(new EssenceConfigurationPresenter(resources, character.getEssencePool(), traitConfiguration, view));
   }
 
   @Override

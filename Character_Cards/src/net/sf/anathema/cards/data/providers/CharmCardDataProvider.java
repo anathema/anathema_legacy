@@ -1,8 +1,5 @@
 package net.sf.anathema.cards.data.providers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.cards.data.CharmCardData;
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
@@ -12,6 +9,9 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
 
@@ -31,7 +31,7 @@ public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
 	}
 	
 	private ICharm[] getCurrentCharms(ICharacter character) {
-		return character.getStatistics().getCharms().getLearnedCharms(character.getStatistics().isExperienced());
+		return character.getCharms().getLearnedCharms(character.isExperienced());
 	}
 	
 	private CharmStats createCharmStats(ICharacter character, ICharm charm) {
@@ -39,7 +39,7 @@ public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
 	}
 	
 	private GenericCharacter createGenericCharacter(ICharacter character) {
-		return new GenericCharacter(character.getStatistics());
+		return new GenericCharacter(character);
 	}
 
 }
