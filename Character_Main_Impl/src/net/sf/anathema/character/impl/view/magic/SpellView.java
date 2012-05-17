@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.view.magic;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
@@ -11,8 +10,6 @@ import net.sf.anathema.character.presenter.magic.spells.SpellViewProperties;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
-import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledStringValueView;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JButton;
@@ -24,7 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Comparator;
@@ -35,7 +31,6 @@ public class SpellView implements ISpellView {
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
   private final Announcer<ObjectValueListener> circleControl = Announcer.to(ObjectValueListener.class);
-  private final JPanel detailPanel = new JPanel(new GridDialogLayout(2, false));
 
   private final SpellViewProperties properties;
 
@@ -55,31 +50,14 @@ public class SpellView implements ISpellView {
   }
 
   @Override
-  public IValueView<String> addDetailValueView(String label) {
-    LabelledStringValueView view = new LabelledStringValueView(label, new GridDialogLayoutData());
-    view.addToStandardPanel(detailPanel);
-    return view;
-  }
-
-  @Override
-  public JLabel addDetailTitleView() {
-    JLabel label = new JLabel();
-    label.setFont(label.getFont().deriveFont(Font.BOLD));
-    detailPanel.add(label, GridDialogLayoutDataFactory.createHorizontalSpanData(2));
-    return label;
-  }
-
-  @Override
   public void initGui(IIdentificate[] circles) {
     JComponent selectionPanel = createSelectionPanel(circles);
     IGridDialogLayoutData data = GridDialogLayoutData.FILL_BOTH;
     content.add(selectionPanel, data);
-    detailPanel.setBorder(new TitledBorder(properties.getDetailTitle()));
-    content.add(detailPanel, data);
   }
 
   private JPanel createSelectionPanel(IIdentificate[] circles) {
-    JPanel panel = createFilterBox(properties.getCircleString(), circles, properties.getCircleSelectionRenderer());
+    JPanel panel = createFilterBox(properties.getCircleLabel(), circles, properties.getCircleSelectionRenderer());
     magicLearnView.addAdditionalOptionsPanel(panel);
     magicLearnView.init(properties);
     JPanel selectionPanel = new JPanel(new GridDialogLayout(4, false));

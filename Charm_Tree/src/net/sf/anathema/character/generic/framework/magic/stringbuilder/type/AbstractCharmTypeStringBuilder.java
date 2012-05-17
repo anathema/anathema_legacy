@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.charms.type.IReflexiveSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
+import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.text.MessageFormat;
@@ -28,9 +29,9 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
   public void buildStringForMagic(StringBuilder builder, IMagic magic, Object details) {
     if (magic instanceof ICharm) {
       builder.append(resources.getString("CharmTreeView.ToolTip.Type")); //$NON-NLS-1$
-      builder.append(ColonSpace);
+      builder.append(TooltipBuilder.ColonSpace);
       builder.append(createTypeString(((ICharm) magic).getCharmTypeModel()));
-      builder.append(HtmlLineBreak);
+      builder.append(TooltipBuilder.HtmlLineBreak);
     }
   }
 
@@ -39,7 +40,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
 
   private StringBuilder buildReflexiveModelString(IReflexiveSpecialsModel model) {
     StringBuilder builder = new StringBuilder();
-    builder.append(IMagicTooltipStringBuilder.Space);
+    builder.append(TooltipBuilder.Space);
     builder.append("("); //$NON-NLS-1$    
     MessageFormat formatter = new MessageFormat(""); //$NON-NLS-1$
     Object[] objects;
@@ -71,7 +72,7 @@ public abstract class AbstractCharmTypeStringBuilder implements ICharmTypeString
     if (defaultSpeed && defaultDefense && defaultTurnType) {
       return builder;
     }
-    builder.append(IMagicTooltipStringBuilder.Space);
+    builder.append(TooltipBuilder.Space);
     builder.append("("); //$NON-NLS-1$
     boolean dramaticAction = model.getTurnType() == TurnType.DramaticAction;
     boolean longTick = model.getTurnType() == TurnType.LongTick;

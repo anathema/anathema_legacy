@@ -9,19 +9,11 @@ import javax.swing.event.ListSelectionListener;
 
 public interface ISpellViewProperties extends IMagicLearnProperties {
 
-  String getCircleString();
-
-  String getLearnedSpellString();
+  String getCircleLabel();
 
   ListCellRenderer getCircleSelectionRenderer();
 
   ListSelectionListener getRemoveButtonEnabledListener(JButton button, JList list);
-
-  String getDetailTitle();
-
-  String getCostString();
-
-  String getSourceString();
 
   String getSelectionTitle();
 }

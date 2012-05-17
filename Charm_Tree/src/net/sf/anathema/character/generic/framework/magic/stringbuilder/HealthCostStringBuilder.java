@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
+import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class HealthCostStringBuilder extends AbstractCostStringBuilder<IHealthCost> {
@@ -17,9 +18,9 @@ public class HealthCostStringBuilder extends AbstractCostStringBuilder<IHealthCo
   protected String getQualifiedValueString(IHealthCost cost) {
     int intValue = Integer.parseInt(cost.getCost());
     return intValue
-        + IMagicTooltipStringBuilder.Space
+        + TooltipBuilder.Space
         + getResources().getString(cost.getType().getId())
-        + IMagicTooltipStringBuilder.Space
+        + TooltipBuilder.Space
         + getResources().getString(intValue == 1 ? getSingularKey() : getPluralKey());
   }
 }

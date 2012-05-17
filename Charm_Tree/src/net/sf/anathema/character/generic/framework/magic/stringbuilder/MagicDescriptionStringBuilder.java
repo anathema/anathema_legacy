@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
+import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static java.text.MessageFormat.format;
@@ -28,12 +29,12 @@ public class MagicDescriptionStringBuilder implements IMagicTooltipStringBuilder
     boolean isFirst = true;
     String[] paragraphs = charmDescription.getParagraphs();
     for (String paragraph : paragraphs) {
-      builder.append(HtmlLineBreak);
+      builder.append(TooltipBuilder.HtmlLineBreak);
       String displayParagraph = isFirst ? getDescriptionHead() + paragraph : paragraph;
       if (isFirst) {
         isFirst = false;
       }
-      String shortedParagraph = createFixedWidthParagraph(displayParagraph, HtmlLineBreak, MAX_DESCRIPTION_LENGTH);
+      String shortedParagraph = createFixedWidthParagraph(displayParagraph, TooltipBuilder.HtmlLineBreak, MAX_DESCRIPTION_LENGTH);
       builder.append(shortedParagraph);
     }
   }
