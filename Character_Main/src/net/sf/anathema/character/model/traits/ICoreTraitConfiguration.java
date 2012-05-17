@@ -6,7 +6,7 @@ import net.sf.anathema.character.library.trait.ITraitCollection;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public interface ICoreTraitConfiguration extends ITraitCollection {
 
@@ -22,5 +22,5 @@ public interface ICoreTraitConfiguration extends ITraitCollection {
 
   IFavorableTrait[] getAllAbilities();
 
-  IIdentificate getAbilityGroupId(AbilityType abilityType);
+  Identified getAbilityGroupId(AbilityType abilityType);
 }

@@ -1,11 +1,11 @@
 package net.sf.anathema.character.impl.module.preferences;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public abstract class AbstractCharacterPreferencesElement implements ICharacterPreferencesElement {
 
   @Override
-  public IIdentificate getCategory() {
+  public Identified getCategory() {
     return CHARACTER_CATEGORY;
   }
 }

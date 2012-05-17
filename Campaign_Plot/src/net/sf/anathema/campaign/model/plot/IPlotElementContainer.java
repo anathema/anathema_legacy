@@ -1,9 +1,9 @@
 package net.sf.anathema.campaign.model.plot;
 
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public interface IPlotElementContainer extends IIdentificate {
+public interface IPlotElementContainer extends Identified {
 
   IPlotElement addChild(IItemDescription description, String repositoryId);
 

@@ -1,10 +1,5 @@
 package net.sf.anathema.framework.module.preferences;
 
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.TOOL_TIP_TIME_PREFERENCE;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
@@ -12,7 +7,12 @@ import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.TOOL_TIP_TIME_PREFERENCE;
 
 @PreferenceElement
 public class ToolTipTimePreferencesElement implements IPreferencesElement {
@@ -71,7 +71,7 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
   }
 
   @Override
-  public IIdentificate getCategory() {
+  public Identified getCategory() {
     return SYSTEM_CATEGORY;
   }
 

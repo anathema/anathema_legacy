@@ -1,14 +1,14 @@
 package net.sf.anathema.character.equipment.character;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class WeaponStatsNameStringFactory {
 
@@ -32,10 +32,10 @@ public class WeaponStatsNameStringFactory {
     if (item == null) {
       return true;
     }
-    return Collections.frequency(getStatNames(item, new ArrayList<IIdentificate>()), stats.getName()) > 1;
+    return Collections.frequency(getStatNames(item, new ArrayList<Identified>()), stats.getName()) > 1;
   }
 
-  private Collection<IIdentificate> getStatNames(IEquipmentItem item, Collection<IIdentificate> names) {
+  private Collection<Identified> getStatNames(IEquipmentItem item, Collection<Identified> names) {
     for (IEquipmentStats stats : item.getStats()) {
       names.add(stats.getName());
     }

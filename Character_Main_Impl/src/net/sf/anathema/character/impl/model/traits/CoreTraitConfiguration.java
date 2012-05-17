@@ -29,7 +29,7 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -132,7 +132,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   }
 
   @Override
-  public IIdentificate getAbilityGroupId(AbilityType abilityType) {
+  public Identified getAbilityGroupId(AbilityType abilityType) {
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
       if (group.contains(abilityType)) {
         return group.getGroupId();

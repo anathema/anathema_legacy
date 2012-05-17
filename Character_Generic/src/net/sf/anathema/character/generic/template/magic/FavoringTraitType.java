@@ -5,9 +5,9 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public enum FavoringTraitType implements IIdentificate {
+public enum FavoringTraitType implements Identified {
   AbilityType() {
     @Override
     public void accept(IFavoringTraitTypeVisitor visitor) {

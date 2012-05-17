@@ -16,7 +16,7 @@ import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,20 +50,20 @@ public class KeywordEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void initPageContent() {
     this.view = viewFactory.createKeywordEntryView();
-    final IButtonControlledObjectSelectionView<IIdentificate> selectionView = view.addObjectSelectionView(
+    final IButtonControlledObjectSelectionView<Identified> selectionView = view.addObjectSelectionView(
         properties.getKeywordRenderer(),
         properties.getKeywordLabel(),
         properties.getAddIcon());
     selectionView.setObjects(getPageModel().getAvailableKeywords());
-    selectionView.addObjectSelectionChangedListener(new ObjectValueListener<IIdentificate>() {
+    selectionView.addObjectSelectionChangedListener(new ObjectValueListener<Identified>() {
       @Override
-      public void valueChanged(IIdentificate newValue) {
+      public void valueChanged(Identified newValue) {
         getPageModel().setCurrentKeyword(newValue);
       }
     });
-    selectionView.addButtonListener(new ObjectValueListener<IIdentificate>() {
+    selectionView.addButtonListener(new ObjectValueListener<Identified>() {
       @Override
-      public void valueChanged(IIdentificate newValue) {
+      public void valueChanged(Identified newValue) {
         getPageModel().commitSelection();
       }
     });

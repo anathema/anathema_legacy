@@ -7,7 +7,7 @@ import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class LinguisticsContent extends AbstractSubBoxContent implements ListSub
   public List<String> getPrintEntries() {
     List<String> printLanguages = new ArrayList<String>();
     ILinguisticsModel model = getModel();
-    for (IIdentificate language : model.getEntries()) {
+    for (Identified language : model.getEntries()) {
       String text = language.getId();
       if (model.isPredefinedLanguage(language)) {
         text = getString("Language." + text); //$NON-NLS-1$

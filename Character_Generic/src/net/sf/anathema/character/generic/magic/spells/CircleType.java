@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.magic.spells;
 
+import net.sf.anathema.lib.util.Identified;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.lib.util.IIdentificate;
-
 //TODO: Find a way to operate with circletypes without breaking compareTo
-public enum CircleType implements IIdentificate {
+public enum CircleType implements Identified {
 
   Terrestrial {
     @Override

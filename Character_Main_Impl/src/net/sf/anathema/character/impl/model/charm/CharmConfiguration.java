@@ -44,7 +44,7 @@ import net.sf.anathema.character.presenter.magic.ObtainableCharmFilter;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -58,8 +58,8 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   private final ISpecialCharmManager manager;
   private final MartialArtsCharmTree martialArtsCharmTree;
-  private final Map<IIdentificate, ICharmTree> alienTreesByType = new HashMap<IIdentificate, ICharmTree>();
-  private final Map<IIdentificate, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<IIdentificate, ILearningCharmGroup[]>();
+  private final Map<Identified, ICharmTree> alienTreesByType = new HashMap<Identified, ICharmTree>();
+  private final Map<Identified, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<Identified, ILearningCharmGroup[]>();
   private final Map<ICharacterType, ICharmTemplate> templatesByType = new HashMap<ICharacterType, ICharmTemplate>();
   private final ICharacterType[] types;
   private final ILearningCharmGroupContainer learningCharmGroupContainer = new ILearningCharmGroupContainer() {
@@ -288,7 +288,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     throw new IllegalArgumentException("No charm found for id \"" + charmId + "\""); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  private ICharmIdMap getCharmTree(IIdentificate type) {
+  private ICharmIdMap getCharmTree(Identified type) {
     return alienTreesByType.get(type);
   }
 
@@ -311,7 +311,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   @Override
-  public ILearningCharmGroup[] getCharmGroups(IIdentificate type) {
+  public ILearningCharmGroup[] getCharmGroups(Identified type) {
     if (MartialArtsUtilities.MARTIAL_ARTS.equals(type)) {
       return martialArtsGroups;
     }

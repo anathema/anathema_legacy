@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.template.points;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public enum AttributeGroupPriority implements IIdentificate {
+public enum AttributeGroupPriority implements Identified {
 
   Primary {
     @Override

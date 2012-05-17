@@ -6,7 +6,7 @@ import net.sf.anathema.charmtree.presenter.view.AbstractCharmGroupChangeListener
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.presenter.view.CharmTreeRenderer;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
@@ -17,7 +17,7 @@ public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeL
   }
 
   @Override
-  protected void modifyCharmVisuals(IIdentificate type) {
+  protected void modifyCharmVisuals(Identified type) {
     // Nothing to do
   }
 

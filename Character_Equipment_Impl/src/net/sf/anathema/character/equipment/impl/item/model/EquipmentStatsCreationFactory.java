@@ -36,8 +36,8 @@ import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.awt.Component;
 
@@ -134,7 +134,7 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   }
 
   private void fillWeaponTagsModel(IWeaponTagsModel weaponTagsModel, IWeaponStats weaponStats) {
-    for (IIdentificate tag : weaponStats.getTags()) {
+    for (Identified tag : weaponStats.getTags()) {
       weaponTagsModel.getSelectedModel((WeaponTag) tag).setValue(true);
     }
   }

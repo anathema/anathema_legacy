@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.presenter;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public interface CharmTypes {
-  IIdentificate[] getCurrentCharmTypes();
+  Identified[] getCurrentCharmTypes();
 }

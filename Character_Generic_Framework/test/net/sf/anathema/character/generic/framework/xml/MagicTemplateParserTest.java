@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
 import net.sf.anathema.lib.collection.ArrayUtilities;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 import org.junit.Assert;
@@ -125,7 +125,7 @@ public class MagicTemplateParserTest {
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
-      public boolean hasAttribute(IIdentificate attribute) {
+      public boolean hasAttribute(Identified attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     };
@@ -141,7 +141,7 @@ public class MagicTemplateParserTest {
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
-      public boolean hasAttribute(IIdentificate attribute) {
+      public boolean hasAttribute(Identified attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     };

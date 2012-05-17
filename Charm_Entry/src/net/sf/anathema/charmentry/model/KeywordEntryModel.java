@@ -8,11 +8,11 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.IKeywordEntryModel;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribute> implements IKeywordEntryModel {
 
-  private IIdentificate keyword;
+  private Identified keyword;
   private final IConfigurableCharmData charmData;
 
   public KeywordEntryModel(IConfigurableCharmData charmData) {
@@ -52,7 +52,7 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
   }
 
   @Override
-  public void setCurrentKeyword(IIdentificate keyword) {
+  public void setCurrentKeyword(Identified keyword) {
     this.keyword = keyword;
     fireEntryChanged();
   }
@@ -65,8 +65,8 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
   }
 
   @Override
-  public IIdentificate[] getAvailableKeywords() {
-    return new IIdentificate[] {
+  public Identified[] getAvailableKeywords() {
+    return new Identified[] {
         ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE,
         ICharmData.FORM_ATTRIBUTE,
         ICharmData.NO_STYLE_ATTRIBUTE,

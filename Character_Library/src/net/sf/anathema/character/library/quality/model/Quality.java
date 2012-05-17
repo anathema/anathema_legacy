@@ -1,15 +1,15 @@
 package net.sf.anathema.character.library.quality.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityPredicate;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.library.quality.presenter.IQualityType;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public abstract class Quality implements IQuality, IIdentificate {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Quality implements IQuality, Identified {
 
   private final String id;
   private final List<IQualityPredicate> prerequisites = new ArrayList<IQualityPredicate>();

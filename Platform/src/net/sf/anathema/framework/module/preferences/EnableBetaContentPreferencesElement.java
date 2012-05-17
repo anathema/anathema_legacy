@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.module.preferences;
 
 import net.sf.anathema.initialization.PreferenceElement;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.ENABLE_BETA_CONTENT;
 
@@ -40,7 +40,7 @@ public class EnableBetaContentPreferencesElement extends AbstractCheckBoxPrefere
   }
 
   @Override
-  public IIdentificate getCategory() {
+  public Identified getCategory() {
     return SYSTEM_CATEGORY;
   }
 }

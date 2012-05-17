@@ -5,8 +5,8 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class Kick extends AbstractNaturalWeaponStats {
 
@@ -41,8 +41,8 @@ public class Kick extends AbstractNaturalWeaponStats {
   }
 
   @Override
-  public IIdentificate[] getTags() {
-    return new IIdentificate[] { WeaponTag.Natural };
+  public Identified[] getTags() {
+    return new Identified[] { WeaponTag.Natural };
   }
 
   @Override
@@ -61,7 +61,7 @@ public class Kick extends AbstractNaturalWeaponStats {
   }
 
   @Override
-  public IIdentificate getName() {
+  public Identified getName() {
     return new Identificate("Kick"); //$NON-NLS-1$
   }
 }

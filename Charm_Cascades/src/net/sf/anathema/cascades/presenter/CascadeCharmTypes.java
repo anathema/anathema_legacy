@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.presenter.magic.AbstractCharmTypes;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -21,8 +21,8 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
   }
 
   @Override
-  protected List<IIdentificate> getCurrentCharacterTypes() {
-    Set<IIdentificate> set = new LinkedHashSet<IIdentificate>();
+  protected List<Identified> getCurrentCharacterTypes() {
+    Set<Identified> set = new LinkedHashSet<Identified>();
     for (ICharacterType type : CharacterType.values()) {
       ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
@@ -32,12 +32,12 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
         set.add(type);
       }
     }
-    return new ArrayList<IIdentificate>(set);
+    return new ArrayList<Identified>(set);
   }
 
   @Override
-  protected List<IIdentificate> getAdditionalCharmTypes() {
-    Set<IIdentificate> set = new LinkedHashSet<IIdentificate>();
+  protected List<Identified> getAdditionalCharmTypes() {
+    Set<Identified> set = new LinkedHashSet<Identified>();
     for (ICharacterType type : CharacterType.values()) {
       ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
@@ -49,6 +49,6 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
       }
       set.add(charmTemplate.getUniqueCharmType().getId());
     }
-    return new ArrayList<IIdentificate>(set);
+    return new ArrayList<Identified>(set);
   }
 }

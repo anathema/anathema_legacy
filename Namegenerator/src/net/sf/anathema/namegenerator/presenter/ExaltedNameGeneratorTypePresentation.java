@@ -1,13 +1,13 @@
 package net.sf.anathema.namegenerator.presenter;
 
-import javax.swing.JComponent;
+import net.sf.anathema.lib.util.Identified;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import javax.swing.JComponent;
 
 public class ExaltedNameGeneratorTypePresentation implements INameGeneratorTypePresentation {
 
   @Override
-  public JComponent initGeneratorTypePresentation(IIdentificate generatorType) {
+  public JComponent initGeneratorTypePresentation(Identified generatorType) {
     return null;
   }
 }

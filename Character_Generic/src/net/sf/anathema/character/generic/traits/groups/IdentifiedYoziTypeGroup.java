@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.traits.groups;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class IdentifiedYoziTypeGroup extends TraitTypeGroup implements IIdentifiedCasteTraitTypeGroup
 {
@@ -28,7 +28,7 @@ public class IdentifiedYoziTypeGroup extends TraitTypeGroup implements IIdentifi
 	}
 
 	@Override
-	public IIdentificate getGroupId() {
+	public Identified getGroupId() {
 		return type;
 	}
 }

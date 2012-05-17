@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.impl.model.charm.LearningCharmGroupArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -32,7 +32,7 @@ public class LearningCharmGroupArbitratorTest {
       }
 
       @Override
-      public boolean hasAttribute(IIdentificate attribute) {
+      public boolean hasAttribute(Identified attribute) {
         return !attribute.equals(NO_STYLE_ATTRIBUTE);
       }
     }});

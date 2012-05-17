@@ -9,7 +9,7 @@ import net.sf.anathema.character.mutations.template.MutationsTemplate;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class MutationContent extends AbstractSubBoxContent implements ListSubBox
     IMutationsModel model = getMutationModel();
     IQualitySelection<IMutation>[] mutations = model.getSelectedQualities();
     for (int index = 0; index < mutations.length; index++) {
-      IIdentificate mutation = mutations[index].getQuality();
+      Identified mutation = mutations[index].getQuality();
       printMutations.add(getResources().getString("Mutations.Mutation." + mutation.getId())); //$NON-NLS-1$
     }
     return printMutations;

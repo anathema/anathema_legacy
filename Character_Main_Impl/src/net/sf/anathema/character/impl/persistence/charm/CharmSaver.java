@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import org.dom4j.Element;
 
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
@@ -27,7 +27,7 @@ public class CharmSaver {
     return new SpecialCharmPersister(charmConfiguration.getSpecialCharms(), charmConfiguration.getCharmIdMap());
   }
 
-  public void saveCharms(IIdentificate type, Element charmsElement) {
+  public void saveCharms(Identified type, Element charmsElement) {
     for (ILearningCharmGroup group : charmConfiguration.getCharmGroups(type)) {
       if (group.hasLearnedCharms()) {
         saveCharmGroup(charmsElement, group, specialPersister, charmConfiguration);

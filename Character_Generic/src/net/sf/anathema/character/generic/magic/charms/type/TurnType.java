@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.magic.charms.type;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public enum TurnType implements IIdentificate {
+public enum TurnType implements Identified {
 
   Tick, LongTick, DramaticAction;
 

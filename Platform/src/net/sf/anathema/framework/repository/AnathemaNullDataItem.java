@@ -3,11 +3,11 @@ package net.sf.anathema.framework.repository;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class AnathemaNullDataItem extends AbstractAnathemaItem {
 
-  public AnathemaNullDataItem(IItemType type, IIdentificate identificate) {
+  public AnathemaNullDataItem(IItemType type, Identified identificate) {
     super(type, identificate);
   }
 

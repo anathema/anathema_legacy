@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.equipment.weapon;
 
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public interface IWeaponStats extends IEquipmentStats {
 
@@ -14,7 +14,7 @@ public interface IWeaponStats extends IEquipmentStats {
 
   int getSpeed();
 
-  IIdentificate[] getTags();
+  Identified[] getTags();
 
   ITraitType getTraitType();
 

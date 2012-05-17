@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.util;
 
-public class Identificate implements IIdentificate {
+public class Identificate implements Identified {
 
   private final String id;
 

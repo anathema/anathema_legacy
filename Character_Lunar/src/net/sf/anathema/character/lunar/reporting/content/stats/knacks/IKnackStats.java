@@ -2,12 +2,12 @@ package net.sf.anathema.character.lunar.reporting.content.stats.knacks;
 
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public interface IKnackStats extends IStats {
 
   @Override
-  IIdentificate getName();
+  Identified getName();
 
   String getGroupName(IResources resources);
 

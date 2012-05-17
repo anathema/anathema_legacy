@@ -1,15 +1,15 @@
 package net.sf.anathema.character.equipment.impl.character.model.print;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 
 public class EquipmentPrintNameFactory {
   private final IResources resources;
@@ -27,7 +27,7 @@ public class EquipmentPrintNameFactory {
       builder.append(" - "); //$NON-NLS-1$
       builder.append(stats.getName());
     }
-    if (Collections.frequency(getStatNames(item, new ArrayList<IIdentificate>()), stats.getName()) > 1) {
+    if (Collections.frequency(getStatNames(item, new ArrayList<Identified>()), stats.getName()) > 1) {
       builder.append(" ("); //$NON-NLS-1$
       builder.append(resources.getString(stats.getTraitType().getId()));
       builder.append(")"); //$NON-NLS-1$
@@ -36,10 +36,10 @@ public class EquipmentPrintNameFactory {
   }
 
   private boolean hasSingleOriginalStat(IEquipmentItem item) {
-    return getStatNames(item, new HashSet<IIdentificate>()).size() == 1;
+    return getStatNames(item, new HashSet<Identified>()).size() == 1;
   }
 
-  private Collection<IIdentificate> getStatNames(IEquipmentItem item, Collection<IIdentificate> names) {
+  private Collection<Identified> getStatNames(IEquipmentItem item, Collection<Identified> names) {
     for (IEquipmentStats stats : item.getStats()) {
       if (!stats.representsItemForUseInCombat()) {
         continue;

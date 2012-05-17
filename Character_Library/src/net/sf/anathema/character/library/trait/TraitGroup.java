@@ -5,7 +5,7 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class TraitGroup {
 
@@ -53,7 +53,7 @@ public class TraitGroup {
     return creationValueSum[0];
   }
 
-  public IIdentificate getGroupId() {
+  public Identified getGroupId() {
     return groupType.getGroupId();
   }
 }

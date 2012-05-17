@@ -3,8 +3,8 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,18 +13,18 @@ import java.util.Map;
 
 public class CharmCache implements ICharmCache {
 	
-  MultiEntryMap<IIdentificate, ICharm> charmSets = new MultiEntryMap<IIdentificate, ICharm>();
+  MultiEntryMap<Identified, ICharm> charmSets = new MultiEntryMap<Identified, ICharm>();
   Map<String, String> renameData = new HashMap<String, String>();
-  Map<IIdentificate, List<ISpecialCharm>> specialCharms = new HashMap<IIdentificate, List<ISpecialCharm>>();
+  Map<Identified, List<ISpecialCharm>> specialCharms = new HashMap<Identified, List<ISpecialCharm>>();
   
   @Override
-  public ICharm[] getCharms(IIdentificate type) {
+  public ICharm[] getCharms(Identified type) {
     type = new Identificate(type.getId());
     List<ICharm> charmList = charmSets.get(type);
     return charmList.toArray(new ICharm[charmList.size()]);
   }
 
-  public void addCharm(IIdentificate type, ICharm charm) {
+  public void addCharm(Identified type, ICharm charm) {
     type = new Identificate(type.getId());
     charmSets.replace(type, charm, charm);
   }
@@ -35,7 +35,7 @@ public class CharmCache implements ICharmCache {
 
   public Iterable<ICharm> getCharms() {
     List<ICharm> allCharms = new ArrayList<ICharm>();
-    for (IIdentificate type : charmSets.keySet()) {
+    for (Identified type : charmSets.keySet()) {
       for (ICharm charm : charmSets.get(type)) {
         allCharms.add(charm);
       }
@@ -43,8 +43,8 @@ public class CharmCache implements ICharmCache {
     return allCharms;
   }
 
-  private List<ISpecialCharm> getSpecialCharmList(IIdentificate type) {
-    Map<IIdentificate, List<ISpecialCharm>> map = specialCharms;
+  private List<ISpecialCharm> getSpecialCharmList(Identified type) {
+    Map<Identified, List<ISpecialCharm>> map = specialCharms;
     type = new Identificate(type.getId());
     List<ISpecialCharm> list = map.get(type);
     if (list == null) {
@@ -55,12 +55,12 @@ public class CharmCache implements ICharmCache {
   }
 
   @Override
-  public ISpecialCharm[] getSpecialCharmData(IIdentificate type) {
+  public ISpecialCharm[] getSpecialCharmData(Identified type) {
     List<ISpecialCharm> charmList = getSpecialCharmList(type);
     return charmList.toArray(new ISpecialCharm[charmList.size()]);
   }
 
-  public void addSpecialCharmData(IIdentificate type, List<ISpecialCharm> data) {
+  public void addSpecialCharmData(Identified type, List<ISpecialCharm> data) {
     if (data == null) {
       return;
     }
@@ -86,7 +86,7 @@ public class CharmCache implements ICharmCache {
   }
 
   @Override
-  public IIdentificate[] getCharmTypes() {
-	return charmSets.keySet().toArray(new IIdentificate[0]);
+  public Identified[] getCharmTypes() {
+	return charmSets.keySet().toArray(new Identified[0]);
   }
 }

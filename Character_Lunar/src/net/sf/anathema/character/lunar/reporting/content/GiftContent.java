@@ -8,7 +8,7 @@ import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class GiftContent extends AbstractSubBoxContent implements ListSubBoxCont
     return printGifts;
   }
 
-  private String getMutationText(IIdentificate mutation) {
+  private String getMutationText(Identified mutation) {
     return getString("Mutations.Mutation." + mutation.getId());
   }
 

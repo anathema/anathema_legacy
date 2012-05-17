@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.template.abilities;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
+
+import java.util.List;
 
 public class GroupedTraitType implements IGroupedTraitType {
 
@@ -12,7 +12,7 @@ public class GroupedTraitType implements IGroupedTraitType {
   private final String groupCasteId;
   private List<String> traitCasteIds;
 
-  public GroupedTraitType(ITraitType type, IIdentificate identificate, String casteId) {
+  public GroupedTraitType(ITraitType type, Identified identificate, String casteId) {
     this(type, identificate.getId(), casteId);
   }
 

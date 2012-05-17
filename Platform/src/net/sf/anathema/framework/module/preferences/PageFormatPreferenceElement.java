@@ -1,19 +1,19 @@
 package net.sf.anathema.framework.module.preferences;
 
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
+import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.view.EnumSelectCellRenderer;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static net.sf.anathema.framework.reporting.pdf.PageSize.Letter;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.PAGE_FORMAT_PREFERENCE;
+import static net.sf.anathema.framework.reporting.pdf.PageSize.Letter;
 
 @PreferenceElement
 public class PageFormatPreferenceElement implements IPreferencesElement {
@@ -73,7 +73,7 @@ public class PageFormatPreferenceElement implements IPreferencesElement {
   }
 
   @Override
-  public IIdentificate getCategory() {
+  public Identified getCategory() {
       return SYSTEM_CATEGORY;
   }
 }

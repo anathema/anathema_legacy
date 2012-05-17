@@ -1,8 +1,8 @@
 package net.sf.anathema.character.library.trait.favorable;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public enum FavorableState implements IIdentificate {
+public enum FavorableState implements Identified {
 
   Default {
     @Override

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 import org.junit.Test;
 
 import static net.sf.anathema.character.generic.impl.magic.charm.special.Element.Fire;
@@ -12,13 +12,13 @@ public class ElementTest {
 
   @Test
   public void matchesIdentificateWithSameName() throws Exception {
-    IIdentificate identificate = new Identificate(Fire.name());
+    Identified identificate = new Identificate(Fire.name());
     assertThat(Fire.matches(identificate), is(true));
   }
 
   @Test
   public void doesNotMatchDifferentIdentificate() throws Exception {
-    IIdentificate identificate = new Identificate("Dawn");
+    Identified identificate = new Identificate("Dawn");
     assertThat(Fire.matches(identificate), is(false));
   }
 }

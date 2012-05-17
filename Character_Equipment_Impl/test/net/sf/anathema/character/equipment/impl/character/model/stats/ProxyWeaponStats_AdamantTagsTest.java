@@ -4,8 +4,8 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 import org.junit.Test;
 import org.junit.matchers.JUnitMatchers;
 
@@ -26,31 +26,31 @@ public class ProxyWeaponStats_AdamantTagsTest {
   @Test
   public void addsPiercingToAAdamantWeapon() throws Exception {
     setOriginalTags();
-    List<IIdentificate> tags = getModifiedTags(Adamant);
-    assertThat(tags, JUnitMatchers.<IIdentificate>hasItem(Piercing));
+    List<Identified> tags = getModifiedTags(Adamant);
+    assertThat(tags, JUnitMatchers.<Identified>hasItem(Piercing));
   }
 
   @Test
   public void doesNotAddPiercingToAnotherMaterial() throws Exception {
     setOriginalTags();
-    List<IIdentificate> tags = getModifiedTags(Orichalcum);
+    List<Identified> tags = getModifiedTags(Orichalcum);
     assertThat(tags.size(), is(0));
   }
 
   @Test
   public void addsSpecialPiercingTagIfItIsAlreadyPiercing() throws Exception {
     setOriginalTags(Piercing);
-    List<IIdentificate> tags = getModifiedTags(Adamant);
-    assertThat(tags, JUnitMatchers.<IIdentificate>hasItem(new Identificate("AdamantPiercing")));
+    List<Identified> tags = getModifiedTags(Adamant);
+    assertThat(tags, JUnitMatchers.<Identified>hasItem(new Identificate("AdamantPiercing")));
   }
 
-  private List<IIdentificate> getModifiedTags(MagicalMaterial material) {
+  private List<Identified> getModifiedTags(MagicalMaterial material) {
     ModifierFactory modifiers = new NullModifierFactory();
     ProxyWeaponStats stats = new ProxyWeaponStats(original, new ReactiveBaseMaterial(material), modifiers);
     return Arrays.asList(stats.getTags());
   }
 
-  private void setOriginalTags(IIdentificate... tags) {
+  private void setOriginalTags(Identified... tags) {
     when(original.getTags()).thenReturn(tags);
   }
 }

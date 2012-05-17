@@ -2,12 +2,12 @@ package net.sf.anathema.lib.compare;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class I18nedIdentificateSorter<T extends IIdentificate> {
+public class I18nedIdentificateSorter<T extends Identified> {
 
   public T[] sortAscending(T[] originalGroup, T[] emptyArray, final IResources resources) {
     Preconditions.checkState(originalGroup.length == emptyArray.length, "Arrays must be of equal length"); //$NON-NLS-1$

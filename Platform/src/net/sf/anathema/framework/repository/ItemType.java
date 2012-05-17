@@ -2,9 +2,9 @@ package net.sf.anathema.framework.repository;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public class ItemType implements IItemType, IIdentificate {
+public class ItemType implements IItemType, Identified {
 
   private final String id;
   private final IRepositoryConfiguration repositoryConfiguration;

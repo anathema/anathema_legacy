@@ -18,7 +18,7 @@ import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
@@ -63,7 +63,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
 
   @Override
   public void initPresentation() {
-    IIdentificate[] allowedCircles = spellModel.getCircles();
+    Identified[] allowedCircles = spellModel.getCircles();
     view.initGui(allowedCircles);
     view.addMagicViewListener(new IMagicViewListener() {
       @Override

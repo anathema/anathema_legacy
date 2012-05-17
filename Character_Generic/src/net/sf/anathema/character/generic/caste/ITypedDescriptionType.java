@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.caste;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public interface ITypedDescriptionType extends IIdentificate {
+public interface ITypedDescriptionType extends Identified {
 
   // Nothing to do
 }

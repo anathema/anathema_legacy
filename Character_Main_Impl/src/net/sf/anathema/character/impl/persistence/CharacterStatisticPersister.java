@@ -16,8 +16,8 @@ import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersis
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -106,7 +106,7 @@ public class CharacterStatisticPersister {
     String typeId = ElementUtilities.getRequiredText(parent, TAG_CHARACTER_TYPE);
     ICharacterType characterType = CharacterType.getById(typeId);
     String subTypeValue = parent.element(TAG_CHARACTER_TYPE).attributeValue(ATTRIB_SUB_TYPE);
-    IIdentificate subtype = subTypeValue == null ? TemplateType.DEFAULT_SUB_TYPE : new Identificate(subTypeValue);
+    Identified subtype = subTypeValue == null ? TemplateType.DEFAULT_SUB_TYPE : new Identificate(subTypeValue);
     return new TemplateType(characterType, subtype);
   }
 }

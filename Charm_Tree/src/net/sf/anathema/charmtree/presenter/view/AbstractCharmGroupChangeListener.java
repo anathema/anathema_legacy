@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.graph.nodes.IRegularNode;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
 import java.util.LinkedHashSet;
@@ -18,7 +18,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   private final CharmTreeRenderer charmTreeRenderer;
   private final CharmFilterSet charmFilterSet;
   private ICharmGroup currentGroup;
-  private IIdentificate currentType;
+  private Identified currentType;
   private final CharmDisplayPropertiesMap displayPropertiesMap;
 
   public AbstractCharmGroupChangeListener(ICharmGroupArbitrator arbitrator, CharmFilterSet charmFilterSet,
@@ -32,7 +32,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   @Override
   public final void valueChanged(Object cascade, Object type) {
-    loadCharmTree((ICharmGroup) cascade, (IIdentificate) type);
+    loadCharmTree((ICharmGroup) cascade, (Identified) type);
   }
 
   private Set<ICharm> getDisplayCharms(ICharmGroup charmGroup) {
@@ -59,7 +59,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return true;
   }
 
-  private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type) {
+  private void loadCharmTree(ICharmGroup charmGroup, Identified type) {
 		boolean resetView = !(currentGroup != null && currentGroup.equals(charmGroup) && currentType != null && currentType.equals(type) );
     this.currentGroup = charmGroup;
     this.currentType = type;
@@ -87,7 +87,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return currentGroup;
   }
 
-  protected abstract void modifyCharmVisuals(IIdentificate type);
+  protected abstract void modifyCharmVisuals(Identified type);
 
   @Override
   public void reselect() {

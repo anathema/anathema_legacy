@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.health;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public enum HealthType implements IIdentificate {
+public enum HealthType implements Identified {
   Bashing {
     @Override
     public void accept(IHealthTypeVisitor visitor) {

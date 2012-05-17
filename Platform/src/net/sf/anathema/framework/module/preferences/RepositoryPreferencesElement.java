@@ -13,8 +13,8 @@ import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -221,7 +221,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   }
 
   @Override
-  public IIdentificate getCategory() {
+  public Identified getCategory() {
     return new Identificate("Repository");
   }
 

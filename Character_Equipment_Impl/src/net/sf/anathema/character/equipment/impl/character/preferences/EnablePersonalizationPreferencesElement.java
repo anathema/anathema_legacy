@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.preferences;
 
 import net.sf.anathema.framework.module.preferences.AbstractCheckBoxPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.character.equipment.character.preference.IEquipmentPreferencesConstants.ENABLE_PERSONALIZATION;
 
@@ -38,7 +38,7 @@ public class EnablePersonalizationPreferencesElement extends AbstractCheckBoxPre
   }
 
   @Override
-  public IIdentificate getCategory() {
+  public Identified getCategory() {
     return EQUIPMENT_CATEGORY;
   }
 }

@@ -4,7 +4,7 @@ import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Action;
@@ -177,15 +177,15 @@ public class MagicLearnView implements IMagicLearnView {
   }
 
   @Override
-  public void addMagicOptions(IIdentificate[] magics, Comparator<IIdentificate> comparator) {
+  public void addMagicOptions(Identified[] magics, Comparator<Identified> comparator) {
     DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
-    for (IIdentificate spell : magics) {
+    for (Identified spell : magics) {
       boolean isInserted = false;
       for (int index = 0; index < listModel.getSize(); index++) {
         if (isInserted) {
           break;
         }
-        IIdentificate magicOption = (IIdentificate) listModel.get(index);
+        Identified magicOption = (Identified) listModel.get(index);
         if (comparator.compare(spell, magicOption) < 0) {
           listModel.add(index, spell);
           isInserted = true;

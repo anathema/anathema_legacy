@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.magic;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +15,7 @@ public class MartialArtsUtilitiesTest {
   public void testIsMartialArtsCharm() {
     ICharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
-      public boolean hasAttribute(IIdentificate attribute) {
+      public boolean hasAttribute(Identified attribute) {
         return attribute.getId().equals("MartialArts"); //$NON-NLS-1$
       }
     };
@@ -26,7 +26,7 @@ public class MartialArtsUtilitiesTest {
   public void testIsFormCharm() throws Exception {
     ICharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
-      public boolean hasAttribute(IIdentificate attribute) {
+      public boolean hasAttribute(Identified attribute) {
         return attribute.getId().equals("Form"); //$NON-NLS-1$
       }
     };
@@ -37,7 +37,7 @@ public class MartialArtsUtilitiesTest {
   public void testGetMartialArtsLevel() throws Exception {
     DummyCharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
-      public boolean hasAttribute(IIdentificate attribute) {
+      public boolean hasAttribute(Identified attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     };
@@ -48,7 +48,7 @@ public class MartialArtsUtilitiesTest {
   public void testHasMartialArtsLevel() throws Exception {
     DummyCharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
-      public boolean hasAttribute(IIdentificate attribute) {
+      public boolean hasAttribute(Identified attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     };

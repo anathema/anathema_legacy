@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.presenter.magic.spells.SpellViewProperties;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JButton;
@@ -50,13 +50,13 @@ public class SpellView implements ISpellView {
   }
 
   @Override
-  public void initGui(IIdentificate[] circles) {
+  public void initGui(Identified[] circles) {
     JComponent selectionPanel = createSelectionPanel(circles);
     IGridDialogLayoutData data = GridDialogLayoutData.FILL_BOTH;
     content.add(selectionPanel, data);
   }
 
-  private JPanel createSelectionPanel(IIdentificate[] circles) {
+  private JPanel createSelectionPanel(Identified[] circles) {
     JPanel panel = createFilterBox(properties.getCircleLabel(), circles, properties.getCircleSelectionRenderer());
     magicLearnView.addAdditionalOptionsPanel(panel);
     magicLearnView.init(properties);
@@ -117,7 +117,7 @@ public class SpellView implements ISpellView {
   }
 
   @Override
-  public void addMagicOptions(IIdentificate[] magics, Comparator<IIdentificate> comparator) {
+  public void addMagicOptions(Identified[] magics, Comparator<Identified> comparator) {
     magicLearnView.addMagicOptions(magics, comparator);
   }
 

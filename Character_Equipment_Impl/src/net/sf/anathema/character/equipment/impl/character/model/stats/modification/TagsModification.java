@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.impl.character.model.stats.modificat
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.character.equipment.impl.creation.model.WeaponTag.Piercing;
 import static net.sf.anathema.lib.collection.ArrayUtilities.containsValue;
@@ -16,7 +16,7 @@ public class TagsModification {
   }
 
 
-  public IIdentificate[] getModifiedValue(IIdentificate[] tags) {
+  public Identified[] getModifiedValue(Identified[] tags) {
     if (!material.isAdamantBased()) {
       return tags;
     }
@@ -26,16 +26,16 @@ public class TagsModification {
     return addAdamantPiercing(tags);
   }
 
-  private IIdentificate[] addAdamantPiercing(IIdentificate[] tags) {
+  private Identified[] addAdamantPiercing(Identified[] tags) {
     return addTag(tags, new Identificate("AdamantPiercing"));
   }
 
-  private IIdentificate[] addPiercing(IIdentificate[] tags) {
+  private Identified[] addPiercing(Identified[] tags) {
     WeaponTag newTag = Piercing;
     return addTag(tags, newTag);
   }
 
-  private IIdentificate[] addTag(IIdentificate[] tags, IIdentificate newTag) {
-    return Lists.asList(newTag, tags).toArray(new IIdentificate[tags.length + 1]);
+  private Identified[] addTag(Identified[] tags, Identified newTag) {
+    return Lists.asList(newTag, tags).toArray(new Identified[tags.length + 1]);
   }
 }

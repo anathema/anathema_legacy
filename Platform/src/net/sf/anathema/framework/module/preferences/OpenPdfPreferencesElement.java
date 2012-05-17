@@ -3,7 +3,7 @@ package net.sf.anathema.framework.module.preferences;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.OPEN_PDF_PREFERENCE;
 import static net.sf.anathema.framework.reporting.AbstractPrintAction.isAutoOpenSupported;
@@ -50,7 +50,7 @@ public class OpenPdfPreferencesElement extends AbstractCheckBoxPreferencesElemen
   }
 
   @Override
-  public IIdentificate getCategory() {
+  public Identified getCategory() {
     return SYSTEM_CATEGORY;
   }
 }
