@@ -729,7 +729,6 @@
 		<prerequisite>
 			<essence id="Essence" value="2"/>
 			<trait id="Thrown" value="2"/>
-			<charmReference id="Solar.ReturningWeaponConcentration"/>
 		</prerequisite>
 		<cost>
 			<essence cost="" text="(1m)"/>
