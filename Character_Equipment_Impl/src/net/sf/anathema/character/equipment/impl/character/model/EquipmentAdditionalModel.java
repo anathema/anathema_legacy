@@ -194,6 +194,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
       List<IEquipmentStatsOption> optionList = optionsTable.get(fromItem, fromStats);
       optionsTable.remove(fromItem, fromStats);
       IEquipmentStats toStats = toItem.getStat(fromStats.getId());
+      toItem.setPrintEnabled(toStats, fromItem.isPrintEnabled(fromStats));
       if (toStats != null && optionList != null) {
         optionsTable.put(toItem, toStats, optionList);
         transferred = true;
