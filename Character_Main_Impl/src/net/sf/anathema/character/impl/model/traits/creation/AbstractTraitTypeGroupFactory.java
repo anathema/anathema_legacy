@@ -1,10 +1,5 @@
 package net.sf.anathema.character.impl.model.traits.creation;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
@@ -12,11 +7,16 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractTraitTypeGroupFactory {
 
-  protected abstract IIdentificate getGroupIdentifier(ICasteCollection casteCollection, String groupId);
+  protected abstract Identified getGroupIdentifier(ICasteCollection casteCollection, String groupId);
 
   public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(
       ICasteCollection casteCollection,
@@ -74,7 +74,7 @@ public abstract class AbstractTraitTypeGroupFactory {
       List<ITraitType> traitTypes,
       ICasteType[][] traitCasteTypes) {
     ICasteType casteType = casteCollection.containsCasteType(casteId) ? casteCollection.getById(casteId) : null;
-    IIdentificate groupIdentifier = getGroupIdentifier(casteCollection, groupId);
+    Identified groupIdentifier = getGroupIdentifier(casteCollection, groupId);
     return new IdentifiedCasteTraitTypeGroup(
         traitTypes.toArray(new ITraitType[traitTypes.size()]),
         groupIdentifier,

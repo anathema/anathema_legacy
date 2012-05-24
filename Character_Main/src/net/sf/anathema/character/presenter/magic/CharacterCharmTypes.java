@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter.magic;
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +17,15 @@ public class CharacterCharmTypes extends AbstractCharmTypes {
   }
 
   @Override
-  protected List<IIdentificate> getCurrentCharacterTypes() {
+  protected List<Identified> getCurrentCharacterTypes() {
     boolean alienCharms = model.isAllowedAlienCharms();
     ICharacterType[] characterTypes = model.getCharmConfiguration().getCharacterTypes(alienCharms);
-    return Lists.<IIdentificate>newArrayList(characterTypes);
+    return Lists.<Identified>newArrayList(characterTypes);
   }
 
   @Override
-  protected List<IIdentificate> getAdditionalCharmTypes() {
-    List<IIdentificate> typeIds = new ArrayList<IIdentificate>();
+  protected List<Identified> getAdditionalCharmTypes() {
+    List<Identified> typeIds = new ArrayList<Identified>();
     if (model.hasUniqueCharmType()) {
       IUniqueCharmType uniqueType = model.getUniqueCharmType();
       typeIds.add(uniqueType.getId());

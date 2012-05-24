@@ -1,11 +1,11 @@
 package net.sf.anathema.character.mutations.view;
 
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicTooltipStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.mutations.model.IMutationsModel;
+import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -71,15 +71,14 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
       builder.append(getResources().getString(createSourceBookKey(source)));
       Integer page = mutation.getPage();
       if (page != null) {
-        builder.append(IMagicTooltipStringBuilder.CommaSpace);
+        builder.append(TooltipBuilder.CommaSpace);
         builder.append(getResources().getString("CharmTreeView.ToolTip.Page")); //$NON-NLS-1$
-        builder.append(IMagicTooltipStringBuilder.Space);
+        builder.append(TooltipBuilder.Space);
         builder.append(page);
       }
       return builder.toString();
     }
     return null;
-
   }
 
   private String createSourceBookKey(IExaltedSourceBook source) {

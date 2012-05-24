@@ -31,8 +31,8 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -344,12 +344,12 @@ public class Charm extends Identificate implements ICharm {
   }
 
   @Override
-  public boolean hasAttribute(IIdentificate attribute) {
+  public boolean hasAttribute(Identified attribute) {
     return charmAttributes.contains(attribute);
   }
 
   @Override
-  public String getAttributeValue(IIdentificate attribute) {
+  public String getAttributeValue(Identified attribute) {
     int index = charmAttributes.indexOf(attribute);
     if (index < 0) {
       return null;

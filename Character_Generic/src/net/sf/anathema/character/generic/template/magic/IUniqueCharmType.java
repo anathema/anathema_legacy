@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.template.magic;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public interface IUniqueCharmType {
-  IIdentificate getId();
+  Identified getId();
 
   String getLabel();
 

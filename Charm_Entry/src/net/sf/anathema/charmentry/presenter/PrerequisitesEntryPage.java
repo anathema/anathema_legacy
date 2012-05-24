@@ -19,7 +19,7 @@ import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class PrerequisitesEntryPage extends AbstractAnathemaWizardPage {
 
@@ -78,14 +78,14 @@ public class PrerequisitesEntryPage extends AbstractAnathemaWizardPage {
   }
 
   private void initPrimaryPrerequistePresentation() {
-    final ISelectableIntValueView<IIdentificate> primaryView = view.addSelectablePrerequisiteView(
+    final ISelectableIntValueView<Identified> primaryView = view.addSelectablePrerequisiteView(
         properties.getPrimaryPrerequisiteLabel(),
         getPageModel().getPrimaryPrerequisiteTypes(),
         1,
         EssenceTemplate.SYSTEM_ESSENCE_MAX);
-    primaryView.addSelectionChangedListener(new ISelectionIntValueChangedListener<IIdentificate>() {
+    primaryView.addSelectionChangedListener(new ISelectionIntValueChangedListener<Identified>() {
       @Override
-      public void valueChanged(IIdentificate type, int value) {
+      public void valueChanged(Identified type, int value) {
         getPageModel().setPrimaryPrerequisite((ITraitType) type, value);
       }
     });

@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats {
 
@@ -17,7 +17,7 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
   private final int minimumDamage;
   private final HealthType damageType;
   private final int range;
-  private final IIdentificate name;
+  private final Identified name;
   private final int rate;
   private final boolean isNoDamage;
 
@@ -92,8 +92,8 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
   }
 
   @Override
-  public IIdentificate[] getTags() {
-    return new IIdentificate[0];
+  public Identified[] getTags() {
+    return new Identified[0];
   }
 
   @Override
@@ -112,7 +112,7 @@ public class DemoRangeWeapon extends AbstractCombatStats implements IWeaponStats
   }
 
   @Override
-  public IIdentificate getName() {
+  public Identified getName() {
     return name;
   }
 

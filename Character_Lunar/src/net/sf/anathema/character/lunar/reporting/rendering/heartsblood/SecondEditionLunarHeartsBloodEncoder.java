@@ -19,8 +19,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
     for (final IAnimalForm form : model.getEntries()) {
       stats.add(new IHeartsBloodStats() {
         @Override
-        public IIdentificate getName() {
+        public Identified getName() {
           return new Identificate(form.getName());
         }
 

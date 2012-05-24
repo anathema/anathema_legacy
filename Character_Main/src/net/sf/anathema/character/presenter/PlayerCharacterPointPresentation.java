@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.ICharacterView;
@@ -10,11 +10,10 @@ public class PlayerCharacterPointPresentation implements PointPresentationStrate
   private OverviewPresenter overviewPresenter;
   private ExperiencePointPresenter experiencePointPresenter;
 
-  public PlayerCharacterPointPresentation(IResources resources, ICharacterStatistics statistics, ICharacterView view,
-                                          IBonusPointManagement bonusPoints,
+  public PlayerCharacterPointPresentation(IResources resources, ICharacter character, ICharacterView view, IBonusPointManagement bonusPoints,
                                           IExperiencePointManagement experiencePoints) {
-    this.overviewPresenter = new OverviewPresenter(resources, statistics, view, bonusPoints, experiencePoints);
-    this.experiencePointPresenter = new ExperiencePointPresenter(resources, statistics, view);
+    this.overviewPresenter = new OverviewPresenter(resources, character, view, bonusPoints, experiencePoints);
+    this.experiencePointPresenter = new ExperiencePointPresenter(resources, character, view);
   }
 
   @Override

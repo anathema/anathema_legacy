@@ -4,13 +4,13 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.swing.IDisposable;
 
-public class ViewTabContent implements IViewContent {
+public class ViewTabContentView implements ContentView {
 
   private final IView contentView;
   private final ContentProperties tabProperties;
 
-  public ViewTabContent(IView contnetView, ContentProperties tabProperties) {
-    this.contentView = contnetView;
+  public ViewTabContentView(IView view, ContentProperties tabProperties) {
+    this.contentView = view;
     this.tabProperties = tabProperties;
   }
 

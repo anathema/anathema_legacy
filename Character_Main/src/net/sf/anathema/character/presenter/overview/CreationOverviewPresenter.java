@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.lib.gui.Presenter;
@@ -22,19 +22,18 @@ public class CreationOverviewPresenter implements Presenter {
 
   private final IResources resources;
   private final IOverviewView view;
-  private final ICharacterStatistics statistics;
+  private final ICharacter character;
   private final IBonusPointManagement management;
   private final ICharacterTemplate template;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
   private final Map<String, IOverviewCategory> categoriesById = new LinkedHashMap<String, IOverviewCategory>();
 
-  public CreationOverviewPresenter(IResources resources, ICharacterStatistics statistics, IOverviewView overviewView,
-                                   IBonusPointManagement management) {
+  public CreationOverviewPresenter(IResources resources, ICharacter character, IOverviewView overviewView, IBonusPointManagement management) {
     this.management = management;
     this.resources = resources;
-    this.statistics = statistics;
-    this.template = statistics.getCharacterTemplate();
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
+    this.character = character;
+    this.template = character.getCharacterTemplate();
+    character.getCharacterContext().getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void characterChanged() {
         updateOverview();
@@ -58,24 +57,22 @@ public class CreationOverviewPresenter implements Presenter {
 
         @Override
         public void visitIntegerValueModel(IValueModel<Integer> visitedModel) {
-          IValueView<Integer> valueView = categoriesById.get(visitedModel.getCategoryId()).addIntegerValueView(
-                  getLabelString(visitedModel), 2);
+          IValueView<Integer> valueView = categoriesById.get(visitedModel.getCategoryId()).addIntegerValueView(getLabelString(visitedModel), 2);
           presenters.add(new ValueSubPresenter(visitedModel, valueView));
         }
 
         @Override
         public void visitAlotmentModel(ISpendingModel visitedModel) {
-          ILabelledAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId()).addAlotmentView(
-                  getLabelString(visitedModel), 2);
+          ILabelledAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId()).addAlotmentView(getLabelString(visitedModel), 2);
           presenters.add(new AlotmentSubPresenter(visitedModel, valueView));
         }
 
         @Override
         public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel) {
           if (visitedModel.isExtensionRequired()) {
-            IAdditionalAlotmentView valueView = categoriesById.get(
-                    visitedModel.getCategoryId()).addAdditionalAlotmentView(getLabelString(visitedModel),
-                    visitedModel.getRequiredSize());
+            IAdditionalAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId())
+                                                              .addAdditionalAlotmentView(getLabelString(visitedModel),
+                                                                      visitedModel.getRequiredSize());
             presenters.add(new AdditionalAlotmentSubPresenter(visitedModel, valueView));
           } else {
             visitAlotmentModel(visitedModel);
@@ -105,8 +102,7 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private String getLabelString(IOverviewModel visitedModel) {
-    return getString(
-            "Overview.Creation." + visitedModel.getCategoryId() + "." + visitedModel.getId()); //$NON-NLS-1$ //$NON-NLS-2$
+    return getString("Overview.Creation." + visitedModel.getCategoryId() + "." + visitedModel.getId()); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private String getString(String string) {
@@ -114,11 +110,9 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private void initConcept() {
-    IOverviewCategory category = view.addOverviewCategory(
-            getString("Overview.Creation.Category.Concept")); //$NON-NLS-1$
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Creation.Category.Concept")); //$NON-NLS-1$
     if (template.getCasteCollection().getAllCasteTypes(template.getTemplateType()).length > 0) {
-      IValueView<String> casteView = category.addStringValueView(
-              getString(template.getPresentationProperties().getCasteLabelResource()));
+      IValueView<String> casteView = category.addStringValueView(getString(template.getPresentationProperties().getCasteLabelResource()));
       IValueModel<String> casteModel = new IValueModel<String>() {
         @Override
         public String getValue() {
@@ -169,14 +163,14 @@ public class CreationOverviewPresenter implements Presenter {
   }
 
   private String getWillpowerRegainingConceptValue() {
-    if (statistics.getCharacterConcept().getWillpowerRegainingConcept().getDescription().isEmpty()) {
+    if (character.getCharacterConcept().getWillpowerRegainingConcept().getDescription().isEmpty()) {
       return "";
     }
     return "Overview.Creation.Concept.Motivation.Selected"; //$NON-NLS-1$
   }
 
   private String getCasteValueResourceKey() {
-    ICasteType casteType = statistics.getCharacterConcept().getCaste().getType();
+    ICasteType casteType = character.getCharacterConcept().getCaste().getType();
     if (casteType.equals(ICasteType.NULL_CASTE_TYPE)) {
       return "";
     }

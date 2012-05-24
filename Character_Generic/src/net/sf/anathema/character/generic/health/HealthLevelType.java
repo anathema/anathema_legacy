@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.health;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public enum HealthLevelType implements IIdentificate {
+public enum HealthLevelType implements Identified {
 
   ZERO("0", 0) { //$NON-NLS-1$
     @Override

@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.lang.ArrayUtilities;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
 
@@ -43,7 +43,7 @@ public class CharmFinder {
     return findCharm(MARTIAL_ARTS);
   }
 
-  private ICharm findCharm(IIdentificate treeType) {
+  private ICharm findCharm(Identified treeType) {
     ICharm[] charms = cache.getCharms(treeType);
     return ArrayUtilities.find(new Predicate<ICharm>() {
       @Override

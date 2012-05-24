@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.magic;
 
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.Set;
 
@@ -24,9 +24,9 @@ public interface ICharm extends ICharmData, IMagic {
   
   Set<String> getRenderingPrerequisiteLabels();
 
-  boolean hasAttribute(IIdentificate attribute);
+  boolean hasAttribute(Identified attribute);
   
-  String getAttributeValue(IIdentificate attribute);
+  String getAttributeValue(Identified attribute);
 
   boolean hasChildren();
 }

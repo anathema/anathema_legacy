@@ -1,5 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
+import net.sf.anathema.character.generic.data.IExtensibleDataSet;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -12,10 +14,8 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.resources.ResourceFile;
-import net.sf.anathema.character.generic.data.IExtensibleDataSet;
-import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
@@ -33,8 +33,8 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   //matches stuff like data/charms/solar/Charms_Solar_SecondEdition_Occult.xml
   //the pattern is data/charms/REST_OF_PATH/Charms_TYPE_EDITION_ANYTHING.xml
   private static final String Charm_Data_Extraction_Pattern = ".*/Charms_(.*?)_(.*?)(?:_.*)?\\.xml";
-  private final Map<IIdentificate, List<Document>> charmFileTable = new HashMap<IIdentificate, List<Document>>();
-  private final IIdentificateRegistry<IIdentificate> registry = new IdentificateRegistry<IIdentificate>();
+  private final Map<Identified, List<Document>> charmFileTable = new HashMap<Identified, List<Document>>();
+  private final IIdentificateRegistry<Identified> registry = new IdentificateRegistry<Identified>();
   private final CharmSetBuilder setBuilder = new CharmSetBuilder();
   private final GenericCharmSetBuilder genericBuilder = new GenericCharmSetBuilder();
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
@@ -58,7 +58,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     Matcher matcher = Pattern.compile(Charm_Data_Extraction_Pattern).matcher(resource.getFileName());
     matcher.matches();
     String typeString = matcher.group(1);
-    IIdentificate type = new Identificate(typeString);
+    Identified type = new Identificate(typeString);
     if (!registry.idRegistered(typeString)) {
       registry.add(type);
     }
@@ -76,7 +76,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 
   @Override
   public IExtensibleDataSet build() throws PersistenceException {
-    for (IIdentificate type : registry.getAll()) {
+    for (Identified type : registry.getAll()) {
       buildStandardCharms(type);
       buildGenericCharms(type);
       buildCharmAlternatives(type);
@@ -88,11 +88,11 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     return charmCache;
   }
 
-  private void buildStandardCharms(IIdentificate type) throws PersistenceException {
+  private void buildStandardCharms(Identified type) throws PersistenceException {
     buildCharms(type, setBuilder);
   }
 
-  private void buildGenericCharms(IIdentificate type) throws PersistenceException {
+  private void buildGenericCharms(Identified type) throws PersistenceException {
     try {
       ICharacterType characterType = CharacterType.getById(type.getId());
       ITraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypes();
@@ -103,7 +103,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildCharmAlternatives(IIdentificate type) {
+  private void buildCharmAlternatives(Identified type) {
     if (charmFileTable.containsKey(type)) {
       for (Document charmDocument : charmFileTable.get(type)) {
         alternativeBuilder.buildAlternatives(charmDocument, charmCache.getCharms(type));
@@ -111,7 +111,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildCharmMerges(IIdentificate type) {
+  private void buildCharmMerges(Identified type) {
     if (charmFileTable.containsKey(type)) {
       for (Document charmDocument : charmFileTable.get(type)) {
         mergedBuilder.buildMerges(charmDocument, charmCache.getCharms(type));
@@ -119,7 +119,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildCharmRenames(IIdentificate type) {
+  private void buildCharmRenames(Identified type) {
     if (charmFileTable.containsKey(type)) {
       for (Document charmDocument : charmFileTable.get(type)) {
         charmCache.addCharmRenames(renameBuilder.buildRenames(charmDocument));
@@ -127,7 +127,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildCharms(IIdentificate type, ICharmSetBuilder builder) throws PersistenceException {
+  private void buildCharms(Identified type, ICharmSetBuilder builder) throws PersistenceException {
     if (charmFileTable.containsKey(type)) {
       List<Document> documents = charmFileTable.get(type);
       for (Document charmDocument : documents) {
@@ -136,7 +136,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
   }
 
-  private void buildTypeCharms(IIdentificate type, Document charmDocument,
+  private void buildTypeCharms(Identified type, Document charmDocument,
                                ICharmSetBuilder builder) throws PersistenceException {
     List<ISpecialCharm> specialCharms = new ArrayList<ISpecialCharm>();
     ICharm[] charmArray = builder.buildCharms(charmDocument, specialCharms);

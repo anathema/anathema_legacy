@@ -1,12 +1,11 @@
 package net.sf.anathema.framework.presenter.view;
 
-import java.awt.Component;
+import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
-
-import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import java.awt.Component;
 
 public class IdentificateListCellRenderer extends DefaultListCellRenderer {
 
@@ -24,8 +23,8 @@ public class IdentificateListCellRenderer extends DefaultListCellRenderer {
       int index,
       boolean isSelected,
       boolean cellHasFocus) {
-    if (value instanceof IIdentificate) {
-      String printName = resources.getString(((IIdentificate) value).getId());
+    if (value instanceof Identified) {
+      String printName = resources.getString(((Identified) value).getId());
       return super.getListCellRendererComponent(list, printName, index, isSelected, cellHasFocus);
     }
     return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);

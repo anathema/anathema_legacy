@@ -1,19 +1,18 @@
 package net.sf.anathema.character.generic.impl.additional;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.impl.util.AnathemaExpressionParameter;
-import net.sf.anathema.character.generic.impl.util.AnathemaExpressionSyntax;
-import net.sf.anathema.lib.util.IIdentificate;
-
 import com.eteks.parser.CompilationException;
 import com.eteks.parser.CompiledExpression;
 import com.eteks.parser.ExpressionParser;
 import com.eteks.parser.IntegerInterpreter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.impl.util.AnathemaExpressionParameter;
+import net.sf.anathema.character.generic.impl.util.AnathemaExpressionSyntax;
+import net.sf.anathema.lib.util.Identified;
 
-public class ComplexAdditionalEssencePool implements IIdentificate {
+import java.util.HashMap;
+import java.util.Map;
+
+public class ComplexAdditionalEssencePool implements Identified {
 
   private final String id;
   private final CompiledExpression expression;

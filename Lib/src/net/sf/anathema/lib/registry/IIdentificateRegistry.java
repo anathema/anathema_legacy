@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.registry;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public interface IIdentificateRegistry<E extends IIdentificate> extends ICollectionRegistry<E> {
+public interface IIdentificateRegistry<E extends Identified> extends ICollectionRegistry<E> {
 
   boolean idRegistered(String id);
 

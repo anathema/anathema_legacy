@@ -2,14 +2,14 @@ package net.sf.anathema.character.generic.traits.groups;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class IdentifiedCasteTraitTypeGroup extends IdentifiedTraitTypeGroup implements IIdentifiedCasteTraitTypeGroup {
 
   private final ICasteType groupCasteType;
   private final ICasteType[][] traitCasteTypes;
 
-  public IdentifiedCasteTraitTypeGroup(ITraitType[] traitTypes, IIdentificate groupId, ICasteType groupCasteTypes, ICasteType[][] traitCasteTypes) {
+  public IdentifiedCasteTraitTypeGroup(ITraitType[] traitTypes, Identified groupId, ICasteType groupCasteTypes, ICasteType[][] traitCasteTypes) {
     super(traitTypes, groupId);
     this.groupCasteType = groupCasteTypes;
     this.traitCasteTypes = traitCasteTypes;

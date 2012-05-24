@@ -4,11 +4,13 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSou
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicTooltipStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
+import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MagicSourceStringBuilder<T extends IMagic>
-        implements IMagicSourceStringBuilder<T>, IMagicTooltipStringBuilder {
+import static net.sf.anathema.lib.lang.StringUtilities.createFixedWidthParagraph;
+
+public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceStringBuilder<T>, IMagicTooltipStringBuilder {
 
   private final IResources resources;
 
@@ -24,12 +26,11 @@ public class MagicSourceStringBuilder<T extends IMagic>
   @Override
   public void buildStringForMagic(StringBuilder builder, IMagic magic, Object specialDetails) {
     String descriptionString = resources.getString("CharmTreeView.ToolTip.Source"); //$NON-NLS-1$
-    descriptionString += ColonSpace;
+    descriptionString += TooltipBuilder.ColonSpace;
     descriptionString += createSourceString((T) magic);
-    descriptionString =
-            StringUtilities.createFixedWidthParagraph(descriptionString, HtmlLineBreak, DEFAULT_TOOLTIP_WIDTH);
+    descriptionString = createFixedWidthParagraph(descriptionString, TooltipBuilder.HtmlLineBreak, TooltipBuilder.DEFAULT_TOOLTIP_WIDTH);
     builder.append(descriptionString);
-    builder.append(HtmlLineBreak);
+    builder.append(TooltipBuilder.HtmlLineBreak);
   }
 
   @Override
@@ -41,9 +42,9 @@ public class MagicSourceStringBuilder<T extends IMagic>
       builder.append(resources.getString(createSourceBookKey(sources[i])));
       String pageKey = createPageKey(t.getId(), sources[i]);
       if (resources.supportsKey(pageKey)) {
-        builder.append(IMagicTooltipStringBuilder.CommaSpace);
+        builder.append(TooltipBuilder.CommaSpace);
         builder.append(resources.getString("CharmTreeView.ToolTip.Page")); //$NON-NLS-1$
-        builder.append(IMagicTooltipStringBuilder.Space);
+        builder.append(TooltipBuilder.Space);
         builder.append(resources.getString(pageKey));
       }
       sourceStrings[i] = builder.toString();
@@ -76,7 +77,7 @@ public class MagicSourceStringBuilder<T extends IMagic>
     builder.append(resources.getString(createSourceBookKey(source) + ".Short")); //$NON-NLS-1$
     String pageKey = createPageKey(magicId, source);
     if (resources.supportsKey(pageKey)) {
-      builder.append(IMagicTooltipStringBuilder.CommaSpace);
+      builder.append(TooltipBuilder.CommaSpace);
       builder.append(resources.getString(pageKey));
     }
     return builder.toString();

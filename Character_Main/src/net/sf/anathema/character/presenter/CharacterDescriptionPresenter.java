@@ -5,8 +5,8 @@ import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.presenter.description.NameGeneratorAction;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.framework.presenter.view.IViewContent;
-import net.sf.anathema.framework.presenter.view.ViewTabContent;
+import net.sf.anathema.framework.presenter.view.ContentView;
+import net.sf.anathema.framework.presenter.view.ViewTabContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -70,10 +70,10 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
   }
 
   @Override
-  public IViewContent getTabContent() {
+  public ContentView getTabContent() {
     String title = resources.getString("CardView.CharacterDescription.Title");//$NON-NLS-1$
     ContentProperties tabProperties = new ContentProperties(title).needsScrollBar();
-    return new ViewTabContent(descriptionView, tabProperties);
+    return new ViewTabContentView(descriptionView, tabProperties);
   }
   
   private void addBlankLine() {

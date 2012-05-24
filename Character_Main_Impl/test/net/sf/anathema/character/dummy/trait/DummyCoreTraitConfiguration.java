@@ -19,9 +19,9 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -102,7 +102,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   }
 
   @Override
-  public IIdentificate getAbilityGroupId(AbilityType abilityType) {
+  public Identified getAbilityGroupId(AbilityType abilityType) {
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
       if (group.contains(abilityType)) {
         return group.getGroupId();

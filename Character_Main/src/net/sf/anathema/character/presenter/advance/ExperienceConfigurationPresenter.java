@@ -1,22 +1,21 @@
 package net.sf.anathema.character.presenter.advance;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableModel;
-
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
-import net.sf.anathema.framework.presenter.view.IViewContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewContent;
+import net.sf.anathema.framework.presenter.view.ContentView;
+import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ExperienceConfigurationPresenter implements IContentPresenter {
 
@@ -91,9 +90,9 @@ public class ExperienceConfigurationPresenter implements IContentPresenter {
   }
 
   @Override
-  public IViewContent getTabContent() {
+  public ContentView getTabContent() {
     String title = resources.getString("CardView.ExperienceConfiguration.Title");//$NON-NLS-1$
-    return new SimpleViewContent(new ContentProperties(title).needsScrollBar(), experienceView);
+    return new SimpleViewContentView(new ContentProperties(title).needsScrollBar(), experienceView);
   }
 
   private void initTableModel() {

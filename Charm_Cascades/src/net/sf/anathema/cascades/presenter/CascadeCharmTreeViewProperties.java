@@ -8,13 +8,13 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.NullSpecialCharm;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.awt.Cursor;
 
 public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewProperties {
 
-  private IIdentificate type;
+  private Identified type;
   private CharmTreeIdentificateMap treeIdentificateMap;
   private final ICharmCache cache;
   private final ICharacterGenerics generics;
@@ -48,7 +48,7 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
     return new NullSpecialCharm();
   }
 
-  public void setCharmType(IIdentificate type) {
+  public void setCharmType(Identified type) {
     this.type = type;
   }
 

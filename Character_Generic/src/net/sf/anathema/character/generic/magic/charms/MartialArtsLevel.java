@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.magic.charms;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public enum MartialArtsLevel implements IIdentificate {
+public enum MartialArtsLevel implements Identified {
   Mortal, Terrestrial, Celestial, Sidereal;
 
   @Override

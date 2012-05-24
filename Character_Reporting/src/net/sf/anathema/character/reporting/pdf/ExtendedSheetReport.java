@@ -4,10 +4,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
-import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -61,10 +59,8 @@ public class ExtendedSheetReport extends AbstractPdfReport {
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     SheetGraphics graphics = SheetGraphics.WithHelvetica(directContent);
     try {
-      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
-      IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
-
-      ReportSession session = new ReportSession(getContentRegistry(), character, description);
+      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
+      ReportSession session = new ReportSession(getContentRegistry(), character);
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       encoderList.add(new ExtendedFirstPageEncoder(configuration));
       encoderList.add(new ExtendedSecondPageEncoder(configuration));
@@ -103,10 +99,6 @@ public class ExtendedSheetReport extends AbstractPdfReport {
       return false;
     }
     IItemData itemData = item.getItemData();
-    if (!(itemData instanceof ICharacter)) {
-      return false;
-    }
-    ICharacter character = (ICharacter) itemData;
-    return character.hasStatistics();
+    return itemData instanceof ICharacter;
   }
 }

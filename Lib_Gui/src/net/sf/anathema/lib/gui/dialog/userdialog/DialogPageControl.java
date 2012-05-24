@@ -69,22 +69,6 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
     dialogControl.updateButtons();
   }
 
-  /**
-   * @deprecated As of 24.2.2005 (gebhard)
-   */
-  @Deprecated
-  public boolean performOk() {
-    return dialogPage.performOk();
-  }
-
-  /**
-   * @deprecated As of 24.2.2005 (gebhard)
-   */
-  @Deprecated
-  public boolean performCancel() {
-    return dialogPage.performCancel();
-  }
-
   public String getDescription() {
     return dialogPage.getDescription();
   }

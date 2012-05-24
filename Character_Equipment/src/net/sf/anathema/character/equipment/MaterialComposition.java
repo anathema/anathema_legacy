@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public enum MaterialComposition implements IIdentificate {
+public enum MaterialComposition implements Identified {
   None() {
     @Override
     public boolean requiresMaterial() {

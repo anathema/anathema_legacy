@@ -1,7 +1,6 @@
 package net.sf.anathema.character.db.reporting.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,8 +16,7 @@ public class DbGreatCurseContentFactory implements ReportContentFactory<DbGreatC
   }
 
   @Override
-  public DbGreatCurseContent create(ReportSession session, IGenericCharacter character,
-          IGenericDescription description) {
+  public DbGreatCurseContent create(ReportSession session, IGenericCharacter character) {
     return new DbGreatCurseContent(resources, character);
   }
 }

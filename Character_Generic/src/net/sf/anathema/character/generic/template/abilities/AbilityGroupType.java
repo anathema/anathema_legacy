@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.template.abilities;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public enum AbilityGroupType implements IIdentificate {
+public enum AbilityGroupType implements Identified {
 
   Life {
     @Override

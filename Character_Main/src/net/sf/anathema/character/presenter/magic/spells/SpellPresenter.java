@@ -1,14 +1,11 @@
 package net.sf.anathema.character.presenter.magic.spells;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.ScreenDisplayInfoStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPresenter;
@@ -21,10 +18,8 @@ import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
+import net.sf.anathema.lib.util.Identified;
 
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -35,45 +30,40 @@ import java.util.List;
 
 public class SpellPresenter implements DetailDemandingMagicPresenter {
 
-  public static SpellPresenter ForSorcery(ICharacterStatistics statistics, IResources resources,
-          IMagicViewFactory factory) {
-    SpellModel spellModel = new SorceryModel(statistics);
-    return new SpellPresenter(spellModel, statistics, resources, factory);
+  public static SpellPresenter ForSorcery(ICharacter character, IResources resources, IMagicViewFactory factory,
+                                          MagicDescriptionProvider magicDescriptionProvider) {
+    SpellModel spellModel = new SorceryModel(character);
+    return new SpellPresenter(spellModel, character, resources, factory, magicDescriptionProvider);
   }
 
-  public static SpellPresenter ForNecromancy(ICharacterStatistics statistics, IResources resources,
-          IMagicViewFactory factory) {
-    SpellModel spellModel = new NecromancyModel(statistics);
-    return new SpellPresenter(spellModel, statistics, resources, factory);
+  public static SpellPresenter ForNecromancy(ICharacter character, IResources resources, IMagicViewFactory factory,
+                                             MagicDescriptionProvider magicDescriptionProvider) {
+    SpellModel spellModel = new NecromancyModel(character);
+    return new SpellPresenter(spellModel, character, resources, factory, magicDescriptionProvider);
   }
 
   private final ISpellConfiguration spellConfiguration;
   private SpellModel spellModel;
-  private final ICharacterStatistics statistics;
-  private final MagicInfoStringBuilder creator;
+  private final ICharacter character;
   private final IResources resources;
   private CircleType circle;
-  private final IMagicSourceStringBuilder<ISpell> sourceStringBuilder;
   private final SpellViewProperties properties;
   private final ISpellView view;
 
-  public SpellPresenter(SpellModel spellModel, ICharacterStatistics statistics, IResources resources,
-          IMagicViewFactory factory) {
+  public SpellPresenter(SpellModel spellModel, ICharacter character, IResources resources, IMagicViewFactory factory,
+                        MagicDescriptionProvider magicDescriptionProvider) {
     this.spellModel = spellModel;
-    this.statistics = statistics;
-    this.properties = new SpellViewProperties(resources, statistics);
+    this.character = character;
+    this.properties = new SpellViewProperties(resources, character, magicDescriptionProvider);
     this.resources = resources;
-    this.creator = new ScreenDisplayInfoStringBuilder(resources);
-    this.sourceStringBuilder = new MagicSourceStringBuilder<ISpell>(resources);
-    this.spellConfiguration = statistics.getSpells();
+    this.spellConfiguration = character.getSpells();
     this.view = factory.createSpellView(properties);
     circle = spellModel.getCircles()[0];
   }
 
   @Override
   public void initPresentation() {
-    IIdentificate[] allowedCircles = spellModel.getCircles();
-    initDetailsView();
+    Identified[] allowedCircles = spellModel.getCircles();
     view.initGui(allowedCircles);
     view.addMagicViewListener(new IMagicViewListener() {
       @Override
@@ -115,41 +105,12 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
       }
     });
     initSpellListsInView(view);
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+    character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
         view.clearSelection();
       }
     });
-  }
-
-  private void initDetailsView() {
-    final JLabel titleView = view.addDetailTitleView();
-    titleView.setText(" "); //$NON-NLS-1$
-    final IValueView<String> circleView = view.addDetailValueView(properties.getCircleString() + ":"); //$NON-NLS-1$
-    final IValueView<String> costView = view.addDetailValueView(properties.getCostString() + ":"); //$NON-NLS-1$
-    final IValueView<String> targetView = view.addDetailValueView(properties.getTargetString() + ":"); //$NON-NLS-1$
-    final IValueView<String> sourceView = view.addDetailValueView(properties.getSourceString() + ":"); //$NON-NLS-1$
-    ListSelectionListener detailListener = new ListSelectionListener() {
-      @Override
-      public void valueChanged(ListSelectionEvent e) {
-        ISpell spell = (ISpell) ((JList) e.getSource()).getSelectedValue();
-        if (spell == null) {
-          return;
-        }
-        titleView.setText(resources.getString(spell.getId()));
-        circleView.setValue(resources.getString(spell.getCircleType().getId()));
-        costView.setValue(creator.createCostString(spell));
-        if (spell.getTarget() == null) {
-          targetView.setValue(properties.getUndefinedString());
-        } else {
-          targetView.setValue(resources.getString("Spells.Target." + spell.getTarget())); //$NON-NLS-1$
-        }
-        sourceView.setValue(sourceStringBuilder.createSourceString(spell));
-      }
-    };
-    view.addOptionListListener(detailListener);
-    view.addSelectionListListener(detailListener);
   }
 
   private void initSpellListsInView(ISpellView spellView) {
@@ -185,8 +146,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
     showSpells.removeAll(Arrays.asList(spellConfiguration.getLearnedSpells()));
     int count = showSpells.size();
     ISpell[] sortedSpells = new ISpell[count];
-    sortedSpells = new I18nedIdentificateSorter<ISpell>()
-            .sortAscending(showSpells.toArray(new ISpell[count]), sortedSpells, resources);
+    sortedSpells = new I18nedIdentificateSorter<ISpell>().sortAscending(showSpells.toArray(new ISpell[count]), sortedSpells, resources);
     return sortedSpells;
   }
 

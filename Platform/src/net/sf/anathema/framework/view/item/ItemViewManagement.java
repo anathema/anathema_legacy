@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class ItemViewManagement implements IComponentItemViewManagement {
 
-  private JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.BOTTOM);
+  private JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
   private ItemTabComponent itemTabComponent = new ItemTabComponent(tabbedPane);
   private Map<Component, IItemView> itemViewsByComponent = new HashMap<Component, IItemView>();
   private Announcer<IViewSelectionListener> control = Announcer.to(IViewSelectionListener.class);

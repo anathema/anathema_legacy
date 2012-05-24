@@ -22,8 +22,8 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -188,12 +188,12 @@ public class DummyCharm extends Identificate implements ICharm {
   }
 
   @Override
-  public boolean hasAttribute(IIdentificate attribute) {
+  public boolean hasAttribute(Identified attribute) {
     return false;
   }
 
   @Override
-  public String getAttributeValue(IIdentificate attribute) {
+  public String getAttributeValue(Identified attribute) {
     return null;
   }
 

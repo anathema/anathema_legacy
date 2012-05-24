@@ -1,9 +1,10 @@
 package net.sf.anathema.character.impl.module.preferences;
 
-import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.PRINT_ZERO_CRAFTS;
 import net.sf.anathema.framework.module.preferences.AbstractCheckBoxPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
+
+import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.PRINT_ZERO_CRAFTS;
 
 @PreferenceElement
 public class PrintZeroCraftsPreferencesElement extends AbstractCheckBoxPreferencesElement implements
@@ -37,7 +38,7 @@ public class PrintZeroCraftsPreferencesElement extends AbstractCheckBoxPreferenc
   }
 
   @Override
-  public IIdentificate getCategory() {
+  public Identified getCategory() {
     return CHARACTER_CATEGORY;
   }
 }

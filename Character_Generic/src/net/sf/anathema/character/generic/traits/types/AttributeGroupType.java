@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.traits.types;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public enum AttributeGroupType implements IIdentificate {
+public enum AttributeGroupType implements Identified {
 
   Physical, Social, Mental;
 

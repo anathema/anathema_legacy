@@ -159,7 +159,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private GenericCharacter createGenericCharacter(ICharacter character) {
-    return new GenericCharacter(character.getStatistics());
+    return new GenericCharacter(character);
   }
 
   private MagicDescription getCharmDescription(IMagic magic) {
@@ -179,17 +179,14 @@ public class MagicReport extends AbstractPdfReport {
       return false;
     }
     ICharacter character = (ICharacter) item.getItemData();
-    if (!character.hasStatistics()) {
-      return false;
-    }
     return getCurrentCharms(character).length > 0;
   }
 
   private ISpell[] getCurrentSpells(ICharacter character) {
-    return character.getStatistics().getSpells().getLearnedSpells(character.getStatistics().isExperienced());
+    return character.getSpells().getLearnedSpells(character.isExperienced());
   }
 
   private ICharm[] getCurrentCharms(ICharacter character) {
-    return character.getStatistics().getCharms().getLearnedCharms(character.getStatistics().isExperienced());
+    return character.getCharms().getLearnedCharms(character.isExperienced());
   }
 }

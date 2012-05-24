@@ -1,51 +1,36 @@
 package net.sf.anathema.character.presenter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
 import net.sf.anathema.character.view.IBasicAdvantageView;
-import net.sf.anathema.framework.presenter.view.IViewContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewContent;
+import net.sf.anathema.framework.presenter.view.ContentView;
+import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BasicAdvantagePresenter implements IContentPresenter {
   private final List<Presenter> subPresenters = new ArrayList<Presenter>();
   private final IBasicAdvantageView view;
   private final IResources resources;
 
-  public BasicAdvantagePresenter(
-      IResources resources,
-      ICharacterStatistics statistics,
-      IAdvantageViewFactory factory,
-      ICharacterGenerics generics) {
+  public BasicAdvantagePresenter(IResources resources, ICharacter character, IAdvantageViewFactory factory, ICharacterGenerics generics) {
     this.resources = resources;
     this.view = factory.createBasicAdvantageView();
-    ICoreTraitConfiguration traitConfiguration = statistics.getTraitConfiguration();
+    ICoreTraitConfiguration traitConfiguration = character.getTraitConfiguration();
     subPresenters.add(new VirtueConfigurationPresenter(resources, traitConfiguration, view));
-    subPresenters.add(new WillpowerConfigurationPresenter(
-        resources,
-        traitConfiguration.getTrait(OtherTraitType.Willpower),
-        view));
-    subPresenters.add(new BackgroundPresenter(
-        resources,
-        traitConfiguration.getBackgrounds(),
-        statistics.getCharacterContext(),
-        view,
-        generics.getBackgroundRegistry()));
-    subPresenters.add(new EssenceConfigurationPresenter(
-        resources,
-        statistics.getEssencePool(),
-        traitConfiguration,
-        view));
+    subPresenters.add(new WillpowerConfigurationPresenter(resources, traitConfiguration.getTrait(OtherTraitType.Willpower), view));
+    subPresenters.add(new BackgroundPresenter(resources, traitConfiguration.getBackgrounds(), character.getCharacterContext(), view,
+            generics.getBackgroundRegistry()));
+    subPresenters.add(new EssenceConfigurationPresenter(resources, character.getEssencePool(), traitConfiguration, view));
   }
 
   @Override
@@ -77,8 +62,8 @@ public class BasicAdvantagePresenter implements IContentPresenter {
   }
 
   @Override
-  public IViewContent getTabContent() {
+  public ContentView getTabContent() {
     String basicAdvantageHeader = resources.getString("CardView.Advantages.Title"); //$NON-NLS-1$
-    return new SimpleViewContent(new ContentProperties(basicAdvantageHeader), view);
+    return new SimpleViewContentView(new ContentProperties(basicAdvantageHeader), view);
   }
 }

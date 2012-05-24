@@ -1,16 +1,16 @@
 package net.sf.anathema.character.impl.generic;
 
 import net.sf.anathema.character.generic.character.ICharacterPoints;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 
 public class CharacterPoints implements ICharacterPoints {
 
-  private final ICharacterStatistics statistics;
+  private final ICharacter character;
   private final IExperiencePointManagement experiencePointManagement;
 
-  public CharacterPoints(ICharacterStatistics statistics, IExperiencePointManagement experiencePointManagement) {
-    this.statistics = statistics;
+  public CharacterPoints(ICharacter character, IExperiencePointManagement experiencePointManagement) {
+    this.character = character;
     this.experiencePointManagement = experiencePointManagement;
   }
 
@@ -21,6 +21,6 @@ public class CharacterPoints implements ICharacterPoints {
 
   @Override
   public int getExperiencePointsTotal() {
-    return statistics.getExperiencePoints().getTotalExperiencePoints();
+    return character.getExperiencePoints().getTotalExperiencePoints();
   }
 }

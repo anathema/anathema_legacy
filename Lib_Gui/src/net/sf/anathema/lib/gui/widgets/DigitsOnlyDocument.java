@@ -14,22 +14,7 @@ public class DigitsOnlyDocument extends PlainDocument {
 	private final boolean beepOnInvalidCharacter;
 	private final IOverline overline;
 
-	public DigitsOnlyDocument(boolean beepOnInvalidCharacter) {
-		this(beepOnInvalidCharacter, new IOverline() {
-
-			@Override
-            public int getNearestValue(int value) {
-				return value;
-			}
-
-			@Override
-            public int getLowerBound() {
-				return Integer.MIN_VALUE;
-			}
-		});
-	}
-
-	public DigitsOnlyDocument(boolean beepOnInvalidCharacter, IOverline overline) {
+  public DigitsOnlyDocument(boolean beepOnInvalidCharacter, IOverline overline) {
 		this.beepOnInvalidCharacter = beepOnInvalidCharacter;
 		this.overline = overline;
 	}

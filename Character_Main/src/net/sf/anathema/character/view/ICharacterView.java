@@ -16,7 +16,7 @@ public interface ICharacterView extends IItemView, OverviewContainer {
 
   void addDisposable(IDisposable disposable);
 
-  ICharacterConceptAndRulesViewFactory createConceptViewFactory();
+  IConceptAndRulesViewFactory createConceptViewFactory();
 
   IAdvantageViewFactory createAdvantageViewFactory();
 

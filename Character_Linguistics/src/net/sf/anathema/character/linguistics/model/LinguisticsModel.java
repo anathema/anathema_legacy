@@ -12,19 +12,19 @@ import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.Arrays;
 
-public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate> implements ILinguisticsModel {
+public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> implements ILinguisticsModel {
 
   private static final int barbarianLanguagesPerPoint= 4;
-  private final IIdentificate[] languages = new IIdentificate[] { new Identificate("HighRealm"), //$NON-NLS-1$
+  private final Identified[] languages = new Identified[] { new Identificate("HighRealm"), //$NON-NLS-1$
       new Identificate("LowRealm"), new Identificate("OldRealm"), new Identificate("Riverspeak"), new Identificate("Skytongue"), new Identificate("Flametongue"), new Identificate("Seatongue"), new Identificate("Foresttongue"), new Identificate("GuildCant"), new Identificate("ClawSpeak"), new Identificate("HighHolySpeech"), new Identificate("Pelagial") }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$
 
-  private IIdentificate selection;
+  private Identified selection;
   private int languagePointsAllowed;
   private final ICharacterModelContext context;
   private final Announcer<IChangeListener> pointControl = Announcer.to(IChangeListener.class);
@@ -50,13 +50,13 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   }
 
   @Override
-  public IIdentificate[] getPredefinedLanguages() {
+  public Identified[] getPredefinedLanguages() {
     return languages;
   }
 
   @Override
-  protected IIdentificate createEntry() {
-    IIdentificate selectionCopy = selection;
+  protected Identified createEntry() {
+    Identified selectionCopy = selection;
     this.selection = null;
     fireEntryChanged();
     return selectionCopy;
@@ -82,11 +82,11 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   }
 
   @Override
-  public void selectLanguage(final IIdentificate language) {
+  public void selectLanguage(final Identified language) {
     Preconditions.checkNotNull(language);
-    IIdentificate foundLanguage = Iterables.find(getEntries(), new Predicate<IIdentificate>() {
+    Identified foundLanguage = Iterables.find(getEntries(), new Predicate<Identified>() {
       @Override
-      public boolean apply(IIdentificate selectedLanguage) {
+      public boolean apply(Identified selectedLanguage) {
         return Objects.equal(language, selectedLanguage);
       }
     }, null);
@@ -98,10 +98,10 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   }
 
   @Override
-  public IIdentificate getPredefinedLanguageById(final String id) {
-    return Iterables.find(Arrays.asList(languages), new Predicate<IIdentificate>(){
+  public Identified getPredefinedLanguageById(final String id) {
+    return Iterables.find(Arrays.asList(languages), new Predicate<Identified>(){
       @Override
-      public boolean apply(IIdentificate definedLanuage) {
+      public boolean apply(Identified definedLanuage) {
         return Objects.equal(id, definedLanuage.getId());
       }
     },null);
@@ -115,7 +115,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   @Override
   public int getBarbarianLanguageCount() {
     int count = 0;
-    for (IIdentificate language : getEntries()) {
+    for (Identified language : getEntries()) {
       if (!isPredefinedLanguage(language)) {
         count++;
       }
@@ -139,7 +139,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   @Override
   public int getPredefinedLanguageCount() {
     int count = 0;
-    for (IIdentificate language : getEntries()) {
+    for (Identified language : getEntries()) {
       if (isPredefinedLanguage(language)) {
         count++;
       }

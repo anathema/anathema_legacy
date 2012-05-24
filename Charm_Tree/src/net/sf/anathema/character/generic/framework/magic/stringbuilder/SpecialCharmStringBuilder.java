@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependent
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
@@ -27,7 +28,7 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
       StringBuilder specialCharmBuilder = new StringBuilder();
       if (details instanceof AbstractMultiLearnableCharm) {
     	specialCharmBuilder.append(resources.getString("CharmTreeView.ToolTip.Repurchases"));
-    	specialCharmBuilder.append(IMagicTooltipStringBuilder.ColonSpace);
+    	specialCharmBuilder.append(TooltipBuilder.ColonSpace);
         if (details instanceof StaticMultiLearnableCharm) {
           printStaticLimit(specialCharmBuilder, (StaticMultiLearnableCharm) details);
         }
@@ -53,11 +54,11 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
       if (tier == first) continue;
       if (tier == last && tier != second) {
         builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases.And"));
-        builder.append(IMagicTooltipStringBuilder.Space);
+        builder.append(TooltipBuilder.Space);
       }
       if (tier == second || tiers.length <= 3) {
         builder.append(resources.getString("Essence"));
-        builder.append(IMagicTooltipStringBuilder.Space);
+        builder.append(TooltipBuilder.Space);
       }
       builder.append(tier.getEssence());
 
@@ -65,12 +66,12 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
         builder.append("/");
         if (tier == second || tiers.length <= 3) {
           builder.append(resources.getString(charm.getPrimaryTraitType().getId()));
-          builder.append(IMagicTooltipStringBuilder.Space);
+          builder.append(TooltipBuilder.Space);
         }
         builder.append(tier.getTrait());
       }
       if (tier != last) {
-        builder.append(IMagicTooltipStringBuilder.CommaSpace);
+        builder.append(TooltipBuilder.CommaSpace);
       }
     }
   }
@@ -82,7 +83,7 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
       builder.append(details.getModifier());
     }
     builder.append(")");
-    builder.append(IMagicTooltipStringBuilder.Space);
+    builder.append(TooltipBuilder.Space);
     builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases.Times"));
   }
 

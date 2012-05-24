@@ -8,7 +8,7 @@ import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.NullUpperBounds;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -24,9 +24,9 @@ public class PrerequisiteEntryView implements IPrerequisitesEntryView {
   }
 
   @Override
-  public ISelectableIntValueView<IIdentificate> addSelectablePrerequisiteView(String string, IIdentificate[] traits, int initial, int max) {
+  public ISelectableIntValueView<Identified> addSelectablePrerequisiteView(String string, Identified[] traits, int initial, int max) {
     content.add(new JLabel(string));
-    ISelectableIntValueView<IIdentificate> view = new SelectableIntValueView<IIdentificate>(factory, initial, max);
+    ISelectableIntValueView<Identified> view = new SelectableIntValueView<Identified>(factory, initial, max);
     view.setSelectableValues(traits);
     view.addTo(content);
     return view;

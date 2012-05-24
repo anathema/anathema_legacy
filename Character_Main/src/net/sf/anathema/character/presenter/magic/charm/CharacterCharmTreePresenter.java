@@ -20,7 +20,7 @@ import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
 public class CharacterCharmTreePresenter extends AbstractCascadePresenter implements DetailDemandingMagicPresenter {
@@ -59,7 +59,7 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
   }
 
   @Override
-  protected GroupCharmTree getCharmTree(IIdentificate cascadeType) {
+  protected GroupCharmTree getCharmTree(Identified cascadeType) {
     return new CharacterGroupCharmTree(model, cascadeType);
   }
 

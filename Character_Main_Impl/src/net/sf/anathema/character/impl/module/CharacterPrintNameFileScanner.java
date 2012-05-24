@@ -1,12 +1,5 @@
 package net.sf.anathema.character.impl.module;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -15,13 +8,19 @@ import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-
 import org.apache.commons.io.FileUtils;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CharacterPrintNameFileScanner {
 
@@ -31,7 +30,7 @@ public class CharacterPrintNameFileScanner {
   private static final Pattern typePattern = Pattern.compile("<" + TYPE_ELEMENT_NAME + ".*>(.*?)</CharacterType>"); //$NON-NLS-1$
   private static final Pattern castePattern = Pattern.compile("<" + CASTE_ELEMENT_NAME + " " + CASTE_ELEMENT_TYPE_ATTR + "=\"(.*?)\"/>"); //$NON-NLS-1$
   private final Map<PrintNameFile, ICharacterType> typesByFile = new HashMap<PrintNameFile, ICharacterType>();
-  private final Map<PrintNameFile, IIdentificate> castesByFile = new HashMap<PrintNameFile, IIdentificate>();
+  private final Map<PrintNameFile, Identified> castesByFile = new HashMap<PrintNameFile, Identified>();
   private final IRegistry<ICharacterType, ICasteCollection> registry;
   private final IRepositoryFileResolver resolver;
 
@@ -80,7 +79,7 @@ public class CharacterPrintNameFileScanner {
       return;
     }
     
-    IIdentificate casteType = registry.get(characterType).getById(casteTypeStr);
+    Identified casteType = registry.get(characterType).getById(casteTypeStr);
     castesByFile.put(file, casteType);
   }
   
@@ -99,7 +98,7 @@ public class CharacterPrintNameFileScanner {
       castesByFile.put(file, null);
       return;
     }
-    IIdentificate casteType = registry.get(characterType).getById(casteMatcher.group(1));
+    Identified casteType = registry.get(characterType).getById(casteMatcher.group(1));
     castesByFile.put(file, casteType);
   }
 
@@ -117,8 +116,8 @@ public class CharacterPrintNameFileScanner {
     }
   }
 
-  public IIdentificate getCasteType(PrintNameFile file) {
-    IIdentificate caste = castesByFile.get(file);
+  public Identified getCasteType(PrintNameFile file) {
+    Identified caste = castesByFile.get(file);
     if (caste != null) {
       return caste;
     }

@@ -1,13 +1,13 @@
 package net.sf.anathema.character.equipment.impl.character.model.natural;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class EffectiveArmour extends AbstractCombatStats implements IArmourStats {
 
@@ -56,7 +56,7 @@ public class EffectiveArmour extends AbstractCombatStats implements IArmourStats
   }
 
   @Override
-  public IIdentificate getName() {
+  public Identified getName() {
     return new Identificate("EffectiveArmour"); //$NON-NLS-1$
   }
 

@@ -1,14 +1,14 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 
 public class MiscellaneousExperienceModel extends AbstractIntegerValueModel {
-  private final ICharacterStatistics statistics;
+  private final ICharacter character;
 
-  public MiscellaneousExperienceModel(ICharacterStatistics statistics) {
-    super("Experience", "Miscellaneous"); //$NON-NLS-1$//$NON-NLS-2$
-    this.statistics = statistics;
+  public MiscellaneousExperienceModel(ICharacter character) {
+    super("Experience", "Miscellaneous");
+    this.character = character;
   }
 
   @Override
@@ -18,10 +18,10 @@ public class MiscellaneousExperienceModel extends AbstractIntegerValueModel {
 
   private int getMiscCosts() {
     int total = 0;
-    for (IAdditionalModel model : statistics.getExtendedConfiguration().getAdditionalModels()) {
+    for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels()) {
       total += model.getExperienceCalculator().calculateCost();
     }
-    total += statistics.getExperiencePoints().getExtraSpendings();
+    total += character.getExperiencePoints().getExtraSpendings();
     return total;
   }
 }

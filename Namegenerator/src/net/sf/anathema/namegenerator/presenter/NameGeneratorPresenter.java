@@ -5,7 +5,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
 
@@ -32,7 +32,7 @@ public class NameGeneratorPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    for (IIdentificate generatorType : model.getGeneratorTypes()) {
+    for (Identified generatorType : model.getGeneratorTypes()) {
       JComponent modelPresentation = typePresentation.initGeneratorTypePresentation(generatorType);
       String formattedLabel = resources.getString("NameGeneratorPresenter." + generatorType); //$NON-NLS-1$
       view.addNameGeneratorType(formattedLabel, modelPresentation, generatorType);
@@ -57,7 +57,7 @@ public class NameGeneratorPresenter implements Presenter {
     view.addGeneratorTypeChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
-        model.setGeneratorType((IIdentificate) view.getSelectedGeneratorType());
+        model.setGeneratorType((Identified) view.getSelectedGeneratorType());
       }
     });
     model.addGeneratorTypeChangeListener(new IChangeListener() {

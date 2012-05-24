@@ -1,8 +1,8 @@
 package net.sf.anathema.namegenerator.exalted;
 
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.util.ObjectUtilities;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
@@ -17,11 +17,11 @@ import java.util.Map;
 public class ExaltedNameGeneratorModel implements INameGeneratorModel {
 
   public static final Identificate THRESHOLD_ID = new Identificate("Threshold"); //$NON-NLS-1$
-  private final IIdentificate[] nameGeneratorTypes = new IIdentificate[] { new Identificate("Realm"), THRESHOLD_ID }; //$NON-NLS-1$
-  private final Map<IIdentificate, IGeneratorTypeModel> typeModelsByType = new HashMap<IIdentificate, IGeneratorTypeModel>();
-  private IIdentificate selectedGeneratorType = nameGeneratorTypes[1];
+  private final Identified[] nameGeneratorTypes = new Identified[] { new Identificate("Realm"), THRESHOLD_ID }; //$NON-NLS-1$
+  private final Map<Identified, IGeneratorTypeModel> typeModelsByType = new HashMap<Identified, IGeneratorTypeModel>();
+  private Identified selectedGeneratorType = nameGeneratorTypes[1];
   private final Announcer<IChangeListener> selectedGeneratorTypeListeners = Announcer.to(IChangeListener.class);
-  private final Map<IIdentificate, INameGenerator> generatorsByIdentificate = new HashMap<IIdentificate, INameGenerator>();
+  private final Map<Identified, INameGenerator> generatorsByIdentificate = new HashMap<Identified, INameGenerator>();
 
   public ExaltedNameGeneratorModel() {
     generatorsByIdentificate.put(nameGeneratorTypes[0], new RealmNameGenerator());
@@ -29,12 +29,12 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
   }
 
   @Override
-  public IIdentificate[] getGeneratorTypes() {
+  public Identified[] getGeneratorTypes() {
     return nameGeneratorTypes;
   }
 
   @Override
-  public IGeneratorTypeModel getGeneratorTypeModel(IIdentificate type) {
+  public IGeneratorTypeModel getGeneratorTypeModel(Identified type) {
     return typeModelsByType.get(type);
   }
 
@@ -44,12 +44,12 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
   }
 
   @Override
-  public IIdentificate getSelectedGeneratorType() {
+  public Identified getSelectedGeneratorType() {
     return selectedGeneratorType;
   }
 
   @Override
-  public void setGeneratorType(IIdentificate selectedGeneratorType) {
+  public void setGeneratorType(Identified selectedGeneratorType) {
     if (ObjectUtilities.equals(selectedGeneratorType, this.selectedGeneratorType)) {
       return;
     }

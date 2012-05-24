@@ -5,8 +5,8 @@ import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class Clinch extends AbstractNaturalWeaponStats {
 
@@ -41,8 +41,8 @@ public class Clinch extends AbstractNaturalWeaponStats {
   }
 
   @Override
-  public IIdentificate[] getTags() {
-    return new IIdentificate[] { WeaponTag.ClinchEnhancer, WeaponTag.Natural, WeaponTag.Piercing };
+  public Identified[] getTags() {
+    return new Identified[] { WeaponTag.ClinchEnhancer, WeaponTag.Natural, WeaponTag.Piercing };
   }
 
   @Override
@@ -61,7 +61,7 @@ public class Clinch extends AbstractNaturalWeaponStats {
   }
 
   @Override
-  public IIdentificate getName() {
+  public Identified getName() {
     return new Identificate("Clinch"); //$NON-NLS-1$
   }
 }

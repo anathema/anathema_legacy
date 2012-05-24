@@ -4,18 +4,11 @@ import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
-
-import javax.swing.JLabel;
+import net.sf.anathema.lib.util.Identified;
 
 public interface ISpellView extends IView, IMagicLearnView {
 
-  void initGui(IIdentificate[] circles);
+  void initGui(Identified[] circles);
 
   void addCircleSelectionListener(ObjectValueListener<CircleType> listener);
-
-  IValueView<String> addDetailValueView(String label);
-
-  JLabel addDetailTitleView();
 }

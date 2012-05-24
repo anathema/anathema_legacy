@@ -4,10 +4,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
-import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -59,11 +57,10 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
     PdfContentByte directContent = writer.getDirectContent();
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     try {
-      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
-      IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
+      IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
       List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
       encoderList.add(new FirstPageEncoder(configuration));
-      ReportSession session = new ReportSession(getContentRegistry(), character, description);
+      ReportSession session = new ReportSession(getContentRegistry(), character);
       Collections.addAll(encoderList, findAdditionalPages(pageSize, session));
       encoderList.add(new SecondPageEncoder());
       Sheet sheet = new Sheet(document, getEncoderRegistry(), resources, pageSize);
@@ -105,9 +102,6 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
       return false;
     }
     ICharacter character = (ICharacter) itemData;
-    if (!character.hasStatistics()) {
-      return false;
-    }
-    return character.getStatistics().getCharacterTemplate().getTemplateType().getCharacterType().isEssenceUser();
+    return character.getCharacterTemplate().getTemplateType().getCharacterType().isEssenceUser();
   }
 }

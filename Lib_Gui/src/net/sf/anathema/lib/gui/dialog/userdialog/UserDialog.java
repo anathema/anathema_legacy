@@ -156,9 +156,6 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
   }
 
   private final boolean okPressed() {
-    if (!getDialogControl().performOk()) {
-      return false;
-    }
     IVetoDialogCloseHandler closeHandler = getConfiguration().getVetoCloseHandler();
     return closeHandler.handleDialogAboutToClose(new DialogResult(false), getDialog().getWindow());
   }
@@ -169,9 +166,6 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
 
   @Override
   protected final boolean cancelPressed(Component parentComponent) {
-    if (!getDialogControl().performCancel()) {
-      return false;
-    }
     IVetoDialogCloseHandler closeHandler = getConfiguration().getVetoCloseHandler();
     return closeHandler.handleDialogAboutToClose(new DialogResult(true), parentComponent);
   }

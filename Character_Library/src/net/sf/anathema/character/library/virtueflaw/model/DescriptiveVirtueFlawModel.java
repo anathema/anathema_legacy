@@ -1,7 +1,4 @@
-package net.sf.anathema.character.solar.virtueflaw.model;
-
-import java.util.ArrayList;
-import java.util.List;
+package net.sf.anathema.character.library.virtueflaw.model;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
@@ -9,20 +6,22 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
-import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawModel;
+import net.sf.anathema.character.library.virtueflaw.presenter.IDescriptiveVirtueFlawModel;
 import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IChangeListener;
 
-public class SolarVirtueFlawModel extends VirtueFlawModel implements ISolarVirtueFlawModel {
+import java.util.ArrayList;
+import java.util.List;
 
-  private final ISolarVirtueFlaw virtueFlaw;
+public class DescriptiveVirtueFlawModel extends VirtueFlawModel implements IDescriptiveVirtueFlawModel {
+
+  private final IDescriptiveVirtueFlaw virtueFlaw;
   private IGenericTraitCollection traitCollection;
 
-  public SolarVirtueFlawModel(final ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
+  public DescriptiveVirtueFlawModel(final ICharacterModelContext context, IAdditionalTemplate additionalTemplate) {
     super(context, additionalTemplate);
     this.traitCollection = context.getTraitCollection();
-    virtueFlaw = new SolarVirtueFlaw(context);
+    virtueFlaw = new DescriptiveVirtueFlaw(context);
     addVirtueChangeListener(new VirtueChangeListener() {
       @Override
       public void configuredChangeOccured() {
@@ -43,7 +42,7 @@ public class SolarVirtueFlawModel extends VirtueFlawModel implements ISolarVirtu
   }
 
   @Override
-  public ISolarVirtueFlaw getVirtueFlaw() {
+  public IDescriptiveVirtueFlaw getVirtueFlaw() {
     return virtueFlaw;
   }
 

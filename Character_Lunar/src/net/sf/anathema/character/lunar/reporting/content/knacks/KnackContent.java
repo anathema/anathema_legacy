@@ -9,15 +9,15 @@ import net.sf.anathema.character.lunar.reporting.content.stats.knacks.KnackStats
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class KnackContent extends AbstractSubBoxContent {
 
-  private static IIdentificate KNACK = new Identificate("Knack");
+  private static Identified KNACK = new Identificate("Knack");
 
   private IGenericCharacter character;
 

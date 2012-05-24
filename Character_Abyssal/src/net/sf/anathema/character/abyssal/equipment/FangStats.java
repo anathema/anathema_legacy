@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class FangStats extends AbstractCombatStats implements IWeaponStats {
 
@@ -64,8 +64,8 @@ public class FangStats extends AbstractCombatStats implements IWeaponStats {
   }
 
   @Override
-  public IIdentificate[] getTags() {
-    return new IIdentificate[]{WeaponTag.ClinchEnhancer, WeaponTag.Natural, WeaponTag.Piercing};
+  public Identified[] getTags() {
+    return new Identified[]{WeaponTag.ClinchEnhancer, WeaponTag.Natural, WeaponTag.Piercing};
   }
 
   @Override
@@ -84,7 +84,7 @@ public class FangStats extends AbstractCombatStats implements IWeaponStats {
   }
 
   @Override
-  public IIdentificate getName() {
+  public Identified getName() {
     return new Identificate("Abyssal.Fangs"); //$NON-NLS-1$
   }
 

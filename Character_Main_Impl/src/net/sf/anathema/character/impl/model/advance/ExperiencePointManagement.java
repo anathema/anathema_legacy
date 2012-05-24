@@ -12,7 +12,7 @@ import net.sf.anathema.character.impl.model.advance.models.SpecialtyExperienceMo
 import net.sf.anathema.character.impl.model.advance.models.SpellExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.VirtueExperienceModel;
 import net.sf.anathema.character.impl.model.advance.models.WillpowerExperienceModel;
-import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.presenter.overview.IValueModel;
@@ -21,18 +21,18 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
 
   private final IBasicCharacterData basicCharacter;
   private final IPointCostCalculator calculator;
-  private final ICharacterStatistics statistics;
+  private final ICharacter character;
   private final ICoreTraitConfiguration traitConfiguration;
 
-  public ExperiencePointManagement(ICharacterStatistics statistics) {
-    this.statistics = statistics;
-    this.basicCharacter = statistics.getCharacterContext().getBasicCharacterContext();
-    this.traitConfiguration = statistics.getTraitConfiguration();
-    this.calculator = new ExperiencePointCostCalculator(statistics.getCharacterTemplate().getExperienceCost());
+  public ExperiencePointManagement(ICharacter character) {
+    this.character = character;
+    this.basicCharacter = character.getCharacterContext().getBasicCharacterContext();
+    this.traitConfiguration = character.getTraitConfiguration();
+    this.calculator = new ExperiencePointCostCalculator(character.getCharacterTemplate().getExperienceCost());
   }
 
   private IValueModel<Integer> getAbilityModel() {
-    return new AbilityExperienceModel(traitConfiguration, calculator, statistics);
+    return new AbilityExperienceModel(traitConfiguration, calculator, character);
   }
 
   @Override
@@ -52,15 +52,15 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getAttributeModel() {
-    return new AttributeExperienceModel(traitConfiguration, calculator, statistics);
+    return new AttributeExperienceModel(traitConfiguration, calculator, character);
   }
 
   private IValueModel<Integer> getBackgroundModel() {
-    return new BackgroundExperienceModel(traitConfiguration,statistics.getCharacterTemplate().getExperienceCost());
+    return new BackgroundExperienceModel(traitConfiguration, character.getCharacterTemplate().getExperienceCost());
   }
 
   private IValueModel<Integer> getCharmModel() {
-    return new CharmExperienceModel(traitConfiguration, calculator, statistics, basicCharacter);
+    return new CharmExperienceModel(traitConfiguration, calculator, character, basicCharacter);
   }
 
   private IValueModel<Integer> getEssenceModel() {
@@ -70,14 +70,14 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   @Override
   public int getMiscGain() {
     int total = 0;
-    for (IAdditionalModel model : statistics.getExtendedConfiguration().getAdditionalModels()) {
+    for (IAdditionalModel model : character.getExtendedConfiguration().getAdditionalModels()) {
       total += model.getExperienceCalculator().calculateGain();
     }
     return total;
   }
 
   private IValueModel<Integer> getMiscModel() {
-    return new MiscellaneousExperienceModel(statistics);
+    return new MiscellaneousExperienceModel(character);
   }
 
   private IValueModel<Integer> getSpecialtyModel() {
@@ -85,7 +85,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
   }
 
   private IValueModel<Integer> getSpellModel() {
-    return new SpellExperienceModel(statistics, calculator, basicCharacter, traitConfiguration);
+    return new SpellExperienceModel(character, calculator, basicCharacter, traitConfiguration);
   }
 
   @Override

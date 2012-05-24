@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.magic.charms;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public interface ICharmAttributeRequirement {
 
@@ -9,7 +9,7 @@ public interface ICharmAttributeRequirement {
 
   boolean isFulfilled(ICharm[] charms);
 
-  IIdentificate getAttribute();
+  Identified getAttribute();
 
   int getCount();
 

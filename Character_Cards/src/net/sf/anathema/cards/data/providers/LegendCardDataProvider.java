@@ -1,10 +1,6 @@
 package net.sf.anathema.cards.data.providers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.itextpdf.text.Image;
-
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.LegendCardData;
 import net.sf.anathema.cards.data.LegendEntry;
@@ -14,6 +10,9 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.text.MessageFormat.format;
 
@@ -164,11 +163,11 @@ public class LegendCardDataProvider implements ICardDataProvider {
 	}
 	
 	private ICharm[] getCurrentCharms(ICharacter character) {
-		return character.getStatistics().getCharms().getLearnedCharms(character.getStatistics().isExperienced());
+		return character.getCharms().getLearnedCharms(character.isExperienced());
 	}
 	
 	private ISpell[] getCurrentSpells(ICharacter character) {
-		return character.getStatistics().getSpells().getLearnedSpells(character.getStatistics().isExperienced());
+		return character.getSpells().getLearnedSpells(character.isExperienced());
 	}
 
 }

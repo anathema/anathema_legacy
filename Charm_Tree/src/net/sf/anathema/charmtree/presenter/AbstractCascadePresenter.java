@@ -14,7 +14,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 
 import javax.swing.JComponent;
@@ -30,7 +30,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   private final IResources resources;
   protected CharmFilterSet filterSet = new CharmFilterSet();
   private ICharmGroupChangeListener changeListener;
-  private IIdentificate currentType;
+  private Identified currentType;
   private ICascadeSelectionView view;
   private CharmDye dye;
   private CharmTypes charmTypes;
@@ -58,9 +58,9 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   private void initCharmTypeSelectionListening() {
-    view.addCharmTypeSelectionListener(new ObjectValueListener<IIdentificate>() {
+    view.addCharmTypeSelectionListener(new ObjectValueListener<Identified>() {
       @Override
-      public void valueChanged(IIdentificate cascadeType) {
+      public void valueChanged(Identified cascadeType) {
         currentType = cascadeType;
         handleTypeSelectionChange(cascadeType);
       }
@@ -107,7 +107,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   protected void createCharmTypeSelector() {
-    IIdentificate[] types = charmTypes.getCurrentCharmTypes();
+    Identified[] types = charmTypes.getCurrentCharmTypes();
     view.addCharmTypeSelector(getResources().getString("CharmTreeView.GUI.CharmType"), types,
                               new IdentificateSelectCellRenderer("", getResources())); //$NON-NLS-1$
   }
@@ -191,14 +191,14 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     this.charmTypes = types;
   }
 
-  private void handleTypeSelectionChange(IIdentificate cascadeType) {
+  private void handleTypeSelectionChange(Identified cascadeType) {
     if (cascadeType == null) {
-      view.fillCharmGroupBox(new IIdentificate[0]);
+      view.fillCharmGroupBox(new Identified[0]);
       return;
     }
     GroupCharmTree charmTree = getCharmTree(cascadeType);
     if (charmTree == null) {
-      view.fillCharmGroupBox(new IIdentificate[0]);
+      view.fillCharmGroupBox(new Identified[0]);
       return;
     }
     ICharmGroup[] allCharmGroups = charmTree.getAllCharmGroups();
@@ -207,7 +207,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     specialCharmPresenter.showSpecialViews();
   }
 
-  protected abstract GroupCharmTree getCharmTree(IIdentificate type);
+  protected abstract GroupCharmTree getCharmTree(Identified type);
 
   private void initFilters() {
     CharmFilterContainer charms = getFilterContainer();

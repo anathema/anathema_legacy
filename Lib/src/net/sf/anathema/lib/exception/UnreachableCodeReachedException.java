@@ -13,8 +13,4 @@ public class UnreachableCodeReachedException extends AnathemaException {
   public UnreachableCodeReachedException(Throwable nestedException) {
     super(nestedException);
   }
-
-  public UnreachableCodeReachedException(String message, Throwable nestedException) {
-    super(message, nestedException);
-  }
 }

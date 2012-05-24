@@ -1,19 +1,19 @@
 package net.sf.anathema.namegenerator.presenter.model;
 
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public interface INameGeneratorModel {
 
   void addGeneratorTypeChangeListener(IChangeListener listener);
 
-  IGeneratorTypeModel getGeneratorTypeModel(IIdentificate type);
+  IGeneratorTypeModel getGeneratorTypeModel(Identified type);
 
-  IIdentificate[] getGeneratorTypes();
+  Identified[] getGeneratorTypes();
 
-  IIdentificate getSelectedGeneratorType();
+  Identified getSelectedGeneratorType();
 
-  void setGeneratorType(IIdentificate selectedGeneratorType);
+  void setGeneratorType(Identified selectedGeneratorType);
 
   String[] generateNames(int count);
 }

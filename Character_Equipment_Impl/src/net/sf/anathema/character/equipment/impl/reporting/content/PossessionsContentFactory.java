@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,7 +16,7 @@ public class PossessionsContentFactory implements ReportContentFactory<Possessio
   }
 
   @Override
-  public PossessionsContent create(ReportSession session, IGenericCharacter character, IGenericDescription description) {
+  public PossessionsContent create(ReportSession session, IGenericCharacter character) {
     return new PossessionsContent(resources, character);
   }
 }

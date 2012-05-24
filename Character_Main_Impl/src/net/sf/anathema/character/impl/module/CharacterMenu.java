@@ -42,7 +42,7 @@ public class CharacterMenu implements IAnathemaMenu {
             return false;
           }
           ICharacter character = (ICharacter) itemData;
-          return character.hasStatistics() && !character.getStatistics().isExperienced();
+          return !character.isExperienced();
         }
       };
     }
@@ -50,7 +50,7 @@ public class CharacterMenu implements IAnathemaMenu {
     @Override
     protected void execute(Component parentComponent) {
       ICharacter character = (ICharacter) model.getItemManagement().getSelectedItem().getItemData();
-      character.getStatistics().setExperienced(true);
+      character.setExperienced(true);
       setEnabled(false);
     }
   }

@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.registry;
 
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
-public class IdentificateRegistry<E extends IIdentificate> extends CollectionRegistry<E> implements
+public class IdentificateRegistry<E extends Identified> extends CollectionRegistry<E> implements
     IIdentificateRegistry<E> {
 
   @Override

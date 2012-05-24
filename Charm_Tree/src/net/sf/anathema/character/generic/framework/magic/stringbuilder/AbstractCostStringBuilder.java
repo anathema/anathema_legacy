@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.sf.anathema.character.generic.magic.general.ICost;
+import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.lib.lang.StringUtilities.EMPTY_STRING;
@@ -35,7 +36,7 @@ public abstract class AbstractCostStringBuilder<T extends ICost> implements ICos
       }
     }
     if (!isNullOrEmpty(text)) {
-      costString = costString.concat(IMagicTooltipStringBuilder.Space + text);
+      costString = costString.concat(TooltipBuilder.Space + text);
     }
     return costString;
   }

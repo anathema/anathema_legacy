@@ -11,13 +11,13 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersister;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -41,6 +41,7 @@ public class CharacterStatisticPersister {
   private final RulesPersister rulesPersister = new RulesPersister();
   private final ICharacterGenerics generics;
   private final AdditionalModelPersister additonalModelPersister;
+  private final CharacterDescriptionPersister descriptionPersister = new CharacterDescriptionPersister();
 
   public CharacterStatisticPersister(ICharacterGenerics generics, IAnathemaMessaging messaging) {
     this.generics = generics;
@@ -49,51 +50,51 @@ public class CharacterStatisticPersister {
     this.additonalModelPersister = new AdditionalModelPersister(generics.getAdditonalPersisterFactoryRegistry(), messaging);
   }
 
-  public void save(Element parent, ICharacterStatistics statistics) {
-    Preconditions.checkNotNull(statistics);
+  public void save(Element parent, ICharacter character) {
+    Preconditions.checkNotNull(character);
+    descriptionPersister.save(parent, character.getDescription());
     Element statisticsElement = parent.addElement(TAG_STATISTICS);
     rulesPersister.save(statisticsElement);
-    statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(statistics.isExperienced()));
-    ICharacterTemplate template = statistics.getCharacterTemplate();
+    statisticsElement.addAttribute(ATTRIB_EXPERIENCED, String.valueOf(character.isExperienced()));
+    ICharacterTemplate template = character.getCharacterTemplate();
     Element characterTypeElement = statisticsElement.addElement(TAG_CHARACTER_TYPE);
     characterTypeElement.addAttribute(ATTRIB_SUB_TYPE, template.getTemplateType().getSubType().getId());
     characterTypeElement.addText(template.getTemplateType().getCharacterType().getId());
-    characterConceptPersister.save(statisticsElement, statistics.getCharacterConcept());
-    essencePersister.save(statisticsElement, statistics.getTraitConfiguration());
-    willpowerPersister.save(statisticsElement, statistics.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
-    virtuePersister.save(statisticsElement, statistics.getTraitConfiguration());
-    attributePersister.save(statisticsElement, statistics.getTraitConfiguration());
-    abilityPersister.save(statisticsElement, statistics.getTraitConfiguration());
-    backgroundPersister.save(statisticsElement, statistics.getTraitConfiguration().getBackgrounds());
-    charmPersister.save(statisticsElement, statistics);
-    spellPersister.save(statisticsElement, statistics.getSpells());
-    experiencePersister.save(statisticsElement, statistics.getExperiencePoints());
-    additonalModelPersister.save(statisticsElement, statistics.getExtendedConfiguration().getAdditionalModels());
+    characterConceptPersister.save(statisticsElement, character.getCharacterConcept());
+    essencePersister.save(statisticsElement, character.getTraitConfiguration());
+    willpowerPersister.save(statisticsElement, character.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
+    virtuePersister.save(statisticsElement, character.getTraitConfiguration());
+    attributePersister.save(statisticsElement, character.getTraitConfiguration());
+    abilityPersister.save(statisticsElement, character.getTraitConfiguration());
+    backgroundPersister.save(statisticsElement, character.getTraitConfiguration().getBackgrounds());
+    charmPersister.save(statisticsElement, character);
+    spellPersister.save(statisticsElement, character.getSpells());
+    experiencePersister.save(statisticsElement, character.getExperiencePoints());
+    additonalModelPersister.save(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
   }
 
-  public void load(Element parent, ICharacter character) throws PersistenceException {
+  public ICharacter load(Element parent) throws PersistenceException {
     try {
       Element statisticsElement = parent.element(TAG_STATISTICS);
-      if (statisticsElement == null) {
-        return;
-      }
       ITemplateType templateType = loadTemplateType(statisticsElement);
       boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
       ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
-      ICharacterStatistics statistics = character.createCharacterStatistics(template, generics);
+      ExaltedCharacter character = new ExaltedCharacter(template, generics);
+      descriptionPersister.load(parent, character.getDescription());
       ICasteCollection casteCollection = template.getCasteCollection();
-      characterConceptPersister.load(statisticsElement, statistics.getCharacterConcept(), character.getDescription(), casteCollection);
-      statistics.setExperienced(experienced);
-      essencePersister.load(statisticsElement, statistics.getTraitConfiguration());
-      virtuePersister.load(statisticsElement, statistics.getTraitConfiguration());
-      attributePersister.load(statisticsElement, statistics.getTraitConfiguration());
-      abilityPersister.load(statisticsElement, statistics.getTraitConfiguration());
-      backgroundPersister.load(statisticsElement, statistics.getTraitConfiguration().getBackgrounds());
-      charmPersister.load(statisticsElement, statistics);
-      spellPersister.load(statisticsElement, statistics.getSpells());
-      experiencePersister.load(statisticsElement, statistics.getExperiencePoints());
-      willpowerPersister.load(statisticsElement, statistics.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
-      additonalModelPersister.load(statisticsElement, statistics.getExtendedConfiguration().getAdditionalModels());
+      characterConceptPersister.load(statisticsElement, character.getCharacterConcept(), character.getDescription(), casteCollection);
+      character.setExperienced(experienced);
+      essencePersister.load(statisticsElement, character.getTraitConfiguration());
+      virtuePersister.load(statisticsElement, character.getTraitConfiguration());
+      attributePersister.load(statisticsElement, character.getTraitConfiguration());
+      abilityPersister.load(statisticsElement, character.getTraitConfiguration());
+      backgroundPersister.load(statisticsElement, character.getTraitConfiguration().getBackgrounds());
+      charmPersister.load(statisticsElement, character);
+      spellPersister.load(statisticsElement, character.getSpells());
+      experiencePersister.load(statisticsElement, character.getExperiencePoints());
+      willpowerPersister.load(statisticsElement, character.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
+      additonalModelPersister.load(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
+      return character;
     } catch (CharmException e) {
       throw new PersistenceException(e);
     } catch (SpellException e) {
@@ -105,7 +106,7 @@ public class CharacterStatisticPersister {
     String typeId = ElementUtilities.getRequiredText(parent, TAG_CHARACTER_TYPE);
     ICharacterType characterType = CharacterType.getById(typeId);
     String subTypeValue = parent.element(TAG_CHARACTER_TYPE).attributeValue(ATTRIB_SUB_TYPE);
-    IIdentificate subtype = subTypeValue == null ? TemplateType.DEFAULT_SUB_TYPE : new Identificate(subTypeValue);
+    Identified subtype = subTypeValue == null ? TemplateType.DEFAULT_SUB_TYPE : new Identificate(subTypeValue);
     return new TemplateType(characterType, subtype);
   }
 }

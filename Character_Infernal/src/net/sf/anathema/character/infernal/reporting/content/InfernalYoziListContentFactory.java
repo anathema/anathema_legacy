@@ -1,7 +1,6 @@
 package net.sf.anathema.character.infernal.reporting.content;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.pdf.content.RegisteredReportContent;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentFactory;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -17,8 +16,7 @@ public class InfernalYoziListContentFactory implements ReportContentFactory<Infe
   }
 
   @Override
-  public InfernalYoziListContent create(ReportSession session, IGenericCharacter character,
-          IGenericDescription description) {
+  public InfernalYoziListContent create(ReportSession session, IGenericCharacter character) {
     return new InfernalYoziListContent(character, resources);
   }
 }

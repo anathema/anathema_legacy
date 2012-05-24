@@ -3,15 +3,15 @@ package net.sf.anathema.character.equipment.dummy;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 public class DemoNaturalArmour extends AbstractCombatStats implements IArmourStats {
 
   private final int bashingSoak;
   private final int lethalSoak;
-  private final IIdentificate name;
+  private final Identified name;
 
-  public DemoNaturalArmour(IIdentificate identificate, int bashingSoak, int lethalSoak) {
+  public DemoNaturalArmour(Identified identificate, int bashingSoak, int lethalSoak) {
     this.name = identificate;
     this.bashingSoak = bashingSoak;
     this.lethalSoak = lethalSoak;
@@ -44,7 +44,7 @@ public class DemoNaturalArmour extends AbstractCombatStats implements IArmourSta
   }
 
   @Override
-  public IIdentificate getName() {
+  public Identified getName() {
     return name;
   }
 

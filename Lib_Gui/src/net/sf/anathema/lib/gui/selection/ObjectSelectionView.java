@@ -37,10 +37,6 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V> {
     comboBox.setRenderer(renderer);
   }
 
-  public void setLabelText(String text) {
-    this.label.setText(text);
-  }
-
   /** Requires two colums */
   public void addTo(JPanel panel, IGridDialogLayoutData data) {
     panel.add(label);

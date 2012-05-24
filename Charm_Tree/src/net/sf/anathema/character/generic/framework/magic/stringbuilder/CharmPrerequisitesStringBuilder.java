@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharmPrerequisitesStringBuilder implements IMagicTooltipStringBuilder {
@@ -26,11 +27,11 @@ public class CharmPrerequisitesStringBuilder implements IMagicTooltipStringBuild
         continue;
       }
       builder.append(resources.getString("CharmTreeView.ToolTip.Minimum")); //$NON-NLS-1$
-      builder.append(Space);
+      builder.append(TooltipBuilder.Space);
       builder.append(resources.getString(prerequisite.getType().getId()));
-      builder.append(ColonSpace);
+      builder.append(TooltipBuilder.ColonSpace);
       builder.append(String.valueOf(prerequisite.getCurrentValue()));
-      builder.append(HtmlLineBreak);
+      builder.append(TooltipBuilder.HtmlLineBreak);
     }
   }
 }

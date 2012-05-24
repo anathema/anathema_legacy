@@ -12,8 +12,8 @@ import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
 import net.sf.anathema.lib.collection.CollectionUtilities;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.IPredicate;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -98,7 +98,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
   @Override
   public abstract String getHeaderKey();
 
-  public String getGroupLabel(IIdentificate groupId) {
+  public String getGroupLabel(Identified groupId) {
     String groupIdAsString = groupId.getId();
     String resourceKey = groupId instanceof ICasteType ? "Caste." + groupIdAsString : getGroupNamePrefix() + groupIdAsString; //$NON-NLS-1$
     return getString(resourceKey);

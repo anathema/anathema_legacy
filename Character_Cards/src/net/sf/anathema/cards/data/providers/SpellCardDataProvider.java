@@ -1,8 +1,5 @@
 package net.sf.anathema.cards.data.providers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.cards.data.ICardData;
 import net.sf.anathema.cards.data.SpellCardData;
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
@@ -11,6 +8,9 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SpellCardDataProvider extends AbstractMagicCardDataProvider {
 
@@ -30,7 +30,7 @@ public class SpellCardDataProvider extends AbstractMagicCardDataProvider {
 	}
 	
 	private ISpell[] getCurrentSpells(ICharacter character) {
-	  return character.getStatistics().getSpells().getLearnedSpells(character.getStatistics().isExperienced());
+	  return character.getSpells().getLearnedSpells(character.isExperienced());
 	}
 
 	private SpellStats createSpellStats(ISpell spell) {

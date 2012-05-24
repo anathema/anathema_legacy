@@ -7,11 +7,14 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 public class CostAnalyzerTest {
@@ -36,7 +39,7 @@ public class CostAnalyzerTest {
   public void testGetMartialArtsLevelFromMartialArtsCharm() throws Exception {
     assertEquals(MartialArtsLevel.Terrestrial, costAnalyzer.getMartialArtsLevel(new DummyCharm(CHARM_ID) {
       @Override
-      public boolean hasAttribute(IIdentificate attribute) {
+      public boolean hasAttribute(Identified attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }));

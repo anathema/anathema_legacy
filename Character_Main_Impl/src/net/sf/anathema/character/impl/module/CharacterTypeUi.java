@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identified;
 
 import javax.swing.Icon;
 
@@ -25,7 +25,7 @@ public class CharacterTypeUi implements IObjectUi<Object> {
     String printName = file.getPrintName();
     ICharacterType characterType = scanner.getCharacterType(file);
     String characterString = resources.getString("CharacterGenerator.NewCharacter." + characterType.getId() + ".Name"); //$NON-NLS-1$//$NON-NLS-2$
-    IIdentificate casteType = scanner.getCasteType(file);
+    Identified casteType = scanner.getCasteType(file);
     if (casteType == null) {
       return resources.getString("LoadCharacter.PrintNameFile.ShortMessage", new Object[] { //$NON-NLS-1$
           printName, characterString });
