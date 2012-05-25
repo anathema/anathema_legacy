@@ -194,13 +194,20 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
       List<IEquipmentStatsOption> optionList = optionsTable.get(fromItem, fromStats);
       optionsTable.remove(fromItem, fromStats);
       IEquipmentStats toStats = toItem.getStat(fromStats.getId());
-      toItem.setPrintEnabled(toStats, fromItem.isPrintEnabled(fromStats));
       if (toStats != null && optionList != null) {
         optionsTable.put(toItem, toStats, optionList);
         transferred = true;
       }
     }
     return transferred;
+  }
+  
+  private void transferCheckboxStatus(IEquipmentItem fromItem, IEquipmentItem toItem){
+    for (IEquipmentStats fromStats : fromItem.getStats()) {
+      IEquipmentStats toStats = toItem.getStat(fromStats.getId());
+      boolean printCheckboxEnabled = fromItem.isPrintEnabled(fromStats);
+      toItem.setPrintEnabled(toStats, printCheckboxEnabled);
+    }
   }
 
   @Override
@@ -273,9 +280,10 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
       if (canBeRemoved(item)) {
         IEquipmentItem refreshedItem = refreshItem(item);
         if (refreshedItem != null) {
-        	refreshedItem.setPersonalization(item);
-        	getCharacterOptionProvider().transferOptions(item, refreshedItem);
-        	initItem(refreshedItem);
+          refreshedItem.setPersonalization(item);
+          transferCheckboxStatus(item, refreshedItem);
+          getCharacterOptionProvider().transferOptions(item, refreshedItem);
+          initItem(refreshedItem);
         }
       }
     }
