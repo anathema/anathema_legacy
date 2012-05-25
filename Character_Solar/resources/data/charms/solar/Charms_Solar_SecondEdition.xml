@@ -728,15 +728,15 @@
 		<prerequisite>
 			<essence id="Essence" value="2"/>
 			<trait id="Thrown" value="2"/>
-			<charmReference id="Solar.ReturningWeaponConcentration"/>
 		</prerequisite>
 		<cost>
-			<essence cost="" text="(1m)"/>
+			<essence cost="-" text="(1m)"/>
 		</cost>
-		<duration duration="Instant"/>
+		<duration duration="Permanent"/>
 		<charmtype type="Permanent"/>
 		<charmAttribute attribute="Obvious" visualize="true"/>
 		<charmAttribute attribute="Mirror" visualize="true"/>
+		<charmAttribute attribute="Merged" visualize="true"/>
 		<source source="SecondEdition" page="197"/>
 		<source source="ScrollErrata" />
 	</charm>
