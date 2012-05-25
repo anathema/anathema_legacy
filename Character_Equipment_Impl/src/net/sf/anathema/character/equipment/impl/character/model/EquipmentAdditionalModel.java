@@ -186,28 +186,23 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
   @Override
   public boolean transferOptions(IEquipmentItem fromItem, IEquipmentItem toItem) {
-    if (fromItem == null || toItem == null) {
-      return false;
-    }
     boolean transferred = false;
-    for (IEquipmentStats fromStats : fromItem.getStats()) {
-      List<IEquipmentStatsOption> optionList = optionsTable.get(fromItem, fromStats);
-      optionsTable.remove(fromItem, fromStats);
-      IEquipmentStats toStats = toItem.getStat(fromStats.getId());
-      if (toStats != null && optionList != null) {
-        optionsTable.put(toItem, toStats, optionList);
-        transferred = true;
+    if (fromItem != null && toItem != null) {
+      for (IEquipmentStats fromStats : fromItem.getStats()) {
+        List<IEquipmentStatsOption> specialtyList = optionsTable.remove(fromItem, fromStats);
+        boolean printCheckboxEnabled = fromItem.isPrintEnabled(fromStats);
+        IEquipmentStats toStats = toItem.getStat(fromStats.getId());
+      
+        if (toStats != null) {
+          transferred = true;
+          if( specialtyList != null) {
+            optionsTable.put(toItem, toStats, specialtyList);
+          }
+          toItem.setPrintEnabled(toStats, printCheckboxEnabled);
+        }
       }
     }
     return transferred;
-  }
-  
-  private void transferCheckboxStatus(IEquipmentItem fromItem, IEquipmentItem toItem){
-    for (IEquipmentStats fromStats : fromItem.getStats()) {
-      IEquipmentStats toStats = toItem.getStat(fromStats.getId());
-      boolean printCheckboxEnabled = fromItem.isPrintEnabled(fromStats);
-      toItem.setPrintEnabled(toStats, printCheckboxEnabled);
-    }
   }
 
   @Override
@@ -281,7 +276,6 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
         IEquipmentItem refreshedItem = refreshItem(item);
         if (refreshedItem != null) {
           refreshedItem.setPersonalization(item);
-          transferCheckboxStatus(item, refreshedItem);
           getCharacterOptionProvider().transferOptions(item, refreshedItem);
           initItem(refreshedItem);
         }
