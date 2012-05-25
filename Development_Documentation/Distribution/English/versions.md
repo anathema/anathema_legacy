@@ -15,6 +15,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 * Restructured the controls so there are less tabs-in-tabs.
 * The overview is collapsible.
 * [Curtis Tasker] Refreshing items in the loadout screen now remembers the checkbox status of all your equipped items.
+* Weapon Tag selection page shows explanatory tooltips.
 
 ### Bugfixes
 * Can refresh items in the loadout screen
