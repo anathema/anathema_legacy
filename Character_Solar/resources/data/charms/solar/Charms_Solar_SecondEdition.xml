@@ -279,9 +279,9 @@
 	</charm>
 	<charm id="Solar.SolarFlareMethodology" exalt="Solar" group="Archery">
 		<prerequisite>
-			<essence id="Essence" value="4"/>
-			<trait id="Archery" value="5"/>
-			<charmReference id="Solar.InexhaustibleBoltsSolarFire"/>
+			<essence id="Essence" value="3"/>
+			<trait id="Archery" value="4"/>
+			<charmReference id="Solar.EssenceArrowAttack"/>
 		</prerequisite>
 		<cost>
 			<essence cost="3" text="or 5m"/>
