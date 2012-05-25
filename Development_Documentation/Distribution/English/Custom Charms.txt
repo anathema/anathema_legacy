@@ -43,8 +43,12 @@ Here is an example of what the content of that file should look like:
 			<essence cost="1" text="per awesome custom Charm"/>
 		</cost>
 		<duration duration="Instant" />
+		<!-- For other durations, use the attributes "until" and "type/amount".-->
+		<!-- duration amount="1" type="scene"/-->
+		<!-- duration until="event"/-->
 		<charmtype type="Simple" />
 		<charmAttribute attribute="Native" visualize="true" />
+		<charmAttribute attribute="Shaping" visualize="true" />
 		<!-- For Martial Arts, make sure to add a charmAttribute denoting the Charms level, like-->
 		<!-- charmAttribute attribute="Celestial" /-->
 		<source source="Custom" />

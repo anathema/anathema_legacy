@@ -5,8 +5,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ICharacterDescriptionView extends IView {
-  
-  void addBlankLine();
 
   ITextView[] addFieldsView(String[] labelText);
 

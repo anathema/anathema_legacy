@@ -24,7 +24,7 @@ import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TabbedCharacterView extends AbstractItemView implements ICharacterView {
+public class TaskedCharacterView extends AbstractItemView implements ICharacterView {
 
   private final IntegerViewFactory integerDisplayFactory;
   private OverviewView creationOverviewView;
@@ -36,12 +36,11 @@ public class TabbedCharacterView extends AbstractItemView implements ICharacterV
   private final OptionalViewBar optionalViewPane = new OptionalViewBar();
   private JPanel content;
 
-  public TabbedCharacterView(IntegerViewFactory factory, String name, Icon icon, IntegerViewFactory factoryWithoutMarker) {
+  public TaskedCharacterView(IntegerViewFactory factory, String name, Icon icon, IntegerViewFactory factoryWithoutMarker) {
     this(new TaskedCharacterPane(), factory, name, icon, factoryWithoutMarker);
   }
 
-  public TabbedCharacterView(CharacterPane characterPane, IntegerViewFactory factory, String name, Icon icon,
-                             IntegerViewFactory factoryWithoutMarker) {
+  public TaskedCharacterView(CharacterPane characterPane, IntegerViewFactory factory, String name, Icon icon, IntegerViewFactory factoryWithoutMarker) {
     super(name, icon);
     this.characterPane = characterPane;
     this.integerDisplayFactory = factory;

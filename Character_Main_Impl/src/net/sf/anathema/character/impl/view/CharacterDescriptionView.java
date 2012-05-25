@@ -29,15 +29,7 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
   private static final int TEXT_COLUMNS = 45;
   private final JPanel content = new JPanel(new GridDialogLayout(3, false));
   private final List<JPanel> buttonPanels = new ArrayList<JPanel>();
-  
-  @Override
-  public void addBlankLine() {
-    GridDialogLayoutData lineLayout = new GridDialogLayoutData();
-    lineLayout.setGrabExcessHorizontalSpace(true);
-    lineLayout.setHorizontalSpan(3);
-    content.add(new JPanel(), lineLayout);
-  }
-  
+
   @Override
   public ITextView[] addFieldsView(String[] labelText) {
     ITextView[] textView = new ITextView[labelText.length];

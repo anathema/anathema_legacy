@@ -251,8 +251,7 @@
 			<willpower cost="1"/>
 		</cost>
 		<duration amount="1" unit="scene"/>
-		<charmtype type="Simple">
-		</charmtype>
+		<charmtype type="Simple"/>
 		<charmAttribute attribute="Combo-OK" visualize="true"/>
 		<charmAttribute attribute="Holy" visualize="true"/>
 		<charmAttribute attribute="Obvious" visualize="true"/>
@@ -279,8 +278,13 @@
 	</charm>
 	<charm id="Solar.SolarFlareMethodology" exalt="Solar" group="Archery">
 		<prerequisite>
+<<<<<<< HEAD
 			<essence id="Essence" value="3"/>
 			<trait id="Archery" value="4"/>
+=======
+			<essence id="Essence" value="4"/>
+			<trait id="Archery" value="3"/>
+>>>>>>> 3e6a200b9cc4dbfcf8d0f3c89beb6fe52f9cf336
 			<charmReference id="Solar.EssenceArrowAttack"/>
 		</prerequisite>
 		<cost>
@@ -731,12 +735,13 @@
 			<trait id="Thrown" value="2"/>
 		</prerequisite>
 		<cost>
-			<essence cost="" text="(1m)"/>
+			<essence cost="-" text="(1m)"/>
 		</cost>
-		<duration duration="Instant"/>
+		<duration duration="Permanent"/>
 		<charmtype type="Permanent"/>
 		<charmAttribute attribute="Obvious" visualize="true"/>
 		<charmAttribute attribute="Mirror" visualize="true"/>
+		<charmAttribute attribute="Merged" visualize="true"/>
 		<source source="SecondEdition" page="197"/>
 		<source source="ScrollErrata" />
 	</charm>
