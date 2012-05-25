@@ -17,6 +17,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Bugfixes
 * Can refresh items in the loadout screen
 * Corrects default descriptions for Sidereal Generic Charms
+* Fixes duration for (Sidereal/Stealth) "Blinding the Boar"
 
 ## Release 4.1.1
 
