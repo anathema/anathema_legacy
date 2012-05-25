@@ -19,4 +19,6 @@ public interface ICharacterTypeVisitor {
   void visitGhost(ICharacterType type);
 
   void visitLunar(ICharacterType type);
+  
+  void visitEnlightened(ICharacterType visitedType);
 }

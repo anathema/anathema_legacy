@@ -1,5 +1,5 @@
 CharacterType
-	|=>Mortal=>Thaumaturge (!)
+	|=>Mortal=>Enlightened
 	|
 	|=>Dragon King	!*
 	|	|=>Modern Dragon-King

@@ -79,6 +79,13 @@ public enum CharacterType implements ICharacterType {
       visitor.visitGhost(this);
     }
   },
+  ENLIGHTENED("Enlightened") {//$NON-NLS-1$
+
+	    @Override
+	    public void accept(ICharacterTypeVisitor visitor) {
+	      visitor.visitEnlightened(this);
+	    }
+	  },
   MORTAL("Mortal") {//$NON-NLS-1$
 
     @Override
@@ -108,6 +115,8 @@ public enum CharacterType implements ICharacterType {
   public static ICharacterType[] getAllExaltTypes() {
     List<ICharacterType> types = new ArrayList<ICharacterType>();
     Collections.addAll(types, values());
+    types.remove(MORTAL);
+    types.remove(ENLIGHTENED);
     types.remove(MORTAL);
     types.remove(GHOST);
     types.remove(SPIRIT);
@@ -142,7 +151,7 @@ public enum CharacterType implements ICharacterType {
   }
 
   public static Iterable<ICharacterType> getAllEssenceUsers() {
-    List<ICharacterType> list = Lists.<ICharacterType>newArrayList(SPIRIT, GHOST);
+    List<ICharacterType> list = Lists.<ICharacterType>newArrayList(SPIRIT, GHOST, ENLIGHTENED);
     Collections.addAll(list, getAllExaltTypes());
     return list;
   }
