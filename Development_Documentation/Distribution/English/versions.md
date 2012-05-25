@@ -13,6 +13,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Features
 * If no PDF reader is installed, Anathema asks you to install one instead of showing an ugly error message.
 * The overview is collapsible and hidden by default.
+* [Curtis Tasker] Refreshing items in the loadout screen now remembers the checkbox status of all your equipped items.
 
 ### Bugfixes
 * Can refresh items in the loadout screen
