@@ -12,7 +12,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Features
 * If no PDF reader is installed, Anathema asks you to install one instead of showing an ugly error message.
-* The overview is collapsible.
+* Restructured the controls so there are less tabs-in-tabs.
 
 ### Bugfixes
 * Can refresh items in the loadout screen
