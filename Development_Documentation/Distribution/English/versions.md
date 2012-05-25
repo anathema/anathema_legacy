@@ -18,6 +18,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 * Can refresh items in the loadout screen
 * Corrects default descriptions for Sidereal Generic Charms
 * Fixes duration for (Sidereal/Stealth) "Blinding the Boar"
+* Fixes prerequisites for (Solar/Archery) "Solar Flare Methodology" and its Abyssal Mirror
 
 ## Release 4.1.1
 

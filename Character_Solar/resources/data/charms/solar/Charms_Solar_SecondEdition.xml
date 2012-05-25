@@ -251,8 +251,7 @@
 			<willpower cost="1"/>
 		</cost>
 		<duration amount="1" unit="scene"/>
-		<charmtype type="Simple">
-		</charmtype>
+		<charmtype type="Simple"/>
 		<charmAttribute attribute="Combo-OK" visualize="true"/>
 		<charmAttribute attribute="Holy" visualize="true"/>
 		<charmAttribute attribute="Obvious" visualize="true"/>
@@ -280,8 +279,8 @@
 	<charm id="Solar.SolarFlareMethodology" exalt="Solar" group="Archery">
 		<prerequisite>
 			<essence id="Essence" value="4"/>
-			<trait id="Archery" value="5"/>
-			<charmReference id="Solar.InexhaustibleBoltsSolarFire"/>
+			<trait id="Archery" value="3"/>
+			<charmReference id="Solar.EssenceArrowAttack"/>
 		</prerequisite>
 		<cost>
 			<essence cost="3" text="or 5m"/>
