@@ -278,13 +278,8 @@
 	</charm>
 	<charm id="Solar.SolarFlareMethodology" exalt="Solar" group="Archery">
 		<prerequisite>
-<<<<<<< HEAD
 			<essence id="Essence" value="3"/>
 			<trait id="Archery" value="4"/>
-=======
-			<essence id="Essence" value="4"/>
-			<trait id="Archery" value="3"/>
->>>>>>> 3e6a200b9cc4dbfcf8d0f3c89beb6fe52f9cf336
 			<charmReference id="Solar.EssenceArrowAttack"/>
 		</prerequisite>
 		<cost>
