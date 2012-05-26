@@ -37,7 +37,7 @@ public class CollapsiblePane {
   }
 
   public void toggleCollapsedState() {
-    collapsiblePane.setCollapsed(!collapsiblePane.isCollapsed());
+    collapsiblePane.setCollapsed(!isCollapsed());
   }
 
   public void collapse() {

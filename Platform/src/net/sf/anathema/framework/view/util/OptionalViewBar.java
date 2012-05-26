@@ -7,7 +7,6 @@ import net.sf.anathema.framework.view.util.collapsible.ExpandOnlyThisPaneListene
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,7 +15,7 @@ import java.util.Map;
 
 public class OptionalViewBar {
   private JPanel panel = new JPanel(new BorderLayout());
-  private JPanel container = new JPanel(new FlowLayout(SwingConstants.CENTER, 0, 0));
+  private JPanel container = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
   private JPanel buttonBar = new JPanel(new VerticalFlowLayout());
   private Map<String, CollapsiblePane> collapsiblePanesById = new HashMap<String, CollapsiblePane>();
 
