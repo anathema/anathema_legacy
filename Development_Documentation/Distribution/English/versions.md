@@ -23,6 +23,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 * Fixes duration for (Sidereal/Stealth) "Blinding the Boar"
 * Fixes prerequisites for (Solar/Archery) "Solar Flare Methodology" and its Abyssal Mirror
 * Fixes prerequisites for (Solar/Thrown) "Call the Blade" and its Abyssal Mirror
+* Fixes cost for (Martial Arts/VBoS) "Metal Storm"
 
 ## Release 4.1.1
 
