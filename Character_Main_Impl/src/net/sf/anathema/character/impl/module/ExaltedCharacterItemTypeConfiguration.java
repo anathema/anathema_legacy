@@ -9,7 +9,7 @@ import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.impl.module.repository.CharacterCreationWizardPageFactory;
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
-import net.sf.anathema.character.impl.view.TabbedCharacterView;
+import net.sf.anathema.character.impl.view.TaskedCharacterView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -59,7 +59,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         CharacterUI characterUI = new CharacterUI(resources);
         if (character == null) {
           Icon icon = characterUI.getCharacterDescriptionTabIcon();
-          ICharacterView characterView = new TabbedCharacterView(null, printName, icon, null);
+          ICharacterView characterView = new TaskedCharacterView(null, printName, icon, null);
           new CharacterPresenter((ICharacter) item.getItemData(), characterView, resources, anathemaModel, new NpcPointPresentation())
                   .initPresentation();
           return characterView;
@@ -69,7 +69,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         IntegerViewFactory markerLessIntValueDisplayFactory =
                 IntValueDisplayFactoryPrototype.createWithoutMarkerForCharacterType(resources, characterType);
         Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
-        ICharacterView characterView = new TabbedCharacterView(intValueDisplayFactory, printName, typeIcon, markerLessIntValueDisplayFactory);
+        ICharacterView characterView = new TaskedCharacterView(intValueDisplayFactory, printName, typeIcon, markerLessIntValueDisplayFactory);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(((ICharacter) item.getItemData()));
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(((ICharacter) item.getItemData()));
         PointPresentationStrategy pointPresentation =

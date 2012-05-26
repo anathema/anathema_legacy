@@ -256,21 +256,20 @@
      </charm>
      <charm id="Abyssal.GaspOfDeadGods" exalt="Abyssal" group="Archery">
           <prerequisite>
-               <trait id="Archery" value="5" />
                <essence value="4" />
-               <charmReference id="Abyssal.QuiverOfSouls" />
+               <trait id="Archery" value="3" />
+               <charmReference id="Abyssal.SplinterOfTheVoid" />
           </prerequisite>
           <cost>
-               <essence cost="5" />
+               <essence cost="3" text=" or 5m"/>
                <willpower cost="1" />
           </cost>
           <duration amount="1" unit="scene" />
-          <charmtype type="Simple">
-               <special speed="5" defense="-1" />
-          </charmtype>
+          <charmtype type="Simple"/>
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Solar Flare Methodology -->
           <charmAttribute attribute="Obvious" visualize="true" />
           <source source="Abyssals2nd" />
+          <source source="ScrollErrata" />
      </charm>
 </charmlist>

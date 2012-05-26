@@ -30,6 +30,11 @@ public class TagPageProperties {
   }
 
   public IBasicMessage getThrownTagButNotThrownTypeMessage() {
-    return new BasicMessage(resources.getString("Equipment.Creation.Tags.ThrownTagButNotThrownTypeMessage")); //$NON-NLS-1$
+    return new BasicMessage(
+            resources.getString("Equipment.Creation.Tags.ThrownTagButNotThrownTypeMessage")); //$NON-NLS-1$
+  }
+
+  public String getToolTip(IWeaponTag tag) {
+    return resources.getString("Equipment.Tag.Tooltip." + tag.getId());
   }
 }

@@ -186,17 +186,20 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
   @Override
   public boolean transferOptions(IEquipmentItem fromItem, IEquipmentItem toItem) {
-    if (fromItem == null || toItem == null) {
-      return false;
-    }
     boolean transferred = false;
-    for (IEquipmentStats fromStats : fromItem.getStats()) {
-      List<IEquipmentStatsOption> optionList = optionsTable.get(fromItem, fromStats);
-      optionsTable.remove(fromItem, fromStats);
-      IEquipmentStats toStats = toItem.getStat(fromStats.getId());
-      if (toStats != null && optionList != null) {
-        optionsTable.put(toItem, toStats, optionList);
-        transferred = true;
+    if (fromItem != null && toItem != null) {
+      for (IEquipmentStats fromStats : fromItem.getStats()) {
+        List<IEquipmentStatsOption> specialtyList = optionsTable.remove(fromItem, fromStats);
+        boolean printCheckboxEnabled = fromItem.isPrintEnabled(fromStats);
+        IEquipmentStats toStats = toItem.getStat(fromStats.getId());
+      
+        if (toStats != null) {
+          transferred = true;
+          if( specialtyList != null) {
+            optionsTable.put(toItem, toStats, specialtyList);
+          }
+          toItem.setPrintEnabled(toStats, printCheckboxEnabled);
+        }
       }
     }
     return transferred;
@@ -272,9 +275,9 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
       if (canBeRemoved(item)) {
         IEquipmentItem refreshedItem = refreshItem(item);
         if (refreshedItem != null) {
-        	refreshedItem.setPersonalization(item);
-        	getCharacterOptionProvider().transferOptions(item, refreshedItem);
-        	initItem(refreshedItem);
+          refreshedItem.setPersonalization(item);
+          getCharacterOptionProvider().transferOptions(item, refreshedItem);
+          initItem(refreshedItem);
         }
       }
     }

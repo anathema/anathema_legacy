@@ -52,6 +52,7 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
     BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
     for (IWeaponTag tag : model.getWeaponTagsModel().getAllTags()) {
       final JCheckBox checkBox = content.addCheckBox(properties.getLabel(tag));
+      checkBox.setToolTipText(properties.getToolTip(tag));
       booleanValuePresentation.initPresentation(checkBox, model.getWeaponTagsModel().getSelectedModel(tag));
       final BooleanValueModel enabledModel = model.getWeaponTagsModel().getEnabledModel(tag);
       enabledModel.addChangeListener(new IBooleanValueChangedListener() {

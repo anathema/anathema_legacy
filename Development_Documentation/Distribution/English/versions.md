@@ -12,11 +12,17 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Features
 * If no PDF reader is installed, Anathema asks you to install one instead of showing an ugly error message.
-* The overview is collapsible and hidden by default.
+* Restructured the controls so there are less tabs-in-tabs.
+* The overview is collapsible.
+* [Curtis Tasker] Refreshing items in the loadout screen now remembers the checkbox status of all your equipped items.
+* Weapon Tag selection page shows explanatory tooltips.
 
 ### Bugfixes
 * Can refresh items in the loadout screen
 * Corrects default descriptions for Sidereal Generic Charms
+* Fixes duration for (Sidereal/Stealth) "Blinding the Boar"
+* Fixes prerequisites for (Solar/Archery) "Solar Flare Methodology" and its Abyssal Mirror
+* Fixes prerequisites for (Solar/Thrown) "Call the Blade" and its Abyssal Mirror
 
 ## Release 4.1.1
 
