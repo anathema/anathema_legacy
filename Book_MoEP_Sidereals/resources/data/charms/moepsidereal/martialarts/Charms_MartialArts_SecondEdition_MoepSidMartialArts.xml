@@ -141,7 +141,7 @@
           </prerequisite>
           <cost>
                <essence cost="7"/>
-               <willpower cost="7"/>
+               <willpower cost="1"/>
           </cost>
           <duration duration="Instant" />
           <charmtype type="ExtraAction" />
