@@ -53,11 +53,6 @@ public enum MagicalMaterial implements Identified {
       }
 
       @Override
-      public void visitEnlightened(ICharacterType visitedType) {
-        types[0] = getNullAttunementTypes();
-      }
-
-      @Override
       public void visitSidereal(ICharacterType visitedType) {
         types[0] = getSingleMaterialAttunement(type, material);
       }
@@ -126,11 +121,6 @@ public enum MagicalMaterial implements Identified {
 
       @Override
       public void visitMortal(ICharacterType visitedType) {
-        // nothing to do
-      }
-
-      @Override
-      public void visitEnlightened(ICharacterType visitedType) {
         // nothing to do
       }
 

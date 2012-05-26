@@ -2,7 +2,7 @@ CharacterType
 	|=>Mortal	
 	|	|=>Mortal 
 	|	|=>Heroic Mortal
-	|	\=>Enlightened Mortal (!)
+	|	\=>Thaumaturge (!)
 	|
 	|=>Dragon King	!*
 	|	|=>Modern Dragon-King

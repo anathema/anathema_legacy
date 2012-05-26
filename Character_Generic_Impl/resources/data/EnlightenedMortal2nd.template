@@ -1,4 +1,4 @@
-<exaltedCharacterTemplate characterType="Enlightened" subtemplate="Enlightened Mortal">
+<exaltedCharacterTemplate characterType="Mortal" subtemplate="EnlightenedMortal">
   <general>
     <edition edition="SecondEdition"/>
     <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />
@@ -6,7 +6,7 @@
     <essence uses="EnlightenedMortalEssence.template" />
     <traitCollection uses="trait/EnlightenedMortalTraitCollection.template"/>
     <magicTemplate uses="magic/EnlightenedMortalMagic.template"/>
-    <presentation uses="presentation/HeroicMortalPresentation.template"/>
+    <presentation uses="template/SpiritPresentation2nd.template"/>
     <healthTemplate>
       <toughnessControllingTrait type="Resistance"/>
     </healthTemplate> 
