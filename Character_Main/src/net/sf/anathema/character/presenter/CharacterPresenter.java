@@ -54,8 +54,21 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     this.pointPresentation = pointPresentation;
   }
 
-  private String getString(String resourceKey) {
-    return resources.getString(resourceKey);
+  @Override
+  public void initPresentation() {
+    initOutline();
+    initPhysicalTraits();
+    initSpiritualTraits();
+    initMagic();
+    initMiscellaneous();
+    pointPresentation.initPresentation(this);
+  }
+
+  private void initOutline() {
+    IContentPresenter descriptionPresenter = createDescriptionPresenter();
+    IContentPresenter conceptPresenter = createConceptPresenter();
+    String title = getString("CardView.Outline.Title");
+    initMultipleContentPresentation(title, Concept, descriptionPresenter, conceptPresenter);
   }
 
   private void initPhysicalTraits() {
@@ -73,34 +86,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     initMultipleContentPresentation(title, Advantages, presenter);
   }
 
-  private void initMiscellaneousPresentation() {
-    String title = getString("CardView.MiscellaneousConfiguration.Title");
-    BackgroundView factory = characterView.createBackgroundView();
-    IContentPresenter presenter = new BackgroundPresenter(resources, character.getTraitConfiguration().getBackgrounds(),
-            character.getCharacterContext(), factory, getGenerics(anathemaModel).getBackgroundRegistry());
-    initMultipleContentPresentation(title, Miscellaneous, presenter);
-  }
-
-  private void initCharacterConceptPresentation() {
-    IContentPresenter descriptionPresenter = createDescriptionPresenter();
-    IContentPresenter conceptPresenter = createConceptPresenter();
-    String title = getString("CardView.Outline.Title");
-    initMultipleContentPresentation(title, Concept, descriptionPresenter, conceptPresenter);
-  }
-
-  private IContentPresenter createConceptPresenter() {
-    IConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
-    return new CharacterConceptAndRulesPresenter(character, viewFactory, resources);
-  }
-
-
-  private IContentPresenter createDescriptionPresenter() {
-    ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
-    return new CharacterDescriptionPresenter(resources, character.getDescription(), view,
-            character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
-  }
-
-  private void initMagicPresentation() {
+  private void initMagic() {
     ICharacterTemplate characterTemplate = character.getCharacterTemplate();
     if (!characterTemplate.getMagicTemplate().getCharmTemplate().canLearnCharms()) {
       return;
@@ -115,6 +101,26 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
       characterView.addDisposable(disposable);
     }
     addMultipleContentViewGroup(magicViewHeader, AdditionalModelType.Magic, contentView);
+  }
+
+  private void initMiscellaneous() {
+    String title = getString("CardView.MiscellaneousConfiguration.Title");
+    BackgroundView factory = characterView.createBackgroundView();
+    IContentPresenter backgrounds = new BackgroundPresenter(resources, character.getTraitConfiguration().getBackgrounds(),
+            character.getCharacterContext(), factory, getGenerics(anathemaModel).getBackgroundRegistry());
+    initMultipleContentPresentation(title, Miscellaneous, backgrounds);
+  }
+
+
+  private IContentPresenter createConceptPresenter() {
+    IConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
+    return new CharacterConceptAndRulesPresenter(character, viewFactory, resources);
+  }
+
+  private IContentPresenter createDescriptionPresenter() {
+    ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
+    return new CharacterDescriptionPresenter(resources, character.getDescription(), view,
+            character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
   }
 
   @Override
@@ -157,13 +163,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     }
   }
 
-  @Override
-  public void initPresentation() {
-    initCharacterConceptPresentation();
-    initPhysicalTraits();
-    initSpiritualTraits();
-    initMagicPresentation();
-    initMiscellaneousPresentation();
-    pointPresentation.initPresentation(this);
+  private String getString(String resourceKey) {
+    return resources.getString(resourceKey);
   }
 }
