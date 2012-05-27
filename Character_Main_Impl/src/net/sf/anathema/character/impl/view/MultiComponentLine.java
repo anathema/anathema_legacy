@@ -1,12 +1,15 @@
 package net.sf.anathema.character.impl.view;
 
-import com.google.common.base.Preconditions;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.character.model.IIntegerDescription;
+import net.sf.anathema.character.view.IIntegerView;
 import net.sf.anathema.character.view.IMultiComponentLine;
+import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 import javax.swing.GroupLayout;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
@@ -55,20 +58,30 @@ public class MultiComponentLine implements IMultiComponentLine {
   @Override
   public ITextView addFieldsView(String labelText) {
     LineTextView view = new LineTextView(FIELD_COLUMNS);
-    addView(labelText, view);
+    addLabeledComponent(labelText, view.getComponent());
     numberOfViews++;
     return view;
   }
 
-  private void addView(String text, ITextView iTextView) {
-    JLabel label = new JLabel(text);
+  @Override
+  public IIntegerView addIntegerView(String labelText, IIntegerDescription description) {
+    IntegerSpinner spinner = new IntegerSpinner(description.getValue());
+    spinner.setPreferredWidth(48);
+    spinner.setStepSize(5);
+    JComponent component = spinner.getComponent();
+    addLabeledComponent(labelText, component);
+    return spinner;
+  }
+
+  private void addLabeledComponent(String text, JComponent component) {
     if (numberOfViews > 0) {
       horizontal.addPreferredGap(UNRELATED, DEFAULT_SIZE, MAX_VALUE);
     }
+    JLabel label = new JLabel(text);
     horizontal.addComponent(label);
     horizontal.addPreferredGap(RELATED, DEFAULT_SIZE, MAX_VALUE);
-    horizontal.addComponent(iTextView.getComponent());
+    horizontal.addComponent(component);
     vertical.addComponent(label);
-    vertical.addComponent(iTextView.getComponent());
+    vertical.addComponent(component);
   }
 }

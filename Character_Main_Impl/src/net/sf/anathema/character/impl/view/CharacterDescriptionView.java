@@ -29,7 +29,6 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
     return componentLine;
   }
 
-
   @Override
   public ITextView addLineView(String labelText) {
     return addTextView(labelText, new LineTextView(TEXT_COLUMNS));

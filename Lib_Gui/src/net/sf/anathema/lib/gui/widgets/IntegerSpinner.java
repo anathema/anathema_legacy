@@ -1,5 +1,6 @@
 package net.sf.anathema.lib.gui.widgets;
 
+import net.sf.anathema.character.view.IIntegerView;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.IOverline;
 import net.sf.anathema.lib.data.Range;
@@ -19,7 +20,7 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IntegerSpinner implements IView {
+public class IntegerSpinner implements IView, IIntegerView {
 
   private final JSpinner spinner;
   private final Map<IIntValueChangedListener, ChangeListener> listenerMap = new HashMap<IIntValueChangedListener, ChangeListener>();
@@ -57,6 +58,7 @@ public class IntegerSpinner implements IView {
     return spinner;
   }
 
+  @Override
   public void addChangeListener(final IIntValueChangedListener listener) {
     ChangeListener changeListener = new ChangeListener() {
       @Override
@@ -131,10 +133,5 @@ public class IntegerSpinner implements IView {
 
   public void removeChangeListener(IIntValueChangedListener listener) {
     numberModel.removeChangeListener(listenerMap.get(listener));
-  }
-
-  public void setEditable(boolean editable) {
-    NumberEditor editor = (NumberEditor) spinner.getEditor();
-    editor.getTextField().setEditable(editable);
   }
 }

@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.IIntegerDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
@@ -18,13 +17,11 @@ import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.ui.IObjectUi;
 import net.sf.anathema.lib.gui.ui.ObjectUiListCellRenderer;
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -52,7 +49,6 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     boolean casteRow = initCastePresentation();
     IMotivation motivation = character.getCharacterConcept().getWillpowerRegainingConcept();
     initMotivationPresentation(motivation, casteRow);
-    initAgePresentation();
     initGui();
   }
 
@@ -60,20 +56,6 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   public ContentView getTabContent() {
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
     return new SimpleViewContentView(new ContentProperties(conceptHeader), view);
-  }
-
-  private void initAgePresentation() {
-    final IIntegerDescription age = character.getCharacterConcept().getAge();
-    IntegerSpinner ageSpinner = new IntegerSpinner(age.getValue());
-    ageSpinner.setPreferredWidth(48);
-    ageSpinner.setStepSize(5);
-    view.addSpinner(resources.getString("Label.Age"), ageSpinner);
-    ageSpinner.addChangeListener(new IIntValueChangedListener() {
-      @Override
-      public void valueChanged(int newValue) {
-        age.setValue(newValue);
-      }
-    });
   }
 
   private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {

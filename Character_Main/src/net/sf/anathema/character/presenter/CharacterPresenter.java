@@ -121,7 +121,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
 
   private IContentPresenter createDescriptionPresenter() {
     ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
-    return new CharacterDescriptionPresenter(resources, character.getDescription(), view,
+    return new CharacterDescriptionPresenter(resources, character.getDescription(), character.getCharacterConcept(), view,
             character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
   }
 

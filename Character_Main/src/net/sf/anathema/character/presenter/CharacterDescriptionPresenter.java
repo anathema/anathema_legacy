@@ -2,13 +2,17 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.model.ICharacterDescription;
+import net.sf.anathema.character.model.IIntegerDescription;
+import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.presenter.description.NameGeneratorAction;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
+import net.sf.anathema.character.view.IIntegerView;
 import net.sf.anathema.character.view.IMultiComponentLine;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.ViewTabContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -19,14 +23,17 @@ import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
 public class CharacterDescriptionPresenter implements IContentPresenter {
 
   private final ICharacterDescription description;
+  private final ICharacterConcept characterConcept;
   private final ICharacterDescriptionView descriptionView;
   private final boolean hasAnima;
   private final IResources resources;
 
   public CharacterDescriptionPresenter(IResources resources, ICharacterDescription description,
-                                       ICharacterDescriptionView descriptionView, boolean hasAnima) {
+                                       ICharacterConcept characterConcept, ICharacterDescriptionView descriptionView,
+                                       boolean hasAnima) {
     this.resources = resources;
     this.description = description;
+    this.characterConcept = characterConcept;
     this.descriptionView = descriptionView;
     this.hasAnima = hasAnima;
   }
@@ -37,15 +44,15 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     initNameLineView(0, presentation);
     initLineView("CharacterDescription.Label.Player", description.getPlayer(), presentation); //$NON-NLS-1$
     initLineView("Label.Concept", description.getConcept(), presentation); //$NON-NLS-1$
-    initAreaView("CharacterDescription.Label.Characterization", 7, description.getCharacterization(),
+    initAreaView("CharacterDescription.Label.Characterization", description.getCharacterization(),
             presentation); //$NON-NLS-1$
-    initAreaView("CharacterDescription.Label.PhysicalDescription", 5, description.getPhysicalDescription(),
+    initAreaView("CharacterDescription.Label.PhysicalDescription", description.getPhysicalDescription(),
             presentation); //$NON-NLS-1$
     initMinorTraits(presentation);
     if (hasAnima) {
       initLineView("CharacterDescription.Label.Anima", description.getAnima(), presentation); //$NON-NLS-1$
     }
-    initAreaView("CharacterDescription.Label.Notes", 5, description.getNotes(), presentation); //$NON-NLS-1$
+    initAreaView("CharacterDescription.Label.Notes", description.getNotes(), presentation); //$NON-NLS-1$
   }
 
   @Override
@@ -71,6 +78,19 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     addField(componentLine, "CharacterDescription.Label.Hair", description.getHair(), presentation);
     addField(componentLine, "CharacterDescription.Label.Skin", description.getSkin(), presentation);
     addField(componentLine, "CharacterDescription.Label.Eyes", description.getEyes(), presentation);
+    addInteger(componentLine, "Label.Age", characterConcept.getAge());
+  }
+
+  private void addInteger(IMultiComponentLine componentLine, String label,
+                          final IIntegerDescription integerDescription) {
+    String title = resources.getString(label);
+    IIntegerView view = componentLine.addIntegerView(title, integerDescription);
+    view.addChangeListener(new IIntValueChangedListener() {
+      @Override
+      public void valueChanged(int newValue) {
+        integerDescription.setValue(newValue);
+      }
+    });
   }
 
   private void addField(IMultiComponentLine componentLine, String label, ITextualDescription description,
@@ -86,9 +106,9 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     presentation.initView(textView, textualDescription);
   }
 
-  private void initAreaView(String labelResourceKey, int rows, ITextualDescription textualDescription,
+  private void initAreaView(String labelResourceKey, ITextualDescription textualDescription,
                             TextualPresentation presentation) {
-    ITextView textView = descriptionView.addAreaView(resources.getString(labelResourceKey), rows);
+    ITextView textView = descriptionView.addAreaView(resources.getString(labelResourceKey), 6);
     presentation.initView(textView, textualDescription);
   }
 }
