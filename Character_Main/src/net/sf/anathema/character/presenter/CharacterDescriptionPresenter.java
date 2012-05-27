@@ -64,8 +64,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
   @Override
   public ContentView getTabContent() {
     String title = resources.getString("CardView.CharacterDescription.Title");//$NON-NLS-1$
-    ContentProperties tabProperties = new ContentProperties(title).needsScrollBar();
-    return new ViewTabContentView(descriptionView, tabProperties);
+    return new ViewTabContentView(descriptionView, new ContentProperties(title));
   }
 
   private void initNameLineView(int row, TextualPresentation presentation) {

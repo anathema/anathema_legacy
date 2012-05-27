@@ -4,7 +4,6 @@ import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
 
@@ -35,9 +34,8 @@ public class TaskedCharacterPane implements CharacterPane {
     return new MultipleContentView() {
       @Override
       public void addView(IView view, final ContentProperties tabProperties) {
-        viewPanel.add(createContainer(view, tabProperties), tabProperties.getName());
+        viewPanel.add(createContainer(view), tabProperties.getName());
         pane.add(new SmartAction() {
-
           {
             setNameWithoutMnemonic(tabProperties.getName());
           }
@@ -56,13 +54,10 @@ public class TaskedCharacterPane implements CharacterPane {
     };
   }
 
-  private JComponent createContainer(IView content, ContentProperties properties) {
+  private JComponent createContainer(IView content) {
     JPanel viewComponent = new JPanel(new BorderLayout());
     viewComponent.setBorder(new EmptyBorder(10, 10, 10, 10));
     viewComponent.add(content.getComponent());
-    if (properties.isScrollBarNeeded()) {
-      return new RevalidatingScrollPane(viewComponent);
-    }
     return viewComponent;
   }
 

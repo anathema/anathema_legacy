@@ -25,7 +25,7 @@ public class AttributesPresenter implements IContentPresenter {
 
   @Override
   public ContentView getTabContent() {
-    return new SimpleViewContentView(new ContentProperties(contentHeader).needsScrollBar(), attributeView);
+    return new SimpleViewContentView(new ContentProperties(contentHeader), attributeView);
   }
 
   @Override
