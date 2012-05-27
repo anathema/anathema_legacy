@@ -12,7 +12,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Features
 * If no PDF reader is installed, Anathema asks you to install one instead of showing an ugly error message.
-* Restructured the controls so there are less tabs-in-tabs.
+* Restructured character navigation so there are less tabs-in-tabs.
 * The overview is collapsible.
 * [Curtis Tasker] Refreshing items in the loadout screen now remembers the checkbox status of all your equipped items.
 * Weapon Tag selection page shows explanatory tooltips.

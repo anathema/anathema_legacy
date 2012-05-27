@@ -10,6 +10,7 @@ import net.sf.anathema.character.mutations.view.IMutationsView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
+import org.jdesktop.swingx.prompt.PromptSupport;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -39,7 +40,7 @@ public class SecondEditionBeastformView implements IBeastformView {
     JPanel spiritPanel = new JPanel(new GridDialogLayout(1, false));
 
     spiritPanel.add(spiritNamePanel);
-    spiritNameBox.setText(properties.getSpiritFormBoxInitialString());
+    PromptSupport.setPrompt(properties.getSpiritFormBoxInitialString(),spiritNameBox.getTextComponent());
     spiritNamePanel.add(spiritNameBox.getComponent());
     spiritNamePanel.setBorder(BorderFactory.createTitledBorder(properties.getSpiritFormBoxString()));
 
