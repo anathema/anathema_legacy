@@ -1,9 +1,8 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
-import net.sf.anathema.character.presenter.magic.IContentPresenter;
+import net.sf.anathema.framework.presenter.view.ContentView;
 
 public interface MultipleContentViewPresenter {
 
-  void initMultipleContentPresentation(String viewTitle, AdditionalModelType type, IContentPresenter... corePresenters);
+  void addMiscellaneousView(String title, ContentView tabContent);
 }

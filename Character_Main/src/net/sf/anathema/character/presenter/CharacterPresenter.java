@@ -44,6 +44,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   private final IAnathemaModel anathemaModel;
   private final IResources resources;
   private final PointPresentationStrategy pointPresentation;
+  private MultipleContentView miscView;
 
   public CharacterPresenter(ICharacter character, ICharacterView view, IResources resources,
                             IAnathemaModel anathemaModel, PointPresentationStrategy pointPresentation) {
@@ -106,9 +107,10 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   private void initMiscellaneous() {
     String title = getString("CardView.MiscellaneousConfiguration.Title");
     BackgroundView factory = characterView.createBackgroundView();
-    IContentPresenter backgrounds = new BackgroundPresenter(resources, character.getTraitConfiguration().getBackgrounds(),
-            character.getCharacterContext(), factory, getGenerics(anathemaModel).getBackgroundRegistry());
-    initMultipleContentPresentation(title, Miscellaneous, backgrounds);
+    IContentPresenter backgrounds = new BackgroundPresenter(resources,
+            character.getTraitConfiguration().getBackgrounds(), character.getCharacterContext(), factory,
+            getGenerics(anathemaModel).getBackgroundRegistry());
+    this.miscView = initMultipleContentPresentation(title, Miscellaneous, backgrounds);
   }
 
 
@@ -123,9 +125,8 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
             character.getCharacterTemplate().getTemplateType().getCharacterType().isExaltType());
   }
 
-  @Override
-  public void initMultipleContentPresentation(String viewTitle, AdditionalModelType type,
-                                              IContentPresenter... corePresenters) {
+  private MultipleContentView initMultipleContentPresentation(String viewTitle, AdditionalModelType type,
+                                                             IContentPresenter... corePresenters) {
     for (IContentPresenter presenter : corePresenters) {
       presenter.initPresentation();
     }
@@ -136,10 +137,16 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
                 return input.getTabContent();
               }
             });
-    addMultipleContentViewGroup(viewTitle, type, coreViews);
+    return addMultipleContentViewGroup(viewTitle, type, coreViews);
   }
 
-  private void addMultipleContentViewGroup(String viewTitle, AdditionalModelType type, ContentView... coreViewViews) {
+  @Override
+  public void addMiscellaneousView(String title, ContentView tabContent) {
+    tabContent.addTo(miscView);
+  }
+
+  private MultipleContentView addMultipleContentViewGroup(String viewTitle, AdditionalModelType type,
+                                                          ContentView... coreViewViews) {
     MultipleContentView multipleContentView = characterView.addMultipleContentView(viewTitle);
     List<ContentView> contentViews = new ArrayList<ContentView>();
     Collections.addAll(contentViews, coreViewViews);
@@ -156,11 +163,12 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
       contentViews.add(new SimpleViewContentView(new ContentProperties(viewName), additionalView));
     }
     if (contentViews.size() == 0) {
-      return;
+      return multipleContentView;
     }
     for (ContentView contentView : contentViews) {
       contentView.addTo(multipleContentView);
     }
+    return multipleContentView;
   }
 
   private String getString(String resourceKey) {

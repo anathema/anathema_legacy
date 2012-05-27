@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresenter;
@@ -36,7 +35,8 @@ public class ExperiencePointPresenter {
       IExperienceConfigurationView experienceView = view.createExperienceConfigurationView();
       IContentPresenter presenter = new ExperienceConfigurationPresenter(resources, character.getExperiencePoints(), experienceView);
       String title = resources.getString("CardView.ExperienceConfiguration.Title");
-      tabPresenter.initMultipleContentPresentation(title, AdditionalModelType.Experience, presenter);
+      presenter.initPresentation();
+      tabPresenter.addMiscellaneousView(title, presenter.getTabContent());
     }
   }
 }
