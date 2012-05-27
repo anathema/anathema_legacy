@@ -39,7 +39,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   private final ICharacter character;
   private final IResources resources;
 
-  public CharacterConceptAndRulesPresenter(ICharacter character, IConceptAndRulesViewFactory viewFactory, IResources resources) {
+  public CharacterConceptAndRulesPresenter(ICharacter character, IConceptAndRulesViewFactory viewFactory,
+                                           IResources resources) {
     this.character = character;
     this.view = viewFactory.createCharacterConceptView();
     this.resources = resources;
@@ -63,11 +64,9 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
   private void initAgePresentation() {
     final IIntegerDescription age = character.getCharacterConcept().getAge();
-
     IntegerSpinner ageSpinner = new IntegerSpinner(age.getValue());
     ageSpinner.setPreferredWidth(48);
     ageSpinner.setStepSize(5);
-
     view.addSpinner(resources.getString("Label.Age"), ageSpinner);
     ageSpinner.addChangeListener(new IIntValueChangedListener() {
       @Override
@@ -78,10 +77,9 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {
-    final ITextView textView = initTextualDescriptionPresentation(motivation.getEditableDescription(), "Label.Motivation"); //$NON-NLS-1$
+    final ITextView textView = initTextualDescriptionPresentation(motivation.getEditableDescription(),
+            "Label.Motivation"); //$NON-NLS-1$
     final SmartAction beginEditAction = new SmartAction(new BasicUi(resources).getEditIcon()) {
-      private static final long serialVersionUID = -1054675766697466937L;
-
       @Override
       protected void execute(Component parentComponent) {
         motivation.beginEdit();
@@ -90,17 +88,14 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     CharacterUI characterUI = new CharacterUI(resources);
     beginEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.BeginEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction cancelEditAction = new SmartAction(characterUI.getCancelComboEditIcon()) {
-      private static final long serialVersionUID = 1455192549297256400L;
-
       @Override
       protected void execute(Component parentComponent) {
         motivation.cancelEdit();
       }
     };
-    cancelEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.CancelEdit.Tooltip")); //$NON-NLS-1$
+    cancelEditAction.setToolTipText(
+            resources.getString("CharacterConcept.Motivation.CancelEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
-      private static final long serialVersionUID = 1191861661014239378L;
-
       @Override
       protected void execute(Component parentComponent) {
         motivation.endEdit();
@@ -180,20 +175,22 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   private void initRulesPresentation() {
-    view.addRulesLabel(resources.getString("Rules.CharacterType.Message",
-            resources.getString(character.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
+    view.addRulesLabel(resources.getString("Rules.CharacterType.Message", resources.getString(
+            character.getCharacterTemplate().getPresentationProperties().getNewActionResource()))); //$NON-NLS-1$
   }
 
   private boolean initCastePresentation() {
     ICharacterTemplate template = character.getCharacterTemplate();
-    if (template.getCasteCollection().getAllCasteTypes(character.getCharacterTemplate().getTemplateType()).length <= 0) {
+    if (template.getCasteCollection().getAllCasteTypes(
+            character.getCharacterTemplate().getTemplateType()).length <= 0) {
       return false;
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     IObjectUi<Object> casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties());
-    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(character.getCharacterTemplate().getTemplateType());
-    final IObjectSelectionView<ICasteType> casteView =
-            view.addObjectSelectionView(resources.getString(casteLabelResourceKey), allCasteTypes, new ObjectUiListCellRenderer(casteUi), false);
+    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes(
+            character.getCharacterTemplate().getTemplateType());
+    final IObjectSelectionView<ICasteType> casteView = view.addObjectSelectionView(
+            resources.getString(casteLabelResourceKey), allCasteTypes, new ObjectUiListCellRenderer(casteUi), false);
     final ITypedDescription<ICasteType> caste = character.getCharacterConcept().getCaste();
     casteView.setSelectedObject(caste.getType());
     casteView.addObjectSelectionChangedListener(new ObjectValueListener<ICasteType>() {

@@ -37,7 +37,7 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
 
   @Override
   public AdditionalModelType getAdditionalModelType() {
-    return AdditionalModelType.Concept;
+    return AdditionalModelType.Advantages;
   }
 
   public GhostPassionsModel(

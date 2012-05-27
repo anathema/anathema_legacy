@@ -32,7 +32,7 @@ public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
 
   @Override
   public AdditionalModelType getAdditionalModelType() {
-    return AdditionalModelType.Concept;
+    return AdditionalModelType.Advantages;
   }
 
   @Override

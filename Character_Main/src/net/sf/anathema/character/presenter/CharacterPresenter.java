@@ -30,6 +30,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Abilities;
+import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Advantages;
+import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Concept;
 import static net.sf.anathema.character.generic.framework.CharacterGenericsExtractor.getGenerics;
 
 public class CharacterPresenter implements Presenter, MultipleContentViewPresenter {
@@ -53,32 +56,26 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     return resources.getString(resourceKey);
   }
 
-  private void initAbilityPresentation() {
+  private void initPhysicalTraits() {
     IGroupedFavorableTraitViewFactory viewFactory = characterView.createGroupedFavorableTraitViewFactory();
-    IContentPresenter presenter = new AbilitiesPresenter(character, resources, viewFactory);
-    String title = getString("CardView.AbilityConfiguration.Title");
-    initMultipleContentPresentation(title, AdditionalModelType.Abilities, presenter);
+    IContentPresenter attributes = new AttributesPresenter(character, resources, viewFactory);
+    IContentPresenter abilities = new AbilitiesPresenter(character, resources, viewFactory);
+    String title = getString("CardView.NaturalTraits.Title");
+    initMultipleContentPresentation(title, Abilities, attributes, abilities);
   }
 
-  private void initAdvantagePresentation() {
+  private void initSpiritualTraits() {
     IAdvantageViewFactory viewFactory = characterView.createAdvantageViewFactory();
     IContentPresenter presenter = new BasicAdvantagePresenter(resources, character, viewFactory, getGenerics(anathemaModel));
-    String title = getString("CardView.Advantages.Title");
-    initMultipleContentPresentation(title, AdditionalModelType.Advantages, presenter);
-  }
-
-  private void initAttributePresentation() {
-    IGroupedFavorableTraitViewFactory viewFactory = characterView.createGroupedFavorableTraitViewFactory();
-    IContentPresenter presenter = new AttributesPresenter(character, resources, viewFactory);
-    String title = getString("CardView.AttributeConfiguration.Title");
-    initMultipleContentPresentation(title, AdditionalModelType.Attributes, presenter);
+    String title = getString("CardView.SpiritualTraits.Title");
+    initMultipleContentPresentation(title, Advantages, presenter);
   }
 
   private void initCharacterConceptPresentation() {
     IContentPresenter descriptionPresenter = createDescriptionPresenter();
     IContentPresenter conceptPresenter = createConceptPresenter();
-    String title = getString("CardView.CharacterConcept.Title");
-    initMultipleContentPresentation(title, AdditionalModelType.Concept, descriptionPresenter, conceptPresenter);
+    String title = getString("CardView.Outline.Title");
+    initMultipleContentPresentation(title, Concept, descriptionPresenter, conceptPresenter);
   }
 
   private IContentPresenter createConceptPresenter() {
@@ -149,9 +146,8 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   @Override
   public void initPresentation() {
     initCharacterConceptPresentation();
-    initAttributePresentation();
-    initAbilityPresentation();
-    initAdvantagePresentation();
+    initPhysicalTraits();
+    initSpiritualTraits();
     initMagicPresentation();
     addMultipleContentViewGroup(getString("CardView.MiscellaneousConfiguration.Title"), AdditionalModelType.Miscellaneous);
     pointPresentation.initPresentation(this);

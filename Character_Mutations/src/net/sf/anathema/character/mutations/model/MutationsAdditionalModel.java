@@ -29,7 +29,7 @@ public class MutationsAdditionalModel implements IAdditionalModel {
 
   @Override
   public AdditionalModelType getAdditionalModelType() {
-    return AdditionalModelType.Advantages;
+    return AdditionalModelType.Miscellaneous;
   }
 
   @Override
