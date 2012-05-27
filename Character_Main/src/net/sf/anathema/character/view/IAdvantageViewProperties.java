@@ -7,6 +7,4 @@ public interface IAdvantageViewProperties {
   String getWillpowerTitle();
 
   String getEssenceTitle();
-
-  String getBackgroundTitle();
 }

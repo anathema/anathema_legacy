@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -22,15 +21,16 @@ public class BasicAdvantagePresenter implements IContentPresenter {
   private final IBasicAdvantageView view;
   private final IResources resources;
 
-  public BasicAdvantagePresenter(IResources resources, ICharacter character, IAdvantageViewFactory factory, ICharacterGenerics generics) {
+  public BasicAdvantagePresenter(IResources resources, ICharacter character, IAdvantageViewFactory factory) {
     this.resources = resources;
     this.view = factory.createBasicAdvantageView();
     ICoreTraitConfiguration traitConfiguration = character.getTraitConfiguration();
     subPresenters.add(new VirtueConfigurationPresenter(resources, traitConfiguration, view));
-    subPresenters.add(new WillpowerConfigurationPresenter(resources, traitConfiguration.getTrait(OtherTraitType.Willpower), view));
-    subPresenters.add(new BackgroundPresenter(resources, traitConfiguration.getBackgrounds(), character.getCharacterContext(), view,
-            generics.getBackgroundRegistry()));
-    subPresenters.add(new EssenceConfigurationPresenter(resources, character.getEssencePool(), traitConfiguration, view));
+    subPresenters.add(
+            new WillpowerConfigurationPresenter(resources, traitConfiguration.getTrait(OtherTraitType.Willpower),
+                    view));
+    subPresenters.add(
+            new EssenceConfigurationPresenter(resources, character.getEssencePool(), traitConfiguration, view));
   }
 
   @Override
@@ -38,32 +38,30 @@ public class BasicAdvantagePresenter implements IContentPresenter {
     for (Presenter presenter : subPresenters) {
       presenter.initPresentation();
     }
-    view.initGui(new IAdvantageViewProperties() {
-      @Override
-      public String getVirtueTitle() {
-        return resources.getString("AdvantagesView.Virtues.Title"); //$NON-NLS-1$
-      }
-
-      @Override
-      public String getWillpowerTitle() {
-        return resources.getString("AdvantagesView.Willpower.Title"); //$NON-NLS-1$
-      }
-
-      @Override
-      public String getEssenceTitle() {
-        return resources.getString("AdvantagesView.Essence.Title"); //$NON-NLS-1$
-      }
-
-      @Override
-      public String getBackgroundTitle() {
-        return resources.getString("AdvantagesView.Backgrounds.Title"); //$NON-NLS-1$
-      }
-    });
+    view.initGui(new BasicAdvantageViewProperties());
   }
 
   @Override
   public ContentView getTabContent() {
-    String basicAdvantageHeader = resources.getString("CardView.Advantages.Title"); //$NON-NLS-1$
+    BasicAdvantageViewProperties properties = new BasicAdvantageViewProperties();
+    String basicAdvantageHeader = properties.getVirtueTitle() + ", " + properties.getWillpowerTitle() + " & " + properties.getEssenceTitle();
     return new SimpleViewContentView(new ContentProperties(basicAdvantageHeader), view);
+  }
+
+  private class BasicAdvantageViewProperties implements IAdvantageViewProperties {
+    @Override
+    public String getVirtueTitle() {
+      return resources.getString("AdvantagesView.Virtues.Title"); //$NON-NLS-1$
+    }
+
+    @Override
+    public String getWillpowerTitle() {
+      return resources.getString("AdvantagesView.Willpower.Title"); //$NON-NLS-1$
+    }
+
+    @Override
+    public String getEssenceTitle() {
+      return resources.getString("AdvantagesView.Essence.Title"); //$NON-NLS-1$
+    }
   }
 }

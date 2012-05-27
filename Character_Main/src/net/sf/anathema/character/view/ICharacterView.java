@@ -23,4 +23,6 @@ public interface ICharacterView extends IItemView, OverviewContainer {
   IMagicViewFactory createMagicViewFactory();
 
   IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory();
+
+  BackgroundView createBackgroundView();
 }

@@ -3,6 +3,7 @@ package net.sf.anathema.character.impl.view;
 import net.sf.anathema.character.impl.view.concept.ConceptAndRulesViewFactory;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.OverviewView;
+import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
@@ -94,6 +95,11 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   @Override
   public IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory() {
     return new GroupedFavorableTraitViewFactory(integerDisplayFactory, integerViewFactoryWithoutMarker);
+  }
+
+  @Override
+  public BackgroundView createBackgroundView() {
+    return new SeparateBackgroundView(integerDisplayFactory);
   }
 
   @Override

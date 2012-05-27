@@ -10,13 +10,17 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackground;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
+import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.presenter.util.I18nComparator;
-import net.sf.anathema.character.view.IBasicAdvantageView;
+import net.sf.anathema.character.view.BackgroundView;
+import net.sf.anathema.character.view.BackgroundViewProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -27,10 +31,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BackgroundPresenter implements Presenter {
+public class BackgroundPresenter implements IContentPresenter {
 
   private final IBackgroundConfiguration configuration;
-  private final IBasicAdvantageView configurationView;
+  private final BackgroundView configurationView;
   private final IResources resources;
   private final IdentityMapping<IDefaultTrait, IRemovableTraitView<?>> viewsByBackground = new IdentityMapping<IDefaultTrait, IRemovableTraitView<?>>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
@@ -39,15 +43,12 @@ public class BackgroundPresenter implements Presenter {
   private String backgroundDescription = "";
   private Displayer displayer;
 
-  public BackgroundPresenter(
-          IResources resources,
-          IBackgroundConfiguration configuration,
-          ICharacterModelContext context,
-          IBasicAdvantageView backgroundView,
-          IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
+  public BackgroundPresenter(IResources resources, IBackgroundConfiguration configuration,
+                             ICharacterModelContext context, BackgroundView view,
+                             IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
     this.resources = resources;
     this.configuration = configuration;
-    this.configurationView = backgroundView;
+    this.configurationView = view;
     this.backgroundRegistry = backgroundRegistry;
     this.internationalizer = new BackgroundInternationalizer(resources);
     this.configuration.addBackgroundListener(new IBackgroundListener() {
@@ -75,9 +76,7 @@ public class BackgroundPresenter implements Presenter {
     Icon addIcon = new BasicUi(resources).getAddIcon();
     final IButtonControlledComboEditView<Object> view = configurationView.addBackgroundSelectionView(
             resources.getString("BackgroundConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
-            new BackgroundListRenderer(displayer),
-            new BackgroundBoxEditor(displayer),
-            addIcon);
+            new BackgroundListRenderer(displayer), new BackgroundBoxEditor(displayer), addIcon);
     view.addEditChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newBackgroundDescription) {
@@ -102,6 +101,12 @@ public class BackgroundPresenter implements Presenter {
       templatesByDisplayName.put(internationalizer.getDisplayName(template), template);
     }
     configuration.initStartingBackgrounds();
+    configurationView.initGui(new BackgroundViewProperties() {
+      @Override
+      public String getBackgroundTitle() {
+        return resources.getString("AdvantagesView.Backgrounds.Title");
+      }
+    });
   }
 
   private IBackgroundTemplate[] getSortedBackgrounds() {
@@ -122,8 +127,7 @@ public class BackgroundPresenter implements Presenter {
         configuration.removeBackground(background);
       }
     });
-    if (background.getMinimalValue() > 0)
-      backgroundView.setButtonEnabled(false);
+    if (background.getMinimalValue() > 0) backgroundView.setButtonEnabled(false);
     viewsByBackground.put(background, backgroundView);
   }
 
@@ -152,5 +156,11 @@ public class BackgroundPresenter implements Presenter {
         view.setButtonEnabled(allowed && background.getMinimalValue() == 0);
       }
     }
+  }
+
+  @Override
+  public ContentView getTabContent() {
+    String header = resources.getString("CardView.BackgroundConfiguration.Title");
+    return new SimpleViewContentView(new ContentProperties(header), configurationView);
   }
 }
