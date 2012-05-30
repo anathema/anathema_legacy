@@ -19,6 +19,11 @@ public class TabbedCharacterPane implements CharacterPane {
   }
 
   @Override
+  public void setOverview(JComponent component) {
+    //nothing to do
+  }
+
+  @Override
   public JComponent getComponent() {
     return contentView.getComponent();
   }

@@ -17,6 +17,7 @@ import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
 import net.sf.anathema.lib.gui.swing.IDisposable;
+import org.jdesktop.swingx.JXCollapsiblePane;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -30,20 +31,16 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   private final IntegerViewFactory integerDisplayFactory;
   private OverviewView creationOverviewView;
   private OverviewView experienceOverviewView;
-  private OverviewView overviewView;
+  private OverviewView overviewView = creationOverviewView;
   private final List<IDisposable> disposables = new ArrayList<IDisposable>();
   private final IntegerViewFactory integerViewFactoryWithoutMarker;
-  private final CharacterPane characterPane;
+  private final TaskedCharacterPane characterPane;
   private final OptionalViewBar optionalViewPane = new OptionalViewBar();
   private JPanel content;
 
   public TaskedCharacterView(IntegerViewFactory factory, String name, Icon icon, IntegerViewFactory factoryWithoutMarker) {
-    this(new TaskedCharacterPane(), factory, name, icon, factoryWithoutMarker);
-  }
-
-  public TaskedCharacterView(CharacterPane characterPane, IntegerViewFactory factory, String name, Icon icon, IntegerViewFactory factoryWithoutMarker) {
     super(name, icon);
-    this.characterPane = characterPane;
+    this.characterPane = new TaskedCharacterPane();
     this.integerDisplayFactory = factory;
     this.integerViewFactoryWithoutMarker = factoryWithoutMarker;
   }
@@ -132,10 +129,9 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   }
 
   private void showOverview() {
-    if (overviewView == null) {
-      return;
-    }
+    JXCollapsiblePane overview = characterPane.getOverview();
     JComponent component = overviewView.getComponent();
-    optionalViewPane.setView("Overview", component);
+    characterPane.setOverview(component);
+    optionalViewPane.setView("Overview", overview);
   }
 }
