@@ -7,6 +7,10 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.2.1
+
+### Bugfixes
+* Ronin Sidereal have their astrology sheet printed.
 
 ## Release 4.2.0 "Whitewall"
 

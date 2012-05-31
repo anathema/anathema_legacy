@@ -24,7 +24,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.PADDING;
 import static net.sf.anathema.character.sidereal.SiderealCharacterModule.dreamsType;
-import static net.sf.anathema.character.sidereal.SiderealCharacterModule.roninType;
 
 public class SiderealDetailsPageEncoder implements PageEncoder {
 
@@ -45,9 +44,6 @@ public class SiderealDetailsPageEncoder implements PageEncoder {
 
   @Override
   public void encode(Sheet sheet, SheetGraphics graphics, ReportSession session) throws DocumentException {
-    if (isRonin(session.getCharacter())) {
-      return;
-    }
     sheet.startPortraitPage(graphics, session);
     float distanceFromTop = 0;
     float collegeHeight = encodeColleges(graphics, session, distanceFromTop);
@@ -73,11 +69,6 @@ public class SiderealDetailsPageEncoder implements PageEncoder {
     encodeResplendentDestiny(graphics, getLeftDestinyBounds(distanceFromTop), session);
     encodeResplendentDestiny(graphics, getCenterDestinyBounds(distanceFromTop), session);
     encodeResplendentDestiny(graphics, getRightDestinyBounds(distanceFromTop), session);
-  }
-
-  private boolean isRonin(IGenericCharacter character) {
-    return character.getTemplate().getTemplateType().getSubType().getId().equals(
-            roninType.getSubType().getId());
   }
 
   private boolean isFirstAge(IGenericCharacter character) {
