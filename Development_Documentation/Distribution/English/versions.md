@@ -8,7 +8,7 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 Website: [anathema.github.com](http://anathema.github.com)
 
 
-## Release 4.2.0
+## Release 4.2.0 "Whitewall"
 
 ### Features
 * If no PDF reader is installed, Anathema asks you to install one instead of showing an ugly error message.
