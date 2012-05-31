@@ -2,6 +2,7 @@
   <magic>
     <charms favored="8" general="10">
     	<highLevelMartialArts favored="8" general="10"/>
+        <keywordCharms keyword="Heretical" general="9" favored="9" />
     </charms>
     <spells cost="9"/>
   </magic>
