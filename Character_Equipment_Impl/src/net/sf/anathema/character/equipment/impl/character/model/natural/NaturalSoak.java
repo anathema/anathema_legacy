@@ -83,11 +83,10 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
   }
 
   private Integer getExaltedSoak(HealthType type) {
-	int ierCount;
-	int swssCount;
-
-    int essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
-    
+  	int ierCount;
+  	int swssCount;
+  	int essence;
+  	
 	if (context == null) {
       ierCount = 0;
       swssCount = 0;
@@ -95,6 +94,7 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
 	else {
       ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
       swssCount = context.getMagicCollection().getLearnCount(SCAR_WRIT_SAGA_SHIELD);
+      essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
 	}
 	
     if (ierCount > 0) { 
