@@ -101,7 +101,6 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
       essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
 	}
 	
-	
     if (ierCount > 0) { 
       return stamina.getCurrentValue() + 3*ierCount;
     }
@@ -111,7 +110,12 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
     else if (swssCount >= 2) {
     	return stamina.getCurrentValue() + essence;
     }
-    return stamina.getCurrentValue() / 2;
+    else if (type == HealthType.Lethal) {
+        return stamina.getCurrentValue() / 2;
+    }
+    else
+        return stamina.getCurrentValue();
+    
   }
 
   @Override
