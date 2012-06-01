@@ -50,7 +50,6 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
     else {
       ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
       swssCount = context.getMagicCollection().getLearnCount(SCAR_WRIT_SAGA_SHIELD);
-      essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
     }
     
     if ((ierCount == 0 && swssCount == 0) || (ierCount > 0 && context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue() < 4)) {
@@ -63,6 +62,7 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
       return stamina.getCurrentValue();
     }
     else if ((swssCount == 3) && (type == HealthType.Bashing || type == HealthType.Lethal)) {
+      essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
       return (stamina.getCurrentValue() + essence);
     }
     else {
