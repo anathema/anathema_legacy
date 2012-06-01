@@ -19,6 +19,8 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
   
   private static final String INVINCIBLE_ESSENCE_REINFORCEMENT = "Solar.InvincibleEssenceReinforcement";
 
+  private static final String SCAR_WRIT_SAGA_SHIELD = "Infernal.ScarWritSagaShield";
+  
   public NaturalSoak(ICharacterModelContext context) {
     this(context.getTraitCollection().getTrait(AttributeType.Stamina), context.getBasicCharacterContext().getCharacterType(), context);
   }
@@ -43,15 +45,25 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
     }
     
     int ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
-    if (ierCount == 0 || context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue() < 4) {
+    int swssCount = context.getMagicCollection().getLearnCount(SCAR_WRIT_SAGA_SHIELD);
+    int essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
+    
+    if ((ierCount == 0 && swssCount == 0) || (ierCount > 0 && context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue() < 4)) {
       return null;
     }
-    else if (type == HealthType.Bashing || type == HealthType.Lethal) {
+    else if ((ierCount > 0) && (type == HealthType.Bashing || type == HealthType.Lethal)) {
       return ierCount;
+    }
+    else if ((swssCount == 1 || swssCount == 2) && (type == HealthType.Bashing)) {
+      return stamina.getCurrentValue();
+    }
+    else if ((swssCount == 3) && (type == HealthType.Bashing || type == HealthType.Lethal)) {
+      return (stamina.getCurrentValue() + essence);
     }
     else {
       return null;
     }
+
   }
 
   @Override
@@ -72,15 +84,27 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
 
   private Integer getExaltedSoak(HealthType type) {
 	int ierCount;
+	int swssCount;
+
+    int essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
+    
 	if (context == null) {
       ierCount = 0;
+      swssCount = 0;
 	}
 	else {
       ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
+      swssCount = context.getMagicCollection().getLearnCount(SCAR_WRIT_SAGA_SHIELD);
 	}
 	
-    if (type == HealthType.Bashing || ierCount > 0) {
+    if (ierCount > 0) { 
       return stamina.getCurrentValue() + 3*ierCount;
+    }
+    else if ((swssCount == 1) && (type == HealthType.Lethal)) {
+    	return stamina.getCurrentValue();
+    }
+    else if (swssCount == 2) {
+    	return stamina.getCurrentValue() + essence;
     }
     return stamina.getCurrentValue() / 2;
   }
