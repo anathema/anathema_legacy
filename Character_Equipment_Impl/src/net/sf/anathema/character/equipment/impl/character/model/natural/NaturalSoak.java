@@ -40,13 +40,18 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
 
   @Override
   public Integer getHardness(HealthType type) {
+    int ierCount;
+    int swssCount;
+    int essence;
+    
     if (context == null) {
       return null;
     }
-    
-    int ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
-    int swssCount = context.getMagicCollection().getLearnCount(SCAR_WRIT_SAGA_SHIELD);
-    int essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
+    else {
+      ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
+      swssCount = context.getMagicCollection().getLearnCount(SCAR_WRIT_SAGA_SHIELD);
+      essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
+    }
     
     if ((ierCount == 0 && swssCount == 0) || (ierCount > 0 && context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue() < 4)) {
       return null;
@@ -88,13 +93,13 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
   	int essence;
   	
 	if (context == null) {
-      ierCount = 0;
-      swssCount = 0;
+      return null;
 	}
-	
-	ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
-    swssCount = context.getMagicCollection().getLearnCount(SCAR_WRIT_SAGA_SHIELD);
-    essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
+	else {	
+  	  ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
+      swssCount = context.getMagicCollection().getLearnCount(SCAR_WRIT_SAGA_SHIELD);
+      essence = context.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
+	}
 	
 	
     if (ierCount > 0) { 
@@ -103,7 +108,7 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
     else if ((swssCount == 1) && (type == HealthType.Lethal)) {
     	return stamina.getCurrentValue();
     }
-    else if (swssCount == 2) {
+    else if (swssCount >= 2) {
     	return stamina.getCurrentValue() + essence;
     }
     return stamina.getCurrentValue() / 2;
