@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 
 public enum WeaponTag implements IWeaponTag {
 
-  TwoHanded, Armor, BowType, ClinchEnhancer, Disarming, FlameType, LanceType, MartialArts, Natural, Overwhelming,
+  TwoHanded, Armor, Artillery, BowType, ClinchEnhancer, Disarming, FlameType, Grenade, LanceType, MartialArts, Natural, Overwhelming,
   Piercing, Reach, SingleShot, Thrown, BowBonuses, FlatDamage, Shield0, Shield1, Shield2, Thrust;
 
   @Override
@@ -13,19 +13,18 @@ public enum WeaponTag implements IWeaponTag {
   }
 
   public static WeaponTag[] getMeleeWeaponTags() {
-    return new WeaponTag[] { WeaponTag.LanceType, WeaponTag.MartialArts, WeaponTag.Natural,
-    			WeaponTag.Shield0, WeaponTag.Shield1, WeaponTag.Shield2, Thrust };
+    return new WeaponTag[]{WeaponTag.LanceType, WeaponTag.MartialArts, WeaponTag.Natural, WeaponTag.Shield0, WeaponTag.Shield1, WeaponTag.Shield2, Thrust};
   }
 
   public static WeaponTag[] getRangedWeaponTags() {
-    return new WeaponTag[] { WeaponTag.SingleShot, WeaponTag.BowBonuses, FlatDamage };
+    return new WeaponTag[]{WeaponTag.SingleShot, WeaponTag.BowBonuses, FlatDamage};
   }
 
   public static WeaponTag[] getThrownWeaponTags() {
-    return new WeaponTag[] { WeaponTag.BowBonuses };
+    return new WeaponTag[]{WeaponTag.BowBonuses};
   }
 
   public static WeaponTag[] getRangedWeaponTypeTags() {
-    return new WeaponTag[] { WeaponTag.BowType, WeaponTag.Thrown, WeaponTag.FlameType };
+    return new WeaponTag[]{WeaponTag.BowType, WeaponTag.Thrown, WeaponTag.FlameType, WeaponTag.Grenade, WeaponTag.Artillery};
   }
 }
