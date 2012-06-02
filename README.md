@@ -16,6 +16,9 @@ Development
 ### Launching Anathema###
 Launch ``net.sf.anathema.AnathemaBootLoader``.
 
+### Running the test suite###
+Run ``gradlew test``.
+
 ### Adding a dependency ###
 1. Add the dependency entry to the module's ``build.gradle``.
 2. Run ``gradlew eclipseClasspath`` or ``gradlew ideaModule`` respectively.
