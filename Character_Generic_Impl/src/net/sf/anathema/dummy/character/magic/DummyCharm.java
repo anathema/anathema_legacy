@@ -50,6 +50,12 @@ public class DummyCharm extends Identificate implements ICharm {
   private CharmTypeModel model = new CharmTypeModel();
   private List<ICharmAttribute> attributes = new ArrayList<ICharmAttribute>();
 
+  public void setGeneric(boolean generic) {
+    isGeneric = generic;
+  }
+
+  private  boolean isGeneric = false;
+
   public DummyCharm(
     String duration,
     CharmType charmType,
@@ -110,8 +116,10 @@ public class DummyCharm extends Identificate implements ICharm {
   
   @Override
   public boolean isInstanceOfGenericCharm() {
-	return false;
+	return isGeneric;
   }
+
+
 
   @Override
   public List<String> getParentSubeffects() {

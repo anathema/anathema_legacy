@@ -12,6 +12,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Bugfixes
 * Ronin Sidereal have their astrology sheet printed.
 * Heretical Infernal Charms cost 9XP
+* Combos print generic Charms correctly
 
 ## Release 4.2.0 "Whitewall"
 
