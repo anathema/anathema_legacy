@@ -93,7 +93,9 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
   	int essence;
   	
 	if (context == null) {
-      return null;
+		ierCount = 0;
+		swssCount = 0;
+		essence = 0;
 	}
 	else {	
   	  ierCount = context.getMagicCollection().getLearnCount(INVINCIBLE_ESSENCE_REINFORCEMENT);
@@ -102,16 +104,16 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
 	}
 	
     if (ierCount > 0) { 
-      return stamina.getCurrentValue() + 3*ierCount;
+      return (stamina.getCurrentValue() + 3*ierCount);
     }
     else if ((swssCount == 1) && (type == HealthType.Lethal)) {
     	return stamina.getCurrentValue();
     }
     else if (swssCount >= 2) {
-    	return stamina.getCurrentValue() + essence;
+    	return (stamina.getCurrentValue() + essence);
     }
     else if (type == HealthType.Lethal) {
-        return stamina.getCurrentValue() / 2;
+        return (stamina.getCurrentValue() / 2);
     }
     else
         return stamina.getCurrentValue();
