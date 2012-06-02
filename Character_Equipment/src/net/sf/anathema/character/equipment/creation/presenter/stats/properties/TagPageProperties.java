@@ -35,6 +35,8 @@ public class TagPageProperties {
   }
 
   public String getToolTip(IWeaponTag tag) {
-    return resources.getString("Equipment.Tag.Tooltip." + tag.getId());
+    String abbreviation = resources.getString("Weapons.Tags." + tag.getId() + ".Short");
+    String explanation = resources.getString("Equipment.Tag.Tooltip." + tag.getId());
+    return explanation + " (" + abbreviation + ")";
   }
 }
