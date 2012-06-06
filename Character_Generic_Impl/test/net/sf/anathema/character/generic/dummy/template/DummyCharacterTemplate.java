@@ -43,6 +43,11 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(
           new ExaltTraitTemplateFactory());
   private ITemplateType type = new TemplateType(CharacterType.MORTAL);
+  private IEssenceTemplate essenceTemplate = new NullEssenceTemplate();
+
+  public void setEssenceTemplate(IEssenceTemplate essenceTemplate) {
+    this.essenceTemplate = essenceTemplate;
+  }
 
   @Override
   public IBonusPointCosts getBonusPointCosts() {
@@ -141,7 +146,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   @Override
   public IEssenceTemplate getEssenceTemplate() {
-    return new NullEssenceTemplate();
+    return essenceTemplate;
   }
 
   @Override
