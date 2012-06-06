@@ -20,7 +20,7 @@ public abstract class AbstractVerticalButtonUi extends BasicButtonUI {
   @Override
   public Dimension getPreferredSize(JComponent c) {
     Dimension dim = super.getPreferredSize(c);
-    return new Dimension(dim.height + 6, dim.width + 10);
+    return new Dimension(dim.height, dim.width);
   }
 
   protected void paintScaffold(Graphics graphics, JComponent component) {
@@ -30,7 +30,7 @@ public abstract class AbstractVerticalButtonUi extends BasicButtonUI {
       Rectangle bounds = component.getBounds();
       graphics.setColor(model.isArmed() ? UIManager.getColor("controlShadow") : UIManager.getColor("controlLHighlight"));
       graphics.fillRect(0, 0, bounds.width - 1, bounds.height - 1);
-      graphics.setColor(Color.DARK_GRAY);
+      graphics.setColor(Color.LIGHT_GRAY);
       graphics.drawRect(0, 0, bounds.width - 1, bounds.height - 1);
     }
   }
