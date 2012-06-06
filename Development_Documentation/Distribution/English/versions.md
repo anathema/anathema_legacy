@@ -14,9 +14,11 @@ Website: [anathema.github.com](http://anathema.github.com)
 * Weapon tag tooltips show the tag's abbreviation.
 
 ### Bugfixes
-* Ronin Sidereal have their astrology sheet printed.
+* Spirits can be created and loaded once more
+* Ronin Sidereal have their astrology sheet printed
 * Heretical Infernal Charms cost 9XP
 * Combos print generic Charms correctly
+* Half-Caste and Ghosts print again
 * Corrects description for "Armor" weapon tag from Wonders of the Lost Age
 
 ## Release 4.2.0 "Whitewall"
