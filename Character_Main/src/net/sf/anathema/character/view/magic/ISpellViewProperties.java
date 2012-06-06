@@ -14,6 +14,4 @@ public interface ISpellViewProperties extends IMagicLearnProperties {
   ListCellRenderer getCircleSelectionRenderer();
 
   ListSelectionListener getRemoveButtonEnabledListener(JButton button, JList list);
-
-  String getSelectionTitle();
 }

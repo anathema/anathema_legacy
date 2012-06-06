@@ -11,7 +11,6 @@ import net.sf.anathema.character.lunar.beastform.presenter.SecondEditionBeastfor
 import net.sf.anathema.character.lunar.beastform.view.IBeastformViewProperties;
 import net.sf.anathema.character.lunar.beastform.view.SecondEditionBeastformView;
 import net.sf.anathema.character.mutations.view.IMutationsView;
-import net.sf.anathema.character.mutations.view.IMutationsViewProperties;
 import net.sf.anathema.character.mutations.view.MutationsView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.IView;
@@ -26,12 +25,7 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
     SecondEditionBeastformModel secondmodel = (SecondEditionBeastformModel) model;
     IBeastformViewProperties properties = new SecondEditionBeastformViewProperties(resources, secondmodel);
     IBeastformView view = new SecondEditionBeastformView(intValueDisplayFactory, properties);
-    IMutationsView mutationView = new MutationsView(new IMutationsViewProperties() {
-      @Override
-      public String getMutationsString() {
-        return resources.getString("Mutations.Label");
-      }
-    });
+    IMutationsView mutationView = new MutationsView();
     SecondEditionBeastformPresenter presenter = new SecondEditionBeastformPresenter(resources, view,
             (IBeastformModel) model, secondmodel.getMutationModel(), mutationView);
     presenter.initPresentation();

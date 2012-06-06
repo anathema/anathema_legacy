@@ -43,7 +43,6 @@ public class SeparateBackgroundView extends AbstractInitializableContentView<Bac
 
   private JPanel createBackgroundPanel(String title) {
     JPanel panel = new JPanel(new BorderLayout());
-    panel.setBorder(new TitledBorder(title));
     panel.add(backgroundSelectionPanel, BorderLayout.CENTER);
     panel.add(backgroundDisplayPanel, BorderLayout.SOUTH);
     return panel;

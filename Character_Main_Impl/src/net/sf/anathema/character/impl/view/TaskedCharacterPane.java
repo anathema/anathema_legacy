@@ -8,6 +8,7 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import org.jdesktop.swingx.JXCollapsiblePane;
 import org.jdesktop.swingx.JXTaskPane;
 import org.jdesktop.swingx.JXTaskPaneContainer;
+import org.jdesktop.swingx.JXTitledSeparator;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -16,6 +17,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
 
@@ -45,15 +47,16 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
     return new MultipleContentView() {
       @Override
       public void addView(IView view, final ContentProperties tabProperties) {
-        viewPanel.add(createContainer(view), tabProperties.getName());
+        final String name = tabProperties.getName();
+        viewPanel.add(createContainer(view, name), name);
         pane.add(new SmartAction() {
           {
-            setNameWithoutMnemonic(tabProperties.getName());
+            setNameWithoutMnemonic(name);
           }
 
           @Override
           public void execute(Component parent) {
-            viewStack.show(viewPanel, tabProperties.getName());
+            viewStack.show(viewPanel, name);
           }
         });
       }
@@ -71,10 +74,13 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
     overview.add(component);
   }
 
-  private JComponent createContainer(IView content) {
+  private JComponent createContainer(IView content, String name) {
     JPanel viewComponent = new JPanel(new BorderLayout());
+    JXTitledSeparator title = new JXTitledSeparator(name);
+    title.setFont(title.getFont().deriveFont(Font.BOLD));
+    viewComponent.add(title, BorderLayout.NORTH);
     viewComponent.setBorder(new EmptyBorder(10, 10, 10, 10));
-    viewComponent.add(content.getComponent());
+    viewComponent.add(content.getComponent(), BorderLayout.CENTER);
     return viewComponent;
   }
 

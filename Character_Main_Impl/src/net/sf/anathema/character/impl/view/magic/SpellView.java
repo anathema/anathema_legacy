@@ -62,7 +62,6 @@ public class SpellView implements ISpellView {
     magicLearnView.init(properties);
     JPanel selectionPanel = new JPanel(new GridDialogLayout(4, false));
     magicLearnView.addTo(selectionPanel);
-    selectionPanel.setBorder(new TitledBorder(properties.getSelectionTitle()));
     return selectionPanel;
   }
 

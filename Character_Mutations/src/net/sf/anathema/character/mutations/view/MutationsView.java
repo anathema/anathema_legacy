@@ -12,22 +12,15 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 
 public class MutationsView implements IMutationsView {
   private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
   private JPanel overviewPanel = new JPanel();
   private final JPanel contentPanel = new JPanel(new GridDialogLayout(2, false));
-  private final IMutationsViewProperties properties;
-
-  public MutationsView(IMutationsViewProperties properties) {
-    this.properties = properties;
-  }
 
   @Override
   public JComponent getComponent() {
-    giftPanel.setBorder(new TitledBorder(properties.getMutationsString()));
     JPanel mutationPanel = new JPanel(new GridDialogLayout(2, false));
     mutationPanel.add(giftPanel, GridDialogLayoutData.FILL_BOTH);
     mutationPanel.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());

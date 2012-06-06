@@ -100,9 +100,4 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
       }
     };
   }
-
-  @Override
-  public String getSelectionTitle() {
-    return getResources().getString("CardView.CharmConfiguration.Spells.Selection.Title"); //$NON-NLS-1$
-  }
 }
