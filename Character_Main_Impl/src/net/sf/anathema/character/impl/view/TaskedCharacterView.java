@@ -31,7 +31,7 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   private final IntegerViewFactory integerDisplayFactory;
   private OverviewView creationOverviewView;
   private OverviewView experienceOverviewView;
-  private OverviewView overviewView = creationOverviewView;
+  private OverviewView overviewView;
   private final List<IDisposable> disposables = new ArrayList<IDisposable>();
   private final IntegerViewFactory integerViewFactoryWithoutMarker;
   private final TaskedCharacterPane characterPane;
@@ -129,6 +129,9 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   }
 
   private void showOverview() {
+    if (overviewView == null){
+      return;
+    }
     JXCollapsiblePane overview = characterPane.getOverview();
     JComponent component = overviewView.getComponent();
     characterPane.setOverview(component);
