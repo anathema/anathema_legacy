@@ -155,7 +155,7 @@ public class GenericCharacter implements IGenericCharacter {
   public String getPeripheralPool() {
     try {
       return getTemplate().getEssenceTemplate().isEssenceUser() ? statistics.getEssencePool().getPeripheralPool() : null;
-    } catch (ContractFailedException e) {
+    } catch (IllegalArgumentException e) {
       return null;
     }
   }
