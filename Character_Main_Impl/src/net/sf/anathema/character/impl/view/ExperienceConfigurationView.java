@@ -31,12 +31,12 @@ public class ExperienceConfigurationView extends
 
   @Override
   protected void createContent(JPanel panel, final IExperienceConfigurationViewProperties properties) {
+    panel.setLayout(new GridDialogLayout(1, false));
     smartTable = new SmartTable(properties.getTableModel(), properties.getColumnSettings());
     smartTable.addActionFactory(new ITableActionFactory() {
       @Override
       public Action createAction(SmartTable table) {
         return new SmartAction(properties.getAddIcon()) {
-          private static final long serialVersionUID = -6922420757124813943L;
 
           @Override
           protected void execute(Component parentComponent) {
@@ -46,7 +46,6 @@ public class ExperienceConfigurationView extends
       }
     });
     deleteAction = new SmartAction(properties.getDeleteIcon()) {
-      private static final long serialVersionUID = -9129787703604142621L;
 
       @Override
       protected void execute(Component parentComponent) {
@@ -77,7 +76,6 @@ public class ExperienceConfigurationView extends
     labelledIntValueView = new LabelledIntegerValueView(properties.getTotalString(), 0, false, 7);
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);
-    // todo vom (02.07.2005) (sieroux): Needs a better solution to work with SmartTable
     smartTablePanel.add(totalPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(smartTablePanel);
   }
