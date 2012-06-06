@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.view;
 
+import net.sf.anathema.character.view.overview.OverviewDisplay;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IView;
@@ -16,7 +17,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.FlowLayout;
 
-public class TaskedCharacterPane implements CharacterPane {
+public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
 
   private final JXTaskPaneContainer paneContainer = new JXTaskPaneContainer();
   private final CardLayout viewStack = new CardLayout();

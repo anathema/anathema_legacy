@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.view;
 
 import net.sf.anathema.character.impl.view.concept.ConceptAndRulesViewFactory;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
-import net.sf.anathema.character.impl.view.overview.OverviewView;
+import net.sf.anathema.character.impl.view.overview.OverviewContainer;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
@@ -11,13 +11,13 @@ import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
-import net.sf.anathema.character.view.overview.IOverviewView;
+import net.sf.anathema.character.view.overview.CategorizedOverview;
+import net.sf.anathema.character.view.overview.NullOverviewContainer;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
 import net.sf.anathema.lib.gui.swing.IDisposable;
-import org.jdesktop.swingx.JXCollapsiblePane;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -29,9 +29,9 @@ import java.util.List;
 public class TaskedCharacterView extends AbstractItemView implements ICharacterView {
 
   private final IntegerViewFactory integerDisplayFactory;
-  private OverviewView creationOverviewView;
-  private OverviewView experienceOverviewView;
-  private OverviewView overviewView;
+  private CategorizedOverview creationOverviewView;
+  private CategorizedOverview experienceOverviewView;
+  private CategorizedOverview overviewView = new NullOverviewContainer();
   private final List<IDisposable> disposables = new ArrayList<IDisposable>();
   private final IntegerViewFactory integerViewFactoryWithoutMarker;
   private final TaskedCharacterPane characterPane;
@@ -46,8 +46,8 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   }
 
   @Override
-  public IOverviewView addCreationOverviewView() {
-    OverviewView newView = new OverviewView();
+  public CategorizedOverview addCreationOverviewView() {
+    OverviewContainer newView = new OverviewContainer();
     this.creationOverviewView = newView;
     return newView;
   }
@@ -58,8 +58,8 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   }
 
   @Override
-  public IOverviewView addExperienceOverviewView() {
-    OverviewView newView = new OverviewView();
+  public CategorizedOverview addExperienceOverviewView() {
+    OverviewContainer newView = new OverviewContainer();
     this.experienceOverviewView = newView;
     return newView;
   }
@@ -125,16 +125,11 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   @Override
   public void toggleOverviewView(boolean experienced) {
     this.overviewView = experienced ? experienceOverviewView : creationOverviewView;
+    optionalViewPane.setView("Overview", characterPane.getOverview());
     showOverview();
   }
 
   private void showOverview() {
-    if (overviewView == null){
-      return;
-    }
-    JXCollapsiblePane overview = characterPane.getOverview();
-    JComponent component = overviewView.getComponent();
-    characterPane.setOverview(component);
-    optionalViewPane.setView("Overview", overview);
+    overviewView.showIn(characterPane);
   }
 }

@@ -7,7 +7,7 @@ import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.overview.CreationOverviewPresenter;
 import net.sf.anathema.character.presenter.overview.ExperiencedOverviewPresenter;
 import net.sf.anathema.character.view.OverviewContainer;
-import net.sf.anathema.character.view.overview.IOverviewView;
+import net.sf.anathema.character.view.overview.CategorizedOverview;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -30,9 +30,9 @@ public class OverviewPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    IOverviewView creationPointView = container.addCreationOverviewView();
+    CategorizedOverview creationPointView = container.addCreationOverviewView();
     new CreationOverviewPresenter(resources, character, creationPointView, bonusPoints).initPresentation();
-    IOverviewView experiencePointView = container.addExperienceOverviewView();
+    CategorizedOverview experiencePointView = container.addExperienceOverviewView();
     new ExperiencedOverviewPresenter(resources, character, experiencePointView, experiencePoints).initPresentation();
     setOverviewView(character.isExperienced());
     character.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {

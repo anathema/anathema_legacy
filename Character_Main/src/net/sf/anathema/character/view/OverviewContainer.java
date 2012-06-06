@@ -1,11 +1,11 @@
 package net.sf.anathema.character.view;
 
-import net.sf.anathema.character.view.overview.IOverviewView;
+import net.sf.anathema.character.view.overview.CategorizedOverview;
 
 public interface OverviewContainer {
-  IOverviewView addCreationOverviewView();
+  CategorizedOverview addCreationOverviewView();
 
-  IOverviewView addExperienceOverviewView();
+  CategorizedOverview addExperienceOverviewView();
 
   void toggleOverviewView(boolean experienced);
 }

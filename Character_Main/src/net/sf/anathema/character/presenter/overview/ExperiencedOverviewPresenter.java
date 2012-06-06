@@ -6,7 +6,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
-import net.sf.anathema.character.view.overview.IOverviewView;
+import net.sf.anathema.character.view.overview.CategorizedOverview;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
@@ -19,14 +19,14 @@ import java.util.List;
 public class ExperiencedOverviewPresenter implements Presenter {
 
   private final IExperiencePointManagement management;
-  private final IOverviewView view;
+  private final CategorizedOverview view;
   private final ICharacter character;
   private final IResources resources;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
 
   private ILabelledAlotmentView totalView;
 
-  public ExperiencedOverviewPresenter(IResources resources, final ICharacter character, IOverviewView overview,
+  public ExperiencedOverviewPresenter(IResources resources, final ICharacter character, CategorizedOverview overview,
                                       IExperiencePointManagement experiencePoints) {
     this.resources = resources;
     this.character = character;
