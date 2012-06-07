@@ -7,11 +7,9 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.DialogMessages;
 import net.sf.anathema.lib.gui.dialog.core.AbstractDialog;
 import net.sf.anathema.lib.gui.dialog.core.DialogButtonBarBuilder;
-import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.core.IDialogConstants;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
-import net.sf.anathema.lib.gui.dialog.core.IVetoDialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
@@ -98,7 +96,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
         : new ActionConfiguration()) {
       @Override
       protected void execute(Component parentComponent) {
-        performFinish(parentComponent);
+        performFinish();
       }
     };
 
@@ -112,7 +110,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
         : new ActionConfiguration()) {
       @Override
       protected void execute(Component parentComponent) {
-        performCancel(parentComponent);
+        performCancel();
       }
     };
 
@@ -120,8 +118,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
     DialogButtonBarBuilder buttonBarBuilder = new DialogButtonBarBuilder();
     buttonBarBuilder.addButtonsCompacted(backButton, nextButton);
-    JButton[] additionalButtons = createAdditionalButtons();
-    buttonBarBuilder.addButtons(additionalButtons);
     if (okActionConfiguration != null) {
       buttonBarBuilder.addButtons(finishButton);
     }
@@ -131,22 +127,9 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     return buttonBarBuilder.createButtonBar();
   }
 
-  private JButton[] createAdditionalButtons() {
-    return new JButton[0];
-  }
-
   /** Notifies that the back button of this dialog has been pressed. */
   protected final void backPressed() {
     showPage(getCurrentPage().getPreviousPage());
-  }
-
-  /** Notifies that the cancel button of this dialog has been pressed. */
-  @Override
-  protected final boolean cancelPressed(Component parentComponent) {
-    IVetoDialogCloseHandler vetoCloseHandler = configuration.getVetoCloseHandler();
-    return vetoCloseHandler.handleDialogAboutToClose(
-        new DialogResult(true),
-        parentComponent);
   }
 
   /** The Next button has been pressed */
@@ -238,22 +221,15 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     return configuredDialog;
   }
 
-  private void performFinish(Component parentComponent) {
-    currentPage.getNextPage();
-    currentPage.leave();
-
-    IVetoDialogCloseHandler vetoCloseHandler = configuration.getVetoCloseHandler();
-    boolean success = vetoCloseHandler.handleDialogAboutToClose(
-        new DialogResult(false),
-        parentComponent);
-    if (success) {
-      closeDialog();
-    }
-  }
-
   @Override
   public final void requestFinish() {
-    performFinish(getDialog().getWindow());
+    performFinish();
+  }
+
+  private void performFinish() {
+    currentPage.getNextPage();
+    currentPage.leave();
+    closeDialog();
   }
 
   @Override

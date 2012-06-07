@@ -4,7 +4,6 @@ import com.google.common.base.Preconditions;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.sf.anathema.lib.gui.dialog.core.preferences.IDialogPreferences;
 import net.sf.anathema.lib.gui.dialog.userdialog.IDialogCloseHandler;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
@@ -17,7 +16,6 @@ import javax.swing.WindowConstants;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -30,8 +28,7 @@ public abstract class AbstractDialog {
   private final WindowAdapter cancelingWindowListener = new WindowAdapter() {
     @Override
     public void windowClosing(WindowEvent e) {
-      Window parentComponent = GuiUtilities.getWindowFor(e);
-      performCancel(parentComponent);
+      performCancel();
     }
   };
 
@@ -51,26 +48,6 @@ public abstract class AbstractDialog {
     dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     dialog.addWindowListener(cancelingWindowListener);
     CloseOnEscapeKeyActionBehavior.attachTo(this);
-    adjustToPreferences();
-  }
-
-  protected void adjustToPreferences() {
-    IDialogPreferences preferences = dialogConfiguration.getPreferences();
-    if (preferences == null) {
-      return;
-    }
-    Rectangle bounds = preferences.getBounds();
-    if (bounds == null) {
-      return;
-    }
-    dialog.getWindow().setBounds(bounds);
-  }
-
-  private void storePereferences(ISwingFrameOrDialog dialog, IDialogPreferences preferences) {
-    if (preferences == null) {
-      return;
-    }
-    preferences.setBounds(dialog.getWindow().getBounds());
   }
 
   protected boolean isMainContentGrabVerticalSpace() {
@@ -100,11 +77,7 @@ public abstract class AbstractDialog {
     return new SwingDialog(GuiUtilities.createDialog(parent, INITIAL_DIALOG_TITLE));
   }
 
-  public final void performCancel(Component parentComponent) {
-    boolean success = cancelPressed(parentComponent);
-    if (!success) {
-      return;
-    }
+  public final void performCancel() {
     canceled = true;
     closeDialog();
     closeHandler.handleDialogClose(new DialogResult(true));
@@ -131,10 +104,7 @@ public abstract class AbstractDialog {
 
   protected abstract JComponent createButtonBar();
 
-  protected abstract boolean cancelPressed(Component parentComponent);
-
   protected void closeDialog() {
-    storePereferences(dialog, dialogConfiguration.getPreferences());
     dialog.dispose();
     //Bugfix (gebhard) 26.09.2006: Memory leak by reference from JDialog to this class
     dialog.removeWindowListener(cancelingWindowListener);

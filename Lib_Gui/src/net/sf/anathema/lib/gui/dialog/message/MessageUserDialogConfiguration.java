@@ -14,7 +14,7 @@ public class MessageUserDialogConfiguration extends DefaultDialogConfiguration<M
   }
 
   public MessageUserDialogConfiguration(IMessage message, IDialogButtonConfiguration buttonConfiguration) {
-    super(new MessageDialogPage(message), buttonConfiguration, null);
+    super(new MessageDialogPage(message), buttonConfiguration);
   }
 
   @Override

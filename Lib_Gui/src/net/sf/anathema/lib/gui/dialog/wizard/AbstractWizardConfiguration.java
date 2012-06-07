@@ -3,11 +3,7 @@ package net.sf.anathema.lib.gui.dialog.wizard;
 import net.sf.anathema.lib.gui.dialog.DialogMessages;
 import net.sf.anathema.lib.gui.dialog.core.AbstractGenericDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.core.DialogHeaderPanelConfiguration;
-import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
-import net.sf.anathema.lib.gui.dialog.core.IVetoDialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
-
-import java.awt.Component;
 
 /**
  * Abstract superclass that can be extended for {@link IWizardConfiguration} implementations.
@@ -42,13 +38,4 @@ public abstract class AbstractWizardConfiguration extends AbstractGenericDialogC
     return currentPage.canFinish();
   }
 
-  @Override
-  public IVetoDialogCloseHandler getVetoCloseHandler() {
-    return new IVetoDialogCloseHandler() {
-      @Override
-      public boolean handleDialogAboutToClose(IDialogResult result, Component parentComponent) {
-        return true;
-      }
-    };
-  }
 }

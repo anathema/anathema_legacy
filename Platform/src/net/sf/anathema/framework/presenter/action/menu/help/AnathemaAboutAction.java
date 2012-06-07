@@ -1,9 +1,8 @@
 package net.sf.anathema.framework.presenter.action.menu.help;
 
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfigurationBuilder;
+import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -12,7 +11,6 @@ import java.awt.Component;
 
 public class AnathemaAboutAction extends SmartAction {
 
-  private static final long serialVersionUID = 7136443647218989729L;
   private final IResources resources;
 
   public static Action createMenuAction(IResources resources) {
@@ -28,9 +26,8 @@ public class AnathemaAboutAction extends SmartAction {
   @Override
   protected void execute(Component parentComponent) {
     IDialogPage page = new AboutDialogPage(resources);
-    DefaultDialogConfigurationBuilder<IDialogPage> dialogBuilder = new DefaultDialogConfigurationBuilder<IDialogPage>(page);
-    dialogBuilder.setButtonConfiguration(DialogButtonConfigurationFactory.createOkOnly());
-    UserDialog dialog = new UserDialog(parentComponent, dialogBuilder.build());
+    DefaultDialogConfiguration dialogConfiguration = DefaultDialogConfiguration.createWithOkOnly(page);
+    UserDialog dialog = new UserDialog(parentComponent, dialogConfiguration);
     dialog.show();
   }
 }
