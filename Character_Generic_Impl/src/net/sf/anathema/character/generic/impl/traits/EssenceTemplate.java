@@ -23,10 +23,6 @@ public class EssenceTemplate extends AbstractTraitTemplate {
     return new EssenceTemplate(2, 2, SYSTEM_ESSENCE_MAX);
   }
 
-  public static ITraitTemplate createMortalTemplate(int maxValue) {
-    return new EssenceTemplate(1, 1, maxValue);
-  }
-
   private final ITraitLimitation limitation;
 
   private EssenceTemplate(int startValue, int zeroValue, int maxValue) {

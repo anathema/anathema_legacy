@@ -5,6 +5,8 @@ import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalcula
 import net.sf.anathema.character.library.trait.IAdditionalTraitBonusPointManagement;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 
+import static net.sf.anathema.character.generic.impl.traits.EssenceTemplate.SYSTEM_ESSENCE_MAX;
+
 public class CollegeBonusPointCalculator extends AbstractFavorableTraitCostCalculator {
 
   private final ICollegeBonusPointCosts costs;
@@ -14,7 +16,7 @@ public class CollegeBonusPointCalculator extends AbstractFavorableTraitCostCalcu
       IFavorableTraitCreationPoints points,
       IFavorableDefaultTrait[] traits,
       ICollegeBonusPointCosts costs) {
-    super(additionalPools, points, 3, traits);
+    super(additionalPools, points, SYSTEM_ESSENCE_MAX, traits);
     this.costs = costs;
   }
 

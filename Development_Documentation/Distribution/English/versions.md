@@ -21,6 +21,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 * Half-Caste and Ghosts print again
 * Corrects description for "Armor" weapon tag from Wonders of the Lost Age
 * Experience view is usable with expanded overview
+* Sidereals can spent all their free points on one College
 
 ## Release 4.2.0 "Whitewall"
 
