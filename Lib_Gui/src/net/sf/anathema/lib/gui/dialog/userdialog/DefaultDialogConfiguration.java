@@ -59,8 +59,7 @@ public class DefaultDialogConfiguration<P extends IDialogPage> extends AbstractG
 
   public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration,
                                     IDialogVisibilitySetting dialogVisibilitySetting) {
-    this(dialogPage, buttonConfiguration, DialogHeaderPanelConfiguration.createVisibleWithoutIcon(), null, null, null,
-            (IDialogVisibilitySetting) null);
+    this(dialogPage, buttonConfiguration, DialogHeaderPanelConfiguration.createVisibleWithoutIcon(), null, null, (IDialogVisibilitySetting) null);
   }
 
   /**
@@ -70,15 +69,7 @@ public class DefaultDialogConfiguration<P extends IDialogPage> extends AbstractG
   public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration,
                                     Dimension customizedPreferedSize, IDialogPreferences preferences) {
     this(dialogPage, buttonConfiguration, DialogHeaderPanelConfiguration.createVisibleWithoutIcon(),
-            customizedPreferedSize, preferences, null);
-  }
-
-  public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration,
-                                    IDialogHeaderPanelConfiguration headerPanelConfiguration,
-                                    Dimension customizedPreferedSize, IDialogPreferences preferences,
-                                    JComponent[] additionalButtons) {
-    this(dialogPage, buttonConfiguration, headerPanelConfiguration, customizedPreferedSize, preferences,
-            additionalButtons, (IDialogVisibilitySetting) null);
+            customizedPreferedSize, preferences, (IDialogVisibilitySetting) null);
   }
 
   /**
@@ -86,13 +77,11 @@ public class DefaultDialogConfiguration<P extends IDialogPage> extends AbstractG
    */
   public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration,
                                     IDialogHeaderPanelConfiguration headerPanelConfiguration,
-                                    Dimension customizedPreferedSize, IDialogPreferences preferences,
-                                    JComponent[] additionalButtons,
-                                    final IVetoDialogCloseHandler vetoDialogCloseHandler) {
+                                    Dimension customizedPreferedSize, IDialogPreferences preferences, final IVetoDialogCloseHandler vetoDialogCloseHandler) {
     super(buttonConfiguration, headerPanelConfiguration, preferences);
     this.dialogPage = dialogPage;
     this.customizedPreferedSize = customizedPreferedSize;
-    this.additionalButtons = additionalButtons;
+    this.additionalButtons = new JComponent[0];
     this.dialogVisibilitySetting = null;
     this.vetoDialogCloseHandler = new IVetoDialogCloseHandler() {
 
@@ -107,20 +96,17 @@ public class DefaultDialogConfiguration<P extends IDialogPage> extends AbstractG
   public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration,
                                     IDialogHeaderPanelConfiguration headerPanelConfiguration,
                                     Dimension customizedPreferedSize, IDialogPreferences preferences,
-                                    JComponent[] additionalButtons, IDialogVisibilitySetting dialogVisibilitySetting) {
+                                    IDialogVisibilitySetting dialogVisibilitySetting) {
     super(buttonConfiguration, headerPanelConfiguration, preferences);
     this.dialogPage = dialogPage;
     this.customizedPreferedSize = customizedPreferedSize;
-    this.additionalButtons = additionalButtons;
+    this.additionalButtons = new JComponent[0];
     this.dialogVisibilitySetting = dialogVisibilitySetting;
     this.vetoDialogCloseHandler = new IVetoDialogCloseHandler() {
       @Override
       public boolean handleDialogAboutToClose(IDialogResult result, Component parentComponent) {
         updateDialogVisibilitySetting(result);
-        if (result.isCanceled()) {
-          return performCancel(parentComponent);
-        }
-        return performOk(parentComponent);
+        return true;
       }
     };
 
@@ -171,16 +157,6 @@ public class DefaultDialogConfiguration<P extends IDialogPage> extends AbstractG
   @Override
   public IVetoDialogCloseHandler getVetoCloseHandler() {
     return vetoDialogCloseHandler;
-  }
-
-  @Deprecated
-  public boolean performOk(Component parentComponent) {
-    return true;
-  }
-
-  @Deprecated
-  public boolean performCancel(Component parentComponent) {
-    return true;
   }
 
   @Override

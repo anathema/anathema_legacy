@@ -54,17 +54,4 @@ public interface IWizardConfiguration extends IGenericDialogConfiguration {
    * This method is called just before the wizard becomes visible, to give the wizard the
    * opportunity to add any lazily created pages.*/
   void addPages();
-
-  /** Returns the successor of the given page.
-   * This method is typically called by a wizard page
-   * @param page the page
-   * @return the next page, or null if none */
-  IWizardPage getNextPage(IWizardPage page);
-
-  /** Returns the predecessor of the given page.
-   * This method is typically called by a wizard page
-   * @param page the page
-   * @return the previous page, or null if none */
-
-  IWizardPage getPreviousPage(IWizardPage page);
 }

@@ -9,11 +9,8 @@ import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfigurati
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 
-import javax.swing.JComponent;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DefaultDialogConfigurationBuilder<P extends IDialogPage> {
 
@@ -22,7 +19,6 @@ public class DefaultDialogConfigurationBuilder<P extends IDialogPage> {
   private IDialogHeaderPanelConfiguration headerPanelConfiguration = DialogHeaderPanelConfiguration.createVisibleWithoutIcon();
   private Dimension customizedPreferedSize = null;
   private IDialogPreferences preferences = null;
-  private final List<JComponent> additionalButtons = new ArrayList<JComponent>();
   private IVetoDialogCloseHandler vetoDialogCloseHander = new IVetoDialogCloseHandler() {
 
     @Override
@@ -37,8 +33,7 @@ public class DefaultDialogConfigurationBuilder<P extends IDialogPage> {
 
   public DefaultDialogConfiguration<P> build() {
     return new DefaultDialogConfiguration<P>(dialogPage, buttonConfiguration, headerPanelConfiguration,
-            customizedPreferedSize, preferences, additionalButtons.toArray(new JComponent[additionalButtons.size()]),
-            vetoDialogCloseHander);
+            customizedPreferedSize, preferences, vetoDialogCloseHander);
   }
 
   public void setButtonConfiguration(IDialogButtonConfiguration buttonConfiguration) {

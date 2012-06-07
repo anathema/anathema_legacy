@@ -89,7 +89,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
     nextButton = new JButton(nextAction);
 
-    IDialogButtonConfiguration buttonConfiguration = getWizard().getButtonConfiguration();
+    IDialogButtonConfiguration buttonConfiguration = configuration.getButtonConfiguration();
 
     final IActionConfiguration okActionConfiguration = buttonConfiguration
         .getOkActionConfiguration();
@@ -187,8 +187,8 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     IWizardPage page = getCurrentPage();
     nextButton.setEnabled(page.canFlipToNextPage());
     backButton.setEnabled(page.getPreviousPage() != null);
-    finishButton.setEnabled(getWizard().canFinish());
-    cancelButton.setEnabled(getWizard().canCancel());
+    finishButton.setEnabled(configuration.canFinish());
+    cancelButton.setEnabled(configuration.canCancel());
     if (finishButton.isEnabled()) {
       setDefaultButton(finishButton);
     }
@@ -222,7 +222,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
   /** For internal use only (demos) */
   public ISwingFrameOrDialog getConfiguredDialog() {
-    IWizardPage startingPage = getWizard().getStartingPage();
+    IWizardPage startingPage = configuration.getStartingPage();
     if (startingPage == null) {
       throw new RuntimeException("Starting page may not be null in IWizard.getStartingPage()"); //$NON-NLS-1$
     }
@@ -236,10 +236,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
       throw new IllegalStateException("WizardDialog is already visible"); //$NON-NLS-1$
     }
     return configuredDialog;
-  }
-
-  protected final IWizardConfiguration getWizard() {
-    return configuration;
   }
 
   private void performFinish(Component parentComponent) {

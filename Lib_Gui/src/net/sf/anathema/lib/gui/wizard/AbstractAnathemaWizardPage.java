@@ -2,7 +2,6 @@ package net.sf.anathema.lib.gui.wizard;
 
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
-import net.sf.anathema.lib.gui.dialog.wizard.IWizardConfiguration;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
@@ -17,7 +16,6 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
 
   private IBasicMessage message = new BasicMessage("!!! UNSET-MESSAGE !!!");
   private final Announcer<RequestFinishListener> requestFinishListeners = Announcer.to(RequestFinishListener.class);
-  private IWizardConfiguration wizard = null;
   private IAnathemaWizardPage previousPage = null;
   protected final Map<ICondition, IAnathemaWizardPage> followUpPagesByCondition = new HashMap<ICondition, IAnathemaWizardPage>();
 
@@ -71,15 +69,6 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   @Override
   public boolean canCancel() {
     return true;
-  }
-
-  @Override
-  public IWizardConfiguration getWizard() {
-    return wizard;
-  }
-
-  @Override
-  public void initializeFromData() {
   }
 
   @Override

@@ -54,13 +54,4 @@ public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
   public void addPages() {
   }
 
-  @Override
-  public IWizardPage getNextPage(IWizardPage page) {
-    return page != null ? page.getNextPage() : null;
-  }
-
-  @Override
-  public IWizardPage getPreviousPage(IWizardPage page) {
-    return page != null ? page.getPreviousPage() : null;
-  }
 }

@@ -56,11 +56,6 @@ public class ObjectSelectionWizardPage<V> extends AbstractAnathemaWizardPage {
   }
 
   @Override
-  public void initializeFromData() {
-    // nothing to do
-  }
-
-  @Override
   protected void initPageContent() {
     final IListObjectSelectionView<V> listView = view.addSelectionView();
     listView.setObjects(model.getRegisteredObjects());

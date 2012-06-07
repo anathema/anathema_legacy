@@ -4,12 +4,6 @@ import net.sf.anathema.lib.gui.dialog.core.IPage;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
 import net.sf.anathema.lib.message.IBasicMessage;
 
-/**
- * Interface for a wizard page.
- * 
- *  The class {@link AbstractWizardPage} provides an abstract implementation of this interface. However,
- *  clients are also free to implement this interface if WizardPage does not suit their needs.
- */
 public interface IWizardPage extends IPage {
 
   /**
@@ -43,13 +37,6 @@ public interface IWizardPage extends IPage {
    */
   boolean canCancel();
 
-  /** Returns the wizard that hosts this wizard page.
-   * @deprecated As of 29.05.2009 (gebhard) - use listeners or other ways to retrieve the required
-   * information
-   */
-  @Deprecated
-  IWizardConfiguration getWizard();
-
   /**
    * Sets the current message for this page. May be <code>null</code> to indicate no
    * message. An error message should describe some error state, as opposed to an information
@@ -57,12 +44,4 @@ public interface IWizardPage extends IPage {
    * @param message the message
    */
   void setMessage(IBasicMessage message);
-
-  /** Initializes all widgets from the data attached to this wizard page. This method will be called
-   * from the wizard container after creating the content.
-   * @deprecated As of 10.12.2004 (gebhard)
-   * @see #getContent() */
-  @Deprecated
-  void initializeFromData();
-
 }
