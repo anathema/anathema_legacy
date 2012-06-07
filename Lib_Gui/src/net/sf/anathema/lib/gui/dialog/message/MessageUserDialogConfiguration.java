@@ -2,7 +2,6 @@ package net.sf.anathema.lib.gui.dialog.message;
 
 import net.sf.anathema.lib.gui.dialog.core.DialogHeaderPanelConfiguration;
 import net.sf.anathema.lib.gui.dialog.core.IDialogHeaderPanelConfiguration;
-import net.sf.anathema.lib.gui.dialog.setting.IDialogVisibilitySetting;
 import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
@@ -15,12 +14,7 @@ public class MessageUserDialogConfiguration extends DefaultDialogConfiguration<M
   }
 
   public MessageUserDialogConfiguration(IMessage message, IDialogButtonConfiguration buttonConfiguration) {
-    this(message, buttonConfiguration, null);
-  }
-
-  public MessageUserDialogConfiguration(IMessage message, IDialogButtonConfiguration buttonConfiguration,
-                                        IDialogVisibilitySetting dialogVisibilitySetting) {
-    super(new MessageDialogPage(message), buttonConfiguration, dialogVisibilitySetting);
+    super(new MessageDialogPage(message), buttonConfiguration, null);
   }
 
   @Override

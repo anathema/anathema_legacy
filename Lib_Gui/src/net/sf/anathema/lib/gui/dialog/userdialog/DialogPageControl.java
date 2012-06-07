@@ -4,7 +4,6 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.gui.dialog.core.DialogPageInputValidCheckable;
 import net.sf.anathema.lib.gui.dialog.core.IDialogControl;
-import net.sf.anathema.lib.gui.dialog.core.IDialogHelpHandler;
 import net.sf.anathema.lib.gui.dialog.events.CheckInputValidListener;
 import net.sf.anathema.lib.gui.dialog.events.IInputValidCheckable;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
@@ -85,9 +84,5 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
 
   public void requestFocus() {
     dialogPage.requestFocus();
-  }
-
-  public IDialogHelpHandler getHelpHandler() {
-    return dialogPage.getHelpHandler();
   }
 }

@@ -46,11 +46,6 @@ public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
   }
 
   @Override
-  public boolean isHelpAvailable() {
-    return false;
-  }
-
-  @Override
   public IWizardPage getStartingPage() {
     return startPage;
   }

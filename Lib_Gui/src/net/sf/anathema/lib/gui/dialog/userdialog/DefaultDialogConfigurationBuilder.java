@@ -5,7 +5,6 @@ import net.sf.anathema.lib.gui.dialog.core.IDialogHeaderPanelConfiguration;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.IVetoDialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.core.preferences.IDialogPreferences;
-import net.sf.anathema.lib.gui.dialog.setting.IDialogVisibilitySetting;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
@@ -19,11 +18,8 @@ import java.util.List;
 public class DefaultDialogConfigurationBuilder<P extends IDialogPage> {
 
   private final P dialogPage;
-  private IDialogButtonConfiguration buttonConfiguration = DialogButtonConfigurationFactory
-      .createOkCancel();
-  private IDialogVisibilitySetting dialogVisibilitySetting;
-  private IDialogHeaderPanelConfiguration headerPanelConfiguration = DialogHeaderPanelConfiguration
-      .createVisibleWithoutIcon();
+  private IDialogButtonConfiguration buttonConfiguration = DialogButtonConfigurationFactory.createOkCancel();
+  private IDialogHeaderPanelConfiguration headerPanelConfiguration = DialogHeaderPanelConfiguration.createVisibleWithoutIcon();
   private Dimension customizedPreferedSize = null;
   private IDialogPreferences preferences = null;
   private final List<JComponent> additionalButtons = new ArrayList<JComponent>();
@@ -34,23 +30,15 @@ public class DefaultDialogConfigurationBuilder<P extends IDialogPage> {
       return true;
     }
   };
-  private boolean updateVisibilitySettingOnCancel;
 
   public DefaultDialogConfigurationBuilder(P dialogPage) {
     this.dialogPage = dialogPage;
   }
 
   public DefaultDialogConfiguration<P> build() {
-    return new DefaultDialogConfiguration<P>(
-        dialogPage,
-        buttonConfiguration,
-        headerPanelConfiguration,
-        customizedPreferedSize,
-        preferences,
-        additionalButtons.toArray(new JComponent[additionalButtons.size()]),
-        vetoDialogCloseHander,
-        dialogVisibilitySetting,
-        updateVisibilitySettingOnCancel);
+    return new DefaultDialogConfiguration<P>(dialogPage, buttonConfiguration, headerPanelConfiguration,
+            customizedPreferedSize, preferences, additionalButtons.toArray(new JComponent[additionalButtons.size()]),
+            vetoDialogCloseHander);
   }
 
   public void setButtonConfiguration(IDialogButtonConfiguration buttonConfiguration) {

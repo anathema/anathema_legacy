@@ -12,16 +12,12 @@ import java.awt.Component;
 /**
  * Abstract superclass that can be extended for {@link IWizardConfiguration} implementations.
  */
-public abstract class AbstractWizardConfiguration extends AbstractGenericDialogConfiguration
-    implements
-    IWizardConfiguration {
+public abstract class AbstractWizardConfiguration extends AbstractGenericDialogConfiguration implements IWizardConfiguration {
   private IWizardContainer container;
 
   public AbstractWizardConfiguration() {
-    super(
-        DialogButtonConfigurationFactory
-            .createOkCancelWithOkText(DialogMessages.WIZARD_FINISH),
-        DialogHeaderPanelConfiguration.createVisibleWithoutIcon());
+    super(DialogButtonConfigurationFactory.createOkCancelWithOkText(DialogMessages.WIZARD_FINISH),
+            DialogHeaderPanelConfiguration.createVisibleWithoutIcon());
   }
 
   @Override
@@ -47,28 +43,12 @@ public abstract class AbstractWizardConfiguration extends AbstractGenericDialogC
   }
 
   @Override
-  public boolean shallInitializePagesFromData() {
-    return false;
-  }
-
-  @Override
   public IVetoDialogCloseHandler getVetoCloseHandler() {
     return new IVetoDialogCloseHandler() {
       @Override
-      public boolean handleDialogAboutToClose(
-          IDialogResult result,
-          Component parentComponent) {
-        if (result.isCanceled()) {
-          return true;
-        }
-        return performFinish(parentComponent);
+      public boolean handleDialogAboutToClose(IDialogResult result, Component parentComponent) {
+        return true;
       }
     };
-  }
-
-  @Deprecated
-  @Override
-  public boolean performFinish(Component parentComponent) {
-    return true;
   }
 }

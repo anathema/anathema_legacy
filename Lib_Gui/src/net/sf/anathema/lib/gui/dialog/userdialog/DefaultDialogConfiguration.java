@@ -19,9 +19,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-public class DefaultDialogConfiguration<P extends IDialogPage>
-    extends
-    AbstractGenericDialogConfiguration implements IDialogConfiguration<P> {
+public class DefaultDialogConfiguration<P extends IDialogPage> extends AbstractGenericDialogConfiguration implements IDialogConfiguration<P> {
 
   private final class VisibilityCheckboxModel extends BooleanModel {
 
@@ -34,8 +32,7 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
 
     @Override
     public boolean getValue() {
-      boolean value = !visible;
-      return value;
+      return !visible;
     }
 
     public void updateSetting() {
@@ -50,87 +47,53 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
   private final JComponent[] additionalButtons;
   private IVetoDialogCloseHandler vetoDialogCloseHandler;
   private IDialogVisibilitySetting dialogVisibilitySetting;
-  private final boolean updateVisibilitySettingOnCancel;
   private VisibilityCheckboxModel visibilityCheckboxModel;
 
   /**
    * @deprecated as of 21.12.2010 (beck), use {@link DefaultDialogConfigurationBuilder} instead
    */
   @Deprecated
-  public DefaultDialogConfiguration(
-      P dialogPage,
-      IDialogButtonConfiguration buttonConfiguration) {
+  public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration) {
     this(dialogPage, buttonConfiguration, null, null);
   }
 
-  public DefaultDialogConfiguration(
-      P dialogPage,
-      IDialogButtonConfiguration buttonConfiguration,
-      IDialogVisibilitySetting dialogVisibilitySetting) {
-    this(
-        dialogPage,
-        buttonConfiguration,
-        DialogHeaderPanelConfiguration.createVisibleWithoutIcon(),
-        null,
-        null,
-        null,
-        dialogVisibilitySetting);
+  public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration,
+                                    IDialogVisibilitySetting dialogVisibilitySetting) {
+    this(dialogPage, buttonConfiguration, DialogHeaderPanelConfiguration.createVisibleWithoutIcon(), null, null, null,
+            (IDialogVisibilitySetting) null);
   }
 
   /**
    * @deprecated as of 21.12.2010 (beck), use {@link DefaultDialogConfigurationBuilder} instead
    */
   @Deprecated
-  public DefaultDialogConfiguration(
-      P dialogPage,
-      IDialogButtonConfiguration buttonConfiguration,
-      Dimension customizedPreferedSize,
-      IDialogPreferences preferences) {
-    this(
-        dialogPage,
-        buttonConfiguration,
-        DialogHeaderPanelConfiguration.createVisibleWithoutIcon(),
-        customizedPreferedSize,
-        preferences,
-        null);
+  public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration,
+                                    Dimension customizedPreferedSize, IDialogPreferences preferences) {
+    this(dialogPage, buttonConfiguration, DialogHeaderPanelConfiguration.createVisibleWithoutIcon(),
+            customizedPreferedSize, preferences, null);
   }
 
-  public DefaultDialogConfiguration(
-          P dialogPage,
-          IDialogButtonConfiguration buttonConfiguration,
-          IDialogHeaderPanelConfiguration headerPanelConfiguration,
-          Dimension customizedPreferedSize,
-          IDialogPreferences preferences,
-          JComponent[] additionalButtons) {
-    this(
-            dialogPage,
-            buttonConfiguration,
-            headerPanelConfiguration,
-            customizedPreferedSize,
-            preferences,
-            additionalButtons,
-            (IDialogVisibilitySetting) null);
+  public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration,
+                                    IDialogHeaderPanelConfiguration headerPanelConfiguration,
+                                    Dimension customizedPreferedSize, IDialogPreferences preferences,
+                                    JComponent[] additionalButtons) {
+    this(dialogPage, buttonConfiguration, headerPanelConfiguration, customizedPreferedSize, preferences,
+            additionalButtons, (IDialogVisibilitySetting) null);
   }
 
   /**
-   * Use {@link DefaultDialogConfigurationBuilder} to create a configuration 
+   * Use {@link DefaultDialogConfigurationBuilder} to create a configuration
    */
-  public DefaultDialogConfiguration(
-      P dialogPage,
-      IDialogButtonConfiguration buttonConfiguration,
-      IDialogHeaderPanelConfiguration headerPanelConfiguration,
-      Dimension customizedPreferedSize,
-      IDialogPreferences preferences,
-      JComponent[] additionalButtons,
-      final IVetoDialogCloseHandler vetoDialogCloseHandler,
-      IDialogVisibilitySetting dialogVisibilitySetting,
-      boolean updateVisibilitySettingOnCancel) {
+  public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration,
+                                    IDialogHeaderPanelConfiguration headerPanelConfiguration,
+                                    Dimension customizedPreferedSize, IDialogPreferences preferences,
+                                    JComponent[] additionalButtons,
+                                    final IVetoDialogCloseHandler vetoDialogCloseHandler) {
     super(buttonConfiguration, headerPanelConfiguration, preferences);
     this.dialogPage = dialogPage;
     this.customizedPreferedSize = customizedPreferedSize;
     this.additionalButtons = additionalButtons;
-    this.dialogVisibilitySetting = dialogVisibilitySetting;
-    this.updateVisibilitySettingOnCancel = updateVisibilitySettingOnCancel;
+    this.dialogVisibilitySetting = null;
     this.vetoDialogCloseHandler = new IVetoDialogCloseHandler() {
 
       @Override
@@ -141,25 +104,18 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
     };
   }
 
-  public DefaultDialogConfiguration(
-      P dialogPage,
-      IDialogButtonConfiguration buttonConfiguration,
-      IDialogHeaderPanelConfiguration headerPanelConfiguration,
-      Dimension customizedPreferedSize,
-      IDialogPreferences preferences,
-      JComponent[] additionalButtons,
-      IDialogVisibilitySetting dialogVisibilitySetting) {
+  public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration,
+                                    IDialogHeaderPanelConfiguration headerPanelConfiguration,
+                                    Dimension customizedPreferedSize, IDialogPreferences preferences,
+                                    JComponent[] additionalButtons, IDialogVisibilitySetting dialogVisibilitySetting) {
     super(buttonConfiguration, headerPanelConfiguration, preferences);
     this.dialogPage = dialogPage;
     this.customizedPreferedSize = customizedPreferedSize;
     this.additionalButtons = additionalButtons;
     this.dialogVisibilitySetting = dialogVisibilitySetting;
-    this.updateVisibilitySettingOnCancel = false;
     this.vetoDialogCloseHandler = new IVetoDialogCloseHandler() {
       @Override
-      public boolean handleDialogAboutToClose(
-          IDialogResult result,
-          Component parentComponent) {
+      public boolean handleDialogAboutToClose(IDialogResult result, Component parentComponent) {
         updateDialogVisibilitySetting(result);
         if (result.isCanceled()) {
           return performCancel(parentComponent);
@@ -200,16 +156,14 @@ public class DefaultDialogConfiguration<P extends IDialogPage>
     }
     JPanel panel = new JPanel(new FlowLayout());
     visibilityCheckboxModel = new VisibilityCheckboxModel();
-    CheckBoxSmartDialogPanel checkBox = new CheckBoxSmartDialogPanel(
-        visibilityCheckboxModel,
-        dialogVisibilitySetting.getMessageText());
+    CheckBoxSmartDialogPanel checkBox = new CheckBoxSmartDialogPanel(visibilityCheckboxModel,
+            dialogVisibilitySetting.getMessageText());
     checkBox.fillInto(panel, 2);
     return panel;
   }
 
   private void updateDialogVisibilitySetting(IDialogResult result) {
-    if ((!result.isCanceled() || updateVisibilitySettingOnCancel)
-        && this.visibilityCheckboxModel != null) {
+    if (!result.isCanceled() && this.visibilityCheckboxModel != null) {
       this.visibilityCheckboxModel.updateSetting();
     }
   }

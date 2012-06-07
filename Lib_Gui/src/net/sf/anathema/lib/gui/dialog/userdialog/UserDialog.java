@@ -6,7 +6,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.AbstractDialog;
 import net.sf.anathema.lib.gui.dialog.core.DialogButtonBarBuilder;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
-import net.sf.anathema.lib.gui.dialog.core.IDialogHelpHandler;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.IVetoDialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.core.preferences.IDialogPreferences;
@@ -27,10 +26,8 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
 
   private final DialogPageControl dialogControl;
   private JButton okButton;
-  private JButton cancelButton;
   private boolean neverVisualized = true;
   private final RelativePosition relativePosition;
-  private boolean showErrorOnStartup = false;
 
   public UserDialog(
       Component parentComponent,
@@ -96,10 +93,6 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
     }
     DialogButtonBarBuilder buttonBarBuilder = new DialogButtonBarBuilder();
     buttonBarBuilder.addButtons(buttons);
-    IDialogHelpHandler helpHandler = getDialogControl().getHelpHandler();
-    if (helpHandler != null) {
-      buttonBarBuilder.setHelpHandler(helpHandler);
-    }
     JComponent leftComponent = getConfiguration().createOptionalButtonPanelLeftComponent();
     if (leftComponent != null) {
       buttonBarBuilder.addLeftSideComponent(leftComponent);
@@ -107,7 +100,7 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
     return buttonBarBuilder.createButtonBar();
   }
 
-  private final JComponent[] createButtons() {
+  private JComponent[] createButtons() {
     IDialogButtonConfiguration buttonConfiguration = getConfiguration()
         .getButtonConfiguration();
     final IActionConfiguration okActionConfiguration = buttonConfiguration
@@ -134,7 +127,7 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
         performCancel(parentComponent);
       }
     };
-    cancelButton = new JButton(cancelAction);
+    JButton cancelButton = new JButton(cancelAction);
 
     List<JComponent> buttonList = new ArrayList<JComponent>();
     if (okActionConfiguration != null) {
@@ -155,7 +148,7 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
     return new JComponent[0];
   }
 
-  private final boolean okPressed() {
+  private boolean okPressed() {
     IVetoDialogCloseHandler closeHandler = getConfiguration().getVetoCloseHandler();
     return closeHandler.handleDialogAboutToClose(new DialogResult(false), getDialog().getWindow());
   }
@@ -203,15 +196,8 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
 
   @Override
   public IDialogResult show() {
-    checkInputValidIfNeccessary();
     setVisible(true);
-    return new DialogResult(isCanceled());
-  }
-
-  private void checkInputValidIfNeccessary() {
-    if (showErrorOnStartup) {
-      getDialogControl().checkInputValid();
-    }
+    return createDialogResult();
   }
 
   @Override
@@ -245,7 +231,6 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
   }
 
   private void showDialog(IDialogCloseHandler dialogCloseHandler, boolean modal) {
-    checkInputValidIfNeccessary();
     setCloseHandler(dialogCloseHandler);
     getDialog().setModal(modal);
     setVisible(true);

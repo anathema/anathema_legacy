@@ -9,14 +9,12 @@ import net.sf.anathema.lib.gui.dialog.core.AbstractDialog;
 import net.sf.anathema.lib.gui.dialog.core.DialogButtonBarBuilder;
 import net.sf.anathema.lib.gui.dialog.core.DialogResult;
 import net.sf.anathema.lib.gui.dialog.core.IDialogConstants;
-import net.sf.anathema.lib.gui.dialog.core.IDialogHelpHandler;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
 import net.sf.anathema.lib.gui.dialog.core.IVetoDialogCloseHandler;
 import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
-import net.sf.anathema.lib.gui.swing.IEnableable;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -56,7 +54,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     }
   };
   private JButton cancelButton;
-  private IEnableable helpEnableable;
 
   /**
    * Creates a new wizard dialog for the given wizard.
@@ -131,16 +128,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     if (cancelActionConfiguration != null) {
       buttonBarBuilder.addButtons(cancelButton);
     }
-    if (getWizard().isHelpAvailable()) {
-      IDialogHelpHandler helpHandler = new IDialogHelpHandler() {
-        @Override
-        public void execute(Component parentComponent) {
-          IDialogHelpHandler pageHelpHandler = getCurrentPage().getHelpHandler();
-          pageHelpHandler.execute(parentComponent);
-        }
-      };
-      helpEnableable = buttonBarBuilder.setHelpHandler(helpHandler);
-    }
     return buttonBarBuilder.createButtonBar();
   }
 
@@ -157,10 +144,9 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   @Override
   protected final boolean cancelPressed(Component parentComponent) {
     IVetoDialogCloseHandler vetoCloseHandler = configuration.getVetoCloseHandler();
-    boolean success = vetoCloseHandler.handleDialogAboutToClose(
+    return vetoCloseHandler.handleDialogAboutToClose(
         new DialogResult(true),
         parentComponent);
-    return success;
   }
 
   /** The Next button has been pressed */
@@ -203,9 +189,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     backButton.setEnabled(page.getPreviousPage() != null);
     finishButton.setEnabled(getWizard().canFinish());
     cancelButton.setEnabled(getWizard().canCancel());
-    if (helpEnableable != null) {
-      helpEnableable.setEnabled(page.getHelpHandler() != null);
-    }
     if (finishButton.isEnabled()) {
       setDefaultButton(finishButton);
     }
@@ -234,7 +217,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     ISwingFrameOrDialog configuredDialog = getConfiguredDialog();
     GuiUtilities.centerToParent(configuredDialog.getWindow());
     configuredDialog.show();
-    return new DialogResult(isCanceled());
+    return createDialogResult();
   }
 
   /** For internal use only (demos) */

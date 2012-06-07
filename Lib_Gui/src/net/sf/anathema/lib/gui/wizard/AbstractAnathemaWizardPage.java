@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.wizard;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.gui.dialog.core.IDialogHelpHandler;
 import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardConfiguration;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
@@ -104,11 +103,6 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   @Override
   public String getTitle() {
     return getDescription();
-  }
-
-  @Override
-  public IDialogHelpHandler getHelpHandler() {
-    return null;
   }
 
   @Override

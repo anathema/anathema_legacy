@@ -6,8 +6,6 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.lib.gui.dialog.core.preferences.IDialogPreferences;
 import net.sf.anathema.lib.gui.dialog.userdialog.IDialogCloseHandler;
-import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -112,24 +110,12 @@ public abstract class AbstractDialog {
     closeHandler.handleDialogClose(new DialogResult(true));
   }
 
-  /**
-   * @see UserDialog#show()
-   * @see UserDialog#showNonModal(IDialogCloseHandler)
-   * @see WizardDialog#show()
-   * @deprecated As of 12.11.2009 (gebhard), replaced by {@link IDialogResult#isCanceled()}
-   */
-  @Deprecated
-  public final boolean isCanceled() {
-    return canceled;
-  }
-
   protected final IGenericDialogConfiguration getGenericDialog() {
     return dialogConfiguration;
   }
 
   protected final void initializeContent() {
-    IGridDialogLayoutData mainContentLayoutData =
-            isMainContentGrabVerticalSpace() ? GridDialogLayoutData.FILL_BOTH : GridDialogLayoutData.FILL_HORIZONTAL;
+    IGridDialogLayoutData mainContentLayoutData = isMainContentGrabVerticalSpace() ? GridDialogLayoutData.FILL_BOTH : GridDialogLayoutData.FILL_HORIZONTAL;
     dialog.getContentPane().add(dialogPagePanel.createPanel(), mainContentLayoutData);
     dialog.getContentPane().add(new HorizontalLine(), GridDialogLayoutData.FILL_HORIZONTAL);
     dialog.getContentPane().add(createButtonBar(), GridDialogLayoutData.FILL_HORIZONTAL);
@@ -206,5 +192,9 @@ public abstract class AbstractDialog {
 
   public IDialogCloseHandler getCloseHandler() {
     return closeHandler;
+  }
+
+  protected DialogResult createDialogResult() {
+    return new DialogResult(canceled);
   }
 }
