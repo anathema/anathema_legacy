@@ -114,13 +114,6 @@ public enum CharacterType implements ICharacterType {
     return types.toArray(new ICharacterType[types.size()]);
   }
 
-  public static ICharacterType[] getCelestialExaltTypes() {
-    List<ICharacterType> types = new ArrayList<ICharacterType>();
-    Collections.addAll(types, getAllExaltTypes());
-    types.remove(DB);
-    return types.toArray(new ICharacterType[types.size()]);
-  }
-
   @Override
   public String getId() {
     return id;
