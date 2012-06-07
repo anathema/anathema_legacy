@@ -77,6 +77,7 @@ public class TaskedCharacterPane implements CharacterPane, OverviewDisplay {
   private JComponent createContainer(IView content, String name) {
     JPanel viewComponent = new JPanel(new BorderLayout());
     JXTitledSeparator title = new JXTitledSeparator(name);
+    title.setBorder(new EmptyBorder(0,0,5,0));
     title.setFont(title.getFont().deriveFont(Font.BOLD));
     viewComponent.add(title, BorderLayout.NORTH);
     viewComponent.setBorder(new EmptyBorder(10, 10, 10, 10));
