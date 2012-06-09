@@ -14,6 +14,7 @@
  <charmAttribute attribute="Combo-OK" visualize="true"/>
  <charmAttribute attribute="Elemental" visualize="true"/>
  <charmAttribute attribute="Leader" visualize="true"/>
+  <elemental/>
   <source source="DragonBlooded2nd"/>
   <source source="ScrollErrata"/>
 </charm>

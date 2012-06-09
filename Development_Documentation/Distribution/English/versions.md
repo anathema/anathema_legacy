@@ -9,9 +9,13 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 4.2.1
 
+Existing characters that already know "Dragon-Graced Weapon" need to select at least one elemental effect
+to help Anathema calculate the XP/BP cost for the Charm.
+
 ### Features
 * Two new weapon tags: "Artillery" and "Grenade" from Scroll of Kings
 * Weapon tag tooltips show the tag's abbreviation.
+* (DB/Melee) "Dragon-Graced Weapon" is elemental.
 
 ### Bugfixes
 * Spirits can be created and loaded once more
