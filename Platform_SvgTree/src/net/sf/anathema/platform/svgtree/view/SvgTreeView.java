@@ -66,11 +66,10 @@ public class SvgTreeView implements ISvgTreeView {
   private final ISvgTreeViewProperties properties;
   private final SvgTreeListening listening;
   private final SVGSpecialNodeViewManager manager;
-  private final IBoundsCalculator calculator;
 
   public SvgTreeView(ISvgTreeViewProperties properties) {
     this.properties = properties;
-    this.calculator = new BoundsCalculator();
+    IBoundsCalculator calculator = new BoundsCalculator();
     this.manager = new SVGSpecialNodeViewManager(canvas, calculator);
     this.listening = new SvgTreeListening(canvas, properties);
     addDocumentLoadedListener(new CascadeLoadedListener() {

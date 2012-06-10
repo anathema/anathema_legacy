@@ -5,8 +5,6 @@ import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.disy.commons.swing.layout.util.ButtonPanelBuilder;
-import net.disy.commons.swing.layout.util.LayoutDirection;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
@@ -34,7 +32,6 @@ public class SmartTable implements IView {
   private JPanel content;
   private final List<ActionListener> selectionActionListeners = new ArrayList<ActionListener>();
   private final List<ITableActionFactory> actionFactories = new ArrayList<ITableActionFactory>();
-  private boolean toolbarStyleButtons = true;
 
   private Action[] actions = new Action[0];
 
@@ -106,7 +103,6 @@ public class SmartTable implements IView {
     JPanel tablePanel = new JPanel(new BorderLayout());
     tablePanel.add(table);
     JScrollPane scrollPane = new JScrollPane(tablePanel) {
-      private static final long serialVersionUID = -8660768514467856637L;
 
       @Override
       public void setEnabled(boolean enabled) {
@@ -119,7 +115,6 @@ public class SmartTable implements IView {
     scrollPane.setPreferredSize(new Dimension(preferredWidth, 150));
     this.actions = createTableActions();
     JPanel panel = new JPanel(new GridDialogLayout(2, false)) {
-      private static final long serialVersionUID = 5547203636645981124L;
 
       @Override
       public void setEnabled(boolean enabled) {
@@ -151,20 +146,6 @@ public class SmartTable implements IView {
   }
 
   private JPanel createButtonPanel(Action[] additionalActions) {
-    return isToolbarStyleButtons() ? createToolbarStyleButtons(additionalActions) : createNonToolbarStyleButtons(additionalActions);
-  }
-
-  private JPanel createNonToolbarStyleButtons(Action[] additionalActions) {
-    ButtonPanelBuilder builder = new ButtonPanelBuilder(LayoutDirection.VERTICAL);
-    for (Action action : additionalActions) {
-      builder.add(action);
-    }
-    JPanel panel = builder.createPanel();
-    panel.setBorder(null);
-    return panel;
-  }
-
-  private JPanel createToolbarStyleButtons(Action[] additionalActions) {
     JPanel buttonPanel = new JPanel(new GridDialogLayout(1, false));
     for (Action action : additionalActions) {
       buttonPanel.add(new JButton(action), GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
@@ -188,10 +169,6 @@ public class SmartTable implements IView {
     if (cellEditor != null) {
       cellEditor.stopCellEditing();
     }
-  }
-
-  public boolean isToolbarStyleButtons() {
-    return toolbarStyleButtons;
   }
 
   public int getSelectedRowIndex() {

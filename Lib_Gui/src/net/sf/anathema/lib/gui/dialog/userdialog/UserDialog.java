@@ -174,7 +174,6 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
     super.closeDialog();
     IDialogPage page = getConfiguration().getDialogPage();
     page.leave();
-    page.dispose();
   }
 
   @Override
