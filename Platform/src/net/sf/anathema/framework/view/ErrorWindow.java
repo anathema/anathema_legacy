@@ -1,8 +1,7 @@
 package net.sf.anathema.framework.view;
 
-import javax.swing.JOptionPane;
-
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
+import net.sf.anathema.lib.message.Message;
 
 public class ErrorWindow implements IWindow {
 
@@ -14,8 +13,6 @@ public class ErrorWindow implements IWindow {
 
   @Override
   public void show() {
-    JOptionPane.showMessageDialog(
-      null,
-      cause.getMessage() + "\n" + cause.getStackTrace()[0].toString(), "Initialization Error", ERROR_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+    MessageDialogFactory.showMessageDialog(null, new Message(cause.getMessage(), cause));
   }
 }
