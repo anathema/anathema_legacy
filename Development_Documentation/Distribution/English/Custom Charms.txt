@@ -6,6 +6,9 @@ custom charms.
 Please be advised that it is quite possible to create bogus data files that
 confuse or break the application. The onus of not bricking Anathema is on you.
 :)
+In that case, please read Anathema's error message most closely and make sure
+to run your Charms through www.xmlvalidation.com (or even use a proper XML editor)
+before asking for support. (In other words, please do your homework.)
 
 To make use of this feature, find your Anathema repository folder, and create
 a subdirectory under it called 'custom'. For each custom charm you wish to
