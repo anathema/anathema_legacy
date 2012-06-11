@@ -59,9 +59,7 @@ To determine your version please type "java -version".
 		IV - Features
 ===------------------------------------------------------------------------------===
 
-+ Generate and maintain all 5 core exalt types (1E)
-+ Generate and maintain Solar, Lunar, Sidereal, Dragon-Blooded, Infernal, and Abyssal
-  exalt types (2E)
++ Generate and maintain characters for Exalted 2.5
 + Print character sheets to PDF
 + Organize your series' plot
 + Manage a music database for your series
@@ -75,7 +73,7 @@ See versions.txt for a version history.
 
 Anathema was created  by Sandra Sieroux and Urs Reupke, with further development
 by Scott Olson, Eric Astor, Rob Rutherford, Paul Adams, Sean Mattox, Douglas Fotheringham,
-and others.
+Curtis Tasker and others.
 
 Contact us at
 anathema-developers@lists.sourceforge.net with questions, comments or suggestions.
