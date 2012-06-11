@@ -16,6 +16,8 @@ to help Anathema calculate the XP/BP cost for the Charm.
 * Two new weapon tags: "Artillery" and "Grenade" from Scroll of Kings
 * Weapon tag tooltips show the tag's abbreviation.
 * (DB/Melee) "Dragon-Graced Weapon" is elemental.
+* Errors on startup show their trace in the GUI, not only the console.
+* When Charm data is broken, Anathema provides more helpful exceptions.
 
 ### Bugfixes
 * Spirits can be created and loaded once more
