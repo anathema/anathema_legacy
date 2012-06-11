@@ -28,7 +28,7 @@ you keep your charms sorted.
 
 Here is an example of what the content of that file should look like:
 
------------------------------------------------------------
+-----------EXAMPLE BEGINS BELOW THIS LINE--------------
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../charmreview-xmlns.xsl"?>
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
@@ -54,7 +54,7 @@ Here is an example of what the content of that file should look like:
 		<source source="Custom" />
 	</charm>
 </charmlist>
------------------------------------------------------------
+-------------EXAMPLE ENDS ABOVE THIS LINE-------------
 
 The possible values of the fields above should be mostly self-explanatory for
 simple purposes. While many more complicated options exist, such as creating OR
