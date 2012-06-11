@@ -35,7 +35,21 @@ public class DataSetInitializer {
         getDataFilesFromReflection(compiler);
         manager.addDataSet(compiler.build());
       } catch (Exception e) {
-        throw new InitializationException("Could not compile " + compiler.getName(), e);
+        StringBuilder message = new StringBuilder("Could not compile ");
+        message.append(compiler.getName());
+        Throwable cause = e.getCause();
+        while (cause != null) {
+          message.append(":");
+          message.append("\n");
+          String messagePart = cause.getMessage();
+          if (messagePart.contains("Nested")) {
+            int nested = messagePart.indexOf("Nested");
+            messagePart = messagePart.substring(0, nested);
+          }
+          message.append(messagePart);
+          cause = cause.getCause();
+        }
+        throw new InitializationException(message.toString(), e);
       }
     }
     return manager;
