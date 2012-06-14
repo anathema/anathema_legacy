@@ -16,13 +16,13 @@ subprojects {
   apply plugin: 'idea'
 
   repositories {
-      maven {
-          url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
-        }
+      mavenCentral()
       maven {
           url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
         }
-      mavenCentral()
+      maven {
+          url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
+        }
     }
 
   apply plugin: 'java'
@@ -83,8 +83,8 @@ apply from: 'plugins.gradle'
 
 task buildWindowsExecutable << {
     mkdir("./build/launcher")
-    def exeVersion = "${ext.versionString}.0"
-    def versionText = "${ext.versionString} \"$version_name\""
+    def exeVersion = "${versionString}.0"
+    def versionText = "${versionString} \"$version_name\""
     ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
     ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion: "$versionText", txtProductVersion: "$versionText")
 }
@@ -92,8 +92,8 @@ task buildWindowsExecutable << {
 task buildWindowsInstaller << {
     ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)
     ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}") {
-        define(name: "RELEASE_VERSION", value: "${ext.versionString}")
-        define(name: "VERSION", value: "${ext.versionString}.0")
+        define(name: "RELEASE_VERSION", value: "${versionString}")
+        define(name: "VERSION", value: "${versionString}.0")
     }
 }
 
