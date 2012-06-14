@@ -1,6 +1,6 @@
 dependencies {
   compile project(':Lib_Gui')
-  testCompile testDependencies
+  testCompile parent.ext.testDependencies
 }
 
 sourceSets {

@@ -7,75 +7,73 @@ idea {
     }
 }
 
-dependenciesDir = new File(buildDir, 'dependencies')
-pluginsDir = new File(buildDir, 'plugins')
-
-testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
+ext.dependenciesDir = new File(buildDir, 'dependencies')
+ext.versionString = "${version_major}.${version_minor}.${version_revision}"
+ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
 
 subprojects {
-    apply plugin: 'eclipse'
-    apply plugin: 'idea'
+  apply plugin: 'eclipse'
+  apply plugin: 'idea'
 
-    repositories {
-        maven {
-            url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
+  repositories {
+      maven {
+          url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
         }
-        maven {
-            url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
+      maven {
+          url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
         }
-        mavenCentral()
+      mavenCentral()
     }
 
-    apply plugin: 'java'
+  apply plugin: 'java'
 
-    sourceCompatibility = 1.6
+  sourceCompatibility = 1.6
 
-    if (!isDataPlugin(project)) {
-        sourceSets {
-            main {
-                java {
-                    srcDir 'src'
+  if (!isDataPlugin(project)) {
+      sourceSets {
+          main {
+              java {
+                  srcDir 'src'
                 }
             }
         }
     }
     else {
-        sourceSets {
-            main {
-                resources {
-                    srcDir 'resources'
+      sourceSets {
+          main {
+              resources {
+                  srcDir 'resources'
                 }
             }
         }
     }
 
-    task collectTransitiveDependencies() << {
-        copy {
-            from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('cache')) }
-            into dependenciesDir
+  task collectTransitiveDependencies() << {
+      copy {
+          from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('cache')) }
+          into parent.ext.dependenciesDir
         }
     }
 
-    task testJar(type: Jar, dependsOn: testClasses) {
-        baseName = "test-${project.archivesBaseName}"
-        from sourceSets.test.output
+  task testJar(type: Jar, dependsOn: testClasses) {
+      baseName = "test-${project.archivesBaseName}"
+      from sourceSets.test.output
     }
 }
 
 configurations {
-    launch4j
-    nsis
+  launch4j
+  nsis
 }
 
 dependencies {
-    launch4j files(
+  launch4j files(
             "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
             "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
     )
-    nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.2.jar")
+  nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.2.jar")
 }
 
-versionString = "${version_major}.${version_minor}.${version_revision}"
 
 def projectLibrary(String project) {
     return zipTree("$project/build/libs/${project}.jar")
@@ -85,8 +83,8 @@ apply from: 'plugins.gradle'
 
 task buildWindowsExecutable << {
     mkdir("./build/launcher")
-    def exeVersion = "${versionString}.0"
-    def versionText = "$versionString \"$version_name\""
+    def exeVersion = "${ext.versionString}.0"
+    def versionText = "${ext.versionString} \"$version_name\""
     ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
     ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion: "$versionText", txtProductVersion: "$versionText")
 }
@@ -94,8 +92,8 @@ task buildWindowsExecutable << {
 task buildWindowsInstaller << {
     ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)
     ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}") {
-        define(name: "RELEASE_VERSION", value: "$versionString")
-        define(name: "VERSION", value: "${versionString}.0")
+        define(name: "RELEASE_VERSION", value: "${ext.versionString}")
+        define(name: "VERSION", value: "${ext.versionString}.0")
     }
 }
 
@@ -143,7 +141,7 @@ boolean isDataPlugin(project) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.0-milestone-5'
+    gradleVersion = '1.0'
 }
 
 task createModule() {

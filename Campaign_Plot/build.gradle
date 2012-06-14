@@ -1,6 +1,6 @@
 dependencies {
   compile project(':Platform')
-  testCompile testDependencies
+  testCompile parent.ext.testDependencies
 }
 
 sourceSets {

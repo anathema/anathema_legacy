@@ -3,7 +3,7 @@ dependencies {
   compile project(':Lib')
   compile project(':Platform')
   compile project(':GraphLayout')
-  testCompile testDependencies
+  testCompile parent.ext.testDependencies
 }
 
 sourceSets {

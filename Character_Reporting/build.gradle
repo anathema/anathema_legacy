@@ -3,7 +3,7 @@ dependencies {
   compile project(':Character_Main')
   compile project(':Character_Main_Impl')
   compile project(':Character_Equipment')
-  testCompile testDependencies
+  testCompile parent.ext.testDependencies
   testCompile project(path: ':Character_Generic', configuration: 'tests')
 }
 

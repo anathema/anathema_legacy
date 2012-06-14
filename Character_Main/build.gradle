@@ -2,7 +2,7 @@ dependencies {
   compile project(':Charm_Tree')
   compile project(':Character_Library')
   compile project(':Namegenerator')
-  testCompile testDependencies
+  testCompile parent.ext.testDependencies
 }
 
 sourceSets {

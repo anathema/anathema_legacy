@@ -1,6 +1,6 @@
 dependencies {
     compile project(':Lib')
-    testCompile testDependencies
+    testCompile parent.ext.testDependencies
 }
 
 sourceSets {

@@ -7,12 +7,12 @@ dependencies {
   compile 'org.swinglabs:swingx:1.6.1'
   compile project(':Lib_Workflow')
   compile project(':Lib_Gui')
-  testCompile testDependencies
+  testCompile parent.ext.testDependencies
 }
 
 processResources {
     String versionDate = new Date().format('MM/dd/yy')
-    String versionString = project.parent.versionString
+    String versionString = project.parent.ext.versionString
     String versionName = version_name
     // work-around for filter corrupting binary resources
     from("./resources") {

@@ -2,7 +2,7 @@ dependencies {
   compile 'com.eteks:parser:1.0.2'
   compile project(':Lib_Gui')
   compile project(':Character_Generic')
-  testCompile testDependencies
+  testCompile parent.ext.testDependencies
   testCompile project(path: ':Character_Generic', configuration: 'tests')
 }
 
