@@ -48,8 +48,6 @@ public class MessageDialogPage extends AbstractDialogPage {
 
   @Override
   public String getTitle() {
-    return message.getTitle() == null
-        ? MessageTypeUi.getInstance().getLabel(message.getType())
-        : message.getTitle();
+    return MessageTypeUi.getInstance().getLabel(message.getType());
   }
 }
