@@ -10,8 +10,8 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
+import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
@@ -49,10 +49,8 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 		  }
 	  
 	  @Override
-      public ISubeffect[] buildSubeffects(IBasicCharacterData data,
-			  IGenericTraitCollection traitCollection,
-			  ICharmLearnableArbitrator arbitrator,
-			  ICharm charm) {
+      public SubEffects buildSubeffects(IBasicCharacterData data, IGenericTraitCollection traitCollection,
+                                        ICharmLearnableArbitrator arbitrator, ICharm charm) {
 		List<Upgrade> upgradeList = new ArrayList<Upgrade>();
 	    for (String id : effectIds) {
 	      Integer bpCost = bpCosts.get(id);
@@ -66,9 +64,9 @@ public class UpgradableCharm extends MultipleEffectCharm implements IUpgradableC
 	    				  essenceMin, traitMin, trait),
 	    		  bpCost == null ? NO_BP_UPGRADE : bpCost, xpCost));
 	    }
-	    Upgrade[] list = upgradeList.toArray(new Upgrade[0]);
+	    Upgrade[] list = upgradeList.toArray(new Upgrade[upgradeList.size()]);
 	    upgradesBySession.put(data, list);
-	    return list;
+	    return new DefaultSubEffects(list);
 	  }
 
 	  private ICondition buildLearnCondition(final ICharmLearnableArbitrator arbitrator,

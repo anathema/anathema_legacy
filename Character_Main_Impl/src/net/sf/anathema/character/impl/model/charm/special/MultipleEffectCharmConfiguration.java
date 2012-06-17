@@ -24,7 +24,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
       ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
     this.subeffects = visited.buildSubeffects(context.getBasicCharacterContext(),
-    		context.getTraitCollection(), arbitrator, charm);
+    		context.getTraitCollection(), arbitrator, charm).getEffects();
     for (ISubeffect subeffect : subeffects) {
       subeffect.addChangeListener(new IChangeListener() {
         @Override

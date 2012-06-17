@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
+import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 import java.util.ArrayList;
@@ -34,15 +35,13 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
   }
 
   @Override
-  public ISubeffect[] buildSubeffects(IBasicCharacterData data,
-                                      IGenericTraitCollection traitCollection,
-                                      ICharmLearnableArbitrator arbitrator,
-                                      ICharm charm) {
+  public SubEffects buildSubeffects(IBasicCharacterData data, IGenericTraitCollection traitCollection,
+                                    ICharmLearnableArbitrator arbitrator, ICharm charm) {
     List<ISubeffect> effectList = new ArrayList<ISubeffect>();
     for (String id : effectIds) {
       effectList.add(new Subeffect(id, data, buildLearnCondition(arbitrator, charm)));
     }
-    return effectList.toArray(new ISubeffect[effectList.size()]);
+    return new DefaultSubEffects(effectList.toArray(new ISubeffect[effectList.size()]));
   }
 
   private ICondition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm) {
