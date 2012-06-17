@@ -4,13 +4,12 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.generic.dummy.DummyCondition;
-import net.sf.anathema.character.generic.impl.magic.charm.special.DefaultSubEffects;
+import net.sf.anathema.character.generic.impl.magic.charm.special.ArraySubEffects;
 import net.sf.anathema.character.generic.impl.magic.charm.special.Subeffect;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
-import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -44,7 +43,7 @@ public class MultipleEffectCharmConfigurationTest {
     IMultipleEffectCharm charm = mock(IMultipleEffectCharm.class);
     when(
       charm.buildSubeffects(isA(IBasicCharacterData.class), any(IGenericTraitCollection.class), (ICharmLearnableArbitrator) isNull(), (ICharm) isNull()))
-      .thenReturn(new DefaultSubEffects(new ISubeffect[]{effect}));
+      .thenReturn(new ArraySubEffects(new ISubeffect[]{effect}));
     return charm;
   }
 

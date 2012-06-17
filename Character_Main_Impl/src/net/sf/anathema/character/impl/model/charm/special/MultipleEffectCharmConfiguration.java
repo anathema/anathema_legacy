@@ -6,15 +6,14 @@ import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
+import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.IPredicate;
 import org.jmock.example.announcer.Announcer;
 
 public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmConfiguration {
   private final ICharm charm;
-  private final ISubeffect[] subeffects;
+  private final SubEffects subeffects;
   private final Announcer<ISpecialCharmLearnListener> control = Announcer.to(ISpecialCharmLearnListener.class);
 
   public MultipleEffectCharmConfiguration(
@@ -23,8 +22,8 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
       IMultipleEffectCharm visited,
       ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
-    this.subeffects = visited.buildSubeffects(context.getBasicCharacterContext(),
-    		context.getTraitCollection(), arbitrator, charm).getEffects();
+    this.subeffects = visited.buildSubeffects(context.getBasicCharacterContext(), context.getTraitCollection(),
+            arbitrator, charm);
     for (ISubeffect subeffect : subeffects) {
       subeffect.addChangeListener(new IChangeListener() {
         @Override
@@ -44,11 +43,12 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
 
   @Override
   public void learn(boolean experienced) {
+    ISubeffect firstEffect = subeffects.getEffects()[0];
     if (experienced && getCurrentLearnCount() == 0) {
-      subeffects[0].setExperienceLearned(true);
+      firstEffect.setExperienceLearned(true);
     }
     else if (!experienced && getCreationLearnCount() == 0) {
-      subeffects[0].setCreationLearned(true);
+      firstEffect.setCreationLearned(true);
     }
   }
 
@@ -68,17 +68,12 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
 
   @Override
   public ISubeffect[] getEffects() {
-    return subeffects;
+    return subeffects.getEffects();
   }
 
   @Override
   public ISubeffect getEffectById(final String id) {
-    return ArrayUtilities.getFirst(subeffects, new IPredicate<ISubeffect>() {
-      @Override
-      public boolean evaluate(ISubeffect t) {
-        return t.getId().equals(id);
-      }
-    });
+    return subeffects.getById(id);
   }
 
   @Override
@@ -101,5 +96,9 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
       }
     }
     return sum;
+  }
+
+  protected SubEffects getSubeffects() {
+    return subeffects;
   }
 }

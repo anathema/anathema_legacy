@@ -1,9 +1,13 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class CollectionSubEffects implements SubEffects {
@@ -17,5 +21,20 @@ public class CollectionSubEffects implements SubEffects {
   @Override
   public ISubeffect[] getEffects() {
     return effects.toArray(new ISubeffect[effects.size()]);
+  }
+
+  @Override
+  public ISubeffect getById(final String id) {
+    return Iterables.find(effects, new Predicate<ISubeffect>() {
+      @Override
+      public boolean apply(ISubeffect input) {
+        return input.getId().equals(id);
+      }
+    });
+  }
+
+  @Override
+  public Iterator<ISubeffect> iterator() {
+    return effects.iterator();
   }
 }

@@ -41,7 +41,7 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
     for (String id : effectIds) {
       effectList.add(new Subeffect(id, data, buildLearnCondition(arbitrator, charm)));
     }
-    return new DefaultSubEffects(effectList.toArray(new ISubeffect[effectList.size()]));
+    return new ArraySubEffects(effectList.toArray(new ISubeffect[effectList.size()]));
   }
 
   private ICondition buildLearnCondition(ICharmLearnableArbitrator arbitrator, ICharm charm) {

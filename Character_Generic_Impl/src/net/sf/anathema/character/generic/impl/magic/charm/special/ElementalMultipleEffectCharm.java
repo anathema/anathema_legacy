@@ -43,7 +43,7 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
     }
     ElementalSubeffect[] list = effectList.toArray(new ElementalSubeffect[effectList.size()]);
     sessionSubeffects.put(data, list);
-    return new DefaultSubEffects(list);
+    return new ArraySubEffects(list);
   }
   
   public ElementalSubeffect[] getSessionSubeffects(IBasicCharacterData data) {

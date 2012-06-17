@@ -1,22 +1,23 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.impl.magic.charm.special.UpgradableSubEffects;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.model.charm.special.IUpgradableCharmConfiguration;
 
 public class UpgradableCharmConfiguration extends MultipleEffectCharmConfiguration implements IUpgradableCharmConfiguration {
-  private final IUpgradableCharm upgrade;
-  private final IBasicCharacterData data;
 
   public UpgradableCharmConfiguration(ICharacterModelContext context,
-                                      ICharm charm, IUpgradableCharm visited,
+                                      ICharm charm, IUpgradableCharm upgradableCharm,
                                       ICharmLearnableArbitrator arbitrator) {
-    super(context, charm, visited, arbitrator);
-    this.data = context.getBasicCharacterContext();
-    upgrade = visited;
+    super(context, charm, upgradableCharm, arbitrator);
+  }
+
+  @Override
+  protected UpgradableSubEffects getSubeffects() {
+    return (UpgradableSubEffects) super.getSubeffects();
   }
 
   @Override
@@ -31,11 +32,11 @@ public class UpgradableCharmConfiguration extends MultipleEffectCharmConfigurati
 
   @Override
   public int getUpgradeBPCost() {
-    return upgrade.getUpgradeBPCost(data);
+    return getSubeffects().getUpgradeBPCost();
   }
 
   @Override
   public int getUpgradeXPCost() {
-    return upgrade.getUpgradeXPCost(data);
+    return getSubeffects().getUpgradeXPCost();
   }
 }
