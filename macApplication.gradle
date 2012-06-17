@@ -2,7 +2,6 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 def appName = "Anathema"
 def appDir = "${appName}.app"
-def dmgName = "${appName}_v${version_major}.${version_minor}.${version_revision}.dmg"
 def mountdir = "/tmp"
 
 def executeOnMac = {Closure command ->
@@ -41,10 +40,6 @@ task copyContent(type: Copy) {
   }
   into("${appDir}/Contents/Resources/Java") {
     from 'Anathema/build/libs'
-  }
-  into("${appDir}/Contents/Resources/Java") {
-    from("Development_Documentation/Distribution/");
-    include '**/*.*'
   }
   into("${appDir}/Contents/Resources/Java/lib") {
     from("${buildDir}/dependencies/");

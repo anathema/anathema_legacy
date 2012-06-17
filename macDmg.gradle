@@ -37,9 +37,8 @@ task attachTemporaryImage << {
 task copyLicenseFiles(type: Copy) {
   destinationDir buildDir
   into("${mountdir}/${volumeName}/") {
-    from("${buildDir}/${appName}.app/Contents/Resources/Java/English")
-    include 'license.txt'
-    rename 'license.txt', 'License.txt'
+    from("Development_Documentation/Distribution/English");
+    include '*.*'
   }
 }
 
