@@ -1,10 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -16,8 +11,6 @@ import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
 
-  private final Map<IBasicCharacterData, ElementalSubeffect[]> sessionSubeffects =
-		  new HashMap<IBasicCharacterData, ElementalSubeffect[]>();
   private final String charmId;
 
   public ElementalMultipleEffectCharm(String charmId) {
@@ -37,20 +30,17 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
   @Override
   public SubEffects buildSubeffects(IBasicCharacterData data, IGenericTraitCollection traitCollection,
                                     ICharmLearnableArbitrator arbitrator, ICharm charm) {
-	List<ElementalSubeffect> effectList = new ArrayList<ElementalSubeffect>();
+    CollectionSubEffects subEffects = new CollectionSubEffects();
     for (Element element : Element.values()) {
-      effectList.add(new ElementalSubeffect(element, data, buildLearnCondition(element, data, arbitrator, charm)));
+      ICondition condition = buildLearnCondition(element, data, arbitrator, charm, subEffects);
+      subEffects.add(new ElementalSubeffect(element, data, condition));
     }
-    ElementalSubeffect[] list = effectList.toArray(new ElementalSubeffect[effectList.size()]);
-    sessionSubeffects.put(data, list);
-    return new ArraySubEffects(list);
-  }
-  
-  public ElementalSubeffect[] getSessionSubeffects(IBasicCharacterData data) {
-	  return sessionSubeffects.get(data);
+    return subEffects;
   }
 
-  private ICondition buildLearnCondition(Element element, IBasicCharacterData data, ICharmLearnableArbitrator arbitrator, ICharm charm) {
-    return new ElementalCharmLearnCondition(this, arbitrator, charm, data, element);
+  private ICondition buildLearnCondition(Element element, IBasicCharacterData data,
+                                         ICharmLearnableArbitrator arbitrator, ICharm charm,
+                                         CollectionSubEffects subEffects) {
+    return new ElementalCharmLearnCondition(subEffects, arbitrator, charm, data, element);
   }
 }

@@ -5,7 +5,6 @@ import com.google.common.collect.Iterables;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
