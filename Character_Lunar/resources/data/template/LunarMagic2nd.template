@@ -3,7 +3,7 @@
 	<favoringTraitType type="AttributeType"/>
 	<charmTemplate charmType="Lunar">
 	    <hasUniqueCharmType type="Knacks" label="Lunar.Knacks" keyword="Knack"/>
-		<martialArts level="Terrestrial" highLevel="true" /> 
+		<martialArts level="Celestial" highLevel="false" /> 
 	</charmTemplate>
 	<spellTemplate maximumSorceryCircle="Celestial" maximumNecromancyCircle="Shadowlands"/>
 </magicTemplate>		
