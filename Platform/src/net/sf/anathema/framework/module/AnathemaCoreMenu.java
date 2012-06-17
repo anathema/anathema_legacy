@@ -9,7 +9,7 @@ import net.sf.anathema.framework.presenter.action.menu.help.AnathemaAboutAction;
 import net.sf.anathema.framework.presenter.action.menu.help.AnathemaUpdateAction;
 import net.sf.anathema.framework.presenter.action.preferences.AnathemaPreferencesAction;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
-import net.sf.anathema.framework.presenter.itemmanagement.AnathemaCloseAction;
+import net.sf.anathema.framework.presenter.itemmanagement.SelectedItemCloseAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
@@ -40,7 +40,7 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     IMenu mainMenu = menubar.getMainMenu();
     mainMenu.addMenuItem(AnathemaNewAction.createMenuAction(model, resources));
     mainMenu.addMenuItem(AnathemaLoadAction.createMenuAction(model, resources));
-    mainMenu.addMenuItem(AnathemaCloseAction.createMenuAction(model.getItemManagement(), resources));
+    mainMenu.addMenuItem(SelectedItemCloseAction.createMenuAction(model.getItemManagement(), resources));
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaSaveAction.createMenuAction(model, resources));
     mainMenu.addMenuItem(AnathemaSaveAllAction.createMenuAction(model, resources));
