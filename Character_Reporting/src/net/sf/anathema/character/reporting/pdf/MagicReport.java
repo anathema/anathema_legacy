@@ -6,6 +6,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ScreenDisplayInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.VerboseCharmTypeStringBuilder;
@@ -101,7 +102,7 @@ public class MagicReport extends AbstractPdfReport {
   }
 
   private void addMagicName(IMagic magic, MultiColumnText columnText) throws DocumentException {
-    String charmName = resources.getString(magic.getId());
+    String charmName = new MagicDisplayLabeler(resources).getLabelForMagic(magic);
     columnText.addElement(partFactory.createCharmTitle(charmName));
   }
 
