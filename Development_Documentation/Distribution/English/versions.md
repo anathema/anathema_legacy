@@ -13,7 +13,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 * [White Veil] Lunars pay 10/12 XP per CMA charm. The favorization state of Dexterity does not yet factor in
 * Recognizes "Artillery" and "Grenade" tagged items as ranged weapons
 * Prints readable generic Charm names in the Magic Report
-* Improves the way multi-effect Charms are handled. This should make Anathema less prone to crash if load several characters in a single sitting.
+* Improves the way multi-effect Charms are handled. This should make Anathema less prone to crash if you load several characters in a single sitting.
 
 ## Release 4.2.1
 
