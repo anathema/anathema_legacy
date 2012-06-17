@@ -4,7 +4,7 @@ import com.google.common.base.Functions;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.impl.util.DefaultPointModification;
+import net.sf.anathema.character.generic.impl.util.NullPointModification;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
@@ -26,7 +26,7 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
   private final List<String> exceptionIds = new ArrayList<String>();
   private final Map<CircleType, Integer> typesByMinimumValue = new HashMap<CircleType, Integer>();
   private CircleType maximumCircle = CircleType.Terrestrial;
-  private IPointModification pointModification = new DefaultPointModification();
+  private IPointModification pointModification = new NullPointModification();
 
   public GenericMagicLearnPool(IBackgroundTemplate template, boolean defaultResponse) {
     this.template = template;

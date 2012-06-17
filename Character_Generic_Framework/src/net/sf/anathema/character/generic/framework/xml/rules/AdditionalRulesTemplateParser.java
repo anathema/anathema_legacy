@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.framework.xml.rules;
 import com.eteks.parser.CompilationException;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
-import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
@@ -13,7 +12,7 @@ import net.sf.anathema.character.generic.impl.additional.ComplexAdditionalEssenc
 import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.additional.LearnableCharmPool;
 import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
-import net.sf.anathema.character.generic.impl.util.DefaultPointModification;
+import net.sf.anathema.character.generic.impl.util.NullPointModification;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -111,43 +110,19 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       for (Element modificationElement : ElementUtilities.elements(costModifierElement, TAG_DOT_COST_MODIFICATION)) {
         dotCostModifications.add(createPointCostModification(modificationElement));
       }
-      basicTemplate.addBackgroundCostModifier(backgroundTemplate.getId(), new ITraitCostModifier() {
-        @Override
-        public int getAdditionalBonusPointsToSpend(int traitValue) {
-          int cost = 0;
-          for (IPointModification modification : bonusModifications) {
-            cost += modification.getAdditionalPoints(traitValue);
-          }
-          return cost;
-        }
-
-        @Override
-        public int getAdditionalDotsToSpend(int traitValue) {
-          int cost = 0;
-          for (IPointModification modification : dotCostModifications) {
-            cost += modification.getAdditionalPoints(traitValue);
-          }
-          return cost;
-        }
-      });
+      basicTemplate.addBackgroundCostModifier(backgroundTemplate.getId(),
+              new BackgroundCostModifier(bonusModifications, dotCostModifications));
     }
   }
 
   private IPointModification createPointCostModification(Element bonusModification) throws PersistenceException {
     if (bonusModification == null) {
-      return new DefaultPointModification();
+      return new NullPointModification();
     }
     final int minimumValue = ElementUtilities.getRequiredIntAttrib(bonusModification, ATTRIB_MINIMUM_VALUE);
     final int multiplier = ElementUtilities.getIntAttrib(bonusModification, ATTRIB_MULTIPLIER, 0);
     final int fixedCost = ElementUtilities.getIntAttrib(bonusModification, ATTRIB_FIXED_COST, 0);
-    return new IPointModification() {
-      @Override
-      public int getAdditionalPoints(int traitValue) {
-        int variable = Math.max(0, (traitValue - minimumValue) * multiplier);
-        int fixed = traitValue > minimumValue ? fixedCost : 0;
-        return variable + fixed;
-      }
-    };
+    return new DefaultPointModification(minimumValue, multiplier, fixedCost);
   }
 
   private void setForbiddenBackgrounds(Element element, GenericAdditionalRules basicTemplate) {
