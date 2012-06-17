@@ -44,7 +44,7 @@ task copyContent(type: Copy) {
   }
   into("${appDir}/Contents/Resources/Java") {
     from("Development_Documentation/Distribution/");
-    include '**/*.txt'
+    include '**/*.*'
   }
   into("${appDir}/Contents/Resources/Java/lib") {
     from("${buildDir}/dependencies/");
