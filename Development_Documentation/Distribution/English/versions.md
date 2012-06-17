@@ -7,6 +7,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.2.2
+
+### Bugfixes
+* Lunars pay 10/12 XP per CMA charm. The favorization state of Dexterity does not yet factor in.
+
 ## Release 4.2.1
 
 Existing characters that already know "Dragon-Graced Weapon" need to select at least one elemental effect
