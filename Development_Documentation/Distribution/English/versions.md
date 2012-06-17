@@ -10,7 +10,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 4.2.2
 
 ### Bugfixes
-* Lunars pay 10/12 XP per CMA charm. The favorization state of Dexterity does not yet factor in.
+* [White Veil] Lunars pay 10/12 XP per CMA charm. The favorization state of Dexterity does not yet factor in.
 
 ## Release 4.2.1
 
