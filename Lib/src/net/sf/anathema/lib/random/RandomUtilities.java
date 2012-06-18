@@ -1,5 +1,6 @@
 package net.sf.anathema.lib.random;
 
+import java.util.List;
 import java.util.Random;
 
 public class RandomUtilities {
@@ -12,5 +13,9 @@ public class RandomUtilities {
 
   public static <T> T choose(T[] objects) {
     return objects[RandomUtilities.RANDOM.nextInt(objects.length)];
+  }
+
+  public static <T> T choose(List<T> objects) {
+    return objects.get(RandomUtilities.RANDOM.nextInt(objects.size()));
   }
 }

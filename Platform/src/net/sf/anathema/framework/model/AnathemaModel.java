@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.model;
 
+import com.google.common.collect.Lists;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
@@ -16,11 +17,19 @@ import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.MessageType;
+import net.sf.anathema.lib.random.RandomUtilities;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.ResourceFile;
+import org.apache.commons.io.IOUtils;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 public class AnathemaModel implements IAnathemaModel {
 
@@ -37,7 +46,7 @@ public class AnathemaModel implements IAnathemaModel {
   public AnathemaModel(File repositoryFolder, IResources resources, ResourceLoader resourceLoader) {
     this.repository = new Repository(repositoryFolder, itemManagment);
     this.messaging = new AnathemaMessaging(resources);
-    messaging.addMessage(new BasicMessage("Welcome to Anathema", MessageType.INFORMATION));
+    new WelcomeMessage(messaging, resourceLoader).show();
     this.resourceLoader = resourceLoader;
   }
 
@@ -85,7 +94,7 @@ public class AnathemaModel implements IAnathemaModel {
   public IAnathemaMessageContainer getMessageContainer() {
     return messaging;
   }
-  
+
   @Override
   public ResourceLoader getResourceLoader() {
     return resourceLoader;
