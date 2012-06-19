@@ -4,8 +4,8 @@ import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.view.item.IComponentItemViewManagement;
 import net.sf.anathema.framework.view.item.ItemViewManagement;
 import net.sf.anathema.framework.view.menu.AnathemaMenuBar;
-import net.sf.anathema.framework.view.messaging.AnathemaStatusBar;
-import net.sf.anathema.framework.view.messaging.IAnathemaStatusBar;
+import net.sf.anathema.framework.view.messaging.IStatusBar;
+import net.sf.anathema.framework.view.messaging.StatusBar;
 import net.sf.anathema.framework.view.toolbar.AnathemaToolBar;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
@@ -22,7 +22,7 @@ public class AnathemaView implements IAnathemaView {
   private final AnathemaMenuBar menu;
   private final IComponentItemViewManagement itemViewManagement;
   private final AnathemaViewProperties properties;
-  private final AnathemaStatusBar statusBar = new AnathemaStatusBar();
+  private final StatusBar statusBar = new StatusBar();
 
   public AnathemaView(AnathemaViewProperties properties) {
     this.properties = properties;
@@ -59,7 +59,7 @@ public class AnathemaView implements IAnathemaView {
   }
 
   @Override
-  public IAnathemaStatusBar getStatusBar() {
+  public IStatusBar getStatusBar() {
     return statusBar;
   }
 

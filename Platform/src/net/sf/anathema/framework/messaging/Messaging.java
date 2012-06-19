@@ -52,7 +52,7 @@ public class Messaging implements IMessaging, IMessageContainer {
   @Override
   public synchronized IBasicMessage getLatestMessage() {
     if (messages.isEmpty()) {
-      return null;
+      return new BasicMessage("", MessageType.NORMAL);
     }
     return messages.get(0);
   }
