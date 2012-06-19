@@ -10,7 +10,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 4.2.2
 
 ## Features
-* "Words of the Wise" for Solars and Dragon-Blooded
+* "Words of the Wise" for Solars, Lunars and Dragon-Blooded
 
 ### Bugfixes
 * [White Veil] Lunars pay 10/12 XP per CMA charm. The favorization state of Dexterity does not yet factor in
