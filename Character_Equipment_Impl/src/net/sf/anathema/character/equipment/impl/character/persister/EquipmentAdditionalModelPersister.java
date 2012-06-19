@@ -12,7 +12,7 @@ import net.sf.anathema.character.equipment.impl.character.model.MissingMaterialE
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
-import net.sf.anathema.framework.messaging.IAnathemaMessaging;
+import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -29,9 +29,9 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
   private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
   private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
   private static final String TAG_MATERIAL = "material"; //$NON-NLS-1$
-  private IAnathemaMessaging messageIndicator;
+  private IMessaging messageIndicator;
 
-  public EquipmentAdditionalModelPersister(IAnathemaMessaging messageIndicator) {
+  public EquipmentAdditionalModelPersister(IMessaging messageIndicator) {
     this.messageIndicator = messageIndicator;
   }
 

@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.SpellCache;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.messaging.IAnathemaMessaging;
+import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.junit.Before;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class ExaltedCharacterPersisterTest {
-  private IAnathemaMessaging messaging = mock(IAnathemaMessaging.class);
+  private IMessaging messaging = mock(IMessaging.class);
   private IItemType type;
   private SimpleDummyCharacterTemplate template;
   private CharacterStatisticsConfiguration configuration;

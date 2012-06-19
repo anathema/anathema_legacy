@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.messaging.IAnathemaMessaging;
+import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.BasicMessage;
@@ -37,7 +37,7 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
         treeView,
         renderer,
         "AnathemaCore.Tools.RepositoryView.TreeRoot").initPresentation(); //$NON-NLS-1$
-    IAnathemaMessaging messaging = model.getMessaging();
+    IMessaging messaging = model.getMessaging();
     AmountMessaging fileCountMessaging = new AmountMessaging(messaging, resources);
     new RepositoryItemDeletionPresenter(resources, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();
     new RepositoryItemExportPresenter(resources, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();

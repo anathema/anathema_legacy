@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.model;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.framework.messaging.IAnathemaMessaging;
+import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.MessageType;
@@ -15,10 +15,10 @@ import java.util.List;
 import java.util.Set;
 
 public class WelcomeMessage {
-  private final IAnathemaMessaging messaging;
+  private final IMessaging messaging;
   private final ResourceLoader resourceLoader;
 
-  public WelcomeMessage(IAnathemaMessaging messaging, ResourceLoader resourceLoader) {
+  public WelcomeMessage(IMessaging messaging, ResourceLoader resourceLoader) {
     this.messaging = messaging;
     this.resourceLoader = resourceLoader;
   }

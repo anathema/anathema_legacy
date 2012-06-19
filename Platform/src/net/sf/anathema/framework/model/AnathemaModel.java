@@ -1,13 +1,12 @@
 package net.sf.anathema.framework.model;
 
-import com.google.common.collect.Lists;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
-import net.sf.anathema.framework.messaging.AnathemaMessaging;
-import net.sf.anathema.framework.messaging.IAnathemaMessageContainer;
-import net.sf.anathema.framework.messaging.IAnathemaMessaging;
+import net.sf.anathema.framework.messaging.IMessaging;
+import net.sf.anathema.framework.messaging.Messaging;
+import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -15,21 +14,11 @@ import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
-import net.sf.anathema.lib.message.BasicMessage;
-import net.sf.anathema.lib.message.MessageType;
-import net.sf.anathema.lib.random.RandomUtilities;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.resources.ResourceFile;
-import org.apache.commons.io.IOUtils;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
 
 public class AnathemaModel implements IAnathemaModel {
 
@@ -40,12 +29,12 @@ public class AnathemaModel implements IAnathemaModel {
   private final IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = new Registry<IItemType, IItemViewFactory>();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final Repository repository;
-  private final AnathemaMessaging messaging;
+  private final Messaging messaging;
   private final ResourceLoader resourceLoader;
 
   public AnathemaModel(File repositoryFolder, IResources resources, ResourceLoader resourceLoader) {
     this.repository = new Repository(repositoryFolder, itemManagment);
-    this.messaging = new AnathemaMessaging(resources);
+    this.messaging = new Messaging(resources);
     new WelcomeMessage(messaging, resourceLoader).show();
     this.resourceLoader = resourceLoader;
   }
@@ -86,12 +75,12 @@ public class AnathemaModel implements IAnathemaModel {
   }
 
   @Override
-  public IAnathemaMessaging getMessaging() {
+  public IMessaging getMessaging() {
     return messaging;
   }
 
   @Override
-  public IAnathemaMessageContainer getMessageContainer() {
+  public IMessageContainer getMessageContainer() {
     return messaging;
   }
 

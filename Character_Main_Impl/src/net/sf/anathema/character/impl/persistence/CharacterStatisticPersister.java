@@ -14,7 +14,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersister;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.framework.messaging.IAnathemaMessaging;
+import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identificate;
 import net.sf.anathema.lib.util.Identified;
@@ -43,7 +43,7 @@ public class CharacterStatisticPersister {
   private final AdditionalModelPersister additonalModelPersister;
   private final CharacterDescriptionPersister descriptionPersister = new CharacterDescriptionPersister();
 
-  public CharacterStatisticPersister(ICharacterGenerics generics, IAnathemaMessaging messaging) {
+  public CharacterStatisticPersister(ICharacterGenerics generics, IMessaging messaging) {
     this.generics = generics;
     this.backgroundPersister = new BackgroundConfigurationPersister(generics.getBackgroundRegistry());
     this.charmPersister = new CharmConfigurationPersister(messaging);

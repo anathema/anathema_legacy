@@ -6,7 +6,7 @@ import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.messaging.IAnathemaMessaging;
+import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.AbstractSingleFileItemPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.AnathemaDataItem;
@@ -31,9 +31,9 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   private final CharacterStatisticPersister statisticsPersister;
   private final IItemType characterType;
   private final ICharacterGenerics generics;
-  private final IAnathemaMessaging messaging;
+  private final IMessaging messaging;
 
-  public ExaltedCharacterPersister(IItemType characterType, ICharacterGenerics generics, IAnathemaMessaging messaging) {
+  public ExaltedCharacterPersister(IItemType characterType, ICharacterGenerics generics, IMessaging messaging) {
     this.characterType = characterType;
     this.generics = generics;
     this.messaging = messaging;

@@ -2,7 +2,7 @@ package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
-import net.sf.anathema.framework.messaging.IAnathemaMessageContainer;
+import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
@@ -46,11 +46,11 @@ public class AnathemaPresenter {
     initializeMenus();
     initializeTools();
     initializeReports();
-    IAnathemaMessageContainer messageContainer = model.getMessageContainer();
+    IMessageContainer messageContainer = model.getMessageContainer();
     init(messageContainer);
   }
 
-  private void init(final IAnathemaMessageContainer messageContainer) {
+  private void init(final IMessageContainer messageContainer) {
     messageContainer.addChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {

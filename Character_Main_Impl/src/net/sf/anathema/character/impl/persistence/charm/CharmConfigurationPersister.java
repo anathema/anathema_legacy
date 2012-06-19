@@ -20,7 +20,7 @@ import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
-import net.sf.anathema.framework.messaging.IAnathemaMessaging;
+import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.message.MessageType;
@@ -52,10 +52,10 @@ public class CharmConfigurationPersister {
   private static final String ATTRIB_ID = "id";
   private static final String TAG_SUBEFFECTS = "Subeffects";
   private static final String TAG_SUBEFFECT = "Subeffect";
-  private IAnathemaMessaging messageIndicator;
+  private IMessaging messageIndicator;
   private ITraitContext context;
 
-  public CharmConfigurationPersister(IAnathemaMessaging messageIndicator) {
+  public CharmConfigurationPersister(IMessaging messageIndicator) {
     this.messageIndicator = messageIndicator;
   }
 
