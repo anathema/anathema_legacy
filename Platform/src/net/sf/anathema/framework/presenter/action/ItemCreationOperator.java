@@ -30,36 +30,35 @@ public class ItemCreationOperator implements IItemOperator {
   }
 
   @Override
-  public void operate(Component parentComponent, IItemType type, IAnathemaWizardModelTemplate template)
-      throws PersistenceException {
+  public void operate(Component parentComponent, IItemType type,
+                      IAnathemaWizardModelTemplate template) throws PersistenceException {
     final IItem item = creator.createItem(type, template);
-    final Object[] internationalizedType = new Object[] { resources.getString("ItemType." + item.getItemType() + ".PrintName") }; //$NON-NLS-1$ //$NON-NLS-2$
+    final Object[] internationalizedType = new Object[]{resources.getString(
+            "ItemType." + item.getItemType() + ".PrintName")}; //$NON-NLS-1$ //$NON-NLS-2$
     String title = resources.getString("AnathemaCore.AddItem.Progress.Title", internationalizedType); //$NON-NLS-1$
     try {
       new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptibleRunnableWithProgress() {
         @Override
         public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {
-            monitor.beginTask(
-                resources.getString("AnathemaCore.AddItem.Progress.Task.Model", internationalizedType), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
-            monitor.beginTask(
-                resources.getString("AnathemaCore.AddItem.Progress.Task.View", internationalizedType), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
+            monitor.beginTaskWithUnknownTotalWork(resources.getString("AnathemaCore.AddItem.Progress.Task.Model",
+                    internationalizedType)); //$NON-NLS-1$
+            monitor.beginTaskWithUnknownTotalWork(resources.getString("AnathemaCore.AddItem.Progress.Task.View",
+                    internationalizedType)); //$NON-NLS-1$
             model.addItem(item);
-          }
-          catch (AnathemaException e) {
+          } catch (AnathemaException e) {
             throw new InvocationTargetException(e);
           }
         }
       });
-    }
-    catch (InvocationTargetException exception) {
+    } catch (InvocationTargetException exception) {
       Throwable cause = exception.getCause();
-      MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-          "An error occured while creating repository item: " + cause.getMessage(), cause)); //$NON-NLS-1$
-    }
-    catch (Throwable e) {
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-          "An error occured while creating repository item.", e)); //$NON-NLS-1$
+      MessageDialogFactory.showMessageDialog(parentComponent,
+              new Message("An error occured while creating repository item: " + cause.getMessage(),
+                      cause)); //$NON-NLS-1$
+    } catch (Throwable e) {
+      MessageUtilities.indicateMessage(getClass(), parentComponent,
+              new Message("An error occured while creating repository item.", e)); //$NON-NLS-1$
     }
   }
 }

@@ -66,7 +66,7 @@ public abstract class AbstractPrintAction extends SmartAction {
 
   private void performPrint(IProgressMonitor monitor, IItem item, Report selectedReport,
                             File selectedFile) throws IOException, ReportException {
-    monitor.beginTask(resources.getString("Anathema.Reporting.Print.Progress.Task"), UNKNOWN); //$NON-NLS-1$
+    monitor.beginTaskWithUnknownTotalWork(resources.getString("Anathema.Reporting.Print.Progress.Task")); //$NON-NLS-1$
     FileOutputStream stream = null;
     try {
       stream = new FileOutputStream(selectedFile);

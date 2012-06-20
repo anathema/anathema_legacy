@@ -61,19 +61,15 @@ public class StartDatabaseAction extends SmartAction {
     return item.getItemType().getId().equals(properties.getItemTypeId());
   }
 
-  public static Action createMenuAction(
-      IResources resources,
-      IAnathemaModel anathemaModel,
-      IDatabaseActionProperties properties) {
+  public static Action createMenuAction(IResources resources, IAnathemaModel anathemaModel,
+                                        IDatabaseActionProperties properties) {
     StartDatabaseAction startDatabaseAction = new StartDatabaseAction(anathemaModel, resources, properties);
     startDatabaseAction.setName(properties.getActionName());
     return startDatabaseAction;
   }
 
-  public static Action createToolAction(
-      IResources resources,
-      IAnathemaModel anathemaModel,
-      IDatabaseActionProperties properties) {
+  public static Action createToolAction(IResources resources, IAnathemaModel anathemaModel,
+                                        IDatabaseActionProperties properties) {
     SmartAction action = new StartDatabaseAction(anathemaModel, resources, properties);
     action.setIcon(properties.getActionIcon());
     action.setToolTipText(properties.getToolTipText());
@@ -88,25 +84,21 @@ public class StartDatabaseAction extends SmartAction {
         @Override
         public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {
-            monitor.beginTask(properties.getProgressTaskTitle(), IProgressMonitor.UNKNOWN);
+            monitor.beginTaskWithUnknownTotalWork(properties.getProgressTaskTitle());
             IItemType itemType = anathemaModel.getItemTypeRegistry().getById(properties.getItemTypeId());
             IItemData database = properties.createItemData(anathemaModel.getRepository());
             IItem anathemaItem = new AnathemaDataItem(itemType, new Identificate(properties.getItemId()), database);
             anathemaModel.getItemManagement().addItem(anathemaItem);
-          }
-          catch (DatabaseFileLockedException e) {
+          } catch (DatabaseFileLockedException e) {
             throw new InvocationTargetException(e);
-          }
-          catch (IOException e) {
+          } catch (IOException e) {
             throw new InvocationTargetException(e);
-          }
-          catch (AnathemaException e) {
+          } catch (AnathemaException e) {
             throw new InvocationTargetException(e);
           }
         }
       });
-    }
-    catch (InvocationTargetException exception) {
+    } catch (InvocationTargetException exception) {
       String text = resources.getString("Errors.Database.Launch"); //$NON-NLS-1$
       if (exception.getCause() instanceof DatabaseFileLockedException) {
         text = resources.getString("Errors.Database.FileLocked"); //$NON-NLS-1$
@@ -115,10 +107,9 @@ public class StartDatabaseAction extends SmartAction {
         text = resources.getString("Errors.Database.CreatingRepositorySubDirectory"); //$NON-NLS-1$
       }
       MessageDialogFactory.showMessageDialog(parentComponent, new Message(text, exception));
-    }
-    catch (Throwable e) {
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-          resources.getString("Errors.Database.Launch"), e)); //$NON-NLS-1$
+    } catch (Throwable e) {
+      MessageUtilities.indicateMessage(getClass(), parentComponent,
+              new Message(resources.getString("Errors.Database.Launch"), e)); //$NON-NLS-1$
     }
   }
 }
