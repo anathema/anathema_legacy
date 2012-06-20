@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.gui.container.IComponentContainer;
 import net.sf.anathema.lib.gui.dialog.widgets.AutoWrappingLabel;
 import net.sf.anathema.lib.gui.message.LargeIconMessageTypeUi;
@@ -17,6 +16,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+
+import static net.disy.commons.swing.layout.grid.GridDialogLayoutData.FILL_HORIZONTAL;
 
 public class ProgressMonitorComponent implements IProgressMonitor, IComponentContainer {
   private static final String TASK_LABEL_ELLIPSIS = "..."; //$NON-NLS-1$
@@ -46,9 +47,9 @@ public class ProgressMonitorComponent implements IProgressMonitor, IComponentCon
     topPanel.setBorder(new EmptyBorder(8, 0, 0, 0));
 
     JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
-    mainPanel.add(topPanel, GridDialogLayoutData.FILL_HORIZONTAL);
-    mainPanel.add(progressBar, GridDialogLayoutData.FILL_HORIZONTAL);
-    mainPanel.add(subTaskNameLabel, GridDialogLayoutData.FILL_HORIZONTAL);
+    mainPanel.add(topPanel, FILL_HORIZONTAL);
+    mainPanel.add(progressBar, FILL_HORIZONTAL);
+    mainPanel.add(subTaskNameLabel, FILL_HORIZONTAL);
     mainPanel.setBorder(new EmptyBorder(5, 7, 0, 7));
     return mainPanel;
   }

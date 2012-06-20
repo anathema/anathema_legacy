@@ -4,7 +4,6 @@ dependencies {
   compile 'org.reflections:reflections:0.9.7'
   compile 'org.slf4j:slf4j-simple:1.6.4'
   compile 'com.itextpdf:itextpdf:5.2.0'
-  compile 'org.swinglabs.swingx:swingx-all:1.6.3'
   compile project(':Lib_Workflow')
   compile project(':Lib_Gui')
   testCompile parent.ext.testDependencies
