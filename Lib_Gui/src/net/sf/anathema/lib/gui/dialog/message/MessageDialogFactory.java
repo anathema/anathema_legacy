@@ -17,7 +17,8 @@ public class MessageDialogFactory {
       userDialog.getDialog().setResizable(false);
     } else {
       IFoldOutPage foldOutPage = new MessageDetailsFoldOutPage(message.getDetail());
-      FoldOutMessageDialogConfiguration dialogConfiguration = new FoldOutMessageDialogConfiguration(message, foldOutPage);
+      FoldOutMessageDialogConfiguration dialogConfiguration = new FoldOutMessageDialogConfiguration(message,
+              foldOutPage);
       userDialog = new FoldOutDialog(parentComponent, dialogConfiguration);
     }
     return userDialog;

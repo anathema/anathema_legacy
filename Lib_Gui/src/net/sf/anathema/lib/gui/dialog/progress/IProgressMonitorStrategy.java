@@ -10,5 +10,4 @@ public interface IProgressMonitorStrategy {
   void run(INonInterruptibleRunnableWithProgress runnable) throws InvocationTargetException;
 
   void run(IInterruptibleRunnableWithProgress runnable) throws InterruptedException, InvocationTargetException;
-
 }

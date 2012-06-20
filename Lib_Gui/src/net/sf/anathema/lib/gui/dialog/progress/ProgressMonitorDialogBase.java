@@ -10,15 +10,12 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * A modal dialog that displays progress during a long running operation.
  */
-public abstract class ProgressMonitorDialogBase
-    implements
-    IRunnableContext, IProgressMonitorStrategy {
+public abstract class ProgressMonitorDialogBase implements IRunnableContext, IProgressMonitorStrategy {
 
   private boolean first = true;
 
   @Override
-  public void run(INonInterruptibleRunnableWithProgress runnable)
-      throws InvocationTargetException {
+  public void run(INonInterruptibleRunnableWithProgress runnable) throws InvocationTargetException {
     Preconditions.checkNotNull(runnable);
     synchronized (this) {
       if (!first) {
@@ -29,9 +26,7 @@ public abstract class ProgressMonitorDialogBase
   }
 
   @Override
-  public void run(IInterruptibleRunnableWithProgress runnable)
-      throws InterruptedException,
-      InvocationTargetException {
+  public void run(IInterruptibleRunnableWithProgress runnable) throws InterruptedException, InvocationTargetException {
     Preconditions.checkNotNull(runnable);
     synchronized (this) {
       if (!first) {
@@ -40,5 +35,4 @@ public abstract class ProgressMonitorDialogBase
       first = false;
     }
   }
-
 }
