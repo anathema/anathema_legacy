@@ -208,25 +208,7 @@ public class InternalProgressDialog
 
   private void yield() {
     if (dialog != null) {
-      /* (gebhard) 07.03.2006: Bugfix: Only request focus if we are not already an 'active' window.
-       * Otherwise focus from the 'Cancel' Button might be stolen while user clicks this button
-       * (happened with frequent subsequent calls to subTask()). */
       if (!dialog.isActive()) {
-        /* Bugfix/Workaround (gebhard) 15.12.2005: Bug 2802: 
-         Modal progress dialog can be hidden behind other frame in same JVM.
-         The frame is blocked, but no progress dialog is visible.
-         So we just request focus as often as possible in order to stay on top of hiding window. */
-
-        /*
-         * hier stand urspruenglich
-         *  dialog.requestFocus()
-         * das sorgt unter linux dazu das sich die sich der focus von anderen Programmen
-         * geholt wird wenn diese aktive sind.
-         * dieses verhalten tritt mit requestFocusInWindow() nicht mehr auf
-         * da die verhalten von requestFocus und requestFocusInWindow Betriebssystem bzw.
-         * Xserver spezifisch sind muss hier wenn weiterhin probleme auftreten 
-         * muessen hier system spezifische implelementierungen erstellt werden. 
-        */
         dialog.requestFocusInWindow();
       }
     }
