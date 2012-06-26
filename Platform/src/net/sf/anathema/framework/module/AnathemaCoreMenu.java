@@ -6,7 +6,7 @@ import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
 import net.sf.anathema.framework.presenter.action.AnathemaLoadAction;
 import net.sf.anathema.framework.presenter.action.AnathemaNewAction;
 import net.sf.anathema.framework.presenter.action.menu.help.AnathemaAboutAction;
-import net.sf.anathema.framework.presenter.action.menu.help.AnathemaUpdateAction;
+import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.AnathemaUpdateAction;
 import net.sf.anathema.framework.presenter.action.preferences.AnathemaPreferencesAction;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.itemmanagement.SelectedItemCloseAction;

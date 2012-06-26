@@ -5,6 +5,18 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class Version implements Comparable<Version> {
 
+  public static boolean isParseable(String versionString) {
+    try {
+      String[] split = versionString.split("\\."); //$NON-NLS-1$ //$NON-NLS-2$
+      for (String numbers : split) {
+        Integer.valueOf(numbers);
+      }
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
+    }
+  }
+
   private int majorVersion;
   private int minorVersion;
   private int revision;
@@ -38,14 +50,6 @@ public class Version implements Comparable<Version> {
       revision = Integer.valueOf(split[2]);
     } else {
       revision = 0;
-    }
-  }
-
-  public void updateTo(Version version) {
-    if (compareTo(version) < 0) {
-      majorVersion = version.majorVersion;
-      minorVersion = version.minorVersion;
-      revision = version.revision;
     }
   }
 
