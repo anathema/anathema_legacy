@@ -24,7 +24,7 @@ public class WelcomeMessage {
   }
 
   public void show() {
-    List<String> wordsOfTheWise = loadWordsOfTheWise();
+    List<String> wordsOfTheWise = new WordsOfTheWiseLoader(resourceLoader).loadWordsOfTheWise();
     String welcomeMessage = chooseMessage(wordsOfTheWise);
     messaging.addMessage(new BasicMessage(welcomeMessage, MessageType.INFORMATION));
   }
@@ -34,21 +34,5 @@ public class WelcomeMessage {
       return "Welcome to Anathema!";
     }
     return RandomUtilities.choose(wordsOfTheWise);
-  }
-
-  private List<String> loadWordsOfTheWise() {
-    Set<ResourceFile> resourceFiles = resourceLoader.getResourcesMatching(".*\\.wotw");
-    List<String> wordsOfTheWise = Lists.newArrayList();
-    for (ResourceFile file : resourceFiles) {
-      InputStream stream = null;
-      try {
-        stream = file.getURL().openStream();
-        List<String> strings = IOUtils.readLines(stream);
-        wordsOfTheWise.addAll(strings);
-      } catch (IOException e) {
-        IOUtils.closeQuietly(stream);
-      }
-    }
-    return wordsOfTheWise;
   }
 }
