@@ -33,6 +33,7 @@ Run ``gradlew test``.
 
 Deployment
 ==========
+These commands just build the distribution artifacts. For the full process, see the [wiki](https://github.com/anathema/anathema/wiki/How-to-release-a-new-version).
 ### Building a plain zip ###
 > This works on any operating system. However, the Windows executable will only be included on Windows systems.
 
