@@ -70,7 +70,6 @@ public class GuiUtilities {
     if (parentWindow == null || !parentWindow.isVisible()) {
       centerOnScreen(window);
     } else {
-
       SmartRectangle parentBounds = getSizeOnScreen(parentWindow);
       centerToPoint(window, parentBounds.getCenter());
     }
@@ -179,9 +178,8 @@ public class GuiUtilities {
   public static Rectangle calculateScreenBounds(GraphicsConfiguration graphicsConfiguration, Toolkit toolkit) {
     Rectangle overallScreenBounds = graphicsConfiguration.getBounds();
     Insets screenInsets = toolkit.getScreenInsets(graphicsConfiguration);
-    Rectangle screenBounds = new Rectangle(overallScreenBounds.x + screenInsets.left, overallScreenBounds.y + screenInsets.top,
+    return new Rectangle(overallScreenBounds.x + screenInsets.left, overallScreenBounds.y + screenInsets.top,
             overallScreenBounds.width - screenInsets.left - screenInsets.right, overallScreenBounds.height - screenInsets.top - screenInsets.bottom);
-    return screenBounds;
   }
 
   public static Set<Container> setContainerEnabled(Container control, boolean enabled) {
@@ -211,16 +209,16 @@ public class GuiUtilities {
 
   private static Set<Container> setSubComponentsEnabled(Container c, boolean enable, Set<Container> components, Set<Container> enabledComps) {
     Component[] comps = c.getComponents();
-    for (int i = 0; i < comps.length; i++) {
-      if (comps[i] instanceof Container) {
-        Set<Container> enabledContainers = setContainerEnabled((Container) comps[i], enable, components);
+    for (Component comp : comps) {
+      if (comp instanceof Container) {
+        Set<Container> enabledContainers = setContainerEnabled((Container) comp, enable, components);
         enabledComps.addAll(enabledContainers);
       } else {
-        if (!components.contains(comps[i])) {
-          if (comps[i].isEnabled() == enable) {
+        if (!components.contains(comp)) {
+          if (comp.isEnabled() == enable) {
             enabledComps.add(c);
           } else {
-            comps[i].setEnabled(enable);
+            comp.setEnabled(enable);
           }
         }
       }

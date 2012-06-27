@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.progress.ICanceledListener;
 import net.sf.anathema.lib.progress.IObservableCancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
@@ -37,7 +36,6 @@ public abstract class AbstractProgressDialog implements IProgressMonitor, IObser
       showing = true;
       dialog = createDialog();
     }
-    GuiUtilities.centerToParent(dialog);
     dialog.setVisible(true);
   }
 

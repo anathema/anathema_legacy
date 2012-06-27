@@ -82,6 +82,7 @@ public class InternalProgressDialog extends AbstractProgressDialog implements IP
         }
       }
     });
+    GuiUtilities.centerToParent(newDialog);
     return newDialog;
   }
 
