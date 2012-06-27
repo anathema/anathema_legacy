@@ -31,12 +31,14 @@ public class AnathemaModel implements IAnathemaModel {
   private final Repository repository;
   private final Messaging messaging;
   private final ResourceLoader resourceLoader;
+  private final InformativeMessages informativeMessages;
 
   public AnathemaModel(File repositoryFolder, IResources resources, ResourceLoader resourceLoader) {
     this.repository = new Repository(repositoryFolder, itemManagment);
     this.messaging = new Messaging(resources);
-    new WelcomeMessage(messaging, resourceLoader).show();
+    this.informativeMessages = new WordsOfTheWise(resourceLoader);
     this.resourceLoader = resourceLoader;
+    new WelcomeMessage(messaging, informativeMessages).show();
   }
 
   @Override

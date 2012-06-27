@@ -10,14 +10,19 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Set;
 
-public class WordsOfTheWiseLoader {
-  private final ResourceLoader resourceLoader;
+public class WordsOfTheWise implements InformativeMessages {
+  private final List<String> words;
 
-  public WordsOfTheWiseLoader(ResourceLoader resourceLoader) {
-    this.resourceLoader = resourceLoader;
+  public WordsOfTheWise(ResourceLoader resourceLoader) {
+    this.words = load(resourceLoader);
   }
 
-  public List<String> loadWordsOfTheWise() {
+  @Override
+  public List<String> getAll() {
+    return words;
+  }
+
+  private List<String> load(ResourceLoader resourceLoader) {
     Set<ResourceFile> resourceFiles = resourceLoader.getResourcesMatching(".*\\.wotw");
     List<String> wordsOfTheWise = Lists.newArrayList();
     for (ResourceFile file : resourceFiles) {
