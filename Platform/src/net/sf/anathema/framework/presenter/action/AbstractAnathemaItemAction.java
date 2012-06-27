@@ -25,7 +25,7 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
   private final IItemOperator itemOperator;
 
   public AbstractAnathemaItemAction(IAnathemaModel anathemaModel, IResources resources, IItemCreator creator) {
-    this(anathemaModel, resources, new ItemCreationOperator(creator, resources, anathemaModel.getItemManagement()));
+    this(anathemaModel, resources, new ItemCreationOperator(creator, resources, anathemaModel.getItemManagement(), anathemaModel));
   }
 
   public AbstractAnathemaItemAction(IAnathemaModel anathemaModel, IResources resources, IItemOperator operator) {

@@ -46,7 +46,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
     this.itemCreationOperator = new ItemCreationOperator(
         new NewItemCreator(model),
         resources,
-        model.getItemManagement());
+        model.getItemManagement(), model);
     this.type = type;
   }
 

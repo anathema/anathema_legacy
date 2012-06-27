@@ -46,23 +46,20 @@ public final class ItemTypeLoadAction extends AbstractItemAction {
   private ItemTypeLoadAction(IAnathemaModel anathemaModel, IItemType itemType, IResources resources) {
     super(anathemaModel, resources);
     IItemManagementModel itemManagementModel = anathemaModel.getItemManagement();
-    this.itemCreationOperator = new ItemCreationOperator(
-        new LoadItemCreator(anathemaModel),
-        resources,
-        itemManagementModel);
+    this.itemCreationOperator = new ItemCreationOperator(new LoadItemCreator(anathemaModel), resources,
+            itemManagementModel, anathemaModel);
     this.itemType = itemType;
     new LoadActionEnabler(anathemaModel.getRepository(), itemManagementModel, this, itemType).init();
   }
 
   @Override
   protected void execute(Component parentComponent) {
-    ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
-        .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+    ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry().get(
+            ItemTypeCreationViewPropertiesExtensionPoint.ID);
     IItemTypeViewProperties properties = extension.get(itemType);
-    ItemSelectionWizardPageFactory factory = new ItemSelectionWizardPageFactory(
-        itemType,
-        getAnathemaModel().getRepository().getPrintNameFileAccess(),
-        new LoadItemWizardProperties(getResources(), properties.getItemTypeUI()));
+    ItemSelectionWizardPageFactory factory = new ItemSelectionWizardPageFactory(itemType,
+            getAnathemaModel().getRepository().getPrintNameFileAccess(),
+            new LoadItemWizardProperties(getResources(), properties.getItemTypeUI()));
     IAnathemaWizardModelTemplate template = factory.createTemplate();
     IAnathemaWizardPage startPage = factory.createPage(template);
     boolean canceled = showDialog(parentComponent, startPage);
@@ -71,9 +68,9 @@ public final class ItemTypeLoadAction extends AbstractItemAction {
     }
     try {
       itemCreationOperator.operate(parentComponent, itemType, template);
-    }
-    catch (PersistenceException e) {
-      Message message = new Message(getResources().getString("AnathemaPersistence.NewMenu.Message.Error"), e); //$NON-NLS-1$
+    } catch (PersistenceException e) {
+      Message message = new Message(getResources().getString("AnathemaPersistence.NewMenu.Message.Error"),
+              e); //$NON-NLS-1$
       MessageUtilities.indicateMessage(AnathemaNewAction.class, parentComponent, message);
     }
   }

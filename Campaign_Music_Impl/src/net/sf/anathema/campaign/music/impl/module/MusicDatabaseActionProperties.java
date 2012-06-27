@@ -41,11 +41,6 @@ public class MusicDatabaseActionProperties implements IDatabaseActionProperties 
   }
 
   @Override
-  public String getProgressMonitorTitle() {
-    return resources.getString("Music.DatabaseStart.Progress.Title"); //$NON-NLS-1$;
-  }
-
-  @Override
   public String getProgressTaskTitle() {
     return resources.getString("Music.DatabaseStart.Progress.Presentation"); //$NON-NLS-1$
   }

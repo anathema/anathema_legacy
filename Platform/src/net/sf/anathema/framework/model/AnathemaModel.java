@@ -14,11 +14,13 @@ import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
+import net.sf.anathema.lib.random.RandomUtilities;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.io.File;
+import java.util.List;
 
 public class AnathemaModel implements IAnathemaModel {
 
@@ -89,5 +91,14 @@ public class AnathemaModel implements IAnathemaModel {
   @Override
   public ResourceLoader getResourceLoader() {
     return resourceLoader;
+  }
+
+  @Override
+  public String generateInformativeMessage() {
+    List<String> messages = informativeMessages.getAll();
+    if (messages.isEmpty()) {
+      return "";
+    }
+    return RandomUtilities.choose(messages);
   }
 }

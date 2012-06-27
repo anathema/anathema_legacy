@@ -16,8 +16,6 @@ public interface IDatabaseActionProperties {
 
   String getToolTipText();
 
-  String getProgressMonitorTitle();
-
   String getProgressTaskTitle();
 
   String getItemId();

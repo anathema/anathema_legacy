@@ -45,11 +45,6 @@ public class EquipmentDatabaseActionProperties implements IDatabaseActionPropert
   }
 
   @Override
-  public String getProgressMonitorTitle() {
-    return resources.getString("EquipmentDatabase.Start.Progress.Title"); //$NON-NLS-1$;
-  }
-
-  @Override
   public String getProgressTaskTitle() {
     return resources.getString("EquipmentDatabase.Start.Progress.Presentation"); //$NON-NLS-1$
   }

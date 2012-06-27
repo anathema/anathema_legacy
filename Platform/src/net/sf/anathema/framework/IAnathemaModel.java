@@ -13,7 +13,7 @@ import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.registry.IRegistry;
 
-public interface IAnathemaModel {
+public interface IAnathemaModel extends MessageGenerator {
 
   IRepository getRepository();
 

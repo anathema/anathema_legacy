@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import static java.awt.Desktop.isDesktopSupported;
-import static net.sf.anathema.lib.progress.IProgressMonitor.UNKNOWN;
 
 public abstract class AbstractPrintAction extends SmartAction {
   public static final String PDF_EXTENSION = ".pdf"; //$NON-NLS-1$
@@ -48,7 +47,7 @@ public abstract class AbstractPrintAction extends SmartAction {
 
   protected void printWithProgress(Component parentComponent, final IItem item, final Report selectedReport,
                                    final File selectedFile) throws InvocationTargetException {
-    new ProgressMonitorDialog(parentComponent, resources.getString("Anathema.Reporting.Print.Progress.Title")).run(
+    new ProgressMonitorDialog(parentComponent, anathemaModel.generateInformativeMessage()).run(
             //$NON-NLS-1$
             new INonInterruptibleRunnableWithProgress() {
               @Override

@@ -55,11 +55,11 @@ public class UnstyledProgressDialog extends AbstractProgressDialog implements IP
             new AC().align("center").grow().fill()));
     JComponent containerContent = getContainerContent();
     panel.add(containerContent, new CC().pos("0.5al", "0.5al"));
-    /*JXLabel textDisplay = new JXLabel(title);
+    JXLabel textDisplay = new JXLabel(title);
     textDisplay.setLineWrap(true);
     textDisplay.setFont(textDisplay.getFont().deriveFont(Font.BOLD).deriveFont(30f));
     textDisplay.setTextAlignment(JXLabel.TextAlignment.CENTER);
-    panel.add(textDisplay, new CC().dockSouth().gapBottom("20"));*/
+    panel.add(textDisplay, new CC().dockSouth().gapBottom("20"));
     panel.setOpaque(false);
     newDialog.getContentPane().add(panel);
   }

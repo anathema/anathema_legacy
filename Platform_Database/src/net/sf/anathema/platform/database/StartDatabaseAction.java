@@ -79,8 +79,7 @@ public class StartDatabaseAction extends SmartAction {
   @Override
   protected void execute(Component parentComponent) {
     try {
-      String title = properties.getProgressMonitorTitle();
-      new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptibleRunnableWithProgress() {
+      new ProgressMonitorDialog(parentComponent, anathemaModel.generateInformativeMessage()).run(new INonInterruptibleRunnableWithProgress() {
         @Override
         public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {

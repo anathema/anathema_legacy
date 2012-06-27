@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.presenter.action;
 
+import net.sf.anathema.framework.MessageGenerator;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
@@ -22,29 +23,27 @@ public class ItemCreationOperator implements IItemOperator {
   private final IItemCreator creator;
   private final IResources resources;
   private final IItemManagementModel model;
+  private final MessageGenerator titleGenerator;
 
-  public ItemCreationOperator(IItemCreator creator, IResources resources, IItemManagementModel model) {
+  public ItemCreationOperator(IItemCreator creator, IResources resources, IItemManagementModel model, MessageGenerator titleGenerator) {
     this.creator = creator;
     this.resources = resources;
     this.model = model;
+    this.titleGenerator = titleGenerator;
   }
 
   @Override
   public void operate(Component parentComponent, IItemType type,
                       IAnathemaWizardModelTemplate template) throws PersistenceException {
     final IItem item = creator.createItem(type, template);
-    final Object[] internationalizedType = new Object[]{resources.getString(
-            "ItemType." + item.getItemType() + ".PrintName")}; //$NON-NLS-1$ //$NON-NLS-2$
-    String title = resources.getString("AnathemaCore.AddItem.Progress.Title", internationalizedType); //$NON-NLS-1$
     try {
-      new ProgressMonitorDialog(parentComponent, title).run(new INonInterruptibleRunnableWithProgress() {
+      new ProgressMonitorDialog(parentComponent, titleGenerator.generateInformativeMessage()).run(new INonInterruptibleRunnableWithProgress() {
         @Override
         public void run(IProgressMonitor monitor) throws InvocationTargetException {
           try {
-            monitor.beginTaskWithUnknownTotalWork(resources.getString("AnathemaCore.AddItem.Progress.Task.Model",
-                    internationalizedType)); //$NON-NLS-1$
-            monitor.beginTaskWithUnknownTotalWork(resources.getString("AnathemaCore.AddItem.Progress.Task.View",
-                    internationalizedType)); //$NON-NLS-1$
+            Object internationalizedType = resources.getString("ItemType." + item.getItemType() + ".PrintName");
+            String taskTitle = resources.getString("AnathemaCore.AddItem.Progress.Task.View", internationalizedType);
+            monitor.beginTaskWithUnknownTotalWork(taskTitle); //$NON-NLS-1$
             model.addItem(item);
           } catch (AnathemaException e) {
             throw new InvocationTargetException(e);
