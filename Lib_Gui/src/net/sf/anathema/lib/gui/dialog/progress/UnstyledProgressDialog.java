@@ -1,17 +1,22 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
 import com.google.common.base.Preconditions;
+import net.miginfocom.layout.AC;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.progress.IObservableCancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
+import org.jdesktop.swingx.JXLabel;
 
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.Font;
 import java.awt.Insets;
 import java.awt.Point;
 
@@ -31,10 +36,7 @@ public class UnstyledProgressDialog extends AbstractProgressDialog implements IP
   protected JDialog createDialog() {
     JDialog newDialog = GuiUtilities.createDialog(parentComponent, title);
     newDialog.setUndecorated(true);
-    JPanel panel = new JPanel(new GridBagLayout());
-    panel.add(getContainerContent(), new GridBagConstraints());
-    panel.setOpaque(false);
-    newDialog.getContentPane().add(panel);
+    createContent(newDialog);
     newDialog.pack();
     if (parentComponent instanceof Container) {
       coverParentContainer(newDialog);
@@ -46,6 +48,20 @@ public class UnstyledProgressDialog extends AbstractProgressDialog implements IP
     newDialog.setResizable(false);
     newDialog.setModal(true);
     return newDialog;
+  }
+
+  private void createContent(JDialog newDialog) {
+    JPanel panel = new JPanel(new MigLayout(new LC().fill().wrapAfter(1), new AC().align("center"),
+            new AC().align("center").grow().fill()));
+    JComponent containerContent = getContainerContent();
+    panel.add(containerContent, new CC().pos("0.5al", "0.5al"));
+    /*JXLabel textDisplay = new JXLabel(title);
+    textDisplay.setLineWrap(true);
+    textDisplay.setFont(textDisplay.getFont().deriveFont(Font.BOLD).deriveFont(30f));
+    textDisplay.setTextAlignment(JXLabel.TextAlignment.CENTER);
+    panel.add(textDisplay, new CC().dockSouth().gapBottom("20"));*/
+    panel.setOpaque(false);
+    newDialog.getContentPane().add(panel);
   }
 
   private void makeMilky(JDialog newDialog) {
