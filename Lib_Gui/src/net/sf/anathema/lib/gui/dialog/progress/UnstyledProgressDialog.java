@@ -28,16 +28,15 @@ public class UnstyledProgressDialog extends AbstractProgressDialog implements IP
     makeTransparent(newDialog);
     newDialog.getContentPane().add(getContainerContent());
     newDialog.pack();
-
     newDialog.setResizable(false);
     newDialog.setModal(true);
-
     return newDialog;
   }
 
   private void makeTransparent(JDialog newDialog) {
-    newDialog.getContentPane().setBackground(new Color(0, 0, 0, 0));
-    newDialog.setBackground(new Color(0, 0, 0, 0));
+    Color background = new Color(0, 0, 0, 0);
+    newDialog.getContentPane().setBackground(background);
+    newDialog.setBackground(background);
     newDialog.getRootPane().setOpaque(false);
   }
 }
