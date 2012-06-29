@@ -5,7 +5,7 @@
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
     <essence uses="template/GhostEssence.template" />
     <traitCollection uses="template/CommonGhostTraitCollection2nd.template"/>
-    <magicTemplate uses="template/GhostMagic2nd.template"/>
+    <magicTemplate uses="template/CommonGhostMagic2nd.template"/>
     <presentation uses="template/GhostPresentation2nd.template"/>
     <additionalRules uses="template/AdditionalFamiliarRules2nd.template"/>
     <healthTemplate>

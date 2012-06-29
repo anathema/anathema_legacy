@@ -2,7 +2,7 @@
 	<freePicksPredicate defaultResponse="true"/>
 	<favoringTraitType type="VirtueType"/>
 	<charmTemplate charmType="Ghost">
-		<martialArts level="Mortal"/>
+		<martialArts level="Celestial"/>
 	</charmTemplate>
 	<spellTemplate maximumSorceryCircle="None" maximumNecromancyCircle="None"/>
 </magicTemplate>		
