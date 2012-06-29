@@ -67,7 +67,7 @@ public class ControlledPrintAction extends AbstractPrintAction {
     if (selectedReport == null) {
       return;
     }
-    String suggestedFileName = item.getDisplayName() + PDF_EXTENSION;
+    String suggestedFileName = getBaseName(item) + PDF_EXTENSION;
     File selectedFile = FileChoosingUtilities.selectSaveFile(parentComponent, suggestedFileName);
     if (selectedFile == null) {
       return;

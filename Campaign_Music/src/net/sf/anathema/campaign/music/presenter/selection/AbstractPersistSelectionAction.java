@@ -12,7 +12,6 @@ import javax.swing.event.ListSelectionListener;
 
 public abstract class AbstractPersistSelectionAction extends SmartAction {
 
-  private static final long serialVersionUID = -2448358197669530768L;
   private IMusicSelectionModel selectionModel;
   private IActionAddableListView<IMusicSelection> selectionListView;
 

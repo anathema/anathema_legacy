@@ -49,7 +49,7 @@ public class QuickPrintAction extends AbstractPrintAction {
   }
 
   private File getPrintFile(IItem item) throws IOException {
-    File tempFile = File.createTempFile(item.getDisplayName(), PDF_EXTENSION);
+    File tempFile = File.createTempFile(getBaseName(item), PDF_EXTENSION);
     tempFile.deleteOnExit();
     return tempFile;
   }

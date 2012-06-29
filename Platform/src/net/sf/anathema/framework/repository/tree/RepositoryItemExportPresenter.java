@@ -39,7 +39,6 @@ public class RepositoryItemExportPresenter implements Presenter {
   public void initPresentation() {
     final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.ExportName"), //$NON-NLS-1$
         new FileUi(resources).getExportFileIcon()) {
-      private static final long serialVersionUID = 134179579435852345L;
 
       @Override
       protected void execute(Component parentComponent) {

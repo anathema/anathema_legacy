@@ -6,6 +6,7 @@ import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
+import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
 import net.sf.anathema.lib.progress.IProgressMonitor;
@@ -111,5 +112,9 @@ public abstract class AbstractPrintAction extends SmartAction {
 
   public static boolean isAutoOpenSupported() {
     return isDesktopSupported();
+  }
+
+  protected String getBaseName(IItem item) {
+    return StringUtilities.getFileNameRepresentation(item.getDisplayName());
   }
 }
