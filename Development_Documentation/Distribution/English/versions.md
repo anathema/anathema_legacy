@@ -7,6 +7,13 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.2.3
+
+## Bugfixes
+* Printing only suggests filenames that actually work
+* Quick print works for characters whose names contain slashes
+* Quick print works for characters with short names
+
 ## Release 4.2.2
 
 ## Features
