@@ -48,14 +48,18 @@ public class QuickPrintAction extends AbstractPrintAction {
     return new QuickPrintEnabledListener(this, new DefaultReportFinder(anathemaModel, resources));
   }
 
-  private File getPrintFile(IItem item) throws IOException {
-    String baseName = getBaseName(item);
-    while (baseName.length() < 3) {
-      baseName = baseName.concat("_");
+  private File getPrintFile(IItem item) {
+    try {
+      String baseName = getBaseName(item);
+      while (baseName.length() < 3) {
+        baseName = baseName.concat("_");
+      }
+      File tempFile = File.createTempFile(baseName, PDF_EXTENSION);
+      tempFile.deleteOnExit();
+      return tempFile;
+    } catch (IOException e) {
+      throw new RuntimeException(resources.getString("Anathema.Reporting.Message.FileCreationFailed"), e);
     }
-    File tempFile = File.createTempFile(baseName, PDF_EXTENSION);
-    tempFile.deleteOnExit();
-    return tempFile;
   }
 
   @Override

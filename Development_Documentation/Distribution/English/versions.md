@@ -9,6 +9,9 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 4.2.3
 
+## Features
+* Quick print shows more informed error messages
+
 ## Bugfixes
 * Printing only suggests filenames that actually work
 * Quick print works for characters whose names contain slashes
