@@ -12,7 +12,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Features
 * Quick print shows more informed error messages
 * Heroic Ghosts can learn Celestial Martial Arts. Common Ghosts remain limited to Terrestrial Styles.
-* Words of the Wise for Sidereals
+* Words of the Wise for Sidereals and Abyssals
 
 ## Bugfixes
 * Printing only suggests filenames that actually work
