@@ -1,5 +1,9 @@
 import org.apache.tools.ant.filters.*;
 
+ext.dependenciesDir = new File(buildDir, 'dependencies')
+ext.versionString = "${version_major}.${version_minor}.${version_revision}"
+ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
+
 apply plugin: 'idea'
 idea {
     project {
@@ -7,9 +11,13 @@ idea {
     }
 }
 
-ext.dependenciesDir = new File(buildDir, 'dependencies')
-ext.versionString = "${version_major}.${version_minor}.${version_revision}"
-ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0'
+}
+
+boolean isDataPlugin(project) {
+    project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
+}
 
 subprojects {
   apply plugin: 'eclipse'
@@ -79,8 +87,26 @@ def projectLibrary(String project) {
     return zipTree("$project/build/libs/${project}.jar")
 }
 
-apply from: 'plugins.gradle'
+task createModule() {
+    if (project.hasProperty('moduleName')) {
+        if (new File(moduleName).exists()) {
+            throw new org.gradle.api.tasks.StopExecutionException("Module $moduleName already exists.")
+        }
+        mkdir moduleName
+        mkdir "$moduleName/src"
+        mkdir "$moduleName/resources"
+        mkdir "$moduleName/test"
+        new File("$moduleName/build.gradle").withWriter { out ->
+            out.println "dependencies{}"
+            out.println "sourceSets{}"
+            out.println "configurations{}"
+            out.println "artifacts{}"
+        }
+    }
+}
 
+
+// Windows Build
 task buildWindowsExecutable << {
     mkdir("./build/launcher")
     def exeVersion = "${versionString}.0"
@@ -97,6 +123,54 @@ task buildWindowsInstaller << {
     }
 }
 
+
+// OSX Build
+import org.apache.tools.ant.filters.ReplaceTokens 
+
+def appName = "Anathema"
+def appDir = "${appName}.app"
+def macArchiveName = "${appName}_Mac_v${versionString}.zip"
+
+task cleanupMacBuildDir(type: Delete) {
+  delete "$buildDir/$appDir"
+}
+
+task prepareMacBuildDir << {
+  new File("${buildDir}/${appDir}/Contents/MacOS").mkdirs()
+  new File("${buildDir}/${appDir}/Contents/Resources/Java").mkdirs()
+}
+
+task copyMacContent(type: Copy) {
+  destinationDir buildDir
+  into("${appDir}/Contents/") {
+    from("Development_Distribution/Mac/")
+    include 'Info.plist'
+    filter(ReplaceTokens, tokens: ["version-major": "${version_major}".toString(), "version-minor": "${version_minor}".toString(), "version-revision": "${version_revision}".toString()])
+  }
+  into("${appDir}/Contents/Resources") {
+    from("Development_Distribution/Mac/")
+    include 'sungear.icns'
+  }
+  into("${appDir}/Contents/Resources/Java") {
+    from 'Anathema/build/libs'
+  }
+  into("${appDir}/Contents/Resources/Java/lib") {
+    from("${buildDir}/dependencies/");
+    from("${buildDir}/plugins/");
+  }
+}
+
+task buildMacZip(type:Zip) {
+  archiveName = macArchiveName
+  destinationDir = buildDir
+  from '$buildDir/$appDir'
+}
+
+prepareMacBuildDir.dependsOn cleanupMacBuildDir
+copyMacContent.dependsOn prepareMacBuildDir
+buildMacZip.dependsOn copyMacContent
+
+// Zip Release
 task buildZip(type: Zip) {
     archiveName = "Anathema_v${versionString}.zip"
     destinationDir = buildDir
@@ -120,7 +194,7 @@ task buildZip(type: Zip) {
     }
 }
 
-[buildZip, buildWindowsInstaller].each {
+[buildZip, buildWindowsInstaller,buildMacZip].each {
     it.dependsOn ':Anathema:jar'
     def os = System.getProperty("os.name").toLowerCase()
     if (os.contains("windows")) {
@@ -128,36 +202,17 @@ task buildZip(type: Zip) {
     }
 }
 
+// Plugins
+apply from: 'plugins.gradle'
+
 tasks.each {
     def isPluginTask = it.name.matches('build.*Plugin')
     if (isPluginTask) {
         buildZip.dependsOn it
         buildWindowsInstaller.dependsOn it
+        buildMacZip.dependsOn it
     }
 }
 
-boolean isDataPlugin(project) {
-    project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
-}
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.0'
-}
 
-task createModule() {
-    if (project.hasProperty('moduleName')) {
-        if (new File(moduleName).exists()) {
-            throw new org.gradle.api.tasks.StopExecutionException("Module $moduleName already exists.")
-        }
-        mkdir moduleName
-        mkdir "$moduleName/src"
-        mkdir "$moduleName/resources"
-        mkdir "$moduleName/test"
-        new File("$moduleName/build.gradle").withWriter { out ->
-            out.println "dependencies{}"
-            out.println "sourceSets{}"
-            out.println "configurations{}"
-            out.println "artifacts{}"
-        }
-    }
-}
