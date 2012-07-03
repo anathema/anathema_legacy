@@ -129,10 +129,11 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 def appName = "Anathema"
 def appDir = "${appName}.app"
+def appPath = "${buildDir}/${appName}"
 def macArchiveName = "${appName}_Mac_v${versionString}.zip"
 
 task cleanupMacBuildDir(type: Delete) {
-  delete "$buildDir/$appDir"
+  delete "${buildDir}/${appDir}"
 }
 
 task prepareMacBuildDir << {
@@ -147,6 +148,10 @@ task copyMacContent(type: Copy) {
     include 'Info.plist'
     filter(ReplaceTokens, tokens: ["version-major": "${version_major}".toString(), "version-minor": "${version_minor}".toString(), "version-revision": "${version_revision}".toString()])
   }
+  into("${appDir}/Contents/MacOS/") {
+    from("Development_Distribution/Mac")
+    include 'JavaApplicationStub'
+  }
   into("${appDir}/Contents/Resources") {
     from("Development_Distribution/Mac/")
     include 'sungear.icns'
@@ -160,10 +165,18 @@ task copyMacContent(type: Copy) {
   }
 }
 
-task buildMacZip(type:Zip) {
+task buildMacZip(type: Zip) {
   archiveName = macArchiveName
   destinationDir = buildDir
-  from '$buildDir/$appDir'
+  from("build/${appDir}") {
+    into "${appName}/${appDir}"
+  }
+  from("Development_Documentation/Distribution/English") {
+    include 'license.txt'
+    include 'versions.md'
+    rename 'versions.md', 'release_notes.txt'
+    into "$appName"
+  }
 }
 
 prepareMacBuildDir.dependsOn cleanupMacBuildDir
@@ -174,11 +187,9 @@ buildMacZip.dependsOn copyMacContent
 task buildZip(type: Zip) {
     archiveName = "Anathema_v${versionString}.zip"
     destinationDir = buildDir
-    from 'Anathema/build/libs'
+    from 'Anathema/build/libs'      
     into('lib') {
         from('build/dependencies')
-    }
-    into('lib') {
         from('build/plugins')
     }
     from("Development_Distribution/Linux") {
@@ -190,16 +201,22 @@ task buildZip(type: Zip) {
         include 'anathema.exe'
     }
     from("Development_Documentation/Distribution/English") {
-        include '*.*'
+        include 'license.txt'
+        include 'versions.md'
+        rename 'versions.md', 'release_notes.txt'
     }
 }
 
-[buildZip, buildWindowsInstaller,buildMacZip].each {
+[buildZip, buildWindowsInstaller, buildMacZip].each {
     it.dependsOn ':Anathema:jar'
     def os = System.getProperty("os.name").toLowerCase()
     if (os.contains("windows")) {
         it.dependsOn buildWindowsExecutable
     }
+}
+
+// All Releases
+task release dependsOn buildZip, buildMacZip, buildWindowsInstaller<<{
 }
 
 // Plugins
