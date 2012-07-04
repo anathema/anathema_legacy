@@ -141,7 +141,7 @@ task prepareMacBuildDir << {
   new File("${buildDir}/${appDir}/Contents/Resources/Java").mkdirs()
 }
 
-task copyMacContent(type: Copy) {
+task buildMacApp(type: Copy) {
   destinationDir buildDir
   into("${appDir}/Contents/") {
     from("Development_Distribution/Mac/")
@@ -151,6 +151,7 @@ task copyMacContent(type: Copy) {
   into("${appDir}/Contents/MacOS/") {
     from("Development_Distribution/Mac")
     include 'JavaApplicationStub'
+    //fileMode = 0755
   }
   into("${appDir}/Contents/Resources") {
     from("Development_Distribution/Mac/")
@@ -162,6 +163,11 @@ task copyMacContent(type: Copy) {
   into("${appDir}/Contents/Resources/Java/lib") {
     from("${buildDir}/dependencies/");
     from("${buildDir}/plugins/");
+  }
+  doLast {
+    // due to http://jira.codehaus.org/browse/GRADLE-971 still not fixed as of gradle 1.0 milestone 9
+    File f=file("${buildDir}/${appDir}/Contents/MacOS/JavaApplicationStub")
+    println 'setExecutable: '+f.setExecutable(true, true)
   }
 }
 
@@ -180,7 +186,7 @@ task buildMacZip(type: Zip) {
 }
 
 prepareMacBuildDir.dependsOn cleanupMacBuildDir
-copyMacContent.dependsOn prepareMacBuildDir
+buildMacApp.dependsOn prepareMacBuildDir
 buildMacZip.dependsOn copyMacContent
 
 // Zip Release
