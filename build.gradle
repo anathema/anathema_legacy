@@ -148,11 +148,6 @@ task buildMacApp(type: Copy) {
     include 'Info.plist'
     filter(ReplaceTokens, tokens: ["version-major": "${version_major}".toString(), "version-minor": "${version_minor}".toString(), "version-revision": "${version_revision}".toString()])
   }
-  into("${appDir}/Contents/MacOS/") {
-    from("Development_Distribution/Mac")
-    include 'JavaApplicationStub'
-    //fileMode = 0755
-  }
   into("${appDir}/Contents/Resources") {
     from("Development_Distribution/Mac/")
     include 'sungear.icns'
@@ -164,18 +159,18 @@ task buildMacApp(type: Copy) {
     from("${buildDir}/dependencies/");
     from("${buildDir}/plugins/");
   }
-  doLast {
-    // due to http://jira.codehaus.org/browse/GRADLE-971 still not fixed as of gradle 1.0 milestone 9
-    File f=file("${buildDir}/${appDir}/Contents/MacOS/JavaApplicationStub")
-    println 'setExecutable: '+f.setExecutable(true, true)
-  }
 }
 
 task buildMacZip(type: Zip) {
   archiveName = macArchiveName
   destinationDir = buildDir
-  from("build/${appDir}") {
+  from("${buildDir}/${appDir}") {
     into "${appName}/${appDir}"
+  }
+  into("${appName}/${appDir}/Contents/MacOS/") {
+    from("Development_Distribution/Mac")
+    include 'JavaApplicationStub'
+    fileMode = 0755
   }
   from("Development_Documentation/Distribution/English") {
     include 'license.txt'
@@ -187,7 +182,7 @@ task buildMacZip(type: Zip) {
 
 prepareMacBuildDir.dependsOn cleanupMacBuildDir
 buildMacApp.dependsOn prepareMacBuildDir
-buildMacZip.dependsOn copyMacContent
+buildMacZip.dependsOn buildMacApp
 
 // Zip Release
 task buildZip(type: Zip) {
