@@ -4,7 +4,12 @@ ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
 
+apply plugin: 'java'
+apply plugin: 'eclipse'
 apply plugin: 'idea'
+
+sourceCompatibility = 1.6
+  
 idea {
     project {
         languageLevel = '1.6'
@@ -20,7 +25,7 @@ boolean isDataPlugin(project) {
 }
 
 subprojects {
-  apply plugin: 'eclipse'
+  
   apply plugin: 'idea'
 
   repositories {
@@ -32,10 +37,6 @@ subprojects {
           url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
         }
     }
-
-  apply plugin: 'java'
-
-  sourceCompatibility = 1.6
 
   if (!isDataPlugin(project)) {
       sourceSets {
@@ -148,6 +149,11 @@ task buildMacApp(type: Copy) {
     include 'Info.plist'
     filter(ReplaceTokens, tokens: ["version-major": "${version_major}".toString(), "version-minor": "${version_minor}".toString(), "version-revision": "${version_revision}".toString()])
   }
+  into("${appName}/${appDir}/Contents/MacOS/") {
+    from("Development_Distribution/Mac")
+    include 'JavaApplicationStub'
+    fileMode = 0755
+  }
   into("${appDir}/Contents/Resources") {
     from("Development_Distribution/Mac/")
     include 'sungear.icns'
@@ -166,6 +172,7 @@ task buildMacZip(type: Zip) {
   destinationDir = buildDir
   from("${buildDir}/${appDir}") {
     into "${appName}/${appDir}"
+    exclude "${appName}/${appDir}/Contents/MacOS/JavaApplicationStub"
   }
   into("${appName}/${appDir}/Contents/MacOS/") {
     from("Development_Distribution/Mac")
