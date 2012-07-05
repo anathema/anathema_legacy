@@ -2,11 +2,3 @@ dependencies {
     compile project(':Lib')
     testCompile parent.ext.testDependencies
 }
-
-sourceSets {
-    test {
-        java {
-            srcDir 'test'
-        }
-    }
-}

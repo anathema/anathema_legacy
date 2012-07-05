@@ -5,11 +5,3 @@ dependencies {
   compile project(':GraphLayout')
   testCompile parent.ext.testDependencies
 }
-
-sourceSets {
-  test {
-    java {
-      srcDir 'test'
-    }
-  }
-}

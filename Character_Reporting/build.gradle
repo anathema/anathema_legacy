@@ -6,11 +6,3 @@ dependencies {
   testCompile parent.ext.testDependencies
   testCompile project(path: ':Character_Generic', configuration: 'tests')
 }
-
-sourceSets {
-  test {
-    java {
-      srcDir 'test'
-    }
-  }
-}

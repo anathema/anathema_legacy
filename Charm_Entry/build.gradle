@@ -3,19 +3,3 @@ dependencies {
   compile project(':Character_Generic')
   testCompile parent.ext.testDependencies
 }
-
-sourceSets {
-  main {
-    resources {
-      srcDir 'resources'
-    }
-  }
-}
-
-sourceSets {
-  test {
-    java {
-      srcDir 'test'
-    }
-  }
-}

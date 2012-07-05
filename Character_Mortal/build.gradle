@@ -1,11 +1,3 @@
 dependencies {
   compile project(':Character_Reporting')
 }
-
-sourceSets {
-  main {
-    resources {
-      srcDir 'resources'
-    }
-  }
-}

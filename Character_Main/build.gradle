@@ -5,19 +5,6 @@ dependencies {
   testCompile parent.ext.testDependencies
 }
 
-sourceSets {
-  main {
-    resources {
-      srcDir 'resources'
-    }
-  }
-  test {
-    java {
-      srcDir 'test'
-    }
-  }
-}
-
 configurations {
   tests
 }
