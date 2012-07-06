@@ -99,7 +99,7 @@ Section -post SEC0001
     WriteRegStr HKLM "${REGKEY}" Path $INSTDIR
     SetOutPath $INSTDIR
     CreateDirectory $INSTDIR\repository
-    AccessControl::GrantOnFile "$INSTDIR\repository" "(S-1-5-32-545)" "FullAccess"
+    Exec 'cacls.exe "$INSTDIR\repository" /t /e /p USERS:F'
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup

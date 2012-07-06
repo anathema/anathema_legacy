@@ -1,5 +1,6 @@
 import org.apache.tools.ant.filters.FixCrLfFilter
 import org.apache.tools.ant.filters.ReplaceTokens
+import org.gradle.api.tasks.StopExecutionException
 
 ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
@@ -19,6 +20,17 @@ task wrapper(type: Wrapper) {
 
 boolean isDataPlugin(project) {
   project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
+}
+
+String operatingSystem() {
+  def os = System.getProperty('os.name').toLowerCase()
+  def result = ""
+  if( os.indexOf("win") >= 0   ) result = "win"
+  if( os.indexOf("mac") >= 0   ) result = "mac"
+  if( os.indexOf("nix") >= 0           //  unix
+  ||  os.indexOf("nux") >= 0   ) result = "linux"
+  if( os.indexOf("sunos") >= 0 ) result = "solaris"
+  return result
 }
 
 subprojects {
@@ -76,45 +88,56 @@ def projectLibrary(String project) {
   return zipTree("$project/build/libs/${project}.jar")
 }
 
-task createModule() {
-  if (project.hasProperty('moduleName')) {
+task createModule << {
+  if (!project.hasProperty('moduleName')) {
+    throw new StopExecutionException( "\n Please specify your new module name like so: gradlew createModule -PmoduleName=MyNewModuleNameHere\n")
+  }
+  else {
     if (new File(moduleName).exists()) {
-      throw new org.gradle.api.tasks.StopExecutionException("Module $moduleName already exists.")
+      throw new StopExecutionException("Module $moduleName already exists.")
     }
-    mkdir moduleName
-    mkdir "$moduleName/src"
-    mkdir "$moduleName/resources"
-    mkdir "$moduleName/test"
-    new File("$moduleName/build.gradle").withWriter { out ->
-      out.println "dependencies{}"
-      out.println "sourceSets{}"
-      out.println "configurations{}"
-      out.println "artifacts{}"
+    else {
+      mkdir moduleName
+      mkdir "$moduleName/src"
+      mkdir "$moduleName/resources"
+      mkdir "$moduleName/test"
+      new File("$moduleName/build.gradle").withWriter { out ->
+        out.println "dependencies {\n//  Insert your dependencies here like so:\n//  compile project(':Character_Equipment')\n//  compile project(':Character_Equipment_Impl')\n}"
+      }
     }
   }
 }
 
-
 // Windows Build
 task buildWindowsExecutable << {
+  def binDir = "Development_Distribution/Windows/Binaries/launch4j/"
+  if( operatingSystem().equals( "win"     ) ) binDir += "bin_win"
+  if( operatingSystem().equals( "mac"     ) ) binDir += "bin_mac"
+  if( operatingSystem().equals( "linux"   ) ) binDir += "bin_linux"
+  if( operatingSystem().equals( "solaris" ) ) binDir += "bin_solaris"
+
   mkdir("./build/launcher")
   def exeVersion = "${versionString}.0"
   def versionText = "${versionString} \"$version_name\""
   ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
-  ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion: "$versionText", txtProductVersion: "$versionText")
+  ant.launch4j(bindir: binDir, configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion: "$versionText", txtProductVersion: "$versionText")
 }
 
 task buildWindowsInstaller << {
-  ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)
+  def nsis_path = "Development_Distribution/Windows/Binaries/NSIS/"
+  if( operatingSystem().equals( "win"     ) ) nsis_path += "bin_win"
+  if( operatingSystem().equals( "mac"     ) ) nsis_path += "bin_mac"
+
+  ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)    
   ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}") {
     define(name: "RELEASE_VERSION", value: "${versionString}")
     define(name: "VERSION", value: "${versionString}.0")
   }
 }
 
+buildWindowsInstaller.dependsOn buildWindowsExecutable
 
 // OSX Build
-
 def appName = "Anathema"
 def appDir = "${appName}.app"
 def appPath = "${buildDir}/${appName}"
@@ -202,12 +225,10 @@ task buildZip(type: Zip) {
   }
 }
 
+buildZip.dependsOn buildWindowsExecutable
+
 [buildZip, buildWindowsInstaller, buildMacZip].each {
   it.dependsOn ':Anathema:jar'
-  def os = System.getProperty("os.name").toLowerCase()
-  if (os.contains("windows")) {
-    it.dependsOn buildWindowsExecutable
-  }
 }
 
 // All Releases
