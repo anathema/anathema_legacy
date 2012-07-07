@@ -22,6 +22,7 @@ boolean isDataPlugin(project) {
   project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
 }
 
+def os = operatingSystem()
 String operatingSystem() {
   def os = System.getProperty('os.name').toLowerCase()
   def result = ""
@@ -38,6 +39,7 @@ subprojects {
   sourceCompatibility = 1.6
   
   apply plugin: 'idea'
+  apply plugin: 'eclipse'
   
   repositories {
     mavenCentral()
@@ -49,9 +51,10 @@ subprojects {
     }
   }
 
+  sourceSets.test.java.srcDir 'test'
+  
   if (!isDataPlugin(project)) {
     sourceSets.main.java.srcDir 'src'
-    sourceSets.test.java.srcDir 'test'
   }
   else {
     sourceSets.main.resources.srcDir 'resources'
@@ -80,7 +83,7 @@ dependencies {
             "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
             "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
   )
-  nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.2.jar")
+  nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
 }
 
 
@@ -111,10 +114,10 @@ task createModule << {
 // Windows Build
 task buildWindowsExecutable << {
   def binDir = "Development_Distribution/Windows/Binaries/launch4j/"
-  if( operatingSystem().equals( "win"     ) ) binDir += "bin_win"
-  if( operatingSystem().equals( "mac"     ) ) binDir += "bin_mac"
-  if( operatingSystem().equals( "linux"   ) ) binDir += "bin_linux"
-  if( operatingSystem().equals( "solaris" ) ) binDir += "bin_solaris"
+  if( os.equals( "win"     ) ) binDir += "bin_win"
+  if( os.equals( "mac"     ) ) binDir += "bin_mac"
+  if( os.equals( "linux"   ) ) binDir += "bin_linux"
+  if( os.equals( "solaris" ) ) binDir += "bin_solaris"
 
   mkdir("./build/launcher")
   def exeVersion = "${versionString}.0"
@@ -125,10 +128,10 @@ task buildWindowsExecutable << {
 
 task buildWindowsInstaller << {
   def nsis_path = "Development_Distribution/Windows/Binaries/NSIS/"
-  if( operatingSystem().equals( "win"     ) ) nsis_path += "bin_win"
-  if( operatingSystem().equals( "mac"     ) ) nsis_path += "bin_mac"
+  if( os.equals( "win"     ) ) nsis_path += "bin_win"
+  if( os.equals( "mac"     ) ) nsis_path += "bin_mac"
 
-  ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)    
+  ant.taskdef(name: "nsis", classname: "com.danielreese.nsisant.Task", classpath: configurations.nsis.asPath)    
   ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}") {
     define(name: "RELEASE_VERSION", value: "${versionString}")
     define(name: "VERSION", value: "${versionString}.0")
@@ -242,8 +245,10 @@ tasks.each {
   def isPluginTask = it.name.matches('build.*Plugin')
   if (isPluginTask) {
     buildZip.dependsOn it
-    buildWindowsInstaller.dependsOn it
+    buildWindowsInstaller.dependsOn it  // should these depend on the executable and app instead of the installers?
     buildMacZip.dependsOn it
+    buildWindowsExecutable.dependsOn it
+    buildMacApp.dependsOn it
   }
 }
 

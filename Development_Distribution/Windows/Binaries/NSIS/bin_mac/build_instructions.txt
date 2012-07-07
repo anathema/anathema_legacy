@@ -1,0 +1,11 @@
+This should be put on the wiki eventually.
+
+The files here are a combination of binaries pulled from the windows install of NSIS and the makensis executable compiled on OSX.
+
+Build Instructions:
+- scons SKIPSTUBS=all SKIPPLUGINS=all SKIPUTILS=all SKIPMISC=all NSIS_CONFIG_CONST_DATA_PATH=no PREFIX=Development_Distribution/Windows/Binaries/NSIS PREFIX_BIN=Development_Distribution/Windows/Binaries/NSIS/bin_mac install-compiler
+
+- Download the NSIS 2.46 source code: http://sourceforge.net/projects/nsis/files/NSIS%202/2.46/nsis-2.46-src.tar.bz2/download
+- Requires scons to be installed by whatever means you choose.
+- Compile makensis using this: scons SKIPSTUBS=all SKIPPLUGINS=all SKIPUTILS=all SKIPMISC=all NSIS_CONFIG_CONST_DATA_PATH=no PREFIX=Development_Distribution/Windows/Binaries/NSIS PREFIX_BIN=Development_Distribution/Windows/Binaries/NSIS/bin_mac install-compiler
+- The PREFIX and PREFIX_BIN variables need to be changed and the binary recompiled if the locations of the binaries is moved.
