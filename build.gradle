@@ -18,10 +18,6 @@ task wrapper(type: Wrapper) {
   gradleVersion = '1.0'
 }
 
-boolean isDataPlugin(project) {
-  project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
-}
-
 def os = operatingSystem()
 String operatingSystem() {
   def os = System.getProperty('os.name').toLowerCase()
@@ -51,14 +47,9 @@ subprojects {
     }
   }
 
+  sourceSets.main.java.srcDir 'src'
   sourceSets.test.java.srcDir 'test'
-  
-  if (!isDataPlugin(project)) {
-    sourceSets.main.java.srcDir 'src'
-  }
-  else {
-    sourceSets.main.resources.srcDir 'resources'
-  }
+  sourceSets.main.resources.srcDir 'resources'  
 
   task collectTransitiveDependencies() << {
     copy {
@@ -128,8 +119,8 @@ task buildWindowsExecutable << {
 
 task buildWindowsInstaller << {
   def nsis_path = "Development_Distribution/Windows/Binaries/NSIS/"
-  if( os.equals( "win"     ) ) nsis_path += "bin_win"
-  if( os.equals( "mac"     ) ) nsis_path += "bin_mac"
+  if( os.equals( "win" ) ) nsis_path += "bin_win"
+  if( os.equals( "mac" ) ) nsis_path += "bin_mac"
 
   ant.taskdef(name: "nsis", classname: "com.danielreese.nsisant.Task", classpath: configurations.nsis.asPath)    
   ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}") {
@@ -148,6 +139,7 @@ def macArchiveName = "${appName}_Mac_v${versionString}.zip"
 
 task cleanupMacBuildDir(type: Delete) {
   delete "${buildDir}/${appDir}"
+    out.println( "deleting ${buildDir}/${appDir}")
 }
 
 task prepareMacBuildDir << {
@@ -162,10 +154,13 @@ task buildMacApp(type: Copy) {
     include 'Info.plist'
     filter(ReplaceTokens, tokens: ["version-major": "${version_major}".toString(), "version-minor": "${version_minor}".toString(), "version-revision": "${version_revision}".toString()])
   }
-  into("${appName}/${appDir}/Contents/MacOS/") {
+  into("${appDir}/Contents/MacOS/") {
     from("Development_Distribution/Mac")
     include 'JavaApplicationStub'
     fileMode = 0755
+  }
+  into("${appDir}/Contents/Resources/Java") {
+    from("Anathema/resources/icons/core/AnathemaSplashNew.png")
   }
   into("${appDir}/Contents/Resources") {
     from("Development_Distribution/Mac/")
