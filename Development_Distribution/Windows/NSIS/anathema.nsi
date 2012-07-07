@@ -12,7 +12,7 @@ SetCompressor lzma
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
 !define COMPANY "Anathema Team"
-!define URL http://anathema.sf.net
+!define URL http://anathema.github.com
 
 # MultiUser Symbol Definitions
 !define MULTIUSER_EXECUTIONLEVEL Power
@@ -31,7 +31,14 @@ SetCompressor lzma
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
 !define MUI_STARTMENUPAGE_DEFAULTFOLDER Anathema
-!define MUI_FINISHPAGE_SHOWREADME $INSTDIR\readme.txt
+!define MUI_FINISHPAGE_LINK "Visit our website"
+!define MUI_FINISHPAGE_LINK_LOCATION "${URL}"
+!define MUI_FINISHPAGE_RUN_TEXT "Launch Anathema"
+!define MUI_FINISHPAGE_RUN "$INSTDIR\Anathema.exe"
+!define MUI_FINISHPAGE_RUN_NOTCHECKED
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "View the release notes"
+!define MUI_FINISHPAGE_SHOWREADME 'https://github.com/anathema/anathema/blob/v${RELEASE_VERSION}/Development_Documentation/Distribution/English/versions.md'
+!define MUI_FINISHPAGE_SHOWREADME_CHECKED
 !define MUI_UNICON sungearInstall.ico
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
@@ -91,7 +98,9 @@ Section -Anathema SEC0000
     SetOutPath $INSTDIR
     File ..\..\..\Anathema\build\libs\Anathema.jar
     File ..\..\..\build\launcher\anathema.exe
-    File /r ..\..\..\Development_Documentation\Distribution\English\*
+    File ..\..\..\Development_Documentation\Distribution\English\license.txt
+    File /oname=release_notes.txt ..\..\..\Development_Documentation\Distribution\English\versions.md
+    #Rename $INSTDIR\versions.md $INSTDIR\release_notes.txt
     WriteRegStr HKLM "${REGKEY}\Components" Anathema 1
 SectionEnd
 

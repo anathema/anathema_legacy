@@ -7,6 +7,8 @@ ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
 
 apply plugin: 'java' // Gives us the clean target on the root directory
+sourceCompatibility = 1.6
+  
 apply plugin: 'idea'
 
 idea {
@@ -143,7 +145,7 @@ def macAppDir      = "${projectName}.app"
 // Windows Release
 task buildWin << {
   def launch4jPath = "Development_Distribution/Windows/Binaries/launch4j/bin_" + os
-
+  
   mkdir("./build/launcher")
   def exeVersion = "${versionString}.0"
   def versionText = "${versionString} \"$version_name\""
