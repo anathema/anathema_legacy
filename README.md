@@ -14,13 +14,13 @@ Set Up
 Development
 ===========
 ### Launching Anathema (IDE)###
-Launch ``net.sf.anathema.AnathemaBootLoader``.
+Launch ``net.sf.anathema.AnathemaBootLoader``
 
 ### Launching Anathema (Command Prompt)###
-Launch `gradlew run`.
+Launch `gradlew run`
 
 ### Running the test suite###
-Run ``gradlew test``.
+Run ``gradlew test``
 
 ### Adding a dependency ###
 1. Add the dependency entry to the module's ``build.gradle``.
@@ -37,22 +37,22 @@ Run ``gradlew test``.
 Deployment
 ==========
 These commands just build the distribution artifacts. For the full process, see the [wiki](https://github.com/anathema/anathema/wiki/How-to-release-a-new-version).
-### Building a plain zip ###
-> This works on any OS.  It includes a Windows executable launcher.
+### Building a Multi-Platform Release ###
+> This works on any OS.  It creates a zip file containing a multi-platform executable anathema.jar and a Windows anathema.exe launcher.
 
-Run ``gradlew buildZip``.
+Run ``gradlew releaseZip``
 
-### Building a Windows installer ###
-> This only works on any OS.
+### Building a Windows Release ###
+> This works on any OS.  It creates a Windows installer.
 
-Run ``gradlew buildWindowsInstaller``.
+Run ``gradlew releaseWin``
 
-### Building a Macintosh Application ###
-> This only works on any OS.
+### Building a Macintosh Release ###
+> This works on any OS.  It creates a zip file containing a Mac application bundle.
 
-Run ``gradlew buildMacZip``.
+Run ``gradlew releaseMac``
 
-### Building all platforms for release
+### Building All Platforms for Release
 > Builds the Zip, Windows, and Mac distributions
 
-Run ``gradlew release``.
+Run ``gradlew release``

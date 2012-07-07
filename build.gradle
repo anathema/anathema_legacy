@@ -6,6 +6,7 @@ ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
 
+apply plugin: 'java' // Gives us the clean target on the root directory
 apply plugin: 'idea'
 
 idea {
@@ -47,6 +48,7 @@ subprojects {
     }
   }
 
+  // setting the sourceSets for all subprojects equally, test the compilation speed hit of this
   sourceSets.main.java.srcDir 'src'
   sourceSets.test.java.srcDir 'test'
   sourceSets.main.resources.srcDir 'resources'  
@@ -102,136 +104,137 @@ task createModule << {
   }
 }
 
-// Windows Build
-task buildWindowsExecutable << {
-  def binDir = "Development_Distribution/Windows/Binaries/launch4j/"
-  if( os.equals( "win"     ) ) binDir += "bin_win"
-  if( os.equals( "mac"     ) ) binDir += "bin_mac"
-  if( os.equals( "linux"   ) ) binDir += "bin_linux"
-  if( os.equals( "solaris" ) ) binDir += "bin_solaris"
+// All Releases
+task release
+
+// Release Variables
+def projectName    = "Anathema"
+def releaseZipName   = "${projectName}_v${versionString}.zip"
+def releaseMacName = "${projectName}_Mac_v${versionString}.zip"
+def macAppDir      = "${projectName}.app"
+
+  // Zip Release
+  task buildZip(type: Zip) {
+    archiveName = releaseZipName
+    destinationDir = buildDir
+    from 'Anathema/build/libs'
+    into('lib') {
+      from('build/dependencies')
+      from('build/plugins')
+    }
+    from("Development_Distribution/Linux") {
+      include 'anathema.sh'
+      filter( FixCrLfFilter.class,
+              eol:FixCrLfFilter.CrLf.newInstance("lf") )
+      fileMode = 0755
+    }
+    from("build/launcher") {
+      include 'anathema.exe'
+    }
+    from("Development_Documentation/Distribution/English") {
+      include 'license.txt'
+      include 'versions.md'
+      rename 'versions.md', 'release_notes.txt'
+    }
+  }
+
+  task releaseZip
+
+// Windows Release
+task buildWin << {
+  def launch4jPath = "Development_Distribution/Windows/Binaries/launch4j/bin_" + os
 
   mkdir("./build/launcher")
   def exeVersion = "${versionString}.0"
   def versionText = "${versionString} \"$version_name\""
-  ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
-  ant.launch4j(bindir: binDir, configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion: "$versionText", txtProductVersion: "$versionText")
+  ant.taskdef(name: 'launch4j',
+              classname: 'net.sf.launch4j.ant.Launch4jTask',
+              classpath: configurations.launch4j.asPath)
+  ant.launch4j(bindir: launch4jPath,
+               configFile: 'Development_Distribution/Windows/launch4j.xml',
+               outfile: './build/launcher/anathema.exe',
+               fileVersion: "$exeVersion",
+               productVersion: "$exeVersion",
+               txtFileVersion: "$versionText",
+               txtProductVersion: "$versionText")
 }
 
-task buildWindowsInstaller << {
-  def nsis_path = "Development_Distribution/Windows/Binaries/NSIS/"
-  if( os.equals( "win" ) ) nsis_path += "bin_win"
-  if( os.equals( "mac" ) ) nsis_path += "bin_mac"
-
-  ant.taskdef(name: "nsis", classname: "com.danielreese.nsisant.Task", classpath: configurations.nsis.asPath)    
-  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}") {
+task releaseWin << {
+  def nsisPath = "Development_Distribution/Windows/Binaries/NSIS/bin_"
+  if( os.equals( "win" ) ||                     // makensis.exe and makensis are the win/mac compiled binaries.
+      os.equals( "mac" ) ) nsisPath += "winmac" // All other files in this folder are identical
+  else nsisPath += os
+        
+  ant.taskdef(name: "nsis",
+              classname: "com.danielreese.nsisant.Task",
+              classpath: configurations.nsis.asPath)    
+  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsisPath}") {
     define(name: "RELEASE_VERSION", value: "${versionString}")
     define(name: "VERSION", value: "${versionString}.0")
   }
 }
 
-buildWindowsInstaller.dependsOn buildWindowsExecutable
-
-// OSX Build
-def appName = "Anathema"
-def appDir = "${appName}.app"
-def appPath = "${buildDir}/${appName}"
-def macArchiveName = "${appName}_Mac_v${versionString}.zip"
-
-task cleanupMacBuildDir(type: Delete) {
-  delete "${buildDir}/${appDir}"
-    out.println( "deleting ${buildDir}/${appDir}")
-}
-
-task prepareMacBuildDir << {
-  new File("${buildDir}/${appDir}/Contents/MacOS").mkdirs()
-  new File("${buildDir}/${appDir}/Contents/Resources/Java").mkdirs()
-}
-
-task buildMacApp(type: Copy) {
+// Mac Release
+task buildMac(type: Copy) {
   destinationDir buildDir
-  into("${appDir}/Contents/") {
+  into("${macAppDir}/Contents/") {
     from("Development_Distribution/Mac/")
     include 'Info.plist'
-    filter(ReplaceTokens, tokens: ["version-major": "${version_major}".toString(), "version-minor": "${version_minor}".toString(), "version-revision": "${version_revision}".toString()])
+    filter(ReplaceTokens, tokens: ["version-major":    version_major,
+                                   "version-minor":    version_minor,
+                                   "version-revision": version_revision])
+
   }
-  into("${appDir}/Contents/MacOS/") {
+  into("${macAppDir}/Contents/MacOS/") {
     from("Development_Distribution/Mac")
     include 'JavaApplicationStub'
     fileMode = 0755
   }
-  into("${appDir}/Contents/Resources/Java") {
-    from("Anathema/resources/icons/core/AnathemaSplashNew.png")
-  }
-  into("${appDir}/Contents/Resources") {
+  into("${macAppDir}/Contents/Resources") {
     from("Development_Distribution/Mac/")
     include 'sungear.icns'
   }
-  into("${appDir}/Contents/Resources/Java") {
-    from 'Anathema/build/libs'
+  into("${macAppDir}/Contents/Resources/Java") {
+    from("Anathema/build/libs/")
+    from("Anathema/resources/icons/core/AnathemaSplashNew.png")
   }
-  into("${appDir}/Contents/Resources/Java/lib") {
+  into("${macAppDir}/Contents/Resources/Java/lib") {
     from("${buildDir}/dependencies/");
     from("${buildDir}/plugins/");
   }
 }
 
-task buildMacZip(type: Zip) {
-  archiveName = macArchiveName
+task releaseMac(type: Zip) {
+  archiveName = releaseMacName
   destinationDir = buildDir
-  from("${buildDir}/${appDir}") {
-    into "${appName}/${appDir}"
-    exclude "${appName}/${appDir}/Contents/MacOS/JavaApplicationStub"
+  into("${projectName}/${macAppDir}") {
+    from("${buildDir}/${macAppDir}")
+    exclude "${projectName}/${macAppDir}/Contents/MacOS/JavaApplicationStub" // Skipping this because...
   }
-  into("${appName}/${appDir}/Contents/MacOS/") {
-    from("Development_Distribution/Mac")
+  into("${projectName}/${macAppDir}/Contents/MacOS/") { // We include it here with the execute bit set.
+    from("Development_Distribution/Mac")                // Necessary when building on a windows system
     include 'JavaApplicationStub'
     fileMode = 0755
   }
-  from("Development_Documentation/Distribution/English") {
-    include 'license.txt'
-    include 'versions.md'
-    rename 'versions.md', 'release_notes.txt'
-    into "$appName"
-  }
-}
-
-prepareMacBuildDir.dependsOn cleanupMacBuildDir
-buildMacApp.dependsOn prepareMacBuildDir
-buildMacZip.dependsOn buildMacApp
-
-// Zip Release
-task buildZip(type: Zip) {
-  archiveName = "Anathema_v${versionString}.zip"
-  destinationDir = buildDir
-  from 'Anathema/build/libs'
-  into('lib') {
-    from('build/dependencies')
-    from('build/plugins')
-  }
-  from("Development_Distribution/Linux") {
-    include 'anathema.sh'
-    filter( FixCrLfFilter.class,
-            eol:FixCrLfFilter.CrLf.newInstance("lf") )
-  }
-  from("build/launcher") {
-    include 'anathema.exe'
-  }
-  from("Development_Documentation/Distribution/English") {
+  into( "${projectName}") {
+    from("Development_Documentation/Distribution/English")
     include 'license.txt'
     include 'versions.md'
     rename 'versions.md', 'release_notes.txt'
   }
 }
 
-buildZip.dependsOn buildWindowsExecutable
-
-[buildZip, buildWindowsInstaller, buildMacZip].each {
+// Release Dependencies
+[buildWin, buildMac, buildZip].each {
   it.dependsOn ':Anathema:jar'
 }
 
-// All Releases
-task release dependsOn buildZip, buildMacZip, buildWindowsInstaller<<{
-}
+releaseZip.dependsOn buildZip
+releaseWin.dependsOn buildWin
+releaseMac.dependsOn buildMac
+buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in the zip distribution
+
+release.dependsOn releaseZip, releaseWin, releaseMac
 
 // Plugins
 apply from: 'plugins.gradle'
@@ -240,10 +243,8 @@ tasks.each {
   def isPluginTask = it.name.matches('build.*Plugin')
   if (isPluginTask) {
     buildZip.dependsOn it
-    buildWindowsInstaller.dependsOn it  // should these depend on the executable and app instead of the installers?
-    buildMacZip.dependsOn it
-    buildWindowsExecutable.dependsOn it
-    buildMacApp.dependsOn it
+    buildWin.dependsOn it
+    buildMac.dependsOn it
   }
 }
 
