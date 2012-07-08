@@ -71,7 +71,7 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE Italian
 
 # Installer attributes
-OutFile ..\..\..\build\Anathema_v${RELEASE_VERSION}.exe
+OutFile ..\..\..\build\Anathema_Win_v${RELEASE_VERSION}.exe
 InstallDir Anathema
 CRCCheck on
 XPStyle on
