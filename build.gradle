@@ -109,11 +109,17 @@ task createModule << {
 }
 
 // All Releases
-task release
+task release << {
+  // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
+  String delim = "## Release "
+  String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' ) 
+  String[] versions = releaseNotes.split( delim )[1];
+  new File("${buildDir}/readme.md").write( delim + releaseNotes.split( delim )[1], 'UTF-8' )
+}
 
 // Release Variables
 def projectName    = "Anathema"
-def releaseZipName   = "${projectName}_v${versionString}.zip"
+def releaseZipName = "${projectName}_Zip_v${versionString}.zip"
 def releaseMacName = "${projectName}_Mac_v${versionString}.zip"
 def macAppDir      = "${projectName}.app"
 
