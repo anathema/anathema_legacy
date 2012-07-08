@@ -100,7 +100,6 @@ Section -Anathema SEC0000
     File ..\..\..\build\launcher\anathema.exe
     File ..\..\..\Development_Documentation\Distribution\English\license.txt
     File /oname=release_notes.txt ..\..\..\Development_Documentation\Distribution\English\versions.md
-    #Rename $INSTDIR\versions.md $INSTDIR\release_notes.txt
     WriteRegStr HKLM "${REGKEY}\Components" Anathema 1
 SectionEnd
 

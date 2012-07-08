@@ -5,9 +5,6 @@ import org.gradle.api.tasks.StopExecutionException
 ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
-
-apply plugin: 'java' // Gives us the clean target on the root directory
-sourceCompatibility = 1.6
   
 apply plugin: 'idea'
 
@@ -81,6 +78,13 @@ dependencies {
   nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
 }
 
+task clean(type: Delete) {
+  try {
+    delete "${buildDir}"
+  } catch( java.io.IOException e ) {
+    // this only happens when the developer has a folder open to the build directory.  Once its done deleting all the files inside, it attempts to delete the folder itself, and this throws the exception.  By catching this exception, it allows the build to proceed.  For some reason, it also causes the build folder itself to get properly deleted.
+  }
+}
 
 def projectLibrary(String project) {
   return zipTree("$project/build/libs/${project}.jar")
