@@ -12,6 +12,6 @@ Once the makensis binary has been compiled, it needs to be added to Development_
 
 
 #### Resources:
-- http://wiki.koshatul.com/Installing_Nullsoft_Scriptable_Installer_System_\(NSIS\)_on_BSD\)
+- http://wiki.koshatul.com/Installing_Nullsoft_Scriptable_Installer_System_(NSIS)_on_BSD
 - http://nsis.sourceforge.net/Docs/AppendixG.html
-- http://www.codedrop.ca/blog/archives/9)
+- http://www.codedrop.ca/blog/archives/9
