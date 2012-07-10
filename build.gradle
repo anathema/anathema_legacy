@@ -169,10 +169,7 @@ task buildWin << {
 }
 
 task releaseWin << {
-  def nsisPath = "Development_Distribution/Windows/Binaries/NSIS/bin_"
-  if( os.equals( "win" ) ||                     // makensis.exe and makensis are the win/mac compiled binaries.
-      os.equals( "mac" ) ) nsisPath += "winmac" // All other files in this folder are identical
-  else nsisPath += os
+  def nsisPath = "Development_Distribution/Windows/Binaries/NSIS/bin_" + os
         
   ant.taskdef(name: "nsis",
               classname: "com.danielreese.nsisant.Task",
