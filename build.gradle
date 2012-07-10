@@ -47,7 +47,6 @@ subprojects {
     }
   }
 
-  // setting the sourceSets for all subprojects equally, test the compilation speed hit of this
   sourceSets.main.java.srcDir 'src'
   sourceSets.test.java.srcDir 'test'
   sourceSets.main.resources.srcDir 'resources'  
@@ -72,8 +71,8 @@ configurations {
 
 dependencies {
   launch4j files(
-            "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
-            "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
+             "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
+             "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
   )
   nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
 }
@@ -123,32 +122,32 @@ def releaseZipName = "${projectName}_Zip_v${versionString}.zip"
 def releaseMacName = "${projectName}_Mac_v${versionString}.zip"
 def macAppDir      = "${projectName}.app"
 
-  // Zip Release
-  task buildZip(type: Zip) {
-    archiveName = releaseZipName
-    destinationDir = buildDir
-    from 'Anathema/build/libs'
-    into('lib') {
-      from('build/dependencies')
-      from('build/plugins')
-    }
-    from("Development_Distribution/Linux") {
-      include 'anathema.sh'
-      filter( FixCrLfFilter.class,
-              eol:FixCrLfFilter.CrLf.newInstance("lf") )
-      fileMode = 0755
-    }
-    from("build/launcher") {
-      include 'anathema.exe'
-    }
-    from("Development_Documentation/Distribution/English") {
-      include 'license.txt'
-      include 'versions.md'
-      rename 'versions.md', 'release_notes.txt'
-    }
+// Zip Release
+task buildZip(type: Zip) {
+  archiveName = releaseZipName
+  destinationDir = buildDir
+  from 'Anathema/build/libs'
+  into('lib') {
+    from('build/dependencies')
+    from('build/plugins')
   }
+  from("Development_Distribution/Linux") {
+    include 'anathema.sh'
+    filter( FixCrLfFilter.class,
+            eol:FixCrLfFilter.CrLf.newInstance("lf") )
+    fileMode = 0755
+  }
+  from("build/launcher") {
+    include 'anathema.exe'
+  }
+  from("Development_Documentation/Distribution/English") {
+    include 'license.txt'
+    include 'versions.md'
+    rename 'versions.md', 'release_notes.txt'
+  }
+}
 
-  task releaseZip
+task releaseZip
 
 // Windows Release
 task buildWin << {
