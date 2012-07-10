@@ -174,7 +174,7 @@ task releaseWin << {
   ant.taskdef(name: "nsis",
               classname: "com.danielreese.nsisant.Task",
               classpath: configurations.nsis.asPath)    
-  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsisPath}") {
+  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: nsisPath) {
     define(name: "RELEASE_VERSION", value: "${versionString}")
     define(name: "VERSION", value: "${versionString}.0")
   }
