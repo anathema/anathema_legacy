@@ -42,9 +42,6 @@ subprojects {
     maven {
       url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
     }
-    maven {
-      url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
-    }
   }
 
   sourceSets.main.java.srcDir 'src'
@@ -112,7 +109,6 @@ task release << {
   // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
   String delim = "## Release "
   String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' ) 
-  String[] versions = releaseNotes.split( delim )[1];
   new File("${buildDir}/readme.md").write( delim + releaseNotes.split( delim )[1], 'UTF-8' )
 }
 
