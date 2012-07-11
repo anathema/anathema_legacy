@@ -3,11 +3,3 @@ dependencies {
   compile 'javazoom:mp3spi:1.9.2'
   compile project(':Platform')
 }
-
-sourceSets {
-  main {
-    resources {
-      srcDir 'resources'
-    }
-  }
-}

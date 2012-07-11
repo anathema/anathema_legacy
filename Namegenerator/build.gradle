@@ -1,11 +1,3 @@
 dependencies {
   compile project(':Platform')
 }
-
-sourceSets {
-  main {
-    resources {
-      srcDir 'resources'
-    }
-  }
-}

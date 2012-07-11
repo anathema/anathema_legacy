@@ -4,11 +4,3 @@ dependencies {
   compile project(':Character_Mutations')
   compile project(':Character_Reporting_SecondEdition')
 }
-
-sourceSets {
-  main {
-    resources {
-      srcDir 'resources'
-    }
-  }
-}
