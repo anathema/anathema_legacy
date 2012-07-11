@@ -4,14 +4,6 @@ dependencies {
   testCompile parent.ext.testDependencies
 }
 
-sourceSets {
-  test {
-    java {
-      srcDir 'test'
-    }
-  }
-}
-
 configurations {
   tests
 }
