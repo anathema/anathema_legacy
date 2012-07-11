@@ -13,11 +13,14 @@ Set Up
 
 Development
 ===========
-### Launching Anathema###
-Launch ``net.sf.anathema.AnathemaBootLoader``.
+### Launching Anathema (IDE)###
+Launch ``net.sf.anathema.AnathemaBootLoader``
+
+### Launching Anathema (Command Prompt)###
+Launch `gradlew run`
 
 ### Running the test suite###
-Run ``gradlew test``.
+Run ``gradlew test``
 
 ### Adding a dependency ###
 1. Add the dependency entry to the module's ``build.gradle``.
@@ -29,27 +32,27 @@ Run ``gradlew test``.
 1. Run ``gradlew createModule -PmoduleName=MODULENAME``
 2. In ``settings.gradle``, add your module name.
 4. Run ``gradlew eclipseProject eclipseClasspath eclipseJdt`` or ``gradlew idea``.
-5. (Only with eclipse,) import the project.
+5. [Eclipse Only] import the project.
 
 Deployment
 ==========
 These commands just build the distribution artifacts. For the full process, see the [wiki](https://github.com/anathema/anathema/wiki/How-to-release-a-new-version).
-### Building a plain zip ###
-> This works on any operating system. However, the Windows executable will only be included on Windows systems.
+### Building a Multi-Platform Release ###
+> This works on any OS.  It creates a zip file containing a multi-platform executable anathema.jar and a Windows anathema.exe launcher.
 
-Run ``gradlew buildZip``. Done.
+Run ``gradlew releaseZip``
 
-### Building a Windows installer ###
-> This only works on Windows.
+### Building a Windows Release ###
+> This works on any OS.  It creates a Windows installer.
 
-1. Install [NSIS](http://nsis.sourceforge.net/Download "Our installer-framework of choice").
-2. Install the [NSIS Access Control Plugin] (http://nsis.sourceforge.net/AccessControl_plug-in "We need it to grant permissions on the repository-folder.") by extracting the ZIP into your NSIS folder so that the folders match.
-3. In either your home directory or your clone of anathema, append a property ``nsis_path`` to ``gradle.properties``. Make it point to the NSIS folder, e.g. ``nsis_path=C:/dev/NSIS``.
-4. Run ``gradlew buildWindowsInstaller``.
+Run ``gradlew releaseWin``
 
-### Building a Macintosh Disk Image ###
-> This only works on Mac OS X.
+### Building a Macintosh Release ###
+> This works on any OS.  It creates a zip file containing a Mac application bundle.
 
-1. Run ``gradlew buildZip`` to compile the distribution.
-2. Run ``gradlew -b macApplication.gradle buildMacApplication`` to build the Application Folder.
-3. Run ``gradlew -b macDmg.gradle buildDmgOnMacOS`` to build the Disk Image.
+Run ``gradlew releaseMac``
+
+### Building All Platforms for Release
+> Builds the Zip, Windows, and Mac distributions
+
+Run ``gradlew release``

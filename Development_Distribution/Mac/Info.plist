@@ -30,6 +30,8 @@
 		<string>net.sf.anathema.AnathemaBootLoader</string>
 		<key>WorkingDirectory</key>
 		<string>$APP_PACKAGE/Contents/Resources/Java</string>
+		<key>SplashFile</key>
+		<string>$JAVAROOT/AnathemaSplashNew.png</string>
 		<key>JVMVersion</key>
 		<string>1.6+</string>
 		<!-- May need to update this if any jars get added to the project. -->

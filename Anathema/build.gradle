@@ -27,11 +27,3 @@ dependencies {
 private boolean isNotSelf(project) {
     return project.name != "Anathema"
 }
-
-sourceSets {
-  main {
-    resources {
-      srcDir 'resources'
-    }
-  }
-}

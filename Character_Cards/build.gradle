@@ -7,11 +7,3 @@ dependencies {
   compile project(':Character_Equipment')
   compile project(':Character_Reporting')
 }
-
-sourceSets {
-  main {
-    resources {
-      srcDir 'resources'
-    }
-  }
-}
