@@ -5,7 +5,7 @@ import org.gradle.api.tasks.StopExecutionException
 ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
-  
+
 apply plugin: 'idea'
 
 idea {
@@ -33,10 +33,10 @@ String operatingSystem() {
 subprojects {
   apply plugin: 'java'
   sourceCompatibility = 1.6
-  
+
   apply plugin: 'idea'
   apply plugin: 'eclipse'
-  
+
   repositories {
     mavenCentral()
     maven {
@@ -49,7 +49,7 @@ subprojects {
 
   sourceSets.main.java.srcDir 'src'
   sourceSets.test.java.srcDir 'test'
-  sourceSets.main.resources.srcDir 'resources'  
+  sourceSets.main.resources.srcDir 'resources'
 
   task collectTransitiveDependencies() << {
     copy {
@@ -111,9 +111,23 @@ task createModule << {
 task release << {
   // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
   String delim = "## Release "
-  String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' ) 
+  String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' )
   String[] versions = releaseNotes.split( delim )[1];
   new File("${buildDir}/readme.md").write( delim + releaseNotes.split( delim )[1], 'UTF-8' )
+}
+
+task tag (type: Exec) {
+  def command = getBaseCommand(os) + ['git', 'tag', '-a', "v${versionString}", '-m', "Version ${versionString}"]
+  commandLine command
+}
+
+private def getBaseCommand(os) {
+  if (os == 'win') {
+    return ['cmd', '/c']
+  }
+  else {
+    return []
+  }
 }
 
 // Release Variables
@@ -152,7 +166,7 @@ task releaseZip
 // Windows Release
 task buildWin << {
   def launch4jPath = "Development_Distribution/Windows/Binaries/launch4j/bin_" + os
-  
+
   mkdir("./build/launcher")
   def exeVersion = "${versionString}.0"
   def versionText = "${versionString} \"$version_name\""
@@ -170,10 +184,10 @@ task buildWin << {
 
 task releaseWin << {
   def nsisPath = "Development_Distribution/Windows/Binaries/NSIS/bin_" + os
-        
+
   ant.taskdef(name: "nsis",
               classname: "com.danielreese.nsisant.Task",
-              classpath: configurations.nsis.asPath)    
+              classpath: configurations.nsis.asPath)
   ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: nsisPath) {
     define(name: "RELEASE_VERSION", value: "${versionString}")
     define(name: "VERSION", value: "${versionString}.0")
