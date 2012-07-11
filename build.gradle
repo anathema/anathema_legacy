@@ -1,64 +1,67 @@
-import org.apache.tools.ant.filters.*;
-
-apply plugin: 'idea'
-idea {
-    project {
-        languageLevel = '1.6'
-    }
-}
+import org.apache.tools.ant.filters.FixCrLfFilter
+import org.apache.tools.ant.filters.ReplaceTokens
+import org.gradle.api.tasks.StopExecutionException
 
 ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
+  
+apply plugin: 'idea'
+
+idea {
+  project {
+    languageLevel = '1.6'
+  }
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '1.0'
+}
+
+def os = operatingSystem()
+String operatingSystem() {
+  def os = System.getProperty('os.name').toLowerCase()
+  def result = ""
+  if( os.indexOf("win") >= 0   ) result = "win"
+  if( os.indexOf("mac") >= 0   ) result = "mac"
+  if( os.indexOf("nix") >= 0           //  unix
+  ||  os.indexOf("nux") >= 0   ) result = "linux"
+  if( os.indexOf("sunos") >= 0 ) result = "solaris"
+  return result
+}
 
 subprojects {
-  apply plugin: 'eclipse'
-  apply plugin: 'idea'
-
-  repositories {
-      mavenCentral()
-      maven {
-          url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
-        }
-      maven {
-          url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
-        }
-    }
-
   apply plugin: 'java'
-
   sourceCompatibility = 1.6
+  
+  apply plugin: 'idea'
+  apply plugin: 'eclipse'
+  
+  repositories {
+    mavenCentral()
+    maven {
+      url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
+    }
+    maven {
+      url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
+    }
+  }
 
-  if (!isDataPlugin(project)) {
-      sourceSets {
-          main {
-              java {
-                  srcDir 'src'
-                }
-            }
-        }
-    }
-    else {
-      sourceSets {
-          main {
-              resources {
-                  srcDir 'resources'
-                }
-            }
-        }
-    }
+  sourceSets.main.java.srcDir 'src'
+  sourceSets.test.java.srcDir 'test'
+  sourceSets.main.resources.srcDir 'resources'  
 
   task collectTransitiveDependencies() << {
-      copy {
-          from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('cache')) }
-          into parent.ext.dependenciesDir
-        }
+    copy {
+      from configurations.compile.findAll { File dependency -> (dependency.absolutePath.contains('cache')) }
+      into parent.ext.dependenciesDir
     }
+  }
 
   task testJar(type: Jar, dependsOn: testClasses) {
-      baseName = "test-${project.archivesBaseName}"
-      from sourceSets.test.output
-    }
+    baseName = "test-${project.archivesBaseName}"
+    from sourceSets.test.output
+  }
 }
 
 configurations {
@@ -68,96 +71,187 @@ configurations {
 
 dependencies {
   launch4j files(
-            "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
-            "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
-    )
-  nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.2.jar")
+             "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
+             "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
+  )
+  nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
 }
 
+task clean << {
+  ant.delete(includeEmptyDirs:"true") {
+    fileset(dir:buildDir, includes:"**/*" )
+  }
+}
 
 def projectLibrary(String project) {
-    return zipTree("$project/build/libs/${project}.jar")
+  return zipTree("$project/build/libs/${project}.jar")
 }
 
+task createModule << {
+  if (!project.hasProperty('moduleName')) {
+    throw new StopExecutionException( "\n Please specify your new module name like so: gradlew createModule -PmoduleName=MyNewModuleNameHere\n")
+  }
+  else {
+    if (new File(moduleName).exists()) {
+      throw new StopExecutionException("Module $moduleName already exists.")
+    }
+    else {
+      mkdir moduleName
+      mkdir "$moduleName/src"
+      mkdir "$moduleName/resources"
+      mkdir "$moduleName/test"
+      new File("$moduleName/build.gradle").withWriter { out ->
+        out.println "dependencies {\n//  Insert your dependencies here like so:\n//  compile project(':Character_Equipment')\n//  compile project(':Character_Equipment_Impl')\n}"
+      }
+    }
+  }
+}
+
+// All Releases
+task release << {
+  // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
+  String delim = "## Release "
+  String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' ) 
+  String[] versions = releaseNotes.split( delim )[1];
+  new File("${buildDir}/readme.md").write( delim + releaseNotes.split( delim )[1], 'UTF-8' )
+}
+
+// Release Variables
+def projectName    = "Anathema"
+def releaseZipName = "${projectName}_Zip_v${versionString}.zip"
+def releaseMacName = "${projectName}_Mac_v${versionString}.zip"
+def macAppDir      = "${projectName}.app"
+
+// Zip Release
+task buildZip(type: Zip) {
+  archiveName = releaseZipName
+  destinationDir = buildDir
+  from 'Anathema/build/libs'
+  into('lib') {
+    from('build/dependencies')
+    from('build/plugins')
+  }
+  from("Development_Distribution/Linux") {
+    include 'anathema.sh'
+    filter( FixCrLfFilter.class,
+            eol:FixCrLfFilter.CrLf.newInstance("lf") )
+    fileMode = 0755
+  }
+  from("build/launcher") {
+    include 'anathema.exe'
+  }
+  from("Development_Documentation/Distribution/English") {
+    include 'license.txt'
+    include 'versions.md'
+    rename 'versions.md', 'release_notes.txt'
+  }
+}
+
+task releaseZip
+
+// Windows Release
+task buildWin << {
+  def launch4jPath = "Development_Distribution/Windows/Binaries/launch4j/bin_" + os
+  
+  mkdir("./build/launcher")
+  def exeVersion = "${versionString}.0"
+  def versionText = "${versionString} \"$version_name\""
+  ant.taskdef(name: 'launch4j',
+              classname: 'net.sf.launch4j.ant.Launch4jTask',
+              classpath: configurations.launch4j.asPath)
+  ant.launch4j(bindir: launch4jPath,
+               configFile: 'Development_Distribution/Windows/launch4j.xml',
+               outfile: './build/launcher/anathema.exe',
+               fileVersion: "$exeVersion",
+               productVersion: "$exeVersion",
+               txtFileVersion: "$versionText",
+               txtProductVersion: "$versionText")
+}
+
+task releaseWin << {
+  def nsisPath = "Development_Distribution/Windows/Binaries/NSIS/bin_" + os
+        
+  ant.taskdef(name: "nsis",
+              classname: "com.danielreese.nsisant.Task",
+              classpath: configurations.nsis.asPath)    
+  ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: nsisPath) {
+    define(name: "RELEASE_VERSION", value: "${versionString}")
+    define(name: "VERSION", value: "${versionString}.0")
+  }
+}
+
+// Mac Release
+task buildMac(type: Copy) {
+  destinationDir buildDir
+  into("${macAppDir}/Contents/") {
+    from("Development_Distribution/Mac/")
+    include 'Info.plist'
+    filter(ReplaceTokens, tokens: ["version-major":    version_major,
+                                   "version-minor":    version_minor,
+                                   "version-revision": version_revision])
+
+  }
+  into("${macAppDir}/Contents/MacOS/") {
+    from("Development_Distribution/Mac")
+    include 'JavaApplicationStub'
+    fileMode = 0755
+  }
+  into("${macAppDir}/Contents/Resources") {
+    from("Development_Distribution/Mac/")
+    include 'sungear.icns'
+  }
+  into("${macAppDir}/Contents/Resources/Java") {
+    from("Anathema/build/libs/")
+    from("Anathema/resources/icons/core/AnathemaSplashNew.png")
+  }
+  into("${macAppDir}/Contents/Resources/Java/lib") {
+    from("${buildDir}/dependencies/");
+    from("${buildDir}/plugins/");
+  }
+}
+
+task releaseMac(type: Zip) {
+  archiveName = releaseMacName
+  destinationDir = buildDir
+  into("${projectName}/${macAppDir}") {
+    from("${buildDir}/${macAppDir}")
+    exclude "${projectName}/${macAppDir}/Contents/MacOS/JavaApplicationStub" // Skipping this because...
+  }
+  into("${projectName}/${macAppDir}/Contents/MacOS/") { // We include it here with the execute bit set.
+    from("Development_Distribution/Mac")                // Necessary when building on a windows system
+    include 'JavaApplicationStub'
+    fileMode = 0755
+  }
+  into( "${projectName}") {
+    from("Development_Documentation/Distribution/English")
+    include 'license.txt'
+    include 'versions.md'
+    rename 'versions.md', 'release_notes.txt'
+  }
+}
+
+// Release Dependencies
+[buildWin, buildMac, buildZip].each {
+  it.dependsOn ':Anathema:jar'
+}
+
+releaseZip.dependsOn buildZip
+releaseWin.dependsOn buildWin
+releaseMac.dependsOn buildMac
+buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in the zip distribution
+
+release.dependsOn releaseZip, releaseWin, releaseMac
+
+// Plugins
 apply from: 'plugins.gradle'
 
-task buildWindowsExecutable << {
-    mkdir("./build/launcher")
-    def exeVersion = "${versionString}.0"
-    def versionText = "${versionString} \"$version_name\""
-    ant.taskdef(name: 'launch4j', classname: 'net.sf.launch4j.ant.Launch4jTask', classpath: configurations.launch4j.asPath)
-    ant.launch4j(configFile: 'Development_Distribution/Windows/launch4j.xml', outfile: './build/launcher/anathema.exe', fileVersion: "$exeVersion", productVersion: "$exeVersion", txtFileVersion: "$versionText", txtProductVersion: "$versionText")
-}
-
-task buildWindowsInstaller << {
-    ant.taskdef(name: "nsis", classname: "net.sf.nsisant.Task", classpath: configurations.nsis.asPath)
-    ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: "${nsis_path}") {
-        define(name: "RELEASE_VERSION", value: "${versionString}")
-        define(name: "VERSION", value: "${versionString}.0")
-    }
-}
-
-task buildZip(type: Zip) {
-    archiveName = "Anathema_v${versionString}.zip"
-    destinationDir = buildDir
-    from 'Anathema/build/libs'
-    into('lib') {
-        from('build/dependencies')
-    }
-    into('lib') {
-        from('build/plugins')
-    }
-    from("Development_Distribution/Linux") {
-        include 'anathema.sh'
-        filter(FixCrLfFilter.class,
-                eol:FixCrLfFilter.CrLf.newInstance("lf"))
-    }
-    from("build/launcher") {
-        include 'anathema.exe'
-    }
-    from("Development_Documentation/Distribution/English") {
-        include '*.*'
-    }
-}
-
-[buildZip, buildWindowsInstaller].each {
-    it.dependsOn ':Anathema:jar'
-    def os = System.getProperty("os.name").toLowerCase()
-    if (os.contains("windows")) {
-        it.dependsOn buildWindowsExecutable
-    }
-}
-
 tasks.each {
-    def isPluginTask = it.name.matches('build.*Plugin')
-    if (isPluginTask) {
-        buildZip.dependsOn it
-        buildWindowsInstaller.dependsOn it
-    }
+  def isPluginTask = it.name.matches('build.*Plugin')
+  if (isPluginTask) {
+    buildZip.dependsOn it
+    buildWin.dependsOn it
+    buildMac.dependsOn it
+  }
 }
 
-boolean isDataPlugin(project) {
-    project.name.startsWith('Blog') || project.name.startsWith('Book') || project.name.startsWith('Box')
-}
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.0'
-}
-
-task createModule() {
-    if (project.hasProperty('moduleName')) {
-        if (new File(moduleName).exists()) {
-            throw new org.gradle.api.tasks.StopExecutionException("Module $moduleName already exists.")
-        }
-        mkdir moduleName
-        mkdir "$moduleName/src"
-        mkdir "$moduleName/resources"
-        mkdir "$moduleName/test"
-        new File("$moduleName/build.gradle").withWriter { out ->
-            out.println "dependencies{}"
-            out.println "sourceSets{}"
-            out.println "configurations{}"
-            out.println "artifacts{}"
-        }
-    }
-}
