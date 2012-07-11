@@ -116,17 +116,14 @@ task release << {
   new File("${buildDir}/readme.md").write( delim + releaseNotes.split( delim )[1], 'UTF-8' )
 }
 
-task tag (type: Exec) {
-  def command = getBaseCommand(os) + ['git', 'tag', '-a', "v${versionString}", '-m', "Version ${versionString}"]
-  commandLine command
-}
-
-private def getBaseCommand(os) {
-  if (os == 'win') {
-    return ['cmd', '/c']
+task tag {
+  exec {
+    executable = "git"
+    args = ['tag', '-a', "v${versionString}", '-m', "Version ${versionString}"]
   }
-  else {
-    return []
+  exec {
+    executable = "git"
+    args = ['push', '--tags']
   }
 }
 
