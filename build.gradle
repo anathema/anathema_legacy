@@ -30,22 +30,19 @@ String operatingSystem() {
   return result
 }
 
+repositories {
+  mavenCentral()
+  maven {
+    url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
+  }
+}
+
 subprojects {
   apply plugin: 'java'
   sourceCompatibility = 1.6
 
   apply plugin: 'idea'
   apply plugin: 'eclipse'
-
-  repositories {
-    mavenCentral()
-    maven {
-      url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
-    }
-    maven {
-      url 'https://github.com/anathema/anathema-thirdparty/raw/master/snapshots/'
-    }
-  }
 
   sourceSets.main.java.srcDir 'src'
   sourceSets.test.java.srcDir 'test'
@@ -107,16 +104,32 @@ task createModule << {
   }
 }
 
+// Release Variables
+def projectName    = "Anathema"
+def releaseZipName = "${projectName}_Zip_v${versionString}.zip"
+def releaseWinName = "${projectName}_Win_v${versionString}.exe"
+def releaseMacName = "${projectName}_Mac_v${versionString}.zip"
+def macAppDir      = "${projectName}.app"
+def releaseDirName = "${projectName} ${versionString}"
+if( "${version_revision}" == '0') releaseDirName += " ${version_name}"
+def releaseDir = new File( "${buildDir}/${releaseDirName}" )
+
 // All Releases
 task release << {
   // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
-  String delim = "## Release "
+  String delim = "## Release " //${versionString}
   String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' )
-  String[] versions = releaseNotes.split( delim )[1];
-  new File("${buildDir}/readme.md").write( delim + releaseNotes.split( delim )[1], 'UTF-8' )
+  new File("${releaseDir}/readme.md").write( delim + releaseNotes.split( delim )[1], 'UTF-8' )
 }
 
-task tag {
+task testRel << {
+  String delim = "## Release ${versionString}"
+  String delim2 = "## Release "
+  String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' )
+  new File("${releaseDir}/readme.md").write( delim + releaseNotes.split( delim )[1].split(delim2)[0], 'UTF-8' )
+}
+
+task tag << {
   exec {
     executable = "git"
     args = ['tag', '-a', "v${versionString}", '-m', "Version ${versionString}"]
@@ -127,16 +140,25 @@ task tag {
   }
 }
 
-// Release Variables
-def projectName    = "Anathema"
-def releaseZipName = "${projectName}_Zip_v${versionString}.zip"
-def releaseMacName = "${projectName}_Mac_v${versionString}.zip"
-def macAppDir      = "${projectName}.app"
+task upload << {
+  def username = System.console().readLine("\nSourceforge Username: ")
+  def host = "frs.sourceforge.net"
+  def dir="/home/frs/project/anathema"
+  
+  out.println( "\nPlease be patient, it takes a few minutes to upload the releases" )
+  out.println( "Unfortunately, feedback during the upload is unavailable at this time.")
+  out.println("You will be prompted for a password in a moment, the prompt may be obscured.")
+
+  exec {
+    executable = "scp"
+    args = ['-r', "${releaseDir}", "${username}@${host}:${dir}"]
+  }
+}
 
 // Zip Release
 task buildZip(type: Zip) {
   archiveName = releaseZipName
-  destinationDir = buildDir
+  destinationDir = releaseDir
   from 'Anathema/build/libs'
   into('lib') {
     from('build/dependencies')
@@ -186,6 +208,8 @@ task releaseWin << {
               classname: "com.danielreese.nsisant.Task",
               classpath: configurations.nsis.asPath)
   ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: nsisPath) {
+    define(name: "RELEASE_DIR", value: "${releaseDir}")
+    define(name: "RELEASE_FILE", value: "${releaseWinName}")
     define(name: "RELEASE_VERSION", value: "${versionString}")
     define(name: "VERSION", value: "${versionString}.0")
   }
@@ -223,7 +247,7 @@ task buildMac(type: Copy) {
 
 task releaseMac(type: Zip) {
   archiveName = releaseMacName
-  destinationDir = buildDir
+  destinationDir = releaseDir
   into("${projectName}/${macAppDir}") {
     from("${buildDir}/${macAppDir}")
     exclude "${projectName}/${macAppDir}/Contents/MacOS/JavaApplicationStub" // Skipping this because...
