@@ -117,12 +117,6 @@ def releaseDir = new File( "${buildDir}/${releaseDirName}" )
 // All Releases
 task release << {
   // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
-  String delim = "## Release " //${versionString}
-  String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' )
-  new File("${releaseDir}/readme.md").write( delim + releaseNotes.split( delim )[1], 'UTF-8' )
-}
-
-task testRel << {
   String delim = "## Release ${versionString}"
   String delim2 = "## Release "
   String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' )
