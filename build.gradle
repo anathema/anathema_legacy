@@ -22,10 +22,10 @@ def os = operatingSystem()
 String operatingSystem() {
   def os = System.getProperty('os.name').toLowerCase()
   def result = ""
-  if( os.indexOf("win") >= 0   ) result = "win"
-  if( os.indexOf("mac") >= 0   ) result = "mac"
-  if( os.indexOf("nix") >= 0           //  unix
-  ||  os.indexOf("nux") >= 0   ) result = "linux"
+  if( os.indexOf("win"  ) >= 0 ) result = "win"
+  if( os.indexOf("mac"  ) >= 0 ) result = "mac"
+  if( os.indexOf("nix"  ) >= 0         //  unix
+  ||  os.indexOf("nux"  ) >= 0 ) result = "linux"
   if( os.indexOf("sunos") >= 0 ) result = "solaris"
   return result
 }
@@ -76,7 +76,7 @@ dependencies {
 
 task clean << {
   ant.delete(includeEmptyDirs:"true") {
-    fileset(dir:buildDir, includes:"**/*" )
+    fileset(dir:buildDir, includes:"**" )
   }
 }
 
@@ -86,7 +86,7 @@ def projectLibrary(String project) {
 
 task createModule << {
   if (!project.hasProperty('moduleName')) {
-    throw new StopExecutionException( "\n Please specify your new module name like so: gradlew createModule -PmoduleName=MyNewModuleNameHere\n")
+    throw new StopExecutionException( "\nPlease specify your new module name like so: gradlew createModule -PmoduleName=MyNewModuleNameHere\n")
   }
   else {
     if (new File(moduleName).exists()) {
@@ -105,22 +105,26 @@ task createModule << {
 }
 
 // Release Variables
-def projectName    = "Anathema"
-def releaseZipName = "${projectName}_Zip_v${versionString}.zip"
-def releaseWinName = "${projectName}_Win_v${versionString}.exe"
-def releaseMacName = "${projectName}_Mac_v${versionString}.zip"
-def macAppDir      = "${projectName}.app"
-def releaseDirName = "${projectName} ${versionString}"
+ext.projectName    = "Anathema"
+ext.releaseZipName = "${projectName}_Zip_v${versionString}.zip"
+ext.releaseWinName = "${projectName}_Win_v${versionString}.exe"
+ext.releaseMacName = "${projectName}_Mac_v${versionString}.zip"
+ext.macAppDir      = "${projectName}.app"
+ext.releaseDirName = "${projectName} ${versionString}"
 if( "${version_revision}" == '0') releaseDirName += " ${version_name}"
-def releaseDir = new File( "${buildDir}/${releaseDirName}" )
+ext.releaseDir = new File( "${buildDir}/${releaseDirName}" )
 
 // All Releases
 task release << {
   // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
-  String delim = "## Release ${versionString}"
+  String delim  = "## Release ${versionString}"
   String delim2 = "## Release "
   String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' )
-  new File("${releaseDir}/readme.md").write( delim + releaseNotes.split( delim )[1].split(delim2)[0], 'UTF-8' )
+  try {
+    new File("${releaseDir}/readme.md").write( delim + releaseNotes.split( delim )[1].split(delim2)[0], 'UTF-8' )
+  } catch( java.lang.ArrayIndexOutOfBoundsException e ){
+    out.println( "Unable to generate readme.md, the version number in gradle.properties is not found in versions.md" )
+  }
 }
 
 task tag << {
@@ -137,7 +141,7 @@ task tag << {
 task upload << {
   def username = System.console().readLine("\nSourceforge Username: ")
   def host = "frs.sourceforge.net"
-  def dir="/home/frs/project/anathema"
+  def dir  = "/home/frs/project/anathema"
   
   out.println( "\nPlease be patient, it takes a few minutes to upload the releases" )
   out.println( "Unfortunately, feedback during the upload is unavailable at this time.")
@@ -149,6 +153,31 @@ task upload << {
   }
 }
 
+task changeVersion << {
+  out.println( "\nPlease update the version number and name.  Enter nothing to default to the old value.")
+  def vNumber = System.console().readLine("\n\nVersion Number | old: ${versionString} new: ")
+  def vName   = System.console().readLine(    "\nVersion Name | old: ${version_name} new: ")
+  ext.versionString    = vNumber == "" ? versionString : vNumber
+  ext.version_name     = vName == "" ? version_name : vName
+  ext.version_major    = versionString.split( "\\." )[0]
+  ext.version_minor    = versionString.split( "\\." )[1]
+  ext.version_revision = versionString.split( "\\." )[2]
+  new File("gradle.properties").withWriter { out ->
+    out.println "version_major = "    + version_major
+    out.println "version_minor = "    + version_minor
+    out.println "version_revision = " + version_revision
+    out.println "version_name = "     + version_name
+  }
+  out.println( "\nVersion number and name have been updated.")
+  out.println(   "A new build must be run in order to use the new values.")
+  out.println(   "Now forcing build halt." )
+  throw new InvalidUserDataException( "Build halted due to version number and name change" )
+}
+
+task createReleaseDirectory << {
+  releaseDir.mkdirs()
+}
+  
 // Zip Release
 task buildZip(type: Zip) {
   archiveName = releaseZipName
@@ -261,6 +290,7 @@ task releaseMac(type: Zip) {
 
 // Release Dependencies
 [buildWin, buildMac, buildZip].each {
+  it.dependsOn createReleaseDirectory
   it.dependsOn ':Anathema:jar'
 }
 
