@@ -177,7 +177,9 @@
             <essence value="3" />
             <charmReference id="Infernal.Mind-HandManipulation"/>
         </prerequisite>
-        <cost />
+        <cost>
+          <essence cost="4" />
+        </cost>
         <duration amount="1" unit="scene" />
         <charmtype type="Reflexive" />
         <charmAttribute attribute="Combo-OK" visualize="true" />
