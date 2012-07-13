@@ -153,7 +153,7 @@ task upload << {
   }
 }
 
-task changeVersion << {
+task version << {
   out.println( "\nPlease update the version number and name.  Enter nothing to default to the old value.")
   def vNumber = System.console().readLine("\n\nVersion Number | old: ${versionString} new: ")
   def vName   = System.console().readLine(    "\nVersion Name | old: ${version_name} new: ")
