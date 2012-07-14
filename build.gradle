@@ -2,10 +2,20 @@ import org.apache.tools.ant.filters.FixCrLfFilter
 import org.apache.tools.ant.filters.ReplaceTokens
 import org.gradle.api.tasks.StopExecutionException
 
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'org.ajoberstar:gradle-git:0.2.0-SNAPSHOT'
+  }
+}
+
 ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
 
+apply plugin: 'github'
 apply plugin: 'idea'
 
 idea {
@@ -36,7 +46,7 @@ subprojects {
 
   apply plugin: 'idea'
   apply plugin: 'eclipse'
-  
+
   repositories {
     mavenCentral()
     maven {
@@ -74,7 +84,7 @@ dependencies {
   nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
 }
 
-task clean << {
+task cleanIt << {
   ant.delete(includeEmptyDirs:"true") {
     fileset(dir:buildDir, includes:"**/*" )
   }
@@ -123,22 +133,25 @@ task release << {
   new File("${releaseDir}/readme.md").write( delim + releaseNotes.split( delim )[1].split(delim2)[0], 'UTF-8' )
 }
 
-task tag << {
-  exec {
-    executable = "git"
-    args = ['tag', '-a', "v${versionString}", '-m', "Version ${versionString}"]
-  }
-  exec {
-    executable = "git"
-    args = ['push', '--tags']
-  }
+task tagVersion(type: org.ajoberstar.gradle.git.tasks.GitTag){
+    message = "Version ${versionString}"
+    tagName = "v${versionString}"
 }
+task pushTag(type: org.ajoberstar.gradle.git.tasks.GitPush){
+  pushTags = true;
+  credentials = github.credentials
+}
+
+task tag
+
+pushTag.dependsOn tagVersion
+tag.dependsOn tagVersion, pushTag
 
 task upload << {
   def username = System.console().readLine("\nSourceforge Username: ")
   def host = "frs.sourceforge.net"
   def dir="/home/frs/project/anathema"
-  
+
   out.println( "\nPlease be patient, it takes a few minutes to upload the releases" )
   out.println( "Unfortunately, feedback during the upload is unavailable at this time.")
   out.println("You will be prompted for a password in a moment, the prompt may be obscured.")
