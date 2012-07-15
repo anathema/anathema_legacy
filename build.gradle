@@ -1,18 +1,41 @@
 import org.apache.tools.ant.filters.FixCrLfFilter
 import org.apache.tools.ant.filters.ReplaceTokens
-import org.gradle.api.tasks.StopExecutionException
+import org.ajoberstar.gradle.git.tasks.*
 
 ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
 
-apply plugin: 'idea'
-
-idea {
-  project {
-    languageLevel = '1.6'
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'org.ajoberstar:gradle-git:0.1.1'
   }
 }
+
+repositories {
+  mavenCentral()
+}
+configurations {
+  launch4j
+  nsis
+  scp
+}
+dependencies {
+  launch4j files(
+    "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
+    "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
+  )
+  nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
+  scp 'org.apache.ant:ant-jsch:1.8.4', 'com.jcraft:jsch:0.1.48'
+}
+
+apply plugin: 'github'
+apply plugin: 'idea'
+
+idea { project { languageLevel = '1.6' } }
 
 task wrapper(type: Wrapper) {
   gradleVersion = '1.0'
@@ -61,20 +84,7 @@ subprojects {
   }
 }
 
-configurations {
-  launch4j
-  nsis
-}
-
-dependencies {
-  launch4j files(
-             "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
-             "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
-  )
-  nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
-}
-
-task clean << {
+task clean(overwrite:true) << { //overwrite the github clean task
   ant.delete(includeEmptyDirs:"true") {
     fileset(dir:buildDir, includes:"**" )
   }
@@ -127,31 +137,54 @@ task release << {
   }
 }
 
-task tag << {
-  exec {
-    executable = "git"
-    args = ['tag', '-a', "v${versionString}", '-m', "Version ${versionString}"]
-  }
-  exec {
-    executable = "git"
-    args = ['push', '--tags']
-  }
+release.group = 'Release'
+release.description = 'Builds all artifacts required to release a new version.'
+
+task tag
+  
+task tagVersion(type: GitTag) {
+  message = "Version ${versionString}"
+  tagName = "v${versionString}"
 }
+
+task tagPush(type: GitPush) {
+  // note that the username and password can be either saved to your gradle.properties (don't do this)
+  // or entered at the command line like so:
+  // gradlew tag -Pgithub.credentials.username=MyUsernameHere -Pgithub.credentials.password=MyPasswordHere
+  credentials = github.credentials
+  remote = 'https://github.com/anathema/anathema.git'
+  pushTags = true
+}
+
+tag.group = 'Release'
+tag.description = 'Tags the release and pushes the tag to github. [Requires contributor status]'
 
 task upload << {
   def username = System.console().readLine("\nSourceforge Username: ")
+  def password = System.console().readPassword("Sourceforge Password: ")
   def host = "frs.sourceforge.net"
   def dir  = "/home/frs/project/anathema"
-  
+    
   out.println( "\nPlease be patient, it takes a few minutes to upload the releases" )
-  out.println( "Unfortunately, feedback during the upload is unavailable at this time.")
-  out.println("You will be prompted for a password in a moment, the prompt may be obscured.")
+  out.println( "Unfortunately, feedback during the upload is unavailable unless you use the -i option")
 
-  exec {
-    executable = "scp"
-    args = ['-r', "${releaseDir}", "${username}@${host}:${dir}"]
+  ant.taskdef(      
+          name: "scp2",
+     classname: "org.apache.tools.ant.taskdefs.optional.ssh.Scp",
+     classpath: configurations.scp.asPath
+  )
+  ant.scp2(
+             todir: "${username},anathema:${password}@${host}:${dir}/${releaseDirName}",
+             trust: true,
+           verbose: "true", // only visible at the info logging level
+              sftp: "true"
+  ) {
+    fileset(dir:"${releaseDir}")
   }
 }
+
+upload.group = 'Release'
+upload.description = 'Uploads the artifacts to sourceforge.net. [Requires release manager status]'
 
 task version << {
   out.println( "\nPlease update the version number and name.  Enter nothing to default to the old value.")
@@ -159,19 +192,27 @@ task version << {
   def vName   = System.console().readLine(    "\nVersion Name | old: ${version_name} new: ")
   ext.versionString    = vNumber == "" ? versionString : vNumber
   ext.version_name     = vName == "" ? version_name : vName
-  ext.version_major    = versionString.split( "\\." )[0]
-  ext.version_minor    = versionString.split( "\\." )[1]
-  ext.version_revision = versionString.split( "\\." )[2]
-  new File("gradle.properties").withWriter { out ->
-    out.println "version_major = "    + version_major
-    out.println "version_minor = "    + version_minor
-    out.println "version_revision = " + version_revision
-    out.println "version_name = "     + version_name
+  try {
+    ext.version_major    = versionString.split( "\\." )[0]
+    ext.version_minor    = versionString.split( "\\." )[1]
+    ext.version_revision = versionString.split( "\\." )[2]
+  } catch( java.lang.ArrayIndexOutOfBoundsException e ){
+    out.println( "Error setting new version number, please use the format major.minor.revision (4.1.2)." )
+  }
+  def p = new Properties()
+  def f = new File("gradle.properties")
+  new File("gradle.properties").withReader {
+    p.load(it)
+    p.setProperty( "version_major", version_major )
+    p.setProperty( "version_minor", version_minor )
+    p.setProperty( "version_revision", version_revision )
+    p.setProperty( "version_name", version_name )
+  }
+  f.withWriter {
+    p.store(it, "Please update this file using this command: gradlew version")
   }
   out.println( "\nVersion number and name have been updated.")
   out.println(   "A new build must be run in order to use the new values.")
-  out.println(   "Now forcing build halt." )
-  throw new InvalidUserDataException( "Build halted due to version number and name change" )
 }
 
 task createReleaseDirectory << {
@@ -300,6 +341,11 @@ releaseMac.dependsOn buildMac
 buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in the zip distribution
 
 release.dependsOn releaseZip, releaseWin, releaseMac
+
+tagPush.dependsOn tagVersion
+tag.dependsOn tagVersion, tagPush
+//upload.dependsOn release  // decide on this
+
 
 // Plugins
 apply from: 'plugins.gradle'
