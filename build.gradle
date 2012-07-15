@@ -7,7 +7,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath 'org.ajoberstar:gradle-git:0.2.0-SNAPSHOT'
+    classpath 'org.ajoberstar:gradle-git:0.1.1'
   }
 }
 
@@ -84,7 +84,7 @@ dependencies {
   nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
 }
 
-task cleanIt << {
+task clean(overwrite:true) << {
   ant.delete(includeEmptyDirs:"true") {
     fileset(dir:buildDir, includes:"**/*" )
   }
@@ -133,16 +133,23 @@ task release << {
   new File("${releaseDir}/readme.md").write( delim + releaseNotes.split( delim )[1].split(delim2)[0], 'UTF-8' )
 }
 
+release.group = 'Release'
+release.description = 'Builds all artifacts required to release a new version.'
+
 task tagVersion(type: org.ajoberstar.gradle.git.tasks.GitTag){
     message = "Version ${versionString}"
     tagName = "v${versionString}"
 }
+
 task pushTag(type: org.ajoberstar.gradle.git.tasks.GitPush){
   pushTags = true;
   credentials = github.credentials
 }
 
 task tag
+
+tag.group = 'Release'
+tag.description = 'Tags the release and pushes the tag to github. [Requires contributor status]'
 
 pushTag.dependsOn tagVersion
 tag.dependsOn tagVersion, pushTag
@@ -161,6 +168,9 @@ task upload << {
     args = ['-r', "${releaseDir}", "${username}@${host}:${dir}"]
   }
 }
+
+upload.group = 'Release'
+upload.description = 'Uploads the artifacts to sourceforge.net. [Requires release manager status]'
 
 // Zip Release
 task buildZip(type: Zip) {
