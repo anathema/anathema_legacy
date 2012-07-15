@@ -36,7 +36,14 @@
 		<charmtype type="Permanent" />
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Golden Destruction Cut -->
+        <repurchases trait="Melee">
+          <repurchase essence="4" trait="5"/>
+          <repurchase essence="4" trait="6"/>
+          <repurchase essence="4" trait="8"/>
+          <repurchase essence="4" trait="9"/>
+        </repurchases>
 		<source source="InkMonkeys" />
+        <source source="ScrollErrata" />
 	</charm>
 		<charm id="Abyssal.ElegantBloodlettingArt2" exalt="Abyssal" group="Melee">
 		<prerequisite>

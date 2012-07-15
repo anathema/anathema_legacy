@@ -36,6 +36,12 @@
 		<charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Abyssal Mirror - Elegant Bloodletting Art -->
 		<charmAttribute attribute="Obvious" visualize="true" />
+        <repurchases trait="Melee">
+          <repurchase essence="4" trait="5"/>
+          <repurchase essence="4" trait="6"/>
+          <repurchase essence="4" trait="8"/>
+          <repurchase essence="4" trait="9"/>
+        </repurchases>
 		<source source="LordsOfCreation" />
 		<source source="ScrollErrata" />
 	</charm>

@@ -11,6 +11,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Bugfixes
 * Corrects cost for (Infernal/SwliHN) "Force-Suppression Barrier"
+* Corrects repurchases for (Solar/Melee) "Golden Destruction Cut" and its Abyssal Mirror.
 
 ## Release 4.2.3
 
