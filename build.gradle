@@ -1,18 +1,41 @@
 import org.apache.tools.ant.filters.FixCrLfFilter
 import org.apache.tools.ant.filters.ReplaceTokens
-import org.gradle.api.tasks.StopExecutionException
+import org.ajoberstar.gradle.git.tasks.GitTag;
+import org.ajoberstar.gradle.git.tasks.GitPush;
 
 ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
 
-apply plugin: 'idea'
-
-idea {
-  project {
-    languageLevel = '1.6'
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'org.ajoberstar:gradle-git:0.2.0'
   }
 }
+
+repositories {
+  mavenCentral()
+}
+configurations {
+  launch4j
+  nsis
+  scp
+}
+dependencies {
+  launch4j files(
+    "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
+    "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
+  )
+  nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
+  scp 'org.apache.ant:ant-jsch:1.8.4', 'com.jcraft:jsch:0.1.48'
+}
+
+apply plugin: 'idea'
+
+idea { project { languageLevel = '1.6' } }
 
 task wrapper(type: Wrapper) {
   gradleVersion = '1.0'
@@ -22,10 +45,10 @@ def os = operatingSystem()
 String operatingSystem() {
   def os = System.getProperty('os.name').toLowerCase()
   def result = ""
-  if( os.indexOf("win") >= 0   ) result = "win"
-  if( os.indexOf("mac") >= 0   ) result = "mac"
-  if( os.indexOf("nix") >= 0           //  unix
-  ||  os.indexOf("nux") >= 0   ) result = "linux"
+  if( os.indexOf("win"  ) >= 0 ) result = "win"
+  if( os.indexOf("mac"  ) >= 0 ) result = "mac"
+  if( os.indexOf("nix"  ) >= 0         //  unix
+  ||  os.indexOf("nux"  ) >= 0 ) result = "linux"
   if( os.indexOf("sunos") >= 0 ) result = "solaris"
   return result
 }
@@ -61,22 +84,9 @@ subprojects {
   }
 }
 
-configurations {
-  launch4j
-  nsis
-}
-
-dependencies {
-  launch4j files(
-             "./Development_Distribution/Windows/Binaries/launch4j/launch4j.jar",
-             "./Development_Distribution/Windows/Binaries/launch4j/xstream.jar",
-  )
-  nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
-}
-
 task clean << {
   ant.delete(includeEmptyDirs:"true") {
-    fileset(dir:buildDir, includes:"**/*" )
+    fileset(dir:buildDir, includes:"**" )
   }
 }
 
@@ -86,7 +96,7 @@ def projectLibrary(String project) {
 
 task createModule << {
   if (!project.hasProperty('moduleName')) {
-    throw new StopExecutionException( "\n Please specify your new module name like so: gradlew createModule -PmoduleName=MyNewModuleNameHere\n")
+    throw new StopExecutionException( "\nPlease specify your new module name like so: gradlew createModule -PmoduleName=MyNewModuleNameHere\n")
   }
   else {
     if (new File(moduleName).exists()) {
@@ -105,50 +115,119 @@ task createModule << {
 }
 
 // Release Variables
-def projectName    = "Anathema"
-def releaseZipName = "${projectName}_Zip_v${versionString}.zip"
-def releaseWinName = "${projectName}_Win_v${versionString}.exe"
-def releaseMacName = "${projectName}_Mac_v${versionString}.zip"
-def macAppDir      = "${projectName}.app"
-def releaseDirName = "${projectName} ${versionString}"
+ext.projectName    = "Anathema"
+ext.releaseZipName = "${projectName}_Zip_v${versionString}.zip"
+ext.releaseWinName = "${projectName}_Win_v${versionString}.exe"
+ext.releaseMacName = "${projectName}_Mac_v${versionString}.zip"
+ext.macAppDir      = "${projectName}.app"
+ext.releaseDirName = "${projectName} ${versionString}"
 if( "${version_revision}" == '0') releaseDirName += " ${version_name}"
-def releaseDir = new File( "${buildDir}/${releaseDirName}" )
+ext.releaseDir     = new File( "${buildDir}/${releaseDirName}" )
 
 // All Releases
 task release << {
   // grab the latest updates for this release from versions.md and put into readme.md for sourceforge
-  String delim = "## Release ${versionString}"
+  String delim  = "## Release ${versionString}"
   String delim2 = "## Release "
   String releaseNotes = new File("Development_Documentation/Distribution/English/versions.md").getText( 'UTF-8' )
-  new File("${releaseDir}/readme.md").write( delim + releaseNotes.split( delim )[1].split(delim2)[0], 'UTF-8' )
-}
-
-task tag << {
-  exec {
-    executable = "git"
-    args = ['tag', '-a', "v${versionString}", '-m', "Version ${versionString}"]
-  }
-  exec {
-    executable = "git"
-    args = ['push', '--tags']
+  try {
+    new File("${releaseDir}/readme.md").write( delim + releaseNotes.split( delim )[1].split(delim2)[0], 'UTF-8' )
+  } catch( java.lang.ArrayIndexOutOfBoundsException e ){
+    out.println( "Unable to generate readme.md, the version number in gradle.properties is not found in versions.md" )
   }
 }
 
-task upload << {
-  def username = System.console().readLine("\nSourceforge Username: ")
-  def host = "frs.sourceforge.net"
-  def dir="/home/frs/project/anathema"
+release.group = 'Release'
+release.description = 'Builds all artifacts required to release a new version.'
+
+task tag
   
-  out.println( "\nPlease be patient, it takes a few minutes to upload the releases" )
-  out.println( "Unfortunately, feedback during the upload is unavailable at this time.")
-  out.println("You will be prompted for a password in a moment, the prompt may be obscured.")
+task tagVersion(type: GitTag) {
+  message = "Version ${versionString}"
+  tagName = "v${versionString}"
+  force   = true
+}
 
-  exec {
-    executable = "scp"
-    args = ['-r', "${releaseDir}", "${username}@${host}:${dir}"]
+// If you use ssh for git, your github ssh key-auth passphrase will be prompted for.
+// If you use https for git, your github username and password will be prompted for, or can be entered at the command line like so:
+// gradlew tag -Pgithub.credentials.username=MyUsernameHere -Pgithub.credentials.password=MyPasswordHere
+task tagPush(type: GitPush) {
+  pushTags = true
+}
+
+tag.group = 'Release'
+tag.description = 'Tags the release and pushes the tag to github. [Requires contributor status]'
+
+// Your sourceforge username and ssh key-auth passphrase will be prompted for, or can be entered at the command line like so:
+// gradlew upload -PsfUsername=MyUsernameHere -PsfPassphrase=MyPassphraseHere
+task upload << {
+  def host     = "frs.sourceforge.net"
+  def dir      = "/home/frs/project/anathema"
+  def keyfile  = "${System.properties['user.home']}/.ssh/id_rsa"
+  def username = project.hasProperty('sfUsername') ? sfUsername : System.console().readLine("\nSourceforge Username: ")
+  
+  while( ! new File(keyfile).exists() ) {
+    keyfile = System.console().readLine("\nCould not find the ssh private keyfile: ${keyfile}\nEnter your keyfile pathname: ")
+    keyfile = keyfile.replace( "~", System.properties['user.home'] )
+  }
+  def passphrase = project.hasProperty('sfPassphrase') ? sfPassphrase : System.console().readPassword("\nSourceforge SSH Key Passphrase: ")
+    
+  out.println( "\nPlease be patient, it takes a few minutes to upload the releases" )
+  out.println( "Unfortunately, feedback during the upload is unavailable (unless you use the -i option)")
+
+  ant.taskdef(
+          name: "scp2",
+     classname: "org.apache.tools.ant.taskdefs.optional.ssh.Scp",
+     classpath: configurations.scp.asPath
+  )
+  ant.scp2(
+         todir: "${username},anathema:@${host}:${dir}/${releaseDirName}",
+       keyfile:  keyfile,
+    passphrase: "${passphrase}",
+         trust: "true",
+       verbose: "true", // only visible at the info logging level
+          sftp: "true"
+  ) {
+    fileset(dir:"${releaseDir}")
   }
 }
 
+upload.group = 'Release'
+upload.description = 'Uploads the artifacts to sourceforge.net. [Requires release manager status]'
+
+task version << {
+  out.println( "\nPlease update the version number and name.  Enter nothing to default to the old value.")
+  def vNumber = System.console().readLine("\n\nVersion Number | old: ${versionString} new: ")
+  def vName   = System.console().readLine(    "\nVersion Name | old: ${version_name} new: ")
+  ext.versionString    = vNumber == "" ? versionString : vNumber
+  ext.version_name     = vName == "" ? version_name : vName
+  try {
+    ext.version_major    = versionString.split( "\\." )[0]
+    ext.version_minor    = versionString.split( "\\." )[1]
+    ext.version_revision = versionString.split( "\\." )[2]
+  } catch( java.lang.ArrayIndexOutOfBoundsException e ){
+    throw new StopExecutionException("Error setting new version number, please use the format major.minor.revision (4.1.2)." )
+  }
+  def p = new Properties()
+  def f = new File("gradle.properties")
+  new File("gradle.properties").withReader {
+    p.load(it)
+    p.setProperty( "version_major", version_major )
+    p.setProperty( "version_minor", version_minor )
+    p.setProperty( "version_revision", version_revision )
+    p.setProperty( "version_name", version_name )
+  }
+  f.withWriter {
+    p.store(it, "Please update this file using this command: gradlew version")
+  }
+  out.println( "\nVersion number and name have been updated.")
+  out.println(   "A new build must be run in order to use the new values.")
+}
+
+task createReleaseDirectory << {
+  releaseDir.mkdirs()
+}
+  
 // Zip Release
 task buildZip(type: Zip) {
   archiveName = releaseZipName
@@ -170,7 +249,7 @@ task buildZip(type: Zip) {
   from("Development_Documentation/Distribution/English") {
     include 'license.txt'
     include 'versions.md'
-    rename 'versions.md', 'release_notes.txt'
+    rename  'versions.md', 'release_notes.txt'
   }
 }
 
@@ -183,16 +262,20 @@ task buildWin << {
   mkdir("./build/launcher")
   def exeVersion = "${versionString}.0"
   def versionText = "${versionString} \"$version_name\""
-  ant.taskdef(name: 'launch4j',
-              classname: 'net.sf.launch4j.ant.Launch4jTask',
-              classpath: configurations.launch4j.asPath)
-  ant.launch4j(bindir: launch4jPath,
-               configFile: 'Development_Distribution/Windows/launch4j.xml',
-               outfile: './build/launcher/anathema.exe',
-               fileVersion: "$exeVersion",
-               productVersion: "$exeVersion",
-               txtFileVersion: "$versionText",
-               txtProductVersion: "$versionText")
+  ant.taskdef(
+                 name: 'launch4j',
+            classname: 'net.sf.launch4j.ant.Launch4jTask',
+            classpath: configurations.launch4j.asPath
+  )
+  ant.launch4j(
+               bindir: launch4jPath,
+           configFile: 'Development_Distribution/Windows/launch4j.xml',
+              outfile: './build/launcher/anathema.exe',
+          fileVersion: "$exeVersion",
+       productVersion: "$exeVersion",
+       txtFileVersion: "$versionText",
+    txtProductVersion: "$versionText"
+  )
 }
 
 task releaseWin << {
@@ -202,10 +285,10 @@ task releaseWin << {
               classname: "com.danielreese.nsisant.Task",
               classpath: configurations.nsis.asPath)
   ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: nsisPath) {
-    define(name: "RELEASE_DIR", value: "${releaseDir}")
-    define(name: "RELEASE_FILE", value: "${releaseWinName}")
+    define(name: "RELEASE_DIR",     value: "${releaseDir}")
+    define(name: "RELEASE_FILE",    value: "${releaseWinName}")
     define(name: "RELEASE_VERSION", value: "${versionString}")
-    define(name: "VERSION", value: "${versionString}.0")
+    define(name: "VERSION",         value: "${versionString}.0")
   }
 }
 
@@ -255,12 +338,13 @@ task releaseMac(type: Zip) {
     from("Development_Documentation/Distribution/English")
     include 'license.txt'
     include 'versions.md'
-    rename 'versions.md', 'release_notes.txt'
+    rename  'versions.md', 'release_notes.txt'
   }
 }
 
 // Release Dependencies
 [buildWin, buildMac, buildZip].each {
+  it.dependsOn createReleaseDirectory
   it.dependsOn ':Anathema:jar'
 }
 
@@ -270,6 +354,11 @@ releaseMac.dependsOn buildMac
 buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in the zip distribution
 
 release.dependsOn releaseZip, releaseWin, releaseMac
+
+tagPush.dependsOn tagVersion
+tag.dependsOn tagVersion, tagPush //, release <-- decide on this
+//upload.dependsOn release  // <-- decide on this
+
 
 // Plugins
 apply from: 'plugins.gradle'
