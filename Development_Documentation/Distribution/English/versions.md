@@ -7,6 +7,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.2.4
+
+## Bugfixes
+* Corrects cost for (Infernal/SwliHN) "Force-Suppression Barrier"
+
 ## Release 4.2.3
 
 ## Features
