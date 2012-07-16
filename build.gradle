@@ -206,7 +206,7 @@ task version << {
     ext.version_minor    = versionString.split( "\\." )[1]
     ext.version_revision = versionString.split( "\\." )[2]
   } catch( java.lang.ArrayIndexOutOfBoundsException e ){
-    out.println( "Error setting new version number, please use the format major.minor.revision (4.1.2)." )
+    throw new StopExecutionException("Error setting new version number, please use the format major.minor.revision (4.1.2)." )
   }
   def p = new Properties()
   def f = new File("gradle.properties")
