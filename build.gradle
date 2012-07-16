@@ -1,6 +1,7 @@
 import org.apache.tools.ant.filters.FixCrLfFilter
 import org.apache.tools.ant.filters.ReplaceTokens
-import org.ajoberstar.gradle.git.tasks.*
+import org.ajoberstar.gradle.git.tasks.GitTag;
+import org.ajoberstar.gradle.git.tasks.GitPush;
 
 ext.dependenciesDir = new File(buildDir, 'dependencies')
 ext.versionString = "${version_major}.${version_minor}.${version_revision}"
@@ -11,7 +12,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    classpath 'org.ajoberstar:gradle-git:0.1.1'
+    classpath 'org.ajoberstar:gradle-git:0.2.0'
   }
 }
 
@@ -32,7 +33,6 @@ dependencies {
   scp 'org.apache.ant:ant-jsch:1.8.4', 'com.jcraft:jsch:0.1.48'
 }
 
-apply plugin: 'github'
 apply plugin: 'idea'
 
 idea { project { languageLevel = '1.6' } }
@@ -84,7 +84,7 @@ subprojects {
   }
 }
 
-task clean(overwrite:true) << { //overwrite the github clean task
+task clean << {
   ant.delete(includeEmptyDirs:"true") {
     fileset(dir:buildDir, includes:"**" )
   }
@@ -122,7 +122,7 @@ ext.releaseMacName = "${projectName}_Mac_v${versionString}.zip"
 ext.macAppDir      = "${projectName}.app"
 ext.releaseDirName = "${projectName} ${versionString}"
 if( "${version_revision}" == '0') releaseDirName += " ${version_name}"
-ext.releaseDir = new File( "${buildDir}/${releaseDirName}" )
+ext.releaseDir     = new File( "${buildDir}/${releaseDirName}" )
 
 // All Releases
 task release << {
@@ -145,39 +145,48 @@ task tag
 task tagVersion(type: GitTag) {
   message = "Version ${versionString}"
   tagName = "v${versionString}"
+  force   = true
 }
 
+// If you use ssh for git, your github ssh key-auth passphrase will be prompted for.
+// If you use https for git, your github username and password will be prompted for, or can be entered at the command line like so:
+// gradlew tag -Pgithub.credentials.username=MyUsernameHere -Pgithub.credentials.password=MyPasswordHere
 task tagPush(type: GitPush) {
-  // note that the username and password can be either saved to your gradle.properties (don't do this)
-  // or entered at the command line like so:
-  // gradlew tag -Pgithub.credentials.username=MyUsernameHere -Pgithub.credentials.password=MyPasswordHere
-  credentials = github.credentials
-  remote = 'https://github.com/anathema/anathema.git'
   pushTags = true
 }
 
 tag.group = 'Release'
 tag.description = 'Tags the release and pushes the tag to github. [Requires contributor status]'
 
+// Your sourceforge username and ssh key-auth passphrase will be prompted for, or can be entered at the command line like so:
+// gradlew upload -PsfUsername=MyUsernameHere -PsfPassphrase=MyPassphraseHere
 task upload << {
-  def username = System.console().readLine("\nSourceforge Username: ")
-  def password = System.console().readPassword("Sourceforge Password: ")
-  def host = "frs.sourceforge.net"
-  def dir  = "/home/frs/project/anathema"
+  def host     = "frs.sourceforge.net"
+  def dir      = "/home/frs/project/anathema"
+  def keyfile  = "${System.properties['user.home']}/.ssh/id_rsa"
+  def username = project.hasProperty('sfUsername') ? sfUsername : System.console().readLine("\nSourceforge Username: ")
+  
+  while( ! new File(keyfile).exists() ) {
+    keyfile = System.console().readLine("\nCould not find the ssh private keyfile: ${keyfile}\nEnter your keyfile pathname: ")
+    keyfile = keyfile.replace( "~", System.properties['user.home'] )
+  }
+  def passphrase = project.hasProperty('sfPassphrase') ? sfPassphrase : System.console().readPassword("\nSourceforge SSH Key Passphrase: ")
     
   out.println( "\nPlease be patient, it takes a few minutes to upload the releases" )
-  out.println( "Unfortunately, feedback during the upload is unavailable unless you use the -i option")
+  out.println( "Unfortunately, feedback during the upload is unavailable (unless you use the -i option)")
 
-  ant.taskdef(      
+  ant.taskdef(
           name: "scp2",
      classname: "org.apache.tools.ant.taskdefs.optional.ssh.Scp",
      classpath: configurations.scp.asPath
   )
   ant.scp2(
-             todir: "${username},anathema:${password}@${host}:${dir}/${releaseDirName}",
-             trust: true,
-           verbose: "true", // only visible at the info logging level
-              sftp: "true"
+         todir: "${username},anathema:@${host}:${dir}/${releaseDirName}",
+       keyfile:  keyfile,
+    passphrase: "${passphrase}",
+         trust: "true",
+       verbose: "true", // only visible at the info logging level
+          sftp: "true"
   ) {
     fileset(dir:"${releaseDir}")
   }
@@ -240,7 +249,7 @@ task buildZip(type: Zip) {
   from("Development_Documentation/Distribution/English") {
     include 'license.txt'
     include 'versions.md'
-    rename 'versions.md', 'release_notes.txt'
+    rename  'versions.md', 'release_notes.txt'
   }
 }
 
@@ -253,16 +262,20 @@ task buildWin << {
   mkdir("./build/launcher")
   def exeVersion = "${versionString}.0"
   def versionText = "${versionString} \"$version_name\""
-  ant.taskdef(name: 'launch4j',
-              classname: 'net.sf.launch4j.ant.Launch4jTask',
-              classpath: configurations.launch4j.asPath)
-  ant.launch4j(bindir: launch4jPath,
-               configFile: 'Development_Distribution/Windows/launch4j.xml',
-               outfile: './build/launcher/anathema.exe',
-               fileVersion: "$exeVersion",
-               productVersion: "$exeVersion",
-               txtFileVersion: "$versionText",
-               txtProductVersion: "$versionText")
+  ant.taskdef(
+                 name: 'launch4j',
+            classname: 'net.sf.launch4j.ant.Launch4jTask',
+            classpath: configurations.launch4j.asPath
+  )
+  ant.launch4j(
+               bindir: launch4jPath,
+           configFile: 'Development_Distribution/Windows/launch4j.xml',
+              outfile: './build/launcher/anathema.exe',
+          fileVersion: "$exeVersion",
+       productVersion: "$exeVersion",
+       txtFileVersion: "$versionText",
+    txtProductVersion: "$versionText"
+  )
 }
 
 task releaseWin << {
@@ -272,10 +285,10 @@ task releaseWin << {
               classname: "com.danielreese.nsisant.Task",
               classpath: configurations.nsis.asPath)
   ant.nsis(script: "Development_Distribution/Windows/NSIS/anathema.nsi", path: nsisPath) {
-    define(name: "RELEASE_DIR", value: "${releaseDir}")
-    define(name: "RELEASE_FILE", value: "${releaseWinName}")
+    define(name: "RELEASE_DIR",     value: "${releaseDir}")
+    define(name: "RELEASE_FILE",    value: "${releaseWinName}")
     define(name: "RELEASE_VERSION", value: "${versionString}")
-    define(name: "VERSION", value: "${versionString}.0")
+    define(name: "VERSION",         value: "${versionString}.0")
   }
 }
 
@@ -325,7 +338,7 @@ task releaseMac(type: Zip) {
     from("Development_Documentation/Distribution/English")
     include 'license.txt'
     include 'versions.md'
-    rename 'versions.md', 'release_notes.txt'
+    rename  'versions.md', 'release_notes.txt'
   }
 }
 
@@ -343,8 +356,8 @@ buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in t
 release.dependsOn releaseZip, releaseWin, releaseMac
 
 tagPush.dependsOn tagVersion
-tag.dependsOn tagVersion, tagPush
-//upload.dependsOn release  // decide on this
+tag.dependsOn tagVersion, tagPush //, release <-- decide on this
+//upload.dependsOn release  // <-- decide on this
 
 
 // Plugins
