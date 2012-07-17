@@ -9,7 +9,7 @@ public class DummyLearnableArbitrator implements IExtendedCharmLearnableArbitrat
 
   private final String[] learnableCharmIds;
 
-  public DummyLearnableArbitrator(String[] learnableCharmIds) {
+  public DummyLearnableArbitrator(String... learnableCharmIds) {
     this.learnableCharmIds = learnableCharmIds;
   }
 

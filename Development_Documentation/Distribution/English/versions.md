@@ -12,6 +12,8 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Bugfixes
 * Corrects cost for (Infernal/SwliHN) "Force-Suppression Barrier"
 * Corrects repurchases for (Solar/Melee) "Golden Destruction Cut" and its Abyssal Mirror.
+* The first pick of any multi-learnable Charm (such as Solar/Bureaucracy "Immaculate Solar Glory")
+    costs experience if learned after character creation
 
 ## Release 4.2.3
 
