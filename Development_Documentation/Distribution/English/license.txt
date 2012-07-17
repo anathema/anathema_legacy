@@ -243,7 +243,7 @@ JeksParser
 
 GNU GPL v3
 =========================
-disy-commons (special licence for anathema, parts of the library are repackaged, integrated and modified in anathema code)
+disy-commons (special license for Anathema, parts of the library are repackaged, integrated and modified in Anathema code)
 
 Individual Licenses:
 =========================

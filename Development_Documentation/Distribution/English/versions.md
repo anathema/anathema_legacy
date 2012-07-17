@@ -1,15 +1,12 @@
 # Anathema Version History
-© 2004 - 2008 by Sandra Sieroux and Urs Reupke
-
-© 2009 - 2012 by Urs Reupke, Sandra Sieroux, Scott Olson, Eric Astor, Paul Adams, Rob Rutherford, Sean Mattox, Dennis Fotheringham, and Erin Martell.
-
+Anathema © 2004 - 20012 by The Anathema Developers
 Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 4.2.4
 
-## Bugfixes
+### Bugfixes
 * Corrects cost for (Infernal/SwliHN) "Force-Suppression Barrier"
 * Corrects repurchases for (Solar/Melee) "Golden Destruction Cut" and its Abyssal Mirror.
 * The first pick of any multi-learnable Charm (such as Solar/Bureaucracy "Immanent Solar Glory")
@@ -17,19 +14,19 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 4.2.3
 
-## Features
+### Features
 * Quick print shows more informed error messages
 * Heroic Ghosts can learn Celestial Martial Arts. Common Ghosts remain limited to Terrestrial Styles.
 * Words of the Wise for Sidereals, Abyssals and Infernals.
 
-## Bugfixes
+### Bugfixes
 * Printing only suggests filenames that actually work
 * Quick print works for characters whose names contain slashes
 * Quick print works for characters with short names
 
 ## Release 4.2.2
 
-## Features
+### Features
 * "Words of the Wise" for Solars, Lunars and Dragon-Blooded
 * Eye candy
 
