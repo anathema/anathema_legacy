@@ -356,9 +356,7 @@ buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in t
 release.dependsOn releaseZip, releaseWin, releaseMac
 
 tagPush.dependsOn tagVersion
-tag.dependsOn tagVersion, tagPush //, release <-- decide on this
-//upload.dependsOn release  // <-- decide on this
-
+tag.dependsOn tagVersion, tagPush
 
 // Plugins
 apply from: 'plugins.gradle'
