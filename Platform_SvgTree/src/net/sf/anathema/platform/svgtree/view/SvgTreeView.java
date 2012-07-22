@@ -22,6 +22,7 @@ import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherEvent;
 import org.dom4j.DocumentException;
 import org.dom4j.io.DOMWriter;
+import org.w3c.dom.DOMException;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -111,40 +112,38 @@ public class SvgTreeView implements ISvgTreeView {
     }
     canvas.setDocument(document);
     if (transform != null) {
-      canvas.addGVTTreeRendererListener(
-        new GVTTreeRendererListener() {
+      canvas.addGVTTreeRendererListener(new GVTTreeRendererListener() {
 
-          @Override
-          public void gvtRenderingCancelled(GVTTreeRendererEvent e) {
-          	// TODO Auto-generated method stub
-			
-          }
+        @Override
+        public void gvtRenderingCancelled(GVTTreeRendererEvent e) {
+          // TODO Auto-generated method stub
 
-          @Override
-          public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
-          	// TODO Auto-generated method stub
-			
-          }
-
-          @Override
-          public void gvtRenderingFailed(GVTTreeRendererEvent e) {
-          	// TODO Auto-generated method stub
-			
-          }
-
-          @Override
-          public void gvtRenderingPrepare(GVTTreeRendererEvent e) {
-            canvas.setRenderingTransform(transform);
-            canvas.removeGVTTreeRendererListener(this);
-          }
-
-          @Override
-          public void gvtRenderingStarted(GVTTreeRendererEvent e) {
-          	// TODO Auto-generated method stub
-			
-          }
         }
-      );
+
+        @Override
+        public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
+          // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void gvtRenderingFailed(GVTTreeRendererEvent e) {
+          // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public void gvtRenderingPrepare(GVTTreeRendererEvent e) {
+          canvas.setRenderingTransform(transform);
+          canvas.removeGVTTreeRendererListener(this);
+        }
+
+        @Override
+        public void gvtRenderingStarted(GVTTreeRendererEvent e) {
+          // TODO Auto-generated method stub
+
+        }
+      });
     }
   }
 
@@ -176,12 +175,9 @@ public class SvgTreeView implements ISvgTreeView {
       if (list.item(i) instanceof SVGUseElement) {
         SVGElement element = (SVGElement) list.item(i);
         element.setAttribute(SVG_FILL_ATTRIBUTE, "rgb(" //$NON-NLS-1$
-            + color.getRed()
-            + "," //$NON-NLS-1$
-            + color.getGreen()
-            + "," //$NON-NLS-1$
-            + color.getBlue()
-            + ")"); //$NON-NLS-1$
+                + color.getRed() + "," //$NON-NLS-1$
+                + color.getGreen() + "," //$NON-NLS-1$
+                + color.getBlue() + ")"); //$NON-NLS-1$
         element.setAttribute(SVG_FILL_OPACITY_ATTRIBUTE, String.valueOf((float) color.getAlpha() / 255));
       }
     }
@@ -213,13 +209,21 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   private void initNodeNames() {
+    DOMException error = null;
     for (SVGGElement groupElement : canvas.getNodeElements()) {
       NodeList textNodes = groupElement.getElementsByTagName(SVG_TEXT_TAG);
       for (int i = 0; i < textNodes.getLength(); i++) {
-        SVGTextElement currentNode = (SVGTextElement) textNodes.item(i);
-        internationalize(currentNode);
-        breakText(currentNode);
+        try {
+          SVGTextElement currentNode = (SVGTextElement) textNodes.item(i);
+          internationalize(currentNode);
+          breakText(currentNode);
+        } catch (DOMException e) {
+          error = e;
+        }
       }
+    }
+    if (error != null){
+      throw error;
     }
   }
 
@@ -268,12 +272,7 @@ public class SvgTreeView implements ISvgTreeView {
     }
   }
 
-  private Element createTSpanElement(
-      Document document,
-      Text textNode,
-      String xPosition,
-      float varY,
-      int dy) {
+  private Element createTSpanElement(Document document, Text textNode, String xPosition, float varY, int dy) {
     Element tSpanElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVG_TSPAN_TAG);
     tSpanElement.setAttribute(SVG_X_ATTRIBUTE, xPosition);
     tSpanElement.setAttribute(SVG_Y_ATTRIBUTE, String.valueOf(varY));
@@ -289,8 +288,7 @@ public class SvgTreeView implements ISvgTreeView {
     String nodeName = properties.getNodeName(id);
     if (properties.isRootNode(id)) {
       text.getFirstChild().setNodeValue(nodeName.toUpperCase());
-    }
-    else {
+    } else {
       text.getFirstChild().setNodeValue(nodeName);
     }
   }
