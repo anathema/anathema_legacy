@@ -7,6 +7,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 4.2.4
 
 ### Bugfixes
+* Custom generic charms with misspelled generic prerequisites don't break the entire tree.
 * Corrects cost for (Infernal/SwliHN) "Force-Suppression Barrier"
 * Corrects repurchases for (Solar/Melee) "Golden Destruction Cut" and its Abyssal Mirror.
 * The first pick of any multi-learnable Charm (such as Solar/Bureaucracy "Immanent Solar Glory")
