@@ -85,7 +85,7 @@ subprojects {
 }
 
 task clean << {
-  ant.delete(includeEmptyDirs:"true") {
+  ant.delete(includeEmptyDirs:"true", quiet:"true") {
     fileset(dir:buildDir, includes:"**" )
   }
 }
