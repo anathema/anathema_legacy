@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
-import net.sf.anathema.character.equipment.creation.model.stats.IApplicableMaterialsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.ICloseCombatStatsticsModel;
@@ -23,7 +22,6 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   private final IArmourStatisticsModel armourStatisticsModel = new ArmourStatsticsModel();
   private final IArtifactStatisticsModel artifactStatisticsModel = new ArtifactStatisticsModel();
   private final ITraitModifyingStatisticsModel traitModifyingStatisticsModel = new TraitModifyingStatisticsModel();
-  private final IApplicableMaterialsModel applicableMaterialsModel = new ApplicableMaterialsModel();
   private final Announcer<IChangeListener> equipmentTypeChangeControl = Announcer.to(IChangeListener.class);
   private final IWeaponTagsModel weaponTagsModel = new WeaponTagsModel();
   private EquipmentStatisticsType statisticsType;
@@ -46,8 +44,7 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
     }
     if (statisticsType == EquipmentStatisticsType.RangedCombat) {
       getWeaponTagsModel().setTagsRangedCombatStyle();
-    }
-    else {
+    } else {
       getWeaponTagsModel().setTagsCloseCombatStyle();
     }
     this.statisticsType = statisticsType;
@@ -83,21 +80,15 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   public IArmourStatisticsModel getArmourStatisticsModel() {
     return armourStatisticsModel;
   }
-  
+
   @Override
   public IArtifactStatisticsModel getArtifactStatisticsModel() {
-	    return artifactStatisticsModel;
-	  }
-  
+    return artifactStatisticsModel;
+  }
+
   @Override
   public ITraitModifyingStatisticsModel getTraitModifyingStatisticsModel() {
-	    return traitModifyingStatisticsModel;
-	  }
-  
-  @Override
-  public IApplicableMaterialsModel getApplicableMaterialsModel()
-  {
-	  return applicableMaterialsModel;
+    return traitModifyingStatisticsModel;
   }
 
   @Override

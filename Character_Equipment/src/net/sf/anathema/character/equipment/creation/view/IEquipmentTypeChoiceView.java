@@ -9,7 +9,5 @@ public interface IEquipmentTypeChoiceView extends IPageContent {
 
   void addStatisticsRow(String categoryLabel, Action action, String typeLabel, boolean isSelected);
   
-  void addCheckBox(String label, ItemListener listener, boolean isSelected);
-
   void addHorizontalLine();
 }

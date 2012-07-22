@@ -21,8 +21,6 @@ public interface IEquipmentStatisticsCreationModel {
 
   boolean isEquipmentTypeSelected(EquipmentStatisticsType type);
   
-  IApplicableMaterialsModel getApplicableMaterialsModel();
-
   IWeaponTagsModel getWeaponTagsModel();
 
   EquipmentStatisticsType getEquipmentType();

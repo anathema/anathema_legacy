@@ -11,31 +11,25 @@ import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
-import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-import java.awt.event.ItemListener;
 
 public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoiceView {
 
   private static final GridDialogLayoutData OVERALL_HORIZONTAL_FILL = GridDialogLayoutDataFactory.createHorizontalSpanData(
-      3,
-      GridDialogLayoutData.FILL_HORIZONTAL);
+          3, GridDialogLayoutData.FILL_HORIZONTAL);
   private final ButtonGroup buttonGroup = new ButtonGroup();
   private final JPanel content = new JPanel(new GridDialogLayout(3, false));
-  private final JPanel extra = new JPanel(new GridDialogLayout(1, false));
   private JComponent focusComponent;
 
   @Override
-  public JComponent getContent()
-  {
-	JPanel panel = new JPanel(new GridDialogLayout(1, false));
-	IGridDialogLayoutData data = GridDialogLayoutData.FILL_HORIZONTAL;
-	panel.add(content, data);
-	panel.add(extra, data);
-	return panel;
+  public JComponent getContent() {
+    JPanel panel = new JPanel(new GridDialogLayout(1, false));
+    IGridDialogLayoutData data = GridDialogLayoutData.FILL_HORIZONTAL;
+    panel.add(content, data);
+    return panel;
   }
 
   @Override
@@ -43,15 +37,6 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
     content.add(new JLabel(categoryLabel));
     content.add(createToggleButton(action, isSelected));
     content.add(new JLabel(typeLabel));
-  }
-  
-  @Override
-  public void addCheckBox(String label, ItemListener listener, boolean isSelected)
-  {
-	  JCheckBox box = new JCheckBox(label);
-	  box.addItemListener(listener);
-	  box.setSelected(isSelected);
-	  extra.add(box);
   }
 
   @Override
