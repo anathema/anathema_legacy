@@ -18,7 +18,6 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Insets;
-import java.awt.Point;
 
 public class UnstyledProgressDialog extends AbstractProgressDialog implements IProgressMonitor, IObservableCancelable, IProgressComponent {
 
@@ -74,9 +73,7 @@ public class UnstyledProgressDialog extends AbstractProgressDialog implements IP
     Insets insets = ((Container) parentComponent).getInsets();
     newDialog.setSize(parentComponent.getWidth() - insets.left - insets.right,
             parentComponent.getHeight() - insets.top - insets.bottom);
-    Point location = newDialog.getLocation();
-    newDialog.setLocation(parentComponent.getLocationOnScreen().x + location.x + insets.left,
-            parentComponent.getLocationOnScreen().y + location.y + insets.top);
+    newDialog.setLocation(parentComponent.getX() + insets.left, parentComponent.getY() + insets.top);
   }
 
   private void makeTransparent(JDialog newDialog) {

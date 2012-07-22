@@ -8,7 +8,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Bugfixes
 * Custom generic charms with misspelled generic prerequisites don't break the entire tree.
-* 'Loading' screen covers the main window better.
+* 'Loading' screen covers the main window consistently.
 * Corrects cost for (Infernal/SwliHN) "Force-Suppression Barrier"
 * Corrects repurchases for (Solar/Melee) "Golden Destruction Cut" and its Abyssal Mirror.
 * The first pick of any multi-learnable Charm (such as Solar/Bureaucracy "Immanent Solar Glory")
