@@ -34,7 +34,8 @@ public class UnstyledProgressDialog extends AbstractProgressDialog implements IP
 
   @Override
   protected JDialog createDialog() {
-    JDialog newDialog = GuiUtilities.createDialog(parentComponent, title);
+    JDialog newDialog = GuiUtilities.createRawDialogForParentComponent(parentComponent);
+    newDialog.setTitle(title);
     newDialog.setUndecorated(true);
     createContent(newDialog);
     newDialog.pack();
@@ -75,7 +76,7 @@ public class UnstyledProgressDialog extends AbstractProgressDialog implements IP
             parentComponent.getHeight() - insets.top - insets.bottom);
     Point location = newDialog.getLocation();
     newDialog.setLocation(parentComponent.getLocationOnScreen().x + location.x + insets.left,
-            parentComponent.getLocationOnScreen().x + location.y + insets.top);
+            parentComponent.getLocationOnScreen().y + location.y + insets.top);
   }
 
   private void makeTransparent(JDialog newDialog) {

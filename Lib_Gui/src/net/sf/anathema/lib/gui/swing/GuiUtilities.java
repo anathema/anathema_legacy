@@ -113,7 +113,7 @@ public class GuiUtilities {
     return dialog;
   }
 
-  private static JDialog createRawDialogForParentComponent(Component parentComponent) {
+  public static JDialog createRawDialogForParentComponent(Component parentComponent) {
     Window window = getWindowFor(parentComponent);
     if (window instanceof Frame) {
       return new JDialog((Frame) window);
