@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.item.model;
 
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IArtifactStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.ICloseCombatStatsticsModel;
@@ -50,23 +51,26 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   }
 
   @Override
-  public IEquipmentStats createNewStats(Component parentComponent, IResources resources, String[] definedNames) {
+  public IEquipmentStats createNewStats(Component parentComponent, IResources resources, String[] definedNames,
+                                        MaterialComposition materialComposition) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
-    return runDialog(parentComponent, resources, model);
+    return runDialog(parentComponent, resources, model, materialComposition);
   }
 
   @Override
   public IEquipmentStats editStats(Component parentComponent, IResources resources, String[] definedNames,
-                                   IEquipmentStats stats) {
+                                   IEquipmentStats stats, MaterialComposition materialComposition) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     createModel(model, stats);
-    return runDialog(parentComponent, resources, model);
+    return runDialog(parentComponent, resources, model, materialComposition);
   }
 
   private IEquipmentStats runDialog(Component parentComponent, IResources resources,
-                                    IEquipmentStatisticsCreationModel model) {
+                                    IEquipmentStatisticsCreationModel model, MaterialComposition materialComposition) {
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
-    EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory);
+    boolean canHaveArtifactStats = materialComposition != MaterialComposition.None;
+    EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory,
+            canHaveArtifactStats);
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
     IDialogResult result = dialog.show();
     if (result.isCanceled()) {

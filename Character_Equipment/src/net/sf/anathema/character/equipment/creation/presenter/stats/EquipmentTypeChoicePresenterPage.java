@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentTypeChoiceProperties;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
@@ -25,9 +26,11 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
   private final IEquipmentStatisticsCreationModel model;
   private final IEquipmentStatisticsCreationViewFactory viewFactory;
   private IEquipmentTypeChoiceView view;
+  private final boolean canHaveArtifactStats;
 
   public EquipmentTypeChoicePresenterPage(IResources resources, IEquipmentStatisticsCreationModel model,
-                                          IEquipmentStatisticsCreationViewFactory viewFactory) {
+                                          IEquipmentStatisticsCreationViewFactory viewFactory, boolean canHaveArtifactStats) {
+    this.canHaveArtifactStats = canHaveArtifactStats;
     this.properties = new EquipmentTypeChoiceProperties(resources);
     this.defaultMessage = new BasicMessage(properties.getTypeChoiceMessage());
     this.resources = resources;
@@ -69,7 +72,9 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     addStatisticsTypeRow(properties.getDefensiveLabel(), EquipmentStatisticsType.Armor);
     view.addHorizontalLine();
     addStatisticsTypeRow(properties.getOtherLabel(), EquipmentStatisticsType.TraitModifying);
-    addStatisticsTypeRow("", EquipmentStatisticsType.Artifact);
+    if (canHaveArtifactStats) {
+      addStatisticsTypeRow("", EquipmentStatisticsType.Artifact);
+    }
   }
 
   private void addPage(final EquipmentStatisticsType type, IAnathemaWizardPage page, CheckInputListener inputListener) {

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -32,7 +33,8 @@ public final class AddNewStatsAction extends SmartAction {
       definedNames.add(stats.getName().getId());
     }
     String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
-    IEquipmentStats equipmentStats = statsFactory.createNewStats(parentComponent, resources, nameArray);
+    MaterialComposition materialComposition = editModel.getMaterialComposition();
+    IEquipmentStats equipmentStats = statsFactory.createNewStats(parentComponent, resources, nameArray, materialComposition);
     if (equipmentStats == null) {
       return;
     }

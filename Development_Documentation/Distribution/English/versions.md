@@ -7,6 +7,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 4.2.4
 
 ### Bugfixes
+* Items made of 'No magical material' can no longer have artifact stats. (Existing items are unchanged.)
 * Custom generic charms with misspelled generic prerequisites don't break the entire tree.
 * 'Loading' screen covers the main window consistently.
 * Corrects cost for (Infernal/SwliHN) "Force-Suppression Barrier"
