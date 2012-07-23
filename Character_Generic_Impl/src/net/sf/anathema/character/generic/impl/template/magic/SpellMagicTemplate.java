@@ -88,7 +88,7 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
 	  return knowsCharm(getInitiation(spell.getCircleType()), knownCharms);
   }
   
-  public String getInitiation(CircleType type) {
+  private String getInitiation(CircleType type) {
     final String[] initiation = new String[1];
     type.accept(new ICircleTypeVisitor() {
       @Override
