@@ -26,6 +26,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 * Printing only suggests filenames that actually work
 * Quick print works for characters whose names contain slashes
 * Quick print works for characters with short names
+* The splash screen for Mac users has been enabled
 
 ## Release 4.2.2
 
