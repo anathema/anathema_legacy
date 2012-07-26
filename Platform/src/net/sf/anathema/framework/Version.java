@@ -92,4 +92,16 @@ public class Version implements Comparable<Version> {
   public String asString() {
     return majorVersion + "." + minorVersion + "." + revision;
   }
+
+  public int getMajorVersion() {
+      return majorVersion;
+  }
+
+  public int getMinorVersion() {
+      return minorVersion;
+  }
+
+  public int getRevision() {
+      return revision;
+  }
 }

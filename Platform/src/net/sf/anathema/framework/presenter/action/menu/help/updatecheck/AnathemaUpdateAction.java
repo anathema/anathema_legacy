@@ -1,9 +1,11 @@
 package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import de.idos.updates.NumericVersion;
+import de.idos.updates.UpdateSystem;
+import de.idos.updates.Version;
+import de.idos.updates.configuration.ConfiguredUpdateSystem;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
-import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
@@ -25,23 +27,24 @@ public class AnathemaUpdateAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    final UpdateChecker updateChecker = new UpdateChecker(resources);
-    IDialogPage page = new UpdateDialogPage(resources, updateChecker);
-    final UserDialog dialog = new UserDialog(parentComponent, page);
-    dialog.getDialog().setModal(false);
-    updateChecker.addDataChangedListener(new IChangeListener() {
-      @Override
-      public void changeOccurred() {
-        dialog.updateDescription();
-        dialog.getDialogControl().checkInputValid();
-      }
-    });
+    Version currentVersion = getCurrentVersion();
+    final UpdateSystem updateSystem = ConfiguredUpdateSystem.loadProperties().butDiscoverAvailableVersionThrough(new TagsOnGithub()).andIfTheVersionIsFixedSetItTo(currentVersion).create();
+    UpdateDialogPage page = new UpdateDialogPage(resources, updateSystem);
+    UserDialog dialog = new UserDialog(parentComponent, page);
+    dialog.getDialog().setModal(true);
+    updateSystem.reportAllProgressTo(new UiProgressReport(page));
+    updateSystem.reportAllProgressTo(new DialogUpdater(dialog));
     dialog.show();
     new Thread(new Runnable() {
       @Override
       public void run() {
-        updateChecker.checkForUpdates();
+        updateSystem.checkForUpdates();
       }
     }).start();
+  }
+
+  private Version getCurrentVersion() {
+    net.sf.anathema.framework.Version version = new net.sf.anathema.framework.Version(resources);//$NON-NLS-1$
+    return new NumericVersion(version.getMajorVersion(), version.getMinorVersion(), version.getRevision());
   }
 }
