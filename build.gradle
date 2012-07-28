@@ -9,6 +9,7 @@ ext.testDependencies = ['junit:junit:4.+', 'org.mockito:mockito-core:1.9.0']
 
 buildscript {
   repositories {
+    mavenLocal()
     mavenCentral()
   }
   dependencies {
