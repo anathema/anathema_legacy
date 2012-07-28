@@ -2,6 +2,7 @@ package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
 
 import de.idos.updates.NumericVersion;
 import de.idos.updates.UpdateSystem;
+import de.idos.updates.Updater;
 import de.idos.updates.Version;
 import de.idos.updates.configuration.ConfiguredUpdateSystem;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -29,16 +30,18 @@ public class AnathemaUpdateAction extends SmartAction {
   protected void execute(Component parentComponent) {
     Version currentVersion = getCurrentVersion();
     final UpdateSystem updateSystem = ConfiguredUpdateSystem.loadProperties().butDiscoverAvailableVersionThrough(new TagsOnGithub()).andIfTheVersionIsFixedSetItTo(currentVersion).create();
+    final Updater updater = updateSystem.checkForUpdates();
     UpdateDialogPage page = new UpdateDialogPage(resources, updateSystem);
     UserDialog dialog = new UserDialog(parentComponent, page);
-    dialog.getDialog().setModal(true);
-    updateSystem.reportAllProgressTo(new UiProgressReport(page));
+    dialog.getDialog().setModal(false);
+    updateSystem.reportAllProgressTo(new UiProgressReport(page, updateSystem.getInstalledVersion()));
     updateSystem.reportAllProgressTo(new DialogUpdater(dialog));
     dialog.show();
     new Thread(new Runnable() {
       @Override
       public void run() {
-        updateSystem.checkForUpdates();
+        updater.runCheck();
+        System.out.println("running");
       }
     }).start();
   }

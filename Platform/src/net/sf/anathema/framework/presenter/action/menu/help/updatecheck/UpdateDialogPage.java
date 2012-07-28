@@ -31,7 +31,6 @@ public class UpdateDialogPage extends AbstractDialogPage {
     super(resources.getString("Help.UpdateCheck.Checking")); //$NON-NLS-1$
     this.resources = resources;
     this.system = system;
-    system.reportAllProgressTo(new UiProgressReport(this));
   }
 
   @Override
