@@ -4,6 +4,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.2.5
+
+### Bugfixes
+* Corrects cost for (Infernal/Cecelyne) "Bestowal of Accursed Fortune"
+
 ## Release 4.2.4
 
 ### Bugfixes

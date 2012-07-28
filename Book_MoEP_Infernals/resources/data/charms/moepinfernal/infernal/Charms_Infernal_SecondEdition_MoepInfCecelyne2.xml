@@ -314,15 +314,9 @@
                <charmReference id="Infernal.VerdantEmptinessEndowment"/>
 			   <charmReference id="Infernal.InevitabilityTechnique.Cecelyne"/>
           </prerequisite>
-           <cost> 
-               <essence cost="10" />   
-               <willpower cost="1" />   
-          </cost>
-          <duration duration="Instant" />
-          <charmtype type="Simple" />
-          <charmAttribute attribute="Shaping" visualize="true" />
-          <charmAttribute attribute="Sorcerous" visualize="true" />
-          <charmAttribute attribute="Training" visualize="true" />
+           <cost />
+          <duration duration="Permanent" />
+          <charmtype type="Permanent" />
           <source source="Infernals" />
      </charm>      
      <charm id="Infernal.ScouredPerfectionofForm" exalt="Infernal" group="VerdantEmptiness">          
