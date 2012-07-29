@@ -12,4 +12,8 @@ public class NumericQuality implements Quality {
   public boolean hasValue(NumericValue value) {
     return value.equals(this.value);
   }
+
+  public void changeBy(NumericValue modification) {
+    value.changeBy(modification);
+  }
 }
