@@ -9,7 +9,6 @@ public class QualityKey {
   }
 
   private final Type type;
-  @SuppressWarnings("UnusedDeclaration")
   private final Name name;
 
   public QualityKey(Type type, Name name) {
@@ -29,5 +28,9 @@ public class QualityKey {
 
   public void withTypeDo(TypeClosure closure) {
     closure.execute(type);
+  }
+
+  public void withNameDo(NameClosure closure) {
+    closure.execute(name);
   }
 }

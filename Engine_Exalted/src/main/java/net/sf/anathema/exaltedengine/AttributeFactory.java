@@ -1,18 +1,19 @@
-package net.sf.anathema.characterengine.support;
+package net.sf.anathema.exaltedengine;
 
 import net.sf.anathema.characterengine.engine.QualityFactory;
 import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.Quality;
 
-public class NumericQualityFactory implements QualityFactory {
-  private final int startValue;
+public class AttributeFactory implements QualityFactory {
 
-  public NumericQualityFactory(int startValue) {
+  private NumericValue startValue;
+
+  public AttributeFactory(NumericValue startValue) {
     this.startValue = startValue;
   }
 
   @Override
   public Quality create(Name name) {
-    return new NumericQuality(new NumericValue(startValue));
+    return new Attribute(startValue, name);
   }
 }

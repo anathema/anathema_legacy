@@ -28,4 +28,11 @@ public class QualityKeyTest {
     firstKey.withTypeDo(closure);
     verify(closure).execute(new Type("type"));
   }
+
+  @Test
+  public void operatesOnClosureWithName() throws Exception {
+    NameClosure closure = mock(NameClosure.class);
+    firstKey.withNameDo(closure);
+    verify(closure).execute(new Name("name"));
+  }
 }

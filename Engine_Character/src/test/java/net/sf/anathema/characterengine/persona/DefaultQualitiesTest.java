@@ -22,10 +22,11 @@ public class DefaultQualitiesTest {
   public void createsQualitiesViaEngine() throws Exception {
     Type type = new Type("type");
     Name name = new Name("name");
+    QualityKey key = new QualityKey(type, name);
     NumericQuality quality = new NumericQuality(new NumericValue(0));
-    configureEngineToCreate(type, quality);
-    qualities.addQuality(new QualityKey(type, name));
-    qualities.doFor(new QualityKey(type, name), closure);
+    configureEngineToCreate(key, quality);
+    qualities.addQuality(key);
+    qualities.doFor(key, closure);
     verify(closure).execute(quality);
   }
 
@@ -42,15 +43,18 @@ public class DefaultQualitiesTest {
     Type type = new Type("type");
     NumericQuality firstQuality = new NumericQuality(new NumericValue(0));
     NumericQuality secondQuality = new NumericQuality(new NumericValue(0));
-    configureEngineToCreate(type, firstQuality, secondQuality);
-    qualities.addQuality(new QualityKey(type, new Name("firstName")));
-    qualities.addQuality(new QualityKey(type, new Name("secondName")));
+    QualityKey firstName = new QualityKey(type, new Name("firstName"));
+    QualityKey secondName = new QualityKey(type, new Name("secondName"));
+    configureEngineToCreate(firstName, firstQuality);
+    configureEngineToCreate(secondName, secondQuality);
+    qualities.addQuality(firstName);
+    qualities.addQuality(secondName);
     qualities.doForEach(type, closure);
     verify(closure).execute(firstQuality);
     verify(closure).execute(secondQuality);
   }
 
-  private void configureEngineToCreate(Type type, NumericQuality quality, NumericQuality... moreQualities) {
-    when(engine.createQuality(type)).thenReturn(quality, moreQualities);
+  private void configureEngineToCreate(QualityKey key, NumericQuality quality) {
+    when(engine.createQuality(key)).thenReturn(quality);
   }
 }

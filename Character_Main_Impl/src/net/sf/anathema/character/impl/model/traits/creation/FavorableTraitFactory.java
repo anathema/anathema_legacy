@@ -24,12 +24,9 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
   private final IBasicCharacterData basicCharacterData;
   private final ICharacterListening characterListening;
 
-  public FavorableTraitFactory(
-      ITraitContext traitContext,
-      ITraitTemplateCollection templateCollection,
-      IAdditionalTraitRules additionalRules,
-      IBasicCharacterData basicCharacterData,
-      ICharacterListening characterListening) {
+  public FavorableTraitFactory(ITraitContext traitContext, ITraitTemplateCollection templateCollection,
+                               IAdditionalTraitRules additionalRules, IBasicCharacterData basicCharacterData,
+                               ICharacterListening characterListening) {
     super(traitContext, additionalRules);
     this.traitContext = traitContext;
     this.templateCollection = templateCollection;
@@ -37,49 +34,30 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
     this.characterListening = characterListening;
   }
 
-  public IFavorableTrait[] createTraits(
-		  IIdentifiedCasteTraitTypeGroup group,
-      IIncrementChecker favoredIncrementChecker) {
-	  ITraitType[] traitTypes = group.getAllGroupTypes();
+  public IFavorableTrait[] createTraits(IIdentifiedCasteTraitTypeGroup group,
+                                        IIncrementChecker favoredIncrementChecker) {
+    ITraitType[] traitTypes = group.getAllGroupTypes();
     IFavorableTrait[] newTraits = new IFavorableTrait[traitTypes.length];
     for (int index = 0; index < newTraits.length; index++) {
-    	ITraitType type = traitTypes[index];
-        newTraits[index] = createTrait(type, group.getTraitCasteTypes(type),
-    		  favoredIncrementChecker);
+      ITraitType type = traitTypes[index];
+      newTraits[index] = createTrait(type, group.getTraitCasteTypes(type), favoredIncrementChecker);
     }
     return newTraits;
   }
 
-  public IFavorableTrait createTrait(
-      ITraitType traitType,
-      ICasteType[] casteTypes,
-      IIncrementChecker favoredIncrementChecker) {
+  public IFavorableTrait createTrait(ITraitType traitType, ICasteType[] casteTypes,
+                                     IIncrementChecker favoredIncrementChecker) {
     ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
-    FavorableTraitRules favorableTraitRules = new FavorableTraitRules(
-        traitType,
-        traitTemplate,
-        traitContext.getLimitationContext());
+    FavorableTraitRules favorableTraitRules = new FavorableTraitRules(traitType, traitTemplate,
+            traitContext.getLimitationContext());
     IValueChangeChecker valueChecker = createValueIncrementChecker(traitType);
     if (traitType == AbilityType.Craft) {
       String[][] crafts = new String[1][];
-      crafts[0] = new String[] { "Air", "Earth", "Fire", "Water", "Wood" };//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
-      return new AggregatedTrait(
-          favorableTraitRules,
-          basicCharacterData,
-          characterListening,
-          traitContext,
-          valueChecker,
-          casteTypes,
-          favoredIncrementChecker,
-          crafts[0]);
+      crafts[0] = new String[]{"Air", "Earth", "Fire", "Water", "Wood"};//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+      return new AggregatedTrait(favorableTraitRules, basicCharacterData, characterListening, traitContext,
+              valueChecker, casteTypes, favoredIncrementChecker, crafts[0]);
     }
-    return new DefaultTrait(
-        favorableTraitRules,
-        casteTypes,
-        traitContext,
-        basicCharacterData,
-        characterListening,
-        valueChecker,
-        favoredIncrementChecker);
+    return new DefaultTrait(favorableTraitRules, casteTypes, traitContext, basicCharacterData, characterListening,
+            valueChecker, favoredIncrementChecker);
   }
 }

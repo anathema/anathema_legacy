@@ -12,7 +12,7 @@ public class ExaltedEngine {
   private final DefaultEngine engine = new DefaultEngine();
 
   public ExaltedEngine() {
-    engine.setFactory(new Type("Attribute"), new NumericQualityFactory(1));
+    engine.setFactory(new Type("Attribute"), new AttributeFactory(new NumericValue(1)));
   }
 
   public Persona createCharacter() {

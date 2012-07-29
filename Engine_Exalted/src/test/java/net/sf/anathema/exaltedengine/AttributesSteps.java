@@ -42,16 +42,16 @@ public class AttributesSteps {
 
       @Override
       public void execute(Quality quality) {
-        NumericQuality numericQuality = (NumericQuality) quality;
-        assertThat(numericQuality, hasValue(1));
+        Attribute attribute = (Attribute) quality;
+        assertThat(attribute, hasValue(1));
       }
     });
   }
 
-  private Matcher<NumericQuality> hasValue(final int value) {
-      return new TypeSafeMatcher<NumericQuality>() {
+  private Matcher<Attribute> hasValue(final int value) {
+      return new TypeSafeMatcher<Attribute>() {
         @Override
-        protected boolean matchesSafely(NumericQuality quality) {
+        protected boolean matchesSafely(Attribute quality) {
           return quality.hasValue(new NumericValue(value));
         }
 

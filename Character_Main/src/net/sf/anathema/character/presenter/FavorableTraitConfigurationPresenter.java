@@ -49,7 +49,7 @@ public class FavorableTraitConfigurationPresenter {
   public void init(String typePrefix) {
     for (IIdentifiedTraitTypeGroup traitTypeGroup : traitTypeGroups) {
       configurationView.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId())); //$NON-NLS-1$
-      addAbilityViews(traitConfiguration.getFavorableTraits(traitTypeGroup.getAllGroupTypes()));
+      addTraitViews(traitConfiguration.getFavorableTraits(traitTypeGroup.getAllGroupTypes()));
     }
     characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
@@ -73,13 +73,13 @@ public class FavorableTraitConfigurationPresenter {
     return traitConfiguration.getFavorableTraits(TraitTypeGroup.getAllTraitTypes(traitTypeGroups));
   }
 
-  private void addAbilityViews(IFavorableTrait[] abilityGroup) {
+  private void addTraitViews(IFavorableTrait[] abilityGroup) {
     for (IFavorableTrait ability : abilityGroup) {
-      traitViewsByTrait.put(ability, addAbilityView(ability));
+      traitViewsByTrait.put(ability, addTraitView(ability));
     }
   }
 
-  private IToggleButtonTraitView<?> addAbilityView(final IFavorableTrait favorableTrait) {
+  private IToggleButtonTraitView<?> addTraitView(final IFavorableTrait favorableTrait) {
     final String id = favorableTrait.getType().getId();
     final IToggleButtonTraitView<?>[] view = new IToggleButtonTraitView<?>[1];
     favorableTrait.accept(new ITraitVisitor() {
@@ -98,9 +98,9 @@ public class FavorableTraitConfigurationPresenter {
                 new FavorableTraitViewProperties(presentationProperties, basicCharacterData, favorableTrait, resources));
       }
     });
-    final IToggleButtonTraitView<?> abilityView = view[0];
-    new TraitPresenter(favorableTrait, abilityView).initPresentation();
-    abilityView.addButtonSelectedListener(new IBooleanValueChangedListener() {
+    final IToggleButtonTraitView<?> traitView = view[0];
+    new TraitPresenter(favorableTrait, traitView).initPresentation();
+    traitView.addButtonSelectedListener(new IBooleanValueChangedListener() {
       @Override
       public void valueChanged(boolean newValue) {
         favorableTrait.getFavorization().setFavored(newValue);
@@ -109,11 +109,11 @@ public class FavorableTraitConfigurationPresenter {
     favorableTrait.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
       @Override
       public void favorableStateChanged(FavorableState state) {
-        updateView(abilityView, state);
+        updateView(traitView, state);
       }
     });
-    updateView(abilityView, favorableTrait.getFavorization().getFavorableState());
-    return abilityView;
+    updateView(traitView, favorableTrait.getFavorization().getFavorableState());
+    return traitView;
   }
 
   private void updateView(final IToggleButtonTraitView<?> abilityView, FavorableState state) {

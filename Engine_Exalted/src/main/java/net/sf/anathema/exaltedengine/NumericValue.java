@@ -24,4 +24,8 @@ public class NumericValue {
   public String toString() {
     return "'" + value + "'";
   }
+
+  public boolean isGreaterThan(NumericValue valueForComparison) {
+    return this.value > valueForComparison.value;
+  }
 }
