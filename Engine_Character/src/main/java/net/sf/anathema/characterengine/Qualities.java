@@ -4,5 +4,5 @@ public interface Qualities {
 
   void addQuality(QualityKey qualityKey);
 
-  void doFor(QualityKey qualityKey, Closure closure);
+  void doFor(QualityKey qualityKey, QualityClosure closure);
 }

@@ -9,3 +9,9 @@ Feature:  Characters can have qualities and operate on them
     Given a character
     When the character does not know a quality
     Then the character ignores commands for the quality
+
+  Scenario: Qualities start at their default values
+    Given a character
+    And a rule that an Attribute starts with value 1
+    When I add the Attribute 'Toughness' to the character
+    Then Attribute 'Toughness' has the value 1

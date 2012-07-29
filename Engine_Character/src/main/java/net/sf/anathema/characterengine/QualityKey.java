@@ -8,7 +8,6 @@ public class QualityKey {
     return new QualityKey(new Type(type), new Name(name));
   }
 
-  @SuppressWarnings("UnusedDeclaration")
   private final Type type;
   @SuppressWarnings("UnusedDeclaration")
   private final Name name;
@@ -26,5 +25,9 @@ public class QualityKey {
   @Override
   public int hashCode() {
     return HashCodeBuilder.reflectionHashCode(this);
+  }
+
+  public void withTypeDo(TypeClosure closure) {
+    closure.execute(type);
   }
 }

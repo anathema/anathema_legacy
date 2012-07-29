@@ -1,5 +1,5 @@
 package net.sf.anathema.characterengine;
 
-public interface Closure {
+public interface QualityClosure {
   void execute(Quality quality);
 }

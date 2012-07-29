@@ -19,7 +19,7 @@ public class DefaultPersonaTest {
 
   @Test
   public void executesQueriesOnQualities() throws Exception {
-    Closure closure = mock(Closure.class);
+    QualityClosure closure = mock(QualityClosure.class);
     Type type = new Type("type");
     Name name = new Name("name");
     persona.doFor(new QualityKey(type, name), closure);

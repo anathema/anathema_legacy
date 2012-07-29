@@ -5,17 +5,37 @@ import java.util.Map;
 
 public class DefaultQualities implements Qualities {
   private final Map<QualityKey, Quality> qualityMap = new HashMap<QualityKey, Quality>();
+  private final Engine engine;
 
-  @Override
-  public void addQuality(QualityKey qualityKey) {
-    qualityMap.put(qualityKey, new DefaultQuality());
+  public DefaultQualities(Engine engine) {
+    this.engine = engine;
   }
 
   @Override
-  public void doFor(QualityKey qualityKey, Closure closure) {
+  public void addQuality(final QualityKey qualityKey) {
+    qualityKey.withTypeDo(new CreateQuality(qualityKey));
+  }
+
+  @Override
+  public void doFor(QualityKey qualityKey, QualityClosure closure) {
     if (qualityMap.containsKey(qualityKey)) {
       Quality quality = qualityMap.get(qualityKey);
       closure.execute(quality);
+    }
+  }
+
+  private class CreateQuality implements TypeClosure {
+
+    private final QualityKey qualityKey;
+
+    public CreateQuality(QualityKey qualityKey) {
+      this.qualityKey = qualityKey;
+    }
+
+    @Override
+    public void execute(Type type) {
+      Quality quality = engine.createQuality(type);
+      qualityMap.put(qualityKey, quality);
     }
   }
 }

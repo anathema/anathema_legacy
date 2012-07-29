@@ -1,8 +1,12 @@
 package net.sf.anathema.characterengine;
 
+import cucumber.annotation.Before;
 import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -10,11 +14,22 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @SuppressWarnings("UnusedDeclaration")
 public class CommandAndQuerySteps {
 
+  private Engine engine = new DefaultEngine();
   private Persona persona;
+
+  @Before
+  public void addDummyQuality() {
+    engine.setFactory(new Type("Attribute"), new DummyQualityFactory());
+  }
 
   @Given("^a character$")
   public void a_character() throws Throwable {
-    this.persona = new DefaultPersona(new DefaultQualities());
+    this.persona = engine.createCharacter();
+  }
+
+  @Given("^a rule that an (.*?) starts with value (\\d+)$")
+  public void a_rule_that_type_starts_with_value(String type, int startValue) throws Throwable {
+    engine.setFactory(new Type(type), new NumericQualityFactory(startValue));
   }
 
   @When("^I add the (.*?) '(.*?)' to the character$")
@@ -38,15 +53,40 @@ public class CommandAndQuerySteps {
     assertCommandExecuted("unknownType", "unknownName", false);
   }
 
+  @Then("^(.*?) '(.*?)' has the value (\\d+)$")
+  public void the_quality_has_the_value(String type, String name, final int value) throws Throwable {
+    persona.doFor(QualityKey.ForTypeAndName(type, name), new QualityClosure() {
+      @Override
+      public void execute(Quality quality) {
+        NumericQuality numericQuality = (NumericQuality) quality;
+        assertThat(numericQuality, hasValue(new NumericValue(value)));
+      }
+    });
+  }
+
   private void assertCommandExecuted(String type, String name, boolean expectedValue) {
     final boolean[] wasCalled = new boolean[]{false};
     QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
-    persona.doFor(qualityKey, new Closure() {
+    persona.doFor(qualityKey, new QualityClosure() {
       @Override
       public void execute(Quality quality) {
         wasCalled[0] = true;
       }
     });
     assertThat(wasCalled[0], is(expectedValue));
+  }
+
+  private Matcher<NumericQuality> hasValue(final NumericValue value) {
+    return new TypeSafeMatcher<NumericQuality>() {
+      @Override
+      protected boolean matchesSafely(NumericQuality quality) {
+        return quality.hasValue(value);
+      }
+
+      @Override
+      public void describeTo(Description description) {
+        description.appendText("a quality with value ").appendValue(value);
+      }
+    };
   }
 }

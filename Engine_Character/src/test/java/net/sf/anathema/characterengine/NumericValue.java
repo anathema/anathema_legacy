@@ -3,12 +3,11 @@ package net.sf.anathema.characterengine;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class Type {
-  @SuppressWarnings("UnusedDeclaration")
-  private final String type;
+public class NumericValue {
+  private final int value;
 
-  public Type(String type) {
-    this.type = type;
+  public NumericValue(int value) {
+    this.value = value;
   }
 
   @Override
@@ -23,6 +22,6 @@ public class Type {
 
   @Override
   public String toString() {
-    return "'" + type + "'";
+    return "'" + value + "'";
   }
 }
