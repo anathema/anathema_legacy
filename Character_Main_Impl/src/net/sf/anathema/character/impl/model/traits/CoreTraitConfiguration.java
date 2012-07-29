@@ -28,6 +28,11 @@ import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfigurat
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.characterengine.AddQuality;
+import net.sf.anathema.characterengine.Name;
+import net.sf.anathema.characterengine.Persona;
+import net.sf.anathema.characterengine.Type;
+import net.sf.anathema.exaltedengine.ExaltedEngine;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.util.Identified;
 
@@ -46,6 +51,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
   private final IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups;
   private final SpecialtiesConfiguration specialtyConfiguration;
+  private final Persona persona = new ExaltedEngine().createPersona();
 
   public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext,
                                 IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
@@ -76,12 +82,14 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     this.backgrounds = new BackgroundConfiguration(new BackgroundArbitrator(template),
             template.getTraitTemplateCollection(), modelContext.getTraitContext(), backgroundRegistry);
     this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
-    getTrait(OtherTraitType.Essence).addCurrentValueListener(new EssenceLimitationListener(new AllTraits(), modelContext));
+    getTrait(OtherTraitType.Essence).addCurrentValueListener(
+            new EssenceLimitationListener(new AllTraits(), modelContext));
   }
 
   private void addAttributes(ICharacterTemplate template) {
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAttributeIncrementChecker(template, this);
     addFavorableTraits(attributeTraitGroups, incrementChecker);
+    addAttributeQualitiesToPersona();
   }
 
   private void addAbilities(ICharacterTemplate template) {
@@ -153,6 +161,15 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   @Override
   public ISpecialtiesConfiguration getSpecialtyConfiguration() {
     return specialtyConfiguration;
+  }
+
+  private void addAttributeQualitiesToPersona() {
+    for (IIdentifiedCasteTraitTypeGroup traitGroup : attributeTraitGroups) {
+      for (ITraitType traitType : traitGroup.getAllGroupTypes()) {
+        String name = traitType.getId();
+        persona.execute(new AddQuality(new Type("Attribute"), new Name(name)));
+      }
+    }
   }
 
   private class AllTraits implements TraitProvider {
