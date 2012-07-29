@@ -202,4 +202,14 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   public final int getCalculationMinValue() {
     return getTraitRules().getCalculationMinValue();
   }
+
+  @Override
+  public final boolean isLowerable() {
+    return getTraitRules().isLowerable();
+  }
+
+  @Override
+  public int getAbsoluteMinValue() {
+    return getTraitRules().getAbsoluteMinimumValue();
+  }
 }

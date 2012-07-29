@@ -89,11 +89,6 @@ public class TraitRules implements ITraitRules {
   }
 
   @Override
-  public Range getModifiedRange(Range unmodifiedRange) {
-    return unmodifiedRange;
-  }
-
-  @Override
   public ITraitType getType() {
     return traitType;
   }

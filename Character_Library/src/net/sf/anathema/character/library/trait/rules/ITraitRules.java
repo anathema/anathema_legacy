@@ -22,8 +22,6 @@ public interface ITraitRules {
   
   void setCapModifier(int modifier);
 
-  Range getModifiedRange(Range unmodifiedRange);
-
   int getStartValue();
 
   int getZeroCalculationCost();
