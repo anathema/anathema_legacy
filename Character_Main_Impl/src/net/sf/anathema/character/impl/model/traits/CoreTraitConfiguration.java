@@ -28,11 +28,11 @@ import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfigurat
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.characterengine.AddQuality;
-import net.sf.anathema.characterengine.Name;
-import net.sf.anathema.characterengine.Persona;
-import net.sf.anathema.characterengine.QualityKey;
-import net.sf.anathema.characterengine.Type;
+import net.sf.anathema.characterengine.command.AddQuality;
+import net.sf.anathema.characterengine.persona.Persona;
+import net.sf.anathema.characterengine.quality.Name;
+import net.sf.anathema.characterengine.quality.QualityKey;
+import net.sf.anathema.characterengine.quality.Type;
 import net.sf.anathema.exaltedengine.ExaltedEngine;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.util.Identified;
@@ -52,7 +52,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
   private final IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups;
   private final SpecialtiesConfiguration specialtyConfiguration;
-  private final Persona persona = new ExaltedEngine().createPersona();
+  private final Persona persona = new ExaltedEngine().createCharacter();
 
   public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext,
                                 IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
