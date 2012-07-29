@@ -22,7 +22,7 @@ public class DefaultPersonaTest {
     Closure closure = mock(Closure.class);
     Type type = new Type("type");
     Name name = new Name("name");
-    persona.doFor(type, name, closure);
-    verify(qualities).doFor(type, name, closure);
+    persona.doFor(new QualityKey(type, name), closure);
+    verify(qualities).doFor(new QualityKey(type, name), closure);
   }
 }

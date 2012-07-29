@@ -31,6 +31,7 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.characterengine.AddQuality;
 import net.sf.anathema.characterengine.Name;
 import net.sf.anathema.characterengine.Persona;
+import net.sf.anathema.characterengine.QualityKey;
 import net.sf.anathema.characterengine.Type;
 import net.sf.anathema.exaltedengine.ExaltedEngine;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -167,7 +168,9 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     for (IIdentifiedCasteTraitTypeGroup traitGroup : attributeTraitGroups) {
       for (ITraitType traitType : traitGroup.getAllGroupTypes()) {
         String name = traitType.getId();
-        persona.execute(new AddQuality(new Type("Attribute"), new Name(name)));
+        final Type attribute = new Type("Attribute");
+        final Name name1 = new Name(name);
+        persona.execute(new AddQuality(new QualityKey(attribute, name1)));
       }
     }
   }

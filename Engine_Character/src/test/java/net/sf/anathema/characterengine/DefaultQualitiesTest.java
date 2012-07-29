@@ -15,8 +15,8 @@ public class DefaultQualitiesTest {
   public void discoversPreviouslyAddedQualities() throws Exception {
     Type type = new Type("type");
     Name name = new Name("name");
-    qualities.addQuality(type, name);
-    qualities.doFor(type, name, closure);
+    qualities.addQuality(new QualityKey(type, name));
+    qualities.doFor(new QualityKey(type, name), closure);
     verify(closure).execute(isA(Quality.class));
   }
 
@@ -24,7 +24,7 @@ public class DefaultQualitiesTest {
   public void ignoresUnknownQualities() throws Exception {
     Type type = new Type("unknownType");
     Name name = new Name("unknownName");
-    qualities.doFor(type, name, closure);
+    qualities.doFor(new QualityKey(type, name), closure);
     verifyZeroInteractions(closure);
   }
 }

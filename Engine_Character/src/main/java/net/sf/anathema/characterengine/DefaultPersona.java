@@ -13,7 +13,7 @@ public class DefaultPersona implements Persona {
   }
 
   @Override
-  public void doFor(Type type, Name name, Closure closure) {
-    qualities.doFor(type, name, closure);
+  public void doFor(QualityKey qualityKey, Closure closure) {
+    qualities.doFor(qualityKey, closure);
   }
 }

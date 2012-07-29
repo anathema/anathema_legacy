@@ -12,7 +12,7 @@ public class AddQualityTest {
     Name name = new Name("name");
     Type type = new Type("type");
     Qualities qualities = mock(Qualities.class);
-    new AddQuality(type, name).execute(qualities);
-    verify(qualities).addQuality(type, name);
+    new AddQuality(new QualityKey(type, name)).execute(qualities);
+    verify(qualities).addQuality(new QualityKey(type, name));
   }
 }

@@ -4,6 +4,10 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class QualityKey {
+  public static QualityKey ForTypeAndName(String type, String name) {
+    return new QualityKey(new Type(type), new Name(name));
+  }
+
   @SuppressWarnings("UnusedDeclaration")
   private final Type type;
   @SuppressWarnings("UnusedDeclaration")
