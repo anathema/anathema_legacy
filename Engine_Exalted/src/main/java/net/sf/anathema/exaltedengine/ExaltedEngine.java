@@ -14,7 +14,7 @@ public class ExaltedEngine {
   private final DefaultEngine engine = new DefaultEngine();
 
   public ExaltedEngine() {
-    engine.setFactory(ATTRIBUTE, new AttributeFactory(new NumericValue(1)));
+    engine.setFactory(ATTRIBUTE, new AttributeFactory());
   }
 
   public Persona createCharacter() {
