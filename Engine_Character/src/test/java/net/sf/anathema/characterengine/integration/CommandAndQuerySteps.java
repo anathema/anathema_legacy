@@ -13,6 +13,7 @@ import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.Type;
 import net.sf.anathema.characterengine.support.DummyQualityFactory;
+import net.sf.anathema.characterengine.support.IncreaseBy;
 import net.sf.anathema.characterengine.support.NumericQuality;
 import net.sf.anathema.characterengine.support.NumericQualityFactory;
 import net.sf.anathema.characterengine.support.NumericValue;
@@ -53,6 +54,12 @@ public class CommandAndQuerySteps {
   @When("^the character does not know a quality$")
   public void the_character_does_not_know_a_quality() throws Throwable {
     //nothing to do
+  }
+
+  @When("^I increase the value of the (.*?) '(.*?)' by (\\d+)$")
+  public void I_increase_the_value_of_the_Attribute_Toughness_by(String type, String name, int modification) throws Throwable {
+    QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
+    persona.execute(new IncreaseBy(qualityKey, new NumericValue(modification)));
   }
 
   @Then("^the character can operate with the (.*?) '(.*?)'$")

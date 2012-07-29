@@ -15,3 +15,10 @@ Feature:  Characters can have qualities and operate on them
     And a rule that an Attribute starts with value 1
     When I add the Attribute 'Toughness' to the character
     Then Attribute 'Toughness' has the value 1
+
+  Scenario: Qualities' values are modifiable
+    Given a character
+    And a rule that an Attribute starts with value 1
+    When I add the Attribute 'Toughness' to the character
+    And I increase the value of the Attribute 'Toughness' by 2
+    Then Attribute 'Toughness' has the value 3
