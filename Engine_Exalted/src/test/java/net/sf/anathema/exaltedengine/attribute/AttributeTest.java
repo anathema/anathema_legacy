@@ -1,6 +1,8 @@
-package net.sf.anathema.exaltedengine;
+package net.sf.anathema.exaltedengine.attribute;
 
 import net.sf.anathema.characterengine.quality.Name;
+import net.sf.anathema.exaltedengine.NumericValue;
+import net.sf.anathema.exaltedengine.attributes.Attribute;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

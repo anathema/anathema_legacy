@@ -6,13 +6,15 @@ import net.sf.anathema.characterengine.persona.Persona;
 import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.Type;
+import net.sf.anathema.exaltedengine.attributes.AttributeFactory;
 
 public class ExaltedEngine {
 
+  public static final Type ATTRIBUTE = new Type("Attribute");
   private final DefaultEngine engine = new DefaultEngine();
 
   public ExaltedEngine() {
-    engine.setFactory(new Type("Attribute"), new AttributeFactory(new NumericValue(1)));
+    engine.setFactory(ATTRIBUTE, new AttributeFactory(new NumericValue(1)));
   }
 
   public Persona createCharacter() {
@@ -29,6 +31,6 @@ public class ExaltedEngine {
   }
 
   private void addAttribute(Persona character, String name) {
-    character.execute(new AddQuality(new QualityKey(new Type("Attribute"), new Name(name))));
+    character.execute(new AddQuality(new QualityKey(ATTRIBUTE, new Name(name))));
   }
 }

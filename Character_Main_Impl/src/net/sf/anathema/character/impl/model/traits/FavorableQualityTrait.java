@@ -8,8 +8,8 @@ import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.characterengine.quality.Name;
-import net.sf.anathema.exaltedengine.Attribute;
 import net.sf.anathema.exaltedengine.NumericValue;
+import net.sf.anathema.exaltedengine.attributes.Attribute;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 

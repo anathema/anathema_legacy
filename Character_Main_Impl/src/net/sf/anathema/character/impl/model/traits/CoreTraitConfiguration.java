@@ -31,9 +31,8 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.characterengine.persona.Persona;
 import net.sf.anathema.characterengine.persona.QualityClosure;
 import net.sf.anathema.characterengine.quality.Quality;
-import net.sf.anathema.characterengine.quality.Type;
-import net.sf.anathema.exaltedengine.Attribute;
 import net.sf.anathema.exaltedengine.ExaltedEngine;
+import net.sf.anathema.exaltedengine.attributes.Attribute;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.util.Identified;
 
@@ -91,7 +90,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private void addAttributes(ICharacterTemplate template) {
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAttributeIncrementChecker(template, this);
     if (useGenericEngine) {
-      persona.doForEach(new Type("Attribute"), new QualityClosure() {
+      persona.doForEach(ExaltedEngine.ATTRIBUTE, new QualityClosure() {
 
         @Override
         public void execute(Quality quality) {

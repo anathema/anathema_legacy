@@ -1,7 +1,8 @@
-package net.sf.anathema.exaltedengine;
+package net.sf.anathema.exaltedengine.attributes;
 
 import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.Quality;
+import net.sf.anathema.exaltedengine.NumericValue;
 
 public class Attribute implements Quality {
   private final NumericValue value;
