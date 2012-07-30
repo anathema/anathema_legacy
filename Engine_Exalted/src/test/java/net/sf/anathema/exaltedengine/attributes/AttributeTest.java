@@ -1,29 +1,38 @@
 package net.sf.anathema.exaltedengine.attributes;
 
 import net.sf.anathema.characterengine.quality.Name;
+import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.exaltedengine.NumericValue;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 public class AttributeTest {
   Name name = new Name("name");
+  NumericValue ownValue = new NumericValue(1);
+  Attribute attribute = new Attribute(ownValue, name);
 
   @Test
   public void forwardsComparisonToValue() throws Exception {
-    NumericValue ownValue = mock(NumericValue.class);
-    NumericValue valueForComparison = mock(NumericValue.class);
-    when(ownValue.isGreaterThan(valueForComparison)).thenReturn(true);
-    boolean greaterThan = new Attribute(ownValue, name).isGreaterThan(valueForComparison);
+    NumericValue valueForComparison = new NumericValue(0);
+    boolean greaterThan = attribute.isGreaterThan(valueForComparison);
     assertThat(greaterThan, is(true));
   }
 
   @Test
   public void identifiesOwnName() throws Exception {
-    boolean hasName = new Attribute(new NumericValue(5), name).isCalled(new Name("name"));
+    boolean hasName = attribute.isCalled(new Name("name"));
     assertThat(hasName, is(true));
+  }
+
+  @Test
+  public void notifiesListenersWhenValueChanges() throws Exception {
+    QualityListener listener = mock(QualityListener.class);
+    attribute.registerObserver(listener);
+    attribute.changeValueTo(new NumericValue(2));
+    verify(listener).eventOccurred();
   }
 }

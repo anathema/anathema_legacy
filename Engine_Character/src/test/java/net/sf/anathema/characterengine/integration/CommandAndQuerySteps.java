@@ -11,6 +11,7 @@ import net.sf.anathema.characterengine.persona.Persona;
 import net.sf.anathema.characterengine.persona.QualityClosure;
 import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityKey;
+import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.characterengine.quality.Type;
 import net.sf.anathema.characterengine.support.DummyQualityFactory;
 import net.sf.anathema.characterengine.support.IncreaseBy;
@@ -23,12 +24,15 @@ import org.hamcrest.TypeSafeMatcher;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 @SuppressWarnings("UnusedDeclaration")
 public class CommandAndQuerySteps {
 
   private Engine engine = new DefaultEngine();
   private Persona persona;
+  private QualityListener registeredListener;
 
   @Before
   public void addDummyQuality() {
@@ -57,9 +61,22 @@ public class CommandAndQuerySteps {
   }
 
   @When("^I increase the value of the (.*?) '(.*?)' by (\\d+)$")
-  public void I_increase_the_value_of_the_Attribute_Toughness_by(String type, String name, int modification) throws Throwable {
+  public void I_increase_the_value_of_the_Attribute_Toughness_by(String type, String name,
+                                                                 int modification) throws Throwable {
     QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
     persona.execute(new IncreaseBy(qualityKey, new NumericValue(modification)));
+  }
+
+  @When("^I register a listener for the (.*?) '(.*?)' on the character$")
+  public void I_register_a_listener_on_the_character(String type, String name) throws Throwable {
+    QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
+    registeredListener = mock(QualityListener.class);
+    persona.observe(qualityKey, registeredListener);
+  }
+
+  @Then("^I am notified about the new Attribute 'Toughness'$")
+  public void I_am_notified_about_the_new_Attribute_Toughness() throws Throwable {
+    verify(registeredListener).eventOccurred();
   }
 
   @Then("^the character can operate with the (.*?) '(.*?)'$")

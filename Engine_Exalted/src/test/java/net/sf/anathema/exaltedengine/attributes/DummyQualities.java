@@ -4,6 +4,7 @@ import net.sf.anathema.characterengine.persona.Qualities;
 import net.sf.anathema.characterengine.persona.QualityClosure;
 import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityKey;
+import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.characterengine.quality.Type;
 
 import java.util.HashMap;
@@ -30,6 +31,11 @@ public class DummyQualities implements Qualities {
 
   @Override
   public void doForEach(Type type, QualityClosure closure) {
+    //nothing to do
+  }
+
+  @Override
+  public void observe(QualityKey key, QualityListener listener) {
     //nothing to do
   }
 }

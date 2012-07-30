@@ -22,3 +22,9 @@ Feature:  Characters can have qualities and operate on them
     When I add the Attribute 'Toughness' to the character
     And I increase the value of the Attribute 'Toughness' by 2
     Then Attribute 'Toughness' has the value 3
+
+  Scenario: Qualities notify interested parties of executed commands
+    Given a character
+    When I register a listener for the Attribute 'Toughness' on the character
+    And I add the Attribute 'Toughness' to the character
+    Then I am notified about the new Attribute 'Toughness'
