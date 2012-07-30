@@ -41,7 +41,6 @@ public class AnathemaUpdateAction extends SmartAction {
       @Override
       public void run() {
         updater.runCheck();
-        System.out.println("running");
       }
     }).start();
   }
