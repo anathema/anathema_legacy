@@ -5,11 +5,10 @@ import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.Type;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class DefaultQualities implements Qualities {
-  private final Map<QualityKey, Quality> qualityMap = new HashMap<QualityKey, Quality>();
+  private final QualityMap qualityMap = new QualityMap();
   private final Engine engine;
 
   public DefaultQualities(Engine engine) {
@@ -24,7 +23,7 @@ public class DefaultQualities implements Qualities {
 
   @Override
   public void doFor(QualityKey qualityKey, QualityClosure closure) {
-    if (qualityMap.containsKey(qualityKey)) {
+    if (qualityMap.contains(qualityKey)) {
       Quality quality = qualityMap.get(qualityKey);
       closure.execute(quality);
     }
@@ -32,10 +31,9 @@ public class DefaultQualities implements Qualities {
 
   @Override
   public void doForEach(final Type type, final QualityClosure closure) {
-    for (Map.Entry<QualityKey, Quality> entry : qualityMap.entrySet()) {
-      Quality quality = entry.getValue();
-      QualityKey key = entry.getKey();
-      key.withTypeDo(new ExecuteQualityClosureIfTypeMatches(type, quality, closure));
+    List<Quality> qualityList = qualityMap.getAllWithType(type);
+    for (Quality quality : qualityList) {
+      closure.execute(quality);
     }
   }
 }

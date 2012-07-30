@@ -54,6 +54,18 @@ public class DefaultQualitiesTest {
     verify(closure).execute(secondQuality);
   }
 
+  @Test
+  public void doesNotExecuteClosureOnQualityOfDifferentType() throws Exception {
+    Type type = new Type("type");
+    Type differentType = new Type("differentType");
+    NumericQuality firstQuality = new NumericQuality(new NumericValue(0));
+    QualityKey firstName = new QualityKey(differentType, new Name("firstName"));
+    configureEngineToCreate(firstName, firstQuality);
+    qualities.addQuality(firstName);
+    qualities.doForEach(type, closure);
+    verifyZeroInteractions(closure);
+  }
+
   private void configureEngineToCreate(QualityKey key, NumericQuality quality) {
     when(engine.createQuality(key)).thenReturn(quality);
   }
