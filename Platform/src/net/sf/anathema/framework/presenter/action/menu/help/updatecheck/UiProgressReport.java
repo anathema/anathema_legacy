@@ -19,11 +19,17 @@ public class UiProgressReport extends ProgressReportAdapter {
 
   @Override
   public void latestAvailableVersionIs(Version available) {
-    if (available.isGreaterThan(installed)) {
-      page.setSuccessState("Help.UpdateCheck.Outdated", available);
-    }
-    else{
-      page.setSuccessState("Help.UpdateCheck.UpToDate", available);
+    boolean isUpdateAvailable = updateAvailable(available);
+    String messageKey = determineMessageToShow(isUpdateAvailable);
+    page.setSuccessState(messageKey, available);
+    page.enableUpdate(isUpdateAvailable);
+  }
+
+  private String determineMessageToShow(boolean available) {
+    if (available) {
+      return "Help.UpdateCheck.Outdated";
+    } else {
+      return "Help.UpdateCheck.UpToDate";
     }
   }
 
@@ -35,5 +41,9 @@ public class UiProgressReport extends ProgressReportAdapter {
   @Override
   public void versionLookupFailed(Exception e) {
     page.setErrorState("Help.UpdateCheck.IOException");
+  }
+
+  private boolean updateAvailable(Version available) {
+    return available.isGreaterThan(installed);
   }
 }
