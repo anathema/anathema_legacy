@@ -13,6 +13,10 @@ public class Attribute implements Quality {
     this.name = name;
   }
 
+  public void changeValueTo(NumericValue newValue) {
+    this.value.changeTo(newValue);
+  }
+
   public boolean hasValue(NumericValue value) {
     return value.equals(this.value);
   }
@@ -23,5 +27,10 @@ public class Attribute implements Quality {
 
   public boolean isCalled(Name name) {
     return this.name.equals(name);
+  }
+
+  @Override
+  public String toString() {
+    return "Attribute '" + name + "' at value " + value;
   }
 }

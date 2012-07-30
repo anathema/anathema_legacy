@@ -20,4 +20,9 @@ public class Name {
   public int hashCode() {
     return HashCodeBuilder.reflectionHashCode(this);
   }
+
+  @Override
+  public String toString() {
+    return name;
+  }
 }
