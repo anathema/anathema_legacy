@@ -94,7 +94,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
         @Override
         public void execute(Quality quality) {
-          addTrait(new FavorableQualityTrait((Attribute) quality));
+          addTrait(new FavorableQualityTrait(persona, (Attribute) quality));
         }
       });
     } else {

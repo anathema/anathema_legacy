@@ -7,17 +7,24 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
+import net.sf.anathema.characterengine.persona.Persona;
 import net.sf.anathema.characterengine.quality.Name;
+import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.exaltedengine.NumericValue;
 import net.sf.anathema.exaltedengine.attributes.Attribute;
+import net.sf.anathema.exaltedengine.attributes.SetValue;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
+import static net.sf.anathema.exaltedengine.ExaltedEngine.ATTRIBUTE;
+
 public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
+  private final Persona persona;
   private final Attribute quality;
   private int initialValue;
 
-  public FavorableQualityTrait(Attribute quality) {
+  public FavorableQualityTrait(Persona persona, Attribute quality) {
+    this.persona = persona;
     this.quality = quality;
     this.initialValue = getCurrentValue();
   }
@@ -44,22 +51,22 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public void addCreationPointListener(IIntValueChangedListener listener) {
-  
+
   }
 
   @Override
   public void removeCreationPointListener(IIntValueChangedListener listener) {
-  
+
   }
 
   @Override
   public void addCurrentValueListener(IIntValueChangedListener listener) {
-  
+
   }
 
   @Override
   public void removeCurrentValueListener(IIntValueChangedListener listener) {
-  
+
   }
 
   @Override
@@ -80,7 +87,7 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
   @Override
   public int getCurrentValue() {
     int currentValue = 0;
-    while(quality.isGreaterThan(new NumericValue(currentValue))) {
+    while (quality.isGreaterThan(new NumericValue(currentValue))) {
       currentValue++;
     }
     return currentValue;
@@ -198,6 +205,8 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public void setCurrentValue(int value) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    QualityKey qualityKey = new QualityKey(ATTRIBUTE, new Name(getType().getId()));
+    NumericValue newValue = new NumericValue(value);
+    persona.execute(new SetValue(qualityKey, newValue));
   }
 }

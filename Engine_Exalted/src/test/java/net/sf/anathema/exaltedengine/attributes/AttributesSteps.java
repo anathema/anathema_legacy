@@ -41,7 +41,7 @@ public class AttributesSteps {
   @When("^I increase the Attribute '(.*?)' to (\\d+)$")
   public void I_increase_the_Attribute_to(String name, int value) throws Throwable {
     QualityKey qualityKey = new QualityKey(ATTRIBUTE, new Name(name));
-    persona.doFor(qualityKey, new SetValue(new NumericValue(value)));
+    persona.execute(new SetValue(qualityKey, new NumericValue(value)));
   }
 
   @Then("^the character has the Attribute '(.*?)'$")
