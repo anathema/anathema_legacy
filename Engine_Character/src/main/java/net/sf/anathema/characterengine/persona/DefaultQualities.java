@@ -16,7 +16,7 @@ public class DefaultQualities implements Qualities {
   }
 
   @Override
-  public void addQuality(final QualityKey qualityKey) {
+  public void addQuality(QualityKey qualityKey) {
     Quality quality = engine.createQuality(qualityKey);
     qualityMap.put(qualityKey, quality);
   }
@@ -30,7 +30,7 @@ public class DefaultQualities implements Qualities {
   }
 
   @Override
-  public void doForEach(final Type type, final QualityClosure closure) {
+  public void doForEach(Type type, QualityClosure closure) {
     List<Quality> qualityList = qualityMap.getAllWithType(type);
     for (Quality quality : qualityList) {
       closure.execute(quality);
