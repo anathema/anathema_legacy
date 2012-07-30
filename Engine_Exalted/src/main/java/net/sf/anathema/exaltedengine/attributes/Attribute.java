@@ -17,7 +17,10 @@ public class Attribute implements Quality {
   }
 
   public void changeValueTo(NumericValue newValue) {
-    this.value.changeTo(newValue);
+    if (value.equals(newValue)){
+      return;
+    }
+    value.changeTo(newValue);
     announcer.announce().eventOccurred();
   }
 

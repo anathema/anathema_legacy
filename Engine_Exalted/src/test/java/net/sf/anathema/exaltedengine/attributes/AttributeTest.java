@@ -9,6 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class AttributeTest {
   Name name = new Name("name");
@@ -34,5 +35,13 @@ public class AttributeTest {
     attribute.registerObserver(listener);
     attribute.changeValueTo(new NumericValue(2));
     verify(listener).eventOccurred();
+  }
+
+  @Test
+  public void doesNothingIfValueDoesNotChange() throws Exception {
+    QualityListener listener = mock(QualityListener.class);
+    attribute.registerObserver(listener);
+    attribute.changeValueTo(new NumericValue(1));
+    verifyZeroInteractions(listener);
   }
 }

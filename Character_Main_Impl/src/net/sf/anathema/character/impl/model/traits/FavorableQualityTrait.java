@@ -10,6 +10,7 @@ import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.characterengine.persona.Persona;
 import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.QualityKey;
+import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.exaltedengine.NumericValue;
 import net.sf.anathema.exaltedengine.attributes.Attribute;
 import net.sf.anathema.exaltedengine.attributes.SetValue;
@@ -22,6 +23,7 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
   private final Persona persona;
   private final Attribute quality;
   private int initialValue;
+  private static final int FAKE_MAX = 10;
 
   public FavorableQualityTrait(Persona persona, Attribute quality) {
     this.persona = persona;
@@ -46,7 +48,7 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public int getMaximalValue() {
-    return initialValue;
+    return FAKE_MAX;
   }
 
   @Override
@@ -60,8 +62,13 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
   }
 
   @Override
-  public void addCurrentValueListener(IIntValueChangedListener listener) {
-
+  public void addCurrentValueListener(final IIntValueChangedListener listener) {
+    persona.observe(getQualityKey(), new QualityListener() {
+      @Override
+      public void eventOccurred() {
+        listener.valueChanged(getCurrentValue());
+      }
+    });
   }
 
   @Override
@@ -185,12 +192,12 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public int getModifiedMaximalValue() {
-    return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    return FAKE_MAX;  //To change body of implemented methods use File | Settings | File Templates.
   }
 
   @Override
   public int getUnmodifiedMaximalValue() {
-    return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    return FAKE_MAX;  //To change body of implemented methods use File | Settings | File Templates.
   }
 
   @Override
@@ -205,8 +212,12 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public void setCurrentValue(int value) {
-    QualityKey qualityKey = new QualityKey(ATTRIBUTE, new Name(getType().getId()));
+    QualityKey qualityKey = getQualityKey();
     NumericValue newValue = new NumericValue(value);
     persona.execute(new SetValue(qualityKey, newValue));
+  }
+
+  private QualityKey getQualityKey() {
+    return new QualityKey(ATTRIBUTE, new Name(getType().getId()));
   }
 }
