@@ -28,3 +28,10 @@ Feature:  Characters can have qualities and operate on them
     When I register a listener for the Attribute 'Toughness' on the character
     And I add the Attribute 'Toughness' to the character
     Then I am notified about the new Attribute 'Toughness'
+
+  Scenario: Clients can stop their observation at any time
+    Given a character
+    And a registered listener for the Attribute 'Toughness'
+    When I remove the listener for the Attribute 'Toughness'
+    And I add the Attribute 'Toughness' to the character
+    Then I am not notified about the new Attribute 'Toughness'

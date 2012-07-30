@@ -13,4 +13,6 @@ public interface Qualities {
   void doForEach(Type type, QualityClosure closure);
 
   void observe(QualityKey key, QualityListener listener);
+
+  void stopObservation(QualityKey key, QualityListener listener);
 }

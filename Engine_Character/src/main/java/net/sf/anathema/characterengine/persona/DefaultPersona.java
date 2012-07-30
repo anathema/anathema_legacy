@@ -31,4 +31,9 @@ public class DefaultPersona implements Persona {
   public void observe(QualityKey qualityKey, QualityListener listener) {
     qualities.observe(qualityKey, listener);
   }
+
+  @Override
+  public void stopObservation(QualityKey qualityKey, QualityListener listener) {
+    qualities.stopObservation(qualityKey, listener);
+  }
 }

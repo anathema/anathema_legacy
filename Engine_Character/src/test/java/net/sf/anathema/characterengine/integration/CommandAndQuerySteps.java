@@ -26,6 +26,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 
 @SuppressWarnings("UnusedDeclaration")
 public class CommandAndQuerySteps {
@@ -47,6 +48,12 @@ public class CommandAndQuerySteps {
   @Given("^a rule that an (.*?) starts with value (\\d+)$")
   public void a_rule_that_type_starts_with_value(String type, int startValue) throws Throwable {
     engine.setFactory(new Type(type), new NumericQualityFactory(startValue));
+  }
+
+
+  @Given("^a registered listener for the (.*?) '(.*?)'$")
+  public void a_registered_listener_for(String type, String name) throws Throwable {
+    I_register_a_listener_on_the_character(type, name);
   }
 
   @When("^I add the (.*?) '(.*?)' to the character$")
@@ -72,6 +79,17 @@ public class CommandAndQuerySteps {
     QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
     registeredListener = mock(QualityListener.class);
     persona.observe(qualityKey, registeredListener);
+  }
+
+  @When("^I remove the listener for the (.*?) '(.*?)'$")
+  public void I_remove_the_listener(String type, String name) throws Throwable {
+    QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
+    persona.stopObservation(qualityKey, registeredListener);
+  }
+
+  @Then("^I am not notified about the new Attribute 'Toughness'$")
+  public void I_am_not_notified_about_the_new_Attribute_Toughness() throws Throwable {
+    verifyZeroInteractions(registeredListener);
   }
 
   @Then("^I am notified about the new Attribute 'Toughness'$")

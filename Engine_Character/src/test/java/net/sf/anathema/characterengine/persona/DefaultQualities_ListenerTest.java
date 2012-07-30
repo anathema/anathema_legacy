@@ -13,6 +13,7 @@ import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 public class DefaultQualities_ListenerTest {
@@ -30,6 +31,20 @@ public class DefaultQualities_ListenerTest {
     qualities.observe(key, listener);
     qualities.addQuality(key);
     verify(listener).eventOccurred();
+  }
+
+  @Test
+  public void doesNotNotifyRemovedListener() throws Exception {
+    Type type = new Type("type");
+    Name name = new Name("name");
+    QualityKey key = new QualityKey(type, name);
+    NumericQuality quality = new NumericQuality(new NumericValue(0));
+    configureEngineToCreate(key, quality);
+    QualityListener listener = mock(QualityListener.class);
+    qualities.observe(key, listener);
+    qualities.stopObservation(key, listener);
+    qualities.addQuality(key);
+    verifyZeroInteractions(listener);
   }
 
   @Test

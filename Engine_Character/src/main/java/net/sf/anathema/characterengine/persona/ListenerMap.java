@@ -23,6 +23,10 @@ public class ListenerMap {
     listenerMap.put(key, listener);
   }
 
+  public void remove(QualityKey key, QualityListener listener) {
+    listenerMap.remove(key);
+  }
+
   public QualityListener get(QualityKey qualityKey) {
     return listenerMap.get(qualityKey);
   }

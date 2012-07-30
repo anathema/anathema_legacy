@@ -46,6 +46,11 @@ public class DefaultQualities implements Qualities {
     listenerMap.put(key, listener);
   }
 
+  @Override
+  public void stopObservation(QualityKey key, QualityListener listener) {
+    listenerMap.remove(key, listener);
+  }
+
   private class MapTriggeringListener implements QualityListener {
     private final QualityKey qualityKey;
 

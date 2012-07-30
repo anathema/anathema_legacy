@@ -46,6 +46,14 @@ public class DefaultPersonaTest {
     verify(qualities).observe(key, listener);
   }
 
+  @Test
+  public void forwardsListenerRemovalToQualities() throws Exception {
+    QualityListener listener = mock(QualityListener.class);
+    QualityKey key = createQualityKey();
+    persona.stopObservation(key, listener);
+    verify(qualities).stopObservation(key, listener);
+  }
+
   private QualityKey createQualityKey() {
     Type type = new Type("type");
     Name name = new Name("name");

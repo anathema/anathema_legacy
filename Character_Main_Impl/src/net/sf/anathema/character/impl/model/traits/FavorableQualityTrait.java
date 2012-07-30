@@ -17,12 +17,16 @@ import net.sf.anathema.exaltedengine.attributes.SetValue;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static net.sf.anathema.exaltedengine.ExaltedEngine.ATTRIBUTE;
 
 public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
   private final Persona persona;
   private final Attribute quality;
   private int initialValue;
+  private final Map<IIntValueChangedListener, QualityListener> listenerMapping = new HashMap<IIntValueChangedListener, QualityListener>();
   private static final int FAKE_MAX = 10;
 
   public FavorableQualityTrait(Persona persona, Attribute quality) {
@@ -63,17 +67,15 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public void addCurrentValueListener(final IIntValueChangedListener listener) {
-    persona.observe(getQualityKey(), new QualityListener() {
-      @Override
-      public void eventOccurred() {
-        listener.valueChanged(getCurrentValue());
-      }
-    });
+    QualityListenerAdapter adapter = new QualityListenerAdapter(listener);
+    listenerMapping.put(listener, adapter);
+    persona.observe(getQualityKey(), adapter);
   }
 
   @Override
   public void removeCurrentValueListener(IIntValueChangedListener listener) {
-
+    QualityListener adapter = listenerMapping.remove(listener);
+    persona.stopObservation(getQualityKey(), adapter);
   }
 
   @Override
@@ -219,5 +221,18 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   private QualityKey getQualityKey() {
     return new QualityKey(ATTRIBUTE, new Name(getType().getId()));
+  }
+
+  private class QualityListenerAdapter implements QualityListener {
+    private final IIntValueChangedListener listener;
+
+    public QualityListenerAdapter(IIntValueChangedListener listener) {
+      this.listener = listener;
+    }
+
+    @Override
+    public void eventOccurred() {
+      listener.valueChanged(getCurrentValue());
+    }
   }
 }
