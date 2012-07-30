@@ -38,4 +38,9 @@ public class DummyQualities implements Qualities {
   public void observe(QualityKey key, QualityListener listener) {
     //nothing to do
   }
+
+  @Override
+  public void stopObservation(QualityKey key, QualityListener listener) {
+    //nothing to do
+  }
 }
