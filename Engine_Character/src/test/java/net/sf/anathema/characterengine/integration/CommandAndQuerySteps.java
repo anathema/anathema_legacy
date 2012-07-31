@@ -11,6 +11,7 @@ import net.sf.anathema.characterengine.persona.Persona;
 import net.sf.anathema.characterengine.persona.QualityClosure;
 import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityKey;
+import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.characterengine.quality.Type;
 import net.sf.anathema.characterengine.support.DummyQualityFactory;
 import net.sf.anathema.characterengine.support.IncreaseBy;
@@ -23,12 +24,16 @@ import org.hamcrest.TypeSafeMatcher;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 
 @SuppressWarnings("UnusedDeclaration")
 public class CommandAndQuerySteps {
 
   private Engine engine = new DefaultEngine();
   private Persona persona;
+  private QualityListener registeredListener;
 
   @Before
   public void addDummyQuality() {
@@ -45,6 +50,12 @@ public class CommandAndQuerySteps {
     engine.setFactory(new Type(type), new NumericQualityFactory(startValue));
   }
 
+
+  @Given("^a registered listener for the (.*?) '(.*?)'$")
+  public void a_registered_listener_for(String type, String name) throws Throwable {
+    I_register_a_listener_on_the_character(type, name);
+  }
+
   @When("^I add the (.*?) '(.*?)' to the character$")
   public void I_add_the_quality_to_the_character(String type, String name) throws Throwable {
     QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
@@ -57,9 +68,33 @@ public class CommandAndQuerySteps {
   }
 
   @When("^I increase the value of the (.*?) '(.*?)' by (\\d+)$")
-  public void I_increase_the_value_of_the_Attribute_Toughness_by(String type, String name, int modification) throws Throwable {
+  public void I_increase_the_value_of_the_Attribute_Toughness_by(String type, String name,
+                                                                 int modification) throws Throwable {
     QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
     persona.execute(new IncreaseBy(qualityKey, new NumericValue(modification)));
+  }
+
+  @When("^I register a listener for the (.*?) '(.*?)' on the character$")
+  public void I_register_a_listener_on_the_character(String type, String name) throws Throwable {
+    QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
+    registeredListener = mock(QualityListener.class);
+    persona.observe(qualityKey, registeredListener);
+  }
+
+  @When("^I remove the listener for the (.*?) '(.*?)'$")
+  public void I_remove_the_listener(String type, String name) throws Throwable {
+    QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
+    persona.stopObservation(qualityKey, registeredListener);
+  }
+
+  @Then("^I am not notified about the new Attribute 'Toughness'$")
+  public void I_am_not_notified_about_the_new_Attribute_Toughness() throws Throwable {
+    verifyZeroInteractions(registeredListener);
+  }
+
+  @Then("^I am notified about the new Attribute 'Toughness'$")
+  public void I_am_notified_about_the_new_Attribute_Toughness() throws Throwable {
+    verify(registeredListener).eventOccurred();
   }
 
   @Then("^the character can operate with the (.*?) '(.*?)'$")

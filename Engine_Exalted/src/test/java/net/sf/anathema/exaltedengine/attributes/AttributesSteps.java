@@ -1,5 +1,6 @@
-package net.sf.anathema.exaltedengine.attribute;
+package net.sf.anathema.exaltedengine.attributes;
 
+import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 import net.sf.anathema.characterengine.persona.Persona;
@@ -9,7 +10,6 @@ import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.exaltedengine.ExaltedEngine;
 import net.sf.anathema.exaltedengine.NumericValue;
-import net.sf.anathema.exaltedengine.attributes.Attribute;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
@@ -26,12 +26,25 @@ public class AttributesSteps {
   private ExaltedEngine engine = new ExaltedEngine();
   private Persona persona;
 
+
+  @Given("^an Exalted character$")
+  public void an_Exalted_character() throws Throwable {
+    I_create_an_Exalted_character();
+  }
+
   @When("^I create an Exalted character$")
   public void I_create_an_Exalted_character() throws Throwable {
     persona = engine.createCharacter();
   }
 
-  @Then("^the character has the Attribute (.*?)$")
+
+  @When("^I increase the Attribute '(.*?)' to (\\d+)$")
+  public void I_increase_the_Attribute_to(String name, int value) throws Throwable {
+    QualityKey qualityKey = new QualityKey(ATTRIBUTE, new Name(name));
+    persona.execute(new SetValue(qualityKey, new NumericValue(value)));
+  }
+
+  @Then("^the character has the Attribute '(.*?)'$")
   public void the_character_has_the_Attribute(String name) throws Throwable {
     QualityKey qualityKey = new QualityKey(ATTRIBUTE, new Name(name));
     QualityClosure closure = mock(QualityClosure.class);
@@ -39,19 +52,33 @@ public class AttributesSteps {
     verify(closure).execute(isNotNull(Quality.class));
   }
 
-  @Then("^each Attribute has value (\\d+)$")
-  public void each_Attribute_has_value(int value) throws Throwable {
-    persona.doForEach(ATTRIBUTE, new QualityClosure() {
-
-      @Override
-      public void execute(Quality quality) {
-        Attribute attribute = (Attribute) quality;
-        assertThat(attribute, hasValue(1));
-      }
-    });
+  @Then("^the character has the Attribute '(.*?)' at (\\d+)$")
+  public void the_character_has_the_Attribute(String name, int value) throws Throwable {
+    QualityKey qualityKey = new QualityKey(ATTRIBUTE, new Name(name));
+    persona.doFor(qualityKey, new AssertValue(value));
   }
 
-  private Matcher<Attribute> hasValue(final int value) {
+  @Then("^each Attribute has value (\\d+)$")
+  public void each_Attribute_has_value(final int value) throws Throwable {
+    persona.doForEach(ATTRIBUTE, new AssertValue(value));
+  }
+
+
+  private class AssertValue implements QualityClosure {
+
+    private final int value;
+
+    public AssertValue(int value) {
+      this.value = value;
+    }
+
+    @Override
+    public void execute(Quality quality) {
+      Attribute attribute = (Attribute) quality;
+      assertThat(attribute, hasValue(value));
+    }
+
+    private Matcher<Attribute> hasValue(final int value) {
       return new TypeSafeMatcher<Attribute>() {
         @Override
         protected boolean matchesSafely(Attribute quality) {
@@ -63,5 +90,6 @@ public class AttributesSteps {
           description.appendText("a quality with value ").appendValue(value);
         }
       };
+    }
   }
 }

@@ -7,17 +7,30 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
+import net.sf.anathema.characterengine.persona.Persona;
 import net.sf.anathema.characterengine.quality.Name;
+import net.sf.anathema.characterengine.quality.QualityKey;
+import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.exaltedengine.NumericValue;
 import net.sf.anathema.exaltedengine.attributes.Attribute;
+import net.sf.anathema.exaltedengine.attributes.SetValue;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static net.sf.anathema.exaltedengine.ExaltedEngine.ATTRIBUTE;
+
 public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
+  private final Persona persona;
   private final Attribute quality;
   private int initialValue;
+  private final Map<IIntValueChangedListener, QualityListener> listenerMapping = new HashMap<IIntValueChangedListener, QualityListener>();
+  private static final int FAKE_MAX = 10;
 
-  public FavorableQualityTrait(Attribute quality) {
+  public FavorableQualityTrait(Persona persona, Attribute quality) {
+    this.persona = persona;
     this.quality = quality;
     this.initialValue = getCurrentValue();
   }
@@ -39,27 +52,30 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public int getMaximalValue() {
-    return initialValue;
+    return FAKE_MAX;
   }
 
   @Override
   public void addCreationPointListener(IIntValueChangedListener listener) {
-  
+
   }
 
   @Override
   public void removeCreationPointListener(IIntValueChangedListener listener) {
-  
+
   }
 
   @Override
-  public void addCurrentValueListener(IIntValueChangedListener listener) {
-  
+  public void addCurrentValueListener(final IIntValueChangedListener listener) {
+    QualityListenerAdapter adapter = new QualityListenerAdapter(listener);
+    listenerMapping.put(listener, adapter);
+    persona.observe(getQualityKey(), adapter);
   }
 
   @Override
   public void removeCurrentValueListener(IIntValueChangedListener listener) {
-  
+    QualityListener adapter = listenerMapping.remove(listener);
+    persona.stopObservation(getQualityKey(), adapter);
   }
 
   @Override
@@ -80,7 +96,7 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
   @Override
   public int getCurrentValue() {
     int currentValue = 0;
-    while(quality.isGreaterThan(new NumericValue(currentValue))) {
+    while (quality.isGreaterThan(new NumericValue(currentValue))) {
       currentValue++;
     }
     return currentValue;
@@ -178,12 +194,12 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public int getModifiedMaximalValue() {
-    return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    return FAKE_MAX;  //To change body of implemented methods use File | Settings | File Templates.
   }
 
   @Override
   public int getUnmodifiedMaximalValue() {
-    return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    return FAKE_MAX;  //To change body of implemented methods use File | Settings | File Templates.
   }
 
   @Override
@@ -198,6 +214,25 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public void setCurrentValue(int value) {
-    //To change body of implemented methods use File | Settings | File Templates.
+    QualityKey qualityKey = getQualityKey();
+    NumericValue newValue = new NumericValue(value);
+    persona.execute(new SetValue(qualityKey, newValue));
+  }
+
+  private QualityKey getQualityKey() {
+    return new QualityKey(ATTRIBUTE, new Name(getType().getId()));
+  }
+
+  private class QualityListenerAdapter implements QualityListener {
+    private final IIntValueChangedListener listener;
+
+    public QualityListenerAdapter(IIntValueChangedListener listener) {
+      this.listener = listener;
+    }
+
+    @Override
+    public void eventOccurred() {
+      listener.valueChanged(getCurrentValue());
+    }
   }
 }

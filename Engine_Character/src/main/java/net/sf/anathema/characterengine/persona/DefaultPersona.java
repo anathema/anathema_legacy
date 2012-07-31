@@ -2,6 +2,7 @@ package net.sf.anathema.characterengine.persona;
 
 import net.sf.anathema.characterengine.command.Command;
 import net.sf.anathema.characterengine.quality.QualityKey;
+import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.characterengine.quality.Type;
 
 public class DefaultPersona implements Persona {
@@ -24,5 +25,15 @@ public class DefaultPersona implements Persona {
   @Override
   public void doForEach(Type type, QualityClosure closure) {
     qualities.doForEach(type, closure);
+  }
+
+  @Override
+  public void observe(QualityKey qualityKey, QualityListener listener) {
+    qualities.observe(qualityKey, listener);
+  }
+
+  @Override
+  public void stopObservation(QualityKey qualityKey, QualityListener listener) {
+    qualities.stopObservation(qualityKey, listener);
   }
 }

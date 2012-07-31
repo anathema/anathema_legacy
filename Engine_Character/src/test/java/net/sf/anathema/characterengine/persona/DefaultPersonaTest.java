@@ -3,6 +3,7 @@ package net.sf.anathema.characterengine.persona;
 import net.sf.anathema.characterengine.command.Command;
 import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.QualityKey;
+import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.characterengine.quality.Type;
 import org.junit.Test;
 
@@ -24,10 +25,9 @@ public class DefaultPersonaTest {
   @Test
   public void executesQueriesOnQualities() throws Exception {
     QualityClosure closure = mock(QualityClosure.class);
-    Type type = new Type("type");
-    Name name = new Name("name");
-    persona.doFor(new QualityKey(type, name), closure);
-    verify(qualities).doFor(new QualityKey(type, name), closure);
+    QualityKey qualityKey = createQualityKey();
+    persona.doFor(qualityKey, closure);
+    verify(qualities).doFor(qualityKey, closure);
   }
 
   @Test
@@ -36,5 +36,27 @@ public class DefaultPersonaTest {
     Type type = new Type("type");
     persona.doForEach(type, closure);
     verify(qualities).doForEach(type, closure);
+  }
+
+  @Test
+  public void forwardsListenersToQualities() throws Exception {
+    QualityListener listener = mock(QualityListener.class);
+    QualityKey key = createQualityKey();
+    persona.observe(key, listener);
+    verify(qualities).observe(key, listener);
+  }
+
+  @Test
+  public void forwardsListenerRemovalToQualities() throws Exception {
+    QualityListener listener = mock(QualityListener.class);
+    QualityKey key = createQualityKey();
+    persona.stopObservation(key, listener);
+    verify(qualities).stopObservation(key, listener);
+  }
+
+  private QualityKey createQualityKey() {
+    Type type = new Type("type");
+    Name name = new Name("name");
+    return new QualityKey(type, name);
   }
 }

@@ -1,4 +1,4 @@
-package net.sf.anathema.exaltedengine.attribute;
+package net.sf.anathema.exaltedengine.attributes;
 
 import cucumber.junit.Cucumber;
 import org.junit.runner.RunWith;
