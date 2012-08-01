@@ -63,9 +63,6 @@ subprojects {
   
   repositories {
     mavenCentral()
-    maven{
-      url 'https://oss.sonatype.org/content/groups/public/'
-    }
     maven {
       url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
     }
