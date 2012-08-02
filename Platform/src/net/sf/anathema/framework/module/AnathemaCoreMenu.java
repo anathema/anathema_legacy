@@ -6,12 +6,12 @@ import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
 import net.sf.anathema.framework.presenter.action.AnathemaLoadAction;
 import net.sf.anathema.framework.presenter.action.AnathemaNewAction;
 import net.sf.anathema.framework.presenter.action.menu.help.AnathemaAboutAction;
-import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.AnathemaUpdateAction;
+import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateAction;
 import net.sf.anathema.framework.presenter.action.preferences.AnathemaPreferencesAction;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
-import net.sf.anathema.framework.presenter.itemmanagement.SelectedItemCloseAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
+import net.sf.anathema.framework.presenter.itemmanagement.SelectedItemCloseAction;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
@@ -54,7 +54,7 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaExitAction.createMenuAction(resources));
     IMenu helpMenu = menubar.getHelpMenu();
-    helpMenu.addMenuItem(AnathemaUpdateAction.createMenuAction(resources));
+    helpMenu.addMenuItem(UpdateAction.createMenuAction(resources));
     helpMenu.addMenuItem(AnathemaAboutAction.createMenuAction(resources));
     createExtraMenu(model, resources, menubar);
   }

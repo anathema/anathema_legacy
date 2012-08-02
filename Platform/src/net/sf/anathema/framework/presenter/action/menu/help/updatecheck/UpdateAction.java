@@ -17,37 +17,33 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
-public class AnathemaUpdateAction extends SmartAction {
+public class UpdateAction extends SmartAction {
 
   public static final boolean AUTO_UPDATE_ENABLED = false;
 
   public static Action createMenuAction(IResources resources) {
-    AnathemaUpdateAction action = new AnathemaUpdateAction(resources);
+    UpdateAction action = new UpdateAction(resources);
     action.setName(resources.getString("Help.UpdateCheck.Title")); //$NON-NLS-1$
     return action;
   }
 
   private IResources resources;
 
-  public AnathemaUpdateAction(IResources resources) {
+  public UpdateAction(IResources resources) {
     this.resources = resources;
   }
 
   @Override
   protected void execute(Component parentComponent) {
     Version currentVersion = getCurrentVersion();
-    final UpdateSystem updateSystem;
-    if (AUTO_UPDATE_ENABLED) {
-      updateSystem = ConfiguredUpdateSystem.loadProperties().andIfTheInstalledVersionIsUnknownUse(currentVersion).create();
-    } else {
-      updateSystem = ConfiguredUpdateSystem.loadProperties().butDiscoverAvailableVersionThrough(new TagsOnGithub()).andIfTheInstalledVersionIsUnknownUse(currentVersion).create();
-    }
-    final Updater updater = updateSystem.checkForUpdates();
+    UpdateSystem updateSystem = createUpdateSystem(currentVersion);
+    Updater updater = updateSystem.checkForUpdates();
     Version installedVersion = updateSystem.getInstalledVersion();
     UpdateDialogPage page = new UpdateDialogPage(resources, installedVersion);
     prepareForInstallation(page, updater);
     UserDialog dialog = new UserDialog(parentComponent, page);
-    updateSystem.reportAllProgressTo(new UiProgressReport(page, installedVersion));
+    updateSystem.reportAllProgressTo(new VersionDiscoveryReport(page, installedVersion));
+    updateSystem.reportAllProgressTo(new InstallationProgressReport(page));
     updateSystem.reportAllProgressTo(new DialogUpdater(dialog));
     updateSystem.reportAllProgressTo(new ConfigureAnathema(updateSystem));
     dialog.getDialog().setModal(false);
@@ -55,13 +51,22 @@ public class AnathemaUpdateAction extends SmartAction {
     runUpdateCheck(updater);
   }
 
-  private void prepareForInstallation(UpdateDialogPage page, final Updater updater) {
-    page.whenUpdateIsRequestedDo(new SmartAction() {
+  private UpdateSystem createUpdateSystem(Version currentVersion) {
+    if (AUTO_UPDATE_ENABLED) {
+      return ConfiguredUpdateSystem.loadProperties().andIfTheInstalledVersionIsUnknownUse(currentVersion).create();
+    } else {
+      return ConfiguredUpdateSystem.loadProperties().butDiscoverAvailableVersionThrough(new TagsOnGithub()).andIfTheInstalledVersionIsUnknownUse(currentVersion).create();
+    }
+  }
+
+  private void prepareForInstallation(final UpdateDialogPage page, final Updater updater) {
+    page.whenUpdateIsRequestedDo(new SmartAction("Install update") {
       @Override
       protected void execute(Component parentComponent) {
         runInThread(new Runnable() {
           @Override
           public void run() {
+            page.disableUpdate();
             updater.updateToLatestVersion();
           }
         });

@@ -31,6 +31,16 @@ public class DialogUpdater extends ProgressReportAdapter {
     updateDialog();
   }
 
+  @Override
+  public void startingInstallationOf(Version version) {
+    updateDialog();
+  }
+
+  @Override
+  public void finishedInstallation() {
+    updateDialog();
+  }
+
   private void updateDialog() {
     dialog.updateDescription();
     dialog.getDialogControl().checkInputValid();

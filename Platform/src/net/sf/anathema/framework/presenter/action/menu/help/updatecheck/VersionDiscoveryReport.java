@@ -3,11 +3,11 @@ package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
 import de.idos.updates.Version;
 import de.idos.updates.store.ProgressReportAdapter;
 
-public class UiProgressReport extends ProgressReportAdapter {
+public class VersionDiscoveryReport extends ProgressReportAdapter {
   private UpdateDialogPage page;
   private final Version installed;
 
-  public UiProgressReport(UpdateDialogPage updateDialogPage, Version installed) {
+  public VersionDiscoveryReport(UpdateDialogPage updateDialogPage, Version installed) {
     this.page = updateDialogPage;
     this.installed = installed;
   }
@@ -22,7 +22,12 @@ public class UiProgressReport extends ProgressReportAdapter {
     boolean isUpdateAvailable = updateAvailable(available);
     String messageKey = determineMessageToShow(isUpdateAvailable);
     page.setSuccessState(messageKey, available);
-    page.enableUpdate(isUpdateAvailable);
+    if (isUpdateAvailable) {
+      page.enableUpdate();
+    }
+    else {
+      page.disableUpdate();
+    }
   }
 
   private String determineMessageToShow(boolean available) {
