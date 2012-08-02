@@ -26,7 +26,6 @@ import java.lang.reflect.InvocationTargetException;
 
 public class StartDatabaseAction extends SmartAction {
 
-  private static final long serialVersionUID = 5175871986672187550L;
   private final IAnathemaModel anathemaModel;
   private final IResources resources;
   private final IDatabaseActionProperties properties;
