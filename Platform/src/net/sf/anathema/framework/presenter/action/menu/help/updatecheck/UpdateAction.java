@@ -7,6 +7,7 @@ import de.idos.updates.Version;
 import de.idos.updates.configuration.ConfiguredUpdateSystem;
 import de.idos.updates.store.ProgressReportAdapter;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.dialog.userdialog.DefaultDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.io.FilenameUtils;
@@ -41,7 +42,8 @@ public class UpdateAction extends SmartAction {
     Version installedVersion = updateSystem.getInstalledVersion();
     UpdateDialogPage page = new UpdateDialogPage(resources, installedVersion);
     prepareForInstallation(page, updater);
-    UserDialog dialog = new UserDialog(parentComponent, page);
+    DefaultDialogConfiguration dialogConfiguration = DefaultDialogConfiguration.createWithOkOnly(page);
+    UserDialog dialog = new UserDialog(parentComponent, dialogConfiguration);
     updateSystem.reportAllProgressTo(new VersionDiscoveryReport(page, installedVersion));
     updateSystem.reportAllProgressTo(new InstallationProgressReport(page));
     updateSystem.reportAllProgressTo(new DialogUpdater(dialog));

@@ -4,6 +4,8 @@ import de.idos.updates.Version;
 import de.idos.updates.store.ProgressReportAdapter;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 
+import javax.swing.SwingUtilities;
+
 public class DialogUpdater extends ProgressReportAdapter {
   private final UserDialog dialog;
 
@@ -42,7 +44,12 @@ public class DialogUpdater extends ProgressReportAdapter {
   }
 
   private void updateDialog() {
-    dialog.updateDescription();
-    dialog.getDialogControl().checkInputValid();
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        dialog.updateDescription();
+        dialog.getDialogControl().checkInputValid();
+      }
+    });
   }
 }
