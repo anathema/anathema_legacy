@@ -10,5 +10,4 @@ public interface IItemManagementModelListener {
   void itemSelected(IItem item);
 
   void itemRemoved(IItem item);
-
 }

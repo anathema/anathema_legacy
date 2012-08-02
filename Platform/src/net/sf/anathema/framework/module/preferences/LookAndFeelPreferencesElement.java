@@ -50,13 +50,10 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
   }
 
   private void selectClass(String className) {
-    assert SwingUtilities.isEventDispatchThread();
-
     JComboBox currentCombo = combo;
     if (currentCombo == null) {
       return;
     }
-
     selected = null;
     int itemCount = currentCombo.getItemCount();
     int selectIndex = -1;

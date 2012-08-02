@@ -1,13 +1,13 @@
 package net.sf.anathema.framework.presenter.action;
 
-import javax.swing.Action;
-
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.lib.control.IChangeListener;
+
+import javax.swing.Action;
 
 public class LoadActionEnabler {
 

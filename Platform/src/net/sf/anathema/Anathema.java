@@ -8,6 +8,7 @@ import net.sf.anathema.framework.view.IWindow;
 import net.sf.anathema.initialization.AnathemaInitializer;
 import net.sf.anathema.initialization.InitializationException;
 
+import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class Anathema {
@@ -33,10 +34,15 @@ public class Anathema {
     AnathemaEnvironment.initTooltipManager(initializationPreferences);
   }
 
-  private void showMainFrame(IInitializationPreferences initializationPreferences) {
-    IWindow anathemaView = createView(initializationPreferences);
-    displayStatus("Done.");
-    anathemaView.show();
+  private void showMainFrame(final IInitializationPreferences initializationPreferences) {
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        IWindow anathemaView = createView(initializationPreferences);
+        displayStatus("Done.");
+        anathemaView.show();
+      }
+    });
   }
 
   private IWindow createView(IInitializationPreferences initializationPreferences) {
