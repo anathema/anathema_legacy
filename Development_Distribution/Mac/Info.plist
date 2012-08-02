@@ -10,6 +10,8 @@
 	<string>@version-major@.@version-minor@.@version-revision@</string>
 	<key>CFBundleName</key>
 	<string>Anathema</string>
+  <key>CFBundleIdentifier</key>
+  <string>net.sf.anathema</string>
 	<key>CFBundleAllowMixedLocalizations</key>
 	<string>true</string>
 	<key>CFBundleExecutable</key>
@@ -19,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
-	<string>Athm</string>
+	<string>????</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleIconFile</key>
