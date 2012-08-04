@@ -164,37 +164,75 @@ tag.description = 'Tags the release and pushes the tag to github. [Requires cont
 task upload << {
   def host     = "frs.sourceforge.net"
   def dir      = "/home/frs/project/anathema"
-  def keyfile  = "${System.properties['user.home']}/.ssh/id_rsa"
-  def username = project.hasProperty('sfUsername') ? sfUsername : System.console().readLine("\nSourceforge Username: ")
-  
-  while( ! new File(keyfile).exists() ) {
-    keyfile = System.console().readLine("\nCould not find the ssh private keyfile: ${keyfile}\nEnter your keyfile pathname: ")
-    keyfile = keyfile.replace( "~", System.properties['user.home'] )
-  }
-  def passphrase = project.hasProperty('sfPassphrase') ? sfPassphrase : System.console().readPassword("\nSourceforge SSH Key Passphrase: ")
-    
-  out.println( "\nPlease be patient, it takes a few minutes to upload the releases" )
-  out.println( "Unfortunately, feedback during the upload is unavailable (unless you use the -i option)")
-
-  ant.taskdef(
-          name: "scp2",
-     classname: "org.apache.tools.ant.taskdefs.optional.ssh.Scp",
-     classpath: configurations.scp.asPath
-  )
-  ant.scp2(
-         todir: "${username},anathema:@${host}:${dir}/${releaseDirName}",
-       keyfile:  keyfile,
-    passphrase: "${passphrase}",
-         trust: "true",
-       verbose: "true", // only visible at the info logging level
-          sftp: "true"
-  ) {
+  def keyfile  = findKeyFile()
+  def username = usePropertyOrPrompt('sfUsername', "Sourceforge Username")
+  def passphrase = usePropertyOrPromptForPassphrase('sfPassphrase', "Sourceforge SSH Key Passphrase")
+  def connectString = "${username},anathema:@${host}:${dir}/${releaseDirName}"
+  scp(connectString, keyfile, passphrase) {
     fileset(dir:"${releaseDir}")
   }
 }
-
 upload.group = 'Release'
 upload.description = 'Uploads the artifacts to sourceforge.net. [Requires release manager status]'
+
+
+//Compile and release an update
+// Your ssh key-auth passphrase for the Anathema Update Server will be prompted for, or can be entered at the command line like so:
+// gradlew uploadUpdate -PanathemaUsername=MyPassphraseHere
+task prepareUpdate << {
+  def host     = "butatopanto.de"
+  def user     = "anathema"
+  def keyfile  = findKeyFile()
+  def passphrase = usePropertyOrPrompt('anathemaPassphrase', "Anathema SSH Key Passphrase")
+  def command = "mkdir -p ~/wwwroot/updates/${versionString}"
+  sshExec (host, user, keyfile, passphrase, command)
+}
+
+task finishUpdate << {
+  def host     = "butatopanto.de"
+  def user     = "anathema"
+  def keyfile  = findKeyFile()
+  def passphrase = usePropertyOrPrompt('anathemaPassphrase', "Anathema SSH Key Passphrase")
+  def command = "echo ${versionString} >> ~/wwwroot/updates/availableVersions"
+  sshExec(host, user, keyfile, passphrase, command)
+}
+
+task copyFilesForUpdate(type: Copy) {
+  destinationDir buildDir
+  into("update") {
+    from("${buildDir}/dependencies")
+    from("${buildDir}/plugins")
+
+  }
+}
+
+task buildFileListForUpdate {
+  def updateFolder = new File(buildDir, "update")
+  def contentFile = new File(updateFolder, "content")
+  String[] containedFiles = updateFolder.list();
+  containedFiles.each {
+     if(contentFile.size() > 0){
+        contentFile.append("\n")
+     }
+     contentFile.append(it)
+  }
+}
+
+task uploadUpdate << {
+  def host     = "butatopanto.de"
+  def dir      = "/home/anathema/wwwroot/updates"
+  def keyfile  = findKeyFile()
+  def passphrase = usePropertyOrPrompt('anathemaPassphrase', "Anathema SSH Key Passphrase")
+  def connectString = "anathema@${host}:${dir}/${versionString}"
+  scp(connectString, keyfile, passphrase) {
+    ant.fileset(dir:"${buildDir}/update")
+  }
+}
+
+task releaseAsUpdate
+
+releaseAsUpdate.group = 'Release'
+releaseAsUpdate.description = "Uploads the artifacts to Anathema's update server. [Requires registered credentials]"
 
 task version << {
   out.println( "\nPlease update the version number and name.  Enter nothing to default to the old value.")
@@ -360,6 +398,12 @@ release.dependsOn releaseZip, releaseWin, releaseMac
 tagPush.dependsOn tagVersion
 tag.dependsOn tagVersion, tagPush
 
+copyFilesForUpdate.dependsOn buildZip
+buildFileListForUpdate.dependsOn copyFilesForUpdate
+uploadUpdate.dependsOn prepareUpdate, buildFileListForUpdate
+finishUpdate.dependsOn uploadUpdate
+releaseAsUpdate.dependsOn finishUpdate
+
 // Plugins
 apply from: 'plugins.gradle'
 
@@ -372,4 +416,67 @@ tasks.each {
   }
 }
 
+//SSH Support
+def usePropertyOrPrompt(property, prompt) {
+  if (project.hasProperty(property)) {
+    return project.property(property);
+  }
+  def propertyValue = System.console().readLine("\n${prompt}: ")
+  project.setProperty(property, propertyValue)
+  return propertyValue
+}
 
+def usePropertyOrPromptForPassphrase(property, prompt) {
+  if (project.hasProperty(property)) {
+    return project.property(property);
+  }
+  def password = System.console().readPassword("\n${prompt}: ")
+  project.setProperty(property, password)
+  return password
+}
+
+def findKeyFile() {
+  def keyfile = "${System.properties['user.home']}/.ssh/id_rsa"
+  while (!new File(keyfile).exists()) {
+    keyfile = System.console().readLine("\nCould not find the ssh private keyfile: ${keyfile}\nEnter your keyfile pathname: ")
+    keyfile = keyfile.replace("~", System.properties['user.home'])
+  }
+  return keyfile
+}
+
+void sshExec(String host, String user, keyfile, passphrase, command) {
+  ant.taskdef(
+          name: "sshexec",
+          classname: "org.apache.tools.ant.taskdefs.optional.ssh.SSHExec",
+          classpath: configurations.scp.asPath
+  )
+  ant.sshexec(
+          host: host,
+          username: user,
+          keyfile: keyfile,
+          passphrase: "${passphrase}",
+          trust: "true",
+          command: command
+  )
+}
+
+def scp(connectString, keyfile, passphrase, Closure fileset) {
+  out.println("\nPlease be patient, it takes a few minutes to upload the releases")
+  out.println("Unfortunately, feedback during the upload is unavailable (unless you use the -i option)")
+
+  ant.taskdef(
+          name: "scp2",
+          classname: "org.apache.tools.ant.taskdefs.optional.ssh.Scp",
+          classpath: configurations.scp.asPath
+  )
+  ant.scp2(
+          todir: connectString,
+          keyfile: keyfile,
+          passphrase: "${passphrase}",
+          trust: "true",
+          verbose: "true", // only visible at the info logging level
+          sftp: "true"
+  ) {
+    fileset()
+  }
+}
