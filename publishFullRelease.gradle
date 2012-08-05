@@ -33,7 +33,7 @@ task uploadFullRelease << {
 }
 
 task finishFullRelease << {
-  def command = "echo ${versionString} >> ~/wwwroot/updates/availableVersions"
+  def command = "echo ${versionString} >> ~/wwwroot/full/availableVersions"
   runSshExecOnBuildServer(command)
 }
 
