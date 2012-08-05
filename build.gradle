@@ -236,8 +236,8 @@ releaseAsUpdate.description = "Uploads the artifacts to Anathema's update server
 
 task version << {
   out.println( "\nPlease update the version number and name.  Enter nothing to default to the old value.")
-  def vNumber = System.console().readLine("\n\nVersion Number | old: ${versionString} new: ")
-  def vName   = System.console().readLine(    "\nVersion Name | old: ${version_name} new: ")
+  def vNumber = usePropertyOrPrompt("versionNumber", "\n\nVersion Number | old: ${versionString} new: ")
+  def vName   = usePropertyOrPrompt("versionName",  "\nVersion Name | old: ${version_name} new: ")
   ext.versionString    = vNumber == "" ? versionString : vNumber
   ext.version_name     = vName == "" ? version_name : vName
   try {
@@ -422,7 +422,7 @@ def usePropertyOrPrompt(property, prompt) {
     return project.property(property);
   }
   def propertyValue = System.console().readLine("\n${prompt}: ")
-  project.setProperty(property, propertyValue)
+  ext[property] = propertyValue
   return propertyValue
 }
 
@@ -431,7 +431,7 @@ def usePropertyOrPromptForPassphrase(property, prompt) {
     return project.property(property);
   }
   def password = System.console().readPassword("\n${prompt}: ")
-  project.setProperty(property, password)
+  ext[property] = password
   return password
 }
 
