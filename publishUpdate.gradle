@@ -1,0 +1,55 @@
+//Compile and publish an update
+// Your ssh key-auth passphrase for the Anathema Update Server will be prompted for, or can be entered at the command line like so:
+// gradlew uploadUpdate -PanathemaUsername=MyPassphraseHere
+task prepareUpdate << {
+  def command = "mkdir -p ~/wwwroot/updates/${versionString}"
+  runSshExecOnBuildServer(command)
+}
+
+task copyFilesForUpdate(type: Copy) {
+  destinationDir buildDir
+  into("update") {
+    from("${buildDir}/dependencies")
+    from("${buildDir}/plugins")
+
+  }
+}
+
+task buildFileListForUpdate {
+  def updateFolder = new File(buildDir, "update")
+  def contentFile = new File(updateFolder, "content")
+  String[] containedFiles = updateFolder.list();
+  containedFiles.each {
+    if(contentFile.size() > 0){
+      contentFile.append("\n")
+    }
+    contentFile.append(it)
+  }
+}
+
+task uploadUpdate << {
+  def host     = "butatopanto.de"
+  def dir      = "/home/anathema/wwwroot/updates"
+  def keyfile  = findKeyFile()
+  def passphrase = usePropertyOrPrompt('anathemaPassphrase', "Anathema SSH Key Passphrase")
+  def connectString = "anathema@${host}:${dir}/${versionString}"
+  scp(connectString, keyfile, passphrase) {
+    ant.fileset(dir:"${buildDir}/update")
+  }
+}
+
+task finishUpdate << {
+  def command = "echo ${versionString} >> ~/wwwroot/updates/availableVersions"
+  runSshExecOnBuildServer(command)
+}
+
+task publishAsUpdate
+
+publishAsUpdate.group = 'Release'
+publishAsUpdate.description = "Builds & uploads the update artifacts to Anathema's update server. [Requires registered credentials]"
+
+copyFilesForUpdate.dependsOn "buildZip"
+buildFileListForUpdate.dependsOn copyFilesForUpdate
+uploadUpdate.dependsOn prepareUpdate, buildFileListForUpdate
+finishUpdate.dependsOn uploadUpdate
+publishAsUpdate.dependsOn finishUpdate

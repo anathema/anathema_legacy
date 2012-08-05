@@ -1,0 +1,48 @@
+//Compile and publish a stand-alone release
+// Your sourceforge username and ssh key-auth passphrase will be prompted for, or can be entered at the command line like so:
+// gradlew upload -PsfUsername=MyUsernameHere -PsfPassphrase=MyPassphraseHere
+task upload << {
+  def host     = "frs.sourceforge.net"
+  def dir      = "/home/frs/project/anathema"
+  def keyfile  = findKeyFile()
+  def username = usePropertyOrPrompt('sfUsername', "Sourceforge Username")
+  def passphrase = usePropertyOrPromptForPassphrase('sfPassphrase', "Sourceforge SSH Key Passphrase")
+  def connectString = "${username},anathema:@${host}:${dir}/${releaseDirName}"
+  scp(connectString, keyfile, passphrase) {
+    fileset(dir:"${releaseDir}")
+  }
+}
+
+upload.group = 'Release'
+upload.description = 'Uploads the artifacts to sourceforge.net. [Requires release manager status]'
+
+task prepareFullRelease << {
+  def command = "mkdir -p ~/wwwroot/full/${versionString}"
+  runSshExecOnBuildServer(command)
+}
+
+task uploadFullRelease << {
+  def host     = "butatopanto.de"
+  def dir      = "/home/anathema/wwwroot/full"
+  def keyfile  = findKeyFile()
+  def passphrase = usePropertyOrPrompt('anathemaPassphrase', "Anathema SSH Key Passphrase")
+  def connectString = "anathema@${host}:${dir}/${versionString}"
+  scp(connectString, keyfile, passphrase) {
+    ant.fileset(dir: releaseDir)
+  }
+}
+
+task finishFullRelease << {
+  def command = "echo ${versionString} >> ~/wwwroot/updates/availableVersions"
+  runSshExecOnBuildServer(command)
+}
+
+task publishAsFullRelease
+
+publishAsFullRelease.group = 'Release'
+publishAsFullRelease.description = "Builds & uploads the release's artifacts to Anathema's update server. [Requires registered credentials]"
+
+prepareFullRelease.dependsOn "release"
+uploadFullRelease.dependsOn prepareFullRelease
+finishFullRelease.dependsOn uploadFullRelease
+publishAsFullRelease.dependsOn finishFullRelease
