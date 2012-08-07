@@ -9,6 +9,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Bugfixes
 * Corrects cost for (Infernal/Cecelyne) "Bestowal of Accursed Fortune"
 * Corrects print pattern for Great Mother's Tears
+* Tooltip delay is now capped at 10 seconds
 
 ## Release 4.2.4
 
