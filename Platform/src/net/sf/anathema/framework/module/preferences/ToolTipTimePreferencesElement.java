@@ -31,6 +31,7 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
     spinner = new IntegerSpinner(toolTipTime);
     spinner.setPreferredWidth(70);
     spinner.setMinimum(0);
+    spinner.setMaximum(10);
     spinner.addChangeListener(new IIntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
