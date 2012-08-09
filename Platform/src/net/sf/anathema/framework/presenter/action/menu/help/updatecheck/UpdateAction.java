@@ -20,7 +20,7 @@ import java.util.Properties;
 
 public class UpdateAction extends SmartAction {
 
-  public static final boolean AUTO_UPDATE_ENABLED = false;
+  public static final boolean AUTO_UPDATE_ENABLED = true;
 
   public static Action createMenuAction(IResources resources) {
     UpdateAction action = new UpdateAction(resources);
