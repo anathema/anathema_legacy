@@ -4,7 +4,12 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
-## Release 4.3.0
+## Release 4.3.1
+
+### Features
+* Anathema has a more helpful exception when a Martial Arts charm does not conform with its expectations.
+
+## Release 4.3.0 "Xaal"
 
 We are starting to move away from sourceforge. Starting with this version, your downloads will come directly
 from own our server.

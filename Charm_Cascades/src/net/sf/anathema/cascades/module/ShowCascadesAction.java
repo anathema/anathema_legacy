@@ -44,21 +44,24 @@ public class ShowCascadesAction extends SmartAction {
     parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     try {
       IItemType itemType = anathemaModel.getItemTypeRegistry().getById(
-          CharmCascadeItemTypeConfiguration.CHARM_CASCADES_ITEM_TYPE_ID);
+              CharmCascadeItemTypeConfiguration.CHARM_CASCADES_ITEM_TYPE_ID);
       IItem cascadeItem = new AnathemaNullDataItem(itemType, new Identificate("CharmCascades")); //$NON-NLS-1$
       cascadeItem.setPrintName(resources.getString("ItemType.CharmCascades.PrintName")); //$NON-NLS-1$
       anathemaModel.getItemManagement().addItem(cascadeItem);
-    }
-    catch (AnathemaException e) {
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-          "An error occured while creating character: " + e.getMessage(), e)); //$NON-NLS-1$
-    }
-    catch (Throwable e) {
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-          "An error occured while creating character.", e)); //$NON-NLS-1$
-    }
-    finally {
+    } catch (AnathemaException e) {
+      handleExceptionWithMessage(parentComponent, e);
+    } catch (IllegalStateException e) {
+      handleExceptionWithMessage(parentComponent, e);
+    } catch (Throwable e) {
+      MessageUtilities.indicateMessage(getClass(), parentComponent,
+              new Message("An error occured while opening the Charm Cascades.", e)); //$NON-NLS-1$
+    } finally {
       parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
+  }
+
+  private void handleExceptionWithMessage(Component parentComponent, Exception e) {
+    MessageUtilities.indicateMessage(getClass(), parentComponent,
+            new Message("An error occured while opening the Charm Cascades:\n" + e.getMessage(), e)); //$NON-NLS-1$
   }
 }
