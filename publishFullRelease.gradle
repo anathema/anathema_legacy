@@ -1,21 +1,4 @@
 //Compile and publish a stand-alone release
-// Your sourceforge username and ssh key-auth passphrase will be prompted for, or can be entered at the command line like so:
-// gradlew upload -PsfUsername=MyUsernameHere -PsfPassphrase=MyPassphraseHere
-task upload << {
-  def host     = "frs.sourceforge.net"
-  def dir      = "/home/frs/project/anathema"
-  def keyfile  = findKeyFile()
-  def username = usePropertyOrPrompt('sfUsername', "Sourceforge Username")
-  def passphrase = usePropertyOrPromptForPassphrase('sfPassphrase', "Sourceforge SSH Key Passphrase")
-  def connectString = "${username},anathema:@${host}:${dir}/${releaseDirName}"
-  scp(connectString, keyfile, passphrase) {
-    fileset(dir:"${releaseDir}")
-  }
-}
-
-upload.group = 'Release'
-upload.description = 'Uploads the artifacts to sourceforge.net. [Requires release manager status]'
-
 task prepareFullRelease << {
   def command = "mkdir -p ~/wwwroot/full/${versionString}"
   runSshExecOnBuildServer(command)
