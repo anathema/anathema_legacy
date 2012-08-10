@@ -9,6 +9,9 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Features
 * Anathema has a more helpful exception when a Martial Arts charm does not conform with its expectations.
 
+### Bugfixes
+* Charm with optional Traits (such as Backgrounds) as prerequisites now work even if the trait is not present.
+
 ## Release 4.3.0 "Xaal"
 
 We are starting to move away from sourceforge. Starting with this version, your downloads will come directly

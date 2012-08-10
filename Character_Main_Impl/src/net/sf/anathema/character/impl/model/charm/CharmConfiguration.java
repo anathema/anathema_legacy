@@ -27,6 +27,7 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -497,14 +498,17 @@ public class CharmConfiguration implements ICharmConfiguration {
     }
     for (IGenericTrait prerequisite : charm.getPrerequisites()) {
       IGenericTrait prerequisiteTrait = context.getTraitCollection().getTrait(prerequisite.getType());
+      if (prerequisiteTrait== null){
+        return false;
+      }
       int prereq = prerequisite.getCurrentValue();
       for (ISpecialCharm specialCharm : getPrerequisiteModifyingCharms()) {
         if (specialCharm instanceof IPrerequisiteModifyingCharm && isLearned(specialCharm.getCharmId())) {
-          prereq = ((IPrerequisiteModifyingCharm) specialCharm).getTraitModifier(charm, prerequisiteTrait.getType(), prereq);
+          ITraitType type = prerequisite.getType();
+          prereq = ((IPrerequisiteModifyingCharm) specialCharm).getTraitModifier(charm, type, prereq);
         }
       }
-
-      if (prerequisiteTrait == null || prereq > prerequisiteTrait.getCurrentValue()) {
+      if (prereq > prerequisiteTrait.getCurrentValue()) {
         return false;
       }
     }
