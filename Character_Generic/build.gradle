@@ -1,8 +1,8 @@
 dependencies {
   compile project(':Lib')
   compile project(':Platform_SvgTree')
-  testCompile parent.ext.testDependencies
   compile project(':Platform_SwingTree')
+  testCompile parent.ext.testDependencies
 }
 
 sourceSets {

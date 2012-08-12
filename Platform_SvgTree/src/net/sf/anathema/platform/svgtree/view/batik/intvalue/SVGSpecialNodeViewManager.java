@@ -12,8 +12,10 @@ import org.w3c.dom.svg.SVGMatrix;
 import org.w3c.dom.svg.SVGSVGElement;
 
 import java.awt.Rectangle;
-import static org.apache.batik.util.SVGConstants.*;
-import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
+
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.ATTRIB_IS_CONTROL;
+import static org.apache.batik.util.SVGConstants.SVG_TRANSFORM_ATTRIBUTE;
+import static org.apache.batik.util.SVGConstants.SVG_TRUE_VALUE;
 
 public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager {
 

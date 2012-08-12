@@ -11,12 +11,16 @@ import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGSVGElement;
-import static org.apache.batik.util.SVGConstants.*;
-import static net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGButton.*;
 
 import java.awt.Rectangle;
 
 import static java.text.MessageFormat.format;
+import static net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGButton.SHADOW_OFFSET;
+import static org.apache.batik.dom.svg.SVGDOMImplementation.SVG_NAMESPACE_URI;
+import static org.apache.batik.util.SVGConstants.SVG_G_TAG;
+import static org.apache.batik.util.SVGConstants.SVG_MOUSEOUT_EVENT_TYPE;
+import static org.apache.batik.util.SVGConstants.SVG_MOUSEUP_EVENT_TYPE;
+import static org.apache.batik.util.SVGConstants.SVG_TRANSFORM_ATTRIBUTE;
 
 public class SVGViewControlButton implements ISVGSpecialNodeView {
 

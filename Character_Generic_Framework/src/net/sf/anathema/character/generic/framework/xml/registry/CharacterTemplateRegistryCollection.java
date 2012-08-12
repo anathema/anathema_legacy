@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.framework.xml.essence.GenericEssenceTem
 import net.sf.anathema.character.generic.framework.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.generic.framework.xml.health.GenericHealthTemplate;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
-import net.sf.anathema.character.generic.framework.xml.presentation.GenericCharmPresentationProperties;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
@@ -27,7 +26,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   private final IXmlTemplateRegistry<GenericTraitTemplatePool> traitTemplatePoolRegistry = new XmlTemplateRegistry<GenericTraitTemplatePool>();
   private final IXmlTemplateRegistry<GenericMagicTemplate> magicTemplateRegistry = new XmlTemplateRegistry<GenericMagicTemplate>();
   private final IXmlTemplateRegistry<GenericPresentationTemplate> presentationTemplateRegistry = new XmlTemplateRegistry<GenericPresentationTemplate>();
-  private final IXmlTemplateRegistry<GenericCharmPresentationProperties> charmPresentationTemplateRegistry = new XmlTemplateRegistry<GenericCharmPresentationProperties>();
   private final IXmlTemplateRegistry<GenericHealthTemplate> healthTemplateRegistry = new XmlTemplateRegistry<GenericHealthTemplate>();
   private final IXmlTemplateRegistry<GenericAdditionalRules> rulesRegistry = new XmlTemplateRegistry<GenericAdditionalRules>();
 
@@ -79,11 +77,6 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   @Override
   public IXmlTemplateRegistry<GenericPresentationTemplate> getPresentationTemplateRegistry() {
     return presentationTemplateRegistry;
-  }
-
-  @Override
-  public IXmlTemplateRegistry<GenericCharmPresentationProperties> getCharmPresentationTemplateRegistry() {
-    return charmPresentationTemplateRegistry;
   }
 
   @Override

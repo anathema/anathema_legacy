@@ -7,9 +7,9 @@ import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
-import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
@@ -47,20 +47,7 @@ import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXM
 import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_3000;
 import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_CASCADE_ID;
 import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.VALUE_FILL;
-import static org.apache.batik.util.SVGConstants.SVG_DX_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_DY_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_FILL_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_HEIGHT_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_NONE_VALUE;
-import static org.apache.batik.util.SVGConstants.SVG_OPACITY_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_RECT_TAG;
-import static org.apache.batik.util.SVGConstants.SVG_TEXT_TAG;
-import static org.apache.batik.util.SVGConstants.SVG_TSPAN_TAG;
-import static org.apache.batik.util.SVGConstants.SVG_WIDTH_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_X_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_Y_ATTRIBUTE;
-import static org.apache.batik.util.SVGConstants.SVG_ZERO_VALUE;
+import static org.apache.batik.util.SVGConstants.*;
 
 public class SvgTreeView implements ISvgTreeView {
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.svgtree.view.listening;
 
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import org.apache.batik.swing.gvt.Interactor;

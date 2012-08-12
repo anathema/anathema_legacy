@@ -2,7 +2,6 @@ package net.sf.anathema.platform.svgtree.document.components;
 
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import org.w3c.dom.Element;
 
 import java.awt.Dimension;
 import java.util.Map;
