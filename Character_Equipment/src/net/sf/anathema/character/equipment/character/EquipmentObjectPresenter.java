@@ -32,13 +32,10 @@ public class EquipmentObjectPresenter implements Presenter {
   private final IEquipmentCharacterDataProvider dataProvider;
   private final IResources resources;
   private final Action[] additionalActions;
-  
-  public EquipmentObjectPresenter(IEquipmentItem model,
-		  						  IEquipmentObjectView view,
-		  						  IEquipmentStringBuilder stringBuilder,
-                                  IEquipmentCharacterDataProvider dataProvider,
-                                  IEquipmentCharacterOptionProvider characterOptionProvider,
-                                  IResources resources,
+
+  public EquipmentObjectPresenter(IEquipmentItem model, IEquipmentObjectView view,
+                                  IEquipmentStringBuilder stringBuilder, IEquipmentCharacterDataProvider dataProvider,
+                                  IEquipmentCharacterOptionProvider characterOptionProvider, IResources resources,
                                   Action... additionalActions) {
     this.model = model;
     this.view = view;
@@ -71,108 +68,96 @@ public class EquipmentObjectPresenter implements Presenter {
 
     prepareContents();
   }
-  
-  public void prepareContents()
-  {
-	  view.clearContents();
-	  attuneStatFlags.clear();
-	  otherStatFlags.clear();
-	  
-	  boolean isRequireAttuneArtifact = false;
-	  boolean isAttuned = false;
-	  for (final IEquipmentStats equipment : model.getStats()) {
-	    if (equipment instanceof IArtifactStats)
-	  	  isRequireAttuneArtifact = isRequireAttuneArtifact || ((IArtifactStats)equipment).requireAttunementToUse();
-	    if (!viewFilter(equipment))
-	  		  continue;
-	    final BooleanModel booleanModel = view.addStats(createEquipmentDescription(model, equipment));
-	    if (equipment instanceof IArtifactStats) {
-	    	attuneStatFlags.put(equipment, booleanModel);
-	    	if (model.isPrintEnabled(equipment)) {
-	    		isAttuned = true;
-	    	}
-	    }
-	    else {
-	  	  otherStatFlags.put(equipment, booleanModel);
-	    }
-	    booleanModel.setValue(model.isPrintEnabled(equipment));
-	    booleanModel.addChangeListener(new IChangeListener() {
-	      @Override
+
+  public void prepareContents() {
+    view.clearContents();
+    attuneStatFlags.clear();
+    otherStatFlags.clear();
+
+    boolean isRequireAttuneArtifact = false;
+    boolean isAttuned = false;
+    for (final IEquipmentStats equipment : model.getStats()) {
+      if (equipment instanceof IArtifactStats)
+        isRequireAttuneArtifact = isRequireAttuneArtifact || ((IArtifactStats) equipment).requireAttunementToUse();
+      if (!viewFilter(equipment)) continue;
+      final BooleanModel booleanModel = view.addStats(createEquipmentDescription(model, equipment));
+      if (equipment instanceof IArtifactStats) {
+        attuneStatFlags.put(equipment, booleanModel);
+        if (model.isPrintEnabled(equipment)) {
+          isAttuned = true;
+        }
+      } else {
+        otherStatFlags.put(equipment, booleanModel);
+      }
+      booleanModel.setValue(model.isPrintEnabled(equipment));
+      booleanModel.addChangeListener(new IChangeListener() {
+        @Override
+        public void changeOccurred() {
+          model.setPrintEnabled(equipment, booleanModel.getValue());
+          if (equipment instanceof IArtifactStats) {
+            // if we are enabling an attunement stats ...
+            if (booleanModel.getValue()) {
+              // disable all other attunement stats
+              for (IEquipmentStats stats : attuneStatFlags.keySet()) {
+                if (!equipment.equals(stats) && model.isPrintEnabled(stats)) {
+                  model.setPrintEnabled(stats, false);
+                }
+              }
+            }
+            prepareContents();
+          }
+        }
+      });
+
+      addOptionalModels(booleanModel, equipment);
+    }
+    disableAllStatsIfAttunementRequiredButNotGiven(isRequireAttuneArtifact, isAttuned);
+    for (Action action : additionalActions) {
+      view.addAction(action);
+    }
+  }
+
+  private void disableAllStatsIfAttunementRequiredButNotGiven(boolean requireAttuneArtifact, boolean attuned) {
+    if (requireAttuneArtifact && !attuned) {
+      for (BooleanModel bool : otherStatFlags.values()) {
+        view.setEnabled(bool, false);
+        bool.setValue(false);
+      }
+    }
+  }
+
+  private void addOptionalModels(BooleanModel baseModel, IEquipmentStats stats) {
+    if (stats instanceof IWeaponStats) {
+      IWeaponStats weaponStats = (IWeaponStats) stats;
+      INamedGenericTrait[] specialties = dataProvider.getSpecialties(((IWeaponStats) stats).getTraitType());
+      for (INamedGenericTrait specialty : specialties) {
+        String label = MessageFormat.format(resources.getString("Equipment.Specialty"), specialty.getName());
+        final BooleanModel booleanModel = view.addOptionFlag(baseModel, label);
+        final IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty,
+                weaponStats.getTraitType());
+        final IEquipmentStats baseStat = model.getStat(stats.getId());
+        booleanModel.setValue(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
+        booleanModel.addChangeListener(new IChangeListener() {
+          @Override
           public void changeOccurred() {
-	        model.setPrintEnabled(equipment, booleanModel.getValue());
-	        if (equipment instanceof IArtifactStats)
-	        {
-	        	// if we are enabling an attunement stats ...
-		        if (booleanModel.getValue())
-		        {
-		          // disable all other attunement stats
-		      	  for (IEquipmentStats stats : attuneStatFlags.keySet()) {
-		      		  if (!equipment.equals(stats) && model.isPrintEnabled(stats)) {
-		      			  model.setPrintEnabled(stats, false);
-		      		  }
-		      	  }
-		        }
-		        prepareContents();
-	        }
-	      }
-	    });
-	      
-	    addOptionalModels(booleanModel, equipment);
-	  }
-	  // if we require attunement, but we are not, clear and disable all other stats
-	  if (isRequireAttuneArtifact && !isAttuned) {		  
-	   	for (BooleanModel bool : otherStatFlags.values()) {
-	    	view.setEnabled(bool, false);
-	    	bool.setValue(false);
-	    }
-	  }
-	  
-	  for (Action action : additionalActions) {
-		  view.addAction(action);
-	  }
+            if (booleanModel.getValue()) characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);
+            else characterOptionProvider.disableStatOption(model, baseStat, specialtyOption);
+          }
+        });
+      }
+    }
   }
-  
-  private void addOptionalModels(BooleanModel baseModel, IEquipmentStats stats)
-  {
-	  if (stats instanceof IWeaponStats)
-	  {
-		  IWeaponStats weaponStats = (IWeaponStats)stats;
-		  INamedGenericTrait[] specialties = dataProvider.getSpecialties(((IWeaponStats)stats).getTraitType());
-		  for (INamedGenericTrait specialty : specialties)
-		  {
-			  String label = MessageFormat.format(resources.getString("Equipment.Specialty"), specialty.getName());
-			  final BooleanModel booleanModel = view.addOptionFlag(baseModel, label);
-			  final IEquipmentStatsOption specialtyOption = new EquipmentSpecialtyOption(specialty, weaponStats.getTraitType());
-			  final IEquipmentStats baseStat = model.getStat(stats.getId());
-			  booleanModel.setValue(characterOptionProvider.isStatOptionEnabled(model, baseStat, specialtyOption));
-		      booleanModel.addChangeListener(new IChangeListener() {
-		        @Override
-                public void changeOccurred()
-		        {
-		        	if (booleanModel.getValue())
-                      characterOptionProvider.enableStatOption(model, baseStat, specialtyOption);
-		        	else
-                      characterOptionProvider.disableStatOption(model, baseStat, specialtyOption);
-		        }
-		      });
-		  }
-	  }
-  }
-  
-  private boolean viewFilter(IEquipmentStats equipment)
-  {
-	  boolean match;
-	  if (equipment instanceof IArtifactStats)
-	  {
-		  IArtifactStats stats = (IArtifactStats)equipment;
-		  match = false;
-		  if (dataProvider.getAttuneTypes(model) != null)
-			  for (ArtifactAttuneType type : dataProvider.getAttuneTypes(model))
-				  if (stats.getAttuneType() == type)
-					  match = true;
-		  if (!match) return false;
-	  }
-	  return true;
+
+  private boolean viewFilter(IEquipmentStats equipment) {
+    boolean match;
+    if (equipment instanceof IArtifactStats) {
+      IArtifactStats stats = (IArtifactStats) equipment;
+      match = false;
+      if (dataProvider.getAttuneTypes(model) != null) for (ArtifactAttuneType type : dataProvider.getAttuneTypes(model))
+        if (stats.getAttuneType() == type) match = true;
+      if (!match) return false;
+    }
+    return true;
   }
 
   private String createEquipmentDescription(IEquipmentItem item, IEquipmentStats equipment) {

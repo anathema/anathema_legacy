@@ -134,8 +134,6 @@ public class EquipmentAdditionalPresenter implements Presenter {
   private SmartAction createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList,
                                               final IMagicalMaterialView materialView) {
     final SmartAction addAction = new SmartAction(new BasicUi(resources).getRightArrowIcon()) {
-      private static final long serialVersionUID = 1L;
-
       @Override
       protected void execute(Component parentComponent) {
         model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(), materialView.getSelectedMaterial());
@@ -184,7 +182,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
             });
     }
     new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, model.getCharacterDataProvider(),
-            model.getCharacterOptionProvider(), resources, actions.toArray(new Action[0])).initPresentation();
+            model.getCharacterOptionProvider(), resources, actions.toArray(new Action[actions.size()])).initPresentation();
     view.revalidateEquipmentViews();
   }
   

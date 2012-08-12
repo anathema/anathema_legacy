@@ -40,12 +40,8 @@ public class EquipmentItem implements IEquipmentItem {
   private String customTitle;
   private String customDescription;
 
-  public EquipmentItem(IEquipmentTemplate template,
-		  			   String title,
-		  			   String description,
-		  			   MagicalMaterial material,
-		  			   ItemAttunementEvaluator provider,
-                       ModifierFactory modifiers) {
+  public EquipmentItem(IEquipmentTemplate template, String title, String description, MagicalMaterial material,
+                       ItemAttunementEvaluator provider, ModifierFactory modifiers) {
     this.modifiers = modifiers;
     if (template.getComposition() == Variable && material == null) {
       throw new MissingMaterialException("Variable material items must be created with material."); //$NON-NLS-1$
@@ -58,29 +54,6 @@ public class EquipmentItem implements IEquipmentItem {
     initPrintStats(provider);
   }
 
-  private void initPrintStats(ItemAttunementEvaluator provider) {
-    IArtifactStats bestAttune = null;
-    for (IEquipmentStats stat : getViews()) {
-      if (stat instanceof IArtifactStats) {
-        if (hasAttunementType((IArtifactStats) stat, provider.getAttuneTypes(
-                this)) && (bestAttune == null || ((IArtifactStats) stat).getAttuneType().compareTo(
-                bestAttune.getAttuneType()) > 0)) bestAttune = (IArtifactStats) stat;
-        continue;
-      }
-      printedStats.add(stat);
-    }
-    if (bestAttune != null) printedStats.add(bestAttune);
-  }
-
-  private boolean hasAttunementType(IArtifactStats stats, ArtifactAttuneType[] types) {
-    for (ArtifactAttuneType type : types) {
-      if (type.equals(stats.getAttuneType())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
   @Override
   public String getDescription() {
     return customDescription != null ? customDescription : getBaseDescription();
@@ -90,22 +63,22 @@ public class EquipmentItem implements IEquipmentItem {
   public String getBaseDescription() {
     return template.getDescription();
   }
-  
+
   @Override
   public void setPersonalization(String title, String description) {
-	  this.customTitle = title != null && !title.isEmpty() ? title : null;
-	  this.customDescription = description != null && !description.isEmpty() ? description : null;
+    this.customTitle = title != null && !title.isEmpty() ? title : null;
+    this.customDescription = description != null && !description.isEmpty() ? description : null;
   }
-  
+
   @Override
   public void setPersonalization(IEquipmentItem item) {
-	  this.customTitle = ((EquipmentItem)item).customTitle;
-	  this.customDescription = ((EquipmentItem)item).customDescription;
+    this.customTitle = ((EquipmentItem) item).customTitle;
+    this.customDescription = ((EquipmentItem) item).customDescription;
   }
-  
+
   @Override
   public ItemCost getCost() {
-	  return template.getCost();
+    return template.getCost();
   }
 
   @Override
@@ -119,14 +92,16 @@ public class EquipmentItem implements IEquipmentItem {
     for (IEquipmentStats stats : statsArray) {
       if (stats instanceof IWeaponStats) {
         Collections.addAll(views, ((IWeaponStats) stats).getViews());
-      } else if (stats instanceof IArtifactStats) Collections.addAll(views, ((IArtifactStats) stats).getViews());
+      } else if (stats instanceof IArtifactStats) {
+        Collections.addAll(views, ((IArtifactStats) stats).getViews());
+      }
       else {
         views.add(stats);
       }
     }
     return views.toArray(new IEquipmentStats[views.size()]);
   }
-  
+
   @Override
   public String getTitle() {
     return customTitle != null ? customTitle : getTemplateId();
@@ -149,8 +124,13 @@ public class EquipmentItem implements IEquipmentItem {
 
   @Override
   public ArtifactAttuneType getAttunementState() {
-    for (IEquipmentStats stats : getViews())
-      if (stats instanceof IArtifactStats) if (isPrintEnabled(stats)) return ((IArtifactStats) stats).getAttuneType();
+    for (IEquipmentStats stats : getViews()) {
+      if (stats instanceof IArtifactStats) {
+        if (isPrintEnabled(stats)) {
+          return ((IArtifactStats) stats).getAttuneType();
+        }
+      }
+    }
     return ArtifactAttuneType.Unattuned;
   }
 
@@ -160,7 +140,6 @@ public class EquipmentItem implements IEquipmentItem {
     if (stats instanceof IProxy<?>) {
       stats = ((IProxy<? extends IEquipmentStats>) stats).getUnderlying();
     }
-
     return printedStats.contains(stats);
   }
 
@@ -170,7 +149,6 @@ public class EquipmentItem implements IEquipmentItem {
     if (stats instanceof IProxy<?>) {
       stats = ((IProxy<? extends IEquipmentStats>) stats).getUnderlying();
     }
-
     if (isPrintEnabled(stats) == enabled) {
       return;
     }
@@ -179,13 +157,13 @@ public class EquipmentItem implements IEquipmentItem {
     } else {
       printedStats.remove(stats);
     }
-    changeControl.announce().changeOccurred();
+    announceChange();
   }
 
   @Override
   public void setUnprinted() {
     printedStats.clear();
-    changeControl.announce().changeOccurred();
+    announceChange();
   }
 
   @Override
@@ -220,6 +198,33 @@ public class EquipmentItem implements IEquipmentItem {
 
   public String toString() {
     return template.getName() + (material != null ? " (" + material.toString() + ")" : "");
+  }
+
+  private void announceChange() {
+    changeControl.announce().changeOccurred();
+  }
+
+  private void initPrintStats(ItemAttunementEvaluator provider) {
+    IArtifactStats bestAttune = null;
+    for (IEquipmentStats stat : getViews()) {
+      if (stat instanceof IArtifactStats) {
+        if (hasAttunementType((IArtifactStats) stat, provider.getAttuneTypes(
+                this)) && (bestAttune == null || ((IArtifactStats) stat).getAttuneType().compareTo(
+                bestAttune.getAttuneType()) > 0)) bestAttune = (IArtifactStats) stat;
+        continue;
+      }
+      printedStats.add(stat);
+    }
+    if (bestAttune != null) printedStats.add(bestAttune);
+  }
+
+  private boolean hasAttunementType(IArtifactStats stats, ArtifactAttuneType[] types) {
+    for (ArtifactAttuneType type : types) {
+      if (type.equals(stats.getAttuneType())) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private class MaterialWrapper implements ITransformer<IEquipmentStats, IEquipmentStats> {

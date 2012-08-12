@@ -36,28 +36,21 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   private final IGenericCharmConfiguration charmConfiguration;
   private final ICharacterModelContext context;
 
-  public EssencePoolStrategy(IEssenceTemplate essenceTemplate,
-                             ICharacterModelContext context,
-                             IGenericTraitCollection traitCollection,
-                             IMagicCollection magicCollection,
-                             IGenericCharmConfiguration charmConfiguration,
-                             IAdditionalRules additionalRules) {
+  public EssencePoolStrategy(IEssenceTemplate essenceTemplate, ICharacterModelContext context,
+                             IGenericTraitCollection traitCollection, IMagicCollection magicCollection,
+                             IGenericCharmConfiguration charmConfiguration, IAdditionalRules additionalRules) {
     this.traitCollection = traitCollection;
     this.magicCollection = magicCollection;
     this.charmConfiguration = charmConfiguration;
     this.additionalRules = additionalRules;
     context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
-                                                        @Override
-                                                        public void characterChanged() {
-                                                          firePoolsChanged();
-                                                        }
-                                                      });
+      @Override
+      public void characterChanged() {
+        control.announce().changeOccurred();
+      }
+    });
     this.context = context;
     this.essenceTemplate = essenceTemplate;
-  }
-
-  private void firePoolsChanged() {
-    control.announce().changeOccurred();
   }
 
   @Override
@@ -69,8 +62,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   public int getFullPersonalPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      additionalPool += pool.getAdditionalPersonalPool(traitCollection,
-                                                       magicCollection);
+      additionalPool += pool.getAdditionalPersonalPool(traitCollection, magicCollection);
     }
     return getUnmodifiedPersonalPool() + additionalPool;
   }
@@ -79,9 +71,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   public int getExtendedPersonalPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      if (!pool.modifiesBasePool())
-    	  additionalPool += pool.getAdditionalPersonalPool(traitCollection,
-                                                       magicCollection);
+      if (!pool.modifiesBasePool()) additionalPool += pool.getAdditionalPersonalPool(traitCollection, magicCollection);
     }
     return getStandardPersonalPool() + additionalPool;
   }
@@ -90,27 +80,21 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   public int getStandardPersonalPool() {
     int personal = getUnmodifiedPersonalPool();
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-        if (pool.modifiesBasePool())
-      	  personal += pool.getAdditionalPersonalPool(traitCollection,
-                                                         magicCollection);
-      }
-    return personal
-           - Math.max(0, getAttunementExpenditures()
-                         - getUnmodifiedPeripheralPool());
+      if (pool.modifiesBasePool()) personal += pool.getAdditionalPersonalPool(traitCollection, magicCollection);
+    }
+    return personal - Math.max(0, getAttunementExpenditures() - getUnmodifiedPeripheralPool());
   }
 
   @Override
   public int getUnmodifiedPersonalPool() {
-    return getPool(essenceTemplate.getPersonalTraits(getWillpower(),
-                                                     getVirtues(), getEssence()));
+    return getPool(essenceTemplate.getPersonalTraits(getWillpower(), getVirtues(), getEssence()));
   }
 
   @Override
   public int getFullPeripheralPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      additionalPool += pool.getAdditionalPeripheralPool(traitCollection,
-                                                         magicCollection);
+      additionalPool += pool.getAdditionalPeripheralPool(traitCollection, magicCollection);
     }
     return getUnmodifiedPeripheralPool() + additionalPool;
   }
@@ -119,9 +103,8 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   public int getExtendedPeripheralPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-    	if (!pool.modifiesBasePool())
-    		additionalPool += pool.getAdditionalPeripheralPool(traitCollection,
-                                                         magicCollection);
+      if (!pool.modifiesBasePool())
+        additionalPool += pool.getAdditionalPeripheralPool(traitCollection, magicCollection);
     }
     return getStandardPeripheralPool() + additionalPool;
   }
@@ -130,20 +113,16 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   public int getStandardPeripheralPool() {
     int peripheral = getUnmodifiedPeripheralPool();
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-    	if (pool.modifiesBasePool())
-    		peripheral += pool.getAdditionalPeripheralPool(traitCollection,
-                                                         magicCollection);
+      if (pool.modifiesBasePool()) peripheral += pool.getAdditionalPeripheralPool(traitCollection, magicCollection);
     }
     return Math.max(0, peripheral - getAttunementExpenditures());
   }
 
   @Override
   public int getUnmodifiedPeripheralPool() {
-    return getPool(essenceTemplate.getPeripheralTraits(getWillpower(),
-                                                       getVirtues(),
-                                                       getEssence()));
+    return getPool(essenceTemplate.getPeripheralTraits(getWillpower(), getVirtues(), getEssence()));
   }
-  
+
   @Override
   public int getOverdrivePool() {
     int overdrive = 0;
@@ -154,9 +133,9 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
         if (value != null) {
           try {
             pool = Integer.valueOf(value);
-          }
-          catch (NumberFormatException e) {
-            System.err.println("WARNING: could not parse Overdrive value for charm " + charm.getId() + "; ignoring keyword");
+          } catch (NumberFormatException e) {
+            System.err.println(
+                    "WARNING: could not parse Overdrive value for charm " + charm.getId() + "; ignoring keyword");
             continue;
           }
         }
@@ -168,7 +147,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
     }
     return overdrive;
   }
-  
+
   @Override
   public IdentifiedInteger[] getComplexPools() {
     Map<String, Integer> complexPools = new HashMap<String, Integer>();
@@ -202,10 +181,9 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   }
 
   private IGenericTrait[] getVirtues() {
-    return new IGenericTrait[] {traitCollection.getTrait(VirtueType.Compassion),
-                                traitCollection.getTrait(VirtueType.Conviction),
-                                traitCollection.getTrait(VirtueType.Temperance),
-                                traitCollection.getTrait(VirtueType.Valor)};
+    return new IGenericTrait[]{traitCollection.getTrait(VirtueType.Compassion), traitCollection.getTrait(
+            VirtueType.Conviction), traitCollection.getTrait(VirtueType.Temperance), traitCollection.getTrait(
+            VirtueType.Valor)};
   }
 
   private IGenericTrait getWillpower() {

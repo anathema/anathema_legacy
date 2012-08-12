@@ -16,22 +16,15 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
   private final IAdditionalRules additionalRules;
   private final IEssenceTemplate essenceTemplate;
 
-  public EssencePoolConfiguration(
-      IEssenceTemplate essenceTemplate,
-      IAdditionalRules additionalRules,
-      ICharacterModelContext context) {
+  public EssencePoolConfiguration(IEssenceTemplate essenceTemplate, IAdditionalRules additionalRules,
+                                  ICharacterModelContext context) {
     this.additionalRules = additionalRules;
     this.essenceTemplate = essenceTemplate;
     if (!isEssenceUser()) {
       return;
     }
-    poolStrategy = new EssencePoolStrategy(
-        essenceTemplate,
-        context,
-        context.getTraitCollection(),
-        context.getMagicCollection(),
-        context.getCharmContext().getCharmConfiguration(),
-        additionalRules);
+    poolStrategy = new EssencePoolStrategy(essenceTemplate, context, context.getTraitCollection(),
+            context.getMagicCollection(), context.getCharmContext().getCharmConfiguration(), additionalRules);
   }
 
   @Override
@@ -42,7 +35,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     }
     return poolStrategy.getStandardPersonalPool() + " (" + poolStrategy.getExtendedPersonalPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
-  
+
   @Override
   public int getPersonalPoolValue() {
     return poolStrategy.getFullPersonalPool();
@@ -56,39 +49,36 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     }
     return poolStrategy.getStandardPeripheralPool() + " (" + poolStrategy.getExtendedPeripheralPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
-  
+
   @Override
   public int getPeripheralPoolValue() {
     return poolStrategy.getFullPeripheralPool();
   }
-  
+
   @Override
   public int getOverdrivePoolValue() {
     return poolStrategy.getOverdrivePool();
   }
-  
+
   @Override
   public IdentifiedInteger[] getComplexPools() {
     return poolStrategy.getComplexPools();
   }
-  
+
   @Override
-  public String getAttunedPool()
-  {
+  public String getAttunedPool() {
     return "" + poolStrategy.getAttunementExpenditures();
   }
-  
+
   @Override
   public int getAttunedPoolValue() {
     return poolStrategy.getAttunementExpenditures();
   }
-  
-  private boolean hasAdditionalPools()
-  {
-	  for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools())
-		  if (!pool.modifiesBasePool())
-			  return true;
-	  return false;
+
+  private boolean hasAdditionalPools() {
+    for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools())
+      if (!pool.modifiesBasePool()) return true;
+    return false;
   }
 
   @Override
@@ -98,8 +88,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 
   @Override
   public boolean hasPeripheralPool() {
-    return isEssenceUser() && (poolStrategy.getExtendedPeripheralPool() != 0 ||
-    		poolStrategy.getUnmodifiedPeripheralPool() != 0);
+    return isEssenceUser() && (poolStrategy.getExtendedPeripheralPool() != 0 || poolStrategy.getUnmodifiedPeripheralPool() != 0);
   }
 
   @Override
