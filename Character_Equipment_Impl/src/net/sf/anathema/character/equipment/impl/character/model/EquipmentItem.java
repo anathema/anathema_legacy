@@ -196,12 +196,12 @@ public class EquipmentItem implements IEquipmentItem {
     changeControl.removeListener(listener);
   }
 
-  public String toString() {
-    return template.getName() + (material != null ? " (" + material.toString() + ")" : "");
-  }
-
   private void announceChange() {
     changeControl.announce().changeOccurred();
+  }
+
+  public String toString() {
+    return template.getName() + (material != null ? " (" + material.toString() + ")" : "");
   }
 
   private void initPrintStats(ItemAttunementEvaluator provider) {

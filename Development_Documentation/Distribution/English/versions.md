@@ -11,6 +11,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Bugfixes
 * Charm with optional Traits (such as Backgrounds) as prerequisites now work even if the trait is not present.
+* Attunement cost is deducted from the Essence Pools when the item is first added.
 
 ## Release 4.3.0 "Xaal"
 

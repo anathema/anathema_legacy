@@ -237,19 +237,12 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   private IEquipmentItem addEquipmentObjectFor(IEquipmentTemplate template, MagicalMaterial material) {
     IEquipmentItem item = createItem(template, material);
     equipmentItems.add(item);
+    announceItemAndListenForChanges(item);
     return item;
   }
 
   private IEquipmentItem createItem(IEquipmentTemplate template, MagicalMaterial material) {
-    EquipmentItem item = new EquipmentItem(template, null, null, material, getCharacterDataProvider(), equipmentItems);
-    initItem(item);
-    return item;
-  }
-
-  private void initItem(IEquipmentItem item) {
-    equipmentItemControl.announce().itemAdded(item);
-    fireModelChanged();
-    item.addChangeListener(itemChangePropagator);
+    return new EquipmentItem(template, null, null, material, getCharacterDataProvider(), equipmentItems);
   }
 
   @Override
@@ -277,10 +270,16 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
         if (refreshedItem != null) {
           refreshedItem.setPersonalization(item);
           getCharacterOptionProvider().transferOptions(item, refreshedItem);
-          initItem(refreshedItem);
+          announceItemAndListenForChanges(refreshedItem);
         }
       }
     }
+  }
+
+  private void announceItemAndListenForChanges(IEquipmentItem refreshedItem) {
+    equipmentItemControl.announce().itemAdded(refreshedItem);
+    refreshedItem.addChangeListener(itemChangePropagator);
+    fireModelChanged();
   }
 
   private IEquipmentItem refreshItem(IEquipmentItem item) {
