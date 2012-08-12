@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.draw;
 
-import net.disy.commons.swing.color.ColorUtilities;
+import net.sf.anathema.lib.gui.swing.ColorUtilities;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Matchers;

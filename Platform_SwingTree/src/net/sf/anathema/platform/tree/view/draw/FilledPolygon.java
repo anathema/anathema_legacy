@@ -1,5 +1,6 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import net.sf.anathema.lib.gui.swing.ColorUtilities;
 import net.sf.anathema.platform.tree.view.interaction.SpecialControl;
 import org.jmock.example.announcer.Announcer;
 
@@ -47,8 +48,8 @@ public class FilledPolygon implements InteractiveGraphicsElement {
 
   public void setAlpha(int alpha) {
     Color original = fill;
-    fill(getTransparentColor(original, alpha));
-    this.stroke = getTransparentColor(stroke, alpha);
+    fill(ColorUtilities.getTransparentColor(original, alpha));
+    this.stroke = ColorUtilities.getTransparentColor(stroke, alpha);
   }
 
   public void whenToggledDo(Runnable runnable) {
@@ -63,9 +64,5 @@ public class FilledPolygon implements InteractiveGraphicsElement {
     Rectangle bounds = polygon.getBounds();
     control.setPosition((int) bounds.getMinX(), (int) bounds.getMaxY() + 10);
     control.setWidth((int) bounds.getWidth());
-  }
-
-  private Color getTransparentColor(Color original, int alpha) {
-    return new Color(original.getRed(), original.getGreen(), original.getBlue(),alpha);
   }
 }
