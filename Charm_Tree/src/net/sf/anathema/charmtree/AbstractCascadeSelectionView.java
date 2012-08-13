@@ -19,6 +19,8 @@ import net.sf.anathema.platform.svgtree.presenter.view.ITreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.SvgTreeView;
+import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
+import net.sf.anathema.platform.tree.view.SwingTreeView;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -32,24 +34,32 @@ import java.awt.Dimension;
 
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
 
+  public static final boolean useSwingForCascades = true;
   private final JPanel selectionPanel = new JPanel(new GridDialogLayout(4, false));
   private IChangeableJComboBox<Identified> groupComboBox;
   private IChangeableJComboBox<Identified> typeComboBox;
-  private final ISvgTreeView charmTreeView;
-  //private final SwingTreeView treeView;
+  private final ISvgTreeView svgTreeView;
+  private final SwingTreeView swingTreeView;
 
   public AbstractCascadeSelectionView(final TreeViewProperties treeProperties, final NodeProperties properties) {
-    this.charmTreeView = new SvgTreeView(treeProperties);
-    //this.treeView = new SwingTreeView();
-    //treeView.initToolTips(treeProperties);
+    this.swingTreeView = new SwingTreeView();
+    this.svgTreeView = new SvgTreeView(treeProperties);
     CascadeLoadedListener listener = new CascadeLoadedListener() {
       @Override
       public void cascadeLoaded() {
-        charmTreeView.initNodeNames(properties);
+        if (useSwingForCascades) {
+          swingTreeView.initNodeNames(properties);
+        } else {
+          svgTreeView.initNodeNames(properties);
+        }
       }
     };
-    charmTreeView.addCascadeLoadedListener(listener);
-    //treeView.addCascadeLoadedListener(listener);
+    if (useSwingForCascades) {
+      swingTreeView.initToolTips(treeProperties);
+      swingTreeView.addCascadeLoadedListener(listener);
+    } else {
+      svgTreeView.addCascadeLoadedListener(listener);
+    }
   }
 
   @Override
@@ -124,24 +134,31 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   protected final ITreeView getCharmTreeView() {
-    return charmTreeView;
-    //return treeView;
+    if (useSwingForCascades) {
+      return swingTreeView;
+    }
+    return svgTreeView;
   }
 
   protected ISvgTreeView getSpecialCharmTreeView() {
-    return charmTreeView;
+    return svgTreeView;
   }
 
   @Override
   public CharmTreeRenderer getCharmTreeRenderer() {
-    return GenericCascadeRenderer.CreateFor(charmTreeView, new GenericCascadeFactory(new SvgCascadeStrategy()));
-    //return GenericCascadeRenderer.CreateFor(treeView, new GenericCascadeFactory(new SwingCascadeStrategy()));
+    if (useSwingForCascades) {
+      return GenericCascadeRenderer.CreateFor(swingTreeView, new GenericCascadeFactory(new SwingCascadeStrategy()));
+    }
+    return GenericCascadeRenderer.CreateFor(svgTreeView, new GenericCascadeFactory(new SvgCascadeStrategy()));
   }
 
   @Override
-  public final void addCascadeLoadedListener(CascadeLoadedListener documentListener) {
-    charmTreeView.addCascadeLoadedListener(documentListener);
-    //treeView.addCascadeLoadedListener(documentListener);
+  public final void addCascadeLoadedListener(CascadeLoadedListener cascadeListener) {
+    if (useSwingForCascades) {
+      swingTreeView.addCascadeLoadedListener(cascadeListener);
+    } else {
+      svgTreeView.addCascadeLoadedListener(cascadeListener);
+    }
   }
 
   protected void unselect() {
