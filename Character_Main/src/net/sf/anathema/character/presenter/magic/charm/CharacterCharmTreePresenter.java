@@ -10,13 +10,13 @@ import net.sf.anathema.character.presenter.magic.CharacterCharmTypes;
 import net.sf.anathema.character.presenter.magic.CharacterGroupCharmTree;
 import net.sf.anathema.character.presenter.magic.CharacterGroupCollection;
 import net.sf.anathema.character.presenter.magic.CharacterSpecialCharmPresenter;
+import net.sf.anathema.character.presenter.magic.CommonSpecialCharmList;
 import net.sf.anathema.character.presenter.magic.LearnInteractionPresenter;
 import net.sf.anathema.character.presenter.magic.SpecialCharmList;
+import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
 import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPresenter;
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
-import net.sf.anathema.character.presenter.magic.svgcharms.SvgSpecialCharmList;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
-import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
@@ -25,6 +25,8 @@ import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+
+import static net.sf.anathema.charmtree.AbstractCascadeSelectionView.useSwingForCascades;
 
 public class CharacterCharmTreePresenter extends AbstractCascadePresenter implements DetailDemandingMagicPresenter {
 
@@ -47,11 +49,15 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
     setCharmTypes(new CharacterCharmTypes(charmModel));
     setChangeListener(charmGroupChangeListener);
     setView(view);
-    if (!AbstractCascadeSelectionView.useSwingForCascades) {
-      SpecialCharmList specialCharmList = new SvgSpecialCharmList(resources, factory.createSpecialViewFactory(),
-              charmModel, presentationProperties, view);
-      setSpecialPresenter(new CharacterSpecialCharmPresenter(charmGroupChangeListener, charmModel, specialCharmList));
+    SpecialCharmViewBuilder specialViewBuilder;
+    if (useSwingForCascades) {
+      specialViewBuilder = new SwingSpecialCharmViewBuilder();
+    } else {
+      specialViewBuilder = new SvgSpecialCharmViewBuilder(resources, factory.createSpecialViewFactory(), charmModel,
+              presentationProperties);
     }
+    SpecialCharmList specialCharmList = new CommonSpecialCharmList(view, specialViewBuilder);
+    setSpecialPresenter(new CharacterSpecialCharmPresenter(charmGroupChangeListener, charmModel, specialCharmList));
     setCharmDye(dye);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
     setInteractionPresenter(new LearnInteractionPresenter(model, view, charmGroupChangeListener, viewProperties, dye));

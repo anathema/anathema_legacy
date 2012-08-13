@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.magic.svgcharms;
+package net.sf.anathema.character.presenter.magic.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCh
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
@@ -19,6 +18,7 @@ import net.sf.anathema.character.presenter.magic.CharacterCharmModel;
 import net.sf.anathema.character.presenter.magic.MultiLearnableCharmPresenter;
 import net.sf.anathema.character.presenter.magic.MultipleEffectCharmPresenter;
 import net.sf.anathema.character.presenter.magic.OxBodyTechniquePresenter;
+import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
 import net.sf.anathema.charmtree.presenter.view.SpecialCharmViewFactory;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
@@ -28,15 +28,15 @@ import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpeci
 
 import java.awt.Color;
 
-public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
+public class SvgSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
   private final IResources resources;
   private final SpecialCharmViewFactory factory;
   private CharacterCharmModel charmModel;
   private ITreePresentationProperties presentationProperties;
   private ISVGSpecialNodeView createdView;
 
-  public SpecialCharmViewBuilder(IResources resources, SpecialCharmViewFactory factory, CharacterCharmModel charmModel,
-                                 ITreePresentationProperties presentationProperties) {
+  public SvgSpecialCharmViewBuilder(IResources resources, SpecialCharmViewFactory factory,
+                                    CharacterCharmModel charmModel, ITreePresentationProperties presentationProperties) {
     this.resources = resources;
     this.factory = factory;
     this.charmModel = charmModel;
@@ -162,7 +162,18 @@ public class SpecialCharmViewBuilder implements ISpecialCharmVisitor {
     return (T) getCharmConfiguration().getSpecialCharmConfiguration(visitedCharm.getCharmId());
   }
 
+  @Override
   public ISVGSpecialNodeView getResult() {
     return createdView;
+  }
+
+  @Override
+  public void reset() {
+    this.createdView = null;
+  }
+
+  @Override
+  public boolean hasResult() {
+    return createdView != null;
   }
 }

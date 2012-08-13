@@ -1,17 +1,20 @@
 package net.sf.anathema.character.impl.view.magic;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.Color;
+
+import static net.disy.commons.swing.layout.grid.GridDialogLayoutData.FILL_BOTH;
+import static net.disy.commons.swing.layout.grid.GridDialogLayoutData.FILL_HORIZONTAL;
 
 public class CharmView extends AbstractCascadeSelectionView implements ICharmView {
 
@@ -23,8 +26,8 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
 
   @Override
   public void initGui() {
-    content.add(getSelectionComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
-    content.add(getCharmComponent(), GridDialogLayoutData.FILL_BOTH);
+    content.add(getSelectionComponent(), FILL_HORIZONTAL);
+    content.add(getCharmComponent(), FILL_BOTH);
   }
 
   @Override
@@ -44,7 +47,16 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
   }
 
   @Override
-  public void setSpecialCharmViewVisible(ISVGSpecialNodeView charmView, boolean visible) {
-    getSpecialCharmTreeView().getSpecialViewManager().setVisible(charmView, visible);
+  public void setSpecialCharmViewVisible(ISpecialNodeView charmView, boolean visible) {
+    if (useSwingForCascades && visible) {
+       getCharmTreeView().addSpecialControl(charmView.getNodeId(), new Runnable() {
+         @Override
+         public void run() {
+           System.out.println("Hullo");
+         }
+       });
+    } else {
+      getSpecialCharmTreeView().getSpecialViewManager().setVisible((ISVGSpecialNodeView) charmView, visible);
+    }
   }
 }

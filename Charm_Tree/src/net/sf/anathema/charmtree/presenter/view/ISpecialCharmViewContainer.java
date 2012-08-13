@@ -1,8 +1,8 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
 
 public interface ISpecialCharmViewContainer {
 
-  void setSpecialCharmViewVisible(ISVGSpecialNodeView charmView, boolean visible);
+  void setSpecialCharmViewVisible(ISpecialNodeView charmView, boolean visible);
 }
