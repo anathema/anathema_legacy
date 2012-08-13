@@ -126,7 +126,6 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   public void addCharmCascadeHelp(String helpText) {
     JLabel help = new JLabel(helpText);
     getSelectionComponent().add(help, GridDialogLayoutData.FILL_HORIZONTAL);
-
   }
 
   protected final JComponent getSelectionComponent() {

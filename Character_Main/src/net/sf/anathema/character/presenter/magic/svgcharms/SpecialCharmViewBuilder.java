@@ -1,4 +1,4 @@
-package net.sf.anathema.character.presenter.magic;
+package net.sf.anathema.character.presenter.magic.svgcharms;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -15,6 +15,10 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
+import net.sf.anathema.character.presenter.magic.CharacterCharmModel;
+import net.sf.anathema.character.presenter.magic.MultiLearnableCharmPresenter;
+import net.sf.anathema.character.presenter.magic.MultipleEffectCharmPresenter;
+import net.sf.anathema.character.presenter.magic.OxBodyTechniquePresenter;
 import net.sf.anathema.charmtree.presenter.view.SpecialCharmViewFactory;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;

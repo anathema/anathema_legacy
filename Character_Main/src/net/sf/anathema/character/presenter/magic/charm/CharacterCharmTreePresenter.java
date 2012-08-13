@@ -11,8 +11,10 @@ import net.sf.anathema.character.presenter.magic.CharacterGroupCharmTree;
 import net.sf.anathema.character.presenter.magic.CharacterGroupCollection;
 import net.sf.anathema.character.presenter.magic.CharacterSpecialCharmPresenter;
 import net.sf.anathema.character.presenter.magic.LearnInteractionPresenter;
+import net.sf.anathema.character.presenter.magic.SpecialCharmList;
 import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPresenter;
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
+import net.sf.anathema.character.presenter.magic.svgcharms.SvgSpecialCharmList;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
@@ -46,8 +48,9 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
     setChangeListener(charmGroupChangeListener);
     setView(view);
     if (!AbstractCascadeSelectionView.useSwingForCascades) {
-      setSpecialPresenter(new CharacterSpecialCharmPresenter(view, factory.createSpecialViewFactory(), resources,
-              charmGroupChangeListener, charmModel, presentationProperties));
+      SpecialCharmList specialCharmList = new SvgSpecialCharmList(resources, factory.createSpecialViewFactory(),
+              charmModel, presentationProperties, view);
+      setSpecialPresenter(new CharacterSpecialCharmPresenter(charmGroupChangeListener, charmModel, specialCharmList));
     }
     setCharmDye(dye);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
