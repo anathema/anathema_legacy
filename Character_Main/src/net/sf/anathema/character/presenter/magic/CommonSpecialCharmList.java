@@ -23,7 +23,7 @@ public class CommonSpecialCharmList implements SpecialCharmList {
   @Override
   public void add(ISpecialCharm charm) {
     builder.reset();
-    charm.accept(builder);
+    builder.buildFor(charm);
     if (builder.hasResult()) {
       ISpecialNodeView nodeView = builder.getResult();
       specialCharmViews.add(nodeView);

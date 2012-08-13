@@ -1,6 +1,7 @@
 package net.sf.anathema.character.presenter.magic.charm;
 
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
+import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.presenter.magic.CharacterAlienCharmPresenter;
 import net.sf.anathema.character.presenter.magic.CharacterCharmDye;
 import net.sf.anathema.character.presenter.magic.CharacterCharmGroupChangeListener;
@@ -22,6 +23,7 @@ import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.presenter.view.DefaultNodeProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
+import net.sf.anathema.charmtree.presenter.view.SpecialCharmViewFactory;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
@@ -38,30 +40,37 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
                                      CharmDisplayPropertiesMap displayPropertiesMap) {
     super(resources);
     this.model = charmModel;
+    ICharmConfiguration charmConfiguration = model.getCharmConfiguration();
     CharacterCharmTreeViewProperties viewProperties = new CharacterCharmTreeViewProperties(resources,
-            model.getCharmConfiguration(), model.getMagicDescriptionProvider());
+            charmConfiguration, model.getMagicDescriptionProvider());
     DefaultNodeProperties nodeProperties = new DefaultNodeProperties(resources, viewProperties, viewProperties);
     this.view = factory.createCharmSelectionView(viewProperties, nodeProperties);
     CharacterCharmGroupChangeListener charmGroupChangeListener = new CharacterCharmGroupChangeListener(
-            model.getCharmConfiguration(), filterSet, view.getCharmTreeRenderer(), displayPropertiesMap);
+            charmConfiguration, filterSet, view.getCharmTreeRenderer(), displayPropertiesMap);
     CharacterCharmDye dye = new CharacterCharmDye(model, charmGroupChangeListener, presentationProperties.getColor(),
             view);
     setCharmTypes(new CharacterCharmTypes(charmModel));
     setChangeListener(charmGroupChangeListener);
     setView(view);
-    SpecialCharmViewBuilder specialViewBuilder;
-    if (useSwingForCascades) {
-      specialViewBuilder = new SwingSpecialCharmViewBuilder();
-    } else {
-      specialViewBuilder = new SvgSpecialCharmViewBuilder(resources, factory.createSpecialViewFactory(), charmModel,
-              presentationProperties);
-    }
+    SpecialCharmViewBuilder specialViewBuilder = createSpecialCharmViewBuilder(resources, factory, charmConfiguration,
+            presentationProperties);
     SpecialCharmList specialCharmList = new CommonSpecialCharmList(view, specialViewBuilder);
     setSpecialPresenter(new CharacterSpecialCharmPresenter(charmGroupChangeListener, charmModel, specialCharmList));
     setCharmDye(dye);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
     setInteractionPresenter(new LearnInteractionPresenter(model, view, charmGroupChangeListener, viewProperties, dye));
     setCharmGroups(new CharacterGroupCollection(model));
+  }
+
+  private SpecialCharmViewBuilder createSpecialCharmViewBuilder(IResources resources, IMagicViewFactory factory,
+                                                                ICharmConfiguration charmConfiguration,
+                                                                ITreePresentationProperties presentationProperties) {
+    if (useSwingForCascades) {
+      return new SwingSpecialCharmViewBuilder(resources, charmConfiguration);
+    } else {
+      SpecialCharmViewFactory specialViewFactory = factory.createSpecialViewFactory();
+      return new SvgSpecialCharmViewBuilder(resources, specialViewFactory, charmConfiguration, presentationProperties);
+    }
   }
 
   @Override
