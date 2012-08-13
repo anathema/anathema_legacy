@@ -24,10 +24,10 @@ public class VisibilityPredicate implements Predicate<String> {
 
 
   private boolean isVisible(ICharm charm) {
-    ICharmGroup group = charmGroupInformer.getCurrentGroup();
-    if (group == null) {
+    if (!charmGroupInformer.hasGroupSelected()) {
       return false;
     }
+    ICharmGroup group = charmGroupInformer.getCurrentGroup();
     boolean isOfGroupType = charm.getCharacterType() == group.getCharacterType();
     return isOfGroupType && charm.getGroupId().equals(group.getId());
   }

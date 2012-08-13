@@ -1,6 +1,5 @@
 package net.sf.anathema.character.presenter.magic;
 
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.SpecialCharmViewPresenter;
@@ -38,8 +37,7 @@ public class CharacterSpecialCharmPresenter implements SpecialCharmViewPresenter
 
   @Override
   public void showSpecialViews() {
-    ICharmGroup group = charmGroupInformer.getCurrentGroup();
-    if (group == null) {
+    if (!charmGroupInformer.hasGroupSelected()) {
       return;
     }
     list.showViews();
