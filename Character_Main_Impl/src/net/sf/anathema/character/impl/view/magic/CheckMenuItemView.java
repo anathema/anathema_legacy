@@ -6,8 +6,8 @@ import net.sf.anathema.platform.tree.view.interaction.SpecialContent;
 
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CheckMenuItemView implements IBooleanValueView, SpecialContent {
 
@@ -24,9 +24,9 @@ public class CheckMenuItemView implements IBooleanValueView, SpecialContent {
 
   @Override
   public void addChangeListener(final IBooleanValueChangedListener listener) {
-    menuItem.addChangeListener(new ChangeListener() {
+    menuItem.addActionListener(new ActionListener() {
       @Override
-      public void stateChanged(ChangeEvent e) {
+      public void actionPerformed(ActionEvent e) {
         listener.valueChanged(menuItem.isSelected());
       }
     });

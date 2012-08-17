@@ -40,6 +40,7 @@ public class MultipleEffectCharmPresenter implements Presenter {
         @Override
         public void valueChanged(boolean newValue) {
           subeffect.setLearned(newValue);
+          display.setSelected(subeffect.isLearned());
         }
       });
       display.setSelected(subeffect.isLearned());
