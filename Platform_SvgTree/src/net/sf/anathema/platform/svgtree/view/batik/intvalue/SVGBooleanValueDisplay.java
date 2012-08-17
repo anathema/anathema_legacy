@@ -102,6 +102,9 @@ public class SVGBooleanValueDisplay implements IBooleanValueView {
 
   @Override
   public void setSelected(boolean selected) {
+    if (this.selected == selected) {
+      return;
+    }
     this.selected = selected;
     if (visible) {
       if (selected) {
