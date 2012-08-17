@@ -5,6 +5,7 @@ import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
+import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
@@ -25,7 +26,8 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
   public CharmView(TreeViewProperties treeProperties, NodeProperties nodeProperties,
                    IntegerViewFactory integerDisplayFactory) {
     super(treeProperties, nodeProperties);
-    getCharmTreeView().registerSpecialType(IIntValueView.class, new SpecialIntValueFactory(integerDisplayFactory));
+    getCharmTreeView().registerSpecialType(IIntValueView.class, new SpecialIntDisplayFactory(integerDisplayFactory));
+    getCharmTreeView().registerSpecialType(IBooleanValueView.class, new SpecialBooleanDisplayFactory());
   }
 
   @Override

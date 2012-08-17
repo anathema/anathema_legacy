@@ -5,10 +5,10 @@ import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.platform.svgtree.presenter.view.ContentFactory;
 
-public class SpecialIntValueFactory implements ContentFactory {
+public class SpecialIntDisplayFactory implements ContentFactory {
   private IntegerViewFactory factory;
 
-  public SpecialIntValueFactory(IntegerViewFactory factory) {
+  public SpecialIntDisplayFactory(IntegerViewFactory factory) {
     this.factory = factory;
   }
 

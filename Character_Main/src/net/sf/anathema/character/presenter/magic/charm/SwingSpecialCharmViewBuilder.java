@@ -12,8 +12,10 @@ import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifying
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.character.presenter.magic.MultiLearnableCharmPresenter;
+import net.sf.anathema.character.presenter.magic.MultipleEffectCharmPresenter;
 import net.sf.anathema.character.presenter.magic.OxBodyTechniquePresenter;
 import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
 import net.sf.anathema.lib.resources.IResources;
@@ -69,18 +71,25 @@ public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
     }
 
     @Override
-    public void visitSubeffectCharm(ISubeffectCharm charm) {
-      //To change body of implemented methods use File | Settings | File Templates.
+    public void visitSubeffectCharm(ISubeffectCharm visited) {
+      createMultipleEffectCharmView(visited);
     }
 
     @Override
-    public void visitUpgradableCharm(IUpgradableCharm charm) {
-      //To change body of implemented methods use File | Settings | File Templates.
+    public void visitMultipleEffectCharm(IMultipleEffectCharm visited) {
+      createMultipleEffectCharmView(visited);
     }
 
     @Override
-    public void visitMultipleEffectCharm(IMultipleEffectCharm charm) {
-      //To change body of implemented methods use File | Settings | File Templates.
+    public void visitUpgradableCharm(IUpgradableCharm visited) {
+      createMultipleEffectCharmView(visited);
+    }
+
+    private void createMultipleEffectCharmView(IMultipleEffectCharm visitedCharm) {
+      BooleanSelectionSpecialNodeView view = new BooleanSelectionSpecialNodeView(visitedCharm);
+      IMultipleEffectCharmConfiguration model = getModelFromCharm(visitedCharm);
+      new MultipleEffectCharmPresenter(resources, view, model).initPresentation();
+      result = view;
     }
 
     @Override

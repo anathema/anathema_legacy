@@ -14,7 +14,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
+public class SVGToggleButtonSpecialNodeView implements ToggleButtonSpecialNodeView, ISVGSpecialNodeView {
 
   private final String id;
   private final double width;
@@ -29,15 +29,12 @@ public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
 
   @Override
   public SVGGElement initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator) {
-    SVGGElement groupElement = (SVGGElement) document.createElementNS(
-        SVGDOMImplementation.SVG_NAMESPACE_URI,
-        SVGConstants.SVG_G_TAG);
+    SVGGElement groupElement = (SVGGElement) document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI,
+            SVGConstants.SVG_G_TAG);
     for (int index = 0; index < effects.size(); index++) {
       Element displayElement = effects.get(index).initGui(document);
-      DomUtilities.setAttribute(
-          displayElement,
-          SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
-          "translate(0," + index * SVGIntValueDisplay.getDiameter(width) * 1.1 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+      DomUtilities.setAttribute(displayElement, SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
+              "translate(0," + index * SVGIntValueDisplay.getDiameter(width) * 1.1 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
       groupElement.appendChild(displayElement);
     }
     return groupElement;
@@ -65,6 +62,7 @@ public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
     //nothing to do
   }
 
+  @Override
   public IBooleanValueView addSubeffect(String label) {
     SVGBooleanValueDisplay display = new SVGBooleanValueDisplay(label, width, color);
     effects.add(display);
