@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter.magic.charm;
 
-import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.platform.svgtree.presenter.view.CategorizedSpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SwingCategorizedSpecialView implements CategorizedSpecialNodeView, ISpecialNodeView {
-  private final IOxBodyTechniqueCharm visitedCharm;
+  private final ISpecialCharm visitedCharm;
   private final List<ProxyIntValueView> views = new ArrayList<ProxyIntValueView>();
 
-  public SwingCategorizedSpecialView(IOxBodyTechniqueCharm visitedCharm) {
+  public SwingCategorizedSpecialView(ISpecialCharm visitedCharm) {
     this.visitedCharm = visitedCharm;
   }
 

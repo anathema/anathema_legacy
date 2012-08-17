@@ -11,7 +11,9 @@ import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
+import net.sf.anathema.character.presenter.magic.MultiLearnableCharmPresenter;
 import net.sf.anathema.character.presenter.magic.OxBodyTechniquePresenter;
 import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
 import net.sf.anathema.lib.resources.IResources;
@@ -51,16 +53,19 @@ public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
   private class SwingSpecialCharmVisitor implements ISpecialCharmVisitor {
 
     @Override
-    public void visitMultiLearnableCharm(IMultiLearnableCharm charm) {
-      //To change body of implemented methods use File | Settings | File Templates.
+    public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {
+      SwingCategorizedSpecialView view = new SwingCategorizedSpecialView(visitedCharm);
+      IMultiLearnableCharmConfiguration model = getModelFromCharm(visitedCharm);
+      new MultiLearnableCharmPresenter(resources, view, model).initPresentation();
+      result = view;
     }
 
     @Override
-    public void visitOxBodyTechnique(final IOxBodyTechniqueCharm visitedCharm) {
-      SwingCategorizedSpecialView swingCategorizedSpecialView = new SwingCategorizedSpecialView(visitedCharm);
+    public void visitOxBodyTechnique(IOxBodyTechniqueCharm visitedCharm) {
+      SwingCategorizedSpecialView view = new SwingCategorizedSpecialView(visitedCharm);
       IOxBodyTechniqueConfiguration model = getModelFromCharm(visitedCharm);
-      new OxBodyTechniquePresenter(resources, swingCategorizedSpecialView, model).initPresentation();
-      result = swingCategorizedSpecialView;
+      new OxBodyTechniquePresenter(resources, view, model).initPresentation();
+      result = view;
     }
 
     @Override
