@@ -27,7 +27,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
       return;
     }
     MessageUtilities.indicateMessage(DatabaseConversionBootJob.class, null, new Message(
-            "This version of Anathema no longer supports your equipment database.\nTo convert it, please install Anathema 4.1.1 and start it once with this repository.\nAfterwards, you can use it with this version as well.\n\nAnathema will now quit.",
+            "Anathema no longer supports your equipment database.\nTo convert the database, please uninstall this version of Anathema and install Anathema 4.1.1, then start it once with the current repository to convert your data.\nAfterwards, install this version again.\n\nAnathema will now quit.",
             MessageType.WARNING));
     System.exit(0);
   }
