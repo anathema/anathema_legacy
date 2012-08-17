@@ -3,6 +3,8 @@ package net.sf.anathema.character.impl.view.magic;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
+import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
@@ -20,8 +22,10 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
 
-  public CharmView(TreeViewProperties treeProperties, NodeProperties nodeProperties) {
+  public CharmView(TreeViewProperties treeProperties, NodeProperties nodeProperties,
+                   IntegerViewFactory integerDisplayFactory) {
     super(treeProperties, nodeProperties);
+    getCharmTreeView().registerSpecialType(IIntValueView.class, new SpecialIntValueFactory(integerDisplayFactory));
   }
 
   @Override
@@ -48,13 +52,8 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
 
   @Override
   public void setSpecialCharmViewVisible(ISpecialNodeView charmView, boolean visible) {
-    if (useSwingForCascades && visible) {
-       getCharmTreeView().addSpecialControl(charmView.getNodeId(), new Runnable() {
-         @Override
-         public void run() {
-           System.out.println("Hullo");
-         }
-       });
+    if (useSwingForCascades) {
+      getCharmTreeView().addSpecialControl(charmView.getNodeId(), charmView);
     } else {
       getSpecialCharmTreeView().getSpecialViewManager().setVisible((ISVGSpecialNodeView) charmView, visible);
     }

@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JToggleButton;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.ActionEvent;
@@ -11,33 +11,35 @@ import java.awt.geom.AffineTransform;
 public class ButtonSpecialControl implements SpecialControl {
 
   private Rectangle originalBounds = new Rectangle(0, 0, 0, 15);
-  private final JButton control;
+  private final JToggleButton button;
+  private final SpecialContentMap specialContent;
 
-  public ButtonSpecialControl(String title) {
-    this.control = new JButton(title);
+  public ButtonSpecialControl(String title, SpecialContentMap specialContent) {
+    this.specialContent = specialContent;
+    this.button = new JToggleButton(title);
   }
 
   @Override
   public void transformThrough(AffineTransform transform) {
     Shape transformedShape = transform.createTransformedShape(originalBounds);
     Rectangle transformedShapeBounds = transformedShape.getBounds();
-    control.setBounds(transformedShapeBounds);
+    button.setBounds(transformedShapeBounds);
   }
 
   @Override
   public void addTo(JComponent parent) {
-    parent.add(control);
+    parent.add(button);
   }
 
   @Override
   public void remove(JComponent parent) {
-    parent.remove(control);
+    parent.remove(button);
   }
 
   @Override
   public void transformOriginalCoordinates(AffineTransform transform) {
     this.originalBounds = transform.createTransformedShape(originalBounds).getBounds();
-    control.setBounds(originalBounds);
+    button.setBounds(originalBounds);
   }
 
   @Override
@@ -50,11 +52,18 @@ public class ButtonSpecialControl implements SpecialControl {
     originalBounds.setSize(width, 15);
   }
 
-  public void whenTriggeredExecute(final Runnable actionListener) {
-    control.addActionListener(new ActionListener() {
+  public void whenTriggeredShow(final net.sf.anathema.platform.svgtree.presenter.view.SpecialControl specialControl) {
+    final PopupSpecialCharmContainer container = new PopupSpecialCharmContainer(button, specialContent);
+    specialControl.showIn(container);
+    button.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        actionListener.run();
+        if (button.isSelected()) {
+          container.display();
+        }
+        else{
+          container.hide();
+        }
       }
     });
   }

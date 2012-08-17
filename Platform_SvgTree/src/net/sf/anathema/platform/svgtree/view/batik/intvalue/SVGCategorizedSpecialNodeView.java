@@ -2,6 +2,7 @@ package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGCategorizedSpecialNodeView;
+import net.sf.anathema.platform.svgtree.presenter.view.SpecialCharmContainer;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
@@ -38,6 +39,11 @@ public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNode
   @Override
   public String getNodeId() {
     return nodeId;
+  }
+
+  @Override
+  public void showIn(SpecialCharmContainer container) {
+    //nothing to do
   }
 
   @Override

@@ -2,13 +2,16 @@ package net.sf.anathema.platform.tree.view;
 
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ContentFactory;
 import net.sf.anathema.platform.svgtree.presenter.view.ITreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.SpecialControl;
 import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
 import net.sf.anathema.platform.tree.view.interaction.ButtonSpecialControl;
+import net.sf.anathema.platform.tree.view.interaction.SpecialContentMap;
 import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -21,6 +24,7 @@ public class SwingTreeView implements ITreeView<Cascade> {
   private final Announcer<CascadeLoadedListener> loadListeners = Announcer.to(CascadeLoadedListener.class);
   private final AggregatingInteractionListener allInteractionListeners = new AggregatingInteractionListener();
   private final ProxyCascade cascade = new ProxyCascade();
+  private final SpecialContentMap specialContent = new SpecialContentMap();
 
   public SwingTreeView() {
     this(new PolygonPanel());
@@ -67,9 +71,9 @@ public class SwingTreeView implements ITreeView<Cascade> {
   }
 
   @Override
-  public void addSpecialControl(String nodeId, Runnable actionListener){
-    ButtonSpecialControl control = new ButtonSpecialControl("Special");
-    control.whenTriggeredExecute(actionListener);
+  public void addSpecialControl(String nodeId, SpecialControl specialControl){
+    ButtonSpecialControl control = new ButtonSpecialControl("Special", specialContent);
+    control.whenTriggeredShow(specialControl);
     cascade.determinePositionFor(nodeId, control);
     polygonPanel.add(control);
   }
@@ -88,6 +92,11 @@ public class SwingTreeView implements ITreeView<Cascade> {
   public void clear() {
     cascade.clear();
     polygonPanel.clear();
+  }
+
+  @Override
+  public void registerSpecialType(Class contentClass, ContentFactory factory) {
+    specialContent.put(contentClass, factory);
   }
 
   @Override

@@ -5,10 +5,12 @@ import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ContentFactory;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.SpecialControl;
 import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
@@ -118,15 +120,19 @@ public class SvgTreeView implements ISvgTreeView {
         @Override
         public void gvtRenderingStarted(GVTTreeRendererEvent e) {
           // TODO Auto-generated method stub
-
         }
       });
     }
   }
 
   @Override
-  public void addSpecialControl(String nodeId, Runnable actionListener) {
-    //To change body of implemented methods use File | Settings | File Templates.
+  public void addSpecialControl(String nodeId, SpecialControl control) {
+    //rebuilt special handling not implemented for SVG
+  }
+
+  @Override
+  public void registerSpecialType(Class contentClass, ContentFactory factory) {
+    //rebuilt special handling not implemented for SVG
   }
 
   @Override

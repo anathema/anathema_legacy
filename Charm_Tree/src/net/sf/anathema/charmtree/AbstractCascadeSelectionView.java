@@ -34,7 +34,7 @@ import java.awt.Dimension;
 
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
 
-  public static final boolean useSwingForCascades = false;
+  public static final boolean useSwingForCascades = true;
   private final JPanel selectionPanel = new JPanel(new GridDialogLayout(4, false));
   private IChangeableJComboBox<Identified> groupComboBox;
   private IChangeableJComboBox<Identified> typeComboBox;

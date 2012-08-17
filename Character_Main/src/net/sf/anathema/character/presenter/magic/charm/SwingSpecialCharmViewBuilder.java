@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifying
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
+import net.sf.anathema.character.presenter.magic.OxBodyTechniquePresenter;
 import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
@@ -55,26 +56,11 @@ public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
     }
 
     @Override
-    public void visitOxBodyTechnique(IOxBodyTechniqueCharm visitedCharm) {
-      //SVGCategorizedSpecialNodeView specialView = createViewForCharm(visitedCharm);
+    public void visitOxBodyTechnique(final IOxBodyTechniqueCharm visitedCharm) {
+      SwingCategorizedSpecialView swingCategorizedSpecialView = new SwingCategorizedSpecialView(visitedCharm);
       IOxBodyTechniqueConfiguration model = getModelFromCharm(visitedCharm);
-      //new OxBodyTechniquePresenter(resources, specialView, model).initPresentation();
-      result = new ISpecialNodeView() {
-        @Override
-        public String getNodeId() {
-          return "Solar.Ox-BodyTechnique";
-        }
-
-        @Override
-        public void hide() {
-          //To change body of implemented methods use File | Settings | File Templates.
-        }
-
-        @Override
-        public void reset() {
-          //To change body of implemented methods use File | Settings | File Templates.
-        }
-      };
+      new OxBodyTechniquePresenter(resources, swingCategorizedSpecialView, model).initPresentation();
+      result = swingCategorizedSpecialView;
     }
 
     @Override

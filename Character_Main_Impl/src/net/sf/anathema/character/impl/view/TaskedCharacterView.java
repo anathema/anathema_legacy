@@ -101,7 +101,7 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
 
   @Override
   public IMagicViewFactory createMagicViewFactory() {
-    return new MagicViewFactory();
+    return new MagicViewFactory(integerDisplayFactory);
   }
 
   @Override

@@ -1,18 +1,18 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
+import net.sf.anathema.platform.svgtree.presenter.view.SpecialCharmContainer;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGGElement;
+
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
 
@@ -58,6 +58,11 @@ public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
   @Override
   public String getNodeId() {
     return id;
+  }
+
+  @Override
+  public void showIn(SpecialCharmContainer container) {
+    //nothing to do
   }
 
   public IBooleanValueView addSubeffect(String label) {

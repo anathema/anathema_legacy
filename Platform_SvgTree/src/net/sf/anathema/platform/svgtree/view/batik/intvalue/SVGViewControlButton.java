@@ -1,6 +1,7 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
+import net.sf.anathema.platform.svgtree.presenter.view.SpecialCharmContainer;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
@@ -45,6 +46,11 @@ public class SVGViewControlButton implements ISVGSpecialNodeView {
   @Override
   public String getNodeId() {
     return display.getNodeId();
+  }
+
+  @Override
+  public void showIn(SpecialCharmContainer container) {
+    //nothing to do
   }
 
   @Override
