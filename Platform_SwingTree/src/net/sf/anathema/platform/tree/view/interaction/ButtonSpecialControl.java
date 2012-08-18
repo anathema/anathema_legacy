@@ -38,7 +38,8 @@ public class ButtonSpecialControl implements SpecialControl {
 
   @Override
   public void transformOriginalCoordinates(AffineTransform transform) {
-    this.originalBounds = transform.createTransformedShape(originalBounds).getBounds();
+    Shape transformedShape = transform.createTransformedShape(originalBounds);
+    this.originalBounds = transformedShape.getBounds();
     button.setBounds(originalBounds);
   }
 

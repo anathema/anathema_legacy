@@ -12,6 +12,8 @@ import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
 
+import static net.sf.anathema.charmtree.AbstractCascadeSelectionView.useSwingForCascades;
+
 public class LearnInteractionPresenter implements CharmInteractionPresenter {
 
   private ICharmView view;
@@ -20,7 +22,8 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
   private ICharmTreeViewProperties viewProperties;
   private CharacterCharmDye dye;
 
-  public LearnInteractionPresenter(CharacterCharmModel model, ICharmView view, CharacterCharmGroupChangeListener charmGroupChangeListener,
+  public LearnInteractionPresenter(CharacterCharmModel model, ICharmView view,
+                                   CharacterCharmGroupChangeListener charmGroupChangeListener,
                                    ICharmTreeViewProperties viewProperties, CharacterCharmDye dye) {
     this.model = model;
     this.view = view;
@@ -53,7 +56,9 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
         dye.setCharmVisuals();
       }
     });
-    ensureRefreshAfterAutomaticUnlearn();
+    if (!useSwingForCascades) {
+      ensureRefreshAfterAutomaticUnlearn();
+    }
   }
 
   private void ensureRefreshAfterAutomaticUnlearn() {
