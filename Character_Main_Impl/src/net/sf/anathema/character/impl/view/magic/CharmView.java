@@ -55,7 +55,9 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
   @Override
   public void setSpecialCharmViewVisible(ISpecialNodeView charmView, boolean visible) {
     if (useSwingForCascades) {
-      getCharmTreeView().addSpecialControl(charmView.getNodeId(), charmView);
+      if (visible) {
+        getCharmTreeView().addSpecialControl(charmView.getNodeId(), charmView);
+      }
     } else {
       getSpecialCharmTreeView().getSpecialViewManager().setVisible((ISVGSpecialNodeView) charmView, visible);
     }
