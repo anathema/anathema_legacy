@@ -13,6 +13,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 * Charm with optional Traits (such as Backgrounds) as prerequisites now work even if the trait is not present.
 * Attunement cost is deducted from the Essence Pools when the item is first added.
 * Anathema has a more helpful message when the equipment DB can't be converted.
+* Adds "Master Horseman's Eye" to the list of effects of "Master Horseman's Techniques"
 
 ## Release 4.3.0 "Xaal"
 

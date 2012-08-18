@@ -3180,6 +3180,7 @@
 		<subeffects bpCost="1">
 			<subeffect name="HarmonySpiritsStyle"/>
 			<subeffect name="Horse-SummoningWhistle"/>
+            <subeffect name="MasterHorseman'sEye"/>
 			<subeffect name="Speed-SustainingTechnique"/>
 			<subeffect name="Spirit-SteadyingAssurances"/>
 		</subeffects>
