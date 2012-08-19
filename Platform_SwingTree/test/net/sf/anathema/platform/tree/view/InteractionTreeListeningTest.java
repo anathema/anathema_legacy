@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
 import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -27,8 +28,8 @@ public class InteractionTreeListeningTest {
   public void addsPanListenerForDragAndClick() throws Exception {
     listening.initialize();
     ArgumentCaptor<LeftClickPanner> captor = ArgumentCaptor.forClass(LeftClickPanner.class);
-    verify(panel).addMouseMotionListener(captor.capture());
-    verify(panel).addMouseListener(captor.getValue());
+    verify(panel, atLeastOnce()).addMouseMotionListener(captor.capture());
+    verify(panel).addMouseListener(captor.getAllValues().get(0));
   }
 
   @Test
