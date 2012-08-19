@@ -3,22 +3,17 @@ package net.sf.anathema.platform.tree.view.draw;
 import net.sf.anathema.lib.gui.swing.ColorUtilities;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Matchers;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
 import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class FilledPolygon_GraphicsTest {
 
   FilledPolygon filledPolygon = new FilledPolygon();
-  Graphics2D graphics = mock(Graphics2D.class);
+  Graphics2D graphics = GraphicsMother.createForAnyFont();
 
   @Before
   public void createSquare() throws Exception {
@@ -26,12 +21,6 @@ public class FilledPolygon_GraphicsTest {
     filledPolygon.addPoint(0, 2);
     filledPolygon.addPoint(2, 2);
     filledPolygon.addPoint(2, 0);
-  }
-
-  @Before
-  public void setUp() throws Exception {
-    FontMetrics metrics = mock(FontMetrics.class);
-    when(graphics.getFontMetrics(Matchers.any(Font.class))).thenReturn(metrics);
   }
 
   @Test
