@@ -3,6 +3,7 @@ package net.sf.anathema.platform.tree.view;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.CtrlLeftClickDetailsRequester;
+import net.sf.anathema.platform.tree.view.interaction.CursorChanger;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickSelector;
 import net.sf.anathema.platform.tree.view.interaction.RightClickCenterer;
@@ -28,6 +29,7 @@ public class InteractionTreeListening {
     polygonPanel.addMouseListener(new CtrlLeftClickDetailsRequester(cascade, polygonPanel, interactionListener));
     polygonPanel.addMouseListener(new RightClickResetter(polygonPanel));
     polygonPanel.addMouseListener(new RightClickCenterer(polygonPanel));
+    polygonPanel.addMouseMotionListener(new CursorChanger(polygonPanel));
     polygonPanel.addMouseWheelListener(new WheelScaler(polygonPanel));
   }
 }

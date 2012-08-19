@@ -2,18 +2,32 @@ package net.sf.anathema.platform.tree.view.interaction;
 
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 
+import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseMotionListener;
 
-public class CursorChanger extends MouseMotionAdapter {
-    private final PolygonPanel polygonPanel;
+import static java.awt.Cursor.MOVE_CURSOR;
 
-    public CursorChanger(PolygonPanel polygonPanel) {
-        this.polygonPanel = polygonPanel;
-    }
+public class CursorChanger extends MouseAdapter implements MouseMotionListener {
+  private final PolygonPanel polygonPanel;
 
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        polygonPanel.changeCursor(e.getPoint());
-    }
+  public CursorChanger(PolygonPanel polygonPanel) {
+    this.polygonPanel = polygonPanel;
+  }
+
+  @Override
+  public void mouseMoved(MouseEvent e) {
+    polygonPanel.changeCursor(e.getPoint());
+  }
+
+  @Override
+  public void mouseDragged(MouseEvent e) {
+    polygonPanel.setCursor(Cursor.getPredefinedCursor(MOVE_CURSOR));
+  }
+
+  @Override
+  public void mouseReleased(MouseEvent e) {
+    polygonPanel.changeCursor(e.getPoint());
+  }
 }

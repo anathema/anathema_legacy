@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.awt.event.MouseEvent;
 
+import static java.awt.Cursor.MOVE_CURSOR;
+import static java.awt.Cursor.getPredefinedCursor;
 import static net.sf.anathema.platform.tree.view.interaction.LeftClickTogglerTest.AnyPoint;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -15,9 +17,16 @@ public class CursorChangerTest {
   MouseEvent event = mock(MouseEvent.class);
 
   @Test
-  public void triggersScaleOnPanel() throws Exception {
+  public void changesCursorOnPanel() throws Exception {
     when(event.getPoint()).thenReturn(AnyPoint);
     new CursorChanger(panel).mouseMoved(event);
     verify(panel).changeCursor(AnyPoint);
+  }
+
+  @Test
+  public void changesCursorDuringMouseDrag() throws Exception {
+    when(event.getPoint()).thenReturn(AnyPoint);
+    new CursorChanger(panel).mouseDragged(event);
+    verify(panel).setCursor(getPredefinedCursor(MOVE_CURSOR));
   }
 }
