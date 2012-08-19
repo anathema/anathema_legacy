@@ -84,14 +84,6 @@ public class PolygonPanelTest {
   }
 
   @Test
-  public void hasSlightlyZoomedOutTransformationAfterReset() throws Exception {
-    polygonPanel.scale(5);
-    polygonPanel.resetTransformation();
-    polygonPanel.paintComponent(graphics);
-    verify(graphics).transform(AffineTransform.getScaleInstance(0.75, 0.75));
-  }
-
-  @Test
   public void activatesAntiAliasing() throws Exception {
     polygonPanel.paintComponent(graphics);
     verify(graphics).setRenderingHint(KEY_ANTIALIASING, VALUE_ANTIALIAS_ON);
