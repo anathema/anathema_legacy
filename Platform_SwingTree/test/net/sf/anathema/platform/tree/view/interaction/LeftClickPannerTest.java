@@ -26,7 +26,6 @@ public class LeftClickPannerTest {
     when(dragEvent.getModifiers()).thenReturn(MouseEvent.BUTTON1_MASK);
   }
 
-
   @Test
   public void activatesOnLeftButtonOnly() throws Exception {
     when(dragEvent.getModifiers()).thenReturn(MouseEvent.BUTTON3_MASK);
@@ -50,7 +49,6 @@ public class LeftClickPannerTest {
     panner.mouseDragged(dragEvent);
     verify(panel).translate(10, 10);
   }
-
 
   @Test
   public void repaintsAfterTranslation() throws Exception {

@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 public class RightClickCentererTest {
@@ -25,7 +26,25 @@ public class RightClickCentererTest {
   @Test
   public void centersPanelOnCursorPositionOnRightClick() throws Exception {
     when(event.getModifiers()).thenReturn(MouseEvent.BUTTON3_MASK);
+    when(event.getClickCount()).thenReturn(1);
     centerer.mouseClicked(event);
     verify(panel).centerOn(10, 10);
+  }
+
+  @Test
+  public void doesNotReactOnLeftClick() throws Exception {
+    when(event.getModifiers()).thenReturn(MouseEvent.BUTTON1_MASK);
+    when(event.getClickCount()).thenReturn(1);
+    centerer.mouseClicked(event);
+    verifyZeroInteractions(panel);
+  }
+
+
+  @Test
+  public void doesNotReactOnDoubleClick() throws Exception {
+    when(event.getModifiers()).thenReturn(MouseEvent.BUTTON3_MASK);
+    when(event.getClickCount()).thenReturn(2);
+    centerer.mouseClicked(event);
+    verifyZeroInteractions(panel);
   }
 }
