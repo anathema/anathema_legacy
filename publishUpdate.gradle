@@ -15,7 +15,7 @@ task copyFilesForUpdate(type: Copy) {
   }
 }
 
-task buildFileListForUpdate {
+task buildFileListForUpdate << {
   def updateFolder = new File(buildDir, "update")
   def contentFile = new File(updateFolder, "content")
   String[] containedFiles = updateFolder.list();
