@@ -28,6 +28,7 @@ public class PolygonPanelTest {
   @Before
   public void setUp() throws Exception {
     when(graphics.create()).thenReturn(graphics);
+    polygonPanel.setSize(100, 100);
   }
 
   @Test
@@ -48,6 +49,13 @@ public class PolygonPanelTest {
     polygonPanel.translate(5, 7);
     polygonPanel.paintComponent(graphics);
     verify(graphics).transform(AffineTransform.getTranslateInstance(5, 7));
+  }
+
+  @Test
+  public void centersOnPoint() throws Exception {
+    polygonPanel.centerOn(10, 10);
+    polygonPanel.paintComponent(graphics);
+    verify(graphics).transform(AffineTransform.getTranslateInstance(40, 40));
   }
 
   @Test

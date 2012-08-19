@@ -5,6 +5,7 @@ import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.CtrlLeftClickDetailsRequester;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickSelector;
+import net.sf.anathema.platform.tree.view.interaction.RightClickCenterer;
 import net.sf.anathema.platform.tree.view.interaction.RightClickResetter;
 import net.sf.anathema.platform.tree.view.interaction.WheelScaler;
 import org.junit.Test;
@@ -39,6 +40,12 @@ public class InteractionTreeListeningTest {
   public void addsResetListenerForRightClick() throws Exception {
     listening.initialize();
     verify(panel).addMouseListener(isA(RightClickResetter.class));
+  }
+
+  @Test
+  public void addsCenterListenerForRightClick() throws Exception {
+    listening.initialize();
+    verify(panel).addMouseListener(isA(RightClickCenterer.class));
   }
 
   @Test

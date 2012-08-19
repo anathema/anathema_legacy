@@ -109,6 +109,16 @@ public class PolygonPanel extends JPanel {
     }
   }
 
+  public void centerOn(int x, int y) {
+    int xCenter = getWidth() / 2;
+    int yCenter = getHeight() / 2;
+    int newCenterX = xCenter - x;
+    int newCenterY = yCenter - y;
+    AffineTransform newCenter = AffineTransform.getTranslateInstance(newCenterX, newCenterY);
+    transform.preConcatenate(newCenter);
+    repaint();
+  }
+
   private class SetDefaultCursor implements Runnable {
     @Override
     public void run() {

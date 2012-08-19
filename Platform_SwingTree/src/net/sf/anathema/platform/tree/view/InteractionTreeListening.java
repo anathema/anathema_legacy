@@ -5,6 +5,7 @@ import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.CtrlLeftClickDetailsRequester;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickSelector;
+import net.sf.anathema.platform.tree.view.interaction.RightClickCenterer;
 import net.sf.anathema.platform.tree.view.interaction.RightClickResetter;
 import net.sf.anathema.platform.tree.view.interaction.WheelScaler;
 
@@ -26,6 +27,7 @@ public class InteractionTreeListening {
     polygonPanel.addMouseListener(new LeftClickSelector(cascade, polygonPanel, interactionListener));
     polygonPanel.addMouseListener(new CtrlLeftClickDetailsRequester(cascade, polygonPanel, interactionListener));
     polygonPanel.addMouseListener(new RightClickResetter(polygonPanel));
+    polygonPanel.addMouseListener(new RightClickCenterer(polygonPanel));
     polygonPanel.addMouseWheelListener(new WheelScaler(polygonPanel));
   }
 }
