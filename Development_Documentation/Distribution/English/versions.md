@@ -4,16 +4,18 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
-## Release 4.3.1
+## Release 4.4.0 "Yu-Shan"
 
 ### Features
 * Anathema has a more helpful message when a Martial Arts charm does not conform with its expectations.
+* Refurbishes the Charm cascades, saving download size and improving usability
 
 ### Bugfixes
 * Charm with optional Traits (such as Backgrounds) as prerequisites now work even if the trait is not present.
 * Attunement cost is deducted from the Essence Pools when the item is first added.
 * Anathema has a more helpful message when the equipment DB can't be converted.
 * Adds "Master Horseman's Eye" to the list of effects of "Master Horseman's Techniques"
+* The new Charm cascades fix several issues present in the old version
 
 ## Release 4.3.0 "Xaal"
 
