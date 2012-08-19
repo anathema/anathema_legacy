@@ -18,6 +18,8 @@ import org.jmock.example.announcer.Announcer;
 import javax.swing.JComponent;
 import java.awt.Color;
 
+import static net.sf.anathema.platform.tree.view.PolygonPanel.RECOMMENDED_DEFAULT_SCALE;
+
 public class SwingTreeView implements ITreeView<Cascade> {
 
   private final PolygonPanel polygonPanel;
@@ -68,10 +70,11 @@ public class SwingTreeView implements ITreeView<Cascade> {
     cascade.setDelegate(newCascade);
     cascade.addTo(polygonPanel);
     loadListeners.announce().cascadeLoaded();
+    polygonPanel.scale(RECOMMENDED_DEFAULT_SCALE);
   }
 
   @Override
-  public void addSpecialControl(String nodeId, SpecialControl specialControl){
+  public void addSpecialControl(String nodeId, SpecialControl specialControl) {
     ButtonSpecialControl control = new ButtonSpecialControl("Special", specialContent);
     control.whenTriggeredShow(specialControl);
     cascade.determinePositionFor(nodeId, control);

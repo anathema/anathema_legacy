@@ -25,6 +25,7 @@ import static java.awt.RenderingHints.KEY_ANTIALIASING;
 import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 
 public class PolygonPanel extends JPanel {
+  public static final double RECOMMENDED_DEFAULT_SCALE = 0.75d;
   private static final double MAX_ZOOM_OUT_DETERMINANT = 0.09d; //30%
   private static final double MAX_ZOOM_IN_DETERMINANT = 2.25d; //150%
   private AffineTransform transform = new AffineTransform();
@@ -86,7 +87,6 @@ public class PolygonPanel extends JPanel {
 
   public void resetTransformation() {
     transform.setToIdentity();
-    transform.scale(0.75, 0.75);
     repaint();
   }
 

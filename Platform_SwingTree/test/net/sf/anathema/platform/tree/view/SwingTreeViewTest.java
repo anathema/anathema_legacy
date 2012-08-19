@@ -84,6 +84,16 @@ public class SwingTreeViewTest {
   }
 
   @Test
+  public void zoomsOutALittleAfterNotificationSoAllSpecialControlsAreInitializedWhenItHappens() throws Exception {
+    CascadeLoadedListener listener = mock(CascadeLoadedListener.class);
+    swingTreeView.addCascadeLoadedListener(listener);
+    swingTreeView.loadCascade(cascade, true);
+    InOrder inOrder = inOrder(listener, panel);
+    inOrder.verify(listener).cascadeLoaded();
+    inOrder.verify(panel).scale(0.75);
+  }
+
+  @Test
   public void paintsCascadeOnCanvas() throws Exception {
     swingTreeView.loadCascade(cascade, true);
     verify(cascade).addTo(panel);
