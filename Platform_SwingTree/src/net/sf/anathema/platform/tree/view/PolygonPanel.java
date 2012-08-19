@@ -25,6 +25,8 @@ import static java.awt.RenderingHints.KEY_ANTIALIASING;
 import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 
 public class PolygonPanel extends JPanel {
+  private static final double MAX_ZOOM_OUT_DETERMINANT = 0.09d; //30%
+  private static final double MAX_ZOOM_IN_DETERMINANT = 2.25d; //150%
   private AffineTransform transform = new AffineTransform();
   private ElementContainer container = new ElementContainer();
   private final List<SpecialControl> specialControls = new ArrayList<SpecialControl>();
@@ -73,7 +75,7 @@ public class PolygonPanel extends JPanel {
     AffineTransform clone = (AffineTransform) transform.clone();
     clone.scale(scale, scale);
     double determinant = clone.getDeterminant();
-    if (0.5f < determinant && determinant < 12f){
+    if (MAX_ZOOM_OUT_DETERMINANT <= determinant && determinant <= MAX_ZOOM_IN_DETERMINANT) {
       transform.scale(scale, scale);
     }
   }

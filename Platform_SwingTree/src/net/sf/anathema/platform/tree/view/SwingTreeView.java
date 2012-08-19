@@ -92,6 +92,7 @@ public class SwingTreeView implements ITreeView<Cascade> {
   public void clear() {
     cascade.clear();
     polygonPanel.clear();
+    polygonPanel.resetTransformation();
   }
 
   @Override

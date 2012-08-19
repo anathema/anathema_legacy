@@ -89,7 +89,6 @@ public class SwingTreeViewTest {
     verify(cascade).addTo(panel);
   }
 
-
   @Test
   public void clearsCanvasBeforeAdding() throws Exception {
     swingTreeView.loadCascade(cascade, true);
@@ -102,6 +101,12 @@ public class SwingTreeViewTest {
   public void isEmptyAfterClear() throws Exception {
     swingTreeView.clear();
     verify(panel).clear();
+  }
+
+  @Test
+  public void resetsPanelDuringClear() throws Exception {
+    swingTreeView.clear();
+    verify(panel).resetTransformation();
   }
 
   @Test
