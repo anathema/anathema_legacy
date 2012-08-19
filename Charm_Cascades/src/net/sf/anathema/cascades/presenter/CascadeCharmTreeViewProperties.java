@@ -11,8 +11,6 @@ import net.sf.anathema.charmtree.presenter.view.NullSpecialCharm;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
 
-import java.awt.Cursor;
-
 public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewProperties implements ICharmIdMap {
 
   private Identified type;
@@ -51,14 +49,6 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   public void setCharmType(Identified type) {
     this.type = type;
-  }
-
-  @Override
-  public Cursor getCursor(String nodeId) {
-    if (nodeId == null) {
-      return getDefaultCursor();
-    }
-    return getControlCursor();
   }
 
   private ISpecialCharm[] getSpecialCharmSet() {

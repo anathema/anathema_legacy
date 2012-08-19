@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment.impl.creation.view;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.sf.anathema.character.equipment.creation.view.IWeaponTagsView;
+
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.character.equipment.creation.view.IWeaponTagsView;
 
 public class WeaponTagsView implements IWeaponTagsView {
 
@@ -18,11 +18,6 @@ public class WeaponTagsView implements IWeaponTagsView {
 
   @Override
   public void requestFocus() {
-    //nothing to do
-  }
-
-  @Override
-  public void dispose() {
     //nothing to do
   }
 

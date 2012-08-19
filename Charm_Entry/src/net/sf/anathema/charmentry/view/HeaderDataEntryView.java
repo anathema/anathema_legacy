@@ -54,9 +54,4 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
   public void requestFocus() {
     focusComponent.requestFocus();
   }
-
-  @Override
-  public void dispose() {
-    // Nothing to do
-  }
 }

@@ -9,7 +9,7 @@ import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -22,7 +22,7 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
 
-  public CharmView(TreeViewProperties treeProperties, NodeProperties nodeProperties,
+  public CharmView(ToolTipProperties treeProperties, NodeProperties nodeProperties,
                    IntegerViewFactory integerDisplayFactory) {
     super(treeProperties, nodeProperties);
     getCharmTreeView().registerSpecialType(IIntValueView.class, new SpecialIntDisplayFactory(integerDisplayFactory));
@@ -56,5 +56,10 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
     if (visible) {
       getCharmTreeView().addSpecialControl(charmView.getNodeId(), charmView);
     }
+  }
+
+  @Override
+  public void hideSpecialCharmViews() {
+    //TODO: Implement
   }
 }

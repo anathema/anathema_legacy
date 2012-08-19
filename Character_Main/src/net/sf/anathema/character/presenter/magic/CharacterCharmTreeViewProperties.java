@@ -7,29 +7,16 @@ import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvi
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.NullSpecialCharm;
-import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
-
-import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.Toolkit;
 
 public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewProperties implements ICharmIdMap {
 
-  private final Cursor addCursor;
-  private final Cursor removeCursor;
   private final ICharmConfiguration configuration;
 
   public CharacterCharmTreeViewProperties(IResources resources, ICharmConfiguration configuration,
                                           MagicDescriptionProvider magicDescriptionProvider) {
     super(resources, magicDescriptionProvider);
     this.configuration = configuration;
-    addCursor = Toolkit.getDefaultToolkit().createCustomCursor(
-            resources.getImage(this.getClass(), "CursorHandPlus.png"), new Point(5, 0),
-            resources.getString("CharmTreeView.GUI.AddCursor")); //$NON-NLS-1$ //$NON-NLS-2$
-    removeCursor = Toolkit.getDefaultToolkit().createCustomCursor(
-            resources.getImage(this.getClass(), "CursorHandMinus.png"), new Point(5, 0),
-            resources.getString("CharmTreeView.GUI.RemoveCursor")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @Override
@@ -48,31 +35,5 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
       }
     }
     return new NullSpecialCharm();
-  }
-
-  @Override
-  public Cursor getCursor(String nodeId) {
-    boolean isDeselectable = isNodeDeselectable(nodeId);
-    boolean isSelectable = isNodeSelectable(nodeId);
-    if (isNodeSelected(nodeId)) {
-      return isDeselectable ? removeCursor : getControlCursor();
-    }
-    return isSelectable ? addCursor : getControlCursor();
-  }
-
-  private boolean isNodeSelected(String charmId) {
-    if (isRequirementNode(charmId)) {
-      return false;
-    }
-    return configuration.isLearned(charmId);
-  }
-
-  private boolean isNodeSelectable(String charmId) {
-    return !StringUtilities.isNullOrEmpty(charmId) && !isRequirementNode(charmId) && configuration.isLearnable(charmId);
-  }
-
-  private boolean isNodeDeselectable(String charmId) {
-    return !StringUtilities.isNullOrEmpty(charmId) && !isRequirementNode(charmId) && configuration.isUnlearnable(
-            charmId);
   }
 }

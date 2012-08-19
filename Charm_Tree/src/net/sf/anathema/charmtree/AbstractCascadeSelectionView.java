@@ -15,7 +15,7 @@ import net.sf.anathema.platform.svgtree.document.GenericCascadeFactory;
 import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ITreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
 import net.sf.anathema.platform.tree.view.SwingTreeView;
 
@@ -36,7 +36,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   private IChangeableJComboBox<Identified> typeComboBox;
   private final SwingTreeView swingTreeView;
 
-  public AbstractCascadeSelectionView(final TreeViewProperties treeProperties, final NodeProperties properties) {
+  public AbstractCascadeSelectionView(final ToolTipProperties treeProperties, final NodeProperties properties) {
     this.swingTreeView = new SwingTreeView();
     CascadeLoadedListener listener = new CascadeLoadedListener() {
       @Override

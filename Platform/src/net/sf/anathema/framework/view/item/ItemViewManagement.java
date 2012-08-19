@@ -65,6 +65,5 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     itemViewsByComponent.remove(component);
     tabbedPane.remove(component);
     itemTabComponent.dispose(view);
-    view.dispose();
   }
 }

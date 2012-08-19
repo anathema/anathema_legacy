@@ -33,11 +33,6 @@ public class EquipmentPersonalizationView implements IPageContent, IEquipmentPer
 	}
 
 	@Override
-	public void dispose() {
-		// Nothing to do
-	}
-
-	@Override
 	public void requestFocus() {
 	    focusComponent.requestFocus();
 	}

@@ -50,9 +50,4 @@ public abstract class AbstractItemView implements IItemView {
   public void fireNameChangedEvent(String newName) {
     control.announce().valueChanged(newName);
   }
-
-  @Override
-  public void dispose() {
-    // Nothing to do
-  }
 }

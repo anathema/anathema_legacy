@@ -42,9 +42,4 @@ public class ReflexiveSpecialsView implements IReflexiveSpecialsView {
   public void requestFocus() {
     // Nothing to do
   }
-
-  @Override
-  public void dispose() {
-    // Nothing to do
-  }
 }

@@ -236,8 +236,5 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   protected final void closeDialog() {
     super.closeDialog();
     currentPage.leave();
-    for (IWizardPage page : pages) {
-      page.getPageContent().dispose();
-    }
   }
 }

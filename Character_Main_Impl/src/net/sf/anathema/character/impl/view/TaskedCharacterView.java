@@ -17,14 +17,11 @@ import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.framework.view.util.OptionalViewBar;
-import net.sf.anathema.lib.gui.swing.IDisposable;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TaskedCharacterView extends AbstractItemView implements ICharacterView {
 
@@ -32,7 +29,6 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   private CategorizedOverview creationOverviewView;
   private CategorizedOverview experienceOverviewView;
   private CategorizedOverview overviewView = new NullOverviewContainer();
-  private final List<IDisposable> disposables = new ArrayList<IDisposable>();
   private final IntegerViewFactory integerViewFactoryWithoutMarker;
   private final TaskedCharacterPane characterPane;
   private final OptionalViewBar optionalViewPane = new OptionalViewBar();
@@ -50,11 +46,6 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
     OverviewContainer newView = new OverviewContainer();
     this.creationOverviewView = newView;
     return newView;
-  }
-
-  @Override
-  public void addDisposable(IDisposable disposable) {
-    disposables.add(disposable);
   }
 
   @Override
@@ -102,13 +93,6 @@ public class TaskedCharacterView extends AbstractItemView implements ICharacterV
   @Override
   public IMagicViewFactory createMagicViewFactory() {
     return new MagicViewFactory(integerDisplayFactory);
-  }
-
-  @Override
-  public void dispose() {
-    for (IDisposable disposable : disposables) {
-      disposable.dispose();
-    }
   }
 
   @Override

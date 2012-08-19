@@ -2,9 +2,9 @@ package net.sf.anathema.cascades.module;
 
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
 
 public interface ICascadeViewFactory {
 
-  ICascadeView createCascadeView(TreeViewProperties viewProperties, NodeProperties nodeProperties);
+  ICascadeView createCascadeView(ToolTipProperties viewProperties, NodeProperties nodeProperties);
 }

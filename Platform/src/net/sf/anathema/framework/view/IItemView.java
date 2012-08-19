@@ -2,11 +2,10 @@ package net.sf.anathema.framework.view;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.swing.IDisposable;
 
 import javax.swing.Icon;
 
-public interface IItemView extends IView, IDisposable {
+public interface IItemView extends IView {
 
   void setName(String newName);
 

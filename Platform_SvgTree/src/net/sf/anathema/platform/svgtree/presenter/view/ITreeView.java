@@ -1,11 +1,10 @@
 package net.sf.anathema.platform.svgtree.presenter.view;
 
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.swing.IDisposable;
 
 import java.awt.Color;
 
-public interface ITreeView<G> extends IView, IDisposable {
+public interface ITreeView<G> extends IView {
   void addNodeInteractionListener(NodeInteractionListener listener);
 
   void setNodeBackgroundColor(String nodeId, Color color);
@@ -20,7 +19,7 @@ public interface ITreeView<G> extends IView, IDisposable {
 
   void addSpecialControl(String nodeId, SpecialControl control);
 
-  void initNodeNames (NodeProperties properties);
+  void initNodeNames(NodeProperties properties);
 
   void clear();
 

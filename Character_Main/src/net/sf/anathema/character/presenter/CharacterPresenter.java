@@ -22,7 +22,6 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.swing.IDisposable;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.ITransformer;
@@ -97,10 +96,6 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
             anathemaModel);
     presenter.initPresentation();
     ContentView contentView = presenter.getTabContent();
-    IDisposable disposable = contentView.getDisposable();
-    if (disposable != null) {
-      characterView.addDisposable(disposable);
-    }
     addMultipleContentViewGroup(magicViewHeader, AdditionalModelType.Magic, contentView);
   }
 

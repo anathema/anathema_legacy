@@ -11,14 +11,13 @@ import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
 import net.sf.anathema.platform.tree.view.interaction.ButtonSpecialControl;
+import net.sf.anathema.platform.tree.view.interaction.DefaultScaler;
 import net.sf.anathema.platform.tree.view.interaction.SpecialContentMap;
 import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JComponent;
 import java.awt.Color;
-
-import static net.sf.anathema.platform.tree.view.PolygonPanel.RECOMMENDED_DEFAULT_SCALE;
 
 public class SwingTreeView implements ITreeView<Cascade> {
 
@@ -70,7 +69,7 @@ public class SwingTreeView implements ITreeView<Cascade> {
     cascade.setDelegate(newCascade);
     cascade.addTo(polygonPanel);
     loadListeners.announce().cascadeLoaded();
-    polygonPanel.scale(RECOMMENDED_DEFAULT_SCALE);
+    new DefaultScaler(polygonPanel).scale();
   }
 
   @Override
@@ -101,11 +100,6 @@ public class SwingTreeView implements ITreeView<Cascade> {
   @Override
   public void registerSpecialType(Class contentClass, ContentFactory factory) {
     specialContent.put(contentClass, factory);
-  }
-
-  @Override
-  public void dispose() {
-    //nothing to do
   }
 
   @Override
