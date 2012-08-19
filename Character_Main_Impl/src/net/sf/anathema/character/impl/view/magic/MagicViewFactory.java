@@ -5,7 +5,6 @@ import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
-import net.sf.anathema.charmtree.presenter.view.SpecialCharmViewFactory;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.TreeViewProperties;
@@ -31,10 +30,5 @@ public class MagicViewFactory implements IMagicViewFactory {
   @Override
   public ISpellView createSpellView(SpellViewProperties properties) {
     return new SpellView(properties);
-  }
-
-  @Override
-  public SpecialCharmViewFactory createSpecialViewFactory() {
-    return new SvgSpecialCharmViewFactory();
   }
 }

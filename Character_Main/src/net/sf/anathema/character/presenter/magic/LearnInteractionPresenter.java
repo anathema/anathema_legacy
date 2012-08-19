@@ -9,25 +9,17 @@ import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 
-import java.awt.event.HierarchyEvent;
-import java.awt.event.HierarchyListener;
-
-import static net.sf.anathema.charmtree.AbstractCascadeSelectionView.useSwingForCascades;
-
 public class LearnInteractionPresenter implements CharmInteractionPresenter {
 
   private ICharmView view;
   private CharacterCharmModel model;
-  private CharacterCharmGroupChangeListener groupChangeListener;
   private ICharmTreeViewProperties viewProperties;
   private CharacterCharmDye dye;
 
-  public LearnInteractionPresenter(CharacterCharmModel model, ICharmView view,
-                                   CharacterCharmGroupChangeListener charmGroupChangeListener,
-                                   ICharmTreeViewProperties viewProperties, CharacterCharmDye dye) {
+  public LearnInteractionPresenter(CharacterCharmModel model, ICharmView view, ICharmTreeViewProperties viewProperties,
+                                   CharacterCharmDye dye) {
     this.model = model;
     this.view = view;
-    this.groupChangeListener = charmGroupChangeListener;
     this.viewProperties = viewProperties;
     this.dye = dye;
   }
@@ -54,18 +46,6 @@ public class LearnInteractionPresenter implements CharmInteractionPresenter {
       @Override
       public void changeOccurred() {
         dye.setCharmVisuals();
-      }
-    });
-    if (!useSwingForCascades) {
-      ensureRefreshAfterAutomaticUnlearn();
-    }
-  }
-
-  private void ensureRefreshAfterAutomaticUnlearn() {
-    view.getCharmComponent().addHierarchyListener(new HierarchyListener() {
-      @Override
-      public void hierarchyChanged(HierarchyEvent e) {
-        groupChangeListener.reselect();
       }
     });
   }

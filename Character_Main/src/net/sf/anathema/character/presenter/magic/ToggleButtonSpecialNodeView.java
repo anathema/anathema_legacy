@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.view.batik.intvalue;
+package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 

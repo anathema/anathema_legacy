@@ -23,12 +23,9 @@ import net.sf.anathema.charmtree.presenter.CharmFilterContainer;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.presenter.view.DefaultNodeProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
-import net.sf.anathema.charmtree.presenter.view.SpecialCharmViewFactory;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
-
-import static net.sf.anathema.charmtree.AbstractCascadeSelectionView.useSwingForCascades;
 
 public class CharacterCharmTreePresenter extends AbstractCascadePresenter implements DetailDemandingMagicPresenter {
 
@@ -52,25 +49,18 @@ public class CharacterCharmTreePresenter extends AbstractCascadePresenter implem
     setCharmTypes(new CharacterCharmTypes(charmModel));
     setChangeListener(charmGroupChangeListener);
     setView(view);
-    SpecialCharmViewBuilder specialViewBuilder = createSpecialCharmViewBuilder(resources, factory, charmConfiguration,
-            presentationProperties);
+    SpecialCharmViewBuilder specialViewBuilder = createSpecialCharmViewBuilder(resources, charmConfiguration);
     SpecialCharmList specialCharmList = new CommonSpecialCharmList(view, specialViewBuilder);
     setSpecialPresenter(new CharacterSpecialCharmPresenter(charmGroupChangeListener, charmModel, specialCharmList));
     setCharmDye(dye);
     setAlienCharmPresenter(new CharacterAlienCharmPresenter(model, view));
-    setInteractionPresenter(new LearnInteractionPresenter(model, view, charmGroupChangeListener, viewProperties, dye));
+    setInteractionPresenter(new LearnInteractionPresenter(model, view, viewProperties, dye));
     setCharmGroups(new CharacterGroupCollection(model));
   }
 
-  private SpecialCharmViewBuilder createSpecialCharmViewBuilder(IResources resources, IMagicViewFactory factory,
-                                                                ICharmConfiguration charmConfiguration,
-                                                                ITreePresentationProperties presentationProperties) {
-    if (useSwingForCascades) {
-      return new SwingSpecialCharmViewBuilder(resources, charmConfiguration);
-    } else {
-      SpecialCharmViewFactory specialViewFactory = factory.createSpecialViewFactory();
-      return new SvgSpecialCharmViewBuilder(resources, specialViewFactory, charmConfiguration, presentationProperties);
-    }
+  private SpecialCharmViewBuilder createSpecialCharmViewBuilder(IResources resources,
+                                                                ICharmConfiguration charmConfiguration) {
+    return new SwingSpecialCharmViewBuilder(resources, charmConfiguration);
   }
 
   @Override

@@ -7,7 +7,6 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-import net.sf.anathema.platform.svgtree.view.batik.intvalue.ToggleButtonSpecialNodeView;
 
 public class MultipleEffectCharmPresenter implements Presenter {
 

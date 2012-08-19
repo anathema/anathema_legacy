@@ -36,14 +36,4 @@ public class SwingCategorizedSpecialView implements CategorizedSpecialNodeView, 
       view.setActualView(actualView);
     }
   }
-
-  @Override
-  public void hide() {
-    //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @Override
-  public void reset() {
-    //To change body of implemented methods use File | Settings | File Templates.
-  }
 }

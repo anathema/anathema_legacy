@@ -1,10 +1,10 @@
 package net.sf.anathema.character.presenter.magic.charm;
 
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.presenter.magic.ToggleButtonSpecialNodeView;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
 import net.sf.anathema.platform.svgtree.presenter.view.SpecialCharmContainer;
-import net.sf.anathema.platform.svgtree.view.batik.intvalue.ToggleButtonSpecialNodeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,15 +35,5 @@ public class BooleanSelectionSpecialNodeView implements ISpecialNodeView, Toggle
     ProxyBooleanValueView proxyBooleanValueView = new ProxyBooleanValueView(label);
     views.add(proxyBooleanValueView);
     return proxyBooleanValueView;
-  }
-
-  @Override
-  public void reset() {
-    //To change body of implemented methods use File | Settings | File Templates.
-  }
-
-  @Override
-  public void hide() {
-    //To change body of implemented methods use File | Settings | File Templates.
   }
 }
