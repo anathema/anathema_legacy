@@ -9,6 +9,6 @@ import java.awt.Dimension;
 public class CascadeNodeAdderFactory implements NodeAdderFactory<DefaultContainerCascade> {
   @Override
   public NodeAdder<DefaultContainerCascade> create(String id, Dimension dimension, int xPosition, int yPosition) {
-    return new SwingNodeAdder(id, dimension, xPosition, yPosition);
+    return new SwingNodeAdder(id, xPosition, yPosition);
   }
 }
