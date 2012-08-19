@@ -3,6 +3,7 @@ package net.sf.anathema.cascades.presenter;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmTreeViewProperties;
@@ -10,9 +11,7 @@ import net.sf.anathema.charmtree.presenter.view.NullSpecialCharm;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
 
-import java.awt.Cursor;
-
-public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewProperties {
+public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewProperties implements ICharmIdMap {
 
   private Identified type;
   private CharmTreeIdentificateMap treeIdentificateMap;
@@ -29,7 +28,7 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
   }
 
   @Override
-  protected ICharm getCharmById(String id) {
+  public ICharm getCharmById(String id) {
     ICharm charm = treeIdentificateMap.get(type).getCharmById(id);
     if (charm == null) {
       CharmFinder charmFinder = new CharmFinder(cache, id);
@@ -50,14 +49,6 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   public void setCharmType(Identified type) {
     this.type = type;
-  }
-
-  @Override
-  public Cursor getCursor(String nodeId) {
-    if (nodeId == null) {
-      return getDefaultCursor();
-    }
-    return getControlCursor();
   }
 
   private ISpecialCharm[] getSpecialCharmSet() {

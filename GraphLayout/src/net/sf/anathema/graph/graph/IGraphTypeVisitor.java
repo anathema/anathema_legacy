@@ -2,11 +2,11 @@ package net.sf.anathema.graph.graph;
 
 public interface IGraphTypeVisitor {
 
-  void visitDirectedGraph(IGraphType visitedType);
+  void visitDirectedGraph();
 
-  void visitInvertedTree(IGraphType visitedType);
+  void visitInvertedTree();
 
-  void visitTree(IGraphType visitedType);
+  void visitTree();
 
-  void visitSingle(IGraphType visitedType);
+  void visitSingle();
 }

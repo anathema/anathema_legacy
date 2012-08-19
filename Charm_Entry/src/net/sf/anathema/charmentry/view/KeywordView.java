@@ -56,11 +56,6 @@ public class KeywordView implements IKeywordView {
   }
 
   @Override
-  public void dispose() {
-    // Nothing to do
-  }
-
-  @Override
   public void requestFocus() {
     // Nothing to do
   }

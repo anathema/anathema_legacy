@@ -1,8 +1,5 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
-
-import org.dom4j.Element;
-
 public interface ILayer {
 
   void addNode(IVisualizableNode node);
@@ -11,27 +8,17 @@ public interface ILayer {
 
   void setFollowUp(ILayer layer);
 
-  ILayer getNextLayer();
-
   void setNodeOnNextFreePosition(IVisualizableNode node);
-
-  void addNodesToXml(Element element);
-
-  void setNodePositionWithoutChecking(IVisualizableNode node, int position);
 
   void positionNodes();
 
   IVisualizableNode[] getNodes();
-
-  void addArrowsToXml(Element cascade);
 
   int getYPosition();
 
   int getWidth();
 
   void unrollHorizontalMetanodes();
-  
-  void forceShift(int shift);
 
   void shiftRight(int requiredShift);
 
@@ -54,4 +41,6 @@ public interface ILayer {
   IVisualizableNode getNextNode(IVisualizableNode node);
 
   void moveNodeTo(IVisualizableNode node, int xPosition);
+
+  boolean isBottomMostLayer();
 }

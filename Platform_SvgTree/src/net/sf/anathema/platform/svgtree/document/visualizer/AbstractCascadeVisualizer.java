@@ -7,23 +7,15 @@ import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.svgtree.document.components.Layer;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNodeFactory;
-import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
-import org.apache.batik.util.SVGConstants;
-import org.dom4j.Element;
-import org.dom4j.QName;
-import org.dom4j.tree.DefaultElement;
 
-import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
 
   private final ITreePresentationProperties properties;
-  private final Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent =
-          new HashMap<ISimpleNode, IVisualizableNode>();
-  private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors =
-          new MultiEntryMap<ISimpleNode, ISimpleNode>();
+  private final Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent = new HashMap<ISimpleNode, IVisualizableNode>();
+  private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors = new MultiEntryMap<ISimpleNode, ISimpleNode>();
   private final VisualizableNodeFactory nodeFactory;
   private final LayeredGraph graph;
 
@@ -86,34 +78,5 @@ public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
     for (int layerIndex = 0; layerIndex < layers.length - 1; layerIndex++) {
       layers[layerIndex].setFollowUp(layers[layerIndex + 1]);
     }
-  }
-
-  protected Element createXml(ILayer[] layers) {
-    QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
-    Element cascadeElement = new DefaultElement(group);
-    for (ILayer layer : layers) {
-      layer.addNodesToXml(cascadeElement);
-    }
-    for (ILayer layer : layers) {
-      layer.addArrowsToXml(cascadeElement);
-    }
-    return cascadeElement;
-  }
-
-  protected Dimension getTreeDimension(ILayer[] layers) {
-    return new Dimension(getTreeWidth(layers), getTreeHeight(layers));
-  }
-
-  protected int getTreeWidth(ILayer[] layers) {
-    int width = 0;
-    for (ILayer layer : layers) {
-      width = Math.max(width, layer.getWidth());
-    }
-    return width;
-  }
-
-  protected int getTreeHeight(ILayer[] layers) {
-    return layers.length * getProperties().getNodeDimension().height +
-            (layers.length - 1) * getProperties().getGapDimension().height;
   }
 }

@@ -2,7 +2,6 @@ package net.sf.anathema.framework.presenter.view;
 
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.swing.IDisposable;
 
 public class SimpleViewContentView implements ContentView {
 
@@ -17,10 +16,5 @@ public class SimpleViewContentView implements ContentView {
   @Override
   public void addTo(MultipleContentView view) {
     view.addView(tabView, properties);
-  }
-
-  @Override
-  public IDisposable getDisposable() {
-    return tabView instanceof IDisposable ? (IDisposable) tabView : null;
   }
 }

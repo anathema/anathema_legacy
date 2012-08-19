@@ -66,9 +66,4 @@ public class DurationEntryView implements IDurationEntryView {
   public void requestFocus() {
     // Nothing to do
   }
-
-  @Override
-  public void dispose() {
-    // Nothing to do
-  }
 }

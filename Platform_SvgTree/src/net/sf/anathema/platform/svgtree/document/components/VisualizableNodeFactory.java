@@ -16,28 +16,14 @@ public class VisualizableNodeFactory {
   private final Dimension lineDimension;
   private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors;
 
-  public VisualizableNodeFactory(
-      Dimension nodeDimension,
-      Dimension gapDimension,
-      Dimension lineDimension,
-      Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent,
-      MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
+  public VisualizableNodeFactory(Dimension nodeDimension, Dimension gapDimension, Dimension lineDimension,
+                                 Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent,
+                                 MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
     this.nodeDimension = nodeDimension;
     this.gapDimension = gapDimension;
     this.lineDimension = lineDimension;
     this.map = visualizableNodesByContent;
     this.leafNodesByAncestors = leafNodesByAncestors;
-  }
-
-  private IVisualizableNode createVisualizableNode(ISimpleNode contentNode) {
-    IVisualizableNode node;
-    if (contentNode instanceof IIdentifiedRegularNode) {
-      node = new VisualizableNode((IIdentifiedRegularNode) contentNode, map, nodeDimension, leafNodesByAncestors);
-    }
-    else {
-      node = new VisualizableDummyNode(contentNode, map, lineDimension, leafNodesByAncestors);
-    }
-    return node;
   }
 
   public IVisualizableNode registerVisualizableNode(ISimpleNode contentNode) {
@@ -52,6 +38,14 @@ public class VisualizableNodeFactory {
       map.put(node, metanode);
       IVisualizableNode visualizableNode = createVisualizableNode(node);
       metanode.addInnerNode(node, visualizableNode);
+    }
+  }
+
+  private IVisualizableNode createVisualizableNode(ISimpleNode contentNode) {
+    if (contentNode instanceof IIdentifiedRegularNode) {
+      return new VisualizableNode((IIdentifiedRegularNode) contentNode, map, nodeDimension, leafNodesByAncestors);
+    } else {
+      return new VisualizableDummyNode(contentNode, map, lineDimension, leafNodesByAncestors);
     }
   }
 }

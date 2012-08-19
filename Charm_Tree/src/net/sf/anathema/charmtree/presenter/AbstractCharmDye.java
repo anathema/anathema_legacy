@@ -14,10 +14,10 @@ public abstract class AbstractCharmDye implements CharmDye {
 
   @Override
   public void setCharmVisuals() {
-    ICharmGroup currentGroup = groupInformer.getCurrentGroup();
-    if (currentGroup == null) {
+    if (!groupInformer.hasGroupSelected()) {
       return;
     }
+    ICharmGroup currentGroup = groupInformer.getCurrentGroup();
     for (ICharm charm : currentGroup.getAllCharms()) {
       setCharmVisuals(charm);
     }

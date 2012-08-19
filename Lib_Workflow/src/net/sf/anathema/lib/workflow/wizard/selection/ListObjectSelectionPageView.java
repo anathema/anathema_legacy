@@ -1,13 +1,13 @@
 package net.sf.anathema.lib.workflow.wizard.selection;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class ListObjectSelectionPageView<V> implements IObjectSelectionView<V> {
 
@@ -38,10 +38,5 @@ public class ListObjectSelectionPageView<V> implements IObjectSelectionView<V> {
     if (focusComponent != null) {
       focusComponent.requestFocus();
     }
-  }
-
-  @Override
-  public void dispose() {
-    //nothing to do;
   }
 }

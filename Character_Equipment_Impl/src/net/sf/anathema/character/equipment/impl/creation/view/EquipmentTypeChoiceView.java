@@ -59,9 +59,4 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
     buttonGroup.add(toggleButton);
     return toggleButton;
   }
-
-  @Override
-  public void dispose() {
-    // Nothing to do
-  }
 }

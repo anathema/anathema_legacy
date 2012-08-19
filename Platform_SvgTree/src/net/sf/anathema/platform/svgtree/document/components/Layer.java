@@ -3,7 +3,6 @@ package net.sf.anathema.platform.svgtree.document.components;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
-import org.dom4j.Element;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -22,13 +21,14 @@ public class Layer implements ILayer {
     this.yPosition = yPosition;
   }
 
-  public Dimension getGapDimension() {
-    return new Dimension(gapDimension);
-  }
-
   @Override
   public void setPreviousLayer(ILayer previousLayer) {
     this.previousLayer = previousLayer;
+  }
+
+  @Override
+  public boolean isBottomMostLayer() {
+    return nextLayer == null;
   }
 
   @Override
@@ -107,11 +107,10 @@ public class Layer implements ILayer {
     boolean sameLeafGroup = previousNode.isOfSameLeafGroup(node);
     Integer currentNodeLeftSide;
     Integer previousNodeRightSide;
-    IVisualizableNode[] sharedChildren = null;
     if (sameLeafGroup) {
       previousNodeRightSide = previousNode.getRightSide();
       currentNodeLeftSide = node.getLeftSide();
-      sharedChildren = node.getSharedChildren(previousNode);
+      IVisualizableNode[] sharedChildren = node.getSharedChildren(previousNode);
       int requiredShift = previousNodeRightSide + gapDimension.width - currentNodeLeftSide;
       if (requiredShift <= 0) {
         return;
@@ -138,11 +137,6 @@ public class Layer implements ILayer {
       node.shiftRight(leftSideOverlap);
       nextLayer.shiftRight(leftSideOverlap);
     }
-  }
-
-  @Override
-  public void setNodePositionWithoutChecking(IVisualizableNode node, int position) {
-    node.setPosition(position);
   }
 
   @Override
@@ -252,82 +246,17 @@ public class Layer implements ILayer {
   }
 
   @Override
-  public ILayer getNextLayer() {
-    return nextLayer;
-  }
-
-  @Override
-  public void addNodesToXml(Element element) {
-    for (IVisualizableNode node : nodes) {
-      node.toXML(element);
-    }
-  }
-
-  @Override
-  public void addArrowsToXml(final Element cascade) {
-    if (nextLayer == null) {
-      return;
-    }
-    for (IVisualizableNode node : nodes) {
-      node.accept(new IVisualizableNodeVisitor() {
-        @Override
-        public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
-          throw new IllegalStateException("Metanodes must be resolved before arrows are created."); //$NON-NLS-1$
-        }
-
-        @Override
-        public void visitSingleNode(VisualizableNode visitedNode) {
-          for (IVisualizableNode child : visitedNode.getChildren()) {
-            PolylineSVGArrow arrow = new PolylineSVGArrow();
-            arrow.addPoint(visitedNode.getPosition(), yPosition + visitedNode.getHeight());
-            arrow.addPoint(child.getPosition(), child.getLayer().getYPosition());
-            extendArrow(arrow, child);
-            cascade.add(arrow.toXML());
-          }
-        }
-
-        @Override
-        public void visitDummyNode(VisualizableDummyNode visitedNode) {
-          // Nothing to do
-        }
-      });
-    }
-  }
-
-  private void extendArrow(final PolylineSVGArrow arrow, IVisualizableNode node) {
-    node.accept(new IVisualizableNodeVisitor() {
-      @Override
-      public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
-        throw new IllegalStateException("Metanodes must be resolved before arrows are created."); //$NON-NLS-1$
-      }
-
-      @Override
-      public void visitSingleNode(VisualizableNode visitedNode) {
-        // Nothing to do
-      }
-
-      @Override
-      public void visitDummyNode(VisualizableDummyNode visitedNode) {
-        IVisualizableNode child = visitedNode.getChildren()[0];
-        arrow.addPoint(visitedNode.getPosition(), visitedNode.getLayer().getYPosition() + visitedNode.getHeight());
-        arrow.addPoint(child.getPosition(), child.getLayer().getYPosition());
-        extendArrow(arrow, child);
-      }
-    });
-  }
-
-  @Override
   public int getYPosition() {
     return yPosition;
   }
 
   @Override
   public int getWidth() {
-    if (nodes.isEmpty()) {
-      return 0;
+    int width = 0;
+    for (IVisualizableNode node : nodes) {
+      width = Math.max(width, node.getRightSide());
     }
-    IVisualizableNode finalNode = nodes.get(nodes.size() - 1);
-    return finalNode.getRightSide();
+    return width;
   }
 
   @Override
@@ -355,13 +284,6 @@ public class Layer implements ILayer {
           // Nothing to do
         }
       });
-    }
-  }
-
-  @Override
-  public void forceShift(int shift) {
-    for (IVisualizableNode node : nodes) {
-      node.setPosition(node.getPosition() + shift);
     }
   }
 

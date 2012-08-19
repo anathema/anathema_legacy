@@ -1,16 +1,16 @@
 package net.sf.anathema.charmentry.view;
 
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-import javax.swing.ListCellRenderer;
-
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.charmentry.presenter.view.ICharmTypeEntryView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
+
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+import javax.swing.ListCellRenderer;
 
 public class CharmTypeEntryView implements ICharmTypeEntryView {
 
@@ -32,11 +32,6 @@ public class CharmTypeEntryView implements ICharmTypeEntryView {
 
   @Override
   public void requestFocus() {
-    // Nothing to do
-  }
-
-  @Override
-  public void dispose() {
     // Nothing to do
   }
 

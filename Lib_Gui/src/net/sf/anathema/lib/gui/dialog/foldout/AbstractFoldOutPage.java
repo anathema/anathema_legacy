@@ -14,9 +14,4 @@ public abstract class AbstractFoldOutPage implements IFoldOutPage {
   }
 
   protected abstract JComponent createContent();
-
-  @Override
-  public void dispose() {
-    // nothing to do
-  }
 }

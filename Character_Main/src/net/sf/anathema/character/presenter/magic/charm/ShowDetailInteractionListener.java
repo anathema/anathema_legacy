@@ -1,9 +1,9 @@
 package net.sf.anathema.character.presenter.magic.charm;
 
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
-import net.sf.anathema.platform.svgtree.presenter.view.CharmInteractionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
 
-public class ShowDetailInteractionListener implements CharmInteractionListener {
+public class ShowDetailInteractionListener implements NodeInteractionListener {
   private final ShowMagicDetailListener listener;
 
   public ShowDetailInteractionListener(ShowMagicDetailListener listener) {
