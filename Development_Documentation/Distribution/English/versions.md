@@ -20,7 +20,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 4.3.0 "Xaal"
 
 We are starting to move away from sourceforge. Starting with this version, your downloads will come directly
-from own our server.
+from our own server.
 
 ### Features
 * Anathema now sports an auto-update. Go to "Help => Check for updates"
