@@ -22,11 +22,12 @@ public class WheelScalerTest {
   public void setUp() throws Exception {
     when(event.getX()).thenReturn(100);
     when(event.getY()).thenReturn(120);
-    when(event.getUnitsToScroll()).thenReturn(5);
+    when(event.getWheelRotation()).thenReturn(5);
   }
 
   @Test
   public void triggersScaleOnPanelCenteredOnEvent() throws Exception {
+    when(event.getWheelRotation()).thenReturn(5);
     new WheelScaler(panel).mouseWheelMoved(event);
     InOrder inOrder = inOrder(panel);
     inOrder.verify(panel).translate(100, 120);
@@ -36,12 +37,28 @@ public class WheelScalerTest {
 
   @Test
   public void calculatesScaleFromNumberOfUnits() throws Exception {
+    when(event.getWheelRotation()).thenReturn(5);
     new WheelScaler(panel).mouseWheelMoved(event);
-    verify(panel).scale(0.5);
+    verify(panel).scale(0.75);
+  }
+
+  @Test
+  public void doesNotGoToZero() throws Exception {
+    when(event.getWheelRotation()).thenReturn(20);
+    new WheelScaler(panel).mouseWheelMoved(event);
+    verify(panel).scale(0.00001);
+  }
+
+  @Test
+  public void limitsChangeToOne100Percent() throws Exception {
+    when(event.getWheelRotation()).thenReturn(-21);
+    new WheelScaler(panel).mouseWheelMoved(event);
+    verify(panel).scale(2);
   }
 
   @Test
   public void repaintsAfterTranslation() throws Exception {
+    when(event.getWheelRotation()).thenReturn(5);
     new WheelScaler(panel).mouseWheelMoved(event);
     InOrder inOrder = inOrder(panel);
     inOrder.verify(panel).translate(-100, -120);

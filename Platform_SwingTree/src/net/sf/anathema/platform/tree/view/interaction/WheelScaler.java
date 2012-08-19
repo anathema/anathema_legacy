@@ -6,6 +6,7 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
 public class WheelScaler implements MouseWheelListener {
+  private static final float PERCENTAGE_INCREMENT = 0.05f;  //    5%
   private final PolygonPanel polygonPanel;
 
   public WheelScaler(PolygonPanel polygonPanel) {
@@ -21,8 +22,10 @@ public class WheelScaler implements MouseWheelListener {
     polygonPanel.repaint();
   }
 
-  private double calculateScale(MouseWheelEvent e) {
-    int unitsToScroll = e.getUnitsToScroll();
-    return 1 - unitsToScroll * 0.1;
+  private double calculateScale(MouseWheelEvent event) {
+    int wheelClicks = event.getWheelRotation();
+    int percentageTicks = (int) (1 / PERCENTAGE_INCREMENT);
+    int unitsToScroll = Math.max(wheelClicks, -percentageTicks);
+    return Math.max(0.00001, 1 - PERCENTAGE_INCREMENT * unitsToScroll);
   }
 }

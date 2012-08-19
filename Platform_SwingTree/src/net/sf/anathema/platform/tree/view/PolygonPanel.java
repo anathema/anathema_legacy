@@ -70,7 +70,12 @@ public class PolygonPanel extends JPanel {
   }
 
   public void scale(double scale) {
-    transform.scale(scale, scale);
+    AffineTransform clone = (AffineTransform) transform.clone();
+    clone.scale(scale, scale);
+    double determinant = clone.getDeterminant();
+    if (0.5f < determinant && determinant < 12f){
+      transform.scale(scale, scale);
+    }
   }
 
   public void translate(int x, int y) {

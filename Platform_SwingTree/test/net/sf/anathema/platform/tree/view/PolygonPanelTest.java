@@ -39,9 +39,26 @@ public class PolygonPanelTest {
 
   @Test
   public void scalesGraphics() throws Exception {
-    polygonPanel.scale(0.5);
+    double factor = Math.sqrt(0.5);
+    polygonPanel.scale(factor);
     polygonPanel.paintComponent(graphics);
-    verify(graphics).transform(AffineTransform.getScaleInstance(0.5, 0.5));
+    verify(graphics).transform(AffineTransform.getScaleInstance(factor, factor));
+  }
+
+  @Test
+  public void limitsZoomOutToRoughly70Percent() throws Exception {
+    double factor = Math.sqrt(0.5)-0.0001;
+    polygonPanel.scale(factor);
+    polygonPanel.paintComponent(graphics);
+    verify(graphics).transform(AffineTransform.getScaleInstance(1, 1));
+  }
+
+  @Test
+  public void limitsZoomInToRoughly350Percent() throws Exception {
+    double factor = Math.sqrt(12)+0.0001;
+    polygonPanel.scale(factor);
+    polygonPanel.paintComponent(graphics);
+    verify(graphics).transform(AffineTransform.getScaleInstance(1, 1));
   }
 
   @Test
