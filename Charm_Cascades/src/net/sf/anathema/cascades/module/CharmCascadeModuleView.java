@@ -4,8 +4,8 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.cascades.view.CascadeView;
 import net.sf.anathema.framework.view.item.AbstractItemView;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;

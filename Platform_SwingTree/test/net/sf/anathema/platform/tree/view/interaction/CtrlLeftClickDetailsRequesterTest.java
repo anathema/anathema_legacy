@@ -1,12 +1,10 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
-import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import net.sf.anathema.platform.tree.view.container.IdentifiedPolygon;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
-import net.sf.anathema.platform.tree.view.draw.InteractiveGraphicsElement;
 import net.sf.anathema.platform.tree.view.draw.PolygonMother;
 import org.junit.Before;
 import org.junit.Test;

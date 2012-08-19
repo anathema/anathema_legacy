@@ -6,7 +6,7 @@ import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfigurati
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.platform.svgtree.presenter.view.CategorizedSpecialNodeView;
+import net.sf.anathema.platform.tree.presenter.view.CategorizedSpecialNodeView;
 
 public class OxBodyTechniquePresenter implements Presenter {
 

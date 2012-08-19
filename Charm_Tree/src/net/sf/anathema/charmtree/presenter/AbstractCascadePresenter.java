@@ -15,7 +15,7 @@ import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.userdialog.UserDialog;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 
 import javax.swing.JComponent;
 import java.awt.Component;

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.framework.xml.presentation;
 
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
-import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
 import java.awt.Color;
 import java.awt.Dimension;

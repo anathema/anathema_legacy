@@ -3,10 +3,10 @@ package net.sf.anathema.charmtree.presenter.view.svg;
 import net.sf.anathema.charmtree.presenter.view.CharmTreeRenderer;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.platform.svgtree.document.CascadeFactory;
-import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
-import net.sf.anathema.platform.svgtree.presenter.view.ITreeView;
+import net.sf.anathema.platform.tree.document.CascadeFactory;
+import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.presenter.view.CascadeLoadException;
+import net.sf.anathema.platform.tree.presenter.view.ITreeView;
 
 public class GenericCascadeRenderer<G> implements CharmTreeRenderer {
   public static <G> GenericCascadeRenderer<G> CreateFor(ITreeView<G> treeView, CascadeFactory<G> cascadeFactory) {

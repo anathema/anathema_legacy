@@ -1,13 +1,13 @@
 package net.sf.anathema.platform.tree.view;
 
-import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadException;
-import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.platform.svgtree.presenter.view.ContentFactory;
-import net.sf.anathema.platform.svgtree.presenter.view.ITreeView;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.SpecialControl;
-import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.presenter.view.CascadeLoadException;
+import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.presenter.view.ContentFactory;
+import net.sf.anathema.platform.tree.presenter.view.ITreeView;
+import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.presenter.view.SpecialControl;
+import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ProxyCascade;
 import net.sf.anathema.platform.tree.view.interaction.ButtonSpecialControl;

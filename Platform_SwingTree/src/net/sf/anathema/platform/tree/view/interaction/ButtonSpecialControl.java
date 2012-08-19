@@ -53,7 +53,7 @@ public class ButtonSpecialControl implements SpecialControl {
     originalBounds.setSize(width, 15);
   }
 
-  public void whenTriggeredShow(final net.sf.anathema.platform.svgtree.presenter.view.SpecialControl specialControl) {
+  public void whenTriggeredShow(final net.sf.anathema.platform.tree.presenter.view.SpecialControl specialControl) {
     final PopupSpecialCharmContainer container = new PopupSpecialCharmContainer(button, specialContent);
     specialControl.showIn(container);
     button.addActionListener(new ActionListener() {

@@ -1,6 +1,5 @@
 dependencies {
   compile project(':GraphLayout')
-  compile project(':Platform_SvgTree')
   compile project(':Platform_SwingTree')
   compile project(':Character_Generic')
   compile project(':Character_Generic_Impl')

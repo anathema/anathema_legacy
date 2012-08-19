@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view;
 
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;

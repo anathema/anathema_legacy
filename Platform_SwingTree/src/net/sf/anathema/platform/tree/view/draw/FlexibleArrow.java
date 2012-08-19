@@ -1,7 +1,7 @@
 package net.sf.anathema.platform.tree.view.draw;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.platform.svgtree.document.components.ExtensibleArrow;
+import net.sf.anathema.platform.tree.document.components.ExtensibleArrow;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.awt.BasicStroke;

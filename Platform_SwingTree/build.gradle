@@ -1,8 +1,5 @@
 dependencies {
-  compile project(':Lib')
-  compile project(':Platform')
   compile project(':Platform_SvgTree')
-  compile project(':GraphLayout')
   testCompile testDependencies
 }
 

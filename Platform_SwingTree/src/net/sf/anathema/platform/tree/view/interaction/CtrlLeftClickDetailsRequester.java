@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.NodeToggleListener;
@@ -10,7 +10,6 @@ import javax.swing.SwingUtilities;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class CtrlLeftClickDetailsRequester extends MouseAdapter {
   private final Cascade cascade;

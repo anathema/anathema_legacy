@@ -7,7 +7,7 @@ import net.sf.anathema.charmtree.presenter.CharmInteractionPresenter;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
 
 public class LearnInteractionPresenter implements CharmInteractionPresenter {
 

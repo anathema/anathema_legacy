@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.interaction;
 
-import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 

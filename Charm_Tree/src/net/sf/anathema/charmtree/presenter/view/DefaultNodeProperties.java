@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 
 import static java.text.MessageFormat.format;
 import static net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties.REQUIREMENT;

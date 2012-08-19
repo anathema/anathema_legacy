@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

@@ -25,7 +25,7 @@ import net.sf.anathema.charmtree.presenter.view.DefaultNodeProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
 public class CharacterCharmTreePresenter extends AbstractCascadePresenter implements DetailDemandingMagicPresenter {
 

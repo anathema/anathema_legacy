@@ -1,8 +1,8 @@
 package net.sf.anathema.platform.tree.view;
 
-import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.interaction.LeftClickPanner;
 import net.sf.anathema.platform.tree.view.interaction.ToolTipListener;

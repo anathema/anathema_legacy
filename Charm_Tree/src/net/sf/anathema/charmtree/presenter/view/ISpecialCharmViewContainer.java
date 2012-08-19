@@ -1,6 +1,6 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
+import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 
 public interface ISpecialCharmViewContainer {
 

@@ -3,8 +3,8 @@ package net.sf.anathema.character.presenter.magic.charm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.presenter.magic.ToggleButtonSpecialNodeView;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
-import net.sf.anathema.platform.svgtree.presenter.view.SpecialCharmContainer;
+import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
+import net.sf.anathema.platform.tree.presenter.view.SpecialCharmContainer;
 
 import java.util.ArrayList;
 import java.util.List;

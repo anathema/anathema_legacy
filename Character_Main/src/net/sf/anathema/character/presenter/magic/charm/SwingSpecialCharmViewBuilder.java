@@ -19,7 +19,7 @@ import net.sf.anathema.character.presenter.magic.MultipleEffectCharmPresenter;
 import net.sf.anathema.character.presenter.magic.OxBodyTechniquePresenter;
 import net.sf.anathema.character.presenter.magic.SpecialCharmViewBuilder;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
+import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
 
 public class SwingSpecialCharmViewBuilder implements SpecialCharmViewBuilder {
 

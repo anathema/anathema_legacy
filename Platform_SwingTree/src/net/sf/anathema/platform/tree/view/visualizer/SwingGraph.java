@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.visualizer;
 
-import net.sf.anathema.platform.svgtree.document.visualizer.IVisualizedGraph;
+import net.sf.anathema.platform.tree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.tree.view.SwingCascadeBuilder;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.template.presentation;
 
-import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
 public interface IPresentationProperties extends ICommonPresentationProperties {
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.container;
 
-import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.PolygonPanel;
 import net.sf.anathema.platform.tree.view.draw.FilledPolygon;
 import net.sf.anathema.platform.tree.view.draw.FlexibleArrow;

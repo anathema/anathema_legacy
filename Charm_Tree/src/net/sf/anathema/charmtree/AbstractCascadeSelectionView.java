@@ -11,11 +11,11 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.platform.svgtree.document.GenericCascadeFactory;
-import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
-import net.sf.anathema.platform.svgtree.presenter.view.ITreeView;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.document.GenericCascadeFactory;
+import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.presenter.view.ITreeView;
+import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
 import net.sf.anathema.platform.tree.view.SwingTreeView;
 

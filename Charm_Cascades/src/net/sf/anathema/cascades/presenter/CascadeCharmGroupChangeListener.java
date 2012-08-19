@@ -6,7 +6,7 @@ import net.sf.anathema.charmtree.presenter.CharmFilterSet;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmGroupChangeListener;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
 import java.awt.Color;
 import java.awt.SystemColor;

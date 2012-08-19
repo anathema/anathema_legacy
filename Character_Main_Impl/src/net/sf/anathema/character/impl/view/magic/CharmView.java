@@ -6,10 +6,10 @@ import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeView;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeInteractionListener;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.presenter.view.ISpecialNodeView;
+import net.sf.anathema.platform.tree.presenter.view.NodeInteractionListener;
+import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;

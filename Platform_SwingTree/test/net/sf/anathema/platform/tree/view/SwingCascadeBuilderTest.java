@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view;
 
-import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ContainerCascade;
 import org.junit.Test;

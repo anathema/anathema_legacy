@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view;
 
-import net.sf.anathema.platform.svgtree.document.CascadeBuilder;
+import net.sf.anathema.platform.tree.document.CascadeBuilder;
 import net.sf.anathema.platform.tree.view.container.AggregatedCascade;
 import net.sf.anathema.platform.tree.view.container.Cascade;
 import net.sf.anathema.platform.tree.view.container.ContainerCascade;

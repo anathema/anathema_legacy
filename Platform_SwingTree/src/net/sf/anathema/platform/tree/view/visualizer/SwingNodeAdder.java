@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.tree.view.visualizer;
 
-import net.sf.anathema.platform.svgtree.document.visualizer.NodeAdder;
+import net.sf.anathema.platform.tree.document.visualizer.NodeAdder;
 import net.sf.anathema.platform.tree.view.container.DefaultContainerCascade;
 import net.sf.anathema.platform.tree.view.container.IdentifiedPolygon;
 

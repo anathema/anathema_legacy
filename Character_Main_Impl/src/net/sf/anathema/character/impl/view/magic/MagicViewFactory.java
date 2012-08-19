@@ -6,8 +6,8 @@ import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
+import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 
 public class MagicViewFactory implements IMagicViewFactory {
 

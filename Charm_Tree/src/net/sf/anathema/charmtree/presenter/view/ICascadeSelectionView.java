@@ -3,7 +3,7 @@ package net.sf.anathema.charmtree.presenter.view;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.platform.svgtree.presenter.view.CascadeLoadedListener;
+import net.sf.anathema.platform.tree.presenter.view.CascadeLoadedListener;
 
 import javax.swing.JComponent;
 import javax.swing.ListCellRenderer;

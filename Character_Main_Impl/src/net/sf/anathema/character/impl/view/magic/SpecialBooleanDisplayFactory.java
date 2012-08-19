@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.view.magic;
 
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-import net.sf.anathema.platform.svgtree.presenter.view.ContentFactory;
+import net.sf.anathema.platform.tree.presenter.view.ContentFactory;
 
 public class SpecialBooleanDisplayFactory implements ContentFactory {
 
