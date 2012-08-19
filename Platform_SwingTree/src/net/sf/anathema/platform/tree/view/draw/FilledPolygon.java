@@ -13,7 +13,7 @@ import java.awt.geom.Point2D;
 public class FilledPolygon implements InteractiveGraphicsElement {
   private final Announcer<Runnable> toggleListeners = Announcer.to(Runnable.class);
   private final Polygon polygon = new Polygon();
-  private Color fill = Color.YELLOW;
+  private Color fill = ColorUtilities.getTransparency();
   private Color stroke = Color.BLACK;
   private String text = "";
 
