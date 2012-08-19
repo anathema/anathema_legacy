@@ -5,8 +5,6 @@ import java.awt.Dimension;
 
 public interface ITreePresentationProperties {
 
-  String getNodeFramePolygonString();
-
   Dimension getNodeDimension();
 
   Dimension getGapDimension();

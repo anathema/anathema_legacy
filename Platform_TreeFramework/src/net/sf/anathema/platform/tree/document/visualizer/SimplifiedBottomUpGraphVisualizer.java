@@ -80,11 +80,6 @@ public class SimplifiedBottomUpGraphVisualizer extends AbstractCascadeVisualizer
     }
 
     @Override
-    public String getNodeFramePolygonString() {
-      return properties.getNodeFramePolygonString();
-    }
-
-    @Override
     public Dimension getNodeDimension() {
       return properties.getNodeDimension();
     }
