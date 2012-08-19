@@ -84,11 +84,11 @@ public class PolygonPanelTest {
   }
 
   @Test
-  public void hasIdentityTransformationAfterReset() throws Exception {
+  public void hasSlightlyZoomedOutTransformationAfterReset() throws Exception {
     polygonPanel.scale(5);
     polygonPanel.resetTransformation();
     polygonPanel.paintComponent(graphics);
-    verify(graphics).transform(new AffineTransform());
+    verify(graphics).transform(AffineTransform.getScaleInstance(0.75, 0.75));
   }
 
   @Test

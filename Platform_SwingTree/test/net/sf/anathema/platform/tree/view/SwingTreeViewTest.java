@@ -90,14 +90,6 @@ public class SwingTreeViewTest {
   }
 
   @Test
-  public void zoomsOutAfterLoadingToGiveABetterImpressionOfTheGraph() throws Exception {
-    swingTreeView.loadCascade(cascade, true);
-    InOrder inOrder = inOrder(panel, cascade);
-    inOrder.verify(panel).clear();
-    inOrder.verify(panel).scale(0.75);
-  }
-
-  @Test
   public void clearsCanvasBeforeAdding() throws Exception {
     swingTreeView.loadCascade(cascade, true);
     InOrder inOrder = inOrder(panel, cascade);

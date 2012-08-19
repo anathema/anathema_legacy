@@ -67,7 +67,6 @@ public class SwingTreeView implements ITreeView<Cascade> {
     clear();
     cascade.setDelegate(newCascade);
     cascade.addTo(polygonPanel);
-    polygonPanel.scale(0.75);
     loadListeners.announce().cascadeLoaded();
   }
 

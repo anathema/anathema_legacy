@@ -86,6 +86,7 @@ public class PolygonPanel extends JPanel {
 
   public void resetTransformation() {
     transform.setToIdentity();
+    transform.scale(0.75, 0.75);
     repaint();
   }
 
