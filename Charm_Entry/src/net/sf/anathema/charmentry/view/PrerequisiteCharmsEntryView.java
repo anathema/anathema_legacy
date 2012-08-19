@@ -1,5 +1,12 @@
 package net.sf.anathema.charmentry.view;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.charmentry.presenter.view.IPrerequisiteCharmsEntryView;
+import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
+import net.sf.anathema.lib.workflow.container.view.SelectionContainerListView;
+
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -7,13 +14,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
 import javax.swing.ListCellRenderer;
 import javax.swing.ScrollPaneConstants;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.charmentry.presenter.view.IPrerequisiteCharmsEntryView;
-import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
-import net.sf.anathema.lib.workflow.container.view.SelectionContainerListView;
 
 public class PrerequisiteCharmsEntryView implements IPrerequisiteCharmsEntryView {
 
@@ -37,11 +37,6 @@ public class PrerequisiteCharmsEntryView implements IPrerequisiteCharmsEntryView
 
   @Override
   public void requestFocus() {
-    // Nothing to do
-  }
-
-  @Override
-  public void dispose() {
     // Nothing to do
   }
 

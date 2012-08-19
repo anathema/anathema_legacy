@@ -1,10 +1,5 @@
 package net.sf.anathema.charmentry.view;
 
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.charmentry.presenter.view.ISimpleSpecialsView;
@@ -12,6 +7,11 @@ import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
 
 public class SimpleSpecialsView implements ISimpleSpecialsView {
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
@@ -23,11 +23,6 @@ public class SimpleSpecialsView implements ISimpleSpecialsView {
 
   @Override
   public void requestFocus() {
-    // Nothing to do
-  }
-
-  @Override
-  public void dispose() {
     // Nothing to do
   }
 

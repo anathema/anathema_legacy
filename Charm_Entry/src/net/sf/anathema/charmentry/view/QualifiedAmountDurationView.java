@@ -88,9 +88,4 @@ public class QualifiedAmountDurationView implements IAmountDurationEntryView {
   public void requestFocus() {
     // nothing to do;
   }
-
-  @Override
-  public void dispose() {
-    // nothing to do;
-  }
 }

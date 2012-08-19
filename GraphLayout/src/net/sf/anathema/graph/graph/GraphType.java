@@ -4,25 +4,25 @@ public enum GraphType implements IGraphType {
   DirectedGraph {
     @Override
     public void accept(IGraphTypeVisitor visitor) {
-      visitor.visitDirectedGraph(this);
+      visitor.visitDirectedGraph();
     }
   },
   InvertedTree {
     @Override
     public void accept(IGraphTypeVisitor visitor) {
-      visitor.visitInvertedTree(this);
+      visitor.visitInvertedTree();
     }
   },
   Tree {
     @Override
     public void accept(IGraphTypeVisitor visitor) {
-      visitor.visitTree(this);
+      visitor.visitTree();
     }
   },
   Single {
     @Override
     public void accept(IGraphTypeVisitor visitor) {
-      visitor.visitSingle(this);
+      visitor.visitSingle();
     }
   }
 }

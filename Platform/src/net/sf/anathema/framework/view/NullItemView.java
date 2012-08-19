@@ -33,11 +33,6 @@ public class NullItemView implements IItemView {
   }
 
   @Override
-  public void dispose() {
-    //nothing to do
-  }
-
-  @Override
   public JComponent getComponent() {
     return new JPanel();
   }

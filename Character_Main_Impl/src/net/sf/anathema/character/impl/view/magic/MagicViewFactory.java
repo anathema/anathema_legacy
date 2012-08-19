@@ -5,13 +5,21 @@ import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.framework.value.IntegerViewFactory;
+import net.sf.anathema.platform.svgtree.presenter.view.NodeProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ToolTipProperties;
 
 public class MagicViewFactory implements IMagicViewFactory {
 
+  private final IntegerViewFactory integerDisplayFactory;
+
+  public MagicViewFactory(IntegerViewFactory integerDisplayFactory) {
+    this.integerDisplayFactory = integerDisplayFactory;
+  }
+
   @Override
-  public ICharmView createCharmSelectionView(ISvgTreeViewProperties properties) {
-    return new CharmView(properties);
+  public ICharmView createCharmSelectionView(ToolTipProperties properties, NodeProperties nodeProperties) {
+    return new CharmView(properties, nodeProperties, integerDisplayFactory);
   }
 
   @Override

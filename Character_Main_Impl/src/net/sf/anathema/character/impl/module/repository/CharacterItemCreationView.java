@@ -45,11 +45,6 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
   }
 
   @Override
-  public void dispose() {
-    // nothing to do
-  }
-
-  @Override
   public IListObjectSelectionView<ITemplateTypeAggregation> addObjectSelectionList() {
     ListObjectSelectionView<ITemplateTypeAggregation> view = new ListObjectSelectionView<ITemplateTypeAggregation>(
         ITemplateTypeAggregation.class);

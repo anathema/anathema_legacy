@@ -1,15 +1,11 @@
 package net.sf.anathema.platform.svgtree.document.components;
 
-import org.dom4j.Element;
-
 public interface IVisualizableNode {
 
   /**
    * Return central Position of rightmost Node in the subtree
    */
   Integer getRightExtreme();
-
-  void toXML(Element element);
 
   void setLayer(ILayer layer);
 

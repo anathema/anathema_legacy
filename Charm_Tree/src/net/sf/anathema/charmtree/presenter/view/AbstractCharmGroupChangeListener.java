@@ -93,4 +93,9 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   public void reselect() {
     valueChanged(getCurrentGroup(), currentType);
   }
+
+  @Override
+  public boolean hasGroupSelected() {
+    return getCurrentGroup() != null;
+  }
 }

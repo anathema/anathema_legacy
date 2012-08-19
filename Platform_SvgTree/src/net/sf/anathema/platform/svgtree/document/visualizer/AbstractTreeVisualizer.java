@@ -5,8 +5,6 @@ import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 
-import java.awt.Dimension;
-
 public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
 
   public AbstractTreeVisualizer(ITreePresentationProperties properties, LayeredGraph graph) {
@@ -21,15 +19,14 @@ public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
   }
 
   @Override
-  public IVisualizedGraph buildTree() {
+  public ILayer[] buildTree() {
     int layerCount = getGraph().getDeepestLayer();
     for (int layerIndex = layerCount - 1; layerIndex >= 0; layerIndex--) {
       createVisualizableNodes(layerIndex);
     }
     ILayer[] layers = createLayers(layerCount);
-    int treeWidth = setPositionRecursively(getInitialLayer(layers).getNodes()[0], 0)
-        - getProperties().getGapDimension().width;
-    return new VisualizedGraph(createXml(layers), new Dimension(treeWidth, getTreeHeight(layers)));
+    setPositionRecursively(getInitialLayer(layers).getNodes()[0], 0);
+    return layers;
   }
 
   private int setPositionRecursively(IVisualizableNode node, int rightSide) {

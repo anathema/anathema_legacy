@@ -1,13 +1,13 @@
 package net.sf.anathema.character.equipment.impl.creation.view;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 public class WeaponStatisticsView implements IWeaponStatisticsView {
 
@@ -43,11 +43,6 @@ public class WeaponStatisticsView implements IWeaponStatisticsView {
     if (focusComponent != null) {
       focusComponent.requestFocus();
     }
-  }
-
-  @Override
-  public void dispose() {
-    //Nothing to do
   }
 
   @Override

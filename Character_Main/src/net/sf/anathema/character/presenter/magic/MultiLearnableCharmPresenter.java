@@ -6,17 +6,17 @@ import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfigu
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGCategorizedSpecialNodeView;
+import net.sf.anathema.platform.svgtree.presenter.view.CategorizedSpecialNodeView;
 
 public class MultiLearnableCharmPresenter implements Presenter {
 
-  private final ISVGCategorizedSpecialNodeView view;
+  private final CategorizedSpecialNodeView view;
   private final IMultiLearnableCharmConfiguration model;
   private final IResources resources;
 
   public MultiLearnableCharmPresenter(
       IResources resources,
-      ISVGCategorizedSpecialNodeView view,
+      CategorizedSpecialNodeView view,
       IMultiLearnableCharmConfiguration model) {
     this.resources = resources;
     this.view = view;

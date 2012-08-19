@@ -50,9 +50,4 @@ public class PrerequisiteEntryView implements IPrerequisitesEntryView {
   public void requestFocus() {
     // Nothing to do
   }
-
-  @Override
-  public void dispose() {
-    // Nothing to do
-  }
 }

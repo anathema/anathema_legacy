@@ -1,7 +1,6 @@
 package net.sf.anathema.character.presenter.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.presenter.AbstractCharmDye;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
@@ -16,7 +15,8 @@ public class CharacterCharmDye extends AbstractCharmDye {
   private final CharacterCharmModel model;
   private final ICharmView view;
 
-  public CharacterCharmDye(CharacterCharmModel model, CharmGroupInformer informer, Color characterColor, ICharmView view) {
+  public CharacterCharmDye(CharacterCharmModel model, CharmGroupInformer informer, Color characterColor,
+                           ICharmView view) {
     super(informer);
     this.informer = informer;
     this.characterColor = characterColor;
@@ -27,8 +27,7 @@ public class CharacterCharmDye extends AbstractCharmDye {
   @Override
   public void setCharmVisuals(ICharm charm) {
     ICharmConfiguration charmConfiguration = model.getCharmConfiguration();
-    ICharmGroup selectedGroup = informer.getCurrentGroup();
-    if (selectedGroup == null || !charm.getGroupId().equals(selectedGroup.getId())) {
+    if (!informer.hasGroupSelected() || !charm.getGroupId().equals(informer.getCurrentGroup().getId())) {
       return;
     }
     Color fillColor = charmConfiguration.isLearned(charm) ? characterColor : Color.WHITE;

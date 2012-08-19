@@ -1,5 +1,4 @@
 dependencies {
-  compile 'org.apache.xmlgraphics:batik-swing:1.7'
   compile project(':Lib')
   compile project(':Platform')
   compile project(':GraphLayout')

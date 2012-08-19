@@ -1,12 +1,12 @@
 package net.sf.anathema.charmentry.view;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.charmentry.presenter.view.ICostEntryPageView;
 import net.sf.anathema.charmentry.presenter.view.ICostEntryView;
+
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class CostEntryPageView implements ICostEntryPageView {
 
@@ -19,11 +19,6 @@ public class CostEntryPageView implements ICostEntryPageView {
 
   @Override
   public void requestFocus() {
-    // Nothing to do
-  }
-
-  @Override
-  public void dispose() {
     // Nothing to do
   }
 
