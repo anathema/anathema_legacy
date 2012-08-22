@@ -26,8 +26,8 @@ import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
 
 public class PolygonPanel extends JPanel {
   public static final double RECOMMENDED_DEFAULT_SCALE = 0.75d;
-  private static final double MAX_ZOOM_OUT_DETERMINANT = 0.09d; //30%
-  private static final double MAX_ZOOM_IN_DETERMINANT = 2.25d; //150%
+  private static final double MAX_ZOOM_OUT_SCALE = 0.3d; //30%
+  private static final double MAX_ZOOM_IN_SCALE = 1.5d; //150%
   private AffineTransform transform = new AffineTransform();
   private ElementContainer container = new ElementContainer();
   private final List<SpecialControl> specialControls = new ArrayList<SpecialControl>();
@@ -76,13 +76,20 @@ public class PolygonPanel extends JPanel {
     AffineTransform clone = (AffineTransform) transform.clone();
     clone.scale(scale, scale);
     double determinant = clone.getDeterminant();
-    if (MAX_ZOOM_OUT_DETERMINANT <= determinant && determinant <= MAX_ZOOM_IN_DETERMINANT) {
+    double maxZoomOutDeterminant = MAX_ZOOM_OUT_SCALE * MAX_ZOOM_OUT_SCALE;
+    double maxZoomInDeterminant = MAX_ZOOM_IN_SCALE * MAX_ZOOM_IN_SCALE;
+    if (maxZoomOutDeterminant <= determinant && determinant <= maxZoomInDeterminant) {
       transform.scale(scale, scale);
     }
   }
 
   public void translate(int x, int y) {
     transform.translate(x, y);
+  }
+
+  public void translateRelativeToScale(int x, int y) {
+    double scale = Math.sqrt(transform.getDeterminant());
+    transform.translate(x/scale, y/scale);
   }
 
   public void resetTransformation() {

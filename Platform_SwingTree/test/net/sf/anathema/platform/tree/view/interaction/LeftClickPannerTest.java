@@ -12,6 +12,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
+
 public class LeftClickPannerTest {
 
   PolygonPanel panel = mock(PolygonPanel.class);
@@ -38,7 +39,7 @@ public class LeftClickPannerTest {
   public void translatesByDifferenceMoved() throws Exception {
     panner.mousePressed(pressEvent);
     panner.mouseDragged(dragEvent);
-    verify(panel).translate(5, 5);
+    verifyTranslation(5, 5);
   }
 
   @Test
@@ -47,14 +48,18 @@ public class LeftClickPannerTest {
     panner.mousePressed(pressEvent);
     panner.mouseDragged(dragEvent);
     panner.mouseDragged(dragEvent);
-    verify(panel).translate(10, 10);
+    verifyTranslation(10, 10);
   }
 
   @Test
   public void repaintsAfterTranslation() throws Exception {
     panner.mousePressed(pressEvent);
     panner.mouseDragged(dragEvent);
-    verify(panel).translate(anyInt(), anyInt());
+    verify(panel).translateRelativeToScale(anyInt(), anyInt());
     verify(panel).repaint();
+  }
+
+  private void verifyTranslation(int x, int y) {
+    verify(panel).translateRelativeToScale(x, y);
   }
 }

@@ -77,6 +77,16 @@ public class PolygonPanelTest {
   }
 
   @Test
+  public void translatesZoomedGraphicsRelativeToScale() throws Exception {
+    double factor = 1.50;
+    polygonPanel.scale(factor);
+    polygonPanel.translateRelativeToScale(150, 150);
+    polygonPanel.paintComponent(graphics);
+    AffineTransform expected = new AffineTransform(1.5, 0, 0, 1.5, 150, 150);
+    verify(graphics).transform(expected);
+  }
+
+  @Test
   public void centersOnPoint() throws Exception {
     polygonPanel.centerOn(10, 10);
     polygonPanel.paintComponent(graphics);
