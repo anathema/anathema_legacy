@@ -15,13 +15,13 @@ public class FilledPolygon implements InteractiveGraphicsElement {
   private final Polygon polygon = new Polygon();
   private Color fill = ColorUtilities.getTransparency();
   private Color stroke = Color.BLACK;
-  private String text = "";
+  private final TextWriter textWriter = new TextWriter(polygon);
 
   @Override
   public void paint(Graphics2D graphics) {
     new ShapeFiller(polygon, fill).fill(graphics);
     new ShapeDrawer(polygon, stroke).draw(graphics);
-    new TextWriter(polygon.getBounds(), stroke, text).write(graphics);
+    textWriter.write(graphics);
   }
 
   @Override
@@ -49,7 +49,7 @@ public class FilledPolygon implements InteractiveGraphicsElement {
   public void setAlpha(int alpha) {
     Color original = fill;
     fill(ColorUtilities.getTransparentColor(original, alpha));
-    this.stroke = ColorUtilities.getTransparentColor(stroke, alpha);
+    setStroke(ColorUtilities.getTransparentColor(stroke, alpha));
   }
 
   public void whenToggledDo(Runnable runnable) {
@@ -57,12 +57,17 @@ public class FilledPolygon implements InteractiveGraphicsElement {
   }
 
   public void setText(String text) {
-    this.text = text;
+    textWriter.setText(text);
   }
 
   public void position(SpecialControl control) {
     Rectangle bounds = polygon.getBounds();
     control.setPosition((int) bounds.getMinX(), (int) bounds.getMaxY() + 10);
     control.setWidth((int) bounds.getWidth());
+  }
+
+  public void setStroke(Color stroke) {
+    this.stroke = stroke;
+    textWriter.setStroke(stroke);
   }
 }

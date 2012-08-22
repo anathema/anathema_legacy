@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +15,19 @@ public class TextWriter {
 
   private static final int TEXT_SIZE = 15;
   private static final int LINE_HEIGHT = TEXT_SIZE + 1;
-  private final String text;
-  private final Color textColor;
-  private final Rectangle bounds;
+  private String text = "";
+  private Color textColor = Color.BLACK;
+  private final Polygon polygon;
+  private String[] parts;
+  private LineSuggestion lineSuggestion = new LineSuggestion();
 
-  public TextWriter(Rectangle bounds, Color textColor, String text) {
-    this.bounds = bounds;
-    this.textColor = textColor;
-    this.text = text;
+  public TextWriter(Polygon polygon, LineSuggestion lineSuggestion) {
+    this(polygon);
+    this.lineSuggestion = lineSuggestion;
+  }
 
+  public TextWriter(Polygon polygon) {
+    this.polygon = polygon;
   }
 
   public void write(Graphics2D graphics) {
@@ -30,7 +35,8 @@ public class TextWriter {
     Font textFont = new Font("SansSerif", Font.PLAIN, TEXT_SIZE);
     graphics.setFont(textFont);
     FontMetrics textMetrics = graphics.getFontMetrics(textFont);
-    String[] parts = breakText(textMetrics);
+    findBreaksIfNotAlreadyEstablished(textMetrics);
+    Rectangle bounds = polygon.getBounds();
     for (int partIndex = 0; partIndex < parts.length; partIndex++) {
       String part = parts[partIndex];
       int centeredX = (int) (bounds.x + bounds.getWidth() / 2) - (textMetrics.stringWidth(part) / 2);
@@ -50,8 +56,14 @@ public class TextWriter {
     return -4 + ((currentLine - 1) * LINE_HEIGHT);
   }
 
+  private void findBreaksIfNotAlreadyEstablished(FontMetrics textMetrics) {
+    if (parts == null) {
+      parts = breakText(textMetrics);
+    }
+  }
+
   private String[] breakText(FontMetrics textMetrics) {
-    int lines = suggestNumberOfLines(textMetrics);
+    int lines = lineSuggestion.suggestNumberOfLines(textMetrics, text);
     String[] textNodes = new String[lines];
     List<Integer> wrap = new ArrayList<Integer>();
     wrap.add(0);
@@ -67,8 +79,11 @@ public class TextWriter {
     return textNodes;
   }
 
-  private int suggestNumberOfLines(FontMetrics textMetrics) {
-    float textLength = textMetrics.stringWidth(text);
-    return Math.min(3, (int) Math.ceil(textLength / 95));
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  public void setStroke(Color stroke) {
+    this.textColor = stroke;
   }
 }

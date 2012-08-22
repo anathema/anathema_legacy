@@ -7,6 +7,9 @@ import org.junit.Test;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 
@@ -43,5 +46,14 @@ public class FilledPolygon_GraphicsTest {
     filledPolygon.setAlpha(17);
     filledPolygon.paint(graphics);
     verify(graphics, atLeastOnce()).setColor(ColorUtilities.getTransparentColor(Color.BLACK, 17));
+  }
+
+  @Test
+  public void writesSetTextAndSetsColor() throws Exception {
+    filledPolygon.setAlpha(17);
+    filledPolygon.setText("A");
+    filledPolygon.paint(graphics);
+    verify(graphics, atLeast(2)).setColor(ColorUtilities.getTransparentColor(Color.BLACK, 17));
+    verify(graphics, atLeastOnce()).drawString(eq("A"), anyInt(), anyInt());
   }
 }

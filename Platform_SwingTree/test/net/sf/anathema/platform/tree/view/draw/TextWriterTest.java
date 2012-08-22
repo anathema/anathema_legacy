@@ -1,19 +1,27 @@
 package net.sf.anathema.platform.tree.view.draw;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
+import java.awt.Polygon;
 
 import static java.awt.Color.RED;
 import static org.mockito.Mockito.verify;
 
 public class TextWriterTest {
 
-  private TextWriter writer = new TextWriter(new Rectangle(0, 0, 100, 100), RED, "ABC");
+  private TextWriter writer = new TextWriter(new Polygon(new int[]{0, 100}, new int[]{0, 100}, 2));
   private Font font = new Font("SansSerif", Font.PLAIN, 15);
   private Graphics2D graphics = GraphicsMother.createForFont(font);
+
+  @Before
+  public void setUp() throws Exception {
+    writer.setText("ABC");
+    writer.setStroke(Color.RED);
+  }
 
   @Test
   public void writesGivenText() throws Exception {
