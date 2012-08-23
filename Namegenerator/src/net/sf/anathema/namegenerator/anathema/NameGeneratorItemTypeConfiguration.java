@@ -21,7 +21,7 @@ import net.sf.anathema.namegenerator.view.NameGeneratorView;
 import javax.swing.Icon;
 
 @ItemTypeConfiguration
-public final class NameGeneratorItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
+public class NameGeneratorItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
   public static final String NAME_GENERATOR_ITEM_TYPE_ID = "NameGenerator"; //$NON-NLS-1$
 

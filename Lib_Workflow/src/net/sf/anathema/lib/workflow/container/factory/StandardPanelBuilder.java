@@ -1,24 +1,18 @@
 package net.sf.anathema.lib.workflow.container.factory;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
-import net.sf.anathema.lib.gui.swing.ToggleComponentEnabler;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
-import net.sf.anathema.lib.workflow.booleanvalue.CheckBoxBooleanView;
-import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-import net.sf.anathema.lib.workflow.textualdescription.ICheckableTextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
@@ -33,39 +27,6 @@ public class StandardPanelBuilder {
 
   public ITextView addLineTextView(String labelName, int columnCount) {
     return addLabelledTextView(labelName, new LineTextView(columnCount));
-  }
-
-  public ICheckableTextView addCheckableLineTextView(String labelName, int textFieldColumns) {
-    final CheckBoxBooleanView checkBoxView = new CheckBoxBooleanView(labelName);
-    final ITextView textView = new LineTextView(textFieldColumns);
-    ToggleComponentEnabler.connect(checkBoxView.getComponent(), textView.getComponent());
-    addDialogComponent(new IDialogComponent() {
-      @Override
-      public int getColumnCount() {
-        return 2;
-      }
-
-      @Override
-      public void fillInto(JPanel panel, int columnCount) {
-        panel.add(checkBoxView.getComponent(), GridDialogLayoutDataFactory.createTopData());
-        JComponent textContent = textView.getComponent();
-        panel.add(textContent, GridDialogLayoutDataFactory.createHorizontalSpanData(
-            columnCount - 1,
-            GridDialogLayoutData.FILL_HORIZONTAL));
-      }
-    });
-    return new ICheckableTextView() {
-
-      @Override
-      public IBooleanValueView getBooleanValueView() {
-        return checkBoxView;
-      }
-
-      @Override
-      public ITextView getTextView() {
-        return textView;
-      }
-    };
   }
 
   public ITextView addAreaTextView(String labelName, int rowCount, int columnCount) {
@@ -115,10 +76,6 @@ public class StandardPanelBuilder {
 
   public <V> IObjectSelectionView<V> addObjectSelectionView(String label, ListCellRenderer renderer, V[] objects) {
     return createObjectSelectionView(label, renderer, objects, false);
-  }
-
-  public <V> IObjectSelectionView<V> addEditableObjectSelectionView(String label, ListCellRenderer renderer, V[] objects) {
-    return createObjectSelectionView(label, renderer, objects, true);
   }
 
   private <V> IObjectSelectionView<V> createObjectSelectionView(
