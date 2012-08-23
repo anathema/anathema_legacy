@@ -1,18 +1,17 @@
 package net.sf.anathema.namegenerator;
 
-import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
-
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.namegenerator.domain.category.AggregatedTokenCategory;
 import net.sf.anathema.namegenerator.domain.category.ICategorizedTokenConfiguration;
 import net.sf.anathema.namegenerator.domain.category.TokenCategory;
 import net.sf.anathema.namegenerator.view.category.ICategorizedNameGeneratorView;
+
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategorizedNamegeneratorPresenter implements Presenter {
 
@@ -29,9 +28,7 @@ public class CategorizedNamegeneratorPresenter implements Presenter {
   @Override
   public void initPresentation() {
     Object[] categories = getAllVoidStateCategories();
-    //TODO Replace with AbstractSelectCellRenderer once IResources are available
     ListCellRenderer renderer = new DefaultListCellRenderer() {
-      private static final long serialVersionUID = 3725470423450865354L;
 
 	  @Override
       public Component getListCellRendererComponent(

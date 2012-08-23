@@ -13,8 +13,6 @@ import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.namegenerator.exalted.ExaltedNameGeneratorModel;
-import net.sf.anathema.namegenerator.presenter.ExaltedNameGeneratorTypePresentation;
-import net.sf.anathema.namegenerator.presenter.INameGeneratorTypePresentation;
 import net.sf.anathema.namegenerator.presenter.NameGeneratorPresenter;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
@@ -40,8 +38,7 @@ public final class NameGeneratorItemTypeConfiguration extends AbstractNonPersist
         Icon icon = new NamegeneratorUI(resources).getNameGeneratorTabIcon();
         INameGeneratorView view = new NameGeneratorView();
         INameGeneratorModel model = new ExaltedNameGeneratorModel();
-        INameGeneratorTypePresentation typePresentation = new ExaltedNameGeneratorTypePresentation();
-        new NameGeneratorPresenter(resources, view, model, typePresentation).initPresentation();
+        new NameGeneratorPresenter(resources, view, model).initPresentation();
         return new DelegatingItemView(printName, icon, view);
       }
     };

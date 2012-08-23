@@ -9,7 +9,6 @@ import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
 
-import javax.swing.JComponent;
 import java.awt.Component;
 
 public class NameGeneratorPresenter implements Presenter {
@@ -17,40 +16,34 @@ public class NameGeneratorPresenter implements Presenter {
   private final INameGeneratorView view;
   private final INameGeneratorModel model;
   private final IResources resources;
-  private final INameGeneratorTypePresentation typePresentation;
 
-  public NameGeneratorPresenter(
-      IResources resources,
-      INameGeneratorView view,
-      INameGeneratorModel model,
-      INameGeneratorTypePresentation typePresentation) {
+  public NameGeneratorPresenter(IResources resources, INameGeneratorView view, INameGeneratorModel model) {
     this.view = view;
     this.model = model;
     this.resources = resources;
-    this.typePresentation = typePresentation;
   }
 
   @Override
   public void initPresentation() {
     for (Identified generatorType : model.getGeneratorTypes()) {
-      JComponent modelPresentation = typePresentation.initGeneratorTypePresentation(generatorType);
       String formattedLabel = resources.getString("NameGeneratorPresenter." + generatorType); //$NON-NLS-1$
-      view.addNameGeneratorType(formattedLabel, modelPresentation, generatorType);
+      view.addNameGeneratorType(formattedLabel, generatorType);
     }
     initSelectedGeneratorTypePresentation();
     initGenerationPresentation();
   }
 
   private void initGenerationPresentation() {
-    view.addGenerationAction(new SmartAction(resources.getString("NameGeneratorPresenter.GenerateButtonLabel")) { //$NON-NLS-1$
-      private static final long serialVersionUID = 4272323507368472400L;
+    view.addGenerationAction(
+            new SmartAction(resources.getString("NameGeneratorPresenter.GenerateButtonLabel")) { //$NON-NLS-1$
+              private static final long serialVersionUID = 4272323507368472400L;
 
-      @Override
-      protected void execute(Component parentComponent) {
-        String[] generatedNames = model.generateNames(50);
-        view.setResult(Joiner.on("\n").join(generatedNames)); //$NON-NLS-1$
-      }
-    });
+              @Override
+              protected void execute(Component parentComponent) {
+                String[] generatedNames = model.generateNames(50);
+                view.setResult(Joiner.on("\n").join(generatedNames)); //$NON-NLS-1$
+              }
+            });
   }
 
   private void initSelectedGeneratorTypePresentation() {

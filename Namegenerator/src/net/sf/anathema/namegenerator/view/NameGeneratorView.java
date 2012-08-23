@@ -1,8 +1,9 @@
 package net.sf.anathema.namegenerator.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.AC;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
@@ -23,8 +24,9 @@ import java.util.Map;
 
 public class NameGeneratorView implements INameGeneratorView {
 
-  private final JPanel firstColumn = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel content = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel firstColumn = new JPanel(new MigLayout(new LC().wrapAfter(1)));
+  private final JPanel content = new JPanel(
+          new MigLayout(new LC().wrapAfter(2), new AC().grow(100, 1).fill(1), new AC().grow().fill()));
   private final ButtonGroup nameGeneratorTypeGroup = new ButtonGroup();
   private final AreaTextView resultTextView = new AreaTextView(5, 25);
   private final Map<JRadioButton, Object> generatorsByButton = new HashMap<JRadioButton, Object>();
@@ -39,8 +41,8 @@ public class NameGeneratorView implements INameGeneratorView {
   };
 
   public NameGeneratorView() {
-    content.add(firstColumn, GridDialogLayoutDataFactory.createTopData());
-    content.add(createSecondColumn(), GridDialogLayoutData.FILL_BOTH);
+    content.add(firstColumn);
+    content.add(createSecondColumn(), new CC().grow());
   }
 
   private JComponent createSecondColumn() {
@@ -56,7 +58,7 @@ public class NameGeneratorView implements INameGeneratorView {
   }
 
   @Override
-  public void addNameGeneratorType(String label, JComponent component, Object generatorType) {
+  public void addNameGeneratorType(String label, Object generatorType) {
     JRadioButton generatorButton = new JRadioButton(label);
     generatorButton.addActionListener(generatorButtonListener);
     generatorsByButton.put(generatorButton, generatorType);
@@ -64,9 +66,6 @@ public class NameGeneratorView implements INameGeneratorView {
     nameGeneratorTypeGroup.add(generatorButton);
     generatorButton.setSelected(nameGeneratorTypeGroup.getSelection() == null);
     firstColumn.add(generatorButton);
-    if (component != null) {
-      firstColumn.add(component, GridDialogLayoutData.FILL_BOTH);
-    }
   }
 
   @Override
