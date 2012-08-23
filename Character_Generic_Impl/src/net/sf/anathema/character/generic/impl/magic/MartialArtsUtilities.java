@@ -6,6 +6,8 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.util.Identificate;
 
+import java.text.MessageFormat;
+
 public class MartialArtsUtilities {
 
   public static final Identificate MARTIAL_ARTS = new Identificate(AbilityType.MartialArts.name());
@@ -27,7 +29,10 @@ public class MartialArtsUtilities {
         return level;
       }
     }
-    throw new IllegalStateException("Martial Arts Charm without level: " + charm.getId()); //$NON-NLS-1$
+    String message = MessageFormat.format(
+            "Martial Arts Charm without level: {0}. Please ensure it has a Martial Arts level as a 'charmAttribute'.",
+            charm.getId());
+    throw new IllegalStateException(message); //$NON-NLS-1$
   }
 
   public static boolean hasLevel(MartialArtsLevel level, ICharm charm) {

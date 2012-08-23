@@ -4,6 +4,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.4.1
+
+### Features
+* Anathema has an even more helpful message when a Martial Arts charm does not conform with its expectations.
+
 ## Release 4.4.0 "Yu-Shan"
 
 ### Features
