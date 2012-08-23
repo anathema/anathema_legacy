@@ -9,6 +9,9 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Features
 * Anathema has an even more helpful message when a Martial Arts charm does not conform with its expectations.
 
+### Bugfixes
+* The Charm Cascades zoom to the pointer, as they used to do.
+
 ## Release 4.4.0 "Yu-Shan"
 
 ### Features

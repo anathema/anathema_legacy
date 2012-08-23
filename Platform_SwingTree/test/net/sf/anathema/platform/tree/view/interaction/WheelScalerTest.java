@@ -8,6 +8,8 @@ import org.mockito.InOrder;
 import java.awt.event.MouseWheelEvent;
 
 import static org.mockito.Matchers.anyDouble;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -30,30 +32,28 @@ public class WheelScalerTest {
     when(event.getWheelRotation()).thenReturn(5);
     new WheelScaler(panel).mouseWheelMoved(event);
     InOrder inOrder = inOrder(panel);
-    inOrder.verify(panel).translate(100, 120);
-    inOrder.verify(panel).scale(anyDouble());
-    inOrder.verify(panel).translate(-100, -120);
+    inOrder.verify(panel).scaleToPoint(anyDouble(), eq(100), eq(120));
   }
 
   @Test
   public void calculatesScaleFromNumberOfUnits() throws Exception {
     when(event.getWheelRotation()).thenReturn(5);
     new WheelScaler(panel).mouseWheelMoved(event);
-    verify(panel).scale(0.75);
+    scalesToAnyPoint(0.75);
   }
 
   @Test
   public void doesNotGoToZero() throws Exception {
     when(event.getWheelRotation()).thenReturn(20);
     new WheelScaler(panel).mouseWheelMoved(event);
-    verify(panel).scale(0.00001);
+    scalesToAnyPoint(0.00001);
   }
 
   @Test
   public void limitsChangeToOne100Percent() throws Exception {
     when(event.getWheelRotation()).thenReturn(-21);
     new WheelScaler(panel).mouseWheelMoved(event);
-    verify(panel).scale(2);
+    scalesToAnyPoint(2);
   }
 
   @Test
@@ -61,7 +61,11 @@ public class WheelScalerTest {
     when(event.getWheelRotation()).thenReturn(5);
     new WheelScaler(panel).mouseWheelMoved(event);
     InOrder inOrder = inOrder(panel);
-    inOrder.verify(panel).translate(-100, -120);
+    inOrder.verify(panel).scaleToPoint(anyDouble(), anyInt(), anyInt());
     inOrder.verify(panel).repaint();
+  }
+
+  private void scalesToAnyPoint(double scale) {
+    verify(panel).scaleToPoint(eq(scale), anyInt(), anyInt());
   }
 }

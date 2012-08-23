@@ -69,6 +69,16 @@ public class PolygonPanelTest {
     verify(graphics).transform(AffineTransform.getScaleInstance(1, 1));
   }
 
+
+  @Test
+  public void scalesToAGivenPoint() throws Exception {
+    double factor = .50;
+    polygonPanel.scaleToPoint(factor, 100, 100);
+    polygonPanel.paintComponent(graphics);
+    AffineTransform expected = new AffineTransform(0.5, 0, 0, 0.5, 50, 50);
+    verify(graphics).transform(expected);
+  }
+
   @Test
   public void translatesGraphics() throws Exception {
     polygonPanel.translate(5, 7);

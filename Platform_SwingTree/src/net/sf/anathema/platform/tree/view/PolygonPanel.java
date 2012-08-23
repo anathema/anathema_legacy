@@ -22,7 +22,9 @@ import java.util.List;
 import static java.awt.Cursor.HAND_CURSOR;
 import static java.awt.Cursor.getPredefinedCursor;
 import static java.awt.RenderingHints.KEY_ANTIALIASING;
+import static java.awt.RenderingHints.KEY_RENDERING;
 import static java.awt.RenderingHints.VALUE_ANTIALIAS_ON;
+import static java.awt.RenderingHints.VALUE_RENDER_QUALITY;
 
 public class PolygonPanel extends JPanel {
   public static final double RECOMMENDED_DEFAULT_SCALE = 0.75d;
@@ -42,6 +44,7 @@ public class PolygonPanel extends JPanel {
     super.paintComponent(g);
     Graphics2D graphics = (Graphics2D) g.create();
     graphics.transform(transform);
+    graphics.setRenderingHint(KEY_RENDERING, VALUE_RENDER_QUALITY);
     graphics.setRenderingHint(KEY_ANTIALIASING, VALUE_ANTIALIAS_ON);
     for (GraphicsElement element : container) {
       element.paint(graphics);
@@ -73,14 +76,16 @@ public class PolygonPanel extends JPanel {
   }
 
   public void scale(double scale) {
-    AffineTransform clone = (AffineTransform) transform.clone();
-    clone.scale(scale, scale);
-    double determinant = clone.getDeterminant();
-    double maxZoomOutDeterminant = MAX_ZOOM_OUT_SCALE * MAX_ZOOM_OUT_SCALE;
-    double maxZoomInDeterminant = MAX_ZOOM_IN_SCALE * MAX_ZOOM_IN_SCALE;
-    if (maxZoomOutDeterminant <= determinant && determinant <= maxZoomInDeterminant) {
-      transform.scale(scale, scale);
-    }
+    AffineTransform scaleTransform = AffineTransform.getScaleInstance(scale, scale);
+    executeScaleIfBoundsAreNotBroken(scaleTransform);
+  }
+
+  public void scaleToPoint(double scale, int x, int y) {
+    AffineTransform scaleTransform = new AffineTransform();
+    scaleTransform.translate(x, y);
+    scaleTransform.scale(scale, scale);
+    scaleTransform.translate(-x, -y);
+    executeScaleIfBoundsAreNotBroken(scaleTransform);
   }
 
   public void translate(int x, int y) {
@@ -89,7 +94,7 @@ public class PolygonPanel extends JPanel {
 
   public void translateRelativeToScale(int x, int y) {
     double scale = Math.sqrt(transform.getDeterminant());
-    transform.translate(x/scale, y/scale);
+    transform.translate(x / scale, y / scale);
   }
 
   public void resetTransformation() {
@@ -132,6 +137,17 @@ public class PolygonPanel extends JPanel {
     AffineTransform newCenter = AffineTransform.getTranslateInstance(newCenterX, newCenterY);
     transform.preConcatenate(newCenter);
     repaint();
+  }
+
+  private void executeScaleIfBoundsAreNotBroken(AffineTransform scaleInstance) {
+    AffineTransform clone = (AffineTransform) transform.clone();
+    clone.preConcatenate(scaleInstance);
+    double determinant = clone.getDeterminant();
+    double maxZoomOutDeterminant = MAX_ZOOM_OUT_SCALE * MAX_ZOOM_OUT_SCALE;
+    double maxZoomInDeterminant = MAX_ZOOM_IN_SCALE * MAX_ZOOM_IN_SCALE;
+    if (maxZoomOutDeterminant <= determinant && determinant <= maxZoomInDeterminant) {
+      transform.preConcatenate(scaleInstance);
+    }
   }
 
   private class SetDefaultCursor implements Runnable {
