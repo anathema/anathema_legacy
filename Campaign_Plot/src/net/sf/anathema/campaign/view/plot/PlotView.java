@@ -2,6 +2,9 @@ package net.sf.anathema.campaign.view.plot;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.AC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.campaign.presenter.view.IPlotViewListener;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
@@ -175,7 +178,7 @@ public class PlotView implements IPlotView {
 
   private Component createButtonPanel(IPlotViewProperties properties) {
     initHierarchyButtons(properties);
-    JPanel panel = new JPanel(new GridDialogLayout(4, false));
+    JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(4).insets("0"), new AC().grow().fill()));
     panel.add(removeButton);
     panel.add(addButton);
     panel.add(upButton);
