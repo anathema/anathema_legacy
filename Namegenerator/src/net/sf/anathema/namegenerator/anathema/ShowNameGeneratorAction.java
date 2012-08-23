@@ -17,7 +17,6 @@ import java.awt.Cursor;
 
 public class ShowNameGeneratorAction extends SmartAction {
 
-  private static final long serialVersionUID = -7460286119466450674L;
   private final IAnathemaModel anathemaModel;
   private final IResources resources;
 
@@ -42,10 +41,10 @@ public class ShowNameGeneratorAction extends SmartAction {
       generatorItem.setPrintName(resources.getString("ItemType.NameGenerator.PrintName")); //$NON-NLS-1$
       anathemaModel.getItemManagement().addItem(generatorItem);
     } catch (AnathemaException e) {
-      Message message = new Message("An error occured while creating character: " + e.getMessage(), e);
+      Message message = new Message("An error occured while starting the name generator: " + e.getMessage(), e);
       MessageUtilities.indicateMessage(getClass(), parentComponent, message);
     } catch (Throwable e) {
-      Message message = new Message("An error occured while creating character.", e);
+      Message message = new Message("An error occured while starting the name generator.", e);
       MessageUtilities.indicateMessage(getClass(), parentComponent, message);
     } finally {
       parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
