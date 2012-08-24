@@ -12,17 +12,18 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.io.File;
 
-import static net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase.DATABASE_FILE;
-import static net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase.DATABASE_FOLDER;
-
 @BootJob
 public class DatabaseConversionBootJob implements IAnathemaBootJob {
+
+  private static final String OLD_DATABASE_FILE = "Equipment.yap"; //$NON-NLS-1$
+  private static final String OLD_DATABASE_FOLDER = "equipment"; //$NON-NLS-1$
 
   @Override
   public void run(IResources resources, IAnathemaModel anathemaModel, IAnathemaView view) {
     ProxySplashscreen.getInstance().displayStatusMessage(
             resources.getString("Equipment.Bootjob.Splashmessage")); //$NON-NLS-1$
-    File databaseFile = new File(anathemaModel.getRepository().getDataBaseDirectory(DATABASE_FOLDER), DATABASE_FILE);
+    File databaseFile = new File(anathemaModel.getRepository().getDataBaseDirectory(OLD_DATABASE_FOLDER),
+            OLD_DATABASE_FILE);
     if (!databaseFile.exists()) {
       return;
     }
