@@ -92,7 +92,7 @@ public class MagicPresenter implements IContentPresenter {
       Collection<MagicDetailPresenterFactory> factories = instantiater.instantiateAll(
               RegisteredMagicDetailPresenterFactory.class);
       if (!factories.isEmpty()) {
-        Iterables.get(factories, 0).create(anathemaModel, resources);
+        return Iterables.get(factories, 0).create(anathemaModel, resources);
       }
     } catch (Throwable e) {
       logger.error("Error initializing charm details.", e);
