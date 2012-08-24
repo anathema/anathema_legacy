@@ -19,6 +19,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.lang.StringUtilities;
@@ -199,6 +200,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   private void updateCharmListsInView(IComboConfigurationView comboView) {
     comboView.setComboCharms(comboConfiguration.getEditCombo().getCharms());
     ICharm[] learnedCharms = comboModel.getLearnedCharms();
+    Arrays.sort(learnedCharms, new I18nedIdentificateComparator(resources));
     comboView.setAllCharms(learnedCharms);
   }
 

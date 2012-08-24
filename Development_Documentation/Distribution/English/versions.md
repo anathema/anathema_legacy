@@ -8,6 +8,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Features
 * Anathema has an even more helpful message when a Martial Arts charm does not conform with its expectations.
+* Charms in the Combo view are sorted alphabetically.
 
 ### Bugfixes
 * The Charm Cascades zoom to the pointer, as they used to do.
