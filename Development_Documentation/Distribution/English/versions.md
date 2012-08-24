@@ -12,6 +12,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Bugfixes
 * The Charm Cascades zoom to the pointer, as they used to do.
 * Restores the function to CTRL-click a Charm to edit its description.
+* Restores the option to save internal playlists in the music database.
 
 ## Release 4.4.0 "Yu-Shan"
 

@@ -1,11 +1,11 @@
 package net.sf.anathema.campaign.music.impl.persistence;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Query;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SelectionPersister {
 
@@ -31,6 +31,9 @@ public class SelectionPersister {
     query.descend("name").constrain(string); //$NON-NLS-1$
     @SuppressWarnings("unchecked")
     ObjectSet<DbMusicSelection> set = query.execute();
+    if (set.isEmpty()){
+      return null;
+    }
     return set.next();
   }
 
