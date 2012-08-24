@@ -1,4 +1,4 @@
 dependencies {
-  compile project(':Platform_Database')
+  compile project(':Platform')
   compile project(':Character_Generic_Framework')
 }

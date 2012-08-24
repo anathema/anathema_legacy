@@ -1,12 +1,11 @@
 package net.sf.anathema.campaign.music.impl.module;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.campaign.music.impl.view.MusicDatabaseView;
 import net.sf.anathema.campaign.music.model.IMusicDatabase;
 import net.sf.anathema.campaign.music.presenter.MusicDataBasePresenter;
 import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.database.StartDatabaseAction;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.action.ActionMenuItem;
@@ -18,7 +17,8 @@ import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.platform.database.StartDatabaseAction;
+
+import javax.swing.Icon;
 
 @ItemTypeConfiguration
 public final class MusicDatabaseItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
