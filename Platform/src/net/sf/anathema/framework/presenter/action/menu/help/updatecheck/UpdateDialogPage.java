@@ -16,10 +16,11 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
 import static net.disy.commons.swing.layout.grid.IGridDialogLayoutData.DEFAULT;
-import static net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateAction.AUTO_UPDATE_ENABLED;
 import static net.sf.anathema.lib.message.MessageType.ERROR;
 import static net.sf.anathema.lib.message.MessageType.INFORMATION;
 
@@ -32,6 +33,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
   private UpdateState state = UpdateState.Checking;
   private IMessageData messageData;
   private final JProgressBar updateProgress = new JProgressBar();
+  private JTextArea changelogDisplay = new JTextArea("Loading changelog...", 10, 0);
 
 
   public UpdateDialogPage(IResources resources, Version installedVersion) {
@@ -48,11 +50,12 @@ public class UpdateDialogPage extends AbstractDialogPage {
     panel.add(new JLabel(installedVersion.asString()), DEFAULT);
     panel.add(new JLabel(getString("Help.UpdateCheck.LatestVersion") + ":"), DEFAULT);
     panel.add(latestVersionLabel, DEFAULT);
-    if (AUTO_UPDATE_ENABLED) {
-      panel.add(updateButton);
-      updateButton.setEnabled(false);
-      panel.add(updateProgress, new GridDialogLayoutDataBuilder().filledHorizontal().grabExcessHorizontalSpace().get());
-    }
+    changelogDisplay.setEditable(false);
+    panel.add(updateButton);
+    updateButton.setEnabled(false);
+    panel.add(updateProgress, new GridDialogLayoutDataBuilder().filledHorizontal().grabExcessHorizontalSpace().get());
+    panel.add(new JScrollPane(changelogDisplay),
+            new GridDialogLayoutDataBuilder().filledHorizontal().horizontalSpan(2).get());
     return panel;
   }
 
@@ -105,8 +108,8 @@ public class UpdateDialogPage extends AbstractDialogPage {
     this.messageData = null;
   }
 
-  private void showUnknownVersion() {
-    showLatestVersion("?.?.?");
+  public void showChangelog(String changelog) {
+    changelogDisplay.setText(changelog);
   }
 
   public void whenUpdateIsRequestedDo(SmartAction smartAction) {
@@ -127,6 +130,10 @@ public class UpdateDialogPage extends AbstractDialogPage {
 
   private String getString(String key) {
     return resources.getString(key);
+  }
+
+  private void showUnknownVersion() {
+    showLatestVersion("?.?.?");
   }
 
   public void showFilesToDownload(final int numberOfElements) {

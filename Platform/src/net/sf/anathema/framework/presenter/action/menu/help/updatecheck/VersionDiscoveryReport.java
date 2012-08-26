@@ -28,6 +28,8 @@ public class VersionDiscoveryReport extends ProgressReportAdapter {
     else {
       page.disableUpdate();
     }
+    UpdateChangelog changelog = new UpdateChangelog(installed, available);
+    page.showChangelog(changelog.getText());
   }
 
   private String determineMessageToShow(boolean available) {

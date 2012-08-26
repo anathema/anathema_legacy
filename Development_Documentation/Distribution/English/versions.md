@@ -7,8 +7,9 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 4.4.1
 
 ### Features
-* Anathema has an even more helpful message when a Martial Arts charm does not conform with its expectations.
 * Charms in the Combo view are sorted alphabetically.
+* The update screen shows changes since your current version.
+* Anathema has an even more helpful message when a Martial Arts charm does not conform with its expectations.
 
 ### Bugfixes
 * The Charm Cascades zoom to the pointer, as they used to do.

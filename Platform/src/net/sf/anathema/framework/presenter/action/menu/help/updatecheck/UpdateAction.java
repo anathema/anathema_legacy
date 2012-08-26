@@ -20,8 +20,6 @@ import java.util.Properties;
 
 public class UpdateAction extends SmartAction {
 
-  public static final boolean AUTO_UPDATE_ENABLED = true;
-
   public static Action createMenuAction(IResources resources) {
     UpdateAction action = new UpdateAction(resources);
     action.setName(resources.getString("Help.UpdateCheck.Title")); //$NON-NLS-1$
@@ -54,11 +52,7 @@ public class UpdateAction extends SmartAction {
   }
 
   private UpdateSystem createUpdateSystem(Version currentVersion) {
-    if (AUTO_UPDATE_ENABLED) {
       return ConfiguredUpdateSystem.loadProperties().andIfTheInstalledVersionIsUnknownUse(currentVersion).create();
-    } else {
-      return ConfiguredUpdateSystem.loadProperties().butDiscoverAvailableVersionThrough(new TagsOnGithub()).andIfTheInstalledVersionIsUnknownUse(currentVersion).create();
-    }
   }
 
   private void prepareForInstallation(final UpdateDialogPage page, final Updater updater) {
