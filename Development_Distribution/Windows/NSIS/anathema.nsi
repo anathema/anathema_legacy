@@ -140,8 +140,11 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Anathema UNSEC0000
-    RmDir /r /REBOOTOK $INSTDIR
     RmDir /r /REBOOTOK $INSTDIR\lib
+    Delete /REBOOTOK $INSTDIR\Anathema.jar
+    Delete /REBOOTOK $INSTDIR\anathema.exe
+    Delete /REBOOTOK $INSTDIR\license.txt
+    Delete /REBOOTOK $INSTDIR\release_notes.txt
     DeleteRegValue HKLM "${REGKEY}\Components" Anathema
 SectionEnd
 
