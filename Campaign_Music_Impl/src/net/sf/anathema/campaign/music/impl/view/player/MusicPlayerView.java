@@ -1,6 +1,10 @@
 package net.sf.anathema.campaign.music.impl.view.player;
 
-import java.awt.GridLayout;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.campaign.music.presenter.IMusicPlayerProperties;
+import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerView;
 
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -10,10 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeListener;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.campaign.music.presenter.IMusicPlayerProperties;
-import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerView;
+import java.awt.GridLayout;
 
 public class MusicPlayerView implements IMusicPlayerView {
 
@@ -32,10 +33,10 @@ public class MusicPlayerView implements IMusicPlayerView {
   }
 
   private JPanel createContent(IMusicPlayerProperties properties) {
-    JPanel panel = new JPanel(new GridDialogLayout(1, false));
+    JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
     panel.add(slider);
-    panel.add(createTimeDisplay(properties));
-    panel.add(createControlDisplay());
+    panel.add(createTimeDisplay(properties), new CC().alignX("center"));
+    panel.add(createControlDisplay(), new CC().alignX("center"));
     panel.setBorder(new TitledBorder(properties.getPlayerBorderString()));
     return panel;
   }
