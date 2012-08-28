@@ -15,5 +15,4 @@ public interface IMusicSelectionProperties {
   String getCurrentSelectionString();
 
   String getCurrentlySelectedTracksString();
-
 }

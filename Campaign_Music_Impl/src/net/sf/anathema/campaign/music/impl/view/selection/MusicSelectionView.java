@@ -45,55 +45,38 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     return content;
   }
 
-  public void initGui(
-      ITableColumnViewSettings columnSettings,
-      boolean includePlayerView,
-      IMusicCategorizationProperties categoryProperties,
-      IMusicPlayerProperties playerProperties,
-      IMusicSelectionProperties selectionProperties,
-      ITrackDetailsProperties detailsProperties) {
-    selectionsView = new EditableActionAddableListView<IMusicSelection>(
-        selectionProperties.getSavedSelectionsTitle(),
-        columnSettings,
-        IMusicSelection.class);
-    content = createContent(
-        includePlayerView,
-        selectionProperties,
-        categoryProperties,
-        playerProperties,
-        detailsProperties);
+  public void initGui(ITableColumnViewSettings columnSettings, boolean includePlayerView,
+                      IMusicCategorizationProperties categoryProperties, IMusicPlayerProperties playerProperties,
+                      IMusicSelectionProperties selectionProperties, ITrackDetailsProperties detailsProperties) {
+    selectionsView = new EditableActionAddableListView<IMusicSelection>(null, columnSettings, IMusicSelection.class);
+    content = createContent(includePlayerView, selectionProperties, categoryProperties, playerProperties,
+            detailsProperties);
   }
 
-  private JComponent createContent(
-      boolean includePlayerView,
-      IMusicSelectionProperties selectionProperties,
-      IMusicCategorizationProperties categoryProperties,
-      IMusicPlayerProperties playerProperties,
-      ITrackDetailsProperties detailsProperties) {
+  private JComponent createContent(boolean includePlayerView, IMusicSelectionProperties selectionProperties,
+                                   IMusicCategorizationProperties categoryProperties,
+                                   IMusicPlayerProperties playerProperties, ITrackDetailsProperties detailsProperties) {
     JPanel panel = new JPanel(new GridDialogLayout(3, true));
     panel.setBorder(new TitledBorder(selectionProperties.getMusicSelectionBorderTitle()));
     TabbedView selectionActionsView = new TabbedView(TabDirection.Down);
-    selectionActionsView.addView(factory.createTabView(selectionsView.getComponent()), new ContentProperties(
-        selectionProperties.getSelectionsString()));
-    selectionActionsView.addView(factory.createTabView(trackDetailsView.getContent(
-        categoryProperties,
-        detailsProperties)), new ContentProperties(selectionProperties.getTrackDetailsString()));
+    selectionActionsView.addView(factory.createTabView(selectionsView.getComponent()),
+            new ContentProperties(selectionProperties.getSelectionsString()));
+    selectionActionsView.addView(
+            factory.createTabView(trackDetailsView.getContent(categoryProperties, detailsProperties)),
+            new ContentProperties(selectionProperties.getTrackDetailsString()));
     if (includePlayerView) {
       playerView = new MusicPlayerView();
       trackDetailsView.setPlayerComponent(playerView.getContent(playerProperties));
-    }
-    else {
+    } else {
       JLabel label = new JLabel(selectionProperties.getNoDecoderString() + ".", SwingConstants.CENTER); //$NON-NLS-1$
       trackDetailsView.setPlayerComponent(new TitledPanel(playerProperties.getPlayerBorderString(), label));
     }
-    panel.add(selectionActionsView.getComponent(), GridDialogLayoutDataFactory.createHorizontalSpanData(
-        2,
-        GridDialogLayoutData.FILL_BOTH));
+    panel.add(selectionActionsView.getComponent(),
+            GridDialogLayoutDataFactory.createHorizontalSpanData(2, GridDialogLayoutData.FILL_BOTH));
     TabbedView tracksView = new TabbedView(TabDirection.Down);
-    trackListView = new ActionAddableListView<IMp3Track>(
-        selectionProperties.getCurrentlySelectedTracksString() + ":", IMp3Track.class); //$NON-NLS-1$    
-    tracksView.addView(factory.createTabView(trackListView.getComponent()), new ContentProperties(
-        selectionProperties.getCurrentSelectionString()));
+    trackListView = new ActionAddableListView<IMp3Track>(null, IMp3Track.class); //$NON-NLS-1$
+    tracksView.addView(factory.createTabView(trackListView.getComponent()),
+            new ContentProperties(selectionProperties.getCurrentSelectionString()));
     panel.add(tracksView.getComponent(), GridDialogLayoutData.FILL_BOTH);
     return panel;
   }
