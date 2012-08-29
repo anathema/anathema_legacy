@@ -20,6 +20,20 @@ public abstract class AbstractCharmDye implements CharmDye {
     ICharmGroup currentGroup = groupInformer.getCurrentGroup();
     for (ICharm charm : currentGroup.getAllCharms()) {
       setCharmVisuals(charm);
+      colorExternalPrerequisites(charm);
     }
+  }
+
+  private void colorExternalPrerequisites(ICharm charm) {
+    for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
+      if (isPartOfCurrentGroup(prerequisite)) {
+        return;
+      }
+      setCharmVisuals(prerequisite);
+    }
+  }
+
+  private boolean isPartOfCurrentGroup(ICharm charm) {
+    return charm.getGroupId().equals(groupInformer.getCurrentGroup().getId());
   }
 }
