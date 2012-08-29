@@ -27,9 +27,6 @@ public class CharacterCharmDye extends AbstractCharmDye {
   @Override
   public void setCharmVisuals(ICharm charm) {
     ICharmConfiguration charmConfiguration = model.getCharmConfiguration();
-    if (!informer.hasGroupSelected()) {
-      return;
-    }
     Color fillColor = charmConfiguration.isLearned(charm) ? characterColor : Color.WHITE;
     int opacity = charmConfiguration.isLearnable(charm) ? 255 : 70;
     view.setCharmVisuals(charm.getId(), fillColor, opacity);
