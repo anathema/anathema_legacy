@@ -41,11 +41,6 @@ public class VirtueContent extends AbstractSubBoxContent {
     return new PrintTrait(resources, virtue);
   }
 
-  private String getPrintName(VirtueType type) {
-    String typeId = type.getId();
-    return getStringFromResource(typeId);
-  }
-
   private IGenericTraitCollection getVirtueCollection() {
     return character.getTraitCollection();
   }

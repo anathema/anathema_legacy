@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.character.GenericTraitProvider;
 
 public class StaticMultiLearnableCharm extends AbstractMultiLearnableCharm {
 
@@ -17,12 +17,11 @@ public class StaticMultiLearnableCharm extends AbstractMultiLearnableCharm {
   }
 
   @Override
-  public int getMaximumLearnCount(IGenericTraitCollection traitCollection) {
+  public int getMaximumLearnCount(GenericTraitProvider traitCollection) {
     return learnCount;
   }
-  
-  public String toString()
-  {
-	  return "[" + getCharmId() + ";" + learnCount + "]";
+
+  public String toString() {
+    return "[" + getCharmId() + ";" + learnCount + "]";
   }
 }

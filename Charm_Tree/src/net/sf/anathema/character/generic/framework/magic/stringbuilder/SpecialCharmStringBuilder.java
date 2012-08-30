@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependent
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.lib.gui.TooltipBuilder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -51,7 +52,9 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
     CharmTier[] tiers = details.getTiers();
     CharmTier first = tiers[0], second = tiers[1], last = tiers[tiers.length - 1];
     for (CharmTier tier : tiers) {
-      if (tier == first) continue;
+      if (tier == first) {
+        continue;
+      }
       if (tier == last && tier != second) {
         builder.append(resources.getString("CharmTreeView.ToolTip.Repurchases.And"));
         builder.append(TooltipBuilder.Space);
@@ -60,15 +63,16 @@ public class SpecialCharmStringBuilder implements IMagicTooltipStringBuilder {
         builder.append(resources.getString("Essence"));
         builder.append(TooltipBuilder.Space);
       }
-      builder.append(tier.getEssence());
+      builder.append(tier.getRequirement(OtherTraitType.Essence));
 
-      if (tier.getTrait() > 0) {
+      int traitRequirement = tier.getRequirement(charm.getPrimaryTraitType());
+      if (traitRequirement > 0) {
         builder.append("/");
         if (tier == second || tiers.length <= 3) {
           builder.append(resources.getString(charm.getPrimaryTraitType().getId()));
           builder.append(TooltipBuilder.Space);
         }
-        builder.append(tier.getTrait());
+        builder.append(traitRequirement);
       }
       if (tier != last) {
         builder.append(TooltipBuilder.CommaSpace);

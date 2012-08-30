@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.SubeffectCharm
 import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TypedCharmTier;
 import net.sf.anathema.character.generic.impl.magic.charm.special.UpgradableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -159,27 +160,20 @@ public class SpecialCharmBuilder {
     for (Object repurchaseObj : repurchaseElement.elements(TAG_REPURCHASE)) {
       Element repurchase = (Element) repurchaseObj;
       int essence = Integer.parseInt(repurchase.attributeValue(ATTRIB_ESSENCE));
-      CharmTier tier;
-      if (trait == null) {
-        tier = new CharmTier(essence);
-      } else {
-        int traitValue = Integer.parseInt(repurchase.attributeValue(ATTRIB_TRAIT));
-        tier = new CharmTier(essence, traitValue);
-      }
-
+      CharmTier tier = createTier(trait, repurchase, essence);
       tiers.add(tier);
     }
 
-    CharmTier[] tierArray = new CharmTier[tiers.size()];
-    tiers.toArray(tierArray);
-    return createTieredCharm(id, trait, tierArray);
+    CharmTier[] tierArray = tiers.toArray(new CharmTier[tiers.size()]);
+    return new TieredMultiLearnableCharm(id, tierArray);
   }
 
-  private ISpecialCharm createTieredCharm(String id, ITraitType trait, CharmTier[] tierArray) {
+  private CharmTier createTier(ITraitType trait, Element repurchase, int essence) {
     if (trait == null) {
-      return new TieredMultiLearnableCharm(id, tierArray);
+      return new UntypedCharmTier(essence);
     } else {
-      return new TieredMultiLearnableCharm(id, trait, tierArray);
+      int traitValue = ElementUtilities.getRequiredIntAttrib(repurchase, ATTRIB_TRAIT);
+      return new TypedCharmTier(essence, trait, traitValue);
     }
   }
 

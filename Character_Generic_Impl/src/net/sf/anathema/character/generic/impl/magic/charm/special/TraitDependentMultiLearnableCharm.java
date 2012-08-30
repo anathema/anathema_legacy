@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.character.GenericTraitProvider;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
@@ -35,7 +35,7 @@ public class TraitDependentMultiLearnableCharm extends AbstractMultiLearnableCha
   }
 
   @Override
-  public int getMaximumLearnCount(IGenericTraitCollection traitCollection) {
+  public int getMaximumLearnCount(GenericTraitProvider traitCollection) {
     IGenericTrait trait = traitCollection.getTrait(traitType);
     int count = trait.getCurrentValue();
     count += countModifier;
