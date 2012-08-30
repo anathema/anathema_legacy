@@ -18,11 +18,12 @@ public class PrerequisiteModifyingCharm implements IPrerequisiteModifyingCharm {
 
   @Override
   public int modifyRequiredValue(ICharm charm, int currentlyRequiredValue) {
-    //Assuming modification of all traits in applicable charms by the same value.
+    //Assuming that the limit imposed for Transcendence of Ability transfers to all other Charms.
     if (currentlyRequiredValue == 10) {
       return currentlyRequiredValue;
     }
     try {
+      //Assuming modification of all traits in applicable charms by the same value.
       if (charm.getPrimaryTraitType() == traitType) {
         return currentlyRequiredValue + modifier;
       }
