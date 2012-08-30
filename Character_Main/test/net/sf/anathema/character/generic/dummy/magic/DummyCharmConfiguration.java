@@ -1,8 +1,6 @@
 package net.sf.anathema.character.generic.dummy.magic;
 
-import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -54,23 +52,8 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
   }
 
   @Override
-  public boolean isLearnable(String charmId) {
-    throw new NotYetImplementedException();
-  }
-
-  @Override
   public ILearningCharmGroup[] getCharmGroups(Identified type) {
     throw new NotYetImplementedException();
-  }
-
-  @Override
-  public boolean isUnlearnable(String charmId) {
-    throw new NotYetImplementedException();
-  }
-
-  @Override
-  public ICharm[] getExperienceLearnedCharms() {
-    return new ICharm[0];
   }
 
   @Override
@@ -92,17 +75,9 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
     throw new NotYetImplementedException();
   }
 
-  public boolean isCelestialMartialArtsGroupCompleted() {
-    return false;
-  }
-
   @Override
   public boolean isCompulsiveCharm(ICharm charm) {
     return false;
-  }
-
-  public boolean isFullfilled(ICharmAttributeRequirement requirement) {
-    return true;
   }
 
   @Override
@@ -147,10 +122,6 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ILearningCharmGroup getGroup(String characterType, String groupName) {
-    throw new NotYetImplementedException();
-  }
-
-  public ICharmProvider getCharmProvider() {
     throw new NotYetImplementedException();
   }
 

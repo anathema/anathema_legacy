@@ -286,15 +286,6 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   @Override
-  public ICharm[] getExperienceLearnedCharms() {
-    List<ICharm> allLearnedCharms = new ArrayList<ICharm>();
-    for (ILearningCharmGroup group : getAllGroups()) {
-      Collections.addAll(allLearnedCharms, group.getExperienceLearnedCharms());
-    }
-    return allLearnedCharms.toArray(new ICharm[allLearnedCharms.size()]);
-  }
-
-  @Override
   public ILearningCharmGroup[] getCharmGroups(Identified type) {
     if (MartialArtsUtilities.MARTIAL_ARTS.equals(type)) {
       return martialArtsGroups;
@@ -499,12 +490,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     return prerequisiteTraitChecker;
   }
 
-  @Override
-  public boolean isLearnable(String charmId) {
-    ICharm charm = getCharmById(charmId);
-    return charm != null && isLearnable(charm);
-  }
-
   protected boolean isLearnableWithoutPrerequisites(ICharm charm) {
     if (!isLearnable(charm)) {
       return false;
@@ -521,12 +506,6 @@ public class CharmConfiguration implements ICharmConfiguration {
   public boolean isLearned(String charmId) {
     ICharm charm = getCharmById(charmId);
     return charm != null && isLearned(charm);
-  }
-
-  @Override
-  public boolean isUnlearnable(String charmId) {
-    ICharm charm = getCharmById(charmId);
-    return charm != null && isUnlearnable(charm);
   }
 
   public final boolean isUnlearnable(ICharm charm) {

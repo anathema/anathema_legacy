@@ -24,8 +24,6 @@ public interface ICharmConfiguration extends CharmFilterContainer, IExtendedChar
 
   ICharm[] getCreationLearnedCharms();
 
-  ICharm[] getExperienceLearnedCharms();
-
   ILearningCharmGroup[] getCharmGroups(Identified type);
 
   ICharm[] getLearnedCharms(boolean experienced);
@@ -33,10 +31,6 @@ public interface ICharmConfiguration extends CharmFilterContainer, IExtendedChar
   ISpecialCharmConfiguration getSpecialCharmConfiguration(String charmId);
 
   String[] getUncompletedCelestialMartialArtsGroups();
-
-  boolean isLearnable(String charmId);
-
-  boolean isUnlearnable(String charmId);
 
   void unlearnAllAlienCharms();
 
