@@ -4,16 +4,15 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.model.charm.SpecialCharmLearnArbitrator;
 
 public class TraitRequirementChecker {
-  private final PrerequisiteTraitChecker prerequisiteTraitChecker;
+  private final PrerequisiteModifyingCharms prerequisiteModifyingCharms;
   private final ICharacterModelContext context;
   private final SpecialCharmLearnArbitrator learnArbitrator;
 
-  public TraitRequirementChecker(PrerequisiteTraitChecker prerequisiteTraitChecker, ICharacterModelContext context, SpecialCharmLearnArbitrator learnArbitrator) {
-    this.prerequisiteTraitChecker = prerequisiteTraitChecker;
+  public TraitRequirementChecker(PrerequisiteModifyingCharms prerequisiteModifyingCharms, ICharacterModelContext context, SpecialCharmLearnArbitrator learnArbitrator) {
+    this.prerequisiteModifyingCharms = prerequisiteModifyingCharms;
     this.context = context;
     this.learnArbitrator = learnArbitrator;
   }
@@ -37,10 +36,9 @@ public class TraitRequirementChecker {
       return false;
     }
     int requiredValue = prerequisite.getCurrentValue();
-    for (IPrerequisiteModifyingCharm specialCharm : prerequisiteTraitChecker.getPrerequisiteModifyingCharms()) {
-      if (learnArbitrator.isLearned(specialCharm.getCharmId())) {
-        ITraitType type = prerequisite.getType();
-        requiredValue = specialCharm.getTraitModifier(charm, type, requiredValue);
+    for (IPrerequisiteModifyingCharm modifier : prerequisiteModifyingCharms.getPrerequisiteModifyingCharms()) {
+      if (learnArbitrator.isLearned(modifier.getCharmId())) {
+        requiredValue = modifier.modifyRequiredValue(charm, requiredValue);
       }
     }
     return prerequisiteTrait.getCurrentValue() >= requiredValue;

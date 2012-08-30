@@ -10,14 +10,14 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 
 import java.util.List;
 
-public class PrerequisiteTraitChecker {
+public class PrerequisiteModifyingCharms {
   private final ICharacterModelContext context;
   private final ICharmIdMap charmIdMap;
   private final ISpecialCharm[] specialCharms;
   private final List<IPrerequisiteModifyingCharm> prerequisiteModifyingCharms = Lists.newArrayList();
 
-  public PrerequisiteTraitChecker(ICharacterModelContext context, ICharmIdMap charmIdMap,
-                                  ISpecialCharm[] specialCharms) {
+  public PrerequisiteModifyingCharms(ICharacterModelContext context, ICharmIdMap charmIdMap,
+                                     ISpecialCharm[] specialCharms) {
     this.context = context;
     this.charmIdMap = charmIdMap;
     this.specialCharms = specialCharms;

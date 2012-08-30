@@ -71,7 +71,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final ICharmProvider provider;
   private final ILearningCharmGroupArbitrator arbitrator;
   private List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
-  private PrerequisiteTraitChecker prerequisiteTraitChecker;
+  private PrerequisiteModifyingCharms prerequisiteModifyingCharms;
 
   public CharmConfiguration(IHealthConfiguration health, ICharacterModelContext context, ITemplateRegistry registry,
                             ICharmProvider provider) {
@@ -472,7 +472,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         return false;
       }
     }
-    if (!(new TraitRequirementChecker(getPrerequisiteTraitChecker(), context, this).areTraitMinimumsSatisfied(charm))) {
+    if (!(new TraitRequirementChecker(getPrerequisiteModifyingCharms(), context, this).areTraitMinimumsSatisfied(charm))) {
       return false;
     }
     for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
@@ -483,11 +483,11 @@ public class CharmConfiguration implements ICharmConfiguration {
     return true;
   }
 
-  private PrerequisiteTraitChecker getPrerequisiteTraitChecker() {
-    if (prerequisiteTraitChecker == null) {
-      this.prerequisiteTraitChecker = new PrerequisiteTraitChecker(context, getCharmIdMap(), getSpecialCharms());
+  private PrerequisiteModifyingCharms getPrerequisiteModifyingCharms() {
+    if (prerequisiteModifyingCharms == null) {
+      this.prerequisiteModifyingCharms = new PrerequisiteModifyingCharms(context, getCharmIdMap(), getSpecialCharms());
     }
-    return prerequisiteTraitChecker;
+    return prerequisiteModifyingCharms;
   }
 
   protected boolean isLearnableWithoutPrerequisites(ICharm charm) {
