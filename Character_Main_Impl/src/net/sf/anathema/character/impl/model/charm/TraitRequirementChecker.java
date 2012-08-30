@@ -19,19 +19,19 @@ public class TraitRequirementChecker {
   }
 
   @SuppressWarnings("RedundantIfStatement")
-  public boolean areTraitMinimumsFulfilled(ICharm charm) {
+  public boolean areTraitMinimumsSatisfied(ICharm charm) {
     for (IGenericTrait prerequisite : charm.getPrerequisites()) {
-      if (!isMinimumFulfilled(charm, prerequisite)) {
+      if (!isMinimumSatisfied(charm, prerequisite)) {
         return false;
       }
     }
-    if (!isMinimumFulfilled(charm, charm.getEssence())) {
+    if (!isMinimumSatisfied(charm, charm.getEssence())) {
       return false;
     }
     return true;
   }
 
-  private boolean isMinimumFulfilled(ICharm charm, IGenericTrait prerequisite) {
+  private boolean isMinimumSatisfied(ICharm charm, IGenericTrait prerequisite) {
     IGenericTrait prerequisiteTrait = context.getTraitCollection().getTrait(prerequisite.getType());
     if (prerequisiteTrait == null) {
       return false;
