@@ -17,7 +17,6 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -26,8 +25,6 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
@@ -145,7 +142,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       @Override
       public void charmLearned(ICharm charm) {
         for (ICharm mergedCharm : charm.getMergedCharms()) {
-          if (!isLearned(mergedCharm) && isLearnableWithoutPrereqs(mergedCharm) &&
+          if (!isLearned(mergedCharm) && isLearnableWithoutPrerequisites(mergedCharm) &&
                   CharmConfiguration.this.getSpecialCharmConfiguration(mergedCharm) == null) {
             getGroup(mergedCharm).learnCharm(mergedCharm, context.getBasicCharacterContext().isExperienced());
           }
@@ -484,7 +481,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         return false;
       }
     }
-    if (!areTraitMinimumsFulfilled(charm)) {
+    if (!(new TraitRequirementChecker(getPrerequisiteTraitChecker(), context, this).areTraitMinimumsFulfilled(charm))) {
       return false;
     }
     for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
@@ -493,34 +490,6 @@ public class CharmConfiguration implements ICharmConfiguration {
       }
     }
     return true;
-  }
-
-  @SuppressWarnings("RedundantIfStatement")
-  private boolean areTraitMinimumsFulfilled(ICharm charm) {
-    for (IGenericTrait prerequisite : charm.getPrerequisites()) {
-      if (!isMinimumFulfilled(charm, prerequisite)) {
-        return false;
-      }
-    }
-    if (!isMinimumFulfilled(charm, charm.getEssence())) {
-      return false;
-    }
-    return true;
-  }
-
-  private boolean isMinimumFulfilled(ICharm charm, IGenericTrait prerequisite) {
-    IGenericTrait prerequisiteTrait = context.getTraitCollection().getTrait(prerequisite.getType());
-    if (prerequisiteTrait == null) {
-      return false;
-    }
-    int requiredValue = prerequisite.getCurrentValue();
-    for (IPrerequisiteModifyingCharm specialCharm : getPrerequisiteTraitChecker().getPrerequisiteModifyingCharms()) {
-      if (isLearned(specialCharm.getCharmId())) {
-        ITraitType type = prerequisite.getType();
-        requiredValue = specialCharm.getTraitModifier(charm, type, requiredValue);
-      }
-    }
-    return prerequisiteTrait.getCurrentValue() >= requiredValue;
   }
 
   private PrerequisiteTraitChecker getPrerequisiteTraitChecker() {
@@ -536,7 +505,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     return charm != null && isLearnable(charm);
   }
 
-  protected boolean isLearnableWithoutPrereqs(ICharm charm) {
+  protected boolean isLearnableWithoutPrerequisites(ICharm charm) {
     if (!isLearnable(charm)) {
       return false;
     }
