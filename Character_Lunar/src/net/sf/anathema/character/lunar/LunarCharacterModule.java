@@ -7,12 +7,14 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformModelFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformPersisterFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
@@ -36,7 +38,7 @@ import java.util.Map;
 import static net.sf.anathema.character.generic.type.CharacterType.LUNAR;
 
 @CharacterModule
-public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
+public class LunarCharacterModule extends CharacterTypeModule {
 
   public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_REPUTATION = "Reputation"; //$NON-NLS-1$
@@ -107,16 +109,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/Lunar2ndCasteless.template");
-    registerParsedTemplate(characterGenerics, "template/Lunar2ndSilverPact.template");
-    registerParsedTemplate(characterGenerics, "template/Lunar2ndDreams.template");
-    registerParsedTemplate(characterGenerics, "template/Lunar2ndDreamsEstablished.template");
-    registerParsedTemplate(characterGenerics, "template/Lunar2ndDreamsInfluential.template");
-    registerParsedTemplate(characterGenerics, "template/Lunar2ndDreamsLegendary.template");
-  }
-
-  @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
     IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry = characterGenerics.getAdditionalModelFactoryRegistry();
     IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry = characterGenerics.getAdditionalViewFactoryRegistry();
@@ -152,5 +144,10 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     additionalModelFactoryRegistry.register(templateId, new BeastformModelFactory());
     additionalViewFactoryRegistry.register(templateId, new BeastformViewFactory());
     persisterFactory.register(templateId, new BeastformPersisterFactory());
+  }
+
+  @Override
+  protected ICharacterType getType() {
+	  return CharacterType.LUNAR;
   }
 }

@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.framework.xml.ITemplateParser;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
+import net.sf.anathema.lib.resources.ResourceFile;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Document;
 
@@ -45,6 +46,29 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
     T parsedTemplate = templateParser.parseTemplate(document.getRootElement());
     templateRegistry.register(id, parsedTemplate);
     idsInProgress.remove(id);
+    return parsedTemplate;
+  }
+  
+  @Override
+  public T get(ResourceFile resource) throws PersistenceException {
+    T template = templateRegistry.get(resource.getFileName());
+    if (template != null) {
+      return template;
+    }
+    Preconditions.checkNotNull(templateParser);
+    if (idsInProgress.contains(resource.getFileName())) {
+      throw new PersistenceException("Illegal recursion in template file:" + resource.getFileName()); //$NON-NLS-1$
+    }
+    idsInProgress.add(resource.getFileName());
+    Document document;
+	try {
+		document = DocumentUtilities.read(resource.getURL());
+	} catch (Exception e) {
+		throw new PersistenceException("Unable to find file " + resource.getURL());
+	}
+    T parsedTemplate = templateParser.parseTemplate(document.getRootElement());
+    templateRegistry.register(resource.getFileName(), parsedTemplate);
+    idsInProgress.remove(resource.getFileName());
     return parsedTemplate;
   }
 }

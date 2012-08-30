@@ -12,18 +12,19 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 
 import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 
 @CharacterModule
-public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
+public class AbyssalCharacterModule extends CharacterTypeModule {
 
   private static final TemplateType abyssalTemplateType = new TemplateType(ABYSSAL);
 
@@ -38,12 +39,6 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(AbyssalResonanceTemplate.ID,
             new AbyssalResonanceParser());
     characterGenerics.getCasteCollectionRegistry().register(ABYSSAL, new CasteCollection(AbyssalCaste.values()));
-  }
-
-  @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/LoyalAbyssal2nd.template", "moep_Abyssals_"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/RenegadeAbyssal2nd.template", "moep_Abyssals_"); //$NON-NLS-1$
   }
 
   @Override
@@ -67,5 +62,10 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     additionalViewFactoryRegistry.register(templateId, new AbyssalResonanceViewFactory());
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     persisterFactory.register(templateId, new AbyssalResonancePersisterFactory());
+  }
+
+  @Override
+  protected CharacterType getType() {
+	  return CharacterType.ABYSSAL;
   }
 }

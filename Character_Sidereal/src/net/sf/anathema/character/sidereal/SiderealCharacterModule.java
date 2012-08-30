@@ -1,18 +1,21 @@
 package net.sf.anathema.character.sidereal;
 
+import static net.sf.anathema.character.generic.type.CharacterType.SIDEREAL;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeModelFactory;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeParser;
@@ -33,10 +36,8 @@ import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identificate;
 
-import static net.sf.anathema.character.generic.type.CharacterType.SIDEREAL;
-
 @CharacterModule
-public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
+public class SiderealCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_ACQUAINTANCES = "Acquaintances"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_CONNECTIONS = "Connections"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_CELESTIAL_MANSE = "CelestialManse"; //$NON-NLS-1$
@@ -64,13 +65,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealCollegeTemplate.ID, new SiderealCollegeParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealFlawedFateTemplate.ID, new SiderealFlawedFateParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealParadoxTemplate.ID, new SiderealParadoxParser());
-  }
-
-  @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/Sidereal2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/SiderealDreams2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/Ronin2nd.template"); //$NON-NLS-1$
   }
 
   @Override
@@ -127,5 +121,10 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
     additionalModelFactoryRegistry.register(templateId, new SiderealParadoxModelFactory());
     additionalViewFactoryRegistry.register(templateId, new SiderealParadoxViewFactory());
     persisterFactory.register(templateId, new SiderealParadoxPersisterFactory());
+  }
+
+  @Override
+  protected ICharacterType getType() {
+	  return CharacterType.SIDEREAL;
   }
 }

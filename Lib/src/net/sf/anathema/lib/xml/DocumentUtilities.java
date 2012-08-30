@@ -21,6 +21,8 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 public class DocumentUtilities {
@@ -69,6 +71,10 @@ public class DocumentUtilities {
 
   public static Document read(String source) throws AnathemaException {
     return read(new StringReader(source));
+  }
+  
+  public static Document read(URL source) throws URISyntaxException, FileNotFoundException, AnathemaException {
+	return read(new File(source.toURI()));
   }
 
   public static Document read(Reader reader) throws AnathemaException {

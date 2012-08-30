@@ -1,0 +1,15 @@
+<additionalRules>
+     	<additionalCost>
+    		<costModifier>
+    			<backgroundReference id="Inheritance"/>
+    			<dotCostModification thresholdLevel="0" fixedCost="-1"/>
+    			<dotCostModification thresholdLevel="1" fixedCost="-1"/>
+    			<dotCostModification thresholdLevel="2" fixedCost="-1"/>
+    			<bonusModification thresholdLevel="0" fixedCost="0"/>
+    			<bonusModification thresholdLevel="1" fixedCost="0"/>
+    			<bonusModification thresholdLevel="2" fixedCost="0"/>
+    			<bonusModification thresholdLevel="3" fixedCost="-1"/>
+    			<bonusModification thresholdLevel="4" fixedCost="-1"/>
+    		</costModifier>
+    	</additionalCost>
+    </additionalRules>

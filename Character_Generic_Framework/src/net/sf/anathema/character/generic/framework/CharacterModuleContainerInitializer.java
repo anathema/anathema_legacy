@@ -14,7 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 import java.util.Collection;
 
 public class CharacterModuleContainerInitializer {
-
+  
   private final ResourceLoader resourceLoader;
   private final Instantiater instantiater;
 
@@ -26,8 +26,9 @@ public class CharacterModuleContainerInitializer {
   public CharacterModuleContainer initContainer(IResources resources,
                                                 IDataFileProvider dataFileProvider) throws InitializationException {
     IExtensibleDataSetProvider dataSetManager = loadExtensibleResources();
-    CharacterModuleContainer container = new CharacterModuleContainer(resources, dataSetManager, dataFileProvider,
-            instantiater);
+    ICharacterTemplateResourceProvider templateProvider = new CharacterTemplateResourceProvider(resourceLoader);
+    CharacterModuleContainer container = new CharacterModuleContainer(resources, dataSetManager, templateProvider,
+    		dataFileProvider, instantiater);
     Collection<ICharacterModule<ICharacterModuleObject>> modules = instantiater.instantiateAll(CharacterModule.class);
     for (ICharacterModule<ICharacterModuleObject> module : modules) {
       container.addCharacterGenericsModule(module);

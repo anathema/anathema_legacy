@@ -1,15 +1,18 @@
 package net.sf.anathema.character.solar;
 
+import static net.sf.anathema.character.generic.type.CharacterType.SOLAR;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
@@ -19,10 +22,8 @@ import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identificate;
 
-import static net.sf.anathema.character.generic.type.CharacterType.SOLAR;
-
 @CharacterModule
-public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
+public class SolarCharacterModule extends CharacterTypeModule {
 
   @SuppressWarnings("unused")
   private static final TemplateType solarTemplateType = new TemplateType(SOLAR);
@@ -52,15 +53,6 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/Solar2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/Solar2ndDreams.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsEstablished.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsInfluential.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/Solar2ndDreamsLegendary.template"); //$NON-NLS-1$
-  }
-
-  @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, dreams));
@@ -85,5 +77,10 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
     additionalViewFactoryRegistry.register(templateId, new SolarVirtueFlawViewFactory());
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     persisterFactory.register(templateId, new SolarVirtueFlawPersisterFactory());
+  }
+
+  @Override
+  protected ICharacterType getType() {
+	  return CharacterType.SOLAR;
   }
 }

@@ -1,16 +1,14 @@
 package net.sf.anathema.character.mortal;
 
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
+import net.sf.anathema.character.generic.type.CharacterType;
 
 @CharacterModule
-public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
+public class MortalCharacterModule extends CharacterTypeModule {
 
   @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "HeroicMortal2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "Mortal2nd.template"); //$NON-NLS-1$
-    //registerParsedTemplate(characterGenerics, "EnlightenedMortal2nd.template"); //$NON-NLS-1$
+  protected CharacterType getType() {
+	  return CharacterType.MORTAL;
   }
 }

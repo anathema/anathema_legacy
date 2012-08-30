@@ -6,10 +6,13 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
+import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.ghost.age.GhostAgeModelFactory;
 import net.sf.anathema.character.ghost.age.GhostAgeParser;
 import net.sf.anathema.character.ghost.age.GhostAgeTemplate;
@@ -30,7 +33,7 @@ import net.sf.anathema.lib.util.Identificate;
 import static net.sf.anathema.character.generic.type.CharacterType.GHOST;
 
 @CharacterModule
-public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
+public class GhostCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_AGE = "Age"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_ANCESTOR_CULT = "AncestorCult"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_GRAVE_GOODS = "GraveGoods"; //$NON-NLS-1$
@@ -48,12 +51,6 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(GhostPassionsTemplate.ID, new GhostPassionsParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(GhostFettersTemplate.ID, new GhostFettersParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(GhostAgeTemplate.ID, new GhostAgeParser());
-  }
-
-  @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/Ghost2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/CommonGhost2nd.template"); //$NON-NLS-1$
   }
 
   @Override
@@ -96,5 +93,10 @@ public class GhostCharacterModule extends NullObjectCharacterModuleAdapter {
   private void registerGhostAge(IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry) {
     String templateId = GhostAgeTemplate.ID;
     additionalModelFactoryRegistry.register(templateId, new GhostAgeModelFactory());
+  }
+
+  @Override
+  protected ICharacterType getType() {
+	  return CharacterType.GHOST;
   }
 }

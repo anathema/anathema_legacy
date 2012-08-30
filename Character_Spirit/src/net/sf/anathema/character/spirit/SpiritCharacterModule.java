@@ -1,14 +1,15 @@
 package net.sf.anathema.character.spirit;
 
-import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 
 @CharacterModule
-public class SpiritCharacterModule extends NullObjectCharacterModuleAdapter {
+public class SpiritCharacterModule extends CharacterTypeModule {
 
   @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/Spirit2nd.template"); //$NON-NLS-1$
+  protected ICharacterType getType() {
+	  return CharacterType.SPIRIT;
   }
 }

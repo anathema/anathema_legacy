@@ -6,9 +6,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.infernal.caste.InfernalCaste;
 import net.sf.anathema.character.infernal.patron.InfernalPatronModelFactory;
 import net.sf.anathema.character.infernal.patron.InfernalPatronParser;
@@ -26,7 +28,7 @@ import net.sf.anathema.lib.registry.IRegistry;
 import static net.sf.anathema.character.generic.type.CharacterType.INFERNAL;
 
 @CharacterModule
-public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter
+public class InfernalCharacterModule extends CharacterTypeModule
 {
   public static final String BACKGROUND_ID_UNWOVEN_COADJUTOR = "UnwovenCoadjutor"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_DEMONIC_FAMILIAR = "DemonicFamiliar"; //$NON-NLS-1$
@@ -39,11 +41,6 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter
     characterGenerics.getCasteCollectionRegistry().register(INFERNAL, new CasteCollection(InfernalCaste.values()));
     characterGenerics.getAdditionalTemplateParserRegistry().register(InfernalPatronTemplate.ID, new InfernalPatronParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(InfernalUrgeTemplate.ID, new InfernalUrgeParser());
-  }
-
-  @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/Infernal2nd.template"); //$NON-NLS-1$
   }
 
   @Override
@@ -80,5 +77,10 @@ public class InfernalCharacterModule extends NullObjectCharacterModuleAdapter
 	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, INFERNAL));
 	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_PAST_LIFE, INFERNAL));
 	  backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SPIES, INFERNAL));
+  }
+
+  @Override
+  protected ICharacterType getType() {
+	  return CharacterType.INFERNAL;
   }
 }

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.db;
 
+import static net.sf.anathema.character.generic.type.CharacterType.DB;
 import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
@@ -11,23 +12,23 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.virtueflaw.persistence.DefaultVirtueFlawPersisterFactory;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identificate;
 
-import static net.sf.anathema.character.generic.type.CharacterType.DB;
-
 @CharacterModule
-public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
+public class DbCharacterModule extends CharacterTypeModule {
 
   public static final String BACKGROUND_ID_ARSENAL = "Arsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_BREEDING = "Breeding"; //$NON-NLS-1$
@@ -60,18 +61,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalTemplateParserRegistry().register(DbVirtueFlawTemplate.TEMPLATE_ID,
             new DbVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(DB, new CasteCollection(DBAspect.values()));
-  }
-
-  @Override
-  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    registerParsedTemplate(characterGenerics, "template/DynasticDb2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/ImmaculateMonkDb2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/CherakDb2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/ThresholdOutcasteDb2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/LookshyNativeDb2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/LookshyOutcasteDb2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/LookshyRealmDb2nd.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/DreamsDb2nd.template"); //$NON-NLS-1$
   }
 
   @Override
@@ -112,5 +101,10 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     additionalViewFactoryRegistry.register(templateId, new DbVirtueFlawViewFactory());
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     persisterFactory.register(templateId, new DefaultVirtueFlawPersisterFactory());
+  }
+
+  @Override
+  protected ICharacterType getType() {
+	  return CharacterType.DB;
   }
 }

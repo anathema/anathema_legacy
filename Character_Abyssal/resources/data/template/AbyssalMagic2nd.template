@@ -1,0 +1,10 @@
+<magicTemplate>
+	<freePicksPredicate defaultResponse="true"/>
+	<charmTemplate charmType="Abyssal">
+		<martialArts level="Celestial" highLevel="false"/>
+		<alienCharms>
+			<caste type="Moonshadow"/>
+		</alienCharms>
+	</charmTemplate>
+	<spellTemplate maximumSorceryCircle="Celestial" maximumNecromancyCircle="Void"/>
+</magicTemplate>		
