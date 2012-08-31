@@ -59,7 +59,7 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
 	  }
   }
   
-  protected final void registerParsedTemplate(ICharacterGenerics generics, ResourceFile resource) {
+  protected final GenericCharacterTemplate registerParsedTemplate(ICharacterGenerics generics, ResourceFile resource) {
 	  ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
 	  IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = generics.getAdditionalTemplateParserRegistry();
 	  new CharacterTemplateParser(characterTemplateRegistries,
@@ -71,8 +71,10 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
 	  try {
 	      GenericCharacterTemplate template = characterTemplateRegistries.getCharacterTemplateRegistry().get(resource);
 	      generics.getTemplateRegistry().register(template);
+	      return template;
 	  } catch (PersistenceException e) {
 	      Logger.getLogger(CharacterModuleAdapter.class).error(resource.getFileName(), e);
+	      return null;
 	  }
   }
 }

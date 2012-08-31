@@ -1,5 +1,6 @@
 package net.sf.anathema.character.abyssal;
 
+import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceModelFactory;
 import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceParser;
@@ -16,17 +17,12 @@ import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 
-import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
-
 @CharacterModule
 public class AbyssalCharacterModule extends CharacterTypeModule {
-
-  private static final TemplateType abyssalTemplateType = new TemplateType(ABYSSAL);
 
   public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_LIEGE = "Liege"; //$NON-NLS-1$
@@ -44,12 +40,10 @@ public class AbyssalCharacterModule extends CharacterTypeModule {
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ABYSSAL_COMMAND, abyssalTemplateType));
-
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_LIEGE, abyssalTemplateType));
-
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SPIES, abyssalTemplateType));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_UNDERWORLD_MANSE, abyssalTemplateType));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ABYSSAL_COMMAND, getDefaultAndCustomTemplates(generics)));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_LIEGE, getDefaultAndCustomTemplates(generics)));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SPIES, getDefaultAndCustomTemplates(generics)));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_UNDERWORLD_MANSE, getDefaultAndCustomTemplates(generics)));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_WHISPERS, ABYSSAL));
   }
 

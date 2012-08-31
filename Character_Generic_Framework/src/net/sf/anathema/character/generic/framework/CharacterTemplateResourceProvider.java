@@ -18,6 +18,7 @@ public class CharacterTemplateResourceProvider implements ICharacterTemplateReso
 	private final static String TEMPLATE_XML_STRING = ".*.template";
 	private final static String TAG_TEMPLATE = "exaltedCharacterTemplate";
 	private final static String ATTRIB_TYPE = "characterType";
+	private final static String CUSTOM_PATH = "repository/custom";
 	private final SAXReader reader = new SAXReader();
 	  
 	private final Map<String, List<ResourceFile>> templateResources = new HashMap<String, List<ResourceFile>>();
@@ -43,5 +44,11 @@ public class CharacterTemplateResourceProvider implements ICharacterTemplateReso
 	
 	public ResourceFile[] getTemplateResourcesForType(String type) {
 		return templateResources.get(type).toArray(new ResourceFile[0]);
+	}
+
+	@Override
+	public boolean isCustomTemplate(ResourceFile resource) {
+		//TODO: Search for a safer means to evaluate custom content
+		return resource.getURL().toString().contains(CUSTOM_PATH);
 	}
 }

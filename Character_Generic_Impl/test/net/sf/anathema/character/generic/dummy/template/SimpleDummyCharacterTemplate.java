@@ -127,4 +127,9 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   public String[] getBaseHealthProviders() {
     return new String[0];
   }
+
+  @Override
+  public boolean isCustomTemplate() {
+	  return false;
+  }
 }

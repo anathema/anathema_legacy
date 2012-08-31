@@ -30,8 +30,8 @@ public class CharacterModuleContainer {
           ICharacterModule<? extends ICharacterModuleObject> module) throws InitializationException {
     module.initModuleObject(characterGenerics);
     module.registerCommonData(characterGenerics);
-    module.addBackgroundTemplates(characterGenerics);
     module.addCharacterTemplates(templateProvider, characterGenerics);
+    module.addBackgroundTemplates(characterGenerics);
     module.addAdditionalTemplateData(characterGenerics);
     module.addReportTemplates(characterGenerics, resources);
     characterGenerics.getModuleObjectMap().addModule(module);

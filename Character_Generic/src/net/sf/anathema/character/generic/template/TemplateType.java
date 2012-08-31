@@ -39,6 +39,11 @@ public final class TemplateType implements ITemplateType {
     return getCharacterType().getId().equals(otherType.getCharacterType().getId())
         && getSubType().getId().equals(otherType.getSubType().getId());
   }
+  
+  @Override
+  public String toString() {
+	  return characterType.getId() + ", " + subType.getId();
+  }
 
   @Override
   public int hashCode() {

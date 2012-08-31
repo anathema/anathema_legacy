@@ -52,6 +52,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private volatile List<IAdditionalTemplate> additionalTemplates = new ArrayList<IAdditionalTemplate>();
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private boolean npcOnly;
+  private boolean isCustomTemplate;
 
   @Override
   public boolean isNpcOnly() {
@@ -236,5 +237,14 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
 
   public void setNpcOnly() {
     this.npcOnly = true;
+  }
+
+  @Override
+  public boolean isCustomTemplate() {
+	  return isCustomTemplate;
+  }
+  
+  public void setCustomTemplate(boolean custom) {
+	  isCustomTemplate = custom;
   }
 }
