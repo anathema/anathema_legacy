@@ -32,8 +32,6 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <genericCharmAttribute attribute="Excellency" />
-          <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Mirror" visualize="true" />
 		  <!-- NOTE:  Solar Mirror - Divine Trancendence of (Ability) -->
 		  <charmAttribute attribute="Native" visualize="true" />
@@ -49,8 +47,6 @@
           <cost />
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <genericCharmAttribute attribute="Excellency" />
-          <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Mirror" visualize="true" />
 		<!-- NOTE:  Solar Mirror - Supreme Perfection of (Ability) -->
 			<source source="ScrollErrata" />
