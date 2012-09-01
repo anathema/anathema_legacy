@@ -485,7 +485,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   private PrerequisiteModifyingCharms getPrerequisiteModifyingCharms() {
     if (prerequisiteModifyingCharms == null) {
-      this.prerequisiteModifyingCharms = new PrerequisiteModifyingCharms(context, getCharmIdMap(), getSpecialCharms());
+      this.prerequisiteModifyingCharms = new PrerequisiteModifyingCharms(getSpecialCharms());
     }
     return prerequisiteModifyingCharms;
   }
