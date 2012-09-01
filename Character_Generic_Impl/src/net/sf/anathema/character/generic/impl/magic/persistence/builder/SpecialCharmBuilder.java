@@ -10,13 +10,13 @@ import net.sf.anathema.character.generic.impl.magic.charm.special.StaticPainTole
 import net.sf.anathema.character.generic.impl.magic.charm.special.SubeffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCharmTier;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
-import net.sf.anathema.character.generic.impl.magic.charm.special.TypedCharmTier;
 import net.sf.anathema.character.generic.impl.magic.charm.special.UpgradableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static net.sf.anathema.character.generic.traits.types.OtherTraitType.Essence;
 
 public class SpecialCharmBuilder {
   public static final String ATTRIB_NAME = "name";
@@ -159,7 +161,7 @@ public class SpecialCharmBuilder {
 
     for (Object repurchaseObj : repurchaseElement.elements(TAG_REPURCHASE)) {
       Element repurchase = (Element) repurchaseObj;
-      int essence = Integer.parseInt(repurchase.attributeValue(ATTRIB_ESSENCE));
+      int essence = ElementUtilities.getRequiredIntAttrib(repurchase, ATTRIB_ESSENCE);
       CharmTier tier = createTier(trait, repurchase, essence);
       tiers.add(tier);
     }
@@ -169,12 +171,13 @@ public class SpecialCharmBuilder {
   }
 
   private CharmTier createTier(ITraitType trait, Element repurchase, int essence) {
-    if (trait == null) {
-      return new UntypedCharmTier(essence);
-    } else {
+    TraitCharmTier traitCharmTier = new TraitCharmTier();
+    traitCharmTier.addRequirement(new ValuedTraitType(Essence, essence));
+    if (trait != null) {
       int traitValue = ElementUtilities.getRequiredIntAttrib(repurchase, ATTRIB_TRAIT);
-      return new TypedCharmTier(essence, trait, traitValue);
+      traitCharmTier.addRequirement(new ValuedTraitType(trait, traitValue));
     }
+    return traitCharmTier;
   }
 
   private ISpecialCharm readEssenceFixedRepurchasesCharm(Element charmElement, String id) {
@@ -182,7 +185,7 @@ public class SpecialCharmBuilder {
     if (repurchasesElement == null) {
       return null;
     }
-    return new EssenceFixedMultiLearnableCharm(id, EssenceTemplate.SYSTEM_ESSENCE_MAX, OtherTraitType.Essence);
+    return new EssenceFixedMultiLearnableCharm(id, EssenceTemplate.SYSTEM_ESSENCE_MAX, Essence);
   }
 
   private ISpecialCharm readMultiEffectCharm(Element charmElement, String id) {
