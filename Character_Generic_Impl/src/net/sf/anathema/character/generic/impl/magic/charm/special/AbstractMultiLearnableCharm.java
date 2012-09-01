@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.character.GenericTraitProvider;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 

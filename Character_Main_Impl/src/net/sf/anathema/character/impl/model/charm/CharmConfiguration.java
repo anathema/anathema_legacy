@@ -472,7 +472,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         return false;
       }
     }
-    if (!(new TraitRequirementChecker(getPrerequisiteModifyingCharms(), context, this).areTraitMinimumsSatisfied(charm))) {
+    if (!(new CharmTraitRequirementChecker(getPrerequisiteModifyingCharms(), context, this).areTraitMinimumsSatisfied(charm))) {
       return false;
     }
     for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
