@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import net.sf.anathema.character.generic.character.GenericTraitProvider;
+import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class EssenceFixedMultiLearnableCharm extends TraitDependentMultiLearnableCharm {
@@ -10,7 +10,7 @@ public class EssenceFixedMultiLearnableCharm extends TraitDependentMultiLearnabl
   }
 
   @Override
-  public int getMinimumLearnCount(GenericTraitProvider traitCollection) {
-    return getMaximumLearnCount(traitCollection);
+  public int getMinimumLearnCount(LearnRangeContext learnRangeContext) {
+    return getMaximumLearnCount(learnRangeContext);
   }
 }

@@ -32,7 +32,8 @@ public class CharmTraitRequirementChecker implements TraitRequirementChecker {
     return true;
   }
 
-  private boolean isMinimumSatisfied(ICharm charm, IGenericTrait prerequisite) {
+  @Override
+  public boolean isMinimumSatisfied(ICharm charm, IGenericTrait prerequisite) {
     IGenericTrait actualTrait = context.getTraitCollection().getTrait(prerequisite.getType());
     if (actualTrait == null) {
       return false;

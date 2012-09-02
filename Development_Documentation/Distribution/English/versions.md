@@ -10,6 +10,8 @@ Website: [anathema.github.com](http://anathema.github.com)
 * Charms in the Combo view are sorted alphabetically.
 * The update screen shows changes since your current version.
 * Anathema has an even more helpful message when a Martial Arts charm does not conform with its expectations.
+* (Solar) "Divine Transcendence" and similar Charms apply to re-purchases.
+* (Solar) "Divine Transcendence" and similar Charms apply to Charms learned through the Eclipse (etc.) caste power.
 * The Charm view colors charm prerequisites that are not part of the currently displayed group when they are learned.
      (e.g in the Lunar Shifting Knack cascade, Deadly Beastman Transformation is colored when learned.)
 

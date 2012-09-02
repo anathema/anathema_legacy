@@ -33,6 +33,7 @@
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
           <charmAttribute attribute="Mirror" visualize="true" />
+          <charmAttribute attribute="Terrestrial"/>
 		  <!-- NOTE:  Solar Mirror - Divine Trancendence of (Ability) -->
 		  <charmAttribute attribute="Native" visualize="true" />
 		  <transcendence modifier="-1"/>

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import net.sf.anathema.character.generic.character.GenericTraitProvider;
+import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
 
 public class TieredMultiLearnableCharm extends AbstractMultiLearnableCharm {
 
@@ -21,10 +21,10 @@ public class TieredMultiLearnableCharm extends AbstractMultiLearnableCharm {
   }
 
   @Override
-  public int getMaximumLearnCount(GenericTraitProvider traitProvider) {
+  public int getMaximumLearnCount(LearnRangeContext context) {
     int learnLimit = 0;
     for (CharmTier tier : tiers) {
-      if (tier.isLearnable(traitProvider)) {
+      if (tier.isLearnable(context)) {
         learnLimit++;
       }
     }

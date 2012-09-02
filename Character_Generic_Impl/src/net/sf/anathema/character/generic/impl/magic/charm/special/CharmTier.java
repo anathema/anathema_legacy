@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import net.sf.anathema.character.generic.character.GenericTraitProvider;
+import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface CharmTier {
-  boolean isLearnable(GenericTraitProvider traitProvider);
+  boolean isLearnable(LearnRangeContext traitProvider);
 
   int getRequirement(ITraitType type);
 }

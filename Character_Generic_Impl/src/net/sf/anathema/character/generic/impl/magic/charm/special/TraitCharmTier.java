@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.generic.character.GenericTraitProvider;
+import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
@@ -17,9 +17,9 @@ public class TraitCharmTier implements CharmTier {
 
   @SuppressWarnings("RedundantIfStatement")
   @Override
-  public boolean isLearnable(GenericTraitProvider traitProvider) {
+  public boolean isLearnable(LearnRangeContext context) {
     for (IGenericTrait requirement : requirements) {
-      if (!isSatisfied(traitProvider, requirement)) {
+      if (!context.isMinimumSatisfied(requirement)) {
         return false;
       }
     }
@@ -34,18 +34,5 @@ public class TraitCharmTier implements CharmTier {
       }
     }
     return 0;
-  }
-
-  private boolean isSatisfied(GenericTraitProvider traitProvider, IGenericTrait requirement) {
-    if (requirement.getCurrentValue() > 0) {
-      if (currentValueOf(traitProvider, requirement.getType()) < requirement.getCurrentValue()) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  private int currentValueOf(GenericTraitProvider traitProvider, ITraitType type) {
-    return traitProvider.getTrait(type).getCurrentValue();
   }
 }

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import net.sf.anathema.character.generic.character.GenericTraitProvider;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.generic.magic.charms.special.LearnRangeContext;
 
 public abstract class AbstractMultiLearnableCharm implements IMultiLearnableCharm {
 
@@ -23,7 +23,7 @@ public abstract class AbstractMultiLearnableCharm implements IMultiLearnableChar
   }
 
   @Override
-  public int getMinimumLearnCount(GenericTraitProvider traitCollection) {
+  public int getMinimumLearnCount(LearnRangeContext learnRangeContext) {
     return 1;
   }
 }
