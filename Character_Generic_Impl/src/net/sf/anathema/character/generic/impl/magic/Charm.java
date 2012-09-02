@@ -414,9 +414,4 @@ public class Charm extends Identificate implements ICharm {
   public ITraitType getPrimaryTraitType() {
     return getPrerequisites().length == 0 ? OtherTraitType.Essence : getPrerequisites()[0].getType();
   }
-
-  @Override
-  public boolean hasChildren() {
-    return !children.isEmpty();
-  }
 }

@@ -1,16 +1,16 @@
 package net.sf.anathema.character.generic.impl.magic.charm.prerequisite;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class SelectiveCharmGroup {
 
@@ -71,11 +71,9 @@ public class SelectiveCharmGroup {
     }
     return learnedCharms >= template.getThreshold();
   }
-  
-  public String getLabel()
-  {
-	  return template.getLabel() != null ? "Requirement." + template.getLabel() + "." + template.getThreshold() :
-		  null; 
+
+  public String getLabel() {
+    return template.getLabel() != null ? "Requirement." + template.getLabel() + "." + template.getThreshold() : null;
   }
 
   public ICharm[] getAllGroupCharms() {

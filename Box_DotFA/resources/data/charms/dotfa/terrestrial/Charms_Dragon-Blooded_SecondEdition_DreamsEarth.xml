@@ -88,13 +88,6 @@
                <background id="Breeding" value="4" />
                <essence value="6" />
                <!-- TODO:  Requires all 5 forms before acquiring this charm. -->
-				<!--selectiveCharmGroup threshold="5">
-					<charmReference id="Dragon-Blooded.ElementProtectionForm.Fire" />
-					<charmReference id="Dragon-Blooded.ElementProtectionForm.Earth" />
-					<charmReference id="Dragon-Blooded.ElementProtectionForm.Air" />
-					<charmReference id="Dragon-Blooded.ElementProtectionForm.Water" />
-					<charmReference id="Dragon-Blooded.ElementProtectionForm.Wood" />
-				</selectiveCharmGroup-->
                <charmReference id="Dragon-Blooded.ElementProtectionForm" />
           </prerequisite>
           <cost>

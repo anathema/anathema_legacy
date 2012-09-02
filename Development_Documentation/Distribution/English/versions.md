@@ -12,6 +12,8 @@ Website: [anathema.github.com](http://anathema.github.com)
 * Anathema has an even more helpful message when a Martial Arts charm does not conform with its expectations.
 * (Solar) "Divine Transcendence" and similar Charms apply to re-purchases.
 * (Solar) "Divine Transcendence" and similar Charms apply to Charms learned through the Eclipse (etc.) caste power.
+* The Charm view colors satisfied charm prerequisites that derive from a general group, such as "Any Excellency".
+     It does not yet color grouped prerequisites that are based on individual Charms (e.g. "1 Charm out of X, Y or Z").
 * The Charm view colors charm prerequisites that are not part of the currently displayed group when they are learned.
      (e.g in the Lunar Shifting Knack cascade, Deadly Beastman Transformation is colored when learned.)
 

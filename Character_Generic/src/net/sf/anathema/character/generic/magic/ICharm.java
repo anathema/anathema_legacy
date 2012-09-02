@@ -27,6 +27,4 @@ public interface ICharm extends ICharmData, IMagic {
   boolean hasAttribute(Identified attribute);
   
   String getAttributeValue(Identified attribute);
-
-  boolean hasChildren();
 }

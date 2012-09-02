@@ -45,7 +45,6 @@ public class DummyCharm extends Identificate implements ICharm {
   private List<ICharmAttributeRequirement> requirements = new ArrayList<ICharmAttributeRequirement>();
   private ICharacterType characterType;
   private String groupId;
-  private IExaltedSourceBook source;
   private CostList temporaryCost;
   private CharmTypeModel model = new CharmTypeModel();
   private List<ICharmAttribute> attributes = new ArrayList<ICharmAttribute>();
@@ -240,16 +239,12 @@ public class DummyCharm extends Identificate implements ICharm {
 
   @Override
   public IExaltedSourceBook[] getSources() {
-    return new IExaltedSourceBook[] { source };
+    return new IExaltedSourceBook[] { null };
   }
   
   @Override
   public IExaltedSourceBook getPrimarySource() {
-	return source;
-  }
-
-  public void setSource(IExaltedSourceBook source) {
-    this.source = source;
+	return null;
   }
 
   public void setCharmType(CharmType type) {
@@ -280,10 +275,5 @@ public class DummyCharm extends Identificate implements ICharm {
 
   public void addKeyword(CharmAttribute attribute) {
     this.attributes.add(attribute);
-  }
-
-  @Override
-  public boolean hasChildren() {
-    return false;
   }
 }
