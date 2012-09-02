@@ -467,12 +467,14 @@ public class CharmConfiguration implements ICharmConfiguration {
         return false;
       }
     }
+    ICharm[] learnedCharms = getLearnedCharms(true);
     for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {
-      if (!requirement.isFulfilled(getLearnedCharms(true))) {
+      if (!requirement.isFulfilled(learnedCharms)) {
         return false;
       }
     }
-    if (!(new CharmTraitRequirementChecker(getPrerequisiteModifyingCharms(), context, this).areTraitMinimumsSatisfied(charm))) {
+    if (!(new CharmTraitRequirementChecker(getPrerequisiteModifyingCharms(), context, this).areTraitMinimumsSatisfied(
+            charm))) {
       return false;
     }
     for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {

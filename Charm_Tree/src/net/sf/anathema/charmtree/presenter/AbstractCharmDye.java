@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.presenter;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
 
 public abstract class AbstractCharmDye implements CharmDye {
@@ -17,23 +17,35 @@ public abstract class AbstractCharmDye implements CharmDye {
     if (!groupInformer.hasGroupSelected()) {
       return;
     }
-    ICharmGroup currentGroup = groupInformer.getCurrentGroup();
-    for (ICharm charm : currentGroup.getAllCharms()) {
-      setCharmVisuals(charm);
-      colorExternalPrerequisites(charm);
+    for (ICharm charm : getAllCharmsFromCurrentGroup()) {
+      colorCharm(charm);
+      colorExternalCharmPrerequisites(charm);
+      colorNonCharmPrerequisite(charm);
     }
   }
 
-  private void colorExternalPrerequisites(ICharm charm) {
+  private void colorNonCharmPrerequisite(ICharm charm) {
+    for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {
+      setPrerequisiteVisuals(requirement);
+    }
+  }
+
+  private void colorExternalCharmPrerequisites(ICharm charm) {
     for (ICharm prerequisite : charm.getRenderingPrerequisiteCharms()) {
       if (isPartOfCurrentGroup(prerequisite)) {
         return;
       }
-      setCharmVisuals(prerequisite);
+      colorCharm(prerequisite);
     }
   }
 
   private boolean isPartOfCurrentGroup(ICharm charm) {
     return charm.getGroupId().equals(groupInformer.getCurrentGroup().getId());
   }
+
+  protected ICharm[] getAllCharmsFromCurrentGroup() {
+    return groupInformer.getCurrentGroup().getAllCharms();
+  }
+
+  protected abstract void setPrerequisiteVisuals(ICharmAttributeRequirement requirement);
 }

@@ -14,12 +14,12 @@ public final class CharmLearnVisualizer extends CharmLearnAdapter {
 
   @Override
   public void charmLearned(ICharm charm) {
-    dye.setCharmVisuals(charm);
+    dye.colorCharm(charm);
   }
 
   @Override
   public void charmForgotten(ICharm charm) {
-    dye.setCharmVisuals(charm);
+    dye.colorCharm(charm);
   }
 
   @Override

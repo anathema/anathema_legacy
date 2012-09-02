@@ -266,7 +266,6 @@ public class Charm extends Identificate implements ICharm {
         prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
       }
     }
-
     return prerequisiteCharms;
   }
 
@@ -278,7 +277,6 @@ public class Charm extends Identificate implements ICharm {
         prerequisiteLabels.add(charmGroup.getLabel());
       }
     }
-
     return prerequisiteLabels;
   }
 

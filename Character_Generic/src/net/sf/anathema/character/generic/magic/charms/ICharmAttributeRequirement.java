@@ -12,5 +12,4 @@ public interface ICharmAttributeRequirement {
   Identified getAttribute();
 
   int getCount();
-
 }

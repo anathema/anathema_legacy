@@ -20,14 +20,10 @@ public interface ICharmXMLConstants {
   String ATTRIB_DURATION = "duration"; //$NON-NLS-1$
   String ATTRIB_EVENT = "event"; //$NON-NLS-1$
   String ATTRIB_EXALT = "exalt"; //$NON-NLS-1$
-  String ATTRIB_EDITION = "edition"; //$NON-NLS-1$
   String ATTRB_FAVORED = "favored"; //$NON-NLS-1$
   String ATTRIB_GROUP = "group"; //$NON-NLS-1$
   String ATTRIB_ID = "id"; //$NON-NLS-1$
-  String ATTRIB_LEVEL = "level"; //$NON-NLS-1$
   String ATTRIB_NAME = "name"; //$NON-NLS-1$
-  String ATTRIB_PAGE = "page"; //$NON-NLS-1$
-  String ATTRIB_POSITION_HINT = "positionHint"; //$NON-NLS-1$
   String ATTRIB_SOURCE = "source"; //$NON-NLS-1$
   String ATTRIB_THRESHOLD = "threshold"; //$NON-NLS-1$
   String ATTRIB_TYPE = "type"; //$NON-NLS-1$
@@ -57,18 +53,15 @@ public interface ICharmXMLConstants {
   String TAG_DURATION = "duration"; //$NON-NLS-1$
   String TAG_ESSENCE = "essence"; //$NON-NLS-1$
   String TAG_LEARNING = "learning"; //$NON-NLS-1$
-  String TAG_MARTIAL_ARTS_LEVEL = "martialArtsLevel"; //$NON-NLS-1$
   String TAG_PREREQUISITE_LIST = "prerequisite"; //$NON-NLS-1$
   String TAG_TRAIT = "trait"; //$NON-NLS-1$
   String TAG_BACKGROUND = "background"; //$NON-NLS-1$
   String TAG_TRAIT_REFERENCE = "traitReference"; //$NON-NLS-1$
   String TAG_SELECTIVE_CHARM_GROUP = "selectiveCharmGroup"; //$NON-NLS-1$
   String TAG_RESTRICTIONS = "restrictions"; //$NON-NLS-1$
-  String TAG_RULESET = "ruleset"; //$NON-NLS-1$
   String TAG_SOURCE = "source"; //$NON-NLS-1$
   String TAG_WILLPOWER_COST = "willpower"; //$NON-NLS-1$
   String TAG_ESSENCE_COST = "essence"; //$NON-NLS-1$
-  String TAG_EXPERIENCE_COST = "experience"; //$NON-NLS-1$
   String TAG_HEALTH_COST = "health"; //$NON-NLS-1$
 
   String ATTRIB_COST = "cost"; //$NON-NLS-1$
