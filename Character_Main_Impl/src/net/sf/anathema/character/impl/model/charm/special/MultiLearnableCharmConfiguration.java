@@ -60,12 +60,13 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
 
   @Override
   public void learn(boolean experienced) {
+    int minimumLearnCount = specialCharm.getMinimumLearnCount(context.getTraitCollection());
     if (experienced) {
       if (getCurrentLearnCount() == 0) {
-        trait.setExperiencedValue(specialCharm.getMinimumLearnCount(context.getTraitCollection()));
+        trait.setExperiencedValue(minimumLearnCount);
       }
     } else if (getCreationLearnCount() == 0) {
-      trait.setCreationValue(specialCharm.getMinimumLearnCount(context.getTraitCollection()));
+      trait.setCreationValue(minimumLearnCount);
     }
   }
 
@@ -104,10 +105,16 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
   }
 
   private void validateLearnCount() {
-    if (trait.getCurrentValue() == 0) return;
+    if (trait.getCurrentValue() == 0) {
+      return;
+    }
     Range range = getRange();
-    if (trait.getCurrentValue() < range.getLowerBound()) setCurrentLearnCount(range.getLowerBound());
-    if (trait.getCurrentValue() > range.getUpperBound()) setCurrentLearnCount(range.getUpperBound());
+    if (trait.getCurrentValue() < range.getLowerBound()) {
+      setCurrentLearnCount(range.getLowerBound());
+    }
+    if (trait.getCurrentValue() > range.getUpperBound()) {
+      setCurrentLearnCount(range.getUpperBound());
+    }
   }
 
   private Range getRange() {
@@ -119,8 +126,9 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
 
   private int getMergedDots() {
     int dots = 0;
-    for (ICharm mergedCharm : charm.getMergedCharms())
+    for (ICharm mergedCharm : charm.getMergedCharms()) {
       dots += mergedCharm == charm ? 0 : config.getSpecialCharmConfiguration(mergedCharm).getCurrentLearnCount();
+    }
     return dots;
   }
 
@@ -128,8 +136,9 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     @Override
     public boolean isValidIncrement(int increment) {
       int incrementedValue = MultiLearnableCharmConfiguration.this.trait.getCurrentValue() + increment;
-      if (incrementedValue == 0) return true;
-
+      if (incrementedValue == 0) {
+        return true;
+      }
       boolean learnable = arbitrator.isLearnable(charm);
       return learnable && getRange().contains(incrementedValue);
     }

@@ -13,5 +13,4 @@ public class EssenceFixedMultiLearnableCharm extends TraitDependentMultiLearnabl
   public int getMinimumLearnCount(GenericTraitProvider traitCollection) {
     return getMaximumLearnCount(traitCollection);
   }
-
 }
