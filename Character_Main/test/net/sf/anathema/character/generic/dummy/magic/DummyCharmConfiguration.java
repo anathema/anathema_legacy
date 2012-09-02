@@ -137,7 +137,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ISpecialCharm[] getSpecialCharms() {
-    throw new NotYetImplementedException();
+    return new ISpecialCharm[0];
   }
 
 	@Override

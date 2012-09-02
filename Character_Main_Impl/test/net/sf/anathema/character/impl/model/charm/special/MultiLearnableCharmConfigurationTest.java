@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
 import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
+import net.sf.anathema.character.generic.dummy.magic.DummyCharmConfiguration;
 import net.sf.anathema.character.generic.dummy.magic.DummyLearnableArbitrator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertThat;
 public class MultiLearnableCharmConfigurationTest {
 
   private ICharacterModelContext context = new DummyCharacterModelContext(new ExperiencedTraitValueStrategy());
-  private ICharmConfiguration config = null;
+  private ICharmConfiguration config = new DummyCharmConfiguration();
   private ICharm charm = new DummyCharm("id");
   private IMultiLearnableCharm specialCharm = new StaticMultiLearnableCharm("id", 5);
   private ICharmLearnableArbitrator arbitrator = new DummyLearnableArbitrator("id");
