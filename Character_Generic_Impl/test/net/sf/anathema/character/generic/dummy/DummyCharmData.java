@@ -3,8 +3,8 @@ package net.sf.anathema.character.generic.dummy;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
@@ -70,7 +70,7 @@ public class DummyCharmData implements ICharmData {
   }
 
   @Override
-  public ICharmAttributeRequirement[] getAttributeRequirements() {
+  public IndirectCharmRequirement[] getAttributeRequirements() {
     return null;
   }
 

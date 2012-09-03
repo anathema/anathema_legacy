@@ -12,10 +12,10 @@ import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
@@ -468,7 +468,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       }
     }
     ICharm[] learnedCharms = getLearnedCharms(true);
-    for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {
+    for (IndirectCharmRequirement requirement : charm.getAttributeRequirements()) {
       if (!requirement.isFulfilled(learnedCharms)) {
         return false;
       }

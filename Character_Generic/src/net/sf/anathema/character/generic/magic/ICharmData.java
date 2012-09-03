@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.magic;
 
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -39,7 +39,7 @@ public interface ICharmData extends IMagicData {
 
   ICharmAttribute[] getAttributes();
 
-  ICharmAttributeRequirement[] getAttributeRequirements();
+  IndirectCharmRequirement[] getAttributeRequirements();
 
   Set<ICharm> getParentCharms();
   

@@ -1,35 +1,34 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_COUNT;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_ATTRIBUTE_REQUIREMENT;
+import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
+import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.CharmException;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Element;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
-import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
-import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
-import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.xml.ElementUtilities;
-
-import org.dom4j.Element;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_COUNT;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_ATTRIBUTE_REQUIREMENT;
 
 public class AttributeRequirementBuilder implements IAttributeRequirementBuilder {
 
   @Override
-  public ICharmAttributeRequirement[] getCharmAttributeRequirements(Element prerequisitesElement) throws CharmException {
-    List<ICharmAttributeRequirement> attributeRequirements = new ArrayList<ICharmAttributeRequirement>();
+  public IndirectCharmRequirement[] getCharmAttributeRequirements(Element prerequisitesElement) throws CharmException {
+    List<IndirectCharmRequirement> indirectRequirements = new ArrayList<IndirectCharmRequirement>();
     for (Element attributeRequirementElement : ElementUtilities.elements(
         prerequisitesElement,
         TAG_CHARM_ATTRIBUTE_REQUIREMENT)) {
-      attributeRequirements.add(buildRequirement(attributeRequirementElement));
+      indirectRequirements.add(buildRequirement(attributeRequirementElement));
     }
-    return attributeRequirements.toArray(new ICharmAttributeRequirement[attributeRequirements.size()]);
+    return indirectRequirements.toArray(new IndirectCharmRequirement[indirectRequirements.size()]);
   }
 
-  protected final ICharmAttributeRequirement buildRequirement(Element attributeRequirementElement)
+  protected final IndirectCharmRequirement buildRequirement(Element attributeRequirementElement)
       throws CharmException {
     String attributeId = buildId(attributeRequirementElement);
     int requiredCount = buildRequirementCount(attributeRequirementElement);

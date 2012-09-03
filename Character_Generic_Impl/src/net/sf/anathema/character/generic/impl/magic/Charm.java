@@ -14,9 +14,9 @@ import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
@@ -103,7 +103,7 @@ public class Charm extends Identificate implements ICharm {
     this.sources = charmData.getSources();
     this.prerequisisteList =
             new CharmPrerequisiteList(charmData.getPrerequisites(), charmData.getEssence(), new String[0], new SelectiveCharmGroupTemplate[0],
-                    new ICharmAttributeRequirement[0]);
+                    new IndirectCharmRequirement[0]);
     parentCharms.addAll(charmData.getParentCharms());
     this.typeModel = charmData.getCharmTypeModel();
   }
@@ -270,11 +270,12 @@ public class Charm extends Identificate implements ICharm {
   }
 
   @Override
-  public Set<String> getRenderingPrerequisiteLabels() {
-    Set<String> prerequisiteLabels = new HashSet<String>();
+  public Set<IndirectCharmRequirement> getRenderingPrerequisiteLabels() {
+    Set<IndirectCharmRequirement> prerequisiteLabels = new HashSet<IndirectCharmRequirement>();
     for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
       if (charmGroup.getLabel() != null) {
-        prerequisiteLabels.add(charmGroup.getLabel());
+        GroupedCharmRequirement requirement = new GroupedCharmRequirement(charmGroup);
+        prerequisiteLabels.add(requirement);
       }
     }
     return prerequisiteLabels;
@@ -357,7 +358,7 @@ public class Charm extends Identificate implements ICharm {
   }
 
   @Override
-  public ICharmAttributeRequirement[] getAttributeRequirements() {
+  public IndirectCharmRequirement[] getAttributeRequirements() {
     return prerequisisteList.getAttributeRequirements();
   }
 

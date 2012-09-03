@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.persistence.load.load;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.xml.DocumentUtilities;
@@ -20,8 +20,8 @@ public class GenericAttributeRequirementBuilderTest {
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAttributeRequirementBuilder builder = new GenericAttributeRequirementBuilder();
     builder.setType(AbilityType.Investigation);
-    ICharmAttributeRequirement[] charmAttributeRequirements = builder.getCharmAttributeRequirements(rootElement);
-    assertTrue(ArrayUtilities.containsValue(charmAttributeRequirements, new CharmAttributeRequirement(new CharmAttribute(
+    IndirectCharmRequirement[] indirectRequirements = builder.getCharmAttributeRequirements(rootElement);
+    assertTrue(ArrayUtilities.containsValue(indirectRequirements, new CharmAttributeRequirement(new CharmAttribute(
       "genericInvestigation", //$NON-NLS-1$
       false), 1)));
   }

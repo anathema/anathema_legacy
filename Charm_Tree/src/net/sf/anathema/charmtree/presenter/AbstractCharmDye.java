@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.presenter;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.charmtree.presenter.view.CharmGroupInformer;
 
 public abstract class AbstractCharmDye implements CharmDye {
@@ -25,7 +25,10 @@ public abstract class AbstractCharmDye implements CharmDye {
   }
 
   private void colorNonCharmPrerequisite(ICharm charm) {
-    for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {
+    for (IndirectCharmRequirement requirement : charm.getAttributeRequirements()) {
+      setPrerequisiteVisuals(requirement);
+    }
+    for (IndirectCharmRequirement requirement : charm.getRenderingPrerequisiteLabels()) {
       setPrerequisiteVisuals(requirement);
     }
   }
@@ -47,5 +50,5 @@ public abstract class AbstractCharmDye implements CharmDye {
     return groupInformer.getCurrentGroup().getAllCharms();
   }
 
-  protected abstract void setPrerequisiteVisuals(ICharmAttributeRequirement requirement);
+  protected abstract void setPrerequisiteVisuals(IndirectCharmRequirement requirement);
 }

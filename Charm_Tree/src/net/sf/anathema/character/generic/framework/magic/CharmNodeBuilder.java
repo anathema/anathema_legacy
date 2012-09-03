@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.framework.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.NodeFactory;
 
@@ -30,12 +30,13 @@ public class CharmNodeBuilder {
       }
     }
     for (ICharm charm : groupCharms) {
-      for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {
+      for (IndirectCharmRequirement requirement : charm.getAttributeRequirements()) {
         String id = requirement.getStringRepresentation();
         IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(id);
         charmNodesById.put(id, parentNode);
       }
-      for (String label : charm.getRenderingPrerequisiteLabels()) {
+      for (IndirectCharmRequirement requirement : charm.getRenderingPrerequisiteLabels()) {
+        String label = requirement.getStringRepresentation();
         IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(label);
         charmNodesById.put(label, parentNode);
       }

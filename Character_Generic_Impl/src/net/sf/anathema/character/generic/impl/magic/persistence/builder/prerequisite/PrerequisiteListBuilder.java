@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequ
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -37,13 +37,12 @@ public class PrerequisiteListBuilder {
     IGenericTrait essence = buildEssencePrerequisite(prerequisiteListElement);
     String[] prerequisiteCharmIDs = charmBuilder.buildCharmPrerequisites(prerequisiteListElement);
     SelectiveCharmGroupTemplate[] selectiveCharmGroups = buildSelectiveCharmGroups(prerequisiteListElement);
-    ICharmAttributeRequirement[] attributeRequirements = attributeBuilder.getCharmAttributeRequirements(prerequisiteListElement);
+    IndirectCharmRequirement[] indirectRequirements = attributeBuilder.getCharmAttributeRequirements(prerequisiteListElement);
     return new CharmPrerequisiteList(
         allPrerequisites,
         essence,
         prerequisiteCharmIDs,
-        selectiveCharmGroups,
-        attributeRequirements);
+        selectiveCharmGroups, indirectRequirements);
   }
 
   private IGenericTrait buildEssencePrerequisite(Element prerequisiteListElement) throws CharmException {

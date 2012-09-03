@@ -10,9 +10,9 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
@@ -42,7 +42,7 @@ public class DummyCharm extends Identificate implements ICharm {
   private IGenericTrait[] prerequisites;
   private Set<ICharm> parentCharms;
   private Set<ICharm> learnFollowUpCharms = new HashSet<ICharm>();
-  private List<ICharmAttributeRequirement> requirements = new ArrayList<ICharmAttributeRequirement>();
+  private List<IndirectCharmRequirement> requirements = new ArrayList<IndirectCharmRequirement>();
   private ICharacterType characterType;
   private String groupId;
   private CostList temporaryCost;
@@ -53,13 +53,10 @@ public class DummyCharm extends Identificate implements ICharm {
     isGeneric = generic;
   }
 
-  private  boolean isGeneric = false;
+  private boolean isGeneric = false;
 
-  public DummyCharm(
-    String duration,
-    CharmType charmType,
-    IComboRestrictions comboRestrictions,
-    IGenericTrait[] prerequisites) {
+  public DummyCharm(String duration, CharmType charmType, IComboRestrictions comboRestrictions,
+                    IGenericTrait[] prerequisites) {
     super("DummyCharmDefaultId"); //$NON-NLS-1$
     this.prerequisites = prerequisites;
     this.duration = SimpleDuration.getDuration(duration);
@@ -91,7 +88,7 @@ public class DummyCharm extends Identificate implements ICharm {
     visitor.visitCharm(this);
   }
 
-  public void addAttributeRequirement(ICharmAttributeRequirement requirement) {
+  public void addAttributeRequirement(IndirectCharmRequirement requirement) {
     requirements.add(requirement);
   }
 
@@ -100,8 +97,8 @@ public class DummyCharm extends Identificate implements ICharm {
   }
 
   @Override
-  public ICharmAttributeRequirement[] getAttributeRequirements() {
-    return requirements.toArray(new ICharmAttributeRequirement[requirements.size()]);
+  public IndirectCharmRequirement[] getAttributeRequirements() {
+    return requirements.toArray(new IndirectCharmRequirement[requirements.size()]);
   }
 
   @Override
@@ -112,12 +109,11 @@ public class DummyCharm extends Identificate implements ICharm {
   public void setCharacterType(ICharacterType type) {
     characterType = type;
   }
-  
+
   @Override
   public boolean isInstanceOfGenericCharm() {
-	return isGeneric;
+    return isGeneric;
   }
-
 
 
   @Override
@@ -181,7 +177,7 @@ public class DummyCharm extends Identificate implements ICharm {
   }
 
   @Override
-  public Set<String> getRenderingPrerequisiteLabels() {
+  public Set<IndirectCharmRequirement> getRenderingPrerequisiteLabels() {
     return emptySet();
   }
 
@@ -239,12 +235,12 @@ public class DummyCharm extends Identificate implements ICharm {
 
   @Override
   public IExaltedSourceBook[] getSources() {
-    return new IExaltedSourceBook[] { null };
+    return new IExaltedSourceBook[]{null};
   }
-  
+
   @Override
   public IExaltedSourceBook getPrimarySource() {
-	return null;
+    return null;
   }
 
   public void setCharmType(CharmType type) {
