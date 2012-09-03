@@ -37,6 +37,7 @@
                <special primaryStep="1" secondaryStep="2" />
           </charmtype>
           <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Infernal1stExcellency" visualize="false"/>
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <essenceFixedRepurchases/>
@@ -120,6 +121,7 @@
           <cost />
           <duration  duration="Permanent" />
           <charmtype type="Permanent" />
+          <charmAttribute attribute="SorcerousEnlightenment" visualize="false"/>
           <source source="Infernals" />
      </genericCharm>
      <genericCharm id="Infernal.SorcerousEnlightenment2" exalt="Infernal">
