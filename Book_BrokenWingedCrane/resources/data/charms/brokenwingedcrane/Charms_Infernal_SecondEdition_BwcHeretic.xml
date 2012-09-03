@@ -91,6 +91,15 @@
 			   		<charmReference id="Infernal.1stExcellency.Kimbery" />
 			   		<charmReference id="Infernal.1stExcellency.Malfeas" />
 			   		<charmReference id="Infernal.1stExcellency.SheWhoLivesInHerName" />
+			   		<charmReference id="Infernal.1stExcellency.Cytherea" />
+			   		<charmReference id="Infernal.1stExcellency.Elloge" />
+			   		<charmReference id="Infernal.1stExcellency.Hegra" />
+			   		<charmReference id="Infernal.1stExcellency.Isidoros" />
+			   		<charmReference id="Infernal.1stExcellency.Metagaos" />
+			   		<charmReference id="Infernal.1stExcellency.Oramus" />
+			   		<charmReference id="Infernal.1stExcellency.Qaf" />
+			   		<charmReference id="Infernal.1stExcellency.Sacheverell" />
+			   		<charmReference id="Infernal.1stExcellency.Szoreny" />
 			   </selectiveCharmGroup>
 			   <selectiveCharmGroup threshold="1" label="SorcerousEnlightenment">
 			   		<charmReference id="Infernal.SorcerousEnlightenment.Adorjan" />
@@ -99,6 +108,15 @@
 			   		<charmReference id="Infernal.SorcerousEnlightenment.Kimbery" />
 			   		<charmReference id="Infernal.SorcerousEnlightenment.Malfeas" />
 			   		<charmReference id="Infernal.SorcerousEnlightenment.SheWhoLivesInHerName" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Cytherea" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Elloge" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Hegra" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Isidoros" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Metagaos" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Oramus" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Qaf" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Sacheverell" />
+			   		<charmReference id="Infernal.SorcerousEnlightenment.Szoreny" />
 			   </selectiveCharmGroup>
 			   <selectiveCharmGroup threshold="1" label="Shintai">
 					<charmReference id="Infernal.BlackMirrorShintai" />
