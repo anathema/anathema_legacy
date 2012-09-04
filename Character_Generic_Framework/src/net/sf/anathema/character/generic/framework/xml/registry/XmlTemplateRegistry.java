@@ -30,7 +30,31 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
   }
   
   @Override
-  public T get(String id, String prefix) throws PersistenceException {
+  public T get(final String id, final String prefix) throws PersistenceException {
+	return get(id, new IDocumentOpener() {
+		@Override
+		public Document openDocument() {
+			InputStream resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(prefix + "data/" + id); //$NON-NLS-1$
+		    return DocumentUtilities.read(resourceAsStream);
+		}
+	});
+  }
+  
+  @Override
+  public T get(final ResourceFile resource) throws PersistenceException {
+	return get(resource.getFileName(), new IDocumentOpener() {
+		@Override
+		public Document openDocument() {
+			try {
+				return DocumentUtilities.read(resource.getURL());
+			} catch (Exception e) {
+				throw new PersistenceException("Unable to find file " + resource.getURL());
+			}
+		}
+	});
+  }
+  
+  private T get(String id, IDocumentOpener opener) throws PersistenceException {
     T template = templateRegistry.get(id);
     if (template != null) {
       return template;
@@ -40,35 +64,19 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
       throw new PersistenceException("Illegal recursion in template file:" + id); //$NON-NLS-1$
     }
     idsInProgress.add(id);
-    InputStream resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(prefix + "data/" + id); //$NON-NLS-1$
     Document document;
-    document = DocumentUtilities.read(resourceAsStream);
+	try {
+		document = opener.openDocument();
+	} catch (Exception e) {
+		throw new PersistenceException("Unable to find file " + id);
+	}
     T parsedTemplate = templateParser.parseTemplate(document.getRootElement());
     templateRegistry.register(id, parsedTemplate);
     idsInProgress.remove(id);
     return parsedTemplate;
   }
   
-  @Override
-  public T get(ResourceFile resource) throws PersistenceException {
-    T template = templateRegistry.get(resource.getFileName());
-    if (template != null) {
-      return template;
-    }
-    Preconditions.checkNotNull(templateParser);
-    if (idsInProgress.contains(resource.getFileName())) {
-      throw new PersistenceException("Illegal recursion in template file:" + resource.getFileName()); //$NON-NLS-1$
-    }
-    idsInProgress.add(resource.getFileName());
-    Document document;
-	try {
-		document = DocumentUtilities.read(resource.getURL());
-	} catch (Exception e) {
-		throw new PersistenceException("Unable to find file " + resource.getURL());
-	}
-    T parsedTemplate = templateParser.parseTemplate(document.getRootElement());
-    templateRegistry.register(resource.getFileName(), parsedTemplate);
-    idsInProgress.remove(resource.getFileName());
-    return parsedTemplate;
+  private interface IDocumentOpener {
+	  Document openDocument();
   }
 }
