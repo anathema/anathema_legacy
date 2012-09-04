@@ -33,7 +33,7 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
   public T get(final String id, final String prefix) throws PersistenceException {
 	return get(id, new IDocumentOpener() {
 		@Override
-		public Document openDocument() {
+		public Document openDocument() throws Exception {
 			InputStream resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(prefix + "data/" + id); //$NON-NLS-1$
 		    return DocumentUtilities.read(resourceAsStream);
 		}
@@ -44,12 +44,8 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
   public T get(final ResourceFile resource) throws PersistenceException {
 	return get(resource.getFileName(), new IDocumentOpener() {
 		@Override
-		public Document openDocument() {
-			try {
-				return DocumentUtilities.read(resource.getURL());
-			} catch (Exception e) {
-				throw new PersistenceException("Unable to find file " + resource.getURL());
-			}
+		public Document openDocument() throws Exception {
+			return DocumentUtilities.read(resource.getURL());
 		}
 	});
   }
@@ -77,6 +73,6 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
   }
   
   private interface IDocumentOpener {
-	  Document openDocument();
+	  Document openDocument() throws Exception;
   }
 }
