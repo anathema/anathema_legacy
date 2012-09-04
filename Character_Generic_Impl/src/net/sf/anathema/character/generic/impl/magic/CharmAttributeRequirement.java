@@ -2,23 +2,14 @@ package net.sf.anathema.character.generic.impl.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
-public class CharmAttributeRequirement extends ReflectionEqualsObject implements ICharmAttributeRequirement {
+public class CharmAttributeRequirement extends ReflectionEqualsObject implements IndirectCharmRequirement {
 
   private final ICharmAttribute attribute;
   private final int count;
 
-  @Override
-  public ICharmAttribute getAttribute() {
-    return attribute;
-  }
-
-  @Override
-  public int getCount() {
-    return count;
-  }
   public CharmAttributeRequirement(ICharmAttribute attribute, int count) {
     this.attribute = attribute;
     this.count = count;
@@ -35,9 +26,9 @@ public class CharmAttributeRequirement extends ReflectionEqualsObject implements
   }
 
   @Override
-  public boolean isFulfilled(ICharm[] charms) {
+  public boolean isFulfilled(ICharm[] learnedCharms) {
     int amount = 0;
-    for (ICharm charm : charms) {
+    for (ICharm charm : learnedCharms) {
       if (charm.hasAttribute(attribute)) {
         amount++;
       }

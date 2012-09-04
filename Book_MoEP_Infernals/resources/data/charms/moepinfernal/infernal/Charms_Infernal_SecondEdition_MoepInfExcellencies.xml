@@ -37,6 +37,7 @@
                <special primaryStep="1" secondaryStep="2" />
           </charmtype>
           <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="Infernal1stExcellency" visualize="false"/>
           <charmAttribute attribute="Mortal" />
           <charmAttribute attribute="Combo-OK" visualize="true" />
           <essenceFixedRepurchases/>
@@ -69,7 +70,6 @@
           <cost/>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Native" visualize="true"/>
           <source source="Infernals" />
           <source source="ScrollErrata" />
@@ -85,7 +85,6 @@
           </cost>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <genericCharmAttribute attribute="Excellency" />
           <charmAttribute attribute="Shaping" visualize="true"/>
           <source source="Infernals" />
      </genericCharm>
@@ -98,7 +97,6 @@
           <cost/>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <genericCharmAttribute attribute="Excellency" />
           <source source="Infernals" />
           <source source="ScrollErrata" />
      </genericCharm>
@@ -111,7 +109,6 @@
           <cost/>
           <duration duration="Permanent" />
           <charmtype type="Permanent" />
-          <genericCharmAttribute attribute="Excellency" />
           <source source="Infernals" />
           <source source="ScrollErrata" />
      </genericCharm>
@@ -124,7 +121,7 @@
           <cost />
           <duration  duration="Permanent" />
           <charmtype type="Permanent" />
-          <genericCharmAttribute attribute="Excellency" />
+          <charmAttribute attribute="SorcerousEnlightenment" visualize="false"/>
           <source source="Infernals" />
      </genericCharm>
      <genericCharm id="Infernal.SorcerousEnlightenment2" exalt="Infernal">
@@ -136,7 +133,6 @@
           <cost />
           <duration  duration="Permanent" />
           <charmtype type="Permanent" />
-          <genericCharmAttribute attribute="Excellency" />
           <source source="Infernals" />
      </genericCharm>
      <genericCharm id="Infernal.SorcerousEnlightenment3" exalt="Infernal">
@@ -148,7 +144,6 @@
           <cost />
           <duration  duration="Permanent" />
           <charmtype type="Permanent" />
-          <genericCharmAttribute attribute="Excellency" />
           <source source="Infernals" />
      </genericCharm>
 </charmlist>

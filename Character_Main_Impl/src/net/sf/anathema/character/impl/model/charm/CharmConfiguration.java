@@ -12,12 +12,11 @@ import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.magic.charms.special.IPrerequisiteModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -26,9 +25,6 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
@@ -75,9 +71,10 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final ICharmProvider provider;
   private final ILearningCharmGroupArbitrator arbitrator;
   private List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
-  private IPrerequisiteModifyingCharm[] prerequisiteModifyingCharms;
+  private PrerequisiteModifyingCharms prerequisiteModifyingCharms;
 
-  public CharmConfiguration(IHealthConfiguration health, ICharacterModelContext context, ITemplateRegistry registry, ICharmProvider provider) {
+  public CharmConfiguration(IHealthConfiguration health, ICharacterModelContext context, ITemplateRegistry registry,
+                            ICharmProvider provider) {
     this.manager = new SpecialCharmManager(this, health, context);
     this.context = context;
     this.provider = provider;
@@ -122,24 +119,8 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ISpecialCharm[] getSpecialCharms() {
-    return provider.getSpecialCharms(new MartialArtsLearnableArbitrator(martialArtsCharmTree), getCharmIdMap(), getNativeCharacterType());
-  }
-
-  private IPrerequisiteModifyingCharm[] getPrerequisiteModifyingCharms() {
-    if (prerequisiteModifyingCharms == null) {
-      List<IPrerequisiteModifyingCharm> charms = new ArrayList<IPrerequisiteModifyingCharm>();
-      for (ISpecialCharm charm : getSpecialCharms())
-      //assuming all of these are native for now
-      {
-        if (charm instanceof IPrerequisiteModifyingCharm &&
-            getCharmIdMap().getCharmById(charm.getCharmId()).getCharacterType() == context.getBasicCharacterContext().getCharacterType()) {
-          charms.add((IPrerequisiteModifyingCharm) charm);
-        }
-      }
-      prerequisiteModifyingCharms = new IPrerequisiteModifyingCharm[charms.size()];
-      charms.toArray(prerequisiteModifyingCharms);
-    }
-    return prerequisiteModifyingCharms;
+    return provider.getSpecialCharms(new MartialArtsLearnableArbitrator(martialArtsCharmTree), getCharmIdMap(),
+            getNativeCharacterType());
   }
 
   private void initSpecialCharmConfigurations() {
@@ -161,8 +142,8 @@ public class CharmConfiguration implements ICharmConfiguration {
       @Override
       public void charmLearned(ICharm charm) {
         for (ICharm mergedCharm : charm.getMergedCharms()) {
-          if (!isLearned(mergedCharm) && isLearnableWithoutPrereqs(mergedCharm) &&
-              CharmConfiguration.this.getSpecialCharmConfiguration(mergedCharm) == null) {
+          if (!isLearned(mergedCharm) && isLearnableWithoutPrerequisites(mergedCharm) &&
+                  CharmConfiguration.this.getSpecialCharmConfiguration(mergedCharm) == null) {
             getGroup(mergedCharm).learnCharm(mergedCharm, context.getBasicCharacterContext().isExperienced());
           }
         }
@@ -200,7 +181,8 @@ public class CharmConfiguration implements ICharmConfiguration {
           for (ICharm parent : charm.getParentCharms()) {
             for (String subeffectRequirement : charm.getParentSubeffects()) {
               if (getSubeffectParent(subeffectRequirement).equals(parent.getId())) {
-                ISpecialCharmConfiguration config = getSpecialCharmConfiguration(getSubeffectParent(subeffectRequirement));
+                ISpecialCharmConfiguration config = getSpecialCharmConfiguration(
+                        getSubeffectParent(subeffectRequirement));
                 if (config instanceof IMultipleEffectCharmConfiguration) {
                   IMultipleEffectCharmConfiguration mConfig = (IMultipleEffectCharmConfiguration) config;
                   prereqsMet = prereqsMet && mConfig.getEffectById(getSubeffect(subeffectRequirement)).isLearned();
@@ -221,7 +203,8 @@ public class CharmConfiguration implements ICharmConfiguration {
       }
     };
     for (ICharmGroup charmGroup : charmGroups) {
-      ILearningCharmGroup group = new LearningCharmGroup(getLearnStrategy(), charmGroup, this, learningCharmGroupContainer, this);
+      ILearningCharmGroup group = new LearningCharmGroup(getLearnStrategy(), charmGroup, this,
+              learningCharmGroupContainer, this);
       newGroups.add(group);
 
       group.addCharmLearnListener(mergedListener);
@@ -298,15 +281,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     List<ICharm> allLearnedCharms = new ArrayList<ICharm>();
     for (ILearningCharmGroup group : getAllGroups()) {
       Collections.addAll(allLearnedCharms, group.getCreationLearnedCharms());
-    }
-    return allLearnedCharms.toArray(new ICharm[allLearnedCharms.size()]);
-  }
-
-  @Override
-  public ICharm[] getExperienceLearnedCharms() {
-    List<ICharm> allLearnedCharms = new ArrayList<ICharm>();
-    for (ILearningCharmGroup group : getAllGroups()) {
-      Collections.addAll(allLearnedCharms, group.getExperienceLearnedCharms());
     }
     return allLearnedCharms.toArray(new ICharm[allLearnedCharms.size()]);
   }
@@ -400,7 +374,8 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ILearningCharmGroup getGroup(String characterTypeId, String groupName) {
-    ICharacterType characterType = characterTypeId == null ? getNativeCharacterType() : CharacterType.getById(characterTypeId);
+    ICharacterType characterType = characterTypeId == null ? getNativeCharacterType() : CharacterType.getById(
+            characterTypeId);
     return getGroupById(characterType, groupName);
   }
 
@@ -482,44 +457,24 @@ public class CharmConfiguration implements ICharmConfiguration {
       return false;
     }
     if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
-      boolean isSiderealFormCharm = MartialArtsUtilities.isFormCharm(charm) && MartialArtsUtilities.hasLevel(MartialArtsLevel.Sidereal, charm);
+      boolean isSiderealFormCharm = MartialArtsUtilities.isFormCharm(charm) && MartialArtsUtilities.hasLevel(
+              MartialArtsLevel.Sidereal, charm);
       if (isSiderealFormCharm && !arbitrator.isCelestialMartialArtsGroupCompleted(getMartialArtsGroups())) {
         return false;
       }
-      if (!getCharmTemplate(getNativeCharacterType()).getMartialArtsRules()
-              .isCharmAllowed(charm, context.getCharmContext().getCharmConfiguration(), context.getBasicCharacterContext().isExperienced())) {
+      if (!getCharmTemplate(getNativeCharacterType()).getMartialArtsRules().isCharmAllowed(charm,
+              context.getCharmContext().getCharmConfiguration(), context.getBasicCharacterContext().isExperienced())) {
         return false;
       }
     }
-    for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {
-      if (!requirement.isFulfilled(getLearnedCharms(true))) {
+    ICharm[] learnedCharms = getLearnedCharms(true);
+    for (IndirectCharmRequirement requirement : charm.getAttributeRequirements()) {
+      if (!requirement.isFulfilled(learnedCharms)) {
         return false;
       }
     }
-    for (IGenericTrait prerequisite : charm.getPrerequisites()) {
-      IGenericTrait prerequisiteTrait = context.getTraitCollection().getTrait(prerequisite.getType());
-      if (prerequisiteTrait== null){
-        return false;
-      }
-      int prereq = prerequisite.getCurrentValue();
-      for (ISpecialCharm specialCharm : getPrerequisiteModifyingCharms()) {
-        if (specialCharm instanceof IPrerequisiteModifyingCharm && isLearned(specialCharm.getCharmId())) {
-          ITraitType type = prerequisite.getType();
-          prereq = ((IPrerequisiteModifyingCharm) specialCharm).getTraitModifier(charm, type, prereq);
-        }
-      }
-      if (prereq > prerequisiteTrait.getCurrentValue()) {
-        return false;
-      }
-    }
-    IGenericTrait essenceTrait = context.getTraitCollection().getTrait(OtherTraitType.Essence);
-    int essencePrerequisite = charm.getEssence().getCurrentValue();
-    for (ISpecialCharm specialCharm : getPrerequisiteModifyingCharms()) {
-      if (specialCharm instanceof IPrerequisiteModifyingCharm && isLearned(specialCharm.getCharmId())) {
-        essencePrerequisite = ((IPrerequisiteModifyingCharm) specialCharm).getTraitModifier(charm, OtherTraitType.Essence, essencePrerequisite);
-      }
-    }
-    if (essencePrerequisite > essenceTrait.getCurrentValue()) {
+    if (!(new CharmTraitRequirementChecker(getPrerequisiteModifyingCharms(), context, this).areTraitMinimumsSatisfied(
+            charm))) {
       return false;
     }
     for (ICharm parentCharm : charm.getLearnPrerequisitesCharms(this)) {
@@ -530,13 +485,14 @@ public class CharmConfiguration implements ICharmConfiguration {
     return true;
   }
 
-  @Override
-  public boolean isLearnable(String charmId) {
-    ICharm charm = getCharmById(charmId);
-    return charm != null && isLearnable(charm);
+  private PrerequisiteModifyingCharms getPrerequisiteModifyingCharms() {
+    if (prerequisiteModifyingCharms == null) {
+      this.prerequisiteModifyingCharms = new PrerequisiteModifyingCharms(getSpecialCharms());
+    }
+    return prerequisiteModifyingCharms;
   }
 
-  protected boolean isLearnableWithoutPrereqs(ICharm charm) {
+  protected boolean isLearnableWithoutPrerequisites(ICharm charm) {
     if (!isLearnable(charm)) {
       return false;
     }
@@ -552,12 +508,6 @@ public class CharmConfiguration implements ICharmConfiguration {
   public boolean isLearned(String charmId) {
     ICharm charm = getCharmById(charmId);
     return charm != null && isLearned(charm);
-  }
-
-  @Override
-  public boolean isUnlearnable(String charmId) {
-    ICharm charm = getCharmById(charmId);
-    return charm != null && isUnlearnable(charm);
   }
 
   public final boolean isUnlearnable(ICharm charm) {
@@ -611,7 +561,8 @@ public class CharmConfiguration implements ICharmConfiguration {
         return group;
       }
     }
-    throw new IllegalArgumentException("No charm group defined for Id: " + groupId + "," + characterType); //$NON-NLS-1$ //$NON-NLS-2$
+    throw new IllegalArgumentException(
+            "No charm group defined for Id: " + groupId + "," + characterType); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @Override

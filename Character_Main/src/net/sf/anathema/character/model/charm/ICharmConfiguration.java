@@ -10,7 +10,7 @@ import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identified;
 
-public interface ICharmConfiguration extends CharmFilterContainer, IExtendedCharmLearnableArbitrator, ICharmGroupArbitrator, ICharmIdMap {
+public interface ICharmConfiguration extends CharmFilterContainer, IExtendedCharmLearnableArbitrator, ICharmGroupArbitrator, ICharmIdMap, SpecialCharmLearnArbitrator {
 
   void addLearnableListener(IChangeListener listener);
 
@@ -24,8 +24,6 @@ public interface ICharmConfiguration extends CharmFilterContainer, IExtendedChar
 
   ICharm[] getCreationLearnedCharms();
 
-  ICharm[] getExperienceLearnedCharms();
-
   ILearningCharmGroup[] getCharmGroups(Identified type);
 
   ICharm[] getLearnedCharms(boolean experienced);
@@ -33,12 +31,6 @@ public interface ICharmConfiguration extends CharmFilterContainer, IExtendedChar
   ISpecialCharmConfiguration getSpecialCharmConfiguration(String charmId);
 
   String[] getUncompletedCelestialMartialArtsGroups();
-
-  boolean isLearnable(String charmId);
-
-  boolean isLearned(String charmId);
-
-  boolean isUnlearnable(String charmId);
 
   void unlearnAllAlienCharms();
 
@@ -51,5 +43,4 @@ public interface ICharmConfiguration extends CharmFilterContainer, IExtendedChar
   ILearningCharmGroup getGroup(String characterType, String groupName);
 
   ISpecialCharm[] getSpecialCharms();
-
 }

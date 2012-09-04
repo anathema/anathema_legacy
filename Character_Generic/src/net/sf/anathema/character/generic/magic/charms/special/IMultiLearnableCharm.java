@@ -1,12 +1,10 @@
 package net.sf.anathema.character.generic.magic.charms.special;
 
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-
 public interface IMultiLearnableCharm extends ISpecialCharm {
 
   int getAbsoluteLearnLimit();
   
-  int getMinimumLearnCount(IGenericTraitCollection traitCollection);
+  int getMinimumLearnCount(LearnRangeContext learnRangeContext);
 
-  int getMaximumLearnCount(IGenericTraitCollection traitCollection);
+  int getMaximumLearnCount(LearnRangeContext learnRangeContext);
 }

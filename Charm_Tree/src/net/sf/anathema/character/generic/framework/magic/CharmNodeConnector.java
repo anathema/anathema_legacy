@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.framework.magic;
 
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
+
 import java.util.Collection;
 import java.util.Map;
-
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
-import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 
 public class CharmNodeConnector {
 
@@ -16,14 +16,10 @@ public class CharmNodeConnector {
         IIdentifiedRegularNode parentNode = charmNodesById.get(parentCharm.getId());
         connectNodes(childNode, parentNode);
       }
-      for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {        
+      for (IndirectCharmRequirement requirement : charm.getIndirectRequirements()) {
         IIdentifiedRegularNode parentNode = charmNodesById.get(requirement.getStringRepresentation());
         connectNodes(childNode, parentNode);
       }
-      for (String label : charm.getRenderingPrerequisiteLabels()) {        
-          IIdentifiedRegularNode parentNode = charmNodesById.get(label);
-          connectNodes(childNode, parentNode);
-        }
     }
   }
 

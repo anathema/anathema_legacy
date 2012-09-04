@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.framework.magic;
 
-import java.util.Collection;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.graph.nodes.NodeFactory;
+
+import java.util.Collection;
+import java.util.Map;
 
 public class CharmNodeBuilder {
 
@@ -23,23 +23,17 @@ public class CharmNodeBuilder {
             parentNode = NodeFactory.createChildlessNode(parentCharm.getId());
             parentNode.setLowerToChildren(true);
             charmNodesById.put(parentCharm.getId(), parentNode);
-          }
-          else {
+          } else {
             parentNode.setLowerToChildren(false);
           }
         }
       }
     }
     for (ICharm charm : groupCharms) {
-      for (ICharmAttributeRequirement requirement : charm.getAttributeRequirements()) {
-        String id = requirement.getStringRepresentation();
-        IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(id);
-        charmNodesById.put(id, parentNode);
-      }
-      for (String label : charm.getRenderingPrerequisiteLabels())
-      {
-    	  IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(label);
-          charmNodesById.put(label, parentNode);
+      for (IndirectCharmRequirement requirement : charm.getIndirectRequirements()) {
+        String label = requirement.getStringRepresentation();
+        IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(label);
+        charmNodesById.put(label, parentNode);
       }
     }
   }

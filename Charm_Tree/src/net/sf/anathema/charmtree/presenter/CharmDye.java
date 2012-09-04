@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 
 public interface CharmDye {
 
-  void setCharmVisuals(ICharm charm);
+  void colorCharm(ICharm charm);
 
   void setCharmVisuals();
 }

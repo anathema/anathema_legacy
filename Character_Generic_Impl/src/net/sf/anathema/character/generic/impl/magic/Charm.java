@@ -14,9 +14,9 @@ import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
@@ -36,6 +36,7 @@ import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -59,15 +60,15 @@ public class Charm extends Identificate implements ICharm {
   private final List<String> requiredSubeffects = new ArrayList<String>();
   private final List<ICharm> parentCharms = new ArrayList<ICharm>();
   private final List<Charm> children = new ArrayList<Charm>();
-  private final List<SelectiveCharmGroup> selectiveCharmGroups = new ArrayList<SelectiveCharmGroup>();
+  private final SelectiveCharmGroups selectiveCharmGroups = new SelectiveCharmGroups();
   private final List<ICharmAttribute> charmAttributes = new ArrayList<ICharmAttribute>();
   private final Set<String> favoredCasteIds = new HashSet<String>();
 
   private final ICharmTypeModel typeModel;
 
-  public Charm(ICharacterType characterType, String id, String group, boolean isGeneric, CharmPrerequisiteList prerequisiteList,
-               ICostList temporaryCost, IComboRestrictions comboRules, IDuration duration, ICharmTypeModel charmTypeModel,
-               IExaltedSourceBook[] sources) {
+  public Charm(ICharacterType characterType, String id, String group, boolean isGeneric,
+               CharmPrerequisiteList prerequisiteList, ICostList temporaryCost, IComboRestrictions comboRules,
+               IDuration duration, ICharmTypeModel charmTypeModel, IExaltedSourceBook[] sources) {
     super(id);
     Preconditions.checkNotNull(prerequisiteList);
     Preconditions.checkNotNull(characterType);
@@ -101,9 +102,8 @@ public class Charm extends Identificate implements ICharm {
     this.comboRules = new ComboRestrictions();
     this.duration = charmData.getDuration();
     this.sources = charmData.getSources();
-    this.prerequisisteList =
-            new CharmPrerequisiteList(charmData.getPrerequisites(), charmData.getEssence(), new String[0], new SelectiveCharmGroupTemplate[0],
-                    new ICharmAttributeRequirement[0]);
+    this.prerequisisteList = new CharmPrerequisiteList(charmData.getPrerequisites(), charmData.getEssence(),
+            new String[0], new SelectiveCharmGroupTemplate[0], new IndirectCharmRequirement[0]);
     parentCharms.addAll(charmData.getParentCharms());
     this.typeModel = charmData.getCharmTypeModel();
   }
@@ -239,7 +239,8 @@ public class Charm extends Identificate implements ICharm {
       }
 
       Charm parentCharm = charmsById.get(id);
-      Preconditions.checkNotNull(parentCharm, "Parent Charm " + id + " not defined for " + getId()); //$NON-NLS-1$//$NON-NLS-2$
+      Preconditions.checkNotNull(parentCharm,
+              "Parent Charm " + id + " not defined for " + getId()); //$NON-NLS-1$//$NON-NLS-2$
       parentCharms.add(parentCharm);
       parentCharm.addChild(this);
     }
@@ -261,25 +262,21 @@ public class Charm extends Identificate implements ICharm {
   public Set<ICharm> getRenderingPrerequisiteCharms() {
     Set<ICharm> prerequisiteCharms = new HashSet<ICharm>();
     prerequisiteCharms.addAll(parentCharms);
-    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
-      if (charmGroup.getLabel() == null) {
-        prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
-      }
+    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups.getOpenGroups()) {
+      prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
     }
-
     return prerequisiteCharms;
   }
 
   @Override
-  public Set<String> getRenderingPrerequisiteLabels() {
-    Set<String> prerequisiteLabels = new HashSet<String>();
-    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups) {
-      if (charmGroup.getLabel() != null) {
-        prerequisiteLabels.add(charmGroup.getLabel());
-      }
+  public Set<IndirectCharmRequirement> getIndirectRequirements() {
+    Set<IndirectCharmRequirement> indirectRequirements = new HashSet<IndirectCharmRequirement>();
+    for (SelectiveCharmGroup charmGroup : selectiveCharmGroups.getCombinedGroups()) {
+      GroupedCharmRequirement requirement = new GroupedCharmRequirement(charmGroup);
+      indirectRequirements.add(requirement);
     }
-
-    return prerequisiteLabels;
+    Collections.addAll(indirectRequirements, getAttributeRequirements());
+    return indirectRequirements;
   }
 
   @Override
@@ -297,7 +294,7 @@ public class Charm extends Identificate implements ICharm {
 
   @Override
   public boolean isTreeRoot() {
-    return parentCharms.size() == 0 && selectiveCharmGroups.size() == 0 && getAttributeRequirements().length == 0;
+    return parentCharms.size() == 0 &&  selectiveCharmGroups.isEmpty() && getAttributeRequirements().length == 0;
   }
 
   @Override
@@ -359,7 +356,7 @@ public class Charm extends Identificate implements ICharm {
   }
 
   @Override
-  public ICharmAttributeRequirement[] getAttributeRequirements() {
+  public IndirectCharmRequirement[] getAttributeRequirements() {
     return prerequisisteList.getAttributeRequirements();
   }
 
@@ -379,8 +376,8 @@ public class Charm extends Identificate implements ICharm {
 
     final boolean[] characterCanFavorMagicOfPrimaryType = new boolean[1];
     final ITraitType primaryTraitType = getPrimaryTraitType();
-    if (hasAttribute(new Identificate("MartialArts")) &&
-        ((IFavorableGenericTrait) traitCollection.getTrait(AbilityType.MartialArts)).isCasteOrFavored()) {
+    if (hasAttribute(new Identificate("MartialArts")) && ((IFavorableGenericTrait) traitCollection.getTrait(
+            AbilityType.MartialArts)).isCasteOrFavored()) {
       return true;
     }
 
@@ -415,10 +412,5 @@ public class Charm extends Identificate implements ICharm {
   @Override
   public ITraitType getPrimaryTraitType() {
     return getPrerequisites().length == 0 ? OtherTraitType.Essence : getPrerequisites()[0].getType();
-  }
-
-  @Override
-  public boolean hasChildren() {
-    return !children.isEmpty();
   }
 }
