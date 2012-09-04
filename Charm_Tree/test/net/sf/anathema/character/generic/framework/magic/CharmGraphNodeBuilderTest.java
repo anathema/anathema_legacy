@@ -6,9 +6,12 @@ import net.sf.anathema.graph.nodes.IIdentifiedRegularNode;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class CharmGraphNodeBuilderTest
 {
@@ -19,7 +22,7 @@ public class CharmGraphNodeBuilderTest
     DummyCharm child = new DummyCharm("Child", new ICharm[] { externalParent }); //$NON-NLS-1$
     List<ICharm> list = new ArrayList<ICharm>();
     list.add(child);
-    IIdentifiedRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(list);
+    Collection<IIdentifiedRegularNode> nodes = CharmGraphNodeBuilder.createNodesFromCharms(list);
     for (IIdentifiedRegularNode node : nodes) {
       if (node.getId().equals(parentName)) {
         assertTrue(node.getLowerToChildren());
@@ -32,8 +35,6 @@ public class CharmGraphNodeBuilderTest
     }
   }
 
-
-
   @Test
   public void testExternalCharmMultipleOccurence() throws Exception {
     String parentName = "ExternalParent";//$NON-NLS-1$
@@ -45,7 +46,7 @@ public class CharmGraphNodeBuilderTest
     List<ICharm> list = new ArrayList<ICharm>();
     list.add(firstChild);
     list.add(secondChild);
-    IIdentifiedRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(list);
+    Collection<IIdentifiedRegularNode> nodes = CharmGraphNodeBuilder.createNodesFromCharms(list);
     for (IIdentifiedRegularNode node : nodes) {
       if (node.getId().equals(parentName)) {
         assertFalse(node.getLowerToChildren());
