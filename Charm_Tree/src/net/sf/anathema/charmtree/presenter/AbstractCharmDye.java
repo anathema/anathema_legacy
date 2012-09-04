@@ -25,10 +25,7 @@ public abstract class AbstractCharmDye implements CharmDye {
   }
 
   private void colorNonCharmPrerequisite(ICharm charm) {
-    for (IndirectCharmRequirement requirement : charm.getAttributeRequirements()) {
-      setPrerequisiteVisuals(requirement);
-    }
-    for (IndirectCharmRequirement requirement : charm.getRenderingPrerequisiteLabels()) {
+    for (IndirectCharmRequirement requirement : charm.getIndirectRequirements()) {
       setPrerequisiteVisuals(requirement);
     }
   }

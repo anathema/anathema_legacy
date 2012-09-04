@@ -30,12 +30,7 @@ public class CharmNodeBuilder {
       }
     }
     for (ICharm charm : groupCharms) {
-      for (IndirectCharmRequirement requirement : charm.getAttributeRequirements()) {
-        String id = requirement.getStringRepresentation();
-        IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(id);
-        charmNodesById.put(id, parentNode);
-      }
-      for (IndirectCharmRequirement requirement : charm.getRenderingPrerequisiteLabels()) {
+      for (IndirectCharmRequirement requirement : charm.getIndirectRequirements()) {
         String label = requirement.getStringRepresentation();
         IIdentifiedRegularNode parentNode = NodeFactory.createChildlessNode(label);
         charmNodesById.put(label, parentNode);

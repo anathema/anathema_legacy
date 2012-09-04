@@ -177,7 +177,7 @@ public class DummyCharm extends Identificate implements ICharm {
   }
 
   @Override
-  public Set<IndirectCharmRequirement> getRenderingPrerequisiteLabels() {
+  public Set<IndirectCharmRequirement> getIndirectRequirements() {
     return emptySet();
   }
 

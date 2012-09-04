@@ -23,7 +23,7 @@ public interface ICharm extends ICharmData, IMagic {
 
   Set<ICharm> getRenderingPrerequisiteCharms();
   
-  Set<IndirectCharmRequirement> getRenderingPrerequisiteLabels();
+  Set<IndirectCharmRequirement> getIndirectRequirements();
 
   boolean hasAttribute(Identified attribute);
   

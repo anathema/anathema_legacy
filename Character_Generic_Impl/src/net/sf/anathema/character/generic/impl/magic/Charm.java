@@ -36,6 +36,7 @@ import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -268,13 +269,14 @@ public class Charm extends Identificate implements ICharm {
   }
 
   @Override
-  public Set<IndirectCharmRequirement> getRenderingPrerequisiteLabels() {
-    Set<IndirectCharmRequirement> prerequisiteLabels = new HashSet<IndirectCharmRequirement>();
+  public Set<IndirectCharmRequirement> getIndirectRequirements() {
+    Set<IndirectCharmRequirement> indirectRequirements = new HashSet<IndirectCharmRequirement>();
     for (SelectiveCharmGroup charmGroup : selectiveCharmGroups.getCombinedGroups()) {
       GroupedCharmRequirement requirement = new GroupedCharmRequirement(charmGroup);
-      prerequisiteLabels.add(requirement);
+      indirectRequirements.add(requirement);
     }
-    return prerequisiteLabels;
+    Collections.addAll(indirectRequirements, getAttributeRequirements());
+    return indirectRequirements;
   }
 
   @Override
@@ -292,7 +294,7 @@ public class Charm extends Identificate implements ICharm {
 
   @Override
   public boolean isTreeRoot() {
-    return parentCharms.size() == 0 && selectiveCharmGroups.isEmpty() && getAttributeRequirements().length == 0;
+    return parentCharms.size() == 0 &&  selectiveCharmGroups.isEmpty() && getAttributeRequirements().length == 0;
   }
 
   @Override
