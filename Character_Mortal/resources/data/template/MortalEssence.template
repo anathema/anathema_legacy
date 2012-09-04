@@ -1,0 +1,11 @@
+<essence isEssenceUser="false">
+  <personalPool/>
+  <peripheralPool>
+    <essencePart multiplier="1" />
+    <willpowerPart multiplier="1" />
+    <virtuePart>
+      <virtueType traitType="Conviction" multiplier="1" />
+      <virtueRanks count="1" multiplier="2" />
+    </virtuePart>
+  </peripheralPool>
+</essence>

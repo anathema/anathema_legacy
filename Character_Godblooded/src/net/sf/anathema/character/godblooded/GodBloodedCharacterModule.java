@@ -2,7 +2,6 @@ package net.sf.anathema.character.godblooded;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.ICharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
@@ -41,7 +40,7 @@ public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter 
   }
 
   @Override
-  public void addCharacterTemplates(ICharacterTemplateResourceProvider provider, ICharacterGenerics characterGenerics) {
+  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     registerParsedTemplate(characterGenerics, "template/GodBlooded2nd.template", "godblooded/"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/DemonBlooded2nd.template", "godblooded/"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/GhostBlooded2nd.template", "godblooded/"); //$NON-NLS-1$

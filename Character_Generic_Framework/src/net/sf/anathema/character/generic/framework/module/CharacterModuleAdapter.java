@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.framework.module;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.ICharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
 import net.sf.anathema.character.generic.framework.xml.CharacterTemplateParser;
@@ -23,7 +22,7 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
   }
 
   @Override
-  public void addCharacterTemplates(ICharacterTemplateResourceProvider provider, ICharacterGenerics characterGenerics) {
+  public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     // Nothing to do
   }
 
