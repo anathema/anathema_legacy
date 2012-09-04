@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.impl.additional.ComplexAdditionalEssenc
 import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.additional.LearnableCharmPool;
 import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
+import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.util.NullPointModification;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -21,7 +22,6 @@ import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -65,15 +65,12 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_REVISED_INTIMACIES = "revisedIntimacies";
   private static final String TAG_WILLPOWER_VIRTUE_BASED = "willpowerVirtueBased";
   private final ISpecialCharm[] charms;
-  private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
   public AdditionalRulesTemplateParser(
       IXmlTemplateRegistry<GenericAdditionalRules> registry,
-      ISpecialCharm[] charms,
-      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
+      ISpecialCharm[] charms) {
     super(registry);
     this.charms = charms;
-    this.backgroundRegistry = backgroundRegistry;
   }
 
   @Override
@@ -101,7 +98,6 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       return;
     }
     for (Element costModifierElement : ElementUtilities.elements(additionalCostElement, TAG_COST_MODIFIER)) {
-      IBackgroundTemplate backgroundTemplate = getBackgroundTemplate(costModifierElement);
       final List<IPointModification> bonusModifications = new ArrayList<IPointModification>();
       for (Element modificationElement : ElementUtilities.elements(costModifierElement, TAG_BONUS_MODIFICATION)) {
         bonusModifications.add(createPointCostModification(modificationElement));
@@ -110,7 +106,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       for (Element modificationElement : ElementUtilities.elements(costModifierElement, TAG_DOT_COST_MODIFICATION)) {
         dotCostModifications.add(createPointCostModification(modificationElement));
       }
-      basicTemplate.addBackgroundCostModifier(backgroundTemplate.getId(),
+      basicTemplate.addBackgroundCostModifier(getBackgroundId(costModifierElement),
               new BackgroundCostModifier(bonusModifications, dotCostModifications));
     }
   }
@@ -207,9 +203,12 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     basicTemplate.addAdditionalEssencePools(pools.toArray(new IAdditionalEssencePool[pools.size()]));
   }
 
+  private String getBackgroundId(Element parent) throws PersistenceException {
+	  return ElementUtilities.getRequiredAttrib(parent.element(TAG_BACKGROUND_REFERENCE), ATTRIB_ID);
+  }
+  
   private IBackgroundTemplate getBackgroundTemplate(Element parent) throws PersistenceException {
-    String backgroundId = ElementUtilities.getRequiredAttrib(parent.element(TAG_BACKGROUND_REFERENCE), ATTRIB_ID);
-    return backgroundRegistry.getById(backgroundId);
+	  return new SimpleBackgroundTemplate(getBackgroundId(parent));
   }
 
   private AdditionalEssencePool parsePool(Element parent, String elementName) throws PersistenceException {

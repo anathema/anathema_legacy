@@ -240,8 +240,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(registryCollection.getAdditionalRulesRegistry(),
-                                                                             provider.getSpecialCharms(characterTemplate.getTemplateType().getCharacterType()),
-                                                                             backgroundRegistry);
+                                                                             provider.getSpecialCharms(characterTemplate.getTemplateType().getCharacterType()));
     GenericAdditionalRules rules = parser.parseTemplate(element);
     characterTemplate.setAdditionalRules(rules);
   }
