@@ -18,6 +18,8 @@ We have left sourceforge for good. See the announcement on the homepage for deta
 * The Charm view colors satisfied charm prerequisites that derive from a general group, such as "Any Excellency".
 * The Charm view colors charm prerequisites that are not part of the currently displayed group when they are learned.
      (e.g in the Lunar Shifting Knack cascade, Deadly Beastman Transformation is colored when learned.)
+* It is now possible to create custom character templates in a similar manner to custom charms. See documentation on
+	 the Anathema wiki for details.
 
 ### Bugfixes
 * (Windows) The uninstaller is more conservative and does not accidentally delete all your programs.
