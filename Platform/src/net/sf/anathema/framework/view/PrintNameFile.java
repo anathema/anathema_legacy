@@ -11,11 +11,27 @@ public class PrintNameFile {
   private final String repositoryId;
   private final IItemType itemType;
 
-  public PrintNameFile(File file, String printName, String repositoryId, IItemType itemType) {
+  public PrintNameFile(File file, String printName, IItemType itemType) {
+    this(file, printName, extractRepositoryIdFromFile(file), itemType);
+  }
+
+  private PrintNameFile(File file, String printName, String repositoryId, IItemType itemType) {
     this.file = file;
     this.printName = printName;
-    this.repositoryId = repositoryId;
     this.itemType = itemType;
+    this.repositoryId = repositoryId;
+  }
+
+  private static String extractRepositoryIdFromFile(File file) {
+    String fileName = file.getName();
+    int extensionIndex = fileName.lastIndexOf('.');
+    return extensionIndex >= 0
+      ? fileName.substring(0, extensionIndex)
+      : fileName;
+  }
+
+  public PrintNameFile getParent() {
+    return new PrintNameFile(file.getParentFile(), printName, repositoryId, itemType);
   }
 
   public File getFile() {

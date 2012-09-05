@@ -70,11 +70,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
       return null;
     }
     PrintNameFile mainPrintNameFile = createSingleFilePrintNameFile(mainFile, itemType);
-    return new PrintNameFile(
-        mainPrintNameFile.getFile().getParentFile(),
-        mainPrintNameFile.getPrintName(),
-        mainPrintNameFile.getRepositoryId(),
-        mainPrintNameFile.getItemType());
+    return mainPrintNameFile.getParent();
   }
 
   private PrintNameFile createSingleFilePrintNameFile(File file, IItemType itemType) {
@@ -106,11 +102,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     if (!printNameMatcher.find()) {
       return null;
     }
-    Matcher idMatcher = ID_PATTERN.matcher(string);
-    if (!idMatcher.find()) {
-      return null;
-    }
-    PrintNameFile printNameFile = new PrintNameFile(file, printNameMatcher.group(1), idMatcher.group(1), itemType);
+    PrintNameFile printNameFile = new PrintNameFile(file, printNameMatcher.group(1), itemType);
     return printNameFile;
   }
 
@@ -120,11 +112,10 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     Document doc = DocumentUtilities.read(file);
     Element root = doc.getRootElement();
     String printName = root.attributeValue(PRINT_NAME_ATTR);
-    String idName = root.attributeValue(ID_ATTR);
-    if (printName == null || idName == null) {
+    if (printName == null) {
       return null;
     }
-    return new PrintNameFile(file, printName, idName, itemType);
+    return new PrintNameFile(file, printName, itemType);
   }
 
   @Override
