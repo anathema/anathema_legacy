@@ -4,10 +4,13 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
-## Release 4.4.1
+## Release 4.5.0 "Zarlath"
+
+We have left sourceforge for good. See the announcement on the homepage for details.
 
 ### Features
 * Charms in the Combo view are sorted alphabetically.
+* Charms in the cascade view are sorted somewhat better.
 * The update screen shows changes since your current version.
 * Anathema has an even more helpful message when a Martial Arts charm does not conform with its expectations.
 * (Solar) "Divine Transcendence" and similar Charms apply to re-purchases.
@@ -21,8 +24,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 * The Charm Cascades zoom to the pointer, as they used to do.
 * Restores the function to CTRL-click a Charm to edit its description.
 * Restores the option to save internal playlists in the music database.
-* (Solar) "Divine Transcendence" and "Supreme Perfection" and their mirrors have their keywords corrected
-     and no longer count as Excellencies.
+* (Solar) "Divine Transcendence" and "Supreme Perfection" and their mirrors no longer count as Excellencies.
 
 
 ## Release 4.4.0 "Yu-Shan"
