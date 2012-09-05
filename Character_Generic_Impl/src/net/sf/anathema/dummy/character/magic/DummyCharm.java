@@ -32,8 +32,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import static java.util.Collections.emptySet;
-
 public class DummyCharm extends Identificate implements ICharm {
 
   private ValuedTraitType essence;
@@ -178,7 +176,9 @@ public class DummyCharm extends Identificate implements ICharm {
 
   @Override
   public Set<IndirectCharmRequirement> getIndirectRequirements() {
-    return emptySet();
+    HashSet<IndirectCharmRequirement> charmRequirements = new HashSet<IndirectCharmRequirement>();
+    Collections.addAll(charmRequirements, getAttributeRequirements());
+    return charmRequirements;
   }
 
   @Override

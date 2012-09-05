@@ -50,12 +50,12 @@ public class UpdateDialogPage extends AbstractDialogPage {
     panel.add(new JLabel(installedVersion.asString()), DEFAULT);
     panel.add(new JLabel(getString("Help.UpdateCheck.LatestVersion") + ":"), DEFAULT);
     panel.add(latestVersionLabel, DEFAULT);
+    panel.add(new JScrollPane(changelogDisplay),
+            new GridDialogLayoutDataBuilder().filledHorizontal().horizontalSpan(2).get());
     changelogDisplay.setEditable(false);
     panel.add(updateButton);
     updateButton.setEnabled(false);
     panel.add(updateProgress, new GridDialogLayoutDataBuilder().filledHorizontal().grabExcessHorizontalSpace().get());
-    panel.add(new JScrollPane(changelogDisplay),
-            new GridDialogLayoutDataBuilder().filledHorizontal().horizontalSpan(2).get());
     return panel;
   }
 
