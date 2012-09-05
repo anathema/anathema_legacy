@@ -15,8 +15,8 @@ import net.sf.anathema.lib.resources.ResourceFile;
 @ExtensibleDataSetCompiler
 public class CharacterTemplateResourceCompiler implements IExtensibleDataSetCompiler {
 	
-	private static final String CHARACTER_FILE_RECOGNITION_PATTERN = "Character.*\\.xml";
-	private static final String CHARACTER_DATA_EXTRACTION_PATTERN = ".*/Character_(.*?)_(.*?)?\\.xml";
+	private static final String CHARACTER_FILE_RECOGNITION_PATTERN = "Character_(.+?)_(.+?)\\.xml";
+	private static final String CHARACTER_DATA_EXTRACTION_PATTERN = ".*/Character_(.+?)_(.+?)\\.xml";
 	  
 	private final Map<String, List<ResourceFile>> templateResources = new HashMap<String, List<ResourceFile>>();
 
