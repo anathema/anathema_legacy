@@ -312,6 +312,7 @@ task releaseMac(type: Zip) {
 
 // Release Dependencies
 [buildWin, buildMac, buildZip].each {
+  System.setProperty('file.encoding', 'UTF-8') 
   it.dependsOn createReleaseDirectory
   it.dependsOn ':Anathema:jar'
 }
