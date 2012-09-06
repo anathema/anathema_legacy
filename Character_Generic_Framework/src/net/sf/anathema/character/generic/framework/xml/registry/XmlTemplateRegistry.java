@@ -1,6 +1,8 @@
 package net.sf.anathema.character.generic.framework.xml.registry;
 
 import com.google.common.base.Preconditions;
+
+import net.sf.anathema.character.generic.framework.ICharacterTemplateExtensionResourceCache;
 import net.sf.anathema.character.generic.framework.xml.ITemplateParser;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -17,7 +19,12 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
 
   private final List<String> idsInProgress = new ArrayList<String>();
   private final IRegistry<String, T> templateRegistry = new Registry<String, T>();
+  private final ICharacterTemplateExtensionResourceCache cache;
   private ITemplateParser<T> templateParser;
+  
+  public XmlTemplateRegistry(ICharacterTemplateExtensionResourceCache cache) {
+	  this.cache = cache;
+  }
 
   @Override
   public void setTemplateParser(ITemplateParser<T> templateParser) {
@@ -31,13 +38,29 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
   
   @Override
   public T get(final String id, final String prefix) throws PersistenceException {
-	return get(id, new IDocumentOpener() {
-		@Override
-		public Document openDocument() throws Exception {
-			InputStream resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(prefix + "data/" + id); //$NON-NLS-1$
-		    return DocumentUtilities.read(resourceAsStream);
-		}
-	});
+	  // First try to find a canon source file
+	  ResourceFile resource = cache.getTemplateResource(prefix + "data/" + id);
+	  // That failing, attempt to find a custom source file
+	  if (resource == null) {
+		  resource = cache.getTemplateResource(id);
+	  }
+	  // If a source file has been found, load that.
+	  if (resource != null) {
+		  return get(resource);
+	  }
+	  // If all of that fails, try to directly load non-dataset files.
+	  // (At this time, this method is only necessary for God-Blooded,
+	  //  and may be safely removed if we clean house for Ex3)
+	  return get(id, new IDocumentOpener() {
+		  @Override
+		  public Document openDocument() throws Exception {
+			  InputStream resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(prefix + "data/" + id); //$NON-NLS-1$
+			  if (resourceAsStream == null) {
+				  resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(id);
+			  }
+			  return DocumentUtilities.read(resourceAsStream);
+		  }
+	  });
   }
   
   @Override

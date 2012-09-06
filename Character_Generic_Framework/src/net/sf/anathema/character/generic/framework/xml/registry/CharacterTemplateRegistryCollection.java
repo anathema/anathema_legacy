@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.registry;
 
+import net.sf.anathema.character.generic.framework.ICharacterTemplateExtensionResourceCache;
 import net.sf.anathema.character.generic.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.generic.framework.xml.GenericCharacterTemplate;
 import net.sf.anathema.character.generic.framework.xml.abilitygroup.GenericGroupedTraitTypeProvider;
@@ -16,19 +17,34 @@ import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTe
 
 public class CharacterTemplateRegistryCollection implements ICharacterTemplateRegistryCollection {
 
-  private final IXmlTemplateRegistry<GenericCharacterTemplate> characterTemplateRegistry = new XmlTemplateRegistry<GenericCharacterTemplate>();
-  private final IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> groupedTraitTypeRegistry = new XmlTemplateRegistry<GenericGroupedTraitTypeProvider>();
-  private final IXmlTemplateRegistry<GenericEssenceTemplate> essenceRegistry = new XmlTemplateRegistry<GenericEssenceTemplate>();
-  private final IXmlTemplateRegistry<GenericCreationPoints> creationPointsRegistry = new XmlTemplateRegistry<GenericCreationPoints>();
-  private final IXmlTemplateRegistry<GenericBonusPointCosts> bonusPointsRegistry = new XmlTemplateRegistry<GenericBonusPointCosts>();
-  private final IXmlTemplateRegistry<GenericExperiencePointCosts> experienceTemplateRegistry = new XmlTemplateRegistry<GenericExperiencePointCosts>();
-  private final IXmlTemplateRegistry<GenericTraitTemplateFactory> traitFactoryRegistry = new XmlTemplateRegistry<GenericTraitTemplateFactory>();
-  private final IXmlTemplateRegistry<GenericTraitTemplatePool> traitTemplatePoolRegistry = new XmlTemplateRegistry<GenericTraitTemplatePool>();
-  private final IXmlTemplateRegistry<GenericMagicTemplate> magicTemplateRegistry = new XmlTemplateRegistry<GenericMagicTemplate>();
-  private final IXmlTemplateRegistry<GenericPresentationTemplate> presentationTemplateRegistry = new XmlTemplateRegistry<GenericPresentationTemplate>();
-  private final IXmlTemplateRegistry<GenericHealthTemplate> healthTemplateRegistry = new XmlTemplateRegistry<GenericHealthTemplate>();
-  private final IXmlTemplateRegistry<GenericAdditionalRules> rulesRegistry = new XmlTemplateRegistry<GenericAdditionalRules>();
+  private final IXmlTemplateRegistry<GenericCharacterTemplate> characterTemplateRegistry;
+  private final IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> groupedTraitTypeRegistry;
+  private final IXmlTemplateRegistry<GenericEssenceTemplate> essenceRegistry;
+  private final IXmlTemplateRegistry<GenericCreationPoints> creationPointsRegistry;
+  private final IXmlTemplateRegistry<GenericBonusPointCosts> bonusPointsRegistry;
+  private final IXmlTemplateRegistry<GenericExperiencePointCosts> experienceTemplateRegistry;
+  private final IXmlTemplateRegistry<GenericTraitTemplateFactory> traitFactoryRegistry;
+  private final IXmlTemplateRegistry<GenericTraitTemplatePool> traitTemplatePoolRegistry;
+  private final IXmlTemplateRegistry<GenericMagicTemplate> magicTemplateRegistry;
+  private final IXmlTemplateRegistry<GenericPresentationTemplate> presentationTemplateRegistry;
+  private final IXmlTemplateRegistry<GenericHealthTemplate> healthTemplateRegistry;
+  private final IXmlTemplateRegistry<GenericAdditionalRules> rulesRegistry;
 
+  public CharacterTemplateRegistryCollection(ICharacterTemplateExtensionResourceCache cache) {
+	  characterTemplateRegistry = new XmlTemplateRegistry<GenericCharacterTemplate>(cache);
+	  groupedTraitTypeRegistry = new XmlTemplateRegistry<GenericGroupedTraitTypeProvider>(cache);
+	  essenceRegistry = new XmlTemplateRegistry<GenericEssenceTemplate>(cache);
+	  creationPointsRegistry = new XmlTemplateRegistry<GenericCreationPoints>(cache);
+	  bonusPointsRegistry = new XmlTemplateRegistry<GenericBonusPointCosts>(cache);
+	  experienceTemplateRegistry = new XmlTemplateRegistry<GenericExperiencePointCosts>(cache);
+	  traitFactoryRegistry = new XmlTemplateRegistry<GenericTraitTemplateFactory>(cache);
+	  traitTemplatePoolRegistry = new XmlTemplateRegistry<GenericTraitTemplatePool>(cache);
+	  magicTemplateRegistry = new XmlTemplateRegistry<GenericMagicTemplate>(cache);
+	  presentationTemplateRegistry = new XmlTemplateRegistry<GenericPresentationTemplate>(cache);
+	  healthTemplateRegistry = new XmlTemplateRegistry<GenericHealthTemplate>(cache);
+	  rulesRegistry = new XmlTemplateRegistry<GenericAdditionalRules>(cache);
+  }
+  
   @Override
   public IXmlTemplateRegistry<GenericCharacterTemplate> getCharacterTemplateRegistry() {
     return characterTemplateRegistry;

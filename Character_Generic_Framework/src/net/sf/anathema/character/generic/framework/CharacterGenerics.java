@@ -34,7 +34,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IRegistry<String, IAdditionalViewFactory> additionalViewRegistry = new Registry<String, IAdditionalViewFactory>();
   private final IRegistry<String, IAdditionalPersisterFactory> additionalPersisterRegistry;
   private final IIdentificateRegistry<IGlobalAdditionalTemplate> additionalTemplateRegistry = new IdentificateRegistry<IGlobalAdditionalTemplate>();
-  private final ICharacterTemplateRegistryCollection templateRegistries = new CharacterTemplateRegistryCollection();
+  private final ICharacterTemplateRegistryCollection templateRegistries;
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry = new Registry<ICharacterType, ICasteCollection>();
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<String, IAdditionalTemplateParser>();
   private final ICharmProvider charmProvider;
@@ -52,6 +52,7 @@ public class CharacterGenerics implements ICharacterGenerics {
     this.dataFileProvider = dataFileProvider;
     this.dataSetProvider = dataSetProvider;
     this.charmProvider = new CharmProvider(dataSetProvider.getDataSet(ICharmCache.class));
+    this.templateRegistries = new CharacterTemplateRegistryCollection(dataSetProvider.getDataSet(ICharacterTemplateExtensionResourceCache.class));
   }
 
   @Override
