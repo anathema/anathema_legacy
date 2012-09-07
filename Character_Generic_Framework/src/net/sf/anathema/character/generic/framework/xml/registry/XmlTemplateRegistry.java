@@ -1,6 +1,8 @@
 package net.sf.anathema.character.generic.framework.xml.registry;
 
-import com.google.common.base.Preconditions;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import net.sf.anathema.character.generic.framework.ICharacterTemplateExtensionResourceCache;
 import net.sf.anathema.character.generic.framework.xml.ITemplateParser;
@@ -9,11 +11,10 @@ import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.ResourceFile;
 import net.sf.anathema.lib.xml.DocumentUtilities;
+
 import org.dom4j.Document;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Preconditions;
 
 public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
 
@@ -68,7 +69,7 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
 	return get(resource.getFileName(), new IDocumentOpener() {
 		@Override
 		public Document openDocument() throws Exception {
-			return DocumentUtilities.read(resource.getURL());
+		    return DocumentUtilities.read(resource.getURL().openStream());
 		}
 	});
   }
