@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.registry;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,29 +53,29 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
 	  // If all of that fails, try to directly load non-dataset files.
 	  // (At this time, this method is only necessary for God-Blooded,
 	  //  and may be safely removed if we clean house for Ex3)
-	  return get(id, new IDocumentOpener() {
+	  return get(id, new IDocumentStreamOpener() {
 		  @Override
-		  public Document openDocument() throws Exception {
+		  public InputStream openDocument() throws Exception {
 			  InputStream resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(prefix + "data/" + id); //$NON-NLS-1$
 			  if (resourceAsStream == null) {
 				  resourceAsStream = XmlTemplateRegistry.class.getClassLoader().getResourceAsStream(id);
 			  }
-			  return DocumentUtilities.read(resourceAsStream);
+			  return resourceAsStream;
 		  }
 	  });
   }
   
   @Override
   public T get(final ResourceFile resource) throws PersistenceException {
-	return get(resource.getFileName(), new IDocumentOpener() {
+	return get(resource.getFileName(), new IDocumentStreamOpener() {
 		@Override
-		public Document openDocument() throws Exception {
-		    return DocumentUtilities.read(resource.getURL().openStream());
+		public InputStream openDocument() throws Exception {
+		    return resource.getURL().openStream();
 		}
 	});
   }
   
-  private T get(String id, IDocumentOpener opener) throws PersistenceException {
+  private T get(String id, IDocumentStreamOpener opener) throws PersistenceException {
     T template = templateRegistry.get(id);
     if (template != null) {
       return template;
@@ -84,11 +85,21 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
       throw new PersistenceException("Illegal recursion in template file:" + id); //$NON-NLS-1$
     }
     idsInProgress.add(id);
+    InputStream documentStream = null;
     Document document;
 	try {
-		document = opener.openDocument();
+		documentStream = opener.openDocument();
+		document = DocumentUtilities.read(documentStream);
 	} catch (Exception e) {
 		throw new PersistenceException("Unable to find file " + id);
+	} finally {
+		if (documentStream != null) {
+			try {
+				documentStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
     T parsedTemplate = templateParser.parseTemplate(document.getRootElement());
     templateRegistry.register(id, parsedTemplate);
@@ -96,7 +107,7 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
     return parsedTemplate;
   }
   
-  private interface IDocumentOpener {
-	  Document openDocument() throws Exception;
+  private interface IDocumentStreamOpener {
+	  InputStream openDocument() throws Exception;
   }
 }
