@@ -7,6 +7,8 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 4.5.0 "Zarlath"
 
 We have left sourceforge for good. See the announcement on the homepage for details.
+There are some issues with the automated update system. If Anathema appears to be unable to update itself,
+please close the dialog, quit the program and download the installer from our website at anathema.github.com.
 
 ### Features
 * Charms in the Combo view are sorted alphabetically.
