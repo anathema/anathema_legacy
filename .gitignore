@@ -21,7 +21,7 @@ repository.version
 *.item
 *.ecg
 *.yap
-/Anathema/repository/*/*.xml
+/Anathema/repository/*
 *.mdsc
 *.srs
 *.not
