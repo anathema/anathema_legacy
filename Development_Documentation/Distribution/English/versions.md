@@ -4,6 +4,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.5.1
+
+There was a critical issue with 4.5.0, rendering the release unusable.
+This patch fixes it.
+
 ## Release 4.5.0 "Zarlath"
 
 We have left sourceforge for good. See the announcement on the homepage for details.
