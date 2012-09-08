@@ -14,6 +14,8 @@ This patch fixes it.
 We have left sourceforge for good. See the announcement on the homepage for details.
 There are some issues with the automated update system. If Anathema appears to be unable to update itself,
 please close the dialog, quit the program and download the installer from our website at anathema.github.com.
+Please do not leave the updater running for hours on end - you'll just kill our server, and keep everyone else from
+downloading Anathema.
 
 ### Features
 * Charms in the Combo view are sorted alphabetically.
