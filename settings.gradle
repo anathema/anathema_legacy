@@ -9,7 +9,7 @@ include('Anathema',
         'Campaign_Music', 'Campaign_Music_Impl',
         'Campaign_Plot',
 
-        'Charm_Tree', 'Magic_Description', 'Charm_Entry', 'Charm_Cascades', 'Character_Cards',
+        'Charm_Tree', 'Magic_Description', 'Charm_Cascades', 'Character_Cards',
 
 	'Engine_Character', 'Engine_Exalted',
 
