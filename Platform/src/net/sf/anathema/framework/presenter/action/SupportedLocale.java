@@ -8,7 +8,9 @@ public enum SupportedLocale {
 
   Italian(Locale.ITALIAN),
 
-  Spanish(new Locale("es", "", "")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+  Spanish(new Locale("es", "", "")),
+      
+  Portuguese(new Locale("pt", "", "")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
   private final Locale locale;
 
