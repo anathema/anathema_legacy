@@ -29,7 +29,7 @@
           <cost>
                <essence cost="2" />
           </cost>
-          <duration amount="8" unit="hours"/>
+          <duration amount="8" unit="hour"/>
           <charmtype type="Simple"/>
           <source source="LostDead" />
      </charm>
