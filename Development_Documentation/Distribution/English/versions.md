@@ -9,6 +9,9 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Features
 * [Francisco M. Neto] contributes a Portuguese translation.
 
+### Bugfixes
+* Corrects (Ghost/Honored Ancestor Ways) "Courier In Dreams"
+
 ## Release 4.5.1
 
 There was a critical issue with 4.5.0, rendering the release unusable.
