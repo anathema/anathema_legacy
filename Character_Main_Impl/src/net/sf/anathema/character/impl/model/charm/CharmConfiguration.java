@@ -16,14 +16,15 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
-import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
+import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -50,6 +51,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isFormCharm;
+import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
+import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Sidereal;
 
 public class CharmConfiguration implements ICharmConfiguration {
 
@@ -144,7 +150,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         for (ICharm mergedCharm : charm.getMergedCharms()) {
           if (!isLearned(mergedCharm) && isLearnableWithoutPrerequisites(mergedCharm) &&
                   CharmConfiguration.this.getSpecialCharmConfiguration(mergedCharm) == null) {
-            getGroup(mergedCharm).learnCharm(mergedCharm, context.getBasicCharacterContext().isExperienced());
+            getGroup(mergedCharm).learnCharm(mergedCharm, isExperienced());
           }
         }
 
@@ -154,7 +160,7 @@ public class CharmConfiguration implements ICharmConfiguration {
             learnedMerged = learnedMerged || isLearned(mergedCharm);
           }
           if (learnedMerged && isLearnable(child)) {
-            getGroup(child).learnCharm(child, context.getBasicCharacterContext().isExperienced());
+            getGroup(child).learnCharm(child, isExperienced());
           }
         }
       }
@@ -168,7 +174,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         if (forgetMerges) {
           for (ICharm mergedCharm : charm.getMergedCharms()) {
             if (isLearned(mergedCharm) && isUnlearnableWithoutConsequences(mergedCharm)) {
-              getGroup(mergedCharm).forgetCharm(mergedCharm, context.getBasicCharacterContext().isExperienced());
+              getGroup(mergedCharm).forgetCharm(mergedCharm, isExperienced());
             }
           }
         }
@@ -197,7 +203,7 @@ public class CharmConfiguration implements ICharmConfiguration {
             }
           }
           if (!prereqsMet) {
-            getGroup(charm).forgetCharm(charm, context.getBasicCharacterContext().isExperienced());
+            getGroup(charm).forgetCharm(charm, isExperienced());
           }
         }
       }
@@ -446,7 +452,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
       ICasteType casteType = context.getBasicCharacterContext().getCasteType();
-      if (!getCharmTemplate(getNativeCharacterType()).isAllowedAlienCharms(casteType)) {
+      if (!getCharmTemplateForCharacterType().isAllowedAlienCharms(casteType)) {
         return false;
       }
       if (charm.hasAttribute(ICharmData.NATIVE)) {
@@ -456,14 +462,13 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (charm.isBlockedByAlternative(context.getMagicCollection())) {
       return false;
     }
-    if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
-      boolean isSiderealFormCharm = MartialArtsUtilities.isFormCharm(charm) && MartialArtsUtilities.hasLevel(
-              MartialArtsLevel.Sidereal, charm);
+    if (isMartialArtsCharm(charm)) {
+      boolean isSiderealFormCharm = isFormCharm(charm) && hasLevel(Sidereal, charm);
       if (isSiderealFormCharm && !arbitrator.isCelestialMartialArtsGroupCompleted(getMartialArtsGroups())) {
         return false;
       }
-      if (!getCharmTemplate(getNativeCharacterType()).getMartialArtsRules().isCharmAllowed(charm,
-              context.getCharmContext().getCharmConfiguration(), context.getBasicCharacterContext().isExperienced())) {
+      IGenericCharmConfiguration genericCharmConfiguration = context.getCharmContext().getCharmConfiguration();
+      if (!getMartialArtsRulesForCharacterType().isCharmAllowed(charm, genericCharmConfiguration, isExperienced())) {
         return false;
       }
     }
@@ -483,6 +488,18 @@ public class CharmConfiguration implements ICharmConfiguration {
       }
     }
     return true;
+  }
+
+  private boolean isExperienced() {
+    return context.getBasicCharacterContext().isExperienced();
+  }
+
+  private IMartialArtsRules getMartialArtsRulesForCharacterType() {
+    return getCharmTemplateForCharacterType().getMartialArtsRules();
+  }
+
+  private ICharmTemplate getCharmTemplateForCharacterType() {
+    return getCharmTemplate(getNativeCharacterType());
   }
 
   private PrerequisiteModifyingCharms getPrerequisiteModifyingCharms() {
@@ -522,7 +539,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public boolean isAlienCharm(ICharm charm) {
-    return !MartialArtsUtilities.isMartialArtsCharm(charm) && isAlienType(charm.getCharacterType());
+    return !isMartialArtsCharm(charm) && isAlienType(charm.getCharacterType());
   }
 
   private boolean isAlienType(ICharacterType characterType) {
