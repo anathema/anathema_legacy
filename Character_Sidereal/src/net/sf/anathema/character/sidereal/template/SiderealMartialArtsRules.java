@@ -3,10 +3,10 @@ package net.sf.anathema.character.sidereal.template;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
+import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 
-public class SiderealMartialArtsRules implements IMartialArtsRules {
+public class SiderealMartialArtsRules implements MartialArtsRules {
   private static final int MAX_CREATION_SMA = 3;
 
   @Override

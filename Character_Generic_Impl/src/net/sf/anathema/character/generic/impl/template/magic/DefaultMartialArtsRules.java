@@ -3,10 +3,10 @@ package net.sf.anathema.character.generic.impl.template.magic;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
+import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 
-public class DefaultMartialArtsRules implements IMartialArtsRules {
+public class DefaultMartialArtsRules implements MartialArtsRules {
 
   private boolean highLevelAtCreation = false;
   private final MartialArtsLevel level;

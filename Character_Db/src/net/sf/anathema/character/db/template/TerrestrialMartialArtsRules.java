@@ -7,10 +7,10 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
+import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 
-public class TerrestrialMartialArtsRules implements IMartialArtsRules {
+public class TerrestrialMartialArtsRules implements MartialArtsRules {
   private final IndirectCharmRequirement celestialAttributeRequirement = new CharmAttributeRequirement(
           new CharmAttribute(ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE.getId(), false), 1);
 

@@ -8,16 +8,16 @@ import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.CustomizableFreePicksPredicate;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
-import net.sf.anathema.character.generic.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.SpellMagicTemplate;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
+import net.sf.anathema.character.generic.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
+import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -162,16 +162,16 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     basicTemplate.setCharmTemplate(charmTemplate);
   }
 
-  private IMartialArtsRules createMartialArtsRules(Element parent) throws PersistenceException {
+  private MartialArtsRules createMartialArtsRules(Element parent) throws PersistenceException {
     Element martialArtsElement = ElementUtilities.getRequiredElement(parent, TAG_MARTIAL_ARTS);
     MartialArtsLevel level = getMartialArtsLevel(martialArtsElement);
     String rulesClassName = martialArtsElement.attributeValue(ATTRIB_RULES_CLASS);
-    IMartialArtsRules rules;
+    MartialArtsRules rules;
     if (rulesClassName == null) {
       rules = new DefaultMartialArtsRules(level);
     } else {
       try {
-        rules = (IMartialArtsRules) Class.forName(rulesClassName).newInstance();
+        rules = (MartialArtsRules) Class.forName(rulesClassName).newInstance();
       } catch (Exception e) {
         throw new PersistenceException(e);
       }

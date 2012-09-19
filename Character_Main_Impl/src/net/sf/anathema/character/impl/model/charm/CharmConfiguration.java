@@ -23,9 +23,9 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
-import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
+import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
@@ -493,7 +493,7 @@ public class CharmConfiguration implements ICharmConfiguration, MartialArtsCharm
     return context.getBasicCharacterContext().isExperienced();
   }
 
-  private IMartialArtsRules getMartialArtsRulesForCharacterType() {
+  private MartialArtsRules getMartialArtsRulesForCharacterType() {
     return getCharmTemplateForCharacterType().getMartialArtsRules();
   }
 

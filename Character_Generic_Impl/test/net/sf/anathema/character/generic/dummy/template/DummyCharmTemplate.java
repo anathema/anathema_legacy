@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsR
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
+import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 
 public class DummyCharmTemplate implements ICharmTemplate {
 
@@ -31,7 +31,7 @@ public class DummyCharmTemplate implements ICharmTemplate {
   }
 
   @Override
-  public IMartialArtsRules getMartialArtsRules() {
+  public MartialArtsRules getMartialArtsRules() {
     DefaultMartialArtsRules defaultMartialArtsRules = new DefaultMartialArtsRules(MartialArtsLevel.Mortal);
     defaultMartialArtsRules.setHighLevelAtCreation(true);
     return defaultMartialArtsRules;

@@ -11,5 +11,5 @@ public interface ICharmTemplate extends ICharmSet {
 
   boolean isAllowedAlienCharms(ICasteType caste);
 
-  IMartialArtsRules getMartialArtsRules();
+  MartialArtsRules getMartialArtsRules();
 }
