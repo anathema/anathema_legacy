@@ -6,4 +6,6 @@ public interface MartialArtsCharmConfiguration {
   ICharm[] getLearnedCharms();
 
   String[] getIncompleteCelestialMartialArtsGroups();
+
+  boolean isCelestialStyleCompleted();
 }

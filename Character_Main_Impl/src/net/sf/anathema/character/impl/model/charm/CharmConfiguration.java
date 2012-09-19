@@ -28,6 +28,7 @@ import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfigur
 import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -40,6 +41,7 @@ import net.sf.anathema.character.presenter.magic.CharacterSourceBookFilter;
 import net.sf.anathema.character.presenter.magic.EssenceLevelCharmFilter;
 import net.sf.anathema.character.presenter.magic.ObtainableCharmFilter;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
+import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identified;
@@ -57,7 +59,7 @@ import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
 import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Sidereal;
 
-public class CharmConfiguration implements ICharmConfiguration, MartialArtsCharmConfiguration {
+public class CharmConfiguration implements ICharmConfiguration {
 
   private final ISpecialCharmManager manager;
   private final MartialArtsCharmTree martialArtsCharmTree;
@@ -75,7 +77,7 @@ public class CharmConfiguration implements ICharmConfiguration, MartialArtsCharm
   private final ICharacterModelContext context;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharmProvider provider;
-  private final ILearningCharmGroupArbitrator arbitrator;
+  private final ICharmGroupArbitrator arbitrator;
   private List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
   private PrerequisiteModifyingCharms prerequisiteModifyingCharms;
 
@@ -464,10 +466,11 @@ public class CharmConfiguration implements ICharmConfiguration, MartialArtsCharm
     }
     if (isMartialArtsCharm(charm)) {
       boolean isSiderealFormCharm = isFormCharm(charm) && hasLevel(Sidereal, charm);
-      if (isSiderealFormCharm && !arbitrator.isCelestialMartialArtsGroupCompleted(getMartialArtsGroups())) {
+      MartialArtsCharmConfiguration martialArtsConfiguration = new DefaultMartialArtsCharmConfiguration(this, context.getMagicCollection(), context.getBasicCharacterContext());
+      if (isSiderealFormCharm && !martialArtsConfiguration.isCelestialStyleCompleted()) {
         return false;
       }
-      if (!getMartialArtsRulesForCharacterType().isCharmAllowed(charm, this, isExperienced())) {
+      if (!getMartialArtsRulesForCharacterType().isCharmAllowed(charm, martialArtsConfiguration, isExperienced())) {
         return false;
       }
     }
@@ -589,16 +592,6 @@ public class CharmConfiguration implements ICharmConfiguration, MartialArtsCharm
   @Override
   public ICharm[] getCharms(ICharmGroup charmGroup) {
     return arbitrator.getCharms(charmGroup);
-  }
-
-  @Override
-  public String[] getIncompleteCelestialMartialArtsGroups() {
-    return arbitrator.getIncompleteCelestialMartialArtsGroups(getMartialArtsGroups());
-  }
-
-  @Override
-  public ICharm[] getLearnedCharms() {
-    return getLearnedCharms(context.getBasicCharacterContext().isExperienced());
   }
 
   @Override

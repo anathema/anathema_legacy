@@ -2,21 +2,16 @@ package net.sf.anathema.character.impl.model.charm;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
-import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrator {
+public class LearningCharmGroupArbitrator implements ICharmGroupArbitrator {
 
   private final ICharmTemplate template;
   private final ICharacterModelContext context;
@@ -41,54 +36,5 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
       }
     }
     return charms.toArray(new ICharm[charms.size()]);
-  }
-
-  @Override
-  public String[] getIncompleteCelestialMartialArtsGroups(ILearningCharmGroup[] groups) {
-    Set<String> uncompletedGroups = new HashSet<String>();
-    for (ILearningCharmGroup group : groups) {
-      ICharm martialArtsCharm = group.getCoreCharms()[0];
-      if (!isCelestialStyle(martialArtsCharm) || isCompleted(group)) {
-        continue;
-      }
-      if (isBegun(group)) {
-        uncompletedGroups.add(group.getId());
-      }
-    }
-    return uncompletedGroups.toArray(new String[uncompletedGroups.size()]);
-  }
-
-  @Override
-  public final boolean isCelestialMartialArtsGroupCompleted(ILearningCharmGroup[] groups) {
-    for (ILearningCharmGroup group : groups) {
-      ICharm martialArtsCharm = group.getCoreCharms()[0];
-      if (isCelestialStyle(martialArtsCharm) && isCompleted(group)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  private boolean isCelestialStyle(ICharm martialArtsCharm) {
-    return MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm)
-        && !martialArtsCharm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE);
-  }
-
-  private boolean isBegun(ILearningCharmGroup group) {
-    for (ICharm charm : group.getAllCharms()) {
-      if (group.isLearned(charm)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  private boolean isCompleted(ILearningCharmGroup group) {
-    for (ICharm charm : group.getCoreCharms()) {
-      if (!group.isLearned(charm) && !charm.isBlockedByAlternative(context.getMagicCollection())) {
-        return false;
-      }
-    }
-    return true;
   }
 }

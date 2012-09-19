@@ -21,6 +21,8 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
 
   private ICharm[] charms = new ICharm[0];
 
+  private ILearningCharmGroup[] groups;
+
   @Override
   public void addLearnableListener(IChangeListener listener) {
     throw new NotYetImplementedException();
@@ -53,7 +55,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ILearningCharmGroup[] getCharmGroups(Identified type) {
-    throw new NotYetImplementedException();
+    return groups;
   }
 
   @Override
@@ -145,4 +147,8 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+  public void setGroups(ILearningCharmGroup... groups) {
+    this.groups = groups;
+  }
 }
