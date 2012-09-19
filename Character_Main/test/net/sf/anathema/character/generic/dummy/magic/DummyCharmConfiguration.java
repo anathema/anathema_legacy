@@ -81,11 +81,6 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
   }
 
   @Override
-  public String[] getIncompleteCelestialMartialArtsGroups() {
-    return new String[0];
-  }
-
-  @Override
   public ILearningCharmGroup[] getAllGroups() {
     throw new NotYetImplementedException();
   }

@@ -30,8 +30,6 @@ public interface ICharmConfiguration extends CharmFilterContainer, IExtendedChar
 
   ISpecialCharmConfiguration getSpecialCharmConfiguration(String charmId);
 
-  String[] getIncompleteCelestialMartialArtsGroups();
-
   void unlearnAllAlienCharms();
 
   boolean isAlienCharm(ICharm charm);

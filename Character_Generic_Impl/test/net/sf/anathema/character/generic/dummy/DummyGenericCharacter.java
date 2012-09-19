@@ -211,11 +211,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public String[] getIncompleteCelestialMartialArtsGroups() {
-    return new String[0];
-  }
-
-  @Override
   public int getPainTolerance() {
     return 0;
   }

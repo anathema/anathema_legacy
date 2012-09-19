@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 
 public interface IMartialArtsRules {
 
-  boolean isCharmAllowed(ICharm martialArtsCharm, IGenericCharmConfiguration charmConfiguration, boolean isExperienced);
+  boolean isCharmAllowed(ICharm martialArtsCharm, MartialArtsCharmConfiguration charmConfiguration, boolean isExperienced);
 
   MartialArtsLevel getStandardLevel();
 

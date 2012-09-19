@@ -22,10 +22,10 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
+import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
@@ -57,7 +57,7 @@ import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
 import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Sidereal;
 
-public class CharmConfiguration implements ICharmConfiguration, IGenericCharmConfiguration {
+public class CharmConfiguration implements ICharmConfiguration, MartialArtsCharmConfiguration {
 
   private final ISpecialCharmManager manager;
   private final MartialArtsCharmTree martialArtsCharmTree;

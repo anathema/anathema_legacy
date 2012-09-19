@@ -267,11 +267,6 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public String[] getIncompleteCelestialMartialArtsGroups() {
-    return character.getCharms().getIncompleteCelestialMartialArtsGroups();
-  }
-
-  @Override
   public int getPainTolerance() {
     return character.getHealth().getPainToleranceLevel();
   }

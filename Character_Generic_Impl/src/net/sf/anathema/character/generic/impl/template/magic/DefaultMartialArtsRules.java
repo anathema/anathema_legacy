@@ -2,9 +2,9 @@ package net.sf.anathema.character.generic.impl.template.magic;
 
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
-import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
+import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
 
 public class DefaultMartialArtsRules implements IMartialArtsRules {
 
@@ -23,7 +23,7 @@ public class DefaultMartialArtsRules implements IMartialArtsRules {
   @Override
   public boolean isCharmAllowed(
       ICharm martialArtsCharm,
-      IGenericCharmConfiguration charmConfiguration,
+      MartialArtsCharmConfiguration charmConfiguration,
       boolean isExperienced) {
     int comparedLevel = MartialArtsUtilities.getLevel(martialArtsCharm).compareTo(level);
     if (comparedLevel <= 0) {
