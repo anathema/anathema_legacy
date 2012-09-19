@@ -36,9 +36,6 @@ public class MartialArtsUtilities {
   }
 
   public static boolean hasLevel(MartialArtsLevel level, ICharm charm) {
-    if (!isMartialArtsCharm(charm)) {
-      return false;
-    }
     return charm.hasAttribute(new Identificate(level.name()));
   }
 }
