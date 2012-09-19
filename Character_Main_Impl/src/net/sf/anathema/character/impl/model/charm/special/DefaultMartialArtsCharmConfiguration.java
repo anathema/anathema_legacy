@@ -2,10 +2,7 @@ package net.sf.anathema.character.impl.model.charm.special;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IMagicCollection;
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -14,6 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
+import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.character.generic.magic.ICharmData.NO_STYLE_ATTRIBUTE;
+import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Celestial;
 
 public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmConfiguration {
   private final ICharmConfiguration configuration;
@@ -67,8 +67,7 @@ public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmCon
   }
 
   private boolean isCelestialStyle(ICharm martialArtsCharm) {
-    return MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial,
-            martialArtsCharm) && !martialArtsCharm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE);
+    return hasLevel(Celestial, martialArtsCharm) && !martialArtsCharm.hasAttribute(NO_STYLE_ATTRIBUTE);
   }
 
   private boolean isBegun(ILearningCharmGroup group) {

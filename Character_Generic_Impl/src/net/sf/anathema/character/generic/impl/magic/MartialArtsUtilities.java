@@ -1,12 +1,13 @@
 package net.sf.anathema.character.generic.impl.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.util.Identificate;
 
 import java.text.MessageFormat;
+
+import static net.sf.anathema.character.generic.magic.ICharmData.FORM_ATTRIBUTE;
 
 public class MartialArtsUtilities {
 
@@ -17,7 +18,7 @@ public class MartialArtsUtilities {
   }
 
   public static boolean isFormCharm(ICharm charm) {
-    return charm.hasAttribute(ICharmData.FORM_ATTRIBUTE);
+    return charm.hasAttribute(FORM_ATTRIBUTE);
   }
 
   public static MartialArtsLevel getLevel(ICharm charm) {
