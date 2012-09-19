@@ -44,7 +44,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
   }
 
   @Override
-  public String[] getUncompletedCelestialMartialArtsGroups(ILearningCharmGroup[] groups) {
+  public String[] getIncompleteCelestialMartialArtsGroups(ILearningCharmGroup[] groups) {
     Set<String> uncompletedGroups = new HashSet<String>();
     for (ILearningCharmGroup group : groups) {
       ICharm martialArtsCharm = group.getCoreCharms()[0];

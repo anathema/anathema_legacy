@@ -267,8 +267,8 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public String[] getUncompletedCelestialMartialArtsGroups() {
-    return character.getCharms().getUncompletedCelestialMartialArtsGroups();
+  public String[] getIncompleteCelestialMartialArtsGroups() {
+    return character.getCharms().getIncompleteCelestialMartialArtsGroups();
   }
 
   @Override
@@ -356,7 +356,7 @@ public class GenericCharacter implements IGenericCharacter {
     		}
     	}
     }
-    return genericCharms.toArray(new ICharm[0]);
+    return genericCharms.toArray(new ICharm[genericCharms.size()]);
   }
 
   @Override

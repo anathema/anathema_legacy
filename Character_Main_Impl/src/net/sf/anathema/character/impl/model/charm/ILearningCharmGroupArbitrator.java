@@ -5,7 +5,7 @@ import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 
 public interface ILearningCharmGroupArbitrator extends ICharmGroupArbitrator {
 
-  String[] getUncompletedCelestialMartialArtsGroups(ILearningCharmGroup[] groups);
+  String[] getIncompleteCelestialMartialArtsGroups(ILearningCharmGroup[] groups);
 
   boolean isCelestialMartialArtsGroupCompleted(ILearningCharmGroup[] groups);
 }

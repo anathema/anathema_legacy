@@ -29,8 +29,4 @@ public final class DummyCharmContext implements ICharmContext {
   public ICharmLearnStrategy getCharmLearnStrategy() {
     return learnStrategy;
   }
-
-  public final String[] getUncompletedCelestialMartialArtsGroups() {
-    return character.getUncompletedCelestialMartialArtsGroups();
-  }
 }

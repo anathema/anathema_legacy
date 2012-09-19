@@ -41,14 +41,18 @@ public class TerrestrialMartialArtsRules implements IMartialArtsRules {
         return true;
       }
       if (celestialAttributeRequirement.isFulfilled(charmConfiguration.getLearnedCharms())) {
-        String[] uncompletedGroupIds = charmConfiguration.getUncompletedCelestialMartialArtsGroups();
-        if (uncompletedGroupIds.length > 1) {
-          throw new IllegalStateException("The character has started learning more than one celestial style."); //$NON-NLS-1$
+        String[] incompleteGroupIds = charmConfiguration.getIncompleteCelestialMartialArtsGroups();
+        boolean hasMoreThanOneIncompleteGroup = incompleteGroupIds.length > 1;
+        if (hasMoreThanOneIncompleteGroup) {
+          String message = "The character has started learning more than one celestial style.";
+          throw new IllegalStateException(message);
         }
-        if (uncompletedGroupIds.length == 0) {
+        boolean hasNoIncompleteGroups = incompleteGroupIds.length == 0;
+        if (hasNoIncompleteGroups) {
           return true;
         }
-        return martialArtsCharm.getGroupId().equals(uncompletedGroupIds[0]);
+        boolean isFromCurrentIncompleteGroup = martialArtsCharm.getGroupId().equals(incompleteGroupIds[0]);
+        return isFromCurrentIncompleteGroup;
       }
     }
     return false;

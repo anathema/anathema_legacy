@@ -211,7 +211,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public String[] getUncompletedCelestialMartialArtsGroups() {
+  public String[] getIncompleteCelestialMartialArtsGroups() {
     return new String[0];
   }
 

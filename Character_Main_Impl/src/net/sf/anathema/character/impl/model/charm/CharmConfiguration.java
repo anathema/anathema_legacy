@@ -576,8 +576,8 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   @Override
-  public String[] getUncompletedCelestialMartialArtsGroups() {
-    return arbitrator.getUncompletedCelestialMartialArtsGroups(getMartialArtsGroups());
+  public String[] getIncompleteCelestialMartialArtsGroups() {
+    return arbitrator.getIncompleteCelestialMartialArtsGroups(getMartialArtsGroups());
   }
 
   @Override
