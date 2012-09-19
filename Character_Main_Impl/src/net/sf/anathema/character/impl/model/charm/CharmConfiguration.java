@@ -57,7 +57,7 @@ import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
 import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Sidereal;
 
-public class CharmConfiguration implements ICharmConfiguration {
+public class CharmConfiguration implements ICharmConfiguration, IGenericCharmConfiguration {
 
   private final ISpecialCharmManager manager;
   private final MartialArtsCharmTree martialArtsCharmTree;
@@ -467,8 +467,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       if (isSiderealFormCharm && !arbitrator.isCelestialMartialArtsGroupCompleted(getMartialArtsGroups())) {
         return false;
       }
-      IGenericCharmConfiguration genericCharmConfiguration = context.getCharmContext().getCharmConfiguration();
-      if (!getMartialArtsRulesForCharacterType().isCharmAllowed(charm, genericCharmConfiguration, isExperienced())) {
+      if (!getMartialArtsRulesForCharacterType().isCharmAllowed(charm, this, isExperienced())) {
         return false;
       }
     }
@@ -595,6 +594,11 @@ public class CharmConfiguration implements ICharmConfiguration {
   @Override
   public String[] getIncompleteCelestialMartialArtsGroups() {
     return arbitrator.getIncompleteCelestialMartialArtsGroups(getMartialArtsGroups());
+  }
+
+  @Override
+  public ICharm[] getLearnedCharms() {
+    return getLearnedCharms(context.getBasicCharacterContext().isExperienced());
   }
 
   @Override
