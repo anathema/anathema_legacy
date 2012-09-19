@@ -44,18 +44,31 @@ public class TerrestrialMartialArtsRules implements MartialArtsRules {
         return true;
       }
       if (celestialAttributeRequirement.isFulfilled(charmConfiguration.getLearnedCharms())) {
-        String[] incompleteGroupIds = charmConfiguration.getIncompleteCelestialMartialArtsGroups();
-        boolean hasMoreThanOneIncompleteGroup = incompleteGroupIds.length > 1;
-        if (hasMoreThanOneIncompleteGroup) {
+        if (isFromAnyCompletedStyle(martialArtsCharm, charmConfiguration)) {
+          return true;
+        }
+        String[] incompleteStyleIds = charmConfiguration.getIncompleteCelestialMartialArtsGroups();
+        boolean hasMoreThanOneIncompleteStyle = incompleteStyleIds.length > 1;
+        if (hasMoreThanOneIncompleteStyle) {
           String message = "The character has started learning more than one celestial style.";
           throw new IllegalStateException(message);
         }
-        boolean hasNoIncompleteGroups = incompleteGroupIds.length == 0;
-        if (hasNoIncompleteGroups) {
+        boolean hasNoIncompleteStyle = incompleteStyleIds.length == 0;
+        if (hasNoIncompleteStyle) {
           return true;
         }
-        boolean isFromCurrentIncompleteGroup = martialArtsCharm.getGroupId().equals(incompleteGroupIds[0]);
-        return isFromCurrentIncompleteGroup;
+        boolean isFromCurrentIncompleteStyle = martialArtsCharm.getGroupId().equals(incompleteStyleIds[0]);
+        return isFromCurrentIncompleteStyle;
+      }
+    }
+    return false;
+  }
+
+  private boolean isFromAnyCompletedStyle(ICharm martialArtsCharm, MartialArtsCharmConfiguration charmConfiguration) {
+    String[] completeStyleIds = charmConfiguration.getCompleteCelestialMartialArtsGroups();
+    for (String styleId : completeStyleIds) {
+      if (martialArtsCharm.getGroupId().equals(styleId)) {
+        return true;
       }
     }
     return false;

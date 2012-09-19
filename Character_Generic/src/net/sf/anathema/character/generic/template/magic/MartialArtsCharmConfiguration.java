@@ -7,5 +7,7 @@ public interface MartialArtsCharmConfiguration {
 
   String[] getIncompleteCelestialMartialArtsGroups();
 
-  boolean isCelestialStyleCompleted();
+  String[] getCompleteCelestialMartialArtsGroups();
+
+  boolean isAnyCelestialStyleCompleted();
 }

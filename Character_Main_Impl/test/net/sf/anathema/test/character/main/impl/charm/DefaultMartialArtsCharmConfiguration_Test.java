@@ -24,7 +24,7 @@ public class DefaultMartialArtsCharmConfiguration_Test {
     DummyCharmConfiguration dummyConfig = new DummyCharmConfiguration();
     dummyConfig.setGroups(group);
     DefaultMartialArtsCharmConfiguration configuration = new DefaultMartialArtsCharmConfiguration(dummyConfig, collection, character);
-    boolean celestialMartialArtsGroupCompleted = configuration.isCelestialStyleCompleted();
+    boolean celestialMartialArtsGroupCompleted = configuration.isAnyCelestialStyleCompleted();
     Assert.assertTrue(celestialMartialArtsGroupCompleted);
   }
 

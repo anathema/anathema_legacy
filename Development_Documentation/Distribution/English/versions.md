@@ -10,7 +10,8 @@ Website: [anathema.github.com](http://anathema.github.com)
 * [Francisco M. Neto] contributes a Portuguese translation.
 
 ### Bugfixes
-* Corrects (Ghost/Honored Ancestor Ways) "Courier In Dreams"
+* Terrestrials can once again learn more than one Celestial Level Martial Arts style.
+* Corrects (Ghost/Honored Ancestor Ways) "Courier In Dreams".
 
 ## Release 4.5.1
 

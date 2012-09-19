@@ -467,7 +467,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (isMartialArtsCharm(charm)) {
       boolean isSiderealFormCharm = isFormCharm(charm) && hasLevel(Sidereal, charm);
       MartialArtsCharmConfiguration martialArtsConfiguration = new DefaultMartialArtsCharmConfiguration(this, context.getMagicCollection(), context.getBasicCharacterContext());
-      if (isSiderealFormCharm && !martialArtsConfiguration.isCelestialStyleCompleted()) {
+      if (isSiderealFormCharm && !martialArtsConfiguration.isAnyCelestialStyleCompleted()) {
         return false;
       }
       if (!getMartialArtsRulesForCharacterType().isCharmAllowed(charm, martialArtsConfiguration, isExperienced())) {

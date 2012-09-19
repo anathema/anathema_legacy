@@ -20,8 +20,8 @@ public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmCon
   private final IMagicCollection collection;
   private final IBasicCharacterData character;
 
-  public DefaultMartialArtsCharmConfiguration(ICharmConfiguration configuration,
-                                              IMagicCollection collection, IBasicCharacterData character) {
+  public DefaultMartialArtsCharmConfiguration(ICharmConfiguration configuration, IMagicCollection collection,
+                                              IBasicCharacterData character) {
     this.configuration = configuration;
     this.collection = collection;
     this.character = character;
@@ -38,8 +38,20 @@ public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmCon
   }
 
   @Override
-  public boolean isCelestialStyleCompleted() {
-    return isCelestialMartialArtsGroupCompleted(getMartialArtsGroups());
+  public String[] getCompleteCelestialMartialArtsGroups() {
+    Set<String> completedGroups = new HashSet<String>();
+    for (ILearningCharmGroup group : getMartialArtsGroups()) {
+      ICharm martialArtsCharm = group.getCoreCharms()[0];
+      if (isCelestialStyle(martialArtsCharm) && isCompleted(group)) {
+        completedGroups.add(group.getId());
+      }
+    }
+    return completedGroups.toArray(new String[completedGroups.size()]);
+  }
+
+  @Override
+  public boolean isAnyCelestialStyleCompleted() {
+    return isAnyCelestialMartialArtsGroupCompleted(getMartialArtsGroups());
   }
 
   private String[] getIncompleteCelestialMartialArtsGroups(ILearningCharmGroup[] groups) {
@@ -56,7 +68,7 @@ public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmCon
     return uncompletedGroups.toArray(new String[uncompletedGroups.size()]);
   }
 
-  private boolean isCelestialMartialArtsGroupCompleted(ILearningCharmGroup[] groups) {
+  private boolean isAnyCelestialMartialArtsGroupCompleted(ILearningCharmGroup[] groups) {
     for (ILearningCharmGroup group : groups) {
       ICharm martialArtsCharm = group.getCoreCharms()[0];
       if (isCelestialStyle(martialArtsCharm) && isCompleted(group)) {

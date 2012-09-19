@@ -192,6 +192,11 @@ public class DummyCharm extends Identificate implements ICharm {
 
   @Override
   public boolean hasAttribute(Identified attribute) {
+    for (ICharmAttribute iCharmAttribute : attributes) {
+      if (iCharmAttribute.getId().equals(attribute.getId())){
+        return true;
+      }
+    }
     return false;
   }
 
