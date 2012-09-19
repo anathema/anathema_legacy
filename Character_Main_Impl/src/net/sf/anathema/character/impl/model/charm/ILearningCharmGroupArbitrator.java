@@ -8,6 +8,4 @@ public interface ILearningCharmGroupArbitrator extends ICharmGroupArbitrator {
   String[] getUncompletedCelestialMartialArtsGroups(ILearningCharmGroup[] groups);
 
   boolean isCelestialMartialArtsGroupCompleted(ILearningCharmGroup[] groups);
-
-
 }

@@ -12,8 +12,7 @@ import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 
 public class TerrestrialMartialArtsRules implements IMartialArtsRules {
   private final IndirectCharmRequirement celestialAttributeRequirement = new CharmAttributeRequirement(
-      new CharmAttribute(ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE.getId(), false),
-      1);
+          new CharmAttribute(ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE.getId(), false), 1);
 
   private boolean highLevelAtCreation;
 
@@ -28,10 +27,8 @@ public class TerrestrialMartialArtsRules implements IMartialArtsRules {
   }
 
   @Override
-  public boolean isCharmAllowed(
-      ICharm martialArtsCharm,
-      IGenericCharmConfiguration charmConfiguration,
-      boolean isExperienced) {
+  public boolean isCharmAllowed(ICharm martialArtsCharm, IGenericCharmConfiguration charmConfiguration,
+                                boolean isExperienced) {
     MartialArtsLevel level = MartialArtsUtilities.getLevel(martialArtsCharm);
     if (MartialArtsLevel.Terrestrial.compareTo(level) >= 0) {
       return true;
