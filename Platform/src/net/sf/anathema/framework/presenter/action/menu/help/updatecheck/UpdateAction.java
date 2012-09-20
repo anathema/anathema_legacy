@@ -38,7 +38,7 @@ public class UpdateAction extends SmartAction {
     UpdateSystem updateSystem = createUpdateSystem(currentVersion);
     Updater updater = updateSystem.checkForUpdates();
     Version installedVersion = updateSystem.getInstalledVersion();
-    UpdateDialogPage page = new UpdateDialogPage(resources, installedVersion);
+    UpdateDialogPage page = new UpdateDialogPage(resources, currentVersion);
     prepareForInstallation(page, updater);
     DefaultDialogConfiguration dialogConfiguration = DefaultDialogConfiguration.createWithOkOnly(page);
     UserDialog dialog = new UserDialog(parentComponent, dialogConfiguration);

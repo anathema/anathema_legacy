@@ -8,6 +8,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Features
 * [Francisco M. Neto] contributes a Portuguese translation.
+* Update screen shows the currently running version even if you have a later version installed.
 
 ### Bugfixes
 * Terrestrials can once again learn more than one Celestial Level Martial Arts style.
