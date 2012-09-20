@@ -9,10 +9,14 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Features
 * [Francisco M. Neto] contributes a Portuguese translation.
 * Update screen shows the currently running version even if you have a later version installed.
+* Update screen shows the progress per file in addition to the overall progress.
+* Update system consumes less bandwidth and downloads faster as a result.
 
 ### Bugfixes
 * Terrestrials can once again learn more than one Celestial Level Martial Arts style.
+* Prepares the ground to make the update system more reliable.
 * Corrects (Ghost/Honored Ancestor Ways) "Courier In Dreams".
+
 
 ## Release 4.5.1
 

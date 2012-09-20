@@ -2,6 +2,7 @@ package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
 
 import de.idos.updates.Version;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataBuilder;
 import net.sf.anathema.framework.presenter.action.menu.help.IMessageData;
 import net.sf.anathema.framework.presenter.action.menu.help.MessageData;
@@ -33,6 +34,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
   private UpdateState state = UpdateState.Checking;
   private IMessageData messageData;
   private final JProgressBar updateProgress = new JProgressBar();
+  private final JProgressBar fileProgress = new JProgressBar();
   private JTextArea changelogDisplay = new JTextArea("Loading changelog...", 10, 0);
 
 
@@ -53,9 +55,10 @@ public class UpdateDialogPage extends AbstractDialogPage {
     panel.add(new JScrollPane(changelogDisplay),
             new GridDialogLayoutDataBuilder().filledHorizontal().horizontalSpan(2).get());
     changelogDisplay.setEditable(false);
-    panel.add(updateButton);
+    panel.add(updateButton, new GridDialogLayoutData(GridDialogLayoutData.FILL_VERTICAL).setVerticalSpan(2));
     updateButton.setEnabled(false);
     panel.add(updateProgress, new GridDialogLayoutDataBuilder().filledHorizontal().grabExcessHorizontalSpace().get());
+    panel.add(fileProgress, new GridDialogLayoutDataBuilder().filledHorizontal().grabExcessHorizontalSpace().get());
     return panel;
   }
 
@@ -179,6 +182,24 @@ public class UpdateDialogPage extends AbstractDialogPage {
       @Override
       public void run() {
         updateButton.setEnabled(enabled);
+      }
+    });
+  }
+
+  public void showExpectedFileSize(final int size) {
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        fileProgress.setMaximum(size);
+      }
+    });
+  }
+
+  public void showProgressOnFile(final int progress) {
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        fileProgress.setValue(progress);
       }
     });
   }
