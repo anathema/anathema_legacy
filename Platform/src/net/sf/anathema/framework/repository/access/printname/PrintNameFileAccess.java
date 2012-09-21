@@ -85,12 +85,12 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
       return readPrintName(file, itemType);
     }
     catch (IOException e) {
-      logger.debug(e);
+      logger.error(e);
       return null;
     }
   }
 
-  private PrintNameFile readPrintName(File file, IItemType itemType) throws FileNotFoundException, IOException {
+  private PrintNameFile readPrintName(File file, IItemType itemType) throws IOException {
     try {
       return extractPrintnameThroughXml(file, itemType);
     }
@@ -110,8 +110,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     if (!idMatcher.find()) {
       return null;
     }
-    PrintNameFile printNameFile = new PrintNameFile(file, printNameMatcher.group(1), idMatcher.group(1), itemType);
-    return printNameFile;
+    return new PrintNameFile(file, printNameMatcher.group(1), idMatcher.group(1), itemType);
   }
 
   private PrintNameFile extractPrintnameThroughXml(File file, IItemType itemType)

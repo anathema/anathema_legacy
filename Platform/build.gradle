@@ -2,7 +2,6 @@ dependencies {
   compile 'com.l2fprod.common:l2fprod-common-directorychooser:0.2.0'
   compile 'commons-io:commons-io:2.1'
   compile 'org.reflections:reflections:0.9.7'
-  compile 'org.slf4j:slf4j-simple:1.6.4'
   compile 'com.itextpdf:itextpdf:5.2.0'
   compile 'com.google.code.gson:gson:2.1'
   compile 'de.idos.updates:updates-core:1.1.0'

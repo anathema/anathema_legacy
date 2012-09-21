@@ -1,76 +1,34 @@
 package net.sf.anathema.lib.logging;
 
-import com.google.common.base.Strings;
-
-import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Map;
-
 public class Logger {
 
-  private static final String DEBUG_PREFIX = "[DEBUG] "; //$NON-NLS-1$
-  private static final String ERROR_PREFIX = "[ERROR] "; //$NON-NLS-1$
-  private static final String WARN_PREFIX = "[WARN] "; //$NON-NLS-1$
-  private static final String INFO_PREFIX = "[INFO] "; //$NON-NLS-1$
-  private static final Map<Class< ? >, Logger> loggers = new HashMap<Class< ? >, Logger>();
-
-  public synchronized static Logger getLogger(Class< ? > logClass) {
-    if (loggers.containsKey(logClass)) {
-      return loggers.get(logClass);
-    }
-    Logger logger = new Logger();
-    loggers.put(logClass, logger);
-    return logger;
+  public synchronized static Logger getLogger(Class<?> logClass) {
+    return new Logger(org.slf4j.LoggerFactory.getLogger(logClass));
   }
 
-  private final PrintStream printStream = System.err;
+  private org.slf4j.Logger logger;
 
-  private Logger() {
-    // nothing to do
-  }
-
-  public void debug(String message, Throwable throwable) {
-    printMessage(DEBUG_PREFIX, message);
-    printThrowable(DEBUG_PREFIX, throwable);
-  }
-
-  public void debug(Throwable throwable) {
-    debug(null, throwable);
+  private Logger(org.slf4j.Logger logger) {
+    this.logger = logger;
   }
 
   public void error(String message, Throwable exception) {
-    printMessage(ERROR_PREFIX, message);
-    printThrowable(ERROR_PREFIX, exception);
+    logger.error(message, exception);
   }
 
   public void error(Throwable throwable) {
-    error(null, throwable);
+    logger.error("", throwable);
   }
 
   public void info(String message) {
-    printMessage(INFO_PREFIX, message);
-  }
-
-  private void printMessage(String prefix, String message) {
-    if (!Strings.isNullOrEmpty(message)) {
-      printStream.println(prefix + message);
-    }
-  }
-
-  private void printThrowable(String prefix, Throwable throwable) {
-    if (throwable == null) {
-      return;
-    }
-    printStream.print(prefix);
-    throwable.printStackTrace(printStream);
+    logger.info(message);
   }
 
   public void warn(String message) {
-    printMessage(WARN_PREFIX, message);
+    logger.warn(message);
   }
 
   public void warn(String message, Throwable exception) {
-    printMessage(WARN_PREFIX, message);
-    printThrowable(WARN_PREFIX, exception);
+    logger.warn(message, exception);
   }
 }
