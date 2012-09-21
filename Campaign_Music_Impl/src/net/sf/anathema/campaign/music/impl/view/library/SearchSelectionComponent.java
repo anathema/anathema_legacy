@@ -10,10 +10,6 @@ import javax.swing.JTextField;
 
 public class SearchSelectionComponent implements ISearchComponent {
 
-  public static int getColumnCount() {
-    return 3;
-  }
-
   private final JCheckBox checkBox = new JCheckBox();
   private final JLabel label;
   private final JTextField textField = new JTextField(30);

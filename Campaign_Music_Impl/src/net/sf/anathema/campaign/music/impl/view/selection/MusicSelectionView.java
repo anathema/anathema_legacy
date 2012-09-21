@@ -1,8 +1,6 @@
 package net.sf.anathema.campaign.music.impl.view.selection;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.campaign.music.impl.view.SimpleTabViewFactory;
 import net.sf.anathema.campaign.music.impl.view.player.MusicPlayerView;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
@@ -24,6 +22,7 @@ import net.sf.anathema.lib.gui.list.actionview.EditableActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IMultiSelectionActionAddableListView;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
+import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -40,6 +39,10 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
   private final TrackDetailsView trackDetailsView = new TrackDetailsView();
   private MusicPlayerView playerView;
 
+  public MusicSelectionView(JPanel content) {
+    this.content = content;
+  }
+
   @Override
   public JComponent getComponent() {
     return content;
@@ -49,15 +52,15 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
                       IMusicCategorizationProperties categoryProperties, IMusicPlayerProperties playerProperties,
                       IMusicSelectionProperties selectionProperties, ITrackDetailsProperties detailsProperties) {
     selectionsView = new EditableActionAddableListView<IMusicSelection>(null, columnSettings, IMusicSelection.class);
-    content = createContent(includePlayerView, selectionProperties, categoryProperties, playerProperties,
+     createContent(includePlayerView, selectionProperties, categoryProperties, playerProperties,
             detailsProperties);
   }
 
-  private JComponent createContent(boolean includePlayerView, IMusicSelectionProperties selectionProperties,
+  private void createContent(boolean includePlayerView, IMusicSelectionProperties selectionProperties,
                                    IMusicCategorizationProperties categoryProperties,
                                    IMusicPlayerProperties playerProperties, ITrackDetailsProperties detailsProperties) {
-    JPanel panel = new JPanel(new GridDialogLayout(3, true));
-    panel.setBorder(new TitledBorder(selectionProperties.getMusicSelectionBorderTitle()));
+    content.add(new JLabel(selectionProperties.getMusicSelectionBorderTitle()), new CC().split(2).spanX());
+    content.add(new HorizontalLine(), new CC().grow());
     TabbedView selectionActionsView = new TabbedView(TabDirection.Down);
     selectionActionsView.addView(factory.createTabView(selectionsView.getComponent()),
             new ContentProperties(selectionProperties.getSelectionsString()));
@@ -71,14 +74,12 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
       JLabel label = new JLabel(selectionProperties.getNoDecoderString() + ".", SwingConstants.CENTER); //$NON-NLS-1$
       trackDetailsView.setPlayerComponent(new TitledPanel(playerProperties.getPlayerBorderString(), label));
     }
-    panel.add(selectionActionsView.getComponent(),
-            GridDialogLayoutDataFactory.createHorizontalSpanData(2, GridDialogLayoutData.FILL_BOTH));
+    content.add(selectionActionsView.getComponent(), new CC().spanX(2).grow());
     TabbedView tracksView = new TabbedView(TabDirection.Down);
     trackListView = new ActionAddableListView<IMp3Track>(null, IMp3Track.class); //$NON-NLS-1$
     tracksView.addView(factory.createTabView(trackListView.getComponent()),
             new ContentProperties(selectionProperties.getCurrentSelectionString()));
-    panel.add(tracksView.getComponent(), GridDialogLayoutData.FILL_BOTH);
-    return panel;
+    content.add(tracksView.getComponent(), new CC().grow());
   }
 
   @Override

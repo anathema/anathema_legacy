@@ -1,11 +1,8 @@
 package net.sf.anathema.campaign.music.impl.view;
 
-import java.awt.GridLayout;
-
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
+import net.miginfocom.layout.AC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.campaign.music.impl.view.library.LibraryControlView;
 import net.sf.anathema.campaign.music.impl.view.selection.MusicSelectionView;
 import net.sf.anathema.campaign.music.presenter.ILibraryControlProperties;
@@ -19,9 +16,13 @@ import net.sf.anathema.campaign.music.view.selection.IMusicSelectionView;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+
 public class MusicDatabaseView extends AbstractItemView implements IMusicDatabaseView {
 
-  private final JPanel content = new JPanel(new GridLayout(0, 1));
+  private final JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(3).fill(), new AC().gap("5px")));
 
   public MusicDatabaseView(String name, Icon icon) {
     super(name, icon);
@@ -40,15 +41,14 @@ public class MusicDatabaseView extends AbstractItemView implements IMusicDatabas
       IMusicPlayerProperties playerProperties,
       IMusicSelectionProperties selectionProperties,
       ITrackDetailsProperties detailsProperties) {
-    MusicSelectionView selectionView = new MusicSelectionView();
+    MusicSelectionView selectionView = new MusicSelectionView(content);
     selectionView.initGui(
-        columnSettings,
-        playerView,
-        categoryProperties,
-        playerProperties,
-        selectionProperties,
-        detailsProperties);
-    content.add(selectionView.getComponent());
+            columnSettings,
+            playerView,
+            categoryProperties,
+            playerProperties,
+            selectionProperties,
+            detailsProperties);
     return selectionView;
   }
 
@@ -57,11 +57,10 @@ public class MusicDatabaseView extends AbstractItemView implements IMusicDatabas
       ITableColumnViewSettings settings,
       IMusicCategorizationProperties categorizationProperties,
       ILibraryControlProperties libraryProperties) {
-    LibraryControlView libraryControlView = new LibraryControlView(settings, libraryProperties);
+    LibraryControlView libraryControlView = new LibraryControlView(settings, libraryProperties, content);
     libraryControlView.addLibraryView();
     libraryControlView.addSearchView(categorizationProperties);
     libraryControlView.initGui();
-    content.add(libraryControlView.getComponent());
     return libraryControlView;
   }
 }
