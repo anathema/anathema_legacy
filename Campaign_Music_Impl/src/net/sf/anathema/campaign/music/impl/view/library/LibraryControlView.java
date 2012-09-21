@@ -39,8 +39,7 @@ public class LibraryControlView implements ILibraryControlView, IView {
   private final ActionAddableListView<IMp3Track> mp3ListView;
   private final JButton searchButton = new JButton();
   private final MusicCategorizationView searchMusicCategorizationView = new MusicCategorizationView();
-  private final JPanel searchParameterPanel = new JPanel(
-          new GridDialogLayout(SearchSelectionComponent.getColumnCount(), false));
+  private final JPanel searchParameterPanel = new JPanel(new MigLayout(new LC().wrapAfter(3)));
   private JPanel libraryPanel;
   private JPanel searchPanel;
   private final ILibraryControlProperties viewProperties;
