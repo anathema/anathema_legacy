@@ -1,5 +1,6 @@
 package net.sf.anathema.character.dummy.trait;
 
+import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.dummy.DummyCharacterModelContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -18,7 +19,6 @@ import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.util.Identificate;
 import net.sf.anathema.lib.util.Identified;
 
@@ -40,9 +40,9 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   private IIdentifiedTraitTypeGroup getAttributeTypeGroup(final AttributeGroupType type) {
     IIdentifiedCasteTraitTypeGroup[] allAttributeTypeGroups = getAttributeTypeGroups();
-    return getFirst(allAttributeTypeGroups, new IPredicate<IIdentifiedCasteTraitTypeGroup>() {
+    return getFirst(allAttributeTypeGroups, new Predicate<IIdentifiedCasteTraitTypeGroup>() {
       @Override
-      public boolean evaluate(IIdentifiedCasteTraitTypeGroup group) {
+      public boolean apply(IIdentifiedCasteTraitTypeGroup group) {
         return group.getGroupId() == type;
       }
     });

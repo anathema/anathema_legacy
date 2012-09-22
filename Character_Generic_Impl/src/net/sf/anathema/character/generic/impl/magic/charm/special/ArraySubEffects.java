@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
-import net.sf.anathema.lib.util.IPredicate;
 
 import java.util.Iterator;
 
@@ -23,9 +23,9 @@ public class ArraySubEffects implements SubEffects{
 
   @Override
   public ISubeffect getById(final String id) {
-    return getFirst(subeffects, new IPredicate<ISubeffect>() {
+    return getFirst(subeffects, new Predicate<ISubeffect>() {
       @Override
-      public boolean evaluate(ISubeffect input) {
+      public boolean apply(ISubeffect input) {
         return input.getId().equals(id);
       }
     });

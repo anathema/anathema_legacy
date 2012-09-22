@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -40,9 +40,9 @@ public class CharmAlternativeBuilder {
     Set<ICharm> charms = new HashSet<ICharm>(charmReferences.size());
     for (Element charmReference : charmReferences) {
       final String charmId = charmReference.attributeValue(ATTRIB_ID);
-      ICharm charm = getFirst(existingCharms, new IPredicate<ICharm>() {
+      ICharm charm = getFirst(existingCharms, new Predicate<ICharm>() {
         @Override
-        public boolean evaluate(ICharm candidate) {
+        public boolean apply(ICharm candidate) {
           return candidate.getId().equals(charmId);
         }
       });

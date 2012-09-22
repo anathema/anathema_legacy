@@ -1,6 +1,7 @@
 package net.sf.anathema.campaign.music.impl.model.tracks;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
 import net.sf.anathema.campaign.music.model.libary.ITrackHandler;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
@@ -9,7 +10,6 @@ import net.sf.anathema.lib.progress.ICancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.progress.ProgressUtilities;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IPredicate;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,9 +49,9 @@ public class MusicFolderWalker implements IMusicFolderWalker {
   }
 
   private int getTrackCount() {
-    return FileUtilities.getFileCount(musicFolder, true, new IPredicate<File>() {
+    return FileUtilities.getFileCount(musicFolder, true, new Predicate<File>() {
       @Override
-      public boolean evaluate(File file) {
+      public boolean apply(File file) {
         return isMp3File(file);
       }
     });

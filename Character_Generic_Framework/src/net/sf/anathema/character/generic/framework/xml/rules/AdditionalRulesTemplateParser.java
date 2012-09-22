@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.xml.rules;
 
 import com.eteks.parser.CompilationException;
+import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
@@ -21,14 +22,13 @@ import net.sf.anathema.character.generic.util.IPointModification;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.lib.lang.ArrayUtilities.*;
+import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<GenericAdditionalRules> {
 
@@ -182,9 +182,9 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       if (multiPool.element(TAG_CHARM_REFERENCE) != null) {
         final String charmId = ElementUtilities.getRequiredAttrib(multiPool.element(TAG_CHARM_REFERENCE), ATTRIB_ID);
 
-        ISpecialCharm charm = getFirst(charms, new IPredicate<ISpecialCharm>() {
+        ISpecialCharm charm = getFirst(charms, new Predicate<ISpecialCharm>() {
           @Override
-          public boolean evaluate(ISpecialCharm value) {
+          public boolean apply(ISpecialCharm value) {
             return value.getCharmId().equals(charmId);
           }
         });

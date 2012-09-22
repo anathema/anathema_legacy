@@ -3,7 +3,6 @@ package net.sf.anathema.lib.lang;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import net.sf.anathema.lib.util.CastingTransformer;
-import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.ObjectUtilities;
 import org.apache.commons.lang3.ArrayUtils;
@@ -104,9 +103,9 @@ public class ArrayUtilities {
     return false;
   }
 
-  public static <T> T getFirst(T[] array, IPredicate<T> predicate) {
+  public static <T> T getFirst(T[] array, Predicate<T> predicate) {
     for (T element : array) {
-      if (predicate.evaluate(element)) {
+      if (predicate.apply(element)) {
         return element;
       }
     }
