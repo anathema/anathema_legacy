@@ -7,6 +7,8 @@ import net.sf.anathema.lib.util.IPredicate;
 
 import java.util.Iterator;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
+
 public class ArraySubEffects implements SubEffects{
   private final ISubeffect[] subeffects;
 
@@ -21,7 +23,7 @@ public class ArraySubEffects implements SubEffects{
 
   @Override
   public ISubeffect getById(final String id) {
-    return net.sf.anathema.lib.lang.ArrayUtilities.getFirst(subeffects, new IPredicate<ISubeffect>() {
+    return getFirst(subeffects, new IPredicate<ISubeffect>() {
       @Override
       public boolean evaluate(ISubeffect input) {
         return input.getId().equals(id);

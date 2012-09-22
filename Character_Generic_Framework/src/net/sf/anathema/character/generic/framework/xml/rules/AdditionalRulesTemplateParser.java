@@ -28,6 +28,8 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.*;
+
 public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<GenericAdditionalRules> {
 
   private static final String TAG_REQUIRED_MAGIC = "requiredMagic"; //$NON-NLS-1$
@@ -180,7 +182,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       if (multiPool.element(TAG_CHARM_REFERENCE) != null) {
         final String charmId = ElementUtilities.getRequiredAttrib(multiPool.element(TAG_CHARM_REFERENCE), ATTRIB_ID);
 
-        ISpecialCharm charm = net.sf.anathema.lib.lang.ArrayUtilities.getFirst(charms, new IPredicate<ISpecialCharm>() {
+        ISpecialCharm charm = getFirst(charms, new IPredicate<ISpecialCharm>() {
           @Override
           public boolean evaluate(ISpecialCharm value) {
             return value.getCharmId().equals(charmId);

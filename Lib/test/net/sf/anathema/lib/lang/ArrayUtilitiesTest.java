@@ -1,25 +1,9 @@
 package net.sf.anathema.lib.lang;
 
-import java.util.Arrays;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 public class ArrayUtilitiesTest {
-
-  @Test
-  public void testMoveToGreaterIndex() throws Exception {
-    String[] allStrings = new String[] { "1", "2", "3", "4" }; //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$//$NON-NLS-4$
-    ArrayUtilities.moveObject(allStrings, 1, 3);
-    Assert.assertTrue(Arrays.equals(new String[] { "1", "3", "4", "2" }, allStrings)); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$//$NON-NLS-4$
-  }
-
-  @Test
-  public void testMoveToLowerIndex() throws Exception {
-    String[] allStrings = new String[] { "1", "2", "3", "4" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-    ArrayUtilities.moveObject(allStrings, 2, 1);
-    Assert.assertTrue(Arrays.equals(new String[] { "1", "3", "2", "4" }, allStrings)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-  }
 
   @Test
   public void testCreateIntegerArray() throws Exception {

@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
+
 public class DummyCoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
 
   private final MultiEntryMap<String, ITraitType> abilityGroupsByType = new MultiEntryMap<String, ITraitType>();
@@ -38,7 +40,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   private IIdentifiedTraitTypeGroup getAttributeTypeGroup(final AttributeGroupType type) {
     IIdentifiedCasteTraitTypeGroup[] allAttributeTypeGroups = getAttributeTypeGroups();
-    return net.sf.anathema.lib.lang.ArrayUtilities.getFirst(allAttributeTypeGroups, new IPredicate<IIdentifiedCasteTraitTypeGroup>() {
+    return getFirst(allAttributeTypeGroups, new IPredicate<IIdentifiedCasteTraitTypeGroup>() {
       @Override
       public boolean evaluate(IIdentifiedCasteTraitTypeGroup group) {
         return group.getGroupId() == type;

@@ -16,6 +16,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVES;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
+import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class CharmAlternativeBuilder {
 
@@ -39,7 +40,7 @@ public class CharmAlternativeBuilder {
     Set<ICharm> charms = new HashSet<ICharm>(charmReferences.size());
     for (Element charmReference : charmReferences) {
       final String charmId = charmReference.attributeValue(ATTRIB_ID);
-      ICharm charm = net.sf.anathema.lib.lang.ArrayUtilities.getFirst(existingCharms, new IPredicate<ICharm>() {
+      ICharm charm = getFirst(existingCharms, new IPredicate<ICharm>() {
         @Override
         public boolean evaluate(ICharm candidate) {
           return candidate.getId().equals(charmId);

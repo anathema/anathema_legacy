@@ -16,6 +16,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_MERGED;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_MERGES;
+import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class CharmMergedBuilder {
 
@@ -39,7 +40,7 @@ public class CharmMergedBuilder {
     Set<ICharm> charms = new HashSet<ICharm>(charmReferences.size());
     for (Element charmReference : charmReferences) {
       final String charmId = charmReference.attributeValue(ATTRIB_ID);
-      ICharm charm = net.sf.anathema.lib.lang.ArrayUtilities.getFirst(existingCharms, new IPredicate<ICharm>() {
+      ICharm charm = getFirst(existingCharms, new IPredicate<ICharm>() {
         @Override
         public boolean evaluate(ICharm candidate) {
           return candidate.getId().equals(charmId);
