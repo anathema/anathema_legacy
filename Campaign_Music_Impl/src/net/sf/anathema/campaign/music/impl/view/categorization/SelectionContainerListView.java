@@ -1,13 +1,12 @@
 package net.sf.anathema.campaign.music.impl.view.categorization;
 
+import net.sf.anathema.campaign.music.presenter.ISelectionContainerView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.SmartJList;
-import net.sf.anathema.campaign.music.presenter.ISelectionContainerView;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.JList;
-import javax.swing.ListCellRenderer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -52,9 +51,5 @@ public class SelectionContainerListView<V> implements ISelectionContainerView<V>
   @Override
   public V[] getSelectedValues() {
     return smartList.getSelectedValues();
-  }
-
-  public void setRenderer(ListCellRenderer renderer) {
-    smartList.setCellRenderer(renderer);
   }
 }
