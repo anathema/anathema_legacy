@@ -11,6 +11,9 @@ import javax.swing.border.TitledBorder;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.campaign.music.impl.view.categorization.MusicCategorizationView;
 import net.sf.anathema.campaign.music.presenter.ITrackDetailsProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
@@ -30,7 +33,7 @@ public class TrackDetailsView implements ITrackDetailsView {
   private LabelledStringValueView artistView;
   private final MusicCategorizationView musicCategorizationView = new MusicCategorizationView();
   private final JPanel trackDetailsPanel = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel noTrackPanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel noTrackPanel = new JPanel(new MigLayout(new LC().fill()));
   private final ITextView givenNameView = new LineTextView(30);
   private final JPanel playerPanel = new JPanel(new BorderLayout());
 
@@ -54,7 +57,7 @@ public class TrackDetailsView implements ITrackDetailsView {
   }
 
   private void fillNoContentPanel(ITrackDetailsProperties detailsProperties) {
-    noTrackPanel.add(new JLabel(detailsProperties.getNoContentString(), SwingConstants.CENTER));
+    noTrackPanel.add(new JLabel(detailsProperties.getNoContentString()), new CC().push().grow());
   }
 
   private void fillTrackDetailsPanel(
