@@ -99,7 +99,7 @@ public class AutoWrappingTextComponent extends JComponent {
     });
     addKeyListener(new TextComponentKeyListener(content, selectionModel, new Provider<Toolkit>() {
       @Override
-      public Toolkit getObject() {
+      public Toolkit getValue() {
         return getToolkit();
       }
     }));

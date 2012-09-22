@@ -1,9 +1,7 @@
 package net.sf.anathema.lib.model;
 
-public interface IProperty<T> {
+import net.sf.anathema.lib.provider.Provider;
 
-  T getValue();
-
-  void setValue(T value);
-
+public interface IProperty<T> extends ISettable<T>, Provider<T> {
+  //nothing to do
 }

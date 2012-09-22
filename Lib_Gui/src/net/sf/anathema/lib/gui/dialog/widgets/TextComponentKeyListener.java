@@ -60,7 +60,7 @@ public final class TextComponentKeyListener extends KeyAdapter {
 
   private void writeToSystemClipboard(String string) {
     StringSelection stringSelection = new StringSelection(string);
-    Clipboard clipboard = toolkitProvider.getObject().getSystemClipboard();
+    Clipboard clipboard = toolkitProvider.getValue().getSystemClipboard();
     clipboard.setContents(stringSelection, stringSelection);
   }
 

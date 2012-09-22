@@ -1,9 +1,7 @@
 package net.sf.anathema.lib.registry;
 
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class Registry<I, V> implements IRegistry<I, V> {
 
