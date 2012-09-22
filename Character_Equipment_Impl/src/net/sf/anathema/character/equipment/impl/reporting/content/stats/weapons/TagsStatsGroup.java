@@ -14,6 +14,8 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.Identified;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
+
 public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> {
   private final String title;
   private final IResources resources;
@@ -44,7 +46,7 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
       table.addCell(createEmptyNameCell(font));
     } else {
       Identified[] tags = weapon.getTags();
-      String[] values = net.sf.anathema.lib.lang.ArrayUtilities.transform(tags, String.class, new ITransformer<Identified, String>() {
+      String[] values = transform(tags, String.class, new ITransformer<Identified, String>() {
         @Override
         public String transform(Identified input) {
           return resources.getString("Weapons.Tags." + input.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$

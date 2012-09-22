@@ -11,6 +11,8 @@ import net.sf.anathema.lib.util.Identified;
 
 import java.util.List;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
+
 public abstract class AbstractWeaponStats extends AbstractCombatStats implements IWeaponStats {
 
   private int accuracy;
@@ -76,7 +78,7 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
   @Override
   public Identified[] getTags() {
     String[] tagIds = tags.toArray(new String[tags.size()]);
-    return net.sf.anathema.lib.lang.ArrayUtilities.transform(tagIds, WeaponTag.class, new ITransformer<String, WeaponTag>() {
+    return transform(tagIds, WeaponTag.class, new ITransformer<String, WeaponTag>() {
       @Override
       public WeaponTag transform(String input) {
         return WeaponTag.valueOf(input);

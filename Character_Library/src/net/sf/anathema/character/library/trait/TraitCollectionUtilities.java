@@ -5,6 +5,8 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.lib.util.ITransformer;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
+
 public class TraitCollectionUtilities {
 
   private TraitCollectionUtilities() {
@@ -12,7 +14,7 @@ public class TraitCollectionUtilities {
   }
 
   public static IDefaultTrait[] getVirtues(ITraitCollection collection) {
-    return net.sf.anathema.lib.lang.ArrayUtilities.transform(
+    return transform(
             collection.getTraits(VirtueType.values()),
             IDefaultTrait.class,
             new ITransformer<ITrait, IDefaultTrait>() {

@@ -34,6 +34,7 @@ import static net.sf.anathema.character.generic.additionaltemplate.AdditionalMod
 import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Concept;
 import static net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType.Miscellaneous;
 import static net.sf.anathema.character.generic.framework.CharacterGenericsExtractor.getGenerics;
+import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class CharacterPresenter implements Presenter, MultipleContentViewPresenter {
 
@@ -124,7 +125,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     for (IContentPresenter presenter : corePresenters) {
       presenter.initPresentation();
     }
-    ContentView[] coreViews = net.sf.anathema.lib.lang.ArrayUtilities.transform(corePresenters, ContentView.class,
+    ContentView[] coreViews = transform(corePresenters, ContentView.class,
             new ITransformer<IContentPresenter, ContentView>() {
               @Override
               public ContentView transform(IContentPresenter input) {

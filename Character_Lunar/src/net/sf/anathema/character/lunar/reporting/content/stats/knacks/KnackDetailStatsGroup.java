@@ -8,6 +8,8 @@ import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.ITransformer;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
+
 public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
 
   private final IResources resources;
@@ -21,7 +23,7 @@ public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
     if (stats == null) {
       table.addCell(createTextCell(font, null));
     } else {
-      String[] details = net.sf.anathema.lib.lang.ArrayUtilities.transform(
+      String[] details = transform(
               stats.getDetailString(resources),
               String.class,
               new ITransformer<String, String>() {

@@ -13,6 +13,8 @@ import net.sf.anathema.lib.util.ITransformer;
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
+
 public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
 
   public AbstractCharmStats(ICharm magic) {
@@ -54,7 +56,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
 
   @Override
   public String[] getDetailStrings(final IResources resources) {
-    return net.sf.anathema.lib.lang.ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
+    return transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
       @Override
       public String transform(String input) {
         return resources.getString(input);

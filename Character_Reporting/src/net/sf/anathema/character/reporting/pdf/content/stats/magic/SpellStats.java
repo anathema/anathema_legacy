@@ -8,6 +8,8 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.ObjectUtilities;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
+
 public class SpellStats extends AbstractMagicStats<ISpell> {
 
   public SpellStats(ISpell spell) {
@@ -45,7 +47,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   @Override
   public String[] getDetailStrings(final IResources resources) {
-    return net.sf.anathema.lib.lang.ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
+    return transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
       @Override
       public String transform(String input) {
         return resources.getString(input);

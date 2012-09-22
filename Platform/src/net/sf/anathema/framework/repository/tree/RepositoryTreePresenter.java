@@ -16,6 +16,8 @@ import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
+
 public class RepositoryTreePresenter implements Presenter {
 
   private final DefaultMutableTreeNode root;
@@ -74,7 +76,7 @@ public class RepositoryTreePresenter implements Presenter {
           repositoryModel.setSelectedObject(new Object[0]);
         }
         else {
-          repositoryModel.setSelectedObject(net.sf.anathema.lib.lang.ArrayUtilities.transform(
+          repositoryModel.setSelectedObject(transform(
                   nodes,
                   Object.class,
                   new ITransformer<DefaultMutableTreeNode, Object>() {

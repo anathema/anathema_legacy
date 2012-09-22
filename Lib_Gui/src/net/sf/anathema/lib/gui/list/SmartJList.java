@@ -8,10 +8,9 @@ import java.util.List;
 
 public class SmartJList<T> extends JList {
 
-  private static final long serialVersionUID = 9175647149496650572L;
-private Class< ? extends T> clazz;
+  private Class<? extends T> clazz;
 
-  public SmartJList(Class< ? extends T> contentClass) {
+  public SmartJList(Class<? extends T> contentClass) {
     this.clazz = contentClass;
     setModel(new DefaultListModel());
     setSelectionModel(new DefaultListSelectionModel());

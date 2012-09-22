@@ -26,6 +26,8 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 import javax.swing.JPanel;
 
+import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
+
 public class EquipmentDatabasePresenter implements Presenter {
 
   private static final int COLUMN_COUNT = 45;
@@ -93,7 +95,7 @@ public class EquipmentDatabasePresenter implements Presenter {
         return 4;
       }
     });
-    String[] backgrounds = net.sf.anathema.lib.lang.ArrayUtilities.transform(defaultCostBackgrounds, String.class,
+    String[] backgrounds = transform(defaultCostBackgrounds, String.class,
             new ITransformer<String, String>() {
 
               @Override
