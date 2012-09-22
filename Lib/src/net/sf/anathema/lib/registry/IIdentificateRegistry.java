@@ -2,7 +2,13 @@ package net.sf.anathema.lib.registry;
 
 import net.sf.anathema.lib.util.Identified;
 
-public interface IIdentificateRegistry<E extends Identified> extends ICollectionRegistry<E> {
+import java.util.Collection;
+
+public interface IIdentificateRegistry<E extends Identified> {
+
+  void add(E... elements);
+
+  Collection<E> getAll();
 
   boolean idRegistered(String id);
 

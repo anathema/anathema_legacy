@@ -8,7 +8,6 @@ import java.util.Set;
 public class Registry<I, V> implements IRegistry<I, V> {
 
   private final Map<I, V> objects = new HashMap<I, V>();
-  private final Set<I> keySet = new LinkedHashSet<I>();
   private V defaultValue;
 
   public Registry() {
@@ -22,7 +21,6 @@ public class Registry<I, V> implements IRegistry<I, V> {
   @Override
   public void register(I id, V anObject) {
     objects.put(id, anObject);
-    keySet.add(id);
   }
 
   @Override
