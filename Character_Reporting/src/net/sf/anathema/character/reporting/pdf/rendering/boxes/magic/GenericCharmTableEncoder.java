@@ -25,9 +25,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
-import net.sf.anathema.lib.collection.CollectionUtilities;
+import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IPredicate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -97,12 +96,7 @@ public class GenericCharmTableEncoder extends AbstractTableEncoder<ReportSession
   private PdfPCell createGenericCell(IGenericCharacter character, ITraitType type, String genericId, PdfTemplate learnedTemplate, PdfTemplate notLearnedTemplate) throws DocumentException {
     final String charmId = genericId + "." + type.getId(); //$NON-NLS-1$
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
-    boolean isLearned = CollectionUtilities.getFirst(allLearnedMagic, new IPredicate<IMagic>() {
-      @Override
-      public boolean evaluate(IMagic value) {
-        return charmId.equals(value.getId());
-      }
-    }) != null;
+    boolean isLearned = MagicLearnUtilities.isCharmLearned(allLearnedMagic, charmId);
     Image image = Image.getInstance(isLearned ? learnedTemplate : notLearnedTemplate);
     TableCell tableCell = new TableCell(image);
     tableCell.setPadding(0);

@@ -10,9 +10,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtilities;
-import net.sf.anathema.lib.collection.CollectionUtilities;
+import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IPredicate;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
@@ -70,13 +69,8 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
     boolean[] excellencyLearned = new boolean[excellencies.length];
     for (int i = 0; i < excellencies.length; i++) {
-      final String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
-      excellencyLearned[i] = CollectionUtilities.getFirst(allLearnedMagic, new IPredicate<IMagic>() {
-        @Override
-        public boolean evaluate(IMagic value) {
-          return charmId.equals(value.getId());
-        }
-      }) != null;
+      String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
+      excellencyLearned[i] = MagicLearnUtilities.isCharmLearned(allLearnedMagic, charmId);
     }
     return excellencyLearned;
   }

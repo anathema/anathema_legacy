@@ -16,9 +16,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Position;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.traits.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.collection.CollectionUtilities;
+import net.sf.anathema.character.reporting.pdf.util.MagicLearnUtilities;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IPredicate;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -64,7 +63,7 @@ public class AttributesEncoder implements ContentEncoder {
         }
       });
     }
-    return excellencies.toArray(new IMagicStats[0]);
+    return excellencies.toArray(new IMagicStats[excellencies.size()]);
   }
 
   public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds, IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
@@ -89,13 +88,8 @@ public class AttributesEncoder implements ContentEncoder {
         boolean favored = traitCollection.getFavorableTrait(traitType).isCasteOrFavored();
         boolean[] excellencyLearned = new boolean[excellencies.length];
         for (int i = 0; i < excellencies.length; i++) {
-          final String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
-          excellencyLearned[i] = CollectionUtilities.getFirst(allLearnedMagic, new IPredicate<IMagic>() {
-            @Override
-            public boolean evaluate(IMagic value) {
-              return charmId.equals(value.getId());
-            }
-          }) != null;
+          String charmId = excellencies[i].getName().getId() + "." + traitType.getId(); //$NON-NLS-1$
+          excellencyLearned[i] = MagicLearnUtilities.isCharmLearned(allLearnedMagic, charmId);
         }
         y -= smallTraitEncoder.encodeWithExcellencies(graphics, traitLabel, position, contentBounds.width, value, favored, excellencyLearned, traitMax);
       }
