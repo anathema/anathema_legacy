@@ -1,11 +1,11 @@
 package net.sf.anathema.character.reporting.pdf.content.stats.magic;
 
+import com.google.common.base.Function;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.ObjectUtilities;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
@@ -47,9 +47,9 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   @Override
   public String[] getDetailStrings(final IResources resources) {
-    return transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
+    return transform(getDetailKeys(), String.class, new Function<String, String>() {
       @Override
-      public String transform(String input) {
+      public String apply(String input) {
         return resources.getString(input);
       }
     });

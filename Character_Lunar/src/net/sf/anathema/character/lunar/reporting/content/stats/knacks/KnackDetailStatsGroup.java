@@ -1,12 +1,12 @@
 package net.sf.anathema.character.lunar.reporting.content.stats.knacks;
 
+import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.ITransformer;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
@@ -26,9 +26,9 @@ public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
       String[] details = transform(
               stats.getDetailString(resources),
               String.class,
-              new ITransformer<String, String>() {
+              new Function<String, String>() {
                 @Override
-                public String transform(String input) {
+                public String apply(String input) {
                   return resources.getString(input);
                 }
               });

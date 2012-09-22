@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.reporting.content.stats.weapons;
 
+import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Element;
@@ -11,7 +12,6 @@ import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipme
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
@@ -46,9 +46,9 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
       table.addCell(createEmptyNameCell(font));
     } else {
       Identified[] tags = weapon.getTags();
-      String[] values = transform(tags, String.class, new ITransformer<Identified, String>() {
+      String[] values = transform(tags, String.class, new Function<Identified, String>() {
         @Override
-        public String transform(Identified input) {
+        public String apply(Identified input) {
           return resources.getString("Weapons.Tags." + input.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
         }
       });

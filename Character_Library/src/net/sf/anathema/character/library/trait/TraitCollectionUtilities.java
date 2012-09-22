@@ -1,9 +1,9 @@
 package net.sf.anathema.character.library.trait;
 
+import com.google.common.base.Function;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.lib.util.ITransformer;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
@@ -17,9 +17,9 @@ public class TraitCollectionUtilities {
     return transform(
             collection.getTraits(VirtueType.values()),
             IDefaultTrait.class,
-            new ITransformer<ITrait, IDefaultTrait>() {
+            new Function<ITrait, IDefaultTrait>() {
               @Override
-              public IDefaultTrait transform(ITrait input) {
+              public IDefaultTrait apply(ITrait input) {
                 return (IDefaultTrait) input;
               }
             });

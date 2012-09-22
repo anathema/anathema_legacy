@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
+import com.google.common.base.Function;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -18,7 +19,6 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.ITransformer;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -227,10 +227,10 @@ public class EquipmentItem implements IEquipmentItem {
     return false;
   }
 
-  private class MaterialWrapper implements ITransformer<IEquipmentStats, IEquipmentStats> {
+  private class MaterialWrapper implements Function<IEquipmentStats, IEquipmentStats> {
 
     @Override
-    public IEquipmentStats transform(IEquipmentStats stats) {
+    public IEquipmentStats apply(IEquipmentStats stats) {
       BaseMaterial baseMaterial = createBaseMaterial(getAttunementState().grantsMaterialBonuses());
       return createStatsForMaterial(stats, baseMaterial);
     }

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.presenter;
 
+import com.google.common.base.Function;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
@@ -23,7 +24,6 @@ import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.ITransformer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -126,9 +126,9 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
       presenter.initPresentation();
     }
     ContentView[] coreViews = transform(corePresenters, ContentView.class,
-            new ITransformer<IContentPresenter, ContentView>() {
+            new Function<IContentPresenter, ContentView>() {
               @Override
-              public ContentView transform(IContentPresenter input) {
+              public ContentView apply(IContentPresenter input) {
                 return input.getTabContent();
               }
             });

@@ -1,9 +1,9 @@
 package net.sf.anathema.lib.lang;
 
+import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import net.sf.anathema.lib.util.CastingTransformer;
-import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.ObjectUtilities;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -116,10 +116,10 @@ public class ArrayUtilities {
   public static <I, O> O[] transform(
           I[] array,
           Class<? super O> clazz,
-          ITransformer<I, O> transformer) {
+          Function<I, O> transformer) {
     O[] transformed = (O[]) Array.newInstance(clazz, array.length);
     for (int i = 0; i < array.length; i++) {
-      transformed[i] = transformer.transform(array[i]);
+      transformed[i] = transformer.apply(array[i]);
     }
     return transformed;
   }

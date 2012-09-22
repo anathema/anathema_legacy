@@ -29,7 +29,7 @@ public class CharmPrintNameTransformerTest {
     String expected = "Hit";
     when(resources.getString("Archery")).thenReturn("Archery");
     when(resources.getString("Abyssal.SecondExcellency", "Archery")).thenReturn(expected);
-    String result = new CharmPrintNameTransformer(resources).transform(charm);
+    String result = new CharmPrintNameTransformer(resources).apply(charm);
     assertThat(result, is(expected));
   }
 

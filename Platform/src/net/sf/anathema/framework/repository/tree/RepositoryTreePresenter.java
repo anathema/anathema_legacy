@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.repository.tree;
 
+import com.google.common.base.Function;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.TreeUtilities;
 
 import javax.swing.JTree;
@@ -79,9 +79,9 @@ public class RepositoryTreePresenter implements Presenter {
           repositoryModel.setSelectedObject(transform(
                   nodes,
                   Object.class,
-                  new ITransformer<DefaultMutableTreeNode, Object>() {
+                  new Function<DefaultMutableTreeNode, Object>() {
                     @Override
-                    public Object transform(DefaultMutableTreeNode input) {
+                    public Object apply(DefaultMutableTreeNode input) {
                       return input.getUserObject();
                     }
                   }));

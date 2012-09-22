@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
+import com.google.common.base.Function;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.ItemCost;
@@ -19,7 +20,6 @@ import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
@@ -96,10 +96,10 @@ public class EquipmentDatabasePresenter implements Presenter {
       }
     });
     String[] backgrounds = transform(defaultCostBackgrounds, String.class,
-            new ITransformer<String, String>() {
+            new Function<String, String>() {
 
               @Override
-              public String transform(String arg0) {
+              public String apply(String arg0) {
                 return resources.getString("BackgroundType.Name." + arg0);
               }
             });

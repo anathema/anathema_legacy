@@ -1,12 +1,12 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
+import com.google.common.base.Function;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.List;
@@ -78,9 +78,9 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
   @Override
   public Identified[] getTags() {
     String[] tagIds = tags.toArray(new String[tags.size()]);
-    return transform(tagIds, WeaponTag.class, new ITransformer<String, WeaponTag>() {
+    return transform(tagIds, WeaponTag.class, new Function<String, WeaponTag>() {
       @Override
-      public WeaponTag transform(String input) {
+      public WeaponTag apply(String input) {
         return WeaponTag.valueOf(input);
       }
     });
