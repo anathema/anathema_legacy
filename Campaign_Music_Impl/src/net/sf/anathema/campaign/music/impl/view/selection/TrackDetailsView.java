@@ -1,13 +1,5 @@
 package net.sf.anathema.campaign.music.impl.view.selection;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.TitledBorder;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
@@ -23,6 +15,12 @@ import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledStringValueView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
+
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+import java.awt.BorderLayout;
 
 public class TrackDetailsView implements ITrackDetailsView {
 
