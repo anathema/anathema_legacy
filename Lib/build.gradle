@@ -1,5 +1,6 @@
 dependencies {
   compile 'org.apache.commons:commons-lang3:3.1'
+  compile 'commons-io:commons-io:2.4'
   compile 'jaxen:jaxen-no-dep:1.1.3' //no dependencies, especially for Anathema
   compile 'dom4j:dom4j:1.6.1'
   compile 'org.slf4j:slf4j-simple:1.6.4'

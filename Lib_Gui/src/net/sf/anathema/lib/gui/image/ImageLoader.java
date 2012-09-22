@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.image;
 
-import net.sf.anathema.lib.io.IOUtilities;
+import org.apache.commons.io.IOUtils;
 
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -92,7 +92,7 @@ public class ImageLoader {
   public static Image readImage(InputStream inputStream) throws IOException {
     BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-    IOUtilities.copyStream(bufferedInputStream, byteArrayOutputStream);
+    IOUtils.copy(bufferedInputStream, byteArrayOutputStream);
     return Toolkit.getDefaultToolkit().createImage(byteArrayOutputStream.toByteArray());
   }
 

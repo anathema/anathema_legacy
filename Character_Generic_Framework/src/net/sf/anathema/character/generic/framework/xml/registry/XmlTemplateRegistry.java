@@ -4,11 +4,11 @@ import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.framework.ICharacterTemplateExtensionResourceCache;
 import net.sf.anathema.character.generic.framework.xml.ITemplateParser;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.io.IOUtilities;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.ResourceFile;
 import net.sf.anathema.lib.xml.DocumentUtilities;
+import org.apache.commons.io.IOUtils;
 import org.dom4j.Document;
 
 import java.io.InputStream;
@@ -99,7 +99,7 @@ public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
     } catch (Exception e) {
       throw new PersistenceException("Unable to find file " + id);
     } finally {
-      IOUtilities.close(documentStream);
+      IOUtils.closeQuietly(documentStream);
     }
   }
 

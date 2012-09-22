@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.image;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.io.IOUtilities;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -46,7 +45,7 @@ public class ImageProvider implements IImageProvider {
       return loadImage(isAnimated, inputStream);
     }
     finally {
-      IOUtilities.close(inputStream);
+      org.apache.commons.io.IOUtils.closeQuietly(inputStream);
     }
   }
 
