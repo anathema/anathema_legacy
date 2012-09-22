@@ -6,7 +6,7 @@ import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.workflow.container.SelectionContainerPresenter;
+import net.sf.anathema.campaign.music.presenter.SelectionContainerPresenter;
 
 public class MusicCategorizationPresenter implements Presenter {
 

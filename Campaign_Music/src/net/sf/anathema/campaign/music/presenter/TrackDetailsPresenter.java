@@ -9,7 +9,6 @@ import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Closure;
-import net.sf.anathema.lib.workflow.container.SelectionContainerPresenter;
 
 public class TrackDetailsPresenter implements Presenter {
 
