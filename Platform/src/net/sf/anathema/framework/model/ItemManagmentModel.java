@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.model;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.util.ObjectUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class ItemManagmentModel implements IItemManagementModel {
   @Override
   public boolean isOpen(String itemId, IItemType type) {
     for (IItem item : allItems) {
-      if (ObjectUtilities.equals(itemId, item.getId()) && type == item.getItemType()) {
+      if (Objects.equal(itemId, item.getId()) && type == item.getItemType()) {
         return true;
       }
     }

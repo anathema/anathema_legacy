@@ -1,5 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.rendering.knacks;
 
+import com.google.common.base.Objects;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.lunar.reporting.content.knacks.KnackContent;
 import net.sf.anathema.character.lunar.reporting.content.stats.knacks.IKnackStats;
@@ -7,7 +8,6 @@ import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.util.ObjectUtilities;
 
 public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats, KnackContent> {
 
@@ -24,7 +24,7 @@ public class KnackTableEncoder extends AbstractStatsTableEncoder<IKnackStats, Kn
     String groupName = null;
     for (IKnackStats stats : knackContent.createPrintKnacks()) {
       String newGroupName = knackContent.getGroupLabel(stats);
-      if (!ObjectUtilities.equals(groupName, newGroupName)) {
+      if (!Objects.equal(groupName, newGroupName)) {
         groupName = newGroupName;
         encodeSectionLine(graphics, table, groupName);
         encodeLine = table.getTotalHeight() < heightLimit;

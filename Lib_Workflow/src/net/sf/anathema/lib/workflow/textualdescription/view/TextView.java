@@ -1,9 +1,9 @@
 package net.sf.anathema.lib.workflow.textualdescription.view;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.event.AbstractDocumentListener;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.util.ObjectUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 import javax.swing.JComponent;
@@ -26,7 +26,7 @@ public class TextView implements ITextView {
 
   @Override
   public final void setText(String text) {
-    if (ObjectUtilities.equals(textComponent.getText(), text)) {
+    if (Objects.equal(textComponent.getText(), text)) {
       return;
     }
     textComponent.setText(text == null ? "" : text); //$NON-NLS-1$

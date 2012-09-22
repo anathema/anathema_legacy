@@ -1,9 +1,9 @@
 package net.sf.anathema.namegenerator.exalted;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identificate;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.lib.util.ObjectUtilities;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
@@ -50,7 +50,7 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
 
   @Override
   public void setGeneratorType(Identified selectedGeneratorType) {
-    if (ObjectUtilities.equals(selectedGeneratorType, this.selectedGeneratorType)) {
+    if (Objects.equal(selectedGeneratorType, this.selectedGeneratorType)) {
       return;
     }
     this.selectedGeneratorType = selectedGeneratorType;

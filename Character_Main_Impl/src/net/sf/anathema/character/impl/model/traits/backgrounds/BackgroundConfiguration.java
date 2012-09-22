@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.model.traits.backgrounds;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -15,7 +16,6 @@ import net.sf.anathema.character.model.background.IBackground;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
-import net.sf.anathema.lib.util.ObjectUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -91,7 +91,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     IBackground foundBackground = Iterables.find(backgrounds,new Predicate<IBackground>() {
       @Override
       public boolean apply(IBackground listBackground) {
-        return ObjectUtilities.equals(backgroundType, listBackground.getType()) &&
+        return Objects.equal(backgroundType, listBackground.getType()) &&
                 ((description == null && listBackground.getDescription() == null) ||
                         (description != null && description.equals(listBackground.getDescription())));
       }

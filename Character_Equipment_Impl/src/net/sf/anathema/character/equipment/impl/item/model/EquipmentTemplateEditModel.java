@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.item.model;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
@@ -13,7 +14,6 @@ import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.ObjectUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
@@ -99,9 +99,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     if (editedTemplate == null) {
       return !getDescription().getName().isEmpty() || !getDescription().getContent().isEmpty();
     }
-    return !ObjectUtilities.equals(editedTemplate.getName(),
-            getDescription().getName().getText()) || !ObjectUtilities.equals(editedTemplate.getDescription(),
-            getDescription().getContent().getText()) ||
+    return !Objects.equal(editedTemplate.getName(), getDescription().getName().getText()) || !Objects.equal(editedTemplate.getDescription(), getDescription().getContent().getText()) ||
             !(editedTemplate.getComposition() == getMaterialComposition()) || !(editedTemplate.getMaterial() == getMagicalMaterial()) ||
             (getCost() != null && !getCost().equals(editedTemplate.getCost()));
   }

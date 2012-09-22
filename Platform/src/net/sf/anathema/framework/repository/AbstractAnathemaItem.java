@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.repository;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.lib.util.ObjectUtilities;
 import org.jmock.example.announcer.Announcer;
 
 public abstract class AbstractAnathemaItem implements IItem {
@@ -67,7 +67,7 @@ public abstract class AbstractAnathemaItem implements IItem {
     if (StringUtilities.isNullOrEmpty(printName)) {
       printName = null;
     }
-    if (ObjectUtilities.equals(this.printName, printName)) {
+    if (Objects.equal(this.printName, printName)) {
       return;
     }
     this.printName = printName;

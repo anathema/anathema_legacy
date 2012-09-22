@@ -1,7 +1,7 @@
 package net.sf.anathema.magic.description.model;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.ObjectUtilities;
 import net.sf.anathema.magic.description.persistence.MagicDescriptionDataBase;
 import org.jmock.example.announcer.Announcer;
 
@@ -39,7 +39,7 @@ public class AutoSaveMagicDescriptionEditModel implements MagicDescriptionEditMo
 
   @Override
   public void updateCurrentDescription(String newDescription) {
-    if (ObjectUtilities.equals(currentDescription, newDescription)) {
+    if (Objects.equal(currentDescription, newDescription)) {
       return;
     }
     dataBase.saveDescription(editId, newDescription);
@@ -47,7 +47,7 @@ public class AutoSaveMagicDescriptionEditModel implements MagicDescriptionEditMo
   }
 
   private void setCurrentDescriptionInternal(String newDescription) {
-    if (ObjectUtilities.equals(currentDescription, newDescription)) {
+    if (Objects.equal(currentDescription, newDescription)) {
       return;
     }
     this.currentDescription = newDescription;

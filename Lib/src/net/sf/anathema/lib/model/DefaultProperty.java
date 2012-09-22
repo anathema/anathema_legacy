@@ -1,6 +1,7 @@
 package net.sf.anathema.lib.model;
 
-import net.sf.anathema.lib.util.ObjectUtilities;
+import com.google.common.base.Objects;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class DefaultProperty<T> implements IProperty<T> {
 
@@ -22,11 +23,11 @@ public class DefaultProperty<T> implements IProperty<T> {
       return false;
     }
     DefaultProperty<?> other = (DefaultProperty<?>) object;
-    return ObjectUtilities.equals(value, other.value);
+    return Objects.equal(value, other.value);
   }
 
   @Override
   public int hashCode() {
-    return ObjectUtilities.getHashCode(value);
+    return new HashCodeBuilder().append(value).build();
   }
 }

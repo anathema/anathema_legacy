@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.lang;
 
 import com.google.common.base.Function;
+import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import net.sf.anathema.lib.util.CastingTransformer;
-import net.sf.anathema.lib.util.ObjectUtilities;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.lang.reflect.Array;
@@ -96,7 +96,7 @@ public class ArrayUtilities {
 
   public static <T> boolean containsValue(T[] array, final T value) {
     for (T element : array) {
-      if (ObjectUtilities.equals(value, element)) {
+      if (Objects.equal(value, element)) {
         return true;
       }
     }

@@ -1,7 +1,7 @@
 package net.sf.anathema.lib.gui.widgets;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.lib.data.IOverline;
-import net.sf.anathema.lib.util.ObjectUtilities;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -23,7 +23,7 @@ public class DigitsOnlyDocument extends PlainDocument {
 	public void replace(int offset, int length, String text, AttributeSet attrs)
 			throws BadLocationException {
 		String currentText = getText(offset, length);
-		if (ObjectUtilities.equals(currentText, text)) {
+    if (Objects.equal(currentText, text)) {
 			return;
 		}
 		String correctedString = getCorrectedString(offset, text);

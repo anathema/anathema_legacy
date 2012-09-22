@@ -1,5 +1,6 @@
 package net.sf.anathema.lib.gui.dialog.userdialog;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.gui.dialog.core.DialogPageInputValidCheckable;
@@ -8,7 +9,6 @@ import net.sf.anathema.lib.gui.dialog.events.CheckInputValidListener;
 import net.sf.anathema.lib.gui.dialog.events.IInputValidCheckable;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import net.sf.anathema.lib.util.ObjectUtilities;
 
 import javax.swing.JComponent;
 
@@ -30,7 +30,7 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
   @Override
   public final void setMessage(IBasicMessage message) {
     Preconditions.checkNotNull(message);
-    if (ObjectUtilities.equals(this.message, message)) {
+    if (Objects.equal(this.message, message)) {
       updateCanFinish();
       return;
     }

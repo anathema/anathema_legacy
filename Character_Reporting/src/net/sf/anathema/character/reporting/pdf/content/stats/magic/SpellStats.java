@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.Ma
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.ObjectUtilities;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
@@ -83,6 +83,6 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   @Override
   public int hashCode() {
-    return ObjectUtilities.getHashCode(getMagic().getCircleType(), getMagic().getId());
+    return new HashCodeBuilder().append(getMagic().getCircleType()).append(getMagic().getId()).build();
   }
 }

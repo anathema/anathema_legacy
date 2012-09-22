@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.gui.action;
 
-import net.sf.anathema.lib.util.ObjectUtilities;
+import com.google.common.base.Objects;
 
 import javax.swing.Icon;
 
@@ -49,9 +49,9 @@ public class ActionConfiguration implements IActionConfiguration {
       return false;
     }
     ActionConfiguration other = (ActionConfiguration) obj;
-    return ObjectUtilities.equals(other.name, name)
-        && ObjectUtilities.equals(other.icon, icon)
-        && ObjectUtilities.equals(toolTipText, other.toolTipText);
+    return Objects.equal(other.name, name)
+        && Objects.equal(other.icon, icon)
+        && Objects.equal(toolTipText, other.toolTipText);
   }
 
   @Override

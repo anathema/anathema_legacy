@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.model;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
-import net.sf.anathema.lib.util.ObjectUtilities;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.concurrent.locks.Lock;
@@ -56,7 +56,7 @@ public abstract class SmartChangeableModel implements Cloneable, IChangeableMode
     Lock writeLock = readWriteLock.writeLock();
     writeLock.lock();
     try {
-      if (ObjectUtilities.equals(property.getValue(), value)) {
+      if (Objects.equal(property.getValue(), value)) {
         return;
       }
       property.setValue(value);

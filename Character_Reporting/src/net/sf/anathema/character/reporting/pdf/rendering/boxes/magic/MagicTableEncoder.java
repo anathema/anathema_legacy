@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.magic;
 
+import com.google.common.base.Objects;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -8,7 +9,6 @@ import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
-import net.sf.anathema.lib.util.ObjectUtilities;
 
 public class MagicTableEncoder <C extends AbstractMagicContent> extends AbstractStatsTableEncoder<IMagicStats, ReportSession> {
 
@@ -36,7 +36,7 @@ public class MagicTableEncoder <C extends AbstractMagicContent> extends Abstract
     String groupName = null;
     for (IMagicStats stats : content.getPrintMagic()) {
       String newGroupName = content.getGroupName(stats);
-      if (!ObjectUtilities.equals(groupName, newGroupName)) {
+      if (!Objects.equal(groupName, newGroupName)) {
         groupName = newGroupName;
         encodeSectionLine(graphics, table, groupName);
         if (sectionHeaderLines) {

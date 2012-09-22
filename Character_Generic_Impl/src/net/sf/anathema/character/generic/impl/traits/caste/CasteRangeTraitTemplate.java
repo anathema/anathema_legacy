@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.impl.traits.caste;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.impl.traits.AbstractTraitTemplate;
 import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.lib.util.ObjectUtilities;
 
 public class CasteRangeTraitTemplate extends AbstractTraitTemplate {
 
@@ -24,7 +24,7 @@ public class CasteRangeTraitTemplate extends AbstractTraitTemplate {
   public int getMinimumValue(ILimitationContext limiationContext) {
     for (ICasteTraitMinimum casteMinimum : casteMinimums) {
       ICasteType casteType = limiationContext.getCasteType();
-      if (ObjectUtilities.equals(casteType, casteMinimum.getCaste())) {
+      if (Objects.equal(casteType, casteMinimum.getCaste())) {
         return casteMinimum.getMinimumValue(limiationContext);
       }
     }

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
+import com.google.common.base.Objects;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.BaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.FatigueModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.HardnessModification;
@@ -16,7 +17,6 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.util.IProxy;
 import net.sf.anathema.lib.util.Identified;
-import net.sf.anathema.lib.util.ObjectUtilities;
 
 public class ProxyArmourStats extends AbstractStats implements IArmourStats, IProxy<IArmourStats> {
 
@@ -76,7 +76,7 @@ public class ProxyArmourStats extends AbstractStats implements IArmourStats, IPr
       return false;
     }
     ProxyArmourStats other = (ProxyArmourStats) obj;
-    return ObjectUtilities.equals(delegate, other.delegate) && ObjectUtilities.equals(material, other.material);
+    return Objects.equal(delegate, other.delegate) && Objects.equal(material, other.material);
   }
 
   @Override
