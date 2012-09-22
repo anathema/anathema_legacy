@@ -5,14 +5,13 @@ import net.sf.anathema.lib.gui.dialog.wizard.AbstractWizardConfiguration;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardContainer;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
-import net.sf.anathema.lib.util.SimpleBlock;
 
 public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
 
   private final IAnathemaWizardPage startPage;
-  private final CheckInputListener inputListener = new CheckInputListener(new SimpleBlock() {
+  private final CheckInputListener inputListener = new CheckInputListener(new Runnable() {
     @Override
-    public void execute() {
+    public void run() {
       IWizardContainer wizardContainer = getContainer();
       if (wizardContainer == null) {
         return;

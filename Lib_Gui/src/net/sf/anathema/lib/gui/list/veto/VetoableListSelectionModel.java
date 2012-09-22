@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.list.veto;
 
 import net.sf.anathema.lib.gui.list.ListSelectionMode;
-import net.sf.anathema.lib.util.SimpleBlock;
 
 import javax.swing.DefaultListSelectionModel;
 import java.util.ArrayList;
@@ -25,25 +24,25 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 
 	@Override
 	public void addSelectionInterval(final int index0, final int index1) {
-		executeVetoable(new SimpleBlock() {
+		executeVetoable(new Runnable() {
 			@Override
-            public void execute() {
+            public void run() {
 				VetoableListSelectionModel.super.addSelectionInterval(index0,
 						index1);
 			}
 		});
 	}
 
-	private synchronized void executeVetoable(SimpleBlock block) {
+	private synchronized void executeVetoable(Runnable block) {
 		if (alreadyAsked) {
-			block.execute();
+			block.run();
 			return;
 		}
 		if (vetos()) {
 			return;
 		}
 		alreadyAsked = true;
-		block.execute();
+		block.run();
 		alreadyAsked = false;
 	}
 
@@ -56,9 +55,9 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 		if (getMaxSelectionIndex() == -1) {
 			return;
 		}
-		executeVetoable(new SimpleBlock() {
+		executeVetoable(new Runnable() {
 			@Override
-            public void execute() {
+            public void run() {
 				VetoableListSelectionModel.super.removeSelectionInterval(
 						index0, index1);
 			}
@@ -71,9 +70,9 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 
 	@Override
 	public void setSelectionInterval(final int index0, final int index1) {
-		executeVetoable(new SimpleBlock() {
+		executeVetoable(new Runnable() {
 			@Override
-            public void execute() {
+            public void run() {
 				VetoableListSelectionModel.super.setSelectionInterval(index0,
 						index1);
 			}
