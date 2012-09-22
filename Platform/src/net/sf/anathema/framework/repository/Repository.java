@@ -15,7 +15,7 @@ import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAcces
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.io.FileUtilities;
+import org.apache.commons.io.FileUtils;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.File;
@@ -189,7 +189,9 @@ public class Repository implements IRepository {
   @Override
   public void deleteAssociatedItem(PrintNameFile file) throws RepositoryException {
     try {
-      FileUtilities.deleteFileOrDirectory(file.getFile());
+      if (file.getFile().exists()) {
+        FileUtils.forceDelete(file.getFile());
+      }
       refresh();
     } catch (IOException e) {
       throw new RepositoryException("Deletion failed.", e); //$NON-NLS-1$
