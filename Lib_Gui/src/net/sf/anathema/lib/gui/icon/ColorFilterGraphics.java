@@ -1,5 +1,7 @@
 package net.sf.anathema.lib.gui.icon;
 
+import net.sf.anathema.lib.exception.NotYetImplementedException;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Composite;
@@ -161,7 +163,7 @@ public class ColorFilterGraphics extends Graphics2D {
 
   @Override
   public void drawImage(BufferedImage img, BufferedImageOp op, int x, int y) {
-    throw new UnsupportedOperationException("not yet implemented"); //$NON-NLS-1$
+    throw new NotYetImplementedException(); //$NON-NLS-1$
   }
 
   @Override

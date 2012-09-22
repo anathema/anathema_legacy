@@ -7,7 +7,6 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.lib.exception.NestedRuntimeException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -24,12 +23,10 @@ public class TraitPersister {
 
     @Override
     public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-      try {
         List<Element> subTraitElements = ElementUtilities.elements(element, TAG_SUB_TRAIT);
         if (subTraitElements.size() == 0) {
           restoreDefaultTrait(element, visitedTrait.getFallbackTrait());
-        }
-        else {
+        } else {
           ISubTraitContainer container = visitedTrait.getSubTraits();
           for (Element subTraitElement : subTraitElements) {
             String traitName = ElementUtilities.getRequiredText(subTraitElement, TAG_TRAIT_NAME);
@@ -40,20 +37,11 @@ public class TraitPersister {
             restoreDefaultTrait(subTraitElement, subTrait);
           }
         }
-      }
-      catch (PersistenceException e) {
-        throw new NestedRuntimeException(e);
-      }
     }
 
     @Override
     public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-      try {
         restoreDefaultTrait(element, visitedTrait);
-      }
-      catch (PersistenceException e) {
-        throw new NestedRuntimeException(e);
-      }
     }
   }
 
@@ -83,7 +71,7 @@ public class TraitPersister {
     return traitElement;
   }
 
-  private final Element saveTrait(Element traitElement, IDefaultTrait trait) {
+  private Element saveTrait(Element traitElement, IDefaultTrait trait) {
     ElementUtilities.addAttribute(traitElement, ATTRIB_CREATION_VALUE, trait.getCreationValue());
     if (trait.getExperiencedValue() != ITraitRules.UNEXPERIENCED) {
       ElementUtilities.addAttribute(traitElement, ATTRIB_EXPERIENCED_VALUE, trait.getExperiencedValue());
@@ -99,21 +87,16 @@ public class TraitPersister {
 
   public final void restoreTrait(Element traitElement, ITrait trait) throws PersistenceException {
     if (traitElement != null) {
-      try {
-        trait.accept(new LoadTraitVisitor(traitElement));
-      }
-      catch (NestedRuntimeException e) {
-        throw (PersistenceException) e.getCause();
-      }
+      trait.accept(new LoadTraitVisitor(traitElement));
     }
   }
 
   protected void restoreDefaultTrait(Element traitElement, IDefaultTrait trait) throws PersistenceException {
     trait.setUncheckedCreationValue(ElementUtilities.getRequiredIntAttrib(traitElement, ATTRIB_CREATION_VALUE));
     int experiencedValue = ElementUtilities.getIntAttrib(
-        traitElement,
-        ATTRIB_EXPERIENCED_VALUE,
-        ITraitRules.UNEXPERIENCED);
+            traitElement,
+            ATTRIB_EXPERIENCED_VALUE,
+            ITraitRules.UNEXPERIENCED);
     if (experiencedValue != ITraitRules.UNEXPERIENCED) {
       trait.setUncheckedExperiencedValue(experiencedValue);
     }

@@ -1,15 +1,9 @@
 package net.sf.anathema.lib.io;
 
-import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
-
 import java.io.File;
 import java.io.IOException;
 
 public class FileUtilities {
-
-  protected FileUtilities() {
-    throw new UnreachableCodeReachedException();
-  }
 
   public static void deleteFileOrDirectory(File file) throws IOException {
     if (!file.exists()) {

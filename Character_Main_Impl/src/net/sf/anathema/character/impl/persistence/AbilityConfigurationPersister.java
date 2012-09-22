@@ -14,7 +14,6 @@ import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.lib.exception.NestedRuntimeException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -60,7 +59,7 @@ public class AbilityConfigurationPersister {
           }
         }
         catch (PersistenceException e) {
-          throw new NestedRuntimeException(e);
+          throw new RuntimeException(e);
         }
       }
 
@@ -121,7 +120,7 @@ public class AbilityConfigurationPersister {
 
         }
         catch (PersistenceException e) {
-          throw new NestedRuntimeException(e);
+          throw new RuntimeException(e);
         }
       }
 
@@ -131,7 +130,7 @@ public class AbilityConfigurationPersister {
           loadSpecialties(abilityElement, specialtyConfiguration, new DefaultTraitReference(visitedTrait));
         }
         catch (PersistenceException e) {
-          throw new NestedRuntimeException(e);
+          throw new RuntimeException(e);
         }
       }
     });
