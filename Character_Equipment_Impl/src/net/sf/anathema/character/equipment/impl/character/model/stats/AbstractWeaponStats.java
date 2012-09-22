@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.Identified;
 
@@ -77,7 +76,7 @@ public abstract class AbstractWeaponStats extends AbstractCombatStats implements
   @Override
   public Identified[] getTags() {
     String[] tagIds = tags.toArray(new String[tags.size()]);
-    return ArrayUtilities.transform(tagIds, WeaponTag.class, new ITransformer<String, WeaponTag>() {
+    return net.sf.anathema.lib.lang.ArrayUtilities.transform(tagIds, WeaponTag.class, new ITransformer<String, WeaponTag>() {
       @Override
       public WeaponTag transform(String input) {
         return WeaponTag.valueOf(input);

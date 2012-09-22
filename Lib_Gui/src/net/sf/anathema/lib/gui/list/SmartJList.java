@@ -1,7 +1,5 @@
 package net.sf.anathema.lib.gui.list;
 
-import net.sf.anathema.lib.collection.ArrayUtilities;
-
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JList;
@@ -50,7 +48,7 @@ private Class< ? extends T> clazz;
 
   @Override
   public T[] getSelectedValues() {
-    return ArrayUtilities.transform(super.getSelectedValues(), clazz);
+    return net.sf.anathema.lib.lang.ArrayUtilities.transform(super.getSelectedValues(), clazz);
   }
 
   public void setSelectionMode(ListSelectionMode mode) {

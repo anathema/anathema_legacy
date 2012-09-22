@@ -8,7 +8,6 @@ import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatSta
 import net.sf.anathema.character.equipment.creation.model.stats.ITraitModifyingStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
@@ -98,6 +97,6 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   @Override
   public boolean isNameUnique(String name) {
-    return !ArrayUtilities.containsValue(existingNames, name);
+    return !net.sf.anathema.lib.lang.ArrayUtilities.containsValue(existingNames, name);
   }
 }

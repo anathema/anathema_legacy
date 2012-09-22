@@ -5,7 +5,6 @@ import net.sf.anathema.character.library.quality.model.Quality;
 import net.sf.anathema.character.library.quality.model.QualityPrerequisite;
 import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityPredicate;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 
 import java.util.List;
 
@@ -75,7 +74,7 @@ public class Mutation extends Quality implements IMutation {
     for (IQualityPredicate predicate : prerequisiteList) {
       if (predicate instanceof QualityPrerequisite) {
         IQuality[] prerequisiteQualities = ((QualityPrerequisite) predicate).getPrerequisiteQualities();
-        return ArrayUtilities.containsValue(prerequisiteQualities, gift);
+        return net.sf.anathema.lib.lang.ArrayUtilities.containsValue(prerequisiteQualities, gift);
       }
     }
     return false;

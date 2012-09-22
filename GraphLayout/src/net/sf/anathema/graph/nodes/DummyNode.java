@@ -1,7 +1,6 @@
 package net.sf.anathema.graph.nodes;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 
 public class DummyNode implements ISimpleNode {
 
@@ -25,7 +24,7 @@ public class DummyNode implements ISimpleNode {
   }
 
   public boolean isParentOf(ISimpleNode potential) {
-    return ArrayUtilities.containsValue(this.child, potential);
+    return net.sf.anathema.lib.lang.ArrayUtilities.containsValue(this.child, potential);
   }
 
   @Override

@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSou
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.ObjectUtilities;
@@ -46,7 +45,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   @Override
   public String[] getDetailStrings(final IResources resources) {
-    return ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
+    return net.sf.anathema.lib.lang.ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
       @Override
       public String transform(String input) {
         return resources.getString(input);

@@ -19,7 +19,6 @@ import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -125,7 +124,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
     for (IContentPresenter presenter : corePresenters) {
       presenter.initPresentation();
     }
-    ContentView[] coreViews = ArrayUtilities.transform(corePresenters, ContentView.class,
+    ContentView[] coreViews = net.sf.anathema.lib.lang.ArrayUtilities.transform(corePresenters, ContentView.class,
             new ITransformer<IContentPresenter, ContentView>() {
               @Override
               public ContentView transform(IContentPresenter input) {

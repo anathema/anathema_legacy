@@ -12,7 +12,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.AbstractT
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import org.apache.commons.lang3.ArrayUtils;
 
 public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends AbstractTableEncoder<C> {
@@ -74,9 +73,9 @@ public abstract class AbstractStatsTableEncoder<T extends IStats, C> extends Abs
     Float[] columnWidths = new Float[0];
     for (IStatsGroup<T> group : groups) {
       if (columnWidths.length != 0) {
-        columnWidths = ArrayUtilities.concat(Float.class, columnWidths, new Float(0.2));
+        columnWidths = net.sf.anathema.lib.lang.ArrayUtilities.concat(Float.class, columnWidths, new Float(0.2));
       }
-      columnWidths = ArrayUtilities.concat(Float.class, columnWidths, group.getColumnWeights());
+      columnWidths = net.sf.anathema.lib.lang.ArrayUtilities.concat(Float.class, columnWidths, group.getColumnWeights());
     }
     return ArrayUtils.toPrimitive(columnWidths);
   }

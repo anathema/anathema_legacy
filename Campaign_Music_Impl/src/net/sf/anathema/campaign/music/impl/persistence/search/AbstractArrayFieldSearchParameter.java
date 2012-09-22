@@ -4,7 +4,6 @@ import com.db4o.query.Candidate;
 import com.db4o.query.Constraint;
 import com.db4o.query.Evaluation;
 import com.db4o.query.Query;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 
 public abstract class AbstractArrayFieldSearchParameter<P> implements IExtendedSearchParameter {
 
@@ -28,7 +27,7 @@ public abstract class AbstractArrayFieldSearchParameter<P> implements IExtendedS
   protected boolean containsAllParameters(Candidate candidate) {
     P[] candidateValues = getCandidateValues(candidate);
     for (P parameter : parameterArray) {
-      if (!ArrayUtilities.containsValue(candidateValues, parameter)) {
+      if (!net.sf.anathema.lib.lang.ArrayUtilities.containsValue(candidateValues, parameter)) {
         return false;
       }
     }

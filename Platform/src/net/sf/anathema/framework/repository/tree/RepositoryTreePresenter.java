@@ -2,7 +2,6 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.ITransformer;
@@ -75,15 +74,15 @@ public class RepositoryTreePresenter implements Presenter {
           repositoryModel.setSelectedObject(new Object[0]);
         }
         else {
-          repositoryModel.setSelectedObject(ArrayUtilities.transform(
-              nodes,
-              Object.class,
-              new ITransformer<DefaultMutableTreeNode, Object>() {
-                @Override
-                public Object transform(DefaultMutableTreeNode input) {
-                  return input.getUserObject();
-                }
-              }));
+          repositoryModel.setSelectedObject(net.sf.anathema.lib.lang.ArrayUtilities.transform(
+                  nodes,
+                  Object.class,
+                  new ITransformer<DefaultMutableTreeNode, Object>() {
+                    @Override
+                    public Object transform(DefaultMutableTreeNode input) {
+                      return input.getUserObject();
+                    }
+                  }));
         }
       }
     });

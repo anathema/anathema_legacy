@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.traits.groups;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,6 +39,6 @@ public class TraitTypeGroup implements ITraitTypeGroup {
 
   @Override
   public final boolean contains(ITraitType traitType) {
-    return ArrayUtilities.containsValue(traitTypes, traitType);
+    return net.sf.anathema.lib.lang.ArrayUtilities.containsValue(traitTypes, traitType);
   }
 }

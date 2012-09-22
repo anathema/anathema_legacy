@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.util.Identificate;
@@ -69,7 +68,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> im
 
   @Override
   public boolean isPredefinedLanguage(Object object) {
-    return ArrayUtilities.containsValue(languages, object);
+    return net.sf.anathema.lib.lang.ArrayUtilities.containsValue(languages, object);
   }
 
   @Override

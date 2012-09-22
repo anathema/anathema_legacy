@@ -20,7 +20,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -165,7 +164,7 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
 
   private float[] createColumnWidth() {
     Float[] healthColumns = TableEncodingUtilities.createStandardColumnWidths(HEALTH_COLUMN_COUNT, 0.4f);
-    Float[] objectArray = ArrayUtilities.concat(Float.class, HEALTH_LEVEL_COLUMNS, healthColumns);
+    Float[] objectArray = net.sf.anathema.lib.lang.ArrayUtilities.concat(Float.class, HEALTH_LEVEL_COLUMNS, healthColumns);
     return ArrayUtils.toPrimitive(objectArray);
   }
 
@@ -177,10 +176,6 @@ public abstract class AbstractHealthTableEncoder implements ITableEncoder<Report
     PdfPCell spaceCell = new PdfPCell(new Phrase(" ", createDefaultFont(graphics))); //$NON-NLS-1$
     spaceCell.setBorder(Rectangle.NO_BORDER);
     return spaceCell;
-  }
-
-  private Font createCommentFont(SheetGraphics graphics) {
-    return graphics.createCommentFont();
   }
 
   private Font createHeaderFont(SheetGraphics graphics) {

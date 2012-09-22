@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static net.sf.anathema.lib.collection.ArrayUtilities.containsValue;
+import static net.sf.anathema.lib.lang.ArrayUtilities.containsValue;
 
 public enum CharacterType implements ICharacterType {
 

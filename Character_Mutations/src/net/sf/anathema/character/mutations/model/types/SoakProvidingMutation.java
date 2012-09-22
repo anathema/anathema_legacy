@@ -7,7 +7,6 @@ import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityPredicate;
 import net.sf.anathema.character.mutations.model.IMutationVisitor;
 import net.sf.anathema.character.mutations.model.Mutation;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +57,7 @@ public class SoakProvidingMutation extends Mutation {
     for (IQualityPredicate predicate : prerequisiteList) {
       if (predicate instanceof QualityPrerequisite) {
         IQuality[] prerequisiteQualities = ((QualityPrerequisite) predicate).getPrerequisiteQualities();
-        return ArrayUtilities.containsValue(prerequisiteQualities, mutation);
+        return net.sf.anathema.lib.lang.ArrayUtilities.containsValue(prerequisiteQualities, mutation);
       }
     }
     return false;

@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.ITransformer;
 
@@ -55,7 +54,7 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
 
   @Override
   public String[] getDetailStrings(final IResources resources) {
-    return ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
+    return net.sf.anathema.lib.lang.ArrayUtilities.transform(getDetailKeys(), String.class, new ITransformer<String, String>() {
       @Override
       public String transform(String input) {
         return resources.getString(input);

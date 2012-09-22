@@ -19,7 +19,6 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.util.IPointModification;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IPredicate;
@@ -181,7 +180,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       if (multiPool.element(TAG_CHARM_REFERENCE) != null) {
         final String charmId = ElementUtilities.getRequiredAttrib(multiPool.element(TAG_CHARM_REFERENCE), ATTRIB_ID);
 
-        ISpecialCharm charm = ArrayUtilities.getFirst(charms, new IPredicate<ISpecialCharm>() {
+        ISpecialCharm charm = net.sf.anathema.lib.lang.ArrayUtilities.getFirst(charms, new IPredicate<ISpecialCharm>() {
           @Override
           public boolean evaluate(ISpecialCharm value) {
             return value.getCharmId().equals(charmId);

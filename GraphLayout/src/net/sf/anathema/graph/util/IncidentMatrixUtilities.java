@@ -1,7 +1,6 @@
 package net.sf.anathema.graph.util;
 
 import net.sf.anathema.graph.nodes.ISimpleNode;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 
 public class IncidentMatrixUtilities {
 
@@ -10,7 +9,7 @@ public class IncidentMatrixUtilities {
     for (int upperLayerIndex = 0; upperLayerIndex < upperLayer.length; upperLayerIndex++) {
       ISimpleNode[] children = upperLayer[upperLayerIndex].getChildren();
       for (int lowerLayerIndex = 0; lowerLayerIndex < lowerLayer.length; lowerLayerIndex++) {
-        if (ArrayUtilities.containsValue(children, lowerLayer[lowerLayerIndex])) {
+        if (net.sf.anathema.lib.lang.ArrayUtilities.containsValue(children, lowerLayer[lowerLayerIndex])) {
           matrix[upperLayerIndex][lowerLayerIndex] = true;
         }
       }

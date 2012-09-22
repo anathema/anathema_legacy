@@ -4,7 +4,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.pdf.content.magic.CharmPrintNameTransformer;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.annotation.Nullable;
@@ -31,7 +30,7 @@ public class ToDisplayCombo implements Function<IGenericCombo, DisplayCombo> {
 
   private String getCharmString(IGenericCombo combo) {
     CharmPrintNameTransformer transformer = new CharmPrintNameTransformer(resources);
-    String[] charmNames = ArrayUtilities.transform(combo.getCharms(), String.class, transformer);
+    String[] charmNames = net.sf.anathema.lib.lang.ArrayUtilities.transform(combo.getCharms(), String.class, transformer);
     return Joiner.on(", ").join(charmNames); //$NON-NLS-1$
   }
 }

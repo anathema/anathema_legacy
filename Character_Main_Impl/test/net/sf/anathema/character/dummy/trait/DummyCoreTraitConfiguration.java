@@ -16,7 +16,6 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfigura
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IPredicate;
@@ -39,7 +38,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   private IIdentifiedTraitTypeGroup getAttributeTypeGroup(final AttributeGroupType type) {
     IIdentifiedCasteTraitTypeGroup[] allAttributeTypeGroups = getAttributeTypeGroups();
-    return ArrayUtilities.getFirst(allAttributeTypeGroups, new IPredicate<IIdentifiedCasteTraitTypeGroup>() {
+    return net.sf.anathema.lib.lang.ArrayUtilities.getFirst(allAttributeTypeGroups, new IPredicate<IIdentifiedCasteTraitTypeGroup>() {
       @Override
       public boolean evaluate(IIdentifiedCasteTraitTypeGroup group) {
         return group.getGroupId() == type;
@@ -55,7 +54,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   public boolean containsAllTraits(AttributeGroupType attributeGroupType, ITrait[] traits) {
     for (ITrait trait : traits) {
-      if (!ArrayUtilities.containsValue(getAllTraits(attributeGroupType), trait)) {
+      if (!net.sf.anathema.lib.lang.ArrayUtilities.containsValue(getAllTraits(attributeGroupType), trait)) {
         return false;
       }
     }
@@ -70,8 +69,9 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     List<IIdentifiedTraitTypeGroup> groups = new ArrayList<IIdentifiedTraitTypeGroup>();
     for (String groupId : abilityGroupsByType.keySet()) {
+      List<ITraitType> traitTypes = abilityGroupsByType.get(groupId);
       groups.add(new IdentifiedTraitTypeGroup(
-          abilityGroupsByType.get(groupId).toArray(new ITraitType[0]),
+              traitTypes.toArray(new ITraitType[traitTypes.size()]),
           new Identificate(groupId)));
     }
     return groups.toArray(new IIdentifiedTraitTypeGroup[groups.size()]);

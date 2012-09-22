@@ -4,7 +4,6 @@ import com.google.common.base.Joiner;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.reporting.pdf.content.stats.AbstractTextStatsGroup;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.ITransformer;
@@ -22,7 +21,7 @@ public class KnackDetailStatsGroup extends AbstractTextStatsGroup<IKnackStats> {
     if (stats == null) {
       table.addCell(createTextCell(font, null));
     } else {
-      String[] details = ArrayUtilities.transform(
+      String[] details = net.sf.anathema.lib.lang.ArrayUtilities.transform(
               stats.getDetailString(resources),
               String.class,
               new ITransformer<String, String>() {

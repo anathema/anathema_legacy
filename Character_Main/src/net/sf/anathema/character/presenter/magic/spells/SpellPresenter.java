@@ -12,7 +12,6 @@ import net.sf.anathema.character.presenter.magic.detail.DetailDemandingMagicPres
 import net.sf.anathema.character.presenter.magic.detail.ShowMagicDetailListener;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -153,7 +152,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
   private ISpell[] getCircleFilteredSpellList(ISpell[] spells) {
     List<ISpell> spellList = new ArrayList<ISpell>();
     for (ISpell spell : spells) {
-      if (ArrayUtilities.containsValue(spellModel.getCircles(), spell.getCircleType())) {
+      if (net.sf.anathema.lib.lang.ArrayUtilities.containsValue(spellModel.getCircles(), spell.getCircleType())) {
         spellList.add(spell);
       }
     }

@@ -10,7 +10,6 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.ITransformer;
 import net.sf.anathema.lib.util.Identified;
@@ -45,7 +44,7 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> 
       table.addCell(createEmptyNameCell(font));
     } else {
       Identified[] tags = weapon.getTags();
-      String[] values = ArrayUtilities.transform(tags, String.class, new ITransformer<Identified, String>() {
+      String[] values = net.sf.anathema.lib.lang.ArrayUtilities.transform(tags, String.class, new ITransformer<Identified, String>() {
         @Override
         public String transform(Identified input) {
           return resources.getString("Weapons.Tags." + input.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$

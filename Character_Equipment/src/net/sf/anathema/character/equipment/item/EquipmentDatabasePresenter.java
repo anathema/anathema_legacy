@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
@@ -94,14 +93,14 @@ public class EquipmentDatabasePresenter implements Presenter {
         return 4;
       }
     });
-    String[] backgrounds = ArrayUtilities.transform(defaultCostBackgrounds, String.class,
-    		new ITransformer<String, String>() {
+    String[] backgrounds = net.sf.anathema.lib.lang.ArrayUtilities.transform(defaultCostBackgrounds, String.class,
+            new ITransformer<String, String>() {
 
-				@Override
-				public String transform(String arg0) {
-					return resources.getString("BackgroundType.Name." + arg0);
-				}
-    });
+              @Override
+              public String transform(String arg0) {
+                return resources.getString("BackgroundType.Name." + arg0);
+              }
+            });
     final CostSelectionView costView = new CostSelectionView(
             getColonString("Equipment.Creation.Basics.Cost"), //$NON-NLS-1$
             backgrounds, getIntValueDisplayFactory());

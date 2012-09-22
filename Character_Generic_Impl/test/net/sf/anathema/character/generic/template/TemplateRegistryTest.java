@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.template;
 import net.sf.anathema.character.generic.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,7 +46,7 @@ public class TemplateRegistryTest {
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
     ICharacterExternalsTemplate[] allSupportedTemplates = registry.getAllSupportedTemplates(CharacterType.MORTAL);
-    assertTrue(ArrayUtilities.containsValue(allSupportedTemplates, defaultTemplate));
-    assertTrue(ArrayUtilities.containsValue(allSupportedTemplates, otherTemplate));
+    assertTrue(net.sf.anathema.lib.lang.ArrayUtilities.containsValue(allSupportedTemplates, defaultTemplate));
+    assertTrue(net.sf.anathema.lib.lang.ArrayUtilities.containsValue(allSupportedTemplates, otherTemplate));
   }
 }

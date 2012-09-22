@@ -20,7 +20,6 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.table.ITableEnc
 import net.sf.anathema.character.reporting.pdf.rendering.general.table.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.TableCell;
-import net.sf.anathema.lib.collection.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -215,9 +214,9 @@ public abstract class AbstractHealthAndMovementTableEncoder implements ITableEnc
   }
 
   private float[] createColumnWidth() {
-    Float[] movementAndLevelColumns = ArrayUtilities.concat(Float.class, getMovementColumns(), HEALTH_LEVEL_COLUMNS);
+    Float[] movementAndLevelColumns = net.sf.anathema.lib.lang.ArrayUtilities.concat(Float.class, getMovementColumns(), HEALTH_LEVEL_COLUMNS);
     Float[] healthColumns = TableEncodingUtilities.createStandardColumnWidths(HEALTH_COLUMN_COUNT, 0.4f);
-    Float[] objectArray = ArrayUtilities.concat(Float.class, movementAndLevelColumns, healthColumns);
+    Float[] objectArray = net.sf.anathema.lib.lang.ArrayUtilities.concat(Float.class, movementAndLevelColumns, healthColumns);
     return ArrayUtils.toPrimitive(objectArray);
   }
 
