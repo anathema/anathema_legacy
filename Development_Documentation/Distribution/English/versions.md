@@ -4,6 +4,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.5.3
+
+### Bugfixes
+* Fixes Drag and Drop in the series editor
+
 ## Release 4.5.2
 
 ### Features
