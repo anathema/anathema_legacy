@@ -64,15 +64,12 @@
       <charmReference id="Solar.SnakeForm"/>
     </prerequisite>
     <cost>
-      
         <essence cost="6"/>
-      
     </cost>
     <duration amount="1" unit="scene"/>
-    <charmtype type="Simple">
-   	  <special speed="5" defense="-1"/>
-   	</charmtype>
+    <charmtype type="Reflexive"/>
     <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <source source="SecondEdition" page="240"/>
   </charm>
   <charm id="Solar.Armor-PenetratingFangStrike" exalt="Solar" group="SnakeStyle">
