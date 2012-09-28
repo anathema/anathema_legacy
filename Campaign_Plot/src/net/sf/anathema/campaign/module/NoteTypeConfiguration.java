@@ -1,7 +1,5 @@
 package net.sf.anathema.campaign.module;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants;
 import net.sf.anathema.campaign.presenter.NotePresenter;
 import net.sf.anathema.campaign.view.BasicItemView;
@@ -19,10 +17,14 @@ import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.Icon;
+
 @ItemTypeConfiguration
+@Weight(weight = 20)
 public final class NoteTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
   public NoteTypeConfiguration() {

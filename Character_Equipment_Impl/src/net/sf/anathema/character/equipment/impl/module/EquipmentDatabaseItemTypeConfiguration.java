@@ -19,12 +19,14 @@ import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
 
 @ItemTypeConfiguration
+@Weight(weight = 10)
 public final class EquipmentDatabaseItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
   public static final String EQUIPMENT_DATABASE_ITEM_TYPE_ID = "EquipmentDatabase"; //$NON-NLS-1$

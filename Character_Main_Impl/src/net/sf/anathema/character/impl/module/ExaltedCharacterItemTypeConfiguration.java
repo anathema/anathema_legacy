@@ -30,6 +30,7 @@ import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -37,6 +38,7 @@ import net.sf.anathema.lib.resources.IResources;
 import javax.swing.Icon;
 
 @ItemTypeConfiguration
+@Weight(weight = 0)
 public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter"; //$NON-NLS-1$
 

@@ -16,12 +16,14 @@ import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
 
 @ItemTypeConfiguration
+@Weight(weight = 10)
 public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
   public static final String SERIES_ITEM_TYPE_ID = "Series"; //$NON-NLS-1$

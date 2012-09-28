@@ -15,12 +15,14 @@ import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
 
 @ItemTypeConfiguration
+@Weight(weight = 0)
 public final class CharmCascadeItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
   public static final String CHARM_CASCADES_ITEM_TYPE_ID = "CharmCascades"; //$NON-NLS-1$
