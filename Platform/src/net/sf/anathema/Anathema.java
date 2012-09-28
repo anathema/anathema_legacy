@@ -28,7 +28,6 @@ public class Anathema {
 
   private void prepareEnvironment(IInitializationPreferences initializationPreferences) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
     displayStatus("Preparing Environment..."); //$NON-NLS-1$
-    AnathemaEnvironment.initLogging();
     AnathemaEnvironment.initLocale(initializationPreferences);
     AnathemaEnvironment.initLookAndFeel(initializationPreferences);
     AnathemaEnvironment.initTooltipManager(initializationPreferences);
