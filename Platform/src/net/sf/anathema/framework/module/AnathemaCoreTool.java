@@ -11,11 +11,13 @@ import net.sf.anathema.framework.reporting.ControlledPrintAction;
 import net.sf.anathema.framework.reporting.QuickPrintAction;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 import net.sf.anathema.initialization.Tool;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
 
 @Tool
+@Weight(weight = 0)
 public class AnathemaCoreTool implements IAnathemaTool {
 
   @Override
@@ -34,8 +36,7 @@ public class AnathemaCoreTool implements IAnathemaTool {
   private Action getPrintAction(IResources resources, IAnathemaModel model) {
     if (AbstractPrintAction.isAutoOpenSupported()) {
       return QuickPrintAction.createToolAction(model, resources);
-    }
-    else {
+    } else {
       return ControlledPrintAction.createToolAction(model, resources);
     }
   }

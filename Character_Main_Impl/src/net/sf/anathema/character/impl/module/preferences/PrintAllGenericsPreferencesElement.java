@@ -2,11 +2,13 @@ package net.sf.anathema.character.impl.module.preferences;
 
 import net.sf.anathema.framework.module.preferences.AbstractCheckBoxPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.PRINT_ALL_GENERICS;
 
 @PreferenceElement
+@Weight(weight = 90)
 public class PrintAllGenericsPreferencesElement extends AbstractCheckBoxPreferencesElement implements
     ICharacterPreferencesElement {
 

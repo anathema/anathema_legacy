@@ -3,6 +3,7 @@ package net.sf.anathema.framework.module.preferences;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
@@ -15,6 +16,7 @@ import javax.swing.JPanel;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.TOOL_TIP_TIME_PREFERENCE;
 
 @PreferenceElement
+@Weight(weight = 40)
 public class ToolTipTimePreferencesElement implements IPreferencesElement {
 
   private int toolTipTime = SYSTEM_PREFERENCES.getInt(TOOL_TIP_TIME_PREFERENCE, 10);

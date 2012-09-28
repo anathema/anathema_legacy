@@ -5,6 +5,7 @@ import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElemen
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.view.EnumSelectCellRenderer;
 import net.sf.anathema.initialization.PreferenceElement;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
@@ -16,6 +17,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 import static net.sf.anathema.framework.reporting.pdf.PageSize.Letter;
 
 @PreferenceElement
+@Weight(weight = 20)
 public class PageFormatPreferenceElement implements IPreferencesElement {
 
   private PageSize pageFormat = loadPreference();

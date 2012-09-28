@@ -4,6 +4,7 @@ import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.action.SupportedLocale;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
@@ -21,6 +22,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.LOCALE_PREFERENCE;
 
 @PreferenceElement
+@Weight(weight = 0)
 public class LanguagePreferencesElement implements IPreferencesElement {
 
   private SupportedLocale locale = SupportedLocale.valueOf(SYSTEM_PREFERENCES.get(LOCALE_PREFERENCE, DEFAULT_LOCALE));

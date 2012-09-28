@@ -74,7 +74,7 @@ public class AnathemaPresenter {
   private void initializePreferences() throws InitializationException {
     PreferencesElementsExtensionPoint extensionPoint = (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry()
             .get(PreferencesElementsExtensionPoint.ID);
-    Collection<IPreferencesElement> elements = instantiater.instantiateAll(PreferenceElement.class);
+    Collection<IPreferencesElement> elements = instantiater.instantiateOrdered(PreferenceElement.class);
     for (IPreferencesElement element : elements) {
       extensionPoint.addPreferencesElement(element);
     }
@@ -88,14 +88,14 @@ public class AnathemaPresenter {
   }
 
   private void initializeMenus() throws InitializationException {
-    Collection<IAnathemaMenu> menus = instantiater.instantiateAll(Menu.class);
+    Collection<IAnathemaMenu> menus = instantiater.instantiateOrdered(Menu.class);
     for (IAnathemaMenu menu : menus) {
       menu.add(resources, model, view.getMenuBar());
     }
   }
 
   private void initializeTools() throws InitializationException {
-    Collection<IAnathemaTool> tools = instantiater.instantiateAll(Tool.class);
+    Collection<IAnathemaTool> tools = instantiater.instantiateOrdered(Tool.class);
     for (IAnathemaTool tool : tools) {
       tool.add(resources, model, view.getToolbar());
     }

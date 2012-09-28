@@ -23,6 +23,7 @@ import net.sf.anathema.framework.repository.tree.RepositoryViewAction;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.initialization.Menu;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -33,6 +34,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 @Menu
+@Weight(weight = 10)
 public class AnathemaCoreMenu implements IAnathemaMenu {
 
   @Override

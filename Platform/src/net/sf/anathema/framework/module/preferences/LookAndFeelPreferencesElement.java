@@ -6,6 +6,7 @@ import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
@@ -29,6 +30,7 @@ import java.util.Locale;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.USER_LOOK_AND_FEEL_CLASSNAME;
 
 @PreferenceElement
+@Weight(weight = 10)
 public class LookAndFeelPreferencesElement implements IPreferencesElement {
   private LookAndFeelItem selected;
   private JComboBox combo;

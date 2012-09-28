@@ -9,12 +9,14 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.initialization.Menu;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;
 
 @Menu
+@Weight(weight = 5)
 public class CharacterMenu implements IAnathemaMenu {
 
   @Override

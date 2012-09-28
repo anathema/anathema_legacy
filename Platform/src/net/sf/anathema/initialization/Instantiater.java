@@ -7,5 +7,7 @@ public interface Instantiater {
   @SuppressWarnings("unchecked")
   <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation) throws InitializationException;
 
+  <T> Collection<T> instantiateOrdered(Class<? extends Annotation> annotation) throws InitializationException;
+
   <T> Collection<T> instantiateAll(Class<? extends Annotation> annotation, Object parameter) throws InitializationException;
 }

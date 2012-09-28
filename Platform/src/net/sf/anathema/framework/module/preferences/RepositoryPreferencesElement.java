@@ -7,6 +7,7 @@ import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.PreferenceElement;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
@@ -28,6 +29,7 @@ import java.io.IOException;
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.REPOSITORY_PREFERENCE;
 
 @PreferenceElement
+@Weight(weight = 80)
 public class RepositoryPreferencesElement implements IPreferencesElement {
 
   private File repositoryDirectory;

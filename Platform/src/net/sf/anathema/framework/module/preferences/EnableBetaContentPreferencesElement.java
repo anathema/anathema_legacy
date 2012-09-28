@@ -1,11 +1,13 @@
 package net.sf.anathema.framework.module.preferences;
 
 import net.sf.anathema.initialization.PreferenceElement;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.ENABLE_BETA_CONTENT;
 
 @PreferenceElement
+@Weight(weight = 70)
 public class EnableBetaContentPreferencesElement extends AbstractCheckBoxPreferencesElement {
 
   private boolean enableBetaContent = SYSTEM_PREFERENCES.getBoolean(ENABLE_BETA_CONTENT, false);

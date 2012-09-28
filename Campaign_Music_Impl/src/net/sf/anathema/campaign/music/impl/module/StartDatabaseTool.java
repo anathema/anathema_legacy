@@ -5,9 +5,11 @@ import net.sf.anathema.framework.database.StartDatabaseAction;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 import net.sf.anathema.initialization.Tool;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 
 @Tool
+@Weight(weight = 20)
 public class StartDatabaseTool implements IAnathemaTool {
 
   @Override
