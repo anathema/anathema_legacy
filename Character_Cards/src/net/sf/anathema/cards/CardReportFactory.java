@@ -1,8 +1,5 @@
 package net.sf.anathema.cards;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.cards.data.providers.CharmCardDataProvider;
 import net.sf.anathema.cards.data.providers.EquipmentCardDataProvider;
 import net.sf.anathema.cards.data.providers.ICardDataProvider;
@@ -14,9 +11,14 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.initialization.ReportFactory;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @ReportFactory
+@Weight(weight = 40)
 public class CardReportFactory implements IReportFactory {
 	  @Override
       public Report[] createReport(IResources resources, IAnathemaModel model) {

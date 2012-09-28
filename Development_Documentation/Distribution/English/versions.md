@@ -6,6 +6,9 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 4.5.3
 
+### Features
+* Fixes the order of toolbar items, menu bar entries, preferences and character sheets
+
 ### Bugfixes
 * Fixes Drag and Drop in the series editor
 * Fixes prerequisite for (Generic) "Supreme Perfection of (Ability)"

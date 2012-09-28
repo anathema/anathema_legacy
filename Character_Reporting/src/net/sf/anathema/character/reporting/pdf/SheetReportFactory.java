@@ -9,6 +9,7 @@ import net.sf.anathema.framework.module.preferences.PageSizePreference;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.initialization.ReportFactory;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 import static net.sf.anathema.framework.module.preferences.EnableBetaContentPreferencesElement.enableBetaContent;
 
 @ReportFactory
+@Weight(weight = 10)
 public class SheetReportFactory implements IReportFactory {
 
   @Override
