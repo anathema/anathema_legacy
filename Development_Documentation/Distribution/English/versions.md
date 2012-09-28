@@ -8,7 +8,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Bugfixes
 * Fixes Drag and Drop in the series editor
-* Fixes prerequisite for (Solar/Generic) "Supreme Perfection"
+* Fixes prerequisite for (Generic) "Supreme Perfection of (Ability)"
 * Corrects (Martial Arts/Snake Style) "Essence Fangs and Scales Technique"
 
 ## Release 4.5.2
