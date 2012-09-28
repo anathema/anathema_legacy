@@ -1,5 +1,6 @@
 package net.sf.anathema;
 
+import com.itextpdf.text.log.LoggerFactory;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
@@ -49,7 +50,7 @@ public class Anathema {
       displayStatus("Starting Platform..."); //$NON-NLS-1$
       return new AnathemaInitializer(initializationPreferences).initialize();
     } catch (InitializationException e) {
-      e.printStackTrace();
+      LoggerFactory.getLogger(Anathema.class).error("Could not start platform.", e);
       return new ErrorWindow(e);
     }
   }
