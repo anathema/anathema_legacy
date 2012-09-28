@@ -1,0 +1,40 @@
+<?xml version="1.0" standalone="no"?>
+
+<svg width="190" xmlns:xlink="http://www.w3.org/1999/xlink" height="100.0" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter x="-10%" y="-10%" width="150%" filterUnits="objectBoundingBox" height="150%" id="Beveled-Marble-Shadow">
+            <feTurbulence baseFrequency="0.15" result="I0A" numOctaves="1"/>
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" result="I0" in="I0A" scale="25"
+                 in2="I0A"/>
+            <feColorMatrix values="0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 255" type="matrix" result="I1"
+                 in="I0"/>
+            <feComposite in2="I1" operator="arithmetic" result="I2" in="SourceGraphic" k1="1"/>
+            <feGaussianBlur stdDeviation="1" result="I3" in="I2"/>
+            <feGaussianBlur stdDeviation="3" result="I4" in="SourceAlpha"/>
+            <feSpecularLighting specularConstant="0.5" specularExponent="20" result="I5" in="I4"
+                 surfaceScale="5" lighting-color="rgb(255,255,255)">
+                <fePointLight x="-5000" y="-10000" z="20000"/>
+            </feSpecularLighting>
+            <feComposite result="I6" in="I3" k2="1" k3="1" in2="I5" operator="arithmetic"/>
+            <feComposite in2="SourceGraphic" operator="in" result="I7" in="I6"/>
+            <feGaussianBlur stdDeviation="4" result="blur" in="SourceAlpha"/>
+            <feOffset dx="4" dy="4" result="offsetBlur" in="blur"/>
+            <feMerge>
+                <feMergeNode in="offsetBlur"/>
+                <feMergeNode in="I7"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g>
+        <polygon stroke-width="0" points="89.0,11.0 99.0,5.0 121.0,12.0 
+            148.0,14.0 146.0,20.0 157.0,22.0 168.0,19.0 173.0,27.0 174.0,33.0 168.0,43.0 174.0,53.0 
+            173.0,59.0 168.0,67.0 157.0,64.0 146.0,66.0 148.0,72.0 121.0,74.0 99.0,81.0 89.0,75.0 
+            79.0,81.0 57.0,74.0 30.0,72.0 32.0,66.0 21.0,64.0 12.0,67.0 7.0,59.0 6.0,53.0 12.0,43.0 
+            6.0,33.0 7.0,27.0 12.0,19.0 23.0,22.0 32.0,20.0 30.0,14.0 57.0,12.0 79.0,5.0"/>
+        <polygon fill="none" stroke-width="3" points="89.0,11.0 99.0,5.0 121.0,12.0 148.0,14.0 
+            146.0,20.0 157.0,22.0 168.0,19.0 173.0,27.0 174.0,33.0 168.0,43.0 174.0,53.0 173.0,59.0 
+            168.0,67.0 157.0,64.0 146.0,66.0 148.0,72.0 121.0,74.0 99.0,81.0 89.0,75.0 79.0,81.0 
+            57.0,74.0 30.0,72.0 32.0,66.0 21.0,64.0 12.0,67.0 7.0,59.0 6.0,53.0 12.0,43.0 6.0,33.0 
+            7.0,27.0 12.0,19.0 23.0,22.0 32.0,20.0 30.0,14.0 57.0,12.0 79.0,5.0" stroke="rgb(128,128,128)"/>
+    </g>
+</svg>

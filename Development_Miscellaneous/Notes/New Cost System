@@ -1,0 +1,63 @@
+STREAMLINING THE CONTAINER ELEMENTS
+
+* The <cost> element contains everything else. The distinction between <temporary> and <permanent> was more hindring than useful,
+given that few permanent costs exist and the single common one (xp) is obviously permanent. 
+* If an expense (apart from XP) is permanent, we could model this by adding an attribute: loss=PERMANENT to the cost element in 
+question and have that attribute default to TEMPORARY if omitted.
+* The <cost> is no longer mandatory. Omission denotes "none" instead of causing an exception.
+
+
+JUST FOR YOUR INFORMATION: CURRENT FORMAT
+<essence>  (should we keep this format, I'd like to rename this element to <motes> to better distinguish it from the <essence> prerequisite. 
+<willpower>
+<health> (can have an optional attribute type=(Lethal|Bashing|Aggravated))
+<experience>
+
+PROPOSED NEW FORMAT: 
+<cost type=XXX>
+with possible types m, wp, lhl, bhl, ahl, xp. The abbreviations are straight from the 2e core rulebook,
+but we could also use expanded forms like motes, willpower, lethal, bashing, aggravated, experience.
+If the element is omitted, only one additional attribute "cost" is allowed. That attribute contains the 
+resource key of the text to be printed, e.g. <cost cost="PermanentStaminaPoint"/> 
+
+Types of cost entries:
+FIX AMOUNT, 				5 motes
+BASE AMOUNT, 				5 motes or more / 5+ motes (We should use this opportunity to unify the notation.)
+LINEAR AMOUNT, 				5 motes per enemy
+LINEAR AMOUNT/DICE, 		1 mote per 3 dice
+LINEAR AMOUNT/SUCCESSES, 	2 motes per 1 success
+FIX AMOUNT + LINEAR AMOUNT, 2 motes + 3 motes per arrow
+ALTERNATIVE FIX AMOUNTS, 	3 motes or 5 motes
+FIX AMOUNT/TEXT, 			1 mote to summon or banish
+SPECIAL TEXT: 				Varies, Special, None   
+COMPLEX TEXT, 				Depending on the mood of the Scarlet Empress' last mortal lover.
+
+
+Points of note:
+* Is there a point in having both Varies and Special, appart from their appearance in the various books? 
+Is there a case where Special just denotes "too complex to write in the header, but fixed nonetheless?
+* COMPLEX TEXT is the format described above as using the <cost cost="XXX"/> format. Could be replaced by
+Varies or Special, if desired.
+* ADDITIONAL costs or ALTERNATIVE costs could be entered as compound elements <addition> <alternative> and
+combined at runtime to give the human-readable text.
+* Multiple cost types with the same linear factor, e.g. "1 mote per pot, 1 wp per pot, 1 l health per pot", 
+could be rendered as "(1 mote, 1wp, 1 health) per pot" and modeled via a combination element:
+  <combination factor="pot">
+	<cost type=motes amount=1>
+	<cost type=wp amount=1>
+	<cost type=lhl amount=1>
+  </combination>
+
+Difficulties:
+* "5/10 + 1/3 motes per target" => COMPLEX or model via compound elements? Render as "(5 + 1 or 10 + 3) motes per target"?
+* Lunars 1st Edition, p129: LunarBloodReshapingTechnique has an odd entry: 
+	<health type="Lethal" cost="1" text="+Special"/> => "Special" wp
+
+
+SIDE NOTE:
+Do we still need the "exalt" attribute on top of every charm? For type specific charms, this is pure redundancy. as the charm file is registered for the type in question,
+the information can be retrieved from other sources.
+For MA charms, it is only used to determine the different looks styles. This is a non-
+issue in 2E, where everything looks alike. In 1E, we could either duplicate the frames for the various types to achieve 
+independence from character types (and select the frame based on the Martial Arts-level) 
+or have the types rendered in a single type of (duplicated) frame. (Siddy, I presume, given their predisposition towards MAs).

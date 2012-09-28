@@ -1,0 +1,14 @@
+Straight Line Symmetry (for Martial Arts)
+==========================================
+IF
+	all nodes on a given layer have the same outdegree and indegree
+AND IF
+	the tree consists of only on subtree
+THEN
+	all layers can be centered around a single point.
+	
+ALGORITHM
+	Get Widest Layer (nodecount)
+	Calculate width
+	Half width is centerpoint
+	Place nodes on centerpoint, with an offset depending on the number of nodes in their layer.	
