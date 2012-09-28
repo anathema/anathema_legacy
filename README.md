@@ -17,7 +17,7 @@ Development
 Launch ``net.sf.anathema.AnathemaBootLoader``
 
 ### Launching Anathema (Command Prompt)###
-Launch `gradlew run`
+Run `gradlew run`
 
 ### Running the test suite###
 Run ``gradlew test``
