@@ -191,7 +191,8 @@ From this version onward, Anathema no longer uses the "Equipment.yap" file, but 
 
 **Anathema now includes a default equipment database**, which contains the mundane and artifact weapons, shields, and armor from the 2E Core and 2.5 Errata.  If Anathema detects no items in your equipment database, it will populate it with the default database.  If you're an existing user and wish to see this database, simply back up your old database, delete the equipment folder from your repository, and re-launch the program.
 
-**We now import custom charms from your repository**, if the data files are provided. Consult the provided "Custom Charms.txt" for basic instructions.
+**We now import custom charms from your repository**, if the data files are provided.
+    Consult our [guide](https://github.com/anathema/anathema/wiki/How-to-create-custom-charms-and-spells) to learn more.
 
 Anathema no longer tracks the dots of Lunar Attribute specialties. They never factored into BP and XP, nor were they printed them.
 
