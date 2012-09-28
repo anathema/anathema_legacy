@@ -23,6 +23,10 @@ public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter 
 
   private static final TemplateType godBloodedType = new TemplateType(CharacterType.SPIRIT, new Identificate(
           "GodBlooded")); //$NON-NLS-1$
+  private static final TemplateType demonBloodedType = new TemplateType(CharacterType.SPIRIT, new Identificate(
+          "DemonBlooded")); //$NON-NLS-1$
+  private static final TemplateType ghostBloodedType = new TemplateType(CharacterType.GHOST, new Identificate(
+          "GhostBlooded")); //$NON-NLS-1$
   private static final TemplateType halfCasteAbyssalType = new TemplateType(CharacterType.ABYSSAL, new Identificate(
           "HalfCasteAbyssal")); //$NON-NLS-1$
   private static final TemplateType halfCasteLunarType = new TemplateType(CharacterType.LUNAR, new Identificate(
@@ -55,6 +59,8 @@ public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter 
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     ITemplateType[] templates = new TemplateType[]{
             godBloodedType,
+            demonBloodedType,
+            ghostBloodedType,
             halfCasteAbyssalType,
             halfCasteLunarType,
             halfCasteSiderealType,
