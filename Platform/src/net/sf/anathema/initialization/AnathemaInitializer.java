@@ -1,9 +1,11 @@
 package net.sf.anathema.initialization;
 
+import net.sf.anathema.ISplashscreen;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;
+import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.view.AnathemaView;
@@ -18,6 +20,7 @@ import net.sf.anathema.lib.exception.CentralExceptionHandling;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.ResourceFile;
 
+import java.util.Collection;
 import java.util.Set;
 
 public class AnathemaInitializer {
@@ -39,32 +42,41 @@ public class AnathemaInitializer {
   public IAnathemaView initialize() throws InitializationException {
     ResourceLoader loader = createResourceLoaderForInternalAndCustomResources();
     AnathemaResources resources = initResources(loader);
-    ProxySplashscreen.getInstance().displayVersion(
-            "v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
-    CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
+    showVersionOnSplashscreen(resources);
+    configureExceptionHandling(resources);
     IAnathemaModel anathemaModel = initModel(resources, loader);
     IAnathemaView view = initView(resources);
-    new AnathemaPresenter(anathemaModel, view, resources, itemTypeCollection.getItemTypes(),
-            instantiater).initPresentation();
+    initPresentation(resources, anathemaModel, view);
     return view;
   }
 
+  private void initPresentation(AnathemaResources resources, IAnathemaModel anathemaModel, IAnathemaView view) {
+    Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
+    AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, itemTypes, instantiater);
+    presenter.initPresentation();
+  }
+
+  private void configureExceptionHandling(AnathemaResources resources) {
+    CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
+  }
+
   private IAnathemaModel initModel(IResources resources, ResourceLoader loader) throws InitializationException {
-    ProxySplashscreen.getInstance().displayStatusMessage("Creating Model..."); //$NON-NLS-1$
-    return new AnathemaModelInitializer(initializationPreferences, itemTypeCollection.getItemTypes(),
-            extensionCollection).initializeModel(resources, reflections, loader);
+    displayMessage("Creating Model...");
+    Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
+    AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(initializationPreferences, itemTypes, extensionCollection);
+    return modelInitializer.initializeModel(resources, reflections, loader);
   }
 
   private IAnathemaView initView(IResources resources) {
-    ProxySplashscreen.getInstance().displayStatusMessage("Building View..."); //$NON-NLS-1$
+    displayMessage("Building View...");
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources,
             initializationPreferences.initMaximized());
     return new AnathemaView(viewProperties);
   }
 
   private AnathemaResources initResources(ResourceLoader loader) {
+    displayMessage("Loading Resources...");
     AnathemaResources resources = new AnathemaResources();
-    ProxySplashscreen.getInstance().displayStatusMessage("Loading Resources..."); //$NON-NLS-1$
     Set<ResourceFile> resourcesInPaths = loader.getResourcesMatching(".*\\.properties");
     for (ResourceFile resource : resourcesInPaths) {
       resources.addResourceBundle(resource);
@@ -76,5 +88,17 @@ public class AnathemaInitializer {
     RepositoryLocationResolver resolver = new RepositoryLocationResolver(initializationPreferences);
     CustomDataResourceLoader customLoader = new CustomDataResourceLoader(resolver);
     return new AggregatedResourceLoader(reflections, customLoader);
+  }
+
+  private void showVersionOnSplashscreen(AnathemaResources resources) {
+    getSplashscreen().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
+  }
+
+  private void displayMessage(String message) {
+    getSplashscreen().displayStatusMessage(message); //$NON-NLS-1$
+  }
+
+  private ISplashscreen getSplashscreen() {
+    return ProxySplashscreen.getInstance();
   }
 }
