@@ -13,12 +13,11 @@ import java.awt.Dimension;
 public class StatusBar implements IStatusBar {
 
   private final JLabel label = new JLabel();
-  private final JButton button = new JButton("...");
   private final JPanel panel = new JPanel(new BorderLayout());
 
   public StatusBar() {
+    JButton button = new JButton("...");
     panel.add(label, BorderLayout.CENTER);
-    //panel.add(button, BorderLayout.EAST);
     label.setPreferredSize(new Dimension(350, 20));
     button.setPreferredSize(new Dimension(25, 20));
   }

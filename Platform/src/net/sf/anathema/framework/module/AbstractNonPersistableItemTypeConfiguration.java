@@ -6,7 +6,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.presenter.menu.MenuExtensionPoint;
-import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -21,7 +21,7 @@ public abstract class AbstractNonPersistableItemTypeConfiguration extends Abstra
       IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IResources resources,
       IAnathemaModel model,
-      IAnathemaView view) {
+      MainView view) {
     IMenuItem[] addMenuItems = createAddMenuEntries(view, model, resources);
     MenuExtensionPoint extraExtensionPoint = (MenuExtensionPoint) extensionPointRegistry.get(IMenuExtensionPoint.EXTRA_MENU_EXTENSION_POINT_ID);
     for (IMenuItem item : addMenuItems) {
@@ -30,7 +30,7 @@ public abstract class AbstractNonPersistableItemTypeConfiguration extends Abstra
   }
 
   protected abstract IMenuItem[] createAddMenuEntries(
-      IAnathemaView view,
+      MainView view,
       IAnathemaModel anathemaModel,
       IResources resources);
 

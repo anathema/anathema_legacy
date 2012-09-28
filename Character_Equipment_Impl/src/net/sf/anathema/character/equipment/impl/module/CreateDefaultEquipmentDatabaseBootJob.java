@@ -4,7 +4,7 @@ import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.equipment.impl.item.model.gson.EquipmentGson;
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
@@ -22,7 +22,7 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IAnathemaBootJob {
   private final static String EQUIPMENT_REGEX = "^.*\\.item$";
 
   @Override
-  public void run(IResources resources, IAnathemaModel anathemaModel, IAnathemaView view) {
+  public void run(IResources resources, IAnathemaModel anathemaModel, MainView view) {
     /* Once bootjob ordering is in place, any of this class' variables/functions with
 the word 'legacy' in it, and any code that calls it, can be safely removed.
 Just make sure this runs *after* DatabaseConversionBootJob. */

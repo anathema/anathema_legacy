@@ -3,7 +3,7 @@ package net.sf.anathema.framework.module.preferences;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
-import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.lib.logging.Logger;
@@ -28,7 +28,7 @@ import javax.swing.UIManager;
 @BootJob
 public class LookAndFeelOverrideBootjob implements IAnathemaBootJob {
   @Override
-  public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
+  public void run(IResources resources, IAnathemaModel model, MainView view) {
     if (userRequestedLookAndFeelOverride()) {
       resetLookAndFeelPreference();
       if (currentLookAndFeelIsNotSystemLookAndFeel()) {

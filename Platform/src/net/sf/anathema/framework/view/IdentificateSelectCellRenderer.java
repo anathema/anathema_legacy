@@ -5,7 +5,6 @@ import net.sf.anathema.lib.util.Identified;
 
 public class IdentificateSelectCellRenderer extends AbstractSelectCellRenderer<Identified> {
 
-  private static final long serialVersionUID = -108630268359225612L;
   private final String resourceKeyPrefix;
   private final String resourceKeySuffix;
 
@@ -13,12 +12,6 @@ public class IdentificateSelectCellRenderer extends AbstractSelectCellRenderer<I
     super(resources);
     this.resourceKeyPrefix = resourceKeyPrefix;
     this.resourceKeySuffix = null;
-  }
-
-  public IdentificateSelectCellRenderer(String resourceKeyPrefix, String resourceKeySuffix, IResources resources) {
-    super(resources);
-    this.resourceKeyPrefix = resourceKeyPrefix;
-    this.resourceKeySuffix = resourceKeySuffix;
   }
 
   @Override

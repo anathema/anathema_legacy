@@ -12,8 +12,8 @@ import net.sf.anathema.framework.presenter.action.ActionMenuItem;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
-import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
@@ -51,7 +51,7 @@ public final class CharmCascadeItemTypeConfiguration extends AbstractNonPersista
   }
 
   @Override
-  protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
+  protected IMenuItem[] createAddMenuEntries(MainView view, IAnathemaModel anathemaModel, IResources resources) {
     return new IMenuItem[]{new ActionMenuItem(ShowCascadesAction.createMenuAction(resources, anathemaModel))};
   }
 }

@@ -15,11 +15,11 @@ import java.awt.BorderLayout;
 public class CollapsibleView implements IView {
 
   private final JPanel panel = new JPanel(new BorderLayout());
-  private final JPanel collapsible = new JPanel(new BorderLayout());
   private final JXCollapsiblePane collapsiblePane = new JXCollapsiblePane(JXCollapsiblePane.Direction.DOWN);
   private final JXTitledPanel titledPanel = new JXTitledPanel();
 
   public CollapsibleView() {
+    JPanel collapsible = new JPanel(new BorderLayout());
     collapsiblePane.add(collapsible, BorderLayout.CENTER);
     collapsiblePane.setAnimated(false);
     collapsiblePane.setCollapsed(true);
@@ -31,7 +31,6 @@ public class CollapsibleView implements IView {
   private JComponent createCloseButton() {
     ToolBarButton toolBarButton = new ToolBarButton();
     Action closeAction = getToggleAction();
-    // TODO: ImageIcon verwenden
     Icon icon = UIManager.getIcon("Tree.expandedIcon");
     closeAction.putValue(JXCollapsiblePane.COLLAPSE_ICON, icon);
     closeAction.putValue(Action.NAME, null);

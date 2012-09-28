@@ -16,8 +16,8 @@ import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
@@ -51,7 +51,7 @@ public final class EquipmentDatabaseItemTypeConfiguration extends AbstractNonPer
   }
 
   @Override
-  protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
+  protected IMenuItem[] createAddMenuEntries(MainView view, IAnathemaModel anathemaModel, IResources resources) {
     EquipmentDatabaseActionProperties properties = new EquipmentDatabaseActionProperties(resources, anathemaModel);
     return new IMenuItem[] { new ActionMenuItem(StartDatabaseAction.createMenuAction(
         resources,

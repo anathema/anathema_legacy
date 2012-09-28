@@ -6,7 +6,7 @@ import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IModelViewMapping;
 import net.sf.anathema.framework.presenter.ModelViewMapping;
 import net.sf.anathema.framework.presenter.itemmanagement.ItemViewSelectionListener;
-import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.lib.resources.IResources;
@@ -15,7 +15,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class ItemViewBootJob implements IAnathemaBootJob {
 
   @Override
-  public void run(IResources resources, IAnathemaModel model, IAnathemaView view) {
+  public void run(IResources resources, IAnathemaModel model, MainView view) {
     IModelViewMapping mapping = new ModelViewMapping();
     IItemManagementModel itemManagement = model.getItemManagement();
     itemManagement.addListener(new ItemManagmentModelListener(

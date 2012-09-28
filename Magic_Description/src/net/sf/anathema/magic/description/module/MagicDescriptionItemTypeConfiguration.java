@@ -1,6 +1,5 @@
 package net.sf.anathema.magic.description.module;
 
-import net.sf.anathema.framework.view.NullItemView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
@@ -8,8 +7,9 @@ import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.framework.view.MainView;
+import net.sf.anathema.framework.view.NullItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -31,7 +31,7 @@ public final class MagicDescriptionItemTypeConfiguration extends AbstractItemTyp
   }
 
   @Override
-  public void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IResources resources, IAnathemaModel model, IAnathemaView view) {
+  public void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IResources resources, IAnathemaModel model, MainView view) {
     // nothing to do
   }
 

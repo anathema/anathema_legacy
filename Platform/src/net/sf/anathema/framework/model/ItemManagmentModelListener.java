@@ -5,8 +5,8 @@ import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.IModelViewMapping;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
 
@@ -14,12 +14,12 @@ public class ItemManagmentModelListener implements IItemManagementModelListener 
 
   private final IModelViewMapping mapping;
   private final IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry;
-  private final IAnathemaView anathemaView;
+  private final MainView anathemaView;
   private final IItemActionFactory actionFactory;
 
   public ItemManagmentModelListener(
       IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry,
-      IAnathemaView anathemaView,
+      MainView anathemaView,
       IModelViewMapping mappping,
       IItemActionFactory actionFactory) {
     this.anathemaView = anathemaView;

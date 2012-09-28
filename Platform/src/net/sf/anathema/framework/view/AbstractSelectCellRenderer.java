@@ -1,15 +1,13 @@
 package net.sf.anathema.framework.view;
 
-import java.awt.Component;
+import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
-
-import net.sf.anathema.lib.resources.IResources;
+import java.awt.Component;
 
 public abstract class AbstractSelectCellRenderer<T> extends DefaultListCellRenderer {
 
-  private static final long serialVersionUID = 512344739558486209L;
   private final IResources resources;
 
   public AbstractSelectCellRenderer(IResources resources) {

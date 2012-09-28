@@ -8,8 +8,8 @@ import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.AnathemaResources;
-import net.sf.anathema.framework.view.AnathemaView;
-import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.framework.view.AnathemaMainView;
+import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
 import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
 import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
@@ -39,18 +39,18 @@ public class AnathemaInitializer {
     this.initializationPreferences = initializationPreferences;
   }
 
-  public IAnathemaView initialize() throws InitializationException {
+  public MainView initialize() throws InitializationException {
     ResourceLoader loader = createResourceLoaderForInternalAndCustomResources();
     AnathemaResources resources = initResources(loader);
     showVersionOnSplashscreen(resources);
     configureExceptionHandling(resources);
     IAnathemaModel anathemaModel = initModel(resources, loader);
-    IAnathemaView view = initView(resources);
+    MainView view = initView(resources);
     initPresentation(resources, anathemaModel, view);
     return view;
   }
 
-  private void initPresentation(AnathemaResources resources, IAnathemaModel anathemaModel, IAnathemaView view) {
+  private void initPresentation(AnathemaResources resources, IAnathemaModel anathemaModel, MainView view) {
     Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
     AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, itemTypes, instantiater);
     presenter.initPresentation();
@@ -67,11 +67,11 @@ public class AnathemaInitializer {
     return modelInitializer.initializeModel(resources, reflections, loader);
   }
 
-  private IAnathemaView initView(IResources resources) {
+  private MainView initView(IResources resources) {
     displayMessage("Building View...");
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources,
             initializationPreferences.initMaximized());
-    return new AnathemaView(viewProperties);
+    return new AnathemaMainView(viewProperties);
   }
 
   private AnathemaResources initResources(ResourceLoader loader) {

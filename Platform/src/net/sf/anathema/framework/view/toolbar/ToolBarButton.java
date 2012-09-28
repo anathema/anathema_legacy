@@ -1,5 +1,10 @@
 package net.sf.anathema.framework.view.toolbar;
 
+import net.sf.anathema.framework.value.NoFocusButton;
+
+import javax.swing.Action;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Graphics2D;
@@ -7,15 +12,7 @@ import java.awt.Image;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 
-import javax.swing.Action;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-
-import net.sf.anathema.framework.value.NoFocusButton;
-
 public class ToolBarButton extends NoFocusButton {
-
-  private static final long serialVersionUID = -1743064954642997489L;
 
   @Override
   public void setAction(Action action) {

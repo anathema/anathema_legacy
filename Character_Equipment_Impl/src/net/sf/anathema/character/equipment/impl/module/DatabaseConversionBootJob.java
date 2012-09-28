@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.module;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.lib.message.Message;
@@ -19,7 +19,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
   private static final String OLD_DATABASE_FOLDER = "equipment"; //$NON-NLS-1$
 
   @Override
-  public void run(IResources resources, IAnathemaModel anathemaModel, IAnathemaView view) {
+  public void run(IResources resources, IAnathemaModel anathemaModel, MainView view) {
     ProxySplashscreen.getInstance().displayStatusMessage(
             resources.getString("Equipment.Bootjob.Splashmessage")); //$NON-NLS-1$
     File databaseFile = new File(anathemaModel.getRepository().getDataBaseDirectory(OLD_DATABASE_FOLDER),

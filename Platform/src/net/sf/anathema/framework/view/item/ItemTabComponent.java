@@ -16,7 +16,7 @@ import java.awt.Insets;
 import java.util.HashMap;
 import java.util.Map;
 
-import static javax.swing.SwingConstants.CENTER;
+import static java.awt.FlowLayout.CENTER;
 import static javax.swing.SwingConstants.LEFT;
 
 public class ItemTabComponent {
