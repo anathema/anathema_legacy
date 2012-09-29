@@ -20,10 +20,9 @@ public class VirtueFlaw implements IVirtueFlaw {
   private final ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharacterModelContext context;
-  
-  public VirtueFlaw(ICharacterModelContext context)
-  {
-	  this.context = context;
+
+  public VirtueFlaw(ICharacterModelContext context) {
+    this.context = context;
   }
 
   @Override
@@ -36,20 +35,19 @@ public class VirtueFlaw implements IVirtueFlaw {
     this.root = root;
     control.announce().changeOccurred();
   }
-  
+
   @Override
-  public IDefaultTrait getLimitTrait()
-  {
-	  if (limitTrait == null)
-		  limitTrait = new LimitedTrait(new TraitType(getLimitString()),
-				  SimpleTraitTemplate.createStaticLimitedTemplate( 
-		          0, 10, LowerableState.LowerableLoss), new FriendlyIncrementChecker(), context.getTraitContext());
-	  return limitTrait;
+  public IDefaultTrait getLimitTrait() {
+    if (limitTrait == null) {
+      limitTrait = new LimitedTrait(new TraitType(getLimitString()),
+              SimpleTraitTemplate.createStaticLimitedTemplate(0, 10, LowerableState.LowerableLoss),
+              new FriendlyIncrementChecker(), context.getTraitContext());
+    }
+    return limitTrait;
   }
-  
-  protected String getLimitString()
-  {
-	  return "VirtueFlaw.LimitTrait";
+
+  protected String getLimitString() {
+    return "VirtueFlaw.LimitTrait";
   }
 
   @Override
