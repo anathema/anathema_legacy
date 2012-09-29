@@ -42,5 +42,4 @@ public interface IGhostPassionsModel extends IAdditionalModel {
   int getCurrentTotalPassions();
   
   int getMaxTotalPassions();
-
 }

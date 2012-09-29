@@ -38,7 +38,7 @@ public class GhostPassionsPresenter implements Presenter {
   private ILabelledAlotmentView convictionView;
   private ILabelledAlotmentView temperanceView;
   private ILabelledAlotmentView valorView;
-  
+
   private final IdentityMapping<ISubTrait, IPassionView> viewsByPassion = new IdentityMapping<ISubTrait, IPassionView>();
   private final TraitInternationalizer i18ner;
   private final Comparator<ITraitReference> comparator = new Comparator<ITraitReference>() {
@@ -65,8 +65,8 @@ public class GhostPassionsPresenter implements Presenter {
 
     @Override
     public void subTraitValueChanged() {
-    	updateOverviewData();
-    	setSelectionObjects();
+      updateOverviewData();
+      setSelectionObjects();
     }
   };
 
@@ -74,10 +74,7 @@ public class GhostPassionsPresenter implements Presenter {
   private final IGhostPassionsConfigurationView view;
   private final IGhostPassionsModel model;
 
-  public GhostPassionsPresenter(
-	  IResources resources,
-      IGhostPassionsConfigurationView view,
-      IGhostPassionsModel model) {
+  public GhostPassionsPresenter(IResources resources, IGhostPassionsConfigurationView view, IGhostPassionsModel model) {
     this.model = model;
     this.view = view;
     this.resources = resources;
@@ -93,19 +90,18 @@ public class GhostPassionsPresenter implements Presenter {
     convictionView = overview.addAlotmentView(resources.getString("Conviction"), 2); //$NON-NLS-1$
     temperanceView = overview.addAlotmentView(resources.getString("Temperance"), 2); //$NON-NLS-1$
     valorView = overview.addAlotmentView(resources.getString("Valor"), 2); //$NON-NLS-1$
-    
-    Icon addIcon = new BasicUi(resources).getAddIcon();
-    passionSelectionView = view.addPassionSelectionView(
-        resources.getString("PassionView.SelectionCombo.Label"), //$NON-NLS-1$
-        new AbstractSelectCellRenderer<ITraitReference>(resources) {
-			private static final long serialVersionUID = 1L;
 
-		@Override
-          protected String getCustomizedDisplayValue(ITraitReference value) {
-            return i18ner.getScreenName(value);
-          }
-        },
-        addIcon);
+    Icon addIcon = new BasicUi(resources).getAddIcon();
+    passionSelectionView = view.addPassionSelectionView(resources.getString("PassionView.SelectionCombo.Label"),
+            //$NON-NLS-1$
+            new AbstractSelectCellRenderer<ITraitReference>(resources) {
+              private static final long serialVersionUID = 1L;
+
+              @Override
+              protected String getCustomizedDisplayValue(ITraitReference value) {
+                return i18ner.getScreenName(value);
+              }
+            }, addIcon);
     setSelectionObjects();
     passionSelectionView.addSelectionChangedListener(new ObjectValueListener<ITraitReference>() {
       @Override
@@ -131,7 +127,7 @@ public class GhostPassionsPresenter implements Presenter {
     model.addSelectionChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {
-    	  passionSelectionView.setButtonEnabled(!model.isExperienced() && model.isEntryComplete());
+        passionSelectionView.setButtonEnabled(!model.isExperienced() && model.isEntryComplete());
       }
     });
     model.addTraitListChangeListener(new ITraitReferencesChangeListener() {
@@ -144,8 +140,8 @@ public class GhostPassionsPresenter implements Presenter {
 
       @Override
       public void referenceRemoved(ITraitReference reference) {
-    	  passionSelectionView.setObjects(model.getAllEligibleTraits());
-    	  updateOverviewData();
+        passionSelectionView.setObjects(model.getAllEligibleTraits());
+        updateOverviewData();
       }
     });
     reset(passionSelectionView);
@@ -155,45 +151,40 @@ public class GhostPassionsPresenter implements Presenter {
       }
     }
     model.addCharacterChangeListener(new GlobalCharacterChangeAdapter() {
-    	
-        @Override
-        public void characterChanged()
-        {
-        	setSelectionObjects();
-        }
-        
-        @Override
-        public void experiencedChanged(boolean experienced) {
-          updatePassionViewButtons();
-          if (experienced)
-        	  view.removeControls();
-        }
-      });
+
+      @Override
+      public void characterChanged() {
+        setSelectionObjects();
+      }
+
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        updatePassionViewButtons();
+        if (experienced) view.removeControls();
+      }
+    });
     updatePassionViewButtons();
-    
+
     view.setOverview(overview);
     updateOverviewData();
-    
-    if (model.isExperienced())
-    	view.removeControls();
-  }
-  
-  private void updateOverviewData()
- {
-	  maxPassionView.setValue(model.getCurrentTotalPassions());
-	  maxPassionView.setAlotment(model.getMaxTotalPassions());
-	  compassionView.setValue(model.getPassionContainer(VirtueType.Compassion).getCurrentDotTotal());
-	  compassionView.setAlotment(model.getCurrentVirtueRating(VirtueType.Compassion));
-	  convictionView.setValue(model.getPassionContainer(VirtueType.Conviction).getCurrentDotTotal());
-	  convictionView.setAlotment(model.getCurrentVirtueRating(VirtueType.Conviction));
-	  temperanceView.setValue(model.getPassionContainer(VirtueType.Temperance).getCurrentDotTotal());
-	  temperanceView.setAlotment(model.getCurrentVirtueRating(VirtueType.Temperance));
-	  valorView.setValue(model.getPassionContainer(VirtueType.Valor).getCurrentDotTotal());
-	  valorView.setAlotment(model.getCurrentVirtueRating(VirtueType.Valor));
-	  }
 
-  private void setSelectionObjects()
-  {
+    if (model.isExperienced()) view.removeControls();
+  }
+
+  private void updateOverviewData() {
+    maxPassionView.setValue(model.getCurrentTotalPassions());
+    maxPassionView.setAlotment(model.getMaxTotalPassions());
+    compassionView.setValue(model.getPassionContainer(VirtueType.Compassion).getCurrentDotTotal());
+    compassionView.setAlotment(model.getCurrentVirtueRating(VirtueType.Compassion));
+    convictionView.setValue(model.getPassionContainer(VirtueType.Conviction).getCurrentDotTotal());
+    convictionView.setAlotment(model.getCurrentVirtueRating(VirtueType.Conviction));
+    temperanceView.setValue(model.getPassionContainer(VirtueType.Temperance).getCurrentDotTotal());
+    temperanceView.setAlotment(model.getCurrentVirtueRating(VirtueType.Temperance));
+    valorView.setValue(model.getPassionContainer(VirtueType.Valor).getCurrentDotTotal());
+    valorView.setAlotment(model.getCurrentVirtueRating(VirtueType.Valor));
+  }
+
+  private void setSelectionObjects() {
     ITraitReference[] allTraits = getAllEligibleTraits();
     Arrays.sort(allTraits, comparator);
     passionSelectionView.setObjects(allTraits);
@@ -223,10 +214,9 @@ public class GhostPassionsPresenter implements Presenter {
   private ITraitReference[] getAllTraits() {
     return model.getAllTraits();
   }
-  
-  private ITraitReference[] getAllEligibleTraits()
-  {
-	return model.getAllEligibleTraits();
+
+  private ITraitReference[] getAllEligibleTraits() {
+    return model.getAllEligibleTraits();
   }
 
   private void updatePassionViewButtons() {
@@ -236,7 +226,7 @@ public class GhostPassionsPresenter implements Presenter {
         view.setDeleteButtonEnabled(passion.getCreationValue() == 0 || !model.isExperienced());
       }
     }
-    
+
   }
 
   private void addPassionView(final IPassion passion) {
@@ -244,12 +234,8 @@ public class GhostPassionsPresenter implements Presenter {
     String traitName = i18ner.getScreenName(traitReference);
     String passionName = passion.getName();
     Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
-    IPassionView passionView = view.addPassionView(
-        traitName,
-        passionName,
-        deleteIcon,
-        passion.getCurrentValue(),
-        passion.getMaximalValue());
+    IPassionView passionView = view.addPassionView(traitName, passionName, deleteIcon, passion.getCurrentValue(),
+            passion.getMaximalValue());
     new TraitPresenter(passion, passionView).initPresentation();
     passionView.addDeleteListener(new IChangeListener() {
       @Override
