@@ -14,6 +14,7 @@ import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChang
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
+import net.sf.anathema.character.presenter.specialty.TraitReferenceByNameComparator;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
@@ -41,14 +42,7 @@ public class GhostPassionsPresenter implements Presenter {
 
   private final IdentityMapping<ISubTrait, IPassionView> viewsByPassion = new IdentityMapping<ISubTrait, IPassionView>();
   private final TraitInternationalizer i18ner;
-  private final Comparator<ITraitReference> comparator = new Comparator<ITraitReference>() {
-    @Override
-    public int compare(ITraitReference o1, ITraitReference o2) {
-      String name1 = i18ner.getScreenName(o1);
-      String name2 = i18ner.getScreenName(o2);
-      return name1.compareToIgnoreCase(name2);
-    }
-  };
+  private final Comparator<ITraitReference> comparator;
 
   private final ISubTraitListener passionListener = new ISubTraitListener() {
     @Override
@@ -79,6 +73,7 @@ public class GhostPassionsPresenter implements Presenter {
     this.view = view;
     this.resources = resources;
     this.i18ner = new TraitInternationalizer(resources);
+    this.comparator = new TraitReferenceByNameComparator(i18ner);
   }
 
   @Override
@@ -205,12 +200,6 @@ public class GhostPassionsPresenter implements Presenter {
     passionSelectionView.clear();
   }
 
-  protected void removePassionView(ISubTrait passion) {
-    IPassionView view = viewsByPassion.get(passion);
-    viewsByPassion.remove(passion);
-    view.delete();
-  }
-
   private ITraitReference[] getAllTraits() {
     return model.getAllTraits();
   }
@@ -226,7 +215,6 @@ public class GhostPassionsPresenter implements Presenter {
         view.setDeleteButtonEnabled(passion.getCreationValue() == 0 || !model.isExperienced());
       }
     }
-
   }
 
   private void addPassionView(final IPassion passion) {

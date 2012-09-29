@@ -30,14 +30,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
 
   private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<ISubTrait, ISpecialtyView>();
   private final TraitInternationalizer i18ner;
-  private final Comparator<ITraitReference> comparator = new Comparator<ITraitReference>() {
-    @Override
-    public int compare(ITraitReference o1, ITraitReference o2) {
-      String name1 = i18ner.getScreenName(o1);
-      String name2 = i18ner.getScreenName(o2);
-      return name1.compareToIgnoreCase(name2);
-    }
-  };
+  private final Comparator<ITraitReference> comparator;
 
   private final ISubTraitListener specialtyListener = new ISubTraitListener() {
     @Override
@@ -70,6 +63,7 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     this.configurationView = configurationView;
     this.resources = resources;
     this.i18ner = new TraitInternationalizer(resources);
+    this.comparator = new TraitReferenceByNameComparator(i18ner);
   }
 
   @Override
@@ -212,4 +206,5 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     });
     viewsBySpecialty.put(specialty, specialtyView);
   }
+
 }
