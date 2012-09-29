@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
+import net.sf.anathema.lib.control.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
@@ -14,18 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InfernalUrgeModel extends VirtueFlawModel implements IInfernalUrgeModel {
-  private InfernalUrge virtueFlaw;
+  private InfernalUrge infernalUrge;
   private InfernalUrgeTemplate template;
 
   public InfernalUrgeModel(InfernalUrgeTemplate template, ICharacterModelContext context) {
     super(context, template);
     this.template = template;
-    virtueFlaw = new InfernalUrge(context);
+    infernalUrge = new InfernalUrge(context);
   }
 
   @Override
   public IVirtueFlaw getVirtueFlaw() {
-    return virtueFlaw;
+    return infernalUrge;
   }
 
   @Override
@@ -51,15 +52,17 @@ public class InfernalUrgeModel extends VirtueFlawModel implements IInfernalUrgeM
 
   @Override
   public void addChangeListener(IChangeListener listener) {
+    super.addChangeListener(listener);
+    getDescription().addTextChangedListener(new GlobalChangeAdapter<String>(listener));
   }
 
   @Override
   public ITextualDescription getDescription() {
-    return virtueFlaw.getDescription();
+    return infernalUrge.getDescription();
   }
 
   @Override
   public void setDescription(String urge) {
-    virtueFlaw.getDescription().setText(urge);
+    getDescription().setText(urge);
   }
 }
