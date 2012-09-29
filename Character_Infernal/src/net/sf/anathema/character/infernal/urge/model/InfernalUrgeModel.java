@@ -36,7 +36,7 @@ public class InfernalUrgeModel extends VirtueFlawModel implements IInfernalUrgeM
         flawVirtues.add(virtueType);
       }
     }
-    return flawVirtues.toArray(new ITraitType[0]);
+    return flawVirtues.toArray(new ITraitType[flawVirtues.size()]);
   }
 
   @Override
