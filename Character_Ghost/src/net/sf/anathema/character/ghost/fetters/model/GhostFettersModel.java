@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GhostFettersModel extends AbstractAdditionalModelAdapter implements IGhostFettersModel {
-  private final List<Fetter> fetters;
+  private final List<Fetter> fetters = new ArrayList<Fetter>();
   IIntValueChangedListener listener;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharacterModelContext context;
@@ -30,7 +30,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 
   private static final int FETTER_XP_MULTIPLIER = 3;
   private static final int FETTER_BONUS_POINT_COST = 3;
-  private final int maxFreeRating;
+  private static final int maxFreeRating = 3;
 
   @Override
   public AdditionalModelType getAdditionalModelType() {
@@ -40,9 +40,6 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
   public GhostFettersModel(GhostFettersTemplate template, ICharacterModelContext context) {
     this.context = context;
     this.template = template;
-    fetters = new ArrayList<Fetter>();
-
-    maxFreeRating = 3;
   }
 
   @Override
@@ -85,8 +82,9 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
   @Override
   public int getFreeDotsSpent() {
     int spent = 0;
-    for (Fetter fetter : fetters)
+    for (Fetter fetter : fetters) {
       spent += Math.min(maxFreeRating, fetter.getCreationValue());
+    }
     return Math.min(spent, getFreeDotAllotment());
   }
 
@@ -107,8 +105,9 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
   @Override
   public int getXPSpent() {
     int xpMult = 0;
-    for (Fetter fetter : fetters)
+    for (Fetter fetter : fetters) {
       xpMult += getXPMultiplier(fetter);
+    }
     return FETTER_XP_MULTIPLIER * xpMult;
   }
 
@@ -124,23 +123,24 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
 
   private int getXPMultiplier(Fetter fetter) {
     int total = 1;
-    for (int i = fetter.getCreationValue(); i < fetter.getExperiencedValue(); i++)
+    for (int i = fetter.getCreationValue(); i < fetter.getExperiencedValue(); i++){
       total *= i;
+    }
     return total == 1 ? 0 : total;
   }
 
   @Override
   public Fetter[] getFetters() {
-    Fetter[] fetterSet = new Fetter[fetters.size()];
-    fetters.toArray(fetterSet);
-    return fetterSet;
+    return fetters.toArray(new Fetter[fetters.size()]);
   }
 
   @Override
   public Fetter commitSelection() {
     Fetter newFetter = new Fetter(currentName, context.getTraitContext(), this);
     fetters.add(newFetter);
-    if (listener != null) newFetter.addCurrentValueListener(listener);
+    if (listener != null) {
+      newFetter.addCurrentValueListener(listener);
+    }
     newFetter.addCurrentValueListener(new IIntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
@@ -154,6 +154,7 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
   @Override
   public void removeFetter(Fetter fetter) {
     fetters.remove(fetter);
+    control.announce().changeOccurred();
   }
 
   @Override
@@ -192,6 +193,5 @@ public class GhostFettersModel extends AbstractAdditionalModelAdapter implements
   @Override
   public void addChangeListener(IChangeListener listener) {
     control.addListener(listener);
-
   }
 }
