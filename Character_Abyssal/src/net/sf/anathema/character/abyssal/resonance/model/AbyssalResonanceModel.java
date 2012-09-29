@@ -8,6 +8,7 @@ import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
 import net.sf.anathema.lib.control.IChangeListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AbyssalResonanceModel extends VirtueFlawModel
@@ -32,9 +33,7 @@ public class AbyssalResonanceModel extends VirtueFlawModel
   @Override
   public ITraitType[] getFlawVirtueTypes() {
     List<ITraitType> flawVirtues = new ArrayList<ITraitType>();
-    for (VirtueType virtueType : VirtueType.values()) {
-      flawVirtues.add(virtueType);
-    }
-    return flawVirtues.toArray(new ITraitType[0]);
+    Collections.addAll(flawVirtues, VirtueType.values());
+    return flawVirtues.toArray(new ITraitType[flawVirtues.size()]);
   }
 }
