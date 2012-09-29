@@ -8,6 +8,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Features
 * Fixes the order of toolbar items, menu bar entries, preferences and character sheets
+* Allows "Inheritance" Background for Ghost-Blooded and Demon-Blooded
 
 ### Bugfixes
 * Fixes Drag and Drop in the series editor
