@@ -37,8 +37,11 @@ public class DescriptiveVirtueFlawModel extends VirtueFlawModel implements IDesc
   public void addChangeListener(IChangeListener listener) {
     super.addChangeListener(listener);
     GlobalChangeAdapter<String> changeAdapter = new GlobalChangeAdapter<String>(listener);
+    virtueFlaw.addRootChangeListener(listener);
+    virtueFlaw.getName().addTextChangedListener(changeAdapter);
     virtueFlaw.getDescription().addTextChangedListener(changeAdapter);
     virtueFlaw.getLimitBreak().addTextChangedListener(changeAdapter);
+    virtueFlaw.getLimitTrait().addCurrentValueListener(changeAdapter);
   }
 
   @Override
