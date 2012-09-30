@@ -6,8 +6,7 @@ import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
-import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
-import net.sf.anathema.lib.workflow.container.view.SelectionContainerListView;
+import net.sf.anathema.campaign.music.presenter.ISelectionContainerView;
 
 import javax.swing.JComponent;
 import javax.swing.JList;

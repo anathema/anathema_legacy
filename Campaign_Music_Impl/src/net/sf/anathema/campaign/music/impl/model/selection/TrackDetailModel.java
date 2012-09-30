@@ -8,8 +8,8 @@ import net.sf.anathema.campaign.music.presenter.IMusicEvent;
 import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.lib.container.IGenericSelectionContainer;
-import net.sf.anathema.lib.workflow.container.ISelectionContainerModel;
-import net.sf.anathema.lib.workflow.container.model.SelectionContainerModel;
+import net.sf.anathema.campaign.music.presenter.ISelectionContainerModel;
+import net.sf.anathema.campaign.music.model.SelectionContainerModel;
 
 public class TrackDetailModel extends AbstractTrackDetailModel {
 

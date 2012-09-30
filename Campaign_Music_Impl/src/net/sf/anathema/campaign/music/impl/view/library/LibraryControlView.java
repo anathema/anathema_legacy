@@ -1,8 +1,5 @@
 package net.sf.anathema.campaign.music.impl.view.library;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
@@ -24,16 +21,17 @@ import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.EditableActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
+import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 
 public class LibraryControlView implements ILibraryControlView, IView {
 
-  private final JPanel content = new JPanel();
+  private final JPanel content;
   private final SimpleTabViewFactory factory = new SimpleTabViewFactory();
   private final EditableActionAddableListView<ILibrary> libraryListView;
   private final ActionAddableListView<IMp3Track> mp3ListView;
@@ -44,8 +42,9 @@ public class LibraryControlView implements ILibraryControlView, IView {
   private JPanel searchPanel;
   private final ILibraryControlProperties viewProperties;
 
-  public LibraryControlView(ITableColumnViewSettings settings, ILibraryControlProperties properties) {
+  public LibraryControlView(ITableColumnViewSettings settings, ILibraryControlProperties properties, JPanel content) {
     this.viewProperties = properties;
+    this.content = content;
     libraryListView = new EditableActionAddableListView<ILibrary>(null, settings, ILibrary.class);
     mp3ListView = new ActionAddableListView<IMp3Track>(viewProperties.getNoContentString(), IMp3Track.class);
   }
@@ -93,7 +92,8 @@ public class LibraryControlView implements ILibraryControlView, IView {
 
   @Override
   public void initGui() {
-    content.setLayout(new GridDialogLayout(3, true));
+    content.add(new JLabel(viewProperties.getLibraryControlBorderTitle()), new CC().split(2).spanX());
+    content.add(new HorizontalLine(), new CC().grow());
     TabbedView leftTabbedView = new TabbedView(TabDirection.Up);
     if (libraryPanel != null) {
       leftTabbedView.addView(factory.createTabView(libraryPanel),
@@ -103,13 +103,11 @@ public class LibraryControlView implements ILibraryControlView, IView {
       leftTabbedView.addView(factory.createTabView(searchPanel),
               new ContentProperties(viewProperties.getSearchString()));
     }
-    content.add(leftTabbedView.getComponent(),
-            GridDialogLayoutDataFactory.createHorizontalSpanData(2, GridDialogLayoutData.FILL_BOTH));
+    content.add(leftTabbedView.getComponent(), new CC().grow());
     TabbedView rightTabbedView = new TabbedView(TabDirection.Up);
     rightTabbedView.addView(factory.createTabView(createMp3View()),
             new ContentProperties(viewProperties.getTracksString()));
-    content.add(rightTabbedView.getComponent(), GridDialogLayoutData.FILL_BOTH);
-    content.setBorder(new TitledBorder(viewProperties.getLibraryControlBorderTitle()));
+    content.add(rightTabbedView.getComponent(), new CC().grow());
   }
 
   private JComponent createMp3View() {

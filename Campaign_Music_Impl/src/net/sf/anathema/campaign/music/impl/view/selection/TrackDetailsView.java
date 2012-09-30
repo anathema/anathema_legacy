@@ -1,16 +1,9 @@
 package net.sf.anathema.campaign.music.impl.view.selection;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.border.TitledBorder;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.campaign.music.impl.view.categorization.MusicCategorizationView;
 import net.sf.anathema.campaign.music.presenter.ITrackDetailsProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
@@ -21,6 +14,12 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+import java.awt.BorderLayout;
+
 public class TrackDetailsView implements ITrackDetailsView {
 
   private JPanel content;
@@ -29,44 +28,39 @@ public class TrackDetailsView implements ITrackDetailsView {
   private LabelledStringValueView trackNumberView;
   private LabelledStringValueView artistView;
   private final MusicCategorizationView musicCategorizationView = new MusicCategorizationView();
-  private final JPanel trackDetailsPanel = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel noTrackPanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel trackDetailsPanel = new JPanel(new MigLayout(new LC().fill().wrapAfter(1).insets("0")));
+  private final JPanel noTrackPanel = new JPanel(new MigLayout(new LC().fill()));
   private final ITextView givenNameView = new LineTextView(30);
   private final JPanel playerPanel = new JPanel(new BorderLayout());
 
-  public JComponent getContent(
-      IMusicCategorizationProperties categoryProperties,
-      ITrackDetailsProperties detailsProperties) {
+  public JComponent getContent(IMusicCategorizationProperties categoryProperties,
+                               ITrackDetailsProperties detailsProperties) {
     if (content == null) {
       content = createContent(categoryProperties, detailsProperties);
     }
     return content;
   }
 
-  private JPanel createContent(
-      IMusicCategorizationProperties categoryProperties,
-      ITrackDetailsProperties detailsProperties) {
+  private JPanel createContent(IMusicCategorizationProperties categoryProperties,
+                               ITrackDetailsProperties detailsProperties) {
     fillTrackDetailsPanel(categoryProperties, detailsProperties);
     fillNoContentPanel(detailsProperties);
-    JPanel panel = new JPanel(new GridDialogLayout(1, false));
+    JPanel panel = new JPanel(new MigLayout(new LC().fill()));
     panel.add(noTrackPanel);
     return panel;
   }
 
   private void fillNoContentPanel(ITrackDetailsProperties detailsProperties) {
-    noTrackPanel.add(new JLabel(detailsProperties.getNoContentString(), SwingConstants.CENTER));
+    noTrackPanel.add(new JLabel(detailsProperties.getNoContentString()), new CC().push().grow());
   }
 
-  private void fillTrackDetailsPanel(
-      IMusicCategorizationProperties categoryProperties,
-      ITrackDetailsProperties detailsProperties) {
-    JPanel infoPlayerPanel = new JPanel(new GridDialogLayout(3, true));
-    infoPlayerPanel.add(createTrackInfoPanel(detailsProperties), GridDialogLayoutDataFactory.createHorizontalSpanData(
-        2,
-        GridDialogLayoutData.FILL_BOTH));
-    infoPlayerPanel.add(playerPanel, GridDialogLayoutData.FILL_BOTH);
-    trackDetailsPanel.add(infoPlayerPanel, GridDialogLayoutData.FILL_HORIZONTAL);
-    trackDetailsPanel.add(musicCategorizationView.getContent(categoryProperties), GridDialogLayoutData.FILL_BOTH);
+  private void fillTrackDetailsPanel(IMusicCategorizationProperties categoryProperties,
+                                     ITrackDetailsProperties detailsProperties) {
+    JPanel infoPlayerPanel = new JPanel(new MigLayout(new LC().fill().insets("0")));
+    infoPlayerPanel.add(createTrackInfoPanel(detailsProperties), new CC().grow().push());
+    infoPlayerPanel.add(playerPanel, new CC().grow());
+    trackDetailsPanel.add(infoPlayerPanel, new CC().growX());
+    trackDetailsPanel.add(musicCategorizationView.getContent(categoryProperties), new CC().grow());
   }
 
   private JPanel createTrackInfoPanel(ITrackDetailsProperties properties) {
@@ -107,13 +101,16 @@ public class TrackDetailsView implements ITrackDetailsView {
   @Override
   public void showTrackInfo(boolean show) {
     content.removeAll();
-    if (show) {
-      content.add(trackDetailsPanel, GridDialogLayoutData.FILL_BOTH);
-    }
-    else {
-      content.add(noTrackPanel, GridDialogLayoutData.FILL_BOTH);
-    }
+    JPanel panelToShow = getPanelToShow(show);
+    content.add(panelToShow, new CC().grow());
     content.revalidate();
+  }
+
+  private JPanel getPanelToShow(boolean show) {
+    if (show) {
+      return trackDetailsPanel;
+    }
+    return noTrackPanel;
   }
 
   @Override
