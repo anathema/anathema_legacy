@@ -25,6 +25,7 @@ public class MusicDatabaseView extends AbstractItemView implements IMusicDatabas
           new MigLayout(new LC().wrapAfter(2).fill(), new AC().gap("5px").size("50%", 0, 1),
                   new AC().size("50%", 1, 3)));
 
+
   public MusicDatabaseView(String name, Icon icon) {
     super(name, icon);
   }
