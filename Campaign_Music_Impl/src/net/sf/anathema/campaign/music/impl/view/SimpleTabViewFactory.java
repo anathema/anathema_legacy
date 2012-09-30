@@ -1,14 +1,12 @@
 package net.sf.anathema.campaign.music.impl.view;
 
-import javax.swing.JComponent;
-
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 
+import javax.swing.JComponent;
+
 public class SimpleTabViewFactory {
-
-  public IInitializableContentView< ? > createTabView(final JComponent component) {
+  public IInitializableContentView<?> createTabView(final JComponent component) {
     return new IInitializableContentView<Object>() {
-
       @Override
       public JComponent getComponent() {
         return component;

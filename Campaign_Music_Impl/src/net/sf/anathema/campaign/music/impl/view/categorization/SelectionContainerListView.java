@@ -11,7 +11,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 public class SelectionContainerListView<V> implements ISelectionContainerView<V>, IView {
-
   private final SmartJList<V> smartList;
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
 

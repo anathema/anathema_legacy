@@ -17,7 +17,6 @@ import javax.swing.event.ChangeListener;
 import java.awt.GridLayout;
 
 public class MusicPlayerView implements IMusicPlayerView {
-
   private final JButton playButton = new JButton();
   private final JButton stopButton = new JButton();
   private final JLabel totalTimeLabel = new JLabel();
