@@ -73,7 +73,7 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
       JLabel label = new JLabel(selectionProperties.getNoDecoderString() + ".", SwingConstants.CENTER); //$NON-NLS-1$
       trackDetailsView.setPlayerComponent(new TitledPanel(playerProperties.getPlayerBorderString(), label));
     }
-    content.add(selectionActionsView.getComponent(), new CC().spanX(2).grow());
+    content.add(selectionActionsView.getComponent(), new CC().grow());
     TabbedView tracksView = new TabbedView(TabDirection.Down);
     trackListView = new ActionAddableListView<IMp3Track>(null, IMp3Track.class); //$NON-NLS-1$
     tracksView.addView(factory.createTabView(trackListView.getComponent()),

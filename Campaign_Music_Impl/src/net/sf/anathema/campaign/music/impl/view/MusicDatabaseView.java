@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 
 public class MusicDatabaseView extends AbstractItemView implements IMusicDatabaseView {
 
-  private final JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(3).fill(), new AC().gap("5px"), new AC().size("50%",1,3)));
+  private final JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(2).fill(), new AC().gap("5px").index(0).size("50%").index(1).size("50%"), new AC().size("50%",1,3)));
 
   public MusicDatabaseView(String name, Icon icon) {
     super(name, icon);

@@ -103,7 +103,7 @@ public class LibraryControlView implements ILibraryControlView, IView {
       leftTabbedView.addView(factory.createTabView(searchPanel),
               new ContentProperties(viewProperties.getSearchString()));
     }
-    content.add(leftTabbedView.getComponent(), new CC().spanX(2).grow());
+    content.add(leftTabbedView.getComponent(), new CC().grow());
     TabbedView rightTabbedView = new TabbedView(TabDirection.Up);
     rightTabbedView.addView(factory.createTabView(createMp3View()),
             new ContentProperties(viewProperties.getTracksString()));
