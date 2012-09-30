@@ -2,6 +2,7 @@ package net.sf.anathema.lib.workflow.textualdescription.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
@@ -64,6 +65,11 @@ public class LabelTextView implements ITextView {
   public void addToStandardPanel(JPanel panel) {
     panel.add(label, GridDialogLayoutDataFactory.createTopData());
     panel.add(textView.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+  }
+
+  public void addToMigPanel(JPanel panel) {
+    panel.add(label);
+    panel.add(textView.getComponent(), new CC().growX());
   }
 
   public void addToStandardPanel(JPanel panel, GridDialogLayoutData textFieldData) {
