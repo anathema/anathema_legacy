@@ -1,7 +1,6 @@
 package net.sf.anathema.campaign.music.impl.view.selection;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
@@ -29,7 +28,7 @@ public class TrackDetailsView implements ITrackDetailsView {
   private LabelledStringValueView trackNumberView;
   private LabelledStringValueView artistView;
   private final MusicCategorizationView musicCategorizationView = new MusicCategorizationView();
-  private final JPanel trackDetailsPanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel trackDetailsPanel = new JPanel(new MigLayout(new LC().fill().wrapAfter(1).insets("0")));
   private final JPanel noTrackPanel = new JPanel(new MigLayout(new LC().fill()));
   private final ITextView givenNameView = new LineTextView(30);
   private final JPanel playerPanel = new JPanel(new BorderLayout());
@@ -57,11 +56,11 @@ public class TrackDetailsView implements ITrackDetailsView {
 
   private void fillTrackDetailsPanel(IMusicCategorizationProperties categoryProperties,
                                      ITrackDetailsProperties detailsProperties) {
-    JPanel infoPlayerPanel = new JPanel(new MigLayout(new LC().fill()));
+    JPanel infoPlayerPanel = new JPanel(new MigLayout(new LC().fill().insets("0")));
     infoPlayerPanel.add(createTrackInfoPanel(detailsProperties), new CC().grow().push());
     infoPlayerPanel.add(playerPanel, new CC().grow());
-    trackDetailsPanel.add(infoPlayerPanel, GridDialogLayoutData.FILL_HORIZONTAL);
-    trackDetailsPanel.add(musicCategorizationView.getContent(categoryProperties), GridDialogLayoutData.FILL_BOTH);
+    trackDetailsPanel.add(infoPlayerPanel, new CC().growX());
+    trackDetailsPanel.add(musicCategorizationView.getContent(categoryProperties), new CC().grow());
   }
 
   private JPanel createTrackInfoPanel(ITrackDetailsProperties properties) {
