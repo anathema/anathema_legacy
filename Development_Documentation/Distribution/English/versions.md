@@ -7,7 +7,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 4.5.3
 
 ### Features
-* Fixes the order of toolbar items, menu bar entries, preferences and character sheets
+* Fixes the order of toolbar items, menu bar entries, preferences, character templates and sheets
 * Allows "Inheritance" Background for Ghost-Blooded and Demon-Blooded
 * Infernal Urge is listed as a Spiritual Trait
 

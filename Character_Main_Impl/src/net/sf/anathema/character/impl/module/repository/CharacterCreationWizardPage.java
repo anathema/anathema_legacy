@@ -15,17 +15,16 @@ import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JToggleButton;
 import java.awt.Component;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
-
   private final CharacterCreationPageProperties properties;
   private final ICharacterItemCreationModel model;
   private final ICharacterItemCreationView view;
 
-  public CharacterCreationWizardPage(
-      ICharacterItemCreationModel model,
-      ICharacterItemCreationView view,
-      IResources resources) {
+  public CharacterCreationWizardPage(ICharacterItemCreationModel model, ICharacterItemCreationView view,
+                                     IResources resources) {
     this.model = model;
     this.view = view;
     this.properties = new CharacterCreationPageProperties(resources);
@@ -46,8 +45,6 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
     IToggleButtonPanel panel = view.addToggleButtonPanel();
     for (final ICharacterType type : model.getAvailableCharacterTypes()) {
       JToggleButton button = panel.addButton(new SmartAction(properties.getTypeIcon(type)) {
-        private static final long serialVersionUID = 6142670276307195593L;
-
         @Override
         protected void execute(Component parentComponent) {
           model.setCharacterType(type);
@@ -76,8 +73,19 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
   }
 
   protected void refreshList(IListObjectSelectionView<ITemplateTypeAggregation> list) {
-    list.setObjects(model.getAvailableTemplates());
+    ITemplateTypeAggregation[] availableTemplates = model.getAvailableTemplates();
+    Arrays.sort(availableTemplates, new Comparator<ITemplateTypeAggregation>() {
+      @Override
+      public int compare(ITemplateTypeAggregation o1, ITemplateTypeAggregation o2) {
+        return getTemplateResource(o1).compareTo(getTemplateResource(o2));
+      }
+    });
+    list.setObjects(availableTemplates);
     list.setSelectedObject(model.getSelectedTemplate());
+  }
+
+  private String getTemplateResource(ITemplateTypeAggregation o1) {
+    return o1.getPresentationProperties().getNewActionResource();
   }
 
   @Override

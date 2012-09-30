@@ -41,7 +41,6 @@ public class CharacterTypeUi implements IObjectUi<Object> {
     PrintNameFile file = (PrintNameFile) value;
     ICharacterType characterType = scanner.getCharacterType(file);
     return new CharacterUI(resources).getSmallTypeIcon(characterType);
-
   }
 
   @Override
