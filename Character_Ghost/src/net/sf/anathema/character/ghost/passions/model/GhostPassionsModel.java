@@ -16,6 +16,7 @@ import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference
 import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.lang.StringUtilities;
@@ -50,6 +51,22 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
     for (IGenericTrait trait : context.getTraitCollection().getTraits(traitTypes)) {
       ITraitReference reference = new DefaultTraitReference((ITrait) trait);
       PassionsContainer container = addPassionsContainer(reference);
+      container.addSubTraitListener(new ISubTraitListener() {
+        @Override
+        public void subTraitValueChanged() {
+          //nothing to do
+        }
+
+        @Override
+        public void subTraitAdded(ISubTrait subTrait) {
+          //nothing to do
+        }
+
+        @Override
+        public void subTraitRemoved(ISubTrait subTrait) {
+          control.announce().changeOccurred();
+        }
+      });
       passionByType.put(trait.getType(), container);
     }
     this.passionChangeListener = new IIntValueChangedListener() {

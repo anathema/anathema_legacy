@@ -162,12 +162,6 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     specialtySelectionView.clear();
   }
 
-  protected void removeSpecialtyView(ISubTrait specialty) {
-    ISpecialtyView view = viewsBySpecialty.get(specialty);
-    viewsBySpecialty.remove(specialty);
-    view.delete();
-  }
-
   private ITraitReference[] getAllTraits() {
     return specialtyManagement.getAllTraits();
   }
