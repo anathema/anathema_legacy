@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.container;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.util.LayoutUtilities;
 import net.sf.anathema.lib.gui.swing.BorderUtilities;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
@@ -29,7 +28,7 @@ public class TitledPanel extends JPanel {
               LayoutUtilities.getDpiAdjusted(4),
               LayoutUtilities.getDpiAdjusted(4),
               LayoutUtilities.getDpiAdjusted(4))));
-      add(content, new GridDialogLayoutData());
+      add(content);
 
       content.addPropertyChangeListener(
               GuiUtilities.ENABLED_PROPERTY_NAME,
