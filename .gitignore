@@ -15,6 +15,7 @@ out/
 *.zip
 Thumbs.db
 Anathema/anathema.properties
+*.log
 
 # Repository
 repository.version

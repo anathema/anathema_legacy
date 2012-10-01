@@ -10,6 +10,8 @@ Website: [anathema.github.com](http://anathema.github.com)
 * Fixes the order of toolbar items, menu bar entries, preferences, character templates and sheets
 * Allows "Inheritance" Background for Ghost-Blooded and Demon-Blooded
 * Infernal Urge is listed as a Spiritual Trait
+* Logs runtime info to ``runtime.log`` in the Anathema directory.
+     If you encounter any issues with the program or with custom content, go to this file first for diagnosis.
 
 ### Bugfixes
 * Fixes Drag and Drop in the series editor
