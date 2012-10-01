@@ -8,6 +8,7 @@ import net.sf.anathema.framework.view.ErrorWindow;
 import net.sf.anathema.framework.view.IWindow;
 import net.sf.anathema.initialization.AnathemaInitializer;
 import net.sf.anathema.initialization.InitializationException;
+import net.sf.anathema.lib.logging.Logger;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -17,6 +18,7 @@ public class Anathema {
   /*Called by the boot loader using reflection.*/
   @SuppressWarnings("UnusedDeclaration")
   public void startApplication() throws Exception {
+    Logger.getLogger(Anathema.class).info("Launching Anathema");
     IInitializationPreferences initializationPreferences = loadPreferences();
     prepareEnvironment(initializationPreferences);
     showMainFrame(initializationPreferences);

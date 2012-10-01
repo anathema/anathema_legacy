@@ -17,6 +17,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import static net.sf.anathema.lib.gui.swing.GuiUtilities.displayOnScreenCenter;
 
 public class AnathemaMainView implements MainView {
 
@@ -68,7 +69,7 @@ public class AnathemaMainView implements MainView {
   @Override
   public void show() {
     JFrame mainFrame = initGui();
-    net.sf.anathema.lib.gui.swing.GuiUtilities.displayOnScreenCenter(mainFrame, new Dimension(1024, 768));
+    displayOnScreenCenter(mainFrame, new Dimension(1024, 768));
   }
 
   @Override

@@ -3,6 +3,7 @@ package net.sf.anathema.initialization;
 import net.sf.anathema.ISplashscreen;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
@@ -17,6 +18,7 @@ import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.CentralExceptionHandling;
+import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.ResourceFile;
 
@@ -24,7 +26,6 @@ import java.util.Collection;
 import java.util.Set;
 
 public class AnathemaInitializer {
-
   private final IInitializationPreferences initializationPreferences;
   private final ItemTypeConfigurationCollection itemTypeCollection;
   private final AnathemaExtensionCollection extensionCollection;
@@ -63,7 +64,8 @@ public class AnathemaInitializer {
   private IAnathemaModel initModel(IResources resources, ResourceLoader loader) throws InitializationException {
     displayMessage("Creating Model...");
     Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
-    AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(initializationPreferences, itemTypes, extensionCollection);
+    AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(initializationPreferences, itemTypes,
+            extensionCollection);
     return modelInitializer.initializeModel(resources, reflections, loader);
   }
 
@@ -91,7 +93,9 @@ public class AnathemaInitializer {
   }
 
   private void showVersionOnSplashscreen(AnathemaResources resources) {
-    getSplashscreen().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
+    Version version = new Version(resources);
+    getSplashscreen().displayVersion("v" + version.asString());
+    Logger.getLogger(AnathemaInitializer.class).info("Program version is " + version.asString());
   }
 
   private void displayMessage(String message) {
