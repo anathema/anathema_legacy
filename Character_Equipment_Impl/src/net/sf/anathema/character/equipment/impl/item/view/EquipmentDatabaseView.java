@@ -70,7 +70,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   }
 
   private void setTitleText(String headerText, TitledPanel panel) {
-    TitledBorder titledBorder = (TitledBorder) ((CompoundBorder) panel.getBorder()).getOutsideBorder();
+    TitledBorder titledBorder = (TitledBorder) (panel.getBorder());
     titledBorder.setTitle(headerText);
   }
 

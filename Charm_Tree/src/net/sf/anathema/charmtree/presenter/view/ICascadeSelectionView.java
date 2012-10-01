@@ -19,7 +19,7 @@ public interface ICascadeSelectionView {
 
   void addCharmTypeSelectionListener(ObjectValueListener<Identified> selectionListener);
 
-  void addCharmFilterButton(SmartAction action, String titleText, String buttonText);
+  void addCharmFilterButton(SmartAction action, String titleText);
 
   void fillCharmGroupBox(Identified[] charmGroups);
 

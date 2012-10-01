@@ -113,8 +113,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   protected void createFilterButton(ICascadeSelectionView selectionView) {
-    SmartAction buttonAction = new SmartAction() {
-      private static final long serialVersionUID = 1L;
+    SmartAction buttonAction = new SmartAction(resources.getString("CharmFilters.Define")) {
 
       @Override
       protected void execute(Component parentComponent) {
@@ -141,7 +140,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
         }
       }
     };
-    selectionView.addCharmFilterButton(buttonAction, resources.getString("CharmFilters.Filters"), resources.getString("CharmFilters.Define"));
+    selectionView.addCharmFilterButton(buttonAction, resources.getString("CharmFilters.Filters"));
   }
 	
   private void createHelpText() {

@@ -19,7 +19,6 @@ import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 import net.sf.anathema.platform.tree.view.SwingCascadeStrategy;
 import net.sf.anathema.platform.tree.view.SwingTreeView;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -94,17 +93,12 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   }
 
   @Override
-  public void addCharmFilterButton(SmartAction action, String titleText, String buttonText) {
+  public void addCharmFilterButton(SmartAction action, String titleText) {
     JPanel buttonPanel = new JPanel();
     JButton filterButton = new JButton();
     filterButton.setAction(action);
-    filterButton.setText(buttonText);
     buttonPanel.add(filterButton);
-
-    TitledBorder title;
-    title = BorderFactory.createTitledBorder(titleText);
-    buttonPanel.setBorder(title);
-
+    buttonPanel.setBorder(new TitledBorder(titleText));
     getSelectionComponent().add(buttonPanel);
   }
 
