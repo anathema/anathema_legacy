@@ -1,9 +1,11 @@
 package net.sf.anathema.campaign.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
@@ -53,7 +55,7 @@ public class BasicItemDescriptionView extends AbstractInitializableContentView<O
 
   @Override
   protected void createContent(JPanel panel, Object properties) {
-    panel.setLayout(new GridDialogLayout(1, false));
-    panel.add(standardPanelBuilder.getUntitledContent(), GridDialogLayoutData.FILL_BOTH);
+    panel.setLayout(new MigLayout(new LC().wrapAfter(1).insets("2").fill()));
+    panel.add(standardPanelBuilder.getUntitledContent(), new CC().grow().push());
   }
 }

@@ -9,7 +9,6 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 
 public class BasicItemView extends AbstractItemView implements IBasicItemView {
-
   private BasicItemDescriptionView descriptionView;
 
   public BasicItemView(String name, Icon icon) {
@@ -19,7 +18,7 @@ public class BasicItemView extends AbstractItemView implements IBasicItemView {
   @Override
   public IBasicItemDescriptionView addDescriptionView() {
     Preconditions.checkArgument(descriptionView == null, "Only one description view allowed."); //$NON-NLS-1$
-    descriptionView = new BasicItemDescriptionView();
+    this.descriptionView = new BasicItemDescriptionView();
     return descriptionView;
   }
 

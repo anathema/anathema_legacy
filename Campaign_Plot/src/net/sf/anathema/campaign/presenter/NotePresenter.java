@@ -1,9 +1,5 @@
 package net.sf.anathema.campaign.presenter;
 
-import java.awt.Dimension;
-
-import javax.swing.text.DefaultStyledDocument;
-
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.itemdata.view.IBasicItemView;
@@ -12,8 +8,13 @@ import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-public class NotePresenter implements Presenter {
+import javax.swing.text.DefaultStyledDocument;
+import java.awt.Dimension;
 
+public class NotePresenter implements Presenter {
+  private static final String NOTE_NAME_LABEL = "NoteDescription.NoteName.Label";
+  private static final String NOTE_CONTENT_LABEL = "NoteDescription.NoteContent.Label";
+  private static final String NOTE_BORDER_TITLE = "NoteDescription.BorderTitle";
   private final IBasicItemView view;
   private final IResources resources;
   private final IBasicItemData item;
@@ -24,30 +25,17 @@ public class NotePresenter implements Presenter {
     this.item = itemData;
   }
 
-  private String getNameLabelKey() {
-    return "NoteDescription.NoteName.Label"; //$NON-NLS-1$
-  }
-
-  private String getContentLabelKey() {
-    return "NoteDescription.NoteContent.Label"; //$NON-NLS-1$
-  }
-
-  private String getBorderTitleKey() {
-    return "NoteDescription.BorderTitle"; //$NON-NLS-1$
-  }
-
   @Override
   public void initPresentation() {
-    initDescriptionPresentation(resources.getString(getNameLabelKey()), view.addDescriptionView());
-  }
-
-  private final void initDescriptionPresentation(String nameLabel, IBasicItemDescriptionView descriptionView) {
+    String nameLabel = resources.getString(NOTE_NAME_LABEL);
+    String summaryLabel = resources.getString(NOTE_CONTENT_LABEL);
+    String borderTitle = resources.getString(NOTE_BORDER_TITLE);
+    IBasicItemDescriptionView descriptionView = view.addDescriptionView();
     new TextualPresentation().initView(descriptionView.addLineTextView(nameLabel), item.getDescription().getName());
-    String summaryLabel = resources.getString(getContentLabelKey());
     DefaultStyledDocument document = new DefaultStyledDocument();
     StyledTextManager.initView(new StyledTextManager(document), item.getDescription().getContent());
     descriptionView.addStyledTextView(summaryLabel, document, new Dimension(200, 200), new TextEditorProperties(
         resources));
-    descriptionView.initGui(resources.getString(getBorderTitleKey()));
+    descriptionView.initGui(borderTitle);
   }
 }
