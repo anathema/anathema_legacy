@@ -1,6 +1,8 @@
 package net.sf.anathema.character.impl.view.magic;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmView;
 import net.sf.anathema.framework.value.IIntValueView;
@@ -15,12 +17,8 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.Color;
 
-import static net.disy.commons.swing.layout.grid.GridDialogLayoutData.FILL_BOTH;
-import static net.disy.commons.swing.layout.grid.GridDialogLayoutData.FILL_HORIZONTAL;
-
 public class CharmView extends AbstractCascadeSelectionView implements ICharmView {
-
-  private final JPanel content = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
 
   public CharmView(ToolTipProperties treeProperties, NodeProperties nodeProperties,
                    IntegerViewFactory integerDisplayFactory) {
@@ -31,8 +29,8 @@ public class CharmView extends AbstractCascadeSelectionView implements ICharmVie
 
   @Override
   public void initGui() {
-    content.add(getSelectionComponent(), FILL_HORIZONTAL);
-    content.add(getCharmComponent(), FILL_BOTH);
+    content.add(getSelectionComponent(), new CC().growX());
+    content.add(getCharmComponent(), new CC().grow().push());
   }
 
   @Override

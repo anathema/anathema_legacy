@@ -1,7 +1,8 @@
 package net.sf.anathema.cascades.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.lib.gui.IView;
@@ -12,11 +13,8 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.Color;
 
-import static net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory.createHorizontalSpanData;
-
 public class CascadeView extends AbstractCascadeSelectionView implements ICascadeView, IView {
-
-  private JPanel content = new JPanel(new GridDialogLayout(1, false));
+  private JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(1).fill().insets("0")));
 
   public CascadeView(ToolTipProperties treeProperties, NodeProperties nodeProperties) {
     super(treeProperties, nodeProperties);
@@ -32,7 +30,7 @@ public class CascadeView extends AbstractCascadeSelectionView implements ICascad
     content.add(getSelectionComponent());
     JComponent treeViewComponent = getCharmComponent();
     treeViewComponent.setBackground(Color.WHITE);
-    content.add(treeViewComponent, createHorizontalSpanData(1, GridDialogLayoutData.FILL_BOTH));
+    content.add(treeViewComponent, new CC().grow().push());
   }
 
   @Override
