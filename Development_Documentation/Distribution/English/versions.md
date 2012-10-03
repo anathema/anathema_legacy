@@ -4,6 +4,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.5.4
+
+### Bugfixes
+* Runtime logging works when you update from an earlier version via the auto-updater.
+
 ## Release 4.5.3
 
 ### Features
