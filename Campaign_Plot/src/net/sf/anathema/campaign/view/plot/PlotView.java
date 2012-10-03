@@ -12,7 +12,6 @@ import net.sf.anathema.campaign.view.BasicItemDescriptionView;
 import net.sf.anathema.campaign.view.util.DefaultTreeView;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.lib.gui.action.SmartAction;
-import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
 import net.sf.anathema.lib.util.TreeUtilities;
 
 import javax.swing.BorderFactory;
@@ -39,7 +38,7 @@ public class PlotView implements IPlotView {
 
   private final JPanel content = new JPanel();
   private final PlotViewListenerControl listenerControl = new PlotViewListenerControl();
-  private final JSplitPane splitPane = AnathemaLayoutUtilities.createSplitPane(0.3);
+  private final JSplitPane splitPane = createSplitPane(0.3);
   private JTree tree;
   private JPanel treePanel;
   private BasicItemDescriptionView itemDescriptionView;
@@ -223,5 +222,13 @@ public class PlotView implements IPlotView {
     protected void execute(Component parentComponent) {
       listenerControl.fireAddRequested(TreeUtilities.getSelectedHierachyNode(tree));
     }
+  }
+
+  public static JSplitPane createSplitPane(double dividerLocation) {
+    JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+    splitPane.setOneTouchExpandable(true);
+    splitPane.setDividerLocation(dividerLocation);
+    splitPane.setDividerSize(7);
+    return splitPane;
   }
 }
