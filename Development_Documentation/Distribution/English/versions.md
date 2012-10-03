@@ -1,5 +1,5 @@
 # Anathema Version History
-Anathema © 2004 - 20012 by The Anathema Developers
+Anathema © 2004 - 2012 by The Anathema Developers
 Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
@@ -9,7 +9,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ### Features
 * Fixes the order of toolbar items, menu bar entries, preferences, character templates and sheets
 * Allows "Inheritance" Background for Ghost-Blooded and Demon-Blooded
-* Infernal Urge is listed as a Spiritual Trait
+* Lists Infernal Urge as a Spiritual Trait
 * Logs runtime info to ``runtime.log`` in the Anathema directory.
      If you encounter any issues with the program or with custom content, go to this file first for diagnosis.
 
