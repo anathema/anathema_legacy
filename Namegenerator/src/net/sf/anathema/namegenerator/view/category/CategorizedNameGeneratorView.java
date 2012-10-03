@@ -1,11 +1,12 @@
 package net.sf.anathema.namegenerator.view.category;
 
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
+
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
 
 public class CategorizedNameGeneratorView implements ICategorizedNameGeneratorView {
 
@@ -14,7 +15,7 @@ public class CategorizedNameGeneratorView implements ICategorizedNameGeneratorVi
 
   @Override
   public void initGui(Object[] categories, int columnCount, ListCellRenderer renderer) {
-    content = new JPanel(new GridDialogLayout(columnCount, true));
+    content = new JPanel(new MigLayout(new LC().wrapAfter(columnCount)));
     comboBoxes = new JComboBox[columnCount];
     for (int index = 0; index < comboBoxes.length; index++) {
       comboBoxes[index] = new JComboBox(categories);

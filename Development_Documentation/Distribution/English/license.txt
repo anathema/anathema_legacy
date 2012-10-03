@@ -209,6 +209,7 @@ Anathema includes software developed by
 -Google, Inc.
 -eTeks (http://www.eteks.com)
 -Nat Pryce (http://nat.truemesh.com/archives/000710.html)
+-MiG InfoCom AB (http://www.miglayout.com)
 
 The "Save as PDF" icon was created by Wolfgang Bartelme (http://www.bartelme.at/) and is used with permission.
 Some of the other images are taken with permission from the archives at http://www.wolf-spoor.org.
@@ -244,6 +245,7 @@ JeksParser
 GNU GPL v3
 =========================
 disy-commons (special license for Anathema, parts of the library are repackaged, integrated and modified in Anathema code)
+MiG Layout
 
 Individual Licenses:
 =========================
