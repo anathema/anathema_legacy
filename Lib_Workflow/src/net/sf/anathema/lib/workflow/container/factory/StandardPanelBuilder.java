@@ -5,8 +5,6 @@ import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
-import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
@@ -15,7 +13,6 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
 
 public class StandardPanelBuilder {
 
@@ -72,29 +69,5 @@ public class StandardPanelBuilder {
       }
     });
     return spinner;
-  }
-
-  public <V> IObjectSelectionView<V> addObjectSelectionView(String label, ListCellRenderer renderer, V[] objects) {
-    return createObjectSelectionView(label, renderer, objects, false);
-  }
-
-  private <V> IObjectSelectionView<V> createObjectSelectionView(
-      String label,
-      ListCellRenderer renderer,
-      V[] objects,
-      boolean editable) {
-    final ObjectSelectionView<V> view = new ObjectSelectionView<V>(label, renderer, editable, objects);
-    addDialogComponent(new IDialogComponent() {
-      @Override
-      public int getColumnCount() {
-        return 2;
-      }
-
-      @Override
-      public void fillInto(JPanel layoutPanel, int columnCount) {
-        view.addTo(layoutPanel, new GridDialogLayoutData());
-      }
-    });
-    return view;
   }
 }
