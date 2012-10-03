@@ -13,7 +13,6 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class LabelTextView implements ITextView {
-
   private final ITextView textView;
   private JComponent content;
   private Color disabledLabelColor = SystemColor.textInactiveText;
@@ -72,6 +71,11 @@ public class LabelTextView implements ITextView {
     panel.add(textView.getComponent(), new CC().growX());
   }
 
+  public void addToMigPanel(JPanel panel, int columnCount) {
+    panel.add(label);
+    panel.add(textView.getComponent(), new CC().growX().spanX(columnCount));
+  }
+
   public void addToStandardPanel(JPanel panel, GridDialogLayoutData textFieldData) {
     panel.add(label, GridDialogLayoutDataFactory.createTopData());
     panel.add(textView.getComponent(), textFieldData);
@@ -79,8 +83,7 @@ public class LabelTextView implements ITextView {
 
   public void addToStandardPanel(JPanel panel, int columnCount) {
     panel.add(label, GridDialogLayoutDataFactory.createTopData());
-    panel.add(textView.getComponent(), GridDialogLayoutDataFactory.createHorizontalSpanData(
-        columnCount,
-        GridDialogLayoutData.FILL_HORIZONTAL));
+    panel.add(textView.getComponent(),
+            GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount, GridDialogLayoutData.FILL_HORIZONTAL));
   }
 }

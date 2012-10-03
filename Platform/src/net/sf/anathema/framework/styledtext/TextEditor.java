@@ -21,11 +21,11 @@ import javax.swing.text.StyledDocument;
 import javax.swing.text.StyledEditorKit;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Event;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -49,7 +49,7 @@ public class TextEditor implements IStyledTextView, IView {
   private void addBindings() {
     InputMap inputMap = textPane.getInputMap();
     inputMap.put(
-        KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, Event.SHIFT_MASK),
+        KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, InputEvent.SHIFT_MASK),
         DefaultEditorKit.deletePrevCharAction);
 
     int keyMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
@@ -68,7 +68,7 @@ public class TextEditor implements IStyledTextView, IView {
   }
 
   private KeyStroke createSelectKeyStroke(int key) {
-    return KeyStroke.getKeyStroke(key, Event.CTRL_MASK | Event.SHIFT_MASK);
+    return KeyStroke.getKeyStroke(key, InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK);
   }
 
   @Override
