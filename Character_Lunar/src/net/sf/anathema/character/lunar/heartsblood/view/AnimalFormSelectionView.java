@@ -1,14 +1,5 @@
 package net.sf.anathema.character.lunar.heartsblood.view;
 
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
-
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -17,8 +8,15 @@ import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
-public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView {
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
+public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView {
   private ITextView textField;
   private IntegerSpinner strengthSpinner;
   private IntegerSpinner dexteritySpinner;
@@ -31,22 +29,9 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
   private String animalAppearanceString;
   private JButton button;
 
-  public AnimalFormSelectionView(
-	      Icon icon,
-	      String animalFormString,
-	      String animalStrengthString,
-	      String animalStaminaString)
-  {
-	  this(icon, animalFormString, animalStrengthString, null, animalStaminaString, null);
-  }
-  
-  public AnimalFormSelectionView(
-      Icon icon,
-      String animalFormString,
-      String animalStrengthString,
-      String animalDexterityString,
-      String animalStaminaString,
-      String animalAppearanceString) {
+  public AnimalFormSelectionView(Icon icon, String animalFormString, String animalStrengthString,
+                                 String animalDexterityString, String animalStaminaString,
+                                 String animalAppearanceString) {
     this.animalFormString = animalFormString;
     this.animalStrengthString = animalStrengthString;
     this.animalDexterityString = animalDexterityString;
@@ -71,26 +56,17 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
 
   @Override
   public JComponent getComponent() {
-	int width = 7;
-	if (animalDexterityString  != null) width += 2;
-	if (animalAppearanceString != null) width += 2;
-    JPanel panel = new JPanel(new GridDialogLayout(width, false));
+    JPanel panel = new JPanel(new GridDialogLayout(11, false));
     panel.add(new JLabel(animalFormString));
     panel.add(textField.getComponent());
     panel.add(new JLabel(animalStrengthString));
     panel.add(strengthSpinner.getComponent());
-    if (animalDexterityString != null)
-    {
-    	panel.add(new JLabel(animalDexterityString));
-        panel.add(dexteritySpinner.getComponent());	
-    }
+    panel.add(new JLabel(animalDexterityString));
+    panel.add(dexteritySpinner.getComponent());
     panel.add(new JLabel(animalStaminaString));
     panel.add(staminaSpinner.getComponent());
-    if (animalAppearanceString != null)
-    {
-    	panel.add(new JLabel(animalAppearanceString));
-        panel.add(appearanceSpinner.getComponent());	
-    }
+    panel.add(new JLabel(animalAppearanceString));
+    panel.add(appearanceSpinner.getComponent());
     panel.add(button);
     return panel;
   }
@@ -109,16 +85,16 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
   public void addStrengthListener(IIntValueChangedListener listener) {
     strengthSpinner.addChangeListener(listener);
   }
-  
+
   @Override
   public void addDexterityListener(IIntValueChangedListener listener) {
-	    dexteritySpinner.addChangeListener(listener);
-	  }
-  
+    dexteritySpinner.addChangeListener(listener);
+  }
+
   @Override
   public void addAppearanceListener(IIntValueChangedListener listener) {
-	    appearanceSpinner.addChangeListener(listener);
-	  }
+    appearanceSpinner.addChangeListener(listener);
+  }
 
   @Override
   public void addAddButtonListener(ActionListener listener) {
@@ -144,14 +120,14 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
   public void setStrength(int value) {
     strengthSpinner.setValue(value);
   }
-  
+
   @Override
   public void setDexterity(int value) {
-	    dexteritySpinner.setValue(value);
-	  }
-  
+    dexteritySpinner.setValue(value);
+  }
+
   @Override
   public void setAppearance(int value) {
-	    appearanceSpinner.setValue(value);
-	  }
+    appearanceSpinner.setValue(value);
+  }
 }
