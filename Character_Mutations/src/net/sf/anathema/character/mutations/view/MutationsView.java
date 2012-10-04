@@ -1,8 +1,9 @@
 package net.sf.anathema.character.mutations.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
@@ -17,12 +18,12 @@ import javax.swing.event.ListSelectionListener;
 public class MutationsView implements IMutationsView {
   private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
   private JPanel overviewPanel = new JPanel();
-  private final JPanel contentPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel contentPanel = new JPanel(new MigLayout(new LC().wrapAfter(2).fill()));
 
   @Override
   public JComponent getComponent() {
-    contentPanel.add(giftPanel, GridDialogLayoutData.FILL_BOTH);
-    contentPanel.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());
+    contentPanel.add(giftPanel, new CC().grow().push());
+    contentPanel.add(overviewPanel, new CC().alignY("top"));
     return contentPanel;
   }
 

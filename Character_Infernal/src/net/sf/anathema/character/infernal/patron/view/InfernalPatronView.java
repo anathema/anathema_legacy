@@ -1,8 +1,8 @@
 package net.sf.anathema.character.infernal.patron.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronView;
-import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronViewProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
@@ -14,7 +14,6 @@ import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 
 public class InfernalPatronView implements IView, IInfernalPatronView {
 
@@ -22,11 +21,6 @@ public class InfernalPatronView implements IView, IInfernalPatronView {
   private final JPanel patronPanel = new JPanel();
   private final JPanel overviewPanel = new JPanel();
   private final GroupedTraitView groupedTraitView = new GroupedTraitView(patronPanel, 3);
-  private final IInfernalPatronViewProperties properties;
-
-  public InfernalPatronView(IInfernalPatronViewProperties properties) {
-    this.properties = properties;
-  }
 
   @Override
   public void startGroup(String groupLabel) {
@@ -36,8 +30,7 @@ public class InfernalPatronView implements IView, IInfernalPatronView {
   @Override
   public JComponent getComponent() {
     if (content == null) {
-      content = new JPanel(new GridDialogLayout(1, false));
-      patronPanel.setBorder(new TitledBorder(properties.getCollegeString()));
+      content = new JPanel(new MigLayout(new LC().wrapAfter(1)));
       content.add(patronPanel);
       content.add(overviewPanel);
     }

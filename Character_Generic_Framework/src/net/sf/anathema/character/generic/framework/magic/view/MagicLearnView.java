@@ -57,7 +57,6 @@ public class MagicLearnView implements IMagicLearnView {
 
   private JButton createAddMagicButton(Icon icon, String tooltip) {
     SmartAction smartAction = new SmartAction(icon) {
-      private static final long serialVersionUID = 1L;
 
       @Override
       protected void execute(Component parentComponent) {
@@ -69,7 +68,6 @@ public class MagicLearnView implements IMagicLearnView {
 
   private JButton createRemoveMagicButton(Icon icon, String tooltip) {
     SmartAction smartAction = new SmartAction(icon) {
-      private static final long serialVersionUID = 1L;
 
       @Override
       protected void execute(Component parentComponent) {
