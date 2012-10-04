@@ -1,6 +1,7 @@
 package net.sf.anathema.framework.value;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import org.jmock.example.announcer.Announcer;
 
@@ -72,7 +73,7 @@ public class IntValueDisplay implements IIntValueDisplay {
     this.modifiedMaximum = maxValue;
     this.currentValue = 0;
     this.bounds = bounds;
-    panel.setLayout(new GridDialogLayout(maxValue + maxValue / 5, false, 2, 0));
+    panel.setLayout(new MigLayout(new LC().wrapAfter(maxValue + maxValue / 5).gridGap("2", "0").insets("0")));
     initializeLabels(maxValue);
     panel.addMouseListener(mouseListener);
     panel.addMouseMotionListener(mouseListener);
