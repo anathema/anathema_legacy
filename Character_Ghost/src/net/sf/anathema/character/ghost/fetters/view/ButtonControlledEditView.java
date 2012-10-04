@@ -1,7 +1,11 @@
 package net.sf.anathema.character.ghost.fetters.view;
 
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -9,14 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.IView;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 public class ButtonControlledEditView implements IView {
-
   private final JButton addButton;
   private final JTextField text;
 
@@ -28,9 +28,9 @@ public class ButtonControlledEditView implements IView {
 
   @Override
   public JPanel getComponent() {
-    JPanel panel = new JPanel(new GridDialogLayout(3, false));
-    panel.add(text, GridDialogLayoutData.FILL_HORIZONTAL);
-    panel.add(addButton, GridDialogLayoutData.RIGHT);
+    JPanel panel = new JPanel(new MigLayout(new LC().insets("0")));
+    panel.add(text, new CC().growX().pushX());
+    panel.add(addButton, LayoutUtils.constraintsForImageButton(addButton));
     return panel;
   }
 

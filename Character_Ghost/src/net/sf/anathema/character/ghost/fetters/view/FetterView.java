@@ -39,7 +39,6 @@ public class FetterView extends AbstractTraitView implements IFetterView {
     panel.add(fetterLabel, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(getValueDisplay().getComponent());
     deleteButton = new JButton(new AbstractAction(null, deleteIcon) {
-		private static final long serialVersionUID = 1L;
 
 		@Override
         public void actionPerformed(ActionEvent e) {
