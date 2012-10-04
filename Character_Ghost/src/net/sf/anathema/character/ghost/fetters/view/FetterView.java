@@ -1,9 +1,10 @@
 package net.sf.anathema.character.ghost.fetters.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.AbstractAction;
@@ -36,7 +37,7 @@ public class FetterView extends AbstractTraitView implements IFetterView {
 
   public void addComponents(JPanel panel) {
     this.traitPanel = panel;
-    panel.add(fetterLabel, GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(fetterLabel, new CC().growX().pushX());
     panel.add(getValueDisplay().getComponent());
     deleteButton = new JButton(new AbstractAction(null, deleteIcon) {
 
@@ -46,7 +47,7 @@ public class FetterView extends AbstractTraitView implements IFetterView {
 	      }
     });
     deleteButton.setPreferredSize(new Dimension(deleteIcon.getIconWidth() + 4, deleteIcon.getIconHeight() + 4));
-    panel.add(deleteButton);
+    panel.add(deleteButton, LayoutUtils.constraintsForImageButton(deleteButton));
     panel.revalidate();
   }
 
