@@ -1,7 +1,8 @@
 package net.sf.anathema.lib.workflow.wizard.selection;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 
@@ -11,7 +12,7 @@ import javax.swing.JScrollPane;
 
 public class ListObjectSelectionPageView<V> implements IObjectSelectionView<V> {
 
-  private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel panel = new JPanel(new MigLayout(new LC().fill()));
   private JComponent focusComponent;
   private final Class<V> clazz;
 
@@ -24,7 +25,7 @@ public class ListObjectSelectionPageView<V> implements IObjectSelectionView<V> {
     ListObjectSelectionView<V> view = new ListObjectSelectionView<V>(clazz);
     JComponent content = view.getComponent();
     this.focusComponent = content;
-    panel.add(new JScrollPane(content), GridDialogLayoutData.FILL_BOTH);
+    panel.add(new JScrollPane(content), new CC().push().grow());
     return view;
   }
 
