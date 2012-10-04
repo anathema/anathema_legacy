@@ -19,7 +19,7 @@ public class CharmFilterSettingsPage extends AbstractDialogPage {
 
   @Override
   public JComponent createContent() {
-    return filterSet.creteFilterPanel(resources);
+    return filterSet.createFilterPanel(resources);
   }
 
   @Override

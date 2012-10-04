@@ -1,7 +1,8 @@
 package net.sf.anathema.charmtree.presenter;
 
 import com.google.common.collect.Lists;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.lib.resources.IResources;
@@ -30,8 +31,8 @@ public class CharmFilterSet {
     }
   }
 
-  public JComponent creteFilterPanel(IResources resources) {
-    JPanel panel = new JPanel(new GridDialogLayout(1, false));
+  public JComponent createFilterPanel(IResources resources) {
+    JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
     for (ICharmFilter filter : filterSet) {
       panel.add(filter.getFilterPreferencePanel(resources));
     }
