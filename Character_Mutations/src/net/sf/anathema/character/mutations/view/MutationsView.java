@@ -21,10 +21,8 @@ public class MutationsView implements IMutationsView {
 
   @Override
   public JComponent getComponent() {
-    JPanel mutationPanel = new JPanel(new GridDialogLayout(2, false));
-    mutationPanel.add(giftPanel, GridDialogLayoutData.FILL_BOTH);
-    mutationPanel.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());
-    contentPanel.add(mutationPanel, GridDialogLayoutData.FILL_BOTH);
+    contentPanel.add(giftPanel, GridDialogLayoutData.FILL_BOTH);
+    contentPanel.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());
     return contentPanel;
   }
 
