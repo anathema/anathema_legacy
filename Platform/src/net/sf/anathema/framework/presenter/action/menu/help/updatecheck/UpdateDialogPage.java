@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter.action.menu.help.updatecheck;
 
 import de.idos.updates.Version;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataBuilder;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.presenter.action.menu.help.IMessageData;
 import net.sf.anathema.framework.presenter.action.menu.help.MessageData;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -21,12 +21,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
-import static net.disy.commons.swing.layout.grid.IGridDialogLayoutData.DEFAULT;
 import static net.sf.anathema.lib.message.MessageType.ERROR;
 import static net.sf.anathema.lib.message.MessageType.INFORMATION;
 
 public class UpdateDialogPage extends AbstractDialogPage {
-
   private final JLabel latestVersionLabel = new JLabel("?.?.?"); //$NON-NLS-1$
   private final JButton updateButton = new JButton("Install update");
   private final IResources resources;
@@ -37,7 +35,6 @@ public class UpdateDialogPage extends AbstractDialogPage {
   private final JProgressBar fileProgress = new JProgressBar();
   private JTextArea changelogDisplay = new JTextArea("Loading changelog...", 10, 0);
 
-
   public UpdateDialogPage(IResources resources, Version installedVersion) {
     super(resources.getString("Help.UpdateCheck.Checking")); //$NON-NLS-1$
     this.resources = resources;
@@ -47,18 +44,17 @@ public class UpdateDialogPage extends AbstractDialogPage {
 
   @Override
   public JComponent createContent() {
-    JPanel panel = new JPanel(new GridDialogLayout(2, false));
-    panel.add(new JLabel(getString("Help.UpdateCheck.CurrentVersion") + ":"), DEFAULT);
-    panel.add(new JLabel(installedVersion.asString()), DEFAULT);
-    panel.add(new JLabel(getString("Help.UpdateCheck.LatestVersion") + ":"), DEFAULT);
-    panel.add(latestVersionLabel, DEFAULT);
-    panel.add(new JScrollPane(changelogDisplay),
-            new GridDialogLayoutDataBuilder().filledHorizontal().horizontalSpan(2).get());
+    JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(2).fill()));
+    panel.add(new JLabel(getString("Help.UpdateCheck.CurrentVersion") + ":"));
+    panel.add(new JLabel(installedVersion.asString()));
+    panel.add(new JLabel(getString("Help.UpdateCheck.LatestVersion") + ":"));
+    panel.add(latestVersionLabel);
+    panel.add(new JScrollPane(changelogDisplay), new CC().growX().spanX());
     changelogDisplay.setEditable(false);
-    panel.add(updateButton, new GridDialogLayoutData(GridDialogLayoutData.FILL_VERTICAL).setVerticalSpan(2));
+    panel.add(updateButton, new CC().spanY(2).grow());
     updateButton.setEnabled(false);
-    panel.add(updateProgress, new GridDialogLayoutDataBuilder().filledHorizontal().grabExcessHorizontalSpace().get());
-    panel.add(fileProgress, new GridDialogLayoutDataBuilder().filledHorizontal().grabExcessHorizontalSpace().get());
+    panel.add(updateProgress, new CC().grow().push());
+    panel.add(fileProgress, new CC().grow().push());
     return panel;
   }
 
