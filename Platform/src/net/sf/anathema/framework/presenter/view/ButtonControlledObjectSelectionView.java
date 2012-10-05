@@ -26,10 +26,6 @@ public class ButtonControlledObjectSelectionView<V> implements IButtonControlled
   protected final JButton addButton;
   protected final JLabel label;
 
-  public ButtonControlledObjectSelectionView(ListCellRenderer renderer, Icon addIcon, String labelText) {
-    this(renderer, addIcon, labelText, null);
-  }
-
   public ButtonControlledObjectSelectionView(
       ListCellRenderer renderer,
       Icon addIcon,

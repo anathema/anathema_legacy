@@ -1,9 +1,7 @@
 package net.sf.anathema.character.linguistics.view;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
@@ -28,19 +26,16 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
 
   private final JPanel selectionPanel = new JPanel(new GridDialogLayout(3, false));
   private final JPanel entryPanel = new JPanel(new MigLayout(new LC().wrapAfter(2).fillX().insets("0")));
-  private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel mainPanel = new JPanel(new MigLayout(new LC().wrapAfter(1).insets("0")));
+  private final JPanel overviewPanel = new JPanel(new MigLayout(new LC().insets("0")));
+  private final JPanel panel = new JPanel(new MigLayout(new LC().insets("0")));
 
   @Override
   public JComponent getComponent() {
     mainPanel.add(selectionPanel);
-    GridDialogLayoutData entryData = GridDialogLayoutDataFactory.createHorizontalFillNoGrab();
-    entryData.setVerticalAlignment(GridAlignment.FILL);
-    entryData.setGrabExcessVerticalSpace(true);
-    mainPanel.add(new JScrollPane(entryPanel), entryData);
-    panel.add(mainPanel, entryData);
-    panel.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());
+    mainPanel.add(new JScrollPane(entryPanel), new CC().grow().pushY());
+    panel.add(mainPanel, new CC().grow().pushY());
+    panel.add(overviewPanel, new CC().alignY("top"));
     return panel;
   }
 
