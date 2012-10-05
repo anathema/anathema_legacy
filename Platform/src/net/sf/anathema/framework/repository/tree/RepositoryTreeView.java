@@ -1,7 +1,8 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -9,26 +10,24 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
-import javax.swing.ScrollPaneConstants;
+
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
+import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED;
 
 public class RepositoryTreeView implements IRepositoryTreeView {
-
-  private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel buttonPanel = new JPanel(new GridDialogLayout(4, true));
+  private final JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
+  private final JPanel buttonPanel = new JPanel(new MigLayout(new LC().fill()));
 
   @Override
   public JTree addTree() {
     JTree tree = new JTree();
-    panel.add(new JScrollPane(
-        tree,
-        ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-        ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER), GridDialogLayoutData.FILL_BOTH);
+    panel.add(new JScrollPane(tree, VERTICAL_SCROLLBAR_AS_NEEDED, HORIZONTAL_SCROLLBAR_NEVER), new CC().grow().push());
     return tree;
   }
 
   @Override
   public void addActionButton(Action action) {
-    buttonPanel.add(new JButton(action), GridDialogLayoutData.FILL_HORIZONTAL);
+    buttonPanel.add(new JButton(action), new CC().growX());
   }
 
   @Override
