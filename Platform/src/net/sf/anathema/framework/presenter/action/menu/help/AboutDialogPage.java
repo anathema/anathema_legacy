@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter.action.menu.help;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -47,7 +47,7 @@ public class AboutDialogPage extends AbstractDialogPage {
 
   @Override
   public JComponent createContent() {
-    JPanel panel = new JPanel(new GridDialogLayout(2, false));
+    JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(2).fill()));
     addCredit(panel, "Help.AboutDialog.Artwork", "Martin Nerukar"); //$NON-NLS-1$//$NON-NLS-2$
     addCredit(panel, "Help.AboutDialog.Translation.Spanish", "Ricardo Rodriguez"); //$NON-NLS-1$//$NON-NLS-2$
     addCredit(panel, "Help.AboutDialog.Translation.Italian", "Giovanni D'Addabbo & Team ITA"); //$NON-NLS-1$//$NON-NLS-2$
@@ -61,8 +61,8 @@ public class AboutDialogPage extends AbstractDialogPage {
   }
 
   private void addCredit(JPanel panel, String key, String name) {
-    panel.add(new JLabel(getString(key)), IGridDialogLayoutData.DEFAULT);
-    panel.add(new JLabel(name), GridDialogLayoutData.RIGHT);
+    panel.add(new JLabel(getString(key)), new CC().growX().pushX());
+    panel.add(new JLabel(name), new CC().alignX("right"));
   }
 
   private String getString(String key) {
