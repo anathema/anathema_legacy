@@ -2,6 +2,8 @@ package net.sf.anathema.character.impl.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
@@ -72,7 +74,7 @@ public class ExperienceConfigurationView extends
     descriptionColumn.setPreferredWidth(500);
     descriptionColumn.setWidth(descriptionColumn.getPreferredWidth());
     setRemoveButtonEnabled(false);
-    JPanel totalPanel = new JPanel(new GridDialogLayout(2, false));
+    JPanel totalPanel = new JPanel(new MigLayout(new LC().fillX()));
     labelledIntValueView = new LabelledIntegerValueView(properties.getTotalString(), 0, false, 7);
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);

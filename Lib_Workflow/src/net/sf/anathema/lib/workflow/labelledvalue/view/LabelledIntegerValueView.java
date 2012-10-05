@@ -1,21 +1,23 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-
 public class LabelledIntegerValueView extends AbstractLabelledIntegerValueView {
-
   public LabelledIntegerValueView(String labelText, int value, boolean adjustFontSize, int maxValueLength) {
     super(labelText, createLengthString(maxValueLength), value, adjustFontSize);
   }
 
-  /** 2 Columns */
+  /**
+   * 2 Columns
+   */
   public void addComponents(JPanel panel) {
-    panel.add(titleLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-    panel.add(valueLabel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
+    panel.add(titleLabel, new CC().pushX().growX());
+    panel.add(valueLabel, new CC().alignX("right"));
   }
 
   public JLabel getValueLabel() {
