@@ -24,10 +24,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView< ? >>> implements
-    IIntimaciesView,
-    IView {
-
+public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView<?>>> implements IIntimaciesView, IView {
   private final JPanel content = new JPanel(new GridDialogLayout(2, false));
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
@@ -56,15 +53,13 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   }
 
   @Override
-  public IRemovableTraitView<IToggleButtonTraitView< ? >> addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
+  public IRemovableTraitView<IToggleButtonTraitView<?>> addEntryView(Icon removeIcon, IModifiableCapTrait trait,
+                                                                     String string) {
     SimpleTraitView view = new SimpleTraitView(factory, string, 0, 5);
     RearToggleButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearToggleButtonTraitViewWrapper<SimpleTraitView>(
-        view,
-        properties,
-        false);
-    RearButtonTraitViewWrapper<IToggleButtonTraitView< ? >> twoButtonView = new RearButtonTraitViewWrapper<IToggleButtonTraitView< ? >>(
-        oneButtonView,
-        removeIcon);
+            view, properties, false);
+    RearButtonTraitViewWrapper<IToggleButtonTraitView<?>> twoButtonView = new RearButtonTraitViewWrapper<IToggleButtonTraitView<?>>(
+            oneButtonView, removeIcon);
     twoButtonView.addComponents(entryPanel);
     return twoButtonView;
   }

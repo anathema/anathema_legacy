@@ -1,9 +1,12 @@
 package net.sf.anathema.character.lunar.heartsblood.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -56,9 +59,9 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
 
   @Override
   public JComponent getComponent() {
-    JPanel panel = new JPanel(new GridDialogLayout(11, false));
+    JPanel panel = new JPanel(new MigLayout(new LC().insets("0")));
     panel.add(new JLabel(animalFormString));
-    panel.add(textField.getComponent());
+    panel.add(textField.getComponent(), new CC().growX().pushX());
     panel.add(new JLabel(animalStrengthString));
     panel.add(strengthSpinner.getComponent());
     panel.add(new JLabel(animalDexterityString));
@@ -67,7 +70,7 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
     panel.add(staminaSpinner.getComponent());
     panel.add(new JLabel(animalAppearanceString));
     panel.add(appearanceSpinner.getComponent());
-    panel.add(button);
+    panel.add(button,LayoutUtils.constraintsForImageButton(button));
     return panel;
   }
 

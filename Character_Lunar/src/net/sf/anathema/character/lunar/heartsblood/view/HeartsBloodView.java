@@ -1,24 +1,25 @@
 package net.sf.anathema.character.lunar.heartsblood.view;
 
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+
 public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryView> {
 
-  private final JPanel content = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel selectionPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel content = new JPanel(new MigLayout(new LC().fillX().insets("0").wrapAfter(1)));
+  private final JPanel selectionPanel = new JPanel(new MigLayout(new LC().fill().insets("0").wrapAfter(2)));
 
   @Override
   public JComponent getComponent() {
-    content.add(selectionPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
+    content.add(selectionPanel, new CC().grow().push());
     return content;
   }
 
@@ -36,7 +37,7 @@ public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryV
         animalDexterityString,
         animalStaminaString,
         animalAppearanceString);
-    content.add(view.getComponent());
+    content.add(view.getComponent(), new CC().alignY("top").growX());
     return view;
   }
 
