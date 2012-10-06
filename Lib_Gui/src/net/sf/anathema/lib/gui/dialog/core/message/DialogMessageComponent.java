@@ -1,6 +1,8 @@
 package net.sf.anathema.lib.gui.dialog.core.message;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.core.IDialogConstants;
 import net.sf.anathema.lib.gui.dialog.widgets.AutoWrappingLabel;
 import net.sf.anathema.lib.gui.message.AbstractMessageTypeUi;
@@ -28,8 +30,8 @@ public class DialogMessageComponent extends JPanel {
     messageLabel.setForeground(IDialogConstants.HEADER_TEXT_COLOR);
     messageLabel.setFont(IDialogConstants.MESSAGE_LABEL_FONT);
 
-    JPanel iconPanel = new JPanel(new GridDialogLayout(1, false, 3, 0));
-    iconPanel.add(iconLabel);
+    JPanel iconPanel = new JPanel(new MigLayout(new LC().insets("0").fill()));
+    iconPanel.add(iconLabel, new CC().alignY("top").gapAfter("3"));
     iconPanel.setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
     if (withIcon) {
       add(iconPanel, BorderLayout.WEST);
