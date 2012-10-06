@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.impl.view.advantage.BackgroundSelectionView;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
@@ -21,9 +22,10 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import static net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory.createHorizontalSpanData;
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class SeparateBackgroundView extends AbstractInitializableContentView<BackgroundViewProperties> implements BackgroundView {
-  private final JPanel backgroundSelectionPanel = new JPanel(new GridDialogLayout(3, false));
+  private final JPanel backgroundSelectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(3).fillX()));
   private final JPanel backgroundDisplayPanel = new JPanel(new GridDialogLayout(2, false));
   private final IntegerViewFactory guiConfiguration;
 
