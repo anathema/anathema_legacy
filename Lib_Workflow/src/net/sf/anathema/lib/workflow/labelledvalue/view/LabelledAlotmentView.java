@@ -1,15 +1,13 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
-import java.util.Collection;
+import net.miginfocom.layout.CC;
+import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
-import net.disy.commons.swing.layout.grid.GridAlignment;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
+import java.util.Collection;
 
 public class LabelledAlotmentView extends AbstractLabelledIntegerValueView implements ILabelledAlotmentView {
 
@@ -26,14 +24,11 @@ public class LabelledAlotmentView extends AbstractLabelledIntegerValueView imple
     this.seperatorLabel = createLabel("/", "/", SwingConstants.CENTER, true); //$NON-NLS-1$//$NON-NLS-2$
   }
 
-  /** 4 columns */
   public void addTo(JPanel panel) {
-    panel.add(titleLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-    panel.add(valueLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-    GridDialogLayoutData dialogData = new GridDialogLayoutData();
-    dialogData.setHorizontalAlignment(GridAlignment.END);
-    panel.add(seperatorLabel, dialogData);
-    panel.add(maxPointLabel, dialogData);
+    panel.add(titleLabel, new CC().growX().pushX());
+    panel.add(valueLabel, new CC().growX());
+    panel.add(seperatorLabel, new CC().alignX("right"));
+    panel.add(maxPointLabel, new CC().alignX("right"));
   }
 
   @Override

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.overview;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -13,9 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import java.awt.Font;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class OverviewCategory implements IOverviewCategory, IView {
 
-  private final JPanel panel = new JPanel(new GridDialogLayout(4, false));
+  private final JPanel panel = new JPanel(new MigLayout(withoutInsets().wrapAfter(4)));
 
   public OverviewCategory(JComponent parent, String borderTitle, boolean useSmallFont) {
     TitledBorder titledBorder = new TitledBorder(borderTitle);
@@ -49,7 +51,7 @@ public class OverviewCategory implements IOverviewCategory, IView {
   @Override
   public IValueView<Integer> addIntegerValueView(String labelText, int maxValueLength) {
     LabelledIntegerValueView view = new LabelledIntegerValueView(labelText, 0, true, maxValueLength);
-    view.addComponents(panel, 4);
+    view.addComponents(panel);
     return view;
   }
 
