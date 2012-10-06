@@ -1,9 +1,9 @@
 package net.sf.anathema.character.lunar.beastform.view;
 
-import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
 import net.sf.anathema.character.mutations.view.IMutationsView;
@@ -18,12 +18,15 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class SecondEditionBeastformView implements IBeastformView {
-  private final JPanel spiritNamePanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel spiritNamePanel = new JPanel(new MigLayout(withoutInsets()));
   private final LineTextView spiritNameBox = new LineTextView(45);
   private final JPanel spiritAttributePanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel beastmanAttributePanel = new JPanel(new GridDialogLayout(2, false));
-  private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
+  private final JPanel giftPanel = new JPanel(new MigLayout(fillWithoutInsets()));
   private final IntegerViewFactory intValueDisplayFactory;
   private final JPanel content = new JPanel();
   private final JPanel overviewPanel = new JPanel();
@@ -40,9 +43,8 @@ public class SecondEditionBeastformView implements IBeastformView {
     JPanel spiritPanel = new JPanel(new GridDialogLayout(1, false));
 
     spiritPanel.add(spiritNamePanel);
-    PromptSupport.setPrompt(properties.getSpiritFormBoxInitialString(),spiritNameBox.getTextComponent());
+    PromptSupport.setPrompt(properties.getSpiritFormBoxInitialString(), spiritNameBox.getTextComponent());
     spiritNamePanel.add(spiritNameBox.getComponent());
-    spiritNamePanel.setBorder(BorderFactory.createTitledBorder(properties.getSpiritFormBoxString()));
 
     spiritAttributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
     spiritPanel.add(spiritAttributePanel);
@@ -50,9 +52,8 @@ public class SecondEditionBeastformView implements IBeastformView {
 
     JPanel beastmanPanel = new JPanel();
     beastmanPanel.setLayout(new BoxLayout(beastmanPanel, BoxLayout.Y_AXIS));
-    JPanel beastAttributePane = new JPanel(new GridDialogLayout(2, false));
+    JPanel beastAttributePane = new JPanel(new GridDialogLayout(1, false));
     beastAttributePane.add(beastmanAttributePanel);
-    beastAttributePane.add(new EndOfLineMarkerComponent());
 
     beastmanAttributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
     beastmanPanel.add(beastAttributePane);
