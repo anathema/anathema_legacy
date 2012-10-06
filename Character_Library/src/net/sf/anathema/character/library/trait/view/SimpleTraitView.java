@@ -1,5 +1,6 @@
 package net.sf.anathema.character.library.trait.view;
 
+import com.google.common.base.Preconditions;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
@@ -11,7 +12,6 @@ import javax.swing.JPanel;
 import java.awt.Component;
 
 public class SimpleTraitView extends AbstractTraitView implements ITraitView<SimpleTraitView> {
-
   private final JLabel label;
   private final Component displayComponent;
   private final GridAlignment dotAlignment;
@@ -40,7 +40,8 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
   public SimpleTraitView(IntegerViewFactory factory, String labelText, int value, int maxValue,
                          IModifiableCapTrait trait, GridAlignment dotAlignment, IGridDialogLayoutData labelAlignment) {
     super(factory, labelText, value, maxValue, trait);
-    this.label = getLabelText() != null ? new JLabel(getLabelText()) : null;
+    Preconditions.checkArgument(getLabelText() != null, "Label-Text must be set.");
+    this.label = new JLabel(getLabelText());
     this.displayComponent = maxValue > 0 ? getValueDisplay().getComponent() : null;
     this.dotAlignment = dotAlignment;
     this.labelAlignment = labelAlignment;
@@ -49,11 +50,7 @@ public class SimpleTraitView extends AbstractTraitView implements ITraitView<Sim
   @Override
   public void addComponents(JPanel panel) {
     this.traitViewPanel = panel;
-    if (label != null) {
-      panel.add(label);
-      if (labelAlignment != null) panel.add(label, labelAlignment);
-      else panel.add(label);
-    }
+    panel.add(label, labelAlignment);
     GridDialogLayoutData data = new GridDialogLayoutData();
     data.setHorizontalAlignment(dotAlignment);
     if (displayComponent != null) {

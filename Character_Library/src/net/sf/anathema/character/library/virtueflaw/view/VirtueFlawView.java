@@ -2,6 +2,7 @@ package net.sf.anathema.character.library.virtueflaw.view;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -45,7 +46,7 @@ public class VirtueFlawView implements IVirtueFlawView {
 	        maxValue,
 	        null,
 	        GridAlignment.BEGINNING,
-	        null);
+	        new GridDialogLayoutData());
 	    traitView.addComponents((JPanel) getComponent());
 	    return traitView;
 	  }

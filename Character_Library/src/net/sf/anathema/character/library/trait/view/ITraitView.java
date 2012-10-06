@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 
 public interface ITraitView<K extends ITraitView< ? >> extends IIntValueView {
 
-  /** Adds 2 components */
   void addComponents(JPanel viewPanel);
 
   void delete();
