@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.framework.magic.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
 import net.sf.anathema.lib.util.Identified;
@@ -121,9 +121,9 @@ public class MagicLearnView implements IMagicLearnView {
    * Takes up 4 columns in GridDialogLayouted-Panel
    */
   public void addTo(JPanel panel) {
-    panel.add(createScrollPane(learnOptionsList), GridDialogLayoutData.FILL_BOTH);
+    panel.add(createScrollPane(learnOptionsList), new CC().grow().push());
     panel.add(addButton);
-    panel.add(createScrollPane(learnedList), GridDialogLayoutData.FILL_BOTH);
+    panel.add(createScrollPane(learnedList), new CC().grow().push());
     JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
     for (JButton button : endButtons) {
       buttonPanel.add(button);

@@ -3,7 +3,9 @@ package net.sf.anathema.character.impl.view.magic;
 import com.google.common.base.Preconditions;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -28,7 +30,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListModel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
@@ -95,22 +96,17 @@ public class ComboConfigurationView implements IComboConfigurationView {
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
       }
     });
-    JPanel viewPort = new JPanel(new GridDialogLayout(5, false));
-    viewPort.setBorder(new EmptyBorder(6, 6, 6, 6));
+    JPanel viewPort = new JPanel(new MigLayout(new LC().insets("6").fill().wrapAfter(5)));
 
     viewPort.add(new JLabel(viewProperties.getAvailableComboCharmsLabel()));
     viewPort.add(new JLabel());
     viewPort.add(new JLabel(viewProperties.getComboedCharmsLabel()));
     viewPort.add(new JLabel());
-
-    GridDialogLayoutData nameData = GridDialogLayoutDataFactory.createTopData();
-    nameData.setVerticalSpan(2);
-    viewPort.add(namePanel, nameData);
+    viewPort.add(namePanel, new CC().spanY(2).alignY("top"));
     magicLearnView.addTo(viewPort);
     comboPane.setBackground(viewPort.getBackground());
     comboScrollPane = new JScrollPane(comboPane);
-    viewPort.add(comboScrollPane,
-            GridDialogLayoutDataFactory.createHorizontalSpanData(5, GridDialogLayoutData.FILL_BOTH));
+    viewPort.add(comboScrollPane,new CC().spanX().grow().push());
     content = new JScrollPane(viewPort);
   }
 

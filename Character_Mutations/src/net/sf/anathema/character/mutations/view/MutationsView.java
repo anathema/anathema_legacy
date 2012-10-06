@@ -1,6 +1,5 @@
 package net.sf.anathema.character.mutations.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
@@ -16,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionListener;
 
 public class MutationsView implements IMutationsView {
-  private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
+  private final JPanel giftPanel = new JPanel(new MigLayout(new LC().insets("0").fill()));
   private JPanel overviewPanel = new JPanel();
   private final JPanel contentPanel = new JPanel(new MigLayout(new LC().wrapAfter(2).fill()));
 
