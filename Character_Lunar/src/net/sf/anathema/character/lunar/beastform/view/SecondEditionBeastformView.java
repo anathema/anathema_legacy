@@ -1,7 +1,5 @@
 package net.sf.anathema.character.lunar.beastform.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
@@ -39,7 +37,7 @@ public class SecondEditionBeastformView implements IBeastformView {
 
   @Override
   public JComponent getComponent() {
-    JPanel spiritPanel = new JPanel(new GridDialogLayout(1, false));
+    JPanel spiritPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
     spiritPanel.add(spiritNamePanel);
     PromptSupport.setPrompt(properties.getSpiritFormBoxInitialString(), spiritNameBox.getTextComponent());
     spiritNamePanel.add(spiritNameBox.getComponent());
@@ -48,14 +46,14 @@ public class SecondEditionBeastformView implements IBeastformView {
     spiritPanel.setBorder(BorderFactory.createTitledBorder(properties.getSpiritFormBoxString()));
     JPanel beastmanPanel = new JPanel();
     beastmanPanel.setLayout(new BoxLayout(beastmanPanel, BoxLayout.Y_AXIS));
-    JPanel beastAttributePane = new JPanel(new GridDialogLayout(1, false));
+    JPanel beastAttributePane = new JPanel(new MigLayout(fillWithoutInsets()));
     beastAttributePane.add(beastmanAttributePanel);
     beastmanAttributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
     beastmanPanel.add(beastAttributePane);
     giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
-    JPanel mutationPanel = new JPanel(new GridDialogLayout(2, false));
+    JPanel mutationPanel = new JPanel(new MigLayout(fillWithoutInsets()));
     mutationPanel.add(giftPanel);
-    mutationPanel.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());
+    mutationPanel.add(overviewPanel, new CC().alignY("top"));
     beastmanPanel.add(mutationPanel);
     beastmanPanel.setBorder(BorderFactory.createTitledBorder(properties.getDBTBoxString()));
     content.add(spiritPanel);
