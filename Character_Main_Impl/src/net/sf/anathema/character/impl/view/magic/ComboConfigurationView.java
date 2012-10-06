@@ -116,7 +116,6 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
   private JButton createClearButton(Icon icon) {
     Action smartAction = new SmartAction(icon) {
-      private static final long serialVersionUID = -2774898496141408790L;
 
       @Override
       protected void execute(Component parentComponent) {

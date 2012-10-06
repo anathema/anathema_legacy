@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.view.magic;
 
+import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
@@ -19,7 +20,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -57,10 +57,11 @@ public class SpellView implements ISpellView {
   }
 
   private JPanel createSelectionPanel(Identified[] circles) {
-    JPanel panel = createFilterBox(properties.getCircleLabel(), circles, properties.getCircleSelectionRenderer());
-    magicLearnView.addAdditionalOptionsPanel(panel);
+    JPanel filterBox = createFilterBox(properties.getCircleLabel(), circles, properties.getCircleSelectionRenderer());
     magicLearnView.init(properties);
     JPanel selectionPanel = new JPanel(new GridDialogLayout(4, false));
+    selectionPanel.add(filterBox);
+    selectionPanel.add(new EndOfLineMarkerComponent());
     magicLearnView.addTo(selectionPanel);
     return selectionPanel;
   }

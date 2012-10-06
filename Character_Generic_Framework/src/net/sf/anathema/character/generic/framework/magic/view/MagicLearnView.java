@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.framework.magic.view;
 
-import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
@@ -30,7 +29,6 @@ public class MagicLearnView implements IMagicLearnView {
   private JList learnOptionsList = new JList(new DefaultListModel());
   private final JList learnedList = new JList(new DefaultListModel());
   private final List<JButton> endButtons = new ArrayList<JButton>();
-  private JPanel boxPanel;
   private JButton addButton;
 
   public void init(final IMagicLearnProperties properties) {
@@ -75,10 +73,6 @@ public class MagicLearnView implements IMagicLearnView {
       }
     };
     return createButton(tooltip, smartAction);
-  }
-
-  public void addAdditionalOptionsPanel(JPanel panel) {
-    this.boxPanel = panel;
   }
 
   private JButton createButton(String tooltip, SmartAction smartAction) {
@@ -127,10 +121,6 @@ public class MagicLearnView implements IMagicLearnView {
    * Takes up 4 columns in GridDialogLayouted-Panel
    */
   public void addTo(JPanel panel) {
-    if (boxPanel != null) {
-      panel.add(boxPanel);
-      panel.add(new EndOfLineMarkerComponent());
-    }
     panel.add(createScrollPane(learnOptionsList), GridDialogLayoutData.FILL_BOTH);
     panel.add(addButton);
     panel.add(createScrollPane(learnedList), GridDialogLayoutData.FILL_BOTH);
