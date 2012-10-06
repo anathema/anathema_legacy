@@ -1,6 +1,5 @@
 package net.sf.anathema.character.linguistics.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
@@ -11,7 +10,6 @@ import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEn
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsView;
-import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.gui.IView;
@@ -24,7 +22,7 @@ import javax.swing.ListCellRenderer;
 
 public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryView> implements IView, ILinguisticsView {
 
-  private final JPanel selectionPanel = new JPanel(new GridDialogLayout(3, false));
+  private final JPanel selectionPanel = new JPanel(new MigLayout(new LC().fillX().insets("0")));
   private final JPanel entryPanel = new JPanel(new MigLayout(new LC().wrapAfter(2).fillX().insets("0")));
   private final JPanel mainPanel = new JPanel(new MigLayout(new LC().wrapAfter(1).insets("0")));
   private final JPanel overviewPanel = new JPanel(new MigLayout(new LC().insets("0")));
