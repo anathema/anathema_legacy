@@ -1,9 +1,6 @@
 package net.sf.anathema.character.intimacies.view;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
@@ -30,7 +27,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView<?>>> implements IIntimaciesView, IView {
-  private final JPanel content = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
   private final JPanel mainPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
   private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
   private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
@@ -44,11 +41,9 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
 
   @Override
   public JComponent getComponent() {
-    GridDialogLayoutData data = GridDialogLayoutDataFactory.createTopData();
-    data.setHorizontalAlignment(GridAlignment.FILL);
     mainPanel.add(entryPanel, new CC().alignY("top").growX());
-    content.add(mainPanel, GridDialogLayoutDataFactory.createTopData());
-    content.add(overviewPanel, data);
+    content.add(mainPanel, new CC().alignY("top"));
+    content.add(overviewPanel, new CC().alignY("top").growX());
     return content;
   }
 
