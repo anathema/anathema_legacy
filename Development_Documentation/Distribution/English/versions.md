@@ -8,6 +8,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ### Bugfixes
 * Runtime logging works when you update from an earlier version via the auto-updater.
+* Experience table is fully visible without collapsing the overview.
 
 ## Release 4.5.3
 

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
@@ -71,14 +71,14 @@ public class ExperienceConfigurationView extends
     JPanel smartTablePanel = smartTable.getComponent();
     smartTablePanel.setPreferredSize(new Dimension(700, 400));
     TableColumn descriptionColumn = smartTable.getTable().getTableHeader().getColumnModel().getColumn(0);
-    descriptionColumn.setPreferredWidth(500);
+    descriptionColumn.setPreferredWidth(450);
     descriptionColumn.setWidth(descriptionColumn.getPreferredWidth());
     setRemoveButtonEnabled(false);
     JPanel totalPanel = new JPanel(new MigLayout(new LC().fillX()));
     labelledIntValueView = new LabelledIntegerValueView(properties.getTotalString(), 0, false, 7);
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);
-    smartTablePanel.add(totalPanel, GridDialogLayoutData.FILL_HORIZONTAL);
+    smartTablePanel.add(totalPanel, new CC().growX().newline().alignY("top"));
     panel.add(smartTablePanel);
   }
 

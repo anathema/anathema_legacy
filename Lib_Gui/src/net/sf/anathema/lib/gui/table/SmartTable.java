@@ -1,10 +1,9 @@
 package net.sf.anathema.lib.gui.table;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
@@ -114,7 +113,7 @@ public class SmartTable implements IView {
     int preferredWidth = table.getPreferredSize().width + scrollPane.getInsets().left + scrollPane.getInsets().right;
     scrollPane.setPreferredSize(new Dimension(preferredWidth, 150));
     this.actions = createTableActions();
-    JPanel panel = new JPanel(new GridDialogLayout(2, false)) {
+    JPanel panel = new JPanel(new MigLayout(new LC().insets("0").fill())) {
 
       @Override
       public void setEnabled(boolean enabled) {
@@ -127,11 +126,9 @@ public class SmartTable implements IView {
         }
       }
     };
-    panel.add(scrollPane, GridDialogLayoutData.FILL_BOTH);
-    if (actions.length <= 0) {
-      panel.add(new EndOfLineMarkerComponent());
-    } else {
-      panel.add(createButtonPanel(actions), GridDialogLayoutDataFactory.createTopData());
+    panel.add(scrollPane, new CC().grow().push());
+    for (Action action : actions) {
+      panel.add(new JButton(action), new CC().flowY().alignY("top").split());
     }
     return panel;
   }
@@ -143,14 +140,6 @@ public class SmartTable implements IView {
       createdActions[i] = new DisableableProxyAction(factory.createAction(this));
     }
     return createdActions;
-  }
-
-  private JPanel createButtonPanel(Action[] additionalActions) {
-    JPanel buttonPanel = new JPanel(new GridDialogLayout(1, false));
-    for (Action action : additionalActions) {
-      buttonPanel.add(new JButton(action), GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
-    }
-    return buttonPanel;
   }
 
   private void fireSelectionActionEvent() {
