@@ -1,9 +1,7 @@
 package net.sf.anathema.character.craft.view;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
@@ -26,7 +24,7 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
     IView,
     IRemovableStringEntriesView<SimpleTraitView> {
   private final IntegerViewFactory factory;
-  private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel mainPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
   private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
   private final int traitMaximum;
 
@@ -37,9 +35,7 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
 
   @Override
   public JComponent getComponent() {
-    GridDialogLayoutData data = GridDialogLayoutDataFactory.createHorizontalFillNoGrab();
-    data.setVerticalAlignment(GridAlignment.BEGINNING);
-    mainPanel.add(entryPanel, data);
+    mainPanel.add(entryPanel, new CC().growX().alignY("top"));
     return mainPanel;
   }
 
