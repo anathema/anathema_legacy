@@ -1,15 +1,14 @@
 package net.sf.anathema.framework.presenter.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
@@ -19,32 +18,27 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class ButtonControlledComboEditView<V> implements IButtonControlledComboEditView<V>, IView {
   protected final ChangeableJComboBox<V> comboBox;
-  protected final JLabel label;
   protected final JButton addButton;
   protected final JTextField text;
 
   public ButtonControlledComboEditView(Icon addIcon, ListCellRenderer renderer) {
-    this(addIcon, null, renderer);
-  }
-
-  public ButtonControlledComboEditView(Icon addIcon, String labelText, ListCellRenderer renderer) {
     this.comboBox = new ChangeableJComboBox<V>(false);
     comboBox.setRenderer(renderer);
     this.text = new JTextField(30);
     this.addButton = new JButton(null, addIcon);
     addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
-    this.label = labelText != null ? new JLabel(labelText) : null;
   }
 
   @Override
   public JPanel getComponent() {
-    JPanel panel = new JPanel(new GridDialogLayout(3 + (label != null ? 1 : 0), false));
-    if (label != null) panel.add(label);
-    panel.add(comboBox.getComponent(), IGridDialogLayoutData.DEFAULT);
-    panel.add(text, GridDialogLayoutData.FILL_HORIZONTAL);
-    panel.add(addButton, GridDialogLayoutData.RIGHT);
+    JPanel panel = new JPanel(new MigLayout(withoutInsets()));
+    panel.add(comboBox.getComponent(), new CC().minWidth("70"));
+    panel.add(text, new CC().growX().pushX());
+    panel.add(addButton, LayoutUtils.constraintsForImageButton(addButton));
     return panel;
   }
 

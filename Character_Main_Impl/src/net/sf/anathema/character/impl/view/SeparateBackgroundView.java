@@ -17,7 +17,6 @@ import net.sf.anathema.framework.value.IntegerViewFactory;
 import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
@@ -37,11 +36,11 @@ public class SeparateBackgroundView extends AbstractInitializableContentView<Bac
     content.setLayout(new FlowLayout(FlowLayout.LEFT));
     JPanel innerPanel = new JPanel(new GridDialogLayout(2, false));
     content.add(innerPanel);
-    JPanel backgroundPanel = createBackgroundPanel(properties.getBackgroundTitle());
+    JPanel backgroundPanel = createBackgroundPanel();
     innerPanel.add(backgroundPanel, createHorizontalSpanData(2, GridDialogLayoutData.FILL_HORIZONTAL));
   }
 
-  private JPanel createBackgroundPanel(String title) {
+  private JPanel createBackgroundPanel() {
     JPanel panel = new JPanel(new BorderLayout());
     panel.add(backgroundSelectionPanel, BorderLayout.CENTER);
     panel.add(backgroundDisplayPanel, BorderLayout.SOUTH);

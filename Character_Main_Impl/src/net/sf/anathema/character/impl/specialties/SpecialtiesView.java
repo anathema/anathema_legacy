@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.specialties;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.impl.view.SpecialtyView;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
@@ -18,10 +18,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
 
   private final IntegerViewFactory factory;
-  private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel mainPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1).fillY()));
   private final JPanel specialtyPanel = new JPanel(new GridDialogLayout(5, false));
 
   public SpecialtiesView(IntegerViewFactory factory) {
@@ -55,9 +57,7 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
 
   @Override
   public JComponent getComponent() {
-    GridDialogLayoutData data = GridDialogLayoutDataFactory.createFillNoGrab();
-    data.setGrabExcessVerticalSpace(true);
-    mainPanel.add(new JScrollPane(specialtyPanel), data);
+    mainPanel.add(new JScrollPane(specialtyPanel), new CC().grow().pushY());
     return mainPanel;
   }
 }

@@ -8,6 +8,7 @@ import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.control.ObjectValueListener;
 
 import javax.swing.Icon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
@@ -17,14 +18,16 @@ import java.awt.Dimension;
 
 public class BackgroundSelectionView<V> extends ButtonControlledComboEditView<V> {
   private final JTextField detailBox;
+  private final JLabel label;
 
-  public BackgroundSelectionView(Icon addIcon, String labelText,
-                                 ListCellRenderer renderer, ITextFieldComboBoxEditor backgroundEditor) {
-    super(addIcon, labelText, renderer);
+  public BackgroundSelectionView(Icon addIcon, String labelText, ListCellRenderer renderer,
+                                 ITextFieldComboBoxEditor backgroundEditor) {
+    super(addIcon, renderer);
     this.comboBox.getComponent().setEditable(true);
     this.comboBox.getComponent().setEditor(backgroundEditor);
     this.detailBox = new JTextField("");
     this.detailBox.setPreferredSize(new Dimension(220, detailBox.getPreferredSize().height));
+    this.label = new JLabel(labelText);
     setButtonEnabled(false);
     enableButtonOnlyWhenComboboxHasContent(backgroundEditor);
   }
