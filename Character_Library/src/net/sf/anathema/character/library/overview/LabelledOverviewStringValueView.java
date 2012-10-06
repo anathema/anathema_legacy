@@ -17,9 +17,6 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
     super(titleText, valueText, "Moonshadow", adjustFontSize); //$NON-NLS-1$
   }
 
-  /**
-   * GridDialogLayout, 2 columns
-   */
   public void addComponents(JPanel panel) {
     panel.add(titleLabel, createGrabData());
     panel.add(valueLabel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
