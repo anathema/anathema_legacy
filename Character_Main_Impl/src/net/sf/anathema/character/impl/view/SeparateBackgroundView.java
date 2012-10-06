@@ -9,13 +9,14 @@ import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.BackgroundView;
 import net.sf.anathema.character.view.BackgroundViewProperties;
-import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import java.awt.BorderLayout;
@@ -24,29 +25,27 @@ import java.awt.FlowLayout;
 import static net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory.createHorizontalSpanData;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
-public class SeparateBackgroundView extends AbstractInitializableContentView<BackgroundViewProperties> implements BackgroundView {
+public class SeparateBackgroundView implements BackgroundView, IInitializableContentView<BackgroundViewProperties> {
   private final JPanel backgroundSelectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(3).fillX()));
   private final JPanel backgroundDisplayPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
   private final IntegerViewFactory guiConfiguration;
+  private final JPanel content = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
   public SeparateBackgroundView(IntegerViewFactory intValueDisplayFactory) {
     this.guiConfiguration = intValueDisplayFactory;
   }
 
   @Override
-  public void createContent(JPanel content, BackgroundViewProperties properties) {
-    content.setLayout(new FlowLayout(FlowLayout.LEFT));
+  public final void initGui(BackgroundViewProperties properties) {
     JPanel innerPanel = new JPanel(new GridDialogLayout(2, false));
     content.add(innerPanel);
     JPanel backgroundPanel = createBackgroundPanel();
     innerPanel.add(backgroundPanel, createHorizontalSpanData(2, GridDialogLayoutData.FILL_HORIZONTAL));
   }
 
-  private JPanel createBackgroundPanel() {
-    JPanel panel = new JPanel(new BorderLayout());
-    panel.add(backgroundSelectionPanel, BorderLayout.CENTER);
-    panel.add(backgroundDisplayPanel, BorderLayout.SOUTH);
-    return panel;
+  @Override
+  public final JComponent getComponent() {
+    return content;
   }
 
   @Override
@@ -68,5 +67,12 @@ public class SeparateBackgroundView extends AbstractInitializableContentView<Bac
             deleteIcon);
     backgroundView.addComponents(backgroundDisplayPanel);
     return backgroundView;
+  }
+
+  private JPanel createBackgroundPanel() {
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.add(backgroundSelectionPanel, BorderLayout.CENTER);
+    panel.add(backgroundDisplayPanel, BorderLayout.SOUTH);
+    return panel;
   }
 }

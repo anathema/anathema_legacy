@@ -9,7 +9,7 @@ import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
 import net.sf.anathema.character.view.IBasicAdvantageView;
-import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
+import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -19,13 +19,12 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import java.awt.FlowLayout;
 
-public class BasicAdvantageView extends AbstractInitializableContentView<IAdvantageViewProperties> implements
-    IBasicAdvantageView {
-
+public class BasicAdvantageView implements IBasicAdvantageView, IInitializableContentView<IAdvantageViewProperties> {
   private final JPanel virtuePanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel willpowerPanel = new JPanel(new GridDialogLayout(2, false));
   private final EssencePanelView essencePanelView;
   private final IntegerViewFactory guiConfiguration;
+  private final JPanel content = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
   public BasicAdvantageView(IntegerViewFactory intValueDisplayFactory) {
     this.guiConfiguration = intValueDisplayFactory;
@@ -33,8 +32,7 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
   }
 
   @Override
-  public void createContent(JPanel content, IAdvantageViewProperties properties) {
-    content.setLayout(new FlowLayout(FlowLayout.LEFT));
+  public final void initGui(IAdvantageViewProperties properties) {
     JPanel innerPanel = new JPanel(new GridDialogLayout(2, false));
     content.add(innerPanel);
     GridDialogLayoutData virtueData = new GridDialogLayoutData();
@@ -47,6 +45,11 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     GridDialogLayoutData essenceData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
     essenceData.setVerticalAlignment(GridAlignment.END);
     addTitledPanel(properties.getEssenceTitle(), innerPanel, essencePanelView.getComponent(), essenceData);
+  }
+
+  @Override
+  public final JComponent getComponent() {
+    return content;
   }
 
   @Override
@@ -73,11 +76,8 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     return essencePanelView.addPoolView(labelText, value);
   }
 
-  private JComponent addTitledPanel(
-      String title,
-      JPanel container,
-      JComponent component,
-      IGridDialogLayoutData constraint) {
+  private JComponent addTitledPanel(String title, JPanel container, JComponent component,
+                                    IGridDialogLayoutData constraint) {
     component.setBorder(new TitledBorder(title));
     container.add(component, constraint);
     return component;

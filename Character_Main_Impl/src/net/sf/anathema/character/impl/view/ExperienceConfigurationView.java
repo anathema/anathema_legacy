@@ -7,7 +7,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
-import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
+import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
@@ -15,6 +15,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Action;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
@@ -23,23 +24,21 @@ import javax.swing.table.TableColumn;
 import java.awt.Component;
 import java.awt.Dimension;
 
-public class ExperienceConfigurationView extends
-    AbstractInitializableContentView<IExperienceConfigurationViewProperties> implements IExperienceConfigurationView {
-
-  private final Announcer<IExperienceConfigurationViewListener> listeners = Announcer.to(IExperienceConfigurationViewListener.class);
+public class ExperienceConfigurationView implements IExperienceConfigurationView, IInitializableContentView<IExperienceConfigurationViewProperties> {
+  private final Announcer<IExperienceConfigurationViewListener> listeners = Announcer.to(
+          IExperienceConfigurationViewListener.class);
   private SmartTable smartTable;
   private Action deleteAction;
   private LabelledIntegerValueView labelledIntValueView;
+  private final JPanel content = new JPanel(new GridDialogLayout(1, false));
 
   @Override
-  protected void createContent(JPanel panel, final IExperienceConfigurationViewProperties properties) {
-    panel.setLayout(new GridDialogLayout(1, false));
+  public final void initGui(final IExperienceConfigurationViewProperties properties) {
     smartTable = new SmartTable(properties.getTableModel(), properties.getColumnSettings());
     smartTable.addActionFactory(new ITableActionFactory() {
       @Override
       public Action createAction(SmartTable table) {
         return new SmartAction(properties.getAddIcon()) {
-
           @Override
           protected void execute(Component parentComponent) {
             fireAddRequested();
@@ -48,7 +47,6 @@ public class ExperienceConfigurationView extends
       }
     });
     deleteAction = new SmartAction(properties.getDeleteIcon()) {
-
       @Override
       protected void execute(Component parentComponent) {
         smartTable.stopCellEditing();
@@ -61,7 +59,6 @@ public class ExperienceConfigurationView extends
         return deleteAction;
       }
     });
-
     smartTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
       @Override
       public void valueChanged(ListSelectionEvent e) {
@@ -79,7 +76,12 @@ public class ExperienceConfigurationView extends
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);
     smartTablePanel.add(totalPanel, new CC().growX().newline().alignY("top"));
-    panel.add(smartTablePanel);
+    content.add(smartTablePanel);
+  }
+
+  @Override
+  public final JComponent getComponent() {
+    return content;
   }
 
   protected void fireSelectionChanged() {
