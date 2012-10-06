@@ -1,6 +1,6 @@
 package net.sf.anathema.character.ghost.passions.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.IChangeListener;
@@ -15,8 +15,9 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
-public class PassionView extends AbstractTraitView implements IPassionView {
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.constraintsForImageButton;
 
+public class PassionView extends AbstractTraitView implements IPassionView {
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Component abilityLabel;
   private final Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
@@ -25,13 +26,8 @@ public class PassionView extends AbstractTraitView implements IPassionView {
   private JPanel traitPanel;
   private final Icon deleteIcon;
 
-  public PassionView(
-      IntegerViewFactory configuration,
-      String labelText,
-      Icon deleteIcon,
-      String id,
-      int value,
-      int maxValue) {
+  public PassionView(IntegerViewFactory configuration, String labelText, Icon deleteIcon, String id, int value,
+                     int maxValue) {
     super(configuration, labelText, value, maxValue, null);
     this.deleteIcon = deleteIcon;
     passionLabel = new JLabel(id);
@@ -42,18 +38,16 @@ public class PassionView extends AbstractTraitView implements IPassionView {
     this.traitPanel = panel;
     panel.add(abilityLabel);
     panel.add(separatorLabel);
-    panel.add(passionLabel, GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(passionLabel, new CC().growX().pushX());
     panel.add(getValueDisplay().getComponent());
     deleteButton = new JButton(new AbstractAction(null, deleteIcon) {
-
-		@Override
-        public void actionPerformed(ActionEvent e) {
-	        fireDeletionPerformed();
-	      }
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        fireDeletionPerformed();
+      }
     });
     deleteButton.setPreferredSize(new Dimension(deleteIcon.getIconWidth() + 4, deleteIcon.getIconHeight() + 4));
-    panel.add(deleteButton);
-    panel.revalidate();
+    panel.add(deleteButton, constraintsForImageButton(deleteButton));
   }
 
   @Override

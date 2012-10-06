@@ -1,8 +1,6 @@
 package net.sf.anathema.character.ghost.passions.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
@@ -19,12 +17,13 @@ import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class GhostPassionsConfigurationView implements IGhostPassionsConfigurationView, IView {
   private final IntegerViewFactory factory;
   private final JPanel mainPanel = new JPanel(new MigLayout(fillWithoutInsets()));
-  private final JPanel passionListPanel = new JPanel(new GridDialogLayout(5, false));
-  private final JPanel passionPanel = new JPanel(new GridDialogLayout(1, true));
+  private final JPanel passionListPanel = new JPanel(new MigLayout(withoutInsets().fillX().wrapAfter(5)));
+  private final JPanel passionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
   private final JPanel overviewPanel = new JPanel();
   private ButtonControlledComboEditView<ITraitReference> objectSelectionView;
 
@@ -45,17 +44,14 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
   public IPassionView addPassionView(String virtueName, String passionName, Icon deleteIcon, int value, int maxValue) {
     PassionView passionView = new PassionView(factory, virtueName, deleteIcon, passionName, value, maxValue);
     passionView.addComponents(passionListPanel);
-    passionListPanel.revalidate();
     return passionView;
   }
 
   @Override
   public JComponent getComponent() {
-    GridDialogLayoutData data = GridDialogLayoutDataFactory.createFillNoGrab();
-    data.setGrabExcessVerticalSpace(true);
-    passionPanel.add(new JScrollPane(passionListPanel), data);
-    mainPanel.add(passionPanel, data);
-    mainPanel.add(overviewPanel, data);
+    passionPanel.add(new JScrollPane(passionListPanel), new CC().grow().pushY());
+    mainPanel.add(passionPanel, new CC().grow().pushY());
+    mainPanel.add(overviewPanel, new CC().grow().pushY());
     return mainPanel;
   }
 
@@ -72,7 +68,9 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
 
   @Override
   public void removeControls() {
-    if (objectSelectionView != null) passionPanel.remove(objectSelectionView.getComponent());
+    if (objectSelectionView != null) {
+      passionPanel.remove(objectSelectionView.getComponent());
+    }
     overviewPanel.removeAll();
   }
 }

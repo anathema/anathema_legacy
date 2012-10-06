@@ -20,15 +20,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ButtonControlledComboEditView<V> implements IButtonControlledComboEditView<V>, IView {
-
   protected final ChangeableJComboBox<V> comboBox;
   protected final JLabel label;
   protected final JButton addButton;
   protected final JTextField text;
-  
-  public ButtonControlledComboEditView(Icon addIcon, ListCellRenderer renderer)
-  {
-	  this(addIcon, null, renderer);
+
+  public ButtonControlledComboEditView(Icon addIcon, ListCellRenderer renderer) {
+    this(addIcon, null, renderer);
   }
 
   public ButtonControlledComboEditView(Icon addIcon, String labelText, ListCellRenderer renderer) {
@@ -37,15 +35,13 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
     this.text = new JTextField(30);
     this.addButton = new JButton(null, addIcon);
     addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
-   	this.label = labelText != null ? new JLabel(labelText) : null;
-    	
+    this.label = labelText != null ? new JLabel(labelText) : null;
   }
 
   @Override
   public JPanel getComponent() {
     JPanel panel = new JPanel(new GridDialogLayout(3 + (label != null ? 1 : 0), false));
-    if (label != null)
-    	panel.add(label);
+    if (label != null) panel.add(label);
     panel.add(comboBox.getComponent(), IGridDialogLayoutData.DEFAULT);
     panel.add(text, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(addButton, GridDialogLayoutData.RIGHT);
@@ -86,16 +82,16 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   public void addButtonListener(ActionListener listener) {
     addButton.addActionListener(listener);
   }
-  
+
   @Override
   public void addButtonListener(final ObjectValueListener<V> listener) {
-	    addButton.addActionListener(new ActionListener() {
-	      @Override
-          public void actionPerformed(ActionEvent e) {
-	        listener.valueChanged(comboBox.getSelectedObject());
-	      }
-	    });
-	  }
+    addButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        listener.valueChanged(comboBox.getSelectedObject());
+      }
+    });
+  }
 
   @Override
   public void clear() {
