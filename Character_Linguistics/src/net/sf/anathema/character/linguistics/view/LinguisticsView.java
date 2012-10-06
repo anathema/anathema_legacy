@@ -1,7 +1,6 @@
 package net.sf.anathema.character.linguistics.view;
 
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
@@ -20,13 +19,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryView> implements IView, ILinguisticsView {
 
-  private final JPanel selectionPanel = new JPanel(new MigLayout(new LC().fillX().insets("0")));
-  private final JPanel entryPanel = new JPanel(new MigLayout(new LC().wrapAfter(2).fillX().insets("0")));
-  private final JPanel mainPanel = new JPanel(new MigLayout(new LC().wrapAfter(1).insets("0")));
-  private final JPanel overviewPanel = new JPanel(new MigLayout(new LC().insets("0")));
-  private final JPanel panel = new JPanel(new MigLayout(new LC().insets("0")));
+  private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().fillX()));
+  private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
+  private final JPanel mainPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
+  private final JPanel overviewPanel = new JPanel(new MigLayout(withoutInsets()));
+  private final JPanel panel = new JPanel(new MigLayout(withoutInsets()));
 
   @Override
   public JComponent getComponent() {

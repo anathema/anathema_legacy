@@ -1,7 +1,6 @@
 package net.sf.anathema.cascades.view;
 
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
@@ -13,8 +12,10 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.Color;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+
 public class CascadeView extends AbstractCascadeSelectionView implements ICascadeView, IView {
-  private JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(1).fill().insets("0")));
+  private JPanel content = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
 
   public CascadeView(ToolTipProperties treeProperties, NodeProperties nodeProperties) {
     super(treeProperties, nodeProperties);

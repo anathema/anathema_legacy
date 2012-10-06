@@ -1,7 +1,6 @@
 package net.sf.anathema.charmtree;
 
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.charmtree.presenter.view.CharmTreeRenderer;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
@@ -29,9 +28,11 @@ import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
 
-  private final JPanel selectionPanel = new JPanel(new MigLayout(new LC().wrapAfter(4).insets("0").fillX()));
+  private final JPanel selectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(4).fillX()));
   private IChangeableJComboBox<Identified> groupComboBox;
   private IChangeableJComboBox<Identified> typeComboBox;
   private final SwingTreeView swingTreeView;

@@ -4,7 +4,6 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
@@ -27,13 +26,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Comparator;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+
 public class SpellView implements ISpellView {
-
   private MagicLearnView magicLearnView;
-
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
   private final Announcer<ObjectValueListener> circleControl = Announcer.to(ObjectValueListener.class);
-
   private final SpellViewProperties properties;
 
   public SpellView(final SpellViewProperties properties) {
@@ -61,7 +59,7 @@ public class SpellView implements ISpellView {
   private JPanel createSelectionPanel(Identified[] circles) {
     JPanel filterBox = createFilterBox(properties.getCircleLabel(), circles, properties.getCircleSelectionRenderer());
     magicLearnView.init(properties);
-    JPanel selectionPanel = new JPanel(new MigLayout(new LC().insets("0").fill()));
+    JPanel selectionPanel = new JPanel(new MigLayout(fillWithoutInsets()));
     selectionPanel.add(filterBox, new CC().wrap());
     magicLearnView.addTo(selectionPanel);
     return selectionPanel;

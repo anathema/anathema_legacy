@@ -13,9 +13,11 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class GhostFettersConfigurationView implements IGhostFettersConfigurationView, IView {
   private final IntegerViewFactory factory;
-  private final JPanel mainPanel = new JPanel(new MigLayout(new LC().insets("0").fillY()));
+  private final JPanel mainPanel = new JPanel(new MigLayout(withoutInsets().fillY()));
   private final JPanel fetterListPanel = new JPanel(new MigLayout(new LC().insets("2")));
   private final JPanel fetterPanel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill()));
   private final JPanel overviewPanel = new JPanel();

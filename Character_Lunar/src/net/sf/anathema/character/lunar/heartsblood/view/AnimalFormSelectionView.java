@@ -1,7 +1,6 @@
 package net.sf.anathema.character.lunar.heartsblood.view;
 
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -18,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView {
   private ITextView textField;
@@ -59,7 +60,7 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
 
   @Override
   public JComponent getComponent() {
-    JPanel panel = new JPanel(new MigLayout(new LC().insets("0")));
+    JPanel panel = new JPanel(new MigLayout(withoutInsets()));
     panel.add(new JLabel(animalFormString));
     panel.add(textField.getComponent(), new CC().growX().pushX());
     panel.add(new JLabel(animalStrengthString));
@@ -70,7 +71,7 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView 
     panel.add(staminaSpinner.getComponent());
     panel.add(new JLabel(animalAppearanceString));
     panel.add(appearanceSpinner.getComponent());
-    panel.add(button,LayoutUtils.constraintsForImageButton(button));
+    panel.add(button, LayoutUtils.constraintsForImageButton(button));
     return panel;
   }
 

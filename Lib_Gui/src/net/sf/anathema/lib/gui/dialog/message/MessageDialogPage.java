@@ -2,7 +2,6 @@ package net.sf.anathema.lib.gui.dialog.message;
 
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.dialog.widgets.AutoWrappingLabel;
@@ -15,6 +14,8 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class MessageDialogPage extends AbstractDialogPage {
 
@@ -30,7 +31,7 @@ public class MessageDialogPage extends AbstractDialogPage {
   public JComponent createContent() {
     Icon icon = new LargeIconMessageTypeUi().getIcon(message.getType());
     AutoWrappingLabel label = new AutoWrappingLabel(message.getText(), 294);
-    JPanel panel = new JPanel(new MigLayout(new LC().insets("0").fill().gridGapX("13")));
+    JPanel panel = new JPanel(new MigLayout(fillWithoutInsets().gridGapX("13")));
     label.setBackground(panel.getBackground());
     panel.add(new JLabel(icon), new CC().growY().pushY());
     panel.add(label.getContent(), new CC().growX().pushX());

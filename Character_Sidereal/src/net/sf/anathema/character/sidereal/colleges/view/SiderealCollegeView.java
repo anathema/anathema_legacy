@@ -1,6 +1,5 @@
 package net.sf.anathema.character.sidereal.colleges.view;
 
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
@@ -14,6 +13,8 @@ import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class SiderealCollegeView implements IView, ISiderealCollegeView {
 
@@ -30,7 +31,7 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
   @Override
   public JComponent getComponent() {
     if (content == null) {
-      content = new JPanel(new MigLayout(new LC().wrapAfter(1).insets("0").fill()));
+      content = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
       content.add(collegePanel);
       content.add(overviewPanel);
     }

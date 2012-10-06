@@ -2,7 +2,6 @@ package net.sf.anathema.lib.gui.table;
 
 import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
@@ -23,6 +22,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class SmartTable implements IView {
 
@@ -113,7 +114,7 @@ public class SmartTable implements IView {
     int preferredWidth = table.getPreferredSize().width + scrollPane.getInsets().left + scrollPane.getInsets().right;
     scrollPane.setPreferredSize(new Dimension(preferredWidth, 150));
     this.actions = createTableActions();
-    JPanel panel = new JPanel(new MigLayout(new LC().insets("0").fill())) {
+    JPanel panel = new JPanel(new MigLayout(fillWithoutInsets())) {
 
       @Override
       public void setEnabled(boolean enabled) {

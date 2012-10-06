@@ -34,6 +34,8 @@ import java.awt.Component;
 import java.awt.dnd.DnDConstants;
 import java.awt.event.MouseMotionAdapter;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class PlotView implements IPlotView {
 
   private final JPanel content = new JPanel();
@@ -136,7 +138,7 @@ public class PlotView implements IPlotView {
 
   private void initTreePanelGui(IPlotViewProperties properties) {
     treePanel.setLayout(
-            new MigLayout(new LC().wrapAfter(1).insets("0"), new AC().grow(100,0).fill(0), new AC().grow(100, 0).fill(0)));
+            new MigLayout(withoutInsets().wrapAfter(1), new AC().grow(100,0).fill(0), new AC().grow(100, 0).fill(0)));
     treePanel.add(new JScrollPane(tree), new CC().grow().pushY());
     treePanel.add(createButtonPanel(properties), new CC().dockSouth());
   }

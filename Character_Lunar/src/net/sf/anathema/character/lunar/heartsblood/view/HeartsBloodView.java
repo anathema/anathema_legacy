@@ -1,7 +1,6 @@
 package net.sf.anathema.character.lunar.heartsblood.view;
 
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
@@ -12,10 +11,13 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryView> {
 
-  private final JPanel content = new JPanel(new MigLayout(new LC().fillX().insets("0").wrapAfter(1)));
-  private final JPanel selectionPanel = new JPanel(new MigLayout(new LC().fill().insets("0").wrapAfter(2)));
+  private final JPanel content = new JPanel(new MigLayout(withoutInsets().fillX().wrapAfter(1)));
+  private final JPanel selectionPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
 
   @Override
   public JComponent getComponent() {

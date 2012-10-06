@@ -14,8 +14,10 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionListener;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+
 public class MutationsView implements IMutationsView {
-  private final JPanel giftPanel = new JPanel(new MigLayout(new LC().insets("0").fill()));
+  private final JPanel giftPanel = new JPanel(new MigLayout(fillWithoutInsets()));
   private JPanel overviewPanel = new JPanel();
   private final JPanel contentPanel = new JPanel(new MigLayout(new LC().wrapAfter(2).fill()));
 

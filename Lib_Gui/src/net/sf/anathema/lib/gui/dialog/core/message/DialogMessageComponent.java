@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.dialog.core.message;
 
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.core.IDialogConstants;
 import net.sf.anathema.lib.gui.dialog.widgets.AutoWrappingLabel;
@@ -13,6 +12,8 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class DialogMessageComponent extends JPanel {
 
@@ -30,7 +31,7 @@ public class DialogMessageComponent extends JPanel {
     messageLabel.setForeground(IDialogConstants.HEADER_TEXT_COLOR);
     messageLabel.setFont(IDialogConstants.MESSAGE_LABEL_FONT);
 
-    JPanel iconPanel = new JPanel(new MigLayout(new LC().insets("0").fill()));
+    JPanel iconPanel = new JPanel(new MigLayout(fillWithoutInsets()));
     iconPanel.add(iconLabel, new CC().alignY("top").gapAfter("3"));
     iconPanel.setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
     if (withIcon) {

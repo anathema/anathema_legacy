@@ -1,6 +1,7 @@
 package net.sf.anathema.lib.gui.layout;
 
 import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
 
 import javax.swing.JButton;
 
@@ -15,5 +16,13 @@ public class LayoutUtils {
 
   public static int getComponentSpacing() {
     return DEFAULT_COMPONENT_SPACING;
+  }
+
+  public static LC withoutInsets() {
+    return new LC().insets("0");
+  }
+
+  public static LC fillWithoutInsets() {
+    return withoutInsets().fill();
   }
 }

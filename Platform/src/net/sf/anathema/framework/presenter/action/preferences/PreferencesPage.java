@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -11,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class PreferencesPage extends AbstractDialogPage {
 
@@ -40,7 +41,7 @@ public class PreferencesPage extends AbstractDialogPage {
     for (IPreferencesElement element : elements) {
       String category = element.getCategory().getId();
       if (!panelsByName.containsKey(category)) {
-        JPanel categoryPanel = new JPanel(new MigLayout(new LC().insets("0").fillX().wrapAfter(2)));
+        JPanel categoryPanel = new JPanel(new MigLayout(withoutInsets().fillX().wrapAfter(2)));
         panelsByName.put(category, categoryPanel);
         String tabName = resources.getString("AnathemaCore.Preferences.Group." + category);
         panel.addTab(tabName, categoryPanel);

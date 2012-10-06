@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.list.actionview;
 
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.Action;
@@ -12,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.getComponentSpacing;
 
 public abstract class AbstractActionAddableListView<T> implements IActionAddableListView<T> {
@@ -34,7 +34,7 @@ public abstract class AbstractActionAddableListView<T> implements IActionAddable
   }
 
   private JPanel createContent() {
-    JPanel panel = new JPanel(new MigLayout(new LC().insets("0").fill().wrapAfter(1)));
+    JPanel panel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
     if (titleLabel != null) {
       panel.add(titleLabel);
     }
