@@ -4,6 +4,7 @@ import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
@@ -24,10 +25,12 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView<?>>> implements IIntimaciesView, IView {
   private final JPanel content = new JPanel(new GridDialogLayout(2, false));
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
   private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
   private final IntegerViewFactory factory;
   private final IIconToggleButtonProperties properties;

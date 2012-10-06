@@ -4,6 +4,7 @@ import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.selection.IRemovableStringEntriesView;
@@ -19,12 +20,14 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<SimpleTraitView>> implements
     IView,
     IRemovableStringEntriesView<SimpleTraitView> {
   private final IntegerViewFactory factory;
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
   private final int traitMaximum;
 
   public CraftView(IntegerViewFactory factory, int maximum) {

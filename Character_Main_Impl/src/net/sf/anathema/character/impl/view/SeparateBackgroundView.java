@@ -26,7 +26,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class SeparateBackgroundView extends AbstractInitializableContentView<BackgroundViewProperties> implements BackgroundView {
   private final JPanel backgroundSelectionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(3).fillX()));
-  private final JPanel backgroundDisplayPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel backgroundDisplayPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
   private final IntegerViewFactory guiConfiguration;
 
   public SeparateBackgroundView(IntegerViewFactory intValueDisplayFactory) {
