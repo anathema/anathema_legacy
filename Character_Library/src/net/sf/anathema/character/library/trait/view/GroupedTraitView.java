@@ -4,7 +4,6 @@ import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.framework.value.IntegerViewFactory;
-import net.sf.anathema.lib.gui.layout.GroupedColumnPanel;
 
 import javax.swing.JComponent;
 
