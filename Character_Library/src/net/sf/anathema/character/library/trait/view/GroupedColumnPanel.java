@@ -1,8 +1,5 @@
 package net.sf.anathema.character.library.trait.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
@@ -42,12 +39,9 @@ public class GroupedColumnPanel {
   }
 
   private void addOverallView(JComponent container) {
-    GridDialogLayout layout = new GridDialogLayout(columns.length, false);
-    layout.setHorizontalSpacing(15);
-    container.setLayout(layout);
-    GridDialogLayoutData data = GridDialogLayoutDataFactory.createTopData();
+    container.setLayout(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(columns.length).gridGapX("15")));
     for (JPanel column : columns) {
-      container.add(column, data);
+      container.add(column, new CC().alignY("top"));
     }
   }
 }
