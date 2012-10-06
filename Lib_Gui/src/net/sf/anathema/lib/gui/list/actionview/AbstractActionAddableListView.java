@@ -1,6 +1,8 @@
 package net.sf.anathema.lib.gui.list.actionview;
 
-import java.awt.GridLayout;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -8,17 +10,16 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import java.awt.GridLayout;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.util.LayoutUtilities;
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.getComponentSpacing;
 
 public abstract class AbstractActionAddableListView<T> implements IActionAddableListView<T> {
   private final JPanel buttonPanel = new JPanel(new GridLayout(
       1,
       0,
-      LayoutUtilities.getComponentSpacing(),
-      LayoutUtilities.getComponentSpacing()));
+      getComponentSpacing(),
+      getComponentSpacing()));
   private JPanel content;
 
   private final JLabel titleLabel;
@@ -33,13 +34,13 @@ public abstract class AbstractActionAddableListView<T> implements IActionAddable
   }
 
   private JPanel createContent() {
-    JPanel panel = new JPanel(new GridDialogLayout(1, false));
+    JPanel panel = new JPanel(new MigLayout(new LC().insets("0").fill().wrapAfter(1)));
     if (titleLabel != null) {
       panel.add(titleLabel);
     }
     panel.add(
         isScrollable() ? new JScrollPane(getDisplayComponent()) : getDisplayComponent(),
-        GridDialogLayoutData.FILL_BOTH);
+        new CC().grow().push());
     panel.add(buttonPanel);
     return panel;
   }

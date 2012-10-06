@@ -1,8 +1,9 @@
 package net.sf.anathema.lib.gui.dialog.message;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
 import net.sf.anathema.lib.gui.dialog.widgets.AutoWrappingLabel;
 import net.sf.anathema.lib.gui.message.LargeIconMessageTypeUi;
@@ -20,7 +21,7 @@ public class MessageDialogPage extends AbstractDialogPage {
   private final IMessage message;
 
   public MessageDialogPage(IMessage message) {
-    super(""); //$NON-NLS-1$
+    super("");
     Preconditions.checkNotNull(message);
     this.message = message;
   }
@@ -29,10 +30,10 @@ public class MessageDialogPage extends AbstractDialogPage {
   public JComponent createContent() {
     Icon icon = new LargeIconMessageTypeUi().getIcon(message.getType());
     AutoWrappingLabel label = new AutoWrappingLabel(message.getText(), 294);
-    JPanel panel = new JPanel(new GridDialogLayout(2, false, 13, 0));
+    JPanel panel = new JPanel(new MigLayout(new LC().insets("0").fill().gridGapX("13")));
     label.setBackground(panel.getBackground());
-    panel.add(new JLabel(icon), GridDialogLayoutData.FILL_VERTICAL);
-    panel.add(label.getContent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(new JLabel(icon), new CC().growY().pushY());
+    panel.add(label.getContent(), new CC().growX().pushX());
     return panel;
   }
 
