@@ -1,15 +1,16 @@
 package net.sf.anathema.character.library.trait.view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JPanel;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.framework.value.IconToggleButton;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+
+import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView< ? >> extends
     AbstractTraitViewWrapper<K> {
@@ -61,7 +62,7 @@ public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView<
   }
 
   protected void addInnerView(JPanel panel) {
-    this.innerViewPanel = new JPanel(new GridDialogLayout(2, false));
+    this.innerViewPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
     getInnerView().addComponents(innerViewPanel);
     panel.add(innerViewPanel, GridDialogLayoutData.FILL_HORIZONTAL);
   }

@@ -4,6 +4,7 @@ import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
@@ -19,9 +20,11 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import java.awt.FlowLayout;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+
 public class BasicAdvantageView implements IBasicAdvantageView, IInitializableContentView<IAdvantageViewProperties> {
-  private final JPanel virtuePanel = new JPanel(new GridDialogLayout(2, false));
-  private final JPanel willpowerPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel virtuePanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
+  private final JPanel willpowerPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
   private final EssencePanelView essencePanelView;
   private final IntegerViewFactory guiConfiguration;
   private final JPanel content = new JPanel(new FlowLayout(FlowLayout.LEFT));

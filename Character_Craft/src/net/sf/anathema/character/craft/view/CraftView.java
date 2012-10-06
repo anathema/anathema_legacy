@@ -1,6 +1,5 @@
 package net.sf.anathema.character.craft.view;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
@@ -46,7 +45,7 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
 
   @Override
   public IRemovableTraitView<SimpleTraitView> addEntryView(Icon removeIcon, IModifiableCapTrait trait, String string) {
-    SimpleTraitView view = new SimpleTraitView(factory, string, 0, traitMaximum, trait, GridAlignment.FILL);
+    SimpleTraitView view = new SimpleTraitView(factory, string, 0, traitMaximum, trait, new CC().growX());
     RearButtonTraitViewWrapper<SimpleTraitView> traitView = new RearButtonTraitViewWrapper<SimpleTraitView>(
         view,
         removeIcon);

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.lunar.beastform.view;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
@@ -24,16 +24,15 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 public class SecondEditionBeastformView implements IBeastformView {
   private final JPanel spiritNamePanel = new JPanel(new MigLayout(withoutInsets()));
   private final LineTextView spiritNameBox = new LineTextView(45);
-  private final JPanel spiritAttributePanel = new JPanel(new GridDialogLayout(2, false));
-  private final JPanel beastmanAttributePanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel spiritAttributePanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
+  private final JPanel beastmanAttributePanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
   private final JPanel giftPanel = new JPanel(new MigLayout(fillWithoutInsets()));
   private final IntegerViewFactory intValueDisplayFactory;
   private final JPanel content = new JPanel();
   private final JPanel overviewPanel = new JPanel();
   private final IBeastformViewProperties properties;
 
-  public SecondEditionBeastformView(IntegerViewFactory intValueDisplayFactory,
-                                    IBeastformViewProperties properties) {
+  public SecondEditionBeastformView(IntegerViewFactory intValueDisplayFactory, IBeastformViewProperties properties) {
     this.intValueDisplayFactory = intValueDisplayFactory;
     this.properties = properties;
   }
@@ -41,20 +40,16 @@ public class SecondEditionBeastformView implements IBeastformView {
   @Override
   public JComponent getComponent() {
     JPanel spiritPanel = new JPanel(new GridDialogLayout(1, false));
-
     spiritPanel.add(spiritNamePanel);
     PromptSupport.setPrompt(properties.getSpiritFormBoxInitialString(), spiritNameBox.getTextComponent());
     spiritNamePanel.add(spiritNameBox.getComponent());
-
     spiritAttributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
     spiritPanel.add(spiritAttributePanel);
     spiritPanel.setBorder(BorderFactory.createTitledBorder(properties.getSpiritFormBoxString()));
-
     JPanel beastmanPanel = new JPanel();
     beastmanPanel.setLayout(new BoxLayout(beastmanPanel, BoxLayout.Y_AXIS));
     JPanel beastAttributePane = new JPanel(new GridDialogLayout(1, false));
     beastAttributePane.add(beastmanAttributePanel);
-
     beastmanAttributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
     beastmanPanel.add(beastAttributePane);
     giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
@@ -63,7 +58,6 @@ public class SecondEditionBeastformView implements IBeastformView {
     mutationPanel.add(overviewPanel, GridDialogLayoutDataFactory.createTopData());
     beastmanPanel.add(mutationPanel);
     beastmanPanel.setBorder(BorderFactory.createTitledBorder(properties.getDBTBoxString()));
-
     content.add(spiritPanel);
     content.add(beastmanPanel);
     content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
@@ -73,7 +67,7 @@ public class SecondEditionBeastformView implements IBeastformView {
   @Override
   public SimpleTraitView addAttributeValueView(String label, int value, int maxValue) {
     SimpleTraitView traitView = new SimpleTraitView(intValueDisplayFactory, label, value, maxValue,
-            GridAlignment.BEGINNING);
+            new CC().alignX("left"));
     traitView.addComponents(beastmanAttributePanel);
     return traitView;
   }
@@ -84,7 +78,7 @@ public class SecondEditionBeastformView implements IBeastformView {
 
   public SimpleTraitView addSpiritAttributeValueView(String label, int value, int maxValue) {
     SimpleTraitView traitView = new SimpleTraitView(intValueDisplayFactory, label, value, maxValue,
-            GridAlignment.BEGINNING);
+            new CC().alignX("left"));
     traitView.addComponents(spiritAttributePanel);
     return traitView;
   }

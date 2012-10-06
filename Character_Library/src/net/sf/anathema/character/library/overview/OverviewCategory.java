@@ -58,7 +58,7 @@ public class OverviewCategory implements IOverviewCategory, IView {
   @Override
   public IValueView<String> addStringValueView(String labelText) {
     LabelledOverviewStringValueView view = new LabelledOverviewStringValueView(labelText, ""); //$NON-NLS-1$
-    view.addComponents(panel, 4);
+    view.addComponents(panel);
     return view;
   }
 }

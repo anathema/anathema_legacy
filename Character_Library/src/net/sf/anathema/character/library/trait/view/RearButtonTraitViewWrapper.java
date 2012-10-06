@@ -1,7 +1,7 @@
 package net.sf.anathema.character.library.trait.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 
@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class RearButtonTraitViewWrapper<K extends ITraitView< ? >> extends AbstractTraitViewWrapper<K> implements
     IRemovableTraitView<K> {
@@ -27,7 +29,7 @@ public class RearButtonTraitViewWrapper<K extends ITraitView< ? >> extends Abstr
   @Override
   public void addComponents(JPanel panel) {
     this.traitViewPanel = panel;
-    this.innerViewPanel = new JPanel(new GridDialogLayout(2, false));
+    this.innerViewPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
     getInnerView().addComponents(innerViewPanel);
     panel.add(innerViewPanel, new CC().growX().pushX());
     panel.add(button, LayoutUtils.constraintsForImageButton(button));

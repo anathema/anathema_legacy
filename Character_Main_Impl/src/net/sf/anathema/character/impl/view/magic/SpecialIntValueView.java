@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.view.magic;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.trait.view.ITraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
@@ -8,6 +8,8 @@ import net.sf.anathema.platform.tree.view.interaction.SpecialContent;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class SpecialIntValueView implements IIntValueView, SpecialContent{
   private final ITraitView view;
@@ -38,7 +40,7 @@ public class SpecialIntValueView implements IIntValueView, SpecialContent{
 
   @Override
   public void addTo(JComponent menu) {
-    JPanel container = new JPanel(new GridDialogLayout(2, false));
+    JPanel container = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
     view.addComponents(container);
     menu.add(container);
   }

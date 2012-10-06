@@ -1,6 +1,7 @@
 package net.sf.anathema.lib.gui.selection;
 
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
@@ -39,6 +40,11 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V> {
 
   /** Requires two colums */
   public void addTo(JPanel panel, IGridDialogLayoutData data) {
+    panel.add(label);
+    panel.add(comboBox.getComponent(), data);
+  }
+
+  public void addToMig(JPanel panel, CC data) {
     panel.add(label);
     panel.add(comboBox.getComponent(), data);
   }

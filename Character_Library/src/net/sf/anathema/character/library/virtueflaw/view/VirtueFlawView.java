@@ -1,9 +1,7 @@
 package net.sf.anathema.character.library.virtueflaw.view;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
@@ -21,13 +19,14 @@ import javax.swing.ListCellRenderer;
 import java.awt.Component;
 import java.awt.Container;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class VirtueFlawView implements IVirtueFlawView {
-  private final JPanel virtueFlawPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel virtueFlawPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2)));
   private final IntegerViewFactory intValueDisplayFactory;
-  
-  public VirtueFlawView(IntegerViewFactory factory)
-  {
-	  this.intValueDisplayFactory = factory;
+
+  public VirtueFlawView(IntegerViewFactory factory) {
+    this.intValueDisplayFactory = factory;
   }
 
   @Override
@@ -36,31 +35,23 @@ public class VirtueFlawView implements IVirtueFlawView {
     fillIntoVirtueFlawPanel(labelText, textView);
     return textView;
   }
-  
+
   @Override
   public SimpleTraitView addLimitValueView(String label, int value, int maxValue) {
-	   SimpleTraitView traitView = new SimpleTraitView(
-	        intValueDisplayFactory,
-	        label,
-	        value,
-	        maxValue,
-	        null,
-	        GridAlignment.BEGINNING,
-	        new GridDialogLayoutData());
-	    traitView.addComponents((JPanel) getComponent());
-	    return traitView;
-	  }
+    SimpleTraitView traitView = new SimpleTraitView(intValueDisplayFactory, label, value, maxValue, null,
+            new CC().alignX("left"), new CC());
+    traitView.addComponents(virtueFlawPanel);
+    return traitView;
+  }
 
   protected void fillIntoVirtueFlawPanel(String labelText, ITextView textView) {
-    new LabelTextView(labelText, textView).addToStandardPanel(
-        virtueFlawPanel,
-        GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
+    new LabelTextView(labelText, textView).addToMigPanel(virtueFlawPanel);
   }
 
   @Override
   public void setEnabled(boolean enabled) {
-    net.sf.anathema.lib.gui.swing.GuiUtilities.setEnabled(getComponent(), enabled);
-    handleSpecialComponents(getComponent(), enabled);
+    net.sf.anathema.lib.gui.swing.GuiUtilities.setEnabled(virtueFlawPanel, enabled);
+    handleSpecialComponents(virtueFlawPanel, enabled);
   }
 
   private void handleSpecialComponents(Container container, boolean enabled) {
@@ -78,14 +69,10 @@ public class VirtueFlawView implements IVirtueFlawView {
   }
 
   @Override
-  public IObjectSelectionView<ITraitType> addVirtueFlawRootSelectionView(
-      String labelText,
-      ListCellRenderer renderer) {
-    ObjectSelectionView<ITraitType> rootSelectionView = new ObjectSelectionView<ITraitType>(
-        labelText,
-        renderer,
-        new ITraitType[0]);
-    rootSelectionView.addTo(virtueFlawPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
+  public IObjectSelectionView<ITraitType> addVirtueFlawRootSelectionView(String labelText, ListCellRenderer renderer) {
+    ObjectSelectionView<ITraitType> rootSelectionView = new ObjectSelectionView<ITraitType>(labelText, renderer,
+            new ITraitType[0]);
+    rootSelectionView.addToMig(virtueFlawPanel, new CC().growX());
     return rootSelectionView;
   }
 }

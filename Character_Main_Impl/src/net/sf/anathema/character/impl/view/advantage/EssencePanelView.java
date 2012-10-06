@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.view.advantage;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.overview.LabelledOverviewStringValueView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
@@ -12,9 +12,11 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+
 public class EssencePanelView implements IView {
 
-  private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel panel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
   private final IntegerViewFactory guiConfiguration;
 
   public EssencePanelView(IntegerViewFactory guiConfiguration) {
