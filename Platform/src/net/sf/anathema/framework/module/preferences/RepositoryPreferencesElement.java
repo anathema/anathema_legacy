@@ -76,10 +76,10 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     final JButton browseButton = createBrowseButton();
     final JButton defaultButton = createDefaultButton();
     modificationAllowed = true;
-    panel.add(repositoryLabel, new CC().push());
+    panel.add(repositoryLabel, new CC().pushX());
     panel.add(browseButton, new CC().alignX("right"));
-    panel.add(repositoryTextField, new CC().spanX().grow().push());
-    panel.add(defaultButton, new CC().push());
+    panel.add(repositoryTextField, new CC().spanX().growX().pushX());
+    panel.add(defaultButton, new CC().pushX());
     if (Desktop.isDesktopSupported()) {
       JButton openButton = createOpenButton();
       panel.add(openButton, new CC().alignX("right"));

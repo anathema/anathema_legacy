@@ -7,8 +7,8 @@ import net.sf.anathema.framework.presenter.action.AnathemaLoadAction;
 import net.sf.anathema.framework.presenter.action.AnathemaNewAction;
 import net.sf.anathema.framework.presenter.action.menu.help.AnathemaAboutAction;
 import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateAction;
-import net.sf.anathema.framework.presenter.action.preferences.AnathemaPreferencesAction;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
+import net.sf.anathema.framework.presenter.action.preferences.ShowPreferencesAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
 import net.sf.anathema.framework.presenter.itemmanagement.SelectedItemCloseAction;
@@ -77,7 +77,7 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     createMenuFromExtensionPoint(anathemaModel, menu);
     menu.setMnemonic('E');
     menu.addMenuItem(RepositoryViewAction.createMenuAction(resources, anathemaModel));
-    menu.addMenuItem(AnathemaPreferencesAction.createMenuAction(resources, createSystemPreferences(anathemaModel)));
+    menu.addMenuItem(ShowPreferencesAction.createMenuAction(resources, createSystemPreferences(anathemaModel)));
   }
 
   private void createMenuFromExtensionPoint(IAnathemaModel anathemaModel, IMenu menu) {
