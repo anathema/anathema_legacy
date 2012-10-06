@@ -3,20 +3,22 @@ package net.sf.anathema.character.library.trait.view;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class GroupedColumnPanel {
-
   private final JPanel[] columns;
   private int columnIndex = -1;
 
   public GroupedColumnPanel(JComponent parent, int columnCount) {
     columns = new JPanel[columnCount];
     for (int i = 0; i < columns.length; i++) {
-      columns[i] = new JPanel(new GridDialogLayout(2, false));
+      columns[i] = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(2)));
     }
     addOverallView(parent);
   }
@@ -24,7 +26,7 @@ public class GroupedColumnPanel {
   public void startNewGroup(String groupLabel) {
     increaseColumnIndex();
     if (groupLabel != null) {
-      new SingleOverallComponent(new JLabel(groupLabel)).fillInto(getCurrentColumn(), 2);
+      getCurrentColumn().add(new JLabel(groupLabel), new CC().spanX().growX().pushX());
     }
   }
 

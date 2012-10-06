@@ -1,6 +1,5 @@
 package net.sf.anathema.character.intimacies.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
@@ -30,7 +29,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
   private final JPanel mainPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
   private final JPanel entryPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).fillX()));
-  private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel overviewPanel = new JPanel(new MigLayout());
   private final IntegerViewFactory factory;
   private final IIconToggleButtonProperties properties;
 

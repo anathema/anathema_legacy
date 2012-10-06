@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.trait.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.framework.value.IconToggleButton;
@@ -37,7 +37,6 @@ public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView<
   @Override
   public void addComponents(JPanel viewPanel) {
     this.traitViewPanel = viewPanel;
-
   }
 
   @Override
@@ -64,6 +63,6 @@ public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView<
   protected void addInnerView(JPanel panel) {
     this.innerViewPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
     getInnerView().addComponents(innerViewPanel);
-    panel.add(innerViewPanel, GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(innerViewPanel, new CC().growX().pushX());
   }
 }

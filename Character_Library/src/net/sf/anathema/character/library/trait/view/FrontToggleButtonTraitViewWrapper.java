@@ -1,8 +1,8 @@
 package net.sf.anathema.character.library.trait.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -17,10 +17,8 @@ public class FrontToggleButtonTraitViewWrapper<K extends ITraitView< ? >> extend
   @Override
   public void addComponents(JPanel panel) {
     super.addComponents(panel);
-    GridDialogLayoutData gridLayoutData = new GridDialogLayoutData();
-    gridLayoutData.setHorizontalIndent(5);
     JComponent button = getButton().getComponent();
-    panel.add(button, gridLayoutData);
+    panel.add(button, LayoutUtils.constraintsForImageButton(button).gapAfter("5"));
     addInnerView(panel);
   }
 }
