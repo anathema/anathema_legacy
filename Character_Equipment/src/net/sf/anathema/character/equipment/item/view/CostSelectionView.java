@@ -2,8 +2,6 @@ package net.sf.anathema.character.equipment.item.view;
 
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.equipment.ItemCost;
-import net.sf.anathema.character.generic.framework.intvalue.ISelectableIntValueView;
-import net.sf.anathema.character.generic.framework.intvalue.SelectableIntValueView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 

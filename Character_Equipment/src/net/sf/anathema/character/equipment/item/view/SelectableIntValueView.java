@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.framework.intvalue;
+package net.sf.anathema.character.equipment.item.view;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;

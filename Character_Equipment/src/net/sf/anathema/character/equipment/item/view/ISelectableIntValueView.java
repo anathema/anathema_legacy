@@ -1,8 +1,8 @@
-package net.sf.anathema.character.generic.framework.intvalue;
-
-import javax.swing.JPanel;
+package net.sf.anathema.character.equipment.item.view;
 
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
+
+import javax.swing.JPanel;
 
 public interface ISelectableIntValueView<V> {
 
