@@ -1,15 +1,14 @@
 package net.sf.anathema.framework.module.preferences;
 
-import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.reporting.pdf.PageSize;
 import net.sf.anathema.framework.view.EnumSelectCellRenderer;
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
 
+import javax.swing.JPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -26,11 +25,7 @@ public class PageFormatPreferenceElement implements IPreferencesElement {
   private LabelledPreferenceComboBox<PageSize> box;
 
   @Override
-  public void addComponent(IGridDialogPanel panel, IResources resources) {
-    panel.add(getComponent(resources));
-  }
-
-  private IDialogComponent getComponent(IResources resources) {
+  public void addComponent(JPanel panel, IResources resources) {
     String labelText = resources.getString("AnathemaReporting.Tools.Preferences.PageFormat") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
     EnumSelectCellRenderer renderer = new EnumSelectCellRenderer("PageSize.", resources); //$NON-NLS-1$
     box = new LabelledPreferenceComboBox<PageSize>(labelText, renderer, PageSize.values());
@@ -45,7 +40,7 @@ public class PageFormatPreferenceElement implements IPreferencesElement {
       }
     });
     box.setSelectedItem(pageFormat);
-    return box.getDialogComponent();
+    box.addTo(panel);
   }
 
   @Override

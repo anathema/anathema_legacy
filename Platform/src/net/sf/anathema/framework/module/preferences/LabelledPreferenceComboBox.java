@@ -1,16 +1,12 @@
 package net.sf.anathema.framework.module.preferences;
 
-import java.awt.event.ActionListener;
-
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-
-import net.disy.commons.swing.layout.grid.IDialogComponent;
+import java.awt.event.ActionListener;
 
 public class LabelledPreferenceComboBox<T> {
-
   private final JLabel label;
   private final JComboBox box;
 
@@ -24,19 +20,9 @@ public class LabelledPreferenceComboBox<T> {
     box.setSelectedItem(value);
   }
 
-  public IDialogComponent getDialogComponent() {
-    return new IDialogComponent() {
-      @Override
-      public int getColumnCount() {
-        return 2;
-      }
-
-      @Override
-      public void fillInto(JPanel panel, int columnCount) {
-        panel.add(label);
-        panel.add(box);
-      }
-    };
+  public void addTo(JPanel panel) {
+    panel.add(label);
+    panel.add(box);
   }
 
   public void addActionListener(ActionListener listener) {
@@ -46,5 +32,4 @@ public class LabelledPreferenceComboBox<T> {
   public T getSelectedItem() {
     return (T) box.getSelectedItem();
   }
-
 }

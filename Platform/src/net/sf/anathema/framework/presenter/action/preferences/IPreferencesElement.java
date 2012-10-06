@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 import net.sf.anathema.lib.util.Identified;
 
+import javax.swing.JPanel;
 import java.util.prefs.Preferences;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.SYSTEM_PREFERENCES_NODE;
@@ -24,5 +24,5 @@ public interface IPreferencesElement {
 
   void reset();
 
-  void addComponent(IGridDialogPanel panel, IResources resources);
+  void addComponent(JPanel panel, IResources resources);
 }

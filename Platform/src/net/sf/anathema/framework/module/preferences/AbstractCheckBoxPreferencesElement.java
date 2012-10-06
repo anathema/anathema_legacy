@@ -1,44 +1,23 @@
 package net.sf.anathema.framework.module.preferences;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import net.miginfocom.layout.CC;
+import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
+import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
-import net.sf.anathema.lib.resources.IResources;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public abstract class AbstractCheckBoxPreferencesElement implements IPreferencesElement {
-
   private boolean dirty = false;
   private JCheckBox checkBox;
 
   @Override
-  public void addComponent(IGridDialogPanel panel, IResources resources) {
-    panel.add(getComponent(resources));
-  }
-
-  private IDialogComponent getComponent(IResources resources) {
-    final JComponent component = createCheckBox(resources);
-    return new IDialogComponent() {
-      @Override
-      public void fillInto(JPanel panel, int columnCount) {
-        panel.add(component, GridDialogLayoutDataFactory.createHorizontalSpanData(
-            1,
-            GridDialogLayoutData.FILL_HORIZONTAL));
-      }
-
-      @Override
-      public int getColumnCount() {
-        return 1;
-      }
-    };
+  public void addComponent(JPanel panel, IResources resources) {
+    JComponent component = createCheckBox(resources);
+    panel.add(component, new CC().spanX());
   }
 
   protected abstract boolean getBooleanParameter();
@@ -60,7 +39,7 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
     });
     return checkBox;
   }
-  
+
   @Override
   public boolean isValid() {
     return true;

@@ -1,8 +1,6 @@
 package net.sf.anathema.framework.module.preferences;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
@@ -11,7 +9,6 @@ import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
@@ -31,7 +28,6 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 @PreferenceElement
 @Weight(weight = 80)
 public class RepositoryPreferencesElement implements IPreferencesElement {
-
   private File repositoryDirectory;
   private File defaultDirectory;
   private RepositoryLocationResolver repository;
@@ -40,13 +36,11 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   private JTextField repositoryTextField;
   private IResources resources;
 
-
   public RepositoryPreferencesElement() {
     try {
       repository = new RepositoryLocationResolver(InitializationPreferences.getDefaultPreferences());
       repositoryDirectory = new File(repository.resolve()).getCanonicalFile();
       defaultDirectory = new File(repository.getDefaultLocation()).getCanonicalFile();
-
       verifyDirectoriesExist();
     } catch (IOException e) {
       Throwable cause = e.getCause();
@@ -71,14 +65,9 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   }
 
   @Override
-  public void addComponent(IGridDialogPanel panel, IResources resource) {
+  public void addComponent(JPanel panel, IResources resource) {
     verifyDirectoriesExist();
-
     this.resources = resource;
-    panel.add(getComponent());
-  }
-
-  private IDialogComponent getComponent() {
     final JLabel repositoryLabel = new JLabel(resources.getString(
             "AnathemaCore.Tools.Preferences.RepositoryDirectory.Label") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     repositoryTextField = new JTextField(45);
@@ -87,25 +76,14 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     final JButton browseButton = createBrowseButton();
     final JButton defaultButton = createDefaultButton();
     modificationAllowed = true;
-    return new IDialogComponent() {
-      @Override
-      public void fillInto(JPanel panel, int columnCount) {
-        panel.add(repositoryLabel, GridDialogLayoutDataFactory.createHorizontalSpanData(1));
-        panel.add(browseButton, GridDialogLayoutDataFactory.createRightData());
-        panel.add(repositoryTextField, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount,
-                GridDialogLayoutData.FILL_HORIZONTAL));
-        panel.add(defaultButton, GridDialogLayoutDataFactory.createHorizontalSpanData(1));
-        if (Desktop.isDesktopSupported()) {
-          JButton openButton = createOpenButton();
-          panel.add(openButton, GridDialogLayoutDataFactory.createRightData());
-        }
-      }
-
-      @Override
-      public int getColumnCount() {
-        return 2;
-      }
-    };
+    panel.add(repositoryLabel, new CC().push());
+    panel.add(browseButton, new CC().alignX("right"));
+    panel.add(repositoryTextField, new CC().spanX().grow().push());
+    panel.add(defaultButton, new CC().push());
+    if (Desktop.isDesktopSupported()) {
+      JButton openButton = createOpenButton();
+      panel.add(openButton, new CC().alignX("right"));
+    }
   }
 
   private void setDisplayedPath(File selectedDirectory) {
@@ -122,7 +100,6 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   private JButton createBrowseButton() {
     return new JButton(new SmartAction(
             resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory")) { //$NON-NLS-1$
-
       @Override
       protected void execute(Component parent) {
         try {
@@ -146,7 +123,6 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   private JButton createDefaultButton() {
     return new JButton(new SmartAction(
             resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.DefaultDirectory")) {
-
       @Override
       protected void execute(Component parent) {
         try {
@@ -159,7 +135,6 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
                   new Message("An error occured while setting the default path: " + cause.getMessage(),
                           cause)); //$NON-NLS-1$
         }
-
       }
     });
   }
@@ -167,7 +142,6 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   private JButton createOpenButton() {
     return new JButton(
             new SmartAction(resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.OpenDirectory")) {
-
               @Override
               protected void execute(Component parent) {
                 try {

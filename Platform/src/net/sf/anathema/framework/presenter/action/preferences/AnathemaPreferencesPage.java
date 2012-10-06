@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -19,7 +19,7 @@ public class AnathemaPreferencesPage extends AbstractDialogPage {
   private IResources resources;
   private IPreferencesElement[] elements;
   private final Map<String, JPanel> tabContentByCategory = new LinkedHashMap<String, JPanel>();
-  private final Map<String, IGridDialogPanel> panelsByName = new HashMap<String, IGridDialogPanel>();
+  private final Map<String, JPanel> panelsByName = new HashMap<String, JPanel>();
 
   public AnathemaPreferencesPage(IResources resources, IPreferencesElement[] elements) {
     super(resources.getString("AnathemaCore.Tools.Preferences.Instruction")); //$NON-NLS-1$
@@ -44,13 +44,13 @@ public class AnathemaPreferencesPage extends AbstractDialogPage {
       String category = element.getCategory().getId();
       if (tabContentByCategory.get(category) == null) {
         createCategoryTab(panel, category);
-        panelsByName.put(category, new DefaultGridDialogPanel());
+        panelsByName.put(category, new JPanel(new MigLayout(new LC().insets("0").fill().wrapAfter(2))));
       }
       element.addComponent(panelsByName.get(category), resources);
     }
     for (String key : tabContentByCategory.keySet()) {
       JPanel categoryPanel = tabContentByCategory.get(key);
-      categoryPanel.add(panelsByName.get(key).getComponent());
+      categoryPanel.add(panelsByName.get(key));
     }
     return panel;
   }

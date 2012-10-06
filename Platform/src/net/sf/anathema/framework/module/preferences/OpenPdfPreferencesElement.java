@@ -2,9 +2,10 @@ package net.sf.anathema.framework.module.preferences;
 
 import net.sf.anathema.initialization.PreferenceElement;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identified;
+
+import javax.swing.JPanel;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.OPEN_PDF_PREFERENCE;
 import static net.sf.anathema.framework.reporting.AbstractPrintAction.isAutoOpenSupported;
@@ -16,7 +17,7 @@ public class OpenPdfPreferencesElement extends AbstractCheckBoxPreferencesElemen
   private boolean openPdf = SYSTEM_PREFERENCES.getBoolean(OPEN_PDF_PREFERENCE, true);
 
   @Override
-  public void addComponent(IGridDialogPanel panel, IResources resources) {
+  public void addComponent(JPanel panel, IResources resources) {
     if (isAutoOpenSupported()) {
       super.addComponent(panel, resources);
     }
