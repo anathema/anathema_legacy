@@ -1,11 +1,11 @@
 package net.sf.anathema.character.impl.view.advantage;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.presenter.view.ButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -15,6 +15,8 @@ import javax.swing.ListCellRenderer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.Dimension;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class BackgroundSelectionView<V> extends ButtonControlledComboEditView<V> {
   private final JTextField detailBox;
@@ -79,11 +81,11 @@ public class BackgroundSelectionView<V> extends ButtonControlledComboEditView<V>
 
   @Override
   public JPanel getComponent() {
-    JPanel panel = new JPanel(new GridDialogLayout(4, false));
+    JPanel panel = new JPanel(new MigLayout(withoutInsets()));
     panel.add(label);
-    panel.add(comboBox.getComponent(), IGridDialogLayoutData.DEFAULT);
-    panel.add(detailBox, GridDialogLayoutData.FILL_HORIZONTAL);
-    panel.add(addButton, GridDialogLayoutData.RIGHT);
+    panel.add(comboBox.getComponent(), new CC().minWidth("70"));
+    panel.add(detailBox, new CC().growX().pushX());
+    panel.add(addButton, LayoutUtils.constraintsForImageButton(addButton));
     return panel;
   }
 }
