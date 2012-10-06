@@ -1,21 +1,18 @@
 package net.sf.anathema.lib.gui.widgets;
 
-import java.awt.Color;
+import com.sun.java.swing.plaf.windows.WindowsComboBoxUI;
+import net.sf.anathema.lib.gui.ui.ColoredMetalComboBoxUI;
+import net.sf.anathema.lib.gui.ui.ColoredWindowsComboBoxUI;
 
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.UIManager;
 import javax.swing.plaf.ComboBoxUI;
 import javax.swing.plaf.metal.MetalComboBoxUI;
-
-import net.sf.anathema.lib.gui.ui.ColoredMetalComboBoxUI;
-import net.sf.anathema.lib.gui.ui.ColoredWindowsComboBoxUI;
-
-import com.sun.java.swing.plaf.windows.WindowsComboBoxUI;
+import java.awt.Color;
 
 public class ColoredJComboBox extends JComboBox {
 
-	private static final long serialVersionUID = 2747323629549356010L;
 
 	public ColoredJComboBox(ComboBoxModel model) {
 		super(model);

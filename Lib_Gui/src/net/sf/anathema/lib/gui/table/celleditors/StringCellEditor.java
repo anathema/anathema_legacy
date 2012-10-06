@@ -9,7 +9,6 @@ public class StringCellEditor extends AbstractDelegatingCellEditor {
   protected final EditorDelegate createDelegate(JComponent editorComponent) {
     final JTextField textField = (JTextField) editorComponent;
     return new EditorDelegate(this) {
-      private static final long serialVersionUID = -3453009429361817177L;
 
       @Override
       public void setValue(Object value) {

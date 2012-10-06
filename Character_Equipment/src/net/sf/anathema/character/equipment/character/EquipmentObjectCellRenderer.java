@@ -1,16 +1,14 @@
 package net.sf.anathema.character.equipment.character;
 
-import java.awt.Component;
+import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
+import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
 import javax.swing.JList;
-
-import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import java.awt.Component;
 
 public class EquipmentObjectCellRenderer extends DefaultListCellRenderer {
-	private static final long serialVersionUID = 1L;
 
 	private final IEquipmentTemplateProvider templateProvider;
 	private final EquipmentTemplateTooltipBuilder tooltipBuilder;

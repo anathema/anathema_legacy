@@ -52,7 +52,6 @@ public class CharacterCreationPageProperties {
 
   public ListCellRenderer getTemplateRenderer() {
     return new DefaultListCellRenderer() {
-      private static final long serialVersionUID = 3144707785986328892L;
 
       @Override
       public Component getListCellRendererComponent(

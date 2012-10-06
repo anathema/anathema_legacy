@@ -13,7 +13,6 @@ import java.awt.Component;
 
 public class RetrieveSelectionAction extends SmartAction {
 
-  private static final long serialVersionUID = -3213999545896698237L;
   private final IActionAddableListView<IMusicSelection> selectionListView;
   private final IMusicSelectionModel selectionModel;
 

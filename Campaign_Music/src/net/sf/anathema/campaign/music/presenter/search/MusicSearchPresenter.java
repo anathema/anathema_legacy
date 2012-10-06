@@ -37,7 +37,6 @@ public class MusicSearchPresenter implements Presenter {
       parametersByView.put(component, parameter);
     }
     SmartAction searchAction = new SmartAction(new MusicUI(resources).getSearchIcon()) {
-      private static final long serialVersionUID = 8958683862859888837L;
 
       @Override
       protected void execute(Component parentComponent) {

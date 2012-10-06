@@ -41,7 +41,6 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
   @Override
   public ListCellRenderer getAvailableMagicRenderer() {
     return new LegalityCheckListCellRenderer(getResources()) {
-      private static final long serialVersionUID = 1L;
 
       @Override
       public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
@@ -88,7 +87,6 @@ public class MutationViewLearnProperties extends AbstractMagicLearnProperties im
   @Override
   public ListCellRenderer getLearnedMagicRenderer() {
     return new DefaultListCellRenderer() {
-      private static final long serialVersionUID = 1L;
 
       @SuppressWarnings("unchecked")
       @Override

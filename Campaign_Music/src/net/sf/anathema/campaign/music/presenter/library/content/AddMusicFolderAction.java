@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddMusicFolderAction extends SmartAction {
-  private static final long serialVersionUID = -509736641362821213L;
   public static final String ADD_MUSIC_CHOOSER_VALUE = "AddMusicFolder"; //$NON-NLS-1$
   private final ILibraryControl model;
   private final ILibraryControlView view;

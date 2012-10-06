@@ -12,7 +12,6 @@ import net.sf.anathema.lib.resources.IResources;
 import java.awt.Component;
 
 public final class SaveEquipmentTemplateAction extends SmartAction {
-  private static final long serialVersionUID = -5365592768651657434L;
   private final IResources resources;
   private final IEquipmentDatabaseManagement model;
   private final IChangeListener changeListener = new IChangeListener() {

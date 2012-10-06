@@ -1,12 +1,12 @@
 package net.sf.anathema.campaign.music.presenter.selection.list;
 
-import javax.swing.JComponent;
-import javax.swing.JTextField;
-
 import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.lib.gui.table.celleditors.AbstractDelegatingCellEditor;
 import net.sf.anathema.lib.gui.table.celleditors.EditorDelegate;
+
+import javax.swing.JComponent;
+import javax.swing.JTextField;
 
 public class MusicSelectionCellEditor extends AbstractDelegatingCellEditor {
 
@@ -20,7 +20,6 @@ public class MusicSelectionCellEditor extends AbstractDelegatingCellEditor {
   protected final EditorDelegate createDelegate(JComponent editorComponent) {
     final JTextField textField = (JTextField) editorComponent;
     return new EditorDelegate(this) {
-      private static final long serialVersionUID = -2343686002500042761L;
       private IMusicSelection musicSelection;
 
       @Override

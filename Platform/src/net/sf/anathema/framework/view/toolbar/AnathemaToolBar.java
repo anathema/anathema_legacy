@@ -58,7 +58,6 @@ public class AnathemaToolBar implements IAnathemaToolbar, IView {
     }
     final ToolBarButton button = new ToolBarButton();
     SmartAction action = new SmartAction(buttonIcon) {
-      private static final long serialVersionUID = 5982837727535553981L;
 
 	  @Override
       protected void execute(Component parentComponent) {

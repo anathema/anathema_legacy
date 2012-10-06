@@ -27,7 +27,6 @@ public class CharacterMenu implements IAnathemaMenu {
   }
 
   private static class MakeCharacterExperienced extends SmartAction {
-    private static final long serialVersionUID = -6647982875967092052L;
     private final IAnathemaModel model;
 
     public MakeCharacterExperienced(IResources resources, IAnathemaModel model) {

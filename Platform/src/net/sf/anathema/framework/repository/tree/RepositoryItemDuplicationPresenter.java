@@ -41,7 +41,6 @@ public class RepositoryItemDuplicationPresenter implements Presenter {
     final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.DuplicateName"),
             //$NON-NLS-1$
             new FileUi(resources).getDuplicateFileIcon()) {
-      private static final long serialVersionUID = 6140625217947542252L;
 
       @Override
       protected void execute(Component parentComponent) {

@@ -1,18 +1,13 @@
-/**
- * 
- */
 package net.sf.anathema.character.equipment.character;
-
-import java.awt.Component;
-
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JList;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
+import java.awt.Component;
+
 public final class MagicMaterialCellRenderer extends DefaultListCellRenderer {
-	private static final long serialVersionUID = 1L;
 private final IResources resources;
 
   public MagicMaterialCellRenderer(IResources resources) {

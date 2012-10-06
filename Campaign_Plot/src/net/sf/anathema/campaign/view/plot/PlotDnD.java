@@ -1,5 +1,11 @@
 package net.sf.anathema.campaign.view.plot;
 
+import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
+
+import javax.swing.JComponent;
+import javax.swing.TransferHandler;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
 import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -7,13 +13,6 @@ import java.awt.dnd.DnDConstants;
 import java.awt.dnd.DropTarget;
 import java.awt.dnd.DropTargetAdapter;
 import java.awt.dnd.DropTargetDropEvent;
-
-import javax.swing.JComponent;
-import javax.swing.TransferHandler;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreePath;
-
-import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
 
 public class PlotDnD {
 
@@ -33,7 +32,6 @@ public class PlotDnD {
   public void initDragAndDrop() {
     treeView.getTreeComponent().setDragEnabled(true);
     treeView.getTreeComponent().setTransferHandler(new TransferHandler() {
-      private static final long serialVersionUID = -3503494472294823439L;
 
       @Override
       public boolean canImport(JComponent comp, DataFlavor[] transferFlavors) {

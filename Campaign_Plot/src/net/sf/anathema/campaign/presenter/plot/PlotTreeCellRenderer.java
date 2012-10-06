@@ -1,8 +1,9 @@
 package net.sf.anathema.campaign.presenter.plot;
 
-import java.awt.Component;
-import java.util.HashMap;
-import java.util.Map;
+import net.sf.anathema.campaign.concrete.plot.PlotModel;
+import net.sf.anathema.campaign.model.plot.IPlotElement;
+import net.sf.anathema.campaign.module.PlotUI;
+import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -10,15 +11,12 @@ import javax.swing.JTree;
 import javax.swing.SwingConstants;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
-
-import net.sf.anathema.campaign.concrete.plot.PlotModel;
-import net.sf.anathema.campaign.model.plot.IPlotElement;
-import net.sf.anathema.campaign.module.PlotUI;
-import net.sf.anathema.lib.resources.IResources;
+import java.awt.Component;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PlotTreeCellRenderer extends DefaultTreeCellRenderer {
 
-  private static final long serialVersionUID = -2035781364025451688L;
   private final Map<String, Icon> iconsByTimeUnitId = new HashMap<String, Icon>();
 
   public PlotTreeCellRenderer(IResources resources) {

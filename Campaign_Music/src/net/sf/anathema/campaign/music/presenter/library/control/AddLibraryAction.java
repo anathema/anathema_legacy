@@ -9,7 +9,6 @@ import java.awt.Component;
 
 public class AddLibraryAction extends SmartAction {
 
-  private static final long serialVersionUID = 2648480257056205563L;
   private final ILibraryControl libraryModel;
   private final String unknownLibraryBase;
 

@@ -73,7 +73,6 @@ public class SpecialtiesConfigurationPresenter implements Presenter {
     final IButtonControlledComboEditView<ITraitReference> specialtySelectionView = configurationView.addSpecialtySelectionView(
         resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
         new AbstractSelectCellRenderer<ITraitReference>(resources) {
-			private static final long serialVersionUID = 1L;
 
 		@Override
           protected String getCustomizedDisplayValue(ITraitReference value) {

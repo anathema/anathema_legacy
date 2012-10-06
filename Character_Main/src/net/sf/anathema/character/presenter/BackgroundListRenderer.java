@@ -5,7 +5,6 @@ import javax.swing.JList;
 import java.awt.Component;
 
 public class BackgroundListRenderer extends DefaultListCellRenderer {
-  private static final long serialVersionUID = 1L;
   private final Displayer displayer;
 
   public BackgroundListRenderer(Displayer displayer) {

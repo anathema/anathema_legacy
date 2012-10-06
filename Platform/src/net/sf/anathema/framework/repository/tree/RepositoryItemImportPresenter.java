@@ -45,7 +45,6 @@ public class RepositoryItemImportPresenter implements Presenter {
   public void initPresentation() {
     SmartAction action = new SmartAction(
         resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"), new FileUi(resources).getImportFileIcon()) { //$NON-NLS-1$
-      private static final long serialVersionUID = 5316978362277544910L;
 
       @Override
       protected void execute(Component parentComponent) {

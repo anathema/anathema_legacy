@@ -9,7 +9,6 @@ import java.awt.Component;
 
 public class IdentificateListCellRenderer extends DefaultListCellRenderer {
 
-  private static final long serialVersionUID = -6441068679161656372L;
   private final IResources resources;
 
   public IdentificateListCellRenderer(IResources resources) {

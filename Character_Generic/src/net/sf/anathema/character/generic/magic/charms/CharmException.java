@@ -4,8 +4,6 @@ import net.sf.anathema.lib.exception.PersistenceException;
 
 public class CharmException extends PersistenceException {
 
-	private static final long serialVersionUID = 1003010458512772143L;
-
 public CharmException() {
     super();
   }

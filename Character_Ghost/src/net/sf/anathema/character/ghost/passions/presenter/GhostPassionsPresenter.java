@@ -90,7 +90,6 @@ public class GhostPassionsPresenter implements Presenter {
     passionSelectionView = view.addPassionSelectionView(resources.getString("PassionView.SelectionCombo.Label"),
             //$NON-NLS-1$
             new AbstractSelectCellRenderer<ITraitReference>(resources) {
-              private static final long serialVersionUID = 1L;
 
               @Override
               protected String getCustomizedDisplayValue(ITraitReference value) {

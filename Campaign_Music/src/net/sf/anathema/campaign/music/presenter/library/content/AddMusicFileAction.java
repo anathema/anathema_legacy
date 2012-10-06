@@ -20,7 +20,6 @@ import java.io.File;
 import static net.sf.anathema.campaign.music.presenter.library.content.AddMusicFolderAction.ADD_MUSIC_CHOOSER_VALUE;
 
 public class AddMusicFileAction extends SmartAction {
-  private static final long serialVersionUID = 8615290963297510380L;
   private final ILibraryControl model;
   private final ILibraryControlView view;
   private final IMusicSearchControl searchControl;

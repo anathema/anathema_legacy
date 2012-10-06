@@ -112,7 +112,6 @@ public class EquipmentAdditionalPresenter implements Presenter {
 
   private SmartAction createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
     SmartAction refreshAction = new SmartAction(new EquipmentUI(resources).getRefreshIcon()) {
-      private static final long serialVersionUID = 1L;
 
       @Override
       protected void execute(Component parentComponent) {

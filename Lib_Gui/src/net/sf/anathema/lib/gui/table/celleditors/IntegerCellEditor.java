@@ -17,7 +17,6 @@ public class IntegerCellEditor extends AbstractDelegatingCellEditor {
 	protected final EditorDelegate createDelegate(JComponent editorComponent) {
 		final JSpinner spinner = (JSpinner) editorComponent;
 		return new EditorDelegate(this) {
-			private static final long serialVersionUID = -8488347134426404968L;
 
 			@Override
 			public void setValue(Object value) {

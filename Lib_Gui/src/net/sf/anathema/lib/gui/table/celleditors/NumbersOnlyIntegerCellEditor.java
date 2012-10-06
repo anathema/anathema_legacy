@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.gui.table.celleditors;
 
+import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
+
 import javax.swing.JComponent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 
 public class NumbersOnlyIntegerCellEditor extends AbstractDelegatingCellEditor {
 
@@ -21,7 +21,6 @@ public class NumbersOnlyIntegerCellEditor extends AbstractDelegatingCellEditor {
 	@Override
 	protected EditorDelegate createDelegate(JComponent editor) {
 		return new EditorDelegate(this) {
-			private static final long serialVersionUID = 8253283572594219955L;
 
 			@Override
 			public void setValue(Object value) {

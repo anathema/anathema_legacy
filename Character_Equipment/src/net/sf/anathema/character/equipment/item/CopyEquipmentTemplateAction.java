@@ -10,7 +10,6 @@ import net.sf.anathema.lib.resources.IResources;
 import java.awt.Component;
 
 public final class CopyEquipmentTemplateAction extends SmartAction {
-  private static final long serialVersionUID = -2131791434827503585L;
   private final IEquipmentDatabaseManagement model;
   private final IResources resources;
 

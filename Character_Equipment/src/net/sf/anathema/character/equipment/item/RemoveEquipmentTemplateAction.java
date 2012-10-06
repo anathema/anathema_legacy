@@ -11,7 +11,6 @@ import net.sf.anathema.lib.resources.IResources;
 import java.awt.Component;
 
 public class RemoveEquipmentTemplateAction extends SmartAction {
-  private static final long serialVersionUID = 2016184103012134620L;
   private final IEquipmentDatabaseManagement model;
   private final IEquipmentDatabaseView view;
   private final IResources resources;

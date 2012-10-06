@@ -20,8 +20,6 @@ import java.awt.event.KeyEvent;
 
 public class AnathemaLoadAction extends AbstractAnathemaItemAction {
 
-  private static final long serialVersionUID = 7332796771131850083L;
-
   public static Action createMenuAction(IAnathemaModel model, IResources resources) {
     SmartAction action = new AnathemaLoadAction(model, resources);
     action.setName(resources.getString("AnathemaCore.Tools.Load.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$       

@@ -1,13 +1,11 @@
 package net.sf.anathema.campaign.music.presenter.util;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 
-public abstract class AbstractTrackSelectionAction extends AbstractListViewSelectionEnabledAction<IMp3Track> {
+import javax.swing.Icon;
 
-  private static final long serialVersionUID = -7213680710409909361L;
+public abstract class AbstractTrackSelectionAction extends AbstractListViewSelectionEnabledAction<IMp3Track> {
 
   public AbstractTrackSelectionAction(IActionAddableListView<IMp3Track> view, Icon icon) {
     super(icon, view);

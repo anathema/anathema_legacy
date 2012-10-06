@@ -1,7 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.selection;
 
-import java.awt.Component;
-
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.util.AbstractTrackSelectionAction;
@@ -9,9 +7,10 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.gui.list.actionview.IMultiSelectionActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
 
+import java.awt.Component;
+
 public class DeleteSelectionTracksAction extends AbstractTrackSelectionAction {
 
-  private static final long serialVersionUID = -5960259069807286739L;
   private final IMusicSelectionModel selectionModel;
   private final IMultiSelectionActionAddableListView<IMp3Track> trackListView;
 

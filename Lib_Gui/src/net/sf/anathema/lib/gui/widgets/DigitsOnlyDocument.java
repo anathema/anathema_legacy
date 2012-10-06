@@ -10,7 +10,6 @@ import java.awt.Toolkit;
 
 public class DigitsOnlyDocument extends PlainDocument {
 
-	private static final long serialVersionUID = -5971916517321536678L;
 	private final boolean beepOnInvalidCharacter;
 	private final IOverline overline;
 

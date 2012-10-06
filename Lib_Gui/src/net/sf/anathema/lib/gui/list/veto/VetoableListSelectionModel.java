@@ -8,7 +8,6 @@ import java.util.List;
 
 public class VetoableListSelectionModel extends DefaultListSelectionModel {
 
-    private static final long serialVersionUID = -4520422891121213115L;
 	private final List<IVetor> vetors = new ArrayList<IVetor>();
 	private boolean alreadyAsked;
 	private final ListSelectionMode mode;

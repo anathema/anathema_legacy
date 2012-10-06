@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Vector;
 
 public class UnselectingComboBoxModel extends AbstractListModel implements MutableComboBoxModel, Serializable {
-  private static final long serialVersionUID = -1300185569514469592L;
   private List<Object> objects;
   private Object selectedObject;
 

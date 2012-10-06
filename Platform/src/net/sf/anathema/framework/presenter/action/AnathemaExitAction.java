@@ -8,8 +8,6 @@ import java.awt.Component;
 
 public class AnathemaExitAction extends SmartAction {
 
-  private static final long serialVersionUID = -2552236336749594833L;
-
   @Override
   protected void execute(Component parentComponent) {
     System.exit(0);

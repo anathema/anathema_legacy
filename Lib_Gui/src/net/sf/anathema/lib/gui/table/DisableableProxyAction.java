@@ -10,7 +10,6 @@ import java.beans.PropertyChangeListener;
 
 // NOT_PUBLISHED
 public class DisableableProxyAction extends AbstractAction {
-	private static final long serialVersionUID = 505097053360803709L;
 	private final Action action;
 	private boolean enabled = true;
 

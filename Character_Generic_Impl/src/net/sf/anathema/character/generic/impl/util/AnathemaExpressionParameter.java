@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.util;
 
+import com.eteks.parser.ExpressionParameter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -8,11 +9,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
 
-import com.eteks.parser.ExpressionParameter;
-
 public class AnathemaExpressionParameter implements ExpressionParameter {
-  
-  private static final long serialVersionUID = 300038980886900074L;
   
   private IGenericTraitCollection traitCollection;
   

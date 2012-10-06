@@ -1,16 +1,14 @@
 package net.sf.anathema.campaign.music.presenter.selection;
 
-import java.awt.Component;
-
 import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
 
-public class PersistAppendSelectionAction extends AbstractPersistSelectionAction {
+import java.awt.Component;
 
-  private static final long serialVersionUID = 1258918650740783186L;
+public class PersistAppendSelectionAction extends AbstractPersistSelectionAction {
 
   public PersistAppendSelectionAction(
       IActionAddableListView<IMusicSelection> selectionListView,

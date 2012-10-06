@@ -10,8 +10,6 @@ import java.awt.Component;
 
 public class PersistReplaceSelectionAction extends AbstractPersistSelectionAction {
 
-  private static final long serialVersionUID = -8545986574118274085L;
-
   public PersistReplaceSelectionAction(
       IActionAddableListView<IMusicSelection> selectionListView,
       IMusicSelectionModel selectionModel,

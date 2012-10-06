@@ -10,7 +10,6 @@ import java.util.EventObject;
 
 public class EditorDelegate implements ActionListener, ItemListener, Serializable {
 
-  private static final long serialVersionUID = -214509974492448353L;
   private final AbstractDelegatingCellEditor editor;
   private static final int CLICK_COUNT_TO_START = 2;
   private Object value;

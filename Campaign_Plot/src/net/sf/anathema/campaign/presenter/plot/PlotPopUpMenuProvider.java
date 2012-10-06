@@ -58,7 +58,6 @@ public class PlotPopUpMenuProvider {
     final IPlotElement parentElement = plotModel.getParentElement(element);
     JPopupMenu menu = new JPopupMenu();
     SmartAction addAction = new SmartAction(resources.getString("SeriesPlot.PopUp.AddAction"), basicUi.getAddIcon()) { //$NON-NLS-1$
-      private static final long serialVersionUID = 3484645840846499782L;
 
       @Override
       protected void execute(Component parentComponent) {
@@ -70,7 +69,6 @@ public class PlotPopUpMenuProvider {
     menu.add(addAction);
     SmartAction removeAction = new SmartAction(
         resources.getString("SeriesPlot.PopUp.RemoveAction"), basicUi.getRemoveIcon()) { //$NON-NLS-1$
-          private static final long serialVersionUID = -3730408896907339444L;
 
           @Override
           protected void execute(Component parentComponent) {

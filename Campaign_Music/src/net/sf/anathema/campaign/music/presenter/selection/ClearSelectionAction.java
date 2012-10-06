@@ -10,7 +10,6 @@ import java.awt.Component;
 
 public class ClearSelectionAction extends SmartAction {
 
-  private static final long serialVersionUID = -8508935573109995523L;
   private final IMusicSelectionModel selectionModel;
 
   public ClearSelectionAction(IResources resources, final IMusicSelectionModel selectionModel) {
