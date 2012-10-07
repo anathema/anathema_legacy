@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.specialties;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.ITraitReference;
@@ -24,7 +23,7 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
 
   private final IntegerViewFactory factory;
   private final JPanel mainPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1).fillY()));
-  private final JPanel specialtyPanel = new JPanel(new GridDialogLayout(5, false));
+  private final JPanel specialtyPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(5)));
 
   public SpecialtiesView(IntegerViewFactory factory) {
     this.factory = factory;
@@ -39,7 +38,6 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
       int maxValue) {
     SpecialtyView specialtyView = new SpecialtyView(factory, abilityName, deleteIcon, specialtyName, value, maxValue);
     specialtyView.addComponents(specialtyPanel);
-    mainPanel.revalidate();
     return specialtyView;
   }
 

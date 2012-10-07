@@ -1,10 +1,11 @@
 package net.sf.anathema.character.impl.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import org.jmock.example.announcer.Announcer;
 
 import javax.swing.AbstractAction;
@@ -17,7 +18,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
 public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
-
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Component abilityLabel;
   private final Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
@@ -26,13 +26,8 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
   private JPanel traitPanel;
   private final Icon deleteIcon;
 
-  public SpecialtyView(
-      IntegerViewFactory configuration,
-      String labelText,
-      Icon deleteIcon,
-      String id,
-      int value,
-      int maxValue) {
+  public SpecialtyView(IntegerViewFactory configuration, String labelText, Icon deleteIcon, String id, int value,
+                       int maxValue) {
     super(configuration, labelText, value, maxValue, null);
     this.deleteIcon = deleteIcon;
     specialtyLabel = new JLabel(id);
@@ -44,7 +39,7 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
     this.traitPanel = panel;
     panel.add(abilityLabel);
     panel.add(separatorLabel);
-    panel.add(specialtyLabel, GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(specialtyLabel, new CC().pushX().growX());
     panel.add(getValueDisplay().getComponent());
     deleteButton = new JButton(new AbstractAction(null, deleteIcon) {
       @Override
@@ -53,8 +48,7 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
       }
     });
     deleteButton.setPreferredSize(new Dimension(deleteIcon.getIconWidth() + 4, deleteIcon.getIconHeight() + 4));
-    panel.add(deleteButton);
-    panel.revalidate();
+    panel.add(deleteButton, LayoutUtils.constraintsForImageButton(deleteButton));
   }
 
   @Override
