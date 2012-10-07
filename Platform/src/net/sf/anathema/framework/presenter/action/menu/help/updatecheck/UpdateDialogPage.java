@@ -44,7 +44,7 @@ public class UpdateDialogPage extends AbstractDialogPage {
 
   @Override
   public JComponent createContent() {
-    JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(2).fill()));
+    JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(2).insets("0", "0", "0", "15").fill()));
     panel.add(new JLabel(getString("Help.UpdateCheck.CurrentVersion") + ":"));
     panel.add(new JLabel(installedVersion.asString()));
     panel.add(new JLabel(getString("Help.UpdateCheck.LatestVersion") + ":"));

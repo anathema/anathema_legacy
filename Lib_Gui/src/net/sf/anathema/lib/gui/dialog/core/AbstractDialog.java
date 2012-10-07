@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.gui.dialog.core;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.userdialog.IDialogCloseHandler;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -44,7 +44,7 @@ public abstract class AbstractDialog {
     dialogPagePanel = new DialogPagePanel(dialogConfiguration.getHeaderPanelConfiguration());
     dialog = createFrameOrDialog(parent);
     dialog.setModal(true);
-    dialog.getContentPane().setLayout(new GridDialogLayout(1, true, 0, 0));
+    dialog.getContentPane().setLayout(new MigLayout(LayoutUtils.fillWithoutInsets().wrapAfter(1)));
     dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     dialog.addWindowListener(cancelingWindowListener);
     CloseOnEscapeKeyActionBehavior.attachTo(this);
@@ -88,13 +88,13 @@ public abstract class AbstractDialog {
   }
 
   protected final void initializeContent() {
-    IGridDialogLayoutData mainContentLayoutData = isMainContentGrabVerticalSpace() ? GridDialogLayoutData.FILL_BOTH : GridDialogLayoutData.FILL_HORIZONTAL;
+    CC mainContentLayoutData = isMainContentGrabVerticalSpace() ? new CC().grow().push() : new CC().growX().pushX();
     dialog.getContentPane().add(dialogPagePanel.createPanel(), mainContentLayoutData);
-    dialog.getContentPane().add(new HorizontalLine(), GridDialogLayoutData.FILL_HORIZONTAL);
-    dialog.getContentPane().add(createButtonBar(), GridDialogLayoutData.FILL_HORIZONTAL);
+    dialog.getContentPane().add(new HorizontalLine(), new CC().growX().pushX());
+    dialog.getContentPane().add(createButtonBar(), new CC().growX().pushX());
     JComponent belowButtonsPanel = createOptionalBelowButtonsPanel();
     if (belowButtonsPanel != null) {
-      dialog.getContentPane().add(belowButtonsPanel, GridDialogLayoutData.FILL_BOTH);
+      dialog.getContentPane().add(belowButtonsPanel, new CC().grow().push());
     }
   }
 
