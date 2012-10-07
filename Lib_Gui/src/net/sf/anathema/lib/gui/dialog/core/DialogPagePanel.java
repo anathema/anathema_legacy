@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui.dialog.core;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.dialog.core.message.DialogMessageModel;
 import net.sf.anathema.lib.gui.dialog.userdialog.IMessageSetable;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -17,10 +17,12 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
-public class DialogPagePanel implements IMessageSetable {
+import static java.lang.String.valueOf;
+import static net.sf.anathema.lib.gui.dialog.core.IDialogConstants.MINIMUM_CONTENT_SIZE;
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
+public class DialogPagePanel implements IMessageSetable {
   private static final Border DEFAULT_BORDER = BorderFactory.createEmptyBorder(10, 8, 10, 8);
-  private static final Border WITH_TOOLBAR_BORDER = BorderFactory.createEmptyBorder(0, 8, 10, 8);
   private final JPanel contentPanel;
   private final IDialogHeaderPanelConfiguration headerPanelConfiguration;
   private final DialogMessageModel messageModel = new DialogMessageModel();
@@ -37,10 +39,7 @@ public class DialogPagePanel implements IMessageSetable {
   public JComponent createPanel() {
     JPanel dialogPagePanel = new JPanel(new BorderLayout());
     if (headerPanelConfiguration.isHeaderPanelVisible()) {
-      DialogHeaderPanel headerPanel = new DialogHeaderPanel(
-          messageModel,
-          descriptionModel,
-          headerPanelConfiguration.getLargeDialogIcon());
+      DialogHeaderPanel headerPanel = new DialogHeaderPanel(messageModel, descriptionModel);
       dialogPagePanel.add(headerPanel.getContent(), BorderLayout.NORTH);
     }
     dialogPagePanel.add(createDialogPagePanel(), BorderLayout.CENTER);
@@ -48,17 +47,9 @@ public class DialogPagePanel implements IMessageSetable {
   }
 
   private Component createDialogPagePanel() {
-    JPanel dialogPagePanel = new JPanel(new GridDialogLayout(1, false, 0, 0));
-    GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
-    data.setWidthHint(IDialogConstants.MINIMUM_CONTENT_SIZE.width);
-    data.setHeightHint(IDialogConstants.MINIMUM_CONTENT_SIZE.height);
-    if (headerPanelConfiguration.getToolBar() != null) {
-      contentPanel.setBorder(WITH_TOOLBAR_BORDER);
-      dialogPagePanel.add(
-          headerPanelConfiguration.getToolBar(),
-          GridDialogLayoutData.FILL_HORIZONTAL);
-    }
-    dialogPagePanel.add(contentPanel, data);
+    JPanel dialogPagePanel = new JPanel(new MigLayout(withoutInsets()));
+    dialogPagePanel.add(contentPanel, new CC().grow().push().minWidth(valueOf(MINIMUM_CONTENT_SIZE.width)).minHeight(
+            valueOf(MINIMUM_CONTENT_SIZE.height)));
     return dialogPagePanel;
   }
 

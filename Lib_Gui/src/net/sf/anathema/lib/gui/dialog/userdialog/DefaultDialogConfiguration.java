@@ -19,7 +19,7 @@ public class DefaultDialogConfiguration<P extends IDialogPage> extends AbstractG
   private final P dialogPage;
 
   public DefaultDialogConfiguration(P dialogPage, IDialogButtonConfiguration buttonConfiguration) {
-    super(buttonConfiguration, DialogHeaderPanelConfiguration.createVisibleWithoutIcon());
+    super(buttonConfiguration, DialogHeaderPanelConfiguration.createVisible());
     this.dialogPage = dialogPage;
   }
 

@@ -13,7 +13,7 @@ public abstract class AbstractWizardConfiguration extends AbstractGenericDialogC
 
   public AbstractWizardConfiguration() {
     super(DialogButtonConfigurationFactory.createOkCancelWithOkText(DialogMessages.WIZARD_FINISH),
-            DialogHeaderPanelConfiguration.createVisibleWithoutIcon());
+            DialogHeaderPanelConfiguration.createVisible());
   }
 
   @Override
