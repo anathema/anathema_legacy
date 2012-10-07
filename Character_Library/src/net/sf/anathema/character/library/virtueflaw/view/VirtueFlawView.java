@@ -72,7 +72,7 @@ public class VirtueFlawView implements IVirtueFlawView {
   public IObjectSelectionView<ITraitType> addVirtueFlawRootSelectionView(String labelText, ListCellRenderer renderer) {
     ObjectSelectionView<ITraitType> rootSelectionView = new ObjectSelectionView<ITraitType>(labelText, renderer,
             new ITraitType[0]);
-    rootSelectionView.addToMig(virtueFlawPanel, new CC().growX());
+    rootSelectionView.addTo(virtueFlawPanel, new CC().growX());
     return rootSelectionView;
   }
 }

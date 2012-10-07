@@ -1,8 +1,7 @@
 package net.sf.anathema.character.equipment.item;
 
 import com.google.common.base.Function;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -20,27 +19,23 @@ import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.selection.ISelectionIntValueChangedListener;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
+import net.sf.anathema.lib.workflow.container.factory.MigPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-import javax.swing.JPanel;
+import javax.swing.JComponent;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class EquipmentDatabasePresenter implements Presenter {
-
   private static final int COLUMN_COUNT = 45;
   private final IResources resources;
   private final IEquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
-  
-  private final String[] defaultCostBackgrounds = { "Artifact", "Manse", "Resources" };
+  private final String[] defaultCostBackgrounds = {"Artifact", "Manse", "Resources"};
 
-  public EquipmentDatabasePresenter(
-      IResources resources,
-      IEquipmentDatabaseManagement model,
-      IEquipmentDatabaseView view) {
+  public EquipmentDatabasePresenter(IResources resources, IEquipmentDatabaseManagement model,
+                                    IEquipmentDatabaseView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
@@ -67,57 +62,31 @@ public class EquipmentDatabasePresenter implements Presenter {
   }
 
   private void initBasicDetailsView() {
-    StandardPanelBuilder panelBuilder = new StandardPanelBuilder();
-    ITextView nameView = panelBuilder.addLineTextView(getColonString("Equipment.Creation.Basics.Name"), COLUMN_COUNT); //$NON-NLS-1$
+    MigPanelBuilder panelBuilder = new MigPanelBuilder();
+    ITextView nameView = panelBuilder.addLineTextView(getColonString("Equipment.Creation.Basics.Name"), COLUMN_COUNT);
     new TextualPresentation().initView(nameView, model.getTemplateEditModel().getDescription().getName());
-    ITextView descriptionView = panelBuilder.addAreaTextView(getColonString("Equipment.Creation.Basics.Description"), //$NON-NLS-1$
-        5,
-        COLUMN_COUNT);
+    ITextView descriptionView = panelBuilder.addAreaTextView(getColonString("Equipment.Creation.Basics.Description"), 5,
+            COLUMN_COUNT);
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
     final ObjectSelectionView<MaterialComposition> compositionView = new ObjectSelectionView<MaterialComposition>(
-        getColonString("Equipment.Creation.Basics.Composition"), //$NON-NLS-1$
-        new IdentificateSelectCellRenderer("MaterialComposition.", resources), //$NON-NLS-1$
-        MaterialComposition.values());
+            getColonString("Equipment.Creation.Basics.Composition"), //$NON-NLS-1$
+            new IdentificateSelectCellRenderer("MaterialComposition.", resources), //$NON-NLS-1$
+            MaterialComposition.values());
     final ObjectSelectionView<MagicalMaterial> materialView = new ObjectSelectionView<MagicalMaterial>(
-        getColonString("Equipment.Creation.Basics.Material"), //$NON-NLS-1$
-        new IdentificateSelectCellRenderer("MagicMaterial.", resources), //$NON-NLS-1$
-        MagicalMaterial.values());
-    panelBuilder.addDialogComponent(new IDialogComponent() {
-
+            getColonString("Equipment.Creation.Basics.Material"), //$NON-NLS-1$
+            new IdentificateSelectCellRenderer("MagicMaterial.", resources), //$NON-NLS-1$
+            MagicalMaterial.values());
+    panelBuilder.addView(compositionView, new CC().split(3).gapAfter("15"));
+    panelBuilder.addView(materialView, new CC());
+    String[] backgrounds = transform(defaultCostBackgrounds, String.class, new Function<String, String>() {
       @Override
-      public void fillInto(JPanel panel, int columnCount) {
-        compositionView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
-        materialView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
-      }
-
-      @Override
-      public int getColumnCount() {
-        return 4;
+      public String apply(String arg0) {
+        return resources.getString("BackgroundType.Name." + arg0);
       }
     });
-    String[] backgrounds = transform(defaultCostBackgrounds, String.class,
-            new Function<String, String>() {
-
-              @Override
-              public String apply(String arg0) {
-                return resources.getString("BackgroundType.Name." + arg0);
-              }
-            });
-    final CostSelectionView costView = new CostSelectionView(
-            getColonString("Equipment.Creation.Basics.Cost"), //$NON-NLS-1$
+    final CostSelectionView costView = new CostSelectionView(getColonString("Equipment.Creation.Basics.Cost"),
             backgrounds, getIntValueDisplayFactory());
-    panelBuilder.addDialogComponent(new IDialogComponent() {
-
-        @Override
-        public void fillInto(JPanel panel, int columnCount) {
-          costView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
-        }
-
-        @Override
-        public int getColumnCount() {
-          return 4;
-        }
-      });
+    panelBuilder.addView(costView, new CC().split(2));
     compositionView.addObjectSelectionChangedListener(new ObjectValueListener<MaterialComposition>() {
       @Override
       public void valueChanged(MaterialComposition newValue) {
@@ -145,29 +114,28 @@ public class EquipmentDatabasePresenter implements Presenter {
       }
     });
     costView.addSelectionChangedListener(new ISelectionIntValueChangedListener<String>() {
-  	  @Override
-        public void valueChanged(String selection, int value) {
-  		ItemCost cost = selection == null ? null : new ItemCost(selection, value);
-  		ItemCost currentModelCost = model.getTemplateEditModel().getCost();
-  		if ((cost == null && currentModelCost != null) ||
-  			(cost != null && currentModelCost == null) ||
-  			(cost != null && !cost.equals(currentModelCost))) {
-  			model.getTemplateEditModel().setCost(cost);
-  		}
-  	  }
-      });
-    model.getTemplateEditModel().addCostChangeListener(new IChangeListener() {
-
-		@Override
-		public void changeOccurred() {
-			costView.setValue(model.getTemplateEditModel().getCost());
-		}
-    	
+      @Override
+      public void valueChanged(String selection, int value) {
+        ItemCost cost = selection == null ? null : new ItemCost(selection, value);
+        ItemCost currentModelCost = model.getTemplateEditModel().getCost();
+        if ((cost == null && currentModelCost != null) ||
+                (cost != null && currentModelCost == null) ||
+                (cost != null && !cost.equals(currentModelCost))) {
+          model.getTemplateEditModel().setCost(cost);
+        }
+      }
     });
-    view.fillDescriptionPanel(panelBuilder.getTitledContent(resources.getString("Equipment.Creation.Basics"))); //$NON-NLS-1$
+    model.getTemplateEditModel().addCostChangeListener(new IChangeListener() {
+      @Override
+      public void changeOccurred() {
+        costView.setValue(model.getTemplateEditModel().getCost());
+      }
+    });
+    JComponent titledContent = panelBuilder.getTitledContent(resources.getString("Equipment.Creation.Basics"));
+    view.fillDescriptionPanel(titledContent);
   }
-  
+
   private IntegerViewFactory getIntValueDisplayFactory() {
-	  return new MarkerIntValueDisplayFactory(new CharacterIntValueGraphics(resources, CharacterType.MORTAL));
+    return new MarkerIntValueDisplayFactory(new CharacterIntValueGraphics(resources, CharacterType.MORTAL));
   }
 }

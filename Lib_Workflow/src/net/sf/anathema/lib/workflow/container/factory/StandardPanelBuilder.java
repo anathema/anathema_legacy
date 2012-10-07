@@ -2,12 +2,10 @@ package net.sf.anathema.lib.workflow.container.factory;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
-import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
@@ -26,10 +24,6 @@ public class StandardPanelBuilder {
     return addLabelledTextView(labelName, new LineTextView(columnCount));
   }
 
-  public ITextView addAreaTextView(String labelName, int rowCount, int columnCount) {
-    return addLabelledTextView(labelName, new AreaTextView(rowCount, columnCount));
-  }
-
   private ITextView addLabelledTextView(String labelText, ITextView textView) {
     final LabelTextView labelTextView = new LabelTextView(labelText, textView);
     addDialogComponent(new IDialogComponent() {
@@ -44,10 +38,6 @@ public class StandardPanelBuilder {
       }
     });
     return textView;
-  }
-
-  public JPanel getTitledContent(String title) {
-    return new TitledPanel(title, dialogPanel.getComponent());
   }
 
   public JPanel getUntitledContent() {

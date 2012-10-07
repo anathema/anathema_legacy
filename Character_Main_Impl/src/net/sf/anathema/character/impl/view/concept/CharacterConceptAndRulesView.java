@@ -2,6 +2,8 @@ package net.sf.anathema.character.impl.view.concept;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
@@ -9,7 +11,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
-import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -22,14 +23,14 @@ import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class CharacterConceptAndRulesView implements ICharacterConceptAndRulesView, IInitializableContentView<ICharacterConceptAndRulesViewProperties> {
-  private final JPanel conceptPanel = new JPanel(new GridDialogLayout(3, false));
+  private final JPanel conceptPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).debug(1)));
   private final JPanel rulesPanel = new JPanel(new GridDialogLayout(1, false));
-  private final List<JPanel> buttonPanels = new ArrayList<JPanel>();
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel buttonPanel = new JPanel(new GridLayout(1, 0));
 
   @Override
   public void initGui(ICharacterConceptAndRulesViewProperties properties) {
@@ -50,8 +51,7 @@ public class CharacterConceptAndRulesView implements ICharacterConceptAndRulesVi
     ObjectSelectionView<V> selectionView = new ObjectSelectionView<V>(labelText, renderer, editable, objects);
     selectionView.getComboBox().getEditor().getEditorComponent().setEnabled(true);
     selectionView.setDisabledLabelColor(Color.DARK_GRAY);
-    selectionView.addTo(conceptPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
-    addButtonPanel();
+    selectionView.addTo(conceptPanel, new CC().growX().pushX());
     return selectionView;
   }
 
@@ -61,16 +61,9 @@ public class CharacterConceptAndRulesView implements ICharacterConceptAndRulesVi
     lineTextView.getTextComponent().setDisabledTextColor(Color.DARK_GRAY);
     LabelTextView labelView = new LabelTextView(labelText, lineTextView);
     labelView.setDisabledLabelColor(Color.DARK_GRAY);
-    labelView.addToStandardPanel(conceptPanel);
-    addButtonPanel();
+    labelView.addToMigPanel(conceptPanel, new CC().growX().split(2));
+    conceptPanel.add(buttonPanel);
     return labelView;
-  }
-
-  @Override
-  public void addSpinner(String labelText, IntegerSpinner spinner) {
-    JLabel label = new JLabel(labelText);
-    conceptPanel.add(label);
-    conceptPanel.add(spinner.getComponent());
   }
 
   @Override
@@ -79,15 +72,9 @@ public class CharacterConceptAndRulesView implements ICharacterConceptAndRulesVi
   }
 
   @Override
-  public AbstractButton addAction(SmartAction action, int row) {
+  public AbstractButton addAction(SmartAction action) {
     AbstractButton button = ToolBarUtilities.createToolBarButton(action);
-    buttonPanels.get(row).add(button);
+    buttonPanel.add(button);
     return button;
-  }
-
-  private void addButtonPanel() {
-    JPanel buttonPanel = new JPanel(new GridLayout(1, 0));
-    buttonPanels.add(buttonPanel);
-    conceptPanel.add(buttonPanel);
   }
 }

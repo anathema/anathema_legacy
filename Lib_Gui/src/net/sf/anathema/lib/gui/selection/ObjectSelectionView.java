@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui.selection;
 
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 
@@ -13,7 +13,7 @@ import javax.swing.ListCellRenderer;
 import java.awt.Color;
 import java.awt.SystemColor;
 
-public class ObjectSelectionView<V> implements IObjectSelectionView<V> {
+public class ObjectSelectionView<V> implements IObjectSelectionView<V>, AdditiveView {
 
   private final IChangeableJComboBox<V> comboBox;
   private final JLabel label;
@@ -38,13 +38,8 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V> {
     comboBox.setRenderer(renderer);
   }
 
-  /** Requires two colums */
-  public void addTo(JPanel panel, IGridDialogLayoutData data) {
-    panel.add(label);
-    panel.add(comboBox.getComponent(), data);
-  }
-
-  public void addToMig(JPanel panel, CC data) {
+  @Override
+  public void addTo(JPanel panel, CC data) {
     panel.add(label);
     panel.add(comboBox.getComponent(), data);
   }

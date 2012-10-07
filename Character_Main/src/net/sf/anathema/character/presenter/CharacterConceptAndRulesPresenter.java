@@ -46,9 +46,9 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   @Override
   public void initPresentation() {
     initRulesPresentation();
-    boolean casteRow = initCastePresentation();
+    initCastePresentation();
     IMotivation motivation = character.getCharacterConcept().getWillpowerRegainingConcept();
-    initMotivationPresentation(motivation, casteRow);
+    initMotivationPresentation(motivation);
     initGui();
   }
 
@@ -58,7 +58,7 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     return new SimpleViewContentView(new ContentProperties(conceptHeader), view);
   }
 
-  private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {
+  private void initMotivationPresentation(final IMotivation motivation) {
     final ITextView textView = initTextualDescriptionPresentation(motivation.getEditableDescription(),
             "Label.Motivation"); //$NON-NLS-1$
     final SmartAction beginEditAction = new SmartAction(new BasicUi(resources).getEditIcon()) {
@@ -92,10 +92,9 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
       }
     };
     endEditXPAction.setToolTipText(resources.getString("CharacterConcept.Motivation.EndEditXP.Tooltip")); //$NON-NLS-1$
-    int row = casteRow ? 1 : 0;
-    final AbstractButton beginButton = view.addAction(beginEditAction, row);
-    view.addAction(endEditAction, row);
-    view.addAction(endEditXPAction, row);
+    final AbstractButton beginButton = view.addAction(beginEditAction);
+    view.addAction(endEditAction);
+    view.addAction(endEditXPAction);
     motivation.addEditingListener(new IEditMotivationListener() {
       @Override
       public void editBegun() {

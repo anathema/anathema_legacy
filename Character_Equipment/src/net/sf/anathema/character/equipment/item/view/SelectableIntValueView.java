@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.item.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.NullUpperBounds;
@@ -12,15 +11,13 @@ import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class SelectableIntValueView<V> implements ISelectableIntValueView<V> {
-
   private final IChangeableJComboBox<V> objectSelectionBox = new ChangeableJComboBox<V>(false);
-
   private final IIntValueDisplay valueDisplay;
-  private final Announcer<ISelectionIntValueChangedListener> control = Announcer.to(ISelectionIntValueChangedListener.class);
+  private final Announcer<ISelectionIntValueChangedListener> control = Announcer.to(
+          ISelectionIntValueChangedListener.class);
   private int currentValue;
 
   public SelectableIntValueView(IntegerViewFactory configuration, int initial, int max) {
@@ -34,11 +31,11 @@ public class SelectableIntValueView<V> implements ISelectableIntValueView<V> {
     valueDisplay.addIntValueChangedListener(new IIntValueChangedListener() {
       @Override
       public void valueChanged(int newValue) {
-    	int oldValue = currentValue;
-    	currentValue = newValue;
-    	if (oldValue != newValue) {
-    		valueDisplay.setValue(newValue);
-    	}
+        int oldValue = currentValue;
+        currentValue = newValue;
+        if (oldValue != newValue) {
+          valueDisplay.setValue(newValue);
+        }
         fireSelectionChangedEvent();
       }
     });
@@ -48,17 +45,10 @@ public class SelectableIntValueView<V> implements ISelectableIntValueView<V> {
     control.announce().valueChanged(objectSelectionBox.getSelectedObject(), currentValue);
   }
 
-  public JComponent getContent() {
-    JPanel panel = new JPanel(new GridDialogLayout(2, false));
-    addTo(panel);
-    return panel;
-  }
-
   @Override
-  public void addTo(JPanel panel) {
-    panel.add(objectSelectionBox.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+  public void addTo(JPanel panel, CC data) {
+    panel.add(objectSelectionBox.getComponent(), data);
     panel.add(valueDisplay.getComponent());
-    panel.revalidate();
   }
 
   @Override

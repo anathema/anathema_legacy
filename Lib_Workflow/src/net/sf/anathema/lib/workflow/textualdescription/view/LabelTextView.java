@@ -67,18 +67,16 @@ public class LabelTextView implements ITextView {
   }
 
   public void addToMigPanel(JPanel panel) {
-    panel.add(label);
-    panel.add(textView.getComponent(), new CC().growX());
+    addToMigPanel(panel, new CC().growX());
   }
 
   public void addToMigPanel(JPanel panel, int columnCount) {
-    panel.add(label);
-    panel.add(textView.getComponent(), new CC().growX().spanX(columnCount));
+    addToMigPanel(panel, new CC().growX().spanX(columnCount));
   }
 
-  public void addToStandardPanel(JPanel panel, GridDialogLayoutData textFieldData) {
-    panel.add(label, GridDialogLayoutDataFactory.createTopData());
-    panel.add(textView.getComponent(), textFieldData);
+  public void addToMigPanel(JPanel panel, CC data) {
+    panel.add(label);
+    panel.add(textView.getComponent(), data);
   }
 
   public void addToStandardPanel(JPanel panel, int columnCount) {

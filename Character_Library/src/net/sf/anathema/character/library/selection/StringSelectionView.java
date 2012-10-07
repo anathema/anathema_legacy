@@ -30,7 +30,6 @@ public class StringSelectionView implements IStringSelectionView {
     parent.add(panel);
   }
 
-
   @Override
   public void addTextChangeListener(ObjectValueListener<String> listener) {
     labelTextView.addTextChangedListener(listener);
