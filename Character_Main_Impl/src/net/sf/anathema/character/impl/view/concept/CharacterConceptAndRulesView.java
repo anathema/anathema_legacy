@@ -1,7 +1,5 @@
 package net.sf.anathema.character.impl.view.concept;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
@@ -28,16 +26,16 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class CharacterConceptAndRulesView implements ICharacterConceptAndRulesView, IInitializableContentView<ICharacterConceptAndRulesViewProperties> {
   private final JPanel conceptPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2).debug(1)));
-  private final JPanel rulesPanel = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel content = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel rulesPanel = new JPanel(new MigLayout(withoutInsets()));
+  private final JPanel content = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
   private final JPanel buttonPanel = new JPanel(new GridLayout(1, 0));
 
   @Override
   public void initGui(ICharacterConceptAndRulesViewProperties properties) {
     conceptPanel.setBorder(new TitledBorder(properties.getConceptTitle()));
     rulesPanel.setBorder(new TitledBorder(properties.getRulesTitle()));
-    content.add(conceptPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
-    content.add(rulesPanel, GridDialogLayoutDataFactory.createHorizontalFillNoGrab());
+    content.add(conceptPanel, new CC().growX());
+    content.add(rulesPanel, new CC().growX());
   }
 
   @Override

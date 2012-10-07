@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.IMultiComponentLine;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -16,15 +17,17 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class CharacterDescriptionView implements ICharacterDescriptionView {
 
   private static final int TEXT_COLUMNS = 45;
-  private final JPanel content = new JPanel(new GridDialogLayout(3, false));
+  private final JPanel content = new JPanel(new MigLayout(withoutInsets().wrapAfter(2)));
   private final List<JPanel> buttonPanels = new ArrayList<JPanel>();
 
   @Override
   public IMultiComponentLine addMultiComponentLine() {
-    MultiComponentLine componentLine = new MultiComponentLine(content, buttonPanels);
+    MultiComponentLine componentLine = new MultiComponentLine(content);
     componentLine.init();
     return componentLine;
   }
@@ -40,7 +43,7 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
   }
 
   private synchronized ITextView addTextView(String labelText, ITextView textView) {
-    new LabelTextView(labelText, textView).addToStandardPanel(content);
+    new LabelTextView(labelText, textView).addToMigPanel(content, new CC().split(2));
     JPanel buttonPanel = new JPanel(new GridLayout(1, 0));
     buttonPanels.add(buttonPanel);
     content.add(buttonPanel);
