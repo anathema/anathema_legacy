@@ -6,6 +6,8 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 4.5.4
 
+This version drops the option to specify a custom look and feel.
+
 ### Bugfixes
 * Runtime logging works when you update from an earlier version via the auto-updater.
 * Experience table is fully visible without collapsing the overview.
