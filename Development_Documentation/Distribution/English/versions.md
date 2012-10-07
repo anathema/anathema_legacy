@@ -7,10 +7,12 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 4.5.4
 
 This version drops the option to specify a custom look and feel.
+It also makes major changes to the internal screen layout code. If you notice anything that looks odd, please let us know.
 
 ### Bugfixes
 * Runtime logging works when you update from an earlier version via the auto-updater.
 * Experience table is fully visible without collapsing the overview.
+* [Alaman13] Adds repurchase to (Solar/Resistance) "Ruin Abasing Shrug"
 
 ## Release 4.5.3
 
