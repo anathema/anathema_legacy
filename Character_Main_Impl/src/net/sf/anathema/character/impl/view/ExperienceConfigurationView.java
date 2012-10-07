@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
@@ -30,7 +29,7 @@ public class ExperienceConfigurationView implements IExperienceConfigurationView
   private SmartTable smartTable;
   private Action deleteAction;
   private LabelledIntegerValueView labelledIntValueView;
-  private final JPanel content = new JPanel(new GridDialogLayout(1, false));
+  private JPanel smartTablePanel;
 
   @Override
   public final void initGui(final IExperienceConfigurationViewProperties properties) {
@@ -65,7 +64,7 @@ public class ExperienceConfigurationView implements IExperienceConfigurationView
         fireSelectionChanged();
       }
     });
-    JPanel smartTablePanel = smartTable.getComponent();
+    this.smartTablePanel = smartTable.getComponent();
     smartTablePanel.setPreferredSize(new Dimension(700, 400));
     TableColumn descriptionColumn = smartTable.getTable().getTableHeader().getColumnModel().getColumn(0);
     descriptionColumn.setPreferredWidth(450);
@@ -76,12 +75,11 @@ public class ExperienceConfigurationView implements IExperienceConfigurationView
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);
     smartTablePanel.add(totalPanel, new CC().growX().newline().alignY("top"));
-    content.add(smartTablePanel);
   }
 
   @Override
   public final JComponent getComponent() {
-    return content;
+    return smartTablePanel;
   }
 
   protected void fireSelectionChanged() {
