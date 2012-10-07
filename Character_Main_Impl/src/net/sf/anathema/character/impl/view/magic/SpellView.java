@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.view.magic;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
@@ -20,7 +17,6 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,7 +26,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class SpellView implements ISpellView {
   private MagicLearnView magicLearnView;
-  private final JPanel content = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel content = new JPanel(new MigLayout(fillWithoutInsets()));
   private final Announcer<ObjectValueListener> circleControl = Announcer.to(ObjectValueListener.class);
   private final SpellViewProperties properties;
 
@@ -51,33 +47,18 @@ public class SpellView implements ISpellView {
 
   @Override
   public void initGui(Identified[] circles) {
-    JComponent selectionPanel = createSelectionPanel(circles);
-    IGridDialogLayoutData data = GridDialogLayoutData.FILL_BOTH;
-    content.add(selectionPanel, data);
-  }
-
-  private JPanel createSelectionPanel(Identified[] circles) {
-    JPanel filterBox = createFilterBox(properties.getCircleLabel(), circles, properties.getCircleSelectionRenderer());
-    magicLearnView.init(properties);
-    JPanel selectionPanel = new JPanel(new MigLayout(fillWithoutInsets()));
-    selectionPanel.add(filterBox, new CC().wrap());
-    magicLearnView.addTo(selectionPanel);
-    return selectionPanel;
-  }
-
-  public JPanel createFilterBox(String label, Object[] objects, ListCellRenderer renderer) {
-    JPanel panel = new JPanel(new GridDialogLayout(2, false));
-    panel.add(new JLabel(label));
-    final JComboBox box = new JComboBox(objects);
-    box.setRenderer(renderer);
-    panel.add(box, GridDialogLayoutData.FILL_HORIZONTAL);
+    content.add(new JLabel(properties.getCircleLabel()), new CC().split(2));
+    final JComboBox box = new JComboBox(circles);
+    box.setRenderer(properties.getCircleSelectionRenderer());
+    content.add(box, new CC().wrap());
     box.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         circleControl.announce().valueChanged(box.getSelectedItem());
       }
     });
-    return panel;
+    magicLearnView.init(properties);
+    magicLearnView.addTo(content);
   }
 
   @Override
