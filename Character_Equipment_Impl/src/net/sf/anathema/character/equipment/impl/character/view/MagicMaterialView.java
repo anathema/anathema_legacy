@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
@@ -10,6 +10,8 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
+
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class MagicMaterialView implements IMagicalMaterialView {
 
@@ -22,9 +24,9 @@ public class MagicMaterialView implements IMagicalMaterialView {
   @Override
   public JComponent getComponent() {
     if (content == null) {
-      content = new JPanel(new GridDialogLayout(2, false));
+      content = new JPanel(new MigLayout(fillWithoutInsets()));
       content.add(label);
-      content.add(materialCombo.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+      content.add(materialCombo.getComponent(), new CC().growX().pushX());
     }
     return content;
   }

@@ -1,11 +1,10 @@
 package net.sf.anathema.character.equipment.impl.creation.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 
@@ -17,31 +16,25 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
 public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoiceView {
-
-  private static final GridDialogLayoutData OVERALL_HORIZONTAL_FILL = GridDialogLayoutDataFactory.createHorizontalSpanData(
-          3, GridDialogLayoutData.FILL_HORIZONTAL);
   private final ButtonGroup buttonGroup = new ButtonGroup();
-  private final JPanel content = new JPanel(new GridDialogLayout(3, false));
+  private final JPanel content = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(3)));
   private JComponent focusComponent;
 
   @Override
   public JComponent getContent() {
-    JPanel panel = new JPanel(new GridDialogLayout(1, false));
-    IGridDialogLayoutData data = GridDialogLayoutData.FILL_HORIZONTAL;
-    panel.add(content, data);
-    return panel;
+    return content;
   }
 
   @Override
   public void addStatisticsRow(String categoryLabel, Action action, String typeLabel, boolean isSelected) {
-    content.add(new JLabel(categoryLabel));
-    content.add(createToggleButton(action, isSelected));
-    content.add(new JLabel(typeLabel));
+    content.add(new JLabel(categoryLabel), new CC());
+    content.add(createToggleButton(action, isSelected), new CC().alignX("left"));
+    content.add(new JLabel(typeLabel), new CC().alignX("left").pushX().growX());
   }
 
   @Override
   public void addHorizontalLine() {
-    content.add(new HorizontalLine(), OVERALL_HORIZONTAL_FILL);
+    content.add(new HorizontalLine(), new CC().spanX().growX());
   }
 
   @Override
