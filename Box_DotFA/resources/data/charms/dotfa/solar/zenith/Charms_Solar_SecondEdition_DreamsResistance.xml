@@ -43,26 +43,30 @@
 			<source source="LordsOfCreation" />
           <source source="ScrollErrata" />
      </charm>
-     <charm id="Solar.RuinAbasingShrug" exalt="Solar" group="Resistance">
-          <prerequisite>
-               <trait id="Resistance" value="6" />
-               <essence value="6" />
-               <charmReference id="Solar.AdamantSkinTechnique" />
-          </prerequisite>
-          <cost>
-               <essence cost="5" />
-          </cost>
-          <duration duration="Instant" />
-          <charmtype type="Reflexive">
+	<charm id="Solar.RuinAbasingShrug" exalt="Solar" group="Resistance">
+		<prerequisite>
+			<trait id="Resistance" value="6" />
+			<essence value="6" />
+			<charmReference id="Solar.AdamantSkinTechnique" />
+		</prerequisite>
+		<cost>
+			<essence cost="5" />
+		</cost>
+		<duration duration="Instant" />
+		<charmtype type="Reflexive">
 			<special primaryStep="10" />
 		</charmtype>
-          <charmAttribute attribute="Combo-Basic" visualize="true" />
-          <charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
-          <charmAttribute attribute="Mirror" visualize="true" />
-<!-- NOTE:  Abyssal Mirror - Far Beyond Ruin -->
-			<source source="LordsOfCreation" />
-          <source source="ScrollErrata" />
-     </charm>
+		<!-- NOTE:  Abyssal Mirror - Far Beyond Ruin -->
+		<charmAttribute attribute="Combo-Basic" visualize="true" />
+		<charmAttribute attribute="FavoredCaste.Dawn" visualize="true" />
+		<charmAttribute attribute="Mirror" visualize="true" />
+        <repurchases trait="Resistance">
+			<repurchase essence="6" trait="6"/>
+			<repurchase essence="7" trait="6"/>
+		</repurchases>
+		<source source="LordsOfCreation" />
+		<source source="ScrollErrata" />
+	</charm>
      <charm id="Solar.UnbrokenChainResolve" exalt="Solar" group="Resistance">
           <prerequisite>
                <trait id="Resistance" value="5" />
