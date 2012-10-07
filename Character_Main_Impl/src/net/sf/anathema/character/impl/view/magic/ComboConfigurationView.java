@@ -1,8 +1,6 @@
 package net.sf.anathema.character.impl.view.magic;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
@@ -15,6 +13,7 @@ import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -36,14 +35,14 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.Component;
 
-public class ComboConfigurationView implements IComboConfigurationView {
+import static net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate;
 
-  // TODO Move listener management / button initialization to presenter
+public class ComboConfigurationView implements IComboConfigurationView {
   private static final int TEXT_COLUMNS = 20;
   private MagicLearnView magicLearnView = new MagicLearnView();
   private JComponent content;
   private final Announcer<IComboViewListener> comboViewListeners = Announcer.to(IComboViewListener.class);
-  private final JPanel namePanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel namePanel = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(1)));
   private JButton clearButton;
   private JButton finalizeButton;
   private int learnedListModelSize;
@@ -97,7 +96,6 @@ public class ComboConfigurationView implements IComboConfigurationView {
       }
     });
     JPanel viewPort = new JPanel(new MigLayout(new LC().insets("6").fill().wrapAfter(5)));
-
     viewPort.add(new JLabel(viewProperties.getAvailableComboCharmsLabel()));
     viewPort.add(new JLabel());
     viewPort.add(new JLabel(viewProperties.getComboedCharmsLabel()));
@@ -106,13 +104,12 @@ public class ComboConfigurationView implements IComboConfigurationView {
     magicLearnView.addTo(viewPort);
     comboPane.setBackground(viewPort.getBackground());
     comboScrollPane = new JScrollPane(comboPane);
-    viewPort.add(comboScrollPane,new CC().spanX().grow().push());
+    viewPort.add(comboScrollPane, new CC().spanX().grow().push());
     content = new JScrollPane(viewPort);
   }
 
   private JButton createClearButton(Icon icon) {
     Action smartAction = new SmartAction(icon) {
-
       @Override
       protected void execute(Component parentComponent) {
         fireComboCleared();
@@ -128,7 +125,6 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
   private JButton createFinalizeComboButton(Icon icon) {
     Action smartAction = new SmartAction(icon) {
-
       @Override
       protected void execute(Component parentComponent) {
         fireComboFinalized();
@@ -197,13 +193,13 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private void revalidateView() {
-    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate(comboPane);
-    net.sf.anathema.lib.gui.swing.GuiUtilities.revalidate(comboScrollPane);
+    revalidate(comboPane);
+    revalidate(comboScrollPane);
   }
 
   private ITextView addTextView(String viewTitle, ITextView textView) {
     namePanel.add(new JLabel(viewTitle));
-    namePanel.add(textView.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    namePanel.add(textView.getComponent(), new CC().growX());
     return textView;
   }
 
