@@ -2,27 +2,20 @@ package net.sf.anathema.lib.gui.dialog.core;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.util.ButtonPanelBuilder;
-import net.disy.commons.swing.layout.util.LayoutDirection;
+import net.sf.anathema.lib.gui.layout.ButtonPanelBuilder;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class DialogButtonBarBuilder {
-
-  private final List<JComponent> leftSideComponents = new ArrayList<JComponent>();
   private final List<JComponent> buttons = new ArrayList<JComponent>();
 
-  public void addLeftSideComponent(JComponent component) {
-    leftSideComponents.add(component);
-  }
-
   public void addButtons(JComponent... buttonComponents) {
-    buttons.addAll(Arrays.asList(buttonComponents));
+    Collections.addAll(buttons, buttonComponents);
   }
 
   public void addButtonsCompacted(JComponent... buttonComponents) {
@@ -34,14 +27,8 @@ public class DialogButtonBarBuilder {
   }
 
   public JComponent createButtonBar() {
-    ArrayList<JComponent> allLeftComponents = new ArrayList<JComponent>();
-    allLeftComponents.addAll(leftSideComponents);
-
-    JPanel panel = new JPanel(new GridDialogLayout(allLeftComponents.size() + 1, false));
-    for (JComponent component : allLeftComponents) {
-      panel.add(component);
-    }
-    ButtonPanelBuilder buttonPanelBuilder = new ButtonPanelBuilder(LayoutDirection.HORIZONTAL);
+    JPanel panel = new JPanel(new GridDialogLayout(1, false));
+    ButtonPanelBuilder buttonPanelBuilder = new ButtonPanelBuilder();
     for (JComponent createdButton : buttons) {
       buttonPanelBuilder.add(createdButton);
     }

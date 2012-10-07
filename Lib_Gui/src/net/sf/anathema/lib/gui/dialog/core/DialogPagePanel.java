@@ -91,5 +91,4 @@ public class DialogPagePanel implements IMessageSetable {
   public Dimension getSize() {
     return contentPanel.getSize();
   }
-
 }
