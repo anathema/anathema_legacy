@@ -1,12 +1,12 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.AbstractEquipmentStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
+import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
@@ -139,21 +139,16 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   protected final void addLabelledComponentRow(final String[] labels, final Component[] contents) {
-    Preconditions.checkArgument(labels.length == contents.length, "Same number of labels required"); //$NON-NLS-1$
-    getPageContent().addDialogComponent(new IDialogComponent() {
+    Preconditions.checkArgument(labels.length == contents.length, "Same number of labels and content items required"); //$NON-NLS-1$
+    getPageContent().addView(new AdditiveView() {
       @Override
-      public void fillInto(JPanel panel, int columnCount) {
+      public void addTo(JPanel panel, CC data) {
         for (int index = 0; index < contents.length; index++) {
           panel.add(new JLabel(labels[index]));
-          panel.add(contents[index], GridDialogLayoutData.FILL_HORIZONTAL);
+          panel.add(contents[index], new CC().growX().pushX());
         }
       }
-
-      @Override
-      public int getColumnCount() {
-        return contents.length * 2;
-      }
-    });
+    }, new CC());
   }
 
   protected final IntegerSpinner initIntegerSpinner(IIntValueModel intModel) {

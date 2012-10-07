@@ -1,17 +1,7 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
@@ -19,8 +9,16 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.framework.value.IconToggleButton;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
+
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ArmourStatisticsPresenterPage extends
     AbstractEquipmentStatisticsPresenterPage<IArmourStatisticsModel, ArmourStatisticsProperties> {
@@ -34,7 +32,6 @@ public class ArmourStatisticsPresenterPage extends
 
   @Override
   protected void addAdditionalContent() {
-
     addLabelledComponentRow(new String[] {
         getProperties().getBashingSoakLabel(),
         getProperties().getBashingHardnessLabel() }, new Component[] {
@@ -49,22 +46,17 @@ public class ArmourStatisticsPresenterPage extends
     final IconToggleButton linkToggleButton = new IconToggleButton(new CharacterUI(getResources()).getLinkIcon());
     final IIntValueModel aggravatedSoakModel = getPageModel().getSoakModel(HealthType.Aggravated);
     final JComponent aggravatedSoakSpinner = initIntegerSpinner(aggravatedSoakModel).getComponent();
-    getPageContent().addDialogComponent(new IDialogComponent() {
+    getPageContent().addView(new AdditiveView() {
       @Override
-      public void fillInto(JPanel panel, int columnCount) {
+      public void addTo(JPanel panel, CC data) {
         panel.add(new JLabel(getProperties().getAggravatedSoakLabel()));
-        panel.add(aggravatedSoakSpinner, GridDialogLayoutData.FILL_HORIZONTAL);
+        panel.add(aggravatedSoakSpinner, new CC().growX());
         JPanel internalPanel = new JPanel(new GridDialogLayout(2, false));
         internalPanel.add(linkToggleButton.getComponent());
         internalPanel.add(new JLabel(getProperties().getLinkSoakLabel()));
-        panel.add(internalPanel, GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount - 2));
+        panel.add(internalPanel, new CC().growX().spanX());
       }
-
-      @Override
-      public int getColumnCount() {
-        return 4;
-      }
-    });
+    }, new CC());
     addLabelledComponentRow(
         new String[] { getProperties().getMobilityPenaltyLabel(), getProperties().getFatigueLabel() },
         new Component[] {

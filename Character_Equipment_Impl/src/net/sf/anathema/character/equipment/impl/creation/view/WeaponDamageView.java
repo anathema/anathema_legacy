@@ -1,11 +1,6 @@
 package net.sf.anathema.character.equipment.impl.creation.view;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.ListCellRenderer;
-
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.ObjectValueListener;
@@ -13,6 +8,10 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
 
 public class WeaponDamageView implements IWeaponDamageView {
 
@@ -23,14 +22,12 @@ public class WeaponDamageView implements IWeaponDamageView {
   private final IChangeableJComboBox<HealthType> typeBox = new ChangeableJComboBox<HealthType>(new HealthType[0], false);
 
   @Override
-  public void fillInto(JPanel panel, int columnCount) {
+  public void addTo(JPanel panel, CC data) {
     panel.add(damageLabel);
-    panel.add(damageValueSpinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
-    panel.add(typeBox.getComponent(), GridDialogLayoutDataFactory.createHorizontalSpanData(
-        columnCount - 2,
-        GridDialogLayoutData.FILL_HORIZONTAL));
+    panel.add(damageValueSpinner.getComponent(), new CC().growX());
+    panel.add(typeBox.getComponent(), new CC().growX().spanX());
     panel.add(minDamageLabel);
-    panel.add(minDamageValueSpinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(minDamageValueSpinner.getComponent(), new CC().growX());
   }
 
   @Override
@@ -39,15 +36,10 @@ public class WeaponDamageView implements IWeaponDamageView {
   }
 
   @Override
-  public int getColumnCount() {
-    return 3;
-  }
-
-  @Override
   public IntegerSpinner getDamageIntegerSpinner() {
     return damageValueSpinner;
   }
-  
+
   @Override
   public IntegerSpinner getMinDamageIntegerSpinner() {
 	return minDamageValueSpinner;
@@ -62,7 +54,7 @@ public class WeaponDamageView implements IWeaponDamageView {
   public void setDamageLabelText(String labelText) {
     this.damageLabel.setText(labelText);
   }
-  
+
   @Override
   public void setMinDamageLabelText(String labelText) {
 	this.minDamageLabel.setText(labelText);

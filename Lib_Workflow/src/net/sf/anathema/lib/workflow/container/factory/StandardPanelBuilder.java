@@ -21,11 +21,8 @@ public class StandardPanelBuilder {
   }
 
   public ITextView addLineTextView(String labelName, int columnCount) {
-    return addLabelledTextView(labelName, new LineTextView(columnCount));
-  }
-
-  private ITextView addLabelledTextView(String labelText, ITextView textView) {
-    final LabelTextView labelTextView = new LabelTextView(labelText, textView);
+    ITextView textView = new LineTextView(columnCount);
+    final LabelTextView labelTextView = new LabelTextView(labelName, textView);
     addDialogComponent(new IDialogComponent() {
       @Override
       public int getColumnCount() {
@@ -33,8 +30,8 @@ public class StandardPanelBuilder {
       }
 
       @Override
-      public void fillInto(JPanel panel, int columnCount) {
-        labelTextView.addToStandardPanel(panel, columnCount - 1);
+      public void fillInto(JPanel panel, int columnCount1) {
+        labelTextView.addToStandardPanel(panel, columnCount1 - 1);
       }
     });
     return textView;

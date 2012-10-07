@@ -14,10 +14,25 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class MigPanelBuilder {
-  private final JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(2).fill().insets("2")));
+  private final JPanel panel;
+
+  public MigPanelBuilder() {
+    this(2);
+  }
+
+  public MigPanelBuilder(int elementsPerRow) {
+    panel = new JPanel(new MigLayout(new LC().wrapAfter(elementsPerRow).fill().insets("2")));
+  }
 
   public ITextView addLineTextView(String labelName, int columnCount) {
     return addLabelledTextView(labelName, new LineTextView(columnCount));
+  }
+
+  public ITextView addSpanningLineTextView(String label, int columnCount) {
+    ITextView textView = new LineTextView(columnCount);
+    LabelTextView labelTextView = new LabelTextView(label, textView);
+    labelTextView.addToMigPanelSpanning(panel);
+    return textView;
   }
 
   public ITextView addAreaTextView(String labelName, int rowCount, int columnCount) {

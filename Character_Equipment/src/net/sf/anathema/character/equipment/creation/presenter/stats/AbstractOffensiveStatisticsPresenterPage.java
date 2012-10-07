@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
+import net.miginfocom.layout.CC;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
@@ -50,7 +51,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   private void initWeaponDamageRow(IWeaponDamageModel damageModel) {
     IWeaponDamageView damageView = getViewFactory().createWeaponDamageView();
     new WeaponDamagePresenter(getResources(), damageModel, damageView).initPresentation();
-    getPageContent().addDialogComponent(damageView);
+    getPageContent().addView(damageView, new CC());
   }
 
   @Override
