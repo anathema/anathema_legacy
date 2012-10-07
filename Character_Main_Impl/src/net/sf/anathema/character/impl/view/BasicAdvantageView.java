@@ -1,9 +1,6 @@
 package net.sf.anathema.character.impl.view;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
@@ -21,6 +18,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.FlowLayout;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class BasicAdvantageView implements IBasicAdvantageView, IInitializableContentView<IAdvantageViewProperties> {
   private final JPanel virtuePanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(2)));
@@ -36,18 +34,12 @@ public class BasicAdvantageView implements IBasicAdvantageView, IInitializableCo
 
   @Override
   public final void initGui(IAdvantageViewProperties properties) {
-    JPanel innerPanel = new JPanel(new GridDialogLayout(2, false));
+    JPanel innerPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2)));
     content.add(innerPanel);
-    GridDialogLayoutData virtueData = new GridDialogLayoutData();
-    virtueData.setVerticalSpan(2);
-    virtueData.setVerticalAlignment(GridAlignment.FILL);
-    addTitledPanel(properties.getVirtueTitle(), innerPanel, virtuePanel, virtueData);
-    GridDialogLayoutData willpowerData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
-    willpowerData.setVerticalAlignment(GridAlignment.BEGINNING);
-    addTitledPanel(properties.getWillpowerTitle(), innerPanel, willpowerPanel, willpowerData);
-    GridDialogLayoutData essenceData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
-    essenceData.setVerticalAlignment(GridAlignment.END);
-    addTitledPanel(properties.getEssenceTitle(), innerPanel, essencePanelView.getComponent(), essenceData);
+    addTitledPanel(properties.getVirtueTitle(), innerPanel, virtuePanel, new CC().spanY(2).growY().pushY());
+    addTitledPanel(properties.getWillpowerTitle(), innerPanel, willpowerPanel, new CC().growX().pushX().alignY("top"));
+    addTitledPanel(properties.getEssenceTitle(), innerPanel, essencePanelView.getComponent(),
+            new CC().growX().pushX().alignY("bottom"));
   }
 
   @Override
@@ -79,8 +71,7 @@ public class BasicAdvantageView implements IBasicAdvantageView, IInitializableCo
     return essencePanelView.addPoolView(labelText, value);
   }
 
-  private JComponent addTitledPanel(String title, JPanel container, JComponent component,
-                                    IGridDialogLayoutData constraint) {
+  private JComponent addTitledPanel(String title, JPanel container, JComponent component, CC constraint) {
     component.setBorder(new TitledBorder(title));
     container.add(component, constraint);
     return component;
