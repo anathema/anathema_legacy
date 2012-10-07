@@ -1,12 +1,11 @@
 package net.sf.anathema.character.impl.module.repository;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
-import net.disy.commons.swing.layout.util.LayoutUtilities;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.character.impl.module.IToggleButtonPanel;
 import net.sf.anathema.character.impl.module.ToggleButtonPanel;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 
@@ -19,18 +18,13 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
   private final JPanel component;
 
   public CharacterItemCreationView() {
-    int horizontalSpacing = LayoutUtilities.getDpiAdjusted(10);
-    int vertialSpacing = LayoutUtilities.getComponentSpacing();
-    this.component = new JPanel(new GridDialogLayout(2, false, horizontalSpacing, vertialSpacing));
+    this.component = new JPanel(new MigLayout(LayoutUtils.withoutInsets().gridGapX("10")));
   }
 
   @Override
   public IToggleButtonPanel addToggleButtonPanel() {
     ToggleButtonPanel panel = new ToggleButtonPanel();
-    GridDialogLayoutData data = GridDialogLayoutDataFactory.createFillNoGrab();
-    data.setGrabExcessVerticalSpace(true);
-    JComponent content = panel.getComponent();
-    component.add(content, data);
+    component.add(panel.getComponent(), new CC().grow().pushY());
     return panel;
   }
 
@@ -49,7 +43,7 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
     ListObjectSelectionView<ITemplateTypeAggregation> view = new ListObjectSelectionView<ITemplateTypeAggregation>(
         ITemplateTypeAggregation.class);
     JScrollPane scrollPane = new JScrollPane(view.getComponent());
-    component.add(scrollPane, GridDialogLayoutData.FILL_BOTH);
+    component.add(scrollPane, new CC().grow().push());
     return view;
   }
 }

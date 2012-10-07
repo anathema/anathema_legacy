@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.module;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
 
@@ -11,9 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.constraintsForImageButton;
+import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
+
 public class ToggleButtonPanel implements IToggleButtonPanel, IView {
   private final ButtonGroup buttonGroup = new ButtonGroup();
-  private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel panel = new JPanel(new MigLayout(withoutInsets().wrapAfter(2)));
 
   @Override
   public JComponent getComponent() {
@@ -25,7 +28,7 @@ public class ToggleButtonPanel implements IToggleButtonPanel, IView {
     JToggleButton toggleButton = new JToggleButton(action);
     ToolBarUtilities.configureToolBarButton(toggleButton);
     buttonGroup.add(toggleButton);
-    panel.add(toggleButton);
+    panel.add(toggleButton, constraintsForImageButton(toggleButton));
     panel.add(new JLabel(text));
     return toggleButton;
   }
