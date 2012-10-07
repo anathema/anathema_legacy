@@ -1,7 +1,5 @@
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.gui.layout.ButtonPanelBuilder;
 
 import javax.swing.JComponent;
@@ -27,13 +25,10 @@ public class DialogButtonBarBuilder {
   }
 
   public JComponent createButtonBar() {
-    JPanel panel = new JPanel(new GridDialogLayout(1, false));
     ButtonPanelBuilder buttonPanelBuilder = new ButtonPanelBuilder();
     for (JComponent createdButton : buttons) {
       buttonPanelBuilder.add(createdButton);
     }
-    JPanel buttonPanel = buttonPanelBuilder.createPanel();
-    panel.add(buttonPanel, GridDialogLayoutData.FILL_HORIZONTAL);
-    return panel;
+    return buttonPanelBuilder.createPanel();
   }
 }
