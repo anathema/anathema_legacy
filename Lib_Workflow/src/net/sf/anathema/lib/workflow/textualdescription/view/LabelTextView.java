@@ -1,7 +1,5 @@
 package net.sf.anathema.lib.workflow.textualdescription.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutDataFactory;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -65,10 +63,6 @@ public class LabelTextView implements ITextView {
     addToMigPanel(panel, new CC().growX());
   }
 
-  public void addToMigPanel(JPanel panel, int columnCount) {
-    addToMigPanel(panel, new CC().growX().spanX(columnCount));
-  }
-
   public void addToMigPanelSpanning(JPanel panel) {
     addToMigPanel(panel, new CC().growX().spanX());
   }
@@ -76,11 +70,5 @@ public class LabelTextView implements ITextView {
   public void addToMigPanel(JPanel panel, CC data) {
     panel.add(label);
     panel.add(textView.getComponent(), data);
-  }
-
-  public void addToStandardPanel(JPanel panel, int columnCount) {
-    panel.add(label, GridDialogLayoutDataFactory.createTopData());
-    panel.add(textView.getComponent(),
-            GridDialogLayoutDataFactory.createHorizontalSpanData(columnCount, GridDialogLayoutData.FILL_HORIZONTAL));
   }
 }
