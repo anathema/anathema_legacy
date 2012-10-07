@@ -1,15 +1,14 @@
 package net.sf.anathema.lib.gui.dialog.core;
 
 import com.google.common.base.Preconditions;
-import net.disy.commons.swing.layout.grid.GridAlignment;
-import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.util.LayoutUtilities;
+import net.miginfocom.layout.CC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.dialog.DialogIconResources;
 import net.sf.anathema.lib.gui.dialog.core.message.DialogMessageModel;
 import net.sf.anathema.lib.gui.dialog.core.message.DialogMessagePanel;
 import net.sf.anathema.lib.gui.icon.CompositeIcon;
+import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 import net.sf.anathema.lib.model.ObjectModel;
 
@@ -47,21 +46,16 @@ public class DialogHeaderPanel {
 
   public JComponent getContent() {
     if (content == null) {
-      JPanel innerPanel = new JPanel(
-              new BorderLayout(LayoutUtilities.getDpiAdjusted(2), LayoutUtilities.getDpiAdjusted(2)));
+      JPanel innerPanel = new JPanel(new BorderLayout(2, 2));
       innerPanel.add(Box.createRigidArea(new Dimension(1, 22)), BorderLayout.EAST);
       innerPanel.add(messagePanel.getContent(), BorderLayout.CENTER);
       innerPanel.add(descriptionLabel, BorderLayout.NORTH);
-      innerPanel.setBorder(new EmptyBorder(LayoutUtilities.getDpiAdjusted(2), LayoutUtilities.getDpiAdjusted(4), 0,
-              LayoutUtilities.getDpiAdjusted(2)));
+      innerPanel.setBorder(new EmptyBorder(2, 4, 0, 2));
       innerPanel.setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
-      JLabel label = new JLabel(new CompositeIcon(DialogIconResources.DIALOG_HEADER_ICON_BACKGROUND));
-      JPanel panel = new JPanel(new GridDialogLayout(2, false, 0, 0));
+      JPanel panel = new JPanel(new MigLayout(LayoutUtils.withoutInsets()));
       panel.setBackground(IDialogConstants.HEADER_BACKGROUND_COLOR);
-      panel.add(innerPanel, GridDialogLayoutData.FILL_BOTH);
-      GridDialogLayoutData iconLayout = new GridDialogLayoutData();
-      iconLayout.setVerticalAlignment(GridAlignment.END);
-      panel.add(label, iconLayout);
+      panel.add(innerPanel, new CC().grow().pushX());
+      panel.add(new JLabel(new CompositeIcon(DialogIconResources.DIALOG_HEADER_ICON_BACKGROUND)), new CC().alignY("bottom"));
       JPanel contentPanel = new JPanel(new BorderLayout(0, 0));
       contentPanel.add(panel, BorderLayout.CENTER);
       contentPanel.add(new HorizontalLine(), BorderLayout.SOUTH);
