@@ -1,11 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.selection;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
@@ -15,6 +9,11 @@ import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IMultiSelectionActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MusicSelectionPresenter implements Presenter {
 
@@ -61,7 +60,7 @@ public class MusicSelectionPresenter implements Presenter {
     selectionListView.addAction(new PersistAppendSelectionAction(selectionListView, selectionModel, resources));
     selectionListView.addAction(new RetrieveSelectionAction(resources, selectionListView, selectionModel));
     trackListView.addAction(new ClearSelectionAction(resources, selectionModel));
-    trackListView.addAction(new DeleteSelectionTracksAction(resources, trackListView, selectionModel));
+    trackListView.addAction(new DeleteSelectionTracksAction(resources, trackListView, new DeleteSelectionRunnable(trackListView, selectionModel)));
     trackListView.addAction(new ExportSelectionTracksAction(resources, selectionModel));
     trackListView.addListSelectionListener(new ListSelectionListener() {
       @Override
