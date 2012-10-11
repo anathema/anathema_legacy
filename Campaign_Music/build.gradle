@@ -2,4 +2,5 @@ dependencies {
   compile 'org.tritonus:tritonus-share:0.3.6'
   compile 'javazoom:mp3spi:1.9.2'
   compile project(':Platform')
+  compile 'com.db4o:db4o-java5:6.0.0'
 }
