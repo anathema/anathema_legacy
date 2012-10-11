@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.list.actionview;
 
 import javax.swing.Action;
-import javax.swing.event.ListSelectionListener;
 
 public interface IActionAddableListView<T> {
 
@@ -9,7 +8,7 @@ public interface IActionAddableListView<T> {
 
   void setListTitle(String title);
 
-  void addListSelectionListener(ListSelectionListener listener);
+  void addListSelectionListener(Runnable listener);
 
   T[] getSelectedItems();
 

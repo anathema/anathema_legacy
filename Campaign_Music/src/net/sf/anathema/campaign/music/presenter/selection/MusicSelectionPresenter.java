@@ -10,9 +10,8 @@ import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IMultiSelectionActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MusicSelectionPresenter implements Presenter {
@@ -62,14 +61,12 @@ public class MusicSelectionPresenter implements Presenter {
     trackListView.addAction(new ClearSelectionAction(resources, selectionModel));
     trackListView.addAction(new DeleteSelectionTracksAction(resources, trackListView, new DeleteSelectionRunnable(trackListView, selectionModel)));
     trackListView.addAction(new ExportSelectionTracksAction(resources, selectionModel));
-    trackListView.addListSelectionListener(new ListSelectionListener() {
+    trackListView.addListSelectionListener(new Runnable() {
       @Override
-      public void valueChanged(ListSelectionEvent e) {
+      public void run() {
         List<IMp3Track> trackList = new ArrayList<IMp3Track>();
         IMp3Track[] selectedItems = trackListView.getSelectedItems();
-        for (IMp3Track trackObject : selectedItems) {
-          trackList.add(trackObject);
-        }
+        Collections.addAll(trackList, selectedItems);
         selectionModel.setMarkedTracks(trackList.toArray(new IMp3Track[trackList.size()]));
       }
     });

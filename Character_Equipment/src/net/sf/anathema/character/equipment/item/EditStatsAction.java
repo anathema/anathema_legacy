@@ -9,8 +9,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +26,9 @@ public class EditStatsAction extends SmartAction {
     this.editModel = editModel;
     this.statsListView = statsListView;
     this.factory = factory;
-    statsListView.addListSelectionListener(new ListSelectionListener() {
+    statsListView.addListSelectionListener(new Runnable() {
       @Override
-      public void valueChanged(ListSelectionEvent e) {
+      public void run() {
         updateEnabled();
       }
     });

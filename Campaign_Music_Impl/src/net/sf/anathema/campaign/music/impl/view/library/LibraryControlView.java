@@ -27,8 +27,6 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -84,13 +82,8 @@ public class LibraryControlView implements ILibraryControlView, IView {
   }
 
   @Override
-  public void whenSelectionChanges(final Runnable runnable) {
-     libraryListView.addListSelectionListener(new ListSelectionListener() {
-       @Override
-       public void valueChanged(ListSelectionEvent e) {
-         runnable.run();
-       }
-     });
+  public void whenSelectionChanges(Runnable runnable) {
+     libraryListView.addListSelectionListener(runnable);
   }
 
   @Override

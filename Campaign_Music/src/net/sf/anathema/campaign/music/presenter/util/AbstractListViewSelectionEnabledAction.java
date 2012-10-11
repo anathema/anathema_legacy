@@ -4,8 +4,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 
 import javax.swing.Icon;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 public abstract class AbstractListViewSelectionEnabledAction<V> extends SmartAction {
 
@@ -14,9 +12,9 @@ public abstract class AbstractListViewSelectionEnabledAction<V> extends SmartAct
   public AbstractListViewSelectionEnabledAction(Icon icon, IActionAddableListView<V> view) {
     super(icon);
     this.view = view;
-    view.addListSelectionListener(new ListSelectionListener() {
+    view.addListSelectionListener(new Runnable() {
       @Override
-      public void valueChanged(ListSelectionEvent e) {
+      public void run() {
         updateEnabled();
       }
     });
