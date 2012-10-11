@@ -25,7 +25,7 @@ import javax.swing.Icon;
 
 @ItemTypeConfiguration
 @Weight(weight = 20)
-public final class NoteTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
+public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
   public NoteTypeConfiguration() {
     super(new ItemType("Note", new RepositoryConfiguration(".not", "Notes/"))); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$

@@ -28,7 +28,7 @@ public class NotePresenter {
     String nameLabel = resources.getString(NOTE_NAME_LABEL);
     String summaryLabel = resources.getString(NOTE_CONTENT_LABEL);
     String borderTitle = resources.getString(NOTE_BORDER_TITLE);
-    IBasicItemDescriptionView descriptionView = view.addDescriptionView();
+    IBasicItemDescriptionView descriptionView = view.getDescriptionView();
     new TextualPresentation().initView(descriptionView.addLineTextView(nameLabel), item.getDescription().getName());
     DefaultStyledDocument document = new DefaultStyledDocument();
     StyledTextManager.initView(new StyledTextManager(document), item.getDescription().getContent());
