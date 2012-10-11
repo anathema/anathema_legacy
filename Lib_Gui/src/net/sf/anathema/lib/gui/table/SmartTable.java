@@ -23,6 +23,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class SmartTable implements IView {
@@ -56,19 +57,13 @@ public class SmartTable implements IView {
 
     table.setRowHeight(Math.max(table.getRowHeight(), 21));
     TableColumnConfigurator.configureTableColumns(table, settings);
-    setSelectionMode(ListSelectionMode.SINGLE_SELECTION);
+    table.setSelectionMode(SINGLE_SELECTION);
   }
 
   public void addActionFactory(ITableActionFactory actionFactory) {
     Preconditions.checkNotNull(actionFactory);
-    if (content != null) {
-      throw new IllegalStateException("Adding actions after creating content."); //$NON-NLS-1$
-    }
+    Preconditions.checkArgument(content == null, "Adding actions after creating content.");
     actionFactories.add(actionFactory);
-  }
-
-  public void setSelectionMode(ListSelectionMode selectionMode) {
-    table.setSelectionMode(selectionMode.getListSelectionMode());
   }
 
   public JTable getTable() {
@@ -138,7 +133,7 @@ public class SmartTable implements IView {
     Action[] createdActions = new Action[actionFactories.size()];
     for (int i = 0; i < createdActions.length; i++) {
       ITableActionFactory factory = actionFactories.get(i);
-      createdActions[i] = new DisableableProxyAction(factory.createAction(this));
+      createdActions[i] = factory.createAction(this);
     }
     return createdActions;
   }
@@ -148,7 +143,7 @@ public class SmartTable implements IView {
     synchronized (this) {
       clone = new ArrayList<ActionListener>(selectionActionListeners);
     }
-    ActionEvent actionEvent = new ActionEvent(table, -1, "select"); //$NON-NLS-1$
+    ActionEvent actionEvent = new ActionEvent(table, -1, "select");
     for (ActionListener element : clone) {
       element.actionPerformed(actionEvent);
     }
@@ -162,11 +157,6 @@ public class SmartTable implements IView {
   }
 
   public int getSelectedRowIndex() {
-    // Bugfix for JDK1.4 JTable Bug 4905083: Pressing enter on empty table
-    // moves selection to 1
-    // (fixed in Java 1.5 / Tiger)
-    int selectedRowIndex = table.getSelectedRow();
-    return selectedRowIndex > table.getRowCount() ? -1 : selectedRowIndex;
+    return table.getSelectedRow();
   }
-
 }

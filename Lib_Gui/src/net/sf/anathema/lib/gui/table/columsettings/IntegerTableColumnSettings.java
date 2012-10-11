@@ -16,7 +16,6 @@ public class IntegerTableColumnSettings extends AbstractTableColumnSettings {
   private final int minimum;
   private final Color negativeColor;
   private final TableCellRenderer rightRenderer = new DefaultTableCellRenderer() {
-
 	{
       setHorizontalAlignment(SwingConstants.RIGHT);
     }
@@ -41,10 +40,6 @@ public class IntegerTableColumnSettings extends AbstractTableColumnSettings {
       return renderComponent;
     }
   };
-
-  public IntegerTableColumnSettings(int minimum, int maximum, int stepsize) {
-    this(minimum, maximum, stepsize, null);
-  }
 
   public IntegerTableColumnSettings(int minimum, int maximum, int stepsize, Color negativeColor) {
     super(2 + Math.max(String.valueOf(minimum).length(), String.valueOf(maximum).length()));

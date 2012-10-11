@@ -9,7 +9,5 @@ public interface ITableColumnViewSettings {
 
   TableCellRenderer getRenderer();
 
-  boolean isResizable();
-
   int getPreferredWidth();
 }
