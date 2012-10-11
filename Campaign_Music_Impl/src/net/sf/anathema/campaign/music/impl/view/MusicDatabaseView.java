@@ -19,7 +19,6 @@ import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import java.awt.GridLayout;
 
 public class MusicDatabaseView extends AbstractItemView implements IMusicDatabaseView {
   private final JPanel content = new JPanel(
@@ -43,7 +42,7 @@ public class MusicDatabaseView extends AbstractItemView implements IMusicDatabas
                                                    IMusicPlayerProperties playerProperties,
                                                    IMusicSelectionProperties selectionProperties,
                                                    ITrackDetailsProperties detailsProperties) {
-    MusicSelectionView selectionView = new MusicSelectionView(content);
+    MusicSelectionView selectionView = new MusicSelectionView(content,icons);
     selectionView.initGui(columnSettings, playerView, categoryProperties, playerProperties, selectionProperties,
             detailsProperties);
     return selectionView;

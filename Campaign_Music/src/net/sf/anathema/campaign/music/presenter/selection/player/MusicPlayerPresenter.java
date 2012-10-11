@@ -3,41 +3,29 @@ package net.sf.anathema.campaign.music.presenter.selection.player;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
-import net.sf.anathema.campaign.music.presenter.MusicUI;
-import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
-
-import javax.swing.JSlider;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.Component;
+import net.sf.anathema.lib.util.Closure;
 
 public class MusicPlayerPresenter implements Presenter {
 
   private final IMusicPlayerView view;
   private final IMusicPlayerModel playerModel;
-  private SmartAction playAction;
-  private SmartAction pauseAction;
-  private SmartAction resumeAction;
   private final IMusicSelectionModel selectionModel;
-  private final IResources resources;
   private final String errorString;
 
   public MusicPlayerPresenter(
-      IResources resources,
-      IMusicPlayerView view,
-      IMusicPlayerModel playerModel,
-      IMusicSelectionModel selectionModel) {
-    this.resources = resources;
+          IResources resources,
+          IMusicPlayerView view,
+          IMusicPlayerModel playerModel,
+          IMusicSelectionModel selectionModel) {
     this.view = view;
     this.playerModel = playerModel;
     this.selectionModel = selectionModel;
-    errorString = resources.getString("Errors.MusicDatabase.Playback"); //$NON-NLS-1$
+    this.errorString = resources.getString("Errors.MusicDatabase.Playback"); //$NON-NLS-1$
   }
 
   private void initSelectionModelListening() {
@@ -53,8 +41,7 @@ public class MusicPlayerPresenter implements Presenter {
           try {
             playerModel.stopPlayback();
             playerModel.setTrack(selectedTrack);
-          }
-          catch (AnathemaException e1) {
+          } catch (AnathemaException e1) {
             e1.printStackTrace();
           }
         }
@@ -66,77 +53,57 @@ public class MusicPlayerPresenter implements Presenter {
   public void initPresentation() {
     initSelectionModelListening();
     initPlayerModelListening();
-    MusicUI musicUI = new MusicUI(resources);
-    pauseAction = new SmartAction(musicUI.getPauseButtonIcon()) {
-
+    view.whenResumeIsTriggered(new Runnable() {
       @Override
-      protected void execute(Component parentComponent) {
-        try {
-          playerModel.pausePlayback();
-        }
-        catch (AnathemaException e) {
-          Message message = new Message(errorString, e);
-          MessageUtilities.indicateMessage(MusicPlayerPresenter.class, parentComponent, message);
-        }
-      }
-    };
-    resumeAction = new SmartAction(musicUI.getResumeButtonIcon()) {
-
-      @Override
-      protected void execute(Component parentComponent) {
+      public void run() {
         try {
           playerModel.resumePlayback();
-        }
-        catch (AnathemaException e) {
-          Message message = new Message(errorString, e);
-          MessageUtilities.indicateMessage(MusicPlayerPresenter.class, parentComponent, message);
+        } catch (AnathemaException e) {
+          view.indicateError(new Message(errorString, e));
         }
       }
-    };
-
-    playAction = new SmartAction(musicUI.getPlayButtonIcon()) {
-
+    });
+    view.whenPauseIsTriggered(new Runnable() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void run() {
+        try {
+          playerModel.pausePlayback();
+        } catch (AnathemaException e) {
+          view.indicateError(new Message(errorString, e));
+        }
+      }
+    });
+    view.whenPlayIsTriggered(new Runnable() {
+      @Override
+      public void run() {
         try {
           playerModel.startPlayback();
-        }
-        catch (AnathemaException e) {
-          Message message = new Message(errorString, e);
-          MessageUtilities.indicateMessage(MusicPlayerPresenter.class, parentComponent, message);
+        } catch (AnathemaException e) {
+          view.indicateError(new Message(errorString, e));
         }
       }
-    };
-    view.setPlayAction(playAction);
-
-    view.setStopAction(new SmartAction(musicUI.getStopButtonIcon()) {
-
+    });
+    view.whenStopIsTriggered(new Runnable() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void run() {
         try {
           playerModel.stopPlayback();
-        }
-        catch (AnathemaException e) {
-          Message message = new Message(errorString, e);
-          MessageUtilities.indicateMessage(MusicPlayerPresenter.class, parentComponent, message);
+        } catch (AnathemaException e) {
+          view.indicateError(new Message(errorString, e));
         }
       }
     });
-    view.addPositionChangeListener(new ChangeListener() {
+    view.addPositionChangeListener(new Closure<Integer>() {
       @Override
-      public void stateChanged(ChangeEvent event) {
-        JSlider slider = (JSlider) event.getSource();
-        int bytes = slider.getValue();
-        if (!slider.getValueIsAdjusting()) {
-          try {
-            playerModel.seek(bytes);
-          }
-          catch (AnathemaException e) {
-            e.printStackTrace();
-          }
+      public void execute(Integer newPosition) {
+        try {
+          playerModel.seek(newPosition);
+        } catch (AnathemaException e) {
+          e.printStackTrace();
         }
       }
     });
+    view.showPlay();
   }
 
   private void initPlayerModelListening() {
@@ -156,17 +123,17 @@ public class MusicPlayerPresenter implements Presenter {
         status.accept(new IMusicPlayerStatusVisitor() {
           @Override
           public void visitPaused(MusicPlayerStatus visitedStatus) {
-            view.setPlayAction(resumeAction);
+            view.showResume();
           }
 
           @Override
           public void visitStopped(MusicPlayerStatus visitedStatus) {
-            view.setPlayAction(playAction);
+            view.showPlay();
           }
 
           @Override
           public void visitPlaying(MusicPlayerStatus visitedStatus) {
-            view.setPlayAction(pauseAction);
+            view.showPause();
           }
         });
       }

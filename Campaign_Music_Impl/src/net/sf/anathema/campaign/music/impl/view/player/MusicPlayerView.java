@@ -4,15 +4,20 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.campaign.music.presenter.IMusicPlayerProperties;
+import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerView;
+import net.sf.anathema.framework.message.MessageUtilities;
+import net.sf.anathema.lib.gui.action.RunnableAction;
+import net.sf.anathema.lib.message.Message;
+import net.sf.anathema.lib.util.Closure;
 
-import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.GridLayout;
 
@@ -22,7 +27,15 @@ public class MusicPlayerView implements IMusicPlayerView {
   private final JLabel totalTimeLabel = new JLabel();
   private final JLabel elapsedTimeLabel = new JLabel();
   private final JSlider slider = new JSlider(0, 100, 0);
+  private final MusicUI icons;
   private JPanel content;
+  private Runnable resumeAction;
+  private Runnable playAction;
+  private Runnable pauseAction;
+
+  public MusicPlayerView(MusicUI icons) {
+    this.icons = icons;
+  }
 
   public JComponent getContent(IMusicPlayerProperties properties) {
     if (content == null) {
@@ -57,23 +70,37 @@ public class MusicPlayerView implements IMusicPlayerView {
   }
 
   @Override
-  public void setPlayAction(Action playAction) {
-    playButton.setAction(playAction);
+  public void whenPlayIsTriggered(Runnable playAction) {
+    this.playAction = playAction;
   }
 
   @Override
-  public void setStopAction(Action action) {
-    stopButton.setAction(action);
+  public void whenPauseIsTriggered(Runnable pauseAction) {
+    this.pauseAction = pauseAction;
   }
 
   @Override
-  public void addPositionChangeListener(ChangeListener listener) {
-    slider.addChangeListener(listener);
+  public void whenResumeIsTriggered(Runnable resumeAction) {
+    this.resumeAction = resumeAction;
   }
 
   @Override
-  public int getCurrentPosition() {
-    return slider.getValue();
+  public void whenStopIsTriggered(Runnable stopAction) {
+    stopButton.setAction(new RunnableAction(icons.getStopButtonIcon(), stopAction));
+  }
+
+  @Override
+  public void addPositionChangeListener(final Closure<Integer> listener) {
+    slider.addChangeListener(new ChangeListener() {
+      @Override
+      public void stateChanged(ChangeEvent e) {
+        if (slider.getValueIsAdjusting()) {
+          return;
+        }
+        int bytes = slider.getValue();
+        listener.execute(bytes);
+      }
+    });
   }
 
   @Override
@@ -89,5 +116,25 @@ public class MusicPlayerView implements IMusicPlayerView {
     }
     slider.setValue(position);
     elapsedTimeLabel.setText(time);
+  }
+
+  @Override
+  public void indicateError(Message message) {
+    MessageUtilities.indicateMessage(MusicPlayerView.class, content, message);
+  }
+
+  @Override
+  public void showPlay() {
+    playButton.setAction(new RunnableAction(icons.getPlayButtonIcon(), playAction));
+  }
+
+  @Override
+  public void showResume() {
+    playButton.setAction(new RunnableAction(icons.getResumeButtonIcon(), resumeAction));
+  }
+
+  @Override
+  public void showPause() {
+    playButton.setAction(new RunnableAction(icons.getPauseButtonIcon(), pauseAction));
   }
 }
