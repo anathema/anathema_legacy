@@ -14,10 +14,4 @@ public interface IPage {
   /** Returns this dialog page's title.
    @return the title of this dialog page, or <code>null</code> if none */
   String getTitle();
-
-  /** Called from the dialog container when the page is entered. */
-  void enter();
-
-  /** Called from the dialog container when the page is left. */
-  void leave();
 }

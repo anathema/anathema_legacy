@@ -69,14 +69,6 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   }
 
   @Override
-  public void enter() {
-  }
-
-  @Override
-  public void leave() {
-  }
-
-  @Override
   public String getTitle() {
     return getDescription();
   }

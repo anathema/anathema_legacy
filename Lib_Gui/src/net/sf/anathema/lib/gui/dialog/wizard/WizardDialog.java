@@ -125,9 +125,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
   public void showPage(IWizardPage page) {
     Preconditions.checkNotNull(page);
-    if (currentPage != null) {
-      currentPage.leave();
-    }
     currentPage = page;
     pages.add(page);
     updateMessage();
@@ -136,7 +133,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     updateContent();
     updateButtons();
     updateSize();
-    currentPage.enter();
     currentPage.getPageContent().requestFocus();
   }
 
@@ -212,13 +208,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
 
   private void performFinish() {
     currentPage.getNextPage();
-    currentPage.leave();
     closeDialog();
-  }
-
-  @Override
-  protected final void closeDialog() {
-    super.closeDialog();
-    currentPage.leave();
   }
 }

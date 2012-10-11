@@ -64,16 +64,6 @@ public abstract class AbstractDialogPage implements IDialogPage {
   }
 
   @Override
-  public void enter() {
-    //nothing to do
-  }
-
-  @Override
-  public void leave() {
-    //nothing to do
-  }
-
-  @Override
   public final IBasicMessage getDefaultMessage() {
     return defaultMessage;
   }

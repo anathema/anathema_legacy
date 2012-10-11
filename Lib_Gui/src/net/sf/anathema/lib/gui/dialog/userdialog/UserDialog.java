@@ -141,8 +141,6 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
         placeRelativeToOwner();
         neverVisualized = false;
       }
-      IDialogPage page = getConfiguration().getDialogPage();
-      page.enter();
       getDialog().show();
     } else {
       closeDialog();
@@ -167,13 +165,6 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
     }
     closeDialog();
     getCloseHandler().handleDialogClose(new DialogResult(false));
-  }
-
-  @Override
-  protected void closeDialog() {
-    super.closeDialog();
-    IDialogPage page = getConfiguration().getDialogPage();
-    page.leave();
   }
 
   @Override
