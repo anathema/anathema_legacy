@@ -7,7 +7,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
-import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 import javax.swing.Icon;
@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView {
-  private ITextView textField;
+  private SwingTextView textField;
   private IntegerSpinner strengthSpinner;
   private IntegerSpinner dexteritySpinner;
   private IntegerSpinner staminaSpinner;

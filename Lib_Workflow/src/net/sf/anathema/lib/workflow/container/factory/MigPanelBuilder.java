@@ -6,6 +6,7 @@ import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.container.TitledPanel;
 import net.sf.anathema.lib.gui.layout.AdditiveView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -29,7 +30,7 @@ public class MigPanelBuilder {
   }
 
   public ITextView addSpanningLineTextView(String label, int columnCount) {
-    ITextView textView = new LineTextView(columnCount);
+    LineTextView textView = new LineTextView(columnCount);
     LabelTextView labelTextView = new LabelTextView(label, textView);
     labelTextView.addToMigPanelSpanning(panel);
     return textView;
@@ -55,7 +56,7 @@ public class MigPanelBuilder {
     return new TitledPanel(title, panel);
   }
 
-  private ITextView addLabelledTextView(String labelText, ITextView textView) {
+  private ITextView addLabelledTextView(String labelText, SwingTextView textView) {
     LabelTextView labelTextView = new LabelTextView(labelText, textView);
     labelTextView.addToMigPanel(panel);
     return textView;

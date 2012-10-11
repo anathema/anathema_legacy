@@ -15,6 +15,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 import org.jdesktop.swingx.JXTaskPaneContainer;
@@ -172,7 +173,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
   @Override
   public ITextView addComboNameView(String viewTitle) {
-    ITextView textView = new LineTextView(TEXT_COLUMNS);
+    LineTextView textView = new LineTextView(TEXT_COLUMNS);
     textView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {
@@ -197,7 +198,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
     revalidate(comboScrollPane);
   }
 
-  private ITextView addTextView(String viewTitle, ITextView textView) {
+  private ITextView addTextView(String viewTitle, SwingTextView textView) {
     namePanel.add(new JLabel(viewTitle));
     namePanel.add(textView.getComponent(), new CC().growX());
     return textView;
@@ -205,7 +206,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
   @Override
   public ITextView addComboDescriptionView(String viewTitle) {
-    ITextView textView = new AreaTextView(5, TEXT_COLUMNS);
+    AreaTextView textView = new AreaTextView(5, TEXT_COLUMNS);
     textView.addTextChangedListener(new ObjectValueListener<String>() {
       @Override
       public void valueChanged(String newValue) {

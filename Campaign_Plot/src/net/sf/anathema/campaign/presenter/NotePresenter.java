@@ -4,14 +4,13 @@ import net.sf.anathema.campaign.note.model.IBasicItemData;
 import net.sf.anathema.campaign.note.view.IBasicItemDescriptionView;
 import net.sf.anathema.campaign.note.view.IBasicItemView;
 import net.sf.anathema.framework.styledtext.presentation.StyledTextManager;
-import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 import javax.swing.text.DefaultStyledDocument;
 import java.awt.Dimension;
 
-public class NotePresenter implements Presenter {
+public class NotePresenter {
   private static final String NOTE_NAME_LABEL = "NoteDescription.NoteName.Label";
   private static final String NOTE_CONTENT_LABEL = "NoteDescription.NoteContent.Label";
   private static final String NOTE_BORDER_TITLE = "NoteDescription.BorderTitle";
@@ -25,7 +24,6 @@ public class NotePresenter implements Presenter {
     this.item = itemData;
   }
 
-  @Override
   public void initPresentation() {
     String nameLabel = resources.getString(NOTE_NAME_LABEL);
     String summaryLabel = resources.getString(NOTE_CONTENT_LABEL);

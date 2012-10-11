@@ -8,9 +8,6 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 public class DbVirtueFlawPresenter extends VirtueFlawPresenter {
 
   public DbVirtueFlawPresenter(IResources resources, IVirtueFlawView virtueFlawView, IVirtueFlawModel model) {
@@ -35,11 +32,6 @@ public class DbVirtueFlawPresenter extends VirtueFlawPresenter {
       @Override
       public void setText(String text) {
         //nothing to do;
-      }
-
-      @Override
-      public JComponent getComponent() {
-        return new JPanel();
       }
     };
   }

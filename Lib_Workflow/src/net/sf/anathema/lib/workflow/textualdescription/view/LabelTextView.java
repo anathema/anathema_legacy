@@ -3,6 +3,7 @@ package net.sf.anathema.lib.workflow.textualdescription.view;
 import net.miginfocom.layout.CC;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -11,12 +12,12 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class LabelTextView implements ITextView {
-  private final ITextView textView;
+  private final SwingTextView textView;
   private JComponent content;
   private Color disabledLabelColor = SystemColor.textInactiveText;
   private final JLabel label;
 
-  public LabelTextView(String labelText, ITextView textView) {
+  public LabelTextView(String labelText, SwingTextView textView) {
     this.label = new JLabel(labelText);
     this.textView = textView;
   }
@@ -31,7 +32,6 @@ public class LabelTextView implements ITextView {
     textView.addTextChangedListener(listener);
   }
 
-  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = textView.getComponent();

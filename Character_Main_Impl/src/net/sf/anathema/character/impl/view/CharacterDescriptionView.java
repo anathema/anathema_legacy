@@ -7,6 +7,7 @@ import net.sf.anathema.character.view.IMultiComponentLine;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.toolbar.ToolBarUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -42,7 +43,7 @@ public class CharacterDescriptionView implements ICharacterDescriptionView {
     return addTextView(labelText, new AreaTextView(rows, TEXT_COLUMNS));
   }
 
-  private synchronized ITextView addTextView(String labelText, ITextView textView) {
+  private synchronized ITextView addTextView(String labelText, SwingTextView textView) {
     new LabelTextView(labelText, textView).addToMigPanel(content, new CC().split(2));
     JPanel buttonPanel = new JPanel(new GridLayout(1, 0));
     buttonPanels.add(buttonPanel);
