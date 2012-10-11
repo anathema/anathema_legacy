@@ -57,9 +57,6 @@ public class FoldOutDialog extends UserDialog {
     if (isFoldedOut) {
       getFoldOutUserDialog().getFoldOutPage().requestFocus();
     }
-    else {
-      getConfiguration().getDialogPage().requestFocus();
-    }
     getDialog().pack();
   }
 

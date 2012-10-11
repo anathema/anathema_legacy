@@ -27,30 +27,8 @@ public class AnathemaWizardConfiguration extends AbstractWizardConfiguration {
     this.startPage.initPresentation(inputListener);
   }
 
-  private IWizardContainer container;
-
-  @Override
-  public IWizardContainer getContainer() {
-    return container;
-  }
-
-  @Override
-  public void setContainer(IWizardContainer container) {
-    this.container = container;
-  }
-
-  @Override
-  public boolean canFinish() {
-    return getContainer().getCurrentPage().canFinish();
-  }
-
   @Override
   public IWizardPage getStartingPage() {
     return startPage;
   }
-
-  @Override
-  public void addPages() {
-  }
-
 }

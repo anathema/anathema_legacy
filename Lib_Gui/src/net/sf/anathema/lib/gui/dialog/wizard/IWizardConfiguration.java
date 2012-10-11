@@ -41,17 +41,4 @@ public interface IWizardConfiguration extends IGenericDialogConfiguration {
    * @return <code>true</code> if the wizard could be finished, and <code>false</code> otherwise
    */
   boolean canFinish();
-
-  /**
-   * Returns whether this wizard could be canceled without further user interaction. The result of
-   * this method is typically used by the wizard container to enable or disable the Cancel button.
-   * 
-   * @return <code>true</code> if the wizard could be canceled, and <code>false</code> otherwise
-   */
-  boolean canCancel();
-
-  /** Adds any last-minute pages to this wizard.
-   * This method is called just before the wizard becomes visible, to give the wizard the
-   * opportunity to add any lazily created pages.*/
-  void addPages();
 }

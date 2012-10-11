@@ -1,6 +1,5 @@
 package net.sf.anathema.lib.gui.wizard;
 
-import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
@@ -64,11 +63,6 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   protected abstract void initModelListening(CheckInputListener inputListener);
 
   @Override
-  public boolean canCancel() {
-    return true;
-  }
-
-  @Override
   public String getTitle() {
     return getDescription();
   }
@@ -76,11 +70,5 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   @Override
   public IBasicMessage getMessage() {
     return message;
-  }
-
-  @Override
-  public void setMessage(IBasicMessage message) {
-    Preconditions.checkNotNull(message);
-    this.message = message;
   }
 }

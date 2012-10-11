@@ -3,9 +3,7 @@ package net.sf.anathema.lib.gui.dialog.userdialog;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.exception.ContractFailedException;
-import net.sf.anathema.lib.gui.dialog.core.DialogPageInputValidCheckable;
 import net.sf.anathema.lib.gui.dialog.core.IDialogControl;
-import net.sf.anathema.lib.gui.dialog.events.CheckInputValidListener;
 import net.sf.anathema.lib.gui.dialog.events.IInputValidCheckable;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 import net.sf.anathema.lib.message.IBasicMessage;
@@ -58,7 +56,6 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
         throw new ContractFailedException("Method createContent() must not return null in " //$NON-NLS-1$
                                           + dialogPage.getClass().getName());
       }
-      dialogPage.setInputValidListener(new CheckInputValidListener(new DialogPageInputValidCheckable(this, dialogPage)));
       updateButtons();
     }
     return content;
@@ -75,14 +72,9 @@ public class DialogPageControl implements IInputValidCheckable, IMessageSetable 
   @Override
   public void checkInputValid() {
     setMessage(dialogPage.createCurrentMessage());
-    dialogPage.updateInputValid();
   }
 
   public String getTitle() {
     return dialogPage.getTitle();
-  }
-
-  public void requestFocus() {
-    dialogPage.requestFocus();
   }
 }

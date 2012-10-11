@@ -27,15 +27,8 @@ public abstract class AbstractWizardConfiguration extends AbstractGenericDialogC
   }
 
   @Override
-  public boolean canCancel() {
-    IWizardPage currentPage = getContainer().getCurrentPage();
-    return currentPage.canCancel();
-  }
-
-  @Override
   public boolean canFinish() {
     IWizardPage currentPage = getContainer().getCurrentPage();
     return currentPage.canFinish();
   }
-
 }

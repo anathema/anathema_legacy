@@ -39,7 +39,6 @@ public class UserDialog extends AbstractDialog implements IUserDialogContainer {
     initializeContent();
     setContent(dialogControl.getContent());
     updateAll();
-    dialogControl.requestFocus();
     this.relativePosition = relativePosition;
   }
 

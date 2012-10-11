@@ -16,8 +16,6 @@ import net.sf.anathema.lib.gui.swing.GuiUtilities;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import java.awt.Component;
-import java.util.Collection;
-import java.util.HashSet;
 
 /**
  * A dialog to show a wizard to the end user. In typical usage, the client instantiates this class
@@ -36,7 +34,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   private JButton nextButton;
   private IWizardPage currentPage;
   private final IWizardConfiguration configuration;
-  private final Collection<IWizardPage> pages = new HashSet<IWizardPage>();
   private JButton cancelButton;
 
   /**
@@ -49,7 +46,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     super(parent, configuration);
     this.configuration = configuration;
     configuration.setContainer(this);
-    configuration.addPages();
     initializeContent();
   }
 
@@ -126,7 +122,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   public void showPage(IWizardPage page) {
     Preconditions.checkNotNull(page);
     currentPage = page;
-    pages.add(page);
     updateMessage();
     updateDescription();
     updateTitle();
@@ -151,7 +146,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     nextButton.setEnabled(page.canFlipToNextPage());
     backButton.setEnabled(page.getPreviousPage() != null);
     finishButton.setEnabled(configuration.canFinish());
-    cancelButton.setEnabled(configuration.canCancel());
+    cancelButton.setEnabled(true);
     if (finishButton.isEnabled()) {
       setDefaultButton(finishButton);
     }
