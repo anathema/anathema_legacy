@@ -23,7 +23,6 @@ import javax.swing.text.DefaultStyledDocument;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
-import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -194,8 +193,7 @@ public class PlotPresenter implements Presenter {
     itemSummaryViewManager = new StyledTextManager(document);
     itemSummaryView = descriptionView.addStyledTextView(resources.getString("SeriesPlot.ElementSummary.Label") + ":", //$NON-NLS-1$ //$NON-NLS-2$
         document,
-        new Dimension(200, 400),
-        new TextEditorProperties(resources));
+            new TextEditorProperties(resources));
     itemSummaryView.setEnabled(false);
     itemSummaryViewManager.addStyledTextListener(new IStyledTextChangeListener() {
       @Override

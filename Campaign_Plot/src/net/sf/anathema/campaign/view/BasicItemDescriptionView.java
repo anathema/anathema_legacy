@@ -15,7 +15,6 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.text.StyledDocument;
-import java.awt.Dimension;
 
 public class BasicItemDescriptionView implements IBasicItemDescriptionView, IInitializableContentView<Object> {
   private final MigPanelBuilder panelBuilder = new MigPanelBuilder();
@@ -28,9 +27,9 @@ public class BasicItemDescriptionView implements IBasicItemDescriptionView, IIni
   }
 
   @Override
-  public IStyledTextView addStyledTextView(final String labelName, StyledDocument document, Dimension preferredSize,
+  public IStyledTextView addStyledTextView(String labelName, StyledDocument document,
                                            ITextEditorProperties properties) {
-    TextEditor textEditor = new TextEditor(document, properties, preferredSize);
+    TextEditor textEditor = new TextEditor(document, properties);
     panelBuilder.addComponent(new JLabel(labelName), new CC().alignY("top"));
     panelBuilder.addComponent(textEditor.getComponent(), new CC().grow().push());
     return textEditor;

@@ -20,7 +20,6 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import javax.swing.text.StyledEditorKit;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -36,12 +35,10 @@ public class TextEditor implements IStyledTextView, IView {
   private JPanel content;
   private final StyledDocument document;
   private final JTextPane textPane = new JTextPane();
-  private final Dimension preferredSize;
   private final JToggleButton[] toolBarButtons;
 
-  public TextEditor(StyledDocument document, ITextEditorProperties properties, Dimension preferredSize) {
+  public TextEditor(StyledDocument document, ITextEditorProperties properties) {
     this.document = document;
-    this.preferredSize = preferredSize;
     this.toolBarButtons = initToolbarButtons(properties);
     addBindings();
   }
@@ -85,9 +82,7 @@ public class TextEditor implements IStyledTextView, IView {
     textPane.setDocument(document);
     textPane.setCaretPosition(0);
     textPane.setMargin(new Insets(5, 5, 5, 5));
-    JScrollPane scrollPane = new JScrollPane(textPane);
-    scrollPane.setPreferredSize(preferredSize);
-    return scrollPane;
+    return new JScrollPane(textPane);
   }
 
   private JToolBar createStyleToolBar() {

@@ -8,7 +8,6 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 import javax.swing.text.DefaultStyledDocument;
-import java.awt.Dimension;
 
 public class NotePresenter {
   private static final String NOTE_NAME_LABEL = "NoteDescription.NoteName.Label";
@@ -32,7 +31,7 @@ public class NotePresenter {
     new TextualPresentation().initView(descriptionView.addLineTextView(nameLabel), item.getDescription().getName());
     DefaultStyledDocument document = new DefaultStyledDocument();
     StyledTextManager.initView(new StyledTextManager(document), item.getDescription().getContent());
-    descriptionView.addStyledTextView(summaryLabel, document, new Dimension(200, 200), new TextEditorProperties(
+    descriptionView.addStyledTextView(summaryLabel, document, new TextEditorProperties(
         resources));
     descriptionView.initGui(borderTitle);
   }
