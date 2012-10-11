@@ -4,7 +4,6 @@ import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 
 public interface ILibraryControlView extends LibraryListView {
@@ -19,5 +18,5 @@ public interface ILibraryControlView extends LibraryListView {
 
   void initGui();
 
-  void setSearchAction(SmartAction action);
+  void whenSearchIsTriggered(Runnable action);
 }

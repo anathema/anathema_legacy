@@ -8,6 +8,7 @@ import net.sf.anathema.campaign.music.impl.view.categorization.MusicCategorizati
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.ILibraryControlProperties;
+import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
@@ -16,7 +17,6 @@ import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.EditableActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
@@ -29,6 +29,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LibraryControlView implements ILibraryControlView, IView {
   private final JPanel content;
@@ -41,11 +43,13 @@ public class LibraryControlView implements ILibraryControlView, IView {
   private JPanel searchPanel;
   private final ILibraryControlProperties viewProperties;
 
-  public LibraryControlView(ITableColumnViewSettings settings, ILibraryControlProperties properties, JPanel content) {
+  public LibraryControlView(ITableColumnViewSettings settings, ILibraryControlProperties properties, JPanel content,
+                            MusicUI icons) {
     this.viewProperties = properties;
     this.content = content;
-    libraryListView = new EditableActionAddableListView<ILibrary>(null, settings, ILibrary.class);
-    mp3ListView = new ActionAddableListView<IMp3Track>(viewProperties.getNoContentString(), IMp3Track.class);
+    this.libraryListView = new EditableActionAddableListView<ILibrary>(null, settings, ILibrary.class);
+    this.mp3ListView = new ActionAddableListView<IMp3Track>(viewProperties.getNoContentString(), IMp3Track.class);
+    searchButton.setIcon(icons.getSearchIcon());
   }
 
   @Override
@@ -122,8 +126,13 @@ public class LibraryControlView implements ILibraryControlView, IView {
   }
 
   @Override
-  public void setSearchAction(SmartAction action) {
-    searchButton.setAction(action);
+  public void whenSearchIsTriggered(final Runnable action) {
+    searchButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        action.run();
+      }
+    });
   }
 
   public void addLibraryView() {
