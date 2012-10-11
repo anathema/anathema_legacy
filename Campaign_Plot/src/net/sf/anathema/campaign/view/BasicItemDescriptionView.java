@@ -3,7 +3,7 @@ package net.sf.anathema.campaign.view;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
+import net.sf.anathema.campaign.note.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.ITextEditorProperties;

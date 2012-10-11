@@ -8,7 +8,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.MultiColumnText;
 import com.itextpdf.text.pdf.PdfWriter;
-import net.sf.anathema.framework.itemdata.model.IBasicItemData;
+import net.sf.anathema.campaign.note.model.IBasicItemData;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
@@ -46,9 +46,6 @@ public class NoteReport extends AbstractPdfReport {
 
   @Override
   public boolean supports(IItem item) {
-    if (item == null) {
-      return false;
-    }
-    return item.getItemData() instanceof IBasicItemData;
+    return item != null && item.getItemData() instanceof IBasicItemData;
   }
 }

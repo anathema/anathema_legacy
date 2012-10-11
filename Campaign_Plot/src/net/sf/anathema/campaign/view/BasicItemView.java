@@ -1,8 +1,8 @@
 package net.sf.anathema.campaign.view;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
-import net.sf.anathema.framework.itemdata.view.IBasicItemView;
+import net.sf.anathema.campaign.note.view.IBasicItemDescriptionView;
+import net.sf.anathema.campaign.note.view.IBasicItemView;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 
 import javax.swing.Icon;

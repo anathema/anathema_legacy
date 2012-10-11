@@ -1,12 +1,12 @@
 package net.sf.anathema.campaign.module;
 
+import net.sf.anathema.campaign.note.model.IBasicItemData;
+import net.sf.anathema.campaign.note.persistence.BasicDataItemPersister;
+import net.sf.anathema.campaign.note.view.IBasicItemView;
 import net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants;
 import net.sf.anathema.campaign.presenter.NotePresenter;
 import net.sf.anathema.campaign.view.BasicItemView;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.itemdata.model.IBasicItemData;
-import net.sf.anathema.framework.itemdata.persistence.BasicDataItemPersister;
-import net.sf.anathema.framework.itemdata.view.IBasicItemView;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;

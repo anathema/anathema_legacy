@@ -1,11 +1,8 @@
-package net.sf.anathema.platform.itemdata;
+package net.sf.anathema.campaign.note.model;
 
-import net.sf.anathema.framework.itemdata.model.BasicItemData;
-import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
