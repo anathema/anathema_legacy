@@ -20,8 +20,6 @@ import net.sf.anathema.lib.progress.IObservableCancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
@@ -37,19 +35,19 @@ public class AddMusicFolderAction extends SmartAction {
   private final IResources resources;
 
   public AddMusicFolderAction(
-      IResources resources,
-      IMusicSearchControl searchControl,
-      ILibraryControl model,
-      ILibraryControlView view) {
+          IResources resources,
+          IMusicSearchControl searchControl,
+          ILibraryControl model,
+          ILibraryControlView view) {
     super(new MusicUI(resources).getAddFolderIcon());
     this.resources = resources;
     this.searchControl = searchControl;
     setToolTipText(resources.getString("Music.Actions.AddFolder.Tooltip")); //$NON-NLS-1$
     this.model = model;
     this.view = view;
-    view.addLibraryListSelectionListener(new ListSelectionListener() {
+    view.whenSelectionChanges(new Runnable() {
       @Override
-      public void valueChanged(ListSelectionEvent e) {
+      public void run() {
         updateEnabled();
       }
     });
@@ -63,49 +61,47 @@ public class AddMusicFolderAction extends SmartAction {
   @Override
   protected void execute(Component parentComponent) {
     File directory = DirectoryFileChooser.createMusicDirectoryChooser(
-        ADD_MUSIC_CHOOSER_VALUE,
-        resources.getString("Music.Actions.AddFolder.FileDialogTitle")); //$NON-NLS-1$
+            ADD_MUSIC_CHOOSER_VALUE,
+            resources.getString("Music.Actions.AddFolder.FileDialogTitle")); //$NON-NLS-1$
     if (directory == null) {
       return;
     }
     final IMusicFolderWalker walker;
     try {
       walker = model.createMusicFolderWalker(directory);
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       throw new UnreachableCodeReachedException();
     }
     try {
       new ProgressMonitorDialog(
-          parentComponent,
-          resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(new IInterruptibleRunnableWithProgress() { //$NON-NLS-1$
+              parentComponent,
+              resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(new IInterruptibleRunnableWithProgress() { //$NON-NLS-1$
+        @Override
+        public void run(final IProgressMonitor monitor,
+                        IObservableCancelable cancelable) throws InterruptedException, InvocationTargetException {
+          final List<IMp3Track> foundTracks = new ArrayList<IMp3Track>();
+          walker.walk(resources, monitor, cancelable, new ITrackHandler() {
             @Override
-            public void run(final IProgressMonitor monitor, IObservableCancelable cancelable) throws InterruptedException, InvocationTargetException {
-              final List<IMp3Track> foundTracks = new ArrayList<IMp3Track>();
-              walker.walk(resources, monitor, cancelable, new ITrackHandler() {
-                @Override
-                public void handleMp3(IMp3Track mp3Item) {
-                  foundTracks.add(mp3Item);
-                  monitor.subTask(resources.getString("Music.Actions.AddFolder.ProgressMonitor.TracksFound") + ": " + foundTracks.size() + "."); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
-                }
-              });
-              String selectedLibraryName = ((ILibrary) view.getSelectedLibrary()).getName();
-              model.addTracks(selectedLibraryName, foundTracks);
-              view.getTrackListView().setObjects(
-                  searchControl.getTracks(((ILibrary) view.getSelectedLibrary()).getName()));
-              monitor.done();
+            public void handleMp3(IMp3Track mp3Item) {
+              foundTracks.add(mp3Item);
+              monitor.subTask(resources.getString("Music.Actions.AddFolder.ProgressMonitor.TracksFound") + ": " + foundTracks.size() + "."); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
             }
           });
-    }
-    catch (InterruptedException e) {
+          String selectedLibraryName = ((ILibrary) view.getSelectedLibrary()).getName();
+          model.addTracks(selectedLibraryName, foundTracks);
+          view.getTrackListView().setObjects(
+                  searchControl.getTracks(((ILibrary) view.getSelectedLibrary()).getName()));
+          monitor.done();
+        }
+      });
+    } catch (InterruptedException e) {
       MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-          resources.getString("Errors.MusicDatabase.AddFolderCancelled"), //$NON-NLS-1$
-          MessageType.INFORMATION));
-    }
-    catch (InvocationTargetException e) {
+              resources.getString("Errors.MusicDatabase.AddFolderCancelled"), //$NON-NLS-1$
+              MessageType.INFORMATION));
+    } catch (InvocationTargetException e) {
       MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-          resources.getString("Errors.MusicDatabase.ReadMusicData"), //$NON-NLS-1$
-          e));
+              resources.getString("Errors.MusicDatabase.ReadMusicData"), //$NON-NLS-1$
+              e));
     }
   }
 }

@@ -7,8 +7,6 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.Component;
 
 public class DeleteLibraryAction extends SmartAction {
@@ -26,9 +24,9 @@ public class DeleteLibraryAction extends SmartAction {
   }
 
   private void addEnabledListener() {
-    controlView.addLibraryListSelectionListener(new ListSelectionListener() {
+    controlView.whenSelectionChanges(new Runnable() {
       @Override
-      public void valueChanged(ListSelectionEvent e) {
+      public void run() {
         setEnabled(controlView.getSelectedLibrary() != null);
       }
     });
@@ -38,5 +36,4 @@ public class DeleteLibraryAction extends SmartAction {
   protected void execute(Component parentComponent) {
     libraryModel.removeLibrary((ILibrary) controlView.getSelectedLibrary());
   }
-
 }

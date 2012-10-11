@@ -1,7 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.library;
 
-import javax.swing.Action;
-
 import net.sf.anathema.campaign.music.model.IMusicDatabase;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryChangedListener;
@@ -18,6 +16,8 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Action;
 
 public class LibraryControlPresenter implements Presenter {
 
@@ -43,7 +43,7 @@ public class LibraryControlPresenter implements Presenter {
   }
 
   private void initListening() {
-    controlView.addLibraryListSelectionListener(new LibrarySelectionListener(controlView, searchControl, resources));
+    controlView.whenSelectionChanges(new LibrarySelectionListener(controlView, searchControl, resources));
     libraryModel.addLibraryChangedListener(new ILibraryChangedListener() {
       @Override
       public void librariesChanged(ILibrary[] allLibraries, ILibrary selectedLibrary) {
