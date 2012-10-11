@@ -12,7 +12,6 @@ import javax.swing.text.DefaultStyledDocument;
 public class NotePresenter {
   private static final String NOTE_NAME_LABEL = "NoteDescription.NoteName.Label";
   private static final String NOTE_CONTENT_LABEL = "NoteDescription.NoteContent.Label";
-  private static final String NOTE_BORDER_TITLE = "NoteDescription.BorderTitle";
   private final IBasicItemView view;
   private final IResources resources;
   private final IBasicItemData item;
@@ -26,13 +25,11 @@ public class NotePresenter {
   public void initPresentation() {
     String nameLabel = resources.getString(NOTE_NAME_LABEL);
     String summaryLabel = resources.getString(NOTE_CONTENT_LABEL);
-    String borderTitle = resources.getString(NOTE_BORDER_TITLE);
     IBasicItemDescriptionView descriptionView = view.getDescriptionView();
     new TextualPresentation().initView(descriptionView.addLineTextView(nameLabel), item.getDescription().getName());
     DefaultStyledDocument document = new DefaultStyledDocument();
     StyledTextManager.initView(new StyledTextManager(document), item.getDescription().getContent());
     descriptionView.addStyledTextView(summaryLabel, document, new TextEditorProperties(
         resources));
-    descriptionView.initGui(borderTitle);
   }
 }

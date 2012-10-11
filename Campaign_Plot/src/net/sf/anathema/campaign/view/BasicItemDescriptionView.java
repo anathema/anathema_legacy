@@ -1,10 +1,7 @@
 package net.sf.anathema.campaign.view;
 
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.LC;
-import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.campaign.note.view.IBasicItemDescriptionView;
-import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.ITextEditorProperties;
 import net.sf.anathema.framework.styledtext.TextEditor;
@@ -13,13 +10,11 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.text.StyledDocument;
 
-public class BasicItemDescriptionView implements IBasicItemDescriptionView, IInitializableContentView<Object> {
+public class BasicItemDescriptionView implements IBasicItemDescriptionView {
   private final MigPanelBuilder panelBuilder = new MigPanelBuilder();
   private static final int COLUMN_COUNT = 45;
-  private final JPanel content = new JPanel(new MigLayout(new LC().wrapAfter(1).insets("2").fill()));
 
   @Override
   public ITextView addLineTextView(String labelName) {
@@ -36,12 +31,7 @@ public class BasicItemDescriptionView implements IBasicItemDescriptionView, IIni
   }
 
   @Override
-  public final void initGui(Object properties) {
-    content.add(panelBuilder.getUntitledContent(), new CC().grow().push());
-  }
-
-  @Override
   public final JComponent getComponent() {
-    return content;
+    return panelBuilder.getUntitledContent();
   }
 }

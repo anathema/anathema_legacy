@@ -204,7 +204,6 @@ public class PlotPresenter implements Presenter {
         ((IPlotElement) selectedNode.getUserObject()).getDescription().getContent().setText(newParts);
       }
     });
-    descriptionView.initGui(null);
   }
 
   private void initListening(IPlotElementContainer container, DefaultMutableTreeNode childNode) {
