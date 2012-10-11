@@ -74,11 +74,6 @@ public class StyledTextManager implements IStyledTextManager {
     return textAttributes;
   }
 
-  @Override
-  public ITextPart[] getTextParts() {
-    return actualTextParts;
-  }
-
   private ITextPart[] extractTextParts() throws BadLocationException {
     List<ITextPart> textParts = new ArrayList<ITextPart>();
     int documentLength = document.getLength();

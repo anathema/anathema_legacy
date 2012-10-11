@@ -7,7 +7,5 @@ public interface IStyledTextManager {
 
   void setText(ITextPart[] textParts);
 
-  ITextPart[] getTextParts();
-
   void addStyledTextListener(IStyledTextChangeListener listener);
 }
