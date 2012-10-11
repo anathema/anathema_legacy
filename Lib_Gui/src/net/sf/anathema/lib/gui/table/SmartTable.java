@@ -14,7 +14,6 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -34,11 +33,7 @@ public class SmartTable implements IView {
   private final List<Action> actions= new ArrayList<Action>();
 
   public SmartTable(TableModel tableModel, ITableColumnViewSettings[] settings) {
-    Preconditions.checkNotNull(tableModel);
-    Preconditions.checkNotNull(settings);
-
     table = new JTable(tableModel);
-
     table.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent e) {
@@ -51,7 +46,6 @@ public class SmartTable implements IView {
         fireSelectionActionEvent();
       }
     });
-
     table.setRowHeight(Math.max(table.getRowHeight(), 21));
     TableColumnConfigurator.configureTableColumns(table, settings);
     table.setSelectionMode(SINGLE_SELECTION);
@@ -101,8 +95,6 @@ public class SmartTable implements IView {
       }
     };
     scrollPane.setColumnHeaderView(table.getTableHeader());
-    int preferredWidth = table.getPreferredSize().width + scrollPane.getInsets().left + scrollPane.getInsets().right;
-    scrollPane.setPreferredSize(new Dimension(preferredWidth, 150));
     JPanel panel = new JPanel(new MigLayout(fillWithoutInsets())) {
       @Override
       public void setEnabled(boolean enabled) {
