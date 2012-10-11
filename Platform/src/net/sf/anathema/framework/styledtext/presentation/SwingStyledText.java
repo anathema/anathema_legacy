@@ -1,7 +1,6 @@
 package net.sf.anathema.framework.styledtext.presentation;
 
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
-import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.text.FontStyle;
 import org.jmock.example.announcer.Announcer;
@@ -19,13 +18,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class StyledTextManager implements IStyledTextManager {
+public class SwingStyledText implements StyledText {
 
   private final Announcer<IStyledTextChangeListener> listeners = Announcer.to(IStyledTextChangeListener.class);
   private final DefaultStyledDocument document;
   private ITextPart[] actualTextParts = new ITextPart[0];
 
-  public StyledTextManager(DefaultStyledDocument document) {
+  public SwingStyledText(DefaultStyledDocument document) {
     this.document = document;
     this.document.addDocumentListener(new DocumentListener() {
       @Override
@@ -57,10 +56,14 @@ public class StyledTextManager implements IStyledTextManager {
         document.insertString(document.getLength(), textParts[i].getText(), attributes[i]);
       }
       this.actualTextParts = textParts;
-    }
-    catch (BadLocationException e) {
+    } catch (BadLocationException e) {
       throw new IllegalStateException(e);
     }
+  }
+
+  @Override
+  public void addStyledTextListener(IStyledTextChangeListener listener) {
+    listeners.addListener(listener);
   }
 
   private SimpleAttributeSet[] initAttributes(ITextPart[] textParts) {
@@ -101,7 +104,7 @@ public class StyledTextManager implements IStyledTextManager {
   }
 
   private ITextPart createTextPart(int startIndex, int nextStartIndex, AttributeSet attributeSet)
-      throws BadLocationException {
+          throws BadLocationException {
     String nextTextPartText = document.getText(startIndex, nextStartIndex - startIndex);
     TextFormat textFormat = createTextFormat(attributeSet);
     return new TextPart(nextTextPartText, textFormat);
@@ -114,34 +117,12 @@ public class StyledTextManager implements IStyledTextManager {
     return new TextFormat(FontStyle.getStyle(font.isBold(), font.isItalic()), !notIsUnderline);
   }
 
-  protected void fireTextChangedEvent() {
+  private void fireTextChangedEvent() {
     try {
       actualTextParts = extractTextParts();
-    }
-    catch (BadLocationException e) {
+    } catch (BadLocationException e) {
       throw new IllegalStateException(e);
     }
     listeners.announce().textChanged(actualTextParts);
-  }
-
-  @Override
-  public void addStyledTextListener(IStyledTextChangeListener listener) {
-    listeners.addListener(listener);
-  }
-
-  public static void initView(final IStyledTextManager manager, final IStyledTextualDescription textualDescription) {
-    manager.addStyledTextListener(new IStyledTextChangeListener() {
-      @Override
-      public void textChanged(ITextPart[] newParts) {
-        textualDescription.setText(newParts);
-      }
-    });
-    manager.setText(textualDescription.getTextParts());
-    textualDescription.addTextChangedListener(new IStyledTextChangeListener() {
-      @Override
-      public void textChanged(ITextPart[] newParts) {
-        manager.setText(newParts);
-      }
-    });
   }
 }

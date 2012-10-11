@@ -3,7 +3,11 @@ package net.sf.anathema.campaign.presenter;
 import net.sf.anathema.campaign.note.model.IBasicItemData;
 import net.sf.anathema.campaign.note.view.IBasicItemDescriptionView;
 import net.sf.anathema.campaign.note.view.IBasicItemView;
-import net.sf.anathema.framework.styledtext.presentation.StyledTextManager;
+import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
+import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
+import net.sf.anathema.framework.styledtext.model.ITextPart;
+import net.sf.anathema.framework.styledtext.presentation.StyledText;
+import net.sf.anathema.framework.styledtext.presentation.SwingStyledText;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
@@ -28,8 +32,24 @@ public class NotePresenter {
     IBasicItemDescriptionView descriptionView = view.getDescriptionView();
     new TextualPresentation().initView(descriptionView.addLineTextView(nameLabel), item.getDescription().getName());
     DefaultStyledDocument document = new DefaultStyledDocument();
-    StyledTextManager.initView(new StyledTextManager(document), item.getDescription().getContent());
-    descriptionView.addStyledTextView(summaryLabel, document, new TextEditorProperties(
-        resources));
+    initView(new SwingStyledText(document), item.getDescription().getContent());
+    descriptionView.addStyledTextView(summaryLabel, document, new TextEditorProperties(resources));
+  }
+
+
+  private void initView(final StyledText manager, final IStyledTextualDescription textualDescription) {
+    manager.addStyledTextListener(new IStyledTextChangeListener() {
+      @Override
+      public void textChanged(ITextPart[] newParts) {
+        textualDescription.setText(newParts);
+      }
+    });
+    manager.setText(textualDescription.getTextParts());
+    textualDescription.addTextChangedListener(new IStyledTextChangeListener() {
+      @Override
+      public void textChanged(ITextPart[] newParts) {
+        manager.setText(newParts);
+      }
+    });
   }
 }

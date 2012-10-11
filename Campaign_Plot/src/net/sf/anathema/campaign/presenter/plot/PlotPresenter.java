@@ -12,8 +12,8 @@ import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
-import net.sf.anathema.framework.styledtext.presentation.IStyledTextManager;
-import net.sf.anathema.framework.styledtext.presentation.StyledTextManager;
+import net.sf.anathema.framework.styledtext.presentation.StyledText;
+import net.sf.anathema.framework.styledtext.presentation.SwingStyledText;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
@@ -29,7 +29,7 @@ import java.util.Map;
 public class PlotPresenter implements Presenter {
 
   private ITextView itemNameView;
-  private IStyledTextManager itemSummaryViewManager;
+  private StyledText itemSummaryViewManager;
   private IStyledTextView itemSummaryView;
   private final IPlotElementContainerListener modelListener = new IPlotElementContainerListener() {
     @Override
@@ -190,7 +190,7 @@ public class PlotPresenter implements Presenter {
       }
     });
     DefaultStyledDocument document = new DefaultStyledDocument();
-    itemSummaryViewManager = new StyledTextManager(document);
+    itemSummaryViewManager = new SwingStyledText(document);
     itemSummaryView = descriptionView.addStyledTextView(resources.getString("SeriesPlot.ElementSummary.Label") + ":", //$NON-NLS-1$ //$NON-NLS-2$
         document,
             new TextEditorProperties(resources));
