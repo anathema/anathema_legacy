@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.presenter;
 
 import net.sf.anathema.campaign.note.model.IBasicItemData;
 import net.sf.anathema.campaign.note.view.IBasicItemDescriptionView;
-import net.sf.anathema.campaign.note.view.IBasicItemView;
+import net.sf.anathema.campaign.note.view.NoteView;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
@@ -15,11 +15,11 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 public class NotePresenter {
   private static final String NOTE_NAME_LABEL = "NoteDescription.NoteName.Label";
   private static final String NOTE_CONTENT_LABEL = "NoteDescription.NoteContent.Label";
-  private final IBasicItemView view;
+  private final NoteView view;
   private final IResources resources;
   private final IBasicItemData item;
 
-  public NotePresenter(IBasicItemView view, IResources resources, IBasicItemData itemData) {
+  public NotePresenter(NoteView view, IResources resources, IBasicItemData itemData) {
     this.view = view;
     this.resources = resources;
     this.item = itemData;
