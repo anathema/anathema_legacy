@@ -3,6 +3,7 @@ package net.sf.anathema.campaign.module;
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.persistence.SeriesPersister;
 import net.sf.anathema.campaign.presenter.CampaignPresenter;
+import net.sf.anathema.campaign.presenter.TextEditorProperties;
 import net.sf.anathema.campaign.presenter.view.ISeriesView;
 import net.sf.anathema.campaign.view.CampaignView;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -14,6 +15,7 @@ import net.sf.anathema.framework.presenter.view.SimpleItemTypeViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
+import net.sf.anathema.framework.styledtext.ITextEditorProperties;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
@@ -39,7 +41,8 @@ public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeCo
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         Icon icon = new PlotUI(resources).getSeriesTabIcon();
-        ISeriesView campaignView = new CampaignView(printName, icon);
+        ITextEditorProperties editorProperties = new TextEditorProperties(resources);
+        ISeriesView campaignView = new CampaignView(printName, icon, editorProperties);
         ISeries seriesData = (ISeries) item.getItemData();
         new CampaignPresenter(campaignView, resources, seriesData).initPresentation();
         return campaignView;

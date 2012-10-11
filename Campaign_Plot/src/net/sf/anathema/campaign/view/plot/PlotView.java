@@ -11,6 +11,7 @@ import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
 import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
 import net.sf.anathema.campaign.view.BasicItemDescriptionView;
 import net.sf.anathema.campaign.view.util.DefaultTreeView;
+import net.sf.anathema.framework.styledtext.ITextEditorProperties;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.util.TreeUtilities;
 
@@ -43,12 +44,16 @@ public class PlotView implements IPlotView {
   private final JSplitPane splitPane = createSplitPane(0.3);
   private JTree tree;
   private JPanel treePanel;
-  private BasicItemDescriptionView itemDescriptionView;
+  private final BasicItemDescriptionView itemDescriptionView;
   private JButton addButton;
   private JButton removeButton;
   private JButton upButton;
   private JButton downButton;
   private DefaultMutableTreeNode selectedNode;
+
+  public PlotView(ITextEditorProperties editorProperties) {
+    this.itemDescriptionView = new BasicItemDescriptionView(editorProperties);
+  }
 
   @Override
   public final void initGui(IPlotViewProperties properties) {
@@ -87,7 +92,6 @@ public class PlotView implements IPlotView {
 
   @Override
   public IBasicItemDescriptionView initBasicItemDescriptionView() {
-    this.itemDescriptionView = new BasicItemDescriptionView();
     return itemDescriptionView;
   }
 

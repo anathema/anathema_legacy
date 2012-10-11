@@ -5,6 +5,7 @@ import net.sf.anathema.campaign.note.persistence.BasicDataItemPersister;
 import net.sf.anathema.campaign.note.view.IBasicItemView;
 import net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants;
 import net.sf.anathema.campaign.presenter.NotePresenter;
+import net.sf.anathema.campaign.presenter.TextEditorProperties;
 import net.sf.anathema.campaign.view.BasicItemView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
@@ -43,7 +44,7 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         Icon icon = new PlotUI(resources).getNoteTabIcon();
-        IBasicItemView basicItemView = new BasicItemView(printName, icon);
+        IBasicItemView basicItemView = new BasicItemView(printName, icon, new TextEditorProperties(resources));
         IBasicItemData basicItem = (IBasicItemData) item.getItemData();
         new NotePresenter(basicItemView, resources, basicItem).initPresentation();
         return basicItemView;
@@ -53,8 +54,8 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
 
   @Override
   protected IItemTypeViewProperties createItemTypeCreationProperties(
-      IAnathemaModel anathemaModel,
-      IResources resources) {
+          IAnathemaModel anathemaModel,
+          IResources resources) {
     return new SimpleItemTypeViewProperties(getItemType(), new PlotUI(resources).getNoteTabIcon());
   }
 }

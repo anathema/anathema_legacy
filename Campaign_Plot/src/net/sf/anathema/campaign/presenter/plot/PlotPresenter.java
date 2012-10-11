@@ -5,7 +5,6 @@ import net.sf.anathema.campaign.model.plot.IPlotElementContainer;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainerListener;
 import net.sf.anathema.campaign.model.plot.IPlotModel;
 import net.sf.anathema.campaign.note.view.IBasicItemDescriptionView;
-import net.sf.anathema.campaign.presenter.TextEditorProperties;
 import net.sf.anathema.campaign.presenter.view.IPlotViewListener;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
@@ -183,8 +182,7 @@ public class PlotPresenter implements Presenter {
         view.setHierarchieTreeCellRenderer(new PlotTreeCellRenderer(resources));
       }
     });
-    itemSummaryView = descriptionView.addStyledTextView(resources.getString("SeriesPlot.ElementSummary.Label") + ":",
-            new TextEditorProperties(resources));
+    itemSummaryView = descriptionView.addStyledTextView(resources.getString("SeriesPlot.ElementSummary.Label") + ":");
     itemSummaryView.setEnabled(false);
     itemSummaryView.addStyledTextListener(new IStyledTextChangeListener() {
       @Override

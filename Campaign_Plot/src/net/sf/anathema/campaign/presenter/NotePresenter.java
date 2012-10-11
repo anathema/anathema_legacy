@@ -9,6 +9,7 @@ import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.StyledText;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 public class NotePresenter {
@@ -28,8 +29,9 @@ public class NotePresenter {
     String nameLabel = resources.getString(NOTE_NAME_LABEL);
     String summaryLabel = resources.getString(NOTE_CONTENT_LABEL);
     IBasicItemDescriptionView descriptionView = view.getDescriptionView();
-    new TextualPresentation().initView(descriptionView.addLineTextView(nameLabel), item.getDescription().getName());
-    IStyledTextView styledTextView = descriptionView.addStyledTextView(summaryLabel, new TextEditorProperties(resources));
+    ITextView textView = descriptionView.addLineTextView(nameLabel);
+    new TextualPresentation().initView(textView, item.getDescription().getName());
+    IStyledTextView styledTextView = descriptionView.addStyledTextView(summaryLabel);
     initView(styledTextView, item.getDescription().getContent());
   }
 
