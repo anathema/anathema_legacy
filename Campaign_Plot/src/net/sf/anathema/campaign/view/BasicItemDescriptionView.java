@@ -34,7 +34,6 @@ public class BasicItemDescriptionView implements IBasicItemDescriptionView {
     return textEditor;
   }
 
-  @Override
   public final JComponent getComponent() {
     return panelBuilder.getUntitledContent();
   }
