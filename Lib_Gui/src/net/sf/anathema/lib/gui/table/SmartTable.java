@@ -5,6 +5,7 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
+import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -29,7 +30,7 @@ public class SmartTable implements IView {
   private boolean enabled = true;
   private final JTable table;
   private JPanel content;
-  private final List<ActionListener> selectionActionListeners = new ArrayList<ActionListener>();
+  private final Announcer<ActionListener> selectionActionListeners = new Announcer<ActionListener>(ActionListener.class);
   private final List<Action> actions= new ArrayList<Action>();
 
   public SmartTable(TableModel tableModel, ITableColumnViewSettings[] settings) {
@@ -115,14 +116,8 @@ public class SmartTable implements IView {
   }
 
   private void fireSelectionActionEvent() {
-    List<ActionListener> clone;
-    synchronized (this) {
-      clone = new ArrayList<ActionListener>(selectionActionListeners);
-    }
     ActionEvent actionEvent = new ActionEvent(table, -1, "select");
-    for (ActionListener element : clone) {
-      element.actionPerformed(actionEvent);
-    }
+    selectionActionListeners.announce().actionPerformed(actionEvent);
   }
 
   public void stopCellEditing() {
