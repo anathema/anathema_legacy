@@ -1,6 +1,5 @@
 package net.sf.anathema.lib.gui.swing;
 
-import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
 import javax.swing.JDialog;
@@ -33,10 +32,6 @@ public class GuiUtilities {
 
   public static final String ENABLED_PROPERTY_NAME = "enabled"; //$NON-NLS-1$
 
-  protected GuiUtilities() {
-    throw new UnreachableCodeReachedException();
-  }
-
   public static Window getWindowFor(EventObject event) {
     if (event == null) {
       return JOptionPane.getRootFrame();
@@ -65,7 +60,7 @@ public class GuiUtilities {
    * Sets the location of the given window relative to another swing. If the other swing is
    * not currently showing, the window is centered on the screen.
    */
-  public static void centerToComponent(Window window, Component component) {
+  private static void centerToComponent(Window window, Component component) {
     Window parentWindow = getWindowFor(component);
     if (parentWindow == null || !parentWindow.isVisible()) {
       centerOnScreen(window);
@@ -89,11 +84,11 @@ public class GuiUtilities {
     centerToPoint(window, screenCenter);
   }
 
-  public static Rectangle getScreenBounds(Component component) {
+  private static Rectangle getScreenBounds(Component component) {
     return component.getGraphicsConfiguration().getBounds();
   }
 
-  public static void centerToPoint(Window window, Point center) {
+  private static void centerToPoint(Window window, Point center) {
     Dimension size = window.getSize();
     int x = center.x - size.width / 2;
     int y = center.y - size.height / 2;
@@ -124,7 +119,7 @@ public class GuiUtilities {
     return new JDialog();
   }
 
-  public static void accountForScreenSize(Window window) {
+  private static void accountForScreenSize(Window window) {
     window.addComponentListener(new ComponentAdapter() {
       @Override
       public void componentResized(ComponentEvent e) {
@@ -133,11 +128,11 @@ public class GuiUtilities {
     });
   }
 
-  public static void assureIsOnScreen(Window window) {
+  private static void assureIsOnScreen(Window window) {
     assureIsOnScreen(window, calculateScreenBounds(window));
   }
 
-  public static void assureIsOnScreen(Window window, Rectangle screenBounds) {
+  private static void assureIsOnScreen(Window window, Rectangle screenBounds) {
     if (window instanceof Frame && ((Frame) window).getExtendedState() == Frame.MAXIMIZED_BOTH) {
       return; //setting bounds would cause the extended state to be set from maximized back to normal!
       //Also in maximized mode the system will take care of the frame being on the screen   
@@ -146,7 +141,7 @@ public class GuiUtilities {
     window.validate(); // ohne das war bei niedrigen Aufloesungen die Toolbar in GISterm initial nicht sichtbar (ip)
   }
 
-  public static Rectangle calculateOnScreenBounds(Rectangle componentBounds, Rectangle screenBounds) {
+  private static Rectangle calculateOnScreenBounds(Rectangle componentBounds, Rectangle screenBounds) {
     Rectangle onScreenBounds = new Rectangle(componentBounds);
     if (onScreenBounds.height > screenBounds.height) {
       onScreenBounds.height = screenBounds.height;
@@ -158,24 +153,24 @@ public class GuiUtilities {
     return onScreenBounds;
   }
 
-  public static void stopCellEditing(JTable table) {
+  private static void stopCellEditing(JTable table) {
     TableCellEditor cellEditor = table.getCellEditor();
     if (cellEditor != null) {
       cellEditor.stopCellEditing();
     }
   }
 
-  public static Point calculateScreenFittingLocation(Rectangle screenBounds, Rectangle rectangle) {
+  private static Point calculateScreenFittingLocation(Rectangle screenBounds, Rectangle rectangle) {
     int x = (int) Math.max(screenBounds.x, Math.min(screenBounds.getMaxX() - rectangle.width, rectangle.x));
     int y = (int) Math.max(screenBounds.y, Math.min(screenBounds.getMaxY() - rectangle.height, rectangle.y));
     return new Point(x, y);
   }
 
-  public static Rectangle calculateScreenBounds(Component anyComponentOnScreen) {
+  private static Rectangle calculateScreenBounds(Component anyComponentOnScreen) {
     return calculateScreenBounds(anyComponentOnScreen.getGraphicsConfiguration(), anyComponentOnScreen.getToolkit());
   }
 
-  public static Rectangle calculateScreenBounds(GraphicsConfiguration graphicsConfiguration, Toolkit toolkit) {
+  private static Rectangle calculateScreenBounds(GraphicsConfiguration graphicsConfiguration, Toolkit toolkit) {
     Rectangle overallScreenBounds = graphicsConfiguration.getBounds();
     Insets screenInsets = toolkit.getScreenInsets(graphicsConfiguration);
     return new Rectangle(overallScreenBounds.x + screenInsets.left, overallScreenBounds.y + screenInsets.top,
@@ -194,7 +189,7 @@ public class GuiUtilities {
    * @param components die Komponenten, die nicht enabled / disabled werden sollen
    * @return die Komponenten, die vorher schon enabled / disabled waren
    */
-  public static Set<Container> setContainerEnabled(Container c, boolean enable, Set<Container> components) {
+  private static Set<Container> setContainerEnabled(Container c, boolean enable, Set<Container> components) {
     HashSet<Container> enabledComps = new HashSet<Container>();
 
     if (!components.contains(c)) {
@@ -292,7 +287,7 @@ public class GuiUtilities {
     });
   }
 
-  public static void invokeOnEventDispatchThread(Runnable runner) {
+  private static void invokeOnEventDispatchThread(Runnable runner) {
     if (SwingUtilities.isEventDispatchThread()) {
       runner.run();
     } else {

@@ -15,10 +15,6 @@ public abstract class RelativePosition {
     }
   };
 
-  private RelativePosition() {
-    //nothing to do
-  }
-
   public void place(Window window) {
     Window owner = window.getOwner();
     if (owner != null && owner.isVisible()) {
