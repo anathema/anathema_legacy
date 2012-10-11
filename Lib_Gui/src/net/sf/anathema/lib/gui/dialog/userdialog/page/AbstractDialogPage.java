@@ -3,7 +3,6 @@ package net.sf.anathema.lib.gui.dialog.userdialog.page;
 import com.google.common.base.Preconditions;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.dialog.events.ICheckInputValidListener;
-import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
 import org.jmock.example.announcer.Announcer;
@@ -14,7 +13,6 @@ import java.lang.reflect.Proxy;
 
 public abstract class AbstractDialogPage implements IDialogPage {
   private final IBasicMessage defaultMessage;
-  private final Announcer<RequestFinishListener> requestFinishListeners = Announcer.to(RequestFinishListener.class);
   private final Announcer<IChangeListener> changeListeners = Announcer.to(IChangeListener.class);
   private ICheckInputValidListener inputValidListener;
   private final ICheckInputValidListener inputValidListenerProxy = (ICheckInputValidListener) Proxy.newProxyInstance(
@@ -58,16 +56,6 @@ public abstract class AbstractDialogPage implements IDialogPage {
 
   protected final void checkInputValid() {
     inputValidListenerProxy.checkInputValid();
-  }
-
-  @Override
-  public final void addRequestFinishListener(RequestFinishListener requestFinishListener) {
-    requestFinishListeners.addListener(requestFinishListener);
-  }
-
-  @Override
-  public final void removeRequestFinishListener(RequestFinishListener requestFinishListener) {
-    requestFinishListeners.removeListener(requestFinishListener);
   }
 
   @Override

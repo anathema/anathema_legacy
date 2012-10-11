@@ -10,7 +10,6 @@ import net.sf.anathema.lib.gui.dialog.core.DialogButtonBarBuilder;
 import net.sf.anathema.lib.gui.dialog.core.IDialogConstants;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
-import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
 
@@ -38,19 +37,6 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
   private IWizardPage currentPage;
   private final IWizardConfiguration configuration;
   private final Collection<IWizardPage> pages = new HashSet<IWizardPage>();
-
-  private final RequestFinishListener requestFinishListener = new RequestFinishListener() {
-    @Override
-    public void requestFinish() {
-      if (nextButton != null && nextButton.isEnabled()) {
-        nextButton.doClick();
-        return;
-      }
-      if (finishButton != null && finishButton.isEnabled()) {
-        finishButton.doClick();
-      }
-    }
-  };
   private JButton cancelButton;
 
   /**
@@ -141,9 +127,7 @@ public class WizardDialog extends AbstractDialog implements IWizardContainer, ID
     Preconditions.checkNotNull(page);
     if (currentPage != null) {
       currentPage.leave();
-      currentPage.removeRequestFinishListener(requestFinishListener);
     }
-    page.addRequestFinishListener(requestFinishListener);
     currentPage = page;
     pages.add(page);
     updateMessage();

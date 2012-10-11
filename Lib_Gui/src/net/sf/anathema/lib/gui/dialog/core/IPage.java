@@ -1,13 +1,6 @@
 package net.sf.anathema.lib.gui.dialog.core;
 
-import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
-
 public interface IPage {
-
-  void addRequestFinishListener(RequestFinishListener requestFinishListener);
-
-  void removeRequestFinishListener(RequestFinishListener requestFinishListener);
-
   /** Returns this dialog page's description text.
    * @return the description text for this dialog page, or <code>null</code> if none */
   String getDescription();

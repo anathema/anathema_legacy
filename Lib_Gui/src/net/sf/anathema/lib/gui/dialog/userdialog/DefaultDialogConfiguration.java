@@ -2,7 +2,6 @@ package net.sf.anathema.lib.gui.dialog.userdialog;
 
 import net.sf.anathema.lib.gui.dialog.core.AbstractGenericDialogConfiguration;
 import net.sf.anathema.lib.gui.dialog.core.DialogHeaderPanelConfiguration;
-import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.DialogButtonConfigurationFactory;
 import net.sf.anathema.lib.gui.dialog.userdialog.buttons.IDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
@@ -30,11 +29,5 @@ public class DefaultDialogConfiguration<P extends IDialogPage> extends AbstractG
 
   @Override
   public void setUserDialogContainer(final IUserDialogContainer dialogContainer) {
-    dialogPage.addRequestFinishListener(new RequestFinishListener() {
-      @Override
-      public void requestFinish() {
-        dialogContainer.requestFinish();
-      }
-    });
   }
 }

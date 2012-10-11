@@ -1,13 +1,11 @@
 package net.sf.anathema.lib.gui.wizard;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.gui.dialog.input.RequestFinishListener;
 import net.sf.anathema.lib.gui.dialog.wizard.IWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.message.BasicMessage;
 import net.sf.anathema.lib.message.IBasicMessage;
-import org.jmock.example.announcer.Announcer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +13,6 @@ import java.util.Map;
 public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage {
 
   private IBasicMessage message = new BasicMessage("!!! UNSET-MESSAGE !!!");
-  private final Announcer<RequestFinishListener> requestFinishListeners = Announcer.to(RequestFinishListener.class);
   private IAnathemaWizardPage previousPage = null;
   protected final Map<ICondition, IAnathemaWizardPage> followUpPagesByCondition = new HashMap<ICondition, IAnathemaWizardPage>();
 
@@ -69,16 +66,6 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   @Override
   public boolean canCancel() {
     return true;
-  }
-
-  @Override
-  public void addRequestFinishListener(RequestFinishListener requestFinishListener) {
-    requestFinishListeners.addListener(requestFinishListener);
-  }
-
-  @Override
-  public void removeRequestFinishListener(RequestFinishListener requestFinishListener) {
-    requestFinishListeners.removeListener(requestFinishListener);
   }
 
   @Override
