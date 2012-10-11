@@ -8,7 +8,5 @@ public interface IActionConfiguration {
 
   String getName();
 
-  /** @return the tooltip text for the combo box or <code>null</code> if none. */
   String getToolTipText();
-
 }

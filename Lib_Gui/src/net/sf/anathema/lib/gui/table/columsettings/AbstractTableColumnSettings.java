@@ -12,17 +12,12 @@ public abstract class AbstractTableColumnSettings implements ITableColumnViewSet
   }
 
   @Override
-  public final int getPreferredWidth() {
+  public int getPreferredWidth() {
     return preferredWidth;
   }
 
   @Override
   public TableCellRenderer getRenderer() {
     return null;
-  }
-
-  @Override
-  public boolean isResizable() {
-    return true;
   }
 }

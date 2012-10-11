@@ -11,8 +11,8 @@ import java.lang.reflect.Method;
 import java.util.EventObject;
 
 public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor implements
-    TableCellEditor,
-    TreeCellEditor {
+        TableCellEditor,
+        TreeCellEditor {
 
   private final JComponent editorComponent;
   private final EditorDelegate delegate;
@@ -22,10 +22,9 @@ public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor im
     delegate = createDelegate(editorComponent);
     try {
       Method addActionListener = editorComponent.getClass().getMethod(
-          "addActionListener", new Class[] { ActionListener.class }); //$NON-NLS-1$
-      addActionListener.invoke(editorComponent, new Object[] { delegate });
-    }
-    catch (Exception exception) {
+              "addActionListener", new Class[]{ActionListener.class}); //$NON-NLS-1$
+      addActionListener.invoke(editorComponent, delegate);
+    } catch (Exception exception) {
       // ignore problems - we don't know wether an action listener can be registered at all
       // Shouldn't this be reported somehow?
     }
@@ -58,23 +57,20 @@ public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor im
 
   @Override
   public final Component getTreeCellEditorComponent(
-      JTree tree,
-      Object value,
-      boolean isSelected,
-      boolean expanded,
-      boolean leaf,
-      int row) {
+          JTree tree,
+          Object value,
+          boolean isSelected,
+          boolean expanded,
+          boolean leaf,
+          int row) {
     delegate.setValue(value);
     return editorComponent;
   }
 
   @Override
-  public final Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+  public final Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row,
+                                                     int column) {
     delegate.setValue(value);
-    return editorComponent;
-  }
-
-  protected JComponent getEditorComponent() {
     return editorComponent;
   }
 

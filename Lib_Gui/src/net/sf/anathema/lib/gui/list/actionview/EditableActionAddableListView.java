@@ -1,14 +1,14 @@
 package net.sf.anathema.lib.gui.list.actionview;
 
-import java.awt.Color;
-
-import javax.swing.JComponent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
-
 import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 import net.sf.anathema.lib.lang.ArrayFactory;
+
+import javax.swing.JComponent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
 
 public class EditableActionAddableListView<V> extends AbstractActionAddableListView<V> {
 
@@ -41,8 +41,13 @@ public class EditableActionAddableListView<V> extends AbstractActionAddableListV
   }
 
   @Override
-  public void addListSelectionListener(ListSelectionListener listener) {
-    table.getTable().getSelectionModel().addListSelectionListener(listener);
+  public void addListSelectionListener(final Runnable listener) {
+    table.getTable().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+      @Override
+      public void valueChanged(ListSelectionEvent e) {
+        listener.run();
+      }
+    });
   }
 
   @Override

@@ -17,7 +17,7 @@ public class InfernalUrgeView extends VirtueFlawView implements IInfernalUrgeVie
 
   @Override
   public ITextView addTextView(String labelText, int columns, int rows) {
-    ITextView textView = new AreaTextView(rows, columns);
+    AreaTextView textView = new AreaTextView(rows, columns);
     textViews.add(textView);
     fillIntoVirtueFlawPanel(labelText, textView);
     return textView;

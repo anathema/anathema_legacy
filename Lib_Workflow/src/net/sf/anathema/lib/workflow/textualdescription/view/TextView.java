@@ -4,7 +4,7 @@ import com.google.common.base.Objects;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.event.AbstractDocumentListener;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 
 import javax.swing.JComponent;
 import javax.swing.JTextField;
@@ -14,7 +14,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.JTextComponent;
 import java.awt.Color;
 
-public class TextView implements ITextView {
+public class TextView implements SwingTextView {
 
   private final JTextComponent textComponent;
 
@@ -43,7 +43,6 @@ public class TextView implements ITextView {
     });
   }
 
-  @Override
   public JComponent getComponent() {
     return textComponent;
   }

@@ -3,16 +3,13 @@ package net.sf.anathema.campaign.music.presenter.search;
 import net.sf.anathema.campaign.music.model.IMusicDatabase;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
 import net.sf.anathema.campaign.music.presenter.ISearchParameter;
-import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.campaign.music.presenter.util.MusicCategorizationPresenter;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.Presenter;
-import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Component;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,10 +33,9 @@ public class MusicSearchPresenter implements Presenter {
       ISearchComponent component = controlView.addSearchParameter(resources.getString(parameter.getDisplayKey()));
       parametersByView.put(component, parameter);
     }
-    SmartAction searchAction = new SmartAction(new MusicUI(resources).getSearchIcon()) {
-
+    controlView.whenSearchIsTriggered(new Runnable() {
       @Override
-      protected void execute(Component parentComponent) {
+      public void run() {
         Map<ISearchParameter, String> constraintsByParamter = new HashMap<ISearchParameter, String>();
         for (ISearchComponent component : parametersByView.keySet()) {
           if (component.isSelected()) {
@@ -49,8 +45,7 @@ public class MusicSearchPresenter implements Presenter {
         }
         searchControl.executeSearch(constraintsByParamter);
       }
-    };
-    controlView.setSearchAction(searchAction);
+    });
     initListening();
     new MusicCategorizationPresenter(
         searchControl.getMusicCategorizationModel(),

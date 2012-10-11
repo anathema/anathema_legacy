@@ -1,7 +1,7 @@
 package net.sf.anathema.campaign.presenter.view.plot;
 
+import net.sf.anathema.campaign.note.view.IBasicItemDescriptionView;
 import net.sf.anathema.campaign.presenter.view.IPlotViewListener;
-import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.tree.DefaultMutableTreeNode;

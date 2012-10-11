@@ -9,11 +9,6 @@ public class MusicSelectionProperties extends AbstractMusicProperties implements
   }
 
   @Override
-  public String getSavedSelectionsTitle() {
-    return getString("Music.Labels.SelectionsList.Title"); //$NON-NLS-1$
-  }
-
-  @Override
   public String getMusicSelectionBorderTitle() {
     return getString("Music.Borders.MusicSelection"); //$NON-NLS-1$
   }
@@ -38,8 +33,4 @@ public class MusicSelectionProperties extends AbstractMusicProperties implements
     return getString("Music.Labels.CurrentSelection.Title"); //$NON-NLS-1$
   }
 
-  @Override
-  public String getCurrentlySelectedTracksString() {
-    return getString("Music.Labels.CurrentSelection.Title"); //$NON-NLS-1$
-  }
 }

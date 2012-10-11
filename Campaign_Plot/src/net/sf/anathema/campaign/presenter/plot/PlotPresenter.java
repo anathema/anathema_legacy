@@ -1,37 +1,30 @@
 package net.sf.anathema.campaign.presenter.plot;
 
-import java.awt.Dimension;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.swing.text.DefaultStyledDocument;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeNode;
-
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainer;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainerListener;
 import net.sf.anathema.campaign.model.plot.IPlotModel;
-import net.sf.anathema.campaign.presenter.TextEditorProperties;
+import net.sf.anathema.campaign.note.view.IBasicItemDescriptionView;
 import net.sf.anathema.campaign.presenter.view.IPlotViewListener;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
-import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
-import net.sf.anathema.framework.styledtext.presentation.IStyledTextManager;
-import net.sf.anathema.framework.styledtext.presentation.StyledTextManager;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+import java.util.HashMap;
+import java.util.Map;
+
 public class PlotPresenter implements Presenter {
 
   private ITextView itemNameView;
-  private IStyledTextManager itemSummaryViewManager;
   private IStyledTextView itemSummaryView;
   private final IPlotElementContainerListener modelListener = new IPlotElementContainerListener() {
     @Override
@@ -107,11 +100,9 @@ public class PlotPresenter implements Presenter {
       DefaultMutableTreeNode oldParentNode = (DefaultMutableTreeNode) node.getParent();
       if (oldParentNode == dropTargetNode.getParent()) {
         moveToRequested(node, index);
-      }
-      else if (oldParentNode == dropTargetNode) {
+      } else if (oldParentNode == dropTargetNode) {
         moveToRequested(node, oldParentNode.getChildCount());
-      }
-      else {
+      } else {
         IPlotElement moveElement = (IPlotElement) node.getUserObject();
         IPlotElementContainer dropTargetContainer = (IPlotElementContainer) dropTargetNode.getUserObject();
         IPlotElementContainer oldParentContainer = (IPlotElementContainer) oldParentNode.getUserObject();
@@ -137,12 +128,12 @@ public class PlotPresenter implements Presenter {
       itemSummaryView.setEnabled(node != null);
       if (node == null) {
         itemNameView.setText(null);
-        itemSummaryViewManager.setText(new ITextPart[0]);
+        itemSummaryView.setText(new ITextPart[0]);
         return;
       }
       IItemDescription description = ((IPlotElement) node.getUserObject()).getDescription();
       itemNameView.setText(description.getName().getText());
-      itemSummaryViewManager.setText(description.getContent().getTextParts());
+      itemSummaryView.setText(description.getContent().getTextParts());
     }
   };
   private final IResources resources;
@@ -191,14 +182,9 @@ public class PlotPresenter implements Presenter {
         view.setHierarchieTreeCellRenderer(new PlotTreeCellRenderer(resources));
       }
     });
-    DefaultStyledDocument document = new DefaultStyledDocument();
-    itemSummaryViewManager = new StyledTextManager(document);
-    itemSummaryView = descriptionView.addStyledTextView(resources.getString("SeriesPlot.ElementSummary.Label") + ":", //$NON-NLS-1$ //$NON-NLS-2$
-        document,
-        new Dimension(200, 400),
-        new TextEditorProperties(resources));
+    itemSummaryView = descriptionView.addStyledTextView(resources.getString("SeriesPlot.ElementSummary.Label") + ":");
     itemSummaryView.setEnabled(false);
-    itemSummaryViewManager.addStyledTextListener(new IStyledTextChangeListener() {
+    itemSummaryView.addStyledTextListener(new IStyledTextChangeListener() {
       @Override
       public void textChanged(ITextPart[] newParts) {
         if (selectedNode == null) {
@@ -207,7 +193,6 @@ public class PlotPresenter implements Presenter {
         ((IPlotElement) selectedNode.getUserObject()).getDescription().getContent().setText(newParts);
       }
     });
-    descriptionView.initGui(null);
   }
 
   private void initListening(IPlotElementContainer container, DefaultMutableTreeNode childNode) {
@@ -219,9 +204,9 @@ public class PlotPresenter implements Presenter {
   public void initPresentation() {
     view.addPlotViewListener(viewListener);
     view.initSeriesHierarchyView(
-        treeModel,
-        new PlotTreeCellRenderer(resources),
-        resources.getString("SeriesPlot.PlotTree.BorderTitle") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
+            treeModel,
+            new PlotTreeCellRenderer(resources),
+            resources.getString("SeriesPlot.PlotTree.BorderTitle") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     IBasicItemDescriptionView descriptionView = view.initBasicItemDescriptionView();
     initDescriptionViewPresentation(descriptionView);
     view.initGui(new PlotViewProperties(resources));

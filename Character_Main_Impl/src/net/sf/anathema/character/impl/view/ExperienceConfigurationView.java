@@ -9,7 +9,6 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProper
 import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.table.SmartTable;
-import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 import org.jmock.example.announcer.Announcer;
 
@@ -34,15 +33,10 @@ public class ExperienceConfigurationView implements IExperienceConfigurationView
   @Override
   public final void initGui(final IExperienceConfigurationViewProperties properties) {
     smartTable = new SmartTable(properties.getTableModel(), properties.getColumnSettings());
-    smartTable.addActionFactory(new ITableActionFactory() {
+    smartTable.addAction(new SmartAction(properties.getAddIcon()) {
       @Override
-      public Action createAction(SmartTable table) {
-        return new SmartAction(properties.getAddIcon()) {
-          @Override
-          protected void execute(Component parentComponent) {
-            fireAddRequested();
-          }
-        };
+      protected void execute(Component parentComponent) {
+        fireAddRequested();
       }
     });
     deleteAction = new SmartAction(properties.getDeleteIcon()) {
@@ -52,12 +46,7 @@ public class ExperienceConfigurationView implements IExperienceConfigurationView
         fireRemoveRequested();
       }
     };
-    smartTable.addActionFactory(new ITableActionFactory() {
-      @Override
-      public Action createAction(SmartTable table) {
-        return deleteAction;
-      }
-    });
+    smartTable.addAction(deleteAction);
     smartTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
       @Override
       public void valueChanged(ListSelectionEvent e) {

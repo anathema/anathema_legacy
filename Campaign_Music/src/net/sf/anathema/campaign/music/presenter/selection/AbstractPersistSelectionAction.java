@@ -7,8 +7,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 
 import javax.swing.Icon;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 public abstract class AbstractPersistSelectionAction extends SmartAction {
 
@@ -29,9 +27,9 @@ public abstract class AbstractPersistSelectionAction extends SmartAction {
         updateEnabled();
       }
     });
-    selectionListView.addListSelectionListener(new ListSelectionListener() {
+    selectionListView.addListSelectionListener(new Runnable() {
       @Override
-      public void valueChanged(ListSelectionEvent e) {
+      public void run() {
         updateEnabled();
       }
     });

@@ -10,6 +10,7 @@ import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.SwingTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
@@ -31,7 +32,7 @@ public class VirtueFlawView implements IVirtueFlawView {
 
   @Override
   public ITextView addTextView(String labelText, int columns) {
-    ITextView textView = new LineTextView(columns);
+    LineTextView textView = new LineTextView(columns);
     fillIntoVirtueFlawPanel(labelText, textView);
     return textView;
   }
@@ -44,7 +45,7 @@ public class VirtueFlawView implements IVirtueFlawView {
     return traitView;
   }
 
-  protected void fillIntoVirtueFlawPanel(String labelText, ITextView textView) {
+  protected void fillIntoVirtueFlawPanel(String labelText, SwingTextView textView) {
     new LabelTextView(labelText, textView).addToMigPanel(virtueFlawPanel);
   }
 

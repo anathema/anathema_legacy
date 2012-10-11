@@ -19,11 +19,6 @@ public class TableColumnConfigurator {
       }
       tableColumn.setPreferredWidth(view.getPreferredWidth());
       tableColumn.setWidth(view.getPreferredWidth());
-      if (!view.isResizable()) {
-        tableColumn.setResizable(view.isResizable());
-        tableColumn.setMinWidth(view.getPreferredWidth());
-        tableColumn.setMaxWidth(view.getPreferredWidth());
-      }
     }
   }
 }

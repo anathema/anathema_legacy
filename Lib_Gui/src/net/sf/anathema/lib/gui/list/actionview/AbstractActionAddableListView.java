@@ -33,23 +33,6 @@ public abstract class AbstractActionAddableListView<T> implements IActionAddable
     buttonPanel.add(new JButton(action));
   }
 
-  private JPanel createContent() {
-    JPanel panel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
-    if (titleLabel != null) {
-      panel.add(titleLabel);
-    }
-    panel.add(
-        isScrollable() ? new JScrollPane(getDisplayComponent()) : getDisplayComponent(),
-        new CC().grow().push());
-    panel.add(buttonPanel);
-    return panel;
-  }
-
-  protected abstract boolean isScrollable();
-
-  protected abstract JComponent getDisplayComponent();
-
-  @Override
   public JComponent getComponent() {
     if (content == null) {
       content = createContent();
@@ -65,5 +48,21 @@ public abstract class AbstractActionAddableListView<T> implements IActionAddable
   @Override
   public void refreshView() {
     getDisplayComponent().repaint();
+  }
+
+  protected abstract JComponent getDisplayComponent();
+
+  protected abstract boolean isScrollable();
+
+  private JPanel createContent() {
+    JPanel panel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
+    if (titleLabel != null) {
+      panel.add(titleLabel);
+    }
+    panel.add(
+            isScrollable() ? new JScrollPane(getDisplayComponent()) : getDisplayComponent(),
+            new CC().grow().push());
+    panel.add(buttonPanel);
+    return panel;
   }
 }

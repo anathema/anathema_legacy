@@ -1,5 +1,9 @@
 package net.sf.anathema.framework.styledtext;
 
+import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
+import net.sf.anathema.framework.styledtext.model.ITextPart;
+import net.sf.anathema.framework.styledtext.presentation.StyledText;
+import net.sf.anathema.framework.styledtext.presentation.SwingStyledText;
 import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.Action;
@@ -20,7 +24,6 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import javax.swing.text.StyledEditorKit;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -36,12 +39,12 @@ public class TextEditor implements IStyledTextView, IView {
   private JPanel content;
   private final StyledDocument document;
   private final JTextPane textPane = new JTextPane();
-  private final Dimension preferredSize;
   private final JToggleButton[] toolBarButtons;
+  private final StyledText styledText;
 
-  public TextEditor(StyledDocument document, ITextEditorProperties properties, Dimension preferredSize) {
+  public TextEditor(StyledDocument document, ITextEditorProperties properties) {
     this.document = document;
-    this.preferredSize = preferredSize;
+    this.styledText = new SwingStyledText(document);
     this.toolBarButtons = initToolbarButtons(properties);
     addBindings();
   }
@@ -85,9 +88,7 @@ public class TextEditor implements IStyledTextView, IView {
     textPane.setDocument(document);
     textPane.setCaretPosition(0);
     textPane.setMargin(new Insets(5, 5, 5, 5));
-    JScrollPane scrollPane = new JScrollPane(textPane);
-    scrollPane.setPreferredSize(preferredSize);
-    return scrollPane;
+    return new JScrollPane(textPane);
   }
 
   private JToolBar createStyleToolBar() {
@@ -166,5 +167,15 @@ public class TextEditor implements IStyledTextView, IView {
     for (JToggleButton button : toolBarButtons) {
       button.setEnabled(enabled);
     }
+  }
+
+  @Override
+  public void setText(ITextPart[] textParts) {
+    styledText.setText(textParts);
+  }
+
+  @Override
+  public void addStyledTextListener(IStyledTextChangeListener listener) {
+    styledText.addStyledTextListener(listener);
   }
 }

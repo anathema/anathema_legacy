@@ -4,7 +4,6 @@ import com.google.common.base.Preconditions;
 import net.miginfocom.layout.CC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 
 import javax.swing.Action;
@@ -23,6 +22,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class SmartTable implements IView {
@@ -31,9 +31,7 @@ public class SmartTable implements IView {
   private final JTable table;
   private JPanel content;
   private final List<ActionListener> selectionActionListeners = new ArrayList<ActionListener>();
-  private final List<ITableActionFactory> actionFactories = new ArrayList<ITableActionFactory>();
-
-  private Action[] actions = new Action[0];
+  private final List<Action> actions= new ArrayList<Action>();
 
   public SmartTable(TableModel tableModel, ITableColumnViewSettings[] settings) {
     Preconditions.checkNotNull(tableModel);
@@ -56,19 +54,12 @@ public class SmartTable implements IView {
 
     table.setRowHeight(Math.max(table.getRowHeight(), 21));
     TableColumnConfigurator.configureTableColumns(table, settings);
-    setSelectionMode(ListSelectionMode.SINGLE_SELECTION);
+    table.setSelectionMode(SINGLE_SELECTION);
   }
 
-  public void addActionFactory(ITableActionFactory actionFactory) {
-    Preconditions.checkNotNull(actionFactory);
-    if (content != null) {
-      throw new IllegalStateException("Adding actions after creating content."); //$NON-NLS-1$
-    }
-    actionFactories.add(actionFactory);
-  }
-
-  public void setSelectionMode(ListSelectionMode selectionMode) {
-    table.setSelectionMode(selectionMode.getListSelectionMode());
+  public void addAction(Action action) {
+    Preconditions.checkArgument(content == null, "Adding actions after creating content.");
+    actions.add(action);
   }
 
   public JTable getTable() {
@@ -103,7 +94,6 @@ public class SmartTable implements IView {
     JPanel tablePanel = new JPanel(new BorderLayout());
     tablePanel.add(table);
     JScrollPane scrollPane = new JScrollPane(tablePanel) {
-
       @Override
       public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
@@ -113,9 +103,7 @@ public class SmartTable implements IView {
     scrollPane.setColumnHeaderView(table.getTableHeader());
     int preferredWidth = table.getPreferredSize().width + scrollPane.getInsets().left + scrollPane.getInsets().right;
     scrollPane.setPreferredSize(new Dimension(preferredWidth, 150));
-    this.actions = createTableActions();
     JPanel panel = new JPanel(new MigLayout(fillWithoutInsets())) {
-
       @Override
       public void setEnabled(boolean enabled) {
         SmartTable.this.setEnabled(enabled);
@@ -134,21 +122,12 @@ public class SmartTable implements IView {
     return panel;
   }
 
-  private Action[] createTableActions() {
-    Action[] createdActions = new Action[actionFactories.size()];
-    for (int i = 0; i < createdActions.length; i++) {
-      ITableActionFactory factory = actionFactories.get(i);
-      createdActions[i] = new DisableableProxyAction(factory.createAction(this));
-    }
-    return createdActions;
-  }
-
   private void fireSelectionActionEvent() {
     List<ActionListener> clone;
     synchronized (this) {
       clone = new ArrayList<ActionListener>(selectionActionListeners);
     }
-    ActionEvent actionEvent = new ActionEvent(table, -1, "select"); //$NON-NLS-1$
+    ActionEvent actionEvent = new ActionEvent(table, -1, "select");
     for (ActionListener element : clone) {
       element.actionPerformed(actionEvent);
     }
@@ -162,11 +141,6 @@ public class SmartTable implements IView {
   }
 
   public int getSelectedRowIndex() {
-    // Bugfix for JDK1.4 JTable Bug 4905083: Pressing enter on empty table
-    // moves selection to 1
-    // (fixed in Java 1.5 / Tiger)
-    int selectedRowIndex = table.getSelectedRow();
-    return selectedRowIndex > table.getRowCount() ? -1 : selectedRowIndex;
+    return table.getSelectedRow();
   }
-
 }

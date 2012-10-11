@@ -19,8 +19,6 @@ import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.Icon;
-
 @ItemTypeConfiguration
 @Weight(weight = 40)
 public final class MusicDatabaseItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
@@ -37,8 +35,8 @@ public final class MusicDatabaseItemTypeConfiguration extends AbstractNonPersist
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
         IMusicDatabase database = (IMusicDatabase) item.getItemData();
-        Icon icon = new MusicUI(resources).getMusicTabIcon();
-        MusicDatabaseView view = new MusicDatabaseView(resources.getString("ItemType.MusicDatabase.PrintName"), icon); //$NON-NLS-1$
+        MusicUI musicUI = new MusicUI(resources);
+        MusicDatabaseView view = new MusicDatabaseView(resources.getString("ItemType.MusicDatabase.PrintName"), musicUI); //$NON-NLS-1$
         new MusicDataBasePresenter(resources, database, view).initPresentation();
         return view;
       }

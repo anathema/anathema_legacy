@@ -12,8 +12,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.Component;
 import java.io.File;
 
@@ -26,19 +24,19 @@ public class AddMusicFileAction extends SmartAction {
   private final IResources resources;
 
   public AddMusicFileAction(
-      IResources resources,
-      IMusicSearchControl searchControl,
-      ILibraryControl model,
-      ILibraryControlView view) {
+          IResources resources,
+          IMusicSearchControl searchControl,
+          ILibraryControl model,
+          ILibraryControlView view) {
     super(new FileUi(resources).getAddFileIcon());
     this.resources = resources;
     this.searchControl = searchControl;
     setToolTipText(resources.getString("Music.Actions.AddFile.Tooltip")); //$NON-NLS-1$
     this.model = model;
     this.view = view;
-    view.addLibraryListSelectionListener(new ListSelectionListener() {
+    view.whenSelectionChanges(new Runnable() {
       @Override
-      public void valueChanged(ListSelectionEvent e) {
+      public void run() {
         updateEnabled();
       }
     });
@@ -52,9 +50,9 @@ public class AddMusicFileAction extends SmartAction {
   @Override
   protected void execute(Component parentComponent) {
     File mp3File = DirectoryFileChooser.chooseSingleFile(
-        parentComponent,
-        ADD_MUSIC_CHOOSER_VALUE,
-        resources.getString("Music.Actions.AddFile.FileDialogTitle"), new Mp3FileFilter(resources)); //$NON-NLS-1$
+            parentComponent,
+            ADD_MUSIC_CHOOSER_VALUE,
+            resources.getString("Music.Actions.AddFile.FileDialogTitle"), new Mp3FileFilter(resources)); //$NON-NLS-1$
     if (mp3File == null) {
       return;
     }
@@ -62,10 +60,9 @@ public class AddMusicFileAction extends SmartAction {
     try {
       model.addTrack(libraryName, mp3File);
       view.getTrackListView().setObjects(searchControl.getTracks(((ILibrary) view.getSelectedLibrary()).getName()));
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       MessageUtilities.indicateMessage(AddMusicFileAction.class, parentComponent, new Message(
-          resources.getString("Errors.MusicDatabase.ReadMusicData"), e)); //$NON-NLS-1$
+              resources.getString("Errors.MusicDatabase.ReadMusicData"), e)); //$NON-NLS-1$
     }
   }
 }

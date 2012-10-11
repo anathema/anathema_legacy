@@ -1,10 +1,11 @@
 package net.sf.anathema.lib.gui.list.actionview;
 
+import net.sf.anathema.lib.gui.list.SmartJList;
+
 import javax.swing.JComponent;
 import javax.swing.ListCellRenderer;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
-import net.sf.anathema.lib.gui.list.SmartJList;
 
 public class ActionAddableListView<T> extends AbstractActionAddableListView<T> implements
     IMultiSelectionActionAddableListView<T> {
@@ -22,8 +23,13 @@ public class ActionAddableListView<T> extends AbstractActionAddableListView<T> i
   }
 
   @Override
-  public void addListSelectionListener(ListSelectionListener listener) {
-    list.addListSelectionListener(listener);
+  public void addListSelectionListener(final Runnable listener) {
+    list.addListSelectionListener(new ListSelectionListener() {
+      @Override
+      public void valueChanged(ListSelectionEvent e) {
+        listener.run();
+      }
+    });
   }
 
   @Override

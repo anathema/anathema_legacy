@@ -7,8 +7,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.Component;
 
 public class RetrieveSelectionAction extends SmartAction {
@@ -24,9 +22,9 @@ public class RetrieveSelectionAction extends SmartAction {
     this.selectionListView = selectionListView;
     this.selectionModel = selectionModel;
     setToolTipText(resources.getString("Music.Actions.RetrieveSelection.Tooltip")); //$NON-NLS-1$
-    selectionListView.addListSelectionListener(new ListSelectionListener() {
+    selectionListView.addListSelectionListener(new Runnable() {
       @Override
-      public void valueChanged(ListSelectionEvent e) {
+      public void run() {
         setEnabled(selectionListView.getSelectedItems().length != 0);
       }
     });
