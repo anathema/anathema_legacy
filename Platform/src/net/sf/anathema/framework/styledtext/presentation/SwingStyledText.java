@@ -9,10 +9,10 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Element;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,12 +21,12 @@ import java.util.List;
 public class SwingStyledText implements StyledText {
 
   private final Announcer<IStyledTextChangeListener> listeners = Announcer.to(IStyledTextChangeListener.class);
-  private final DefaultStyledDocument document;
+  private final StyledDocument document;
   private ITextPart[] actualTextParts = new ITextPart[0];
 
-  public SwingStyledText(DefaultStyledDocument document) {
+  public SwingStyledText(StyledDocument document) {
     this.document = document;
-    this.document.addDocumentListener(new DocumentListener() {
+    document.addDocumentListener(new DocumentListener() {
       @Override
       public void changedUpdate(DocumentEvent e) {
         fireTextChangedEvent();

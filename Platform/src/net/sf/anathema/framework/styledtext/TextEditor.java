@@ -1,5 +1,9 @@
 package net.sf.anathema.framework.styledtext;
 
+import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
+import net.sf.anathema.framework.styledtext.model.ITextPart;
+import net.sf.anathema.framework.styledtext.presentation.StyledText;
+import net.sf.anathema.framework.styledtext.presentation.SwingStyledText;
 import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.Action;
@@ -36,9 +40,11 @@ public class TextEditor implements IStyledTextView, IView {
   private final StyledDocument document;
   private final JTextPane textPane = new JTextPane();
   private final JToggleButton[] toolBarButtons;
+  private final StyledText styledText;
 
   public TextEditor(StyledDocument document, ITextEditorProperties properties) {
     this.document = document;
+    this.styledText = new SwingStyledText(document);
     this.toolBarButtons = initToolbarButtons(properties);
     addBindings();
   }
@@ -161,5 +167,15 @@ public class TextEditor implements IStyledTextView, IView {
     for (JToggleButton button : toolBarButtons) {
       button.setEnabled(enabled);
     }
+  }
+
+  @Override
+  public void setText(ITextPart[] textParts) {
+    styledText.setText(textParts);
+  }
+
+  @Override
+  public void addStyledTextListener(IStyledTextChangeListener listener) {
+    styledText.addStyledTextListener(listener);
   }
 }

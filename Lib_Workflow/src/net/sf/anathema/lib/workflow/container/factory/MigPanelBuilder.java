@@ -15,6 +15,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class MigPanelBuilder {
+  private static final int COLUMN_COUNT = 45;
   private final JPanel panel;
 
   public MigPanelBuilder() {
@@ -25,8 +26,8 @@ public class MigPanelBuilder {
     panel = new JPanel(new MigLayout(new LC().wrapAfter(elementsPerRow).fill().insets("2")));
   }
 
-  public ITextView addLineTextView(String labelName, int columnCount) {
-    return addLabelledTextView(labelName, new LineTextView(columnCount));
+  public ITextView addLineTextView(String labelName) {
+    return addLabelledTextView(labelName, new LineTextView(COLUMN_COUNT));
   }
 
   public ITextView addSpanningLineTextView(String label, int columnCount) {
@@ -36,8 +37,8 @@ public class MigPanelBuilder {
     return textView;
   }
 
-  public ITextView addAreaTextView(String labelName, int rowCount, int columnCount) {
-    return addLabelledTextView(labelName, new AreaTextView(rowCount, columnCount));
+  public ITextView addAreaTextView(String labelName, int rowCount) {
+    return addLabelledTextView(labelName, new AreaTextView(rowCount, COLUMN_COUNT));
   }
 
   public void addComponent(JComponent component, CC constraint) {

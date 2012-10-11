@@ -28,7 +28,6 @@ import javax.swing.JComponent;
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class EquipmentDatabasePresenter implements Presenter {
-  private static final int COLUMN_COUNT = 45;
   private final IResources resources;
   private final IEquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
@@ -63,10 +62,9 @@ public class EquipmentDatabasePresenter implements Presenter {
 
   private void initBasicDetailsView() {
     MigPanelBuilder panelBuilder = new MigPanelBuilder();
-    ITextView nameView = panelBuilder.addLineTextView(getColonString("Equipment.Creation.Basics.Name"), COLUMN_COUNT);
+    ITextView nameView = panelBuilder.addLineTextView(getColonString("Equipment.Creation.Basics.Name"));
     new TextualPresentation().initView(nameView, model.getTemplateEditModel().getDescription().getName());
-    ITextView descriptionView = panelBuilder.addAreaTextView(getColonString("Equipment.Creation.Basics.Description"), 5,
-            COLUMN_COUNT);
+    ITextView descriptionView = panelBuilder.addAreaTextView(getColonString("Equipment.Creation.Basics.Description"), 5);
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
     final ObjectSelectionView<MaterialComposition> compositionView = new ObjectSelectionView<MaterialComposition>(
             getColonString("Equipment.Creation.Basics.Composition"), //$NON-NLS-1$
