@@ -48,7 +48,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
 
   @Override
   public IActionAddableListView<IEquipmentStats> initStatsListView(ListCellRenderer renderer) {
-    statsListView = new SingleSelectionActionAddableListView<IEquipmentStats>(null, IEquipmentStats.class);
+    statsListView = new SingleSelectionActionAddableListView<IEquipmentStats>(IEquipmentStats.class);
     statsListView.setListCellRenderer(renderer);
     return statsListView;
   }

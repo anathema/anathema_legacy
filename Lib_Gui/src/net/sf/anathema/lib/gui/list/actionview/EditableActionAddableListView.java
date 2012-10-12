@@ -16,8 +16,8 @@ public class EditableActionAddableListView<V> extends AbstractActionAddableListV
   private final DefaultTableModel tableModel = new DefaultTableModel(10, 1);
   private final ArrayFactory<V> factory;
 
-  public EditableActionAddableListView(String title, ITableColumnViewSettings columnSetting, Class<V> contentClass) {
-    super(title);
+  public EditableActionAddableListView(ITableColumnViewSettings columnSetting, Class<V> contentClass) {
+    super(null);
     table = new SmartTable(tableModel, new ITableColumnViewSettings[] { columnSetting });
     table.getTable().setTableHeader(null);
     table.getTable().setGridColor(new Color(0, 0, 0, 0));

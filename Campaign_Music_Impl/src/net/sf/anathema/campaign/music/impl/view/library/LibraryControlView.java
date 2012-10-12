@@ -3,7 +3,7 @@ package net.sf.anathema.campaign.music.impl.view.library;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.campaign.music.impl.view.SimpleTabView;
+import net.sf.anathema.campaign.music.impl.view.StaticView;
 import net.sf.anathema.campaign.music.impl.view.categorization.MusicCategorizationView;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
@@ -45,7 +45,7 @@ public class LibraryControlView implements ILibraryControlView, IView {
                             MusicUI icons) {
     this.viewProperties = properties;
     this.content = content;
-    this.libraryListView = new EditableActionAddableListView<ILibrary>(null, settings, ILibrary.class);
+    this.libraryListView = new EditableActionAddableListView<ILibrary>(settings, ILibrary.class);
     this.mp3ListView = new ActionAddableListView<IMp3Track>(viewProperties.getNoContentString(), IMp3Track.class);
     searchButton.setIcon(icons.getSearchIcon());
   }
@@ -97,16 +97,16 @@ public class LibraryControlView implements ILibraryControlView, IView {
     content.add(new HorizontalLine(), new CC().grow());
     TabbedView leftTabbedView = new TabbedView(TabDirection.Up);
     if (libraryPanel != null) {
-      leftTabbedView.addView(new SimpleTabView(libraryPanel),
+      leftTabbedView.addView(new StaticView(libraryPanel),
               new ContentProperties(viewProperties.getLibrariesString()));
     }
     if (searchPanel != null) {
-      leftTabbedView.addView(new SimpleTabView(searchPanel),
+      leftTabbedView.addView(new StaticView(searchPanel),
               new ContentProperties(viewProperties.getSearchString()));
     }
     content.add(leftTabbedView.getComponent(), new CC().grow());
     TabbedView rightTabbedView = new TabbedView(TabDirection.Up);
-    rightTabbedView.addView(new SimpleTabView(createMp3View()),
+    rightTabbedView.addView(new StaticView(createMp3View()),
             new ContentProperties(viewProperties.getTracksString()));
     content.add(rightTabbedView.getComponent(), new CC().grow());
   }
