@@ -3,7 +3,7 @@ package net.sf.anathema.campaign.music.impl.view.library;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
-import net.sf.anathema.campaign.music.impl.view.StaticView;
+import net.sf.anathema.campaign.music.impl.view.TabbedView;
 import net.sf.anathema.campaign.music.impl.view.categorization.MusicCategorizationView;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
@@ -14,8 +14,6 @@ import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationVi
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.framework.view.util.TabDirection;
-import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.EditableActionAddableListView;
@@ -83,7 +81,7 @@ public class LibraryControlView implements ILibraryControlView, IView {
 
   @Override
   public void whenSelectionChanges(Runnable runnable) {
-     libraryListView.addListSelectionListener(runnable);
+    libraryListView.addListSelectionListener(runnable);
   }
 
   @Override
@@ -95,19 +93,16 @@ public class LibraryControlView implements ILibraryControlView, IView {
   public void initGui() {
     content.add(new JLabel(viewProperties.getLibraryControlBorderTitle()), new CC().split(2).spanX());
     content.add(new HorizontalLine(), new CC().grow());
-    TabbedView leftTabbedView = new TabbedView(TabDirection.Up);
+    TabbedView leftTabbedView = TabbedView.CreateUp();
     if (libraryPanel != null) {
-      leftTabbedView.addView(new StaticView(libraryPanel),
-              new ContentProperties(viewProperties.getLibrariesString()));
+      leftTabbedView.addView(libraryPanel, new ContentProperties(viewProperties.getLibrariesString()));
     }
     if (searchPanel != null) {
-      leftTabbedView.addView(new StaticView(searchPanel),
-              new ContentProperties(viewProperties.getSearchString()));
+      leftTabbedView.addView(searchPanel, new ContentProperties(viewProperties.getSearchString()));
     }
     content.add(leftTabbedView.getComponent(), new CC().grow());
-    TabbedView rightTabbedView = new TabbedView(TabDirection.Up);
-    rightTabbedView.addView(new StaticView(createMp3View()),
-            new ContentProperties(viewProperties.getTracksString()));
+    TabbedView rightTabbedView = TabbedView.CreateUp();
+    rightTabbedView.addView(createMp3View(), new ContentProperties(viewProperties.getTracksString()));
     content.add(rightTabbedView.getComponent(), new CC().grow());
   }
 
