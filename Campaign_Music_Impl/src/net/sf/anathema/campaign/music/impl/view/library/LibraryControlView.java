@@ -18,6 +18,7 @@ import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.EditableActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
+import net.sf.anathema.lib.gui.list.actionview.NamedActionAddableListView;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 import net.sf.anathema.lib.gui.widgets.HorizontalLine;
 
@@ -85,7 +86,7 @@ public class LibraryControlView implements ILibraryControlView, IView {
   }
 
   @Override
-  public IActionAddableListView<IMp3Track> getTrackListView() {
+  public NamedActionAddableListView<IMp3Track> getTrackListView() {
     return mp3ListView;
   }
 

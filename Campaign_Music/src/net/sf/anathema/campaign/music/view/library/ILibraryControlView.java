@@ -5,6 +5,7 @@ import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
+import net.sf.anathema.lib.gui.list.actionview.NamedActionAddableListView;
 
 public interface ILibraryControlView extends LibraryListView {
 
@@ -14,7 +15,7 @@ public interface ILibraryControlView extends LibraryListView {
 
   IMusicCategorizationView getSearchMusicCategorizationView();
 
-  IActionAddableListView<IMp3Track> getTrackListView();
+  NamedActionAddableListView<IMp3Track> getTrackListView();
 
   void initGui();
 

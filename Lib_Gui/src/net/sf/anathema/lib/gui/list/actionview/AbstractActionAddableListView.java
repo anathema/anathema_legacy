@@ -14,7 +14,7 @@ import java.awt.GridLayout;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.getComponentSpacing;
 
-public abstract class AbstractActionAddableListView<T> implements IActionAddableListView<T> {
+public abstract class AbstractActionAddableListView<T> implements NamedActionAddableListView<T> {
   private final JPanel buttonPanel = new JPanel(new GridLayout(
       1,
       0,

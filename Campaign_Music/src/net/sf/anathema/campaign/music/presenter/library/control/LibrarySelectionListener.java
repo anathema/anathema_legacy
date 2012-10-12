@@ -4,10 +4,10 @@ import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
-import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
+import net.sf.anathema.lib.gui.list.actionview.NamedActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
 
-public final class LibrarySelectionListener implements Runnable {
+public class LibrarySelectionListener implements Runnable {
   private final ILibraryControlView view;
   private final IMusicSearchControl searchControl;
   private final IResources resources;
@@ -25,7 +25,7 @@ public final class LibrarySelectionListener implements Runnable {
   }
 
   private void updateTracks(ILibrary selectedLibrary) {
-    IActionAddableListView<IMp3Track> trackListView = view.getTrackListView();
+    NamedActionAddableListView<IMp3Track> trackListView = view.getTrackListView();
     if (selectedLibrary == null) {
       trackListView.setObjects(new IMp3Track[0]);
       trackListView.setListTitle(resources.getString("Music.Labels.LibraryTrackView.NoContentTitle")); //$NON-NLS-1$
