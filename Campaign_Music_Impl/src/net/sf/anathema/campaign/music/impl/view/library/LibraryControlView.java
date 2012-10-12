@@ -39,13 +39,14 @@ public class LibraryControlView implements ILibraryControlView, IView {
   private JPanel libraryPanel;
   private JPanel searchPanel;
   private final ILibraryControlProperties viewProperties;
+  private final TabbedView rightTabbedView = TabbedView.CreateUp();
 
   public LibraryControlView(ITableColumnViewSettings settings, ILibraryControlProperties properties, JPanel content,
                             MusicUI icons) {
     this.viewProperties = properties;
     this.content = content;
     this.libraryListView = new EditableActionAddableListView<ILibrary>(settings, ILibrary.class);
-    this.mp3ListView = new ActionAddableListView<IMp3Track>(viewProperties.getNoContentString(), IMp3Track.class);
+    this.mp3ListView = new ActionAddableListView<IMp3Track>(IMp3Track.class);
     searchButton.setIcon(icons.getSearchIcon());
   }
 
@@ -87,7 +88,7 @@ public class LibraryControlView implements ILibraryControlView, IView {
 
   @Override
   public NamedActionAddableListView<IMp3Track> getTrackListView() {
-    return mp3ListView;
+    return new TabbedActionListView(rightTabbedView, mp3ListView);
   }
 
   @Override
@@ -102,7 +103,6 @@ public class LibraryControlView implements ILibraryControlView, IView {
       leftTabbedView.addView(searchPanel, new ContentProperties(viewProperties.getSearchString()));
     }
     content.add(leftTabbedView.getComponent(), new CC().grow());
-    TabbedView rightTabbedView = TabbedView.CreateUp();
     rightTabbedView.addView(createMp3View(), new ContentProperties(viewProperties.getTracksString()));
     content.add(rightTabbedView.getComponent(), new CC().grow());
   }

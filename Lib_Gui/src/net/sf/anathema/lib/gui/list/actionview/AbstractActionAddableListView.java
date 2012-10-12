@@ -6,7 +6,6 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.GridLayout;
@@ -14,19 +13,9 @@ import java.awt.GridLayout;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.getComponentSpacing;
 
-public abstract class AbstractActionAddableListView<T> implements NamedActionAddableListView<T> {
-  private final JPanel buttonPanel = new JPanel(new GridLayout(
-      1,
-      0,
-      getComponentSpacing(),
-      getComponentSpacing()));
+public abstract class AbstractActionAddableListView<T> implements IActionAddableListView<T> {
+  private final JPanel buttonPanel = new JPanel(new GridLayout(1, 0, getComponentSpacing(), getComponentSpacing()));
   private JPanel content;
-
-  private final JLabel titleLabel;
-
-  public AbstractActionAddableListView(String title) {
-    titleLabel = title != null ? new JLabel(title) : null;
-  }
 
   @Override
   public void addAction(Action action) {
@@ -41,11 +30,6 @@ public abstract class AbstractActionAddableListView<T> implements NamedActionAdd
   }
 
   @Override
-  public void setListTitle(String title) {
-    titleLabel.setText(title);
-  }
-
-  @Override
   public void refreshView() {
     getDisplayComponent().repaint();
   }
@@ -56,12 +40,8 @@ public abstract class AbstractActionAddableListView<T> implements NamedActionAdd
 
   private JPanel createContent() {
     JPanel panel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
-    if (titleLabel != null) {
-      panel.add(titleLabel);
-    }
-    panel.add(
-            isScrollable() ? new JScrollPane(getDisplayComponent()) : getDisplayComponent(),
-            new CC().grow().push());
+    JComponent component = isScrollable() ? new JScrollPane(getDisplayComponent()) : getDisplayComponent();
+    panel.add(component, new CC().grow().push());
     panel.add(buttonPanel);
     return panel;
   }

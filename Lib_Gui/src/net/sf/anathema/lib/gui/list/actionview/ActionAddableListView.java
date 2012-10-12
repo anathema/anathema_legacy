@@ -12,8 +12,7 @@ public class ActionAddableListView<T> extends AbstractActionAddableListView<T> i
 
   private final SmartJList<T> list;
 
-  public ActionAddableListView(String title, Class<T> contentClass) {
-    super(title);
+  public ActionAddableListView(Class<T> contentClass) {
     list = new SmartJList<T>(contentClass);
   }
 

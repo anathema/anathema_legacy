@@ -17,11 +17,10 @@ public class EditableActionAddableListView<V> extends AbstractActionAddableListV
   private final ArrayFactory<V> factory;
 
   public EditableActionAddableListView(ITableColumnViewSettings columnSetting, Class<V> contentClass) {
-    super(null);
-    table = new SmartTable(tableModel, new ITableColumnViewSettings[] { columnSetting });
+    this.table = new SmartTable(tableModel, new ITableColumnViewSettings[] { columnSetting });
     table.getTable().setTableHeader(null);
     table.getTable().setGridColor(new Color(0, 0, 0, 0));
-    factory = new ArrayFactory<V>(contentClass);
+    this.factory = new ArrayFactory<V>(contentClass);
   }
 
   @Override

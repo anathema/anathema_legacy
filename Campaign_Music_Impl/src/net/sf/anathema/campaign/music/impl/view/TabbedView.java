@@ -30,4 +30,12 @@ public class TabbedView implements IView {
   public final JComponent getComponent() {
     return tabbedPane;
   }
+
+  public boolean hasExactlyOneTab() {
+    return tabbedPane.getTabCount() == 1;
+  }
+
+  public void setTitle(String title) {
+    tabbedPane.setTitleAt(0, title);
+  }
 }
