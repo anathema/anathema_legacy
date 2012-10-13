@@ -1,11 +1,5 @@
 package net.sf.anathema.lib.gui.action;
 
-import net.sf.anathema.lib.control.IChangeListener;
-
-public interface ActionConfigurationWithRunnable extends IActionConfiguration {
+public interface ActionConfigurationWithRunnable extends IActionConfiguration, Enabler {
   Runnable getRunnable();
-
-  boolean isEnabled();
-
-  void whenEnabledStateChanges(IChangeListener listener);
 }

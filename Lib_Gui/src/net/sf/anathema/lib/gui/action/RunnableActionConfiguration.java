@@ -1,18 +1,17 @@
 package net.sf.anathema.lib.gui.action;
 
 import net.sf.anathema.lib.control.IChangeListener;
-import org.jmock.example.announcer.Announcer;
 
 import javax.swing.Icon;
 
 public class RunnableActionConfiguration extends ActionConfiguration implements ActionConfigurationWithRunnable {
-  private final Announcer<IChangeListener> listeners = new Announcer<IChangeListener>(IChangeListener.class);
   private final Runnable runnable;
-  private boolean enabled = true;
+  private final Enabler enabler;
 
-  public RunnableActionConfiguration(String name, Icon icon, String tooltip, Runnable runnable) {
+  public RunnableActionConfiguration(String name, Icon icon, String tooltip, Runnable runnable, Enabler enabler) {
     super(name,icon, tooltip);
     this.runnable = runnable;
+    this.enabler = enabler;
   }
 
   @Override
@@ -22,15 +21,11 @@ public class RunnableActionConfiguration extends ActionConfiguration implements 
 
   @Override
   public boolean isEnabled() {
-    return enabled;
+    return enabler.isEnabled();
   }
 
   @Override
   public void whenEnabledStateChanges(IChangeListener listener) {
-    listeners.addListener(listener);
-  }
-
-  protected void setEnabled(boolean enabled) {
-    this.enabled = enabled;
+    enabler.whenEnabledStateChanges(listener);
   }
 }

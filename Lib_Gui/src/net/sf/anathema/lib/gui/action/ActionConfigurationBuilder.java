@@ -7,6 +7,7 @@ public class ActionConfigurationBuilder {
   private Icon icon;
   private String tooltip;
   private Runnable runnable;
+  private Enabler enabler;
 
   public static ActionConfigurationBuilder anAction() {
     return new ActionConfigurationBuilder();
@@ -32,7 +33,12 @@ public class ActionConfigurationBuilder {
     return this;
   }
 
+  public ActionConfigurationBuilder enablingThrough(Enabler enabler) {
+    this.enabler = enabler;
+    return this;
+  }
+
   public ActionConfigurationWithRunnable build() {
-    return new RunnableActionConfiguration(name, icon, tooltip, runnable);
+    return new RunnableActionConfiguration(name, icon, tooltip, runnable, enabler);
   }
 }
