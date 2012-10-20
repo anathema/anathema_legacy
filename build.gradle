@@ -33,6 +33,7 @@ configurations {
   launch4j
   nsis
   scp
+  bundleapp
 }
 dependencies {
   launch4j files(
@@ -41,6 +42,7 @@ dependencies {
   )
   nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
   scp 'org.apache.ant:ant-jsch:1.8.4', 'com.jcraft:jsch:0.1.48'
+  bundleapp files( "./Development_Distribution/Mac/Binaries/appbundler-1.0.jar")
 }
 
 apply plugin: 'idea'
@@ -268,11 +270,12 @@ task releaseWin << {
     define(name: "RELEASE_FILE",    value: "${releaseWinName}")
     define(name: "RELEASE_VERSION", value: "${versionString}")
     define(name: "VERSION",         value: "${versionString}.0")
+    define(name: "JRE_PATH",        value: ".\\Development_Distribution\\Windows\\Binaries\\jre1.7.0_07")
   }
 }
 
 // Mac Release
-task buildMac(type: Copy) {
+/*task buildMac(type: Copy) {
   destinationDir buildDir
   into("${macAppDir}/Contents/") {
     from("Development_Distribution/Mac/")
@@ -299,12 +302,12 @@ task buildMac(type: Copy) {
     from("${buildDir}/dependencies/");
     from("${buildDir}/plugins/");
   }
-}
+  }*/
 
 task releaseMac(type: Zip) {
   archiveName = releaseMacName
   destinationDir = releaseDir
-  into("${projectName}/${macAppDir}") {
+  /*into("${projectName}/${macAppDir}") {
     from("${buildDir}/${macAppDir}")
     exclude "${projectName}/${macAppDir}/Contents/MacOS/JavaApplicationStub" // Skipping this because...
   }
@@ -312,6 +315,11 @@ task releaseMac(type: Zip) {
     from("Development_Distribution/Mac")                // Necessary when building on a windows system
     include 'JavaApplicationStub'
     fileMode = 0755
+    }*/
+    }*/
+  into("${projectName}") {
+    from("${buildDir}")
+      include "${macAppDir}/**"
   }
   into( "${projectName}") {
     from("Development_Documentation/Distribution/English")
@@ -322,15 +330,47 @@ task releaseMac(type: Zip) {
   }
 }
 
+task bundleMac << {
+  ant.taskdef(
+         name: "bundleapp",
+    classname: "com.oracle.appbundler.AppBundlerTask",
+    classpath: configurations.bundleapp.asPath
+  )
+  ant.bundleapp(
+    outputdirectory: "${buildDir}",
+               name: "Anathema",
+        displayname: "Anathema",
+         identifier: "net.sf.anathema",
+               icon: "Development_Distribution/Mac/sungear.icns", //opt
+       shortversion: "${versionString}", //opt
+          signature: "????", //opt
+        //copyright: blah , //opt
+applicationCategory: "public.app-category.utilities" , //opt
+      mainclassname: "net/sf/anathema/AnathemaBootLoader"
+  ) {
+    runtime(    dir: "Development_Distribution/Mac/Binaries/jdk1.7.0_07/Contents/Home")  //opt
+
+    classpath(  dir: "Anathema/build/libs/")
+    classpath( file: "Anathema/resources/icons/core/AnathemaSplashNew.png")
+    classpath(  dir: "${buildDir}/dependencies/")
+    classpath(  dir: "${buildDir}/plugins/")
+      
+    option(   value: "-splash:\$APP_ROOT/Contents/Java/AnathemaSplashNew.png")
+    option(   value: "-Dapple.laf-useScreenMenuBar=true")
+    option(   value: "-Ddefaultrepository=%USER_HOME%/Library/Application Support/Anathema")
+  }
+}
+
 // Release Dependencies
-[buildWin, buildMac, buildZip].each {
+[buildWin, bundleMac, buildZip].each { //buildMac
   it.dependsOn createReleaseDirectory
   it.dependsOn ':Anathema:jar'
 }
 
 releaseZip.dependsOn buildZip
 releaseWin.dependsOn buildWin
-releaseMac.dependsOn buildMac
+//releaseMac.dependsOn buildMac
+releaseMac.dependsOn bundleMac
 buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in the zip distribution
 
 release.dependsOn releaseZip, releaseWin, releaseMac
@@ -346,7 +386,8 @@ tasks.each {
   if (isPluginTask) {
     buildZip.dependsOn it
     buildWin.dependsOn it
-    buildMac.dependsOn it
+    //buildMac.dependsOn it
+    bundleMac.dependsOn it
   }
 }
 

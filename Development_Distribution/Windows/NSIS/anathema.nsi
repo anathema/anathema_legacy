@@ -95,6 +95,8 @@ Section -Anathema SEC0000
     SetOverwrite on
     File /r ..\..\..\build\dependencies\*
     File /r ..\..\..\build\plugins\*
+    SetOutPath $INSTDIR\jre
+    File /r ..\..\..\${JRE_PATH}\*
     SetOutPath $INSTDIR
     File ..\..\..\Anathema\build\libs\Anathema.jar
     File ..\..\..\build\launcher\anathema.exe

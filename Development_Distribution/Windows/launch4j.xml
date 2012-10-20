@@ -10,7 +10,7 @@
   <stayAlive>false</stayAlive>
   <icon>anathema.ico</icon>
   <jre>
-    <minVersion>1.6.0</minVersion>
+    <path>./jre</path>
   </jre>
   <versionInfo>
     <fileDescription>Anathema</fileDescription>
