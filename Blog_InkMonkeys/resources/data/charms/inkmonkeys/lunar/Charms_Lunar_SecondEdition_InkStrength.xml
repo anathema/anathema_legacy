@@ -51,7 +51,7 @@
 			<charmReference id="Lunar.ImpressionsOfStrength" />
 		</prerequisite>
 		<cost>
-			<essence cost="5" />
+			<essence cost="10" />
 		</cost>
 		<duration duration="Instant" />
 		<charmtype type="Reflexive">

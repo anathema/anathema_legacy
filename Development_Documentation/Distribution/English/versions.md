@@ -4,6 +4,11 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 4.5.5
+
+### Bugfixes
+* Fixes cost for (Lunar) "Beast Spirit Defense"
+
 ## Release 4.5.4
 
 This version drops the option to specify a custom look and feel.
