@@ -283,7 +283,7 @@ task releaseWin << {
     define(name: "RELEASE_FILE",    value: "${releaseWinName}")
     define(name: "RELEASE_VERSION", value: "${versionString}")
     define(name: "VERSION",         value: "${versionString}.0")
-    define(name: "JRE_PATH",        value: "build\\jre\\win32")
+    define(name: "JRE_PATH",        value: "build\\jre\\win32\\jre1.7.0_09")
   }
 }
 
@@ -361,7 +361,7 @@ applicationCategory: "public.app-category.utilities" , //opt
       mainclassname: "net/sf/anathema/AnathemaBootLoader"
   ) {
     
-    runtime(    dir: "build/jre/mac64/Contents/Home")  //opt
+    runtime(    dir: "build/jre/mac64/jre1.7.0_09.jre/Contents/Home")  //opt
       
     classpath(  dir: "Anathema/build/libs/")
     classpath( file: "Anathema/resources/icons/core/AnathemaSplashNew.png")
