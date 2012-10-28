@@ -8,7 +8,6 @@ import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.progress.ICancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
-import net.sf.anathema.lib.progress.ProgressUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.io.File;
@@ -80,7 +79,9 @@ public class MusicFolderWalker implements IMusicFolderWalker {
       } catch (Exception e) {
         flawedFiles.add(file);
       }
-      ProgressUtilities.checkInterrupted(cancelFlag);
+      if (cancelFlag.isCanceled()) {
+        throw new InterruptedException();
+      }
       monitor.worked(1);
     }
   }
