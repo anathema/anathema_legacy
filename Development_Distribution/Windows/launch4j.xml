@@ -11,6 +11,7 @@
   <icon>anathema.ico</icon>
   <jre>
     <path>./jre</path>
+    <minVersion>1.7.0_09</minVersion>
   </jre>
   <versionInfo>
     <fileDescription>Anathema</fileDescription>
