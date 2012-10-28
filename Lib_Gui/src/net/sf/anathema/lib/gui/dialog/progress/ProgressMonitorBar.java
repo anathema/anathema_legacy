@@ -1,17 +1,11 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
-import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.progress.ICanceledListener;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
 
 public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor {
   private static final int EXPIRATION_MILLIS = 5000;
@@ -24,7 +18,6 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
   });
 
   private boolean unknownTotalWork;
-  private final Collection<ICanceledListener> canceledListeners = new ArrayList<ICanceledListener>();
   private boolean canceled = false;
   private boolean active = false;
 
@@ -71,9 +64,6 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
   @Override
   public void setCanceled(boolean canceled) {
     this.canceled = canceled;
-    if (canceled) {
-      fireCanceled();
-    }
   }
 
   @Override
@@ -93,30 +83,5 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
     setValue(newValue);
     expirationTimer.restart();
     setIndeterminate(unknownTotalWork);
-  }
-
-  public void finish() {
-    setIndeterminate(false);
-    actuallySetValue(getMaximum(), false);
-  }
-
-  public synchronized void addCanceledListener(ICanceledListener listener) {
-    Preconditions.checkNotNull(listener);
-    canceledListeners.add(listener);
-  }
-
-  public synchronized void removeCanceledListener(ICanceledListener listener) {
-    canceledListeners.remove(listener);
-  }
-
-  private void fireCanceled() {
-    List<ICanceledListener> clonedListeners;
-    synchronized (this) {
-      clonedListeners = new ArrayList<ICanceledListener>(canceledListeners);
-    }
-    for (Iterator<ICanceledListener> iter = clonedListeners.iterator(); iter.hasNext();) {
-      ICanceledListener listener = iter.next();
-      listener.canceled();
-    }
   }
 }

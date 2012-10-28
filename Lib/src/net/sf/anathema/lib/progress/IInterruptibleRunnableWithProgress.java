@@ -25,10 +25,10 @@ public interface IInterruptibleRunnableWithProgress {
    * @param monitor the progress monitor to use to display progress
    * @param cancelable the cancelable to receive requests for cancellation
    * @throws InterruptedException if the operation detects a request to cancel, using
-   *           {@link ICancelable#isCanceled()}, it should exit by throwing an
+   *           {@link Cancelable#isCanceled()}, it should exit by throwing an
    *           {@link InterruptedException}
    */
-  void run(IProgressMonitor monitor, IObservableCancelable cancelable)
+  void run(IProgressMonitor monitor, Cancelable cancelable)
       throws InterruptedException,
       InvocationTargetException;
 

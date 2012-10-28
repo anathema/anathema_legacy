@@ -1,9 +1,9 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
+import net.sf.anathema.lib.progress.Cancelable;
 import net.sf.anathema.lib.progress.DefaultRunnableExecuter;
 import net.sf.anathema.lib.progress.IInterruptibleRunnableWithProgress;
 import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
-import net.sf.anathema.lib.progress.IObservableCancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.progress.IRunnableExecuter;
 
@@ -77,7 +77,7 @@ public class ProgressMonitorExecutor {
   public void run(
       final IInterruptibleRunnableWithProgress runnable,
       final IProgressMonitor progressMonitor,
-      final IObservableCancelable cancelable)
+      final Cancelable cancelable)
       throws InterruptedException,
       InvocationTargetException {
     Runnable actualRunnable = new Runnable() {

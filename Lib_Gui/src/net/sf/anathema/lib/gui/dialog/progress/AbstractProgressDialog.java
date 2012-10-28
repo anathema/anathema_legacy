@@ -1,24 +1,19 @@
 package net.sf.anathema.lib.gui.dialog.progress;
 
 import com.google.common.base.Preconditions;
-import net.sf.anathema.lib.progress.ICanceledListener;
-import net.sf.anathema.lib.progress.IObservableCancelable;
+import net.sf.anathema.lib.progress.Cancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 
 import javax.swing.JComponent;
 import javax.swing.JDialog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
-public abstract class AbstractProgressDialog implements IProgressMonitor, IObservableCancelable, IProgressComponent {
+public abstract class AbstractProgressDialog implements IProgressMonitor, Cancelable, IProgressComponent {
 
   private JDialog dialog;
   private final InternalProgressDialogModel model;
   private boolean disposed = false;
   private boolean showing = false;
   private boolean dialogClosed = false;
-  private final Collection<ICanceledListener> canceledListeners = new ArrayList<ICanceledListener>();
   private final ProgressContainer container;
 
   public AbstractProgressDialog(InternalProgressDialogModel model, ProgressContainer container) {
@@ -85,31 +80,7 @@ public abstract class AbstractProgressDialog implements IProgressMonitor, IObser
   @Override
   public void setCanceled(boolean canceled) {
     model.setCanceled(canceled);
-    if (canceled) {
-      fireCanceled();
-    }
     yield();
-  }
-
-  @Override
-  public synchronized void addCanceledListener(ICanceledListener listener) {
-    Preconditions.checkNotNull(listener);
-    canceledListeners.add(listener);
-  }
-
-  @Override
-  public synchronized void removeCanceledListener(ICanceledListener listener) {
-    canceledListeners.remove(listener);
-  }
-
-  private void fireCanceled() {
-    List<ICanceledListener> clonedListeners;
-    synchronized (this) {
-      clonedListeners = new ArrayList<ICanceledListener>(canceledListeners);
-    }
-    for (ICanceledListener listener : clonedListeners) {
-      listener.canceled();
-    }
   }
 
   @Override

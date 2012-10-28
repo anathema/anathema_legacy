@@ -6,7 +6,7 @@ import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
 import net.sf.anathema.campaign.music.model.libary.ITrackHandler;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.progress.ICancelable;
+import net.sf.anathema.lib.progress.Cancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -32,7 +32,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
   }
 
   @Override
-  public List<File> walk(IResources resources, IProgressMonitor monitor, ICancelable cancelFlag,
+  public List<File> walk(IResources resources, IProgressMonitor monitor, Cancelable cancelFlag,
                          ITrackHandler handler) throws InterruptedException {
     monitor.beginTaskWithUnknownTotalWork(resources.getString(
             "Music.Actions.AddFolder.ProgressMonitor.Preprocessing") + " '" + musicFolder + "'."); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -56,7 +56,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
     });
   }
 
-  private void walkDirectory(IProgressMonitor monitor, ICancelable cancelFlag, String relativePath,
+  private void walkDirectory(IProgressMonitor monitor, Cancelable cancelFlag, String relativePath,
                              ITrackHandler handler, List<File> flawedFiles) throws InterruptedException {
     File file = new File(musicFolder, relativePath);
     for (File child : file.listFiles()) {
@@ -66,7 +66,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
     }
   }
 
-  private void walkFile(IProgressMonitor monitor, ICancelable cancelFlag, String relativePath, ITrackHandler handler,
+  private void walkFile(IProgressMonitor monitor, Cancelable cancelFlag, String relativePath, ITrackHandler handler,
                         List<File> flawedFiles) throws InterruptedException {
     File file = new File(musicFolder, relativePath);
     if (file.isDirectory()) {

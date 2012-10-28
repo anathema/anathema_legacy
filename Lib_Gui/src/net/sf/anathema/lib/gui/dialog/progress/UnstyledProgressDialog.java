@@ -6,7 +6,6 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
-import net.sf.anathema.lib.progress.IObservableCancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import org.jdesktop.swingx.JXLabel;
 
@@ -19,8 +18,7 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.Insets;
 
-public class UnstyledProgressDialog extends AbstractProgressDialog implements IProgressMonitor, IObservableCancelable, IProgressComponent {
-
+public class UnstyledProgressDialog extends AbstractProgressDialog implements IProgressMonitor, IProgressComponent {
   private final Component parentComponent;
   private final String title;
 

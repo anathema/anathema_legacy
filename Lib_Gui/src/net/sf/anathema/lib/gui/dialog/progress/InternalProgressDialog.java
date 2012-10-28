@@ -5,7 +5,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.DialogMessages;
 import net.sf.anathema.lib.gui.layout.ButtonPanelBuilder;
 import net.sf.anathema.lib.gui.swing.GuiUtilities;
-import net.sf.anathema.lib.progress.IObservableCancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 
 import javax.swing.JButton;
@@ -16,7 +15,7 @@ import java.awt.Component;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class InternalProgressDialog extends AbstractProgressDialog implements IProgressMonitor, IObservableCancelable, IProgressComponent {
+public class InternalProgressDialog extends AbstractProgressDialog implements IProgressMonitor, IProgressComponent {
 
   private final SmartAction cancelAction;
   private boolean cancelable = false;
