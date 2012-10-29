@@ -6,6 +6,10 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 4.5.5
 
+This release cannot be pushed through the autoupdate system, and must be downloaded from our website.
+
+Anathema for Win/Mac now ships with a bundled Java 7 JRE.  This means you no longer need to install Java to run Anathema on these platforms.  If you'd like to uninstall Java from your computer, or if you would prefer to have Anathema use your locally installed JRE instead, please see the wiki (insert link to article here) for instructions on how to do this.
+
 ### Bugfixes
 * Fixes cost for (Lunar) "Beast Spirit Defense"
 
