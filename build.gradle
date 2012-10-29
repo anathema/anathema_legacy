@@ -402,7 +402,7 @@ task releaseMac(type: Zip) {
     include 'license.txt'
     include 'versions.md'
     rename  'versions.md', 'release_notes.txt'
-    include 'mountain_lion_instructions.webloc'
+    include 'installation_instructions.webloc'
   }
 }
 
