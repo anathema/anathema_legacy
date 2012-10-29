@@ -48,13 +48,13 @@ dependencies {
   nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
   scp 'org.apache.ant:ant-jsch:1.8.4', 'com.jcraft:jsch:0.1.48'
   bundleapp files( "./Development_Distribution/Mac/Binaries/appbundler-1.0.jar")
-  jreWin 'oracle:jre-win32:1.7.0.9@zip'
-  jreMac 'oracle:jre-mac64:1.7.0.9@zip'
+  jreWin 'oracle:jre-win32:1.7.0_09@zip'
+  jreMac 'oracle:jre-mac64:1.7.0_09@zip'
 }
 
 apply plugin: 'idea'
 
-idea { project { languageLevel = '1.6' } }
+idea { project { languageLevel = '1.7' } }
 
 task wrapper(type: Wrapper) {
   gradleVersion = '1.2'
@@ -74,7 +74,7 @@ String operatingSystem() {
 
 subprojects {
   apply plugin: 'java'
-  sourceCompatibility = 1.6
+  sourceCompatibility = 1.7
 
   apply plugin: 'idea'
   apply plugin: 'eclipse'
@@ -109,7 +109,7 @@ subprojects {
   }
 }
 
-task clean << {
+task clean(type: Delete) << {
   ant.delete(includeEmptyDirs:"true", quiet:"true") {
     fileset(dir:buildDir, includes:"**" )
   }
@@ -141,8 +141,7 @@ task createModule << {
 }
 
 // Release Variables
-ext.jreVersion     = "1.7.0.9"
-ext.jdkVersion     = "1.7.0_09"
+ext.jreVersion     = "1.7.0_09"
 ext.projectName    = "Anathema"
 ext.releaseZipName = "${projectName}_Zip_v${versionString}.zip"
 ext.releaseWinName = "${projectName}_Win_v${versionString}.exe"
@@ -219,7 +218,7 @@ task createReleaseDirectory << {
   releaseDir.mkdirs()
 }
 
-// JRE archive download and extraction into build folder
+// JRE archive download and explosion into build folder
 task prepareWinJRE(type: Copy) {
   def target = new File('build/jre/win32');
   into target
@@ -249,14 +248,15 @@ task prepareJRE dependsOn( prepareWinJRE, prepareMacJRE )
 // Extracts the JRE from a mac with a JDK installed.  This only runs on a Mac.
 // This only need be run by a release manager upgrading the bundled JRE used by Anathema
 task extractMacJRE(type: Zip) {
+  if( !os.equals("mac") ) throw new StopActionException( "The task extractMacJRE must be run on Mac OSX." )
   archiveName = "jre-mac64-${jreVersion}.zip"
   destinationDir = buildDir
-  from("/Library/Java/JavaVirtualMachines/jdk${jdkVersion}.jdk/Contents") {
-    into "jdk${jdkVersion}.jdk/Contents"
+  from("/Library/Java/JavaVirtualMachines/jdk${jreVersion}.jdk/Contents") {
+    into "jre${jreVersion}/Contents"
     include 'Info.plist'
   }
-  from("/Library/Java/JavaVirtualMachines/jdk${jdkVersion}.jdk/Contents/Home/jre") {
-    into "jdk${jdkVersion}.jdk/Contents/Home/jre"
+  from("/Library/Java/JavaVirtualMachines/jdk${jreVersion}.jdk/Contents/Home/jre") {
+    into "jre${jreVersion}/Contents/Home/jre"
     exclude 'bin/',
             'lib/deploy/',
             'lib/deploy.jar',
@@ -308,14 +308,32 @@ task buildWin << {
             classpath: configurations.launch4j.asPath
   )
   ant.launch4j(
-               bindir: launch4jPath,
-           configFile: 'Development_Distribution/Windows/launch4j.xml',
-              outfile: './build/launcher/anathema.exe',
-          fileVersion: "$exeVersion",
-       productVersion: "$exeVersion",
-       txtFileVersion: "$versionText",
-    txtProductVersion: "$versionText"
-  )
+               bindir: launch4jPath
+  ) {
+    config(
+              outfile: 'build/launcher/anathema.exe',
+              jarPath: 'anathema.jar',
+          dontwrapjar: true,
+           headerType: 'gui',
+                 icon: 'Development_Distribution/Windows/anathema.ico'
+    ) {
+      versionInfo(
+          fileVersion: exeVersion,
+       txtFileVersion: versionText,
+      fileDescription: "Anathema Windows Launcher",
+            copyright: "anathema.github.com",
+       productVersion: exeVersion,
+    txtProductVersion: versionText,
+          productName: "$projectName",
+         internalName: "anathema",
+     originalFilename: "anathema.exe"
+      )
+      jre( 
+                 path: "./jre",
+           minVersion: jreVersion
+      )
+    }
+  }
 }
 
 task releaseWin << {
@@ -329,7 +347,7 @@ task releaseWin << {
     define(name: "RELEASE_FILE",    value: "${releaseWinName}")
     define(name: "RELEASE_VERSION", value: "${versionString}")
     define(name: "VERSION",         value: "${versionString}.0")
-    define(name: "JRE_PATH",        value: "build\\jre\\win32\\jre${jdkVersion}")
+    define(name: "JRE_PATH",        value: "build\\jre\\win32\\jre${jreVersion}")
   }
 }
 
@@ -353,7 +371,7 @@ applicationCategory: "public.app-category.utilities" , //opt
       mainclassname: "net/sf/anathema/AnathemaBootLoader"
   ) {
     
-    runtime(    dir: "build/jre/mac64/jdk${jdkVersion}.jdk/Contents/Home")  //opt 
+    runtime(    dir: "build/jre/mac64/jre${jreVersion}/Contents/Home")  //opt 
       
     classpath(  dir: "Anathema/build/libs/")
     classpath( file: "Anathema/resources/icons/core/AnathemaSplashNew.png")
