@@ -4,11 +4,16 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 5.0.0
+
+Anathema for Win/Mac now ships with a bundled Java 7 JRE.  This means you no longer need to install Java to run Anathema on these platforms.  If you'd like to uninstall Java from your computer, or if you would prefer to install your own JRE and have Anathema use that instead, please see the [wiki](https://github.com/anathema/anathema/wiki/System-Requirements) for instructions on how to do this.
+
+
 ## Release 4.5.5
 
-This release cannot be pushed through the autoupdate system, and must be downloaded from our website.
+Our next Anathema release (5.0.0) cannot be downloaded through through the auto-update mechanism, and must be downloaded from our website and installed the old fashioned way.
 
-Anathema for Win/Mac now ships with a bundled Java 7 JRE.  This means you no longer need to install Java to run Anathema on these platforms.  If you'd like to uninstall Java from your computer, or if you would prefer to have Anathema use your locally installed JRE instead, please see the wiki (insert link to article here) for instructions on how to do this.
+We expect it to be ready within 2 weeks, please keep an eye on the forums, our website, or our Google+ page for updates.
 
 ### Bugfixes
 * Fixes cost for (Lunar) "Beast Spirit Defense"
