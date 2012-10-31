@@ -21,7 +21,7 @@ public class EasyLoader extends URLClassLoader {
   }
 
   private static URL[] allJarFilesInDirectory(File folder) {
-    Collection<URL> urls = new ArrayList<URL>();
+    Collection<URL> urls = new ArrayList<>();
     for (File file : folder.listFiles()) {
       urls.add(fileToUrl(file));
     }
@@ -35,9 +35,7 @@ public class EasyLoader extends URLClassLoader {
   private static URL fileToUrl(File input) {
     try {
       return input.toURI().toURL();
-    } catch (MalformedURLException e) {
-      throw new RuntimeException("Could not load all files.", e);
-    } catch (NullPointerException e) {
+    } catch (MalformedURLException | NullPointerException e) {
       throw new RuntimeException("Could not load all files.", e);
     }
   }

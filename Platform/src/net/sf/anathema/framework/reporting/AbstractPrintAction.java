@@ -55,9 +55,7 @@ public abstract class AbstractPrintAction extends SmartAction {
               public void run(IProgressMonitor monitor) throws InvocationTargetException {
                 try {
                   performPrint(monitor, item, selectedReport, selectedFile);
-                } catch (ReportException e) {
-                  throw new InvocationTargetException(e);
-                } catch (IOException e) {
+                } catch (ReportException | IOException e) {
                   throw new InvocationTargetException(e);
                 }
               }

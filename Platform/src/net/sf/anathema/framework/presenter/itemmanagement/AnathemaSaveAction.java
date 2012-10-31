@@ -97,17 +97,11 @@ public class AnathemaSaveAction extends SmartAction {
       persister.save(writeAccess, selectedItem);
       selectedItem.setClean();
     }
-    catch (IOException e) {
+    catch (IOException | RepositoryException e) {
       MessageDialogFactory.showMessageDialog(parentComponent, new Message(
           resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
       Logger.getLogger(getClass()).error(e);
-    }
-    catch (RepositoryException e) {
-      MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-          resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
-      Logger.getLogger(getClass()).error(e);
-    }
-    finally {
+    } finally {
       IOUtils.closeQuietly(stream);
       parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }

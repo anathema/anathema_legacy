@@ -31,10 +31,7 @@ public class FileMp3Track implements IMp3Track {
       checksum = new Mp3ChecksumCalculator().calculate(file);
       fileReferences = new String[] { file.getCanonicalPath() };
     }
-    catch (UnsupportedAudioFileException e) {
-      throw new AnathemaException(e);
-    }
-    catch (NoSuchAlgorithmException e) {
+    catch (UnsupportedAudioFileException | NoSuchAlgorithmException e) {
       throw new AnathemaException(e);
     }
   }

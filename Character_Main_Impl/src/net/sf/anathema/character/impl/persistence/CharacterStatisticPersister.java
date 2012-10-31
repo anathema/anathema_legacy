@@ -95,9 +95,7 @@ public class CharacterStatisticPersister {
       willpowerPersister.load(statisticsElement, character.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
       additonalModelPersister.load(statisticsElement, character.getExtendedConfiguration().getAdditionalModels());
       return character;
-    } catch (CharmException e) {
-      throw new PersistenceException(e);
-    } catch (SpellException e) {
+    } catch (CharmException | SpellException e) {
       throw new PersistenceException(e);
     }
   }
