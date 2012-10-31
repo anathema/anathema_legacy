@@ -142,6 +142,7 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Anathema UNSEC0000
+    RmDir /r /REBOOKOK $PROFILE\.anathema
     RmDir /r /REBOOTOK $INSTDIR\lib
     RmDir /r /REBOOTOK $INSTDIR\jre
     Delete /REBOOTOK $INSTDIR\anathema.jar
