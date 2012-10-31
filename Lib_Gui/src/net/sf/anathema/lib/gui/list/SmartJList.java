@@ -1,25 +1,30 @@
 package net.sf.anathema.lib.gui.list;
 
+import net.sf.anathema.lib.lang.ArrayFactory;
+
 import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SmartJList<T> extends JList {
+import static javax.swing.ListSelectionModel.SINGLE_SELECTION;
 
-  private Class<? extends T> clazz;
+public class SmartJList<T> extends JList<T> {
 
-  public SmartJList(Class<? extends T> contentClass) {
+  private Class<T> clazz;
+
+  public SmartJList(Class<T> contentClass) {
     this.clazz = contentClass;
-    setModel(new DefaultListModel());
+    setModel(new DefaultListModel<T>());
     setSelectionModel(new DefaultListSelectionModel());
+    setSelectionMode(SINGLE_SELECTION);
   }
 
   public void setObjects(T[] objects) {
-    DefaultListModel listModel = (DefaultListModel) getModel();
+    DefaultListModel<T> listModel = (DefaultListModel) getModel();
     listModel.clear();
-    for (Object object : objects) {
+    for (T object : objects) {
       listModel.addElement(object);
     }
   }
@@ -39,18 +44,11 @@ public class SmartJList<T> extends JList {
     selectionModel.setValueIsAdjusting(false);
   }
 
-  @SuppressWarnings("unchecked")
-  @Override
-  public T getSelectedValue() {
-    return (T) super.getSelectedValue();
-  }
-
   @Override
   public T[] getSelectedValues() {
-    return net.sf.anathema.lib.lang.ArrayUtilities.transform(super.getSelectedValues(), clazz);
-  }
-
-  public void setSelectionMode(ListSelectionMode mode) {
-    setSelectionMode(mode.getMode());
+    ArrayFactory<T> factory = new ArrayFactory<>(clazz);
+    List<T> selectedValuesList = getSelectedValuesList();
+    T[] array = factory.createArray(selectedValuesList.size());
+    return selectedValuesList.toArray(array);
   }
 }

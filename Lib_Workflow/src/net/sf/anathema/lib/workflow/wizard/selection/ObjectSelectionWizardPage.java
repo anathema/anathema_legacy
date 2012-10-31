@@ -3,7 +3,6 @@ package net.sf.anathema.lib.workflow.wizard.selection;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.dialog.core.IPageContent;
-import net.sf.anathema.lib.gui.list.ListSelectionMode;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
@@ -59,7 +58,6 @@ public class ObjectSelectionWizardPage<V> extends AbstractAnathemaWizardPage {
   protected void initPageContent() {
     final IListObjectSelectionView<V> listView = view.addSelectionView();
     listView.setObjects(model.getRegisteredObjects());
-    listView.setSelectionType(ListSelectionMode.SingleSelection);
     listView.setCellRenderer(properties.getCellRenderer());
     listView.addObjectSelectionChangedListener(new ObjectValueListener<V>() {
       @Override

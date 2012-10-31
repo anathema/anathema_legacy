@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.gui.selection;
 
 import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.list.ListSelectionMode;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.veto.IVetor;
 import net.sf.anathema.lib.gui.list.veto.VetoableListSelectionModel;
@@ -11,19 +10,16 @@ import javax.swing.ListCellRenderer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import static net.sf.anathema.lib.gui.list.ListSelectionMode.SingleSelection;
+
 public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 
 	private final SmartJList<V> smartList;
 	private final VetoableListSelectionModel selectionModel;
 
-	public ListObjectSelectionView(Class<? extends V> contentClazz) {
-		this(contentClazz, ListSelectionMode.SingleSelection);
-	}
-
-	public ListObjectSelectionView(Class<? extends V> contentClazz,
-			ListSelectionMode mode) {
+	public ListObjectSelectionView(Class<V> contentClazz) {
 		this.smartList = new SmartJList<>(contentClazz);
-		this.selectionModel = new VetoableListSelectionModel(mode);
+		this.selectionModel = new VetoableListSelectionModel(SingleSelection);
 		this.smartList.setSelectionModel(selectionModel);
 	}
 
@@ -64,12 +60,7 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 		smartList.setSelectedObjects(object);
 	}
 
-	@Override
-    public void setSelectedObjects(V[] objects) {
-		smartList.setSelectedObjects(objects);
-	}
-
-	@Override
+  @Override
     public JComponent getComponent() {
 		return smartList;
 	}
@@ -79,19 +70,9 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 		return smartList.getSelectedValue();
 	}
 
-	@Override
-    public V[] getSelectedObjects() {
-		return smartList.getSelectedValues();
-	}
-
-	@Override
+  @Override
     public boolean isObjectSelected() {
 		return getSelectedObject() != null;
-	}
-
-	@Override
-    public void setSelectionType(ListSelectionMode mode) {
-		smartList.setSelectionMode(mode);
 	}
 
 	@Override
