@@ -45,8 +45,8 @@ public class LibraryControlView implements ILibraryControlView, IView {
                             MusicUI icons) {
     this.viewProperties = properties;
     this.content = content;
-    this.libraryListView = new EditableActionAddableListView<ILibrary>(settings, ILibrary.class);
-    this.mp3ListView = new ActionAddableListView<IMp3Track>(IMp3Track.class);
+    this.libraryListView = new EditableActionAddableListView<>(settings, ILibrary.class);
+    this.mp3ListView = new ActionAddableListView<>(IMp3Track.class);
     searchButton.setIcon(icons.getSearchIcon());
   }
 

@@ -1,7 +1,5 @@
 package net.sf.anathema.character.generic.impl.traits;
 
-import java.util.ArrayList;
-
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -9,9 +7,11 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
 
+import java.util.ArrayList;
+
 public class TraitTypeUtils {
 
-  private final ArrayList<ITraitType> allPrerequisiteTypeList = new ArrayList<ITraitType>();
+  private final ArrayList<ITraitType> allPrerequisiteTypeList = new ArrayList<>();
 
   private ITraitType[] getAllCoreTraitTypes() {
     if (allPrerequisiteTypeList.isEmpty()) {

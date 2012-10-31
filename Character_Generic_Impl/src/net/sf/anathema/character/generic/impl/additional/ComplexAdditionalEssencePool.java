@@ -16,7 +16,7 @@ public class ComplexAdditionalEssencePool implements Identified {
 
   private final String id;
   private final CompiledExpression expression;
-  private final Map<Integer, Integer> override = new HashMap<Integer, Integer>();
+  private final Map<Integer, Integer> override = new HashMap<>();
   private final AnathemaExpressionParameter parameter = new AnathemaExpressionParameter();
   private final ExpressionParser parser = new ExpressionParser(new AnathemaExpressionSyntax(),
           parameter);

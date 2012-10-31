@@ -17,8 +17,8 @@ import java.util.List;
 
 public class XmlTemplateRegistry<T> implements IXmlTemplateRegistry<T> {
 
-  private final List<String> idsInProgress = new ArrayList<String>();
-  private final IRegistry<String, T> templateRegistry = new Registry<String, T>();
+  private final List<String> idsInProgress = new ArrayList<>();
+  private final IRegistry<String, T> templateRegistry = new Registry<>();
   private final ICharacterTemplateExtensionResourceCache cache;
   private ITemplateParser<T> templateParser;
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Layer implements ILayer {
 
-  protected final List<IVisualizableNode> nodes = new ArrayList<IVisualizableNode>();
+  protected final List<IVisualizableNode> nodes = new ArrayList<>();
   private ILayer nextLayer;
   private final Dimension gapDimension;
   private final int yPosition;
@@ -261,13 +261,13 @@ public class Layer implements ILayer {
 
   @Override
   public void unrollHorizontalMetanodes() {
-    for (IVisualizableNode node : new ArrayList<IVisualizableNode>(nodes)) {
+    for (IVisualizableNode node : new ArrayList<>(nodes)) {
       node.accept(new IVisualizableNodeVisitor() {
         @Override
         public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
           int index = nodes.indexOf(visitedNode);
           IVisualizableNode[] innerNodes = visitedNode.getInnerNodes();
-          for (IVisualizableNode innerNode : new BackwardsIterable<IVisualizableNode>(innerNodes)) {
+          for (IVisualizableNode innerNode : new BackwardsIterable<>(innerNodes)) {
             nodes.add(index, innerNode);
           }
           visitedNode.resolveMetanode();

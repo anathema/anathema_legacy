@@ -43,7 +43,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
             resources.getString("Music.Actions.AddFolder.ProgressMonitor.Tracks") + //$NON-NLS-1$
             ").", //$NON-NLS-1$
             trackCount);
-    List<File> flawedFiles = new ArrayList<File>();
+    List<File> flawedFiles = new ArrayList<>();
     walkFile(monitor, cancelFlag, "", handler, flawedFiles); //$NON-NLS-1$
     return flawedFiles;
   }

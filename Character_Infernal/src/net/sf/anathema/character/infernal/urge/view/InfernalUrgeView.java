@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InfernalUrgeView extends VirtueFlawView implements IInfernalUrgeView {
-  private final List<ITextView> textViews = new ArrayList<ITextView>();
+  private final List<ITextView> textViews = new ArrayList<>();
 
   public InfernalUrgeView(IntegerViewFactory factory) {
     super(factory);

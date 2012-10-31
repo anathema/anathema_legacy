@@ -13,7 +13,7 @@ public class TaskPaneView<V extends ITaskPaneGroupView> {
 
   private final JXTaskPaneContainer taskPane = new JXTaskPaneContainer();
   private final JScrollPane taskScrollPane = new JScrollPane(taskPane);
-  private final List<V> taskViews = new ArrayList<V>();
+  private final List<V> taskViews = new ArrayList<>();
   private final ITaskPaneGroupViewFactory<V> viewFactory;
 
   public TaskPaneView(ITaskPaneGroupViewFactory<V> viewFactory) {

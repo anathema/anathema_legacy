@@ -37,7 +37,7 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
     IEquipmentAdditionalModel model = (IEquipmentAdditionalModel) character.
                                                                                    getCharacterContext()
                                                                            .getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
-    List<ICardData> data = new ArrayList<ICardData>();
+    List<ICardData> data = new ArrayList<>();
     for (IEquipmentItem item : model.getEquipmentItems()) {
       String title = item.getTitle();
       Paragraph headerText = new Paragraph();
@@ -66,7 +66,7 @@ public class EquipmentCardDataProvider implements ICardDataProvider {
         headerText.add(new Phrase(costSegments[1], resourceProvider.getSymbolFont()));
       }
 
-      List<Phrase> bodyText = new ArrayList<Phrase>();
+      List<Phrase> bodyText = new ArrayList<>();
 
       String description = item.getDescription();
       if (description != null && !description.isEmpty()) {

@@ -1,9 +1,5 @@
 package net.sf.anathema.character.generic.dummy.magic;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.model.IMagicLearnListener;
@@ -11,9 +7,13 @@ import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class DummySpellConfiguration implements ISpellConfiguration {
 
-  private List<ISpell> spells = new ArrayList<ISpell>();
+  private List<ISpell> spells = new ArrayList<>();
 
   @Override
   public void removeSpells(ISpell[] removedSpells) {

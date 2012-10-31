@@ -31,18 +31,18 @@ public class CharacterTemplateRegistryCollection implements ICharacterTemplateRe
   private final IXmlTemplateRegistry<GenericAdditionalRules> rulesRegistry;
 
   public CharacterTemplateRegistryCollection(ICharacterTemplateExtensionResourceCache cache) {
-	  characterTemplateRegistry = new XmlTemplateRegistry<GenericCharacterTemplate>(cache);
-	  groupedTraitTypeRegistry = new XmlTemplateRegistry<GenericGroupedTraitTypeProvider>(cache);
-	  essenceRegistry = new XmlTemplateRegistry<GenericEssenceTemplate>(cache);
-	  creationPointsRegistry = new XmlTemplateRegistry<GenericCreationPoints>(cache);
-	  bonusPointsRegistry = new XmlTemplateRegistry<GenericBonusPointCosts>(cache);
-	  experienceTemplateRegistry = new XmlTemplateRegistry<GenericExperiencePointCosts>(cache);
-	  traitFactoryRegistry = new XmlTemplateRegistry<GenericTraitTemplateFactory>(cache);
-	  traitTemplatePoolRegistry = new XmlTemplateRegistry<GenericTraitTemplatePool>(cache);
-	  magicTemplateRegistry = new XmlTemplateRegistry<GenericMagicTemplate>(cache);
-	  presentationTemplateRegistry = new XmlTemplateRegistry<GenericPresentationTemplate>(cache);
-	  healthTemplateRegistry = new XmlTemplateRegistry<GenericHealthTemplate>(cache);
-	  rulesRegistry = new XmlTemplateRegistry<GenericAdditionalRules>(cache);
+	  characterTemplateRegistry = new XmlTemplateRegistry<>(cache);
+	  groupedTraitTypeRegistry = new XmlTemplateRegistry<>(cache);
+	  essenceRegistry = new XmlTemplateRegistry<>(cache);
+	  creationPointsRegistry = new XmlTemplateRegistry<>(cache);
+	  bonusPointsRegistry = new XmlTemplateRegistry<>(cache);
+	  experienceTemplateRegistry = new XmlTemplateRegistry<>(cache);
+	  traitFactoryRegistry = new XmlTemplateRegistry<>(cache);
+	  traitTemplatePoolRegistry = new XmlTemplateRegistry<>(cache);
+	  magicTemplateRegistry = new XmlTemplateRegistry<>(cache);
+	  presentationTemplateRegistry = new XmlTemplateRegistry<>(cache);
+	  healthTemplateRegistry = new XmlTemplateRegistry<>(cache);
+	  rulesRegistry = new XmlTemplateRegistry<>(cache);
   }
   
   @Override

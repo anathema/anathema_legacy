@@ -15,7 +15,7 @@ public class AggregatedResourceLoader implements ResourceLoader {
 
   @Override
   public Set<ResourceFile> getResourcesMatching(String namePattern) {
-    Set<ResourceFile> files = new HashSet<ResourceFile>();
+    Set<ResourceFile> files = new HashSet<>();
     for (ResourceLoader loader : delegates) {
       files.addAll(loader.getResourcesMatching(namePattern));
     }

@@ -25,7 +25,7 @@ public class CharacterCharmTypes extends AbstractCharmTypes {
 
   @Override
   protected List<Identified> getAdditionalCharmTypes() {
-    List<Identified> typeIds = new ArrayList<Identified>();
+    List<Identified> typeIds = new ArrayList<>();
     if (model.hasUniqueCharmType()) {
       IUniqueCharmType uniqueType = model.getUniqueCharmType();
       typeIds.add(uniqueType.getId());

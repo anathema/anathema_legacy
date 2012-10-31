@@ -16,7 +16,7 @@ import java.util.List;
 
 public class TableOfContentsPrinter {
   private final PdfReportUtils reportUtils = new PdfReportUtils();
-  private final List<ContentEntry> entryList = new ArrayList<ContentEntry>();
+  private final List<ContentEntry> entryList = new ArrayList<>();
   private final SeriesReportUtils seriesUtils = new SeriesReportUtils();
 
   public void addEntry(String entry, int page) {

@@ -10,7 +10,7 @@ import net.sf.anathema.character.model.concept.IMotivation;
 
 public class CharacterConcept implements ICharacterConcept {
 
-  private final ITypedDescription<ICasteType> caste = new TypedDescription<ICasteType>(ICasteType.NULL_CASTE_TYPE);
+  private final ITypedDescription<ICasteType> caste = new TypedDescription<>(ICasteType.NULL_CASTE_TYPE);
   private IMotivation willpowerRegaining;
   private IIntegerDescription age = new IntegerDescription(0);
 

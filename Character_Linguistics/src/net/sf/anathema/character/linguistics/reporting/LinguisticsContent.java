@@ -28,7 +28,7 @@ public class LinguisticsContent extends AbstractSubBoxContent implements ListSub
 
   @Override
   public List<String> getPrintEntries() {
-    List<String> printLanguages = new ArrayList<String>();
+    List<String> printLanguages = new ArrayList<>();
     ILinguisticsModel model = getModel();
     for (Identified language : model.getEntries()) {
       String text = language.getId();

@@ -22,7 +22,7 @@ import java.util.List;
 public class CardReportFactory implements IReportFactory {
 	  @Override
       public Report[] createReport(IResources resources, IAnathemaModel model) {
-		    List <ICardDataProvider> dataProviders = new ArrayList<ICardDataProvider>();
+		    List <ICardDataProvider> dataProviders = new ArrayList<>();
 		  	dataProviders.add(new CharmCardDataProvider(model, resources));
 		  	dataProviders.add(new SpellCardDataProvider(model, resources));
 	  		dataProviders.add(new EquipmentCardDataProvider(resources));

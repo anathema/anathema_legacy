@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 public class DummyCharmData implements ICharmData {
-  private final Set<ICharm> parents = new HashSet<ICharm>();
+  private final Set<ICharm> parents = new HashSet<>();
 
   @Override
   public CharacterType getCharacterType() {

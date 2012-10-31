@@ -20,7 +20,7 @@ public class AutoWrappingTextComponent extends JComponent {
 
   private final int width;
   private final TextContent content = new TextContent();
-  private final ObjectModel<TextSelection> selectionModel = new ObjectModel<TextSelection>();
+  private final ObjectModel<TextSelection> selectionModel = new ObjectModel<>();
   private TextAlignment textAlignment = TextAlignment.LEFT;
 
   public AutoWrappingTextComponent(String text, int width) {

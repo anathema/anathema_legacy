@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class ProperHierarchicalGraph implements IProperHierarchicalGraph, Cloneable {
   // This is volatile instead of final to allow clone to be implemented
-  private volatile Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<Integer, List<ISimpleNode>>();
+  private volatile Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<>();
   private final int deepestLayer;
   private final ISimpleNode[] allNodes;
   private final IGraphType type;

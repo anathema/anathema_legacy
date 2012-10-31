@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class CharmGraphNodeBuilder {
   public static Collection<IIdentifiedRegularNode> createNodesFromCharms(Collection<ICharm> groupCharms) {
-    Map<String, IIdentifiedRegularNode> charmNodesById = new LinkedHashMap<String, IIdentifiedRegularNode>();
+    Map<String, IIdentifiedRegularNode> charmNodesById = new LinkedHashMap<>();
     CharmNodeBuilder.buildNodes(groupCharms, charmNodesById);
     CharmNodeConnector.connectNodes(groupCharms, charmNodesById);
     return charmNodesById.values();

@@ -11,7 +11,7 @@ public class TextBlockFactory {
     Preconditions.checkNotNull(text);
     int endIndex = 0;
     int startIndex = 0;
-    ArrayList<TextBlock> blocks = new ArrayList<TextBlock>();
+    ArrayList<TextBlock> blocks = new ArrayList<>();
     while (endIndex < text.length()) {
       TextBlockDelimiter delimiter = TextBlockDelimiter.forCharacterOrNull(text
           .charAt(endIndex));

@@ -1,18 +1,18 @@
 package net.sf.anathema.graph.hierarchy;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import net.sf.anathema.graph.nodes.DummyNode;
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class HierarchyBuilder implements IHierachyBuilder {
 
   @Override
   public ISimpleNode[] removeLongEdges(IRegularNode[] acyclicGraph) {
-    List<ISimpleNode> hierarchicalGraph = new ArrayList<ISimpleNode>();
+    List<ISimpleNode> hierarchicalGraph = new ArrayList<>();
     Collections.addAll(hierarchicalGraph, acyclicGraph);
     for (IRegularNode node : acyclicGraph) {
       if (node.getLowerToChildren()) {
@@ -35,7 +35,7 @@ public class HierarchyBuilder implements IHierachyBuilder {
   }
 
   private List<ISimpleNode> insertDummyNodes(IRegularNode node, ISimpleNode child) {
-    List<ISimpleNode> dummyNodes = new ArrayList<ISimpleNode>();
+    List<ISimpleNode> dummyNodes = new ArrayList<>();
     node.removeChild(child);
     child.removeParent(node);
     int nodeLayer = node.getLayer();

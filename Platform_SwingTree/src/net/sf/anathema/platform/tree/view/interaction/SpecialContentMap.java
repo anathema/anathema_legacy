@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SpecialContentMap {
-  private final Map<Class, ContentFactory> content = new HashMap<Class, ContentFactory>();
+  private final Map<Class, ContentFactory> content = new HashMap<>();
 
   public void put(Class contentClass, ContentFactory factory) {
     content.put(contentClass, factory);

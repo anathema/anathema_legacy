@@ -52,7 +52,7 @@ public class MusicSearchControl implements IMusicSearchControl {
 
   @Override
   public void executeSearch(Map<ISearchParameter, String> constraintsByParameter) {
-    List<IExtendedSearchParameter> parameterList = new ArrayList<IExtendedSearchParameter>();
+    List<IExtendedSearchParameter> parameterList = new ArrayList<>();
     for (Map.Entry<ISearchParameter, String> keyValue : constraintsByParameter.entrySet()) {
       ISearchParameter parameter = keyValue.getKey();
       String value = keyValue.getValue();

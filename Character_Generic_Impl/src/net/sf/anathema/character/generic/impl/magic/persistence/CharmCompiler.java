@@ -33,8 +33,8 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   //matches stuff like data/charms/solar/Charms_Solar_SecondEdition_Occult.xml
   //the pattern is data/charms/REST_OF_PATH/Charms_TYPE_EDITION_ANYTHING.xml
   private static final String Charm_Data_Extraction_Pattern = ".*/Charms_(.*?)_(.*?)(?:_.*)?\\.xml";
-  private final Map<Identified, List<Document>> charmFileTable = new HashMap<Identified, List<Document>>();
-  private final IIdentificateRegistry<Identified> registry = new IdentificateRegistry<Identified>();
+  private final Map<Identified, List<Document>> charmFileTable = new HashMap<>();
+  private final IIdentificateRegistry<Identified> registry = new IdentificateRegistry<>();
   private final CharmSetBuilder setBuilder = new CharmSetBuilder();
   private final GenericCharmSetBuilder genericBuilder = new GenericCharmSetBuilder();
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
@@ -64,7 +64,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     }
     List<Document> list = charmFileTable.get(type);
     if (list == null) {
-      list = new ArrayList<Document>();
+      list = new ArrayList<>();
       charmFileTable.put(type, list);
     }
     try {
@@ -138,7 +138,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 
   private void buildTypeCharms(Identified type, Document charmDocument,
                                ICharmSetBuilder builder) throws PersistenceException {
-    List<ISpecialCharm> specialCharms = new ArrayList<ISpecialCharm>();
+    List<ISpecialCharm> specialCharms = new ArrayList<>();
     ICharm[] charmArray = builder.buildCharms(charmDocument, specialCharms);
     for (ICharm charm : charmArray) {
       charmCache.addCharm(type, charm);
@@ -147,7 +147,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   }
 
   private void extractParents(Iterable<ICharm> charms) {
-    Map<String, Charm> charmsById = new HashMap<String, Charm>();
+    Map<String, Charm> charmsById = new HashMap<>();
     for (ICharm charm : charms) {
       charmsById.put(charm.getId(), (Charm) charm);
     }

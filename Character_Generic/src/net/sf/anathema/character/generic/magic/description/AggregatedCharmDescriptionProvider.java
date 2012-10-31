@@ -12,7 +12,7 @@ import static com.google.common.collect.Lists.transform;
 
 public class AggregatedCharmDescriptionProvider implements MagicDescriptionProvider {
 
-  private final List<MagicDescriptionProvider> providerList = new ArrayList<MagicDescriptionProvider>();
+  private final List<MagicDescriptionProvider> providerList = new ArrayList<>();
 
   public AggregatedCharmDescriptionProvider(IResources resources) {
     providerList.add(new ShortMagicDescriptionProvider(resources));

@@ -91,7 +91,7 @@ public class LookAndFeelPreferencesElement implements IPreferencesElement {
     // I simply mimicked the previous implementation.
     combo = new JComboBox();
     combo.addActionListener(new LookAndFeelChangeListener(resources));
-    List<LookAndFeelItem> items = new LinkedList<LookAndFeelItem>();
+    List<LookAndFeelItem> items = new LinkedList<>();
     for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
       items.add(new LookAndFeelItem(resources, info.getName(), info.getClassName()));
     }

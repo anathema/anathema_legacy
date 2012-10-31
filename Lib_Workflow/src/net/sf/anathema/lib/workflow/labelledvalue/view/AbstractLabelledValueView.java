@@ -70,7 +70,7 @@ public abstract class AbstractLabelledValueView {
   }
 
   protected Collection<JComponent> getComponents() {
-    List<JComponent> components = new ArrayList<JComponent>();
+    List<JComponent> components = new ArrayList<>();
     components.add(titleLabel);
     components.add(valueLabel);
     return components;

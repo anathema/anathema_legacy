@@ -30,7 +30,7 @@ public class SourceBookCharmFilterPage implements ICharmFilterPage {
   private List<IExaltedSourceBook> excludedBooks;
   private boolean[] includePrereqs;
   private IResources resources;
-  private Map<String, IExaltedSourceBook> namesToBooksMap = new HashMap<String, IExaltedSourceBook>();
+  private Map<String, IExaltedSourceBook> namesToBooksMap = new HashMap<>();
   private JList allowedList;
   private JList excludedList;
 
@@ -116,7 +116,7 @@ public class SourceBookCharmFilterPage implements ICharmFilterPage {
   }
 
   private Object[] convertBooksToNames(List<IExaltedSourceBook> bookList) {
-    List<String> bookNames = new ArrayList<String>();
+    List<String> bookNames = new ArrayList<>();
     for (IExaltedSourceBook book : bookList) {
       String name = resources.getString("ExaltedSourceBook." + book.getId());
       bookNames.add(name);

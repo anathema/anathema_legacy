@@ -69,14 +69,14 @@ public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPoint
 
   @Override
   public void spendOn(IGenericSpecialty[] specialties, IAbilityPointCosts costs) {
-    List<IGenericSpecialty> allSpecialties = new ArrayList<IGenericSpecialty>(Arrays.asList(specialties));
+    List<IGenericSpecialty> allSpecialties = new ArrayList<>(Arrays.asList(specialties));
     for (AdditionalBonusPointPoolCalculator calculator : additionalPoolCalculators) {
       calculator.spend(allSpecialties, costs);
     }
   }
 
   public IDefaultTrait[] sortBackgrounds(IDefaultTrait[] backgrounds) {
-    List<IDefaultTrait> sortedBackgrounds = new ArrayList<IDefaultTrait>();
+    List<IDefaultTrait> sortedBackgrounds = new ArrayList<>();
     for (IDefaultTrait background : backgrounds) {
       if (!isFavoredBackground(background)) {
         sortedBackgrounds.add(background);

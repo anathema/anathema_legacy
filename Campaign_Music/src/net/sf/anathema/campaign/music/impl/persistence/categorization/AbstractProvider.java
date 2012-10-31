@@ -15,7 +15,7 @@ public abstract class AbstractProvider<C> {
       initDataBase(dataBasePersister);
       objectList = dataBasePersister.getAllObjects(objectClass);
     }
-    ArrayFactory<C> arrayFactory = new ArrayFactory<C>(objectClass);
+    ArrayFactory<C> arrayFactory = new ArrayFactory<>(objectClass);
     availableValues = objectList.toArray(arrayFactory.createArray(objectList.size()));
   }
 

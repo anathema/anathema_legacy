@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AnathemaExtensionCollection implements Iterable<ExtensionWithId> {
 
-  private final List<ExtensionWithId> extensions = new ArrayList<ExtensionWithId>();
+  private final List<ExtensionWithId> extensions = new ArrayList<>();
 
   public AnathemaExtensionCollection(Instantiater instantiater) throws InitializationException {
     Collection<IAnathemaExtension> registeredExtensions = instantiater.instantiateAll(Extension.class);

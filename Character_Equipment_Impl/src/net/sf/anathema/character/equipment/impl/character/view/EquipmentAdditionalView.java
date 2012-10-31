@@ -20,11 +20,11 @@ import java.awt.Dimension;
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class EquipmentAdditionalView implements IEquipmentAdditionalView {
-  private final ListObjectSelectionView<String> equipmentPickList = new ListObjectSelectionView<String>(String.class);
+  private final ListObjectSelectionView<String> equipmentPickList = new ListObjectSelectionView<>(String.class);
   private final JPanel panel = new JPanel(new MigLayout(withoutInsets()));
   private final JButton selectButton = new JButton();
   private final JButton refreshButton = new JButton();
-  private final TaskPaneView<EquipmentObjectView> taskPaneView = new TaskPaneView<EquipmentObjectView>(
+  private final TaskPaneView<EquipmentObjectView> taskPaneView = new TaskPaneView<>(
           new ITaskPaneGroupViewFactory<EquipmentObjectView>() {
             @Override
             public EquipmentObjectView createView() {

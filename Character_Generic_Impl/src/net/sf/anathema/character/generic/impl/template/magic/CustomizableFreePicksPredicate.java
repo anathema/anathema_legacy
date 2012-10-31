@@ -10,8 +10,8 @@ import java.util.List;
 public class CustomizableFreePicksPredicate implements Predicate<IMagic> {
 
   private final boolean defaultResponse;
-  private final List<String> exceptionMagicIds = new ArrayList<String>();
-  private final List<String> exceptionGroupIds = new ArrayList<String>();
+  private final List<String> exceptionMagicIds = new ArrayList<>();
+  private final List<String> exceptionGroupIds = new ArrayList<>();
 
   public CustomizableFreePicksPredicate(boolean defaultResponse) {
     this.defaultResponse = defaultResponse;

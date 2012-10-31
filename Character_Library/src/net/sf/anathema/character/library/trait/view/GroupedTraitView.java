@@ -24,7 +24,7 @@ public class GroupedTraitView {
       IIconToggleButtonProperties properties,
       IntegerViewFactory factory) {
     SimpleTraitView view = new SimpleTraitView(factory, labelText, value, maxValue, trait);
-    FrontToggleButtonTraitViewWrapper<SimpleTraitView> traitView = new FrontToggleButtonTraitViewWrapper<SimpleTraitView>(
+    FrontToggleButtonTraitViewWrapper<SimpleTraitView> traitView = new FrontToggleButtonTraitViewWrapper<>(
         view,
         properties,
         selected);

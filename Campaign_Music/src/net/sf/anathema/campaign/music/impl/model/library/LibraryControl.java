@@ -108,7 +108,7 @@ public final class LibraryControl implements ILibraryControl {
 
   @Override
   public void addTrack(String name, File mp3File) throws AnathemaException, IOException {
-    List<IMp3Track> tracks = new ArrayList<IMp3Track>();
+    List<IMp3Track> tracks = new ArrayList<>();
     tracks.add(new FileMp3Track(mp3File));
     musicDataBasePersister.addTracks(name, tracks);
   }

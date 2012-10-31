@@ -233,7 +233,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   @Override
   public IOverviewModel[] getAllModels() {
-    List<IOverviewModel> models = new ArrayList<IOverviewModel>();
+    List<IOverviewModel> models = new ArrayList<>();
 
     boolean showingAttributeGroups = false;
     if (getAttributeModel(AttributeGroupPriority.Primary).getAlotment() > 0) {

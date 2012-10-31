@@ -170,7 +170,7 @@ public enum CircleType implements Identified {
     if (maximumCircle == null) {
       return new CircleType[0];
     }
-    List<CircleType> circleList = new ArrayList<CircleType>();
+    List<CircleType> circleList = new ArrayList<>();
     for (CircleType circle : allCircles) {
       if (circle.compareTo(maximumCircle) <= 0) {
         circleList.add(circle);

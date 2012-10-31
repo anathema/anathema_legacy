@@ -2,6 +2,8 @@ package net.sf.anathema.character.generic.framework;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
+import net.sf.anathema.character.generic.data.IExtensibleDataSet;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
@@ -23,20 +25,18 @@ import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.registry.Registry;
-import net.sf.anathema.character.generic.data.IExtensibleDataSet;
-import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 
 public class CharacterGenerics implements ICharacterGenerics {
 
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = new BackgroundRegistry();
   private final ITemplateRegistry templateRegistry = new TemplateRegistry();
-  private final IRegistry<String, IAdditionalModelFactory> additionalModelRegistry = new Registry<String, IAdditionalModelFactory>();
-  private final IRegistry<String, IAdditionalViewFactory> additionalViewRegistry = new Registry<String, IAdditionalViewFactory>();
+  private final IRegistry<String, IAdditionalModelFactory> additionalModelRegistry = new Registry<>();
+  private final IRegistry<String, IAdditionalViewFactory> additionalViewRegistry = new Registry<>();
   private final IRegistry<String, IAdditionalPersisterFactory> additionalPersisterRegistry;
-  private final IIdentificateRegistry<IGlobalAdditionalTemplate> additionalTemplateRegistry = new IdentificateRegistry<IGlobalAdditionalTemplate>();
+  private final IIdentificateRegistry<IGlobalAdditionalTemplate> additionalTemplateRegistry = new IdentificateRegistry<>();
   private final ICharacterTemplateRegistryCollection templateRegistries;
-  private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry = new Registry<ICharacterType, ICasteCollection>();
-  private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<String, IAdditionalTemplateParser>();
+  private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry = new Registry<>();
+  private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<>();
   private final ICharmProvider charmProvider;
   private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
   private final IDataFileProvider dataFileProvider;

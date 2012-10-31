@@ -1,16 +1,16 @@
 package net.sf.anathema.character.generic.impl.magic.charm.prerequisite;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class CompositeLearnWorker implements ICharmLearnWorker {
 
   private final ICharmLearnArbitrator learnArbitrator;
-  private final Set<Charm> forgottenCharm = new HashSet<Charm>();
+  private final Set<Charm> forgottenCharm = new HashSet<>();
 
   public CompositeLearnWorker(ICharmLearnArbitrator learnArbitrator) {
     this.learnArbitrator = learnArbitrator;

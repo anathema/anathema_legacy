@@ -62,9 +62,9 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   private final ISpecialCharmManager manager;
   private final MartialArtsCharmTree martialArtsCharmTree;
-  private final Map<Identified, ICharmTree> alienTreesByType = new HashMap<Identified, ICharmTree>();
-  private final Map<Identified, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<Identified, ILearningCharmGroup[]>();
-  private final Map<ICharacterType, ICharmTemplate> templatesByType = new HashMap<ICharacterType, ICharmTemplate>();
+  private final Map<Identified, ICharmTree> alienTreesByType = new HashMap<>();
+  private final Map<Identified, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<>();
+  private final Map<ICharacterType, ICharmTemplate> templatesByType = new HashMap<>();
   private final ICharacterType[] types;
   private final ILearningCharmGroupContainer learningCharmGroupContainer = new ILearningCharmGroupContainer() {
     @Override
@@ -77,7 +77,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharmProvider provider;
   private final ICharmGroupArbitrator arbitrator;
-  private List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
+  private List<ICharmFilter> filterSet = new ArrayList<>();
   private PrerequisiteModifyingCharms prerequisiteModifyingCharms;
 
   public CharmConfiguration(IHealthConfiguration health, ICharacterModelContext context, ITemplateRegistry registry,
@@ -85,7 +85,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     this.manager = new SpecialCharmManager(this, health, context);
     this.context = context;
     this.provider = provider;
-    List<ICharacterType> allCharacterTypes = new ArrayList<ICharacterType>();
+    List<ICharacterType> allCharacterTypes = new ArrayList<>();
     ICharmTemplate nativeCharmTemplate = getNativeCharmTemplate(registry);
     this.arbitrator = new LearningCharmGroupArbitrator(nativeCharmTemplate, context);
     this.martialArtsCharmTree = new MartialArtsCharmTree(nativeCharmTemplate);
@@ -144,7 +144,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private ILearningCharmGroup[] createGroups(ICharmGroup[] charmGroups) {
-    List<ILearningCharmGroup> newGroups = new ArrayList<ILearningCharmGroup>();
+    List<ILearningCharmGroup> newGroups = new ArrayList<>();
     ICharmLearnListener mergedListener = new CharmLearnAdapter() {
       @Override
       public void charmLearned(ICharm charm) {
@@ -229,7 +229,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ILearningCharmGroup[] getAllGroups() {
-    List<ILearningCharmGroup> allGroups = new ArrayList<ILearningCharmGroup>();
+    List<ILearningCharmGroup> allGroups = new ArrayList<>();
     for (ILearningCharmGroup[] groups : nonMartialArtsGroupsByType.values()) {
       allGroups.addAll(Arrays.asList(groups));
     }
@@ -285,7 +285,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ICharm[] getCreationLearnedCharms() {
-    List<ICharm> allLearnedCharms = new ArrayList<ICharm>();
+    List<ICharm> allLearnedCharms = new ArrayList<>();
     for (ILearningCharmGroup group : getAllGroups()) {
       Collections.addAll(allLearnedCharms, group.getCreationLearnedCharms());
     }
@@ -306,7 +306,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ICharm[] getLearnedCharms(boolean experienced) {
-    List<ICharm> allLearnedCharms = new ArrayList<ICharm>();
+    List<ICharm> allLearnedCharms = new ArrayList<>();
     for (ILearningCharmGroup group : getAllGroups()) {
       Collections.addAll(allLearnedCharms, group.getCreationLearnedCharms());
       if (experienced) {
@@ -420,7 +420,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (!context.isFullyLoaded()) {
       return;
     }
-    List<ICharm> charmsToUnlearn = new ArrayList<ICharm>();
+    List<ICharm> charmsToUnlearn = new ArrayList<>();
     for (ICharm charm : this.getLearnedCharms(true)) {
       boolean prerequisitesForCharmAreNoLongerMet = !isLearnable(charm);
       boolean charmCanBeUnlearned = isUnlearnable(charm);
@@ -566,7 +566,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private ILearningCharmGroup getGroupById(ICharacterType characterType, String groupId) {
-    List<ILearningCharmGroup> candidateGroups = new ArrayList<ILearningCharmGroup>();
+    List<ILearningCharmGroup> candidateGroups = new ArrayList<>();
     Collections.addAll(candidateGroups, getCharmGroups(characterType));
     Collections.addAll(candidateGroups, getMartialArtsGroups());
     ICharmTemplate charmTemplate = templatesByType.get(characterType);

@@ -25,7 +25,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private JPanel contentPanel;
   private final JPanel descriptionPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
-  private final ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<String>(String.class);
+  private final ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<>(String.class);
   private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
   private final JPanel editTemplateButtonPanel = new JPanel(new MigLayout(withoutInsets().wrapAfter(1)));
   private final JScrollPane templateListScrollPane = new JScrollPane(templateListView.getComponent());
@@ -48,7 +48,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
 
   @Override
   public IActionAddableListView<IEquipmentStats> initStatsListView(ListCellRenderer renderer) {
-    statsListView = new SingleSelectionActionAddableListView<IEquipmentStats>(IEquipmentStats.class);
+    statsListView = new SingleSelectionActionAddableListView<>(IEquipmentStats.class);
     statsListView.setListCellRenderer(renderer);
     return statsListView;
   }

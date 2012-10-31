@@ -15,7 +15,7 @@ import java.util.List;
 public class FlexibleArrow implements GraphicsElement, ExtensibleArrow {
   private static final int RADIUS = 6;
   private static final int DIAMETER = RADIUS * 2;
-  private final List<Point> points = new ArrayList<Point>();
+  private final List<Point> points = new ArrayList<>();
 
   @Override
   public void addPoint(int x, int y) {

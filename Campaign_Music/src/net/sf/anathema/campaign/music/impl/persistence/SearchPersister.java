@@ -17,7 +17,7 @@ public class SearchPersister {
     configureQuery(parameters, query);
     @SuppressWarnings("unchecked")
     ObjectSet<DbMp3Track> set = query.execute();
-    List<DbMp3Track> tracks = new ArrayList<DbMp3Track>();
+    List<DbMp3Track> tracks = new ArrayList<>();
     while (set.hasNext()) {
       tracks.add(set.next());
     }

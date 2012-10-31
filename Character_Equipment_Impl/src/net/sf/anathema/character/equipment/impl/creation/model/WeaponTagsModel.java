@@ -1,20 +1,20 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+
 public class WeaponTagsModel implements IWeaponTagsModel {
 
-  private final Map<WeaponTag, BooleanValueModel> enabledMap = new EnumMap<WeaponTag, BooleanValueModel>(
+  private final Map<WeaponTag, BooleanValueModel> enabledMap = new EnumMap<>(
       WeaponTag.class);
-  private final Map<WeaponTag, BooleanValueModel> selectedMap = new EnumMap<WeaponTag, BooleanValueModel>(
+  private final Map<WeaponTag, BooleanValueModel> selectedMap = new EnumMap<>(
       WeaponTag.class);
 
   private final IBooleanValueChangedListener updateRangeEnabledListener = new IBooleanValueChangedListener() {
@@ -51,7 +51,7 @@ public class WeaponTagsModel implements IWeaponTagsModel {
 
   @Override
   public IWeaponTag[] getSelectedTags() {
-    List<IWeaponTag> tags = new ArrayList<IWeaponTag>();
+    List<IWeaponTag> tags = new ArrayList<>();
     for (WeaponTag tag : selectedMap.keySet()) {
       if (isSelected(tag)) {
         tags.add(tag);

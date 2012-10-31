@@ -20,7 +20,7 @@ public class FavoredIncrementChecker implements IIncrementChecker {
       ICharacterTemplate template,
       ICoreTraitConfiguration traitConfiguration) {
     int maxFavoredAbilityCount = template.getCreationPoints().getAbilityCreationPoints().getFavorableTraitCount();
-    List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
+    List<ITraitType> abilityTypes = new ArrayList<>();
     for (IGroupedTraitType traitType : template.getAbilityGroups()) {
       abilityTypes.add(traitType.getTraitType());
     }
@@ -34,7 +34,7 @@ public class FavoredIncrementChecker implements IIncrementChecker {
 	      ICharacterTemplate template,
 	      ICoreTraitConfiguration traitConfiguration) {
 	    int maxFavoredAttributeCount = template.getCreationPoints().getAttributeCreationPoints().getFavorableTraitCount();
-	    List<ITraitType> attributeTypes = new ArrayList<ITraitType>();
+	    List<ITraitType> attributeTypes = new ArrayList<>();
 	    for (IGroupedTraitType traitType : template.getAttributeGroups()) {
 	      attributeTypes.add(traitType.getTraitType());
 	    }
@@ -48,7 +48,7 @@ public class FavoredIncrementChecker implements IIncrementChecker {
 	      ICharacterTemplate template,
 	      ICoreTraitConfiguration traitConfiguration) {
 	    int maxFavoredAttributeCount = 1;
-	    List<ITraitType> yoziTypes = new ArrayList<ITraitType>();
+	    List<ITraitType> yoziTypes = new ArrayList<>();
 	    for (IGroupedTraitType traitType : template.getYoziGroups())
 	      yoziTypes.add(traitType.getTraitType());
 	    return new FavoredIncrementChecker(

@@ -37,7 +37,7 @@ public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements Con
 
   private static List<IMagicStats> collectPrintMagic(final IGenericCharacter character, final boolean includeSpells,
           final boolean includeCharms) {
-    final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
+    final List<IMagicStats> printStats = new ArrayList<>();
     if (includeCharms) {
       for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
         if (GenericCharmUtilities.shouldShowCharm(stats, character)) {

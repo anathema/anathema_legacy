@@ -29,7 +29,7 @@ public class SpecialtiesEncoder extends AbstractNamedTraitEncoder implements INa
   public float encode(SheetGraphics graphics, ReportSession session, Position position, float width, float height) {
     IGenericCharacter character = session.getCharacter();
     String title = getResources().getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$
-    List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
+    List<IValuedTraitReference> references = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {
         Collections.addAll(references, getTraitReferences(character.getSpecialties(traitType), traitType));

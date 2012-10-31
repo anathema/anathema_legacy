@@ -45,7 +45,7 @@ public class MutationPersister extends AbstractQualityPersister<IMutation> {
     int value = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
     boolean creationActive = ElementUtilities.getBooleanAttribute(element, ATTRIB_CREATION_ACTIVE, true);
     boolean experienceActive = ElementUtilities.getBooleanAttribute(element, ATTRIB_EXPERIENCE_ACTIVE, false);
-    model.addQualitySelection(new QualitySelection<IMutation>(mutationModel.getMutationById(giftId), value, creationActive, experienceActive));
+    model.addQualitySelection(new QualitySelection<>(mutationModel.getMutationById(giftId), value, creationActive, experienceActive));
   }
 
   @Override

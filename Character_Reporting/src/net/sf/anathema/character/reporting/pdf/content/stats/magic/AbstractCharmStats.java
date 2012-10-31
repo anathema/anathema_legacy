@@ -39,12 +39,12 @@ public abstract class AbstractCharmStats extends AbstractMagicStats<ICharm> {
 
   @Override
   public String getSourceString(IResources resources) {
-    IMagicSourceStringBuilder<ICharm> stringBuilder = new MagicSourceStringBuilder<ICharm>(resources);
+    IMagicSourceStringBuilder<ICharm> stringBuilder = new MagicSourceStringBuilder<>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
 
   protected String[] getDetailKeys() {
-    List<String> details = new ArrayList<String>();
+    List<String> details = new ArrayList<>();
     for (ICharmAttribute attribute : getMagic().getAttributes()) {
       String attributeId = attribute.getId();
       if (attribute.isVisualized()) {

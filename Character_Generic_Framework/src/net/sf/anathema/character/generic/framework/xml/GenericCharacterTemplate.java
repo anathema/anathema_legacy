@@ -49,7 +49,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private GenericPresentationTemplate presentationTemplate;
   private ICasteCollection casteCollection = new CasteCollection(new ICasteType[0]);
   // This is volatile instead of final to allow clone to be implemented
-  private volatile List<IAdditionalTemplate> additionalTemplates = new ArrayList<IAdditionalTemplate>();
+  private volatile List<IAdditionalTemplate> additionalTemplates = new ArrayList<>();
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
   private boolean npcOnly;
   private boolean isCustomTemplate;
@@ -191,7 +191,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
     }
     clone.additionalRules = new GenericAdditionalRules();
     clone.casteCollection = new CasteCollection(new ICasteType[0]);
-    clone.additionalTemplates = new ArrayList<IAdditionalTemplate>();
+    clone.additionalTemplates = new ArrayList<>();
     clone.healthTemplate = new GenericHealthTemplate();
     if (bonusPointCosts != null) {
       clone.bonusPointCosts = bonusPointCosts.clone();

@@ -157,7 +157,7 @@ public class SpecialCharmBuilder {
 
     String traitString = repurchaseElement.attributeValue(ATTRIB_TRAIT);
     ITraitType trait = traitTypeFinder.getTrait(traitString);
-    List<CharmTier> tiers = new ArrayList<CharmTier>();
+    List<CharmTier> tiers = new ArrayList<>();
 
     for (Object repurchaseObj : repurchaseElement.elements(TAG_REPURCHASE)) {
       Element repurchase = (Element) repurchaseObj;
@@ -193,8 +193,8 @@ public class SpecialCharmBuilder {
     if (multiEffectElement == null) {
       return null;
     }
-    List<String> effects = new ArrayList<String>();
-    Map<String, String> prereqEffectMap = new HashMap<String, String>();
+    List<String> effects = new ArrayList<>();
+    Map<String, String> prereqEffectMap = new HashMap<>();
     for (Object effectObj : multiEffectElement.elements(TAG_EFFECT)) {
       Element effect = (Element) effectObj;
       String name = effect.attributeValue(ATTRIB_NAME);
@@ -214,12 +214,12 @@ public class SpecialCharmBuilder {
       return null;
     }
     boolean requiresBase = ElementUtilities.getBooleanAttribute(upgradableElement, ATTRIB_REQUIRES_BASE, true);
-    List<String> upgrades = new ArrayList<String>();
-    Map<String, Integer> bpCosts = new HashMap<String, Integer>();
-    Map<String, Integer> xpCosts = new HashMap<String, Integer>();
-    Map<String, Integer> essenceMins = new HashMap<String, Integer>();
-    Map<String, Integer> traitMins = new HashMap<String, Integer>();
-    Map<String, ITraitType> traits = new HashMap<String, ITraitType>();
+    List<String> upgrades = new ArrayList<>();
+    Map<String, Integer> bpCosts = new HashMap<>();
+    Map<String, Integer> xpCosts = new HashMap<>();
+    Map<String, Integer> essenceMins = new HashMap<>();
+    Map<String, Integer> traitMins = new HashMap<>();
+    Map<String, ITraitType> traits = new HashMap<>();
 
     for (Object upgradeObj : upgradableElement.elements(TAG_UPGRADE)) {
       Element upgrade = (Element) upgradeObj;
@@ -272,7 +272,7 @@ public class SpecialCharmBuilder {
       return null;
     }
     double cost = Double.parseDouble(subeffectElement.attributeValue(TAG_BP_COST));
-    List<String> subeffects = new ArrayList<String>();
+    List<String> subeffects = new ArrayList<>();
     for (Object subeffectObj : subeffectElement.elements(TAG_SUBEFFECT)) {
       Element subeffect = (Element) subeffectObj;
       String name = subeffect.attributeValue(ATTRIB_NAME);

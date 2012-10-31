@@ -34,7 +34,7 @@ public class GenericCharmContent implements SubBoxContent {
   }
 
   public List<String> getTraitLabels() {
-    List<String> traits = new ArrayList<String>();
+    List<String> traits = new ArrayList<>();
     for (ITraitType trait : getTraits()) {
       String text = getTraitLabel(trait);
       traits.add(text);
@@ -70,7 +70,7 @@ public class GenericCharmContent implements SubBoxContent {
   }
 
   private List<ITraitType> getAllTraitsFor(IIdentifiedTraitTypeGroup[] groups) {
-    List<ITraitType> traits = new ArrayList<ITraitType>();
+    List<ITraitType> traits = new ArrayList<>();
     for (ITraitTypeGroup group : groups) {
       for (ITraitType trait : group.getAllGroupTypes()) {
         traits.add(trait);

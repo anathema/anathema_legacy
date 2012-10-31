@@ -48,7 +48,7 @@ public class SwingGraphFactoryTest {
 
   private void addNodesToLayer(ILayer layer, int amount) {
     IVisualizableNode[] nodes = new IVisualizableNode[amount];
-    ArrayList<IVisualizableNode> list = new ArrayList<IVisualizableNode>();
+    ArrayList<IVisualizableNode> list = new ArrayList<>();
     for (int i = 0; i < amount; i++) {
       list.add(mock(IVisualizableNode.class));
     }

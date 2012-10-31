@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class CharacterModuleObjectMap implements ICharacterModuleObjectMap {
   private final Map<Class<? extends ICharacterModule<?>>, ICharacterModuleObject> moduleObjects =
-          new HashMap<Class<? extends ICharacterModule<?>>, ICharacterModuleObject>();
+          new HashMap<>();
 
   @Override
   @SuppressWarnings("unchecked")

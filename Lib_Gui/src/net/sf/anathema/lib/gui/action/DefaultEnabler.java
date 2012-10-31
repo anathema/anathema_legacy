@@ -4,7 +4,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 public class DefaultEnabler implements Enabler {
-  private final Announcer<IChangeListener> listeners = new Announcer<IChangeListener>(IChangeListener.class);
+  private final Announcer<IChangeListener> listeners = new Announcer<>(IChangeListener.class);
   private boolean enabled = true;
 
   @Override

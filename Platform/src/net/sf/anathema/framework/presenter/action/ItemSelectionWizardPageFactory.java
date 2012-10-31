@@ -37,7 +37,7 @@ public class ItemSelectionWizardPageFactory implements IWizardFactory {
       throw new IllegalArgumentException("Bad template type."); //$NON-NLS-1$
     }
     PrintNameFile[] printNameFiles = access.collectClosedPrintNameFiles(type);
-    final IObjectSelectionWizardModel<PrintNameFile> model = new ObjectSelectionWizardModel<PrintNameFile>(
+    final IObjectSelectionWizardModel<PrintNameFile> model = new ObjectSelectionWizardModel<>(
         printNameFiles,
         new LenientLegalityProvider<PrintNameFile>());
     model.addListener(new IChangeListener() {
@@ -46,9 +46,9 @@ public class ItemSelectionWizardPageFactory implements IWizardFactory {
         ((ConfigurableFileProvider) template).setFile(model.getSelectedObject().getFile());
       }
     });
-    IObjectSelectionView<PrintNameFile> view = new ListObjectSelectionPageView<PrintNameFile>(PrintNameFile.class);
-    Registry<PrintNameFile, IAnathemaWizardModelTemplate> modelTemplateRegistry = new Registry<PrintNameFile, IAnathemaWizardModelTemplate>();
-    return new ObjectSelectionWizardPage<PrintNameFile>(
+    IObjectSelectionView<PrintNameFile> view = new ListObjectSelectionPageView<>(PrintNameFile.class);
+    Registry<PrintNameFile, IAnathemaWizardModelTemplate> modelTemplateRegistry = new Registry<>();
+    return new ObjectSelectionWizardPage<>(
         new NullWizardPageRegistry(),
         modelTemplateRegistry,
         model,

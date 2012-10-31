@@ -13,7 +13,7 @@ public class UnselectingComboBoxModel extends AbstractListModel implements Mutab
   private Object selectedObject;
 
   public UnselectingComboBoxModel() {
-    objects = new Vector<Object>();
+    objects = new Vector<>();
   }
 
   public UnselectingComboBoxModel(Object items[]) {

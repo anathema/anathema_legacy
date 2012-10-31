@@ -67,7 +67,7 @@ public class EssenceConfigurationPresenter implements Presenter {
     if (essence.hasPeripheralPool()) {
       return addPool("EssencePool.Name.Peripheral", essence.getPeripheralPool());
     }
-    return new NullValueView<String>();
+    return new NullValueView<>();
   }
 
   private IValueView<String> addPool(String labelKey, String pool) {

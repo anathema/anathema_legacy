@@ -14,8 +14,8 @@ import java.util.Map;
 public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
 
   private final ITreePresentationProperties properties;
-  private final Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent = new HashMap<ISimpleNode, IVisualizableNode>();
-  private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors = new MultiEntryMap<ISimpleNode, ISimpleNode>();
+  private final Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent = new HashMap<>();
+  private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors = new MultiEntryMap<>();
   private final VisualizableNodeFactory nodeFactory;
   private final LayeredGraph graph;
 

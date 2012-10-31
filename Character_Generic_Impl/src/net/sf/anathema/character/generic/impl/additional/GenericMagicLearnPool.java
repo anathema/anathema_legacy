@@ -22,8 +22,8 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
 
   private final IBackgroundTemplate template;
   private final boolean defaultResponse;
-  private final List<String> exceptionIds = new ArrayList<String>();
-  private final Map<CircleType, Integer> typesByMinimumValue = new HashMap<CircleType, Integer>();
+  private final List<String> exceptionIds = new ArrayList<>();
+  private final Map<CircleType, Integer> typesByMinimumValue = new HashMap<>();
   private CircleType maximumCircle = CircleType.Terrestrial;
   private IPointModification pointModification = new NullPointModification();
 

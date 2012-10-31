@@ -6,7 +6,7 @@ import org.jmock.example.announcer.Announcer;
 
 public class ProxyBooleanValueView implements IBooleanValueView {
   private final String label;
-  private final Announcer<IBooleanValueChangedListener> listeners = new Announcer<IBooleanValueChangedListener>(
+  private final Announcer<IBooleanValueChangedListener> listeners = new Announcer<>(
           IBooleanValueChangedListener.class);
   private IBooleanValueView actualView;
   private boolean selected = false;

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class BooleanSelectionSpecialNodeView implements ISpecialNodeView, ToggleButtonSpecialNodeView {
   private final ISpecialCharm charm;
-  private final List<ProxyBooleanValueView> views = new ArrayList<ProxyBooleanValueView>();
+  private final List<ProxyBooleanValueView> views = new ArrayList<>();
 
   public BooleanSelectionSpecialNodeView(ISpecialCharm charm) {
     this.charm = charm;

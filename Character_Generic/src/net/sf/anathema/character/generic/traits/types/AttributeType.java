@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.traits.types;
 
+import net.sf.anathema.character.generic.traits.ITraitType;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import net.sf.anathema.character.generic.traits.ITraitType;
 
 public enum AttributeType implements ITraitType {
 
@@ -14,7 +14,7 @@ public enum AttributeType implements ITraitType {
   Perception(AttributeGroupType.Mental), Intelligence(AttributeGroupType.Mental), Wits(AttributeGroupType.Mental);
 
   public static AttributeType[] getAllFor(AttributeGroupType groupType) {
-    List<AttributeType> foundTypes = new ArrayList<AttributeType>();
+    List<AttributeType> foundTypes = new ArrayList<>();
     AttributeType[] allTypes = values();
     for (AttributeType type : allTypes) {
       if (type.getGroupType() == groupType) {

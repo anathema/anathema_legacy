@@ -14,7 +14,7 @@ import java.util.List;
 public class ItemManagmentModel implements IItemManagementModel {
 
   private final Announcer<IItemManagementModelListener> listeners = Announcer.to(IItemManagementModelListener.class);
-  private final List<IItem> allItems = new ArrayList<IItem>();
+  private final List<IItem> allItems = new ArrayList<>();
   private IItem selectedItem;
 
   @Override

@@ -16,7 +16,7 @@ import java.util.Set;
 
 public class CharmTree implements ICharmTree {
 
-  private final Map<String, ICharm> charmById = new HashMap<String, ICharm>();
+  private final Map<String, ICharm> charmById = new HashMap<>();
   private ICharm[] allCharms;
 
   public CharmTree(ICharmTemplate charmTemplate) {
@@ -57,15 +57,15 @@ public class CharmTree implements ICharmTree {
 
   @Override
   public final ICharmGroup[] getAllCharmGroups() {
-    Set<String> charmGroupSet = new HashSet<String>();
-    List<ICharmGroup> charmGroups = new ArrayList<ICharmGroup>();
+    Set<String> charmGroupSet = new HashSet<>();
+    List<ICharmGroup> charmGroups = new ArrayList<>();
     addCharmGroupsFor(charmGroupSet, charmGroups, getAllCharms());
     return charmGroups.toArray(new ICharmGroup[charmGroups.size()]);
   }
 
   @Override
   public final List<ICharm> getAllCharmsForGroup(String id) {
-    List<ICharm> groupCharms = new ArrayList<ICharm>();
+    List<ICharm> groupCharms = new ArrayList<>();
     for (ICharm charm : getAllCharms()) {
       if (charm.getGroupId().equals(id)) {
         groupCharms.add(charm);

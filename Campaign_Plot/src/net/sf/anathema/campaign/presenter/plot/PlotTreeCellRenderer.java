@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class PlotTreeCellRenderer extends DefaultTreeCellRenderer {
 
-  private final Map<String, Icon> iconsByTimeUnitId = new HashMap<String, Icon>();
+  private final Map<String, Icon> iconsByTimeUnitId = new HashMap<>();
 
   public PlotTreeCellRenderer(IResources resources) {
     PlotUI plotUI = new PlotUI(resources);

@@ -39,7 +39,7 @@ public class HighestTraitVirtueFlawModel extends VirtueFlawModel {
   @Override
   public ITraitType[] getFlawVirtueTypes() {
     List<IGenericTrait> sortedVirtues = sorter.sortDescending(virtues);
-    List<ITraitType> highestVirtueTypes = new ArrayList<ITraitType>();
+    List<ITraitType> highestVirtueTypes = new ArrayList<>();
     int highestVirtueValue = sortedVirtues.get(0).getCurrentValue();
     for (IGenericTrait trait : sortedVirtues) {
       if (trait.getCurrentValue() == highestVirtueValue) {

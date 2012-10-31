@@ -33,7 +33,7 @@ public class SpellStats extends AbstractMagicStats<ISpell> {
 
   @Override
   public String getSourceString(IResources resources) {
-    IMagicSourceStringBuilder<ISpell> stringBuilder = new MagicSourceStringBuilder<ISpell>(resources);
+    IMagicSourceStringBuilder<ISpell> stringBuilder = new MagicSourceStringBuilder<>(resources);
     return stringBuilder.createShortSourceString(getMagic());
   }
 

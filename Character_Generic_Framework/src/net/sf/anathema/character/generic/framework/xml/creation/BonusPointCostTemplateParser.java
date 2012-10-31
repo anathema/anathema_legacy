@@ -1,16 +1,15 @@
 package net.sf.anathema.character.generic.framework.xml.creation;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<GenericBonusPointCosts> {
 
@@ -81,8 +80,8 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
         charmElement,
         TAG_FAVORED_MARTIAL_ARTS_CHARMS,
         favoredCharmCost);
-    Map<String, Integer> keywordGeneralCost = new HashMap<String, Integer>();
-    Map<String, Integer> keywordFavoredCost = new HashMap<String, Integer>();
+    Map<String, Integer> keywordGeneralCost = new HashMap<>();
+    Map<String, Integer> keywordFavoredCost = new HashMap<>();
     for (Object keywordNode : charmElement.elements(TAG_KEYWORD_CHARMS))
     {
     	Element keywordClass = (Element) keywordNode;

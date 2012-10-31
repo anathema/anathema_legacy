@@ -61,7 +61,7 @@ public class ExtendedSheetReport extends AbstractPdfReport {
     try {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
       ReportSession session = new ReportSession(getContentRegistry(), character);
-      List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
+      List<PageEncoder> encoderList = new ArrayList<>();
       encoderList.add(new ExtendedFirstPageEncoder(configuration));
       encoderList.add(new ExtendedSecondPageEncoder(configuration));
       Collections.addAll(encoderList, findAdditionalPages(pageSize, session));

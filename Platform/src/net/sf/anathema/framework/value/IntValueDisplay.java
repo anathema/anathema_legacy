@@ -41,7 +41,7 @@ public class IntValueDisplay implements IIntValueDisplay {
   private final Icon activeImage;
   private final Icon passiveImage;
   private final Icon blockedImage;
-  private final List<JLabel> imageList = new ArrayList<JLabel>();
+  private final List<JLabel> imageList = new ArrayList<>();
   private final MouseInputListener mouseListener = new MouseInputAdapter() {
     @Override
     public void mouseClicked(MouseEvent e) {

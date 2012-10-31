@@ -139,7 +139,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     Element yoziGroupElement = generalElement.element(TAG_YOZI_GROUPS);
     if (yoziGroupElement == null) {
       GenericGroupedTraitTypeProvider provider = new GenericGroupedTraitTypeProvider(AllYoziTraitTypeGroup.getInstance());
-      List<String> emptyList = new ArrayList<String>();
+      List<String> emptyList = new ArrayList<>();
       for (YoziType yozi : YoziType.values())
         provider.addGroupedAbilityType(yozi.getId(), yozi.getId(), null, emptyList);
       characterTemplate.setYoziGroups(provider.getTraitTypeGroups());

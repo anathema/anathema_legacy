@@ -14,7 +14,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 public class SourceBuilder {
 
   public IExaltedSourceBook[] buildSourceList(Element magicElement) {
-    List<IExaltedSourceBook> sources = new ArrayList<IExaltedSourceBook>();
+    List<IExaltedSourceBook> sources = new ArrayList<>();
     List<Element> sourceElements = ElementUtilities.elements(magicElement, TAG_SOURCE);
     for (Element sourceElement : sourceElements) {
       String source = sourceElement.attributeValue(ATTRIB_SOURCE);

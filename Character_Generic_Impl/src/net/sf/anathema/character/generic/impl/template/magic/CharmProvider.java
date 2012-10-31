@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class CharmProvider implements ICharmProvider {
 
-  private final Map<Identified, ISpecialCharm[]> charmsByType = new HashMap<Identified, ISpecialCharm[]>();
+  private final Map<Identified, ISpecialCharm[]> charmsByType = new HashMap<>();
   private final ICharmCache cache;
 
   public CharmProvider(ICharmCache cache) {
@@ -27,7 +27,7 @@ public class CharmProvider implements ICharmProvider {
 
   @Override
   public ISpecialCharm[] getSpecialCharms(ICharmLearnableArbitrator arbitrator, ICharmIdMap map, Identified preferredType) {
-    List<ISpecialCharm> relevantCharms = new ArrayList<ISpecialCharm>();
+    List<ISpecialCharm> relevantCharms = new ArrayList<>();
     ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(preferredType);
     for (ISpecialCharm specialCharm : allSpecialCharms) {
       ICharm charm = map.getCharmById(specialCharm.getCharmId());

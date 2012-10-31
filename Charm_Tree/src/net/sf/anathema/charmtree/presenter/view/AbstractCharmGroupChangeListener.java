@@ -67,7 +67,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   private IRegularNode[] prepareNodes(Set<ICharm> charms) {
     Collection<IIdentifiedRegularNode> nodes = CharmGraphNodeBuilder.createNodesFromCharms(charms);
-    List<IIdentifiedRegularNode> sortedNodes = new ArrayList<IIdentifiedRegularNode>(nodes);
+    List<IIdentifiedRegularNode> sortedNodes = new ArrayList<>(nodes);
     Collections.sort(sortedNodes, new Comparator<IIdentifiedRegularNode>() {
       @Override
       public int compare(IIdentifiedRegularNode o1, IIdentifiedRegularNode o2) {
@@ -78,7 +78,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   }
 
   private Set<ICharm> getDisplayCharms(ICharmGroup charmGroup) {
-    Set<ICharm> charmsToDisplay = new LinkedHashSet<ICharm>();
+    Set<ICharm> charmsToDisplay = new LinkedHashSet<>();
     for (ICharm charm : arbitrator.getCharms(charmGroup)) {
       if (!charmFilterSet.filterCharm(charm, false) || !filterAncestors(charm)) {
         continue;

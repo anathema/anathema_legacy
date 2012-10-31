@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DummyQualities implements Qualities {
-  private final Map<QualityKey, Quality> qualityMap = new HashMap<QualityKey, Quality>();
+  private final Map<QualityKey, Quality> qualityMap = new HashMap<>();
 
 
   public void addQuality(QualityKey qualityKey, Quality quality) {

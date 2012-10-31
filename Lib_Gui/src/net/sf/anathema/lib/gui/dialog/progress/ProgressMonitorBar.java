@@ -24,7 +24,7 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
   });
 
   private boolean unknownTotalWork;
-  private final Collection<ICanceledListener> canceledListeners = new ArrayList<ICanceledListener>();
+  private final Collection<ICanceledListener> canceledListeners = new ArrayList<>();
   private boolean canceled = false;
   private boolean active = false;
 
@@ -112,7 +112,7 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
   private void fireCanceled() {
     List<ICanceledListener> clonedListeners;
     synchronized (this) {
-      clonedListeners = new ArrayList<ICanceledListener>(canceledListeners);
+      clonedListeners = new ArrayList<>(canceledListeners);
     }
     for (Iterator<ICanceledListener> iter = clonedListeners.iterator(); iter.hasNext();) {
       ICanceledListener listener = iter.next();

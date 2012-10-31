@@ -1,15 +1,15 @@
 package net.sf.anathema.lib.gui.selection;
 
-import javax.swing.JComponent;
-import javax.swing.ListCellRenderer;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.gui.list.ListSelectionMode;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.veto.IVetor;
 import net.sf.anathema.lib.gui.list.veto.VetoableListSelectionModel;
+
+import javax.swing.JComponent;
+import javax.swing.ListCellRenderer;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 
@@ -22,7 +22,7 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 
 	public ListObjectSelectionView(Class<? extends V> contentClazz,
 			ListSelectionMode mode) {
-		this.smartList = new SmartJList<V>(contentClazz);
+		this.smartList = new SmartJList<>(contentClazz);
 		this.selectionModel = new VetoableListSelectionModel(mode);
 		this.smartList.setSelectionModel(selectionModel);
 	}

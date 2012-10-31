@@ -79,7 +79,7 @@ public class AddMusicFolderAction extends SmartAction {
         @Override
         public void run(final IProgressMonitor monitor,
                         IObservableCancelable cancelable) throws InterruptedException, InvocationTargetException {
-          final List<IMp3Track> foundTracks = new ArrayList<IMp3Track>();
+          final List<IMp3Track> foundTracks = new ArrayList<>();
           walker.walk(resources, monitor, cancelable, new ITrackHandler() {
             @Override
             public void handleMp3(IMp3Track mp3Item) {

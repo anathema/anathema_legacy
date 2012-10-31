@@ -19,7 +19,7 @@ public class SelectionContainerPresenter<V> implements Presenter {
       Class<V> componentType) {
     this.model = model;
     this.view = view;
-    this.arrayFactory = new ArrayFactory<V>(componentType);
+    this.arrayFactory = new ArrayFactory<>(componentType);
   }
 
   @Override

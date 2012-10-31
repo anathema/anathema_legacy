@@ -13,9 +13,9 @@ import java.util.Map;
 
 public class CharmCache implements ICharmCache {
 	
-  MultiEntryMap<Identified, ICharm> charmSets = new MultiEntryMap<Identified, ICharm>();
-  Map<String, String> renameData = new HashMap<String, String>();
-  Map<Identified, List<ISpecialCharm>> specialCharms = new HashMap<Identified, List<ISpecialCharm>>();
+  MultiEntryMap<Identified, ICharm> charmSets = new MultiEntryMap<>();
+  Map<String, String> renameData = new HashMap<>();
+  Map<Identified, List<ISpecialCharm>> specialCharms = new HashMap<>();
   
   @Override
   public ICharm[] getCharms(Identified type) {
@@ -34,7 +34,7 @@ public class CharmCache implements ICharmCache {
   }
 
   public Iterable<ICharm> getCharms() {
-    List<ICharm> allCharms = new ArrayList<ICharm>();
+    List<ICharm> allCharms = new ArrayList<>();
     for (Identified type : charmSets.keySet()) {
       for (ICharm charm : charmSets.get(type)) {
         allCharms.add(charm);
@@ -48,7 +48,7 @@ public class CharmCache implements ICharmCache {
     type = new Identificate(type.getId());
     List<ISpecialCharm> list = map.get(type);
     if (list == null) {
-      list = new ArrayList<ISpecialCharm>();
+      list = new ArrayList<>();
       map.put(type, list);
     }
     return list;

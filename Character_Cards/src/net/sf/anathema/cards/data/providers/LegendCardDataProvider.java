@@ -20,12 +20,12 @@ public class LegendCardDataProvider implements ICardDataProvider {
 
 	private final IResources resources;
 	
-	public List<LegendEntry> traits = new ArrayList<LegendEntry>();
-	public List<LegendEntry> characterTypes = new ArrayList<LegendEntry>();
-	public List<LegendEntry> spellCircles = new ArrayList<LegendEntry>();
-	public List<LegendEntry> martialArtLevels = new ArrayList<LegendEntry>();
-	public List<LegendEntry> martialArtStyles = new ArrayList<LegendEntry>();
-	public List<LegendEntry> misc = new ArrayList<LegendEntry>();
+	public List<LegendEntry> traits = new ArrayList<>();
+	public List<LegendEntry> characterTypes = new ArrayList<>();
+	public List<LegendEntry> spellCircles = new ArrayList<>();
+	public List<LegendEntry> martialArtLevels = new ArrayList<>();
+	public List<LegendEntry> martialArtStyles = new ArrayList<>();
+	public List<LegendEntry> misc = new ArrayList<>();
 	
 	public LegendCardDataProvider(IResources resources) {
 		this.resources = resources;
@@ -50,8 +50,8 @@ public class LegendCardDataProvider implements ICardDataProvider {
 	}
 	
 	private ICardData[] createCards(ICardReportResourceProvider resourceProvider) {
-		List<LegendEntry> entries = new ArrayList<LegendEntry>();
-		List<ICardData> cards = new ArrayList<ICardData>();
+		List<LegendEntry> entries = new ArrayList<>();
+		List<ICardData> cards = new ArrayList<>();
 		
 		entries.addAll(traits);
 		entries.addAll(spellCircles);
@@ -64,7 +64,7 @@ public class LegendCardDataProvider implements ICardDataProvider {
 		boolean newPage = true;
 		
 		while (!entries.isEmpty()) {
-			List<LegendEntry> cardEntries = new ArrayList<LegendEntry>();
+			List<LegendEntry> cardEntries = new ArrayList<>();
 			for (int i = 0; i != LegendCardData.ICONS_PER_CARD &&
 					!entries.isEmpty(); i++) {
 				if (entries.get(0).getIcon() != resourceProvider.getNullIcon()) {

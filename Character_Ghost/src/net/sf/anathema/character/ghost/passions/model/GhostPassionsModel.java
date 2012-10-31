@@ -30,8 +30,8 @@ import java.util.Set;
 
 public class GhostPassionsModel extends AbstractAdditionalModelAdapter implements IGhostPassionsModel {
 
-  private final Map<ITraitType, ISubTraitContainer> passionByType = new HashMap<ITraitType, ISubTraitContainer>();
-  private final Map<ITraitReference, ISubTraitContainer> passionsByTrait = new HashMap<ITraitReference, ISubTraitContainer>();
+  private final Map<ITraitType, ISubTraitContainer> passionByType = new HashMap<>();
+  private final Map<ITraitReference, ISubTraitContainer> passionsByTrait = new HashMap<>();
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharacterModelContext context;
   private final GhostPassionsTemplate template;
@@ -136,8 +136,8 @@ public class GhostPassionsModel extends AbstractAdditionalModelAdapter implement
 
   @Override
   public ITraitReference[] getAllEligibleTraits() {
-    List<ITraitReference> keySet = new ArrayList<ITraitReference>(passionsByTrait.keySet());
-    List<ITraitReference> toRemove = new ArrayList<ITraitReference>();
+    List<ITraitReference> keySet = new ArrayList<>(passionsByTrait.keySet());
+    List<ITraitReference> toRemove = new ArrayList<>();
     for (ITraitReference trait : keySet) {
       if (!getPassionContainer(trait.getTraitType()).isNewSubTraitAllowed() && !toRemove.contains(trait)) {
         toRemove.add(trait);

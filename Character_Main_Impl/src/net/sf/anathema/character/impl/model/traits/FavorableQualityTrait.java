@@ -26,7 +26,7 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
   private final Persona persona;
   private final Attribute quality;
   private int initialValue;
-  private final Map<IIntValueChangedListener, QualityListener> listenerMapping = new HashMap<IIntValueChangedListener, QualityListener>();
+  private final Map<IIntValueChangedListener, QualityListener> listenerMapping = new HashMap<>();
   private static final int FAKE_MAX = 10;
 
   public FavorableQualityTrait(Persona persona, Attribute quality) {

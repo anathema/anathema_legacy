@@ -6,17 +6,17 @@ import java.util.List;
 
 public class IdentityMapping<K, V> {
 
-  private final List<KeyValueMapping<K, V>> mappings = new ArrayList<KeyValueMapping<K, V>>();
+  private final List<KeyValueMapping<K, V>> mappings = new ArrayList<>();
 
   public void put(K key, V value) {
     if (get(key) != null) {
       throw new IllegalArgumentException("Key " + key + " already mapped"); //$NON-NLS-1$ //$NON-NLS-2$
     }
-    mappings.add(new KeyValueMapping<K, V>(key, value));
+    mappings.add(new KeyValueMapping<>(key, value));
   }
 
   public List<V> getAllValues() {
-    List<V> list = new ArrayList<V>();
+    List<V> list = new ArrayList<>();
     for (KeyValueMapping<K, V> mapping : mappings) {
       list.add(mapping.getValue());
     }
@@ -24,7 +24,7 @@ public class IdentityMapping<K, V> {
   }
 
   public List<K> getAllKeys() {
-    List<K> list = new ArrayList<K>();
+    List<K> list = new ArrayList<>();
     for (KeyValueMapping<K, V> mapping : mappings) {
       list.add(mapping.getKey());
     }

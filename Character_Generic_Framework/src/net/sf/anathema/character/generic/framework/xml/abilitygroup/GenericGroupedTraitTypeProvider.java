@@ -13,7 +13,7 @@ import java.util.List;
 public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupedTraitTypeProvider> {
 
   // This is volatile instead of final to allow clone to be implemented
-  private volatile List<IGroupedTraitType> groupedTraitTypes = new ArrayList<IGroupedTraitType>();
+  private volatile List<IGroupedTraitType> groupedTraitTypes = new ArrayList<>();
   private final ITraitTypeGroup traitTypeGroup;
 
   public GenericGroupedTraitTypeProvider(ITraitTypeGroup traitTypeGroup) {
@@ -40,7 +40,7 @@ public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupe
       throw new UnreachableCodeReachedException(e);
     }
     
-    clone.groupedTraitTypes = new ArrayList<IGroupedTraitType>(groupedTraitTypes);
+    clone.groupedTraitTypes = new ArrayList<>(groupedTraitTypes);
     return clone;
   }
 }

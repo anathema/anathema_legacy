@@ -70,7 +70,7 @@ public class PlotPresenter implements Presenter {
       view.getComponent().repaint();
     }
   };
-  private final Map<IPlotElementContainer, DefaultMutableTreeNode> nodesByContainer = new HashMap<IPlotElementContainer, DefaultMutableTreeNode>();
+  private final Map<IPlotElementContainer, DefaultMutableTreeNode> nodesByContainer = new HashMap<>();
   private final IPlotModel plotModel;
   private final DefaultMutableTreeNode rootNode;
   private DefaultMutableTreeNode selectedNode;

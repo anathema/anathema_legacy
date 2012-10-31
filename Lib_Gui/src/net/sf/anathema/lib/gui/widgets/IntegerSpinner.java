@@ -8,7 +8,6 @@ import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.JComponent;
 import javax.swing.JSpinner;
-import javax.swing.JSpinner.NumberEditor;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -23,7 +22,7 @@ import java.util.Map;
 public class IntegerSpinner implements IView, IIntegerView {
 
   private final JSpinner spinner;
-  private final Map<IIntValueChangedListener, ChangeListener> listenerMap = new HashMap<IIntValueChangedListener, ChangeListener>();
+  private final Map<IIntValueChangedListener, ChangeListener> listenerMap = new HashMap<>();
   private final SpinnerNumberModel numberModel;
 
   public IntegerSpinner(int initialValue) {

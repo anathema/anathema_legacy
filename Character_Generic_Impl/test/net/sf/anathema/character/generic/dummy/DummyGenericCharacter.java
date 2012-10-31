@@ -33,7 +33,7 @@ import java.util.Map;
 public class DummyGenericCharacter implements IGenericCharacter {
 
   private final ICharacterTemplate template;
-  private final Map<ITraitType, IGenericTrait> traitsByType = new HashMap<ITraitType, IGenericTrait>();
+  private final Map<ITraitType, IGenericTrait> traitsByType = new HashMap<>();
 
   public DummyGenericCharacter(ICharacterTemplate template) {
     this.template = template;
@@ -192,7 +192,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
 
   @Override
   public List<IMagic> getAllLearnedMagic() {
-    return new ArrayList<IMagic>();
+    return new ArrayList<>();
   }
 
   @Override

@@ -36,7 +36,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   private ItemType[] createIntegratedItemTypes() {
-    List<IItemType> integratedItemTypes = new ArrayList<IItemType>();
+    List<IItemType> integratedItemTypes = new ArrayList<>();
     for (IItemType itemType : itemTypes.getAllItemTypes()) {
       if (itemType.isIntegrated()) {
         integratedItemTypes.add(itemType);
@@ -108,7 +108,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   @Override
   public PrintNameFile[] getPrintNameFilesInSelection() {
-    List<PrintNameFile> files = new ArrayList<PrintNameFile>();
+    List<PrintNameFile> files = new ArrayList<>();
     for (Object object : currentlySelectedUserObjects) {
       if (isPrintNameFile(object)) {
         files.add((PrintNameFile) object);

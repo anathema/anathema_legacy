@@ -30,8 +30,8 @@ public class LinguisticsPresenter implements Presenter {
   private final ILinguisticsModel model;
   private final ILinguisticsView view;
   private final IResources resources;
-  private final Map<Identified, IRemovableEntryView> viewsByEntry = new HashMap<Identified, IRemovableEntryView>();
-  private final Map<String, Identified> languagesByDisplayName = new HashMap<String, Identified>();
+  private final Map<Identified, IRemovableEntryView> viewsByEntry = new HashMap<>();
+  private final Map<String, Identified> languagesByDisplayName = new HashMap<>();
 
   public LinguisticsPresenter(ILinguisticsModel model, ILinguisticsView view, IResources resources) {
     this.model = model;

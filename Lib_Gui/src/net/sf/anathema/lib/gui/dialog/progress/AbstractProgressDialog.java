@@ -18,7 +18,7 @@ public abstract class AbstractProgressDialog implements IProgressMonitor, IObser
   private boolean disposed = false;
   private boolean showing = false;
   private boolean dialogClosed = false;
-  private final Collection<ICanceledListener> canceledListeners = new ArrayList<ICanceledListener>();
+  private final Collection<ICanceledListener> canceledListeners = new ArrayList<>();
   private final ProgressContainer container;
 
   public AbstractProgressDialog(InternalProgressDialogModel model, ProgressContainer container) {
@@ -105,7 +105,7 @@ public abstract class AbstractProgressDialog implements IProgressMonitor, IObser
   private void fireCanceled() {
     List<ICanceledListener> clonedListeners;
     synchronized (this) {
-      clonedListeners = new ArrayList<ICanceledListener>(canceledListeners);
+      clonedListeners = new ArrayList<>(canceledListeners);
     }
     for (ICanceledListener listener : clonedListeners) {
       listener.canceled();

@@ -22,8 +22,8 @@ public class CharmNodeConnectorTest {
 
   @Before
   public void setUp() throws Exception {
-    nodes = new LinkedHashMap<String, IIdentifiedRegularNode>();
-    list = new ArrayList<ICharm>();
+    nodes = new LinkedHashMap<>();
+    list = new ArrayList<>();
   }
 
   @Test

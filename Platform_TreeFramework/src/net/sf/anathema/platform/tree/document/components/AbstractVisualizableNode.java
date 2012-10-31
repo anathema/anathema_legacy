@@ -36,7 +36,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     // Note: Better implementation: Traverse the tree down to the children
     // Set children's new position
     // Recalculate all other positions using the given algorithms.
-    List<IVisualizableNode> excludedNodeList = new ArrayList<IVisualizableNode>();
+    List<IVisualizableNode> excludedNodeList = new ArrayList<>();
     if (excludedNodes != null) {
       Collections.addAll(excludedNodeList, excludedNodes);
     }
@@ -104,8 +104,8 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
 
   @Override
   public IVisualizableNode[] getSharedChildren(IVisualizableNode otherNode) {
-    List<IVisualizableNode> ownChildren = new ArrayList<IVisualizableNode>(Arrays.asList(getChildren()));
-    List<IVisualizableNode> otherChildren = new ArrayList<IVisualizableNode>(Arrays.asList(otherNode.getChildren()));
+    List<IVisualizableNode> ownChildren = new ArrayList<>(Arrays.asList(getChildren()));
+    List<IVisualizableNode> otherChildren = new ArrayList<>(Arrays.asList(otherNode.getChildren()));
     ownChildren.retainAll(otherChildren);
     return ownChildren.toArray(new IVisualizableNode[ownChildren.size()]);
   }

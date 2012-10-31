@@ -55,14 +55,14 @@ public class Charm extends Identificate implements ICharm {
   private final IExaltedSourceBook[] sources;
   private final ICostList temporaryCost;
 
-  private final List<Set<ICharm>> alternatives = new ArrayList<Set<ICharm>>();
-  private final List<Set<ICharm>> merges = new ArrayList<Set<ICharm>>();
-  private final List<String> requiredSubeffects = new ArrayList<String>();
-  private final List<ICharm> parentCharms = new ArrayList<ICharm>();
-  private final List<Charm> children = new ArrayList<Charm>();
+  private final List<Set<ICharm>> alternatives = new ArrayList<>();
+  private final List<Set<ICharm>> merges = new ArrayList<>();
+  private final List<String> requiredSubeffects = new ArrayList<>();
+  private final List<ICharm> parentCharms = new ArrayList<>();
+  private final List<Charm> children = new ArrayList<>();
   private final SelectiveCharmGroups selectiveCharmGroups = new SelectiveCharmGroups();
-  private final List<ICharmAttribute> charmAttributes = new ArrayList<ICharmAttribute>();
-  private final Set<String> favoredCasteIds = new HashSet<String>();
+  private final List<ICharmAttribute> charmAttributes = new ArrayList<>();
+  private final Set<String> favoredCasteIds = new HashSet<>();
 
   private final ICharmTypeModel typeModel;
 
@@ -200,7 +200,7 @@ public class Charm extends Identificate implements ICharm {
 
   @Override
   public Set<ICharm> getMergedCharms() {
-    Set<ICharm> mergedCharms = new HashSet<ICharm>();
+    Set<ICharm> mergedCharms = new HashSet<>();
     for (Set<ICharm> merge : merges) {
       mergedCharms.addAll(merge);
     }
@@ -209,7 +209,7 @@ public class Charm extends Identificate implements ICharm {
 
   @Override
   public Set<ICharm> getParentCharms() {
-    return new HashSet<ICharm>(parentCharms);
+    return new HashSet<>(parentCharms);
   }
 
   private boolean isSubeffectReference(String id) {
@@ -260,7 +260,7 @@ public class Charm extends Identificate implements ICharm {
 
   @Override
   public Set<ICharm> getRenderingPrerequisiteCharms() {
-    Set<ICharm> prerequisiteCharms = new HashSet<ICharm>();
+    Set<ICharm> prerequisiteCharms = new HashSet<>();
     prerequisiteCharms.addAll(parentCharms);
     for (SelectiveCharmGroup charmGroup : selectiveCharmGroups.getOpenGroups()) {
       prerequisiteCharms.addAll(Arrays.asList(charmGroup.getAllGroupCharms()));
@@ -270,7 +270,7 @@ public class Charm extends Identificate implements ICharm {
 
   @Override
   public Set<IndirectCharmRequirement> getIndirectRequirements() {
-    Set<IndirectCharmRequirement> indirectRequirements = new HashSet<IndirectCharmRequirement>();
+    Set<IndirectCharmRequirement> indirectRequirements = new HashSet<>();
     for (SelectiveCharmGroup charmGroup : selectiveCharmGroups.getCombinedGroups()) {
       GroupedCharmRequirement requirement = new GroupedCharmRequirement(charmGroup);
       indirectRequirements.add(requirement);
@@ -281,7 +281,7 @@ public class Charm extends Identificate implements ICharm {
 
   @Override
   public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
-    Set<ICharm> prerequisiteCharms = new HashSet<ICharm>();
+    Set<ICharm> prerequisiteCharms = new HashSet<>();
     for (ICharm charm : getParentCharms()) {
       prerequisiteCharms.addAll(charm.getLearnPrerequisitesCharms(learnArbitrator));
       prerequisiteCharms.add(charm);

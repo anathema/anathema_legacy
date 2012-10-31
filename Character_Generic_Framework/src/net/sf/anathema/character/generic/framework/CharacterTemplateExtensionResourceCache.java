@@ -1,14 +1,14 @@
 package net.sf.anathema.character.generic.framework;
 
+import net.sf.anathema.lib.resources.ResourceFile;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.anathema.lib.resources.ResourceFile;
-
 public class CharacterTemplateExtensionResourceCache implements ICharacterTemplateExtensionResourceCache {
 	
-	private final Map<String, ResourceFile> templateResources = new HashMap<String, ResourceFile>();
+	private final Map<String, ResourceFile> templateResources = new HashMap<>();
 	private final static String CUSTOM_PATH = "repository/custom/";
 	
 	public CharacterTemplateExtensionResourceCache(List<ResourceFile> templateResources) {

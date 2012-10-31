@@ -69,7 +69,7 @@ public class MagicCostCalculator {
     }
     List<IMagic> sortedMagicList = new WeightedMagicSorter().sortDescending(
             magicToHandle.toArray(new IMagic[magicToHandle.size()]), weights);
-    Set<IMagic> handledMagic = new HashSet<IMagic>();
+    Set<IMagic> handledMagic = new HashSet<>();
     for (IMagic magic : sortedMagicList) {
       handleMagic(magic, handledMagic);
     }
@@ -134,7 +134,7 @@ public class MagicCostCalculator {
   }
 
   private List<IMagic> compileCompleteMagicList() {
-    List<IMagic> completeList = new ArrayList<IMagic>();
+    List<IMagic> completeList = new ArrayList<>();
     completeList.addAll(Arrays.asList(charms.getCreationLearnedCharms()));
     completeList.addAll(Arrays.asList(spells.getLearnedSpells(false)));
     return completeList;

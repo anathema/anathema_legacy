@@ -58,7 +58,7 @@ public class PortraitSimpleExaltSheetReport extends AbstractPdfReport {
     PageConfiguration configuration = PageConfiguration.ForPortrait(pageSize);
     try {
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter);
-      List<PageEncoder> encoderList = new ArrayList<PageEncoder>();
+      List<PageEncoder> encoderList = new ArrayList<>();
       encoderList.add(new FirstPageEncoder(configuration));
       ReportSession session = new ReportSession(getContentRegistry(), character);
       Collections.addAll(encoderList, findAdditionalPages(pageSize, session));

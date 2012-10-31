@@ -24,7 +24,7 @@ public class SiderealCollegeContent extends FavorableTraitContent {
 
   @Override
   public List<? extends ITraitType> getMarkedTraitTypes() {
-    return new ArrayList<ITraitType>();
+    return new ArrayList<>();
   }
 
   @Override
@@ -34,9 +34,9 @@ public class SiderealCollegeContent extends FavorableTraitContent {
 
   @Override
   public IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups() {
-    List<IIdentifiedTraitTypeGroup> groups = new ArrayList<IIdentifiedTraitTypeGroup>();
+    List<IIdentifiedTraitTypeGroup> groups = new ArrayList<>();
     for (IAstrologicalHouse house : getCollegeModel().getAllHouses()) {
-      List<ITraitType> types = new ArrayList<ITraitType>();
+      List<ITraitType> types = new ArrayList<>();
       for (ITrait type : house.getColleges()) {
         types.add(type.getType());
       }

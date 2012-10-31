@@ -143,7 +143,7 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
   private MultipleContentView addMultipleContentViewGroup(String viewTitle, AdditionalModelType type,
                                                           ContentView... coreViewViews) {
     MultipleContentView multipleContentView = characterView.addMultipleContentView(viewTitle);
-    List<ContentView> contentViews = new ArrayList<ContentView>();
+    List<ContentView> contentViews = new ArrayList<>();
     Collections.addAll(contentViews, coreViewViews);
     IRegistry<String, IAdditionalViewFactory> factoryRegistry = getGenerics(
             anathemaModel).getAdditionalViewFactoryRegistry();

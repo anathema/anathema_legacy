@@ -55,7 +55,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
 
   private OxBodyCategory[] createOxBodyCategories(ITraitContext context, IOxBodyTechniqueCharm properties) {
     Set<String> ids = properties.getHealthLevels().keySet();
-    List<OxBodyCategory> categoryList = new ArrayList<OxBodyCategory>();
+    List<OxBodyCategory> categoryList = new ArrayList<>();
     for (String id : ids) {
       HealthLevelType[] levels = properties.getHealthLevels().get(id);
       OxBodyCategory category = new OxBodyCategory(context, levels, id, incrementChecker);

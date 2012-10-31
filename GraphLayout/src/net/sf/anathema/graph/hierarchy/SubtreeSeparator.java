@@ -21,9 +21,9 @@ public class SubtreeSeparator {
   public IProperHierarchicalGraph[] separateSubtrees(ISimpleNode[] hierarchicalGraph, int deepestLayer) {
     MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors = createLeafGroups(deepestLayer, hierarchicalGraph);
     ISimpleNode[] roots = findRoots(hierarchicalGraph);
-    List<ISimpleNode> handledRoots = new ArrayList<ISimpleNode>();
-    List<IProperHierarchicalGraph> subtreeList = new ArrayList<IProperHierarchicalGraph>();
-    List<IProperHierarchicalGraph> singleNodeList = new ArrayList<IProperHierarchicalGraph>();
+    List<ISimpleNode> handledRoots = new ArrayList<>();
+    List<IProperHierarchicalGraph> subtreeList = new ArrayList<>();
+    List<IProperHierarchicalGraph> singleNodeList = new ArrayList<>();
     for (ISimpleNode root : roots) {
       if (root.isLeafNode()) {
         singleNodeList.add(new SingleNodeGraph(root));
@@ -34,9 +34,9 @@ public class SubtreeSeparator {
       if (handledRoots.contains(root)) {
         continue;
       }
-      Set<ISimpleNode> peerRoots = new LinkedHashSet<ISimpleNode>();
+      Set<ISimpleNode> peerRoots = new LinkedHashSet<>();
       getPeerRoots(root, roots, handledRoots, peerRoots, leafNodesByAncestors);
-      Set<ISimpleNode> subtreeNodes = new LinkedHashSet<ISimpleNode>();
+      Set<ISimpleNode> subtreeNodes = new LinkedHashSet<>();
       int deepestSubtreeLayer = 1;
       for (ISimpleNode peerRoot : peerRoots) {
         deepestSubtreeLayer = Math.max(deepestSubtreeLayer, addChildrenRecursively(subtreeNodes, peerRoot));
@@ -79,7 +79,7 @@ public class SubtreeSeparator {
   }
 
   private ISimpleNode[] findRoots(ISimpleNode[] hierarchicalGraph) {
-    List<ISimpleNode> roots = new ArrayList<ISimpleNode>();
+    List<ISimpleNode> roots = new ArrayList<>();
     for (ISimpleNode node : hierarchicalGraph) {
       if (node.isRootNode()) {
         roots.add(node);
@@ -89,7 +89,7 @@ public class SubtreeSeparator {
   }
 
   private MultiEntryMap<ISimpleNode, ISimpleNode> createLeafGroups(int deepestLayer, ISimpleNode[] hierarchicalGraph) {
-    Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<Integer, List<ISimpleNode>>();
+    Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<>();
     for (int index = 1; index <= deepestLayer; index++) {
       nodesByLayer.put(index, new ArrayList<ISimpleNode>());
     }
@@ -97,7 +97,7 @@ public class SubtreeSeparator {
       List<ISimpleNode> layerNodes = nodesByLayer.get(node.getLayer());
       layerNodes.add(node);
     }
-    MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors = new MultiEntryMap<ISimpleNode, ISimpleNode>();
+    MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors = new MultiEntryMap<>();
     for (int layerIndex = deepestLayer - 1; layerIndex >= 0; layerIndex--) {
       createLeafGroups(nodesByLayer, layerIndex, leafNodesByAncestors);
     }
@@ -113,7 +113,7 @@ public class SubtreeSeparator {
       if (!node.isLeafNode()) {
         continue;
       }
-      List<ISimpleNode> ancestors = new ArrayList<ISimpleNode>();
+      List<ISimpleNode> ancestors = new ArrayList<>();
       ancestors.add(node);
       leafNodesByAncestors.add(node, node);
       for (int upperLayerIndex = layerIndex - 1; upperLayerIndex >= 0; upperLayerIndex--) {

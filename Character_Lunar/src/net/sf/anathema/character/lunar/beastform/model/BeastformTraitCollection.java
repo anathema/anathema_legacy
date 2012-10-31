@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class BeastformTraitCollection extends AbstractTraitCollection implements IBeastformTraitCollection {
 
-  private final Map<ITraitType, IBeastformAttribute> attributesByType = new HashMap<ITraitType, IBeastformAttribute>();
+  private final Map<ITraitType, IBeastformAttribute> attributesByType = new HashMap<>();
 
   public void addBeastFormAttribute(IBeastformAttribute attribute) {
     addTrait(attribute.getTrait());

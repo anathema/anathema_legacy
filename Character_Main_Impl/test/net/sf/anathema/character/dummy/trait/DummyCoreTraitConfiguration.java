@@ -30,7 +30,7 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.getFirst;
 
 public class DummyCoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
 
-  private final MultiEntryMap<String, ITraitType> abilityGroupsByType = new MultiEntryMap<String, ITraitType>();
+  private final MultiEntryMap<String, ITraitType> abilityGroupsByType = new MultiEntryMap<>();
   private ISpecialtiesConfiguration specialtyConfiguration;
 
   @Override
@@ -69,7 +69,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
-    List<IIdentifiedTraitTypeGroup> groups = new ArrayList<IIdentifiedTraitTypeGroup>();
+    List<IIdentifiedTraitTypeGroup> groups = new ArrayList<>();
     for (String groupId : abilityGroupsByType.keySet()) {
       List<ITraitType> traitTypes = abilityGroupsByType.get(groupId);
       groups.add(new IdentifiedTraitTypeGroup(
@@ -119,7 +119,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   @Override
   public IFavorableTrait[] getAllAbilities() {
-    List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
+    List<ITraitType> abilityTypes = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
       Collections.addAll(abilityTypes, group.getAllGroupTypes());
     }

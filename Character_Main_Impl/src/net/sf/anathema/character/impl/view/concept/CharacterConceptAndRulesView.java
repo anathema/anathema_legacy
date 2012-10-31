@@ -46,7 +46,7 @@ public class CharacterConceptAndRulesView implements ICharacterConceptAndRulesVi
   @Override
   public <V> IObjectSelectionView<V> addObjectSelectionView(String labelText, V[] objects, ListCellRenderer renderer,
                                                             boolean editable) {
-    ObjectSelectionView<V> selectionView = new ObjectSelectionView<V>(labelText, renderer, editable, objects);
+    ObjectSelectionView<V> selectionView = new ObjectSelectionView<>(labelText, renderer, editable, objects);
     selectionView.getComboBox().getEditor().getEditorComponent().setEnabled(true);
     selectionView.setDisabledLabelColor(Color.DARK_GRAY);
     selectionView.addTo(conceptPanel, new CC().growX().pushX());

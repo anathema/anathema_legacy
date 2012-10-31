@@ -37,7 +37,7 @@ public class RegainEssenceContent extends AbstractSubContent implements SubBoxCo
   }
 
   private List<RecoveryRow> getAvailableRecoveryRows() {
-    List<RecoveryRow> rows = new ArrayList<RecoveryRow>();
+    List<RecoveryRow> rows = new ArrayList<>();
     rows.add(new NaturalRecoveryRow(getResources()));
     addSpecialRecoveryRows(rows);
     rows.add(new TotalRecoveryRow(getResources()));

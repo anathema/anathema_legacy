@@ -1,18 +1,18 @@
 package net.sf.anathema.character.generic.framework.xml.trait.alternate;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.framework.xml.trait.IMinimumRestriction;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AlternateMinimumRestriction extends ReflectionEqualsObject implements IMinimumRestriction {
 
   private final int minimumTraitCount;
   private final int strictMinimumValue;
-  private final List<ITraitType> alternateTraitTypes = new ArrayList<ITraitType>();
+  private final List<ITraitType> alternateTraitTypes = new ArrayList<>();
   private boolean isFreebie;
 
   public AlternateMinimumRestriction(int minimumTraitCount, int strictMinimumValue) {

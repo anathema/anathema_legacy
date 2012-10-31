@@ -19,7 +19,7 @@ public class AbilitiesWithCraftAndSpecialtiesEncoderFactory extends GlobalEncode
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    FavorableTraitContentEncoder<AbilitiesContent> encoder = new FavorableTraitContentEncoder<AbilitiesContent>(AbilitiesContent.class);
+    FavorableTraitContentEncoder<AbilitiesContent> encoder = new FavorableTraitContentEncoder<>(AbilitiesContent.class);
     PdfTraitEncoder traitEncoder = encoder.getTraitEncoder();
     encoder.addNamedTraitEncoder(new CraftEncoder(resources, traitEncoder, 9));
     encoder.addNamedTraitEncoder(new SpecialtiesEncoder(resources, traitEncoder, 9));

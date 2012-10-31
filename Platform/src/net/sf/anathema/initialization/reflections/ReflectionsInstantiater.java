@@ -39,7 +39,7 @@ public class ReflectionsInstantiater implements Instantiater {
   }
 
   private List<Class<?>> sort(Set<Class<?>> pluginClasses) {
-    List<Class<?>> list = new ArrayList<Class<?>>(pluginClasses);
+    List<Class<?>> list = new ArrayList<>(pluginClasses);
     Collections.sort(list, new ByWeightAnnotation());
     return list;
   }

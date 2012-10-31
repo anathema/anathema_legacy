@@ -15,7 +15,7 @@ import java.util.List;
 public class PreferencesElementsExtensionPoint implements IAnathemaExtension {
 
   public static final String ID = PreferencesElementsExtensionPoint.class.getName();
-  private final List<IPreferencesElement> elements = new ArrayList<IPreferencesElement>();
+  private final List<IPreferencesElement> elements = new ArrayList<>();
 
   @Override
   public void initialize(IResources resources, IDataFileProvider dataFileProvider, AnnotationFinder finder,

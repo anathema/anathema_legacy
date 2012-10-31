@@ -16,13 +16,13 @@ public class CharmPrerequisiteBuilder implements ICharmPrerequisiteBuilder {
 
   @Override
   public final String[] buildCharmPrerequisites(Element parent) throws CharmException {
-    List<String> prerequisiteCharmIds = new ArrayList<String>();
+    List<String> prerequisiteCharmIds = new ArrayList<>();
     prerequisiteCharmIds.addAll(getCharmIds(parent));
     return prerequisiteCharmIds.toArray(new String[prerequisiteCharmIds.size()]);
   }
 
   protected Collection<String> getCharmIds(Element parent) throws CharmException {
-    List<String> prerequisiteCharmIds = new ArrayList<String>();
+    List<String> prerequisiteCharmIds = new ArrayList<>();
     List<Element> prerequisiteCharmList = ElementUtilities.elements(parent, TAG_CHARM_REFERENCE);
     for (Element element : prerequisiteCharmList) {
       String id = element.attributeValue(ATTRIB_ID);

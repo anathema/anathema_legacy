@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class SpellMapper implements ISpellMapper {
 
-  private final Map<String, String> spellMap2e = new HashMap<String, String>();
+  private final Map<String, String> spellMap2e = new HashMap<>();
 
   public SpellMapper() {
     spellMap2e.put("Terrestrial.DragonSmokeSerpentFlame", "Terrestrial.DragonSmokeFlame"); //$NON-NLS-1$ //$NON-NLS-2$

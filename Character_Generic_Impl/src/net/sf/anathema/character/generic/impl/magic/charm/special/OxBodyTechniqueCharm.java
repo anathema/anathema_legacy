@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.impl.magic.charm.special;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
 import net.sf.anathema.character.generic.traits.ITraitType;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class OxBodyTechniqueCharm implements IOxBodyTechniqueCharm {
 
@@ -37,7 +37,7 @@ public class OxBodyTechniqueCharm implements IOxBodyTechniqueCharm {
 
   @Override
   public Map<String, HealthLevelType[]> getHealthLevels() {
-    return new LinkedHashMap<String, HealthLevelType[]>(healthLevels);
+    return new LinkedHashMap<>(healthLevels);
   }
 
   @Override

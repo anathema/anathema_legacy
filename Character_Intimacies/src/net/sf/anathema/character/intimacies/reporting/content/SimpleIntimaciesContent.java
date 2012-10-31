@@ -29,7 +29,7 @@ public class SimpleIntimaciesContent extends AbstractSubBoxContent implements Li
 
   @Override
   public List<String> getPrintEntries() {
-    List<String> printIntimacies = new ArrayList<String>();
+    List<String> printIntimacies = new ArrayList<>();
     for (Iterator<IIntimacy> intimacies = getModel().getEntries().iterator(); intimacies.hasNext(); ) {
       IIntimacy intimacy = intimacies.next();
       String text = intimacy.getName();

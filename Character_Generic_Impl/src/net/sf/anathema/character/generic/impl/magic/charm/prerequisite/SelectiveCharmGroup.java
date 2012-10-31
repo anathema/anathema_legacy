@@ -15,7 +15,7 @@ import java.util.Set;
 public class SelectiveCharmGroup {
 
   private final SelectiveCharmGroupTemplate template;
-  private final List<Charm> charms = new ArrayList<Charm>();
+  private final List<Charm> charms = new ArrayList<>();
 
   public SelectiveCharmGroup(SelectiveCharmGroupTemplate template) {
     Preconditions.checkNotNull(template);
@@ -32,7 +32,7 @@ public class SelectiveCharmGroup {
   }
 
   public Set<ICharm> getLearnPrerequisitesCharms(ICharmLearnArbitrator learnArbitrator) {
-    Set<ICharm> prerequisiteCharms = new LinkedHashSet<ICharm>();
+    Set<ICharm> prerequisiteCharms = new LinkedHashSet<>();
     List<Charm> charmsToLearn = selectCharmsToLearn(learnArbitrator);
     for (Charm learnCharm : charmsToLearn) {
       prerequisiteCharms.addAll(learnCharm.getLearnPrerequisitesCharms(learnArbitrator));
@@ -42,7 +42,7 @@ public class SelectiveCharmGroup {
   }
 
   private List<Charm> selectCharmsToLearn(ICharmLearnArbitrator learnArbitrator) {
-    List<Charm> charmsToLearn = new ArrayList<Charm>();
+    List<Charm> charmsToLearn = new ArrayList<>();
     for (Charm charm : charms) {
       if (charmsToLearn.size() >= template.getThreshold()) {
         return charmsToLearn;

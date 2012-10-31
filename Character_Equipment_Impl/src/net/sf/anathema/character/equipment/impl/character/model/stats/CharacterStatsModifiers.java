@@ -16,7 +16,7 @@ import static com.google.common.collect.Lists.newArrayList;
 import static net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate.ID;
 
 public class CharacterStatsModifiers implements ICharacterStatsModifiers {
-  private final List<ITraitModifyingStats> stats = new ArrayList<ITraitModifyingStats>();
+  private final List<ITraitModifyingStats> stats = new ArrayList<>();
   private int mobilityPenalty;
 
   public static CharacterStatsModifiers extractFromCharacter(IGenericCharacter character) {

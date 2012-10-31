@@ -29,7 +29,7 @@ public class GhostPassionContent extends AbstractSubBoxContent {
 
   public List<NamedValue> getPrintPassions() {
     IGhostPassionsModel model = (IGhostPassionsModel) character.getAdditionalModel(GhostPassionsTemplate.ID);
-    List<NamedValue> printPassions = new ArrayList<NamedValue>();
+    List<NamedValue> printPassions = new ArrayList<>();
     for (VirtueType virtue : VirtueType.values()) {
       ISubTraitContainer container = model.getPassionContainer(virtue);
       for (ISubTrait passion : container.getSubTraits()) {

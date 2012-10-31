@@ -10,7 +10,7 @@ import net.sf.anathema.platform.tree.presenter.view.ITreeView;
 
 public class GenericCascadeRenderer<G> implements CharmTreeRenderer {
   public static <G> GenericCascadeRenderer<G> CreateFor(ITreeView<G> treeView, CascadeFactory<G> cascadeFactory) {
-    return new GenericCascadeRenderer<G>(treeView, cascadeFactory);
+    return new GenericCascadeRenderer<>(treeView, cascadeFactory);
   }
 
   private final CascadeFactory<G> provider;

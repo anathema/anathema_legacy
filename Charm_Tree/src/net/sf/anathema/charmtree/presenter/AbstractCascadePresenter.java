@@ -148,7 +148,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
   }
 
   private ICharmGroup[] sortCharmGroups(ICharmGroup[] originalGroups) {
-    ArrayList<ICharmGroup> filteredGroups = new ArrayList<ICharmGroup>();
+    ArrayList<ICharmGroup> filteredGroups = new ArrayList<>();
     for (ICharmGroup group : originalGroups) {
       boolean acceptGroup = false;
       for (ICharm charm : group.getAllCharms()) {
@@ -164,7 +164,7 @@ public abstract class AbstractCascadePresenter implements ICascadeSelectionPrese
     }
     ICharmGroup[] filteredGroupArray = filteredGroups.toArray(new ICharmGroup[filteredGroups.size()]);
     if (!filteredGroups.isEmpty()) {
-      I18nedIdentificateSorter<ICharmGroup> sorter = new I18nedIdentificateSorter<ICharmGroup>();
+      I18nedIdentificateSorter<ICharmGroup> sorter = new I18nedIdentificateSorter<>();
       return sorter.sortAscending(filteredGroupArray, new ICharmGroup[filteredGroups.size()], resources);
     }
     return filteredGroupArray;

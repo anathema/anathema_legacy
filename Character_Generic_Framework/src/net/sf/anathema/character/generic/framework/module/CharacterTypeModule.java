@@ -27,7 +27,7 @@ public abstract class CharacterTypeModule extends NullObjectCharacterModuleAdapt
   }
 
   protected ITemplateType[] getDefaultAndCustomTemplates(ICharacterGenerics generics) {
-    List<ITemplateType> types = new ArrayList<ITemplateType>();
+    List<ITemplateType> types = new ArrayList<>();
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
     ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(getType());
     types.add(defaultTemplate.getTemplateType());

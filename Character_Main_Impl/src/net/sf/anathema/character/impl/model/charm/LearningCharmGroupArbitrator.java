@@ -28,7 +28,7 @@ public class LearningCharmGroupArbitrator implements ICharmGroupArbitrator {
     if (template.isAllowedAlienCharms(data.getCasteType())) {
       return allCharms;
     }
-    List<ICharm> charms = new ArrayList<ICharm>();
+    List<ICharm> charms = new ArrayList<>();
     for (ICharm charm : allCharms) {
       if (!charm.hasAttribute(IExtendedCharmData.EXCLUSIVE_ATTRIBUTE)
           || data.getCharacterType() == charm.getCharacterType()) {

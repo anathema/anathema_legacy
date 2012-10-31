@@ -47,7 +47,7 @@ public class CardReport extends AbstractPdfReport {
 
 			// For now, only one style of report, that includes
 			// all spells and charms
-			List<ICardData> cardDataSet = new ArrayList<ICardData>();
+			List<ICardData> cardDataSet = new ArrayList<>();
 			for (ICardDataProvider provider : cardDataProviders) {
 				Collections.addAll(cardDataSet, provider.getCards((ICharacter) item.getItemData(),
 						layout.getResourceProvider()));

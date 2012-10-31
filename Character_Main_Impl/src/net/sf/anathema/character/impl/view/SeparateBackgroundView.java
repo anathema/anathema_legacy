@@ -47,7 +47,7 @@ public class SeparateBackgroundView implements BackgroundView, IInitializableCon
                                                                            ListCellRenderer backgroundRenderer,
                                                                            ITextFieldComboBoxEditor backgroundEditor,
                                                                            Icon addIcon) {
-    ButtonControlledComboEditView<Object> objectSelectionView = new BackgroundSelectionView<Object>(addIcon, labelText,
+    ButtonControlledComboEditView<Object> objectSelectionView = new BackgroundSelectionView<>(addIcon, labelText,
             backgroundRenderer, backgroundEditor);
     backgroundSelectionPanel.add(objectSelectionView.getComponent());
     return objectSelectionView;
@@ -57,7 +57,7 @@ public class SeparateBackgroundView implements BackgroundView, IInitializableCon
   public IRemovableTraitView<SimpleTraitView> addBackgroundView(Icon deleteIcon, String labelText, int value,
                                                                 int maxValue) {
     SimpleTraitView view = new SimpleTraitView(guiConfiguration, labelText, value, maxValue);
-    RearButtonTraitViewWrapper<SimpleTraitView> backgroundView = new RearButtonTraitViewWrapper<SimpleTraitView>(view,
+    RearButtonTraitViewWrapper<SimpleTraitView> backgroundView = new RearButtonTraitViewWrapper<>(view,
             deleteIcon);
     backgroundView.addComponents(backgroundDisplayPanel);
     return backgroundView;

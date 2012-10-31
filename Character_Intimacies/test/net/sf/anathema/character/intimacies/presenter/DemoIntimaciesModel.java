@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditionalModel {
 
-  private List<IIntimacy> entries = new ArrayList<IIntimacy>();
+  private List<IIntimacy> entries = new ArrayList<>();
 
   @Override
   public void addCharacterChangeListener(ICharacterChangeListener listener) {

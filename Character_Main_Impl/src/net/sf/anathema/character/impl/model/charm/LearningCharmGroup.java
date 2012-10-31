@@ -23,8 +23,8 @@ import java.util.Set;
 
 public class LearningCharmGroup extends CharmGroup implements ILearningCharmGroup {
 
-  private final Set<ICharm> charmsLearnedOnCreation = new HashSet<ICharm>();
-  private final Set<ICharm> charmsLearnedWithExperience = new HashSet<ICharm>();
+  private final Set<ICharm> charmsLearnedOnCreation = new HashSet<>();
+  private final Set<ICharm> charmsLearnedWithExperience = new HashSet<>();
   private final Announcer<ICharmLearnListener> control = Announcer.to(ICharmLearnListener.class);
   private final IExtendedCharmLearnableArbitrator learnArbitrator;
   private final ICharmLearnStrategy learnStrategy;
@@ -233,11 +233,11 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
 
   @Override
   public void forgetAll() {
-    Set<ICharm> forgetCloneCharms = new HashSet<ICharm>(charmsLearnedWithExperience);
+    Set<ICharm> forgetCloneCharms = new HashSet<>(charmsLearnedWithExperience);
     for (ICharm charm : forgetCloneCharms) {
       forgetCharm(charm, true);
     }
-    forgetCloneCharms = new HashSet<ICharm>(charmsLearnedOnCreation);
+    forgetCloneCharms = new HashSet<>(charmsLearnedOnCreation);
     for (ICharm charm : forgetCloneCharms) {
       forgetCharm(charm, false);
     }
@@ -251,7 +251,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   @Override
   public ICharm[] getCoreCharms() {
     ICharm[] allCharms = getAllCharms();
-    List<ICharm> charms = new ArrayList<ICharm>();
+    List<ICharm> charms = new ArrayList<>();
     for (ICharm charm : allCharms) {
       if (!charm.hasAttribute(IExtendedCharmData.EXCLUSIVE_ATTRIBUTE)) {
         charms.add(charm);
@@ -262,7 +262,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
 
   @Override
   public void unlearnExclusives() {
-    List<ICharm> exclusiveCharms = new ArrayList<ICharm>();
+    List<ICharm> exclusiveCharms = new ArrayList<>();
     Collections.addAll(exclusiveCharms, getAllCharms());
     exclusiveCharms.removeAll(Arrays.asList(getCoreCharms()));
     for (ICharm charm : exclusiveCharms) {

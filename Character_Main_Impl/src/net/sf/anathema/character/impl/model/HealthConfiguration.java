@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.health.IHealthLevelTypeVisitor;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -13,10 +10,13 @@ import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
 import net.sf.anathema.character.model.health.IPainToleranceProvider;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HealthConfiguration implements IHealthConfiguration {
 
-  private final List<IHealthLevelProvider> healthLevelProviders = new ArrayList<IHealthLevelProvider>();
-  private final List<IPainToleranceProvider> painResistanceProviders = new ArrayList<IPainToleranceProvider>();
+  private final List<IHealthLevelProvider> healthLevelProviders = new ArrayList<>();
+  private final List<IPainToleranceProvider> painResistanceProviders = new ArrayList<>();
   private final OxBodyTechniqueArbitrator arbitrator;
 
   public HealthConfiguration(IGenericTrait[] toughnessControllingTraits) {

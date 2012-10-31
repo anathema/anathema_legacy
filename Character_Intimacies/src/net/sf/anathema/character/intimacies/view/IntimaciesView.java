@@ -55,7 +55,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   public IRemovableTraitView<IToggleButtonTraitView<?>> addEntryView(Icon removeIcon, IModifiableCapTrait trait,
                                                                      String string) {
     SimpleTraitView view = new SimpleTraitView(factory, string, 0, 5);
-    RearToggleButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearToggleButtonTraitViewWrapper<SimpleTraitView>(
+    RearToggleButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearToggleButtonTraitViewWrapper<>(
             view, properties, false);
     RearButtonTraitViewWrapper<IToggleButtonTraitView<?>> twoButtonView = new RearButtonTraitViewWrapper<IToggleButtonTraitView<?>>(
             oneButtonView, removeIcon);

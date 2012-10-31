@@ -20,7 +20,7 @@ public final class DbMp3Track implements IMp3Track {
   private final String track;
   private final String title;
   private final Md5Checksum checksum;
-  private final List<String> fileReferences = new ArrayList<String>();
+  private final List<String> fileReferences = new ArrayList<>();
   private int libraryReferenceCount = 0;
   private String givenName;
   private final Db4oList events;

@@ -29,7 +29,7 @@ public class StringUtilities {
   }
 
   public static List<Integer> allIndicesOf(String string, char character) {
-    List<Integer> indexList = new ArrayList<Integer>();
+    List<Integer> indexList = new ArrayList<>();
     for (int index = string.indexOf(character, 0); index != -1; index = string.indexOf(character, ++index)) {
       indexList.add(index);
     }
@@ -41,10 +41,10 @@ public class StringUtilities {
    * of possible breakpoints is too low to satisfy <code>lines</code>, 0 is returned.
    */
   public static int[] findBreakPoints(String textString, int lines) {
-    SortedSet<Integer> breakSet = new TreeSet<Integer>();
+    SortedSet<Integer> breakSet = new TreeSet<>();
     breakSet.addAll(allIndicesOf(textString, ' '));
     breakSet.addAll(allIndicesOf(textString, '-'));
-    List<Integer> breakList = new ArrayList<Integer>();
+    List<Integer> breakList = new ArrayList<>();
     for (int value : breakSet) {
       breakList.add(value + 1);
     }
@@ -75,7 +75,7 @@ public class StringUtilities {
     //Linebreak the description at regular intervals;
     //seems like there should be an existing way to do this,
     //but I could not find anything.
-    List<String> lines = new ArrayList<String>();
+    List<String> lines = new ArrayList<>();
     while (textString.length() > 0) {
       int lineLength = 0;
       if (textString.length() < maxLength) {

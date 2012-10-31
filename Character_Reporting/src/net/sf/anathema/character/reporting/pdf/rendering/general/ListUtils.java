@@ -33,7 +33,7 @@ public class ListUtils {
   }
 
   public static String[] getAvailableLineItems(IResources resources, String resourceBase) {
-    List<String> items = new ArrayList<String>();
+    List<String> items = new ArrayList<>();
     for (String itemId : ListUtils.RESOURCE_ID) {
       String lineItem = getRequiredString(resources, resourceBase, itemId);
       if (lineItem != null) {

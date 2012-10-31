@@ -16,7 +16,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 public class GenericCharmUtilities {
 
   public static Collection<String> getAllReferencedGenericCharms(Element parent, ITraitType type) throws CharmException{
-    List<String> charmIds = new ArrayList<String>();
+    List<String> charmIds = new ArrayList<>();
     List<Element> charmReferences = ElementUtilities.elements(parent, TAG_GENERIC_CHARM_REFERENCE);
     for (Element element : charmReferences) {
       String id = element.attributeValue(ATTRIB_ID);

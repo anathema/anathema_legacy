@@ -101,7 +101,7 @@ public class RepositoryItemImportPresenter implements Presenter {
 
   private MultiEntryMap<String, ZipEntry> groupEntriesByItems(ZipFile importZipFile) {
     Enumeration< ? extends ZipEntry> entries = importZipFile.entries();
-    MultiEntryMap<String, ZipEntry> entriesByComment = new MultiEntryMap<String, ZipEntry>();
+    MultiEntryMap<String, ZipEntry> entriesByComment = new MultiEntryMap<>();
     for (; entries.hasMoreElements();) {
       ZipEntry entry = entries.nextElement();
       String comment = entry.getComment();

@@ -1,15 +1,15 @@
 package net.sf.anathema.graph.layering;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.graph.nodes.IRegularNode;
 import net.sf.anathema.graph.nodes.ISimpleNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TopologyBuilder {
 
   public static IRegularNode[] sortGraphByTopology(IRegularNode[] acyclicGraph) {
-    List<ISimpleNode> topologicalSort = new ArrayList<ISimpleNode>();
+    List<ISimpleNode> topologicalSort = new ArrayList<>();
     for (IRegularNode node : acyclicGraph) {
       if (node.isRootNode()) {
         sortIntoSetRecursively(node, topologicalSort);

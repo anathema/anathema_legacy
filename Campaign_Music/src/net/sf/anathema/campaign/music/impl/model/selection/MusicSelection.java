@@ -9,7 +9,7 @@ import java.util.List;
  * Class for the current music selection.
  */
 public class MusicSelection extends AbstractMusicSelection {
-  private final List<IMp3Track> content = new ArrayList<IMp3Track>();
+  private final List<IMp3Track> content = new ArrayList<>();
 
   @Override
   protected List<IMp3Track> getContentList() {

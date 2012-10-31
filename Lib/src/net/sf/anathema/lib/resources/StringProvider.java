@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 
 public class StringProvider implements IStringResourceHandler {
   private ResourceBundle resourceBundle;
-  private final List<String> keyList = new ArrayList<String>();
+  private final List<String> keyList = new ArrayList<>();
 
   public StringProvider(String bundleName, Locale locale) {
     setLocale(locale, bundleName);

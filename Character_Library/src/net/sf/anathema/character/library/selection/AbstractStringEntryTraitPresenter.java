@@ -14,7 +14,7 @@ import java.util.Map;
 public abstract class AbstractStringEntryTraitPresenter<V> {
 
   private final IStringEntryTraitModel<V> model;
-  private final Map<V, IRemovableTraitView< ? >> viewsByEntry = new HashMap<V, IRemovableTraitView< ? >>();
+  private final Map<V, IRemovableTraitView< ? >> viewsByEntry = new HashMap<>();
   private final IRemovableStringEntriesView< ? > view;
 
   public AbstractStringEntryTraitPresenter(IStringEntryTraitModel<V> model, IRemovableStringEntriesView< ? > view) {

@@ -1,13 +1,13 @@
 package net.sf.anathema.character.generic.framework.xml.essence;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GenericEssenceTemplate extends ReflectionCloneableObject<GenericEssenceTemplate> implements
     IEssenceTemplate {
@@ -24,7 +24,7 @@ public class GenericEssenceTemplate extends ReflectionCloneableObject<GenericEss
     if (poolConfiguration == null) {
       return new FactorizedTrait[0];
     }
-    List<FactorizedTrait> traits = new ArrayList<FactorizedTrait>();
+    List<FactorizedTrait> traits = new ArrayList<>();
     traits.add(new FactorizedTrait(essence, poolConfiguration.getEssenceMultiplier()));
     traits.add(new FactorizedTrait(willpower, poolConfiguration.getWillpowerMultiplier()));
     Collections.addAll(traits, poolConfiguration.createVirtueFactorizedTrait(virtues));

@@ -36,7 +36,7 @@ public class SoakProvidingMutation extends Mutation {
   }
 
   public void adjustActiveMutationList(List<SoakProvidingMutation> giftList) {
-    List<SoakProvidingMutation> cloneList = new ArrayList<SoakProvidingMutation>(giftList);
+    List<SoakProvidingMutation> cloneList = new ArrayList<>(giftList);
     if (replacesPrerequisites) {
       for (SoakProvidingMutation mutation : cloneList) {
         if (isPrerequisite(mutation)) {

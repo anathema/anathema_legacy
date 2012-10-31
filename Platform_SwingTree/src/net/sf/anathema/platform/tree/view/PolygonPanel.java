@@ -32,7 +32,7 @@ public class PolygonPanel extends JPanel {
   private static final double MAX_ZOOM_IN_SCALE = 1.5d; //150%
   private AffineTransform transform = new AffineTransform();
   private ElementContainer container = new ElementContainer();
-  private final List<SpecialControl> specialControls = new ArrayList<SpecialControl>();
+  private final List<SpecialControl> specialControls = new ArrayList<>();
 
   public PolygonPanel() {
     setLayout(null);

@@ -33,7 +33,7 @@ public class GiftContent extends AbstractSubBoxContent implements ListSubBoxCont
   }
 
   private List<String> getMutationsToPrint() {
-    List<String> printGifts = new ArrayList<String>();
+    List<String> printGifts = new ArrayList<>();
     for (IQualitySelection<IMutation> mutation : getModel().getMutationModel().getSelectedQualities()) {
       String text = getMutationText(mutation.getQuality());
       printGifts.add(text);

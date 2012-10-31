@@ -13,7 +13,7 @@ import java.util.List;
 public class CharmTemplate implements ICharmTemplate {
 
   private final ICharmSet charmSet;
-  private final List<String> alienAllowedCastes = new ArrayList<String>();
+  private final List<String> alienAllowedCastes = new ArrayList<>();
   private final IUniqueCharmType uniqueCharmType;
   private final MartialArtsRules martialArtsRules;
 

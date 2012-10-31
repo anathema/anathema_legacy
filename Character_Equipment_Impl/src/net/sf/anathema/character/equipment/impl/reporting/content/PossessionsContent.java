@@ -29,7 +29,7 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
 
   @Override
   public List<String> getPrintEntries() {
-    List<String> printPossessions = new ArrayList<String>();
+    List<String> printPossessions = new ArrayList<>();
     IEquipmentItem[] equipmentItems = getEquipmentItems();
     for (int index = 0; index < equipmentItems.length; index++) {
       IEquipmentItem item = equipmentItems[index];

@@ -1,9 +1,9 @@
 package net.sf.anathema.campaign.music.model;
 
+import net.sf.anathema.campaign.music.presenter.ISelectionContainerModel;
 import net.sf.anathema.lib.container.DefaultSelectionContainer;
 import net.sf.anathema.lib.container.IGenericSelectionContainer;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.campaign.music.presenter.ISelectionContainerModel;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
 
   public static <V> SelectionContainerModel<V> createDefault(Class<V> componentType, V[] availableValues) {
-    return new SelectionContainerModel<V>(new DefaultSelectionContainer<V>(componentType, availableValues));
+    return new SelectionContainerModel<>(new DefaultSelectionContainer<>(componentType, availableValues));
   }
 
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);

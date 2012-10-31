@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GhostFettersModel extends AbstractAdditionalModelAdapter implements IGhostFettersModel {
-  private final List<Fetter> fetters = new ArrayList<Fetter>();
+  private final List<Fetter> fetters = new ArrayList<>();
   IIntValueChangedListener listener;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final ICharacterModelContext context;

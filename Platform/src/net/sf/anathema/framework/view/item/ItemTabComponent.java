@@ -22,7 +22,7 @@ import static javax.swing.SwingConstants.LEFT;
 public class ItemTabComponent {
 
   private JTabbedPane tabbedPane;
-  private Map<IItemView, ObjectValueListener<String>> nameListenersByView = new HashMap<IItemView, ObjectValueListener<String>>();
+  private Map<IItemView, ObjectValueListener<String>> nameListenersByView = new HashMap<>();
 
   public ItemTabComponent(JTabbedPane tabbedPane) {
     this.tabbedPane = tabbedPane;

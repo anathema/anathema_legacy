@@ -1,14 +1,14 @@
 package net.sf.anathema.character.impl.module.repository;
 
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.template.ICharacterExternalsTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
+
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class TemplateTypeAggregator {
 
@@ -20,7 +20,7 @@ public class TemplateTypeAggregator {
 
   public ITemplateTypeAggregation[] aggregateTemplates(ICharacterType type) {
     ICharacterExternalsTemplate[] templates = characterTemplateRegistry.getAllSupportedTemplates(type);
-    Map<ITemplateType, TemplateTypeAggregation> aggregations = new LinkedHashMap<ITemplateType, TemplateTypeAggregation>();
+    Map<ITemplateType, TemplateTypeAggregation> aggregations = new LinkedHashMap<>();
     for (ICharacterExternalsTemplate template : templates) {
       TemplateTypeAggregation aggregation = aggregations.get(template.getTemplateType());
       if (aggregation == null) {

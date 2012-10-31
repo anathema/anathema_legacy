@@ -39,7 +39,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   private final ICharmConfiguration charmConfiguration;
   private final IComboConfiguration comboConfiguration;
-  private final Map<ICombo, IComboView> viewsByCombo = new HashMap<ICombo, IComboView>();
+  private final Map<ICombo, IComboView> viewsByCombo = new HashMap<>();
   private final ComboConfigurationModel comboModel;
   private final IResources resources;
   private final IComboConfigurationView view;
@@ -222,7 +222,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
       @Override
       public void charmRemoved(Object[] removedCharms) {
-        List<ICharm> removedCharmList = new ArrayList<ICharm>();
+        List<ICharm> removedCharmList = new ArrayList<>();
         for (Object charmObject : removedCharms) {
           removedCharmList.add((ICharm) charmObject);
         }

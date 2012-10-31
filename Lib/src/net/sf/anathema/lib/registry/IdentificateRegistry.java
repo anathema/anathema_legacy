@@ -10,7 +10,7 @@ import java.util.Set;
 public class IdentificateRegistry<E extends Identified> implements
         IIdentificateRegistry<E> {
 
-  private final Set<E> elements = new LinkedHashSet<E>();
+  private final Set<E> elements = new LinkedHashSet<>();
 
   @Override
   public void add(E... newElements) {

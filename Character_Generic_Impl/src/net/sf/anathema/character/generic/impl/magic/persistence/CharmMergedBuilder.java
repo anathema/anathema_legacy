@@ -37,7 +37,7 @@ public class CharmMergedBuilder {
 
   private void readMerged(Element mergedElement, ICharm[] existingCharms) {
     List<Element> charmReferences = ElementUtilities.elements(mergedElement, TAG_CHARM_REFERENCE);
-    Set<ICharm> charms = new HashSet<ICharm>(charmReferences.size());
+    Set<ICharm> charms = new HashSet<>(charmReferences.size());
     for (Element charmReference : charmReferences) {
       final String charmId = charmReference.attributeValue(ATTRIB_ID);
       ICharm charm = getFirst(existingCharms, new Predicate<ICharm>() {

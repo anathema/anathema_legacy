@@ -1,11 +1,10 @@
 package net.sf.anathema.lib.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TreeUtilities {
 
@@ -15,7 +14,7 @@ public class TreeUtilities {
   }
 
   public static DefaultMutableTreeNode[] getSelectedHierachyNodes(JTree tree) {
-    List<DefaultMutableTreeNode> list = new ArrayList<DefaultMutableTreeNode>();
+    List<DefaultMutableTreeNode> list = new ArrayList<>();
     TreePath[] selectionPaths = tree.getSelectionPaths();
     if (selectionPaths == null) {
       return new DefaultMutableTreeNode[0];

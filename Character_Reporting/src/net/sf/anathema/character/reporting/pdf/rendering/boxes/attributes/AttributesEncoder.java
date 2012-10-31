@@ -45,7 +45,7 @@ public class AttributesEncoder implements ContentEncoder {
   }
 
   protected IMagicStats[] getExcellencies(IGenericCharacter character) {
-    List<IMagicStats> excellencies = new ArrayList<IMagicStats>();
+    List<IMagicStats> excellencies = new ArrayList<>();
     FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
     if (type == FavoringTraitType.AttributeType) {
       for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {

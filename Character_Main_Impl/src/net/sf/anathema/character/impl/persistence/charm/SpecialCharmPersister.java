@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.persistence.charm;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -17,12 +14,14 @@ import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ITraitCapModifyingCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IUpgradableCharm;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Element;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SpecialCharmPersister implements ISpecialCharmPersister {
 
-  private final Map<ICharm, ISpecialCharmPersister> persisterByCharm = new HashMap<ICharm, ISpecialCharmPersister>();
+  private final Map<ICharm, ISpecialCharmPersister> persisterByCharm = new HashMap<>();
 
   public SpecialCharmPersister(ISpecialCharm[] charms, final ICharmIdMap charmTree) {
     for (ISpecialCharm specialCharm : charms) {

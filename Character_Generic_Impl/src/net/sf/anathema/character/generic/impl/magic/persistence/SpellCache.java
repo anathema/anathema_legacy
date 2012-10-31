@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import net.sf.anathema.character.generic.magic.ISpell;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SpellCache implements ISpellCache {
-	private List<ISpell> spellList = new ArrayList<ISpell>();
+	private List<ISpell> spellList = new ArrayList<>();
 	
 	public void addSpell(ISpell spell) {
 		spellList.add(spell);

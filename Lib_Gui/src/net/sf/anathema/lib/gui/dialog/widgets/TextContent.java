@@ -5,7 +5,7 @@ import java.util.List;
 
 public class TextContent {
 
-  private final List<TextBlock> textBlocks = new ArrayList<TextBlock>();
+  private final List<TextBlock> textBlocks = new ArrayList<>();
 
   public void setTextBlocks(List<TextBlock> textBlocks) {
     this.textBlocks.clear();

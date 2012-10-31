@@ -9,7 +9,7 @@ import java.util.List;
 public class TraitTypeGroup implements ITraitTypeGroup {
 
   public static ITraitType[] getAllTraitTypes(ITraitTypeGroup... traitTypeGroups) {
-    List<ITraitType> traitTypes = new ArrayList<ITraitType>();
+    List<ITraitType> traitTypes = new ArrayList<>();
     for (ITraitTypeGroup group : traitTypeGroups) {
       Collections.addAll(traitTypes, group.getAllGroupTypes());
     }

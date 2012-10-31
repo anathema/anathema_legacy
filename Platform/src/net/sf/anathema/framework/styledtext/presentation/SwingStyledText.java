@@ -78,7 +78,7 @@ public class SwingStyledText implements StyledText {
   }
 
   private ITextPart[] extractTextParts() throws BadLocationException {
-    List<ITextPart> textParts = new ArrayList<ITextPart>();
+    List<ITextPart> textParts = new ArrayList<>();
     int documentLength = document.getLength();
     if (documentLength <= 0) {
       return new ITextPart[0];

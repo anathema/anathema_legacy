@@ -12,7 +12,7 @@ import java.util.List;
 public abstract class Quality implements IQuality, Identified {
 
   private final String id;
-  private final List<IQualityPredicate> prerequisites = new ArrayList<IQualityPredicate>();
+  private final List<IQualityPredicate> prerequisites = new ArrayList<>();
   private final IQualityType type;
 
   public Quality(String id, IQualityType type) {

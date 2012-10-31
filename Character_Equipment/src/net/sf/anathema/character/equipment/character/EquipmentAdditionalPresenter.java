@@ -39,7 +39,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
   private final IResources resources;
   private final IEquipmentAdditionalModel model;
   private final IEquipmentAdditionalView view;
-  private final Map<IEquipmentItem, IEquipmentObjectView> viewsByItem = new HashMap<IEquipmentItem, IEquipmentObjectView>();
+  private final Map<IEquipmentItem, IEquipmentObjectView> viewsByItem = new HashMap<>();
 
   public EquipmentAdditionalPresenter(IResources resources, final IEquipmentAdditionalModel model,
                                       IEquipmentAdditionalView view) {
@@ -161,7 +161,7 @@ public class EquipmentAdditionalPresenter implements Presenter {
     Icon removeIcon = new BasicUi(resources).getRemoveIcon();
     Icon editIcon = new BasicUi(resources).getEditIcon();
     viewsByItem.put(selectedObject, objectView);
-    List<Action> actions = new ArrayList<Action>();
+    List<Action> actions = new ArrayList<>();
     if (model.canBeRemoved(selectedObject)) {
     	if (AnathemaEquipmentPreferences.getDefaultPreferences().getEnablePersonalization()) {
     		actions.add(new SmartAction(resources.getString("AdditionalTemplateView.Personalize.Action.Name"), //$NON-NLS-1$

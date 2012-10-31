@@ -72,7 +72,7 @@ public abstract class AbstractNamedTraitEncoder {
   }
 
   protected final IValuedTraitReference[] getTraitReferences(INamedGenericTrait[] traits, ITraitType type) {
-    List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
+    List<IValuedTraitReference> references = new ArrayList<>();
     for (INamedGenericTrait trait : traits) {
       references.add(new NamedGenericTraitReference(trait, type));
     }

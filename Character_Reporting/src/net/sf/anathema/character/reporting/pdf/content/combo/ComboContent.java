@@ -35,6 +35,6 @@ public class ComboContent extends AbstractSubBoxContent {
   }
 
   private List<IGenericCombo> getGenericCombos() {
-    return new ArrayList<IGenericCombo>(Arrays.asList(character.getCombos()));
+    return new ArrayList<>(Arrays.asList(character.getCombos()));
   }
 }

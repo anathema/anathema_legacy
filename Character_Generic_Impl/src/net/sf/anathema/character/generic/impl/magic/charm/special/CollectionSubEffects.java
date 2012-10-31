@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CollectionSubEffects implements SubEffects {
 
-  private final List<ISubeffect> effects = new ArrayList<ISubeffect>();
+  private final List<ISubeffect> effects = new ArrayList<>();
 
   public void add(ISubeffect effect){
     effects.add(effect);

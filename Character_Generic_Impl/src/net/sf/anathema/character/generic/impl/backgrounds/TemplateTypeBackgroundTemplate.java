@@ -1,16 +1,16 @@
 package net.sf.anathema.character.generic.impl.backgrounds;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class TemplateTypeBackgroundTemplate extends AbstractBackgroundTemplate {
 
-  private final List<ITemplateType> types = new ArrayList<ITemplateType>();
+  private final List<ITemplateType> types = new ArrayList<>();
   private final LowerableState experiencedState;
 
   public TemplateTypeBackgroundTemplate(String id, ITemplateType... types) {

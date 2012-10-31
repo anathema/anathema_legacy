@@ -45,7 +45,7 @@ public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter imp
 
   @Override
   public void addChangeListener(IChangeListener listener) {
-    GlobalChangeAdapter<String> adapter = new GlobalChangeAdapter<String>(listener);
+    GlobalChangeAdapter<String> adapter = new GlobalChangeAdapter<>(listener);
     getVirtueFlaw().addRootChangeListener(listener);
     getVirtueFlaw().getName().addTextChangedListener(adapter);
     getVirtueFlaw().getLimitTrait().addCurrentValueListener(adapter);

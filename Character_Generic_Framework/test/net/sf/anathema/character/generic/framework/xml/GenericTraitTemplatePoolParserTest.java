@@ -17,7 +17,7 @@ public class GenericTraitTemplatePoolParserTest extends TestCase {
 
   @Override
   protected void setUp() throws Exception {
-    templateRegistry = new DummyXmlTemplateRegistry<GenericTraitTemplatePool>();
+    templateRegistry = new DummyXmlTemplateRegistry<>();
     abilityParser = new GenericTraitTemplatePoolParser(templateRegistry, AllAbilityTraitTypeGroup.getInstance());
   }
 

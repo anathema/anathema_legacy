@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ExperiencePointConfiguration implements IExperiencePointConfiguration {
 
-  private final List<IExperiencePointEntry> entries = new ArrayList<IExperiencePointEntry>();
+  private final List<IExperiencePointEntry> entries = new ArrayList<>();
   private final Announcer<IExperiencePointConfigurationListener> control = Announcer.to(IExperiencePointConfigurationListener.class);
   private final ObjectValueListener<IExperiencePointEntry>
           entryChangeListener = new ObjectValueListener<IExperiencePointEntry>() {

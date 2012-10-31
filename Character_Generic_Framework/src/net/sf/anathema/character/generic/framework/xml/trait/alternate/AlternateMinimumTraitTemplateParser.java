@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.trait.alternate;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
@@ -11,8 +8,10 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlternateMinimumTraitTemplateParser {
 
@@ -32,7 +31,7 @@ public class AlternateMinimumTraitTemplateParser {
     int value = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
     AlternateMinimumRestriction restriction = new AlternateMinimumRestriction(count, value);
     restriction.setIsFreebie(ElementUtilities.getBooleanAttribute(element, TAG_FREEBIE, false));
-    List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<GenericRestrictedTraitTemplate>();
+    List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<>();
     for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {
       IClonableTraitTemplate template = GenericTraitTemplateParser.parseTraitTemplate(traitElement);
       ITraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));
@@ -45,7 +44,7 @@ public class AlternateMinimumTraitTemplateParser {
 	    int count = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_COUNT);
 	    int value = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
 	    AlternateMinimumRestriction restriction = new AlternateMinimumRestriction(count, value);
-	    List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<GenericRestrictedTraitTemplate>();
+	    List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<>();
 	    for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {
 	      GenericTraitTemplate template = GenericTraitTemplateParser.parseTraitTemplateSoft(traitElement);
 	      ITraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));

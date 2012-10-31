@@ -150,7 +150,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
 
   @Override
   public IdentifiedInteger[] getComplexPools() {
-    Map<String, Integer> complexPools = new HashMap<String, Integer>();
+    Map<String, Integer> complexPools = new HashMap<>();
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
       for (IdentifiedInteger complexPool : pool.getAdditionalComplexPools(traitCollection, magicCollection)) {
         String id = complexPool.getId();

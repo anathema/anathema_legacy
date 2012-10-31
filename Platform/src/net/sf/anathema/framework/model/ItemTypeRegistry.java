@@ -1,15 +1,15 @@
 package net.sf.anathema.framework.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.repository.ItemType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemTypeRegistry implements IItemTypeRegistry {
 
-  private final List<IItemType> itemTypes = new ArrayList<IItemType>();
+  private final List<IItemType> itemTypes = new ArrayList<>();
 
   @Override
   public IItemType getById(String id) {

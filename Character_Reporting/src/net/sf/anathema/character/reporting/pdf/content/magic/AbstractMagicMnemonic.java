@@ -20,6 +20,6 @@ public class AbstractMagicMnemonic implements MagicMnemonic {
 
   @Override
   public List<IMagicStats> getRemainingPrintMagic() {
-    return new ArrayList<IMagicStats> (printMagic);
+    return new ArrayList<>(printMagic);
   }
 }

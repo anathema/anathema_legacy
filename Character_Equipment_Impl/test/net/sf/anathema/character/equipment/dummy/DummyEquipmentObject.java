@@ -1,8 +1,5 @@
 package net.sf.anathema.character.equipment.dummy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.equipment.ItemCost;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -12,9 +9,12 @@ import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.control.IChangeListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DummyEquipmentObject extends AbstractStats implements IEquipmentItem {
 
-  private final List<IEquipmentStats> allEquipments = new ArrayList<IEquipmentStats>();
+  private final List<IEquipmentStats> allEquipments = new ArrayList<>();
   private final String name;
   private final String description;
 

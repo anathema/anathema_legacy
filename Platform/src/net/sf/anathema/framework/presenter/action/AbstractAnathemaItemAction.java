@@ -36,16 +36,16 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
   @Override
   protected final void execute(Component parentComponent) {
     try {
-      ObjectSelectionWizardModel<IItemType> model = new ObjectSelectionWizardModel<IItemType>(
+      ObjectSelectionWizardModel<IItemType> model = new ObjectSelectionWizardModel<>(
           collectItemTypes(getAnathemaModel()),
           getLegalityProvider());
       IRegistry<IItemType, IWizardFactory> followUpWizardFactoryRegistry = getFollowUpWizardFactoryRegistry();
       Registry<IItemType, IAnathemaWizardModelTemplate> registry = createModelTemplateRegistry(followUpWizardFactoryRegistry);
-      IAnathemaWizardPage startPage = new ObjectSelectionWizardPage<IItemType>(
+      IAnathemaWizardPage startPage = new ObjectSelectionWizardPage<>(
           followUpWizardFactoryRegistry,
           registry,
           model,
-          new ListObjectSelectionPageView<IItemType>(IItemType.class),
+          new ListObjectSelectionPageView<>(IItemType.class),
           createSelectionProperties());
       boolean canceled = showDialog(parentComponent, startPage);
       if (canceled) {
@@ -69,7 +69,7 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
 
   private Registry<IItemType, IAnathemaWizardModelTemplate> createModelTemplateRegistry(
       IRegistry<IItemType, IWizardFactory> followUpWizardFactoryRegistry) {
-    Registry<IItemType, IAnathemaWizardModelTemplate> registry = new Registry<IItemType, IAnathemaWizardModelTemplate>();
+    Registry<IItemType, IAnathemaWizardModelTemplate> registry = new Registry<>();
     for (IItemType type : collectItemTypes(getAnathemaModel())) {
       registry.register(type, followUpWizardFactoryRegistry.get(type).createTemplate());
     }

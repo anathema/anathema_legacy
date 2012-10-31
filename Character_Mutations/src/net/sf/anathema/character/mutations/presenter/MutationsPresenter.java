@@ -52,7 +52,7 @@ public class MutationsPresenter implements Presenter {
       @Override
       public void magicAdded(Object[] addedMagic) {
         IMutation mutation = (IMutation) addedMagic[0];
-        IQualitySelection<IMutation> selection = new QualitySelection<IMutation>(mutation, mutation.getCost(), !model.isCharacterExperienced());
+        IQualitySelection<IMutation> selection = new QualitySelection<>(mutation, mutation.getCost(), !model.isCharacterExperienced());
         model.addQualitySelection(selection);
         updateOverview();
       }

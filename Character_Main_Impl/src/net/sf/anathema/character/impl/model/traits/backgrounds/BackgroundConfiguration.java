@@ -23,7 +23,7 @@ import java.util.List;
 
 public class BackgroundConfiguration implements IBackgroundConfiguration {
 
-  private final List<IBackground> backgrounds = new ArrayList<IBackground>();
+  private final List<IBackground> backgrounds = new ArrayList<>();
   private final Announcer<IBackgroundListener> listeners = Announcer.to(IBackgroundListener.class);
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final ITraitTemplateCollection traitTemplates;
@@ -44,7 +44,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   public void initStartingBackgrounds()
   {
 	  //load starting backgrounds from template
-	  List<IBackground> otherBackgroundsToInit = new ArrayList<IBackground>(backgrounds);
+	  List<IBackground> otherBackgroundsToInit = new ArrayList<>(backgrounds);
 	  for (IBackgroundTemplate background : getAllAvailableBackgroundTemplates())
 	  {
 		  ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(background);
@@ -58,7 +58,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   
   @Override
   public IBackgroundTemplate[] getAllAvailableBackgroundTemplates() {
-    List<IBackgroundTemplate> backgroundList = new ArrayList<IBackgroundTemplate>();
+    List<IBackgroundTemplate> backgroundList = new ArrayList<>();
     for (IBackgroundTemplate backgroundTemplate : backgroundRegistry.getAll()) {
       if (backgroundArbitrator.accepts(backgroundTemplate)) {
         backgroundList.add(backgroundTemplate);

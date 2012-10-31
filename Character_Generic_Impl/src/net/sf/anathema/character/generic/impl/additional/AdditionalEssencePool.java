@@ -6,7 +6,7 @@ import java.util.Map;
 public class AdditionalEssencePool {
 
   private final int multiplier;
-  private final Map<Integer, Integer> override = new HashMap<Integer, Integer>();
+  private final Map<Integer, Integer> override = new HashMap<>();
 
   public AdditionalEssencePool(int multiplier) {
     this.multiplier = multiplier;

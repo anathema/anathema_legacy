@@ -35,7 +35,7 @@ public class GhostFettersPresenter implements Presenter {
   private IValueView<Integer> experienceView;
 
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
-  private final IdentityMapping<Fetter, IFetterView> viewsByFetter = new IdentityMapping<Fetter, IFetterView>();
+  private final IdentityMapping<Fetter, IFetterView> viewsByFetter = new IdentityMapping<>();
 
   private final IResources resources;
   private final IGhostFettersConfigurationView view;

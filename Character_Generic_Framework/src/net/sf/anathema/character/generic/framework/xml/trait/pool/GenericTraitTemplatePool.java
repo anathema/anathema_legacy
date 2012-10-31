@@ -14,7 +14,7 @@ public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplate
 
   private GenericTraitTemplate defaultTraitTemplate;
   // This is volatile instead of final to allow clone to be implemented
-  private volatile Map<ITraitType, IClonableTraitTemplate> specialTraitTemplates = new HashMap<ITraitType, IClonableTraitTemplate>();
+  private volatile Map<ITraitType, IClonableTraitTemplate> specialTraitTemplates = new HashMap<>();
 
   public ITraitTemplate getTemplate(ITraitType traitType) {
     ITraitTemplate template = specialTraitTemplates.get(traitType);
@@ -45,7 +45,7 @@ public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplate
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
-    clone.specialTraitTemplates = new HashMap<ITraitType, IClonableTraitTemplate>(4 * specialTraitTemplates.size() / 3 + 1);
+    clone.specialTraitTemplates = new HashMap<>(4 * specialTraitTemplates.size() / 3 + 1);
     
     if (defaultTraitTemplate != null) {
       clone.defaultTraitTemplate = defaultTraitTemplate.clone();

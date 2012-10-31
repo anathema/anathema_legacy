@@ -32,7 +32,7 @@ public abstract class AbstractWeaponryContent extends AbstractEquipmentContent<I
   }
 
   private EquipmentNameStatsGroup<IWeaponStats> createNameGroup() {
-    return new EquipmentNameStatsGroup<IWeaponStats>(getResources());
+    return new EquipmentNameStatsGroup<>(getResources());
   }
 
   private DamageWeaponStatsGroup createDamageGroup() {

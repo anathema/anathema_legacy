@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class DefaultEngine implements Engine {
 
-  private final Map<Type, QualityFactory> factoryMap = new HashMap<Type, QualityFactory>();
+  private final Map<Type, QualityFactory> factoryMap = new HashMap<>();
 
   @Override
   public void setFactory(Type type, QualityFactory factory) {
