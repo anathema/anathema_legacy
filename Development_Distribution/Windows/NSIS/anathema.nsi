@@ -142,8 +142,7 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Anathema UNSEC0000
-    # Unable to delete $PROFILE\.anathema, only its subfolder.  An issue with the folder name starting with a dot perhaps?
-    RmDir /r /REBOOTOK $PROFILE\.anathema\versions 
+    RmDir /r /REBOOTOK $PROFILE\.anathema
     RmDir /r /REBOOTOK $INSTDIR\lib
     RmDir /r /REBOOTOK $INSTDIR\jre
     Delete /REBOOTOK $INSTDIR\anathema.jar
