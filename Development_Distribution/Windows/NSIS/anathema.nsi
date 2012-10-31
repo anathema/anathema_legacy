@@ -149,6 +149,7 @@ Section /o -un.Anathema UNSEC0000
     Delete /REBOOTOK $INSTDIR\anathema.exe
     Delete /REBOOTOK $INSTDIR\license.txt
     Delete /REBOOTOK $INSTDIR\release_notes.txt
+    Delete /REBOOTOK $INSTDIR\anathema.properties
     DeleteRegValue HKLM "${REGKEY}\Components" Anathema
 SectionEnd
 
