@@ -21,7 +21,7 @@ public abstract class AbstractNameStatsGroup<T extends IStats> extends AbstractT
 
   @Override
   public Float[] getColumnWeights() {
-    return new Float[]{new Float(6)};
+    return new Float[]{6f};
   }
 
   @Override
