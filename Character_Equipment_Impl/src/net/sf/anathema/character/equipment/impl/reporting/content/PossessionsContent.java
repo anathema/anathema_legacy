@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.impl.reporting.content;
 
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
-import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -12,6 +11,9 @@ import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static net.sf.anathema.character.equipment.MaterialComposition.Fixed;
+import static net.sf.anathema.character.equipment.MaterialComposition.Variable;
 
 public class PossessionsContent extends AbstractSubBoxContent implements ListSubBoxContent {
 
@@ -31,15 +33,13 @@ public class PossessionsContent extends AbstractSubBoxContent implements ListSub
   public List<String> getPrintEntries() {
     List<String> printPossessions = new ArrayList<>();
     IEquipmentItem[] equipmentItems = getEquipmentItems();
-    for (int index = 0; index < equipmentItems.length; index++) {
-      IEquipmentItem item = equipmentItems[index];
+    for (IEquipmentItem item : equipmentItems) {
       if (isInArsenalOrPanopoly(item)) {
         continue;
       }
       String possession = item.getTitle();
-      if (item.getMaterialComposition() == MaterialComposition.Fixed ||
-    	  item.getMaterialComposition() == MaterialComposition.Variable) {
-    	  possession += " (" + item.getMaterial().getId() + ")";
+      if (item.getMaterialComposition() == Fixed || item.getMaterialComposition() == Variable) {
+        possession += " (" + item.getMaterial().getId() + ")";
       }
       printPossessions.add(possession);
     }

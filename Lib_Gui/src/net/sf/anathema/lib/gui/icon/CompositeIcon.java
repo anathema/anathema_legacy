@@ -57,9 +57,9 @@ public class CompositeIcon extends AbstractChangeableModel implements Icon {
     }
 
     int height = icons[0].getIconHeight();
-    for (int i = 0; i < icons.length; ++i) {
-      if (icons[i].getIconHeight() > height) {
-        height = icons[i].getIconHeight();
+    for (Icon icon : icons) {
+      if (icon.getIconHeight() > height) {
+        height = icon.getIconHeight();
       }
     }
     return height;

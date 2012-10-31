@@ -61,8 +61,7 @@ public class ToggleComponentEnabler {
   }
 
   private void addDecorationListeners(Component[] decorations) {
-    for (int i = 0; i < decorations.length; i++) {
-      Component currentDecoration = decorations[i];
+    for (Component currentDecoration : decorations) {
       currentDecoration.addMouseListener(new MouseAdapter() {
         @Override
         public void mousePressed(MouseEvent e) {
@@ -86,14 +85,13 @@ public class ToggleComponentEnabler {
   }
 
   private void listenToComponentClicks(IEnableableComponentContainer[] componentsToListenTo) {
-    for (int i = 0; i < componentsToListenTo.length; ++i) {
-      listenToComponentClicks(componentsToListenTo[i].getComponents());
+    for (IEnableableComponentContainer aComponentsToListenTo : componentsToListenTo) {
+      listenToComponentClicks(aComponentsToListenTo.getComponents());
     }
   }
 
   private void listenToComponentClicks(Component[] componentsToListenTo) {
-    for (int i = 0; i < componentsToListenTo.length; ++i) {
-      Component component = componentsToListenTo[i];
+    for (Component component : componentsToListenTo) {
       component.addMouseListener(new MouseAdapter() {
         @Override
         public void mousePressed(MouseEvent e) {
@@ -129,8 +127,8 @@ public class ToggleComponentEnabler {
   }
 
   private void setComponentsEnabled(boolean enabled) {
-    for (int i = 0; i < components.length; ++i) {
-      components[i].setEnabled(enabled);
+    for (IEnableableComponentContainer component : components) {
+      component.setEnabled(enabled);
     }
   }
 

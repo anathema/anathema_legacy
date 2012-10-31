@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor {
@@ -114,8 +113,7 @@ public class ProgressMonitorBar extends JProgressBar implements IProgressMonitor
     synchronized (this) {
       clonedListeners = new ArrayList<>(canceledListeners);
     }
-    for (Iterator<ICanceledListener> iter = clonedListeners.iterator(); iter.hasNext();) {
-      ICanceledListener listener = iter.next();
+    for (ICanceledListener listener : clonedListeners) {
       listener.canceled();
     }
   }
