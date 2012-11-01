@@ -3,8 +3,9 @@ import org.apache.tools.ant.filters.ReplaceTokens
 import org.ajoberstar.gradle.git.tasks.GitTag;
 import org.ajoberstar.gradle.git.tasks.GitPush;
 
-ext.dependenciesDir = new File(buildDir, 'dependencies')
-ext.versionString = "${version_major}.${version_minor}.${version_revision}"
+ext.jreVersion       = "1.7.0_09"
+ext.dependenciesDir  = new File(buildDir, 'dependencies')
+ext.versionString    = "${version_major}.${version_minor}.${version_revision}"
 ext.testDependencies = ['junit:junit:4.10', 'org.mockito:mockito-core:1.9.0']
 
 apply from: "publishUpdate.gradle"
@@ -20,13 +21,25 @@ buildscript {
   }
 }
 
+configurations.all {
+  resolutionStrategy {
+     force 'commons-io:commons-io:2.4'
+  }
+}
+
 repositories {
   mavenCentral()
+  maven {
+    url 'http://anathema.butatopanto.de:8081/maven/releases/'
+  }
 }
 configurations {
   launch4j
   nsis
   scp
+  bundleapp
+  jreWin
+  jreMac
 }
 dependencies {
   launch4j files(
@@ -35,11 +48,14 @@ dependencies {
   )
   nsis files("./Development_Distribution/Windows/Binaries/NSIS/nsisant-1.3.jar")
   scp 'org.apache.ant:ant-jsch:1.8.4', 'com.jcraft:jsch:0.1.48'
+  bundleapp files( "./Development_Distribution/Mac/Binaries/appbundler-1.0.jar")
+  jreWin "oracle:jre-win32:${jreVersion}@zip"
+  jreMac "oracle:jre-mac64:${jreVersion}@zip"
 }
 
 apply plugin: 'idea'
 
-idea { project { languageLevel = '1.6' } }
+idea { project { languageLevel = '1.7' } }
 
 task wrapper(type: Wrapper) {
   gradleVersion = '1.2'
@@ -59,7 +75,7 @@ String operatingSystem() {
 
 subprojects {
   apply plugin: 'java'
-  sourceCompatibility = 1.6
+  sourceCompatibility = 1.7
 
   apply plugin: 'idea'
   apply plugin: 'eclipse'
@@ -68,6 +84,12 @@ subprojects {
     mavenCentral()
     maven {
       url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
+    }
+  }
+
+  configurations.all {
+    resolutionStrategy {
+      force 'commons-io:commons-io:2.4'
     }
   }
 
@@ -89,8 +111,9 @@ subprojects {
 }
 
 task clean << {
-  ant.delete(includeEmptyDirs:"true", quiet:"true") {
-    fileset(dir:buildDir, includes:"**" )
+  buildDir.mkdirs()
+  ant.delete(includeemptydirs:true, quiet:false) {
+    fileset(dir:buildDir, includes:"**/*", defaultexcludes:false )
   }
 }
 
@@ -194,6 +217,56 @@ task version << {
 task createReleaseDirectory << {
   releaseDir.mkdirs()
 }
+
+// JRE archive download and explosion into build folder
+task prepareWinJRE(type: Copy) {
+  def target = new File('build/jre/win32');
+  into target
+  from zipTree(configurations.jreWin.singleFile)
+  onlyIf { !target.exists() }
+  doLast {
+    ant.delete(includeemptydirs:true, quiet:true) {
+      fileset(dir:buildDir, includes:"tmp/expandedArchives/jre-win32*/**", defaultexcludes:false )
+    }
+  }
+}
+
+task prepareMacJRE(type:Copy) {
+  def target = new File('build/jre/mac64');
+  into target
+  from zipTree(configurations.jreMac.singleFile)
+  onlyIf { !target.exists() }
+  doLast {
+    ant.delete(includeemptydirs:true, quiet:true) {
+      fileset(dir:buildDir, includes:"tmp/expandedArchives/jre-mac64*/**", defaultexcludes:false )
+    }
+  }
+}
+
+task prepareJRE dependsOn( prepareWinJRE, prepareMacJRE )
+
+// Extracts the JRE from a mac with a JDK installed.  This only runs on a Mac.
+// This only need be run by a release manager upgrading the bundled JRE used by Anathema
+task extractMacJRE(type: Zip) << {
+  if( !os.equals("mac") ) throw new StopActionException( "The task extractMacJRE must be run on Mac OSX." )
+  archiveName = "jre-mac64-${jreVersion}.zip"
+  destinationDir = buildDir
+  from("/Library/Java/JavaVirtualMachines/jdk${jreVersion}.jdk/Contents") {
+    into "jre${jreVersion}/Contents"
+    include 'Info.plist'
+  }
+  from("/Library/Java/JavaVirtualMachines/jdk${jreVersion}.jdk/Contents/Home/jre") {
+    into "jre${jreVersion}/Contents/Home/jre"
+    exclude 'bin/',
+            'lib/deploy/',
+            'lib/deploy.jar',
+            'lib/javaws.jar',
+            'lib/libdeploy.dylib',
+            'lib/libnpjp2.dylib',
+            'lib/plugin.jar',
+            'lib/security/javaws.policy'
+  }
+}
   
 // Zip Release
 task buildZip(type: Zip) {
@@ -235,14 +308,32 @@ task buildWin << {
             classpath: configurations.launch4j.asPath
   )
   ant.launch4j(
-               bindir: launch4jPath,
-           configFile: 'Development_Distribution/Windows/launch4j.xml',
-              outfile: './build/launcher/anathema.exe',
-          fileVersion: "$exeVersion",
-       productVersion: "$exeVersion",
-       txtFileVersion: "$versionText",
-    txtProductVersion: "$versionText"
-  )
+               bindir: launch4jPath
+  ) {
+    config(
+              outfile: 'build/launcher/anathema.exe',
+              jarPath: 'anathema.jar',
+          dontwrapjar: true,
+           headerType: 'gui',
+                 icon: 'Development_Distribution/Windows/anathema.ico'
+    ) {
+      versionInfo(
+          fileVersion: exeVersion,
+       txtFileVersion: versionText,
+      fileDescription: "Anathema Windows Launcher",
+            copyright: "anathema.github.com",
+       productVersion: exeVersion,
+    txtProductVersion: versionText,
+          productName: "$projectName",
+         internalName: "anathema",
+     originalFilename: "anathema.exe"
+      )
+      jre( 
+                 path: "./jre",
+           minVersion: jreVersion
+      )
+    }
+  }
 }
 
 task releaseWin << {
@@ -256,49 +347,54 @@ task releaseWin << {
     define(name: "RELEASE_FILE",    value: "${releaseWinName}")
     define(name: "RELEASE_VERSION", value: "${versionString}")
     define(name: "VERSION",         value: "${versionString}.0")
+    define(name: "JRE_PATH",        value: "build\\jre\\win32\\jre${jreVersion}")
   }
 }
 
 // Mac Release
-task buildMac(type: Copy) {
-  destinationDir buildDir
-  into("${macAppDir}/Contents/") {
-    from("Development_Distribution/Mac/")
-    include 'Info.plist'
-    filter(ReplaceTokens, tokens: ["version-major":    version_major,
-                                   "version-minor":    version_minor,
-                                   "version-revision": version_revision])
-    include 'PkgInfo'
-  }
-  into("${macAppDir}/Contents/MacOS/") {
-    from("Development_Distribution/Mac")
-    include 'JavaApplicationStub'
-    fileMode = 0755
-  }
-  into("${macAppDir}/Contents/Resources") {
-    from("Development_Distribution/Mac/")
-    include 'sungear.icns'
-  }
-  into("${macAppDir}/Contents/Resources/Java") {
-    from("Anathema/build/libs/")
-    from("Anathema/resources/icons/core/AnathemaSplashNew.png")
-  }
-  into("${macAppDir}/Contents/Resources/Java/lib") {
-    from("${buildDir}/dependencies/");
-    from("${buildDir}/plugins/");
+task buildMac << {
+  ant.taskdef(
+         name: "bundleapp",
+    classname: "com.oracle.appbundler.AppBundlerTask",
+    classpath: configurations.bundleapp.asPath
+  )
+  ant.bundleapp(
+    outputdirectory: "${buildDir}",
+               name: "Anathema",
+        displayname: "Anathema",
+         identifier: "net.sf.anathema",
+               icon: "Development_Distribution/Mac/sungear.icns", //opt
+       shortversion: "${versionString}", //opt
+          signature: "????", //opt
+        //copyright: blah , //opt
+applicationCategory: "public.app-category.utilities" , //opt
+      mainclassname: "net/sf/anathema/AnathemaBootLoader"
+  ) {
+    
+    runtime(    dir: "build/jre/mac64/jre${jreVersion}/Contents/Home")  //opt 
+      
+    classpath(  dir: "Anathema/build/libs/")
+    classpath( file: "Anathema/resources/icons/core/AnathemaSplashNew.png")
+    classpath(  dir: "${buildDir}/dependencies/")
+    classpath(  dir: "${buildDir}/plugins/")
+      
+    option(   value: "-splash:\$APP_ROOT/Contents/Java/AnathemaSplashNew.png")
+    option(   value: "-Dapple.laf-useScreenMenuBar=true")
+    option(   value: "-Ddefaultrepository=%USER_HOME%/Library/Application Support/Anathema")
   }
 }
 
 task releaseMac(type: Zip) {
   archiveName = releaseMacName
   destinationDir = releaseDir
-  into("${projectName}/${macAppDir}") {
-    from("${buildDir}/${macAppDir}")
-    exclude "${projectName}/${macAppDir}/Contents/MacOS/JavaApplicationStub" // Skipping this because...
+  into("${projectName}") {
+    from("${buildDir}")
+      include "${macAppDir}/**"
+      exclude "${projectName}/${macAppDir}/Contents/MacOS/JavaAppLauncher" // Skipping this because...
   }
-  into("${projectName}/${macAppDir}/Contents/MacOS/") { // We include it here with the execute bit set.
-    from("Development_Distribution/Mac")                // Necessary when building on a windows system
-    include 'JavaApplicationStub'
+  into("${projectName}/${macAppDir}/Contents/MacOS/") {                    // We include it here with the execute bit set.
+    from("${buildDir}/${macAppDir}/Contents/MacOS/")                       // Necessary when building on a windows system
+    include 'JavaAppLauncher'
     fileMode = 0755
   }
   into( "${projectName}") {
@@ -306,7 +402,7 @@ task releaseMac(type: Zip) {
     include 'license.txt'
     include 'versions.md'
     rename  'versions.md', 'release_notes.txt'
-    include 'mountain_lion_instructions.webloc'
+    include 'installation_instructions.webloc'
   }
 }
 
@@ -316,10 +412,13 @@ task releaseMac(type: Zip) {
   it.dependsOn ':Anathema:jar'
 }
 
+buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in the zip distribution
+buildWin.dependsOn prepareWinJRE
+buildMac.dependsOn prepareMacJRE
+  
 releaseZip.dependsOn buildZip
 releaseWin.dependsOn buildWin
 releaseMac.dependsOn buildMac
-buildZip.dependsOn buildWin  // Builds the exe launcher which gets included in the zip distribution
 
 release.dependsOn releaseZip, releaseWin, releaseMac
 

@@ -95,6 +95,8 @@ Section -Anathema SEC0000
     SetOverwrite on
     File /r ..\..\..\build\dependencies\*
     File /r ..\..\..\build\plugins\*
+    SetOutPath $INSTDIR\jre
+    File /r ..\..\..\${JRE_PATH}\*
     SetOutPath $INSTDIR
     File ..\..\..\Anathema\build\libs\Anathema.jar
     File ..\..\..\build\launcher\anathema.exe
@@ -140,11 +142,14 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Anathema UNSEC0000
+    RmDir /r /REBOOTOK $PROFILE\.anathema
     RmDir /r /REBOOTOK $INSTDIR\lib
-    Delete /REBOOTOK $INSTDIR\Anathema.jar
+    RmDir /r /REBOOTOK $INSTDIR\jre
+    Delete /REBOOTOK $INSTDIR\anathema.jar
     Delete /REBOOTOK $INSTDIR\anathema.exe
     Delete /REBOOTOK $INSTDIR\license.txt
     Delete /REBOOTOK $INSTDIR\release_notes.txt
+    Delete /REBOOTOK $INSTDIR\anathema.properties
     DeleteRegValue HKLM "${REGKEY}\Components" Anathema
 SectionEnd
 
