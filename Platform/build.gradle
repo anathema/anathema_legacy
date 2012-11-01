@@ -10,13 +10,6 @@ dependencies {
   testCompile parent.ext.testDependencies
 }
 
-configurations.all {
-  resolutionStrategy {
-    //This module, update-core and reflections all use commons-io.
-    force 'commons-io:commons-io:2.1'
-  }
-}
-
 processResources {
     String versionDate = new Date().format('MM/dd/yy')
     String versionString = project.parent.ext.versionString
