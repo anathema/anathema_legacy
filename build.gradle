@@ -99,6 +99,12 @@ subprojects {
     }
   }
 
+  configurations.all {
+    resolutionStrategy {
+      force 'commons-io:commons-io:2.4'
+    }
+  }
+
   sourceSets.main.java.srcDir 'src'
   sourceSets.test.java.srcDir 'test'
   sourceSets.main.resources.srcDir 'resources'
