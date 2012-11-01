@@ -29,7 +29,7 @@ configurations.all {
 
 configurations.all {
   resolutionStrategy {
-     force 'commons-io:commons-io:2.1'
+     force 'commons-io:commons-io:2.4'
   }
 }
 
