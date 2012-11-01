@@ -1,11 +1,11 @@
 dependencies {
     compile project(':Engine_Character')
-    testCompile 'org.hamcrest:hamcrest-core:1.3.RC2'
-    testCompile 'org.hamcrest:hamcrest-library:1.3.RC2'
+    testCompile 'org.hamcrest:hamcrest-core:1.3'
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
     testCompile 'junit:junit-dep:4+'
-    testCompile 'org.mockito:mockito-core:1.9.0'
-    testCompile 'info.cukes:cucumber-java:1.0.10'
-    testCompile 'info.cukes:cucumber-junit:1.0.10'
+    testCompile 'org.mockito:mockito-core:1.9.5'
+    testCompile 'info.cukes:cucumber-java:1.1.1'
+    testCompile 'info.cukes:cucumber-junit:1.1.1'
 }
 
 sourceSets.main.java.setSrcDirs(['src/main/java'])
