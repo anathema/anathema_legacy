@@ -20,6 +20,12 @@ buildscript {
   }
 }
 
+configurations.all {
+  resolutionStrategy {
+    force 'commons-io:commons-io:2.4'
+  }
+}
+
 repositories {
   mavenCentral()
 }
@@ -68,6 +74,12 @@ subprojects {
     mavenCentral()
     maven {
       url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
+    }
+  }
+
+  configurations.all {
+    resolutionStrategy {
+      force 'commons-io:commons-io:2.4'
     }
   }
 
