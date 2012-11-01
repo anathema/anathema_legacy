@@ -21,6 +21,12 @@ buildscript {
   }
 }
 
+configurations.all {
+  resolutionStrategy {
+     force 'commons-io:commons-io:2.1'
+  }
+}
+
 repositories {
   mavenCentral()
   maven {
