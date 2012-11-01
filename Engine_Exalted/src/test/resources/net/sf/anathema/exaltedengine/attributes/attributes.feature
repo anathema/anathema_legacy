@@ -24,3 +24,8 @@ Feature: Attributes
     Given an Exalted character
     When I increase the Attribute 'Strength' to 3
     Then the character has the Attribute 'Strength' at 3
+
+  Scenario: Attributes have a minimum value of 1
+    Given an Exalted character
+    When I lower the Attribute 'Strength' to 0
+    Then the character has the Attribute 'Strength' at 1

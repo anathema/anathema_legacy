@@ -1,8 +1,8 @@
 package net.sf.anathema.exaltedengine.attributes;
 
-import cucumber.annotation.en.Given;
-import cucumber.annotation.en.Then;
-import cucumber.annotation.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import net.sf.anathema.characterengine.persona.Persona;
 import net.sf.anathema.characterengine.persona.QualityClosure;
 import net.sf.anathema.characterengine.quality.Name;
@@ -37,8 +37,7 @@ public class AttributesSteps {
     persona = engine.createCharacter();
   }
 
-
-  @When("^I increase the Attribute '(.*?)' to (\\d+)$")
+  @When("^I .*? the Attribute '(.*?)' to (\\d+)$")
   public void I_increase_the_Attribute_to(String name, int value) throws Throwable {
     QualityKey qualityKey = new QualityKey(ATTRIBUTE, new Name(name));
     persona.execute(new SetValue(qualityKey, new NumericValue(value)));
@@ -62,7 +61,6 @@ public class AttributesSteps {
   public void each_Attribute_has_value(final int value) throws Throwable {
     persona.doForEach(ATTRIBUTE, new AssertValue(value));
   }
-
 
   private class AssertValue implements QualityClosure {
 
