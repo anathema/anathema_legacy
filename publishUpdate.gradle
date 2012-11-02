@@ -29,7 +29,7 @@ task buildFileListForUpdate << {
 
 task uploadUpdate << {
   def host     = "butatopanto.de"
-  def dir      = "/home/anathema/wwwroot/updates"
+  def dir      = "/home/anathema/wwwroot/updates2"
   def keyfile  = findKeyFile()
   def passphrase = usePropertyOrPrompt('anathemaPassphrase', "Anathema SSH Key Passphrase")
   def connectString = "anathema@${host}:${dir}/${versionString}"
