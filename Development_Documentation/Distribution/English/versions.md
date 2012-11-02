@@ -4,7 +4,7 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
-## Release 5.0.0
+## Release 5.0.0 "Amalion"
 
 Anathema now requires Java 7.
 
