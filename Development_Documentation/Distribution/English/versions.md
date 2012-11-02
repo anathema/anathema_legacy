@@ -6,14 +6,26 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 5.0.0
 
-Anathema for Win/Mac now ships with a bundled Java 7 JRE.  This means you no longer need to install Java to run Anathema on these platforms.  If you'd like to uninstall Java from your computer, or if you would prefer to install your own JRE and have Anathema use that instead, please see the [wiki](https://github.com/anathema/anathema/wiki/System-Requirements) for instructions on how to do this.
+Anathema now requires Java 7.
 
+On Windows and OS X, we now include a bundled Java Runtime Environment (JRE) to allow Anathema to run.
+Because this environment is included with Anathema, there is no need for you to install Java on your computer.
+In fact, if you have Java installed only to run a previous version of Anathema, you can now uninstall Java if you wish.
+
+Of course, you can still run Anathema with your system-wide Java installation.
+The wiki has more [details](https://github.com/anathema/anathema/wiki/System-Requirements).
+
+This change implies that Mac users now need OS X 10.7.3 or higher.
+
+### Bugfixes.
+* [OSX] Gatekeeper no longer views Anathema as "damaged". You still need to allow it to run.
+  The wiki has more [details](https://github.com/anathema/anathema/wiki/How-to-get-Anathema-working-on-Mac-with-Gatekeeper-%2810.7.5-and-up%29).
 
 ## Release 4.5.5
 
-Our next Anathema release (5.0.0) cannot be downloaded through through the auto-update mechanism, and must be downloaded from our website and installed the old fashioned way.
-
-We expect it to be ready within 2 weeks, please keep an eye on the forums, our website, or our Google+ page for updates.
+### NO FURTHER UPDATES
+This is the last release of the 4.x release train.
+To receive further updates, please un-install and re-install Anathema.
 
 ### Bugfixes
 * Fixes cost for (Lunar) "Beast Spirit Defense"
