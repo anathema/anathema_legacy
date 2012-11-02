@@ -6,6 +6,10 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 4.5.5
 
+### NO FURTHER UPDATES
+This is the last release of the 4.x release train.
+To receive further updates, please un-install and re-install Anathema.
+
 ### Bugfixes
 * Fixes cost for (Lunar) "Beast Spirit Defense"
 
