@@ -128,6 +128,6 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   }
 
   private Map<String, ITraitCostModifier> createBackgroundCostModifierMap() {
-    return new HashMap<String, ITraitCostModifier>();
+    return new HashMap<>();
   }
 }

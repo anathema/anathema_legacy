@@ -22,7 +22,7 @@ public class ElementalCharmLearnConditionTest {
   private ICharm charm = mock(ICharm.class);
   private ICharmLearnableArbitrator arbitrator = mock(ICharmLearnableArbitrator.class);
   private Element element = Air;
-  private List<ElementalSubeffect> effects = new ArrayList<ElementalSubeffect>();
+  private List<ElementalSubeffect> effects = new ArrayList<>();
   private DummyBasicCharacterData character = new DummyBasicCharacterData();
   private ElementalCharmLearnCondition condition = new ElementalCharmLearnCondition(new CollectionSubEffects(), arbitrator, charm, character, element);
 

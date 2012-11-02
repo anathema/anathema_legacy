@@ -36,12 +36,12 @@ public class MutationContent extends AbstractSubBoxContent implements ListSubBox
 
   @Override
   public List<String> getPrintEntries() {
-    List<String> printMutations = new ArrayList<String>();
+    List<String> printMutations = new ArrayList<>();
     IMutationsModel model = getMutationModel();
     IQualitySelection<IMutation>[] mutations = model.getSelectedQualities();
-    for (int index = 0; index < mutations.length; index++) {
-      Identified mutation = mutations[index].getQuality();
-      printMutations.add(getResources().getString("Mutations.Mutation." + mutation.getId())); //$NON-NLS-1$
+    for (IQualitySelection<IMutation> mutation : mutations) {
+      Identified quality = mutation.getQuality();
+      printMutations.add(getResources().getString("Mutations.Mutation." + quality.getId())); //$NON-NLS-1$
     }
     return printMutations;
   }

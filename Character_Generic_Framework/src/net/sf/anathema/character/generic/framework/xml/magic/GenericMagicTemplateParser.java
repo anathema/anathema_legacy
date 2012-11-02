@@ -121,18 +121,9 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       Constructor<SpellMagicTemplate>[] helper = (Constructor<SpellMagicTemplate>[]) magicTemplateClass.getConstructors();
       template = helper[0].newInstance(CircleType.getSorceryCirclesUpTo(maximumSorceryCircle),
               CircleType.getNecromancyCirclesUpTo(maximumNecromancyCircle), hostTemplate);
-
-
-    } catch (InstantiationException e) {
-      e.printStackTrace();
-    } catch (IllegalAccessException e) {
-      e.printStackTrace();
-    } catch (IllegalArgumentException e) {
-      e.printStackTrace();
-    } catch (InvocationTargetException e) {
+    } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
       e.printStackTrace();
     }
-
     basicTemplate.setSpellTemplate(template);
   }
 

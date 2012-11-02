@@ -11,7 +11,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class CharmNodeBuilderTest {
 
@@ -20,8 +23,8 @@ public class CharmNodeBuilderTest {
 
   @Before
   public void setUp() throws Exception {
-    list = new ArrayList<ICharm>();
-    nodes = new LinkedHashMap<String, IIdentifiedRegularNode>();
+    list = new ArrayList<>();
+    nodes = new LinkedHashMap<>();
   }
 
   @Test

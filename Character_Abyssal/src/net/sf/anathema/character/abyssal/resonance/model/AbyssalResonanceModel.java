@@ -32,7 +32,7 @@ public class AbyssalResonanceModel extends VirtueFlawModel
 
   @Override
   public ITraitType[] getFlawVirtueTypes() {
-    List<ITraitType> flawVirtues = new ArrayList<ITraitType>();
+    List<ITraitType> flawVirtues = new ArrayList<>();
     Collections.addAll(flawVirtues, VirtueType.values());
     return flawVirtues.toArray(new ITraitType[flawVirtues.size()]);
   }

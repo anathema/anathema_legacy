@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BasicAdvantagePresenter implements IContentPresenter {
-  private final List<Presenter> subPresenters = new ArrayList<Presenter>();
+  private final List<Presenter> subPresenters = new ArrayList<>();
   private final IBasicAdvantageView view;
   private final IResources resources;
 

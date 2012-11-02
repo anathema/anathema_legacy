@@ -63,7 +63,7 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
   }
 
   private void createAttributes() {
-    List<IBeastformAttribute> attributes = new ArrayList<IBeastformAttribute>();
+    List<IBeastformAttribute> attributes = new ArrayList<>();
     attributes.add(
             new BeastformAttribute(context, context.getTraitCollection().getTrait(AttributeType.Strength), 1));
     attributes.add(
@@ -96,7 +96,7 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
 
   @Override
   public IBeastformAttribute[] getAttributes() {
-    List<IBeastformAttribute> traits = new ArrayList<IBeastformAttribute>();
+    List<IBeastformAttribute> traits = new ArrayList<>();
     for (AttributeType type : AttributeType.getAllFor(AttributeGroupType.Physical)) {
       traits.add(beastCollection.getDeadlyBeastmanAttribute(type));
     }
@@ -112,7 +112,7 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
   }
 
   public IBeastformAttribute[] getSpiritAttributes() {
-    List<IBeastformAttribute> traits = new ArrayList<IBeastformAttribute>();
+    List<IBeastformAttribute> traits = new ArrayList<>();
     for (AttributeType type : AttributeType.getAllFor(AttributeGroupType.Physical)) {
       traits.add(spiritCollection.getDeadlyBeastmanAttribute(type));
     }
@@ -145,10 +145,10 @@ public class SecondEditionBeastformModel extends AbstractAdditionalModelAdapter 
   public void addChangeListener(IChangeListener listener) {
     mutationModel.addModelChangeListener(listener);
     for (IBeastformAttribute trait : getAttributes()) {
-      trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
+      trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<>(listener));
     }
     for (IBeastformAttribute trait : getSpiritAttributes()) {
-      trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
+      trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<>(listener));
     }
   }
 

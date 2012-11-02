@@ -20,7 +20,7 @@ public class CharmStats extends AbstractCharmStats {
   @Override
   protected String[] getDetailKeys() {
     String[] detailKeys = super.getDetailKeys();
-    List<String> details = new ArrayList<String>();
+    List<String> details = new ArrayList<>();
     Collections.addAll(details, detailKeys);
     if (character.isSubeffectCharm(getMagic())) {
       for (String subeffectId : character.getLearnedEffects(getMagic())) {

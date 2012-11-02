@@ -24,7 +24,7 @@ public abstract class AbstractSingleVisualizableNode extends AbstractVisualizabl
 
   @Override
   public IVisualizableNode[] getChildren() {
-    List<IVisualizableNode> childrenList = new ArrayList<IVisualizableNode>();
+    List<IVisualizableNode> childrenList = new ArrayList<>();
     for (ISimpleNode child : content.getChildren()) {
       childrenList.add(getContentNodeMap().get(child));
     }
@@ -33,7 +33,7 @@ public abstract class AbstractSingleVisualizableNode extends AbstractVisualizabl
 
   @Override
   public IVisualizableNode[] getParents() {
-    List<IVisualizableNode> parentList = new ArrayList<IVisualizableNode>();
+    List<IVisualizableNode> parentList = new ArrayList<>();
     for (ISimpleNode parent : content.getParents()) {
       parentList.add(getContentNodeMap().get(parent));
     }

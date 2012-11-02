@@ -27,8 +27,7 @@ public class MnemonicLabelParser {
     if (found) {
       char mnemonic = label.charAt(index + 1);
       return new MnemonicLabel(
-          label.substring(0, index) + label.substring(index + 1),
-          new Character(mnemonic));
+          label.substring(0, index) + label.substring(index + 1), mnemonic);
     }
     return new MnemonicLabel(label, null);
   }

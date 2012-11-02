@@ -67,7 +67,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
     view.addMagicViewListener(new IMagicViewListener() {
       @Override
       public void magicRemoved(Object[] removedSpells) {
-        List<ISpell> spellList = new ArrayList<ISpell>();
+        List<ISpell> spellList = new ArrayList<>();
         for (Object spellObject : removedSpells) {
           spellList.add((ISpell) spellObject);
         }
@@ -76,7 +76,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
 
       @Override
       public void magicAdded(Object[] addedSpells) {
-        List<ISpell> spellList = new ArrayList<ISpell>();
+        List<ISpell> spellList = new ArrayList<>();
         for (Object spellObject : addedSpells) {
           if (spellConfiguration.isSpellAllowed((ISpell) spellObject)) {
             spellList.add((ISpell) spellObject);
@@ -130,7 +130,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
   }
 
   private ISpell[] getSpellsOfCurrentCircle(ISpell[] spells) {
-    List<ISpell> supportedSpells = new ArrayList<ISpell>();
+    List<ISpell> supportedSpells = new ArrayList<>();
     for (ISpell spell : spells) {
       if (circle == spell.getCircleType()) {
         supportedSpells.add(spell);
@@ -140,7 +140,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
   }
 
   private ISpell[] getSpellsToShow() {
-    List<ISpell> showSpells = new ArrayList<ISpell>();
+    List<ISpell> showSpells = new ArrayList<>();
     Collections.addAll(showSpells, spellConfiguration.getSpellsByCircle(circle));
     showSpells.removeAll(Arrays.asList(spellConfiguration.getLearnedSpells()));
     int count = showSpells.size();
@@ -150,7 +150,7 @@ public class SpellPresenter implements DetailDemandingMagicPresenter {
   }
 
   private ISpell[] getCircleFilteredSpellList(ISpell[] spells) {
-    List<ISpell> spellList = new ArrayList<ISpell>();
+    List<ISpell> spellList = new ArrayList<>();
     for (ISpell spell : spells) {
       if (net.sf.anathema.lib.lang.ArrayUtilities.containsValue(spellModel.getCircles(), spell.getCircleType())) {
         spellList.add(spell);

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class VetoableListSelectionModel extends DefaultListSelectionModel {
 
-	private final List<IVetor> vetors = new ArrayList<IVetor>();
+	private final List<IVetor> vetors = new ArrayList<>();
 	private boolean alreadyAsked;
 	private final ListSelectionMode mode;
 
@@ -84,7 +84,7 @@ public class VetoableListSelectionModel extends DefaultListSelectionModel {
 	}
 
 	private synchronized boolean vetos() {
-		List<IVetor> cloneList = new ArrayList<IVetor>(vetors);
+		List<IVetor> cloneList = new ArrayList<>(vetors);
         for (IVetor vetor : cloneList) {
             if (vetor.vetos()) {
                 return true;

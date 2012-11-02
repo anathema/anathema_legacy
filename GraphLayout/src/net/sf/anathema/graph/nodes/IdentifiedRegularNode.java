@@ -24,8 +24,8 @@ public class IdentifiedRegularNode extends Identificate implements IIdentifiedRe
     }
   }
 
-  private final List<ISimpleNode> childList = new ArrayList<ISimpleNode>();
-  private final List<ISimpleNode> parentList = new ArrayList<ISimpleNode>();
+  private final List<ISimpleNode> childList = new ArrayList<>();
+  private final List<ISimpleNode> parentList = new ArrayList<>();
   private int layer = 0;
   private boolean lowerToChildren = false;
 

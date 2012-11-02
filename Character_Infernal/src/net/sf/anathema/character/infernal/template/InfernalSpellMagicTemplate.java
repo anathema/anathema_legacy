@@ -1,8 +1,5 @@
 package net.sf.anathema.character.infernal.template;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.impl.template.magic.SpellMagicTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
@@ -10,6 +7,9 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.magic.spells.ICircleTypeVisitor;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.types.YoziType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
   
@@ -103,7 +103,7 @@ public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
   }
 
   public String[] getInitiations(CircleType circle) {
-    final List<String> names = new ArrayList<String>();
+    final List<String> names = new ArrayList<>();
     for (final YoziType yozi : YoziType.values()) {
       circle.accept(new ICircleTypeVisitor() {
         @Override

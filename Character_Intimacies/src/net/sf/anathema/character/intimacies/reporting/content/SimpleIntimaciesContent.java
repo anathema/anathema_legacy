@@ -10,7 +10,6 @@ import net.sf.anathema.character.reporting.pdf.content.ListSubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class SimpleIntimaciesContent extends AbstractSubBoxContent implements ListSubBoxContent {
@@ -29,13 +28,11 @@ public class SimpleIntimaciesContent extends AbstractSubBoxContent implements Li
 
   @Override
   public List<String> getPrintEntries() {
-    List<String> printIntimacies = new ArrayList<String>();
-    for (Iterator<IIntimacy> intimacies = getModel().getEntries().iterator(); intimacies.hasNext(); ) {
-      IIntimacy intimacy = intimacies.next();
+    List<String> printIntimacies = new ArrayList<>();
+    for (IIntimacy intimacy : getModel().getEntries()) {
       String text = intimacy.getName();
       if (!intimacy.isComplete()) {
-        text +=
-          " (" + intimacy.getTrait().getCurrentValue() + "/" + intimacy.getTrait().getMaximalValue() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        text += " (" + intimacy.getTrait().getCurrentValue() + "/" + intimacy.getTrait().getMaximalValue() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
       }
       printIntimacies.add(text);
     }

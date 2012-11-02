@@ -89,7 +89,7 @@ public class BottomUpGraphPositioner extends AbstractCascadeVisualizer {
       createVisualizableNodes(layerIndex);
     }
     ILayer[] layers = createLayers(layerCount);
-    for (ILayer layer : new BackwardsIterable<ILayer>(layers)) {
+    for (ILayer layer : new BackwardsIterable<>(layers)) {
       layer.positionNodes();
       layer.unrollHorizontalMetanodes();
     }
@@ -113,7 +113,7 @@ public class BottomUpGraphPositioner extends AbstractCascadeVisualizer {
 
   private int getLengthOfTail(ILayer[] layers) {
     int lengthOfTail = 0;
-    for (ILayer layer : new BackwardsIterable<ILayer>(layers)) {
+    for (ILayer layer : new BackwardsIterable<>(layers)) {
       if (layer.getNodes().length == 1) {
         lengthOfTail++;
       } else {
@@ -231,7 +231,7 @@ public class BottomUpGraphPositioner extends AbstractCascadeVisualizer {
       if (layer.getPreviousLayer() == null) {
         continue;
       }
-      for (IVisualizableNode node : new BackwardsIterable<IVisualizableNode>(layer.getNodes())) {
+      for (IVisualizableNode node : new BackwardsIterable<>(layer.getNodes())) {
         IVisualizableNode[] parents = node.getParents();
         IVisualizableNode[] children = node.getChildren();
         if (parents.length == 1 && children.length <= 1) {
@@ -349,7 +349,7 @@ public class BottomUpGraphPositioner extends AbstractCascadeVisualizer {
       if (!node.isLeafNode()) {
         continue;
       }
-      List<ISimpleNode> ancestors = new ArrayList<ISimpleNode>();
+      List<ISimpleNode> ancestors = new ArrayList<>();
       ancestors.add(node);
       registerLeafNodeAncestor(node, node);
       for (int upperLayerIndex = layerIndex - 1; upperLayerIndex >= 0; upperLayerIndex--) {
@@ -386,7 +386,7 @@ public class BottomUpGraphPositioner extends AbstractCascadeVisualizer {
   }
 
   private boolean lookForHorizontalMetaNodes(ISimpleNode[] layerNodes, int nodeIndex, ISimpleNode currentNode) {
-    Set<ISimpleNode> identicalChildrenNodes = new LinkedHashSet<ISimpleNode>();
+    Set<ISimpleNode> identicalChildrenNodes = new LinkedHashSet<>();
     identicalChildrenNodes.add(currentNode);
     for (int compareNodeIndex = nodeIndex + 1; compareNodeIndex < layerNodes.length; compareNodeIndex++) {
       ISimpleNode compareNode = layerNodes[compareNodeIndex];
@@ -408,11 +408,11 @@ public class BottomUpGraphPositioner extends AbstractCascadeVisualizer {
     if (node1.isLeafNode() || node2.isLeafNode()) {
       return false;
     }
-    List<IVisualizableNode> firstVisualizableChildren = new ArrayList<IVisualizableNode>();
+    List<IVisualizableNode> firstVisualizableChildren = new ArrayList<>();
     for (ISimpleNode node : node1.getChildren()) {
       firstVisualizableChildren.add(getVisualizableNode(node));
     }
-    List<IVisualizableNode> secondVisualizableChildren = new ArrayList<IVisualizableNode>();
+    List<IVisualizableNode> secondVisualizableChildren = new ArrayList<>();
     for (ISimpleNode node : node2.getChildren()) {
       secondVisualizableChildren.add(getVisualizableNode(node));
     }

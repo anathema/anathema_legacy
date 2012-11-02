@@ -56,7 +56,7 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
   }
 
   private List<PoolRow> getAvailablePoolRows() {
-    List<PoolRow> rows = new ArrayList<PoolRow>();
+    List<PoolRow> rows = new ArrayList<>();
     addPool(rows, new PersonalPoolRow(getResources(), character));
     addPool(rows, new PeripheralPoolRow(getResources(), character));
     addPool(rows, new OverdrivePoolRow(getResources(), character));
@@ -85,7 +85,7 @@ public class ExtendedEssenceContent extends AbstractSubBoxContent {
   }
 
   private List<RecoveryRow> getAvailableRecoveryRows() {
-    List<RecoveryRow> rows = new ArrayList<RecoveryRow>();
+    List<RecoveryRow> rows = new ArrayList<>();
     rows.add(new NaturalRecoveryRow(getResources()));
     addSpecialRecoveryRows(rows);
     rows.add(new TotalRecoveryRow(getResources()));

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Registry<I, V> implements IRegistry<I, V> {
 
-  private final Map<I, V> objects = new HashMap<I, V>();
+  private final Map<I, V> objects = new HashMap<>();
   private V defaultValue;
 
   public Registry() {

@@ -28,7 +28,7 @@ public class MutationProvider {
   public static IMutation[] getMutations(IMutationRules rules) {
     List<IMutation> mutations = newArrayList();
     mutations.addAll(getSecondEditionMutations());
-    List<IMutation> toRemove = new ArrayList<IMutation>();
+    List<IMutation> toRemove = new ArrayList<>();
     for (IMutation mutation : mutations) {
       if (!rules.acceptMutation(mutation)) {
         toRemove.add(mutation);

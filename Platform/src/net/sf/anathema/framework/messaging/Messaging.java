@@ -13,7 +13,7 @@ import java.util.List;
 public class Messaging implements IMessaging, IMessageContainer {
 
   private final IResources resources;
-  private final List<IBasicMessage> messages = new ArrayList<IBasicMessage>();
+  private final List<IBasicMessage> messages = new ArrayList<>();
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
 
   public Messaging(IResources resources) {

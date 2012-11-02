@@ -8,13 +8,13 @@ import java.util.List;
 
 public class DefaultSelectionContainer<V> implements IGenericSelectionContainer<V> {
 
-  private final List<V> valueList = new ArrayList<V>();
+  private final List<V> valueList = new ArrayList<>();
   private final ArrayFactory<V> arrayFactory;
   private final V[] availableValues;
 
   public DefaultSelectionContainer(Class<V> componentType, V[] availableValues) {
     this.availableValues = availableValues;
-    this.arrayFactory = new ArrayFactory<V>(componentType);
+    this.arrayFactory = new ArrayFactory<>(componentType);
   }
 
   @Override

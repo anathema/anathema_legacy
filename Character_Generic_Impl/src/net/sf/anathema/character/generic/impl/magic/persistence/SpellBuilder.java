@@ -23,7 +23,7 @@ public class SpellBuilder {
 
   public ISpell[] buildSpells(Document spellDocument) throws PersistenceException {
     Element spellListElement = spellDocument.getRootElement();
-    List<ISpell> spellList = new ArrayList<ISpell>();
+    List<ISpell> spellList = new ArrayList<>();
     for (Object spellObject : spellListElement.elements("spell")) { //$NON-NLS-1$
       Element spellElement = (Element) spellObject;
       buildSpell(spellElement, spellList);

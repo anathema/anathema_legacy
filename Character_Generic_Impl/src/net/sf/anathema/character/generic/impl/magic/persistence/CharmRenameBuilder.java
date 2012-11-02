@@ -1,15 +1,14 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_RENAMES;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_RENAME;
+import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Document;
+import org.dom4j.Element;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sf.anathema.lib.xml.ElementUtilities;
-
-import org.dom4j.Document;
-import org.dom4j.Element;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_RENAME;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_RENAMES;
 
 public class CharmRenameBuilder
 {
@@ -26,7 +25,7 @@ public class CharmRenameBuilder
     if (renameElement == null) {
       return null;
     }
-    Map<String, String> renames = new HashMap<String, String>();
+    Map<String, String> renames = new HashMap<>();
     for (Element renamedElement : ElementUtilities.elements(renameElement, TAG_RENAME)) {
       String from = renamedElement.attributeValue(ATTRIB_FROM);
       String to = renamedElement.attributeValue(ATTRIB_TO);

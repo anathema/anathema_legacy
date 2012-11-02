@@ -20,8 +20,8 @@ import static java.util.Collections.addAll;
 
 public abstract class SourceBookCharmFilter implements ICharmFilter {
 
-  private final ArrayList<IExaltedSourceBook> allMaterial = new ArrayList<IExaltedSourceBook>();
-  protected final ArrayList<IExaltedSourceBook> excludedMaterial = new ArrayList<IExaltedSourceBook>();
+  private final ArrayList<IExaltedSourceBook> allMaterial = new ArrayList<>();
+  protected final ArrayList<IExaltedSourceBook> excludedMaterial = new ArrayList<>();
   protected boolean includePrereqs = true;
 
   private ArrayList<IExaltedSourceBook> workingExcludedMaterial;
@@ -57,7 +57,7 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
 
   @Override
   public JPanel getFilterPreferencePanel(IResources resources) {
-    workingExcludedMaterial = new ArrayList<IExaltedSourceBook>(excludedMaterial);
+    workingExcludedMaterial = new ArrayList<>(excludedMaterial);
     workingIncludePrereqs[0] = includePrereqs;
     SourceBookCharmFilterPage page = new SourceBookCharmFilterPage(resources, getApprovedList(),
             workingExcludedMaterial, workingIncludePrereqs);
@@ -65,7 +65,7 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
   }
 
   private List<IExaltedSourceBook> getApprovedList() {
-    List<IExaltedSourceBook> approvedMaterial = new ArrayList<IExaltedSourceBook>(allMaterial);
+    List<IExaltedSourceBook> approvedMaterial = new ArrayList<>(allMaterial);
     approvedMaterial.removeAll(excludedMaterial);
     return approvedMaterial;
   }
@@ -108,9 +108,9 @@ public abstract class SourceBookCharmFilter implements ICharmFilter {
   }
 
   private List<IExaltedSourceBook> reduceToUniqueBooks(List<IExaltedSourceBook> allBooks) {
-    Set<IExaltedSourceBook> uniqueBooks = new LinkedHashSet<IExaltedSourceBook>();
+    Set<IExaltedSourceBook> uniqueBooks = new LinkedHashSet<>();
     uniqueBooks.addAll(allBooks);
-    return new ArrayList<IExaltedSourceBook>(uniqueBooks);
+    return new ArrayList<>(uniqueBooks);
   }
 
   protected abstract List<ICharmGroup> getAllCharmGroups();

@@ -1,16 +1,15 @@
 package net.sf.anathema.character.generic.framework.xml.health;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealthTemplate> {
 
@@ -37,7 +36,7 @@ public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealt
   }
 
   private void setToughnessControllingTrait(Element generalElement, GenericHealthTemplate basicTemplate) {
-	List<ITraitType> traits = new ArrayList<ITraitType>();
+	List<ITraitType> traits = new ArrayList<>();
 	for (Object element : generalElement.elements(TAG_TOUGHNESS_TRAIT))
 	{
 		Element toughnessElement = (Element)element;
@@ -51,7 +50,7 @@ public class HealthTemplateParser extends AbstractXmlTemplateParser<GenericHealt
   
   private void setBaseProviders(Element generalElement, GenericHealthTemplate template)
   {
-	  List<String> baseHealthProviders = new ArrayList<String>();
+	  List<String> baseHealthProviders = new ArrayList<>();
 	  
 	  try
 	  {

@@ -14,7 +14,7 @@ import org.dom4j.Element;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.*;
+import java.awt.Color;
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,7 +29,7 @@ public class PresentationPropertiesParserTest {
 
   @Before
   public void setUp() throws Exception {
-    DummyXmlTemplateRegistry<GenericPresentationTemplate> templateRegistry = new DummyXmlTemplateRegistry<GenericPresentationTemplate>();
+    DummyXmlTemplateRegistry<GenericPresentationTemplate> templateRegistry = new DummyXmlTemplateRegistry<>();
     this.parser = new PresentationPropertiesParser(templateRegistry);
   }
 

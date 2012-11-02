@@ -1,19 +1,18 @@
 package net.sf.anathema.character.generic.framework.xml.essence;
 
+import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
 
 public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 
   private final int essenceMultiplier;
   private final int willpowerMultiplier;
-  private final List<IVirtuePoolPart> virtuePoolParts = new ArrayList<IVirtuePoolPart>();
+  private final List<IVirtuePoolPart> virtuePoolParts = new ArrayList<>();
 
   public EssencePoolConfiguration(int essenceMultiplier, int willpowerMultiplier) {
     this.essenceMultiplier = essenceMultiplier;
@@ -32,7 +31,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 
   @Override
   public FactorizedTrait[] createVirtueFactorizedTrait(IGenericTrait[] virtues) {
-    List<FactorizedTrait> traits = new ArrayList<FactorizedTrait>();
+    List<FactorizedTrait> traits = new ArrayList<>();
     for (IVirtuePoolPart part : virtuePoolParts) {
       Collections.addAll(traits, part.createFactorizedTrait(virtues));
     }

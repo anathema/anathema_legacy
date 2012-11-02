@@ -36,9 +36,9 @@ public class BackgroundPresenter implements IContentPresenter {
   private final IBackgroundConfiguration configuration;
   private final BackgroundView configurationView;
   private final IResources resources;
-  private final IdentityMapping<IDefaultTrait, IRemovableTraitView<?>> viewsByBackground = new IdentityMapping<IDefaultTrait, IRemovableTraitView<?>>();
+  private final IdentityMapping<IDefaultTrait, IRemovableTraitView<?>> viewsByBackground = new IdentityMapping<>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
-  private final Map<String, IBackgroundTemplate> templatesByDisplayName = new HashMap<String, IBackgroundTemplate>();
+  private final Map<String, IBackgroundTemplate> templatesByDisplayName = new HashMap<>();
   private final BackgroundInternationalizer internationalizer;
   private String backgroundDescription = "";
   private Displayer displayer;

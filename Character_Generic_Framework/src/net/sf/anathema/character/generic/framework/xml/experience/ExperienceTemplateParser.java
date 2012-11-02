@@ -73,8 +73,8 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     Element charms = magic.element(TAG_CHARMS);
     int favoredCost = ElementUtilities.getRequiredIntAttrib(charms, ATTRIB_FAVORED);
     int generalCost = ElementUtilities.getRequiredIntAttrib(charms, ATTRIB_GENERAL);
-    Map<String, Integer> keywordGeneralCost = new HashMap<String, Integer>();
-    Map<String, Integer> keywordFavoredCost = new HashMap<String, Integer>();
+    Map<String, Integer> keywordGeneralCost = new HashMap<>();
+    Map<String, Integer> keywordFavoredCost = new HashMap<>();
     
     for (Object node : charms.elements(TAG_KEYWORD_CHARMS))
     {

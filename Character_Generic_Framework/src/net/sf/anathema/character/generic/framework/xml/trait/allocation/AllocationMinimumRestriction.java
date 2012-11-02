@@ -12,11 +12,11 @@ import java.util.Map;
 
 public class AllocationMinimumRestriction extends ReflectionEqualsObject implements IMinimumRestriction
 {
-  private final Map<ILimitationContext,Map<ITraitType, Integer>> claimMap = new HashMap<ILimitationContext,Map<ITraitType, Integer>>();
+  private final Map<ILimitationContext,Map<ITraitType, Integer>> claimMap = new HashMap<>();
   private final List<AllocationMinimumRestriction> siblings;
   private final int dotCount;
   private int strictMinimumValue = 0;
-  private final List<ITraitType> alternateTraitTypes = new ArrayList<ITraitType>();
+  private final List<ITraitType> alternateTraitTypes = new ArrayList<>();
   private ILimitationContext latestContext = null;
   private ITraitType latestTrait = null;
   private boolean isFreebie;
@@ -78,7 +78,7 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
 	  Map<ITraitType, Integer> map = claimMap.get(context);
 	  if (map == null)
 	  {
-		  map = new HashMap<ITraitType, Integer>();
+		  map = new HashMap<>();
 		  claimMap.put(context, map);
 	  }
 	  map.put(type, dots);

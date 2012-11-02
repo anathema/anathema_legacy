@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.framework.xml.ITemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
-
 import org.dom4j.Element;
 
 public abstract class AbstractXmlTemplateParser<T extends ICloneable<T>> implements ITemplateParser<T> {
@@ -14,7 +13,7 @@ public abstract class AbstractXmlTemplateParser<T extends ICloneable<T>> impleme
   private static final String ATTRIB_USES = "uses"; //$NON-NLS-1$
   private static final String ATTRIB_PREFIX = "prefix"; //$NON-NLS-1$
 
-  private final IWorkingTemplateFactory<T> workingTemplateFactory = new ClonedInstanceWorkingTemplateFactory<T>();
+  private final IWorkingTemplateFactory<T> workingTemplateFactory = new ClonedInstanceWorkingTemplateFactory<>();
 
   public AbstractXmlTemplateParser(IXmlTemplateRegistry<T> templateRegistry) {
     this.templateRegistry = templateRegistry;

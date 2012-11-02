@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SwingCategorizedSpecialView implements CategorizedSpecialNodeView, ISpecialNodeView {
   private final ISpecialCharm visitedCharm;
-  private final List<ProxyIntValueView> views = new ArrayList<ProxyIntValueView>();
+  private final List<ProxyIntValueView> views = new ArrayList<>();
 
   public SwingCategorizedSpecialView(ISpecialCharm visitedCharm) {
     this.visitedCharm = visitedCharm;

@@ -15,7 +15,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 
 public class PreferencesPage extends AbstractDialogPage {
 
-  private final Map<String, JPanel> panelsByName = new LinkedHashMap<String, JPanel>();
+  private final Map<String, JPanel> panelsByName = new LinkedHashMap<>();
   private IResources resources;
   private IPreferencesElement[] elements;
 

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
 
-  private final List<SpecialtiesContainer> containers = new ArrayList<SpecialtiesContainer>();
+  private final List<SpecialtiesContainer> containers = new ArrayList<>();
   private final Announcer<ISubTraitListener> listeners =Announcer.to(ISubTraitListener.class);
   private final ISubTraitListener listener = new ISubTraitListener() {
     @Override
@@ -64,7 +64,7 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
 
   @Override
   public ISubTrait[] getSubTraits() {
-    List<ISubTrait> traits = new ArrayList<ISubTrait>();
+    List<ISubTrait> traits = new ArrayList<>();
     for (ISubTraitContainer container : containers) {
       Collections.addAll(traits, container.getSubTraits());
     }

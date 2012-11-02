@@ -10,7 +10,7 @@ public class ReportSession {
 
   private final IGenericCharacter character;
   private final ReportContentRegistry registry;
-  private final List<Object> mnemonics = new ArrayList<Object>();
+  private final List<Object> mnemonics = new ArrayList<>();
 
   public ReportSession(ReportContentRegistry registry, IGenericCharacter character) {
     this.registry = registry;

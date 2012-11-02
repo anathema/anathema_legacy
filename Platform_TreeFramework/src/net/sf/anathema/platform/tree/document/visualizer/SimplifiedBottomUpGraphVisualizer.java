@@ -24,10 +24,10 @@ public class SimplifiedBottomUpGraphVisualizer extends AbstractCascadeVisualizer
     for (ILayer layer : layers) {
       width = Math.max(width, layer.getNodes()[0].getWidth());
     }
-    for (ILayer layer : new BackwardsIterable<ILayer>(layers)) {
+    for (ILayer layer : new BackwardsIterable<>(layers)) {
       layer.getNodes()[0].setPosition(width / 2);
     }
-    for (ILayer layer : new BackwardsIterable<ILayer>(layers)) {
+    for (ILayer layer : new BackwardsIterable<>(layers)) {
       layer.unrollHorizontalMetanodes();
     }
     return layers;
@@ -61,7 +61,7 @@ public class SimplifiedBottomUpGraphVisualizer extends AbstractCascadeVisualizer
   private void createVisualizableNodes(int layerIndex) {
     ISimpleNode[] layerNodes = getGraph().getNodesByLayer(layerIndex + 1);
     if (layerNodes.length > 1) {
-      Set<ISimpleNode> nodeSet = new LinkedHashSet<ISimpleNode>();
+      Set<ISimpleNode> nodeSet = new LinkedHashSet<>();
       nodeSet.addAll(Arrays.asList(layerNodes));
       getNodeFactory().registerHorizontalMetaNode(nodeSet);
     } else {

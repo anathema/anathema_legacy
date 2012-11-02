@@ -17,7 +17,7 @@ public class SpellsOnlyEncoderFactory extends AbstractEncoderFactory{
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new ExtendedMagicEncoder<SpellsOnlyContent>(resources, SpellsOnlyContent.class, false, "Magic");
+    return new ExtendedMagicEncoder<>(resources, SpellsOnlyContent.class, false, "Magic");
   }
 
   @Override

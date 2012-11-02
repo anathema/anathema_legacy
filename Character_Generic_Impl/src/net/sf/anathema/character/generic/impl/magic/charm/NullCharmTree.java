@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.impl.magic.charm;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NullCharmTree implements ICharmTree {
 
@@ -21,7 +21,7 @@ public class NullCharmTree implements ICharmTree {
 
   @Override
   public List<ICharm> getAllCharmsForGroup(String id) {
-    return new ArrayList<ICharm>();
+    return new ArrayList<>();
   }
 
   @Override

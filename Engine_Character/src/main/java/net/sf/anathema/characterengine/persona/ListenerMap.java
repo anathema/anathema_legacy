@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ListenerMap {
-  private final Map<QualityKey, QualityListener> listenerMap = new HashMap<QualityKey, QualityListener>();
+  private final Map<QualityKey, QualityListener> listenerMap = new HashMap<>();
 
   public boolean contains(QualityKey qualityKey) {
     return listenerMap.containsKey(qualityKey);

@@ -34,7 +34,7 @@ public class AdditionalRulesTemplateParserTest {
 
   @Before
   public void setUp() throws Exception {
-    this.registry = new DummyXmlTemplateRegistry<GenericAdditionalRules>();
+    this.registry = new DummyXmlTemplateRegistry<>();
     GenericAdditionalRules originalTemplate = new GenericAdditionalRules();
     registry.register(ORIGINAL_TEMPLATE_ID, originalTemplate);
     parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[0]);

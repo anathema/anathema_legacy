@@ -65,7 +65,7 @@ public class TextWriter {
   private String[] breakText(FontMetrics textMetrics) {
     int lines = lineSuggestion.suggestNumberOfLines(textMetrics, text);
     String[] textNodes = new String[lines];
-    List<Integer> wrap = new ArrayList<Integer>();
+    List<Integer> wrap = new ArrayList<>();
     wrap.add(0);
     for (int breakpoint : StringUtilities.findBreakPoints(text, lines)) {
       wrap.add(breakpoint);

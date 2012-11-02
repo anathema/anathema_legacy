@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class QualityMap {
-  private final Map<QualityKey, Quality> qualityMap = new HashMap<QualityKey, Quality>();
+  private final Map<QualityKey, Quality> qualityMap = new HashMap<>();
 
 
   public void put(QualityKey qualityKey, Quality quality) {
@@ -19,7 +19,7 @@ public class QualityMap {
   }
 
   public List<Quality> getAllWithType(final Type queryType) {
-    final List<Quality> allWithType = new ArrayList<Quality>();
+    final List<Quality> allWithType = new ArrayList<>();
     for (final Map.Entry<QualityKey, Quality> entry : qualityMap.entrySet()) {
       QualityKey key = entry.getKey();
       key.withTypeDo(new TypeClosure() {

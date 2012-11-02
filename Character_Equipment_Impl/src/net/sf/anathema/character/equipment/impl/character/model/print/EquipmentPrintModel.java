@@ -30,7 +30,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
   }
 
   private List<IArmourStats> getNaturalArmourList() {
-    List<IArmourStats> printStats = new ArrayList<IArmourStats>();
+    List<IArmourStats> printStats = new ArrayList<>();
     printStats.add(naturalArmour);
     return printStats;
   }
@@ -43,7 +43,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
   }
 
   private List<IWeaponStats> getNaturalWeaponList() {
-    List<IWeaponStats> printStats = new ArrayList<IWeaponStats>();
+    List<IWeaponStats> printStats = new ArrayList<>();
     for (IEquipmentItem item : collection.getNaturalWeapons()) {
       printStats.addAll(getPrintedStats(item, IWeaponStats.class));
     }
@@ -53,7 +53,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
   private <K extends IEquipmentStats> List<K> getPrintEquipmentList(
       Class<K> printedClass,
       IEquipmentStatsDecorationFactory<K> factory) {
-    List<K> printStats = new ArrayList<K>();
+    List<K> printStats = new ArrayList<>();
     for (IEquipmentItem item : collection.getEquipmentItems()) {
       for (K stats : getPrintedStats(item, printedClass)) {
         printStats.add(factory.createRenamedPrintDecoration(item, stats));
@@ -64,7 +64,7 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
 
   @SuppressWarnings("unchecked")
   private <K> List<K> getPrintedStats(IEquipmentItem item, Class<K> printedClass) {
-    List<K> printedStats = new ArrayList<K>();
+    List<K> printedStats = new ArrayList<>();
     for (IEquipmentStats stats : item.getStats()) {
       if (doPrint(item, stats, printedClass)) {
         printedStats.add((K) stats);

@@ -77,11 +77,7 @@ public class GenericTraitTemplateParser {
   private static IExtendedMinimum getMinimumClass(String usesId) throws PersistenceException {
     try {
         return (IExtendedMinimum) Class.forName(usesId).newInstance();
-    } catch (InstantiationException e) {
-        throw new PersistenceException(e);
-    } catch (IllegalAccessException e) {
-        throw new PersistenceException(e);
-    } catch (ClassNotFoundException e) {
+    } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
         throw new PersistenceException(e);
     }
   }
@@ -116,14 +112,10 @@ public class GenericTraitTemplateParser {
     	ITraitLimitation limitation = null;
 		try {
 			limitation = (ITraitLimitation) Class.forName(usesId).newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-    	return limitation;
+      return limitation;
     }
     String typeId = ElementUtilities.getRequiredAttrib(limitationElement, ATTRIB_TYPE);
     if (typeId.equals(VALUE_STATIC)) {

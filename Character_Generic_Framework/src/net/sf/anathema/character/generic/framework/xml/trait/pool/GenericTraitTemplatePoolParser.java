@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.trait.pool;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
@@ -19,8 +16,10 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<GenericTraitTemplatePool> {
 
@@ -30,7 +29,7 @@ public class GenericTraitTemplatePoolParser extends AbstractXmlTemplateParser<Ge
   private static final String TAG_ALTERNATE_MINMUM_TRAITS = "alternateMinimumTraits"; //$NON-NLS-1$
   private static final String TAG_CASTE_MINIMUM_TRAITS = "casteMinimumTraits";
   private final ITraitTypeGroup traitTypeGroup;
-  private final List<AllocationMinimumRestriction> family = new ArrayList<AllocationMinimumRestriction>();
+  private final List<AllocationMinimumRestriction> family = new ArrayList<>();
 
   public GenericTraitTemplatePoolParser(
       IXmlTemplateRegistry<GenericTraitTemplatePool> templateRegistry,

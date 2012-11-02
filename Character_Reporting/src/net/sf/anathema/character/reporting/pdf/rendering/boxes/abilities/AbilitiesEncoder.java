@@ -8,7 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class AbilitiesEncoder {
 
   public static FavorableTraitContentEncoder<AbilitiesContent> createWithCraftsOnly(IResources resources, int craftCount) {
-    FavorableTraitContentEncoder<AbilitiesContent> encoder = new FavorableTraitContentEncoder<AbilitiesContent>(AbilitiesContent.class);
+    FavorableTraitContentEncoder<AbilitiesContent> encoder = new FavorableTraitContentEncoder<>(AbilitiesContent.class);
     PdfTraitEncoder traitEncoder = encoder.getTraitEncoder();
     CraftEncoder craftEncoder = new CraftEncoder(resources, traitEncoder, craftCount);
     encoder.addNamedTraitEncoder(craftEncoder);

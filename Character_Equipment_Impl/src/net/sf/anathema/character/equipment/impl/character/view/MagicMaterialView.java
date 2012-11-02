@@ -15,7 +15,7 @@ import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 
 public class MagicMaterialView implements IMagicalMaterialView {
 
-  private final ChangeableJComboBox<MagicalMaterial> materialCombo = new ChangeableJComboBox<MagicalMaterial>(
+  private final ChangeableJComboBox<MagicalMaterial> materialCombo = new ChangeableJComboBox<>(
       new MagicalMaterial[0],
       false);
   private final JLabel label = new JLabel();

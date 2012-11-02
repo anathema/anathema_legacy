@@ -47,7 +47,7 @@ public class CategorizedNamegeneratorPresenter implements Presenter {
   }
 
   private TokenCategory[] getAllVoidStateCategories() {
-    List<TokenCategory> tokenCategories = new ArrayList<TokenCategory>();
+    List<TokenCategory> tokenCategories = new ArrayList<>();
     tokenCategories.add(null);
     for (TokenCategory category : tokenRegistry.getRootTokenCategories()) {
       addAllRelevantTokens(category, tokenCategories);

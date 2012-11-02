@@ -10,11 +10,11 @@ import java.util.Map;
 public class GsonCollectionFactory implements ICollectionFactory {
   @Override
   public <T> List<T> createList() {
-    return new ArrayList<T>();
+    return new ArrayList<>();
   }
 
   @Override
   public <K, V> Map<K, V> createHashMap() {
-    return new HashMap<K, V>();
+    return new HashMap<>();
   }
 }

@@ -33,7 +33,7 @@ public class CraftEncoder extends AbstractNamedTraitEncoder implements INamedTra
     String title = getResources().getString("Sheet.AbilitySubHeader.Crafts"); //$NON-NLS-1$
     INamedGenericTrait[] traits = character.getSubTraits(AbilityType.Craft);
     if (!AnathemaCharacterPreferences.getDefaultPreferences().printZeroCrafts()) {
-      List<INamedGenericTrait> nonZeroCrafts = new ArrayList<INamedGenericTrait>();
+      List<INamedGenericTrait> nonZeroCrafts = new ArrayList<>();
       for (INamedGenericTrait trait : traits) {
         if (trait.getCurrentValue() != 0) {
           nonZeroCrafts.add(trait);

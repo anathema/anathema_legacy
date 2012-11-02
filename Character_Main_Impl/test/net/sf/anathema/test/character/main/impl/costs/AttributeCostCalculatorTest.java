@@ -78,7 +78,7 @@ public class AttributeCostCalculatorTest {
   }
 
   private void assertAllPointsToSpendUsed(int[] dotsToSpend) {
-    List<Integer> dotsToSpendList = new ArrayList<Integer>();
+    List<Integer> dotsToSpendList = new ArrayList<>();
     for (int dot : dotsToSpend) {
       dotsToSpendList.add(dot);
     }

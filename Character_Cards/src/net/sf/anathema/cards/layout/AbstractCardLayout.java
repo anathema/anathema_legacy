@@ -1,6 +1,5 @@
 package net.sf.anathema.cards.layout;
 
-import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
@@ -58,10 +57,8 @@ public abstract class AbstractCardLayout implements ICardLayout {
 	protected void drawImage(PdfContentByte directContent, float x, float y, Image image) {
 		try {
 			directContent.addImage(image, image.getScaledWidth(), 0, 0, image.getScaledHeight(), x, y - image.getScaledHeight());
-		} catch (BadElementException e) {
-			e.printStackTrace();
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}
-	}
+  }
 }

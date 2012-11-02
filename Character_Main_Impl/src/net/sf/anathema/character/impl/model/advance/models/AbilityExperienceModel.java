@@ -37,7 +37,7 @@ public class AbilityExperienceModel extends AbstractIntegerValueModel {
   }
 
   private IFavorableTrait[] getAllAbilities() {
-    List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
+    List<ITraitType> abilityTypes = new ArrayList<>();
     for (IGroupedTraitType type : character.getCharacterTemplate().getAbilityGroups()) {
       abilityTypes.add(type.getTraitType());
     }

@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class ButtonPanelBuilder {
-  private final List<Component> components = new ArrayList<Component>();
+  private final List<Component> components = new ArrayList<>();
 
   public void add(Component... newComponents) {
     Collections.addAll(components, newComponents);

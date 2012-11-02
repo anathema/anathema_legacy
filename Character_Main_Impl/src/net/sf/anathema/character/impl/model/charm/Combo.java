@@ -17,8 +17,8 @@ import java.util.List;
 public class Combo implements ICombo {
 
   private volatile Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
-  private volatile List<ICharm> creationCharmList = new ArrayList<ICharm>();
-  private volatile List<ICharm> experiencedCharmList = new ArrayList<ICharm>();
+  private volatile List<ICharm> creationCharmList = new ArrayList<>();
+  private volatile List<ICharm> experiencedCharmList = new ArrayList<>();
   private ICharm extraActionCharm = null;
   private ICharm simpleCharm = null;
   private volatile ITextualDescription name = new SimpleTextualDescription();
@@ -27,7 +27,7 @@ public class Combo implements ICombo {
 
   @Override
   public ICharm[] getCharms() {
-    ArrayList<ICharm> charms = new ArrayList<ICharm>();
+    ArrayList<ICharm> charms = new ArrayList<>();
     charms.addAll(creationCharmList);
     charms.addAll(experiencedCharmList);
     return charms.toArray(new ICharm[charms.size()]);
@@ -88,8 +88,8 @@ public class Combo implements ICombo {
       throw new UnreachableCodeReachedException(e);
     }
     clone.control = Announcer.to(IChangeListener.class);
-    clone.creationCharmList = new ArrayList<ICharm>(creationCharmList.size());
-    clone.experiencedCharmList = new ArrayList<ICharm>(experiencedCharmList.size());
+    clone.creationCharmList = new ArrayList<>(creationCharmList.size());
+    clone.experiencedCharmList = new ArrayList<>(experiencedCharmList.size());
     clone.name = new SimpleTextualDescription();
     clone.description = new SimpleTextualDescription();
     copyCombo(this, clone);

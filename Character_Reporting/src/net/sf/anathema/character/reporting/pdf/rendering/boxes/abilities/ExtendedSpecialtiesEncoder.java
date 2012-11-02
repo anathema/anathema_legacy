@@ -29,7 +29,7 @@ public class ExtendedSpecialtiesEncoder extends AbstractNamedTraitEncoder implem
 
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
-    List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
+    List<IValuedTraitReference> references = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : reportSession.getCharacter().getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {
         Collections.addAll(references, getTraitReferences(reportSession.getCharacter().getSpecialties(traitType), traitType));

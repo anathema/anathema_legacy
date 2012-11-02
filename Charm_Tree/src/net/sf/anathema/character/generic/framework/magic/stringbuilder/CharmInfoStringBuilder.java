@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
-  private final List<IMagicTooltipStringBuilder> builders = new ArrayList<IMagicTooltipStringBuilder>();
+  private final List<IMagicTooltipStringBuilder> builders = new ArrayList<>();
 
   public CharmInfoStringBuilder(IResources resources, MagicDescriptionProvider magicDescriptionProvider) {
     builders.add(new MagicNameStringBuilder(resources));

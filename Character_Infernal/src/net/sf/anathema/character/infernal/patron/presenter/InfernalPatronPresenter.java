@@ -29,7 +29,7 @@ public class InfernalPatronPresenter implements Presenter {
   private final IInfernalPatronModel model;
   private final ICharacterModelContext context;
   private final ICharacterListening characterListening;
-  private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView< ? >> traitViewsByTrait = new IdentityMapping<IFavorableTrait, IToggleButtonTraitView< ? >>();
+  private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView< ? >> traitViewsByTrait = new IdentityMapping<>();
 
   public InfernalPatronPresenter(IResources resources, IInfernalPatronView view, IInfernalPatronModel model) {
     this.resources = resources;

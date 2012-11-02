@@ -1,15 +1,14 @@
 package net.sf.anathema.character.generic.framework.xml.abilitygroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<GenericGroupedTraitTypeProvider> {
 
@@ -41,7 +40,7 @@ public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<Gene
       String groupCasteId = group.attributeValue(CASTE_ID);
       List<Element> abilities = ElementUtilities.elements(group, TAG_TRAIT);
       for (Element ability : abilities) {
-    	List<String> traitCastes = new ArrayList<String>();
+    	List<String> traitCastes = new ArrayList<>();
         String attributeTypeValue = ability.attributeValue(ATTRIB_TYPE);
         if (ability.attributeValue(CASTE_ID) != null)
         	for (String caste : ability.attributeValue(CASTE_ID).split(","))

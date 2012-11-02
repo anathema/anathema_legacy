@@ -27,7 +27,7 @@ public class FavorableTraitConfigurationPresenter {
 
   private final IGroupedFavorableTraitConfigurationView configurationView;
   private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView<?>> traitViewsByTrait =
-          new IdentityMapping<IFavorableTrait, IToggleButtonTraitView<?>>();
+          new IdentityMapping<>();
   private final IResources resources;
   private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
   private final ICoreTraitConfiguration traitConfiguration;

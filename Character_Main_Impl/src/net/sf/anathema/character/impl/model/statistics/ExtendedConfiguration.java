@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model.statistics;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
@@ -11,11 +8,14 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 import net.sf.anathema.character.model.IExtendedConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ExtendedConfiguration implements IExtendedConfiguration {
 
-  private final List<IAdditionalModel> additionalModels = new ArrayList<IAdditionalModel>();
+  private final List<IAdditionalModel> additionalModels = new ArrayList<>();
   private final ICharacterModelContext context;
-  private final List<IChangeListener> listeners = new ArrayList<IChangeListener>();
+  private final List<IChangeListener> listeners = new ArrayList<>();
 
   public ExtendedConfiguration(ICharacterModelContext context) {
     this.context = context;
@@ -36,7 +36,7 @@ public class ExtendedConfiguration implements IExtendedConfiguration {
 
   @Override
   public IAdditionalModel[] getAdditionalModels(AdditionalModelType type) {
-    List<IAdditionalModel> models = new ArrayList<IAdditionalModel>();
+    List<IAdditionalModel> models = new ArrayList<>();
     for (IAdditionalModel model : additionalModels) {
       if (model.getAdditionalModelType() == type) {
         models.add(model);

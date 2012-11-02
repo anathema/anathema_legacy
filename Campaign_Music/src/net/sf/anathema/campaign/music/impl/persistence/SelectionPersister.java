@@ -18,7 +18,7 @@ public class SelectionPersister {
     query.constrain(DbMusicSelection.class);
     @SuppressWarnings("unchecked")
     ObjectSet<DbMusicSelection> set = query.execute();
-    List<DbMusicSelection> selections = new ArrayList<DbMusicSelection>();
+    List<DbMusicSelection> selections = new ArrayList<>();
     while (set.hasNext()) {
       selections.add(set.next());
     }

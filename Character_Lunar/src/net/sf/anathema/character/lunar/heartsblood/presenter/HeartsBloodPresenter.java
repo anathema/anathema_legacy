@@ -21,7 +21,7 @@ public class HeartsBloodPresenter implements Presenter {
   private final IHeartsBloodModel model;
   private final HeartsBloodView view;
   private final IResources resources;
-  private final Map<IAnimalForm, IRemovableEntryView> viewsByForm = new HashMap<IAnimalForm, IRemovableEntryView>();
+  private final Map<IAnimalForm, IRemovableEntryView> viewsByForm = new HashMap<>();
 
   public HeartsBloodPresenter(IHeartsBloodModel model, HeartsBloodView view, IResources resources) {
     this.model = model;

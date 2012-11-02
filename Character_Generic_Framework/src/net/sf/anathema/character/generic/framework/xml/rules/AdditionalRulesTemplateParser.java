@@ -99,11 +99,11 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       return;
     }
     for (Element costModifierElement : ElementUtilities.elements(additionalCostElement, TAG_COST_MODIFIER)) {
-      final List<IPointModification> bonusModifications = new ArrayList<IPointModification>();
+      final List<IPointModification> bonusModifications = new ArrayList<>();
       for (Element modificationElement : ElementUtilities.elements(costModifierElement, TAG_BONUS_MODIFICATION)) {
         bonusModifications.add(createPointCostModification(modificationElement));
       }
-      final List<IPointModification> dotCostModifications = new ArrayList<IPointModification>();
+      final List<IPointModification> dotCostModifications = new ArrayList<>();
       for (Element modificationElement : ElementUtilities.elements(costModifierElement, TAG_DOT_COST_MODIFICATION)) {
         dotCostModifications.add(createPointCostModification(modificationElement));
       }
@@ -127,7 +127,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     if (backgroundsElement == null) {
       return;
     }
-    List<String> ids = new ArrayList<String>();
+    List<String> ids = new ArrayList<>();
     for (Element background : ElementUtilities.elements(backgroundsElement, TAG_BACKGROUND_REFERENCE)) {
       ids.add(background.attributeValue(ATTRIB_ID));
     }
@@ -140,7 +140,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     if (additionalMagicElement == null) {
       return;
     }
-    List<IAdditionalMagicLearnPool> pools = new ArrayList<IAdditionalMagicLearnPool>();
+    List<IAdditionalMagicLearnPool> pools = new ArrayList<>();
     for (Element magicPoolElement : ElementUtilities.elements(additionalMagicElement, TAG_MAGIC_POOL)) {
       IBackgroundTemplate backgroundTemplate = getBackgroundTemplate(magicPoolElement);
       boolean defaultAnswer = ElementUtilities.getBooleanAttribute(magicPoolElement, ATTRIB_DEFAULT_RESPONSE, true);
@@ -159,7 +159,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     if (additionalPoolsElement == null) {
       return;
     }
-    List<IAdditionalEssencePool> pools = new ArrayList<IAdditionalEssencePool>();
+    List<IAdditionalEssencePool> pools = new ArrayList<>();
     for (Element learnablePool : ElementUtilities.elements(additionalPoolsElement, TAG_LEARNABLE_POOL)) {
       AdditionalEssencePool personalPool = parsePool(learnablePool, TAG_PERSONAL_POOL);
       AdditionalEssencePool peripheralPool = parsePool(learnablePool, TAG_PERIPHERAL_POOL);
@@ -228,7 +228,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   }
 
   private ComplexAdditionalEssencePool[] parseComplexPools(Element parent, String elementName) throws PersistenceException {
-    List<ComplexAdditionalEssencePool> complexPools = new ArrayList<ComplexAdditionalEssencePool>();
+    List<ComplexAdditionalEssencePool> complexPools = new ArrayList<>();
     for (Object poolObject : parent.elements(elementName)) {
       Element poolElement = (Element) poolObject;
       
@@ -264,7 +264,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       return;
     }
     List<Element> magicElements = ElementUtilities.elements(requiredMagicElement, TAG_MAGIC);
-    List<String> compulsiveCharms = new ArrayList<String>();
+    List<String> compulsiveCharms = new ArrayList<>();
     for (Element magic : magicElements) {
       String type = ElementUtilities.getRequiredAttrib(magic, ATTRIB_TYPE);
       if (type.equals(VALUE_CHARM)) {

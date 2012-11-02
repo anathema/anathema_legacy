@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WeaponModifiers implements IWeaponModifiers {
-  private final List<ITraitModifyingStats> stats = new ArrayList<ITraitModifyingStats>();
+  private final List<ITraitModifyingStats> stats = new ArrayList<>();
 
   public WeaponModifiers(List<IEquipmentItem> equipmentItems) {
     for (IEquipmentItem item : equipmentItems)

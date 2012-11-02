@@ -15,7 +15,7 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
   private Q currentQuality;
   private final ICharacterModelContext context;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
-  private final List<IQualitySelection<Q>> selectedQualities = new ArrayList<IQualitySelection<Q>>();
+  private final List<IQualitySelection<Q>> selectedQualities = new ArrayList<>();
 
   public AbstractQualityModel(ICharacterModelContext context) {
     this.context = context;
@@ -99,7 +99,7 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
   @Override
   @SuppressWarnings("unchecked")
   public IQualitySelection<Q>[] getSelectedQualities() {
-    List<IQualitySelection<Q>> activeSelectedQualities = new ArrayList<IQualitySelection<Q>>();
+    List<IQualitySelection<Q>> activeSelectedQualities = new ArrayList<>();
     for (IQualitySelection<Q> selection : selectedQualities) {
       activeSelectedQualities.add(selection);
     }

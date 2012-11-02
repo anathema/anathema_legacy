@@ -1,12 +1,5 @@
 package net.sf.anathema.character.library.trait;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
@@ -14,10 +7,17 @@ import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 public abstract class AbstractFavorableTraitCostCalculator implements IFavorableTraitCostCalculator {
 
   protected final IFavorableTraitCreationPoints points;
-  private final Map<IFavorableTrait, FavorableTraitCost[]> costsByTrait = new HashMap<IFavorableTrait, FavorableTraitCost[]>();
+  private final Map<IFavorableTrait, FavorableTraitCost[]> costsByTrait = new HashMap<>();
   private final IAdditionalTraitBonusPointManagement additionalPools;
   private final int freeTraitMax;
   private final IFavorableTrait[] traits;
@@ -176,7 +176,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   private FavorableTraitCost[] handleFavoredTrait(IFavorableTrait trait, final int bonusPointCostFactor) {
-    final List<FavorableTraitCost> allCosts = new ArrayList<FavorableTraitCost>();
+    final List<FavorableTraitCost> allCosts = new ArrayList<>();
     trait.accept(new ITraitVisitor() {
 
       @Override
@@ -214,7 +214,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   private FavorableTraitCost[] handleGeneralTrait(ITrait trait, final int bonusPointCostFactor) {
-    final List<FavorableTraitCost> allCosts = new ArrayList<FavorableTraitCost>();
+    final List<FavorableTraitCost> allCosts = new ArrayList<>();
     trait.accept(new ITraitVisitor() {
 
       @Override
@@ -257,7 +257,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   private Set<IFavorableDefaultTrait> sortTraitsByStatus() {
-    Set<IFavorableDefaultTrait> orderedTraits = new LinkedHashSet<IFavorableDefaultTrait>();
+    Set<IFavorableDefaultTrait> orderedTraits = new LinkedHashSet<>();
     for (IFavorableTrait trait : traits) {
       if (!trait.getFavorization().isCasteOrFavored()) {
         addAllTraits(orderedTraits, trait);

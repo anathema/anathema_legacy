@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class EquipmentCollection implements Iterable<IEquipmentItem>, ModifierFactory {
-  private final List<IEquipmentItem> equipmentItems = new ArrayList<IEquipmentItem>();
+  private final List<IEquipmentItem> equipmentItems = new ArrayList<>();
 
   public IEquipmentItem[] asArray() {
     return equipmentItems.toArray(new IEquipmentItem[equipmentItems.size()]);
@@ -25,7 +25,7 @@ public class EquipmentCollection implements Iterable<IEquipmentItem>, ModifierFa
 
   @Override
   public Iterator<IEquipmentItem> iterator() {
-    return new ArrayList<IEquipmentItem>(equipmentItems).iterator();
+    return new ArrayList<>(equipmentItems).iterator();
   }
 
   @Override

@@ -9,12 +9,12 @@ import java.util.Set;
 
 public class MultiEntryMap<K, V> {
 
-  private final Map<K, List<V>> map = new HashMap<K, List<V>>();
+  private final Map<K, List<V>> map = new HashMap<>();
 
   public void add(K key, V... value) {
     List<V> list;
     if (!containsKey(key)) {
-      list = new ArrayList<V>();
+      list = new ArrayList<>();
       map.put(key, list);
     }
     else {

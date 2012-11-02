@@ -45,7 +45,7 @@ public class EncoderRegistry {
   }
 
   private MultiEntryMap<String, EncoderFactory> getFactoriesByIdViaReflection() {
-    MultiEntryMap<String, EncoderFactory> factoryById = new MultiEntryMap<String, EncoderFactory>();
+    MultiEntryMap<String, EncoderFactory> factoryById = new MultiEntryMap<>();
     try {
       Collection<EncoderFactory> encoderFactories = instantiater.instantiateAll(RegisteredEncoderFactory.class);
       for (EncoderFactory factory : encoderFactories) {

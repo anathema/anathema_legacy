@@ -19,7 +19,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   private ICharacterType selectedType;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private ITemplateTypeAggregation selectedTemplate;
-  private final MultiEntryMap<ICharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<ICharacterType, ITemplateTypeAggregation>();
+  private final MultiEntryMap<ICharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<>();
   private final CharacterStatisticsConfiguration configuration;
   private final ICharacterGenerics generics;
   private final ICharacterType[] types;
@@ -33,7 +33,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   }
 
   private ICharacterType[] collectCharacterTypes(ITemplateRegistry registry) {
-    List<ICharacterType> availableTypes = new ArrayList<ICharacterType>();
+    List<ICharacterType> availableTypes = new ArrayList<>();
     for (ICharacterType type : CharacterType.values()) {
       if (registry.getAllSupportedTemplates(type).length > 0) {
         availableTypes.add(type);
@@ -96,7 +96,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   @Override
   public ITemplateTypeAggregation[] getAvailableTemplates() {
     List<ITemplateTypeAggregation> list = aggregationsByType.get(selectedType);
-    List<ITemplateTypeAggregation> copyList = new ArrayList<ITemplateTypeAggregation>(list);
+    List<ITemplateTypeAggregation> copyList = new ArrayList<>(list);
     return copyList.toArray(new ITemplateTypeAggregation[copyList.size()]);
   }
 

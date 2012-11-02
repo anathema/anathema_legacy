@@ -31,7 +31,7 @@ public class DemocritusCardResourceProvider implements ICardReportResourceProvid
 	private final String cardIconShadow = "card_icon_shadow.png";
 	private final String nullIcon = "null.png";
 	
-	private final Map<String, Image> imageMap = new HashMap<String, Image>(); 
+	private final Map<String, Image> imageMap = new HashMap<>();
 	
 	private final int MAGIC_TITLE_FONT_SIZE = 8;
 	private final int MAGIC_NORMAL_FONT_SIZE = 8;

@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public class MultiSourceStringProvider implements IStringResourceHandler {
-  private final List<IStringResourceHandler> handlers = new ArrayList<IStringResourceHandler>();
+  private final List<IStringResourceHandler> handlers = new ArrayList<>();
 
   @Override
   public String getString(String key, Object... arguments) {

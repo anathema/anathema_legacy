@@ -26,7 +26,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   private final IItemDescription description = new ItemDescription();
   private final IEquipmentDatabase database;
   private IEquipmentTemplate editedTemplate;
-  private final List<IEquipmentStats> statses = new ArrayList<IEquipmentStats>();
+  private final List<IEquipmentStats> statses = new ArrayList<>();
   private final Announcer<IChangeListener> statsChangeControl = Announcer.to(IChangeListener.class);
   private final Announcer<IChangeListener> magicalMaterialControl = Announcer.to(IChangeListener.class);
   private final Announcer<IChangeListener> compositionControl = Announcer.to(IChangeListener.class);
@@ -105,7 +105,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
 
   private List<IEquipmentStats> getAllPreviousStats() {
-    List<IEquipmentStats> allStats = new ArrayList<IEquipmentStats>();
+    List<IEquipmentStats> allStats = new ArrayList<>();
     if (editedTemplate != null) {
       addAll(allStats, editedTemplate.getStats());
     }
@@ -113,7 +113,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
 
   private List<IEquipmentStats> getAllCurrentStats() {
-    List<IEquipmentStats> allStats = new ArrayList<IEquipmentStats>();
+    List<IEquipmentStats> allStats = new ArrayList<>();
     allStats.addAll(statses);
     return allStats;
   }

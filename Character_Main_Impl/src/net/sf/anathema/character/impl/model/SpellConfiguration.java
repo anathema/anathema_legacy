@@ -21,11 +21,11 @@ import java.util.Map;
 
 public class SpellConfiguration implements ISpellConfiguration {
 
-  private final List<ISpell> creationLearnedList = new ArrayList<ISpell>();
-  private final List<ISpell> experiencedLearnedList = new ArrayList<ISpell>();
+  private final List<ISpell> creationLearnedList = new ArrayList<>();
+  private final List<ISpell> experiencedLearnedList = new ArrayList<>();
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final Announcer<IMagicLearnListener> magicLearnControl = Announcer.to(IMagicLearnListener.class);
-  private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<CircleType, List<ISpell>>();
+  private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<>();
   private final ICharmConfiguration charms;
   private final ISpellLearnStrategy strategy;
   private final ICharacterTemplate characterTemplate;
@@ -116,7 +116,7 @@ public class SpellConfiguration implements ISpellConfiguration {
 
   @Override
   public ISpell[] getLearnedSpells(boolean experienced) {
-    List<ISpell> list = new ArrayList<ISpell>();
+    List<ISpell> list = new ArrayList<>();
     list.addAll(creationLearnedList);
     if (experienced) {
       list.addAll(experiencedLearnedList);
@@ -155,7 +155,7 @@ public class SpellConfiguration implements ISpellConfiguration {
   }
 
   private Iterable<ISpell> getAllSpells() {
-    List<ISpell> allSpells = new ArrayList<ISpell>();
+    List<ISpell> allSpells = new ArrayList<>();
     for (List<ISpell> circleSpells : spellsByCircle.values()) {
       allSpells.addAll(circleSpells);
     }

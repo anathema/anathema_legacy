@@ -22,7 +22,7 @@ public class ListObjectSelectionPageView<V> implements IObjectSelectionView<V> {
 
   @Override
   public IListObjectSelectionView<V> addSelectionView() {
-    ListObjectSelectionView<V> view = new ListObjectSelectionView<V>(clazz);
+    ListObjectSelectionView<V> view = new ListObjectSelectionView<>(clazz);
     JComponent content = view.getComponent();
     this.focusComponent = content;
     panel.add(new JScrollPane(content), new CC().push().grow());

@@ -24,7 +24,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
   private final ItemCreationOperator itemCreationOperator;
 
   public static Action[] createToolActions(IAnathemaModel model, IResources resources) {
-    List<Action> actions = new ArrayList<Action>();
+    List<Action> actions = new ArrayList<>();
     for (IItemType type : collectItemTypes(model)) {
       ItemTypeNewAction action = new ItemTypeNewAction(type, model, resources);
       action.setName(resources.getString("ItemType." + type.getId() + ".PrintName")); //$NON-NLS-1$ //$NON-NLS-2$

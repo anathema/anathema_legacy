@@ -20,7 +20,7 @@ public enum TextBlockDelimiter {
   //  
   SEMICOLON(';', "", ";", false, false, true); //$NON-NLS-1$ //$NON-NLS-2$
 
-  private static Map<Character, TextBlockDelimiter> DELIMITER_MAP = new HashMap<Character, TextBlockDelimiter>();
+  private static Map<Character, TextBlockDelimiter> DELIMITER_MAP = new HashMap<>();
 
   static {
     for (TextBlockDelimiter tag : values()) {

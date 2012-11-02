@@ -1,15 +1,15 @@
 package net.sf.anathema.character.generic.dummy;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DummyMagicCollection implements IMagicCollection {
 
-  private final Map<IMultiLearnableCharm, Integer> counts = new HashMap<IMultiLearnableCharm, Integer>();
+  private final Map<IMultiLearnableCharm, Integer> counts = new HashMap<>();
 
   @Override
   public int getLearnCount(IMultiLearnableCharm multiLearnableCharm) {

@@ -33,11 +33,11 @@ public class OxBodyCharmBuilder {
     ITraitType[] traitList = new ITraitType[traitNameList.length];
     for (int i = 0; i != traitList.length; i++)
       traitList[i] = traitTypeFinder.getTrait(traitNameList[i]);
-    LinkedHashMap<String, HealthLevelType[]> healthPicks = new LinkedHashMap<String, HealthLevelType[]>();
+    LinkedHashMap<String, HealthLevelType[]> healthPicks = new LinkedHashMap<>();
     for (Object pickObj : oxbodyElement.elements(TAG_OXBODY_PICK)) {
       Element pick = (Element) pickObj;
       String name = pick.attributeValue(ATTRIB_NAME);
-      List<HealthLevelType> healthLevels = new ArrayList<HealthLevelType>();
+      List<HealthLevelType> healthLevels = new ArrayList<>();
       for (Object levelObj : pick.elements()) {
         Element levelElement = (Element) levelObj;
         if (levelElement.getName().equals(TAG_ZERO_HEALTH))

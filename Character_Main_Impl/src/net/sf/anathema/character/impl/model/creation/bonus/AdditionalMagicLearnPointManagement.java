@@ -1,11 +1,11 @@
 package net.sf.anathema.character.impl.model.creation.bonus;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdditionalMagicLearnPointManagement implements IAdditionalMagicLearnPointManagement {
 
@@ -20,7 +20,7 @@ public class AdditionalMagicLearnPointManagement implements IAdditionalMagicLear
 
   @Override
   public List<IMagic> spendOn(List<IMagic> magicToHandle) {
-    List<IMagic> unhandledMagic = new ArrayList<IMagic>(magicToHandle);
+    List<IMagic> unhandledMagic = new ArrayList<>(magicToHandle);
     for (IMagic magic : magicToHandle) {
       spendOn(magic, unhandledMagic);
     }

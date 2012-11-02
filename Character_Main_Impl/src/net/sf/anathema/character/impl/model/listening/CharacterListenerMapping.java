@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class CharacterListenerMapping {
 
-  private final Map<ITrait, TraitListener> traitListeners = new HashMap<ITrait, TraitListener>();
+  private final Map<ITrait, TraitListener> traitListeners = new HashMap<>();
   private final Announcer<ICharacterChangeListener> control;
 
   public CharacterListenerMapping(Announcer<ICharacterChangeListener> control) {

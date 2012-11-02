@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharmFilterSet {
-  private List<ICharmFilter> filterSet = new ArrayList<ICharmFilter>();
+  private List<ICharmFilter> filterSet = new ArrayList<>();
 
   public void init(Iterable<ICharmFilter> filters) {
     filterSet = Lists.newArrayList(filters);

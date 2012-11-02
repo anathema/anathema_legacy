@@ -36,7 +36,7 @@ import java.util.List;
 public class MagicPresenter implements IContentPresenter {
 
   private final Logger logger = Logger.getLogger(MagicPresenter.class);
-  private final List<IContentPresenter> subPresenters = new ArrayList<IContentPresenter>();
+  private final List<IContentPresenter> subPresenters = new ArrayList<>();
   private IAnathemaModel anathemaModel;
   private IResources resources;
 

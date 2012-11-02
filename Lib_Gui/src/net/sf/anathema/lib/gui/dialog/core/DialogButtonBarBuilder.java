@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class DialogButtonBarBuilder {
-  private final List<JComponent> buttons = new ArrayList<JComponent>();
+  private final List<JComponent> buttons = new ArrayList<>();
 
   public void addButtons(JComponent... buttonComponents) {
     Collections.addAll(buttons, buttonComponents);

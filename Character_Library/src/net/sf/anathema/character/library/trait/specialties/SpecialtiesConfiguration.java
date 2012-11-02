@@ -27,8 +27,8 @@ import java.util.Set;
 
 public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
 
-  private final Map<ITraitType, ISubTraitContainer> specialtiesByType = new HashMap<ITraitType, ISubTraitContainer>();
-  private final Map<ITraitReference, ISubTraitContainer> specialtiesByTrait = new HashMap<ITraitReference, ISubTraitContainer>();
+  private final Map<ITraitType, ISubTraitContainer> specialtiesByType = new HashMap<>();
+  private final Map<ITraitReference, ISubTraitContainer> specialtiesByTrait = new HashMap<>();
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final Announcer<ITraitReferencesChangeListener> traitControl = Announcer.to(ITraitReferencesChangeListener.class);
   private final ICharacterModelContext context;
@@ -121,8 +121,8 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
 
   @Override
   public ITraitReference[] getAllEligibleTraits() {
-    List<ITraitReference> keySet = new ArrayList<ITraitReference>(specialtiesByTrait.keySet());
-    Set<ITraitReference> toRemove = new HashSet<ITraitReference>();
+    List<ITraitReference> keySet = new ArrayList<>(specialtiesByTrait.keySet());
+    Set<ITraitReference> toRemove = new HashSet<>();
     for (ITraitReference trait : keySet) {
       if (!getSpecialtiesContainer(trait.getTraitType()).isNewSubTraitAllowed())
         toRemove.add(trait);

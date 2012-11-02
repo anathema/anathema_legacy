@@ -1,22 +1,21 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
+import net.sf.anathema.character.generic.impl.magic.Charm;
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.lib.exception.PersistenceException;
+import org.dom4j.Document;
+import org.dom4j.Element;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-
-import net.sf.anathema.character.generic.impl.magic.Charm;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-
-import org.dom4j.Document;
-import org.dom4j.Element;
 
 public abstract class AbstractCharmSetBuilder implements ICharmSetBuilder {
 
   @Override
   public ICharm[] buildCharms(Document charmDoc, List<ISpecialCharm> specialCharms) throws PersistenceException {
-    Collection<Charm> allCharms = new HashSet<Charm>();
+    Collection<Charm> allCharms = new HashSet<>();
     Element charmListElement = charmDoc.getRootElement();
     buildCharms(allCharms, specialCharms, charmListElement);
     return allCharms.toArray(new ICharm[allCharms.size()]);

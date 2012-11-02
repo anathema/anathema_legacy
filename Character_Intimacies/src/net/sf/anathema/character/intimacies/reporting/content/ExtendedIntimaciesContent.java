@@ -33,7 +33,7 @@ public class ExtendedIntimaciesContent extends AbstractSubBoxContent {
   }
 
   public List<NamedValue> getPrintIntimacies() {
-    List<NamedValue> printIntimacies = new ArrayList<NamedValue>();
+    List<NamedValue> printIntimacies = new ArrayList<>();
     for (IIntimacy intimacy : getModel().getEntries()) {
       if (!isPrintZeroIntimacies() && intimacy.getTrait().getCurrentValue() == 0) {
         continue;

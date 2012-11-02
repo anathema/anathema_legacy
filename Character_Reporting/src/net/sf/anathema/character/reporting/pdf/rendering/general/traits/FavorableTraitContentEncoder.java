@@ -18,7 +18,7 @@ import java.util.List;
 
 public class FavorableTraitContentEncoder<C extends FavorableTraitContent> extends AbstractContentEncoder<C> {
 
-  private final List<INamedTraitEncoder> namedTraitEncoders = new ArrayList<INamedTraitEncoder>();
+  private final List<INamedTraitEncoder> namedTraitEncoders = new ArrayList<>();
   private final PdfTraitEncoder traitEncoder = PdfTraitEncoder.createSmallTraitEncoder();
 
   public FavorableTraitContentEncoder(Class<C> contentClass) {

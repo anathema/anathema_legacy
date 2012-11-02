@@ -31,14 +31,14 @@ public class AnathemaNewAction extends AbstractAnathemaItemAction {
 
   @Override
   protected ILegalityProvider<IItemType> getLegalityProvider() {
-    return new LenientLegalityProvider<IItemType>();
+    return new LenientLegalityProvider<>();
   }
 
   @Override
   protected IRegistry<IItemType, IWizardFactory> getFollowUpWizardFactoryRegistry() {
     ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
         .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
-    Registry<IItemType, IWizardFactory> registry = new Registry<IItemType, IWizardFactory>();
+    Registry<IItemType, IWizardFactory> registry = new Registry<>();
     for (IItemType type : collectItemTypes(getAnathemaModel())) {
       registry.register(type, extension.get(type).getNewItemWizardFactory());
     }

@@ -36,7 +36,7 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
   private int getCharmCosts() {
     int experienceCosts = 0;
     ICharmConfiguration charmConfiguration = character.getCharms();
-    Set<ICharm> charmsCalculated = new HashSet<ICharm>();
+    Set<ICharm> charmsCalculated = new HashSet<>();
     for (ICharm charm : charmConfiguration.getLearnedCharms(true)) {
       int charmCosts = calculateCharmCost(charmConfiguration, charm, charmsCalculated);
       if (charmConfiguration.isAlienCharm(charm)) {

@@ -10,9 +10,9 @@ import java.util.Map;
 
 public class ModelViewMapping implements IModelViewMapping {
 
-  private final Map<IItemView, IItem> modelByView = new HashMap<IItemView, IItem>();
-  private final Map<IItem, IItemView> viewByModel = new HashMap<IItem, IItemView>();
-  private final Map<IItem, IItemListener> listenersByModel = new HashMap<IItem, IItemListener>();
+  private final Map<IItemView, IItem> modelByView = new HashMap<>();
+  private final Map<IItem, IItemView> viewByModel = new HashMap<>();
+  private final Map<IItem, IItemListener> listenersByModel = new HashMap<>();
 
   @Override
   public IItem getModelByView(IItemView view) {

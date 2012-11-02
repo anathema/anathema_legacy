@@ -25,7 +25,7 @@ public abstract class AbstractMutationsModel extends AbstractQualityModel<IMutat
 
   @Override
   public IMutation[] getAvailableQualities() {
-    ArrayList<IMutation> availableMutations = new ArrayList<IMutation>();
+    ArrayList<IMutation> availableMutations = new ArrayList<>();
     for (IMutation Mutation : allMutations) {
       if (isSelected(Mutation)) {
         continue;

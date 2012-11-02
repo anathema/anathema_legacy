@@ -23,8 +23,8 @@ public class EquipmentObjectPresenter implements Presenter {
 
   public static final String EQUIPMENT_NAME_PREFIX = "Equipment.Name."; //$NON-NLS-1$
   private static final String DESCRIPTION_PREFIX = "Equipment.Description."; //$NON-NLS-1$
-  private final Map<IEquipmentStats, BooleanModel> attuneStatFlags = new HashMap<IEquipmentStats, BooleanModel>();
-  private final Map<IEquipmentStats, BooleanModel> otherStatFlags = new HashMap<IEquipmentStats, BooleanModel>();
+  private final Map<IEquipmentStats, BooleanModel> attuneStatFlags = new HashMap<>();
+  private final Map<IEquipmentStats, BooleanModel> otherStatFlags = new HashMap<>();
   private final IEquipmentItem model;
   private final IEquipmentObjectView view;
   private final IEquipmentStringBuilder stringBuilder;

@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.trait.caste;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateParser;
@@ -12,8 +9,10 @@ import net.sf.anathema.character.generic.framework.xml.trait.alternate.Alternate
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CasteMinimumTraitTemplateParser {
   private static final String ATTRIB_CASTE = "caste";
@@ -32,7 +31,7 @@ public class CasteMinimumTraitTemplateParser {
   public GenericRestrictedTraitTemplate[] parseCasteMinimumTraits(Element element,
                                                                   List<AllocationMinimumRestriction> list) {
     GenericRestrictedTraitTemplate[] templates = null;
-    List<GenericRestrictedTraitTemplate> limits = new ArrayList<GenericRestrictedTraitTemplate>();
+    List<GenericRestrictedTraitTemplate> limits = new ArrayList<>();
     try {
       caste = element.attributeValue(ATTRIB_CASTE);
       isFreebie = ElementUtilities.getBooleanAttribute(element, TAG_FREEBIE, false);

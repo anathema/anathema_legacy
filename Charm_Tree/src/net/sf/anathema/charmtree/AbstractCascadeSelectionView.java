@@ -53,7 +53,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   public void addCharmTypeSelector(String title, Identified[] types, ListCellRenderer renderer) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
-    typeComboBox = new ChangeableJComboBox<Identified>(types, false);
+    typeComboBox = new ChangeableJComboBox<>(types, false);
     typeComboBox.setSelectedObject(null);
     typeComboBox.setRenderer(renderer);
     panel.add(typeComboBox.getComponent(), BorderLayout.CENTER);
@@ -80,7 +80,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
                                     final ICharmGroupChangeListener selectionListener, Dimension preferredSize) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
-    groupComboBox = new ChangeableJComboBox<Identified>(null, false);
+    groupComboBox = new ChangeableJComboBox<>(null, false);
     groupComboBox.setSelectedObject(null);
     groupComboBox.setRenderer(renderer);
     groupComboBox.setPreferredSize(preferredSize);

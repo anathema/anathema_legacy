@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class CharmTreeIdentificateMap {
 
-  Map<Identified, ICharmTree> charmTreesById = new HashMap<Identified, ICharmTree>();
+  Map<Identified, ICharmTree> charmTreesById = new HashMap<>();
 
   public void put(Identified id, ICharmTree tree) {
     charmTreesById.put(id, tree);

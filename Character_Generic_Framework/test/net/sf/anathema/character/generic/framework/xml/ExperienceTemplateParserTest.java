@@ -61,7 +61,7 @@ public class ExperienceTemplateParserTest {
 
   @Before
   public void setUp() throws Exception {
-    templateRegistry = new DummyXmlTemplateRegistry<GenericExperiencePointCosts>();
+    templateRegistry = new DummyXmlTemplateRegistry<>();
     parser = new ExperienceTemplateParser(templateRegistry, MartialArtsLevel.Celestial);
   }
 

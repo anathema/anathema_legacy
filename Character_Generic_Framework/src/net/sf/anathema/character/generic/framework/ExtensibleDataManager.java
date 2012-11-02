@@ -1,14 +1,14 @@
 package net.sf.anathema.character.generic.framework;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.generic.data.IExtensibleDataSetRegistry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ExtensibleDataManager implements IExtensibleDataSetProvider, IExtensibleDataSetRegistry {
-  private List<IExtensibleDataSet> dataSets = new ArrayList<IExtensibleDataSet>();
+  private List<IExtensibleDataSet> dataSets = new ArrayList<>();
 
   @Override
   public void addDataSet(IExtensibleDataSet data) {

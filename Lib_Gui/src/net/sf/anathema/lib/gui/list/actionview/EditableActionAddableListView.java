@@ -20,7 +20,7 @@ public class EditableActionAddableListView<V> extends AbstractActionAddableListV
     this.table = new SmartTable(tableModel, new ITableColumnViewSettings[] { columnSetting });
     table.getTable().setTableHeader(null);
     table.getTable().setGridColor(new Color(0, 0, 0, 0));
-    this.factory = new ArrayFactory<V>(contentClass);
+    this.factory = new ArrayFactory<>(contentClass);
   }
 
   @Override

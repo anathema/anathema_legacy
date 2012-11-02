@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.framework.xml.trait.allocation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.xml.trait.GenericRestrictedTraitTemplate;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplate;
 import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
@@ -11,8 +8,10 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AllocationMinimumTraitTemplateParser
 {
@@ -34,7 +33,7 @@ public class AllocationMinimumTraitTemplateParser
     AllocationMinimumRestriction restriction = new AllocationMinimumRestriction(count, list);
     restriction.setIsFreebie(ElementUtilities.getBooleanAttribute(element, TAG_FREEBIE, false));
     list.add(restriction);
-    List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<GenericRestrictedTraitTemplate>();
+    List<GenericRestrictedTraitTemplate> traitTemplates = new ArrayList<>();
     for (Element traitElement : ElementUtilities.elements(element, TAG_TRAIT)) {
       GenericTraitTemplate template = parseTraitTemplate(traitElement);
       ITraitType type = traitTypeGroup.getById(ElementUtilities.getRequiredAttrib(traitElement, ATTRIB_ID));

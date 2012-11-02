@@ -22,7 +22,7 @@ public class ExperiencedOverviewPresenter implements Presenter {
   private final CategorizedOverview view;
   private final ICharacter character;
   private final IResources resources;
-  private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
+  private final List<IOverviewSubPresenter> presenters = new ArrayList<>();
 
   private ILabelledAlotmentView totalView;
 

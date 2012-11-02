@@ -26,7 +26,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
 
   @Before
   public void setUp() throws Exception {
-    DummyXmlTemplateRegistry<GenericBonusPointCosts> registry = new DummyXmlTemplateRegistry<GenericBonusPointCosts>();
+    DummyXmlTemplateRegistry<GenericBonusPointCosts> registry = new DummyXmlTemplateRegistry<>();
     this.parser = new BonusPointCostTemplateParser(registry, MartialArtsLevel.Celestial);
     originalTemplate = new GenericBonusPointCosts();
     registry.register(ORIGINAL_TEMPLATE_ID, originalTemplate);

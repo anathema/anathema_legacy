@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Mutations {
 
-  private final List<IMutation> mutations = new ArrayList<IMutation>();
+  private final List<IMutation> mutations = new ArrayList<>();
 
   public void add(String id, MutationType type) {
     mutations.add(new Mutation(id, type));

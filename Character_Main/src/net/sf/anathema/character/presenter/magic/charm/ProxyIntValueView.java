@@ -7,7 +7,7 @@ import org.jmock.example.announcer.Announcer;
 public class ProxyIntValueView implements IIntValueView {
   private final String labelText;
   private int maxValue;
-  private final Announcer<IIntValueChangedListener> valueListeners = new Announcer<IIntValueChangedListener>(
+  private final Announcer<IIntValueChangedListener> valueListeners = new Announcer<>(
           IIntValueChangedListener.class);
   private int value;
   private IIntValueView actualView;

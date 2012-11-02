@@ -62,7 +62,7 @@ public class AdditionalBonusPointPoolCalculator {
   }
 
   public int spend(List<IGenericSpecialty> allSpecialties, IAbilityPointCosts costs) {
-    List<IGenericSpecialty> allowedSpecialties = new ArrayList<IGenericSpecialty>();
+    List<IGenericSpecialty> allowedSpecialties = new ArrayList<>();
     for (IGenericSpecialty specialty : allSpecialties) {
       if (poolTemplate.isAllowedForTrait(collection, specialty.getBasicTrait())) {
         allowedSpecialties.add(specialty);

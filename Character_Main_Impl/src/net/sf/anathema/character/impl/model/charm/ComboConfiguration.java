@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ComboConfiguration implements IComboConfiguration {
 
-  private final List<ICombo> comboList = new ArrayList<ICombo>();
+  private final List<ICombo> comboList = new ArrayList<>();
   private final IComboArbitrator rules;
   private final ICombo editCombo = new Combo();
   private final Announcer<IComboConfigurationListener> control = Announcer.to(IComboConfigurationListener.class);
@@ -38,7 +38,7 @@ public class ComboConfiguration implements IComboConfiguration {
   }
 
   private void checkCombos(ICharm charm) {
-    List<ICombo> deletionList = new ArrayList<ICombo>();
+    List<ICombo> deletionList = new ArrayList<>();
     for (ICombo combo : comboList) {
       if (combo.contains(charm)) {
         combo.removeCharms(new ICharm[]{charm});

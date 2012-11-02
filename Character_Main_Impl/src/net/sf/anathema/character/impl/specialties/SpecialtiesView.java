@@ -46,7 +46,7 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
       String labelText,
       ListCellRenderer renderer,
       Icon addIcon) {
-    ButtonControlledComboEditView<ITraitReference> objectSelectionView = new ButtonControlledComboEditView<ITraitReference>(
+    ButtonControlledComboEditView<ITraitReference> objectSelectionView = new ButtonControlledComboEditView<>(
         addIcon,
         renderer);
     mainPanel.add(objectSelectionView.getComponent());

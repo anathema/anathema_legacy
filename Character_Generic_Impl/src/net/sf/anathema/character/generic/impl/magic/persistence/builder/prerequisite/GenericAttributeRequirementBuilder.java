@@ -17,7 +17,7 @@ public class GenericAttributeRequirementBuilder extends AttributeRequirementBuil
 
   @Override
   public IndirectCharmRequirement[] getCharmAttributeRequirements(Element prerequisitesElement) throws CharmException {
-    List<IndirectCharmRequirement> genericRequirements = new ArrayList<IndirectCharmRequirement>();
+    List<IndirectCharmRequirement> genericRequirements = new ArrayList<>();
     for (Element attributeRequirementElement : ElementUtilities.elements(
         prerequisitesElement,
         ICharmXMLConstants.TAG_GENERIC_CHARM_ATTRIBUTE_REQUIREMENT)) {

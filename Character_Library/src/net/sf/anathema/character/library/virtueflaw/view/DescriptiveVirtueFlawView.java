@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DescriptiveVirtueFlawView extends VirtueFlawView implements IDescriptiveVirtueFlawView {
-  private final List<ITextView> textViews = new ArrayList<ITextView>();
+  private final List<ITextView> textViews = new ArrayList<>();
   
   public DescriptiveVirtueFlawView(IntegerViewFactory factory)
   {

@@ -13,11 +13,11 @@ import java.util.List;
 
 public class TemplateRegistry implements ITemplateRegistry {
 
-  private final HashMap<ITemplateType, ICharacterTemplate> templatesByType = new HashMap<ITemplateType, ICharacterTemplate>();
+  private final HashMap<ITemplateType, ICharacterTemplate> templatesByType = new HashMap<>();
 
   @Override
   public ICharacterExternalsTemplate[] getAllSupportedTemplates(ICharacterType type) {
-    List<ICharacterTemplate> typeTemplates = new ArrayList<ICharacterTemplate>();
+    List<ICharacterTemplate> typeTemplates = new ArrayList<>();
     for (ITemplateType templateType : templatesByType.keySet()) {
       if (templateType.getCharacterType().equals(type)) {
         ICharacterTemplate template = getTemplate(templateType);

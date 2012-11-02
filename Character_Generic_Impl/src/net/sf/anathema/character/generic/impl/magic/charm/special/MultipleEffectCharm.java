@@ -37,7 +37,7 @@ public class MultipleEffectCharm implements IMultipleEffectCharm {
   @Override
   public SubEffects buildSubeffects(IBasicCharacterData data, IGenericTraitCollection traitCollection,
                                     ICharmLearnableArbitrator arbitrator, ICharm charm) {
-    List<ISubeffect> effectList = new ArrayList<ISubeffect>();
+    List<ISubeffect> effectList = new ArrayList<>();
     for (String id : effectIds) {
       effectList.add(new Subeffect(id, data, buildLearnCondition(arbitrator, charm)));
     }

@@ -12,8 +12,8 @@ public class LeafStructureOptimizer<T extends IStructureNode> {
         return Arrays.asList(layer);
       }
     }
-    List<T> leaves = new ArrayList<T>();
-    List<T> parents = new ArrayList<T>();
+    List<T> leaves = new ArrayList<>();
+    List<T> parents = new ArrayList<>();
     for (T node : layer) {
       if (node.isLeafNode()) {
         leaves.add(node);

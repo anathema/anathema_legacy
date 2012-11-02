@@ -18,7 +18,7 @@ public class InfernalYoziListContent extends FavorableTraitContent {
 
   @Override
   public List<? extends ITraitType> getMarkedTraitTypes() {
-    return new ArrayList<ITraitType>();
+    return new ArrayList<>();
   }
 
   @Override

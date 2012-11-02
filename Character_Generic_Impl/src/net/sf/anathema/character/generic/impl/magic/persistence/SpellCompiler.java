@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
+import net.sf.anathema.character.generic.data.IExtensibleDataSet;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.lib.resources.ResourceFile;
-import net.sf.anathema.character.generic.data.IExtensibleDataSet;
-import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
@@ -16,7 +16,7 @@ import java.util.List;
 @ExtensibleDataSetCompiler
 public class SpellCompiler implements IExtensibleDataSetCompiler {
 	private static final String Spell_File_Recognition_Pattern = "Spells.*\\.xml";
-	private final List<Document> spellFileList = new ArrayList<Document>();
+	private final List<Document> spellFileList = new ArrayList<>();
 	private final SpellBuilder builder = new SpellBuilder();
 	private final SAXReader reader = new SAXReader();
 	private final SpellCache cache = new SpellCache();

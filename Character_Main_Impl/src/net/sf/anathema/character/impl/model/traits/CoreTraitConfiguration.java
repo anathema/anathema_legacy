@@ -161,7 +161,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   @Override
   public IFavorableTrait[] getAllAbilities() {
-    List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
+    List<ITraitType> abilityTypes = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
       Collections.addAll(abilityTypes, group.getAllGroupTypes());
     }

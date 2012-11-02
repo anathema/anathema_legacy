@@ -13,7 +13,7 @@ import java.util.List;
 @Extension(id = "Menu.Extra")
 public class MenuExtensionPoint implements IAnathemaExtension, IMenuExtensionPoint {
 
-  private final List<IMenuItem> menuItems = new ArrayList<IMenuItem>();
+  private final List<IMenuItem> menuItems = new ArrayList<>();
 
   @Override
   public void initialize(IResources resources, IDataFileProvider dataFileProvider, AnnotationFinder finder,

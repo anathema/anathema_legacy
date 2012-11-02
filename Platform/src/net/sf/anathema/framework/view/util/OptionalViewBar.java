@@ -10,7 +10,7 @@ import java.util.List;
 
 public class OptionalViewBar {
   private JPanel buttonBar = new JPanel(new VerticalFlowLayout());
-  private List<String> registeredIds = new ArrayList<String>();
+  private List<String> registeredIds = new ArrayList<>();
 
   public void setView(String title, JXCollapsiblePane pane) {
     boolean isNewId = !registeredIds.contains(title);

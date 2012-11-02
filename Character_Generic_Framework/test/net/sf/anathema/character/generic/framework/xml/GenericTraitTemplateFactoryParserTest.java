@@ -56,8 +56,8 @@ public class GenericTraitTemplateFactoryParserTest extends TestCase {
 
   @Override
   protected void setUp() throws Exception {
-    templateFactoryRegistry = new DummyXmlTemplateRegistry<GenericTraitTemplateFactory>();
-    templatePoolRegistry = new DummyXmlTemplateRegistry<GenericTraitTemplatePool>();
+    templateFactoryRegistry = new DummyXmlTemplateRegistry<>();
+    templatePoolRegistry = new DummyXmlTemplateRegistry<>();
     parser = new GenericTraitTemplateFactoryParser(
         templateFactoryRegistry,
         templatePoolRegistry,

@@ -29,8 +29,8 @@ public class NameGeneratorView implements INameGeneratorView {
           new MigLayout(new LC().wrapAfter(2), new AC().grow(100, 1).fill(1), new AC().grow().fill()));
   private final ButtonGroup nameGeneratorTypeGroup = new ButtonGroup();
   private final AreaTextView resultTextView = new AreaTextView(5, 25);
-  private final Map<JRadioButton, Object> generatorsByButton = new HashMap<JRadioButton, Object>();
-  private final Map<Object, JRadioButton> buttonsByGenerator = new HashMap<Object, JRadioButton>();
+  private final Map<JRadioButton, Object> generatorsByButton = new HashMap<>();
+  private final Map<Object, JRadioButton> buttonsByGenerator = new HashMap<>();
   private final Announcer<IChangeListener> generatorListeners = Announcer.to(IChangeListener.class);
   private final JPanel generateButtonPanel = new JPanel(new GridLayout());
   private final ActionListener generatorButtonListener = new ActionListener() {

@@ -19,7 +19,7 @@ public class AttributeRequirementBuilder implements IAttributeRequirementBuilder
 
   @Override
   public IndirectCharmRequirement[] getCharmAttributeRequirements(Element prerequisitesElement) throws CharmException {
-    List<IndirectCharmRequirement> indirectRequirements = new ArrayList<IndirectCharmRequirement>();
+    List<IndirectCharmRequirement> indirectRequirements = new ArrayList<>();
     for (Element attributeRequirementElement : ElementUtilities.elements(
         prerequisitesElement,
         TAG_CHARM_ATTRIBUTE_REQUIREMENT)) {

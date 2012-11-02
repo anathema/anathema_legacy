@@ -39,7 +39,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
   private final ICharacterType characterType;
   private final MagicalMaterial defaultMaterial;
-  private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<IEquipmentItem>();
+  private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<>();
   private final Table<IEquipmentItem, IEquipmentStats, List<IEquipmentStatsOption>> optionsTable = HashBasedTable.create();
   private final IEquipmentCharacterDataProvider dataProvider;
   private final Announcer<IChangeListener> modelChangeControl = Announcer.to(IChangeListener.class);
@@ -131,7 +131,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   private List<IEquipmentStatsOption> getOptionsList(IEquipmentItem item, IEquipmentStats stats) {
     List<IEquipmentStatsOption> list = optionsTable.get(item, stats);
     if (list == null) {
-      list = new ArrayList<IEquipmentStatsOption>();
+      list = new ArrayList<>();
       optionsTable.put(item, stats, list);
     }
     return list;
@@ -171,7 +171,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     if (stats == null) {
       return new IEquipmentStatsOption[0];
     }
-    List<IEquipmentItem> itemList = new ArrayList<IEquipmentItem>();
+    List<IEquipmentItem> itemList = new ArrayList<>();
     itemList.addAll(naturalWeaponItems);
     Collections.addAll(itemList, getEquipmentItems());
     for (IEquipmentItem item : itemList) {
@@ -337,7 +337,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
           if (list == null) {
             return;
           }
-          List<IEquipmentStatsOption> optionsList = new ArrayList<IEquipmentStatsOption>(list);
+          List<IEquipmentStatsOption> optionsList = new ArrayList<>(list);
           for (IEquipmentStatsOption option : optionsList) {
             if (!characterStillHasCorrespondingSpecialty(option)) {
               disableStatOption(item, stats, option);

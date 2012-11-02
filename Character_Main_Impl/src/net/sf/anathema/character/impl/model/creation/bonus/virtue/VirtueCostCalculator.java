@@ -12,7 +12,7 @@ public class VirtueCostCalculator {
   private int dotsSpent;
   private final int maxVirtuePoints;
   private final IBonusPointCosts costs;
-  private final Map<ITraitType, IVirtueCost> costsByVirtue = new HashMap<ITraitType, IVirtueCost>();
+  private final Map<ITraitType, IVirtueCost> costsByVirtue = new HashMap<>();
   private final IDefaultTrait[] virtues;
 
   public VirtueCostCalculator(IDefaultTrait[] virtues, int maxVirtuePoints, IBonusPointCosts costs) {

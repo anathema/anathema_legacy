@@ -1,5 +1,10 @@
 package net.sf.anathema.development.properties;
 
+import com.l2fprod.common.swing.JDirectoryChooser;
+import net.sf.anathema.framework.presenter.action.SupportedLocale;
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,13 +18,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-
-import net.sf.anathema.framework.presenter.action.SupportedLocale;
-
-import com.l2fprod.common.swing.JDirectoryChooser;
-
 public class PropertiesMatcher {
 
   public static void main(String[] args) throws IOException {
@@ -31,7 +29,7 @@ public class PropertiesMatcher {
       return;
     }
     File superFolder = chooser.getSelectedFile();
-    List<File> defaultPropertiesFiles = new ArrayList<File>();
+    List<File> defaultPropertiesFiles = new ArrayList<>();
     for (File file : superFolder.listFiles()) {
       if (file.isDirectory()) {
         File resourceFolder = new File(file, "/resources/language");

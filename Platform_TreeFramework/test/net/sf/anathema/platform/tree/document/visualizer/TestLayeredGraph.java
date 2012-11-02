@@ -9,7 +9,7 @@ import java.util.List;
 
 class TestLayeredGraph implements LayeredGraph {
 
-  public final MultiEntryMap<Integer, ISimpleNode> nodesByLayer = new MultiEntryMap<Integer, ISimpleNode>();
+  public final MultiEntryMap<Integer, ISimpleNode> nodesByLayer = new MultiEntryMap<>();
 
   @Override
   public ISimpleNode[] getNodesByLayer(int layer) {

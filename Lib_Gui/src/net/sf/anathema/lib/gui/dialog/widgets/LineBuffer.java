@@ -22,7 +22,7 @@ public class LineBuffer {
 
   }
 
-  private final List<LinePart> buffer = new ArrayList<LinePart>();
+  private final List<LinePart> buffer = new ArrayList<>();
   private final FontMetrics metrics;
   private final int layoutWidth;
   private final IBlockRenderingHandler blockRenderer;

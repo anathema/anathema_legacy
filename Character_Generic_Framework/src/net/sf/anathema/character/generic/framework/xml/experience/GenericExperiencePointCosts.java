@@ -32,8 +32,8 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   private int spellCost = 0;
   private MartialArtsLevel standardMartialArtsLevel = MartialArtsLevel.Terrestrial;
   private int backgroundCosts = 0;
-  private Map<String, Integer> keywordGeneralCosts = new HashMap<String, Integer>();
-  private Map<String, Integer> keywordFavoredCosts = new HashMap<String, Integer>();
+  private Map<String, Integer> keywordGeneralCosts = new HashMap<>();
+  private Map<String, Integer> keywordFavoredCosts = new HashMap<>();
 
   @Override
   public ICurrentRatingCosts getAbilityCosts(boolean favored) {

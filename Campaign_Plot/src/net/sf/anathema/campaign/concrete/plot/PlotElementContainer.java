@@ -15,7 +15,7 @@ import java.util.List;
 public class PlotElementContainer extends Identificate implements IPlotElementContainer {
 
   private final IPlotTimeUnit unit;
-  private final List<IPlotElement> children = new ArrayList<IPlotElement>();
+  private final List<IPlotElement> children = new ArrayList<>();
   private final Announcer<IPlotElementContainerListener> listeners = Announcer.to(IPlotElementContainerListener.class);
   private final PlotIDProvider provider;
 

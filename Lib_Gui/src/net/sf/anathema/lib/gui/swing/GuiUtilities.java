@@ -190,7 +190,7 @@ public class GuiUtilities {
    * @return die Komponenten, die vorher schon enabled / disabled waren
    */
   private static Set<Container> setContainerEnabled(Container c, boolean enable, Set<Container> components) {
-    HashSet<Container> enabledComps = new HashSet<Container>();
+    HashSet<Container> enabledComps = new HashSet<>();
 
     if (!components.contains(c)) {
       if (c.isEnabled() == enable) {
@@ -293,16 +293,14 @@ public class GuiUtilities {
     } else {
       try {
         SwingUtilities.invokeAndWait(runner);
-      } catch (InterruptedException e) {
-        throw new RuntimeException(e);
-      } catch (InvocationTargetException e) {
+      } catch (InterruptedException | InvocationTargetException e) {
         throw new RuntimeException(e);
       }
     }
   }
 
   public static Dimension calculateComboBoxSize(Object[] objects, ListCellRenderer renderer) {
-    ChangeableJComboBox<Object> box = new ChangeableJComboBox<Object>(objects, false);
+    ChangeableJComboBox<Object> box = new ChangeableJComboBox<>(objects, false);
     box.setRenderer(renderer);
     return box.getPreferredSize();
   }

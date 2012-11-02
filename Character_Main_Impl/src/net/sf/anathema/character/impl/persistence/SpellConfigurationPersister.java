@@ -1,18 +1,17 @@
 package net.sf.anathema.character.impl.persistence;
 
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPELL;
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPELLS;
+import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.model.ISpellConfiguration;
+import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Element;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.lib.xml.ElementUtilities;
-
-import org.dom4j.Element;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPELL;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPELLS;
 
 public class SpellConfigurationPersister {
 
@@ -30,8 +29,8 @@ public class SpellConfigurationPersister {
     if (spellsElement == null) {
       return;
     }
-    List<ISpell> creationSpellList = new ArrayList<ISpell>();
-    List<ISpell> experienceSpellList = new ArrayList<ISpell>();
+    List<ISpell> creationSpellList = new ArrayList<>();
+    List<ISpell> experienceSpellList = new ArrayList<>();
     for (Object spellObjectElement : spellsElement.elements(TAG_SPELL)) {
       Element spellElement = (Element) spellObjectElement;
       boolean experienceLearned = ElementUtilities.getBooleanAttribute(spellElement, ATTRIB_EXPERIENCE_LEARNED, false);

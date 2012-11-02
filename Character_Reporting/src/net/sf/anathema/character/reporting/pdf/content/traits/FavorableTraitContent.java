@@ -35,7 +35,7 @@ public abstract class FavorableTraitContent extends AbstractSubBoxContent {
   }
 
   public IMagicStats[] getExcellencies() {
-    List<IMagicStats> excellencies = new ArrayList<IMagicStats>();
+    List<IMagicStats> excellencies = new ArrayList<>();
     if (shouldShowExcellencies()) {
       for (IMagicStats stats : GenericCharmUtilities.getGenericCharmStats(character)) {
         String genericId = stats.getName().getId();

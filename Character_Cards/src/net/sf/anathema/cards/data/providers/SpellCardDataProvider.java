@@ -20,7 +20,7 @@ public class SpellCardDataProvider extends AbstractMagicCardDataProvider {
 
 	@Override
 	public ICardData[] getCards(ICharacter character, ICardReportResourceProvider fontProvider) {
-		List<ICardData> cards = new ArrayList<ICardData>();
+		List<ICardData> cards = new ArrayList<>();
 		for (ISpell spell : getCurrentSpells(character)) {
 			cards.add(new SpellCardData(spell, createSpellStats(spell),
 					getMagicDescription(spell),

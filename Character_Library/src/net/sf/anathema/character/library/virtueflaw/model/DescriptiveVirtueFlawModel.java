@@ -36,7 +36,7 @@ public class DescriptiveVirtueFlawModel extends VirtueFlawModel implements IDesc
   @Override
   public void addChangeListener(IChangeListener listener) {
     super.addChangeListener(listener);
-    GlobalChangeAdapter<String> changeAdapter = new GlobalChangeAdapter<String>(listener);
+    GlobalChangeAdapter<String> changeAdapter = new GlobalChangeAdapter<>(listener);
     virtueFlaw.getDescription().addTextChangedListener(changeAdapter);
     virtueFlaw.getLimitBreak().addTextChangedListener(changeAdapter);
   }
@@ -48,7 +48,7 @@ public class DescriptiveVirtueFlawModel extends VirtueFlawModel implements IDesc
 
   @Override
   public ITraitType[] getFlawVirtueTypes() {
-    List<ITraitType> flawVirtues = new ArrayList<ITraitType>();
+    List<ITraitType> flawVirtues = new ArrayList<>();
     for (VirtueType virtueType : VirtueType.values()) {
       if (traitCollection.getTrait(virtueType).getCurrentValue() > 2) {
         flawVirtues.add(virtueType);

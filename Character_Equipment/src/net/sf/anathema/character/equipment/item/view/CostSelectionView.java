@@ -15,7 +15,7 @@ public class CostSelectionView implements AdditiveView {
 
   public CostSelectionView(String labelText, String[] backgrounds, IntegerViewFactory factory) {
     this.label = new JLabel(labelText);
-    this.selection = new SelectableIntValueView<String>(factory, 0, 6);
+    this.selection = new SelectableIntValueView<>(factory, 0, 6);
     selection.setSelectableValues(backgrounds);
   }
 

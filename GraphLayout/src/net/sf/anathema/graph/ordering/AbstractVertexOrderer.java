@@ -1,11 +1,5 @@
 package net.sf.anathema.graph.ordering;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import net.sf.anathema.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.graph.nodes.ISimpleNode;
 import net.sf.anathema.graph.nodes.WeightedNode;
@@ -14,6 +8,12 @@ import net.sf.anathema.graph.util.BarycenterCalculator;
 import net.sf.anathema.graph.util.IncidentMatrixUtilities;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.lang.IntegerUtilities;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractVertexOrderer implements IVertexOrderer {
 
@@ -91,7 +91,7 @@ public abstract class AbstractVertexOrderer implements IVertexOrderer {
   }
 
   protected MultiEntryMap<Double, Integer> getWeightSeparation(WeightedNode[] weightedLayerNodes) {
-    MultiEntryMap<Double, Integer> nodeIndicesByWeight = new MultiEntryMap<Double, Integer>();
+    MultiEntryMap<Double, Integer> nodeIndicesByWeight = new MultiEntryMap<>();
     for (int index = 0; index < weightedLayerNodes.length; index++) {
       Double weight = weightedLayerNodes[index].getWeight();
       if (weight != null) {
@@ -109,7 +109,7 @@ public abstract class AbstractVertexOrderer implements IVertexOrderer {
       return;
     }
     int[] indexArray = new int[originalIndices.length];
-    Map<Integer, WeightedNode> nodesByOriginalIndex = new HashMap<Integer, WeightedNode>();
+    Map<Integer, WeightedNode> nodesByOriginalIndex = new HashMap<>();
     for (int indexIndex = 0; indexIndex < originalIndices.length; indexIndex++) {
       int originalIndex = originalIndices[indexIndex];
       indexArray[indexIndex] = originalIndex;

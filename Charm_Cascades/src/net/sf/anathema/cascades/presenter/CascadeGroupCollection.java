@@ -29,7 +29,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
 
   @Override
   public ICharmGroup[] getCharmGroups() {
-    List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
+    List<ICharmGroup> allCharmGroups = new ArrayList<>();
     initCharacterTypeCharms(allCharmGroups);
     initMartialArtsCharms(allCharmGroups);
     return allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]);

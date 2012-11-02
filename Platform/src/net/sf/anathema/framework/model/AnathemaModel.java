@@ -4,9 +4,9 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
+import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.messaging.Messaging;
-import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -24,11 +24,11 @@ import java.util.List;
 
 public class AnathemaModel implements IAnathemaModel {
 
-  private final IRegistry<String, IAnathemaExtension> extensionRegistry = new Registry<String, IAnathemaExtension>();
-  private final IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = new Registry<IItemType, IRepositoryItemPersister>();
+  private final IRegistry<String, IAnathemaExtension> extensionRegistry = new Registry<>();
+  private final IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = new Registry<>();
   private final IItemManagementModel itemManagment = new ItemManagmentModel();
   private final IReportRegistry reportRegistry = new ReportRegistry();
-  private final IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = new Registry<IItemType, IItemViewFactory>();
+  private final IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = new Registry<>();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final Repository repository;
   private final Messaging messaging;

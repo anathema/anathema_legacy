@@ -32,7 +32,7 @@ import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
 public class EquipmentItem implements IEquipmentItem {
 
-  private final Set<IEquipmentStats> printedStats = new HashSet<IEquipmentStats>();
+  private final Set<IEquipmentStats> printedStats = new HashSet<>();
   private final Announcer<IChangeListener> changeControl = Announcer.to(IChangeListener.class);
   private final IEquipmentTemplate template;
   private final MagicalMaterial material;
@@ -88,7 +88,7 @@ public class EquipmentItem implements IEquipmentItem {
 
   private IEquipmentStats[] getViews() {
     IEquipmentStats[] statsArray = template.getStats();
-    List<IEquipmentStats> views = new ArrayList<IEquipmentStats>();
+    List<IEquipmentStats> views = new ArrayList<>();
     for (IEquipmentStats stats : statsArray) {
       if (stats instanceof IWeaponStats) {
         Collections.addAll(views, ((IWeaponStats) stats).getViews());

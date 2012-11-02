@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommonSpecialCharmList implements SpecialCharmList {
-  private final List<ISpecialNodeView> specialCharmViews = new ArrayList<ISpecialNodeView>();
+  private final List<ISpecialNodeView> specialCharmViews = new ArrayList<>();
   private final ISpecialCharmViewContainer container;
   private final SpecialCharmViewBuilder builder;
   private Predicate<String> visibilityPredicate = Predicates.alwaysFalse();

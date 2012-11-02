@@ -12,9 +12,9 @@ import java.util.Set;
 
 public class HorizontalMetaNode extends AbstractVisualizableNode {
 
-  private final List<ISimpleNode> contentNodes = new ArrayList<ISimpleNode>();
+  private final List<ISimpleNode> contentNodes = new ArrayList<>();
   private final Dimension gapDimension;
-  private final Map<ISimpleNode, IVisualizableNode> innerVisualizableNodesByContent = new HashMap<ISimpleNode, IVisualizableNode>();
+  private final Map<ISimpleNode, IVisualizableNode> innerVisualizableNodesByContent = new HashMap<>();
 
   public HorizontalMetaNode(Map<ISimpleNode, IVisualizableNode> map, Dimension nodeDimension,
                             Dimension gapDimension) {
@@ -29,7 +29,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
 
   @Override
   public IVisualizableNode[] getChildren() {
-    Set<IVisualizableNode> children = new LinkedHashSet<IVisualizableNode>();
+    Set<IVisualizableNode> children = new LinkedHashSet<>();
     for (ISimpleNode node : contentNodes) {
       for (ISimpleNode child : node.getChildren()) {
         children.add(getContentNodeMap().get(child));
@@ -40,7 +40,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
 
   @Override
   public IVisualizableNode[] getParents() {
-    Set<IVisualizableNode> parents = new LinkedHashSet<IVisualizableNode>();
+    Set<IVisualizableNode> parents = new LinkedHashSet<>();
     for (ISimpleNode node : contentNodes) {
       for (ISimpleNode parent : node.getParents()) {
         parents.add(getContentNodeMap().get(parent));
@@ -86,7 +86,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
   }
 
   public IVisualizableNode[] getInnerNodes() {
-    List<IVisualizableNode> innerVisualizableNodes = new ArrayList<IVisualizableNode>();
+    List<IVisualizableNode> innerVisualizableNodes = new ArrayList<>();
     for (ISimpleNode node : contentNodes) {
       innerVisualizableNodes.add(innerVisualizableNodesByContent.get(node));
     }

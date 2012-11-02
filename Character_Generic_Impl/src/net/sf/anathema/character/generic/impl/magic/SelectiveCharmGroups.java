@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class SelectiveCharmGroups implements Iterable<SelectiveCharmGroup> {
-  private final List<SelectiveCharmGroup> selectiveCharmGroups = new ArrayList<SelectiveCharmGroup>();
+  private final List<SelectiveCharmGroup> selectiveCharmGroups = new ArrayList<>();
 
   public void add(SelectiveCharmGroup selectiveCharmGroup) {
     selectiveCharmGroups.add(selectiveCharmGroup);
@@ -23,7 +23,7 @@ public class SelectiveCharmGroups implements Iterable<SelectiveCharmGroup> {
   }
 
   public List<SelectiveCharmGroup> getCombinedGroups() {
-    List<SelectiveCharmGroup> combinedGroups = new ArrayList<SelectiveCharmGroup>();
+    List<SelectiveCharmGroup> combinedGroups = new ArrayList<>();
     for (SelectiveCharmGroup selectiveCharmGroup : selectiveCharmGroups) {
       if (selectiveCharmGroup.getLabel() != null) {
         combinedGroups.add(selectiveCharmGroup);
@@ -33,7 +33,7 @@ public class SelectiveCharmGroups implements Iterable<SelectiveCharmGroup> {
   }
 
   public List<SelectiveCharmGroup> getOpenGroups() {
-    List<SelectiveCharmGroup> openGroups = new ArrayList<SelectiveCharmGroup>();
+    List<SelectiveCharmGroup> openGroups = new ArrayList<>();
     for (SelectiveCharmGroup selectiveCharmGroup : selectiveCharmGroups) {
       if (selectiveCharmGroup.getLabel() == null) {
         openGroups.add(selectiveCharmGroup);

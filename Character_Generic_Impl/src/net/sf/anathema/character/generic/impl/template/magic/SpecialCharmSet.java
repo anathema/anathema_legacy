@@ -1,14 +1,14 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-
 public class SpecialCharmSet {
 
-  private final List<ISpecialCharm> list = new ArrayList<ISpecialCharm>();
+  private final List<ISpecialCharm> list = new ArrayList<>();
 
   public void add(ISpecialCharm... identificates) {
     for (ISpecialCharm identificate : identificates) {
@@ -17,7 +17,7 @@ public class SpecialCharmSet {
   }
 
   private void addCharm(ISpecialCharm identificate) {
-    for (ISpecialCharm existing : new ArrayList<ISpecialCharm>(list)) {
+    for (ISpecialCharm existing : new ArrayList<>(list)) {
       if (existing.getCharmId().equals(identificate.getCharmId())) {
         list.remove(existing);
       }

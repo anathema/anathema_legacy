@@ -67,7 +67,7 @@ public class BeastformNaturalSoak extends AbstractCombatStats implements IArmour
   @SuppressWarnings("unchecked")
   private int doMutations(HealthType type, int staminaValue) {
     IQualityModel<IMutation> mutationModel = (IQualityModel<IMutation>) this.model;
-    final List<SoakProvidingMutation> mutationList = new ArrayList<SoakProvidingMutation>();
+    final List<SoakProvidingMutation> mutationList = new ArrayList<>();
     for (IQualitySelection<IMutation> selection : mutationModel.getSelectedQualities()) {
       selection.getQuality().accept(new MutationVisitorAdapter() {
         @Override

@@ -39,13 +39,13 @@ public class DummyCharm extends Identificate implements ICharm {
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
   private IGenericTrait[] prerequisites;
   private Set<ICharm> parentCharms;
-  private Set<ICharm> learnFollowUpCharms = new HashSet<ICharm>();
-  private List<IndirectCharmRequirement> requirements = new ArrayList<IndirectCharmRequirement>();
+  private Set<ICharm> learnFollowUpCharms = new HashSet<>();
+  private List<IndirectCharmRequirement> requirements = new ArrayList<>();
   private ICharacterType characterType;
   private String groupId;
   private CostList temporaryCost;
   private CharmTypeModel model = new CharmTypeModel();
-  private List<ICharmAttribute> attributes = new ArrayList<ICharmAttribute>();
+  private List<ICharmAttribute> attributes = new ArrayList<>();
 
   public void setGeneric(boolean generic) {
     isGeneric = generic;
@@ -76,7 +76,7 @@ public class DummyCharm extends Identificate implements ICharm {
 
   public DummyCharm(String id, ICharm[] parents, IGenericTrait[] prerequisites) {
     super(id);
-    this.parentCharms = new LinkedHashSet<ICharm>();
+    this.parentCharms = new LinkedHashSet<>();
     Collections.addAll(parentCharms, parents);
     this.prerequisites = prerequisites;
   }
@@ -116,7 +116,7 @@ public class DummyCharm extends Identificate implements ICharm {
 
   @Override
   public List<String> getParentSubeffects() {
-    return new ArrayList<String>();
+    return new ArrayList<>();
   }
 
   @Override
@@ -176,7 +176,7 @@ public class DummyCharm extends Identificate implements ICharm {
 
   @Override
   public Set<IndirectCharmRequirement> getIndirectRequirements() {
-    HashSet<IndirectCharmRequirement> charmRequirements = new HashSet<IndirectCharmRequirement>();
+    HashSet<IndirectCharmRequirement> charmRequirements = new HashSet<>();
     Collections.addAll(charmRequirements, getAttributeRequirements());
     return charmRequirements;
   }
@@ -212,7 +212,7 @@ public class DummyCharm extends Identificate implements ICharm {
 
   @Override
   public Set<ICharm> getMergedCharms() {
-    return new HashSet<ICharm>();
+    return new HashSet<>();
   }
 
   @Override

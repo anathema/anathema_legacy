@@ -48,7 +48,7 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
 
   @Override
   protected IRegistry<IItemType, IWizardFactory> getFollowUpWizardFactoryRegistry() {
-    Registry<IItemType, IWizardFactory> registry = new Registry<IItemType, IWizardFactory>();
+    Registry<IItemType, IWizardFactory> registry = new Registry<>();
     IItemType[] types = collectItemTypes(getAnathemaModel());
     IPrintNameFileAccess printNameFileAccess = getRepository().getPrintNameFileAccess();
     for (IItemType type : types) {

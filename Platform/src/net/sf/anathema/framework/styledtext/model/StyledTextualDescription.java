@@ -14,7 +14,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
 
   private final Announcer<IStyledTextChangeListener> textListeners = Announcer.to(IStyledTextChangeListener.class);
   private ITextPart[] textParts = new ITextPart[0];
-  private final Map<ObjectValueListener<String>, IStyledTextChangeListener> listenerMap = new HashMap<ObjectValueListener<String>, IStyledTextChangeListener>();
+  private final Map<ObjectValueListener<String>, IStyledTextChangeListener> listenerMap = new HashMap<>();
 
   @Override
   public void setText(ITextPart[] textParts) {

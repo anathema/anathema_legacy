@@ -1,9 +1,5 @@
 package net.sf.anathema.character.impl.model.creation.bonus.ability;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
@@ -19,10 +15,14 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfigura
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator implements IAbilityCostCalculator {
 
   private static IFavorableTrait[] getAllAbilities(ICoreTraitConfiguration traitConfiguration) {
-    List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
+    List<ITraitType> abilityTypes = new ArrayList<>();
     for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAbilityTypeGroups()) {
       Collections.addAll(abilityTypes, group.getAllGroupTypes());
     }
@@ -70,7 +70,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   }
 
   private IGenericSpecialty[] createGenericSpecialties() {
-    List<IGenericSpecialty> specialties = new ArrayList<IGenericSpecialty>();
+    List<IGenericSpecialty> specialties = new ArrayList<>();
     for (IFavorableTrait ability : getTraits()) {
       ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
       for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(ability.getType()).getSubTraits()) {

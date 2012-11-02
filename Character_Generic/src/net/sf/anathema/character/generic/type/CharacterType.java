@@ -106,7 +106,7 @@ public enum CharacterType implements ICharacterType {
   }
 
   public static ICharacterType[] getAllExaltTypes() {
-    List<ICharacterType> types = new ArrayList<ICharacterType>();
+    List<ICharacterType> types = new ArrayList<>();
     Collections.addAll(types, values());
     types.remove(MORTAL);
     types.remove(GHOST);

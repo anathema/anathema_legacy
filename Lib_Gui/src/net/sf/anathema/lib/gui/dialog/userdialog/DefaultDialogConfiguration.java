@@ -8,11 +8,11 @@ import net.sf.anathema.lib.gui.dialog.userdialog.page.IDialogPage;
 
 public class DefaultDialogConfiguration<P extends IDialogPage> extends AbstractGenericDialogConfiguration implements IDialogConfiguration<P> {
   public static <P extends IDialogPage> DefaultDialogConfiguration createWithOkAndCancel(P dialogPage) {
-    return new DefaultDialogConfiguration<P>(dialogPage, DialogButtonConfigurationFactory.createOkCancel());
+    return new DefaultDialogConfiguration<>(dialogPage, DialogButtonConfigurationFactory.createOkCancel());
   }
 
   public static <P extends IDialogPage> DefaultDialogConfiguration createWithOkOnly(P dialogPage) {
-    return new DefaultDialogConfiguration<P>(dialogPage, DialogButtonConfigurationFactory.createOkOnly());
+    return new DefaultDialogConfiguration<>(dialogPage, DialogButtonConfigurationFactory.createOkOnly());
   }
 
   private final P dialogPage;

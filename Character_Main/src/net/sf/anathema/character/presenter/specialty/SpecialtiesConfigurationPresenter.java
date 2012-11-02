@@ -28,7 +28,7 @@ import java.util.Comparator;
 
 public class SpecialtiesConfigurationPresenter implements Presenter {
 
-  private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<ISubTrait, ISpecialtyView>();
+  private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<>();
   private final TraitInternationalizer i18ner;
   private final Comparator<ITraitReference> comparator;
 

@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SpecialCharmManager implements ISpecialCharmManager {
-  private final Map<ICharm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<ICharm, ISpecialCharmConfiguration>();
+  private final Map<ICharm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<>();
   private final IHealthConfiguration health;
   private final ICharacterModelContext context;
   private final IExtendedCharmLearnableArbitrator arbitrator;

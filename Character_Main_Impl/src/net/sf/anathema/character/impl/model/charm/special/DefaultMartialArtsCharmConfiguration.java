@@ -39,7 +39,7 @@ public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmCon
 
   @Override
   public String[] getCompleteCelestialMartialArtsGroups() {
-    Set<String> completedGroups = new HashSet<String>();
+    Set<String> completedGroups = new HashSet<>();
     for (ILearningCharmGroup group : getMartialArtsGroups()) {
       ICharm martialArtsCharm = group.getCoreCharms()[0];
       if (isCelestialStyle(martialArtsCharm) && isCompleted(group)) {
@@ -55,7 +55,7 @@ public class DefaultMartialArtsCharmConfiguration implements MartialArtsCharmCon
   }
 
   private String[] getIncompleteCelestialMartialArtsGroups(ILearningCharmGroup[] groups) {
-    Set<String> uncompletedGroups = new HashSet<String>();
+    Set<String> uncompletedGroups = new HashSet<>();
     for (ILearningCharmGroup group : groups) {
       ICharm martialArtsCharm = group.getCoreCharms()[0];
       if (!isCelestialStyle(martialArtsCharm) || isCompleted(group)) {

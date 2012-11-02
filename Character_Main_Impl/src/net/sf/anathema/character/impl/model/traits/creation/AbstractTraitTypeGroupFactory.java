@@ -21,9 +21,9 @@ public abstract class AbstractTraitTypeGroupFactory {
   public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(
       ICasteCollection casteCollection,
       IGroupedTraitType[] traitTypes) {
-    List<String> groupIds = new ArrayList<String>();
-    MultiEntryMap<String, ITraitType> traitTypesByGroupId = new MultiEntryMap<String, ITraitType>();
-    Map<String, String> casteIdByGroupId = new HashMap<String, String>();
+    List<String> groupIds = new ArrayList<>();
+    MultiEntryMap<String, ITraitType> traitTypesByGroupId = new MultiEntryMap<>();
+    Map<String, String> casteIdByGroupId = new HashMap<>();
     for (IGroupedTraitType type : traitTypes) {
       String groupId = type.getGroupId();
       casteIdByGroupId.put(type.getGroupId(), type.getGroupCasteId());

@@ -26,7 +26,7 @@ public class DialogPagePanel implements IMessageSetable {
   private final JPanel contentPanel;
   private final IDialogHeaderPanelConfiguration headerPanelConfiguration;
   private final DialogMessageModel messageModel = new DialogMessageModel();
-  private final ObjectModel<String> descriptionModel = new ObjectModel<String>();
+  private final ObjectModel<String> descriptionModel = new ObjectModel<>();
   private JComponent content;
 
   public DialogPagePanel(IDialogHeaderPanelConfiguration headerPanelConfiguration) {

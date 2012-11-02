@@ -47,9 +47,7 @@ public class ShowCascadesAction extends SmartAction {
       IItem cascadeItem = new AnathemaNullDataItem(itemType, new Identificate("CharmCascades")); //$NON-NLS-1$
       cascadeItem.setPrintName(resources.getString("ItemType.CharmCascades.PrintName")); //$NON-NLS-1$
       anathemaModel.getItemManagement().addItem(cascadeItem);
-    } catch (AnathemaException e) {
-      handleExceptionWithMessage(parentComponent, e);
-    } catch (IllegalStateException e) {
+    } catch (AnathemaException | IllegalStateException e) {
       handleExceptionWithMessage(parentComponent, e);
     } catch (Throwable e) {
       MessageUtilities.indicateMessage(getClass(), parentComponent,

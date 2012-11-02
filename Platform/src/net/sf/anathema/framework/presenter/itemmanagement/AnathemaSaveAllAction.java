@@ -17,8 +17,8 @@ import javax.swing.Action;
 import javax.swing.KeyStroke;
 import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.Event;
 import java.awt.Toolkit;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
@@ -84,7 +84,7 @@ public class AnathemaSaveAllAction extends SmartAction {
   private AnathemaSaveAllAction(IAnathemaModel model, IResources resources) {
     this.model = model;
     SaveAllEnabledListener listener = new SaveAllEnabledListener();
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Event.SHIFT_MASK
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_MASK
         | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     model.getItemManagement().addListener(listener);
     listener.itemAdded(null);
@@ -102,15 +102,10 @@ public class AnathemaSaveAllAction extends SmartAction {
           persister.save(writeAccess, item);
           item.setClean();
         }
-        catch (IOException e) {
+        catch (IOException | RepositoryException e) {
           MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
               resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
-        }
-        catch (RepositoryException e) {
-          MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-              resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
-        }
-        finally {
+        } finally {
           parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         }
       }

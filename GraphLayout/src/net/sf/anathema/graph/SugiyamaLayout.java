@@ -30,7 +30,7 @@ public class SugiyamaLayout {
     int deepestLayer = layerer.layerGraph(acyclicGraph);
     ISimpleNode[] hierarchicalGraph = hierarchyBuilder.removeLongEdges(acyclicGraph);
     IProperHierarchicalGraph[] separatedGraphs = subtreeSeparator.separateSubtrees(hierarchicalGraph, deepestLayer);
-    final List<IProperHierarchicalGraph> orderedGraphs = new ArrayList<IProperHierarchicalGraph>(separatedGraphs.length);
+    final List<IProperHierarchicalGraph> orderedGraphs = new ArrayList<>(separatedGraphs.length);
     for (final IProperHierarchicalGraph graph : separatedGraphs) {
       graph.getType().accept(new IGraphTypeVisitor() {
         @Override
@@ -59,14 +59,14 @@ public class SugiyamaLayout {
   }
 
   private void optimizeLeavePositioning(List<IProperHierarchicalGraph> orderedGraphs) {
-    LeafStructureOptimizer<ISimpleNode> leafStructureOptimizer = new LeafStructureOptimizer<ISimpleNode>();
+    LeafStructureOptimizer<ISimpleNode> leafStructureOptimizer = new LeafStructureOptimizer<>();
     for (IProperHierarchicalGraph graph : orderedGraphs) {
       for (int layerIndex = 1; layerIndex < graph.getDeepestLayer(); layerIndex++) {
         if (graph.containsRoot(layerIndex + 1)) {
           return;
         }
         ISimpleNode[] childrenLayer = graph.getNodesByLayer(layerIndex + 1);
-        Set<ISimpleNode> newChildrenOrder = new LinkedHashSet<ISimpleNode>();
+        Set<ISimpleNode> newChildrenOrder = new LinkedHashSet<>();
         for (ISimpleNode parentNode : graph.getNodesByLayer(layerIndex)) {
           ISimpleNode[] nodeChildren = parentNode.getChildren(childrenLayer);
           List<ISimpleNode> optimizedNodes = leafStructureOptimizer.optimize(nodeChildren);
@@ -97,7 +97,7 @@ public class SugiyamaLayout {
   }
 
   private List<IVertexOrdererFactory> populateVertexOrdererFactoryList() {
-    List<IVertexOrdererFactory> list = new ArrayList<IVertexOrdererFactory>();
+    List<IVertexOrdererFactory> list = new ArrayList<>();
     list.add(new IVertexOrdererFactory() {
       @Override
       public IVertexOrderer createVertexOrderer(IProperHierarchicalGraph graph) {

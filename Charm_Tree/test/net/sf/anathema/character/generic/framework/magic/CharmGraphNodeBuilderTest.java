@@ -20,7 +20,7 @@ public class CharmGraphNodeBuilderTest
     String parentName = "ExternalParent";//$NON-NLS-1$
     DummyCharm externalParent = new DummyCharm(parentName);
     DummyCharm child = new DummyCharm("Child", new ICharm[] { externalParent }); //$NON-NLS-1$
-    List<ICharm> list = new ArrayList<ICharm>();
+    List<ICharm> list = new ArrayList<>();
     list.add(child);
     Collection<IIdentifiedRegularNode> nodes = CharmGraphNodeBuilder.createNodesFromCharms(list);
     for (IIdentifiedRegularNode node : nodes) {
@@ -43,7 +43,7 @@ public class CharmGraphNodeBuilderTest
     DummyCharm externalParent = new DummyCharm(parentName);
     DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[] { externalParent });
     DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[] { externalParent });
-    List<ICharm> list = new ArrayList<ICharm>();
+    List<ICharm> list = new ArrayList<>();
     list.add(firstChild);
     list.add(secondChild);
     Collection<IIdentifiedRegularNode> nodes = CharmGraphNodeBuilder.createNodesFromCharms(list);

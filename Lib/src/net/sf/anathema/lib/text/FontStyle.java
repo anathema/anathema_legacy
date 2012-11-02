@@ -18,7 +18,7 @@ public enum FontStyle {
 
   private FontStyle(String name, FontStyleProperty... properties) {
     this.name = name;
-    this.properties = new HashSet<FontStyleProperty>(Arrays.asList(properties));
+    this.properties = new HashSet<>(Arrays.asList(properties));
   }
 
   public boolean isItalic() {
@@ -47,7 +47,7 @@ public enum FontStyle {
   }
 
   public static FontStyle getStyle(boolean isBold, boolean isItalic) {
-    Set<FontStyleProperty> properties = new HashSet<FontStyleProperty>();
+    Set<FontStyleProperty> properties = new HashSet<>();
     if (isBold) {
       properties.add(FontStyleProperty.BOLD);
     }

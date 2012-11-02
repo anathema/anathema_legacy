@@ -17,7 +17,7 @@ public class CharmsOnlyEncoderFactory extends AbstractEncoderFactory{
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new ExtendedMagicEncoder<CharmsOnlyContent>(resources, CharmsOnlyContent.class, false, "Charms");
+    return new ExtendedMagicEncoder<>(resources, CharmsOnlyContent.class, false, "Charms");
   }
 
   @Override

@@ -29,7 +29,7 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, Additive
 
   public ObjectSelectionView(String labelString, ListCellRenderer renderer, boolean editable, V... objects) {
     this.label = new JLabel(labelString);
-    this.comboBox = new ChangeableJComboBox<V>(objects, editable);
+    this.comboBox = new ChangeableJComboBox<>(objects, editable);
     setCellRenderer(renderer);
     setSelectedObject(null);
   }

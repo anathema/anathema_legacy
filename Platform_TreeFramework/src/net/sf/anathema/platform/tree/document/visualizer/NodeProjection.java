@@ -10,7 +10,7 @@ import java.util.List;
 
 public class NodeProjection {
 
-  private List<IVisualizableNode> nodeProjection = new ArrayList<IVisualizableNode>();
+  private List<IVisualizableNode> nodeProjection = new ArrayList<>();
 
   public NodeProjection(ILayer... layers) {
     for (ILayer layer : layers) {

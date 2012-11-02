@@ -22,7 +22,7 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
 
   @Override
   protected List<Identified> getCurrentCharacterTypes() {
-    Set<Identified> set = new LinkedHashSet<Identified>();
+    Set<Identified> set = new LinkedHashSet<>();
     for (ICharacterType type : CharacterType.values()) {
       ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
@@ -32,12 +32,12 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
         set.add(type);
       }
     }
-    return new ArrayList<Identified>(set);
+    return new ArrayList<>(set);
   }
 
   @Override
   protected List<Identified> getAdditionalCharmTypes() {
-    Set<Identified> set = new LinkedHashSet<Identified>();
+    Set<Identified> set = new LinkedHashSet<>();
     for (ICharacterType type : CharacterType.values()) {
       ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
@@ -49,6 +49,6 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
       }
       set.add(charmTemplate.getUniqueCharmType().getId());
     }
-    return new ArrayList<Identified>(set);
+    return new ArrayList<>(set);
   }
 }

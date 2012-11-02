@@ -2,7 +2,7 @@ package net.sf.anathema.lib.model;
 
 public class ObjectModel<T> extends SmartChangeableModel implements IObjectModel<T> {
 
-  private final IProperty<T> property = new DefaultProperty<T>();
+  private final IProperty<T> property = new DefaultProperty<>();
 
   public ObjectModel() {
     this(null);

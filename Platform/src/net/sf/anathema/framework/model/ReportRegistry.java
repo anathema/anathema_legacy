@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ReportRegistry implements IReportRegistry {
 
-  private final List<Report> reports = new ArrayList<Report>();
+  private final List<Report> reports = new ArrayList<>();
 
   public ReportRegistry() {
     super();
@@ -23,7 +23,7 @@ public class ReportRegistry implements IReportRegistry {
 
   @Override
   public Report[] getReports(IItem item) {
-    List<Report> supportedReports = new ArrayList<Report>();
+    List<Report> supportedReports = new ArrayList<>();
     for (Report report : reports) {
       if (report.supports(item)) {
         supportedReports.add(report);

@@ -1,15 +1,15 @@
 package net.sf.anathema.character.sidereal.colleges.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.library.trait.IAdditionalTraitBonusPointManagement;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class CollegeModelBonusPointCalculator implements IAdditionalModelBonusPointCalculator {
 
@@ -19,7 +19,7 @@ public class CollegeModelBonusPointCalculator implements IAdditionalModelBonusPo
       IAstrologicalHouse[] allHouses,
       ICollegeBonusPointCosts costs,
       IFavorableTraitCreationPoints points) {
-    List<IFavorableDefaultTrait> colleges = new ArrayList<IFavorableDefaultTrait>();
+    List<IFavorableDefaultTrait> colleges = new ArrayList<>();
     for (IAstrologicalHouse house : allHouses) {
       Collections.addAll(colleges, house.getColleges());
     }

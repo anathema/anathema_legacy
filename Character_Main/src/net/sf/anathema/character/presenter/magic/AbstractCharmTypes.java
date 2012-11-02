@@ -12,7 +12,7 @@ public abstract class AbstractCharmTypes implements CharmTypes {
   
   @Override
   public Identified[] getCurrentCharmTypes() {
-    List<Identified> types = new ArrayList<Identified>();
+    List<Identified> types = new ArrayList<>();
     types.addAll(getCurrentCharacterTypes());
     types.addAll(getAdditionalCharmTypes());
     types.add(MARTIAL_ARTS);

@@ -9,8 +9,8 @@ import java.util.List;
 
 public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
 
-  private final List<ISubTrait> unremovableSubTraits = new ArrayList<ISubTrait>();
-  private final List<ISubTrait> subtraits = new ArrayList<ISubTrait>();
+  private final List<ISubTrait> unremovableSubTraits = new ArrayList<>();
+  private final List<ISubTrait> subtraits = new ArrayList<>();
   private final Announcer<ISubTraitListener> subTraitListeners = Announcer.to(ISubTraitListener.class);
   private final IIntValueChangedListener subTraitCreationPointListener = new IIntValueChangedListener() {
     @Override

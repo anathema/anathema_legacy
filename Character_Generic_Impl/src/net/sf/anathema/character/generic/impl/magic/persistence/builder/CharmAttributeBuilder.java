@@ -18,7 +18,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 public class CharmAttributeBuilder {
 
   public ICharmAttribute[] buildCharmAttributes(Element rulesElement, IGenericTrait primaryPrerequisite) {
-    List<ICharmAttribute> attributes = new ArrayList<ICharmAttribute>();
+    List<ICharmAttribute> attributes = new ArrayList<>();
     for (Element attributeElement : ElementUtilities.elements(rulesElement, TAG_ATTRIBUTE)) {
       String attributeId = attributeElement.attributeValue(ATTRIB_ATTRIBUTE);
       boolean visualizeAttribute = ElementUtilities.getBooleanAttribute(attributeElement, ATTRIB_VISUALIZE, false);

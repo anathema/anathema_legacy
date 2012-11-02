@@ -30,8 +30,8 @@ public class SmartTable implements IView {
   private boolean enabled = true;
   private final JTable table;
   private JPanel content;
-  private final Announcer<ActionListener> selectionActionListeners = new Announcer<ActionListener>(ActionListener.class);
-  private final List<Action> actions= new ArrayList<Action>();
+  private final Announcer<ActionListener> selectionActionListeners = new Announcer<>(ActionListener.class);
+  private final List<Action> actions= new ArrayList<>();
 
   public SmartTable(TableModel tableModel, ITableColumnViewSettings[] settings) {
     table = new JTable(tableModel);

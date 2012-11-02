@@ -27,7 +27,7 @@ public class PresentedCategorizedNameGenerator {
   }
 
   private TokenCategory[] getRelevantTokens() {
-    List<TokenCategory> relevantTokens = new ArrayList<TokenCategory>();
+    List<TokenCategory> relevantTokens = new ArrayList<>();
     for (Object category : view.getSelectedCategories()) {
       if (category instanceof TokenCategory) {
         relevantTokens.add((TokenCategory) category);

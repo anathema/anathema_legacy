@@ -28,7 +28,7 @@ public final class AddNewStatsAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    List<String> definedNames = new ArrayList<String>();
+    List<String> definedNames = new ArrayList<>();
     for (IEquipmentStats stats : editModel.getStats()) {
       definedNames.add(stats.getName().getId());
     }

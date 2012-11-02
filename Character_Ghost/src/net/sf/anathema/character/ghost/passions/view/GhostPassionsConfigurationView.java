@@ -35,7 +35,7 @@ public class GhostPassionsConfigurationView implements IGhostPassionsConfigurati
   public IButtonControlledComboEditView<ITraitReference> addPassionSelectionView(String labelText,
                                                                                  ListCellRenderer renderer,
                                                                                  Icon addIcon) {
-    objectSelectionView = new ButtonControlledComboEditView<ITraitReference>(addIcon, renderer);
+    objectSelectionView = new ButtonControlledComboEditView<>(addIcon, renderer);
     passionPanel.add(objectSelectionView.getComponent());
     return objectSelectionView;
   }

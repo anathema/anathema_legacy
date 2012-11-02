@@ -40,7 +40,7 @@ public class GenericCharmUtilities {
   }
 
   public static IMagicStats[] getGenericCharmStats(IGenericCharacter character) {
-    List<IMagicStats> genericCharmStats = new ArrayList<IMagicStats>();
+    List<IMagicStats> genericCharmStats = new ArrayList<>();
     ICharm[] charms = character.getGenericCharms();
     for (ICharm charm : charms) {
         IMagicStats stats = new GenericCharmStats(charm, character);
@@ -65,7 +65,7 @@ public class GenericCharmUtilities {
 
   public static List<ITraitType> getGenericCharmTraits(IGenericCharacter character) {
     FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
-    List<ITraitType> traits = new ArrayList<ITraitType>();
+    List<ITraitType> traits = new ArrayList<>();
     IIdentifiedTraitTypeGroup[] list = null;
     if (type == FavoringTraitType.AbilityType) {
       list = character.getAbilityTypeGroups();

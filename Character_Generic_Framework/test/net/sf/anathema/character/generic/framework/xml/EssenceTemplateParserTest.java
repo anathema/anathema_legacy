@@ -50,7 +50,7 @@ public class EssenceTemplateParserTest extends TestCase {
 
   @Override
   protected void setUp() throws Exception {
-    templateRegistry = new DummyXmlTemplateRegistry<GenericEssenceTemplate>();
+    templateRegistry = new DummyXmlTemplateRegistry<>();
   }
 
   private EssenceTemplateParser createEssenceTemplateParser() {

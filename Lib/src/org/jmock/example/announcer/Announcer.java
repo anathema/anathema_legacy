@@ -10,7 +10,7 @@ import java.util.List;
 //Nat Pryce's Announcer, taken from jmock examples: http://nat.truemesh.com/archives/000710.html
 public class Announcer<T> {
 	private final T proxy;
-	private final List<T> listeners = new ArrayList<T>();
+	private final List<T> listeners = new ArrayList<>();
 	
 	
 	public Announcer(Class<? extends T> listenerType) {
@@ -39,7 +39,7 @@ public class Announcer<T> {
 	
 	private void announce(Method m, Object[] args) {
 		try {
-			for (T listener : new ArrayList<T>(listeners)) {
+			for (T listener : new ArrayList<>(listeners)) {
 				m.invoke(listener, args);
 			}
 		}
@@ -62,6 +62,6 @@ public class Announcer<T> {
 	}
 	
 	public static <T> Announcer<T> to(Class<? extends T> listenerType) {
-		return new Announcer<T>(listenerType);
+		return new Announcer<>(listenerType);
 	}
 }

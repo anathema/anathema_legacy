@@ -47,7 +47,7 @@ public class AllMagicContent extends AbstractMagicContent {
   }
 
   private List<IMagicStats> collectPrintMagic() {
-    List<IMagicStats> printStats = new ArrayList<IMagicStats>();
+    List<IMagicStats> printStats = new ArrayList<>();
     addGenericCharmsForPrint(printStats);
     addConcreteLearnedMagicForPrint(printStats);
     return printStats;

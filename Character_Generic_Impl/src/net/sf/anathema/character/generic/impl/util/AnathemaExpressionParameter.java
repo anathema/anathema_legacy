@@ -32,20 +32,17 @@ public class AnathemaExpressionParameter implements ExpressionParameter {
       String name = splitParameter[1];
       
       try {
-        if (type.equals("Ability")) {
-          return AbilityType.valueOf(name);
-        }
-        else if (type.equals("Attribute")) {
-          return AttributeType.valueOf(name);
-        }
-        else if (type.equals("Other")) {
-          return OtherTraitType.valueOf(name);
-        }
-        else if (type.equals("Virtue")) {
-          return VirtueType.valueOf(name);
-        }
-        else if (type.equals("Yozi")) {
-          return YoziType.valueOf(name);
+        switch (type) {
+          case "Ability":
+            return AbilityType.valueOf(name);
+          case "Attribute":
+            return AttributeType.valueOf(name);
+          case "Other":
+            return OtherTraitType.valueOf(name);
+          case "Virtue":
+            return VirtueType.valueOf(name);
+          case "Yozi":
+            return YoziType.valueOf(name);
         }
       }
       catch (IllegalArgumentException e) {

@@ -40,7 +40,7 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
 
   protected IHeartsBloodStats[] getPrintStats(ReportSession session) {
     IHeartsBloodModel model = (IHeartsBloodModel) session.getCharacter().getAdditionalModel(HeartsBloodTemplate.TEMPLATE_ID);
-    List<IHeartsBloodStats> stats = new ArrayList<IHeartsBloodStats>();
+    List<IHeartsBloodStats> stats = new ArrayList<>();
     for (final IAnimalForm form : model.getEntries()) {
       stats.add(new IHeartsBloodStats() {
         @Override

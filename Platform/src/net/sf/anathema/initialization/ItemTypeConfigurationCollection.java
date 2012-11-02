@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public class ItemTypeConfigurationCollection  {
 
-  private final Collection<AbstractItemTypeConfiguration> itemTypeConfigurations = new ArrayList<AbstractItemTypeConfiguration>();
+  private final Collection<AbstractItemTypeConfiguration> itemTypeConfigurations = new ArrayList<>();
 
   public ItemTypeConfigurationCollection(Instantiater instantiater)
       throws InitializationException {

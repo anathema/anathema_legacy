@@ -1,13 +1,5 @@
 package net.sf.anathema.framework.repository.access.printname;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
@@ -15,10 +7,17 @@ import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-
 import org.apache.commons.io.FileUtils;
 import org.dom4j.Document;
 import org.dom4j.Element;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PrintNameFileAccess implements IPrintNameFileAccess {
   // Used for backward compatibility when all fails ...
@@ -41,7 +40,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   public PrintNameFile[] collectAllPrintNameFiles(IItemType type) {
     File repositoryFolder = resolver.getItemTypeFolder(type);
     File[] subfiles = repositoryFolder.listFiles();
-    List<PrintNameFile> printNameFiles = new ArrayList<PrintNameFile>();
+    List<PrintNameFile> printNameFiles = new ArrayList<>();
     if (subfiles == null) {
       return new PrintNameFile[0];
     }
@@ -128,7 +127,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
 
   @Override
   public PrintNameFile[] collectClosedPrintNameFiles(IItemType type) {
-    List<PrintNameFile> closedFiles = new ArrayList<PrintNameFile>();
+    List<PrintNameFile> closedFiles = new ArrayList<>();
     for (PrintNameFile file : collectAllPrintNameFiles(type)) {
       if (!itemManagement.isOpen(file.getRepositoryId(), type)) {
         closedFiles.add(file);

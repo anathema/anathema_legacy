@@ -12,7 +12,7 @@ public class DialogDefaults {
     return instance;
   }
 
-  private final List<Image> frameIconImages = new ArrayList<Image>();
+  private final List<Image> frameIconImages = new ArrayList<>();
 
   private DialogDefaults() {
     //nothing to do 

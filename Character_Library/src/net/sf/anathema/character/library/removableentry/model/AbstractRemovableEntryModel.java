@@ -10,7 +10,7 @@ import java.util.List;
 
 public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryModel<E> {
 
-  private final List<E> entries = new ArrayList<E>();
+  private final List<E> entries = new ArrayList<>();
   private final Announcer<IRemovableEntryListener> control = Announcer.to(IRemovableEntryListener.class);
 
   @Override

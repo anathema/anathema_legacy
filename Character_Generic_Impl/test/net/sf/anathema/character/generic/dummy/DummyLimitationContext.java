@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.dummy;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
@@ -13,8 +10,11 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DummyLimitationContext implements ILimitationContext {
-  private final Map<ITraitType, IGenericTrait> traits = new HashMap<ITraitType, IGenericTrait>();
+  private final Map<ITraitType, IGenericTrait> traits = new HashMap<>();
 
   @Override
   public ITraitLimitation getEssenceLimitation() {

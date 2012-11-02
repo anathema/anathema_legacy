@@ -35,7 +35,7 @@ public class MagicTemplateParserTest {
 
   @Before
   public void setUp() throws Exception {
-    DummyXmlTemplateRegistry<GenericMagicTemplate> templateRegistry = new DummyXmlTemplateRegistry<GenericMagicTemplate>();
+    DummyXmlTemplateRegistry<GenericMagicTemplate> templateRegistry = new DummyXmlTemplateRegistry<>();
     parser = new GenericMagicTemplateParser(templateRegistry, null, null);
   }
 

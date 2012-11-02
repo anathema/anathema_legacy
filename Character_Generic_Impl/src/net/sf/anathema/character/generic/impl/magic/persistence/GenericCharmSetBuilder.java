@@ -35,7 +35,7 @@ public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
   @Override
   protected void buildCharms(Collection<Charm> allCharms, List<ISpecialCharm> specialCharms, Element charmListElement) throws PersistenceException {
     List<Element> elements = ElementUtilities.elements(charmListElement, TAG_GENERIC_CHARM);
-    Map<Element, Set<String>> traitSets = new HashMap<Element, Set<String>>();
+    Map<Element, Set<String>> traitSets = new HashMap<>();
     if (elements.isEmpty()) {
       return;
     }
@@ -44,7 +44,7 @@ public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
       if (traitSetElements.isEmpty()) {
         continue;
       }
-      Set<String> traits = new HashSet<String>();
+      Set<String> traits = new HashSet<>();
       for (Element traitSetObject : traitSetElements) {
         for (Element traitObject : ElementUtilities.elements(traitSetObject, TAG_GENERIC_TRAIT)) {
           traits.add(ElementUtilities.getRequiredAttrib(traitObject, ATTRIB_ID));

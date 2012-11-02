@@ -69,7 +69,7 @@ public class ArrayUtilities {
     if (originalIndices.length <= 1) {
       return;
     }
-    Map<Integer, T> nodesByOriginalIndex = new HashMap<Integer, T>();
+    Map<Integer, T> nodesByOriginalIndex = new HashMap<>();
     for (int element : originalIndices) {
       nodesByOriginalIndex.put(element, objects[element]);
     }
@@ -88,10 +88,10 @@ public class ArrayUtilities {
     if (array1 == null) {
       return array2;
     }
-    ArrayList<T> list = new ArrayList<T>();
+    ArrayList<T> list = new ArrayList<>();
     Collections.addAll(list, array1);
     Collections.addAll(list, array2);
-    return list.toArray(new ArrayFactory<T>(clazz).createArray(list.size()));
+    return list.toArray(new ArrayFactory<>(clazz).createArray(list.size()));
   }
 
   public static <T> boolean containsValue(T[] array, final T value) {

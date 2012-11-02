@@ -9,7 +9,7 @@ import net.sf.anathema.platform.tree.document.components.VisualizableNode;
 public class CreateElementForNode<PARENT> implements IVisualizableNodeVisitor {
   public static <PARENT> CreateElementForNode<PARENT> create(ILayer layer, ITreePresentationProperties properties,
                                                              PARENT cascadeElement, NodeAdderFactory<PARENT> factory) {
-    return new CreateElementForNode<PARENT>(layer, properties, cascadeElement, factory);
+    return new CreateElementForNode<>(layer, properties, cascadeElement, factory);
   }
 
   private final ILayer layer;

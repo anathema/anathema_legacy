@@ -233,7 +233,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public List<IMagic> getAllLearnedMagic() {
-    List<IMagic> magicList = new ArrayList<IMagic>();
+    List<IMagic> magicList = new ArrayList<>();
     magicList.addAll(Arrays.asList(getLearnedCharms()));
     magicList.addAll(Arrays.asList(character.getSpells().getLearnedSpells(character.isExperienced())));
     return magicList;
@@ -254,7 +254,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IGenericCombo[] getCombos() {
-    List<IGenericCombo> genericCombos = new ArrayList<IGenericCombo>();
+    List<IGenericCombo> genericCombos = new ArrayList<>();
     for (ICombo combo : character.getCombos().getAllCombos()) {
       genericCombos.add(new GenericCombo(combo));
     }
@@ -331,7 +331,7 @@ public class GenericCharacter implements IGenericCharacter {
       return new String[0];
     }
     IMultipleEffectCharmConfiguration configuration = (IMultipleEffectCharmConfiguration) charmConfiguration;
-    List<String> learnedEffectIds = new ArrayList<String>();
+    List<String> learnedEffectIds = new ArrayList<>();
     for (ISubeffect effect : configuration.getEffects()) {
       if (effect.isLearned()) {
         learnedEffectIds.add(effect.getId());
@@ -342,7 +342,7 @@ public class GenericCharacter implements IGenericCharacter {
   
   @Override
   public ICharm[] getGenericCharms() {
-    List<ICharm> genericCharms = new ArrayList<ICharm>();
+    List<ICharm> genericCharms = new ArrayList<>();
     for (ILearningCharmGroup group : character.getCharms().getAllGroups()) {
     	for (ICharm charm : group.getAllCharms()) {
     		if (charm.isInstanceOfGenericCharm() &&

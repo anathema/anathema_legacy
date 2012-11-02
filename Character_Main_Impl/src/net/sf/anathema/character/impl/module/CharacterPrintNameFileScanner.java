@@ -29,8 +29,8 @@ public class CharacterPrintNameFileScanner {
   private static final String CASTE_ELEMENT_TYPE_ATTR = "type";
   private static final Pattern typePattern = Pattern.compile("<" + TYPE_ELEMENT_NAME + ".*>(.*?)</CharacterType>"); //$NON-NLS-1$
   private static final Pattern castePattern = Pattern.compile("<" + CASTE_ELEMENT_NAME + " " + CASTE_ELEMENT_TYPE_ATTR + "=\"(.*?)\"/>"); //$NON-NLS-1$
-  private final Map<PrintNameFile, ICharacterType> typesByFile = new HashMap<PrintNameFile, ICharacterType>();
-  private final Map<PrintNameFile, Identified> castesByFile = new HashMap<PrintNameFile, Identified>();
+  private final Map<PrintNameFile, ICharacterType> typesByFile = new HashMap<>();
+  private final Map<PrintNameFile, Identified> castesByFile = new HashMap<>();
   private final IRegistry<ICharacterType, ICasteCollection> registry;
   private final IRepositoryFileResolver resolver;
 

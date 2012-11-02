@@ -24,8 +24,8 @@ public class ExperienceConfigurationPresenter implements IContentPresenter {
   private final IExperiencePointConfiguration experiencePoints;
   private final IExperienceConfigurationView experienceView;
   private DefaultTableModel tableModel;
-  private final Map<Integer, IExperiencePointEntry> entriesByIndex = new HashMap<Integer, IExperiencePointEntry>();
-  private final Map<IExperiencePointEntry, Integer> indexByEntry = new HashMap<IExperiencePointEntry, Integer>();
+  private final Map<Integer, IExperiencePointEntry> entriesByIndex = new HashMap<>();
+  private final Map<IExperiencePointEntry, Integer> indexByEntry = new HashMap<>();
   private final IResources resources;
 
   public ExperienceConfigurationPresenter(

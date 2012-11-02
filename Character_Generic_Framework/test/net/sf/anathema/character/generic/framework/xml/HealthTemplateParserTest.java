@@ -20,7 +20,7 @@ public class HealthTemplateParserTest {
 
   @Before
   public void setUp() throws Exception {
-    this.registry = new DummyXmlTemplateRegistry<GenericHealthTemplate>();
+    this.registry = new DummyXmlTemplateRegistry<>();
     this.parser = new HealthTemplateParser(registry);
     originalTemplate = new GenericHealthTemplate();
     registry.register(ORIGINAL_TEMPLATE_ID, originalTemplate);
