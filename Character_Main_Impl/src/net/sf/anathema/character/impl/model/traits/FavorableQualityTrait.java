@@ -57,12 +57,10 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public void addCreationPointListener(IIntValueChangedListener listener) {
-
   }
 
   @Override
   public void removeCreationPointListener(IIntValueChangedListener listener) {
-
   }
 
   @Override
@@ -104,7 +102,8 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public int getMinimalValue() {
-    return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    //Apparently, the Engine implementation makes this method redundant.
+    return 0;
   }
 
   @Override

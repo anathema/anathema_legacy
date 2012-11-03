@@ -6,7 +6,7 @@ import org.ajoberstar.gradle.git.tasks.GitPush;
 ext.jreVersion       = "1.7.0_09"
 ext.dependenciesDir  = new File(buildDir, 'dependencies')
 ext.versionString    = "${version_major}.${version_minor}.${version_revision}"
-ext.testDependencies = ['junit:junit:4.10', 'org.mockito:mockito-core:1.9.0']
+ext.testDependencies = ['junit:junit:4.10', 'org.mockito:mockito-core:1.9.5']
 
 apply from: "publishUpdate.gradle"
 apply from: "publishFullRelease.gradle"
@@ -90,12 +90,6 @@ subprojects {
     mavenCentral()
     maven {
       url 'https://github.com/anathema/anathema-thirdparty/raw/master/releases/'
-    }
-  }
-
-  configurations.all {
-    resolutionStrategy {
-      force 'commons-io:commons-io:2.4'
     }
   }
 
