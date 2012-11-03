@@ -1,9 +1,6 @@
 dependencies {
     compile 'org.apache.commons:commons-lang3:3.1'
-    testCompile 'org.hamcrest:hamcrest-core:1.3'
-    testCompile 'org.hamcrest:hamcrest-library:1.3'
-    testCompile 'junit:junit-dep:4+'
-    testCompile 'org.mockito:mockito-core:1.9.5'
+    testCompile parent.ext.testDependencies
     testCompile 'info.cukes:cucumber-java:1.1.1'
     testCompile 'info.cukes:cucumber-junit:1.1.1'
 }
