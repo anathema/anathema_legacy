@@ -45,7 +45,7 @@ import static java.util.Arrays.asList;
 
 public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
 
-  private static final boolean useGenericEngine = true;
+  private static final boolean useGenericEngine = false;
   private final FavorableTraitFactory favorableTraitFactory;
   private final BackgroundConfiguration backgrounds;
   private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
