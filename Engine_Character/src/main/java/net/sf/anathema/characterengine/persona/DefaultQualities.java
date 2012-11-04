@@ -9,8 +9,6 @@ import net.sf.anathema.characterengine.rules.Rule;
 
 import java.util.List;
 
-import static net.sf.anathema.characterengine.persona.Permission.Denied;
-
 public class DefaultQualities implements Qualities {
   private final QualityMap qualityMap = new QualityMap();
   private final ListenerMap listenerMap = new ListenerMap();
@@ -39,7 +37,7 @@ public class DefaultQualities implements Qualities {
     if (qualityMap.contains(qualityKey)) {
       Quality quality = qualityMap.get(qualityKey);
       Iterable<Rule> rules = ruleMap.getAllForQuality(qualityKey);
-      executeCommandForQuality(rules, closure, quality);
+      new RuleBasedExecutor(rules).executeIfPermitted(closure, quality);
     }
   }
 
@@ -48,7 +46,7 @@ public class DefaultQualities implements Qualities {
     List<Quality> qualitiesWithType = qualityMap.getAllWithType(type);
     Iterable<Rule> rules = ruleMap.getAllForType(type);
     for (Quality quality : qualitiesWithType) {
-      executeCommandForQuality(rules, closure, quality);
+      new RuleBasedExecutor(rules).executeIfPermitted(closure, quality);
     }
   }
 
@@ -60,15 +58,6 @@ public class DefaultQualities implements Qualities {
   @Override
   public void stopObservation(QualityKey key, QualityListener listener) {
     listenerMap.remove(key, listener);
-  }
-
-  private void executeCommandForQuality(Iterable<Rule> rules, QualityClosure closure, Quality quality) {
-    for (Rule rule : rules) {
-      if (rule.permits(closure, quality) == Denied) {
-        return;
-      }
-    }
-    closure.execute(quality);
   }
 
   private class MapTriggeringListener implements QualityListener {
