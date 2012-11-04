@@ -1,8 +1,11 @@
 //Compile and publish an update
 // Your ssh key-auth passphrase for the Anathema Update Server will be prompted for, or can be entered at the command line like so:
 // gradlew uploadUpdate -PanathemaUsername=MyPassphraseHere
+
+def updateLocation = "wwwroot/updates2"
+
 task prepareUpdate << {
-  def command = "mkdir -p ~/wwwroot/updates/${versionString}"
+  def command = "mkdir -p ~/${updateLocation}/${versionString}"
   runSshExecOnBuildServer(command)
 }
 
@@ -29,7 +32,7 @@ task buildFileListForUpdate << {
 
 task uploadUpdate << {
   def host     = "butatopanto.de"
-  def dir      = "/home/anathema/wwwroot/updates2"
+  def dir      = "/home/anathema/${updateLocation}"
   def keyfile  = findKeyFile()
   def passphrase = usePropertyOrPrompt('anathemaPassphrase', "Anathema SSH Key Passphrase")
   def connectString = "anathema@${host}:${dir}/${versionString}"
@@ -39,7 +42,7 @@ task uploadUpdate << {
 }
 
 task finishUpdate << {
-  def command = "echo ${versionString} >> ~/wwwroot/updates/availableVersions"
+  def command = "echo ${versionString} >> ~/${updateLocation}/availableVersions"
   runSshExecOnBuildServer(command)
 }
 
