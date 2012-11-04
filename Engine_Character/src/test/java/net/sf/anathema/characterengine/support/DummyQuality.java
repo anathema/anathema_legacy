@@ -8,4 +8,9 @@ public class DummyQuality implements Quality {
   public void registerObserver(QualityListener listener) {
     //nothing to do
   }
+
+  @Override
+  public Quality copy() {
+    return new DummyQuality();
+  }
 }

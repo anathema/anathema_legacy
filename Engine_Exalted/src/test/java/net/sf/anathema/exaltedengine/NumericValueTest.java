@@ -17,4 +17,10 @@ public class NumericValueTest {
     boolean greaterThan = new NumericValue(5).isGreaterThan(new NumericValue(5));
     assertThat(greaterThan, is(false));
   }
+
+  @Test
+  public void createsCopyAtSameValue() throws Exception {
+    boolean isEqual = new NumericValue(5).copy().equals(new NumericValue(5));
+    assertThat(isEqual, is(true));
+  }
 }

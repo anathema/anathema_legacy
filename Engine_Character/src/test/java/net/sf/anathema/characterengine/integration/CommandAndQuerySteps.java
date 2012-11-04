@@ -1,18 +1,18 @@
 package net.sf.anathema.characterengine.integration;
 
+import com.google.inject.Inject;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.sf.anathema.characterengine.command.AddQuality;
-import net.sf.anathema.characterengine.engine.DefaultEngine;
 import net.sf.anathema.characterengine.engine.Engine;
-import net.sf.anathema.characterengine.persona.Persona;
 import net.sf.anathema.characterengine.persona.QualityClosure;
 import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.characterengine.quality.Type;
+import net.sf.anathema.characterengine.support.DecreaseBy;
 import net.sf.anathema.characterengine.support.DummyQualityFactory;
 import net.sf.anathema.characterengine.support.IncreaseBy;
 import net.sf.anathema.characterengine.support.NumericQuality;
@@ -30,10 +30,15 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 
 @SuppressWarnings("UnusedDeclaration")
 public class CommandAndQuerySteps {
-
-  private Engine engine = new DefaultEngine();
-  private Persona persona;
+  private final Engine engine;
   private QualityListener registeredListener;
+  private final EngineCharacter persona;
+
+  @Inject
+  public CommandAndQuerySteps(Engine engine, EngineCharacter character) throws Exception {
+    this.engine = engine;
+    this.persona = character;
+  }
 
   @Before
   public void addDummyQuality() {
@@ -42,14 +47,13 @@ public class CommandAndQuerySteps {
 
   @Given("^a character$")
   public void a_character() throws Throwable {
-    this.persona = engine.createCharacter();
+    persona.create();
   }
 
   @Given("^a rule that an (.*?) starts with value (\\d+)$")
   public void a_rule_that_type_starts_with_value(String type, int startValue) throws Throwable {
     engine.setFactory(new Type(type), new NumericQualityFactory(startValue));
   }
-
 
   @Given("^a registered listener for the (.*?) '(.*?)'$")
   public void a_registered_listener_for(String type, String name) throws Throwable {
@@ -67,11 +71,16 @@ public class CommandAndQuerySteps {
     //nothing to do
   }
 
-  @When("^I increase the value of the (.*?) '(.*?)' by (\\d+)$")
-  public void I_increase_the_value_of_the_Attribute_Toughness_by(String type, String name,
-                                                                 int modification) throws Throwable {
+  @When("^I (.*?) the value of the (.*?) '(.*?)' by (\\d+)$")
+  public void I_change_the_value_of_the_Attribute_Toughness_by(String direction, String type, String name,
+                                                               int modification) throws Throwable {
     QualityKey qualityKey = QualityKey.ForTypeAndName(type, name);
-    persona.execute(new IncreaseBy(qualityKey, new NumericValue(modification)));
+    if (direction.equals("increase")) {
+      persona.execute(new IncreaseBy(qualityKey, new NumericValue(modification)));
+    }
+    if (direction.equals("lower")){
+      persona.execute(new DecreaseBy(qualityKey, new NumericValue(-modification)));
+    }
   }
 
   @When("^I register a listener for the (.*?) '(.*?)' on the character$")

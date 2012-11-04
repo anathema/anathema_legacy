@@ -24,4 +24,14 @@ public class NumericQuality implements Quality {
   public void registerObserver(QualityListener listener) {
     announcer.addListener(listener);
   }
+
+  @Override
+  public NumericQuality copy() {
+    return new NumericQuality(value.createCopy());
+  }
+
+  @Override
+  public String toString() {
+    return "Numeric Quality at " + value.toString();
+  }
 }

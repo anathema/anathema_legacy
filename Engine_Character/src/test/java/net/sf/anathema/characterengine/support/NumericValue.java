@@ -28,4 +28,8 @@ public class NumericValue {
   public String toString() {
     return "'" + value + "'";
   }
+
+  public NumericValue createCopy() {
+    return new NumericValue(value);
+  }
 }

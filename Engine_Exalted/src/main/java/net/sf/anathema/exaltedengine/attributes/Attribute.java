@@ -47,6 +47,11 @@ public class Attribute implements Quality {
   }
 
   @Override
+  public Quality copy() {
+    return new Attribute(value.copy(), minimumValue, name);
+  }
+
+  @Override
   public String toString() {
     return "Attribute '" + name + "' at value " + value;
   }

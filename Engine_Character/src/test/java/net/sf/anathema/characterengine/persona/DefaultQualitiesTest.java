@@ -4,11 +4,14 @@ import net.sf.anathema.characterengine.engine.Engine;
 import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.Type;
+import net.sf.anathema.characterengine.rules.AlwaysRule;
+import net.sf.anathema.characterengine.rules.NeverRule;
 import net.sf.anathema.characterengine.support.NumericQuality;
 import net.sf.anathema.characterengine.support.NumericValue;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
@@ -17,10 +20,10 @@ public class DefaultQualitiesTest {
   private Engine engine = mock(Engine.class);
   private DefaultQualities qualities = new DefaultQualities(engine);
   private QualityClosure closure = mock(QualityClosure.class);
+  private Type type = new Type("type");
 
   @Test
   public void createsQualitiesViaEngine() throws Exception {
-    Type type = new Type("type");
     Name name = new Name("name");
     QualityKey key = new QualityKey(type, name);
     NumericQuality quality = new NumericQuality(new NumericValue(0));
@@ -40,7 +43,6 @@ public class DefaultQualitiesTest {
 
   @Test
   public void executesClosureOnEachQualityOfGivenType() throws Exception {
-    Type type = new Type("type");
     NumericQuality firstQuality = new NumericQuality(new NumericValue(0));
     NumericQuality secondQuality = new NumericQuality(new NumericValue(0));
     QualityKey firstName = new QualityKey(type, new Name("firstName"));
@@ -55,8 +57,76 @@ public class DefaultQualitiesTest {
   }
 
   @Test
+  public void checksWithStandingRulesBeforeExecuting() throws Exception {
+    NumericQuality firstQuality = new NumericQuality(new NumericValue(1));
+    QualityKey quality = new QualityKey(type, new Name("firstName"));
+    configureEngineToCreate(quality, firstQuality);
+    qualities.addQuality(quality);
+    forbidAnyInteractionWithQuality(type);
+    qualities.doForEach(type, closure);
+    verify(closure, never()).execute(firstQuality);
+  }
+
+  @Test
+  public void executesCommandIfRulesAllow() throws Exception {
+    NumericQuality firstQuality = new NumericQuality(new NumericValue(1));
+    QualityKey quality = new QualityKey(type, new Name("firstName"));
+    configureEngineToCreate(quality, firstQuality);
+    qualities.addQuality(quality);
+    allowAnyInteractionWithQuality(type);
+    qualities.doForEach(type, closure);
+    verify(closure).execute(firstQuality);
+  }
+
+  @Test
+  public void forbiddingTrumpsPermission() throws Exception {
+    NumericQuality firstQuality = new NumericQuality(new NumericValue(1));
+    QualityKey quality = new QualityKey(type, new Name("firstName"));
+    configureEngineToCreate(quality, firstQuality);
+    qualities.addQuality(quality);
+    forbidAnyInteractionWithQuality(type);
+    allowAnyInteractionWithQuality(type);
+    qualities.doForEach(type, closure);
+    verify(closure, never()).execute(firstQuality);
+  }
+
+  @Test
+  public void respectsAllRules() throws Exception {
+    NumericQuality firstQuality = new NumericQuality(new NumericValue(1));
+    QualityKey quality = new QualityKey(type, new Name("firstName"));
+    configureEngineToCreate(quality, firstQuality);
+    qualities.addQuality(quality);
+    allowAnyInteractionWithQuality(type);
+    forbidAnyInteractionWithQuality(type);
+    qualities.doForEach(type, closure);
+    verify(closure, never()).execute(firstQuality);
+  }
+
+  @Test
+  public void respectsRulesWhenWorkingWithASingleQuality() throws Exception {
+    NumericQuality firstQuality = new NumericQuality(new NumericValue(1));
+    QualityKey quality = new QualityKey(type, new Name("firstName"));
+    configureEngineToCreate(quality, firstQuality);
+    qualities.addQuality(quality);
+    forbidAnyInteractionWithQuality(type);
+    qualities.doFor(quality, closure);
+    verify(closure, never()).execute(firstQuality);
+  }
+
+  @Test
+  public void doesNotApplyRulesForADifferentType() throws Exception {
+    Type differentType = new Type("differentType");
+    NumericQuality firstQuality = new NumericQuality(new NumericValue(1));
+    QualityKey quality = new QualityKey(type, new Name("firstName"));
+    configureEngineToCreate(quality, firstQuality);
+    qualities.addQuality(quality);
+    forbidAnyInteractionWithQuality(differentType);
+    qualities.doForEach(type, closure);
+    verify(closure).execute(firstQuality);
+  }
+
+  @Test
   public void doesNotExecuteClosureOnQualityOfDifferentType() throws Exception {
-    Type type = new Type("type");
     Type differentType = new Type("differentType");
     NumericQuality firstQuality = new NumericQuality(new NumericValue(0));
     QualityKey firstName = new QualityKey(differentType, new Name("firstName"));
@@ -64,6 +134,14 @@ public class DefaultQualitiesTest {
     qualities.addQuality(firstName);
     qualities.doForEach(type, closure);
     verifyZeroInteractions(closure);
+  }
+
+  private void forbidAnyInteractionWithQuality(Type type) {
+    qualities.defineRule(type, new NeverRule());
+  }
+
+  private void allowAnyInteractionWithQuality(Type type) {
+    qualities.defineRule(type, new AlwaysRule());
   }
 
   private void configureEngineToCreate(QualityKey key, NumericQuality quality) {

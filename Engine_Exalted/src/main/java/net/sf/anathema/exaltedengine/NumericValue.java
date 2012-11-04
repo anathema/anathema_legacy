@@ -32,4 +32,8 @@ public class NumericValue {
   public void changeTo(NumericValue newValue) {
     this.value = newValue.value;
   }
+
+  public NumericValue copy() {
+    return new NumericValue(value);
+  }
 }

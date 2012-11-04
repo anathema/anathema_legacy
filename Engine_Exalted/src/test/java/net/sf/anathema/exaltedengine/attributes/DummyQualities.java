@@ -6,6 +6,7 @@ import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.characterengine.quality.Type;
+import net.sf.anathema.characterengine.rules.Rule;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +21,11 @@ public class DummyQualities implements Qualities {
 
   @Override
   public void addQuality(QualityKey qualityKey) {
+    //nothing to do
+  }
+
+  @Override
+  public void defineRule(Type type, Rule rule) {
     //nothing to do
   }
 

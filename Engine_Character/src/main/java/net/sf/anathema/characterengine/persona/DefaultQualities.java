@@ -5,12 +5,16 @@ import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.QualityListener;
 import net.sf.anathema.characterengine.quality.Type;
+import net.sf.anathema.characterengine.rules.Rule;
 
 import java.util.List;
+
+import static net.sf.anathema.characterengine.persona.Permission.Denied;
 
 public class DefaultQualities implements Qualities {
   private final QualityMap qualityMap = new QualityMap();
   private final ListenerMap listenerMap = new ListenerMap();
+  private final RuleMap ruleMap = new RuleMap();
   private final Engine engine;
 
   public DefaultQualities(Engine engine) {
@@ -26,18 +30,25 @@ public class DefaultQualities implements Qualities {
   }
 
   @Override
+  public void defineRule(Type type, Rule rule) {
+    ruleMap.put(type, rule);
+  }
+
+  @Override
   public void doFor(QualityKey qualityKey, QualityClosure closure) {
     if (qualityMap.contains(qualityKey)) {
       Quality quality = qualityMap.get(qualityKey);
-      closure.execute(quality);
+      Iterable<Rule> rules = ruleMap.getAllForQuality(qualityKey);
+      executeCommandForQuality(rules, closure, quality);
     }
   }
 
   @Override
   public void doForEach(Type type, QualityClosure closure) {
     List<Quality> qualitiesWithType = qualityMap.getAllWithType(type);
+    Iterable<Rule> rules = ruleMap.getAllForType(type);
     for (Quality quality : qualitiesWithType) {
-      closure.execute(quality);
+      executeCommandForQuality(rules, closure, quality);
     }
   }
 
@@ -49,6 +60,15 @@ public class DefaultQualities implements Qualities {
   @Override
   public void stopObservation(QualityKey key, QualityListener listener) {
     listenerMap.remove(key, listener);
+  }
+
+  private void executeCommandForQuality(Iterable<Rule> rules, QualityClosure closure, Quality quality) {
+    for (Rule rule : rules) {
+      if (rule.permits(closure, quality) == Denied) {
+        return;
+      }
+    }
+    closure.execute(quality);
   }
 
   private class MapTriggeringListener implements QualityListener {
