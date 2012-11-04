@@ -14,7 +14,7 @@ public class SetValueTest {
   Name name = new Name("name");
   QualityKey qualityKey = new QualityKey(new Type("type"), name);
   DummyQualities qualities = new DummyQualities();
-  Attribute attribute = new Attribute(new NumericValue(1), new NumericValue(1), name);
+  Attribute attribute = new Attribute(new NumericValue(1), name);
 
   @Before
   public void setUp() throws Exception {

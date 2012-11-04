@@ -8,21 +8,16 @@ import net.sf.anathema.exaltedengine.NumericValue;
 
 public class Attribute implements Quality {
   private final NumericValue value;
-  private final NumericValue minimumValue;
   private final Name name;
   private final Announcer<QualityListener> announcer = Announcer.to(QualityListener.class);
 
-  public Attribute(NumericValue value, NumericValue minimumValue, Name name) {
+  public Attribute(NumericValue value, Name name) {
     this.value = value;
-    this.minimumValue = minimumValue;
     this.name = name;
   }
 
   public void changeValueTo(NumericValue newValue) {
     if (value.equals(newValue)) {
-      return;
-    }
-    if (minimumValue.isGreaterThan(newValue)) {
       return;
     }
     value.changeTo(newValue);
@@ -48,7 +43,7 @@ public class Attribute implements Quality {
 
   @Override
   public Quality copy() {
-    return new Attribute(value.copy(), minimumValue, name);
+    return new Attribute(value.copy(), name);
   }
 
   @Override

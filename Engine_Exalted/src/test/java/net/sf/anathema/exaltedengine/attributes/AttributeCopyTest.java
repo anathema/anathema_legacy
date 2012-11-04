@@ -10,8 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class AttributeCopyTest {
   Name name = new Name("name");
   NumericValue ownValue = new NumericValue(1);
-  NumericValue minimumValue = new NumericValue(1);
-  Attribute attribute = new Attribute(ownValue, minimumValue, name);
+  Attribute attribute = new Attribute(ownValue, name);
 
   @Test
   public void createCopyWithSameName() throws Exception {

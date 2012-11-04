@@ -17,6 +17,7 @@ import org.hamcrest.TypeSafeMatcher;
 import static net.sf.anathema.exaltedengine.ExaltedEngine.ATTRIBUTE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Matchers.isNotNull;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -48,7 +49,7 @@ public class AttributesSteps {
     QualityKey qualityKey = new QualityKey(ATTRIBUTE, new Name(name));
     QualityClosure closure = mock(QualityClosure.class);
     persona.doFor(qualityKey, closure);
-    verify(closure).execute(isNotNull(Quality.class));
+    verify(closure, atLeastOnce()).execute(isNotNull(Quality.class));
   }
 
   @Then("^the character has the Attribute '(.*?)' at (\\d+)$")

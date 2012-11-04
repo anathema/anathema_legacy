@@ -14,8 +14,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 public class AttributeTest {
   Name name = new Name("name");
   NumericValue ownValue = new NumericValue(1);
-  NumericValue minimumValue = new NumericValue(1);
-  Attribute attribute = new Attribute(ownValue, minimumValue, name);
+  Attribute attribute = new Attribute(ownValue, name);
 
   @Test
   public void forwardsComparisonToValue() throws Exception {
