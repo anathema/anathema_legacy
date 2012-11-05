@@ -7,10 +7,10 @@ import net.sf.anathema.exaltedengine.NumericValue;
 
 public class AttributeFactory implements QualityFactory {
 
-  private final NumericValue startValue = new NumericValue(1);
+  private final int startValue = 1;
 
   @Override
   public Quality create(Name name) {
-    return new Attribute(startValue, name);
+    return new Attribute(new NumericValue(startValue), name);
   }
 }
