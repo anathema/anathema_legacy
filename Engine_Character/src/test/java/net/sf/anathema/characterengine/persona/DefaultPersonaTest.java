@@ -39,6 +39,14 @@ public class DefaultPersonaTest {
   }
 
   @Test
+  public void executesQueryOnEachQualityButDisregardsRules() throws Exception {
+    QualityClosure closure = mock(QualityClosure.class);
+    Type type = new Type("type");
+    persona.doForEachDisregardingRules(type, closure);
+    verify(qualities).doForEachDisregardingRules(type, closure);
+  }
+
+  @Test
   public void forwardsListenersToQualities() throws Exception {
     QualityListener listener = mock(QualityListener.class);
     QualityKey key = createQualityKey();

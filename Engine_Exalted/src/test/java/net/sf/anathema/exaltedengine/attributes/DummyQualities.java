@@ -14,7 +14,6 @@ import java.util.Map;
 public class DummyQualities implements Qualities {
   private final Map<QualityKey, Quality> qualityMap = new HashMap<>();
 
-
   public void addQuality(QualityKey qualityKey, Quality quality) {
     qualityMap.put(qualityKey, quality);
   }
@@ -37,6 +36,11 @@ public class DummyQualities implements Qualities {
 
   @Override
   public void doForEach(Type type, QualityClosure closure) {
+    //nothing to do
+  }
+
+  @Override
+  public void doForEachDisregardingRules(Type type, QualityClosure closure) {
     //nothing to do
   }
 

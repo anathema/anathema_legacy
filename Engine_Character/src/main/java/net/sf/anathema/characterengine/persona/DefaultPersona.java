@@ -28,6 +28,11 @@ public class DefaultPersona implements Persona {
   }
 
   @Override
+  public void doForEachDisregardingRules(Type type, QualityClosure closure) {
+    qualities.doForEachDisregardingRules(type, closure);
+  }
+
+  @Override
   public void observe(QualityKey qualityKey, QualityListener listener) {
     qualities.observe(qualityKey, listener);
   }

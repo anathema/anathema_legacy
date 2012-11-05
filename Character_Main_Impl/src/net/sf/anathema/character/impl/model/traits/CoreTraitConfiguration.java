@@ -45,7 +45,7 @@ import static java.util.Arrays.asList;
 
 public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
 
-  private static final boolean useGenericEngine = false;
+  private static final boolean useGenericEngine = true;
   private final FavorableTraitFactory favorableTraitFactory;
   private final BackgroundConfiguration backgrounds;
   private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
@@ -90,7 +90,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private void addAttributes(ICharacterTemplate template) {
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAttributeIncrementChecker(template, this);
     if (useGenericEngine) {
-      persona.doForEach(ExaltedEngine.ATTRIBUTE, new QualityClosure() {
+      persona.doForEachDisregardingRules(ExaltedEngine.ATTRIBUTE, new QualityClosure() {
 
         @Override
         public void execute(Quality quality) {

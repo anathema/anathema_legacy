@@ -51,6 +51,14 @@ public class DefaultQualities implements Qualities {
   }
 
   @Override
+  public void doForEachDisregardingRules(Type type, QualityClosure closure) {
+    List<Quality> qualitiesWithType = qualityMap.getAllWithType(type);
+    for (Quality quality : qualitiesWithType) {
+      closure.execute(quality);
+    }
+  }
+
+  @Override
   public void observe(QualityKey key, QualityListener listener) {
     listenerMap.put(key, listener);
   }

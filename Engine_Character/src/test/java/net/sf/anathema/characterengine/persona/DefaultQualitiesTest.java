@@ -68,6 +68,17 @@ public class DefaultQualitiesTest {
   }
 
   @Test
+  public void executesDisregardingRulesIfExpresslyDemanded() throws Exception {
+    NumericQuality firstQuality = new NumericQuality(new NumericValue(1));
+    QualityKey quality = new QualityKey(type, new Name("firstName"));
+    configureEngineToCreate(quality, firstQuality);
+    qualities.addQuality(quality);
+    forbidAnyInteractionWithQuality(type);
+    qualities.doForEachDisregardingRules(type, closure);
+    verify(closure).execute(firstQuality);
+  }
+
+  @Test
   public void executesCommandIfRulesAllow() throws Exception {
     NumericQuality firstQuality = new NumericQuality(new NumericValue(1));
     QualityKey quality = new QualityKey(type, new Name("firstName"));

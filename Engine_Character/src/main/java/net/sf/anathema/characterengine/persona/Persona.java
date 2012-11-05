@@ -12,6 +12,8 @@ public interface Persona {
 
   void doForEach(Type type, QualityClosure closure);
 
+  void doForEachDisregardingRules(Type type, QualityClosure closure);
+
   void observe(QualityKey qualityKey, QualityListener listener);
 
   void stopObservation(QualityKey qualityKey, QualityListener listener);

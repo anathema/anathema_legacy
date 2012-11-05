@@ -40,6 +40,11 @@ public class EngineCharacter implements Persona {
   }
 
   @Override
+  public void doForEachDisregardingRules(Type type, QualityClosure closure) {
+    persona.doForEachDisregardingRules(type, closure);
+  }
+
+  @Override
   public void observe(QualityKey qualityKey, QualityListener listener) {
     persona.observe(qualityKey, listener);
   }
