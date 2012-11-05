@@ -1,21 +1,16 @@
 package net.sf.anathema.characterengine.persona;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.QualityListener;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ListenerMap {
-  private final Map<QualityKey, QualityListener> listenerMap = new HashMap<>();
-
-  public boolean contains(QualityKey qualityKey) {
-    return listenerMap.containsKey(qualityKey);
-  }
+  private final Multimap<QualityKey, QualityListener> listenerMap = ArrayListMultimap.create();
 
   public void triggerFor(QualityKey qualityKey) {
-    if (contains(qualityKey)) {
-      listenerMap.get(qualityKey).eventOccurred();
+    for (QualityListener qualityListener : listenerMap.get(qualityKey)) {
+      qualityListener.eventOccurred();
     }
   }
 
@@ -24,10 +19,6 @@ public class ListenerMap {
   }
 
   public void remove(QualityKey key, QualityListener listener) {
-    listenerMap.remove(key);
-  }
-
-  public QualityListener get(QualityKey qualityKey) {
-    return listenerMap.get(qualityKey);
+    listenerMap.remove(key, listener);
   }
 }

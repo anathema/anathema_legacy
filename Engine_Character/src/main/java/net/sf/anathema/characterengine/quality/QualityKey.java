@@ -33,4 +33,12 @@ public class QualityKey {
   public void withNameDo(NameClosure closure) {
     closure.execute(name);
   }
+
+  @Override
+  public String toString() {
+    return "QualityKey{" +
+            "type=" + type +
+            ", name=" + name +
+            '}';
+  }
 }
