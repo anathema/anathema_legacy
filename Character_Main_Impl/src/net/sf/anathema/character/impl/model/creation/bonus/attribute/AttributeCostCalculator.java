@@ -28,17 +28,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculator implements IAttributeCostCalculator
-{
-  private static IFavorableTrait[] getAllAttributes(ICoreTraitConfiguration traitConfiguration)
-  {
-	  List<ITraitType> attributeTypes = new ArrayList<>();
-	  for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAttributeTypeGroups()) {
-	    Collections.addAll(attributeTypes, group.getAllGroupTypes());
-	  }
-	  return traitConfiguration.getFavorableTraits(attributeTypes.toArray(new ITraitType[attributeTypes.size()]));
+public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculator implements IAttributeCostCalculator {
+  private static IFavorableTrait[] getAllAttributes(ICoreTraitConfiguration traitConfiguration) {
+    List<ITraitType> attributeTypes = new ArrayList<>();
+    for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAttributeTypeGroups()) {
+      Collections.addAll(attributeTypes, group.getAllGroupTypes());
+    }
+    return traitConfiguration.getFavorableTraits(attributeTypes.toArray(new ITraitType[attributeTypes.size()]));
   }
-  
+
   private final Map<ITrait, ElementCreationCost> costsByAttribute = new HashMap<>();
   private List<TraitGroupCost> orderedGroups;
   private final TraitGroup[] traitGroups;
@@ -46,12 +44,9 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
   private final List<List<TraitGroup>> priorityPermutations = new ArrayList<>();
   private static final int SORTING_BONUS_COST_SCALE_FACTOR = 1000;
 
-  public AttributeCostCalculator(
-      ICoreTraitConfiguration traitConfiguration,
-      IAttributeCreationPoints points,
-      IBonusPointCosts costs,
-      IAdditionalBonusPointManagment additionalPools) {
-	  super(additionalPools, points, costs.getMaximumFreeAbilityRank(), getAllAttributes(traitConfiguration));
+  public AttributeCostCalculator(ICoreTraitConfiguration traitConfiguration, IAttributeCreationPoints points,
+                                 IBonusPointCosts costs, IAdditionalBonusPointManagment additionalPools) {
+    super(additionalPools, points, costs.getMaximumFreeAbilityRank(), getAllAttributes(traitConfiguration));
     this.traitGroups = createTraitGroups(traitConfiguration);
     this.costs = costs;
     createPermutations(new ArrayList<TraitGroup>());
@@ -65,109 +60,88 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
     }
     return newGroups;
   }
-  
-  private void createPermutations(List<TraitGroup> parent)
-  {
-	  boolean isLeaf = true;
-	  for (TraitGroup entry : traitGroups)
-	  {
-		  if (parent.contains(entry))
-			  continue;
-		  isLeaf = false;
-		  List<TraitGroup> child = new ArrayList<>(parent);
-		  child.add(entry);
-		  createPermutations(child);
-	  }
-	  if (isLeaf)
-		  priorityPermutations.add(parent);
+
+  private void createPermutations(List<TraitGroup> parent) {
+    boolean isLeaf = true;
+    for (TraitGroup entry : traitGroups) {
+      if (parent.contains(entry)) continue;
+      isLeaf = false;
+      List<TraitGroup> child = new ArrayList<>(parent);
+      child.add(entry);
+      createPermutations(child);
+    }
+    if (isLeaf) priorityPermutations.add(parent);
   }
 
   @Override
-  public void calculateAttributeCosts()
-  {
-	  clear();
-	  costsByAttribute.clear();
-	  countFavoredTraits();
-	  
-	  IAttributeCreationPoints attributeCreation = (IAttributeCreationPoints) points;
-	  int bestCost = Integer.MAX_VALUE;
-	  int bestPermutation = 0;
-		  
-	  for (int i = 0; i != priorityPermutations.size(); i++)
-	  {
-		  List<TraitGroup> permutation = priorityPermutations.get(i);
-		  int cost = calculateCost(attributeCreation, permutation, false);
-		  if (cost < bestCost)
-		  {
-			  bestCost = cost;
-			  bestPermutation = i;
-		  }
-	  }
-	  List<TraitGroup> bestOrder = priorityPermutations.get(bestPermutation);
-	  orderedGroups = createGroupCost(attributeCreation, bestOrder);
-	  calculateCost(attributeCreation, bestOrder, true);
-	  
-  }
-  
-  private int calculateCost(IAttributeCreationPoints points,
-		  List<TraitGroup> permutation,
-		  boolean record)
-  {
-	  int bonusCost = 0;
-	  int wastedFreeDots = 0;
-	  int extraFavoredDotsLeft = this.getExtraFavoredDotCount();
-	  int extraGenericDotsLeft = this.getExtraGenericDotCount();
-	  
-	  for (int i = 0; i != permutation.size(); i++)
-	  {
-		  TraitGroup group = permutation.get(i);
-		  int freePointsLeft = points.getCounts()[i];
-		  boolean favoredInGroup = false;
-		  
-		  IFavorableTrait[] unsortedTraits = group.getGroupTraits();
-		  int[] sums = new int[unsortedTraits.length];
-		  for (int j = 0; j != unsortedTraits.length; j++)
-			  sums[j] = costs.getAttributeCosts(unsortedTraits[j]);
-		  
-		  List<IFavorableTrait> orderedTraits = getSortedTraits(unsortedTraits, sums);
-	      for (IFavorableTrait attribute : orderedTraits)
-	      {
-	    	  favoredInGroup = favoredInGroup || (attribute.isCasteOrFavored() &&
-	    			  attribute.getCurrentValue() > attribute.getInitialValue());
-		      int costFactor = costs.getAttributeCosts(attribute);
-		      ElementCreationCost cost = handleAttribute((IDefaultTrait) attribute, freePointsLeft,
-		    		  favoredInGroup ? extraFavoredDotsLeft : 0, extraGenericDotsLeft, costFactor);
-		      freePointsLeft -= cost.getDotsSpent();
-		      extraFavoredDotsLeft -= cost.getExtraFavoredDotsSpent();
-		      extraGenericDotsLeft -= cost.getExtraGenericDotsSpent();
-		      bonusCost += cost.getBonusPointsSpent();
-		      if (record)
-		      {
-		    	  increaseExtraFavoredDotSum(cost.getExtraFavoredDotsSpent());
-		    	  increaseExtraGenericDotSum(cost.getExtraGenericDotsSpent());
-		    	  costsByAttribute.put(attribute, cost);
-		    	  orderedGroups.get(i).addTraitToCost(attribute, cost);
-		      }
-	      }
-	      wastedFreeDots += freePointsLeft * freePointsLeft;
-	  }
-	  return SORTING_BONUS_COST_SCALE_FACTOR * bonusCost + wastedFreeDots;
+  public void calculateAttributeCosts() {
+    clear();
+    costsByAttribute.clear();
+    countFavoredTraits();
+    IAttributeCreationPoints attributeCreation = (IAttributeCreationPoints) points;
+    int bestCost = Integer.MAX_VALUE;
+    int bestPermutation = 0;
+    for (int i = 0; i != priorityPermutations.size(); i++) {
+      List<TraitGroup> permutation = priorityPermutations.get(i);
+      int cost = calculateCost(attributeCreation, permutation, false);
+      if (cost < bestCost) {
+        bestCost = cost;
+        bestPermutation = i;
+      }
+    }
+    List<TraitGroup> bestOrder = priorityPermutations.get(bestPermutation);
+    orderedGroups = createGroupCost(attributeCreation, bestOrder);
+    calculateCost(attributeCreation, bestOrder, true);
   }
 
-  private ElementCreationCost handleAttribute(IDefaultTrait attribute, int freeDots, int extraFavoredDots, int extraGenericDots,
-		  	int bonusPointCostFactor) {
-    ICostElement element = new TraitCostElement(attribute);
-    return new ElementCreationCostCalculator().calculateElementCreationCost(element, freeDots, extraFavoredDots, extraGenericDots, bonusPointCostFactor);
+  private int calculateCost(IAttributeCreationPoints points, List<TraitGroup> permutation, boolean record) {
+    int bonusCost = 0;
+    int wastedFreeDots = 0;
+    int extraFavoredDotsLeft = this.getExtraFavoredDotCount();
+    int extraGenericDotsLeft = this.getExtraGenericDotCount();
+    for (int i = 0; i != permutation.size(); i++) {
+      TraitGroup group = permutation.get(i);
+      int freePointsLeft = points.getCounts()[i];
+      boolean favoredInGroup = false;
+      IFavorableTrait[] unsortedTraits = group.getGroupTraits();
+      int[] sums = new int[unsortedTraits.length];
+      for (int j = 0; j != unsortedTraits.length; j++)
+        sums[j] = costs.getAttributeCosts(unsortedTraits[j]);
+      List<IFavorableTrait> orderedTraits = getSortedTraits(unsortedTraits, sums);
+      for (IFavorableTrait attribute : orderedTraits) {
+        favoredInGroup = favoredInGroup || (attribute.isCasteOrFavored() && attribute.getCurrentValue() > attribute.getInitialValue());
+        int costFactor = costs.getAttributeCosts(attribute);
+        ElementCreationCost cost = handleAttribute((IDefaultTrait) attribute, freePointsLeft,
+                favoredInGroup ? extraFavoredDotsLeft : 0, extraGenericDotsLeft, costFactor);
+        freePointsLeft -= cost.getDotsSpent();
+        extraFavoredDotsLeft -= cost.getExtraFavoredDotsSpent();
+        extraGenericDotsLeft -= cost.getExtraGenericDotsSpent();
+        bonusCost += cost.getBonusPointsSpent();
+        if (record) {
+          increaseExtraFavoredDotSum(cost.getExtraFavoredDotsSpent());
+          increaseExtraGenericDotSum(cost.getExtraGenericDotsSpent());
+          costsByAttribute.put(attribute, cost);
+          orderedGroups.get(i).addTraitToCost(attribute, cost);
+        }
+      }
+      wastedFreeDots += freePointsLeft * freePointsLeft;
+    }
+    return SORTING_BONUS_COST_SCALE_FACTOR * bonusCost + wastedFreeDots;
   }
-  
-  private List<TraitGroupCost> createGroupCost(IAttributeCreationPoints points,
-		  List<TraitGroup> groups)
-  {
-	  List<TraitGroupCost> priorizedGroups = new ArrayList<>(traitGroups.length);
-	  for (int groupIndex = 0; groupIndex < groups.size(); groupIndex++) {
-	    priorizedGroups.add(new TraitGroupCost(groups.get(groupIndex), points.getCounts()[groupIndex]));
-	  }
-	  return priorizedGroups; 
+
+  private ElementCreationCost handleAttribute(IDefaultTrait attribute, int freeDots, int extraFavoredDots,
+                                              int extraGenericDots, int bonusPointCostFactor) {
+    ICostElement element = new TraitCostElement(attribute);
+    return new ElementCreationCostCalculator().calculateElementCreationCost(element, freeDots, extraFavoredDots,
+            extraGenericDots, bonusPointCostFactor);
+  }
+
+  private List<TraitGroupCost> createGroupCost(IAttributeCreationPoints points, List<TraitGroup> groups) {
+    List<TraitGroupCost> priorizedGroups = new ArrayList<>(traitGroups.length);
+    for (int groupIndex = 0; groupIndex < groups.size(); groupIndex++) {
+      priorizedGroups.add(new TraitGroupCost(groups.get(groupIndex), points.getCounts()[groupIndex]));
+    }
+    return priorizedGroups;
   }
 
   private List<IFavorableTrait> getSortedTraits(IFavorableTrait[] traits, int[] groupSums) {
@@ -213,15 +187,13 @@ public class AttributeCostCalculator extends AbstractFavorableTraitCostCalculato
     return pointsSpent;
   }
 
-	@Override
-    public ElementCreationCost getCosts(IDefaultTrait attribute)
-	{
-	  return costsByAttribute.get(attribute);
-	}
+  @Override
+  public ElementCreationCost getCosts(IDefaultTrait attribute) {
+    return costsByAttribute.get(attribute);
+  }
 
-	@Override
-	protected int getCostFactor(IFavorableDefaultTrait trait)
-	{
-      return costs.getAttributeCosts(trait);
-	}
+  @Override
+  protected int getCostFactor(IFavorableDefaultTrait trait) {
+    return costs.getAttributeCosts(trait);
+  }
 }

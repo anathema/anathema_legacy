@@ -44,7 +44,6 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public class CoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
-
   private static final boolean useGenericEngine = true;
   private final FavorableTraitFactory favorableTraitFactory;
   private final BackgroundConfiguration backgrounds;
@@ -91,7 +90,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAttributeIncrementChecker(template, this);
     if (useGenericEngine) {
       persona.doForEachDisregardingRules(ExaltedEngine.ATTRIBUTE, new QualityClosure() {
-
         @Override
         public void execute(Quality quality) {
           addTrait(new FavorableQualityTrait(persona, (Attribute) quality));
