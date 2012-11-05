@@ -178,7 +178,7 @@ public class FavorableQualityTrait implements IFavorableTrait, IDefaultTrait {
 
   @Override
   public int getCalculationValue() {
-    return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    return getCurrentValue();
   }
 
   @Override
