@@ -27,12 +27,6 @@ public class SetValueTest {
     assertThat(attribute.hasValue(new NumericValue(4)), is(true));
   }
 
-  @Test
-  public void doesNotChangeAttributeValueBelowMinimum() throws Exception {
-    changeValueTo(new NumericValue(0));
-    assertThat(attribute.hasValue(new NumericValue(1)), is(true));
-  }
-
   private void changeValueTo(NumericValue newValue) {
     new SetValue(qualityKey, newValue).execute(qualities);
   }
