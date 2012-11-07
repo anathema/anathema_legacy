@@ -4,6 +4,13 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 5.0.1
+
+There was a critical issue with 5.0.0, rendering the update manager unusable.
+This patch fixes it.
+
+Users of 5.0.0, you don't need to worry about your character. Just uninstall 5.0.0 and install this one, and you'll be fine.
+
 ## Release 5.0.0 "Amalion"
 
 Anathema now requires Java 7.
