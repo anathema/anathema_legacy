@@ -7,6 +7,7 @@ import net.sf.anathema.characterengine.quality.Name;
 import net.sf.anathema.characterengine.quality.QualityKey;
 import net.sf.anathema.characterengine.quality.Type;
 import net.sf.anathema.exaltedengine.attributes.AttributeFactory;
+import net.sf.anathema.exaltedengine.attributes.SetMaximumValue;
 import net.sf.anathema.exaltedengine.attributes.SetMinimumValue;
 
 public class ExaltedEngine {
@@ -30,6 +31,7 @@ public class ExaltedEngine {
       addAttribute(character, name);
     }
     character.execute(new SetMinimumValue(ATTRIBUTE, 1));
+    character.execute(new SetMaximumValue(ATTRIBUTE, 5));
   }
 
   private void addAttribute(Persona character, String name) {

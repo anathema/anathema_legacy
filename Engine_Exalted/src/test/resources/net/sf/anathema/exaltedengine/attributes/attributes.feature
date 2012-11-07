@@ -29,3 +29,8 @@ Feature: Attributes
     Given an Exalted character
     When I lower the Attribute 'Strength' to 0
     Then the character has the Attribute 'Strength' at 1
+
+  Scenario: Attributes have a maximum value of 5
+    Given an Exalted character
+    When I increase the Attribute 'Strength' to 6
+    Then the character has the Attribute 'Strength' at 1
