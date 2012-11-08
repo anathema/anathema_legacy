@@ -1,8 +1,7 @@
 dependencies {
     compile project(':Engine_Character')
     testCompile parent.ext.testDependencies
-    testCompile 'info.cukes:cucumber-java:1.1.1'
-    testCompile 'info.cukes:cucumber-junit:1.1.1'
+    testCompile parent.ext.integrationTestDependencies
 }
 
 sourceSets.main.java.setSrcDirs(['src/main/java'])
