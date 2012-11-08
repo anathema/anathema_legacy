@@ -7,12 +7,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -21,38 +22,35 @@ import java.util.Properties;
 public class PropertiesMatcher {
 
   public static void main(String[] args) throws IOException {
-    SupportedLocale locale = (SupportedLocale) JOptionPane.showInputDialog(
-        null,
-        "Choose Locale:", "Locale", JOptionPane.QUESTION_MESSAGE, null, SupportedLocale.values(), null); //$NON-NLS-1$ //$NON-NLS-2$
+    SupportedLocale locale = (SupportedLocale) JOptionPane.showInputDialog(null, "Choose Locale:", "Locale",
+            JOptionPane.QUESTION_MESSAGE, null, SupportedLocale.values(), null); //$NON-NLS-1$ //$NON-NLS-2$
     JDirectoryChooser chooser = new JDirectoryChooser();
     if (chooser.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) {
       return;
     }
-    File superFolder = chooser.getSelectedFile();
-    List<File> defaultPropertiesFiles = new ArrayList<>();
-    for (File file : superFolder.listFiles()) {
-      if (file.isDirectory()) {
-        File resourceFolder = new File(file, "/resources/language");
-        if (resourceFolder.exists()) {
-          File[] files = resourceFolder.listFiles(new PropertiesFilter());
-          for (File propertiesFile : files) {
-            if (propertiesFile.isDirectory()) {
-              continue;
+    Path superFolder = chooser.getSelectedFile().toPath();
+    List<Path> defaultPropertiesFiles = new ArrayList<>();
+    try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(superFolder, new DirectoriesOnly())) {
+      for (Path folder : directoryStream) {
+        Path resourceFolder = folder.resolve("resources/language");
+        if (Files.exists(resourceFolder)) {
+          try (DirectoryStream<Path> propertiesStream = Files.newDirectoryStream(resourceFolder, "*.properties")) {
+            for (Path propertiesFile : propertiesStream) {
+              addDefaultPath(defaultPropertiesFiles, propertiesFile);
             }
-            addDefaultFile(defaultPropertiesFiles, propertiesFile);
           }
         }
       }
     }
-    for (File propertiesFile : defaultPropertiesFiles) {
+    for (Path propertiesFile : defaultPropertiesFiles) {
       PropertiesMatcher matcher = new PropertiesMatcher(propertiesFile, locale.getLocale());
       matcher.matchProperties();
     }
   }
 
-  private static void addDefaultFile(List<File> defaultPropertiesFiles, File propertiesFile) {
+  private static void addDefaultPath(List<Path> defaultPropertiesFiles, Path propertiesFile) {
     for (SupportedLocale supportedLocale : SupportedLocale.values()) {
-      if (propertiesFile.getName().contains("_" + supportedLocale.getLocale().getLanguage() + ".")) {
+      if (propertiesFile.getFileName().toString().contains("_" + supportedLocale.getLocale().getLanguage() + ".")) {
         return;
       }
     }
@@ -62,27 +60,28 @@ public class PropertiesMatcher {
   private final Properties localeProperties = new Properties();
   private final Locale locale;
 
-  private File localePropertiesFile;
+  private Path localePropertiesFile;
   private final BufferedReader defaultPropertiesReader;
-  private final String delimiter = "\\s*[=:]\\s*";
-  private final String whiteSpace = "\\s*";
+  private static final String delimiter = "\\s*[=:]\\s*";
+  private static final String whiteSpace = "\\s*";
   private final BufferedWriter localePropertiesWriter;
 
-  public PropertiesMatcher(File defaultPropertiesFile, Locale locale) throws IOException {
-    defaultPropertiesReader = new BufferedReader(new FileReader(defaultPropertiesFile));
+  public PropertiesMatcher(Path defaultPropertiesFile, Locale locale) throws IOException {
+    Charset charset = Charset.forName("UTF-8");
+    defaultPropertiesReader = Files.newBufferedReader(defaultPropertiesFile, charset);
     this.locale = locale;
     getLocaleProperties(defaultPropertiesFile);
-    new File("./language/").mkdir();
-    localePropertiesWriter = new BufferedWriter(
-        new FileWriter(new File("./language/" + localePropertiesFile.getName())));
+    Path path = Paths.get("./language/");
+    Files.createDirectory(path);
+    localePropertiesWriter = Files.newBufferedWriter(path.resolve(localePropertiesFile), charset);
   }
 
-  private void getLocaleProperties(File defaultPropertiesFile) throws IOException {
-    String defaultPath = defaultPropertiesFile.getCanonicalPath();
+  private void getLocaleProperties(Path defaultPropertiesFile) throws IOException {
+    String defaultPath = defaultPropertiesFile.toString();
     String localizedPath = defaultPath.replace(".properties", "_" + locale.getLanguage() + ".properties");
-    localePropertiesFile = new File(localizedPath);
-    if (localePropertiesFile.exists()) {
-      InputStream localeStream = new FileInputStream(localePropertiesFile);
+    localePropertiesFile = Paths.get(localizedPath);
+    if (Files.exists(localePropertiesFile)) {
+      InputStream localeStream = Files.newInputStream(localePropertiesFile);
       localeProperties.load(localeStream);
       localeStream.close();
     }
@@ -93,8 +92,7 @@ public class PropertiesMatcher {
     while (line != null) {
       if (isComment(line) || isEmpty(line)) {
         writeString(line);
-      }
-      else {
+      } else {
         handleProperty(line);
       }
       line = defaultPropertiesReader.readLine();
@@ -115,11 +113,9 @@ public class PropertiesMatcher {
     String localizedValue = localeProperties.getProperty(key);
     if (localizedValue == null) {
       writeProperty(key, value, true);
-    }
-    else if (localizedValue.equals(value)) {
+    } else if (localizedValue.equals(value)) {
       writeProperty(key, value, true);
-    }
-    else {
+    } else {
       writeProperty(key, localizedValue, false);
     }
   }
