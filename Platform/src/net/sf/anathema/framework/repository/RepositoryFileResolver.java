@@ -2,9 +2,10 @@ package net.sf.anathema.framework.repository;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
-import org.apache.commons.io.FileUtils;
+import net.sf.anathema.lib.io.PathUtils;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Collection;
 
 public class RepositoryFileResolver implements IRepositoryFileResolver {
@@ -81,10 +82,10 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
   }
 
   @Override
-  public Collection<File> listAllFiles(IItemType itemType) {
+  public Collection<Path> listAllFiles(IItemType itemType) {
     File folder = getExistingItemTypeFolder(itemType);
     String fileExtension = getExtension(itemType);
-    return FileUtils.listFiles(folder, new String[]{fileExtension}, false);
+    return PathUtils.listAll(folder.toPath(), "*."+fileExtension);
   }
 
   private String getExtension(IItemType itemType) {

@@ -4,7 +4,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.RepositoryStringAccess;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.Collection;
 
 public class EquipmentRepositoryAccess implements EquipmentAccess {
@@ -20,7 +20,7 @@ public class EquipmentRepositoryAccess implements EquipmentAccess {
   }
 
   @Override
-  public Collection<File> listAllFiles() {
+  public Collection<Path> listAllFiles() {
     return repository.getRepositoryFileResolver().listAllFiles(equipmentType);
   }
 

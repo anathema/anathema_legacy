@@ -2,6 +2,7 @@ package net.sf.anathema.development.properties;
 
 import com.l2fprod.common.swing.JDirectoryChooser;
 import net.sf.anathema.framework.presenter.action.SupportedLocale;
+import net.sf.anathema.lib.io.PathUtils;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
@@ -34,10 +36,9 @@ public class PropertiesMatcher {
       for (Path folder : directoryStream) {
         Path resourceFolder = folder.resolve("resources/language");
         if (Files.exists(resourceFolder)) {
-          try (DirectoryStream<Path> propertiesStream = Files.newDirectoryStream(resourceFolder, "*.properties")) {
-            for (Path propertiesFile : propertiesStream) {
-              addDefaultPath(defaultPropertiesFiles, propertiesFile);
-            }
+          Collection<Path> propertyPaths = PathUtils.listAll(resourceFolder, "*.properties");
+          for (Path properties : propertyPaths) {
+            addDefaultPath(defaultPropertiesFiles, properties);
           }
         }
       }

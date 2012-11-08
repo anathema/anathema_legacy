@@ -11,10 +11,14 @@ import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.ResourceFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
+
+import static net.sf.anathema.character.equipment.impl.module.DatabaseConversionBootJob.OLD_DATABASE_FILE;
+import static net.sf.anathema.character.equipment.impl.module.DatabaseConversionBootJob.OLD_DATABASE_FOLDER;
 
 @BootJob
 public class CreateDefaultEquipmentDatabaseBootJob implements IAnathemaBootJob {
@@ -26,10 +30,9 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IAnathemaBootJob {
     /* Once bootjob ordering is in place, any of this class' variables/functions with
 the word 'legacy' in it, and any code that calls it, can be safely removed.
 Just make sure this runs *after* DatabaseConversionBootJob. */
-    File legacyDatabaseFile = new File(anathemaModel.getRepository().getRepositoryPath(),
-            "equipment" + File.separatorChar + "Equipment.yap");
+    Path legacyDatabaseFile = anathemaModel.getRepository().getDataBaseDirectory(OLD_DATABASE_FOLDER).resolve(OLD_DATABASE_FILE);
     GsonEquipmentDatabase database = GsonEquipmentDatabase.CreateFrom(anathemaModel);
-    boolean thereIsNoDataYet = !legacyDatabaseFile.exists() && database.isEmpty();
+    boolean thereIsNoDataYet = !Files.exists(legacyDatabaseFile) && database.isEmpty();
     if (thereIsNoDataYet) {
       ProxySplashscreen.getInstance().displayStatusMessage(
               resources.getString("Equipment.Bootjob.DefaultDatabaseSplashmessage")); //$NON-NLS-1$

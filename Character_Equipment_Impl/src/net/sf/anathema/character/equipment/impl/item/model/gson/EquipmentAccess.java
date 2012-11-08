@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.impl.item.model.gson;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.Collection;
 
 public interface EquipmentAccess {
-  Collection<File> listAllFiles();
+  Collection<Path> listAllFiles();
 
   void delete(String id);
 

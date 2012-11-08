@@ -13,7 +13,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import org.apache.commons.io.FilenameUtils;
 import org.jmock.example.announcer.Announcer;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.List;
 
 import static net.sf.anathema.character.equipment.impl.module.EquipmentDatabaseItemTypeConfiguration.EQUIPMENT_DATABASE_ITEM_TYPE_ID;
@@ -44,8 +44,8 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
   @Override
   public String[] getAllAvailableTemplateIds() {
     List<String> ids = Lists.newArrayList();
-    for (File file : access.listAllFiles()) {
-      String id = FilenameUtils.getBaseName(file.getName());
+    for (Path file : access.listAllFiles()) {
+      String id = FilenameUtils.getBaseName(file.getFileName().toString());
       ids.add(loadExistingTemplate(id).getName());
     }
     return ids.toArray(new String[ids.size()]);

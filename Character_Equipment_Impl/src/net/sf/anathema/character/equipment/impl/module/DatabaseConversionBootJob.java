@@ -10,21 +10,21 @@ import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 @BootJob
 public class DatabaseConversionBootJob implements IAnathemaBootJob {
 
-  private static final String OLD_DATABASE_FILE = "Equipment.yap"; //$NON-NLS-1$
-  private static final String OLD_DATABASE_FOLDER = "equipment"; //$NON-NLS-1$
+  public static final String OLD_DATABASE_FILE = "Equipment.yap"; //$NON-NLS-1$
+  public static final String OLD_DATABASE_FOLDER = "equipment"; //$NON-NLS-1$
 
   @Override
   public void run(IResources resources, IAnathemaModel anathemaModel, MainView view) {
     ProxySplashscreen.getInstance().displayStatusMessage(
             resources.getString("Equipment.Bootjob.Splashmessage")); //$NON-NLS-1$
-    File databaseFile = new File(anathemaModel.getRepository().getDataBaseDirectory(OLD_DATABASE_FOLDER).toFile(),
-            OLD_DATABASE_FILE);
-    if (!databaseFile.exists()) {
+    Path oldFile = anathemaModel.getRepository().getDataBaseDirectory(OLD_DATABASE_FOLDER).resolve(OLD_DATABASE_FILE);
+    if (!Files.exists(oldFile)) {
       return;
     }
     MessageUtilities.indicateMessage(DatabaseConversionBootJob.class, null, new Message(
