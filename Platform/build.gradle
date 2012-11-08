@@ -1,9 +1,8 @@
 dependencies {
   compile 'com.l2fprod.common:l2fprod-common-directorychooser:0.2.0'
-  compile 'commons-io:commons-io:2.4'
   compile 'org.reflections:reflections:0.9.8'
-  compile 'com.itextpdf:itextpdf:5.2.0'
-  compile 'com.google.code.gson:gson:2.1'
+  compile 'com.itextpdf:itextpdf:5.3.4'
+  compile 'com.google.code.gson:gson:2.2.2'
   compile 'de.idos.updates:updates-core:1.2.0'
   compile project(':Lib_Workflow')
   compile project(':Lib_Gui')

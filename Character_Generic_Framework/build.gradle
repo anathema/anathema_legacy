@@ -5,7 +5,6 @@ dependencies {
     testCompile project(path: ':Lib', configuration: 'tests')
     testCompile project(path: ':Character_Generic', configuration: 'tests')
     testCompile project(path: ':Character_Generic_Impl', configuration: 'tests')
-    compile 'com.eteks:parser:1.0.2'
 }
 
 configurations {
