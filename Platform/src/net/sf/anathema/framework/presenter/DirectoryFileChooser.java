@@ -1,17 +1,14 @@
 package net.sf.anathema.framework.presenter;
 
-import java.awt.Component;
-import java.io.File;
-import java.util.prefs.Preferences;
-
-import java.awt.Dimension;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
-
+import com.l2fprod.common.swing.JDirectoryChooser;
 import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
 
-import com.l2fprod.common.swing.JDirectoryChooser;
-
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.io.File;
+import java.util.prefs.Preferences;
 
 public class DirectoryFileChooser {
   
@@ -78,27 +75,5 @@ public class DirectoryFileChooser {
   private static void setChooserDirectory(String preferencesValue, File directoryFile) {
     String parentDirectory = directoryFile.getAbsolutePath();
     getChooserPreferences().put(preferencesValue, parentDirectory);
-  }
-
-  public static File[] chooseMultipleFiles(
-      Component parentComponent,
-      String preferencesValue,
-      String okayButtonString,
-      FileFilter filter) {
-    File startDirectory = getStartDirectory(preferencesValue);
-    JFileChooser chooser = new JFileChooser(startDirectory);
-    chooser.setFileFilter(filter);
-    chooser.setMultiSelectionEnabled(true);
-    int selected = chooser.showDialog(parentComponent, okayButtonString);
-    if (selected == JFileChooser.APPROVE_OPTION) {
-      File[] selectedFiles = chooser.getSelectedFiles();
-      if (selectedFiles.length == 0) {
-        return new File[0];
-      }
-      File chooserDirectory = selectedFiles[0].getParentFile();
-      setChooserDirectory(preferencesValue, chooserDirectory);
-      return selectedFiles;
-    }
-    return new File[0];
   }
 }
