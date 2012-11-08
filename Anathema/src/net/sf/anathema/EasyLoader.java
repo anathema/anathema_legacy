@@ -1,40 +1,48 @@
 package net.sf.anathema;
 
-import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.file.DirectoryIteratorException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class EasyLoader extends URLClassLoader {
 
-  public EasyLoader(File file) throws MalformedURLException {
-    super(getURLs(file));
+  public EasyLoader(Path path) throws MalformedURLException {
+    super(getURLs(path));
   }
 
-  private static URL[] getURLs(File file) throws MalformedURLException {
-    if (file.isDirectory()) {
-      return allJarFilesInDirectory(file);
+  private static URL[] getURLs(Path path) throws MalformedURLException {
+    if (Files.isDirectory(path)) {
+      return allJarFilesInDirectory(path);
     }
-    return singleFile(file);
+    return singleFile(path);
   }
 
-  private static URL[] allJarFilesInDirectory(File folder) {
+  private static URL[] allJarFilesInDirectory(Path folder) {
     Collection<URL> urls = new ArrayList<>();
-    for (File file : folder.listFiles()) {
-      urls.add(fileToUrl(file));
+    try (DirectoryStream<Path> stream = Files.newDirectoryStream(folder, new FilesOnly())) {
+      for (Path file : stream) {
+        urls.add(fileToUrl(file));
+      }
+      return urls.toArray(new URL[urls.size()]);
+    } catch (IOException | DirectoryIteratorException x) {
+      throw new RuntimeException("Could not read library folder.", x);
     }
-    return urls.toArray(new URL[urls.size()]);
   }
 
-  private static URL[] singleFile(File file) throws MalformedURLException {
+  private static URL[] singleFile(Path file) {
     return new URL[]{fileToUrl(file)};
   }
 
-  private static URL fileToUrl(File input) {
+  private static URL fileToUrl(Path input) {
     try {
-      return input.toURI().toURL();
+      return input.toUri().toURL();
     } catch (MalformedURLException | NullPointerException e) {
       throw new RuntimeException("Could not load all files.", e);
     }

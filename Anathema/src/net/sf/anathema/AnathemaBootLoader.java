@@ -1,7 +1,7 @@
 package net.sf.anathema;
 
-import java.io.File;
 import java.lang.reflect.Method;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class AnathemaBootLoader {
@@ -11,7 +11,7 @@ public class AnathemaBootLoader {
     if (!isClasspathConfigured()) {
       Properties properties = new PropertiesLoader("anathema.properties").load();
       String libraryFolder = properties.getProperty("library.folder");
-      loader = new EasyLoader(new File(libraryFolder));
+      loader = new EasyLoader(Paths.get(libraryFolder));
     }
     Class<?> aClass = loadMainClass(loader);
     Object instance = aClass.newInstance();
