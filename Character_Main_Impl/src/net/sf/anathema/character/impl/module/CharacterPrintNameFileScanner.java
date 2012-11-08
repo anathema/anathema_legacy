@@ -45,7 +45,7 @@ public class CharacterPrintNameFileScanner {
     Document document;
     try {
       File scanFile = resolver.getMainFile(file.getItemType(), file.getRepositoryId());
-      document = DocumentUtilities.read(scanFile);
+      document = DocumentUtilities.read(scanFile.toPath());
     } catch (AnathemaException ex) {
       scanCompatible(file);
       return;
@@ -82,7 +82,6 @@ public class CharacterPrintNameFileScanner {
     Identified casteType = registry.get(characterType).getById(casteTypeStr);
     castesByFile.put(file, casteType);
   }
-  
 
   // Used only by scan as a fall-back method for backward compatibility when all fails.
   private void scanCompatible(PrintNameFile file) throws IOException {

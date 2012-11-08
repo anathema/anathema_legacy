@@ -1,6 +1,5 @@
 package net.sf.anathema.lib.xml;
 
-import com.google.common.io.Closeables;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Document;
@@ -11,39 +10,19 @@ import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.Reader;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 public class DocumentUtilities {
 
   // We should save all documents in an encoding which can encode any valid string.
   private static final String DEFAULT_ENCODING = "UTF-8"; //$NON-NLS-1$
-
-  private DocumentUtilities() {
-    // Nothing to do
-  }
-
-  public static void save(Document document, File file) throws IOException {
-    OutputStream outputStream = null;
-    try {
-      outputStream = new FileOutputStream(file);
-      save(document, outputStream);
-    }
-    finally {
-      Closeables.closeQuietly(outputStream);
-    }
-  }
 
   public static void save(Document document, OutputStream outputStream) throws IOException {
     save(document, new XMLWriter(outputStream, createOutputFormat()));
@@ -53,8 +32,7 @@ public class DocumentUtilities {
     try {
       writer.write(document);
       writer.flush();
-    }
-    catch (UnsupportedEncodingException e) {
+    } catch (UnsupportedEncodingException e) {
       throw new IOException(e.getMessage());
     }
   }
@@ -70,58 +48,41 @@ public class DocumentUtilities {
   }
 
   public static Document read(String source) throws AnathemaException {
-    return read(new StringReader(source));
-  }
-  
-  public static Document read(URL source) throws URISyntaxException, FileNotFoundException, AnathemaException {
-	return read(new File(source.toURI()));
-  }
-
-  public static Document read(Reader reader) throws AnathemaException {
     try {
       SAXReader saxReader = new SAXReader();
-      return saxReader.read(reader);
-    }
-    catch (DocumentException exception) {
+      return saxReader.read(new StringReader(source));
+    } catch (DocumentException exception) {
       throw new AnathemaException(exception);
     }
   }
 
-  public static Document read(File file) throws FileNotFoundException, AnathemaException {
-    InputStream inputStream = null;
-    try {
-      inputStream = new FileInputStream(file);
+  public static Document read(Path path) throws AnathemaException {
+    try (InputStream inputStream = Files.newInputStream(path)) {
       return read(inputStream);
-    }
-    finally {
-      Closeables.closeQuietly(inputStream);
+    } catch (IOException x) {
+      throw new AnathemaException(x);
     }
   }
 
   public static Document read(InputStream in) throws PersistenceException {
-    return read(in, null);
-  }
-
-  public static Document read(InputStream inputStream, String systemId) throws PersistenceException {
     try {
       SAXReader saxReader = new SAXReader();
-      return saxReader.read(inputStream, systemId);
-    }
-    catch (DocumentException exception) {
+      return saxReader.read(in, null);
+    } catch (DocumentException exception) {
       throw new PersistenceException(exception);
     }
   }
 
   /**
    * Finds the first occurrence of an element in a document.
-   * 
-   * @param document the document to be searched for the element. Must not be null.
+   *
+   * @param document  the document to be searched for the element. Must not be null.
    * @param childName the name of the element to be searched for. Must not be null.
    * @return the found element or null if it could not be found
    * @throws NullPointerException thrown if any of the arguments is null
    */
   public static Element findElement(Document document, String childName) {
-    XPath xpath = document.createXPath("//"+childName+"[1]");
+    XPath xpath = document.createXPath("//" + childName + "[1]");
     Object result = xpath.evaluate(document.getRootElement());
     if (result instanceof List) {
       return null;

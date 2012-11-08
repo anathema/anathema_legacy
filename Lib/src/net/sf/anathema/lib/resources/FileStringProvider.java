@@ -2,9 +2,11 @@ package net.sf.anathema.lib.resources;
 
 import com.google.common.io.Closeables;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.Properties;
@@ -14,30 +16,29 @@ public class FileStringProvider implements IStringResourceHandler {
   private final Properties properties = new Properties();
 
   public FileStringProvider(String fileBase, Locale locale) throws IOException {
-    File propertyFile = getPropertyFile(fileBase, locale);
-    if (propertyFile.exists()) {
-      FileInputStream stream = new FileInputStream(propertyFile);
+    Path propertyFile = getPropertyFile(fileBase, locale);
+    if (Files.exists(propertyFile)) {
+      InputStream stream = Files.newInputStream(propertyFile);
       try {
         properties.load(stream);
-      }
-      finally {
+      } finally {
         Closeables.closeQuietly(stream);
       }
     }
   }
 
-  private File getPropertyFile(String fileBase, Locale locale) {
+  private Path getPropertyFile(String fileBase, Locale locale) {
     String localeSuffix = locale.toString();
     String preferredBundleName = fileBase;
     if (localeSuffix.length() > 0) {
-      preferredBundleName += "_" + localeSuffix; //$NON-NLS-1$
+      preferredBundleName += "_" + localeSuffix;
     }
-    preferredBundleName += ".properties"; //$NON-NLS-1$
-    File preferredFile = new File(preferredBundleName);
-    if (preferredFile.exists()) {
+    preferredBundleName += ".properties";
+    Path preferredFile = Paths.get(preferredBundleName);
+    if (Files.exists(preferredFile)) {
       return preferredFile;
     }
-    return new File(fileBase + ".properties"); //$NON-NLS-1$
+    return Paths.get(fileBase + ".properties");
   }
 
   @Override

@@ -69,11 +69,8 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
       return null;
     }
     PrintNameFile mainPrintNameFile = createSingleFilePrintNameFile(mainFile, itemType);
-    return new PrintNameFile(
-        mainPrintNameFile.getFile().getParentFile(),
-        mainPrintNameFile.getPrintName(),
-        mainPrintNameFile.getRepositoryId(),
-        mainPrintNameFile.getItemType());
+    return new PrintNameFile(mainPrintNameFile.getFile().getParentFile(), mainPrintNameFile.getPrintName(),
+            mainPrintNameFile.getRepositoryId(), mainPrintNameFile.getItemType());
   }
 
   private PrintNameFile createSingleFilePrintNameFile(File file, IItemType itemType) {
@@ -82,8 +79,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     }
     try {
       return readPrintName(file, itemType);
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       logger.error(e);
       return null;
     }
@@ -92,8 +88,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   private PrintNameFile readPrintName(File file, IItemType itemType) throws IOException {
     try {
       return extractPrintnameThroughXml(file, itemType);
-    }
-    catch (AnathemaException ex) {
+    } catch (AnathemaException ex) {
       // Fall-back to the old method
       return extractPrintnameThroughRegularExpression(file, itemType);
     }
@@ -112,10 +107,14 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     return new PrintNameFile(file, printNameMatcher.group(1), idMatcher.group(1), itemType);
   }
 
-  private PrintNameFile extractPrintnameThroughXml(File file, IItemType itemType)
-      throws FileNotFoundException,
-      AnathemaException {
-    Document doc = DocumentUtilities.read(file);
+  private PrintNameFile extractPrintnameThroughXml(File file,
+                                                   IItemType itemType) throws FileNotFoundException {
+    Document doc;
+    try {
+      doc = DocumentUtilities.read(file.toPath());
+    } catch (AnathemaException e) {
+      return null;
+    }
     Element root = doc.getRootElement();
     String printName = root.attributeValue(PRINT_NAME_ATTR);
     String idName = root.attributeValue(ID_ATTR);
