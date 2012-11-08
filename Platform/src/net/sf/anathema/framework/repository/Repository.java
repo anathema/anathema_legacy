@@ -20,20 +20,19 @@ import org.jmock.example.announcer.Announcer;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.text.MessageFormat;
 
 public class Repository implements IRepository {
 
   private final PrintNameFileAccess printNameFileAccess;
   private final File repositoryFolder;
-  private final File defaultDataFolder;
   private final RepositoryFileResolver resolver;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
 
   public Repository(File repositoryFolder, IItemManagementModel itemManagement) {
     Preconditions.checkArgument(repositoryFolder.exists());
     this.resolver = new RepositoryFileResolver(repositoryFolder);
-    this.defaultDataFolder = resolver.getExistingDataFolder("data"); //$NON-NLS-1$
     this.repositoryFolder = repositoryFolder;
     this.printNameFileAccess = new PrintNameFileAccess(resolver, itemManagement);
   }
@@ -179,11 +178,8 @@ public class Repository implements IRepository {
   }
 
   @Override
-  public File getDataBaseDirectory(String subfolder) {
-    if (subfolder == null) {
-      return defaultDataFolder;
-    }
-    return resolver.getExistingDataFolder(subfolder);
+  public Path getDataBaseDirectory(String subfolder) {
+    return resolver.getExistingDataFolder(subfolder).toPath();
   }
 
   @Override

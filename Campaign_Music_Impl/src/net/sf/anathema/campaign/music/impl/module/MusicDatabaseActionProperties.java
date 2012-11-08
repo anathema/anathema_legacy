@@ -1,16 +1,15 @@
 package net.sf.anathema.campaign.music.impl.module;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.swing.Icon;
-
 import net.sf.anathema.campaign.music.impl.model.MusicDatabase;
 import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.module.IDatabaseActionProperties;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
+import java.io.IOException;
+import java.nio.file.Path;
 
 public class MusicDatabaseActionProperties implements IDatabaseActionProperties {
   private static final String MUSIC_DATABASE_ITEM_ID = "MusicDatabase.Item"; //$NON-NLS-1$
@@ -52,7 +51,7 @@ public class MusicDatabaseActionProperties implements IDatabaseActionProperties 
 
   @Override
   public IItemData createItemData(IDataFileProvider provider) throws IOException {
-    File parentFolder = provider.getDataBaseDirectory("music"); //$NON-NLS-1$
-    return new MusicDatabase(new File(parentFolder, "musicdatabase.yap")); //$NON-NLS-1$
+    Path parentFolder = provider.getDataBaseDirectory("music"); //$NON-NLS-1$
+    return new MusicDatabase(parentFolder.resolve("musicdatabase.yap")); //$NON-NLS-1$
   }
 }

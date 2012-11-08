@@ -21,7 +21,7 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) throws InitializationException {
-    File dataBaseDirectory = characterGenerics.getDataFileProvider().getDataBaseDirectory(DATABASE_FOLDER);
+    File dataBaseDirectory = characterGenerics.getDataFileProvider().getDataBaseDirectory(DATABASE_FOLDER).toFile();
     EquipmentDirectAccess access = new EquipmentDirectAccess(dataBaseDirectory);
     IEquipmentTemplateProvider equipmentDatabase = new GsonEquipmentDatabase(access);
     characterGenerics.getAdditionalModelFactoryRegistry().register(IEquipmentAdditionalModelTemplate.ID,

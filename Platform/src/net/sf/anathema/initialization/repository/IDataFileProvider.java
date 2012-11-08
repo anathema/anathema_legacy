@@ -1,8 +1,8 @@
 package net.sf.anathema.initialization.repository;
 
-import java.io.File;
+import java.nio.file.Path;
 
 public interface IDataFileProvider {
 
-  File getDataBaseDirectory(String subfolderName);
+  Path getDataBaseDirectory(String subfolderName);
 }

@@ -1,7 +1,6 @@
 package net.sf.anathema.campaign.music.impl.model;
 
-import java.io.File;
-
+import com.db4o.ObjectContainer;
 import net.sf.anathema.campaign.music.impl.model.library.LibraryControl;
 import net.sf.anathema.campaign.music.impl.model.player.MusicPlayerModel;
 import net.sf.anathema.campaign.music.impl.model.selection.MusicSelectionModel;
@@ -15,7 +14,7 @@ import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerMod
 import net.sf.anathema.framework.itemdata.model.NonPersistableItemData;
 import net.sf.anathema.lib.logging.Logger;
 
-import com.db4o.ObjectContainer;
+import java.nio.file.Path;
 
 public class MusicDatabase extends NonPersistableItemData implements IMusicDatabase {
 
@@ -25,8 +24,8 @@ public class MusicDatabase extends NonPersistableItemData implements IMusicDatab
   private IMusicPlayerModel musicPlayerModel;
   private final IMusicSearchControl musicSearchControl;
 
-  public MusicDatabase(File databaseFile) {
-    ObjectContainer container = MusicDatabaseConnectionManager.createConnection(databaseFile);
+  public MusicDatabase(Path pathToDatabase) {
+    ObjectContainer container = MusicDatabaseConnectionManager.createConnection(pathToDatabase);
     MusicDatabasePersister persister = new MusicDatabasePersister(container);
     this.libraryControl = new LibraryControl(persister);
     musicSelection = new MusicSelectionModel(persister);

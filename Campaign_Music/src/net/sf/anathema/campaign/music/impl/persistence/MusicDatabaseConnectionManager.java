@@ -9,24 +9,24 @@ import net.sf.anathema.campaign.music.model.track.Md5Checksum;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.lib.exception.AnathemaException;
 
-import java.io.File;
+import java.nio.file.Path;
 
 public class MusicDatabaseConnectionManager {
 
   private static ObjectContainer connection = null;
 
-  public static ObjectContainer createConnection(File dbFile) {
+  public static ObjectContainer createConnection(Path pathToDatabase) {
     if (connection != null) {
       return connection;
     }
     try {
-      return connectTo(dbFile);
+      return connectTo(pathToDatabase);
     } catch (DatabaseFileLockedException e) {
       throw new AnathemaException("Database already in use. Maybe another instance of Anathema is already running.", e);
     }
   }
 
-  private static ObjectContainer connectTo(File dbFile) {
+  private static ObjectContainer connectTo(Path pathToDatabase) {
     Configuration configuration = Db4o.newConfiguration();
     configuration.objectClass(DbMp3Track.class).cascadeOnUpdate(true);
     configuration.objectClass(DbMp3Track.class).cascadeOnDelete(true);
@@ -37,7 +37,7 @@ public class MusicDatabaseConnectionManager {
     configuration.allowVersionUpdates(true);
     configuration.automaticShutDown(true);
     configuration.reflectWith(new JdkReflector(Version.class.getClassLoader()));
-    connection = Db4o.openFile(configuration, dbFile.getAbsolutePath());
+    connection = Db4o.openFile(configuration, pathToDatabase.toString());
     return connection;
   }
 }

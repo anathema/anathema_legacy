@@ -22,7 +22,7 @@ public class DatabaseConversionBootJob implements IAnathemaBootJob {
   public void run(IResources resources, IAnathemaModel anathemaModel, MainView view) {
     ProxySplashscreen.getInstance().displayStatusMessage(
             resources.getString("Equipment.Bootjob.Splashmessage")); //$NON-NLS-1$
-    File databaseFile = new File(anathemaModel.getRepository().getDataBaseDirectory(OLD_DATABASE_FOLDER),
+    File databaseFile = new File(anathemaModel.getRepository().getDataBaseDirectory(OLD_DATABASE_FOLDER).toFile(),
             OLD_DATABASE_FILE);
     if (!databaseFile.exists()) {
       return;

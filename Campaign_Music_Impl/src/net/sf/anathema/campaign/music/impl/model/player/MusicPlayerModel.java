@@ -12,7 +12,7 @@ import net.sf.anathema.campaign.music.presenter.selection.player.MusicPlayerStat
 import net.sf.anathema.lib.exception.AnathemaException;
 import org.jmock.example.announcer.Announcer;
 
-import java.io.File;
+import java.nio.file.Path;
 import java.util.Map;
 
 public class MusicPlayerModel implements IMusicPlayerModel {
@@ -58,11 +58,8 @@ public class MusicPlayerModel implements IMusicPlayerModel {
   private void initPlayer(IMp3Track trackToPlay) throws AnathemaException {
     this.track = trackToPlay;
     try {
-      File preferredFile = Mp3Utilities.getPreferredFile(track);
-      if (preferredFile == null) {
-        throw new AnathemaException("No file found for track " + track); //$NON-NLS-1$
-      }
-      player.open(preferredFile);
+      Path preferredFile = Mp3Utilities.getPreferredFile(track);
+      player.open(preferredFile.toFile());
     } catch (BasicPlayerException e) {
       throw new AnathemaException(e);
     }
