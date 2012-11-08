@@ -9,7 +9,6 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
-import org.apache.commons.io.IOUtils;
 
 import java.awt.Component;
 import java.io.File;
@@ -48,17 +47,12 @@ public class ExportSelectionTracksAction extends SmartAction {
     if (file == null) {
       return;
     }
-    Writer writer = null;
-    try {
-      writer = new FileWriter(file);
+    try (Writer writer = new FileWriter(file)) {
       new PlayListExporter().export(writer, selectionModel.getCurrentSelection().getContent());
     }
     catch (IOException e) {
       Message message = new Message(resources.getString("Errors.MusicDatabase.ExportPlaylist"), e); //$NON-NLS-1$
       MessageUtilities.indicateMessage(getClass(), parentComponent, message);
-    }
-    finally {
-      IOUtils.closeQuietly(writer);
     }
   }
 }
