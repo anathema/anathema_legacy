@@ -20,9 +20,10 @@ import java.awt.Component;
 import java.awt.Event;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static javax.swing.KeyStroke.getKeyStroke;
 import static net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement.openDocumentAfterPrint;
@@ -68,7 +69,7 @@ public class ControlledPrintAction extends AbstractPrintAction {
       return;
     }
     String suggestedFileName = getBaseName(item) + PDF_EXTENSION;
-    File selectedFile = FileChoosingUtilities.selectSaveFile(parentComponent, suggestedFileName);
+    Path selectedFile = FileChoosingUtilities.selectSaveFile(parentComponent, suggestedFileName);
     if (selectedFile == null) {
       return;
     }
@@ -89,10 +90,10 @@ public class ControlledPrintAction extends AbstractPrintAction {
     }
   }
 
-  private boolean checkFileAllowed(Component parentComponent, File selectedFile) {
+  private boolean checkFileAllowed(Component parentComponent, Path selectedFile) {
     String message = resources.getString("Anathema.Reporting.PrintAction.OverwriteMessage"); //$NON-NLS-1$
     String title = resources.getString("Anathema.Reporting.PrintAction.OverwriteTitle"); //$NON-NLS-1$
-    return !selectedFile.exists() || JOptionPane.showConfirmDialog(parentComponent, message, title,
+    return !Files.exists(selectedFile) || JOptionPane.showConfirmDialog(parentComponent, message, title,
             JOptionPane.YES_NO_OPTION) != 1;
   }
 

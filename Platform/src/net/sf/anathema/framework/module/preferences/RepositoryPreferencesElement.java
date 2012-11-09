@@ -9,6 +9,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
+import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
@@ -22,14 +23,17 @@ import java.awt.Component;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.REPOSITORY_PREFERENCE;
 
 @PreferenceElement
 @Weight(weight = 80)
 public class RepositoryPreferencesElement implements IPreferencesElement {
-  private File repositoryDirectory;
-  private File defaultDirectory;
+  private Path repositoryDirectory;
+  private Path defaultDirectory;
   private RepositoryLocationResolver repository;
   private boolean dirty;
   private boolean modificationAllowed = false;
@@ -39,8 +43,8 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   public RepositoryPreferencesElement() {
     try {
       repository = new RepositoryLocationResolver(InitializationPreferences.getDefaultPreferences());
-      repositoryDirectory = new File(repository.resolve()).getCanonicalFile();
-      defaultDirectory = new File(repository.getDefaultLocation()).getCanonicalFile();
+      repositoryDirectory = new File(repository.resolve()).getCanonicalFile().toPath();
+      defaultDirectory = new File(repository.getDefaultLocation()).getCanonicalFile().toPath();
       verifyDirectoriesExist();
     } catch (IOException e) {
       Throwable cause = e.getCause();
@@ -86,15 +90,8 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     }
   }
 
-  private void setDisplayedPath(File selectedDirectory) {
-    try {
-      repositoryTextField.setText(selectedDirectory.getCanonicalPath());
-    } catch (IOException e) {
-      Throwable cause = e.getCause();
-      MessageDialogFactory.showMessageDialog(null,
-              new Message("An error occured while setting the repository path: " + cause.getMessage(),
-                      cause)); //$NON-NLS-1$
-    }
+  private void setDisplayedPath(Path selectedDirectory) {
+    repositoryTextField.setText(selectedDirectory.toAbsolutePath().toString());
   }
 
   private JButton createBrowseButton() {
@@ -102,19 +99,12 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
             resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory")) { //$NON-NLS-1$
       @Override
       protected void execute(Component parent) {
-        try {
-          File selectedDir = DirectoryFileChooser.createDirectoryChooser(repositoryDirectory.getCanonicalPath(),
-                  resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory"));
-          if (selectedDir != null) {
-            setDisplayedPath(selectedDir);
-            repositoryDirectory = selectedDir;
-            dirty = modificationAllowed;
-          }
-        } catch (IOException e) {
-          Throwable cause = e.getCause();
-          MessageDialogFactory.showMessageDialog(null,
-                  new Message("An error occured while opening the directory browser: " + cause.getMessage(),
-                          cause)); //$NON-NLS-1$
+        Path selectedDir = DirectoryFileChooser.createDirectoryChooser(repositoryDirectory,
+                resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.ChooseDirectory"));
+        if (selectedDir != null) {
+          setDisplayedPath(selectedDir);
+          repositoryDirectory = selectedDir;
+          dirty = modificationAllowed;
         }
       }
     });
@@ -125,16 +115,9 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
             resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.DefaultDirectory")) {
       @Override
       protected void execute(Component parent) {
-        try {
-          repositoryDirectory = new File(defaultDirectory.getCanonicalPath());
+          repositoryDirectory = defaultDirectory.toAbsolutePath();
           setDisplayedPath(defaultDirectory);
           dirty = modificationAllowed;
-        } catch (IOException e) {
-          Throwable cause = e.getCause();
-          MessageDialogFactory.showMessageDialog(null,
-                  new Message("An error occured while setting the default path: " + cause.getMessage(),
-                          cause)); //$NON-NLS-1$
-        }
       }
     });
   }
@@ -145,10 +128,10 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
               @Override
               protected void execute(Component parent) {
                 try {
-                  if (repositoryDirectory.exists()) {
-                    Desktop.getDesktop().open(repositoryDirectory);
-                  } else if (repositoryDirectory.getParentFile().exists()) {
-                    Desktop.getDesktop().open(repositoryDirectory.getParentFile());
+                  if (Files.exists(repositoryDirectory)) {
+                    PathUtils.openOnDesktop(repositoryDirectory);
+                  } else if (Files.exists(repositoryDirectory.getParent())) {
+                    PathUtils.openOnDesktop(repositoryDirectory.getParent());
                   } else {
                     throw new IOException(
                             "Repository directory (and parent directory) deleted by user while the preferences dialog was open");
@@ -166,10 +149,10 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   @Override
   public void savePreferences() {
     try {
-      if (repositoryDirectory.getCanonicalFile().equals(defaultDirectory.getCanonicalFile())) {
+      if (Files.isSameFile(repositoryDirectory, defaultDirectory)) {
         SYSTEM_PREFERENCES.remove(REPOSITORY_PREFERENCE);
       } else {
-        SYSTEM_PREFERENCES.put(REPOSITORY_PREFERENCE, repositoryDirectory.getCanonicalPath());
+        SYSTEM_PREFERENCES.put(REPOSITORY_PREFERENCE, repositoryDirectory.toAbsolutePath().toString());
       }
     } catch (IOException e) {
       Throwable cause = e.getCause();
@@ -184,11 +167,11 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
   @Override
   public boolean isValid() {
-    return new RepositoryFolderWorker().isValid(repositoryDirectory);
+    return new RepositoryFolderWorker().isValid(repositoryDirectory.toFile());
   }
 
   public boolean isDefaultValid() {
-    return new RepositoryFolderWorker().isValid(defaultDirectory);
+    return new RepositoryFolderWorker().isValid(defaultDirectory.toFile());
   }
 
   @Override
@@ -203,7 +186,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
   @Override
   public void reset() {
-    repositoryDirectory = new File(repository.resolve());
+    repositoryDirectory = Paths.get(repository.resolve());
     setDisplayedPath(repositoryDirectory);
     dirty = false;
   }

@@ -12,8 +12,8 @@ import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 
 public class RepositoryItemExportPresenter implements Presenter {
 
@@ -43,7 +43,7 @@ public class RepositoryItemExportPresenter implements Presenter {
       @Override
       protected void execute(Component parentComponent) {
         try {
-          File saveFile = FileChoosingUtilities.selectSaveFile(parentComponent, "Export.zip"); //$NON-NLS-1$
+          Path saveFile = FileChoosingUtilities.selectSaveFile(parentComponent, "Export.zip"); //$NON-NLS-1$
           if (saveFile == null) {
             return;
           }

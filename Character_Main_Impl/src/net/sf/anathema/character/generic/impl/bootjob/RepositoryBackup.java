@@ -8,8 +8,9 @@ import net.sf.anathema.framework.repository.tree.FileExporter;
 import net.sf.anathema.framework.repository.tree.RepositoryZipPathCreator;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class RepositoryBackup {
   private IResources resources;
@@ -29,7 +30,7 @@ public class RepositoryBackup {
         return;
       }
       RepositoryZipPathCreator creator = new RepositoryZipPathCreator(repository.getRepositoryPath());
-      File saveFile = getSaveFile();
+      Path saveFile = getSaveFile();
       new FileExporter(creator, exportModel, resources).exportToZip(saveFile);
     } catch (IOException e) {
       throw new RuntimeException(
@@ -38,13 +39,9 @@ public class RepositoryBackup {
     }
   }
 
-  public boolean isAlreadyBackedUp() {
-    return getSaveFile().exists();
-  }
-
-  private File getSaveFile() {
+  private Path getSaveFile() {
     IRepository repository = model.getRepository();
     String version = new Version(resources).asString();
-    return new File(repository.getRepositoryPath(), "BackupForFirstLaunchOf" + version + ".zip");
+    return Paths.get(repository.getRepositoryPath()).resolve("BackupForFirstLaunchOf" + version + ".zip");
   }
 }

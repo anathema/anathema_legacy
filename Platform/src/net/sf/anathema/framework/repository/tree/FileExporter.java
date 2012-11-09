@@ -6,15 +6,14 @@ import net.sf.anathema.lib.resources.IResources;
 import org.apache.commons.io.IOUtils;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class FileExporter {
-
-
   private RepositoryZipPathCreator creator;
   private ExportModel model;
   private IResources resources;
@@ -25,8 +24,8 @@ public class FileExporter {
     this.resources = resources;
   }
 
-  public PrintNameFile[] exportToZip(File saveFile) throws IOException {
-    ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(saveFile));
+  public PrintNameFile[] exportToZip(Path saveFile) throws IOException {
+    ZipOutputStream zipOutputStream = new ZipOutputStream(Files.newOutputStream(saveFile));
     zipOutputStream.setComment(resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$
     PrintNameFile[] printNameFiles = model.getPrintNameFilesInSelection();
     for (PrintNameFile printNameFile : printNameFiles) {

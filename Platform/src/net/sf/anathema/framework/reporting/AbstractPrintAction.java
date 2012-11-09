@@ -6,6 +6,7 @@ import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.progress.ProgressMonitorDialog;
+import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
@@ -15,12 +16,12 @@ import org.apache.commons.io.IOUtils;
 
 import javax.swing.KeyStroke;
 import java.awt.Component;
-import java.awt.Desktop;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static java.awt.Desktop.isDesktopSupported;
 
@@ -47,7 +48,7 @@ public abstract class AbstractPrintAction extends SmartAction {
   }
 
   protected void printWithProgress(Component parentComponent, final IItem item, final Report selectedReport,
-                                   final File selectedFile) throws InvocationTargetException {
+                                   final Path selectedFile) throws InvocationTargetException {
     new ProgressMonitorDialog(parentComponent, anathemaModel.generateInformativeMessage()).run(
             //$NON-NLS-1$
             new INonInterruptibleRunnableWithProgress() {
@@ -63,11 +64,11 @@ public abstract class AbstractPrintAction extends SmartAction {
   }
 
   private void performPrint(IProgressMonitor monitor, IItem item, Report selectedReport,
-                            File selectedFile) throws IOException, ReportException {
+                            Path selectedFile) throws IOException, ReportException {
     monitor.beginTaskWithUnknownTotalWork(resources.getString("Anathema.Reporting.Print.Progress.Task")); //$NON-NLS-1$
-    FileOutputStream stream = null;
+    OutputStream stream = null;
     try {
-      stream = new FileOutputStream(selectedFile);
+      stream = Files.newOutputStream(selectedFile);
       selectedReport.print(item, stream);
     } finally {
       IOUtils.closeQuietly(stream);
@@ -102,9 +103,9 @@ public abstract class AbstractPrintAction extends SmartAction {
     return "Anathema.Reporting.Message.PrintError"; //$NON-NLS-1$
   }
 
-  protected void openFile(File selectedFile) throws IOException {
+  protected void openFile(Path selectedFile) throws IOException {
     if (isAutoOpenSupported()) {
-      Desktop.getDesktop().open(selectedFile);
+      PathUtils.openOnDesktop(selectedFile);
     }
   }
 

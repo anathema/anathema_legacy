@@ -11,10 +11,11 @@ import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class ExportSelectionTracksAction extends SmartAction {
 
@@ -41,13 +42,13 @@ public class ExportSelectionTracksAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    File file = FileChoosingUtilities.selectSaveFile(
+    Path file = FileChoosingUtilities.selectSaveFile(
         parentComponent,
         resources.getString("Music.Actions.ExportList.DefaultFileName")); //$NON-NLS-1$
     if (file == null) {
       return;
     }
-    try (Writer writer = new FileWriter(file)) {
+    try (Writer writer = Files.newBufferedWriter(file, Charset.forName("UTF-8"))) {
       new PlayListExporter().export(writer, selectionModel.getCurrentSelection().getContent());
     }
     catch (IOException e) {

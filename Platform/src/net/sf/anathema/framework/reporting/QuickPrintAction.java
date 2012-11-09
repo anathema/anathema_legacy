@@ -12,9 +12,10 @@ import javax.swing.KeyStroke;
 import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static javax.swing.KeyStroke.getKeyStroke;
 
@@ -48,15 +49,15 @@ public class QuickPrintAction extends AbstractPrintAction {
     return new QuickPrintEnabledListener(this, new DefaultReportFinder(anathemaModel, resources));
   }
 
-  private File getPrintFile(IItem item) {
+  private Path getPrintFile(IItem item) {
     try {
       String baseName = getBaseName(item);
       while (baseName.length() < 3) {
         baseName = baseName.concat("_");
       }
-      File tempFile = File.createTempFile(baseName, PDF_EXTENSION);
-      tempFile.deleteOnExit();
-      return tempFile;
+      Path path = Files.createTempFile(baseName, PDF_EXTENSION);
+      path.toFile().deleteOnExit();
+      return path;
     } catch (IOException e) {
       throw new RuntimeException(resources.getString("Anathema.Reporting.Message.FileCreationFailed"), e);
     }
@@ -73,7 +74,7 @@ public class QuickPrintAction extends AbstractPrintAction {
       return;
     }
     try {
-      File selectedFile = getPrintFile(item);
+      Path selectedFile = getPrintFile(item);
       printWithProgress(parentComponent, item, selectedReport, selectedFile);
       openFile(selectedFile);
     } catch (IOException e) {

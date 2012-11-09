@@ -21,9 +21,9 @@ import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +60,7 @@ public class AddMusicFolderAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    File directory = DirectoryFileChooser.createMusicDirectoryChooser(
+    Path directory = DirectoryFileChooser.createMusicDirectoryChooser(
             ADD_MUSIC_CHOOSER_VALUE,
             resources.getString("Music.Actions.AddFolder.FileDialogTitle")); //$NON-NLS-1$
     if (directory == null) {
@@ -68,7 +68,7 @@ public class AddMusicFolderAction extends SmartAction {
     }
     final IMusicFolderWalker walker;
     try {
-      walker = model.createMusicFolderWalker(directory);
+      walker = model.createMusicFolderWalker(directory.toFile());
     } catch (IOException e) {
       throw new UnreachableCodeReachedException();
     }

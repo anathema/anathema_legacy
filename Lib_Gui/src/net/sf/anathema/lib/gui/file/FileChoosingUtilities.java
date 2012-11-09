@@ -6,13 +6,15 @@ import javax.swing.plaf.FileChooserUI;
 import javax.swing.plaf.basic.BasicFileChooserUI;
 import java.awt.Component;
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class FileChoosingUtilities {
 
-  private static File workingDirectory = new File("."); //$NON-NLS-1$
+  private static Path workingDirectory = Paths.get(".");
 
-  public static File selectSaveFile(Component parentComponent, String suggestedFileName) {
-    JFileChooser chooser = new JFileChooser(workingDirectory);
+  public static Path selectSaveFile(Component parentComponent, String suggestedFileName) {
+    JFileChooser chooser = new JFileChooser(workingDirectory.toFile());
     FileChooserUI chooserUi = chooser.getUI();
     if (chooserUi instanceof BasicFileChooserUI) {
       BasicFileChooserUI basicUi = (BasicFileChooserUI) chooserUi;
@@ -22,8 +24,8 @@ public class FileChoosingUtilities {
     if (approveOption != JFileChooser.APPROVE_OPTION) {
       return null;
     }
-    File selectedFile = chooser.getSelectedFile();
-    workingDirectory = selectedFile.getParentFile();
+    Path selectedFile = chooser.getSelectedFile().toPath();
+    workingDirectory = selectedFile.getParent();
     return selectedFile;
   }
 

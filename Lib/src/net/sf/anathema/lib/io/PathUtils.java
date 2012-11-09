@@ -2,6 +2,7 @@ package net.sf.anathema.lib.io;
 
 import net.sf.anathema.lib.logging.Logger;
 
+import java.awt.Desktop;
 import java.io.IOException;
 import java.nio.file.DirectoryIteratorException;
 import java.nio.file.DirectoryStream;
@@ -17,6 +18,10 @@ public class PathUtils {
 
   public static String readFileToString(Path path) throws IOException {
     return new String(Files.readAllBytes(path));
+  }
+
+  public static void openOnDesktop(Path path) throws IOException {
+    Desktop.getDesktop().open(path.toFile());
   }
 
   public static Collection<Path> listAll(Path directory, String glob) {

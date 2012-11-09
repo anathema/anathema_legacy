@@ -13,7 +13,7 @@ import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;
-import java.io.File;
+import java.nio.file.Path;
 
 import static net.sf.anathema.campaign.music.presenter.library.content.AddMusicFolderAction.ADD_MUSIC_CHOOSER_VALUE;
 
@@ -49,7 +49,7 @@ public class AddMusicFileAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    File mp3File = DirectoryFileChooser.chooseSingleFile(
+    Path mp3File = DirectoryFileChooser.chooseSingleFile(
             parentComponent,
             ADD_MUSIC_CHOOSER_VALUE,
             resources.getString("Music.Actions.AddFile.FileDialogTitle"), new Mp3FileFilter(resources)); //$NON-NLS-1$
@@ -58,7 +58,7 @@ public class AddMusicFileAction extends SmartAction {
     }
     String libraryName = ((ILibrary) view.getSelectedLibrary()).getName();
     try {
-      model.addTrack(libraryName, mp3File);
+      model.addTrack(libraryName, mp3File.toFile());
       view.getTrackListView().setObjects(searchControl.getTracks(((ILibrary) view.getSelectedLibrary()).getName()));
     } catch (Exception e) {
       MessageUtilities.indicateMessage(AddMusicFileAction.class, parentComponent, new Message(
