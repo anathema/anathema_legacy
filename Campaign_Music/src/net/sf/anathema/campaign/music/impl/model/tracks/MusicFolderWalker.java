@@ -6,16 +6,15 @@ import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
 import net.sf.anathema.campaign.music.model.libary.ITrackHandler;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.lib.io.PathUtils;
-import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.progress.Cancelable;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class MusicFolderWalker implements IMusicFolderWalker {
   private static final Logger logger = Logger.getLogger(MusicFolderWalker.class);
@@ -44,7 +43,7 @@ public class MusicFolderWalker implements IMusicFolderWalker {
             resources.getString("Music.Actions.AddFolder.ProgressMonitor.Tracks") + //$NON-NLS-1$
             ").", //$NON-NLS-1$
             trackCount);
-    walkFile(monitor, cancelFlag, "", handler); //$NON-NLS-1$
+    walkFile(monitor, cancelFlag, Paths.get("."), handler);
   }
 
   private int getTrackCount() {
@@ -56,17 +55,16 @@ public class MusicFolderWalker implements IMusicFolderWalker {
     });
   }
 
-  private void walkDirectory(IProgressMonitor monitor, Cancelable cancelFlag, String relativePath,
+  private void walkDirectory(IProgressMonitor monitor, Cancelable cancelFlag, Path relativePath,
                              ITrackHandler handler) throws InterruptedException {
     Path file = musicFolder.resolve(relativePath);
-    for (File child : file.toFile().listFiles()) {
-      String childRelativePath = StringUtilities.isNullOrEmpty(
-              relativePath) ? child.getName() : relativePath + File.separator + child.getName();
+    for (Path child : PathUtils.listAll(file)) {
+      Path childRelativePath = relativePath.resolve(child);
       walkFile(monitor, cancelFlag, childRelativePath, handler);
     }
   }
 
-  private void walkFile(IProgressMonitor monitor, Cancelable cancelFlag, String relativePath,
+  private void walkFile(IProgressMonitor monitor, Cancelable cancelFlag, Path relativePath,
                         ITrackHandler handler) throws InterruptedException {
     Path file = musicFolder.resolve(relativePath);
     if (Files.isDirectory(file)) {

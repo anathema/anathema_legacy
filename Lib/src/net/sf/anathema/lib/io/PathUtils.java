@@ -43,6 +43,19 @@ public class PathUtils {
     }
   }
 
+  public static Collection<Path> listAll(Path directory) {
+    try (DirectoryStream<Path> stream = Files.newDirectoryStream(directory)) {
+      List<Path> items = new ArrayList<>();
+      for (Path path : stream) {
+        items.add(path);
+      }
+      return items;
+    } catch (IOException | DirectoryIteratorException x) {
+      logger.error("Could not read files.", x);
+      return Collections.emptyList();
+    }
+  }
+
   public static int getRecursiveFileCount(Path folder, Predicate<Path> predicate) {
     Preconditions.checkArgument(Files.isDirectory(folder), "Must be an existing folder.");
     int count = 0;
