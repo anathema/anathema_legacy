@@ -7,15 +7,15 @@ import java.io.File;
 
 public class FileUtilities {
 
-  public static int getFileCount(File folder, boolean recursive, Predicate<File> predicate) {
+  public static int getFileCount(File folder, Predicate<File> predicate) {
     Preconditions.checkArgument(folder.isDirectory(), "Must be an existing folder."); //$NON-NLS-1$
     int count = 0;
     for (File file : folder.listFiles()) {
       if (predicate.apply(file)) {
         count++;
       }
-      if (file.isDirectory() && recursive) {
-        count += getFileCount(file, recursive, predicate);
+      if (file.isDirectory()) {
+        count += getFileCount(file, predicate);
       }
     }
     return count;
