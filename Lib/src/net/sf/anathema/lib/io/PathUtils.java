@@ -20,6 +20,10 @@ public class PathUtils {
     return new String(Files.readAllBytes(path));
   }
 
+  public static void writeStringToFile(Path file, String string) throws IOException {
+    Files.write(file, string.getBytes());
+  }
+
   public static void openOnDesktop(Path path) throws IOException {
     Desktop.getDesktop().open(path.toFile());
   }

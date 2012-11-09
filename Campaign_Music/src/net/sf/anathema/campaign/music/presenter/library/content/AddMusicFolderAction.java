@@ -34,11 +34,8 @@ public class AddMusicFolderAction extends SmartAction {
   private final IMusicSearchControl searchControl;
   private final IResources resources;
 
-  public AddMusicFolderAction(
-          IResources resources,
-          IMusicSearchControl searchControl,
-          ILibraryControl model,
-          ILibraryControlView view) {
+  public AddMusicFolderAction(IResources resources, IMusicSearchControl searchControl, ILibraryControl model,
+                              ILibraryControlView view) {
     super(new MusicUI(resources).getAddFolderIcon());
     this.resources = resources;
     this.searchControl = searchControl;
@@ -60,48 +57,51 @@ public class AddMusicFolderAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    Path directory = DirectoryFileChooser.createMusicDirectoryChooser(
-            ADD_MUSIC_CHOOSER_VALUE,
+    Path directory = DirectoryFileChooser.createMusicDirectoryChooser(ADD_MUSIC_CHOOSER_VALUE,
             resources.getString("Music.Actions.AddFolder.FileDialogTitle")); //$NON-NLS-1$
     if (directory == null) {
       return;
     }
-    final IMusicFolderWalker walker;
+    final IMusicFolderWalker walker = createFolderWalker(directory);
     try {
-      walker = model.createMusicFolderWalker(directory.toFile());
+      new ProgressMonitorDialog(parentComponent,
+              resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(
+              new IInterruptibleRunnableWithProgress() { //$NON-NLS-1$
+                @Override
+                public void run(final IProgressMonitor monitor,
+                                Cancelable cancelable) throws InterruptedException, InvocationTargetException {
+                  final List<IMp3Track> foundTracks = new ArrayList<>();
+                  walker.walk(resources, monitor, cancelable, new ITrackHandler() {
+                    @Override
+                    public void handleMp3(IMp3Track mp3Item) {
+                      foundTracks.add(mp3Item);
+                      monitor.subTask(resources.getString(
+                              "Music.Actions.AddFolder.ProgressMonitor.TracksFound") + ": " + foundTracks.size() + "."); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+                    }
+                  });
+                  String selectedLibraryName = ((ILibrary) view.getSelectedLibrary()).getName();
+                  model.addTracks(selectedLibraryName, foundTracks);
+                  view.getTrackListView().setObjects(
+                          searchControl.getTracks(((ILibrary) view.getSelectedLibrary()).getName()));
+                  monitor.done();
+                }
+              });
+    } catch (InterruptedException e) {
+      MessageUtilities.indicateMessage(getClass(), parentComponent,
+              new Message(resources.getString("Errors.MusicDatabase.AddFolderCancelled"), //$NON-NLS-1$
+                      MessageType.INFORMATION));
+    } catch (InvocationTargetException e) {
+      MessageUtilities.indicateMessage(getClass(), parentComponent,
+              new Message(resources.getString("Errors.MusicDatabase.ReadMusicData"), //$NON-NLS-1$
+                      e));
+    }
+  }
+
+  private IMusicFolderWalker createFolderWalker(Path directory) {
+    try {
+      return model.createMusicFolderWalker(directory);
     } catch (IOException e) {
       throw new UnreachableCodeReachedException();
-    }
-    try {
-      new ProgressMonitorDialog(
-              parentComponent,
-              resources.getString("Music.Actions.AddFolder.ProgressMonitor.DialogTitle")).run(new IInterruptibleRunnableWithProgress() { //$NON-NLS-1$
-        @Override
-        public void run(final IProgressMonitor monitor,
-                        Cancelable cancelable) throws InterruptedException, InvocationTargetException {
-          final List<IMp3Track> foundTracks = new ArrayList<>();
-          walker.walk(resources, monitor, cancelable, new ITrackHandler() {
-            @Override
-            public void handleMp3(IMp3Track mp3Item) {
-              foundTracks.add(mp3Item);
-              monitor.subTask(resources.getString("Music.Actions.AddFolder.ProgressMonitor.TracksFound") + ": " + foundTracks.size() + "."); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
-            }
-          });
-          String selectedLibraryName = ((ILibrary) view.getSelectedLibrary()).getName();
-          model.addTracks(selectedLibraryName, foundTracks);
-          view.getTrackListView().setObjects(
-                  searchControl.getTracks(((ILibrary) view.getSelectedLibrary()).getName()));
-          monitor.done();
-        }
-      });
-    } catch (InterruptedException e) {
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-              resources.getString("Errors.MusicDatabase.AddFolderCancelled"), //$NON-NLS-1$
-              MessageType.INFORMATION));
-    } catch (InvocationTargetException e) {
-      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-              resources.getString("Errors.MusicDatabase.ReadMusicData"), //$NON-NLS-1$
-              e));
     }
   }
 }

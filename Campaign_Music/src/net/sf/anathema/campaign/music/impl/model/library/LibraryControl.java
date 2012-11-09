@@ -13,6 +13,7 @@ import org.jmock.example.announcer.Announcer;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,8 +91,8 @@ public final class LibraryControl implements ILibraryControl {
   }
 
   @Override
-  public IMusicFolderWalker createMusicFolderWalker(File folder) throws IOException {
-    return new MusicFolderWalker(folder);
+  public IMusicFolderWalker createMusicFolderWalker(Path folder) throws IOException {
+    return new MusicFolderWalker(folder.toFile());
   }
 
   @Override

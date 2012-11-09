@@ -1,12 +1,10 @@
 package net.sf.anathema.campaign.music.impl.model.tracks;
 
 import net.sf.anathema.campaign.music.model.track.Md5Checksum;
-import org.apache.commons.io.IOUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -26,8 +24,8 @@ public class Mp3ChecksumCalculator {
     return v2Offset + v1Offset;
   }
 
-  public Md5Checksum calculate(File file) throws IOException, NoSuchAlgorithmException {
-    byte[] fileData = readFileToByteArray(file);
+  public Md5Checksum calculate(Path file) throws IOException, NoSuchAlgorithmException {
+    byte[] fileData = Files.readAllBytes(file);
     boolean hasV1Tag = hasV1(fileData);
     boolean hasFrontV2 = hasFrontV2(fileData);
     boolean hasEndV2 = hasEndV2(fileData, hasV1Tag);
@@ -68,27 +66,5 @@ public class Mp3ChecksumCalculator {
     int length = fileData.length;
     String v1String = new String(new byte[] { fileData[length - 128], fileData[length - 127], fileData[length - 126] });
     return v1String.equals("TAG"); //$NON-NLS-1$
-  }
-
-  private byte[] readFileToByteArray(File file) throws IOException {
-    InputStream stream = null;
-    try {
-      stream = new FileInputStream(file);
-      long length = file.length();
-      if (length > Integer.MAX_VALUE) {
-        throw new RuntimeException("Files > 2GB are too large to handle."); //$NON-NLS-1$
-      }
-      byte[] bytes = new byte[(int) length];
-      int offset = 0;
-      int bytesRead = 0;
-      while (offset < bytes.length && bytesRead != -1) {
-        bytesRead = stream.read(bytes, offset, (int) length - offset);
-        offset += bytesRead;
-      }
-      return bytes;
-    }
-    finally {
-      IOUtils.closeQuietly(stream);
-    }
   }
 }

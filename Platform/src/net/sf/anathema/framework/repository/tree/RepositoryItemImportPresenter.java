@@ -13,9 +13,9 @@ import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.awt.Component;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
@@ -49,12 +49,12 @@ public class RepositoryItemImportPresenter implements Presenter {
       @Override
       protected void execute(Component parentComponent) {
         try {
-          File loadFile = FileChoosingUtilities.chooseFile(
+          Path loadFile = FileChoosingUtilities.chooseFile(
               resources.getString("AnathemaCore.Tools.RepositoryView.ImportOk"), parentComponent, new ZipFileFilter(resources)); //$NON-NLS-1$
           if (loadFile == null) {
             return;
           }
-          ZipFile importZipFile = new ZipFile(loadFile);
+          ZipFile importZipFile = new ZipFile(loadFile.toFile());
           MultiEntryMap<String, ZipEntry> entriesByItem = groupEntriesByItems(importZipFile);
           for (String comment : entriesByItem.keySet()) {
             String[] splitComment = comment.split("#", 3); //$NON-NLS-1$

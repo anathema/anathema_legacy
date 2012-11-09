@@ -5,7 +5,6 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.plaf.FileChooserUI;
 import javax.swing.plaf.basic.BasicFileChooserUI;
 import java.awt.Component;
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -29,14 +28,10 @@ public class FileChoosingUtilities {
     return selectedFile;
   }
 
-  public static File chooseFile(String confirm, Component parentComponent, FileFilter filter) {
-    return chooseFile(confirm, parentComponent, filter, null);
-  }
-
-  private static File chooseFile(String confirm, Component parentComponent, FileFilter filter, File startDirectory) {
-    JFileChooser chooser = new JFileChooser(startDirectory);
+  public static Path chooseFile(String confirm, Component parentComponent, FileFilter filter) {
+    JFileChooser chooser = new JFileChooser();
     chooser.setFileFilter(filter);
     chooser.showDialog(parentComponent, confirm);
-    return chooser.getSelectedFile();
+    return chooser.getSelectedFile().toPath();
   }
 }

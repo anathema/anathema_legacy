@@ -5,6 +5,7 @@ import net.sf.anathema.lib.exception.AnathemaException;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 public interface ILibraryControl {
@@ -19,7 +20,7 @@ public interface ILibraryControl {
 
   boolean containsLibraryName(String name);
 
-  IMusicFolderWalker createMusicFolderWalker(File folder) throws IOException;
+  IMusicFolderWalker createMusicFolderWalker(Path folder) throws IOException;
 
   ILibrary[] getAllLibraries();
 
