@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class LibraryControl implements ILibraryControl {
+public class LibraryControl implements ILibraryControl {
 
   private final Announcer<ILibraryChangedListener> listenerControl = Announcer.to(ILibraryChangedListener.class);
   private MusicDatabasePersister musicDataBasePersister;

@@ -5,6 +5,7 @@ import com.google.common.base.Predicate;
 import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
 import net.sf.anathema.campaign.music.model.libary.ITrackHandler;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
+import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.lang.StringUtilities;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.progress.Cancelable;
@@ -47,10 +48,10 @@ public class MusicFolderWalker implements IMusicFolderWalker {
   }
 
   private int getTrackCount() {
-    return FileUtilities.getFileCount(musicFolder.toFile(), new Predicate<File>() {
+    return PathUtils.getRecursiveFileCount(musicFolder, new Predicate<Path>() {
       @Override
-      public boolean apply(File file) {
-        return isMp3File(file.toPath());
+      public boolean apply(Path file) {
+        return isMp3File(file);
       }
     });
   }
