@@ -11,7 +11,6 @@ import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.lib.exception.AnathemaException;
 import org.jmock.example.announcer.Announcer;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -92,7 +91,7 @@ public final class LibraryControl implements ILibraryControl {
 
   @Override
   public IMusicFolderWalker createMusicFolderWalker(Path folder) throws IOException {
-    return new MusicFolderWalker(folder.toFile());
+    return new MusicFolderWalker(folder);
   }
 
   @Override
@@ -108,7 +107,7 @@ public final class LibraryControl implements ILibraryControl {
   }
 
   @Override
-  public void addTrack(String name, File mp3File) throws AnathemaException, IOException {
+  public void addTrack(String name, Path mp3File) throws AnathemaException, IOException {
     List<IMp3Track> tracks = new ArrayList<>();
     tracks.add(new FileMp3Track(mp3File));
     musicDataBasePersister.addTracks(name, tracks);

@@ -58,7 +58,7 @@ public class AddMusicFileAction extends SmartAction {
     }
     String libraryName = ((ILibrary) view.getSelectedLibrary()).getName();
     try {
-      model.addTrack(libraryName, mp3File.toFile());
+      model.addTrack(libraryName, mp3File);
       view.getTrackListView().setObjects(searchControl.getTracks(((ILibrary) view.getSelectedLibrary()).getName()));
     } catch (Exception e) {
       MessageUtilities.indicateMessage(AddMusicFileAction.class, parentComponent, new Message(

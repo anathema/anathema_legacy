@@ -10,8 +10,8 @@ import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.lib.exception.AnathemaException;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.security.NoSuchAlgorithmException;
 
 public class FileMp3Track implements IMp3Track {
@@ -24,12 +24,12 @@ public class FileMp3Track implements IMp3Track {
   private IMusicTheme[] themes;
   private IMusicMood[] feelings;
 
-  public FileMp3Track(File file) throws IOException, AnathemaException {
+  public FileMp3Track(Path file) throws IOException, AnathemaException {
     try {
       MpegAudioFileReader audioFileReader = new MpegAudioFileReader();
-      audioFileFormat = (MpegAudioFileFormat) audioFileReader.getAudioFileFormat(file);
+      audioFileFormat = (MpegAudioFileFormat) audioFileReader.getAudioFileFormat(file.toFile());
       checksum = new Mp3ChecksumCalculator().calculate(file);
-      fileReferences = new String[] { file.getCanonicalPath() };
+      fileReferences = new String[] { file.toAbsolutePath().toString() };
     }
     catch (UnsupportedAudioFileException | NoSuchAlgorithmException e) {
       throw new AnathemaException(e);

@@ -3,7 +3,6 @@ package net.sf.anathema.campaign.music.model.libary;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.lib.exception.AnathemaException;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -14,7 +13,7 @@ public interface ILibraryControl {
 
   void addNewLibrary(String name);
 
-  void addTrack(String name, File mp3File) throws AnathemaException, IOException;
+  void addTrack(String name, Path mp3File) throws AnathemaException, IOException;
 
   void addTracks(String name, List<IMp3Track> tracks);
 
