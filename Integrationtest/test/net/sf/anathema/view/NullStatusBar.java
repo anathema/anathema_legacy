@@ -1,4 +1,4 @@
-package net.sf.anathema;
+package net.sf.anathema.view;
 
 import net.sf.anathema.framework.view.messaging.IStatusBar;
 import net.sf.anathema.lib.message.IBasicMessage;

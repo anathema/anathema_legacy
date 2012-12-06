@@ -1,4 +1,4 @@
-package net.sf.anathema;
+package net.sf.anathema.view;
 
 import net.sf.anathema.framework.view.menu.IMenu;
 

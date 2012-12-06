@@ -28,6 +28,7 @@ public class Integrationtest {
     IRepositoryItemPersister itemPersister = persisterRegistry.get(characterItemType);
     IItem item = itemPersister.createNew(template);
     ICharacter character = (ICharacter) item.getItemData();
+    character.
     System.out.println(Arrays.deepToString(character.getTraitConfiguration().getAllAbilities()));
   }
 
