@@ -39,16 +39,14 @@ public abstract class AbstractTraitTemplate implements ITraitTemplate {
   public boolean isRequiredFavored() {
     return false;
   }
-  
+
   @Override
-  public int getCalculationMinValue(ILimitationContext context, ITraitType type)
-  {
-	  return getMinimumValue(context);
+  public int getCalculationMinValue(ILimitationContext context, ITraitType type) {
+    return getMinimumValue(context);
   }
-  
+
   @Override
-  public String getTag()
-  {
-	  return null;
+  public String getTag() {
+    return null;
   }
 }
