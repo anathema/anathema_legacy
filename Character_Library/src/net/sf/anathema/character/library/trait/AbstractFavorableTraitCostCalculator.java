@@ -27,11 +27,9 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   private int extraFavoredDotSum = 0;
   private int extraGenericDotSum = 0;
 
-  public AbstractFavorableTraitCostCalculator(
-      IAdditionalTraitBonusPointManagement additionalPools,
-      IFavorableTraitCreationPoints points,
-      int freeTraitMax,
-      IFavorableTrait[] traits) {
+  public AbstractFavorableTraitCostCalculator(IAdditionalTraitBonusPointManagement additionalPools,
+                                              IFavorableTraitCreationPoints points, int freeTraitMax,
+                                              IFavorableTrait[] traits) {
     this.additionalPools = additionalPools;
     this.points = points;
     this.freeTraitMax = freeTraitMax;
@@ -48,8 +46,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
       FavorableTraitCost[] allCosts;
       if (trait.getFavorization().isCasteOrFavored()) {
         allCosts = handleFavoredTrait(trait, costFactor);
-      }
-      else {
+      } else {
         allCosts = handleGeneralTrait(trait, costFactor);
       }
       for (FavorableTraitCost cost : allCosts) {
@@ -75,7 +72,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     generalDotSum = 0;
     costsByTrait.clear();
   }
-  
+
   @Override
   public int getBonusPointsSpent() {
     int bonusPointSum = 0;
@@ -101,32 +98,28 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   private int getFavoredDotCount() {
     return points.getFavoredDotCount();
   }
-  
-  protected int getExtraFavoredDotCount()
-  {
-	return points.getExtraFavoredDotCount();
+
+  protected int getExtraFavoredDotCount() {
+    return points.getExtraFavoredDotCount();
   }
-  
-  protected int getExtraGenericDotCount()
-  {
-	return points.getExtraGenericDotCount();
+
+  protected int getExtraGenericDotCount() {
+    return points.getExtraGenericDotCount();
   }
 
   @Override
   public int getFavoredPicksSpent() {
     return favoredPicksSpent;
   }
-  
+
   @Override
-  public int getExtraFavoredDotsSpent()
-  {
-	  return extraFavoredDotSum;
+  public int getExtraFavoredDotsSpent() {
+    return extraFavoredDotSum;
   }
-  
+
   @Override
-  public int getExtraGenericDotsSpent()
-  {
-	  return extraGenericDotSum;
+  public int getExtraGenericDotsSpent() {
+    return extraGenericDotSum;
   }
 
   @Override
@@ -137,9 +130,9 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   protected IFavorableTrait[] getTraits() {
     return traits;
   }
-  
+
   private FavorableTraitCost handleFavoredSingleTrait(IDefaultTrait trait, int bonusPointCostFactor) {
-	int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
+    int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
     int freePointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax) - trait.getCalculationMinValue();
     int favoredDotsSpent = 0;
     int generalDotsSpent = 0;
@@ -150,8 +143,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
       increaseFavoredDotSum(favoredDotsSpent);
       freePointsToAdd -= favoredDotsSpent;
     }
-    if (freePointsToAdd > 0)
-    {
+    if (freePointsToAdd > 0) {
       if (getFreePointsSpent(false) < getDefaultDotCount()) {
         int remainingGeneralPoints = getDefaultDotCount() - getFreePointsSpent(false);
         generalDotsSpent = Math.min(remainingGeneralPoints, freePointsToAdd);
@@ -159,8 +151,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
         freePointsToAdd -= generalDotsSpent;
       }
     }
-    if (freePointsToAdd > 0)
-    {
+    if (freePointsToAdd > 0) {
       if (getFreePointsSpent(false) < getDefaultDotCount()) {
         int remainingGeneralPoints = getDefaultDotCount() - getFreePointsSpent(false);
         generalDotsSpent = Math.min(remainingGeneralPoints, freePointsToAdd);
@@ -195,14 +186,14 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   private FavorableTraitCost handleGeneralSingleTrait(IDefaultTrait trait, int bonusPointCostFactor) {
-	int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
-	int freePointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax) - trait.getCalculationMinValue();
+    int freeTraitMax = Math.max(this.freeTraitMax, trait.getAbsoluteMinValue());
+    int freePointsToAdd = Math.min(trait.getCalculationValue(), freeTraitMax) - trait.getCalculationMinValue();
     int generalDotsSpent = 0;
     int bonusPointsSpent = 0;
     if (getFreePointsSpent(false) < getDefaultDotCount()) {
       int remainingGeneralPoints = getDefaultDotCount() - getFreePointsSpent(false);
       generalDotsSpent = Math.min(remainingGeneralPoints, freePointsToAdd);
-      
+
       increaseGeneralDotSum(generalDotsSpent);
       freePointsToAdd -= generalDotsSpent;
     }
@@ -231,15 +222,13 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     });
     return allCosts.toArray(new FavorableTraitCost[allCosts.size()]);
   }
-  
-  protected void increaseExtraFavoredDotSum(int extraDotsSpent)
-  {
-	  extraFavoredDotSum += extraDotsSpent;
+
+  protected void increaseExtraFavoredDotSum(int extraDotsSpent) {
+    extraFavoredDotSum += extraDotsSpent;
   }
-  
-  protected void increaseExtraGenericDotSum(int extraDotsSpent)
-  {
-	  extraGenericDotSum += extraDotsSpent;
+
+  protected void increaseExtraGenericDotSum(int extraDotsSpent) {
+    extraGenericDotSum += extraDotsSpent;
   }
 
   private void increaseFavoredDotSum(int favoredDotsSpent) {
@@ -251,8 +240,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   private void increaseGeneralDotSum(int generalDotsSpent) {
-	  if (generalDotsSpent == 0)
-		  return;
+    if (generalDotsSpent == 0) return;
     generalDotSum += generalDotsSpent;
   }
 
