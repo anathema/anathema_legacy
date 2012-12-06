@@ -79,14 +79,13 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
         }
       }
     }
-    return specialties.toArray(new IGenericSpecialty[0]);
+    return specialties.toArray(new IGenericSpecialty[specialties.size()]);
   }
 
   @Override
   protected int getCostFactor(IFavorableDefaultTrait trait) {
     ITraitFavorization favorization = trait.getFavorization();
-    int costFactor = costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(trait.getCalculationValue());
-    return costFactor;
+    return costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(trait.getCalculationValue());
   }
 
   @Override
