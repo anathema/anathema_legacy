@@ -6,7 +6,7 @@ import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.view.ErrorWindow;
 import net.sf.anathema.framework.view.IWindow;
-import net.sf.anathema.initialization.AnathemaInitializer;
+import net.sf.anathema.initialization.GuiInitializer;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.logging.Logger;
 
@@ -50,7 +50,7 @@ public class Anathema {
   private IWindow createView(IInitializationPreferences initializationPreferences) {
     try {
       displayStatus("Starting Platform..."); //$NON-NLS-1$
-      return new AnathemaInitializer(initializationPreferences).initialize();
+      return new GuiInitializer(initializationPreferences).initialize();
     } catch (InitializationException e) {
       LoggerFactory.getLogger(Anathema.class).error("Could not start platform.", e);
       return new ErrorWindow(e);

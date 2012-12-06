@@ -1,15 +1,10 @@
 package net.sf.anathema.initialization;
 
-import net.sf.anathema.ISplashscreen;
-import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
-import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.AnathemaResources;
-import net.sf.anathema.framework.view.AnathemaMainView;
 import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
 import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
@@ -18,21 +13,21 @@ import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.CentralExceptionHandling;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.ResourceFile;
 
 import java.util.Collection;
 import java.util.Set;
 
-public class AnathemaInitializer {
+public abstract class Initializer {
+
   private final IInitializationPreferences initializationPreferences;
   private final ItemTypeConfigurationCollection itemTypeCollection;
   private final AnathemaExtensionCollection extensionCollection;
   private final DefaultAnathemaReflections reflections;
   private final ReflectionsInstantiater instantiater;
 
-  public AnathemaInitializer(IInitializationPreferences initializationPreferences) throws InitializationException {
+  public Initializer(IInitializationPreferences initializationPreferences) throws InitializationException {
     this.reflections = new DefaultAnathemaReflections();
     this.instantiater = new ReflectionsInstantiater(reflections);
     this.itemTypeCollection = new ItemTypeConfigurationCollection(instantiater);
@@ -40,15 +35,15 @@ public class AnathemaInitializer {
     this.initializationPreferences = initializationPreferences;
   }
 
-  public MainView initialize() throws InitializationException {
+  protected InitializedModelAndView initializeModelViewAndPresentation() throws InitializationException {
     ResourceLoader loader = createResourceLoaderForInternalAndCustomResources();
     AnathemaResources resources = initResources(loader);
-    showVersionOnSplashscreen(resources);
+    showVersion(resources);
     configureExceptionHandling(resources);
     IAnathemaModel anathemaModel = initModel(resources, loader);
     MainView view = initView(resources);
     initPresentation(resources, anathemaModel, view);
-    return view;
+    return new InitializedModelAndView(view, anathemaModel);
   }
 
   private void initPresentation(AnathemaResources resources, IAnathemaModel anathemaModel, MainView view) {
@@ -69,13 +64,6 @@ public class AnathemaInitializer {
     return modelInitializer.initializeModel(resources, reflections, loader);
   }
 
-  private MainView initView(IResources resources) {
-    displayMessage("Building View...");
-    AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources,
-            initializationPreferences.initMaximized());
-    return new AnathemaMainView(viewProperties);
-  }
-
   private AnathemaResources initResources(ResourceLoader loader) {
     displayMessage("Loading Resources...");
     AnathemaResources resources = new AnathemaResources();
@@ -92,17 +80,13 @@ public class AnathemaInitializer {
     return new AggregatedResourceLoader(reflections, customLoader);
   }
 
-  private void showVersionOnSplashscreen(AnathemaResources resources) {
-    Version version = new Version(resources);
-    getSplashscreen().displayVersion("v" + version.asString());
-    Logger.getLogger(AnathemaInitializer.class).info("Program version is " + version.asString());
+  protected IInitializationPreferences getPreferences() {
+    return initializationPreferences;
   }
 
-  private void displayMessage(String message) {
-    getSplashscreen().displayStatusMessage(message); //$NON-NLS-1$
-  }
+  protected abstract void showVersion(IResources resources);
 
-  private ISplashscreen getSplashscreen() {
-    return ProxySplashscreen.getInstance();
-  }
+  protected abstract void displayMessage(String message);
+
+  protected abstract MainView initView(IResources resources);
 }

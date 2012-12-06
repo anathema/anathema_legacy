@@ -1,0 +1,13 @@
+dependencies {
+  testCompile parent.ext.testDependencies
+  //For testing, all projects need to be compiled against.
+  project.parent.subprojects.each {
+    if (isRelevant(it)) {
+      testCompile project(":${it.name}")
+    }
+  }
+}
+
+private boolean isRelevant(project) {
+  return project.name != "Anathema" && project.name != "Integrationtest"
+}
