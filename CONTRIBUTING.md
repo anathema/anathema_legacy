@@ -9,4 +9,4 @@ Please tell us beforehand if you disagree with this policy.
 #### Private files will remain private
 If you submit some private files (like your character) so we can look at it while trying to solve your issue with Anathema, will keep them as confidential as possible and only - privately - share them among each other.
 
-No matter what: Thanks for your contribution to Anathema!
+#### Thanks for your contribution to Anathema!
