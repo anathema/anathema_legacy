@@ -89,12 +89,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private void addAttributes(ICharacterTemplate template) {
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredAttributeIncrementChecker(template, this);
     if (useGenericEngine) {
-      persona.doForEachDisregardingRules(ExaltedEngine.ATTRIBUTE, new QualityClosure() {
-        @Override
-        public void execute(Quality quality) {
-          addTrait(new FavorableQualityTrait(persona, (Attribute) quality));
-        }
-      });
+      persona.doForEachDisregardingRules(ExaltedEngine.ATTRIBUTE, new AddTraitBasedOnQuality());
     } else {
       addFavorableTraits(attributeTraitGroups, incrementChecker);
     }
@@ -175,6 +170,13 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     @Override
     public Iterator<ITrait> iterator() {
       return asList(getAllTraits()).iterator();
+    }
+  }
+
+  private class AddTraitBasedOnQuality implements QualityClosure {
+    @Override
+    public void execute(Quality quality) {
+      addTrait(new FavorableQualityTrait(persona, (Attribute) quality));
     }
   }
 }
