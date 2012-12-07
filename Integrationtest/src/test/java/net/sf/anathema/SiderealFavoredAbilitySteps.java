@@ -8,9 +8,11 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
@@ -51,6 +53,12 @@ public class SiderealFavoredAbilitySteps {
     bonusPointManagement.recalculate();
     Integer dotsSpent = bonusPointManagement.getFavoredAbilityModel().getValue();
     assertThat(dotsSpent, is(amount));
+  }
+
+  @Then("^she has (\\d+) dots in (.*)$")
+  public void she_has_dots_in_Craft(int amount, String abilityName) throws Throwable {
+    IFavorableTrait ability = character.getTraitConfiguration().getFavorableTrait(AbilityType.valueOf(abilityName));
+    assertThat(ability.getCurrentValue(), is(amount));
   }
 
   private ICharacterTemplate loadDefaultTemplateForType(String type) {
