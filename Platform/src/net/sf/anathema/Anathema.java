@@ -4,8 +4,8 @@ import com.itextpdf.text.log.LoggerFactory;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
+import net.sf.anathema.framework.view.ApplicationFrame;
 import net.sf.anathema.framework.view.ErrorWindow;
-import net.sf.anathema.framework.view.IWindow;
 import net.sf.anathema.initialization.AnathemaInitializer;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.logging.Logger;
@@ -40,17 +40,17 @@ public class Anathema {
     SwingUtilities.invokeLater(new Runnable() {
       @Override
       public void run() {
-        IWindow anathemaView = createView(initializationPreferences);
+        ApplicationFrame anathemaView = createView(initializationPreferences);
         displayStatus("Done.");
         anathemaView.show();
       }
     });
   }
 
-  private IWindow createView(IInitializationPreferences initializationPreferences) {
+  private ApplicationFrame createView(IInitializationPreferences initializationPreferences) {
     try {
       displayStatus("Starting Platform..."); //$NON-NLS-1$
-      return new AnathemaInitializer(initializationPreferences).initialize().getWindow();
+      return new AnathemaInitializer(initializationPreferences).initialize();
     } catch (InitializationException e) {
       LoggerFactory.getLogger(Anathema.class).error("Could not start platform.", e);
       return new ErrorWindow(e);

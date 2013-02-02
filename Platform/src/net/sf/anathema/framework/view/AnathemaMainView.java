@@ -19,7 +19,7 @@ import java.awt.Dimension;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.displayOnScreenCenter;
 
-public class AnathemaMainView implements MainView, IItemViewManagement, IWindow {
+public class AnathemaMainView implements MainView, IItemViewManagement, ApplicationFrame {
 
   private final AnathemaToolBar toolbar = new AnathemaToolBar();
   private final MainMenuBar menu;
@@ -103,7 +103,7 @@ public class AnathemaMainView implements MainView, IItemViewManagement, IWindow 
   }
 
   @Override
-  public IWindow getWindow() {
+  public ApplicationFrame getWindow() {
     return this;
   }
 

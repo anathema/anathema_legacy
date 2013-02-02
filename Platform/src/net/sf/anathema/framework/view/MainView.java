@@ -7,7 +7,7 @@ public interface MainView {
 
   IItemViewManagement getItemViewManagement();
 
-  IWindow getWindow();
+  ApplicationFrame getWindow();
 
   IMenuBar getMenuBar();
 

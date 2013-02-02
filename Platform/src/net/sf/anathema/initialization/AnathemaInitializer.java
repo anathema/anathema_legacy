@@ -10,6 +10,7 @@ import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.view.AnathemaMainView;
+import net.sf.anathema.framework.view.ApplicationFrame;
 import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
 import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
@@ -40,7 +41,7 @@ public class AnathemaInitializer {
     this.initializationPreferences = initializationPreferences;
   }
 
-  public MainView initialize() throws InitializationException {
+  public ApplicationFrame initialize() throws InitializationException {
     ResourceLoader loader = createResourceLoaderForInternalAndCustomResources();
     AnathemaResources resources = initResources(loader);
     showVersionOnSplashscreen(resources);
@@ -48,7 +49,7 @@ public class AnathemaInitializer {
     IAnathemaModel anathemaModel = initModel(resources, loader);
     MainView view = initView(resources);
     initPresentation(resources, anathemaModel, view);
-    return view;
+    return view.getWindow();
   }
 
   private void initPresentation(AnathemaResources resources, IAnathemaModel anathemaModel, MainView view) {

@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.view;
 
-public interface IWindow {
+public interface ApplicationFrame {
 
   void show();
 }
