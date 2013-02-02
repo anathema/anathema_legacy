@@ -1,5 +1,9 @@
-package net.sf.anathema.framework.view;
+package net.sf.anathema.integrated;
 
+import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.framework.view.IItemViewManagement;
+import net.sf.anathema.framework.view.IViewSelectionListener;
+import net.sf.anathema.framework.view.ViewFactory;
 import net.sf.anathema.framework.view.item.IComponentItemViewManagement;
 import net.sf.anathema.framework.view.item.ItemViewManagement;
 import net.sf.anathema.framework.view.toolbar.AnathemaToolBar;
@@ -10,11 +14,11 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
-public final class IntegratedSystemView implements ViewFactory, IItemViewManagement {
+public final class IntegratedPerspectiveView implements ViewFactory, IItemViewManagement {
   private final IComponentItemViewManagement itemViewManagement;
   private final AnathemaToolBar toolBar = new AnathemaToolBar();
 
-  IntegratedSystemView() {
+  public IntegratedPerspectiveView() {
     this.itemViewManagement = new ItemViewManagement();
   }
 

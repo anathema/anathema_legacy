@@ -8,6 +8,8 @@ import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.view.MainView;
+import net.sf.anathema.integrated.IntegratedPerspectivePresenter;
+import net.sf.anathema.integrated.IntegratedPerspectiveView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -42,7 +44,6 @@ public class AnathemaPresenter {
       configuration.registerViewFactory(model, resources);
     }
     runBootJobs();
-    new IntegratedSystemPresenter(model, view, resources,  instantiater).initPresentation();
     initializeMenus();
     initializeReports();
     IMessageContainer messageContainer = model.getMessageContainer();

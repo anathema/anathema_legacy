@@ -47,7 +47,7 @@ public class AnathemaInitializer {
     showVersionOnSplashscreen(resources);
     configureExceptionHandling(resources);
     IAnathemaModel anathemaModel = initModel(resources, loader);
-    MainView view = initView(resources);
+    MainView view = initView(resources, anathemaModel);
     initPresentation(resources, anathemaModel, view);
     return view.getWindow();
   }
@@ -70,11 +70,11 @@ public class AnathemaInitializer {
     return modelInitializer.initializeModel(resources, reflections, loader);
   }
 
-  private MainView initView(IResources resources) {
+  private MainView initView(IResources resources, IAnathemaModel model) {
     displayMessage("Building View...");
     boolean initMaximized = initializationPreferences.initMaximized();
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources, initMaximized);
-    return new AnathemaMainView(viewProperties);
+    return new AnathemaMainView(viewProperties, new PerspectivePaneFactory(model,  resources, instantiater));
   }
 
   private AnathemaResources initResources(ResourceLoader loader) {

@@ -6,26 +6,15 @@ import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 public class AnathemaMainView implements MainView {
 
-  private final IntegratedSystemView integratedSystemView = new IntegratedSystemView();
   private final SwingApplicationFrame applicationFrame;
 
-  public AnathemaMainView(AnathemaViewProperties properties) {
-     this.applicationFrame = new SwingApplicationFrame(properties, integratedSystemView);
+  public AnathemaMainView(AnathemaViewProperties properties, ViewFactory contentFactory) {
+     this.applicationFrame = new SwingApplicationFrame(properties, contentFactory);
   }
 
   @Override
   public StatusBar getStatusBar() {
     return applicationFrame.getStatusBar();
-  }
-
-  @Override
-  public IAnathemaToolbar getIntegratedToolbar() {
-    return integratedSystemView.getToolBar();
-  }
-
-  @Override
-  public IItemViewManagement getIntegratedItemViewManagement() {
-    return integratedSystemView;
   }
 
   @Override

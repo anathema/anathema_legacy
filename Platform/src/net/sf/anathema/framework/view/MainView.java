@@ -5,10 +5,6 @@ import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 public interface MainView {
 
-  IItemViewManagement getIntegratedItemViewManagement();
-
-  IAnathemaToolbar getIntegratedToolbar();
-
   ApplicationFrame getWindow();
 
   MenuBar getMenuBar();
