@@ -71,8 +71,8 @@ public class AnathemaInitializer {
 
   private MainView initView(IResources resources) {
     displayMessage("Building View...");
-    AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources,
-            initializationPreferences.initMaximized());
+    boolean initMaximized = initializationPreferences.initMaximized();
+    AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources, initMaximized);
     return new AnathemaMainView(viewProperties);
   }
 

@@ -19,7 +19,7 @@ import java.awt.Dimension;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.displayOnScreenCenter;
 
-public class AnathemaMainView implements MainView {
+public class AnathemaMainView implements MainView, IItemViewManagement, IWindow {
 
   private final AnathemaToolBar toolbar = new AnathemaToolBar();
   private final MainMenuBar menu;
@@ -95,6 +95,16 @@ public class AnathemaMainView implements MainView {
   @Override
   public void setSelectedItemView(IItemView view) {
     itemViewManagement.setSelectedItemView(view);
+  }
+
+  @Override
+  public IItemViewManagement getItemViewManagement() {
+    return this;
+  }
+
+  @Override
+  public IWindow getWindow() {
+    return this;
   }
 
   @Override

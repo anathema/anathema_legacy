@@ -23,6 +23,6 @@ public class ItemViewBootJob implements IAnathemaBootJob {
         view,
         mapping,
         new ItemActionFactory(itemManagement, resources)));
-    view.addViewSelectionListener(new ItemViewSelectionListener(itemManagement, mapping));
+    view.getItemViewManagement().addViewSelectionListener(new ItemViewSelectionListener(itemManagement, mapping));
   }
 }

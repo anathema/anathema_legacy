@@ -34,7 +34,7 @@ public class ItemManagmentModelListener implements IItemManagementModelListener 
     IItemViewFactory viewFactory = viewFactoryRegistry.get(item.getItemType());
     IItemView itemView = viewFactory.createView(item);
     mapping.addModelAndView(item, itemView);
-    anathemaView.addItemView(itemView, actionFactory.createAction(item));
+    anathemaView.getItemViewManagement().addItemView(itemView, actionFactory.createAction(item));
   }
 
   @Override
@@ -42,13 +42,13 @@ public class ItemManagmentModelListener implements IItemManagementModelListener 
     if (item == null) {
       return;
     }
-    anathemaView.setSelectedItemView(mapping.getViewByModel(item));
+    anathemaView.getItemViewManagement().setSelectedItemView(mapping.getViewByModel(item));
   }
 
   @Override
   public void itemRemoved(IItem item) {
     IItemView view = mapping.getViewByModel(item);
     mapping.removeModelAndView(item, view);
-    anathemaView.removeItemView(view);
+    anathemaView.getItemViewManagement().removeItemView(view);
   }
 }
