@@ -18,46 +18,27 @@ import java.util.Collection;
 
 public class PerspectivePaneFactory implements ViewFactory {
 
-  private IAnathemaModel model;
-  private IResources resources;
-  private ReflectionObjectFactory objectFactory;
+  private final PerspectiveStack perspectiveStack;
+  private final PerspectiveSelectionBar selectionBar;
+  private final ReflectionObjectFactory objectFactory;
 
   public PerspectivePaneFactory(IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
-    this.model = model;
-    this.resources = resources;
     this.objectFactory = objectFactory;
+    this.perspectiveStack = new PerspectiveStack(model, resources, objectFactory);
+    this.selectionBar = new PerspectiveSelectionBar(perspectiveStack);
   }
 
   @Override
   public JComponent createContent() {
-    JToolBar toolbar = new JToolBar();
-    ButtonGroup buttonGroup = new ButtonGroup();
     Collection<Perspective> sortedPerspectives = objectFactory.instantiateOrdered(PerspectiveAutoCollector.class);
-    final CardLayout perspectiveStack = new CardLayout();
-    final JPanel cardPanel = new JPanel(perspectiveStack);
-    JToggleButton buttonToSelect = null;
     for (final Perspective perspective : sortedPerspectives) {
-      cardPanel.add(perspective.createContent(model, resources, objectFactory), perspective.getTitle());
-      JToggleButton selectPerspectiveButton = new JToggleButton(new SmartAction(perspective.getTitle()) {
-        @Override
-        protected void execute(Component parentComponent) {
-          perspectiveStack.show(cardPanel, perspective.getTitle());
-        }
-      });
-      toolbar.add(selectPerspectiveButton);
-      buttonGroup.add(selectPerspectiveButton);
-      if (buttonToSelect == null) {
-        buttonToSelect = selectPerspectiveButton;
-      }
+      perspectiveStack.add(perspective);
+      selectionBar.addPerspective(perspective);
     }
-
     JPanel contentPanel = new JPanel(new BorderLayout());
-    contentPanel.add(toolbar, BorderLayout.NORTH);
-    contentPanel.add(cardPanel, BorderLayout.CENTER);
-
-    if (buttonToSelect != null) {
-      buttonToSelect.setSelected(true);
-    }
+    contentPanel.add(selectionBar.getContent(), BorderLayout.NORTH);
+    contentPanel.add(perspectiveStack.getContent(), BorderLayout.CENTER);
+    selectionBar.selectFirstButton();
     return contentPanel;
   }
 }
