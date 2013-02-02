@@ -8,7 +8,7 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.initialization.Extension;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.reflections.AnnotationFinder;
-import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
+import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
@@ -21,7 +21,7 @@ public class CharacterGenericsExtension implements ICharacterGenericsExtension, 
   @Override
   public void initialize(IResources resources, IDataFileProvider dataFileProvider, AnnotationFinder finder,
                          ResourceLoader loader) throws InitializationException {
-    ReflectionsInstantiater instantiater = new ReflectionsInstantiater(finder);
+    ReflectionObjectFactory instantiater = new ReflectionObjectFactory(finder);
     CharacterModuleContainerInitializer initializer = new CharacterModuleContainerInitializer(loader, instantiater);
     CharacterModuleContainer container = initializer.initContainer(resources, dataFileProvider);
     this.characterGenerics = container.getCharacterGenerics();

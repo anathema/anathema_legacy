@@ -12,10 +12,11 @@ import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.view.ApplicationFrame;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.framework.view.SwingApplicationFrame;
+import net.sf.anathema.framework.view.perspective.PerspectivePaneFactory;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
 import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
 import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
-import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
+import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.CentralExceptionHandling;
@@ -31,11 +32,11 @@ public class AnathemaInitializer {
   private final ItemTypeConfigurationCollection itemTypeCollection;
   private final AnathemaExtensionCollection extensionCollection;
   private final DefaultAnathemaReflections reflections;
-  private final ReflectionsInstantiater instantiater;
+  private final ReflectionObjectFactory instantiater;
 
   public AnathemaInitializer(IInitializationPreferences initializationPreferences) throws InitializationException {
     this.reflections = new DefaultAnathemaReflections();
-    this.instantiater = new ReflectionsInstantiater(reflections);
+    this.instantiater = new ReflectionObjectFactory(reflections);
     this.itemTypeCollection = new ItemTypeConfigurationCollection(instantiater);
     this.extensionCollection = new AnathemaExtensionCollection(instantiater);
     this.initializationPreferences = initializationPreferences;

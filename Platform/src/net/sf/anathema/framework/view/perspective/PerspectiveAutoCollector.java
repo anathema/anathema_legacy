@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.view;
+package net.sf.anathema.framework.view.perspective;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

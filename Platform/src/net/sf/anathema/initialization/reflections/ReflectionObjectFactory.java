@@ -17,11 +17,11 @@ import java.util.Set;
 import static java.text.MessageFormat.format;
 import static org.apache.commons.lang3.reflect.ConstructorUtils.getMatchingAccessibleConstructor;
 
-public class ReflectionsInstantiater implements Instantiater {
+public class ReflectionObjectFactory implements Instantiater {
 
   private AnnotationFinder finder;
 
-  public ReflectionsInstantiater(AnnotationFinder finder) {
+  public ReflectionObjectFactory(AnnotationFinder finder) {
     this.finder = finder;
   }
 
