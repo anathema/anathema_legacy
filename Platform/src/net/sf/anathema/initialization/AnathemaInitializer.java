@@ -9,9 +9,9 @@ import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.resources.AnathemaResources;
-import net.sf.anathema.framework.view.AnathemaMainView;
 import net.sf.anathema.framework.view.ApplicationFrame;
-import net.sf.anathema.framework.view.MainView;
+import net.sf.anathema.framework.view.ApplicationView;
+import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
 import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
 import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
@@ -47,12 +47,12 @@ public class AnathemaInitializer {
     showVersionOnSplashscreen(resources);
     configureExceptionHandling(resources);
     IAnathemaModel anathemaModel = initModel(resources, loader);
-    MainView view = initView(resources, anathemaModel);
+    ApplicationView view = initView(resources, anathemaModel);
     initPresentation(resources, anathemaModel, view);
     return view.getWindow();
   }
 
-  private void initPresentation(AnathemaResources resources, IAnathemaModel anathemaModel, MainView view) {
+  private void initPresentation(AnathemaResources resources, IAnathemaModel anathemaModel, ApplicationView view) {
     Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
     AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, itemTypes, instantiater);
     presenter.initPresentation();
@@ -70,11 +70,11 @@ public class AnathemaInitializer {
     return modelInitializer.initializeModel(resources, reflections, loader);
   }
 
-  private MainView initView(IResources resources, IAnathemaModel model) {
+  private ApplicationView initView(IResources resources, IAnathemaModel model) {
     displayMessage("Building View...");
     boolean initMaximized = initializationPreferences.initMaximized();
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources, initMaximized);
-    return new AnathemaMainView(viewProperties, new PerspectivePaneFactory(model,  resources, instantiater));
+    return new SwingApplicationFrame(viewProperties, new PerspectivePaneFactory(model,  resources, instantiater));
   }
 
   private AnathemaResources initResources(ResourceLoader loader) {

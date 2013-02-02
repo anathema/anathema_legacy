@@ -7,9 +7,7 @@ import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
-import net.sf.anathema.framework.view.MainView;
-import net.sf.anathema.integrated.IntegratedPerspectivePresenter;
-import net.sf.anathema.integrated.IntegratedPerspectiveView;
+import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -18,14 +16,14 @@ import java.util.Collection;
 public class AnathemaPresenter {
 
   private final IAnathemaModel model;
-  private final MainView view;
+  private final ApplicationView view;
   private final IResources resources;
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
   private final Instantiater instantiater;
 
   public AnathemaPresenter(
           IAnathemaModel model,
-          MainView view,
+          ApplicationView view,
           IResources resources,
           Collection<IItemTypeConfiguration> itemTypeConfigurations, Instantiater instantiater) {
     this.instantiater = instantiater;

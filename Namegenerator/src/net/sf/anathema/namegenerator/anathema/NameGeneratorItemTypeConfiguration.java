@@ -7,8 +7,8 @@ import net.sf.anathema.framework.presenter.action.ActionMenuItem;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
+import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.framework.view.IItemView;
-import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -47,7 +47,7 @@ public class NameGeneratorItemTypeConfiguration extends AbstractNonPersistableIt
   }
 
   @Override
-  protected IMenuItem[] createAddMenuEntries(MainView view, IAnathemaModel anathemaModel, IResources resources) {
+  protected IMenuItem[] createAddMenuEntries(ApplicationView view, IAnathemaModel anathemaModel, IResources resources) {
     return new IMenuItem[] { new ActionMenuItem(ShowNameGeneratorAction.createMenuAction(resources, anathemaModel)) };
   }
 }

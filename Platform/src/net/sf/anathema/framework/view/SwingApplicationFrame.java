@@ -14,7 +14,7 @@ import java.awt.Dimension;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.displayOnScreenCenter;
 
-public class SwingApplicationFrame implements ApplicationFrame {
+public class SwingApplicationFrame implements ApplicationFrame, ApplicationView {
 
   public static final Dimension DEFAULT_SIZE = new Dimension(1024, 768);
   private final AnathemaViewProperties properties;
@@ -33,6 +33,11 @@ public class SwingApplicationFrame implements ApplicationFrame {
     applicationFrame.getContentPane().add(createContentPane());
     applicationFrame.setJMenuBar(menu.getMenuBar());
     displayOnScreenCenter(applicationFrame, DEFAULT_SIZE);
+  }
+
+  @Override
+  public ApplicationFrame getWindow() {
+    return this;
   }
 
   public MainMenuBar getMenuBar() {

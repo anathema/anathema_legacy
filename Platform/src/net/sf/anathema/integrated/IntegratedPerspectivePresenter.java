@@ -3,7 +3,6 @@ package net.sf.anathema.integrated;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.IntegratedItemViewListening;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
-import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.Tool;
