@@ -1,12 +1,14 @@
 package net.sf.anathema.character.impl.module.perspective;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.gui.action.SmartAction;
 
 import java.awt.Component;
 
-public class ShowCharacterAction extends SmartAction {
+public class ShowCharacterAction extends SmartAction implements EventHandler<ActionEvent> {
   private final PrintNameFile printNameFile;
   private final IAnathemaModel model;
   private final CharacterStack characterStack;
@@ -20,6 +22,11 @@ public class ShowCharacterAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
+    characterStack.showCharacter(model, printNameFile.getRepositoryId());
+  }
+
+  @Override
+  public void handle(ActionEvent actionEvent) {
     characterStack.showCharacter(model, printNameFile.getRepositoryId());
   }
 }
