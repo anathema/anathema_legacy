@@ -4,25 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.gui.action.SmartAction;
 
-import java.awt.Component;
-
-public class ShowCharacterAction extends SmartAction implements EventHandler<ActionEvent> {
+public class ShowCharacter implements EventHandler<ActionEvent> {
   private final PrintNameFile printNameFile;
   private final IAnathemaModel model;
   private final CharacterStack characterStack;
 
-  public ShowCharacterAction(PrintNameFile printNameFile, IAnathemaModel model, CharacterStack characterStack) {
-    super(printNameFile.getPrintName());
+  public ShowCharacter(PrintNameFile printNameFile, IAnathemaModel model, CharacterStack characterStack) {
     this.printNameFile = printNameFile;
     this.model = model;
     this.characterStack = characterStack;
-  }
-
-  @Override
-  protected void execute(Component parentComponent) {
-    characterStack.showCharacter(model, printNameFile.getRepositoryId());
   }
 
   @Override
