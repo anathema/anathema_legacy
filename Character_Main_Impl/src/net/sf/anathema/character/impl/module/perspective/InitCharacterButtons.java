@@ -4,7 +4,10 @@ import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -19,7 +22,8 @@ public class InitCharacterButtons implements Runnable {
   private final IAnathemaModel model;
   private final CharacterStack characterStack;
   private final JFXPanel panel;
-  private final MigPane gridPane = new MigPane(new LC().insets("5").wrapAfter(1), new AC().grow().fill());
+  private final ToggleGroup toggleGroup = new ToggleGroup();
+  private final MigPane gridPane = new MigPane(new LC().insets("10").gridGap("8", "8").wrapAfter(1), new AC().grow().fill());
 
   public InitCharacterButtons(IAnathemaModel model, CharacterStack characterStack, JFXPanel panel) {
     this.model = model;
@@ -30,27 +34,29 @@ public class InitCharacterButtons implements Runnable {
   @Override
   public void run() {
     Scene scene = createScene();
+    scene.getStylesheets().add("skin/sandra/sandra.css");
     addCharacterButtons();
     panel.setScene(scene);
   }
 
   private Scene createScene() {
     Group root = new Group();
-    Scene scene = new Scene(root, Color.SKYBLUE);
+    Scene scene = new Scene(root, Color.LAVENDER);
     root.getChildren().add(gridPane);
     return scene;
   }
 
   private void addCharacterButtons() {
     for (PrintNameFile printNameFile : collectCharacterPrintNameFiles(model)) {
-      Button button = createButton(printNameFile);
+      ToggleButton button = createButton(printNameFile);
+      button.setToggleGroup(toggleGroup);
       gridPane.getChildren().add(button);
     }
   }
 
-  private Button createButton(PrintNameFile printNameFile) {
-    Button button = new Button(printNameFile.getPrintName());
-    button.setStyle("-fx-base: crimson;");
+  private ToggleButton createButton(PrintNameFile printNameFile) {
+    ToggleButton button = new ToggleButton(printNameFile.getPrintName());
+    button.getStyleClass().add("character-grid-button");
     button.setOnAction(new ShowCharacter(printNameFile, model, characterStack));
     return button;
   }
