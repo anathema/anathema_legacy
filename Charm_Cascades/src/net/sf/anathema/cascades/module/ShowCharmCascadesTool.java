@@ -3,11 +3,11 @@ package net.sf.anathema.cascades.module;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
-import net.sf.anathema.initialization.Tool;
+import net.sf.anathema.initialization.ToolAutoCollector;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 
-@Tool
+@ToolAutoCollector
 @Weight(weight = 5)
 public class ShowCharmCascadesTool implements IAnathemaTool {
 

@@ -5,7 +5,7 @@ import net.sf.anathema.framework.module.IntegratedItemViewListening;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
-import net.sf.anathema.initialization.Tool;
+import net.sf.anathema.initialization.ToolAutoCollector;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.Collection;
@@ -29,7 +29,7 @@ public class IntegratedPerspectivePresenter {
   }
 
   private void initializeTools() throws InitializationException {
-    Collection<IAnathemaTool> tools = instantiater.instantiateOrdered(Tool.class);
+    Collection<IAnathemaTool> tools = instantiater.instantiateOrdered(ToolAutoCollector.class);
     for (IAnathemaTool tool : tools) {
       tool.add(resources, model, view.getToolBar());
     }

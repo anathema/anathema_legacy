@@ -10,13 +10,13 @@ import net.sf.anathema.framework.reporting.AbstractPrintAction;
 import net.sf.anathema.framework.reporting.ControlledPrintAction;
 import net.sf.anathema.framework.reporting.QuickPrintAction;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
-import net.sf.anathema.initialization.Tool;
+import net.sf.anathema.initialization.ToolAutoCollector;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
 
-@Tool
+@ToolAutoCollector
 @Weight(weight = 0)
 public class AnathemaCoreTool implements IAnathemaTool {
 
