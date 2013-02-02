@@ -59,7 +59,7 @@ public class SwingApplicationFrame implements ApplicationFrame {
 
   private JComponent createContentPane() {
     JPanel contentPane = new JPanel(new BorderLayout());
-    contentPane.add(contentFactory.create(), BorderLayout.CENTER);
+    contentPane.add(contentFactory.createContent(), BorderLayout.CENTER);
     contentPane.add(statusBar.getComponent(), BorderLayout.SOUTH);
     return contentPane;
   }

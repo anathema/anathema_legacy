@@ -4,5 +4,5 @@ import javax.swing.JComponent;
 
 public interface ViewFactory {
 
-  JComponent create();
+  JComponent createContent();
 }
