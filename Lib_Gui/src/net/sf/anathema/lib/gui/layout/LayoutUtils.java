@@ -25,4 +25,8 @@ public class LayoutUtils {
   public static LC fillWithoutInsets() {
     return withoutInsets().fill();
   }
+
+  public static LC fillXWithoutInsets() {
+    return withoutInsets().fillX();
+  }
 }
