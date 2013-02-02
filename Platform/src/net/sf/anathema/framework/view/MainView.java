@@ -1,17 +1,17 @@
 package net.sf.anathema.framework.view;
 
-import net.sf.anathema.framework.view.messaging.IStatusBar;
+import net.sf.anathema.framework.view.messaging.StatusBar;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 public interface MainView {
 
-  IItemViewManagement getItemViewManagement();
+  IItemViewManagement getIntegratedItemViewManagement();
+
+  IAnathemaToolbar getIntegratedToolbar();
 
   ApplicationFrame getWindow();
 
-  IMenuBar getMenuBar();
+  MenuBar getMenuBar();
 
-  IAnathemaToolbar getToolbar();
-
-  IStatusBar getStatusBar();
+  StatusBar getStatusBar();
 }

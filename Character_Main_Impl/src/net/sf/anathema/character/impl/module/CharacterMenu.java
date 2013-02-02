@@ -6,7 +6,7 @@ import net.sf.anathema.framework.item.AbstractSelectedItemEnabler;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.framework.view.IMenuBar;
+import net.sf.anathema.framework.view.MenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.initialization.Menu;
 import net.sf.anathema.initialization.reflections.Weight;
@@ -20,7 +20,7 @@ import java.awt.Component;
 public class CharacterMenu implements IAnathemaMenu {
 
   @Override
-  public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
+  public void add(IResources resources, IAnathemaModel model, MenuBar menubar) {
     IMenu menu = menubar.addMenu(resources.getString("CharacterMenu.Title")); //$NON-NLS-1$
     menu.setMnemonic('C');
     menu.addMenuItem(new MakeCharacterExperienced(resources, model));

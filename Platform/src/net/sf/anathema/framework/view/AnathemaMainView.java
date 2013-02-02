@@ -1,31 +1,31 @@
 package net.sf.anathema.framework.view;
 
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
-import net.sf.anathema.framework.view.messaging.IStatusBar;
+import net.sf.anathema.framework.view.messaging.StatusBar;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 public class AnathemaMainView implements MainView {
 
-  private final TabbedItemListView itemListView = new TabbedItemListView();
+  private final IntegratedSystemView integratedSystemView = new IntegratedSystemView();
   private final SwingApplicationFrame applicationFrame;
 
   public AnathemaMainView(AnathemaViewProperties properties) {
-     this.applicationFrame = new SwingApplicationFrame(properties, itemListView);
+     this.applicationFrame = new SwingApplicationFrame(properties, integratedSystemView);
   }
 
   @Override
-  public IStatusBar getStatusBar() {
+  public StatusBar getStatusBar() {
     return applicationFrame.getStatusBar();
   }
 
   @Override
-  public IAnathemaToolbar getToolbar() {
-    return itemListView.getToolBar();
+  public IAnathemaToolbar getIntegratedToolbar() {
+    return integratedSystemView.getToolBar();
   }
 
   @Override
-  public IItemViewManagement getItemViewManagement() {
-    return itemListView;
+  public IItemViewManagement getIntegratedItemViewManagement() {
+    return integratedSystemView;
   }
 
   @Override
@@ -34,7 +34,7 @@ public class AnathemaMainView implements MainView {
   }
 
   @Override
-  public IMenuBar getMenuBar() {
+  public MenuBar getMenuBar() {
     return applicationFrame.getMenuBar();
   }
 }

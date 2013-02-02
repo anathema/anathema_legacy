@@ -20,7 +20,7 @@ import net.sf.anathema.framework.reporting.AbstractPrintAction;
 import net.sf.anathema.framework.reporting.ControlledPrintAction;
 import net.sf.anathema.framework.reporting.QuickPrintAction;
 import net.sf.anathema.framework.repository.tree.RepositoryViewAction;
-import net.sf.anathema.framework.view.IMenuBar;
+import net.sf.anathema.framework.view.MenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.initialization.Menu;
 import net.sf.anathema.initialization.reflections.Weight;
@@ -38,7 +38,7 @@ import java.awt.event.KeyEvent;
 public class AnathemaCoreMenu implements IAnathemaMenu {
 
   @Override
-  public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
+  public void add(IResources resources, IAnathemaModel model, MenuBar menubar) {
     IMenu mainMenu = menubar.getMainMenu();
     mainMenu.addMenuItem(AnathemaNewAction.createMenuAction(model, resources));
     mainMenu.addMenuItem(AnathemaLoadAction.createMenuAction(model, resources));
@@ -72,7 +72,7 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     return action;
   }
 
-  private void createExtraMenu(IAnathemaModel anathemaModel, IResources resources, IMenuBar menubar) {
+  private void createExtraMenu(IAnathemaModel anathemaModel, IResources resources, MenuBar menubar) {
     IMenu menu = menubar.addMenu(resources.getString("AnathemaCore.Tools.Extra.Name")); //$NON-NLS-1$
     createMenuFromExtensionPoint(anathemaModel, menu);
     menu.setMnemonic('E');

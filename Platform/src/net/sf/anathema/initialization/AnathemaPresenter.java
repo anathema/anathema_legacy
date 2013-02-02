@@ -7,7 +7,6 @@ import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
-import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
 import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
@@ -43,8 +42,8 @@ public class AnathemaPresenter {
       configuration.registerViewFactory(model, resources);
     }
     runBootJobs();
+    new IntegratedSystemPresenter(model, view, resources,  instantiater).initPresentation();
     initializeMenus();
-    initializeTools();
     initializeReports();
     IMessageContainer messageContainer = model.getMessageContainer();
     init(messageContainer);
@@ -67,7 +66,7 @@ public class AnathemaPresenter {
   private void runBootJobs() throws InitializationException {
     Collection<IAnathemaBootJob> jobs = instantiater.instantiateAll(BootJob.class);
     for (IAnathemaBootJob bootJob : jobs) {
-      bootJob.run(resources, model, view);
+      bootJob.run(resources, model);
     }
   }
 
@@ -91,13 +90,6 @@ public class AnathemaPresenter {
     Collection<IAnathemaMenu> menus = instantiater.instantiateOrdered(Menu.class);
     for (IAnathemaMenu menu : menus) {
       menu.add(resources, model, view.getMenuBar());
-    }
-  }
-
-  private void initializeTools() throws InitializationException {
-    Collection<IAnathemaTool> tools = instantiater.instantiateOrdered(Tool.class);
-    for (IAnathemaTool tool : tools) {
-      tool.add(resources, model, view.getToolbar());
     }
   }
 }

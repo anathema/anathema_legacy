@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.view.menu;
 
-import net.sf.anathema.framework.view.IMenuBar;
+import net.sf.anathema.framework.view.MenuBar;
 
 import javax.swing.JMenuBar;
 
-public class MainMenuBar implements IMenuBar {
+public class MainMenuBar implements MenuBar {
 
   private final JMenuBar menuBar = new JMenuBar();
   private final IMenuBarView mainMenu;

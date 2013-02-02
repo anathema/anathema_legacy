@@ -10,11 +10,11 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
-public final class TabbedItemListView implements ViewFactory, IItemViewManagement {
+public final class IntegratedSystemView implements ViewFactory, IItemViewManagement {
   private final IComponentItemViewManagement itemViewManagement;
   private final AnathemaToolBar toolBar = new AnathemaToolBar();
 
-  TabbedItemListView() {
+  IntegratedSystemView() {
     this.itemViewManagement = new ItemViewManagement();
   }
 

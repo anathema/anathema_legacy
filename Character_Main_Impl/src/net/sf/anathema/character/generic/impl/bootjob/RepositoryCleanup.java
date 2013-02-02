@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.impl.bootjob;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.Version;
-import net.sf.anathema.framework.view.MainView;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.lib.logging.Logger;
@@ -19,7 +18,7 @@ public class RepositoryCleanup implements IAnathemaBootJob {
   private static final Logger logger = Logger.getLogger(RepositoryCleanup.class);
 
   @Override
-  public void run(IResources resources, IAnathemaModel model, MainView view) {
+  public void run(IResources resources, IAnathemaModel model) {
     if (!repositoryAlreadyExists(model)) {
       createRepositoryAtVersion(resources, model);
       return;

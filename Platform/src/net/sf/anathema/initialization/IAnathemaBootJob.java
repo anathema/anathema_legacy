@@ -6,5 +6,5 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface IAnathemaBootJob {
 
-  void run(IResources resources, IAnathemaModel model, MainView view);
+  void run(IResources resources, IAnathemaModel model);
 }

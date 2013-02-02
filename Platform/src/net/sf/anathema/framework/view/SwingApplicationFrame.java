@@ -2,7 +2,7 @@ package net.sf.anathema.framework.view;
 
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.view.menu.MainMenuBar;
-import net.sf.anathema.framework.view.messaging.StatusBar;
+import net.sf.anathema.framework.view.messaging.OneLineStatusBar;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -20,7 +20,7 @@ public class SwingApplicationFrame implements ApplicationFrame {
   private final AnathemaViewProperties properties;
   private ViewFactory contentFactory;
   private final MainMenuBar menu;
-  private final StatusBar statusBar = new StatusBar();
+  private final OneLineStatusBar statusBar = new OneLineStatusBar();
 
   public SwingApplicationFrame(AnathemaViewProperties properties, ViewFactory contentFactory) {
     this.properties = properties;
@@ -39,7 +39,7 @@ public class SwingApplicationFrame implements ApplicationFrame {
     return menu;
   }
 
-  public StatusBar getStatusBar() {
+  public OneLineStatusBar getStatusBar() {
     return statusBar;
   }
 
