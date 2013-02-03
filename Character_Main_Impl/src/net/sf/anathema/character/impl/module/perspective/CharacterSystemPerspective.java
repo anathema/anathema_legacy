@@ -15,7 +15,7 @@ import java.awt.BorderLayout;
 @Weight(weight = 1)
 public class CharacterSystemPerspective implements Perspective {
 
-  private CharacterStack characterStack = new CharacterStack();
+  private CharacterStackPresenter characterStack = new CharacterStackPresenter();
   private CharacterButtonGrid buttonGrid = new CharacterButtonGrid();
 
   public String getTitle() {

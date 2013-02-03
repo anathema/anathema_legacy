@@ -10,7 +10,7 @@ public class CharacterButtonGrid {
 
   private final JFXPanel panel = new JFXPanel();
 
-  public void fillFromRepository(final IAnathemaModel model, final CharacterStack characterStack) {
+  public void fillFromRepository(final IAnathemaModel model, final CharacterStackPresenter characterStack) {
     Platform.runLater(new InitCharacterButtons(model, characterStack, panel));
   }
 

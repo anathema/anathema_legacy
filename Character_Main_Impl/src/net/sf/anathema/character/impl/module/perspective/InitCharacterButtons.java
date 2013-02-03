@@ -3,11 +3,9 @@ package net.sf.anathema.character.impl.module.perspective;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -20,12 +18,12 @@ import static net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConf
 
 public class InitCharacterButtons implements Runnable {
   private final IAnathemaModel model;
-  private final CharacterStack characterStack;
+  private final CharacterStackPresenter characterStack;
   private final JFXPanel panel;
   private final ToggleGroup toggleGroup = new ToggleGroup();
   private final MigPane gridPane = new MigPane(new LC().insets("10").gridGap("8", "8").wrapAfter(1), new AC().grow().fill());
 
-  public InitCharacterButtons(IAnathemaModel model, CharacterStack characterStack, JFXPanel panel) {
+  public InitCharacterButtons(IAnathemaModel model, CharacterStackPresenter characterStack, JFXPanel panel) {
     this.model = model;
     this.characterStack = characterStack;
     this.panel = panel;
