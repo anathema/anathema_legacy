@@ -21,8 +21,8 @@ JAVAMINOR=`echo $JAVAVER | awk -F '.' '{print $2}'`
 
 echo "Java version $JAVAVER detected in ${JAVA_BIN}..."
 
-if [ $JAVAMAJOR -lt 1 -o \( $JAVAMAJOR -eq 1 -a $JAVAMINOR -lt 5 \) ]; then
-    echo "==> You must have a java version 1.5 or greater to run Anathema."
+if [ $JAVAMAJOR -lt 1 -o \( $JAVAMAJOR -eq 1 -a $JAVAMINOR -lt 7 \) ]; then
+    echo "==> You must have a java version 1.7 or greater to run Anathema."
     exit 1
 fi
 
