@@ -37,7 +37,7 @@ import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import java.awt.Component;
@@ -229,7 +229,7 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   private void setName(AbstractStats stats, IEquipmentStatisticsModel model) {
     String name = model.getName().getText();
     if (name != null) {
-      stats.setName(new Identificate(name));
+      stats.setName(new Identifier(name));
     }
   }
 }

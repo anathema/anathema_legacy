@@ -7,12 +7,12 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.Collection;
 import java.util.Collections;
 
-public class EquipmentAdditionalModelTemplate extends Identificate implements
+public class EquipmentAdditionalModelTemplate extends Identifier implements
         IGlobalAdditionalTemplate,
         IEquipmentAdditionalModelTemplate {
 

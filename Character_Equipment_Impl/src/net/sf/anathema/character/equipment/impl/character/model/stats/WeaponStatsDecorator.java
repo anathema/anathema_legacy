@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats {
@@ -22,7 +22,7 @@ public class WeaponStatsDecorator extends AbstractStats implements IWeaponStats 
   public WeaponStatsDecorator(IWeaponStats stats, String name) {
     this.stats = stats;
     this.ability = stats.getTraitType();
-    this.name = new Identificate(name);
+    this.name = new Identifier(name);
   }
 
   @Override

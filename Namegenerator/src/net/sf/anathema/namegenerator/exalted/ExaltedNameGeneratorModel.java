@@ -2,7 +2,7 @@ package net.sf.anathema.namegenerator.exalted;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
@@ -16,8 +16,8 @@ import java.util.Map;
 
 public class ExaltedNameGeneratorModel implements INameGeneratorModel {
 
-  public static final Identificate THRESHOLD_ID = new Identificate("Threshold"); //$NON-NLS-1$
-  private final Identified[] nameGeneratorTypes = new Identified[] { new Identificate("Realm"), THRESHOLD_ID }; //$NON-NLS-1$
+  public static final Identifier THRESHOLD_ID = new Identifier("Threshold"); //$NON-NLS-1$
+  private final Identified[] nameGeneratorTypes = new Identified[] { new Identifier("Realm"), THRESHOLD_ID }; //$NON-NLS-1$
   private final Map<Identified, IGeneratorTypeModel> typeModelsByType = new HashMap<>();
   private Identified selectedGeneratorType = nameGeneratorTypes[1];
   private final Announcer<IChangeListener> selectedGeneratorTypeListeners = Announcer.to(IChangeListener.class);

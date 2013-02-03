@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -24,6 +24,6 @@ public class TemplateTypeParser {
     if (subtemplate == null || subtemplate.equals("default")) { //$NON-NLS-1$
       return TemplateType.DEFAULT_SUB_TYPE;
     }
-    return new Identificate(subtemplate);
+    return new Identifier(subtemplate);
   }
 }

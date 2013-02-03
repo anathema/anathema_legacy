@@ -15,7 +15,7 @@ import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.lib.model.BooleanModel;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.mock;
@@ -64,7 +64,7 @@ public class EquipmentItemPresenterTest extends TestCase {
     BooleanModel isPrintSelectedModel = new BooleanModel();
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel); //$NON-NLS-1$
     DummyEquipmentObject model = new DummyEquipmentObject("Title", null); //$NON-NLS-1$
-    model.addEquipment(new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2)); //$NON-NLS-1$
+    model.addEquipment(new DemoMeleeWeapon(new Identifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2)); //$NON-NLS-1$
     initPresentation(model, view);
   }
 
@@ -74,7 +74,7 @@ public class EquipmentItemPresenterTest extends TestCase {
     BooleanModel isPrintSelectedModel = new BooleanModel();
     when(view.addStats("Passt!")).thenReturn(isPrintSelectedModel); //$NON-NLS-1$
     DummyEquipmentObject model = new DummyEquipmentObject("Title", null); //$NON-NLS-1$
-    model.addEquipment(new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2)); //$NON-NLS-1$
+    model.addEquipment(new DemoMeleeWeapon(new Identifier("Sword"), 5, 2, 7, 1, HealthType.Lethal, -1, 0, 2)); //$NON-NLS-1$
     initPresentation(model, view);
     assertFalse(isPrintSelectedModel.getValue());
   }

@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.util;
 
-public class IdentifiedInteger extends Identificate {
+public class IdentifiedInteger extends Identifier {
 
   private int value;
   

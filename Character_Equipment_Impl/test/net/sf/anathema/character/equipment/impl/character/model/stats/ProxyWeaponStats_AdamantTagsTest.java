@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 import org.junit.Test;
 import org.junit.matchers.JUnitMatchers;
@@ -41,7 +41,7 @@ public class ProxyWeaponStats_AdamantTagsTest {
   public void addsSpecialPiercingTagIfItIsAlreadyPiercing() throws Exception {
     setOriginalTags(Piercing);
     List<Identified> tags = getModifiedTags(Adamant);
-    assertThat(tags, JUnitMatchers.<Identified>hasItem(new Identificate("AdamantPiercing")));
+    assertThat(tags, JUnitMatchers.<Identified>hasItem(new Identifier("AdamantPiercing")));
   }
 
   private List<Identified> getModifiedTags(MagicalMaterial material) {

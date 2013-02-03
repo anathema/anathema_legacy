@@ -9,13 +9,13 @@ import net.sf.anathema.character.reporting.pdf.content.magic.GenericCharmUtiliti
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.MultipleEffectCharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.List;
 
 public class MagicStatsFactoryVisitor implements IMagicVisitor {
-  private final static Identified KNACK = new Identificate("Knack");
+  private final static Identified KNACK = new Identifier("Knack");
   private final IGenericCharacter character;
   private final List<IMagicStats> printStats;
 

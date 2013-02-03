@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.model.stats.modificat
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import static net.sf.anathema.character.equipment.impl.creation.model.WeaponTag.Piercing;
@@ -27,7 +27,7 @@ public class TagsModification {
   }
 
   private Identified[] addAdamantPiercing(Identified[] tags) {
-    return addTag(tags, new Identificate("AdamantPiercing"));
+    return addTag(tags, new Identifier("AdamantPiercing"));
   }
 
   private Identified[] addPiercing(Identified[] tags) {

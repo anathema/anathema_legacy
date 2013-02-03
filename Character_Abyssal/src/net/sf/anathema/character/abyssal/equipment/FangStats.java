@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 public class FangStats extends AbstractCombatStats implements IWeaponStats {
@@ -85,7 +85,7 @@ public class FangStats extends AbstractCombatStats implements IWeaponStats {
 
   @Override
   public Identified getName() {
-    return new Identificate("Abyssal.Fangs"); //$NON-NLS-1$
+    return new Identifier("Abyssal.Fangs"); //$NON-NLS-1$
   }
 
   @Override

@@ -16,13 +16,13 @@ import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AstrologicalHouse extends Identificate implements IAstrologicalHouse {
+public class AstrologicalHouse extends Identifier implements IAstrologicalHouse {
 
   private static final int collegesPerHouse = 5;
 

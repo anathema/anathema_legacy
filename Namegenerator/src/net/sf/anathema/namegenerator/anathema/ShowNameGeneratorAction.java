@@ -9,7 +9,7 @@ import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.Action;
 import java.awt.Component;
@@ -37,7 +37,7 @@ public class ShowNameGeneratorAction extends SmartAction {
     try {
       String id = NameGeneratorItemTypeConfiguration.NAME_GENERATOR_ITEM_TYPE_ID;
       IItemType itemType = anathemaModel.getItemTypeRegistry().getById(id);
-      IItem generatorItem = new AnathemaNullDataItem(itemType, new Identificate(id));
+      IItem generatorItem = new AnathemaNullDataItem(itemType, new Identifier(id));
       generatorItem.setPrintName(resources.getString("ItemType.NameGenerator.PrintName")); //$NON-NLS-1$
       anathemaModel.getItemManagement().addItem(generatorItem);
     } catch (AnathemaException e) {

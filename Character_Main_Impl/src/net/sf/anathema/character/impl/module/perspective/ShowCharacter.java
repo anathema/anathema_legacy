@@ -3,6 +3,10 @@ package net.sf.anathema.character.impl.module.perspective;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
+import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.PrintNameFile;
 
 public class ShowCharacter implements EventHandler<ActionEvent> {

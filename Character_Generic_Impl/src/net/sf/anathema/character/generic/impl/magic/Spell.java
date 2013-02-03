@@ -13,9 +13,9 @@ import net.sf.anathema.character.generic.template.magic.IFavoringTraitTypeVisito
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
-public class Spell extends Identificate implements ISpell {
+public class Spell extends Identifier implements ISpell {
   private final CircleType circleType;
   private final ICostList temporaryCost;
   private ISourceList source;

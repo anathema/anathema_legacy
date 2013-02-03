@@ -20,17 +20,17 @@ import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawViewFactory;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 @CharacterModule
 public class SolarCharacterModule extends CharacterTypeModule {
 
   @SuppressWarnings("unused")
   private static final TemplateType solarTemplateType = new TemplateType(SOLAR);
-  private static final TemplateType dreamsSolarTemplateType = new TemplateType(SOLAR, new Identificate("Dreams")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarEstablished = new TemplateType(SOLAR, new Identificate("DreamsEstablished")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarInfluential = new TemplateType(SOLAR, new Identificate("DreamsInfluential")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarLegendary = new TemplateType(SOLAR, new Identificate("DreamsLegendary")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarTemplateType = new TemplateType(SOLAR, new Identifier("Dreams")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarEstablished = new TemplateType(SOLAR, new Identifier("DreamsEstablished")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarInfluential = new TemplateType(SOLAR, new Identifier("DreamsInfluential")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarLegendary = new TemplateType(SOLAR, new Identifier("DreamsLegendary")); //$NON-NLS-1$
 
   private static final TemplateType[] dreams = {dreamsSolarTemplateType, dreamsSolarEstablished, dreamsSolarInfluential, dreamsSolarLegendary};
 

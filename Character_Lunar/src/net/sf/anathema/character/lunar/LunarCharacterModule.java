@@ -30,7 +30,7 @@ import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawViewFactory;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,14 +47,14 @@ public class LunarCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_TABOO = "Taboo"; //$NON-NLS-1$
 
   private static final TemplateType castelessType = new TemplateType(LUNAR,
-          new Identificate("Casteless")); //$NON-NLS-1$
-  private static final TemplateType dreamsType = new TemplateType(LUNAR, new Identificate("Dreams")); //$NON-NLS-1$
+          new Identifier("Casteless")); //$NON-NLS-1$
+  private static final TemplateType dreamsType = new TemplateType(LUNAR, new Identifier("Dreams")); //$NON-NLS-1$
   private static final TemplateType dreamsEstablished = new TemplateType(LUNAR,
-          new Identificate("DreamsEstablished")); //$NON-NLS-1$
+          new Identifier("DreamsEstablished")); //$NON-NLS-1$
   private static final TemplateType dreamsInfluential = new TemplateType(LUNAR,
-          new Identificate("DreamsInfluential")); //$NON-NLS-1$
+          new Identifier("DreamsInfluential")); //$NON-NLS-1$
   private static final TemplateType dreamsLegendary = new TemplateType(LUNAR,
-          new Identificate("DreamsLegendary")); //$NON-NLS-1$
+          new Identifier("DreamsLegendary")); //$NON-NLS-1$
   private static final TemplateType silverpact = new TemplateType(LUNAR); //$NON-NLS-1$
 
   private static final TemplateType[] dreams = {dreamsType, dreamsEstablished, dreamsInfluential, dreamsLegendary};

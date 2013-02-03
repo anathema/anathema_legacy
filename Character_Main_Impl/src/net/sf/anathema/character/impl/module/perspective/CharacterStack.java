@@ -25,13 +25,17 @@ public class CharacterStack {
   }
 
   public void addCharacter(IAnathemaModel model, String repositoryId) {
-    IItemType itemType = model.getItemTypeRegistry().getById("ExaltedCharacter");
-    IRepositoryReadAccess readAccess = model.getRepository().openReadAccess(itemType, repositoryId);
-    IItem item = model.getPersisterRegistry().get(itemType).load(readAccess);
-    IItemView itemView = model.getViewFactoryRegistry().get(itemType).createView(item);
+    IItemView itemView = loadItemView(model, repositoryId);
     viewPanel.add(itemView.getComponent(), repositoryId);
     viewPanel.revalidate();
     viewPanel.repaint();
+  }
+
+  private IItemView loadItemView(IAnathemaModel model, String repositoryId) {
+    IItemType itemType = model.getItemTypeRegistry().getById("ExaltedCharacter");
+    IRepositoryReadAccess readAccess = model.getRepository().openReadAccess(itemType, repositoryId);
+    IItem item = model.getPersisterRegistry().get(itemType).load(readAccess);
+    return model.getViewFactoryRegistry().get(itemType).createView(item);
   }
 
   public JComponent getContent() {

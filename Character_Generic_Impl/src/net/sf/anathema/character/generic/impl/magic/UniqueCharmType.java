@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic;
 
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 public class UniqueCharmType implements IUniqueCharmType {
@@ -27,6 +27,6 @@ public class UniqueCharmType implements IUniqueCharmType {
 
   @Override
   public Identified getId() {
-    return new Identificate(type);
+    return new Identifier(type);
   }
 }

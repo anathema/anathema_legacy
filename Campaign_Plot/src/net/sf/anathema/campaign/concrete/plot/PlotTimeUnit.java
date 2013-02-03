@@ -1,9 +1,9 @@
 package net.sf.anathema.campaign.concrete.plot;
 
 import net.sf.anathema.campaign.model.plot.IPlotTimeUnit;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
-public class PlotTimeUnit extends Identificate implements IPlotTimeUnit {
+public class PlotTimeUnit extends Identifier implements IPlotTimeUnit {
 
   private final IPlotTimeUnit successor;
 

@@ -1,0 +1,14 @@
+dependencies {
+//  Insert your dependencies here like so:
+    compile project(':Character_Main')
+    compile 'com.miglayout:miglayout-javafx:4.2'
+    testCompile parent.ext.testDependencies
+}
+
+configurations {
+    tests
+}
+
+artifacts {
+    tests testJar
+}

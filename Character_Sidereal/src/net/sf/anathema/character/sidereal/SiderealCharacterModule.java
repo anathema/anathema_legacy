@@ -34,7 +34,7 @@ import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxViewFactory;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 @CharacterModule
 public class SiderealCharacterModule extends CharacterTypeModule {
@@ -46,8 +46,8 @@ public class SiderealCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_SIFU = "Sifu"; //$NON-NLS-1$
 
   private static final TemplateType defaultTemplateType = new TemplateType(SIDEREAL); //$NON-NLS-1$
-  public static final TemplateType roninType = new TemplateType(SIDEREAL, new Identificate("Ronin")); //$NON-NLS-1$
-  public static final TemplateType dreamsType = new TemplateType(SIDEREAL, new Identificate("Dreams")); //$NON-NLS-1$
+  public static final TemplateType roninType = new TemplateType(SIDEREAL, new Identifier("Ronin")); //$NON-NLS-1$
+  public static final TemplateType dreamsType = new TemplateType(SIDEREAL, new Identifier("Dreams")); //$NON-NLS-1$
 
   private static final TemplateType[] dreams = {dreamsType};
 

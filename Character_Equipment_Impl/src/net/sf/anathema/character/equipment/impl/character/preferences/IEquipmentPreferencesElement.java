@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.preferences;
 
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.prefs.Preferences;
@@ -11,5 +11,5 @@ import static net.sf.anathema.character.equipment.character.preference.IEquipmen
 public interface IEquipmentPreferencesElement extends IPreferencesElement {
 
   Preferences EQUIPMENT_PREFERENCES = Preferences.userRoot().node(EQUIPMENT_PREFERENCES_NODE);
-  Identified EQUIPMENT_CATEGORY = new Identificate("Equipment"); //$NON-NLS-1$
+  Identified EQUIPMENT_CATEGORY = new Identifier("Equipment"); //$NON-NLS-1$
 }

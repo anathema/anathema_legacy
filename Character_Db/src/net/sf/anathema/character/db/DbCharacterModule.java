@@ -25,7 +25,7 @@ import net.sf.anathema.character.library.virtueflaw.persistence.DefaultVirtueFla
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 @CharacterModule
 public class DbCharacterModule extends CharacterTypeModule {
@@ -43,17 +43,17 @@ public class DbCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_SIFU = "DBDreamsSifu"; //$NON-NLS-1$
   private static final TemplateType dynastTemplateType = new TemplateType(DB);
   private static final TemplateType lookshyNativeTemplateType = new TemplateType(DB,
-          new Identificate("LookshySubtype")); //$NON-NLS-1$
+          new Identifier("LookshySubtype")); //$NON-NLS-1$
   private static final TemplateType lookshyOutcasteTemplateType = new TemplateType(DB,
-          new Identificate("LookshyOutcasteSubtype")); //$NON-NLS-1$
+          new Identifier("LookshyOutcasteSubtype")); //$NON-NLS-1$
   private static final TemplateType lookshyRealmTemplateType = new TemplateType(DB,
-          new Identificate("LookshyRealmSubtype")); //$NON-NLS-1$
+          new Identifier("LookshyRealmSubtype")); //$NON-NLS-1$
   private static final TemplateType cherakiTemplateType = new TemplateType(DB,
-          new Identificate("Cherak")); //$NON-NLS-1$
+          new Identifier("Cherak")); //$NON-NLS-1$
   private static final TemplateType immaculateTemplateType = new TemplateType(DB,
-          new Identificate("ImmaculateSubtype")); //$NON-NLS-1$
+          new Identifier("ImmaculateSubtype")); //$NON-NLS-1$
   private static final TemplateType dreamsTemplateType = new TemplateType(DB,
-          new Identificate("DreamsSubtype")); //$NON-NLS-1$
+          new Identifier("DreamsSubtype")); //$NON-NLS-1$
   private static final TemplateType[] dreams = {dreamsTemplateType};
 
   @Override

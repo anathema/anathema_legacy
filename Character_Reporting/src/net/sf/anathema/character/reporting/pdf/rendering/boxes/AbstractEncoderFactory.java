@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes;
 
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
-public abstract class AbstractEncoderFactory extends Identificate implements EncoderFactory {
+public abstract class AbstractEncoderFactory extends Identifier implements EncoderFactory {
 
   private PreferredHeight preferredHeight;
 

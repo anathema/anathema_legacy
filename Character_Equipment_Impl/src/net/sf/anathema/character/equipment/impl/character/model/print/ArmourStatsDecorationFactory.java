@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 public class ArmourStatsDecorationFactory implements IEquipmentStatsDecorationFactory<IArmourStats> {
@@ -53,7 +53,7 @@ public class ArmourStatsDecorationFactory implements IEquipmentStatsDecorationFa
 
       @Override
       public Identified getName() {
-        return new Identificate(name);
+        return new Identifier(name);
       }
 
       @Override

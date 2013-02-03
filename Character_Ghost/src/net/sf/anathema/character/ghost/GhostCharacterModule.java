@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
@@ -28,7 +27,7 @@ import net.sf.anathema.character.ghost.passions.GhostPassionsViewFactory;
 import net.sf.anathema.character.ghost.passions.persistence.GhostPassionsPersisterFactory;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.character.generic.type.CharacterType.GHOST;
 
@@ -42,7 +41,7 @@ public class GhostCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_WHISPERS = "GhostWhispers"; //$NON-NLS-1$
 
   private static final TemplateType heroicType = new TemplateType(GHOST);
-  private static final TemplateType commonType = new TemplateType(GHOST, new Identificate("CommonGhost")); //$NON-NLS-1$
+  private static final TemplateType commonType = new TemplateType(GHOST, new Identifier("CommonGhost")); //$NON-NLS-1$
 
   private final TemplateType[] trueGhosts = {heroicType, commonType};
 

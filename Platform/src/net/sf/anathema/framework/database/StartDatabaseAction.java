@@ -16,7 +16,7 @@ import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.progress.INonInterruptibleRunnableWithProgress;
 import net.sf.anathema.lib.progress.IProgressMonitor;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.Action;
 import java.awt.Component;
@@ -85,7 +85,7 @@ public class StartDatabaseAction extends SmartAction {
                     monitor.beginTaskWithUnknownTotalWork(properties.getProgressTaskTitle());
                     IItemType itemType = anathemaModel.getItemTypeRegistry().getById(properties.getItemTypeId());
                     IItemData database = properties.createItemData(anathemaModel.getRepository());
-                    IItem anathemaItem = new AnathemaDataItem(itemType, new Identificate(properties.getItemId()),
+                    IItem anathemaItem = new AnathemaDataItem(itemType, new Identifier(properties.getItemId()),
                             database);
                     anathemaModel.getItemManagement().addItem(anathemaItem);
                   } catch (IOException | AnathemaException e) {

@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.impl.magic;
 
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
-public class CharmAttribute extends Identificate implements ICharmAttribute {
+public class CharmAttribute extends Identifier implements ICharmAttribute {
 
   private final boolean visualized;
   private final String value;

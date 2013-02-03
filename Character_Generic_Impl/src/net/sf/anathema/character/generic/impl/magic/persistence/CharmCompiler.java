@@ -14,7 +14,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.resources.ResourceFile;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -58,7 +58,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
     Matcher matcher = Pattern.compile(Charm_Data_Extraction_Pattern).matcher(resource.getFileName());
     matcher.matches();
     String typeString = matcher.group(1);
-    Identified type = new Identificate(typeString);
+    Identified type = new Identifier(typeString);
     if (!registry.idRegistered(typeString)) {
       registry.add(type);
     }

@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
@@ -122,7 +122,7 @@ public class NaturalSoak extends AbstractCombatStats implements IArmourStats {
 
   @Override
   public Identified getName() {
-    return new Identificate("NaturalSoak"); //$NON-NLS-1$
+    return new Identifier("NaturalSoak"); //$NON-NLS-1$
   }
 
   @Override

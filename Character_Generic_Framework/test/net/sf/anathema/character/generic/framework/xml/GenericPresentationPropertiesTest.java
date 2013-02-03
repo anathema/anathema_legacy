@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class GenericPresentationPropertiesTest {
     DummyCharacterTemplate dummyCharacterTemplate = new DummyCharacterTemplate();
     template.setParentTemplate(dummyCharacterTemplate);
     Assert.assertEquals("CharacterGenerator.Templates.Mortal.TemplateType.Default", template.getNewActionResource()); //$NON-NLS-1$
-    dummyCharacterTemplate.setTemplateType(new TemplateType(CharacterType.MORTAL, new Identificate("HeroicSubtype"))); //$NON-NLS-1$
+    dummyCharacterTemplate.setTemplateType(new TemplateType(CharacterType.MORTAL, new Identifier("HeroicSubtype"))); //$NON-NLS-1$
     Assert.assertEquals("CharacterGenerator.Templates.Mortal.HeroicSubtype", template.getNewActionResource()); //$NON-NLS-1$
   }
 }

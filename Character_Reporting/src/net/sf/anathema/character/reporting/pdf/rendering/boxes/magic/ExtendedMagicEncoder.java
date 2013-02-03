@@ -17,14 +17,14 @@ import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExtendedMagicEncoder<C extends AbstractMagicContent> implements ContentEncoder {
-  static Identified KNACK = new Identificate("Knack");
+  static Identified KNACK = new Identifier("Knack");
   private IResources resources;
 
   public static List<IMagicStats> collectPrintCharms(ReportSession session) {
