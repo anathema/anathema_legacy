@@ -166,7 +166,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return new FavorableTraitCost(bonusPointsSpent, generalDotsSpent, favoredDotsSpent);
   }
 
-  private FavorableTraitCost[] handleFavoredTrait(IFavorableTrait trait, final int bonusPointCostFactor) {
+  private FavorableTraitCost[] handleFavoredTrait(ITrait trait, final int bonusPointCostFactor) {
     final List<FavorableTraitCost> allCosts = new ArrayList<>();
     trait.accept(new ITraitVisitor() {
 
