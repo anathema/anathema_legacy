@@ -50,8 +50,8 @@ public class MusicDatabaseActionProperties implements IDatabaseActionProperties 
   }
 
   @Override
-  public IItemData createItemData(IDataFileProvider provider) throws IOException {
-    Path parentFolder = provider.getDataBaseDirectory("music"); //$NON-NLS-1$
-    return new MusicDatabase(parentFolder.resolve("musicdatabase.yap")); //$NON-NLS-1$
+  public IItemData createItemData(IDataFileProvider provider) {
+    Path parentFolder = provider.getDataBaseDirectory("music");
+    return new MusicDatabase(parentFolder.resolve("musicdatabase.yap"));
   }
 }

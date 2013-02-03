@@ -48,6 +48,6 @@ public class NameGeneratorItemTypeConfiguration extends AbstractNonPersistableIt
 
   @Override
   protected IMenuItem[] createAddMenuEntries(ApplicationView view, IAnathemaModel anathemaModel, IResources resources) {
-    return new IMenuItem[] { new ActionMenuItem(ShowNameGeneratorAction.createMenuAction(resources, anathemaModel)) };
+    return new IMenuItem[0];
   }
 }

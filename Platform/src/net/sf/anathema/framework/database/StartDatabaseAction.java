@@ -88,7 +88,7 @@ public class StartDatabaseAction extends SmartAction {
                     IItem anathemaItem = new AnathemaDataItem(itemType, new Identifier(properties.getItemId()),
                             database);
                     anathemaModel.getItemManagement().addItem(anathemaItem);
-                  } catch (IOException | AnathemaException e) {
+                  } catch (AnathemaException e) {
                     throw new InvocationTargetException(e);
                   }
                 }

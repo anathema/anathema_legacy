@@ -54,10 +54,6 @@ public final class EquipmentDatabaseItemTypeConfiguration extends AbstractNonPer
 
   @Override
   protected IMenuItem[] createAddMenuEntries(ApplicationView view, IAnathemaModel anathemaModel, IResources resources) {
-    EquipmentDatabaseActionProperties properties = new EquipmentDatabaseActionProperties(resources, anathemaModel);
-    return new IMenuItem[] { new ActionMenuItem(StartDatabaseAction.createMenuAction(
-        resources,
-        anathemaModel,
-        properties)) };
+    return new IMenuItem[0];
   }
 }

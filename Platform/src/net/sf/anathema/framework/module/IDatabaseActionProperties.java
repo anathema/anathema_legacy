@@ -20,5 +20,5 @@ public interface IDatabaseActionProperties {
 
   String getItemId();
 
-  IItemData createItemData(IDataFileProvider provider) throws IOException;
+  IItemData createItemData(IDataFileProvider provider);
 }
