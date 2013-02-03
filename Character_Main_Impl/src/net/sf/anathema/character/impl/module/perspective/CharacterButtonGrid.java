@@ -59,7 +59,6 @@ public class CharacterButtonGrid {
     ToggleButton button = new ToggleButton(printNameFile.getPrintName());
     button.getStyleClass().add("character-grid-button");
     button.setOnAction(new EventHandler<ActionEvent>(){
-
       @Override
       public void handle(ActionEvent actionEvent) {
         String identifier = printNameFile.getRepositoryId();
