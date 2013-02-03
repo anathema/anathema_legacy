@@ -6,6 +6,7 @@ import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.swing.character.perspective.CharacterStackBridge;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -23,10 +24,11 @@ public class CharacterSystemPerspective implements Perspective {
   @Override
   public JComponent createContent(IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
     CharacterSystemModel systemModel = new CharacterSystemModel(model);
-    CharacterStackPresenter characterStack = new CharacterStackPresenter(model, systemModel);
+    CharacterStackBridge bridge = new CharacterStackBridge(model);
+    CharacterStackPresenter characterStack = new CharacterStackPresenter(bridge, systemModel);
     JPanel panel = new JPanel(new BorderLayout());
     panel.add(createButtonGridContent(model, characterStack), BorderLayout.WEST);
-    panel.add(characterStack.getContent(), BorderLayout.CENTER);
+    panel.add(bridge.getComponent(), BorderLayout.CENTER);
     return panel;
   }
 

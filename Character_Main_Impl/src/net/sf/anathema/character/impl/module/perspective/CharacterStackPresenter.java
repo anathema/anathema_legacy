@@ -1,22 +1,19 @@
 package net.sf.anathema.character.impl.module.perspective;
 
-import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.swing.character.perspective.CharacterStackBridge;
 
-import javax.swing.JComponent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterStackPresenter {
   private final List<String> knownCharacters = new ArrayList<>();
-  private final StackView stackView = new StackView();
-  private IAnathemaModel model;
-  private CharacterSystemModel systemModel;
+  private CharacterSystemModel model;
+  private CharacterStackBridge bridge;
 
-  public CharacterStackPresenter(IAnathemaModel model, CharacterSystemModel systemModel) {
+  public CharacterStackPresenter(CharacterStackBridge bridge, CharacterSystemModel model) {
+    this.bridge = bridge;
     this.model = model;
-    this.systemModel = systemModel;
   }
 
   public void showCharacter(String repositoryId) {
@@ -24,20 +21,11 @@ public class CharacterStackPresenter {
       addCharacter(repositoryId);
       knownCharacters.add(repositoryId);
     }
-    stackView.showView(repositoryId);
+    bridge.showCharacterView(repositoryId);
   }
 
   public void addCharacter(String repositoryId) {
-    IView itemView = loadItemView(repositoryId);
-    stackView.addView(repositoryId, itemView);
-  }
-
-  private IView loadItemView(String repositoryId) {
-    IItem item = systemModel.loadItem(repositoryId);
-    return model.getViewFactoryRegistry().get(systemModel.getCharacterItemType()).createView(item);
-  }
-
-  public JComponent getContent() {
-    return stackView.getContent();
+    IItem item = model.loadItem(repositoryId);
+    bridge.addCharacterView(item);
   }
 }

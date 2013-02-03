@@ -8,6 +8,8 @@ import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.lib.registry.IRegistry;
 
+import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
+
 public class CharacterSystemModel {
 
   private final IAnathemaModel model;
@@ -16,16 +18,23 @@ public class CharacterSystemModel {
     this.model = model;
   }
 
-  public IItemType getCharacterItemType() {
-    return model.getItemTypeRegistry().getById("ExaltedCharacter");
+  public IItem loadItem(String repositoryId) {
+    IRepositoryReadAccess readAccess = createReadAccess(repositoryId);
+    IRepositoryItemPersister persister = extractPersister();
+    return persister.load(readAccess);
   }
 
-  public IItem loadItem(String repositoryId) {
-    IItemType characterItemType = getCharacterItemType();
-    IRepository repository = model.getRepository();
-    IRepositoryReadAccess readAccess = repository.openReadAccess(characterItemType, repositoryId);
+  private IRepositoryItemPersister extractPersister() {
     IRegistry<IItemType,IRepositoryItemPersister> registry = model.getPersisterRegistry();
-    IRepositoryItemPersister persister = registry.get(characterItemType);
-    return persister.load(readAccess);
+    return registry.get(getCharacterItemType());
+  }
+
+  private IRepositoryReadAccess createReadAccess(String repositoryId) {
+    IRepository repository = model.getRepository();
+    return repository.openReadAccess(getCharacterItemType(), repositoryId);
+  }
+
+  private IItemType getCharacterItemType() {
+    return retrieveCharacterItemType(model);
   }
 }

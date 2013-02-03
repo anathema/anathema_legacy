@@ -14,7 +14,7 @@ import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAcces
 import net.sf.anathema.framework.view.PrintNameFile;
 import org.tbee.javafx.scene.layout.MigPane;
 
-import static net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration.CHARACTER_ITEM_TYPE_ID;
+import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID;
 
 public class InitCharacterButtons implements Runnable {
   private final IAnathemaModel model;

@@ -1,5 +1,5 @@
 dependencies {
-    compile project(':Character_Main_FX')
-    compile project(':Character_Main')
-    compile project(':Lib_Gui')
+//  Insert your dependencies here like so:
+  compile project(':Character_Main')
+  compile project(':Lib_Gui')
 }
