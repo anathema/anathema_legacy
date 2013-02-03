@@ -3,11 +3,13 @@ package net.sf.anathema;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.runtime.PendingException;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
@@ -19,6 +21,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.util.Identificate;
 
 import static net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration.CHARACTER_ITEM_TYPE_ID;
 import static org.hamcrest.CoreMatchers.is;
@@ -34,13 +37,19 @@ public class SiderealFavoredAbilitySteps {
     this.model = initializer.initialize();
   }
 
-  @When("^I create a new (.*)$")
+  @When("^I create a new default (.*)$")
   public void I_create_a_new_character(String type) throws Throwable {
     ICharacterTemplate characterTemplate = loadDefaultTemplateForType(type);
     this.character = createCharacter(characterTemplate);
   }
 
-  @When("^I set her Caste to (.*)$")
+  @When("^I create a new (.*) using rules for (.*)$")
+  public void I_create_a_new_character_with_subtype(String type, String subtype) throws Throwable {
+    ICharacterTemplate characterTemplate = loadTemplateForType(type, subtype);
+    this.character = createCharacter(characterTemplate);
+  }
+
+    @When("^I set her Caste to (.*)$")
   public void I_set_her_Caste(String casteName) throws Throwable {
     ICasteCollection casteCollection = character.getCharacterTemplate().getCasteCollection();
     ICasteType caste = casteCollection.getById(casteName);
@@ -55,6 +64,14 @@ public class SiderealFavoredAbilitySteps {
     assertThat(dotsSpent, is(amount));
   }
 
+    @Then("^she has (\\d+) ability dots spent.$")
+    public void she_has_ability_dots_spent(int amount) throws Throwable {
+        BonusPointManagement bonusPointManagement = new BonusPointManagement(character);
+        bonusPointManagement.recalculate();
+        Integer dotsSpent = bonusPointManagement.getDefaultAbilityModel().getValue();
+        assertThat(dotsSpent, is(amount));
+    }
+
   @Then("^she has (\\d+) dots in (.*)$")
   public void she_has_dots_in_Craft(int amount, String abilityName) throws Throwable {
     IFavorableTrait ability = character.getTraitConfiguration().getFavorableTrait(AbilityType.valueOf(abilityName));
@@ -64,6 +81,11 @@ public class SiderealFavoredAbilitySteps {
   private ICharacterTemplate loadDefaultTemplateForType(String type) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
     return generics.getTemplateRegistry().getDefaultTemplate(CharacterType.getById(type));
+  }
+
+  private ICharacterTemplate loadTemplateForType(String type, String subtype) {
+    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
+    return generics.getTemplateRegistry().getTemplate(new TemplateType(CharacterType.getById(type), new Identificate(subtype)));
   }
 
   private ICharacter createCharacter(ICharacterTemplate template) {
