@@ -10,5 +10,5 @@ public interface Perspective {
 
   String getTitle();
 
-  JComponent createContent(IAnathemaModel model, IResources resources, ReflectionObjectFactory instantiater);
+  void initContent(PerspectiveContainer container, IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory);
 }

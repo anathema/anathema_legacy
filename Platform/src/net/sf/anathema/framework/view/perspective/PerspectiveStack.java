@@ -22,8 +22,8 @@ public class PerspectiveStack {
   }
 
   public void add(Perspective perspective) {
-    JComponent perspectiveContent = perspective.createContent(model, resources, objectFactory);
-    cardPanel.add(perspectiveContent, perspective.getTitle());
+    PerspectiveContainer container = new CardPerspectiveContainer(perspective.getTitle(), cardPanel);
+    perspective.initContent(container, model, resources, objectFactory);
   }
 
   public void show(Perspective perspective) {

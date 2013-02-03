@@ -3,6 +3,7 @@ package net.sf.anathema.integrated;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
+import net.sf.anathema.framework.view.perspective.PerspectiveContainer;
 import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
@@ -19,9 +20,9 @@ public class IntegratedPerspective implements Perspective {
   }
 
   @Override
-  public JComponent createContent(IAnathemaModel model, IResources resources, ReflectionObjectFactory instantiater) {
+  public void initContent(PerspectiveContainer container, IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
     IntegratedPerspectiveView view = new IntegratedPerspectiveView();
-    new IntegratedPerspectivePresenter(model, view, resources,  instantiater).initPresentation();
-    return view.createContent();
+    new IntegratedPerspectivePresenter(model, view, resources,  objectFactory).initPresentation();
+    container.setSwingContent(view.createContent());
   }
 }
