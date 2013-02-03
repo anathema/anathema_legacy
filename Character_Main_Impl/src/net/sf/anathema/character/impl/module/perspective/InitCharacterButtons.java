@@ -55,7 +55,7 @@ public class InitCharacterButtons implements Runnable {
   private ToggleButton createButton(PrintNameFile printNameFile) {
     ToggleButton button = new ToggleButton(printNameFile.getPrintName());
     button.getStyleClass().add("character-grid-button");
-    button.setOnAction(new ShowCharacter(printNameFile, model, characterStack));
+    button.setOnAction(new ShowCharacter(printNameFile, characterStack));
     return button;
   }
 

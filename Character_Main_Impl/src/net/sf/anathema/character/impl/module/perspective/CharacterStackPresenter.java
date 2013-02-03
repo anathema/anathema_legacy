@@ -1,39 +1,40 @@
 package net.sf.anathema.character.impl.module.perspective;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
-import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterStackPresenter {
   private final List<String> knownCharacters = new ArrayList<>();
   private final StackView stackView = new StackView();
+  private IAnathemaModel model;
+  private CharacterSystemModel systemModel;
 
-  public void showCharacter(IAnathemaModel model, String repositoryId) {
+  public CharacterStackPresenter(IAnathemaModel model, CharacterSystemModel systemModel) {
+    this.model = model;
+    this.systemModel = systemModel;
+  }
+
+  public void showCharacter(String repositoryId) {
     if (!knownCharacters.contains(repositoryId)) {
-      addCharacter(model, repositoryId);
+      addCharacter(repositoryId);
+      knownCharacters.add(repositoryId);
     }
     stackView.showView(repositoryId);
   }
 
-  public void addCharacter(IAnathemaModel model, String repositoryId) {
-    IView itemView = loadItemView(model, repositoryId);
+  public void addCharacter(String repositoryId) {
+    IView itemView = loadItemView(repositoryId);
     stackView.addView(repositoryId, itemView);
   }
 
-  private IView loadItemView(IAnathemaModel model, String repositoryId) {
-    IItemType itemType = model.getItemTypeRegistry().getById("ExaltedCharacter");
-    IRepositoryReadAccess readAccess = model.getRepository().openReadAccess(itemType, repositoryId);
-    IItem item = model.getPersisterRegistry().get(itemType).load(readAccess);
-    return model.getViewFactoryRegistry().get(itemType).createView(item);
+  private IView loadItemView(String repositoryId) {
+    IItem item = systemModel.loadItem(repositoryId);
+    return model.getViewFactoryRegistry().get(systemModel.getCharacterItemType()).createView(item);
   }
 
   public JComponent getContent() {

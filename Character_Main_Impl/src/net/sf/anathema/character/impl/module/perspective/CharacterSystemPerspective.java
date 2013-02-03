@@ -15,8 +15,6 @@ import java.awt.BorderLayout;
 @Weight(weight = 1)
 public class CharacterSystemPerspective implements Perspective {
 
-  private CharacterStackPresenter characterStack = new CharacterStackPresenter();
-  private CharacterButtonGrid buttonGrid = new CharacterButtonGrid();
 
   public String getTitle() {
     return "Character";
@@ -24,11 +22,18 @@ public class CharacterSystemPerspective implements Perspective {
 
   @Override
   public JComponent createContent(IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
+    CharacterSystemModel systemModel = new CharacterSystemModel(model);
+    CharacterStackPresenter characterStack = new CharacterStackPresenter(model, systemModel);
     JPanel panel = new JPanel(new BorderLayout());
-    buttonGrid.fillFromRepository(model, characterStack);
-    panel.add(buttonGrid.getContent(), BorderLayout.WEST);
+    panel.add(createButtonGridContent(model, characterStack), BorderLayout.WEST);
     panel.add(characterStack.getContent(), BorderLayout.CENTER);
     return panel;
+  }
+
+  private JComponent createButtonGridContent(IAnathemaModel model, CharacterStackPresenter characterStack) {
+    CharacterButtonGrid buttonGrid = new CharacterButtonGrid();
+    buttonGrid.fillFromRepository(model, characterStack);
+    return buttonGrid.getContent();
   }
 
 }
