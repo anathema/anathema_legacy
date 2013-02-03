@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.module.perspective;
 
 import net.sf.anathema.character.perspective.CharacterStackPresenter;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.swing.character.perspective.StackView;
 
 import javax.swing.JComponent;
@@ -10,8 +11,17 @@ import java.awt.BorderLayout;
 
 public class CharacterSystemView {
 
+  private class ButtonChangedListener implements IChangeListener {
+    @Override
+    public void changeOccurred() {
+      panel.remove(buttonGrid.getComponent());
+      panel.add(buttonGrid.getComponent(), BorderLayout.WEST);
+      panel.revalidate();
+    }
+  }
+
   private final JPanel panel = new JPanel(new BorderLayout());
-  private final CharacterButtonGrid buttonGrid = new CharacterButtonGrid();
+  private final CharacterButtonGrid buttonGrid = new CharacterButtonGrid(new ButtonChangedListener());
   private final StackView stackView = new StackView();
 
   public CharacterSystemView() {
