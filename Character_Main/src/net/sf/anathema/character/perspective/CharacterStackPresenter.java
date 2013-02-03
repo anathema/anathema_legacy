@@ -1,15 +1,14 @@
-package net.sf.anathema.character.impl.module.perspective;
+package net.sf.anathema.character.perspective;
 
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.swing.character.perspective.CharacterStackBridge;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterStackPresenter {
   private final List<String> knownCharacters = new ArrayList<>();
-  private CharacterSystemModel model;
-  private CharacterStackBridge bridge;
+  private final CharacterSystemModel model;
+  private final CharacterStackBridge bridge;
 
   public CharacterStackPresenter(CharacterStackBridge bridge, CharacterSystemModel model) {
     this.bridge = bridge;

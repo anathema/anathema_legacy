@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.module.perspective;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import net.sf.anathema.character.perspective.CharacterStackPresenter;
 import net.sf.anathema.framework.view.PrintNameFile;
 
 public class ShowCharacter implements EventHandler<ActionEvent> {

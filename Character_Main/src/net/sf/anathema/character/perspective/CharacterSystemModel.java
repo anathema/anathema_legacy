@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.module.perspective;
+package net.sf.anathema.character.perspective;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;

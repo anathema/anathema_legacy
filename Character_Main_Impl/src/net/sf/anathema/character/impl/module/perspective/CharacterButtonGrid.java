@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.module.perspective;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import net.sf.anathema.character.perspective.CharacterStackPresenter;
 import net.sf.anathema.framework.IAnathemaModel;
 
 import javax.swing.JComponent;

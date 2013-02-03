@@ -8,6 +8,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
+import net.sf.anathema.character.perspective.CharacterStackPresenter;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
