@@ -14,7 +14,7 @@ public class CharacterButtonGrid {
     Platform.runLater(new InitCharacterButtons(model, characterStack, panel));
   }
 
-  public JComponent getContent() {
+  public JComponent getComponent() {
     return panel;
   }
 }

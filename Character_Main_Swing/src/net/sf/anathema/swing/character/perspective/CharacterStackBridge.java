@@ -9,11 +9,12 @@ import javax.swing.JComponent;
 
 public class CharacterStackBridge {
 
-  private StackView stackView = new StackView();
-  private CharacterViewFactory viewFactory;
+  private final StackView stackView;
+  private final CharacterViewFactory viewFactory;
 
-  public CharacterStackBridge(IAnathemaModel model) {
+  public CharacterStackBridge(IAnathemaModel model, StackView stackView) {
     this.viewFactory =  new CharacterViewFactory(model);
+    this.stackView = stackView;
   }
 
   public void addCharacterView(IItem item) {
