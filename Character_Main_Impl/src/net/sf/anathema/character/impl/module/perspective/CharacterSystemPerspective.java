@@ -8,6 +8,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
+import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
@@ -18,8 +19,10 @@ import net.sf.anathema.swing.character.perspective.CharacterSystemView;
 @Weight(weight = 1)
 public class CharacterSystemPerspective implements Perspective {
 
-  public String getTitle() {
-    return "Character";
+  @Override
+  public void configureToggle(PerspectiveToggle toggle) {
+    toggle.setIcon("group-icon.png");
+    toggle.setTooltip("Character");
   }
 
   @Override

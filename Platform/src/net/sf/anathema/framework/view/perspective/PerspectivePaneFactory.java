@@ -20,9 +20,11 @@ public class PerspectivePaneFactory implements ViewFactory {
 
   private final PerspectiveStack perspectiveStack;
   private final PerspectiveSelectionBar selectionBar;
+  private IResources resources;
   private final ReflectionObjectFactory objectFactory;
 
   public PerspectivePaneFactory(IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
+    this.resources = resources;
     this.objectFactory = objectFactory;
     this.perspectiveStack = new PerspectiveStack(model, resources, objectFactory);
     this.selectionBar = new PerspectiveSelectionBar(perspectiveStack);
@@ -33,7 +35,7 @@ public class PerspectivePaneFactory implements ViewFactory {
     Collection<Perspective> sortedPerspectives = objectFactory.instantiateOrdered(PerspectiveAutoCollector.class);
     for (final Perspective perspective : sortedPerspectives) {
       perspectiveStack.add(perspective);
-      selectionBar.addPerspective(perspective);
+      selectionBar.addPerspective(perspective, resources);
     }
     JPanel contentPanel = new JPanel(new BorderLayout());
     contentPanel.add(selectionBar.getContent(), BorderLayout.NORTH);

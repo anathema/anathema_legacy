@@ -22,12 +22,16 @@ public class PerspectiveStack {
   }
 
   public void add(Perspective perspective) {
-    Container container = new CardContainer(perspective.getTitle(), cardPanel);
+    Container container = new CardContainer(getIdFor(perspective), cardPanel);
     perspective.initContent(container, model, resources, objectFactory);
   }
 
   public void show(Perspective perspective) {
-    perspectiveStack.show(cardPanel, perspective.getTitle());
+    perspectiveStack.show(cardPanel, getIdFor(perspective));
+  }
+
+  private String getIdFor(Perspective perspective) {
+    return perspective.getClass().getCanonicalName();
   }
 
   public JComponent getContent() {

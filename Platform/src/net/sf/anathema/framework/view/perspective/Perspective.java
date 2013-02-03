@@ -6,7 +6,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface Perspective {
 
-  String getTitle();
+  void configureToggle(PerspectiveToggle toggle);
 
   void initContent(Container container, IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory);
 }
