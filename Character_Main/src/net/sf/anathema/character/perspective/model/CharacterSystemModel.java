@@ -8,16 +8,30 @@ import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
+import org.jmock.example.announcer.Announcer;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
 
 public class CharacterSystemModel {
 
   private final IAnathemaModel model;
+  private final Map<CharacterIdentifier, IItem> itemByIdentifier = new HashMap<>();
+  private Announcer<IChangeListener> becomesDirtyAnnouncer = Announcer.to(IChangeListener.class);
+  private Announcer<IChangeListener> becomesCleanAnnouncer = Announcer.to(IChangeListener.class);
+  private CharacterIdentifier currentCharacter;
+  private IChangeListener dirtyListener = new IChangeListener() {
+    @Override
+    public void changeOccurred() {
+      notifyDirtyListeners();
+    }
+  };
 
   public CharacterSystemModel(IAnathemaModel model) {
     this.model = model;
@@ -33,7 +47,10 @@ public class CharacterSystemModel {
   public IItem loadItem(CharacterIdentifier identifier) {
     IRepositoryReadAccess readAccess = createReadAccess(identifier.getId());
     IRepositoryItemPersister persister = extractPersister();
-    return persister.load(readAccess);
+    IItem item = persister.load(readAccess);
+    item.addDirtyListener(dirtyListener);
+    itemByIdentifier.put(identifier, item);
+    return item;
   }
 
   private IRepositoryItemPersister extractPersister() {
@@ -48,5 +65,31 @@ public class CharacterSystemModel {
 
   private IItemType getCharacterItemType() {
     return retrieveCharacterItemType(model);
+  }
+
+  public void whenCurrentSelectionBecomesDirty(IChangeListener listener) {
+    becomesDirtyAnnouncer.addListener(listener);
+  }
+
+  public void whenCurrentSelectionBecomesClean(IChangeListener listener) {
+    becomesCleanAnnouncer.addListener(listener);
+  }
+
+  public void setCurrentCharacter(CharacterIdentifier currentCharacter) {
+    this.currentCharacter = currentCharacter;
+    notifyDirtyListeners();
+  }
+
+  private void notifyDirtyListeners() {
+    IItem item = itemByIdentifier.get(currentCharacter);
+    if (item == null) {
+      return;
+    }
+    if (item.isDirty()) {
+      becomesDirtyAnnouncer.announce().changeOccurred();
+    }
+    if (!item.isDirty()) {
+      becomesCleanAnnouncer.announce().changeOccurred();
+    }
   }
 }

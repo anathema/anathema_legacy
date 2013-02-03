@@ -23,6 +23,7 @@ public class CharacterStackPresenter {
       knownCharacters.add(identifier);
     }
     bridge.showCharacterView(identifier);
+    model.setCurrentCharacter(identifier);
   }
 
   public void addExistingCharacter(CharacterIdentifier identifier) {
