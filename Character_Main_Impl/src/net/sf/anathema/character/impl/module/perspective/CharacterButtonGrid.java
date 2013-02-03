@@ -2,8 +2,6 @@ package net.sf.anathema.character.impl.module.perspective;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import net.miginfocom.layout.AC;
@@ -15,6 +13,9 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.fx.character.perspective.CharacterSelected;
+import net.sf.anathema.fx.character.perspective.InitScene;
+import net.sf.anathema.fx.character.perspective.Selector;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -44,15 +45,19 @@ public class CharacterButtonGrid {
 
   private void addCharacterButtons(IAnathemaModel model, final CharacterStackPresenter characterStack) {
     for (final PrintNameFile printNameFile : collectCharacterPrintNameFiles(model)) {
-      ToggleButton button = new ToggleButton(printNameFile.getPrintName());
-      button.getStyleClass().add("character-grid-button");
-      button.setOnAction(new EventHandler<ActionEvent>() {
+      String text = printNameFile.getPrintName();
+      String repositoryId = printNameFile.getRepositoryId();
+      final CharacterIdentifier identifier = new CharacterIdentifier(repositoryId);
+      final Selector<CharacterIdentifier> characterSelector = new Selector<CharacterIdentifier>() {
         @Override
-        public void handle(ActionEvent actionEvent) {
-          String repositoryId = printNameFile.getRepositoryId();
-          characterStack.showCharacter(new CharacterIdentifier(repositoryId));
+        public void selected(CharacterIdentifier item) {
+          characterStack.showCharacter(item);
         }
-      });
+      };
+
+      ToggleButton button = new ToggleButton(text);
+      button.getStyleClass().add("character-grid-button");
+      button.setOnAction(new CharacterSelected(characterSelector, identifier));
       button.setToggleGroup(toggleGroup);
       gridPane.getChildren().add(button);
     }

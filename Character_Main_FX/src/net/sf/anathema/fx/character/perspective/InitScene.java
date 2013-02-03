@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.module.perspective;
+package net.sf.anathema.fx.character.perspective;
 
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
@@ -11,7 +11,7 @@ public class InitScene implements Runnable {
   private final JFXPanel panel;
   private Node content;
 
-  InitScene(JFXPanel panel, Node content) {
+  public InitScene(JFXPanel panel, Node content) {
     this.panel = panel;
     this.content = content;
   }

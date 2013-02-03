@@ -1,7 +1,5 @@
 package net.sf.anathema.character.impl.module.perspective;
 
-import net.sf.anathema.character.perspective.CharacterStackPresenter;
-import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.swing.character.perspective.StackView;
 
@@ -29,8 +27,8 @@ public class CharacterSystemView {
     panel.add(stackView.getComponent(), BorderLayout.CENTER);
   }
 
-  public void fillButtonGrid(IAnathemaModel model, CharacterStackPresenter characterStack) {
-    buttonGrid.fillFromRepository(model, characterStack);
+  public CharacterButtonGrid getButtonGrid() {
+    return buttonGrid;
   }
 
   public StackView getStackView() {

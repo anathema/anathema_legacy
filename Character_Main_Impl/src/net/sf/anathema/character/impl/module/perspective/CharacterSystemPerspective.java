@@ -28,7 +28,7 @@ public class CharacterSystemPerspective implements Perspective {
     CharacterSystemModel systemModel = new CharacterSystemModel(model);
     CharacterStackBridge bridge = new CharacterStackSwingBridge(model, view.getStackView());
     CharacterStackPresenter presenter = new CharacterStackPresenter(bridge, systemModel);
-    view.fillButtonGrid(model, presenter);
+    view.getButtonGrid().fillFromRepository(model, presenter);
     return view.getComponent();
   }
 }
