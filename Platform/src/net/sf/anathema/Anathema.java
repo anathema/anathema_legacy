@@ -50,7 +50,7 @@ public class Anathema {
   private IWindow createView(IInitializationPreferences initializationPreferences) {
     try {
       displayStatus("Starting Platform..."); //$NON-NLS-1$
-      return new GuiInitializer(initializationPreferences).initialize();
+      return new GuiInitializer(initializationPreferences).initialize().getWindow();
     } catch (InitializationException e) {
       LoggerFactory.getLogger(Anathema.class).error("Could not start platform.", e);
       return new ErrorWindow(e);
