@@ -11,6 +11,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
+import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.perspective.CharacterStackPresenter;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
@@ -19,8 +20,6 @@ import net.sf.anathema.framework.view.PrintNameFile;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.swing.JComponent;
-
-import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID;
 
 public class CharacterButtonGrid {
 
@@ -71,13 +70,9 @@ public class CharacterButtonGrid {
   }
 
   private PrintNameFile[] collectCharacterPrintNameFiles(IAnathemaModel model) {
-    IItemType characterItemType = collectCharacterItemType(model);
+    IItemType characterItemType = CharacterItemTypeRetrieval.retrieveCharacterItemType(model);
     IPrintNameFileAccess access = model.getRepository().getPrintNameFileAccess();
     return access.collectAllPrintNameFiles(characterItemType);
-  }
-
-  private IItemType collectCharacterItemType(IAnathemaModel model) {
-    return model.getItemTypeRegistry().getById(CHARACTER_ITEM_TYPE_ID);
   }
 
   public JComponent getComponent() {
