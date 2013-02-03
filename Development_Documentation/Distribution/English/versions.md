@@ -4,6 +4,12 @@ Exalted © 2001-2012 by White Wolf Publishing, Inc.
 
 Website: [anathema.github.com](http://anathema.github.com)
 
+## Release 5.0.2
+
+### Bugfixes
+* Sidereals pay extra for their Celestial Manses.
+* Serenity Sidereals no longer get two free dots under some circumstances.
+
 ## Release 5.0.1
 
 There was a critical issue with 5.0.0, rendering the update manager unusable.
