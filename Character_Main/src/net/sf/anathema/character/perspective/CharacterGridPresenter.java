@@ -24,17 +24,4 @@ public class CharacterGridPresenter {
     List<CharacterButtonDto> dtoList = Lists.transform(printNameFiles, new ToCharacterButtonDto());
     view.addButtons(dtoList, characterSelector);
   }
-
-  private static class ShowOnSelect implements Selector<CharacterIdentifier> {
-    private final CharacterStackPresenter characterStack;
-
-    public ShowOnSelect(CharacterStackPresenter characterStack) {
-      this.characterStack = characterStack;
-    }
-
-    @Override
-    public void selected(CharacterIdentifier item) {
-      characterStack.showCharacter(item);
-    }
-  }
 }

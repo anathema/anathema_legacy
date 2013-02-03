@@ -25,12 +25,16 @@ public class CharacterSystemPerspective implements Perspective {
 
   @Override
   public JComponent createContent(IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
-    CharacterSystemView view = new CharacterSystemView();
     CharacterSystemModel systemModel = new CharacterSystemModel(model);
+    CharacterSystemView view = new CharacterSystemView();
+    initPresentation(model, systemModel, view);
+    return view.getComponent();
+  }
+
+  private void initPresentation(IAnathemaModel model, CharacterSystemModel systemModel, CharacterSystemView view) {
     CharacterStackBridge bridge = new CharacterStackSwingBridge(model, view.getStackView());
     CharacterStackPresenter stackPresenter = new CharacterStackPresenter(bridge, systemModel);
     CharacterGridPresenter gridPresenter = new CharacterGridPresenter(systemModel, view.getGridView(), stackPresenter);
     gridPresenter.initPresentation();
-    return view.getComponent();
   }
 }
