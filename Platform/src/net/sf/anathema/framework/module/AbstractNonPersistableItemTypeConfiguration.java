@@ -7,10 +7,22 @@ import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractNonPersistableItemTypeConfiguration extends AbstractItemTypeConfiguration {
+public abstract class AbstractNonPersistableItemTypeConfiguration implements IItemTypeConfiguration {
+
+  private IItemType type;
 
   public AbstractNonPersistableItemTypeConfiguration(IItemType type) {
-    super(type);
+    this.type = type;
+  }
+
+  @Override
+  public IItemType getItemType() {
+    return type;
+  }
+
+  @Override
+  public final void registerViewFactory(IAnathemaModel anathemaModel, IResources resources) {
+    // nothing to do
   }
 
   @Override

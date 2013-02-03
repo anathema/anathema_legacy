@@ -1,25 +1,10 @@
 package net.sf.anathema.character.equipment.impl.module;
 
-import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
-import net.sf.anathema.character.equipment.impl.item.model.EquipmentDatabaseManagement;
-import net.sf.anathema.character.equipment.impl.item.view.EquipmentDatabaseView;
-import net.sf.anathema.character.equipment.item.EquipmentDatabasePresenter;
-import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
-import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
-import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
-import net.sf.anathema.framework.presenter.IItemViewFactory;
-import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
-import net.sf.anathema.lib.exception.AnathemaException;
-import net.sf.anathema.lib.resources.IResources;
-
-import javax.swing.Icon;
 
 @ItemTypeConfiguration
 @Weight(weight = 10)
@@ -31,20 +16,5 @@ public final class EquipmentDatabaseItemTypeConfiguration extends AbstractNonPer
 
   public EquipmentDatabaseItemTypeConfiguration() {
     super(new ItemType(EQUIPMENT_DATABASE_ITEM_TYPE_ID, REPOSITORY_CONFIGURATION, false));
-  }
-
-  @Override
-  protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, final IResources resources) {
-    return new IItemViewFactory() {
-      @Override
-      public IItemView createView(IItem item) throws AnathemaException {
-        IEquipmentDatabase database = (IEquipmentDatabase) item.getItemData();
-        EquipmentDatabaseView view = new EquipmentDatabaseView();
-        IEquipmentDatabaseManagement model = new EquipmentDatabaseManagement(database);
-        new EquipmentDatabasePresenter(resources, model, view).initPresentation();
-        Icon icon = new EquipmentUI(resources).getStandardIcon(EquipmentStatisticsType.CloseCombat);
-        return new EquipmentDatabaseItemView(resources.getString("ItemType.EquipmentDatabase.PrintName"), icon, view); //$NON-NLS-1$
-      }
-    };
   }
 }
