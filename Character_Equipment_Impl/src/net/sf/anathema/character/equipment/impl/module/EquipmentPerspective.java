@@ -4,16 +4,9 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.E
 import net.sf.anathema.character.equipment.impl.item.model.EquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.impl.item.view.EquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.EquipmentDatabasePresenter;
-import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.itemdata.model.IItemData;
-import net.sf.anathema.framework.module.IDatabaseActionProperties;
-import net.sf.anathema.framework.repository.AnathemaDataItem;
-import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
@@ -21,9 +14,6 @@ import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identifier;
-
-import javax.swing.Icon;
 
 import static net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType.CloseCombat;
 

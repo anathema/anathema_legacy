@@ -27,9 +27,7 @@ public class CharmCascadePerspective implements Perspective {
 
   @Override
   public void initContent(Container container, IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
-    String printName = resources.getString("ItemType.CharmCascades.PrintName");
-    Icon icon = new CascadesUI(resources).getCascadesTabIcon();
-    CharmCascadeModuleView view = new CharmCascadeModuleView(printName, icon);
+    CharmCascadeModuleView view = new CharmCascadeModuleView();
     ICharacterGenerics characterGenerics = CharacterGenericsExtractor.getGenerics(model);
     MagicDescriptionProvider magicDescriptionProvider = getCharmDescriptionProvider(model, resources);
     new CascadePresenter(resources, characterGenerics, view, magicDescriptionProvider).initPresentation();
