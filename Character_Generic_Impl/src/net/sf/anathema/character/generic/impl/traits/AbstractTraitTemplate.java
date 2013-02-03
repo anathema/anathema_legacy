@@ -10,10 +10,6 @@ public abstract class AbstractTraitTemplate implements ITraitTemplate {
   protected final int startValue;
   private final int zeroValue;
 
-  public AbstractTraitTemplate(ITraitTemplate defaultTemplate) {
-    this(defaultTemplate.getStartValue(), defaultTemplate.getLowerableState(), defaultTemplate.getZeroLevelValue());
-  }
-
   public AbstractTraitTemplate(int startValue, LowerableState lowerable, int zeroValue) {
     this.startValue = startValue;
     this.lowerable = lowerable;
