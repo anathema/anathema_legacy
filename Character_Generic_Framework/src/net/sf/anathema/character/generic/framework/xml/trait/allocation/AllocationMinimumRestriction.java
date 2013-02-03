@@ -10,8 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AllocationMinimumRestriction extends ReflectionEqualsObject implements IMinimumRestriction
-{
+public class AllocationMinimumRestriction extends ReflectionEqualsObject implements IMinimumRestriction {
   private final Map<ILimitationContext,Map<ITraitType, Integer>> claimMap = new HashMap<>();
   private final List<AllocationMinimumRestriction> siblings;
   private final int dotCount;
@@ -32,8 +31,7 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
     latestContext = context;
     latestTrait = traitType;
     for (ITraitType type : alternateTraitTypes)
-      if (type != traitType)
-      {
+      if (type != traitType) {
     	  int currentDots = context.getTraitCollection().getTrait(type).getCurrentValue();
     	  int externalDots = getExternalClaims(context, type);
     	  int claimedDots = Math.max(currentDots - externalDots, 0);
@@ -46,53 +44,47 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   }
   
   @Override
-  public int getCalculationMinValue(ILimitationContext context, ITraitType traitType)
-  {
-	  if (!isFreebie)
-		  return 0;
+  public int getCalculationMinValue(ILimitationContext context, ITraitType traitType) {
+	  if (!isFreebie) {
+          return 0;
+      }
 	  int traitDots = 0;
 	  int remainingDots = dotCount;
-	  for (ITraitType type : alternateTraitTypes)
-      {
+	  for (ITraitType type : alternateTraitTypes) {
     	  int currentDots = context.getTraitCollection().getTrait(type).getCurrentValue();
     	  int externalDots = getExternalClaims(context, type);
     	  int claimedDots = Math.max(currentDots - externalDots, 0);
     	  claimedDots = Math.min(claimedDots, remainingDots);
     	  claimDots(context, type, claimedDots);
     	  remainingDots -= claimedDots;
-    	  
-    	  if (type == traitType)
-    		  traitDots = claimedDots;
+    	  if (type == traitType) {
+              traitDots = claimedDots;
+          }
       }
       return traitDots + getExternalClaims(context, traitType);
   }
   
   @Override
-  public void setIsFreebie(boolean value)
-  {
+  public void setIsFreebie(boolean value) {
 	  isFreebie = value;
   }
   
-  private void claimDots(ILimitationContext context, ITraitType type, int dots)
-  {
+  private void claimDots(ILimitationContext context, ITraitType type, int dots) {
 	  Map<ITraitType, Integer> map = claimMap.get(context);
-	  if (map == null)
-	  {
+	  if (map == null) {
 		  map = new HashMap<>();
 		  claimMap.put(context, map);
 	  }
 	  map.put(type, dots);
   }
 
-  private int getExternalClaims(ILimitationContext context, ITraitType traitType)
-  {
+  private int getExternalClaims(ILimitationContext context, ITraitType traitType) {
 	  int claimed = 0;
-	  for (AllocationMinimumRestriction sibling : siblings)
-	  {
-		  if (sibling == this)
-			  continue;
-		  try
-		  {
+	  for (AllocationMinimumRestriction sibling : siblings) {
+		  if (sibling == this) {
+              continue;
+          }
+		  try {
 			  Map<ITraitType, Integer> map = sibling.claimMap.get(context);
 			  claimed += map.get(traitType);
 		  }
@@ -102,11 +94,11 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   }
 
   @Override
-  public void clear()
-  {
+  public void clear() {
 	  claimMap.clear();
-	  for (AllocationMinimumRestriction sibling : siblings)
-		  sibling.claimMap.clear();
+	  for (AllocationMinimumRestriction sibling : siblings) {
+          sibling.claimMap.clear();
+      }
   }
 
   @Override
@@ -115,14 +107,12 @@ public class AllocationMinimumRestriction extends ReflectionEqualsObject impleme
   }
 
   @Override
-  public int getStrictMinimumValue()
-  {
+  public int getStrictMinimumValue() {
 	  claimDots(latestContext, latestTrait, strictMinimumValue);
 	  return strictMinimumValue + getExternalClaims(latestContext, latestTrait);
   }
   
-  public String toString()
-  {
+  public String toString() {
 	  return "{" + dotCount + ";" + alternateTraitTypes + "}";
   }
 }
