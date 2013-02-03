@@ -1,6 +1,7 @@
 package net.sf.anathema.character.perspective;
 
 import com.google.common.base.Function;
+import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.framework.view.PrintNameFile;
 
 import javax.annotation.Nullable;

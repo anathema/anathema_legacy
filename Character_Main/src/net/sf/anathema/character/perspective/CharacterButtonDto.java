@@ -1,5 +1,7 @@
 package net.sf.anathema.character.perspective;
 
+import net.sf.anathema.character.perspective.model.CharacterIdentifier;
+
 public class CharacterButtonDto {
 
   public final CharacterIdentifier identifier;

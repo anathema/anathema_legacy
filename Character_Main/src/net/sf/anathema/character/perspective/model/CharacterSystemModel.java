@@ -1,6 +1,5 @@
-package net.sf.anathema.character.perspective;
+package net.sf.anathema.character.perspective.model;
 
-import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;

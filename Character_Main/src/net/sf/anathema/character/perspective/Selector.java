@@ -1,4 +1,4 @@
-package net.sf.anathema.fx.character.perspective;
+package net.sf.anathema.character.perspective;
 
 public interface Selector<T> {
 

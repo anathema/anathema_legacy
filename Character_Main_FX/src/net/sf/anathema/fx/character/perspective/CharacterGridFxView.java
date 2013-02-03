@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.module.perspective;
+package net.sf.anathema.fx.character.perspective;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
@@ -7,27 +7,28 @@ import javafx.scene.control.ToggleGroup;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.perspective.CharacterButtonDto;
-import net.sf.anathema.character.perspective.CharacterIdentifier;
-import net.sf.anathema.fx.character.perspective.CharacterSelected;
-import net.sf.anathema.fx.character.perspective.InitScene;
-import net.sf.anathema.fx.character.perspective.Selector;
+import net.sf.anathema.character.perspective.CharacterGridView;
+import net.sf.anathema.character.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.Selector;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.gui.IView;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.swing.JComponent;
 import java.util.List;
 
-public class CharacterGridView {
+public class CharacterGridFxView implements IView, CharacterGridView {
   private final JFXPanel panel = new JFXPanel();
   private final ToggleGroup toggleGroup = new ToggleGroup();
   private final MigPane gridPane = new MigPane(new LC().insets("10").gridGap("8", "8").wrapAfter(1), new AC().grow().fill());
   private final IChangeListener buttonsChangedListener;
 
-  public CharacterGridView(IChangeListener buttonsChangedListener) {
+  public CharacterGridFxView(IChangeListener buttonsChangedListener) {
     this.buttonsChangedListener = buttonsChangedListener;
     Platform.runLater(new InitScene(panel, gridPane));
   }
 
+  @Override
   public void addButtons(final List<CharacterButtonDto> dtoList, final Selector<CharacterIdentifier> characterSelector) {
     Platform.runLater(new Runnable() {
       @Override

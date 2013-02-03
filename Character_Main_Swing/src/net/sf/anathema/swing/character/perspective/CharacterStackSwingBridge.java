@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.character.perspective;
 
-import net.sf.anathema.character.perspective.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.CharacterStackBridge;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.repository.IItem;

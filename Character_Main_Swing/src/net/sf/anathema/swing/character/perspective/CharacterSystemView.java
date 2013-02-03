@@ -1,7 +1,8 @@
-package net.sf.anathema.character.impl.module.perspective;
+package net.sf.anathema.swing.character.perspective;
 
+import net.sf.anathema.fx.character.perspective.CharacterGridFxView;
+import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.swing.character.perspective.StackView;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -19,7 +20,7 @@ public class CharacterSystemView {
   }
 
   private final JPanel panel = new JPanel(new BorderLayout());
-  private final CharacterGridView gridView = new CharacterGridView(new ButtonChangedListener());
+  private final CharacterGridFxView gridView = new CharacterGridFxView(new ButtonChangedListener());
   private final StackView stackView = new StackView();
 
   public CharacterSystemView() {
