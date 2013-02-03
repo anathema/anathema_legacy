@@ -10,7 +10,8 @@ import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 
 public class AggregatedTraitTemplate implements ITraitTemplate {
 
-  private final ITraitTemplate template;
+    public static final int MIN_VALUE_CURRENTLY_NOT_REQUIRED = 0;
+    private final ITraitTemplate template;
   private final String subname;
   private final int startValue;
   private final ITraitType traitType;
@@ -56,7 +57,7 @@ public class AggregatedTraitTemplate implements ITraitTemplate {
         continue;
       }
       if (subTrait.getCurrentValue() >= necessaryMinimumValue) {
-        return 0;
+        return MIN_VALUE_CURRENTLY_NOT_REQUIRED;
       }
     }
     return necessaryMinimumValue;
@@ -64,7 +65,11 @@ public class AggregatedTraitTemplate implements ITraitTemplate {
 
   @Override
   public int getCalculationMinValue(ILimitationContext context, ITraitType type) {
-    return getMinimumValue(context);
+      int minimumValue = getMinimumValue(context);
+      if (minimumValue == MIN_VALUE_CURRENTLY_NOT_REQUIRED){
+          return MIN_VALUE_CURRENTLY_NOT_REQUIRED;
+      }
+      return template.getCalculationMinValue(context, type);
   }
 
   @Override
