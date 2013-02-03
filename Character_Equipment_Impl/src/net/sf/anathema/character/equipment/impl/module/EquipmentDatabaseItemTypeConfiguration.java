@@ -8,15 +8,11 @@ import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.database.StartDatabaseAction;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
-import net.sf.anathema.framework.presenter.action.ActionMenuItem;
-import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
@@ -50,10 +46,5 @@ public final class EquipmentDatabaseItemTypeConfiguration extends AbstractNonPer
         return new EquipmentDatabaseItemView(resources.getString("ItemType.EquipmentDatabase.PrintName"), icon, view); //$NON-NLS-1$
       }
     };
-  }
-
-  @Override
-  protected IMenuItem[] createAddMenuEntries(ApplicationView view, IAnathemaModel anathemaModel, IResources resources) {
-    return new IMenuItem[0];
   }
 }
