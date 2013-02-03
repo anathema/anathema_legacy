@@ -30,4 +30,4 @@ include('Anathema',
         'Book_ScrollOfTheMonk', 'Book_ScrollOfTheMonk_ImperfectLotus',
         'Book_ThousandCorrectActions', 'Book_UnderTheRose', 'Box_DotFA',
 
-        'Development_Code')
+        'Development_Code', 'Integrationtest')

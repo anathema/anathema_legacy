@@ -1,14 +1,13 @@
 package net.sf.anathema.character.generic.framework;
 
 import net.sf.anathema.ProxySplashscreen;
-import net.sf.anathema.initialization.AnathemaInitializer;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
+import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
-import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.lib.resources.ResourceFile;
 
 import java.util.Collection;
@@ -16,7 +15,7 @@ import java.util.Set;
 
 public class DataSetInitializer {
 
-  private static final Logger logger = Logger.getLogger(AnathemaInitializer.class);
+  private static final Logger logger = Logger.getLogger(DataSetInitializer.class);
   private final ResourceLoader resourceLoader;
   private final Instantiater instantiater;
 

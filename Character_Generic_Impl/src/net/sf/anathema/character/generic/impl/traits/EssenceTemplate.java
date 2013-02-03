@@ -8,16 +8,7 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 
 public class EssenceTemplate extends AbstractTraitTemplate {
 
-  public static final int DB_ESSENCE_MAX = 7;
   public static final int SYSTEM_ESSENCE_MAX = 10;
-
-  public static ITraitTemplate createDbTemplate() {
-    return createDbTemplate(2);
-  }
-
-  public static ITraitTemplate createDbTemplate(int startValue) {
-    return new EssenceTemplate(startValue, 2, DB_ESSENCE_MAX);
-  }
 
   public static ITraitTemplate createExaltTemplate() {
     return new EssenceTemplate(2, 2, SYSTEM_ESSENCE_MAX);

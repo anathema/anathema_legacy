@@ -1,0 +1,19 @@
+dependencies {
+  testCompile parent.ext.testDependencies
+  testCompile parent.ext.integrationTestDependencies
+  //For testing, all projects need to be compiled against.
+  project.parent.subprojects.each {
+    if (isRelevant(it)) {
+      testCompile project(":${it.name}")
+    }
+  }
+}
+
+private boolean isRelevant(project) {
+  return project.name != "Anathema" && project.name != "Integrationtest"
+}
+
+sourceSets.main.java.setSrcDirs(['src/main/java'])
+sourceSets.main.resources.setSrcDirs(['src/main/resources'])
+sourceSets.test.java.setSrcDirs(['src/test/java'])
+sourceSets.test.resources.setSrcDirs(['src/test/resources'])

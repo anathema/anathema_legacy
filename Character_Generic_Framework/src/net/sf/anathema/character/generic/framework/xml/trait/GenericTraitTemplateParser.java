@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
@@ -29,17 +28,12 @@ public class GenericTraitTemplateParser {
   private static final String VALUE_ESSENCE = "Essence"; //$NON-NLS-1$
   private static final String VALUE_AGE = "Age"; //$NON-NLS-1$
 
-  private GenericTraitTemplateParser() {
-    throw new UnreachableCodeReachedException();
-  }
-  
   public static IClonableTraitTemplate parseTraitTemplate(Element traitElement) throws PersistenceException {
 	  return parseTraitTemplate(traitElement, null);
   }
 
   public static IClonableTraitTemplate parseTraitTemplate(Element traitElement, ITraitType type) throws PersistenceException {
-	  
-    GenericTraitTemplate defaultTraitTemplate = new GenericTraitTemplate();
+	GenericTraitTemplate defaultTraitTemplate = new GenericTraitTemplate();
     int startValue = ElementUtilities.getRequiredIntAttrib(traitElement, ATTRIB_START_VALUE);
     defaultTraitTemplate.setStartValue(startValue);
     defaultTraitTemplate.setZeroLevelValue(ElementUtilities.getIntAttrib(traitElement, ATTRIB_ZERO_LEVEL, startValue));
@@ -97,18 +91,19 @@ public class GenericTraitTemplateParser {
 	    defaultTraitTemplate.setMinimumValue(minimumValueElement != null ?
 	    		ElementUtilities.getRequiredIntAttrib(minimumValueElement, ATTRIB_VALUE) :
 	    		ElementUtilities.getIntAttrib(traitElement, ATTRIB_MINIMUM, 0));
-	    if (traitElement.element(TAG_LIMITATION) != null)
-	    	defaultTraitTemplate.setLimitation(parseLimitation(traitElement));
-	    else
-	    	defaultTraitTemplate.setLimitation(new EssenceBasedLimitation());
+	    if (traitElement.element(TAG_LIMITATION) != null) {
+            defaultTraitTemplate.setLimitation(parseLimitation(traitElement));
+        }
+	    else {
+            defaultTraitTemplate.setLimitation(new EssenceBasedLimitation());
+        }
 	    return defaultTraitTemplate;
 	  }
 
   private static ITraitLimitation parseLimitation(Element defaultTraitElement) throws PersistenceException {
     Element limitationElement = ElementUtilities.getRequiredElement(defaultTraitElement, TAG_LIMITATION);
     String usesId = limitationElement.attributeValue(ATTRIB_USES);
-    if (usesId != null)
-    {
+    if (usesId != null) {
     	ITraitLimitation limitation = null;
 		try {
 			limitation = (ITraitLimitation) Class.forName(usesId).newInstance();

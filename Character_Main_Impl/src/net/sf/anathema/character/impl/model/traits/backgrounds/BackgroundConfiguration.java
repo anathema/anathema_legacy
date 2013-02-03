@@ -41,19 +41,19 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   }
 
   @Override
-  public void initStartingBackgrounds()
-  {
+  public void initStartingBackgrounds() {
 	  //load starting backgrounds from template
 	  List<IBackground> otherBackgroundsToInit = new ArrayList<>(backgrounds);
-	  for (IBackgroundTemplate background : getAllAvailableBackgroundTemplates())
-	  {
+	  for (IBackgroundTemplate background : getAllAvailableBackgroundTemplates()) {
 		  ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(background);
-		  if (traitTemplate.getStartValue() > 0)
-			  otherBackgroundsToInit.remove(addBackground(background, traitTemplate.getTag(), true));
+		  if (traitTemplate.getStartValue() > 0) {
+              otherBackgroundsToInit.remove(addBackground(background, traitTemplate.getTag(), true));
+          }
 	  }
 	  //anything else should also be notified as going to the screen
-	  for (IBackground background : otherBackgroundsToInit)
-	  	  fireBackgroundAddedEvent(background);
+	  for (IBackground background : otherBackgroundsToInit) {
+          fireBackgroundAddedEvent(background);
+      }
   }
   
   @Override
@@ -68,14 +68,12 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   }
   
   @Override
-  public IBackground addBackground(String customBackgroundName, String description)
-  {
+  public IBackground addBackground(String customBackgroundName, String description) {
 	  return addBackground(customBackgroundName, description, false);
   }
   
   @Override
-  public IBackground addBackground(IBackgroundTemplate backgroundType, String description)
-  {
+  public IBackground addBackground(IBackgroundTemplate backgroundType, String description) {
 	  return addBackground(backgroundType, description, false);
   }
 
@@ -96,15 +94,16 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
                         (description != null && description.equals(listBackground.getDescription())));
       }
     },null);
-    if (foundBackground != null)
-    {
-    	if (loadIfExists && foundBackground != null)
-    		fireBackgroundAddedEvent(foundBackground);
+    if (foundBackground != null) {
+    	if (loadIfExists) {
+            fireBackgroundAddedEvent(foundBackground);
+        }
       return loadIfExists ? foundBackground : null;
     }
     ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(backgroundType);
-    if (traitTemplate.getTag() != null && !traitTemplate.getTag().equals(description))
-    	traitTemplate = traitTemplates.getDefaultTraitTemplate(backgroundType);
+    if (traitTemplate.getTag() != null && !traitTemplate.getTag().equals(description)) {
+        traitTemplate = traitTemplates.getDefaultTraitTemplate(backgroundType);
+    }
     TraitRules rules = new TraitRules(backgroundType, traitTemplate, context.getLimitationContext());
     IBackground background = new Background(description, rules, context, new FriendlyValueChangeChecker());
     backgrounds.add(background);

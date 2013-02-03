@@ -52,12 +52,15 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
             traitContext.getLimitationContext());
     IValueChangeChecker valueChecker = createValueIncrementChecker(traitType);
     if (traitType == AbilityType.Craft) {
-      String[][] crafts = new String[1][];
-      crafts[0] = new String[]{"Air", "Earth", "Fire", "Water", "Wood"};//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
-      return new AggregatedTrait(favorableTraitRules, basicCharacterData, characterListening, traitContext,
-              valueChecker, casteTypes, favoredIncrementChecker, crafts[0]);
+        return createCraft(casteTypes, favoredIncrementChecker, favorableTraitRules, valueChecker);
     }
     return new DefaultTrait(favorableTraitRules, casteTypes, traitContext, basicCharacterData, characterListening,
             valueChecker, favoredIncrementChecker);
   }
+
+    private IFavorableTrait createCraft(ICasteType[] casteTypes, IIncrementChecker favoredIncrementChecker, FavorableTraitRules favorableTraitRules, IValueChangeChecker valueChecker) {
+        String[] crafts = new String[]{"Air", "Earth", "Fire", "Water", "Wood"};
+        return new AggregatedTrait(favorableTraitRules, basicCharacterData, characterListening, traitContext,
+                valueChecker, casteTypes, favoredIncrementChecker, crafts);
+    }
 }

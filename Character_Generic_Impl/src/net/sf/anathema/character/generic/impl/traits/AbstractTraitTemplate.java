@@ -10,10 +10,6 @@ public abstract class AbstractTraitTemplate implements ITraitTemplate {
   protected final int startValue;
   private final int zeroValue;
 
-  public AbstractTraitTemplate(ITraitTemplate defaultTemplate) {
-    this(defaultTemplate.getStartValue(), defaultTemplate.getLowerableState(), defaultTemplate.getZeroLevelValue());
-  }
-
   public AbstractTraitTemplate(int startValue, LowerableState lowerable, int zeroValue) {
     this.startValue = startValue;
     this.lowerable = lowerable;
@@ -39,16 +35,14 @@ public abstract class AbstractTraitTemplate implements ITraitTemplate {
   public boolean isRequiredFavored() {
     return false;
   }
-  
+
   @Override
-  public int getCalculationMinValue(ILimitationContext context, ITraitType type)
-  {
-	  return getMinimumValue(context);
+  public int getCalculationMinValue(ILimitationContext context, ITraitType type) {
+    return getMinimumValue(context);
   }
-  
+
   @Override
-  public String getTag()
-  {
-	  return null;
+  public String getTag() {
+    return null;
   }
 }

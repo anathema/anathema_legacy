@@ -19,8 +19,7 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
   private String tag;
   
   @Override
-  public String getTag()
-  {
+  public String getTag() {
 	return tag;
   }
 
@@ -84,19 +83,16 @@ public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTra
     return isRequiredFavored;
   }
   
-  public void setIsFreebie(boolean value)
-  {
+  public void setIsFreebie(boolean value) {
 	  isFreebie = value;
   }
   
-  public void setTag(String tag)
-  {
+  public void setTag(String tag) {
 	  this.tag = tag;
   }
   
   @Override
-  public int getCalculationMinValue(ILimitationContext context, ITraitType type)
-  {
+  public int getCalculationMinValue(ILimitationContext context, ITraitType type) {
 	  return isFreebie ? getMinimumValue(context) : 0;
   }
 }
