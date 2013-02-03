@@ -2,6 +2,8 @@ package net.sf.anathema.character.impl.module.perspective;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ToggleButton;
@@ -54,10 +56,17 @@ public class CharacterButtonGrid {
     }
   }
 
-  private ToggleButton createButton(PrintNameFile printNameFile, CharacterStackPresenter characterStack) {
+  private ToggleButton createButton(final PrintNameFile printNameFile, final CharacterStackPresenter presenter) {
     ToggleButton button = new ToggleButton(printNameFile.getPrintName());
     button.getStyleClass().add("character-grid-button");
-    button.setOnAction(new ShowCharacter(printNameFile, characterStack));
+    button.setOnAction(new EventHandler<ActionEvent>(){
+
+      @Override
+      public void handle(ActionEvent actionEvent) {
+        String identifier = printNameFile.getRepositoryId();
+        presenter.showCharacter(identifier);
+      }
+    });
     return button;
   }
 
