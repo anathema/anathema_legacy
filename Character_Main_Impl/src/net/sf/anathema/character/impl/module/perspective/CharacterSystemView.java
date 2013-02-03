@@ -23,10 +23,6 @@ public class CharacterSystemView {
     buttonGrid.fillFromRepository(model, characterStack);
   }
 
-  public CharacterButtonGrid getButtonGrid() {
-    return buttonGrid;
-  }
-
   public StackView getStackView() {
     return stackView;
   }
