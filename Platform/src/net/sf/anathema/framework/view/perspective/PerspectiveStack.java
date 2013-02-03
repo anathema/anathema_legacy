@@ -22,7 +22,7 @@ public class PerspectiveStack {
   }
 
   public void add(Perspective perspective) {
-    PerspectiveContainer container = new CardPerspectiveContainer(perspective.getTitle(), cardPanel);
+    Container container = new CardContainer(perspective.getTitle(), cardPanel);
     perspective.initContent(container, model, resources, objectFactory);
   }
 

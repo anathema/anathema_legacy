@@ -5,16 +5,14 @@ import net.sf.anathema.character.perspective.CharacterStackBridge;
 import net.sf.anathema.character.perspective.CharacterStackPresenter;
 import net.sf.anathema.character.perspective.model.CharacterSystemModel;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
-import net.sf.anathema.framework.view.perspective.PerspectiveContainer;
 import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.swing.character.perspective.CharacterStackSwingBridge;
 import net.sf.anathema.swing.character.perspective.CharacterSystemView;
-
-import javax.swing.JComponent;
 
 @PerspectiveAutoCollector
 @Weight(weight = 1)
@@ -25,7 +23,7 @@ public class CharacterSystemPerspective implements Perspective {
   }
 
   @Override
-  public void initContent(PerspectiveContainer container, IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
+  public void initContent(Container container, IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
     CharacterSystemModel systemModel = new CharacterSystemModel(model);
     CharacterSystemView view = new CharacterSystemView();
     initPresentation(model, systemModel, view);
