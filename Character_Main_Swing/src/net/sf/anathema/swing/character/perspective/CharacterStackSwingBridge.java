@@ -1,5 +1,6 @@
 package net.sf.anathema.swing.character.perspective;
 
+import net.sf.anathema.character.perspective.CharacterIdentifier;
 import net.sf.anathema.character.perspective.CharacterStackBridge;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.repository.IItem;
@@ -18,14 +19,15 @@ public class CharacterStackSwingBridge implements CharacterStackBridge {
   }
 
   @Override
-  public void addCharacterView(IItem item) {
+  public void addViewForExistingCharacter(IItem item) {
     IView itemView = viewFactory.createView(item);
-    stackView.addView(item.getRepositoryLocation().getId(), itemView);
+    String repositoryId = item.getRepositoryLocation().getId();
+    stackView.addView(new CharacterIdentifier(repositoryId), itemView);
   }
 
   @Override
-  public void showCharacterView(String repositoryId) {
-    stackView.showView(repositoryId);
+  public void showCharacterView(CharacterIdentifier identifier) {
+    stackView.showView(identifier);
   }
 
   public JComponent getComponent() {

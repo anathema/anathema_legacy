@@ -9,6 +9,7 @@ import javafx.scene.control.ToggleGroup;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
+import net.sf.anathema.character.perspective.CharacterIdentifier;
 import net.sf.anathema.character.perspective.CharacterStackPresenter;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
@@ -41,25 +42,20 @@ public class CharacterButtonGrid {
     });
   }
 
-  private void addCharacterButtons(IAnathemaModel model, CharacterStackPresenter characterStack) {
-    for (PrintNameFile printNameFile : collectCharacterPrintNameFiles(model)) {
-      ToggleButton button = createButton(printNameFile, characterStack);
+  private void addCharacterButtons(IAnathemaModel model, final CharacterStackPresenter characterStack) {
+    for (final PrintNameFile printNameFile : collectCharacterPrintNameFiles(model)) {
+      ToggleButton button = new ToggleButton(printNameFile.getPrintName());
+      button.getStyleClass().add("character-grid-button");
+      button.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent actionEvent) {
+          String repositoryId = printNameFile.getRepositoryId();
+          characterStack.showCharacter(new CharacterIdentifier(repositoryId));
+        }
+      });
       button.setToggleGroup(toggleGroup);
       gridPane.getChildren().add(button);
     }
-  }
-
-  private ToggleButton createButton(final PrintNameFile printNameFile, final CharacterStackPresenter presenter) {
-    ToggleButton button = new ToggleButton(printNameFile.getPrintName());
-    button.getStyleClass().add("character-grid-button");
-    button.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent actionEvent) {
-        String identifier = printNameFile.getRepositoryId();
-        presenter.showCharacter(identifier);
-      }
-    });
-    return button;
   }
 
   private PrintNameFile[] collectCharacterPrintNameFiles(IAnathemaModel model) {

@@ -18,8 +18,8 @@ public class CharacterSystemModel {
     this.model = model;
   }
 
-  public IItem loadItem(String repositoryId) {
-    IRepositoryReadAccess readAccess = createReadAccess(repositoryId);
+  public IItem loadItem(CharacterIdentifier identifier) {
+    IRepositoryReadAccess readAccess = createReadAccess(identifier.getId());
     IRepositoryItemPersister persister = extractPersister();
     return persister.load(readAccess);
   }

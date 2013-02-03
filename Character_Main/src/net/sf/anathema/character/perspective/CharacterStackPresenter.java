@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterStackPresenter {
-  private final List<String> knownCharacters = new ArrayList<>();
+  private final List<CharacterIdentifier> knownCharacters = new ArrayList<>();
   private final CharacterSystemModel model;
   private final CharacterStackBridge bridge;
 
@@ -15,16 +15,16 @@ public class CharacterStackPresenter {
     this.model = model;
   }
 
-  public void showCharacter(String repositoryId) {
-    if (!knownCharacters.contains(repositoryId)) {
-      addCharacter(repositoryId);
-      knownCharacters.add(repositoryId);
+  public void showCharacter(CharacterIdentifier identifier) {
+    if (!knownCharacters.contains(identifier)) {
+      addExistingCharacter(identifier);
+      knownCharacters.add(identifier);
     }
-    bridge.showCharacterView(repositoryId);
+    bridge.showCharacterView(identifier);
   }
 
-  public void addCharacter(String repositoryId) {
-    IItem item = model.loadItem(repositoryId);
-    bridge.addCharacterView(item);
+  public void addExistingCharacter(CharacterIdentifier identifier) {
+    IItem item = model.loadItem(identifier);
+    bridge.addViewForExistingCharacter(item);
   }
 }

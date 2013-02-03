@@ -1,5 +1,6 @@
 package net.sf.anathema.swing.character.perspective;
 
+import net.sf.anathema.character.perspective.CharacterIdentifier;
 import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.JComponent;
@@ -11,12 +12,12 @@ public class StackView implements IView {
   private final CardLayout stack = new CardLayout();
   private final JPanel viewPanel = new JPanel(stack);
 
-  public void showView(String identifier) {
-    stack.show(viewPanel, identifier);
+  public void showView(CharacterIdentifier identifier) {
+    stack.show(viewPanel, identifier.getId());
   }
 
-  public void addView(String identifier, IView view) {
-    viewPanel.add(view.getComponent(), identifier);
+  public void addView(CharacterIdentifier identifier, IView view) {
+    viewPanel.add(view.getComponent(), identifier.getId());
     viewPanel.revalidate();
     viewPanel.repaint();
   }
