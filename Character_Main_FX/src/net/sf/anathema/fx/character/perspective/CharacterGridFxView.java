@@ -21,10 +21,8 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   private final JFXPanel panel = new JFXPanel();
   private final ToggleGroup toggleGroup = new ToggleGroup();
   private final MigPane gridPane = new MigPane(new LC().insets("10").gridGap("8", "8").wrapAfter(1), new AC().grow().fill());
-  private final IChangeListener buttonsChangedListener;
 
-  public CharacterGridFxView(IChangeListener buttonsChangedListener) {
-    this.buttonsChangedListener = buttonsChangedListener;
+  public CharacterGridFxView() {
     Platform.runLater(new InitScene(panel, gridPane));
   }
 
@@ -36,7 +34,6 @@ public class CharacterGridFxView implements IView, CharacterGridView {
         for (CharacterButtonDto dto : dtoList) {
           addButton(dto, characterSelector);
         }
-        buttonsChangedListener.changeOccurred();
       }
     });
   }
