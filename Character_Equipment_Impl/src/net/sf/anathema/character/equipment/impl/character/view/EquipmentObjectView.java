@@ -9,10 +9,7 @@ import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.model.BooleanModel;
 import org.jdesktop.swingx.JXTaskPane;
 
-import javax.swing.Action;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,8 +45,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
   @Override
   public BooleanModel addStats(String description) {
     BooleanModel isSelectedModel = new BooleanModel();
-    JCheckBox box = ActionWidgetFactory.createCheckBox(
-            new SmartToggleAction(isSelectedModel, description.replaceAll("&", "&&")));
+    JCheckBox box = createCheckBox(isSelectedModel, description);
     boxes.put(isSelectedModel, box);
     JPanel panel = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(1).gridGapY("0")));
     panel.add(box);
@@ -65,7 +61,7 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
     if (basePanel != null) {
       JPanel optionPanel = new JPanel(new MigLayout(LayoutUtils.withoutInsets().wrapAfter(2)));
       optionPanel.add(new JLabel("   ..."));
-      JCheckBox box = ActionWidgetFactory.createCheckBox(new SmartToggleAction(isSelectedModel, description));
+      JCheckBox box = createCheckBox(isSelectedModel, description);
       boxes.put(isSelectedModel, box);
       optionPanel.add(box);
       basePanel.add(optionPanel);
@@ -91,5 +87,10 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
   @Override
   public void addAction(Action action) {
     taskGroup.add(action);
+  }
+
+  private JCheckBox createCheckBox(BooleanModel selectedModel, String description) {
+    return ActionWidgetFactory.createCheckBox(
+            new SmartToggleAction(selectedModel, description.replaceAll("&", "&&")));
   }
 }
