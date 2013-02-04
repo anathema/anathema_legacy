@@ -96,6 +96,11 @@
           <charmAttribute attribute="Mirror" visualize="true" />
           <!-- NOTE:  Solar Mirror - Demon-Wracking Glory -->
           <charmAttribute attribute="Obvious" visualize="true" />
+          <subeffects bpCost=".5">
+             <subeffect name="AreaContinuing"/>
+             <subeffect name="SingleTargetContinuing"/>
+             <subeffect name="SingleTargetInstant"/>
+          </subeffects>
           <source source="Abyssals2nd" />
      </charm>
      <charm id="Abyssal.SoulDesiccatingStyle" exalt="Abyssal" group="Performance">

@@ -170,8 +170,7 @@ public class CharmBuilder implements ICharmBuilder {
     }
   }
   
-  protected boolean isBuildingGenericCharms()
-  {
+  protected boolean isBuildingGenericCharms() {
 	  return false;
   }
 }

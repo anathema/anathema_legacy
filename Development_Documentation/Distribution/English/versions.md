@@ -6,6 +6,9 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 5.0.2
 
+### Features
+* Abyssal "Withering Phantasmagoria" and its Solar Mirror offer subeffects.
+
 ### Bugfixes
 * Equipment can handle specialty names containing ampersands '&'.
 * Sidereals pay extra for their Celestial Manses.
