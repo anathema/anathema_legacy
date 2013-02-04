@@ -23,7 +23,7 @@ public class EquipmentPerspective implements Perspective {
 
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
-    toggle.setIcon(EquipmentUI.getIconName(CloseCombat));
+    toggle.setIcon("EquipmentPerspective.png");
     toggle.setTooltip("EquipmentDatabase.NewAction.Name");
   }
 

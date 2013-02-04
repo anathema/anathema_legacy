@@ -21,7 +21,7 @@ public class NameGeneratorPerspective implements Perspective {
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
     toggle.setTooltip("ItemType.NameGenerator.PrintName");
-    toggle.setIcon("TabNamegenerator116.png");
+    toggle.setIcon("NameGeneratorPerspective.png");
   }
 
   @Override
