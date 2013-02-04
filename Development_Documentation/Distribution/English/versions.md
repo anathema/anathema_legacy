@@ -7,6 +7,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 5.0.2
 
 ### Bugfixes
+* Equipment can handle specialty names containing ampersands '&'.
 * Sidereals pay extra for their Celestial Manses.
 * Serenity Sidereals no longer get two free dots under some circumstances.
 
