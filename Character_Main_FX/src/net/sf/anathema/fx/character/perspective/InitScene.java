@@ -4,6 +4,7 @@ import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
 public class InitScene implements Runnable {
@@ -26,7 +27,9 @@ public class InitScene implements Runnable {
     Group root = new Group();
     Scene scene = new Scene(root, Color.LAVENDER);
     scene.getStylesheets().add("skin/sandra/sandra.css");
-    root.getChildren().add(content);
+    BorderPane borderPane = new BorderPane();
+    root.getChildren().add(borderPane);
+    borderPane.setCenter(content);
     return scene;
   }
 }
