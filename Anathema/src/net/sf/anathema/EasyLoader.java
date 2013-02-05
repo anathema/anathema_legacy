@@ -1,5 +1,6 @@
 package net.sf.anathema;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -9,12 +10,19 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 public class EasyLoader extends URLClassLoader {
 
-  public EasyLoader(Path path) throws MalformedURLException {
-    super(getURLs(path));
+  public EasyLoader(Path path, URL... additionalURLs) throws MalformedURLException {
+    super(concat(getURLs(path), additionalURLs));
+  }
+
+  private static URL[] concat(URL[] urls1, URL[] urls2) {
+    URL[] result = Arrays.copyOf(urls1, urls1.length + urls2.length);
+    System.arraycopy(urls2, 0, result, urls1.length, urls2.length);
+    return result;
   }
 
   private static URL[] getURLs(Path path) throws MalformedURLException {
