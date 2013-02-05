@@ -21,7 +21,7 @@ import java.util.Map;
 
 import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
 
-public class CharacterSystemModel {
+public class CharacterSystemModel implements ItemSelectionModel {
 
   private final IAnathemaModel model;
   private final Map<CharacterIdentifier, IItem> itemByIdentifier = new HashMap<>();
@@ -69,10 +69,12 @@ public class CharacterSystemModel {
     return retrieveCharacterItemType(model);
   }
 
+  @Override
   public void whenCurrentSelectionBecomesDirty(IChangeListener listener) {
     becomesDirtyAnnouncer.addListener(listener);
   }
 
+  @Override
   public void whenCurrentSelectionBecomesClean(IChangeListener listener) {
     becomesCleanAnnouncer.addListener(listener);
   }
@@ -102,6 +104,7 @@ public class CharacterSystemModel {
     return itemByIdentifier.get(currentCharacter);
   }
 
+  @Override
   public void saveCurrent() throws IOException {
     save(getCurrentItem());
   }

@@ -4,6 +4,7 @@ import net.sf.anathema.character.perspective.CharacterGridPresenter;
 import net.sf.anathema.character.perspective.CharacterStackBridge;
 import net.sf.anathema.character.perspective.CharacterStackPresenter;
 import net.sf.anathema.character.perspective.model.CharacterSystemModel;
+import net.sf.anathema.character.perspective.model.ItemSelectionModel;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
@@ -42,7 +43,7 @@ public class CharacterSystemPerspective implements Perspective {
     gridPresenter.initPresentation();
   }
 
-  private void initInteractionPresentation(CharacterSystemModel systemModel, InteractionView interactionView) {
+  private void initInteractionPresentation(ItemSelectionModel systemModel, InteractionView interactionView) {
     new InteractionPresenter(systemModel, interactionView).initPresentation();
   }
 }
