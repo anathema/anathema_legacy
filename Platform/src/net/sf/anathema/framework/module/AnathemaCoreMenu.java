@@ -3,19 +3,11 @@ package net.sf.anathema.framework.module;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
-import net.sf.anathema.framework.presenter.action.AnathemaLoadAction;
-import net.sf.anathema.framework.presenter.action.AnathemaNewAction;
 import net.sf.anathema.framework.presenter.action.menu.help.AnathemaAboutAction;
 import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateAction;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.action.preferences.ShowPreferencesAction;
-import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
-import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
-import net.sf.anathema.framework.presenter.itemmanagement.SelectedItemCloseAction;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
-import net.sf.anathema.framework.reporting.AbstractPrintAction;
-import net.sf.anathema.framework.reporting.ControlledPrintAction;
-import net.sf.anathema.framework.reporting.QuickPrintAction;
 import net.sf.anathema.framework.repository.tree.RepositoryViewAction;
 import net.sf.anathema.framework.view.MenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
@@ -37,19 +29,7 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
   @Override
   public void add(IResources resources, IAnathemaModel model, MenuBar menubar) {
     IMenu mainMenu = menubar.getMainMenu();
-    mainMenu.addMenuItem(AnathemaNewAction.createMenuAction(model, resources));
-    mainMenu.addMenuItem(AnathemaLoadAction.createMenuAction(model, resources));
-    mainMenu.addMenuItem(SelectedItemCloseAction.createMenuAction(model.getItemManagement(), resources));
-    mainMenu.addSeparator();
-    mainMenu.addMenuItem(AnathemaSaveAction.createMenuAction(model, resources));
-    mainMenu.addMenuItem(AnathemaSaveAllAction.createMenuAction(model, resources));
-    mainMenu.addSeparator();
     mainMenu.addMenuItem(createExportImportAction(resources, model));
-    mainMenu.addSeparator();
-    mainMenu.addMenuItem(ControlledPrintAction.createMenuAction(model, resources));
-    if (AbstractPrintAction.isAutoOpenSupported()) {
-      mainMenu.addMenuItem(QuickPrintAction.createMenuAction(model, resources));
-    }
     mainMenu.addSeparator();
     mainMenu.addMenuItem(ShowPreferencesAction.createMenuAction(resources, createSystemPreferences(model)));
     mainMenu.addSeparator();
