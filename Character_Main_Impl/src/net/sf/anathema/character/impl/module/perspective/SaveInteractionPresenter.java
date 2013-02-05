@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.module.perspective;
 
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
-import net.sf.anathema.swing.character.perspective.interaction.Command;
+import net.sf.anathema.interaction.Command;
 import net.sf.anathema.swing.character.perspective.interaction.Interaction;
 
 import java.io.IOException;

@@ -1,5 +1,7 @@
 package net.sf.anathema.swing.character.perspective.interaction;
 
+import net.sf.anathema.interaction.Command;
+
 public interface Interaction {
 
   void setIcon(String relativePath);

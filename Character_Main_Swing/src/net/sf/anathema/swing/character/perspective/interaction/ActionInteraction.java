@@ -3,9 +3,7 @@ package net.sf.anathema.swing.character.perspective.interaction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.Action;
 import javax.swing.JButton;
-import javax.swing.JToggleButton;
 import java.awt.Component;
 
 public class ActionInteraction implements Interaction {
@@ -52,7 +50,7 @@ public class ActionInteraction implements Interaction {
   }
 
   @Override
-  public void setCommand(Command command) {
+  public void setCommand(net.sf.anathema.interaction.Command command) {
     commandProxy.setDelegate(command);
   }
 

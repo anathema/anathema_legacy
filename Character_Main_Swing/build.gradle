@@ -3,4 +3,5 @@ dependencies {
   compile project(':Character_Main')
   compile project(':Character_Main_FX')
   compile project(':Lib_Gui')
+  compile project(':Platform')
 }
