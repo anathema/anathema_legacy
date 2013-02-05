@@ -1,12 +1,17 @@
+configurations {
+    tests
+    provided
+}
+
+sourceSets {
+    main { compileClasspath += configurations.provided }
+}
+
 dependencies {
-//  Insert your dependencies here like so:
+    provided files("${System.properties['java.home']}/lib/jfxrt.jar")
     compile project(':Character_Main')
     compile 'com.miglayout:miglayout-javafx:4.2'
     testCompile parent.ext.testDependencies
-}
-
-configurations {
-    tests
 }
 
 artifacts {
