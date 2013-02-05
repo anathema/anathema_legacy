@@ -41,7 +41,7 @@ public class QuickPrintInteractionPresenter {
     interaction.setCommand(new Command() {
       @Override
       public void execute() {
-        model.quickPrintCurrentItem(resources);
+        model.printCurrentItemQuickly(resources);
       }
     });
   }

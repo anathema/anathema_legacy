@@ -28,7 +28,7 @@ public class InteractionPresenter {
   }
 
   private void initControlledPrintInteraction() {
-    new ControlledPrintInteractionPresenter(model, view.getControlledPrintInteraction()).initPresentation();
+    new ControlledPrintInteractionPresenter(model, view.getControlledPrintInteraction(), resources).initPresentation();
   }
 
   private void initExperiencedInteraction() {

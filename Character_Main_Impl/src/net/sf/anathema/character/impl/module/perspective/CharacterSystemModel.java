@@ -5,6 +5,7 @@ import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.reporting.ControlledPrintCommand;
 import net.sf.anathema.framework.reporting.QuickPrintCommand;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -88,9 +89,13 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public void quickPrintCurrentItem(IResources resources) {
-    new QuickPrintCommand(resources, model, getCurrentItem()).execute();
+  public void printCurrentItemQuickly(IResources resources) {
+     new QuickPrintCommand(resources, model, getCurrentItem()).execute();
+  }
 
+  @Override
+  public void printCurrentItemControlled(IResources resources) {
+     new ControlledPrintCommand(resources, model, getCurrentItem()).execute();
   }
 
   @Override

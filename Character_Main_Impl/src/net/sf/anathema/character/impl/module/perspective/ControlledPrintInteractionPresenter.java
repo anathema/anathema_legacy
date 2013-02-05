@@ -1,15 +1,19 @@
 package net.sf.anathema.character.impl.module.perspective;
 
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.swing.character.perspective.interaction.Interaction;
 
 public class ControlledPrintInteractionPresenter {
   private ItemSelectionModel model;
   private Interaction interaction;
+  private IResources resources;
 
-  public ControlledPrintInteractionPresenter(ItemSelectionModel model, Interaction interaction) {
+  public ControlledPrintInteractionPresenter(ItemSelectionModel model, Interaction interaction, IResources resources) {
     this.model = model;
     this.interaction = interaction;
+    this.resources = resources;
   }
 
   public void initPresentation() {
@@ -29,6 +33,11 @@ public class ControlledPrintInteractionPresenter {
   }
 
   private void initializeCommand() {
-    //To change body of created methods use File | Settings | File Templates.
+    interaction.setCommand(new Command() {
+      @Override
+      public void execute() {
+        model.printCurrentItemControlled(resources);
+      }
+    });
   }
 }

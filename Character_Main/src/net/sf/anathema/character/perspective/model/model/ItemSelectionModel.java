@@ -21,5 +21,7 @@ public interface ItemSelectionModel {
 
   void convertCurrentToExperienced();
 
-  void quickPrintCurrentItem(IResources resources);
+  void printCurrentItemQuickly(IResources resources);
+
+  void printCurrentItemControlled(IResources resources);
 }
