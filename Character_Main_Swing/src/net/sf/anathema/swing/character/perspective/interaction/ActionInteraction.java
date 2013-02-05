@@ -3,7 +3,9 @@ package net.sf.anathema.swing.character.perspective.interaction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
+import javax.swing.Action;
 import javax.swing.JButton;
+import javax.swing.JToggleButton;
 import java.awt.Component;
 
 public class ActionInteraction implements Interaction {
@@ -55,5 +57,9 @@ public class ActionInteraction implements Interaction {
 
   public JButton createButton() {
     return new JButton(action);
+  }
+
+  public JToggleButton createToggleButton() {
+    return new JToggleButton(action);
   }
 }

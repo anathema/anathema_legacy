@@ -16,6 +16,7 @@ public class PerspectiveSelectionBar {
 
   public PerspectiveSelectionBar(PerspectiveStack perspectiveStack) {
     this.perspectiveStack = perspectiveStack;
+    this.toolbar.setFloatable(false);
   }
 
   public void addPerspective(final Perspective perspective, IResources resources) {

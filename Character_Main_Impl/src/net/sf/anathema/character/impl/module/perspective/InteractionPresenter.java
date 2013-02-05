@@ -15,6 +15,11 @@ public class InteractionPresenter {
 
   public void initPresentation() {
     initSaveInteraction();
+    initExperiencedInteraction();
+  }
+
+  private void initExperiencedInteraction() {
+    new ExperiencedInteractionPresenter(model, view.getExperiencedInteraction()).initPresentation();
   }
 
   private void initSaveInteraction() {
