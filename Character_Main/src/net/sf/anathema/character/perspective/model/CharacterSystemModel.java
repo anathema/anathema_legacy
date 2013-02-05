@@ -6,12 +6,14 @@ import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
 import org.jmock.example.announcer.Announcer;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -46,14 +48,14 @@ public class CharacterSystemModel {
 
   public IItem loadItem(CharacterIdentifier identifier) {
     IRepositoryReadAccess readAccess = createReadAccess(identifier.getId());
-    IRepositoryItemPersister persister = extractPersister();
+    IRepositoryItemPersister persister = findPersister();
     IItem item = persister.load(readAccess);
     item.addDirtyListener(dirtyListener);
     itemByIdentifier.put(identifier, item);
     return item;
   }
 
-  private IRepositoryItemPersister extractPersister() {
+  private IRepositoryItemPersister findPersister() {
     IRegistry<IItemType,IRepositoryItemPersister> registry = model.getPersisterRegistry();
     return registry.get(getCharacterItemType());
   }
@@ -81,7 +83,10 @@ public class CharacterSystemModel {
   }
 
   private void notifyDirtyListeners() {
-    IItem item = itemByIdentifier.get(currentCharacter);
+    notifyDirtyListeners(getCurrentItem());
+  }
+
+  private void notifyDirtyListeners(IItem item) {
     if (item == null) {
       return;
     }
@@ -91,5 +96,21 @@ public class CharacterSystemModel {
     if (!item.isDirty()) {
       becomesCleanAnnouncer.announce().changeOccurred();
     }
+  }
+
+  private IItem getCurrentItem() {
+    return itemByIdentifier.get(currentCharacter);
+  }
+
+  public void saveCurrent() throws IOException {
+    save(getCurrentItem());
+  }
+
+  private void save(IItem item) throws IOException {
+    IRepositoryItemPersister persister = findPersister();
+    IRepository repository = model.getRepository();
+    IRepositoryWriteAccess writeAccess = repository.createWriteAccess(item);
+    persister.save(writeAccess, item);
+    item.setClean();
   }
 }

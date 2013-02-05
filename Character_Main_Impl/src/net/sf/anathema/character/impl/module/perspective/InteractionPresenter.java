@@ -2,6 +2,10 @@ package net.sf.anathema.character.impl.module.perspective;
 
 import net.sf.anathema.character.perspective.model.CharacterSystemModel;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.swing.character.perspective.InteractionView;
+import net.sf.anathema.swing.character.perspective.interaction.Command;
+
+import java.io.IOException;
 
 public class InteractionPresenter {
 
@@ -14,21 +18,35 @@ public class InteractionPresenter {
   }
 
   public void initPresentation() {
+    view.getSaveInteraction().disable();
+    view.getSaveInteraction().setTooltip("Save Current");
+    view.getSaveInteraction().setIcon("TaskBarSave24.png");
+    view.getSaveInteraction().setCommand(new Command() {
+      @Override
+      public void execute() {
+        try {
+          model.saveCurrent();
+        } catch (IOException e) {
+          throw new RuntimeException(e);
+        }
+      }
+    });
     model.whenCurrentSelectionBecomesDirty(new EnableSaveCurrent());
     model.whenCurrentSelectionBecomesClean(new DisableSaveCurrent());
   }
 
   private class DisableSaveCurrent implements IChangeListener {
     @Override
+
     public void changeOccurred() {
-      view.disableSaveCurrent();
+      view.getSaveInteraction().disable();
     }
   }
 
   private class EnableSaveCurrent implements IChangeListener {
     @Override
     public void changeOccurred() {
-      view.enableSaveCurrent();
+      view.getSaveInteraction().enable();
     }
   }
 }
