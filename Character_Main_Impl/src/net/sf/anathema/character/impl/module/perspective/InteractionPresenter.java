@@ -16,6 +16,16 @@ public class InteractionPresenter {
   public void initPresentation() {
     initSaveInteraction();
     initExperiencedInteraction();
+    initQuickPrintInteraction();
+    initControlledPrintInteraction();
+  }
+
+  private void initQuickPrintInteraction() {
+    new QuickPrintInteractionPresenter(model, view.getQuickPrintInteraction()).initPresentation();
+  }
+
+  private void initControlledPrintInteraction() {
+    new ControlledPrintInteractionPresenter(model, view.getControlledPrintInteraction()).initPresentation();
   }
 
   private void initExperiencedInteraction() {
