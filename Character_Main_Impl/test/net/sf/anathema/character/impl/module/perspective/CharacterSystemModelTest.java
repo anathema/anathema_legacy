@@ -16,8 +16,7 @@ public class CharacterSystemModelTest {
 
   private CharacterPersistenceModel mockPersistence = mock(CharacterPersistenceModel.class);
   private final IChangeListener mockListener = mock(IChangeListener.class);
-  private final IItem mockItem = Mockito.mock(IItem.class);
-  private ItemSystemModel systemModel = new CharacterSystemModel(mockPersistence);
+  private ItemSystemModel systemModel = new CharacterSystemModel(mockPersistence, null);
 
   @Test
   public void notifiesListenerWhenSelectingFirstCharacter() {

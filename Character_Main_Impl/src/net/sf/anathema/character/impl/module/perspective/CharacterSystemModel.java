@@ -5,9 +5,11 @@ import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.reporting.QuickPrintCommand;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.resources.IResources;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;
@@ -31,13 +33,15 @@ public class CharacterSystemModel implements ItemSystemModel {
     }
   };
   private final CharacterPersistenceModel persistenceModel;
+  private IAnathemaModel model;
 
   public CharacterSystemModel(IAnathemaModel model) {
-    this(new CharacterPersistenceModel(model));
+    this(new CharacterPersistenceModel(model), model);
   }
 
-  public CharacterSystemModel(CharacterPersistenceModel model) {
-    this.persistenceModel = model;
+  public CharacterSystemModel(CharacterPersistenceModel persistenceModel, IAnathemaModel model) {
+    this.persistenceModel = persistenceModel;
+    this.model = model;
   }
 
   @Override
@@ -81,6 +85,12 @@ public class CharacterSystemModel implements ItemSystemModel {
   @Override
   public void convertCurrentToExperienced() {
     getCurrentCharacter().setExperienced(true);
+  }
+
+  @Override
+  public void quickPrintCurrentItem(IResources resources) {
+    new QuickPrintCommand(resources, model, getCurrentItem()).execute();
+
   }
 
   @Override

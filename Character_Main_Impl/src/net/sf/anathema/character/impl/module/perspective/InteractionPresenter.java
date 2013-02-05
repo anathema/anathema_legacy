@@ -1,16 +1,19 @@
 package net.sf.anathema.character.impl.module.perspective;
 
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
+import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.swing.character.perspective.InteractionView;
 
 public class InteractionPresenter {
 
   private ItemSelectionModel model;
   private InteractionView view;
+  private IResources resources;
 
-  public InteractionPresenter(ItemSelectionModel model, InteractionView view) {
+  public InteractionPresenter(ItemSelectionModel model, InteractionView view, IResources resources) {
     this.model = model;
     this.view = view;
+    this.resources = resources;
   }
 
   public void initPresentation() {
@@ -21,7 +24,7 @@ public class InteractionPresenter {
   }
 
   private void initQuickPrintInteraction() {
-    new QuickPrintInteractionPresenter(model, view.getQuickPrintInteraction()).initPresentation();
+    new QuickPrintInteractionPresenter(model, view.getQuickPrintInteraction(), resources).initPresentation();
   }
 
   private void initControlledPrintInteraction() {

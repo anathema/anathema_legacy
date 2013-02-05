@@ -31,7 +31,7 @@ public class CharacterSystemPerspective implements Perspective {
     CharacterSystemModel systemModel = new CharacterSystemModel(model);
     CharacterSystemView view = new CharacterSystemView(resources);
     initPresentation(model, systemModel, view);
-    initInteractionPresentation(systemModel, view.getInteractionView());
+    initInteractionPresentation(systemModel, view.getInteractionView(), resources);
     container.setSwingContent(view.getComponent());
   }
 
@@ -42,7 +42,7 @@ public class CharacterSystemPerspective implements Perspective {
     gridPresenter.initPresentation();
   }
 
-  private void initInteractionPresentation(ItemSelectionModel systemModel, InteractionView interactionView) {
-    new InteractionPresenter(systemModel, interactionView).initPresentation();
+  private void initInteractionPresentation(ItemSelectionModel systemModel, InteractionView interactionView, IResources resources) {
+    new InteractionPresenter(systemModel, interactionView, resources).initPresentation();
   }
 }
