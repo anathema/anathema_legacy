@@ -61,12 +61,13 @@ public class CharacterSystemModel implements ItemSelectionModel {
   }
 
   public void setCurrentCharacter(CharacterIdentifier identifier) {
-    CharacterIdentifier oldCharacter = this.currentCharacter;
-    notifyDirtyListeners();
-    if (oldCharacter == null) {
-      getsSelectionListener.announce().changeOccurred();
-    }
     this.currentCharacter = identifier;
+    notifyDirtyListeners();
+    notifyGetSelectionListeners();
+  }
+
+  private void notifyGetSelectionListeners() {
+    getsSelectionListener.announce().changeOccurred();
   }
 
   private void notifyDirtyListeners() {
