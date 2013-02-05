@@ -41,6 +41,7 @@ public class ExperiencedInteractionPresenter {
       @Override
       public void execute() {
         model.convertCurrentToExperienced();
+        interaction.select();
       }
     });
   }
