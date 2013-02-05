@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.module.perspective;
 
-import net.sf.anathema.character.perspective.model.ItemSelectionModel;
+import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.swing.character.perspective.InteractionView;
 
 public class InteractionPresenter {

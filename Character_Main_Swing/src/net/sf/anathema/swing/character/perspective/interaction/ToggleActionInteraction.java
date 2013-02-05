@@ -3,12 +3,10 @@ package net.sf.anathema.swing.character.perspective.interaction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.Action;
-import javax.swing.JButton;
 import javax.swing.JToggleButton;
 import java.awt.Component;
 
-public class ActionInteraction implements Interaction {
+public class ToggleActionInteraction implements ToggleInteraction {
 
   private final CommandProxy commandProxy = new CommandProxy();
   private final SmartAction action = new SmartAction() {
@@ -17,11 +15,11 @@ public class ActionInteraction implements Interaction {
       commandProxy.execute();
     }
   };
+  private final JToggleButton button = new JToggleButton(action);
   private final IResources resources;
   private final Class<?> inquirer;
-  private final JButton button = new JButton(action);
 
-  public ActionInteraction(IResources resources, Class<?> inquirer) {
+  public ToggleActionInteraction(IResources resources, Class<?> inquirer) {
     this.resources = resources;
     this.inquirer = inquirer;
   }
@@ -56,7 +54,17 @@ public class ActionInteraction implements Interaction {
     commandProxy.setDelegate(command);
   }
 
-  public JButton getButton() {
+  public JToggleButton getToggleButton() {
     return button;
+  }
+
+  @Override
+  public void select() {
+    button.setSelected(true);
+  }
+
+  @Override
+  public void deselect() {
+    button.setSelected(false);
   }
 }

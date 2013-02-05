@@ -1,13 +1,14 @@
 package net.sf.anathema.character.impl.module.perspective;
 
-import net.sf.anathema.character.perspective.model.ItemSelectionModel;
-import net.sf.anathema.swing.character.perspective.interaction.Interaction;
+import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
+import net.sf.anathema.swing.character.perspective.interaction.Command;
+import net.sf.anathema.swing.character.perspective.interaction.ToggleInteraction;
 
 public class ExperiencedInteractionPresenter {
   private ItemSelectionModel model;
-  private Interaction interaction;
+  private ToggleInteraction interaction;
 
-  public ExperiencedInteractionPresenter(ItemSelectionModel model, Interaction interaction) {
+  public ExperiencedInteractionPresenter(ItemSelectionModel model, ToggleInteraction interaction) {
 
     this.model = model;
     this.interaction = interaction;
@@ -16,6 +17,8 @@ public class ExperiencedInteractionPresenter {
   public void initPresentation() {
     initializeAppearance();
     initializeEnabling();
+    initializeToggling();
+    initializeCommand();
   }
 
   private void initializeAppearance() {
@@ -25,6 +28,20 @@ public class ExperiencedInteractionPresenter {
 
   private void initializeEnabling() {
     model.whenGetsSelection(new EnableInteraction(interaction));
-    interaction.disable();;
+    interaction.disable();
+  }
+
+  private void initializeToggling() {
+    model.whenCurrentSelectionBecomesInexperienced(new DeselectInteraction(interaction));
+    model.whenCurrentSelectionBecomesExperienced(new SelectInteraction(interaction));
+  }
+
+  private void initializeCommand() {
+    interaction.setCommand(new Command() {
+      @Override
+      public void execute() {
+        model.convertCurrentToExperienced();
+      }
+    });
   }
 }

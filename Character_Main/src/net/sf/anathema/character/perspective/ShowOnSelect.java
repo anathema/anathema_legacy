@@ -1,6 +1,6 @@
 package net.sf.anathema.character.perspective;
 
-import net.sf.anathema.character.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 
 public class ShowOnSelect implements Selector<CharacterIdentifier> {
   private final CharacterStackPresenter characterStack;

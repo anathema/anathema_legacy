@@ -1,19 +1,19 @@
 package net.sf.anathema.character.perspective;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.perspective.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.CharacterSystemModel;
+import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
 import net.sf.anathema.framework.view.PrintNameFile;
 
 import java.util.List;
 
 public class CharacterGridPresenter {
 
-  private final CharacterSystemModel model;
+  private final ItemSystemModel model;
   private final CharacterGridView view;
   private final Selector<CharacterIdentifier> characterSelector;
 
-  public CharacterGridPresenter(CharacterSystemModel model, CharacterGridView view, CharacterStackPresenter stackPresenter) {
+  public CharacterGridPresenter(ItemSystemModel model, CharacterGridView view, CharacterStackPresenter stackPresenter) {
     this.model = model;
     this.view = view;
     this.characterSelector = new ShowOnSelect(stackPresenter);

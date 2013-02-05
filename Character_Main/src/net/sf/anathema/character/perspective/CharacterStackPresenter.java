@@ -1,7 +1,7 @@
 package net.sf.anathema.character.perspective;
 
-import net.sf.anathema.character.perspective.model.CharacterIdentifier;
-import net.sf.anathema.character.perspective.model.CharacterSystemModel;
+import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
 import net.sf.anathema.framework.repository.IItem;
 
 import java.util.ArrayList;
@@ -9,10 +9,10 @@ import java.util.List;
 
 public class CharacterStackPresenter {
   private final List<CharacterIdentifier> knownCharacters = new ArrayList<>();
-  private final CharacterSystemModel model;
+  private final ItemSystemModel model;
   private final CharacterStackBridge bridge;
 
-  public CharacterStackPresenter(CharacterStackBridge bridge, CharacterSystemModel model) {
+  public CharacterStackPresenter(CharacterStackBridge bridge, ItemSystemModel model) {
     this.bridge = bridge;
     this.model = model;
   }

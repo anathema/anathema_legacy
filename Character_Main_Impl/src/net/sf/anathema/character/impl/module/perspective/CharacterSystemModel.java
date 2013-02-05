@@ -1,5 +1,9 @@
-package net.sf.anathema.character.perspective.model;
+package net.sf.anathema.character.impl.module.perspective;
 
+import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.model.CharacterPersistenceModel;
+import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -11,12 +15,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CharacterSystemModel implements ItemSelectionModel {
+public class CharacterSystemModel implements ItemSystemModel {
 
   private final Map<CharacterIdentifier, IItem> itemByIdentifier = new HashMap<>();
   private Announcer<IChangeListener> becomesDirtyAnnouncer = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> becomesCleanAnnouncer = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> getsSelectionListener = Announcer.to(IChangeListener.class);
+  private Announcer<IChangeListener> becomesExperiencedListener = Announcer.to(IChangeListener.class);
+  private Announcer<IChangeListener> becomesInexperiencedListener = Announcer.to(IChangeListener.class);
   private CharacterIdentifier currentCharacter;
   private IChangeListener dirtyListener = new IChangeListener() {
     @Override
@@ -34,10 +40,12 @@ public class CharacterSystemModel implements ItemSelectionModel {
     this.persistenceModel = model;
   }
 
+  @Override
   public List<PrintNameFile> collectCharacterPrintNameFiles() {
     return persistenceModel.collectCharacterPrintNameFiles();
   }
 
+  @Override
   public IItem loadItem(CharacterIdentifier identifier) {
     IItem item = persistenceModel.loadItem(identifier);
     item.addDirtyListener(dirtyListener);
@@ -60,10 +68,37 @@ public class CharacterSystemModel implements ItemSelectionModel {
     getsSelectionListener.addListener(listener);
   }
 
+  @Override
+  public void whenCurrentSelectionBecomesExperienced(IChangeListener listener) {
+    becomesExperiencedListener.addListener(listener);
+  }
+
+  @Override
+  public void whenCurrentSelectionBecomesInexperienced(IChangeListener listener) {
+    becomesInexperiencedListener.addListener(listener);
+  }
+
+  @Override
+  public void convertCurrentToExperienced() {
+    getCurrentCharacter().setExperienced(true);
+  }
+
+  @Override
   public void setCurrentCharacter(CharacterIdentifier identifier) {
     this.currentCharacter = identifier;
     notifyDirtyListeners();
     notifyGetSelectionListeners();
+    notifyExperiencedListeners();
+  }
+
+  private void notifyExperiencedListeners() {
+    ICharacter character = getCurrentCharacter();
+    if (character.isExperienced()) {
+      becomesExperiencedListener.announce().changeOccurred();
+    }
+    if (!character.isExperienced()) {
+      becomesInexperiencedListener.announce().changeOccurred();
+    }
   }
 
   private void notifyGetSelectionListeners() {
@@ -88,6 +123,10 @@ public class CharacterSystemModel implements ItemSelectionModel {
 
   private IItem getCurrentItem() {
     return itemByIdentifier.get(currentCharacter);
+  }
+
+  private ICharacter getCurrentCharacter() {
+    return (ICharacter) getCurrentItem().getItemData();
   }
 
   @Override

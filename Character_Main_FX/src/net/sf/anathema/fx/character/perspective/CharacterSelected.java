@@ -2,7 +2,7 @@ package net.sf.anathema.fx.character.perspective;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import net.sf.anathema.character.perspective.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.Selector;
 
 public class CharacterSelected implements EventHandler<ActionEvent> {
