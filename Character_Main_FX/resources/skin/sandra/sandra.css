@@ -1,0 +1,4 @@
+.character-grid-button {
+    -fx-alignment: baseline-left;
+    -fx-effect: dropshadow( one-pass-box , green , 8 , 0.0 , 2 , 0 );
+}
