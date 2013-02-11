@@ -5,6 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 
+import java.net.URL;
+
 public class InitScene implements Runnable {
 
   private final JFXPanel panel;
@@ -23,7 +25,7 @@ public class InitScene implements Runnable {
 
   private Scene createScene() {
     Scene scene = new Scene(content, Color.LAVENDER);
-    scene.getStylesheets().add("skin/sandra/sandra.css");
+    new Stylesheet("skin/sandra/sandra.css").applyToScene(scene);
     return scene;
   }
 }
