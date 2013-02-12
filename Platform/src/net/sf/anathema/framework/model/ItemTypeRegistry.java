@@ -5,6 +5,7 @@ import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.repository.ItemType;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class ItemTypeRegistry implements IItemTypeRegistry {
@@ -23,12 +24,22 @@ public class ItemTypeRegistry implements IItemTypeRegistry {
 
   @Override
   public void registerItemType(IItemType type) {
-    // todo ensures
     itemTypes.add(type);
   }
 
   @Override
   public IItemType[] getAllItemTypes() {
-    return itemTypes.toArray(new ItemType[itemTypes.size()]);
+    return itemTypes.toArray(new IItemType[itemTypes.size()]);
+  }
+
+  @Override
+  public Collection<IItemType> getIntegratedItemTypes() {
+    List<IItemType> integrated = new ArrayList<>();
+    for (IItemType itemType : itemTypes) {
+      if (itemType.isIntegrated()) {
+        integrated.add(itemType);
+      }
+    }
+    return integrated;
   }
 }

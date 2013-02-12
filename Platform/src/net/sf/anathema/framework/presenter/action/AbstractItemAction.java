@@ -2,6 +2,7 @@ package net.sf.anathema.framework.presenter.action;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.core.ISwingFrameOrDialog;
@@ -11,9 +12,8 @@ import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.*;
+import java.util.Collection;
 
 public abstract class AbstractItemAction extends SmartAction {
 
@@ -43,12 +43,12 @@ public abstract class AbstractItemAction extends SmartAction {
   }
 
   protected static IItemType[] collectItemTypes(IAnathemaModel model) {
-    List<IItemType> types = new ArrayList<>();
-    for (IItemType type : model.getItemTypeRegistry().getAllItemTypes()) {
-      if (type.isIntegrated()) {
-        types.add(type);
-      }
-    }
+    IItemTypeRegistry itemTypeRegistry = model.getItemTypeRegistry();
+    return getIntegratedItemTypes(itemTypeRegistry);
+  }
+
+  public static IItemType[] getIntegratedItemTypes(IItemTypeRegistry itemTypeRegistry) {
+    Collection<IItemType> types = itemTypeRegistry.getIntegratedItemTypes();
     return types.toArray(new IItemType[types.size()]);
   }
 }
