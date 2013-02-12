@@ -35,8 +35,7 @@ public class CharacterPersistenceModel {
   public IItem loadItem(CharacterIdentifier identifier) {
     IRepositoryReadAccess readAccess = createReadAccess(identifier.getId());
     IRepositoryItemPersister persister = findPersister();
-    IItem item = persister.load(readAccess);
-    return item;
+    return persister.load(readAccess);
   }
 
   private IRepositoryItemPersister findPersister() {
