@@ -12,8 +12,7 @@ import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.registry.IRegistry;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Collection;
 
 import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
 
@@ -25,11 +24,10 @@ public class CharacterPersistenceModel {
     this.model = model;
   }
 
-  public List<PrintNameFile> collectCharacterPrintNameFiles() {
+  public Collection<PrintNameFile> collectCharacterPrintNameFiles() {
     IItemType characterItemType = getCharacterItemType();
     IPrintNameFileAccess access = model.getRepository().getPrintNameFileAccess();
-    PrintNameFile[] printNameFiles = access.collectAllPrintNameFiles(characterItemType);
-    return Arrays.asList(printNameFiles);
+    return access.collectAllPrintNameFiles(characterItemType);
   }
 
   public IItem loadItem(CharacterIdentifier identifier) {

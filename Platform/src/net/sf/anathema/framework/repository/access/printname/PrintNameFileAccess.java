@@ -15,6 +15,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,12 +39,12 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   }
 
   @Override
-  public PrintNameFile[] collectAllPrintNameFiles(IItemType type) {
+  public Collection<PrintNameFile> collectAllPrintNameFiles(IItemType type) {
     File repositoryFolder = resolver.getItemTypeFolder(type);
     File[] subfiles = repositoryFolder.listFiles();
     List<PrintNameFile> printNameFiles = new ArrayList<>();
     if (subfiles == null) {
-      return new PrintNameFile[0];
+      return Collections.emptyList();
     }
     for (File subFile : subfiles) {
       PrintNameFile printNameFile = createPrintNameFile(subFile, type);
@@ -50,7 +52,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
         printNameFiles.add(printNameFile);
       }
     }
-    return printNameFiles.toArray(new PrintNameFile[printNameFiles.size()]);
+    return printNameFiles;
   }
 
   private PrintNameFile createPrintNameFile(File file, IItemType itemType) {
@@ -125,14 +127,14 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   }
 
   @Override
-  public PrintNameFile[] collectClosedPrintNameFiles(IItemType type) {
+  public Collection<PrintNameFile> collectClosedPrintNameFiles(IItemType type) {
     List<PrintNameFile> closedFiles = new ArrayList<>();
     for (PrintNameFile file : collectAllPrintNameFiles(type)) {
       if (!itemManagement.isOpen(file.getRepositoryId(), type)) {
         closedFiles.add(file);
       }
     }
-    return closedFiles.toArray(new PrintNameFile[closedFiles.size()]);
+    return closedFiles;
   }
 
   @Override

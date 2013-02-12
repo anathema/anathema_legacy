@@ -172,7 +172,7 @@ public class Repository implements IRepository {
   public boolean containsClosed(IItemType... types) {
     boolean hasClosed = false;
     for (IItemType type : types) {
-      hasClosed |= printNameFileAccess.collectClosedPrintNameFiles(type).length > 0;
+      hasClosed |= !printNameFileAccess.collectClosedPrintNameFiles(type).isEmpty();
     }
     return hasClosed;
   }

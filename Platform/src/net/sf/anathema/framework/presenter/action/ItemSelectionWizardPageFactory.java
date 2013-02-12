@@ -16,6 +16,8 @@ import net.sf.anathema.lib.workflow.wizard.selection.ListObjectSelectionPageView
 import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardModel;
 import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardPage;
 
+import java.util.Collection;
+
 public class ItemSelectionWizardPageFactory implements IWizardFactory {
 
   private final IItemType type;
@@ -36,9 +38,10 @@ public class ItemSelectionWizardPageFactory implements IWizardFactory {
     if (!(template instanceof ConfigurableFileProvider)) {
       throw new IllegalArgumentException("Bad template type."); //$NON-NLS-1$
     }
-    PrintNameFile[] printNameFiles = access.collectClosedPrintNameFiles(type);
+    Collection<PrintNameFile> printNameFiles = access.collectClosedPrintNameFiles(type);
+    PrintNameFile[] fileArray = printNameFiles.toArray(new PrintNameFile[printNameFiles.size()]);
     final IObjectSelectionWizardModel<PrintNameFile> model = new ObjectSelectionWizardModel<>(
-        printNameFiles,
+        fileArray,
         new LenientLegalityProvider<PrintNameFile>());
     model.addListener(new IChangeListener() {
       @Override

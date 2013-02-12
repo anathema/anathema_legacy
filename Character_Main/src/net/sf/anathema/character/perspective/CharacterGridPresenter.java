@@ -1,11 +1,11 @@
 package net.sf.anathema.character.perspective;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.Collections2;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
 import net.sf.anathema.framework.view.PrintNameFile;
 
-import java.util.List;
+import java.util.Collection;
 
 public class CharacterGridPresenter {
 
@@ -20,8 +20,8 @@ public class CharacterGridPresenter {
   }
 
   public void initPresentation() {
-    List<PrintNameFile> printNameFiles = model.collectCharacterPrintNameFiles();
-    List<CharacterButtonDto> dtoList = Lists.transform(printNameFiles, new ToCharacterButtonDto());
+    Collection<PrintNameFile> printNameFiles = model.collectCharacterPrintNameFiles();
+    Collection<CharacterButtonDto> dtoList = Collections2.transform(printNameFiles, new ToCharacterButtonDto());
     view.addButtons(dtoList, characterSelector);
   }
 }

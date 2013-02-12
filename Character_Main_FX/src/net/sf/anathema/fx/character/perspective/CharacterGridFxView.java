@@ -14,7 +14,7 @@ import net.sf.anathema.lib.gui.IView;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.swing.JComponent;
-import java.util.List;
+import java.util.Collection;
 
 public class CharacterGridFxView implements IView, CharacterGridView {
   private final JFXPanel panel = new JFXPanel();
@@ -26,7 +26,7 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   }
 
   @Override
-  public void addButtons(final List<CharacterButtonDto> dtoList, final Selector<CharacterIdentifier> characterSelector) {
+  public void addButtons(final Collection<CharacterButtonDto> dtoList, final Selector<CharacterIdentifier> characterSelector) {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
