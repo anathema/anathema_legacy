@@ -24,7 +24,7 @@ public class InitScene implements Runnable {
   }
 
   private Scene createScene() {
-    Scene scene = new Scene(content, Color.LAVENDER);
+    Scene scene = new Scene(content);
     new Stylesheet("skin/sandra/sandra.css").applyToScene(scene);
     return scene;
   }

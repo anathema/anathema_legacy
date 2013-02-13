@@ -2,8 +2,12 @@ package net.sf.anathema.fx.character.perspective;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import javafx.scene.Node;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.perspective.CharacterButtonDto;
@@ -38,7 +42,14 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   }
 
   private void addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
-    ToggleButton button = new ToggleButton(dto.text);
+    VBox content = new VBox();
+    Text name = new Text(dto.text);
+    name.getStyleClass().add("name");
+    content.getChildren().add(name);
+    Text details = new Text("Solar | Eclipse | 200 XP");
+    details.getStyleClass().add("details");
+    content.getChildren().add(details);
+    ToggleButton button = new ToggleButton("", content);
     button.getStyleClass().add("character-grid-button");
     button.setOnAction(new CharacterSelected(characterSelector, dto.identifier));
     button.setToggleGroup(toggleGroup);

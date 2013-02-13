@@ -1,4 +1,28 @@
+.root {
+    -fx-background-color: white
+}
+
 .character-grid-button {
     -fx-alignment: baseline-left;
-    -fx-effect: dropshadow( one-pass-box , green , 8 , 0.0 , 2 , 0 );
+    -fx-background-color: white;
+    -fx-cursor: hand;
+    -fx-font-family: "Helvetica";
+}
+
+.character-grid-button:hover {
+    -fx-background-color: derive(white, -30%);
+}
+
+.character-grid-button:selected {
+    -fx-background-color: derive(white, -20%);
+    -fx-cursor: default;
+}
+
+.character-grid-button .name {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.character-grid-button .detail {
+    -fx-font-size: 12px;
 }
