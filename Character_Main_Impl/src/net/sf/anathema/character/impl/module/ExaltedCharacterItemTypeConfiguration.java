@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.module;
 
+import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -98,7 +99,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
     CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, resources);
     IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();
     IRepositoryFileResolver fileResolver = anathemaModel.getRepository().getRepositoryFileResolver();
-    CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(casteCollectionIRegistry, fileResolver);
+    CharacterPrintNameFileScanner scanner = new RegExCharacterPrintNameFileScanner(casteCollectionIRegistry, fileResolver);
     return new CharacterViewProperties(getItemType(), resources, factory, scanner);
   }
 }

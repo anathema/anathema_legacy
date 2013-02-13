@@ -46,7 +46,7 @@ public class CharacterGridFxView implements IView, CharacterGridView {
     Text name = new Text(dto.text);
     name.getStyleClass().add("name");
     content.getChildren().add(name);
-    Text details = new Text("Solar | Eclipse | 200 XP");
+    Text details = new Text(dto.details);
     details.getStyleClass().add("details");
     content.getChildren().add(details);
     ToggleButton button = new ToggleButton("", content);
