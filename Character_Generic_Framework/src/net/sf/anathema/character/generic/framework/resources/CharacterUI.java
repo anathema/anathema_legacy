@@ -40,7 +40,11 @@ public class CharacterUI extends AbstractUI {
   }
 
   public Icon getSmallTypeIcon(ICharacterType characterType) {
-    return getIcon(characterType.getId() + "Icon16.png"); //$NON-NLS-1$
+    return getIcon(getSmallTypeIconPath(characterType)); //$NON-NLS-1$
+  }
+
+  public String getSmallTypeIconPath(ICharacterType characterType) {
+    return characterType.getId() + "Icon16.png";
   }
 
   public Icon getMediumBallResource(ICharacterType characterType) {

@@ -5,6 +5,7 @@ import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.resources.IStringResourceHandler;
 
 import java.util.Collection;
 
@@ -15,11 +16,11 @@ public class CharacterGridPresenter {
   private final Selector<CharacterIdentifier> characterSelector;
   private final ToCharacterButtonDto characterTransformer;
 
-  public CharacterGridPresenter(ItemSystemModel model, CharacterGridView view, CharacterStackPresenter stackPresenter, CharacterPrintNameFileScanner fileScanner) {
+  public CharacterGridPresenter(ItemSystemModel model, CharacterGridView view, CharacterStackPresenter stackPresenter, CharacterPrintNameFileScanner fileScanner, IStringResourceHandler resources) {
     this.model = model;
     this.view = view;
     this.characterSelector = new ShowOnSelect(stackPresenter);
-    this.characterTransformer = new ToCharacterButtonDto(fileScanner);
+    this.characterTransformer = new ToCharacterButtonDto(fileScanner, resources);
   }
 
   public void initPresentation() {

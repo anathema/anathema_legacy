@@ -2,20 +2,26 @@ package net.sf.anathema.character.perspective;
 
 import com.google.common.base.Function;
 import net.sf.anathema.character.CharacterPrintNameFileScanner;
-import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.generic.framework.resources.CharacterUI;
+import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.resources.IStringResourceHandler;
 import net.sf.anathema.lib.util.Identified;
 
 import javax.annotation.Nullable;
 
 import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
+import static net.sf.anathema.character.impl.persistence.SecondEdition.SECOND_EDITION;
 
 public class ToCharacterButtonDto implements Function<PrintNameFile, CharacterButtonDto> {
-  private CharacterPrintNameFileScanner fileScanner;
+  private final CharacterPrintNameFileScanner fileScanner;
+  private final IStringResourceHandler resources;
 
-  public ToCharacterButtonDto(CharacterPrintNameFileScanner fileScanner) {
+  public ToCharacterButtonDto(CharacterPrintNameFileScanner fileScanner, IStringResourceHandler resources) {
     this.fileScanner = fileScanner;
+    this.resources = resources;
   }
 
   @Nullable
@@ -24,24 +30,25 @@ public class ToCharacterButtonDto implements Function<PrintNameFile, CharacterBu
     String text = input.getPrintName();
     String repositoryId = input.getRepositoryId();
     CharacterIdentifier identifier = new CharacterIdentifier(repositoryId);
-    ICharacterType characterType = fileScanner.getCharacterType(input);
+    ITemplateType templateType = fileScanner.getTemplateType(input);
     Identified casteType = fileScanner.getCasteType(input);
-    String details = characterType.getId();
-    String pathToImage = getPathToImage(characterType, casteType);
+    GenericPresentationTemplate presentationTemplate = new GenericPresentationTemplate();
+    presentationTemplate.setParentTemplate(templateType);
+    String details = resources.getString(presentationTemplate.getNewActionResource());
+    String pathToImage = getPathToImage(templateType, casteType);
     return new CharacterButtonDto(identifier, text, details, pathToImage);
   }
 
-  private String getPathToImage(ICharacterType characterType, Identified casteType) {
+  private String getPathToImage(ITemplateType templateType, Identified casteType) {
     StringBuilder imagePath = new StringBuilder("icons/");
-    imagePath.append(characterType.getId());
     if (casteType == NULL_CASTE_TYPE) {
-      String characterTypeSymbol = "Icon";
-      imagePath.append(characterTypeSymbol);
+      imagePath.append(new CharacterUI(null).getSmallTypeIconPath(templateType.getCharacterType()));
     } else {
-      String casteSymbol = "Button" + casteType.getId() + "SecondEdition";
-      imagePath.append(casteSymbol);
+      GenericPresentationTemplate presentationTemplate = new GenericPresentationTemplate();
+      presentationTemplate.setParentTemplate(templateType);
+      String casteIcon = presentationTemplate.getSmallCasteIconResource(casteType.getId(), SECOND_EDITION);
+      imagePath.append(casteIcon);
     }
-    imagePath.append("16.png");
     return imagePath.toString();
   }
 }

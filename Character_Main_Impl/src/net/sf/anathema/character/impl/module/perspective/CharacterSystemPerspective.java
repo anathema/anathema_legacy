@@ -14,6 +14,7 @@ import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.resources.IStringResourceHandler;
 import net.sf.anathema.swing.character.perspective.CharacterStackSwingBridge;
 import net.sf.anathema.swing.character.perspective.CharacterSystemView;
 import net.sf.anathema.swing.character.perspective.InteractionView;
@@ -32,16 +33,16 @@ public class CharacterSystemPerspective implements Perspective {
   public void initContent(Container container, IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
     CharacterSystemModel systemModel = new CharacterSystemModel(model);
     CharacterSystemView view = new CharacterSystemView(resources);
-    initPresentation(model, systemModel, view);
+    initPresentation(model, systemModel, view, resources);
     initInteractionPresentation(systemModel, view.getInteractionView(), resources);
     container.setSwingContent(view.getComponent());
   }
 
-  private void initPresentation(IAnathemaModel model, CharacterSystemModel systemModel, CharacterSystemView view) {
+  private void initPresentation(IAnathemaModel model, CharacterSystemModel systemModel, CharacterSystemView view, IStringResourceHandler resources) {
     CharacterStackBridge bridge = new CharacterStackSwingBridge(model, view.getStackView());
     CharacterStackPresenter stackPresenter = new CharacterStackPresenter(bridge, systemModel);
     RegExCharacterPrintNameFileScanner fileScanner = new RegExCharacterPrintNameFileScanner(CharacterGenericsExtractor.getGenerics(model).getCasteCollectionRegistry(), model.getRepository().getRepositoryFileResolver());
-    CharacterGridPresenter gridPresenter = new CharacterGridPresenter(systemModel, view.getGridView(), stackPresenter, fileScanner);
+    CharacterGridPresenter gridPresenter = new CharacterGridPresenter(systemModel, view.getGridView(), stackPresenter, fileScanner, resources);
     gridPresenter.initPresentation();
   }
 
