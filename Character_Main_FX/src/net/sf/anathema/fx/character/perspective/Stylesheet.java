@@ -13,7 +13,7 @@ public class Stylesheet {
   }
 
   public void applyToScene(Scene scene){
-    URL resource = getClass().getClassLoader().getResource(path);
+    URL resource = new ResourceLoader().loadResourceAsUrl(path);
     scene.getStylesheets().add(resource.toExternalForm());
   }
 }

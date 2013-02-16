@@ -23,13 +23,18 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CASTE;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;
+
 public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFileScanner {
 
-  private static final String TYPE_ELEMENT_NAME = "CharacterType";
-  private static final String CASTE_ELEMENT_NAME = "Caste";
-  private static final String CASTE_ELEMENT_TYPE_ATTR = "type";
-  private static final Pattern typePattern = Pattern.compile("<" + TYPE_ELEMENT_NAME + ".*>(.*?)</CharacterType>"); //$NON-NLS-1$
-  private static final Pattern castePattern = Pattern.compile("<" + CASTE_ELEMENT_NAME + " " + CASTE_ELEMENT_TYPE_ATTR + "=\"(.*?)\"/>"); //$NON-NLS-1$
+  private static final String TYPE_ELEMENT_NAME = TAG_CHARACTER_TYPE;
+  private static final String CASTE_ELEMENT_NAME = TAG_CASTE;
+  private static final String CASTE_ELEMENT_TYPE_ATTR = ATTRIB_TYPE;
+  private static final Pattern typePattern = Pattern.compile("<" + TYPE_ELEMENT_NAME + ".*>(.*?)</" + TYPE_ELEMENT_NAME + ">");
+  private static final Pattern castePattern = Pattern.compile("<" + CASTE_ELEMENT_NAME + " " + CASTE_ELEMENT_TYPE_ATTR + "=\"(.*?)\"/>");
   private final Map<PrintNameFile, ICharacterType> typesByFile = new HashMap<>();
   private final Map<PrintNameFile, Identified> castesByFile = new HashMap<>();
   private final IRegistry<ICharacterType, ICasteCollection> registry;
@@ -41,7 +46,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     this.registry = registry;
     this.resolver = repositoryFileResolver;
   }
-  
+
   private void scan(PrintNameFile file) throws IOException {
     Document document;
     try {
@@ -51,35 +56,35 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
       scanCompatible(file);
       return;
     }
-    
+
     Element typeElement = DocumentUtilities.findElement(document, TYPE_ELEMENT_NAME);
     Element casteElement = DocumentUtilities.findElement(document, CASTE_ELEMENT_NAME);
-    
-    String typeStr = typeElement != null 
-        ? typeElement.getText() 
-        : null;
-        
-    Attribute casteTypeAttr = casteElement != null 
-        ? casteElement.attribute(CASTE_ELEMENT_TYPE_ATTR)
-        : null;
-        
+
+    String typeStr = typeElement != null
+            ? typeElement.getText()
+            : null;
+
+    Attribute casteTypeAttr = casteElement != null
+            ? casteElement.attribute(CASTE_ELEMENT_TYPE_ATTR)
+            : null;
+
     String casteTypeStr = casteTypeAttr != null
-        ? casteTypeAttr.getValue()
-        : null;
-        
+            ? casteTypeAttr.getValue()
+            : null;
+
     if (typeStr == null) {
       // Imitate the old behaviour
       throw new IllegalStateException("Missing " + TYPE_ELEMENT_NAME + " in " + file);
     }
-    
+
     ICharacterType characterType = CharacterType.getById(typeStr);
     typesByFile.put(file, characterType);
-    
+
     if (casteTypeStr == null) {
-      castesByFile.put(file, null);
+      castesByFile.put(file, NULL_CASTE_TYPE);
       return;
     }
-    
+
     Identified casteType = registry.get(characterType).getById(casteTypeStr);
     castesByFile.put(file, casteType);
   }
@@ -111,8 +116,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     try {
       scan(file);
       return typesByFile.get(file);
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       return null;
     }
   }
@@ -126,9 +130,8 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
     try {
       scan(file);
       return castesByFile.get(file);
-    }
-    catch (IOException e) {
-      return null;
+    } catch (IOException e) {
+      return NULL_CASTE_TYPE;
     }
   }
 }
