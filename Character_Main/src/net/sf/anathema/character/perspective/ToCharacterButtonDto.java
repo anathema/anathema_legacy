@@ -42,11 +42,11 @@ public class ToCharacterButtonDto implements Function<PrintNameFile, CharacterBu
   private String getPathToImage(ITemplateType templateType, Identified casteType) {
     StringBuilder imagePath = new StringBuilder("icons/");
     if (casteType == NULL_CASTE_TYPE) {
-      imagePath.append(new CharacterUI(null).getSmallTypeIconPath(templateType.getCharacterType()));
+      imagePath.append(new CharacterUI(null).getLargeTypeIconPath(templateType.getCharacterType()));
     } else {
       GenericPresentationTemplate presentationTemplate = new GenericPresentationTemplate();
       presentationTemplate.setParentTemplate(templateType);
-      String casteIcon = presentationTemplate.getSmallCasteIconResource(casteType.getId(), SECOND_EDITION);
+      String casteIcon = presentationTemplate.getLargeCasteIconResource(casteType.getId(), SECOND_EDITION);
       imagePath.append(casteIcon);
     }
     return imagePath.toString();

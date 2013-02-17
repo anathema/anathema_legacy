@@ -17,6 +17,11 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
   }
 
   @Override
+  public String getLargeCasteIconResource(String casteId, String editionId) {
+    return getCharacterTypeId() + "Button" + casteId + editionId + "100.png"; //$NON-NLS-1$//$NON-NLS-2$
+  }
+
+  @Override
   public String getNewActionResource() {
     return "CharacterGenerator.Templates." + getCharacterTypeId() + "." + getSubTypeId(); //$NON-NLS-1$//$NON-NLS-2$
   }

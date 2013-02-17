@@ -47,6 +47,10 @@ public class CharacterUI extends AbstractUI {
     return characterType.getId() + "Icon16.png";
   }
 
+  public String getLargeTypeIconPath(ICharacterType characterType) {
+    return characterType.getId() + "Icon100.png";
+  }
+
   public Icon getMediumBallResource(ICharacterType characterType) {
     return getIcon("Border" + characterType.getId() + "Button16.png"); //$NON-NLS-1$ //$NON-NLS-2$
   }
