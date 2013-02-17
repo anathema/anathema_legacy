@@ -19,7 +19,7 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.Identificate;
 
 import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
@@ -30,9 +30,9 @@ import static org.mockito.Mockito.when;
 public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
 
   private final String subtype;
-  private final CharacterType type;
+  private final ICharacterType type;
 
-  public SimpleDummyCharacterTemplate(CharacterType type, String subtype) {
+  public SimpleDummyCharacterTemplate(ICharacterType type, String subtype) {
     this.type = type;
     this.subtype = subtype;
   }

@@ -10,10 +10,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.control.IChangeListener;
 
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
-import static net.sf.anathema.character.generic.type.CharacterType.INFERNAL;
+import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.*;
 
 public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataProvider {
 
@@ -54,10 +51,10 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
   }
 
   private ArtifactAttuneType[] createMalfeanMaterialsAttunementOptions() {
-    if (context.getBasicCharacterContext().getCharacterType() != INFERNAL) {
-      return new ArtifactAttuneType[]{Unattuned, UnharmoniouslyAttuned};
+    if (context.getBasicCharacterContext().getCharacterType().canAttuneToMalfeanMaterials()) {
+      return new ArtifactAttuneType[]{Unattuned, FullyAttuned};
     }
-    return new ArtifactAttuneType[]{Unattuned, FullyAttuned};
+    return new ArtifactAttuneType[]{Unattuned, UnharmoniouslyAttuned};
   }
 
   @Override

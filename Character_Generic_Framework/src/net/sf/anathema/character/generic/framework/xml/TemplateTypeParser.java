@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.xml;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identificate;
@@ -14,7 +15,7 @@ public class TemplateTypeParser {
 
   public ITemplateType parse(Element element) throws PersistenceException {
     String characterTypeId = ElementUtilities.getRequiredAttrib(element, "characterType"); //$NON-NLS-1$
-    ICharacterType characterType = CharacterType.getById(characterTypeId);
+    ICharacterType characterType = CharacterTypes.findById(characterTypeId);
     String subtemplate = element.attributeValue("subtemplate"); //$NON-NLS-1$
     Identified subtemplateIdentificate = createSubtemplateIdentificate(subtemplate);
     return new TemplateType(characterType, subtemplateIdentificate);

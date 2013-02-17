@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 import java.util.Collections;
@@ -26,7 +27,7 @@ public class DummyCharmData implements ICharmData {
   private final Set<ICharm> parents = new HashSet<>();
 
   @Override
-  public CharacterType getCharacterType() {
+  public ICharacterType getCharacterType() {
     return null;
   }
 

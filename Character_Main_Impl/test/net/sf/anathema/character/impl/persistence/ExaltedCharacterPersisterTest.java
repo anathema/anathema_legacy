@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
+import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.generic.framework.CharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -17,7 +18,6 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import org.junit.Before;
 import org.junit.Test;
 
-import static net.sf.anathema.character.generic.type.CharacterType.DB;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
@@ -37,7 +37,7 @@ public class ExaltedCharacterPersisterTest {
 
   @Before
   public void createCharacterConfiguration() {
-    template = new SimpleDummyCharacterTemplate(DB, null);
+    template = new SimpleDummyCharacterTemplate(new DummyExaltCharacterType(), null);
     configuration = new CharacterStatisticsConfiguration();
     configuration.setTemplate(template);
   }

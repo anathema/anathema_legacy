@@ -7,17 +7,12 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPo
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
-import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
-import net.sf.anathema.character.generic.impl.additional.ComplexAdditionalEssencePool;
-import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
-import net.sf.anathema.character.generic.impl.additional.LearnableCharmPool;
-import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
+import net.sf.anathema.character.generic.impl.additional.*;
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.util.NullPointModification;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.util.IPointModification;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.lib.exception.ContractFailedException;
@@ -168,7 +163,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       if (charmReference != null) {
         DummyCharm charm = new DummyCharm(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_ID));
         charm.setGroupId(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_GROUP));
-        charm.setCharacterType(CharacterType.getById(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_TYPE)));
+        charm.setCharacterType(CharacterTypes.findById(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_TYPE)));
         pools.add(new LearnableCharmPool(charm, personalPool, peripheralPool, complexPools));
       }
       else {

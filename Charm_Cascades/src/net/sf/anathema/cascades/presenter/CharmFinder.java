@@ -3,7 +3,7 @@ package net.sf.anathema.cascades.presenter;
 import com.google.common.base.Predicate;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.Identified;
@@ -31,7 +31,7 @@ public class CharmFinder {
   private ICharm searchCharmByCharacterType() {
     String[] idParts = id.split("\\."); //$NON-NLS-1$
     try {
-    	ICharacterType characterTypeId = CharacterType.getById(idParts[0]);
+    	ICharacterType characterTypeId = CharacterTypes.findById(idParts[0]);
     	return findCharm(characterTypeId);
     }
     catch (IllegalArgumentException e) {

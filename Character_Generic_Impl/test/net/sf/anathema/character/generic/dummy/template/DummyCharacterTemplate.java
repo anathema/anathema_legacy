@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.dummy.template;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
@@ -42,7 +43,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   private static final String DUMMYGROUP = "DummyGroup"; //$NON-NLS-1$
   private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(
           new ExaltTraitTemplateFactory());
-  private ITemplateType type = new TemplateType(CharacterType.MORTAL);
+  private ITemplateType type = new TemplateType(new DummyMundaneCharacterType());
   private IEssenceTemplate essenceTemplate = new NullEssenceTemplate();
 
   public void setEssenceTemplate(IEssenceTemplate essenceTemplate) {

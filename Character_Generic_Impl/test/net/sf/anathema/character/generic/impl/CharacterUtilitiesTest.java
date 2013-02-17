@@ -1,11 +1,12 @@
 package net.sf.anathema.character.generic.impl;
 
+import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.dummy.DummyGenericTraitCollection;
+import net.sf.anathema.character.generic.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -37,7 +38,7 @@ public class CharacterUtilitiesTest {
     traitCollection.setValue(AbilityType.Dodge, 1);
     traitCollection.setValue(AttributeType.Dexterity, 2);
     traitCollection.setValue(OtherTraitType.Essence, 1);
-    assertEquals(1, CharacterUtilities.getDodgeDv(CharacterType.MORTAL, traitCollection, modifiers));
+    assertEquals(1, CharacterUtilities.getDodgeDv(new DummyMundaneCharacterType(), traitCollection, modifiers));
   }
 
   @Test
@@ -45,7 +46,7 @@ public class CharacterUtilitiesTest {
     traitCollection.setValue(AbilityType.Dodge, 1);
     traitCollection.setValue(AttributeType.Dexterity, 2);
     traitCollection.setValue(OtherTraitType.Essence, 2);
-    assertEquals(2, CharacterUtilities.getDodgeDv(CharacterType.MORTAL, traitCollection, modifiers));
+    assertEquals(2, CharacterUtilities.getDodgeDv(new DummyMundaneCharacterType(), traitCollection, modifiers));
   }
 
   @Test
@@ -53,7 +54,7 @@ public class CharacterUtilitiesTest {
     traitCollection.setValue(AbilityType.Dodge, 1);
     traitCollection.setValue(AttributeType.Dexterity, 1);
     traitCollection.setValue(OtherTraitType.Essence, 1);
-    assertEquals(1, CharacterUtilities.getDodgeDv(CharacterType.SOLAR, traitCollection, modifiers));
+    assertEquals(1, CharacterUtilities.getDodgeDv(new DummyExaltCharacterType(), traitCollection, modifiers));
   }
 
   @Test
@@ -61,7 +62,7 @@ public class CharacterUtilitiesTest {
     traitCollection.setValue(AbilityType.Dodge, 1);
     traitCollection.setValue(AttributeType.Dexterity, 1);
     traitCollection.setValue(OtherTraitType.Essence, 2);
-    assertEquals(2, CharacterUtilities.getDodgeDv(CharacterType.SOLAR, traitCollection, modifiers));
+    assertEquals(2, CharacterUtilities.getDodgeDv(new DummyExaltCharacterType(), traitCollection, modifiers));
   }
 
   @Test
@@ -69,6 +70,6 @@ public class CharacterUtilitiesTest {
     traitCollection.setValue(AbilityType.Dodge, 1);
     traitCollection.setValue(AttributeType.Dexterity, 2);
     traitCollection.setValue(OtherTraitType.Essence, 2);
-    assertEquals(3, CharacterUtilities.getDodgeDv(CharacterType.SOLAR, traitCollection, modifiers));
+    assertEquals(3, CharacterUtilities.getDodgeDv(new DummyExaltCharacterType(), traitCollection, modifiers));
   }
 }

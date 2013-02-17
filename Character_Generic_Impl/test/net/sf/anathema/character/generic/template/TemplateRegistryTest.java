@@ -1,17 +1,16 @@
 package net.sf.anathema.character.generic.template;
 
+import net.sf.anathema.character.generic.dummy.DummyMundaneCharacterType;
 import net.sf.anathema.character.generic.dummy.template.SimpleDummyCharacterTemplate;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
-import net.sf.anathema.character.generic.type.CharacterType;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class TemplateRegistryTest {
 
+  private DummyMundaneCharacterType characterType = new DummyMundaneCharacterType();
   private ITemplateRegistry registry;
 
   @Before
@@ -21,31 +20,28 @@ public class TemplateRegistryTest {
 
   @Test
   public void testRegisterAndRetrieveTemplate() throws Exception {
-    SimpleDummyCharacterTemplate template = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, null);
+    SimpleDummyCharacterTemplate template = new SimpleDummyCharacterTemplate(characterType, null);
     registry.register(template);
-    assertEquals(template, registry.getTemplate(new TemplateType(CharacterType.MORTAL)));
+    assertEquals(template, registry.getTemplate(new TemplateType(characterType)));
   }
 
   @Test
   public void testRegisterAndRetrieveDefaultTemplate() throws Exception {
-    SimpleDummyCharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, null);
-    SimpleDummyCharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, "Second"
-            //$NON-NLS-1$
-    );
+    SimpleDummyCharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(characterType, null);
+    SimpleDummyCharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(characterType, "Second");
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
-    assertEquals(defaultTemplate, registry.getDefaultTemplate(CharacterType.MORTAL));
-    assertNotSame(otherTemplate, registry.getDefaultTemplate(CharacterType.MORTAL));
+    assertEquals(defaultTemplate, registry.getDefaultTemplate(characterType));
+    assertNotSame(otherTemplate, registry.getDefaultTemplate(characterType));
   }
 
   @Test
   public void testRegisterAndRetrieveAllSupportedTemplates() throws Exception {
-    ICharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, null);
-    ICharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, "Second" //$NON-NLS-1$
-    );
+    ICharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(characterType, null);
+    ICharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(characterType, "Second");
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
-    ICharacterExternalsTemplate[] allSupportedTemplates = registry.getAllSupportedTemplates(CharacterType.MORTAL);
+    ICharacterExternalsTemplate[] allSupportedTemplates = registry.getAllSupportedTemplates(characterType);
     assertTrue(net.sf.anathema.lib.lang.ArrayUtilities.containsValue(allSupportedTemplates, defaultTemplate));
     assertTrue(net.sf.anathema.lib.lang.ArrayUtilities.containsValue(allSupportedTemplates, otherTemplate));
   }

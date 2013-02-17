@@ -134,6 +134,11 @@ public enum CharacterType implements ICharacterType {
     return FavoringTraitType.AbilityType;
   }
 
+  @Override
+  public boolean canAttuneToMalfeanMaterials() {
+    return this == INFERNAL;
+  }
+
   public static Iterable<ICharacterType> getAllEssenceUsers() {
     List<ICharacterType> list = Lists.<ICharacterType>newArrayList(SPIRIT, GHOST);
     Collections.addAll(list, getAllExaltTypes());

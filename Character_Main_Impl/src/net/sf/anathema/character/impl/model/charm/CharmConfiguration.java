@@ -27,6 +27,7 @@ import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
 import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
@@ -349,7 +350,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private void initAlienTypes(ITemplateRegistry registry, List<ICharacterType> characterTypes) {
-    for (ICharacterType type : CharacterType.values()) {
+    for (ICharacterType type : CharacterTypes.findAll()) {
       if (characterTypes.contains(type)) {
         continue;
       }
@@ -381,7 +382,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ILearningCharmGroup getGroup(String characterTypeId, String groupName) {
-    ICharacterType characterType = characterTypeId == null ? getNativeCharacterType() : CharacterType.getById(
+    ICharacterType characterType = characterTypeId == null ? getNativeCharacterType() : CharacterTypes.findById(
             characterTypeId);
     return getGroupById(characterType, groupName);
   }

@@ -1,21 +1,15 @@
 package net.sf.anathema.cascades.presenter;
 
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-import org.junit.Before;
 import org.junit.Test;
 
 import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
 import static net.sf.anathema.character.generic.type.CharacterType.SOLAR;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class CharmFinderTest {
 

@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
@@ -113,7 +112,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
   }
 
   @Override
-  public CharacterType[] getCharacterTypes(boolean includeAlienTypes) {
+  public ICharacterType[] getCharacterTypes(boolean includeAlienTypes) {
     throw new NotYetImplementedException();
   }
 

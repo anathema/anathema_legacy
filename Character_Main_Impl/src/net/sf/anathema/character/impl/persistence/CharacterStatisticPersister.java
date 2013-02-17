@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersister;
@@ -102,7 +103,7 @@ public class CharacterStatisticPersister {
 
   private ITemplateType loadTemplateType(Element parent) throws PersistenceException {
     String typeId = ElementUtilities.getRequiredText(parent, TAG_CHARACTER_TYPE);
-    ICharacterType characterType = CharacterType.getById(typeId);
+    ICharacterType characterType = CharacterTypes.findById(typeId);
     String subTypeValue = parent.element(TAG_CHARACTER_TYPE).attributeValue(ATTRIB_SUB_TYPE);
     Identified subtype = subTypeValue == null ? TemplateType.DEFAULT_SUB_TYPE : new Identificate(subTypeValue);
     return new TemplateType(characterType, subtype);

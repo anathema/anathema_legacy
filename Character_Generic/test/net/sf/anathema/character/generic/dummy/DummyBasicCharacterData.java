@@ -3,12 +3,12 @@ package net.sf.anathema.character.generic.dummy;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class DummyBasicCharacterData implements IBasicCharacterData {
 
   private ICasteType casteType;
-  private CharacterType characterType;
+  private ICharacterType characterType;
 
   @Override
   public ICasteType getCasteType() {
@@ -16,7 +16,7 @@ public class DummyBasicCharacterData implements IBasicCharacterData {
   }
 
   @Override
-  public CharacterType getCharacterType() {
+  public ICharacterType getCharacterType() {
     return characterType;
   }
 
@@ -29,7 +29,7 @@ public class DummyBasicCharacterData implements IBasicCharacterData {
     this.casteType = casteType;
   }
 
-  public void setCharacterType(CharacterType characterType) {
+  public void setCharacterType(ICharacterType characterType) {
     this.characterType = characterType;
   }
 

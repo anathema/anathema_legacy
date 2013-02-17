@@ -4,6 +4,7 @@ import net.sf.anathema.character.dummy.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.character.dummy.trait.DummyTraitContext;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
+import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
@@ -13,7 +14,6 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
@@ -47,7 +47,7 @@ public abstract class AbstractBonusPointTestCase {
 
       @Override
       public ITemplateType getTemplateType() {
-        return new TemplateType(CharacterType.SOLAR);
+        return new TemplateType(new DummyExaltCharacterType());
       }
     }, new ICharacterListening() {
       @Override

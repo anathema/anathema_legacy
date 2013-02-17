@@ -4,21 +4,12 @@ import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateP
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.magic.UniqueCharmType;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
-import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
-import net.sf.anathema.character.generic.impl.template.magic.CustomizableFreePicksPredicate;
-import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
-import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
-import net.sf.anathema.character.generic.impl.template.magic.SpellMagicTemplate;
+import net.sf.anathema.character.generic.impl.template.magic.*;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.template.magic.ICharmSet;
-import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
-import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
-import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.template.magic.*;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
@@ -145,7 +136,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     if (charmType.equals(VALUE_NONE)) {
         charmSet = new NullCharmSet();
       } else {
-        charmSet = CharmSet.createRegularCharmSet(cache, CharacterType.getById(charmType), uniqueCharms);
+        charmSet = CharmSet.createRegularCharmSet(cache, CharacterTypes.findById(charmType), uniqueCharms);
       }
     CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet,
             uniqueCharms);

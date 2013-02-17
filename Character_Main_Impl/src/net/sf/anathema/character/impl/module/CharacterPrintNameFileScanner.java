@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.module;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
@@ -71,7 +71,7 @@ public class CharacterPrintNameFileScanner {
       throw new IllegalStateException("Missing " + TYPE_ELEMENT_NAME + " in " + file);
     }
     
-    ICharacterType characterType = CharacterType.getById(typeStr);
+    ICharacterType characterType = CharacterTypes.findById(typeStr);
     typesByFile.put(file, characterType);
     
     if (casteTypeStr == null) {
@@ -90,7 +90,7 @@ public class CharacterPrintNameFileScanner {
     Matcher typeMatcher = typePattern.matcher(content);
     ICharacterType characterType;
     typeMatcher.find();
-    characterType = CharacterType.getById(typeMatcher.group(1));
+    characterType = CharacterTypes.findById(typeMatcher.group(1));
     typesByFile.put(file, characterType);
     Matcher casteMatcher = castePattern.matcher(content);
     if (!casteMatcher.find()) {

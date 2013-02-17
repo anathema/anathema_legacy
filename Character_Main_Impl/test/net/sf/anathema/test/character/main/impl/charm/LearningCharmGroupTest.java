@@ -3,6 +3,7 @@ package net.sf.anathema.test.character.main.impl.charm;
 import net.sf.anathema.character.generic.dummy.magic.DummyLearnableArbitrator;
 import net.sf.anathema.character.generic.dummy.magic.DummyLearningCharmGroupContainer;
 import net.sf.anathema.character.generic.dummy.template.DummyCharmTemplate;
+import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
@@ -11,7 +12,6 @@ import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.charm.LearningCharmGroup;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
@@ -33,7 +33,7 @@ public class LearningCharmGroupTest {
   private LearningCharmGroup createSolarGroup(IExtendedCharmLearnableArbitrator learnableArbitrator, String groupId) {
     ICharmLearnStrategy learnStrategy = new CreationCharmLearnStrategy();
     CharmTree charmTree = new CharmTree(new DummyCharmTemplate());
-    CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId,
+    CharmGroup group = new CharmGroup(new DummyExaltCharacterType(), groupId,
             charmTree.getAllCharmsForGroup(groupId).toArray(new ICharm[charmTree.getAllCharmsForGroup(groupId).size()]), false);
     return new LearningCharmGroup(learnStrategy, group, learnableArbitrator, container);
   }
@@ -43,7 +43,7 @@ public class LearningCharmGroupTest {
     ICharmTree charmTree,
     String groupId) {
     ICharmLearnStrategy learnSrategy = new CreationCharmLearnStrategy();
-    CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId,
+    CharmGroup group = new CharmGroup(new DummyExaltCharacterType(), groupId,
             charmTree.getAllCharmsForGroup(groupId).toArray(new ICharm[charmTree.getAllCharmsForGroup(groupId).size()]), false);
     return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container);
   }

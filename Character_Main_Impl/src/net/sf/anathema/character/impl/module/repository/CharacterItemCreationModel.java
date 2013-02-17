@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.module.repository;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
@@ -29,12 +29,12 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     this.configuration = configuration;
     this.types = collectCharacterTypes(generics.getTemplateRegistry());
     aggregateTemplates();
-    setCharacterType(CharacterType.SOLAR);
+    setCharacterType(CharacterTypes.findAll()[0]);
   }
 
   private ICharacterType[] collectCharacterTypes(ITemplateRegistry registry) {
     List<ICharacterType> availableTypes = new ArrayList<>();
-    for (ICharacterType type : CharacterType.values()) {
+    for (ICharacterType type : CharacterTypes.findAll()) {
       if (registry.getAllSupportedTemplates(type).length > 0) {
         availableTypes.add(type);
       }
@@ -44,7 +44,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private void aggregateTemplates() {
     TemplateTypeAggregator aggregator = new TemplateTypeAggregator(generics.getTemplateRegistry());
-    for (ICharacterType type : CharacterType.values()) {
+    for (ICharacterType type : CharacterTypes.findAll()) {
       ITemplateTypeAggregation[] aggregations = aggregator.aggregateTemplates(type);
       if (aggregations.length == 0) {
         continue;

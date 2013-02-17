@@ -28,6 +28,7 @@ import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -145,7 +146,7 @@ public class CharmBuilder implements ICharmBuilder {
     String typeAttribute = charmElement.attributeValue(ATTRIB_EXALT);
     ICharacterType characterType;
     try {
-      characterType = CharacterType.getById(typeAttribute);
+      characterType = CharacterTypes.findById(typeAttribute);
     }
     catch (IllegalArgumentException e) {
       throw new CharmException("No chararacter type given.", e); //$NON-NLS-1$

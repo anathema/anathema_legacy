@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.CharmGroupCollection;
 import net.sf.anathema.lib.util.Identified;
@@ -36,7 +37,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   }
 
   private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups) {
-    for (ICharacterType type : CharacterType.values()) {
+    for (ICharacterType type : CharacterTypes.findAll()) {
       ICharacterTemplate template = templateRegistry.getDefaultTemplate(type);
       if (template == null) {
         continue;
