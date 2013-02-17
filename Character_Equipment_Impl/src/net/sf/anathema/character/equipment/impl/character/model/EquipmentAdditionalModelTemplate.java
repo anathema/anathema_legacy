@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.character.model;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
@@ -27,7 +28,8 @@ public class EquipmentAdditionalModelTemplate extends Identificate implements
   public IEquipmentTemplate getNaturalWeaponTemplate(ICharacterType characterType) {
     Collection<IEquipmentTemplate> templates = gatherTemplates();
     for (IEquipmentTemplate template : templates) {
-      if (template.getClass().getAnnotation(RegisteredNaturalWeapon.class).characterType() == characterType) {
+      String applicableType = template.getClass().getAnnotation(RegisteredNaturalWeapon.class).characterType();
+      if (CharacterTypes.findById(applicableType).equals(characterType)) {
         return template;
       }
     }

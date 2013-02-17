@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.DbCharacterType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,7 +34,7 @@ public class ElementalCharmLearnConditionTest {
   @Before
   public void createCharacter() throws Exception {
     character.setCasteType(new DummyCasteType(element.name()));
-    character.setCharacterType(CharacterType.DB);
+    character.setCharacterType(new DbCharacterType());
   }
 
   @Test

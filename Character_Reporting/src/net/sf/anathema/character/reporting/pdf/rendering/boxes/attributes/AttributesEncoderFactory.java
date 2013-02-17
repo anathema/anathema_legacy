@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.rendering.boxes.attributes;
 
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.LunarCharacterType;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
@@ -17,7 +17,7 @@ public class AttributesEncoderFactory extends AbstractEncoderFactory {
 
   @Override
   public ContentEncoder create(IResources resources, BasicContent content) {
-    return new AttributesEncoder(resources, content.isOfType(CharacterType.LUNAR));
+    return new AttributesEncoder(resources, content.isOfType(new LunarCharacterType()));
   }
 
   @Override

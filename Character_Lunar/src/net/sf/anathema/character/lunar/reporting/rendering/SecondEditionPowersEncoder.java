@@ -6,7 +6,7 @@ import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.lunar.LunarCharacterModule;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
@@ -26,7 +26,7 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
   private final boolean isHorizontal;
   private int tellMDV;
 
-  private static final TemplateType castelessType = new TemplateType(CharacterType.LUNAR, new Identificate("Casteless")); //$NON-NLS-1$
+  private static final TemplateType castelessType = new TemplateType(LunarCharacterModule.type, new Identificate("Casteless")); //$NON-NLS-1$
 
   public SecondEditionPowersEncoder(IResources resources, boolean isHorizontal) {
     this.resources = resources;

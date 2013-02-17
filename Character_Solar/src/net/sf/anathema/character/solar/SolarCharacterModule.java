@@ -1,6 +1,5 @@
 package net.sf.anathema.character.solar;
 
-import static net.sf.anathema.character.generic.type.CharacterType.SOLAR;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
@@ -11,8 +10,8 @@ import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.generic.type.SolarCharacterType;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
@@ -25,12 +24,13 @@ import net.sf.anathema.lib.util.Identificate;
 @CharacterModule
 public class SolarCharacterModule extends CharacterTypeModule {
 
+  public static final ICharacterType type = new SolarCharacterType();
   @SuppressWarnings("unused")
-  private static final TemplateType solarTemplateType = new TemplateType(SOLAR);
-  private static final TemplateType dreamsSolarTemplateType = new TemplateType(SOLAR, new Identificate("Dreams")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarEstablished = new TemplateType(SOLAR, new Identificate("DreamsEstablished")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarInfluential = new TemplateType(SOLAR, new Identificate("DreamsInfluential")); //$NON-NLS-1$
-  private static final TemplateType dreamsSolarLegendary = new TemplateType(SOLAR, new Identificate("DreamsLegendary")); //$NON-NLS-1$
+  private static final TemplateType solarTemplateType = new TemplateType(type);
+  private static final TemplateType dreamsSolarTemplateType = new TemplateType(type, new Identificate("Dreams")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarEstablished = new TemplateType(type, new Identificate("DreamsEstablished")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarInfluential = new TemplateType(type, new Identificate("DreamsInfluential")); //$NON-NLS-1$
+  private static final TemplateType dreamsSolarLegendary = new TemplateType(type, new Identificate("DreamsLegendary")); //$NON-NLS-1$
 
   private static final TemplateType[] dreams = {dreamsSolarTemplateType, dreamsSolarEstablished, dreamsSolarInfluential, dreamsSolarLegendary};
 
@@ -49,7 +49,7 @@ public class SolarCharacterModule extends CharacterTypeModule {
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getAdditionalTemplateParserRegistry().register(SolarVirtueFlawTemplate.ID, new SolarVirtueFlawParser());
-    characterGenerics.getCasteCollectionRegistry().register(SOLAR, new CasteCollection(SolarCaste.values()));
+    characterGenerics.getCasteCollectionRegistry().register(type, new CasteCollection(SolarCaste.values()));
   }
 
   @Override
@@ -81,6 +81,6 @@ public class SolarCharacterModule extends CharacterTypeModule {
 
   @Override
   protected ICharacterType getType() {
-	  return CharacterType.SOLAR;
+	  return type;
   }
 }

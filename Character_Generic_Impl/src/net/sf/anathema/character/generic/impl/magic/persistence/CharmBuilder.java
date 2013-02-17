@@ -2,16 +2,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmAttributeBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmTypeBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.GroupStringBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.IComboRulesBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.IIdStringBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.*;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.IAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisitesBuilder;
@@ -27,7 +18,6 @@ import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -37,10 +27,7 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.*;
 
 public class CharmBuilder implements ICharmBuilder {
 

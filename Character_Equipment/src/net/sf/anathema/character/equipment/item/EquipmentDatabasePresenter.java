@@ -9,7 +9,7 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManageme
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.framework.resources.CharacterIntValueGraphics;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -23,7 +23,7 @@ import net.sf.anathema.lib.workflow.container.factory.MigPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-import javax.swing.JComponent;
+import javax.swing.*;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 
@@ -134,6 +134,6 @@ public class EquipmentDatabasePresenter implements Presenter {
   }
 
   private IntegerViewFactory getIntValueDisplayFactory() {
-    return new MarkerIntValueDisplayFactory(new CharacterIntValueGraphics(resources, CharacterType.MORTAL));
+    return new MarkerIntValueDisplayFactory(new CharacterIntValueGraphics(resources, CharacterTypes.findById("Mortal")));
   }
 }

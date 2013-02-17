@@ -35,7 +35,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyCharacterTemplate implements ICharacterTemplate {
@@ -73,10 +72,6 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   @Override
   public ITemplateType getTemplateType() {
     return type;
-  }
-
-  public void setTemplateType(ITemplateType type) {
-    this.type = type;
   }
 
   @Override

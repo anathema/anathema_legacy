@@ -10,10 +10,7 @@ import net.sf.anathema.lib.control.ObjectValueListener;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 import org.jdesktop.swingx.prompt.PromptSupport;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;

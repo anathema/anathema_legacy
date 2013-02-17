@@ -1,13 +1,11 @@
-package net.sf.anathema.character.generic.dummy;
+package net.sf.anathema.character.generic.type;
 
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.generic.type.ICharacterTypeVisitor;
 
-public class DummyExaltCharacterType implements ICharacterType {
+public class InfernalCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
-    //nothing to do
+    visitor.visitInfernal(this);
   }
 
   @Override
@@ -22,16 +20,24 @@ public class DummyExaltCharacterType implements ICharacterType {
 
   @Override
   public FavoringTraitType getFavoringTraitType() {
-    return FavoringTraitType.AbilityType;
+    return FavoringTraitType.YoziType;
   }
 
   @Override
   public boolean canAttuneToMalfeanMaterials() {
-    return false;
+    return true;
   }
 
   @Override
   public String getId() {
-    return "Dummy";
+    return "Infernal";
+  }
+
+  public boolean equals(Object other) {
+    return other instanceof InfernalCharacterType;
+  }
+
+  public int hashCode() {
+    return 6;
   }
 }

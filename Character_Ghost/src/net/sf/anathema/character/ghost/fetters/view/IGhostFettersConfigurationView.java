@@ -2,7 +2,7 @@ package net.sf.anathema.character.ghost.fetters.view;
 
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 
-import javax.swing.Icon;
+import javax.swing.*;
 
 public interface IGhostFettersConfigurationView {
 

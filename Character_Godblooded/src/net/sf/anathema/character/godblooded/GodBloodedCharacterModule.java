@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.*;
 import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceModelFactory;
 import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceParser;
 import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceTemplate;
@@ -21,19 +21,19 @@ public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter 
 
   public static final String BACKGROUND_ID_INHERITANCE = "Inheritance"; //$NON-NLS-1$
 
-  private static final TemplateType godBloodedType = new TemplateType(CharacterType.SPIRIT, new Identificate(
+  private static final TemplateType godBloodedType = new TemplateType(new SpiritCharacterType(), new Identificate(
           "GodBlooded")); //$NON-NLS-1$
-  private static final TemplateType demonBloodedType = new TemplateType(CharacterType.SPIRIT, new Identificate(
+  private static final TemplateType demonBloodedType = new TemplateType(new SpiritCharacterType(), new Identificate(
           "DemonBlooded")); //$NON-NLS-1$
-  private static final TemplateType ghostBloodedType = new TemplateType(CharacterType.GHOST, new Identificate(
+  private static final TemplateType ghostBloodedType = new TemplateType(new GhostCharacterType(), new Identificate(
           "GhostBlooded")); //$NON-NLS-1$
-  private static final TemplateType halfCasteAbyssalType = new TemplateType(CharacterType.ABYSSAL, new Identificate(
+  private static final TemplateType halfCasteAbyssalType = new TemplateType(new AbyssalCharacterType(), new Identificate(
           "HalfCasteAbyssal")); //$NON-NLS-1$
-  private static final TemplateType halfCasteLunarType = new TemplateType(CharacterType.LUNAR, new Identificate(
+  private static final TemplateType halfCasteLunarType = new TemplateType(new LunarCharacterType(), new Identificate(
           "HalfCasteLunar")); //$NON-NLS-1$
-  private static final TemplateType halfCasteSiderealType = new TemplateType(CharacterType.SIDEREAL, new Identificate(
+  private static final TemplateType halfCasteSiderealType = new TemplateType(new SiderealCharacterType(), new Identificate(
           "HalfCasteSidereal")); //$NON-NLS-1$
-  private static final TemplateType halfCasteSolarType = new TemplateType(CharacterType.SOLAR, new Identificate(
+  private static final TemplateType halfCasteSolarType = new TemplateType(new SolarCharacterType(), new Identificate(
           "HalfCasteSolar")); //$NON-NLS-1$
 
   @Override
@@ -72,8 +72,6 @@ public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
     IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry = characterGenerics.getAdditionalModelFactoryRegistry();
-    //IRegistry<String, IAdditionalViewFactory> additionalViewFactoryRegistry = characterGenerics.getAdditionalViewFactoryRegistry();
-    //IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     registerGodBloodedInheritance(additionalModelFactoryRegistry);
   }
 

@@ -1,18 +1,16 @@
-package net.sf.anathema.character.generic.dummy;
+package net.sf.anathema.character.generic.type;
 
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.generic.type.ICharacterTypeVisitor;
 
-public class DummyExaltCharacterType implements ICharacterType {
+public class GhostCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
-    //nothing to do
+    visitor.visitGhost(this);
   }
 
   @Override
   public boolean isExaltType() {
-    return true;
+    return false;
   }
 
   @Override
@@ -32,6 +30,14 @@ public class DummyExaltCharacterType implements ICharacterType {
 
   @Override
   public String getId() {
-    return "Dummy";
+    return "Ghost";
+  }
+
+  public boolean equals(Object other) {
+    return other instanceof GhostCharacterType;
+  }
+
+  public int hashCode() {
+    return 7;
   }
 }

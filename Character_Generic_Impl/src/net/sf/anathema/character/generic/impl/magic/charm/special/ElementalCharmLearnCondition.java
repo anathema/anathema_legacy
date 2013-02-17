@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.DbCharacterType;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 public class ElementalCharmLearnCondition implements ICondition {
@@ -27,7 +27,7 @@ public class ElementalCharmLearnCondition implements ICondition {
   @Override
   public boolean isFulfilled() {
     boolean learnable = arbitrator.isLearnable(charm);
-    if (!data.getCharacterType().equals(CharacterType.DB)) {
+    if (!data.getCharacterType().equals(new DbCharacterType())) {
       return learnable;
     }
     if (data.getCasteType().getId() == null) {

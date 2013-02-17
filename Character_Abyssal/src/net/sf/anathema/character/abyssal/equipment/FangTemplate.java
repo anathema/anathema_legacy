@@ -7,9 +7,7 @@ import net.sf.anathema.character.equipment.impl.character.model.RegisteredNatura
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
-import static net.sf.anathema.character.generic.type.CharacterType.ABYSSAL;
-
-@RegisteredNaturalWeapon(characterType = ABYSSAL)
+@RegisteredNaturalWeapon(characterType = "Abyssal")
 public class FangTemplate implements IEquipmentTemplate {
 
   private static final FangStats FANG_STATS = new FangStats();

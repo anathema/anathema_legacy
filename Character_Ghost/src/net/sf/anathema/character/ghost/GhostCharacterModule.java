@@ -7,20 +7,15 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
-import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.GhostCharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.ghost.age.GhostAgeModelFactory;
 import net.sf.anathema.character.ghost.age.GhostAgeParser;
 import net.sf.anathema.character.ghost.age.GhostAgeTemplate;
-import net.sf.anathema.character.ghost.fetters.GhostFettersModelFactory;
-import net.sf.anathema.character.ghost.fetters.GhostFettersParser;
-import net.sf.anathema.character.ghost.fetters.GhostFettersPersisterFactory;
-import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
-import net.sf.anathema.character.ghost.fetters.GhostFettersViewFactory;
+import net.sf.anathema.character.ghost.fetters.*;
 import net.sf.anathema.character.ghost.passions.GhostPassionsModelFactory;
 import net.sf.anathema.character.ghost.passions.GhostPassionsParser;
 import net.sf.anathema.character.ghost.passions.GhostPassionsTemplate;
@@ -30,10 +25,10 @@ import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identificate;
 
-import static net.sf.anathema.character.generic.type.CharacterType.GHOST;
 
 @CharacterModule
 public class GhostCharacterModule extends CharacterTypeModule {
+  public static final ICharacterType type = new GhostCharacterType();
   public static final String BACKGROUND_ID_AGE = "Age"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_ANCESTOR_CULT = "AncestorCult"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_GRAVE_GOODS = "GraveGoods"; //$NON-NLS-1$
@@ -41,8 +36,8 @@ public class GhostCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_UNDERWORLD_CULT = "UnderworldCult"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_WHISPERS = "GhostWhispers"; //$NON-NLS-1$
 
-  private static final TemplateType heroicType = new TemplateType(GHOST);
-  private static final TemplateType commonType = new TemplateType(GHOST, new Identificate("CommonGhost")); //$NON-NLS-1$
+  private static final TemplateType heroicType = new TemplateType(type);
+  private static final TemplateType commonType = new TemplateType(type, new Identificate("CommonGhost")); //$NON-NLS-1$
 
   private final TemplateType[] trueGhosts = {heroicType, commonType};
 
@@ -97,6 +92,6 @@ public class GhostCharacterModule extends CharacterTypeModule {
 
   @Override
   protected ICharacterType getType() {
-	  return CharacterType.GHOST;
+	  return type;
   }
 }

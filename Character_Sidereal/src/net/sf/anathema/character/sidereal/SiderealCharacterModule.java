@@ -1,6 +1,5 @@
 package net.sf.anathema.character.sidereal;
 
-import static net.sf.anathema.character.generic.type.CharacterType.SIDEREAL;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
@@ -14,30 +13,23 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.generic.type.SiderealCharacterType;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeModelFactory;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeParser;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeViewFactory;
 import net.sf.anathema.character.sidereal.colleges.persistence.SiderealCollegePersisterFactory;
-import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateModelFactory;
-import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateParser;
-import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFatePersisterFactory;
-import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateTemplate;
-import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateViewFactory;
-import net.sf.anathema.character.sidereal.paradox.SiderealParadoxModelFactory;
-import net.sf.anathema.character.sidereal.paradox.SiderealParadoxParser;
-import net.sf.anathema.character.sidereal.paradox.SiderealParadoxPersisterFactory;
-import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
-import net.sf.anathema.character.sidereal.paradox.SiderealParadoxViewFactory;
+import net.sf.anathema.character.sidereal.flawedfate.*;
+import net.sf.anathema.character.sidereal.paradox.*;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identificate;
 
 @CharacterModule
 public class SiderealCharacterModule extends CharacterTypeModule {
+  public static final ICharacterType type = new SiderealCharacterType();
   public static final String BACKGROUND_ID_ACQUAINTANCES = "Acquaintances"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_CONNECTIONS = "Connections"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_CELESTIAL_MANSE = "CelestialManse"; //$NON-NLS-1$
@@ -45,9 +37,8 @@ public class SiderealCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_SAVANT = "Savant"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SIFU = "Sifu"; //$NON-NLS-1$
 
-  private static final TemplateType defaultTemplateType = new TemplateType(SIDEREAL); //$NON-NLS-1$
-  public static final TemplateType roninType = new TemplateType(SIDEREAL, new Identificate("Ronin")); //$NON-NLS-1$
-  public static final TemplateType dreamsType = new TemplateType(SIDEREAL, new Identificate("Dreams")); //$NON-NLS-1$
+  private static final TemplateType defaultTemplateType = new TemplateType(type); //$NON-NLS-1$
+  public static final TemplateType dreamsType = new TemplateType(type, new Identificate("Dreams")); //$NON-NLS-1$
 
   private static final TemplateType[] dreams = {dreamsType};
 
@@ -61,7 +52,7 @@ public class SiderealCharacterModule extends CharacterTypeModule {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    characterGenerics.getCasteCollectionRegistry().register(SIDEREAL, new CasteCollection(SiderealCaste.values()));
+    characterGenerics.getCasteCollectionRegistry().register(type, new CasteCollection(SiderealCaste.values()));
     characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealCollegeTemplate.ID, new SiderealCollegeParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealFlawedFateTemplate.ID, new SiderealFlawedFateParser());
     characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealParadoxTemplate.ID, new SiderealParadoxParser());
@@ -71,10 +62,10 @@ public class SiderealCharacterModule extends CharacterTypeModule {
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     ITemplateType[] defaultTemplateType = new ITemplateType[]{SiderealCharacterModule.defaultTemplateType};
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_ACQUAINTANCES, SIDEREAL));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, SIDEREAL));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_ACQUAINTANCES, type));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, type));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CELESTIAL_MANSE, defaultTemplateType));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SALARY, SIDEREAL));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SALARY, type));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SAVANT, defaultTemplateType, LowerableState.Default));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, defaultTemplateType));
 
@@ -125,6 +116,6 @@ public class SiderealCharacterModule extends CharacterTypeModule {
 
   @Override
   protected ICharacterType getType() {
-	  return CharacterType.SIDEREAL;
+	  return type;
   }
 }

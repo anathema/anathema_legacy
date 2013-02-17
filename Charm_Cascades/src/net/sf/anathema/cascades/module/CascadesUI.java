@@ -1,9 +1,9 @@
 package net.sf.anathema.cascades.module;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.*;
 
 public class CascadesUI extends AbstractUI {
 

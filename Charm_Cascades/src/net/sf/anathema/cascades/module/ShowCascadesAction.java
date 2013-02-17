@@ -11,9 +11,8 @@ import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
 
-import javax.swing.Action;
-import java.awt.Component;
-import java.awt.Cursor;
+import javax.swing.*;
+import java.awt.*;
 
 public class ShowCascadesAction extends SmartAction {
 

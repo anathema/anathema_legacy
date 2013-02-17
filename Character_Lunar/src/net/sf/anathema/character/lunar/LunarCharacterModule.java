@@ -13,8 +13,8 @@ import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackground
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.generic.type.LunarCharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformModelFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformPersisterFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
@@ -35,27 +35,26 @@ import net.sf.anathema.lib.util.Identificate;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.sf.anathema.character.generic.type.CharacterType.LUNAR;
-
 @CharacterModule
 public class LunarCharacterModule extends CharacterTypeModule {
 
+  public static final ICharacterType type = new LunarCharacterType();
   public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_REPUTATION = "Reputation"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SOLAR_BOND = "SolarBond"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_TATTOO_ARTIFACT = "TattooArtifact"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_TABOO = "Taboo"; //$NON-NLS-1$
 
-  private static final TemplateType castelessType = new TemplateType(LUNAR,
+  private static final TemplateType castelessType = new TemplateType(type,
           new Identificate("Casteless")); //$NON-NLS-1$
-  private static final TemplateType dreamsType = new TemplateType(LUNAR, new Identificate("Dreams")); //$NON-NLS-1$
-  private static final TemplateType dreamsEstablished = new TemplateType(LUNAR,
+  private static final TemplateType dreamsType = new TemplateType(type, new Identificate("Dreams")); //$NON-NLS-1$
+  private static final TemplateType dreamsEstablished = new TemplateType(type,
           new Identificate("DreamsEstablished")); //$NON-NLS-1$
-  private static final TemplateType dreamsInfluential = new TemplateType(LUNAR,
+  private static final TemplateType dreamsInfluential = new TemplateType(type,
           new Identificate("DreamsInfluential")); //$NON-NLS-1$
-  private static final TemplateType dreamsLegendary = new TemplateType(LUNAR,
+  private static final TemplateType dreamsLegendary = new TemplateType(type,
           new Identificate("DreamsLegendary")); //$NON-NLS-1$
-  private static final TemplateType silverpact = new TemplateType(LUNAR); //$NON-NLS-1$
+  private static final TemplateType silverpact = new TemplateType(type); //$NON-NLS-1$
 
   private static final TemplateType[] dreams = {dreamsType, dreamsEstablished, dreamsInfluential, dreamsLegendary};
   private static final TemplateType[] allButCasteless = {silverpact, dreamsType, dreamsEstablished, dreamsInfluential, dreamsLegendary};
@@ -82,16 +81,16 @@ public class LunarCharacterModule extends CharacterTypeModule {
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<>();
     templateMap.put(castelessType, new ICasteType[]{});
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());
-    characterGenerics.getCasteCollectionRegistry().register(LUNAR,
+    characterGenerics.getCasteCollectionRegistry().register(type,
             new CasteCollection(LunarCaste.values(), templateMap));
   }
 
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD, LUNAR));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SOLAR_BOND, LUNAR));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, LUNAR));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD, type));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SOLAR_BOND, type));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, type));
     backgroundRegistry.add(
             new TemplateTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, allButCasteless));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, castelessType));
@@ -148,6 +147,6 @@ public class LunarCharacterModule extends CharacterTypeModule {
 
   @Override
   protected ICharacterType getType() {
-	  return CharacterType.LUNAR;
+	  return type;
   }
 }

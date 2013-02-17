@@ -21,7 +21,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.Icon;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -129,12 +129,6 @@ public class GhostFettersPresenter implements Presenter {
     freeFetterView.setAlotment(model.getFreeDotAllotment());
     bonusView.setValue(model.getBonusPointsSpent());
     experienceView.setValue(model.getXPSpent());
-  }
-
-  protected void removeFetterView(Fetter fetter) {
-    IFetterView view = viewsByFetter.get(fetter);
-    viewsByFetter.remove(fetter);
-    view.delete();
   }
 
   private void updateFetterViewButtons() {

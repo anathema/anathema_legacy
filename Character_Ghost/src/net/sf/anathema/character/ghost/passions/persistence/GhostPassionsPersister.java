@@ -1,7 +1,5 @@
 package net.sf.anathema.character.ghost.passions.persistence;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -11,8 +9,9 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.List;
 
 public class GhostPassionsPersister implements IAdditionalPersister {
 

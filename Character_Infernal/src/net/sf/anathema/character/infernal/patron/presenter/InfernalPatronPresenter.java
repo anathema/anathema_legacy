@@ -3,7 +3,7 @@ package net.sf.anathema.character.infernal.patron.presenter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.infernal.InfernalCharacterModule;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
@@ -45,7 +45,7 @@ public class InfernalPatronPresenter implements Presenter {
     final ILabelledAlotmentView favoredView = overview.addAlotmentView(
         resources.getString("Infernal.Overview.FavoredYozis"), 1); //$NON-NLS-1$
     IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
-            CharacterType.INFERNAL);
+            InfernalCharacterModule.type);
     view.startGroup(resources.getString("Yozis.Yozis")); //$NON-NLS-1$
     for (final IFavorableDefaultTrait yozi : model.getAllYozis()) {
         String yoziName = resources.getString(yozi.getType().getId()); //$NON-NLS-1$

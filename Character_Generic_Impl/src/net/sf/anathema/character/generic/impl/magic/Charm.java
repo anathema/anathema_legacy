@@ -237,10 +237,8 @@ public class Charm extends Identificate implements ICharm {
         id = split[0] + "." + split[1] + "." + split[4];
         requiredSubeffects.add(parentId);
       }
-
       Charm parentCharm = charmsById.get(id);
-      Preconditions.checkNotNull(parentCharm,
-              "Parent Charm " + id + " not defined for " + getId()); //$NON-NLS-1$//$NON-NLS-2$
+      Preconditions.checkNotNull(parentCharm, "Parent Charm " + id + " not defined for " + getId());
       parentCharms.add(parentCharm);
       parentCharm.addChild(this);
     }

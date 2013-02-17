@@ -8,9 +8,7 @@ import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class CharmCascadeModuleView extends AbstractItemView implements ICascadeViewFactory {
   private final JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill().insets("2")));

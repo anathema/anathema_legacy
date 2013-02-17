@@ -1,13 +1,11 @@
-package net.sf.anathema.character.generic.dummy;
+package net.sf.anathema.character.generic.type;
 
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.generic.type.ICharacterTypeVisitor;
 
-public class DummyExaltCharacterType implements ICharacterType {
+public class AbyssalCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
-    //nothing to do
+    visitor.visitAbyssal(this);
   }
 
   @Override
@@ -32,6 +30,14 @@ public class DummyExaltCharacterType implements ICharacterType {
 
   @Override
   public String getId() {
-    return "Dummy";
+    return "Abyssal";
+  }
+
+  public boolean equals(Object other) {
+    return other instanceof AbyssalCharacterType;
+  }
+
+  public int hashCode() {
+    return 4;
   }
 }

@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
@@ -91,12 +91,12 @@ public class SiderealSteps {
 
   private ICharacterTemplate loadDefaultTemplateForType(String type) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
-    return generics.getTemplateRegistry().getDefaultTemplate(CharacterType.getById(type));
+    return generics.getTemplateRegistry().getDefaultTemplate(CharacterTypes.findById(type));
   }
 
   private ICharacterTemplate loadTemplateForType(String type, String subtype) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
-    return generics.getTemplateRegistry().getTemplate(new TemplateType(CharacterType.getById(type), new Identificate(subtype)));
+    return generics.getTemplateRegistry().getTemplate(new TemplateType(CharacterTypes.findById(type), new Identificate(subtype)));
   }
 
     private ICharacter createCharacter(ICharacterTemplate template) {

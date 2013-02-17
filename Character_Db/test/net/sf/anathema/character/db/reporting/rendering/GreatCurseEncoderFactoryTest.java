@@ -1,10 +1,10 @@
 package net.sf.anathema.character.db.reporting.rendering;
 
+import net.sf.anathema.character.db.DbCharacterModule;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import org.junit.Before;
 import org.junit.Test;
 
-import static net.sf.anathema.character.generic.type.CharacterType.DB;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
@@ -22,7 +22,7 @@ public class GreatCurseEncoderFactoryTest {
   @Test
   public void activatesForSecondEditionCharacters() throws Exception {
     BasicContent content = mock(BasicContent.class);
-    when(content.isOfType(DB)).thenReturn(true);
+    when(content.isOfType(DbCharacterModule.type)).thenReturn(true);
     boolean supports = factory.supports(content);
     assertThat(supports, is(true));
   }

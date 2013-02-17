@@ -1,6 +1,5 @@
 package net.sf.anathema.character.db;
 
-import static net.sf.anathema.character.generic.type.CharacterType.DB;
 import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
@@ -19,7 +18,7 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.DbCharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.virtueflaw.persistence.DefaultVirtueFlawPersisterFactory;
 import net.sf.anathema.initialization.InitializationException;
@@ -30,6 +29,7 @@ import net.sf.anathema.lib.util.Identificate;
 @CharacterModule
 public class DbCharacterModule extends CharacterTypeModule {
 
+  public static final ICharacterType type = new DbCharacterType();
   public static final String BACKGROUND_ID_ARSENAL = "Arsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_BREEDING = "Breeding"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_FAMILY = "Family"; //$NON-NLS-1$
@@ -41,18 +41,18 @@ public class DbCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_PANOPLY = "DBDreamsPanoply"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SAVANT = "DBDreamsSavant"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SIFU = "DBDreamsSifu"; //$NON-NLS-1$
-  private static final TemplateType dynastTemplateType = new TemplateType(DB);
-  private static final TemplateType lookshyNativeTemplateType = new TemplateType(DB,
+  private static final TemplateType dynastTemplateType = new TemplateType(type);
+  private static final TemplateType lookshyNativeTemplateType = new TemplateType(type,
           new Identificate("LookshySubtype")); //$NON-NLS-1$
-  private static final TemplateType lookshyOutcasteTemplateType = new TemplateType(DB,
+  private static final TemplateType lookshyOutcasteTemplateType = new TemplateType(type,
           new Identificate("LookshyOutcasteSubtype")); //$NON-NLS-1$
-  private static final TemplateType lookshyRealmTemplateType = new TemplateType(DB,
+  private static final TemplateType lookshyRealmTemplateType = new TemplateType(type,
           new Identificate("LookshyRealmSubtype")); //$NON-NLS-1$
-  private static final TemplateType cherakiTemplateType = new TemplateType(DB,
+  private static final TemplateType cherakiTemplateType = new TemplateType(type,
           new Identificate("Cherak")); //$NON-NLS-1$
-  private static final TemplateType immaculateTemplateType = new TemplateType(DB,
+  private static final TemplateType immaculateTemplateType = new TemplateType(type,
           new Identificate("ImmaculateSubtype")); //$NON-NLS-1$
-  private static final TemplateType dreamsTemplateType = new TemplateType(DB,
+  private static final TemplateType dreamsTemplateType = new TemplateType(type,
           new Identificate("DreamsSubtype")); //$NON-NLS-1$
   private static final TemplateType[] dreams = {dreamsTemplateType};
 
@@ -60,21 +60,21 @@ public class DbCharacterModule extends CharacterTypeModule {
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getAdditionalTemplateParserRegistry().register(DbVirtueFlawTemplate.TEMPLATE_ID,
             new DbVirtueFlawParser());
-    characterGenerics.getCasteCollectionRegistry().register(DB, new CasteCollection(DBAspect.values()));
+    characterGenerics.getCasteCollectionRegistry().register(type, new CasteCollection(DBAspect.values()));
   }
 
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    IBackgroundTemplate breedingTemplate = new CharacterTypeBackgroundTemplate(BACKGROUND_ID_BREEDING, DB,
+    IBackgroundTemplate breedingTemplate = new CharacterTypeBackgroundTemplate(BACKGROUND_ID_BREEDING, type,
             LowerableState.Immutable);
     backgroundRegistry.add(breedingTemplate);
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, DB));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, DB));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, type));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, type));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_FAMILY,
             new ITemplateType[]{dynastTemplateType, lookshyNativeTemplateType, lookshyRealmTemplateType, dreamsTemplateType}));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, DB));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, DB));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, type));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, type));
     addLookshyBackgrounds(backgroundRegistry);
 
     backgroundRegistry.add(
@@ -105,6 +105,6 @@ public class DbCharacterModule extends CharacterTypeModule {
 
   @Override
   protected ICharacterType getType() {
-	  return CharacterType.DB;
+	  return type;
   }
 }

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.lunar.reporting.rendering.anima;
 
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.lunar.LunarCharacterModule;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.anima.AbstractAnimaEncoderFactory;
@@ -17,6 +17,6 @@ public class AnimaEncoderFactory extends AbstractAnimaEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isOfType(CharacterType.LUNAR);
+    return content.isOfType(LunarCharacterModule.type);
   }
 }

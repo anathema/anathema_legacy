@@ -1,7 +1,5 @@
 package net.sf.anathema.character.ghost.fetters.persistence;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
 import net.sf.anathema.character.ghost.fetters.model.Fetter;
@@ -9,8 +7,9 @@ import net.sf.anathema.character.ghost.fetters.model.IGhostFettersModel;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.List;
 
 public class GhostFettersPersister implements IAdditionalPersister
 {

@@ -19,7 +19,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.Icon;
+import javax.swing.*;
 
 @ItemTypeConfiguration
 @Weight(weight = 0)
