@@ -1,10 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
-
-import java.util.Collection;
-import java.util.List;
-
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
@@ -12,19 +7,28 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequi
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.Collection;
+import java.util.List;
+
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
 
 public class CharmSetBuilder extends AbstractCharmSetBuilder {
 
-  private final ICharmBuilder builder = new CharmBuilder(
-      new IdStringBuilder(),
-      new TraitPrerequisitesBuilder(),
-      new AttributeRequirementBuilder(),
-      new ComboRulesBuilder(),
-      new CharmPrerequisiteBuilder());
+  private final ICharmBuilder builder;
+
+  public CharmSetBuilder(CharacterTypes characterTypes) {
+    builder = new CharmBuilder(
+        new IdStringBuilder(),
+        new TraitPrerequisitesBuilder(),
+        new AttributeRequirementBuilder(),
+        new ComboRulesBuilder(),
+        new CharmPrerequisiteBuilder(), characterTypes);
+  }
 
   @Override
   protected void buildCharms(Collection<Charm> allCharms, List<ISpecialCharm> specialCharms, Element charmListElement) throws PersistenceException {

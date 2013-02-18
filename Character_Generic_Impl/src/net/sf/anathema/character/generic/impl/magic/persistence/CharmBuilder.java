@@ -18,7 +18,7 @@ import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.type.HardcodedCharacterTypes;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -43,18 +43,20 @@ public class CharmBuilder implements ICharmBuilder {
   private final IAttributeRequirementBuilder attributeRequirementsBuilder;
   private final IComboRulesBuilder comboBuilder;
   private final ICharmPrerequisiteBuilder charmPrerequisiteBuilder;
+  private final CharacterTypes characterTypes;
 
   public CharmBuilder(
           IIdStringBuilder idBuilder,
           ITraitPrerequisitesBuilder traitsBuilder,
           IAttributeRequirementBuilder attributeRequirementsBuilder,
           IComboRulesBuilder comboBuilder,
-          ICharmPrerequisiteBuilder charmPrerequisiteBuilder) {
+          ICharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes) {
     this.idBuilder = idBuilder;
     this.traitsBuilder = traitsBuilder;
     this.attributeRequirementsBuilder = attributeRequirementsBuilder;
     this.comboBuilder = comboBuilder;
     this.charmPrerequisiteBuilder = charmPrerequisiteBuilder;
+    this.characterTypes = characterTypes;
   }
 
   @Override
@@ -128,7 +130,7 @@ public class CharmBuilder implements ICharmBuilder {
     String typeAttribute = charmElement.attributeValue(ATTRIB_EXALT);
     ICharacterType characterType;
     try {
-      characterType = new HardcodedCharacterTypes().findById(typeAttribute);
+      characterType = characterTypes.findById(typeAttribute);
     } catch (IllegalArgumentException e) {
       throw new CharmException("No chararacter type given.", e); //$NON-NLS-1$
     }

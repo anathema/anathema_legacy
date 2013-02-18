@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericI
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 
 public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, IGenericsBuilder {
 
@@ -15,12 +16,12 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, 
   private final GenericComboRulesBuilder comboBuilder;
 
   public GenericCharmBuilder(
-      GenericIdStringBuilder idBuilder,
-      GenericTraitPrerequisitesBuilder traitBuilder,
-      GenericAttributeRequirementBuilder attributeRequirementBuilder,
-      GenericComboRulesBuilder comboBuilder,
-      GenericCharmPrerequisiteBuilder charmPrerequisiteBuilder) {
-    super(idBuilder, traitBuilder, attributeRequirementBuilder, comboBuilder, charmPrerequisiteBuilder);
+          GenericIdStringBuilder idBuilder,
+          GenericTraitPrerequisitesBuilder traitBuilder,
+          GenericAttributeRequirementBuilder attributeRequirementBuilder,
+          GenericComboRulesBuilder comboBuilder,
+          GenericCharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes) {
+    super(idBuilder, traitBuilder, attributeRequirementBuilder, comboBuilder, charmPrerequisiteBuilder, characterTypes);
     this.idBuilder = idBuilder;
     this.traitBuilder = traitBuilder;
     this.attributeRequirementBuilder = attributeRequirementBuilder;

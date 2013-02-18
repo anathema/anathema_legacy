@@ -7,30 +7,27 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequi
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_CHARM;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_TRAIT;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_TRAIT_SET;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.*;
 
 public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
-  private final GenericCharmBuilder genericsBuilder = new GenericCharmBuilder(
-      new GenericIdStringBuilder(),
-      new GenericTraitPrerequisitesBuilder(),
-      new GenericAttributeRequirementBuilder(),
-      new GenericComboRulesBuilder(),
-      new GenericCharmPrerequisiteBuilder());
+  private final GenericCharmBuilder genericsBuilder;
   private ITraitType[] types;
+
+  public GenericCharmSetBuilder(CharacterTypes characterTypes) {
+    genericsBuilder = new GenericCharmBuilder(
+        new GenericIdStringBuilder(),
+        new GenericTraitPrerequisitesBuilder(),
+        new GenericAttributeRequirementBuilder(),
+        new GenericComboRulesBuilder(),
+        new GenericCharmPrerequisiteBuilder(), characterTypes);
+  }
 
   @Override
   protected void buildCharms(Collection<Charm> allCharms, List<ISpecialCharm> specialCharms, Element charmListElement) throws PersistenceException {

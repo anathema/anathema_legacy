@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.HardcodedCharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
@@ -35,13 +36,20 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   private static final String Charm_Data_Extraction_Pattern = ".*/Charms_(.*?)_(.*?)(?:_.*)?\\.xml";
   private final Map<Identified, List<Document>> charmFileTable = new HashMap<>();
   private final IIdentificateRegistry<Identified> registry = new IdentificateRegistry<>();
-  private final CharmSetBuilder setBuilder = new CharmSetBuilder();
-  private final GenericCharmSetBuilder genericBuilder = new GenericCharmSetBuilder();
   private final CharmAlternativeBuilder alternativeBuilder = new CharmAlternativeBuilder();
   private final CharmMergedBuilder mergedBuilder = new CharmMergedBuilder();
   private final CharmRenameBuilder renameBuilder = new CharmRenameBuilder();
   private final SAXReader reader = new SAXReader();
   private final CharmCache charmCache = new CharmCache();
+  private final CharacterTypes characterTypes;
+  private final CharmSetBuilder setBuilder;
+  private final GenericCharmSetBuilder genericBuilder;
+
+  public CharmCompiler() {
+    this.characterTypes = new HardcodedCharacterTypes();
+    setBuilder = new CharmSetBuilder(characterTypes);
+    genericBuilder = new GenericCharmSetBuilder(characterTypes);
+  }
 
   @Override
   public String getName() {
@@ -94,7 +102,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 
   private void buildGenericCharms(Identified type) throws PersistenceException {
     try {
-      ICharacterType characterType = new HardcodedCharacterTypes().findById(type.getId());
+      ICharacterType characterType = characterTypes.findById(type.getId());
       ITraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypes();
       genericBuilder.setTypes(primaryTypes);
       buildCharms(type, genericBuilder);
