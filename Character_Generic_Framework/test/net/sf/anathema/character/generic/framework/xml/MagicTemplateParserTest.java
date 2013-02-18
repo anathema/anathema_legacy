@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.xml;
 
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
+import net.sf.anathema.character.generic.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.generic.dummy.magic.DummyMartialArtsRules;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
@@ -10,7 +11,6 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.character.generic.type.HardcodedCharacterTypes;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
 import net.sf.anathema.lib.util.Identified;
@@ -35,7 +35,7 @@ public class MagicTemplateParserTest {
   @Before
   public void setUp() throws Exception {
     DummyXmlTemplateRegistry<GenericMagicTemplate> templateRegistry = new DummyXmlTemplateRegistry<>();
-    parser = new GenericMagicTemplateParser(templateRegistry, null, null, new HardcodedCharacterTypes());
+    parser = new GenericMagicTemplateParser(templateRegistry, null, null, new DummyCharacterTypes());
   }
 
   @Test

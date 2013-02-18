@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.xml;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.generic.dummy.DummyGenericTraitCollection;
 import net.sf.anathema.character.generic.dummy.DummyMagicCollection;
 import net.sf.anathema.character.generic.dummy.magic.DummySpell;
@@ -16,7 +17,7 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
-import net.sf.anathema.character.generic.type.HardcodedCharacterTypes;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
@@ -29,7 +30,7 @@ public class AdditionalRulesTemplateParserTest {
 
   private static final String ORIGINAL_TEMPLATE_ID = "original"; //$NON-NLS-1$
   private DummyXmlTemplateRegistry<GenericAdditionalRules> registry;
-  private final HardcodedCharacterTypes characterTypes = new HardcodedCharacterTypes();
+  private final CharacterTypes characterTypes = new DummyCharacterTypes();
   private AdditionalRulesTemplateParser parser;
 
   @Before

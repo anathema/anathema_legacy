@@ -1,5 +1,6 @@
 package net.sf.anathema.cascades.presenter;
 
+import net.sf.anathema.character.generic.dummy.DummyCharacterTypes;
 import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;

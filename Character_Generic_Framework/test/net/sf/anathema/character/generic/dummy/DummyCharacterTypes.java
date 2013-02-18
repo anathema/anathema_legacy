@@ -1,4 +1,4 @@
-package net.sf.anathema.cascades.presenter;
+package net.sf.anathema.character.generic.dummy;
 
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
