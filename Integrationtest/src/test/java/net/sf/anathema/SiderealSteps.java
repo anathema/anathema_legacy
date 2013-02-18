@@ -28,6 +28,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SiderealSteps {
+  private CharacterTypes characterTypes;
   private IAnathemaModel model;
   private ICharacter character;
 
@@ -35,6 +36,7 @@ public class SiderealSteps {
   public void startAnathema() {
     TestInitializer initializer = new TestInitializer();
     this.model = initializer.initialize();
+    this.characterTypes = CharacterGenericsExtractor.getGenerics(model).getCharacterTypes();
   }
 
   @When("^I create a new default (.*)$")
@@ -58,30 +60,30 @@ public class SiderealSteps {
 
   @When("^she has the background (.*) at (\\d+)$")
   public void she_has_the_background_at(String name, int value) throws Throwable {
-      IBackground background = character.getTraitConfiguration().getBackgrounds().addBackground(name, "");
-      background.setCreationValue(value);
+    IBackground background = character.getTraitConfiguration().getBackgrounds().addBackground(name, "");
+    background.setCreationValue(value);
   }
 
   @Then("^she has spent (\\d+) bonus points$")
   public void she_has_spent_bonus_points(int amount) throws Throwable {
-      BonusPointManagement bonusPointManagement = calculateBonusPoints();
-      int spentBonusPoints = bonusPointManagement.getBackgroundModel().getSpentBonusPoints();
-      assertThat(spentBonusPoints, is(amount));
+    BonusPointManagement bonusPointManagement = calculateBonusPoints();
+    int spentBonusPoints = bonusPointManagement.getBackgroundModel().getSpentBonusPoints();
+    assertThat(spentBonusPoints, is(amount));
   }
 
-    @Then("^she has (\\d+) favored dots spent.$")
+  @Then("^she has (\\d+) favored dots spent.$")
   public void she_has_favored_dots_spent(int amount) throws Throwable {
     BonusPointManagement bonusPointManagement = calculateBonusPoints();
     Integer dotsSpent = bonusPointManagement.getFavoredAbilityModel().getValue();
     assertThat(dotsSpent, is(amount));
   }
 
-    @Then("^she has (\\d+) ability dots spent.$")
-    public void she_has_ability_dots_spent(int amount) throws Throwable {
-        BonusPointManagement bonusPointManagement = calculateBonusPoints();
-        Integer dotsSpent = bonusPointManagement.getDefaultAbilityModel().getValue();
-        assertThat(dotsSpent, is(amount));
-    }
+  @Then("^she has (\\d+) ability dots spent.$")
+  public void she_has_ability_dots_spent(int amount) throws Throwable {
+    BonusPointManagement bonusPointManagement = calculateBonusPoints();
+    Integer dotsSpent = bonusPointManagement.getDefaultAbilityModel().getValue();
+    assertThat(dotsSpent, is(amount));
+  }
 
   @Then("^she has (\\d+) dots in (.*)$")
   public void she_has_dots_in_Craft(int amount, String abilityName) throws Throwable {
@@ -91,15 +93,15 @@ public class SiderealSteps {
 
   private ICharacterTemplate loadDefaultTemplateForType(String type) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
-    return generics.getTemplateRegistry().getDefaultTemplate(CharacterTypes.findById(type));
+    return generics.getTemplateRegistry().getDefaultTemplate(characterTypes.findById(type));
   }
 
   private ICharacterTemplate loadTemplateForType(String type, String subtype) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
-    return generics.getTemplateRegistry().getTemplate(new TemplateType(CharacterTypes.findById(type), new Identificate(subtype)));
+    return generics.getTemplateRegistry().getTemplate(new TemplateType(characterTypes.findById(type), new Identificate(subtype)));
   }
 
-    private ICharacter createCharacter(ICharacterTemplate template) {
+  private ICharacter createCharacter(ICharacterTemplate template) {
     CharacterStatisticsConfiguration creationRules = new CharacterStatisticsConfiguration();
     creationRules.setTemplate(template);
     IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = model.getPersisterRegistry();
@@ -108,10 +110,11 @@ public class SiderealSteps {
     IItem item = itemPersister.createNew(creationRules);
     return (ICharacter) item.getItemData();
   }
-    private BonusPointManagement calculateBonusPoints() {
-        BonusPointManagement bonusPointManagement = new BonusPointManagement(character);
-        bonusPointManagement.recalculate();
-        return bonusPointManagement;
-    }
+
+  private BonusPointManagement calculateBonusPoints() {
+    BonusPointManagement bonusPointManagement = new BonusPointManagement(character);
+    bonusPointManagement.recalculate();
+    return bonusPointManagement;
+  }
 
 }

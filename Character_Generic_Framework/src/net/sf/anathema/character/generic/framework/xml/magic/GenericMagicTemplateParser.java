@@ -45,13 +45,15 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String ATTRIB_SUB_TEMPLATE = "subTemplate";
   private final ICharacterTemplate hostTemplate;
   private final ICharmCache cache;
+  private final CharacterTypes characterTypes;
 
   public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry,
                                     ICharacterTemplate template,
-                                    ICharmCache cache) {
+                                    ICharmCache cache, CharacterTypes characterTypes) {
     super(templateRegistry);
     this.hostTemplate = template;
     this.cache = cache;
+    this.characterTypes = characterTypes;
   }
 
   @Override
@@ -136,7 +138,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     if (charmType.equals(VALUE_NONE)) {
         charmSet = new NullCharmSet();
       } else {
-        charmSet = CharmSet.createRegularCharmSet(cache, CharacterTypes.findById(charmType), uniqueCharms);
+        charmSet = CharmSet.createRegularCharmSet(cache, characterTypes.findById(charmType), uniqueCharms);
       }
     CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet,
             uniqueCharms);

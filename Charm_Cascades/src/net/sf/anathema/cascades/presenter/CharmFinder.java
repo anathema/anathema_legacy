@@ -12,10 +12,12 @@ import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.
 
 public class CharmFinder {
 
+  private CharacterTypes characterTypes;
   private final ICharmCache cache;
   private final String id;
 
-  public CharmFinder(ICharmCache cache, String id) {
+  public CharmFinder(CharacterTypes characterTypes, ICharmCache cache, String id) {
+    this.characterTypes = characterTypes;
     this.cache = cache;
     this.id = id;
   }
@@ -31,7 +33,7 @@ public class CharmFinder {
   private ICharm searchCharmByCharacterType() {
     String[] idParts = id.split("\\."); //$NON-NLS-1$
     try {
-    	ICharacterType characterTypeId = CharacterTypes.findById(idParts[0]);
+    	ICharacterType characterTypeId = characterTypes.findById(idParts[0]);
     	return findCharm(characterTypeId);
     }
     catch (IllegalArgumentException e) {

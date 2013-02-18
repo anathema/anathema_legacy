@@ -16,6 +16,7 @@ import java.util.List;
 
 public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
+  private final CharacterTypes characterTypes;
   private ICharacterType selectedType;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private ITemplateTypeAggregation selectedTemplate;
@@ -29,12 +30,13 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     this.configuration = configuration;
     this.types = collectCharacterTypes(generics.getTemplateRegistry());
     aggregateTemplates();
-    setCharacterType(CharacterTypes.findAll()[0]);
+    this.characterTypes = generics.getCharacterTypes();
+    setCharacterType(characterTypes.findAll()[0]);
   }
 
   private ICharacterType[] collectCharacterTypes(ITemplateRegistry registry) {
     List<ICharacterType> availableTypes = new ArrayList<>();
-    for (ICharacterType type : CharacterTypes.findAll()) {
+    for (ICharacterType type : characterTypes.findAll()) {
       if (registry.getAllSupportedTemplates(type).length > 0) {
         availableTypes.add(type);
       }
@@ -44,7 +46,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private void aggregateTemplates() {
     TemplateTypeAggregator aggregator = new TemplateTypeAggregator(generics.getTemplateRegistry());
-    for (ICharacterType type : CharacterTypes.findAll()) {
+    for (ICharacterType type : characterTypes.findAll()) {
       ITemplateTypeAggregation[] aggregations = aggregator.aggregateTemplates(type);
       if (aggregations.length == 0) {
         continue;

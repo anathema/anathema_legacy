@@ -40,40 +40,40 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     // Nothing to do
   }
-  
+
   protected final void registerParsedTemplate(ICharacterGenerics generics, String id, String prefix) {
-	  ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
-	  IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = generics.getAdditionalTemplateParserRegistry();
-	  new CharacterTemplateParser(characterTemplateRegistries,
-			  generics.getCasteCollectionRegistry(),
-			  generics.getCharmProvider(),
-			  generics.getDataSet(ICharmCache.class),
-			  generics.getBackgroundRegistry(),
-			  additionalTemplateParserRegistry);
-	  try {
-	      GenericCharacterTemplate template = characterTemplateRegistries.getCharacterTemplateRegistry().get(id, prefix);
-	      generics.getTemplateRegistry().register(template);
-	  } catch (PersistenceException e) {
-	      Logger.getLogger(CharacterModuleAdapter.class).error(id, e);
-	  }
+    ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
+    IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = generics.getAdditionalTemplateParserRegistry();
+    new CharacterTemplateParser(generics.getCharacterTypes(), characterTemplateRegistries,
+            generics.getCasteCollectionRegistry(),
+            generics.getCharmProvider(),
+            generics.getDataSet(ICharmCache.class),
+            generics.getBackgroundRegistry(),
+            additionalTemplateParserRegistry);
+    try {
+      GenericCharacterTemplate template = characterTemplateRegistries.getCharacterTemplateRegistry().get(id, prefix);
+      generics.getTemplateRegistry().register(template);
+    } catch (PersistenceException e) {
+      Logger.getLogger(CharacterModuleAdapter.class).error(id, e);
+    }
   }
-  
+
   protected final GenericCharacterTemplate registerParsedTemplate(ICharacterGenerics generics, ResourceFile resource) {
-	  ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
-	  IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = generics.getAdditionalTemplateParserRegistry();
-	  new CharacterTemplateParser(characterTemplateRegistries,
-			  generics.getCasteCollectionRegistry(),
-			  generics.getCharmProvider(),
-			  generics.getDataSet(ICharmCache.class),
-			  generics.getBackgroundRegistry(),
-			  additionalTemplateParserRegistry);
-	  try {
-	      GenericCharacterTemplate template = characterTemplateRegistries.getCharacterTemplateRegistry().get(resource);
-	      generics.getTemplateRegistry().register(template);
-	      return template;
-	  } catch (PersistenceException e) {
-	      Logger.getLogger(CharacterModuleAdapter.class).error(resource.getFileName(), e);
-	      return null;
-	  }
+    ICharacterTemplateRegistryCollection characterTemplateRegistries = generics.getCharacterTemplateRegistries();
+    IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = generics.getAdditionalTemplateParserRegistry();
+    new CharacterTemplateParser(generics.getCharacterTypes(), characterTemplateRegistries,
+            generics.getCasteCollectionRegistry(),
+            generics.getCharmProvider(),
+            generics.getDataSet(ICharmCache.class),
+            generics.getBackgroundRegistry(),
+            additionalTemplateParserRegistry);
+    try {
+      GenericCharacterTemplate template = characterTemplateRegistries.getCharacterTemplateRegistry().get(resource);
+      generics.getTemplateRegistry().register(template);
+      return template;
+    } catch (PersistenceException e) {
+      Logger.getLogger(CharacterModuleAdapter.class).error(resource.getFileName(), e);
+      return null;
+    }
   }
 }

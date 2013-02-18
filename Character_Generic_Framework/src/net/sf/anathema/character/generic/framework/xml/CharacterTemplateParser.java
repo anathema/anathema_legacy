@@ -34,6 +34,7 @@ import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllAttributeTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllYoziTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.YoziType;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -65,6 +66,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String TAG_ADDITIONAL_RULES = "additionalRules"; //$NON-NLS-1$
   private static final String TAG_NPC_ONLY = "npcOnly";
 
+  private CharacterTypes characterTypes;
   private final ICharacterTemplateRegistryCollection registryCollection;
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry;
   private final IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParserRegistry;
@@ -72,10 +74,11 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private final ICharmProvider provider;
   private final ICharmCache cache;
 
-  public CharacterTemplateParser(ICharacterTemplateRegistryCollection registryCollection, IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry,
+  public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection, IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry,
                                  ICharmProvider provider, ICharmCache cache, IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry,
                                  IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParser) {
     super(registryCollection.getCharacterTemplateRegistry());
+    this.characterTypes = characterTypes;
     this.registryCollection = registryCollection;
     this.casteCollectionRegistry = casteCollectionRegistry;
     this.provider = provider;
@@ -117,7 +120,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   }
 
   private void updateTemplateType(Element element, GenericCharacterTemplate characterTemplate) throws PersistenceException {
-    ITemplateType templateType = new TemplateTypeParser().parse(element);
+    ITemplateType templateType = new TemplateTypeParser(characterTypes).parse(element);
     characterTemplate.setTemplateType(templateType);
 
     ICasteCollection casteCollection = casteCollectionRegistry.get(templateType.getCharacterType());
@@ -168,7 +171,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     BonusPointCostTemplateParser parser = new BonusPointCostTemplateParser(registryCollection.getBonusPointTemplateRegistry(),
-                                                                           characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
+            characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
     GenericBonusPointCosts bonusPoints = parser.parseTemplate(bonusPointsElement);
     characterTemplate.setBonusPointCosts(bonusPoints);
   }
@@ -203,7 +206,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     ExperienceTemplateParser parser = new ExperienceTemplateParser(registryCollection.getExperienceTemplateRegistry(),
-                                                                   characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
+            characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
     GenericExperiencePointCosts experienceTemplate = parser.parseTemplate(experiencePointsElement);
     characterTemplate.setExperiencePointCosts(experienceTemplate);
   }
@@ -240,7 +243,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(registryCollection.getAdditionalRulesRegistry(),
-                                                                             provider.getSpecialCharms(characterTemplate.getTemplateType().getCharacterType()));
+            provider.getSpecialCharms(characterTemplate.getTemplateType().getCharacterType()), characterTypes);
     GenericAdditionalRules rules = parser.parseTemplate(element);
     characterTemplate.setAdditionalRules(rules);
   }
@@ -283,7 +286,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (magicTemplateElement == null) {
       return;
     }
-    GenericMagicTemplateParser parser = new GenericMagicTemplateParser(registryCollection.getMagicTemplateRegistry(), characterTemplate, cache);
+    GenericMagicTemplateParser parser = new GenericMagicTemplateParser(registryCollection.getMagicTemplateRegistry(), characterTemplate, cache, characterTypes);
     GenericMagicTemplate template = parser.parseTemplate(magicTemplateElement);
     characterTemplate.setMagicTemplate(template);
   }
@@ -294,7 +297,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     GenericTraitTemplateFactoryParser parser = new GenericTraitTemplateFactoryParser(registryCollection.getTraitFactoryRegistry(),
-                                                                                     registryCollection.getTraitTemplatePoolRegistry(), backgroundRegistry);
+            registryCollection.getTraitTemplatePoolRegistry(), backgroundRegistry);
     GenericTraitTemplateFactory factory = parser.parseTemplate(traitCollectionElement);
     characterTemplate.setTraitFactory(factory);
   }

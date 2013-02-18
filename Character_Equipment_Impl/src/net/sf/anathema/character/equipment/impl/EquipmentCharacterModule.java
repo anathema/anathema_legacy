@@ -31,6 +31,6 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalViewFactoryRegistry().register(IEquipmentAdditionalModelTemplate.ID,
             new EquipmentAdditionalViewFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(
-            new EquipmentAdditionalModelTemplate(characterGenerics.getInstantiater()));
+            new EquipmentAdditionalModelTemplate(characterGenerics.getCharacterTypes(), characterGenerics.getInstantiater()));
   }
 }

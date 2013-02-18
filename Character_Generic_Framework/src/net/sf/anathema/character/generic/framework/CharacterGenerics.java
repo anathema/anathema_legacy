@@ -18,6 +18,8 @@ import net.sf.anathema.character.generic.impl.template.magic.CharmProvider;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
+import net.sf.anathema.character.generic.type.CharacterTypes;
+import net.sf.anathema.character.generic.type.HardcodedCharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
@@ -103,6 +105,11 @@ public class CharacterGenerics implements ICharacterGenerics {
   @Override
   public Instantiater getInstantiater() {
     return instantiater;
+  }
+
+  @Override
+  public CharacterTypes getCharacterTypes() {
+    return new HardcodedCharacterTypes();
   }
 
   @Override

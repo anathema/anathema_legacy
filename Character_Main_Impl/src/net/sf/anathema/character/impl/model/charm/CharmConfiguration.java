@@ -61,6 +61,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       return getGroup(charm);
     }
   };
+  private final CharacterTypes characterTypes;
   private ILearningCharmGroup[] martialArtsGroups;
   private final ICharacterModelContext context;
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
@@ -69,7 +70,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private List<ICharmFilter> filterSet = new ArrayList<>();
   private PrerequisiteModifyingCharms prerequisiteModifyingCharms;
 
-  public CharmConfiguration(IHealthConfiguration health, ICharacterModelContext context, ITemplateRegistry registry,
+  public CharmConfiguration(IHealthConfiguration health, ICharacterModelContext context, CharacterTypes characterTypes, ITemplateRegistry registry,
                             ICharmProvider provider) {
     this.manager = new SpecialCharmManager(this, health, context);
     this.context = context;
@@ -84,10 +85,11 @@ public class CharmConfiguration implements ICharmConfiguration {
     initAlienTypes(registry, allCharacterTypes);
     initUniqueTypes(nativeCharmTemplate);
     initSpecialCharmConfigurations();
-    types = allCharacterTypes.toArray(new ICharacterType[allCharacterTypes.size()]);
+    this.types = allCharacterTypes.toArray(new ICharacterType[allCharacterTypes.size()]);
     filterSet.add(new ObtainableCharmFilter(this));
     filterSet.add(new CharacterSourceBookFilter(this));
     filterSet.add(new EssenceLevelCharmFilter());
+    this.characterTypes = characterTypes;
   }
 
   private ICharmTemplate getNativeCharmTemplate(ITemplateRegistry registry) {
@@ -338,7 +340,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private void initAlienTypes(ITemplateRegistry registry, List<ICharacterType> characterTypes) {
-    for (ICharacterType type : CharacterTypes.findAll()) {
+    for (ICharacterType type : this.characterTypes.findAll()) {
       if (characterTypes.contains(type)) {
         continue;
       }
@@ -370,8 +372,12 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public ILearningCharmGroup getGroup(String characterTypeId, String groupName) {
-    ICharacterType characterType = characterTypeId == null ? getNativeCharacterType() : CharacterTypes.findById(
-            characterTypeId);
+    ICharacterType characterType;
+    if (characterTypeId == null) {
+      characterType = getNativeCharacterType();
+    } else {
+      characterType = characterTypes.findById(characterTypeId);
+    }
     return getGroupById(characterType, groupName);
   }
 

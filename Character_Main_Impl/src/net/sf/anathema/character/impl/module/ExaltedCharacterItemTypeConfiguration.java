@@ -35,7 +35,7 @@ import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.Icon;
+import javax.swing.*;
 
 @ItemTypeConfiguration
 @Weight(weight = 0)
@@ -98,7 +98,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
     CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, resources);
     IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();
     IRepositoryFileResolver fileResolver = anathemaModel.getRepository().getRepositoryFileResolver();
-    CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(casteCollectionIRegistry, fileResolver);
+    CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(generics.getCharacterTypes(), casteCollectionIRegistry, fileResolver);
     return new CharacterViewProperties(getItemType(), resources, factory, scanner);
   }
 }

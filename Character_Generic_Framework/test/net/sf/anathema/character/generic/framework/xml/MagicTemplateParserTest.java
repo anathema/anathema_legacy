@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.character.generic.type.HardcodedCharacterTypes;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
 import net.sf.anathema.lib.util.Identified;
@@ -19,9 +20,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class MagicTemplateParserTest {
 
@@ -36,7 +35,7 @@ public class MagicTemplateParserTest {
   @Before
   public void setUp() throws Exception {
     DummyXmlTemplateRegistry<GenericMagicTemplate> templateRegistry = new DummyXmlTemplateRegistry<>();
-    parser = new GenericMagicTemplateParser(templateRegistry, null, null);
+    parser = new GenericMagicTemplateParser(templateRegistry, null, null, new HardcodedCharacterTypes());
   }
 
   @Test

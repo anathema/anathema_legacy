@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
+import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
@@ -10,12 +11,12 @@ import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTem
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 
 public interface ICharacterGenerics {
 
@@ -46,4 +47,6 @@ public interface ICharacterGenerics {
   <T extends IExtensibleDataSet> T getDataSet(Class<T> set);
 
   Instantiater getInstantiater();
+
+  CharacterTypes getCharacterTypes();
 }

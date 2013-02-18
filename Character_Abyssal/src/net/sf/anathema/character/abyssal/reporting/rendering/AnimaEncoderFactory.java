@@ -1,6 +1,6 @@
 package net.sf.anathema.character.abyssal.reporting.rendering;
 
-import net.sf.anathema.character.generic.type.CharacterTypes;
+import net.sf.anathema.character.abyssal.AbyssalCharacterModule;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.anima.AnimaTableStealthProvider;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
@@ -19,6 +19,6 @@ public class AnimaEncoderFactory extends AbstractAnimaEncoderFactory {
 
   @Override
   public boolean supports(BasicContent content) {
-    return content.isOfType(CharacterTypes.findById("Abyssal"));
+    return content.isOfType(AbyssalCharacterModule.type);
   }
 }

@@ -31,7 +31,7 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
   public ICharm getCharmById(String id) {
     ICharm charm = treeIdentificateMap.get(type).getCharmById(id);
     if (charm == null) {
-      CharmFinder charmFinder = new CharmFinder(cache, id);
+      CharmFinder charmFinder = new CharmFinder(generics.getCharacterTypes(), cache, id);
       charm = charmFinder.find();
     }
     return charm;

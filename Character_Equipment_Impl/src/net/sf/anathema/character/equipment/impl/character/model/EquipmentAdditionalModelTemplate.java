@@ -17,10 +17,12 @@ public class EquipmentAdditionalModelTemplate extends Identificate implements
         IGlobalAdditionalTemplate,
         IEquipmentAdditionalModelTemplate {
 
+  private CharacterTypes characterTypes;
   private Instantiater instantiater;
 
-  public EquipmentAdditionalModelTemplate(Instantiater instantiater) {
+  public EquipmentAdditionalModelTemplate(CharacterTypes characterTypes, Instantiater instantiater) {
     super(ID);
+    this.characterTypes = characterTypes;
     this.instantiater = instantiater;
   }
 
@@ -29,7 +31,7 @@ public class EquipmentAdditionalModelTemplate extends Identificate implements
     Collection<IEquipmentTemplate> templates = gatherTemplates();
     for (IEquipmentTemplate template : templates) {
       String applicableType = template.getClass().getAnnotation(RegisteredNaturalWeapon.class).characterType();
-      if (CharacterTypes.findById(applicableType).equals(characterType)) {
+      if (characterTypes.findById(applicableType).equals(characterType)) {
         return template;
       }
     }

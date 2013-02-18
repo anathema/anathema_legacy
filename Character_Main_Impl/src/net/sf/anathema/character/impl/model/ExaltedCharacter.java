@@ -82,7 +82,7 @@ public class ExaltedCharacter implements ICharacter {
     new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
     this.health = new HealthConfiguration(getTraitArray(template.getToughnessControllingTraitTypes()), traitConfiguration,
             template.getBaseHealthProviders());
-    this.charms = new CharmConfiguration(health, context, generics.getTemplateRegistry(), generics.getCharmProvider());
+    this.charms = new CharmConfiguration(health, context, generics.getCharacterTypes(), generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);
     this.essencePool = new EssencePoolConfiguration(template.getEssenceTemplate(), template.getAdditionalRules(), context);
     charms.initListening();

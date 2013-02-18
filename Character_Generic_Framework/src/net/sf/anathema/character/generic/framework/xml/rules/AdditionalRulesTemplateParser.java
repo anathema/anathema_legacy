@@ -61,12 +61,14 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_REVISED_INTIMACIES = "revisedIntimacies";
   private static final String TAG_WILLPOWER_VIRTUE_BASED = "willpowerVirtueBased";
   private final ISpecialCharm[] charms;
+  private final CharacterTypes characterTypes;
 
   public AdditionalRulesTemplateParser(
-      IXmlTemplateRegistry<GenericAdditionalRules> registry,
-      ISpecialCharm[] charms) {
+          IXmlTemplateRegistry<GenericAdditionalRules> registry,
+          ISpecialCharm[] charms, CharacterTypes characterTypes) {
     super(registry);
     this.charms = charms;
+    this.characterTypes = characterTypes;
   }
 
   @Override
@@ -88,7 +90,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   }
 
   private void setAdditionalTraitCosts(Element element, GenericAdditionalRules basicTemplate)
-      throws PersistenceException {
+          throws PersistenceException {
     Element additionalCostElement = element.element(TAG_ADDITIONAL_COST);
     if (additionalCostElement == null) {
       return;
@@ -130,7 +132,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   }
 
   private void setAdditionalMagicPools(Element element, GenericAdditionalRules basicTemplate)
-      throws PersistenceException {
+          throws PersistenceException {
     Element additionalMagicElement = element.element(TAG_ADDITIONAL_MAGIC);
     if (additionalMagicElement == null) {
       return;
@@ -149,7 +151,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   }
 
   private void setAdditionalEssencePools(Element element, GenericAdditionalRules basicTemplate)
-      throws PersistenceException {
+          throws PersistenceException {
     Element additionalPoolsElement = element.element(TAG_ADDITIONAL_POOLS);
     if (additionalPoolsElement == null) {
       return;
@@ -163,10 +165,9 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       if (charmReference != null) {
         DummyCharm charm = new DummyCharm(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_ID));
         charm.setGroupId(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_GROUP));
-        charm.setCharacterType(CharacterTypes.findById(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_TYPE)));
+        charm.setCharacterType(characterTypes.findById(ElementUtilities.getRequiredAttrib(charmReference, ATTRIB_TYPE)));
         pools.add(new LearnableCharmPool(charm, personalPool, peripheralPool, complexPools));
-      }
-      else {
+      } else {
         throw new ContractFailedException("CharmReference required."); //$NON-NLS-1$
       }
     }
@@ -187,12 +188,10 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
           throw new ContractFailedException("No such multi-learnable Charm found."); //$NON-NLS-1$
         }
         pools.add(new MultiLearnableCharmPool((IMultiLearnableCharm) charm, personalPool, peripheralPool, complexPools));
-      }
-      else if (multiPool.element(TAG_BACKGROUND_REFERENCE) != null) {
-    	boolean modifiesBase = ElementUtilities.getBooleanAttribute(multiPool, ATTRIB_MODIFIES_BASE, false);
+      } else if (multiPool.element(TAG_BACKGROUND_REFERENCE) != null) {
+        boolean modifiesBase = ElementUtilities.getBooleanAttribute(multiPool, ATTRIB_MODIFIES_BASE, false);
         pools.add(new BackgroundPool(getBackgroundTemplate(multiPool), personalPool, peripheralPool, complexPools, modifiesBase));
-      }
-      else {
+      } else {
         throw new ContractFailedException("Either CharmReference or BackgroundReference required."); //$NON-NLS-1$
       }
     }
@@ -200,11 +199,11 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   }
 
   private String getBackgroundId(Element parent) throws PersistenceException {
-	  return ElementUtilities.getRequiredAttrib(parent.element(TAG_BACKGROUND_REFERENCE), ATTRIB_ID);
+    return ElementUtilities.getRequiredAttrib(parent.element(TAG_BACKGROUND_REFERENCE), ATTRIB_ID);
   }
-  
+
   private IBackgroundTemplate getBackgroundTemplate(Element parent) throws PersistenceException {
-	  return new SimpleBackgroundTemplate(getBackgroundId(parent));
+    return new SimpleBackgroundTemplate(getBackgroundId(parent));
   }
 
   private AdditionalEssencePool parsePool(Element parent, String elementName) throws PersistenceException {
@@ -226,17 +225,16 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     List<ComplexAdditionalEssencePool> complexPools = new ArrayList<>();
     for (Object poolObject : parent.elements(elementName)) {
       Element poolElement = (Element) poolObject;
-      
+
       String poolID = ElementUtilities.getRequiredAttrib(poolElement, ATTRIB_ID);
       int multiplier = ElementUtilities.getIntAttrib(poolElement, ATTRIB_MULTIPLIER, Integer.MIN_VALUE);
-      
+
       try {
         ComplexAdditionalEssencePool pool;
         if (multiplier == Integer.MIN_VALUE) {
           pool = new ComplexAdditionalEssencePool(poolID,
-                                                  ElementUtilities.getRequiredAttrib(poolElement, ATTRIB_FORMULA)); 
-        }
-        else {
+                  ElementUtilities.getRequiredAttrib(poolElement, ATTRIB_FORMULA));
+        } else {
           pool = new ComplexAdditionalEssencePool(poolID, multiplier);
         }
         for (Element overrideElement : ElementUtilities.elements(poolElement, TAG_FIXED_VALUE)) {
@@ -245,8 +243,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
           pool.setFixedValue(traitValue, poolValue);
         }
         complexPools.add(pool);
-      }
-      catch (CompilationException e) {
+      } catch (CompilationException e) {
         throw new PersistenceException(e);
       }
     }

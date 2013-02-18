@@ -12,9 +12,15 @@ import org.dom4j.Element;
 
 public class TemplateTypeParser {
 
+  private CharacterTypes characterTypes;
+
+  public TemplateTypeParser(CharacterTypes characterTypes) {
+    this.characterTypes = characterTypes;
+  }
+
   public ITemplateType parse(Element element) throws PersistenceException {
     String characterTypeId = ElementUtilities.getRequiredAttrib(element, "characterType"); //$NON-NLS-1$
-    ICharacterType characterType = CharacterTypes.findById(characterTypeId);
+    ICharacterType characterType = characterTypes.findById(characterTypeId);
     String subtemplate = element.attributeValue("subtemplate"); //$NON-NLS-1$
     Identified subtemplateIdentificate = createSubtemplateIdentificate(subtemplate);
     return new TemplateType(characterType, subtemplateIdentificate);

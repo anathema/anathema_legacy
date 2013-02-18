@@ -19,12 +19,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CascadeGroupCollection implements CharmGroupCollection {
+  private final CharacterTypes characterTypes;
   private ITemplateRegistry templateRegistry;
   private CharmTreeIdentificateMap treeIdentificateMap;
 
-  public CascadeGroupCollection(ITemplateRegistry templateRegistry, CharmTreeIdentificateMap treeIdentificateMap) {
+  public CascadeGroupCollection(CharacterTypes characterTypes, ITemplateRegistry templateRegistry, CharmTreeIdentificateMap treeIdentificateMap) {
     this.templateRegistry = templateRegistry;
     this.treeIdentificateMap = treeIdentificateMap;
+    this.characterTypes = characterTypes;
   }
 
   @Override
@@ -36,7 +38,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   }
 
   private void initCharacterTypeCharms(List<ICharmGroup> allCharmGroups) {
-    for (ICharacterType type : CharacterTypes.findAll()) {
+    for (ICharacterType type : characterTypes.findAll()) {
       ICharacterTemplate template = templateRegistry.getDefaultTemplate(type);
       if (template == null) {
         continue;
@@ -50,7 +52,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   }
 
   private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups) {
-    ICharacterTemplate template = templateRegistry.getDefaultTemplate(CharacterTypes.findById("Sidereal"));
+    ICharacterTemplate template = templateRegistry.getDefaultTemplate(characterTypes.findById("Sidereal"));
     ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate());
     treeIdentificateMap.put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
     allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));

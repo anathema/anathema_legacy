@@ -14,16 +14,18 @@ import java.util.List;
 import java.util.Set;
 
 public class CascadeCharmTypes extends AbstractCharmTypes {
+  private final CharacterTypes characterTypes;
   private ITemplateRegistry templateRegistry;
 
-  public CascadeCharmTypes(ITemplateRegistry templateRegistry) {
+  public CascadeCharmTypes(CharacterTypes characterTypes, ITemplateRegistry templateRegistry) {
     this.templateRegistry = templateRegistry;
+    this.characterTypes = characterTypes;
   }
 
   @Override
   protected List<Identified> getCurrentCharacterTypes() {
     Set<Identified> set = new LinkedHashSet<>();
-    for (ICharacterType type : CharacterTypes.findAll()) {
+    for (ICharacterType type : characterTypes.findAll()) {
       ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
         continue;
@@ -38,7 +40,7 @@ public class CascadeCharmTypes extends AbstractCharmTypes {
   @Override
   protected List<Identified> getAdditionalCharmTypes() {
     Set<Identified> set = new LinkedHashSet<>();
-    for (ICharacterType type : CharacterTypes.findAll()) {
+    for (ICharacterType type : characterTypes.findAll()) {
       ICharacterTemplate defaultTemplate = templateRegistry.getDefaultTemplate(type);
       if (defaultTemplate == null) {
         continue;

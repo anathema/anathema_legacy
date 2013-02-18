@@ -33,10 +33,12 @@ public class CharacterPrintNameFileScanner {
   private final Map<PrintNameFile, Identified> castesByFile = new HashMap<>();
   private final IRegistry<ICharacterType, ICasteCollection> registry;
   private final IRepositoryFileResolver resolver;
+  private final CharacterTypes characterTypes;
 
   public CharacterPrintNameFileScanner(
-      IRegistry<ICharacterType, ICasteCollection> registry,
-      IRepositoryFileResolver repositoryFileResolver) {
+          CharacterTypes characterTypes, IRegistry<ICharacterType, ICasteCollection> registry,
+          IRepositoryFileResolver repositoryFileResolver) {
+    this.characterTypes = characterTypes;
     this.registry = registry;
     this.resolver = repositoryFileResolver;
   }
@@ -71,7 +73,7 @@ public class CharacterPrintNameFileScanner {
       throw new IllegalStateException("Missing " + TYPE_ELEMENT_NAME + " in " + file);
     }
     
-    ICharacterType characterType = CharacterTypes.findById(typeStr);
+    ICharacterType characterType = characterTypes.findById(typeStr);
     typesByFile.put(file, characterType);
     
     if (casteTypeStr == null) {
@@ -90,7 +92,7 @@ public class CharacterPrintNameFileScanner {
     Matcher typeMatcher = typePattern.matcher(content);
     ICharacterType characterType;
     typeMatcher.find();
-    characterType = CharacterTypes.findById(typeMatcher.group(1));
+    characterType = characterTypes.findById(typeMatcher.group(1));
     typesByFile.put(file, characterType);
     Matcher casteMatcher = castePattern.matcher(content);
     if (!casteMatcher.find()) {

@@ -16,20 +16,20 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
+import net.sf.anathema.character.generic.type.HardcodedCharacterTypes;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class AdditionalRulesTemplateParserTest {
 
   private static final String ORIGINAL_TEMPLATE_ID = "original"; //$NON-NLS-1$
   private DummyXmlTemplateRegistry<GenericAdditionalRules> registry;
+  private final HardcodedCharacterTypes characterTypes = new HardcodedCharacterTypes();
   private AdditionalRulesTemplateParser parser;
 
   @Before
@@ -37,7 +37,7 @@ public class AdditionalRulesTemplateParserTest {
     this.registry = new DummyXmlTemplateRegistry<>();
     GenericAdditionalRules originalTemplate = new GenericAdditionalRules();
     registry.register(ORIGINAL_TEMPLATE_ID, originalTemplate);
-    parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[0]);
+    parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[0], characterTypes);
   }
 
   @Test
@@ -69,7 +69,7 @@ public class AdditionalRulesTemplateParserTest {
     final StaticMultiLearnableCharm charm = new StaticMultiLearnableCharm("Charm", 3); //$NON-NLS-1$
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
-      new ISpecialCharm[]{charm});
+      new ISpecialCharm[]{charm}, characterTypes);
     String xml = "<rules><additionalPools><multilearnablePool><charmReference id=\"Charm\"/><personalPool multiplier=\"5\"/><peripheralPool multiplier=\"10\"/></multilearnablePool></additionalPools> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
@@ -88,7 +88,7 @@ public class AdditionalRulesTemplateParserTest {
     backgroundRegistry.add(type);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
-      new ISpecialCharm[0]);
+      new ISpecialCharm[0], characterTypes);
     String xml = "<rules><additionalPools><multilearnablePool><backgroundReference id=\"Background\"/><personalPool multiplier=\"1\"/><peripheralPool><fixedValue value=\"0\" pool=\"0\"/><fixedValue value=\"1\" pool=\"2\"/><fixedValue value=\"2\" pool=\"3\"/></peripheralPool></multilearnablePool></additionalPools> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
@@ -119,7 +119,7 @@ public class AdditionalRulesTemplateParserTest {
     backgroundRegistry.add(type);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
-      new ISpecialCharm[0]);
+      new ISpecialCharm[0], characterTypes);
     String xml = "<rules><additionalMagic><magicPool><backgroundReference id=\"Background\"/></magicPool></additionalMagic> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
@@ -141,7 +141,7 @@ public class AdditionalRulesTemplateParserTest {
     backgroundRegistry.add(type);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
-      new ISpecialCharm[0]);
+      new ISpecialCharm[0], characterTypes);
     String xml = "<rules><additionalMagic><magicPool defaultResponse=\"false\"><backgroundReference id=\"Background\"/><spellReference id=\"Expected\"/></magicPool></additionalMagic> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
@@ -164,7 +164,7 @@ public class AdditionalRulesTemplateParserTest {
     backgroundRegistry.add(type);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
-      new ISpecialCharm[0]);
+      new ISpecialCharm[0], characterTypes);
     String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><bonusModification thresholdLevel=\"1\" multiplier=\"2\"/></costModifier></additionalCost> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
@@ -179,7 +179,7 @@ public class AdditionalRulesTemplateParserTest {
     backgroundRegistry.add(type);
     AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
       registry,
-      new ISpecialCharm[0]);
+      new ISpecialCharm[0], characterTypes);
     String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><dotCostModification thresholdLevel=\"1\" multiplier=\"1\"/></costModifier></additionalCost> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);

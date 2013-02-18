@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.charms.GroupCharmTree;
 import net.sf.anathema.character.generic.magic.description.MagicDescriptionProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.charmtree.presenter.AbstractCascadePresenter;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.charmtree.presenter.view.DefaultNodeProperties;
@@ -28,11 +29,12 @@ public class CascadePresenter extends AbstractCascadePresenter implements ICasca
     ITemplateRegistry templateRegistry = generics.getTemplateRegistry();
     CascadeCharmGroupChangeListener selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties,
             filterSet, new CharmDisplayPropertiesMap(templateRegistry));
-    setCharmTypes(new CascadeCharmTypes(generics.getTemplateRegistry()));
+    CharacterTypes characterTypes = generics.getCharacterTypes();
+    setCharmTypes(new CascadeCharmTypes(characterTypes, templateRegistry));
     setChangeListener(selectionListener);
     setView(view);
     setCharmDye(new CascadeCharmDye(view, selectionListener));
-    setCharmGroups(new CascadeGroupCollection(templateRegistry, treeIdentificateMap));
+    setCharmGroups(new CascadeGroupCollection(characterTypes, templateRegistry, treeIdentificateMap));
   }
 
   @Override

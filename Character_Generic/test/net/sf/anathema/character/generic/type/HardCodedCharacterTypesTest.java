@@ -3,35 +3,35 @@ package net.sf.anathema.character.generic.type;
 import org.junit.Test;
 
 import static java.util.Arrays.asList;
-import static net.sf.anathema.character.generic.type.CharacterTypes.getAllEssenceUsers;
-import static net.sf.anathema.character.generic.type.CharacterTypes.getAllExaltTypes;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.hasItem;
 
-public class CharacterTypeTest {
+public class HardCodedCharacterTypesTest {
+
+  private HardcodedCharacterTypes characterTypes= new HardcodedCharacterTypes();
 
   @Test
   public void doesNotIncludeSpiritsInListOfAllExalts() throws Exception {
-    Iterable<ICharacterType> types = asList(getAllExaltTypes());
+    Iterable<ICharacterType> types = asList(characterTypes.getAllExaltTypes());
     assertThat(types, not(hasItem((ICharacterType) new SpiritCharacterType())));
   }
 
   @Test
   public void doesNotIncludeGhostsInListOfAllExalts() throws Exception {
-    Iterable<ICharacterType> types = asList(getAllExaltTypes());
+    Iterable<ICharacterType> types = asList(characterTypes.getAllExaltTypes());
     assertThat(types, not(hasItem((ICharacterType) new GhostCharacterType())));
   }
 
   @Test
   public void includesSpiritsAsEssenceUsers() throws Exception {
-    assertThat(getAllEssenceUsers(), hasItem((ICharacterType) new SpiritCharacterType()));
+    assertThat(characterTypes.getAllEssenceUsers(), hasItem((ICharacterType) new SpiritCharacterType()));
   }
 
   @Test
   public void includesGhostsAsEssenceUsers() throws Exception {
-    assertThat(getAllEssenceUsers(), hasItem((ICharacterType) new GhostCharacterType()));
+    assertThat(characterTypes.getAllEssenceUsers(), hasItem((ICharacterType) new GhostCharacterType()));
   }
 
   @Test
