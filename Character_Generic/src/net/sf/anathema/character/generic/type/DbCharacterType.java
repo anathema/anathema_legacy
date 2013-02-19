@@ -27,11 +27,6 @@ public class DbCharacterType implements ICharacterType {
   }
 
   @Override
-  public boolean canAttuneToMalfeanMaterials() {
-    return false;
-  }
-
-  @Override
   public String getId() {
     return "Dragon-Blooded";
   }

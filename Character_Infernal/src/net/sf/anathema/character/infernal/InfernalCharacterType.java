@@ -30,11 +30,6 @@ public class InfernalCharacterType implements ICharacterType {
   }
 
   @Override
-  public boolean canAttuneToMalfeanMaterials() {
-    return true;
-  }
-
-  @Override
   public String getId() {
     return "Infernal";
   }

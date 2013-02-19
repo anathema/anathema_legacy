@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.model;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
+import net.sf.anathema.character.equipment.CharacterMaterialRules;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -88,7 +89,7 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
   }
 
   private MagicalMaterial evaluateDefaultMaterial() {
-    MagicalMaterial defaultMaterial = MagicalMaterial.getDefault(characterType);
+    MagicalMaterial defaultMaterial = new CharacterMaterialRules().getDefault(characterType);
     if (defaultMaterial == null) {
       return MagicalMaterial.Orichalcum;
     }

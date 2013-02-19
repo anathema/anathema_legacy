@@ -12,6 +12,4 @@ public interface ICharacterType extends Identified {
   boolean isEssenceUser();
 
   FavoringTraitType getFavoringTraitType();
-
-  boolean canAttuneToMalfeanMaterials();
 }

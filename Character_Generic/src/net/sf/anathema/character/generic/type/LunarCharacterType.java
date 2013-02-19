@@ -27,11 +27,6 @@ public class LunarCharacterType implements ICharacterType {
   }
 
   @Override
-  public boolean canAttuneToMalfeanMaterials() {
-    return false;
-  }
-
-  @Override
   public String getId() {
     return "Lunar";
   }
