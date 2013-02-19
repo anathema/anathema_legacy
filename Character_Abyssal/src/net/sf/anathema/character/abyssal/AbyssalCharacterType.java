@@ -1,6 +1,9 @@
-package net.sf.anathema.character.generic.type;
+package net.sf.anathema.character.abyssal;
 
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.generic.type.ICharacterTypeVisitor;
 import net.sf.anathema.initialization.reflections.Weight;
 
 @CharacterType

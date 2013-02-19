@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.generic.type.InfernalCharacterType;
 import net.sf.anathema.character.infernal.caste.InfernalCaste;
 import net.sf.anathema.character.infernal.patron.InfernalPatronModelFactory;
 import net.sf.anathema.character.infernal.patron.InfernalPatronParser;

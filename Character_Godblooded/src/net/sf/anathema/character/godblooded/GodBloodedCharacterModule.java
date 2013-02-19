@@ -1,5 +1,6 @@
 package net.sf.anathema.character.godblooded;
 
+import net.sf.anathema.character.abyssal.AbyssalCharacterType;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
@@ -8,10 +9,14 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.*;
+import net.sf.anathema.character.generic.type.GhostCharacterType;
+import net.sf.anathema.character.generic.type.LunarCharacterType;
+import net.sf.anathema.character.generic.type.SiderealCharacterType;
+import net.sf.anathema.character.generic.type.SpiritCharacterType;
 import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceModelFactory;
 import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceParser;
 import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceTemplate;
+import net.sf.anathema.character.solar.SolarCharacterType;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.util.Identificate;

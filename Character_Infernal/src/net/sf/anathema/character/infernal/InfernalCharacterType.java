@@ -1,14 +1,17 @@
-package net.sf.anathema.character.generic.type;
+package net.sf.anathema.character.infernal;
 
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.generic.type.ICharacterTypeVisitor;
 import net.sf.anathema.initialization.reflections.Weight;
 
 @CharacterType
-@Weight(weight = 1)
-public class SolarCharacterType implements ICharacterType {
+@Weight(weight = 6)
+public class InfernalCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitSolar(this);
+    visitor.visitInfernal(this);
   }
 
   @Override
@@ -23,24 +26,24 @@ public class SolarCharacterType implements ICharacterType {
 
   @Override
   public FavoringTraitType getFavoringTraitType() {
-    return FavoringTraitType.AbilityType;
+    return FavoringTraitType.YoziType;
   }
 
   @Override
   public boolean canAttuneToMalfeanMaterials() {
-    return false;
+    return true;
   }
 
   @Override
   public String getId() {
-    return "Solar";
+    return "Infernal";
   }
 
   public boolean equals(Object other) {
-    return other instanceof SolarCharacterType;
+    return other instanceof InfernalCharacterType;
   }
 
   public int hashCode() {
-    return 1;
+    return 6;
   }
 }

@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.generic.type.SiderealCharacterType;
 import net.sf.anathema.charmtree.presenter.CharmGroupCollection;
 import net.sf.anathema.lib.util.Identified;
 
@@ -52,7 +53,7 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   }
 
   private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups) {
-    ICharacterTemplate template = templateRegistry.getDefaultTemplate(characterTypes.findById("Sidereal"));
+    ICharacterTemplate template = templateRegistry.getDefaultTemplate(new SiderealCharacterType());
     ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate());
     treeIdentificateMap.put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
     allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
