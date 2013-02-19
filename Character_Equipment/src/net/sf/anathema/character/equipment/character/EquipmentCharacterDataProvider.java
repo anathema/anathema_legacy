@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.control.IChangeListener;
 
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.*;
@@ -43,7 +44,7 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
         return new ArtifactAttuneType[0];
       case Fixed:
       case Variable:
-        return new CharacterMaterialRules().getAttunementTypes(context.getBasicCharacterContext().getCharacterType(), material);
+        return new CharacterMaterialRules().getAttunementTypes(getCharacterType(), material);
       case Compound:
         return new ArtifactAttuneType[]{Unattuned, ArtifactAttuneType.FullyAttuned};
       case MalfeanMaterials:
@@ -52,7 +53,7 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
   }
 
   private ArtifactAttuneType[] createMalfeanMaterialsAttunementOptions() {
-    if (new CharacterMaterialRules().canAttuneToMalfeanMaterials(context.getBasicCharacterContext().getCharacterType())) {
+    if (new CharacterMaterialRules().canAttuneToMalfeanMaterials(getCharacterType())) {
       return new ArtifactAttuneType[]{Unattuned, FullyAttuned};
     }
     return new ArtifactAttuneType[]{Unattuned, UnharmoniouslyAttuned};
@@ -61,5 +62,9 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
   @Override
   public void addCharacterSpecialtyListChangeListener(IChangeListener listener) {
     context.getSpecialtyContext().addSpecialtyListChangeListener(listener);
+  }
+
+  private ICharacterType getCharacterType() {
+    return context.getBasicCharacterContext().getCharacterType();
   }
 }
