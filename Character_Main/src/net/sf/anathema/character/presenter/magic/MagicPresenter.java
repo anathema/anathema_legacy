@@ -13,11 +13,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.presenter.magic.charm.CharacterCharmTreePresenter;
 import net.sf.anathema.character.presenter.magic.combo.ComboConfigurationModel;
 import net.sf.anathema.character.presenter.magic.combo.ComboConfigurationPresenter;
-import net.sf.anathema.character.presenter.magic.detail.MagicAndDetailPresenter;
-import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenter;
-import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenterFactory;
-import net.sf.anathema.character.presenter.magic.detail.NullMagicDetailPresenter;
-import net.sf.anathema.character.presenter.magic.detail.RegisteredMagicDetailPresenterFactory;
+import net.sf.anathema.character.presenter.magic.detail.*;
 import net.sf.anathema.character.presenter.magic.spells.SpellContentPresenter;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
@@ -89,8 +85,7 @@ public class MagicPresenter implements IContentPresenter {
   private MagicDetailPresenter createMagicDetailPresenter() {
     try {
       Instantiater instantiater = getGenerics().getInstantiater();
-      Collection<MagicDetailPresenterFactory> factories = instantiater.instantiateAll(
-              RegisteredMagicDetailPresenterFactory.class);
+      Collection<MagicDetailPresenterFactory> factories = instantiater.instantiateAll(RegisteredMagicDetailPresenterFactory.class);
       if (!factories.isEmpty()) {
         return Iterables.get(factories, 0).create(anathemaModel, resources);
       }

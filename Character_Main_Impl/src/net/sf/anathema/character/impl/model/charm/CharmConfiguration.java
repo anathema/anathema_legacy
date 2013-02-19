@@ -75,6 +75,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     this.manager = new SpecialCharmManager(this, health, context);
     this.context = context;
     this.provider = provider;
+    this.characterTypes = characterTypes;
     List<ICharacterType> allCharacterTypes = new ArrayList<>();
     ICharmTemplate nativeCharmTemplate = getNativeCharmTemplate(registry);
     this.arbitrator = new LearningCharmGroupArbitrator(nativeCharmTemplate, context);
@@ -89,7 +90,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     filterSet.add(new ObtainableCharmFilter(this));
     filterSet.add(new CharacterSourceBookFilter(this));
     filterSet.add(new EssenceLevelCharmFilter());
-    this.characterTypes = characterTypes;
   }
 
   private ICharmTemplate getNativeCharmTemplate(ITemplateRegistry registry) {
