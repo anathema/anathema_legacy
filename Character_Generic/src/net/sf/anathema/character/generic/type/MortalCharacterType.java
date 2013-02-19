@@ -1,7 +1,10 @@
 package net.sf.anathema.character.generic.type;
 
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.initialization.reflections.Weight;
 
+@CharacterType
+@Weight(weight = 9)
 public class MortalCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
@@ -38,6 +41,6 @@ public class MortalCharacterType implements ICharacterType {
   }
 
   public int hashCode() {
-    return 8;
+    return 9;
   }
 }

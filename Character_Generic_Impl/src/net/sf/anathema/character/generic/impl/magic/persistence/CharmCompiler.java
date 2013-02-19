@@ -8,9 +8,10 @@ import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
-import net.sf.anathema.character.generic.type.HardcodedCharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.generic.type.ReflectionCharacterTypes;
 import net.sf.anathema.initialization.ExtensibleDataSetCompiler;
+import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
@@ -45,10 +46,10 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   private final CharmSetBuilder setBuilder;
   private final GenericCharmSetBuilder genericBuilder;
 
-  public CharmCompiler() {
-    this.characterTypes = new HardcodedCharacterTypes();
-    setBuilder = new CharmSetBuilder(characterTypes);
-    genericBuilder = new GenericCharmSetBuilder(characterTypes);
+  public CharmCompiler(Instantiater instantiater) {
+    this.characterTypes = new ReflectionCharacterTypes(instantiater);
+    this.setBuilder = new CharmSetBuilder(characterTypes);
+    this.genericBuilder = new GenericCharmSetBuilder(characterTypes);
   }
 
   @Override

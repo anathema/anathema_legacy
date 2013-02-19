@@ -1,5 +1,7 @@
 package net.sf.anathema.character.generic.type;
 
+import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
+import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import org.junit.Test;
 
 import static java.util.Arrays.asList;
@@ -8,9 +10,9 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.hasItem;
 
-public class HardCodedCharacterTypesTest {
+public class ReflectionCharacterTypesTest {
 
-  private HardcodedCharacterTypes characterTypes= new HardcodedCharacterTypes();
+  private ReflectionCharacterTypes characterTypes= new ReflectionCharacterTypes(new ReflectionsInstantiater(new DefaultAnathemaReflections()));
 
   @Test
   public void doesNotIncludeSpiritsInListOfAllExalts() throws Exception {

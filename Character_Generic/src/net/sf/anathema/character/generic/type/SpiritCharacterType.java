@@ -1,7 +1,10 @@
 package net.sf.anathema.character.generic.type;
 
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.initialization.reflections.Weight;
 
+@CharacterType
+@Weight(weight = 7)
 public class SpiritCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {

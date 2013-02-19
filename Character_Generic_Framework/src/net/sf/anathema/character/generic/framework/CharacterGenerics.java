@@ -19,8 +19,8 @@ import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.CharacterTypes;
-import net.sf.anathema.character.generic.type.HardcodedCharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
+import net.sf.anathema.character.generic.type.ReflectionCharacterTypes;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -44,10 +44,11 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IDataFileProvider dataFileProvider;
   private final IExtensibleDataSetProvider dataSetProvider;
   private final Instantiater instantiater;
+  private final CharacterTypes characterTypes;
 
   public CharacterGenerics(IDataFileProvider dataFileProvider,
-		  Instantiater instantiater,
-		  IExtensibleDataSetProvider dataSetProvider) {
+                           Instantiater instantiater,
+                           IExtensibleDataSetProvider dataSetProvider) {
     this.instantiater = instantiater;
     this.additionalPersisterRegistry = new Registry<String, IAdditionalPersisterFactory>(
             new NullAdditionalPersisterFactory());
@@ -55,6 +56,7 @@ public class CharacterGenerics implements ICharacterGenerics {
     this.dataSetProvider = dataSetProvider;
     this.charmProvider = new CharmProvider(dataSetProvider.getDataSet(ICharmCache.class));
     this.templateRegistries = new CharacterTemplateRegistryCollection(dataSetProvider.getDataSet(ICharacterTemplateExtensionResourceCache.class));
+    this.characterTypes = new ReflectionCharacterTypes(instantiater);
   }
 
   @Override
@@ -109,7 +111,7 @@ public class CharacterGenerics implements ICharacterGenerics {
 
   @Override
   public CharacterTypes getCharacterTypes() {
-    return new HardcodedCharacterTypes();
+    return characterTypes;
   }
 
   @Override
@@ -126,9 +128,9 @@ public class CharacterGenerics implements ICharacterGenerics {
   public IDataFileProvider getDataFileProvider() {
     return dataFileProvider;
   }
-  
+
   @Override
   public <T extends IExtensibleDataSet> T getDataSet(Class<T> set) {
-	  return dataSetProvider.getDataSet(set);
+    return dataSetProvider.getDataSet(set);
   }
 }
