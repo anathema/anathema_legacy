@@ -11,7 +11,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 public class SiderealCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitSidereal(this);
+    visitor.visitSidereal();
   }
 
   @Override

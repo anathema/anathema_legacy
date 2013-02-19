@@ -11,7 +11,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 public class AbyssalCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitAbyssal(this);
+    visitor.visitAbyssal();
   }
 
   @Override

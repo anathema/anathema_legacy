@@ -8,7 +8,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 public class MortalCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitMortal(this);
+    visitor.visitMortal();
   }
 
   @Override

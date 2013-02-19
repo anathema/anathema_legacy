@@ -11,7 +11,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 public class SolarCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitSolar(this);
+    visitor.visitSolar();
   }
 
   @Override

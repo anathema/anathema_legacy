@@ -11,7 +11,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 public class InfernalCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitInfernal(this);
+    visitor.visitInfernal();
   }
 
   @Override

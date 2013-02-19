@@ -11,7 +11,7 @@ import net.sf.anathema.initialization.reflections.Weight;
 public class SpiritCharacterType implements ICharacterType {
   @Override
   public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitSpirit(this);
+    visitor.visitSpirit();
   }
 
   @Override

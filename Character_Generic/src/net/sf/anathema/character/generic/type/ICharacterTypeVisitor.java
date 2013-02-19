@@ -2,21 +2,21 @@ package net.sf.anathema.character.generic.type;
 
 public interface ICharacterTypeVisitor {
 
-  void visitSolar(ICharacterType visitedType);
+  void visitSolar();
 
-  void visitMortal(ICharacterType visitedType);
+  void visitMortal();
 
-  void visitSidereal(ICharacterType visitedType);
+  void visitSidereal();
   
-  void visitInfernal(ICharacterType visitedType);
+  void visitInfernal();
 
-  void visitDB(ICharacterType visitedType);
+  void visitDB();
 
-  void visitAbyssal(ICharacterType visitedType);
+  void visitAbyssal();
   
-  void visitSpirit(ICharacterType type);
+  void visitSpirit();
   
-  void visitGhost(ICharacterType type);
+  void visitGhost();
 
-  void visitLunar(ICharacterType type);
+  void visitLunar();
 }

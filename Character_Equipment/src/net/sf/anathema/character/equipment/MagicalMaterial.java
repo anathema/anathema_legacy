@@ -28,42 +28,42 @@ public enum MagicalMaterial implements Identified {
 
     type.accept(new ICharacterTypeVisitor() {
       @Override
-      public void visitAbyssal(ICharacterType visitedType) {
+      public void visitAbyssal() {
         types[0] = getSingleMaterialAttunement(type, material);
       }
 
       @Override
-      public void visitDB(ICharacterType visitedType) {
+      public void visitDB() {
         types[0] = getSingleMaterialAttunement(type, material);
       }
 
       @Override
-      public void visitLunar(ICharacterType type) {
+      public void visitLunar() {
         types[0] = getSingleMaterialAttunement(type, material);
       }
 
       @Override
-      public void visitInfernal(ICharacterType type) {
+      public void visitInfernal() {
         types[0] = getDefaultAttunementOptions(isVitriolTainted(material));
       }
 
       @Override
-      public void visitMortal(ICharacterType visitedType) {
+      public void visitMortal() {
         types[0] = getNullAttunementTypes();
       }
 
       @Override
-      public void visitSidereal(ICharacterType visitedType) {
+      public void visitSidereal() {
         types[0] = getSingleMaterialAttunement(type, material);
       }
 
       @Override
-      public void visitSolar(ICharacterType visitedType) {
+      public void visitSolar() {
         types[0] = getSingleMaterialAttunement(type, material);
       }
 
       @Override
-      public void visitGhost(ICharacterType type) {
+      public void visitGhost() {
         if (material == MagicalMaterial.Orichalcum ||
                 material == MagicalMaterial.Moonsilver ||
                 material == MagicalMaterial.Starmetal)
@@ -75,7 +75,7 @@ public enum MagicalMaterial implements Identified {
       }
 
       @Override
-      public void visitSpirit(ICharacterType type) {
+      public void visitSpirit() {
         types[0] = getNullAttunementTypes();
       }
     });
@@ -110,47 +110,47 @@ public enum MagicalMaterial implements Identified {
     characterType.accept(new ICharacterTypeVisitor() {
 
       @Override
-      public void visitSolar(ICharacterType visitedType) {
+      public void visitSolar() {
         material[0] = Orichalcum;
       }
 
       @Override
-      public void visitSidereal(ICharacterType visitedType) {
+      public void visitSidereal() {
         material[0] = Starmetal;
       }
 
       @Override
-      public void visitMortal(ICharacterType visitedType) {
+      public void visitMortal() {
         // nothing to do
       }
 
       @Override
-      public void visitSpirit(ICharacterType visitedType) {
+      public void visitSpirit() {
         // nothing to do
       }
 
       @Override
-      public void visitGhost(ICharacterType visitedType) {
+      public void visitGhost() {
         // nothing to do
       }
 
       @Override
-      public void visitLunar(ICharacterType type) {
+      public void visitLunar() {
         material[0] = Moonsilver;
       }
 
       @Override
-      public void visitDB(ICharacterType visitedType) {
+      public void visitDB() {
         material[0] = Jade;
       }
 
       @Override
-      public void visitInfernal(ICharacterType visitedType) {
+      public void visitInfernal() {
         material[0] = VitriolOrichalcum;
       }
 
       @Override
-      public void visitAbyssal(ICharacterType visitedType) {
+      public void visitAbyssal() {
         material[0] = Soulsteel;
       }
     });
