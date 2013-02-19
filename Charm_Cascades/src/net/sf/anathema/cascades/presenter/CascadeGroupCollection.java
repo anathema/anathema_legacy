@@ -5,13 +5,13 @@ import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
+import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.generic.type.SiderealCharacterType;
 import net.sf.anathema.charmtree.presenter.CharmGroupCollection;
 import net.sf.anathema.lib.util.Identified;
 
@@ -53,10 +53,23 @@ public class CascadeGroupCollection implements CharmGroupCollection {
   }
 
   private void initMartialArtsCharms(List<ICharmGroup> allCharmGroups) {
-    ICharacterTemplate template = templateRegistry.getDefaultTemplate(new SiderealCharacterType());
-    ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate());
+    ICharmTemplate charmTemplate = findCharmTemplateOfCharacterTypeMostProficientWithMartialArts();
+    ICharmTree martialArtsTree = new MartialArtsCharmTree(charmTemplate);
     treeIdentificateMap.put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
     allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
+  }
+
+  private ICharmTemplate findCharmTemplateOfCharacterTypeMostProficientWithMartialArts() {
+    ICharmTemplate currentFavoriteTemplate = new NullCharmTemplate();
+    for (ICharacterType type : characterTypes.findAll()) {
+      ICharmTemplate charmTemplate = templateRegistry.getDefaultTemplate(type).getMagicTemplate().getCharmTemplate();
+      MartialArtsLevel martialArtsLevel = charmTemplate.getMartialArtsRules().getStandardLevel();
+      MartialArtsLevel highestLevelSoFar = currentFavoriteTemplate.getMartialArtsRules().getStandardLevel();
+      if (martialArtsLevel.compareTo(highestLevelSoFar) > 0) {
+        currentFavoriteTemplate = charmTemplate;
+      }
+    }
+    return currentFavoriteTemplate;
   }
 
   private void registerUniqueCharms(List<ICharmGroup> allCharmGroups, ICharmTemplate charmTemplate) {

@@ -14,7 +14,6 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.generic.type.SiderealCharacterType;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeModelFactory;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeParser;
