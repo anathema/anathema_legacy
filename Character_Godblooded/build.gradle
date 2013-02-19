@@ -3,4 +3,6 @@ dependencies {
   compile project(':Character_Main')
   compile project(':Character_Abyssal')
   compile project(':Character_Solar')
+  compile project(':Character_Spirit')
+  compile project(':Character_Ghost')
 }

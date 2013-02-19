@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.generic.type.GhostCharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.ghost.age.GhostAgeModelFactory;
 import net.sf.anathema.character.ghost.age.GhostAgeParser;

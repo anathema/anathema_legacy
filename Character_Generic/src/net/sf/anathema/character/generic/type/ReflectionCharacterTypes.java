@@ -29,24 +29,4 @@ public class ReflectionCharacterTypes implements CharacterTypes {
   public ICharacterType[] findAll() {
     return types.toArray(new ICharacterType[types.size()]);
   }
-
-  public Iterable<ICharacterType> getAllEssenceUsers() {
-    List<ICharacterType> list = new ArrayList<>();
-    for (ICharacterType type : types) {
-      if (type.isEssenceUser()) {
-        list.add(type);
-      }
-    }
-    return list;
-  }
-
-  public ICharacterType[] getAllExaltTypes() {
-    List<ICharacterType> list = new ArrayList<>();
-    for (ICharacterType type : types) {
-      if (type.isExaltType()) {
-        list.add(type);
-      }
-    }
-    return list.toArray(new ICharacterType[types.size()]);
-  }
 }

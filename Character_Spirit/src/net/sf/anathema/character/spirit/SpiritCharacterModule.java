@@ -3,7 +3,6 @@ package net.sf.anathema.character.spirit;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.CharacterTypeModule;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.generic.type.SpiritCharacterType;
 
 @CharacterModule
 public class SpiritCharacterModule extends CharacterTypeModule {
