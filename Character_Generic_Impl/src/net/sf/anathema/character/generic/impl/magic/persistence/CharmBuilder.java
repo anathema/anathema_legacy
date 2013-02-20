@@ -37,7 +37,7 @@ public class CharmBuilder implements ICharmBuilder {
   private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final CharmAttributeBuilder attributeBuilder = new CharmAttributeBuilder();
-  private final SpecialCharmBuilder specialCharmBuilder = new SpecialCharmBuilder();
+  private final SpecialCharmBuilder specialCharmBuilder = new AllSpecialCharmBuilder();
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
   private final IAttributeRequirementBuilder attributeRequirementsBuilder;
@@ -99,7 +99,7 @@ public class CharmBuilder implements ICharmBuilder {
       }
       loadSpecialLearning(charmElement, charm);
 
-      ISpecialCharm special = specialCharmBuilder.readSpecialCharm(charmElement, id);
+      ISpecialCharm special = specialCharmBuilder.readCharm(charmElement, id);
       if (special != null) specialCharms.add(special);
       return charm;
     } catch (PersistenceException e) {

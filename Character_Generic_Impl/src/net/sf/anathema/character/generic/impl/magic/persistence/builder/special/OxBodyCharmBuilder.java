@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder.special
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -14,7 +15,7 @@ import java.util.List;
 import static net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder.ATTRIB_NAME;
 import static net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder.ATTRIB_TRAIT;
 
-public class OxBodyCharmBuilder {
+public class OxBodyCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_OXBODY_CHARM = "oxbody";
   private static final String TAG_OXBODY_PICK = "pick";
   private static final String TAG_ZERO_HEALTH = "zeroHealthLevel";
@@ -24,9 +25,10 @@ public class OxBodyCharmBuilder {
   private static final String TAG_INCAP_HEALTH = "incapHealthLevel";
   private static final String TAG_DYING_HEALTH = "dyingHealthLevel";
 
-  private TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
+  private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
 
-  public ISpecialCharm readOxBodyCharm(Element charmElement, String id) {
+  @Override
+  public ISpecialCharm readCharm(Element charmElement, String id) {
     Element oxbodyElement = charmElement.element(TAG_OXBODY_CHARM);
     if (oxbodyElement == null) {
       return null;

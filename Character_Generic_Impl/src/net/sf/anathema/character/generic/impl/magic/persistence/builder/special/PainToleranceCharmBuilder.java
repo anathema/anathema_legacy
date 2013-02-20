@@ -7,13 +7,13 @@ import org.dom4j.Element;
 
 import java.util.List;
 
-public class PainToleranceCharmBuilder {
+public class PainToleranceCharmBuilder implements SpecialCharmBuilder {
 
   private static final String ATTRIB_VALUE = "value";
   private static final String TAG_PAIN_TOLERANCE = "painTolerance";
   private static final String TAG_LEVEL = "level";
 
-  public ISpecialCharm readPainToleranceCharm(Element charmElement, String id) {
+  public ISpecialCharm readCharm(Element charmElement, String id) {
     Element painToleranceElement = charmElement.element(TAG_PAIN_TOLERANCE);
     if (painToleranceElement == null) {
       return null;

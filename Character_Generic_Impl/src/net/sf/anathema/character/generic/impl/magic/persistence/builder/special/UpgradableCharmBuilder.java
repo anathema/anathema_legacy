@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.UpgradableCharm;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.AllSpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UpgradableCharmBuilder {
+public class UpgradableCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_UPGRADABLE = "upgradeable";
   private static final String TAG_UPGRADE = "upgrade";
   private static final String ATTRIB_BP_COST = "bpCost";
@@ -23,7 +24,8 @@ public class UpgradableCharmBuilder {
 
   private final TraitTypeFinder traitTypeFinder = new TraitTypeFinder();
 
-  public ISpecialCharm readUpgradableCharm(Element charmElement, String id) {
+  @Override
+  public ISpecialCharm readCharm(Element charmElement, String id) {
     Element upgradableElement = charmElement.element(TAG_UPGRADABLE);
     if (upgradableElement == null) {
       return null;
@@ -38,7 +40,7 @@ public class UpgradableCharmBuilder {
 
     for (Object upgradeObj : upgradableElement.elements(TAG_UPGRADE)) {
       Element upgrade = (Element) upgradeObj;
-      String name = upgrade.attributeValue(SpecialCharmBuilder.ATTRIB_NAME);
+      String name = upgrade.attributeValue(AllSpecialCharmBuilder.ATTRIB_NAME);
       upgrades.add(name);
 
       try {
@@ -50,7 +52,7 @@ public class UpgradableCharmBuilder {
         Integer xpCost = ElementUtilities.getIntAttrib(upgrade, ATTRIB_XP_COST, 1);
         xpCosts.put(name, xpCost);
 
-        Integer essenceMin = ElementUtilities.getIntAttrib(upgrade, SpecialCharmBuilder.ATTRIB_ESSENCE, -1);
+        Integer essenceMin = ElementUtilities.getIntAttrib(upgrade, AllSpecialCharmBuilder.ATTRIB_ESSENCE, -1);
         if (essenceMin != -1) {
           essenceMins.put(name, essenceMin);
         }
@@ -60,7 +62,7 @@ public class UpgradableCharmBuilder {
           traitMins.put(name, essenceMin);
         }
 
-        String trait = upgrade.attributeValue(SpecialCharmBuilder.ATTRIB_TRAIT);
+        String trait = upgrade.attributeValue(AllSpecialCharmBuilder.ATTRIB_TRAIT);
         if (trait != null) {
           traits.put(name, traitTypeFinder.getTrait(trait));
         }

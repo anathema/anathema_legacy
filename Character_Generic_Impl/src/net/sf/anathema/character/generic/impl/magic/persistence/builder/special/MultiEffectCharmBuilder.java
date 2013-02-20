@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.ComplexMultipleEffectCharm;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.AllSpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import org.dom4j.Element;
@@ -10,12 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MultiEffectCharmBuilder {
+public class MultiEffectCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_MULTI_EFFECT = "multiEffects";
   private static final String TAG_EFFECT = "effect";
   private static final String ATTRIB_PREREQ_EFFECT = "prereqEffect";
 
-  public ISpecialCharm readMultiEffectCharm(Element charmElement, String id) {
+  @Override
+  public ISpecialCharm readCharm(Element charmElement, String id) {
     Element multiEffectElement = charmElement.element(TAG_MULTI_EFFECT);
     if (multiEffectElement == null) {
       return null;
@@ -24,7 +26,7 @@ public class MultiEffectCharmBuilder {
     Map<String, String> prereqEffectMap = new HashMap<>();
     for (Object effectObj : multiEffectElement.elements(TAG_EFFECT)) {
       Element effect = (Element) effectObj;
-      String name = effect.attributeValue(SpecialCharmBuilder.ATTRIB_NAME);
+      String name = effect.attributeValue(AllSpecialCharmBuilder.ATTRIB_NAME);
       effects.add(name);
 
       String prereqEffect = effect.attributeValue(ATTRIB_PREREQ_EFFECT);
