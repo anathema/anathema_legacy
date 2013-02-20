@@ -15,14 +15,17 @@ public class PainToleranceCharmBuilder implements SpecialCharmBuilder {
 
   public ISpecialCharm readCharm(Element charmElement, String id) {
     Element painToleranceElement = charmElement.element(TAG_PAIN_TOLERANCE);
-    if (painToleranceElement == null) {
-      return null;
-    }
     @SuppressWarnings("unchecked") List<Element> elements = painToleranceElement.elements(TAG_LEVEL);
     int[] levelArray = new int[elements.size()];
     for (int i = 0; i != elements.size(); i++) {
       levelArray[i] = Integer.parseInt(elements.get(i).attributeValue(ATTRIB_VALUE));
     }
     return new StaticPainToleranceCharm(id, levelArray.length, levelArray);
+  }
+
+  @Override
+  public boolean willReadCharm(Element charmElement) {
+    Element painToleranceElement = charmElement.element(TAG_PAIN_TOLERANCE);
+    return painToleranceElement != null;
   }
 }

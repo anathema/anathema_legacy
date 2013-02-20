@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.*;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.AllSpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
@@ -29,16 +28,13 @@ public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
   @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
     Element repurchaseElement = charmElement.element(TAG_REPURCHASES);
-    if (repurchaseElement == null) {
-      return null;
-    }
 
     String limitingTraitString = repurchaseElement.attributeValue(ATTRIB_LIMITING_TRAIT);
     if (limitingTraitString != null) {
       ITraitType trait = traitTypeFinder.getTrait(limitingTraitString);
 
       int modifier = 0;
-      String modifierString = repurchaseElement.attributeValue(AllSpecialCharmBuilder.ATTRIB_MODIFIER);
+      String modifierString = repurchaseElement.attributeValue(ATTRIB_MODIFIER);
       try {
         modifier = Integer.parseInt(modifierString);
       } catch (Exception ignored) {
@@ -61,13 +57,13 @@ public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
       return new StaticMultiLearnableCharm(id, limit);
     }
 
-    String traitString = repurchaseElement.attributeValue(AllSpecialCharmBuilder.ATTRIB_TRAIT);
+    String traitString = repurchaseElement.attributeValue(ATTRIB_TRAIT);
     ITraitType trait = traitTypeFinder.getTrait(traitString);
     List<CharmTier> tiers = new ArrayList<>();
 
     for (Object repurchaseObj : repurchaseElement.elements(TAG_REPURCHASE)) {
       Element repurchase = (Element) repurchaseObj;
-      int essence = ElementUtilities.getRequiredIntAttrib(repurchase, AllSpecialCharmBuilder.ATTRIB_ESSENCE);
+      int essence = ElementUtilities.getRequiredIntAttrib(repurchase, ATTRIB_ESSENCE);
       CharmTier tier = createTier(trait, repurchase, essence);
       tiers.add(tier);
     }
@@ -76,11 +72,17 @@ public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
     return new TieredMultiLearnableCharm(id, tierArray);
   }
 
+  @Override
+  public boolean willReadCharm(Element charmElement) {
+    Element repurchaseElement = charmElement.element(TAG_REPURCHASES);
+    return repurchaseElement != null;
+  }
+
   private CharmTier createTier(ITraitType trait, Element repurchase, int essence) {
     TraitCharmTier traitCharmTier = new TraitCharmTier();
     traitCharmTier.addRequirement(new ValuedTraitType(Essence, essence));
     if (trait != null) {
-      int traitValue = ElementUtilities.getRequiredIntAttrib(repurchase, AllSpecialCharmBuilder.ATTRIB_TRAIT);
+      int traitValue = ElementUtilities.getRequiredIntAttrib(repurchase, ATTRIB_TRAIT);
       traitCharmTier.addRequirement(new ValuedTraitType(trait, traitValue));
     }
     return traitCharmTier;

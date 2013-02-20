@@ -12,9 +12,12 @@ public class ElementalCharmBuilder implements SpecialCharmBuilder {
   @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
     Element elementalElement = charmElement.element(TAG_ELEMENTAL);
-    if (elementalElement == null) {
-      return null;
-    }
     return new ElementalMultipleEffectCharm(id);
+  }
+
+  @Override
+  public boolean willReadCharm(Element charmElement) {
+    Element elementalElement = charmElement.element(TAG_ELEMENTAL);
+    return elementalElement != null;
   }
 }

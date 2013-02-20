@@ -14,9 +14,12 @@ public class EssenceFixedRepurchaseCharmBuilder implements SpecialCharmBuilder {
   @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
     Element repurchasesElement = charmElement.element(TAG_ESSENCE_FIXED_REPURCHASES);
-    if (repurchasesElement == null) {
-      return null;
-    }
     return new EssenceFixedMultiLearnableCharm(id, EssenceTemplate.SYSTEM_ESSENCE_MAX, Essence);
+  }
+
+  @Override
+  public boolean willReadCharm(Element charmElement) {
+    Element repurchasesElement = charmElement.element(TAG_ESSENCE_FIXED_REPURCHASES);
+    return repurchasesElement != null;
   }
 }

@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import static net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder.ATTRIB_NAME;
-import static net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder.ATTRIB_TRAIT;
-
 public class OxBodyCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_OXBODY_CHARM = "oxbody";
   private static final String TAG_OXBODY_PICK = "pick";
@@ -30,9 +27,6 @@ public class OxBodyCharmBuilder implements SpecialCharmBuilder {
   @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
     Element oxbodyElement = charmElement.element(TAG_OXBODY_CHARM);
-    if (oxbodyElement == null) {
-      return null;
-    }
     String[] traitNameList = oxbodyElement.attributeValue(ATTRIB_TRAIT).split(",");
     ITraitType[] traitList = new ITraitType[traitNameList.length];
     for (int i = 0; i != traitList.length; i++) {
@@ -69,5 +63,11 @@ public class OxBodyCharmBuilder implements SpecialCharmBuilder {
       healthPicks.put(name, levels);
     }
     return new OxBodyTechniqueCharm(id, traitList, healthPicks);
+  }
+
+  @Override
+  public boolean willReadCharm(Element charmElement) {
+    Element oxbodyElement = charmElement.element(TAG_OXBODY_CHARM);
+    return oxbodyElement != null;
   }
 }

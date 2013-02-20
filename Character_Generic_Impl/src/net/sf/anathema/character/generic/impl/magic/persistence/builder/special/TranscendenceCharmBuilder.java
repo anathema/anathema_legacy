@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.PrerequisiteModifyingCharm;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.AllSpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -16,12 +15,15 @@ public class TranscendenceCharmBuilder implements SpecialCharmBuilder {
   @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
     Element transcendenceElement = charmElement.element(TAG_TRANSCENDENCE);
-    if (transcendenceElement == null) {
-      return null;
-    }
     ITraitType trait = getGenericTraitType(id);
-    int modifier = Integer.parseInt(transcendenceElement.attributeValue(AllSpecialCharmBuilder.ATTRIB_MODIFIER));
+    int modifier = Integer.parseInt(transcendenceElement.attributeValue(ATTRIB_MODIFIER));
     return new PrerequisiteModifyingCharm(id, trait, modifier);
+  }
+
+  @Override
+  public boolean willReadCharm(Element charmElement) {
+    Element transcendenceElement = charmElement.element(TAG_TRANSCENDENCE);
+    return transcendenceElement != null;
   }
 
   private ITraitType getGenericTraitType(String value) {

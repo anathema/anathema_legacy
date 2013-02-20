@@ -7,7 +7,7 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllSpecialCharmBuilder implements SpecialCharmBuilder {
+public class AllSpecialCharmBuilder {
 
   private final List<SpecialCharmBuilder> builders = new ArrayList<>();
 
@@ -24,13 +24,12 @@ public class AllSpecialCharmBuilder implements SpecialCharmBuilder {
     builders.add(new SubEffectCharmBuilder());
   }
 
-  @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
     for (SpecialCharmBuilder builder : builders) {
-      ISpecialCharm charm = builder.readCharm(charmElement, id);
-      if (charm != null) {
-        return charm;
+      if (!builder.willReadCharm(charmElement)) {
+        continue;
       }
+      return builder.readCharm(charmElement, id);
     }
     return null;
   }

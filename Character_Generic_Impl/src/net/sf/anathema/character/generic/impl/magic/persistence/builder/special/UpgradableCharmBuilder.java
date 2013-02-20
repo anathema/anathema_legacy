@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.UpgradableCharm;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.AllSpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -27,9 +26,6 @@ public class UpgradableCharmBuilder implements SpecialCharmBuilder {
   @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
     Element upgradableElement = charmElement.element(TAG_UPGRADABLE);
-    if (upgradableElement == null) {
-      return null;
-    }
     boolean requiresBase = ElementUtilities.getBooleanAttribute(upgradableElement, ATTRIB_REQUIRES_BASE, true);
     List<String> upgrades = new ArrayList<>();
     Map<String, Integer> bpCosts = new HashMap<>();
@@ -40,7 +36,7 @@ public class UpgradableCharmBuilder implements SpecialCharmBuilder {
 
     for (Object upgradeObj : upgradableElement.elements(TAG_UPGRADE)) {
       Element upgrade = (Element) upgradeObj;
-      String name = upgrade.attributeValue(AllSpecialCharmBuilder.ATTRIB_NAME);
+      String name = upgrade.attributeValue(ATTRIB_NAME);
       upgrades.add(name);
 
       try {
@@ -52,7 +48,7 @@ public class UpgradableCharmBuilder implements SpecialCharmBuilder {
         Integer xpCost = ElementUtilities.getIntAttrib(upgrade, ATTRIB_XP_COST, 1);
         xpCosts.put(name, xpCost);
 
-        Integer essenceMin = ElementUtilities.getIntAttrib(upgrade, AllSpecialCharmBuilder.ATTRIB_ESSENCE, -1);
+        Integer essenceMin = ElementUtilities.getIntAttrib(upgrade, ATTRIB_ESSENCE, -1);
         if (essenceMin != -1) {
           essenceMins.put(name, essenceMin);
         }
@@ -62,7 +58,7 @@ public class UpgradableCharmBuilder implements SpecialCharmBuilder {
           traitMins.put(name, essenceMin);
         }
 
-        String trait = upgrade.attributeValue(AllSpecialCharmBuilder.ATTRIB_TRAIT);
+        String trait = upgrade.attributeValue(ATTRIB_TRAIT);
         if (trait != null) {
           traits.put(name, traitTypeFinder.getTrait(trait));
         }
@@ -73,5 +69,11 @@ public class UpgradableCharmBuilder implements SpecialCharmBuilder {
     String[] upgradeArray = new String[upgrades.size()];
     upgrades.toArray(upgradeArray);
     return new UpgradableCharm(id, upgradeArray, requiresBase, bpCosts, xpCosts, essenceMins, traitMins, traits);
+  }
+
+  @Override
+  public boolean willReadCharm(Element charmElement) {
+    Element upgradableElement = charmElement.element(TAG_UPGRADABLE);
+    return upgradableElement != null;
   }
 }

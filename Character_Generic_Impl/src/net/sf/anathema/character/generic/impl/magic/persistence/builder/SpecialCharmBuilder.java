@@ -10,4 +10,6 @@ public interface SpecialCharmBuilder {
   String ATTRIB_ESSENCE = "essence";
 
   ISpecialCharm readCharm(Element charmElement, String id);
+
+  boolean willReadCharm(Element charmElement);
 }

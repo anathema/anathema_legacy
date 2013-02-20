@@ -37,7 +37,7 @@ public class CharmBuilder implements ICharmBuilder {
   private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final CharmAttributeBuilder attributeBuilder = new CharmAttributeBuilder();
-  private final SpecialCharmBuilder specialCharmBuilder = new AllSpecialCharmBuilder();
+  private final AllSpecialCharmBuilder specialCharmBuilder = new AllSpecialCharmBuilder();
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
   private final IAttributeRequirementBuilder attributeRequirementsBuilder;
@@ -100,7 +100,9 @@ public class CharmBuilder implements ICharmBuilder {
       loadSpecialLearning(charmElement, charm);
 
       ISpecialCharm special = specialCharmBuilder.readCharm(charmElement, id);
-      if (special != null) specialCharms.add(special);
+      if (special != null) {
+        specialCharms.add(special);
+      }
       return charm;
     } catch (PersistenceException e) {
       throw new PersistenceException("Parsing error for Charm " + id, e); //$NON-NLS-1$

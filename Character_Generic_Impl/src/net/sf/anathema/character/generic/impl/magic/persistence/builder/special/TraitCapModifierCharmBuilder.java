@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCapModifyingCharm;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.AllSpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -15,15 +14,18 @@ public class TraitCapModifierCharmBuilder implements SpecialCharmBuilder {
   @Override
   public ISpecialCharm readCharm(Element charmElement, String id) {
     Element traitCapModifierElement = charmElement.element(TAG_TRAIT_CAP_MODIFIER);
-    if (traitCapModifierElement == null) {
-      return null;
-    }
-    String traitString = traitCapModifierElement.attributeValue(AllSpecialCharmBuilder.ATTRIB_TRAIT);
+    String traitString = traitCapModifierElement.attributeValue(ATTRIB_TRAIT);
     if (traitString == null) {
       traitString = id.split("\\.")[2];
     }
     ITraitType trait = traitTypeFinder.getTrait(traitString);
-    int modifier = Integer.parseInt(traitCapModifierElement.attributeValue(AllSpecialCharmBuilder.ATTRIB_MODIFIER));
+    int modifier = Integer.parseInt(traitCapModifierElement.attributeValue(ATTRIB_MODIFIER));
     return new TraitCapModifyingCharm(id, trait, modifier);
+  }
+
+  @Override
+  public boolean willReadCharm(Element charmElement) {
+    Element traitCapModifierElement = charmElement.element(TAG_TRAIT_CAP_MODIFIER);
+    return traitCapModifierElement != null;
   }
 }
