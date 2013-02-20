@@ -1,0 +1,28 @@
+package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
+
+import net.sf.anathema.character.generic.impl.magic.charm.special.StaticPainToleranceCharm;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import org.dom4j.Element;
+
+import java.util.List;
+
+public class PainToleranceCharmBuilder {
+
+  private static final String ATTRIB_VALUE = "value";
+  private static final String TAG_PAIN_TOLERANCE = "painTolerance";
+  private static final String TAG_LEVEL = "level";
+
+  public ISpecialCharm readPainToleranceCharm(Element charmElement, String id) {
+    Element painToleranceElement = charmElement.element(TAG_PAIN_TOLERANCE);
+    if (painToleranceElement == null) {
+      return null;
+    }
+    @SuppressWarnings("unchecked") List<Element> elements = painToleranceElement.elements(TAG_LEVEL);
+    int[] levelArray = new int[elements.size()];
+    for (int i = 0; i != elements.size(); i++) {
+      levelArray[i] = Integer.parseInt(elements.get(i).attributeValue(ATTRIB_VALUE));
+    }
+    return new StaticPainToleranceCharm(id, levelArray.length, levelArray);
+  }
+}

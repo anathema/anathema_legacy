@@ -1,7 +1,8 @@
-package net.sf.anathema.character.generic.impl.magic.persistence.builder;
+package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import org.dom4j.Element;
@@ -27,12 +28,14 @@ public class OxBodyCharmBuilder {
 
   public ISpecialCharm readOxBodyCharm(Element charmElement, String id) {
     Element oxbodyElement = charmElement.element(TAG_OXBODY_CHARM);
-    if (oxbodyElement == null)
+    if (oxbodyElement == null) {
       return null;
+    }
     String[] traitNameList = oxbodyElement.attributeValue(ATTRIB_TRAIT).split(",");
     ITraitType[] traitList = new ITraitType[traitNameList.length];
-    for (int i = 0; i != traitList.length; i++)
+    for (int i = 0; i != traitList.length; i++) {
       traitList[i] = traitTypeFinder.getTrait(traitNameList[i]);
+    }
     LinkedHashMap<String, HealthLevelType[]> healthPicks = new LinkedHashMap<>();
     for (Object pickObj : oxbodyElement.elements(TAG_OXBODY_PICK)) {
       Element pick = (Element) pickObj;
@@ -40,18 +43,24 @@ public class OxBodyCharmBuilder {
       List<HealthLevelType> healthLevels = new ArrayList<>();
       for (Object levelObj : pick.elements()) {
         Element levelElement = (Element) levelObj;
-        if (levelElement.getName().equals(TAG_ZERO_HEALTH))
+        if (levelElement.getName().equals(TAG_ZERO_HEALTH)) {
           healthLevels.add(HealthLevelType.ZERO);
-        if (levelElement.getName().equals(TAG_ONE_HEALTH))
+        }
+        if (levelElement.getName().equals(TAG_ONE_HEALTH)) {
           healthLevels.add(HealthLevelType.ONE);
-        if (levelElement.getName().equals(TAG_TWO_HEALTH))
+        }
+        if (levelElement.getName().equals(TAG_TWO_HEALTH)) {
           healthLevels.add(HealthLevelType.TWO);
-        if (levelElement.getName().equals(TAG_FOUR_HEALTH))
+        }
+        if (levelElement.getName().equals(TAG_FOUR_HEALTH)) {
           healthLevels.add(HealthLevelType.FOUR);
-        if (levelElement.getName().equals(TAG_INCAP_HEALTH))
+        }
+        if (levelElement.getName().equals(TAG_INCAP_HEALTH)) {
           healthLevels.add(HealthLevelType.INCAPACITATED);
-        if (levelElement.getName().equals(TAG_DYING_HEALTH))
+        }
+        if (levelElement.getName().equals(TAG_DYING_HEALTH)) {
           healthLevels.add(HealthLevelType.DYING);
+        }
       }
       HealthLevelType[] levels = new HealthLevelType[healthLevels.size()];
       healthLevels.toArray(levels);
