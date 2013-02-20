@@ -6,10 +6,6 @@ import net.sf.anathema.initialization.reflections.Weight;
 @CharacterType
 @Weight(weight = 9)
 public class MortalCharacterType implements ICharacterType {
-  @Override
-  public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitMortal();
-  }
 
   @Override
   public boolean isExaltType() {

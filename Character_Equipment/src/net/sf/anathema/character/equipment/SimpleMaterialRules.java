@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 
 import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.*;
 
-public abstract class SimpleMaterialRules implements MaterialRules {
+public abstract class SimpleMaterialRules implements CharacterTypeMaterialRules {
 
   public ArtifactAttuneType[] getAttunementTypes(MagicalMaterial material) {
     return getDefaultAttunementOptions(resonatesWithMaterial(material));

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character;
 
+import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.EquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
@@ -17,9 +18,11 @@ import net.sf.anathema.character.generic.type.ICharacterType;
 public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory {
 
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
+  private final MaterialRules materialRules;
 
-  public EquipmentAdditionalModelFactory(IEquipmentTemplateProvider equipmentTemplateProvider) {
+  public EquipmentAdditionalModelFactory(IEquipmentTemplateProvider equipmentTemplateProvider, MaterialRules materialRules) {
     this.equipmentTemplateProvider = equipmentTemplateProvider;
+    this.materialRules = materialRules;
   }
 
   @Override
@@ -28,12 +31,12 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     ICharacterType characterType = basicCharacterContext.getCharacterType();
     IArmourStats naturalArmour = new NaturalSoak(context);
-    EquipmentCharacterDataProvider dataProvider = new EquipmentCharacterDataProvider(context);
+    EquipmentCharacterDataProvider dataProvider = new EquipmentCharacterDataProvider(context, materialRules);
     return new EquipmentAdditionalModel(
-        characterType,
-        naturalArmour,
-        equipmentTemplateProvider, context.getSpecialtyContext(), dataProvider,
-        new NaturalWeaponTemplate(),
-        template.getNaturalWeaponTemplate(characterType));
+            characterType,
+            naturalArmour,
+            equipmentTemplateProvider, context.getSpecialtyContext(), dataProvider, materialRules,
+            new NaturalWeaponTemplate(),
+            template.getNaturalWeaponTemplate(characterType));
   }
 }

@@ -1,11 +1,13 @@
 package net.sf.anathema.character.equipment;
 
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 
 public interface MaterialRules {
-  MagicalMaterial getDefault();
+  MagicalMaterial getDefault(ICharacterType characterType);
 
-  ArtifactAttuneType[] getAttunementTypes(MagicalMaterial material);
+  ArtifactAttuneType[] getAttunementTypes(ICharacterType characterType,
+                                          MagicalMaterial material);
 
-  boolean canAttuneToMalfeanMaterials();
+  boolean canAttuneToMalfeanMaterials(ICharacterType characterType);
 }

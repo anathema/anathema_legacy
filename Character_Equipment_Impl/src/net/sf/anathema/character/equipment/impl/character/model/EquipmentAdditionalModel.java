@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.character.model;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import net.sf.anathema.character.equipment.CharacterMaterialRules;
+import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
@@ -56,11 +56,11 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
 
   public EquipmentAdditionalModel(ICharacterType characterType, IArmourStats naturalArmour,
                                   IEquipmentTemplateProvider equipmentTemplateProvider, IGenericSpecialtyContext context,
-                                  IEquipmentCharacterDataProvider dataProvider,
+                                  IEquipmentCharacterDataProvider dataProvider, MaterialRules materialRules,
                                   IEquipmentTemplate... naturalWeapons) {
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
     this.characterType = characterType;
-    this.defaultMaterial = evaluateDefaultMaterial();
+    this.defaultMaterial = evaluateDefaultMaterial(materialRules);
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     this.dataProvider = dataProvider;
     for (IEquipmentTemplate template : naturalWeapons) {
@@ -88,8 +88,8 @@ public class EquipmentAdditionalModel extends AbstractAdditionalModelAdapter imp
     return CharacterStatsModifiers.extractFromCharacter(character);
   }
 
-  private MagicalMaterial evaluateDefaultMaterial() {
-    MagicalMaterial defaultMaterial = new CharacterMaterialRules().getDefault(characterType);
+  private MagicalMaterial evaluateDefaultMaterial(MaterialRules materialRules) {
+    MagicalMaterial defaultMaterial = materialRules.getDefault(characterType);
     if (defaultMaterial == null) {
       return MagicalMaterial.Orichalcum;
     }

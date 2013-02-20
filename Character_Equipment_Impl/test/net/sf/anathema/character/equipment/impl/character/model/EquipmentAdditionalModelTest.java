@@ -21,7 +21,7 @@ public class EquipmentAdditionalModelTest {
   IGenericSpecialtyContext context = mock(IGenericSpecialtyContext.class);
   IEquipmentCharacterDataProvider dataProvider = mock(IEquipmentCharacterDataProvider.class);
   EquipmentAdditionalModel model = new EquipmentAdditionalModel(characterType, naturalArmor, templateProvider, context,
-          dataProvider);
+          dataProvider, new DummyMaterialRules());
 
   @Test
   public void removesStatsWithoutNpe() throws Exception {

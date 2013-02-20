@@ -2,4 +2,6 @@ dependencies {
   compile project(':Character_Generic_Framework')
   compile project(':Character_Main')
   testCompile parent.ext.testDependencies
+  testCompile project(path: ':Character_Generic', configuration: 'tests')
+  testCompile project(path: ':Character_Generic_Impl', configuration: 'tests')
 }

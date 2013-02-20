@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment;
 
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 
-public class MortalMaterialRules extends SimpleMaterialRules {
+public class DefaultMaterialRules extends SimpleMaterialRules {
   public MagicalMaterial getDefault() {
     return null;
   }

@@ -5,8 +5,6 @@ import net.sf.anathema.lib.util.Identified;
 
 public interface ICharacterType extends Identified {
 
-  void accept(ICharacterTypeVisitor visitor);
-
   boolean isExaltType();
 
   boolean isEssenceUser();

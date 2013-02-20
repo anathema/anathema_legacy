@@ -6,10 +6,6 @@ import net.sf.anathema.initialization.reflections.Weight;
 @CharacterType
 @Weight(weight = 3)
 public class LunarCharacterType implements ICharacterType {
-  @Override
-  public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitLunar();
-  }
 
   @Override
   public boolean isExaltType() {

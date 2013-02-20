@@ -14,6 +14,8 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
+import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,7 +56,7 @@ public class ExaltedCharacterPersisterTest {
     IExtensibleDataSetProvider dataSetProvider = mock(IExtensibleDataSetProvider.class);
     when(dataSetProvider.getDataSet(ICharmCache.class)).thenReturn(new CharmCache());
     when(dataSetProvider.getDataSet(ISpellCache.class)).thenReturn(new SpellCache());
-    ICharacterGenerics generics = new CharacterGenerics(null, null, dataSetProvider);
+    ICharacterGenerics generics = new CharacterGenerics(null, new DummyInstantiater(), dataSetProvider);
     generics.getTemplateRegistry().register(template);
     return generics;
   }

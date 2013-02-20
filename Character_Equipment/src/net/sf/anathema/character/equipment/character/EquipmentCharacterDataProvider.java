@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.character;
 
-import net.sf.anathema.character.equipment.CharacterMaterialRules;
+import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
@@ -17,9 +17,11 @@ import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.*;
 public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataProvider {
 
   private final ICharacterModelContext context;
+  private final MaterialRules materialRules;
 
-  public EquipmentCharacterDataProvider(ICharacterModelContext context) {
+  public EquipmentCharacterDataProvider(ICharacterModelContext context, MaterialRules materialRules) {
     this.context = context;
+    this.materialRules = materialRules;
   }
 
   @Override
@@ -44,7 +46,7 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
         return new ArtifactAttuneType[0];
       case Fixed:
       case Variable:
-        return new CharacterMaterialRules().getAttunementTypes(getCharacterType(), material);
+        return materialRules.getAttunementTypes(getCharacterType(), material);
       case Compound:
         return new ArtifactAttuneType[]{Unattuned, ArtifactAttuneType.FullyAttuned};
       case MalfeanMaterials:
@@ -53,7 +55,7 @@ public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataPr
   }
 
   private ArtifactAttuneType[] createMalfeanMaterialsAttunementOptions() {
-    if (new CharacterMaterialRules().canAttuneToMalfeanMaterials(getCharacterType())) {
+    if (materialRules.canAttuneToMalfeanMaterials(getCharacterType())) {
       return new ArtifactAttuneType[]{Unattuned, FullyAttuned};
     }
     return new ArtifactAttuneType[]{Unattuned, UnharmoniouslyAttuned};

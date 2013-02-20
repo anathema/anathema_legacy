@@ -3,16 +3,11 @@ package net.sf.anathema.character.sidereal;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.character.generic.type.ICharacterTypeVisitor;
 import net.sf.anathema.initialization.reflections.Weight;
 
 @CharacterType
 @Weight(weight = 5)
 public class SiderealCharacterType implements ICharacterType {
-  @Override
-  public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitSidereal();
-  }
 
   @Override
   public boolean isExaltType() {

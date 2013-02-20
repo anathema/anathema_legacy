@@ -6,10 +6,6 @@ import net.sf.anathema.initialization.reflections.Weight;
 @CharacterType
 @Weight(weight = 2)
 public class DbCharacterType implements ICharacterType {
-  @Override
-  public void accept(ICharacterTypeVisitor visitor) {
-    visitor.visitDB();
-  }
 
   @Override
   public boolean isExaltType() {

@@ -1,5 +1,10 @@
-package net.sf.anathema.character.equipment;
+package net.sf.anathema.character.infernal;
 
+import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialRulesDefinition;
+import net.sf.anathema.character.equipment.SimpleMaterialRules;
+
+@MaterialRulesDefinition(characterType = "Infernal")
 public class InfernalMaterialRules extends SimpleMaterialRules {
   public MagicalMaterial getDefault() {
     return MagicalMaterial.VitriolOrichalcum;
