@@ -535,11 +535,14 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   @Override
   public boolean isAlienCharm(ICharm charm) {
-    return !isMartialArtsCharm(charm) && isAlienType(charm.getCharacterType());
+    boolean isNotMartialArts = !isMartialArtsCharm(charm);
+    boolean isOfAlienType = isAlienType(charm.getCharacterType());
+    return isNotMartialArts && isOfAlienType;
   }
 
   private boolean isAlienType(ICharacterType characterType) {
-    return characterType != getNativeCharacterType();
+    ICharacterType nativeType = getNativeCharacterType();
+    return !characterType.equals(nativeType);
   }
 
   @Override
