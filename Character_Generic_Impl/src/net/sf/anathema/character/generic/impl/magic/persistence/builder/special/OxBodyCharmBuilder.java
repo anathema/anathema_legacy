@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder.special
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -12,6 +11,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+@SpecialCharmParser
 public class OxBodyCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_OXBODY_CHARM = "oxbody";
   private static final String TAG_OXBODY_PICK = "pick";

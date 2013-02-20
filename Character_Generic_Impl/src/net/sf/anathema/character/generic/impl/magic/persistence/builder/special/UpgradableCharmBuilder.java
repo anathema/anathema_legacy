@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.UpgradableCharm;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -13,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SpecialCharmParser
 public class UpgradableCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_UPGRADABLE = "upgradeable";
   private static final String TAG_UPGRADE = "upgrade";

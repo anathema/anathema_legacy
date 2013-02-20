@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequi
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.special.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -37,7 +38,7 @@ public class CharmBuilder implements ICharmBuilder {
   private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final CharmAttributeBuilder attributeBuilder = new CharmAttributeBuilder();
-  private final AllSpecialCharmBuilder specialCharmBuilder = new AllSpecialCharmBuilder();
+  private final SpecialCharmBuilder specialCharmBuilder;
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
   private final IAttributeRequirementBuilder attributeRequirementsBuilder;
@@ -50,13 +51,14 @@ public class CharmBuilder implements ICharmBuilder {
           ITraitPrerequisitesBuilder traitsBuilder,
           IAttributeRequirementBuilder attributeRequirementsBuilder,
           IComboRulesBuilder comboBuilder,
-          ICharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes) {
+          ICharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes, SpecialCharmBuilder specialCharmBuilder) {
     this.idBuilder = idBuilder;
     this.traitsBuilder = traitsBuilder;
     this.attributeRequirementsBuilder = attributeRequirementsBuilder;
     this.comboBuilder = comboBuilder;
     this.charmPrerequisiteBuilder = charmPrerequisiteBuilder;
     this.characterTypes = characterTypes;
+    this.specialCharmBuilder = specialCharmBuilder;
   }
 
   @Override

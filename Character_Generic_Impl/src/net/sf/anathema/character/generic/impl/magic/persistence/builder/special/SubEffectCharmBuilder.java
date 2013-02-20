@@ -1,13 +1,13 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.SubeffectCharm;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import org.dom4j.Element;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@SpecialCharmParser
 public class SubEffectCharmBuilder implements SpecialCharmBuilder {
 
   private static final String TAG_SUBEFFECTS = "subeffects";

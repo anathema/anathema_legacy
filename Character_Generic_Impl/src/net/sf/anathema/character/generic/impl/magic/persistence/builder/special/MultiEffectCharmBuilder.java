@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.ComplexMultipleEffectCharm;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import org.dom4j.Element;
 
@@ -10,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SpecialCharmParser
 public class MultiEffectCharmBuilder implements SpecialCharmBuilder {
   private static final String TAG_MULTI_EFFECT = "multiEffects";
   private static final String TAG_EFFECT = "effect";

@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericC
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.special.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
@@ -20,13 +21,13 @@ public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
   private final GenericCharmBuilder genericsBuilder;
   private ITraitType[] types;
 
-  public GenericCharmSetBuilder(CharacterTypes characterTypes) {
-    genericsBuilder = new GenericCharmBuilder(
+  public GenericCharmSetBuilder(CharacterTypes characterTypes, SpecialCharmBuilder specialCharmBuilder) {
+    this.genericsBuilder = new GenericCharmBuilder(
         new GenericIdStringBuilder(),
         new GenericTraitPrerequisitesBuilder(),
         new GenericAttributeRequirementBuilder(),
         new GenericComboRulesBuilder(),
-        new GenericCharmPrerequisiteBuilder(), characterTypes);
+        new GenericCharmPrerequisiteBuilder(), characterTypes, specialCharmBuilder);
   }
 
   @Override

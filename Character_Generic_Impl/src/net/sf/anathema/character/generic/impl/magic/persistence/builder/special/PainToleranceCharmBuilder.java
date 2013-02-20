@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticPainToleranceCharm;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import org.dom4j.Element;
 
 import java.util.List;
 
+@SpecialCharmParser
 public class PainToleranceCharmBuilder implements SpecialCharmBuilder {
 
   private static final String ATTRIB_VALUE = "value";

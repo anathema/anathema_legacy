@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
 import net.sf.anathema.character.generic.impl.magic.charm.special.*;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -15,6 +14,7 @@ import java.util.List;
 
 import static net.sf.anathema.character.generic.traits.types.OtherTraitType.Essence;
 
+@SpecialCharmParser
 public class RepurchaseCharmBuilder implements SpecialCharmBuilder {
 
   private static final String TAG_REPURCHASES = "repurchases";

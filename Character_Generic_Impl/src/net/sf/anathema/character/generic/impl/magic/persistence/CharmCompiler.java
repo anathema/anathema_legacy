@@ -3,6 +3,8 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.character.generic.data.IExtensibleDataSetCompiler;
 import net.sf.anathema.character.generic.impl.magic.Charm;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.special.ReflectionSpecialCharmBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.special.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -48,8 +50,9 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
 
   public CharmCompiler(Instantiater instantiater) {
     this.characterTypes = new ReflectionCharacterTypes(instantiater);
-    this.setBuilder = new CharmSetBuilder(characterTypes);
-    this.genericBuilder = new GenericCharmSetBuilder(characterTypes);
+    SpecialCharmBuilder specialCharmBuilder = new ReflectionSpecialCharmBuilder(instantiater);
+    this.setBuilder = new CharmSetBuilder(characterTypes, specialCharmBuilder);
+    this.genericBuilder = new GenericCharmSetBuilder(characterTypes, specialCharmBuilder);
   }
 
   @Override

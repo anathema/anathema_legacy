@@ -9,12 +9,14 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericC
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.special.SpecialCharmBuilder;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import org.dom4j.Element;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 public class GenericCharmBuilderTest {
 
@@ -24,7 +26,7 @@ public class GenericCharmBuilderTest {
     new GenericTraitPrerequisitesBuilder(),
     new GenericAttributeRequirementBuilder(),
     new GenericComboRulesBuilder(),
-    new GenericCharmPrerequisiteBuilder(), characterTypes);
+    new GenericCharmPrerequisiteBuilder(), characterTypes, mock(SpecialCharmBuilder.class));
 
   @Before
   public void setUp() throws Exception {
