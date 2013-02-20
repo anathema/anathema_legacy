@@ -8,8 +8,6 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.CostSelectionView;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
-import net.sf.anathema.character.generic.framework.resources.CharacterIntValueGraphics;
-import net.sf.anathema.character.generic.type.MortalCharacterType;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.framework.value.MarkerIntValueDisplayFactory;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -134,6 +132,6 @@ public class EquipmentDatabasePresenter implements Presenter {
   }
 
   private IntegerViewFactory getIntValueDisplayFactory() {
-    return new MarkerIntValueDisplayFactory(new CharacterIntValueGraphics(resources, new MortalCharacterType()));
+    return new MarkerIntValueDisplayFactory(new EquipmentIntValueGraphics(resources));
   }
 }
