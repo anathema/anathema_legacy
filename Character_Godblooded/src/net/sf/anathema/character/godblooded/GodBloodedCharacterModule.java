@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.LunarCharacterType;
+import net.sf.anathema.character.lunar.LunarCharacterType;
 import net.sf.anathema.character.sidereal.SiderealCharacterType;
 import net.sf.anathema.character.ghost.GhostCharacterType;
 import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceModelFactory;

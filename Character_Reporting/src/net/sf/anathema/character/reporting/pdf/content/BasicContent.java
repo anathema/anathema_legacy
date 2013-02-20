@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.pdf.content;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class BasicContent implements SubContent {
@@ -18,6 +19,10 @@ public class BasicContent implements SubContent {
 
   private ICharacterType getCharacterType() {
     return character.getTemplate().getTemplateType().getCharacterType();
+  }
+
+  public boolean favorsTraitType(FavoringTraitType type) {
+    return getCharacterType().getFavoringTraitType().equals(type);
   }
 
   public boolean isOfType(ICharacterType type) {

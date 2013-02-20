@@ -1,6 +1,8 @@
-package net.sf.anathema.character.generic.type;
+package net.sf.anathema.character.lunar;
 
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.reflections.Weight;
 
 @CharacterType
