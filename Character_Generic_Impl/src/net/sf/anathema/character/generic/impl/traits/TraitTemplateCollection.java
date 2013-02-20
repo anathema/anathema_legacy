@@ -4,12 +4,7 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.generic.traits.types.YoziType;
+import net.sf.anathema.character.generic.traits.types.*;
 
 public class TraitTemplateCollection implements ITraitTemplateCollection {
 
@@ -52,11 +47,11 @@ public class TraitTemplateCollection implements ITraitTemplateCollection {
       public void visitAbility(AbilityType type) {
         traitTemplate[0] = templateFactory.createAbilityTemplate(type);
       }
-      
+
       @Override
       public void visitYozi(YoziType type) {
-    	  traitTemplate[0] = templateFactory.createYoziTemplate(type);
-        }
+        traitTemplate[0] = templateFactory.createYoziTemplate(type);
+      }
 
       @Override
       public void visitCustomTraitType(ITraitType visitedType) {
@@ -65,50 +60,16 @@ public class TraitTemplateCollection implements ITraitTemplateCollection {
     });
     return traitTemplate[0];
   }
-  
+
   @Override
   public final ITraitTemplate getDefaultTraitTemplate(ITraitType traitType) {
-	    final ITraitTemplate[] traitTemplate = new ITraitTemplate[1];
-	    traitType.accept(new ITraitTypeVisitor() {
-	      @Override
-          public void visitBackground(IBackgroundTemplate template) {
-	        traitTemplate[0] = templateFactory.createDefaultBackgroundTemplate();
-	      }
-
-	      @Override
-          public void visitWillpower(OtherTraitType type) {
-	        }
-
-	      @Override
-          public void visitEssence(OtherTraitType type) {
-
-	      }
-
-	      @Override
-          public void visitVirtue(VirtueType type) {
-
-	      }
-
-	      @Override
-          public void visitAttribute(AttributeType type) {
-
-	      }
-
-	      @Override
-          public void visitAbility(AbilityType type) {
-
-	      }
-	      
-	      @Override
-          public void visitYozi(YoziType type) {
-
-	        }
-
-	      @Override
-          public void visitCustomTraitType(ITraitType visitedType) {
-
-	      }
-	    });
-	    return traitTemplate[0];
-	  }
+    final ITraitTemplate[] traitTemplate = new ITraitTemplate[1];
+    traitType.accept(new AbstractTraitTypeVisitor() {
+      @Override
+      public void visitBackground(IBackgroundTemplate template) {
+        traitTemplate[0] = templateFactory.createDefaultBackgroundTemplate();
+      }
+    });
+    return traitTemplate[0];
+  }
 }
