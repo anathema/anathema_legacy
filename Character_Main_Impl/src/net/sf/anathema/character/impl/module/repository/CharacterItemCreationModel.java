@@ -28,9 +28,9 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   public CharacterItemCreationModel(ICharacterGenerics generics, CharacterStatisticsConfiguration configuration) {
     this.generics = generics;
     this.configuration = configuration;
+    this.characterTypes = generics.getCharacterTypes();
     this.types = collectCharacterTypes(generics.getTemplateRegistry());
     aggregateTemplates();
-    this.characterTypes = generics.getCharacterTypes();
     setCharacterType(characterTypes.findAll()[0]);
   }
 

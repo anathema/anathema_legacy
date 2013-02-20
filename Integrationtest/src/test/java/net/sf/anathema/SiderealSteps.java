@@ -7,6 +7,8 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
+import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -64,6 +66,13 @@ public class SiderealSteps {
     background.setCreationValue(value);
   }
 
+  @When("^I set her (.*) to (\\d+)$")
+  public void I_set_her_Ability_to(String ability, int value) throws Throwable {
+    AbilityType type = AbilityType.valueOf(ability);
+    IModifiableBasicTrait trait = (IModifiableBasicTrait) character.getTraitConfiguration().getTrait(type);
+    trait.setCreationValue(value);
+  }
+
   @Then("^she has spent (\\d+) bonus points$")
   public void she_has_spent_bonus_points(int amount) throws Throwable {
     BonusPointManagement bonusPointManagement = calculateBonusPoints();
@@ -91,6 +100,20 @@ public class SiderealSteps {
     assertThat(ability.getCurrentValue(), is(amount));
   }
 
+  @Then("^she can learn the Charm (.*)$")
+  public void she_can_learn_the_Charm(String id) throws Throwable {
+    ICharm charm = character.getCharms().getCharmById(id);
+    boolean learnable = character.getCharms().isLearnable(charm);
+    assertThat(learnable, is(true));
+  }
+
+  @Then("^she can not learn the Charm (.*)$")
+  public void she_can_not_learn_the_Charm(String id) throws Throwable {
+    ICharm charm = character.getCharms().getCharmById(id);
+    boolean learnable = character.getCharms().isLearnable(charm);
+    assertThat(learnable, is(false));
+  }
+
   private ICharacterTemplate loadDefaultTemplateForType(String type) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
     return generics.getTemplateRegistry().getDefaultTemplate(characterTypes.findById(type));
@@ -116,5 +139,4 @@ public class SiderealSteps {
     bonusPointManagement.recalculate();
     return bonusPointManagement;
   }
-
 }
