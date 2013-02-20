@@ -360,7 +360,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   public void unlearnAllAlienCharms() {
     for (ILearningCharmGroup[] groups : nonMartialArtsGroupsByType.values()) {
       for (ILearningCharmGroup group : groups) {
-        if (group.getCharacterType() != getNativeCharacterType()) {
+        if (isAlienType(group.getCharacterType())) {
           group.forgetAll();
         }
       }
