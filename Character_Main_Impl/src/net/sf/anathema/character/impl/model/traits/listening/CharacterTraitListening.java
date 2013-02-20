@@ -105,13 +105,7 @@ public class CharacterTraitListening {
 
   private void initYoziListening() {
     for (YoziType yoziType : YoziType.values()) {
-      IFavorableTrait yozi;
-      try {
-        yozi = traitConfiguration.getFavorableTrait(yoziType);
-      } catch (UnsupportedOperationException e) {
-        break; //template does not support yozis
-      }
-
+      IFavorableTrait yozi = traitConfiguration.getFavorableTrait(yoziType);
       listening.addTraitListening(yozi);
       yozi.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
         @Override
