@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.lib.util.Identified;
 
 public enum FavoringTraitType implements Identified {
-  AbilityType() {
+  AbilityType {
     @Override
     public void accept(IFavoringTraitTypeVisitor visitor) {
       visitor.visitAbilityType(this);
@@ -19,7 +19,7 @@ public enum FavoringTraitType implements Identified {
       return net.sf.anathema.character.generic.traits.types.AbilityType.values();
     }
   },
-  AttributeType() {
+  AttributeType {
     @Override
     public void accept(IFavoringTraitTypeVisitor visitor) {
       visitor.visitAttributeType(this);
@@ -30,7 +30,7 @@ public enum FavoringTraitType implements Identified {
       return net.sf.anathema.character.generic.traits.types.AttributeType.values();
     }
   },
-  VirtueType() {
+  VirtueType {
         @Override
         public void accept(IFavoringTraitTypeVisitor visitor) {
           visitor.visitVirtueType(this);
@@ -41,7 +41,7 @@ public enum FavoringTraitType implements Identified {
           return net.sf.anathema.character.generic.traits.types.VirtueType.values();
         }
   },
-  YoziType() {
+  YoziType {
 	    @Override
 	    public void accept(IFavoringTraitTypeVisitor visitor) {
 	      visitor.visitYoziType(this);

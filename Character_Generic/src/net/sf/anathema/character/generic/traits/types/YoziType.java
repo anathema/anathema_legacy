@@ -8,9 +8,6 @@ public enum YoziType implements ITraitType {
   Cytherea, Elloge, Hegra, Isidoros, Metagaos, Oramus, Qaf, Sacheverell,
   Szoreny;
 
-  private YoziType() {
-  }
-
   @Override
   public String getId() {
     return name();
