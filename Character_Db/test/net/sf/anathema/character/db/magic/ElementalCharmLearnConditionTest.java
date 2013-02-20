@@ -1,17 +1,18 @@
-package net.sf.anathema.character.generic.impl.magic.charm.special;
+package net.sf.anathema.character.db.magic;
 
+import net.sf.anathema.character.db.DbCharacterType;
 import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
+import net.sf.anathema.character.generic.impl.magic.charm.special.CollectionSubEffects;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.generic.type.DbCharacterType;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.generic.impl.magic.charm.special.Element.Air;
+import static net.sf.anathema.character.db.magic.Element.Air;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;

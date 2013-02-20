@@ -1,11 +1,11 @@
-package net.sf.anathema.character.generic.impl.magic.charm.special;
+package net.sf.anathema.character.db.magic;
 
+import net.sf.anathema.character.db.DbCharacterType;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.SubEffects;
-import net.sf.anathema.character.generic.type.DbCharacterType;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 public class ElementalCharmLearnCondition implements ICondition {

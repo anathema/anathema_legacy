@@ -1,6 +1,7 @@
-package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
+package net.sf.anathema.character.db.magic;
 
-import net.sf.anathema.character.generic.impl.magic.charm.special.ElementalMultipleEffectCharm;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.special.SpecialCharmBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.special.SpecialCharmParser;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import org.dom4j.Element;
 

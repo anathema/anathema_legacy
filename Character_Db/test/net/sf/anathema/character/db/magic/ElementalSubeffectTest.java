@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.impl.magic.charm.special;
+package net.sf.anathema.character.db.magic;
 
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import org.junit.Test;
