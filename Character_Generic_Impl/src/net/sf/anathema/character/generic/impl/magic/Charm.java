@@ -12,35 +12,22 @@ import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.Sel
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
-import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
+import net.sf.anathema.character.generic.magic.charms.*;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.template.magic.IFavoringTraitTypeVisitor;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.Identificate;
 import net.sf.anathema.lib.util.Identified;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Charm extends Identificate implements ICharm {
 
@@ -372,35 +359,15 @@ public class Charm extends Identificate implements ICharm {
       return false;
     }
 
-    final boolean[] characterCanFavorMagicOfPrimaryType = new boolean[1];
     final ITraitType primaryTraitType = getPrimaryTraitType();
     if (hasAttribute(new Identificate("MartialArts")) && ((IFavorableGenericTrait) traitCollection.getTrait(
             AbilityType.MartialArts)).isCasteOrFavored()) {
       return true;
     }
 
-    basicCharacter.getCharacterType().getFavoringTraitType().accept(new IFavoringTraitTypeVisitor() {
-      @Override
-      public void visitAbilityType(FavoringTraitType visitedType) {
-        characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AbilityType;
-      }
-
-      @Override
-      public void visitAttributeType(FavoringTraitType visitedType) {
-        characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof AttributeType;
-      }
-
-      @Override
-      public void visitYoziType(FavoringTraitType visitedType) {
-        characterCanFavorMagicOfPrimaryType[0] = primaryTraitType instanceof YoziType;
-      }
-
-      @Override
-      public void visitVirtueType(FavoringTraitType visitedType) {
-        characterCanFavorMagicOfPrimaryType[0] = false;
-      }
-    });
-    if (!characterCanFavorMagicOfPrimaryType[0]) {
+    FavoringTraitType favoringTraitType = basicCharacter.getCharacterType().getFavoringTraitType();
+    boolean characterCanFavorMagicOfPrimaryType =  favoringTraitType.canFavorType(primaryTraitType);
+    if (!characterCanFavorMagicOfPrimaryType) {
       return false;
     }
     IGenericTrait trait = traitCollection.getTrait(primaryTraitType);

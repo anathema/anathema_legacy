@@ -18,6 +18,11 @@ public enum FavoringTraitType implements Identified {
     public AbilityType[] getTraitTypes() {
       return net.sf.anathema.character.generic.traits.types.AbilityType.values();
     }
+
+    @Override
+    public boolean canFavorType(ITraitType type) {
+      return type instanceof AbilityType;
+    }
   },
   AttributeType {
     @Override
@@ -29,29 +34,44 @@ public enum FavoringTraitType implements Identified {
     public AttributeType[] getTraitTypes() {
       return net.sf.anathema.character.generic.traits.types.AttributeType.values();
     }
+
+    @Override
+    public boolean canFavorType(ITraitType type) {
+      return type instanceof AttributeType;
+    }
   },
   VirtueType {
-        @Override
-        public void accept(IFavoringTraitTypeVisitor visitor) {
-          visitor.visitVirtueType(this);
-        }
+    @Override
+    public void accept(IFavoringTraitTypeVisitor visitor) {
+      visitor.visitVirtueType(this);
+    }
 
-        @Override
-        public VirtueType[] getTraitTypes() {
-          return net.sf.anathema.character.generic.traits.types.VirtueType.values();
-        }
+    @Override
+    public VirtueType[] getTraitTypes() {
+      return net.sf.anathema.character.generic.traits.types.VirtueType.values();
+    }
+
+    @Override
+    public boolean canFavorType(ITraitType type) {
+      return false;
+    }
   },
   YoziType {
-	    @Override
-	    public void accept(IFavoringTraitTypeVisitor visitor) {
-	      visitor.visitYoziType(this);
-	    }
+    @Override
+    public void accept(IFavoringTraitTypeVisitor visitor) {
+      visitor.visitYoziType(this);
+    }
 
-	    @Override
-	    public YoziType[] getTraitTypes() {
-	      return net.sf.anathema.character.generic.traits.types.YoziType.values();
-	    }
-	  };
+    @Override
+    public YoziType[] getTraitTypes() {
+      return net.sf.anathema.character.generic.traits.types.YoziType.values();
+    }
+
+    @Override
+    public boolean canFavorType(ITraitType type) {
+      return type instanceof YoziType;
+    }
+  };
 
   @Override
   public String getId() {
@@ -61,4 +81,6 @@ public enum FavoringTraitType implements Identified {
   public abstract void accept(IFavoringTraitTypeVisitor visitor);
 
   public abstract ITraitType[] getTraitTypes();
+
+  public abstract boolean canFavorType(ITraitType type);
 }
