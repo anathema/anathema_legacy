@@ -9,10 +9,7 @@ import net.sf.anathema.character.generic.magic.general.ISourceList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
-import net.sf.anathema.character.generic.template.magic.IFavoringTraitTypeVisitor;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.Identificate;
 
 public class Spell extends Identificate implements ISpell {
@@ -61,28 +58,8 @@ public class Spell extends Identificate implements ISpell {
 
   @Override
   public boolean isFavored(IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection) {
-    final ITraitType[] spellFavoringType = new ITraitType[1];
-    basicCharacter.getCharacterType().getFavoringTraitType().accept(new IFavoringTraitTypeVisitor() {
-      @Override
-      public void visitAbilityType(FavoringTraitType visitedType) {
-        spellFavoringType[0] = AbilityType.Occult;
-      }
-
-      @Override
-      public void visitAttributeType(FavoringTraitType visitedType) {
-        spellFavoringType[0] = AttributeType.Intelligence;
-      }
-
-      @Override
-      public void visitYoziType(FavoringTraitType visitedType) {
-        spellFavoringType[0] = AbilityType.Occult;
-      }
-
-      @Override
-      public void visitVirtueType(FavoringTraitType visitedType) {
-        // ghosts don't get sorcery?
-      }
-    });
-    return traitCollection.getFavorableTrait(spellFavoringType[0]).isCasteOrFavored();
+    FavoringTraitType type = basicCharacter.getCharacterType().getFavoringTraitType();
+    ITraitType spellFavoringType = type.getSpellFavoringType();
+    return traitCollection.getFavorableTrait(spellFavoringType).isCasteOrFavored();
   }
 }

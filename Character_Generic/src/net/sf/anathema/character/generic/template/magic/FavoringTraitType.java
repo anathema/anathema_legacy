@@ -10,11 +10,6 @@ import net.sf.anathema.lib.util.Identified;
 public enum FavoringTraitType implements Identified {
   AbilityType {
     @Override
-    public void accept(IFavoringTraitTypeVisitor visitor) {
-      visitor.visitAbilityType(this);
-    }
-
-    @Override
     public AbilityType[] getTraitTypes() {
       return net.sf.anathema.character.generic.traits.types.AbilityType.values();
     }
@@ -23,13 +18,13 @@ public enum FavoringTraitType implements Identified {
     public boolean canFavorType(ITraitType type) {
       return type instanceof AbilityType;
     }
+
+    @Override
+    public ITraitType getSpellFavoringType() {
+      return net.sf.anathema.character.generic.traits.types.AbilityType.Occult;
+    }
   },
   AttributeType {
-    @Override
-    public void accept(IFavoringTraitTypeVisitor visitor) {
-      visitor.visitAttributeType(this);
-    }
-
     @Override
     public AttributeType[] getTraitTypes() {
       return net.sf.anathema.character.generic.traits.types.AttributeType.values();
@@ -39,13 +34,13 @@ public enum FavoringTraitType implements Identified {
     public boolean canFavorType(ITraitType type) {
       return type instanceof AttributeType;
     }
+
+    @Override
+    public ITraitType getSpellFavoringType() {
+      return net.sf.anathema.character.generic.traits.types.AttributeType.Intelligence;
+    }
   },
   VirtueType {
-    @Override
-    public void accept(IFavoringTraitTypeVisitor visitor) {
-      visitor.visitVirtueType(this);
-    }
-
     @Override
     public VirtueType[] getTraitTypes() {
       return net.sf.anathema.character.generic.traits.types.VirtueType.values();
@@ -55,13 +50,13 @@ public enum FavoringTraitType implements Identified {
     public boolean canFavorType(ITraitType type) {
       return false;
     }
+
+    @Override
+    public ITraitType getSpellFavoringType() {
+      throw new UnsupportedOperationException("Ghosts cannot learn Spells.");
+    }
   },
   YoziType {
-    @Override
-    public void accept(IFavoringTraitTypeVisitor visitor) {
-      visitor.visitYoziType(this);
-    }
-
     @Override
     public YoziType[] getTraitTypes() {
       return net.sf.anathema.character.generic.traits.types.YoziType.values();
@@ -71,6 +66,11 @@ public enum FavoringTraitType implements Identified {
     public boolean canFavorType(ITraitType type) {
       return type instanceof YoziType;
     }
+
+    @Override
+    public ITraitType getSpellFavoringType() {
+      return net.sf.anathema.character.generic.traits.types.AbilityType.Occult;
+    }
   };
 
   @Override
@@ -78,9 +78,9 @@ public enum FavoringTraitType implements Identified {
     return name();
   }
 
-  public abstract void accept(IFavoringTraitTypeVisitor visitor);
-
   public abstract ITraitType[] getTraitTypes();
 
   public abstract boolean canFavorType(ITraitType type);
+
+  public abstract ITraitType getSpellFavoringType();
 }
