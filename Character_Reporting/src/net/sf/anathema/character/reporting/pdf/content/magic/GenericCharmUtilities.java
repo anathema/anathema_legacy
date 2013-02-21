@@ -72,7 +72,7 @@ public class GenericCharmUtilities {
     return traits;
   }
 
-  public static IIdentifiedTraitTypeGroup[] getCharmTraitGroups(IGenericCharacter character) {
+  private static IIdentifiedTraitTypeGroup[] getCharmTraitGroups(IGenericCharacter character) {
     FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
     if (type == FavoringTraitType.AbilityType) {
       return character.getAbilityTypeGroups();

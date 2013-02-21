@@ -2,13 +2,10 @@ package net.sf.anathema.character.reporting.pdf.content.magic;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TYPE_LONG_FORM_CUTOFF;
@@ -51,16 +48,7 @@ public class GenericCharmContent implements SubBoxContent {
   }
 
   private List<ITraitType> getTraits() {
-    IIdentifiedTraitTypeGroup[] groups = GenericCharmUtilities.getCharmTraitGroups(character);
-    return getAllTraitsFor(groups);
-  }
-
-  private List<ITraitType> getAllTraitsFor(IIdentifiedTraitTypeGroup[] groups) {
-    List<ITraitType> traits = new ArrayList<>();
-    for (ITraitTypeGroup group : groups) {
-      Collections.addAll(traits, group.getAllGroupTypes());
-    }
-    return traits;
+    return GenericCharmUtilities.getGenericCharmTraits(character);
   }
 
   public int getGenericCharmCount() {

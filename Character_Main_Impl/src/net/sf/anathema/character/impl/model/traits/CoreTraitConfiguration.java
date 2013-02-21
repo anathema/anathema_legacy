@@ -6,17 +6,11 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.traits.backgrounds.BackgroundArbitrator;
 import net.sf.anathema.character.impl.model.traits.backgrounds.BackgroundConfiguration;
-import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
-import net.sf.anathema.character.impl.model.traits.creation.AttributeTypeGroupFactory;
-import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
-import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
-import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
-import net.sf.anathema.character.impl.model.traits.creation.YoziTypeGroupFactory;
+import net.sf.anathema.character.impl.model.traits.creation.*;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.ITrait;
@@ -34,7 +28,6 @@ import net.sf.anathema.characterengine.quality.Quality;
 import net.sf.anathema.exaltedengine.ExaltedEngine;
 import net.sf.anathema.exaltedengine.attributes.Attribute;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
-import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -140,16 +133,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   @Override
   public final IIdentifiedCasteTraitTypeGroup[] getYoziTypeGroups() {
     return yoziTraitGroups;
-  }
-
-  @Override
-  public Identified getAbilityGroupId(AbilityType abilityType) {
-    for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
-      if (group.contains(abilityType)) {
-        return group.getGroupId();
-      }
-    }
-    throw new IllegalStateException("Ability type in no group: " + abilityType); //$NON-NLS-1$
   }
 
   @Override

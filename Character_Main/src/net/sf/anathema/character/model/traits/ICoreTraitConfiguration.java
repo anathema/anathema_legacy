@@ -1,12 +1,10 @@
 package net.sf.anathema.character.model.traits;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.ITraitCollection;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
-import net.sf.anathema.lib.util.Identified;
 
 public interface ICoreTraitConfiguration extends ITraitCollection {
 
@@ -21,6 +19,4 @@ public interface ICoreTraitConfiguration extends ITraitCollection {
   IIdentifiedTraitTypeGroup[] getYoziTypeGroups();
 
   IFavorableTrait[] getAllAbilities();
-
-  Identified getAbilityGroupId(AbilityType abilityType);
 }
