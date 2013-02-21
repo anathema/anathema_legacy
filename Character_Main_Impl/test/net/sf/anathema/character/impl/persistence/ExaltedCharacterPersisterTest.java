@@ -14,8 +14,6 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
-import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
 import net.sf.anathema.lib.exception.PersistenceException;
 import org.junit.Before;
 import org.junit.Test;
