@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.pdf.content.magic;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
@@ -9,6 +8,7 @@ import net.sf.anathema.character.reporting.pdf.content.SubBoxContent;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TYPE_LONG_FORM_CUTOFF;
@@ -51,30 +51,14 @@ public class GenericCharmContent implements SubBoxContent {
   }
 
   private List<ITraitType> getTraits() {
-    IIdentifiedTraitTypeGroup[] groups = getCharmTraitGroups();
+    IIdentifiedTraitTypeGroup[] groups = GenericCharmUtilities.getCharmTraitGroups(character);
     return getAllTraitsFor(groups);
-  }
-
-  private IIdentifiedTraitTypeGroup[] getCharmTraitGroups() {
-    FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
-    if (type == FavoringTraitType.AbilityType) {
-      return character.getAbilityTypeGroups();
-    }
-    if (type == FavoringTraitType.AttributeType) {
-      return character.getAttributeTypeGroups();
-    }
-    if (type == FavoringTraitType.YoziType) {
-      return character.getYoziTypeGroups();
-    }
-    return new IIdentifiedTraitTypeGroup[0];
   }
 
   private List<ITraitType> getAllTraitsFor(IIdentifiedTraitTypeGroup[] groups) {
     List<ITraitType> traits = new ArrayList<>();
     for (ITraitTypeGroup group : groups) {
-      for (ITraitType trait : group.getAllGroupTypes()) {
-        traits.add(trait);
-      }
+      Collections.addAll(traits, group.getAllGroupTypes());
     }
     return traits;
   }

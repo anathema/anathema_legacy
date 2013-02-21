@@ -43,8 +43,8 @@ public class GenericCharmUtilities {
     List<IMagicStats> genericCharmStats = new ArrayList<>();
     ICharm[] charms = character.getGenericCharms();
     for (ICharm charm : charms) {
-        IMagicStats stats = new GenericCharmStats(charm, character);
-        if (!genericCharmStats.contains(stats)) genericCharmStats.add(stats);
+      IMagicStats stats = new GenericCharmStats(charm, character);
+      if (!genericCharmStats.contains(stats)) genericCharmStats.add(stats);
     }
     return genericCharmStats.toArray(new IMagicStats[genericCharmStats.size()]);
   }
@@ -64,21 +64,25 @@ public class GenericCharmUtilities {
   }
 
   public static List<ITraitType> getGenericCharmTraits(IGenericCharacter character) {
-    FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
     List<ITraitType> traits = new ArrayList<>();
-    IIdentifiedTraitTypeGroup[] list = null;
-    if (type == FavoringTraitType.AbilityType) {
-      list = character.getAbilityTypeGroups();
-    }
-    if (type == FavoringTraitType.AttributeType) {
-      list = character.getAttributeTypeGroups();
-    }
-    if (type == FavoringTraitType.YoziType) {
-      list = character.getYoziTypeGroups();
-    }
+    IIdentifiedTraitTypeGroup[] list = getCharmTraitGroups(character);
     for (ITraitTypeGroup group : list) {
       Collections.addAll(traits, group.getAllGroupTypes());
     }
     return traits;
+  }
+
+  public static IIdentifiedTraitTypeGroup[] getCharmTraitGroups(IGenericCharacter character) {
+    FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
+    if (type == FavoringTraitType.AbilityType) {
+      return character.getAbilityTypeGroups();
+    }
+    if (type == FavoringTraitType.AttributeType) {
+      return character.getAttributeTypeGroups();
+    }
+    if (type == FavoringTraitType.YoziType) {
+      return character.getYoziTypeGroups();
+    }
+    return new IIdentifiedTraitTypeGroup[0];
   }
 }
