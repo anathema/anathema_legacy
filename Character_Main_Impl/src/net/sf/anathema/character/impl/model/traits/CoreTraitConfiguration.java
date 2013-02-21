@@ -42,7 +42,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private final BackgroundConfiguration backgrounds;
   private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
-  private final IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups;
   private final SpecialtiesConfiguration specialtyConfiguration;
   private final Persona persona = new ExaltedEngine().createCharacter();
 
@@ -52,8 +51,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
             template.getAbilityGroups());
     this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(template.getCasteCollection(),
             template.getAttributeGroups());
-    this.yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(template.getCasteCollection(),
-            template.getYoziGroups());
     DefaultTraitFactory traitFactory = new DefaultTraitFactory(modelContext.getTraitContext(),
             template.getTraitTemplateCollection(), template.getAdditionalRules().getAdditionalTraitRules());
     this.favorableTraitFactory = new FavorableTraitFactory(modelContext.getTraitContext(),
@@ -94,6 +91,8 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   }
 
   private void addYozis(ICharacterTemplate template) {
+    IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(template.getCasteCollection(),
+            template.getYoziGroups());
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredYoziIncrementChecker(template, this);
     addFavorableTraits(yoziTraitGroups, incrementChecker);
   }
@@ -128,11 +127,6 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   @Override
   public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
     return attributeTraitGroups;
-  }
-
-  @Override
-  public final IIdentifiedCasteTraitTypeGroup[] getYoziTypeGroups() {
-    return yoziTraitGroups;
   }
 
   @Override

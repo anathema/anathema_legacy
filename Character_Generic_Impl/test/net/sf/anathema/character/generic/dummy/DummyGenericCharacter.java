@@ -276,11 +276,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups() {
-    return null;
-  }
-
-  @Override
   public int getLearnCount(String charmName) {
     return 0;
   }

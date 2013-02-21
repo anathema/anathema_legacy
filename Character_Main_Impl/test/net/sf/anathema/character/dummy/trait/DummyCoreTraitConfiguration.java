@@ -79,11 +79,6 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   }
   
   @Override
-  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups() {
-	    return null;
-	  }
-
-  @Override
   public ISpecialtiesConfiguration getSpecialtyConfiguration() {
     if (specialtyConfiguration == null) {
       specialtyConfiguration = new SpecialtiesConfiguration(

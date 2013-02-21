@@ -65,8 +65,12 @@ public class GenericCharmUtilities {
 
   public static List<ITraitType> getGenericCharmTraits(IGenericCharacter character) {
     List<ITraitType> traits = new ArrayList<>();
-    IIdentifiedTraitTypeGroup[] list = getCharmTraitGroups(character);
-    for (ITraitTypeGroup group : list) {
+    FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
+    if (type == FavoringTraitType.YoziType) {
+      Collections.addAll(traits, type.getTraitTypes());
+      return traits;
+    }
+    for (ITraitTypeGroup group : getCharmTraitGroups(character)) {
       Collections.addAll(traits, group.getAllGroupTypes());
     }
     return traits;
@@ -79,9 +83,6 @@ public class GenericCharmUtilities {
     }
     if (type == FavoringTraitType.AttributeType) {
       return character.getAttributeTypeGroups();
-    }
-    if (type == FavoringTraitType.YoziType) {
-      return character.getYoziTypeGroups();
     }
     return new IIdentifiedTraitTypeGroup[0];
   }

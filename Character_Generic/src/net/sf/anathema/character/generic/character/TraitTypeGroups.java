@@ -6,6 +6,4 @@ public interface TraitTypeGroups {
   IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
 
   IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
-
-  IIdentifiedTraitTypeGroup[] getYoziTypeGroups();
 }

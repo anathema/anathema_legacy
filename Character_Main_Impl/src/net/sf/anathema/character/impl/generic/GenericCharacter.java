@@ -295,11 +295,6 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   @Override
-  public IIdentifiedTraitTypeGroup[] getYoziTypeGroups() {
-    return getTraitConfiguration().getYoziTypeGroups();
-  }
-
-  @Override
   public int getSpentExperiencePoints() {
     return new ExperiencePointManagement(character).getTotalCosts();
   }
