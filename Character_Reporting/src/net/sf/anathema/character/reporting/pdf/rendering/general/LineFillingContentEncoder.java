@@ -38,7 +38,7 @@ public class LineFillingContentEncoder<C extends ListSubBoxContent> extends Abst
     return graphics.createTableFont();
   }
 
-  private final void addToPhrase(C content, Font font, Phrase phrase) {
+  private void addToPhrase(C content, Font font, Phrase phrase) {
     for (Iterator<String> entry = content.getPrintEntries().iterator(); entry.hasNext(); ) {
       String text = entry.next();
       text += entry.hasNext() ? ", " : ""; //$NON-NLS-1$ //$NON-NLS-2$

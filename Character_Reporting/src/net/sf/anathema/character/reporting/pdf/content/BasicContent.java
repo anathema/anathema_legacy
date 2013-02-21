@@ -26,7 +26,7 @@ public class BasicContent implements SubContent {
   }
 
   public boolean isOfType(ICharacterType type) {
-    return getCharacterType() == type;
+    return getCharacterType().equals(type);
   }
 
   public IAdditionalModel getAdditionalModel(String id) {

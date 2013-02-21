@@ -9,11 +9,7 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IGenericCombo;
-import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.magic.*;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
@@ -38,6 +34,7 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
+import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.ContractFailedException;
 import net.sf.anathema.lib.util.IdentifiedInteger;
@@ -56,7 +53,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IGenericTraitCollection getTraitCollection() {
-    return character.getTraitConfiguration();
+    return getTraitConfiguration();
   }
 
   @Override
@@ -123,7 +120,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
-    ISpecialtiesConfiguration specialtyConfiguration = character.getTraitConfiguration().getSpecialtyConfiguration();
+    ISpecialtiesConfiguration specialtyConfiguration = getTraitConfiguration().getSpecialtyConfiguration();
     return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
   }
 
@@ -143,7 +140,7 @@ public class GenericCharacter implements IGenericCharacter {
       }
     }
     CollectSubTraitVisitor collectVisitor = new CollectSubTraitVisitor();
-    character.getTraitConfiguration().getTrait(traitType).accept(collectVisitor);
+    getTraitConfiguration().getTrait(traitType).accept(collectVisitor);
     return collectVisitor.subtraits;
   }
 
@@ -218,7 +215,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IGenericTrait[] getBackgrounds() {
-    return character.getTraitConfiguration().getBackgrounds().getBackgrounds();
+    return getTraitConfiguration().getBackgrounds().getBackgrounds();
   }
 
   @Override
@@ -278,7 +275,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public int getEssenceCap(boolean modified) {
-    IDefaultTrait essence = (IDefaultTrait) character.getTraitConfiguration().getTrait(OtherTraitType.Essence);
+    IDefaultTrait essence = (IDefaultTrait) getTraitConfiguration().getTrait(OtherTraitType.Essence);
     return modified ? essence.getModifiedMaximalValue() : essence.getUnmodifiedMaximalValue();
   }
 
@@ -289,17 +286,17 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
-    return character.getTraitConfiguration().getAbilityTypeGroups();
+    return getTraitConfiguration().getAbilityTypeGroups();
   }
 
   @Override
   public IIdentifiedTraitTypeGroup[] getAttributeTypeGroups() {
-    return character.getTraitConfiguration().getAttributeTypeGroups();
+    return getTraitConfiguration().getAttributeTypeGroups();
   }
 
   @Override
   public IIdentifiedTraitTypeGroup[] getYoziTypeGroups() {
-    return character.getTraitConfiguration().getYoziTypeGroups();
+    return getTraitConfiguration().getYoziTypeGroups();
   }
 
   @Override
@@ -339,7 +336,7 @@ public class GenericCharacter implements IGenericCharacter {
     }
     return learnedEffectIds.toArray(new String[learnedEffectIds.size()]);
   }
-  
+
   @Override
   public ICharm[] getGenericCharms() {
     List<ICharm> genericCharms = new ArrayList<>();
@@ -361,7 +358,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   @Override
   public void addSpecialtyListChangeListener(final IChangeListener listener) {
-    ISpecialtiesConfiguration config = character.getTraitConfiguration().getSpecialtyConfiguration();
+    ISpecialtiesConfiguration config = getTraitConfiguration().getSpecialtyConfiguration();
     for (ITraitReference trait : config.getAllTraits())
       config.getSpecialtiesContainer(trait).addSubTraitListener(new ISubTraitListener() {
         @Override
@@ -378,5 +375,9 @@ public class GenericCharacter implements IGenericCharacter {
           listener.changeOccurred();
         }
       });
+  }
+
+  private ICoreTraitConfiguration getTraitConfiguration() {
+    return character.getTraitConfiguration();
   }
 }

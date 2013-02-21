@@ -10,13 +10,12 @@ import net.sf.anathema.character.generic.template.magic.IGenericCharmConfigurati
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.IdentifiedInteger;
 
 import java.util.List;
 
-public interface IGenericCharacter extends ILimitationContext, IMagicCollection, IGenericCharmConfiguration {
+public interface IGenericCharacter extends ILimitationContext, IMagicCollection, IGenericCharmConfiguration, TraitTypeGroups{
 
   IGenericDescription getDescription();
 
@@ -59,12 +58,6 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection,
   boolean isExperienced();
 
   int getPainTolerance();
-
-  IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
-
-  IIdentifiedTraitTypeGroup[] getAttributeTypeGroups();
-
-  IIdentifiedTraitTypeGroup[] getYoziTypeGroups();
 
   int getTotalExperiencePoints();
 

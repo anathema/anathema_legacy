@@ -4,8 +4,6 @@ import net.sf.anathema.character.infernal.InfernalCharacterModule;
 import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.EncoderIds;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.AbstractEncoderFactory;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncodingMetrics;
-import net.sf.anathema.character.reporting.pdf.rendering.boxes.PreferredHeight;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.RegisteredEncoderFactory;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -15,12 +13,6 @@ public class YoziListEncoderFactory extends AbstractEncoderFactory {
 
   public YoziListEncoderFactory() {
     super(EncoderIds.YOZI_LIST);
-    setPreferredHeight(new PreferredHeight() {
-      @Override
-      public float getValue(EncodingMetrics metrics, float width) {
-        return new YoziListEncoder().getPreferredHeight();
-      }
-    });
   }
 
   @Override
