@@ -8,7 +8,4 @@ public class InfernalPatronTemplate implements IAdditionalTemplate {
   public String getId() {
     return ID;
   }
-
-  public InfernalPatronTemplate() {
-  }
 }

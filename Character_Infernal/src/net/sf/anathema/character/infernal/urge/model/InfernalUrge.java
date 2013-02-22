@@ -5,17 +5,14 @@ import net.sf.anathema.character.library.virtueflaw.model.VirtueFlaw;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
-public class InfernalUrge extends VirtueFlaw
-{
-	private final ITextualDescription description = new SimpleTextualDescription(""); //$NON-NLS-1$
-	
-	public InfernalUrge(ICharacterModelContext context)
-	{
-		super(context);
-	}
-	
-	public ITextualDescription getDescription()
-	{
-	    return description;
-	}
+public class InfernalUrge extends VirtueFlaw {
+  private final ITextualDescription description = new SimpleTextualDescription(""); //$NON-NLS-1$
+
+  public InfernalUrge(ICharacterModelContext context) {
+    super(context);
+  }
+
+  public ITextualDescription getDescription() {
+    return description;
+  }
 }

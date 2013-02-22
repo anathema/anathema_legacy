@@ -15,9 +15,4 @@ public enum InfernalCaste implements ICasteType {
   public String toString() {
     return name();
   }
-  
-  public static ICasteType[] casteList()
-  {
-	  return new ICasteType[] { Slayer, Malefactor, Defiler, Scourge, Fiend };
-  }
 }

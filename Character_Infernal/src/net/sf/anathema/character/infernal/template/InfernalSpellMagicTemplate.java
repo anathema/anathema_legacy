@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.traits.types.YoziType;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("UnusedDeclaration")
 public class InfernalSpellMagicTemplate extends SpellMagicTemplate {
   
   private static final String NECROMANCY_INITIATION = "Infernal.UltimateDarknessInternalization"; //$NON-NLS-1$

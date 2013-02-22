@@ -10,7 +10,6 @@ import org.dom4j.Element;
 
 public class InfernalUrgePersister extends VirtueFlawPersister {
 
-  public static final String TAG_URGE = "urge"; //$NON-NLS-1$
   public static final String TAG_DESCRIPTION = "description";
   private final TextPersister textPersister = new TextPersister();
 
@@ -23,15 +22,12 @@ public class InfernalUrgePersister extends VirtueFlawPersister {
 
   @Override
   protected void loadVirtueFlaw(Element flawElement, IVirtueFlaw virtueFlaw) {
-	try
-	{
-	    super.loadVirtueFlaw(flawElement, virtueFlaw);
-	    InfernalUrge infernalUrge = (InfernalUrge) virtueFlaw;
-	    textPersister.restoreTextualDescription(flawElement, TAG_DESCRIPTION, infernalUrge.getDescription());
-	}
-	catch (PersistenceException e)
-	{
-		e.printStackTrace();
-	}
+    try {
+      super.loadVirtueFlaw(flawElement, virtueFlaw);
+      InfernalUrge infernalUrge = (InfernalUrge) virtueFlaw;
+      textPersister.restoreTextualDescription(flawElement, TAG_DESCRIPTION, infernalUrge.getDescription());
+    } catch (PersistenceException e) {
+      e.printStackTrace();
+    }
   }
 }

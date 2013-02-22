@@ -14,6 +14,4 @@ public interface IInfernalPatronModel extends IAdditionalModel {
   String getFavoredYozi();
   
   void setFavoredYozi(String yozi);
-
-  void addCharacterChangeListener(ICharacterChangeListener listener);
 }
