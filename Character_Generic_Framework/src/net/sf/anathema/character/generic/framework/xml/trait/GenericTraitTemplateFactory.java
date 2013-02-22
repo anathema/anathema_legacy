@@ -25,7 +25,7 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
   public ITraitTemplate createBackgroundTemplate(IBackgroundTemplate template) {
     return backgroundPool.getTemplate(template);
   }
-  
+
   @Override
   public ITraitTemplate createDefaultBackgroundTemplate() {
     return backgroundPool.getDefaultTemplate();
@@ -55,11 +55,10 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
   public ITraitTemplate createAbilityTemplate(AbilityType type) {
     return abilitiesPool.getTemplate(type);
   }
-  
+
   @Override
-  public ITraitTemplate createYoziTemplate(YoziType type)
-  {
-	return SimpleTraitTemplate.createEssenceLimitedTemplate(0);
+  public ITraitTemplate createYoziTemplate(YoziType type) {
+    return SimpleTraitTemplate.createEssenceLimitedTemplate(0);
   }
 
   public void setBackgroundPool(GenericTraitTemplatePool backgroundPool) {
@@ -90,7 +89,7 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
   public GenericTraitTemplateFactory clone() {
     GenericTraitTemplateFactory clone;
     try {
-      clone = (GenericTraitTemplateFactory)super.clone();
+      clone = (GenericTraitTemplateFactory) super.clone();
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }

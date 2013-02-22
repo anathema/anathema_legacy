@@ -140,16 +140,18 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
 
   private void setYoziGroups(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element yoziGroupElement = generalElement.element(TAG_YOZI_GROUPS);
+    AllYoziTraitTypeGroup yoziTraitTypeGroup = AllYoziTraitTypeGroup.getInstance();
     if (yoziGroupElement == null) {
-      GenericGroupedTraitTypeProvider provider = new GenericGroupedTraitTypeProvider(AllYoziTraitTypeGroup.getInstance());
+      GenericGroupedTraitTypeProvider provider = new GenericGroupedTraitTypeProvider(yoziTraitTypeGroup);
       List<String> emptyList = new ArrayList<>();
-      for (YoziType yozi : YoziType.values())
+      for (YoziType yozi : YoziType.values()) {
         provider.addGroupedAbilityType(yozi.getId(), yozi.getId(), null, emptyList);
+      }
       characterTemplate.setYoziGroups(provider.getTraitTypeGroups());
       return;
     }
     IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
-    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, AllYoziTraitTypeGroup.getInstance());
+    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, yoziTraitTypeGroup);
     GenericGroupedTraitTypeProvider yoziGroups = parser.parseTemplate(yoziGroupElement);
     characterTemplate.setYoziGroups(yoziGroups.getTraitTypeGroups());
   }

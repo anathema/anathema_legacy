@@ -49,8 +49,11 @@ public class InfernalPatronModel extends AbstractAdditionalModelAdapter implemen
 
   @Override
   public String getFavoredYozi() {
-    for (IFavorableDefaultTrait trait : allYozis)
-      if (trait.getFavorization().isFavored()) return trait.getType().getId();
+    for (IFavorableDefaultTrait trait : allYozis) {
+      if (trait.getFavorization().isFavored()) {
+        return trait.getType().getId();
+      }
+    }
     return null;
   }
 

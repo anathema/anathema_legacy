@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AbstractTraitTypeVisitor;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
@@ -101,7 +102,7 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   @Override
   public ITraitCostModifier getCostModifier(ITraitType type) {
     final ITraitCostModifier[] modifier = new ITraitCostModifier[1];
-    type.accept(new TraitTypeAdapter() {
+    type.accept(new AbstractTraitTypeVisitor() {
       @Override
       public void visitBackground(IBackgroundTemplate template) {
         modifier[0] = Functions.forMap(backgroundCostModifiers, new DefaultTraitCostModifier()).apply(template.getId());

@@ -29,11 +29,10 @@ public abstract class AbstractTraitTypeVisitor implements ITraitTypeVisitor {
   public void visitWillpower(OtherTraitType type) {
     //Nothing to do
   }
-  
+
   @Override
-  public void visitYozi(YoziType type)
-  {
-	//Nothing to do
+  public void visitYozi(YoziType type) {
+    //Nothing to do
   }
 
   @Override
