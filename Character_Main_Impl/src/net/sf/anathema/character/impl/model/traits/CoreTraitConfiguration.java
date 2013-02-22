@@ -1,8 +1,12 @@
 package net.sf.anathema.character.impl.model.traits;
 
+import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -47,14 +51,17 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   public CoreTraitConfiguration(ICharacterTemplate template, ICharacterModelContext modelContext,
                                 IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
-    this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(template.getCasteCollection(),
+    ICasteCollection casteCollection = template.getCasteCollection();
+    this.abilityTraitGroups = new AbilityTypeGroupFactory().createTraitGroups(casteCollection,
             template.getAbilityGroups());
-    this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(template.getCasteCollection(),
+    this.attributeTraitGroups = new AttributeTypeGroupFactory().createTraitGroups(casteCollection,
             template.getAttributeGroups());
-    DefaultTraitFactory traitFactory = new DefaultTraitFactory(modelContext.getTraitContext(),
-            template.getTraitTemplateCollection(), template.getAdditionalRules().getAdditionalTraitRules());
-    this.favorableTraitFactory = new FavorableTraitFactory(modelContext.getTraitContext(),
-            template.getTraitTemplateCollection(), modelContext.getAdditionalRules().getAdditionalTraitRules(),
+    ITraitContext traitContext = modelContext.getTraitContext();
+    ITraitTemplateCollection traitTemplateCollection = template.getTraitTemplateCollection();
+    IAdditionalTraitRules additionalTraitRules = template.getAdditionalRules().getAdditionalTraitRules();
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, traitTemplateCollection,
+            additionalTraitRules);
+    this.favorableTraitFactory = new FavorableTraitFactory(traitContext, traitTemplateCollection, additionalTraitRules,
             modelContext.getBasicCharacterContext(), modelContext.getCharacterListening());
     addTrait(traitFactory.createTrait(OtherTraitType.Essence));
     addTraits(traitFactory.createTraits(VirtueType.values()));
@@ -63,14 +70,14 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addYozis(template);
     IDefaultTrait willpower = TraitCollectionUtilities.getWillpower(this);
     IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(this);
-    if (template.getAdditionalRules().getAdditionalTraitRules().isWillpowerVirtueBased()) {
+    if (additionalTraitRules.isWillpowerVirtueBased()) {
       new WillpowerListening().initListening(willpower, virtues);
     } else {
       willpower.setModifiedCreationRange(5, 10);
     }
     addAbilities(template);
-    this.backgrounds = new BackgroundConfiguration(new BackgroundArbitrator(template),
-            template.getTraitTemplateCollection(), modelContext.getTraitContext(), backgroundRegistry);
+    this.backgrounds = new BackgroundConfiguration(new BackgroundArbitrator(template), traitTemplateCollection,
+            traitContext, backgroundRegistry);
     this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
     getTrait(OtherTraitType.Essence).addCurrentValueListener(
             new EssenceLimitationListener(new AllTraits(), modelContext));
@@ -91,8 +98,8 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   }
 
   private void addYozis(ICharacterTemplate template) {
-    IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(template.getCasteCollection(),
-            template.getYoziGroups());
+    IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(
+            template.getCasteCollection(), template.getYoziGroups());
     IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredYoziIncrementChecker(template, this);
     addFavorableTraits(yoziTraitGroups, incrementChecker);
   }
