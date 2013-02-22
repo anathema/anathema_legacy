@@ -30,7 +30,7 @@ public class InfernalPatronPresenter implements Presenter {
   private final IInfernalPatronModel model;
   private final ICharacterModelContext context;
   private final ICharacterListening characterListening;
-  private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView<?>> traitViewsByTrait = new IdentityMapping<>();
+  private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView<?>> viewsByYozi = new IdentityMapping<>();
 
   public InfernalPatronPresenter(IResources resources, IInfernalPatronView view, IInfernalPatronModel model) {
     this.resources = resources;
@@ -59,7 +59,7 @@ public class InfernalPatronPresenter implements Presenter {
       yoziView.addButtonSelectedListener(new IBooleanValueChangedListener() {
         @Override
         public void valueChanged(boolean newValue) {
-          yozi.getFavorization().setFavored(newValue);
+          model.setPatronYozi(yozi.getType(), newValue);
         }
       });
       yozi.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
@@ -69,8 +69,8 @@ public class InfernalPatronPresenter implements Presenter {
           setOverviewData(favoredView);
         }
       });
-      traitViewsByTrait.put(yozi, yoziView);
-      updateView(yoziView, yozi.getFavorization().getFavorableState());
+      viewsByYozi.put(yozi, yoziView);
+      updateView(yoziView, model.getFavorableState(yozi.getType()));
     }
     setOverviewData(favoredView);
     characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {
@@ -83,16 +83,19 @@ public class InfernalPatronPresenter implements Presenter {
   }
 
   private void updateButtons() {
+    boolean characterIsExperienced = context.getBasicCharacterContext().isExperienced();
     for (IFavorableDefaultTrait yozi : model.getAllYozis()) {
-      IToggleButtonTraitView<?> view = traitViewsByTrait.get(yozi);
-      boolean disabled = context.getBasicCharacterContext().isExperienced() || yozi.getFavorization().isCaste();
-      boolean favored = yozi.getFavorization().isCasteOrFavored();
+      boolean isPatronYozi = model.isPatronYozi(yozi.getType());
+      boolean isCasteYozi = model.isCasteYozi(yozi.getType());
+      boolean favored = isPatronYozi || isCasteYozi;
+      boolean disabled = characterIsExperienced || isCasteYozi;
+      IToggleButtonTraitView<?> view = viewsByYozi.get(yozi);
       view.setButtonState(favored, !disabled);
     }
   }
 
   private void setOverviewData(ILabelledAlotmentView favoredView) {
-    favoredView.setValue(model.getFavoredYozi() == null ? 0 : 1);
+    favoredView.setValue(model.getPatronYozi() == null ? 0 : 1);
     favoredView.setAlotment(1);
   }
 }

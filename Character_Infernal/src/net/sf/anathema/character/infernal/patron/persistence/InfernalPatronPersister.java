@@ -2,6 +2,7 @@ package net.sf.anathema.character.infernal.patron.persistence;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronModel;
 import net.sf.anathema.lib.exception.PersistenceException;
 
@@ -16,7 +17,7 @@ public class InfernalPatronPersister implements IAdditionalPersister {
   public void save(Element parent, IAdditionalModel model) {
     Element element = parent.addElement(TAG_PATRON_YOZI);
     IInfernalPatronModel patronModel = (IInfernalPatronModel) model;
-    String favored = patronModel.getFavoredYozi();
+    String favored = patronModel.getPatronYozi();
     if (favored != null) {
       element.addAttribute(ATTRIB_FAVORED, favored);
     }
@@ -28,7 +29,7 @@ public class InfernalPatronPersister implements IAdditionalPersister {
     Element element = parent.element(TAG_PATRON_YOZI);
     String favored = element.attributeValue(ATTRIB_FAVORED);
     if (favored != null) {
-      patronModel.setFavoredYozi(favored);
+      patronModel.setPatronYozi(YoziType.valueOf(favored), true);
     }
   }
 }
