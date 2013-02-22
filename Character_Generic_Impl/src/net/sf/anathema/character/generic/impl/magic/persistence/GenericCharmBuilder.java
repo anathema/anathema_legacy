@@ -16,13 +16,13 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, 
   private final GenericAttributeRequirementBuilder attributeRequirementBuilder;
   private final GenericComboRulesBuilder comboBuilder;
 
-  public GenericCharmBuilder(
-          GenericIdStringBuilder idBuilder,
-          GenericTraitPrerequisitesBuilder traitBuilder,
-          GenericAttributeRequirementBuilder attributeRequirementBuilder,
-          GenericComboRulesBuilder comboBuilder,
-          GenericCharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes, SpecialCharmBuilder specialCharmBuilder) {
-    super(idBuilder, traitBuilder, attributeRequirementBuilder, comboBuilder, charmPrerequisiteBuilder, characterTypes, specialCharmBuilder);
+  public GenericCharmBuilder(GenericIdStringBuilder idBuilder, GenericTraitPrerequisitesBuilder traitBuilder,
+                             GenericAttributeRequirementBuilder attributeRequirementBuilder,
+                             GenericComboRulesBuilder comboBuilder,
+                             GenericCharmPrerequisiteBuilder charmPrerequisiteBuilder, CharacterTypes characterTypes,
+                             SpecialCharmBuilder specialCharmBuilder) {
+    super(idBuilder, traitBuilder, attributeRequirementBuilder, comboBuilder, charmPrerequisiteBuilder, characterTypes,
+            specialCharmBuilder);
     this.idBuilder = idBuilder;
     this.traitBuilder = traitBuilder;
     this.attributeRequirementBuilder = attributeRequirementBuilder;
@@ -38,10 +38,9 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder, 
     comboBuilder.setType(type);
     charmPrerequisiteBuilder.setType(type);
   }
-  
+
   @Override
-  protected boolean isBuildingGenericCharms()
-  {
-	  return true;
+  protected boolean isBuildingGenericCharms() {
+    return true;
   }
 }

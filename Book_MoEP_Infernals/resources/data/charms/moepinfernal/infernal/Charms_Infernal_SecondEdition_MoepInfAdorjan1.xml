@@ -24,7 +24,6 @@
 -->
 <charmlist xmlns="http://anathema.sourceforge.net/charms">
      <charm id="Infernal.Wind-BornStride" exalt="Infernal" group="Wind">    
-<!--Can be bought a number of times equal to your Essence -->	 
           <prerequisite>
                <trait id="Adorjan" value="0" />
                <essence value="1" />
