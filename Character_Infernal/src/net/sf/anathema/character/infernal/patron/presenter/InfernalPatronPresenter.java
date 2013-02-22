@@ -11,7 +11,6 @@ import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
-import net.sf.anathema.character.library.trait.favorable.IFavorableStateVisitor;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.presenter.FavorableTraitViewProperties;
@@ -21,6 +20,8 @@ import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.Presenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
+
+import static net.sf.anathema.character.presenter.FavorableTraitConfigurationPresenter.updateView;
 
 public class InfernalPatronPresenter implements Presenter {
 
@@ -88,25 +89,6 @@ public class InfernalPatronPresenter implements Presenter {
       boolean favored = yozi.getFavorization().isCasteOrFavored();
       view.setButtonState(favored, !disabled);
     }
-  }
-
-  private void updateView(final IToggleButtonTraitView<?> patronView, FavorableState state) {
-    state.accept(new IFavorableStateVisitor() {
-      @Override
-      public void visitDefault(FavorableState visitedState) {
-        patronView.setButtonState(false, true);
-      }
-
-      @Override
-      public void visitFavored(FavorableState visitedState) {
-        patronView.setButtonState(true, true);
-      }
-
-      @Override
-      public void visitCaste(FavorableState visitedState) {
-        patronView.setButtonState(true, false);
-      }
-    });
   }
 
   private void setOverviewData(ILabelledAlotmentView favoredView) {

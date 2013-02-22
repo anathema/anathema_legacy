@@ -10,7 +10,6 @@ import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.trait.IModifiableCapTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
-import net.sf.anathema.character.library.trait.favorable.IFavorableStateVisitor;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
@@ -22,6 +21,10 @@ import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
+
+import static net.sf.anathema.character.library.trait.favorable.FavorableState.Caste;
+import static net.sf.anathema.character.library.trait.favorable.FavorableState.Default;
+import static net.sf.anathema.character.library.trait.favorable.FavorableState.Favored;
 
 public class FavorableTraitConfigurationPresenter {
 
@@ -116,22 +119,9 @@ public class FavorableTraitConfigurationPresenter {
     return traitView;
   }
 
-  private void updateView(final IToggleButtonTraitView<?> abilityView, FavorableState state) {
-    state.accept(new IFavorableStateVisitor() {
-      @Override
-      public void visitDefault(FavorableState visitedState) {
-        abilityView.setButtonState(false, true);
-      }
-
-      @Override
-      public void visitFavored(FavorableState visitedState) {
-        abilityView.setButtonState(true, true);
-      }
-
-      @Override
-      public void visitCaste(FavorableState visitedState) {
-        abilityView.setButtonState(true, false);
-      }
-    });
+  public static void updateView(final IToggleButtonTraitView<?> view, FavorableState state) {
+    boolean select = state == Favored || state == Caste;
+    boolean enable = state == Favored || state == Default;
+    view.setButtonState(select, enable);
   }
 }
