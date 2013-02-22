@@ -71,6 +71,6 @@ public class InfernalPatronModel extends AbstractAdditionalModelAdapter implemen
 
   @Override
   public void addChangeListener(IChangeListener listener) {
-    // TODO Auto-generated method stub
+    //Nothing to do (apparently)
   }
 }
