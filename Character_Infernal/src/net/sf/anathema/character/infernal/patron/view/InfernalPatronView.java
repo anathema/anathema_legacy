@@ -38,11 +38,9 @@ public class InfernalPatronView implements IView, IInfernalPatronView {
   }
 
   @Override
-  public IToggleButtonTraitView<SimpleTraitView> addIntValueView(
-      String label,
-      IntegerViewFactory factory,
-      IIconToggleButtonProperties viewProperties,
-      boolean selected) {
+  public IToggleButtonTraitView<SimpleTraitView> addYoziSelectionView(String label, IntegerViewFactory factory,
+                                                                      IIconToggleButtonProperties viewProperties,
+                                                                      boolean selected) {
     return groupedTraitView.addTraitView(label, 0, 0, null, selected, viewProperties, factory);
   }
 

@@ -29,7 +29,7 @@ public class InfernalPatronPresenter implements Presenter {
   private final IInfernalPatronModel model;
   private final ICharacterModelContext context;
   private final ICharacterListening characterListening;
-  private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView< ? >> traitViewsByTrait = new IdentityMapping<>();
+  private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView<?>> traitViewsByTrait = new IdentityMapping<>();
 
   public InfernalPatronPresenter(IResources resources, IInfernalPatronView view, IInfernalPatronModel model) {
     this.resources = resources;
@@ -41,78 +41,73 @@ public class InfernalPatronPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
+    IOverviewCategory overview = view.createOverview(resources.getString("Astrology.Overview.Title"));
+    view.setOverview(overview);
     final ILabelledAlotmentView favoredView = overview.addAlotmentView(
-        resources.getString("Infernal.Overview.FavoredYozis"), 1); //$NON-NLS-1$
+            resources.getString("Infernal.Overview.FavoredYozis"), 1);
     IntegerViewFactory factory = IntValueDisplayFactoryPrototype.createWithMarkerForCharacterType(resources,
             InfernalCharacterModule.type);
-    view.startGroup(resources.getString("Yozis.Yozis")); //$NON-NLS-1$
+    view.startGroup(resources.getString("Yozis.Yozis"));
     for (final IFavorableDefaultTrait yozi : model.getAllYozis()) {
-        String yoziName = resources.getString(yozi.getType().getId()); //$NON-NLS-1$
-        IIconToggleButtonProperties properties =
-        	new FavorableTraitViewProperties(context.getPresentationProperties(),
-        			context.getBasicCharacterContext(), yozi, resources);
-        final IToggleButtonTraitView< ? > yoziView = view.addIntValueView(
-            yoziName,
-            factory,
-            properties,
-            yozi.getFavorization().isCasteOrFavored());
-        new TraitPresenter(yozi, yoziView).initPresentation();
-        yoziView.addButtonSelectedListener(new IBooleanValueChangedListener() {
-            @Override
-            public void valueChanged(boolean newValue) {
-              yozi.getFavorization().setFavored(newValue);
-            }
-          });
-        yozi.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
-            @Override
-            public void favorableStateChanged(FavorableState state) {
-              updateView(yoziView, state);
-              setOverviewData(favoredView);
-            }
-          });
-        traitViewsByTrait.put(yozi, yoziView);
-        updateView(yoziView, yozi.getFavorization().getFavorableState());
-      }
-    view.setOverview(overview);
-    setOverviewData(favoredView);
-    
-    characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {
+      String yoziName = resources.getString(yozi.getType().getId());
+      IIconToggleButtonProperties properties = new FavorableTraitViewProperties(context.getPresentationProperties(),
+              context.getBasicCharacterContext(), yozi, resources);
+      final IToggleButtonTraitView<?> yoziView = view.addYoziSelectionView(yoziName, factory, properties,
+              yozi.getFavorization().isCasteOrFavored());
+      new TraitPresenter(yozi, yoziView).initPresentation();
+      yoziView.addButtonSelectedListener(new IBooleanValueChangedListener() {
         @Override
-        public void experiencedChanged(boolean experienced) {
-          updateButtons();
+        public void valueChanged(boolean newValue) {
+          yozi.getFavorization().setFavored(newValue);
         }
       });
-      updateButtons();
+      yozi.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+        @Override
+        public void favorableStateChanged(FavorableState state) {
+          updateView(yoziView, state);
+          setOverviewData(favoredView);
+        }
+      });
+      traitViewsByTrait.put(yozi, yoziView);
+      updateView(yoziView, yozi.getFavorization().getFavorableState());
+    }
+    setOverviewData(favoredView);
+    characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        updateButtons();
+      }
+    });
+    updateButtons();
   }
-  
+
   private void updateButtons() {
-	    for (IFavorableDefaultTrait yozi : model.getAllYozis()) {
-	      IToggleButtonTraitView< ? > view = traitViewsByTrait.get(yozi);
-	      boolean disabled = context.getBasicCharacterContext().isExperienced() || yozi.getFavorization().isCaste();
-	      boolean favored = yozi.getFavorization().isCasteOrFavored();
-	      view.setButtonState(favored, !disabled);
-	    }
-	  }
-  
-  private void updateView(final IToggleButtonTraitView< ? > patronView, FavorableState state) {
-	    state.accept(new IFavorableStateVisitor() {
-	      @Override
-          public void visitDefault(FavorableState visitedState) {
-	        patronView.setButtonState(false, true);
-	      }
+    for (IFavorableDefaultTrait yozi : model.getAllYozis()) {
+      IToggleButtonTraitView<?> view = traitViewsByTrait.get(yozi);
+      boolean disabled = context.getBasicCharacterContext().isExperienced() || yozi.getFavorization().isCaste();
+      boolean favored = yozi.getFavorization().isCasteOrFavored();
+      view.setButtonState(favored, !disabled);
+    }
+  }
 
-	      @Override
-          public void visitFavored(FavorableState visitedState) {
-	        patronView.setButtonState(true, true);
-	      }
+  private void updateView(final IToggleButtonTraitView<?> patronView, FavorableState state) {
+    state.accept(new IFavorableStateVisitor() {
+      @Override
+      public void visitDefault(FavorableState visitedState) {
+        patronView.setButtonState(false, true);
+      }
 
-	      @Override
-          public void visitCaste(FavorableState visitedState) {
-	        patronView.setButtonState(true, false);
-	      }
-	    });
-	  }
+      @Override
+      public void visitFavored(FavorableState visitedState) {
+        patronView.setButtonState(true, true);
+      }
+
+      @Override
+      public void visitCaste(FavorableState visitedState) {
+        patronView.setButtonState(true, false);
+      }
+    });
+  }
 
   private void setOverviewData(ILabelledAlotmentView favoredView) {
     favoredView.setValue(model.getFavoredYozi() == null ? 0 : 1);

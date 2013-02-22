@@ -9,7 +9,8 @@ public interface IInfernalPatronView {
 
   void startGroup(String groupLabel);
 
-  IToggleButtonTraitView< ? > addIntValueView(String label, IntegerViewFactory factory, IIconToggleButtonProperties properties, boolean selected);
+  IToggleButtonTraitView< ? > addYoziSelectionView(String label, IntegerViewFactory factory,
+                                                   IIconToggleButtonProperties properties, boolean selected);
 
   void setOverview(IOverviewCategory overview);
 
