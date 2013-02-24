@@ -223,7 +223,7 @@ task createReleaseDirectory << {
 task prepareWinJRE(type: Copy) {
   def target = new File('build/jre/win32');
   into target
-  from zipTree(configurations.jreWin.singleFile)
+  from { zipTree(configurations.jreWin.singleFile) }
   onlyIf { !target.exists() }
   doLast {
     ant.delete(includeemptydirs:true, quiet:true) {
@@ -235,7 +235,7 @@ task prepareWinJRE(type: Copy) {
 task prepareMacJRE(type:Copy) {
   def target = new File('build/jre/mac64');
   into target
-  from zipTree(configurations.jreMac.singleFile)
+  from { zipTree(configurations.jreMac.singleFile) }
   onlyIf { !target.exists() }
   doLast {
     ant.delete(includeemptydirs:true, quiet:true) {
