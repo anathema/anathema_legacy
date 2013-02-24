@@ -16,6 +16,8 @@ out/
 Thumbs.db
 Anathema/anathema.properties
 *.log
+/.nb-gradle-properties
+/.nb-gradle/
 
 # Repository
 repository.version
