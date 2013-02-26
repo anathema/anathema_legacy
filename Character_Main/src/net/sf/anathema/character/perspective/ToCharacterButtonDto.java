@@ -32,11 +32,15 @@ public class ToCharacterButtonDto implements Function<PrintNameFile, CharacterBu
     CharacterIdentifier identifier = new CharacterIdentifier(repositoryId);
     ITemplateType templateType = fileScanner.getTemplateType(input);
     Identified casteType = fileScanner.getCasteType(input);
-    GenericPresentationTemplate presentationTemplate = new GenericPresentationTemplate();
-    presentationTemplate.setParentTemplate(templateType);
-    String details = resources.getString(presentationTemplate.getNewActionResource());
+    String details = getDetails(resources, templateType);
     String pathToImage = getPathToImage(templateType, casteType);
     return new CharacterButtonDto(identifier, text, details, pathToImage);
+  }
+
+  public static String getDetails(IStringResourceHandler resources, ITemplateType templateType) {
+    GenericPresentationTemplate presentationTemplate = new GenericPresentationTemplate();
+    presentationTemplate.setParentTemplate(templateType);
+    return resources.getString(presentationTemplate.getNewActionResource());
   }
 
   public static String getPathToImage(ITemplateType templateType, Identified casteType) {

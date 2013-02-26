@@ -40,7 +40,8 @@ public class NewInteractionPresenter {
       @Override
       public void added(CharacterIdentifier identifier, String printName, ITemplateType templateType) {
         String pathToImage = ToCharacterButtonDto.getPathToImage(templateType, NULL_CASTE_TYPE);
-        CharacterButtonDto dto = new CharacterButtonDto(identifier, printName, "", pathToImage);
+        String details = ToCharacterButtonDto.getDetails(resources, templateType);
+        CharacterButtonDto dto = new CharacterButtonDto(identifier, printName, details, pathToImage);
         gridViewView.addAndSelectButton(dto, selector);
         selector.selected(identifier);
       }
