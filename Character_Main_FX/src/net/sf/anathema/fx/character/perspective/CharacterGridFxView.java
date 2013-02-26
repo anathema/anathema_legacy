@@ -26,7 +26,7 @@ import java.util.Collection;
 public class CharacterGridFxView implements IView, CharacterGridView {
   private final JFXPanel panel = new JFXPanel();
   private final ToggleGroup toggleGroup = new ToggleGroup();
-  private final MigPane gridPane = new MigPane(new LC().insets("10").gridGap("8", "8").wrapAfter(1), new AC().grow().fill());
+  private final MigPane gridPane = new MigPane(new LC().insets("0").gridGap("0", "0").wrapAfter(1), new AC().grow().fill());
 
   public CharacterGridFxView() {
     Platform.runLater(new InitScene(panel, gridPane));
@@ -56,8 +56,7 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   }
 
   private ToggleButton addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
-    MigPane buttonContent = new MigPane(new LC().wrapAfter(2).gridGapX("0"), new AC().gap("5"));
-    System.err.println(dto.pathToImage);
+    MigPane buttonContent = new MigPane(new LC().insets("0").gridGap("0", "0").wrapAfter(2).gridGapX("0").debug(0), new AC().gap("5"));
     Image image = new Image(getImage(dto.pathToImage), 30, 30, true, true);
     Text name = new Text(dto.text);
     name.setFontSmoothingType(FontSmoothingType.LCD);
@@ -65,8 +64,8 @@ public class CharacterGridFxView implements IView, CharacterGridView {
     Label details = new Label(dto.details);
     details.getStyleClass().add("details");
     buttonContent.add(new ImageView(image), new CC().pushY().gapBottom("0"));
-    buttonContent.add(name, new CC().span().split(2).flowY().gapTop("0"));
-    buttonContent.add(details, new CC().pad("0"));
+    buttonContent.add(name, new CC().span().split(2).flowY().gapTop("0").gapBottom("0"));
+    buttonContent.add(details, new CC().pad("0").gapTop("0"));
     ToggleButton button = new ToggleButton("", buttonContent);
     button.getStyleClass().add("character-grid-button");
     button.setOnAction(new CharacterSelected(characterSelector, dto.identifier));
