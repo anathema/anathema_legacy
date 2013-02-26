@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.module.perspective;
 
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
@@ -22,7 +21,6 @@ import org.jmock.example.announcer.Announcer;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CharacterSystemModel implements ItemSystemModel {
@@ -117,6 +115,7 @@ public class CharacterSystemModel implements ItemSystemModel {
       public void addItem(IItem item) {
         CharacterIdentifier identifier = new CharacterIdentifier("InternalNewCharacter" + newCharacterCount++);
         itemByIdentifier.put(identifier, item);
+        item.addDirtyListener(dirtyListener);
         ICharacter character = (ICharacter) item.getItemData();
         ITemplateType templateType = character.getCharacterTemplate().getTemplateType();
         characterAddedListener.announce().added(identifier, item.getDisplayName(), templateType);
