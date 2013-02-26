@@ -1,5 +1,7 @@
 package net.sf.anathema.character.impl.module.perspective;
 
+import net.sf.anathema.character.generic.template.ITemplateType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
@@ -100,12 +102,12 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   @Override
   public void printCurrentItemQuickly(IResources resources) {
-     new QuickPrintCommand(resources, model, getCurrentItem()).execute();
+    new QuickPrintCommand(resources, model, getCurrentItem()).execute();
   }
 
   @Override
   public void printCurrentItemControlled(IResources resources) {
-     new ControlledPrintCommand(resources, model, getCurrentItem()).execute();
+    new ControlledPrintCommand(resources, model, getCurrentItem()).execute();
   }
 
   @Override
@@ -115,7 +117,9 @@ public class CharacterSystemModel implements ItemSystemModel {
       public void addItem(IItem item) {
         CharacterIdentifier identifier = new CharacterIdentifier("InternalNewCharacter" + newCharacterCount++);
         itemByIdentifier.put(identifier, item);
-        characterAddedListener.announce().added(identifier, item.getDisplayName());
+        ICharacter character = (ICharacter) item.getItemData();
+        ITemplateType templateType = character.getCharacterTemplate().getTemplateType();
+        characterAddedListener.announce().added(identifier, item.getDisplayName(), templateType);
       }
     };
     new NewItemCommand(CharacterItemTypeRetrieval.retrieveCharacterItemType(model), model, resources, receiver).execute();

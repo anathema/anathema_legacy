@@ -1,14 +1,19 @@
 package net.sf.anathema.character.impl.module.perspective;
 
+import net.sf.anathema.character.generic.template.ITemplateType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.perspective.CharacterButtonDto;
 import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.character.perspective.Selector;
+import net.sf.anathema.character.perspective.ToCharacterButtonDto;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.character.perspective.model.model.NewCharacterListener;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.swing.character.perspective.interaction.Interaction;
+
+import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
 
 public class NewInteractionPresenter {
 
@@ -33,8 +38,9 @@ public class NewInteractionPresenter {
     model.whenNewCharacterIsAdded(new NewCharacterListener() {
 
       @Override
-      public void added(CharacterIdentifier identifier, String printName) {
-        CharacterButtonDto dto = new CharacterButtonDto(identifier, printName);
+      public void added(CharacterIdentifier identifier, String printName, ITemplateType templateType) {
+        String pathToImage = ToCharacterButtonDto.getPathToImage(templateType, NULL_CASTE_TYPE);
+        CharacterButtonDto dto = new CharacterButtonDto(identifier, printName, "", pathToImage);
         gridViewView.addAndSelectButton(dto, selector);
         selector.selected(identifier);
       }

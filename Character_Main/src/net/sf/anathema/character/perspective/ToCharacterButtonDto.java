@@ -39,7 +39,7 @@ public class ToCharacterButtonDto implements Function<PrintNameFile, CharacterBu
     return new CharacterButtonDto(identifier, text, details, pathToImage);
   }
 
-  private String getPathToImage(ITemplateType templateType, Identified casteType) {
+  public static String getPathToImage(ITemplateType templateType, Identified casteType) {
     StringBuilder imagePath = new StringBuilder("icons/");
     if (casteType == NULL_CASTE_TYPE) {
       imagePath.append(new CharacterUI(null).getLargeTypeIconPath(templateType.getCharacterType()));

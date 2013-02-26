@@ -2,15 +2,11 @@ package net.sf.anathema.fx.character.perspective;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.scene.text.FontSmoothingType;
 import javafx.scene.text.Text;
 import net.miginfocom.layout.AC;
@@ -18,8 +14,8 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.perspective.CharacterButtonDto;
 import net.sf.anathema.character.perspective.CharacterGridView;
-import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.Selector;
+import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.lib.gui.IView;
 import org.tbee.javafx.scene.layout.MigPane;
 
@@ -61,6 +57,7 @@ public class CharacterGridFxView implements IView, CharacterGridView {
 
   private ToggleButton addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
     MigPane buttonContent = new MigPane(new LC().wrapAfter(2).gridGapX("0"), new AC().gap("5"));
+    System.err.println(dto.pathToImage);
     Image image = new Image(getImage(dto.pathToImage), 30, 30, true, true);
     Text name = new Text(dto.text);
     name.setFontSmoothingType(FontSmoothingType.LCD);

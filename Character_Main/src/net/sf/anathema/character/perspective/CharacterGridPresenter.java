@@ -16,10 +16,10 @@ public class CharacterGridPresenter {
   private final Selector<CharacterIdentifier> characterSelector;
   private final ToCharacterButtonDto characterTransformer;
 
-  public CharacterGridPresenter(ItemSystemModel model, CharacterGridView view, CharacterStackPresenter stackPresenter, Selector<CharacterIdentifier> characterSelector, CharacterPrintNameFileScanner fileScanner, IStringResourceHandler resources) {
+  public CharacterGridPresenter(ItemSystemModel model, CharacterGridView view, Selector<CharacterIdentifier> characterSelector, CharacterPrintNameFileScanner fileScanner, IStringResourceHandler resources) {
     this.model = model;
     this.view = view;
-    this.characterSelector = new ShowOnSelect(stackPresenter);
+    this.characterSelector = characterSelector;
     this.characterTransformer = new ToCharacterButtonDto(fileScanner, resources);
   }
 
