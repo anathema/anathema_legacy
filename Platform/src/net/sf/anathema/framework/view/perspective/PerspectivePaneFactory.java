@@ -1,5 +1,9 @@
 package net.sf.anathema.framework.view.perspective;
 
+import net.miginfocom.layout.CC;
+import net.miginfocom.layout.DimConstraint;
+import net.miginfocom.layout.LC;
+import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.ViewFactory;
 import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
@@ -37,9 +41,9 @@ public class PerspectivePaneFactory implements ViewFactory {
       perspectiveStack.add(perspective);
       selectionBar.addPerspective(perspective, resources);
     }
-    JPanel contentPanel = new JPanel(new BorderLayout());
-    contentPanel.add(selectionBar.getContent(), BorderLayout.NORTH);
-    contentPanel.add(perspectiveStack.getContent(), BorderLayout.CENTER);
+    JPanel contentPanel = new JPanel(new MigLayout());
+    contentPanel.add(selectionBar.getContent(), new CC().alignX("50%").wrap());
+    contentPanel.add(perspectiveStack.getContent(), new CC().push().grow());
     selectionBar.selectFirstButton();
     return contentPanel;
   }

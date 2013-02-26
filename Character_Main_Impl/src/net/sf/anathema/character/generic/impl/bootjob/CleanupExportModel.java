@@ -8,7 +8,6 @@ import net.sf.anathema.framework.repository.tree.ExportModel;
 import net.sf.anathema.framework.repository.tree.RepositoryFileAccessFactory;
 import net.sf.anathema.framework.view.PrintNameFile;
 
-import java.util.Collections;
 import java.util.List;
 
 public class CleanupExportModel implements ExportModel {
@@ -27,7 +26,7 @@ public class CleanupExportModel implements ExportModel {
     List<PrintNameFile> files = Lists.newArrayList();
     for (IItemType itemType : allItemTypes) {
       if (itemType.supportsRepository()) {
-        Collections.addAll(files, repository.getPrintNameFileAccess().collectAllPrintNameFiles(itemType));
+          files.addAll(repository.getPrintNameFileAccess().collectAllPrintNameFiles(itemType));
       }
     }
     return files.toArray(new PrintNameFile[files.size()]);

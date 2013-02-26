@@ -18,6 +18,7 @@ import net.sf.anathema.lib.resources.IResources;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,7 +53,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public List<PrintNameFile> collectAllCharacters() {
+  public Collection<PrintNameFile> collectAllCharacters() {
     return persistenceModel.collectCharacterPrintNameFiles();
   }
 

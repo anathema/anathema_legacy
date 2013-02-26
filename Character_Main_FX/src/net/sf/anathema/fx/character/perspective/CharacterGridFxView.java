@@ -2,9 +2,19 @@ package net.sf.anathema.fx.character.perspective;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontSmoothingType;
+import javafx.scene.text.Text;
 import net.miginfocom.layout.AC;
+import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.character.perspective.CharacterButtonDto;
 import net.sf.anathema.character.perspective.CharacterGridView;
@@ -14,7 +24,8 @@ import net.sf.anathema.lib.gui.IView;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.swing.JComponent;
-import java.util.List;
+import java.io.InputStream;
+import java.util.Collection;
 
 public class CharacterGridFxView implements IView, CharacterGridView {
   private final JFXPanel panel = new JFXPanel();
@@ -26,7 +37,7 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   }
 
   @Override
-  public void addButtons(final List<CharacterButtonDto> dtoList, final Selector<CharacterIdentifier> characterSelector) {
+  public void addButtons(final Collection<CharacterButtonDto> dtoList, final Selector<CharacterIdentifier> characterSelector) {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -49,12 +60,26 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   }
 
   private ToggleButton addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
-    ToggleButton button = new ToggleButton(dto.text);
+    MigPane buttonContent = new MigPane(new LC().wrapAfter(2).gridGapX("0"), new AC().gap("5"));
+    Image image = new Image(getImage(dto.pathToImage), 30, 30, true, true);
+    Text name = new Text(dto.text);
+    name.setFontSmoothingType(FontSmoothingType.LCD);
+    name.getStyleClass().add("name");
+    Label details = new Label(dto.details);
+    details.getStyleClass().add("details");
+    buttonContent.add(new ImageView(image), new CC().pushY().gapBottom("0"));
+    buttonContent.add(name, new CC().span().split(2).flowY().gapTop("0"));
+    buttonContent.add(details, new CC().pad("0"));
+    ToggleButton button = new ToggleButton("", buttonContent);
     button.getStyleClass().add("character-grid-button");
     button.setOnAction(new CharacterSelected(characterSelector, dto.identifier));
     button.setToggleGroup(toggleGroup);
     gridPane.getChildren().add(button);
     return button;
+  }
+
+  private InputStream getImage(String pathToImage) {
+    return new ResourceLoader().loadResource(pathToImage);
   }
 
   public JComponent getComponent() {

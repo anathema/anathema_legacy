@@ -6,12 +6,14 @@ import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
 
+import java.util.Collection;
+
 public interface IRepositoryTreeModel extends ExportModel {
   IItemType[] getAllItemTypes();
 
   IItemType getItemTypeForId(String id);
 
-  PrintNameFile[] getPrintNameFiles(IItemType itemType);
+  Collection<PrintNameFile> getPrintNameFiles(IItemType itemType);
 
   void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener);
 

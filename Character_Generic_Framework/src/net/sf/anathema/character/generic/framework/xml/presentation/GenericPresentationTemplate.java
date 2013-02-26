@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.xml.presentation;
 
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
@@ -8,11 +9,16 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
     IPresentationProperties {
 
   private GenericCharmPresentationProperties charmPresentationProperties = new GenericCharmPresentationProperties();
-  private ICharacterTemplate template;
+  private ITemplateType templateType;
 
   @Override
   public String getSmallCasteIconResource(String casteId, String editionId) {
     return getCharacterTypeId() + "Button" + casteId + editionId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
+  }
+
+  @Override
+  public String getLargeCasteIconResource(String casteId, String editionId) {
+    return getCharacterTypeId() + "Button" + casteId + editionId + "100.png"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
   @Override
@@ -39,15 +45,19 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
     return clone;
   }
 
+  public void setParentTemplate(ITemplateType templateType) {
+    this.templateType = templateType;
+  }
+
   public void setParentTemplate(ICharacterTemplate template) {
-    this.template = template;
+    this.templateType = template.getTemplateType();
   }
 
   private String getCharacterTypeId() {
-    return template.getTemplateType().getCharacterType().getId();
+    return templateType.getCharacterType().getId();
   }
 
   private String getSubTypeId() {
-    return template.getTemplateType().getSubType().getId();
+    return templateType.getSubType().getId();
   }
 }

@@ -23,7 +23,6 @@ public interface ICharacterXmlConstants {
   String TAG_CHARMGROUP = "CharmGroup"; //$NON-NLS-1$
   String TAG_CHARMS = "Charms"; //$NON-NLS-1$
   String TAG_COMBO = "Combo"; //$NON-NLS-1$
-  String TAG_COMBO_CHARM = "ComboCharm"; //$NON-NLS-1$
   String TAG_COMBOS = "Combos"; //$NON-NLS-1$
   String TAG_CONCEPT = "Concept"; //$NON-NLS-1$
   String TAG_DESCRIPTION = "Description"; //$NON-NLS-1$
