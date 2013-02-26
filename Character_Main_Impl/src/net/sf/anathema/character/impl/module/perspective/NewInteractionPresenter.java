@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.module.perspective;
 
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.perspective.CharacterButtonDto;
 import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.character.perspective.Selector;

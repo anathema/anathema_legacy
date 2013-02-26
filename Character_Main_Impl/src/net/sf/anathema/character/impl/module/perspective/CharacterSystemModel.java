@@ -3,6 +3,7 @@ package net.sf.anathema.character.impl.module.perspective;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.character.perspective.CharacterNameChangeListener;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
@@ -13,6 +14,7 @@ import net.sf.anathema.framework.presenter.action.NewItemCommand;
 import net.sf.anathema.framework.reporting.ControlledPrintCommand;
 import net.sf.anathema.framework.reporting.QuickPrintCommand;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.IItemListener;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
@@ -32,6 +34,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   private Announcer<IChangeListener> becomesExperiencedListener = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> becomesInexperiencedListener = Announcer.to(IChangeListener.class);
   private Announcer<NewCharacterListener> characterAddedListener = Announcer.to(NewCharacterListener.class);
+  private Announcer<CharacterNameChangeListener> nameChangedListener = Announcer.to(CharacterNameChangeListener.class);
   private CharacterIdentifier currentCharacter;
   private IChangeListener dirtyListener = new IChangeListener() {
     @Override
@@ -63,9 +66,20 @@ public class CharacterSystemModel implements ItemSystemModel {
       return itemByIdentifier.get(identifier);
     }
     IItem item = persistenceModel.loadItem(identifier);
-    item.addDirtyListener(dirtyListener);
-    itemByIdentifier.put(identifier, item);
+    addCharacter(identifier, item);
     return item;
+  }
+
+  private void addCharacter(CharacterIdentifier identifier, IItem item) {
+    item.addDirtyListener(dirtyListener);
+    item.addItemListener(new IItemListener() {
+      @Override
+      public void printNameChanged(String newName) {
+        IItem currentItem = getCurrentItem();
+        nameChangedListener.announce().nameChanged(currentCharacter, currentItem.getDisplayName());
+      }
+    });
+    itemByIdentifier.put(identifier, item);
   }
 
   @Override
@@ -114,8 +128,7 @@ public class CharacterSystemModel implements ItemSystemModel {
       @Override
       public void addItem(IItem item) {
         CharacterIdentifier identifier = new CharacterIdentifier("InternalNewCharacter" + newCharacterCount++);
-        itemByIdentifier.put(identifier, item);
-        item.addDirtyListener(dirtyListener);
+        addCharacter(identifier, item);
         ICharacter character = (ICharacter) item.getItemData();
         ITemplateType templateType = character.getCharacterTemplate().getTemplateType();
         characterAddedListener.announce().added(identifier, item.getDisplayName(), templateType);
@@ -135,6 +148,11 @@ public class CharacterSystemModel implements ItemSystemModel {
     notifyDirtyListeners();
     notifyGetSelectionListeners();
     notifyExperiencedListeners();
+  }
+
+  @Override
+  public void whenCurrentSelectionChangesName(CharacterNameChangeListener listener) {
+    nameChangedListener.addListener(listener);
   }
 
   private void notifyExperiencedListeners() {

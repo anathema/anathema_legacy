@@ -22,11 +22,14 @@ import org.tbee.javafx.scene.layout.MigPane;
 import javax.swing.JComponent;
 import java.io.InputStream;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CharacterGridFxView implements IView, CharacterGridView {
   private final JFXPanel panel = new JFXPanel();
   private final ToggleGroup toggleGroup = new ToggleGroup();
   private final MigPane gridPane = new MigPane(new LC().insets("0").gridGap("0", "0").wrapAfter(1), new AC().grow().fill());
+  private final Map<CharacterIdentifier, Text> nameDisplayByIdentifier = new HashMap<>();
 
   public CharacterGridFxView() {
     Platform.runLater(new InitScene(panel, gridPane));
@@ -55,12 +58,20 @@ public class CharacterGridFxView implements IView, CharacterGridView {
     });
   }
 
+  @Override
+  public void setName(final CharacterIdentifier identifier, final String name) {
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        nameDisplayByIdentifier.get(identifier).setText(name);
+      }
+    });
+  }
+
   private ToggleButton addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
     MigPane buttonContent = new MigPane(new LC().insets("0").gridGap("0", "0").wrapAfter(2).gridGapX("0").debug(0), new AC().gap("5"));
     Image image = new Image(getImage(dto.pathToImage), 30, 30, true, true);
-    Text name = new Text(dto.text);
-    name.setFontSmoothingType(FontSmoothingType.LCD);
-    name.getStyleClass().add("name");
+    Text name = createNameDisplay(dto);
     Label details = new Label(dto.details);
     details.getStyleClass().add("details");
     buttonContent.add(new ImageView(image), new CC().pushY().gapBottom("0"));
@@ -72,6 +83,14 @@ public class CharacterGridFxView implements IView, CharacterGridView {
     button.setToggleGroup(toggleGroup);
     gridPane.getChildren().add(button);
     return button;
+  }
+
+  private Text createNameDisplay(CharacterButtonDto dto) {
+    Text name = new Text(dto.text);
+    name.setFontSmoothingType(FontSmoothingType.LCD);
+    name.getStyleClass().add("name");
+    nameDisplayByIdentifier.put(dto.identifier, name);
+    return name;
   }
 
   private InputStream getImage(String pathToImage) {

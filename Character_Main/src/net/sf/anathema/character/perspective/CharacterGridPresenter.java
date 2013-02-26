@@ -27,5 +27,10 @@ public class CharacterGridPresenter {
     Collection<PrintNameFile> printNameFiles = model.collectAllCharacters();
     Collection<CharacterButtonDto> dtoList = Collections2.transform(printNameFiles, characterTransformer);
     view.addButtons(dtoList, characterSelector);
+    model.whenCurrentSelectionChangesName(new CharacterNameChangeListener(){
+      public void nameChanged(CharacterIdentifier identifier, String newName) {
+        view.setName(identifier, newName);
+      }
+    });
   }
 }

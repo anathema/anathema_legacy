@@ -1,5 +1,6 @@
 package net.sf.anathema.character.perspective.model.model;
 
+import net.sf.anathema.character.perspective.CharacterNameChangeListener;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.PrintNameFile;
 
@@ -12,4 +13,6 @@ public interface ItemSystemModel extends ItemSelectionModel {
   IItem loadItem(CharacterIdentifier identifier);
 
   void setCurrentCharacter(CharacterIdentifier identifier);
+
+  void whenCurrentSelectionChangesName(CharacterNameChangeListener listener);
 }
