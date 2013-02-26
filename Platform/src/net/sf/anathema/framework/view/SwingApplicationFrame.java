@@ -28,6 +28,10 @@ public class SwingApplicationFrame implements ApplicationFrame, ApplicationView 
     this.menu = new MainMenuBar(properties.getMainMenuName(), properties.getHelpMenuName());
   }
 
+  public static JComponent getParentComponent() {
+    return (JComponent) ((JFrame) JOptionPane.getRootFrame()).getContentPane();
+  }
+
   public void show() {
     JFrame applicationFrame = initFrame();
     applicationFrame.getContentPane().add(createContentPane());

@@ -19,15 +19,15 @@ public class CharacterStackPresenter {
 
   public void showCharacter(CharacterIdentifier identifier) {
     if (!knownCharacters.contains(identifier)) {
-      addExistingCharacter(identifier);
+      addViewForCharacter(identifier);
       knownCharacters.add(identifier);
     }
     bridge.showCharacterView(identifier);
     model.setCurrentCharacter(identifier);
   }
 
-  public void addExistingCharacter(CharacterIdentifier identifier) {
+  public void addViewForCharacter(CharacterIdentifier identifier) {
     IItem item = model.loadItem(identifier);
-    bridge.addViewForExistingCharacter(item);
+    bridge.addViewForCharacter(identifier, item);
   }
 }

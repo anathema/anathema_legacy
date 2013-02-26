@@ -3,7 +3,7 @@ package net.sf.anathema.framework.presenter.action;
 import net.sf.anathema.framework.MessageGenerator;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.presenter.IItemManagementModel;
+import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -22,19 +22,18 @@ public class ItemCreationOperator implements IItemOperator {
 
   private final IItemCreator creator;
   private final IResources resources;
-  private final IItemManagementModel model;
+  private final ItemReceiver receiver;
   private final MessageGenerator titleGenerator;
 
-  public ItemCreationOperator(IItemCreator creator, IResources resources, IItemManagementModel model, MessageGenerator titleGenerator) {
+  public ItemCreationOperator(IItemCreator creator, IResources resources, ItemReceiver receiver, MessageGenerator titleGenerator) {
     this.creator = creator;
     this.resources = resources;
-    this.model = model;
+    this.receiver = receiver;
     this.titleGenerator = titleGenerator;
   }
 
   @Override
-  public void operate(Component parentComponent, IItemType type,
-                      IAnathemaWizardModelTemplate template) throws PersistenceException {
+  public void operate(Component parentComponent, IItemType type, IAnathemaWizardModelTemplate template) throws PersistenceException {
     final IItem item = creator.createItem(type, template);
     try {
       new ProgressMonitorDialog(parentComponent, titleGenerator.generateInformativeMessage()).run(new INonInterruptibleRunnableWithProgress() {
@@ -44,7 +43,7 @@ public class ItemCreationOperator implements IItemOperator {
             Object internationalizedType = resources.getString("ItemType." + item.getItemType() + ".PrintName");
             String taskTitle = resources.getString("AnathemaCore.AddItem.Progress.Task.View", internationalizedType);
             monitor.beginTaskWithUnknownTotalWork(taskTitle); //$NON-NLS-1$
-            model.addItem(item);
+            receiver.addItem(item);
           } catch (AnathemaException e) {
             throw new InvocationTargetException(e);
           }
@@ -53,11 +52,9 @@ public class ItemCreationOperator implements IItemOperator {
     } catch (InvocationTargetException exception) {
       Throwable cause = exception.getCause();
       MessageDialogFactory.showMessageDialog(parentComponent,
-              new Message("An error occured while creating repository item: " + cause.getMessage(),
-                      cause)); //$NON-NLS-1$
+              new Message("An error occured while creating repository item: " + cause.getMessage(), cause)); //$NON-NLS-1$
     } catch (Throwable e) {
-      MessageUtilities.indicateMessage(getClass(), parentComponent,
-              new Message("An error occured while creating repository item.", e)); //$NON-NLS-1$
+      MessageUtilities.indicateMessage(getClass(), parentComponent, new Message("An error occured while creating repository item.", e)); //$NON-NLS-1$
     }
   }
 }

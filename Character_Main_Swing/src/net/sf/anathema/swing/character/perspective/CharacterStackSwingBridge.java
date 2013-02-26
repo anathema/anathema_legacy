@@ -19,10 +19,9 @@ public class CharacterStackSwingBridge implements CharacterStackBridge {
   }
 
   @Override
-  public void addViewForExistingCharacter(IItem item) {
+  public void addViewForCharacter(CharacterIdentifier identifier, IItem item) {
     IView itemView = viewFactory.createView(item);
-    String repositoryId = item.getRepositoryLocation().getId();
-    stackView.addView(new CharacterIdentifier(repositoryId), itemView);
+    stackView.addView(identifier, itemView);
   }
 
   @Override

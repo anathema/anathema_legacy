@@ -37,12 +37,24 @@ public class CharacterGridFxView implements IView, CharacterGridView {
     });
   }
 
-  private void addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
+  @Override
+  public void addAndSelectButton(final CharacterButtonDto dto, final Selector<CharacterIdentifier> characterSelector) {
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        ToggleButton button = addButton(dto, characterSelector);
+        button.setSelected(true);
+      }
+    });
+  }
+
+  private ToggleButton addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
     ToggleButton button = new ToggleButton(dto.text);
     button.getStyleClass().add("character-grid-button");
     button.setOnAction(new CharacterSelected(characterSelector, dto.identifier));
     button.setToggleGroup(toggleGroup);
     gridPane.getChildren().add(button);
+    return button;
   }
 
   public JComponent getComponent() {

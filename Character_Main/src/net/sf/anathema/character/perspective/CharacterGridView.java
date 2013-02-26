@@ -7,4 +7,6 @@ import java.util.List;
 public interface CharacterGridView {
 
   void addButtons(List<CharacterButtonDto> dtoList, Selector<CharacterIdentifier> characterSelector);
+
+  void addAndSelectButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector);
 }

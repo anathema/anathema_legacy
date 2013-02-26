@@ -24,4 +24,8 @@ public interface ItemSelectionModel {
   void printCurrentItemQuickly(IResources resources);
 
   void printCurrentItemControlled(IResources resources);
+
+  void createNew(IResources resources);
+
+  void whenNewCharacterIsAdded(NewCharacterListener listener);
 }

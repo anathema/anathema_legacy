@@ -2,11 +2,8 @@ package net.sf.anathema.framework.presenter;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.lib.exception.AnathemaException;
 
-public interface IItemManagementModel {
-
-  void addItem(IItem item) throws AnathemaException;
+public interface IItemManagementModel extends ItemReceiver {
 
   void setSelectedItem(IItem item);
 

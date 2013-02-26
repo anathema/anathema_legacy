@@ -5,7 +5,7 @@ import net.sf.anathema.framework.repository.IItem;
 
 public interface CharacterStackBridge {
 
-  void addViewForExistingCharacter(IItem item);
+  void addViewForCharacter(CharacterIdentifier identifier, IItem item);
 
   void showCharacterView(CharacterIdentifier identifier);
 }

@@ -1,10 +1,14 @@
 package net.sf.anathema.character.impl.module.perspective;
 
+import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
+import net.sf.anathema.character.perspective.model.model.NewCharacterListener;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.presenter.ItemReceiver;
+import net.sf.anathema.framework.presenter.action.NewItemCommand;
 import net.sf.anathema.framework.reporting.ControlledPrintCommand;
 import net.sf.anathema.framework.reporting.QuickPrintCommand;
 import net.sf.anathema.framework.repository.IItem;
@@ -26,6 +30,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   private Announcer<IChangeListener> getsSelectionListener = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> becomesExperiencedListener = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> becomesInexperiencedListener = Announcer.to(IChangeListener.class);
+  private Announcer<NewCharacterListener> characterAddedListener = Announcer.to(NewCharacterListener.class);
   private CharacterIdentifier currentCharacter;
   private IChangeListener dirtyListener = new IChangeListener() {
     @Override
@@ -35,6 +40,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   };
   private final CharacterPersistenceModel persistenceModel;
   private IAnathemaModel model;
+  private int newCharacterCount = 0;
 
   public CharacterSystemModel(IAnathemaModel model) {
     this(new CharacterPersistenceModel(model), model);
@@ -46,12 +52,15 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public List<PrintNameFile> collectCharacterPrintNameFiles() {
+  public List<PrintNameFile> collectAllCharacters() {
     return persistenceModel.collectCharacterPrintNameFiles();
   }
 
   @Override
   public IItem loadItem(CharacterIdentifier identifier) {
+    if (itemByIdentifier.containsKey(identifier)) {
+      return itemByIdentifier.get(identifier);
+    }
     IItem item = persistenceModel.loadItem(identifier);
     item.addDirtyListener(dirtyListener);
     itemByIdentifier.put(identifier, item);
@@ -96,6 +105,24 @@ public class CharacterSystemModel implements ItemSystemModel {
   @Override
   public void printCurrentItemControlled(IResources resources) {
      new ControlledPrintCommand(resources, model, getCurrentItem()).execute();
+  }
+
+  @Override
+  public void createNew(final IResources resources) {
+    ItemReceiver receiver = new ItemReceiver() {
+      @Override
+      public void addItem(IItem item) {
+        CharacterIdentifier identifier = new CharacterIdentifier("InternalNewCharacter" + newCharacterCount++);
+        itemByIdentifier.put(identifier, item);
+        characterAddedListener.announce().added(identifier, item.getDisplayName());
+      }
+    };
+    new NewItemCommand(CharacterItemTypeRetrieval.retrieveCharacterItemType(model), model, resources, receiver).execute();
+  }
+
+  @Override
+  public void whenNewCharacterIsAdded(NewCharacterListener listener) {
+    characterAddedListener.addListener(listener);
   }
 
   @Override

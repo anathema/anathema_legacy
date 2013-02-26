@@ -13,14 +13,14 @@ public class CharacterGridPresenter {
   private final CharacterGridView view;
   private final Selector<CharacterIdentifier> characterSelector;
 
-  public CharacterGridPresenter(ItemSystemModel model, CharacterGridView view, CharacterStackPresenter stackPresenter) {
+  public CharacterGridPresenter(ItemSystemModel model, CharacterGridView view, Selector<CharacterIdentifier> characterSelector) {
     this.model = model;
     this.view = view;
-    this.characterSelector = new ShowOnSelect(stackPresenter);
+    this.characterSelector = characterSelector;
   }
 
   public void initPresentation() {
-    List<PrintNameFile> printNameFiles = model.collectCharacterPrintNameFiles();
+    List<PrintNameFile> printNameFiles = model.collectAllCharacters();
     List<CharacterButtonDto> dtoList = Lists.transform(printNameFiles, new ToCharacterButtonDto());
     view.addButtons(dtoList, characterSelector);
   }

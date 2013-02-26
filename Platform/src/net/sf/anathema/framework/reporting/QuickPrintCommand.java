@@ -2,12 +2,11 @@ package net.sf.anathema.framework.reporting;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.view.SwingApplicationFrame;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class QuickPrintCommand implements Command {
 
@@ -19,7 +18,7 @@ public class QuickPrintCommand implements Command {
   public QuickPrintCommand(IResources resources, IAnathemaModel model, IItem item) {
     this.resources = resources;
     this.model = model;
-    this.parent = (JComponent) ((JFrame) JOptionPane.getRootFrame()).getContentPane();
+    this.parent = SwingApplicationFrame.getParentComponent();
     this.item = item;
   }
 

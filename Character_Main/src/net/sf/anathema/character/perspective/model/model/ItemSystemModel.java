@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ItemSystemModel extends ItemSelectionModel {
 
-  List<PrintNameFile> collectCharacterPrintNameFiles();
+  List<PrintNameFile> collectAllCharacters();
 
   IItem loadItem(CharacterIdentifier identifier);
 
