@@ -1,4 +1,4 @@
-package net.sf.anathema.integrated;
+package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.framework.view.toolbar.ToolBarButton;
 import net.sf.anathema.lib.gui.IView;
@@ -12,11 +12,11 @@ import javax.swing.JToolBar;
 import java.awt.Component;
 import java.awt.Dimension;
 
-public class IntegratedPerspectiveToolBar implements ToolBar, IView {
+public class CampaignPerspectiveToolBar implements ToolBar, IView {
 
   private JToolBar toolBar;
 
-  public IntegratedPerspectiveToolBar() {
+  public CampaignPerspectiveToolBar() {
     this.toolBar = new JToolBar();
     this.toolBar.setFloatable(false);
     this.toolBar.setRollover(true);

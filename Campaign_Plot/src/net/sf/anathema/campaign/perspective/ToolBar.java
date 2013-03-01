@@ -1,4 +1,4 @@
-package net.sf.anathema.integrated;
+package net.sf.anathema.campaign.perspective;
 
 import javax.swing.Action;
 import javax.swing.Icon;

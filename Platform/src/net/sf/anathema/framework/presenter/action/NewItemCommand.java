@@ -32,10 +32,6 @@ public class NewItemCommand implements Command {
   private final IItemType type;
   private final JComponent parent;
 
-  public NewItemCommand(IItemType type, IAnathemaModel model, IResources resources) {
-    this(type, model, resources, model.getItemManagement());
-  }
-
   public NewItemCommand(IItemType type, IAnathemaModel model, IResources resources, ItemReceiver itemReceiver) {
     this.model = model;
     this.resources = resources;
@@ -62,7 +58,7 @@ public class NewItemCommand implements Command {
       itemCreationOperator.operate(parent, type, template);
     } catch (PersistenceException e) {
       Message message = new Message(resources.getString("AnathemaPersistence.NewMenu.Message.Error"), e); //$NON-NLS-1$
-      MessageUtilities.indicateMessage(AnathemaNewAction.class, parent, message);
+      MessageUtilities.indicateMessage(NewItemCommand.class, parent, message);
     }
   }
 

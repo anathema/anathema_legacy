@@ -1,4 +1,4 @@
-package net.sf.anathema.integrated;
+package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IItemViewManagement;
@@ -12,11 +12,11 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
-public class IntegratedPerspectiveView implements ViewFactory, IItemViewManagement {
+public class CampaignPerspectiveView implements ViewFactory, IItemViewManagement {
   private final IComponentItemViewManagement itemViewManagement;
-  private final IntegratedPerspectiveToolBar toolBar = new IntegratedPerspectiveToolBar();
+  private final CampaignPerspectiveToolBar toolBar = new CampaignPerspectiveToolBar();
 
-  public IntegratedPerspectiveView() {
+  public CampaignPerspectiveView() {
     this.itemViewManagement = new ItemViewManagement();
   }
 

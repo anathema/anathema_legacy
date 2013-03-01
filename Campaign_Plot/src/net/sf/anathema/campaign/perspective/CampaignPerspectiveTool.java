@@ -1,8 +1,6 @@
-package net.sf.anathema.integrated;
+package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.presenter.action.ItemTypeLoadAction;
-import net.sf.anathema.framework.presenter.action.ItemTypeNewAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
 import net.sf.anathema.framework.reporting.AbstractPrintAction;
@@ -12,7 +10,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
 
-public class IntegratedPerspectiveTool {
+public class CampaignPerspectiveTool {
 
   public void add(IResources resources, IAnathemaModel model, ToolBar toolbar) {
     addNewAction(resources, model, toolbar);
