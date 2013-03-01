@@ -100,5 +100,4 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   public JComponent getComponent() {
     return panel;
   }
-
 }
