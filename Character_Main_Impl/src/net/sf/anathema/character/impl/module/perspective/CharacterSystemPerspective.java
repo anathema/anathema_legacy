@@ -11,7 +11,6 @@ import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
-import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.swing.character.perspective.CharacterStackSwingBridge;
@@ -28,7 +27,7 @@ public class CharacterSystemPerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
+  public void initContent(Container container, IAnathemaModel model, IResources resources) {
     CharacterSystemModel systemModel = new CharacterSystemModel(model);
     CharacterSystemView view = new CharacterSystemView(resources);
     CharacterStackBridge bridge = new CharacterStackSwingBridge(model, view.getStackView());

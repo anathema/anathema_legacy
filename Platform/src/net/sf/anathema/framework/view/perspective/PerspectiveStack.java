@@ -1,7 +1,6 @@
 package net.sf.anathema.framework.view.perspective;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.JComponent;
@@ -13,17 +12,15 @@ public class PerspectiveStack {
   private final JPanel cardPanel = new JPanel(perspectiveStack);
   private final IAnathemaModel model;
   private final IResources resources;
-  private final ReflectionObjectFactory objectFactory;
 
-  public PerspectiveStack(IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
+  public PerspectiveStack(IAnathemaModel model, IResources resources) {
     this.model = model;
     this.resources = resources;
-    this.objectFactory = objectFactory;
   }
 
   public void add(Perspective perspective) {
     Container container = new CardContainer(getIdFor(perspective), cardPanel);
-    perspective.initContent(container, model, resources, objectFactory);
+    perspective.initContent(container, model, resources);
   }
 
   public void show(Perspective perspective) {

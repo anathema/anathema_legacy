@@ -5,7 +5,6 @@ import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
-import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.namegenerator.exalted.ExaltedNameGeneratorModel;
@@ -25,7 +24,7 @@ public class NameGeneratorPerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
+  public void initContent(Container container, IAnathemaModel model, IResources resources) {
     INameGeneratorView view = new NameGeneratorView();
     INameGeneratorModel generatorModel = new ExaltedNameGeneratorModel();
     new NameGeneratorPresenter(resources, view, generatorModel).initPresentation();

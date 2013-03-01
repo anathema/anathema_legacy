@@ -32,7 +32,7 @@ public class AnathemaInitializer {
   private final ItemTypeConfigurationCollection itemTypeCollection;
   private final AnathemaExtensionCollection extensionCollection;
   private final DefaultAnathemaReflections reflections;
-  private final ReflectionObjectFactory instantiater;
+  private final Instantiater instantiater;
 
   public AnathemaInitializer(IInitializationPreferences initializationPreferences) throws InitializationException {
     this.reflections = new DefaultAnathemaReflections();

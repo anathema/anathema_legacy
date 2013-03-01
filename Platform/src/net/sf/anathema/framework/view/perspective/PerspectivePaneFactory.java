@@ -1,42 +1,33 @@
 package net.sf.anathema.framework.view.perspective;
 
 import net.miginfocom.layout.CC;
-import net.miginfocom.layout.DimConstraint;
-import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.ViewFactory;
-import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
-import net.sf.anathema.lib.gui.action.SmartAction;
+import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Component;
 import java.util.Collection;
 
 public class PerspectivePaneFactory implements ViewFactory {
 
   private final PerspectiveStack perspectiveStack;
   private final PerspectiveSelectionBar selectionBar;
-  private IResources resources;
-  private final ReflectionObjectFactory objectFactory;
+  private final IResources resources;
+  private final Instantiater instantiater;
 
-  public PerspectivePaneFactory(IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
+  public PerspectivePaneFactory(IAnathemaModel model, IResources resources, Instantiater instantiater) {
     this.resources = resources;
-    this.objectFactory = objectFactory;
-    this.perspectiveStack = new PerspectiveStack(model, resources, objectFactory);
+    this.instantiater = instantiater;
+    this.perspectiveStack = new PerspectiveStack(model, resources);
     this.selectionBar = new PerspectiveSelectionBar(perspectiveStack);
   }
 
   @Override
   public JComponent createContent() {
-    Collection<Perspective> sortedPerspectives = objectFactory.instantiateOrdered(PerspectiveAutoCollector.class);
+    Collection<Perspective> sortedPerspectives = instantiater.instantiateOrdered(PerspectiveAutoCollector.class);
     for (final Perspective perspective : sortedPerspectives) {
       perspectiveStack.add(perspective);
       selectionBar.addPerspective(perspective, resources);

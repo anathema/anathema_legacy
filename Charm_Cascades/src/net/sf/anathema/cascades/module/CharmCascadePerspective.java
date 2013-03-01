@@ -10,11 +10,8 @@ import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
-import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
-
-import javax.swing.Icon;
 
 @PerspectiveAutoCollector
 @Weight(weight = 6000)
@@ -26,7 +23,7 @@ public class CharmCascadePerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IAnathemaModel model, IResources resources, ReflectionObjectFactory objectFactory) {
+  public void initContent(Container container, IAnathemaModel model, IResources resources) {
     CharmCascadeModuleView view = new CharmCascadeModuleView();
     ICharacterGenerics characterGenerics = CharacterGenericsExtractor.getGenerics(model);
     MagicDescriptionProvider magicDescriptionProvider = getCharmDescriptionProvider(model, resources);
