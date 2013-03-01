@@ -14,7 +14,8 @@ public class CampaignPerspective implements Perspective {
 
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
-    toggle.setText("Campaign");
+    toggle.setIcon("TabSeries16.png");
+    toggle.setTooltip("Campaign.Perspective.Tooltip");
   }
 
   @Override

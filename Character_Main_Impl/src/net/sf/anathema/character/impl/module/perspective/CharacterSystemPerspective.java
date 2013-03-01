@@ -23,7 +23,7 @@ public class CharacterSystemPerspective implements Perspective {
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
     toggle.setIcon("King-icon.png");
-    toggle.setTooltip("Character");
+    toggle.setTooltip("CharacterSystem.Perspective.Name");
   }
 
   @Override
