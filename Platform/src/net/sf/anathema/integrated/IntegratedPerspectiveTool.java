@@ -8,14 +8,13 @@ import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
 import net.sf.anathema.framework.reporting.AbstractPrintAction;
 import net.sf.anathema.framework.reporting.ControlledPrintAction;
 import net.sf.anathema.framework.reporting.QuickPrintAction;
-import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Action;
 
 public class IntegratedPerspectiveTool {
 
-  public void add(IResources resources, IAnathemaModel model, IAnathemaToolbar toolbar) {
+  public void add(IResources resources, IAnathemaModel model, ToolBar toolbar) {
     addNewAction(resources, model, toolbar);
     addLoadAction(resources, model, toolbar);
     Action save = AnathemaSaveAction.createToolAction(model, resources);
@@ -24,12 +23,12 @@ public class IntegratedPerspectiveTool {
     toolbar.addTools(save, saveAll, quickPrint);
   }
 
-  private void addLoadAction(IResources resources, IAnathemaModel model, IAnathemaToolbar toolbar) {
+  private void addLoadAction(IResources resources, IAnathemaModel model, ToolBar toolbar) {
     toolbar.addMenu(ItemTypeLoadAction.getButtonIcon(resources), ItemTypeLoadAction.createToolActions(model, resources),
             ItemTypeLoadAction.createToolTip(resources));
   }
 
-  private void addNewAction(IResources resources, IAnathemaModel model, IAnathemaToolbar toolbar) {
+  private void addNewAction(IResources resources, IAnathemaModel model, ToolBar toolbar) {
     toolbar.addMenu(ItemTypeNewAction.getButtonIcon(resources), ItemTypeNewAction.createToolActions(model, resources),
             ItemTypeNewAction.createToolTip(resources));
   }

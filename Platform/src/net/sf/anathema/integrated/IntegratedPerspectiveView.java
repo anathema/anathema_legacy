@@ -6,17 +6,15 @@ import net.sf.anathema.framework.view.IViewSelectionListener;
 import net.sf.anathema.framework.view.ViewFactory;
 import net.sf.anathema.framework.view.item.IComponentItemViewManagement;
 import net.sf.anathema.framework.view.item.ItemViewManagement;
-import net.sf.anathema.framework.view.toolbar.AnathemaToolBar;
-import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
-public final class IntegratedPerspectiveView implements ViewFactory, IItemViewManagement {
+public class IntegratedPerspectiveView implements ViewFactory, IItemViewManagement {
   private final IComponentItemViewManagement itemViewManagement;
-  private final AnathemaToolBar toolBar = new AnathemaToolBar();
+  private final IntegratedPerspectiveToolBar toolBar = new IntegratedPerspectiveToolBar();
 
   public IntegratedPerspectiveView() {
     this.itemViewManagement = new ItemViewManagement();
@@ -50,7 +48,7 @@ public final class IntegratedPerspectiveView implements ViewFactory, IItemViewMa
     itemViewManagement.setSelectedItemView(view);
   }
 
-  public IAnathemaToolbar getToolBar() {
+  public ToolBar getToolBar() {
     return toolBar;
   }
 }

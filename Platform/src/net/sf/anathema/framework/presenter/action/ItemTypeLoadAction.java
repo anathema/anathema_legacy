@@ -29,7 +29,7 @@ public final class ItemTypeLoadAction extends AbstractItemAction {
     List<Action> actions = new ArrayList<>();
     for (IItemType type : collectItemTypes(model)) {
       SmartAction action = new ItemTypeLoadAction(model, type, resources);
-      action.setName(resources.getString("ItemType." + type.getId() + ".PrintName")); //$NON-NLS-1$ //$NON-NLS-2$
+      action.setName(resources.getString("ItemType." + type.getId() + ".PrintName"));
       actions.add(action);
     }
     return actions.toArray(new Action[actions.size()]);
