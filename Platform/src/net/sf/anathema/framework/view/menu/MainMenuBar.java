@@ -27,13 +27,6 @@ public class MainMenuBar implements MenuBar {
   }
 
   @Override
-  public IMenu addMenu(String title) {
-    Menu menu = new Menu(title);
-    menuBar.add(menu.getComponent(), menuBar.getComponentCount() - 1);
-    return menu;
-  }
-
-  @Override
   public IMenu getMainMenu() {
     return mainMenu;
   }

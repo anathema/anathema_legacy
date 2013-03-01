@@ -7,6 +7,4 @@ public interface MenuBar {
   IMenu getMainMenu();
 
   IMenu getHelpMenu();
-
-  IMenu addMenu(String title);
 }
