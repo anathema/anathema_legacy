@@ -7,12 +7,9 @@ import net.sf.anathema.framework.presenter.action.menu.help.AnathemaAboutAction;
 import net.sf.anathema.framework.presenter.action.menu.help.updatecheck.UpdateAction;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.action.preferences.ShowPreferencesAction;
-import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.repository.tree.RepositoryViewAction;
 import net.sf.anathema.framework.view.MenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
-import net.sf.anathema.initialization.Menu;
-import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -22,11 +19,8 @@ import javax.swing.KeyStroke;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
-@Menu
-@Weight(weight = 10)
-public class AnathemaCoreMenu implements IAnathemaMenu {
+public class AnathemaCoreMenu {
 
-  @Override
   public void add(IResources resources, IAnathemaModel model, MenuBar menubar) {
     IMenu mainMenu = menubar.getMainMenu();
     mainMenu.addMenuItem(createExportImportAction(resources, model));

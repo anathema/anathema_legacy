@@ -3,10 +3,10 @@ package net.sf.anathema.initialization;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.messaging.IMessageContainer;
+import net.sf.anathema.framework.module.AnathemaCoreMenu;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
-import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
@@ -21,11 +21,8 @@ public class AnathemaPresenter {
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
   private final Instantiater instantiater;
 
-  public AnathemaPresenter(
-          IAnathemaModel model,
-          ApplicationView view,
-          IResources resources,
-          Collection<IItemTypeConfiguration> itemTypeConfigurations, Instantiater instantiater) {
+  public AnathemaPresenter(IAnathemaModel model, ApplicationView view, IResources resources,
+                           Collection<IItemTypeConfiguration> itemTypeConfigurations, Instantiater instantiater) {
     this.instantiater = instantiater;
     this.model = model;
     this.view = view;
@@ -42,7 +39,7 @@ public class AnathemaPresenter {
       configuration.registerViewFactory(model, resources);
     }
     runBootJobs();
-    initializeMenus();
+    new AnathemaCoreMenu().add(resources, model, view.getMenuBar());
     initializeReports();
     IMessageContainer messageContainer = model.getMessageContainer();
     init(messageContainer);
@@ -70,8 +67,8 @@ public class AnathemaPresenter {
   }
 
   private void initializePreferences() throws InitializationException {
-    PreferencesElementsExtensionPoint extensionPoint = (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry()
-            .get(PreferencesElementsExtensionPoint.ID);
+    PreferencesElementsExtensionPoint extensionPoint = (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry().get(
+            PreferencesElementsExtensionPoint.ID);
     Collection<IPreferencesElement> elements = instantiater.instantiateOrdered(PreferenceElement.class);
     for (IPreferencesElement element : elements) {
       extensionPoint.addPreferencesElement(element);
@@ -82,13 +79,6 @@ public class AnathemaPresenter {
     Collection<IReportFactory> factories = instantiater.instantiateOrdered(ReportFactoryAutoCollector.class);
     for (IReportFactory factory : factories) {
       model.getReportRegistry().addReports(factory.createReport(resources, model));
-    }
-  }
-
-  private void initializeMenus() throws InitializationException {
-    Collection<IAnathemaMenu> menus = instantiater.instantiateOrdered(Menu.class);
-    for (IAnathemaMenu menu : menus) {
-      menu.add(resources, model, view.getMenuBar());
     }
   }
 }
