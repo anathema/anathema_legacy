@@ -23,30 +23,38 @@ public class CharacterGridButton {
   private final MigPane buttonContent = new MigPane(new LC().insets("0").gridGap("0", "0").wrapAfter(2).gridGapX("0").debug(0), new AC().gap("5"));
   private final ToggleButton button = new ToggleButton("", buttonContent);
   private final Text name = new Text("");
+  private final ImageView imageView = new ImageView();
+  private final Label details = new Label("");
 
   public CharacterGridButton() {
     name.setFontSmoothingType(FontSmoothingType.LCD);
     name.getStyleClass().add("name");
+    button.getStyleClass().add("character-grid-button");
+    details.getStyleClass().add("details");
   }
 
   public void initContent(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
-    Image image = new Image(getImage(dto.pathToImage), 30, 30, true, true);
-    name.setText(dto.text);
-    Label details = new Label(dto.details);
-    details.getStyleClass().add("details");
-    buttonContent.add(new ImageView(image), new CC().pushY().gapBottom("0"));
+    button.setOnAction(new CharacterSelected(characterSelector, dto.identifier));
+    setContent(dto);
+    buttonContent.add(imageView, new CC().pushY().gapBottom("0"));
     buttonContent.add(name, new CC().span().split(2).flowY().gapTop("0").gapBottom("0"));
     buttonContent.add(details, new CC().pad("0").gapTop("0"));
-    button.getStyleClass().add("character-grid-button");
-    button.setOnAction(new CharacterSelected(characterSelector, dto.identifier));
   }
 
   public void setContent(String newName) {
     name.setText(newName);
   }
 
-  private InputStream getImage(String pathToImage) {
-    return new ResourceLoader().loadResource(pathToImage);
+  public void setContent(CharacterButtonDto dto) {
+    name.setText(dto.text);
+    details.setText(dto.details);
+    imageView.setImage(createImage(dto));
+  }
+
+  private Image createImage(CharacterButtonDto dto) {
+    ResourceLoader resourceLoader = new ResourceLoader();
+    InputStream imageStream = resourceLoader.loadResource(dto.pathToImage);
+    return new Image(imageStream, 30, 30, true, true);
   }
 
   public Node getNode() {
