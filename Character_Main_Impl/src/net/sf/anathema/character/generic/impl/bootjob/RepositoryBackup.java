@@ -33,9 +33,7 @@ public class RepositoryBackup {
       Path saveFile = getSaveFile();
       new FileExporter(creator, exportModel, resources).exportToZip(saveFile);
     } catch (IOException e) {
-      throw new RuntimeException(
-              "Could not back up repository before launch. Please create a copy and delete all 1E characters manually.",
-              e);
+      throw new RuntimeException("Could not back up repository before launch. Please create a copy and delete all 1E characters manually.", e);
     }
   }
 

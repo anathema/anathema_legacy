@@ -23,8 +23,7 @@ public class RepositoryCleanup implements IAnathemaBootJob {
       createRepositoryAtVersion(resources, model);
       return;
     }
-    ProxySplashscreen.getInstance().displayStatusMessage(
-            resources.getString("Character.Bootjob.Cleanup.Splashmessage")); //$NON-NLS-1$
+    ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Character.Bootjob.Cleanup.Splashmessage"));
     Version anathemaVersion = new Version(resources);
     RepositoryVersion repositoryVersion = new RepositoryVersion(model.getRepository());
     logger.info(format("Found repository at version {0}.", repositoryVersion.asString()));
@@ -36,8 +35,7 @@ public class RepositoryCleanup implements IAnathemaBootJob {
     updateRepository(resources, model, anathemaVersion, repositoryVersion);
   }
 
-  private void updateRepository(IResources resources, IAnathemaModel model, Version anathemaVersion,
-                                RepositoryVersion repositoryVersion) {
+  private void updateRepository(IResources resources, IAnathemaModel model, Version anathemaVersion, RepositoryVersion repositoryVersion) {
     new RepositoryBackup(resources, model).backupRepository();
     new FirstEditionDeleter(model).actOnAllCharacters();
     new CharacterTransformer(model, new TemplateTransformer()).actOnAllCharacters();
@@ -47,8 +45,7 @@ public class RepositoryCleanup implements IAnathemaBootJob {
   private void createRepositoryAtVersion(IResources resources, IAnathemaModel model) {
     Version anathemaVersion = new Version(resources);
     RepositoryVersion repositoryVersion = new RepositoryVersion(model.getRepository());
-    logger.info(MessageFormat.format("No repository found. Creating repository for version {0}.",
-            anathemaVersion.asString()));
+    logger.info(MessageFormat.format("No repository found. Creating repository for version {0}.", anathemaVersion.asString()));
     repositoryVersion.updateTo(anathemaVersion);
   }
 
