@@ -3,6 +3,7 @@ package net.sf.anathema.character.perspective;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IStringResourceHandler;
 
 public class CharacterGridPresenter {
@@ -21,14 +22,15 @@ public class CharacterGridPresenter {
   }
 
   public void initPresentation() {
-    for (CharacterModel existingCharacters : model.collectAllExistingCharacters()) {
-      CharacterButtonDto dto = characterTransformer.apply(existingCharacters.getDescriptiveFeatures());
+    for (final CharacterModel character : model.collectAllExistingCharacters()) {
+      final CharacterButtonDto dto = characterTransformer.apply(character.getDescriptiveFeatures());
+      character.whenFeaturesChange(new IChangeListener() {
+        @Override
+        public void changeOccurred() {
+          view.setName(dto.identifier, character.getDescriptiveFeatures().getPrintName());
+        }
+      });
       view.addButton(dto, characterSelector);
     }
-    model.whenCurrentSelectionChangesName(new CharacterNameChangeListener() {
-      public void nameChanged(CharacterIdentifier identifier, String newName) {
-        view.setName(identifier, newName);
-      }
-    });
   }
 }

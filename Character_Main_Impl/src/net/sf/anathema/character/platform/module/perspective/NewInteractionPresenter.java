@@ -10,6 +10,7 @@ import net.sf.anathema.character.perspective.model.model.CharacterModel;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.character.perspective.model.model.NewCharacterListener;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.swing.character.perspective.interaction.Interaction;
 
@@ -36,11 +37,17 @@ public class NewInteractionPresenter {
     model.whenNewCharacterIsAdded(new NewCharacterListener() {
 
       @Override
-      public void added(CharacterModel character) {
-        DescriptiveFeatures features = character.getDescriptiveFeatures();
+      public void added(final CharacterModel character) {
+        final DescriptiveFeatures features = character.getDescriptiveFeatures();
         CharacterButtonDto dto = new ToCharacterButtonDto(resources).apply(features);
         gridViewView.addAndSelectButton(dto, selector);
         selector.selected(dto.identifier);
+        character.whenFeaturesChange(new IChangeListener() {
+          @Override
+          public void changeOccurred() {
+            gridViewView.setName(features.getIdentifier(), character.getDescriptiveFeatures().getPrintName());
+          }
+        });
       }
     });
   }

@@ -3,19 +3,22 @@ package net.sf.anathema.character.perspective.model.model;
 import net.sf.anathema.character.perspective.DescriptiveFeatures;
 import net.sf.anathema.character.perspective.LoadedDescriptiveFeatures;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.IItemListener;
+import net.sf.anathema.lib.control.IChangeListener;
+import org.jmock.example.announcer.Announcer;
 
 public class CharacterModel {
 
   private DescriptiveFeatures descriptiveFeatures;
   private IItem item;
+  private final Announcer<IChangeListener> featuresChangeAnnouncer = Announcer.to(IChangeListener.class);
 
   public CharacterModel(DescriptiveFeatures descriptiveFeatures) {
     this.descriptiveFeatures = descriptiveFeatures;
   }
 
   public CharacterModel(CharacterIdentifier identifier, IItem item) {
-    this.descriptiveFeatures = new LoadedDescriptiveFeatures(identifier, item);
-    this.item = item;
+    setItem(identifier, item);
   }
 
   public DescriptiveFeatures getDescriptiveFeatures() {
@@ -23,8 +26,19 @@ public class CharacterModel {
   }
 
   public void setItem(IItem item) {
+    CharacterIdentifier identifier = descriptiveFeatures.getIdentifier();
+    setItem(identifier, item);
+  }
+
+  private void setItem(CharacterIdentifier identifier, IItem item) {
     this.item = item;
-    this.descriptiveFeatures = new LoadedDescriptiveFeatures(descriptiveFeatures.getIdentifier(), item);
+    this.descriptiveFeatures = new LoadedDescriptiveFeatures(identifier, item);
+    item.addItemListener(new IItemListener() {
+      @Override
+      public void printNameChanged(String newName) {
+        featuresChangeAnnouncer.announce().changeOccurred();
+      }
+    });
   }
 
   public boolean isLoaded() {
@@ -33,5 +47,9 @@ public class CharacterModel {
 
   public IItem getItem() {
     return item;
+  }
+
+  public void whenFeaturesChange(IChangeListener listener) {
+    featuresChangeAnnouncer.addListener(listener);
   }
 }
