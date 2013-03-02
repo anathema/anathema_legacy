@@ -6,13 +6,13 @@ import net.sf.anathema.campaign.model.plot.IPlotElementContainer;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainerListener;
 import net.sf.anathema.campaign.model.plot.IPlotTimeUnit;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlotElementContainer extends Identificate implements IPlotElementContainer {
+public class PlotElementContainer extends Identifier implements IPlotElementContainer {
 
   private final IPlotTimeUnit unit;
   private final List<IPlotElement> children = new ArrayList<>();

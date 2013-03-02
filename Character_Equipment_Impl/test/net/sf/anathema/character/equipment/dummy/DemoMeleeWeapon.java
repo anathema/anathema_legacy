@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats {
@@ -25,7 +25,7 @@ public class DemoMeleeWeapon extends AbstractCombatStats implements IWeaponStats
   private Identified name;
 
   public DemoMeleeWeapon() {
-    this(new Identificate("Melee"), //$NON-NLS-1$
+    this(new Identifier("Melee"), //$NON-NLS-1$
         2,
         -5,
         3,

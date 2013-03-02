@@ -22,7 +22,7 @@ import net.sf.anathema.character.ghost.passions.GhostPassionsViewFactory;
 import net.sf.anathema.character.ghost.passions.persistence.GhostPassionsPersisterFactory;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 
 @CharacterModule
@@ -36,7 +36,7 @@ public class GhostCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_WHISPERS = "GhostWhispers"; //$NON-NLS-1$
 
   private static final TemplateType heroicType = new TemplateType(type);
-  private static final TemplateType commonType = new TemplateType(type, new Identificate("CommonGhost")); //$NON-NLS-1$
+  private static final TemplateType commonType = new TemplateType(type, new Identifier("CommonGhost")); //$NON-NLS-1$
 
   private final TemplateType[] trueGhosts = {heroicType, commonType};
 

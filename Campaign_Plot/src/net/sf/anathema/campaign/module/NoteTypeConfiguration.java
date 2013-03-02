@@ -28,8 +28,10 @@ import javax.swing.Icon;
 @Weight(weight = 20)
 public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
+  public static final String NOTE_ITEM_TYPE_ID = "Note";
+
   public NoteTypeConfiguration() {
-    super(new ItemType("Note", new RepositoryConfiguration(".not", "Notes/"))); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
+    super(new ItemType(NOTE_ITEM_TYPE_ID, new RepositoryConfiguration(".not", "Notes/")));
   }
 
   @Override

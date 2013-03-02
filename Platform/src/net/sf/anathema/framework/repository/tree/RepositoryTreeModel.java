@@ -14,6 +14,7 @@ import net.sf.anathema.lib.control.IChangeListener;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class RepositoryTreeModel implements IRepositoryTreeModel {
@@ -41,7 +42,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   @Override
-  public PrintNameFile[] getPrintNameFiles(IItemType itemType) {
+  public Collection<PrintNameFile> getPrintNameFiles(IItemType itemType) {
     return repository.getPrintNameFileAccess().collectAllPrintNameFiles(itemType);
   }
 

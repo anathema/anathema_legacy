@@ -2,6 +2,7 @@ dependencies {
   compile project(':Charm_Tree')
   compile project(':Character_Library')
   compile project(':Namegenerator')
+  compile project(':Platform')
   testCompile parent.ext.testDependencies
 }
 

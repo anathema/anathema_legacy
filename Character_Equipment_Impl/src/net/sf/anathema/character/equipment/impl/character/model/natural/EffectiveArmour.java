@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.character.model.natural;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractCombatStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.HashMap;
@@ -57,7 +57,7 @@ public class EffectiveArmour extends AbstractCombatStats implements IArmourStats
 
   @Override
   public Identified getName() {
-    return new Identificate("EffectiveArmour"); //$NON-NLS-1$
+    return new Identifier("EffectiveArmour"); //$NON-NLS-1$
   }
 
   public void addArmour(IArmourStats armour) {

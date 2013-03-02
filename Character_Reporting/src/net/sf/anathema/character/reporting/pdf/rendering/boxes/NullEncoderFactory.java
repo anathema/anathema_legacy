@@ -4,9 +4,9 @@ import net.sf.anathema.character.reporting.pdf.content.BasicContent;
 import net.sf.anathema.character.reporting.pdf.rendering.general.NullBoxContentEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
-public class NullEncoderFactory extends Identificate implements EncoderFactory {
+public class NullEncoderFactory extends Identifier implements EncoderFactory {
   public static final NullBoxContentEncoder NULL_ENCODER = new NullBoxContentEncoder("Unknown");
 
   public NullEncoderFactory(String id) {

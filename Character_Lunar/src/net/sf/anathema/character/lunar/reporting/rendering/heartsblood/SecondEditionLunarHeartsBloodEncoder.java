@@ -13,7 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class SecondEditionLunarHeartsBloodEncoder extends AbstractStatsTableEnco
       stats.add(new IHeartsBloodStats() {
         @Override
         public Identified getName() {
-          return new Identificate(form.getName());
+          return new Identifier(form.getName());
         }
 
         @Override

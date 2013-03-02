@@ -24,7 +24,7 @@ import net.sf.anathema.character.sidereal.flawedfate.*;
 import net.sf.anathema.character.sidereal.paradox.*;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 @CharacterModule
 public class SiderealCharacterModule extends CharacterTypeModule {
@@ -37,7 +37,7 @@ public class SiderealCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_SIFU = "Sifu"; //$NON-NLS-1$
 
   private static final TemplateType defaultTemplateType = new TemplateType(type); //$NON-NLS-1$
-  public static final TemplateType dreamsType = new TemplateType(type, new Identificate("Dreams")); //$NON-NLS-1$
+  public static final TemplateType dreamsType = new TemplateType(type, new Identifier("Dreams")); //$NON-NLS-1$
 
   private static final TemplateType[] dreams = {dreamsType};
 

@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class CharmProvider implements ICharmProvider {
 
   @Override
   public ISpecialCharm[] getSpecialCharms(Identified type) {
-    ISpecialCharm[] specialCharms = charmsByType.get(new Identificate(type.getId()));
+    ISpecialCharm[] specialCharms = charmsByType.get(new Identifier(type.getId()));
     if (specialCharms == null) {
       specialCharms = new ISpecialCharm[0];
     }

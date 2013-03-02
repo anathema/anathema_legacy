@@ -31,7 +31,7 @@ public class LookAndFeelOverrideBootjobTest {
   public void resetsLookAndFeelIfPropertyIsSet() throws Exception {
     SYSTEM_PREFERENCES.put(USER_LOOK_AND_FEEL_CLASSNAME, "anyLookAndFeel");
     System.setProperty("overrideLookAndFeel", "true");
-    new LookAndFeelOverrideBootjob().run(null, null, null);
+    new LookAndFeelOverrideBootjob().run(null, null);
     assertThat(Arrays.asList(SYSTEM_PREFERENCES.keys()).contains(USER_LOOK_AND_FEEL_CLASSNAME), is(false));
   }
 }

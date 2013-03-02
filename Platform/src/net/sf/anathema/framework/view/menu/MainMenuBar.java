@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.view.menu;
 
-import net.sf.anathema.framework.view.IMenuBar;
+import net.sf.anathema.framework.view.MenuBar;
 
 import javax.swing.JMenuBar;
 
-public class MainMenuBar implements IMenuBar {
+public class MainMenuBar implements MenuBar {
 
   private final JMenuBar menuBar = new JMenuBar();
   private final IMenuBarView mainMenu;
@@ -24,13 +24,6 @@ public class MainMenuBar implements IMenuBar {
     helpMenu = new Menu(helpMenuName, helpMenuMnemonic);
     menuBar.add(mainMenu.getComponent());
     menuBar.add(helpMenu.getComponent());
-  }
-
-  @Override
-  public IMenu addMenu(String title) {
-    Menu menu = new Menu(title);
-    menuBar.add(menu.getComponent(), menuBar.getComponentCount() - 1);
-    return menu;
   }
 
   @Override

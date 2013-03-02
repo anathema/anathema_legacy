@@ -55,7 +55,7 @@ public class EquipmentDatabaseActionProperties implements IDatabaseActionPropert
   }
 
   @Override
-  public IItemData createItemData(IDataFileProvider provider) throws IOException {
+  public GsonEquipmentDatabase createItemData(IDataFileProvider provider) {
     return GsonEquipmentDatabase.CreateFrom(anathemaModel);
   }
 }

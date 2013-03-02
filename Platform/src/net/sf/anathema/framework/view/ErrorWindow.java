@@ -3,7 +3,7 @@ package net.sf.anathema.framework.view;
 import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.message.Message;
 
-public class ErrorWindow implements IWindow {
+public class ErrorWindow implements ApplicationFrame {
 
   private Exception cause;
 

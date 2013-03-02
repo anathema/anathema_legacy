@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.module;
 
+import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -10,6 +11,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.impl.module.repository.CharacterCreationWizardPageFactory;
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.impl.view.TaskedCharacterView;
+import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactoryPrototype;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -35,15 +37,14 @@ import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 @ItemTypeConfiguration
 @Weight(weight = 0)
 public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
-  public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter"; //$NON-NLS-1$
 
   public ExaltedCharacterItemTypeConfiguration() throws AnathemaException {
-    super(new ItemType(CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/"))); //$NON-NLS-1$ //$NON-NLS-2$
+    super(new ItemType(CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/"))); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @Override
@@ -98,7 +99,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
     CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, resources);
     IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();
     IRepositoryFileResolver fileResolver = anathemaModel.getRepository().getRepositoryFileResolver();
-    CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(generics.getCharacterTypes(), casteCollectionIRegistry, fileResolver);
+    CharacterPrintNameFileScanner scanner = new RegExCharacterPrintNameFileScanner(casteCollectionIRegistry, fileResolver);
     return new CharacterViewProperties(getItemType(), resources, factory, scanner);
   }
 }

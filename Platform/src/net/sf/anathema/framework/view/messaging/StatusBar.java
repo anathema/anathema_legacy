@@ -1,36 +1,9 @@
 package net.sf.anathema.framework.view.messaging;
 
-import net.sf.anathema.lib.gui.message.MessageTypeUi;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.message.IBasicMessage;
 
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+public interface StatusBar extends IView {
 
-public class StatusBar implements IStatusBar {
-
-  private final JLabel label = new JLabel();
-  private final JPanel panel = new JPanel(new BorderLayout());
-
-  public StatusBar() {
-    JButton button = new JButton("...");
-    panel.add(label, BorderLayout.CENTER);
-    label.setPreferredSize(new Dimension(350, 20));
-    button.setPreferredSize(new Dimension(25, 20));
-  }
-
-  @Override
-  public JComponent getComponent() {
-    return panel;
-  }
-
-  @Override
-  public void setLatestMessage(IBasicMessage message) {
-    label.setIcon(MessageTypeUi.getInstance().getIcon(message.getType()));
-    label.setText(message.getText());
-    label.revalidate();
-  }
+  void setLatestMessage(IBasicMessage message);
 }

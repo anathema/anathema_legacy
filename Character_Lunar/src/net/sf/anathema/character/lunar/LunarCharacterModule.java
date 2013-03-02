@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackground
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformModelFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformPersisterFactory;
@@ -29,7 +30,7 @@ import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawViewFactory;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,14 +46,14 @@ public class LunarCharacterModule extends CharacterTypeModule {
   public static final String BACKGROUND_ID_TABOO = "Taboo"; //$NON-NLS-1$
 
   private static final TemplateType castelessType = new TemplateType(type,
-          new Identificate("Casteless")); //$NON-NLS-1$
+          new Identifier("Casteless")); //$NON-NLS-1$
   private static final TemplateType dreamsType = new TemplateType(type, new Identificate("Dreams")); //$NON-NLS-1$
   private static final TemplateType dreamsEstablished = new TemplateType(type,
-          new Identificate("DreamsEstablished")); //$NON-NLS-1$
+          new Identifier("DreamsEstablished")); //$NON-NLS-1$
   private static final TemplateType dreamsInfluential = new TemplateType(type,
-          new Identificate("DreamsInfluential")); //$NON-NLS-1$
+          new Identifier("DreamsInfluential")); //$NON-NLS-1$
   private static final TemplateType dreamsLegendary = new TemplateType(type,
-          new Identificate("DreamsLegendary")); //$NON-NLS-1$
+          new Identifier("DreamsLegendary")); //$NON-NLS-1$
   private static final TemplateType silverpact = new TemplateType(type); //$NON-NLS-1$
 
   private static final TemplateType[] dreams = {dreamsType, dreamsEstablished, dreamsInfluential, dreamsLegendary};

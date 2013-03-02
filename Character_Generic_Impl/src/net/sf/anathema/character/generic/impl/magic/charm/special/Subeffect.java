@@ -4,10 +4,10 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
-public class Subeffect extends Identificate implements ISubeffect {
+public class Subeffect extends Identifier implements ISubeffect {
 
   private final Announcer<IChangeListener> control = Announcer.to(IChangeListener.class);
   private final IBasicCharacterData data;

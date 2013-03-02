@@ -2,14 +2,14 @@ package net.sf.anathema.character.equipment.impl.item.model.gson;
 
 import net.sf.anathema.character.equipment.impl.character.model.stats.*;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import static java.lang.Integer.MAX_VALUE;
 
 public class GsonStatMother {
   public static RangedWeaponStats createRangedWeapon() {
     RangedWeaponStats stats = new RangedWeaponStats(new GsonCollectionFactory());
-    stats.setName(new Identificate("Fire!"));
+    stats.setName(new Identifier("Fire!"));
     stats.setAccuracy(0);
     stats.setDamage(0);
     stats.setDamage(0);
@@ -23,7 +23,7 @@ public class GsonStatMother {
 
   public static MeleeWeaponStats createMeleeWeapon() {
     MeleeWeaponStats stats = new MeleeWeaponStats(new GsonCollectionFactory());
-    stats.setName(new Identificate("Chaaarge!"));
+    stats.setName(new Identifier("Chaaarge!"));
     stats.setAccuracy(0);
     stats.setDamage(0);
     stats.setDamage(0);
@@ -37,7 +37,7 @@ public class GsonStatMother {
 
   public static ArtifactStats createArtifact() {
     ArtifactStats stats = new ArtifactStats();
-    stats.setName(new Identificate("Zing!"));
+    stats.setName(new Identifier("Zing!"));
     stats.setAllowForeignAttunement(true);
     stats.setAttuneCost(5);
     stats.setRequireAttunement(false);
@@ -46,7 +46,7 @@ public class GsonStatMother {
 
   public static ArmourStats createArmour() {
     ArmourStats stats = new ArmourStats(new GsonCollectionFactory());
-    stats.setName(new Identificate("Bounce!"));
+    stats.setName(new Identifier("Bounce!"));
     stats.setFatigue(5);
     stats.setMobilityPenalty(-2);
     stats.setSoak(HealthType.Bashing, 5);
@@ -58,7 +58,7 @@ public class GsonStatMother {
 
   public static TraitModifyingStats createTraitModifier() {
     TraitModifyingStats stats = new TraitModifyingStats();
-    stats.setName(new Identificate("Liftoff!"));
+    stats.setName(new Identifier("Liftoff!"));
     stats.setDDVPoolMod(1);
     stats.setJoinBattleMod(2);
     stats.setJoinDebateMod(3);

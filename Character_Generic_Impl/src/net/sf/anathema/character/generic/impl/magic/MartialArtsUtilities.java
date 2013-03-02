@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.magic;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.text.MessageFormat;
 
@@ -11,7 +11,7 @@ import static net.sf.anathema.character.generic.magic.ICharmData.FORM_ATTRIBUTE;
 
 public class MartialArtsUtilities {
 
-  public static final Identificate MARTIAL_ARTS = new Identificate(AbilityType.MartialArts.name());
+  public static final Identifier MARTIAL_ARTS = new Identifier(AbilityType.MartialArts.name());
 
   public static boolean isMartialArtsCharm(ICharm charm) {
     return charm.hasAttribute(MARTIAL_ARTS);
@@ -26,7 +26,7 @@ public class MartialArtsUtilities {
       return null;
     }
     for (MartialArtsLevel level : MartialArtsLevel.values()) {
-      if (charm.hasAttribute(new Identificate(level.name()))) {
+      if (charm.hasAttribute(new Identifier(level.name()))) {
         return level;
       }
     }
@@ -36,6 +36,6 @@ public class MartialArtsUtilities {
   }
 
   public static boolean hasLevel(MartialArtsLevel level, ICharm charm) {
-    return charm.hasAttribute(new Identificate(level.name()));
+    return charm.hasAttribute(new Identifier(level.name()));
   }
 }

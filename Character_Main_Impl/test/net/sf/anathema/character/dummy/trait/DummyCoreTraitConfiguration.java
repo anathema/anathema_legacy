@@ -19,7 +19,8 @@ import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
+import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -73,7 +74,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
       List<ITraitType> traitTypes = abilityGroupsByType.get(groupId);
       groups.add(new IdentifiedTraitTypeGroup(
               traitTypes.toArray(new ITraitType[traitTypes.size()]),
-          new Identificate(groupId)));
+          new Identifier(groupId)));
     }
     return groups.toArray(new IIdentifiedTraitTypeGroup[groups.size()]);
   }

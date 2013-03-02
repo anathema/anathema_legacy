@@ -24,12 +24,12 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.*;
 
-public class Charm extends Identificate implements ICharm {
+public class Charm extends Identifier implements ICharm {
 
   private final CharmPrerequisiteList prerequisisteList;
 
@@ -360,7 +360,7 @@ public class Charm extends Identificate implements ICharm {
     }
 
     final ITraitType primaryTraitType = getPrimaryTraitType();
-    if (hasAttribute(new Identificate("MartialArts")) && ((IFavorableGenericTrait) traitCollection.getTrait(
+    if (hasAttribute(new Identifier("MartialArts")) && ((IFavorableGenericTrait) traitCollection.getTrait(
             AbilityType.MartialArts)).isCasteOrFavored()) {
       return true;
     }

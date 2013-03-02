@@ -12,7 +12,7 @@ import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.mutations.model.MutationVisitorAdapter;
 import net.sf.anathema.character.mutations.model.types.SoakProvidingMutation;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
@@ -118,7 +118,7 @@ public class BeastformNaturalSoak extends AbstractCombatStats implements IArmour
 
   @Override
   public Identified getName() {
-    return new Identificate("NaturalSoak"); //$NON-NLS-1$
+    return new Identifier("NaturalSoak"); //$NON-NLS-1$
   }
 
   @Override

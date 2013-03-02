@@ -2,7 +2,7 @@ package net.sf.anathema.character.lunar.reporting.content.stats.knacks;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 public class KnackStats implements IKnackStats
@@ -20,7 +20,7 @@ public class KnackStats implements IKnackStats
 
 	@Override
 	public Identified getName() {
-		return new Identificate(charm.getId());
+		return new Identifier(charm.getId());
 	}
 
 	@Override

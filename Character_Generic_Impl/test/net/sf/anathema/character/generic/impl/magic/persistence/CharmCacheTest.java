@@ -1,10 +1,11 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -20,7 +21,7 @@ public class CharmCacheTest {
   @Test
   public void matchesCharacterTypesToIdentificatesForSpecialCharmLookup() throws Exception {
     ISpecialCharm specialCharm = Mockito.mock(ISpecialCharm.class);
-    Identificate solar = new Identificate("Dummy");
+    Identifier solar = new Identifier("Dummy");
     addSpecialCharmForSolar(specialCharm, solar);
     ISpecialCharm[] charmData = cache.getSpecialCharmData(new DummyExaltCharacterType());
     assertThat(charmData[0], is(specialCharm));
@@ -29,13 +30,13 @@ public class CharmCacheTest {
   @Test
   public void matchesCharacterTypesToIdentificatesForCharmLookup() throws Exception {
     ICharm charm = Mockito.mock(ICharm.class);
-    Identificate solar = new Identificate("Dummy");
+    Identifier solar = new Identifier("Dummy");
     cache.addCharm(solar, charm);
     ICharm[] charmData = cache.getCharms(new DummyExaltCharacterType());
     assertThat(charmData[0], is(charm));
   }
 
-  private void addSpecialCharmForSolar(ISpecialCharm specialCharm, Identificate solar) {
+  private void addSpecialCharmForSolar(ISpecialCharm specialCharm, Identifier solar) {
     ArrayList<ISpecialCharm> data = Lists.newArrayList(specialCharm);
     cache.addSpecialCharmData(solar, data);
   }

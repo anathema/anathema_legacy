@@ -13,7 +13,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
 
@@ -26,7 +26,7 @@ public class SecondEditionPowersEncoder implements ContentEncoder {
   private final boolean isHorizontal;
   private int tellMDV;
 
-  private static final TemplateType castelessType = new TemplateType(LunarCharacterModule.type, new Identificate("Casteless")); //$NON-NLS-1$
+  private static final TemplateType castelessType = new TemplateType(LunarCharacterModule.type, new Identifier("Casteless")); //$NON-NLS-1$
 
   public SecondEditionPowersEncoder(IResources resources, boolean isHorizontal) {
     this.resources = resources;

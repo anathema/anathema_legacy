@@ -11,7 +11,7 @@ import net.sf.anathema.character.library.removableentry.model.AbstractRemovableE
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 import org.jmock.example.announcer.Announcer;
 
@@ -20,8 +20,8 @@ import java.util.Arrays;
 public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> implements ILinguisticsModel {
 
   private static final int barbarianLanguagesPerPoint= 4;
-  private final Identified[] languages = new Identified[] { new Identificate("HighRealm"), //$NON-NLS-1$
-      new Identificate("LowRealm"), new Identificate("OldRealm"), new Identificate("Riverspeak"), new Identificate("Skytongue"), new Identificate("Flametongue"), new Identificate("Seatongue"), new Identificate("Foresttongue"), new Identificate("GuildCant"), new Identificate("ClawSpeak"), new Identificate("HighHolySpeech"), new Identificate("Pelagial") }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$
+  private final Identified[] languages = new Identified[] { new Identifier("HighRealm"), //$NON-NLS-1$
+      new Identifier("LowRealm"), new Identifier("OldRealm"), new Identifier("Riverspeak"), new Identifier("Skytongue"), new Identifier("Flametongue"), new Identifier("Seatongue"), new Identifier("Foresttongue"), new Identifier("GuildCant"), new Identifier("ClawSpeak"), new Identifier("HighHolySpeech"), new Identifier("Pelagial") }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$
 
   private Identified selection;
   private int languagePointsAllowed;
@@ -77,7 +77,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<Identified> im
       this.selection = null;
       fireEntryChanged();
     }
-    selectLanguage(new Identificate(customName));
+    selectLanguage(new Identifier(customName));
   }
 
   @Override

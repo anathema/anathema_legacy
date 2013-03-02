@@ -20,7 +20,7 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate.createStaticLimitedTemplate;
 import static org.mockito.Matchers.isA;
@@ -97,7 +97,7 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
     if (subtype == null) {
       return new TemplateType(type);
     }
-    return new TemplateType(type, new Identificate(subtype));
+    return new TemplateType(type, new Identifier(subtype));
   }
 
   @Override

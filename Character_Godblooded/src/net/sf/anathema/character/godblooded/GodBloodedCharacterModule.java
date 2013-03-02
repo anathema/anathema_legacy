@@ -19,26 +19,26 @@ import net.sf.anathema.character.solar.SolarCharacterType;
 import net.sf.anathema.character.spirit.SpiritCharacterType;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 
 @CharacterModule
 public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter {
 
   public static final String BACKGROUND_ID_INHERITANCE = "Inheritance"; //$NON-NLS-1$
 
-  private static final TemplateType godBloodedType = new TemplateType(new SpiritCharacterType(), new Identificate(
+  private static final TemplateType godBloodedType = new TemplateType(new SpiritCharacterType(), new Identifier(
           "GodBlooded")); //$NON-NLS-1$
-  private static final TemplateType demonBloodedType = new TemplateType(new SpiritCharacterType(), new Identificate(
+  private static final TemplateType demonBloodedType = new TemplateType(new SpiritCharacterType(), new Identifier(
           "DemonBlooded")); //$NON-NLS-1$
-  private static final TemplateType ghostBloodedType = new TemplateType(new GhostCharacterType(), new Identificate(
+  private static final TemplateType ghostBloodedType = new TemplateType(new GhostCharacterType(), new Identifier(
           "GhostBlooded")); //$NON-NLS-1$
-  private static final TemplateType halfCasteAbyssalType = new TemplateType(new AbyssalCharacterType(), new Identificate(
+  private static final TemplateType halfCasteAbyssalType = new TemplateType(new AbyssalCharacterType(), new Identifier(
           "HalfCasteAbyssal")); //$NON-NLS-1$
-  private static final TemplateType halfCasteLunarType = new TemplateType(new LunarCharacterType(), new Identificate(
+  private static final TemplateType halfCasteLunarType = new TemplateType(new LunarCharacterType(), new Identifier(
           "HalfCasteLunar")); //$NON-NLS-1$
-  private static final TemplateType halfCasteSiderealType = new TemplateType(new SiderealCharacterType(), new Identificate(
+  private static final TemplateType halfCasteSiderealType = new TemplateType(new SiderealCharacterType(), new Identifier(
           "HalfCasteSidereal")); //$NON-NLS-1$
-  private static final TemplateType halfCasteSolarType = new TemplateType(new SolarCharacterType(), new Identificate(
+  private static final TemplateType halfCasteSolarType = new TemplateType(new SolarCharacterType(), new Identifier(
           "HalfCasteSolar")); //$NON-NLS-1$
 
   @Override

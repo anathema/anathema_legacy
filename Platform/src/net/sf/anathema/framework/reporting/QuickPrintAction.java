@@ -30,8 +30,7 @@ public class QuickPrintAction extends AbstractPrintAction {
 
   public static Action createMenuAction(IAnathemaModel model, IResources resources) {
     SmartAction action = new QuickPrintAction(model, resources);
-    action.setName(
-            resources.getString("Anathema.Reporting.Menu.QuickPrint.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
+    action.setName(resources.getString("Anathema.Reporting.Menu.QuickPrint.Name") + "\u2026");
     return action;
   }
 

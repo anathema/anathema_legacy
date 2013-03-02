@@ -26,12 +26,12 @@ import javax.swing.Icon;
 
 @ItemTypeConfiguration
 @Weight(weight = 10)
-public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
+public class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
-  public static final String SERIES_ITEM_TYPE_ID = "Series"; //$NON-NLS-1$
+  public static final String SERIES_ITEM_TYPE_ID = "Series";
 
   public SeriesTypeConfiguration() {
-    super(new ItemType(SERIES_ITEM_TYPE_ID, new RepositoryConfiguration(".srs", "Series/", "main"))); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    super(new ItemType(SERIES_ITEM_TYPE_ID, new RepositoryConfiguration(".srs", "Series/", "main")));
   }
 
   @Override

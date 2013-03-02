@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
@@ -19,13 +19,13 @@ public class CharmCache implements ICharmCache {
   
   @Override
   public ICharm[] getCharms(Identified type) {
-    type = new Identificate(type.getId());
+    type = new Identifier(type.getId());
     List<ICharm> charmList = charmSets.get(type);
     return charmList.toArray(new ICharm[charmList.size()]);
   }
 
   public void addCharm(Identified type, ICharm charm) {
-    type = new Identificate(type.getId());
+    type = new Identifier(type.getId());
     charmSets.replace(type, charm, charm);
   }
 
@@ -45,7 +45,7 @@ public class CharmCache implements ICharmCache {
 
   private List<ISpecialCharm> getSpecialCharmList(Identified type) {
     Map<Identified, List<ISpecialCharm>> map = specialCharms;
-    type = new Identificate(type.getId());
+    type = new Identifier(type.getId());
     List<ISpecialCharm> list = map.get(type);
     if (list == null) {
       list = new ArrayList<>();

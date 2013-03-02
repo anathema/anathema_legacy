@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.module;
 
+import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.impl.module.repository.CharacterCreationWizardPageFactory;
 import net.sf.anathema.framework.item.IItemType;
