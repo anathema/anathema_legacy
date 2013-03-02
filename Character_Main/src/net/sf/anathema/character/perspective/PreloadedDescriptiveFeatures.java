@@ -36,4 +36,9 @@ public class PreloadedDescriptiveFeatures implements DescriptiveFeatures {
   public Identified getCasteType() {
     return fileScanner.getCasteType(printNameFile);
   }
+
+  @Override
+  public boolean isDirty() {
+    return false;
+  }
 }

@@ -2,6 +2,14 @@
     -fx-background-color: white
 }
 
+.character-grid-button .dirty {
+    -fx-fill: orchid;
+}
+
+.character-grid-button .clean {
+    -fx-fill: black;
+}
+
 .character-grid-button {
     -fx-alignment: baseline-left;
     -fx-background-color: white;

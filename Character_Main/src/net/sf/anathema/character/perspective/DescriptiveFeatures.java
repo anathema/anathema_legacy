@@ -13,4 +13,6 @@ public interface DescriptiveFeatures {
   ITemplateType getTemplateType();
 
   Identified getCasteType();
+
+  boolean isDirty();
 }

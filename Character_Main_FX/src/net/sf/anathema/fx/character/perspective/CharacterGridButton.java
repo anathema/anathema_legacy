@@ -45,6 +45,13 @@ public class CharacterGridButton {
     name.setText(dto.text);
     details.setText(dto.details);
     imageView.setImage(createImage(dto));
+    if (dto.isDirty) {
+      name.getStyleClass().add("dirty");
+      name.getStyleClass().remove("clean");
+    } else {
+      name.getStyleClass().add("clean");
+      name.getStyleClass().remove("dirty");
+    }
   }
 
   private Image createImage(CharacterButtonDto dto) {

@@ -29,7 +29,8 @@ public class ToCharacterButtonDto implements Function<DescriptiveFeatures, Chara
     Identified casteType = input.getCasteType();
     String details = getDetails(templateType);
     String pathToImage = getPathToImage(templateType, casteType);
-    return new CharacterButtonDto(identifier, text, details, pathToImage);
+    boolean dirty = input.isDirty();
+    return new CharacterButtonDto(identifier, text, details, pathToImage, dirty);
   }
 
   private String getDetails(ITemplateType templateType) {

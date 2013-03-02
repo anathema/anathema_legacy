@@ -41,12 +41,8 @@ public class CharacterModel {
       }
     });
     ICharacter character = (ICharacter) item.getItemData();
-    character.getCharacterConcept().getCaste().addChangeListener(new IChangeListener() {
-      @Override
-      public void changeOccurred() {
-        featuresChangeAnnouncer.announce().changeOccurred();
-      }
-    });
+    character.getCharacterConcept().getCaste().addChangeListener(new AnnouncingChangeListener());
+    item.addDirtyListener(new AnnouncingChangeListener());
   }
 
   public boolean isLoaded() {
@@ -59,5 +55,12 @@ public class CharacterModel {
 
   public void whenFeaturesChange(IChangeListener listener) {
     featuresChangeAnnouncer.addListener(listener);
+  }
+
+  private class AnnouncingChangeListener implements IChangeListener {
+    @Override
+    public void changeOccurred() {
+      featuresChangeAnnouncer.announce().changeOccurred();
+    }
   }
 }

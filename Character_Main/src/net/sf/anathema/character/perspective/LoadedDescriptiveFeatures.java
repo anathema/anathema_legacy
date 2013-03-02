@@ -37,4 +37,9 @@ public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
     ICharacter character = (ICharacter) characterItem.getItemData();
     return character.getCharacterConcept().getCaste().getType();
   }
+
+  @Override
+  public boolean isDirty() {
+    return characterItem.isDirty();
+  }
 }
