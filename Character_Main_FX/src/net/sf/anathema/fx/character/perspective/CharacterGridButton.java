@@ -31,14 +31,14 @@ public class CharacterGridButton {
     name.getStyleClass().add("name");
     button.getStyleClass().add("character-grid-button");
     details.getStyleClass().add("details");
+    buttonContent.add(imageView, new CC().pushY().gapBottom("0"));
+    buttonContent.add(name, new CC().span().split(2).flowY().gapTop("0").gapBottom("0"));
+    buttonContent.add(details, new CC().pad("0").gapTop("0"));
   }
 
   public void initContent(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
     button.setOnAction(new CharacterSelected(characterSelector, dto.identifier));
     setContent(dto);
-    buttonContent.add(imageView, new CC().pushY().gapBottom("0"));
-    buttonContent.add(name, new CC().span().split(2).flowY().gapTop("0").gapBottom("0"));
-    buttonContent.add(details, new CC().pad("0").gapTop("0"));
   }
 
   public void setContent(String newName) {
