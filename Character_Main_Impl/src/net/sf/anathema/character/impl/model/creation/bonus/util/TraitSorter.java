@@ -1,10 +1,10 @@
 package net.sf.anathema.character.impl.model.creation.bonus.util;
 
-import java.util.Collection;
-
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.lib.compare.WeightedObject;
 import net.sf.anathema.lib.compare.WeightedObjectSorter;
+
+import java.util.Collection;
 
 public class TraitSorter extends WeightedObjectSorter<IFavorableTrait> {
 

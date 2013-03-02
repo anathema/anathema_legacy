@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter.action.preferences;
 
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.JPanel;
 import java.util.prefs.Preferences;

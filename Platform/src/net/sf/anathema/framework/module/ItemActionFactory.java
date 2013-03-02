@@ -1,12 +1,12 @@
 package net.sf.anathema.framework.module;
 
-import javax.swing.Action;
-
 import net.sf.anathema.framework.model.IItemActionFactory;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
 import net.sf.anathema.framework.presenter.itemmanagement.GivenItemCloseAction;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Action;
 
 public class ItemActionFactory implements IItemActionFactory {
 

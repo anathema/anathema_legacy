@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.impl.template.essence;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+
+import java.util.List;
 
 public class DbEssenceTemplate extends AbstractEssenceTemplate {
 

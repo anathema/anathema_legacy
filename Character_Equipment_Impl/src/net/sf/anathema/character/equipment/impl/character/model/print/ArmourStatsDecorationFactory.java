@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.equipment.IArtifactStats;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class ArmourStatsDecorationFactory implements IEquipmentStatsDecorationFactory<IArmourStats> {
 

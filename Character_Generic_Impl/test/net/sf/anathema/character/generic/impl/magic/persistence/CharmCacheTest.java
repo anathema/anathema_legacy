@@ -1,10 +1,9 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import com.google.common.collect.Lists;
+import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.util.Identificate;
 import net.sf.anathema.lib.util.Identifier;
 import org.junit.Test;
 import org.mockito.Mockito;

@@ -1,7 +1,8 @@
 package net.sf.anathema.lib.dummy;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Icon;
+import java.awt.Component;
+import java.awt.Graphics;
 
 public class EmptyIcon implements Icon {
 

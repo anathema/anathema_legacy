@@ -1,17 +1,16 @@
 package net.sf.anathema.campaign.presenter;
 
+import net.sf.anathema.campaign.module.PlotUI;
+import net.sf.anathema.framework.styledtext.ITextEditorProperties;
+import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Action;
+import javax.swing.Icon;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.SystemColor;
-
-import javax.swing.Action;
-import javax.swing.Icon;
-
-import net.sf.anathema.campaign.module.PlotUI;
-import net.sf.anathema.framework.styledtext.ITextEditorProperties;
-import net.sf.anathema.lib.resources.IResources;
 
 public class TextEditorProperties implements ITextEditorProperties {
 

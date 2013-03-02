@@ -5,7 +5,13 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
-import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.*;
+import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodAppearanceStatsGroup;
+import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodDexterityStatsGroup;
+import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodNameStatsGroup;
+import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodNotesStatsGroup;
+import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodStaminaStatsGroup;
+import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.HeartsBloodStrengthStatsGroup;
+import net.sf.anathema.character.lunar.reporting.content.stats.heartsblood.IHeartsBloodStats;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.character.reporting.pdf.rendering.extent.Bounds;
@@ -13,8 +19,8 @@ import net.sf.anathema.character.reporting.pdf.rendering.general.box.ContentEnco
 import net.sf.anathema.character.reporting.pdf.rendering.general.stats.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;

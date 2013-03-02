@@ -1,13 +1,13 @@
 package net.sf.anathema.lib.testing.clone;
 
+import junit.framework.Assert;
+
 import java.awt.Color;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
-
-import junit.framework.Assert;
 
 public class DeepCloneChecker {
 

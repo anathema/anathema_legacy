@@ -1,9 +1,9 @@
 package net.sf.anathema.test.character.main.impl.charm;
 
+import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.dummy.magic.DummyLearnableArbitrator;
 import net.sf.anathema.character.generic.dummy.magic.DummyLearningCharmGroupContainer;
 import net.sf.anathema.character.generic.dummy.template.DummyCharmTemplate;
-import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;

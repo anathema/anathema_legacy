@@ -1,14 +1,13 @@
 package net.sf.anathema.cards.layout;
 
-import net.sf.anathema.cards.ICard;
-import net.sf.anathema.lib.resources.IResources;
-
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfContentByte;
+import net.sf.anathema.cards.ICard;
+import net.sf.anathema.lib.resources.IResources;
 
 public class DemocritusCardLayout extends AbstractCardLayout {
 

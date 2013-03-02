@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter.resources;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 public class BasicUi extends AbstractUI {
 

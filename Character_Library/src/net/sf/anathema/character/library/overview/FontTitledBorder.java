@@ -1,9 +1,8 @@
 package net.sf.anathema.character.library.overview;
 
+import javax.swing.border.TitledBorder;
 import java.awt.Component;
 import java.awt.Font;
-
-import javax.swing.border.TitledBorder;
 
 @SuppressWarnings("serial") // Will not be serialized
 public class FontTitledBorder extends TitledBorder {

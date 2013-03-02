@@ -1,17 +1,17 @@
 package net.sf.anathema.character.library.quality.persistence;
 
+import net.sf.anathema.character.library.quality.presenter.IQuality;
+import net.sf.anathema.character.library.quality.presenter.IQualityModel;
+import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
+import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Element;
+
 import static net.sf.anathema.character.library.quality.persistence.IQualityPersistenceXmlConstants.ATTRIB_CREATION_ACTIVE;
 import static net.sf.anathema.character.library.quality.persistence.IQualityPersistenceXmlConstants.ATTRIB_EXPERIENCE_ACTIVE;
 import static net.sf.anathema.character.library.quality.persistence.IQualityPersistenceXmlConstants.ATTRIB_ID;
 import static net.sf.anathema.character.library.quality.persistence.IQualityPersistenceXmlConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.library.quality.persistence.IQualityPersistenceXmlConstants.ATTRIB_VALUE;
 import static net.sf.anathema.character.library.quality.persistence.IQualityPersistenceXmlConstants.TAG_CATEGORIZATION;
-import net.sf.anathema.character.library.quality.presenter.IQuality;
-import net.sf.anathema.character.library.quality.presenter.IQualityModel;
-import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
-import net.sf.anathema.lib.xml.ElementUtilities;
-
-import org.dom4j.Element;
 
 public abstract class AbstractQualityPersister<Q extends IQuality> implements IQualityPersister<Q> {
 

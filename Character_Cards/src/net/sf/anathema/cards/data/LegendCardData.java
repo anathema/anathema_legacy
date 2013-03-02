@@ -1,13 +1,12 @@
 package net.sf.anathema.cards.data;
 
-import net.sf.anathema.cards.layout.ICardReportResourceProvider;
-
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 
 public class LegendCardData implements ICardData {
 

@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.module.preferences;
 
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.prefs.Preferences;
 

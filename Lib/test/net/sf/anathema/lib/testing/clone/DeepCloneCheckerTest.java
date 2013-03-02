@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.testing.clone;
 
 import junit.framework.AssertionFailedError;
-
 import org.junit.Before;
 import org.junit.Test;
 

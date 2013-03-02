@@ -20,7 +20,6 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.Identifier;
-import net.sf.anathema.lib.util.Identified;
 
 import java.util.ArrayList;
 import java.util.Collections;

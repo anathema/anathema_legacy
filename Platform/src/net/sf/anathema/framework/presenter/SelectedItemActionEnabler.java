@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter;
 
-import javax.swing.Action;
-
 import net.sf.anathema.framework.repository.IItem;
+
+import javax.swing.Action;
 
 public class SelectedItemActionEnabler extends ItemManagementModelAdapter {
 

@@ -1,11 +1,10 @@
 package net.sf.anathema.lib.gui.list;
 
-import java.awt.Component;
-
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.awt.Component;
 
 public class ComponentEnablingListSelectionListener implements ListSelectionListener {
 

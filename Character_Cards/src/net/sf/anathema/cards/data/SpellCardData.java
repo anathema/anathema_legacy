@@ -5,7 +5,6 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;

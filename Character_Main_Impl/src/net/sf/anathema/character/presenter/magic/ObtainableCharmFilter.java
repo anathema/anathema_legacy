@@ -1,14 +1,13 @@
 package net.sf.anathema.character.presenter.magic;
 
-import javax.swing.JPanel;
-
-import org.dom4j.Element;
-
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.charmtree.filters.ObtainableCharmFilterPage;
 import net.sf.anathema.lib.resources.IResources;
+import org.dom4j.Element;
+
+import javax.swing.JPanel;
 
 public class ObtainableCharmFilter implements ICharmFilter
 {

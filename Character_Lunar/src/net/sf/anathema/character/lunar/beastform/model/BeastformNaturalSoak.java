@@ -12,8 +12,8 @@ import net.sf.anathema.character.mutations.model.IMutation;
 import net.sf.anathema.character.mutations.model.MutationVisitorAdapter;
 import net.sf.anathema.character.mutations.model.types.SoakProvidingMutation;
 import net.sf.anathema.lib.exception.UnreachableCodeReachedException;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;

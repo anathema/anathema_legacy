@@ -3,10 +3,8 @@ package net.sf.anathema.character.impl.module.perspective;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
-import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.control.IChangeListener;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;

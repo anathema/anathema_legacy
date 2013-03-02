@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats;
 
-import java.util.Map;
-
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
+
+import java.util.Map;
 
 public class ArmourStats extends AbstractCombatStats implements IArmourStats {
 

@@ -8,7 +8,6 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
 
 public class AdditionalModelPersister {

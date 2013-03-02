@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.UntilEventDuration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
 
 public class DurationBuilder {

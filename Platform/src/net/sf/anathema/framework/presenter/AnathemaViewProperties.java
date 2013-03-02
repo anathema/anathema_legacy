@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter;
 
+import net.sf.anathema.lib.resources.IResources;
+
 import java.awt.Frame;
 import java.awt.Image;
-
-import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaViewProperties {
 

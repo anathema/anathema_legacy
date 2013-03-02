@@ -2,13 +2,13 @@ package net.sf.anathema.magic.description.presenter;
 
 import net.sf.anathema.character.presenter.magic.detail.MagicDetailModel;
 import net.sf.anathema.character.presenter.magic.detail.MagicDetailPresenter;
+import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.ObjectValueListener;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditDetailModel;
 import net.sf.anathema.magic.description.model.MagicDescriptionEditModel;
 import net.sf.anathema.magic.description.view.MagicDescriptionEditView;
-import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.ObjectValueListener;
-import net.sf.anathema.lib.gui.IView;
 
 public class MagicDescriptionEditPresenter implements MagicDetailPresenter {
 

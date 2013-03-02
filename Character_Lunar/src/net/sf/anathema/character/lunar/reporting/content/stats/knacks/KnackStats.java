@@ -2,8 +2,8 @@ package net.sf.anathema.character.lunar.reporting.content.stats.knacks;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class KnackStats implements IKnackStats
 {

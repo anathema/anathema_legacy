@@ -1,35 +1,29 @@
 package net.sf.anathema.view;
 
-import net.sf.anathema.framework.view.*;
-import net.sf.anathema.framework.view.messaging.IStatusBar;
-import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
+import net.sf.anathema.framework.view.ApplicationFrame;
+import net.sf.anathema.framework.view.MenuBar;
+import net.sf.anathema.framework.view.messaging.StatusBar;
+import net.sf.anathema.initialization.ApplicationFrameView;
 
-import javax.swing.Action;
-
-public class NullMainView implements MainView {
-
-  @Override
-  public IItemViewManagement getItemViewManagement() {
-    return new NullItemViewManagement();
-  }
+public class NullMainView implements ApplicationFrameView {
 
   @Override
-  public IWindow getWindow() {
+  public ApplicationFrame getWindow() {
     return new NullWindow();
   }
 
   @Override
-  public IMenuBar getMenuBar() {
+  public MenuBar getMenuBar() {
     return new NullMenuBar();
   }
 
   @Override
-  public IAnathemaToolbar getToolbar() {
-    return new NullToolbar();
+  public StatusBar getStatusBar() {
+    return new NullStatusBar();
   }
 
   @Override
-  public IStatusBar getStatusBar() {
-    return new NullStatusBar();
+  public void show() {
+    //nothing to do
   }
 }

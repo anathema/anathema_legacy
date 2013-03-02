@@ -1,13 +1,13 @@
 package net.sf.anathema.character.presenter;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 public class FavorableTraitViewProperties implements IIconToggleButtonProperties {
 

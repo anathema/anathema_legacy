@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.framework.magic.MagicDisplayLabeler;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class GenericCharmStats extends CharmStats {
 

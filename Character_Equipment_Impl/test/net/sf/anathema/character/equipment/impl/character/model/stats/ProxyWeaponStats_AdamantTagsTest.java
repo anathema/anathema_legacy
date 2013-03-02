@@ -4,8 +4,8 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.ModifierFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.junit.Test;
 import org.junit.matchers.JUnitMatchers;
 

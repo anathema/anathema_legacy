@@ -2,7 +2,6 @@ package net.sf.anathema.framework.model;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
-import net.sf.anathema.framework.repository.ItemType;
 
 import java.util.ArrayList;
 import java.util.Collection;

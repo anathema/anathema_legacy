@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.template;
 import net.sf.anathema.character.generic.dummy.magic.DummySpell;
 import net.sf.anathema.character.generic.impl.template.magic.CustomizableFreePicksPredicate;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-
 import org.junit.Assert;
 import org.junit.Test;
 

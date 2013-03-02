@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.character.view;
 
-import javax.swing.Action;
-
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
+
+import javax.swing.Action;
 
 public interface IEquipmentAdditionalView extends IView {
 

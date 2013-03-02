@@ -1,13 +1,12 @@
 package net.sf.anathema.framework.value;
 
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
+import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-
-import net.sf.anathema.lib.gui.IView;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 public class IconToggleButton implements IView {
 

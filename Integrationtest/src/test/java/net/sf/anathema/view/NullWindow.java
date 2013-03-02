@@ -1,8 +1,8 @@
 package net.sf.anathema.view;
 
-import net.sf.anathema.framework.view.IWindow;
+import net.sf.anathema.framework.view.ApplicationFrame;
 
-public class NullWindow implements IWindow {
+public class NullWindow implements ApplicationFrame {
 
     @Override
     public void show() {

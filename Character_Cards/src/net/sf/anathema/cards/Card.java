@@ -1,8 +1,7 @@
 package net.sf.anathema.cards;
 
-import net.sf.anathema.cards.data.ICardData;
-
 import com.itextpdf.text.pdf.PdfContentByte;
+import net.sf.anathema.cards.data.ICardData;
 
 public class Card implements ICard {
 	private final PdfContentByte directContent;

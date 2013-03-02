@@ -1,11 +1,10 @@
 package net.sf.anathema.lib.workflow.booleanvalue;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 
 import javax.swing.JToggleButton;
-
-import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class BooleanValuePresentation {
 

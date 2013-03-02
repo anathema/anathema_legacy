@@ -1,10 +1,10 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 public class EquipmentUI extends AbstractUI {
   private static final int ICON_SIZE = 20;

@@ -1,14 +1,13 @@
 package net.sf.anathema.charmtree.filters;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
-
-import net.sf.anathema.lib.resources.IResources;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class ObtainableCharmFilterPage implements ICharmFilterPage
 {

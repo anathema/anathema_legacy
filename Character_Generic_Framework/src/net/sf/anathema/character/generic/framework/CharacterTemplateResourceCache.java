@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.framework;
 
+import net.sf.anathema.lib.resources.ResourceFile;
+
 import java.util.List;
 import java.util.Map;
-
-import net.sf.anathema.lib.resources.ResourceFile;
 
 public class CharacterTemplateResourceCache implements ICharacterTemplateResourceCache {
 	

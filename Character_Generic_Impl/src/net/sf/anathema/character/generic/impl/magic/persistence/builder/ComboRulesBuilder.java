@@ -1,27 +1,25 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ALL_ABILITIES;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SELECT_ABILITIES;
-
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_COMBOABLE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARMTYPE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COMBO;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_RESTRICTIONS;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TRAIT_REFERENCE;
-
-import java.util.List;
-
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
+
+import java.util.List;
+
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ALL_ABILITIES;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_COMBOABLE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SELECT_ABILITIES;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARMTYPE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COMBO;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_RESTRICTIONS;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TRAIT_REFERENCE;
 
 public class ComboRulesBuilder implements IComboRulesBuilder {
 

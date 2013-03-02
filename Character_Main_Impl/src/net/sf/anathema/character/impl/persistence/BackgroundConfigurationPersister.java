@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.persistence;
 
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_BACKGROUNDS;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
@@ -8,8 +7,9 @@ import net.sf.anathema.character.model.background.IBackground;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
-
 import org.dom4j.Element;
+
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_BACKGROUNDS;
 
 public class BackgroundConfigurationPersister {
 

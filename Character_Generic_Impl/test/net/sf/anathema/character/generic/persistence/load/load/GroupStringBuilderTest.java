@@ -1,14 +1,14 @@
 package net.sf.anathema.character.generic.persistence.load.load;
 
-import static org.junit.Assert.assertEquals;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GroupStringBuilder;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-
 import org.dom4j.Element;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class GroupStringBuilderTest {
 

@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.framework.xml.util;
 
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
 
 public class CostParser {

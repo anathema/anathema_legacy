@@ -1,12 +1,12 @@
 package net.sf.anathema.lib.xml;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
-
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
 
 public class DocumentUtilities_FindTest {
 

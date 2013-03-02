@@ -1,14 +1,13 @@
 package net.sf.anathema.initialization;
 
-import java.io.File;
-
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.repository.IStringResolver;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.File;
 
 public class RepositoryFolderCreatorTest {
 

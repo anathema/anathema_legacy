@@ -1,12 +1,11 @@
 package net.sf.anathema.character.impl.persistence.charm;
 
-import org.dom4j.Element;
-
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Element;
 
 public class ExperiencedRestoringTraitPersister extends TraitPersister {
 

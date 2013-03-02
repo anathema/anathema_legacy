@@ -1,16 +1,16 @@
 package net.sf.anathema.character.generic.persistence.load.load;
 
-import static org.junit.Assert.assertEquals;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.impl.magic.HealthCost;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.HealthCostBuilder;
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class HealthCostBuilderTest {
 

@@ -1,15 +1,15 @@
 package net.sf.anathema.character.generic.persistence.load.load;
 
-import static org.junit.Assert.assertEquals;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-
 import org.dom4j.Element;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class TraitPrerequisiteBuilderTest {
 

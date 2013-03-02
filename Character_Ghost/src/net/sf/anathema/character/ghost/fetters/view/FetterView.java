@@ -7,8 +7,13 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.AbstractAction;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
 public class FetterView extends AbstractTraitView implements IFetterView {

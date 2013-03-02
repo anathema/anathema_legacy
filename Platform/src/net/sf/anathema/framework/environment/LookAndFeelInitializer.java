@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.environment;
 
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.lib.logging.Logger;
+
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class LookAndFeelInitializer {
   private static final String AQUA_LOOK_AND_FEEL_CLASSNAME = "apple.laf.AquaLookAndFeel"; //$NON-NLS-1$

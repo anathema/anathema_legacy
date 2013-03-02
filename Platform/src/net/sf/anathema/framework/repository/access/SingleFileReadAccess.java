@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.repository.access;
 
+import net.sf.anathema.framework.repository.RepositoryException;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
-import net.sf.anathema.framework.repository.RepositoryException;
 
 public class SingleFileReadAccess implements IRepositoryReadAccess {
 

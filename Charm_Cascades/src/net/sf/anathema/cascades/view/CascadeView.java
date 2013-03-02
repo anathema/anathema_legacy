@@ -8,8 +8,9 @@ import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import java.awt.Color;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.fillWithoutInsets;
 

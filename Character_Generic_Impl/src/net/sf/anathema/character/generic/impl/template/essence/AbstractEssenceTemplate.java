@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.impl.template.essence;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSorter;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
+
+import java.util.List;
 
 public abstract class AbstractEssenceTemplate implements IEssenceTemplate {
 

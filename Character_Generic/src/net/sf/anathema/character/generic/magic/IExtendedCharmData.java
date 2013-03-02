@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.magic;
 
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public interface IExtendedCharmData extends ICharmData {
   Identified COMBO_BASIC_ATTRIBUTE = new Identifier("Combo-Basic"); //$NON-NLS-1$

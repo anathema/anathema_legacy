@@ -3,6 +3,7 @@ package net.sf.anathema.framework.view;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.view.menu.MainMenuBar;
 import net.sf.anathema.framework.view.messaging.OneLineStatusBar;
+import net.sf.anathema.initialization.ApplicationFrameView;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -14,7 +15,7 @@ import java.awt.Dimension;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import static net.sf.anathema.lib.gui.swing.GuiUtilities.displayOnScreenCenter;
 
-public class SwingApplicationFrame implements ApplicationFrame, ApplicationView {
+public class SwingApplicationFrame implements ApplicationFrameView {
 
   public static final Dimension DEFAULT_SIZE = new Dimension(1024, 768);
   private final AnathemaViewProperties properties;

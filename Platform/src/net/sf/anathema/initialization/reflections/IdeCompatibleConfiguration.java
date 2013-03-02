@@ -5,7 +5,7 @@ import org.reflections.scanners.TypeAnnotationsScanner;
 import org.reflections.util.ConfigurationBuilder;
 import org.reflections.util.FilterBuilder;
 
-import static net.sf.anathema.initialization.reflections.EncodingClasspathHelper.*;
+import static net.sf.anathema.initialization.reflections.EncodingClasspathHelper.forPackage;
 
 public class IdeCompatibleConfiguration extends ConfigurationBuilder {
 

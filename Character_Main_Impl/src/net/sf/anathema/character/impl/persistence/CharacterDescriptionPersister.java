@@ -1,5 +1,10 @@
 package net.sf.anathema.character.impl.persistence;
 
+import net.sf.anathema.character.model.ICharacterDescription;
+import net.sf.anathema.framework.persistence.TextPersister;
+import org.dom4j.Element;
+
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_ANIMA;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTERIZATION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTER_NAME;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CONCEPT;
@@ -12,11 +17,6 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_PLAYER;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SEX;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SKIN;
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_ANIMA;
-import net.sf.anathema.character.model.ICharacterDescription;
-import net.sf.anathema.framework.persistence.TextPersister;
-
-import org.dom4j.Element;
 
 public class CharacterDescriptionPersister {
   private final TextPersister textPersister = new TextPersister();

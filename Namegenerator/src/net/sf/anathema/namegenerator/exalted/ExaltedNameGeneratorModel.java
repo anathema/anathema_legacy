@@ -2,8 +2,8 @@ package net.sf.anathema.namegenerator.exalted;
 
 import com.google.common.base.Objects;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;

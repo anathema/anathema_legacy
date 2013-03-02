@@ -1,11 +1,10 @@
 package net.sf.anathema.character;
 
-import java.awt.Image;
-
-import javax.swing.Icon;
-
 import net.sf.anathema.character.generic.data.IExtensibleDataSet;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
+import java.awt.Image;
 
 public class NullResources implements IResources {
 

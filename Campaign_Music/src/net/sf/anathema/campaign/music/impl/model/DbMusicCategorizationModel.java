@@ -4,12 +4,12 @@ import net.sf.anathema.campaign.music.impl.persistence.MusicDatabasePersister;
 import net.sf.anathema.campaign.music.impl.persistence.categorization.EventProvider;
 import net.sf.anathema.campaign.music.impl.persistence.categorization.MoodProvider;
 import net.sf.anathema.campaign.music.impl.persistence.categorization.ThemeProvider;
+import net.sf.anathema.campaign.music.model.SelectionContainerModel;
 import net.sf.anathema.campaign.music.model.util.IMusicCategorizationModel;
 import net.sf.anathema.campaign.music.presenter.IMusicEvent;
 import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.campaign.music.presenter.ISelectionContainerModel;
-import net.sf.anathema.campaign.music.model.SelectionContainerModel;
 
 public class DbMusicCategorizationModel implements IMusicCategorizationModel {
 

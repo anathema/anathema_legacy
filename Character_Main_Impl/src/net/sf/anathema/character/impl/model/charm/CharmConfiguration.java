@@ -21,7 +21,11 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.magic.*;
+import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
+import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
+import net.sf.anathema.character.generic.template.magic.MartialArtsCharmConfiguration;
+import net.sf.anathema.character.generic.template.magic.MartialArtsRules;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.charm.special.DefaultMartialArtsCharmConfiguration;
@@ -42,9 +46,16 @@ import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.util.Identified;
 import org.jmock.example.announcer.Announcer;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.*;
+import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.hasLevel;
+import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isFormCharm;
+import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.isMartialArtsCharm;
 import static net.sf.anathema.character.generic.magic.charms.MartialArtsLevel.Sidereal;
 
 public class CharmConfiguration implements ICharmConfiguration {

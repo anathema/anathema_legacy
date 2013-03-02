@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.util;
 
-import java.util.Collection;
-
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.compare.WeightedObject;
 import net.sf.anathema.lib.compare.WeightedObjectSorter;
+
+import java.util.Collection;
 
 public class GenericTraitSorter extends WeightedObjectSorter<IGenericTrait> {
 

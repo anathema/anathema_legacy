@@ -3,7 +3,6 @@ package net.sf.anathema.framework.repository.tree;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
-import net.sf.anathema.framework.presenter.action.AbstractItemAction;
 import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.RepositoryException;
@@ -32,8 +31,18 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     this.repository = repository;
     this.itemManagementModel = itemManagementModel;
     this.itemTypes = itemTypes;
-    this.integratedItemTypes = AbstractItemAction.getIntegratedItemTypes(itemTypes);
+    this.integratedItemTypes = createIntegratedItemTypes(itemTypes);
     this.repositoryFileAccessFactory = new RepositoryFileAccessFactory(repository);
+  }
+
+  private IItemType[] createIntegratedItemTypes(IItemTypeRegistry itemTypes) {
+    List<IItemType> integratedItemTypes = new ArrayList<>();
+    for (IItemType itemType : itemTypes.getAllItemTypes()) {
+      if (itemType.isIntegrated()) {
+        integratedItemTypes.add(itemType);
+      }
+    }
+    return integratedItemTypes.toArray(new IItemType[integratedItemTypes.size()]);
   }
 
   @Override

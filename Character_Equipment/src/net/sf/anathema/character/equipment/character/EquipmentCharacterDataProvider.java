@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.character;
 
-import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
@@ -12,7 +12,9 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.control.IChangeListener;
 
-import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.*;
+import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.FullyAttuned;
+import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.Unattuned;
+import static net.sf.anathema.character.generic.equipment.ArtifactAttuneType.UnharmoniouslyAttuned;
 
 public class EquipmentCharacterDataProvider implements IEquipmentCharacterDataProvider {
 

@@ -1,10 +1,11 @@
 package net.sf.anathema;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.view.MainView;
+import net.sf.anathema.initialization.ApplicationFrameView;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.InitializedModelAndView;
 import net.sf.anathema.initialization.Initializer;
+import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.view.NullMainView;
 
@@ -31,7 +32,7 @@ public class TestInitializer extends Initializer {
   }
 
   @Override
-  protected MainView initView(IResources resources) {
+  protected ApplicationFrameView initView(IResources resources, IAnathemaModel anathemaModel, Instantiater objectFactory) {
     return new NullMainView();
   }
 }

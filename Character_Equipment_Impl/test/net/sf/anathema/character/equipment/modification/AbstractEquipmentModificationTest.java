@@ -6,10 +6,10 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DefenseModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.FatigueModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.HardnessModification;
-import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.MobilityPenaltyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RangeModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RateModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.ReactiveBaseMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SoakModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SpeedModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;

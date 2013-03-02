@@ -3,8 +3,9 @@ package net.sf.anathema.test.character.library.overview;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import org.junit.Test;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import java.awt.GraphicsEnvironment;
 
 import static org.junit.Assume.assumeTrue;
 

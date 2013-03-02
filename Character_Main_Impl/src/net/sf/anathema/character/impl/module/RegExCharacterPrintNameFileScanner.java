@@ -4,7 +4,6 @@ import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
@@ -29,7 +28,9 @@ import java.util.regex.Pattern;
 
 import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.*;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CASTE;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;
 
 public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFileScanner {
 

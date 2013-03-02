@@ -6,7 +6,9 @@ import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferenc
 import java.util.Locale;
 import java.util.prefs.Preferences;
 
-import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.*;
+import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.MAXIMIZE_PREFERENCE;
+import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.SYSTEM_PREFERENCES_NODE;
+import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.USER_LOOK_AND_FEEL_CLASSNAME;
 
 public class InitializationPreferences implements IInitializationPreferences {
 

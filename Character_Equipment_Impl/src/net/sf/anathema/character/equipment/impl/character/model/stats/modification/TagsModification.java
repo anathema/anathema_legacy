@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.impl.character.model.stats.modificat
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import static net.sf.anathema.character.equipment.impl.creation.model.WeaponTag.Piercing;
 import static net.sf.anathema.lib.lang.ArrayUtilities.containsValue;

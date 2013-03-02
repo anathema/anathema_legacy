@@ -5,8 +5,6 @@ import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.initialization.ItemTypeConfiguration;
 import net.sf.anathema.initialization.reflections.Weight;
 
-import javax.swing.Icon;
-
 @ItemTypeConfiguration
 @Weight(weight = 0)
 public final class CharmCascadeItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {

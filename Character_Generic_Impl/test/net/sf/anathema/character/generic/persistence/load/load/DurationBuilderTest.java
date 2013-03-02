@@ -1,7 +1,5 @@
 package net.sf.anathema.character.generic.persistence.load.load;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
@@ -9,10 +7,12 @@ import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDu
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.UntilEventDuration;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class DurationBuilderTest{
 

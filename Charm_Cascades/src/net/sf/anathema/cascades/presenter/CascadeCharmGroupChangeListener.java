@@ -8,7 +8,8 @@ import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
 import net.sf.anathema.lib.util.Identified;
 import net.sf.anathema.platform.tree.document.visualizer.ITreePresentationProperties;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 

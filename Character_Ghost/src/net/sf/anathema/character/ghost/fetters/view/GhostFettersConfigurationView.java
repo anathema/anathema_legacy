@@ -8,7 +8,10 @@ import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.framework.value.IntegerViewFactory;
 import net.sf.anathema.lib.gui.IView;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import static net.sf.anathema.lib.gui.layout.LayoutUtils.withoutInsets;
 

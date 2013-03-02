@@ -37,8 +37,8 @@ import net.sf.anathema.lib.gui.dialog.core.IDialogResult;
 import net.sf.anathema.lib.gui.dialog.wizard.WizardDialog;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.awt.Component;
 

@@ -1,10 +1,10 @@
 package net.sf.anathema.lib.workflow.textualdescription.view;
 
+import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
+
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
-import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 
 public class AreaTextView extends TextView {
 

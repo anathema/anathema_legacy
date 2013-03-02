@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.impl.traits;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.util.GenericTraitSorter;
+
+import java.util.List;
 
 public class ValueWeightGenericTraitSorter {
 

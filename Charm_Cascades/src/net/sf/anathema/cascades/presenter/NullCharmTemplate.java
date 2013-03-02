@@ -3,7 +3,6 @@ package net.sf.anathema.cascades.presenter;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;

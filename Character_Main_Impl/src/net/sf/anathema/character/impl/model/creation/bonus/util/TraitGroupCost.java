@@ -1,13 +1,13 @@
 package net.sf.anathema.character.impl.model.creation.bonus.util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.sf.anathema.character.impl.model.creation.bonus.basic.ElementCreationCost;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TraitGroupCost {
 

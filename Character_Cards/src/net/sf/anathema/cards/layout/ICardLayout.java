@@ -1,7 +1,6 @@
 package net.sf.anathema.cards.layout;
 
 import com.itextpdf.text.DocumentException;
-
 import net.sf.anathema.cards.ICard;
 
 public interface ICardLayout {

@@ -1,9 +1,9 @@
 package net.sf.anathema.initialization.repository;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
-
-import org.apache.commons.io.FileUtils;
 
 public class IOFileSystemAbstraction implements IFileSystemAbstraction {
 

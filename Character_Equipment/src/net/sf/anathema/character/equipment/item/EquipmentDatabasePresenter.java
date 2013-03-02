@@ -21,7 +21,7 @@ import net.sf.anathema.lib.workflow.container.factory.MigPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-import javax.swing.*;
+import javax.swing.JComponent;
 
 import static net.sf.anathema.lib.lang.ArrayUtilities.transform;
 

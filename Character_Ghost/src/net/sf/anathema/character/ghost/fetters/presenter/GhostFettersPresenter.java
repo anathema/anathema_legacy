@@ -21,7 +21,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import org.jmock.example.announcer.Announcer;
 
-import javax.swing.*;
+import javax.swing.Icon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

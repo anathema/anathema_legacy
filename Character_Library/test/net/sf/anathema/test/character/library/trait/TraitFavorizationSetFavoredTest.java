@@ -6,12 +6,19 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
 import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.favorable.*;
+import net.sf.anathema.character.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
+import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import org.junit.Test;
 
 import static org.junit.Assert.assertSame;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.verifyZeroInteractions;
 
 public class TraitFavorizationSetFavoredTest {
 

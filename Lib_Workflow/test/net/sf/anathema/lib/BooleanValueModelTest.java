@@ -2,7 +2,6 @@ package net.sf.anathema.lib;
 
 import net.sf.anathema.lib.control.IBooleanValueChangedListener;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
-
 import org.junit.Assert;
 import org.junit.Test;
 

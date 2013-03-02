@@ -9,7 +9,10 @@ import net.sf.anathema.lib.gui.layout.LayoutUtils;
 import net.sf.anathema.lib.model.BooleanModel;
 import org.jdesktop.swingx.JXTaskPane;
 
-import javax.swing.*;
+import javax.swing.Action;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import java.util.HashMap;
 import java.util.Map;
 

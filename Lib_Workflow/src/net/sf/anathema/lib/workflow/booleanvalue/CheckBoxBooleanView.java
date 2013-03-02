@@ -1,13 +1,12 @@
 package net.sf.anathema.lib.workflow.booleanvalue;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import net.sf.anathema.lib.control.IBooleanValueChangedListener;
+import net.sf.anathema.lib.gui.IView;
 
 import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
-
-import net.sf.anathema.lib.control.IBooleanValueChangedListener;
-import net.sf.anathema.lib.gui.IView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CheckBoxBooleanView implements IBooleanValueView, IView {
 

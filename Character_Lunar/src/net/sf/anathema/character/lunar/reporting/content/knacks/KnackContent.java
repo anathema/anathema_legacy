@@ -9,8 +9,8 @@ import net.sf.anathema.character.lunar.reporting.content.stats.knacks.KnackStats
 import net.sf.anathema.character.reporting.pdf.content.AbstractSubBoxContent;
 import net.sf.anathema.character.reporting.pdf.content.stats.IStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.ArrayList;
 import java.util.List;

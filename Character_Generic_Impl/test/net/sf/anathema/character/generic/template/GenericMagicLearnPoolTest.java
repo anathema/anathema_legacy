@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.util.IPointModification;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

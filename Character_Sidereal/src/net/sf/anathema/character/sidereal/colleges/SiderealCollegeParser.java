@@ -1,7 +1,5 @@
 package net.sf.anathema.character.sidereal.colleges;
 
-import org.dom4j.Element;
-
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.impl.template.experience.DefaultExperienceCosts;
 import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
@@ -14,6 +12,7 @@ import net.sf.anathema.character.sidereal.colleges.model.ICollegeBonusPointCosts
 import net.sf.anathema.character.sidereal.template.ICollegeExperienceCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Element;
 
 public class SiderealCollegeParser implements IAdditionalTemplateParser
 {

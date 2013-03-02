@@ -1,15 +1,15 @@
 package net.sf.anathema.character.generic.persistence.load.load;
 
-import static org.junit.Assert.assertEquals;
 import net.sf.anathema.character.generic.impl.magic.Cost;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostBuilder;
 import net.sf.anathema.character.generic.magic.general.ICost;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class CostBuilderTest{
 

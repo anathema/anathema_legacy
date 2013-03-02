@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.repository.access;
 
+import net.sf.anathema.framework.repository.RepositoryException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-
-import net.sf.anathema.framework.repository.RepositoryException;
 
 public class SingleFileWriteAccess implements IRepositoryWriteAccess {
 

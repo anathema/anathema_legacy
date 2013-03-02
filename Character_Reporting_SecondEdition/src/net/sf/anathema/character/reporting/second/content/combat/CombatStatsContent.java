@@ -1,9 +1,9 @@
 package net.sf.anathema.character.reporting.second.content.combat;
 
-import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
 import net.sf.anathema.character.generic.impl.CharacterUtilities;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.specialties.HighestSpecialty;
 import net.sf.anathema.character.reporting.pdf.content.combat.AbstractCombatStatsContent;
 import net.sf.anathema.character.reporting.pdf.content.combat.CombatAction;

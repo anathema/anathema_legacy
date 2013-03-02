@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
 
 public class HealthCostBuilder {

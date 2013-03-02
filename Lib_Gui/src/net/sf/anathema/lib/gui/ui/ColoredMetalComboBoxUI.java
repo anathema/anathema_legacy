@@ -1,12 +1,11 @@
 package net.sf.anathema.lib.gui.ui;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-
 import javax.swing.plaf.metal.MetalComboBoxUI;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.metal.OceanTheme;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class ColoredMetalComboBoxUI extends MetalComboBoxUI {
 

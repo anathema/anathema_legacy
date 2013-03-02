@@ -1,6 +1,5 @@
 package net.sf.anathema.test.character.library.trait;
 
-import static org.junit.Assert.assertEquals;
 import net.sf.anathema.character.dummy.trait.DummyDefaultTrait;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.dummy.DummyBasicCharacterData;
@@ -9,9 +8,10 @@ import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class TraitFavorizationRequiredFavoredTest {
 

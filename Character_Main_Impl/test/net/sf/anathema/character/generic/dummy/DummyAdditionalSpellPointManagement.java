@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.dummy;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearnPointManagement;
+
+import java.util.List;
 
 public class DummyAdditionalSpellPointManagement implements IAdditionalMagicLearnPointManagement {
 

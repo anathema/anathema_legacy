@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.item;
 
-import javax.swing.Action;
-
-import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
+import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
+
+import javax.swing.Action;
 
 public abstract class AbstractSelectedItemEnabler {
 

@@ -8,7 +8,6 @@ import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
 
 public class IntimaciesPersister implements IAdditionalPersister {

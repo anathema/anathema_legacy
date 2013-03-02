@@ -1,7 +1,5 @@
 package net.sf.anathema.charmtree.presenter;
 
-import net.sf.anathema.charmtree.presenter.SpecialCharmViewPresenter;
-
 public class NullSpecialCharmPresenter implements SpecialCharmViewPresenter {
   @Override
   public void initPresentation() {

@@ -5,12 +5,12 @@ import com.itextpdf.text.pdf.PdfPTable;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentStatsOption;
+import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.impl.reporting.content.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.resources.IResources;
 
 import java.util.Arrays;

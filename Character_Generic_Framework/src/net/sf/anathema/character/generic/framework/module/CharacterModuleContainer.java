@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.framework.module;
 
+import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.generic.framework.CharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterModuleContainer {

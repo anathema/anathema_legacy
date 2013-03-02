@@ -12,7 +12,11 @@ import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.Sel
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.charms.*;
+import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
+import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.IndirectCharmRequirement;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
@@ -24,10 +28,16 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Charm extends Identifier implements ICharm {
 

@@ -1,15 +1,13 @@
 package net.sf.anathema.cards.data;
 
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
-
 import com.google.common.base.Joiner;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-
 import net.sf.anathema.cards.layout.ICardReportResourceProvider;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.VerboseCharmTypeStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.description.MagicDescription;
 import net.sf.anathema.character.generic.traits.types.AbilityType;

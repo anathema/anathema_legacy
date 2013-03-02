@@ -5,7 +5,6 @@ import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Element;
 
 public class MultiLearnCharmPersister implements ISpecialCharmPersister {

@@ -9,15 +9,14 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
+import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.util.Identificate;
-
-import static net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration.CHARACTER_ITEM_TYPE_ID;
+import net.sf.anathema.lib.util.Identifier;
 
 public class CharacterCreationSteps {
   private CharacterTypes characterTypes;
@@ -55,14 +54,14 @@ public class CharacterCreationSteps {
 
   private ICharacterTemplate loadTemplateForType(String type, String subtype) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
-    return generics.getTemplateRegistry().getTemplate(new TemplateType(characterTypes.findById(type), new Identificate(subtype)));
+    return generics.getTemplateRegistry().getTemplate(new TemplateType(characterTypes.findById(type), new Identifier(subtype)));
   }
 
   private ICharacter createCharacter(ICharacterTemplate template) {
     CharacterStatisticsConfiguration creationRules = new CharacterStatisticsConfiguration();
     creationRules.setTemplate(template);
     IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = model.getPersisterRegistry();
-    IItemType characterItemType = model.getItemTypeRegistry().getById(CHARACTER_ITEM_TYPE_ID);
+    IItemType characterItemType = model.getItemTypeRegistry().getById(CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID);
     IRepositoryItemPersister itemPersister = persisterRegistry.get(characterItemType);
     IItem item = itemPersister.createNew(creationRules);
     return (ICharacter) item.getItemData();

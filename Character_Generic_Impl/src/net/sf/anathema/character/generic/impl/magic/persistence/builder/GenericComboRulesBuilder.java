@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.impl.magic.persistence.IGenericsBuilder
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.traits.ITraitType;
-
 import org.dom4j.Element;
 
 public class GenericComboRulesBuilder extends ComboRulesBuilder implements IComboRulesBuilder, IGenericsBuilder {

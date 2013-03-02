@@ -1,14 +1,13 @@
 package net.sf.anathema.platform.configuration;
 
-import javax.swing.plaf.metal.MetalLookAndFeel;
-
-import net.sf.anathema.framework.configuration.InitializationPreferences;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
+import net.sf.anathema.framework.configuration.InitializationPreferences;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.swing.plaf.metal.MetalLookAndFeel;
 import java.util.prefs.Preferences;
 
 public class AnathemaPreferencesTest {

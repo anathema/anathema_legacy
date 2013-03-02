@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.impl.traits.alternate;
 
-import java.util.List;
-
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+
+import java.util.List;
 
 public class TraitRequirementCollection {
 

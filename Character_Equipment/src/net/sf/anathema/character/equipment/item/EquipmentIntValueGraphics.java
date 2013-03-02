@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.item;
 import net.sf.anathema.framework.value.IntValueDisplayGraphics;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 public class EquipmentIntValueGraphics implements IntValueDisplayGraphics {
 

@@ -7,7 +7,12 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPo
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.generic.impl.additional.*;
+import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
+import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
+import net.sf.anathema.character.generic.impl.additional.ComplexAdditionalEssencePool;
+import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
+import net.sf.anathema.character.generic.impl.additional.LearnableCharmPool;
+import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.util.NullPointModification;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;

@@ -1,13 +1,13 @@
 package net.sf.anathema.initialization;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.view.MainView;
+import net.sf.anathema.framework.view.ApplicationView;
 
 public class InitializedModelAndView {
-  public final MainView view;
+  public final ApplicationView view;
   public final IAnathemaModel model;
 
-  public InitializedModelAndView(MainView view, IAnathemaModel model) {
+  public InitializedModelAndView(ApplicationView view, IAnathemaModel model) {
     this.view = view;
     this.model = model;
   }

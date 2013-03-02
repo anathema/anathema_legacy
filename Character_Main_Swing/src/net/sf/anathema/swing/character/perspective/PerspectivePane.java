@@ -5,7 +5,6 @@ import net.sf.anathema.lib.gui.IView;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 

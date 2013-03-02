@@ -11,8 +11,8 @@ import net.sf.anathema.character.library.removableentry.model.AbstractRemovableE
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.StringUtilities;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.jmock.example.announcer.Announcer;
 
 import java.util.Arrays;

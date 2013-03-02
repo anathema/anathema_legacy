@@ -1,14 +1,13 @@
 package net.sf.anathema.lib.gui.ui;
 
+import com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel;
+import com.sun.java.swing.plaf.windows.WindowsComboBoxUI;
+
+import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-
-import javax.swing.UIManager;
-
-import com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel;
-import com.sun.java.swing.plaf.windows.WindowsComboBoxUI;
 
 public class ColoredWindowsComboBoxUI extends WindowsComboBoxUI {
 

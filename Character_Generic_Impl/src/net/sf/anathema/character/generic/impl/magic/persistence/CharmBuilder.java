@@ -2,7 +2,15 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.*;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmAttributeBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmTypeBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.GroupStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.IComboRulesBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.IIdStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.IAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ICharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisitesBuilder;
@@ -28,7 +36,10 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.*;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
 
 public class CharmBuilder implements ICharmBuilder {
 

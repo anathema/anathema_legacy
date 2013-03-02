@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.character.preference;
 
 import java.util.prefs.Preferences;
 
-import static net.sf.anathema.character.equipment.character.preference.IEquipmentPreferencesConstants.EQUIPMENT_PREFERENCES_NODE;
 import static net.sf.anathema.character.equipment.character.preference.IEquipmentPreferencesConstants.ENABLE_PERSONALIZATION;
+import static net.sf.anathema.character.equipment.character.preference.IEquipmentPreferencesConstants.EQUIPMENT_PREFERENCES_NODE;
 
 public class AnathemaEquipmentPreferences implements IAnathemaEquipmentPreferences {
   private static final IAnathemaEquipmentPreferences instance = new AnathemaEquipmentPreferences(Preferences.userRoot()

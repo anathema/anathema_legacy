@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.framework.xml.trait.types.AttributePool
 import net.sf.anathema.character.generic.framework.xml.trait.types.VirtuePoolParser;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
-
 import org.dom4j.Element;
 
 public class GenericTraitTemplateFactoryParser extends AbstractXmlTemplateParser<GenericTraitTemplateFactory> {

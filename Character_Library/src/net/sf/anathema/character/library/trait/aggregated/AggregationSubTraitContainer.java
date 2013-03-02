@@ -1,7 +1,5 @@
 package net.sf.anathema.character.library.trait.aggregated;
 
-import java.awt.Toolkit;
-
 import com.google.common.base.Preconditions;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -11,6 +9,8 @@ import net.sf.anathema.character.library.trait.favorable.AggregatedTraitFavoriza
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.subtrait.AbstractSubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+
+import java.awt.Toolkit;
 
 public class AggregationSubTraitContainer extends AbstractSubTraitContainer {
 

@@ -1,13 +1,12 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import java.util.Collection;
-
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericCharmUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteBuilder;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.traits.ITraitType;
-
 import org.dom4j.Element;
+
+import java.util.Collection;
 
 public class GenericCharmPrerequisiteBuilder extends CharmPrerequisiteBuilder implements IGenericsBuilder {
 

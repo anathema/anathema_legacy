@@ -1,4 +1,7 @@
 package net.sf.anathema.initialization;
 
-public interface ApplicationFrameView {
+import net.sf.anathema.framework.view.ApplicationFrame;
+import net.sf.anathema.framework.view.ApplicationView;
+
+public interface ApplicationFrameView extends ApplicationFrame, ApplicationView {
 }

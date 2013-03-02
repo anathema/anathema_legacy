@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.testing.clone;
 
 import net.sf.anathema.lib.lang.clone.ICloneable;
-
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import java.util.List;
 import java.util.Set;

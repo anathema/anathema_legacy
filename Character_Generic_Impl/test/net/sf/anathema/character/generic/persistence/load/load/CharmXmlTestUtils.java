@@ -3,7 +3,16 @@ package net.sf.anathema.character.generic.persistence.load.load;
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.*;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_DURATION;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_GROUP;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARMTYPE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TRAIT;
 
 public class CharmXmlTestUtils {
 

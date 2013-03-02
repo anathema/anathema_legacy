@@ -1,10 +1,10 @@
 package net.sf.anathema.campaign.view.util;
 
+import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
+
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
-
-import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
 
 public class DefaultTreeView implements ITreeView {
 

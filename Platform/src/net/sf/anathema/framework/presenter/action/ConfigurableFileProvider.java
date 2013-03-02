@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter.action;
 
-import java.io.File;
-
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+
+import java.io.File;
 
 public class ConfigurableFileProvider implements IAnathemaWizardModelTemplate, IFileProvider {
 

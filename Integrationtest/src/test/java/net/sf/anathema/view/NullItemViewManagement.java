@@ -4,7 +4,7 @@ import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IItemViewManagement;
 import net.sf.anathema.framework.view.IViewSelectionListener;
 
-import javax.swing.*;
+import javax.swing.Action;
 
 public class NullItemViewManagement implements IItemViewManagement {
     @Override

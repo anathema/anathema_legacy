@@ -9,7 +9,6 @@ import net.sf.anathema.character.sidereal.colleges.model.SiderealCollegeModel;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
-
 import org.dom4j.Element;
 
 public class SiderealCollegePersister implements IAdditionalPersister {

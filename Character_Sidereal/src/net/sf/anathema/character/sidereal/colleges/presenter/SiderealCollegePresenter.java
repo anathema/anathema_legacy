@@ -19,7 +19,7 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 public class SiderealCollegePresenter implements Presenter {
 

@@ -1,10 +1,9 @@
 package net.sf.anathema.character.generic.framework.util;
 
+import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.SystemColor;
-
-import javax.swing.JLabel;
 
 public class ExperienceUtilities {
 

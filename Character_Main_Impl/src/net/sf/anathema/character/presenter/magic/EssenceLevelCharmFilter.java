@@ -1,15 +1,14 @@
 package net.sf.anathema.character.presenter.magic;
 
-import javax.swing.JPanel;
-
-import org.dom4j.Element;
-
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmtree.filters.EssenceLevelCharmFilterPage;
 import net.sf.anathema.charmtree.filters.ICharmFilter;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.xml.ElementUtilities;
+import org.dom4j.Element;
+
+import javax.swing.JPanel;
 
 public class EssenceLevelCharmFilter implements ICharmFilter
 {

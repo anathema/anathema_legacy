@@ -1,9 +1,9 @@
 package net.sf.anathema.campaign.music.presenter;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 public class MusicUI extends AbstractUI {
 

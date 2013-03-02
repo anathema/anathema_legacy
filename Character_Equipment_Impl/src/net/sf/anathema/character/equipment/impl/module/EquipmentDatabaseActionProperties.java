@@ -4,13 +4,11 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.E
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.module.IDatabaseActionProperties;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 import javax.swing.Icon;
-import java.io.IOException;
 
 public class EquipmentDatabaseActionProperties implements IDatabaseActionProperties {
 

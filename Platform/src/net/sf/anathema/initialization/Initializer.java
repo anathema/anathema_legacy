@@ -5,11 +5,11 @@ import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.resources.AnathemaResources;
-import net.sf.anathema.framework.view.MainView;
+import net.sf.anathema.framework.view.ApplicationView;
 import net.sf.anathema.initialization.reflections.AggregatedResourceLoader;
 import net.sf.anathema.initialization.reflections.CustomDataResourceLoader;
 import net.sf.anathema.initialization.reflections.DefaultAnathemaReflections;
-import net.sf.anathema.initialization.reflections.ReflectionsInstantiater;
+import net.sf.anathema.initialization.reflections.ReflectionObjectFactory;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.exception.CentralExceptionHandling;
@@ -25,13 +25,13 @@ public abstract class Initializer {
   private final ItemTypeConfigurationCollection itemTypeCollection;
   private final AnathemaExtensionCollection extensionCollection;
   private final DefaultAnathemaReflections reflections;
-  private final ReflectionsInstantiater instantiater;
+  private final Instantiater objectFactory;
 
   public Initializer(IInitializationPreferences initializationPreferences) throws InitializationException {
     this.reflections = new DefaultAnathemaReflections();
-    this.instantiater = new ReflectionsInstantiater(reflections);
-    this.itemTypeCollection = new ItemTypeConfigurationCollection(instantiater);
-    this.extensionCollection = new AnathemaExtensionCollection(instantiater);
+    this.objectFactory = new ReflectionObjectFactory(reflections);
+    this.itemTypeCollection = new ItemTypeConfigurationCollection(objectFactory);
+    this.extensionCollection = new AnathemaExtensionCollection(objectFactory);
     this.initializationPreferences = initializationPreferences;
   }
 
@@ -41,14 +41,14 @@ public abstract class Initializer {
     showVersion(resources);
     configureExceptionHandling(resources);
     IAnathemaModel anathemaModel = initModel(resources, loader);
-    MainView view = initView(resources);
+    ApplicationFrameView view = initView(resources, anathemaModel, objectFactory);
     initPresentation(resources, anathemaModel, view);
     return new InitializedModelAndView(view, anathemaModel);
   }
 
-  private void initPresentation(AnathemaResources resources, IAnathemaModel anathemaModel, MainView view) {
+  private void initPresentation(AnathemaResources resources, IAnathemaModel anathemaModel, ApplicationView view) {
     Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
-    AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, itemTypes, instantiater);
+    AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, itemTypes, objectFactory);
     presenter.initPresentation();
   }
 
@@ -88,5 +88,5 @@ public abstract class Initializer {
 
   protected abstract void displayMessage(String message);
 
-  protected abstract MainView initView(IResources resources);
+  protected abstract ApplicationFrameView initView(IResources resources, IAnathemaModel anathemaModel, Instantiater objectFactory);
 }

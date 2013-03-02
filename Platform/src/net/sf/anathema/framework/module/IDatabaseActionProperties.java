@@ -4,7 +4,6 @@ import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 
 import javax.swing.Icon;
-import java.io.IOException;
 
 public interface IDatabaseActionProperties {
 

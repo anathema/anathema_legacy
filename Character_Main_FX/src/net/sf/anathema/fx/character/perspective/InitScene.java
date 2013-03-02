@@ -3,9 +3,6 @@ package net.sf.anathema.fx.character.perspective;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-
-import java.net.URL;
 
 public class InitScene implements Runnable {
 

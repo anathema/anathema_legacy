@@ -4,7 +4,13 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.*;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.types.AbstractTraitTypeVisitor;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
 
 public class TraitTemplateCollection implements ITraitTemplateCollection {
 

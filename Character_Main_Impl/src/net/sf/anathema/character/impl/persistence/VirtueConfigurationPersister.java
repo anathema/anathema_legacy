@@ -1,13 +1,13 @@
 package net.sf.anathema.character.impl.persistence;
 
-import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_VIRTUES;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Element;
+
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_VIRTUES;
 
 public class VirtueConfigurationPersister {
 

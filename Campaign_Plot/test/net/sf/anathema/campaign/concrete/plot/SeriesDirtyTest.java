@@ -1,10 +1,8 @@
 package net.sf.anathema.campaign.concrete.plot;
 
 import junit.framework.Assert;
-
 import net.sf.anathema.campaign.concrete.Series;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
-
 import org.junit.Before;
 import org.junit.Test;
 

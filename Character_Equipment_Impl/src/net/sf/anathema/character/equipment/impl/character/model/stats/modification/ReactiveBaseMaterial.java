@@ -3,7 +3,18 @@ package net.sf.anathema.character.equipment.impl.character.model.stats.modificat
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 
-import static net.sf.anathema.character.equipment.MagicalMaterial.*;
+import static net.sf.anathema.character.equipment.MagicalMaterial.Adamant;
+import static net.sf.anathema.character.equipment.MagicalMaterial.Jade;
+import static net.sf.anathema.character.equipment.MagicalMaterial.Moonsilver;
+import static net.sf.anathema.character.equipment.MagicalMaterial.Orichalcum;
+import static net.sf.anathema.character.equipment.MagicalMaterial.Soulsteel;
+import static net.sf.anathema.character.equipment.MagicalMaterial.Starmetal;
+import static net.sf.anathema.character.equipment.MagicalMaterial.VitriolAdamant;
+import static net.sf.anathema.character.equipment.MagicalMaterial.VitriolJade;
+import static net.sf.anathema.character.equipment.MagicalMaterial.VitriolMoonsilver;
+import static net.sf.anathema.character.equipment.MagicalMaterial.VitriolOrichalcum;
+import static net.sf.anathema.character.equipment.MagicalMaterial.VitriolSoulsteel;
+import static net.sf.anathema.character.equipment.MagicalMaterial.VitriolStarmetal;
 
 public class ReactiveBaseMaterial implements BaseMaterial {
 

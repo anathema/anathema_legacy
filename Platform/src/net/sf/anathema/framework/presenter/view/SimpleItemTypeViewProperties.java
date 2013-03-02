@@ -1,10 +1,10 @@
 package net.sf.anathema.framework.presenter.view;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
+
+import javax.swing.Icon;
 
 public class SimpleItemTypeViewProperties extends AbstractItemTypeViewProperties {
 

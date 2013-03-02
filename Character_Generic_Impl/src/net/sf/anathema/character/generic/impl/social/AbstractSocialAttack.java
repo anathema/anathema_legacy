@@ -2,11 +2,10 @@ package net.sf.anathema.character.generic.impl.social;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
+import net.sf.anathema.character.generic.impl.CharacterUtilities;
 import net.sf.anathema.character.generic.social.ISocialCombatStats;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-
-import net.sf.anathema.character.generic.impl.CharacterUtilities;
 
 public abstract class AbstractSocialAttack implements ISocialCombatStats {
 

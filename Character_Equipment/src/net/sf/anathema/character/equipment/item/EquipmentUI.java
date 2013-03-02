@@ -1,10 +1,9 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 public class EquipmentUI extends AbstractUI {
   public EquipmentUI(IResources resources) {

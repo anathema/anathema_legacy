@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.generic.equipment.ArtifactAttuneType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 

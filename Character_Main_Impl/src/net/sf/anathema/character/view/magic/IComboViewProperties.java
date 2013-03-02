@@ -1,9 +1,9 @@
 package net.sf.anathema.character.view.magic;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnProperties;
 import net.sf.anathema.character.generic.magic.ICharm;
+
+import javax.swing.Icon;
 
 public interface IComboViewProperties extends IMagicLearnProperties {
 

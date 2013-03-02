@@ -1,9 +1,9 @@
 package net.sf.anathema.initialization.repository;
 
+import net.sf.anathema.framework.repository.RepositoryException;
+
 import java.io.File;
 import java.io.IOException;
-
-import net.sf.anathema.framework.repository.RepositoryException;
 
 public class RepositoryFolderCreator {
 

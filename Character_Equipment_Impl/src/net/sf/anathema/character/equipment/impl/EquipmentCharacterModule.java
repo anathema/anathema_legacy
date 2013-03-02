@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.impl;
 
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.ReflectionMaterialRules;
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalModelFactory;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPersisterFactory;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;

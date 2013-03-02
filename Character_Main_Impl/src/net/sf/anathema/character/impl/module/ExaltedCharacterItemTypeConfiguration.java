@@ -41,10 +41,11 @@ import javax.swing.Icon;
 
 @ItemTypeConfiguration
 @Weight(weight = 0)
-public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
+public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
   public ExaltedCharacterItemTypeConfiguration() throws AnathemaException {
-    super(new ItemType(CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/"))); //$NON-NLS-1$ //$NON-NLS-2$
+    super(new ItemType(CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID,
+            new RepositoryConfiguration(".ecg", "ExaltedCharacter/"))); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @Override
@@ -99,7 +100,8 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
     CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, resources);
     IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();
     IRepositoryFileResolver fileResolver = anathemaModel.getRepository().getRepositoryFileResolver();
-    CharacterPrintNameFileScanner scanner = new RegExCharacterPrintNameFileScanner(casteCollectionIRegistry, fileResolver);
+    CharacterPrintNameFileScanner scanner =
+            new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), casteCollectionIRegistry, fileResolver);
     return new CharacterViewProperties(getItemType(), resources, factory, scanner);
   }
 }

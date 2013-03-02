@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.view;
 
-import java.io.File;
-
 import net.sf.anathema.framework.item.IItemType;
+
+import java.io.File;
 
 public class PrintNameFile {
 

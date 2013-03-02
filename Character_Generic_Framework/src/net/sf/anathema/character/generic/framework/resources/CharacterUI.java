@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.framework.resources;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 public class CharacterUI extends AbstractUI {
   public CharacterUI(IResources resources) {

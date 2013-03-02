@@ -1,7 +1,11 @@
 package net.sf.anathema.character.abyssal;
 
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
-import net.sf.anathema.character.abyssal.resonance.*;
+import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceModelFactory;
+import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceParser;
+import net.sf.anathema.character.abyssal.resonance.AbyssalResonancePersisterFactory;
+import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceTemplate;
+import net.sf.anathema.character.abyssal.resonance.AbyssalResonanceViewFactory;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;

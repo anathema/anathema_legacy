@@ -2,7 +2,9 @@ package net.sf.anathema.character.reporting.pdf.rendering.graphics;
 
 import com.itextpdf.text.pdf.BaseFont;
 
-import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.*;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.COMMENT_FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.FONT_SIZE;
+import static net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants.TABLE_FONT_SIZE;
 
 public class SheetTextMetrics implements TextMetrics {
 

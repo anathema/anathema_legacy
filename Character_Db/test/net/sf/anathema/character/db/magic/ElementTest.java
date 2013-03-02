@@ -1,7 +1,7 @@
 package net.sf.anathema.character.db.magic;
 
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 import org.junit.Test;
 
 import static net.sf.anathema.character.db.magic.Element.Fire;

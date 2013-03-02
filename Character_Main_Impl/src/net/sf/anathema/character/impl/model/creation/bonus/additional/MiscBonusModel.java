@@ -1,9 +1,9 @@
 package net.sf.anathema.character.impl.model.creation.bonus.additional;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.impl.model.advance.models.AbstractIntegerValueModel;
+
+import java.util.List;
 
 public class MiscBonusModel extends AbstractIntegerValueModel {
   private final List<IAdditionalModelBonusPointCalculator> additionalCalculators;

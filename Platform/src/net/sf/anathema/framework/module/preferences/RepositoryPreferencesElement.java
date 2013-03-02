@@ -12,8 +12,8 @@ import net.sf.anathema.lib.gui.dialog.message.MessageDialogFactory;
 import net.sf.anathema.lib.io.PathUtils;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;

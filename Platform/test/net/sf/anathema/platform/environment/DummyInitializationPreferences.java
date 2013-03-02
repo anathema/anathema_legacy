@@ -1,9 +1,9 @@
 package net.sf.anathema.platform.environment;
 
-import java.util.Locale;
-
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+
+import java.util.Locale;
 
 public class DummyInitializationPreferences implements IInitializationPreferences {
 

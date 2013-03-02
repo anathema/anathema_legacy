@@ -4,7 +4,8 @@ import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.framework.presenter.view.IButtonControlledComboEditView;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.ListCellRenderer;
 
 public interface IGhostPassionsConfigurationView {
 

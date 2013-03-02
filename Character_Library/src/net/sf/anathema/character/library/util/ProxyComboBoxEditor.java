@@ -1,12 +1,11 @@
 package net.sf.anathema.character.library.util;
 
-import java.awt.event.ActionListener;
+import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 
 import javax.swing.ComboBoxEditor;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicComboBoxEditor;
-
-import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
+import java.awt.event.ActionListener;
 
 public class ProxyComboBoxEditor implements ITextFieldComboBoxEditor {
 

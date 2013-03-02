@@ -2,10 +2,10 @@ package net.sf.anathema.character.equipment.impl.character.model;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
+import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.character.IEquipmentCharacterOptionProvider;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;

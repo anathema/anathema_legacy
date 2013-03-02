@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.framework.magic.view;
 
-import javax.swing.Icon;
-import javax.swing.ListCellRenderer;
-
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
+import javax.swing.ListCellRenderer;
 
 public abstract class AbstractMagicLearnProperties implements IMagicLearnProperties {
 

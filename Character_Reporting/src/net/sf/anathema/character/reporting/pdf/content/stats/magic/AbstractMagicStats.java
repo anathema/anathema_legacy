@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfo
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public abstract class AbstractMagicStats<T extends IMagic> implements IMagicStats {
 

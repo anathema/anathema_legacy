@@ -1,9 +1,9 @@
 package net.sf.anathema.campaign.module;
 
-import javax.swing.Icon;
-
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
+
+import javax.swing.Icon;
 
 public class PlotUI extends AbstractUI {
 

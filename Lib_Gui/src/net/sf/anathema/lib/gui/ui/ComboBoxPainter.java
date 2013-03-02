@@ -1,9 +1,6 @@
 package net.sf.anathema.lib.gui.ui;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import sun.swing.DefaultLookup;
 
 import javax.swing.CellRendererPane;
 import javax.swing.JComboBox;
@@ -12,8 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 import javax.swing.plaf.ComponentUI;
-
-import sun.swing.DefaultLookup;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class ComboBoxPainter {
 

@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.repository.access;
 
-import java.io.OutputStream;
-
 import net.sf.anathema.framework.repository.RepositoryException;
+
+import java.io.OutputStream;
 
 public interface IRepositoryWriteAccess {
 

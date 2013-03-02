@@ -3,7 +3,7 @@ package net.sf.anathema.cascades.module;
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.*;
+import javax.swing.Icon;
 
 public class CascadesUI extends AbstractUI {
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter.action;
+package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
@@ -12,8 +12,9 @@ import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
 
-import java.awt.*;
-import java.util.Collection;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
 
 import static net.sf.anathema.campaign.module.NoteTypeConfiguration.NOTE_ITEM_TYPE_ID;
 import static net.sf.anathema.campaign.module.SeriesTypeConfiguration.SERIES_ITEM_TYPE_ID;

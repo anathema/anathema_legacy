@@ -1,9 +1,9 @@
 package net.sf.anathema.campaign.music.presenter.selection.list;
 
-import javax.swing.table.TableCellEditor;
-
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.lib.gui.table.columsettings.AbstractTableColumnSettings;
+
+import javax.swing.table.TableCellEditor;
 
 public class MusicSelectionColumnViewSettings extends AbstractTableColumnSettings {
 

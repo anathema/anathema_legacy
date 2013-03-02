@@ -1,6 +1,10 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.special;
 
-import net.sf.anathema.character.generic.impl.magic.charm.special.*;
+import net.sf.anathema.character.generic.impl.magic.charm.special.CharmTier;
+import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TieredMultiLearnableCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TraitCharmTier;
+import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitTypeFinder;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;

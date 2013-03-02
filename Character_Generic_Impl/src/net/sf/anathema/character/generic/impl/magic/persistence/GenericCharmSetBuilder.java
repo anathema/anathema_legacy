@@ -13,9 +13,17 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.*;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_CHARM;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_TRAIT;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_TRAIT_SET;
 
 public class GenericCharmSetBuilder extends AbstractCharmSetBuilder {
   private final GenericCharmBuilder genericsBuilder;

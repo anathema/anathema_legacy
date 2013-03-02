@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.traits.types.YoziType;
 import net.sf.anathema.character.infernal.patron.presenter.IInfernalPatronModel;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Element;
 
 public class InfernalPatronPersister implements IAdditionalPersister {

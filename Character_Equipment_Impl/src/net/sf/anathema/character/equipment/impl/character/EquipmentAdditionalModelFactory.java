@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character;
 
-import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.MaterialRules;
 import net.sf.anathema.character.equipment.character.EquipmentCharacterDataProvider;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalSoak;

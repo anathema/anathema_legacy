@@ -5,7 +5,6 @@ import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.persistence.VirtueFlawPersister;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
-
 import org.dom4j.Element;
 
 public class InfernalUrgePersister extends VirtueFlawPersister {

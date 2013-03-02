@@ -4,12 +4,12 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.miginfocom.swing.MigLayout;
 import net.sf.anathema.cascades.view.CascadeView;
-import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.platform.tree.presenter.view.NodeProperties;
 import net.sf.anathema.platform.tree.presenter.view.ToolTipProperties;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 public class CharmCascadeModuleView implements ICascadeViewFactory, IView {
   private final JPanel panel = new JPanel(new MigLayout(new LC().wrapAfter(1).fill().insets("2")));

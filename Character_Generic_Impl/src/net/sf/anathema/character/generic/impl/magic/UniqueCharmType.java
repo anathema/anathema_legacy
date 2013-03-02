@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.impl.magic;
 
 import net.sf.anathema.character.generic.template.magic.IUniqueCharmType;
-import net.sf.anathema.lib.util.Identifier;
 import net.sf.anathema.lib.util.Identified;
+import net.sf.anathema.lib.util.Identifier;
 
 public class UniqueCharmType implements IUniqueCharmType {
   private final String label;

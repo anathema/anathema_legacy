@@ -1,11 +1,10 @@
 package net.sf.anathema.lib.gui.table.celleditors;
 
-import java.util.EventObject;
-
 import javax.swing.CellEditor;
 import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.EventListenerList;
+import java.util.EventObject;
 
 public class AbstractCellEditor implements CellEditor {
   protected EventListenerList listenerList = new EventListenerList();
