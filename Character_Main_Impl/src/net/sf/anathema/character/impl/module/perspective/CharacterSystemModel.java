@@ -1,9 +1,14 @@
 package net.sf.anathema.character.impl.module.perspective;
 
+import net.sf.anathema.character.CharacterPrintNameFileScanner;
+import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
+import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
+import net.sf.anathema.character.impl.module.RegExCharacterPrintNameFileScanner;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.CharacterNameChangeListener;
+import net.sf.anathema.character.perspective.DistinctiveFeatures;
+import net.sf.anathema.character.perspective.LoadedDistinctiveFeatures;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
@@ -15,27 +20,32 @@ import net.sf.anathema.framework.reporting.ControlledPrintCommand;
 import net.sf.anathema.framework.reporting.QuickPrintCommand;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IItemListener;
+import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import org.jmock.example.announcer.Announcer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retrieveCharacterItemType;
 
 public class CharacterSystemModel implements ItemSystemModel {
 
   private final Map<CharacterIdentifier, IItem> itemByIdentifier = new HashMap<>();
-  private Announcer<IChangeListener> becomesDirtyAnnouncer = Announcer.to(IChangeListener.class);
-  private Announcer<IChangeListener> becomesCleanAnnouncer = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> getsSelectionListener = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> becomesExperiencedListener = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> becomesInexperiencedListener = Announcer.to(IChangeListener.class);
   private Announcer<NewCharacterListener> characterAddedListener = Announcer.to(NewCharacterListener.class);
   private Announcer<CharacterNameChangeListener> nameChangedListener = Announcer.to(CharacterNameChangeListener.class);
   private CharacterIdentifier currentCharacter;
+  private Announcer<IChangeListener> becomesDirtyAnnouncer = Announcer.to(IChangeListener.class);
+  private Announcer<IChangeListener> becomesCleanAnnouncer = Announcer.to(IChangeListener.class);
   private IChangeListener dirtyListener = new IChangeListener() {
     @Override
     public void changeOccurred() {
@@ -56,8 +66,19 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public Collection<PrintNameFile> collectAllCharacters() {
-    return persistenceModel.collectCharacterPrintNameFiles();
+  public Collection<DistinctiveFeatures> collectAllExistingCharacters() {
+    Collection<PrintNameFile> printNameFiles = persistenceModel.collectCharacterPrintNameFiles();
+    List<DistinctiveFeatures> distinctiveFeatures = new ArrayList<>();
+    for (PrintNameFile file : printNameFiles) {
+      distinctiveFeatures.add(new LoadedDistinctiveFeatures(createFileScanner(), file));
+    }
+    return distinctiveFeatures;
+  }
+
+  private CharacterPrintNameFileScanner createFileScanner() {
+    ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
+    IRepositoryFileResolver repositoryFileResolver = model.getRepository().getRepositoryFileResolver();
+    return new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), generics.getCasteCollectionRegistry(), repositoryFileResolver);
   }
 
   @Override
@@ -134,7 +155,7 @@ public class CharacterSystemModel implements ItemSystemModel {
         characterAddedListener.announce().added(identifier, item.getDisplayName(), templateType);
       }
     };
-    new NewItemCommand(CharacterItemTypeRetrieval.retrieveCharacterItemType(model), model, resources, receiver).execute();
+    new NewItemCommand(retrieveCharacterItemType(model), model, resources, receiver).execute();
   }
 
   @Override

@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.module.perspective;
 
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.impl.module.RegExCharacterPrintNameFileScanner;
 import net.sf.anathema.character.perspective.CharacterGridPresenter;
 import net.sf.anathema.character.perspective.CharacterStackBridge;
 import net.sf.anathema.character.perspective.CharacterStackPresenter;
@@ -35,10 +34,7 @@ public class CharacterSystemPerspective implements Perspective {
     CharacterStackPresenter stackPresenter = new CharacterStackPresenter(bridge, systemModel);
     ShowOnSelect showOnSelect = new ShowOnSelect(stackPresenter);
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(model);
-    RegExCharacterPrintNameFileScanner fileScanner =
-            new RegExCharacterPrintNameFileScanner(generics.getCharacterTypes(), generics.getCasteCollectionRegistry(),
-                    model.getRepository().getRepositoryFileResolver());
-    CharacterGridPresenter gridPresenter = new CharacterGridPresenter(systemModel, view.getGridView(), showOnSelect, fileScanner, resources);
+    CharacterGridPresenter gridPresenter = new CharacterGridPresenter(systemModel, view.getGridView(), showOnSelect, resources);
     gridPresenter.initPresentation();
     new InteractionPresenter(systemModel, view.getInteractionView(), resources, view.getGridView(), showOnSelect).initPresentation();
     container.setSwingContent(view.getComponent());
