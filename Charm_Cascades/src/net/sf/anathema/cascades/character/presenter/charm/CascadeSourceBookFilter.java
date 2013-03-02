@@ -12,7 +12,6 @@ import java.util.List;
 public class CascadeSourceBookFilter extends SourceBookCharmFilter {
   private final CharmGroupCollection charmGroups;
 
-
   public CascadeSourceBookFilter(CharmGroupCollection charmGroups) {
     this.charmGroups = charmGroups;
     prepareEdition();
