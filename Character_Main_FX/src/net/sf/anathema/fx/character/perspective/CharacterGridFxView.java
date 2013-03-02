@@ -2,7 +2,6 @@ package net.sf.anathema.fx.character.perspective;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.LC;
@@ -45,7 +44,7 @@ public class CharacterGridFxView implements IView, CharacterGridView {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        ToggleButton button = addButton(dto, characterSelector);
+        CharacterGridButton button = addButton(dto, characterSelector);
         button.setSelected(true);
       }
     });
@@ -61,11 +60,12 @@ public class CharacterGridFxView implements IView, CharacterGridView {
     });
   }
 
-  private ToggleButton addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
-    ToggleButton button = new CharacterGridButton().initContent(dto, characterSelector);
-    button.setToggleGroup(toggleGroup);
-    gridPane.getChildren().add(button);
-    return button;
+  private CharacterGridButton addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
+    CharacterGridButton characterGridButton = new CharacterGridButton();
+    characterGridButton.initContent(dto, characterSelector);
+    characterGridButton.setToggleGroup(toggleGroup);
+    gridPane.getChildren().add(characterGridButton.getNode());
+    return characterGridButton;
   }
 
   public JComponent getComponent() {

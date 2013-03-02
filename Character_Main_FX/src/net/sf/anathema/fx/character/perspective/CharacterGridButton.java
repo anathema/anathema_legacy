@@ -1,7 +1,9 @@
 package net.sf.anathema.fx.character.perspective;
 
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.FontSmoothingType;
@@ -27,7 +29,7 @@ public class CharacterGridButton {
     name.getStyleClass().add("name");
   }
 
-  public ToggleButton initContent(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
+  public void initContent(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
     Image image = new Image(getImage(dto.pathToImage), 30, 30, true, true);
     name.setText(dto.text);
     Label details = new Label(dto.details);
@@ -37,20 +39,25 @@ public class CharacterGridButton {
     buttonContent.add(details, new CC().pad("0").gapTop("0"));
     button.getStyleClass().add("character-grid-button");
     button.setOnAction(new CharacterSelected(characterSelector, dto.identifier));
-    return button;
   }
 
   public void setContent(String newName) {
     name.setText(newName);
   }
 
-  private Text createNameDisplay() {
-    name.setFontSmoothingType(FontSmoothingType.LCD);
-    name.getStyleClass().add("name");
-    return name;
-  }
-
   private InputStream getImage(String pathToImage) {
     return new ResourceLoader().loadResource(pathToImage);
+  }
+
+  public Node getNode() {
+    return button;
+  }
+
+  public void setToggleGroup(ToggleGroup toggleGroup) {
+    button.setToggleGroup(toggleGroup);
+  }
+
+  public void setSelected(boolean selected) {
+    button.setSelected(selected);
   }
 }
