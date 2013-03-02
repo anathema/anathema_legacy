@@ -2,8 +2,8 @@ package net.sf.anathema.character.impl.view;
 
 import net.miginfocom.layout.CC;
 import net.sf.anathema.character.model.IIntegerDescription;
-import net.sf.anathema.character.view.IIntegerView;
 import net.sf.anathema.character.view.IMultiComponentLine;
+import net.sf.anathema.lib.gui.widgets.IIntegerView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.view;
+package net.sf.anathema.lib.gui.widgets;
 
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 

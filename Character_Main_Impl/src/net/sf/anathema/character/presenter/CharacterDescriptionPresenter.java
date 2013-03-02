@@ -7,12 +7,12 @@ import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.presenter.description.NameGeneratorAction;
 import net.sf.anathema.character.presenter.magic.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.character.view.IIntegerView;
 import net.sf.anathema.character.view.IMultiComponentLine;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.ViewTabContentView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
+import net.sf.anathema.lib.gui.widgets.IIntegerView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -28,9 +28,8 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
   private final boolean hasAnima;
   private final IResources resources;
 
-  public CharacterDescriptionPresenter(IResources resources, ICharacterDescription description,
-                                       ICharacterConcept characterConcept, ICharacterDescriptionView descriptionView,
-                                       boolean hasAnima) {
+  public CharacterDescriptionPresenter(IResources resources, ICharacterDescription description, ICharacterConcept characterConcept,
+                                       ICharacterDescriptionView descriptionView, boolean hasAnima) {
     this.resources = resources;
     this.description = description;
     this.characterConcept = characterConcept;
@@ -44,10 +43,8 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     initNameLineView(0, presentation);
     initLineView("CharacterDescription.Label.Player", description.getPlayer(), presentation); //$NON-NLS-1$
     initLineView("Label.Concept", description.getConcept(), presentation); //$NON-NLS-1$
-    initAreaView("CharacterDescription.Label.Characterization", description.getCharacterization(),
-            presentation); //$NON-NLS-1$
-    initAreaView("CharacterDescription.Label.PhysicalDescription", description.getPhysicalDescription(),
-            presentation); //$NON-NLS-1$
+    initAreaView("CharacterDescription.Label.Characterization", description.getCharacterization(), presentation); //$NON-NLS-1$
+    initAreaView("CharacterDescription.Label.PhysicalDescription", description.getPhysicalDescription(), presentation); //$NON-NLS-1$
     initMinorTraits(presentation);
     if (hasAnima) {
       initLineView("CharacterDescription.Label.Anima", description.getAnima(), presentation); //$NON-NLS-1$
@@ -64,12 +61,13 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
   private void initNameLineView(int row, TextualPresentation presentation) {
     initLineView("CharacterDescription.Label.Name", description.getName(), presentation); //$NON-NLS-1$
     CharacterUI characterUI = new CharacterUI(resources);
-    descriptionView.addEditAction(new NameGeneratorAction(characterUI.getRandomRealmNameIcon(),
-            resources.getString("CharacterDescription.Tooltip.RealmName"), //$NON-NLS-1$
-            description.getName(), new RealmNameGenerator()), row);
-    descriptionView.addEditAction(new NameGeneratorAction(characterUI.getRandomThresholdNameIcon(),
-            resources.getString("CharacterDescription.Tooltip.ThresholdName"), //$NON-NLS-1$
-            description.getName(), new ThresholdNameGenerator()), row);
+    descriptionView.addEditAction(
+            new NameGeneratorAction(characterUI.getRandomRealmNameIcon(), resources.getString("CharacterDescription.Tooltip.RealmName"), //$NON-NLS-1$
+                    description.getName(), new RealmNameGenerator()), row);
+    descriptionView.addEditAction(
+            new NameGeneratorAction(characterUI.getRandomThresholdNameIcon(), resources.getString("CharacterDescription.Tooltip.ThresholdName"),
+                    //$NON-NLS-1$
+                    description.getName(), new ThresholdNameGenerator()), row);
   }
 
   private void initMinorTraits(TextualPresentation presentation) {
@@ -81,8 +79,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     addInteger(componentLine, "Label.Age", characterConcept.getAge());
   }
 
-  private void addInteger(IMultiComponentLine componentLine, String label,
-                          final IIntegerDescription integerDescription) {
+  private void addInteger(IMultiComponentLine componentLine, String label, final IIntegerDescription integerDescription) {
     String title = resources.getString(label);
     IIntegerView view = componentLine.addIntegerView(title, integerDescription);
     view.addChangeListener(new IIntValueChangedListener() {
@@ -93,21 +90,18 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     });
   }
 
-  private void addField(IMultiComponentLine componentLine, String label, ITextualDescription description,
-                        TextualPresentation presentation) {
+  private void addField(IMultiComponentLine componentLine, String label, ITextualDescription description, TextualPresentation presentation) {
     String labelText = resources.getString(label);
     ITextView textView = componentLine.addFieldsView(labelText);
     presentation.initView(textView, description);
   }
 
-  private void initLineView(String labelResourceKey, ITextualDescription textualDescription,
-                            TextualPresentation presentation) {
+  private void initLineView(String labelResourceKey, ITextualDescription textualDescription, TextualPresentation presentation) {
     ITextView textView = descriptionView.addLineView(resources.getString(labelResourceKey));
     presentation.initView(textView, textualDescription);
   }
 
-  private void initAreaView(String labelResourceKey, ITextualDescription textualDescription,
-                            TextualPresentation presentation) {
+  private void initAreaView(String labelResourceKey, ITextualDescription textualDescription, TextualPresentation presentation) {
     ITextView textView = descriptionView.addAreaView(resources.getString(labelResourceKey), 6);
     presentation.initView(textView, textualDescription);
   }

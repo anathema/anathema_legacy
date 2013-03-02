@@ -1,6 +1,5 @@
 package net.sf.anathema.lib.gui.widgets;
 
-import net.sf.anathema.character.view.IIntegerView;
 import net.sf.anathema.lib.control.IIntValueChangedListener;
 import net.sf.anathema.lib.data.IOverline;
 import net.sf.anathema.lib.data.Range;
@@ -105,8 +104,7 @@ public class IntegerSpinner implements IView, IIntegerView {
           String newText = textField.getText();
           int value = Integer.parseInt(newText);
           numberModel.setValue(value);
-        }
-        catch (NumberFormatException exc) {
+        } catch (NumberFormatException exc) {
           // nothing to do
         }
       }
