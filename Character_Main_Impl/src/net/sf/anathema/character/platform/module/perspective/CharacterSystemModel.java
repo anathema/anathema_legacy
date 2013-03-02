@@ -8,7 +8,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.CharacterNameChangeListener;
 import net.sf.anathema.character.perspective.DistinctiveFeatures;
 import net.sf.anathema.character.perspective.LoadedDistinctiveFeatures;
-import net.sf.anathema.character.perspective.NewDistinctiveFeatures;
+import net.sf.anathema.character.perspective.UnloadedDistinctiveFeatures;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
@@ -71,7 +71,7 @@ public class CharacterSystemModel implements ItemSystemModel {
     Collection<PrintNameFile> printNameFiles = persistenceModel.collectCharacterPrintNameFiles();
     List<DistinctiveFeatures> distinctiveFeatures = new ArrayList<>();
     for (PrintNameFile file : printNameFiles) {
-      distinctiveFeatures.add(new LoadedDistinctiveFeatures(createFileScanner(), file));
+      distinctiveFeatures.add(new UnloadedDistinctiveFeatures(createFileScanner(), file));
     }
     return distinctiveFeatures;
   }
@@ -153,7 +153,7 @@ public class CharacterSystemModel implements ItemSystemModel {
         addCharacter(identifier, item);
         ICharacter character = (ICharacter) item.getItemData();
         ITemplateType templateType = character.getCharacterTemplate().getTemplateType();
-        DistinctiveFeatures distinctiveFeatures = new NewDistinctiveFeatures(identifier, item);
+        DistinctiveFeatures distinctiveFeatures = new LoadedDistinctiveFeatures(identifier, item);
         characterAddedListener.announce().added(distinctiveFeatures);
       }
     };

@@ -1,39 +1,40 @@
 package net.sf.anathema.character.perspective;
 
-import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.template.ITemplateType;
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
-import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.util.Identified;
 
 public class LoadedDistinctiveFeatures implements DistinctiveFeatures {
 
-  private CharacterPrintNameFileScanner fileScanner;
-  private PrintNameFile printNameFile;
+  private CharacterIdentifier identifier;
+  private IItem characterItem;
 
-  public LoadedDistinctiveFeatures(CharacterPrintNameFileScanner fileScanner, PrintNameFile printNameFile) {
-    this.fileScanner = fileScanner;
-    this.printNameFile = printNameFile;
+  public LoadedDistinctiveFeatures(CharacterIdentifier identifier, IItem characterItem) {
+    this.identifier = identifier;
+    this.characterItem = characterItem;
   }
 
   @Override
   public String getPrintName() {
-    return printNameFile.getPrintName();
+    return characterItem.getDisplayName();
   }
 
   @Override
   public CharacterIdentifier getIdentifier() {
-    String repositoryId = printNameFile.getRepositoryId();
-    return new CharacterIdentifier(repositoryId);
+    return identifier;
   }
 
   @Override
   public ITemplateType getTemplateType() {
-    return fileScanner.getTemplateType(printNameFile);
+    ICharacter character = (ICharacter) characterItem.getItemData();
+    return character.getCharacterTemplate().getTemplateType();
   }
 
   @Override
   public Identified getCasteType() {
-    return fileScanner.getCasteType(printNameFile);
+    ICharacter character = (ICharacter) characterItem.getItemData();
+    return character.getCharacterConcept().getCaste().getType();
   }
 }
