@@ -1,7 +1,7 @@
 @Integration
 Feature: Some Characters can learn their Charms from other character types
 
-  Scenario: An Solar cannot learn Abyssal Charms
+  Scenario: A Solar cannot learn Abyssal Charms
     Given a new default Solar
     When I set her Archery to 4
     Then she can not learn the Charm Abyssal.PulseOfThePrey
