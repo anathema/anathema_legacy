@@ -6,7 +6,7 @@ public interface CharacterGridView {
 
   void addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector);
 
-  void addAndSelectButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector);
+  void selectButton(CharacterIdentifier identifier);
 
   void setName(CharacterIdentifier identifier, String name);
 }

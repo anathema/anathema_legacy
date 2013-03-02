@@ -40,7 +40,8 @@ public class NewInteractionPresenter {
       public void added(final CharacterModel character) {
         final DescriptiveFeatures features = character.getDescriptiveFeatures();
         CharacterButtonDto dto = new ToCharacterButtonDto(resources).apply(features);
-        gridViewView.addAndSelectButton(dto, selector);
+        gridViewView.addButton(dto, selector);
+        gridViewView.selectButton(dto.identifier);
         selector.selected(dto.identifier);
         character.whenFeaturesChange(new IChangeListener() {
           @Override

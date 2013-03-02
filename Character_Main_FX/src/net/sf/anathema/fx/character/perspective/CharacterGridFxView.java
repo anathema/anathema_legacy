@@ -37,12 +37,11 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   }
 
   @Override
-  public void addAndSelectButton(final CharacterButtonDto dto, final Selector<CharacterIdentifier> characterSelector) {
+  public void selectButton(final CharacterIdentifier identifier) {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        CharacterGridButton button = createGridButton(dto, characterSelector);
-        button.setSelected(true);
+        buttonsByIdentifier.get(identifier).setSelected(true);
       }
     });
   }
