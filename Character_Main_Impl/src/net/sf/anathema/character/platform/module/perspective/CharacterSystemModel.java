@@ -8,6 +8,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.CharacterNameChangeListener;
 import net.sf.anathema.character.perspective.DistinctiveFeatures;
 import net.sf.anathema.character.perspective.LoadedDistinctiveFeatures;
+import net.sf.anathema.character.perspective.NewDistinctiveFeatures;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.character.perspective.model.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
@@ -152,7 +153,8 @@ public class CharacterSystemModel implements ItemSystemModel {
         addCharacter(identifier, item);
         ICharacter character = (ICharacter) item.getItemData();
         ITemplateType templateType = character.getCharacterTemplate().getTemplateType();
-        characterAddedListener.announce().added(identifier, item.getDisplayName(), templateType);
+        DistinctiveFeatures distinctiveFeatures = new NewDistinctiveFeatures(identifier, item);
+        characterAddedListener.announce().added(distinctiveFeatures);
       }
     };
     new NewItemCommand(retrieveCharacterItemType(model), model, resources, receiver).execute();

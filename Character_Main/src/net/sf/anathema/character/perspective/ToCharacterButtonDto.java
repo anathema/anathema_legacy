@@ -27,18 +27,18 @@ public class ToCharacterButtonDto implements Function<DistinctiveFeatures, Chara
     CharacterIdentifier identifier = input.getIdentifier();
     ITemplateType templateType = input.getTemplateType();
     Identified casteType = input.getCasteType();
-    String details = getDetails(resources, templateType);
+    String details = getDetails(templateType);
     String pathToImage = getPathToImage(templateType, casteType);
     return new CharacterButtonDto(identifier, text, details, pathToImage);
   }
 
-  public static String getDetails(IStringResourceHandler resources, ITemplateType templateType) {
+  private String getDetails(ITemplateType templateType) {
     GenericPresentationTemplate presentationTemplate = new GenericPresentationTemplate();
     presentationTemplate.setParentTemplate(templateType);
     return resources.getString(presentationTemplate.getNewActionResource());
   }
 
-  public static String getPathToImage(ITemplateType templateType, Identified casteType) {
+  private String getPathToImage(ITemplateType templateType, Identified casteType) {
     StringBuilder imagePath = new StringBuilder("icons/");
     if (casteType == NULL_CASTE_TYPE) {
       imagePath.append(new CharacterUI(null).getLargeTypeIconPath(templateType.getCharacterType()));
