@@ -8,10 +8,9 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.ICharacterStatsModifiers;
-import net.sf.anathema.character.model.traits.essence.IEssencePoolModifier;
+import net.sf.anathema.character.generic.framework.essence.IEssencePoolModifier;
 
-public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentItemCollection,
-	IEquipmentTemplateProvider, IEssencePoolModifier{
+public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentItemCollection, IEquipmentTemplateProvider, IEssencePoolModifier {
 
   MagicalMaterial getDefaultMaterial();
 
@@ -22,7 +21,7 @@ public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentI
   IEquipmentPrintModel getPrintModel();
 
   IEquipmentCharacterDataProvider getCharacterDataProvider();
-  
+
   void updateItem(IEquipmentItem item);
 
   void refreshItems();
