@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.persistence;
+package net.sf.anathema.character.generic.impl.persistence;
 
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 

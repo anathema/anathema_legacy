@@ -16,7 +16,7 @@ import net.sf.anathema.character.reporting.pdf.rendering.graphics.SheetGraphics;
 import net.sf.anathema.character.reporting.pdf.rendering.page.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
-import static net.sf.anathema.character.impl.persistence.SecondEdition.SECOND_EDITION;
+import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
 
 public class GenericAnimaEncoder implements ContentEncoder {
 

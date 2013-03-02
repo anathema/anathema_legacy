@@ -2,10 +2,10 @@ package net.sf.anathema.character.impl.persistence;
 
 import org.dom4j.Element;
 
+import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_RULES;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_RULESET;
-import static net.sf.anathema.character.impl.persistence.SecondEdition.SECOND_EDITION;
 
 public class RulesPersister {
 

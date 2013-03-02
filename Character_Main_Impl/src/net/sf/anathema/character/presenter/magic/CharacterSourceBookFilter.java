@@ -10,7 +10,7 @@ import org.dom4j.Element;
 
 import java.util.List;
 
-import static net.sf.anathema.character.impl.persistence.SecondEdition.SECOND_EDITION;
+import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
 
 public class CharacterSourceBookFilter extends SourceBookCharmFilter {
 
@@ -40,12 +40,14 @@ public class CharacterSourceBookFilter extends SourceBookCharmFilter {
   @Override
   public void save(Element parent) {
     Element sourceBookFilter = parent.addElement(TAG_FILTERNAME);
-      List<IExaltedSourceBook> list = excludedMaterial;
-      if (list != null) for (IExaltedSourceBook book : list) {
+    List<IExaltedSourceBook> list = excludedMaterial;
+    if (list != null) {
+      for (IExaltedSourceBook book : list) {
         Element bookElement = sourceBookFilter.addElement(TAG_SOURCEBOOK);
         bookElement.addAttribute(ATTRIB_NAME, book.getId());
         bookElement.addAttribute(ATTRIB_EDITION, SECOND_EDITION);
       }
+    }
     sourceBookFilter.addAttribute(ATTRIB_SHOWPREREQ, includePrereqs ? "true" : "false");
   }
 

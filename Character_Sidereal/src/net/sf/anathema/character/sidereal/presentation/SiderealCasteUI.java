@@ -1,8 +1,8 @@
 package net.sf.anathema.character.sidereal.presentation;
 
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
+import net.sf.anathema.character.generic.impl.persistence.SecondEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.impl.persistence.SecondEdition;
 import net.sf.anathema.character.sidereal.SiderealCharacterModule;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;

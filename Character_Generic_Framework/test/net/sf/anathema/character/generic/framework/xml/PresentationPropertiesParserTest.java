@@ -4,10 +4,10 @@ import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.dummy.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.generic.framework.xml.presentation.PresentationPropertiesParser;
+import net.sf.anathema.character.generic.impl.persistence.SecondEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.impl.persistence.SecondEdition;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
@@ -41,14 +41,14 @@ public class PresentationPropertiesParserTest {
     parentTemplate.setTemplateType(new TemplateType(new DummyExaltCharacterType()));
     presentationProperties.setParentTemplate(parentTemplate);
     assertEquals("DummyButtonLifeSecondEdition16.png",
-                 presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), new SecondEdition().getId())); //$NON-NLS-1$
+            presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), new SecondEdition().getId())); //$NON-NLS-1$
   }
 
   @Test
   public void testSetsColorOnCharmPresentationProperties() throws Exception {
     String xml = "<presentation>" //$NON-NLS-1$
-            + "\t<color red=\"139\" green=\"123\" blue=\"255\" />" //$NON-NLS-1$
-            + "</presentation>"; //$NON-NLS-1$
+                 + "\t<color red=\"139\" green=\"123\" blue=\"255\" />" //$NON-NLS-1$
+                 + "</presentation>"; //$NON-NLS-1$
     IPresentationProperties presentationProperties = parseXml(xml);
     assertEquals(new Color(139, 123, 255), presentationProperties.getCharmPresentationProperties().getColor());
   }

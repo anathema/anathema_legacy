@@ -6,8 +6,8 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.impl.persistence.SecondEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.impl.persistence.SecondEdition;
 
 import java.util.List;
 import java.util.Map;
@@ -22,20 +22,14 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   private final String composition;
   private final ItemCost cost;
 
-  public EquipmentTemplate(
-      String name,
-      String description,
-      MaterialComposition composition,
-      MagicalMaterial material,
-      ICollectionFactory collectionFactory,
-      ItemCost cost) {
+  public EquipmentTemplate(String name, String description, MaterialComposition composition, MagicalMaterial material,
+                           ICollectionFactory collectionFactory, ItemCost cost) {
     this.name = name;
     this.description = description;
     this.composition = composition.getId();
     if (material == null) {
       this.material = null;
-    }
-    else {
+    } else {
       this.material = material.getId();
     }
     this.collectionFactory = collectionFactory;
@@ -83,10 +77,10 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   public MaterialComposition getComposition() {
     return MaterialComposition.valueOf(composition);
   }
-  
+
   @Override
   public ItemCost getCost() {
-	return cost;
+    return cost;
   }
 
   public boolean hasStats() {

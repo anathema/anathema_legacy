@@ -11,7 +11,7 @@ import net.sf.anathema.lib.util.Identified;
 import javax.annotation.Nullable;
 
 import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
-import static net.sf.anathema.character.impl.persistence.SecondEdition.SECOND_EDITION;
+import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
 
 public class ToCharacterButtonDto implements Function<DistinctiveFeatures, CharacterButtonDto> {
   private final IStringResourceHandler resources;
