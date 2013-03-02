@@ -41,10 +41,6 @@ public class CharacterGridButton {
     setContent(dto);
   }
 
-  public void setContent(String newName) {
-    name.setText(newName);
-  }
-
   public void setContent(CharacterButtonDto dto) {
     name.setText(dto.text);
     details.setText(dto.details);

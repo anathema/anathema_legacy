@@ -1,5 +1,6 @@
 package net.sf.anathema.character.perspective.model.model;
 
+import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.DescriptiveFeatures;
 import net.sf.anathema.character.perspective.LoadedDescriptiveFeatures;
 import net.sf.anathema.framework.repository.IItem;
@@ -36,6 +37,13 @@ public class CharacterModel {
     item.addItemListener(new IItemListener() {
       @Override
       public void printNameChanged(String newName) {
+        featuresChangeAnnouncer.announce().changeOccurred();
+      }
+    });
+    ICharacter character = (ICharacter) item.getItemData();
+    character.getCharacterConcept().getCaste().addChangeListener(new IChangeListener() {
+      @Override
+      public void changeOccurred() {
         featuresChangeAnnouncer.announce().changeOccurred();
       }
     });

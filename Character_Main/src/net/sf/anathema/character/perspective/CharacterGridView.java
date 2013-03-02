@@ -8,5 +8,5 @@ public interface CharacterGridView {
 
   void selectButton(CharacterIdentifier identifier);
 
-  void setName(CharacterIdentifier identifier, String name);
+  void updateButton(CharacterButtonDto dto);
 }

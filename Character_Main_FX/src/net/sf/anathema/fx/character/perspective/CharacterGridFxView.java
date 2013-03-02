@@ -47,11 +47,11 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   }
 
   @Override
-  public void setName(final CharacterIdentifier identifier, final String name) {
+  public void updateButton(final CharacterButtonDto dto) {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        buttonsByIdentifier.get(identifier).setContent(name);
+        buttonsByIdentifier.get(dto.identifier).setContent(dto);
       }
     });
   }

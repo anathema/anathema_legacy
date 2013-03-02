@@ -21,14 +21,21 @@ public class CharacterButtonPresenter {
   }
 
   public void initPresentation() {
-    final DescriptiveFeatures features = character.getDescriptiveFeatures();
-    CharacterButtonDto dto = new ToCharacterButtonDto(resources).apply(features);
+    CharacterButtonDto dto = extractButtonDto();
     view.addButton(dto, selector);
+    initDescriptiveFeatureListening();
+  }
+
+  private void initDescriptiveFeatureListening() {
     character.whenFeaturesChange(new IChangeListener() {
       @Override
       public void changeOccurred() {
-        view.setName(features.getIdentifier(), character.getDescriptiveFeatures().getPrintName());
+        view.updateButton(extractButtonDto());
       }
     });
+  }
+
+  private CharacterButtonDto extractButtonDto() {
+    return new ToCharacterButtonDto(resources).apply(character.getDescriptiveFeatures());
   }
 }
