@@ -22,8 +22,8 @@ public class GenericPresentationPropertiesTest {
     GenericCharacterTemplate dummyCharacterTemplate = new GenericCharacterTemplate();
     dummyCharacterTemplate.setTemplateType(new TemplateType(new DummyMundaneCharacterType()));
     template.setParentTemplate(dummyCharacterTemplate);
-    Assert.assertEquals("CharacterGenerator.Templates.Dummy.TemplateType.Default", template.getNewActionResource()); //$NON-NLS-1$
-    dummyCharacterTemplate.setTemplateType(new TemplateType(new DummyMundaneCharacterType(), new Identifier("HeroicSubtype"))); //$NON-NLS-1$
-    Assert.assertEquals("CharacterGenerator.Templates.Dummy.HeroicSubtype", template.getNewActionResource()); //$NON-NLS-1$
+    Assert.assertEquals("CharacterGenerator.Templates.Dummy.TemplateType.Default", template.getNewActionResource());
+    dummyCharacterTemplate.setTemplateType(new TemplateType(new DummyMundaneCharacterType(), new Identifier("HeroicSubtype")));
+    Assert.assertEquals("CharacterGenerator.Templates.Dummy.HeroicSubtype", template.getNewActionResource());
   }
 }
