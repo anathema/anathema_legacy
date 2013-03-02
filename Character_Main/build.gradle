@@ -1,15 +1,16 @@
 dependencies {
-  compile project(':Charm_Tree')
-  compile project(':Character_Library')
-  compile project(':Namegenerator')
-  compile project(':Platform')
-  testCompile parent.ext.testDependencies
+    compile project(':Charm_Tree')
+    compile project(':Character_Library')
+    compile project(':Namegenerator')
+    compile project(':Platform')
+    compile project(':Engine_Exalted')
+    testCompile parent.ext.testDependencies
 }
 
 configurations {
-  tests
+    tests
 }
 
 artifacts {
-  tests testJar
+    tests testJar
 }

@@ -1,0 +1,123 @@
+package net.sf.anathema.character.impl.model.traits.listening;
+
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.types.YoziType;
+import net.sf.anathema.character.impl.model.context.CharacterListening;
+import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
+import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
+import net.sf.anathema.character.model.background.IBackground;
+import net.sf.anathema.character.model.background.IBackgroundListener;
+import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+
+public class CharacterTraitListening {
+
+  private final CharacterListening listening;
+  private final ICoreTraitConfiguration traitConfiguration;
+
+  public CharacterTraitListening(ICoreTraitConfiguration traitConfiguration, CharacterListening listening) {
+    this.traitConfiguration = traitConfiguration;
+    this.listening = listening;
+  }
+
+  public void initListening() {
+    initAttributeListening();
+    initAbilityListening();
+    initYoziListening();
+    initBackgroundListening();
+    for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
+      listening.addTraitListening(virtue);
+    }
+    listening.addTraitListening(traitConfiguration.getTrait(OtherTraitType.Willpower));
+    listening.addTraitListening(traitConfiguration.getTrait(OtherTraitType.Essence));
+  }
+
+  private void initBackgroundListening() {
+    traitConfiguration.getBackgrounds().addBackgroundListener(new IBackgroundListener() {
+      @Override
+      public void backgroundRemoved(IBackground background) {
+        listening.removeTraitListening(background);
+        listening.fireCharacterChanged();
+      }
+
+      @Override
+      public void backgroundAdded(IBackground background) {
+        listening.addTraitListening(background);
+        listening.fireCharacterChanged();
+      }
+    });
+  }
+
+  private void initAbilityListening() {
+    ITraitTypeGroup[] groups = traitConfiguration.getAbilityTypeGroups();
+    ITraitType[] allAbilityTypes = TraitTypeGroup.getAllTraitTypes(groups);
+    ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
+    for (ITraitType traitType : allAbilityTypes) {
+      IFavorableTrait ability = traitConfiguration.getFavorableTrait(traitType);
+      listening.addTraitListening(ability);
+      ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+        @Override
+        public void favorableStateChanged(FavorableState state) {
+          listening.fireCharacterChanged();
+        }
+      });
+      specialtyConfiguration.getSpecialtiesContainer(traitType).addSubTraitListener(new ISubTraitListener() {
+        @Override
+        public void subTraitRemoved(ISubTrait specialty) {
+          listening.fireCharacterChanged();
+        }
+
+        @Override
+        public void subTraitAdded(ISubTrait specialty) {
+          listening.fireCharacterChanged();
+        }
+
+        @Override
+        public void subTraitValueChanged() {
+          listening.fireCharacterChanged();
+        }
+      });
+    }
+  }
+
+  private void initAttributeListening() {
+    ITraitTypeGroup[] groups = traitConfiguration.getAttributeTypeGroups();
+    ITraitType[] allAttributeTypes = TraitTypeGroup.getAllTraitTypes(groups);
+    for (ITraitType traitType : allAttributeTypes) {
+      IFavorableTrait attribute = traitConfiguration.getFavorableTrait(traitType);
+      listening.addTraitListening(attribute);
+      attribute.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+        @Override
+        public void favorableStateChanged(FavorableState state) {
+          listening.fireCharacterChanged();
+        }
+      });
+    }
+  }
+
+  private void initYoziListening() {
+    for (YoziType yoziType : YoziType.values()) {
+      IFavorableTrait yozi;
+      try {
+        yozi = traitConfiguration.getFavorableTrait(yoziType);
+      } catch (UnsupportedOperationException e) {
+        break; //template does not support yozis
+      }
+      listening.addTraitListening(yozi);
+      yozi.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
+        @Override
+        public void favorableStateChanged(FavorableState state) {
+          listening.fireCharacterChanged();
+        }
+      });
+    }
+  }
+}
