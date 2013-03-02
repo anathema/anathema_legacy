@@ -2,10 +2,11 @@ package net.sf.anathema.character.platform.module.perspective;
 
 import net.sf.anathema.character.perspective.CharacterButtonDto;
 import net.sf.anathema.character.perspective.CharacterGridView;
-import net.sf.anathema.character.perspective.DistinctiveFeatures;
+import net.sf.anathema.character.perspective.DescriptiveFeatures;
 import net.sf.anathema.character.perspective.Selector;
 import net.sf.anathema.character.perspective.ToCharacterButtonDto;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.model.CharacterModel;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.character.perspective.model.model.NewCharacterListener;
 import net.sf.anathema.interaction.Command;
@@ -35,8 +36,9 @@ public class NewInteractionPresenter {
     model.whenNewCharacterIsAdded(new NewCharacterListener() {
 
       @Override
-      public void added(DistinctiveFeatures distinctiveFeatures) {
-        CharacterButtonDto dto = new ToCharacterButtonDto(resources).apply(distinctiveFeatures);
+      public void added(CharacterModel character) {
+        DescriptiveFeatures features = character.getDescriptiveFeatures();
+        CharacterButtonDto dto = new ToCharacterButtonDto(resources).apply(features);
         gridViewView.addAndSelectButton(dto, selector);
         selector.selected(dto.identifier);
       }

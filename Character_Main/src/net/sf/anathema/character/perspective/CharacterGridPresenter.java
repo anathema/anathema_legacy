@@ -1,6 +1,7 @@
 package net.sf.anathema.character.perspective;
 
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.model.CharacterModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
 import net.sf.anathema.lib.resources.IStringResourceHandler;
 
@@ -20,8 +21,8 @@ public class CharacterGridPresenter {
   }
 
   public void initPresentation() {
-    for (DistinctiveFeatures existingCharacters : model.collectAllExistingCharacters()) {
-      CharacterButtonDto dto = characterTransformer.apply(existingCharacters);
+    for (CharacterModel existingCharacters : model.collectAllExistingCharacters()) {
+      CharacterButtonDto dto = characterTransformer.apply(existingCharacters.getDescriptiveFeatures());
       view.addButton(dto, characterSelector);
     }
     model.whenCurrentSelectionChangesName(new CharacterNameChangeListener() {

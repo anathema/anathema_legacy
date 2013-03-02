@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 import static net.sf.anathema.character.generic.caste.ICasteType.NULL_CASTE_TYPE;
 import static net.sf.anathema.character.generic.impl.persistence.SecondEdition.SECOND_EDITION;
 
-public class ToCharacterButtonDto implements Function<DistinctiveFeatures, CharacterButtonDto> {
+public class ToCharacterButtonDto implements Function<DescriptiveFeatures, CharacterButtonDto> {
   private final IStringResourceHandler resources;
 
   public ToCharacterButtonDto(IStringResourceHandler resources) {
@@ -22,7 +22,7 @@ public class ToCharacterButtonDto implements Function<DistinctiveFeatures, Chara
 
   @Nullable
   @Override
-  public CharacterButtonDto apply(@Nullable DistinctiveFeatures input) {
+  public CharacterButtonDto apply(@Nullable DescriptiveFeatures input) {
     String text = input.getPrintName();
     CharacterIdentifier identifier = input.getIdentifier();
     ITemplateType templateType = input.getTemplateType();

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.lib.util.Identified;
 
-public interface DistinctiveFeatures {
+public interface DescriptiveFeatures {
 
   String getPrintName();
 

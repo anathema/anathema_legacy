@@ -3,13 +3,11 @@ package net.sf.anathema.character.platform.module.perspective;
 import net.sf.anathema.character.CharacterPrintNameFileScanner;
 import net.sf.anathema.character.generic.framework.CharacterGenericsExtractor;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.perspective.CharacterNameChangeListener;
-import net.sf.anathema.character.perspective.DistinctiveFeatures;
-import net.sf.anathema.character.perspective.LoadedDistinctiveFeatures;
-import net.sf.anathema.character.perspective.UnloadedDistinctiveFeatures;
+import net.sf.anathema.character.perspective.PreloadedDescriptiveFeatures;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
+import net.sf.anathema.character.perspective.model.model.CharacterModel;
 import net.sf.anathema.character.perspective.model.model.CharacterPersistenceModel;
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
 import net.sf.anathema.character.perspective.model.model.NewCharacterListener;
@@ -38,7 +36,7 @@ import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retr
 
 public class CharacterSystemModel implements ItemSystemModel {
 
-  private final Map<CharacterIdentifier, IItem> itemByIdentifier = new HashMap<>();
+  private final Map<CharacterIdentifier, CharacterModel> modelsByIdentifier = new HashMap<>();
   private Announcer<IChangeListener> getsSelectionListener = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> becomesExperiencedListener = Announcer.to(IChangeListener.class);
   private Announcer<IChangeListener> becomesInexperiencedListener = Announcer.to(IChangeListener.class);
@@ -67,13 +65,16 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   @Override
-  public Collection<DistinctiveFeatures> collectAllExistingCharacters() {
+  public Collection<CharacterModel> collectAllExistingCharacters() {
     Collection<PrintNameFile> printNameFiles = persistenceModel.collectCharacterPrintNameFiles();
-    List<DistinctiveFeatures> distinctiveFeatures = new ArrayList<>();
+    List<CharacterModel> characters = new ArrayList<>();
     for (PrintNameFile file : printNameFiles) {
-      distinctiveFeatures.add(new UnloadedDistinctiveFeatures(createFileScanner(), file));
+      PreloadedDescriptiveFeatures features = new PreloadedDescriptiveFeatures(createFileScanner(), file);
+      CharacterModel character = new CharacterModel(features);
+      modelsByIdentifier.put(features.getIdentifier(), character);
+      characters.add(character);
     }
-    return distinctiveFeatures;
+    return characters;
   }
 
   private CharacterPrintNameFileScanner createFileScanner() {
@@ -84,15 +85,17 @@ public class CharacterSystemModel implements ItemSystemModel {
 
   @Override
   public IItem loadItem(CharacterIdentifier identifier) {
-    if (itemByIdentifier.containsKey(identifier)) {
-      return itemByIdentifier.get(identifier);
+    CharacterModel character = modelsByIdentifier.get(identifier);
+    if (character.isLoaded()) {
+      return character.getItem();
     }
     IItem item = persistenceModel.loadItem(identifier);
-    addCharacter(identifier, item);
+    character.setItem(item);
+    initCharacterListening(item);
     return item;
   }
 
-  private void addCharacter(CharacterIdentifier identifier, IItem item) {
+  private void initCharacterListening(IItem item) {
     item.addDirtyListener(dirtyListener);
     item.addItemListener(new IItemListener() {
       @Override
@@ -101,7 +104,6 @@ public class CharacterSystemModel implements ItemSystemModel {
         nameChangedListener.announce().nameChanged(currentCharacter, currentItem.getDisplayName());
       }
     });
-    itemByIdentifier.put(identifier, item);
   }
 
   @Override
@@ -150,11 +152,9 @@ public class CharacterSystemModel implements ItemSystemModel {
       @Override
       public void addItem(IItem item) {
         CharacterIdentifier identifier = new CharacterIdentifier("InternalNewCharacter" + newCharacterCount++);
-        addCharacter(identifier, item);
-        ICharacter character = (ICharacter) item.getItemData();
-        ITemplateType templateType = character.getCharacterTemplate().getTemplateType();
-        DistinctiveFeatures distinctiveFeatures = new LoadedDistinctiveFeatures(identifier, item);
-        characterAddedListener.announce().added(distinctiveFeatures);
+        initCharacterListening(item);
+        CharacterModel character = new CharacterModel(identifier, item);
+        characterAddedListener.announce().added(character);
       }
     };
     new NewItemCommand(retrieveCharacterItemType(model), model, resources, receiver).execute();
@@ -193,6 +193,9 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   private void notifyDirtyListeners() {
+    if (currentCharacter == null) {
+      return;
+    }
     notifyDirtyListeners(getCurrentItem());
   }
 
@@ -209,7 +212,7 @@ public class CharacterSystemModel implements ItemSystemModel {
   }
 
   private IItem getCurrentItem() {
-    return itemByIdentifier.get(currentCharacter);
+    return modelsByIdentifier.get(currentCharacter).getItem();
   }
 
   private ICharacter getCurrentCharacter() {

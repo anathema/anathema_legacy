@@ -6,12 +6,12 @@ import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.util.Identified;
 
-public class UnloadedDistinctiveFeatures implements DistinctiveFeatures {
+public class PreloadedDescriptiveFeatures implements DescriptiveFeatures {
 
   private CharacterPrintNameFileScanner fileScanner;
   private PrintNameFile printNameFile;
 
-  public UnloadedDistinctiveFeatures(CharacterPrintNameFileScanner fileScanner, PrintNameFile printNameFile) {
+  public PreloadedDescriptiveFeatures(CharacterPrintNameFileScanner fileScanner, PrintNameFile printNameFile) {
     this.fileScanner = fileScanner;
     this.printNameFile = printNameFile;
   }

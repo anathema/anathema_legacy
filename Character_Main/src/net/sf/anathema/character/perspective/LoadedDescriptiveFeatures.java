@@ -6,12 +6,12 @@ import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.util.Identified;
 
-public class LoadedDistinctiveFeatures implements DistinctiveFeatures {
+public class LoadedDescriptiveFeatures implements DescriptiveFeatures {
 
   private CharacterIdentifier identifier;
   private IItem characterItem;
 
-  public LoadedDistinctiveFeatures(CharacterIdentifier identifier, IItem characterItem) {
+  public LoadedDescriptiveFeatures(CharacterIdentifier identifier, IItem characterItem) {
     this.identifier = identifier;
     this.characterItem = characterItem;
   }
