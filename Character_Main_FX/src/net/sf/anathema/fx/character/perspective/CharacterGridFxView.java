@@ -13,7 +13,6 @@ import net.sf.anathema.lib.gui.IView;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.swing.JComponent;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,13 +27,11 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   }
 
   @Override
-  public void addButtons(final Collection<CharacterButtonDto> dtoList, final Selector<CharacterIdentifier> characterSelector) {
+  public void addButton(final CharacterButtonDto dto, final Selector<CharacterIdentifier> characterSelector) {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        for (CharacterButtonDto dto : dtoList) {
-          addButton(dto, characterSelector);
-        }
+        createGridButton(dto, characterSelector);
       }
     });
   }
@@ -44,7 +41,7 @@ public class CharacterGridFxView implements IView, CharacterGridView {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        CharacterGridButton button = addButton(dto, characterSelector);
+        CharacterGridButton button = createGridButton(dto, characterSelector);
         button.setSelected(true);
       }
     });
@@ -60,10 +57,11 @@ public class CharacterGridFxView implements IView, CharacterGridView {
     });
   }
 
-  private CharacterGridButton addButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
+  private CharacterGridButton createGridButton(CharacterButtonDto dto, Selector<CharacterIdentifier> characterSelector) {
     CharacterGridButton characterGridButton = new CharacterGridButton();
     characterGridButton.initContent(dto, characterSelector);
     characterGridButton.setToggleGroup(toggleGroup);
+    buttonsByIdentifier.put(dto.identifier, characterGridButton);
     gridPane.getChildren().add(characterGridButton.getNode());
     return characterGridButton;
   }
