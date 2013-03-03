@@ -27,6 +27,7 @@ public class CharacterGridButton {
   private final Label details = new Label("");
 
   public CharacterGridButton() {
+    button.setMaxWidth(Double.MAX_VALUE);
     name.setFontSmoothingType(FontSmoothingType.LCD);
     name.getStyleClass().add("name");
     button.getStyleClass().add("character-grid-button");
