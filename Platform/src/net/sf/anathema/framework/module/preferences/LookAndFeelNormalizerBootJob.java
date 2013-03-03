@@ -2,7 +2,7 @@ package net.sf.anathema.framework.module.preferences;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.initialization.BootJob;
-import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -21,7 +21,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IPreference
  */
 @BootJob
 @Weight(weight = 20)
-public class LookAndFeelNormalizerBootJob implements IAnathemaBootJob {
+public class LookAndFeelNormalizerBootJob implements IBootJob {
   private static final String LOOK_AND_FEEL_PREFERENCE = "ForceMetalLookAndFeel"; //$NON-NLS-1$
 
   @Override

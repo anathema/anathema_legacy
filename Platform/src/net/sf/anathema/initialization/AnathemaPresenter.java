@@ -60,8 +60,8 @@ public class AnathemaPresenter {
   }
 
   private void runBootJobs() throws InitializationException {
-    Collection<IAnathemaBootJob> jobs = instantiater.instantiateOrdered(BootJob.class);
-    for (IAnathemaBootJob bootJob : jobs) {
+    Collection<IBootJob> jobs = instantiater.instantiateOrdered(BootJob.class);
+    for (IBootJob bootJob : jobs) {
       bootJob.run(resources, model);
     }
   }

@@ -4,7 +4,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.BootJob;
-import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
@@ -27,7 +27,7 @@ import javax.swing.UIManager;
  */
 @BootJob
 @Weight(weight = 30)
-public class LookAndFeelOverrideBootjob implements IAnathemaBootJob {
+public class LookAndFeelOverrideBootjob implements IBootJob {
   @Override
   public void run(IResources resources, IAnathemaModel model) {
     if (userRequestedLookAndFeelOverride()) {

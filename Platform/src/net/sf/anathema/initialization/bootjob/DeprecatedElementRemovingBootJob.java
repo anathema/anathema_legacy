@@ -2,7 +2,7 @@ package net.sf.anathema.initialization.bootjob;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.initialization.BootJob;
-import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
@@ -13,7 +13,7 @@ import java.nio.file.Path;
 
 @BootJob
 @Weight(weight = 60)
-public class DeprecatedElementRemovingBootJob implements IAnathemaBootJob {
+public class DeprecatedElementRemovingBootJob implements IBootJob {
   @Override
   public void run(IResources resources, IAnathemaModel model) {
     try {

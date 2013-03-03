@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.impl.item.model.gson.EquipmentGson;
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.initialization.BootJob;
-import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 @BootJob
 @Weight(weight = 11)
-public class CreateDefaultEquipmentDatabaseBootJob implements IAnathemaBootJob {
+public class CreateDefaultEquipmentDatabaseBootJob implements IBootJob {
 
   private final static String EQUIPMENT_REGEX = "^.*\\.item$";
 

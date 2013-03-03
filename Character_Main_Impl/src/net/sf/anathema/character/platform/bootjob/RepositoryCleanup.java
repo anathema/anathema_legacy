@@ -4,7 +4,7 @@ import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.initialization.BootJob;
-import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.bootjob.RepositoryBackup;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.logging.Logger;
@@ -17,7 +17,7 @@ import static java.text.MessageFormat.format;
 
 @BootJob
 @Weight(weight = 5)
-public class RepositoryCleanup implements IAnathemaBootJob {
+public class RepositoryCleanup implements IBootJob {
   private static final Logger logger = Logger.getLogger(RepositoryCleanup.class);
 
   @Override
