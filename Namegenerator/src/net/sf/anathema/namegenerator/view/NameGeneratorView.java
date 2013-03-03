@@ -47,8 +47,8 @@ public class NameGeneratorView implements INameGeneratorView {
 
   private JComponent createSecondColumn() {
     JPanel panel = new JPanel(new BorderLayout());
+    panel.add(generateButtonPanel, BorderLayout.NORTH);
     panel.add(resultTextView.getComponent(), BorderLayout.CENTER);
-    panel.add(generateButtonPanel, BorderLayout.SOUTH);
     return panel;
   }
 
