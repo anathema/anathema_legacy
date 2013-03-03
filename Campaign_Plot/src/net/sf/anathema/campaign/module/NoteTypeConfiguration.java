@@ -8,6 +8,7 @@ import net.sf.anathema.campaign.presenter.NotePresenter;
 import net.sf.anathema.campaign.presenter.TextEditorProperties;
 import net.sf.anathema.campaign.view.SwingNoteView;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -29,9 +30,10 @@ import javax.swing.Icon;
 public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
   public static final String NOTE_ITEM_TYPE_ID = "Note";
+  public static final IItemType ITEM_TYPE = new ItemType(NOTE_ITEM_TYPE_ID, new RepositoryConfiguration(".not", "Notes/"));
 
   public NoteTypeConfiguration() {
-    super(new ItemType(NOTE_ITEM_TYPE_ID, new RepositoryConfiguration(".not", "Notes/")));
+    super(ITEM_TYPE);
   }
 
   @Override
@@ -55,9 +57,7 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
   }
 
   @Override
-  protected IItemTypeViewProperties createItemTypeCreationProperties(
-          IAnathemaModel anathemaModel,
-          IResources resources) {
+  protected IItemTypeViewProperties createItemTypeCreationProperties(IAnathemaModel anathemaModel, IResources resources) {
     return new SimpleItemTypeViewProperties(getItemType(), new PlotUI(resources).getNoteTabIcon());
   }
 }

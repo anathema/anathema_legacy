@@ -1,0 +1,4 @@
+dependencies {
+    compile project(':Platform')
+    compile project(':Campaign_Plot')
+}
