@@ -1,5 +1,7 @@
 dependencies {
+    compile 'com.github.rjeschke:txtmark:0.8'
     compile project(':Platform')
     compile project(':Platform_FX')
     compile project(':Campaign_Plot')
+    testCompile parent.ext.testDependencies
 }

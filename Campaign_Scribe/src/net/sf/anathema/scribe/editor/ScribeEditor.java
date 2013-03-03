@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebView;
 import org.jmock.example.announcer.Announcer;
@@ -29,6 +30,12 @@ public class ScribeEditor {
         textArea.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
           public void handle(KeyEvent event) {
             textChanged.announce().textChanged(textArea.getText());
+          }
+        });
+        webView.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+          @Override
+          public void handle(MouseEvent mouseEvent) {
+            System.err.println(mouseEvent);
           }
         });
       }
