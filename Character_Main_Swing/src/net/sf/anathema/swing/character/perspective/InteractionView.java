@@ -1,5 +1,6 @@
 package net.sf.anathema.swing.character.perspective;
 
+import net.sf.anathema.framework.perspective.PerspectiveToolBar;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.swing.character.perspective.interaction.ActionInteraction;
@@ -8,31 +9,27 @@ import net.sf.anathema.swing.character.perspective.interaction.ToggleActionInter
 import net.sf.anathema.swing.character.perspective.interaction.ToggleInteraction;
 
 import javax.swing.JComponent;
-import javax.swing.JToolBar;
 
 public class InteractionView implements IView {
 
-  private final JToolBar toolbar = new JToolBar();
-  private final ActionInteraction saveInteraction;
-  private final ToggleActionInteraction experiencedInteraction;
-  private final ActionInteraction controlledPrintInteraction;
-  private final ActionInteraction quickPrintInteraction;
+  private final PerspectiveToolBar toolbar = new PerspectiveToolBar();
   private final ActionInteraction newInteraction;
+  private final ActionInteraction saveInteraction;
+  private final ActionInteraction quickPrintInteraction;
+  private final ActionInteraction controlledPrintInteraction;
+  private final ToggleActionInteraction experiencedInteraction;
 
   public InteractionView(IResources resources) {
-    toolbar.setFloatable(false);
     this.newInteraction = new ActionInteraction(resources, this.getClass());
     this.saveInteraction = new ActionInteraction(resources, this.getClass());
-    this.controlledPrintInteraction = new ActionInteraction(resources, this.getClass());
     this.quickPrintInteraction = new ActionInteraction(resources, this.getClass());
+    this.controlledPrintInteraction = new ActionInteraction(resources, this.getClass());
     this.experiencedInteraction = new ToggleActionInteraction(resources, this.getClass());
-    toolbar.add(newInteraction.getButton());
-    toolbar.add(saveInteraction.getButton());
-    toolbar.addSeparator();
-    toolbar.add(quickPrintInteraction.getButton());
-    toolbar.add(controlledPrintInteraction.getButton());
-    toolbar.addSeparator();
-    toolbar.add(experiencedInteraction.getToggleButton());
+    newInteraction.addTo(toolbar);
+    saveInteraction.addTo(toolbar);
+    quickPrintInteraction.addTo(toolbar);
+    controlledPrintInteraction.addTo(toolbar);
+    experiencedInteraction.addTo(toolbar);
   }
 
   public Interaction getNewInteraction() {
@@ -53,7 +50,7 @@ public class InteractionView implements IView {
 
   @Override
   public JComponent getComponent() {
-    return toolbar;
+    return toolbar.getComponent();
   }
 
   public ActionInteraction getQuickPrintInteraction() {
