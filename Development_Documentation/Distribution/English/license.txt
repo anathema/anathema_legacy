@@ -194,14 +194,11 @@ THIRDPARTY LICENSES
 
 Anathema includes software developed by
 -The Apache Software Foundation (http://www.apache.org/).
--Versant Technologies (http://www.db4o.com/).
 -L2FProd.com (http://www.l2fprod.com).
 -the Reflections project (http://code.google.com/p/reflections/)
 -the slf4j project (http://www.slf4j.org)
 -1T3XT BVBA (http://www.itextpdf.com)
 -the Swing Labs project (http://java.net/projects/swinglabs)
--the Tritonus project (http://www.tritonus.org).
--the Javazoom team (http://www.javazoom.net).
 -disy Informationssysteme GmbH (http://www.disy.net)
 -the GSON project (http://code.google.com/p/google-gson/)
 -the Jaxen project (http://jaxen.codehaus.org/)
@@ -221,7 +218,6 @@ Apache License 2.0
 =========================
 Xalan
 L2Fprod.com Commons Components
-Batik
 Apache Commons
 Common-IO
 GSON
@@ -230,16 +226,10 @@ XML-Commons/XML-APIs
 
 GNU LGPL
 ========
-Tritonus
-MP3SPI
-jlGui
-JLayer
-*Note that Anathema contains only part of this library in order not to infringe the MP3 copyrights held by Fraunhofer/Thompson.
 Swing Labs components
 
 GNU GPL v2
 =========================
-db4o
 JeksParser
 
 GNU GPL v3
