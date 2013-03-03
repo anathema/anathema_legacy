@@ -1,4 +1,4 @@
-package net.sf.anathema.fx.character.perspective;
+package net.sf.anathema.platform.fx;
 
 import java.io.InputStream;
 import java.net.URL;

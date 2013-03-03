@@ -10,6 +10,7 @@ import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.character.perspective.Selector;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.platform.fx.InitScene;
 
 import javax.swing.JComponent;
 import java.util.HashMap;
@@ -21,14 +22,13 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   private final ScrollPane scrollPane = new ScrollPane();
   private final JFXPanel panel = new JFXPanel();
   private final ToggleGroup toggleGroup = new ToggleGroup();
-  //private final MigPane gridPane = new MigPane(new LC().insets("0").gridGap("0", "0").wrapAfter(1), new AC().grow().fill());
   private final VBox gridPane = new VBox(2);
   private final Map<CharacterIdentifier, CharacterGridButton> buttonsByIdentifier = new HashMap<>();
 
   public CharacterGridFxView() {
     scrollPane.setContent(gridPane);
     scrollPane.setHbarPolicy(NEVER);
-    Platform.runLater(new InitScene(panel, scrollPane));
+    Platform.runLater(new InitScene(panel, scrollPane, "skin/sandra/sandra.css"));
   }
 
   @Override

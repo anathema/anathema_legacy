@@ -1,7 +1,6 @@
 package net.sf.anathema.scribe.perspective;
 
 import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import net.sf.anathema.campaign.module.NoteTypeConfiguration;
@@ -15,6 +14,7 @@ import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.platform.fx.PerspectivePane;
 
 import java.util.Collection;
 
@@ -29,20 +29,18 @@ public class ScribePerspective implements Perspective {
 
   @Override
   public void initContent(Container container, final IAnathemaModel model, IResources resources) {
-    final JFXPanel panel = new JFXPanel();
-    final VBox content = new VBox();
-    content.setMinWidth(200);
-    //Platform.runLater(new InitScene(panel, content));
+    final PerspectivePane perspectivePane = new PerspectivePane();
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
+        VBox navigation = new VBox();
         for (PrintNameFile file : collectCharacterPrintNameFiles(model)) {
-          content.getChildren().add(new Text(file.getPrintName()));
+          navigation.getChildren().add(new Text(file.getPrintName()));
         }
-        new InitScene(panel, content).run();
+        perspectivePane.setNavigationComponent(navigation);
       }
     });
-    container.setSwingContent(panel);
+    container.setSwingContent(perspectivePane.getComponent());
   }
 
   public Collection<PrintNameFile> collectCharacterPrintNameFiles(IAnathemaModel model) {

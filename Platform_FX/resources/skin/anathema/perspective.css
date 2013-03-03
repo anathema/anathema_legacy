@@ -1,0 +1,16 @@
+.perspective-navigation-pane {
+}
+
+.perspective-content-pane {
+}
+
+.bordered-perspective-container {
+    -fx-padding: 5;
+    -fx-background-color: silver, white;
+    -fx-background-insets: 2, 3;
+    -fx-border-color: white darkslategrey darkslategrey white;
+}
+
+.perspective-outer-pane {
+    -fx-background-color: rgba(0, 0, 0, 0)
+}
