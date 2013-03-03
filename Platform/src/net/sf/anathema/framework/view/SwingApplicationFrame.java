@@ -17,7 +17,7 @@ import static net.sf.anathema.lib.gui.swing.GuiUtilities.displayOnScreenCenter;
 
 public class SwingApplicationFrame implements ApplicationFrameView {
 
-  public static final Dimension DEFAULT_SIZE = new Dimension(1280,720);
+  public static final Dimension DEFAULT_SIZE = new Dimension(1280, 720);
   private final AnathemaViewProperties properties;
   private ViewFactory contentFactory;
   private final MainMenuBar menu;

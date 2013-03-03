@@ -11,8 +11,8 @@ import net.sf.anathema.character.perspective.CharacterGridView;
 import net.sf.anathema.character.perspective.Selector;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.lib.gui.IView;
-import org.tbee.javafx.scene.layout.MigPane;
 import net.sf.anathema.platform.fx.InitScene;
+import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.swing.JComponent;
 import java.util.HashMap;
