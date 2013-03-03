@@ -7,6 +7,7 @@ Website: [anathema.github.com](http://anathema.github.com)
 ## Release 6.0.0
 
 Anathema now requires Java 7 Update 6 or later. Windows and OS X releases include a suitable version.
+Due to changed dependencies, Anathema only runs on Windows, OS X and Linux.
 
 This version drops the music database. Many features were broken and nobody ever mentioned it,
 leading us to the assumption that not many of you used it.
