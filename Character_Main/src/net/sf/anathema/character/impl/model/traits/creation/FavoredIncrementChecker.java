@@ -34,15 +34,6 @@ public class FavoredIncrementChecker implements IIncrementChecker {
     return new FavoredIncrementChecker(maxFavoredAttributeCount, attributeTypes.toArray(new ITraitType[attributeTypes.size()]), traitConfiguration);
   }
 
-  public static IIncrementChecker createFavoredYoziIncrementChecker(ICharacterTemplate template, ICoreTraitConfiguration traitConfiguration) {
-    int maxFavoredAttributeCount = 1;
-    List<ITraitType> yoziTypes = new ArrayList<>();
-    for (IGroupedTraitType traitType : template.getYoziGroups()) {
-      yoziTypes.add(traitType.getTraitType());
-    }
-    return new FavoredIncrementChecker(maxFavoredAttributeCount, yoziTypes.toArray(new ITraitType[yoziTypes.size()]), traitConfiguration);
-  }
-
   public FavoredIncrementChecker(int maxFavoredCount, ITraitType[] traitTypes, ICoreTraitConfiguration traitConfiguration) {
     this.maxFavoredCount = maxFavoredCount;
     this.traitTypes = traitTypes;

@@ -29,8 +29,9 @@ public abstract class AbstractTraitTypeGroupFactory {
     IIdentifiedCasteTraitTypeGroup[] groups = new IIdentifiedCasteTraitTypeGroup[groupIds.size()];
     for (int groupIndex = 0; groupIndex < groups.length; groupIndex++) {
       String groupId = groupIds.get(groupIndex);
-      groups[groupIndex] = createTraitGroup(casteCollection, groupId, traitTypesByGroupId.get(groupId),
-              createTraitCasteSet(groupId, traitTypesByGroupId.get(groupId).size(), traitTypes, casteCollection));
+      List<ITraitType> groupTraitTypes = traitTypesByGroupId.get(groupId);
+      ICasteType[][] traitCasteSet = createTraitCasteSet(groupId, groupTraitTypes.size(), traitTypes, casteCollection);
+      groups[groupIndex] = createTraitGroup(casteCollection, groupId, groupTraitTypes, traitCasteSet);
     }
     return groups;
   }
