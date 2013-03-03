@@ -6,7 +6,7 @@ include('Anathema',
 
         'Namegenerator',
 
-        'Campaign_Music', 'Campaign_Music_Impl',
+        'Campaign_Music',
         'Campaign_Plot',
 
         'Charm_Tree', 'Magic_Description', 'Charm_Cascades', 'Character_Cards',
