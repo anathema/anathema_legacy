@@ -15,6 +15,7 @@ leading us to the assumption that not many of you used it.
 ### Features
 * New navigation
 * New UI for Characters
+* Windowed mode defaults to a 16:9 resolution
 * Abyssal "Withering Phantasmagoria" and its Solar Mirror offer subeffects.
 
 ### Bugfixes
