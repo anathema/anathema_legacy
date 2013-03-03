@@ -6,9 +6,9 @@ import net.sf.anathema.initialization.IAnathemaBootJob;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
+import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 @BootJob
@@ -18,7 +18,7 @@ public class DeprecatedElementRemovingBootJob implements IAnathemaBootJob {
   public void run(IResources resources, IAnathemaModel model) {
     try {
       Path music = model.getRepository().getDataBaseDirectory("music");
-      Files.delete(music);
+      FileUtils.forceDelete(music.toFile());
     } catch (IOException e) {
       Logger.getLogger(DeprecatedElementRemovingBootJob.class).warn("Could not remove music folder.", e);
     }
