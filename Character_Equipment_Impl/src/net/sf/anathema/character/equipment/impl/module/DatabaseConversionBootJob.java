@@ -5,6 +5,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.message.Message;
 import net.sf.anathema.lib.message.MessageType;
 import net.sf.anathema.lib.resources.IResources;
@@ -13,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 @BootJob
+@Weight(weight = 10)
 public class DatabaseConversionBootJob implements IAnathemaBootJob {
 
   public static final String OLD_DATABASE_FILE = "Equipment.yap"; //$NON-NLS-1$

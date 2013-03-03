@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.bootjob;
+package net.sf.anathema.initialization.bootjob;
 
 import com.google.common.collect.Lists;
 import net.sf.anathema.framework.item.IItemType;

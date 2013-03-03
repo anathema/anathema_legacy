@@ -5,6 +5,7 @@ import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferenc
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -25,6 +26,7 @@ import javax.swing.UIManager;
  * of this task.
  */
 @BootJob
+@Weight(weight = 30)
 public class LookAndFeelOverrideBootjob implements IAnathemaBootJob {
   @Override
   public void run(IResources resources, IAnathemaModel model) {

@@ -1,0 +1,17 @@
+package net.sf.anathema.initialization.bootjob;
+
+import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.initialization.BootJob;
+import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.initialization.reflections.Weight;
+import net.sf.anathema.lib.resources.IResources;
+
+@BootJob
+@Weight(weight = 0)
+//First back up the repo so all the other jobs can't do any harm
+public class RepositoryBackupBootJob implements IAnathemaBootJob {
+  @Override
+  public void run(IResources resources, IAnathemaModel model) {
+    new RepositoryBackup(resources, model).backupRepository();
+  }
+}

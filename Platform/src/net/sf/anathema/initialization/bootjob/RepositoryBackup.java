@@ -1,4 +1,4 @@
-package net.sf.anathema.character.platform.bootjob;
+package net.sf.anathema.initialization.bootjob;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.Version;

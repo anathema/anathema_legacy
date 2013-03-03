@@ -1,9 +1,0 @@
-dependencies {
-  compile 'org.tritonus:tritonus-share:0.3.6'
-  compile 'javazoom:mp3spi:1.9.2'
-  compile 'javazoom:javalayer:1.0.0' //without playback
-  compile 'javazoom:jlgui:2.3.0', 'commons-logging:commons-logging:1.1.1' //logging is a transitive dependency of jlgui
-  compile project(':Platform')
-  compile 'com.db4o:db4o-java5:6.0.0'
-  runtime 'javazoom:javalayer-playback:1.0.0' //included at runtime only, so the MP3 parts don't get distributed.
-}

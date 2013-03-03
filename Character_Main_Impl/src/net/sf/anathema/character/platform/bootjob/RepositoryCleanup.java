@@ -5,6 +5,8 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IAnathemaBootJob;
+import net.sf.anathema.initialization.bootjob.RepositoryBackup;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -14,6 +16,7 @@ import java.text.MessageFormat;
 import static java.text.MessageFormat.format;
 
 @BootJob
+@Weight(weight = 5)
 public class RepositoryCleanup implements IAnathemaBootJob {
   private static final Logger logger = Logger.getLogger(RepositoryCleanup.class);
 

@@ -6,7 +6,11 @@ Website: [anathema.github.com](http://anathema.github.com)
 
 ## Release 5.0.2
 
+This version drops the music database. Many features were broken and nobody ever mentioned it,
+leading us to the assumption that not many of you used it.
+
 ### Features
+* New User Interface for Characters
 * Abyssal "Withering Phantasmagoria" and its Solar Mirror offer subeffects.
 
 ### Bugfixes
