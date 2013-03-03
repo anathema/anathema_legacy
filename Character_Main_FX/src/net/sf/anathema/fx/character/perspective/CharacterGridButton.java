@@ -20,7 +20,7 @@ import java.io.InputStream;
 
 public class CharacterGridButton {
 
-  private final MigPane buttonContent = new MigPane(new LC().insets("0").gridGap("0", "0").wrapAfter(2).gridGapX("0").debug(0), new AC().gap("5"));
+  private final MigPane buttonContent = new MigPane(new LC().insets("0").gridGap("0", "0").wrapAfter(2).gridGapX("0"), new AC().gap("5"));
   private final ToggleButton button = new ToggleButton("", buttonContent);
   private final Text name = new Text("");
   private final ImageView imageView = new ImageView();
