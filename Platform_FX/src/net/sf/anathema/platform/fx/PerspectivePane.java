@@ -42,7 +42,7 @@ public class PerspectivePane implements IView {
   }
 
   public void setContentComponent(Node component) {
-    navigationPanel.setCenter(component);
+    contentPanel.setCenter(component);
   }
 
   @Override

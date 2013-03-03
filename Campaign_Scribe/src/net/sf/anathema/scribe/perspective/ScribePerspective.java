@@ -15,6 +15,11 @@ import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.fx.PerspectivePane;
+import net.sf.anathema.scribe.editor.HtmlConverter;
+import net.sf.anathema.scribe.editor.HtmlText;
+import net.sf.anathema.scribe.editor.ScribeEditor;
+import net.sf.anathema.scribe.editor.TextTypedListener;
+import net.sf.anathema.scribe.editor.WikiText;
 
 import java.util.Collection;
 
@@ -30,6 +35,7 @@ public class ScribePerspective implements Perspective {
   @Override
   public void initContent(Container container, final IAnathemaModel model, IResources resources) {
     final PerspectivePane perspectivePane = new PerspectivePane();
+    final ScribeEditor editor = new ScribeEditor();
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -38,6 +44,16 @@ public class ScribePerspective implements Perspective {
           navigation.getChildren().add(new Text(file.getPrintName()));
         }
         perspectivePane.setNavigationComponent(navigation);
+        perspectivePane.setContentComponent(editor.getNode());
+      }
+    });
+    editor.setHtmlText(new HtmlText("Ich bin"));
+    editor.setWikiText(new WikiText("Ich bin"));
+    editor.whenTextTyped(new TextTypedListener() {
+      @Override
+      public void textChanged(String newText) {
+        HtmlText htmlText = new HtmlConverter().convert(new WikiText(newText));
+        editor.setHtmlText(htmlText);
       }
     });
     container.setSwingContent(perspectivePane.getComponent());
