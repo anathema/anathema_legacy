@@ -2,6 +2,7 @@ package net.sf.anathema.fx.character.perspective;
 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
+import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleGroup;
 import net.miginfocom.layout.AC;
@@ -12,6 +13,7 @@ import net.sf.anathema.character.perspective.Selector;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.platform.fx.InitScene;
+import net.sf.anathema.platform.fx.ParentHolder;
 import org.tbee.javafx.scene.layout.MigPane;
 
 import javax.swing.JComponent;
@@ -30,7 +32,7 @@ public class CharacterGridFxView implements IView, CharacterGridView {
   public CharacterGridFxView() {
     scrollPane.setContent(gridPane);
     scrollPane.setHbarPolicy(NEVER);
-    Platform.runLater(new InitScene(panel, scrollPane, "skin/sandra/sandra.css"));
+    Platform.runLater(new InitScene(panel, new SceneParentHolder(), "skin/sandra/sandra.css"));
   }
 
   @Override
@@ -75,5 +77,12 @@ public class CharacterGridFxView implements IView, CharacterGridView {
 
   public JComponent getComponent() {
     return panel;
+  }
+
+  private class SceneParentHolder implements ParentHolder {
+    @Override
+    public Parent getParent() {
+      return scrollPane;
+    }
   }
 }

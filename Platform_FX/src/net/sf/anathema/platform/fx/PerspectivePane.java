@@ -13,22 +13,24 @@ import javax.swing.JComponent;
 
 public class PerspectivePane implements IView {
 
+  private class SceneParentHolder implements ParentHolder {
+    @Override
+    public Parent getParent() {
+      return outerPane;
+    }
+  }
+
   private final JFXPanel bridgePanel = new JFXPanel();
-  private final BorderPane outerPane = new BorderPane();
-  private final BorderPane navigationPanel = new BorderPane();
-  private final BorderPane contentPanel = new BorderPane();
+  private BorderPane outerPane;
+  private BorderPane navigationPanel = new BorderPane();
+  private BorderPane contentPanel = new BorderPane();
 
   public PerspectivePane(String... styleSheetPaths) {
     FxThreading.assertNotOnFxThread();
-    navigationPanel.setMinWidth(200);
-    navigationPanel.setPrefWidth(200);
-    navigationPanel.setMaxWidth(200);
-    initBorderedPane(navigationPanel, "perspective-navigation-pane");
-    initBorderedPane(contentPanel, "perspective-content-pane");
-    outerPane.getStyleClass().add("perspective-outer-pane");
-    outerPane.setLeft(navigationPanel);
-    outerPane.setCenter(contentPanel);
-    Platform.runLater(new InitScene(bridgePanel, outerPane, getAllStyleSheetPaths(styleSheetPaths)));
+    Platform.runLater(new InitNavigationPane());
+    Platform.runLater(new InitContentPane());
+    Platform.runLater(new InitOuterPane());
+    Platform.runLater(new InitScene(bridgePanel, new SceneParentHolder(), getAllStyleSheetPaths(styleSheetPaths)));
   }
 
   private void initBorderedPane(Parent pane, String basicStyleClass) {
@@ -54,5 +56,32 @@ public class PerspectivePane implements IView {
   @Override
   public JComponent getComponent() {
     return bridgePanel;
+  }
+
+  private class InitOuterPane implements Runnable {
+    @Override
+    public void run() {
+      outerPane = new BorderPane();
+      outerPane.getStyleClass().add("perspective-outer-pane");
+      outerPane.setLeft(navigationPanel);
+      outerPane.setCenter(contentPanel);
+    }
+  }
+
+  private class InitNavigationPane implements Runnable {
+    @Override
+    public void run() {
+      navigationPanel.setMinWidth(200);
+      navigationPanel.setPrefWidth(200);
+      navigationPanel.setMaxWidth(200);
+      initBorderedPane(navigationPanel, "perspective-navigation-pane");
+    }
+  }
+
+  private class InitContentPane implements Runnable {
+    @Override
+    public void run() {
+      initBorderedPane(contentPanel, "perspective-content-pane");
+    }
   }
 }
