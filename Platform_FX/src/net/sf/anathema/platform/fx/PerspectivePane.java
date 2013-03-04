@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.lang.ArrayUtilities;
@@ -18,19 +19,22 @@ public class PerspectivePane implements IView {
   private final BorderPane contentPanel = new BorderPane();
 
   public PerspectivePane(String... styleSheetPaths) {
+    FxThreading.assertNotOnFxThread();
     navigationPanel.setMinWidth(200);
     navigationPanel.setPrefWidth(200);
     navigationPanel.setMaxWidth(200);
-    BorderPane.setMargin(navigationPanel, new Insets(3));
-    BorderPane.setMargin(contentPanel, new Insets(3));
-    outerPane.setLeft(navigationPanel);
+    initBorderedPane(navigationPanel, "perspective-navigation-pane");
+    initBorderedPane(contentPanel, "perspective-content-pane");
     outerPane.getStyleClass().add("perspective-outer-pane");
-    navigationPanel.getStyleClass().add("perspective-navigation-pane");
-    navigationPanel.getStyleClass().add("bordered-perspective-container");
+    outerPane.setLeft(navigationPanel);
     outerPane.setCenter(contentPanel);
-    contentPanel.getStyleClass().add("perspective-content-pane");
-    contentPanel.getStyleClass().add("bordered-perspective-container");
     Platform.runLater(new InitScene(bridgePanel, outerPane, getAllStyleSheetPaths(styleSheetPaths)));
+  }
+
+  private void initBorderedPane(Parent pane, String basicStyleClass) {
+    BorderPane.setMargin(pane, new Insets(3));
+    pane.getStyleClass().add(basicStyleClass);
+    pane.getStyleClass().add("bordered-perspective-container");
   }
 
   private String[] getAllStyleSheetPaths(String[] styleSheetPaths) {
@@ -38,10 +42,12 @@ public class PerspectivePane implements IView {
   }
 
   public void setNavigationComponent(Node component) {
+    FxThreading.assertOnFxThread();
     navigationPanel.setCenter(component);
   }
 
   public void setContentComponent(Node component) {
+    FxThreading.assertOnFxThread();
     contentPanel.setCenter(component);
   }
 
