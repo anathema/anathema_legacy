@@ -15,11 +15,10 @@ import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.platform.fx.PerspectivePane;
-import net.sf.anathema.scribe.editor.HtmlConverter;
-import net.sf.anathema.scribe.editor.HtmlText;
-import net.sf.anathema.scribe.editor.ScribeEditor;
-import net.sf.anathema.scribe.editor.TextTypedListener;
-import net.sf.anathema.scribe.editor.WikiText;
+import net.sf.anathema.scribe.editor.model.ScrollModel;
+import net.sf.anathema.scribe.editor.presenter.UpdateTextInScroll;
+import net.sf.anathema.scribe.editor.presenter.UpdateTextInScrollEditor;
+import net.sf.anathema.scribe.editor.view.ScrollEditor;
 
 import java.util.Collection;
 
@@ -35,7 +34,8 @@ public class ScribePerspective implements Perspective {
   @Override
   public void initContent(Container container, final IAnathemaModel model, IResources resources) {
     final PerspectivePane perspectivePane = new PerspectivePane();
-    final ScribeEditor editor = new ScribeEditor();
+    final ScrollEditor scrollEditor = new ScrollEditor();
+    ScrollModel scrollModel = new ScrollModel();
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
@@ -44,18 +44,11 @@ public class ScribePerspective implements Perspective {
           navigation.getChildren().add(new Text(file.getPrintName()));
         }
         perspectivePane.setNavigationComponent(navigation);
-        perspectivePane.setContentComponent(editor.getNode());
+        perspectivePane.setContentComponent(scrollEditor.getNode());
       }
     });
-    editor.setHtmlText(new HtmlText("Ich bin"));
-    editor.setWikiText(new WikiText("Ich bin"));
-    editor.whenTextTyped(new TextTypedListener() {
-      @Override
-      public void textChanged(String newText) {
-        HtmlText htmlText = new HtmlConverter().convert(new WikiText(newText));
-        editor.setHtmlText(htmlText);
-      }
-    });
+    scrollEditor.whenTextTyped(new UpdateTextInScroll(scrollModel));
+    scrollModel.whenContentChanges(new UpdateTextInScrollEditor(scrollEditor));
     container.setSwingContent(perspectivePane.getComponent());
   }
 
@@ -64,4 +57,5 @@ public class ScribePerspective implements Perspective {
     IPrintNameFileAccess access = model.getRepository().getPrintNameFileAccess();
     return access.collectAllPrintNameFiles(characterItemType);
   }
+
 }
