@@ -21,12 +21,12 @@ public class EquipmentRepositoryAccess implements EquipmentAccess {
 
   @Override
   public Collection<Path> listAllFiles() {
-    return repository.getRepositoryFileResolver().listAllFiles(equipmentType);
+    return repository.getRepositoryFileResolver().listAllFiles(equipmentType.getRepositoryConfiguration());
   }
 
   @Override
   public void delete(String id) {
-    repository.getRepositoryFileResolver().getMainFile(equipmentType, id).delete();
+    repository.getRepositoryFileResolver().getMainFile(equipmentType.getRepositoryConfiguration(), id).delete();
   }
 
   @Override

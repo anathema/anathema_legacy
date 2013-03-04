@@ -43,7 +43,7 @@ public abstract class CharacterChanger {
 
   private List<File> getCharacters() {
     IItemType character = model.getItemTypeRegistry().getById(CHARACTER_ITEM_TYPE_ID);
-    File itemTypeFolder = model.getRepository().getRepositoryFileResolver().getItemTypeFolder(character);
+    File itemTypeFolder = model.getRepository().getRepositoryFileResolver().getFolder(character.getRepositoryConfiguration());
     if (!itemTypeFolder.exists()) {
       return Collections.emptyList();
     }
