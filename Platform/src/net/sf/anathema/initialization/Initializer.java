@@ -1,6 +1,6 @@
 package net.sf.anathema.initialization;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
@@ -40,13 +40,13 @@ public abstract class Initializer {
     AnathemaResources resources = initResources(loader);
     showVersion(resources);
     configureExceptionHandling(resources);
-    IAnathemaModel anathemaModel = initModel(resources, loader);
+    IApplicationModel anathemaModel = initModel(resources, loader);
     ApplicationFrameView view = initView(resources, anathemaModel, objectFactory);
     initPresentation(resources, anathemaModel, view);
     return new InitializedModelAndView(view, anathemaModel);
   }
 
-  private void initPresentation(AnathemaResources resources, IAnathemaModel anathemaModel, ApplicationView view) {
+  private void initPresentation(AnathemaResources resources, IApplicationModel anathemaModel, ApplicationView view) {
     Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
     AnathemaPresenter presenter = new AnathemaPresenter(anathemaModel, view, resources, itemTypes, objectFactory);
     presenter.initPresentation();
@@ -56,11 +56,10 @@ public abstract class Initializer {
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
   }
 
-  private IAnathemaModel initModel(IResources resources, ResourceLoader loader) throws InitializationException {
+  private IApplicationModel initModel(IResources resources, ResourceLoader loader) throws InitializationException {
     displayMessage("Creating Model...");
     Collection<IItemTypeConfiguration> itemTypes = itemTypeCollection.getItemTypes();
-    AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(initializationPreferences, itemTypes,
-            extensionCollection);
+    AnathemaModelInitializer modelInitializer = new AnathemaModelInitializer(initializationPreferences, itemTypes, extensionCollection);
     return modelInitializer.initializeModel(resources, reflections, loader);
   }
 
@@ -88,5 +87,5 @@ public abstract class Initializer {
 
   protected abstract void displayMessage(String message);
 
-  protected abstract ApplicationFrameView initView(IResources resources, IAnathemaModel anathemaModel, Instantiater objectFactory);
+  protected abstract ApplicationFrameView initView(IResources resources, IApplicationModel anathemaModel, Instantiater objectFactory);
 }

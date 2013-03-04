@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.IItemManagementModel;
@@ -26,7 +26,7 @@ public class ItemTypeLoadAction extends AbstractItemAction {
   private final IItemType itemType;
   private final ItemCreationOperator itemCreationOperator;
 
-  public static Action[] createToolActions(IAnathemaModel model, IResources resources) {
+  public static Action[] createToolActions(IApplicationModel model, IResources resources) {
     List<Action> actions = new ArrayList<>();
     for (IItemType type : collectItemTypes(model)) {
       SmartAction action = new ItemTypeLoadAction(model, type, resources);
@@ -44,22 +44,21 @@ public class ItemTypeLoadAction extends AbstractItemAction {
     return resources.getString("AnathemaPersistence.LoadMenu.Name"); //$NON-NLS-1$
   }
 
-  private ItemTypeLoadAction(IAnathemaModel anathemaModel, IItemType itemType, IResources resources) {
+  private ItemTypeLoadAction(IApplicationModel anathemaModel, IItemType itemType, IResources resources) {
     super(anathemaModel, resources);
     IItemManagementModel itemManagementModel = anathemaModel.getItemManagement();
-    this.itemCreationOperator = new ItemCreationOperator(new LoadItemCreator(anathemaModel), resources,
-            itemManagementModel, anathemaModel);
+    this.itemCreationOperator = new ItemCreationOperator(new LoadItemCreator(anathemaModel), resources, itemManagementModel, anathemaModel);
     this.itemType = itemType;
     new LoadActionEnabler(anathemaModel.getRepository(), itemManagementModel, this, itemType).init();
   }
 
   @Override
   protected void execute(Component parentComponent) {
-    ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry().get(
-            ItemTypeCreationViewPropertiesExtensionPoint.ID);
+    ItemTypeCreationViewPropertiesExtensionPoint extension =
+            (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
+                    .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     IItemTypeViewProperties properties = extension.get(itemType);
-    ItemSelectionWizardPageFactory factory = new ItemSelectionWizardPageFactory(itemType,
-            getAnathemaModel().getRepository().getPrintNameFileAccess(),
+    ItemSelectionWizardPageFactory factory = new ItemSelectionWizardPageFactory(itemType, getAnathemaModel().getRepository().getPrintNameFileAccess(),
             new LoadItemWizardProperties(getResources(), properties.getItemTypeUI()));
     IAnathemaWizardModelTemplate template = factory.createTemplate();
     IAnathemaWizardPage startPage = factory.createPage(template);

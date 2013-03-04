@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.bootjob;
 
 import net.sf.anathema.ProxySplashscreen;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
@@ -21,7 +21,7 @@ public class RepositoryCleanup implements IBootJob {
   private static final Logger logger = Logger.getLogger(RepositoryCleanup.class);
 
   @Override
-  public void run(IResources resources, IAnathemaModel model) {
+  public void run(IResources resources, IApplicationModel model) {
     if (!repositoryAlreadyExists(model)) {
       createRepositoryAtVersion(resources, model);
       return;
@@ -38,21 +38,21 @@ public class RepositoryCleanup implements IBootJob {
     updateRepository(resources, model, anathemaVersion, repositoryVersion);
   }
 
-  private void updateRepository(IResources resources, IAnathemaModel model, Version anathemaVersion, RepositoryVersion repositoryVersion) {
+  private void updateRepository(IResources resources, IApplicationModel model, Version anathemaVersion, RepositoryVersion repositoryVersion) {
     new RepositoryBackup(resources, model).backupRepository();
     new FirstEditionDeleter(model).actOnAllCharacters();
     new CharacterTransformer(model, new TemplateTransformer()).actOnAllCharacters();
     repositoryVersion.updateTo(anathemaVersion);
   }
 
-  private void createRepositoryAtVersion(IResources resources, IAnathemaModel model) {
+  private void createRepositoryAtVersion(IResources resources, IApplicationModel model) {
     Version anathemaVersion = new Version(resources);
     RepositoryVersion repositoryVersion = new RepositoryVersion(model.getRepository());
     logger.info(MessageFormat.format("No repository found. Creating repository for version {0}.", anathemaVersion.asString()));
     repositoryVersion.updateTo(anathemaVersion);
   }
 
-  private boolean repositoryAlreadyExists(IAnathemaModel model) {
+  private boolean repositoryAlreadyExists(IApplicationModel model) {
     return new File(model.getRepository().getRepositoryPath()).exists();
   }
 }

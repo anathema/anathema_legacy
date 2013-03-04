@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.presenter.action;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
@@ -27,12 +27,12 @@ import java.awt.Component;
 public class NewItemCommand implements Command {
 
   private final ItemCreationOperator itemCreationOperator;
-  private IAnathemaModel model;
+  private IApplicationModel model;
   private IResources resources;
   private final IItemType type;
   private final JComponent parent;
 
-  public NewItemCommand(IItemType type, IAnathemaModel model, IResources resources, ItemReceiver itemReceiver) {
+  public NewItemCommand(IItemType type, IApplicationModel model, IResources resources, ItemReceiver itemReceiver) {
     this.model = model;
     this.resources = resources;
     this.itemCreationOperator = new ItemCreationOperator(new NewItemCreator(model), resources, itemReceiver, model);

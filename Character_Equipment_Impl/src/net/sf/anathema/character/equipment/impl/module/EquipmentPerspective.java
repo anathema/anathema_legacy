@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.impl.item.view.EquipmentDatabaseView;
 import net.sf.anathema.character.equipment.item.EquipmentDatabasePresenter;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
@@ -24,14 +24,14 @@ public class EquipmentPerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IAnathemaModel model, IResources resources) {
-    IEquipmentDatabaseManagement databaseManagement = createDatabaseManagement(model, resources);
+  public void initContent(Container container, IApplicationModel applicationModel, IResources resources) {
+    IEquipmentDatabaseManagement databaseManagement = createDatabaseManagement(applicationModel, resources);
     EquipmentDatabaseView view = new EquipmentDatabaseView();
     new EquipmentDatabasePresenter(resources, databaseManagement, view).initPresentation();
     container.setSwingContent(view.getComponent());
   }
 
-  private IEquipmentDatabaseManagement createDatabaseManagement(IAnathemaModel model, IResources resources) {
+  private IEquipmentDatabaseManagement createDatabaseManagement(IApplicationModel model, IResources resources) {
     EquipmentDatabaseActionProperties properties = new EquipmentDatabaseActionProperties(resources, model);
     IEquipmentDatabase database = properties.createItemData(model.getRepository());
     return new EquipmentDatabaseManagement(database);

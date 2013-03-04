@@ -1,6 +1,6 @@
 package net.sf.anathema.initialization;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.messaging.IMessageContainer;
 import net.sf.anathema.framework.module.AnathemaCoreMenu;
@@ -15,13 +15,13 @@ import java.util.Collection;
 
 public class AnathemaPresenter {
 
-  private final IAnathemaModel model;
+  private final IApplicationModel model;
   private final ApplicationView view;
   private final IResources resources;
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
   private final Instantiater instantiater;
 
-  public AnathemaPresenter(IAnathemaModel model, ApplicationView view, IResources resources,
+  public AnathemaPresenter(IApplicationModel model, ApplicationView view, IResources resources,
                            Collection<IItemTypeConfiguration> itemTypeConfigurations, Instantiater instantiater) {
     this.instantiater = instantiater;
     this.model = model;
@@ -67,8 +67,8 @@ public class AnathemaPresenter {
   }
 
   private void initializePreferences() throws InitializationException {
-    PreferencesElementsExtensionPoint extensionPoint = (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry().get(
-            PreferencesElementsExtensionPoint.ID);
+    PreferencesElementsExtensionPoint extensionPoint =
+            (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry().get(PreferencesElementsExtensionPoint.ID);
     Collection<IPreferencesElement> elements = instantiater.instantiateOrdered(PreferenceElement.class);
     for (IPreferencesElement element : elements) {
       extensionPoint.addPreferencesElement(element);

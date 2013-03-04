@@ -1,6 +1,6 @@
 package net.sf.anathema.initialization.bootjob;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.Weight;
@@ -15,7 +15,7 @@ import java.nio.file.Path;
 @Weight(weight = 60)
 public class DeprecatedElementRemovingBootJob implements IBootJob {
   @Override
-  public void run(IResources resources, IAnathemaModel model) {
+  public void run(IResources resources, IApplicationModel model) {
     try {
       Path music = model.getRepository().getDataBaseDirectory("music");
       FileUtils.forceDelete(music.toFile());

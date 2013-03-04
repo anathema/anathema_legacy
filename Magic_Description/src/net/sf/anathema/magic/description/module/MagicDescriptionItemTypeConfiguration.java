@@ -1,6 +1,6 @@
 package net.sf.anathema.magic.description.module;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -26,17 +26,18 @@ public final class MagicDescriptionItemTypeConfiguration extends AbstractItemTyp
   }
 
   @Override
-  public void initModel(IAnathemaModel model) {
+  public void initModel(IApplicationModel model) {
     // nothing to do
   }
 
   @Override
-  public void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IResources resources, IAnathemaModel model, ApplicationView view) {
+  public void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IResources resources,
+                                              IApplicationModel model, ApplicationView view) {
     // nothing to do
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, IResources resources) {
+  protected IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, IResources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {

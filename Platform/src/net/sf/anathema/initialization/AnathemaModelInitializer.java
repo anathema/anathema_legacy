@@ -1,8 +1,8 @@
 package net.sf.anathema.initialization;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
-import net.sf.anathema.framework.model.AnathemaModel;
+import net.sf.anathema.framework.model.ApplicationModel;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.reflections.AnnotationFinder;
@@ -21,17 +21,15 @@ public class AnathemaModelInitializer {
   private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
   private Iterable<ExtensionWithId> extensions;
 
-  public AnathemaModelInitializer(
-          IInitializationPreferences preferences,
-          Collection<IItemTypeConfiguration> itemTypeConfigurations,
-          Iterable<ExtensionWithId> extensions) {
+  public AnathemaModelInitializer(IInitializationPreferences preferences, Collection<IItemTypeConfiguration> itemTypeConfigurations,
+                                  Iterable<ExtensionWithId> extensions) {
     this.preferences = preferences;
     this.itemTypeConfigurations = itemTypeConfigurations;
     this.extensions = extensions;
   }
 
-  public IAnathemaModel initializeModel(IResources resources, AnnotationFinder finder, ResourceLoader loader) throws InitializationException {
-    AnathemaModel model = createModel(resources, loader);
+  public IApplicationModel initializeModel(IResources resources, AnnotationFinder finder, ResourceLoader loader) throws InitializationException {
+    ApplicationModel model = createModel(resources, loader);
     for (ExtensionWithId extension : extensions) {
       extension.register(model, resources, finder, loader);
     }
@@ -44,11 +42,10 @@ public class AnathemaModelInitializer {
     return model;
   }
 
-  private AnathemaModel createModel(IResources resources, ResourceLoader resourceLoader) throws InitializationException {
+  private ApplicationModel createModel(IResources resources, ResourceLoader resourceLoader) throws InitializationException {
     try {
-      return new AnathemaModel(createRepositoryFolder(), resources, resourceLoader);
-    }
-    catch (RepositoryException e) {
+      return new ApplicationModel(createRepositoryFolder(), resources, resourceLoader);
+    } catch (RepositoryException e) {
       throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e); //$NON-NLS-1$
     }
   }

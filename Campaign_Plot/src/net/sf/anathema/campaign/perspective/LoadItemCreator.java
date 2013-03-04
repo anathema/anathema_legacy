@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.action.IFileProvider;
@@ -13,9 +13,9 @@ import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplat
 
 public class LoadItemCreator implements IItemCreator {
 
-  private final IAnathemaModel model;
+  private final IApplicationModel model;
 
-  public LoadItemCreator(IAnathemaModel model) {
+  public LoadItemCreator(IApplicationModel model) {
     this.model = model;
   }
 
@@ -27,8 +27,7 @@ public class LoadItemCreator implements IItemCreator {
       IItem item = persister.load(readAccess);
       item.setClean();
       return item;
-    }
-    catch (RepositoryException e) {
+    } catch (RepositoryException e) {
       throw new PersistenceException("An exception occured while loading.", e); //$NON-NLS-1$
     }
   }

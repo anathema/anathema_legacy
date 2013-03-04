@@ -21,7 +21,7 @@ import net.sf.anathema.character.presenter.magic.detail.RegisteredMagicDetailPre
 import net.sf.anathema.character.presenter.magic.spells.SpellContentPresenter;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.view.CharmDisplayPropertiesMap;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.initialization.Instantiater;
@@ -37,10 +37,10 @@ public class MagicPresenter implements IContentPresenter {
 
   private final Logger logger = Logger.getLogger(MagicPresenter.class);
   private final List<IContentPresenter> subPresenters = new ArrayList<>();
-  private IAnathemaModel anathemaModel;
+  private IApplicationModel anathemaModel;
   private IResources resources;
 
-  public MagicPresenter(ICharacter character, IMagicViewFactory factory, IResources resources, IAnathemaModel anathemaModel) {
+  public MagicPresenter(ICharacter character, IMagicViewFactory factory, IResources resources, IApplicationModel anathemaModel) {
     this.resources = resources;
     ITemplateRegistry templateRegistry = CharacterGenericsExtractor.getGenerics(anathemaModel).getTemplateRegistry();
     this.anathemaModel = anathemaModel;

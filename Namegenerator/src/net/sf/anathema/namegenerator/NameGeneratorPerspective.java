@@ -1,6 +1,6 @@
 package net.sf.anathema.namegenerator;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
@@ -24,7 +24,7 @@ public class NameGeneratorPerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IAnathemaModel model, IResources resources) {
+  public void initContent(Container container, IApplicationModel applicationModel, IResources resources) {
     INameGeneratorView view = new NameGeneratorView();
     INameGeneratorModel generatorModel = new ExaltedNameGeneratorModel();
     new NameGeneratorPresenter(resources, view, generatorModel).initPresentation();

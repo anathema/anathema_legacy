@@ -20,7 +20,7 @@ import net.sf.anathema.character.presenter.CharacterPresenter;
 import net.sf.anathema.character.presenter.PlayerCharacterPointPresentation;
 import net.sf.anathema.character.presenter.PointPresentationStrategy;
 import net.sf.anathema.character.view.ICharacterView;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -49,12 +49,12 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
   }
 
   @Override
-  protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
+  protected IRepositoryItemPersister createPersister(IApplicationModel model) {
     return new ExaltedCharacterPersister(getItemType(), CharacterGenericsExtractor.getGenerics(model), model.getMessaging());
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(final IAnathemaModel anathemaModel, final IResources resources) {
+  protected IItemViewFactory createItemViewFactory(final IApplicationModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
@@ -95,7 +95,7 @@ public class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableIt
   }
 
   @Override
-  protected IItemTypeViewProperties createItemTypeCreationProperties(IAnathemaModel anathemaModel, IResources resources) {
+  protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, IResources resources) {
     ICharacterGenerics generics = CharacterGenericsExtractor.getGenerics(anathemaModel);
     CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(generics, resources);
     IRegistry<ICharacterType, ICasteCollection> casteCollectionIRegistry = generics.getCasteCollectionRegistry();

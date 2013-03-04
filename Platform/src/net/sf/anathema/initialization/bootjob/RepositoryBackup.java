@@ -1,6 +1,6 @@
 package net.sf.anathema.initialization.bootjob;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.IRepository;
@@ -14,9 +14,9 @@ import java.nio.file.Paths;
 
 public class RepositoryBackup {
   private IResources resources;
-  private IAnathemaModel model;
+  private IApplicationModel model;
 
-  public RepositoryBackup(IResources resources, IAnathemaModel model) {
+  public RepositoryBackup(IResources resources, IApplicationModel model) {
     this.resources = resources;
     this.model = model;
   }

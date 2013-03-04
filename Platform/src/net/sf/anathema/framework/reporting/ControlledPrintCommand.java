@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.ObjectSelectionDialogPage;
 import net.sf.anathema.framework.module.DefaultObjectSelectionProperties;
 import net.sf.anathema.framework.repository.IItem;
@@ -17,11 +17,11 @@ import javax.swing.JOptionPane;
 public class ControlledPrintCommand implements Command {
 
   private IResources resources;
-  private IAnathemaModel model;
+  private IApplicationModel model;
   private JComponent parent;
   private IItem item;
 
-  public ControlledPrintCommand(IResources resources, IAnathemaModel model, IItem item) {
+  public ControlledPrintCommand(IResources resources, IApplicationModel model, IItem item) {
     this.resources = resources;
     this.model = model;
     this.parent = (JComponent) ((JFrame) JOptionPane.getRootFrame()).getContentPane();

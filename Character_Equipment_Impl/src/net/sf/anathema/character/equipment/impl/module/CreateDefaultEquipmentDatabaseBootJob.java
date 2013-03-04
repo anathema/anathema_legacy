@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.module;
 import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.equipment.impl.item.model.gson.EquipmentGson;
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
@@ -22,12 +22,11 @@ public class CreateDefaultEquipmentDatabaseBootJob implements IBootJob {
   private final static String EQUIPMENT_REGEX = "^.*\\.item$";
 
   @Override
-  public void run(IResources resources, IAnathemaModel anathemaModel) {
+  public void run(IResources resources, IApplicationModel anathemaModel) {
     GsonEquipmentDatabase database = GsonEquipmentDatabase.CreateFrom(anathemaModel);
     boolean thereIsNoDataYet = database.isEmpty();
     if (thereIsNoDataYet) {
-      ProxySplashscreen.getInstance().displayStatusMessage(
-              resources.getString("Equipment.Bootjob.DefaultDatabaseSplashmessage")); //$NON-NLS-1$
+      ProxySplashscreen.getInstance().displayStatusMessage(resources.getString("Equipment.Bootjob.DefaultDatabaseSplashmessage")); //$NON-NLS-1$
       populateRepository(database, anathemaModel.getResourceLoader());
     }
   }

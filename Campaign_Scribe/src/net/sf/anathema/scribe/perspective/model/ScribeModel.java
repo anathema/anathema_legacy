@@ -1,7 +1,7 @@
 package net.sf.anathema.scribe.perspective.model;
 
 import net.sf.anathema.campaign.module.NoteTypeConfiguration;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
@@ -12,9 +12,9 @@ import java.util.Collection;
 
 public class ScribeModel {
   public final ScrollModel scrollModel = new ScrollModel();
-  private IAnathemaModel applicationModel;
+  private IApplicationModel applicationModel;
 
-  public ScribeModel(IAnathemaModel applicationModel) {
+  public ScribeModel(IApplicationModel applicationModel) {
     this.applicationModel = applicationModel;
   }
 

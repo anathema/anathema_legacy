@@ -4,7 +4,7 @@ import net.sf.anathema.character.perspective.CharacterGridPresenter;
 import net.sf.anathema.character.perspective.CharacterStackBridge;
 import net.sf.anathema.character.perspective.CharacterStackPresenter;
 import net.sf.anathema.character.perspective.ShowOnSelect;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
@@ -25,10 +25,10 @@ public class CharacterSystemPerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IAnathemaModel model, IResources resources) {
-    CharacterSystemModel systemModel = new CharacterSystemModel(model);
+  public void initContent(Container container, IApplicationModel applicationModel, IResources resources) {
+    CharacterSystemModel systemModel = new CharacterSystemModel(applicationModel);
     CharacterSystemView view = new CharacterSystemView(resources);
-    CharacterStackBridge bridge = new CharacterStackSwingBridge(model, view.getStackView());
+    CharacterStackBridge bridge = new CharacterStackSwingBridge(applicationModel, view.getStackView());
     CharacterStackPresenter stackPresenter = new CharacterStackPresenter(bridge, systemModel);
     ShowOnSelect showOnSelect = new ShowOnSelect(stackPresenter);
     CharacterGridPresenter gridPresenter = new CharacterGridPresenter(systemModel, view.getGridView(), showOnSelect, resources);

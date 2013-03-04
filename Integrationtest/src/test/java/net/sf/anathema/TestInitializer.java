@@ -1,6 +1,6 @@
 package net.sf.anathema;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.ApplicationFrameView;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.InitializedModelAndView;
@@ -16,7 +16,7 @@ public class TestInitializer extends Initializer {
     super(getDefaultPreferences());
   }
 
-  public IAnathemaModel initialize() {
+  public IApplicationModel initialize() {
     InitializedModelAndView dao = initializeModelViewAndPresentation();
     return dao.model;
   }
@@ -32,7 +32,7 @@ public class TestInitializer extends Initializer {
   }
 
   @Override
-  protected ApplicationFrameView initView(IResources resources, IAnathemaModel anathemaModel, Instantiater objectFactory) {
+  protected ApplicationFrameView initView(IResources resources, IApplicationModel anathemaModel, Instantiater objectFactory) {
     return new NullMainView();
   }
 }

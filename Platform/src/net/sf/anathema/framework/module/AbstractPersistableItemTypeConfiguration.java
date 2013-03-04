@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.module;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
@@ -17,23 +17,19 @@ public abstract class AbstractPersistableItemTypeConfiguration extends AbstractI
   }
 
   @Override
-  public void fillPresentationExtensionPoints(
-      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
-      IResources resources,
-      IAnathemaModel model,
-      ApplicationView view) {
-    ItemTypeCreationViewPropertiesExtensionPoint itemCreationExtensionPoint = (ItemTypeCreationViewPropertiesExtensionPoint) extensionPointRegistry.get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+  public void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IResources resources,
+                                              IApplicationModel model, ApplicationView view) {
+    ItemTypeCreationViewPropertiesExtensionPoint itemCreationExtensionPoint =
+            (ItemTypeCreationViewPropertiesExtensionPoint) extensionPointRegistry.get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     itemCreationExtensionPoint.register(getItemType(), createItemTypeCreationProperties(model, resources));
   }
 
   @Override
-  public void initModel(IAnathemaModel model) {
+  public void initModel(IApplicationModel model) {
     model.getPersisterRegistry().register(getItemType(), createPersister(model));
   }
 
-  protected abstract IItemTypeViewProperties createItemTypeCreationProperties(
-      IAnathemaModel anathemaModel,
-      IResources resources);
+  protected abstract IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, IResources resources);
 
-  protected abstract IRepositoryItemPersister createPersister(IAnathemaModel model);
+  protected abstract IRepositoryItemPersister createPersister(IApplicationModel model);
 }

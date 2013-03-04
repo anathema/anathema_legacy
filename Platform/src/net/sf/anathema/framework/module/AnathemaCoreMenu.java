@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.module;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
 import net.sf.anathema.framework.presenter.action.menu.help.AnathemaAboutAction;
@@ -21,7 +21,7 @@ import java.awt.event.KeyEvent;
 
 public class AnathemaCoreMenu {
 
-  public void add(IResources resources, IAnathemaModel model, MenuBar menubar) {
+  public void add(IResources resources, IApplicationModel model, MenuBar menubar) {
     IMenu mainMenu = menubar.getMainMenu();
     mainMenu.addMenuItem(createExportImportAction(resources, model));
     mainMenu.addSeparator();
@@ -33,7 +33,7 @@ public class AnathemaCoreMenu {
     helpMenu.addMenuItem(AnathemaAboutAction.createMenuAction(resources));
   }
 
-  private static Action createExportImportAction(IResources resources, IAnathemaModel model) {
+  private static Action createExportImportAction(IResources resources, IApplicationModel model) {
     Action action = RepositoryViewAction.createMenuAction(resources, model);
     if (action instanceof SmartAction) {
       SmartAction smartAction = (SmartAction) action;
@@ -43,7 +43,7 @@ public class AnathemaCoreMenu {
     return action;
   }
 
-  private IPreferencesElement[] createSystemPreferences(IAnathemaModel anathemaModel) {
+  private IPreferencesElement[] createSystemPreferences(IApplicationModel anathemaModel) {
     IRegistry<String, IAnathemaExtension> registry = anathemaModel.getExtensionPointRegistry();
     IAnathemaExtension extension = registry.get(PreferencesElementsExtensionPoint.ID);
     return ((PreferencesElementsExtensionPoint) extension).getAllPreferencesElements();

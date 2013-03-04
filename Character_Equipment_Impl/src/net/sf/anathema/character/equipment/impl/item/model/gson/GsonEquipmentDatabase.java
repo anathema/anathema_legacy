@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.itemdata.model.NonPersistableItemData;
@@ -21,13 +21,13 @@ import static net.sf.anathema.character.equipment.impl.module.EquipmentDatabaseI
 public class GsonEquipmentDatabase extends NonPersistableItemData implements IEquipmentDatabase {
   public static final String DATABASE_FOLDER = "equipment"; //$NON-NLS-1$
 
-  public static GsonEquipmentDatabase CreateFrom(IAnathemaModel anathemaModel) {
+  public static GsonEquipmentDatabase CreateFrom(IApplicationModel anathemaModel) {
     IRepository repository = anathemaModel.getRepository();
     IItemType itemType = getItemType(anathemaModel);
     return new GsonEquipmentDatabase(new EquipmentRepositoryAccess(repository, itemType));
   }
 
-  private static IItemType getItemType(IAnathemaModel anathemaModel) {
+  private static IItemType getItemType(IApplicationModel anathemaModel) {
     IItemTypeRegistry registry = anathemaModel.getItemTypeRegistry();
     return registry.getById(EQUIPMENT_DATABASE_ITEM_TYPE_ID);
   }
@@ -60,7 +60,6 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
     return loadExistingTemplate(id);
   }
 
-
   @Override
   public ICollectionFactory getCollectionFactory() {
     return collectionFactory;
@@ -88,7 +87,6 @@ public class GsonEquipmentDatabase extends NonPersistableItemData implements IEq
     delete(editTemplateId);
     availableTemplatesChangeControl.announce().changeOccurred();
   }
-
 
   @Override
   public void updateTemplate(String editTemplateId, IEquipmentTemplate saveTemplate) {

@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
@@ -19,9 +19,9 @@ public class CampaignPerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, IAnathemaModel model, IResources resources) {
+  public void initContent(Container container, IApplicationModel applicationModel, IResources resources) {
     CampaignPerspectiveView view = new CampaignPerspectiveView();
-    new CampaignPerspectivePresenter(model, view, resources).initPresentation();
+    new CampaignPerspectivePresenter(applicationModel, view, resources).initPresentation();
     container.setSwingContent(view.createContent());
   }
 }

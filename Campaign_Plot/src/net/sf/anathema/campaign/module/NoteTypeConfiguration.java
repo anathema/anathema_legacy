@@ -7,7 +7,7 @@ import net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants;
 import net.sf.anathema.campaign.presenter.NotePresenter;
 import net.sf.anathema.campaign.presenter.TextEditorProperties;
 import net.sf.anathema.campaign.view.SwingNoteView;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
@@ -37,12 +37,12 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
   }
 
   @Override
-  protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
+  protected IRepositoryItemPersister createPersister(IApplicationModel model) {
     return new BasicDataItemPersister(getItemType(), ISeriesPersistenceConstants.TAG_NOTE_ROOT);
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, final IResources resources) {
+  protected IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
@@ -57,7 +57,7 @@ public class NoteTypeConfiguration extends AbstractPersistableItemTypeConfigurat
   }
 
   @Override
-  protected IItemTypeViewProperties createItemTypeCreationProperties(IAnathemaModel anathemaModel, IResources resources) {
+  protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, IResources resources) {
     return new SimpleItemTypeViewProperties(getItemType(), new PlotUI(resources).getNoteTabIcon());
   }
 }

@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.lib.gui.action.SmartAction;
@@ -22,9 +22,9 @@ import static net.sf.anathema.campaign.module.SeriesTypeConfiguration.SERIES_ITE
 public abstract class AbstractItemAction extends SmartAction {
 
   private final IResources resources;
-  private final IAnathemaModel anathemaModel;
+  private final IApplicationModel anathemaModel;
 
-  public AbstractItemAction(IAnathemaModel anathemaModel, IResources resources) {
+  public AbstractItemAction(IApplicationModel anathemaModel, IResources resources) {
     this.anathemaModel = anathemaModel;
     this.resources = resources;
   }
@@ -38,7 +38,7 @@ public abstract class AbstractItemAction extends SmartAction {
     return result.isCanceled();
   }
 
-  protected IAnathemaModel getAnathemaModel() {
+  protected IApplicationModel getAnathemaModel() {
     return anathemaModel;
   }
 
@@ -46,7 +46,7 @@ public abstract class AbstractItemAction extends SmartAction {
     return resources;
   }
 
-  protected static IItemType[] collectItemTypes(IAnathemaModel model) {
+  protected static IItemType[] collectItemTypes(IApplicationModel model) {
     List<IItemType> types = new ArrayList<>();
     IItemTypeRegistry itemTypeRegistry = model.getItemTypeRegistry();
     types.add(itemTypeRegistry.getById(NOTE_ITEM_TYPE_ID));

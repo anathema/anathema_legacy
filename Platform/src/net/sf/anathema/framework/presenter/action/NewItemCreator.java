@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.presenter.action;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -8,9 +8,9 @@ import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplat
 
 public class NewItemCreator implements IItemCreator {
 
-  private final IAnathemaModel anathemaModel;
+  private final IApplicationModel anathemaModel;
 
-  public NewItemCreator(IAnathemaModel anathemaModel) {
+  public NewItemCreator(IApplicationModel anathemaModel) {
     this.anathemaModel = anathemaModel;
   }
 

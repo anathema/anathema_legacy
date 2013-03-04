@@ -11,7 +11,7 @@ import net.sf.anathema.character.perspective.model.model.CharacterPersistenceMod
 import net.sf.anathema.character.perspective.model.model.ItemSystemModel;
 import net.sf.anathema.character.perspective.model.model.NewCharacterListener;
 import net.sf.anathema.character.platform.module.RegExCharacterPrintNameFileScanner;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.ItemReceiver;
 import net.sf.anathema.framework.presenter.action.NewItemCommand;
 import net.sf.anathema.framework.reporting.ControlledPrintCommand;
@@ -49,14 +49,14 @@ public class CharacterSystemModel implements ItemSystemModel {
     }
   };
   private final CharacterPersistenceModel persistenceModel;
-  private IAnathemaModel model;
+  private IApplicationModel model;
   private int newCharacterCount = 0;
 
-  public CharacterSystemModel(IAnathemaModel model) {
+  public CharacterSystemModel(IApplicationModel model) {
     this(new CharacterPersistenceModel(model), model);
   }
 
-  public CharacterSystemModel(CharacterPersistenceModel persistenceModel, IAnathemaModel model) {
+  public CharacterSystemModel(CharacterPersistenceModel persistenceModel, IApplicationModel model) {
     this.persistenceModel = persistenceModel;
     this.model = model;
   }
