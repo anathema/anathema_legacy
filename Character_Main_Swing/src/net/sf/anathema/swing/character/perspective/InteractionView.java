@@ -1,11 +1,11 @@
 package net.sf.anathema.swing.character.perspective;
 
+import net.sf.anathema.interaction.Interaction;
+import net.sf.anathema.interaction.ToggleInteraction;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.swing.character.perspective.interaction.ActionInteraction;
-import net.sf.anathema.swing.character.perspective.interaction.Interaction;
 import net.sf.anathema.swing.character.perspective.interaction.ToggleActionInteraction;
-import net.sf.anathema.swing.character.perspective.interaction.ToggleInteraction;
 
 import javax.swing.JComponent;
 import javax.swing.JToolBar;

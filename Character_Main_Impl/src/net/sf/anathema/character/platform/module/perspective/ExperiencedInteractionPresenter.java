@@ -2,7 +2,7 @@ package net.sf.anathema.character.platform.module.perspective;
 
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.interaction.Command;
-import net.sf.anathema.swing.character.perspective.interaction.ToggleInteraction;
+import net.sf.anathema.interaction.ToggleInteraction;
 
 public class ExperiencedInteractionPresenter {
   private ItemSelectionModel model;

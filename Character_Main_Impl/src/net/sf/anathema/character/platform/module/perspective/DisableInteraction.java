@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.module.perspective;
 
+import net.sf.anathema.interaction.Interaction;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.swing.character.perspective.interaction.Interaction;
 
 public class DisableInteraction implements IChangeListener {
   private Interaction interaction;

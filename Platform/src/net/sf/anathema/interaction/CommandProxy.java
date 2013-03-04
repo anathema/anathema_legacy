@@ -1,6 +1,4 @@
-package net.sf.anathema.swing.character.perspective.interaction;
-
-import net.sf.anathema.interaction.Command;
+package net.sf.anathema.interaction;
 
 public class CommandProxy implements Command {
 

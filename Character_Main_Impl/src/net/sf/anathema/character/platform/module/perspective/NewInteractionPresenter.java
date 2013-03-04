@@ -8,8 +8,8 @@ import net.sf.anathema.character.perspective.model.model.CharacterModel;
 import net.sf.anathema.character.perspective.model.model.ItemSelectionModel;
 import net.sf.anathema.character.perspective.model.model.NewCharacterListener;
 import net.sf.anathema.interaction.Command;
+import net.sf.anathema.interaction.Interaction;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.swing.character.perspective.interaction.Interaction;
 
 public class NewInteractionPresenter {
 
