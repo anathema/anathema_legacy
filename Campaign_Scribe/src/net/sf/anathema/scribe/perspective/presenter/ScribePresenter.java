@@ -18,8 +18,8 @@ public class ScribePresenter {
 
   public void initPresentation() {
     initNavigation();
-    view.scrollEditor.whenTextTyped(new UpdateTextInScroll(model.scrollModel));
-    model.scrollModel.whenContentChanges(new UpdateTextInScrollEditor(view.scrollEditor));
+    view.scrollView.scrollEditor.whenTextTyped(new UpdateTextInScroll(model.scrollModel));
+    model.scrollModel.whenContentChanges(new UpdateTextInScrollEditor(view.scrollView));
   }
 
   private void initNavigation() {

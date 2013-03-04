@@ -5,43 +5,29 @@ import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.web.WebView;
-import net.sf.anathema.scribe.editor.model.HtmlText;
+import net.miginfocom.layout.AC;
+import net.miginfocom.layout.LC;
+import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.scribe.editor.model.WikiText;
 import org.jmock.example.announcer.Announcer;
+import org.tbee.javafx.scene.layout.MigPane;
 
 public class ScrollEditor {
 
-  private class InitGui implements Runnable {
-    @Override
-    public void run() {
-      textArea = createTextArea();
-      content = new BorderPane();
-      webView = new WebView();
-      content.setCenter(textArea);
-      content.setRight(webView);
-    }
-
-    private TextArea createTextArea() {
-      final TextArea area = new TextArea();
-      area.setWrapText(true);
-      area.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
-        public void handle(KeyEvent event) {
-          textChanged.announce().textChanged(area.getText());
-        }
-      });
-      return area;
-    }
-  }
-
-  private BorderPane content;
+  private MigPane content;
   private TextArea textArea;
-  private WebView webView;
   private final Announcer<TextTypedListener> textChanged = Announcer.to(TextTypedListener.class);
 
   public ScrollEditor() {
-    Platform.runLater(new InitGui());
+    FxThreading.assertNotOnFxThread();
+    Platform.runLater(new Runnable() {
+      @Override
+      public void run() {
+        textArea = createTextArea();
+        content = new MigPane(new LC().insets("0").gridGap("0", "2").wrapAfter(1), new AC().grow().fill(), new AC().grow().fill());
+        content.add(textArea);
+      }
+    });
   }
 
   public void setWikiText(final WikiText text) {
@@ -56,17 +42,19 @@ public class ScrollEditor {
     });
   }
 
-  public void setHtmlText(final HtmlText text) {
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        webView.getEngine().loadContent(text.getHtmlText());
-      }
-    });
-  }
-
   public void whenTextTyped(TextTypedListener listener) {
     textChanged.addListener(listener);
+  }
+
+  private TextArea createTextArea() {
+    final TextArea area = new TextArea();
+    area.setWrapText(true);
+    area.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
+      public void handle(KeyEvent event) {
+        textChanged.announce().textChanged(area.getText());
+      }
+    });
+    return area;
   }
 
   public Node getNode() {

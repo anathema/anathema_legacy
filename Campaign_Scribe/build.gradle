@@ -2,6 +2,6 @@ dependencies {
     compile 'com.github.rjeschke:txtmark:0.8'
     compile project(':Platform')
     compile project(':Platform_FX')
-    compile project(':Campaign_Plot')
+    compile 'com.miglayout:miglayout-javafx:4.2'
     testCompile parent.ext.testDependencies
 }

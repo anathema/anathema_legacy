@@ -3,11 +3,11 @@ package net.sf.anathema.scribe.perspective.view;
 import javafx.application.Platform;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.platform.fx.PerspectivePane;
-import net.sf.anathema.scribe.editor.view.ScrollEditor;
+import net.sf.anathema.scribe.editor.view.ScrollView;
 
 public class ScribeView {
   public final PerspectivePane perspectivePane = new PerspectivePane();
-  public final ScrollEditor scrollEditor = new ScrollEditor();
+  public final ScrollView scrollView = new ScrollView();
   public final ScribeNavigation scribeNavigation = new ScribeNavigation();
 
   public ScribeView() {
@@ -16,7 +16,7 @@ public class ScribeView {
       @Override
       public void run() {
         perspectivePane.setNavigationComponent(scribeNavigation.getNode());
-        perspectivePane.setContentComponent(scrollEditor.getNode());
+        perspectivePane.setContentComponent(scrollView.getNode());
       }
     });
   }
