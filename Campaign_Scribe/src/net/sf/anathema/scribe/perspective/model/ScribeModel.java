@@ -18,10 +18,10 @@ public class ScribeModel {
     this.applicationModel = applicationModel;
   }
 
-  public Collection<PrintNameFile> collectAllNotes() {
-    IItemType characterItemType = NoteTypeConfiguration.ITEM_TYPE;
+  public Collection<PrintNameFile> collectAllScrolls() {
+    IItemType itemType = NoteTypeConfiguration.ITEM_TYPE;
     IRepository repository = applicationModel.getRepository();
     IPrintNameFileAccess access = repository.getPrintNameFileAccess();
-    return access.collectAllPrintNameFiles(characterItemType);
+    return access.collectAllPrintNameFiles(itemType);
   }
 }

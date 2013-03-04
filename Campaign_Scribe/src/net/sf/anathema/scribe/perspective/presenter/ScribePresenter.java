@@ -23,7 +23,7 @@ public class ScribePresenter {
   }
 
   private void initNavigation() {
-    for (PrintNameFile file : model.collectAllNotes()) {
+    for (PrintNameFile file : model.collectAllScrolls()) {
       view.scribeNavigation.addText(file.getPrintName());
     }
   }
