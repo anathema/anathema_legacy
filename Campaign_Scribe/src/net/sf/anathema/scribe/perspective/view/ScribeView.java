@@ -6,7 +6,7 @@ import net.sf.anathema.platform.fx.PerspectivePane;
 import net.sf.anathema.scribe.editor.view.ScrollView;
 
 public class ScribeView {
-  public final PerspectivePane perspectivePane = new PerspectivePane();
+  public final PerspectivePane perspectivePane = new PerspectivePane("skin/anathema/scribe.css");
   public final ScrollView scrollView = new ScrollView();
   public final ScribeNavigation scribeNavigation = new ScribeNavigation();
 
