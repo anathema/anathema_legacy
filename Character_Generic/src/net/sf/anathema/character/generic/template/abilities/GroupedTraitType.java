@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 import java.util.List;
 
-public class GroupedTraitType implements IGroupedTraitType {
+public class GroupedTraitType {
 
   private final ITraitType type;
   private final String groupId;
@@ -16,17 +16,14 @@ public class GroupedTraitType implements IGroupedTraitType {
     this.traitCasteIds = traitCastes;
   }
 
-  @Override
   public ITraitType getTraitType() {
     return type;
   }
 
-  @Override
   public String getGroupId() {
     return groupId;
   }
 
-  @Override
   public List<String> getTraitCasteSet() {
     return traitCasteIds;
   }

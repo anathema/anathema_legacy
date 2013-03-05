@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.traits.creation;
 
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
@@ -19,7 +19,7 @@ public class FavoredIncrementChecker implements IIncrementChecker {
   public static IIncrementChecker createFavoredAbilityIncrementChecker(ICharacterTemplate template, ICoreTraitConfiguration traitConfiguration) {
     int maxFavoredAbilityCount = template.getCreationPoints().getAbilityCreationPoints().getFavorableTraitCount();
     List<ITraitType> abilityTypes = new ArrayList<>();
-    for (IGroupedTraitType traitType : template.getAbilityGroups()) {
+    for (GroupedTraitType traitType : template.getAbilityGroups()) {
       abilityTypes.add(traitType.getTraitType());
     }
     return new FavoredIncrementChecker(maxFavoredAbilityCount, abilityTypes.toArray(new ITraitType[abilityTypes.size()]), traitConfiguration);
@@ -28,7 +28,7 @@ public class FavoredIncrementChecker implements IIncrementChecker {
   public static IIncrementChecker createFavoredAttributeIncrementChecker(ICharacterTemplate template, ICoreTraitConfiguration traitConfiguration) {
     int maxFavoredAttributeCount = template.getCreationPoints().getAttributeCreationPoints().getFavorableTraitCount();
     List<ITraitType> attributeTypes = new ArrayList<>();
-    for (IGroupedTraitType traitType : template.getAttributeGroups()) {
+    for (GroupedTraitType traitType : template.getAttributeGroups()) {
       attributeTypes.add(traitType.getTraitType());
     }
     return new FavoredIncrementChecker(maxFavoredAttributeCount, attributeTypes.toArray(new ITraitType[attributeTypes.size()]), traitConfiguration);

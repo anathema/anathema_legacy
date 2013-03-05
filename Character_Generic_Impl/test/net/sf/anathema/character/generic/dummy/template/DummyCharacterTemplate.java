@@ -18,7 +18,6 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
@@ -55,9 +54,9 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public IGroupedTraitType[] getAbilityGroups() {
+  public GroupedTraitType[] getAbilityGroups() {
     AbilityType[] all = AbilityType.values();
-    IGroupedTraitType[] abilityTypes = new GroupedTraitType[all.length];
+    GroupedTraitType[] abilityTypes = new GroupedTraitType[all.length];
     for (int index = 0; index < all.length; index++) {
       abilityTypes[index] = new GroupedTraitType(all[index], DUMMYGROUP, null);
     }
@@ -65,7 +64,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public IGroupedTraitType[] getYoziGroups() {
+  public GroupedTraitType[] getYoziGroups() {
     return null;
   }
 
@@ -191,8 +190,8 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public IGroupedTraitType[] getAttributeGroups() {
-    return new IGroupedTraitType[]{new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(),
+  public GroupedTraitType[] getAttributeGroups() {
+    return new GroupedTraitType[]{new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(),
             null), new GroupedTraitType(AttributeType.Dexterity, AttributeGroupType.Physical.getId(),
             null), new GroupedTraitType(AttributeType.Stamina, AttributeGroupType.Physical.getId(),
             null), new GroupedTraitType(AttributeType.Charisma, AttributeGroupType.Social.getId(),

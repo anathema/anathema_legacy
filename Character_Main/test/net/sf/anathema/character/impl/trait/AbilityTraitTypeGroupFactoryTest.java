@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.dummy.DummyCasteType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -24,7 +23,7 @@ public class AbilityTraitTypeGroupFactoryTest {
   @Test
   public void testOneGroup() throws Exception {
     ICasteCollection casteCollection = new CasteCollection(new ICasteType[0]);
-    IGroupedTraitType[] abilityTypes = new IGroupedTraitType[]{new GroupedTraitType(AbilityType.Archery, "War", null), //$NON-NLS-1$
+    GroupedTraitType[] abilityTypes = new GroupedTraitType[]{new GroupedTraitType(AbilityType.Archery, "War", null), //$NON-NLS-1$
             new GroupedTraitType(AbilityType.Melee, "War", null) //$NON-NLS-1$
     };
     IIdentifiedTraitTypeGroup[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
@@ -36,7 +35,7 @@ public class AbilityTraitTypeGroupFactoryTest {
   @Test
   public void testDifferentGroups() throws Exception {
     ICasteCollection casteCollection = new CasteCollection(new ICasteType[0]);
-    IGroupedTraitType[] abilityTypes = new IGroupedTraitType[]{new GroupedTraitType(AbilityType.Archery, "War", null), //$NON-NLS-1$
+    GroupedTraitType[] abilityTypes = new GroupedTraitType[]{new GroupedTraitType(AbilityType.Archery, "War", null), //$NON-NLS-1$
             new GroupedTraitType(AbilityType.Medicine, "Life", null) //$NON-NLS-1$
     };
     IIdentifiedTraitTypeGroup[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
@@ -51,7 +50,7 @@ public class AbilityTraitTypeGroupFactoryTest {
   public void testCasteAsGroupIdentificate() throws Exception {
     DummyCasteType caste = new DummyCasteType("Caste"); //$NON-NLS-1$
     ICasteCollection casteCollection = new CasteCollection(new ICasteType[]{caste});
-    IGroupedTraitType[] abilityTypes = new IGroupedTraitType[]{new GroupedTraitType(AbilityType.Archery, caste.getId(), null),
+    GroupedTraitType[] abilityTypes = new GroupedTraitType[]{new GroupedTraitType(AbilityType.Archery, caste.getId(), null),
             new GroupedTraitType(AbilityType.Melee, caste.getId(), null)};
     IIdentifiedTraitTypeGroup[] typeGroups = factory.createTraitGroups(casteCollection, abilityTypes);
     assertEquals(1, typeGroups.length);

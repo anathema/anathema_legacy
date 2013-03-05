@@ -4,7 +4,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Phrase;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -31,7 +31,7 @@ public class SecondEditionLunarSpiritFormEncoder implements ContentEncoder {
 
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) {
-    IGroupedTraitType[] attributeGroups = reportSession.getCharacter().getTemplate().getAttributeGroups();
+    GroupedTraitType[] attributeGroups = reportSession.getCharacter().getTemplate().getAttributeGroups();
     SecondEditionBeastformModel additionalModel = (SecondEditionBeastformModel) reportSession.getCharacter()
             .getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     IGenericTraitCollection traitCollection = additionalModel.getSpiritTraitCollection();
@@ -46,13 +46,13 @@ public class SecondEditionLunarSpiritFormEncoder implements ContentEncoder {
     graphics.createSimpleColumn(newBounds).withLeading(LINE_HEIGHT - 2).andTextPart(new Phrase(text, font)).encode();
   }
 
-  private void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, IGroupedTraitType[] attributeGroups,
+  private void encodeAttributes(SheetGraphics graphics, Bounds contentBounds, GroupedTraitType[] attributeGroups,
           IGenericTraitCollection traitCollection) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - 2 * groupSpacing;
     int maximum = EssenceTemplate.SYSTEM_ESSENCE_MAX;
     float width = contentBounds.getWidth();
-    for (IGroupedTraitType groupedTraitType : attributeGroups) {
+    for (GroupedTraitType groupedTraitType : attributeGroups) {
       if (!groupedTraitType.getGroupId().equals(AttributeGroupType.Physical.name()) &&
               !groupedTraitType.getTraitType().getId().equals(AttributeType.Appearance.name())) {
         continue;

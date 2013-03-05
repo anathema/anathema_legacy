@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicStats;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -38,7 +38,7 @@ public class AttributesEncoder implements ContentEncoder {
 
   @Override
   public void encode(SheetGraphics graphics, ReportSession reportSession, Bounds bounds) throws DocumentException {
-    IGroupedTraitType[] attributeGroups = reportSession.getCharacter().getTemplate().getAttributeGroups();
+    GroupedTraitType[] attributeGroups = reportSession.getCharacter().getTemplate().getAttributeGroups();
     IGenericTraitCollection traitCollection = reportSession.getCharacter().getTraitCollection();
     IMagicStats[] excellencies = getExcellencies(reportSession.getCharacter());
     encodeAttributes(graphics, reportSession.getCharacter(), bounds, attributeGroups, traitCollection, excellencies);
@@ -66,14 +66,13 @@ public class AttributesEncoder implements ContentEncoder {
     return excellencies.toArray(new IMagicStats[excellencies.size()]);
   }
 
-  public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds, IGroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
+  public final void encodeAttributes(SheetGraphics graphics, IGenericCharacter character, Bounds contentBounds, GroupedTraitType[] attributeGroups, IGenericTraitCollection traitCollection, IMagicStats[] excellencies) {
     int traitMax = getTraitMax(character, attributeGroups);
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
-    // TODO: (2011-06-19) Add column headers [particularly for Excellencies]
-    for (IGroupedTraitType groupedTraitType : attributeGroups) {
+    for (GroupedTraitType groupedTraitType : attributeGroups) {
       if (!groupedTraitType.getGroupId().equals(groupId)) {
         groupId = groupedTraitType.getGroupId();
         y -= groupSpacing;
@@ -96,7 +95,7 @@ public class AttributesEncoder implements ContentEncoder {
     }
   }
 
-  public int getTraitMax(IGenericCharacter character, IGroupedTraitType[] groups) {
+  public int getTraitMax(IGenericCharacter character, GroupedTraitType[] groups) {
     ITraitType traitType = groups[0].getTraitType();
     ITraitTemplate template = character.getTemplate().getTraitTemplateCollection().getTraitTemplate(traitType);
     return template.getLimitation().getAbsoluteLimit(character);
