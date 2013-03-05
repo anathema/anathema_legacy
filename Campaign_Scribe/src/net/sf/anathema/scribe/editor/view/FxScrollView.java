@@ -7,13 +7,13 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import org.tbee.javafx.scene.layout.MigPane;
 
-public class ScrollView {
+public class FxScrollView {
 
   private MigPane content;
-  public final ScrollEditor scrollEditor = new ScrollEditor();
-  public final ScrollPreview scrollPreview = new ScrollPreview();
+  public final FxScrollEditor scrollEditor = new FxScrollEditor();
+  public final FxScrollPreview scrollPreview = new FxScrollPreview();
 
-  public ScrollView() {
+  public FxScrollView() {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {

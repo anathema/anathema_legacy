@@ -9,15 +9,16 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.scribe.editor.model.HtmlText;
+import net.sf.anathema.scribe.editor.presenter.ScrollPreview;
 import org.tbee.javafx.scene.layout.MigPane;
 
-public class ScrollPreview {
+public class FxScrollPreview implements ScrollPreview {
 
   private TextField titleDisplay;
   private WebView content;
   private MigPane pane;
 
-  public ScrollPreview() {
+  public FxScrollPreview() {
     FxThreading.assertNotOnFxThread();
     Platform.runLater(new Runnable() {
       @Override
@@ -35,6 +36,7 @@ public class ScrollPreview {
     });
   }
 
+  @Override
   public void setHtmlText(final HtmlText text) {
     Platform.runLater(new Runnable() {
       @Override
@@ -44,6 +46,7 @@ public class ScrollPreview {
     });
   }
 
+  @Override
   public void setTitle(final String text) {
     Platform.runLater(new Runnable() {
       @Override

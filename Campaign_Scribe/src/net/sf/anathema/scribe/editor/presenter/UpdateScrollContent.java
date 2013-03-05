@@ -2,7 +2,6 @@ package net.sf.anathema.scribe.editor.presenter;
 
 import net.sf.anathema.scribe.editor.model.ScrollModel;
 import net.sf.anathema.scribe.editor.model.WikiText;
-import net.sf.anathema.scribe.editor.view.TextTypedListener;
 
 public class UpdateScrollContent implements TextTypedListener {
   private final ScrollModel scrollModel;

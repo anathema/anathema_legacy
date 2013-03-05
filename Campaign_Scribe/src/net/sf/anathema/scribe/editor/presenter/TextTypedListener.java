@@ -1,4 +1,4 @@
-package net.sf.anathema.scribe.editor.view;
+package net.sf.anathema.scribe.editor.presenter;
 
 public interface TextTypedListener {
 

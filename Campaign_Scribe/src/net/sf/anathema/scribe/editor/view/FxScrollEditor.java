@@ -11,10 +11,12 @@ import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
 import net.sf.anathema.platform.fx.FxThreading;
 import net.sf.anathema.scribe.editor.model.WikiText;
+import net.sf.anathema.scribe.editor.presenter.ScrollEditor;
+import net.sf.anathema.scribe.editor.presenter.TextTypedListener;
 import org.jmock.example.announcer.Announcer;
 import org.tbee.javafx.scene.layout.MigPane;
 
-public class ScrollEditor {
+public class FxScrollEditor implements ScrollEditor {
 
   private TextField titleDisplay;
   private TextArea content;
@@ -22,7 +24,7 @@ public class ScrollEditor {
   private final Announcer<TextTypedListener> contentChanged = Announcer.to(TextTypedListener.class);
   private final Announcer<TextTypedListener> titleChanged = Announcer.to(TextTypedListener.class);
 
-  public ScrollEditor() {
+  public FxScrollEditor() {
     FxThreading.assertNotOnFxThread();
     Platform.runLater(new Runnable() {
       @Override
@@ -47,6 +49,7 @@ public class ScrollEditor {
     return field;
   }
 
+  @Override
   public void setWikiText(final WikiText text) {
     Platform.runLater(new Runnable() {
       @Override
@@ -59,6 +62,7 @@ public class ScrollEditor {
     });
   }
 
+  @Override
   public void setTitle(final String title) {
     Platform.runLater(new Runnable() {
       @Override
@@ -71,10 +75,12 @@ public class ScrollEditor {
     });
   }
 
+  @Override
   public void whenContentTyped(TextTypedListener listener) {
     contentChanged.addListener(listener);
   }
 
+  @Override
   public void whenTitleTyped(TextTypedListener listener) {
     titleChanged.addListener(listener);
   }

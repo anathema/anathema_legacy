@@ -1,27 +1,31 @@
 package net.sf.anathema.scribe.editor.presenter;
 
+import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.scribe.editor.model.HtmlText;
 import net.sf.anathema.scribe.editor.model.ScrollChangedListener;
 import net.sf.anathema.scribe.editor.model.WikiText;
-import net.sf.anathema.scribe.editor.view.ScrollView;
 
 public class UpdateScrollEditor implements ScrollChangedListener {
-  private final ScrollView editor;
+  private final ScrollEditor editor;
+  private final ScrollPreview preview;
+  private final IResources resources;
 
-  public UpdateScrollEditor(ScrollView editor) {
+  public UpdateScrollEditor(ScrollEditor editor, ScrollPreview preview, IResources resources) {
     this.editor = editor;
+    this.preview = preview;
+    this.resources = resources;
   }
 
   @Override
   public void contentChanged(WikiText wikiText, HtmlText htmlText) {
-    editor.scrollPreview.setHtmlText(htmlText);
-    editor.scrollEditor.setWikiText(wikiText);
+    preview.setHtmlText(htmlText);
+    editor.setWikiText(wikiText);
   }
 
   @Override
   public void nameChanged(String name) {
-    String title = name.isEmpty() ? "Unnamed Scroll" : name;
-    editor.scrollEditor.setTitle(title);
-    editor.scrollPreview.setTitle(title);
+    String title = name.isEmpty() ? resources.getString("Scribe.UnnamedScroll.Title") : name;
+    editor.setTitle(title);
+    preview.setTitle(title);
   }
 }
