@@ -8,6 +8,7 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<GenericGroupedTraitTypeProvider> {
@@ -38,13 +39,13 @@ public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<Gene
     for (Element group : groups) {
       String groupId = group.attributeValue(ATTRIB_ID);
       String groupCasteId = group.attributeValue(CASTE_ID);
-      List<Element> abilities = ElementUtilities.elements(group, TAG_TRAIT);
-      for (Element ability : abilities) {
+      List<Element> traitElements = ElementUtilities.elements(group, TAG_TRAIT);
+      for (Element traitElement : traitElements) {
     	List<String> traitCastes = new ArrayList<>();
-        String attributeTypeValue = ability.attributeValue(ATTRIB_TYPE);
-        if (ability.attributeValue(CASTE_ID) != null)
-        	for (String caste : ability.attributeValue(CASTE_ID).split(","))
-        		traitCastes.add(caste);
+        String attributeTypeValue = traitElement.attributeValue(ATTRIB_TYPE);
+        if (traitElement.attributeValue(CASTE_ID) != null) {
+          Collections.addAll(traitCastes, traitElement.attributeValue(CASTE_ID).split(","));
+        }
         abilityGroupProvider.addGroupedAbilityType(attributeTypeValue, groupId, groupCasteId, traitCastes);
       }
     }

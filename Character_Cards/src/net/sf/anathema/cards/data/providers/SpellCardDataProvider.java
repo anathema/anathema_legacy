@@ -24,7 +24,7 @@ public class SpellCardDataProvider extends AbstractMagicCardDataProvider {
     for (ISpell spell : getCurrentSpells(character)) {
       cards.add(new SpellCardData(spell, createSpellStats(spell), getMagicDescription(spell), fontProvider, getResources()));
     }
-    return cards.toArray(new ICardData[0]);
+    return cards.toArray(new ICardData[cards.size()]);
   }
 
   private ISpell[] getCurrentSpells(ICharacter character) {

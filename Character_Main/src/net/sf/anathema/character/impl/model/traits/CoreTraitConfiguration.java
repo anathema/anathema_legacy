@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
+import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -19,6 +20,7 @@ import net.sf.anathema.character.impl.model.traits.creation.AttributeTypeGroupFa
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
+import net.sf.anathema.character.impl.model.traits.creation.YoziFavoredIncrementChecker;
 import net.sf.anathema.character.impl.model.traits.creation.YoziTypeGroupFactory;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
@@ -99,9 +101,10 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   }
 
   private void addYozis(ICharacterTemplate template) {
-    IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups =
-            new YoziTypeGroupFactory().createTraitGroups(template.getCasteCollection(), template.getYoziGroups());
-    IIncrementChecker incrementChecker = FavoredIncrementChecker.createFavoredYoziIncrementChecker(template, this);
+    ICasteCollection casteCollection = template.getCasteCollection();
+    IGroupedTraitType[] yoziGroups = template.getYoziGroups();
+    IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(casteCollection, yoziGroups);
+    IIncrementChecker incrementChecker = YoziFavoredIncrementChecker.create(this);
     addFavorableTraits(yoziTraitGroups, incrementChecker);
   }
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.campaign.perspective;
+package net.sf.anathema.framework.perspective;
 
 import net.sf.anathema.framework.view.toolbar.ToolBarButton;
 import net.sf.anathema.lib.gui.IView;
@@ -7,16 +7,17 @@ import net.sf.anathema.lib.gui.action.SmartAction;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 import java.awt.Component;
 import java.awt.Dimension;
 
-public class CampaignPerspectiveToolBar implements ToolBar, IView {
+public class PerspectiveToolBar implements ToolBar, IView {
 
   private JToolBar toolBar;
 
-  public CampaignPerspectiveToolBar() {
+  public PerspectiveToolBar() {
     this.toolBar = new JToolBar();
     this.toolBar.setFloatable(false);
     this.toolBar.setRollover(true);
@@ -36,19 +37,24 @@ public class CampaignPerspectiveToolBar implements ToolBar, IView {
 
   @Override
   public void addMenu(Icon buttonIcon, Action[] menuActions, String toolTip) {
+    final ToolBarButton button = new ToolBarButton();
     final JPopupMenu menu = new JPopupMenu();
     for (Action action : menuActions) {
       menu.add(action);
     }
-    final ToolBarButton button = new ToolBarButton();
     SmartAction action = new SmartAction(buttonIcon) {
-	  @Override
+      @Override
       protected void execute(Component parentComponent) {
         menu.show(button, 0, button.getHeight());
       }
     };
     action.setToolTipText(toolTip);
     addComponent(button, action);
+  }
+
+  @Override
+  public void add(JComponent component) {
+    toolBar.add(component);
   }
 
   private void addComponent(JButton button, Action action) {

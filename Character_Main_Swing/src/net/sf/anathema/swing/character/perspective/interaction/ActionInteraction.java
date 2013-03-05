@@ -1,11 +1,11 @@
 package net.sf.anathema.swing.character.perspective.interaction;
 
+import net.sf.anathema.framework.perspective.ToolBar;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.Interaction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 
-import javax.swing.JButton;
 import java.awt.Component;
 
 public class ActionInteraction implements Interaction {
@@ -19,7 +19,6 @@ public class ActionInteraction implements Interaction {
   };
   private final IResources resources;
   private final Class<?> inquirer;
-  private final JButton button = new JButton(action);
 
   public ActionInteraction(IResources resources, Class<?> inquirer) {
     this.resources = resources;
@@ -56,7 +55,7 @@ public class ActionInteraction implements Interaction {
     commandProxy.setDelegate(command);
   }
 
-  public JButton getButton() {
-    return button;
+  public void addTo(ToolBar toolbar) {
+    toolbar.addTools(action);
   }
 }

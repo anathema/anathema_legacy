@@ -1,5 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
+import net.sf.anathema.framework.perspective.ToolBar;
 import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;

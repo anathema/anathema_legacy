@@ -142,7 +142,7 @@ public class MagicReport extends AbstractPdfReport {
   private void addCharmDescription(IMagic magic, MultiColumnText columnText) throws DocumentException {
     MagicDescription charmDescription = getCharmDescription(magic);
     if (charmDescription.isEmpty()) {
-      String sourceString = new MagicSourceStringBuilder<IMagic>(resources).createSourceString(magic);
+      String sourceString = new MagicSourceStringBuilder<>(resources).createSourceString(magic);
       String sourceReference = resources.getString("MagicReport.See.Source", sourceString);
       columnText.addElement(partFactory.createDescriptionParagraph(sourceReference));
     }

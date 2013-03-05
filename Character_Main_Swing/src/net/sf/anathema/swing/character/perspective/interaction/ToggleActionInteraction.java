@@ -1,5 +1,6 @@
 package net.sf.anathema.swing.character.perspective.interaction;
 
+import net.sf.anathema.framework.perspective.ToolBar;
 import net.sf.anathema.interaction.Command;
 import net.sf.anathema.interaction.CommandProxy;
 import net.sf.anathema.interaction.ToggleInteraction;
@@ -57,10 +58,6 @@ public class ToggleActionInteraction implements ToggleInteraction {
     commandProxy.setDelegate(command);
   }
 
-  public JToggleButton getToggleButton() {
-    return button;
-  }
-
   @Override
   public void select() {
     button.setSelected(true);
@@ -69,5 +66,10 @@ public class ToggleActionInteraction implements ToggleInteraction {
   @Override
   public void deselect() {
     button.setSelected(false);
+  }
+
+  @Override
+  public void addTo(ToolBar toolbar) {
+    toolbar.add(button);
   }
 }
