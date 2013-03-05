@@ -42,7 +42,7 @@ import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCharacterTemplate> {
@@ -143,9 +143,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     AllYoziTraitTypeGroup yoziTraitTypeGroup = AllYoziTraitTypeGroup.getInstance();
     if (yoziGroupElement == null) {
       GenericGroupedTraitTypeProvider provider = new GenericGroupedTraitTypeProvider(yoziTraitTypeGroup);
-      List<String> emptyList = new ArrayList<>();
       for (YoziType yozi : YoziType.values()) {
-        provider.addGroupedAbilityType(yozi.getId(), yozi.getId(), null, emptyList);
+        provider.addGroupedAbilityType(yozi.getId(), yozi.getId(), Collections.<String>emptyList());
       }
       characterTemplate.setYoziGroups(provider.getTraitTypeGroups());
       return;

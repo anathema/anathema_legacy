@@ -24,17 +24,14 @@ public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupe
     return groupedTraitTypes.toArray(new IGroupedTraitType[groupedTraitTypes.size()]);
   }
 
-  public void addGroupedAbilityType(String abilityTypeId, String traitTypeId, String groupCasteId, List<String> traitCasteIds) {
+  public void addGroupedAbilityType(String abilityTypeId, String traitTypeId, List<String> traitCasteIds) {
     ITraitType traitType = traitTypeGroup.getById(abilityTypeId);
-    GroupedTraitType type = createType(traitTypeId, groupCasteId, traitCasteIds, traitType);
+    GroupedTraitType type = createType(traitTypeId, traitCasteIds, traitType);
     groupedTraitTypes.add(type);
   }
 
-  private GroupedTraitType createType(String traitTypeId, String groupCasteId, List<String> traitCasteIds, ITraitType traitType) {
-    if (traitCasteIds.isEmpty()) {
-      return new GroupedTraitType(traitType, traitTypeId, groupCasteId);
-    }
-    return new GroupedTraitType(traitType, traitCasteIds, traitTypeId);
+  private GroupedTraitType createType(String traitTypeId, List<String> traitCasteIds, ITraitType traitType) {
+    return new GroupedTraitType(traitType, traitTypeId, traitCasteIds);
   }
 
   @Override

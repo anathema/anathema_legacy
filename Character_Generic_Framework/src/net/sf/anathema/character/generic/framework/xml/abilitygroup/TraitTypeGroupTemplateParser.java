@@ -20,9 +20,8 @@ public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String TAG_TRAIT = "trait"; //$NON-NLS-1$
   private final ITraitTypeGroup traitTypeGroup;
 
-  public TraitTypeGroupTemplateParser(
-      IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> templateRegistry,
-      ITraitTypeGroup traitTypeGroup) {
+  public TraitTypeGroupTemplateParser(IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> templateRegistry,
+                                      ITraitTypeGroup traitTypeGroup) {
     super(templateRegistry);
     this.traitTypeGroup = traitTypeGroup;
   }
@@ -41,12 +40,14 @@ public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<Gene
       String groupCasteId = group.attributeValue(CASTE_ID);
       List<Element> traitElements = ElementUtilities.elements(group, TAG_TRAIT);
       for (Element traitElement : traitElements) {
-    	List<String> traitCastes = new ArrayList<>();
+        List<String> traitCastes = new ArrayList<>();
         String attributeTypeValue = traitElement.attributeValue(ATTRIB_TYPE);
         if (traitElement.attributeValue(CASTE_ID) != null) {
           Collections.addAll(traitCastes, traitElement.attributeValue(CASTE_ID).split(","));
+        } else if (groupCasteId != null) {
+          traitCastes.add(groupCasteId);
         }
-        abilityGroupProvider.addGroupedAbilityType(attributeTypeValue, groupId, groupCasteId, traitCastes);
+        abilityGroupProvider.addGroupedAbilityType(attributeTypeValue, groupId, traitCastes);
       }
     }
   }

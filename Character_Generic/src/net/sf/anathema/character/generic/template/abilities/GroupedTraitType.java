@@ -2,23 +2,31 @@ package net.sf.anathema.character.generic.template.abilities;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
 
+import java.util.Collections;
 import java.util.List;
 
 public class GroupedTraitType implements IGroupedTraitType {
 
   private final ITraitType type;
   private final String groupId;
-  private final String groupCasteId;
   private List<String> traitCasteIds;
 
-  public GroupedTraitType(ITraitType type, String groupId, String casteId) {
+  private GroupedTraitType(ITraitType type, String groupId) {
     this.type = type;
     this.groupId = groupId;
-    this.groupCasteId = casteId;
   }
 
-  public GroupedTraitType(ITraitType type, List<String> traitCastes, String groupId) {
-    this(type, groupId, null);
+  public GroupedTraitType(ITraitType type, String groupId, String casteId) {
+    this(type, groupId);
+    if (casteId == null) {
+      this.traitCasteIds = Collections.emptyList();
+    } else {
+      this.traitCasteIds = Collections.singletonList(casteId);
+    }
+  }
+
+  public GroupedTraitType(ITraitType type, String groupId, List<String> traitCastes) {
+    this(type, groupId);
     this.traitCasteIds = traitCastes;
   }
 
@@ -30,11 +38,6 @@ public class GroupedTraitType implements IGroupedTraitType {
   @Override
   public String getGroupId() {
     return groupId;
-  }
-
-  @Override
-  public String getGroupCasteId() {
-    return groupCasteId;
   }
 
   @Override

@@ -10,7 +10,5 @@ public interface IGroupedTraitType {
 
   String getGroupId();
 
-  String getGroupCasteId();
-  
   List<String> getTraitCasteSet();
 }

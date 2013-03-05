@@ -16,7 +16,8 @@ public abstract class AbstractTraitTypeGroupFactory {
 
   protected abstract Identified getGroupIdentifier(ICasteCollection casteCollection, String groupId);
 
-  public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(ICasteCollection casteCollection, IGroupedTraitType[] traitTypes) {
+  public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(ICasteCollection casteCollection,
+                                                            IGroupedTraitType[] traitTypes) {
     List<String> groupIds = new ArrayList<>();
     MultiEntryMap<String, ITraitType> traitTypesByGroupId = new MultiEntryMap<>();
     for (IGroupedTraitType type : traitTypes) {
@@ -36,7 +37,8 @@ public abstract class AbstractTraitTypeGroupFactory {
     return groups;
   }
 
-  private List<List<ICasteType>> createTraitCasteSet(String groupId, IGroupedTraitType[] traitTypes, ICasteCollection casteCollection) {
+  private List<List<ICasteType>> createTraitCasteSet(String groupId, IGroupedTraitType[] traitTypes,
+                                                     ICasteCollection casteCollection) {
     List<List<ICasteType>> allTypeList = new ArrayList<>();
     for (IGroupedTraitType type : traitTypes) {
       if (!type.getGroupId().equals(groupId)) {
@@ -44,21 +46,16 @@ public abstract class AbstractTraitTypeGroupFactory {
       }
       List<ICasteType> currentTypeList = new ArrayList<>();
       allTypeList.add(currentTypeList);
-      if (type.getTraitCasteSet() != null) {
-        for (int subIndex = 0; subIndex != type.getTraitCasteSet().size(); subIndex++) {
-          String casteTypeId = type.getTraitCasteSet().get(subIndex);
-          ICasteType casteType = casteCollection.getById(casteTypeId);
-          currentTypeList.add(casteType);
-        }
-      } else if (type.getGroupCasteId() != null) {
-        ICasteType casteType = casteCollection.getById(type.getGroupCasteId());
+      for (String casteTypeId : type.getTraitCasteSet()) {
+        ICasteType casteType = casteCollection.getById(casteTypeId);
         currentTypeList.add(casteType);
       }
     }
     return allTypeList;
   }
 
-  private IIdentifiedCasteTraitTypeGroup createTraitGroup(ICasteCollection casteCollection, String groupId, List<ITraitType> traitTypes,
+  private IIdentifiedCasteTraitTypeGroup createTraitGroup(ICasteCollection casteCollection, String groupId,
+                                                          List<ITraitType> traitTypes,
                                                           List<List<ICasteType>> traitCasteTypes) {
     Identified groupIdentifier = getGroupIdentifier(casteCollection, groupId);
     ITraitType[] types = traitTypes.toArray(new ITraitType[traitTypes.size()]);
