@@ -136,10 +136,11 @@ public class TraitFavorization implements ITraitFavorization {
 
   private boolean isSupportedCasteType(ICasteType casteType) {
     ICasteType[] favorizationCaste = getCastes();
-    if (favorizationCaste == null) return false;
-    for (ICasteType caste : favorizationCaste)
-    	if (caste == casteType)
-    		return true;
+    for (ICasteType caste : favorizationCaste) {
+      if (caste == casteType) {
+        return true;
+      }
+    }
     return false;
   }
 }

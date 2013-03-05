@@ -30,21 +30,19 @@ public abstract class AbstractTraitTypeGroupFactory {
     List<IIdentifiedCasteTraitTypeGroup> groups = new ArrayList<>();
     for (String groupId : groupIds) {
       List<ITraitType> groupTraitTypes = traitTypesByGroupId.get(groupId);
-      List<List<ICasteType>> allTypeList = new ArrayList<>();
+      MultiEntryMap<ITraitType, ICasteType> castesByTrait = new MultiEntryMap<>();
       for (GroupedTraitType type : traitTypes) {
         if (!type.getGroupId().equals(groupId)) {
           continue;
         }
-        List<ICasteType> currentTypeList = new ArrayList<>();
-        allTypeList.add(currentTypeList);
         for (String casteTypeId : type.getTraitCasteSet()) {
           ICasteType casteType = casteCollection.getById(casteTypeId);
-          currentTypeList.add(casteType);
+          castesByTrait.add(type.getTraitType(), casteType);
         }
       }
       Identified groupIdentifier = getGroupIdentifier(casteCollection, groupId);
       ITraitType[] types = groupTraitTypes.toArray(new ITraitType[groupTraitTypes.size()]);
-      groups.add(new IdentifiedCasteTraitTypeGroup(types, groupIdentifier, allTypeList));
+      groups.add(new IdentifiedCasteTraitTypeGroup(types, groupIdentifier, castesByTrait));
     }
     return groups.toArray(new IIdentifiedCasteTraitTypeGroup[groups.size()]);
   }

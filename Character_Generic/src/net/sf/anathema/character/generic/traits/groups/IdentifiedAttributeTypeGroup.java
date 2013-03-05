@@ -21,6 +21,6 @@ public class IdentifiedAttributeTypeGroup extends TraitTypeGroup implements IIde
 
   @Override
   public ICasteType[] getTraitCasteTypes(ITraitType type) {
-    return null;
+    return new ICasteType[0];
   }
 }
