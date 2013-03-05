@@ -25,7 +25,7 @@ public class CharmCardDataProvider extends AbstractMagicCardDataProvider {
     for (ICharm charm : getCurrentCharms(character)) {
       cards.add(new CharmCardData(charm, createCharmStats(character, charm), getMagicDescription(charm), fontProvider, getResources()));
     }
-    return cards.toArray(new ICardData[0]);
+    return cards.toArray(new ICardData[cards.size()]);
   }
 
   private ICharm[] getCurrentCharms(ICharacter character) {

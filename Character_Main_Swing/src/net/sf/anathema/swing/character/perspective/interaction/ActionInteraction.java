@@ -1,6 +1,8 @@
 package net.sf.anathema.swing.character.perspective.interaction;
 
 import net.sf.anathema.framework.perspective.ToolBar;
+import net.sf.anathema.interaction.CommandProxy;
+import net.sf.anathema.interaction.Interaction;
 import net.sf.anathema.lib.gui.action.SmartAction;
 import net.sf.anathema.lib.resources.IResources;
 

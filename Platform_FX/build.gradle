@@ -1,3 +1,12 @@
+configurations {
+    provided
+}
+
+sourceSets {
+    main { compileClasspath += configurations.provided }
+}
+
 dependencies {
+    provided files("${System.properties['java.home']}/lib/jfxrt.jar")
     compile project(':Lib_Gui')
 }

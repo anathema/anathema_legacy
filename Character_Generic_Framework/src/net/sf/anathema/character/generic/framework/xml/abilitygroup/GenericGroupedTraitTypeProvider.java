@@ -26,20 +26,25 @@ public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupe
 
   public void addGroupedAbilityType(String abilityTypeId, String traitTypeId, String groupCasteId, List<String> traitCasteIds) {
     ITraitType traitType = traitTypeGroup.getById(abilityTypeId);
-    groupedTraitTypes.add(traitCasteIds.size() > 0 ?
-    		new GroupedTraitType(traitType, traitCasteIds, traitTypeId) :
-    		new GroupedTraitType(traitType, traitTypeId, groupCasteId));
+    GroupedTraitType type = createType(traitTypeId, groupCasteId, traitCasteIds, traitType);
+    groupedTraitTypes.add(type);
+  }
+
+  private GroupedTraitType createType(String traitTypeId, String groupCasteId, List<String> traitCasteIds, ITraitType traitType) {
+    if (traitCasteIds.isEmpty()) {
+      return new GroupedTraitType(traitType, traitTypeId, groupCasteId);
+    }
+    return new GroupedTraitType(traitType, traitCasteIds, traitTypeId);
   }
 
   @Override
   public GenericGroupedTraitTypeProvider clone() {
     GenericGroupedTraitTypeProvider clone;
     try {
-      clone = (GenericGroupedTraitTypeProvider)super.clone();
+      clone = (GenericGroupedTraitTypeProvider) super.clone();
     } catch (CloneNotSupportedException e) {
       throw new UnreachableCodeReachedException(e);
     }
-    
     clone.groupedTraitTypes = new ArrayList<>(groupedTraitTypes);
     return clone;
   }
