@@ -53,6 +53,10 @@ public class PerspectivePane implements IView {
     contentPanel.setCenter(component);
   }
 
+  public void addStyleSheetClass(String styleClass) {
+    outerPane.getStyleClass().add(styleClass);
+  }
+
   @Override
   public JComponent getComponent() {
     return bridgePanel;

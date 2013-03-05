@@ -4,10 +4,10 @@ import net.sf.anathema.scribe.editor.model.ScrollModel;
 import net.sf.anathema.scribe.editor.model.WikiText;
 import net.sf.anathema.scribe.editor.view.TextTypedListener;
 
-public class UpdateTextInScroll implements TextTypedListener {
+public class UpdateScrollContent implements TextTypedListener {
   private final ScrollModel scrollModel;
 
-  public UpdateTextInScroll(ScrollModel scrollModel) {
+  public UpdateScrollContent(ScrollModel scrollModel) {
     this.scrollModel = scrollModel;
   }
 

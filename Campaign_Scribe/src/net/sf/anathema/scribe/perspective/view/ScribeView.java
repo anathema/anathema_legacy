@@ -15,6 +15,7 @@ public class ScribeView {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
+        perspectivePane.addStyleSheetClass("scribe-perspective");
         perspectivePane.setNavigationComponent(scribeNavigation.getNode());
         perspectivePane.setContentComponent(scrollView.getNode());
       }
