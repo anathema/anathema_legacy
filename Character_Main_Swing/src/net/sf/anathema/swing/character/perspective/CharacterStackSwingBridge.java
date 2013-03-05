@@ -2,7 +2,7 @@ package net.sf.anathema.swing.character.perspective;
 
 import net.sf.anathema.character.perspective.CharacterStackBridge;
 import net.sf.anathema.character.perspective.model.model.CharacterIdentifier;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.gui.IView;
 
@@ -13,8 +13,8 @@ public class CharacterStackSwingBridge implements CharacterStackBridge {
   private final StackView stackView;
   private final CharacterViewFactory viewFactory;
 
-  public CharacterStackSwingBridge(IAnathemaModel model, StackView stackView) {
-    this.viewFactory =  new CharacterViewFactory(model);
+  public CharacterStackSwingBridge(IApplicationModel model, StackView stackView) {
+    this.viewFactory = new CharacterViewFactory(model);
     this.stackView = stackView;
   }
 

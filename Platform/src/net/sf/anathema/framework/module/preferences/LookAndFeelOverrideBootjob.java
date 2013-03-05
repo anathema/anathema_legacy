@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.module.preferences;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.initialization.BootJob;
@@ -29,7 +29,7 @@ import javax.swing.UIManager;
 @Weight(weight = 30)
 public class LookAndFeelOverrideBootjob implements IBootJob {
   @Override
-  public void run(IResources resources, IAnathemaModel model) {
+  public void run(IResources resources, IApplicationModel model) {
     if (userRequestedLookAndFeelOverride()) {
       resetLookAndFeelPreference();
       if (currentLookAndFeelIsNotSystemLookAndFeel()) {
@@ -57,8 +57,7 @@ public class LookAndFeelOverrideBootjob implements IBootJob {
     try {
       UIManager.setLookAndFeel(systemName);
     } catch (Exception ex) {
-      Logger.getLogger(LookAndFeelOverrideBootjob.class).error(
-              "Failed to revert to Look and Feel to the system Look and Feel", ex);
+      Logger.getLogger(LookAndFeelOverrideBootjob.class).error("Failed to revert to Look and Feel to the system Look and Feel", ex);
     }
   }
 

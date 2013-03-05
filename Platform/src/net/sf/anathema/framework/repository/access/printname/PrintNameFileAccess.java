@@ -40,7 +40,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
 
   @Override
   public Collection<PrintNameFile> collectAllPrintNameFiles(IItemType type) {
-    File repositoryFolder = resolver.getItemTypeFolder(type);
+    File repositoryFolder = resolver.getFolder(type.getRepositoryConfiguration());
     File[] subfiles = repositoryFolder.listFiles();
     List<PrintNameFile> printNameFiles = new ArrayList<>();
     if (subfiles == null) {
@@ -66,13 +66,13 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     if (!folder.isDirectory() || !folder.exists()) {
       return null;
     }
-    File mainFile = resolver.getMainFile(folder, itemType);
+    File mainFile = resolver.getMainFile(folder, itemType.getRepositoryConfiguration());
     if (!mainFile.exists()) {
       return null;
     }
     PrintNameFile mainPrintNameFile = createSingleFilePrintNameFile(mainFile, itemType);
-    return new PrintNameFile(mainPrintNameFile.getFile().getParentFile(), mainPrintNameFile.getPrintName(),
-            mainPrintNameFile.getRepositoryId(), mainPrintNameFile.getItemType());
+    return new PrintNameFile(mainPrintNameFile.getFile().getParentFile(), mainPrintNameFile.getPrintName(), mainPrintNameFile.getRepositoryId(),
+            mainPrintNameFile.getItemType());
   }
 
   private PrintNameFile createSingleFilePrintNameFile(File file, IItemType itemType) {
@@ -109,8 +109,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     return new PrintNameFile(file, printNameMatcher.group(1), idMatcher.group(1), itemType);
   }
 
-  private PrintNameFile extractPrintnameThroughXml(File file,
-                                                   IItemType itemType) throws FileNotFoundException {
+  private PrintNameFile extractPrintnameThroughXml(File file, IItemType itemType) throws FileNotFoundException {
     Document doc;
     try {
       doc = DocumentUtilities.read(file.toPath());

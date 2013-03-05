@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.repository.tree;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.messaging.IMessaging;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.lib.gui.dialog.userdialog.page.AbstractDialogPage;
@@ -13,9 +13,9 @@ import javax.swing.JComponent;
 public class RepositoryBrowserDialogPage extends AbstractDialogPage {
 
   private final IResources resources;
-  private final IAnathemaModel model;
+  private final IApplicationModel model;
 
-  public RepositoryBrowserDialogPage(IResources resources, IAnathemaModel model) {
+  public RepositoryBrowserDialogPage(IResources resources, IApplicationModel model) {
     super(resources.getString("AnathemaCore.Tools.RepositoryView.DialogMessage")); //$NON-NLS-1$
     this.resources = resources;
     this.model = model;
@@ -24,19 +24,12 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
   @Override
   public JComponent createContent() {
     RepositoryTreeView treeView = new RepositoryTreeView();
-    ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) model.getExtensionPointRegistry()
-        .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+    ItemTypeCreationViewPropertiesExtensionPoint extension =
+            (ItemTypeCreationViewPropertiesExtensionPoint) model.getExtensionPointRegistry().get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     ObjectUiTreeCellRenderer renderer = new ObjectUiTreeCellRenderer(new ItemTypeTreeUi(resources, extension));
-    RepositoryTreeModel repositoryTreeModel = new RepositoryTreeModel(
-        model.getRepository(),
-        model.getItemManagement(),
-        model.getItemTypeRegistry());
-    new RepositoryTreePresenter(
-        resources,
-        repositoryTreeModel,
-        treeView,
-        renderer,
-        "AnathemaCore.Tools.RepositoryView.TreeRoot").initPresentation(); //$NON-NLS-1$
+    RepositoryTreeModel repositoryTreeModel = new RepositoryTreeModel(model.getRepository(), model.getItemManagement(), model.getItemTypeRegistry());
+    new RepositoryTreePresenter(resources, repositoryTreeModel, treeView, renderer, "AnathemaCore.Tools.RepositoryView.TreeRoot")
+            .initPresentation(); //$NON-NLS-1$
     IMessaging messaging = model.getMessaging();
     AmountMessaging fileCountMessaging = new AmountMessaging(messaging, resources);
     new RepositoryItemDeletionPresenter(resources, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();

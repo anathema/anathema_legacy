@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
@@ -65,27 +65,26 @@ public class AnathemaSaveAllAction extends SmartAction {
     setEnabled(enable);
   }
 
-  private IAnathemaModel model;
+  private IApplicationModel model;
   private IResources resources;
 
-  public static Action createToolAction(IAnathemaModel model, IResources resources) {
+  public static Action createToolAction(IApplicationModel model, IResources resources) {
     SmartAction action = new AnathemaSaveAllAction(model, resources);
     action.setToolTipText(resources.getString("AnathemaPersistence.SaveAllAction.Tooltip")); //$NON-NLS-1$
     action.setIcon(new PlatformUI(resources).getSaveAllTaskBarIcon());
     return action;
   }
 
-  public static Action createMenuAction(IAnathemaModel model, IResources resources) {
+  public static Action createMenuAction(IApplicationModel model, IResources resources) {
     SmartAction action = new AnathemaSaveAllAction(model, resources);
     action.setName(resources.getString("AnathemaPersistence.SaveAllAction.Name")); //$NON-NLS-1$
     return action;
   }
 
-  private AnathemaSaveAllAction(IAnathemaModel model, IResources resources) {
+  private AnathemaSaveAllAction(IApplicationModel model, IResources resources) {
     this.model = model;
     SaveAllEnabledListener listener = new SaveAllEnabledListener();
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_MASK
-        | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.SHIFT_MASK | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     model.getItemManagement().addListener(listener);
     listener.itemAdded(null);
     this.resources = resources;
@@ -101,10 +100,9 @@ public class AnathemaSaveAllAction extends SmartAction {
           IRepositoryItemPersister persister = model.getPersisterRegistry().get(item.getItemType());
           persister.save(writeAccess, item);
           item.setClean();
-        }
-        catch (IOException | RepositoryException e) {
-          MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(
-              resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
+        } catch (IOException | RepositoryException e) {
+          MessageUtilities.indicateMessage(getClass(), parentComponent,
+                  new Message(resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
         } finally {
           parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         }

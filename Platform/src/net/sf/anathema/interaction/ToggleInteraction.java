@@ -1,4 +1,4 @@
-package net.sf.anathema.swing.character.perspective.interaction;
+package net.sf.anathema.interaction;
 
 public interface ToggleInteraction extends Interaction {
 

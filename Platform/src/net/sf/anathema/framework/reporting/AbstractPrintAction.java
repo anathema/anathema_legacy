@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.IItem;
@@ -27,10 +27,10 @@ import static java.awt.Desktop.isDesktopSupported;
 
 public abstract class AbstractPrintAction extends SmartAction {
   public static final String PDF_EXTENSION = ".pdf"; //$NON-NLS-1$
-  protected final IAnathemaModel anathemaModel;
+  protected final IApplicationModel anathemaModel;
   protected final IResources resources;
 
-  public AbstractPrintAction(IAnathemaModel anathemaModel, IResources resources) {
+  public AbstractPrintAction(IApplicationModel anathemaModel, IResources resources) {
     this.anathemaModel = anathemaModel;
     this.resources = resources;
     setHotKey();
@@ -47,8 +47,8 @@ public abstract class AbstractPrintAction extends SmartAction {
     setAcceleratorKey(createKeyStroke());
   }
 
-  protected void printWithProgress(Component parentComponent, final IItem item, final Report selectedReport,
-                                   final Path selectedFile) throws InvocationTargetException {
+  protected void printWithProgress(Component parentComponent, final IItem item, final Report selectedReport, final Path selectedFile) throws
+          InvocationTargetException {
     new ProgressMonitorDialog(parentComponent, anathemaModel.generateInformativeMessage()).run(
             //$NON-NLS-1$
             new INonInterruptibleRunnableWithProgress() {
@@ -63,8 +63,7 @@ public abstract class AbstractPrintAction extends SmartAction {
             });
   }
 
-  private void performPrint(IProgressMonitor monitor, IItem item, Report selectedReport,
-                            Path selectedFile) throws IOException, ReportException {
+  private void performPrint(IProgressMonitor monitor, IItem item, Report selectedReport, Path selectedFile) throws IOException, ReportException {
     monitor.beginTaskWithUnknownTotalWork(resources.getString("Anathema.Reporting.Print.Progress.Task")); //$NON-NLS-1$
     OutputStream stream = null;
     try {

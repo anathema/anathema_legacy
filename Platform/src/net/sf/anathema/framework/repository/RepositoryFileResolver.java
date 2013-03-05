@@ -17,23 +17,44 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
   }
 
   @Override
-  public File getItemTypeFolder(IItemType type) {
-    return new File(repositoryFile, type.getRepositoryConfiguration().getFolderName());
+  public File getMainFile(IRepositoryConfiguration configuration, String id) {
+    if (configuration.isItemSavedToSingleFile()) {
+      return getItemFile(configuration, id);
+    }
+    return getMainFile(getItemFolder(configuration, id), configuration);
   }
 
-  public File getExistingItemTypeFolder(IItemType type) {
-    File typeFolder = getItemTypeFolder(type);
+  @Override
+  public File getMainFile(File folder, IRepositoryConfiguration configuration) {
+    return new File(folder, configuration.getMainFileName() + configuration.getFileExtension());
+  }
+
+  @Override
+  public Collection<Path> listAllFiles(IRepositoryConfiguration configuration) {
+    File folder = getExistingItemTypeFolder(configuration);
+    String fileExtension = getExtension(configuration);
+    return PathUtils.listAll(folder.toPath(), "*." + fileExtension);
+  }
+
+  @Override
+  public File getFolder(IRepositoryConfiguration configuration) {
+    return new File(repositoryFile, configuration.getFolderName());
+  }
+
+  public File getItemFile(IItem item) {
+    IItemType type = item.getItemType();
+    String id = item.getId();
+    return getItemFile(type.getRepositoryConfiguration(), id);
+  }
+
+  public File getExistingItemTypeFolder(IRepositoryConfiguration configuration) {
+    File typeFolder = getFolder(configuration);
     createNonExistentFolder(typeFolder);
     return typeFolder;
   }
 
-  private File getItemFolder(IItemType type, String id) {
-    File typeFolder = getExistingItemTypeFolder(type);
-    return new File(typeFolder, id);
-  }
-
   public File getExistingItemFolder(IItemType type, String id) {
-    File itemFolder = getItemFolder(type, id);
+    File itemFolder = getItemFolder(type.getRepositoryConfiguration(), id);
     createNonExistentFolder(itemFolder);
     return itemFolder;
   }
@@ -56,43 +77,21 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     }
   }
 
-  private File getItemFile(IItemType type, String id) {
-    String extension = type.getRepositoryConfiguration().getFileExtension();
-    return new File(getExistingItemTypeFolder(type), id + extension);
+  private File getItemFile(IRepositoryConfiguration configuration, String id) {
+    String extension = configuration.getFileExtension();
+    return new File(getExistingItemTypeFolder(configuration), id + extension);
   }
 
-  public File getItemFile(IItem item) {
-    IItemType type = item.getItemType();
-    String id = item.getId();
-    return getItemFile(type, id);
-  }
-
-  @Override
-  public File getMainFile(IItemType type, String id) {
-    if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
-      return getItemFile(type, id);
-    }
-    return getMainFile(getItemFolder(type, id), type);
-  }
-
-  @Override
-  public File getMainFile(File folder, IItemType type) {
-    IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
-    return new File(folder, repositoryConfiguration.getMainFileName() + repositoryConfiguration.getFileExtension());
-  }
-
-  @Override
-  public Collection<Path> listAllFiles(IItemType itemType) {
-    File folder = getExistingItemTypeFolder(itemType);
-    String fileExtension = getExtension(itemType);
-    return PathUtils.listAll(folder.toPath(), "*."+fileExtension);
-  }
-
-  private String getExtension(IItemType itemType) {
-    String fileExtension = itemType.getRepositoryConfiguration().getFileExtension();
+  private String getExtension(IRepositoryConfiguration configuration) {
+    String fileExtension = configuration.getFileExtension();
     if (fileExtension.startsWith(".")) {
       return fileExtension.substring(1);
     }
     return fileExtension;
+  }
+
+  private File getItemFolder(IRepositoryConfiguration configuration, String id) {
+    File typeFolder = getExistingItemTypeFolder(configuration);
+    return new File(typeFolder, id);
   }
 }

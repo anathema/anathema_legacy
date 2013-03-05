@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.type.CharacterTypes;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.repository.IItem;
@@ -20,7 +20,7 @@ import net.sf.anathema.lib.util.Identifier;
 
 public class CharacterCreationSteps {
   private CharacterTypes characterTypes;
-  private IAnathemaModel model;
+  private IApplicationModel model;
   private final CharacterHolder holder;
 
   @Inject

@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.module;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.view.ApplicationView;
@@ -21,21 +21,18 @@ public abstract class AbstractNonPersistableItemTypeConfiguration implements IIt
   }
 
   @Override
-  public final void registerViewFactory(IAnathemaModel anathemaModel, IResources resources) {
+  public final void registerViewFactory(IApplicationModel anathemaModel, IResources resources) {
     // nothing to do
   }
 
   @Override
-  public final void fillPresentationExtensionPoints(
-      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
-      IResources resources,
-      IAnathemaModel model,
-      ApplicationView view) {
+  public final void fillPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IResources resources,
+                                                    IApplicationModel model, ApplicationView view) {
     //nothing to do
   }
 
   @Override
-  public void initModel(IAnathemaModel model) {
+  public void initModel(IApplicationModel model) {
     //nothing to do    
   }
 }

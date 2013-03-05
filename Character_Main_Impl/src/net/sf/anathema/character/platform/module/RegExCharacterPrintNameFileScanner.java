@@ -56,7 +56,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
   private void scan(PrintNameFile file) throws IOException {
     Document document;
     try {
-      File scanFile = resolver.getMainFile(file.getItemType(), file.getRepositoryId());
+      File scanFile = resolver.getMainFile(file.getItemType().getRepositoryConfiguration(), file.getRepositoryId());
       document = DocumentUtilities.read(scanFile.toPath());
     } catch (AnathemaException ex) {
       scanCompatible(file);
@@ -91,7 +91,7 @@ public class RegExCharacterPrintNameFileScanner implements CharacterPrintNameFil
 
   // Used only by scan as a fall-back method for backward compatibility when all fails.
   private void scanCompatible(PrintNameFile file) throws IOException {
-    File scanFile = resolver.getMainFile(file.getItemType(), file.getRepositoryId());
+    File scanFile = resolver.getMainFile(file.getItemType().getRepositoryConfiguration(), file.getRepositoryId());
     String content = FileUtils.readFileToString(scanFile, PrintNameFileAccess.COMPATIBILITY_ENCODING);
     Matcher typeMatcher = typePattern.matcher(content);
     typeMatcher.find();

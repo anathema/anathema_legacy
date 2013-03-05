@@ -1,12 +1,12 @@
 package net.sf.anathema.character.platform.bootjob;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 
 import java.io.File;
 
 public class FirstEditionDeleter extends CharacterChanger {
 
-  public FirstEditionDeleter(IAnathemaModel model) {
+  public FirstEditionDeleter(IApplicationModel model) {
     super(model);
   }
 

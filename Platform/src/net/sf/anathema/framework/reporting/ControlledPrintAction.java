@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.ObjectSelectionDialogPage;
 import net.sf.anathema.framework.module.DefaultObjectSelectionProperties;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
@@ -30,21 +30,20 @@ import static net.sf.anathema.framework.module.preferences.OpenPdfPreferencesEle
 
 public class ControlledPrintAction extends AbstractPrintAction {
 
-  public static Action createMenuAction(IAnathemaModel model, IResources resources) {
+  public static Action createMenuAction(IApplicationModel model, IResources resources) {
     SmartAction action = new ControlledPrintAction(model, resources);
-    action.setName(
-            resources.getString("Anathema.Reporting.Menu.PrintItem.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
+    action.setName(resources.getString("Anathema.Reporting.Menu.PrintItem.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
     return action;
   }
 
-  public static Action createToolAction(IAnathemaModel model, IResources resources) {
+  public static Action createToolAction(IApplicationModel model, IResources resources) {
     SmartAction action = new ControlledPrintAction(model, resources);
     action.setToolTipText(resources.getString("Anathema.Reporting.Menu.PrintItem.Name")); //$NON-NLS-1$
     action.setIcon(new PlatformUI(resources).getPDFTaskBarIcon());
     return action;
   }
 
-  private ControlledPrintAction(IAnathemaModel anathemaModel, IResources resources) {
+  private ControlledPrintAction(IApplicationModel anathemaModel, IResources resources) {
     super(anathemaModel, resources);
   }
 
@@ -93,8 +92,7 @@ public class ControlledPrintAction extends AbstractPrintAction {
   private boolean checkFileAllowed(Component parentComponent, Path selectedFile) {
     String message = resources.getString("Anathema.Reporting.PrintAction.OverwriteMessage"); //$NON-NLS-1$
     String title = resources.getString("Anathema.Reporting.PrintAction.OverwriteTitle"); //$NON-NLS-1$
-    return !Files.exists(selectedFile) || JOptionPane.showConfirmDialog(parentComponent, message, title,
-            JOptionPane.YES_NO_OPTION) != 1;
+    return !Files.exists(selectedFile) || JOptionPane.showConfirmDialog(parentComponent, message, title, JOptionPane.YES_NO_OPTION) != 1;
   }
 
   private Report selectReport(Component parentComponent, IItem item) {
@@ -107,8 +105,7 @@ public class ControlledPrintAction extends AbstractPrintAction {
   }
 
   private Report selectReport(Component parentComponent, Report[] reports) {
-    IObjectSelectionProperties properties = new DefaultObjectSelectionProperties(resources,
-            "Anathema.Reporting.PrintSelection.Message",
+    IObjectSelectionProperties properties = new DefaultObjectSelectionProperties(resources, "Anathema.Reporting.PrintSelection.Message",
             "Anathema.Reporting.PrintSelection.Title"); //$NON-NLS-1$ //$NON-NLS-2$
     ObjectSelectionDialogPage dialogPage = new ObjectSelectionDialogPage(reports, properties);
     UserDialog userDialog = new UserDialog(parentComponent, dialogPage);

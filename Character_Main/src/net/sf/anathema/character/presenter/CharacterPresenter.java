@@ -15,7 +15,7 @@ import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.view.ContentView;
 import net.sf.anathema.framework.presenter.view.MultipleContentView;
 import net.sf.anathema.framework.presenter.view.SimpleViewContentView;
@@ -40,12 +40,12 @@ public class CharacterPresenter implements Presenter, MultipleContentViewPresent
 
   private final ICharacter character;
   private final ICharacterView characterView;
-  private final IAnathemaModel anathemaModel;
+  private final IApplicationModel anathemaModel;
   private final IResources resources;
   private final PointPresentationStrategy pointPresentation;
   private MultipleContentView miscView;
 
-  public CharacterPresenter(ICharacter character, ICharacterView view, IResources resources, IAnathemaModel anathemaModel,
+  public CharacterPresenter(ICharacter character, ICharacterView view, IResources resources, IApplicationModel anathemaModel,
                             PointPresentationStrategy pointPresentation) {
     this.character = character;
     this.characterView = view;

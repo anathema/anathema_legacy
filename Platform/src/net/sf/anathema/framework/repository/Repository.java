@@ -101,7 +101,7 @@ public class Repository implements IRepository {
   }
 
   private IRepositoryWriteAccess createSingleFileWriteAccess(IItemType type, String id) throws RepositoryException {
-    File file = resolver.getMainFile(type, id);
+    File file = resolver.getMainFile(type.getRepositoryConfiguration(), id);
     return createSingleFileWriteAccess(file);
   }
 
@@ -134,7 +134,7 @@ public class Repository implements IRepository {
   }
 
   private boolean idExists(IItemType type, String id) {
-    return resolver.getMainFile(type, id).exists();
+    return resolver.getMainFile(type.getRepositoryConfiguration(), id).exists();
   }
 
   @Override
@@ -146,26 +146,25 @@ public class Repository implements IRepository {
       return new SingleFileReadAccess(provider.getFile());
     }
     IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
-    return new MultiFileReadAccess(provider.getFile(), repositoryConfiguration.getMainFileName(),
-            repositoryConfiguration.getFileExtension());
+    return new MultiFileReadAccess(provider.getFile(), repositoryConfiguration.getMainFileName(), repositoryConfiguration.getFileExtension());
   }
 
   @Override
   public IRepositoryReadAccess openReadAccess(IItemType type, String id) {
     if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
-      return new SingleFileReadAccess(getRepositoryFileResolver().getMainFile(type, id));
+      return new SingleFileReadAccess(getRepositoryFileResolver().getMainFile(type.getRepositoryConfiguration(), id));
     }
     IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
-    return new MultiFileReadAccess(getRepositoryFileResolver().getItemTypeFolder(type),
+    return new MultiFileReadAccess(getRepositoryFileResolver().getFolder(type.getRepositoryConfiguration()),
             repositoryConfiguration.getMainFileName(), repositoryConfiguration.getFileExtension());
   }
 
   @Override
   public boolean knowsItem(IItemType type, String id) {
     if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
-      return getRepositoryFileResolver().getMainFile(type, id).exists();
+      return getRepositoryFileResolver().getMainFile(type.getRepositoryConfiguration(), id).exists();
     }
-    return getRepositoryFileResolver().getItemTypeFolder(type).exists();
+    return getRepositoryFileResolver().getFolder(type.getRepositoryConfiguration()).exists();
   }
 
   @Override

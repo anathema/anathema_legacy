@@ -1,6 +1,6 @@
 package net.sf.anathema.swing.character.perspective;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.repository.IItem;
@@ -11,15 +11,15 @@ import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retr
 
 public class CharacterViewFactory {
 
-  private IAnathemaModel model;
+  private IApplicationModel model;
 
-  public CharacterViewFactory(IAnathemaModel model) {
+  public CharacterViewFactory(IApplicationModel model) {
     this.model = model;
   }
 
   public IView createView(IItem item) {
     IItemType characterItemType = retrieveCharacterItemType(model);
-    IRegistry<IItemType,IItemViewFactory> registry = model.getViewFactoryRegistry();
+    IRegistry<IItemType, IItemViewFactory> registry = model.getViewFactoryRegistry();
     IItemViewFactory factory = registry.get(characterItemType);
     return factory.createView(item);
   }

@@ -19,7 +19,7 @@ import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.CharmStats;
 import net.sf.anathema.character.reporting.pdf.content.stats.magic.SpellStats;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.pdf.AbstractPdfReport;
 import net.sf.anathema.framework.reporting.pdf.PdfReportUtils;
@@ -31,10 +31,10 @@ import static java.text.MessageFormat.format;
 public class MagicReport extends AbstractPdfReport {
 
   private final IResources resources;
-  private final IAnathemaModel model;
+  private final IApplicationModel model;
   private final MagicPartFactory partFactory;
 
-  public MagicReport(IResources resources, IAnathemaModel model) {
+  public MagicReport(IResources resources, IApplicationModel model) {
     this.resources = resources;
     this.model = model;
     partFactory = new MagicPartFactory(new PdfReportUtils());

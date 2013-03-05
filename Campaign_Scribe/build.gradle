@@ -1,4 +1,16 @@
+configurations {
+    provided
+}
+
+sourceSets {
+    main { compileClasspath += configurations.provided }
+}
+
 dependencies {
+    provided files("${System.properties['java.home']}/lib/jfxrt.jar")
+    compile 'com.github.rjeschke:txtmark:0.8'
     compile project(':Platform')
-    compile project(':Campaign_Plot')
+    compile project(':Platform_FX')
+    compile 'com.miglayout:miglayout-javafx:4.2'
+    testCompile parent.ext.testDependencies
 }

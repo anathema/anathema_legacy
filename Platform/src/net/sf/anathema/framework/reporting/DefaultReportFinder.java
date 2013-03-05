@@ -1,15 +1,15 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
 public class DefaultReportFinder {
 
-  private IAnathemaModel anathemaModel;
+  private IApplicationModel anathemaModel;
   private IResources resources;
 
-  public DefaultReportFinder(IAnathemaModel anathemaModel, IResources resources) {
+  public DefaultReportFinder(IApplicationModel anathemaModel, IResources resources) {
     this.anathemaModel = anathemaModel;
     this.resources = resources;
   }

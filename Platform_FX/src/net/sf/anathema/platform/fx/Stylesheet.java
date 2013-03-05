@@ -1,4 +1,4 @@
-package net.sf.anathema.fx.character.perspective;
+package net.sf.anathema.platform.fx;
 
 import javafx.scene.Scene;
 
@@ -12,7 +12,7 @@ public class Stylesheet {
     this.path = pathBeneathSourceFolder;
   }
 
-  public void applyToScene(Scene scene){
+  public void applyToScene(Scene scene) {
     URL resource = new ResourceLoader().loadResourceAsUrl(path);
     scene.getStylesheets().add(resource.toExternalForm());
   }

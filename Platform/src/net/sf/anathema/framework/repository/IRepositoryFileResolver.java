@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.repository;
 
-import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.item.IRepositoryConfiguration;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -8,11 +8,11 @@ import java.util.Collection;
 
 public interface IRepositoryFileResolver {
 
-  File getMainFile(IItemType type, String id);
+  File getMainFile(IRepositoryConfiguration configuration, String id);
 
-  File getItemTypeFolder(IItemType type);
+  File getMainFile(File folder, IRepositoryConfiguration configuration);
 
-  File getMainFile(File folder, IItemType itemType);
+  File getFolder(IRepositoryConfiguration configuration);
 
-  Collection<Path> listAllFiles(IItemType equipmentType);
+  Collection<Path> listAllFiles(IRepositoryConfiguration configuration);
 }

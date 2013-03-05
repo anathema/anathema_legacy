@@ -1,7 +1,7 @@
 package net.sf.anathema.campaign.module.reporting;
 
 import net.sf.anathema.campaign.reporting.MultiColumnSeriesReport;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.reporting.Report;
 import net.sf.anathema.initialization.ReportFactoryAutoCollector;
@@ -13,7 +13,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class SeriesReportFactory implements IReportFactory {
 
   @Override
-  public Report[] createReport(IResources resources, IAnathemaModel model) {
+  public Report[] createReport(IResources resources, IApplicationModel model) {
     return new Report[]{new MultiColumnSeriesReport(resources)};
   }
 }

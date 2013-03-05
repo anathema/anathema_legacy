@@ -1,3 +1,15 @@
-.root {
-    -fx-background-color: white
+.scheme {
+    -first-color: rgb(239, 248, 255);
+    -previous-color: rgb(149, 165, 178);
+    -base-color: rgb(214, 237, 255);
+    -next-color: rgb(178, 153, 114);
+    -last-color: rgb(255, 239, 214);
+}
+
+.scroll-preview-pane {
+    -fx-border-color: silver;
+}
+
+.scroll-preview-browser {
+    -fx-context-menu-enabled: false;
 }

@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.module;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.character.equipment.impl.item.model.gson.GsonEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.module.IDatabaseActionProperties;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
@@ -15,9 +15,9 @@ public class EquipmentDatabaseActionProperties implements IDatabaseActionPropert
   private static final String EQUIPMENT_DATABASE_ITEM_ID = "EquipmentDatabase.Item"; //$NON-NLS-1$
 
   private final IResources resources;
-  private final IAnathemaModel anathemaModel;
+  private final IApplicationModel anathemaModel;
 
-  public EquipmentDatabaseActionProperties(IResources resources, IAnathemaModel anathemaModel) {
+  public EquipmentDatabaseActionProperties(IResources resources, IApplicationModel anathemaModel) {
     this.resources = resources;
     this.anathemaModel = anathemaModel;
   }

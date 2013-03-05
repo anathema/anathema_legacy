@@ -6,7 +6,7 @@ import net.sf.anathema.campaign.presenter.CampaignPresenter;
 import net.sf.anathema.campaign.presenter.TextEditorProperties;
 import net.sf.anathema.campaign.presenter.view.ISeriesView;
 import net.sf.anathema.campaign.view.CampaignView;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -35,7 +35,7 @@ public class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfigur
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, final IResources resources) {
+  protected IItemViewFactory createItemViewFactory(IApplicationModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
       @Override
       public IItemView createView(IItem item) throws AnathemaException {
@@ -51,14 +51,12 @@ public class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfigur
   }
 
   @Override
-  protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
+  protected IRepositoryItemPersister createPersister(IApplicationModel model) {
     return new SeriesPersister(getItemType());
   }
 
   @Override
-  protected IItemTypeViewProperties createItemTypeCreationProperties(
-      IAnathemaModel anathemaModel,
-      IResources resources) {
+  protected IItemTypeViewProperties createItemTypeCreationProperties(IApplicationModel anathemaModel, IResources resources) {
     return new SimpleItemTypeViewProperties(getItemType(), new PlotUI(resources).getSeriesTabIcon());
   }
 }

@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.interaction.Command;
@@ -26,7 +26,7 @@ public class PrintCommand implements Command {
 
   public static final String PDF_EXTENSION = ".pdf";
   private IResources resources;
-  private IAnathemaModel model;
+  private IApplicationModel model;
   private JComponent parent;
   private IItem item;
   private Report report;
@@ -36,7 +36,7 @@ public class PrintCommand implements Command {
     return isDesktopSupported();
   }
 
-  public PrintCommand(IResources resources, IAnathemaModel model, JComponent parent, IItem item, Report report, FileChooser fileChooser) {
+  public PrintCommand(IResources resources, IApplicationModel model, JComponent parent, IItem item, Report report, FileChooser fileChooser) {
     this.resources = resources;
     this.model = model;
     this.parent = parent;

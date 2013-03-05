@@ -139,7 +139,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   @Override
   public String getMainFilePath(IItemType type, String id) {
-    return repository.getRepositoryFileResolver().getMainFile(type, id).getPath();
+    return repository.getRepositoryFileResolver().getMainFile(type.getRepositoryConfiguration(), id).getPath();
   }
 
   @Override

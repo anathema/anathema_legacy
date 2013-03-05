@@ -1,6 +1,6 @@
 package net.sf.anathema.initialization;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.repository.IRepository;
@@ -19,7 +19,7 @@ public class ExtensionWithIdTest {
   ResourceLoader loader = mock(ResourceLoader.class);
   AnnotationFinder finder = mock(AnnotationFinder.class);
   IResources resources = mock(IResources.class);
-  IAnathemaModel model = mock(IAnathemaModel.class);
+  IApplicationModel model = mock(IApplicationModel.class);
   IRepository repository = mock(IRepository.class);
   IAnathemaExtension extension = mock(IAnathemaExtension.class);
   IInitializationPreferences preferences = mock(IInitializationPreferences.class);

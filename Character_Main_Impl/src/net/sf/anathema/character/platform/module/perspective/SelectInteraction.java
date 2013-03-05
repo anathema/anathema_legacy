@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.module.perspective;
 
+import net.sf.anathema.interaction.ToggleInteraction;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.swing.character.perspective.interaction.ToggleInteraction;
 
 public class SelectInteraction implements IChangeListener {
   private ToggleInteraction interaction;

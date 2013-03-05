@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.module.preferences;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.initialization.BootJob;
 import net.sf.anathema.initialization.IBootJob;
 import net.sf.anathema.initialization.reflections.Weight;
@@ -14,7 +14,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IPreference
 /**
  * Removes the "ForceMetalLookAndFeel" preference and sets the "UserLookAndFeel" preference
  * to "javax.swing.plaf.metal.MetalLookAndFeel" if "ForceMetalLookAndFeel" was set to {@code true}.
- * <P>
+ * <p/>
  * Note although it is not possible to set both preferences using Anathema if they were set
  * nevertheless by other means "UserLookAndFeel" will not be update regardless the value of
  * "ForceMetalLookAndFeel" (it will still remove "ForceMetalLookAndFeel").
@@ -25,7 +25,7 @@ public class LookAndFeelNormalizerBootJob implements IBootJob {
   private static final String LOOK_AND_FEEL_PREFERENCE = "ForceMetalLookAndFeel"; //$NON-NLS-1$
 
   @Override
-  public void run(IResources resources, IAnathemaModel model) {
+  public void run(IResources resources, IApplicationModel model) {
     String storedClassName = SYSTEM_PREFERENCES.get(USER_LOOK_AND_FEEL_CLASSNAME, null);
     if (storedClassName == null) {
       if (SYSTEM_PREFERENCES.getBoolean(LOOK_AND_FEEL_PREFERENCE, false)) {

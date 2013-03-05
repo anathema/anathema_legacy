@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.perspective;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
@@ -27,7 +27,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
   private final IItemType type;
   private final ItemCreationOperator itemCreationOperator;
 
-  public static Action[] createToolActions(IAnathemaModel model, IResources resources) {
+  public static Action[] createToolActions(IApplicationModel model, IResources resources) {
     List<Action> actions = new ArrayList<>();
     for (IItemType type : collectItemTypes(model)) {
       ItemTypeNewAction action = new ItemTypeNewAction(type, model, resources);
@@ -45,7 +45,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
     return new PlatformUI(resources).getNewToolBarIcon();
   }
 
-  public ItemTypeNewAction(IItemType type, IAnathemaModel model, IResources resources) {
+  public ItemTypeNewAction(IItemType type, IApplicationModel model, IResources resources) {
     super(model, resources);
     this.itemCreationOperator = new ItemCreationOperator(new NewItemCreator(model), resources, model.getItemManagement(), model);
     this.type = type;

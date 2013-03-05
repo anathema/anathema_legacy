@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.presenter.itemmanagement;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
@@ -61,23 +61,23 @@ public class AnathemaSaveAction extends SmartAction {
     }
   }
 
-  private IAnathemaModel model;
+  private IApplicationModel model;
   private IResources resources;
 
-  public static Action createToolAction(IAnathemaModel model, IResources resources) {
+  public static Action createToolAction(IApplicationModel model, IResources resources) {
     SmartAction action = new AnathemaSaveAction(model, resources);
     action.setToolTipText(resources.getString("AnathemaPersistence.SaveAction.Tooltip")); //$NON-NLS-1$
     action.setIcon(new PlatformUI(resources).getSaveTaskBarIcon());
     return action;
   }
 
-  public static Action createMenuAction(IAnathemaModel model, IResources resources) {
+  public static Action createMenuAction(IApplicationModel model, IResources resources) {
     SmartAction action = new AnathemaSaveAction(model, resources);
     action.setName(resources.getString("AnathemaPersistence.SaveAction.Name")); //$NON-NLS-1$
     return action;
   }
 
-  private AnathemaSaveAction(IAnathemaModel model, IResources resources) {
+  private AnathemaSaveAction(IApplicationModel model, IResources resources) {
     SaveEnabledListener listener = new SaveEnabledListener(this);
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     model.getItemManagement().addListener(listener);
@@ -96,10 +96,9 @@ public class AnathemaSaveAction extends SmartAction {
       IRepositoryItemPersister persister = model.getPersisterRegistry().get(selectedItem.getItemType());
       persister.save(writeAccess, selectedItem);
       selectedItem.setClean();
-    }
-    catch (IOException | RepositoryException e) {
-      MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-          resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
+    } catch (IOException | RepositoryException e) {
+      MessageDialogFactory
+              .showMessageDialog(parentComponent, new Message(resources.getString("AnathemaPersistence.SaveAction.Message.Error"), e)); //$NON-NLS-1$
       Logger.getLogger(getClass()).error(e);
     } finally {
       IOUtils.closeQuietly(stream);

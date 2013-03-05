@@ -2,7 +2,7 @@ package net.sf.anathema.initialization;
 
 import net.sf.anathema.ISplashscreen;
 import net.sf.anathema.ProxySplashscreen;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.Version;
 import net.sf.anathema.framework.configuration.IInitializationPreferences;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
@@ -24,7 +24,7 @@ public class GuiInitializer extends Initializer {
   }
 
   @Override
-  protected ApplicationFrameView initView(IResources resources, IAnathemaModel anathemaModel, Instantiater objectFactory) {
+  protected ApplicationFrameView initView(IResources resources, IApplicationModel anathemaModel, Instantiater objectFactory) {
     displayMessage("Building View...");
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources, getPreferences().initMaximized());
     PerspectivePaneFactory factory = new PerspectivePaneFactory(anathemaModel, resources, objectFactory);

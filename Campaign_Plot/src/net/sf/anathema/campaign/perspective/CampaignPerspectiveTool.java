@@ -2,6 +2,7 @@ package net.sf.anathema.campaign.perspective;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.perspective.ToolBar;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
 import net.sf.anathema.framework.reporting.AbstractPrintAction;
@@ -13,7 +14,7 @@ import javax.swing.Action;
 
 public class CampaignPerspectiveTool {
 
-  public void add(IResources resources, IAnathemaModel model, ToolBar toolbar) {
+  public void add(IResources resources, IApplicationModel model, ToolBar toolbar) {
     addNewAction(resources, model, toolbar);
     addLoadAction(resources, model, toolbar);
     Action save = AnathemaSaveAction.createToolAction(model, resources);
@@ -22,17 +23,17 @@ public class CampaignPerspectiveTool {
     toolbar.addTools(save, saveAll, quickPrint);
   }
 
-  private void addLoadAction(IResources resources, IAnathemaModel model, ToolBar toolbar) {
+  private void addLoadAction(IResources resources, IApplicationModel model, ToolBar toolbar) {
     toolbar.addMenu(ItemTypeLoadAction.getButtonIcon(resources), ItemTypeLoadAction.createToolActions(model, resources),
             ItemTypeLoadAction.createToolTip(resources));
   }
 
-  private void addNewAction(IResources resources, IAnathemaModel model, ToolBar toolbar) {
+  private void addNewAction(IResources resources, IApplicationModel model, ToolBar toolbar) {
     toolbar.addMenu(ItemTypeNewAction.getButtonIcon(resources), ItemTypeNewAction.createToolActions(model, resources),
             ItemTypeNewAction.createToolTip(resources));
   }
 
-  private Action getPrintAction(IResources resources, IAnathemaModel model) {
+  private Action getPrintAction(IResources resources, IApplicationModel model) {
     if (AbstractPrintAction.isAutoOpenSupported()) {
       return QuickPrintAction.createToolAction(model, resources);
     } else {

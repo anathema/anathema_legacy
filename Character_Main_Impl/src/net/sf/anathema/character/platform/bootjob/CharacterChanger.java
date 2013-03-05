@@ -1,7 +1,7 @@
 package net.sf.anathema.character.platform.bootjob;
 
 import com.google.common.collect.Lists;
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import org.apache.commons.io.FileUtils;
 
@@ -13,9 +13,9 @@ import java.util.List;
 import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.CHARACTER_ITEM_TYPE_ID;
 
 public abstract class CharacterChanger {
-  private final IAnathemaModel model;
+  private final IApplicationModel model;
 
-  public CharacterChanger(IAnathemaModel model) {
+  public CharacterChanger(IApplicationModel model) {
     this.model = model;
   }
 
@@ -43,7 +43,7 @@ public abstract class CharacterChanger {
 
   private List<File> getCharacters() {
     IItemType character = model.getItemTypeRegistry().getById(CHARACTER_ITEM_TYPE_ID);
-    File itemTypeFolder = model.getRepository().getRepositoryFileResolver().getItemTypeFolder(character);
+    File itemTypeFolder = model.getRepository().getRepositoryFileResolver().getFolder(character.getRepositoryConfiguration());
     if (!itemTypeFolder.exists()) {
       return Collections.emptyList();
     }

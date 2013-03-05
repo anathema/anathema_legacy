@@ -1,6 +1,6 @@
 package net.sf.anathema.character.perspective.model.model;
 
-import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.repository.IItem;
@@ -18,9 +18,9 @@ import static net.sf.anathema.character.itemtype.CharacterItemTypeRetrieval.retr
 
 public class CharacterPersistenceModel {
 
-  private IAnathemaModel model;
+  private IApplicationModel model;
 
-  public CharacterPersistenceModel(IAnathemaModel model) {
+  public CharacterPersistenceModel(IApplicationModel model) {
     this.model = model;
   }
 
@@ -37,7 +37,7 @@ public class CharacterPersistenceModel {
   }
 
   private IRepositoryItemPersister findPersister() {
-    IRegistry<IItemType,IRepositoryItemPersister> registry = model.getPersisterRegistry();
+    IRegistry<IItemType, IRepositoryItemPersister> registry = model.getPersisterRegistry();
     return registry.get(getCharacterItemType());
   }
 

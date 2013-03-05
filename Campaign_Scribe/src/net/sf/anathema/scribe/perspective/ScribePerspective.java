@@ -1,26 +1,20 @@
 package net.sf.anathema.scribe.perspective;
 
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import net.sf.anathema.campaign.module.NoteTypeConfiguration;
-import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
-import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.framework.IApplicationModel;
 import net.sf.anathema.framework.view.perspective.Container;
 import net.sf.anathema.framework.view.perspective.Perspective;
 import net.sf.anathema.framework.view.perspective.PerspectiveAutoCollector;
 import net.sf.anathema.framework.view.perspective.PerspectiveToggle;
 import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.resources.IResources;
-
-import java.util.Collection;
+import net.sf.anathema.scribe.perspective.model.ScribeModel;
+import net.sf.anathema.scribe.perspective.presenter.ScribePresenter;
+import net.sf.anathema.scribe.perspective.view.ScribeView;
 
 @PerspectiveAutoCollector
 @Weight(weight = 200)
 public class ScribePerspective implements Perspective {
+
   @Override
   public void configureToggle(PerspectiveToggle toggle) {
     toggle.setIcon("Kompass24.png");
@@ -28,26 +22,10 @@ public class ScribePerspective implements Perspective {
   }
 
   @Override
-  public void initContent(Container container, final IAnathemaModel model, IResources resources) {
-    final JFXPanel panel = new JFXPanel();
-    final VBox content = new VBox();
-    content.setMinWidth(200);
-    //Platform.runLater(new InitScene(panel, content));
-    Platform.runLater(new Runnable() {
-      @Override
-      public void run() {
-        for (PrintNameFile file : collectCharacterPrintNameFiles(model)) {
-          content.getChildren().add(new Text(file.getPrintName()));
-        }
-        new InitScene(panel, content).run();
-      }
-    });
-    container.setSwingContent(panel);
-  }
-
-  public Collection<PrintNameFile> collectCharacterPrintNameFiles(IAnathemaModel model) {
-    IItemType characterItemType = NoteTypeConfiguration.ITEM_TYPE;
-    IPrintNameFileAccess access = model.getRepository().getPrintNameFileAccess();
-    return access.collectAllPrintNameFiles(characterItemType);
+  public void initContent(Container container, IApplicationModel applicationModel, IResources resources) {
+    ScribeView view = new ScribeView();
+    ScribeModel scribeModel = new ScribeModel(applicationModel);
+    new ScribePresenter(view, scribeModel).initPresentation();
+    container.setSwingContent(view.perspectivePane.getComponent());
   }
 }

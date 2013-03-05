@@ -1,7 +1,6 @@
-package net.sf.anathema.swing.character.perspective.interaction;
+package net.sf.anathema.interaction;
 
 import net.sf.anathema.framework.perspective.ToolBar;
-import net.sf.anathema.interaction.Command;
 
 public interface Interaction {
 
