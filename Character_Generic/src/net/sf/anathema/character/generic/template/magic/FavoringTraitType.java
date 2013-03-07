@@ -15,11 +15,6 @@ public enum FavoringTraitType implements Identified {
     }
 
     @Override
-    public boolean canFavorType(ITraitType type) {
-      return type instanceof AbilityType;
-    }
-
-    @Override
     public ITraitType getSpellFavoringType() {
       return net.sf.anathema.character.generic.traits.types.AbilityType.Occult;
     }
@@ -28,11 +23,6 @@ public enum FavoringTraitType implements Identified {
     @Override
     public AttributeType[] getTraitTypes() {
       return net.sf.anathema.character.generic.traits.types.AttributeType.values();
-    }
-
-    @Override
-    public boolean canFavorType(ITraitType type) {
-      return type instanceof AttributeType;
     }
 
     @Override
@@ -47,11 +37,6 @@ public enum FavoringTraitType implements Identified {
     }
 
     @Override
-    public boolean canFavorType(ITraitType type) {
-      return false;
-    }
-
-    @Override
     public ITraitType getSpellFavoringType() {
       throw new UnsupportedOperationException("Ghosts cannot learn Spells.");
     }
@@ -60,11 +45,6 @@ public enum FavoringTraitType implements Identified {
     @Override
     public YoziType[] getTraitTypes() {
       return net.sf.anathema.character.generic.traits.types.YoziType.values();
-    }
-
-    @Override
-    public boolean canFavorType(ITraitType type) {
-      return type instanceof YoziType;
     }
 
     @Override
@@ -79,8 +59,6 @@ public enum FavoringTraitType implements Identified {
   }
 
   public abstract ITraitType[] getTraitTypes();
-
-  public abstract boolean canFavorType(ITraitType type);
 
   public abstract ITraitType getSpellFavoringType();
 }

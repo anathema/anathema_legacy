@@ -21,11 +21,9 @@ import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.Identified;
@@ -38,6 +36,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import static net.sf.anathema.character.generic.traits.types.AbilityType.MartialArts;
 
 public class Charm extends Identifier implements ICharm {
 
@@ -370,15 +370,9 @@ public class Charm extends Identifier implements ICharm {
     }
 
     final ITraitType primaryTraitType = getPrimaryTraitType();
-    if (hasAttribute(new Identifier("MartialArts")) && ((IFavorableGenericTrait) traitCollection.getTrait(
-            AbilityType.MartialArts)).isCasteOrFavored()) {
+    if (hasAttribute(new Identifier("MartialArts")) &&
+            ((IFavorableGenericTrait) traitCollection.getTrait(MartialArts)).isCasteOrFavored()) {
       return true;
-    }
-
-    FavoringTraitType favoringTraitType = basicCharacter.getCharacterType().getFavoringTraitType();
-    boolean characterCanFavorMagicOfPrimaryType =  favoringTraitType.canFavorType(primaryTraitType);
-    if (!characterCanFavorMagicOfPrimaryType) {
-      return false;
     }
     IGenericTrait trait = traitCollection.getTrait(primaryTraitType);
     return trait instanceof IFavorableGenericTrait && ((IFavorableGenericTrait) trait).isCasteOrFavored();
