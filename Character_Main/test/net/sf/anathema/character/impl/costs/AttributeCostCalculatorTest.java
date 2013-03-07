@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.dummy.template.DummyCharacterTemplate;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
-import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
+import net.sf.anathema.character.generic.impl.traits.DummyTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
@@ -111,7 +111,7 @@ public class AttributeCostCalculatorTest {
 
   private void addAttributesAndEssence(DummyCoreTraitConfiguration coreTraits) {
     IAdditionalRules additionalRules = new NullAdditionalRules();
-    TraitTemplateCollection templateCollection = new TraitTemplateCollection(new ExaltTraitTemplateFactory());
+    TraitTemplateCollection templateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());
     DummyTraitContext traitContext = new DummyTraitContext(coreTraits);
     ITraitTemplate essenceTraitTemplate = templateCollection.getTraitTemplate(Essence);
     ILimitationContext limitationContext = traitContext.getLimitationContext();

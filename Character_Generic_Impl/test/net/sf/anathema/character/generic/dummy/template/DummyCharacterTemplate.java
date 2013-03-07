@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTempla
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
-import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
+import net.sf.anathema.character.generic.impl.traits.DummyTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
@@ -40,7 +40,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
 
   private static final String DUMMYGROUP = "DummyGroup"; //$NON-NLS-1$
   private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(
-          new ExaltTraitTemplateFactory());
+          new DummyTraitTemplateFactory());
   private ITemplateType type = new TemplateType(new DummyMundaneCharacterType());
   private IEssenceTemplate essenceTemplate = new NullEssenceTemplate();
 
