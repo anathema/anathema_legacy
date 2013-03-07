@@ -68,10 +68,10 @@ public class GenericCharmUtilities {
     FavoringTraitType type = character.getTemplate().getMagicTemplate().getFavoringTraitType();
     if (type == FavoringTraitType.YoziType) {
       Collections.addAll(traits, type.getTraitTypes());
-      return traits;
-    }
-    for (ITraitTypeGroup group : getCharmTraitGroups(character)) {
-      Collections.addAll(traits, group.getAllGroupTypes());
+    } else {
+      for (ITraitTypeGroup group : getCharmTraitGroups(character)) {
+        Collections.addAll(traits, group.getAllGroupTypes());
+      }
     }
     return traits;
   }
