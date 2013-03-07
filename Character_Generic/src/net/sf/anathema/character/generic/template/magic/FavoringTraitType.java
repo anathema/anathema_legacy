@@ -10,7 +10,7 @@ import net.sf.anathema.lib.util.Identified;
 public enum FavoringTraitType implements Identified {
   AbilityType {
     @Override
-    public AbilityType[] getTraitTypes() {
+    public AbilityType[] getTraitTypesForGenericCharms() {
       return net.sf.anathema.character.generic.traits.types.AbilityType.values();
     }
 
@@ -21,7 +21,7 @@ public enum FavoringTraitType implements Identified {
   },
   AttributeType {
     @Override
-    public AttributeType[] getTraitTypes() {
+    public AttributeType[] getTraitTypesForGenericCharms() {
       return net.sf.anathema.character.generic.traits.types.AttributeType.values();
     }
 
@@ -32,7 +32,7 @@ public enum FavoringTraitType implements Identified {
   },
   VirtueType {
     @Override
-    public VirtueType[] getTraitTypes() {
+    public VirtueType[] getTraitTypesForGenericCharms() {
       return net.sf.anathema.character.generic.traits.types.VirtueType.values();
     }
 
@@ -43,7 +43,7 @@ public enum FavoringTraitType implements Identified {
   },
   YoziType {
     @Override
-    public YoziType[] getTraitTypes() {
+    public YoziType[] getTraitTypesForGenericCharms() {
       return net.sf.anathema.character.generic.traits.types.YoziType.values();
     }
 
@@ -58,7 +58,7 @@ public enum FavoringTraitType implements Identified {
     return name();
   }
 
-  public abstract ITraitType[] getTraitTypes();
+  public abstract ITraitType[] getTraitTypesForGenericCharms();
 
   public abstract ITraitType getSpellFavoringType();
 }
