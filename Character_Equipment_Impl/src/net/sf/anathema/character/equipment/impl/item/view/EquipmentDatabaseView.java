@@ -29,8 +29,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private final ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<>(String.class);
   private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
   private final JPanel editTemplateButtonPanel = new JPanel(new MigLayout(withoutInsets()));
-  private final JScrollPane templateListScrollPane = new JScrollPane(templateListView.getComponent());
-  private final TitledPanel templateListPanel = new TitledPanel("", templateListScrollPane);
+  private final JComponent templateListPanel = new JScrollPane(templateListView.getComponent());
   private final JPanel statsPanel = new JPanel(new MigLayout(fillWithoutInsets().wrapAfter(1)));
   private final TitledPanel statsTitlePanel = new TitledPanel("", statsPanel);
 
@@ -56,11 +55,6 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
     statsListView = new SingleSelectionActionAddableListView<>(IEquipmentStats.class);
     statsListView.setListCellRenderer(renderer);
     return statsListView;
-  }
-
-  @Override
-  public void setTemplateListHeader(String headerText) {
-    setTitleText(headerText, templateListPanel);
   }
 
   @Override
