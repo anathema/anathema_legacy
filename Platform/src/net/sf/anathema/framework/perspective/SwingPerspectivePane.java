@@ -1,4 +1,4 @@
-package net.sf.anathema.swing.character.perspective;
+package net.sf.anathema.framework.perspective;
 
 import net.sf.anathema.lib.gui.IView;
 
@@ -8,13 +8,13 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
-public class PerspectivePane implements IView {
+public class SwingPerspectivePane implements IView {
 
   private final JPanel panel = new JPanel(new BorderLayout());
   private final JPanel navigationPanel = new JPanel(new BorderLayout());
   private final JPanel contentPanel = new JPanel(new BorderLayout());
 
-  public PerspectivePane() {
+  public SwingPerspectivePane() {
     navigationPanel.setMinimumSize(new Dimension(200, 0));
     navigationPanel.setPreferredSize(new Dimension(200, 0));
     navigationPanel.setMaximumSize(new Dimension(200, Integer.MAX_VALUE));
