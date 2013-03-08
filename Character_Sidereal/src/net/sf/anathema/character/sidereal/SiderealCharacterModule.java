@@ -16,17 +16,14 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeModelFactory;
-import net.sf.anathema.character.sidereal.colleges.SiderealCollegeParser;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeViewFactory;
 import net.sf.anathema.character.sidereal.colleges.persistence.SiderealCollegePersisterFactory;
 import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateModelFactory;
-import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateParser;
 import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFatePersisterFactory;
 import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateTemplate;
 import net.sf.anathema.character.sidereal.flawedfate.SiderealFlawedFateViewFactory;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxModelFactory;
-import net.sf.anathema.character.sidereal.paradox.SiderealParadoxParser;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxPersisterFactory;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxTemplate;
 import net.sf.anathema.character.sidereal.paradox.SiderealParadoxViewFactory;
@@ -60,9 +57,6 @@ public class SiderealCharacterModule extends CharacterTypeModule {
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getCasteCollectionRegistry().register(type, new CasteCollection(SiderealCaste.values()));
-    characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealCollegeTemplate.ID, new SiderealCollegeParser());
-    characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealFlawedFateTemplate.ID, new SiderealFlawedFateParser());
-    characterGenerics.getAdditionalTemplateParserRegistry().register(SiderealParadoxTemplate.ID, new SiderealParadoxParser());
   }
 
   @Override

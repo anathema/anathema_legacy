@@ -1,5 +1,6 @@
 package net.sf.anathema.character.sidereal.colleges;
 
+import net.sf.anathema.character.generic.framework.module.CharacterTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.impl.template.experience.DefaultExperienceCosts;
 import net.sf.anathema.character.generic.impl.template.points.AbilityCreationPoints;
@@ -14,6 +15,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
+@CharacterTemplateParser(modelId = SiderealCollegeTemplate.ID)
 public class SiderealCollegeParser implements IAdditionalTemplateParser
 {
 	private static final String ATTRIB_GENERAL = "general";
@@ -29,9 +31,9 @@ public class SiderealCollegeParser implements IAdditionalTemplateParser
 	@Override
 	public IAdditionalTemplate parse(Element element)
 	{
-		IFavorableTraitCreationPoints points = null;
-		ICollegeBonusPointCosts bonusCosts = null;
-		ICollegeExperienceCosts experienceCosts = null;
+		IFavorableTraitCreationPoints points;
+		ICollegeBonusPointCosts bonusCosts;
+		ICollegeExperienceCosts experienceCosts;
 		try
 		{
 			int generalDots = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_GENERAL);
