@@ -71,12 +71,6 @@ public class LunarCharacterModule extends CharacterTypeModule {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    characterGenerics.getAdditionalTemplateParserRegistry().register(BeastformTemplate.TEMPLATE_ID,
-            new LunarBeastformParser());
-    characterGenerics.getAdditionalTemplateParserRegistry().register(HeartsBloodTemplate.TEMPLATE_ID,
-            new LunarHeartsBloodParser());
-    characterGenerics.getAdditionalTemplateParserRegistry().register(LunarVirtueFlawTemplate.TEMPLATE_ID,
-            new LunarVirtueFlawParser());
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<>();
     templateMap.put(castelessType, new ICasteType[]{});
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());

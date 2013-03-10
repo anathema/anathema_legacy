@@ -2,7 +2,6 @@ package net.sf.anathema.character.db;
 
 import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawModelFactory;
-import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawParser;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawTemplate;
 import net.sf.anathema.character.db.virtueflaw.DbVirtueFlawViewFactory;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
@@ -57,8 +56,6 @@ public class DbCharacterModule extends CharacterTypeModule {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    characterGenerics.getAdditionalTemplateParserRegistry().register(DbVirtueFlawTemplate.TEMPLATE_ID,
-            new DbVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(type, new CasteCollection(DBAspect.values()));
   }
 

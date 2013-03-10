@@ -47,7 +47,6 @@ public class SolarCharacterModule extends CharacterTypeModule {
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    characterGenerics.getAdditionalTemplateParserRegistry().register(SolarVirtueFlawTemplate.ID, new SolarVirtueFlawParser());
     characterGenerics.getCasteCollectionRegistry().register(type, new CasteCollection(SolarCaste.values()));
   }
 

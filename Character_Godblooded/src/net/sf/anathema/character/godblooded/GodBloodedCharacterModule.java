@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.ghost.GhostCharacterType;
 import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceModelFactory;
-import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceParser;
 import net.sf.anathema.character.godblooded.inheritance.GodBloodedInheritanceTemplate;
 import net.sf.anathema.character.lunar.LunarCharacterType;
 import net.sf.anathema.character.sidereal.SiderealCharacterType;
@@ -40,13 +39,6 @@ public class GodBloodedCharacterModule extends NullObjectCharacterModuleAdapter 
           "HalfCasteSidereal")); //$NON-NLS-1$
   private static final TemplateType halfCasteSolarType = new TemplateType(new SolarCharacterType(), new Identifier(
           "HalfCasteSolar")); //$NON-NLS-1$
-
-  @Override
-  public void registerCommonData(ICharacterGenerics characterGenerics) {
-    characterGenerics.getAdditionalTemplateParserRegistry().register(
-            GodBloodedInheritanceTemplate.ID,
-            new GodBloodedInheritanceParser());
-  }
 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {

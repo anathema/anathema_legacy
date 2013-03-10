@@ -12,15 +12,12 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.ghost.age.GhostAgeModelFactory;
-import net.sf.anathema.character.ghost.age.GhostAgeParser;
 import net.sf.anathema.character.ghost.age.GhostAgeTemplate;
 import net.sf.anathema.character.ghost.fetters.GhostFettersModelFactory;
-import net.sf.anathema.character.ghost.fetters.GhostFettersParser;
 import net.sf.anathema.character.ghost.fetters.GhostFettersPersisterFactory;
 import net.sf.anathema.character.ghost.fetters.GhostFettersTemplate;
 import net.sf.anathema.character.ghost.fetters.GhostFettersViewFactory;
 import net.sf.anathema.character.ghost.passions.GhostPassionsModelFactory;
-import net.sf.anathema.character.ghost.passions.GhostPassionsParser;
 import net.sf.anathema.character.ghost.passions.GhostPassionsTemplate;
 import net.sf.anathema.character.ghost.passions.GhostPassionsViewFactory;
 import net.sf.anathema.character.ghost.passions.persistence.GhostPassionsPersisterFactory;
@@ -43,13 +40,6 @@ public class GhostCharacterModule extends CharacterTypeModule {
   private static final TemplateType commonType = new TemplateType(type, new Identifier("CommonGhost")); //$NON-NLS-1$
 
   private final TemplateType[] trueGhosts = {heroicType, commonType};
-
-  @Override
-  public void registerCommonData(ICharacterGenerics characterGenerics) {
-    characterGenerics.getAdditionalTemplateParserRegistry().register(GhostPassionsTemplate.ID, new GhostPassionsParser());
-    characterGenerics.getAdditionalTemplateParserRegistry().register(GhostFettersTemplate.ID, new GhostFettersParser());
-    characterGenerics.getAdditionalTemplateParserRegistry().register(GhostAgeTemplate.ID, new GhostAgeParser());
-  }
 
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {

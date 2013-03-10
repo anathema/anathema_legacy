@@ -12,12 +12,10 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.infernal.caste.InfernalCaste;
 import net.sf.anathema.character.infernal.patron.InfernalPatronModelFactory;
-import net.sf.anathema.character.infernal.patron.InfernalPatronParser;
 import net.sf.anathema.character.infernal.patron.InfernalPatronTemplate;
 import net.sf.anathema.character.infernal.patron.InfernalPatronViewFactory;
 import net.sf.anathema.character.infernal.patron.persistence.InfernalPatronPersisterFactory;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeModelFactory;
-import net.sf.anathema.character.infernal.urge.InfernalUrgeParser;
 import net.sf.anathema.character.infernal.urge.InfernalUrgePersisterFactory;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeTemplate;
 import net.sf.anathema.character.infernal.urge.InfernalUrgeViewFactory;
@@ -36,8 +34,6 @@ public class InfernalCharacterModule extends CharacterTypeModule {
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getCasteCollectionRegistry().register(type, new CasteCollection(InfernalCaste.values()));
-    characterGenerics.getAdditionalTemplateParserRegistry().register(InfernalPatronTemplate.ID, new InfernalPatronParser());
-    characterGenerics.getAdditionalTemplateParserRegistry().register(InfernalUrgeTemplate.ID, new InfernalUrgeParser());
   }
 
   @Override
