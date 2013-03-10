@@ -18,3 +18,7 @@
     -fx-background-color: linear-gradient(to bottom, last-color, next-color);
     -fx-font-size: 20;
 }
+
+.scribe-navigation-button {
+    -fx-alignment: center-left;
+}

@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
-import javafx.scene.text.Text;
 import net.miginfocom.layout.AC;
 import net.miginfocom.layout.CC;
 import net.miginfocom.layout.LC;
@@ -48,8 +47,8 @@ public class ScribeNavigation {
     Platform.runLater(new Runnable() {
       @Override
       public void run() {
-        Text text = new Text(reference.printName);
-        Button button = new Button("", text);
+        Button button = new Button(reference.printName);
+        button.getStyleClass().add("scribe-navigation-button");
         button.setOnAction(new Execute(command));
         navigation.add(button, new CC().pushX());
       }
