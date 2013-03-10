@@ -17,6 +17,9 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FavorableTraitFactory extends AbstractTraitFactory {
 
   private final ITraitContext traitContext;
@@ -34,13 +37,13 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
   }
 
   public IFavorableTrait[] createTraits(IIdentifiedCasteTraitTypeGroup group, IIncrementChecker favoredIncrementChecker) {
-    ITraitType[] traitTypes = group.getAllGroupTypes();
-    IFavorableTrait[] newTraits = new IFavorableTrait[traitTypes.length];
-    for (int index = 0; index < newTraits.length; index++) {
-      ITraitType type = traitTypes[index];
-      newTraits[index] = createTrait(type, group.getTraitCasteTypes(type), favoredIncrementChecker);
+    List<IFavorableTrait> newTraits = new ArrayList<>();
+    for (ITraitType type: group.getAllGroupTypes()) {
+      ICasteType[] casteTypes = group.getTraitCasteTypes(type);
+      IFavorableTrait trait = createTrait(type, casteTypes, favoredIncrementChecker);
+      newTraits.add(trait);
     }
-    return newTraits;
+    return newTraits.toArray(new IFavorableTrait[newTraits.size()]);
   }
 
   public IFavorableTrait createTrait(ITraitType traitType, ICasteType[] casteTypes, IIncrementChecker favoredIncrementChecker) {

@@ -10,7 +10,6 @@ public class HtmlConverter {
       add(new ReplacementConversion("<", "&lt;"));
       add(new ReplacementConversion(">", "&gt;"));
       add(new MarkdownConversion());
-      add(new MarkdownConversion());
       add(new EmbracedConversion("++", "u"));
     }
   };

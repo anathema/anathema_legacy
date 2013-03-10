@@ -42,7 +42,7 @@ import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCharacterTemplate> {
@@ -74,8 +74,10 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private final ICharmProvider provider;
   private final ICharmCache cache;
 
-  public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection, IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry,
-                                 ICharmProvider provider, ICharmCache cache, IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry,
+  public CharacterTemplateParser(CharacterTypes characterTypes, ICharacterTemplateRegistryCollection registryCollection,
+                                 IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry,
+                                 ICharmProvider provider, ICharmCache cache,
+                                 IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry,
                                  IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParser) {
     super(registryCollection.getCharacterTemplateRegistry());
     this.characterTypes = characterTypes;
@@ -101,7 +103,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     setBonusPoints(characterTemplate, creationElement);
   }
 
-  private void parseExperience(Element element, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void parseExperience(Element element,
+                               GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element creationElement = element.element(TAG_EXPERIENCE);
     if (creationElement == null) {
       return;
@@ -119,7 +122,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     return characterTemplate;
   }
 
-  private void updateTemplateType(Element element, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void updateTemplateType(Element element,
+                                  GenericCharacterTemplate characterTemplate) throws PersistenceException {
     ITemplateType templateType = new TemplateTypeParser(characterTypes).parse(element);
     characterTemplate.setTemplateType(templateType);
 
@@ -127,58 +131,65 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (casteCollection != null) characterTemplate.setCasteCollection(casteCollection);
   }
 
-  private void setAbilityGroups(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setAbilityGroups(Element generalElement,
+                                GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element abilityGroupElement = generalElement.element(TAG_ABILITY_GROUPS);
     if (abilityGroupElement == null) {
       return;
     }
     IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
-    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, AllAbilityTraitTypeGroup.getInstance());
+    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry,
+            AllAbilityTraitTypeGroup.getInstance());
     GenericGroupedTraitTypeProvider abilityGroups = parser.parseTemplate(abilityGroupElement);
     characterTemplate.setAbilityGroups(abilityGroups.getTraitTypeGroups());
   }
 
-  private void setYoziGroups(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setYoziGroups(Element generalElement,
+                             GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element yoziGroupElement = generalElement.element(TAG_YOZI_GROUPS);
-    AllYoziTraitTypeGroup yoziTraitTypeGroup = AllYoziTraitTypeGroup.getInstance();
+    GenericGroupedTraitTypeProvider provider;
     if (yoziGroupElement == null) {
-      GenericGroupedTraitTypeProvider provider = new GenericGroupedTraitTypeProvider(yoziTraitTypeGroup);
-      List<String> emptyList = new ArrayList<>();
+      provider = new GenericGroupedTraitTypeProvider(AllYoziTraitTypeGroup.getInstance());
       for (YoziType yozi : YoziType.values()) {
-        provider.addGroupedAbilityType(yozi.getId(), yozi.getId(), null, emptyList);
+        provider.addGroupedAbilityType(yozi.getId(), yozi.getId(), Collections.<String>emptyList());
       }
-      characterTemplate.setYoziGroups(provider.getTraitTypeGroups());
-      return;
+    } else {
+      IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
+      TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry,
+              AllYoziTraitTypeGroup.getInstance());
+      provider = parser.parseTemplate(yoziGroupElement);
     }
-    IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
-    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, yoziTraitTypeGroup);
-    GenericGroupedTraitTypeProvider yoziGroups = parser.parseTemplate(yoziGroupElement);
-    characterTemplate.setYoziGroups(yoziGroups.getTraitTypeGroups());
+    characterTemplate.setYoziGroups(provider.getTraitTypeGroups());
   }
 
-  private void setAttributeGroups(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setAttributeGroups(Element generalElement,
+                                  GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element attributeGroupElement = generalElement.element(TAG_ATTRIBUTE_GROUPS);
     if (attributeGroupElement == null) {
       return;
     }
     IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> registry = registryCollection.getTraitGroupTemplateRegistry();
-    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry, AllAttributeTraitTypeGroup.getInstance());
+    TraitTypeGroupTemplateParser parser = new TraitTypeGroupTemplateParser(registry,
+            AllAttributeTraitTypeGroup.getInstance());
     GenericGroupedTraitTypeProvider attributeGroups = parser.parseTemplate(attributeGroupElement);
     characterTemplate.setAttributeGroups(attributeGroups.getTraitTypeGroups());
   }
 
-  private void setBonusPoints(GenericCharacterTemplate characterTemplate, Element creationElement) throws PersistenceException {
+  private void setBonusPoints(GenericCharacterTemplate characterTemplate,
+                              Element creationElement) throws PersistenceException {
     Element bonusPointsElement = creationElement.element("bonusPointCosts"); //$NON-NLS-1$
     if (bonusPointsElement == null) {
       return;
     }
-    BonusPointCostTemplateParser parser = new BonusPointCostTemplateParser(registryCollection.getBonusPointTemplateRegistry(),
+    BonusPointCostTemplateParser parser = new BonusPointCostTemplateParser(
+            registryCollection.getBonusPointTemplateRegistry(),
             characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
     GenericBonusPointCosts bonusPoints = parser.parseTemplate(bonusPointsElement);
     characterTemplate.setBonusPointCosts(bonusPoints);
   }
 
-  private void setCreationPoints(GenericCharacterTemplate characterTemplate, Element creationElement) throws PersistenceException {
+  private void setCreationPoints(GenericCharacterTemplate characterTemplate,
+                                 Element creationElement) throws PersistenceException {
     Element creationPointsElement = creationElement.element(TAG_CREATION_POINTS);
     if (creationPointsElement == null) {
       return;
@@ -192,7 +203,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     return new CreationPointTemplateParser(registryCollection.getCreationPointTemplateRegistry());
   }
 
-  private void setEssenceTemplate(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setEssenceTemplate(Element generalElement,
+                                  GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element essenceElement = generalElement.element(TAG_ESSENCE);
     if (essenceElement == null) {
       return;
@@ -202,7 +214,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     characterTemplate.setEssenceTemplate(essenceTemplate);
   }
 
-  private void setExperiencePoints(GenericCharacterTemplate characterTemplate, Element experienceElement) throws PersistenceException {
+  private void setExperiencePoints(GenericCharacterTemplate characterTemplate,
+                                   Element experienceElement) throws PersistenceException {
     Element experiencePointsElement = experienceElement.element(TAG_EXPERIENCE_POINT_COST);
     if (experiencePointsElement == null) {
       return;
@@ -213,7 +226,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     characterTemplate.setExperiencePointCosts(experienceTemplate);
   }
 
-  private void setGeneralProperties(Element element, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setGeneralProperties(Element element,
+                                    GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element generalElement = element.element(TAG_GENERAL);
     if (generalElement == null) {
       return;
@@ -239,18 +253,21 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     characterTemplate.setNpcOnly();
   }
 
-  private void setAdditionalRules(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setAdditionalRules(Element generalElement,
+                                  GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element element = generalElement.element(TAG_ADDITIONAL_RULES);
     if (element == null) {
       return;
     }
-    AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(registryCollection.getAdditionalRulesRegistry(),
+    AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(
+            registryCollection.getAdditionalRulesRegistry(),
             provider.getSpecialCharms(characterTemplate.getTemplateType().getCharacterType()), characterTypes);
     GenericAdditionalRules rules = parser.parseTemplate(element);
     characterTemplate.setAdditionalRules(rules);
   }
 
-  private void setToughnessControllingTrait(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setToughnessControllingTrait(Element generalElement,
+                                            GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element healthElement = generalElement.element(TAG_HEALTH_TEMPLATE);
     if (healthElement == null) {
       return;
@@ -260,7 +277,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     characterTemplate.setHealthTemplate(template);
   }
 
-  private void setAdditionalModelTemplates(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setAdditionalModelTemplates(Element generalElement,
+                                           GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element additionalElement = generalElement.element(TAG_ADDITIONAL_TEMPLATES);
     if (additionalElement == null) {
       return;
@@ -273,33 +291,39 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     }
   }
 
-  private void setPresentationTemplate(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setPresentationTemplate(Element generalElement,
+                                       GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element presentationTemplateElement = generalElement.element(TAG_PRESENTATION_TEMPLATE);
     if (presentationTemplateElement == null) {
       return;
     }
-    PresentationPropertiesParser parser = new PresentationPropertiesParser(registryCollection.getPresentationTemplateRegistry());
+    PresentationPropertiesParser parser = new PresentationPropertiesParser(
+            registryCollection.getPresentationTemplateRegistry());
     GenericPresentationTemplate template = parser.parseTemplate(presentationTemplateElement);
     characterTemplate.setPresentationTemplate(template);
   }
 
-  private void setMagicTemplate(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setMagicTemplate(Element generalElement,
+                                GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element magicTemplateElement = generalElement.element(TAG_MAGIC_TEMPLATE);
     if (magicTemplateElement == null) {
       return;
     }
-    GenericMagicTemplateParser parser = new GenericMagicTemplateParser(registryCollection.getMagicTemplateRegistry(), characterTemplate, cache, characterTypes);
+    GenericMagicTemplateParser parser = new GenericMagicTemplateParser(registryCollection.getMagicTemplateRegistry(),
+            characterTemplate, cache, characterTypes);
     GenericMagicTemplate template = parser.parseTemplate(magicTemplateElement);
     characterTemplate.setMagicTemplate(template);
   }
 
-  private void setTraitCollection(Element generalElement, GenericCharacterTemplate characterTemplate) throws PersistenceException {
+  private void setTraitCollection(Element generalElement,
+                                  GenericCharacterTemplate characterTemplate) throws PersistenceException {
     Element traitCollectionElement = generalElement.element(TAG_TRAIT_COLLECTION);
     if (traitCollectionElement == null) {
       return;
     }
-    GenericTraitTemplateFactoryParser parser = new GenericTraitTemplateFactoryParser(registryCollection.getTraitFactoryRegistry(),
-            registryCollection.getTraitTemplatePoolRegistry(), backgroundRegistry);
+    GenericTraitTemplateFactoryParser parser = new GenericTraitTemplateFactoryParser(
+            registryCollection.getTraitFactoryRegistry(), registryCollection.getTraitTemplatePoolRegistry(),
+            backgroundRegistry);
     GenericTraitTemplateFactory factory = parser.parseTemplate(traitCollectionElement);
     characterTemplate.setTraitFactory(factory);
   }

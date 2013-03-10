@@ -5,7 +5,7 @@ import com.eteks.parser.CompiledExpression;
 import com.eteks.parser.ExpressionParser;
 import com.eteks.parser.IntegerInterpreter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.impl.util.AnathemaExpressionParameter;
+import net.sf.anathema.character.generic.impl.util.ComplexPoolExpressionParameter;
 import net.sf.anathema.character.generic.impl.util.AnathemaExpressionSyntax;
 import net.sf.anathema.lib.util.Identified;
 
@@ -17,7 +17,7 @@ public class ComplexAdditionalEssencePool implements Identified {
   private final String id;
   private final CompiledExpression expression;
   private final Map<Integer, Integer> override = new HashMap<>();
-  private final AnathemaExpressionParameter parameter = new AnathemaExpressionParameter();
+  private final ComplexPoolExpressionParameter parameter = new ComplexPoolExpressionParameter();
   private final ExpressionParser parser = new ExpressionParser(new AnathemaExpressionSyntax(),
           parameter);
 

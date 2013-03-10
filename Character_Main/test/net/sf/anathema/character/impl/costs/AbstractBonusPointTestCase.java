@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.dummy.DummyExaltCharacterType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
-import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
+import net.sf.anathema.character.generic.impl.traits.DummyTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -24,7 +24,7 @@ public abstract class AbstractBonusPointTestCase {
 
   protected static void addAbilityAndEssence(DummyCoreTraitConfiguration coreTraits) {
     NullAdditionalRules additionalRules = new NullAdditionalRules();
-    TraitTemplateCollection templateCollection = new TraitTemplateCollection(new ExaltTraitTemplateFactory());
+    TraitTemplateCollection templateCollection = new TraitTemplateCollection(new DummyTraitTemplateFactory());
     DummyTraitContext traitContext = new DummyTraitContext(coreTraits);
     DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, templateCollection, additionalRules);
     coreTraits.addTestTrait(traitFactory.createTrait(OtherTraitType.Essence));

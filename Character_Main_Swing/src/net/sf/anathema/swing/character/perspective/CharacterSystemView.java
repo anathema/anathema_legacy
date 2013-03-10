@@ -1,6 +1,7 @@
 package net.sf.anathema.swing.character.perspective;
 
 import net.sf.anathema.character.perspective.CharacterGridView;
+import net.sf.anathema.framework.perspective.SwingPerspectivePane;
 import net.sf.anathema.fx.character.perspective.CharacterGridFxView;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -10,7 +11,7 @@ import java.awt.BorderLayout;
 
 public class CharacterSystemView {
 
-  private final PerspectivePane pane = new PerspectivePane();
+  private final SwingPerspectivePane pane = new SwingPerspectivePane();
   private final CharacterGridFxView gridView = new CharacterGridFxView();
   private final StackView stackView = new StackView();
   private final InteractionView interactionView;

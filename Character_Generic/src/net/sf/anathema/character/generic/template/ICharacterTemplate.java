@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.template;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
@@ -13,11 +13,11 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public interface ICharacterTemplate extends ICharacterExternalsTemplate {
 
-  IGroupedTraitType[] getAbilityGroups();
+  GroupedTraitType[] getAbilityGroups();
 
-  IGroupedTraitType[] getAttributeGroups();
+  GroupedTraitType[] getAttributeGroups();
   
-  IGroupedTraitType[] getYoziGroups();
+  GroupedTraitType[] getYoziGroups();
 
   IAdditionalRules getAdditionalRules();
 

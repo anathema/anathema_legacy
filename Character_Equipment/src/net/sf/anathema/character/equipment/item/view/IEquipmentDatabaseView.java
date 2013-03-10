@@ -17,8 +17,6 @@ public interface IEquipmentDatabaseView extends IView {
 
   IListObjectSelectionView<String> getTemplateListView();
 
-  void setTemplateListHeader(String headerText);
-
   void addEditTemplateAction(Action action);
 
   void setStatsListHeader(String headerText);

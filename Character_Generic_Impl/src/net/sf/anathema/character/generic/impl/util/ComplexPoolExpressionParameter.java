@@ -9,24 +9,23 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.generic.traits.types.YoziType;
 
-public class AnathemaExpressionParameter implements ExpressionParameter {
+public class ComplexPoolExpressionParameter implements ExpressionParameter {
   
   private IGenericTraitCollection traitCollection;
   
-  private Object x;
+  private int variableValue;
   
   public void setTraitCollection(IGenericTraitCollection traitCollection) {
     this.traitCollection = traitCollection;
   }
   
-  public void setParameter(Object x) {
-    this.x = x;
+  public void setParameter(int currentValue) {
+    this.variableValue = currentValue;
   }
 
   @Override
   public Object getParameterKey(String parameter) {
     String[] splitParameter = parameter.split("\\.", 2);
-    
     if (splitParameter.length == 2) {
       String type = splitParameter[0];
       String name = splitParameter[1];
@@ -64,7 +63,7 @@ public class AnathemaExpressionParameter implements ExpressionParameter {
         return traitCollection.getTrait((ITraitType)key).getCurrentValue();
       }
       else if (key.equals("x")) {
-        return x;
+        return variableValue;
       }
     }
     catch (Exception e) {

@@ -18,7 +18,7 @@ import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
@@ -43,9 +43,9 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   private GenericBonusPointCosts bonusPointCosts = new GenericBonusPointCosts();
   private GenericCreationPoints creationPoints = new GenericCreationPoints();
   private GenericEssenceTemplate essenceTemplate;
-  private IGroupedTraitType[] abilityGroups;
-  private IGroupedTraitType[] attributeGroups;
-  private IGroupedTraitType[] yoziGroups;
+  private GroupedTraitType[] abilityGroups;
+  private GroupedTraitType[] attributeGroups;
+  private GroupedTraitType[] yoziGroups;
   private GenericPresentationTemplate presentationTemplate;
   private ICasteCollection casteCollection = new CasteCollection(new ICasteType[0]);
   // This is volatile instead of final to allow clone to be implemented
@@ -60,12 +60,12 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   }
 
   @Override
-  public IGroupedTraitType[] getAbilityGroups() {
+  public GroupedTraitType[] getAbilityGroups() {
     return abilityGroups;
   }
 
   @Override
-  public IGroupedTraitType[] getYoziGroups() {
+  public GroupedTraitType[] getYoziGroups() {
     return yoziGroups;
   }
 
@@ -138,11 +138,11 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
     return magicTemplate;
   }
 
-  public void setAbilityGroups(IGroupedTraitType[] abilityGroups) {
+  public void setAbilityGroups(GroupedTraitType[] abilityGroups) {
     this.abilityGroups = abilityGroups;
   }
 
-  public void setYoziGroups(IGroupedTraitType[] yoziGroups) {
+  public void setYoziGroups(GroupedTraitType[] yoziGroups) {
     this.yoziGroups = yoziGroups;
   }
 
@@ -215,11 +215,11 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<
   }
 
   @Override
-  public IGroupedTraitType[] getAttributeGroups() {
+  public GroupedTraitType[] getAttributeGroups() {
     return attributeGroups;
   }
 
-  public void setAttributeGroups(IGroupedTraitType[] traitTypeGroups) {
+  public void setAttributeGroups(GroupedTraitType[] traitTypeGroups) {
     this.attributeGroups = traitTypeGroups;
   }
 

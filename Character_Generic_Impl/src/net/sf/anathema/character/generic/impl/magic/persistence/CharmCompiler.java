@@ -107,7 +107,7 @@ public class CharmCompiler implements IExtensibleDataSetCompiler {
   private void buildGenericCharms(Identified type) throws PersistenceException {
     try {
       ICharacterType characterType = characterTypes.findById(type.getId());
-      ITraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypes();
+      ITraitType[] primaryTypes = characterType.getFavoringTraitType().getTraitTypesForGenericCharms();
       genericBuilder.setTypes(primaryTypes);
       buildCharms(type, genericBuilder);
     } catch (IllegalArgumentException exception) {

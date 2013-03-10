@@ -39,7 +39,6 @@ public class EquipmentTemplateListPresenter implements Presenter {
 
   @Override
   public void initPresentation() {
-    view.setTemplateListHeader(resources.getString("Equipment.Creation.AvailableTemplates")); //$NON-NLS-1$
     model.getDatabase().addAvailableTemplateChangeListener(new IChangeListener() {
       @Override
       public void changeOccurred() {

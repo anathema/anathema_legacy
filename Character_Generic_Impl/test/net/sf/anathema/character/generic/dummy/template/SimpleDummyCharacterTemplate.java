@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
@@ -43,18 +43,18 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   }
 
   @Override
-  public IGroupedTraitType[] getAbilityGroups() {
-    return new IGroupedTraitType[0];
+  public GroupedTraitType[] getAbilityGroups() {
+    return new GroupedTraitType[0];
   }
 
   @Override
-  public IGroupedTraitType[] getAttributeGroups() {
-    return new IGroupedTraitType[0];
+  public GroupedTraitType[] getAttributeGroups() {
+    return new GroupedTraitType[0];
   }
 
   @Override
-  public IGroupedTraitType[] getYoziGroups() {
-    return new IGroupedTraitType[0];
+  public GroupedTraitType[] getYoziGroups() {
+    return new GroupedTraitType[0];
   }
 
   @Override

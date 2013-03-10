@@ -3,7 +3,6 @@ package net.sf.anathema.character.library.trait;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
-import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.library.ITraitFavorization;
@@ -25,13 +24,6 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
   private final IValueChangeChecker checker;
   private ITraitFavorization traitFavorization;
-  private final ICharacterChangeListener changeListener = new DedicatedCharacterChangeAdapter() {
-    @Override
-    public void casteChanged() {
-      resetCurrentValue();
-      getFavorization().updateFavorableStateToCaste();
-    }
-  };
 
   public DefaultTrait(IFavorableTraitRules traitRules, ICasteType[] castes, ITraitContext traitContext,
                       IBasicCharacterData basicData, ICharacterListening listening,
@@ -39,7 +31,13 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     this(traitRules, traitContext, valueChangeChecker);
     setTraitFavorization(
             new TraitFavorization(basicData, castes, favoredIncrementChecker, this, traitRules.isRequiredFavored()));
-    listening.addChangeListener(changeListener);
+    listening.addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void casteChanged() {
+        resetCurrentValue();
+        getFavorization().updateFavorableStateToCaste();
+      }
+    });
     getFavorization().updateFavorableStateToCaste();
   }
 

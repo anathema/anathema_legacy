@@ -1,13 +1,17 @@
 package net.sf.anathema.character.generic.framework.module;
 
+import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.generic.framework.CharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
+import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
+
+import java.util.Collection;
 
 public class CharacterModuleContainer {
 
@@ -26,11 +30,21 @@ public class CharacterModuleContainer {
           ICharacterModule<? extends ICharacterModuleObject> module) throws InitializationException {
     module.initModuleObject(characterGenerics);
     module.registerCommonData(characterGenerics);
+    registerTemplateParsers();
     module.addCharacterTemplates(characterGenerics);
     module.addBackgroundTemplates(characterGenerics);
     module.addAdditionalTemplateData(characterGenerics);
     module.addReportTemplates(characterGenerics, resources);
     characterGenerics.getModuleObjectMap().addModule(module);
+  }
+
+  private void registerTemplateParsers() {
+    Collection<IAdditionalTemplateParser> allParsers = characterGenerics.getInstantiater().instantiateAll(
+            CharacterTemplateParser.class);
+    for (IAdditionalTemplateParser parser : allParsers) {
+      String modelId = parser.getClass().getAnnotation(CharacterTemplateParser.class).modelId();
+      characterGenerics.getAdditionalTemplateParserRegistry().register(modelId, parser);
+    }
   }
 
   public ICharacterGenerics getCharacterGenerics() {

@@ -10,13 +10,8 @@ import net.sf.anathema.lib.util.Identified;
 public enum FavoringTraitType implements Identified {
   AbilityType {
     @Override
-    public AbilityType[] getTraitTypes() {
+    public AbilityType[] getTraitTypesForGenericCharms() {
       return net.sf.anathema.character.generic.traits.types.AbilityType.values();
-    }
-
-    @Override
-    public boolean canFavorType(ITraitType type) {
-      return type instanceof AbilityType;
     }
 
     @Override
@@ -26,13 +21,8 @@ public enum FavoringTraitType implements Identified {
   },
   AttributeType {
     @Override
-    public AttributeType[] getTraitTypes() {
+    public AttributeType[] getTraitTypesForGenericCharms() {
       return net.sf.anathema.character.generic.traits.types.AttributeType.values();
-    }
-
-    @Override
-    public boolean canFavorType(ITraitType type) {
-      return type instanceof AttributeType;
     }
 
     @Override
@@ -42,13 +32,8 @@ public enum FavoringTraitType implements Identified {
   },
   VirtueType {
     @Override
-    public VirtueType[] getTraitTypes() {
+    public VirtueType[] getTraitTypesForGenericCharms() {
       return net.sf.anathema.character.generic.traits.types.VirtueType.values();
-    }
-
-    @Override
-    public boolean canFavorType(ITraitType type) {
-      return false;
     }
 
     @Override
@@ -58,13 +43,8 @@ public enum FavoringTraitType implements Identified {
   },
   YoziType {
     @Override
-    public YoziType[] getTraitTypes() {
+    public YoziType[] getTraitTypesForGenericCharms() {
       return net.sf.anathema.character.generic.traits.types.YoziType.values();
-    }
-
-    @Override
-    public boolean canFavorType(ITraitType type) {
-      return type instanceof YoziType;
     }
 
     @Override
@@ -78,9 +58,7 @@ public enum FavoringTraitType implements Identified {
     return name();
   }
 
-  public abstract ITraitType[] getTraitTypes();
-
-  public abstract boolean canFavorType(ITraitType type);
+  public abstract ITraitType[] getTraitTypesForGenericCharms();
 
   public abstract ITraitType getSpellFavoringType();
 }

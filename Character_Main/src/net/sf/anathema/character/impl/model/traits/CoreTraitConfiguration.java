@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -102,7 +102,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
 
   private void addYozis(ICharacterTemplate template) {
     ICasteCollection casteCollection = template.getCasteCollection();
-    IGroupedTraitType[] yoziGroups = template.getYoziGroups();
+    GroupedTraitType[] yoziGroups = template.getYoziGroups();
     IIdentifiedCasteTraitTypeGroup[] yoziTraitGroups = new YoziTypeGroupFactory().createTraitGroups(casteCollection, yoziGroups);
     IIncrementChecker incrementChecker = YoziFavoredIncrementChecker.create(this);
     addFavorableTraits(yoziTraitGroups, incrementChecker);
