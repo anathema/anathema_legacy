@@ -1,5 +1,6 @@
 package net.sf.anathema.scribe.editor.model;
 
+import net.sf.anathema.scribe.scroll.persistence.InMemoryScrollPersister;
 import org.junit.Test;
 
 import static org.mockito.Matchers.eq;
@@ -11,7 +12,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 public class ScrollModelTest {
 
   private final ScrollChangedListener mockListener = mock(ScrollChangedListener.class);
-  private final ScrollModel model = new ScrollModel();
+  private final ScrollModel model = new ScrollModel(new InMemoryScrollPersister());
 
   @Test
   public void notifiesScrollChangeListenerOnContentChange() {

@@ -15,4 +15,12 @@ public class FxThreading {
       throw new IllegalStateException("Operation must NOT be performed on FX Thread");
     }
   }
+
+  public static void runOnCorrectThread(Runnable runnable) {
+    if (Platform.isFxApplicationThread()) {
+      runnable.run();
+    } else {
+      Platform.runLater(runnable);
+    }
+  }
 }

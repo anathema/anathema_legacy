@@ -1,10 +1,12 @@
 package net.sf.anathema.scribe.perspective.presenter;
 
-import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.interaction.Command;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.scribe.editor.presenter.ScrollPresenter;
 import net.sf.anathema.scribe.perspective.model.ScribeModel;
 import net.sf.anathema.scribe.perspective.view.ScribeView;
+import net.sf.anathema.scribe.scroll.persistence.ScrollReference;
 
 public class ScribePresenter {
 
@@ -21,6 +23,21 @@ public class ScribePresenter {
   public void initPresentation() {
     initializeNavigationPresentation();
     initializeScrollPresentation();
+    model.scrollPersister.addScrollListChangeListener(new IChangeListener() {
+      @Override
+      public void changeOccurred() {
+        view.scribeNavigation.clear();
+        addAllReferences();
+      }
+    });
+    Tool tool = view.scribeNavigation.addTool();
+    tool.setIcon("icons/Scroll20.png");
+    tool.setCommand(new Command() {
+      @Override
+      public void execute() {
+        model.scrollModel.startNewScroll();
+      }
+    });
   }
 
   private void initializeScrollPresentation() {
@@ -29,8 +46,17 @@ public class ScribePresenter {
   }
 
   private void initializeNavigationPresentation() {
-    for (PrintNameFile file : model.collectAllScrolls()) {
-      view.scribeNavigation.addText(file.getPrintName());
+    addAllReferences();
+  }
+
+  private void addAllReferences() {
+    for (final ScrollReference reference : model.collectAllScrolls()) {
+      view.scribeNavigation.addScroll(reference, new Command() {
+        @Override
+        public void execute() {
+          model.scrollModel.loadScroll(reference);
+        }
+      });
     }
   }
 }

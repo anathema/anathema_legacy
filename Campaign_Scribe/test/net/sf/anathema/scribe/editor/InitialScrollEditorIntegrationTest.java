@@ -2,6 +2,7 @@ package net.sf.anathema.scribe.editor;
 
 import net.sf.anathema.scribe.editor.model.ScrollModel;
 import net.sf.anathema.scribe.editor.presenter.ScrollPresenter;
+import net.sf.anathema.scribe.scroll.persistence.InMemoryScrollPersister;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +15,7 @@ public class InitialScrollEditorIntegrationTest {
   private ResourcesDummy resources = new ResourcesDummy();
   private ScrollEditorDummy editor = new ScrollEditorDummy();
   private ScrollPreviewDummy preview = new ScrollPreviewDummy();
-  private ScrollModel model = new ScrollModel();
+  private ScrollModel model = new ScrollModel(new InMemoryScrollPersister());
 
   @Before
   public void initPresentation() {
