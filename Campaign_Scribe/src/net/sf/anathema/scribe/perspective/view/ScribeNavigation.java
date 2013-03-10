@@ -51,7 +51,7 @@ public class ScribeNavigation {
         Text text = new Text(reference.printName);
         Button button = new Button("", text);
         button.setOnAction(new Execute(command));
-        navigation.add(button, new CC().push());
+        navigation.add(button, new CC().pushX());
       }
     });
   }
