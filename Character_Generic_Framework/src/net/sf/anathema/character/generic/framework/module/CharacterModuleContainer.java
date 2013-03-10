@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.framework.module;
 import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.generic.framework.CharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
@@ -24,8 +23,7 @@ public class CharacterModuleContainer {
     this.characterGenerics = new CharacterGenerics(dataFileProvider, instantiater, dataSetProvider);
   }
 
-  public void addCharacterGenericsModule(
-          ICharacterModule<? extends ICharacterModuleObject> module) throws InitializationException {
+  public void addCharacterGenericsModule(ICharacterModule<?> module) throws InitializationException {
     module.initModuleObject(characterGenerics);
     module.registerCommonData(characterGenerics);
     registerTemplateParsers();

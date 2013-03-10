@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.data.IExtensibleDataSetProvider;
 import net.sf.anathema.character.generic.framework.module.CharacterModule;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
 import net.sf.anathema.character.generic.framework.module.ICharacterModule;
-import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
 import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.initialization.reflections.ResourceLoader;
@@ -25,13 +24,21 @@ public class CharacterModuleContainerInitializer {
 
   public CharacterModuleContainer initContainer(IResources resources,
                                                 IDataFileProvider dataFileProvider) throws InitializationException {
+    CharacterModuleContainer container = createModuleContainer(resources, dataFileProvider);
+    addModules(container);
+    return container;
+  }
+
+  private CharacterModuleContainer createModuleContainer(IResources resources, IDataFileProvider dataFileProvider) {
     IExtensibleDataSetProvider dataSetManager = loadExtensibleResources();
-    CharacterModuleContainer container = new CharacterModuleContainer(resources, dataSetManager, dataFileProvider, instantiater);
-    Collection<ICharacterModule<ICharacterModuleObject>> modules = instantiater.instantiateOrdered(CharacterModule.class);
-    for (ICharacterModule<ICharacterModuleObject> module : modules) {
+    return new CharacterModuleContainer(resources, dataSetManager, dataFileProvider, instantiater);
+  }
+
+  private void addModules(CharacterModuleContainer container) {
+    Collection<ICharacterModule<?>> modules = instantiater.instantiateOrdered(CharacterModule.class);
+    for (ICharacterModule<?> module : modules) {
       container.addCharacterGenericsModule(module);
     }
-    return container;
   }
 
   private IExtensibleDataSetProvider loadExtensibleResources() {
