@@ -5,8 +5,11 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.backgrounds.EssenceUserBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.initialization.reflections.Weight;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
+@CharacterModule
+@Weight(weight = 0) //Must be the first so others can depend on it
 public class BasicExaltCharacterModule extends NullObjectCharacterModuleAdapter {
 
   public static final String BACKGROUND_ID_FACE = "Face"; //$NON-NLS-1$

@@ -27,7 +27,7 @@ public class CharacterModuleContainerInitializer {
                                                 IDataFileProvider dataFileProvider) throws InitializationException {
     IExtensibleDataSetProvider dataSetManager = loadExtensibleResources();
     CharacterModuleContainer container = new CharacterModuleContainer(resources, dataSetManager, dataFileProvider, instantiater);
-    Collection<ICharacterModule<ICharacterModuleObject>> modules = instantiater.instantiateAll(CharacterModule.class);
+    Collection<ICharacterModule<ICharacterModuleObject>> modules = instantiater.instantiateOrdered(CharacterModule.class);
     for (ICharacterModule<ICharacterModuleObject> module : modules) {
       container.addCharacterGenericsModule(module);
     }
