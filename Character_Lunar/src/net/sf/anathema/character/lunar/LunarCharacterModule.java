@@ -68,10 +68,10 @@ public class LunarCharacterModule extends CharacterTypeModule {
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     Map<ITemplateType, ICasteType[]> templateMap = new HashMap<>();
-    templateMap.put(castelessType, new ICasteType[]{});
+    templateMap.put(castelessType, LunarCaste.getCastelessValues());
     templateMap.put(dreamsType, LunarCaste.getDreamsValues());
-    characterGenerics.getCasteCollectionRegistry().register(type,
-            new CasteCollection(LunarCaste.values(), templateMap));
+    CasteCollection casteCollection = new CasteCollection(LunarCaste.values(), templateMap);
+    characterGenerics.getCasteCollectionRegistry().register(type, casteCollection);
   }
 
   @Override

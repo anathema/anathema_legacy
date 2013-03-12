@@ -11,18 +11,11 @@ public enum LunarCaste implements ICasteType {
     return name();
   }
 
-  @Override
-  public String toString() {
-    return name();
+  public static ICasteType[] getDreamsValues() {
+    return new ICasteType[]{FullMoon, WaxingMoon, HalfMoon, WaningMoon, NoMoon};
   }
-  
-  public static ICasteType[] getModernValues()
-  {
-	  return new ICasteType[] { FullMoon, ChangingMoon, NoMoon };
-  }
-  
-  public static ICasteType[] getDreamsValues()
-  {
-	  return new ICasteType[] { FullMoon, WaxingMoon, HalfMoon, WaningMoon, NoMoon };
+
+  public static ICasteType[] getCastelessValues() {
+    return new ICasteType[0];
   }
 }

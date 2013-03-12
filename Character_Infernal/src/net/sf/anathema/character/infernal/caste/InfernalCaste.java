@@ -10,9 +10,4 @@ public enum InfernalCaste implements ICasteType {
   public String getId() {
     return name();
   }
-
-  @Override
-  public String toString() {
-    return name();
-  }
 }

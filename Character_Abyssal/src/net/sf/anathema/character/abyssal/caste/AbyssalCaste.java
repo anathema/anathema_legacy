@@ -10,9 +10,4 @@ public enum AbyssalCaste implements ICasteType {
   public String getId() {
     return name();
   }
-
-  @Override
-  public String toString() {
-    return name();
-  }
 }
