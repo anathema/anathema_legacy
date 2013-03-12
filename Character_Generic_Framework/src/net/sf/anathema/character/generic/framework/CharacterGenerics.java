@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.NullAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistry;
-import net.sf.anathema.character.generic.framework.module.object.CharacterModuleObjectMap;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.CharacterTemplateRegistryCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
@@ -40,7 +39,6 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry = new Registry<>();
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<>();
   private final ICharmProvider charmProvider;
-  private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
   private final IDataFileProvider dataFileProvider;
   private final IExtensibleDataSetProvider dataSetProvider;
   private final Instantiater instantiater;
@@ -117,11 +115,6 @@ public class CharacterGenerics implements ICharacterGenerics {
   @Override
   public ICharmProvider getCharmProvider() {
     return charmProvider;
-  }
-
-  @Override
-  public CharacterModuleObjectMap getModuleObjectMap() {
-    return moduleObjectMap;
   }
 
   @Override

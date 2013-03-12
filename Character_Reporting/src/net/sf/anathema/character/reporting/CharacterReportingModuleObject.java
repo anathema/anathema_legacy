@@ -1,13 +1,12 @@
 package net.sf.anathema.character.reporting;
 
-import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.boxes.EncoderRegistry;
 import net.sf.anathema.character.reporting.pdf.rendering.pages.PageRegistry;
 import net.sf.anathema.initialization.Instantiater;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CharacterReportingModuleObject implements ICharacterModuleObject {
+public class CharacterReportingModuleObject {
 
   private final ReportContentRegistry contentRegistry;
   private final EncoderRegistry encoderRegistry;

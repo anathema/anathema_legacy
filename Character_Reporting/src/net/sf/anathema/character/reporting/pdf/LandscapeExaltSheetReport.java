@@ -5,10 +5,8 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -33,14 +31,14 @@ import java.util.List;
 
 public class LandscapeExaltSheetReport extends AbstractPdfReport {
   private IResources resources;
-  private ICharacterGenerics characterGenerics;
   private PageSizePreference pageSizePreference;
+  private final CharacterReportingModuleObject reportingModuleObject;
 
   public LandscapeExaltSheetReport(IResources resources, ICharacterGenerics characterGenerics,
-          PageSizePreference pageSizePreference) {
+                                   PageSizePreference pageSizePreference) {
     this.resources = resources;
-    this.characterGenerics = characterGenerics;
     this.pageSizePreference = pageSizePreference;
+    this.reportingModuleObject = new CharacterReportingModuleObject(characterGenerics.getInstantiater(), resources);
   }
 
   @Override
@@ -88,13 +86,11 @@ public class LandscapeExaltSheetReport extends AbstractPdfReport {
   }
 
   private CharacterReportingModuleObject getReportingModuleObject() {
-    ICharacterModuleObjectMap moduleObjectMap = characterGenerics.getModuleObjectMap();
-    return moduleObjectMap.getModuleObject(CharacterReportingModule.class);
+    return reportingModuleObject;
   }
 
   private ReportContentRegistry getContentRegistry() {
-    CharacterReportingModuleObject moduleObject = getReportingModuleObject();
-    return moduleObject.getContentRegistry();
+    return getReportingModuleObject().getContentRegistry();
   }
 
   @Override

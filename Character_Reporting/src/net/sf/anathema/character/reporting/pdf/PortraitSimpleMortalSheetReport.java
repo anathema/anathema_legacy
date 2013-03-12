@@ -5,10 +5,8 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.pdf.content.ReportContentRegistry;
 import net.sf.anathema.character.reporting.pdf.content.ReportSession;
@@ -29,14 +27,14 @@ import net.sf.anathema.lib.resources.IResources;
 public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
 
   private final IResources resources;
-  private final ICharacterGenerics characterGenerics;
   private final PageSizePreference pageSizePreference;
+  private CharacterReportingModuleObject reportingModuleObject;
 
   public PortraitSimpleMortalSheetReport(IResources resources, ICharacterGenerics characterGenerics,
           PageSizePreference pageSizePreference) {
     this.resources = resources;
-    this.characterGenerics = characterGenerics;
     this.pageSizePreference = pageSizePreference;
+    this.reportingModuleObject = new CharacterReportingModuleObject(characterGenerics.getInstantiater(), resources);
   }
 
   @Override
@@ -72,8 +70,7 @@ public class PortraitSimpleMortalSheetReport extends AbstractPdfReport {
   }
 
   private CharacterReportingModuleObject getReportingModuleObject() {
-    ICharacterModuleObjectMap moduleObjectMap = characterGenerics.getModuleObjectMap();
-    return moduleObjectMap.getModuleObject(CharacterReportingModule.class);
+    return reportingModuleObject;
   }
 
   @Override
