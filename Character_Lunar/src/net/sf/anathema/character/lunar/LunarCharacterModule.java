@@ -38,36 +38,32 @@ import java.util.Map;
 public class LunarCharacterModule extends CharacterTypeModule {
 
   public static final ICharacterType type = new LunarCharacterType();
-  public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_REPUTATION = "Reputation"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SOLAR_BOND = "SolarBond"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_TATTOO_ARTIFACT = "TattooArtifact"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_TABOO = "Taboo"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood";
+  public static final String BACKGROUND_ID_REPUTATION = "Reputation";
+  public static final String BACKGROUND_ID_SOLAR_BOND = "SolarBond";
+  public static final String BACKGROUND_ID_TATTOO_ARTIFACT = "TattooArtifact";
+  public static final String BACKGROUND_ID_TABOO = "Taboo";
 
-  private static final TemplateType castelessType = new TemplateType(type,
-          new Identifier("Casteless")); //$NON-NLS-1$
-  private static final TemplateType dreamsType = new TemplateType(type, new Identifier("Dreams")); //$NON-NLS-1$
-  private static final TemplateType dreamsEstablished = new TemplateType(type,
-          new Identifier("DreamsEstablished")); //$NON-NLS-1$
-  private static final TemplateType dreamsInfluential = new TemplateType(type,
-          new Identifier("DreamsInfluential")); //$NON-NLS-1$
-  private static final TemplateType dreamsLegendary = new TemplateType(type,
-          new Identifier("DreamsLegendary")); //$NON-NLS-1$
-  private static final TemplateType silverpact = new TemplateType(type); //$NON-NLS-1$
+  private static final TemplateType castelessType = new TemplateType(type, new Identifier("Casteless"));
+  private static final TemplateType dreamsType = new TemplateType(type, new Identifier("Dreams"));
+  private static final TemplateType dreamsEstablished = new TemplateType(type, new Identifier("DreamsEstablished"));
+  private static final TemplateType dreamsInfluential = new TemplateType(type, new Identifier("DreamsInfluential"));
+  private static final TemplateType dreamsLegendary = new TemplateType(type, new Identifier("DreamsLegendary"));
+  private static final TemplateType silverpact = new TemplateType(type);
 
   private static final TemplateType[] dreams = {dreamsType, dreamsEstablished, dreamsInfluential, dreamsLegendary};
   private static final TemplateType[] allButCasteless = {silverpact, dreamsType, dreamsEstablished, dreamsInfluential, dreamsLegendary};
 
-  public static final String BACKGROUND_ID_ARSENAL = "LunarDreamsArsenal"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_COMMAND = "LunarDreamsCommand"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_CONNECTIONS = "LunarDreamsConnections"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_HENCHMEN = "LunarDreamsHenchmen"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_PANOPLY = "LunarDreamsPanoply"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_RETAINERS = "LunarDreamsRetainers"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SALARY = "LunarDreamsSalary"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SAVANT = "LunarDreamsSavant"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_SIFU = "LunarDreamsSifu"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_WEALTH = "LunarDreamsWealth"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_ARSENAL = "LunarDreamsArsenal";
+  public static final String BACKGROUND_ID_COMMAND = "LunarDreamsCommand";
+  public static final String BACKGROUND_ID_CONNECTIONS = "LunarDreamsConnections";
+  public static final String BACKGROUND_ID_HENCHMEN = "LunarDreamsHenchmen";
+  public static final String BACKGROUND_ID_PANOPLY = "LunarDreamsPanoply";
+  public static final String BACKGROUND_ID_RETAINERS = "LunarDreamsRetainers";
+  public static final String BACKGROUND_ID_SALARY = "LunarDreamsSalary";
+  public static final String BACKGROUND_ID_SAVANT = "LunarDreamsSavant";
+  public static final String BACKGROUND_ID_SIFU = "LunarDreamsSifu";
+  public static final String BACKGROUND_ID_WEALTH = "LunarDreamsWealth";
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -84,8 +80,7 @@ public class LunarCharacterModule extends CharacterTypeModule {
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD, type));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SOLAR_BOND, type));
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, type));
-    backgroundRegistry.add(
-            new TemplateTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, allButCasteless));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_TATTOO_ARTIFACT, allButCasteless));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_TABOO, castelessType));
 
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, dreams));
@@ -140,6 +135,6 @@ public class LunarCharacterModule extends CharacterTypeModule {
 
   @Override
   protected ICharacterType getType() {
-	  return type;
+    return type;
   }
 }
