@@ -9,6 +9,4 @@ public interface ICasteCollection {
   ICasteType[] getAllCasteTypes(ITemplateType template);
 
   ICasteType getById(String casteTypeId);
-
-  boolean isEmpty();
 }
